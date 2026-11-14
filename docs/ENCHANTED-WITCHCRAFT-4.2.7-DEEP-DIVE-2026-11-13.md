@@ -76,3 +76,6 @@ The `RiteType` codec supports data-driven `items`, `shapes`, `entities`, `power`
 - [Golden-chalk activation](https://github.com/Favouriteless/Enchanted/blob/55f37c7e15a2848be2cf25ff20232a1893795e75/common/src/main/java/net/favouriteless/enchanted/common/blocks/entity/GoldChalkBlockEntity.java)
 - [Poppet lethal-damage protection](https://github.com/Favouriteless/Enchanted/blob/55f37c7e15a2848be2cf25ff20232a1893795e75/common/src/main/java/net/favouriteless/enchanted/common/enchanted/poppet/PoppetEvents.java)
 - [Familiar curse level](https://github.com/Favouriteless/Enchanted/blob/55f37c7e15a2848be2cf25ff20232a1893795e75/common/src/main/java/net/favouriteless/enchanted/common/enchanted/circle_magic/rites/ApplyCurseRite.java)
+
+## Final integration decision (2026-11-14)
+**User decision:** Do **not** add dedicated Enchanted Pufferfish skills or build a custom ritual/poppet bridge for minor bonuses. Leave the standalone workshop, altar, circles, poppets and familiar progression intact. Earlier candidate sections in this file are **research possibilities only, not planned implementation**. Enchanted moves to **Nothing separate to enhance** in the matrix. Its poppet-on-lethal-hit behavior still needs cross-mod event-order and Tombstone tests, independent of skill-tree integration.
