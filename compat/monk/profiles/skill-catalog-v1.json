@@ -12,7 +12,7 @@
     "once": "Single permanent unlock; no meaningless repeated purchases.",
     "staged": "Finite meaningful states; cap dynamically at the actual final pack tool/ability stages."
   },
-  "backend_decision": "SELECTED: Tyz's Skills 6.4.2 owns leveled purchases; Monk native faction tree owns ability/permission unlocks; Pufferfish only nonoverlapping one-time skills. Implementation pending.",
+  "backend_decision": "SOURCE CATALOG ONLY; authoritative global Tyz/MXP tree exists on design/universal-mxp-progression-registry. No separate Monk Tyz tree. Improvable preserves distinct original vanilla XP perks; remove Pufferfish in next full build.",
   "placement_decision": "DEFERRED: exact tier/rank and boss placement not set except post-Dragon momentum glide and progression exclusions",
   "apotheosis_policy": "99 distinct affix unlocks will be enumerated in companion artifact; use source-rarity-defined finite ranks, and no affix may grant innate Creative Flight",
   "attribute_dispositions": [
@@ -3475,10 +3475,18 @@
   ],
   "total_skill_records_excluding_apotheosis": 172,
   "ownership_proposal": {
-    "status": "owner_selected_tyzs_skills_6_4_2_pinned_candidate_not_runtime_installed",
+    "status": "HISTORICAL_TYZ_ASSIGNMENTS_BEFORE_PRIMARY_GLOBAL_TREE; RECONCILE_DONT_BUILD",
     "single": "monk_faction_skill_grants_effect",
-    "non_single": "monk_faction_skill_grants_permission_then_tyzs_skills_owns_per_trait_rank_purchases",
-    "rank_investment": "up_to_99_per_skill_staged_5_default_optional_6th_increasing_x10_stat_and_SP_price",
-    "shared_pufferfish": "retained_for_one_time_choices_and_unified_layout_only; must not grant same recurring attribute modifier"
+    "non_single": "primary_Tyz_skill_categories_own_purchased_levels; native_Monk_faction_only_licenses_and_unique_effects; do_not_duplicate_global_magic_nodes",
+    "rank_investment": "up_to_99_ranks_in_one_node; one_prior_rank_unlocks_next; external_gates; five_stages_optional_only_if_effective_and_MXP_economy_validated",
+    "shared_pufferfish": "REMOVAL_PLANNED_NEXT_FULL_BUILD; no skill ownership"
+  },
+  "primary_skill_design_supersession": {
+    "branch": "design/universal-mxp-progression-registry",
+    "catalog_role": "source_candidates_only_no_second_Tyz_tree",
+    "xp": "ONLY_MXP",
+    "tier_unlock": "prior_rank_at_least_1_plus_external_gate_not_99",
+    "global_wallet": "single_Tyz_XP_SP_wallet",
+    "main_categories": "tmm_magic_core_and_tmm_monk_in_primary"
   }
 }
