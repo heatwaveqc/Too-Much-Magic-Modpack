@@ -84,6 +84,53 @@ def inspect_pin(pin: str) -> None:
                     print(" JAVAP_FAILED", cls, proc.stderr[:200])
             if len(candidates) > 50:
                 print(f" ... {len(candidates)-50} more candidates")
+            # Exact class signatures from the pinned binary for proposed adapters.
+            deep = (
+                "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment",
+                "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment$Data",
+                "dev.sterner.witchery.feature.affliction.vampire.VampireEvents",
+                "dev.sterner.witchery.feature.affliction.vampire.VampireLeveling",
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolAttachment",
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolAttachment$Data",
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",
+                "dev.sterner.witchery.content.ability.DrinkBloodAbility",
+                "dev.sterner.witchery.core.api.event.VampireAfflictionEvent$LevelChanged",
+                "dev.sterner.witchery.core.api.event.VampireAfflictionEvent$SunDamageApplied",
+                "dev.sterner.witchery.core.api.event.VampireAfflictionEvent$BloodHealing",
+                "de.teamlapen.vampirism.api.event.PlayerFactionEvent$FactionLevelChangePre",
+                "de.teamlapen.vampirism.api.entity.player.vampire.IBloodStats",
+            )
+            for cls in deep:
+                if cls not in classes:
+                    continue
+                proc = subprocess.run(["javap", "-p", "-classpath", str(jar), cls],
+                                      capture_output=True, text=True, timeout=20)
+                print("DEEP_SIGNATURE", cls, "exit", proc.returncode)
+                for line in proc.stdout.splitlines()[:200]:
+                    print(" SIG", line[:350])
+            # Summarize critical bytecode paths, never ship or rewrite upstream JARs.
+            bytecode = {
+                "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment":
+                    ("getData(", "setData("),
+                "dev.sterner.witchery.feature.affliction.vampire.VampireEvents":
+                    ("handleBloodHunger(", "handleBloodHealing(", "handleSunExposure(", "vampireTick("),
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler":
+                    ("getBlood(", "setBlood(", "consumeBlood(", "addBlood("),
+            }
+            for cls, needles in bytecode.items():
+                if cls not in classes:
+                    continue
+                proc = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                                      capture_output=True, text=True, timeout=25)
+                ls = proc.stdout.splitlines()
+                print("BYTECODE", cls, "exit", proc.returncode)
+                for i, line in enumerate(ls):
+                    if any(n in line for n in needles) and line.startswith("  ") and not line.startswith("    "):
+                        print(" METHOD", line[:350])
+                        for follower in ls[i+1:i+100]:
+                            if follower.startswith("  public") or follower.startswith("  private") or follower.startswith("  protected") or follower == "}":
+                                break
+                            print(" BC", follower[:280])
         jar.unlink()
 
 
