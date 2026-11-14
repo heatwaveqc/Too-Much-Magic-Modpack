@@ -154,6 +154,7 @@ def modify():
       ('"Getting Started": 18,','"Getting Started": 19,',"intro count"),
       ('len(translated_titles) == len(translated_desc) == 179','len(translated_titles) == len(translated_desc) == 180',"locale count"),
       ('Expected 179 localized quests','Expected 180 localized quests',"locale error"),
+      ('len(lang_ids) == 179','len(lang_ids) == 180',"unique locale ids"),
       ('len(all_blocks) == 179','len(all_blocks) == 180',"all count"),
       ('len(item_tasks) == 80','len(item_tasks) == 84',"task count")
     ]: val=one(val,old,new,name)
