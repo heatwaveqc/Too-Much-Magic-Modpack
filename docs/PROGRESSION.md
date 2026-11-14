@@ -12,6 +12,12 @@ These are design invariants, not claims about live game behavior.
 
 Do not add placeholder broken KubeJS recipes using speculative registry names.
 
+## Psi-powered FE candidate (provisional)
+- Prefer trying PsiTweaks' `trick_supply_fe` as an intentionally magical FE source. Review sustainable FE/t under player regeneration, CAD efficiency, automated casts, chunk loading, Draconic energy demand and any interaction with late-game gates.
+- **BiggerReactors Rework remains installed for now.** It is a potential removal **only after** Psi can reliably handle the pack's entire generation needs, with the user's explicit subsequent approval. FE transport remains Draconic's responsibility; avoid generic energy networks.
+- No automatic mana-pool unification across Ars, Iron's, Psi, Hex Casting or other systems. Character skill progression may be shared; resources are not.
+- PsiTweaks penalty overrides, Ideaspace Storage, time acceleration, mass mining and similar tuning are **provisional** pending balance/economy tests; do not implement restrictions merely because an audit flagged risks.
+
 ## B4 compatibility proviso
 - BiggerReactors Rework 0.1.6 adds a separate battery and industrial processor along with reactor energy generation. Review the energy/storage features against our limited-tech policy before progression work; it was explicitly approved as the newer fork for testing.
 - Botania Revived may expose optional Ars Nouveau integration; balance mana/source conversions and remove any forbidden storage acquisition path.

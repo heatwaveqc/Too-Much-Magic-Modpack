@@ -1,18 +1,18 @@
 # Pufferfish Skills × Too Much Magic — 42-mod compatibility matrix
 
-Updated 2026-11-13. Scope: the 42 retained magic-related entries from the original 43-mod B5 survey, including Enigmatic Legacy+. Aspect Alchemy is excluded as of B6 and is not part of this matrix. Pufferfish Skills and Attributes are both pinned and dedicated-server-smoked in B6; the custom skill tree is not yet authored or gameplay-tested. **Psi: Tweaks and Additions stays in Needs Investigation until the main Psi audit.**
+Updated 2026-11-13. Scope: the 42 retained magic-related entries from the original 43-mod B5 survey, including Enigmatic Legacy+. Aspect Alchemy is excluded as of B6 and is not part of this matrix. Pufferfish Skills and Attributes are both pinned and dedicated-server-smoked in B6; the custom skill tree is not yet authored or gameplay-tested. **Psi and Psi: Tweaks and Additions have now been source-audited; native hooks do not imply gameplay-tested integration.**
 
 **How to read these states:** Confirmed means source-verified player stats/hooks OR demonstrably inherited parent spell-casting hooks, **not runtime-tested skill tree integration**. Compatible with work means a concrete bridge, configuration or implementation test remains. Needs investigation means evidence is insufficient and incompatibility cannot be inferred. Proven incompatible requires demonstrable impossibility (none so far). Nothing separate to enhance means there is no justified *independent mod-specific player progression track*, not that universal Pufferfish attributes cannot apply.
 
-**Design preference:** unify overlapping magic resources and scalable spell mechanics wherever supported by the underlying mods, with the unified Pufferfish tree as the cross-school progression layer. Preserve unique spellcraft and progression where no safe shared hook exists; avoid double-applying the same bonuses. The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFFERFISH-ADDON-AUDIT-2026-11-13.md), including upstream Java references, version caveats, and the Ars 'n Spells mana-unification design issue.
+**Locked design:** unify *character skill progression* and compatible general bonuses across schools, **not mana/resource pools**. Preserve independent Ars/Iron's mana, Psi reserves/CAD battery, Hex media, etc. Avoid double-applying spell multipliers. PsiTweaks-specific balance choices are provisional. Psi-generated FE is a favored candidate that might replace BiggerReactors only after validated throughput and a later decision. The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFFERFISH-ADDON-AUDIT-2026-11-13.md), including upstream Java references, version caveats, and the Ars 'n Spells mana-unification design issue.
 
 ## Summary
 
 | State | Count |
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **15** |
-| Compatible with work | **7** |
-| Needs investigation | **12** |
+| Compatible with work | **8** |
+| Needs investigation | **11** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
 | **Total** | **42** |
@@ -37,19 +37,20 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Psi** (`psi`) | Psi 110 defines synchronized player attributes `psi:total_psi` (default 5000) and `psi:regen` (default 25/t), a complete NeoForge `PsiEvents` KubeJS API including `preSpellCast`, `regenPsi`, and `cadStat`, and datapack-defined CAD stats and piece unlocks. | Bind Pufferfish capacity/regeneration directly; test event-based cost reductions and separate item-based CAD crafting perks. CAD stats are item properties, and compile-time limits are checked before pre-cast cost modifiers. Review PsiTweaks penalty defaults and resource interoperability. |
 | **Psi: Tweaks and Additions** (`psi-tweaks`) | Pinned 0.10.10-hotfix source registers the player attribute `psitweaks:spell_damage_factor` and applies it in multiple damaging tricks; addon equipment also buffs Psi max/regeneration and spell damage, confirming parent integration. | Apply Pufferfish damage rewards to that attribute for supported addon spells, verify coverage/double stacking, and audit Ideaspace Storage, FE Supply, Mass Block Break, Time Accelerate and configurable Psi penalty overrides before enabling skill boosts. |
 
-## Compatible with work — concrete integration path identified (7)
+## Compatible with work — concrete integration path identified (8)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | Unified mana is the preferred design. Start by testing the mod's default `iss_primary` (Iron's authoritative); verify no Pufferfish cross-system spell-power double counting (3.3.5 pinned vs newer source). |
+| **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | **No shared mana pools**: its default `iss_primary` is not selected. Test `separate` versus `disabled` for independent pools and verify cross-cast costs plus Pufferfish power stacking before editing config. |
 | **Extra Botany Revived** (`extra-botany-revived`) | Botania addon with custom DamageHandler, damage types, gear/Curios attributes, and custom-owned entities that do not implement OwnableEntity. | Review magic-damage tags and direct-health attacks; test universal attributes and item enhancements. |
 | **Goety Cataclysm** (`goety-cataclysm`) | Cataclysm spells/servants architecturally extend Goety Spell and Summoned in public 1.20.1 source, but the pinned 1.21.1 code is not matched. | Inspect exact 1.21.1 jar/source and test school potency, soul discount and owned-servant damage. |
+| **HexCast NEOFORGED** (`hexcast-neoforged`) | Exact `0.11.1-19+neoforge.1.21.1` public port sources provide `CastingEnvironment.addCreateEventListener`, `ExtractMedia` / `IsVecInRange` components and user/circle environments. Media is item/circle based, with no native personal media capacity/regen attribute discovered. | Build a narrow environment adapter for Pufferfish media efficiency and possibly range, preserving separate media and overcast penalties; no stock Hex-specific KubeJS skill event verified. Test circles, packaged casts, server config denylist and lore/great-spell gates. [Audit](HEXCAST-SKILLS-DEEP-DIVE-2026-11-13.md). |
 | **Gaze (Malum addon)** (`gaze-malum`) | Gaze 1.1.7 release notes say *some* projectiles benefit from Malum Arcane Resonance, a registered/synced player attribute in Malum 1.21.1. The pinned 1.1.7.1 retains Malum 1.8 support; Gaze bytecode not inspected. | Test which projectiles respond to Pufferfish `malum:arcane_resonance`, remaining custom weapon/Geas paths, Staff Charge recovery and trial Iron's compatibility. No separate Gaze tree unless a genuinely independent player stat is found. |
 | **Occultism** (`occultism`) | Ordinary spirits extend TamableAnimal; generic pet attributes should apply, but special familiars use custom PathfinderMob ownership. | Test spirits; build reusable owner adapter for familiars if needed. |
 | **Primal Magick** (`primal-magick`) | A single datapack damage tag can bridge primalmagick:is_sorcery to Pufferfish magic attributes. Attunement has public setters; pixies/golems use custom ownership. | Test tag; add reusable companion owner bridge; defer skill→attunement if unnecessary. |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (12)
+## Needs investigation — insufficient source evidence yet (11)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -57,7 +58,6 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Rites, poppets and magical progression have not been examined for player-level stat hooks. | Determine whether there are personal magic skills or just item/ritual effects. |
 | **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Artifact-driven personal powers and possible progression; no stat API audit yet. | Determine whether relevant benefits are player attributes or purely equipment-based. |
 | **Feywild** (`feywild`) | Fey summon/quest system; pet ownership interface unexamined. | Check summon entities, owner tracking, pact mechanics and generic pet buffs. |
-| **HexCast NEOFORGED** (`hexcast-neoforged`) | NeoForge port; personal media and cast mechanics not yet inspected. | Look for media capacity/recovery, efficiency, spell power and entity attributes. |
 | **JAWR: Forbidden Magic** (`forbidden-magic`) | JAWR: Forbidden Magic ten-level lich system has been researched conceptually, not for exact player attribute/API hooks. | Investigate lich attributes, phylactery, necromancy summoning and vampire hybrid mechanics. |
 | **Just Another Witchery Remake** (`witchery-remake`) | JAWR 0.5.39 has native vampirism/lycanthropy and ritual progression; accessible public repository does not expose core Java implementation. | Inspect released JAR, player capability, spell/ritual hooks and transformation progression. |
 | **Pastel** (`pastel`) | Color-resonance/research magic has not been mapped to player attributes. | Inspect player facets, spell potency and crafting traits. |
@@ -87,9 +87,9 @@ None demonstrated.
 
 - **No repeat full audit needed** for Ars Additions, Ars Controle, Ars Elemancy or Ars Elemental. Parent mechanics are source-backed; record only focused in-game regression tests for new glyphs, armor and summoned pets.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
-- **Addon follow-up tests:** Ars 'n Spells unified mana and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
-- **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks, though advanced spell effects, cross-mana linking and dangerous utility/energy features need targeted work; see [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
-- **Broader unexplored systems:** Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
+- **Addon follow-up tests:** Ars 'n Spells separate-pool mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
+- **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks. **Do not unify mana**; evaluate provisional penalty/storage/automation tuning and Psi-generated FE as a candidate alternative to BiggerReactors. See [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
+- **Broader unexplored systems:** Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 - **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
@@ -107,3 +107,4 @@ None demonstrated.
 
 ## B6 resolution update
 The originally planned Pufferfish Skills/Attributes pair is now installed for explicit user-approved **experimental client testing**. Skills **0.19.2 beta**, Attributes **0.8.3 stable**, both NeoForge Minecraft 1.21.1, hash-pinned. The **125-mod combined dedicated server reached Done** in [run 43554705678](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43554705678). Improvable Skills 3 with HammerLib is also installed as an independent upgrade system. **A custom Pufferfish skill tree has not yet been created**. Client UI, dynamic-attribute overlaps and game-play feature registration remain unverified. Do not add any default skill-tree mods without an explicit decision.
+- **HexCast NEOFORGED:** [port-specific source audit](HEXCAST-SKILLS-DEEP-DIVE-2026-11-13.md) confirms extension seam but no native personal stat; classify as Compatible with work, not complete runtime support.

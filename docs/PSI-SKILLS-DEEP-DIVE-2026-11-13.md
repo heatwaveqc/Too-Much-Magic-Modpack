@@ -59,9 +59,9 @@ This gives us a source-backed way to gate dangerous automation/generation and la
 
 ## Balance and modpack-contract risks — high priority
 
-1. **Default penalty overrides:** PsiTweaks `PsitweaksConfig` defaults `disableDamagePsiDeduction=true` and `disableRegenCooldown=true`. Base Psi normally drains Psi on taking damage and can impose cooldown. Actual configured behavior in B6 is not runtime-verified; audit and decide whether to retain or change these before increasing regeneration.
+1. **Default penalty overrides — PROVISIONAL:** PsiTweaks `PsitweaksConfig` defaults `disableDamagePsiDeduction=true` and `disableRegenCooldown=true`. Base Psi normally drains Psi on taking damage and can impose cooldown. Actual configured behavior in B6 is not runtime-verified; do not change these defaults yet. Decide only after a playable baseline and skill scaling test.
 2. **Ideaspace Storage** is a player-owned saved-data storage for items, fluids, chemicals, and **FE**, with remote access and connected logistics. Source defaults include **256 distinct item types**, up to **16,384 stacks per type**, and `Long.MAX_VALUE` FE per player. Source indicates its core exists outside Mekanism-specific classes. This potentially supersedes Occultism storage and conflicts with the generic logistics/storage exclusion; it is not automatically okay just because the UI is magical.
-3. **`psitweaks:trick_supply_fe`** directly injects FE into a target block. Its source gives **4000 FE per 200 base Psi** at CAD efficiency 100 (**20 FE/Psi**, before other costs). That may serve as an alternative magical power source, but can prematurely bypass the exceptional late-tech reactor/Draconic economy. Evaluate tier/availability.
+3. **`psitweaks:trick_supply_fe` — favored candidate.** It directly injects FE into a target block. Source gives **4000 FE per 200 base Psi** at CAD efficiency 100 (**20 FE/Psi**, before other costs). User wants to explore this as a primary power source: theoretical baseline with 25 Psi/t full regeneration is **500 FE/t** (10,000 FE/s), assuming continuous lossless conversion, no cooldown and automation. Actual continuous throughput, FE acceptance, stability, player presence, consumption limits and Draconic demand are **not measured**. If sufficient, *consider* replacing BiggerReactors Rework later; do not remove reactor or impose a gate yet.
 4. **`psitweaks:trick_mass_block_break`** has area mining behavior; it is not the banned FTB Ultimine mod, but can undermine deep-exploration/Occultism ore gates if worldgen or target conditions are not secured.
 5. **`psitweaks:trick_time_accelerate`** accelerates random ticks/block entities; test farming and machine loops, especially any replication/resource-production exploits.
 6. The addon has several aggressive damage tricks, including unusual direct-effect mechanics. Test which respect `psitweaks:spell_damage_factor`, general Pufferfish magic damage, damage immunity and PvP settings.
@@ -69,11 +69,13 @@ This gives us a source-backed way to gate dangerous automation/generation and la
 
 The above identifies **risks**, not a new owner-approved ban, removal, or change to the selected mod roster.
 
-## Unified magic design choice
+## Locked magic design and provisional addon adjustments
 
-The shared Pufferfish skill tree can safely offer **one progression vocabulary**, mapping maximum resources, regeneration, and damage to Psi-native player attributes. A **single shared mana pool** across Psi, Ars and Iron's is a separate technical problem. Psi uses integer player Psi plus a CAD-battery overflow reservoir, its own casting validation, and separate client/server cost paths. Do not replace Psi's meter with Iron's/Ars mana without explicitly designing conversion, battery behavior, casting rollback, and no double-spend. Investigate a reversible conversion layer after the native attribute path is tested.
+The shared Pufferfish skill tree offers **one progression vocabulary** for maximum resources, regeneration and spell/gear improvements, but the user explicitly **rejected unified mana/resource pools**. Psi retains its own player Psi and CAD battery; Ars and Iron's keep their independent resources; Hex Casting retains media. Do **not** build a cross-pool conversion layer or replace Psi's resource with Ars/Iron's mana.
 
-**Recommendation:** classify both parent and addon as source-backed Confirmed, defer live player↔CAD stat craftsmanship and cross-pool interoperability to tests, and resolve the storage/FE/automation policy before publishing the pack.
+The particular PsiTweaks tuning decisions—including damage-related Psi loss, regen cooldown, Ideaspace Storage, mass mining, time acceleration and chosen gates—are all **provisional**. They are risk findings, not authorization for config changes or removals. Psi **FE generation is a positive design candidate**, to be tested as a possible replacement for BiggerReactors Rework if it satisfies power needs and provides enjoyable magic-first infrastructure. BiggerReactors stays pinned until that is proven and the user decides.
+
+**Recommendation:** classify both parent and addon as source-backed Confirmed, preserve independent Psi resources, defer live player↔CAD stat craftsmanship to tests, and compare energy supply before locking progression balance.
 
 ## Minimal staged test plan
 
@@ -84,7 +86,7 @@ The shared Pufferfish skill tree can safely offer **one progression vocabulary**
 5. **Costs/penalties:** test Psi loss on damage, regeneration cooldown, CAD battery overflow, loopcasts, fake player/automatic casts, and addon default config.
 6. **Research and gating:** lock a test Psi piece with `psi:advancement` and another with `enabled:false`; test clipboard and already-programmed bullets. Cross-check PsiTweaks' separate `spell_unlocks` rules.
 7. **Exploit audit:** Ideaspace storage access/capacity, FE supply, mass mining, Time Accelerate, special attacks, ProjectE/Replication gates and resource generation.
-8. **Unification:** only after above, test universal spell damage, mana cost and possible safe cross-pool conversion with Ars/Iron's. Avoid modifying actual player progression until design approval.
+8. **Cross-school skills without pool merging:** test universal spell damage and analogous cost-efficiency *skills* against their native resources; confirm no double-counting while keeping Ars, Iron's, Psi and Hex Casting resource pools independent. Do **not** implement cross-pool conversion.
 
 ## Source references
 
