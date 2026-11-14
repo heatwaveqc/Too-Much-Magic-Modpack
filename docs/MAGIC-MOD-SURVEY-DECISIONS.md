@@ -74,24 +74,33 @@ Do **not** install or advocate for inclusion without the user's changed decision
 
 The specific two Mystical Agriculture entries and the three disliked mods have been added to the machine-readable `excluded` list. The ecosystem-level restriction applies to related additions even when each derivative project has not been assigned an ID.
 
-## F. Tell me more — research queue, neither approved nor rejected
+## F. Tell Me More — selection resolved (2026-11-13 follow-up)
 
-- Feywild
-- Pastel
-- Enchanted: Witchcraft
-- Witchcraft and Curses
-- Pagan's Blessing
-- Scriptor Magicae
-- Runology
-- Summoning Rituals
-- Aspect Alchemy
-- Apothecary — investigate overlap with existing potion mechanics
-- Magitech — Arcane Engineering
-- Relics (RPG Series) — distinguish it from the **different Relics** mod already in the pack roster
-- Jewelry (RPG Series)
-- Runic Curiosities
+### Approved for inclusion — six projects
+These **are approved choices** from the earlier 'Recommended Inclusion' and 'Strongly Investigate' groups, not yet installed or validated in the assembled pack:
 
-Next discussion: compare distinct mechanics, active development and integration overhead before selecting any. None has been implicitly approved just by being on this list.
+- **Summoning Rituals** — KubeJS-backed customizable cross-mod ritual framework.
+- **Scriptor Magicae** — discover and compose spells in a generated magical language.
+- **Pastel** — color-resonance magic, research and exploration; review any logistics against the pack's restrictions.
+- **Feywild** — distinct fey summons, characters and quests; review world generation alongside Tectonic.
+- **Enchanted: Witchcraft** — larger witchcraft system with rites and poppets; compare interactions with JAWR and Hexerei.
+- **Aspect Alchemy** — experimental aspect-based brewing. **Explicitly included because it was in the selected Strongly Investigate group**, but review interactions with the pack's many existing alchemy/potion systems and do not replace or rewrite existing mechanics without separate user approval.
+
+All six are in `manifest/mods.json` as desired but inactive. Exact target NeoForge artifact and dependency closure remain unverified.
+
+### Omit from this pack — eight projects
+The user said to leave all remaining Tell Me More candidates out. These are **current selection exclusions**, not claims they lack merit, and do not affect similarly named distinct mods:
+
+- **Witchcraft and Curses** — small overlapping ritual features and unwanted extra biome/tree content.
+- **Pagan's Blessing** — another partially overlapping ritual system.
+- **Runology** — limited demonstrated content / maturity questions.
+- **Apothecary** — avoid adding another potion/effect layer that might conflict with the many alchemy systems already selected.
+- **Magitech — Arcane Engineering** — an additional magical-tech and resource/worldgen ecosystem.
+- **Relics (RPG Series)** — avoid pulling in the RPG Series' Spell Engine-related dependencies; **not** the separately tracked base `relics` mod.
+- **Jewelry (RPG Series)** — avoid new RPG Series spellcasting/attribute infrastructure.
+- **Runic Curiosities** — underdeveloped/power-balance risk relative to our existing artifacts.
+
+These eight are recorded in the manifest's `excluded` list, with the reason that they were omitted in the user-directed survey selection. The four distinct earlier *maturity test* candidates (Manaweave and Runes, Thavma, Primeva, Mana and Artifice) remain unresolved research, not excluded.
 
 ## G. Deferred / revisit later
 
@@ -110,7 +119,7 @@ Next discussion: compare distinct mechanics, active development and integration 
 ## Follow-up order
 
 1. Review roster discrepancies and any cases where a previously stated exclusion might conceal distinct mechanics, **without overriding user decisions**.
-2. Investigate the four maturity-test candidates and the fourteen *tell me more* candidates; verify exact 1.21.1 NeoForge artifacts and source repositories.
+2. Investigate the four maturity-test candidates and verify exact 1.21.1 NeoForge artifacts and source repositories for the six approved *Tell Me More* selections. The eight omitted mods are no longer in the research-to-include queue.
 3. In a later build batch, resolve full dependency closures and license terms, pin approved viable mods with packwiz, perform combined server and client testing and record blockers.
 
 ## H. Newly approved supernatural factions (2026-11-13 follow-up)
