@@ -1,0 +1,116 @@
+name: B6 final food skills pack resolve and boot
+on:
+  push:
+    branches: [build/b6-food-pufferfish-skills-client-handoff]
+    paths: ['.github/workflows/b6-resolve-boot.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  b6-full-server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Build packwiz and validate B6 resolver
+        run: |
+          python3 -m py_compile scripts/resolve_b6.py scripts/validate.py scripts/download_mods.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Pin all approved Pufferfish food and Improvable Skills mods
+        id: resolve
+        continue-on-error: true
+        run: |
+          python3 scripts/resolve_b6.py
+          packwiz list
+      - name: Boot complete expanded dedicated NeoForge server
+        id: smoke
+        if: steps.resolve.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '540'
+          WORK_DIR: ${{ runner.temp }}/tmm-b6-final
+        run: bash scripts/smoke_server.sh
+      - name: Record result and commit verified mod metadata
+        if: steps.resolve.outcome == 'success'
+        env:
+          TEST_OUTCOME: ${{ steps.smoke.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os,json
+          from pathlib import Path
+          success=os.environ["TEST_OUTCOME"]=="success"
+          evidence=json.loads(Path("docs/B6-RESOLUTION.json").read_text())
+          lines=[
+            "# B6 — Pufferfish, food suite and Improvable Skills final boot",
+            "",
+            f"**Full dedicated-server result: {'PASS' if success else 'FAIL'}**",
+            "",
+            "- CI: "+os.environ["RUN_URL"],
+            "- Minecraft 1.21.1 / NeoForge 21.1.265 / Java 21.",
+            f"- {evidence['installed_mods']} exact packwiz mod pins, {evidence['server_side_pins']} server-side, {evidence['client_only_pins']} client-only.",
+            f"- {len(evidence['newly_enabled'])} newly pinned mods (including any transitive dependencies).",
+            "- Aspect Alchemy removed following latest explicit exclusion.",
+            "- Pufferfish's Skills (beta), Pufferfish's Attributes (stable), Improvable Skills 3 and HammerLib selected.",
+            "- All four Pam's HarvestCraft 2 modules, Farmer's Delight, Aquaculture 2, Harvest with Ease and Cobweb selected.",
+            "- Combined startup tests do not test the Pufferfish custom skill tree; it has not been authored.",
+            "- Client GUI, world generation, food recipe tags/harvesting, graphical performance, and ProjectE Chaos Guardian progression gates are NOT TESTED.",
+            "",
+            "## New exact mod pins",
+          ]
+          for pin in evidence["exact_pins"]:
+            if pin["id"] in evidence["newly_enabled"]:
+              lines.append("- "+pin["id"]+" — `"+pin["file"]+"`")
+          lines.extend(["","## Installer handoff",
+              "Do not export a Modrinth or CurseForge pack ZIP that silently bundles copyrighted cross-provider mod jars.",
+              "Use the packwiz manifest and its standard installer, or a Prism instance that downloads from upstream providers.",
+              "Client instructions will be finalized after successful boot and launcher-package verification.",""])
+          Path("docs/B6-TESTING.md").write_text("\n".join(lines))
+          mpath=Path("manifest/mods.json")
+          m=json.loads(mpath.read_text())
+          next(b for b in m["batches"] if b["id"]=="B8")["status"]=(
+            "server_smoked_client_pending" if success else "server_boot_failed_needs_diagnosis")
+          mpath.write_text(json.dumps(m,indent=2)+"\n")
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml mods manifest/mods.json docs/B6-RESOLUTION.json docs/B6-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "test(b6): pin final food/skills mods and record full NeoForge dedicated-server boot"
+            git push origin HEAD:build/b6-food-pufferfish-skills-client-handoff
+          fi
+      - name: Save boot logs and package metadata diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b6-final-boot-evidence
+          path: |
+            docs/B6-TESTING.md
+            docs/B6-RESOLUTION.json
+            ${{ runner.temp }}/tmm-b6-final/server.log
+            ${{ runner.temp }}/tmm-b6-final/logs/latest.log
+            ${{ runner.temp }}/tmm-b6-final/crash-reports
+          if-no-files-found: warn
+      - name: Fail build if pinning or full startup failed
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: |
+          echo "Pin resolution: ${{ steps.resolve.outcome }}"
+          echo "Full dedicated-server test: ${{ steps.smoke.outcome }}"
+          exit 1
