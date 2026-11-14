@@ -13,6 +13,20 @@
       "note": "Latest standalone bridge source; all experimental behaviors still default off"
     },
     {
+      "name": "quest-standards-and-starter-choice",
+      "branch": "test/quest-standards-starter-choice-2026-11-14",
+      "paths": [
+        "config/ftbquests/quests/",
+        "manifest/quest_content.json",
+        "manifest/quest_content_resolved.json",
+        "manifest/quest_layouts.json",
+        "scripts/rebuild_quest_ui.py",
+        "scripts/validate_quests.py"
+      ],
+      "mode": "runtime-experimental",
+      "note": "B14 finalized quest source: six-option personal starter choice, 180 quests and no XP-bottle grants, first-line item detectability, corrected localization. Includes source and validator only; old baseline carries 147 mods, FTBE source is independently imported."
+    },
+    {
       "name": "silver-ore-materials",
       "branch": "feature/material-processing-recipe-cleanup",
       "paths": [
@@ -115,7 +129,7 @@
     "design/b6-pufferfish-unification-reconciliation": "Historical Pufferfish design; newer Tyz planning supersedes it",
     "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement",
     "feature/silver-equipment-unification": "Ancestor of current material-processing-recipe-cleanup implementation branch, which carries the same materials/recipe files",
-    "design/quest-standards-starter-choice-2026-11-14": "Quest reward and starter-path standards proposal only; not yet a new quest runtime implementation"
+    "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation."
   },
   "pending_runtime_work": [
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
@@ -124,6 +138,8 @@
     "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
     "New five-form Tyz trees and external locks are currently design-only",
     "Monk initiation and executable perks are not implemented by existing scaffold",
-    "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments"
+    "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments",
+    "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
+    "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit."
   ]
 }
