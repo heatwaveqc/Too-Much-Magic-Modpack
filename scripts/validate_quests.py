@@ -120,7 +120,7 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 45, "Expected five groups and 45 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 137, "Expected 137 authored quests after onboarding expansion")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 138, "Expected 138 authored quests after onboarding expansion")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -139,10 +139,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 179,
-           f"Expected 179 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 180,
+           f"Expected 180 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 179 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 180 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {ftb_quoted(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -156,6 +156,7 @@ def main() -> None:
     advancement_tasks: dict[str, str] = {}
     reward_items: list[tuple[str, str, int]] = []
     coin_quests: set[str] = set()
+    choice_quests: set[str] = set()
     intentional_sale_ids = {"minecraft:copper_ingot", "minecraft:copper_block", "minecraft:emerald", "minecraft:emerald_block", "minecraft:diamond", "minecraft:diamond_block"}
     for c in chapters:
         path = QUESTS / "chapters" / c["filename"]
@@ -181,7 +182,7 @@ def main() -> None:
             global_ids.add(ident)
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
-        expected = {"Getting Started": 18, "Tips & Tricks": 20, "Food & Fishing": 22,
+        expected = {"Getting Started": 19, "Tips & Tricks": 20, "Food & Fishing": 22,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
                     "Skills & Advancement": 8, "Exceptional Power: Reactors": 33}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
@@ -215,23 +216,40 @@ def main() -> None:
             rewards = block[reward_start:task_start]
             tasks = block[task_start:]
             xp = re.search(r'type: "xp", xp: (\d+)', rewards)
-            itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
-            ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
-            # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
-            # FTB Quests 2101.1.38 expects boolean; use its native command reward
-            # to invoke Quest Shop's /hqs coins add until the addon is updated.
-            coins = re.search(r'type: "command", command: "hqs coins add \{p\} (\d+)", permission_level: 2, team_reward: true', rewards)
-            ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
-            ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
-            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or command-backed coin reward on {qid}")
-            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "command"') == 1, f"Unexpected rewards on {qid}")
-            if itm is not None:
-                reward_items.append((qid, itm.group(1), int(itm.group(2))))
+            ensure('minecraft:experience_bottle' not in rewards, f"Forbidden bottle item reward on {qid}")
+            if qid == "544D501001300000":
+                ensure('type: "choice"' in rewards and rewards.count('type: "choice"') == 1,
+                       "Missing native starter choice reward")
+                ensure('table_data:' in rewards and 'loot_size: 1' in rewards,
+                       "No starter inline reward table")
+                ensure(rewards.count('type: "item"') == 6, "Expected six starter options")
+                ensure(rewards.count('team_reward: false') >= 2 and 'auto_claim: "disabled"' in rewards,
+                       "Starter choice must be personal and manual")
+                for item in (
+                    "ars_nouveau:novice_spell_book", "irons_spellbooks:copper_spell_book",
+                    "minecraft:fishing_rod", "botania:lexicon",
+                    "occultism:dictionary_of_spirits", "minecraft:compass"
+                ):
+                    ensure(rewards.count(f'id: "{item}"') == 1, f"Starter option missing {item}")
+                choice_quests.add(qid)
             else:
-                coin_quests.add(qid)
-                ensure(rewards.count("team_reward: true") == 2, f"Sale XP + coin claims must be team-shared on {qid}")
-                ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
-                ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
+                itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
+                ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
+                # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
+                # FTB Quests 2101.1.38 expects boolean; use its native command reward
+                # to invoke Quest Shop's /hqs coins add until the addon is updated.
+                coins = re.search(r'type: "command", command: "hqs coins add \{p\} (\d+)", permission_level: 2, team_reward: true', rewards)
+                ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
+                ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
+                ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or command-backed coin reward on {qid}")
+                ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "command"') == 1, f"Unexpected rewards on {qid}")
+                if itm is not None:
+                    reward_items.append((qid, itm.group(1), int(itm.group(2))))
+                else:
+                    coin_quests.add(qid)
+                    ensure(rewards.count("team_reward: true") == 2, f"Sale XP + coin claims must be team-shared on {qid}")
+                    ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
+                    ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             for item_id, required in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}(?:, count: (\d+)L)?', tasks):
                 count = int(required) if required else 1
                 existing = item_tasks.get(item_id, [])
@@ -250,7 +268,7 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 179, f"Expected 179 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 180, f"Expected 179 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -258,7 +276,10 @@ def main() -> None:
         for key in ("task_id", "xp_reward_id", "item_reward_id"):
             ensure(f'id: "{q[key]}"' in block, f"Lost stable {key} in {q['title']}")
         ensure(f'xp: {q["reward"]["xp"]}' in block, f"Wrong XP in {q['title']}")
-        if "item" in q["reward"]:
+        if "choice" in q["reward"]:
+            ensure(qid in choice_quests and 'type: "choice"' in block,
+                   f"Wrong native starter choice on {q['title']}")
+        elif "item" in q["reward"]:
             ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong item reward in {q['title']}")
         else:
             ensure(qid in coin_quests and f'command: "hqs coins add {{p}} {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
@@ -282,7 +303,7 @@ def main() -> None:
                  if qid != task_id and payout_count >= task_count]
     ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     ensure(advancement_tasks == {"tmm:first_log": "544D4D1100000001"}, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 80, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 84, f"Unexpected unique item-task count: {len(item_tasks)}")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
     planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
                "Skills & Advancement": 7, "Exceptional Power: Reactors": 32}
@@ -300,6 +321,14 @@ def main() -> None:
     ensure(not any(x["reward"].get("item") == "draconicevolution:reactor_core" for x in progression["quests"]),
            "Never grant the Draconic Reactor Core as a quest reward")
     ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
+    ensure(choice_quests == {"544D501001300000"}, "Expected one personal starter choice")
+    checkmarks={q["title"] for q in authored["quests"]
+                if q["chapter"]=="Getting Started" and q["criterion"]["type"]=="checkmark"}
+    ensure(checkmarks=={"Welcome to Too Much Magic", "Choose Your First Path",
+                        "Try a First Spell or Ritual"},
+           f"Invalid introductory checkmark exceptions: {checkmarks}")
+    ensure(not any(q["reward"].get("item")=="minecraft:experience_bottle"
+                   for q in authored["quests"]), "Forbidden authored XP bottle grant")
     for commodity in intentional_sale_ids:
         ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
     shop = json.loads((ROOT / "manifest" / "quest_shop_catalog.json").read_text(encoding="utf-8"))

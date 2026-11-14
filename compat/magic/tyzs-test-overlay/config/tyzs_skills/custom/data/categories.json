@@ -1,0 +1,27 @@
+{
+  "abilities": {
+    "displayName": "gui.tyzs_skills.Tab.abilities",
+    "icon": "minecraft:textures/item/iron_boots.png",
+    "order": 1
+  },
+  "combat": {
+    "displayName": "gui.tyzs_skills.Tab.fight",
+    "icon": "minecraft:textures/item/netherite_sword.png",
+    "order": 2
+  },
+  "misc": {
+    "displayName": "gui.tyzs_skills.Tab.misc",
+    "icon": "minecraft:textures/item/water_bucket.png",
+    "order": 3
+  },
+  "nature": {
+    "displayName": "gui.tyzs_skills.Tab.nature",
+    "icon": "minecraft:textures/item/wheat.png",
+    "order": 4
+  },
+  "tmm_magic_core": {
+    "displayName": "Core Magic",
+    "icon": "minecraft:textures/item/enchanted_book.png",
+    "order": 5
+  }
+}
