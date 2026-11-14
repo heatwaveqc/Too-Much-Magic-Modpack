@@ -10,14 +10,14 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 
 | State | Count |
 |---|---:|
-| Confirmed (source-backed and parent-inherited) | **13** |
+| Confirmed (source-backed and parent-inherited) | **15** |
 | Compatible with work | **7** |
-| Needs investigation | **14** |
+| Needs investigation | **12** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
 | **Total** | **42** |
 
-## Confirmed — source-backed or parent-inherited Pufferfish compatibility (13)
+## Confirmed — source-backed or parent-inherited Pufferfish compatibility (15)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -34,6 +34,8 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Mahou Tsukai** (`mahou-tsukai`) | Player Mahou maximum can be changed with documented mod commands (e.g. addmaxmahou); prior source/command audit found a controllable personal stat. | Wire skill-level deltas to commands; test refunds and persistence. Not zero-code. |
 | **Malum** (`malum`) | The mod exposes player-adjustable Malum attributes in its public 1.21.1 code. | Connect attributes and test resulting spell/spirits effects. |
 | **Neo Vitae** (`neovitae`) | Prior audit found accessible player magic stat/API integration points. | Map exact registered API and attributes into the final tree; runtime test. |
+| **Psi** (`psi`) | Psi 110 defines synchronized player attributes `psi:total_psi` (default 5000) and `psi:regen` (default 25/t), a complete NeoForge `PsiEvents` KubeJS API including `preSpellCast`, `regenPsi`, and `cadStat`, and datapack-defined CAD stats and piece unlocks. | Bind Pufferfish capacity/regeneration directly; test event-based cost reductions and separate item-based CAD crafting perks. CAD stats are item properties, and compile-time limits are checked before pre-cast cost modifiers. Review PsiTweaks penalty defaults and resource interoperability. |
+| **Psi: Tweaks and Additions** (`psi-tweaks`) | Pinned 0.10.10-hotfix source registers the player attribute `psitweaks:spell_damage_factor` and applies it in multiple damaging tricks; addon equipment also buffs Psi max/regeneration and spell damage, confirming parent integration. | Apply Pufferfish damage rewards to that attribute for supported addon spells, verify coverage/double stacking, and audit Ideaspace Storage, FE Supply, Mass Block Break, Time Accelerate and configurable Psi penalty overrides before enabling skill boosts. |
 
 ## Compatible with work — concrete integration path identified (7)
 
@@ -47,7 +49,7 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Primal Magick** (`primal-magick`) | A single datapack damage tag can bridge primalmagick:is_sorcery to Pufferfish magic attributes. Attunement has public setters; pixies/golems use custom ownership. | Test tag; add reusable companion owner bridge; defer skill→attunement if unnecessary. |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (14)
+## Needs investigation — insufficient source evidence yet (12)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -59,8 +61,6 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **JAWR: Forbidden Magic** (`forbidden-magic`) | JAWR: Forbidden Magic ten-level lich system has been researched conceptually, not for exact player attribute/API hooks. | Investigate lich attributes, phylactery, necromancy summoning and vampire hybrid mechanics. |
 | **Just Another Witchery Remake** (`witchery-remake`) | JAWR 0.5.39 has native vampirism/lycanthropy and ritual progression; accessible public repository does not expose core Java implementation. | Inspect released JAR, player capability, spell/ritual hooks and transformation progression. |
 | **Pastel** (`pastel`) | Color-resonance/research magic has not been mapped to player attributes. | Inspect player facets, spell potency and crafting traits. |
-| **Psi** (`psi`) | Programmable spell-casting resource and spell effects have not been audited for native player attributes or item-stat hooks. | Inspect CAD spell cost, infusion, spell power, cooldown and relevant commands. |
-| **Psi: Tweaks and Additions** (`psi-tweaks`) | Psi addon likely modifies casting/recipes, but direct stat hooks unverified. | Inspect whether it adds independent programmable spell resource stats. |
 | **Scriptor Magicae** (`scriptor-magicae`) | Language-based spellcrafting; no player attribute/API review yet. | Inspect player proficiency, mana, spell attributes and crafted spell persistence. |
 | **Totemic** (`totemic`) | Ceremony/totem magic source-level player mechanics not audited. | Inspect ceremonial skill, musician performance bonuses and buff scaling. |
 | **Vampirism — Become a Vampire!** (`vampirism`) | Its built-in vampire/hunter levels and skill tree have not been audited for caps and attributes. | Check native player attributes, caps, custom resource, double-dipping and cross-mod transformation. |
@@ -88,10 +88,11 @@ None demonstrated.
 - **No repeat full audit needed** for Ars Additions, Ars Controle, Ars Elemancy or Ars Elemental. Parent mechanics are source-backed; record only focused in-game regression tests for new glyphs, armor and summoned pets.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
 - **Addon follow-up tests:** Ars 'n Spells unified mana and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
-- **Deferred with parent:** Psi: Tweaks and Additions remains unexamined.
-- **Broader unexplored systems:** Psi, Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
+- **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks, though advanced spell effects, cross-mana linking and dangerous utility/energy features need targeted work; see [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
+- **Broader unexplored systems:** Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
+- **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
 
 ## Evidence locations
 

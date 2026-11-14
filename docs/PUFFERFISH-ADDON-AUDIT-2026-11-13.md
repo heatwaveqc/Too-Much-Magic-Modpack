@@ -42,7 +42,10 @@ The published Minecraft 1.21.1 release uses file name goety_cataclysm-1.21.1-1.8
 
 ## Scope and status
 
-All ten addons now have a more specific status than blanket Needs Investigation (four Confirmed, four Compatible with work, two Nothing separate to enhance). Gaze's promotion is based on a documented *partial* inherited attribute, not complete source/runtime verification. Psi: Tweaks and Additions is unchanged and will be audited with Psi. No mod has been called Proven Incompatible.
+All ten addons now have a more specific status than blanket Needs Investigation (four Confirmed, four Compatible with work, two Nothing separate to enhance). Gaze's promotion is based on a documented *partial* inherited attribute, not complete source/runtime verification. Psi: Tweaks and Additions has since been audited alongside Psi 110 and is classified Confirmed for direct player-attribute compatibility; see [Psi deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md). No mod has been called Proven Incompatible.
 
 ## Gaze source-limited follow-up (2026-11-13)
 The Gaze 1.1.7 author changelog explicitly says some projectiles benefit from Arcane Resonance. Malum's 1.21.1 attribute registry declares `malum:arcane_resonance` and `malum:charge_recovery_rate`; Gaze's Meditation Ring mentions the latter behavior, but its actual hook remains unverified. The Gaze notes additionally describe trial Iron's Spells compatibility. Full Gaze 1.1.7.1 Java implementation is not inspected. [Focused evidence and test matrix](GAZE-SKILLS-AUDIT-2026-11-13.md).
+
+## Psi: Tweaks and Additions follow-up completed
+The original ten-addon quick-pass deliberately deferred Psi: Tweaks and Additions. The later parent Psi 110 / addon 0.10.10-hotfix audit found native `psitweaks:spell_damage_factor`, inherited `psi:total_psi` and `psi:regen`, and significant Psi's `PsiEvents` KubeJS support. This meets the matrix definition of **Confirmed source-backed integration path**, but does not demonstrate complete mechanic coverage or gameplay compatibility. [Detailed audit and balance blockers](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
