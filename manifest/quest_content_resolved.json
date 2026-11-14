@@ -62,6 +62,31 @@
     },
     {
       "chapter": "Getting Started",
+      "title": "Choose Your First Path",
+      "quest_id": "544D501001300000",
+      "task_id": "544D801001300000",
+      "xp_reward_id": "544D601001300001",
+      "item_reward_id": "544D701001300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "choice": [
+          "ars_nouveau:novice_spell_book",
+          "irons_spellbooks:copper_spell_book",
+          "minecraft:fishing_rod",
+          "botania:lexicon",
+          "occultism:dictionary_of_spirits",
+          "minecraft:compass"
+        ],
+        "claim_scope": "player"
+      },
+      "depends": "Make a Crafting Table",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
       "title": "Make a Wooden Pickaxe",
       "quest_id": "544D501000400000",
       "task_id": "544D801000400000",
@@ -1282,7 +1307,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:glowstone_dust",
         "count": 2
       },
       "depends": null,
@@ -1414,7 +1439,7 @@
       },
       "reward": {
         "xp": 35,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:blaze_powder",
         "count": 3
       },
       "depends": null,
@@ -1478,7 +1503,7 @@
       },
       "reward": {
         "xp": 25,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:iron_ingot",
         "count": 3
       },
       "depends": null,
@@ -1748,7 +1773,7 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:compass",
         "count": 2
       },
       "depends": null,
@@ -1768,7 +1793,7 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:golden_carrot",
         "count": 2
       },
       "depends": null,
@@ -1868,7 +1893,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:clock",
         "count": 2
       },
       "depends": null,
@@ -2430,7 +2455,7 @@
       },
       "reward": {
         "xp": 50,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:comparator",
         "count": 3
       },
       "depends": "Build Input and Output Pylons",
@@ -2610,17 +2635,19 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Iron Is Only the Beginning",
+      "title": "Prepare a Field Kit",
       "quest_id": "544D501000D00000",
       "task_id": "544D801000D00000",
       "xp_reward_id": "544D601000D00001",
       "item_reward_id": "544D701000D00002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:barrel",
+        "count": 1
       },
       "reward": {
         "xp": 20,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:bread",
         "count": 2
       },
       "depends": "Iron Pickaxe",
@@ -2628,20 +2655,22 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Find an Everyday Magical Shortcut",
+      "title": "Build a Research Lectern",
       "quest_id": "544D501000E00000",
       "task_id": "544D801000E00000",
       "xp_reward_id": "544D601000E00001",
       "item_reward_id": "544D701000E00002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:lectern",
+        "count": 1
       },
       "reward": {
         "xp": 20,
         "item": "minecraft:glowstone_dust",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Prepare a Field Kit",
       "optional": true
     },
     {
@@ -2659,7 +2688,7 @@
         "item": "minecraft:golden_carrot",
         "count": 2
       },
-      "depends": "Find an Everyday Magical Shortcut",
+      "depends": "Build a Research Lectern",
       "optional": true
     },
     {
@@ -2684,31 +2713,35 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Take Your Magic Into the World",
+      "title": "Scout with a Spyglass",
       "quest_id": "544D501001100000",
       "task_id": "544D801001100000",
       "xp_reward_id": "544D601001100001",
       "item_reward_id": "544D701001100002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:spyglass",
+        "count": 1
       },
       "reward": {
         "xp": 25,
         "item": "minecraft:firework_rocket",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Prepare a Field Kit",
       "optional": true
     },
     {
       "chapter": "Getting Started",
-      "title": "The Rest of the Pack Is Yours",
+      "title": "Chart Your Next Journey",
       "quest_id": "544D501001200000",
       "task_id": "544D801001200000",
       "xp_reward_id": "544D601001200001",
       "item_reward_id": "544D701001200002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:filled_map",
+        "count": 1
       },
       "reward": {
         "xp": 30,

@@ -1952,6 +1952,61 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "almostunified",
+      "name": "Almost Unified",
+      "category": "compatibility",
+      "desired": true,
+      "version": "AlmostUnified-NeoForge-1.21.1-1.4.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/almostunified/version/e8iYxxI3",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "almostunified",
+      "note": "Owner-requested conventional-material unification and Mahou ore-doubling candidate. Not release-integrated until gameplay, ore worldgen and special-gate tests."
+    },
+    {
+      "id": "dragon-survival",
+      "name": "Dragon Survival",
+      "category": "transformation",
+      "desired": true,
+      "version": "DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/9539454",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved 2026-11-14 as prerequisite for unified dragon/dracolich transformation integration. CurseForge project 420799 file 9539454 is a NeoForge MC 1.21.1 release. GeckoLib is already in the candidate pack; verify precise dependency compatibility and potential conflicts before pinning/boot. Manifest approval only, NOT installed; no dragon-world or client test.",
+      "candidate_file_id": 9539454,
+      "packwiz_slug": "dragon-survival"
+    },
+    {
+      "id": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "category": "skills",
+      "desired": true,
+      "version": "Tyz's skills 6.4.2 - 1.21.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/tyzs-skills/files/8118598",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "candidate_file_id": 8118598,
+      "curseforge_project_id": 990190,
+      "packwiz_slug": "tyzs-skills",
+      "note": "User selected 2026-11-14 as leveled Monk / universal skill backend. 1.21.1 NeoForge, 6.4.2. 99 levels per skill, data-driven per-rank SP prices and attribute modifiers. Multi-tier x10 progression via custom JSON + faction-gated purchase/refund events. NOT installed in packwiz or runtime verified; add/install and test before changing enabled_in_pack. Keep Pufferfish for one-off shared skill nodes and Improvable Skills for independent gameplay; never use vanilla XP as Monk tier purchase currency."
+    },
+    {
+      "id": "ftb-essentials",
+      "name": "FTB Essentials (NeoForge)",
+      "category": "qol",
+      "desired": true,
+      "version": "2101.1.10",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-essentials/files/8442866",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "B13: official FTB Essentials 2101.1.10 NeoForge 1.21.1 CurseForge 410811/8442866. Explicit home and rtp enablement in config and defaultconfigs. One home per player, 10s home cooldown, 600s RTP cooldown, 500-25000 blocks from spawn. Gameplay permissions and teleport behavior need fresh world QA.",
+      "packwiz_slug": "ftb-essentials"
     }
   ],
   "excluded": [

@@ -1,0 +1,507 @@
+{
+  "schema_version": 1,
+  "kind": "reference_registry_snapshot",
+  "source": "https://github.com/Shadows-of-Fire/Apotheosis/tree/1.21/src/generated/resources/data/apotheosis/affixes",
+  "upstream_version": "8.9.0",
+  "source_branch": "1.21",
+  "source_commit": "84e27e7031c7e2ab2f2e8328daf491c88203fcbc",
+  "definition_count": 99,
+  "status": "all_awaiting_monk_mechanic_adapters",
+  "definitions": [
+    {
+      "id": "apotheosis:armor/attribute/adamantine",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/aquatic",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/blessed",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/elastic",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/fireproof",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/fortunate",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/gravitational",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/ironforged",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/oxygenated",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/spiritual",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/stalwart",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/steel_touched",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/timekeeping",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/unbound",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/windswept",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/attribute/winged",
+      "group": "armor/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/blast_forged",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/blockading",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/deflective",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/feathery",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/grounded",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/dmg_reduction/runed",
+      "group": "armor/dmg_reduction",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/mob_effect/blinding",
+      "group": "armor/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/mob_effect/bolstering",
+      "group": "armor/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/mob_effect/bursting",
+      "group": "armor/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/mob_effect/nimble",
+      "group": "armor/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:armor/mob_effect/revitalizing",
+      "group": "armor/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:boots/ability/steadfast",
+      "group": "boots/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:boots/ability/surefooted",
+      "group": "boots/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:boots/ability/unhurried",
+      "group": "boots/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/ability/enlightened",
+      "group": "breaker/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/ability/sandforming",
+      "group": "breaker/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/ability/stoneforming",
+      "group": "breaker/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/ability/supermassive",
+      "group": "breaker/ability",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/attribute/destructive",
+      "group": "breaker/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/attribute/experienced",
+      "group": "breaker/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/attribute/lengthy",
+      "group": "breaker/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/attribute/submerged",
+      "group": "breaker/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/effect/omnetic",
+      "group": "breaker/effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/effect/radial",
+      "group": "breaker/effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/enchantment/prosperous",
+      "group": "breaker/enchantment",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/mob_effect/spelunkers",
+      "group": "breaker/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:breaker/mob_effect/swift",
+      "group": "breaker/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:generic/attribute/lucky",
+      "group": "generic/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:generic/telepathic",
+      "group": "generic",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/berserking",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/forceful",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/giant_slaying",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/glacial",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/graceful",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/infernal",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/intricate",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/lacerating",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/lengthy",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/murderous",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/piercing",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/vampiric",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/attribute/violent",
+      "group": "melee/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/cleaving",
+      "group": "melee",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/executing",
+      "group": "melee",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/festive",
+      "group": "melee",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/bloodletting",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/caustic",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/elusive",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/omniscient",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/sophisticated",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/mob_effect/weakening",
+      "group": "melee/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:melee/thunderstruck",
+      "group": "melee",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/attribute/agile",
+      "group": "ranged/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/attribute/elven",
+      "group": "ranged/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/attribute/streamlined",
+      "group": "ranged/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/attribute/windswept",
+      "group": "ranged/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/enchantment/prosperous",
+      "group": "ranged/enchantment",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/magical",
+      "group": "ranged",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/acidic",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/blighted",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/deathbound",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/ensnaring",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/fleeting",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/grievous",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/ivy_laced",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/mob_effect/shulkers",
+      "group": "ranged/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:ranged/spectral",
+      "group": "ranged",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shears/effect/gardening",
+      "group": "shears/effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shears/effect/leafforming",
+      "group": "shears/effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/attribute/ironforged",
+      "group": "shield/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/attribute/stalwart",
+      "group": "shield/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/attribute/steel_touched",
+      "group": "shield/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/catalyzing",
+      "group": "shield",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/mob_effect/devilish",
+      "group": "shield/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/mob_effect/galvanizing",
+      "group": "shield/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/mob_effect/reinforcing",
+      "group": "shield/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/mob_effect/venomous",
+      "group": "shield/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/mob_effect/withering",
+      "group": "shield/mob_effect",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/psychic",
+      "group": "shield",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:shield/retreating",
+      "group": "shield",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:weapon/attribute/nullifying",
+      "group": "weapon/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:weapon/attribute/runebreaking",
+      "group": "weapon/attribute",
+      "status": "requires_monk_adapter"
+    },
+    {
+      "id": "apotheosis:weapon/attribute/shredding",
+      "group": "weapon/attribute",
+      "status": "requires_monk_adapter"
+    }
+  ]
+}
