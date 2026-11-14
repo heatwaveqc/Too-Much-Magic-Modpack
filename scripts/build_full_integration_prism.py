@@ -92,8 +92,15 @@ Suggested QA:
 - /tmmtransform vampire read-only metrics before/after each infection path.
   The experiment flags are OFF by default; enable ONLY in disposable worlds.
 - /tmmmonk attributes is a read-only diagnostic, NOT a complete Monk skill tree.
-- Tyz/MXP conversion and Pufferfish removal are PENDING, not represented
-  as gameplay features in this download. Do not credit them as implemented.
+- REQUIRED first-wave Tyz Skills 6.4.2 replaces Pufferfish's Skills. Open
+  all four default Tyz tabs and Core Magic; run /skills reload and verify
+  Reservoir, Wellspring, Thrift and Potency each show 99 purchasable ranks.
+- Ordinary mining, crafting, sleep, eating and kills must grant ZERO Tyz XP.
+  In an operator-only disposable world test /skills xp PLAYER add 1000 to
+  buy one rank, refund it, and verify actual attributes before/after relog.
+- Real MXP-to-Tyz XP dispatch, Monk/form gates, advanced tiers and all-form
+  skill trees remain PENDING. Do NOT mark normal survival XP or cross-mod
+  effects passed until tested; no duplicate Monk universal skill ranks.
 - Save logs/latest.log, Prism console, screenshots and feature results.
 
 Stable/candidate promotion is a SEPARATE manual operation. No automatic
