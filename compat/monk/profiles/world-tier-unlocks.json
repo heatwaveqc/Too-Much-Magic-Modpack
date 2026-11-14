@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "kind": "proposed_progression_unlocks_only_not_enforced",
+  "flight_unlocks": [
+    {
+      "id": "tmm_monk:momentum_gliding",
+      "phase": "post_ender_dragon_pre_chaos_guardian",
+      "gate": "minecraft:end/kill_dragon or equivalent validated kill/party credit",
+      "requires_monk": true,
+      "mechanics": "Innate Elytra state plus small continuous server-authoritative forward thrust while fall-flying, preserving vanilla aerodynamic control. No hovering/vertical creative free flight; intended to overcome passive drag and reward skillful pitch."
+    },
+    {
+      "id": "tmm_monk:creative_flight",
+      "phase": "post_chaos_guardian",
+      "gate": "validated Draconic Evolution Chaos Guardian world-tier defeat; character credit rule pending",
+      "requires_monk": true,
+      "mechanics": "True hovering creative-style flight; independent of external Draconic Curio module and validated against other flight providers."
+    }
+  ],
+  "world_tier_milestones": [
+    {
+      "id": "tmm:monk_initiation",
+      "kind": "character",
+      "condition": "sunset meditation and clean human physiology",
+      "example_unlock": "basic unarmed tool and magic progression",
+      "hard_gate": true
+    },
+    {
+      "id": "minecraft:ender_dragon",
+      "kind": "world_boss",
+      "condition": "real Ender Dragon defeat (not possessing an egg, recipe item or fake advancement)",
+      "example_unlock": "momentum gliding, upper mobility mastery",
+      "hard_gate": true
+    },
+    {
+      "id": "cataclysm:high_tier_bosses",
+      "kind": "boss_set",
+      "condition": "Harbinger and Ignis tier materials or direct boss proof; align Eldritch Ancient Miner",
+      "example_unlock": "high-tier mining and resilience purchases",
+      "hard_gate": true,
+      "order_relative_to_dragon": "not strictly mandated"
+    },
+    {
+      "id": "draconicevolution:chaos_guardian",
+      "kind": "world_boss",
+      "condition": "validated Chaos Guardian defeat, no bypass via recipes or ProjectE",
+      "example_unlock": "true creative flight and capstone martial/magic options",
+      "hard_gate": true
+    },
+    {
+      "id": "tmm:post_chaos_projecte",
+      "kind": "pack_gate",
+      "condition": "Guardian defeated; normal pack ProjectE/Project Expansion system unlock still applies",
+      "example_unlock": "subsequent monk gear-parity investments",
+      "hard_gate": true
+    }
+  ],
+  "critical_paths": [
+    "Unarmed empty-hand harvesting must emulate the correct tool mining tier and drops without removing boss/ore gates",
+    "At least one before-Guardian non-weapon projectile or damaging spell path must work on Guardian crystals and shield",
+    "Dragon encounter must be survivable before innate glide unlock (Curio, spell, conventional building, or existing pre-Dragon mobility); never circularly require gliding to unlock gliding",
+    "End portal, Nether material acquisition, Deeper/Darker and boss arena travel cannot require wearing conventional armor or swinging a regular weapon",
+    "Allow Curios including Draconic chestpiece body Curio; never treat that as disallowed conventional armor if worn in Curio slot",
+    "Boss kills using qualified spells, summons, projectiles or unarmed hits must count; attribution and party-credit policy to decide",
+    "World tier evidence is checked server-side at time of spending and never deduced solely from an FTB quest claim",
+    "ProjectE/Expansion must stay inaccessible until Chaos Guardian regardless of Monk rank or items"
+  ],
+  "attribution_policy": "pending exact owner decision on personal versus team participation; design must avoid repeatability exploits and unearned global world unlock",
+  "draconic_source": "https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/api/modules/entities/FlightEntity.java"
+}

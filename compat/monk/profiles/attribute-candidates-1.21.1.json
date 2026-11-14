@@ -1,0 +1,1177 @@
+{
+  "schema_version": 1,
+  "kind": "source_candidate_attribute_inventory",
+  "target": "minecraft_1.21.1_neoforge",
+  "generated_on": "2026-11-14",
+  "complete_player_registry": false,
+  "source_counts": {
+    "minecraft": 30,
+    "apothic_attributes": 22,
+    "irons_spellbooks": 26,
+    "ars_nouveau": 10,
+    "malum": 15,
+    "goety": 27,
+    "eidolon_repraised": 4,
+    "forbidden_arcanus": 2,
+    "neovitae": 7
+  },
+  "candidate_count": 143,
+  "sources": {
+    "vanilla": "https://raw.githubusercontent.com/PixiGeko/Minecraft-generated-data/master/1.21/releases/1.21.1/custom-generated/registries/attribute.txt",
+    "apothic": "https://raw.githubusercontent.com/Shadows-of-Fire/Apothic-Attributes/1.21/src/main/java/dev/shadowsoffire/apothic_attributes/api/ALObjects.java",
+    "iron": "https://raw.githubusercontent.com/iron431/irons-spells-n-spellbooks/1.21/src/main/java/io/redspace/ironsspellbooks/api/registry/AttributeRegistry.java",
+    "ars": "https://raw.githubusercontent.com/baileyholl/Ars-Nouveau/main/src/main/java/com/hollingsworth/arsnouveau/api/perk/PerkAttributes.java",
+    "malum": "https://raw.githubusercontent.com/SammySemicolon/Malum-Mod/1.21.1/src/main/java/com/sammy/malum/registry/common/MalumAttributes.java",
+    "goety": "https://raw.githubusercontent.com/Vivideru/Goety-3/main/src/main/java/com/Polarice3/Goety/init/ModAttributes.java",
+    "eidolon": "https://raw.githubusercontent.com/Alexthw46/Eidolon-Repraised/1.21.1/src/main/java/alexthw/eidolon_repraised/registries/EidolonAttributes.java",
+    "forbidden": "https://raw.githubusercontent.com/stal111/Forbidden-Arcanus/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/common/entity/attribute/FAAttributes.java",
+    "neovitae": "https://github-wiki-see.page/m/breakinblocks/NeoVitae/wiki/API-Reference"
+  },
+  "limitations": "Includes some mob-only or item-driven attribute IDs, possible source drift, and only source-discoverable registration declarations. Run /tmmmonk attributes in the pinned assembled pack to confirm player instances, actual bounds and all addon-contributed attributes. Never claim all entries are player-applicable.",
+  "attributes": [
+    {
+      "id": "apothic_attributes:armor_pierce",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:armor_shred",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:arrow_damage",
+      "source_mod": "apothic_attributes",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:arrow_velocity",
+      "source_mod": "apothic_attributes",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:cold_damage",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:cooldown_reduction",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:crit_chance",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:crit_damage",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:current_hp_damage",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:dodge_chance",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:draw_speed",
+      "source_mod": "apothic_attributes",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:elytra_flight",
+      "source_mod": "apothic_attributes",
+      "class": "boolean_unlock",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Elytra permit bit; not equivalent to continuous gliding acceleration or creative flight"
+    },
+    {
+      "id": "apothic_attributes:experience_gained",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:fire_damage",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:ghost_health",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:healing_received",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:life_steal",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:mining_speed",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:overheal",
+      "source_mod": "apothic_attributes",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:projectile_damage",
+      "source_mod": "apothic_attributes",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:prot_pierce",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "apothic_attributes:prot_shred",
+      "source_mod": "apothic_attributes",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_pinned_2.11.0_unverified_binary",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.drygmy",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.feather",
+      "source_mod": "ars_nouveau",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.mana_regen",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.max_mana",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.saturation",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.toughness",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.warding",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.weight",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "ars_nouveau:ars_nouveau.perk.wixie",
+      "source_mod": "ars_nouveau",
+      "class": "requires_mod_specific_mechanics_review",
+      "source_status": "upstream_main_not_pinned_5.13.5",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "eidolon_repraised:chanting_speed",
+      "source_mod": "eidolon_repraised",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_gradle_0.5.0.8_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "eidolon_repraised:magic_power",
+      "source_mod": "eidolon_repraised",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_gradle_0.5.0.8_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "eidolon_repraised:max_soul_hearts",
+      "source_mod": "eidolon_repraised",
+      "class": "deprecated_requires_review",
+      "source_status": "upstream_1.21.1_branch_gradle_0.5.0.8_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "eidolon_repraised:persistent_soul_hearts",
+      "source_mod": "eidolon_repraised",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_gradle_0.5.0.8_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "forbidden_arcanus:generic.aureal_regeneration",
+      "source_mod": "forbidden_arcanus",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_pinned_2.6.1_unverified",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "forbidden_arcanus:generic.magic_protection",
+      "source_mod": "forbidden_arcanus",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21.1_branch_pinned_2.6.1_unverified",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:abyss_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:abyss_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:casting_speed",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:cooldown_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:frost_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:frost_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:geomancy_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:geomancy_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:necromancy_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:necromancy_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:nether_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:nether_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:soul_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_burning",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_duration",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_radius",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_range",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:spell_velocity",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:storm_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:storm_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:void_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:void_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:wild_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:wild_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:wind_discount",
+      "source_mod": "goety",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "goety:wind_potency",
+      "source_mod": "goety",
+      "class": "numeric_candidate",
+      "source_status": "upstream_main_gradle_3.2.2_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:blood_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:blood_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:cast_time_reduction",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:casting_movespeed",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:cooldown_reduction",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:eldritch_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:eldritch_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:ender_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:ender_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:evocation_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:evocation_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:fire_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:fire_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:holy_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:holy_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:ice_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:ice_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:lightning_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:lightning_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:mana_regen",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:max_mana",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:nature_magic_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:nature_spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:spell_power",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:spell_resist",
+      "source_mod": "irons_spellbooks",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "irons_spellbooks:summon_damage",
+      "source_mod": "irons_spellbooks",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21_branch_gradle_3.16.3_exact",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:arcane_resonance",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:charge_capacity",
+      "source_mod": "malum",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:charge_duration",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:charge_recovery_rate",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:geas_limit",
+      "source_mod": "malum",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:malignant_aegis_capacity",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:malignant_aegis_recovery_gain",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:malignant_aegis_recovery_rate",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:malignant_conversion",
+      "source_mod": "malum",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:scythe_proficiency",
+      "source_mod": "malum",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:soul_ward_capacity",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:soul_ward_integrity",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:soul_ward_recovery_gain",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:soul_ward_recovery_rate",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "malum:spirit_spoils",
+      "source_mod": "malum",
+      "class": "numeric_candidate",
+      "source_status": "upstream_1.21.1_branch_current_1.9.0_not_pinned_1.8.2",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.armor",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.armor_toughness",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.attack_damage",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.attack_knockback",
+      "source_mod": "minecraft",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.attack_speed",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.burning_time",
+      "source_mod": "minecraft",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.explosion_knockback_resistance",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.fall_damage_multiplier",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.flying_speed",
+      "source_mod": "minecraft",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.follow_range",
+      "source_mod": "minecraft",
+      "class": "runtime_player_presence_check",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.gravity",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.jump_strength",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.knockback_resistance",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.luck",
+      "source_mod": "minecraft",
+      "class": "requires_equipment_or_player_semantics_review",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.max_absorption",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.max_health",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.movement_efficiency",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.movement_speed",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.oxygen_bonus",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.safe_fall_distance",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.scale",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.step_height",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:generic.water_movement_efficiency",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.block_break_speed",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.block_interaction_range",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.entity_interaction_range",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.mining_efficiency",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.sneaking_speed",
+      "source_mod": "minecraft",
+      "class": "bounded_numeric_or_implementation_sensitive",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.submerged_mining_speed",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "minecraft:player.sweeping_damage_ratio",
+      "source_mod": "minecraft",
+      "class": "numeric_candidate",
+      "source_status": "minecraft_1.21.1_registry_no_runtime",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:blood_shield",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:blood_siphon",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:bonus_sacrifice",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:bonus_self_sacrifice",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:bonus_spiritus",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:player.self_sacrifice_multiplier",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    },
+    {
+      "id": "neovitae:sigil_cost_reduction",
+      "source_mod": "neovitae",
+      "class": "numeric_candidate",
+      "source_status": "published_api_reference_not_pinned_binary_1.1.53",
+      "status": "not_yet_live_dumped",
+      "notes": "Player presence and behavior must be verified in integrated runtime"
+    }
+  ]
+}
