@@ -9,6 +9,11 @@ file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
 
 [[files]]
+file = "mods/akashic-tome.pw.toml"
+hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
+metafile = true
+
+[[files]]
 file = "mods/apotheosis.pw.toml"
 hash = "e154d7fb16dc7eb6ace7b88b3896955bb66f58c2daafe93c7ae3327ee418a509"
 metafile = true
@@ -94,13 +99,28 @@ hash = "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c"
 metafile = true
 
 [[files]]
+file = "mods/balm.pw.toml"
+hash = "9aee12cd43dcf471f23d1dc7da556fbaadf3831fe6f699925a9d79915376b6a9"
+metafile = true
+
+[[files]]
 file = "mods/better-advanced-tooltips.pw.toml"
 hash = "03084ff4f74cedc1b8ac6c85a98842f75956fb4fa811d285d8ca7caa8d54da5d"
 metafile = true
 
 [[files]]
+file = "mods/better-advancements.pw.toml"
+hash = "5f30c1c0363dd44c10db196a8d8a7f164ff06e06b0b80234a519d9e49b2a7f84"
+metafile = true
+
+[[files]]
 file = "mods/biggerreactors-rework.pw.toml"
 hash = "8c5bcaf23bcfc318917a8ad24648e601dd17424fabe089650726ca78117912e5"
+metafile = true
+
+[[files]]
+file = "mods/bookshelf.pw.toml"
+hash = "cf914684c4151076b726116a66f7bc81a6116655551bcce70a9e64e34e5aa308"
 metafile = true
 
 [[files]]
@@ -146,6 +166,11 @@ metafile = true
 [[files]]
 file = "mods/corail-tombstone.pw.toml"
 hash = "7b4e74ebfc923568149d8a27a90217788713f184af1333d2f93708dfbab83dfd"
+metafile = true
+
+[[files]]
+file = "mods/crafting-tweaks.pw.toml"
+hash = "9942062b933fc042f551ff9539c81ca37ef8e97eec7d35f7800805a9d285b956"
 metafile = true
 
 [[files]]
@@ -199,6 +224,11 @@ hash = "4a082b19098f0cfac6bf8b65fa154e1e06ecb5cd7b6636942e2d373d72f00253"
 metafile = true
 
 [[files]]
+file = "mods/enchantment-descriptions.pw.toml"
+hash = "2e137ea0702d21a9be7943d997bedf98f2c47751a621341081020a2bb53db4ae"
+metafile = true
+
+[[files]]
 file = "mods/enigmaticlegacy-plus.pw.toml"
 hash = "8514d86365986f1eac584f4a5a3c38d24e7963685b814210b1a7b03ebc045f4b"
 metafile = true
@@ -231,6 +261,11 @@ metafile = true
 [[files]]
 file = "mods/farmers-delight.pw.toml"
 hash = "d9ed9ac8e0db9db29078dafa22bc2d86ac702f10863ae7cb1d5245111c5ea17b"
+metafile = true
+
+[[files]]
+file = "mods/farming-for-blockheads.pw.toml"
+hash = "d47898356c10a7decf6d4c9aeee4f753df6a716be4c90a3609f15573c8e56345"
 metafile = true
 
 [[files]]
@@ -374,6 +409,11 @@ hash = "4c64dc39ebe1d44d39b5876848695d3f8d4670be71019509bf74905309ac2791"
 metafile = true
 
 [[files]]
+file = "mods/keybind-bundles.pw.toml"
+hash = "eaeb7a2dd935df6966439540a9682c8db4eb9a310573a37e1ee44dd2a105865f"
+metafile = true
+
+[[files]]
 file = "mods/konkrete.pw.toml"
 hash = "054a1887da4f14b791910660a2a7a2035ac1382461b881a65fe07b224c03735f"
 metafile = true
@@ -444,8 +484,18 @@ hash = "547f54d0587d4f4201073b2bc498831a6e22b67630699e01d9e1f0afbe36b7d8"
 metafile = true
 
 [[files]]
+file = "mods/more-overlays-updated.pw.toml"
+hash = "91bef37cefad981c5c6752a3e62f6244be932efce77e4027dd3075accd2dd8ac"
+metafile = true
+
+[[files]]
 file = "mods/mouse-tweaks.pw.toml"
 hash = "6bc414cc0f2d4c078fe83f384d786343f701f371d657c5279b5b0df1595804bd"
+metafile = true
+
+[[files]]
+file = "mods/natures-compass.pw.toml"
+hash = "2e9a8daaa0e0cc9cdfb67422e0f928f2db6a1f2984b8636eb2b5091c5fb23e29"
 metafile = true
 
 [[files]]
@@ -461,6 +511,11 @@ metafile = true
 [[files]]
 file = "mods/occultism.pw.toml"
 hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
+metafile = true
+
+[[files]]
+file = "mods/oracle-index.pw.toml"
+hash = "2e77758dc91190a81b67b6f329832b625404adfaaee894900be90ff3a94f7523"
 metafile = true
 
 [[files]]
@@ -511,6 +566,11 @@ metafile = true
 [[files]]
 file = "mods/polymorph.pw.toml"
 hash = "d935e4ce118d15c88b10809df85e801f0e9577855f870f3c28e5a0bd5e7fecf6"
+metafile = true
+
+[[files]]
+file = "mods/prickle.pw.toml"
+hash = "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4"
 metafile = true
 
 [[files]]
@@ -589,8 +649,18 @@ hash = "ce9ddada6ffd55a512149cc474c6a453281a997a5fdf1b7b4a2cc73f875e704a"
 metafile = true
 
 [[files]]
+file = "mods/simple-backups.pw.toml"
+hash = "96b64b2096ea8ee1144025b52cb769bfcd001db8fb38f72a4b5828a719a2196c"
+metafile = true
+
+[[files]]
 file = "mods/smartbrainlib.pw.toml"
 hash = "6e7ce9c2aee5bb72d2698eb89035c9b2458d20daa0782e1a03cfba7a6647621e"
+metafile = true
+
+[[files]]
+file = "mods/spark.pw.toml"
+hash = "6d9eaf43c14c66465e87bf03cc5cb5ecef57b3f2e8063c52f6332d33689d30be"
 metafile = true
 
 [[files]]

@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.7.0-atm10-inventory-refoxed-client-candidate"
+version = "0.8.0-atm10-qol-natures-compass-market-candidate"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "e1daa4da1ba4517775be9d37fe338073774a35cedc57f3b682914d6c80487a64"
+hash = "702a7a251115f132cd31426a8032962c4b30c64b5c51ef0ed0daebaece6ca313"
 
 [versions]
 minecraft = "1.21.1"

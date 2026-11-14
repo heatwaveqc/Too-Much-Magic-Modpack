@@ -15,19 +15,20 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8: 126 previous mods plus 14 additions including Prickle configuration library = 140 total; Waystones excluded.",
+  "note": "B8 140 pinned mods (126 B7 plus 14 including required Prickle); no Waystones or Explorer's Compass; market economy not yet validated.",
   "mods": [
     {
       "id": "akashic-tome",
       "name": "Akashic Tome",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "AkashicTome-1.8-30",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/250577",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Book-only magic guidebook organizer, not a generic backpack."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Book-only magic guidebook organizer, not a generic backpack.",
+      "packwiz_slug": "akashic-tome"
     },
     {
       "id": "apotheosis",
@@ -247,12 +248,13 @@
       "name": "Balm",
       "category": "dependency",
       "desired": true,
-      "version": null,
+      "version": "balm-neoforge-1.21.1-21.0.67",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/531761",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Required library for Crafting Tweaks and Farming for Blockheads."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Required library for Crafting Tweaks and Farming for Blockheads.",
+      "packwiz_slug": "balm"
     },
     {
       "id": "better-advanced-tooltips",
@@ -272,12 +274,13 @@
       "name": "Better Advancements",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "BetterAdvancements-NeoForge-1.21.1-0.4.3.21",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/272515",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Better advancements UI."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Better advancements UI.",
+      "packwiz_slug": "better-advancements"
     },
     {
       "id": "bigger-reactors",
@@ -309,12 +312,13 @@
       "name": "Bookshelf",
       "category": "dependency",
       "desired": true,
-      "version": null,
+      "version": "bookshelf-neoforge-1.21.1-21.1.81",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/228525",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Required library for Enchantment Descriptions."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Required library for Enchantment Descriptions.",
+      "packwiz_slug": "bookshelf"
     },
     {
       "id": "botania",
@@ -468,12 +472,13 @@
       "name": "Crafting Tweaks",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "craftingtweaks-neoforge-1.21.1-21.1.11",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/233071",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Rotate, balance, clear standard crafting grids."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Rotate, balance, clear standard crafting grids.",
+      "packwiz_slug": "crafting-tweaks"
     },
     {
       "id": "cucumber",
@@ -604,12 +609,13 @@
       "name": "Enchantment Descriptions",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "enchdesc-neoforge-1.21.1-21.1.11",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/250419",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Modded enchantment tooltip descriptions."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Modded enchantment tooltip descriptions.",
+      "packwiz_slug": "enchantment-descriptions"
     },
     {
       "id": "enigmatic-legacy-plus",
@@ -703,12 +709,13 @@
       "name": "Farming for Blockheads",
       "category": "food",
       "desired": true,
-      "version": null,
+      "version": "farmingforblockheads-neoforge-1.21.1-21.1.14",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/261924",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Separate seed and sapling Market, with additional farming helpers. Watch magic crop/Ars seed bypass; market whitelist/config review before balanced survival release."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Separate seed and sapling Market, with additional farming helpers. Watch magic crop/Ars seed bypass; market whitelist/config review before balanced survival release.",
+      "packwiz_slug": "farming-for-blockheads"
     },
     {
       "id": "ferritecore",
@@ -870,7 +877,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety — The Dark Arts",
+      "name": "Goety \u2014 The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -973,7 +980,7 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks — ReFoxed",
+      "name": "Inventory Tweaks \u2014 ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
@@ -1051,12 +1058,13 @@
       "name": "KeyBind Bundles",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "keybindbundles-1.5.0",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/1172594",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Radial keybind bundles for magic and transformations."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Radial keybind bundles for magic and transformations.",
+      "packwiz_slug": "keybind-bundles"
     },
     {
       "id": "konkrete",
@@ -1232,12 +1240,13 @@
       "name": "More Overlays Updated",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "moreoverlays-1.24.2-mc1.21.1-neoforge",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/391382",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Light-level and JEI inventory search overlays."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Light-level and JEI inventory search overlays.",
+      "packwiz_slug": "more-overlays-updated"
     },
     {
       "id": "mouse-tweaks",
@@ -1256,12 +1265,13 @@
       "name": "Nature's Compass",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "NaturesCompass-1.21.1-3.4.0-neoforge",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/252848",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). User-approved biome locator; must not accidentally bypass other explicit exploration gates."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). User-approved biome locator; must not accidentally bypass other explicit exploration gates.",
+      "packwiz_slug": "natures-compass"
     },
     {
       "id": "neovitae",
@@ -1305,16 +1315,17 @@
       "name": "Oracle Index",
       "category": "qol",
       "desired": true,
-      "version": null,
+      "version": "oracle_index-neoforge-1.4.1",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/1206582",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). In-game wiki viewer; actual docs coverage depends on mod wiki availability."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). In-game wiki viewer; actual docs coverage depends on mod wiki availability.",
+      "packwiz_slug": "oracle-index"
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 — Crops",
+      "name": "Pam's HarvestCraft 2 \u2014 Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1327,7 +1338,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 — Food Core",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1340,7 +1351,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1353,7 +1364,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 — Trees",
+      "name": "Pam's HarvestCraft 2 \u2014 Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -1444,12 +1455,13 @@
       "name": "Prickle",
       "category": "dependency",
       "desired": true,
-      "version": null,
+      "version": "prickle-neoforge-1.21.1-21.1.11",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/prickle",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Required transitive config library for B8 QoL suite. NeoForge MC1.21.1 21.1.11 stable, project 1023259 file 6961457."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Required transitive config library for B8 QoL suite. NeoForge MC1.21.1 21.1.11 stable, project 1023259 file 6961457.",
+      "packwiz_slug": "prickle"
     },
     {
       "id": "primal-magick",
@@ -1666,12 +1678,13 @@
       "name": "Simple Backups",
       "category": "server_utility",
       "desired": true,
-      "version": null,
+      "version": "SimpleBackups-1.21-4.0.30",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/583228",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Automatic world backups, retention and capacity caps. Configure server before long-term saves."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Automatic world backups, retention and capacity caps. Configure server before long-term saves.",
+      "packwiz_slug": "simple-backups"
     },
     {
       "id": "smartbrainlib",
@@ -1690,12 +1703,13 @@
       "name": "spark",
       "category": "server_utility",
       "desired": true,
-      "version": null,
+      "version": "spark-1.10.124-neoforge",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/361579",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-approved QoL integration (2026-11-13). Performance profiling for client/server; commands/permissions require admin configuration."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved QoL integration (2026-11-13). Performance profiling for client/server; commands/permissions require admin configuration.",
+      "packwiz_slug": "spark"
     },
     {
       "id": "starlight-structures",
@@ -1809,7 +1823,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism — Become a Vampire!",
+      "name": "Vampirism \u2014 Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -1822,7 +1836,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves — Become a Beast!",
+      "name": "Werewolves \u2014 Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -1921,7 +1935,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
@@ -2176,7 +2190,7 @@
         "simple-backups",
         "spark"
       ],
-      "status": "approved_resolution_pending"
+      "status": "server_smoked_client_pending"
     }
   ]
 }
