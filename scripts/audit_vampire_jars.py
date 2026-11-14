@@ -209,6 +209,19 @@ def inspect_pin(pin: str) -> None:
                                 break
                             print(" BC", follower[:280])
 
+            if source.name.startswith("just-another-witchery"):
+                cls = "dev.sterner.witchery.content.item.TornPageItem"
+                proc = subprocess.run(
+                    ["javap", "-c", "-p", "-classpath", str(jar), cls],
+                    capture_output=True, text=True, timeout=25)
+                ls = proc.stdout.splitlines()
+                for i, line in enumerate(ls):
+                    if "static {};" in line or "advancementLocations" in line and line.startswith("  "):
+                        print("TORN_PAGE_STATIC", line, flush=True)
+                        for follower in ls[i+1:min(len(ls),i+190)]:
+                            if follower == "}":
+                                break
+                            print(" TORN_PAGE_BC", follower[:330], flush=True)
             # Transaction-specific disassembly for exact pinned versions. Inspect
             # acquisition, cure, feeding and weaknesses before enabling mixins.
             focus = {
