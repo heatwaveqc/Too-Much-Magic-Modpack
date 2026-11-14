@@ -1,3 +1,12 @@
+> **AUTHORITATIVE PRIMARY TREE (2026-11-14):** The primary Tyz/MXP plan on
+> [design/universal-mxp-progression-registry](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/TYZS-CORE-MAGIC-AND-FORM-TREES.md)
+> supersedes this document's native Tyz XP and 99/99 prior-stage requirements.
+> **MXP only** grants Tyz XP; **one prior rank** unlocks the next tier, with
+> independent server-side external gates. No second shared skill tree or point
+> wallet may be implemented by Monk. Read
+> [cross-branch reconciliation](MONK-INTEGRATION-WITH-PRIMARY-TYZS-TREE.md).
+> Historical five-stage/x10 numerical examples below are inactive proposals.
+
 > **Backend update (2026-11-14):** The no-Pufferfish placement proposal is
 > authoritative for **current catalog planning**: see
 > [Monk skill placement v2](MONK-SKILL-PLACEMENT-NO-PUFFERFISH.md).
