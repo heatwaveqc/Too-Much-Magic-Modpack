@@ -1004,3 +1004,7 @@ hash = "2ab9c1de7aed0c17903f141c7571c64e8f42f1e2e8d3b8b02ab6ff315bf839e0"
 [[files]]
 file = "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js"
 hash = "2aa462bc5211abace54271ad0ec84de5155b17f8a2f817002fb31210133bc103"
+
+[[files]]
+file = "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js"
+hash = "ac1585eb34566787e08edae2ec0ecc377810a64424774f8bb289229f56d78a8e"
