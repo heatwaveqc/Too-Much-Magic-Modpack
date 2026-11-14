@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B4 experimental additions; trust only per-stage logged successful smoke tests. ProjectE and Expansion remain ungated.",
+  "note": "B4: 71 pinned mods, all four staged dedicated-server tests passed. Includes Astral alpha, ObserverLib alpha, Draconic beta, Botania Revived release. Client, quests, boss gameplay and gated progression untested.",
   "mods": [
     {
       "id": "apotheosis",
@@ -120,7 +120,7 @@
       "desired": true,
       "version": "AstralSorcery-2.0.3.59",
       "release_status": "experimental_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/241721",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "astral-sorcery",
@@ -158,7 +158,7 @@
       "desired": true,
       "version": "biggerreactorsrework-1.21.1-0.1.6",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/1760630",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/biggerreactors-rework",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "biggerreactors-rework",
@@ -182,7 +182,7 @@
       "desired": true,
       "version": "Botania-Revived-1.21.1-2.0.2-NeoForge",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/1725641",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/botania-revived",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "botania-revived",
@@ -195,7 +195,7 @@
       "desired": true,
       "version": "BrandonsCore-1.21.1-3.2.1.309",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/231382",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/brandons-core",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "brandons-core",
@@ -220,7 +220,7 @@
       "desired": true,
       "version": "CodeChickenLib-1.21.1-4.6.1.529",
       "release_status": "verified_release",
-      "source": null,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "codechicken-lib-1-8"
@@ -315,7 +315,7 @@
       "desired": true,
       "version": "Draconic-Evolution-1.21.1-3.1.4.633",
       "release_status": "experimental_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/223565",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "draconic-evolution",
@@ -724,7 +724,7 @@
       "desired": true,
       "version": "observerlib-1.10.3",
       "release_status": "experimental_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/316833",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/observerlib",
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "observerlib",
@@ -1148,7 +1148,7 @@
         "draconic-evolution",
         "observerlib"
       ],
-      "status": "stage_draconic_awaiting_boot"
+      "status": "all_four_stages_server_smoked_client_pending"
     }
   ]
 }

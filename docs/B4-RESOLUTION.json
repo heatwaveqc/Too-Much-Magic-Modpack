@@ -132,5 +132,13 @@
     "real player world entry",
     "Chaos Guardian / ProjectE gating",
     "gameplay feature balance"
-  ]
+  ],
+  "final_pinned_mods": 71,
+  "combined_server_boot": "PASS",
+  "enabled_beta_alpha": {
+    "astral-sorcery": "alpha",
+    "observerlib": "alpha",
+    "draconic-evolution": "beta",
+    "playeranimator": "beta_dependency"
+  }
 }

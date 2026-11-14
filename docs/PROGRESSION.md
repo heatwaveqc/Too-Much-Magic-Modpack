@@ -11,3 +11,8 @@ These are design invariants, not claims about live game behavior.
 7. **Quests:** FTB Quests will communicate the pathways after core mechanics stabilize, not substitute for locks.
 
 Do not add placeholder broken KubeJS recipes using speculative registry names.
+
+## B4 compatibility proviso
+- BiggerReactors Rework 0.1.6 adds a separate battery and industrial processor along with reactor energy generation. Review the energy/storage features against our limited-tech policy before progression work; it was explicitly approved as the newer fork for testing.
+- Botania Revived may expose optional Ars Nouveau integration; balance mana/source conversions and remove any forbidden storage acquisition path.
+- Experimental Astral Sorcery and Draconic Evolution are boot-tested, **not yet gameplay-accepted**; Draconic Chaos Guardian remains the ProjectE gate.

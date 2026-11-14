@@ -38,3 +38,17 @@ On `build/b3-stable-magic-tectonic`, **64 packwiz mod pins** exist: 57 downloada
 For a client: use a graphics-capable Java 21 launcher supporting packwiz, Minecraft 1.21.1 and NeoForge 21.1.265, install/download the full pack, inspect main menu for errors and create a throwaway world; **not yet performed**. Check Tectonic world generation, FTB Quests, spell UI, sky/rendering performance and KubeJS logs. Do not treat dedicated-server `Done` as client world-entry validation.
 
 ProjectE and Project Expansion are currently included for reproducible startup tests only, **not permitted as an ungated survival release** until the Chaos Guardian lock is enforced. The only beta-tagged active dependency is playerAnimator, required by stable Iron's Spells; see [the exception record](B3-DEPENDENCY-EXCEPTIONS.json). No other beta gameplay mods were installed.
+
+## B4 experimental 71-mod candidate
+`build/b4-reactors-experimental` contains exact packwiz metadata for 71 mods, including the newer BiggerReactors Rework, Astral Sorcery alpha, Botania Revived release and Draconic Evolution beta. [CI run 43551344358](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43551344358) executed **four successful** consecutive, disposable dedicated-server smoke tests, hash-verifying all required server-side JARs.
+
+To repeat locally with Java 21 and a network connection, run:
+
+```bash
+python3 scripts/validate.py
+SMOKE_WITH_MODS=1 SMOKE_TIMEOUT_SECONDS=420 bash scripts/smoke_server.sh
+```
+
+For the graphical test use a launcher capable of importing the packwiz index (including CurseForge IDs); test client launch, load a disposable new Tectonic world, Astral sky (with and without Embeddium), Botania Lexica + mana flow, Draconic Energy Links and Chaos Guardian effects. **Do not use any existing survival saves.** In B4 the reactor fork's world/registry namespace differs from the older Original/Revived variants.
+
+ProjectE remains unlocked for this test build; before normal survival distribution enforce all intended chaos/progression/reproducibility restrictions. Keep mods and worlds external to Git.

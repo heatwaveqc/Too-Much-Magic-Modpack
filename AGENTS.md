@@ -34,3 +34,10 @@ Do feature work on a branch, present reviewable pull requests, preserve main as 
 ## Approved B3 beta exception
 - Release-channel Iron's Spells 3.16.3 requires playerAnimator 2.0.x for Minecraft 1.21.1. Upstream marks this compatible prerequisite beta; the pinned 2.0.4 version is the **only approved active beta dependency**. Do not extrapolate this approval to beta gameplay mods, Astral Sorcery alpha, Draconic Evolution beta or Relics beta. JEI must remain on release channel (stable 19.64.0.455 in B3).
 - ProjectE and Expansion are **boot-testing artifacts only**, until all post-Chaos Guardian acquisition and usage paths are actually gated. No survival release before enforcement.
+
+## Approved B4 experimental additions (2026-11-13)
+- User authorized testing: **BiggerReactors Rework 0.1.6** (fork, not original mod); **Astral Sorcery 2.0.3 alpha** plus **ObserverLib 1.10.3 alpha**; **Botania Revived 2.0.2 release** (unofficial port, *not* original Botania); **Draconic Evolution 3.1.4.633 beta** plus Brandon's Core 3.2.1.309 and CodeChicken Lib 4.6.1.529.
+- These exact experimental versions and dependencies achieved dedicated-server startup in [run 43551344358](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43551344358). This is **not** permission to install arbitrary alpha/beta mods or to claim graphical compatibility.
+- Botania Revived may contain **optional** Sophisticated integrations; the Sophisticated modules **must not be introduced as installed dependencies**, and Sophisticated Backpacks, Storage and Core are all absent from the B4 pack. Preserve the original hard exclusion.
+- Reactor Rework uses its own registry namespace `biggerreactorsrework` and its battery/processor functionality needs a balance audit; do not treat old worlds as compatible with this port.
+- No ProjectE or Replication gating is implemented just by adding B4. This branch remains a test build.
