@@ -12,6 +12,7 @@ import de.teamlapen.vampirism.api.entity.player.skills.SkillPointProviders;
 import io.github.heatwaveqc.tmm.monk.faction.IMonkPlayer;
 import net.minecraft.resources.ResourceLocation;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
+import io.github.heatwaveqc.tmm.monk.skills.MonkAttributes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
@@ -39,6 +40,8 @@ public final class MonkMod {
         container.registerConfig(ModConfig.Type.STARTUP, MonkStartupConfig.SPEC);
         MonkPlayerData.ATTACHMENTS.register(modBus);
         MonkSkills.SKILLS.register(modBus);
+        MonkAttributes.ATTRIBUTES.register(modBus);
+        modBus.addListener(MonkAttributes::addToPlayer);
         // One native faction SP for each earned cultivation rank AFTER initiation.
         // Tyz still owns its own MXP/SP wallet; this is only for Vampirism skills.
         SkillPointProviders.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "faction_rank"),
