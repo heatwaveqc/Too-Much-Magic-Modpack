@@ -10,6 +10,7 @@ import de.teamlapen.vampirism.entity.player.skills.SkillHandler;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,6 +37,12 @@ public final class MonkPlayer extends FactionBasePlayer<IMonkPlayer> implements 
     }
 
     @Override public void onUpdatePlayer(PlayerTickEvent event) { }
+    @Override public void onPlayerLoggedIn() { }
+    @Override public void onPlayerLoggedOut() { }
+    @Override public void onJoinWorld() {
+        if (getLevel() > 0) actions.onActionsReactivated();
+    }
+    @Override public boolean onEntityAttacked(DamageSource source, float amount) { return false; }
     @Override public boolean canLeaveFaction() { return true; } // debug safety until departure ritual exists
     @Override public IFaction<?> getDisguisedAs() { return getFaction(); }
     @Override public boolean isDisguised() { return false; }
