@@ -81,10 +81,11 @@ const spawn = kubeHandlers.get('minecraft:item')
 assert.ok(entityTick && tickPre && tickPost && spawn)
 
 function roundtrip(level, item, consume) {
+  const originalId = item.getItem().getItem().id
   spawn({entity:item})
   tickPre({getLevel:()=>level})
   const inWorld = item.getItem()
-  const shadowed = inWorld.getItem().id.startsWith('mahoutsukai:')
+  const shadowed = inWorld.getItem().id !== originalId
   let cancelled = false
   entityTick({getEntity:()=>item, setCanceled:v=>{cancelled=v}})
   assert.equal(cancelled,shadowed,'Temporary Mahou powder must have its item entity tick cancelled')
