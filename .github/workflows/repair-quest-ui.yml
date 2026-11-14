@@ -1,0 +1,46 @@
+name: Rebuild FTB Quests UI text and layouts
+on:
+  push:
+    branches: ['fix/quest-localization-layout-onboarding']
+    paths:
+      - '.github/workflows/repair-quest-ui.yml'
+      - 'scripts/rebuild_quest_ui.py'
+      - 'scripts/validate_quests.py'
+      - 'manifest/quest_content.json'
+      - 'manifest/quest_content_resolved.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate canonical FTB Quests locale files and layouts
+        run: |
+          python3 -m py_compile scripts/rebuild_quest_ui.py scripts/validate_quests.py
+          python3 scripts/rebuild_quest_ui.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+      - name: Check generated files are idempotent
+        run: |
+          python3 scripts/rebuild_quest_ui.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+      - name: Commit generated quest content
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/ftbquests/quests/chapters config/ftbquests/quests/lang index.toml pack.toml manifest/quest_layouts.json
+          if ! git diff --cached --quiet; then
+            git commit -m "build(quests): localize 179 entries and fix all chapter layouts"
+            git push origin HEAD:fix/quest-localization-layout-onboarding
+          fi
