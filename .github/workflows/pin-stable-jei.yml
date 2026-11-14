@@ -1,0 +1,91 @@
+name: Pin stable JEI and verify full gameplay server
+on:
+  push:
+    branches: [build/b3-stable-magic-tectonic]
+    paths: ['.github/workflows/pin-stable-jei.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stable-jei-and-server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Use stable JEI immutable version and refresh hashes
+        run: |
+          python3 -m py_compile scripts/pin_release_jei.py scripts/resolve_stable_gameplay.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/pin_release_jei.py
+          packwiz list
+      - name: Smoke full magic/Tectonic server with release JEI
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '420'
+          WORK_DIR: ${{ runner.temp }}/tmm-b3-stable-jei
+        run: bash scripts/smoke_server.sh
+      - name: Save changed release pin and actual test status
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.smoke.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          epath=Path('docs/B3-RESOLUTION.json')
+          if not epath.exists():
+              raise SystemExit('No JEI pin resolution evidence')
+          data=json.loads(epath.read_text())
+          ok=os.environ['TEST_OUTCOME']=='success'
+          old=Path('docs/B3-TESTING.md').read_text()
+          old=old.replace('**Dedicated-server smoke: PASS**','**Dedicated-server smoke: PASS**' if ok else '**Dedicated-server smoke: FAILED on stable-JEI regression (previous run passed)**')
+          old+='\n## Stable JEI regression\n- Run: '+os.environ['RUN_URL']+'\n'
+          old+=f'- JEI moved from beta {data["jei_stable_replacement"]["old_filename"]} to release {data["jei_stable_replacement"]["new_filename"]}.\n'
+          old+=f'- Full NeoForge dedicated server result: {"PASS" if ok else "FAIL"}.\n'
+          old+='- Client GUI and new-world gameplay: NOT TESTED.\n'
+          Path('docs/B3-TESTING.md').write_text(old)
+          mpath=Path('manifest/mods.json')
+          manifest=json.loads(mpath.read_text())
+          batch=next(b for b in manifest['batches'] if b['id']=='B5')
+          batch['status']='server_smoked_client_pending' if ok else 'stable_jei_regression_failed'
+          mpath.write_text(json.dumps(manifest,indent=2)+'\n')
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml mods/jei.pw.toml manifest/mods.json docs/B3-RESOLUTION.json docs/B3-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "test(gameplay): stable JEI release and combined dedicated-server regression"
+            git push origin HEAD:build/b3-stable-magic-tectonic
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: b3-stable-jei-full-server
+          path: |
+            docs/B3-RESOLUTION.json
+            docs/B3-TESTING.md
+            ${{ runner.temp }}/tmm-b3-stable-jei/server.log
+            ${{ runner.temp }}/tmm-b3-stable-jei/logs/latest.log
+          if-no-files-found: warn
+      - name: Fail on nonboot
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
