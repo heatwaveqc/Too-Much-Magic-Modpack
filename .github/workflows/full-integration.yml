@@ -78,16 +78,23 @@ jobs:
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
           test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
           echo "Both custom module JARs included in passing server test"
-      - name: Publish only the successfully tested commit to the unstable integration branch
+      - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
         run: |
-          git add manifest/mods.json manifest/integration-lock.json pack.toml index.toml
+          # All staged source imports, exact mod manifests and the source lock belong
+          # to the tested snapshot. Never push it back to test/full-integration:
+          # parallel feature edits may advance that configuration branch meanwhile.
+          git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "test: refresh full integration workstream snapshot after full server QA"
-            git push origin HEAD:test/full-integration
+            git commit -m "test: freeze all-source full integration QA snapshot"
           fi
           git diff --exit-code
           python3 scripts/validate.py
           python3 scripts/validate_quests.py
+          TAG="integration-qa/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git tag -a "$TAG" -m "UNSTABLE full integration server-smoked snapshot $(git rev-parse HEAD)"
+          git push origin "refs/tags/$TAG"
+          echo "Snapshot immutable commit: $(git rev-parse HEAD)"
+          echo "Snapshot tag: $TAG"
       - name: Obtain official packwiz bootstrap
         run: |
           curl -fL --retry 3 --retry-delay 2 \
