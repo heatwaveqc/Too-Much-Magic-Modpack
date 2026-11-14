@@ -13,7 +13,13 @@ echo "Downloading exact NeoForge installer: $URL"
 curl -fL --retry 3 --connect-timeout 20 -o installer.jar "$URL"
 java -jar installer.jar --installServer
 printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
-echo "Starting loader-only dedicated server (no mods pinned)"
+if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
+  python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
+  cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
+  echo "Starting hash-pinned MODDED dedicated server"
+else
+  echo "Starting loader-only dedicated server (no mods installed)"
+fi
 mkfifo cmd.fifo
 # Ensure an open writer while server runs, and stop after the timeout window.
 ( sleep "$SMOKE_TIMEOUT_SECONDS"; printf 'stop\n' ) > cmd.fifo &
