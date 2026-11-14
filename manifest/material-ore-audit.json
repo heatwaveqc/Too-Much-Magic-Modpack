@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "scope": "Installed Minecraft 1.21.1 NeoForge mods; source-controlled source trees and upstream tags, not a live registry dump.",
+  "authority": "Source tag JSON for Minecraft 1.21.1 branches of installed mods; exact pinned JAR/runtime should be verified.",
+  "resources": {
+    "silver": {
+      "preferred": "occultism",
+      "canonical": {
+        "ore": "occultism:silver_ore",
+        "deepslate_ore": "occultism:silver_ore_deepslate",
+        "raw": "occultism:raw_silver",
+        "ingot": "occultism:silver_ingot",
+        "dust": "occultism:silver_dust"
+      },
+      "providers": [
+        {
+          "mod": "occultism",
+          "ore": [
+            "occultism:silver_ore",
+            "occultism:silver_ore_deepslate"
+          ],
+          "raw": "occultism:raw_silver",
+          "ingot": "occultism:silver_ingot",
+          "source": "https://github.com/klikli-dev/occultism/tree/version/1.21.1/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "embers",
+          "ore": [
+            "embers:silver_ore",
+            "embers:deepslate_silver_ore"
+          ],
+          "raw": "embers:raw_silver",
+          "ingot": "embers:silver_ingot",
+          "source": "https://github.com/Riieno/EmbersRekindled-Reignited/tree/main/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "eidolon_repraised",
+          "ore": [
+            "eidolon_repraised:silver_ore",
+            "eidolon_repraised:deep_silver_ore"
+          ],
+          "raw": "eidolon_repraised:raw_silver",
+          "ingot": "eidolon_repraised:silver_ingot",
+          "source": "https://github.com/Alexthw46/Eidolon-Repraised/tree/1.21.1/src/main/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "werewolves",
+          "ore": [
+            "werewolves:silver_ore",
+            "werewolves:deepslate_silver_ore"
+          ],
+          "raw": "werewolves:raw_silver",
+          "ingot": "werewolves:silver_ingot",
+          "source": "https://github.com/TeamLapen/Werewolves/tree/1.21/src/generated/resources/data/c/tags/item/ores"
+        }
+      ],
+      "expectation": "All four c:ores/silver item-tag sets converge on Occultism; redundant ores removed in NEW chunks, existing stacks still usable."
+    },
+    "lead": {
+      "preferred": "embers",
+      "canonical": {
+        "ore": "embers:lead_ore",
+        "deepslate_ore": "embers:deepslate_lead_ore",
+        "raw": "embers:raw_lead",
+        "ingot": "embers:lead_ingot"
+      },
+      "providers": [
+        {
+          "mod": "embers",
+          "ore": [
+            "embers:lead_ore",
+            "embers:deepslate_lead_ore"
+          ],
+          "raw": "embers:raw_lead",
+          "ingot": "embers:lead_ingot",
+          "source": "https://github.com/Riieno/EmbersRekindled-Reignited/tree/main/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "eidolon_repraised",
+          "ore": [
+            "eidolon_repraised:lead_ore",
+            "eidolon_repraised:deep_lead_ore"
+          ],
+          "raw": "eidolon_repraised:raw_lead",
+          "ingot": "eidolon_repraised:lead_ingot",
+          "source": "https://github.com/Alexthw46/Eidolon-Repraised/tree/1.21.1/src/main/resources/data/c/tags/item/ores"
+        }
+      ],
+      "expectation": "Two conventional lead ore sets converge on Embers; Eidolon's lead and pewter recipes continue accepting tags."
+    },
+    "copper": {
+      "preferred": "minecraft",
+      "dust_preferred": "occultism",
+      "dusts_verified": [
+        "occultism:copper_dust",
+        "primalmagick:copper_grit"
+      ],
+      "evidence": [
+        "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/copper.json",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/copper.json"
+      ]
+    },
+    "iron": {
+      "preferred": "minecraft",
+      "dust_preferred": "mahoutsukai",
+      "dusts_verified": [
+        "mahoutsukai:powdered_iron",
+        "primalmagick:iron_grit"
+      ],
+      "evidence": [
+        "https://wiki.9minecraft.net/java/mod/mahou-tsukai/powdered-iron/",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/iron.json"
+      ]
+    },
+    "gold": {
+      "preferred": "minecraft",
+      "dust_preferred": "mahoutsukai",
+      "dusts_verified": [
+        "mahoutsukai:powdered_gold",
+        "occultism:gold_dust",
+        "primalmagick:gold_grit"
+      ],
+      "evidence": [
+        "https://wiki.9minecraft.net/java/mod/mahou-tsukai/mortar-and-pestle/",
+        "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/gold.json",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/gold.json"
+      ]
+    },
+    "sulfur": {
+      "dust_preferred": "neovitae",
+      "dusts_verified": [
+        "eidolon_repraised:sulfur"
+      ],
+      "runtime_expected": [
+        "neovitae:sulfur_dust"
+      ],
+      "evidence": [
+        "https://github.com/Alexthw46/Eidolon-Repraised/blob/1.21.1/src/main/resources/data/c/tags/item/dusts/sulfur.json",
+        "https://github-wiki-see.page/m/breakinblocks/NeoVitae/wiki/Pack-Makers-DataMaps-and-Recipes"
+      ]
+    },
+    "quartz": {
+      "gem_preferred": "minecraft",
+      "powder_preferred": "mahoutsukai",
+      "other_sources": [
+        "primalmagick:quartz_ore",
+        "malum:mundane_quartz"
+      ],
+      "note": "Primal Magick has overworld quartz ore (distinct stone strata from vanilla Nether). Malum adds mundane quartz to c:gems/quartz. Do not merge quartz with Pastel special gemstones.",
+      "evidence": [
+        "https://github.com/daedalus4096/PrimalMagick/tree/main/neoforge/src/generated/resources/data/c/tags/item/ores",
+        "https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/generated/resources/data/c/tags/item/gems/quartz.json"
+      ]
+    }
+  },
+  "unique_not_unified": [
+    {
+      "mod": "occultism",
+      "resource": "Iesnium",
+      "reason": "Endgame Occultism-specific metal; preserves acquisition gates"
+    },
+    {
+      "mod": "draconicevolution",
+      "resource": "Draconium and awakened draconium",
+      "reason": "Distinct tiers, multi-dimensional ore yield and planned progression"
+    },
+    {
+      "mod": "replication",
+      "resource": "Deepslate Replica Ore",
+      "reason": "Late miner gated tech resource"
+    },
+    {
+      "mod": "forbidden_arcanus",
+      "resource": "Arcane crystal, runic and stellarite ores",
+      "reason": "Specific magical resources, not mundane metal variants"
+    },
+    {
+      "mod": "eidolon_repraised",
+      "resource": "Arcane gold",
+      "reason": "Alchemically altered gold; not equivalent to vanilla gold"
+    },
+    {
+      "mod": "malum",
+      "resource": "Cthonic gold, soulstone, brilliant and blazing-quartz ores; transformed silver/lead",
+      "reason": "Special alchemical resources with distinct identities"
+    },
+    {
+      "mod": "pastel",
+      "resource": "Azurite, topaz, citrine, moonstone, malachite, onyx, shimmerstone, stratine etc.",
+      "reason": "Separate gems, dimension-specific strata and recipes; no mundane conversion"
+    },
+    {
+      "mod": "primalmagick",
+      "resource": "Rock salt and raw marble ores",
+      "reason": "Distinct resources, iron/gold/copper grits are the conventional overlaps"
+    },
+    {
+      "mod": "totemic",
+      "resource": "No ore duplicates verified from 1.21 source tree",
+      "reason": "Cedar world generation, not conventional mineral overlap"
+    },
+    {
+      "mod": "neovitae",
+      "resource": "Dynamically generated dust/fragments/gravel from discovered ore tags",
+      "reason": "Must inspect generated config and ensure selected generator IDs; do not replace generated items with hand-guessed entries"
+    }
+  ],
+  "pending_live": [
+    "Check tag dumps for all installed JARs (other addons may add additional silver/lead or dust variants).",
+    "Confirm Embers Re-Ignited source branch is the precise compiled build and NeoVitae 1.1.53 generated material entries.",
+    "Validate special ore world-generation paths and Orechid/meteor systems; AU only changes standard ore features.",
+    "Validate recipe remapping, KubeJS Mahou tool durability, legacy tags and effective server recipes."
+  ]
+}
