@@ -26,6 +26,13 @@ public final class MonkSkills {
     public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> ROOT =
             SKILLS.register("monk_root", () -> new SimpleMonkSkill(0));
 
+    public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> OPEN_PALM =
+            SKILLS.register("open_palm", () -> new SimpleMonkSkill(1));
+    public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> POISE =
+            SKILLS.register("unarmored_poise", () -> new SimpleMonkSkill(1));
+    public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> FLEET =
+            SKILLS.register("fleet_footwork", () -> new SimpleMonkSkill(1));
+
     private MonkSkills() { }
 
     private static final class SimpleMonkSkill extends VampirismSkill<IMonkPlayer> {
