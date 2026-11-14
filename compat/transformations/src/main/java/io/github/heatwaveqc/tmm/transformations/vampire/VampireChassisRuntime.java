@@ -143,7 +143,7 @@ public final class VampireChassisRuntime {
             if (projected != VampireNativeAccess.jawrCurrent(player)) {
                 VampireNativeAccess.setJAWRShadowBlood(player, projected);
             }
-        } catch (ReflectiveOperationException | LinkageError e) {
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
             hold(player, "Blood shadow update failed", new IllegalStateException(e));
         }
     }
@@ -182,7 +182,7 @@ public final class VampireChassisRuntime {
             }
             // Canonical mutation hooks sync the JAWR shadow; this is a defensive recheck.
             onNativeBloodChanged(player);
-        } catch (ReflectiveOperationException | LinkageError e) {
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
             hold(player, "JAWR blood transaction translation failed", new IllegalStateException(e));
         }
         return true; // never let a second JAWR food/blood mutation through.
