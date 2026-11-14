@@ -104,6 +104,31 @@ no numerical before/after screenshots or client log were supplied.
 | 4 — Unified spending | Not yet tested. | **OPEN** and **next priority**. |
 | 5–10 other cases | No validated Neo Vitae blood transfer, cross-mod expensive abilities, hunger, weakness/cure, multiplayer or rollback matrix. | **OPEN**. |
 
+## JAWR level-two progression and ability-discovery note (pinned 0.5.39)
+
+JAWR's first native blood cap is **900**. For level 1 -> 2,
+`VampireLeveling.canLevelUpInternal` checks that the original
+`witchery:vampire/1` advancement is held and that the **derived JAWR
+blood** is at least 900; level 2 unlocks **Night Vision** and **Transfix**
+(`ABILITY_REQUIREMENTS` in the pinned JAR). Level 4 unlocks Speed,
+level 7 Bat Form.
+
+Importantly, native `BloodPoolAttachment.setData` calls
+`VampireLeveling.checkAndLevelUp` when the player is level 1.
+Our bridge's shadow setter should therefore cause the level-up once
+the canonical pool fills. **Live regression needed**: fill from
+Vampirism or JAWR to 100%, confirm the JAWR native level becomes 2,
+then reopen JAWR Ability Selection (V by default) and select Night
+Vision or Transfix. If full blood remains level 1, flag as a bridge
+progression defect and preserve diagnostic values.
+
+**Do not use Transfix or the mere activation of Night Vision as proof
+of blood spending.** Pinned `TransfixAbility.use` merely transfixes
+and `NightVisionAbility.use` toggles a state without a direct
+`decreaseBlood` call. A real JAWR charge path must be proven in
+bytecode/live before case 4 is marked testable. Avoid conflating
+progression-unlock success with a single-charge spending pass.
+
 ## Next active test — case 4: debit canonical blood exactly once
 
 Use a disposable, backed-up dual-vampire world. Choose a **JAWR ability
