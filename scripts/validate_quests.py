@@ -94,7 +94,7 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 45, "Expected five groups and 45 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 46, "Expected 46 authored intro quests")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 61, "Expected 61 authored quests")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -114,9 +114,11 @@ def main() -> None:
 
     global_ids: set[str] = {g["id"] for g in groups}
     all_blocks: dict[str, str] = {}
-    item_tasks: dict[str, str] = {}
+    item_tasks: dict[str, list[str]] = {}
     advancement_tasks: dict[str, str] = {}
     reward_items: list[tuple[str, str]] = []
+    coin_quests: set[str] = set()
+    intentional_sale_ids = {"minecraft:copper_ingot", "minecraft:copper_block", "minecraft:emerald", "minecraft:emerald_block", "minecraft:diamond", "minecraft:diamond_block"}
     for c in chapters:
         path = QUESTS / "chapters" / c["filename"]
         text = path.read_text(encoding="utf-8")
@@ -133,7 +135,7 @@ def main() -> None:
             global_ids.add(ident)
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
-        expected = 1 if c["category"] != "Introduction" else {"Getting Started": 11, "Tips & Tricks": 15, "Food & Fishing": 20}[c["name"]]
+        expected = {"Getting Started": 11, "Tips & Tricks": 16, "Food & Fishing": 22, "Basic Progression": 13}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         for block in blocks:
             head = re.match(r'\{\s*id: "([0-9A-F]{16})"', block)
@@ -149,22 +151,32 @@ def main() -> None:
             xp = re.search(r'type: "xp", xp: (\d+)', rewards)
             itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
-            ensure(itm is not None and int(itm.group(2)) > 0, f"Missing item reward on {qid}")
-            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') == 1, f"Unexpected rewards on {qid}")
-            reward_items.append((qid, itm.group(1)))
+            coins = re.search(r'type: "questshop:coins", amount: (\d+)', rewards)
+            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or justified coin reward on {qid}")
+            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "questshop:coins"') == 1, f"Unexpected rewards on {qid}")
+            if itm is not None:
+                reward_items.append((qid, itm.group(1)))
+            else:
+                coin_quests.add(qid)
+                ensure('team: true' in rewards, f"Quest Shop coins must use team-shared one-claim rewards on {qid}")
+                ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
+                ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             for item_id in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}', tasks):
-                ensure(item_id not in item_tasks, f"Accidental repeated item criterion {item_id} in {qid} and {item_tasks.get(item_id)}")
-                item_tasks[item_id] = qid
+                existing = item_tasks.get(item_id, [])
+                if existing:
+                    ensure(item_id in intentional_sale_ids, f"Accidental repeated item criterion {item_id} in {qid} and {existing}")
+                    ensure(qid in coin_quests and all(x in coin_quests for x in existing), f"Repeated criterion {item_id} must be limited to deliberate sales")
+                item_tasks.setdefault(item_id, []).append(qid)
             for advance in re.findall(r'advancement: "([^"]+)"', tasks):
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
-            if c["category"] != "Introduction":
+            if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Basic Progression"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 88, f"Expected 88 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 103, f"Expected 103 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -172,12 +184,19 @@ def main() -> None:
         for key in ("task_id", "xp_reward_id", "item_reward_id"):
             ensure(f'id: "{q[key]}"' in block, f"Lost stable {key} in {q['title']}")
         ensure(f'xp: {q["reward"]["xp"]}' in block, f"Wrong XP in {q['title']}")
-        ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong reward item in {q['title']}")
+        if "item" in q["reward"]:
+            ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong item reward in {q['title']}")
+        else:
+            ensure(qid in coin_quests and f'amount: {q["reward"]["coin"]}' in block, f"Wrong coin reward in {q['title']}")
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
         if q["criterion"]["type"] == "item":
-            ensure(q["criterion"]["id"] in item_tasks and item_tasks[q["criterion"]["id"]] == qid, f"Wrong task for {q['title']}")
+            ensure(q["criterion"]["id"] in item_tasks and qid in item_tasks[q["criterion"]["id"]], f"Wrong task for {q['title']}")
+            if q.get("consume_items"):
+                ensure("consume_items: true" in block, f"Unconsumed sale input in {q['title']}")
+            if q.get("repeatable"):
+                ensure("can_repeat: true" in block, f"Missing repeatability in {q['title']}")
         if q["criterion"]["type"] == "advancement":
             ensure(advancement_tasks.get(q["criterion"]["id"]) == qid, f"Wrong advancement for {q['title']}")
         if q["criterion"]["type"] == "checkmark":
@@ -186,7 +205,23 @@ def main() -> None:
     shortcuts = [(qid, item_id, item_tasks[item_id]) for qid, item_id in reward_items if item_id in item_tasks]
     ensure(not shortcuts, f"Quest item rewards could complete another item task: {shortcuts}")
     ensure(advancement_tasks == {"tmm:first_log": "544D4D1100000001"}, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 28, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 36, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
+    for commodity in intentional_sale_ids:
+        ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
+    shop = json.loads((ROOT / "manifest" / "quest_shop_catalog.json").read_text(encoding="utf-8"))
+    ensure(len(shop["categories"]) == 5, "Shop must have five planned categories")
+    for category in shop["categories"]:
+        cat = category["id"]
+        catfile = ROOT / "kubejs" / "data" / "tmm" / "questshop" / "shop_categories" / (cat + ".json")
+        entriesfile = ROOT / "kubejs" / "data" / "tmm" / "questshop" / "shop_entries" / (cat + ".json")
+        ensure(catfile.is_file() and entriesfile.is_file(), f"Missing shop datapack files for {cat}")
+        parsed = json.loads(entriesfile.read_text(encoding="utf-8"))
+        ensure(len(parsed) == len(category["entries"]), f"Shop item count mismatch for {cat}")
+        for product in parsed:
+            ensure(product["category"] == "tmm:" + cat, f"Wrong namespaced shop category in {cat}")
+            ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
+            ensure(not product["item"].startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:")), f"Shop progression bypass item {product['item']}")
     fn = (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").read_text(encoding="utf-8")
     ensure(fn.count("give @s ars_elemental:curio_bag 1") == 1, "First-log item issued wrong number of times")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
@@ -195,8 +230,8 @@ def main() -> None:
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
     for path in QUESTS.rglob("*.snbt"):
         scan_snbt(path.read_text(encoding="utf-8"), str(path))
-    print(f"PASS: five groups, 45 chapters, {len(all_blocks)} quests; every quest awards XP + item")
-    print("PASS: no duplicate item/advancement objectives, no item reward completing another item-task criterion")
+    print(f"PASS: five groups, 45 chapters, {len(all_blocks)} quests; all give XP and a fixed item or justified coin")
+    print("PASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")
 
 
