@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "io.github.heatwaveqc.tmm.transformations.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "JAWRVampireLevelingMixin",
+    "JAWRBloodPoolMixin",
+    "JAWRVampireEventsMixin",
+    "VampirismBloodStatsMixin",
+    "VampirismSunProtectionMixin"
+  ],
+  "injectors": {"defaultRequire": 1}
+}
