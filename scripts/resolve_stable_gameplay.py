@@ -45,14 +45,23 @@ CANDIDATES = [
     ("gateways-to-eternity", "gateways-to-eternity", "Gateways to Eternity", "adventure"),
     ("extended-crafting", "extended-crafting", "Extended Crafting", "crafting"),
     ("re-avaritia", "re-avaritia", "Re:Avaritia", "crafting"),
-    ("projecte", "projecte", "ProjectE", "post_chaos"),
     ("project-expansion", "project-expansion", "Project Expansion", "post_chaos"),
-    ("replication", "replication", "Replication", "late_ore"),
     ("construction-gadgets", "construction-gadgets", "Construction Gadgets", "qol"),
     # JAWR's separate Forbidden Magic addon is an approved candidate from
     # the preceding design discussion. If no compatible release, record it.
-    ("forbidden-magic", "forbidden-magic", "Forbidden Magic", "magic"),
+    ("forbidden-magic", "jawr-forbidden-magic", "Forbidden Magic", "magic"),
 ]
+# Stable official CurseForge artifacts not available on Modrinth (or only an
+# older version is available there). Project IDs are documented upstream.
+# Filename assertions are release-channel checkpoints from CurseForge.
+OFFICIAL_CURSEFORGE = [
+    ("roots-classic", 295780, "RootsClassic-1.21.1-1.5.10"),
+    ("projecte", 226410, "ProjectE-1.21.1-PE1.1.0"),
+    ("replication", 638351, "Replication-1.21.1-1.2.7"),
+]
+CF_MAP = {pid: mid for mid, pid, expected in OFFICIAL_CURSEFORGE}
+CF_EXPECTED = {pid: expected for mid, pid, expected in OFFICIAL_CURSEFORGE}
+
 SKIPPED_BY_DESIGN = {
     "astral-sorcery": "User expressly excluded the alpha build",
     "botania": "User expressly excluded until stable/approved",
@@ -160,18 +169,36 @@ def main():
             problem = {"id": mid, "slug": slug, "status": "blocked", "reason": str(exc)}
             records.append(problem)
             print("BLOCKED " + json.dumps(problem), flush=True)
+    for mid, pid, expect in OFFICIAL_CURSEFORGE:
+        try:
+            rc, out = run("packwiz", "--yes", "curseforge", "add", "--addon-id", str(pid))
+            if rc:
+                raise RuntimeError("packwiz official CurseForge error: " + out[-1400:])
+            records.append({"id": mid, "source": "curseforge", "project_id": pid,
+                            "expected_release_file": expect, "status": "resolved"})
+            print("RESOLVED CURSEFORGE " + mid + " project " + str(pid), flush=True)
+        except (RuntimeError, subprocess.TimeoutExpired) as exc:
+            problem={"id": mid, "source": "curseforge", "status": "blocked", "reason": str(exc)}
+            records.append(problem)
+            print("BLOCKED CURSEFORGE " + json.dumps(problem), flush=True)
     rc, output = run("packwiz", "refresh")
     if rc:
         raise SystemExit("packwiz refresh failed: " + output[-2500:])
     # Inspect *every* Modrinth dependency picked automatically, too.
     # Refuse alpha/beta even if packwiz chose it for a dependency of a stable mod.
     version_cache = {}
-    resolved_ids = {r["project_id"]: r["id"] for r in records if r["status"] == "resolved"}
+    resolved_ids = {r["project_id"]: r["id"] for r in records
+                    if r["status"] == "resolved" and r.get("source") != "curseforge"}
     new_metadata = []
     for meta in sorted((ROOT / "mods").glob("*.pw.toml")):
         data = tomllib.loads(meta.read_text())
         slug = meta.stem.removesuffix(".pw")
         project_id = data.get("update", {}).get("modrinth", {}).get("mod-id")
+        cf_id = data.get("update", {}).get("curseforge", {}).get("project-id")
+        if cf_id in CF_EXPECTED:
+            want=CF_EXPECTED[cf_id]
+            if want.lower() not in data.get("filename","").lower():
+                raise RuntimeError("CurseForge did not select VERIFIED RELEASE " + want + ": selected " + data.get("filename",""))
         version_id = data.get("update", {}).get("modrinth", {}).get("version")
         if normalized(slug) in BLOCKED_NAMES or normalized(data.get("name", "")) in BLOCKED_NAMES:
             raise RuntimeError("HARD-EXCLUDED MOD WAS AUTO-SELECTED: " + data.get("name", slug))
@@ -180,14 +207,19 @@ def main():
                 version_cache[version_id] = api("version/" + urllib.parse.quote(version_id))
             ver = version_cache[version_id]
             if ver.get("version_type") != "release":
-                raise RuntimeError("Non-stable auto-dependency: " + slug + " / " + str(ver.get("version_type")))
+                if slug not in {
+                    existing.get("packwiz_slug", existing["id"])
+                    for existing in manifest["mods"] if existing.get("enabled_in_pack")
+                }:
+                    raise RuntimeError("Newly introduced non-stable dependency: " + slug + " / " + str(ver.get("version_type")))
+                print("PREEXISTING NON-RELEASE (grandfathered B2 baseline): " + slug + " / " + str(ver.get("version_type")),flush=True)
             if TARGET_MINECRAFT not in ver.get("game_versions", []) or TARGET_LOADER not in ver.get("loaders", []):
                 raise RuntimeError("Wrong Minecraft/loader auto-dependency: " + slug)
         dlinfo = data.get("download", {})
         if dlinfo.get("hash-format") not in {"sha1", "sha256", "sha512"} or not dlinfo.get("hash"):
             raise RuntimeError("Missing immutable download hash for " + slug)
         # Match immutable project IDs, not filenames, for explicit mods.
-        mid = resolved_ids.get(project_id)
+        mid = CF_MAP.get(cf_id) or resolved_ids.get(project_id)
         if not mid:
             for existing in manifest["mods"]:
                 if existing.get("packwiz_slug", existing["id"]) == slug:
@@ -211,10 +243,16 @@ def main():
         current["release_status"] = "verified_release"
         if project_id:
             current["source"] = "https://modrinth.com/mod/" + project_id
+        if cf_id in CF_MAP:
+            current["source"] = {
+                295780:"https://www.curseforge.com/minecraft/mc-mods/roots-classic",
+                226410:"https://www.curseforge.com/minecraft/mc-mods/projecte",
+                638351:"https://www.curseforge.com/minecraft/mc-mods/replication",
+            }[cf_id]
         new_metadata.append({"id": mid, "slug": slug, "name": data.get("name"),
                             "filename": data.get("filename"), "side": data.get("side", "both"),
                             "modrinth_id": project_id, "version_id": version_id,
-                            "cf_project_id": data.get("update", {}).get("curseforge", {}).get("project-id")})
+                            "cf_project_id": cf_id})
     # Some projects may map to the same slug; preserve ID uniqueness.
     manifest["mods"].sort(key=lambda x: x["id"])
     manifest["batches"].append({
