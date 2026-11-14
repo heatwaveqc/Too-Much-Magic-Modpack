@@ -4,7 +4,7 @@
 Magic is the everyday infrastructure, not a cosmetic wrapper around industrial logistics. Independent magic schools must have sustained roles. Resource transport, crafting, storage, navigation and mining should favor occult/magical mechanics. The technology branch is exceptional and late-game.
 
 ## Approved systems
-Neo Vitae (not original Blood Magic); Occultism; Ars Nouveau; Iron's Spells 'n Spellbooks; Theurgy; Astral Sorcery; Botania; Just Another Witchery Remake; Mahou Tsukai; EvilCraft; Roots Classic. Preserve experimental status where appropriate.
+Neo Vitae (not original Blood Magic); Occultism; Ars Nouveau; Iron's Spells 'n Spellbooks; Theurgy; Astral Sorcery; **Botania Revived (approved unofficial port, not yet installed)**; Just Another Witchery Remake and JAWR: Forbidden Magic; Mahou Tsukai; EvilCraft; Roots Classic. Preserve experimental status where appropriate. The extended roster of approved-but-uninstalled systems and exclusions is recorded in [MAGIC-MOD-SURVEY-DECISIONS.md](MAGIC-MOD-SURVEY-DECISIONS.md).
 Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curve subject to item audits. Gateways to Eternity may support renewable combat drops.
 
 ## Exceptional technology
