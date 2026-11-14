@@ -11,6 +11,8 @@ import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireDiagnostics;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireOwnership;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireSubsystem;
+import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisConfig;
+import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisRuntime;
 import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachments;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -25,7 +27,23 @@ public final class TransformationCommands {
     public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("tmmtransform")
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
-                .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))));
+                .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))
+                        .then(Commands.literal("cure").requires(s -> s.hasPermission(2))
+                                .executes(ctx -> cure(ctx.getSource())))));
+    }
+
+    private static int cure(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        if (!VampireChassisConfig.cure()) {
+            source.sendFailure(Component.literal("Operator cure disabled. Requires both experimentalVampireChassis and experimentalOperatorCure in the world SERVER config. Back up the world first."));
+            return 0;
+        }
+        if (VampireChassisRuntime.testCure(player)) {
+            source.sendSuccess(() -> Component.literal("Both vampire states were removed. Verify the player skills, items and food HUD."), false);
+            return 1;
+        }
+        source.sendFailure(Component.literal("Coordinated cure refused or failed. Check native state and admin hold; do not retry automatically."));
+        return 0;
     }
 
     private static int vampire(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
@@ -33,8 +51,11 @@ public final class TransformationCommands {
         StateSnapshot snapshot = ProbeRegistry.observe(player);
         var vampirism = snapshot.get(ProviderState.VAMPIRISM_VAMPIRE);
         var jawr = snapshot.get(ProviderState.JAWR_VAMPIRE);
+        source.sendSuccess(() -> Component.literal("Vampire fusion: chassis=" + VampireChassisConfig.chassis()
+                + ", autoAcquisition=" + VampireChassisConfig.acquisition()
+                + ", operatorCure=" + VampireChassisConfig.cure()), false);
         source.sendSuccess(() -> Component.literal("Vampire fusion diagnostic: Vampirism=" + vampirism
-                + ", JAWR=" + jawr + "; no cross-mod writes or reconciliation enabled"), false);
+                + ", JAWR=" + jawr + "; experimental interception only when enabled in SERVER config"), false);
         source.sendSuccess(() -> Component.literal("Vampirism raw meters: "
                 + VampireDiagnostics.vampirism(player).map(v ->
                         "native level " + v.level() + ", blood " + v.blood() + "/" + v.maxBlood())

@@ -9,7 +9,7 @@ displayName="${mod_name}"
 authors="Too Much Magic contributors"
 description='''
 Infrastructure for the Too Much Magic cross-mod transformation compatibility layer.
-This dev scaffold does not enforce transformations and is not ready for survival use.
+Experimental vampire chassis; all mutation/acquisition/cure controls default OFF.\nNot safe for existing survival worlds until gameplay integration acceptance gates pass.
 '''
 
 [[dependencies.${mod_id}]]
@@ -25,3 +25,6 @@ type="required"
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
+[[mixins]]
+config="tmm_transformations.mixins.json"
