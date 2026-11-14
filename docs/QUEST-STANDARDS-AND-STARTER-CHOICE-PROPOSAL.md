@@ -62,6 +62,10 @@ Every description should pass a truth/consistency audit against the **pinned** m
 >
 > Complete this optional quest and select exactly one reward. Choose carefully: the starting gift is only awarded once per player.
 
+## Shop onboarding note
+
+The catalog currently contains 29 actual purchasable entries across five custom categories, plus one built-in empty General category. Server smoke logs explicitly report `QuestShop datapack loaded: 6 categories, 29 entries`. The cheapest items cost **2 coins** (32 torches or 64 cobblestone), while the first copper contract grants **1 coin**. This is not a bug, but means a player cannot immediately spend their first earned coin. Consider adding a deliberately trivial one-coin purchase as purchase-flow onboarding, or making the first sales quest grant two coins once; preserve the intentional late-sale exchange rates otherwise. Client checkout tests remain required.
+
 ## Proposed validation changes, BEFORE gameplay implementation
 
 - Extend author schema to distinguish `reward.kind` = `item | coins | choice | xp_only | informational`, and explicit `claim_scope` = `player | team` and `repeat_policy`; keep existing IDs unchanged, assign new stable IDs to the choice quest and its options.
