@@ -35,3 +35,7 @@ The previous quest/vampire workflow passed SMOKE_EXTRA_MOD_JAR to scripts/smoke_
 ## Promotion
 
 A passing integrated CI result may be **frozen as Candidate** by preserving its commit SHA and exact ZIP checksum. **Stable** promotion must be a separate explicit, human-approved tagging operation with relevant in-world test evidence. Neither stable nor candidate refs should automatically move when an experimental branch changes.
+
+## Tester-only Prism preferences
+
+The full-integration **Windows QA ZIP** seeds a minimal 1.21.1 `options.txt` and uses local Prism pre-load/post-exit scripts to carry keybindings, GUI/chat scale and audio volumes across separate imported test instances. Its persistent profile is kept outside each instance under `%LOCALAPPDATA%\\TooMuchMagic\\TestPreferences`; no personal data is sent to GitHub. The old-instance capture helper is optional. **Neither these defaults nor the hooks are allowed in a public/stable distribution.** Release candidates intended for other players must omit these files and launcher commands; see [the test-preferences contract](PRISM-TEST-PREFERENCES.md). The personal QA sync is only a testing convenience, not a replacement for fresh-world regression tests or pack config review.
