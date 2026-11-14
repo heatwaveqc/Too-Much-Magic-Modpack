@@ -50,6 +50,24 @@ the referenced upstream mods coexist. The bridge has source/binary-verified read
 
 The passive **Vampirism 1.10.13** vampire/hunter and **JAWR 0.5.39** vampire observers are now installed in source, with explicit UNKNOWN fallback. Both JARs were hash-verified in [research CI](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43612789188); exact binary player attachment signatures were extracted. The current build adds `/tmmtransform vampire` to read both native progression and blood values. **Actual untransformed/vampire/client-world tests are still pending.** Do not enable united physiology merely because the observers compile. See [vampire deep audit](VAMPIRE-FUSION-AUDIT-2026-11-14.md).
 
+## Approved new integration requirement — Mahou Drain Life (2026-11-14)
+
+Mahou Tsukai's **Boundary of Drain Life** rewards a successful drain in
+order of caster missing health, hunger restoration when health is full,
+then Mahou regeneration. Owner requests that the hunger step fill a dual
+vampire's **canonical Vampirism blood** instead of vanilla FoodData, while
+JAWR's blood UI derives from that same pool. Respect Mahou's
+`DRAIN_LIFE_IGNORE_HUNGER` option; when hunger rewards are disabled,
+do not introduce bonus vampire blood. Preserve health-first priority,
+mana fallback at full canonical blood, original boundary mana expenditure,
+target-acceptance/count limits and non-vampire behavior. No second pass
+on FoodData, free healing, or duplicate rewards.
+
+Status **DESIGN ACCEPTED / NOT IMPLEMENTED**. Audit exact Mahou Tsukai
+1.36.31 JAR for the reward branch; then implement a guarded server-side
+compat adapter with arithmetic and regression tests. See vampire live
+test plan for full/partial/empty/normal-player validation.
+
 ## Bootstrap files
 
 `compat/transformations/` contains Gradle project, core snapshot classifier,
