@@ -118,6 +118,7 @@
     "design/quest-standards-starter-choice-2026-11-14": "Quest reward and starter-path standards proposal only; not yet a new quest runtime implementation"
   },
   "pending_runtime_work": [
+    "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
     "Core Magic Tyz overlay is source-stageable and statically validated but not installed in packwiz until Tyz 6.4.2 is pinned; no playable skill UI yet",
     "Tyz 6.4.2 pack pin and MXP-only XP runtime bridge not yet implemented on an active branch",
     "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
