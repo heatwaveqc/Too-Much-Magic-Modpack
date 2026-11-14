@@ -22,7 +22,7 @@ PROJECTS=[
  ("keybind-bundles",1172594,"keybindbundles-1.5.0.jar","client"),
  ("enchantment-descriptions",250419,"enchdesc-neoforge-1.21.1-21.1.11.jar","client"),
  ("better-advancements",272515,"BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar","client"),
- ("oracle-index",1206582,"oracle_index-neoforge-1.4.0.jar","client"),
+ ("oracle-index",1206582,"oracle_index-neoforge-1.4.1.jar","client"),
  ("more-overlays-updated",391382,"moreoverlays-1.24.2-mc1.21.1-neoforge.jar","client"),
  ("spark",361579,"spark-1.10.124-neoforge.jar","both"),
  ("natures-compass",252848,"NaturesCompass-1.21.1-3.4.0-neoforge.jar","both"),
@@ -53,6 +53,7 @@ def main():
   # other files are validated against the ATM10 baseline below.
   args=["packwiz","--yes","curseforge","add","--addon-id",str(project)]
   if id=="crafting-tweaks":args+=["--file-id","8697050"]
+  if id=="oracle-index":args+=["--file-id","9506889"]
   run(*args)
   files=[]
   for path in sorted((ROOT/"mods").glob("*.pw.toml")):

@@ -1,4 +1,5 @@
 name: B8 selected QoL compass market resolve and client package
+# Oracle Index updated to verified stable 1.4.1, official MC1.21.1 file 9506889.
 on:
   push:
     branches: [build/b8-qol-compass-farming-market]

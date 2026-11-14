@@ -11,7 +11,7 @@ The user approved **Nature's Compass and the other QoL mods** recommended in the
 | keybind-bundles | radial selection of many magic keybinds | 1172594 | keybindbundles-1.5.0.jar |
 | enchantment-descriptions | enchantment tooltips | 250419 | enchdesc-neoforge-1.21.1-21.1.11.jar |
 | better-advancements | advancements user interface | 272515 | BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar |
-| oracle-index | in-game ModdedMC.wiki viewer | 1206582 | oracle_index-neoforge-1.4.0.jar |
+| oracle-index | in-game ModdedMC.wiki viewer | 1206582 | oracle_index-neoforge-1.4.1.jar |
 | more-overlays-updated | light/spawn, chunk, JEI chest search | 391382 | moreoverlays-1.24.2-mc1.21.1-neoforge.jar |
 | spark | profiler for server/client | 361579 | spark-1.10.124-neoforge.jar |
 | natures-compass | find distant biomes (explicitly approved) | 252848 | NaturesCompass-1.21.1-3.4.0-neoforge.jar |
@@ -19,7 +19,7 @@ The user approved **Nature's Compass and the other QoL mods** recommended in the
 | balm | required library (Crafting Tweaks, Farming for Blockheads) | 531761 | balm-neoforge-1.21.1-21.0.67.jar |
 | bookshelf | required library (Enchantment Descriptions) | 228525 | bookshelf-neoforge-1.21.1-21.1.81.jar |
 
-Source: official ATM10 `config/crash_assistant/modlist.json` from https://github.com/AllTheMods/ATM-10, plus mod-author CurseForge project pages. This is the **prior ATM10 release snapshot** — newer compatible upstream versions are not accepted without verification.
+Source: official ATM10 `config/crash_assistant/modlist.json` from https://github.com/AllTheMods/ATM-10, plus mod-author CurseForge project pages. This uses the **ATM10 release snapshot** except **Oracle Index 1.4.1 (NeoForge MC 1.21.1 stable, CurseForge file 9506889)**, verified from its official project listing: https://www.curseforge.com/minecraft/mc-mods/oracle-index/files/9506889 . Newer upstream files are never accepted silently.
 
 ## Intentional exclusions / pending decisions
 - **Waystones** explicitly declined. No Waystones mod or teleportation stone recipe.
