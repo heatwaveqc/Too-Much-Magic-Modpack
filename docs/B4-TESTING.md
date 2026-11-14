@@ -9,6 +9,7 @@ Pre-existing B3 stable baseline: 64 mods; 57 server JARs; full dedicated-server 
 | Stage | Exact mod(s) | Result |
 |---|---|---|
 | reactor | bigger-reactors-rework | **PASS** |
+| astral | observerlib, astral-sorcery | **PASS** |
 
 ## Detailed results
 
@@ -19,6 +20,14 @@ Pre-existing B3 stable baseline: 64 mods; 57 server JARs; full dedicated-server 
 - Log: `[m[1;31m[03:24:04.236] [main/ERROR] [loading.moddiscovery.ModFile/LOADING]: Access transformer file accesstransformer.cfg provided by mod projectexpansion does not exist!`
 - Log: `[m[33m[03:24:07.673] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)`
 - Log: `[m[33m[03:24:07.682] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)`
+
+### astral: PASS
+- CI run: https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43551344358
+- Packwiz added: observerlib, astral-sorcery
+- Observed boot: Clean server readiness and stop; JAR hashes verified
+- Log: `[m[1;31m[03:25:26.824] [main/ERROR] [loading.moddiscovery.ModFile/LOADING]: Access transformer file accesstransformer.cfg provided by mod projectexpansion does not exist!`
+- Log: `[m[33m[03:25:30.247] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)`
+- Log: `[m[33m[03:25:30.258] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)`
 
 ## Constraints and untested items
 - **Reactor selection:** BiggerReactors Rework by vindocel, not Bigger Reactors Revived. Different registry namespace `biggerreactorsrework` and not backward-compatible with original worlds.

@@ -118,11 +118,13 @@
       "name": "Astral Sorcery",
       "category": "magic",
       "desired": true,
-      "version": "2.0.3",
+      "version": "AstralSorcery-2.0.3.59",
       "release_status": "experimental_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "source": "https://www.curseforge.com/minecraft/mc-mods/241721",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "astral-sorcery",
+      "note": "Explicit experimental testing candidate and exact pinned dependency"
     },
     {
       "id": "better-advanced-tooltips",
@@ -691,11 +693,13 @@
       "name": "ObserverLib",
       "category": "dependency",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "observerlib-1.10.3",
+      "release_status": "experimental_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/316833",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "observerlib",
+      "note": "Explicit experimental testing candidate and exact pinned dependency"
     },
     {
       "id": "occultism",
@@ -1108,9 +1112,11 @@
       "id": "B6",
       "name": "BiggerReactors Rework and experimental Astral/Botania/Draconic",
       "members": [
-        "bigger-reactors-rework"
+        "astral-sorcery",
+        "bigger-reactors-rework",
+        "observerlib"
       ],
-      "status": "stage_reactor_awaiting_boot"
+      "status": "stage_astral_awaiting_boot"
     }
   ]
 }
