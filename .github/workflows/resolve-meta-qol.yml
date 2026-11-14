@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 'stable'
+      - name: Validate resolver Python syntax
+        run: python3 -m py_compile scripts/resolve_meta_qol.py scripts/download_mods.py scripts/validate.py
       - name: Compile packwiz and resolve the entire requested stack
         run: |
           go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
