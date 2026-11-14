@@ -93,6 +93,15 @@ for id,expected in (
 ):
     assert ing(id)=={"item":expected}, f"Special ore ambiguity: {id}: {ing(id)}"
 assert output("pastel:smelting/blackslag_ores/copper").get("id")=="minecraft:raw_copper"
+# Enchanted's lime keeps furnace priority; Pastel's decorative polished
+# calcite is stonecuttable and still available through blast furnace.
+assert ing("enchanted:quicklime")=={"item":"minecraft:calcite"}
+assert output("enchanted:quicklime").get("id")=="enchanted:quicklime"
+assert output("pastel:blasting/calcite_to_polished_calcite").get("id")=="pastel:polished_calcite"
+stone=req("tmm:stonecutting/polished_calcite")
+assert stone["type"]=="minecraft:stonecutting",stone
+assert stone["result"].get("id")=="pastel:polished_calcite",stone
+assert stone["ingredient"] in ({"item":"minecraft:calcite"},[{"item":"minecraft:calcite"}]),stone
 
 removed=[
  "malum:copper_ingot_from_nugget",
@@ -114,6 +123,7 @@ removed=[
  "neovitae:materials/smelting_netherite_scrap_dust",
  "neovitae:materials/blasting_netherite_scrap_dust",
  "botania:botania_extras/smelting/charcoal_white_iridescent",
+ "pastel:smelting/calcite_to_polished_calcite",
  "tmm:iron_dust_smelting",
  "tmm:iron_dust_blasting",
  "tmm:gold_dust_smelting",
@@ -149,6 +159,9 @@ watched=[
  "minecraft:quartz",
  "malum:natural_quartz_from_blasting",
  "pastel:smelting/blackslag_ores/copper",
+ "enchanted:quicklime",
+ "pastel:blasting/calcite_to_polished_calcite",
+ "tmm:stonecutting/polished_calcite",
 ]
 for ids in dust_sources.values():watched.extend(ids[:2])
 watched.extend(["embers:silver_ingot_from_smelting_raw_silver","embers:copper_nugget_to_ingot"])
