@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\nB13: owner requested /sethome and /rtp available without OP; 2101.1.10 exact official NeoForge file pinned and server/client QA pending.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -1940,6 +1940,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "ftb-essentials",
+      "name": "FTB Essentials (NeoForge)",
+      "category": "qol",
+      "desired": true,
+      "version": "2101.1.10",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-essentials/files/8442866",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "B13: official FTB Essentials 2101.1.10 NeoForge 1.21.1 CurseForge 410811/8442866. Explicit home and rtp enablement in config and defaultconfigs. One home per player, 10s home cooldown, 600s RTP cooldown, 500-25000 blocks from spawn. Gameplay permissions and teleport behavior need fresh world QA.",
+      "packwiz_slug": "ftb-essentials"
     }
   ],
   "excluded": [
@@ -2302,6 +2315,14 @@
         "puzzles-lib"
       ],
       "status": "server_smoked_prism_client_pending"
+    },
+    {
+      "id": "B13",
+      "name": "FTB Essentials: player sethome/home and random teleport",
+      "members": [
+        "ftb-essentials"
+      ],
+      "status": "server_smoked_client_command_test_pending"
     }
   ]
 }

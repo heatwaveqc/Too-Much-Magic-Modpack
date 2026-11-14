@@ -1,6 +1,198 @@
 hash-format = "sha256"
 
 [[files]]
+file = "compat/transformations/README.md"
+hash = "56e3cf0f8514a6eeb9f02ec2743544b89243e62e990f376be43c4fcd9a7a8fe0"
+
+[[files]]
+file = "compat/transformations/build.gradle"
+hash = "60ee8cc75e94c93440c3e30d0f72f21abffc4c80d7ee3bd3e3b92d2c752322a3"
+
+[[files]]
+file = "compat/transformations/gradle.properties"
+hash = "f3e23aa2d097b0390969c74037e2708b177993fbc6b2e2e33ed55102917bb0ad"
+
+[[files]]
+file = "compat/transformations/settings.gradle"
+hash = "85a69ff573e82e7d709ccc6baa5c8b84752cb6749ac1375f31d558662111876d"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/TransformationsMod.java"
+hash = "fdc84cde37ae131e7fb5c1be29714cedc1275329a05e7345b12c9a25faf24616"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/adapters/JAWRVampireProbe.java"
+hash = "d046e9fa371f324f698c45fa2dfc03250d027a961026b0f03910c4619ec4a4f6"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/adapters/ProbeRegistry.java"
+hash = "a582548465abbe96bf5df8a5f8cc5daec0d0d660b0ce3e9d40611b2a6205ebd3"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/adapters/TransformationProbe.java"
+hash = "ac9884213b505169968015a08a738e36cba29475a9252ec1e40543e232a587f7"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/adapters/VampirismFactionProbe.java"
+hash = "6d491081e667af622ecfe15207a69dc0be147fdbf8a74f42af27205af0271e26"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/command/TransformationCommands.java"
+hash = "ae15b58dc93df8b58f2963f5d7b8c1a6250b957c62a8ea2847bf6035cb266c3c"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/EffectiveForm.java"
+hash = "67314de1c26480e9849767cb4abd2977b1e2f20fb00441878c85664b50a34add"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/FormResolver.java"
+hash = "97d6b7b542cffc218c4d4d8d435fefdd4a0527bbf15810265ad91072f5d86a3c"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/Observation.java"
+hash = "ec4a5facf96bcab35a1a01f5aac7a33081eb75a58372f4cedfe7780485df7e18"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/ProviderState.java"
+hash = "157ebf0e687d90db94c55316378afbff38ac791ef0c5a6464b73d548501bcd8c"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/StateSnapshot.java"
+hash = "dfc0e4b39a82f7348b6ff5dcddb4d4e232ec999610184fc80f7c80db08363ef7"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/TransitionDecision.java"
+hash = "a5bc83b668cc74f81824dd03aabf6ffd411f89eb57ad8cd5960bf82c134ad380"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/TransitionKind.java"
+hash = "9aed2b5806df19fec044ef4e69c25e8d3b609f0bdfd213a95e11ecf396e4c0af"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/TransitionPolicy.java"
+hash = "94dbdd7a5190aa7a73a461adf338031286e67d211c767cf194ce48d03401f560"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/mixin/JAWRBloodPoolMixin.java"
+hash = "f1c43d3f2020ccde201ddd3e72d0433a79b1c25f3e9818183c2a2c9194a114c0"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/mixin/JAWRVampireEventsMixin.java"
+hash = "d003e8eba5c975843208247bd27ff00948daf21f6eed8dbad5f2f094a9235844"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/mixin/JAWRVampireLevelingMixin.java"
+hash = "1859493d6aa0ee94ae542f12bb9fec0f70cbe7092634672ba1e029ae3033b960"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/mixin/VampirismBloodStatsMixin.java"
+hash = "bbf65742f3725f98cb3932ab6ff02cf5f6727b9226f764bb425de121bd828566"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/mixin/VampirismSunProtectionMixin.java"
+hash = "2f513fe7b950df2ca5706ca661a2420be1f3ee2821ca31cd739b08cf4f1855ea"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/storage/ReviewRecord.java"
+hash = "9a6712ba37f61422fd5a5b46b17788c51d58f929a8969ccbd4795351b356e249"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/storage/TransformationAttachments.java"
+hash = "5a9671327591783d4a0706f89d499a4f13cb495de8966f96f2d2b2c80e0daf4e"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/JAWRDefenseEvents.java"
+hash = "569c18f08942be366e38c4e9ae51012b6e5d9bc7372e5defaba643dd3b7d208a"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/JAWRVampireProtection.java"
+hash = "8afebd65ff27d764f2b703e4bac5d36bb82ab54b464f6885a2c687fe9ec29b9b"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireBloodCarry.java"
+hash = "8d98d590d7f7b1d327ed2fc94c726dd2f29a56648cfa241e1e72c52f6bfbf490"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireBloodCarryCodec.java"
+hash = "9beff783a9f03fe76fee8582f086c7e45b59162f95461dec29da8adffeca5d52"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireBloodMath.java"
+hash = "f57f76e1ca84fe4270f0d73d3e2a0a0a41fbaec12f4dae325bf14795e12db63d"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireChassisConfig.java"
+hash = "e3085c1e5147fe53b986b8f0632dc612de55b42816a72a65734a5c35d0e949a5"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireChassisRuntime.java"
+hash = "6f70db3abce9913837a0a58077a193faf43a6ef95394e7c7c2d599d15a5d0f73"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireDiagnostics.java"
+hash = "b980e30c900750ca5048d7d931d366c915c0fb514b43ffa0fd042ffd61ffb6d2"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireFactionEvents.java"
+hash = "cfd9f7cc734d370e9e7a14407019d58079f44245f52466b7960f46fee6fda520"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireLifecycleEvents.java"
+hash = "82aedaed0f372435bd8b35cc4ecd7ffb6b85e3a1f4cdde4731fa815c55edbbd2"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireNativeAccess.java"
+hash = "4d444a616ef4b6511a4fe0ecf60510400fd7f71913597e97e0a8f4f9b00fdfcb"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireOwner.java"
+hash = "4d5e74df21b02bc210e80f04c3a818bcb215c4721e976a3fec2926f1ab08c304"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireOwnership.java"
+hash = "74b5bc9fea52d2163dc859ee2015aabf292b4647fd41b1ffe6d214211c59a755"
+
+[[files]]
+file = "compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireSubsystem.java"
+hash = "53b1fd116fca6ed81467df41a5ff3850ff6ef6f3919591a6d57fb2d17350d76b"
+
+[[files]]
+file = "compat/transformations/src/main/resources/tmm_transformations.mixins.json"
+hash = "1e60256e65487c4ccf84abf98004f170028d58b0310a175df2d30c61af9e8724"
+
+[[files]]
+file = "compat/transformations/src/main/templates/META-INF/neoforge.mods.toml"
+hash = "7ebbffb5ed09827903b56ab9942902181d54c2748427ad7970214d3f844d7012"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/core/FormResolverTest.java"
+hash = "0c8abb9e1d2dde6bfeb26e3423c2946e8e21d88febdf89e1ac9f36f6a52d3c03"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/core/TransitionPolicyTest.java"
+hash = "f576a7b2ff6a7bd6d9563fba35686e902b2e1ec920961acfb528badc3fff19b2"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireBloodCarryTest.java"
+hash = "f8d9f7bff7c8bb0ce5a1f06c7c849720d538a2191295664331a7350280e155d3"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireBloodMathTest.java"
+hash = "95c3b7dbe847fa1c194a8f5a54e4b7a3936b64c35bde0bdd5f8e9cb44bad21b6"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireChassisContractTest.java"
+hash = "998cd1928f001a42412b48a776e0f9d9039082ae1ec5a1498bd87fbe7bab0842"
+
+[[files]]
+file = "compat/transformations/src/test/java/io/github/heatwaveqc/tmm/transformations/vampire/VampireOwnershipTest.java"
+hash = "52daa16cf2ef19200f9d1b820b4117fd8076339bb23ab1bfff168daf5e95ae23"
+
+[[files]]
+file = "config/ftbessentials.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
@@ -189,8 +381,16 @@ file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "7071c451494b21d645ab8fc98f43c710ee770289725fee8473eb3f5f5b435ccf"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
+
+[[files]]
+file = "defaultconfigs/ftbessentials-server.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
@@ -542,6 +742,11 @@ hash = "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521"
 metafile = true
 
 [[files]]
+file = "mods/ftb-essentials.pw.toml"
+hash = "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df"
+metafile = true
+
+[[files]]
 file = "mods/ftb-library-forge.pw.toml"
 hash = "df64ca595f6f0f79e3a4a844fd0a887b44f5e007f5deb9ac011b5cf67b3a2127"
 metafile = true
@@ -682,6 +887,11 @@ hash = "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5"
 metafile = true
 
 [[files]]
+file = "mods/leaves-be-gone.pw.toml"
+hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
+metafile = true
+
+[[files]]
 file = "mods/lionfish-api.pw.toml"
 hash = "64acab1580ca6edd8b1dd185e914aeee7aa551a88a7cd7f0f9370a82aaadfef6"
 metafile = true
@@ -759,6 +969,11 @@ metafile = true
 [[files]]
 file = "mods/occultism.pw.toml"
 hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
+metafile = true
+
+[[files]]
+file = "mods/octolib.pw.toml"
+hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
 metafile = true
 
 [[files]]
@@ -857,6 +1072,11 @@ hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
 metafile = true
 
 [[files]]
+file = "mods/puzzles-lib.pw.toml"
+hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
+metafile = true
+
+[[files]]
 file = "mods/quest-giver.pw.toml"
 hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
 metafile = true
@@ -867,8 +1087,18 @@ hash = "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9"
 metafile = true
 
 [[files]]
+file = "mods/relics.pw.toml"
+hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
+metafile = true
+
+[[files]]
 file = "mods/reliquary-reincarnations.pw.toml"
 hash = "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5"
+metafile = true
+
+[[files]]
+file = "mods/reliquified-artifacts.pw.toml"
+hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
 metafile = true
 
 [[files]]
@@ -937,6 +1167,16 @@ hash = "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99"
 metafile = true
 
 [[files]]
+file = "mods/trashslot.pw.toml"
+hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
+metafile = true
+
+[[files]]
+file = "mods/treechop.pw.toml"
+hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
+metafile = true
+
+[[files]]
 file = "mods/unfocused.pw.toml"
 hash = "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e"
 metafile = true
@@ -955,42 +1195,3 @@ metafile = true
 file = "mods/werewolves-become-a-beast.pw.toml"
 hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
-
-[[files]]
-file = "mods/trashslot.pw.toml"
-hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
-metafile = true
-
-[[files]]
-file = "mods/treechop.pw.toml"
-hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
-metafile = true
-
-[[files]]
-file = "mods/leaves-be-gone.pw.toml"
-hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
-metafile = true
-
-[[files]]
-file = "mods/relics.pw.toml"
-hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
-metafile = true
-
-[[files]]
-file = "mods/reliquified-artifacts.pw.toml"
-hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
-metafile = true
-
-[[files]]
-file = "mods/octolib.pw.toml"
-hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
-metafile = true
-
-[[files]]
-file = "mods/puzzles-lib.pw.toml"
-hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
-metafile = true
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7071c451494b21d645ab8fc98f43c710ee770289725fee8473eb3f5f5b435ccf"
