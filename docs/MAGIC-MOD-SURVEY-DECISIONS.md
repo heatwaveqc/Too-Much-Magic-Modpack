@@ -57,8 +57,6 @@ Decision required after actual repo/release examination. **No implied approval a
 
 These are **not** hard bans. User is leaning against them unless an actual distinctive mechanic justifies reconsideration:
 
-- Vampirism
-- Werewolves
 - Howling Werewolf
 - Toil and Trouble — **overlap confirmed, not exact duplication**: Iron's Spells already provides an Alchemist Cauldron with fluid-based Brew/Fill/Empty recipes, ink and elixir production; Toil and Trouble adds conventional Brewing Stand potion recipes to vanilla cauldrons (and dipped tipped arrows). Keep soft-excluded, as the value appears incremental. Sources: https://iron.wiki/changelog/ and https://modrinth.com/mod/toil-and-trouble .
 - Spells & Shields
@@ -114,3 +112,11 @@ Next discussion: compare distinct mechanics, active development and integration 
 1. Review roster discrepancies and any cases where a previously stated exclusion might conceal distinct mechanics, **without overriding user decisions**.
 2. Investigate the four maturity-test candidates and the fourteen *tell me more* candidates; verify exact 1.21.1 NeoForge artifacts and source repositories.
 3. In a later build batch, resolve full dependency closures and license terms, pin approved viable mods with packwiz, perform combined server and client testing and record blockers.
+
+## H. Newly approved supernatural factions (2026-11-13 follow-up)
+
+- **Vampirism — Become a Vampire!** — explicitly approved. Release evidence: [CurseForge](https://www.curseforge.com/minecraft/mc-mods/vampirism-become-a-vampire/files/all?page=1&version=1.21.1), `Vampirism-1.21-1.10.13`, NeoForge 1.21.1 release dated 2026-09-05. Adds vampire/hunter factions, territorial mechanics, a Vampire Forest biome and powers.
+- **Werewolves — Become a Beast!** — explicitly approved as the *Vampirism addon*, not Howling Werewolf. Release evidence: [CurseForge](https://www.curseforge.com/minecraft/mc-mods/werewolves-become-a-beast), `Werewolves-1.21-2.0.3.3`, NeoForge 1.21.1 release dated 2026-03-25. Requires Vampirism; new faction/forms and Werewolf Heaven biome.
+- **Defer** skill-tree point limits, caps, levels and inter-mod balance to a dedicated later pass. Exact dependency closure and version pairing still require validation before packwiz installation.
+- This approval does **not** approve every additional Vampirism addon. The pre-existing ten named addon approvals remain separate.
+
