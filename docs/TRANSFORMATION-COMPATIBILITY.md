@@ -34,7 +34,7 @@ Sources:
 3. Acquiring a transformation requires checking all **actual mod state providers**. An in-pack owner registry is useful for diagnostics but cannot be the sole source of truth. Allow upgrades to the already-owned physiology. Block *new incompatible* state before it applies, not merely remove it on a later game tick.
 4. A player may change physiology only through a **verified cure/reversal/transition** that leaves no stale diet, blood, flight, model, death, phylactery, soul-energy or faction state. Goety's standard lichdom cannot be reversed normally, so changing away from it should require explicit controlled administrative or custom ritual support, not silently stripping flags.
 5. Exception pairs (e.g. **dragon+lich**, **witchery vampire+witchery lich**) may be **explicitly whitelisted later**. Each exception must define *exactly one owner* for hunger/blood/food, and test sunlight, immunities, equipment, flight, rendering, death/respawn and cure. JAWR's basic lich+vamp handler alone is not such a proof.
-6. Keep hunter *profession/faction* distinct from vampire *physiology* in the policy. The existing bridge below blocks any Vampirism faction from dragon altars, potentially including human hunters: decide whether this conservatism is acceptable or whether to narrow it.
+6. **Hunter is a protected, modified-human physiology**, acquired by garlic injection at a special chair. Grant immunity to involuntary permanent species conversions from all selected mods, not just native Sanguinare. A deliberate player-confirmed transformation ritual removes this protected Hunter state before applying the new physiology. Exact ritual costs and penalty handling remain to be designed. See [HUNTER-AND-VAMPIRE-COMPARISON.md](HUNTER-AND-VAMPIRE-COMPARISON.md).
 7. No automatic de-transformation, silent data wipe or ticking cure. For preexisting illegal combinations: flag for admin review, back up data and offer a controlled resolution.
 
 ### Mechanism: a small NeoForge cross-mod bridge
@@ -68,7 +68,7 @@ Source: https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/mai
 ## Outstanding user decisions
 
 - Adopt *exclusive primary persistent physiology by default* as the formal rule?
-- Treat Vampirism's **hunter faction** as compatible with dragon physiology or disallow all factions as the existing helper does?
+- Under current rule, a deliberate ritual from protected Hunter to dragon **replaces** Hunter rather than stacking; a mixed dragon+hunter faction would require its own named exception. What should the intentional ritual cost in Hunter experience and levels?
 - Allow any **explicit exceptions** (such as dragon+lich / vampire+lich) after empirical testing, or keep exclusive permanently?
 - Retain or disable Dragon Survival's unique diet once there is reliable exclusivity?
 
