@@ -3,6 +3,11 @@
 ## Vision
 Magic is the everyday infrastructure, not a cosmetic wrapper around industrial logistics. Independent magic schools must have sustained roles. Resource transport, crafting, storage, navigation and mining should favor occult/magical mechanics. The technology branch is exceptional and late-game.
 
+## Core magic and progression policy (clarification 2026-11-13)
+- **Ars Nouveau is a core, selected magic mod** of this pack. Keep it and its seven user-approved addons: Ars Additions, Ars Controle, Ars Elemancy, Ars Elemental, Ars 'n Spells, Ars Ocultas, and Ars Unification. A former suggestion to "avoid Ars Nouveau" was mistaken and does not apply to this modpack.
+- **Pufferfish's Skills** and **Pufferfish's Attributes** are now approved *planned* components for a custom, cross-mod player skill tree (combat, magic, summon, crafting). The intent is not to install Default Skill Trees automatically or replace mods' native progression, such as Astral Sorcery's perk tree.
+- Both remain **inactive** until packwiz pinning, dependency validation, server/client smoke, and skill-tree design. Upstream Skills 0.19.2 for 1.21.1 NeoForge is beta-tagged; this planning decision **does not authorize installing that beta** into the base release build. Attributes 0.8.3 has a release-channel artifact.
+
 ## Approved systems
 Neo Vitae (not original Blood Magic); Occultism; Ars Nouveau; Iron's Spells 'n Spellbooks; Theurgy; Astral Sorcery; Botania; Just Another Witchery Remake; Mahou Tsukai; EvilCraft; Roots Classic. Preserve experimental status where appropriate.
 Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curve subject to item audits. Gateways to Eternity may support renewable combat drops.
