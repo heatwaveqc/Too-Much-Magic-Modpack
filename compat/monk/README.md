@@ -1,3 +1,9 @@
+> **PRIMARY TYZ TREE OWNERSHIP (2026-11-14):** No second Monk Tyz engine.
+> The primary global MXP/Tyz branch owns all shared skills and XP; this Monk
+> module owns only its Vampirism faction state, permissions and original/unique
+> Monk effect adapters. No repeated purchase of universal magic bonuses.
+> See [cross-branch reconciliation](../../docs/MONK-INTEGRATION-WITH-PRIMARY-TYZS-TREE.md).
+
 > **Current Monk catalog target (2026-11-14):** No Pufferfish Skills.
 > Tyz 6.4.2 handles new rank purchases; Improvable Skills 3 remains a separate
 > existing general perk engine; native Vampirism Monk faction handles identity,
