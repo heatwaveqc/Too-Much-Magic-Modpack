@@ -1,0 +1,116 @@
+name: Resolve stable gameplay mods and boot server
+on:
+  push:
+    branches: [build/b3-stable-magic-tectonic]
+    paths:
+      - '.github/workflows/resolve-stable-gameplay.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Compile and verify Python scripts
+        run: python3 -m py_compile scripts/resolve_stable_gameplay.py scripts/download_mods.py scripts/smoke_server.sh 2>/dev/null || python3 -m py_compile scripts/resolve_stable_gameplay.py scripts/download_mods.py scripts/validate.py
+      - name: Install packwiz
+        run: |
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Resolve every stable release and its prerequisites
+        id: resolver
+        continue-on-error: true
+        run: |
+          python3 scripts/resolve_stable_gameplay.py
+          packwiz list
+      - name: Start hash-verified full gameplay dedicated server
+        id: smoke
+        if: steps.resolver.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '420'
+          WORK_DIR: ${{ runner.temp }}/tmm-b3-gameplay
+        run: bash scripts/smoke_server.sh
+      - name: Document result and commit resolved pins
+        if: steps.resolver.outcome == 'success'
+        env:
+          TEST_OUTCOME: ${{ steps.smoke.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          evidence=json.loads(Path('docs/B3-RESOLUTION.json').read_text())
+          mods=evidence['metafiles']
+          blocked=[c for c in evidence['candidates'] if c['status']=='blocked']
+          passed=os.environ.get('TEST_OUTCOME')=='success'
+          s=['# Stable gameplay + Tectonic batch',
+             '',
+             f'**Dedicated-server smoke: {"PASS" if passed else "FAILED / NOT COMPLETED"}**.',
+             '',
+             f'- Run evidence: {os.environ["RUN_URL"]}',
+             f'- Minecraft {evidence["minecraft"]}, NeoForge 21.1.265, Java 21.',
+             f'- {len(mods)} pinned mod artifacts; {evidence["now_count"]-evidence["before_count"]} newly added.',
+             f'- {len(blocked)} explicitly requested candidates unresolved (exact diagnostics in B3-RESOLUTION.json).',
+             '- Client graphics, menu and world entry: **NOT TESTED**.',
+             '- ProjectE/Expansion are *present for boot test only*; their post-Chaos Guardian gameplay gates have NOT been implemented.',
+             '- Astral Sorcery, Botania, and beta Draconic Evolution are intentionally excluded.',
+             '',
+             '## Unresolved requested mods']
+          for c in blocked:
+              s.append(f'- `{c["id"]}`: {c["reason"]}')
+          if not blocked: s.append('- None from the release-channel Modrinth resolution candidates.')
+          Path('docs/B3-TESTING.md').write_text('\n'.join(s)+'\n')
+          m=Path('manifest/mods.json')
+          data=json.loads(m.read_text())
+          for batch in data['batches']:
+              if batch['id']=='B5':
+                  batch['status']='server_smoked_client_pending' if passed else 'server_boot_failed'
+          m.write_text(json.dumps(data,indent=2)+'\n')
+          p=Path('pack.toml')
+          text=p.read_text().replace('0.2.0-meta-qol-server-smoked','0.3.0-stable-gameplay-test')
+          p.write_text(text)
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml mods/ manifest/mods.json docs/B3-RESOLUTION.json docs/B3-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "build(gameplay): pin stable magic mods and Tectonic, record combined server smoke"
+            git push origin HEAD:build/b3-stable-magic-tectonic
+          fi
+      - name: Upload resolver evidence and server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stable-gameplay-integration-evidence
+          path: |
+            docs/B3-RESOLUTION.json
+            docs/B3-TESTING.md
+            ${{ runner.temp }}/tmm-b3-gameplay/server.log
+            ${{ runner.temp }}/tmm-b3-gameplay/logs/latest.log
+            ${{ runner.temp }}/tmm-b3-gameplay/crash-reports
+          if-no-files-found: warn
+      - name: Fail red if resolution or boot failed
+        if: steps.resolver.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: |
+          echo "Resolution outcome: ${{ steps.resolver.outcome }}"
+          echo "Dedicated-server outcome: ${{ steps.smoke.outcome }}"
+          exit 1
