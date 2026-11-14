@@ -44,3 +44,8 @@ Never reclassify step 1 as steps 2–5.
 - Beta exception: playerAnimator 2.0.4, mandatory prerequisite of release-channel Iron's Spells; no beta gameplay mods. No Astral Sorcery, Botania, Draconic Evolution or beta Relics.
 - **Client menu, new-world entry, Tectonic worldgen, spellcasting, scripts, recipes, quest UI, server connection: NOT TESTED**. ProjectE/Expansion Chaos Guardian gates **NOT IMPLEMENTED**; the current pack is a startup test build, not a balanced survival release.
 - [Detailed B3 evidence](B3-TESTING.md), [dependency exception](B3-DEPENDENCY-EXCEPTIONS.json), [exact release metadata](B3-RESOLUTION.json).
+
+## Roots Classic KubeJS pilot — not runtime validated (2026-11-13)
+- Source review: **PASS** for the 1.21.1 Roots `SpellDataList`, Crystal Staff ritual output, nonpersistent mana attachment, and KubeJS 2101 pre-pickup/network event APIs.
+- Syntax: three experimental JavaScript scripts passed local `node --check`; this does **not** validate Java interop or KubeJS runtime.
+- Pack client test, first-pickup gameplay, dimension transfer, Terra HUD synchronization, and Pufferfish skill bindings: **NOT RUN**. The pilot is gated behind `tmm_roots_integration_test`; see [test procedure](ROOTS-SKILLS-KUBEJS-PROTOTYPE.md).
