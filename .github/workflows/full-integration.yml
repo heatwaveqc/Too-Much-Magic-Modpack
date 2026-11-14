@@ -83,7 +83,9 @@ jobs:
           # All staged source imports, exact mod manifests and the source lock belong
           # to the tested snapshot. Never push it back to test/full-integration:
           # parallel feature edits may advance that configuration branch meanwhile.
-          git add -A
+          # Imported source paths are already explicitly staged by the assembler.
+          # Stage generated packwiz/lock files only, never Gradle build/ outputs.
+          git add manifest/mods.json manifest/integration-lock.json pack.toml index.toml
           if ! git diff --cached --quiet; then
             git commit -m "test: freeze all-source full integration QA snapshot"
           fi
