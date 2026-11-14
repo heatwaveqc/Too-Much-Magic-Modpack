@@ -1,0 +1,45 @@
+name: Full Progression quest Prism test package
+on:
+  push:
+    branches: ['feature/progression-quests-full-tech']
+    paths:
+      - '.github/workflows/progression-prism.yml'
+      - 'scripts/build_progression_prism.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prism-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate packwiz and all quest structures
+        run: |
+          python3 -m py_compile scripts/build_progression_prism.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+      - name: Fetch upstream MIT-licensed packwiz bootstrap
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Package immutable SHA-pinned Prism instance
+        run: |
+          python3 scripts/build_progression_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" \
+            "$(git rev-parse HEAD)"
+      - name: Upload importable Prism ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Progression-Quest-Prism-140-Mods
+          path: ${{ runner.temp }}/Too-Much-Magic-Progression-Quests-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
