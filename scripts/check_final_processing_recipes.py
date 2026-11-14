@@ -123,6 +123,7 @@ removed=[
  "neovitae:materials/smelting_netherite_scrap_dust",
  "neovitae:materials/blasting_netherite_scrap_dust",
  "botania:botania_extras/smelting/charcoal_white_iridescent",
+ "botania:botania_extras/smelting/charcoal_pink_iridescent",
  "pastel:smelting/calcite_to_polished_calcite",
  "tmm:iron_dust_smelting",
  "tmm:iron_dust_blasting",
