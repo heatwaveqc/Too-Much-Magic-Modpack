@@ -18,10 +18,10 @@
     "moderate": 34,
     "tentative": 8,
     "immediate": 16,
-    "short_chain": 30,
-    "later": 14,
+    "short_chain": 29,
+    "later": 15,
     "unknown": 6,
-    "shortlist": 45
+    "shortlist": 44
   },
   "records": [
     {
@@ -762,11 +762,11 @@
       "capability": "Smelting",
       "unlock": "Exoflame functional flower",
       "benefit": "Mana-fed flower powers and speeds nearby ordinary furnaces, potentially eliminating separate coal and shortening bulk-smelting time.",
-      "access": "short_chain",
+      "access": "later",
       "evidence": "moderate",
       "source": "https://botaniamod.net/lexicon.html",
-      "caveat": "Requires Endoflame/Mana Spreader/Pool and crafting an Exoflame; behavior is proven for original Botania, but verify 1.21.1 Revived port and exact flower recipe. Not truly day one.",
-      "tips_candidate": true
+      "caveat": "Original Botania Exoflame recipe uses Rune of Fire AND Rune of Summer, hence it needs a Runic Altar and Nether-linked ingredients: NOT a day-one smelting bypass. Port recipe/support need verification in TMM.",
+      "tips_candidate": false
     },
     {
       "id": "botania-bellows",

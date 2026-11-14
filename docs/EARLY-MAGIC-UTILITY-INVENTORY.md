@@ -100,7 +100,7 @@
 | --- | ---: | --- |
 | Ars Nouveau | 7 | 5 credible first-pass tips |
 | Astral Sorcery | 2 | 2 credible first-pass tips |
-| Botania Revived | 4 | 3 credible first-pass tips |
+| Botania Revived | 9 | 4 credible early/short-chain tips; 5 later utilities |
 | Eidolon: Repraised | 1 | 1 credible first-pass tips |
 | Enchanted: Witchcraft | 3 | 2 credible first-pass tips |
 | EvilCraft | 6 | 6 credible first-pass tips |
@@ -130,7 +130,7 @@
 2. **Test material conversion with actual counts.** One raw iron, one iron ingot, one ore block and one raw iron block are not interchangeable. For each entry measure input count, output type/count, ability to smelt and XP/energy/fuel requirements. Do not confuse Fortune V, two catalyst powders, raw-ore 2x crushing, and later pure-material 2x smelting.
 3. **Verify safety/cost**: EvilCraft broom Blood consumption, Vengeance curse and its failure risks, spell glyph tiers, Bookwyrm/Enchanting Apparatus cost, Hexerei brooms, malum spirit requirements, loot-gated Reliquary catalysts.
 4. **Security/economy**: inspect Reliquary's Tome of Alkahestry allowed duplication table (especially boss and post-Guardian tech materials), Pastel Bottomless Bundle/Hexerei satchel bag nesting, and all cross-mod dust recipes in the independent unification work.
-5. **Follow up on the six weakly researched schools** (Forbidden & Arcanus, Hex Casting, Scriptor Magicae, Totemic, JAWR, Embers) and Theurgy/Neo Vitae recipe specifics before promising their benefits. Read their pinned 1.21.1 source, not just ATM10 anecdotes.
+5. **Follow up on the least-researched schools** (Hex Casting, Totemic, Embers Re-Ignited, Neo Vitae) plus Theurgy's recipe specifics; Forbidden & Arcanus, Scriptor Magicae and JAWR now have plausible mechanics, but still need pinned-port tests. Read their pinned 1.21.1 source, not just ATM10 anecdotes.
 6. **Tips & Tricks authoring**: make question-led sections (`Need ore yield?`, `Need portable smelting?`, `Want to fly?`, `Need a magnet?`, `Need shared crafting?`, `Want easy light?`) with at most 2–4 curated options each, clear prerequisites and independent manual checkmarks. Existing thematic specialist chapters keep their actual acquisition quests. Tip rewards remain small fixed items + XP; no duplicated objective completion.
 
 ## Sources and provenance
@@ -144,7 +144,7 @@ This additional source pass identified several high-value overlooked convenience
 
 | Problem solved | Candidate | Access | Verified mechanism / open question |
 | --- | --- | --- | --- |
-| Smelt without coal or waiting | **Botania Revived: Exoflame** ([original Botania Lexicon](https://botaniamod.net/lexicon.html)) | Short magical setup | Mana powers and speeds nearby **ordinary Furnaces**; needs generating flowers, Mana Spreader/Pool and flower recipe. Test Revived port |
+| Smelt without coal or waiting | **Botania Revived: Exoflame** ([original Botania Lexicon](https://botaniamod.net/lexicon.html)) | **Later (Runic Altar, Fire and Summer Runes)** | Mana powers and speeds nearby **ordinary Furnaces**; useful once Botania is established, NOT an immediate beginner shortcut. Verify recipe and mechanics in Revived port |
 | Accelerate furnace manually | **Botania Revived: Manatide Bellows** ([Lexicon](https://botaniamod.net/lexicon.html)) | Short magical setup | Point toward active Furnace, right-click to increase speed and fuel efficiency; requires player attention |
 | Smelt a block in-place | **Botania Revived: Rod of the Molten Core** ([Lexicon](https://botaniamod.net/lexicon.html)) | Later | Turns **placed sand into glass** and **cobblestone into stone**; not proof of ore-dust smelting |
 | Locate hidden ores | **Botania Revived: Rod of the Plentiful Mantle** ([Lexicon](https://botaniamod.net/lexicon.html)) | Later | Highlights nearby underground ore blocks with Mana; a resource finder, not an ore generator |
@@ -156,3 +156,5 @@ This additional source pass identified several high-value overlooked convenience
 **Editorial priority:** For the "Need fast smelting?" top-level tip, compare **vanilla Blast Furnace**, **Botania Exoflame/Bellows**, **Ars Smelt glyph Tier 2**, and **Forbidden Smelter Prism later**. Keep lectern casting/storage in a separate "Automate magic work" tip unless a proven in-world smelting spell exists.
 
 **Critical release policy:** Source-only and ATM examples are research leads. Confirm actual pinned 1.21.1 registry IDs, recipes, access cost and transformation effects using JEI and disposable Prism gameplay. In particular, don't mistake the Botania original Lexicon for proof of the Revived port, and don't assume another pack's Hephaestus ritual recipe is ours.
+
+**Recipe-tier correction (2026-11-14):** An original Botania Exoflame recipe requires a **Rune of Fire and Rune of Summer** ([recipe listing](https://wiki.9minecraft.net/java/mod/botania/exoflame/)). That requires a Runic Altar and, often, Nether ingredients, so it is a *later goal* rather than a first-day processing tip. The Manatide Bellows is a more plausible earlier furnace helper, subject to the actual Revived recipe. The updated structured inventory reflects this change.
