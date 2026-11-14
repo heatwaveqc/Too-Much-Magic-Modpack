@@ -64,3 +64,17 @@ the world loading and removal pathways are validated.
 - Upstream code may be studied for implementation, but must not be copied
   without checking original code and asset licenses.
 - No third-party JARs or assets are committed to this repository.
+
+## 2026-11-14 progression direction and original research
+
+The owner favors **watching the actual setting sun** as the first Monk
+initiation, instead of a crafting ritual. Thereafter advancement should be
+**mostly earned from block breaking, defeating enemies and eating distinct
+foods**, with **only a few mandatory milestones**. Study the original Monk
+mod's entire deed/power roster as a menu of optional feats, tree skills and
+capstone inspirations—not as twenty compulsory quest gates.
+
+See [MONK-ORIGINAL-AUDIT.md](MONK-ORIGINAL-AUDIT.md) for the source-based
+0–20 audit and proposed event architecture. That design is not gameplay code.
+The existing `compat/monk/` scaffold still has **no** initiation, advancement
+XP or powers wired into NeoForge events.
