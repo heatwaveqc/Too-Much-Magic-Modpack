@@ -1,21 +1,44 @@
 {
   "mod_priorities": [
     "minecraft",
-    "mahoutsukai",
     "occultism",
+    "embers",
+    "eidolon_repraised",
+    "werewolves",
+    "mahoutsukai",
     "neovitae",
+    "primalmagick",
+    "malum",
     "theurgy"
   ],
   "priority_overrides": {
+    "c:ores/silver": "occultism",
+    "c:raw_materials/silver": "occultism",
+    "c:ingots/silver": "occultism",
+    "c:nuggets/silver": "occultism",
+    "c:dusts/silver": "occultism",
+    "c:storage_blocks/silver": "occultism",
+    "c:storage_blocks/raw_silver": "occultism",
+    "c:ores/lead": "embers",
+    "c:raw_materials/lead": "embers",
+    "c:ingots/lead": "embers",
+    "c:nuggets/lead": "embers",
+    "c:storage_blocks/lead": "embers",
+    "c:storage_blocks/raw_lead": "embers",
     "c:dusts/iron": "mahoutsukai",
     "c:dusts/gold": "mahoutsukai",
     "c:dusts/diamond": "mahoutsukai",
     "c:dusts/emerald": "mahoutsukai",
-    "c:dusts/quartz": "mahoutsukai"
+    "c:dusts/quartz": "mahoutsukai",
+    "c:dusts/copper": "occultism",
+    "c:dusts/sulfur": "neovitae"
   },
   "stone_variants": [
     "stone",
+    "andesite",
     "deepslate",
+    "diorite",
+    "granite",
     "netherrack",
     "end_stone",
     "blackstone",
@@ -27,6 +50,7 @@
     "c:ingots/{material}",
     "c:nuggets/{material}",
     "c:ores/{material}",
+    "c:plates/{material}",
     "c:raw_materials/{material}",
     "c:storage_blocks/raw_{material}",
     "c:storage_blocks/{material}"
@@ -37,7 +61,11 @@
     ".*:.*uranium.*",
     ".*:.*draconium.*",
     ".*:.*replica_ore.*",
-    ".*:.*iesnium.*"
+    ".*:.*iesnium.*",
+    "eidolon_repraised:arcane_gold_.*",
+    "malum:.*(derealized|harmonized|malignant).*",
+    "malum:cthonic_gold_ore",
+    "pastel:dd_.*_ore"
   ],
   "ignored_recipe_types": [
     "cucumber:shaped_tag"
