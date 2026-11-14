@@ -8,6 +8,7 @@ on:
       - 'scripts/IMPORT-OLD-TMM-PREFERENCES.cmd'
       - 'scripts/build_full_integration_prism.py'
       - 'tests/test_tmm_qa_preferences.ps1'
+      - 'tests/test_prism_qa_packaging.py'
       - '.github/workflows/test-prism-preferences.yml'
   workflow_dispatch:
 permissions:
@@ -34,3 +35,9 @@ jobs:
       - name: Real Windows import, apply, save and wrong-version tests
         shell: powershell
         run: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests/test_tmm_qa_preferences.ps1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Package QA Prism and confirm private profile cannot leak into packwiz
+        shell: pwsh
+        run: python tests/test_prism_qa_packaging.py
