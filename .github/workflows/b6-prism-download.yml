@@ -1,0 +1,47 @@
+name: B6 Prism Launcher client test download
+on:
+  push:
+    branches: [build/b6-food-pufferfish-skills-client-handoff]
+    paths:
+      - '.github/workflows/b6-prism-download.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-importable-client:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch official MIT packwiz bootstrap v0.0.3
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+          sha256sum "${{ runner.temp }}/packwiz-installer-bootstrap.jar"
+      - name: Build and inspect Prism-compatible ZIP (no third-party mod JARs)
+        run: |
+          python3 scripts/build_b6_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}"
+          python3 - <<'PY'
+          import zipfile,os,pathlib
+          archive=pathlib.Path(os.environ["RUNNER_TEMP"])/"Too-Much-Magic-B6-Prism-Client-Test.zip"
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():print(name)
+              assert len(z.namelist())==4
+              assert not any(name.startswith("minecraft/mods/") for name in z.namelist())
+          PY
+      - name: Publish Prism import archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-B6-Prism-Import
+          path: ${{ runner.temp }}/Too-Much-Magic-B6-Prism-Client-Test.zip
+          if-no-files-found: error
+          retention-days: 30
