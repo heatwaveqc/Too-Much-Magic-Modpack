@@ -52,6 +52,17 @@ for resource in ("iron","gold","copper","coal","netherite_scrap","demonite","hel
 ignored = cfg["ignored_items"]
 assert "pastel:blackslag_.*_ore" in ignored
 assert "deeperdarker:(gloomslate|sculk_stone)_.*_ore" in ignored
+# Magical emerald/quartz variants share c: tags but are not fungible
+# with their vanilla namesakes. Prevent false-positive material unification.
+protected_tags = {
+    "c:gems/emerald",
+    "c:gems/quartz",
+    "c:storage_blocks/emerald",
+    "c:storage_blocks/quartz",
+}
+assert protected_tags <= set(cfg["ignored_tags"])
+for expected in ("goety:magic_emerald", "goety:awakened_emerald_block", "extrabotany:.*_quartz", "malum:natural_quartz"):
+    assert expected in ignored
 assert len(audit["resources"]["silver"]["providers"]) >= 4
 assert len(audit["resources"]["lead"]["providers"]) >= 2
 for name in ("iron", "gold"):
