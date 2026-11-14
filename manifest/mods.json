@@ -1,0 +1,644 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "target": {
+    "minecraft": "1.21.1",
+    "loader": "neoforge",
+    "loader_version": "21.1.265",
+    "java": 21,
+    "loader_version_status": "provisional"
+  },
+  "status_semantics": {
+    "verified_release": "Published NeoForge Minecraft 1.21.1 release seen; NOT installed or smoke-tested",
+    "experimental_release": "Published alpha/beta for target; NOT smoke-tested",
+    "candidate_release": "Version mentioned by upstream build metadata; release/artifact not independently pinned",
+    "unverified": "Exact target file and dependencies not confirmed",
+    "identity_unresolved": "Mod name or project ID requires resolution"
+  },
+  "note": "Installed packwiz mods tracked separately by the index; no mods are installed at bootstrap.",
+  "mods": [
+    {
+      "id": "neovitae",
+      "name": "Neo Vitae",
+      "category": "magic",
+      "desired": true,
+      "version": "1.21.1-1.1.51",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/neovitae",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "occultism",
+      "name": "Occultism",
+      "category": "magic",
+      "desired": true,
+      "version": "1.227.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/occultism",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "category": "magic",
+      "desired": true,
+      "version": "5.13.5",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ars-nouveau",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "irons-spells",
+      "name": "Iron's Spells 'n Spellbooks",
+      "category": "magic",
+      "desired": true,
+      "version": "3.16.3",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/irons-spells-n-spellbooks",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "theurgy",
+      "name": "Theurgy",
+      "category": "magic",
+      "desired": true,
+      "version": "1.79.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/theurgy",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "astral-sorcery",
+      "name": "Astral Sorcery",
+      "category": "magic",
+      "desired": true,
+      "version": "2.0.3",
+      "release_status": "experimental_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "witchery-remake",
+      "name": "Just Another Witchery Remake",
+      "category": "magic",
+      "desired": true,
+      "version": "0.5.11",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "category": "magic",
+      "desired": true,
+      "version": "1.36.31",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/mahou-tsukai",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "evilcraft",
+      "name": "EvilCraft",
+      "category": "magic",
+      "desired": true,
+      "version": "1.2.100",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/evilcraft",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "roots-classic",
+      "name": "Roots Classic",
+      "category": "magic",
+      "desired": true,
+      "version": "1.5.10",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/roots-classic",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "botania",
+      "name": "Botania",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/botania",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "apotheosis",
+      "name": "Apotheosis",
+      "category": "power",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/apotheosis",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "artifacts",
+      "name": "Artifacts",
+      "category": "power",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/artifacts",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "relics",
+      "name": "Relics",
+      "category": "power",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/relics-mod",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "cataclysm",
+      "name": "L_Ender's Cataclysm",
+      "category": "adventure",
+      "desired": true,
+      "version": "3.33",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "deeper-darker",
+      "name": "Deeper and Darker",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/deeperdarker",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "starlight-structures",
+      "name": "Starlight / Stalwart Dungeons candidate",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "identity_unresolved",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "gateways-to-eternity",
+      "name": "Gateways to Eternity",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/gateways-to-eternity",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "roguelike-dungeons",
+      "name": "Roguelike-style dungeon provider",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "identity_unresolved",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "extended-crafting",
+      "name": "Extended Crafting",
+      "category": "crafting",
+      "desired": true,
+      "version": "7.0.9",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/extended-crafting",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "re-avaritia",
+      "name": "Re:Avaritia",
+      "category": "crafting",
+      "desired": true,
+      "version": "1.4.4",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/re-avaritia",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "draconic-evolution",
+      "name": "Draconic Evolution",
+      "category": "technology",
+      "desired": true,
+      "version": "3.1.4.633",
+      "release_status": "experimental_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "bigger-reactors",
+      "name": "Bigger Reactors",
+      "category": "technology",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/biggerreactors",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "projecte",
+      "name": "ProjectE",
+      "category": "post_chaos",
+      "desired": true,
+      "version": "1.21.1-PE1.1.0",
+      "release_status": "candidate_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/projecte",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "project-expansion",
+      "name": "Project Expansion",
+      "category": "post_chaos",
+      "desired": true,
+      "version": "1.0.6",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/project-expansion",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "replication",
+      "name": "Replication / Deepslate Replica Ore",
+      "category": "late_ore",
+      "desired": true,
+      "version": null,
+      "release_status": "identity_unresolved",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "kubejs",
+      "name": "KubeJS",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "2101.7.2-build.377",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/kubejs",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ftb-quests",
+      "name": "FTB Quests (NeoForge)",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "2101.1.38",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ftb-chunks",
+      "name": "FTB Chunks (NeoForge)",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "2101.1.24",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-chunks-forge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ftb-library",
+      "name": "FTB Library (NeoForge)",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ftb-teams",
+      "name": "FTB Teams (NeoForge)",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "rhino",
+      "name": "Rhino",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/rhino",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "modonomicon",
+      "name": "Modonomicon",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/modonomicon",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "curios-api",
+      "name": "Curios API",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/curios",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "observerlib",
+      "name": "ObserverLib",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "brandons-core",
+      "name": "Brandon's Core",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/brandons-core",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "jei",
+      "name": "Just Enough Items",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/jei",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/jade",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "just-zoom",
+      "name": "Just Zoom",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "construction-gadgets",
+      "name": "Construction Gadgets",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/construction-gadgets",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "formation-wand",
+      "name": "Formation Wand",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "magical-satchel",
+      "name": "Magical satchel / Surprisingly Substantial Satchel",
+      "category": "storage",
+      "desired": true,
+      "version": null,
+      "release_status": "identity_unresolved",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "modernfix",
+      "name": "ModernFix",
+      "category": "performance",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/modernfix",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "ferritecore",
+      "name": "FerriteCore",
+      "category": "performance",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ferritecore",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "embeddium",
+      "name": "Embeddium",
+      "category": "performance",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/embeddium",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "entity-culling",
+      "name": "Entity Culling",
+      "category": "performance",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/entityculling",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    },
+    {
+      "id": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "category": "performance",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/immediatelyfast",
+      "enabled_in_pack": false,
+      "dependencies_verified": false
+    }
+  ],
+  "excluded": [
+    {
+      "id": "create",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "blood-magic-original",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "sophisticated-storage",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "generic-backpacks",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "generic-item-logistics",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "applied-energistics-2",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "refined-storage",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "ftb-ultimine",
+      "reason": "hard design exclusion"
+    },
+    {
+      "id": "separate-fe-transfer",
+      "reason": "hard design exclusion"
+    }
+  ],
+  "items_blacklist": [
+    "Ring of the Seven Deadly Sins"
+  ],
+  "batches": [
+    {
+      "id": "B0",
+      "name": "NeoForge clean loader baseline",
+      "members": [],
+      "status": "candidate_unbooted"
+    },
+    {
+      "id": "B1",
+      "name": "KubeJS, FTB core libraries, quests, UI/performance",
+      "members": [
+        "kubejs",
+        "ftb-quests",
+        "ftb-chunks",
+        "ftb-library",
+        "ftb-teams",
+        "rhino",
+        "jei",
+        "jade",
+        "modernfix",
+        "ferritecore"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "B2",
+      "name": "Core magic schools and their libraries",
+      "members": [
+        "occultism",
+        "ars-nouveau",
+        "irons-spells",
+        "theurgy",
+        "neovitae"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "B3",
+      "name": "Other magic + dimensions + bosses",
+      "members": [
+        "astral-sorcery",
+        "witchery-remake",
+        "mahou-tsukai",
+        "roots-classic",
+        "evilcraft",
+        "botania",
+        "cataclysm"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "B4",
+      "name": "Endgame tech and economic progression",
+      "members": [
+        "draconic-evolution",
+        "bigger-reactors",
+        "projecte",
+        "project-expansion",
+        "extended-crafting",
+        "re-avaritia",
+        "replication"
+      ],
+      "status": "planned"
+    }
+  ]
+}

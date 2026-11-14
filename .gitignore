@@ -1,0 +1,22 @@
+# Minecraft game outputs
+run/
+server/
+client/
+world/
+saves/
+logs/
+crash-reports/
+.minecraft/
+*.jar
+*.log
+eula.txt
+user_jvm_args.txt
+# Build caches / generated modpack exports
+*.mrpack
+*.zip
+packwiz-installer*
+.cache/
+__pycache__/
+.pytest_cache/
+.env
+.DS_Store
