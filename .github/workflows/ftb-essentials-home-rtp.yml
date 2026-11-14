@@ -61,8 +61,7 @@ jobs:
           python3 scripts/validate.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mods/ftb-essentials.pw.toml mods/ftb-essentials-forge.pw.toml manifest/mods.json pack.toml index.toml
-          git add -u mods/ manifest/mods.json pack.toml index.toml
+          git add mods/ manifest/mods.json pack.toml index.toml
           if ! git diff --cached --quiet; then
             git commit -m "build(qol): pin official FTB Essentials; home and RTP enabled, server smoked"
             git push origin HEAD:feature/qol-ftb-essentials-sethome-rtp
