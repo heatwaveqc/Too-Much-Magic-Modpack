@@ -59,6 +59,8 @@ protected_tags = {
     "c:gems/quartz",
     "c:storage_blocks/emerald",
     "c:storage_blocks/quartz",
+    "c:ores/copper",
+    "c:ores/quartz",
 }
 assert protected_tags <= set(cfg["ignored_tags"])
 for expected in ("goety:magic_emerald", "goety:awakened_emerald_block", "extrabotany:.*_quartz", "malum:natural_quartz"):
@@ -69,7 +71,16 @@ for name in ("iron", "gold"):
     assert overrides[f"c:dusts/{name}"] == "mahoutsukai"
 assert overrides["c:dusts/copper"] == "occultism"
 assert overrides["c:dusts/sulfur"] == "neovitae"
-for recipe in ("mahoutsukai:powdered_", "#c:raw_materials/", "tmm:iron_dust_smelting", "tmm:gold_dust_smelting"):
-    assert recipe in (root / "kubejs/server_scripts/material_unification.js").read_text()
+material_script = (root / "kubejs/server_scripts/material_unification.js").read_text()
+for token in ("mahoutsukai:powdered_", "#c:raw_materials/"):
+    assert token in material_script
+for recipe_id in ("tmm:iron_dust_smelting", "tmm:iron_dust_blasting",
+                  "tmm:gold_dust_smelting", "tmm:gold_dust_blasting"):
+    assert f".id('{recipe_id}')" not in material_script, f"Redundant recipe survived: {recipe_id}"
+processing = (root / "kubejs/server_scripts/material_processing_cleanup.js").read_text()
+assert "c:dusts/netherite_scrap" in processing
+assert "neovitae:materials/smelting_lead_dust" not in processing, (
+    "Retain tag-wide Neo Vitae lead dust smelting coverage"
+)
 print("PASS: source-audited silver/lead providers, conventional whitelist, priorities, and special-ore guards")
 print("NOT A BOOT, LIVE REGISTRY, CLIENT, RECIPE, OR WORLDGEN TEST")
