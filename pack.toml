@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.8.4-questshop-cooking-currency-candidate"
+version = "0.8.5-material-unification-candidate"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "51648cc6038b34419d18e3d8ae6ede70c6d42e52a9f9f8bede180f2bb313a17f"
+hash = "d244d47122eb44e04385baddee42dae967e50479c33ebd1e60869d9f693a83d1"
 
 [versions]
 minecraft = "1.21.1"
