@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "currency": "questshop:coins",
+  "team_shared": true,
+  "policy": "Purchases remove repetitive exploration luck and mundane resource friction; shop is not allowed to sell boss-gated or banned equipment.",
+  "categories": [
+    {
+      "id": "supplies",
+      "display": "Supplies & Building",
+      "order": 10,
+      "entries": [
+        [
+          "minecraft:cobblestone",
+          64,
+          2
+        ],
+        [
+          "minecraft:oak_planks",
+          64,
+          3
+        ],
+        [
+          "minecraft:torch",
+          32,
+          2
+        ],
+        [
+          "minecraft:glass",
+          32,
+          4
+        ],
+        [
+          "minecraft:leather",
+          8,
+          5
+        ],
+        [
+          "minecraft:string",
+          16,
+          3
+        ],
+        [
+          "minecraft:coal",
+          32,
+          5
+        ],
+        [
+          "minecraft:arrow",
+          64,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "reagents",
+      "display": "Common Magical Materials",
+      "order": 20,
+      "entries": [
+        [
+          "minecraft:amethyst_shard",
+          16,
+          4
+        ],
+        [
+          "minecraft:lapis_lazuli",
+          16,
+          4
+        ],
+        [
+          "minecraft:quartz",
+          16,
+          5
+        ],
+        [
+          "minecraft:glowstone_dust",
+          16,
+          5
+        ],
+        [
+          "minecraft:slime_ball",
+          4,
+          5
+        ],
+        [
+          "minecraft:prismarine_shard",
+          16,
+          8
+        ]
+      ]
+    },
+    {
+      "id": "exploration",
+      "display": "Exploration Finds",
+      "order": 30,
+      "entries": [
+        [
+          "minecraft:heart_of_the_sea",
+          1,
+          80
+        ],
+        [
+          "minecraft:nautilus_shell",
+          4,
+          15
+        ],
+        [
+          "minecraft:name_tag",
+          1,
+          12
+        ],
+        [
+          "minecraft:saddle",
+          1,
+          15
+        ],
+        [
+          "minecraft:prismarine_crystals",
+          16,
+          8
+        ]
+      ]
+    },
+    {
+      "id": "artifacts",
+      "display": "Artifacts",
+      "order": 40,
+      "entries": [
+        [
+          "artifacts:cloud_in_a_bottle",
+          1,
+          90
+        ],
+        [
+          "artifacts:charm_of_sinking",
+          1,
+          80
+        ],
+        [
+          "artifacts:digging_claws",
+          1,
+          90
+        ],
+        [
+          "artifacts:night_vision_goggles",
+          1,
+          90
+        ],
+        [
+          "artifacts:everlasting_beef",
+          1,
+          120
+        ],
+        [
+          "artifacts:crystal_heart",
+          1,
+          120
+        ]
+      ]
+    },
+    {
+      "id": "food",
+      "display": "Food & Farming",
+      "order": 50,
+      "entries": [
+        [
+          "minecraft:bread",
+          8,
+          4
+        ],
+        [
+          "minecraft:cooked_beef",
+          8,
+          5
+        ],
+        [
+          "minecraft:bone_meal",
+          32,
+          5
+        ],
+        [
+          "minecraft:honey_bottle",
+          4,
+          6
+        ]
+      ]
+    }
+  ]
+}

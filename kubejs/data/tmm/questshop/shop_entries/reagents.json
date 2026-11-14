@@ -1,0 +1,38 @@
+[
+  {
+    "item": "minecraft:amethyst_shard",
+    "amount": 16,
+    "cost": 4,
+    "category": "tmm:reagents"
+  },
+  {
+    "item": "minecraft:lapis_lazuli",
+    "amount": 16,
+    "cost": 4,
+    "category": "tmm:reagents"
+  },
+  {
+    "item": "minecraft:quartz",
+    "amount": 16,
+    "cost": 5,
+    "category": "tmm:reagents"
+  },
+  {
+    "item": "minecraft:glowstone_dust",
+    "amount": 16,
+    "cost": 5,
+    "category": "tmm:reagents"
+  },
+  {
+    "item": "minecraft:slime_ball",
+    "amount": 4,
+    "cost": 5,
+    "category": "tmm:reagents"
+  },
+  {
+    "item": "minecraft:prismarine_shard",
+    "amount": 16,
+    "cost": 8,
+    "category": "tmm:reagents"
+  }
+]

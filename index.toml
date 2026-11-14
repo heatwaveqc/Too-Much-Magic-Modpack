@@ -1,6 +1,54 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/questshop-common.toml"
+hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"
+hash = "25a22f67bdbeb7a9b60e9238379337264be47948a97f1ffb2a61d0e755b4d605"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/exploration.json"
+hash = "70f3d6c825bd7e10d549c32cdc810655b120845406247e9662637b81e1259ff5"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/food.json"
+hash = "52d2a83ab9214a3d1a56ad11de2dd88ae50b31da418f276d71ed20d9b5961985"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/reagents.json"
+hash = "d8976beca10a891f519ab5ec257f7da472011bcdaad1e9fbe25b31da24ff4d34"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/supplies.json"
+hash = "7d9bb39837474b4e6faada766a4b56b491c1fe332b8709e60788e36e706d2309"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/artifacts.json"
+hash = "30904cd41aa65ce4e91e764a085a79e59e649aae0695a690ddfa09cdd2a7f53e"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/exploration.json"
+hash = "efb6704902f43c813b68dd6ad33355f13c63f60112880e40b26c86b5d2b40aa7"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/food.json"
+hash = "7ce9fc49e8869cba4b203f8ebf4234703432892043a0d9e5ae7c3130348e8af4"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/reagents.json"
+hash = "89960c1e990de96dfe4851d03628d89e9794c637429e26e846a96aa5461d30a9"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
+hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
+
+[[files]]
+file = "manifest/quest_shop_catalog.json"
+hash = "74de25f3d792acd8c4a2e961208492da2a2ae6e1f8ef3adbdc20c9b889e4c2e9"
+
+[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 

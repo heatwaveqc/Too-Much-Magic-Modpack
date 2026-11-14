@@ -1,0 +1,50 @@
+[
+  {
+    "item": "minecraft:cobblestone",
+    "amount": 64,
+    "cost": 2,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:oak_planks",
+    "amount": 64,
+    "cost": 3,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:torch",
+    "amount": 32,
+    "cost": 2,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:glass",
+    "amount": 32,
+    "cost": 4,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:leather",
+    "amount": 8,
+    "cost": 5,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:string",
+    "amount": 16,
+    "cost": 3,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:coal",
+    "amount": 32,
+    "cost": 5,
+    "category": "tmm:supplies"
+  },
+  {
+    "item": "minecraft:arrow",
+    "amount": 64,
+    "cost": 5,
+    "category": "tmm:supplies"
+  }
+]

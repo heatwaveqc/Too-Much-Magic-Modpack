@@ -1,0 +1,32 @@
+[
+  {
+    "item": "minecraft:heart_of_the_sea",
+    "amount": 1,
+    "cost": 80,
+    "category": "tmm:exploration"
+  },
+  {
+    "item": "minecraft:nautilus_shell",
+    "amount": 4,
+    "cost": 15,
+    "category": "tmm:exploration"
+  },
+  {
+    "item": "minecraft:name_tag",
+    "amount": 1,
+    "cost": 12,
+    "category": "tmm:exploration"
+  },
+  {
+    "item": "minecraft:saddle",
+    "amount": 1,
+    "cost": 15,
+    "category": "tmm:exploration"
+  },
+  {
+    "item": "minecraft:prismarine_crystals",
+    "amount": 16,
+    "cost": 8,
+    "category": "tmm:exploration"
+  }
+]
