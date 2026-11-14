@@ -81,3 +81,12 @@ Never reclassify step 1 as steps 2–5.
 - **Scope:** remove Re:Avaritia and Extended Crafting as explicitly excluded by owner. Reduce 140 pinned mods to **138** (previous 127 server/both-side -> 125 server/both-side, 13 client-only unchanged). Two packwiz metafiles removed; manifest and SHA-256 hash chain updated.
 - **Status when authored:** metadata validation and fresh combined NeoForge dedicated-server test **pending** on `design/five-category-quest-chapter-inventory`. Do not mistake the earlier 140-mod B8 test for verification of this changed candidate.
 - **Client:** Prism launch, existing-world migration, all recipes and endgame compatibility still pending. Back up worlds; removing mods from a world that has their items/blocks can lose contents. Test on a disposable world first.
+
+
+## Core Magic Tyz first-wave static validation (2026-11-14)
+
+- **Branch:** `feature/tyzs-core-magic-first-wave`; **PR:** [#33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33), based on Monk no-Pufferfish design branch.
+- **Static PASS:** [GitHub Actions Core Magic overlay validation](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43630243324) checked four JSON skills with 99 ranks and native modifier arrays, 1,000-XP global level pool, KubeJS JavaScript syntax, and TOML syntax; source connector separately parsed all four JSONs and verified 13 distinct attribute targets across seven mod namespaces.
+- **Pack baseline validation PASS:** [Verify bootstrap branch run](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43630187440), for source/metadata structure only. It is **not** a native Tyz mod or game boot.
+- **Not run:** packwiz staging, Tyz jar pin/dependency resolution, Forge/NeoForge server boot with Tyz and source event script, client launch, native attribute tests, rank purchases/refunds, paid casting/discount and shared mana dedup, external Monk gates, or MXP experience award dispatch. DO NOT label as gameplay-passed or next downloadable client build.
+- **Next action:** integrate the overlay into a disposable full pack after Tyz 6.4.2 pin, retire Pufferfish only after dependency check, then test native attrs and cost hooks via admin Tyz XP grants while the full MXP dispatcher is being built. [Checklist](../compat/magic/README.md).
