@@ -100,3 +100,8 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 
 - [Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608): 140 active pins, 127 hash-verified server-side JARs, 45 quest SNBT files copied, **dedicated server Done, exit 0**. Quest Shop and Cooking for Blockheads were resolved from the specifically approved 1.21.1 provider files, without unreviewed extra dependencies.
 - **Not proven:** GUI/shop purchases, actual QuestShop reward type claiming, Team currency propagation, repeated item-consumption sale security, Cooking Table/Oven registry or recipes, Artifacts shop SKU registry, chest/loot economy and post-Guardian gates. These remain test requirements, not assumed integrations.
+
+## Material unification candidate (2026-11-14)
+- Branch `feature/materials-unification-mahou-doubling` pins Almost Unified 1.4.2 NeoForge (https://www.curseforge.com/minecraft/mc-mods/almostunified/files/8127603).
+- **Release blocker:** no dedicated-server or client/JEI tests; Mahou recipe IDs, tools and the Neo Vitae 1.1.53 generated material list need inspection in live instances. Neo Vitae ore injection, Botania Orechid and custom ore sources may bypass AU worldgen.
+- **Release blocker:** ProjectE, uranium, draconic dust, Replication ore and endgame miner gates remain unimplemented; this candidate is not survival-ready.
