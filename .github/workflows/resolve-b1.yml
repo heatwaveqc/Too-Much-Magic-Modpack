@@ -1,0 +1,36 @@
+name: Resolve B1 candidate mod pins
+on:
+  push:
+    paths:
+      - '.github/workflows/resolve-b1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Compile packwiz
+        run: go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+      - name: Pin two infrastructure mods and their libraries
+        run: |
+          PACKWIZ="$(go env GOPATH)/bin/packwiz"
+          "$PACKWIZ" --yes modrinth add kubejs
+          "$PACKWIZ" --yes modrinth add modernfix
+          "$PACKWIZ" refresh
+          "$PACKWIZ" list
+      - name: Emit exact files for reviewed commit through GitHub connector
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [Path("pack.toml"), Path("index.toml"), *sorted(Path("mods").glob("*.pw.toml"))]
+          for path in paths:
+              print("TMM_SNAPSHOT " + json.dumps({"path": str(path), "content": path.read_text(encoding="utf-8")}, ensure_ascii=False))
+          PY
