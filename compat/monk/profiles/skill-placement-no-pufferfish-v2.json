@@ -11,12 +11,12 @@
   ],
   "architecture": {
     "pufferfish": "excluded_from_target; NOT removed_from_active_pack",
-    "tyz": "6.4.2_ranks_SP_purchases_numeric_and_finite_Monk_licensed_skills",
+    "tyz": "6.4.2_was_selected_as_rank_store; only_primary_global_MXP_Tyz_tree_may_create_nodes_and_wallet",
     "improvable": "21.0.2_keep_existing_vanilla_XP_general_skills; no_new_Monk_ranks",
     "vampirism": "Monk_faction_identity_permits_rank_purchases_and_owns_one_time_powers",
     "bridge": "per_mod_API_non_attribute_effects_source_triggers_faction_effect_suspension",
-    "progression": "up_to_five_x10_stages_each_99_ranks_only_with_effective_native_headroom; no_ineffective_paid_ranks",
-    "economy": "Tyz_SP_vs_Improvable_vanilla_XP_vs_Monk_faction_XP_remain_separate"
+    "progression": "no_99_completion_requirement; one_rank_of_prior_node_unlocks_next_then_external_Monk_and_boss_ritual_stage_gates; up_to_99_ranks_per_node; up_to_five_stages_optional_after_economy_simulation",
+    "economy": "MXP_dispatcher_only_Tyz_XP_source_single_global_Tyz_wallet; native_Tyz_activity_XP_disabled; Improvable_preserves_its_vanilla_XP_perks; Vampirism_native_rank_not_second_global_Tyz_wallet"
   },
   "counts": {
     "core": 172,
@@ -36,7 +36,8 @@
     "non_purchase_compatibility_rules": 1,
     "provisional_purchasable_unlock_endpoints": 203,
     "conditional_mod_API_candidates": 10,
-    "new_Improvable_assignments": 0
+    "new_Improvable_assignments": 0,
+    "interpretation": "204 preliminary research endpoints, NOT 204 required UI nodes; primary universal tree deduplicates"
   },
   "shared_canonical_skills": [
     {
@@ -58,7 +59,7 @@
         "tmm_monk:mahou/maximum_capacity",
         "tmm_monk:roots/terra_mastery"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:magic_regeneration",
@@ -81,7 +82,7 @@
         "tmm_monk:mahou/regeneration",
         "tmm_monk:roots/terra_mastery"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_power",
@@ -104,7 +105,7 @@
       "conditional_candidates": [
         "tmm_monk:primal/spell_proficiency"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_cast_speed",
@@ -122,7 +123,7 @@
         "tmm_monk:trait/irons_spellbooks/cast_time_reduction"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_cooldown",
@@ -140,7 +141,7 @@
         "tmm_monk:trait/irons_spellbooks/cooldown_reduction"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_efficiency",
@@ -157,7 +158,7 @@
       "conditional_candidates": [
         "tmm_monk:mahou/spell_efficiency"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:magic_resistance",
@@ -173,7 +174,7 @@
         "tmm_monk:trait/irons_spellbooks/spell_resist"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:summoner_potency",
@@ -191,7 +192,7 @@
         "tmm_monk:occultism/familiar_bond",
         "tmm_monk:occultism/summoner_mastery"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:mining_speed",
@@ -209,7 +210,7 @@
       "conditional_candidates": [
         "tmm_monk:harvest/barehand_speed"
       ],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:fall_protection",
@@ -227,7 +228,7 @@
         "tmm_monk:trait/minecraft/generic_safe_fall_distance"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:swim_mastery",
@@ -243,7 +244,7 @@
         "tmm_monk:trait/neoforge/swim_speed"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:projectile_damage",
@@ -259,7 +260,7 @@
         "tmm_monk:trait/apothic_attributes/projectile_damage"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:projectile_velocity",
@@ -275,7 +276,7 @@
         "tmm_monk:trait/goety/spell_velocity"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:movement_speed",
@@ -291,7 +292,7 @@
         "tmm_monk:trait/minecraft/generic_movement_speed"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:natural_armor",
@@ -305,7 +306,7 @@
         "tmm_monk:trait/minecraft/generic_armor"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:max_health",
@@ -319,7 +320,7 @@
         "tmm_monk:trait/minecraft/generic_max_health"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:attack_power",
@@ -333,7 +334,7 @@
         "tmm_monk:trait/minecraft/generic_attack_damage"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:attack_speed",
@@ -347,7 +348,7 @@
         "tmm_monk:trait/minecraft/generic_attack_speed"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:critical_chance",
@@ -361,7 +362,7 @@
         "tmm_monk:trait/apothic_attributes/crit_chance"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:critical_damage",
@@ -375,7 +376,7 @@
         "tmm_monk:trait/apothic_attributes/crit_damage"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:luck",
@@ -389,7 +390,7 @@
         "tmm_monk:trait/minecraft/generic_luck"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:vanilla_xp_gain",
@@ -403,7 +404,7 @@
         "tmm_monk:trait/apothic_attributes/experience_gained"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_range",
@@ -417,7 +418,7 @@
         "tmm_monk:trait/goety/spell_range"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     },
     {
       "id": "tmm_shared:spell_area",
@@ -431,7 +432,7 @@
         "tmm_monk:trait/goety/spell_radius"
       ],
       "conditional_candidates": [],
-      "status": "unimplemented_pending_source_equivalence_api_units_cap_audit"
+      "status": "historical_unification_candidate_must_deduplicate_into_primary_Tyz_core_or_existing_general_category"
     }
   ],
   "source_records": [
@@ -3961,7 +3962,7 @@
         "research_expertise_not_spell_power"
       ],
       "source_condition": null,
-      "status": "design_only",
+      "status": "research_only_not_purchasable",
       "api_verification": {
         "checked_on": "2026-11-14",
         "verdict": "research_expertise_not_spell_power",
@@ -3969,7 +3970,8 @@
         "implementation": "redesign_required_ExpertiseManager_not_damage_hook",
         "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
         "runtime_verified": false
-      }
+      },
+      "primary_tree_correction": "do_not_wire_Primal_Sorcery_expertise_to_Core_Magic_Potency; this_is_research_progress_not_spell_power"
     },
     {
       "source_id": "tmm_monk:occultism/familiar_bond",
@@ -6707,5 +6709,25 @@
     "semantic_redesign_required": 2,
     "blocked_as_proposed": 2,
     "elastic_duplicate_resolved": true
+  },
+  "primary_skill_design": {
+    "authoritative_branch": "design/universal-mxp-progression-registry",
+    "authoritative_files": [
+      "docs/TYZS-CORE-MAGIC-AND-FORM-TREES.md",
+      "docs/TYZS-MXP-EXTERNAL-GATES.md",
+      "docs/MAGIC-MXP-PROGRESSION.md"
+    ],
+    "status": "research_inventory_and_Monk_only_supplement_not_independent_Tyz_tree",
+    "xp_source": "MXP_ONLY",
+    "wallet": "one_global_Tyz_level_and_SP_wallet",
+    "previous_stage_prerequisite": "ONE_OWNED_RANK_not_99",
+    "external_server_gates": true,
+    "category_owner": "tmm_monk_under_primary_Tyz_system",
+    "shared_skill_owner": "primary_Core_Magic_and_existing_Tyz_base_categories",
+    "mod_specific_Mahou_efficiency": "defer_specific_adapter_not_universal_Thrift",
+    "Neo_Vitae_ritual_mastery": "defer_special_skill; keep_personal_EV_MXP",
+    "roots_capacity_adapter": "reuse_primary_Reservoir_and_Wellspring",
+    "invented_separate_Monk_engine": false,
+    "puffish_skills": "scheduled_removal_next_full_build"
   }
 }
