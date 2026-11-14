@@ -24,7 +24,7 @@
 - Don't reward players with disallowed/restricted items, enable ProjectE/Expansion before Chaos Guardian, or bypass late-game miner/Cataclysm prerequisites.
 - No bags inside other bags; this universal policy has a separate implementation blocker (#16).
 - Only the pinned NeoForge 1.21.1 roster is in scope; 8 inactive roster entries do not receive standalone quests.
-- No actual FTB chapter/quest expansion is made by this document. Verify all authored FTB quests and rewards on a disposable client/server world.
+- The full navigation scaffold is authored separately; this architecture document does not authorize new gameplay rewards or gates. Verify all authored FTB quests and rewards on a disposable client/server world.
 
 ## Recommended design order
 
@@ -35,3 +35,7 @@ Finalize the five-category navigation and overall quests skeleton; design Introd
 - **Do not install Re:Avaritia or Extended Crafting** or reserve Endgame chapters for them. The owner previously placed both on hold; they were mistakenly pinned in B5/B8 and carried forward into an incorrect 46-chapter inventory.
 - Intended top-tier play is Draconic Evolution, Chaos Guardian, ProjectE and Project Expansion's Gem Armor, plus difficult resource acquisition. Their signature equipment should not be made obsolete by Infinity-tier gear or a competing standalone ultimate-crafting stack.
 - **Skills & Advancement** and **Exceptional Power: Reactors** are explicitly approved as additional Progression chapters.
+
+## Authored structure (feature candidate, 2026-11-14)
+
+The five FTB chapter groups and 45 chapter files, with no-reward optional overview entries, now exist on `feature/ftb-quests-45-chapter-scaffold`. This is navigation scaffolding, **not** the complete quest content or client-certified feature. The per-player first-log Trinkets Pouch prototype from PR #14 is integrated here without an additional FTB item reward. See [QUEST-SCAFFOLD.md](QUEST-SCAFFOLD.md) and the generated `manifest/quest_chapters.json` for exact IDs. Additional gating/content requires separately approved and tested steps.

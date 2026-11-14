@@ -1,0 +1,52 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "intro"
+	group: "544D101000000000"
+	icon: { id: "minecraft:oak_log" }
+	id: "544D4D1000000001"
+	images: [ ]
+	order_index: 0
+	progression_mode: "flexible"
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D301000100001"
+			icon: { id: "minecraft:oak_log" }
+			title: "Welcome to Too Much Magic"
+			subtitle: "Read when you are ready"
+			description: [
+					"Magic is the everyday infrastructure in this pack. You can follow independent schools without completing every other branch."
+					"Open the five categories to see different systems and progression paths. Quests are guides; important restrictions are enforced separately by gameplay rules."
+					"Obtain any log or stem to earn your first 27-slot Trinkets Pouch automatically. The reward is once per player. Other magical bags are crafted normally."
+					"This welcome entry has no reward. Read it and check it off whenever you like."
+				]
+			optional: true
+			rewards: [ ]
+			tasks: [
+				{ id: "544D401000100001", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D4D1100000001"
+			title: "Punch a Tree"
+			subtitle: "Get your first log"
+			description: [
+					"Acquire any item tagged as a log. A persistent one-time player advancement gives you an Ars Elemental Trinkets Pouch (27 slots)."
+					"The reward arrives automatically, whether or not this quest book is open; there is no additional FTB item reward to claim."
+					"All later magical bags are crafted by their own methods. Portable bags must not be nested inside one another; full cross-mod prevention is still under active test."
+				]
+			icon: { id: "ars_elemental:curio_bag" }
+			rewards: [ ]
+			tasks: [
+				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm:first_log" }
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+	]
+	subtitle: "Get your first log for a one-time Trinkets Pouch; learn the quest book; select your own magical specialties."
+	title: "Getting Started"
+}

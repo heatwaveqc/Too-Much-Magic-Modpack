@@ -1,0 +1,34 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "eidolon_repraised"
+	group: "544D103000000000"
+	icon: { id: "minecraft:soul_sand" }
+	id: "544D203000400000"
+	images: [ ]
+	order_index: 3
+	progression_mode: "flexible"
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D303000400001"
+			icon: { id: "minecraft:soul_sand" }
+			title: "Chapter Overview"
+			subtitle: "Read when you are ready"
+			description: [
+					"Rituals, prayer, soulcraft and related progression."
+					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
+					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
+				]
+			optional: true
+			rewards: [ ]
+			tasks: [
+				{ id: "544D403000400001", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+	]
+	subtitle: "Rituals, prayer, soulcraft and related progression."
+	title: "Eidolon: Repraised"
+}

@@ -1,6 +1,218 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ftbquests/quests/chapter_groups.snbt"
+hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
+hash = "1e39ac33993c72d503f9e6060c414357160aeae3802855cdd790026bf7cd382c"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/apotheosis.snbt"
+hash = "e02e5fba0e3d6c243659eb626838fa59f57f45229367917cb737f4b6e3d45db1"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/ars_nouveau.snbt"
+hash = "ee3739c3694971372fb3ad56fd5681eba2232ada432a3650a16ce4ee36da7699"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/artifacts.snbt"
+hash = "040c00ea6e818c4b09d5e8a4e022ba833b5dc435a99a6b10ff005e65a47f9225"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/astral_sorcery.snbt"
+hash = "9fd9f20dd28fb6f9dec45aa6c50c33a053ccd46568e94f23e84cc9591a884a24"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/basic_progression.snbt"
+hash = "87815a935377ae4b52f31a6cbbffcb3b4beea11d865a0beb5c73e8f474f3505c"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/botania_revived.snbt"
+hash = "6b91363b048f8c427bfef5b31cafe6bd8b4320606a6e287a7b737df44da5529a"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/deeper_and_darker.snbt"
+hash = "508dca64cc4352b53d7b2ed5750eb6eb3b1e3e9e19066790e2d0bc74a759bb54"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/draconic_evolution.snbt"
+hash = "c380d7ce5393e191e648970ec416ad68a8a564ae112498e1db9c0ebb7b98432d"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/eidolon_repraised.snbt"
+hash = "049b2ea3aa0f73de3d8c248b93e209040d77e73d34a7d64e1bde9343e446e799"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/embers_re_ignited.snbt"
+hash = "b9a55747444dd93d8706ab66f4cadd676704d4d37504160e7443564b452e2330"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/enchanted_witchcraft.snbt"
+hash = "483e50df574c9fd3c31e4c56c34fc27aad85c8c33929ca05de376c245c27868d"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/endgame_roadmap.snbt"
+hash = "dee7598561e21963818fbac71f2e3ffd7f106552a8ed59bc8fa7eb61f75e1b83"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/enigmatic_legacy.snbt"
+hash = "4ef3822faabe597c4c0c376b3674e142fe720b2b0a24011404f3a3a978c4e9d1"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/evilcraft.snbt"
+hash = "048acd50df90fc0f7f71f7243c836498a4381607e029ec68e04ace96befdc084"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt"
+hash = "184ece95893ea1831185ac04afbe4625d4f9b8ddfeb1a1a4adf814a000ad3c27"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/feywild.snbt"
+hash = "733f63831d12c0fd5b172982cb236f2f73cf4be99ab973c5ab6f2f96fd22022f"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/food_fishing.snbt"
+hash = "e9cd5d6eba30083d007993bf4b9bf2052c40041faaad1f023080980e993373a9"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/forbidden_arcanus.snbt"
+hash = "e7a52e3dc64eadd155f523ce529454550b0c0b1feecbb2bcc63491a3852974d2"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/gateways_to_eternity.snbt"
+hash = "b91d65529967a03c861c2c6063c12bb91c43c5232b5e81b0b006872facce02e3"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/goety.snbt"
+hash = "d2e06a79cc4c2d1cca09b6c81c5a1b544d8112037a2fb28e9e397294ada6510a"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/hex_casting.snbt"
+hash = "05ebf574f377dbb605c13c40b2b166bc2a63b8837ed9264660917d6332e36feb"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/hexerei.snbt"
+hash = "96e2aa69956b82cde5ffe9b05e417b9ece3a3cdb04692b205a783104c4e9d8b9"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/intro.snbt"
+hash = "e13925e96ebc460b078ff64538d94e49ed31a2a4a14c14013f712e0bd7acc5d4"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
+hash = "099ce15dd623729ff73663298d9768ee6399b14019053754e95b5e08dc037f15"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/just_another_witchery_remake.snbt"
+hash = "5c54c4c1316216c4b2eacf1699b6cff7500759e8d8a6ce16c3fc7371dcc3a820"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/l_enders_cataclysm.snbt"
+hash = "022f99562709fc0f2c5aa587944196395af188dba00a30ce95ee278e462538b8"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/mahou_tsukai.snbt"
+hash = "8aa01246abc1a2fcd83dd313f3df16649e0f53adf70cca7a69a2ef20d3abd223"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/malum.snbt"
+hash = "4714847227ea22752612da2d4d38e2dd05d2845111988c2d11a4c179cbd43b96"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/neo_vitae.snbt"
+hash = "3bd185079915f317940690b330490d3e7d75d91b4b28e2e656b10d6dc9f0f6ce"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/occultism.snbt"
+hash = "817f3e175b8d1b0b580215f948c68c600b41afdb0acc9e8046bc1882ff4cd9cb"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/pastel.snbt"
+hash = "01ee8b2cc5afa65de14a4641282b057af90470c22b622dca77c49a43b8e9ae83"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/primal_magick.snbt"
+hash = "b5cab9ac703b197e4d6b638b6c6cd8975826e72f5ba46f900e49218780ca8392"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/projecte.snbt"
+hash = "ffbaa71e46ab7b3062a7c5d2548361a5b2903090185ebdcb11e2b68cf8aa9cf7"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/psi.snbt"
+hash = "ff1eec6e55b93d460e9b9a7011fa85f3bac8416f26194bcce3424d8091d0fe9b"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/reliquary_reincarnations.snbt"
+hash = "7d263b28051103afb29c0693445181490721f74888dec01016e6f0f1d25a66ed"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/replication.snbt"
+hash = "2e3f06ff617b93de979e02c53d0a8e9dd7a8673e0733006acd7019c0a4457404"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/roots_classic.snbt"
+hash = "b83a3f897429dd3a2aefed7e8e570fbc187ee68b39669f7083a06369c8bc1f7d"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/scriptor_magicae.snbt"
+hash = "5f23b66c748c5b99c9290dd1795e1828898eb8a8d1393fb15e7d0aea89ae718e"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
+hash = "70e3c6283851eefe2ae6cccc4b6e8605b35cec97d703a24888985d0860c3fdca"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/theurgy.snbt"
+hash = "00e4cd91223e8ad686b7128f2109ef729da497d8e5f1a32c688a0ac3b4011543"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
+hash = "653b480dd79818eb838df7aa0b8c62da1e89bee73cf24bdada5d88de1dc5e858"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/totemic.snbt"
+hash = "851bbb3c656193ac4de61e9b61eba2a7e81735bbb9f72dee0d46e3bbe3164ab7"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/vampirism.snbt"
+hash = "940ebb683a1071a1fbbaefc308dcf4548e10c45cfb8008b78e287c5b1d66d3d6"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/werewolves.snbt"
+hash = "bdff21ba8af958123421788d353f295351601a59018c3a8ec40fcaa843d60a19"
+
+[[files]]
+file = "config/ftbquests/quests/data.snbt"
+hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
+
+[[files]]
+file = "config/ftbquests/quests/lang/en_us/chapter.snbt"
+hash = "ba143e32b9e65e4fe6e35df5594c04e2eb0bd41d1712974d4742a3a22372277d"
+
+[[files]]
+file = "config/ftbquests/quests/lang/en_us/chapter_group.snbt"
+hash = "b2c689f518f8768ac3b8d78fae7f3c90c6039a08e1fb9250b4df7e63b7e5a58a"
+
+[[files]]
+file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
+hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/first_log.json"
+hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
+hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
+
+[[files]]
+file = "kubejs/data/tmm/tags/item/portable_bags.json"
+hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
+
+[[files]]
 file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 

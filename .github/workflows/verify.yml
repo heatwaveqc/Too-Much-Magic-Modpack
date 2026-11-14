@@ -17,6 +17,8 @@ jobs:
           python-version: '3.12'
       - name: Verify manifest, packwiz hash chain and exclusions
         run: python3 scripts/validate.py
+      - name: Validate five-group FTB Quests navigation
+        run: python3 scripts/validate_quests.py
       - uses: actions/setup-go@v5
         with:
           go-version: 'stable'
@@ -67,7 +69,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory'
+    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory' || github.ref_name == 'feature/ftb-quests-45-chapter-scaffold'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

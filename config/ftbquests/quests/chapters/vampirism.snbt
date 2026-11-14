@@ -1,0 +1,34 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "vampirism"
+	group: "544D104000000000"
+	icon: { id: "minecraft:fermented_spider_eye" }
+	id: "544D204000800000"
+	images: [ ]
+	order_index: 7
+	progression_mode: "flexible"
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D304000800001"
+			icon: { id: "minecraft:fermented_spider_eye" }
+			title: "Chapter Overview"
+			subtitle: "Read when you are ready"
+			description: [
+					"Vampire/hunter factions and progression; unified transformation rules crosslink."
+					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
+					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
+				]
+			optional: true
+			rewards: [ ]
+			tasks: [
+				{ id: "544D404000800001", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+	]
+	subtitle: "Vampire/hunter factions and progression; unified transformation rules crosslink."
+	title: "Vampirism"
+}

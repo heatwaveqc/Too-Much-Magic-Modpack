@@ -81,3 +81,9 @@ Never reclassify step 1 as steps 2–5.
 - **Scope:** remove Re:Avaritia and Extended Crafting as explicitly excluded by owner. Reduce 140 pinned mods to **138** (previous 127 server/both-side -> 125 server/both-side, 13 client-only unchanged). Two packwiz metafiles removed; manifest and SHA-256 hash chain updated.
 - **Status when authored:** metadata validation and fresh combined NeoForge dedicated-server test **pending** on `design/five-category-quest-chapter-inventory`. Do not mistake the earlier 140-mod B8 test for verification of this changed candidate.
 - **Client:** Prism launch, existing-world migration, all recipes and endgame compatibility still pending. Back up worlds; removing mods from a world that has their items/blocks can lose contents. Test on a disposable world first.
+
+## Questbook navigation scaffold candidate (2026-11-14)
+
+- 5 category groups, 45 chapter SNBT files, 45 optional no-reward orientation checkmarks, plus a first-log advancement/pouch quest. Stable IDs, grouped localization, packwiz indexing and offline structural validator authored in `feature/ftb-quests-45-chapter-scaffold`.
+- **Integration not yet certified:** dedicated-server FTB Quests file parsing, Prism client GUI, per-player first-log advancement reward and storage behavior require explicit tests. CI runner's general server boot does not prove all 45 chapters appeared in the client.
+- Corrected base has 138 mod pins (Re:Avaritia/Extended Crafting removed); historic 140-mod B8 run is not a verification of this composition.

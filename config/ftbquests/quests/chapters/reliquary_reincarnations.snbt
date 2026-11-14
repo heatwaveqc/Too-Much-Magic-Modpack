@@ -1,0 +1,34 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "reliquary_reincarnations"
+	group: "544D103000000000"
+	icon: { id: "minecraft:ghast_tear" }
+	id: "544D203001900000"
+	images: [ ]
+	order_index: 24
+	progression_mode: "flexible"
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D303001900001"
+			icon: { id: "minecraft:ghast_tear" }
+			title: "Chapter Overview"
+			subtitle: "Read when you are ready"
+			description: [
+					"Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter."
+					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
+					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
+				]
+			optional: true
+			rewards: [ ]
+			tasks: [
+				{ id: "544D403001900001", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+	]
+	subtitle: "Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter."
+	title: "Reliquary Reincarnations"
+}

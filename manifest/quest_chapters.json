@@ -1,0 +1,704 @@
+{
+  "schema_version": 1,
+  "source": "docs/QUEST-CHAPTER-INVENTORY.md",
+  "status": "scaffold_unverified",
+  "groups": [
+    {
+      "name": "Introduction",
+      "id": "544D101000000000",
+      "count": 3
+    },
+    {
+      "name": "Progression",
+      "id": "544D102000000000",
+      "count": 5
+    },
+    {
+      "name": "Magic",
+      "id": "544D103000000000",
+      "count": 25
+    },
+    {
+      "name": "Exploration & Combat",
+      "id": "544D104000000000",
+      "count": 9
+    },
+    {
+      "name": "Endgame",
+      "id": "544D105000000000",
+      "count": 3
+    }
+  ],
+  "chapters": [
+    {
+      "category": "Introduction",
+      "group_id": "544D101000000000",
+      "chapter_id": "544D4D1000000001",
+      "name": "Getting Started",
+      "filename": "intro.snbt",
+      "order_index": 0,
+      "icon": "minecraft:oak_log",
+      "mod_ids": [
+        "ftb-quests"
+      ],
+      "overview_quest_id": "544D301000100001",
+      "overview_task_id": "544D401000100001"
+    },
+    {
+      "category": "Introduction",
+      "group_id": "544D101000000000",
+      "chapter_id": "544D201000200000",
+      "name": "Tips & Tricks",
+      "filename": "tips_tricks.snbt",
+      "order_index": 1,
+      "icon": "minecraft:book",
+      "mod_ids": [
+        "akashic-tome",
+        "appleskin",
+        "better-advancements",
+        "controlling",
+        "corail-tombstone",
+        "crafting-tweaks",
+        "enchantment-descriptions",
+        "ftb-chunks",
+        "inventory-tweaks-refoxed",
+        "jade",
+        "jei",
+        "just-zoom",
+        "keybind-bundles",
+        "lootr",
+        "more-overlays-updated",
+        "mouse-tweaks",
+        "natures-compass",
+        "oracle-index",
+        "polymorph"
+      ],
+      "overview_quest_id": "544D301000200001",
+      "overview_task_id": "544D401000200001"
+    },
+    {
+      "category": "Introduction",
+      "group_id": "544D101000000000",
+      "chapter_id": "544D201000300000",
+      "name": "Food & Fishing",
+      "filename": "food_fishing.snbt",
+      "order_index": 2,
+      "icon": "minecraft:fishing_rod",
+      "mod_ids": [
+        "aquaculture",
+        "farmers-delight",
+        "farming-for-blockheads",
+        "harvest-with-ease",
+        "pams-harvestcraft-2-crops",
+        "pams-harvestcraft-2-food-core",
+        "pams-harvestcraft-2-food-extended",
+        "pams-harvestcraft-2-trees"
+      ],
+      "overview_quest_id": "544D301000300001",
+      "overview_task_id": "544D401000300001"
+    },
+    {
+      "category": "Progression",
+      "group_id": "544D102000000000",
+      "chapter_id": "544D202000100000",
+      "name": "Basic Progression",
+      "filename": "basic_progression.snbt",
+      "order_index": 0,
+      "icon": "minecraft:crafting_table",
+      "mod_ids": [],
+      "overview_quest_id": "544D302000100001",
+      "overview_task_id": "544D402000100001"
+    },
+    {
+      "category": "Progression",
+      "group_id": "544D102000000000",
+      "chapter_id": "544D202000200000",
+      "name": "Advanced Progression",
+      "filename": "advanced_progression.snbt",
+      "order_index": 1,
+      "icon": "minecraft:enchanting_table",
+      "mod_ids": [
+        "summoning-rituals"
+      ],
+      "overview_quest_id": "544D302000200001",
+      "overview_task_id": "544D402000200001"
+    },
+    {
+      "category": "Progression",
+      "group_id": "544D102000000000",
+      "chapter_id": "544D202000300000",
+      "name": "Endgame Roadmap",
+      "filename": "endgame_roadmap.snbt",
+      "order_index": 2,
+      "icon": "minecraft:ender_eye",
+      "mod_ids": [],
+      "overview_quest_id": "544D302000300001",
+      "overview_task_id": "544D402000300001"
+    },
+    {
+      "category": "Progression",
+      "group_id": "544D102000000000",
+      "chapter_id": "544D202000400000",
+      "name": "Skills & Advancement",
+      "filename": "skills_advancement.snbt",
+      "order_index": 3,
+      "icon": "minecraft:experience_bottle",
+      "mod_ids": [
+        "improvable-skills",
+        "puffish-skills",
+        "puffish-attributes"
+      ],
+      "overview_quest_id": "544D302000400001",
+      "overview_task_id": "544D402000400001"
+    },
+    {
+      "category": "Progression",
+      "group_id": "544D102000000000",
+      "chapter_id": "544D202000500000",
+      "name": "Exceptional Power: Reactors",
+      "filename": "exceptional_power_reactors.snbt",
+      "order_index": 4,
+      "icon": "minecraft:redstone_block",
+      "mod_ids": [
+        "bigger-reactors-rework"
+      ],
+      "overview_quest_id": "544D302000500001",
+      "overview_task_id": "544D402000500001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000100000",
+      "name": "Ars Nouveau",
+      "filename": "ars_nouveau.snbt",
+      "order_index": 0,
+      "icon": "minecraft:enchanted_book",
+      "mod_ids": [
+        "ars-nouveau",
+        "ars-additions",
+        "ars-controle",
+        "ars-elemancy",
+        "ars-elemental",
+        "ars-n-spells",
+        "ars-ocultas",
+        "ars-unification"
+      ],
+      "overview_quest_id": "544D303000100001",
+      "overview_task_id": "544D403000100001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000200000",
+      "name": "Astral Sorcery",
+      "filename": "astral_sorcery.snbt",
+      "order_index": 1,
+      "icon": "minecraft:amethyst_shard",
+      "mod_ids": [
+        "astral-sorcery"
+      ],
+      "overview_quest_id": "544D303000200001",
+      "overview_task_id": "544D403000200001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000300000",
+      "name": "Botania Revived",
+      "filename": "botania_revived.snbt",
+      "order_index": 2,
+      "icon": "minecraft:pink_tulip",
+      "mod_ids": [
+        "botania-revived",
+        "extra-botany-revived"
+      ],
+      "overview_quest_id": "544D303000300001",
+      "overview_task_id": "544D403000300001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000400000",
+      "name": "Eidolon: Repraised",
+      "filename": "eidolon_repraised.snbt",
+      "order_index": 3,
+      "icon": "minecraft:soul_sand",
+      "mod_ids": [
+        "eidolon-repraised"
+      ],
+      "overview_quest_id": "544D303000400001",
+      "overview_task_id": "544D403000400001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000500000",
+      "name": "Enchanted: Witchcraft",
+      "filename": "enchanted_witchcraft.snbt",
+      "order_index": 4,
+      "icon": "minecraft:cauldron",
+      "mod_ids": [
+        "enchanted-witchcraft"
+      ],
+      "overview_quest_id": "544D303000500001",
+      "overview_task_id": "544D403000500001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000600000",
+      "name": "EvilCraft",
+      "filename": "evilcraft.snbt",
+      "order_index": 5,
+      "icon": "minecraft:nether_wart",
+      "mod_ids": [
+        "evilcraft"
+      ],
+      "overview_quest_id": "544D303000600001",
+      "overview_task_id": "544D403000600001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000700000",
+      "name": "Forbidden & Arcanus",
+      "filename": "forbidden_arcanus.snbt",
+      "order_index": 6,
+      "icon": "minecraft:crying_obsidian",
+      "mod_ids": [
+        "forbidden-arcanus"
+      ],
+      "overview_quest_id": "544D303000700001",
+      "overview_task_id": "544D403000700001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000800000",
+      "name": "Goety",
+      "filename": "goety.snbt",
+      "order_index": 7,
+      "icon": "minecraft:wither_skeleton_skull",
+      "mod_ids": [
+        "goety",
+        "goety-cataclysm"
+      ],
+      "overview_quest_id": "544D303000800001",
+      "overview_task_id": "544D403000800001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000900000",
+      "name": "Hex Casting",
+      "filename": "hex_casting.snbt",
+      "order_index": 8,
+      "icon": "minecraft:amethyst_cluster",
+      "mod_ids": [
+        "hexcast-neoforged"
+      ],
+      "overview_quest_id": "544D303000900001",
+      "overview_task_id": "544D403000900001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000A00000",
+      "name": "Hexerei",
+      "filename": "hexerei.snbt",
+      "order_index": 9,
+      "icon": "minecraft:witch_spawn_egg",
+      "mod_ids": [
+        "hexerei"
+      ],
+      "overview_quest_id": "544D303000A00001",
+      "overview_task_id": "544D403000A00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000B00000",
+      "name": "Iron's Spells 'n Spellbooks",
+      "filename": "irons_spells_n_spellbooks.snbt",
+      "order_index": 10,
+      "icon": "minecraft:blaze_rod",
+      "mod_ids": [
+        "irons-spells"
+      ],
+      "overview_quest_id": "544D303000B00001",
+      "overview_task_id": "544D403000B00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000C00000",
+      "name": "Mahou Tsukai",
+      "filename": "mahou_tsukai.snbt",
+      "order_index": 11,
+      "icon": "minecraft:end_crystal",
+      "mod_ids": [
+        "mahou-tsukai"
+      ],
+      "overview_quest_id": "544D303000C00001",
+      "overview_task_id": "544D403000C00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000D00000",
+      "name": "Malum",
+      "filename": "malum.snbt",
+      "order_index": 12,
+      "icon": "minecraft:soul_lantern",
+      "mod_ids": [
+        "malum",
+        "gaze-malum"
+      ],
+      "overview_quest_id": "544D303000D00001",
+      "overview_task_id": "544D403000D00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000E00000",
+      "name": "Neo Vitae",
+      "filename": "neo_vitae.snbt",
+      "order_index": 13,
+      "icon": "minecraft:redstone",
+      "mod_ids": [
+        "neovitae"
+      ],
+      "overview_quest_id": "544D303000E00001",
+      "overview_task_id": "544D403000E00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203000F00000",
+      "name": "Occultism",
+      "filename": "occultism.snbt",
+      "order_index": 14,
+      "icon": "minecraft:soul_campfire",
+      "mod_ids": [
+        "occultism"
+      ],
+      "overview_quest_id": "544D303000F00001",
+      "overview_task_id": "544D403000F00001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001000000",
+      "name": "Pastel",
+      "filename": "pastel.snbt",
+      "order_index": 15,
+      "icon": "minecraft:purple_dye",
+      "mod_ids": [
+        "pastel"
+      ],
+      "overview_quest_id": "544D303001000001",
+      "overview_task_id": "544D403001000001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001100000",
+      "name": "Primal Magick",
+      "filename": "primal_magick.snbt",
+      "order_index": 16,
+      "icon": "minecraft:lapis_lazuli",
+      "mod_ids": [
+        "primal-magick"
+      ],
+      "overview_quest_id": "544D303001100001",
+      "overview_task_id": "544D403001100001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001200000",
+      "name": "Psi",
+      "filename": "psi.snbt",
+      "order_index": 17,
+      "icon": "minecraft:ender_pearl",
+      "mod_ids": [
+        "psi",
+        "psi-tweaks"
+      ],
+      "overview_quest_id": "544D303001200001",
+      "overview_task_id": "544D403001200001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001300000",
+      "name": "Roots Classic",
+      "filename": "roots_classic.snbt",
+      "order_index": 18,
+      "icon": "minecraft:oak_sapling",
+      "mod_ids": [
+        "roots-classic"
+      ],
+      "overview_quest_id": "544D303001300001",
+      "overview_task_id": "544D403001300001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001400000",
+      "name": "Scriptor Magicae",
+      "filename": "scriptor_magicae.snbt",
+      "order_index": 19,
+      "icon": "minecraft:writable_book",
+      "mod_ids": [
+        "scriptor-magicae"
+      ],
+      "overview_quest_id": "544D303001400001",
+      "overview_task_id": "544D403001400001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001500000",
+      "name": "Theurgy",
+      "filename": "theurgy.snbt",
+      "order_index": 20,
+      "icon": "minecraft:blaze_powder",
+      "mod_ids": [
+        "theurgy"
+      ],
+      "overview_quest_id": "544D303001500001",
+      "overview_task_id": "544D403001500001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001600000",
+      "name": "Totemic",
+      "filename": "totemic.snbt",
+      "order_index": 21,
+      "icon": "minecraft:note_block",
+      "mod_ids": [
+        "totemic"
+      ],
+      "overview_quest_id": "544D303001600001",
+      "overview_task_id": "544D403001600001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001700000",
+      "name": "Just Another Witchery Remake",
+      "filename": "just_another_witchery_remake.snbt",
+      "order_index": 22,
+      "icon": "minecraft:brewing_stand",
+      "mod_ids": [
+        "witchery-remake",
+        "forbidden-magic"
+      ],
+      "overview_quest_id": "544D303001700001",
+      "overview_task_id": "544D403001700001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001800000",
+      "name": "Embers Re-Ignited",
+      "filename": "embers_re_ignited.snbt",
+      "order_index": 23,
+      "icon": "minecraft:magma_cream",
+      "mod_ids": [
+        "embers-re-ignited"
+      ],
+      "overview_quest_id": "544D303001800001",
+      "overview_task_id": "544D403001800001"
+    },
+    {
+      "category": "Magic",
+      "group_id": "544D103000000000",
+      "chapter_id": "544D203001900000",
+      "name": "Reliquary Reincarnations",
+      "filename": "reliquary_reincarnations.snbt",
+      "order_index": 24,
+      "icon": "minecraft:ghast_tear",
+      "mod_ids": [
+        "reliquary-reincarnations"
+      ],
+      "overview_quest_id": "544D303001900001",
+      "overview_task_id": "544D403001900001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000100000",
+      "name": "L_Ender's Cataclysm",
+      "filename": "l_enders_cataclysm.snbt",
+      "order_index": 0,
+      "icon": "minecraft:netherite_sword",
+      "mod_ids": [
+        "cataclysm"
+      ],
+      "overview_quest_id": "544D304000100001",
+      "overview_task_id": "544D404000100001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000200000",
+      "name": "Deeper and Darker",
+      "filename": "deeper_and_darker.snbt",
+      "order_index": 1,
+      "icon": "minecraft:echo_shard",
+      "mod_ids": [
+        "deeper-darker"
+      ],
+      "overview_quest_id": "544D304000200001",
+      "overview_task_id": "544D404000200001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000300000",
+      "name": "Gateways to Eternity",
+      "filename": "gateways_to_eternity.snbt",
+      "order_index": 2,
+      "icon": "minecraft:ender_eye",
+      "mod_ids": [
+        "gateways-to-eternity"
+      ],
+      "overview_quest_id": "544D304000300001",
+      "overview_task_id": "544D404000300001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000400000",
+      "name": "Feywild",
+      "filename": "feywild.snbt",
+      "order_index": 3,
+      "icon": "minecraft:allium",
+      "mod_ids": [
+        "feywild",
+        "quest-giver"
+      ],
+      "overview_quest_id": "544D304000400001",
+      "overview_task_id": "544D404000400001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000500000",
+      "name": "Apotheosis",
+      "filename": "apotheosis.snbt",
+      "order_index": 4,
+      "icon": "minecraft:enchanted_golden_apple",
+      "mod_ids": [
+        "apotheosis",
+        "apothic-attributes",
+        "apothic-enchanting",
+        "apothic-spawners"
+      ],
+      "overview_quest_id": "544D304000500001",
+      "overview_task_id": "544D404000500001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000600000",
+      "name": "Artifacts",
+      "filename": "artifacts.snbt",
+      "order_index": 5,
+      "icon": "minecraft:heart_of_the_sea",
+      "mod_ids": [
+        "artifacts"
+      ],
+      "overview_quest_id": "544D304000600001",
+      "overview_task_id": "544D404000600001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000700000",
+      "name": "Enigmatic Legacy+",
+      "filename": "enigmatic_legacy.snbt",
+      "order_index": 6,
+      "icon": "minecraft:totem_of_undying",
+      "mod_ids": [
+        "enigmatic-legacy-plus"
+      ],
+      "overview_quest_id": "544D304000700001",
+      "overview_task_id": "544D404000700001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000800000",
+      "name": "Vampirism",
+      "filename": "vampirism.snbt",
+      "order_index": 7,
+      "icon": "minecraft:fermented_spider_eye",
+      "mod_ids": [
+        "vampirism"
+      ],
+      "overview_quest_id": "544D304000800001",
+      "overview_task_id": "544D404000800001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D204000900000",
+      "name": "Werewolves",
+      "filename": "werewolves.snbt",
+      "order_index": 8,
+      "icon": "minecraft:bone",
+      "mod_ids": [
+        "werewolves"
+      ],
+      "overview_quest_id": "544D304000900001",
+      "overview_task_id": "544D404000900001"
+    },
+    {
+      "category": "Endgame",
+      "group_id": "544D105000000000",
+      "chapter_id": "544D205000100000",
+      "name": "Draconic Evolution",
+      "filename": "draconic_evolution.snbt",
+      "order_index": 0,
+      "icon": "minecraft:dragon_head",
+      "mod_ids": [
+        "draconic-evolution"
+      ],
+      "overview_quest_id": "544D305000100001",
+      "overview_task_id": "544D405000100001"
+    },
+    {
+      "category": "Endgame",
+      "group_id": "544D105000000000",
+      "chapter_id": "544D205000200000",
+      "name": "ProjectE",
+      "filename": "projecte.snbt",
+      "order_index": 1,
+      "icon": "minecraft:nether_star",
+      "mod_ids": [
+        "projecte",
+        "project-expansion"
+      ],
+      "overview_quest_id": "544D305000200001",
+      "overview_task_id": "544D405000200001"
+    },
+    {
+      "category": "Endgame",
+      "group_id": "544D105000000000",
+      "chapter_id": "544D205000300000",
+      "name": "Replication",
+      "filename": "replication.snbt",
+      "order_index": 2,
+      "icon": "minecraft:diamond_block",
+      "mod_ids": [
+        "replication"
+      ],
+      "overview_quest_id": "544D305000300001",
+      "overview_task_id": "544D405000300001"
+    }
+  ]
+}
