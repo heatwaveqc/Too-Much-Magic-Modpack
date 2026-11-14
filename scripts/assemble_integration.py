@@ -109,7 +109,7 @@ def main() -> None:
             for path in found:
                 if path in imported and imported[path] != branch:
                     raise RuntimeError("Workstream path overlap: " + path)
-                if not path.startswith(("compat/", "integration/", "kubejs/", "config/", "mods/", "manifest/")):
+                if not path.startswith(("compat/", "integration/", "kubejs/", "config/", "mods/", "manifest/", "scripts/")):
                     raise RuntimeError("Unsafe imported source location: " + path)
                 imported[path] = branch
                 selected.append(path)
