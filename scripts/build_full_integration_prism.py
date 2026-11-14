@@ -51,6 +51,9 @@ Suggested QA:
 - Copper quest: submit 8, claim XP AND command coin; check /hqs coins and shop.
 - Confirm TrashSlot, TreeChop, fast leaf decay, the NEW Eternal Steak,
   and More Overlays are available automatically.
+- If FTB Essentials is pinned in BUILD-MANIFEST, verify non-OP /sethome,
+  /home after reconnect, /delhome, /listhomes and /rtp safety/cooldown;
+  allow one home and keep the test world disposable (RTP is not claim-aware).
 - Test conventional dust, silver equipment and ore-doubling conflicts.
   Compare Polymorph choices. Do not use scarce/valuable materials.
 - Roots first staff pickup/Terra pilot if enabled by its source conditions.
