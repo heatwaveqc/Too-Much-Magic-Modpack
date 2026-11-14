@@ -6,6 +6,11 @@ import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.faction.MonkPlayerData;
 import io.github.heatwaveqc.tmm.monk.gameplay.SunsetInitiation;
 import io.github.heatwaveqc.tmm.monk.gameplay.StepAssistEffects;
+import io.github.heatwaveqc.tmm.monk.gameplay.MonkTechniqueEffects;
+import io.github.heatwaveqc.tmm.monk.progression.MonkMasteryEvents;
+import de.teamlapen.vampirism.api.entity.player.skills.SkillPointProviders;
+import io.github.heatwaveqc.tmm.monk.faction.IMonkPlayer;
+import net.minecraft.resources.ResourceLocation;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -34,6 +39,10 @@ public final class MonkMod {
         container.registerConfig(ModConfig.Type.STARTUP, MonkStartupConfig.SPEC);
         MonkPlayerData.ATTACHMENTS.register(modBus);
         MonkSkills.SKILLS.register(modBus);
+        // One native faction SP for each earned cultivation rank AFTER initiation.
+        // Tyz still owns its own MXP/SP wallet; this is only for Vampirism skills.
+        SkillPointProviders.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "faction_rank"),
+                player -> player instanceof IMonkPlayer ? Math.max(0, player.getLevel() - 1) : 0);
         // Pattern from Werewolves 2.0.x: register after Vampirism's constructor
         // but before Vampirism closes faction registrations at IMC processing.
         modBus.addListener(this::registerFaction);
@@ -46,7 +55,12 @@ public final class MonkMod {
         NeoForge.EVENT_BUS.addListener(StepAssistEffects::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(StepAssistEffects::onFactionChanged);
         NeoForge.EVENT_BUS.addListener(StepAssistEffects::onLogout);
-        LOGGER.info("Monk First Sunset and Step Assist prototype registered (external physiology bridge pending).");
+        NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onBlockDrops);
+        NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onHostileDeath);
+        NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onFoodFinished);
+        NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onTick);
+        NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onLogout);
+        LOGGER.info("Monk First Sunset, native ranks 1-4, initial skill tree and Step Assist registered (external physiology bridge pending).");
     }
 
     private void registerFaction(RegisterEvent event) {
