@@ -14,14 +14,16 @@
 			id: "544D303000100001"
 			icon: { id: "minecraft:enchanted_book" }
 			title: "Chapter Overview"
-			subtitle: "Read when you are ready"
 			description: [
-					"Spell crafting, source, familiars, all Ars addons; direct cross-links for Ars Ocultas/Occultism and Ars 'n Spells/Iron's."
-					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
-					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
-				]
+				"Spell crafting, source, familiars, all Ars addons; direct cross-links for Ars Ocultas/Occultism and Ars 'n Spells/Iron's."
+				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
+				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
+			]
 			optional: true
-			rewards: [ ]
+			rewards: [
+				{ id: "544D903000100001", type: "xp", xp: 2 }
+				{ id: "544DA03000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
 			tasks: [
 				{ id: "544D403000100001", type: "checkmark" }
 			]

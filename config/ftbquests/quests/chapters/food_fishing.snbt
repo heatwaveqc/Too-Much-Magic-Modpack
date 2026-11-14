@@ -13,20 +13,359 @@
 		{
 			id: "544D301000300001"
 			icon: { id: "minecraft:fishing_rod" }
-			title: "Chapter Overview"
-			subtitle: "Read when you are ready"
+			title: "Food & Fishing Index"
 			description: [
-					"Food, fishing, growing, cooking and seed market; verify magical crop acquisition cannot bypass progression gates."
-					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
-					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
-				]
+				"Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."
+				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
+			]
 			optional: true
-			rewards: [ ]
+			rewards: [
+				{ id: "544D603000100001", type: "xp", xp: 5 }
+				{ id: "544D703000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
 			tasks: [
 				{ id: "544D401000300001", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 0.0d
+		}
+		{
+			id: "544D503000200000"
+			icon: { id: "minecraft:wheat_seeds" }
+			title: "Start with Seeds"
+			description: [
+				"Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore."
+			]
+			rewards: [
+				{ id: "544D603000200001", type: "xp", xp: 10 }
+				{ id: "544D703000200002", type: "item", item: { id: "minecraft:bone_meal", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000200000", type: "item", item: { id: "minecraft:wheat_seeds", count: 1 } }
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			id: "544D503000300000"
+			icon: { id: "minecraft:stone_hoe" }
+			title: "Prepare a Field"
+			description: [
+				"Craft a stone hoe to till farmland. Harvest with Ease can make managing mature crops simpler."
+			]
+			dependencies: ["544D503000200000"]
+			rewards: [
+				{ id: "544D603000300001", type: "xp", xp: 10 }
+				{ id: "544D703000300002", type: "item", item: { id: "minecraft:bone_meal", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000300000", type: "item", item: { id: "minecraft:stone_hoe", count: 1 } }
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			id: "544D503000400000"
+			icon: { id: "minecraft:wheat" }
+			title: "Bring in the Wheat"
+			description: [
+				"Harvest four wheat. Ordinary grains form a foundation for many more elaborate meals."
+			]
+			dependencies: ["544D503000300000"]
+			rewards: [
+				{ id: "544D603000400001", type: "xp", xp: 15 }
+				{ id: "544D703000400002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000400000", type: "item", item: { id: "minecraft:wheat", count: 1 }, count: 4L }
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			id: "544D503000500000"
+			icon: { id: "minecraft:sugar_cane" }
+			title: "A Patch of Sugar Cane"
+			description: [
+				"Collect three sugar cane. Sugar and paper support cooking and magic books."
+			]
+			rewards: [
+				{ id: "544D603000500001", type: "xp", xp: 15 }
+				{ id: "544D703000500002", type: "item", item: { id: "minecraft:honey_bottle", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803000500000", type: "item", item: { id: "minecraft:sugar_cane", count: 1 }, count: 3L }
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			id: "544D503000600000"
+			icon: { id: "minecraft:chicken" }
+			title: "Raise a Chicken Dinner"
+			description: [
+				"Acquire raw chicken. Farmer's Delight and Pam's HarvestCraft offer cooking options beyond simple smelting."
+			]
+			rewards: [
+				{ id: "544D603000600001", type: "xp", xp: 15 }
+				{ id: "544D703000600002", type: "item", item: { id: "minecraft:cooked_chicken", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000600000", type: "item", item: { id: "minecraft:chicken", count: 1 } }
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			id: "544D503000700000"
+			icon: { id: "minecraft:egg" }
+			title: "Gather Eggs"
+			description: [
+				"Collect two eggs for cooking recipes."
+			]
+			rewards: [
+				{ id: "544D603000700001", type: "xp", xp: 15 }
+				{ id: "544D703000700002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000700000", type: "item", item: { id: "minecraft:egg", count: 1 }, count: 2L }
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			id: "544D503000800000"
+			icon: { id: "minecraft:milk_bucket" }
+			title: "Fresh Milk"
+			description: [
+				"Get a bucket of milk. Many recipes need useful basic farm products as well as exotic ingredients."
+			]
+			rewards: [
+				{ id: "544D603000800001", type: "xp", xp: 20 }
+				{ id: "544D703000800002", type: "item", item: { id: "minecraft:honey_bottle", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803000800000", type: "item", item: { id: "minecraft:milk_bucket", count: 1 } }
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			id: "544D503000900000"
+			icon: { id: "minecraft:fishing_rod" }
+			title: "Ready Your Fishing Rod"
+			description: [
+				"Craft a fishing rod and start exploring another renewable food route."
+			]
+			rewards: [
+				{ id: "544D603000900001", type: "xp", xp: 10 }
+				{ id: "544D703000900002", type: "item", item: { id: "minecraft:string", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000900000", type: "item", item: { id: "minecraft:fishing_rod", count: 1 } }
+			]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			id: "544D503000A00000"
+			icon: { id: "minecraft:cod" }
+			title: "Catch a Cod"
+			description: [
+				"Catch cod using a rod. A small fishing expedition can feed a player before a serious farm is built."
+			]
+			dependencies: ["544D503000900000"]
+			rewards: [
+				{ id: "544D603000A00001", type: "xp", xp: 15 }
+				{ id: "544D703000A00002", type: "item", item: { id: "minecraft:cooked_cod", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000A00000", type: "item", item: { id: "minecraft:cod", count: 1 } }
+			]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			id: "544D503000B00000"
+			icon: { id: "minecraft:salmon" }
+			title: "Catch a Salmon"
+			description: [
+				"Catch salmon in suitable water. Aquaculture expands this side of the game."
+			]
+			dependencies: ["544D503000900000"]
+			rewards: [
+				{ id: "544D603000B00001", type: "xp", xp: 15 }
+				{ id: "544D703000B00002", type: "item", item: { id: "minecraft:cooked_salmon", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000B00000", type: "item", item: { id: "minecraft:salmon", count: 1 } }
+			]
+			x: 4.0d
+			y: 7.0d
+		}
+		{
+			id: "544D503000C00000"
+			icon: { id: "aquaculture:iron_fishing_rod" }
+			title: "Aquaculture: Iron Rod"
+			description: [
+				"Craft Aquaculture 2's iron fishing rod. Use JEI for its current exact recipe."
+			]
+			dependencies: ["544D503000900000"]
+			rewards: [
+				{ id: "544D603000C00001", type: "xp", xp: 30 }
+				{ id: "544D703000C00002", type: "item", item: { id: "minecraft:nautilus_shell", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803000C00000", type: "item", item: { id: "aquaculture:iron_fishing_rod", count: 1 } }
+			]
+			x: 6.0d
+			y: 5.0d
+		}
+		{
+			id: "544D503000D00000"
+			icon: { id: "aquaculture:gold_fishing_rod" }
+			title: "Aquaculture: Gold Rod"
+			description: [
+				"Progress to an Aquaculture gold fishing rod. This is a distinct milestone, not another copy of the iron-rod objective."
+			]
+			dependencies: ["544D503000C00000"]
+			rewards: [
+				{ id: "544D603000D00001", type: "xp", xp: 40 }
+				{ id: "544D703000D00002", type: "item", item: { id: "minecraft:sea_pickle", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000D00000", type: "item", item: { id: "aquaculture:gold_fishing_rod", count: 1 } }
+			]
+			x: 8.0d
+			y: 5.0d
+		}
+		{
+			id: "544D503000E00000"
+			icon: { id: "aquaculture:neptunium_fishing_rod" }
+			title: "Aquaculture: Neptunium Rod"
+			description: [
+				"Obtain the rare Neptunium fishing rod as an optional long-term goal rather than an early prerequisite."
+			]
+			dependencies: ["544D503000D00000"]
+			optional: true
+			rewards: [
+				{ id: "544D603000E00001", type: "xp", xp: 100 }
+				{ id: "544D703000E00002", type: "item", item: { id: "minecraft:nautilus_shell", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D803000E00000", type: "item", item: { id: "aquaculture:neptunium_fishing_rod", count: 1 } }
+			]
+			x: 10.0d
+			y: 5.0d
+		}
+		{
+			id: "544D503000F00000"
+			icon: { id: "minecraft:campfire" }
+			title: "Light a Campfire"
+			description: [
+				"Craft a campfire to cook basic food on the road."
+			]
+			rewards: [
+				{ id: "544D603000F00001", type: "xp", xp: 15 }
+				{ id: "544D703000F00002", type: "item", item: { id: "minecraft:cooked_beef", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803000F00000", type: "item", item: { id: "minecraft:campfire", count: 1 } }
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			id: "544D503001000000"
+			icon: { id: "farmersdelight:cutting_board" }
+			title: "Farmer's Delight: Cutting Board"
+			description: [
+				"Craft Farmer's Delight's cutting board to prepare ingredients outside the normal crafting grid."
+			]
+			dependencies: ["544D503000400000"]
+			rewards: [
+				{ id: "544D603001000001", type: "xp", xp: 20 }
+				{ id: "544D703001000002", type: "item", item: { id: "minecraft:bread", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D803001000000", type: "item", item: { id: "farmersdelight:cutting_board", count: 1 } }
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			id: "544D503001100000"
+			icon: { id: "farmersdelight:cooking_pot" }
+			title: "Farmer's Delight: Cooking Pot"
+			description: [
+				"Make a cooking pot and use it with heat and ingredients for more satisfying meals."
+			]
+			dependencies: ["544D503001000000"]
+			rewards: [
+				{ id: "544D603001100001", type: "xp", xp: 30 }
+				{ id: "544D703001100002", type: "item", item: { id: "minecraft:baked_potato", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D803001100000", type: "item", item: { id: "farmersdelight:cooking_pot", count: 1 } }
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			id: "544D503001200000"
+			icon: { id: "farmingforblockheads:market" }
+			title: "Find the Seed Market"
+			description: [
+				"Craft Farming for Blockheads' Market for ordinary seed and sapling trades. Magical seed trades must be audited before survival release."
+			]
+			dependencies: ["544D503000400000"]
+			rewards: [
+				{ id: "544D603001200001", type: "xp", xp: 20 }
+				{ id: "544D703001200002", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803001200000", type: "item", item: { id: "farmingforblockheads:market", count: 1 } }
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			id: "544D503001300000"
+			icon: { id: "pamhc2foodcore:friedchickenitem" }
+			title: "Pam's HarvestCraft: Fried Chicken"
+			description: [
+				"Craft a finished Fried Chicken from Pam's HarvestCraft 2 Food Core. A useful optional cooking challenge."
+			]
+			dependencies: ["544D503000600000"]
+			optional: true
+			rewards: [
+				{ id: "544D603001300001", type: "xp", xp: 35 }
+				{ id: "544D703001300002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803001300000", type: "item", item: { id: "pamhc2foodcore:friedchickenitem", count: 1 } }
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			id: "544D503001400000"
+			icon: { id: "pamhc2trees:starfruititem" }
+			title: "Pam's HarvestCraft: Starfruit"
+			description: [
+				"Obtain starfruit from Pam's HarvestCraft 2 Trees, showcasing specialty plants and orchard progression."
+			]
+			dependencies: ["544D503000500000"]
+			optional: true
+			rewards: [
+				{ id: "544D603001400001", type: "xp", xp: 35 }
+				{ id: "544D703001400002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D803001400000", type: "item", item: { id: "pamhc2trees:starfruititem", count: 1 } }
+			]
+			x: 10.0d
+			y: 7.0d
 		}
 	]
 	subtitle: "Food, fishing, growing, cooking and seed market; verify magical crop acquisition cannot bypass progression gates."

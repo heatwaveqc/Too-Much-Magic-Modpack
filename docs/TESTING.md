@@ -87,3 +87,9 @@ Never reclassify step 1 as steps 2–5.
 - 5 category groups, 45 chapter SNBT files, 45 optional no-reward orientation checkmarks, plus a first-log advancement/pouch quest. Stable IDs, grouped localization, packwiz indexing and offline structural validator authored in `feature/ftb-quests-45-chapter-scaffold`.
 - **Integration not yet certified:** dedicated-server FTB Quests file parsing, Prism client GUI, per-player first-log advancement reward and storage behavior require explicit tests. CI runner's general server boot does not prove all 45 chapters appeared in the client.
 - Corrected base has 138 mod pins (Re:Avaritia/Extended Crafting removed); historic 140-mod B8 run is not a verification of this composition.
+
+## Intro quest content and reward-policy candidate (2026-11-14)
+
+- Authored 11 Getting Started, 15 Tips & Tricks and 20 Food & Fishing quest tasks; 42 other chapter overview checkmarks now award XP and paper. **All 88 quests have XP and item rewards.** First-log FTB claim has XP+torches; the pouch still comes automatically from the persistent per-player advancement.
+- Item completion criteria and advancement criteria are unique across authored quests. The 46 authored quest rewards never match any authored item-task item ID. All modded task item IDs need a live item-registry/JEI check before release.
+- Static validator and server smoke test: require actual CI results on this branch. No client GUI, claim behavior or team test yet.

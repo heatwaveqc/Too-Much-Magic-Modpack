@@ -14,15 +14,15 @@
 			id: "544D301000100001"
 			icon: { id: "minecraft:oak_log" }
 			title: "Welcome to Too Much Magic"
-			subtitle: "Read when you are ready"
 			description: [
-					"Magic is the everyday infrastructure in this pack. You can follow independent schools without completing every other branch."
-					"Open the five categories to see different systems and progression paths. Quests are guides; important restrictions are enforced separately by gameplay rules."
-					"Obtain any log or stem to earn your first 27-slot Trinkets Pouch automatically. The reward is once per player. Other magical bags are crafted normally."
-					"This welcome entry has no reward. Read it and check it off whenever you like."
-				]
+				"A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it."
+				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
+			]
 			optional: true
-			rewards: [ ]
+			rewards: [
+				{ id: "544D601000100001", type: "xp", xp: 5 }
+				{ id: "544D701000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
 			tasks: [
 				{ id: "544D401000100001", type: "checkmark" }
 			]
@@ -31,22 +31,184 @@
 		}
 		{
 			id: "544D4D1100000001"
-			title: "Punch a Tree"
-			subtitle: "Get your first log"
-			description: [
-					"Acquire any item tagged as a log. A persistent one-time player advancement gives you an Ars Elemental Trinkets Pouch (27 slots)."
-					"The reward arrives automatically, whether or not this quest book is open; there is no additional FTB item reward to claim."
-					"All later magical bags are crafted by their own methods. Portable bags must not be nested inside one another; full cross-mod prevention is still under active test."
-				]
 			icon: { id: "ars_elemental:curio_bag" }
-			rewards: [ ]
+			title: "Punch a Tree"
+			description: [
+				"Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development."
+			]
+			rewards: [
+				{ id: "544D601000200001", type: "xp", xp: 10 }
+				{ id: "544D701000200002", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 4 }
+			]
 			tasks: [
-				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm:first_log" }
+				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm" }
 			]
 			x: 2.0d
 			y: 0.0d
 		}
+		{
+			id: "544D501000300000"
+			icon: { id: "minecraft:crafting_table" }
+			title: "Make a Crafting Table"
+			description: [
+				"Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."
+			]
+			dependencies: ["544D4D1100000001"]
+			rewards: [
+				{ id: "544D601000300001", type: "xp", xp: 10 }
+				{ id: "544D701000300002", type: "item", item: { id: "minecraft:bowl", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000300000", type: "item", item: { id: "minecraft:crafting_table", count: 1 } }
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000400000"
+			icon: { id: "minecraft:wooden_pickaxe" }
+			title: "Make a Wooden Pickaxe"
+			description: [
+				"Craft your first wooden pickaxe. Ordinary tools are an easy way to get established before specializing in magic."
+			]
+			dependencies: ["544D501000300000"]
+			rewards: [
+				{ id: "544D601000400001", type: "xp", xp: 10 }
+				{ id: "544D701000400002", type: "item", item: { id: "minecraft:stick", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000400000", type: "item", item: { id: "minecraft:wooden_pickaxe", count: 1 } }
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000500000"
+			icon: { id: "minecraft:cobblestone" }
+			title: "Gather Stone"
+			description: [
+				"Collect sixteen cobblestone. Stone is useful for your first shelter, tools and furnace."
+			]
+			dependencies: ["544D501000400000"]
+			rewards: [
+				{ id: "544D601000500001", type: "xp", xp: 15 }
+				{ id: "544D701000500002", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D801000500000", type: "item", item: { id: "minecraft:cobblestone", count: 1 }, count: 16L }
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000600000"
+			icon: { id: "minecraft:stone_pickaxe" }
+			title: "Upgrade to Stone"
+			description: [
+				"Make a stone pickaxe so you can mine sturdier resources."
+			]
+			dependencies: ["544D501000500000"]
+			rewards: [
+				{ id: "544D601000600001", type: "xp", xp: 15 }
+				{ id: "544D701000600002", type: "item", item: { id: "minecraft:cooked_porkchop", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000600000", type: "item", item: { id: "minecraft:stone_pickaxe", count: 1 } }
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000700000"
+			icon: { id: "minecraft:chest" }
+			title: "A Place for Your Things"
+			description: [
+				"Craft a chest for early base storage. Magic eventually offers more specialized options than generic storage networks."
+			]
+			dependencies: ["544D501000300000"]
+			rewards: [
+				{ id: "544D601000700001", type: "xp", xp: 15 }
+				{ id: "544D701000700002", type: "item", item: { id: "minecraft:item_frame", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D801000700000", type: "item", item: { id: "minecraft:chest", count: 1 } }
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			id: "544D501000800000"
+			icon: { id: "minecraft:furnace" }
+			title: "Light the Furnace"
+			description: [
+				"Craft a furnace. Smelting remains useful alongside later magical processing."
+			]
+			dependencies: ["544D501000500000"]
+			rewards: [
+				{ id: "544D601000800001", type: "xp", xp: 20 }
+				{ id: "544D701000800002", type: "item", item: { id: "minecraft:charcoal", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D801000800000", type: "item", item: { id: "minecraft:furnace", count: 1 } }
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			id: "544D501000900000"
+			icon: { id: "minecraft:raw_iron" }
+			title: "Find Your First Iron"
+			description: [
+				"Bring back three raw iron. Magical mining and transmutation will eventually provide alternatives."
+			]
+			dependencies: ["544D501000600000"]
+			rewards: [
+				{ id: "544D601000900001", type: "xp", xp: 25 }
+				{ id: "544D701000900002", type: "item", item: { id: "minecraft:coal", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D801000900000", type: "item", item: { id: "minecraft:raw_iron", count: 1 }, count: 3L }
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000A00000"
+			icon: { id: "minecraft:iron_pickaxe" }
+			title: "Iron Pickaxe"
+			description: [
+				"Craft an iron pickaxe. You now have the baseline tools to choose your first magical specialty."
+			]
+			dependencies: ["544D501000900000"]
+			rewards: [
+				{ id: "544D601000A00001", type: "xp", xp: 30 }
+				{ id: "544D701000A00002", type: "item", item: { id: "minecraft:baked_potato", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000A00000", type: "item", item: { id: "minecraft:iron_pickaxe", count: 1 } }
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000B00000"
+			icon: { id: "minecraft:book" }
+			title: "Begin a Library"
+			description: [
+				"Craft a book to begin collecting magical research and manuals. Akashic Tome can organize compatible guides without replacing each school's progression."
+			]
+			dependencies: ["544D501000300000"]
+			rewards: [
+				{ id: "544D601000B00001", type: "xp", xp: 15 }
+				{ id: "544D701000B00002", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000B00000", type: "item", item: { id: "minecraft:book", count: 1 } }
+			]
+			x: 6.0d
+			y: 3.0d
+		}
 	]
-	subtitle: "Get your first log for a one-time Trinkets Pouch; learn the quest book; select your own magical specialties."
+	subtitle: "FTB quest navigation, starting equipment and first-log Trinkets Pouch; the grant is implemented separately on PR #14."
 	title: "Getting Started"
 }

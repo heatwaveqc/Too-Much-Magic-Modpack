@@ -14,14 +14,16 @@
 			id: "544D303001000001"
 			icon: { id: "minecraft:purple_dye" }
 			title: "Chapter Overview"
-			subtitle: "Read when you are ready"
 			description: [
-					"Dedicated color/resonance magic progression."
-					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
-					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
-				]
+				"Dedicated color/resonance magic progression."
+				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
+				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
+			]
 			optional: true
-			rewards: [ ]
+			rewards: [
+				{ id: "544D903001000001", type: "xp", xp: 2 }
+				{ id: "544DA03001000002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
 			tasks: [
 				{ id: "544D403001000001", type: "checkmark" }
 			]

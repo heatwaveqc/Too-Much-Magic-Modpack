@@ -1,0 +1,892 @@
+{
+  "schema_version": 1,
+  "source": "manifest/quest_content.json",
+  "note": "Stable ID map for authored quests; generated at content revision",
+  "quests": [
+    {
+      "chapter": "Getting Started",
+      "title": "Welcome to Too Much Magic",
+      "quest_id": "544D301000100001",
+      "task_id": "544D401000100001",
+      "xp_reward_id": "544D601000100001",
+      "item_reward_id": "544D701000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Punch a Tree",
+      "quest_id": "544D4D1100000001",
+      "task_id": "544D4D1200000001",
+      "xp_reward_id": "544D601000200001",
+      "item_reward_id": "544D701000200002",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:torch",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Make a Crafting Table",
+      "quest_id": "544D501000300000",
+      "task_id": "544D801000300000",
+      "xp_reward_id": "544D601000300001",
+      "item_reward_id": "544D701000300002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:crafting_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bowl",
+        "count": 2
+      },
+      "depends": "Punch a Tree",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Make a Wooden Pickaxe",
+      "quest_id": "544D501000400000",
+      "task_id": "544D801000400000",
+      "xp_reward_id": "544D601000400001",
+      "item_reward_id": "544D701000400002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wooden_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:stick",
+        "count": 2
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Gather Stone",
+      "quest_id": "544D501000500000",
+      "task_id": "544D801000500000",
+      "xp_reward_id": "544D601000500001",
+      "item_reward_id": "544D701000500002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:cobblestone",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": "Make a Wooden Pickaxe",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Upgrade to Stone",
+      "quest_id": "544D501000600000",
+      "task_id": "544D801000600000",
+      "xp_reward_id": "544D601000600001",
+      "item_reward_id": "544D701000600002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:stone_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_porkchop",
+        "count": 2
+      },
+      "depends": "Gather Stone",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "A Place for Your Things",
+      "quest_id": "544D501000700000",
+      "task_id": "544D801000700000",
+      "xp_reward_id": "544D601000700001",
+      "item_reward_id": "544D701000700002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:chest",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:item_frame",
+        "count": 1
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Light the Furnace",
+      "quest_id": "544D501000800000",
+      "task_id": "544D801000800000",
+      "xp_reward_id": "544D601000800001",
+      "item_reward_id": "544D701000800002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:furnace",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:charcoal",
+        "count": 3
+      },
+      "depends": "Gather Stone",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Find Your First Iron",
+      "quest_id": "544D501000900000",
+      "task_id": "544D801000900000",
+      "xp_reward_id": "544D601000900001",
+      "item_reward_id": "544D701000900002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_iron",
+        "count": 3
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:coal",
+        "count": 3
+      },
+      "depends": "Upgrade to Stone",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Iron Pickaxe",
+      "quest_id": "544D501000A00000",
+      "task_id": "544D801000A00000",
+      "xp_reward_id": "544D601000A00001",
+      "item_reward_id": "544D701000A00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:baked_potato",
+        "count": 2
+      },
+      "depends": "Find Your First Iron",
+      "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Begin a Library",
+      "quest_id": "544D501000B00000",
+      "task_id": "544D801000B00000",
+      "xp_reward_id": "544D601000B00001",
+      "item_reward_id": "544D701000B00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:book",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 2
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Tips & Tricks Index",
+      "quest_id": "544D301000200001",
+      "task_id": "544D401000200001",
+      "xp_reward_id": "544D602000100001",
+      "item_reward_id": "544D702000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Find Recipes with JEI",
+      "quest_id": "544D502000200000",
+      "task_id": "544D802000200000",
+      "xp_reward_id": "544D602000200001",
+      "item_reward_id": "544D702000200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Identify Blocks with Jade",
+      "quest_id": "544D502000300000",
+      "task_id": "544D802000300000",
+      "xp_reward_id": "544D602000300001",
+      "item_reward_id": "544D702000300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Sort Your Inventory",
+      "quest_id": "544D502000400000",
+      "task_id": "544D802000400000",
+      "xp_reward_id": "544D602000400001",
+      "item_reward_id": "544D702000400002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:stick",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use Crafting Tweaks",
+      "quest_id": "544D502000500000",
+      "task_id": "544D802000500000",
+      "xp_reward_id": "544D602000500001",
+      "item_reward_id": "544D702000500002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:cookie",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Search the Controls Screen",
+      "quest_id": "544D502000600000",
+      "task_id": "544D802000600000",
+      "xp_reward_id": "544D602000600001",
+      "item_reward_id": "544D702000600002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Gather Your Guidebooks",
+      "quest_id": "544D502000700000",
+      "task_id": "544D802000700000",
+      "xp_reward_id": "544D602000700001",
+      "item_reward_id": "544D702000700002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Curios and Portable Bags",
+      "quest_id": "544D502000800000",
+      "task_id": "544D802000800000",
+      "xp_reward_id": "544D602000800001",
+      "item_reward_id": "544D702000800002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:torch",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Claim Your Base",
+      "quest_id": "544D502000900000",
+      "task_id": "544D802000900000",
+      "xp_reward_id": "544D602000900001",
+      "item_reward_id": "544D702000900002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:apple",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Understand Lootr Chests",
+      "quest_id": "544D502000A00000",
+      "task_id": "544D802000A00000",
+      "xp_reward_id": "544D602000A00001",
+      "item_reward_id": "544D702000A00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:feather",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Plan for Death",
+      "quest_id": "544D502000B00000",
+      "task_id": "544D802000B00000",
+      "xp_reward_id": "544D602000B00001",
+      "item_reward_id": "544D702000B00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:bone",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Search Biomes",
+      "quest_id": "544D502000C00000",
+      "task_id": "544D802000C00000",
+      "xp_reward_id": "544D602000C00001",
+      "item_reward_id": "544D702000C00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:sugar",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Resolve Recipe Conflicts",
+      "quest_id": "544D502000D00000",
+      "task_id": "544D802000D00000",
+      "xp_reward_id": "544D602000D00001",
+      "item_reward_id": "544D702000D00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Understand Character Growth",
+      "quest_id": "544D502000E00000",
+      "task_id": "544D802000E00000",
+      "xp_reward_id": "544D602000E00001",
+      "item_reward_id": "544D702000E00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:lapis_lazuli",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Zoom and Overlay Controls",
+      "quest_id": "544D502000F00000",
+      "task_id": "544D802000F00000",
+      "xp_reward_id": "544D602000F00001",
+      "item_reward_id": "544D702000F00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:cookie",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Food & Fishing Index",
+      "quest_id": "544D301000300001",
+      "task_id": "544D401000300001",
+      "xp_reward_id": "544D603000100001",
+      "item_reward_id": "544D703000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Start with Seeds",
+      "quest_id": "544D503000200000",
+      "task_id": "544D803000200000",
+      "xp_reward_id": "544D603000200001",
+      "item_reward_id": "544D703000200002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wheat_seeds",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Prepare a Field",
+      "quest_id": "544D503000300000",
+      "task_id": "544D803000300000",
+      "xp_reward_id": "544D603000300001",
+      "item_reward_id": "544D703000300002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:stone_hoe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      "depends": "Start with Seeds",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Bring in the Wheat",
+      "quest_id": "544D503000400000",
+      "task_id": "544D803000400000",
+      "xp_reward_id": "544D603000400001",
+      "item_reward_id": "544D703000400002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wheat",
+        "count": 4
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": "Prepare a Field",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "A Patch of Sugar Cane",
+      "quest_id": "544D503000500000",
+      "task_id": "544D803000500000",
+      "xp_reward_id": "544D603000500001",
+      "item_reward_id": "544D703000500002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:sugar_cane",
+        "count": 3
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:honey_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Raise a Chicken Dinner",
+      "quest_id": "544D503000600000",
+      "task_id": "544D803000600000",
+      "xp_reward_id": "544D603000600001",
+      "item_reward_id": "544D703000600002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:chicken",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_chicken",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Gather Eggs",
+      "quest_id": "544D503000700000",
+      "task_id": "544D803000700000",
+      "xp_reward_id": "544D603000700001",
+      "item_reward_id": "544D703000700002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:egg",
+        "count": 2
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Fresh Milk",
+      "quest_id": "544D503000800000",
+      "task_id": "544D803000800000",
+      "xp_reward_id": "544D603000800001",
+      "item_reward_id": "544D703000800002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:milk_bucket",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:honey_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Ready Your Fishing Rod",
+      "quest_id": "544D503000900000",
+      "task_id": "544D803000900000",
+      "xp_reward_id": "544D603000900001",
+      "item_reward_id": "544D703000900002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:string",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Catch a Cod",
+      "quest_id": "544D503000A00000",
+      "task_id": "544D803000A00000",
+      "xp_reward_id": "544D603000A00001",
+      "item_reward_id": "544D703000A00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:cod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_cod",
+        "count": 2
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Catch a Salmon",
+      "quest_id": "544D503000B00000",
+      "task_id": "544D803000B00000",
+      "xp_reward_id": "544D603000B00001",
+      "item_reward_id": "544D703000B00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:salmon",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_salmon",
+        "count": 2
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Iron Rod",
+      "quest_id": "544D503000C00000",
+      "task_id": "544D803000C00000",
+      "xp_reward_id": "544D603000C00001",
+      "item_reward_id": "544D703000C00002",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:iron_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:nautilus_shell",
+        "count": 1
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Gold Rod",
+      "quest_id": "544D503000D00000",
+      "task_id": "544D803000D00000",
+      "xp_reward_id": "544D603000D00001",
+      "item_reward_id": "544D703000D00002",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:gold_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:sea_pickle",
+        "count": 2
+      },
+      "depends": "Aquaculture: Iron Rod",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Neptunium Rod",
+      "quest_id": "544D503000E00000",
+      "task_id": "544D803000E00000",
+      "xp_reward_id": "544D603000E00001",
+      "item_reward_id": "544D703000E00002",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:neptunium_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:nautilus_shell",
+        "count": 3
+      },
+      "depends": "Aquaculture: Gold Rod",
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Light a Campfire",
+      "quest_id": "544D503000F00000",
+      "task_id": "544D803000F00000",
+      "xp_reward_id": "544D603000F00001",
+      "item_reward_id": "544D703000F00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:campfire",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_beef",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Farmer's Delight: Cutting Board",
+      "quest_id": "544D503001000000",
+      "task_id": "544D803001000000",
+      "xp_reward_id": "544D603001000001",
+      "item_reward_id": "544D703001000002",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cutting_board",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:bread",
+        "count": 2
+      },
+      "depends": "Bring in the Wheat",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Farmer's Delight: Cooking Pot",
+      "quest_id": "544D503001100000",
+      "task_id": "544D803001100000",
+      "xp_reward_id": "544D603001100001",
+      "item_reward_id": "544D703001100002",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cooking_pot",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:baked_potato",
+        "count": 4
+      },
+      "depends": "Farmer's Delight: Cutting Board",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Find the Seed Market",
+      "quest_id": "544D503001200000",
+      "task_id": "544D803001200000",
+      "xp_reward_id": "544D603001200001",
+      "item_reward_id": "544D703001200002",
+      "criterion": {
+        "type": "item",
+        "id": "farmingforblockheads:market",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:emerald",
+        "count": 1
+      },
+      "depends": "Bring in the Wheat",
+      "optional": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Pam's HarvestCraft: Fried Chicken",
+      "quest_id": "544D503001300000",
+      "task_id": "544D803001300000",
+      "xp_reward_id": "544D603001300001",
+      "item_reward_id": "544D703001300002",
+      "criterion": {
+        "type": "item",
+        "id": "pamhc2foodcore:friedchickenitem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": "Raise a Chicken Dinner",
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Pam's HarvestCraft: Starfruit",
+      "quest_id": "544D503001400000",
+      "task_id": "544D803001400000",
+      "xp_reward_id": "544D603001400001",
+      "item_reward_id": "544D703001400002",
+      "criterion": {
+        "type": "item",
+        "id": "pamhc2trees:starfruititem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": "A Patch of Sugar Cane",
+      "optional": true
+    }
+  ]
+}

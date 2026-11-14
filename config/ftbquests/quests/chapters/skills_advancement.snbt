@@ -14,14 +14,16 @@
 			id: "544D302000400001"
 			icon: { id: "minecraft:experience_bottle" }
 			title: "Chapter Overview"
-			subtitle: "Read when you are ready"
 			description: [
-					"Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics."
-					"This chapter is a navigation scaffold. Detailed milestones, recipes, discoveries and rewards will be added after in-world integration tests."
-					"This optional overview has no item reward or unlock. You can explore other chapters in any order."
-				]
+				"Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics."
+				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
+				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
+			]
 			optional: true
-			rewards: [ ]
+			rewards: [
+				{ id: "544D902000400001", type: "xp", xp: 2 }
+				{ id: "544DA02000400002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
 			tasks: [
 				{ id: "544D402000400001", type: "checkmark" }
 			]
