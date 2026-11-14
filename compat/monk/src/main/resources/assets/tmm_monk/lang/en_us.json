@@ -1,0 +1,7 @@
+{
+  "faction.tmm_monk.monk": "Monk",
+  "faction.tmm_monk.monks": "Monks",
+  "skill.tmm_monk.monk_root": "Initiate",
+  "skill.tmm_monk.monk_root.desc": "Monastic initiation; advanced techniques are not yet implemented.",
+  "gui.tmm_monk.skills.level": "Monk Disciplines"
+}
