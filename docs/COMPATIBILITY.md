@@ -10,7 +10,7 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Ars Nouveau and other mods may have newer versions than a search provider's cached main-file display. Exact file metadata must be pinned by packwiz, not inferred from this list.
 
 ## Open blockers / audits
-- **Bigger Reactors, Botania, ProjectE, Replication, Apotheosis, Artifacts, Relics, Gateways to Eternity, Deeper and Darker, Starlight/structure mods, magical satchel**: no exact compatible file or full dependency graph has been committed here. Not silently omitted from the decision roster; see manifest pending rows.
+- **Bigger Reactors (original unavailable), Botania, ProjectE, Apotheosis, Artifacts, Relics, Gateways to Eternity, Deeper and Darker, Starlight/structure mods, magical satchel**: no exact compatible file or full dependency graph has been committed here. Not silently omitted from the decision roster; see manifest pending rows.
 - Full transitive dependency graph is **not verified**, particularly Neo Vitae, Astral Sorcery (Curios + ObserverLib reported), KubeJS (Rhino), FTB Quests (FTB Library, FTB Teams and possibly Item Filters), Ars Nouveau, Occultism (Modonomicon), Draconic Evolution (Brandon's Core), and rendering mods. Treat these names as dependency candidates, not validated installed IDs.
 - Unresolved overlaps: Astral Sorcery sky/rendering with shaders/Embeddium; content/loot balance across Apotheosis/Relics/Cataclysm; acquisition leak paths for ProjectE and banned ring; world-generation interactions.
 - No pairwise incompatibility has yet been **demonstrated** in a crash. Unknown is not incompatible.
@@ -26,3 +26,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge/files/all?page=1&pageSize=20&version=1.21.1
 - https://www.curseforge.com/minecraft/mc-mods/ftb-chunks-forge/files/all
 - https://packwiz.infra.link/reference/pack-format/
+
+## Resolved identity: Replication; unresolved reactor port
+- **Replication** is Buuz135's [Replication](https://www.curseforge.com/minecraft/mc-mods/replication) `Replication-1.21.1-1.2.7.jar`, built for NeoForge 1.21.1 (release dated 2026-02-22). The `Deepslate Replica Ore` is a real resource. **Titanium** is a required runtime dependency; exact downloadable file and closure not yet pinned. Source: https://modrinth.com/mod/replication/version/1.21-1.2.7 and https://github.com/Buuz135/Replication/blob/1.21/build.gradle .
+- **Original Bigger Reactors (RogueLogix)**: official CurseForge files terminate at Minecraft 1.20.1, with last listed 1.20.1 Forge upload 2025-01-14. No verified official 1.21.1 NeoForge release: https://www.curseforge.com/minecraft/mc-mods/biggerreactors/files/all .
+- **Two UNAPPROVED alternatives** exist: [Bigger Reactors Rework](https://www.curseforge.com/minecraft/mc-mods/biggerreactors-rework) by vindocel, NeoForge 1.21.1 `0.1.6` (2026-11-05), adds notable altered reactor behaviors and even battery/energy features; and [Bigger Reactors Revived](https://www.curseforge.com/minecraft/mc-mods/biggerreactorsrevived) by VelronDevs, NeoForge 1.21.1, unofficial port. Neither is silently substituted; both need mechanical/economy review, particularly avoiding a new generalized FE transfer/storage system. Another alternative `Extreme Reactors` 1.21.1 exists but is a different gameplay system, not an equivalent drop-in.
+- Release availability is not a runtime compatibility claim. Modded dedicated-server / client smoke required before accepting any of the above.
