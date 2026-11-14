@@ -1,3 +1,5 @@
+> **PRIMARY SKILLS ARCHITECTURE — 2026-11-14:** This directory now also contains the initial `tmm_monk` Tyz category and two `active:false` 10-rank Monk-specific CUSTOM skills. They are correct data schemas but are **intentionally NOT PACK INSTALLED**. The primary `design/universal-mxp-progression-registry` tree must install Tyz 6.4.2, disable native activity XP, enforce purchase/faction gates and merge categories before activating them. ONE rank of prior tier is sufficient; the historical 99/99 prerequisite discussion below is superseded. See [two-tree integration contract](../../docs/MONK-EARLY-MASTERY-TWO-TREES.md).
+
 # Tyz's Skills tier prototype — NOT PACK INSTALLED
 
 Owner proposal from 2026-11-14: five additive stages of 99 ranks
