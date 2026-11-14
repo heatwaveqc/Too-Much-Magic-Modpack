@@ -58,6 +58,7 @@ public final class VampireChassisRuntime {
                 return false;
             }
             if (newLevel > 0 && old <= 0 && VampireChassisConfig.acquisition()) {
+                player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
                 if (!otherStatesPermitVampire(player)) return false;
                 Observation observed = VAMPIRISM.observe(player);
                 if (observed == Observation.UNKNOWN) return false;
@@ -112,6 +113,7 @@ public final class VampireChassisRuntime {
     public static void afterVampirismEntry(ServerPlayer player) {
         if (!VampireChassisConfig.acquisition() || inTransaction()) return;
         try {
+            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
             if (JAWR.observe(player) == Observation.ABSENT) {
                 MUTATING.set(true);
                 try {
@@ -158,12 +160,27 @@ public final class VampireChassisRuntime {
                         new IllegalStateException("blood max <= 0"));
                 return true;
             }
-            int nativeUnits = gain
-                    ? VampireBloodMath.project(amount, maxJAWR, maxNative)
-                    : VampireBloodMath.costRoundUp(amount, maxJAWR, maxNative);
-            if (gain) VampireNativeAccess.gainNativeBlood(player, nativeUnits);
-            else VampireNativeAccess.spendNativeBlood(player, nativeUnits);
-            // Canonical BloodStats hooks normally project immediately.
+            if (gain) {
+                int originalBlood = VampireNativeAccess.nativeCurrent(player);
+                if (originalBlood >= maxNative) {
+                    player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
+                    return true;
+                }
+                VampireBloodCarry carry = player.getData(TransformationAttachments.BLOOD_CARRY.get());
+                VampireBloodCarry.Gain credit = carry.gain(amount, maxJAWR, maxNative);
+                int nativeUnits = Math.min(credit.wholeUnits(), maxNative - originalBlood);
+                VampireNativeAccess.gainNativeBlood(player, nativeUnits);
+                int updated = VampireNativeAccess.nativeCurrent(player);
+                if (updated < originalBlood + nativeUnits) {
+                    throw new IllegalStateException("Vampirism rejected credited JAWR blood; pending admin review");
+                }
+                player.setData(TransformationAttachments.BLOOD_CARRY.get(),
+                        updated >= maxNative ? VampireBloodCarry.empty() : credit.remainder());
+            } else {
+                int nativeUnits = VampireBloodMath.costRoundUp(amount, maxJAWR, maxNative);
+                VampireNativeAccess.spendNativeBlood(player, nativeUnits);
+            }
+            // Canonical mutation hooks sync the JAWR shadow; this is a defensive recheck.
             onNativeBloodChanged(player);
         } catch (ReflectiveOperationException | LinkageError e) {
             hold(player, "JAWR blood transaction translation failed", new IllegalStateException(e));
@@ -194,6 +211,7 @@ public final class VampireChassisRuntime {
                     || JAWR.observe(player) != Observation.ABSENT) {
                 throw new IllegalStateException("Provider state still present after cure");
             }
+            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
             return true;
         } catch (ReflectiveOperationException | RuntimeException | LinkageError e) {
             try {
