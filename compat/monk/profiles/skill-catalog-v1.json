@@ -2960,6 +2960,126 @@
       "description": "Additional skill points per completed Monk faction rank, within supported Vampirism accounting; no duplication exploits.",
       "notes": "",
       "implementation_status": "design_only"
+    },
+    {
+      "id": "tmm_monk:mahou/maximum_capacity",
+      "name": "Mahou Capacity",
+      "family": "mahou_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Increase the player's personal maximum Mahou, subject to installed Mahou Tsukai cap; pack-wide max configuration is not a Monk-only privilege.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:mahou/regeneration",
+      "name": "Mahou Cultivation",
+      "family": "mahou_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Increase legal personal Mahou recovery where pinned Mahou provides an explicit controllable hook.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:mahou/spell_efficiency",
+      "name": "Mahou Efficiency",
+      "family": "mahou_magic",
+      "rank_model": "bounded",
+      "max_ranks": "runtime_effective_cap",
+      "source_attributes": [],
+      "description": "Reduce Mahou cost where the pinned implementation actually provides a spend-side hook; never produce negative or zero resource cost by accident.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:primal/attunement",
+      "name": "Primal Attunement (per school)",
+      "family": "primal_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "For each genuine registered Primal Magick school, improve attunement through its own data system; enumerate schools from pinned registry, not guesses.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:primal/spell_proficiency",
+      "name": "Primal Spell Proficiency",
+      "family": "primal_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Increase valid Primal Magick spell capability through verified player attachment/API; must not change attunement by accident.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:occultism/familiar_bond",
+      "name": "Familiar Bond",
+      "family": "occultism_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Improve owned familiars only where Occultism supports meaningful per-player strength/benefits.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:occultism/summoner_mastery",
+      "name": "Summoner Mastery",
+      "family": "occultism_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Improve controllable spirit summon effectiveness without bypassing summoning rituals or item costs.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:neovitae/ritual_mastery",
+      "name": "Neo Vitae Ritual Mastery",
+      "family": "neo_vitae_magic",
+      "rank_model": "bounded",
+      "max_ranks": "runtime_effective_cap",
+      "source_attributes": [],
+      "description": "Improve legitimate ritual/altar efficiency only if player-linked and mechanically meaningful; not an arbitrary altar EV cheat.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:astral/attunement",
+      "name": "Astral Attunement",
+      "family": "astral_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Improve Astral Sorcery's supported character attunement mechanism without breaking celestial ritual gates.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+    },
+    {
+      "id": "tmm_monk:roots/terra_mastery",
+      "name": "Roots Terra Mastery",
+      "family": "roots_magic",
+      "rank_model": "repeatable",
+      "max_ranks": null,
+      "source_attributes": [],
+      "description": "Improve legal Terra capacity/regeneration or staff potency using verified Roots Classic player/staff hooks; preserve staff imprint rules.",
+      "availability": "additional_cross_mod_api_validation_required",
+      "implementation_status": "design_only",
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
     }
   ],
   "original_crosswalk": [
@@ -3164,8 +3284,9 @@
   "counts": {
     "mapped_attributes": 141,
     "excluded_attributes": 3,
-    "core_and_attribute_skills": 162,
-    "original_ability_count": 25
+    "core_and_attribute_skills": 172,
+    "original_ability_count": 25,
+    "additional_non_attribute_skills": 10
   },
   "notes": [
     "All effects remain conceptual; skills must not be represented as playable yet.",
@@ -3173,6 +3294,8 @@
     "Distinct mod energy resources and mana pools retain separate skill IDs.",
     "No wearable armor or conventional weapon is a prerequisite.",
     "All numerical skills are conditional on actual player-attached attribute and meaningful effect test. Non-attached/mob-only candidates are deliberately excluded.",
-    "The backend and progression placement are intentionally undecided."
-  ]
+    "The backend and progression placement are intentionally undecided.",
+    "Non-attribute magic resource/attunement candidates are included as conditional proposals, not fake native attributes. Each must survive pinned-mod API review before user-facing purchase."
+  ],
+  "total_skill_records_excluding_apotheosis": 172
 }
