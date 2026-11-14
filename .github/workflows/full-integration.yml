@@ -51,13 +51,14 @@ jobs:
         run: |
           python3 scripts/assemble_integration.py
           python3 scripts/validate.py
+          python3 scripts/verify_tyz_migration.py
           python3 scripts/validate_quests.py
-          python3 -m py_compile scripts/assemble_integration.py scripts/build_full_integration_prism.py
+          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
           python3 scripts/verify_silver_equipment.py
-      - name: Validate Tyz 99-rank Core Magic source preview (not a live pack install)
+      - name: Re-validate live-staged Tyz 99-rank Core Magic source (exclusive skill backend)
         run: python3 compat/magic/stage_preview.py --check
       - name: Compile and unit test latest vampire bridge
         working-directory: compat/transformations
