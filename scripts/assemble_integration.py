@@ -123,8 +123,8 @@ def main() -> None:
             if len(found) != 1:
                 raise RuntimeError("Missing/duplicate approved manifest entry " + mod_id)
             item = found[0]
-            if not item["enabled_in_pack"]:
-                raise RuntimeError("Expected enabled integration mod: " + mod_id)
+            if not item["enabled_in_pack"] and not item.get("desired", False):
+                raise RuntimeError("Refusing an inactive, unapproved manifest entry: " + mod_id)
             if mod_id in items and items[mod_id] != item:
                 raise RuntimeError("Conflicting version/metadata for " + mod_id)
             if mod_id not in items:
