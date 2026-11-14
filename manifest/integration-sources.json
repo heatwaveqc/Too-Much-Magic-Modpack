@@ -28,7 +28,7 @@
     },
     {
       "name": "silver-ore-materials",
-      "branch": "feature/material-processing-recipe-cleanup",
+      "branch": "feature/neo-vitae-canonical-dusts",
       "paths": [
         "config/almostunified/",
         "config/neovitae/materials.json",
@@ -40,13 +40,15 @@
         "manifest/material-ore-audit.json",
         "scripts/verify_materials.py",
         "scripts/verify_silver_equipment.py",
-        "scripts/check_silver_conflicts.py"
+        "scripts/check_silver_conflicts.py",
+        "scripts/check_final_processing_recipes.py",
+        "scripts/check_runtime_material_tags.py"
       ],
       "manifest_mod_ids": [
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Current descendant of silver-equipment unification, with material recipes and native Polymorph scanning; retains earlier verified KubeJS scripts"
+      "note": "Latest canonical Neo Vitae dust target branch; retains earlier silver-equipment, AU and processing dedup work; new KubeJS paths and static verifier. Do not assume live registry or final exported recipes without player test."
     },
     {
       "name": "roots-mxp-prototypes",
@@ -142,7 +144,8 @@
     "feature/silver-equipment-unification": "Ancestor of current material-processing-recipe-cleanup implementation branch, which carries the same materials/recipe files",
     "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation.",
     "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot.",
-    "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic."
+    "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic.",
+    "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work."
   },
   "pending_runtime_work": [
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
@@ -156,6 +159,7 @@
     "New first Monk slice: 10s Overworld sunset gaze and Step Assist are compiled but must be tested in a disposable client world for eligible/non-eligible cases, persistence, gear and full transformation exclusions.",
     "Player-tested PASS (2026-11-14): quest book, starter-choice interface, Quest Shop coin button, quest rewards, FTB Essentials /sethome and /rtp, QoL functions. Vampirism tests ongoing. Monk user-reported FAIL: no sunset progress, no resulting Monk skill tree/UI; investigate with B15 diagnostic/testjoin.",
     "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
-    "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified."
+    "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified.",
+    "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending."
   ]
 }
