@@ -67,9 +67,16 @@ For stage `t=1..5` and level `n=0..99`:
 | Strength V | +10,000 | +990,000 | +1,099,989 |
 
 This is an **arithmetic illustration, not a balanced combat stat**.
-Actual Minecraft attack damage has bounded effective values. Do
-not enable all five sample files or accept purchases over its cap;
-actual number of tiers may be substantially smaller. For a
+Vanilla Minecraft `generic.attack_damage` has a maximum of **2,048**.
+For a player starting at 2, stages I and II together add 1,089,
+leaving 957 points of effective headroom. Strength III would then
+reach that cap within its first ten purchases, making the remaining
+Strength III, IV and V purchases ineffective if implemented as direct
+attribute modifiers. **Those must not be sold.** To support truly
+million-point "Strength" as a different gameplay mechanic would
+require an explicit **server-side damage-event adapter** with its
+own meaningful cap, attribution, scaling and overflow tests;
+the prototype is not such an adapter. For a
 capacity stat with a high native limit, all five could be justified.
 Use the measured game cap and precision rules per attribute.
 

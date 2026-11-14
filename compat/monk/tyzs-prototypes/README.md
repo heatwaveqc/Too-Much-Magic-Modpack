@@ -29,3 +29,13 @@ increasing-cost demonstration and is **not locked balance**.
 
 See `../../docs/MONK-TYZS-TIERED-ADVANCEMENT.md` for the gate,
 unification, XP and refund requirements.
+
+## Why this example is deliberately disabled
+
+Vanilla `minecraft:generic.attack_damage` is bounded at **2048**.
+After full first and second stages, a base-damage-2 player has only
+957 damage headroom; the third stage (+100/rank) hits the cap
+within 10 purchases. Later stages cannot usefully add damage
+with plain attribute modifiers. To implement such extreme Strength
+would need a custom damage event instead of raw vanilla attribute
+modifiers, with independent balance and overflow tests.

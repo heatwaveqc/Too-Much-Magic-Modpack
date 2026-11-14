@@ -22,7 +22,8 @@
     "sp_currency": "Tyz's Skills Skill Points earned via its own leveling XP; not vanilla XP",
     "strength_example_total_SP_for_all_495": 5499945,
     "source_attribute": "minecraft:generic.attack_damage",
-    "native_upper_limit": "UNKNOWN; do not sell ranks that would be capped or provide no additional effect. Later Strength stages intentionally disabled in prototype until runtime."
+    "native_upper_limit": "Vanilla Minecraft attack_damage attribute max 2048 (Minecraft Wiki attribute table); 5 full Strength stages are NOT achievable via the attribute. Actual high-damage scaling must use independently audited event-based damage logic or stop at native cap.",
+    "strength_native_example_note": "At player base 2 damage, full stage I (+99) and II (+990) leave approximately 957 headroom. Strength III (+100 each) reaches the 2048 cap around rank 10; remaining Strength III stages and stages IV/V have no effect as vanilla attribute bonuses."
   },
   "eligibility": {
     "native_monk_faction": "single-use ability skills and license for leveled Monk abilities",
@@ -41,7 +42,8 @@
     "Mod-specific character resources require actual per-player hooks; Tyz custom JSON directly changes only registered player attributes.",
     "Tyz source custom JSON requires 99 prices and 99 cumulative modifier values for each 99-rank stage; keep config files outside pack until boot/acceptance tests.",
     "Validate SP gains and integer price sums, float modifier precision, native numeric caps, refunds, scale synchronization, multiplayer, death and login.",
-    "Monk Mastery XP remains separate from Tyz SP pending explicit balance/economy integration. No vanilla XP charge."
+    "Monk Mastery XP remains separate from Tyz SP pending explicit balance/economy integration. No vanilla XP charge.",
+    "Vanilla minecraft:generic.attack_damage has effective max 2048. A requested million-point Strength combat stat would require separate capped or extended damage event semantics; the five JSON skill modifiers are intentionally inactive samples and MUST NOT be advertised as functional."
   ],
   "prototype_files": [
     "compat/monk/tyzs-prototypes/config/tyzs_skills/custom/skills/tmm_strength_1.json",
