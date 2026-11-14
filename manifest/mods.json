@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B5 approved roster fully pinned: 114 mods (107 server-side, 7 client-only); full dedicated-server smoke passed 2026-11-13 America/Phoenix. Client/gameplay/gated progression untested.",
+  "note": "B6: latest approval reconciliation: Aspect Alchemy rejected and removed; Pufferfish Skills/Attributes, eight food suite, and Improvable Skills 3/HammerLib approved for final server smoke and client handoff.",
   "mods": [
     {
       "id": "apotheosis",
@@ -76,6 +76,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "appleskin"
+    },
+    {
+      "id": "aquaculture",
+      "name": "Aquaculture 2",
+      "category": "food",
+      "desired": true,
+      "version": "2.7.22",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/aquaculture/files/all?gameVersionTypeId=6&page=1&version=1.21.1",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 2.7.22. Biome-specific fishing, new fish and seafood. Test fish meal/tag integration. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
     },
     {
       "id": "architectury-api",
@@ -205,19 +217,6 @@
       "packwiz_slug": "artifacts"
     },
     {
-      "id": "aspect-alchemy",
-      "name": "Aspect Alchemy",
-      "category": "alchemy",
-      "desired": true,
-      "version": "aspectalchemy-neoforge-2.0.0",
-      "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/1523956",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "note": "User-approved in PR #6. B5 pinned and server test pending. CurseForge project ID pinned; verify file maturity in test report",
-      "packwiz_slug": "aspect-alchemy"
-    },
-    {
       "id": "astral-sorcery",
       "name": "Astral Sorcery",
       "category": "magic",
@@ -342,6 +341,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "cloth-config"
+    },
+    {
+      "id": "cobweb",
+      "name": "Cobweb",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/cobweb",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required by Harvest with Ease; choose exact 1.21.1 NeoForge build and validate dependency graph before install."
     },
     {
       "id": "codechicken-lib-1-8",
@@ -601,6 +612,18 @@
       "packwiz_slug": "extra-botany-revived"
     },
     {
+      "id": "farmers-delight",
+      "name": "Farmer's Delight",
+      "category": "food",
+      "desired": true,
+      "version": "1.2.8",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/farmers-delight/version/1.21.1-1.2.8",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.2.8. Cooking pot, cutting board, new crops, meals and feasts. Confirm integrated food tags/recipes. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
       "id": "ferritecore",
       "name": "FerriteCore",
       "category": "performance",
@@ -785,6 +808,30 @@
       "packwiz_slug": "goety-cataclysm"
     },
     {
+      "id": "hammerlib",
+      "name": "HammerLib",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/hammer-lib",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required NeoForge 1.21.1 runtime dependency of Improvable Skills 3."
+    },
+    {
+      "id": "harvest-with-ease",
+      "name": "Harvest with Ease",
+      "category": "qol",
+      "desired": true,
+      "version": "9.4.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/harvest-with-ease/version/cjDrwP2Q",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 9.4.0. Approved support mod to provide right-click gentle harvest/replant across crops, including Pam/Farmer's Delight after testing. Requires Cobweb; verify special multi-block crops and config. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
       "id": "hexcast-neoforged",
       "name": "HexCast NEOFORGED",
       "category": "magic",
@@ -821,6 +868,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "immediatelyfast"
+    },
+    {
+      "id": "improvable-skills",
+      "name": "Improvable Skills 3",
+      "category": "skills",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/improvable-skills",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Requested explicitly for inclusion/check in final local client trial; XP-driven skills distinct from custom Pufferfish Skills."
     },
     {
       "id": "irons-lib",
@@ -1103,6 +1162,54 @@
       "packwiz_slug": "occultism"
     },
     {
+      "id": "pams-harvestcraft-2-crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.9",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-crops/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.9. 96 crops, garden worldgen, and plant foods. Pam removed right-click harvesting; Harvest with Ease provides it. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-food-core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.4",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-food-core/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.4. Core HarvestCraft food recipes; verify tag and recipe overlap with Farmer's Delight and Aquaculture. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-food-extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-food-extended",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.0. Hundreds more food recipes; requires Food Core and expects Crops/Trees for ingredients. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.9",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-trees/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.9. Fruit trees and food ingredients; test spawn density with Tectonic. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
       "id": "pastel",
       "name": "Pastel",
       "category": "magic",
@@ -1239,6 +1346,30 @@
       "dependencies_verified": false,
       "note": "User-approved in PR #6. B5 pinned and server test pending. Modrinth upstream release type: beta",
       "packwiz_slug": "psitweaks"
+    },
+    {
+      "id": "puffish-attributes",
+      "name": "Pufferfish's Attributes",
+      "category": "dependency",
+      "desired": true,
+      "version": "puffish_attributes-0.8.3-1.21-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/attributes",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for the custom Pufferfish skill-tree project. NeoForge MC 1.21.1 release observed; NOT packwiz-pinned, installed, booted, or integrated. Verify file ID, dependencies, and compatibility with Pufferfish's Skills >=0.12.0 before installation."
+    },
+    {
+      "id": "puffish-skills",
+      "name": "Pufferfish's Skills",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "puffish_skills-0.19.2-1.21-neoforge",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/skills",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved/planned as the foundation of the custom cross-magic-mod skill tree. NeoForge MC 1.21.1 0.19.2 is BETA-tagged upstream, so it is NOT approved for installation into the release-channel pack without a separate experimental-build decision. Must develop custom tree; default skill tree is not automatically included."
     },
     {
       "id": "quest-giver",
@@ -1610,6 +1741,10 @@
     {
       "id": "runic-curiosities",
       "reason": "Current pack decision: omit Runic Curiosities. Not selected in Tell Me More triage; immature and power-balance concerns."
+    },
+    {
+      "id": "aspect-alchemy",
+      "reason": "User explicitly removed after source-level review: limited added progression value relative to Neo Vitae, Ars Nouveau and Botania brewing; hard-coded aspects, custom integration work and known Jade 15.10.6 conflict. Do not install."
     }
   ],
   "items_blacklist": [
@@ -1764,7 +1899,6 @@
         "ars-n-spells",
         "ars-ocultas",
         "ars-unification",
-        "aspect-alchemy",
         "caelus",
         "cloth-config",
         "common-network",
@@ -1802,6 +1936,24 @@
         "werewolves"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B8",
+      "name": "Pufferfish skills + Improvable Skills + eight food and harvest mods",
+      "members": [
+        "pams-harvestcraft-2-food-core",
+        "pams-harvestcraft-2-crops",
+        "pams-harvestcraft-2-trees",
+        "pams-harvestcraft-2-food-extended",
+        "farmers-delight",
+        "aquaculture",
+        "harvest-with-ease",
+        "cobweb",
+        "puffish-skills",
+        "puffish-attributes",
+        "improvable-skills"
+      ],
+      "status": "approved_unpinned"
     }
   ]
 }
