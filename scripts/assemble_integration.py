@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "manifest/integration-sources.json"
 RECORD = ROOT / "manifest/integration-lock.json"
 TRACKED_PREFIXES = ("feature/", "fix/", "design/", "research/", "audit/")
-PACK_DIRS = ("config", "kubejs", "mods")
+PACK_DIRS = ("config", "defaultconfigs", "kubejs", "mods")
 
 def git(*args: str, check: bool = True) -> str:
     cp = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
@@ -102,14 +102,14 @@ def main() -> None:
         ref = "refs/remotes/origin/" + branch
         source_sha = git("rev-parse", "--verify", ref)
         selected = []
-        for selector in stream["paths"]:
+        for selector in stream["paths"] + stream.get("optional_paths", []):
             found = file_names(ref, selector)
-            if not found:
+            if not found and selector not in stream.get("optional_paths", []):
                 raise RuntimeError("Source selection missing: " + branch + " " + selector)
             for path in found:
                 if path in imported and imported[path] != branch:
                     raise RuntimeError("Workstream path overlap: " + path)
-                if not path.startswith(("compat/", "integration/", "kubejs/", "config/", "mods/", "manifest/", "scripts/")):
+                if not path.startswith(("compat/", "integration/", "kubejs/", "config/", "defaultconfigs/", "mods/", "manifest/", "scripts/")):
                     raise RuntimeError("Unsafe imported source location: " + path)
                 imported[path] = branch
                 selected.append(path)
@@ -117,11 +117,16 @@ def main() -> None:
         # Never restore whole directories: removed baseline files must not be lost.
         for path in selected:
             git("restore", "--source=" + ref, "--staged", "--worktree", "--", path)
-        for mod_id in stream.get("manifest_mod_ids", []):
+        for mod_id in stream.get("manifest_mod_ids", []) + stream.get("manifest_mod_ids_if_available", []):
             donor = json.loads(blob(ref, "manifest/mods.json"))
             found = [m for m in donor["mods"] if m["id"] == mod_id]
+            optional = mod_id in stream.get("manifest_mod_ids_if_available", [])
+            if not found and optional and not any(p.startswith("mods/") for p in selected):
+                continue  # Feature source exists, but provider pin has not been resolved upstream.
             if len(found) != 1:
                 raise RuntimeError("Missing/duplicate approved manifest entry " + mod_id)
+            if optional and not any(p.startswith("mods/") for p in selected):
+                raise RuntimeError("Approved runtime mod exists without explicitly imported pinned metadata: " + mod_id)
             item = found[0]
             if not item["enabled_in_pack"] and not item.get("desired", False):
                 raise RuntimeError("Refusing an inactive, unapproved manifest entry: " + mod_id)
