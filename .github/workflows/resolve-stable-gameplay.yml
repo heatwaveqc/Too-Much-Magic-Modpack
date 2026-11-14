@@ -28,7 +28,7 @@ jobs:
         with:
           go-version: 'stable'
       - name: Compile and verify Python scripts
-        run: python3 -m py_compile scripts/resolve_stable_gameplay.py scripts/download_mods.py scripts/smoke_server.sh 2>/dev/null || python3 -m py_compile scripts/resolve_stable_gameplay.py scripts/download_mods.py scripts/validate.py
+        run: python3 -m py_compile scripts/resolve_stable_gameplay.py scripts/download_mods.py scripts/validate.py
       - name: Install packwiz
         run: |
           go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
