@@ -7,6 +7,9 @@ Magic is the everyday infrastructure, not a cosmetic wrapper around industrial l
 Neo Vitae (not original Blood Magic); Occultism; Ars Nouveau; Iron's Spells 'n Spellbooks; Theurgy; Astral Sorcery; **Botania Revived (approved unofficial port, not yet installed)**; Just Another Witchery Remake and JAWR: Forbidden Magic; Mahou Tsukai; EvilCraft; Roots Classic. Preserve experimental status where appropriate. The extended roster of approved-but-uninstalled systems and exclusions is recorded in [MAGIC-MOD-SURVEY-DECISIONS.md](MAGIC-MOD-SURVEY-DECISIONS.md).
 Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curve subject to item audits. Gateways to Eternity may support renewable combat drops.
 
+## Food, agriculture and fishing
+The complete Pam's HarvestCraft 2 family (Food Core, Crops, Trees, Food Extended), Farmer's Delight and Aquaculture 2 are approved. Right-click gentle harvesting is mandatory; Harvest with Ease + Cobweb are the planned QoL method (confirm actual Pam's and Farmer's Delight crop behavior in game). Pam's built-in right-click harvesting was removed. Food content should remain edible and useful; avoid automatically banning food items for species/undead overlays. New farming gardens, orchards and crop generation must be tested against Tectonic. Cross-mod tags and recipes should be consolidated rather than multiplied needlessly. See [FOOD-AND-SPECIES-DESIGN.md](FOOD-AND-SPECIES-DESIGN.md).
+
 ## Exceptional technology
 Only Bigger Reactors (energy source) and Draconic Evolution (energy use/transfer/high-end gear). Avoid introducing another general energy/logistics stack. Uranium and draconic materials should be restricted to deep exploration and/or Occultism extraction. Do not assume these restrictions are implemented.
 
