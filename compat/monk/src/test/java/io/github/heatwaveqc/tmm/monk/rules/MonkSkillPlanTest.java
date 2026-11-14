@@ -31,7 +31,8 @@ final class MonkSkillPlanTest {
         assertEquals(172, skills.size());
         assertEquals(144, references.size());
         assertEquals(25, original.size());
-        assertTrue(plan.get("backend_decision").getAsString().startsWith("SELECTED"));
+        assertTrue(plan.get("backend_decision").getAsString().contains("global Tyz/MXP"),
+                "Monk skill catalog must defer universal Tyz ownership to the primary tree");
         assertTrue(plan.get("placement_decision").getAsString().startsWith("DEFERRED"));
 
         Set<String> ids = new HashSet<>();
