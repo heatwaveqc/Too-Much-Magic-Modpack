@@ -1,7 +1,10 @@
 // Too Much Magic: conventional materials only. Gate special ores independently.
 // GAMEPLAY TEST CANDIDATE; see docs/MATERIAL-UNIFICATION.md.
 ServerEvents.tags('item', event => {
-  // Mahou powders stay canonical so item-specific magical uses still work.
+  // Mahou powders are spell catalysts, not ordinary industrial dust. Keep
+  // their exact items obtainable and tag-compatible for smelting. Almost
+  // Unified's ignored_items excludes them from output substitution; all
+  // other matching conventional dust outputs converge on Neo Vitae.
   for (const material of ['iron', 'gold', 'diamond', 'emerald', 'quartz']) {
     event.add('c:dusts/' + material, 'mahoutsukai:powdered_' + material)
   }
