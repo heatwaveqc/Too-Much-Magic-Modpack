@@ -50,3 +50,10 @@
 - All 88 quests have positive XP and a tangible item reward. First log also automatically gives exactly one pouch per player, without an FTB pouch reward.
 - Task item/advancement criteria are unique across 46 authored quests. Reward item IDs cannot complete any currently authored item task.
 - This batch uses original text and safe, small item rewards, inspired only by ATM10's broad quest organization. See [QUEST-DESIGN-RULES.md](QUEST-DESIGN-RULES.md).
+
+## B11 shop and kitchen content pass (2026-11-14)
+
+- Same five categories and 45 chapters. New Quest Shop tip in Tips & Tricks; Cooking Table and Oven quests in Food & Fishing; 12 item-consuming sale quests in Basic Progression.
+- 61 authored quests + 42 other provisional chapter overviews = **103 quest entries**. Sale coins replace thematic items because these quests represent transactions; all quests grant positive XP.
+- Current economic catalog offers five categories and 29 buy entries. No generic sell-anything mechanism; ProjectE-based material printing is expressly permitted once ProjectE is unlocked.
+- This draft branch initially carries two **desired-but-unpinned** mods until GitHub Actions resolves exact releases and successfully boots the combined pack. Do not treat roster intent as installed status.

@@ -37,3 +37,10 @@ No implemented progression locks, recipe overhaul, questline, substitutions, bal
 - **Re:Avaritia and Extended Crafting are excluded.** Both were placed on hold in the selection discussion but incorrectly remained pinned through B8. Their infinity-tier/ultimate crafting power would compete with signature Draconic Evolution progression and ProjectE's Gem Armor.
 - Maintain Draconic Evolution, the Chaos Guardian, and post-Guardian ProjectE/Project Expansion as the intended equipment apex. Do not reintroduce those two mods or design quests for them without new owner approval.
 - **Skills & Advancement** and **Exceptional Power: Reactors** are approved as distinct subchapters of the **Progression** top-level category.
+
+## Quest shop economy (2026-11-14 owner decision)
+
+- Keep fixed, thematically appropriate **item rewards as the strong default**. Use Quest Shop coins only where a fixed item would be arbitrary, especially intentional player sales of copper, emeralds and diamonds.
+- Shop is a **bad-luck and repetitive-grind relief valve**, covering common supplies, amethyst, Heart of the Sea and selected Artifacts. It must not grant boss-critical or pre-Guardian ProjectE progression.
+- Allow ProjectE to print sellable resources (and hence coins) after its actual Chaos Guardian unlock. Keep per-sale payouts very small at industrial quantities; do not add general buy/sell arbitrary inventory conversions.
+- Quest Shop's current upstream FTB Teams integration provides a **team-shared coin account**. Audit repeatable item-consuming quests for team overpayment, then document/resolve any policy questions before release.

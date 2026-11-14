@@ -2,9 +2,9 @@
 
 Approved 2026-11-14. Inspired by ATM10's navigational and branching approach. Quest text, reward choices, IDs and layouts are original; no copied ATM10 quests, images, loot tables or proprietary assets.
 
-1. **Every quest must grant positive experience AND a concrete item.** No random-only or no-reward quest. An optional overview/checkmark still counts as a quest, so all 42 unfinished chapters now give 2 XP and one paper for their provisional overview.
-2. **Rewards must not auto-complete another quest.** The initial stricter rule forbids ANY item-reward ID from matching ANY authored item-task ID, including when the rewarded stack would be too small. The validator enforces this across the 46 authored quests. An exception for introductory quests or awarding more of the SAME requested resource is permissible only with a specific rationale and an explicit future allowlist.
-3. **Completion criteria should be unique across quests.** No same item task ID or advancement ID in two authored quests; a deliberate shared goal needs explicit documentation and test coverage. Every informational checkmark is intentionally manual, with a distinct unique task ID, not a shared external completion predicate.
+1. **Every quest must grant positive experience and a meaningful reward.** Strongly prefer a **thematic, fixed item**, not currency; coins may substitute **only when no good fixed item makes sense**, principally selling-contract quests. The 42 provisional overview checkmarks still use temporary 2 XP + one paper rewards, to be redesigned as those chapters mature. No random-only or no-reward quests.
+2. **Item rewards must not auto-complete another quest.** The initial stricter rule forbids ANY fixed reward item ID from matching ANY authored item-task ID; validator checks this. Exception for introductory quests or awarding more of the SAME resource is permissible only if individually documented and tested. Shop purchases are deliberate paid choices, not automatic quest rewards; they may fulfill eligible ordinary resource tasks but must never bypass boss/technology gates.
+3. **Completion criteria should be unique across quests unless intentionally reused.** Repeated items are allowed only in the expressly documented ascending-volume copper, emerald and diamond sale tiers (six specific item IDs, each reused twice), using consuming tasks and different submission counts. No other duplicates or advancements. Informational checkmarks are manual and use unique task IDs.
 4. Branch freely across magic schools, exploration and food. Within a chapter, give sensible optional dependency lines without enforcing unrelated specialties or duplicating rewards.
 5. ProjectE and Project Expansion remain post-Chaos Guardian, and no quest may give the excluded Ring of the Seven Deadly Sins, Re:Avaritia or Extended Crafting items. Quests explain real gates; they do not implement those gates.
 
@@ -25,3 +25,11 @@ Sources for modded item ID selection: ATM10 1.21.1 quests contain Aquaculture ro
 - Authoring plan: `manifest/quest_content.json`; stable IDs: `manifest/quest_content_resolved.json`; chapter membership: `manifest/quest_chapters.json`.
 - `scripts/validate_quests.py` must check this contract in addition to structure/ID consistency.
 - Confirm every task, XP reward, item reward, dependency and tooltip in a disposable Prism world. Check each reward once, including per-player first-log grant and multiplayer team independence. Server startup is only a smoke, not an item/quest UI test.
+
+## B11 changes — Quest Shop and Cooking for Blockheads
+
+- **Quest Shop** introduced to serve as an anti-grind and anti-bad-luck market, not an alternate boss progression route. Vanilla amethyst and Heart of the Sea plus six known Artifacts are initial candidates; per-team currency balance is upstream behavior and needs multiplayer acceptance checks.
+- **Cooking for Blockheads** is folded into Food & Fishing, with unique Cooking Table and Oven tasks, rather than creating a new quest chapter. Existing Balm covers its library dependency.
+- **Currency is not the default reward.** Only the 12 dedicated sale quests currently grant `questshop:coins` instead of a fixed item. All other authored quests continue to use useful physical items plus XP.
+- **Copper, emerald, diamond sales** consume inventory and pay one team coin. First three per resource are one-time, fourth deliberately inefficient and repeatable (256 copper blocks; 128 emerald blocks; 64 diamond blocks). These are **design-approved shared item criteria**, not accidental overlap.
+- Exact rules and shop prices are in [QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md).

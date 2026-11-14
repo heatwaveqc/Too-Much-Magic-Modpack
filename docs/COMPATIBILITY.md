@@ -89,3 +89,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Owner corrected an earlier oversight: both mods were put **on hold**, not approved for the final build. Their alternate ultimate crafting and Infinity-tier equipment would undermine Draconic Evolution and post-Guardian ProjectE Gem Armor.
 - Removed the two corresponding packwiz metafiles and index entries from the new candidate, moved both IDs from active `manifest.mods` into explicit `manifest.excluded`, and updated the pack hash chain. Original B5/B8 results remain historic evidence of their **previous** presence.
 - Combined **138-mod** server and client regression tests are required for the new candidate. Do not claim the historic 140-mod B8 smoke validates this new candidate.
+
+## B11 Quest Shop + Cooking for Blockheads (2026-11-14 candidate)
+
+- **Quest Shop v1.4.0** is officially published for NeoForge 1.21.1 ([CurseForge file 9046797](https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797)), MIT. It integrates FTB Quests coin reward type `questshop:coins` and uses FTB Teams' shared currency account. Native shop supports purchases, not generic sell offers; material sales must be implemented with FTB item-consuming tasks.
+- **Cooking for Blockheads v21.1.24** is officially published for NeoForge 1.21.1 ([Modrinth version MQCIy6VF](https://modrinth.com/mod/cooking-for-blockheads/version/MQCIy6VF)). It requires Balm, already pinned. License: all rights reserved. No redistributing its JAR in Git.
+- Exact pin and a fresh combined server smoke must precede claims of installed compatibility; GUI, JEI, team coins, item-consuming repeatable task, recipe and artifact registry checks remain manual integration tests.

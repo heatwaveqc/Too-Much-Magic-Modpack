@@ -93,3 +93,10 @@ Never reclassify step 1 as steps 2–5.
 - Authored 11 Getting Started, 15 Tips & Tricks and 20 Food & Fishing quest tasks; 42 other chapter overview checkmarks now award XP and paper. **All 88 quests have XP and item rewards.** First-log FTB claim has XP+torches; the pouch still comes automatically from the persistent per-player advancement.
 - Item completion criteria and advancement criteria are unique across authored quests. The 46 authored quest rewards never match any authored item-task item ID. All modded task item IDs need a live item-registry/JEI check before release.
 - Static validator and server smoke test: require actual CI results on this branch. No client GUI, claim behavior or team test yet.
+
+## Quest Shop and Cooking for Blockheads integration (2026-11-14)
+
+- Approved B11 exactly two mods, Quest Shop 1.4.0 (CurseForge file 9046797) and Cooking for Blockheads 21.1.24 for NeoForge 1.21.1 (Modrinth version MQCIy6VF). Existing Balm is the cooking dependency.
+- 103 FTB quest entries, with 12 deliberate coin-only sale tasks, must be validated in the **client** after server smoke. Sales use `consume_items: true`; 3 final tiers `can_repeat: true`, with one team credit per consumed shipment. Interactions with claiming and XP reset need in-world tests.
+- Shop economy is provisional: data-driven catalog, monster coin drops disabled via `questshop-common.toml`, source-specified team-shared balance, exact artifact registry IDs and persistent shop categories/GUI still need validation.
+- Production blocking: no world back-compat claim, no market seed bypass, no ProjectE/Chaos Guardian leak, no bag nesting. Record the CI run ID after the resolved 140-mod test completes.
