@@ -78,3 +78,17 @@ See [MONK-ORIGINAL-AUDIT.md](MONK-ORIGINAL-AUDIT.md) for the source-based
 0–20 audit and proposed event architecture. That design is not gameplay code.
 The existing `compat/monk/` scaffold still has **no** initiation, advancement
 XP or powers wired into NeoForge events.
+
+## Gear-free endgame progression: owner direction
+
+**Never conflate original Monk 1.4 settings with the Too Much Magic Monk.**
+The original is a historical reference; the TMM configuration is a separate,
+substantially stronger faction with all 99 pinned Apotheosis affix definitions
+listed as potential unlocks, and repeatable (not arbitrary-capped) investment
+in every applicable player attribute. Curios are allowed, including Draconic
+Evolution chestpiece functionality that is proven to work from its Curio slot.
+Its balance target is an Abomination, Archlich or Dracolich in the absolute
+endgame enchanted, affixed Gem Armor and weapons. The complete agreement,
+limitations, registry inventories and test plan are in
+[MONK-GEAR-PARITY.md](MONK-GEAR-PARITY.md). No gear/affix/attribute behavior
+is wired into live code yet.

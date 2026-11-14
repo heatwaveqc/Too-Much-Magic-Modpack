@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "profile_id": "rwtema-monk-1.4-historical",
+  "purpose": "read_only_original_reference",
+  "original_mod": "Monk Mod 1.4 (Minecraft 1.12.2)",
+  "source_url": "https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
+  "original_milestones": {
+    "first": 0,
+    "last": 20,
+    "total": 21
+  },
+  "sunset_milestone": 2,
+  "sunset_ticks": 200,
+  "progression": "configured individual deed per milestone",
+  "selected_by_pack": false,
+  "note": "Historical comparison only; do not copy original source, settings or textures into the runnable addon."
+}
