@@ -89,7 +89,7 @@ def main() -> None:
     known = sources | covered
     remote = git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines()
     unexpected = sorted(name[7:] for name in remote
-                        if name.startswith("origin/" + TRACKED_PREFIXES)
+                        if name.startswith(tuple("origin/" + prefix for prefix in TRACKED_PREFIXES))
                         and name[7:] not in known)
     if unexpected:
         raise RuntimeError("New working branches require explicit integration classification: " + ", ".join(unexpected))
