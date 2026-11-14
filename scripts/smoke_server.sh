@@ -67,10 +67,10 @@ mkfifo cmd.fifo
       if [[ "${SMOKE_KUBEJS_EXPORT:-0}" == "1" ]]; then
         # Export final loaded recipes after KubeJS edits, unlike AU's
         # before-KubeJS recipe debug output.
-        printf 'kubejs export\n'
+        printf 'kubejs export debug\n'
         for ((waited=0; waited<240; waited++)); do
           if [[ -s local/kubejs/export/index.json ]] && [[ -s local/kubejs/export/recipes/mahoutsukai/powdered_iron_2.json ]]; then
-            echo "KubeJS recipe export finished after ${waited}s" >&2
+            echo "KubeJS recipe export (post reload) finished after ${waited}s" >&2
             sleep 2
             break
           fi
