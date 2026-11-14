@@ -21,6 +21,20 @@ def main(bootstrap: str, output_dir: str, commit: str, monk_jar: str, bridge_jar
     meta = json.loads((root / "manifest/integration-lock.json").read_text())
     if meta["channel"] != "INTEGRATION-NOT-STABLE":
         raise RuntimeError("Wrong build channel")
+    # Personal options are shipped ONLY by the UNSTABLE QA client builder.
+    qa_assets = {
+        "minecraft/options.txt": root / "scripts/prism_qa_options.txt",
+        "minecraft/tmm-qa-preferences.ps1": root / "scripts/tmm_qa_preferences.ps1",
+        "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd": root / "scripts/IMPORT-OLD-TMM-PREFERENCES.cmd",
+    }
+    for arcname, source in qa_assets.items():
+        if not source.is_file():
+            raise RuntimeError("Missing QA-only asset: " + arcname)
+    seed = qa_assets["minecraft/options.txt"].read_text(encoding="utf-8")
+    if not seed.startswith("version:3955\n") or "guiScale:" not in seed or "soundCategory_master:" not in seed:
+        raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
+    if any(line.startswith("key_") for line in seed.splitlines()):
+        raise RuntimeError("Never invent the owner's keybindings")
     addons = [pathlib.Path(monk_jar), pathlib.Path(bridge_jar)]
     expected = ("tmm_monk-", "tmm_transformations-")
     for jar, prefix in zip(addons, expected):
@@ -35,6 +49,12 @@ def main(bootstrap: str, output_dir: str, commit: str, monk_jar: str, bridge_jar
     meta["custom_jar_sha256"] = addons_sha
     meta["client_tested"] = False
     meta["stable_promoted"] = False
+    meta["personal_settings"] = {
+        "type": "QA-only Windows local preferences sync",
+        "minecraft": "1.21.1", "version": 3955,
+        "public_release": False,
+        "storage": "LOCALAPPDATA/TooMuchMagic/TestPreferences/options-1.21.1.txt",
+    }
     guide = f"""TOO MUCH MAGIC — FULL INTEGRATION / EXPERIMENTAL
 This is NOT STABLE and has NOT PASSED YOUR IN-WORLD ACCEPTANCE TESTS.
 DO NOT OPEN EXISTING SAVES. Create a new disposable Prism instance and world.
@@ -43,6 +63,18 @@ Minecraft 1.21.1; NeoForge 21.1.265; Java 21; 8 GiB suggested.
 Sources: {commit}
 Pinned packwiz: {pack}
 Code/source manifest and exact branch SHAs: BUILD-MANIFEST.json in this ZIP.
+
+WINDOWS PERSONAL QA SETTINGS (NOT PART OF PUBLIC MODPACK):
+- First import: GUI scale 3, master volume 55%, music 20%, weather
+  55%, ambient 65%. We do not guess your personal keybindings.
+- Adjust your settings once, then exit Minecraft normally.
+  The post-exit hook saves controls, GUI/chat sizing and sound locally;
+  future test imports restore them before launch automatically.
+- To inherit an already-configured OLD Prism instance, in this NEW
+  instance's minecraft folder run IMPORT-OLD-TMM-PREFERENCES.cmd,
+  select the old instance's minecraft/options.txt, then launch.
+- Your preferences never leave your computer. Worlds, server lists,
+  mod configurations, resource packs and graphics remain separate.
 Only the TWO first-party custom JARs are bundled. All other mods are fetched
 by packwiz from their original hosts using checked hashes.
 
@@ -71,7 +103,9 @@ switch of a known-good build or world migration occurs.
 InstanceType=OneSix
 name=Too Much Magic - Full Integration DEV - Test Worlds ONLY
 OverrideCommands=true
+PreLoadCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode apply -OptionsPath "$INST_MC_DIR/options.txt"
 PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar -s client {pack}
+PostExitCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode save -OptionsPath "$INST_MC_DIR/options.txt"
 OverrideMemory=true
 MinMemAlloc=2048
 MaxMemAlloc=8192
@@ -87,6 +121,8 @@ MaxMemAlloc=8192
         z.writestr("minecraft/packwiz-installer-bootstrap.jar", raw)
         z.writestr("INSTALL-AND-TEST.txt", guide)
         z.writestr("BUILD-MANIFEST.json", json.dumps(meta, indent=2) + "\n")
+        for arcname, source in qa_assets.items():
+            z.write(source, arcname)
         for jar in addons:
             z.write(jar, "minecraft/mods/" + jar.name)
     with zipfile.ZipFile(target) as z:
@@ -99,10 +135,16 @@ MaxMemAlloc=8192
                 raise RuntimeError("First-party jar changed during packaging")
         if pack.encode() not in z.read("instance.cfg"):
             raise RuntimeError("Installer is not commit locked")
+        for arcname, source in qa_assets.items():
+            if z.read(arcname) != source.read_bytes():
+                raise RuntimeError("QA asset changed during packaging: " + arcname)
+        conf = z.read("instance.cfg")
+        if b"PreLoadCommand=powershell.exe" not in conf or b"PostExitCommand=powershell.exe" not in conf:
+            raise RuntimeError("Personal QA sync hook missing")
     print(json.dumps({"status": "PACKAGED-NOT-STABLE",
         "path": str(target), "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
         "integration_commit": commit, "first_party_jars": addons_sha,
-        "third_party_jars_bundled": 0}, indent=2))
+        "third_party_jars_bundled": 0, "dev_only_preferences": True}, indent=2))
 
 if __name__ == "__main__":
     if len(sys.argv) != 6:
