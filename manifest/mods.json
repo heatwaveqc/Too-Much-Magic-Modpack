@@ -421,6 +421,18 @@
       "packwiz_slug": "codechicken-lib-1-8"
     },
     {
+      "id": "comforts",
+      "name": "Comforts",
+      "category": "qol",
+      "desired": true,
+      "version": "comforts-neoforge-9.0.5+1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved 2026-11-14 for NEXT FULL INTEGRATION BUILD: portable sleeping bags (retain home respawn) and hammocks (advance day to night). Exact NeoForge 1.21.1 9.0.5 release exists; verify dependencies, resolve hash-pinned packwiz mod file, include on both client and server, smoke, and exercise daytime hammock/sleeping bag spawn behavior before marking enabled. Desired != installed."
+    },
+    {
       "id": "common-network",
       "name": "Common Network",
       "category": "dependency",
