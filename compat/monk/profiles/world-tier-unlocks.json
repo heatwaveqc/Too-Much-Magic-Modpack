@@ -8,13 +8,6 @@
       "gate": "minecraft:end/kill_dragon or equivalent validated kill/party credit",
       "requires_monk": true,
       "mechanics": "Innate Elytra state plus small continuous server-authoritative forward thrust while fall-flying, preserving vanilla aerodynamic control. No hovering/vertical creative free flight; intended to overcome passive drag and reward skillful pitch."
-    },
-    {
-      "id": "tmm_monk:creative_flight",
-      "phase": "post_chaos_guardian",
-      "gate": "validated Draconic Evolution Chaos Guardian world-tier defeat; character credit rule pending",
-      "requires_monk": true,
-      "mechanics": "True hovering creative-style flight; independent of external Draconic Curio module and validated against other flight providers."
     }
   ],
   "world_tier_milestones": [
@@ -44,7 +37,7 @@
       "id": "draconicevolution:chaos_guardian",
       "kind": "world_boss",
       "condition": "validated Chaos Guardian defeat, no bypass via recipes or ProjectE",
-      "example_unlock": "true creative flight and capstone martial/magic options",
+      "example_unlock": "capstone Monk martial, magical and resilience skill choices; NOT creative flight",
       "hard_gate": true
     },
     {
@@ -64,16 +57,36 @@
     "Boss kills using qualified spells, summons, projectiles or unarmed hits must count; attribution and party-credit policy to decide",
     "World tier evidence is checked server-side at time of spending and never deduced solely from an FTB quest claim",
     "ProjectE/Expansion must stay inaccessible until Chaos Guardian regardless of Monk rank or items",
-    "Audit Draconic and Chaotic Flight modules: source grants Creative Flight before any Monk skill; if those modules are available pre-Chaos, their Curio functionality bypasses the intended gate. Do not disallow Curios; gate effective Creative mode at the pack tier."
+    "Creative flight must NOT be granted by Monk skill ranks, and Monk must not suppress legitimate Draconic Evolution flight modules from Curios. Any pack-wide recipe/flight-tier policy is independent."
   ],
   "attribution_policy": "pending exact owner decision on personal versus team participation; design must avoid repeatability exploits and unearned global world unlock",
   "draconic_source": "https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/api/modules/entities/FlightEntity.java",
-  "known_bypass_risk": {
-    "source": "Draconic-Inc/Draconic-Evolution 1.21 DEModules.java",
-    "wyvern_flight": "elytra only",
-    "draconic_flight": "elytra plus creative",
-    "chaotic_flight": "elytra plus creative",
-    "status": "not_yet_recipe_or_runtime_tested",
-    "preferred_mitigation": "central pack-wide creative flight tier gate after Chaos Guardian"
+  "innate_creative_flight": "not_offered_by_tmm_monk; equipment provider Draconic Evolution available to Monks through allowed Curios",
+  "external_creative_flight_provider": {
+    "mod": "draconic_evolution",
+    "source": "Draconic and Chaotic Flight modules installed in Curio-eligible chestpiece where functional",
+    "monk_skill_gate": false,
+    "monk_enforcement": false,
+    "pack_wide_tier_policy": "Independent decision; do not imply TMM Monk blocks or awards Creative Flight",
+    "status": "unverified_in_disposable_world"
+  },
+  "mining": {
+    "harvest_tier": {
+      "trait": "tmm_monk:barehand_harvest_tier",
+      "upgrade_model": "finite_unlocks_bounded_by_actual_highest_tool_harvest_requirement",
+      "integration_reference": "Dragon Survival stage/harvest bonus implementation, NOT dragon-only state or tool-in-claw requirement",
+      "must_preserve_required_tool_type": true,
+      "independent_of_mining_speed": true,
+      "hard_cap": "highest legitimate harvest tier of installed tools/blocks including modded tiers; discover and validate at runtime",
+      "status": "design_only"
+    },
+    "harvest_speed": {
+      "trait": "tmm_monk:barehand_harvest_speed",
+      "upgrade_model": "repeatable_numeric_ranks_increasing_cost",
+      "hard_cap": null,
+      "effective_native_limits": "observe actual mining speed event/attributes, avoid duplicate modifiers and numerical overflow",
+      "independent_of_harvest_tier": true,
+      "status": "design_only"
+    }
   }
 }

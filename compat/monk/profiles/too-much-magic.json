@@ -46,7 +46,13 @@
     "bounded_traits": "finite_effective_investments_with_no_paid_overcap",
     "uncapped_traits": "repeatable_investments_with_progressive_costs_and_native_limit_safety",
     "equipment_affix_food_xp_recipe": "smithing_preferred_under_review",
-    "rarity_food_config": "rarity-food-infusion.json"
+    "rarity_food_config": "rarity-food-infusion.json",
+    "innate_creative_flight": false,
+    "allowed_creative_flight_provider": "Draconic Evolution chestpiece via Curios (gameplay availability governed by source mod; no Monk skill unlock)",
+    "momentum_gliding": "post_ender_dragon_innate_nonhover_glide",
+    "barehand_harvest_tier": "finite capability unlocks up to actual tool tier requirement of the pack; no bypass of mining gates",
+    "barehand_harvest_speed": "separate repeatable numeric trait with increasing cost, no arbitrary purchase limit; respect native effective safety",
+    "original_monk_ability_crosswalk": "original-monk-abilities-1.4.json"
   },
   "affix_unlocks": {
     "mode": "all_pinned_apotheosis_affix_definitions",
