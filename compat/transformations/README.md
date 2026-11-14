@@ -1,44 +1,29 @@
-# Too Much Magic — transformation compatibility bridge (scaffold)
+# Too Much Magic — transformation compatibility bridge (development)
 
-**Status: source-only development scaffold. NOT integrated; NOT safe as a
-transformation-enforcing mod.** The parent pack remains authoritative for installed
-mods, approvals and gameplay decisions.
+**Status: active development, read-only observers + advisory transition policy. NOT integrated as survival-ready transformation enforcement.**
 
 - Target: Minecraft 1.21.1, NeoForge 21.1.265, Java 21.
-- Mod ID: `tmm_transformations`
+- Mod ID: `tmm_transformations`.
 - Build: `cd compat/transformations && gradle build` (Gradle 9.2.1, Java 21).
-- Dev run: `gradle runClient` or `gradle runServer` (accept local EULA for server).
-- Test: `gradle test`
-- Diagnostic: `/tmmtransform status` in a world.
+- Dev run: `gradle runClient` or `gradle runServer`.
+- Diagnostics: `/tmmtransform status` lists observed provider states.
 
-## Implemented
+## Current functionality
 
-- Independent Gradle / ModDevGradle 2.0.148 project and NeoForge mod entrypoint.
-- Versioned, copy-on-death **review metadata attachment**, not a competing biology source.
-- Read-only probe registration interface with exception -> UNKNOWN behavior.
-- Complete-snapshot classifier for agreed target forms, with unit tests.
-- Read-only diagnostic command that explicitly reports missing integration.
+- Standalone NeoForge mod, diagnostics and persistent review metadata (never an alternative source of truth).
+- Read-only Vampirism 1.10.x observer for **vampire** and **hunter** faction status, using source-verified public API names through reflection.
+- Missing, unloaded, or failing providers report UNKNOWN.
+- Complete-snapshot form classifier and tested fail-closed transition preflight with explicit cures, hunter replacement and atomic Abomination intent.
 
-## NOT implemented
+## Not implemented or proven
 
-No actual upstream probes, cancelable transition hooks, food/blood integration,
-power progression, death arbitration, cross-mod transformations, monk gameplay,
-or client HUD. **No transformation restrictions are enforced.**
-Probe registry is deliberately empty until upstream APIs/persisted data are verified.
-A successful CI build or client boot cannot promote this to `integrated`.
+- All other provider adapters (Werewolves, JAWR vampire/lycan, Forbidden Magic lich, Goety lich, Dragon Survival).
+- Live cancellation hooks, unified blood/diet/flight/sunlight/HUD, rituals, cures, death handling, resurrection and integrated multiplayer.
+- Actual client gameplay, jar-level event verification or real transformation testing.
+- No provider state is modified. No known acquisition is blocked yet.
+- Not included in packwiz; do not ship as enforcing transformation compatibility.
 
-## Safety and implementation contract
+See [transition policy](../../docs/TRANSFORMATION-TRANSITION-POLICY.md) and
+[implementation gates](../../docs/TRANSFORMATION-BRIDGE-IMPLEMENTATION.md).
 
-1. Upstream provider data is authoritative; bridge metadata cannot assert
-   physiological changes on its own.
-2. Unknown observation must remain UNKNOWN. Do not infer ABSENT merely because
-   a mod is not detected or a probe throws; mod IDs must be verified.
-3. Never erase mod data, alter skill trees or reset player states to repair a conflict.
-4. Require a proven pre-transition interception route before enabling
-   transformations; diagnostics do not count as enforcement.
-5. Run disposable-world tests for acquisition (both orders), logout,
-   dimension travel, death, resurrection, cure and food/HUD before promotion.
-6. Compile the bridge artifact separately. Do not commit generated JARs or
-   add it to packwiz's installed lock until the owner approves an integration build.
-
-See [implementation gates](../../docs/TRANSFORMATION-BRIDGE-IMPLEMENTATION.md).
+Never bypass uncertain observations, erase progression, silently install Dragon Survival, or merge this project into The Monk Mod.

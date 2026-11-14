@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
 import io.github.heatwaveqc.tmm.transformations.core.EffectiveForm;
 import io.github.heatwaveqc.tmm.transformations.core.FormResolver;
+import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.core.StateSnapshot;
 import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
@@ -14,7 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
-/** Read-only server-side diagnostics. No ability to set upstream state. */
+/** Read-only server-side diagnostics; cannot set or cure upstream states. */
 public final class TransformationCommands {
     private TransformationCommands() { }
 
@@ -30,7 +31,11 @@ public final class TransformationCommands {
         ReviewRecord review = player.getData(TransformationAttachments.REVIEW.get());
         source.sendSuccess(() -> Component.literal("TMM bridge: " + form
                 + " (" + snapshot.verifiedCount() + "/" + ProviderState.values().length
-                + " source states observed; " + ProbeRegistry.registeredCount() + " probes registered)"), false);
+                + " upstream states observed; " + ProbeRegistry.registeredCount() + " probes registered)"), false);
+        for (ProviderState provider : ProviderState.values()) {
+            Observation observation = snapshot.get(provider);
+            source.sendSuccess(() -> Component.literal(" - " + provider + ": " + observation), false);
+        }
         if (!snapshot.isComplete()) {
             source.sendSuccess(() -> Component.literal(
                     "UNVERIFIED: upstream adapters are incomplete. No transformation blocking, merging or resurrection arbitration is active."), false);
