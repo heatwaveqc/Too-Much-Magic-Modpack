@@ -1,5 +1,17 @@
 {
   "node": "tmm_monk:monk/level_root",
   "skill_tree": "tmm_monk:monk/level",
-  "children": []
+  "children": [
+    {
+      "node": "tmm_monk:monk/martial_1",
+      "children": [
+        {
+          "node": "tmm_monk:monk/martial_2"
+        }
+      ]
+    },
+    {
+      "node": "tmm_monk:monk/mobility_1"
+    }
+  ]
 }
