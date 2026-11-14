@@ -5,7 +5,8 @@
     "each_quest_requires": "positive experience and a purposeful fixed item reward, except specifically justified coin-only exchange/merchant quests",
     "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
     "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
-    "overview_placeholders": "until authored, minimal paper + XP checkmark rewards"
+    "overview_placeholders": "until authored, minimal paper + XP checkmark rewards",
+    "progression_chapters": "65 authored milestones; power chapter covers BiggerReactors Rework, its battery, Draconic Evolution Energy Core bank, FE routing, and post-gate risky Draconic Reactor. Roadmap checkmarks do not duplicate boss detection."
   },
   "quests": [
     {
@@ -1162,6 +1163,1390 @@
       "consume_items": true,
       "team_reward": true,
       "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Choose a Magical Tradition",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Pick one school of magic that interests you, then open its own chapter. Ars Nouveau, Occultism, Botania, Hex Casting, and the other traditions can be explored in parallel. This is a guide checkmark, not a mandatory choice or a gate on the other chapters.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Secure Some Copper",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_copper",
+        "count": 8
+      },
+      "description": "Bring back eight raw copper. Copper supports the world's ordinary utility blocks as well as several magical crafts. The separate coin-exchange branch consumes processed copper; gathering raw ore here is a distinct objective.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Prospect for Gold",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_gold",
+        "count": 4
+      },
+      "description": "Find four raw gold. Gold is useful for redstone infrastructure, enchantment-related crafting and many magical ingredients.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:coal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Learn to Recognize Lapis",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:lapis_lazuli",
+        "count": 8
+      },
+      "description": "Bring eight lapis lazuli. It supports enchantment and an assortment of magical recipes; JEI shows the exact uses in this pack.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Collect Amethyst",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:amethyst_shard",
+        "count": 8
+      },
+      "description": "Collect eight amethyst shards, or buy them from Quest Shop if the geology refuses to cooperate. A purchased ingredient is an intentional anti-grind alternative, not a bypass of any late-game boss gate.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:glass",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Bring a Water Bucket",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:water_bucket",
+        "count": 1
+      },
+      "description": "Keep water accessible for building, agriculture, and many magical structures. This milestone is separate from Food & Fishing's milk-bucket quest.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:glass_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Defend Yourself",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:shield",
+        "count": 1
+      },
+      "description": "Make a shield. Early defensive options make it easier to travel while discovering spells and supernatural equipment.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:arrow",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "equipment",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Upgrade to Diamond Mining",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_pickaxe",
+        "count": 1
+      },
+      "description": "Craft a diamond pickaxe when you are ready to move beyond iron. It is a practical exploration baseline, not a requirement to pursue all magic schools.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "equipment",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Reach the Nether for Ingredients",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:blaze_rod",
+        "count": 1
+      },
+      "description": "Acquire a blaze rod in the Nether. The Nether is one of several routes toward stronger magical ingredients and more dangerous encounters; this objective does not duplicate a specialist chapter's spellcasting milestone.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:nether_wart",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "exploration",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Gather Ender Pearls",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:ender_pearl",
+        "count": 4
+      },
+      "description": "Collect four ender pearls. They support teleportation, several magical recipes and preparation for eventual End exploration.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": null,
+      "optional": false,
+      "role": "exploration",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Map Out Your Infrastructure",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Install an Enchanting Table",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:enchanting_table",
+        "count": 1
+      },
+      "description": "Craft an enchanting table, add bookshelves when convenient, and compare enchantments to spellcasting upgrades. Apotheosis has deeper enchantment mechanics in its own chapter.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:lapis_lazuli",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Bring an Anvil",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:anvil",
+        "count": 1
+      },
+      "description": "Craft an anvil for conventional repairs, naming, and combining compatible enchantments. This supplements magical equipment rather than replacing its unique upgrades.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Build a Brewing Stand",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:brewing_stand",
+        "count": 1
+      },
+      "description": "Craft a brewing stand and explore potion recipes. Potion and herb-based systems also have specialized paths in Witchcraft, Hexerei and other chapters.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:glass_bottle",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Build a Portal Reserve",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:obsidian",
+        "count": 10
+      },
+      "description": "Bring ten obsidian for a safe portal or important construction work. Consider well-lit, protected portal sites; dimensions remain separate exploration branches.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:flint_and_steel",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Keep an Ender Chest",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:ender_chest",
+        "count": 1
+      },
+      "description": "Craft an Ender Chest for vanilla portable access to a personal inventory. Occultism remains the pack's featured expandable magical storage path, and generic item logistics networks remain excluded.",
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:ender_pearl",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "storage",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Recover Ancient Debris Products",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:netherite_scrap",
+        "count": 1
+      },
+      "description": "Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials.",
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:magma_cream",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "resource",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Construct a Lodestone",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:lodestone",
+        "count": 1
+      },
+      "description": "Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones.",
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "navigation",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Understand Summoning Rituals",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:candle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Prepare a Protected Ritual Chamber",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Reserve sufficient space for multiblocks, separate hazardous machinery, and keep vulnerable farms and storage away from explosive experiments. This is a planning checkmark, not an automated claim that a structure exists.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:lantern",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Read Before the Endgame",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "This is a reference page, not another boss checklist. The Endgame category owns the actual Draconic Evolution, ProjectE and Replication quests, while Cataclysm and Occultism own their own unique milestones. Mark this read when you understand the links.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:map",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: The End and Draconic Materials",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The End is a major progression junction: dragon encounters, dangerous exploration and draconium resources. The precise uranium and draconic-dust generation restrictions are still under design; the questbook cannot enforce a pending ore-generation rule.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:firework_rocket",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Cataclysm Boss Resources",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The Harbinger and Ignis are proposed sources for late Eldritch Ancient Miner requirements. Their exact rewards and material keys must be verified in the installed Cataclysm version; this page does not grant boss loot or mark either boss defeated.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Occultism's Final Miner",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The Eldritch Ancient Miner is intended to offer a difficult renewable Replication ore route. The proposed cost is two to four Marid-tier components plus high-level boss materials, possibly late Botania; none of these recipe changes is assumed implemented.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Chaos Guardian as the Gate",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Defeating the Chaos Guardian must precede every usable ProjectE and Project Expansion acquisition or function. This is a rule for actual gameplay enforcement, not something a checked roadmap page can unlock. The boss objective belongs to Draconic Evolution's Endgame chapter.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: What Unlocks Afterwards",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Read the Two Skill Systems",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Open the Skill Interface",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Understand Attributes",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:redstone",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Experiment with Improvable Skills",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Inspect Cooldown and Casting Perks",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:glowstone_dust",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Plan for Practical Attribute Caps",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Choose How to Specialize",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path.",
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Tech Overview: Energy Without a Tech Pack",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Too Much Magic deliberately limits its industrial ecosystem. BiggerReactors Rework provides nuclear generation, its own battery, turbines and processor. Draconic Evolution provides generators, FE routing, the expandable Energy Core bank and later the high-risk Draconic Reactor. There is no Create, AE2 or generic FE transport mod.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "tech-intro",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Read the Reactor Guide",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:guide_book",
+        "count": 1
+      },
+      "description": "Craft BiggerReactors Rework's Reactor Guide and consult its current build diagrams, calculator and materials pages. This particular 1.21.1 rework has its own machine and fuel behavior; don't blindly follow older Big Reactors measurements.",
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:coal",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Uranium Fuel",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:uranium_ingot",
+        "count": 2
+      },
+      "description": "Obtain two uranium ingots from the allowed deep exploration or mining route, then check the Reactor Guide's fuel handling. The stricter uranium distribution envisioned for this pack is not implemented merely by writing this quest.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:iron_ingot",
+        "count": 6
+      },
+      "depends": "Read the Reactor Guide",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Graphite Moderators",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:graphite_ingot",
+        "count": 4
+      },
+      "description": "Acquire four graphite ingots. Graphite can be used as a reactor moderator and several machine components. The exact build should follow BiggerReactors Rework's in-game Reactor Guide and JEI.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Read the Reactor Guide",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Lay the Reactor Casing",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_casing",
+        "count": 8
+      },
+      "description": "Craft at least eight Reactor Casings. Reactor frames require casing edges and corners; some wall/roof faces can use Reactor Glass. The machine must form a closed rectangular shell; verify the valid dimensions in the guide.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Prepare Uranium Fuel",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Set Up Fuel Rods",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_fuel_rod",
+        "count": 2
+      },
+      "description": "Craft two Reactor Fuel Rods. Inside the shell, fuel columns must run continuously from floor toward roof. Each column is topped by its own Reactor Control Rod in the roof; no gaps are permitted.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "depends": "Lay the Reactor Casing",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install a Control Rod",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_control_rod",
+        "count": 1
+      },
+      "description": "Make a Reactor Control Rod for the top of a fuel column. Greater rod insertion reduces reaction rate; start conservatively, then adjust for efficient FE and fuel consumption.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Set Up Fuel Rods",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Add the Reactor Terminal",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_terminal",
+        "count": 1
+      },
+      "description": "Craft the Reactor Terminal and install it in an exterior face. Use its GUI to see assembly errors, temperatures, waste, power output and rod-control state; it is the principal machine panel.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:repeater",
+        "count": 2
+      },
+      "depends": "Install a Control Rod",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Fit the Fuel Access Port",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_access_port",
+        "count": 1
+      },
+      "description": "Make an Access Port. Feed uranium fuel and remove cyanite waste through correctly configured ports. Do not confuse the input and output settings, especially when automating.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:iron_ingot",
+        "count": 6
+      },
+      "depends": "Add the Reactor Terminal",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Fit the FE Power Tap",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_power_tap",
+        "count": 1
+      },
+      "description": "Craft a Power Tap and install it on the exterior. Passive reactors export FE through taps; coolant-cooled designs use coolant ports instead and require a different, deliberate setup.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Fit the Fuel Access Port",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Assemble and Start a Bigger Reactor",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Build a closed casing shell with the terminal, fuel rod columns topped by control rods, fuel access and an FE output. Open the terminal, correct assembly errors, add fuel, connect an energy consumer/bank, then start at low output. Check FE production, heat and fuel usage yourself before marking complete.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Fit the FE Power Tap",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Recover Cyanite Waste",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:cyanite_ingot",
+        "count": 1
+      },
+      "description": "Retrieve cyanite from a running reactor's waste. This is a useful byproduct rather than just a loss; the mod includes an industrial processing pathway.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:quartz",
+        "count": 8
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build the Industrial Processor",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:cyanite_reprocessor",
+        "count": 1
+      },
+      "description": "Craft the Industrial Processor to explore cyanite reprocessing into higher-tier nuclear materials. Check the actual input, water and FE requirements in the machine UI and JEI; do not assume automatic material recycling without connections.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Recover Cyanite Waste",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build a Battery Shell",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_casing",
+        "count": 8
+      },
+      "description": "Craft eight Battery Casings. Rework's optional rectangular battery uses casing on every frame edge and corner; glass can fill eligible exterior faces. This is a smaller FE storage option distinct from the enormous Draconic Energy Core.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install Battery Cells",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_cell",
+        "count": 4
+      },
+      "description": "Obtain four Battery Cells. Place them within the rectangular shell. Cells define stored energy and per-tick input/output throughput, and charged cells retain their energy when moved.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Build a Battery Shell",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install the Battery Terminal",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_terminal",
+        "count": 1
+      },
+      "description": "Craft a Battery Terminal. It displays charge and transfer; the machine needs at least one cell, a terminal, and two Energy Ports to assemble.",
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:comparator",
+        "count": 2
+      },
+      "depends": "Install Battery Cells",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Give the Battery Two Ports",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_energy_port",
+        "count": 2
+      },
+      "description": "Craft at least two Battery Energy Ports. Once assembled, configure one as FE input and one as FE output; the wrench and port UI control direction.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Install the Battery Terminal",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Operate the Nuclear Battery",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Finish the casing/cell/terminal/port structure, link reactor output to battery input and battery output to a consumer. Observe both charge and throughput. This operation is confirmed manually because the quest book has no actual FE telemetry task.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Give the Battery Two Ports",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "bigger-battery",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Try a Steam Turbine",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:turbine_terminal",
+        "count": 1
+      },
+      "description": "Optional advanced nuclear branch: the turbine needs a closed casing, two bearings, a continuous shaft, rotor blades, appropriate coils and correctly configured fluid/power ports. Use the Rework guide for accepted coils and fluid loops.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-turbine",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Try a Heat Exchanger",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:heat_exchanger_terminal",
+        "count": 1
+      },
+      "description": "Optional infrastructure for coolant/steam loops. Build a valid heat-exchanger structure and connect the flows according to Rework's current guide; it is not needed for a basic passive FE reactor.",
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass",
+        "count": 8
+      },
+      "depends": "Try a Steam Turbine",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-turbine",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Craft a Draconic Generator",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:generator",
+        "count": 1
+      },
+      "description": "Draconic Evolution supplies a basic generator for starting its FE network. This path can be explored independently of nuclear generation; JEI confirms the fuel and exact recipe in this installed build.",
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:coal",
+        "count": 12
+      },
+      "depends": null,
+      "optional": true,
+      "role": "milestone",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Craft the Draconic Energy Core",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_core",
+        "count": 1
+      },
+      "description": "Craft the Energy Core block. It is the center of a multiblock FE storage bank, not the unstable power-producing Draconic Reactor Core. Pick a protected site and keep your generation and storage separate.",
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Energy Core Stabilizers",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_core_stabilizer",
+        "count": 4
+      },
+      "description": "Craft four Energy Core Stabilizers. Arrange them symmetrically in a single plane outside the desired spherical core shell. Larger storage tiers need additional structural blocks; check the in-game Build Guide for each tier.",
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:quartz",
+        "count": 8
+      },
+      "depends": "Craft the Draconic Energy Core",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build Input and Output Pylons",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_pylon",
+        "count": 2
+      },
+      "description": "Craft two Energy Pylons, one for charging and another for discharge. Link them to the Energy Core as the actual FE input/output interface; configure each direction separately in the installed build.",
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Prepare Energy Core Stabilizers",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Activate the Draconic Power Bank",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Assemble the Energy Core and four stabilizers, consult the core's Build Guide and tier controls, activate the completed structure, and configure one pylon as input and another as output. Connect a source and consumer; verify stored FE increases and decreases. Never dismantle a charged core without first checking loss behavior.",
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": "Build Input and Output Pylons",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Route FE with a Crystal",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:basic_io_crystal",
+        "count": 1
+      },
+      "description": "Craft a Basic Energy I/O Crystal. Draconic Evolution's crystal networking is the pack's intended FE transfer solution, with relay and wireless variants for more complex layouts. Configure input/output direction before connecting machines.",
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Activate the Draconic Power Bank",
+      "optional": true,
+      "role": "milestone",
+      "stage": "draconic-energy",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Regulate Power with a Flux Gate",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:flux_gate",
+        "count": 1
+      },
+      "description": "Build a Flux Gate for controlled FE throughput. A Draconic Reactor needs controlled power delivery and extraction rather than an unrestricted connection, and its safety should be tested in a disposable world.",
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:comparator",
+        "count": 4
+      },
+      "depends": "Activate the Draconic Power Bank",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Acquire the Draconic Reactor Core",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_core",
+        "count": 1
+      },
+      "description": "Craft the Draconic Reactor Core—the high-output, high-risk FE generator. Inspect its *exact installed recipe*: it may require Chaos Shards or other resources that can only be acquired after the Guardian, and this quest does not grant or bypass those materials.",
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:crying_obsidian",
+        "count": 2
+      },
+      "depends": "Regulate Power with a Flux Gate",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Four Reactor Stabilizers",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_stabilizer",
+        "count": 4
+      },
+      "description": "Craft four Reactor Stabilizers and arrange them around the Draconic Reactor Core with unobstructed line of sight at the proper spacing for this version. These maintain the containment field; they are *not* Energy Core Stabilizers.",
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:glass",
+        "count": 32
+      },
+      "depends": "Acquire the Draconic Reactor Core",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build the Reactor Energy Injector",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_injector",
+        "count": 1
+      },
+      "description": "Craft the Reactor Energy Injector and ensure it can continuously supply FE to maintain the containment field during operation. Design independent field-power reserves and a safe shutdown path before attempting a start.",
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Four Reactor Stabilizers",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Plan Safe Reactor Containment",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "On a disposable world, plan a remote reactor site away from your base and important chunks. Separate high-output extraction from containment-field input, add controlled Flux Gate paths and a sufficient battery buffer. A reactor field collapse or runaway heat can destroy the area; do not treat this as safe baseline generation.",
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:comparator",
+        "count": 4
+      },
+      "depends": "Build the Reactor Energy Injector",
+      "optional": true,
+      "role": "manual-safety",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Operate a Draconic Reactor Safely",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Only after the structure and sufficient fuel are assembled: monitor temperature, containment field strength, fuel conversion and energy saturation. Start with conservative settings, verify field power is sustained under peak load, and test emergency shutdown in an expendable world. This checkmark is a *manual safety acknowledgment*; it does not certify actual reactor telemetry.",
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:golden_carrot",
+        "count": 4
+      },
+      "depends": "Plan Safe Reactor Containment",
+      "optional": true,
+      "role": "manual-safety",
+      "stage": "draconic-reactor",
+      "layout": null,
+      "overview": false,
+      "first_log": false
     }
   ]
 }

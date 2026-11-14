@@ -6,7 +6,7 @@ hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
-hash = "2d91a3fa2ad24e1ae55860f7006c3add3c41ddc1c56f6fe2eec598b12f6dadf7"
+hash = "470277d86efd070c8fcba9f10d43268444850dd5e499d695d7e953fdfd8645bf"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/apotheosis.snbt"
@@ -26,7 +26,7 @@ hash = "c9a653b1a0c2932bb473f22639cf054b5c6c4634d491be7b3da0e1602eccfba3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "faee2645ee7b941b585c349954c07854b90cf72f7dd965690c00131b893c7006"
+hash = "8fe48f69fb8c15e46b0e4ad4124af74cd07898c288f2d60282ccef276023d090"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -54,7 +54,7 @@ hash = "06d48208822e97add781615aea9b5d39d200ca68491ab1a353f8f2ca7608a88e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/endgame_roadmap.snbt"
-hash = "892cfcd5b85feb609a0f3b4be2083b21b16a5f1a8908460f8e4f942054633800"
+hash = "936d7d3d3488de58e8bf69613b352638153410b58fedde29904e4bcf536f7d0c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/enigmatic_legacy.snbt"
@@ -66,7 +66,7 @@ hash = "44ade48fe385fd337dc5499f5a4979a4ad45654c0808e1ccf884f41363ac6d0b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt"
-hash = "c7e3a9be1fda64c35db65e0c1fec4acc849773bb89074f99f111656388acce74"
+hash = "b4d9ca321fd4d1c2cf15710f3f66b661cdd57c58d4ba069b5fc96a6937500b53"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/feywild.snbt"
@@ -162,7 +162,7 @@ hash = "d24894c2a246bce8c03fdaa02e9f4f012a9248788ab31dc8f04c780425c677a5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
-hash = "3dd16ece093674e18b551b0c5efe036ac280812f730ea78872dd260387567f41"
+hash = "dae5136619d1ad6cfa384fa8b44c365c7dee229ccd6883c56bf060cf9378c45c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"

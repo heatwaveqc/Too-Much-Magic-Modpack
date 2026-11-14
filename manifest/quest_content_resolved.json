@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "source": "manifest/quest_content.json",
+  "schema_version": 3,
+  "source": "manifest/quest_content.json + manifest/progression_quest_content.json",
   "note": "Stable ID map for authored quests; generated at content revision",
   "quests": [
     {
@@ -1203,6 +1203,1390 @@
       "repeat_cooldown": 2,
       "consume_items": true,
       "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Choose a Magical Tradition",
+      "quest_id": "544D504000D00000",
+      "task_id": "544D804000D00000",
+      "xp_reward_id": "544D604000D00001",
+      "item_reward_id": "544D704000D00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Secure Some Copper",
+      "quest_id": "544D504000E00000",
+      "task_id": "544D804000E00000",
+      "xp_reward_id": "544D604000E00001",
+      "item_reward_id": "544D704000E00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_copper",
+        "count": 8
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Prospect for Gold",
+      "quest_id": "544D504000F00000",
+      "task_id": "544D804000F00000",
+      "xp_reward_id": "544D604000F00001",
+      "item_reward_id": "544D704000F00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_gold",
+        "count": 4
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:coal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Learn to Recognize Lapis",
+      "quest_id": "544D504001000000",
+      "task_id": "544D804001000000",
+      "xp_reward_id": "544D604001000001",
+      "item_reward_id": "544D704001000002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:lapis_lazuli",
+        "count": 8
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Collect Amethyst",
+      "quest_id": "544D504001100000",
+      "task_id": "544D804001100000",
+      "xp_reward_id": "544D604001100001",
+      "item_reward_id": "544D704001100002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:amethyst_shard",
+        "count": 8
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:glass",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Bring a Water Bucket",
+      "quest_id": "544D504001200000",
+      "task_id": "544D804001200000",
+      "xp_reward_id": "544D604001200001",
+      "item_reward_id": "544D704001200002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:water_bucket",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:glass_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Defend Yourself",
+      "quest_id": "544D504001300000",
+      "task_id": "544D804001300000",
+      "xp_reward_id": "544D604001300001",
+      "item_reward_id": "544D704001300002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:shield",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:arrow",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "equipment",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Upgrade to Diamond Mining",
+      "quest_id": "544D504001400000",
+      "task_id": "544D804001400000",
+      "xp_reward_id": "544D604001400001",
+      "item_reward_id": "544D704001400002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "equipment",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Reach the Nether for Ingredients",
+      "quest_id": "544D504001500000",
+      "task_id": "544D804001500000",
+      "xp_reward_id": "544D604001500001",
+      "item_reward_id": "544D704001500002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:blaze_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:nether_wart",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "exploration",
+      "stage": ""
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Gather Ender Pearls",
+      "quest_id": "544D504001600000",
+      "task_id": "544D804001600000",
+      "xp_reward_id": "544D604001600001",
+      "item_reward_id": "544D704001600002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:ender_pearl",
+        "count": 4
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": null,
+      "optional": false,
+      "role": "exploration",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Map Out Your Infrastructure",
+      "quest_id": "544D505000100000",
+      "task_id": "544D805000100000",
+      "xp_reward_id": "544D605000100001",
+      "item_reward_id": "544D705000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Install an Enchanting Table",
+      "quest_id": "544D505000200000",
+      "task_id": "544D805000200000",
+      "xp_reward_id": "544D605000200001",
+      "item_reward_id": "544D705000200002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:enchanting_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:lapis_lazuli",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Bring an Anvil",
+      "quest_id": "544D505000300000",
+      "task_id": "544D805000300000",
+      "xp_reward_id": "544D605000300001",
+      "item_reward_id": "544D705000300002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:anvil",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Build a Brewing Stand",
+      "quest_id": "544D505000400000",
+      "task_id": "544D805000400000",
+      "xp_reward_id": "544D605000400001",
+      "item_reward_id": "544D705000400002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:brewing_stand",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:glass_bottle",
+        "count": 8
+      },
+      "depends": null,
+      "optional": false,
+      "role": "utility",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Build a Portal Reserve",
+      "quest_id": "544D505000500000",
+      "task_id": "544D805000500000",
+      "xp_reward_id": "544D605000500001",
+      "item_reward_id": "544D705000500002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:obsidian",
+        "count": 10
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:flint_and_steel",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Keep an Ender Chest",
+      "quest_id": "544D505000600000",
+      "task_id": "544D805000600000",
+      "xp_reward_id": "544D605000600001",
+      "item_reward_id": "544D705000600002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:ender_chest",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:ender_pearl",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "role": "storage",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Recover Ancient Debris Products",
+      "quest_id": "544D505000700000",
+      "task_id": "544D805000700000",
+      "xp_reward_id": "544D605000700001",
+      "item_reward_id": "544D705000700002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:netherite_scrap",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:magma_cream",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "resource",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Construct a Lodestone",
+      "quest_id": "544D505000800000",
+      "task_id": "544D805000800000",
+      "xp_reward_id": "544D605000800001",
+      "item_reward_id": "544D705000800002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:lodestone",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "navigation",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Understand Summoning Rituals",
+      "quest_id": "544D505000900000",
+      "task_id": "544D805000900000",
+      "xp_reward_id": "544D605000900001",
+      "item_reward_id": "544D705000900002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:candle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Advanced Progression",
+      "title": "Prepare a Protected Ritual Chamber",
+      "quest_id": "544D505000A00000",
+      "task_id": "544D805000A00000",
+      "xp_reward_id": "544D605000A00001",
+      "item_reward_id": "544D705000A00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:lantern",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Read Before the Endgame",
+      "quest_id": "544D506000100000",
+      "task_id": "544D806000100000",
+      "xp_reward_id": "544D606000100001",
+      "item_reward_id": "544D706000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:map",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: The End and Draconic Materials",
+      "quest_id": "544D506000200000",
+      "task_id": "544D806000200000",
+      "xp_reward_id": "544D606000200001",
+      "item_reward_id": "544D706000200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:firework_rocket",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Cataclysm Boss Resources",
+      "quest_id": "544D506000300000",
+      "task_id": "544D806000300000",
+      "xp_reward_id": "544D606000300001",
+      "item_reward_id": "544D706000300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Occultism's Final Miner",
+      "quest_id": "544D506000400000",
+      "task_id": "544D806000400000",
+      "xp_reward_id": "544D606000400001",
+      "item_reward_id": "544D706000400002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: Chaos Guardian as the Gate",
+      "quest_id": "544D506000500000",
+      "task_id": "544D806000500000",
+      "xp_reward_id": "544D606000500001",
+      "item_reward_id": "544D706000500002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Endgame Roadmap",
+      "title": "Roadmap: What Unlocks Afterwards",
+      "quest_id": "544D506000600000",
+      "task_id": "544D806000600000",
+      "xp_reward_id": "544D606000600001",
+      "item_reward_id": "544D706000600002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Read the Two Skill Systems",
+      "quest_id": "544D507000100000",
+      "task_id": "544D807000100000",
+      "xp_reward_id": "544D607000100001",
+      "item_reward_id": "544D707000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Open the Skill Interface",
+      "quest_id": "544D507000200000",
+      "task_id": "544D807000200000",
+      "xp_reward_id": "544D607000200001",
+      "item_reward_id": "544D707000200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Understand Attributes",
+      "quest_id": "544D507000300000",
+      "task_id": "544D807000300000",
+      "xp_reward_id": "544D607000300001",
+      "item_reward_id": "544D707000300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:redstone",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Experiment with Improvable Skills",
+      "quest_id": "544D507000400000",
+      "task_id": "544D807000400000",
+      "xp_reward_id": "544D607000400001",
+      "item_reward_id": "544D707000400002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Inspect Cooldown and Casting Perks",
+      "quest_id": "544D507000500000",
+      "task_id": "544D807000500000",
+      "xp_reward_id": "544D607000500001",
+      "item_reward_id": "544D707000500002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:glowstone_dust",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Plan for Practical Attribute Caps",
+      "quest_id": "544D507000600000",
+      "task_id": "544D807000600000",
+      "xp_reward_id": "544D607000600001",
+      "item_reward_id": "544D707000600002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Skills & Advancement",
+      "title": "Choose How to Specialize",
+      "quest_id": "544D507000700000",
+      "task_id": "544D807000700000",
+      "xp_reward_id": "544D607000700001",
+      "item_reward_id": "544D707000700002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": ""
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Tech Overview: Energy Without a Tech Pack",
+      "quest_id": "544D508000100000",
+      "task_id": "544D808000100000",
+      "xp_reward_id": "544D608000100001",
+      "item_reward_id": "544D708000100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "tech-intro"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Read the Reactor Guide",
+      "quest_id": "544D508000200000",
+      "task_id": "544D808000200000",
+      "xp_reward_id": "544D608000200001",
+      "item_reward_id": "544D708000200002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:guide_book",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:coal",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Uranium Fuel",
+      "quest_id": "544D508000300000",
+      "task_id": "544D808000300000",
+      "xp_reward_id": "544D608000300001",
+      "item_reward_id": "544D708000300002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:uranium_ingot",
+        "count": 2
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:iron_ingot",
+        "count": 6
+      },
+      "depends": "Read the Reactor Guide",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Graphite Moderators",
+      "quest_id": "544D508000400000",
+      "task_id": "544D808000400000",
+      "xp_reward_id": "544D608000400001",
+      "item_reward_id": "544D708000400002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:graphite_ingot",
+        "count": 4
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Read the Reactor Guide",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Lay the Reactor Casing",
+      "quest_id": "544D508000500000",
+      "task_id": "544D808000500000",
+      "xp_reward_id": "544D608000500001",
+      "item_reward_id": "544D708000500002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_casing",
+        "count": 8
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Prepare Uranium Fuel",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Set Up Fuel Rods",
+      "quest_id": "544D508000600000",
+      "task_id": "544D808000600000",
+      "xp_reward_id": "544D608000600001",
+      "item_reward_id": "544D708000600002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_fuel_rod",
+        "count": 2
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "depends": "Lay the Reactor Casing",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install a Control Rod",
+      "quest_id": "544D508000700000",
+      "task_id": "544D808000700000",
+      "xp_reward_id": "544D608000700001",
+      "item_reward_id": "544D708000700002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_control_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Set Up Fuel Rods",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Add the Reactor Terminal",
+      "quest_id": "544D508000800000",
+      "task_id": "544D808000800000",
+      "xp_reward_id": "544D608000800001",
+      "item_reward_id": "544D708000800002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_terminal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:repeater",
+        "count": 2
+      },
+      "depends": "Install a Control Rod",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Fit the Fuel Access Port",
+      "quest_id": "544D508000900000",
+      "task_id": "544D808000900000",
+      "xp_reward_id": "544D608000900001",
+      "item_reward_id": "544D708000900002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_access_port",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:iron_ingot",
+        "count": 6
+      },
+      "depends": "Add the Reactor Terminal",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Fit the FE Power Tap",
+      "quest_id": "544D508000A00000",
+      "task_id": "544D808000A00000",
+      "xp_reward_id": "544D608000A00001",
+      "item_reward_id": "544D708000A00002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:reactor_power_tap",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Fit the Fuel Access Port",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Assemble and Start a Bigger Reactor",
+      "quest_id": "544D508000B00000",
+      "task_id": "544D808000B00000",
+      "xp_reward_id": "544D608000B00001",
+      "item_reward_id": "544D708000B00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Fit the FE Power Tap",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Recover Cyanite Waste",
+      "quest_id": "544D508000C00000",
+      "task_id": "544D808000C00000",
+      "xp_reward_id": "544D608000C00001",
+      "item_reward_id": "544D708000C00002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:cyanite_ingot",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:quartz",
+        "count": 8
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build the Industrial Processor",
+      "quest_id": "544D508000D00000",
+      "task_id": "544D808000D00000",
+      "xp_reward_id": "544D608000D00001",
+      "item_reward_id": "544D708000D00002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:cyanite_reprocessor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Recover Cyanite Waste",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build a Battery Shell",
+      "quest_id": "544D508000E00000",
+      "task_id": "544D808000E00000",
+      "xp_reward_id": "544D608000E00001",
+      "item_reward_id": "544D708000E00002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_casing",
+        "count": 8
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install Battery Cells",
+      "quest_id": "544D508000F00000",
+      "task_id": "544D808000F00000",
+      "xp_reward_id": "544D608000F00001",
+      "item_reward_id": "544D708000F00002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_cell",
+        "count": 4
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Build a Battery Shell",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Install the Battery Terminal",
+      "quest_id": "544D508001000000",
+      "task_id": "544D808001000000",
+      "xp_reward_id": "544D608001000001",
+      "item_reward_id": "544D708001000002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_terminal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:comparator",
+        "count": 2
+      },
+      "depends": "Install Battery Cells",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Give the Battery Two Ports",
+      "quest_id": "544D508001100000",
+      "task_id": "544D808001100000",
+      "xp_reward_id": "544D608001100001",
+      "item_reward_id": "544D708001100002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:battery_energy_port",
+        "count": 2
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:redstone",
+        "count": 8
+      },
+      "depends": "Install the Battery Terminal",
+      "optional": false,
+      "role": "milestone",
+      "stage": "bigger-battery"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Operate the Nuclear Battery",
+      "quest_id": "544D508001200000",
+      "task_id": "544D808001200000",
+      "xp_reward_id": "544D608001200001",
+      "item_reward_id": "544D708001200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Give the Battery Two Ports",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "bigger-battery"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Try a Steam Turbine",
+      "quest_id": "544D508001300000",
+      "task_id": "544D808001300000",
+      "xp_reward_id": "544D608001300001",
+      "item_reward_id": "544D708001300002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:turbine_terminal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "depends": "Assemble and Start a Bigger Reactor",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-turbine"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Try a Heat Exchanger",
+      "quest_id": "544D508001400000",
+      "task_id": "544D808001400000",
+      "xp_reward_id": "544D608001400001",
+      "item_reward_id": "544D708001400002",
+      "criterion": {
+        "type": "item",
+        "id": "biggerreactorsrework:heat_exchanger_terminal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass",
+        "count": 8
+      },
+      "depends": "Try a Steam Turbine",
+      "optional": true,
+      "role": "milestone",
+      "stage": "bigger-turbine"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Craft a Draconic Generator",
+      "quest_id": "544D508001500000",
+      "task_id": "544D808001500000",
+      "xp_reward_id": "544D608001500001",
+      "item_reward_id": "544D708001500002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:generator",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:coal",
+        "count": 12
+      },
+      "depends": null,
+      "optional": true,
+      "role": "milestone",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Craft the Draconic Energy Core",
+      "quest_id": "544D508001600000",
+      "task_id": "544D808001600000",
+      "xp_reward_id": "544D608001600001",
+      "item_reward_id": "544D708001600002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_core",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": null,
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Prepare Energy Core Stabilizers",
+      "quest_id": "544D508001700000",
+      "task_id": "544D808001700000",
+      "xp_reward_id": "544D608001700001",
+      "item_reward_id": "544D708001700002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_core_stabilizer",
+        "count": 4
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:quartz",
+        "count": 8
+      },
+      "depends": "Craft the Draconic Energy Core",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build Input and Output Pylons",
+      "quest_id": "544D508001800000",
+      "task_id": "544D808001800000",
+      "xp_reward_id": "544D608001800001",
+      "item_reward_id": "544D708001800002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:energy_pylon",
+        "count": 2
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glass",
+        "count": 16
+      },
+      "depends": "Prepare Energy Core Stabilizers",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Activate the Draconic Power Bank",
+      "quest_id": "544D508001900000",
+      "task_id": "544D808001900000",
+      "xp_reward_id": "544D608001900001",
+      "item_reward_id": "544D708001900002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:experience_bottle",
+        "count": 3
+      },
+      "depends": "Build Input and Output Pylons",
+      "optional": true,
+      "role": "manual-operation",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Route FE with a Crystal",
+      "quest_id": "544D508001A00000",
+      "task_id": "544D808001A00000",
+      "xp_reward_id": "544D608001A00001",
+      "item_reward_id": "544D708001A00002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:basic_io_crystal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Activate the Draconic Power Bank",
+      "optional": true,
+      "role": "milestone",
+      "stage": "draconic-energy"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Regulate Power with a Flux Gate",
+      "quest_id": "544D508001B00000",
+      "task_id": "544D808001B00000",
+      "xp_reward_id": "544D608001B00001",
+      "item_reward_id": "544D708001B00002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:flux_gate",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:comparator",
+        "count": 4
+      },
+      "depends": "Activate the Draconic Power Bank",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Acquire the Draconic Reactor Core",
+      "quest_id": "544D508001C00000",
+      "task_id": "544D808001C00000",
+      "xp_reward_id": "544D608001C00001",
+      "item_reward_id": "544D708001C00002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_core",
+        "count": 1
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:crying_obsidian",
+        "count": 2
+      },
+      "depends": "Regulate Power with a Flux Gate",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Four Reactor Stabilizers",
+      "quest_id": "544D508001D00000",
+      "task_id": "544D808001D00000",
+      "xp_reward_id": "544D608001D00001",
+      "item_reward_id": "544D708001D00002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_stabilizer",
+        "count": 4
+      },
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:glass",
+        "count": 32
+      },
+      "depends": "Acquire the Draconic Reactor Core",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Build the Reactor Energy Injector",
+      "quest_id": "544D508001E00000",
+      "task_id": "544D808001E00000",
+      "xp_reward_id": "544D608001E00001",
+      "item_reward_id": "544D708001E00002",
+      "criterion": {
+        "type": "item",
+        "id": "draconicevolution:reactor_injector",
+        "count": 1
+      },
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:redstone",
+        "count": 16
+      },
+      "depends": "Four Reactor Stabilizers",
+      "optional": false,
+      "role": "milestone",
+      "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Plan Safe Reactor Containment",
+      "quest_id": "544D508001F00000",
+      "task_id": "544D808001F00000",
+      "xp_reward_id": "544D608001F00001",
+      "item_reward_id": "544D708001F00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:comparator",
+        "count": 4
+      },
+      "depends": "Build the Reactor Energy Injector",
+      "optional": true,
+      "role": "manual-safety",
+      "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Exceptional Power: Reactors",
+      "title": "Operate a Draconic Reactor Safely",
+      "quest_id": "544D508002000000",
+      "task_id": "544D808002000000",
+      "xp_reward_id": "544D608002000001",
+      "item_reward_id": "544D708002000002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:golden_carrot",
+        "count": 4
+      },
+      "depends": "Plan Safe Reactor Containment",
+      "optional": true,
+      "role": "manual-safety",
+      "stage": "draconic-reactor"
     }
   ]
 }

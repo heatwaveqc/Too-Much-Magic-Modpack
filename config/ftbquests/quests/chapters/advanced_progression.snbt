@@ -30,6 +30,181 @@
 			x: 0.0d
 			y: 0.0d
 		}
+		{
+			id: "544D505000100000"
+			icon: { id: "minecraft:enchanting_table" }
+			title: "Map Out Your Infrastructure"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D605000100001", type: "xp", xp: 15 }
+				{ id: "544D705000100002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D805000100000", type: "checkmark" }
+			]
+			x: 2.00d
+			y: 2.00d
+		}
+		{
+			id: "544D505000200000"
+			icon: { id: "minecraft:enchanting_table" }
+			title: "Install an Enchanting Table"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D605000200001", type: "xp", xp: 30 }
+				{ id: "544D705000200002", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D805000200000", type: "item", item: { id: "minecraft:enchanting_table", count: 1 } }
+			]
+			x: 4.30d
+			y: 2.00d
+		}
+		{
+			id: "544D505000300000"
+			icon: { id: "minecraft:anvil" }
+			title: "Bring an Anvil"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D605000300001", type: "xp", xp: 25 }
+				{ id: "544D705000300002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D805000300000", type: "item", item: { id: "minecraft:anvil", count: 1 } }
+			]
+			x: 6.60d
+			y: 2.00d
+		}
+		{
+			id: "544D505000400000"
+			icon: { id: "minecraft:brewing_stand" }
+			title: "Build a Brewing Stand"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D605000400001", type: "xp", xp: 30 }
+				{ id: "544D705000400002", type: "item", item: { id: "minecraft:glass_bottle", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D805000400000", type: "item", item: { id: "minecraft:brewing_stand", count: 1 } }
+			]
+			x: 8.90d
+			y: 2.00d
+		}
+		{
+			id: "544D505000500000"
+			icon: { id: "minecraft:obsidian" }
+			title: "Build a Portal Reserve"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D605000500001", type: "xp", xp: 20 }
+				{ id: "544D705000500002", type: "item", item: { id: "minecraft:flint_and_steel", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D805000500000", type: "item", item: { id: "minecraft:obsidian", count: 1 }, count: 10L }
+			]
+			x: 11.20d
+			y: 2.00d
+		}
+		{
+			id: "544D505000600000"
+			icon: { id: "minecraft:ender_chest" }
+			title: "Keep an Ender Chest"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D605000600001", type: "xp", xp: 45 }
+				{ id: "544D705000600002", type: "item", item: { id: "minecraft:ender_pearl", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D805000600000", type: "item", item: { id: "minecraft:ender_chest", count: 1 } }
+			]
+			x: 2.00d
+			y: 4.40d
+		}
+		{
+			id: "544D505000700000"
+			icon: { id: "minecraft:netherite_scrap" }
+			title: "Recover Ancient Debris Products"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D605000700001", type: "xp", xp: 40 }
+				{ id: "544D705000700002", type: "item", item: { id: "minecraft:magma_cream", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D805000700000", type: "item", item: { id: "minecraft:netherite_scrap", count: 1 } }
+			]
+			x: 4.30d
+			y: 4.40d
+		}
+		{
+			id: "544D505000800000"
+			icon: { id: "minecraft:lodestone" }
+			title: "Construct a Lodestone"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D605000800001", type: "xp", xp: 40 }
+				{ id: "544D705000800002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D805000800000", type: "item", item: { id: "minecraft:lodestone", count: 1 } }
+			]
+			x: 6.60d
+			y: 4.40d
+		}
+		{
+			id: "544D505000900000"
+			icon: { id: "minecraft:enchanting_table" }
+			title: "Understand Summoning Rituals"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D605000900001", type: "xp", xp: 20 }
+				{ id: "544D705000900002", type: "item", item: { id: "minecraft:candle", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D805000900000", type: "checkmark" }
+			]
+			x: 8.90d
+			y: 4.40d
+		}
+		{
+			id: "544D505000A00000"
+			icon: { id: "minecraft:enchanting_table" }
+			title: "Prepare a Protected Ritual Chamber"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D605000A00001", type: "xp", xp: 20 }
+				{ id: "544D705000A00002", type: "item", item: { id: "minecraft:lantern", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D805000A00000", type: "checkmark" }
+			]
+			x: 11.20d
+			y: 4.40d
+		}
 	]
 	subtitle: "Cross-mod infrastructure, rare materials, automations, summoning altar as custom-pack recipe framework; it has no built-in ritual recipes."
 	title: "Advanced Progression"

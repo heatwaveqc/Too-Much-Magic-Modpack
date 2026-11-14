@@ -30,6 +30,132 @@
 			x: 0.0d
 			y: 0.0d
 		}
+		{
+			id: "544D507000100000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Read the Two Skill Systems"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000100001", type: "xp", xp: 10 }
+				{ id: "544D707000100002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D807000100000", type: "checkmark" }
+			]
+			x: 2.00d
+			y: 2.00d
+		}
+		{
+			id: "544D507000200000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Open the Skill Interface"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000200001", type: "xp", xp: 10 }
+				{ id: "544D707000200002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D807000200000", type: "checkmark" }
+			]
+			x: 4.60d
+			y: 2.00d
+		}
+		{
+			id: "544D507000300000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Understand Attributes"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000300001", type: "xp", xp: 15 }
+				{ id: "544D707000300002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D807000300000", type: "checkmark" }
+			]
+			x: 7.20d
+			y: 2.00d
+		}
+		{
+			id: "544D507000400000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Experiment with Improvable Skills"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000400001", type: "xp", xp: 15 }
+				{ id: "544D707000400002", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D807000400000", type: "checkmark" }
+			]
+			x: 9.80d
+			y: 2.00d
+		}
+		{
+			id: "544D507000500000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Inspect Cooldown and Casting Perks"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000500001", type: "xp", xp: 15 }
+				{ id: "544D707000500002", type: "item", item: { id: "minecraft:glowstone_dust", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D807000500000", type: "checkmark" }
+			]
+			x: 2.00d
+			y: 4.50d
+		}
+		{
+			id: "544D507000600000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Plan for Practical Attribute Caps"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000600001", type: "xp", xp: 15 }
+				{ id: "544D707000600002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D807000600000", type: "checkmark" }
+			]
+			x: 4.60d
+			y: 4.50d
+		}
+		{
+			id: "544D507000700000"
+			icon: { id: "minecraft:experience_bottle" }
+			title: "Choose How to Specialize"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D607000700001", type: "xp", xp: 15 }
+				{ id: "544D707000700002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D807000700000", type: "checkmark" }
+			]
+			x: 7.20d
+			y: 4.50d
+		}
 	]
 	subtitle: "Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics."
 	title: "Skills & Advancement"

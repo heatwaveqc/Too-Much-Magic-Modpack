@@ -30,6 +30,589 @@
 			x: 0.0d
 			y: 0.0d
 		}
+		{
+			id: "544D508000100000"
+			icon: { id: "minecraft:redstone" }
+			title: "Tech Overview: Energy Without a Tech Pack"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D608000100001", type: "xp", xp: 20 }
+				{ id: "544D708000100002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000100000", type: "checkmark" }
+			]
+			x: 0.00d
+			y: 0.00d
+		}
+		{
+			id: "544D508000200000"
+			icon: { id: "biggerreactorsrework:guide_book" }
+			title: "Read the Reactor Guide"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D608000200001", type: "xp", xp: 20 }
+				{ id: "544D708000200002", type: "item", item: { id: "minecraft:coal", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808000200000", type: "item", item: { id: "biggerreactorsrework:guide_book", count: 1 } }
+			]
+			x: 2.00d
+			y: 2.00d
+		}
+		{
+			id: "544D508000300000"
+			icon: { id: "biggerreactorsrework:uranium_ingot" }
+			title: "Prepare Uranium Fuel"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000200000"]
+			rewards: [
+				{ id: "544D608000300001", type: "xp", xp: 25 }
+				{ id: "544D708000300002", type: "item", item: { id: "minecraft:iron_ingot", count: 1 }, count: 6 }
+			]
+			tasks: [
+				{ id: "544D808000300000", type: "item", item: { id: "biggerreactorsrework:uranium_ingot", count: 1 }, count: 2L }
+			]
+			x: 4.40d
+			y: 2.00d
+		}
+		{
+			id: "544D508000400000"
+			icon: { id: "biggerreactorsrework:graphite_ingot" }
+			title: "Prepare Graphite Moderators"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000200000"]
+			rewards: [
+				{ id: "544D608000400001", type: "xp", xp: 25 }
+				{ id: "544D708000400002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808000400000", type: "item", item: { id: "biggerreactorsrework:graphite_ingot", count: 1 }, count: 4L }
+			]
+			x: 6.80d
+			y: 2.00d
+		}
+		{
+			id: "544D508000500000"
+			icon: { id: "biggerreactorsrework:reactor_casing" }
+			title: "Lay the Reactor Casing"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000300000"]
+			rewards: [
+				{ id: "544D608000500001", type: "xp", xp: 25 }
+				{ id: "544D708000500002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808000500000", type: "item", item: { id: "biggerreactorsrework:reactor_casing", count: 1 }, count: 8L }
+			]
+			x: 9.20d
+			y: 2.00d
+		}
+		{
+			id: "544D508000600000"
+			icon: { id: "biggerreactorsrework:reactor_fuel_rod" }
+			title: "Set Up Fuel Rods"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000500000"]
+			rewards: [
+				{ id: "544D608000600001", type: "xp", xp: 30 }
+				{ id: "544D708000600002", type: "item", item: { id: "minecraft:iron_ingot", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000600000", type: "item", item: { id: "biggerreactorsrework:reactor_fuel_rod", count: 1 }, count: 2L }
+			]
+			x: 11.60d
+			y: 2.00d
+		}
+		{
+			id: "544D508000700000"
+			icon: { id: "biggerreactorsrework:reactor_control_rod" }
+			title: "Install a Control Rod"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000600000"]
+			rewards: [
+				{ id: "544D608000700001", type: "xp", xp: 25 }
+				{ id: "544D708000700002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000700000", type: "item", item: { id: "biggerreactorsrework:reactor_control_rod", count: 1 } }
+			]
+			x: 14.00d
+			y: 2.00d
+		}
+		{
+			id: "544D508000800000"
+			icon: { id: "biggerreactorsrework:reactor_terminal" }
+			title: "Add the Reactor Terminal"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000700000"]
+			rewards: [
+				{ id: "544D608000800001", type: "xp", xp: 30 }
+				{ id: "544D708000800002", type: "item", item: { id: "minecraft:repeater", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D808000800000", type: "item", item: { id: "biggerreactorsrework:reactor_terminal", count: 1 } }
+			]
+			x: 2.00d
+			y: 4.30d
+		}
+		{
+			id: "544D508000900000"
+			icon: { id: "biggerreactorsrework:reactor_access_port" }
+			title: "Fit the Fuel Access Port"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000800000"]
+			rewards: [
+				{ id: "544D608000900001", type: "xp", xp: 25 }
+				{ id: "544D708000900002", type: "item", item: { id: "minecraft:iron_ingot", count: 1 }, count: 6 }
+			]
+			tasks: [
+				{ id: "544D808000900000", type: "item", item: { id: "biggerreactorsrework:reactor_access_port", count: 1 } }
+			]
+			x: 4.40d
+			y: 4.30d
+		}
+		{
+			id: "544D508000A00000"
+			icon: { id: "biggerreactorsrework:reactor_power_tap" }
+			title: "Fit the FE Power Tap"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000900000"]
+			rewards: [
+				{ id: "544D608000A00001", type: "xp", xp: 25 }
+				{ id: "544D708000A00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000A00000", type: "item", item: { id: "biggerreactorsrework:reactor_power_tap", count: 1 } }
+			]
+			x: 6.80d
+			y: 4.30d
+		}
+		{
+			id: "544D508000B00000"
+			icon: { id: "minecraft:redstone" }
+			title: "Assemble and Start a Bigger Reactor"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000A00000"]
+			optional: true
+			rewards: [
+				{ id: "544D608000B00001", type: "xp", xp: 35 }
+				{ id: "544D708000B00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808000B00000", type: "checkmark" }
+			]
+			x: 9.20d
+			y: 4.30d
+		}
+		{
+			id: "544D508000C00000"
+			icon: { id: "biggerreactorsrework:cyanite_ingot" }
+			title: "Recover Cyanite Waste"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000B00000"]
+			rewards: [
+				{ id: "544D608000C00001", type: "xp", xp: 30 }
+				{ id: "544D708000C00002", type: "item", item: { id: "minecraft:quartz", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000C00000", type: "item", item: { id: "biggerreactorsrework:cyanite_ingot", count: 1 } }
+			]
+			x: 11.60d
+			y: 4.30d
+		}
+		{
+			id: "544D508000D00000"
+			icon: { id: "biggerreactorsrework:cyanite_reprocessor" }
+			title: "Build the Industrial Processor"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000C00000"]
+			optional: true
+			rewards: [
+				{ id: "544D608000D00001", type: "xp", xp: 35 }
+				{ id: "544D708000D00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000D00000", type: "item", item: { id: "biggerreactorsrework:cyanite_reprocessor", count: 1 } }
+			]
+			x: 14.00d
+			y: 4.30d
+		}
+		{
+			id: "544D508000E00000"
+			icon: { id: "biggerreactorsrework:battery_casing" }
+			title: "Build a Battery Shell"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000B00000"]
+			rewards: [
+				{ id: "544D608000E00001", type: "xp", xp: 25 }
+				{ id: "544D708000E00002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808000E00000", type: "item", item: { id: "biggerreactorsrework:battery_casing", count: 1 }, count: 8L }
+			]
+			x: 2.00d
+			y: 9.00d
+		}
+		{
+			id: "544D508000F00000"
+			icon: { id: "biggerreactorsrework:battery_cell" }
+			title: "Install Battery Cells"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000E00000"]
+			rewards: [
+				{ id: "544D608000F00001", type: "xp", xp: 25 }
+				{ id: "544D708000F00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808000F00000", type: "item", item: { id: "biggerreactorsrework:battery_cell", count: 1 }, count: 4L }
+			]
+			x: 4.40d
+			y: 9.00d
+		}
+		{
+			id: "544D508001000000"
+			icon: { id: "biggerreactorsrework:battery_terminal" }
+			title: "Install the Battery Terminal"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000F00000"]
+			rewards: [
+				{ id: "544D608001000001", type: "xp", xp: 25 }
+				{ id: "544D708001000002", type: "item", item: { id: "minecraft:comparator", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D808001000000", type: "item", item: { id: "biggerreactorsrework:battery_terminal", count: 1 } }
+			]
+			x: 6.80d
+			y: 9.00d
+		}
+		{
+			id: "544D508001100000"
+			icon: { id: "biggerreactorsrework:battery_energy_port" }
+			title: "Give the Battery Two Ports"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001000000"]
+			rewards: [
+				{ id: "544D608001100001", type: "xp", xp: 30 }
+				{ id: "544D708001100002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808001100000", type: "item", item: { id: "biggerreactorsrework:battery_energy_port", count: 1 }, count: 2L }
+			]
+			x: 9.20d
+			y: 9.00d
+		}
+		{
+			id: "544D508001200000"
+			icon: { id: "minecraft:redstone" }
+			title: "Operate the Nuclear Battery"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001100000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001200001", type: "xp", xp: 35 }
+				{ id: "544D708001200002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808001200000", type: "checkmark" }
+			]
+			x: 11.60d
+			y: 9.00d
+		}
+		{
+			id: "544D508001300000"
+			icon: { id: "biggerreactorsrework:turbine_terminal" }
+			title: "Try a Steam Turbine"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508000B00000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001300001", type: "xp", xp: 35 }
+				{ id: "544D708001300002", type: "item", item: { id: "minecraft:iron_ingot", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808001300000", type: "item", item: { id: "biggerreactorsrework:turbine_terminal", count: 1 } }
+			]
+			x: 2.00d
+			y: 12.00d
+		}
+		{
+			id: "544D508001400000"
+			icon: { id: "biggerreactorsrework:heat_exchanger_terminal" }
+			title: "Try a Heat Exchanger"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001300000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001400001", type: "xp", xp: 35 }
+				{ id: "544D708001400002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808001400000", type: "item", item: { id: "biggerreactorsrework:heat_exchanger_terminal", count: 1 } }
+			]
+			x: 4.40d
+			y: 12.00d
+		}
+		{
+			id: "544D508001500000"
+			icon: { id: "draconicevolution:generator" }
+			title: "Craft a Draconic Generator"
+			description: [
+				undefined
+			]
+			optional: true
+			rewards: [
+				{ id: "544D608001500001", type: "xp", xp: 30 }
+				{ id: "544D708001500002", type: "item", item: { id: "minecraft:coal", count: 1 }, count: 12 }
+			]
+			tasks: [
+				{ id: "544D808001500000", type: "item", item: { id: "draconicevolution:generator", count: 1 } }
+			]
+			x: 2.00d
+			y: 16.00d
+		}
+		{
+			id: "544D508001600000"
+			icon: { id: "draconicevolution:energy_core" }
+			title: "Craft the Draconic Energy Core"
+			description: [
+				undefined
+			]
+			rewards: [
+				{ id: "544D608001600001", type: "xp", xp: 45 }
+				{ id: "544D708001600002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808001600000", type: "item", item: { id: "draconicevolution:energy_core", count: 1 } }
+			]
+			x: 4.40d
+			y: 16.00d
+		}
+		{
+			id: "544D508001700000"
+			icon: { id: "draconicevolution:energy_core_stabilizer" }
+			title: "Prepare Energy Core Stabilizers"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001600000"]
+			rewards: [
+				{ id: "544D608001700001", type: "xp", xp: 40 }
+				{ id: "544D708001700002", type: "item", item: { id: "minecraft:quartz", count: 1 }, count: 8 }
+			]
+			tasks: [
+				{ id: "544D808001700000", type: "item", item: { id: "draconicevolution:energy_core_stabilizer", count: 1 }, count: 4L }
+			]
+			x: 6.80d
+			y: 16.00d
+		}
+		{
+			id: "544D508001800000"
+			icon: { id: "draconicevolution:energy_pylon" }
+			title: "Build Input and Output Pylons"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001700000"]
+			rewards: [
+				{ id: "544D608001800001", type: "xp", xp: 40 }
+				{ id: "544D708001800002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808001800000", type: "item", item: { id: "draconicevolution:energy_pylon", count: 1 }, count: 2L }
+			]
+			x: 9.20d
+			y: 16.00d
+		}
+		{
+			id: "544D508001900000"
+			icon: { id: "minecraft:redstone" }
+			title: "Activate the Draconic Power Bank"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001800000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001900001", type: "xp", xp: 50 }
+				{ id: "544D708001900002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+			]
+			tasks: [
+				{ id: "544D808001900000", type: "checkmark" }
+			]
+			x: 11.60d
+			y: 16.00d
+		}
+		{
+			id: "544D508001A00000"
+			icon: { id: "draconicevolution:basic_io_crystal" }
+			title: "Route FE with a Crystal"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001900000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001A00001", type: "xp", xp: 40 }
+				{ id: "544D708001A00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808001A00000", type: "item", item: { id: "draconicevolution:basic_io_crystal", count: 1 } }
+			]
+			x: 2.00d
+			y: 18.30d
+		}
+		{
+			id: "544D508001B00000"
+			icon: { id: "draconicevolution:flux_gate" }
+			title: "Regulate Power with a Flux Gate"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001900000"]
+			rewards: [
+				{ id: "544D608001B00001", type: "xp", xp: 45 }
+				{ id: "544D708001B00002", type: "item", item: { id: "minecraft:comparator", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D808001B00000", type: "item", item: { id: "draconicevolution:flux_gate", count: 1 } }
+			]
+			x: 2.00d
+			y: 22.00d
+		}
+		{
+			id: "544D508001C00000"
+			icon: { id: "draconicevolution:reactor_core" }
+			title: "Acquire the Draconic Reactor Core"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001B00000"]
+			rewards: [
+				{ id: "544D608001C00001", type: "xp", xp: 100 }
+				{ id: "544D708001C00002", type: "item", item: { id: "minecraft:crying_obsidian", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D808001C00000", type: "item", item: { id: "draconicevolution:reactor_core", count: 1 } }
+			]
+			x: 4.40d
+			y: 22.00d
+		}
+		{
+			id: "544D508001D00000"
+			icon: { id: "draconicevolution:reactor_stabilizer" }
+			title: "Four Reactor Stabilizers"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001C00000"]
+			rewards: [
+				{ id: "544D608001D00001", type: "xp", xp: 80 }
+				{ id: "544D708001D00002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 32 }
+			]
+			tasks: [
+				{ id: "544D808001D00000", type: "item", item: { id: "draconicevolution:reactor_stabilizer", count: 1 }, count: 4L }
+			]
+			x: 6.80d
+			y: 22.00d
+		}
+		{
+			id: "544D508001E00000"
+			icon: { id: "draconicevolution:reactor_injector" }
+			title: "Build the Reactor Energy Injector"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001D00000"]
+			rewards: [
+				{ id: "544D608001E00001", type: "xp", xp: 80 }
+				{ id: "544D708001E00002", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D808001E00000", type: "item", item: { id: "draconicevolution:reactor_injector", count: 1 } }
+			]
+			x: 9.20d
+			y: 22.00d
+		}
+		{
+			id: "544D508001F00000"
+			icon: { id: "minecraft:redstone" }
+			title: "Plan Safe Reactor Containment"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001E00000"]
+			optional: true
+			rewards: [
+				{ id: "544D608001F00001", type: "xp", xp: 80 }
+				{ id: "544D708001F00002", type: "item", item: { id: "minecraft:comparator", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D808001F00000", type: "checkmark" }
+			]
+			x: 2.00d
+			y: 24.30d
+		}
+		{
+			id: "544D508002000000"
+			icon: { id: "minecraft:redstone" }
+			title: "Operate a Draconic Reactor Safely"
+			description: [
+				undefined
+			]
+			dependencies: ["544D508001F00000"]
+			optional: true
+			rewards: [
+				{ id: "544D608002000001", type: "xp", xp: 100 }
+				{ id: "544D708002000002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D808002000000", type: "checkmark" }
+			]
+			x: 4.40d
+			y: 24.30d
+		}
 	]
 	subtitle: "Exceptional FE power source, fuels, balancing against magical power paths and Draconic Evolution."
 	title: "Exceptional Power: Reactors"
