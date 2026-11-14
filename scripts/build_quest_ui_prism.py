@@ -11,7 +11,7 @@ import zipfile
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 BOOT = "packwiz-installer-bootstrap.jar"
-OUT = "Too-Much-Magic-Quest-UI-Fix-Prism.zip"
+OUT = "Too-Much-Magic-More-Overlays-Auto-Prism.zip"
 
 
 def main(bootstrap: str, target_dir: str, commit: str) -> None:
@@ -25,9 +25,9 @@ def main(bootstrap: str, target_dir: str, commit: str) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     cfg = f"""[General]
 InstanceType=OneSix
-name=Too Much Magic - Quest UI Fix Test
+name=Too Much Magic - Quest UI and More Overlays Auto Test
 OverrideCommands=true
-PreLaunchCommand="$INST_JAVA" -jar {BOOT} {uri}
+PreLaunchCommand="$INST_JAVA" -jar {BOOT} -s client {uri}
 OverrideMemory=true
 MinMemAlloc=2048
 MaxMemAlloc=8192
@@ -41,7 +41,7 @@ MaxMemAlloc=8192
     }
     guide = f"""TOO MUCH MAGIC — QUEST UI FIX LOCAL TEST
 ================================================
-Current pack candidate: 140 hash-pinned mods, 45 FTB chapters, 179 quests,
+Current pack candidate: 140 hash-pinned mods (including More Overlays), 45 FTB chapters, 179 quests,
 Quest Shop, Cooking for Blockheads, and full nuclear/Draconic power guide.
 
 IMPORT INTO PRISM:
@@ -50,7 +50,9 @@ IMPORT INTO PRISM:
 2. Select Java 21. Memory is set to 8 GiB maximum, adjust to your system.
 3. Launch. The bootstrap downloads the exact pinned packwiz files and mod
    releases from their original hosting providers. No mod JARs are included.
-4. Follow any CurseForge manual download instructions exactly if prompted.
+4. More Overlays should install directly from its identical Modrinth-pinned
+   release, without any manual CurseForge download. Some OTHER mods may
+   still ask for manual provider downloads.
 5. Create a NEW disposable test world. NEVER open a valued survival save.
 6. Open FTB Quests. Confirm five top-level groups named Introduction,
    Progression, Magic, Exploration & Combat, Endgame. Verify all chapter,
@@ -69,6 +71,14 @@ IMPORT INTO PRISM:
     Reactor in a throwaway creative world, far from valued infrastructure.
 12. Confirm the first-log pouch is issued once per player and not duplicated.
 13. Report error text, screenshots, Prism console and logs/latest.log.
+
+MORE OVERLAYS PRESENCE CHECK:
+- In Prism: Edit Instance -> Mods -> More Overlays Updated.
+- In the instance minecraft/mods directory verify:
+  moreoverlays-1.24.2-mc1.21.1-neoforge.jar
+- F7 shows light-level overlay; F9 cycles chunk boundaries. Check Controls
+  if another mod uses those keys.
+- If missing, send the pre-launch packwiz installer log.
 
 NOT FOR BALANCED SURVIVAL:
 - ProjectE/Expansion's Chaos Guardian acquisition and usage gates are NOT
