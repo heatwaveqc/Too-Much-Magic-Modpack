@@ -91,8 +91,8 @@ final class MonkTyzTierPolicyTest {
         assertTrue(gates.get("refund_guard").getAsString().contains("RefundPre"));
         assertTrue(gates.get("admin_bypass").getAsString().contains("setSkillLevel"));
         assertTrue(gates.get("respec_policy").getAsString().contains("suspended"));
-        assertFalse(policy.getAsJsonObject("stage_model").get("sp_currency").getAsString()
-                .toLowerCase().contains("vanilla xp"));
+        assertTrue(policy.getAsJsonObject("stage_model").get("sp_currency").getAsString()
+                .toLowerCase().contains("not vanilla xp"));
     }
 
     @Test void selectedTyzModIsApprovedButNotYetDeclaredInstalled() throws Exception {
