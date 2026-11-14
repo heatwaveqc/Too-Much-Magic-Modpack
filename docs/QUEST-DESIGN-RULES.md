@@ -33,3 +33,23 @@ Sources for modded item ID selection: ATM10 1.21.1 quests contain Aquaculture ro
 - **Currency is not the default reward.** Only the 12 dedicated sale quests currently grant `questshop:coins` instead of a fixed item. All other authored quests continue to use useful physical items plus XP.
 - **Copper, emerald, diamond sales** consume inventory and pay one team coin. First three per resource are one-time, fourth deliberately inefficient and repeatable (256 copper blocks; 128 emerald blocks; 64 diamond blocks). These are **design-approved shared item criteria**, not accidental overlap.
 - Exact rules and shop prices are in [QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md).
+
+
+## Updated 2026-11-14 — reward and detectability rules
+
+These owner decisions supersede the old blanket rule that every informational quest must pay a physical item.
+
+**Hard blacklist:** Do not give minecraft:experience_bottle as an item reward in any quest, reward table, starter choice, or generated reward. Grant XP directly using FTB's xp reward type instead. This does not ban the bottle from the game or the XP icon itself.
+
+**Manual task policy:** Prefer inventory item tasks, advancements, dimension visits, killing objectives, and supported tracked events wherever they measure the intended action. A checkmark is allowed only for a truly unobservable action across the pinned mod APIs (for example, "cast any of 25 unrelated magical systems") or for brief initial orientation and player choice. Do not use a checkmark merely because it is easier to author than a detection. For complex/undetectable tasks, record a written rationale and re-evaluate when compatibility hooks exist.
+
+**Current implementation:** The B14 Getting Started pass converts four formerly manual objectives into concrete barrel, lectern, spyglass, and filled-map item tasks. The initial "Welcome", one-time starter gift choice, and the multi-mod first spell/ritual are the only intended remaining manual exceptions in that chapter. Older Tips & Tricks, Endgame Roadmap, reactor-operation milestones, and 42 scaffold overview checkmarks have **not** been validated under this stricter policy and need a follow-up pass. Do not claim the entire 180-quest book is standards-complete.
+
+**Rewards:** Real progress milestones get meaningful items rather than throwaway duplicates. Flag repeated reward IDs across chapters for editorial review; repeated glass, redstone, paper, XP bottles and golden carrots are not automatically justified. Pure navigational references and informational explanations should be allowed to use XP-only or no payout in a future validated author-schema revision. Current B14 data still follows the older fixed-item requirement outside the starter choice and coin sales until that migration is implemented.
+
+**Choice rewards:** The native FTB choice selector must give each player exactly one of its choices, without team-wide automatic gifts, Claim All selecting a path, repeatable claims, or permanent class exclusion. Starter items may intentionally help a player immediately complete an early quest (for example, the fishing-rod item criterion): this is a deliberate individual gift and should not turn into a second free grant chain. Source IDs and runtime behavior require game testing.
+
+**Writing targets:** Opening informational page 20–55 words; ordinary objective 35–75; complex machine/ritual/safety explanation 70–140 in readable paragraphs. The lengths are editorial guidance, not build-failing arbitrary caps. Always describe why the task is useful and what it enables, plus important limitations. FTB text literal ampersands must be escaped through the game's formatter and SNBT serializer.
+
+**Shop:** The currently pinned Quest Shop 1.4.0 already injects a coin button into the FTB Quests sidebar. Maintain its single 29-offer custom catalog and the command fallback /hqs shop. The button's client appearance and purchase behavior require explicit in-game validation; a green server smoke does not prove either.
+
