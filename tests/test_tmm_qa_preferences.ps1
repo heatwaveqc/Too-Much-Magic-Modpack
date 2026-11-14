@@ -22,7 +22,7 @@ try {
       "lastServer:PRIVATE_SERVER_ADDRESS",
       "renderDistance:32"
     ) | Set-Content -LiteralPath $old -Encoding UTF8
-    & $script -Mode import -OptionsPath $old
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Mode import -OptionsPath $old
     if ($LASTEXITCODE -ne 0) { throw "Preferences import exited nonzero" }
     $savedPath = Join-Path $env:TMM_QA_PROFILE_DIR "options-1.21.1.txt"
     $saved = Get-Content -LiteralPath $savedPath -Raw
@@ -40,7 +40,7 @@ try {
       'resourcePacks:["keep-new-pack"]',
       "renderDistance:12"
     ) | Set-Content -LiteralPath $new -Encoding UTF8
-    & $script -Mode apply -OptionsPath $new
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Mode apply -OptionsPath $new
     $result = Get-Content -LiteralPath $new -Raw
     if ($result -notmatch "key_key.inventory:key.keyboard.r") { throw "Old key binding not restored" }
     if ($result -notmatch "key_example_mod.blast:key.keyboard.f") { throw "Custom mod key binding not appended" }
@@ -54,13 +54,13 @@ try {
     # post-exit must persist the new chosen setting for next build.
     $result = $result.Replace("guiScale:4", "guiScale:2")
     Set-Content -LiteralPath $new -Value $result -Encoding UTF8
-    & $script -Mode save -OptionsPath $new
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Mode save -OptionsPath $new
     if ((Get-Content $savedPath -Raw) -notmatch "guiScale:2") { throw "Post-exit preference saving failed" }
 
     # Wrong Minecraft version must NEVER replace saved 1.21.1 options.
     $bad = Join-Path $testing "bad.txt"
     @("version:4300", "guiScale:9", "soundCategory_master:1.0") | Set-Content -LiteralPath $bad -Encoding UTF8
-    & $script -Mode import -OptionsPath $bad
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Mode import -OptionsPath $bad
     if ((Get-Content $savedPath -Raw) -match "guiScale:9") { throw "Wrong-version settings were accepted" }
 
     Write-Host "PASS: imported old controls; restored mod bindings, chat/UI/sound; protected non-personal data; saved changes; rejected wrong Minecraft version"
