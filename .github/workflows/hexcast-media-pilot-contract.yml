@@ -23,3 +23,30 @@ jobs:
           java-version: '21'
       - name: Check Java bridge against source-shaped stand-ins (not Minecraft)
         run: bash integration/hexcast-media-pilot/check-contract.sh
+  pinned-hexcast-binary-compile:
+    # Run once per push; PR checks also run the fast contract harness.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Download exact B6 HexCast JAR and verify SHA-512
+        run: |
+          mkdir -p integration/hexcast-media-pilot/libs
+          curl -fLsS --retry 3 'https://cdn.modrinth.com/data/lZGsiJ1L/versions/3qkLQwpf/hexcast-neoforged-1.21.1-0.11.1-19%2Bneoforge.1.21.1.jar' -o integration/hexcast-media-pilot/libs/hexcasting.jar
+          echo '1b57619c9298d4ee7f77db44d0d860bcc7e0f48939a9a57657b6ae7ed386fcc14e4412d5358145cd58e3a85bf0f30c46ccde954a86cea53c6293534e81d2a889  integration/hexcast-media-pilot/libs/hexcasting.jar' | sha512sum -c -
+      - name: Compile actual bridge against NeoForge 21.1.265 and exact HexCast B6 binary
+        run: gradle --no-daemon -p integration/hexcast-media-pilot clean jar --stacktrace
+      - name: Preserve compiled own-source pilot for disposable-world follow-up
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-hexcast-media-bridge-pilot
+          path: integration/hexcast-media-pilot/build/libs/*-pilot.jar
+          if-no-files-found: error
