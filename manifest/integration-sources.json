@@ -69,7 +69,7 @@
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Newest first-party Monk native progression (sunset/Step Assist + initial rank 2-4 native tree); compiled and shipped as ONE native Monk JAR. Its Tyz skill JSON prototypes stay INACTIVE and are not copied into live Tyz config until shared form gates exist.",
+      "note": "Current first-party Monk native progression, compiled and packaged as ONE addon JAR. Cross-branch unit test now verifies Tyz desired-vs-actual packwiz installation rather than asserting old source-only state. Monk Tyz prototypes remain inactive; no duplicate global XP wallet.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
@@ -162,7 +162,7 @@
     "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree."
   },
   "pending_runtime_work": [
-    "Monk active early-mastery branch now compiled into test builds; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is distinct from global Tyz XP.",
+    "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
     "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
     "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
