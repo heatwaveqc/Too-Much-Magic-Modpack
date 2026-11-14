@@ -350,7 +350,7 @@
       "description": "Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials.",
       "reward": {
         "xp": 40,
-        "item": "minecraft:fire_resistance_potion",
+        "item": "minecraft:magma_cream",
         "count": 1
       },
       "depends": null,
