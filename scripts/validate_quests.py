@@ -94,7 +94,7 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 45, "Expected five groups and 45 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 61, "Expected 61 authored quests")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 126, "Expected 126 authored quests including full Progression")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -123,6 +123,7 @@ def main() -> None:
         path = QUESTS / "chapters" / c["filename"]
         text = path.read_text(encoding="utf-8")
         scan_snbt(text, c["filename"])
+        ensure("description: [undefined]" not in text, f"Unrendered quest descriptions in {path.name}")
         ensure(f'group: "{c["group_id"]}"' in text, f"Wrong group on {path.name}")
         ensure(f'id: "{c["chapter_id"]}"' in text, f"Wrong chapter ID on {path.name}")
         ensure(f'filename: "{path.stem}"' in text, f"Wrong filename on {path.name}")
@@ -135,7 +136,9 @@ def main() -> None:
             global_ids.add(ident)
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
-        expected = {"Getting Started": 11, "Tips & Tricks": 16, "Food & Fishing": 22, "Basic Progression": 13}.get(c["name"], 1)
+        expected = {"Getting Started": 11, "Tips & Tricks": 16, "Food & Fishing": 22,
+                    "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
+                    "Skills & Advancement": 8, "Exceptional Power: Reactors": 33}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         for block in blocks:
             head = re.match(r'\{\s*id: "([0-9A-F]{16})"', block)
@@ -172,13 +175,14 @@ def main() -> None:
             for advance in re.findall(r'advancement: "([^"]+)"', tasks):
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
-            if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Basic Progression"}:
+            if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Basic Progression",
+                                 "Advanced Progression", "Endgame Roadmap", "Skills & Advancement", "Exceptional Power: Reactors"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 103, f"Expected 103 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 168, f"Expected 168 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -210,7 +214,23 @@ def main() -> None:
                  if qid != task_id and payout_count >= task_count]
     ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     ensure(advancement_tasks == {"tmm:first_log": "544D4D1100000001"}, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 36, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 78, f"Unexpected unique item-task count: {len(item_tasks)}")
+    progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
+    planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
+               "Skills & Advancement": 7, "Exceptional Power: Reactors": 32}
+    ensure(len(progression["quests"]) == 65 and progression["counts"] == planned,
+           "Full Progression source count or chapter distribution drift")
+    ensure(all(x["criterion"]["type"] == "checkmark" for x in progression["quests"] if x["chapter"] == "Endgame Roadmap"),
+           "Roadmap must not duplicate boss/material progression tasks")
+    tech_items = {x["criterion"].get("id") for x in progression["quests"]
+                  if x["chapter"] == "Exceptional Power: Reactors"}
+    for core in ("biggerreactorsrework:reactor_terminal", "biggerreactorsrework:battery_cell",
+                 "biggerreactorsrework:reactor_fuel_rod", "draconicevolution:energy_core",
+                 "draconicevolution:energy_pylon", "draconicevolution:reactor_core",
+                 "draconicevolution:reactor_stabilizer", "draconicevolution:reactor_injector"):
+        ensure(core in tech_items, f"Tech chapter lost verified milestone {core}")
+    ensure(not any(x["reward"].get("item") == "draconicevolution:reactor_core" for x in progression["quests"]),
+           "Never grant the Draconic Reactor Core as a quest reward")
     ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
     for commodity in intentional_sale_ids:
         ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
