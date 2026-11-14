@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - audit/polymorph-conflicts-2026-11-14
+      - feature/silver-equipment-unification
   workflow_dispatch:
 
 permissions:
@@ -24,6 +25,12 @@ jobs:
           python-version: '3.12'
       - name: Verify packwiz manifest and exact mod pins
         run: python3 scripts/validate.py
+      - name: Assert silver unification recipe and item scripts (static)
+        run: |
+          python3 scripts/verify_silver_equipment.py
+          node --check kubejs/server_scripts/silver_equipment_unification.js
+          node --check kubejs/startup_scripts/silver_equipment_stats.js
+          python3 -m py_compile scripts/audit_equipment_materials.py scripts/check_silver_conflicts.py
       - name: Launch complete disposable server and invoke Polymorph scan
         env:
           SMOKE_WITH_MODS: '1'
@@ -38,6 +45,18 @@ jobs:
             --server-log "${{ runner.temp }}/tmm-polymorph-audit/server.log" \
             --output-json "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json" \
             --output-md "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md"
+      - name: Assert no remaining silver equipment recipe ambiguity
+        run: python3 scripts/check_silver_conflicts.py "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json"
+      - name: Inventory other overlapping equipment materials from installed mod JARs
+        run: |
+          python3 scripts/audit_equipment_materials.py "${{ runner.temp }}/tmm-polymorph-audit/mods" \
+            --json-out "${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.json" \
+            --md-out "${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.md"
+      - name: Show KubeJS silver diagnostics
+        if: always()
+        run: |
+          echo "=== silver KubeJS lines ==="
+          grep -RiE 'silver_equipment|TMM silver|Error loading|ERROR' "${{ runner.temp }}/tmm-polymorph-audit/logs/kubejs" 2>/dev/null | tail -60 || true
       - name: Keep raw report and readable summaries
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,6 +66,9 @@ jobs:
             ${{ runner.temp }}/tmm-polymorph-audit/logs/polymorph-conflicts.log
             ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json
             ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md
+            ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.json
+            ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.md
+            ${{ runner.temp }}/tmm-polymorph-audit/logs/kubejs/
             ${{ runner.temp }}/tmm-polymorph-audit/server.log
             ${{ runner.temp }}/tmm-polymorph-audit/logs/latest.log
           if-no-files-found: warn
