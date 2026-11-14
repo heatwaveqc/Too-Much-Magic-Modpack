@@ -16,7 +16,7 @@
     "c:raw_materials/silver": "occultism",
     "c:ingots/silver": "occultism",
     "c:nuggets/silver": "occultism",
-    "c:dusts/silver": "occultism",
+    "c:dusts/silver": "neovitae",
     "c:storage_blocks/silver": "occultism",
     "c:storage_blocks/raw_silver": "occultism",
     "c:ores/lead": "embers",
@@ -25,13 +25,19 @@
     "c:nuggets/lead": "embers",
     "c:storage_blocks/lead": "embers",
     "c:storage_blocks/raw_lead": "embers",
-    "c:dusts/iron": "mahoutsukai",
-    "c:dusts/gold": "mahoutsukai",
-    "c:dusts/diamond": "mahoutsukai",
-    "c:dusts/emerald": "mahoutsukai",
-    "c:dusts/quartz": "mahoutsukai",
-    "c:dusts/copper": "occultism",
-    "c:dusts/sulfur": "neovitae"
+    "c:dusts/iron": "neovitae",
+    "c:dusts/gold": "neovitae",
+    "c:dusts/diamond": "neovitae",
+    "c:dusts/emerald": "neovitae",
+    "c:dusts/quartz": "neovitae",
+    "c:dusts/copper": "neovitae",
+    "c:dusts/sulfur": "neovitae",
+    "c:dusts/lead": "neovitae",
+    "c:dusts/coal": "neovitae",
+    "c:dusts/lapis": "neovitae",
+    "c:dusts/amethyst": "neovitae",
+    "c:dusts/netherite_scrap": "neovitae",
+    "c:dusts/hellforged": "neovitae"
   },
   "stone_variants": [
     "stone",
@@ -53,7 +59,12 @@
     "c:plates/{material}",
     "c:raw_materials/{material}",
     "c:storage_blocks/raw_{material}",
-    "c:storage_blocks/{material}"
+    "c:storage_blocks/{material}",
+    "c:dusts/coal",
+    "c:dusts/lapis",
+    "c:dusts/amethyst",
+    "c:dusts/netherite_scrap",
+    "c:dusts/hellforged"
   ],
   "ignored_tags": [
     "c:gems/emerald",
@@ -65,6 +76,7 @@
   ],
   "ignored_items": [
     ".*:.*corrupted_dust.*",
+    "mahoutsukai:powdered_(iron|gold|diamond|emerald|quartz)",
     ".*:.*uranium.*",
     ".*:.*draconium.*",
     ".*:.*replica_ore.*",
