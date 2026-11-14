@@ -52,3 +52,15 @@ SMOKE_WITH_MODS=1 SMOKE_TIMEOUT_SECONDS=420 bash scripts/smoke_server.sh
 For the graphical test use a launcher capable of importing the packwiz index (including CurseForge IDs); test client launch, load a disposable new Tectonic world, Astral sky (with and without Embeddium), Botania Lexica + mana flow, Draconic Energy Links and Chaos Guardian effects. **Do not use any existing survival saves.** In B4 the reactor fork's world/registry namespace differs from the older Original/Revived variants.
 
 ProjectE remains unlocked for this test build; before normal survival distribution enforce all intended chaos/progression/reproducibility restrictions. Keep mods and worlds external to Git.
+
+## B5 full 114-mod expanded approved roster
+Branch `build/b5-expanded-approved-roster` contains exact immutable packwiz pins for the 71 mods from B4 plus all approved additions from the survey in PR #6 and required libraries. The complete 107-JAR dedicated-server test passed in [run 43553444492](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43553444492). The first two attempts revealed missing Lodestone, Caelus, PAUCAL, and a too-old Ars Elemancy; all are repaired and documented in `docs/B5-TESTING.md`.
+
+For repeatable standalone server smoke with Java 21:
+
+```bash
+python3 scripts/validate.py
+SMOKE_WITH_MODS=1 SMOKE_TIMEOUT_SECONDS=480 bash scripts/smoke_server.sh
+```
+
+Keep actual downloaded mods in the launcher only; no JARs, saved worlds or EULAs committed to Git. The CLI/headless server cannot test the seven client-only mods and UI effects; use a separate new-world client test before considering B5 fully compatible. ProjectE/Expansion and the late tech progression remain **test-only** until explicitly gated.

@@ -129,3 +129,6 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 - **Defer** skill-tree point limits, caps, levels and inter-mod balance to a dedicated later pass. Exact dependency closure and version pairing still require validation before packwiz installation.
 - This approval does **not** approve every additional Vampirism addon. The pre-existing ten named addon approvals remain separate.
 
+
+## I. B5 integration follow-up (2026-11-13 local)
+The entries above document approvals *as of the original survey* and correctly stated that they were not installed at that time. This later implementation reconciled all 32 selected entries (including Botania Revived already in B4), added 43 new mods and prerequisites to the 71-mod baseline for a total of **114** pins, and successfully booted the **107 server JARs** in [run 43553444492](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43553444492). Two initial failures were missing library constraints; the final test passed after adding Lodestone 1.8.2, Caelus 7.0.1, PAUCAL 0.7.0 and Ars Elemancy 1.18.3. The original selection exclusions and four maturity-review-only candidates remain in effect. **No gameplay/client compatibility or progression lock should be inferred from this server boot.**

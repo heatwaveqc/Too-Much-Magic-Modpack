@@ -41,3 +41,9 @@ Do feature work on a branch, present reviewable pull requests, preserve main as 
 - Botania Revived may contain **optional** Sophisticated integrations; the Sophisticated modules **must not be introduced as installed dependencies**, and Sophisticated Backpacks, Storage and Core are all absent from the B4 pack. Preserve the original hard exclusion.
 - Reactor Rework uses its own registry namespace `biggerreactorsrework` and its battery/processor functionality needs a balance audit; do not treat old worlds as compatible with this port.
 - No ProjectE or Replication gating is implemented just by adding B4. This branch remains a test build.
+
+## Approved B5 roster and integration
+- The 32 recent approved selections and 13 exclusions are documented in `docs/MAGIC-MOD-SURVEY-DECISIONS.md`; on B5 they are reconciled with the B4 71-mod pack and all compatible approved systems are pinned. **114 pinned mods/107 server JARs** reached a successful clean NeoForge dedicated-server boot in [run 43553444492](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43553444492).
+- Missing transitive version requirements found during full integration: Malum needs Lodestone 1.8.2; HexCast and Enigmatic Legacy+ need Caelus; HexCast needs PAUCAL 0.7.0+; Ars 'n Spells 3.3.5 needs Ars Elemancy 1.18.3+; provider automatic dependency resolution is **not** enough by itself. Preserve these exact version relationships.
+- PAUCAL 0.7.0 is alpha-tagged and Psi: Tweaks and Additions is beta-tagged in their compatible upstream files; their inclusion is for B5 testing, not approval of arbitrary experimental addons. In all cases retain exclusions from PR #6, the no-RPG-Series/Spell Engine constraint and the no-Create/storage/logistics rule.
+- Server readiness is not client world entry or confirmed game mechanics. Never claim production survival readiness while ProjectE/Expansion remain ungated.

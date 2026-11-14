@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B5 expanded approved roster loaded from PR6. Exact provider-resolution evidence docs/B5-RESOLUTION.json. ProjectE Chaos Guardian gate remains unimplemented.",
+  "note": "B5 approved roster fully pinned: 114 mods (107 server-side, 7 client-only); full dedicated-server smoke passed 2026-11-13 America/Phoenix. Client/gameplay/gated progression untested.",
   "mods": [
     {
       "id": "apotheosis",
@@ -760,7 +760,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1485,7 +1485,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -1498,7 +1498,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -1597,7 +1597,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
