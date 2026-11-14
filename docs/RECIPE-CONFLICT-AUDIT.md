@@ -27,9 +27,40 @@ The repository's `audit/polymorph-conflicts-2026-11-14` branch has a reproducibl
 
 Do not infer the amount of game-breaking crafting from the raw conflict count: Polymorph reports **potential overlapping ingredient groups**, sometimes with harmless choices. Its greedy grouping can omit transitive overlaps, and it does not prove all UI stations are supported.
 
-## Current run evidence
+## Full modpack baseline — 2026-11-14
 
-See `.github/workflows/polymorph-audit.yml` and generated Actions audit artifact. First full scan is on the material-unification snapshot. **Actual recipe groups must come from the live scan, not guesses.**
+**Native Polymorph scan passed against the complete hash-pinned disposable dedicated server.** Run [43621750797](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43621750797), archived [conflict artifact](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43621750797/artifacts/14123794613).
+
+- **93 potential conflict groups**: 60 crafting, 17 smelting, 14 blasting, 1 smoking, 1 smithing.
+- **67** groups contain recipe IDs from multiple namespaces; **26** contain only one namespace.
+- **44** custom crafting recipes were explicitly skipped by the native scanner.
+- The native report lists **60 crafting groups**, not 60 individual crafting recipes. Group 30 contains **95 special/dynamic recipes** and requires independent verification: this is almost certainly not 95 simultaneous conflicting player crafts.
+
+### Highest-priority verification
+
+| Category | Representative actual recipe IDs | Recommended resolution |
+|---|---|---|
+| Silver equipment (12 crafting groups involving silver) | `eidolon_repraised:silver_sword`, `embers:silver_sword`, `werewolves:silver_sword`; corresponding axe, pick, shovel, armor | **Do not delete mod-specific functional tools.** Preserve unique items but differentiate ingredients or add deliberate mod-specific recipes. Standardize ingot/dust/block outputs separately |
+| Witchcraft blocks (3) | `witchery:iron_witches_oven` vs `enchanted:witch_oven`; `witchery:clay_jar` vs `enchanted:soft_clay_jar`; corresponding fume funnel parts | Give distinct blocks distinct meaningful recipes. Check tier ordering |
+| Two magic altars | `hexerei:book_of_shadows_altar` vs `eidolon_repraised:wooden_altar` | Verify ingredient overlap and use distinct spell-system markers |
+| Food variants | `pamhc2foodcore:flour_x1_flour_plants` vs `pamhc2foodextended:pistachiobutteritem`, plus cupcakes, cobblers, pies and donuts | Fix accidental food collisions without removing the dishes; prioritize low-cost shapeless overlaps |
+| Goety / vanilla blocks | `minecraft:chest` vs `goety:chorus/chorus_chest2`; `minecraft:bookshelf` vs `goety:rotten/rotten_bookshelf2` | Confirm actual ingredient-subset match and preserve special block access |
+| Ore and dust smelting | `tmm:iron_dust_smelting` vs `primalmagick:iron_ingot_from_grit_smelting`; `tmm:gold_dust_smelting` vs `neovitae:materials/smelting_gold_dust` (also blasting) | Our broad c:dusts recipes create **4** flagged pairs. Audit whether final outputs/yields equal before deleting or narrowing redundant recipes |
+| Silver/lead ore-processing duplicates | `neovitae:materials/smelting_silver_dust` vs `eidolon_repraised:smelt_silver_dust`; Embers vs Werewolves smelting/blasting of raw silver | Evaluate canonical ingot output and furnace yields rather than removing ore variants outright |
+| Special-stone smelting | Vanilla versus Deeper & Darker Gloomslate/Sc ulk Stone or Pastel Blackslag ore recipes | Likely same ingots: confirm output identity. Must **not** remove specialized dimension ore drops |
+| Smithing | `neovitae:anointment_apply` vs `forbidden_arcanus:smithing/apply_*_modifier` | Tag overlap from broad template/base slots is a possible scanner false positive; perform actual smithing station tests |
+| Dynamic / internal patterns | Crafting group 30 has 95 recipe IDs (colors, NBT-dependent repairs, addons); Botania dye group has 16; Extra Botany accessory group has 11 | **Do not bulk-delete.** Inspect actual matched inputs in JEI/in-world before classifying as bugs |
+
+Note: the long 95-recipe dynamic group is **one** Polymorph group. Some intentional alternate recipes share final outputs and are not harmful. A conflict group alone does not establish an exploit, and Polymorph's native wrapper can group recipes based on partial ingredient overlap.
+
+### Next resolution protocol
+
+1. Divide the full native report into identical-output redundancy, genuine distinct-output collisions, special/dynamic false positives, and progression bypasses. **Prefer actual loaded output inspection**, not names alone.
+2. Fix first any overlap where two distinct mod-specific tools, altars, magical machines or consumables genuinely use the same input. Keep both functions.
+3. Fix repeated ore-to-ingot recipes conservatively: preserve all allowed dust inputs, yields and special resource gates while eliminating duplicate alternative outputs.
+4. Re-run **this same native scan** and compare the recipe IDs, rather than changing Polymorph behavior to hide warnings.
+5. Finish with client-side JEI and in-world crafting verification, especially custom crafting stations outside Polymorph's scanner.
+
 
 ## Maintenance
 
