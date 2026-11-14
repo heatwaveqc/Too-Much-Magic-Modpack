@@ -103,4 +103,13 @@ separately (absent from this branch's manifest snapshot).
 
 ## Proposed skills and separated decisions
 
-See `../../docs/MONK-SKILL-CATALOG.md`. The backend-neutral catalog lists **172 core/mod-specific skills** and **99** Apotheosis affix techniques. Models are `once`, `staged`, `bounded`, `repeatable`, or `finite_source_rarity`; **no skill owner or progression location is chosen yet**. Includes an explicit Creative Flight exclusion and Dragon Survival harvesting tier compatibility as an approved-but-not-installed upstream candidate.
+See `../../docs/MONK-SKILL-CATALOG.md`. The backend-neutral catalog lists **172 core/mod-specific skills** and **98** selected Apotheosis affix techniques (Unbound excluded). Models are `once`, `staged`, `bounded`, `repeatable`, or `finite_source_rarity`; **no skill owner or progression location is chosen yet**. Includes an explicit Creative Flight exclusion and Dragon Survival harvesting tier compatibility as an approved-but-not-installed upstream candidate.
+## Two-layer upgrade design
+
+A one-time Monk skill is a faction skill (Step Assist, Momentum Glide,
+arrow interception, etc.). Every leveled Monk discipline has a faction
+**permission** node and invests via a proposed *unified* Pufferfish
+skill, not duplicate mod-specific stats. The Pufferfish backend remains
+an **experiment**: documented skill nodes are binary and cannot
+indefinitely level without generated nodes or a custom bridge/UI.
+See `../../docs/MONK-TWO-LAYER-SMOKE-TEST.md`.

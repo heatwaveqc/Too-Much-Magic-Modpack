@@ -36,7 +36,7 @@ those load later. Clients and servers must have an identical value.
 Original Monk factory crosswalk:
 `original-monk-abilities-1.4.json` (25 ability types, including
 four unused by the historical defaults). This is separate from the
-142 attribute registry candidates and 99 Apotheosis affix definitions.
+142 attribute registry candidates and 99 upstream Apotheosis affix definitions (98 selected TMM techniques).
 Some numerical abilities overlap: do not double-count them or treat
 any crosswalk row as an implemented power.
 
@@ -44,4 +44,11 @@ TMM revisions: *no Monk Creative Flight skill*. Legal Draconic Curio
 modules provide that capability. Mining has distinct finite harvest
 tier and repeatable speed. See `world-tier-unlocks.json`.
 
-Backend-neutral proposed skills: `skill-catalog-v1.json` (172 core and mod-specific including 10 conditional non-Attribute magic talents), `skill-affix-techniques-v1.json` (99 affix adaptations with source-rarity-limited rank counts), `extra-attribute-candidates.json` (two NeoForge attributes discovered from affix source). All 25 historical Monk abilities are mapped. Read `docs/MONK-SKILL-CATALOG.md` before placing skill nodes or choosing a purchase backend.
+Backend-neutral proposed skills: `skill-catalog-v1.json` (172 core and mod-specific including 10 conditional non-Attribute magic talents), `skill-affix-techniques-v1.json` (98 selected affix adaptations; excludes Unbound entirely), `extra-attribute-candidates.json` (two NeoForge attributes discovered from affix source). All 25 historical Monk abilities are mapped. Read `docs/MONK-SKILL-CATALOG.md` before placing skill nodes or choosing a purchase backend.
+Unification proposal: `skill-unification-proposal.json` (24 tentative
+shared Pufferfish traits covering 43 distinct source attributes).
+Single-unlock abilities remain native Monk faction nodes; leveled
+abilities have native **licenses** and Pufferfish investment where
+technically possible. **Pufferfish stores binary skill-node IDs**;
+true unbounded trait ranks and fine-grained faction gate enforcement
+are not implemented. See `docs/MONK-TWO-LAYER-SMOKE-TEST.md`.

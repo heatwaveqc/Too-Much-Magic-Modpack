@@ -2,7 +2,8 @@
 
 **Owner-approved direction:** a new standalone addon module
 `compat/monk/` following Werewolves' Vampirism-faction structure, **not**
-Pufferfish Skills. Pinned game: Minecraft 1.21.1; NeoForge 21.1.265;
+merely a Pufferfish Skills tree. It may use Pufferfish as the leveled
+upgrade presentation/investment backend. Pinned game: Minecraft 1.21.1; NeoForge 21.1.265;
 Vampirism 1.10.13; Werewolves 2.0.3.4.
 
 ## Design contract
@@ -83,7 +84,8 @@ XP or powers wired into NeoForge events.
 
 **Never conflate original Monk 1.4 settings with the Too Much Magic Monk.**
 The original is a historical reference; the TMM configuration is a separate,
-substantially stronger faction with all 99 pinned Apotheosis affix definitions
+substantially stronger faction with 98 selected techniques from 99 pinned Apotheosis definitions
+(Unbound deliberately excluded)
 listed as potential unlocks, and repeatable (not arbitrary-capped) investment
 in every applicable player attribute. Curios are allowed, including Draconic
 Evolution chestpiece functionality that is proven to work from its Curio slot.
@@ -151,4 +153,21 @@ transformation. See [MONK-WORLD-TIERS.md](MONK-WORLD-TIERS.md).
 
 ## Backend-agnostic Monk skill catalog (v1)
 
-[Full catalog](MONK-SKILL-CATALOG.md): **172 core/mod-specific** skills (mapped to all 144 attribute candidates; three deliberately excluded) plus **99 Apotheosis** affix techniques. Every registered original Monk ability is accounted for. These remain design candidates and are not live gameplay. Allowable-level semantics are proposed (repeatable, bounded, single, staged, source rarity-limited) before choosing the Vampirism/Pufferfish/custom backend or assigning tiers.
+[Full catalog](MONK-SKILL-CATALOG.md): **172 core/mod-specific** skills (mapped to all 144 attribute candidates; three deliberately excluded) plus **98 selected Apotheosis** affix techniques (Unbound excluded). Every registered original Monk ability is accounted for. These remain design candidates and are not live gameplay. Allowable-level semantics are proposed (repeatable, bounded, single, staged, source rarity-limited) before choosing the Vampirism/Pufferfish/custom backend or assigning tiers.
+## Two-layer design smoke test — owner proposal (2026-11-14)
+
+Every single-unlock skill (including Step Assist and Momentum Gliding)
+is a native Monk faction skill. For **leveled** skills, Monk faction
+purchase licenses the trait; the **Pufferfish unified stat tree** handles
+purchased ranks, including generic traits shared with non-Monks, and
+possible Monk-only expansions. The shared skill must have one modifier
+owner and no duplicate spend or effect.
+
+**Not yet proven:** Pufferfish's data-driven nodes persist an unlocked
+boolean ID, not a numerical purchased rank. Its category lock/unlock
+and skill unlock commands can bootstrap a gate but don't prove
+repeatable purchases or a complete per-node eligibility enforcement.
+Test a faction-permitted category or unlock-only branch sentinel first;
+use custom repeatable rank storage/UI if necessary. No actual
+Pufferfish gating or modified skill tree has been implemented.
+See [MONK-TWO-LAYER-SMOKE-TEST.md](MONK-TWO-LAYER-SMOKE-TEST.md).

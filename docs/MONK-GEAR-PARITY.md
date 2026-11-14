@@ -39,7 +39,7 @@ Curios support and individual module behavior must be tested, not assumed.
    not itself a cap on independently stored repeatable attribute purchases.
    Cap changes require a full restart and identical client/server config. Faction UI might require a Monk-specific upgrade tab or
    button; Vampirism JSON skill nodes are not arbitrarily repeatable.
-2. **Apotheosis affix unlocks**: **all 99 pinned built-in affix definitions**
+2. **Apotheosis affix unlocks**: **98 out of 99 pinned built-in affix definitions**
    appear on the target coverage inventory, including offensive, defensive,
    breaker, ranged, shield, and shears classes. Every affix must have a
    reviewed Monk effect analogue, with clear triggering conditions, unlock
@@ -102,7 +102,7 @@ Reduction.
 | Gear-equipped endgame character possesses | Monk counterweight | Notes |
 | --- | --- | --- |
 | Armor enchantments and vanilla gear attributes | Natural armor, toughness, protections, resistance, regeneration | Environmental, magical and bypass damage need independent testing |
-| High-rarity Apotheosis armor, weapon and tool affixes | Individually unlockable Monk analogues from **all 99** definitions | Need effect adapters, not fake inventory equipment |
+| High-rarity Apotheosis armor, weapon and tool affixes | Individually unlockable Monk analogues from **98 of 99** definitions (Unbound excluded) | Need effect adapters, not fake inventory equipment |
 | Socketed Apotheosis gems and their conditional effects | Equivalent innate/martial/mystical progression opportunities | Gem effects are separate from the 99 affix definitions |
 | Melee and ranged weapon enchants | Unarmed combat, ki projectile and effect techniques, loot acquisition | Include damage, reach, sweep, knockback, looting, on-hit properties |
 | Mining/tool enchants and utility | Bare-hand harvest rank, mining multiplier, Fortune/Silk Touch analogue, AOE mining | Permission and modded-block rules need explicit tests |
@@ -138,7 +138,7 @@ gear-based class in every category. No numbers are locked until tests.
    boolean, derived, equipment-specific and internal attributes.
 2. Read every pinned Apotheosis affix definition (99 in this upstream
    source snapshot); map to a real Monk action/effect. Count missing
-   adapters in a generated coverage report: **target 99/99**.
+   adapters in a generated coverage report: **target 98/98 approved**, with the original 99-source inventory preserved and Unbound explicitly excluded.
 3. Build a server-authoritative upgrade backend outside the unique-node
    Vampirism GUI; identify unlock, cost and repeatable investment in UI.
 4. Confirm equipped Curios body-slot Draconic chestpiece capabilities
@@ -201,4 +201,15 @@ Monk and Dragon forms.
 
 ## Proposed skill records and affix ranks
 
-There is now a named backend-neutral [skill catalog](MONK-SKILL-CATALOG.md) with 172 body, combat, utility, resource, magic and mining skills plus 99 Apotheosis adaptations. The proposed finite affix levels follow **distinct** source rarity effects (1–5 possible): 32/99 upstream affixes have identical value definitions across at least two rarities, and those redundant tiers are collapsed. More steps may collapse once the actual top-roll effect and native caps are verified. All levels, numerical values and gear-compensation stacking still require balance and actual mechanics testing. Creative Flight is excluded as a Monk unlock even though the source `Unbound` affix grants it: only permitted external Curio flight may be improved.
+There is now a named backend-neutral [skill catalog](MONK-SKILL-CATALOG.md) with 172 body, combat, utility, resource, magic and mining skills plus 98 Apotheosis adaptations (Unbound excluded). The proposed finite affix levels follow **distinct** source rarity effects (1–5 possible): 32/99 upstream affixes have identical value definitions across at least two rarities, and those redundant tiers are collapsed. More steps may collapse once the actual top-roll effect and native caps are verified. All levels, numerical values and gear-compensation stacking still require balance and actual mechanics testing. Creative Flight is excluded as a Monk unlock; the source `Unbound` affix is explicitly removed from the TMM technique roster, not replaced with a nominal Curio buff.
+## Proposed two-layer progression (2026-11-14)
+
+Native Monk faction skills hold every meaningful single unlock, and
+hold a permission/license for each leveled discipline. Universal Pufferfish
+skills own the shared numeric growth wherever the same attribute applies
+across several magic systems; a Monk license permits an otherwise
+restricted unarmed or ascetic application, specialization, or high-level
+branch, **not an additional identical purchase**. The Pufferfish node
+format is binary, so truly repeatable rank buying is a necessary
+custom bridge/UI experiment rather than a solved datapack configuration.
+See [MONK-TWO-LAYER-SMOKE-TEST.md](MONK-TWO-LAYER-SMOKE-TEST.md).

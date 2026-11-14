@@ -96,7 +96,7 @@ should be reported.
 
 **Status rule:** source inventory ≠ game-attached attributes ≠ usable
 unarmed abilities ≠ implemented Monk skills. The full affix inventory
-(99 entries) is tracked separately and every affix still requires a
+(99 upstream entries; 98 TMM technique candidates, Unbound excluded) is tracked separately and each selected affix requires a
 Monk effect adapter.
 
 ## Original Monk 1.4 abilities — 25/25 crosswalk

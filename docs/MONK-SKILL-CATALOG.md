@@ -3,7 +3,7 @@
 **State: proposed skill roster for review, not gameplay or a final balance
 decision.** 2026-11-14. Source authority:
 [Full machine-readable skill inventory](../compat/monk/profiles/skill-catalog-v1.json),
-[all 99 Apotheosis adaptations](../compat/monk/profiles/skill-affix-techniques-v1.json),
+[98 proposed Apotheosis adaptations from 99 upstream definitions](../compat/monk/profiles/skill-affix-techniques-v1.json),
 and [original Monk 25-ability crosswalk](../compat/monk/profiles/original-monk-abilities-1.4.json).
 
 **Strong design boundaries:**
@@ -22,7 +22,7 @@ and [original Monk 25-ability crosswalk](../compat/monk/profiles/original-monk-a
   when the effect genuinely stops improving. No wasted paid ranks.
 - Unique technique unlocks are **once**. Multi-stage practices have
   **staged** ranks, with the number defined by actual useful modes.
-- Exactly **99 Apotheosis techniques**, one for each pinned affix,
+- Exactly **98 Apotheosis techniques** from 99 pinned definitions: **Unbound excluded entirely**,
   scale only through **distinct source-supported effect** tiers. Identical
   rarity values collapse; 32 affixes have such duplicates. Source affixes
   with no rarity scale are single-unlock. A separate, continuously
@@ -42,13 +42,13 @@ and [original Monk 25-ability crosswalk](../compat/monk/profiles/original-monk-a
 | Record group | Count |
 | --- | ---: |
 | Core, registered-stat, and cross-mod character skills | **172** |
-| Apotheosis individual affix techniques | **99** |
-| **Total proposed skill records** | **271** |
+| Apotheosis individual affix techniques | **98** |
+| **Total preliminary skill records** | **270** (before unification) |
 | Registered candidate attributes accounted for | 144 (prior 142 + 2 NeoForge affix-derived) |
 | Attribute candidates intentionally not selected | 3 |
 | Original Monk ability factories explicitly mapped | 25/25 |
 
-The 271 skills are **not** 271 unrelated mechanics: some numerical traits
+The 270 candidate records are **not** 270 unrelated purchasable upgrades: some numerical traits
 underpin several affix techniques, and one harvest-speed skill deliberately
 combines three overlapping registry stats. The catalog gives each
 progression purchase one owner in the eventual implementation.
@@ -129,7 +129,7 @@ progression purchase one owner in the eventual implementation.
 | **Breath Meditation** | Staged (2) | Two meaningful stages: slower air depletion then full underwater breathing. |
 | **Flight Control Speed (External)** | Repeatable | `minecraft:generic.flying_speed` |
 | **Gravity Mastery** | Bounded | `minecraft:generic.gravity` |
-| **High Step** | Bounded | `minecraft:generic.step_height` |
+| **Step Assist** | Bounded | `minecraft:generic.step_height` |
 | **Leap Strength** | Repeatable | `minecraft:generic.jump_strength` |
 | **Momentum Gliding** | 1 | `apothic_attributes:elytra_flight` |
 | **Safe Fall Distance** | Repeatable | `minecraft:generic.safe_fall_distance` |
@@ -337,22 +337,22 @@ progression purchase one owner in the eventual implementation.
 | --- | --- | --- |
 | **Roots Terra Mastery** | Repeatable | Improve legal Terra capacity/regeneration or staff potency using verified Roots Classic player/staff hooks; preserve staff imprint rules. |
 
-## All 99 Apotheosis innate techniques
+## 98 proposed Apotheosis innate techniques (one deliberate omission from 99 upstream)
 
 Apotheosis affix effects are gear-based upstream. Each **proposed** TMM
 technique below needs an independently implemented unarmed, defensive,
 harvest, magic-projectile, or counterattack adapter. The level cap comes
 from the original affix's *distinct value tiers*, not an arbitrary
-Monk cap; **32 of 99** have repeated source values across rarities
+Monk cap; **32 of the remaining 98** have repeated source values across rarities
 and those redundant tiers are not paid ranks. The source can have several rarities with **identical** values; those
   are collapsed before purchases. The source may have further quality scaling within a rarity;
 the adapter should provide a deterministic tier effect no stronger
 than the legitimate original top roll for that tier.
 
-**Important exception:** Apotheosis **Unbound** is backed by
-`neoforge:creative_flight`; its Monk version only improves
-already-equipped Draconic Curio flight. It **must never unlock** Creative
-Flight. **Winged** cannot unlock gliding before the Dragon gate.
+**Deliberate exclusion:** Apotheosis **Unbound** is backed by
+`neoforge:creative_flight`; it has **no TMM Monk technique whatsoever**.
+Draconic Curio gear independently supplies that ability. **Winged** cannot
+unlock gliding before the Dragon gate.
 
 | Apotheosis technique | Source affix | Distinct source-effect milestones |
 | --- | --- | --- |
@@ -369,7 +369,6 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
 | **Stalwart [armor]** | `apotheosis:armor/attribute/stalwart` | U → E → M (3) |
 | **Steel Touched [armor]** | `apotheosis:armor/attribute/steel_touched` | R → E → M (3) |
 | **Timekeeping [armor]** | `apotheosis:armor/attribute/timekeeping` | R → E → M (3) |
-| **Unbound [armor]** | `apotheosis:armor/attribute/unbound` | M (1) |
 | **Windswept [armor]** | `apotheosis:armor/attribute/windswept` | C → U → R → E → M (5) |
 | **Winged [armor]** | `apotheosis:armor/attribute/winged` | E (1) |
 | **Blast Forged [armor]** | `apotheosis:armor/dmg_reduction/blast_forged` | C → U → R → E → M (5) |
@@ -504,9 +503,9 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
    Speed, nonnegative valid gravity, and safe scale/step limits.
    For repeatable purchases, ensure rising costs and never sell
    a rank that has zero practical effect.
-3. Verify the 99 Apotheosis skill adapters preserve effects without
+3. Verify the 98 selected Apotheosis skill adapters preserve effects without
    hidden conventional weapons, armor, shield or tool slots.
-   Prioritize `Unbound` and `Winged` flight exceptions.
+   Prioritize `Winged`'s world-tier glide restriction and ensure `Unbound` is never registered.
 4. Implement/test the real barehand harvest-tier adapter using the
    independently verified Dragon Survival harvesting reference,
    without giving the Monk dragon physiology. Dynamic highest tier
@@ -526,3 +525,23 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
 - [World-tier boundaries](MONK-WORLD-TIERS.md)
 - [Apotheosis 8.9.0 generated affix sources](https://github.com/Shadows-of-Fire/Apotheosis/tree/1.21/src/generated/resources/data/apotheosis/affixes)
 - [Dragon Survival NeoForge 1.21.1 release candidate](https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/9539454)
+
+## Tentative two-layer ownership + unified traits (2026-11-14)
+
+This catalog is an **underlying candidate/source inventory**, not a
+claim of 270 final unique purchases. One-time powers, including Step Assist
+and Momentum Gliding, belong to the native Monk faction tree. Leveled
+traits have **one native faction unlock/permission node** and then
+**Pufferfish-based investment** where implementation supports it.
+Do not automatically assume ordinary Pufferfish binary skill nodes are
+repeatable. Group overlapping attributes under canonical shared Pufferfish
+traits; the detailed first pass proposes **24 unified skills** spanning
+43 registered source attributes, plus conditional Mahou, Roots, Primal
+and Occultism adapters. The 172 core records are candidate effects and
+some should merge into those shared traits, not turn into individual
+Pufferfish purchases.
+
+See [two-layer architecture smoke test](MONK-TWO-LAYER-SMOKE-TEST.md) and
+[`skill-unification-proposal.json`](../compat/monk/profiles/skill-unification-proposal.json).
+**Placement, category split, repeated-rank UI, upgrade costs and per-school
+specialization remain subject to test and review.**
