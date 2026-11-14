@@ -1,0 +1,6 @@
+version:3955
+guiScale:3
+soundCategory_master:0.55
+soundCategory_music:0.20
+soundCategory_weather:0.55
+soundCategory_ambient:0.65
