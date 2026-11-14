@@ -56,3 +56,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 ## Approved supernatural factions — release verified, not installed (2026-11-13)
 - Vampirism `1.10.13`, NeoForge MC 1.21.1, official CurseForge release 2026-09-05 (https://www.curseforge.com/minecraft/mc-mods/vampirism-become-a-vampire/files/all?page=1&version=1.21.1).
 - Werewolves `2.0.3.3`, NeoForge MC 1.21.1, official CurseForge release 2026-03-25 (https://www.curseforge.com/minecraft/mc-mods/werewolves-become-a-beast), requires compatible Vampirism. Both added to B6 as *planned*. Skill-tree caps and balancing deferred. Before activation, test both new biomes with Tectonic, server-side dependency closure and client transformations.
+
+## Tell Me More selection resolved (2026-11-13)
+- User **approved six** additional planned systems: Summoning Rituals, Scriptor Magicae, Pastel, Feywild, Enchanted: Witchcraft, and Aspect Alchemy. They are *not installed*; file versions/dependency graph unverified. See [decision register](MAGIC-MOD-SURVEY-DECISIONS.md).
+- **Alchemy integration guardrail:** Aspect Alchemy is approved as one of the six selected mods; avoid overwriting, disabling or inadvertently duplicating current potion mechanics. Apothecary is omitted specifically to avoid further potion/effect conflicts.
+- **RPG infrastructure guardrail:** Relics (RPG Series) and Jewelry (RPG Series) are omitted. Do not pull in Spell Engine or RPG Series attribute systems for their sake. The existing separately named base Relics candidate is unaffected.
+- Other omitted candidates: Witchcraft and Curses, Pagan's Blessing, Runology, Magitech — Arcane Engineering, and Runic Curiosities. Existing maturity research for Manaweave and Runes, Thavma, Primeva and Mana and Artifice remains pending.
