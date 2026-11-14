@@ -1,0 +1,129 @@
+name: B8 selected QoL compass market resolve and client package
+on:
+  push:
+    branches: [build/b8-qol-compass-farming-market]
+    paths: ['.github/workflows/b8-resolve-and-prism.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  b8-qol-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Build packwiz CLI
+        run: |
+          python3 -m py_compile scripts/resolve_b8.py scripts/build_b8_prism.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Resolve and inspect all 13 approved QoL/farming packages
+        id: resolve
+        continue-on-error: true
+        run: |
+          python3 scripts/resolve_b8.py
+          packwiz list
+      - name: Combined 1.21.1 NeoForge dedicated-server smoke
+        id: smoke
+        if: steps.resolve.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '660'
+          WORK_DIR: ${{ runner.temp }}/tmm-b8-qol
+        run: bash scripts/smoke_server.sh
+      - name: Commit exact pinned metadata and result
+        if: steps.resolve.outcome == 'success'
+        env:
+          BOOT_STATUS: ${{ steps.smoke.outcome }}
+          BOOT_LINK: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          x=json.loads(Path("docs/B8-RESOLUTION.json").read_text())
+          boot=os.environ["BOOT_STATUS"]
+          lines=[
+          "# B8 selected QoL, Nature's Compass and Farming for Blockheads",
+          "",
+          f"**Dedicated server: {'PASS' if boot=='success' else 'FAILED'}**",
+          "- [Exact GitHub Actions result]("+os.environ["BOOT_LINK"]+")",
+          "- Minecraft 1.21.1 / NeoForge 21.1.265 / Java 21.",
+          f"- {x['total']} exact packwiz pins including {x['new_mods']} selected additions.",
+          f"- {x['server_side']} server/both-side JARs; {x['client_only']} client-only JARs.",
+          "- Previous B7 126-mod (including ReFoxed) baseline preserved.",
+          "- No Waystones, Explorer's Compass, or unrelated magic storage/teleportation mods.",
+          "- **Farming for Blockheads Market is the seed vendor; it is NOT Farmer's Delight.**",
+          "- Market magical seed availability/currency restrictions NOT tested; unsafe for balanced survival release until reviewed.",
+          "- Crafting grid, Nature's Compass, book UI, advancements, seed-market offers,",
+          "  backups and profiler commands still require live gameplay/ops verification.",
+          "- No custom magic tree, quests, or ProjectE Chaos Guardian gating yet.",
+          "",
+          "## Exact new pins"
+          ]
+          for x in x["pins"]:
+            lines.append("- `"+x["filename"]+"` ("+x["side"]+", CurseForge "+
+              str(x["curseforge_project"])+"/"+str(x["curseforge_file"])+")")
+          Path("docs/B8-TESTING.md").write_text("\n".join(lines)+"\n")
+          mfile=Path("manifest/mods.json")
+          m=json.loads(mfile.read_text())
+          next(y for y in m["batches"] if y["id"]=="B10")["status"]=(
+            "server_smoked_client_pending" if boot=="success"
+            else "server_boot_failed_requires_triage")
+          mfile.write_text(json.dumps(m,indent=2)+"\n")
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest/mods.json pack.toml index.toml mods docs/B8-RESOLUTION.json docs/B8-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "test(b8): pin selected QoL stack and record full dedicated-server boot"
+            git push origin HEAD:build/b8-qol-compass-farming-market
+          fi
+      - name: Download official packwiz bootstrap and build immutable Prism instance
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+          python3 scripts/build_b8_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" \
+            "$(git rev-parse HEAD)"
+      - name: Upload importable Prism test ZIP
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-B8-QoL-Compass-Market-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-B8-QoL-Compass-Market-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B8-QoL-Integration-Logs
+          path: |
+            docs/B8-RESOLUTION.json
+            docs/B8-TESTING.md
+            ${{ runner.temp }}/tmm-b8-qol/server.log
+            ${{ runner.temp }}/tmm-b8-qol/logs/latest.log
+          if-no-files-found: warn
+      - name: Fail if pinned resolver or combined server smoke failed
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
