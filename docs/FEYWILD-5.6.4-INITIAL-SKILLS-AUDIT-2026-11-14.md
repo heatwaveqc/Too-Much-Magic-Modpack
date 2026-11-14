@@ -49,3 +49,6 @@ Source has **no new registered player personal mana**, no spell-power cost API a
 ## No implementation
 
 This is an **initial source assessment**, not a runtime compatibility proof. No Feywild skills, tags, KubeJS scripts, pet adapters, datapacks, server security fixes, recipes or configuration were changed.
+
+## Feywild skill integration decision (2026-11-14)
+**User agreed** to test **existing universal Pufferfish pet bonuses first**, then evaluate a **shared** owner adapter (possibly usable for Occultism and other custom owner interfaces) **only if existing ownership detection fails**. No automatic dedicated Feywild skills, custom AI patch or bridge authorized. Preserve the four pixie farm abilities and native questlines; the initial packet-permission and Quest Giver tests remain separately necessary.
