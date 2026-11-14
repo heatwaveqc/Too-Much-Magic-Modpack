@@ -27,7 +27,7 @@ def basic_snbt_scan(text: str, filename: str) -> None:
         if in_string:
             if escaped:
                 escaped = False
-            elif char == "\\\\":
+            elif char == "\\":
                 escaped = True
             elif char == '"':
                 in_string = False
@@ -55,7 +55,7 @@ def main() -> None:
         allids.add(group["id"])
     group_text = (QUESTS / "chapter_groups.snbt").read_text(encoding="utf-8")
     basic_snbt_scan(group_text, "chapter_groups.snbt")
-    ensure(re.findall(r'\\bid: "([0-9A-F]{16})"', group_text) == [g["id"] for g in groups], "Chapter group IDs/order differ")
+    ensure(re.findall(r'\bid: "([0-9A-F]{16})"', group_text) == [g["id"] for g in groups], "Chapter group IDs/order differ")
     loc = (QUESTS / "lang" / "en_us" / "chapter_group.snbt").read_text(encoding="utf-8")
     chaploc = (QUESTS / "lang" / "en_us" / "chapter.snbt").read_text(encoding="utf-8")
     basic_snbt_scan(loc, "chapter_group locale")
