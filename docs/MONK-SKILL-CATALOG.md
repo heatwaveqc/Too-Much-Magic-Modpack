@@ -1,3 +1,10 @@
+> **Backend supersession (2026-11-14):** Pufferfish is excluded from the
+> target Monk skill architecture. The 270 candidate IDs have been mapped into
+> Tyz, existing Improvable Skills, native Vampirism Monk skills and Java
+> adapters in [the v2 placement catalog](MONK-SKILL-PLACEMENT-NO-PUFFERFISH.md).
+> This v1 source roster is preserved for audit; older Pufferfish owner text below
+> is historical. No actual mod has been added or removed by this catalog change.
+
 > **Decision update, 2026-11-14:** Tyz's Skills 6.4.2 is the selected
 > leveled backend. Default **five consecutive 99-rank stages**, with
 > per-rank effect and price multiplied by 10 at each stage; sixth is
