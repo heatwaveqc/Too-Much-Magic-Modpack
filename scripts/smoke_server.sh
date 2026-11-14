@@ -15,6 +15,12 @@ java -jar installer.jar --installServer
 printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
+  if [[ -n "${SMOKE_EXTRA_MOD_JAR:-}" ]]; then
+    [[ -f "$SMOKE_EXTRA_MOD_JAR" ]] || { echo "Missing custom bridge JAR: $SMOKE_EXTRA_MOD_JAR"; exit 3; }
+    [[ "$SMOKE_EXTRA_MOD_JAR" == *.jar ]] || { echo "Extra mod must be a JAR"; exit 3; }
+    cp "$SMOKE_EXTRA_MOD_JAR" "$WORK_DIR/mods/"
+    echo "Injected one custom development mod into disposable server: $(basename "$SMOKE_EXTRA_MOD_JAR")"
+  fi
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
   echo "Starting hash-pinned MODDED dedicated server"
 else
