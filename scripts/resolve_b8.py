@@ -99,6 +99,9 @@ def main():
        "curseforge_project":obj.get("update",{}).get("curseforge",{}).get("project-id"),
        "curseforge_file":obj.get("update",{}).get("curseforge",{}).get("file-id")})
  if len(allmods)!=expected or len(active)!=expected:
+  known={x.get("packwiz_slug",x["id"])+".pw.toml" for x in m["mods"]}
+  extras=[x for x in allmods if x["path"] not in known]
+  print("B8 UNREGISTERED FILES "+json.dumps(extras),flush=True)
   raise RuntimeError("B8 pin count mismatch: "+str((len(allmods),len(active),expected)))
  if not base.issubset(active):raise RuntimeError("B7 mod missing after install")
  ids={x["id"] for x in m["mods"] if x["enabled_in_pack"]}
