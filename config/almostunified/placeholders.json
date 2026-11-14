@@ -1,17 +1,14 @@
 {
   "material": [
-    "aluminum",
     "copper",
     "diamond",
     "emerald",
     "gold",
     "iron",
     "lead",
-    "nickel",
-    "platinum",
     "quartz",
     "silver",
-    "tin",
-    "zinc"
+    "sulfur",
+    "saltpeter"
   ]
 }
