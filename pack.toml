@@ -1,0 +1,13 @@
+name = "Too Much Magic"
+author = "heatwaveqc"
+version = "0.0.1-bootstrap"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "e9c2cd79cc8f69ae80662fa8eb62156fcd520fa6b7cbc25d379f73e1e2c45715"
+
+[versions]
+minecraft = "1.21.1"
+neoforge = "21.1.265"

@@ -1,0 +1,8 @@
+hash-format = "sha256"
+
+[[files]]
+file = "kubejs/server_scripts/bootstrap.js"
+hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
+[[files]]
+file = "kubejs/startup_scripts/bootstrap.js"
+hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
