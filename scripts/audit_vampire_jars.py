@@ -93,6 +93,14 @@ def inspect_pin(pin: str) -> None:
                 ):
                     if target in z.namelist():
                         print("JAWR_EXACT_JSON", target, z.read(target).decode("utf-8")[:16000], flush=True)
+                # Acquisition entrypoints: identify what triggers first-level advancement,
+                # how the sacrificial circle is created, and ritual materials.
+                for cls in sorted(classes):
+                    if any(k in cls.split(".")[-1] for k in (
+                        "Sacrificial", "Lilith", "Elle", "TornPage", "WineGlass",
+                        "InfernalChalk", "Arthana", "Skull", "Candle", "VampireLeveling"
+                    )):
+                        print("JAWR_ACQUISITION_CLASS", cls, flush=True)
                 for cls in sorted(classes):
                     if any(x in cls for x in (
                         "WitcheryItems", "WitcheryItemRegistry", "WitcheryItem",
@@ -150,6 +158,33 @@ def inspect_pin(pin: str) -> None:
                 print("DEEP_SIGNATURE", cls, "exit", proc.returncode)
                 for line in proc.stdout.splitlines()[:200]:
                     print(" SIG", line[:350])
+            if source.name.startswith("just-another-witchery"):
+                audit_acquisition = [
+                    c for c in classes if any(k in c.split(".")[-1] for k in
+                    ("SacrificialCircleBlock", "LilithEntity", "ElleEntity",
+                     "TornPageItem", "WineGlassItem", "InfernalChalkBlock",
+                     "ArthanaItem", "VampireLeveling"))
+                    and "$" not in c
+                ]
+                for cls in audit_acquisition:
+                    proc = subprocess.run(
+                        ["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=30)
+                    print("JAWR_ACQUISITION_BYTECODE", cls, "exit", proc.returncode, flush=True)
+                    lines = proc.stdout.splitlines()
+                    for i, line in enumerate(lines):
+                        if line.startswith("  ") and not line.startswith("    ") and any(
+                            x in line for x in ("use(", "useOn(", "interactLivingEntity(",
+                                "onEntityInteract(", "onUseTick(", "onPlace(", "setLevel(",
+                                "increaseLevel(", "interact(", "onPlayerInteract(", "hurtEnemy(",
+                                "onEntityKill(", "tryCreate(", "create(", "handle(", "tick(",
+                                "onInteract(", "onEntityDeath(")):
+                            end = next((j for j in range(i+1, len(lines)) if lines[j].startswith(
+                                ("  public ", "  private ", "  protected ", "  static ")
+                            ) or lines[j] == "}"), len(lines))
+                            print(" JAWR_METHOD", line.strip(), flush=True)
+                            for instr in lines[i+1:min(i+210, end)]:
+                                print(" JAWR_BC", instr[:300], flush=True)
             # Summarize critical bytecode paths, never ship or rewrite upstream JARs.
             bytecode = {
                 "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment":
