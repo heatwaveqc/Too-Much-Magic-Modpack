@@ -31,3 +31,9 @@ No implemented progression locks, recipe overhaul, questline, substitutions, bal
 - **Improvable Skills 3** is a separate experience-point upgrade system installed on explicit user request. Audit overlap and balance against the custom Pufferfish tree once that is designed.
 - New food suite is Pam's HarvestCraft 2 all four modules, Farmer's Delight, Aquaculture 2, Harvest with Ease and Cobweb. **Aspect Alchemy is a current exclusion.**
 - **125 mods have passed a server-only boot**, not a client/world/integration certification.
+
+## Starter storage and nested bag safety (owner decision)
+
+- In the opening `Punch a Tree` quest, the first time **each player** obtains any log (vanilla `#minecraft:logs`) they automatically receive **one Ars Elemental Trinkets Pouch (27 slots)**, even without opening FTB Quests. Later bags are normally crafted.
+- **Never allow bag-in-bag nesting** (including cross-mod combinations and all ProjectE colors). Adding only a tag for one mod is insufficient; enforce insertion for every portable container at the server-side boundary, in GUI and automation paths, before survival release.
+- The advancement-backed initial FTB quest and Ars-specific blacklist extension are authored on `feature/akashic-tome-starter-storage`; the full cross-mod guard is a tracked blocker pending verified hooks and runtime tests.
