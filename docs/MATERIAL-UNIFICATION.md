@@ -1,6 +1,6 @@
 # Too Much Magic — Material Unification (candidate)
 
-Status: **implemented as a reviewable candidate; NOT game-tested or release-approved**.
+Status: **source-and-live-tag audited; dedicated-server smoke passed for the initial configuration; new Neo Vitae silver/lead extension still needs a regression server boot, and gameplay/client/worldgen are not verified or release-approved**.
 
 ## Policy
 
@@ -31,6 +31,15 @@ Embers and Eidolon have separately verified natural silver/lead ore placed featu
 - Primal Magick's rock salt is not nether quartz; its **iron, gold and copper grits** do participate in dust unification.
 - Draconium, uranium, Iesnium and Deepslate Replica Ore are not regular metals in our pack progression; do not standardize or expose their generation.
 
+## Live NeoForge verification (2026-11-14)
+
+- Dedicated NeoForge server completed cleanly with 128 hash-verified server-side mod JARs and initial Almost Unified configuration: [Actions run 43614734834](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43614734834), [artifact 14121900565](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43614734834/artifacts/14121900565).
+- Recovered **actual Almost Unified `tags.txt`** from live JARs: `c:ores/silver` has **eight** blocks from Occultism, Embers, Eidolon and Werewolves; `c:ores/lead` has **four** blocks from Embers and Eidolon. `c:raw_materials/silver`, `c:ingots/silver`, `c:nuggets/silver`, and silver storage tag each have four items.
+- **Important oversight corrected**: Deeper & Darker contributes `gloomslate_*` and `sculk_stone_*` versions of vanilla ores; Pastel contributes `blackslag_*` variants. These special-dimension strata are explicitly excluded from vanilla ore replacement in AU with `ignored_items`; their tag membership remains, but unification deliberately does not hide/rewrite those ore blocks.
+- Live dusts: gold dusts are Mahou, Neo Vitae, Occultism, Primal Magick; iron dusts the same four. Copper dusts are Neo Vitae, Occultism, Primal Magick. **Sulfur tag uses `neovitae:sulfur` and `eidolon_repraised:sulfur`**, not `neovitae:sulfur_dust`.
+- Recovered complete **12-entry Neo Vitae 1.1.53-generated `config/neovitae/materials.json`** from the server artifact. Preserved all original entries and appended **silver** and **lead** to make them valid Athanor/Tabula Vitae dust-processing materials. Their `smelt_to` points to `occultism:silver_ingot` and `embers:lead_ingot` respectively, and `generative:false` prevents extra meteor/dungeon/Prismatic-Demonite injections. Both tags have verified items and canonical targets. Generated `neovitae:silver_dust` should fall into `c:dusts/silver` and `neovitae:lead_dust` into `c:dusts/lead`.
+- The **new** 14-material config requires its own fresh smoke after these final edits. A clean startup does not prove worldgen, custom processing results, JS recipe behavior or the GUI.
+
 ## Mahou early-game processing
 
 - `raw_iron` or `raw_gold` + Mahou Hammer -> 1 matching Mahou powder.
@@ -42,8 +51,8 @@ Embers and Eidolon have separately verified natural silver/lead ore placed featu
 
 ## Release gates
 
-1. **Registry and JEI**: confirm every Mahou powder and recipe ID, `c:` tag, tool-remainder behavior (tools not consumed), and final AU targets. A KubeJS parse is not a working recipe.
-2. **Neo Vitae**: `config/neovitae/materials.json` creates generated fragments/gravels/dusts, and may inject ores into special generation sources. Inspect exact pinned 1.1.53 generated config; set `generative:false` for gated materials and `gen_ore`/`gen_raw` only with real IDs. Do not guess item IDs.
+1. **Registry and JEI**: the server AU tag dump establishes canonical inputs and raw IDs; still confirm Mahou recipe IDs, tool remainders (not consumed), JEI hiding and final recipe targets in a client world. A KubeJS parse is not a working recipe.
+2. **Neo Vitae**: 12 defaults were preserved from the actual generated 1.1.53 file, with two more source-backed silver/lead processing materials. Confirm added `neovitae:silver_dust` and `neovitae:lead_dust` dynamically register and integrate, and verify `generative:false` prevents extra ore distribution. Re-run discovery review if future mods are added.
 3. **Dust loops**: for every smeltable metal and gem, inspect all input and output counts for Mahou, Occultism, Neo Vitae, Theurgy, crafting, smelting and blasting; no post-ingot route may yield more than 1 ingot-equivalent per ingot. Check custom furnace recipe types too.
 4. **World generation**: `world_gen_unification:true` removes duplicate *conventional* ores in new chunks only. Check AU log and representative stone/deepslate/Nether ores. If a canonical source does not generate or a custom generator bypasses AU, block release until fixed. `/almostunified strip` is destructive: disposable worlds only.
 5. **Special gates**: no uranium, draconic materials or Deepslate Replica Ore via ordinary generation, Neo Vitae meteor/dungeon, Botania Orechid, Occultism miner, Theurgy, loot, quests or EMC before intended gates. **This candidate does not implement those resource gates.**
