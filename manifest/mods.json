@@ -198,18 +198,6 @@
       "packwiz_slug": "artifacts"
     },
     {
-      "id": "aspect-alchemy",
-      "name": "Aspect Alchemy",
-      "category": "alchemy",
-      "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Experiment-driven ingredient-aspect alchemy. Explicitly in the user's selected Strongly Investigate group and therefore approved; guard against conflict with multiple existing alchemy systems. No replacement/overhaul of existing potion rules without separate consent. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
-    },
-    {
       "id": "astral-sorcery",
       "name": "Astral Sorcery",
       "category": "magic",
@@ -1398,6 +1386,10 @@
     {
       "id": "runic-curiosities",
       "reason": "Current pack decision: omit Runic Curiosities. Not selected in Tell Me More triage; immature and power-balance concerns."
+    },
+    {
+      "id": "aspect-alchemy",
+      "reason": "User explicitly removed after source-level review: limited added progression value relative to Neo Vitae, Ars Nouveau and Botania brewing; hard-coded aspects, custom integration work and known Jade 15.10.6 conflict. Do not install."
     }
   ],
   "items_blacklist": [
@@ -1561,8 +1553,7 @@
         "scriptor-magicae",
         "pastel",
         "feywild",
-        "enchanted-witchcraft",
-        "aspect-alchemy"
+        "enchanted-witchcraft"
       ],
       "status": "planned_unresolved_releases"
     }
