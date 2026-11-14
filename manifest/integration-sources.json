@@ -51,7 +51,11 @@
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Primary Tyz skill owner remains separate; do not duplicate purchasable trees"
+      "note": "Primary Tyz skill owner remains separate; do not duplicate purchasable trees",
+      "manifest_mod_ids": [
+        "dragon-survival",
+        "tyzs-skills"
+      ]
     },
     {
       "name": "mxp-hexcast-contract",
