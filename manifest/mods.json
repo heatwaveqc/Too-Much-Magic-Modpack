@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B1 stages four mods (KubeJS, Rhino, Better Advanced Tooltips, ModernFix), each with pinned Modrinth SHA-512; dedicated-server boot passed in GitHub Actions run 43546287284. No graphical client test. Unapproved Bigger Reactors forks remain excluded.",
+  "note": "Full infrastructure + QoL batch pinned; smoke test outcome recorded independently in docs/META-QOL-TESTING.md",
   "mods": [
     {
       "id": "apotheosis",
@@ -27,6 +27,30 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/apotheosis",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "appleskin",
+      "name": "AppleSkin",
+      "category": "qol",
+      "desired": true,
+      "version": "appleskin-neoforge-mc1.21-3.0.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/EsAfCjCV",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "appleskin"
+    },
+    {
+      "id": "architectury-api",
+      "name": "Architectury API",
+      "category": "dependency",
+      "desired": true,
+      "version": "architectury-13.0.11-neoforge",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/419699",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "architectury-api"
     },
     {
       "id": "ars-nouveau",
@@ -66,12 +90,13 @@
       "name": "Better Advanced Tooltips",
       "category": "dependency",
       "desired": true,
-      "version": "2101.1.0-build.5",
+      "version": "better-advanced-tooltips-2101.1.0-build.5",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/better-advanced-tooltips",
+      "source": "https://modrinth.com/mod/iHLDc0eo",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Auto-resolved by packwiz as KubeJS dependency."
+      "note": "Auto-resolved by packwiz as KubeJS dependency.",
+      "packwiz_slug": "better-advanced-tooltips"
     },
     {
       "id": "bigger-reactors",
@@ -130,15 +155,40 @@
       "dependencies_verified": false
     },
     {
+      "id": "controlling",
+      "name": "Controlling",
+      "category": "qol",
+      "desired": true,
+      "version": "Controlling-neoforge-1.21.1-19.0.5",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/xv94TkTM",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "controlling"
+    },
+    {
+      "id": "corail-tombstone",
+      "name": "Corail Tombstone",
+      "category": "qol",
+      "desired": true,
+      "version": "tombstone-neoforge-1.21.1-9.5.6",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/YT5K34AB",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "corail-tombstone"
+    },
+    {
       "id": "curios-api",
       "name": "Curios API",
       "category": "dependency",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/curios",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "curios-neoforge-9.5.1+1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/vvuO3ImH",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "curios"
     },
     {
       "id": "deeper-darker",
@@ -167,22 +217,24 @@
       "name": "Embeddium",
       "category": "performance",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/embeddium",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "embeddium-1.0.15+mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/sk9rgfiA",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "embeddium"
     },
     {
       "id": "entity-culling",
       "name": "Entity Culling",
       "category": "performance",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/entityculling",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "entityculling-neoforge-1.12.1-mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/NNAgCjsB",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "entityculling"
     },
     {
       "id": "evilcraft",
@@ -211,11 +263,12 @@
       "name": "FerriteCore",
       "category": "performance",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/ferritecore",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "ferritecore-7.0.3-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/uXXizFIs",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ferrite-core"
     },
     {
       "id": "formation-wand",
@@ -233,44 +286,60 @@
       "name": "FTB Chunks (NeoForge)",
       "category": "infrastructure",
       "desired": true,
-      "version": "2101.1.24",
+      "version": "ftb-chunks-neoforge-2101.1.24",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-chunks-forge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ftb-chunks-forge"
     },
     {
       "id": "ftb-library",
       "name": "FTB Library (NeoForge)",
       "category": "dependency",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
+      "version": "ftb-library-neoforge-2101.1.39",
+      "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ftb-library-forge"
     },
     {
       "id": "ftb-quests",
       "name": "FTB Quests (NeoForge)",
       "category": "infrastructure",
       "desired": true,
-      "version": "2101.1.38",
+      "version": "ftb-quests-neoforge-2101.1.38",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ftb-quests-forge"
     },
     {
       "id": "ftb-teams",
       "name": "FTB Teams (NeoForge)",
       "category": "dependency",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
+      "version": "ftb-teams-neoforge-2101.1.12",
+      "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ftb-teams-forge"
+    },
+    {
+      "id": "ftb-xmod-compat",
+      "name": "FTB XMod Compat",
+      "category": "dependency",
+      "desired": true,
+      "version": "ftb-xmod-compat-neoforge-21.1.14",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-xmod-compat",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "ftb-xmod-compat"
     },
     {
       "id": "gateways-to-eternity",
@@ -284,15 +353,28 @@
       "dependencies_verified": false
     },
     {
+      "id": "geckolib",
+      "name": "Geckolib",
+      "category": "dependency",
+      "desired": true,
+      "version": "geckolib-neoforge-1.21.1-4.9.3",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/8BmcQJ2H",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "geckolib"
+    },
+    {
       "id": "immediatelyfast",
       "name": "ImmediatelyFast",
       "category": "performance",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/immediatelyfast",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "ImmediatelyFast-NeoForge-1.6.15+1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/5ZwdcRci",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "immediatelyfast"
     },
     {
       "id": "irons-spells",
@@ -310,44 +392,72 @@
       "name": "Jade",
       "category": "qol",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/jade",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "Jade-1.21.1-NeoForge-15.10.6",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/nvQzSEkH",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "jade"
     },
     {
       "id": "jei",
       "name": "Just Enough Items",
       "category": "qol",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/jei",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "jei-1.21.1-neoforge-19.70.0.469",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/u6dRKJwZ",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "jei"
     },
     {
       "id": "just-zoom",
       "name": "Just Zoom",
       "category": "qol",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "justzoom_neoforge_3.1.0_MC_1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/iAiqcykM",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "just-zoom"
+    },
+    {
+      "id": "konkrete",
+      "name": "Konkrete",
+      "category": "dependency",
+      "desired": true,
+      "version": "konkrete_neoforge_1.9.9_MC_1.21",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/J81TRJWm",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "konkrete"
     },
     {
       "id": "kubejs",
       "name": "KubeJS",
       "category": "infrastructure",
       "desired": true,
-      "version": "2101.7.2-build.381",
+      "version": "kubejs-neoforge-2101.7.2-build.381",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/kubejs",
+      "source": "https://modrinth.com/mod/umyGl7zF",
       "enabled_in_pack": true,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "packwiz_slug": "kubejs"
+    },
+    {
+      "id": "lootr",
+      "name": "Lootr",
+      "category": "qol",
+      "desired": true,
+      "version": "lootr-neoforge-1.21.1-1.11.38.127",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/EltpO5cN",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "lootr"
     },
     {
       "id": "magical-satchel",
@@ -372,26 +482,52 @@
       "dependencies_verified": false
     },
     {
+      "id": "mezzconfig",
+      "name": "MezzConfig",
+      "category": "dependency",
+      "desired": true,
+      "version": "mezz_config-1.21.1-neoforge-0.7.1-standalone",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/7tEfOcA7",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "mezzconfig"
+    },
+    {
       "id": "modernfix",
       "name": "ModernFix",
       "category": "performance",
       "desired": true,
-      "version": "5.27.27+mc1.21.1",
+      "version": "modernfix-neoforge-5.27.27+mc1.21.1",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/modernfix",
+      "source": "https://modrinth.com/mod/nmDcB62a",
       "enabled_in_pack": true,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "packwiz_slug": "modernfix"
     },
     {
       "id": "modonomicon",
       "name": "Modonomicon",
       "category": "dependency",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/modonomicon",
-      "enabled_in_pack": false,
-      "dependencies_verified": false
+      "version": "modonomicon-1.21.1-neoforge-1.123.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/692GClaE",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "modonomicon"
+    },
+    {
+      "id": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "category": "qol",
+      "desired": true,
+      "version": "MouseTweaks-neoforge-mc1.21-2.26.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/aC3cM3Vq",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "mouse-tweaks"
     },
     {
       "id": "neovitae",
@@ -425,6 +561,30 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/occultism",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "patchouli",
+      "name": "Patchouli",
+      "category": "dependency",
+      "desired": true,
+      "version": "Patchouli-1.21.1-93-NEOFORGE",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/nU0bVIaL",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "patchouli"
+    },
+    {
+      "id": "polymorph",
+      "name": "Polymorph",
+      "category": "qol",
+      "desired": true,
+      "version": "polymorph-neoforge-1.2.0+1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/tagwiZkJ",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "polymorph"
     },
     {
       "id": "project-expansion",
@@ -487,11 +647,12 @@
       "name": "Rhino",
       "category": "dependency",
       "desired": true,
-      "version": "2101.2.7-build.85",
+      "version": "rhino-2101.2.7-build.85",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/rhino",
+      "source": "https://modrinth.com/mod/sk9knFPE",
       "enabled_in_pack": true,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "packwiz_slug": "rhino"
     },
     {
       "id": "roguelike-dungeons",
@@ -514,6 +675,18 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/roots-classic",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "searchables",
+      "name": "Searchables",
+      "category": "dependency",
+      "desired": true,
+      "version": "Searchables-neoforge-1.21.1-1.0.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/fuuu3xnx",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "searchables"
     },
     {
       "id": "starlight-structures",
@@ -613,19 +786,38 @@
       "id": "B1",
       "name": "KubeJS, FTB core libraries, quests, UI/performance",
       "members": [
-        "kubejs",
-        "ftb-quests",
+        "appleskin",
+        "architectury-api",
+        "better-advanced-tooltips",
+        "controlling",
+        "corail-tombstone",
+        "curios-api",
+        "embeddium",
+        "entity-culling",
+        "ferritecore",
         "ftb-chunks",
         "ftb-library",
+        "ftb-quests",
         "ftb-teams",
-        "rhino",
-        "jei",
+        "ftb-xmod-compat",
+        "geckolib",
+        "immediatelyfast",
         "jade",
+        "jei",
+        "just-zoom",
+        "konkrete",
+        "kubejs",
+        "lootr",
+        "mezzconfig",
         "modernfix",
-        "ferritecore",
-        "better-advanced-tooltips"
+        "modonomicon",
+        "mouse-tweaks",
+        "patchouli",
+        "polymorph",
+        "rhino",
+        "searchables"
       ],
-      "status": "server_smoked_client_pending"
+      "status": "meta_qol_server_smoked_client_pending"
     },
     {
       "id": "B2",
