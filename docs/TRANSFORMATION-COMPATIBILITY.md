@@ -73,3 +73,9 @@ Source: https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/mai
 - Retain or disable Dragon Survival's unique diet once there is reliable exclusivity?
 
 **No changes to the installed pack, no decision to include Dragon Survival and no working bridge are implied by this document.**
+
+## Food suite integration and state-combination tree (2026-11-13)
+- The user approved the complete Pam's HarvestCraft 2 family, Farmer's Delight, Aquaculture 2, plus **Harvest with Ease** and its Cobweb prerequisite to ensure right-click gentle harvest (Pam's built-in support was removed).
+- [FOOD-AND-SPECIES-DESIGN.md](FOOD-AND-SPECIES-DESIGN.md) provides the **provisional 7-provider-state / 21-pair matrix**, grouped combination tree and suggested gameplay identities for human, dragons, independent vampire/lycan branches and independent lich paths.
+- Extra kitchen integrations ([Aquaculture Delight](https://modrinth.com/mod/aquaculture-delight), [Pantrywork](https://modrinth.com/mod/pantrywork), [Vampire's Delight](https://modrinth.com/mod/vampires-delight)) are **discovered research candidates** but not automatically approved. Vampire's Delight 1.21.1 is beta-tagged; do not bypass the modpack's beta-selection gate.
+- **Diet/food compatibility is a user-experience requirement, not just a crash test.** Each enabled physiology needs sustainable feeding. Whether vampires and liches should be able to enjoy prepared meals without an ordinary hunger bar is an open design decision. Do not convert a player to a conflicting state while this remains unimplemented.
