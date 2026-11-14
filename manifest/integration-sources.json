@@ -22,7 +22,10 @@
         "kubejs/server_scripts/silver_equipment_unification.js",
         "kubejs/startup_scripts/silver_equipment_stats.js",
         "mods/almostunified.pw.toml",
-        "manifest/material-ore-audit.json"
+        "manifest/material-ore-audit.json",
+        "scripts/verify_materials.py",
+        "scripts/verify_silver_equipment.py",
+        "scripts/check_silver_conflicts.py"
       ],
       "manifest_mod_ids": [
         "almostunified"
