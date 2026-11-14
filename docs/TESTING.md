@@ -81,3 +81,14 @@ Never reclassify step 1 as steps 2–5.
 - **Scope:** remove Re:Avaritia and Extended Crafting as explicitly excluded by owner. Reduce 140 pinned mods to **138** (previous 127 server/both-side -> 125 server/both-side, 13 client-only unchanged). Two packwiz metafiles removed; manifest and SHA-256 hash chain updated.
 - **Status when authored:** metadata validation and fresh combined NeoForge dedicated-server test **pending** on `design/five-category-quest-chapter-inventory`. Do not mistake the earlier 140-mod B8 test for verification of this changed candidate.
 - **Client:** Prism launch, existing-world migration, all recipes and endgame compatibility still pending. Back up worlds; removing mods from a world that has their items/blocks can lose contents. Test on a disposable world first.
+
+## Live dual-vampire client tests (2026-11-14)
+
+- **PASS (user-reported): Vampirism -> JAWR.** After Fangs/Sanguinare Vampiris, both states PRESENT once experimental config was enabled. Initial failure was caused by default-disabled settings.
+- **PASS (user-reported): JAWR -> Vampirism.** Drinking a creative-spawned Lilith blood item initialized both native providers; the legitimate ritual is not tested.
+- **PASS (user-reported): Vampirism feeding.** Suck Blood worked on a cow, increasing unified blood; chickens are not a valid native Vampirism blood source (zero blood).
+- **PASS (user-reported): JAWR feeding.** JAWR Drink Blood via active ability bar/right-click and JAWR drink item increased shared blood. Owner also observed blood reduction after damage.
+- **OPEN:** unified **spending**/double-debit, near-empty casts, rapid retries, fractional carries, native leveling/capacity, save/relogin, hunger, sun/garlic/fire, cure, death, multiplayer. [Focused next test instructions](VAMPIRE-CHASSIS-V1-TEST-PLAN.md).
+- **Next-build desired-only client mod:** Colorful Hearts 10.5.9 for NeoForge MC 1.21.1, confirmed publication but *not yet installed*; must client-test high health and compatibility with JAWR/Vampirism/AppleSkin.
+
+These results are first-person client test reports, **not** independently captured diagnostic readouts or automatically reproduced CI results. Do not promote the vampire bridge to release-ready.
