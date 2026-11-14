@@ -73,7 +73,7 @@
 
 ## First implementation slices
 
-1. **Core MXP ledger and global boss tracker:** server-only UUID ledger, first-time registry, simple fixed / divided award dispatcher, Pufferfish native XP grant, respec persistence, percent progress display, first/repeat generic boss smoke. No magic-mod source integration needed for initial simulator.
+1. **Core MXP ledger and global boss tracker:** server-only UUID ledger, first-time registry, simple fixed / divided award dispatcher, Tyz's Skills XP grant (MXP-only), respec persistence, percent progress display, first/repeat generic boss smoke. No magic-mod source integration needed for initial simulator.
 2. **Totemic ritual pilot:** use documented 1.21.1 KubeJS **TotemicEvents.ceremonyStartupSuccess** to detect a successful ceremony. Confirm callback payload, whether firing happens before another handler can cancel, and how actual instrument performers can be credited. First completion fixed; repeat divided; *do not alter music/minigame*.
 3. **Embers player resource pilot:** Java subscriber to **EmberRemoveEvent**, where owner and pre-discount amount exist. Validate item-paid Cinder Staff/Blazing Ray; no award for refueling, pumping or stationary machine consumption. This is the strongest ready-to-prototype expenditure path.
 4. **Ars Nouveau + Iron's shared pool:** first verify actual Ars 'n Spells ISS Primary config and real debit sequence for both spell families. Build **one** canonical payment observer and pair it with accepted caster action/nominal cost. Tests must disprove duplicate awards and preflight/failure awards before enabling.
@@ -90,7 +90,7 @@ Per ritual/craft: recipe/ceremony stable ID, first completion criteria, repeat i
 
 ## Source anchors for the current confidence calls
 
-- [Pufferfish Skills description and XP commands](https://www.curseforge.com/minecraft/mc-mods/puffish-skills)
+- [Tyz's Skills public XP API and custom skill data](https://github.com/Tyzbrand/TyzsSkills/blob/mc1.21.1-(main)/docs/kubejs/kubejs_methods.md)
 - [Totemic 1.21.1 KubeJS ceremony success event](https://kubejs.com/wiki/addons/totemic)
 - [Embers user-project source audit and event paths](EMBERS-SKILLS-AND-ECONOMY-AUDIT-2026-11-13.md)
 - [JAWR personal infusion audit](JAWR-0.5.39-INFUSION-SYMBOLOGY-PUFFERFISH-AUDIT-2026-11-14.md)
