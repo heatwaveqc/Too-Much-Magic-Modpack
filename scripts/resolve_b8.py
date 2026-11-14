@@ -16,6 +16,7 @@ MANIFEST=ROOT/"manifest/mods.json"
 PROJECTS=[
  ("balm",531761,"balm-neoforge-1.21.1-21.0.67.jar","both"),
  ("bookshelf",228525,"bookshelf-neoforge-1.21.1-21.1.81.jar","both"),
+ ("prickle",1023259,"prickle-neoforge-1.21.1-21.1.11.jar","both"),
  ("akashic-tome",250577,"AkashicTome-1.8-30.jar","both"),
  ("crafting-tweaks",233071,"craftingtweaks-neoforge-1.21.1-21.1.11.jar","both"),
  ("simple-backups",583228,"SimpleBackups-1.21-4.0.30.jar","server"),
@@ -53,6 +54,7 @@ def main():
   # other files are validated against the ATM10 baseline below.
   args=["packwiz","--yes","curseforge","add","--addon-id",str(project)]
   if id=="crafting-tweaks":args+=["--file-id","8697050"]
+  if id=="prickle":args+=["--file-id","6961457"]
   if id=="oracle-index":args+=["--file-id","9506889"]
   run(*args)
   files=[]
@@ -109,7 +111,7 @@ def main():
   raise RuntimeError("Disallowed travel mod enabled")
  m["mods"].sort(key=lambda x:x["id"])
  next(b for b in m["batches"] if b["id"]=="B10")["status"]="installed_server_boot_pending"
- m["note"]="B8 139 pinned mods (126 B7 + 13 new); no Waystones or Explorer's Compass; Farming for Blockheads Market pending purchase-list game audit; projectE/Chaos gate not implemented."
+ m["note"]="B8 140 pinned mods (126 B7 plus 14 including required Prickle); no Waystones or Explorer's Compass; market economy not yet validated."
  MANIFEST.write_text(json.dumps(m,indent=2)+"\n")
  pack=ROOT/"pack.toml"
  pack.write_text(re.sub(r'(?m)^version = ".*"$',

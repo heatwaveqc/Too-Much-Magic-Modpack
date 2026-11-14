@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 requested QoL additions: all eight prior shortlist items, Akashic Tome and Nature's Compass, plus seed-market Farming for Blockheads and Balm/Bookshelf. Waystones excluded, Explorer's Compass not approved, existing 126-client-QoL baseline preserved.",
+  "note": "B8: 126 previous mods plus 14 additions including Prickle configuration library = 140 total; Waystones excluded.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -1440,6 +1440,18 @@
       "packwiz_slug": "polymorph"
     },
     {
+      "id": "prickle",
+      "name": "Prickle",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/prickle",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required transitive config library for B8 QoL suite. NeoForge MC1.21.1 21.1.11 stable, project 1023259 file 6961457."
+    },
+    {
       "id": "primal-magick",
       "name": "Primal Magick",
       "category": "magic",
@@ -2160,6 +2172,7 @@
         "more-overlays-updated",
         "natures-compass",
         "oracle-index",
+        "prickle",
         "simple-backups",
         "spark"
       ],

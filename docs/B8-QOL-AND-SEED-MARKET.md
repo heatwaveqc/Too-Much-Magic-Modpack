@@ -1,7 +1,7 @@
 # B8 QoL addition decision (2026-11-13 local)
 
 ## User-selected additions
-The user approved **Nature's Compass and the other QoL mods** recommended in the previous ATM10 shortlist, excluding **Waystones**. This selects ten functional QoL additions and the seed-market mod asked about, with two supporting libraries:
+The user approved **Nature's Compass and the other QoL mods** recommended in the previous ATM10 shortlist, excluding **Waystones**. This selects ten functional QoL additions and the seed-market mod asked about, with three supporting libraries:
 
 | Canonical ID | Feature | CurseForge project | ATM10 current matched 1.21.1 jar |
 |---|---|---:|---|
@@ -18,6 +18,7 @@ The user approved **Nature's Compass and the other QoL mods** recommended in the
 | farming-for-blockheads | **seed and sapling Market**, separate from Farmer's Delight; sprinklers and husbandry | 261924 | farmingforblockheads-neoforge-1.21.1-21.1.14.jar |
 | balm | required library (Crafting Tweaks, Farming for Blockheads) | 531761 | balm-neoforge-1.21.1-21.0.67.jar |
 | bookshelf | required library (Enchantment Descriptions) | 228525 | bookshelf-neoforge-1.21.1-21.1.81.jar |
+| prickle | required configuration library | 1023259 | prickle-neoforge-1.21.1-21.1.11.jar |
 
 Source: official ATM10 `config/crash_assistant/modlist.json` from https://github.com/AllTheMods/ATM-10, plus mod-author CurseForge project pages. This uses the **ATM10 release snapshot** except **Oracle Index 1.4.1 (NeoForge MC 1.21.1 stable, CurseForge file 9506889)**, verified from its official project listing: https://www.curseforge.com/minecraft/mc-mods/oracle-index/files/9506889 . Newer upstream files are never accepted silently.
 
@@ -36,3 +37,7 @@ Source: official ATM10 `config/crash_assistant/modlist.json` from https://github
 - Preserve prior known-good 126-mod B7 baseline.
 - Dedicated-server boot plus fresh Prism GUI/world client check. Client-only GUI features can't be proven by a headless server.
 - Backup retention config and a trial restoration on a disposable world before relying on Simple Backups for important saves.
+
+## Follow-up: Prickle and beta status
+- **Prickle** was automatically installed as a required configuration-library dependency of this exact QoL selection. Explicitly register its stable MC 1.21.1 NeoForge build (CurseForge project 1023259, file 6961457); it provides no progression-changing features.
+- **Simple Backups 1.21-4.0.30 is beta-tagged** on CurseForge (file 7965880). Treat it as an experimental test in this pack, not a production-safety guarantee. Test backup retention, disk usage, successful restore before relying on it for valuable saved worlds. https://www.curseforge.com/minecraft/mc-mods/simple-backups/files/7965880
