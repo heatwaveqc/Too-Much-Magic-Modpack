@@ -198,6 +198,18 @@
       "packwiz_slug": "artifacts"
     },
     {
+      "id": "aspect-alchemy",
+      "name": "Aspect Alchemy",
+      "category": "alchemy",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Experiment-driven ingredient-aspect alchemy. Explicitly in the user's selected Strongly Investigate group and therefore approved; guard against conflict with multiple existing alchemy systems. No replacement/overhaul of existing potion rules without separate consent. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "astral-sorcery",
       "name": "Astral Sorcery",
       "category": "magic",
@@ -411,6 +423,18 @@
       "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
+      "id": "enchanted-witchcraft",
+      "name": "Enchanted: Witchcraft",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Rituals, poppets, herbology and cauldron-based witchcraft. Approved despite overlapping witchcraft content; assess integrations. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "enigmatic-legacy-plus",
       "name": "Enigmatic Legacy+",
       "category": "power",
@@ -481,6 +505,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "ferrite-core"
+    },
+    {
+      "id": "feywild",
+      "name": "Feywild",
+      "category": "magic_adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Fey summoning, quests, creatures and companions. Approved; audit worldgen additions with Tectonic. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
     },
     {
       "id": "forbidden-arcanus",
@@ -926,6 +962,18 @@
       "packwiz_slug": "occultism"
     },
     {
+      "id": "pastel",
+      "name": "Pastel",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Color-resonance magic and discovery progression. Approved; audit magical logistics vs pack's generic-transport exclusions. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "patchouli",
       "name": "Patchouli",
       "category": "dependency",
@@ -1118,6 +1166,18 @@
       "packwiz_slug": "roots-classic"
     },
     {
+      "id": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Discover and compose spells in a world-specific magical language. Approved. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "searchables",
       "name": "Searchables",
       "category": "dependency",
@@ -1151,6 +1211,18 @@
       "source": null,
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "summoning-rituals",
+      "name": "Summoning Rituals",
+      "category": "ritual_framework",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Custom ritual altar/framework; KubeJS integration. Approved; define cross-mod recipes later. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
     },
     {
       "id": "tectonic",
@@ -1294,6 +1366,38 @@
     {
       "id": "mystical-agradditions",
       "reason": "Excluded with Mystical Agriculture and its ecosystem/addons."
+    },
+    {
+      "id": "witchcraft-and-curses",
+      "reason": "Current pack decision: omit Witchcraft and Curses. Not selected in Tell Me More triage; minor overlapping ritual content and additional biome/trees."
+    },
+    {
+      "id": "pagans-blessing",
+      "reason": "Current pack decision: omit Pagan's Blessing. Not selected in Tell Me More triage; redundant small ritual system."
+    },
+    {
+      "id": "runology",
+      "reason": "Current pack decision: omit Runology. Not selected in Tell Me More triage; maturity/content concerns. Revisit only on explicit user change."
+    },
+    {
+      "id": "apothecary",
+      "reason": "Current pack decision: omit Apothecary. Not selected in Tell Me More triage. User does not want another potion/effect system interfering with the many existing alchemy mechanics."
+    },
+    {
+      "id": "magitech-arcane-engineering",
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+    },
+    {
+      "id": "relics-rpg-series",
+      "reason": "Current pack decision: omit Relics (RPG Series). Not selected in Tell Me More triage; avoid introducing RPG Series spellcasting/Spell Engine dependencies. Distinct from existing base Relics mod."
+    },
+    {
+      "id": "jewelry-rpg-series",
+      "reason": "Current pack decision: omit Jewelry (RPG Series). Not selected in Tell Me More triage; avoid pulling in RPG Series spellcasting/attribute dependencies."
+    },
+    {
+      "id": "runic-curiosities",
+      "reason": "Current pack decision: omit Runic Curiosities. Not selected in Tell Me More triage; immature and power-balance concerns."
     }
   ],
   "items_blacklist": [
@@ -1452,7 +1556,13 @@
         "embers-re-ignited",
         "totemic",
         "vampirism",
-        "werewolves"
+        "werewolves",
+        "summoning-rituals",
+        "scriptor-magicae",
+        "pastel",
+        "feywild",
+        "enchanted-witchcraft",
+        "aspect-alchemy"
       ],
       "status": "planned_unresolved_releases"
     }
