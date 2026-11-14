@@ -1,0 +1,113 @@
+name: B5 resolve expanded approved roster and boot
+on:
+  push:
+    branches: [build/b5-expanded-approved-roster]
+    paths:
+      - '.github/workflows/b5-resolve-and-boot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build packwiz and verify resolver syntax
+        run: |
+          python3 -m py_compile scripts/resolve_b5.py scripts/download_mods.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Resolve approved Modrinth and CurseForge projects and prerequisites
+        id: resolve
+        continue-on-error: true
+        run: |
+          python3 scripts/resolve_b5.py
+          packwiz list
+      - name: Boot full hash-verified dedicated NeoForge server
+        id: smoke
+        if: steps.resolve.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '420'
+          WORK_DIR: ${{ runner.temp }}/tmm-b5-approved
+        run: bash scripts/smoke_server.sh
+      - name: Record exact failure/passing evidence; commit resolved metadata
+        if: steps.resolve.outcome == 'success'
+        env:
+          SMOKE_RESULT: ${{ steps.smoke.outcome }}
+          TEST_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          data=json.loads(Path('docs/B5-RESOLUTION.json').read_text())
+          passed=os.environ['SMOKE_RESULT']=='success'
+          unresolved=data['unresolved']
+          lines=["# B5 expanded approved roster integration","",
+                 f"**Dedicated server: {'PASS' if passed else 'FAILED / NOT ATTEMPTED'}**.",
+                 "",
+                 "- Evidence: "+os.environ['TEST_URL'],
+                 "- Minecraft 1.21.1 / NeoForge 21.1.265 / Java 21.",
+                 f"- Baseline: {data['baseline_mods']} server-smoked pinned mods.",
+                 f"- New full pack: {data['total_pins']} pinned mods (includes libraries).",
+                 f"- Added: {len(data['added_mods'])} mod projects/dependencies.",
+                 f"- Unresolved approved selections: {len(unresolved)}.",
+                 "- Fresh dedicated-server test only; client boot, worldgen, mechanics and ProjectE chaos gating NOT tested.",
+                 "",
+                 "## New pins", ""]
+          lines += ["- "+name for name in data['added_mods']]
+          lines += ["","## Pending approved mods", ""]
+          lines += ["- "+x['id']+": "+x.get('reason','unknown')[:240].replace('\n',' ') for x in unresolved]
+          lines += ["","## Decision roster", "",
+            "The 32 additions in design PR #6 were reconciled onto B4 before resolution.",
+            "Never install the excluded or maturity-review-only candidates, or introduce generic logistics, AE2/RS, Sophisticated, Create, original Blood Magic or Ultimine.",
+            "The original 71-mod pack remains recoverable on build/b4-reactors-experimental.",
+            ""]
+          Path('docs/B5-TESTING.md').write_text('\n'.join(lines))
+          mf=Path('manifest/mods.json')
+          m=json.loads(mf.read_text())
+          next(b for b in m['batches'] if b['id']=='B7')['status']='server_smoked_client_pending' if passed else 'server_boot_failed_pending_diagnosis'
+          mf.write_text(json.dumps(m,indent=2)+'\n')
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/ index.toml pack.toml manifest/mods.json docs/B5-RESOLUTION.json docs/B5-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "test(b5): pin expanded approved roster and record actual server boot result"
+            git push origin HEAD:build/b5-expanded-approved-roster
+          fi
+      - name: Upload complete B5 server logs and resolution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b5-expanded-approved-mod-test
+          path: |
+            docs/B5-TESTING.md
+            docs/B5-RESOLUTION.json
+            ${{ runner.temp }}/tmm-b5-approved/server.log
+            ${{ runner.temp }}/tmm-b5-approved/logs/latest.log
+            ${{ runner.temp }}/tmm-b5-approved/crash-reports
+          if-no-files-found: warn
+      - name: Report red integration check when resolution or boot fails
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: |
+          echo "Resolver: ${{ steps.resolve.outcome }}"
+          echo "Dedicated server: ${{ steps.smoke.outcome }}"
+          exit 1
