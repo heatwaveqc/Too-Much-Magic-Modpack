@@ -19,6 +19,13 @@ class DisciplineRulesTest {
         }
     }
 
+    @Test void stepAssistRequiresFactionRootAndValidGear() {
+        assertTrue(permitsStepAssist(true, true, true));
+        assertFalse(permitsStepAssist(false, true, true));
+        assertFalse(permitsStepAssist(true, false, true));
+        assertFalse(permitsStepAssist(true, true, false));
+    }
+
     @Test void conventionalWeaponsAndArmorSuppressDiscipline() {
         assertTrue(equipmentPermitsDiscipline(false, false));
         assertFalse(equipmentPermitsDiscipline(true, false));
