@@ -93,6 +93,22 @@ def inspect_pin(pin: str) -> None:
                 ):
                     if target in z.namelist():
                         print("JAWR_EXACT_JSON", target, z.read(target).decode("utf-8")[:16000], flush=True)
+                # Exact JAWR control names and default key IDs for 0.5.39.
+                for key, val in sorted(lang.items()):
+                    if any(x in key.lower() for x in ("key.", "keybind", "key_binding", "keybinding", "ability.", "category.witchery", "controls.")):
+                        print("JAWR_CONTROL_LANG", key, "=", str(val)[:260], flush=True)
+                for cls in sorted(classes):
+                    if any(x in cls.lower() for x in ("keybind", "keybinding", "keymapping", "keymapping", "keyhandler", "abilityscreen", "abilityselection", "abilityhud", "abilityinput", "clientability")):
+                        print("JAWR_CONTROL_CLASS", cls, flush=True)
+                for cls in sorted(classes):
+                    if not any(x in cls.lower() for x in ("keybind", "keybinding", "keymapping", "keyhandler")) or "$" in cls:
+                        continue
+                    proc = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=25)
+                    print("JAWR_CONTROL_BYTECODE", cls, "exit", proc.returncode, flush=True)
+                    for ln in proc.stdout.splitlines()[:750]:
+                        if any(x in ln.lower() for x in ("key.", "keybind", "keymapping", "glfw_key", "mouse", "ability", "open", "activate", "toggle", "shift", "mousebutton", "key_", "input", "scroll", "select")):
+                            print(" JAWR_CONTROL_BC", ln[:350], flush=True)
                 # Acquisition entrypoints: identify what triggers first-level advancement,
                 # how the sacrificial circle is created, and ritual materials.
                 for cls in sorted(classes):
