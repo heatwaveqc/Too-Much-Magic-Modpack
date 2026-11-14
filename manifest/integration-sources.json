@@ -85,13 +85,15 @@
       "note": "Research pilot; not added as gameplay JAR"
     },
     {
-      "name": "tyzs-core-first-wave",
-      "branch": "feature/tyzs-core-magic-first-wave",
+      "name": "tyzs-primary-runtime-migration",
+      "branch": "feature/tyzs-primary-tree-runtime-migration",
       "paths": [
-        "compat/magic/"
+        "compat/magic/",
+        "scripts/activate_tyzs.py",
+        "scripts/verify_tyz_migration.py"
       ],
-      "mode": "source-and-test-only",
-      "note": "Four 99-rank skills and MXP-only config preview; do not install the overlay without exact Tyz 6.4.2 pin and Pufferfish migration"
+      "mode": "runtime-experimental",
+      "note": "MANDATORY next rolling QA build: exact Tyz 6.4.2 Modrinth SHA-512 pin, four 99-rank Core Magic skills staged as real config, old Pufferfish Skills pin removed, native Tyz activity XP disabled. Shared MXP awards and external form gates are still pending; admin-only XP for first in-game tests."
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -146,13 +148,13 @@
     "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation.",
     "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot.",
     "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic.",
-    "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work."
+    "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work.",
+    "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated."
   },
   "pending_runtime_work": [
+    "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
+    "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
-    "Core Magic Tyz overlay is source-stageable and statically validated but not installed in packwiz until Tyz 6.4.2 is pinned; no playable skill UI yet",
-    "Tyz 6.4.2 pack pin and MXP-only XP runtime bridge not yet implemented on an active branch",
-    "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
     "New five-form Tyz trees and external locks are currently design-only",
     "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
