@@ -60,7 +60,7 @@ These are **not** hard bans. User is leaning against them unless an actual disti
 - Vampirism
 - Werewolves
 - Howling Werewolf
-- Toil and Trouble — check whether the relevant potion/cauldron mechanics are genuinely duplicated by Iron's Spells before claiming this overlap.
+- Toil and Trouble — **overlap confirmed, not exact duplication**: Iron's Spells already provides an Alchemist Cauldron with fluid-based Brew/Fill/Empty recipes, ink and elixir production; Toil and Trouble adds conventional Brewing Stand potion recipes to vanilla cauldrons (and dipped tipped arrows). Keep soft-excluded, as the value appears incremental. Sources: https://iron.wiki/changelog/ and https://modrinth.com/mod/toil-and-trouble .
 - Spells & Shields
 - Wizards (RPG Series)
 - Paladins & Priests (RPG Series)
