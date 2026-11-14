@@ -140,3 +140,9 @@ These nine are recorded in the manifest's `excluded` list, with the reason that 
 
 ## B6 actual implementation follow-up
 The latest selection corrections above are authoritative: **Aspect Alchemy was rejected and is no longer installed**, overriding its provisional B5 boot-test presence. The eight approved food mods, Pufferfish Skills/Attributes and Improvable Skills 3/HammerLib have all been pinned. A total of **125** mod metadata records (118 server-side) passed the full NeoForge dedicated-server smoke in [run 43554705678](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43554705678). The graphical client, food/tag mechanics, skill-tree UI, transformation behavior and all progression locks remain untested.
+
+## J. Re:Avaritia and Extended Crafting — excluded after on-hold correction (2026-11-14)
+
+- The owner explicitly placed **both mods on hold** during mod selection. They were subsequently pinned and included in B5-B8 in error. This later corrective decision **excludes both**.
+- Rationale: Re:Avaritia's extreme gear and a separate Extended Crafting ultimate progression compete with the intended Draconic Evolution / ProjectE Gem Armor endgame.
+- Moved both IDs to `manifest.excluded`, removed packwiz metadata, and removed their proposed Ultimate Crafting quest chapter. Do not reactivate them without a new decision.

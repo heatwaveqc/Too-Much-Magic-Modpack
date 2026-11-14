@@ -1,12 +1,12 @@
 # Quest chapter inventory — B8 live roster
 
-**Source:** `manifest/mods.json` on `build/b8-qol-compass-farming-market`, commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`, reviewed 2026-11-13/14. Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
+**Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
 
-- **148** desired-roster records; **140** enabled packwiz mod pins; **8** inactive/unpinned entries.
-- **46** proposed chapters grouped into exactly **five** top-level categories: **Introduction (3), Progression (5), Magic (25), Exploration & Combat (9), Endgame (4)**.
-- **89 of 140** active mods are explicitly associated with one primary chapter as its content or closely related addon; **51 of 140** are cross-cutting libraries, performance mods, or server tooling with **no independent chapter**. Mod IDs in tables are intended for reconciliation, not all exact game item IDs.
+- **146** selected-roster records; **138** enabled packwiz mod pins; **8** inactive/unpinned entries; the removed two are listed in `excluded`, not as inactive candidates.
+- **45** proposed chapters grouped into exactly **five** top-level categories: **Introduction (3), Progression (5), Magic (25), Exploration & Combat (9), Endgame (3)**.
+- **87 of 138** active mods are explicitly associated with one primary chapter as its content or closely related addon; **51 of 138** are cross-cutting libraries, performance mods, or server tooling with **no independent chapter**. Mod IDs in tables are intended for reconciliation, not all exact game item IDs.
 - This inventory uses the **newer B8 branch**. The already-authored preliminary FTB first-log quest and Akashic Tome plan are maintained separately in [PR #14](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/14), based on B6, and need reconciliation before actual quest deployment.
-- **No mod addition, removal, item-gating or rewards** are authorized by this inventory.
+- **This branch also implements the owner's explicit removal** of Re:Avaritia and Extended Crafting; no new mod additions, item-gating or quest rewards are authorized by the inventory.
 
 ## Five-category structure and chapter ownership
 
@@ -74,14 +74,13 @@
 | **Vampirism** | `vampirism` | Vampire/hunter factions and progression; unified transformation rules crosslink. **Review:** Do not implement race rewards before transformation compat is verified. |
 | **Werewolves** | `werewolves` | Werewolf progression, forms, factions, and interactions with Vampirism. **Review:** Approved transformation model supersedes exclusivity assumptions in older docs. |
 
-### Endgame — 4 chapters
+### Endgame — 3 chapters
 
 | Proposed chapter | Primary contents / related mod IDs | Scope and caveats |
 | --- | --- | --- |
 | **Draconic Evolution** | `draconic-evolution` | Draconic crafting, power, gear and Chaos Guardian. |
 | **ProjectE** | `projecte`, `project-expansion` | EMC and Project Expansion, strictly after Chaos Guardian unlock; no recipe/loot/quest bypass. **Review:** Must remain locked post-Guardian across every acquisition/usage path. |
 | **Replication** | `replication` | Late deepslate replica ore and ultimate Occultism miner route; boss-gated renewable resources. **Review:** Do not confuse with Theurgy transmutation. |
-| **Ultimate Crafting** | `re-avaritia`, `extended-crafting` | Re:Avaritia and Extended Crafting, culminating recipes and expensive goals. **Review:** Do not allow alternate crafting to bypass Chaos Guardian and other gates. |
 
 ## Active mods without a standalone chapter (51)
 
@@ -125,8 +124,7 @@ Special cases:
 5. **Apotheosis**: assigned to Exploration & Combat rather than Magic; close-coupled Apothic Attributes, Enchanting and Spawners stay in its chapter.
 6. **Vampirism and Werewolves**: **two** chapters, crosslinked to JAWR/Goety transformations and future unified rules. Do not build quests that assume unreviewed transformation conflicts.
 7. **Draconic Evolution** sits in Endgame rather than Magic; **Bigger Reactors Rework** sits in Progression's exceptional-power chapter. This preserves the pack's deliberate limited tech scope.
-8. **Extended Crafting** is part of Endgame's Ultimate Crafting chapter with Re:Avaritia, rather than occupying a separate chapter as a standalone recipe framework.
-9. **Gateways to Eternity** remains a full combat chapter despite potential drop-farming exploits; quest design must not trivialize boss-loot gating.
+8. **Gateways to Eternity** remains a full combat chapter despite potential drop-farming exploits; quest design must not trivialize boss-loot gating.
 
 ## Production notes
 
@@ -136,3 +134,9 @@ Special cases:
 - Never use a quest reward to bypass Chaos Guardian ProjectE lock, Cataclysm boss materials, the Eldritch Ancient Miner, forbidden Ring of the Seven Deadly Sins, or bag-in-bag policy.
 - Consider quest breadth: major systems get teachable progression milestones and a few exploration challenges; do not artificially assign fifty crafting checks to simple utility mods.
 - Quest data, exact item/registry IDs, chapter localization, folder ordering, FTB GUI layout, team semantics and rewards are **future implementation work**.
+
+## Removed from the pack and from quest planning
+
+- **Re:Avaritia** (`re-avaritia`) — explicitly excluded; its Infinity-tier endgame undermines signature Draconic Evolution progression and ProjectE Gem Armor.
+- **Extended Crafting** (`extended-crafting`) — explicitly excluded; no competing standalone ultimate-crafting chapter or alternate final crafting economy.
+- Previous B5/B8 smoke-test records that mention these mods are **historic** and must not be mistaken for the updated 138-mod candidate. The chapter plan is now 45, not 46.

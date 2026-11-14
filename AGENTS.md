@@ -11,7 +11,7 @@ This file governs every automated contributor and pack change.
 - Preserve known gameplay decisions in docs/PROGRESSION.md and docs/DESIGN.md. Do not implement progression in the bootstrap stage.
 
 ## Unbreakable exclusions
-No Create, original Blood Magic, Sophisticated Storage, generic backpacks, generic item logistics, Applied Energistics 2 (AE2), Refined Storage, FTB Ultimine. No generic FE transfer mod: Draconic Evolution supplies the high-end energy movement.
+No Create, original Blood Magic, Sophisticated Storage, generic backpacks, generic item logistics, Applied Energistics 2 (AE2), Refined Storage, FTB Ultimine. **No Re:Avaritia or Extended Crafting** (owner rejected competing Infinity-tier endgame after the earlier on-hold status was accidentally ignored). No generic FE transfer mod: Draconic Evolution supplies the high-end energy movement.
 Never add the Ring of the Seven Deadly Sins to any normal acquisition route.
 
 ## Build protocol

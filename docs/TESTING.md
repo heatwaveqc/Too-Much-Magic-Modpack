@@ -75,3 +75,9 @@ Never reclassify step 1 as steps 2–5.
 - 14 additional exact mod JAR pins: 11 selected features plus Balm/Bookshelf/Prickle; old B7 baseline remains untouched.
 - **Client delivery metadata corrected**: beta-tagged Simple Backups was moved from `side = "server"` to `side = "both"` for Prism singleplayer, without changing the JAR, version, hash or server composition. [Final Prism ZIP build](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560531515) passed packwiz hash validation and ZIP structure checks. [Import artifact](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560531515/artifacts/14099663054) pins immutable revision `0c214d24793f2c9d912b4540e609bd04cb7b5e9a`.
 - **Not tested:** actual GUI/JEI interactions, Market seed/sapling trades (especially magical), crop and Pam's integration, compass biome search, inventory shortcuts, backup creation/retention/restore, profiler and overlay interactions. Use a disposable world. In particular, **do not trust Simple Backups as sole data protection** while beta and unverified.
+
+## B8 corrective removal candidate (2026-11-14)
+
+- **Scope:** remove Re:Avaritia and Extended Crafting as explicitly excluded by owner. Reduce 140 pinned mods to **138** (previous 127 server/both-side -> 125 server/both-side, 13 client-only unchanged). Two packwiz metafiles removed; manifest and SHA-256 hash chain updated.
+- **Status when authored:** metadata validation and fresh combined NeoForge dedicated-server test **pending** on `design/five-category-quest-chapter-inventory`. Do not mistake the earlier 140-mod B8 test for verification of this changed candidate.
+- **Client:** Prism launch, existing-world migration, all recipes and endgame compatibility still pending. Back up worlds; removing mods from a world that has their items/blocks can lose contents. Test on a disposable world first.

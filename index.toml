@@ -249,11 +249,6 @@ hash = "b9363f3ba7f2ac384cca83c42054485d1b6473d114064cf3aec7933924932bc2"
 metafile = true
 
 [[files]]
-file = "mods/extended-crafting.pw.toml"
-hash = "ba64df29d7c2f4c93f22df576ac4d217eeb695cab602769dc03bbebf1868aa6b"
-metafile = true
-
-[[files]]
 file = "mods/extra-botany-revived.pw.toml"
 hash = "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f"
 metafile = true
@@ -611,11 +606,6 @@ metafile = true
 [[files]]
 file = "mods/quest-giver.pw.toml"
 hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
-metafile = true
-
-[[files]]
-file = "mods/re-avaritia.pw.toml"
-hash = "e75969c25c0529850591b1fc4f32327c9974388361f45c05176b3919cc172716"
 metafile = true
 
 [[files]]

@@ -31,3 +31,9 @@ No implemented progression locks, recipe overhaul, questline, substitutions, bal
 - **Improvable Skills 3** is a separate experience-point upgrade system installed on explicit user request. Audit overlap and balance against the custom Pufferfish tree once that is designed.
 - New food suite is Pam's HarvestCraft 2 all four modules, Farmer's Delight, Aquaculture 2, Harvest with Ease and Cobweb. **Aspect Alchemy is a current exclusion.**
 - **125 mods have passed a server-only boot**, not a client/world/integration certification.
+
+## Owner-locked endgame exclusions (2026-11-14)
+
+- **Re:Avaritia and Extended Crafting are excluded.** Both were placed on hold in the selection discussion but incorrectly remained pinned through B8. Their infinity-tier/ultimate crafting power would compete with signature Draconic Evolution progression and ProjectE's Gem Armor.
+- Maintain Draconic Evolution, the Chaos Guardian, and post-Guardian ProjectE/Project Expansion as the intended equipment apex. Do not reintroduce those two mods or design quests for them without new owner approval.
+- **Skills & Advancement** and **Exceptional Power: Reactors** are approved as distinct subchapters of the **Progression** top-level category.

@@ -5,12 +5,12 @@
 ## Categories
 
 1. **Introduction** — `Getting Started`, `Tips & Tricks`, `Food & Fishing`. Consolidates intro, player reference, cooking/farming, seed market and fishing.
-2. **Progression** — `Basic Progression`, `Advanced Progression`, `Endgame Roadmap`; additional `Skills & Advancement` and `Exceptional Power: Reactors` proposed because they are cross-mod mechanics, not schools of magic. Endgame Roadmap is an overview, **not** duplicated Endgame rewards.
+2. **Progression** — `Basic Progression`, `Advanced Progression`, `Endgame Roadmap`; additional `Skills & Advancement` and `Exceptional Power: Reactors` owner-approved because they are cross-mod mechanics, not schools of magic. Endgame Roadmap is an overview, **not** duplicated Endgame rewards.
 3. **Magic** — chapter for every substantial independent *primary* magic system. Integrate addon content into the parent chapter wherever possible; 25 candidates from B8, including magical industry and Reliquary.
 4. **Exploration & Combat** — each substantial dimension, boss, encounter, special equipment or supernatural faction system; 9 candidates from B8.
-5. **Endgame** — dedicated late-game mod systems and ultimate milestones; 4 proposed: Draconic Evolution, ProjectE + Expansion, Replication, Re:Avaritia + Extended Crafting. Real locks belong to game mechanics, not quest completion alone.
+5. **Endgame** — dedicated late-game mod systems and ultimate milestones; 3 approved chapters: Draconic Evolution, ProjectE + Expansion, Replication. Re:Avaritia and Extended Crafting are excluded because they displace the intended Draconic Evolution/Gem Armor peak. Real locks belong to game mechanics, not quest completion alone.
 
-**Counts:** Introduction 3 + Progression 5 + Magic 25 + Exploration & Combat 9 + Endgame 4 = **46 proposed chapters**. These are design candidates, not all locked individually. No optional sixth category has been approved.
+**Counts:** Introduction 3 + Progression 5 + Magic 25 + Exploration & Combat 9 + Endgame 3 = **45 proposed chapters**. These are design candidates, not all locked individually. No optional sixth category has been approved.
 
 ## General chapter design contract
 
@@ -29,3 +29,9 @@
 ## Recommended design order
 
 Finalize the five-category navigation and overall quests skeleton; design Introduction and its Food & Fishing chapter first; write Basic/Advanced/Endgame Roadmap crosslinks; then flesh out Magic and Exploration & Combat in mod clusters. Defer detailed Endgame rewards and bosses until gates are integrated and validated.
+
+## Owner lock: excluded ultimate-crafting mods (2026-11-14)
+
+- **Do not install Re:Avaritia or Extended Crafting** or reserve Endgame chapters for them. The owner previously placed both on hold; they were mistakenly pinned in B5/B8 and carried forward into an incorrect 46-chapter inventory.
+- Intended top-tier play is Draconic Evolution, Chaos Guardian, ProjectE and Project Expansion's Gem Armor, plus difficult resource acquisition. Their signature equipment should not be made obsolete by Infinity-tier gear or a competing standalone ultimate-crafting stack.
+- **Skills & Advancement** and **Exceptional Power: Reactors** are explicitly approved as additional Progression chapters.

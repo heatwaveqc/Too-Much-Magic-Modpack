@@ -5,7 +5,7 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 ## Known compatible release targets (publication verified only)
 - Neo Vitae 1.21.1-1.1.51; Occultism 1.21.1-neoforge-1.227.0; Ars Nouveau 5.13.5; Iron's Spells 3.16.3.
 - Theurgy 1.79.0; Astral Sorcery 2.0.3 **alpha**; Roots Classic 1.5.10; Mahou Tsukai 1.36.31; EvilCraft 1.2.100.
-- Just Another Witchery Remake 0.5.11; Cataclysm 3.33; Extended Crafting 7.0.9; Re:Avaritia 1.4.4.
+- Just Another Witchery Remake 0.5.11; Cataclysm 3.33. **Historical published files for Extended Crafting 7.0.9 and Re:Avaritia 1.4.4 are now excluded by owner decision.**
 - Draconic Evolution 3.1.4.633 **beta**; Project Expansion 1.0.6; FTB Quests 2101.1.38; FTB Chunks 2101.1.24; KubeJS 2101.7.2-build.381.
 - Ars Nouveau and other mods may have newer versions than a search provider's cached main-file display. Exact file metadata must be pinned by packwiz, not inferred from this list.
 
@@ -83,3 +83,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - **Simple Backups 1.21-4.0.30 beta** (CurseForge 583228/7965880), explicitly `side = "both"` for Prism integrated singleplayer. Restore and safe retention unverified.
 - **Market risk**: Farming for Blockheads sells seeds and saplings, potentially including magic seeds/saplings from Ars. Actual enabled Market trade groups and pricing must be examined from in-game registry/config and locked to mundane crops before survival release. Server boot is not economy validation. [Design warning and full matrix](B8-QOL-AND-SEED-MARKET.md).
 - **Waystones explicitly omitted**; Explorer's Compass similarly not included. GUI key collisions across Nature's Compass, KeyBind Bundles, Pufferfish, Mouse Tweaks and ReFoxed still require user client check. Oracle Index wiki coverage depends on supported mod wikis.
+
+## Removal from pinned candidate: Re:Avaritia and Extended Crafting (2026-11-14)
+
+- Owner corrected an earlier oversight: both mods were put **on hold**, not approved for the final build. Their alternate ultimate crafting and Infinity-tier equipment would undermine Draconic Evolution and post-Guardian ProjectE Gem Armor.
+- Removed the two corresponding packwiz metafiles and index entries from the new candidate, moved both IDs from active `manifest.mods` into explicit `manifest.excluded`, and updated the pack hash chain. Original B5/B8 results remain historic evidence of their **previous** presence.
+- Combined **138-mod** server and client regression tests are required for the new candidate. Do not claim the historic 140-mod B8 smoke validates this new candidate.
