@@ -83,6 +83,9 @@ Garlic injection makes Hunter a *modified-human physiology*, not merely a job. W
 7. Preserve non-species school advancement unless that advancement genuinely requires excluded biology. Death-event mechanics are tracked separately in [DEATH-MECHANICS-AUDIT.md](DEATH-MECHANICS-AUDIT.md).
 8. No silent conversion of prohibited combinations, no aggressive every-tick flipping of flags, no decompilation claims for JAWR source without an actual pinned artifact. Honor upstream licenses.
 
+## Datapacks and implementation burden
+A source survey of actual [Vampirism and Werewolves data-driven skill-tree JSON](TRANSFORMATION-DATAPACK-SURVEY.md), [Dragon Survival species diets/stages](TRANSFORMATION-DATAPACK-SURVEY.md), and JAWR documented ritual actions confirms that much progression and food integration can use datapacks. **State synchronization, faction exclusivity, double-sun/blood suppression, Archlich death arbitration and physical Dracolich/Abomination compatibility still need a NeoForge bridge.** The current branch has no implementation scripts beyond comments; do not claim these transformations work yet.
+
 ## 6. Open detailed design (not a reopening of the locked target)
 
 - Which exact blood/HUD/sun/wolf-shape implementation is the single authority? Existing proposal uses Vampirism for vampire blood/sun and Werewolves for wolf forms; test JAWR differences first.
