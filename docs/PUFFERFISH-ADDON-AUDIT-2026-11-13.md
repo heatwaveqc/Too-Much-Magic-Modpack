@@ -15,7 +15,7 @@ Scope: Ten addons whose parent mods have already been audited. Psi: Tweaks and A
 | Ars Unification | Nothing separate to enhance | Adds other mods' Crush/Cut processing recipes to existing Ars spell glyphs, including Occultism Crusher Spirits. | Audit recipe economy; no new player-level resource or skill stat. |
 | Extra Botany Revived | Compatible with work | Has its own DamageHandler, custom damage types (including extrabotany:magic_piercing), and equipment modifiers; OwnedEntity is NOT Minecraft OwnableEntity. | Test selected custom magic-damage tags and conventional damage pipeline. Direct health-decrease techniques may bypass Pufferfish damage modifiers. |
 | Goety Cataclysm | Compatible with work | Published 1.21.1 Cataclysm spell and servant expansion. The accessible Polarice3 source is for Minecraft 1.20.1 and shows Goety Spell/SpellStat/SpellType and Summoned inheritance. | Source mismatch: cannot claim verified 1.21.1 inheritance until inspecting the pinned Goety Cataclysm 1.21.1-1.8.4 release or its source. Then test spell schools/servant damage. |
-| Gaze (Malum addon) | Needs investigation | Published 1.21.1 project describes evolving new progression and gameplay; project is ARR and the audit found no matching public Java source. | Inspect pinned 1.1.7.1 JAR or authoritative API/docs for Malum attribute inheritance and unique player stats. |
+| Gaze (Malum addon) | Compatible with work (partial Malum stat) | Author's 1.1.7 notes say *some* Gaze projectiles benefit from Malum's Arcane Resonance; Malum registers that synchronized player attribute in 1.21.1. Exact Gaze bytecode unexamined. | Test Pufferfish attribute changes on affected/unaffected projectiles, Geas, Staff Charge, and trial Iron's compat; see GAZE-SKILLS-AUDIT-2026-11-13.md. |
 
 ## High-impact design issue: Ars 'n Spells
 
@@ -42,4 +42,7 @@ The published Minecraft 1.21.1 release uses file name goety_cataclysm-1.21.1-1.8
 
 ## Scope and status
 
-Nine of ten addons can leave the blanket Needs Investigation bucket (four Confirmed, three Compatible with work, two Nothing separate to enhance). Gaze stays Needs Investigation. Psi: Tweaks and Additions is unchanged and will be audited with Psi. No mod has been called Proven Incompatible.
+All ten addons now have a more specific status than blanket Needs Investigation (four Confirmed, four Compatible with work, two Nothing separate to enhance). Gaze's promotion is based on a documented *partial* inherited attribute, not complete source/runtime verification. Psi: Tweaks and Additions is unchanged and will be audited with Psi. No mod has been called Proven Incompatible.
+
+## Gaze source-limited follow-up (2026-11-13)
+The Gaze 1.1.7 author changelog explicitly says some projectiles benefit from Arcane Resonance. Malum's 1.21.1 attribute registry declares `malum:arcane_resonance` and `malum:charge_recovery_rate`; Gaze's Meditation Ring mentions the latter behavior, but its actual hook remains unverified. The Gaze notes additionally describe trial Iron's Spells compatibility. Full Gaze 1.1.7.1 Java implementation is not inspected. [Focused evidence and test matrix](GAZE-SKILLS-AUDIT-2026-11-13.md).

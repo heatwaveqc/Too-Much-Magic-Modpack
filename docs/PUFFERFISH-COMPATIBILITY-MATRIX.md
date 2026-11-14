@@ -11,8 +11,8 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | State | Count |
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **13** |
-| Compatible with work | **6** |
-| Needs investigation | **15** |
+| Compatible with work | **7** |
+| Needs investigation | **14** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
 | **Total** | **42** |
@@ -35,18 +35,19 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Malum** (`malum`) | The mod exposes player-adjustable Malum attributes in its public 1.21.1 code. | Connect attributes and test resulting spell/spirits effects. |
 | **Neo Vitae** (`neovitae`) | Prior audit found accessible player magic stat/API integration points. | Map exact registered API and attributes into the final tree; runtime test. |
 
-## Compatible with work — concrete integration path identified (6)
+## Compatible with work — concrete integration path identified (7)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
 | **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | Unified mana is the preferred design. Start by testing the mod's default `iss_primary` (Iron's authoritative); verify no Pufferfish cross-system spell-power double counting (3.3.5 pinned vs newer source). |
 | **Extra Botany Revived** (`extra-botany-revived`) | Botania addon with custom DamageHandler, damage types, gear/Curios attributes, and custom-owned entities that do not implement OwnableEntity. | Review magic-damage tags and direct-health attacks; test universal attributes and item enhancements. |
 | **Goety Cataclysm** (`goety-cataclysm`) | Cataclysm spells/servants architecturally extend Goety Spell and Summoned in public 1.20.1 source, but the pinned 1.21.1 code is not matched. | Inspect exact 1.21.1 jar/source and test school potency, soul discount and owned-servant damage. |
+| **Gaze (Malum addon)** (`gaze-malum`) | Gaze 1.1.7 release notes say *some* projectiles benefit from Malum Arcane Resonance, a registered/synced player attribute in Malum 1.21.1. The pinned 1.1.7.1 retains Malum 1.8 support; Gaze bytecode not inspected. | Test which projectiles respond to Pufferfish `malum:arcane_resonance`, remaining custom weapon/Geas paths, Staff Charge recovery and trial Iron's compatibility. No separate Gaze tree unless a genuinely independent player stat is found. |
 | **Occultism** (`occultism`) | Ordinary spirits extend TamableAnimal; generic pet attributes should apply, but special familiars use custom PathfinderMob ownership. | Test spirits; build reusable owner adapter for familiars if needed. |
 | **Primal Magick** (`primal-magick`) | A single datapack damage tag can bridge primalmagick:is_sorcery to Pufferfish magic attributes. Attunement has public setters; pixies/golems use custom ownership. | Test tag; add reusable companion owner bridge; defer skill→attunement if unnecessary. |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (15)
+## Needs investigation — insufficient source evidence yet (14)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -54,7 +55,6 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Rites, poppets and magical progression have not been examined for player-level stat hooks. | Determine whether there are personal magic skills or just item/ritual effects. |
 | **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Artifact-driven personal powers and possible progression; no stat API audit yet. | Determine whether relevant benefits are player attributes or purely equipment-based. |
 | **Feywild** (`feywild`) | Fey summon/quest system; pet ownership interface unexamined. | Check summon entities, owner tracking, pact mechanics and generic pet buffs. |
-| **Gaze (Malum addon)** (`gaze-malum`) | 1.21.1 published addon has distinct evolving progression, but the audit did not find matching public source/API evidence. | Inspect Gaze 1.1.7.1 jar/docs for Malum attr inheritance, soul progression and custom stats. |
 | **HexCast NEOFORGED** (`hexcast-neoforged`) | NeoForge port; personal media and cast mechanics not yet inspected. | Look for media capacity/recovery, efficiency, spell power and entity attributes. |
 | **JAWR: Forbidden Magic** (`forbidden-magic`) | JAWR: Forbidden Magic ten-level lich system has been researched conceptually, not for exact player attribute/API hooks. | Investigate lich attributes, phylactery, necromancy summoning and vampire hybrid mechanics. |
 | **Just Another Witchery Remake** (`witchery-remake`) | JAWR 0.5.39 has native vampirism/lycanthropy and ritual progression; accessible public repository does not expose core Java implementation. | Inspect released JAR, player capability, spell/ritual hooks and transformation progression. |
@@ -87,10 +87,11 @@ None demonstrated.
 
 - **No repeat full audit needed** for Ars Additions, Ars Controle, Ars Elemancy or Ars Elemental. Parent mechanics are source-backed; record only focused in-game regression tests for new glyphs, armor and summoned pets.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
-- **Addon follow-up tests:** Ars 'n Spells unified mana and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's source/binary. These stay separate from the broader investigation queue.
+- **Addon follow-up tests:** Ars 'n Spells unified mana and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
 - **Deferred with parent:** Psi: Tweaks and Additions remains unexamined.
 - **Broader unexplored systems:** Psi, Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
+- **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 
 ## Evidence locations
 
