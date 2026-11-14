@@ -41,6 +41,7 @@ public final class MonkMod {
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onFactionChangePre);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onLogout);
+        NeoForge.EVENT_BUS.addListener(SunsetInitiation::onClone);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onDimensionChange);
         NeoForge.EVENT_BUS.addListener(StepAssistEffects::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(StepAssistEffects::onFactionChanged);
