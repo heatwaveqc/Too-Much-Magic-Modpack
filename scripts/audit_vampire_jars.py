@@ -325,6 +325,22 @@ def inspect_pin(pin: str) -> None:
                         obj = __import__("json").loads(z.read(candidate))
                         if candidate.endswith(("vamp_1.json", "vamp_2.json", "vamp_3.json", "vamp_4.json")):
                             print("JAWR_PROGRESSION_BOOK", candidate, __import__("json").dumps(obj)[:4500], flush=True)
+            if source.name.startswith("just-another-witchery"):
+                for cls in (
+                    "dev.sterner.witchery.content.ability.DrinkBloodAbility",
+                    "dev.sterner.witchery.content.ability.TransfixAbility",
+                    "dev.sterner.witchery.content.ability.NightVisionAbility",
+                    "dev.sterner.witchery.content.ability.SpeedAbility",
+                    "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",
+                    "dev.sterner.witchery.core.api.AfflictionLeveling",
+                    "dev.sterner.witchery.feature.ability.AbilityExecutor",
+                ):
+                    proc = subprocess.run(
+                        ["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=35)
+                    print("JAWR_SPENDING_DISASM", cls, "exit", proc.returncode, flush=True)
+                    for line in proc.stdout.splitlines()[:2250]:
+                        print(" JAWR_SPENDING_BC", line[:340], flush=True)
             # Transaction-specific disassembly for exact pinned versions. Inspect
             # acquisition, cure, feeding and weaknesses before enabling mixins.
             focus = {
