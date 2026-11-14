@@ -67,10 +67,11 @@ for expected in ("goety:magic_emerald", "goety:awakened_emerald_block", "extrabo
     assert expected in ignored
 assert len(audit["resources"]["silver"]["providers"]) >= 4
 assert len(audit["resources"]["lead"]["providers"]) >= 2
-for name in ("iron", "gold"):
-    assert overrides[f"c:dusts/{name}"] == "mahoutsukai"
-assert overrides["c:dusts/copper"] == "occultism"
-assert overrides["c:dusts/sulfur"] == "neovitae"
+for name in ("iron", "gold", "copper", "diamond", "emerald", "quartz",
+             "silver", "lead", "sulfur", "coal", "lapis", "amethyst",
+             "netherite_scrap", "hellforged"):
+    assert overrides[f"c:dusts/{name}"] == "neovitae", name
+assert "mahoutsukai:powdered_(iron|gold|diamond|emerald|quartz)" in ignored
 material_script = (root / "kubejs/server_scripts/material_unification.js").read_text()
 for token in ("mahoutsukai:powdered_", "#c:raw_materials/"):
     assert token in material_script
@@ -82,5 +83,13 @@ assert "c:dusts/netherite_scrap" in processing
 assert "neovitae:materials/smelting_lead_dust" not in processing, (
     "Retain tag-wide Neo Vitae lead dust smelting coverage"
 )
-print("PASS: source-audited silver/lead providers, conventional whitelist, priorities, and special-ore guards")
+bridge = (root / "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js").read_text()
+for name in ("iron", "gold", "diamond", "emerald", "quartz"):
+    assert f"'neovitae:{name}_dust': 'mahoutsukai:powdered_{name}'" in bridge
+for required in ("UseItemOnBlockEvent", "mahoutsukai:mahoujin",
+                 "originalHeld.shrink(1)", "player.setItemInHand(hand, originalHeld)",
+                 "event.cancelWithResult(result)"):
+    assert required in bridge, f"Bridge lacks safety contract: {required}"
+print("PASS: Neo Vitae conventional dust priorities, Mahou circle mappings and original-stack restoration")
+print("PASS: source-audited silver/lead providers, conventional whitelist and special-ore guards")
 print("NOT A BOOT, LIVE REGISTRY, CLIENT, RECIPE, OR WORLDGEN TEST")
