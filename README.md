@@ -2,7 +2,7 @@
 
 A magic-first Minecraft modpack under active construction.
 
-**Status: first integration candidate.** Baseline NeoForge 21.1.265 dedicated-server boot is confirmed. On the `build/b1-kubejs-infrastructure` branch four actual mods are version- and hash-pinned in packwiz: KubeJS, Rhino, Better Advanced Tooltips and ModernFix. Client testing and broader magical integration are still outstanding.
+**Status: metadata/QoL stack passed a dedicated-server smoke test.** On `build/b2-meta-qol`, 30 NeoForge-compatible mods and libraries are pinned in packwiz (23 server-side + 7 client-only). GitHub Actions run [43548230954](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43548230954) downloaded every server-side JAR, verified its hash, and started and cleanly stopped NeoForge 21.1.265. Graphical client boot and major magic systems are still pending.
 
 Read [AGENTS.md](AGENTS.md), [the design contract](docs/DESIGN.md), [the compatibility register](docs/COMPATIBILITY.md), and [the smoke-test ledger](docs/TESTING.md) before modifying progression or activating a mod.
 

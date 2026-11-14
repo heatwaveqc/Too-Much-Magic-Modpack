@@ -1,6 +1,6 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.1.0-b1-candidate"
+version = "0.2.0-meta-qol-server-smoked"
 pack-format = "packwiz:1.1.0"
 
 [index]

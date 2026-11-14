@@ -67,7 +67,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure'
+    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -79,18 +79,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install and launch hash-pinned B1 mods on dedicated NeoForge server
+      - name: Install and launch hash-pinned mods on dedicated NeoForge server
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '180'
-          WORK_DIR: ${{ runner.temp }}/tmm-b1-smoke
+          WORK_DIR: ${{ runner.temp }}/tmm-modded-smoke
         run: bash scripts/smoke_server.sh
       - name: Retain modded-server logs on success and failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tmm-b1-modded-server-logs
+          name: tmm-modded-server-logs
           path: |
-            ${{ runner.temp }}/tmm-b1-smoke/server.log
-            ${{ runner.temp }}/tmm-b1-smoke/logs/latest.log
+            ${{ runner.temp }}/tmm-modded-smoke/server.log
+            ${{ runner.temp }}/tmm-modded-smoke/logs/latest.log
           if-no-files-found: warn
