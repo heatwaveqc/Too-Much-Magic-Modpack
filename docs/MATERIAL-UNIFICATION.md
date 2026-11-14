@@ -7,7 +7,7 @@ Status: **source-and-live-tag audited; dedicated-server smoke passed for the ini
 - One preferred ore (per stone variant), raw material, ingot/gem and dust for each conventional material. All recipe consumers should accept `c:` tags; player-facing outputs prefer one item.
 - Almost Unified 1.4.2 NeoForge handles supported recipe, JEI, loot and vanilla-style ore-feature rewriting. It does not add ores or fix custom generation.
 - Source-audited whitelist: copper, diamond, emerald, gold, iron, lead, quartz, silver, sulfur and saltpeter. Aluminum, nickel, platinum, tin and zinc are **not** force-unified: the actual installed sources inspected so far do not demonstrate duplicate standard ore sets for them. No Create dependency.
-- Preferred material providers: **Occultism for silver** (ore/raw/ingot/dust), **Embers for lead** (ore/raw/ingot), and Minecraft for copper/iron/gold/diamond/emerald. Mahou wins iron/gold/diamond/emerald/quartz *dusts only*, while Occultism wins copper dust and Neo Vitae wins sulfur dust. Primal Magick grits, Eidolon, Werewolves and Embers are now part of the priority list. The provider inventory and exact source-backed IDs are in `manifest/material-ore-audit.json`.
+- Preferred material providers: **Occultism for silver** (ore/raw/ingot), **Embers for lead** (ore/raw/ingot), and Minecraft for copper/iron/gold/diamond/emerald. **Neo Vitae is the canonical provider for generated conventional dusts** (including copper, iron, gold, silver, lead, diamond, emerald, quartz and sulfur). Primal Magick grits, Eidolon, Werewolves and Embers remain in the priority list. **Mahou's powdered iron/gold/diamond/emerald/quartz are separate spell catalysts**: leave their precise items craftable, with c:dusts tag compatibility, and exclude them from Almost Unified output substitution. The provider inventory is in `manifest/material-ore-audit.json`.
 - No uranium, draconium, iesnium, Replication ore, arcane gold, Malum's transformed metals or Pastel's dimension-specific ores in unification. Corrupted Dust, Ender/Eye powder and ritual items remain distinct. Occultism/Eidolon/Embers/Werewolves conventional silver ore variants are unified; Eidolon and Embers lead ore variants are unified.
 
 ## Verified duplicate ore registry sets (source-backed, not yet a runtime dump)
@@ -16,9 +16,10 @@ Status: **source-and-live-tag audited; dedicated-server smoke passed for the ini
 |---|---|---|---|
 | **Silver** | `occultism` | `occultism:silver_ore`, `embers:silver_ore`, `eidolon_repraised:silver_ore`, `werewolves:silver_ore`, plus all four deepslate variants | Each mod's published 1.21.x `data/c/tags/item/ores/silver.json` |
 | **Lead** | `embers` | `embers:lead_ore`, `eidolon_repraised:lead_ore`, plus deepslate variants | Each mod's `data/c/tags/item/ores/lead.json` |
-| **Copper dust** | `occultism` | `occultism:copper_dust`, `primalmagick:copper_grit` | Item tag `c:dusts/copper` |
-| **Iron/gold dust** | `mahoutsukai` | Mahou powders, Primal Magick grits; Occultism gold dust | Item tag `c:dusts/iron` / `c:dusts/gold` |
-| **Sulfur dust** | `neovitae` | `eidolon_repraised:sulfur`, Neo Vitae's dynamic sulfur dust | Item tag `c:dusts/sulfur` |
+| **Copper dust** | `neovitae` | `neovitae:copper_dust`, `occultism:copper_dust`, `primalmagick:copper_grit` | Item tag `c:dusts/copper` |
+| **Iron/gold dust** | `neovitae` | Neo Vitae, Occultism and Primal Magick; Mahou powders are **explicitly exempt catalysts** | Item tags `c:dusts/iron` / `c:dusts/gold` |
+| **Silver/lead dust** | `neovitae` | Neo Vitae material-generated dust, Occultism silver dust and Eidolon lead/silver smelting | Requires live validation of new 14-material config |
+| **Sulfur dust** | `neovitae` | `eidolon_repraised:sulfur`, Neo Vitae's separately registered `neovitae:sulfur` | Item tag `c:dusts/sulfur` |
 
 Embers and Eidolon have separately verified natural silver/lead ore placed features. Occultism and Werewolves also generate silver by configured ore features. These should converge through Almost Unified **for newly generated chunks**. In old chunks, existing duplicate ore blocks remain, but their drops and smelting recipes should converge.
 
@@ -40,6 +41,15 @@ Embers and Eidolon have separately verified natural silver/lead ore placed featu
 - Recovered complete **12-entry Neo Vitae 1.1.53-generated `config/neovitae/materials.json`** from the server artifact. Preserved all original entries and appended **silver** and **lead** to make them valid Athanor/Tabula Vitae dust-processing materials. Their `smelt_to` points to `occultism:silver_ingot` and `embers:lead_ingot` respectively, and `generative:false` prevents extra meteor/dungeon/Prismatic-Demonite injections. Both tags have verified items and canonical targets. Generated `neovitae:silver_dust` should fall into `c:dusts/silver` and `neovitae:lead_dust` into `c:dusts/lead`.
 - The **new** 14-material config requires its own fresh smoke after these final edits. A clean startup does not prove worldgen, custom processing results, JS recipe behavior or the GUI.
 - **Magical-tag false positives found in live dump**: `c:gems/emerald` contains `goety:magic_emerald`; `c:storage_blocks/emerald` contains `goety:awakened_emerald_block`; `c:gems/quartz` contains Extra Botany's `elementium_quartz` / `gaia_quartz`; `c:storage_blocks/quartz` contains seven magical Botania quartz blocks. Four tag groups are now **explicitly excluded** (`ignored_tags`), with individual item regex safeguards (`ignored_items`). These items are mechanically distinct even though their source tags say otherwise.
+
+## Neo Vitae canonical dusts — isolated candidate (2026-11-14)
+
+- Almost Unified's `priority_overrides` chooses `neovitae` for the standard conventional dust tags: copper, diamond, emerald, gold, iron, lead, quartz, silver and sulfur. Dust-only tags added for coal, lapis, amethyst, netherite scrap and hellforged; these do **not** change their ore, raw or ingot target rules. The latter special-resource recipes retain their independent gate audit.
+- Generated items expected from Neo Vitae's configured material system include `neovitae:iron_dust`, `gold_dust`, `copper_dust`, `diamond_dust`, `emerald_dust`, `quartz_dust`, `silver_dust` and `lead_dust`. Sulfur is **`neovitae:sulfur`**, not a generated `sulfur_dust` item. Registered item IDs need to be confirmed for the newly configured silver and lead dust.
+- Almost Unified changes supported JSON recipe outputs to the chosen item. Existing noncanonical dust stacks remain usable as tagged ingredients, and special recipe types/automated item providers require independent testing. Neo Vitae's own generated recipes do **not** require a separate Java bridge for ordinary output selection.
+- **Critical Mahou exception**: its `powdered_iron`, `powdered_gold`, `powdered_diamond`, `powdered_emerald` and `powdered_quartz` are specific ritual catalysts. They are excluded by `ignored_items` from item substitution so Mahou's native hammer/mortar outputs and spell-circle identity checks still work. They remain members of `c:dusts/...` to preserve existing smelting/doubling behavior. `powdered_ender` and `powdered_eye` remain separate magic reagents.
+- No implementation claim of in-world success: verify actual Neo Vitae output from Occultism crusher, Embers/Eidolon processing, Primal Magick grits and Neo Vitae Athanor/Tabula; verify Mahou's Alarm Boundary and Catalyst Exchange **using the Mahou catalyst**, not merely JEI crafting. If a hardcoded processing machine bypasses JSON outputs, add a targeted KubeJS/API integration or tiny Java adapter only for that proven exception.
+- Keep Polymorph as a fallback. A recipe scan and client JEI must check that redirecting output did not create or conceal conflicts, or change 1:1/2:1/3:1 economics.
 
 ## Mahou early-game processing
 
@@ -63,15 +73,15 @@ Embers and Eidolon have separately verified natural silver/lead ore placed featu
 
 | Test | Expected |
 |---|---|
-| Raw iron + hammer | 1 Mahou powdered iron; tool preserved |
+| Raw iron + hammer | 1 **Mahou ritual catalyst** (not unified to Neo dust); tool preserved |
 | Raw iron + mortar/pestle | 2 Mahou powdered iron; tool preserved |
 | Raw gold + mortar/pestle | 2 Mahou powdered gold |
 | Iron/gold ingot + mortar | No 2-powder path |
 | Mahou/Occultism/Neo Vitae iron dust in furnace | 1 iron ingot per dust |
 | Diamond/emerald/quartz gem + mortar | No 2-powder output |
 | Silk Touch diamond/emerald/quartz ore + mortar | 2 powders, provided corresponding tags exist |
-| Occultism 2x/3x/4x/6x and Neo Vitae base/full processing | Existing yields preserved, output canonical |
-| JEI silver/iron/gold variants | One preferred icon; existing alternatives consumed correctly |
+| Occultism 2x/3x/4x/6x and Neo Vitae base/full processing | Existing yields preserved, outputs converge on Neo Vitae dust for conventional tagged materials |
+| JEI silver/iron/gold variants | Neo Vitae dust is the preferred ordinary dust; Mahou ritual powders remain visible and craftable; old dust stacks are accepted |
 | Ore generation in new chunks | No duplicate ordinary veins; no special-resource gate leaks |
 | ProjectE pre/post Chaos Guardian | No pre-gate EMC path; intended post-gate behavior intact |
 
