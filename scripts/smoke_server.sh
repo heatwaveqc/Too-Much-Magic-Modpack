@@ -21,8 +21,18 @@ else
   echo "Starting loader-only dedicated server (no mods installed)"
 fi
 mkfifo cmd.fifo
-# Ensure an open writer while server runs, and stop after the timeout window.
-( sleep "$SMOKE_TIMEOUT_SECONDS"; printf 'stop\n' ) > cmd.fifo &
+# Stop as soon as the server becomes ready, instead of needlessly idling for minutes.
+# A time limit remains to avoid indefinite hangs on a broken startup.
+(
+  for ((elapsed=0; elapsed<SMOKE_TIMEOUT_SECONDS; elapsed++)); do
+    if grep -Eq 'Done \\(' server.log 2>/dev/null; then
+      printf 'stop\\n'
+      exit 0
+    fi
+    sleep 1
+  done
+  printf 'stop\\n'
+) > cmd.fifo &
 STOPPER=$!
 set +e
 timeout "$((SMOKE_TIMEOUT_SECONDS + 60))" bash ./run.sh nogui < cmd.fifo > server.log 2>&1

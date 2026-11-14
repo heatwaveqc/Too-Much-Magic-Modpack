@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B1 stages KubeJS, Rhino, Better Advanced Tooltips and ModernFix with exact Modrinth artifact hashes. Modded server/client not yet smoke-tested.",
+  "note": "B1 stages four mods (KubeJS, Rhino, Better Advanced Tooltips, ModernFix), each with pinned Modrinth SHA-512; dedicated-server boot passed in GitHub Actions run 43546287284. No graphical client test. Unapproved Bigger Reactors forks remain excluded.",
   "mods": [
     {
       "id": "apotheosis",
@@ -625,7 +625,7 @@
         "ferritecore",
         "better-advanced-tooltips"
       ],
-      "status": "candidate_pinned_unbooted"
+      "status": "server_smoked_client_pending"
     },
     {
       "id": "B2",

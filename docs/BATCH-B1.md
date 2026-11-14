@@ -4,4 +4,4 @@ This candidate contains four downloaded mods as packwiz metadata: KubeJS 2101.7.
 
 Source: reproducible packwiz resolution in GitHub Actions run 43546027388, metadata job 132297437117. Each .pw.toml includes exact Modrinth version ID and SHA-512 content hash. The unexpected Better Advanced Tooltips dependency was automatically selected by packwiz and has been recorded rather than hidden.
 
-**Status:** pinned candidate, modded server/client not yet tested. Baseline NeoForge loader-only smoke passed in run 43545677885. The next required test is fetching JARs and starting a fresh **modded** dedicated server, then a client. No gameplay locks enabled.
+**Status:** modded dedicated-server **smoke passed** in GitHub Actions run 43546287284; SHA-512 verification for all four mods and NeoForge `Done` with exit 0. Graphical client **NOT TESTED**. Baseline NeoForge loader-only smoke passed in run 43545677885. The next required test is fetching JARs and starting a fresh **modded** dedicated server, then a client. No gameplay locks enabled.
