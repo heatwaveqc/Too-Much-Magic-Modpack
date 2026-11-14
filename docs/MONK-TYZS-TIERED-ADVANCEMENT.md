@@ -1,3 +1,12 @@
+> **Backend update (2026-11-14):** The no-Pufferfish placement proposal is
+> authoritative for **current catalog planning**: see
+> [Monk skill placement v2](MONK-SKILL-PLACEMENT-NO-PUFFERFISH.md).
+> The Pufferfish division and Pufferfish-dependent test steps below document the
+> earlier design and must not be used as implementation requirements. The Tyz
+> 99-rank/x10 stage policy still applies, subject to effective caps. Improvable
+> Skills remains a distinct pre-existing vanilla-XP perk engine, not the Monk
+> rank backend. No modlist or test environment has been changed.
+
 # Monk / shared traits — Tyz's Skills tiered advancement
 
 **Selected backend, 2026-11-14.** **Architecture and source-matched
