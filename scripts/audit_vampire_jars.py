@@ -58,6 +58,35 @@ def inspect_pin(pin: str) -> None:
             files = sorted(n for n in z.namelist() if
                            n.startswith(("data/", "assets/")) and
                            re.search(r"(vampir|blood|sun|curs|bat|reviv|resurrect|food)", n, re.I))
+            # Verify actual JAWR UI/localization registry keys and discover in-JEI names.
+            # Names from original Witchery must never be assumed for this remake.
+            if source.name.startswith("just-another-witchery"):
+                import json
+                for lang_name in ("assets/witchery/lang/en_us.json", "assets/witchery/lang/en_us.json5"):
+                    if lang_name not in z.namelist():
+                        continue
+                    lang = json.loads(z.read(lang_name))
+                    print("JAWR_LANGUAGE_FILE", lang_name, "TOTAL", len(lang), flush=True)
+                    for key, val in sorted(lang.items()):
+                        if any(x in (key + " " + str(val)).lower() for x in (
+                            "vampir", "lilith", "goblet", "wine", "glass", "shadow",
+                            "modonomicon", "observations", "book", "boline", "chalk",
+                            "skull", "ritual", "sacrif", "vampire")):
+                            print("JAWR_UI", key, "=", str(val)[:180], flush=True)
+                for res in sorted(z.namelist()):
+                    if res.startswith(("data/witchery/", "assets/witchery/", "data/modonomicon/")) and any(
+                        x in res.lower() for x in (
+                            "modonomicon", "book", "vampir", "lilith", "goblet",
+                            "wine_glass", "sacrif", "circle", "ritual"
+                        )):
+                        print("JAWR_RELEVANT_RESOURCE", res, flush=True)
+                for cls in sorted(classes):
+                    if any(x in cls for x in (
+                        "WitcheryItems", "WitcheryItemRegistry", "WitcheryItem",
+                        "Modonomicon", "ModonomiconBook", "VampireLevelOneEntryProvider",
+                        "VampireLevelTwoEntryProvider"
+                    )):
+                        print("JAWR_REGISTRY_OR_GUIDE_CLASS", cls, flush=True)
             print(f"TOTAL classes={len(classes)}, vampire/death/food-related={len(matching)}, related resources={len(files)}")
             print("MATCHING_CLASSES:")
             for name in matching[:260]:
