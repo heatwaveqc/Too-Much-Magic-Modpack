@@ -83,3 +83,20 @@ commented-out Ars definition), `profiles/non-attribute-trait-candidates.json`.
 Design-only world boss and flight milestones:
 `profiles/world-tier-unlocks.json`. Actual in-game verification remains
 necessary; no boss events or flight handlers have been implemented.
+
+## Original trait coverage and mining/flight
+
+`profiles/original-monk-abilities-1.4.json` now crosswalks all 25
+registered original Monk abilities. Some match ordinary player
+attributes while unique behaviors (Catch Arrows, Withering Stare,
+Creeper Kiss, Water Walking, Glass Touch, etc.) require actual
+server-side code. The classic-only Creative Flight ability is NOT
+in the TMM skill tree; the permitted Draconic Curio supplies it.
+
+Harvest capability is now explicitly two different mechanics:
+a **finite** barehand harvest-tier track bounded by real tool
+requirements, and a **repeatably improvable** harvest-speed trait
+with rising costs. Dragon Survival 1.21.1 already models the
+two separately; its source is a design reference rather than an
+active dependency. Confirm Dragon Survival's actual pack pin
+separately (absent from this branch's manifest snapshot).

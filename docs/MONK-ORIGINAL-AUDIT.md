@@ -177,3 +177,34 @@ pre-check other transformations and guard bidirectional races.
 - Original void-fall death avoidance: https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/advancements/criteria/MonkRequirementDescentAscent.java
 - Werewolves 1.21 source pattern: https://github.com/TeamLapen/Werewolves/tree/1.21
 - NeoForge 1.21.1 event docs: https://docs.neoforged.net/docs/1.21.1/concepts/events/
+
+## Exhaustive 25-ability factory crosswalk
+
+The milestone table above reflects the original **default configuration**
+only. The original `Factory.init()` actually registers 25 abilities.
+A one-to-one documented TMM mapping is now maintained in
+`compat/monk/profiles/original-monk-abilities-1.4.json`.
+Four configured abilities **not used by the default levels** were:
+`armor_toughness`, `health`, `glass_touch` and
+`water_breathing_full`. These should not disappear just because
+the default 20-rank walkthrough omitted them.
+
+Seven major abilities have numeric equivalents or partial equivalents
+in the source candidate set. Sixteen need custom mechanics or a
+numeric-plus-event adapter; the remaining two historical behaviors
+have a special TMM outcome: `blindness` remains a temporary
+discipline/deed challenge, while `fly` stays a classic-only ability.
+
+**User revision:** TMM Monk does not unlock innate Creative Flight.
+The permitted Draconic Curio may supply it. The Monk retains an
+Ender-Dragon-gated momentum gliding ability.
+
+**User revision:** original `mining(harvest_level, speed_increase)`
+becomes two powers with different purchase semantics. Harvest tier
+is finite and bounded by actual attainable tool tiers in the pack;
+mining speed is repeatably improvable at increasing cost. Dragon
+Survival's harvest bonus code provides a compatible implementation
+reference, not a requirement for Monk to transform into a dragon.
+
+No features above have been implemented into gameplay. Do not copy
+original code.

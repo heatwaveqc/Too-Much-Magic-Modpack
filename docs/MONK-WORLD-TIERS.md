@@ -1,85 +1,92 @@
-# Monk world-tier progression and flight gates
+# Monk world-tier progression, harvest capability and gliding
 
-**Design commitments, not gameplay code** — 2026-11-14.
+**Design commitment, not gameplay code** — 2026-11-14.
 
-## Flight order
+## Flight (revised by owner)
 
-1. **Before the Ender Dragon:** allow existing legal mobility and
-   Curios, limited jumps/blinks/water movement and spells. No
-   Monk innate powered Elytra and no Monk Creative Flight.
-2. **After real Ender Dragon progression, before Chaos Guardian:**
-   unlock `tmm_monk:momentum_gliding`: an innate Elytra-style
-   capability with a *small sustained acceleration while gliding*.
-   Gentle momentum compensates drag; pitch and dive still matter.
-   Server-authoritative thrust is applied only during actual
-   fall-flying, with maximum safe horizontal/vertical velocity and
-   chunk-loading checks. This does NOT enable hovering.
-   No new energy logistics mod is needed.
-3. **After real Chaos Guardian progression:** unlock
-   `tmm_monk:creative_flight`: full hovering Creative-style
-   flight, gated separately from Elytra or Draconic Curio flight.
-   Sync/change permission without overwriting other providers.
+1. **Before the Ender Dragon:** legal normal movement, jumps, blink,
+   water traversal, spells and permitted Curios. The Monk has no
+   innate powered Elytra.
+2. **After actual Ender Dragon progression:** offer
+   `tmm_monk:momentum_gliding`, an **innate, non-hovering** Elytra-style
+   glide with small continuous acceleration that offsets vanilla drag
+   while fall-flying. Preserve pitch/dive/speed skill; server-authoritative
+   thrust with speed/safety checks. This may need an innate fall-flying
+   grant or an allowed external glide source, independently tested.
+3. **Creative Flight is NOT a Monk skill, at any rank.** An eligible Monk
+   may use its allowed Draconic Evolution chestpiece **as a Curio** and
+   obtain Creative Flight from a working Draconic/Chaotic Flight module
+   according to the normal Draconic Evolution progression. Do not add
+   `tmm_monk:creative_flight`, revoke flight supplied by that gear, or
+   accidentally create a second provider. The user's earlier post-Chaos
+   flight preference is now a separate **pack-wide acquisition question**,
+   not a Monk skill or a Monk-imposed flight gate.
 
-**Likely reference:** Draconic Evolution itself has an adjustable
-`elytra_boost` FlightEntity and `Elytra Boost` control (Forward +
-Sprint during flight). Another older standalone mod called
-`Powered Elytra` exists for Minecraft 1.12.2; we cannot prove
-which mod the owner remembers. Reimplement the **described behavior**,
-do not add an unrelated tech stack and do not copy code/assets.
+Draconic source: https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/init/DEModules.java
+("Wyvern" = Elytra only; Draconic/Chaotic = Elytra + Creative).
 
-Source: https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/api/modules/entities/FlightEntity.java
+## Separate harvesting tiers from harvesting speed
 
-## Actual tier passage by a weaponless, armorless Monk
+**Existing reference:** the Dragon Survival 1.21.1 source provides separate
+`harvest_bonus` and `break_speed_multiplier` values using a data-driven
+`HarvestBonus` codec and harvest checks in `HarvestBonuses.canHarvest`.
+It demonstrates precisely the division the Monk should reproduce:
+- **Barehand harvest tier:** finite unlock track, calculated against the
+  *actual tool/block requirements in the final pack*. Tier only determines
+  whether a bare hand can correctly harvest a block and receive expected
+  drops. At maximum, it matches the best obtainable tool capability;
+  further investment is disallowed. No speculative "tier 99" or bypass
+  of protected/locked ores. Player must use legal empty-hand action.
+- **Barehand harvest speed:** independent **repeatable numeric upgrade**,
+  with escalating cost and no arbitrary node/rank cap, constrained only by
+  meaningful native speed/math/performance limits. Potential modifiers:
+  `minecraft:player.block_break_speed`,
+  `minecraft:player.mining_efficiency` and/or
+  `apothic_attributes:mining_speed`; verify which combination is effective
+  and avoid counting one investment twice. A Monk with mining speed 1000
+  must still fail to collect an ore requiring a higher *harvest tier*.
+- **Tool type / drop correctness:** a harvest-level bonus alone may not
+  satisfy every block's required tool, especially modded ores. Mirror
+  proven checks for block tags, tool actions and loot contexts, but do
+  not pretend the player's empty hand contains a forbidden pickaxe.
+  Model an explicit Monk-compatible virtual tool context if necessary;
+  no fake held weapon or item may affect enchanting or affix slots.
 
-| Gate | Main risk if forbidden tools/armor | Required Monk-accessible path |
+Dragon Survival source:
+- https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/main/java/by/dragonsurvivalteam/dragonsurvival/common/codecs/HarvestBonus.java
+- https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/main/java/by/dragonsurvivalteam/dragonsurvival/registry/attachments/HarvestBonuses.java
+
+**Integration caveat:** Dragon Survival source confirms these mechanics
+exist in the ecosystem, but the current `manifest/mods.json` branch
+snapshot does not list Dragon Survival as pinned/enabled. Verify the
+final pack composition and exact release before assuming its events or
+classes are present. The Monk must not depend on dragon form, since the
+factions are mutually exclusive.
+
+## Achieving every world tier without equipment violations
+
+| World milestone | Required Monk path | Monk ability progression |
 | --- | --- | --- |
-| Nether and End access | Obsidian collection, portal repairs, Eyes of Ender | Natural valid harvest tier, Ars/other legal magic, trade or structure traversal; no creative/admin shortcut |
-| Ender Dragon kill | Boss mechanics and survival, melee range | Legal spells, innate unarmed techniques and/or summons; secure legitimate boss-credit record |
-| Cataclysm Harbinger / Ignis | Extreme damage; drops required for Occultism Eldritch Ancient Miner | Scalable unarmored defense, high magic, reliable unarmed/ranged damage, appropriate kill credit and collected boss materials |
-| Eldritch Ancient Miner | Crafting, magical miner tiers and late resource acquisition | Can use stations, summon miners and harvest required materials without wielding conventional pickaxes |
-| Chaos Guardian | Crystal shields, **large shield before health phase**, extreme aerial combat | Before-Guardian glide thrust; non-weapon projectile/spell that can genuinely damage crystals and shields; adequate durability/sustain |
-| Post-Guardian ProjectE | User-imposed late-game ban on acquisition/use | Reuse existing global post-Guardian gate; never unlock via Monk XP, Curio, item trade or FTB reward |
+| Nether and End access | Legitimate mining/tool equivalence or legal magic, access to required resources and portals | Barehand tier milestones stop at real tool capability |
+| Ender Dragon | Legal unarmed or magic DPS, survivability, spell/summon kill attribution | Innate momentum-gliding technique |
+| Cataclysm Harbinger / Ignis | Scalable natural defense, damage and loot; magic/mining route to miner components | Higher-tier resilience, mining and spells |
+| Eldritch Ancient Miner | Legitimate advanced Occultism miners and boss materials | Continued mining/utility capability |
+| Chaos Guardian | Pre-Guardian glide and **actual tested** ranged spell/unarmed projectile interactions with crystals and shields | Capstone techniques **excluding innate Creative Flight** |
+| Post-Guardian ProjectE | Obey globally enforced ProjectE unlock regardless of Monk skills | Continued endgame investments |
 
-**Major test blocker:** the 1.21 Draconic Evolution source explicitly
-defines Guardian crystal shields and the Guardian's own shield.
-Merely having high spell DPS does not prove compatibility. Run an
-actual disposable-world combat test with a restricted Monk and verify
-damage types, shield interaction, aerial movement, any phase-specific
-mechanics, rewards and server-side credit. If spells cannot satisfy
-a phase, implement a legal Monk ability that can, without trivializing
-the boss.
+A Monk must be capable of **completing** each fight and collecting all
+relevant rewards without wielding conventional weapons or wearing armor.
+Guardian shields/crystals require disposable-world integration testing:
+high raw spell DPS alone may not satisfy the boss implementation.
+Allow Draconic chestpiece in Curios; confirm module behavior there.
 
-## Character vs world progression attribution
+## Personal achievements vs team/world unlocks
 
-Save stable evidence based on the *real upstream event/advancement*
-(Dragon, Cataclysm bosses, Chaos Guardian). Distinguish:
-- **World tier opened:** global gate may be satisfied by a group.
-- **Monk mastery deed:** player or team participation proof still
-  needs a policy and must survive death/logouts.
-- Do not require the Monk to hold a weapon, wear armor or equip a
-  specific boss item to receive the milestone.
-- Never promote progression by merely claiming FTB Quests reward.
+Track real world milestone evidence from server events, not ownership of
+loot or mere FTB Quests checkboxes. Distinguish world-tier access from
+personal Monk achievement; decide how team participation, retroactive
+defeats and boss assist credit work before enforcing a gate.
 
-Unresolved: personal-kill vs team-assist criteria, and whether previously
-defeated Dragon/Guardian milestones can be credited retroactively.
-Until decided and tested, no enforcement is implemented.
+Proposed data: `compat/monk/profiles/world-tier-unlocks.json`.
 
-Machine-readable proposal: `compat/monk/profiles/world-tier-unlocks.json`.
-
-## Flight-module bypass uncovered in Draconic source
-
-**Source-verified:** `DEModules.java` declares Wyvern Flight as
-`flightData(true, false, 1)` (Elytra, no Creative), but Draconic Flight
-and Chaotic Flight as `flightData(true, true, 2)` and
-`flightData(true, true, 3.5)` respectively. The resulting flight module
-can be installed in a Draconic chestpiece, which Monk may use as a Curio.
-
-This makes the **post-Chaos Creative Flight goal potentially bypassable**
-through that Curio, even if Monk's own skill tree is locked. Audit
-Draconic flight-module recipes, acquisition and module activation in
-pinned 3.1.4.633. **Preferred solution:** gate effective true Creative
-Flight behind the Chaos Guardian at the pack/world-tier layer, not by
-banning Curios or unnecessarily duplicating a power the Monk can already
-wear. This is a newly discovered risk and **not an implemented gate**.
-
-Reference: https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/init/DEModules.java
+**State:** no mining, flight or boss unlock handlers implemented yet.

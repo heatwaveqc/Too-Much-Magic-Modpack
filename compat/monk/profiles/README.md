@@ -32,3 +32,14 @@ The registered faction-level limit is now a NeoForge STARTUP config
 (default 20), loaded before Vampirism faction registration. This is a
 registration-time property: do not use COMMON/SERVER config for it, since
 those load later. Clients and servers must have an identical value.
+
+Original Monk factory crosswalk:
+`original-monk-abilities-1.4.json` (25 ability types, including
+four unused by the historical defaults). This is separate from the
+142 attribute registry candidates and 99 Apotheosis affix definitions.
+Some numerical abilities overlap: do not double-count them or treat
+any crosswalk row as an implemented power.
+
+TMM revisions: *no Monk Creative Flight skill*. Legal Draconic Curio
+modules provide that capability. Mining has distinct finite harvest
+tier and repeatable speed. See `world-tier-unlocks.json`.

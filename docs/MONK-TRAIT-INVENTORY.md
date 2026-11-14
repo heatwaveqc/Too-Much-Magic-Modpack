@@ -98,3 +98,52 @@ should be reported.
 unarmed abilities ≠ implemented Monk skills. The full affix inventory
 (99 entries) is tracked separately and every affix still requires a
 Monk effect adapter.
+
+## Original Monk 1.4 abilities — 25/25 crosswalk
+
+The original RWTema Monk mod registers **25 configurable ability types**,
+not just the powers chosen by its default rank progression. All 25 have
+an explicit classification in
+`compat/monk/profiles/original-monk-abilities-1.4.json`.
+
+**Already represented by candidate numeric attributes (7):** armor, armor
+toughness, increased max health, jump power, movement speed ("swift"),
+step height and attack damage ("strength"). Note original jump behavior
+also modified movement/fall handling, so numeric overlap alone does not
+prove full parity.
+
+**Requires event or special-gameplay handling (16):** Blink, catching
+arrows, Creeper Kiss, explosion resistance, feather fall, Glass Touch
+(silk-like glass harvesting), potion cleansing/immunity, hunger
+efficiency, **split harvest tier/speed** (mining), fire resistance, lava
+protection, animal taming/friendship, water walking, partial underwater
+breathing, full underwater breathing and Withering Stare.
+
+**Historical but not a positive TMM unlock (2):** temporary imposed
+blindness was part of the default Monk trial; Creative Flight was the
+original rank-20 award, but is **removed from the TMM skill tree** and
+left to an allowed Draconic Evolution Curio module.
+
+The factory registers four abilities **not selected in the original
+default progression**: Armor Toughness, Health, Glass Touch, and Full
+Water Breathing. All four are included, with clear defaults vs optional
+historical markers. The source also contains a FastDraw class that is
+not registered in the factory; it is not counted among the 25.
+
+These 25 are **non-additive to the 142 numeric source candidates**:
+some overlap by design. Their inventory status is "mapped, not
+implemented," not "available for player purchase." Test coverage
+guards against silent omission.
+
+Sources:
+- https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/factory/Factory.java
+- https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java
+
+### Mining clarity
+
+`mining` in original Monk already contained **both**
+`harvest_level` and `speed_increase`. In TMM these become **two
+independent investments**: a finite progression of valid barehand
+harvest tiers and open-ended (effective engine limits respected)
+barehand mining speed. Compare Dragon Survival's similarly separate
+`harvest_bonus` and `break_speed_multiplier` source mechanics.

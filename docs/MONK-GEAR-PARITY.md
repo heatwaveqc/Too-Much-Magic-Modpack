@@ -179,3 +179,22 @@ A proposed **Apotheosis-rarity infused food** converts rarity materials into
 fixed, tier-based Monk XP on consumption. It is separate from one-time
 unique-food discovery, and uses the pinned five-tier rarity registry. See
 `docs/MONK-MOD.md` and `compat/monk/profiles/rarity-food-infusion.json`.
+
+## Original Monk completeness and mining (2026-11-14)
+
+Every one of the original mod's **25 registered ability types** is
+present in the new
+`compat/monk/profiles/original-monk-abilities-1.4.json` crosswalk.
+Original defaults used 21 of those; optional Armor Toughness, Health,
+Glass Touch and Full Water Breathing are retained. In TMM, full
+Creative Flight is an **external Draconic Evolution Curio capability**,
+not a Monk skill point purchase or capstone; the temporary Blindness
+trial is a deed/handicap rather than a positive ability.
+
+Unarmed mining has **two orthogonal tracks**: finite harvest tier up
+to the highest legitimate tool requirement in the installed pack, and
+independently repeatable harvest **speed** with rising cost. Speed
+does not grant loot or override required tool tiers. Dragon Survival
+already has separately modeled harvest strength and speed, offering
+an implementation precedent without coupling the mutually exclusive
+Monk and Dragon forms.

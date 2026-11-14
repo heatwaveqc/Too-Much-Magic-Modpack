@@ -131,3 +131,20 @@ Mahou) to a central config audit. Capped versus scalable Monk upgrade nodes
 must be classified individually. Decision between Pufferfish as leveled
 backend and a custom repeatable investment layer is deliberately **deferred
 until after full player attribute / affix registry inventory**.
+
+## Latest owner revisions: classic ability parity and harvesting
+
+Preserve **all 25 registered abilities** from original Monk, not only
+its default-rank skill list: `original-monk-abilities-1.4.json`
+maps numeric counterparts, custom behavior and the two historical-only
+cases. Original imposed Blindness remains an ordeal; original Creative
+Flight is explicitly removed from the TMM tree. A permitted Draconic
+Evolution Curio flight module can supply it instead; Monk has only
+post-Dragon innate momentum gliding.
+
+Barehand harvest **tier** is a finite capability unlock series,
+bounded by the highest *actual* tool requirement in the final pack.
+Barehand harvest **speed** is a separate repeatable trait at growing
+cost. Existing Dragon Survival mechanics have distinct strength and
+speed bonuses; use that architecture without requiring a dragon
+transformation. See [MONK-WORLD-TIERS.md](MONK-WORLD-TIERS.md).
