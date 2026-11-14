@@ -13,7 +13,7 @@
 ## Three crucial distinctions
 
 1. **Mahou mortar:** external recipes produce **2 catalyst powders from an ingot/gem**, not two smeltable ingots from raw ore. TMM's planned *ore → 2 unified, smeltable dust* change belongs to the separate ore/dust compatibility project, not a claim about the current pack. Do not publish the 'ore doubling' tip until that change actually passes a recipe+smelt test.
-2. **Lectern versus smelting:** Ars Nouveau **Storage Lectern** links inventories and permits crafting; its **Smelt glyph** is a distinct **Tier 2** mage spell. No current reliable source establishes 'smelting through a lectern' as an early unlock. Verify the user's remembered mechanic before presenting it as fact.
+2. **Lectern versus smelting:** Ars Nouveau's **Storage Lectern** links inventories and crafts; its **Smelt glyph** is separate and **Tier 2**. Scriptor Magicae also has a **Casting Lectern**, which can cast spells from a grimoire, but *a smelting spell on that lectern has not yet been verified*. These are different blocks, and neither is a proven day-one lectern smelter.
 3. **EvilCraft Vengeance Pickaxe:** upstream Origins of Darkness describes enormous **Fortune**; ATM10's current reference reports **Fortune V plus Curse of Vengeance III**. It is a high-yield but cursed diamond-tier pickaxe, **not** a vein-miner and not automatic ore-processing. EvilCraft **broom** is a separately crafted blood-powered mobility item.
 
 ## Ore processing & smelting
@@ -104,7 +104,7 @@
 | Eidolon: Repraised | 1 | 1 credible first-pass tips |
 | Enchanted: Witchcraft | 3 | 2 credible first-pass tips |
 | EvilCraft | 6 | 6 credible first-pass tips |
-| Forbidden & Arcanus | 1 | Needs primary-version research / client check |
+| Forbidden & Arcanus | 1 | Mid/later tool smelting (forge gated) |
 | Goety | 2 | 2 credible first-pass tips |
 | Hex Casting | 1 | Needs primary-version research / client check |
 | Hexerei | 4 | 3 credible first-pass tips |
@@ -117,10 +117,10 @@
 | Primal Magick | 1 | 1 credible first-pass tips |
 | Psi | 1 | 1 credible first-pass tips |
 | Roots Classic | 2 | 2 credible first-pass tips |
-| Scriptor Magicae | 1 | Needs primary-version research / client check |
+| Scriptor Magicae | 1 | 1 stationary-casting tip; smelting unproven |
 | Theurgy | 2 | Later-stage utilities; no proven easy unlock |
 | Totemic | 1 | Needs primary-version research / client check |
-| Just Another Witchery Remake | 1 | Needs primary-version research / client check |
+| Just Another Witchery Remake | 1 | 1 credible first-pass tip (ATM port uncertainty) |
 | Embers Re-Ignited | 1 | Needs primary-version research / client check |
 | Reliquary Reincarnations | 5 | 3 credible first-pass tips |
 
@@ -137,3 +137,22 @@
 
 URLs for each item are carried in `manifest/early_unlock_inventory.json`. Most reliable: Ars Guide, Mahou Tsukai wiki, Origins of Darkness, Botania Lexicon, Astral Sorcery 1.21.1 source and Goety's own Wiki. Secondary pack indices and community wikis identify additional candidate conveniences but **do not prove the exact installed recipes**.
 
+
+## Supplemental verification: fast furnace smelting and alternate lectern (2026-11-14)
+
+This additional source pass identified several high-value overlooked conveniences; these should be considered before writing the question-led Tips & Tricks pages. **These are upstream capabilities, not live tests of the installed Botania Revived port.**
+
+| Problem solved | Candidate | Access | Verified mechanism / open question |
+| --- | --- | --- | --- |
+| Smelt without coal or waiting | **Botania Revived: Exoflame** ([original Botania Lexicon](https://botaniamod.net/lexicon.html)) | Short magical setup | Mana powers and speeds nearby **ordinary Furnaces**; needs generating flowers, Mana Spreader/Pool and flower recipe. Test Revived port |
+| Accelerate furnace manually | **Botania Revived: Manatide Bellows** ([Lexicon](https://botaniamod.net/lexicon.html)) | Short magical setup | Point toward active Furnace, right-click to increase speed and fuel efficiency; requires player attention |
+| Smelt a block in-place | **Botania Revived: Rod of the Molten Core** ([Lexicon](https://botaniamod.net/lexicon.html)) | Later | Turns **placed sand into glass** and **cobblestone into stone**; not proof of ore-dust smelting |
+| Locate hidden ores | **Botania Revived: Rod of the Plentiful Mantle** ([Lexicon](https://botaniamod.net/lexicon.html)) | Later | Highlights nearby underground ore blocks with Mana; a resource finder, not an ore generator |
+| Bulk carry blocks | **Botania Revived: Black Hole Talisman** ([Lexicon](https://botaniamod.net/lexicon.html)) | Later | Stores one block type; confirm no container-nesting violations in TMM |
+| Smelt mined block drops | **Forbidden & Arcanus: Smelter Prism** ([ATM10 related quest data](https://github.com/AllTheMods/ATM10-Aeronautics/blob/main/config/ftbquests/quests/lang/en_us/chapters/forbidden__arcanus.snbt)) | **After tier 1 Hephaestus Forge**, not immediate | Smelts mined drops on equipped tools (raw ore→ingot, logs→charcoal, sand→glass). Forge is a substantial 9×9 ritual structure; verify Relic input and TMM craft |
+| Cast stationary spells | **Scriptor Magicae: Casting Lectern** ([1.21.1 guide](https://mcmodwiki.com/scriptor-magicae/guides/casting-lecterns-crystals-and-chalk-guide)) | Short setup | The lectern **casts a spellbook's spells** and supports focused targeting. A specific **smelting spell is not proven**. This may explain the remembered "lectern smelting", but confirmation needed |
+| Harvest witchcraft byproducts | **Just Another Witchery Remake: Witch's Oven** ([ATM11 pack guide](https://forgebase.johnhalls.com/atm11/mods/just-another-witchery-remake)) | Short witchcraft setup | Can create ash and bottle fumes from specific items; not a replacement for an ordinary ore furnace. Independent from Enchanted: Witchcraft's oven |
+
+**Editorial priority:** For the "Need fast smelting?" top-level tip, compare **vanilla Blast Furnace**, **Botania Exoflame/Bellows**, **Ars Smelt glyph Tier 2**, and **Forbidden Smelter Prism later**. Keep lectern casting/storage in a separate "Automate magic work" tip unless a proven in-world smelting spell exists.
+
+**Critical release policy:** Source-only and ATM examples are research leads. Confirm actual pinned 1.21.1 registry IDs, recipes, access cost and transformation effects using JEI and disposable Prism gameplay. In particular, don't mistake the Botania original Lexicon for proof of the Revived port, and don't assume another pack's Hephaestus ritual recipe is ours.

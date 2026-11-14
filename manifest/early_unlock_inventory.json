@@ -13,15 +13,15 @@
     "tentative": "Unverified candidate; do not convert into player-facing instructional claim"
   },
   "counts": {
-    "total": 61,
+    "total": 66,
     "strong": 24,
-    "moderate": 26,
-    "tentative": 11,
+    "moderate": 34,
+    "tentative": 8,
     "immediate": 16,
-    "short_chain": 26,
-    "later": 10,
-    "unknown": 9,
-    "shortlist": 41
+    "short_chain": 30,
+    "later": 14,
+    "unknown": 6,
+    "shortlist": 45
   },
   "records": [
     {
@@ -697,16 +697,16 @@
       "tips_candidate": false
     },
     {
-      "id": "unknown-scriptor",
+      "id": "scriptor-lectern",
       "mod": "Scriptor Magicae",
-      "capability": "Unverified",
-      "unlock": "Early randomized spell grammar",
-      "benefit": "The pack's world-randomized spell discovery makes a universal recipe-based early tip risky.",
-      "access": "unknown",
-      "evidence": "tentative",
-      "source": "https://modrinth.com/mod/primal-magick",
-      "caveat": "No universal confirmed item ID, effects or costs yet.",
-      "tips_candidate": false
+      "capability": "Stationary casting",
+      "unlock": "Casting Lectern and scripted spellbook",
+      "benefit": "A Casting Lectern automatically casts a spell from a placed grimoire. It can be paired with targeting crystals and redirection for fixed base stations.",
+      "access": "short_chain",
+      "evidence": "moderate",
+      "source": "https://mcmodwiki.com/scriptor-magicae/guides/casting-lecterns-crystals-and-chalk-guide",
+      "caveat": "This is not Ars Nouveau's Storage Lectern. A smelting-specific spell on the lectern is NOT verified. Scriptor spell syntax differs per world; requires discovering or writing a suitable spell.",
+      "tips_candidate": true
     },
     {
       "id": "unknown-totemic",
@@ -721,16 +721,16 @@
       "tips_candidate": false
     },
     {
-      "id": "unknown-jaWr",
+      "id": "jawr-witch-oven",
       "mod": "Just Another Witchery Remake",
-      "capability": "Unverified",
-      "unlock": "Early witchcraft conveniences",
-      "benefit": "Investigate early crafting, brews, flight, resource and smelt routes separately from Enchanted and Hexerei.",
-      "access": "unknown",
-      "evidence": "tentative",
-      "source": "https://mcmodwiki.com/enchanted-witchcraft/1.21.1",
-      "caveat": "Transformation handling is a separate compatibility project; avoid promising vampirism or lycanthropy as a beginner tip.",
-      "tips_candidate": false
+      "capability": "Cooking / ingredients",
+      "unlock": "Witch's Oven + Clay Jars",
+      "benefit": "Early Witchery oven processing can turn some ingredients or saplings into Wood Ash and capture useful fumes in jars, supporting basic witchcraft brewing.",
+      "access": "short_chain",
+      "evidence": "moderate",
+      "source": "https://forgebase.johnhalls.com/atm11/mods/just-another-witchery-remake",
+      "caveat": "Comparable ATM11-based reference, not TMM-recipe verified. Witch's Oven is not a generic high-speed ore smelter. Do not confuse with Enchanted: Witchcraft's independent oven.",
+      "tips_candidate": true
     },
     {
       "id": "unknown-embers",
@@ -745,16 +745,77 @@
       "tips_candidate": false
     },
     {
-      "id": "unknown-forbidden",
+      "id": "forbidden-smelter-prism",
       "mod": "Forbidden & Arcanus",
-      "capability": "Unverified",
-      "unlock": "Arcane Crystal / Smelter Prism",
-      "benefit": "Investigate basic crystal collection and Smelter Prism; verify whether it offers cheap ore handling.",
-      "access": "unknown",
-      "evidence": "tentative",
-      "source": "https://github.com/AllTheMods/ATM-11/blob/main/config/ftbquests/quests/lang/en_us/chapters/theurgy.json5",
-      "caveat": "Do not claim smelt speed or multiplier without recipe/UI evidence.",
+      "capability": "Smelting",
+      "unlock": "Smelter Prism via Hephaestus Forge tier 1",
+      "benefit": "When applied to a tool, can smelt drops from broken ore or blocks directly: raw ore→ingots, sand→glass, logs→charcoal.",
+      "access": "later",
+      "evidence": "moderate",
+      "source": "https://github.com/AllTheMods/ATM10-Aeronautics/blob/main/config/ftbquests/quests/lang/en_us/chapters/forbidden__arcanus.snbt",
+      "caveat": "Confirmed in a comparable ATM questbook, NOT proven in TMM. Tier 1 Forge needs a substantial 9x9 setup and essence/ritual inputs, and the prism needs Elementarium Relic. Not a day-one tool.",
+      "tips_candidate": false
+    },
+    {
+      "id": "botania-exoflame",
+      "mod": "Botania Revived",
+      "capability": "Smelting",
+      "unlock": "Exoflame functional flower",
+      "benefit": "Mana-fed flower powers and speeds nearby ordinary furnaces, potentially eliminating separate coal and shortening bulk-smelting time.",
+      "access": "short_chain",
+      "evidence": "moderate",
+      "source": "https://botaniamod.net/lexicon.html",
+      "caveat": "Requires Endoflame/Mana Spreader/Pool and crafting an Exoflame; behavior is proven for original Botania, but verify 1.21.1 Revived port and exact flower recipe. Not truly day one.",
+      "tips_candidate": true
+    },
+    {
+      "id": "botania-bellows",
+      "mod": "Botania Revived",
+      "capability": "Smelting",
+      "unlock": "Manatide Bellows",
+      "benefit": "Point at a lit normal Furnace and manually right-click to increase smelting speed and fuel efficiency. Also helps Mana Pool output throughput.",
+      "access": "short_chain",
+      "evidence": "moderate",
+      "source": "https://botaniamod.net/lexicon.html",
+      "caveat": "Manual operator required; not equivalent to an automatic ore doubler. Verify recipe and mechanism in the Revived port.",
+      "tips_candidate": true
+    },
+    {
+      "id": "botania-molten-core",
+      "mod": "Botania Revived",
+      "capability": "Smelting",
+      "unlock": "Rod of the Molten Core",
+      "benefit": "Right-click target smeltable placed blocks; for example sand to glass and cobblestone to stone/smooth stone.",
+      "access": "later",
+      "evidence": "moderate",
+      "source": "https://botaniamod.net/lexicon.html",
+      "caveat": "Acts on placed block transformations only, not evidence of smelting inventory raw ores or dusts; mana/tool recipe and port support need testing.",
+      "tips_candidate": false
+    },
+    {
+      "id": "botania-plentiful-mantle",
+      "mod": "Botania Revived",
+      "capability": "Finding ores",
+      "unlock": "Rod of the Plentiful Mantle",
+      "benefit": "Temporarily highlights nearby hidden ore blocks through terrain for a moderate Mana cost.",
+      "access": "later",
+      "evidence": "moderate",
+      "source": "https://botaniamod.net/lexicon.html",
+      "caveat": "Not an ore generator or a general cross-dimensional scanner; verify port and requirements.",
+      "tips_candidate": false
+    },
+    {
+      "id": "botania-blackhole-talisman",
+      "mod": "Botania Revived",
+      "capability": "Inventory",
+      "unlock": "Black Hole Talisman",
+      "benefit": "Stores large quantities of one kind of block in a dedicated carried item to reduce bulk-mining inventory management.",
+      "access": "later",
+      "evidence": "moderate",
+      "source": "https://botaniamod.net/lexicon.html",
+      "caveat": "Mana progress and recipe required. Audit for portable-bag nesting compatibility; it is not a general backpack.",
       "tips_candidate": false
     }
-  ]
+  ],
+  "reviewed_at": "2026-11-14"
 }
