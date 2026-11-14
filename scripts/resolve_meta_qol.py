@@ -15,8 +15,6 @@ OUT=ROOT/"docs/META-QOL-RESOLUTION.json"
 # Names resolve against Modrinth with packwiz's Minecraft/NeoForge filtering.
 # We include both Curios API and Corail Tombstone because "coralis" could refer to either.
 REQUESTED=[
-    ("ftb-quests","ftb-quests","infrastructure"),
-    ("ftb-chunks","ftb-chunks","infrastructure"),
     ("jei","jei","qol"),
     ("jade","jade","qol"),
     ("appleskin","appleskin","qol"),
@@ -36,6 +34,18 @@ REQUESTED=[
     ("entityculling","entity-culling","performance"),
     ("immediatelyfast","immediatelyfast","performance"),
 ]
+# FTB's actual mods are published through CurseForge, not the misleading
+# Modrinth name matches (FTB Quests Optimizer / FTB Chunks Aerospace).
+# CurseForge immutable project IDs. Quests is additionally pinned to the known
+# NeoForge 1.21.1 2101.1.38 file ID.
+FTB_OFFICIAL=[
+    ("ftb-quests",289412,9405148),
+    ("ftb-chunks",314906,None),
+    ("ftb-library",404465,None),
+    ("ftb-teams",404468,None),
+    ("ftb-xmod-compat",889915,None),
+]
+CF_TO_ID={pid:mid for mid,pid,fileid in FTB_OFFICIAL}
 EXACT_MAP={
     "curios":"curios-api","ferrite-core":"ferritecore","entityculling":"entity-culling",
     "ftb-quests":"ftb-quests","ftb-chunks":"ftb-chunks",
@@ -56,37 +66,54 @@ def main():
         print(f"RESOLVE {slug}: {'OK' if rc==0 else 'BLOCKED'}",flush=True)
         print(out[-2500:],flush=True)
         if rc:
-            failures.append({"slug":slug,"intended_id":mid,"error":out[-1200:]})
+            failures.append({"slug":slug,"intended_id":mid,"provider":"modrinth","error":out[-1200:]})
             if mid in by_id:
                 by_id[mid]["note"]="Modrinth resolution attempted; see docs/META-QOL-RESOLUTION.json"
             continue
+    for mid,project_id,file_id in FTB_OFFICIAL:
+        cmd=["packwiz","--yes","curseforge","add","--addon-id",str(project_id)]
+        if file_id: cmd+=["--file-id",str(file_id)]
+        rc,out=run(*cmd)
+        print(f"RESOLVE OFFICIAL FTB {mid} (CurseForge {project_id}): {'OK' if rc==0 else 'BLOCKED'}",flush=True)
+        print(out[-3000:],flush=True)
+        if rc: failures.append({"slug":mid,"intended_id":mid,"provider":"curseforge","project_id":project_id,"error":out[-1200:]})
     rc,out=run("packwiz","refresh")
     if rc: raise SystemExit("packwiz refresh failed: "+out[-3000:])
     check=set(d["excluded"][i]["id"] for i in range(len(d["excluded"])))
     installed=[]
     for meta in sorted((ROOT/"mods").glob("*.pw.toml")):
         slug=meta.name.removesuffix(".pw.toml")
-        mid=mod_id(slug)
-        if mid in check or slug in check: raise SystemExit("EXCLUDED MOD FOUND: "+slug)
         val=tomllib.loads(meta.read_text(encoding="utf8"))
+        cf=val.get("update",{}).get("curseforge",{})
+        mid=CF_TO_ID.get(cf.get("project-id"),mod_id(slug))
+        if mid in check or slug in check: raise SystemExit("EXCLUDED MOD FOUND: "+slug)
         download=val["download"]
         if download.get("hash-format") not in {"sha512","sha256","sha1"} or not download.get("hash"):
             raise SystemExit("Unpinned artifact: "+slug)
         if download.get("url","").startswith("http://"): raise SystemExit("Insecure download: "+slug)
+        if not download.get("url") and download.get("mode")!="metadata:curseforge":
+            raise SystemExit("No download URL or official CurseForge installer metadata for "+slug)
         category=next((c for s,m,c in REQUESTED if s==slug or m==mid),"dependency")
         m=by_id.get(mid)
         if m is None:
             m={"id":mid,"name":val["name"],"category":category,"desired":True,"version":None,
                "release_status":"verified_release","source":None,"enabled_in_pack":False,"dependencies_verified":False}
             d["mods"].append(m);by_id[mid]=m
+        m["packwiz_slug"]=slug
         m["version"]=val["filename"].removesuffix(".jar")
         m["release_status"]="verified_release"
         m["enabled_in_pack"]=True
         m["dependencies_verified"]=False
         if val.get("update",{}).get("modrinth",{}).get("mod-id"):
             m["source"]="https://modrinth.com/mod/"+val["update"]["modrinth"]["mod-id"]
+        if cf.get("project-id"):
+            m["source"]="https://www.curseforge.com/minecraft/mc-mods/"+{
+                289412:"ftb-quests-forge",314906:"ftb-chunks-forge",404465:"ftb-library-forge",
+                404468:"ftb-teams-forge",889915:"ftb-xmod-compat"
+            }.get(cf["project-id"],str(cf["project-id"]))
         installed.append({"id":mid,"name":val["name"],"file":val["filename"],"side":val.get("side","both"),
                           "metafile":str(meta.relative_to(ROOT)),"hash_format":download.get("hash-format"),
+                          "curseforge_project_id":cf.get("project-id"),"curseforge_file_id":cf.get("file-id"),
                           "modrinth_id":val.get("update",{}).get("modrinth",{}).get("mod-id")})
     d["mods"].sort(key=lambda m:m["id"])
     batch=next(b for b in d["batches"] if b["id"]=="B1")
@@ -94,7 +121,7 @@ def main():
     batch["status"]="meta_qol_candidate_modded_server_unverified"
     d["note"]="Full infrastructure + QoL batch pinned; smoke test outcome recorded independently in docs/META-QOL-TESTING.md"
     MANIFEST.write_text(json.dumps(d,indent=2)+"\n",encoding="utf8")
-    OUT.write_text(json.dumps({"generated_at_utc":datetime.now(timezone.utc).isoformat(),"requested_slugs":[x[0] for x in REQUESTED],
+    OUT.write_text(json.dumps({"generated_at_utc":datetime.now(timezone.utc).isoformat(),"requested_slugs":[x[0] for x in REQUESTED]+[x[0] for x in FTB_OFFICIAL],
                                "resolved_mods":installed,"failed_modrinth_resolutions":failures},indent=2)+"\n",encoding="utf8")
     print(f"RESOLUTION SUMMARY: {len(installed)} exact packwiz mod pins; {len(failures)} unresolved requested slugs",flush=True)
     # Refresh after manifest writes; source docs and manifest are .packwizignored.
