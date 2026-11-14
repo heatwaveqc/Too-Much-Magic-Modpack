@@ -1,0 +1,80 @@
+name: Resolve Quest Shop and Cooking for Blockheads
+on:
+  push:
+    branches: ['feature/questshop-cooking-currency-economy']
+    paths:
+      - '.github/workflows/resolve-shop-cooking.yml'
+      - 'scripts/resolve_shop_cooking.py'
+      - 'kubejs/data/tmm/questshop/**'
+      - 'config/ftbquests/quests/chapters/**'
+      - 'manifest/quest_content.json'
+      - 'scripts/validate_quests.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Install packwiz and compile resolver
+        run: |
+          python3 -m py_compile scripts/resolve_shop_cooking.py scripts/validate_quests.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Pin exact two reviewed NeoForge 1.21.1 files
+        id: resolve
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/resolve_shop_cooking.py
+          packwiz list
+      - name: Test all 140 pinned mods with quest/shop config
+        id: smoke
+        if: steps.resolve.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '540'
+          WORK_DIR: ${{ runner.temp }}/tmm-b11-smoke
+        run: bash scripts/smoke_server.sh
+      - name: Commit only hash-pinned changes from successful server test
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml manifest/mods.json mods
+          if ! git diff --cached --quiet; then
+            git commit -m "build(b11): pin Quest Shop and Cooking for Blockheads after successful server smoke"
+            git push origin HEAD:feature/questshop-cooking-currency-economy
+          fi
+      - name: Preserve full dedicated-server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-b11-shop-cooking-test
+          path: |
+            ${{ runner.temp }}/tmm-b11-smoke/server.log
+            ${{ runner.temp }}/tmm-b11-smoke/logs/latest.log
+            pack.toml
+            index.toml
+          if-no-files-found: warn
+      - name: Require both resolution and fresh smoke success
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1

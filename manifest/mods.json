@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -454,6 +454,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "controlling"
+    },
+    {
+      "id": "cooking-for-blockheads",
+      "name": "Cooking for Blockheads",
+      "category": "food",
+      "desired": true,
+      "version": "21.1.24+neoforge-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/cooking-for-blockheads/version/MQCIy6VF",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "User-approved 2026-11-14 for Food & Fishing. NeoForge 1.21.1 release; requires Balm already in pack. Exact Modrinth version MQCIy6VF pending packwiz pin and smoke."
     },
     {
       "id": "corail-tombstone",
@@ -1553,6 +1565,18 @@
       "packwiz_slug": "quest-giver"
     },
     {
+      "id": "quest-shop",
+      "name": "Quest Shop",
+      "category": "utility",
+      "desired": true,
+      "version": "questshop-1.4.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "User-approved 2026-11-14 quest purchase and reward currency mod. NeoForge 1.21.1 CF project 1338320 file 9046797. Coins are FTB-Team shared in upstream integration. Pending pin and smoke."
+    },
+    {
       "id": "relics",
       "name": "Relics",
       "category": "power",
@@ -2173,6 +2197,15 @@
         "spark"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B11",
+      "name": "Quest Shop 1.4.0 and Cooking for Blockheads 21.1.24",
+      "members": [
+        "quest-shop",
+        "cooking-for-blockheads"
+      ],
+      "status": "candidate_unbooted"
     }
   ]
 }
