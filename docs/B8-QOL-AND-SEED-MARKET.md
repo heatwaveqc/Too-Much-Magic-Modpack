@@ -41,3 +41,8 @@ Source: official ATM10 `config/crash_assistant/modlist.json` from https://github
 ## Follow-up: Prickle and beta status
 - **Prickle** was automatically installed as a required configuration-library dependency of this exact QoL selection. Explicitly register its stable MC 1.21.1 NeoForge build (CurseForge project 1023259, file 6961457); it provides no progression-changing features.
 - **Simple Backups 1.21-4.0.30 is beta-tagged** on CurseForge (file 7965880). Treat it as an experimental test in this pack, not a production-safety guarantee. Test backup retention, disk usage, successful restore before relying on it for valuable saved worlds. https://www.curseforge.com/minecraft/mc-mods/simple-backups/files/7965880
+
+## B8 installation verified and client package ready
+- **140 exact installed packwiz records**, 127 server JARs, 13 client-only. [Full server boot PASS](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560055987); all downloaded server artifacts passed hash verification. This proves startup only, **not** GUI, Market trades, mods interacting in-world, or backup restore.
+- **[Final Prism test ZIP](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560531515/artifacts/14099663054)** (outer GitHub artifact ZIP must be extracted, then import inner Prism ZIP). Immutable packwiz revision `0c214d24793f2c9d912b4540e609bd04cb7b5e9a`; Simple Backups now `both` to support local singleplayer. No other JARs changed after the passing dedicated-server boot.
+- The library list is explicitly **Balm + Bookshelf + Prickle**. Simple Backups upstream **BETA** remains a limitation, not an undocumented stable guarantee.

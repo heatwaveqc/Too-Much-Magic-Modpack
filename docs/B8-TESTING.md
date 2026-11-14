@@ -34,3 +34,8 @@
 - No JAR version, hash or dedicated-server composition changed from the full passing B8 boot.
 - Backup scheduling, retention and disaster recovery are NOT acceptance-tested; retain independent world saves until restore is verified.
 - This metadata-only change requires refreshed packwiz index hash and a new immutable client ZIP.
+
+## Final download for local Prism acceptance
+[**Download the corrected B8 client test ZIP**](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560531515/artifacts/14099663054) from [successful final packaging Action](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560531515). After GitHub downloads the *outer* artifact ZIP, extract it and in Prism import the *inner* `Too-Much-Magic-B8-QoL-Compass-Market-Prism.zip`.
+- Immutable packwiz source commit: `0c214d24793f2c9d912b4540e609bd04cb7b5e9a`; **zero embedded third-party mod JARs**. All files are fetched on launch from their original hosts, hash verified.
+- Dedicated server PASS is authoritative at [run 43560055987](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560055987); no actual B8 graphical client smoke or seed-market purchase / backups restore accepted yet.
