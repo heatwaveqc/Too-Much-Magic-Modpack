@@ -114,9 +114,9 @@ def main() -> None:
 
     global_ids: set[str] = {g["id"] for g in groups}
     all_blocks: dict[str, str] = {}
-    item_tasks: dict[str, list[str]] = {}
+    item_tasks: dict[str, list[tuple[str, int]]] = {}
     advancement_tasks: dict[str, str] = {}
-    reward_items: list[tuple[str, str]] = []
+    reward_items: list[tuple[str, str, int]] = []
     coin_quests: set[str] = set()
     intentional_sale_ids = {"minecraft:copper_ingot", "minecraft:copper_block", "minecraft:emerald", "minecraft:emerald_block", "minecraft:diamond", "minecraft:diamond_block"}
     for c in chapters:
@@ -155,18 +155,20 @@ def main() -> None:
             ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or justified coin reward on {qid}")
             ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "questshop:coins"') == 1, f"Unexpected rewards on {qid}")
             if itm is not None:
-                reward_items.append((qid, itm.group(1)))
+                reward_items.append((qid, itm.group(1), int(itm.group(2))))
             else:
                 coin_quests.add(qid)
                 ensure('team: true' in rewards, f"Quest Shop coins must use team-shared one-claim rewards on {qid}")
                 ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
                 ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
-            for item_id in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}', tasks):
+            for item_id, required in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}(?:, count: (\d+)L)?', tasks):
+                count = int(required) if required else 1
                 existing = item_tasks.get(item_id, [])
                 if existing:
                     ensure(item_id in intentional_sale_ids, f"Accidental repeated item criterion {item_id} in {qid} and {existing}")
-                    ensure(qid in coin_quests and all(x in coin_quests for x in existing), f"Repeated criterion {item_id} must be limited to deliberate sales")
-                item_tasks.setdefault(item_id, []).append(qid)
+                    ensure(qid in coin_quests and all(x[0] in coin_quests for x in existing), f"Repeated criterion {item_id} must be limited to deliberate sales")
+                    ensure(all(x[1] != count for x in existing), f"Identical submission quantities for {item_id}")
+                item_tasks.setdefault(item_id, []).append((qid, count))
             for advance in re.findall(r'advancement: "([^"]+)"', tasks):
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
@@ -192,7 +194,7 @@ def main() -> None:
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
         if q["criterion"]["type"] == "item":
-            ensure(q["criterion"]["id"] in item_tasks and qid in item_tasks[q["criterion"]["id"]], f"Wrong task for {q['title']}")
+            ensure(q["criterion"]["id"] in item_tasks and (qid, q["criterion"].get("count", 1)) in item_tasks[q["criterion"]["id"]], f"Wrong task for {q['title']}")
             if q.get("consume_items"):
                 ensure("consume_items: true" in block, f"Unconsumed sale input in {q['title']}")
             if q.get("repeatable"):
@@ -202,8 +204,11 @@ def main() -> None:
         if q["criterion"]["type"] == "checkmark":
             ensure('type: "checkmark"' in block, f"Missing manual checkmark {q['title']}")
 
-    shortcuts = [(qid, item_id, item_tasks[item_id]) for qid, item_id in reward_items if item_id in item_tasks]
-    ensure(not shortcuts, f"Quest item rewards could complete another item task: {shortcuts}")
+    shortcuts = [(qid, item_id, payout_count, task_id, task_count)
+                 for qid, item_id, payout_count in reward_items
+                 for task_id, task_count in item_tasks.get(item_id, [])
+                 if qid != task_id and payout_count >= task_count]
+    ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     ensure(advancement_tasks == {"tmm:first_log": "544D4D1100000001"}, "Unexpected advancement objective overlap")
     ensure(len(item_tasks) == 36, f"Unexpected unique item-task count: {len(item_tasks)}")
     ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
