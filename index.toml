@@ -1,6 +1,34 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ftbquests/quests/chapter_groups.snbt"
+hash = "e57d8311aec9f524911ed1313cabf138bb7fa5a2d3ba985a00a2a267ff35ef78"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/intro.snbt"
+hash = "b313ebabfce60200bcf3233e40afcddbd2716b01bf957ab561f36fd106e88361"
+
+[[files]]
+file = "config/ftbquests/quests/data.snbt"
+hash = "e69a7042bfffe609f3a0f6f460b586009367cde332d6aca8ecf4e2bc3138db3d"
+
+[[files]]
+file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
+hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/first_log.json"
+hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
+hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
+
+[[files]]
+file = "kubejs/data/tmm/tags/item/portable_bags.json"
+hash = "e488fd42f0c1a801af589f59e8ff1fe2c2e2054e4364c95418fb0f2b4a309e2d"
+
+[[files]]
 file = "mods/akashic-tome.pw.toml"
 hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
 metafile = true
