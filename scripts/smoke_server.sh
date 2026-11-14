@@ -25,13 +25,13 @@ mkfifo cmd.fifo
 # A time limit remains to avoid indefinite hangs on a broken startup.
 (
   for ((elapsed=0; elapsed<SMOKE_TIMEOUT_SECONDS; elapsed++)); do
-    if grep -Eq 'Done \\(' server.log 2>/dev/null; then
-      printf 'stop\\n'
+    if grep -Eq 'Done \(' server.log 2>/dev/null; then
+      printf 'stop\n'
       exit 0
     fi
     sleep 1
   done
-  printf 'stop\\n'
+  printf 'stop\n'
 ) > cmd.fifo &
 STOPPER=$!
 set +e
