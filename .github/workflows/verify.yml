@@ -90,7 +90,40 @@ jobs:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '480'
           WORK_DIR: ${{ runner.temp }}/tmm-modded-smoke
+          SMOKE_AU_DEBUG: ${{ github.ref_name == 'feature/materials-unification-mahou-doubling' && '1' || '0' }}
         run: bash scripts/smoke_server.sh
+      - name: Inspect generated Neo Vitae materials and unified tags
+        if: always() && github.ref_name == 'feature/materials-unification-mahou-doubling'
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base = Path("${{ runner.temp }}/tmm-modded-smoke")
+          path = base / "config/neovitae/materials.json"
+          print("=== LIVE NEO VITAE MATERIALS ===")
+          if path.exists():
+              try:
+                  data = json.loads(path.read_text())
+                  entries = data if isinstance(data, list) else data.get("materials", [])
+                  print(f"Entries: {len(entries)} (JSON type={type(data).__name__})")
+                  for entry in entries:
+                      if not isinstance(entry, dict): continue
+                      print(json.dumps({k:entry.get(k) for k in ("name", "generative", "gen_ore", "gen_raw", "ore_tag", "raw_tag", "smelt_to")}))
+              except Exception as exc:
+                  print("Could not parse materials file:", type(exc).__name__, str(exc))
+          else:
+              print("No generated config found after first server startup; may require an additional world load or restart.")
+          print("=== ALMOST UNIFIED TAGS (silver/lead/iron/gold/copper/sulfur) ===")
+          tags = base / "logs/almostunified/debug/tags.txt"
+          if tags.exists():
+              lines = tags.read_text(errors="replace").splitlines()
+              matched = [(i, s) for i,s in enumerate(lines) if any(w in s.lower() for w in ("silver", "lead", "iron", "gold", "copper", "sulfur"))]
+              for i,s in matched[:120]:
+                  print(f"{i+1}: {s[:300]}")
+              print(f"Total matching lines: {len(matched)}")
+          else:
+              print("No tags.txt dump found; inspect Almost Unified logs.")
+          PY
       - name: Retain modded-server logs on success and failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -99,4 +132,6 @@ jobs:
           path: |
             ${{ runner.temp }}/tmm-modded-smoke/server.log
             ${{ runner.temp }}/tmm-modded-smoke/logs/latest.log
+            ${{ runner.temp }}/tmm-modded-smoke/config/neovitae/materials.json
+            ${{ runner.temp }}/tmm-modded-smoke/logs/almostunified/debug/tags.txt
           if-no-files-found: warn
