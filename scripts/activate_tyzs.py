@@ -18,12 +18,13 @@ from pathlib import Path
 MODRINTH_PROJECT = "4rKNK5O2"
 MODRINTH_VERSION = "OUmvFAPs"  # Tyz 6.4.2, MC 1.21.1 NeoForge. Never "latest".
 EXPECTED_VERSION = "6.4.2"
+EXPECTED_SHA512 = "070abb0665dee3a442b57a9957eed206adf4b510e66ce648ba3e68098fa1cd4e570af01950df0be3163eaf0469d84b79e1afc8d3c44924399f074584084b55f3"
 RELEASE_URL = f"https://api.modrinth.com/v2/version/{MODRINTH_VERSION}"
 DEFAULT_CATEGORIES = {"abilities", "combat", "misc", "nature"}
 SKILL_IDS = {"tmm_magic_reservoir_1", "tmm_magic_wellspring_1",
              "tmm_magic_thrift_1", "tmm_magic_potency_1"}
 
-def source_metadata() -> tuple[str, str]:
+def source_metadata() -> tuple[str, str, str]:
     req = urllib.request.Request(RELEASE_URL, headers={"User-Agent": "TooMuchMagic-QA/1.0"})
     with urllib.request.urlopen(req, timeout=25) as response:
         metadata = json.load(response)
@@ -49,6 +50,8 @@ def source_metadata() -> tuple[str, str]:
     sha512 = jar.get("hashes", {}).get("sha512")
     if not isinstance(sha512, str) or not re.fullmatch(r"[0-9a-fA-F]{128}", sha512):
         raise ValueError("Upstream Tyz release has no valid SHA-512")
+    if sha512.lower() != EXPECTED_SHA512:
+        raise ValueError("Tyz provider SHA-512 changed: fail closed instead of silently updating")
     return filename, url, sha512.lower()
 
 def write_packwiz(root: Path, filename: str, url: str, sha512: str) -> None:
