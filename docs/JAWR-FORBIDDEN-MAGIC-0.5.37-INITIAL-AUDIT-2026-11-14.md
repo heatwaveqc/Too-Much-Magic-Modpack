@@ -53,3 +53,10 @@ Important test combinations:
 5. Validate Forge/CurseForge parent `0.5.39` with addon `0.5.37`, both pinned in current manifest; shared version prefix is not proof or disproof of compatibility.
 
 **No bytecode decompiled, no source-owned implementation reviewed, no gameplay test, no skill tree added.** Initial documented feature/economy/death integration planning only.
+
+
+## Earlier official release-changelog clues (informative; not exact 0.5.37 implementation proof)
+
+- [JAWR parent 0.5.17 changelog, October 13 2026](https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake/files/9166142): "**Simple handler for players who are both Lich and Vampires (Forbidden magic)**" and "**Phylacteries don't need skylight in dimensions without a sky (level 9+) (Forbidden magic)**." This documents an intended **partial lich+vampire coexistence** and **level-specific phylactery interaction with skyless dimensions**, not proof of safe broad stacking or Goety compatibility.
+- [JAWR parent 0.5.18 release notes](https://modrinth.com/mod/just-another-witchery-remake/version/0.5.18) mention missing lich level-8 quest description, **Soul Form ability from a potion** being prioritized on the ability hotbar, and **phylactery deaths recorded at lich level 9**. These make ability-hotbar integration and phylactery-death accounting essential to the actual pinned-build tests.
+- [Independent FTB Evolution 2 recipe dump, November 12 2026](https://forgebase.johnhalls.com/ftbevolution2/items/witchery_forbidden_magic/necromantic_soulbind) gives `witchery_forbidden_magic:ritual/phylactery_1`, `.../phylactery_2`, and `.../infuse_necromancy` with a `necromantic_soulbind` component. **This is a different pack and Minecraft 26.1.2, not validated for our 1.21.1 build**. It is a useful registry/recipe lookup lead only.
