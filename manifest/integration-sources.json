@@ -33,6 +33,7 @@
         "config/almostunified/",
         "config/neovitae/materials.json",
         "kubejs/server_scripts/material_unification.js",
+        "kubejs/server_scripts/material_processing_cleanup.js",
         "kubejs/server_scripts/silver_equipment_unification.js",
         "kubejs/startup_scripts/silver_equipment_stats.js",
         "mods/almostunified.pw.toml",
