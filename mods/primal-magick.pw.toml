@@ -1,0 +1,13 @@
+name = "Primal Magick"
+filename = "primalmagick-neoforge-1.21.1-6.0.7.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "165a849fe2b95355067ede9cda014dec08129731"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6677090
+project-id = 545271

@@ -1,0 +1,13 @@
+name = "Feywild"
+filename = "feywild-1.21.1-5.6.4.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9321431
+project-id = 484377

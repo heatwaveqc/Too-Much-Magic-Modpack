@@ -1,0 +1,13 @@
+name = "Unfocused"
+filename = "unfocused-neoforge-0.3.12-1.21.1-sgd.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "7ce7d9537eea7f2b7765544be0d7fc352016ae9a"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9603593
+project-id = 1178682
