@@ -1,5 +1,8 @@
 # Hybrid supernatural physiology — Abomination, Dracolich, dual Lich (2026-11-13)
 
+> **SUPERSEDED TRANSFORMATION DECISIONS (2026-11-13):** The user's later **locked target** is [TRANSFORMATION-TARGET.md](TRANSFORMATION-TARGET.md): two vampire progression trees under one physiology; two werewolf trees under one physiology; Abomination combines all four parent source states; both lichdoms **must stack into Archlich**; dragons permit exactly one lich but never Archlich/Vampire/Werewolf/Abomination; Hunter is exclusive. Any contrary provisional matrix or status below is **historical research only**. Death-event work is tracked in [DEATH-MECHANICS-AUDIT.md](DEATH-MECHANICS-AUDIT.md). No bridge is yet implemented.
+
+
 **Decision levels:** Vampire's Delight has been approved separately and registered as a planned beta. **Dracolich is a user-required future playable outcome**, subject to implementing and testing a safe combination. **Abomination and dual-lich mechanics are research/design proposals**, not user-confirmed implementations. Dragon Survival remains deferred pending compatibility bridge. No new code, mods, or acceptance tests were completed by this design entry.
 
 Target: Minecraft **1.21.1 NeoForge**. Do not confuse current 1.21.x Vampirism/Werewolves APIs with the *later, incompatible* Vampirism 2.0/FactionApi announced for Minecraft 26.1.2. Our pack targets 1.21.1 and must use its embedded faction system.
