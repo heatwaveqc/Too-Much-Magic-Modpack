@@ -1,0 +1,851 @@
+{
+  "schema_version": 1,
+  "origin": "TMM original quests informed by ATM10 structure; no copied quest prose",
+  "rules": {
+    "each_quest_requires": "positive experience and an item reward",
+    "reward_shortcuts": "no reward item equals any currently authored item criterion",
+    "criteria_reuse": "none across authored item/advancement tasks; manual checkmark entries intentionally distinct by task ID",
+    "overview_placeholders": "until authored, minimal paper + XP checkmark rewards"
+  },
+  "quests": [
+    {
+      "chapter": "Getting Started",
+      "title": "Welcome to Too Much Magic",
+      "description": "A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": true,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Punch a Tree",
+      "description": "Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:torch",
+        "count": 4
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Make a Crafting Table",
+      "description": "Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:crafting_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bowl",
+        "count": 2
+      },
+      "depends": "Punch a Tree",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Make a Wooden Pickaxe",
+      "description": "Craft your first wooden pickaxe. Ordinary tools are an easy way to get established before specializing in magic.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wooden_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:stick",
+        "count": 2
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Gather Stone",
+      "description": "Collect sixteen cobblestone. Stone is useful for your first shelter, tools and furnace.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:cobblestone",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": "Make a Wooden Pickaxe",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Upgrade to Stone",
+      "description": "Make a stone pickaxe so you can mine sturdier resources.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:stone_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_porkchop",
+        "count": 2
+      },
+      "depends": "Gather Stone",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "A Place for Your Things",
+      "description": "Craft a chest for early base storage. Magic eventually offers more specialized options than generic storage networks.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:chest",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:item_frame",
+        "count": 1
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Light the Furnace",
+      "description": "Craft a furnace. Smelting remains useful alongside later magical processing.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:furnace",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:charcoal",
+        "count": 3
+      },
+      "depends": "Gather Stone",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Find Your First Iron",
+      "description": "Bring back three raw iron. Magical mining and transmutation will eventually provide alternatives.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:raw_iron",
+        "count": 3
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:coal",
+        "count": 3
+      },
+      "depends": "Upgrade to Stone",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Iron Pickaxe",
+      "description": "Craft an iron pickaxe. You now have the baseline tools to choose your first magical specialty.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:baked_potato",
+        "count": 2
+      },
+      "depends": "Find Your First Iron",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Begin a Library",
+      "description": "Craft a book to begin collecting magical research and manuals. Akashic Tome can organize compatible guides without replacing each school's progression.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:book",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lapis_lazuli",
+        "count": 2
+      },
+      "depends": "Make a Crafting Table",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Tips & Tricks Index",
+      "description": "These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": true,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Find Recipes with JEI",
+      "description": "Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Identify Blocks with Jade",
+      "description": "Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Sort Your Inventory",
+      "description": "Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:stick",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use Crafting Tweaks",
+      "description": "Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:cookie",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Search the Controls Screen",
+      "description": "Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Gather Your Guidebooks",
+      "description": "Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Curios and Portable Bags",
+      "description": "Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:torch",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Claim Your Base",
+      "description": "Use FTB Chunks to claim an area around your base. Chunk loading depends on server settings; protection and backups solve different problems.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:apple",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Understand Lootr Chests",
+      "description": "Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:feather",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Plan for Death",
+      "description": "Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:bone",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Search Biomes",
+      "description": "Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:sugar",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Resolve Recipe Conflicts",
+      "description": "Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Understand Character Growth",
+      "description": "Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:lapis_lazuli",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Zoom and Overlay Controls",
+      "description": "Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:cookie",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Food & Fishing Index",
+      "description": "Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": true,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Start with Seeds",
+      "description": "Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wheat_seeds",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Prepare a Field",
+      "description": "Craft a stone hoe to till farmland. Harvest with Ease can make managing mature crops simpler.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:stone_hoe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      "depends": "Start with Seeds",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Bring in the Wheat",
+      "description": "Harvest four wheat. Ordinary grains form a foundation for many more elaborate meals.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:wheat",
+        "count": 4
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": "Prepare a Field",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "A Patch of Sugar Cane",
+      "description": "Collect three sugar cane. Sugar and paper support cooking and magic books.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:sugar_cane",
+        "count": 3
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:honey_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Raise a Chicken Dinner",
+      "description": "Acquire raw chicken. Farmer's Delight and Pam's HarvestCraft offer cooking options beyond simple smelting.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:chicken",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_chicken",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Gather Eggs",
+      "description": "Collect two eggs for cooking recipes.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:egg",
+        "count": 2
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Fresh Milk",
+      "description": "Get a bucket of milk. Many recipes need useful basic farm products as well as exotic ingredients.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:milk_bucket",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:honey_bottle",
+        "count": 1
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Ready Your Fishing Rod",
+      "description": "Craft a fishing rod and start exploring another renewable food route.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:string",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Catch a Cod",
+      "description": "Catch cod using a rod. A small fishing expedition can feed a player before a serious farm is built.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:cod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_cod",
+        "count": 2
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Catch a Salmon",
+      "description": "Catch salmon in suitable water. Aquaculture expands this side of the game.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:salmon",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_salmon",
+        "count": 2
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Iron Rod",
+      "description": "Craft Aquaculture 2's iron fishing rod. Use JEI for its current exact recipe.",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:iron_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:nautilus_shell",
+        "count": 1
+      },
+      "depends": "Ready Your Fishing Rod",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Gold Rod",
+      "description": "Progress to an Aquaculture gold fishing rod. This is a distinct milestone, not another copy of the iron-rod objective.",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:gold_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:sea_pickle",
+        "count": 2
+      },
+      "depends": "Aquaculture: Iron Rod",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Aquaculture: Neptunium Rod",
+      "description": "Obtain the rare Neptunium fishing rod as an optional long-term goal rather than an early prerequisite.",
+      "criterion": {
+        "type": "item",
+        "id": "aquaculture:neptunium_fishing_rod",
+        "count": 1
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:nautilus_shell",
+        "count": 3
+      },
+      "depends": "Aquaculture: Gold Rod",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Light a Campfire",
+      "description": "Craft a campfire to cook basic food on the road.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:campfire",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cooked_beef",
+        "count": 2
+      },
+      "depends": null,
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Farmer's Delight: Cutting Board",
+      "description": "Craft Farmer's Delight's cutting board to prepare ingredients outside the normal crafting grid.",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cutting_board",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:bread",
+        "count": 2
+      },
+      "depends": "Bring in the Wheat",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Farmer's Delight: Cooking Pot",
+      "description": "Make a cooking pot and use it with heat and ingredients for more satisfying meals.",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cooking_pot",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:baked_potato",
+        "count": 4
+      },
+      "depends": "Farmer's Delight: Cutting Board",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Find the Seed Market",
+      "description": "Craft Farming for Blockheads' Market for ordinary seed and sapling trades. Magical seed trades must be audited before survival release.",
+      "criterion": {
+        "type": "item",
+        "id": "farmingforblockheads:market",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:emerald",
+        "count": 1
+      },
+      "depends": "Bring in the Wheat",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Pam's HarvestCraft: Fried Chicken",
+      "description": "Craft a finished Fried Chicken from Pam's HarvestCraft 2 Food Core. A useful optional cooking challenge.",
+      "criterion": {
+        "type": "item",
+        "id": "pamhc2foodcore:friedchickenitem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": "Raise a Chicken Dinner",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Pam's HarvestCraft: Starfruit",
+      "description": "Obtain starfruit from Pam's HarvestCraft 2 Trees, showcasing specialty plants and orchard progression.",
+      "criterion": {
+        "type": "item",
+        "id": "pamhc2trees:starfruititem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": "A Patch of Sugar Cane",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    }
+  ]
+}
