@@ -95,18 +95,31 @@ final class MonkTyzTierPolicyTest {
                 .toLowerCase().contains("not vanilla xp"));
     }
 
-    @Test void selectedTyzModIsApprovedButNotYetDeclaredInstalled() throws Exception {
+    @Test void selectedTyzManifestTracksTheActualInstalledPackwizPin() throws Exception {
         var manifest = load("../../manifest/mods.json");
         JsonObject tyz = null;
+        JsonObject pufferfish = null;
         for (var item : manifest.getAsJsonArray("mods")) {
             var row = item.getAsJsonObject();
             if ("tyzs-skills".equals(row.get("id").getAsString())) tyz = row;
+            if ("puffish-skills".equals(row.get("id").getAsString())) pufferfish = row;
         }
         assertNotNull(tyz);
         assertTrue(tyz.get("desired").getAsBoolean());
-        assertFalse(tyz.get("enabled_in_pack").getAsBoolean());
         assertEquals("verified_release", tyz.get("release_status").getAsString());
         assertEquals(8118598, tyz.get("candidate_file_id").getAsInt());
         assertEquals(990190, tyz.get("curseforge_project_id").getAsInt());
+
+        // Standalone Monk feature branches have only an approved Tyz candidate.
+        // The combined integration checkout legitimately activates the pin first.
+        boolean installed = Files.isRegularFile(Path.of("../../mods/tyzs-skills.pw.toml"));
+        assertEquals(installed, tyz.get("enabled_in_pack").getAsBoolean(),
+                "Tyz manifest enabled state must reflect an actual packwiz pin");
+        if (installed) {
+            assertFalse(Files.exists(Path.of("../../mods/puffish-skills.pw.toml")),
+                    "Integrated Tyz tree cannot coexist with Pufferfish Skills");
+            assertNotNull(pufferfish);
+            assertFalse(pufferfish.get("enabled_in_pack").getAsBoolean());
+        }
     }
 }
