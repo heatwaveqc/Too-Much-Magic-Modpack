@@ -421,6 +421,18 @@
       "packwiz_slug": "codechicken-lib-1-8"
     },
     {
+      "id": "colorful-hearts",
+      "name": "Colorful Hearts",
+      "category": "qol",
+      "desired": true,
+      "version": "colorfulhearts-neoforge-1.21.1-10.5.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/colorful-hearts/version/us0gze50",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved for next combined client test (2026-11-14). Terrails, Modrinth project wQfMUdZT, version us0gze50, NeoForge Minecraft 1.21.1, client-only, MIT. Replaces stacked health/absorption rows with colored layers. Unpinned, not installed. Verify actual artifact hash, compatibility with JAWR/Vampirism/AppleSkin HUD and large health/absorption values before activation."
+    },
+    {
       "id": "common-network",
       "name": "Common Network",
       "category": "dependency",
