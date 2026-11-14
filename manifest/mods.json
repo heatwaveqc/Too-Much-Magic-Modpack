@@ -78,6 +78,18 @@
       "packwiz_slug": "appleskin"
     },
     {
+      "id": "aquaculture",
+      "name": "Aquaculture 2",
+      "category": "food",
+      "desired": true,
+      "version": "2.7.22",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/aquaculture/files/all?gameVersionTypeId=6&page=1&version=1.21.1",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 2.7.22. Biome-specific fishing, new fish and seafood. Test fish meal/tag integration. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
       "id": "architectury-api",
       "name": "Architectury API",
       "category": "dependency",
@@ -279,6 +291,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "l_enders-cataclysm"
+    },
+    {
+      "id": "cobweb",
+      "name": "Cobweb",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/cobweb",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required by Harvest with Ease; choose exact 1.21.1 NeoForge build and validate dependency graph before install."
     },
     {
       "id": "construction-gadgets",
@@ -483,6 +507,18 @@
       "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
+      "id": "farmers-delight",
+      "name": "Farmer's Delight",
+      "category": "food",
+      "desired": true,
+      "version": "1.2.8",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/farmers-delight/version/1.21.1-1.2.8",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.2.8. Cooking pot, cutting board, new crops, meals and feasts. Confirm integrated food tags/recipes. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
       "id": "ferritecore",
       "name": "FerriteCore",
       "category": "performance",
@@ -660,6 +696,18 @@
       "enabled_in_pack": false,
       "dependencies_verified": false,
       "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "harvest-with-ease",
+      "name": "Harvest with Ease",
+      "category": "qol",
+      "desired": true,
+      "version": "9.4.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/harvest-with-ease/version/cjDrwP2Q",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 9.4.0. Approved support mod to provide right-click gentle harvest/replant across crops, including Pam/Farmer's Delight after testing. Requires Cobweb; verify special multi-block crops and config. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
     },
     {
       "id": "hexcast-neoforged",
@@ -948,6 +996,54 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "occultism"
+    },
+    {
+      "id": "pams-harvestcraft-2-crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.9",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-crops/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.9. 96 crops, garden worldgen, and plant foods. Pam removed right-click harvesting; Harvest with Ease provides it. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-food-core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.4",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-food-core/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.4. Core HarvestCraft food recipes; verify tag and recipe overlap with Farmer's Delight and Aquaculture. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-food-extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-food-extended",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.0. Hundreds more food recipes; requires Food Core and expects Crops/Trees for ingredients. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
+    },
+    {
+      "id": "pams-harvestcraft-2-trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
+      "category": "food",
+      "desired": true,
+      "version": "1.0.9",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-trees/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion 2026-11-13; available NeoForge 1.21.1 release 1.0.9. Fruit trees and food ingredients; test spawn density with Tectonic. Release evidence only, file IDs and runtime dependency closure not yet verified/pinned; no client/server test."
     },
     {
       "id": "pastel",
@@ -1556,6 +1652,21 @@
         "enchanted-witchcraft"
       ],
       "status": "planned_unresolved_releases"
+    },
+    {
+      "id": "B7",
+      "name": "Food expansion: complete Pam's HarvestCraft 2 + Farmer's Delight + Aquaculture + gentle harvesting",
+      "members": [
+        "pams-harvestcraft-2-food-core",
+        "pams-harvestcraft-2-crops",
+        "pams-harvestcraft-2-trees",
+        "pams-harvestcraft-2-food-extended",
+        "farmers-delight",
+        "aquaculture",
+        "harvest-with-ease",
+        "cobweb"
+      ],
+      "status": "approved_planned_not_installed"
     }
   ]
 }
