@@ -92,3 +92,8 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 ### HexCast pilot build/runtime gate
 - The new [HexCast Java bridge pilot](../integration/hexcast-media-pilot/README.md) is **not in the installed pack**. Its 65-assertion source-shaped contract harness passed; **real pinned HexCast/NeoForge binary compilation and complete B6 dedicated-server boot with the extra bridge JAR also passed** in [CI run 43560378024](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43560378024). This is still **not a player-casting or client-world test**, so `Compatible with work` remains the correct status.
 - A reproducible Gradle NeoForge 21.1 build now uses the exact hash-pinned HexCast port in its compile classpath; the harness stub classes are **not packaged** in the built mod JAR. The actual spell-cost effects, owner-vs-circle semantics and native media charges are still pending a disposable client-world test.
+
+## Scriptor 2.0.14 capability and skills source audit (2026-11-13)
+- [Source-backed audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md) compares the Sept 17 author commit and Oct 21 main; exact pinned 2.0.14 binary/in-world mechanics **not yet tested**.
+- **User policy:** no Scriptor Mana Mode, preserve cooldown-based casting; investigate persistent craftsmanship and personal cooldown skill bridges. **Do not nerf** automatic lecterns just because they can mine existing ores, smelt without fuel, transport drops or kill mobs.
+- `LecternTargetable.container` may always return its null backing field, preventing direct adjacent-chest caster inventory use; verify before upstream report/patch. `Place` does not create real ore blocks absent inputs. Status: **Compatible with work**.

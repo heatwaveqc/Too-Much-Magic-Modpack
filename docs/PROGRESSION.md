@@ -22,3 +22,8 @@ Do not add placeholder broken KubeJS recipes using speculative registry names.
 - BiggerReactors Rework 0.1.6 adds a separate battery and industrial processor along with reactor energy generation. Review the energy/storage features against our limited-tech policy before progression work; it was explicitly approved as the newer fork for testing.
 - Botania Revived may expose optional Ars Nouveau integration; balance mana/source conversions and remove any forbidden storage acquisition path.
 - Experimental Astral Sorcery and Draconic Evolution are boot-tested, **not yet gameplay-accepted**; Draconic Chaos Guardian remains the ProjectE gate.
+
+## Scriptor automation policy
+- Scriptor remains **cooldown-based** (no Mana Mode). Strong, repeated casting by lecterns is intended, not a blanket balance defect. Smelting, mob farming, ground-item relocation, buff stations and ordinary existing-ore mining can be features.
+- **No automatic ore conjuration** is present in stock `Place`; it creates colored magic blocks absent an existing block item. The user wants knowledge of what lecterns *actually* do before deciding any restrictions. Respect already locked Chaos Guardian, boss and hard-to-mine ore gates; don't invent new gates or nerfs without approval.
+- Pursue *quality imprints* on crafted/written items and lecterns; personal cooldown bonuses must not give unattended machines perpetual live-owner skills. See [source audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md).
