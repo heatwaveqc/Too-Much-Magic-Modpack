@@ -14,8 +14,8 @@
   },
   "counts": {
     "total": 66,
-    "strong": 24,
-    "moderate": 34,
+    "strong": 25,
+    "moderate": 33,
     "tentative": 8,
     "immediate": 16,
     "short_chain": 29,
@@ -697,15 +697,15 @@
       "tips_candidate": false
     },
     {
-      "id": "scriptor-lectern",
+      "id": "scriptor-inflame-lectern",
       "mod": "Scriptor Magicae",
-      "capability": "Stationary casting",
-      "unlock": "Casting Lectern and scripted spellbook",
-      "benefit": "A Casting Lectern automatically casts a spell from a placed grimoire. It can be paired with targeting crystals and redirection for fixed base stations.",
+      "capability": "Automatic smelting",
+      "unlock": "Casting Lectern + a written spell containing Inflame",
+      "benefit": "Lectern repeats the written spell with no player mana, FE or fuel. Inflame applies a normal furnace-smelting recipe to a targeted input item stack, consuming the input and depositing the output. Default max allowed spell cost 25; interval max(10, total spell cost × 10) ticks.",
       "access": "short_chain",
-      "evidence": "moderate",
-      "source": "https://mcmodwiki.com/scriptor-magicae/guides/casting-lecterns-crystals-and-chalk-guide",
-      "caveat": "This is not Ars Nouveau's Storage Lectern. A smelting-specific spell on the lectern is NOT verified. Scriptor spell syntax differs per world; requires discovering or writing a suitable spell.",
+      "evidence": "strong",
+      "source": "https://github.com/ssblur/scriptor/blob/main/common/src/main/kotlin/com/ssblur/scriptor/word/action/InflameAction.kt",
+      "caveat": "Source-confirmed free processing but NOT in-pack-tested. Recipe: 3 wooden slabs + bookshelf + purple wool for lectern; written spell requires learning world-randomized syntax and binder. Block only casts with no neighbor redstone signal. The CURRENT main-branch LecternTargetable.container getter suspiciously returns its null backing field even when adjacent inventory exists: adjacent chest auto-smelting must be tested in pinned 2.0.14 before promising unattended chest-to-output operation. Crystal-targeted inventory is an alternate focus path to investigate.",
       "tips_candidate": true
     },
     {
