@@ -975,11 +975,11 @@ hash = "2c732058a0f232ab661c21c6a460ed44149a2e8136a0d31c73eb0c855269baa0"
 
 [[files]]
 file = "config/almostunified/placeholders.json"
-hash = "c4113015af4d46f2176f1dc2da04ae59a860bcbec25230d8218e5ff3180f1bb1"
+hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
 [[files]]
 file = "config/almostunified/unification/materials.json"
-hash = "b567b71b5773cbffa89829d374b2b254d14b17caf25cee8edb622bb85e61caea"
+hash = "eecef67929f1064f649b1e13069292a29a8bc7fdf92f177f3d8031000f660297"
 
 [[files]]
 file = "kubejs/server_scripts/material_unification.js"
