@@ -64,6 +64,19 @@ mkfifo cmd.fifo
 (
   for ((elapsed=0; elapsed<SMOKE_TIMEOUT_SECONDS; elapsed++)); do
     if grep -Eq 'Done \(' server.log 2>/dev/null; then
+      if [[ "${SMOKE_KUBEJS_EXPORT:-0}" == "1" ]]; then
+        # Export final loaded recipes after KubeJS edits, unlike AU's
+        # before-KubeJS recipe debug output.
+        printf 'kubejs export\n'
+        for ((waited=0; waited<240; waited++)); do
+          if [[ -s local/kubejs/export/index.json ]] && [[ -s local/kubejs/export/recipes/mahoutsukai/powdered_iron_2.json ]]; then
+            echo "KubeJS recipe export finished after ${waited}s" >&2
+            sleep 2
+            break
+          fi
+          sleep 1
+        done
+      fi
       if [[ "${SMOKE_POLYMORPH_AUDIT:-0}" == "1" ]]; then
         echo "Polymorph audit: issuing 'polymorph conflicts' on modded server" >&2
         # Console commands have NO leading slash.
@@ -92,6 +105,11 @@ STATUS=$?
 set -e
 kill "$STOPPER" 2>/dev/null || true
 if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
+  if [[ "${SMOKE_KUBEJS_EXPORT:-0}" == "1" ]] && [[ ! -s local/kubejs/export/recipes/mahoutsukai/powdered_iron_2.json ]]; then
+    echo "FAIL: KubeJS final recipe export not completed" >&2
+    tail -80 server.log
+    exit 1
+  fi
   if [[ "${SMOKE_POLYMORPH_AUDIT:-0}" == "1" ]] && [[ ! -s logs/polymorph-conflicts.log ]] && ! grep -Eq 'Found 0 potential conflicts' server.log; then
     echo "FAIL: Polymorph diagnostic did not finish" >&2
     tail -80 server.log
