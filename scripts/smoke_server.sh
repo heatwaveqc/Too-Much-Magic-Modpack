@@ -48,6 +48,20 @@ mkfifo cmd.fifo
 (
   for ((elapsed=0; elapsed<SMOKE_TIMEOUT_SECONDS; elapsed++)); do
     if grep -Eq 'Done \(' server.log 2>/dev/null; then
+      if [[ "${SMOKE_POLYMORPH_AUDIT:-0}" == "1" ]]; then
+        echo "Polymorph audit: issuing 'polymorph conflicts' on modded server" >&2
+        # Console commands have NO leading slash.
+        printf 'polymorph conflicts\n'
+        # Polymorph runs asynchronously; wait until it reports a result.
+        for ((waited=0; waited<180; waited++)); do
+          if [[ -s logs/polymorph-conflicts.log ]] || grep -Eq 'Found [0-9]+ potential conflicts' server.log 2>/dev/null; then
+            echo "Polymorph audit finished after ${waited}s" >&2
+            sleep 2
+            break
+          fi
+          sleep 1
+        done
+      fi
       printf 'stop\n'
       exit 0
     fi
@@ -62,6 +76,11 @@ STATUS=$?
 set -e
 kill "$STOPPER" 2>/dev/null || true
 if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
+  if [[ "${SMOKE_POLYMORPH_AUDIT:-0}" == "1" ]] && [[ ! -s logs/polymorph-conflicts.log ]] && ! grep -Eq 'Found 0 potential conflicts' server.log; then
+    echo "FAIL: Polymorph diagnostic did not finish" >&2
+    tail -80 server.log
+    exit 1
+  fi
   echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
   exit 0
 fi
