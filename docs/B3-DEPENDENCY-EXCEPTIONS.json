@@ -1,0 +1,20 @@
+{
+  "reason": "NeoForge server error: irons_spellbooks requires irons_lib [1.21.1-2,1.21.1-3), playeranimator >=2.0.1+1.21.1",
+  "exception_policy": "Allow beta-tagged prerequisite only; no new beta/alpha gameplay mods installed",
+  "dependencies": [
+    {
+      "id": "irons-lib",
+      "project_id": "9nfaJPtX",
+      "version_id": "dgH7P81J",
+      "version_number": "1.21.1-2.3.0",
+      "version_type": "release"
+    },
+    {
+      "id": "playeranimator",
+      "project_id": "gedNE4y2",
+      "version_id": "HJZB6bmA",
+      "version_number": "2.0.4+1.21.1-forge",
+      "version_type": "beta"
+    }
+  ]
+}

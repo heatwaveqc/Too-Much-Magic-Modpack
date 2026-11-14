@@ -457,6 +457,19 @@
       "packwiz_slug": "immediatelyfast"
     },
     {
+      "id": "irons-lib",
+      "name": "Iron's Lib",
+      "category": "dependency",
+      "desired": true,
+      "version": "irons_lib-1.21.1-2.3.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/9nfaJPtX",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "irons-lib",
+      "note": "Required runtime dependency of stable Iron's Spells 3.16.3. Release channel."
+    },
+    {
       "id": "irons-spells",
       "name": "Iron's Spells 'n Spellbooks",
       "category": "magic",
@@ -705,6 +718,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "placebo"
+    },
+    {
+      "id": "playeranimator",
+      "name": "playerAnimator",
+      "category": "dependency",
+      "desired": true,
+      "version": "player-animation-lib-forge-2.0.4+1.21.1",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/gedNE4y2",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "playeranimator",
+      "note": "Required runtime dependency of stable Iron's Spells 3.16.3. Only compatible 2.0.x files are beta-tagged; explicit limited exception for boot prototype."
     },
     {
       "id": "polymorph",
@@ -1041,6 +1067,7 @@
         "extended-crafting",
         "forbidden-magic",
         "gateways-to-eternity",
+        "irons-lib",
         "irons-spells",
         "kotlin-for-forge",
         "lionfish-api",
@@ -1049,6 +1076,7 @@
         "neovitae",
         "occultism",
         "placebo",
+        "playeranimator",
         "project-expansion",
         "projecte",
         "re-avaritia",
@@ -1060,7 +1088,7 @@
         "titanium",
         "witchery-remake"
       ],
-      "status": "server_boot_failed"
+      "status": "server_smoked_client_pending"
     }
   ]
 }
