@@ -90,6 +90,8 @@ def main() -> None:
     chapters_spec = json.loads((ROOT / "manifest" / "quest_chapters.json").read_text(encoding="utf-8"))
     authored = json.loads((ROOT / "manifest" / "quest_content.json").read_text(encoding="utf-8"))
     resolved = json.loads((ROOT / "manifest" / "quest_content_resolved.json").read_text(encoding="utf-8"))
+    authored_by_key = {(q["chapter"], q["title"]): q for q in authored["quests"]}
+    resolved_by_id = {q["quest_id"]: q for q in resolved["quests"]}
     groups = chapters_spec["groups"]
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
@@ -133,7 +135,10 @@ def main() -> None:
         ensure(f'filename: "{path.stem}"' in text, f"Wrong filename on {path.name}")
         ensure(f'order_index: {c["order_index"]}' in text, f"Wrong chapter index on {path.name}")
         # Chapter title lives in lang/en_us/chapter.snbt, not the per-chapter data file.
-        ensure(f'chapter.{c["chapter_id"]}.title: {json.dumps(c["name"])}' in chapterloc, f"Missing locale for {path.name}")
+        ensure(f'chapter.{c["chapter_id"]}.title: {json.dumps(c["name"], ensure_ascii=False)}' in chapterloc,
+               f"Wrong English chapter name for {path.name}")
+        ensure(f'chapter.{c["chapter_id"]}.chapter_subtitle: [' in chapterloc,
+               f"Missing localized chapter subtitle for {path.name}")
         ensure("re-avaritia" not in text and "extended-crafting" not in text, f"Excluded mod referenced: {path.name}")
         for ident in re.findall(r'\bid: "([0-9A-F]{16})"', text):
             ensure(ident not in global_ids, f"Duplicate global chapter/quest/task/reward ID: {ident} in {path.name}")
@@ -166,6 +171,17 @@ def main() -> None:
             ensure(head is not None, f"Quest has no primary ID in {path.name}")
             qid = head.group(1)
             ensure(qid in lang_ids, f"Quest missing a locale entry: {qid} in {path.name}")
+            record = resolved_by_id.get(qid)
+            expected_title = record["title"] if record is not None else "Chapter Overview"
+            ensure(f'quest.{qid}.title: {json.dumps(expected_title, ensure_ascii=False)}' in lang_text,
+                   f"Wrong English quest title: {qid} ({expected_title})")
+            if record is not None:
+                authored_record = authored_by_key.get((c["name"], expected_title))
+                ensure(authored_record is not None, f"Missing canonical source text for {qid}")
+                desc = authored_record["description"]
+                ensure(isinstance(desc, str) and bool(desc.strip()), f"Empty authoring description for {qid}")
+                wanted_desc = f'quest.{qid}.quest_desc: [{json.dumps(desc, ensure_ascii=False)}]'
+                ensure(wanted_desc in lang_text, f"Quest description differs from its authoring source: {qid}")
             ensure(qid not in all_blocks, f"Duplicate quest ID: {qid}")
             all_blocks[qid] = block
             reward_start = block.find("rewards: [")
