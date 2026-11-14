@@ -56,3 +56,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - **Draconic Evolution 3.1.4.633 beta**: project 223565/file 8797042. **Brandon's Core stable 3.2.1.309**: project 231382/file 7130990. **CodeChicken Lib stable 4.6.1.529**: project 242818/file 8491811, pulled as a dependency by packwiz. This full stack passes server startup. Energy transfer and Chaos Guardian combat remain untested.
 - The remaining failures/unresolved items above are **historic B3 notes**, and B4's positive server tests supersede the earlier lack of runtime evidence for these specific newly added releases. **Client world creation and gameplay interactions remain untested.**
 - Nonblocking server log defects: Project Expansion missing declared `accesstransformer.cfg` and optional Quark class mixin warnings; triage later.
+
+## Pufferfish planning — not installed (2026-11-13)
+- Pufferfish's Skills: 1.21.1 NeoForge candidate `puffish_skills-0.19.2-1.21-neoforge.jar`, upstream **beta-tagged**. Requires a later explicit beta-testing exception/approval; this is a planned roster entry only.
+- Pufferfish's Attributes: 1.21.1 NeoForge release candidate `puffish_attributes-0.8.3-1.21-neoforge.jar`. The standalone attributes library is the intended companion to Skills versions >=0.12.0, not a substitute for Skills.
+- **Neither** has a `mods/*.pw.toml`/index entry, and neither has been runtime tested in the B5 mod collection; custom perk trees are not yet authored. Verify dependency pair, file IDs, NeoForge version, client GUI, and server compatibility before enabling.
+- Sources: https://modrinth.com/mod/skills ; https://modrinth.com/mod/attributes ; https://www.curseforge.com/minecraft/mc-mods/puffish-skills/files/all ; https://www.curseforge.com/minecraft/mc-mods/puffish-attributes/files/all .
