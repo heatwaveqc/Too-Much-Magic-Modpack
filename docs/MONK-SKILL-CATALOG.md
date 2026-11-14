@@ -1,3 +1,10 @@
+> **Primary Tyz tree supersession (2026-11-14):** This is a source audit,
+> not a second general skill tree. Primary Tyz/MXP plan owns the global wallet,
+> common category and universal skills; Monk supplies only faction-specific
+> technique designs, permissions and unarmed adapters. Old 99/99 and native
+> Tyz XP instructions are superseded. See
+> [reconciliation](MONK-INTEGRATION-WITH-PRIMARY-TYZS-TREE.md).
+
 > **Backend supersession (2026-11-14):** Pufferfish is excluded from the
 > target Monk skill architecture. The 270 candidate IDs have been mapped into
 > Tyz, existing Improvable Skills, native Vampirism Monk skills and Java
