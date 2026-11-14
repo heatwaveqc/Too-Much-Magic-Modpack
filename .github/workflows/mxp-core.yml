@@ -20,6 +20,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse optional KubeJS pilot scripts
+        run: |
+          node --check compat/mxp/pilot/kubejs/server_scripts/tmm_mxp_psi.js
+          node --check compat/mxp/pilot/kubejs/server_scripts/tmm_mxp_boss_rules_example.js
       - name: Compile standalone MXP arithmetic and ledger
         run: |
           mkdir -p /tmp/tmm-mxp-classes
