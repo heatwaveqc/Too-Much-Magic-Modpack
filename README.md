@@ -2,7 +2,7 @@
 
 A magic-first Minecraft modpack under active construction.
 
-**Status: bootstrap / not yet boot-tested.** This repository starts with an empty packwiz baseline, an approved-mod register, and repeatable validation scripts. A published NeoForge release for a mod is **not** evidence that the assembled pack launches.
+**Status: first integration candidate.** Baseline NeoForge 21.1.265 dedicated-server boot is confirmed. On the `build/b1-kubejs-infrastructure` branch four actual mods are version- and hash-pinned in packwiz: KubeJS, Rhino, Better Advanced Tooltips and ModernFix. Client testing and broader magical integration are still outstanding.
 
 Read [AGENTS.md](AGENTS.md), [the design contract](docs/DESIGN.md), [the compatibility register](docs/COMPATIBILITY.md), and [the smoke-test ledger](docs/TESTING.md) before modifying progression or activating a mod.
 
