@@ -1358,6 +1358,18 @@
       "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
+      "id": "vampires-delight",
+      "name": "Vampire's Delight",
+      "category": "food_addon",
+      "desired": true,
+      "version": "0.1.12b",
+      "release_status": "verified_beta_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/vampires-delight/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved explicitly by user 2026-11-13. Beta-only 1.21.1 NeoForge build VampiresDelight-1.21.1-0.1.12b (May 4 2026); requires Vampirism >= 1.10 and Farmer's Delight. User authorizes including this beta mod, NOT relaxing beta policy for other mods. Review food effects across supernatural factions; release does not imply tested."
+    },
+    {
       "id": "vampirism",
       "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
@@ -1664,7 +1676,8 @@
         "farmers-delight",
         "aquaculture",
         "harvest-with-ease",
-        "cobweb"
+        "cobweb",
+        "vampires-delight"
       ],
       "status": "approved_planned_not_installed"
     }
