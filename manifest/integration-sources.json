@@ -52,6 +52,15 @@
       "note": "Latest canonical Neo Vitae dust target branch; retains earlier silver-equipment, AU and processing dedup work; new KubeJS paths and static verifier. Do not assume live registry or final exported recipes without player test."
     },
     {
+      "name": "mahou-catalyst-exchange-neo-dust",
+      "branch": "feature/mahou-catalyst-exchange-kubejs",
+      "paths": [
+        "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js"
+      ],
+      "mode": "runtime-experimental",
+      "note": "Test-only exact Neo dust -> temporary native Mahou PowderedCatalyst proxy for dropped-item Catalyst Exchange. Verified pinned Mahou bytecode and offline transaction model; actual NeoForge server/client and no-mana game behavior require disposable-world testing. Does not replace direct blank-circle right-click bridge."
+    },
+    {
       "name": "roots-mxp-prototypes",
       "branch": "feature/roots-kubejs-first-pickup-terra-poc",
       "paths": [
@@ -174,6 +183,7 @@
     "Player-tested PASS (2026-11-14): quest book, starter-choice interface, Quest Shop coin button, quest rewards, FTB Essentials /sethome and /rtp, QoL functions. Vampirism tests ongoing. Monk user-reported FAIL: no sunset progress, no resulting Monk skill tree/UI; investigate with B15 diagnostic/testjoin.",
     "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
     "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified.",
-    "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending."
+    "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending.",
+    "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed."
   ]
 }
