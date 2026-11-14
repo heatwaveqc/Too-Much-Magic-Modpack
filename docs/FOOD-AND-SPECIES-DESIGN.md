@@ -129,7 +129,7 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 - **Werewolf**: persistent **lycanthropic identity** whose wolf/beast modes are temporary shape phases of the same curse. Avoid another simultaneous alternate body model, especially dragon.
 - **Lich**: choose **one** necromantic immortality system (Goety Arca or JAWR phylactery); its powers, resurrection, and hunger rules remain under that chosen provider. A Goety lich's human-looking alternate appearance is not a cure or a second species.
 - **Dracolich**: required eventual hybrid with dragon anatomy and *one* lich anchor; lich governs death, hunger/essence, undead vulnerabilities; Dragon Survival governs body/flight/growth; requires explicit overrides to prevent duplicate HUD/food and body/form rendering. **Do not attempt in gameplay until an addon implements it.**
-- **Hunter**: Vampirism's hunter faction is primarily a profession/faction state, not automatic nonhuman physiology. Decide later whether dragon hunters are allowed; the known Dragons and Vampires helper blocks all Vampirism faction membership at dragon altars, including hunters.
+- **Hunter**: the user's garlic-injection rule defines Hunter as a **protected, modified-human physiology**: immune to involuntary vampire, werewolf and other permanent species transformations across mods, while a deliberate confirmed transformation ritual removes the Hunter state before applying the new one. This must be custom-enforced beyond native Sanguinare immunity; see [HUNTER-AND-VAMPIRE-COMPARISON.md](HUNTER-AND-VAMPIRE-COMPARISON.md).
 
 ### Suggested rule architecture
 
@@ -138,7 +138,7 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 - Preempt new transformations using mod-specific hooks/bridge at every route; do not silently overwrite another mod's player data with generic KubeJS commands. Reconcile *actual* player state on login, respawn and dimension transfer.
 - Preserve already learned magical skills, unlocked spellbooks, faction-neutral crafting and equipment when a player changes valid physiology.
 - Avoid involuntary deletion of vampire/lich skill trees. Reversion routes must specify removal of dietary rules, UI overlays, body scale, phylactery/Arca, stored growth and resurrection flags.
-- Living human and dragon hunters should be able to benefit from new food systems. For undead who no longer have hunger, decide whether crafted meals provide nonessential enjoyment or small buffs, or whether we intentionally accept that feeding replaces culinary gameplay.
+- Living humans and modified-human Hunters should benefit from new food systems; dragon hunters are NOT automatically allowed. For undead who no longer have hunger, decide whether crafted meals provide nonessential enjoyment or small buffs, or whether we intentionally accept that feeding replaces culinary gameplay.
 
 ## D. Open decisions for owner review
 
