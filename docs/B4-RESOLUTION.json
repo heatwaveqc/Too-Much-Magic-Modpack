@@ -106,6 +106,24 @@
         "\u001b[m\u001b[33m[03:26:54.944] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)",
         "\u001b[m\u001b[33m[03:26:54.954] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)"
       ]
+    },
+    {
+      "stage": "draconic",
+      "requested": [
+        "brandons-core",
+        "draconic-evolution"
+      ],
+      "status": "PASS",
+      "resolved": [
+        "brandons-core",
+        "draconic-evolution"
+      ],
+      "detail": "Clean server readiness and stop; JAR hashes verified",
+      "errors": [
+        "\u001b[m\u001b[1;31m[03:28:15.261] [main/ERROR] [loading.moddiscovery.ModFile/LOADING]: Access transformer file accesstransformer.cfg provided by mod projectexpansion does not exist!",
+        "\u001b[m\u001b[33m[03:28:18.831] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)",
+        "\u001b[m\u001b[33m[03:28:18.843] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)"
+      ]
     }
   ],
   "not_tested": [

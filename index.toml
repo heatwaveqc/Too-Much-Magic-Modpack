@@ -69,6 +69,16 @@ hash = "1afaf5985c453bb3aa86d411c543be420a26f41f3f0005746d6399046f5ebf33"
 metafile = true
 
 [[files]]
+file = "mods/brandons-core.pw.toml"
+hash = "7904c140247e0d8a87231cf4d36718fc018e0f851dbec2517b673acdc25547df"
+metafile = true
+
+[[files]]
+file = "mods/codechicken-lib-1-8.pw.toml"
+hash = "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a"
+metafile = true
+
+[[files]]
 file = "mods/controlling.pw.toml"
 hash = "65c8086d2ec3d39acc7bd36c7a0306ccc43b602b38fa07d13291bc478ef7dfff"
 metafile = true
@@ -96,6 +106,11 @@ metafile = true
 [[files]]
 file = "mods/deeperdarker.pw.toml"
 hash = "a9ecc4476d26e707189e9f988c19f22961c33dfd5e5b4db1dfd6f87c6a81c545"
+metafile = true
+
+[[files]]
+file = "mods/draconic-evolution.pw.toml"
+hash = "5b4d79435b6c6307cdcb141561b46a536fcf317a5661dbcafe33dfcde3cfe80f"
 metafile = true
 
 [[files]]
