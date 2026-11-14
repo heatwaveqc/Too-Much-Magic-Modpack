@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.monk.gameplay;
 import de.teamlapen.vampirism.api.event.PlayerFactionEvent;
 import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.rules.MonkEligibility;
+import io.github.heatwaveqc.tmm.monk.rules.DisciplineRules;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,10 +42,12 @@ public final class StepAssistEffects {
     public static void reconcile(ServerPlayer player) {
         AttributeInstance step = player.getAttribute(Attributes.STEP_HEIGHT);
         if (step == null) return;
-        boolean active = MonkEligibility.eligibleForMonkPower(player)
-                && MonkFaction.FACTION.getPlayerCapability(player)
-                   .map(p -> p.getLevel() > 0 && p.getSkillHandler().isSkillEnabled(MonkSkills.ROOT.get()))
-                   .orElse(false);
+        boolean monk = MonkFaction.FACTION != null
+                && de.teamlapen.vampirism.api.VampirismAPI.factionPlayerHandler(player).isInFaction(MonkFaction.FACTION);
+        boolean root = monk && MonkFaction.FACTION.getPlayerCapability(player)
+                .map(p -> p.getLevel() > 0 && p.getSkillHandler().isSkillEnabled(MonkSkills.ROOT.get()))
+                .orElse(false);
+        boolean active = DisciplineRules.permitsStepAssist(monk, root, MonkEligibility.equipmentAllowsDiscipline(player));
         boolean applied = step.getModifier(MODIFIER_ID) != null;
         if (active && !applied) step.addTransientModifier(MODIFIER);
         else if (!active && applied) step.removeModifier(MODIFIER_ID);
