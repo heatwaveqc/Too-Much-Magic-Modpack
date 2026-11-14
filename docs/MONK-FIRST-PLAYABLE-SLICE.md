@@ -1,6 +1,15 @@
 # Monk playable-slice candidate — First Sunset and Step Assist
 
-**Branch:** `feature/monk-first-sunset-step-assist`, based on the reconciled Monk research. **Status:** source code committed; not yet dedicated-server/client tested. Java/Gradle CI is the first build gate.
+**Branch:** `feature/monk-first-sunset-step-assist`, based on the reconciled Monk research. **Status:** code compiled and unit-tested in GitHub CI; **user-reported in-game acceptance of the happy path on 2026-11-14**. This is not a complete server/client matrix or release signoff.
+
+## User-reported in-game results — 2026-11-14
+
+- **PASS (reported):** sunset initiation ran successfully and actually joined the Monk faction.
+- **PASS (reported):** the Vampirism configuration / faction skill-tree controls became available.
+- **PASS (reported):** Step Assist was granted and operated.
+- **PASS (reported):** the existing text progress counter is functional enough for testing.
+- **NOT YET TESTED/NOT REPORTED:** interrupted gaze, blocked sky, rain, faction bypasses, invalid equipment, conflicting transformations, respec, logout/death/rejoin persistence, second player, and magic-UI conflicts. Do not infer any of those checks from the successful happy path.
+- **Deferred full-release UI requirement:** Restore the original-style bottom-right **graphically filling circular progress HUD** for any time/count-based Monk deed; retain the existing text progress counter as fallback. See [Monk HUD progress design](MONK-HUD-PROGRESS-DESIGN.md). This is a planned quality-of-life improvement, not currently implemented.
 
 ## Working behavior implemented in source
 
