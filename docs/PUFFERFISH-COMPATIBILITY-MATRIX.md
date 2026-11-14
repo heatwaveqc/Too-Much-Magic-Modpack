@@ -13,8 +13,8 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | State | Count |
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **17** |
-| Compatible with work | **10** |
-| Needs investigation | **3** |
+| Compatible with work | **11** |
+| Needs investigation | **2** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **12** |
 | **Total** | **42** |
@@ -41,11 +41,12 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Psi** (`psi`) | Psi 110 defines synchronized player attributes `psi:total_psi` (default 5000) and `psi:regen` (default 25/t), a complete NeoForge `PsiEvents` KubeJS API including `preSpellCast`, `regenPsi`, and `cadStat`, and datapack-defined CAD stats and piece unlocks. | Bind Pufferfish capacity/regeneration directly; test event-based cost reductions and separate item-based CAD crafting perks. CAD stats are item properties, and compile-time limits are checked before pre-cast cost modifiers. Review PsiTweaks penalty defaults and resource interoperability. |
 | **Psi: Tweaks and Additions** (`psi-tweaks`) | Pinned 0.10.10-hotfix source registers the player attribute `psitweaks:spell_damage_factor` and applies it in multiple damaging tricks; addon equipment also buffs Psi max/regeneration and spell damage, confirming parent integration. | Apply Pufferfish damage rewards to that attribute for supported addon spells, verify coverage/double stacking, and audit Ideaspace Storage, FE Supply, Mass Block Break, Time Accelerate and configurable Psi penalty overrides before enabling skill boosts. |
 
-## Compatible with work — concrete integration path identified (10)
+## Compatible with work — concrete integration path identified (11)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
 | **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | **Shared Ars/Iron's mana is desired**. Test the built-in `iss_primary` default (Iron's authoritative) against pinned 3.3.5; verify client display, casting costs and Pufferfish spell-power stacking. Psi is explicitly excluded from this shared mana. |
+| **Just Another Witchery Remake** (`witchery-remake`) | In pinned 0.5.39 era, author's JSON docs confirm **personal Infusion charge** (e.g., Overworld ore extraction spending 100) and `witchery:ritual` world altar-power + `witchPower` coven/familiar context; 0.5.36/0.5.39 reports establish **Symbology** casting and `Rite of Charge Infusion`. No confirmed native player attribute or direct Pufferfish API in public implementation source. | **Compatible with work:** meaningful **personal Infusion efficiency** and **Symbology potency/cost** candidates, but require pinned-JAR and first-pilot hook audit. **Do not** add player mana to altar, duplicate Hobgoblin-grid/coven bonuses, or create dedicated skill tree automatically. Transformations/death excluded. [Audit](JAWR-0.5.39-INFUSION-SYMBOLOGY-PUFFERFISH-AUDIT-2026-11-14.md). |
 | **Feywild** (`feywild`) | 1.21.1-5.6.4 source confirms scroll-summoned `FeyBase extends PathfinderMob implements IOwnable` with persistent UUID, follow/stay/ability toggle, seasonal pixies doing farm work, and combat/mount Ents. **Custom owner interface, not vanilla TamableAnimal**; no player mana or spell-power attribute. | **Compatible with work (initial source pass):** generic pet buffs may require shared owner adapter with Occultism/Goety; practical utility bonuses need separate goal patches and may not justify work. **Player has not decided Feywild skill integration.** High-priority test: source packet handlers for ability/dismiss lack explicit owner check. Winter Pixie harvests live animal loot; preserve automation until assessed. [Audit](FEYWILD-5.6.4-INITIAL-SKILLS-AUDIT-2026-11-14.md). |
 | **Extra Botany Revived** (`extra-botany-revived`) | Botania addon with custom DamageHandler, damage types, gear/Curios attributes, and custom-owned entities that do not implement OwnableEntity. | Review magic-damage tags and direct-health attacks; test universal attributes and item enhancements. |
 | **Goety Cataclysm** (`goety-cataclysm`) | Cataclysm spells/servants architecturally extend Goety Spell and Summoned in public 1.20.1 source, but the pinned 1.21.1 code is not matched. | Inspect exact 1.21.1 jar/source and test school potency, soul discount and owned-servant damage. |
@@ -56,11 +57,10 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Scriptor Magicae** (`scriptor-magicae`) | Source-backed cooldown in `EntityCastCooldownExtension` (private data, no Minecraft attribute), explicit book/cast cost and lectern behavior; `Inflame` smelts furnace recipes, `Break` mines existing ore, `Bring` transports drops, `Place` generates magic blocks (not ore). Lectern caster inventory has a likely null getter bug. | **No Mana Mode.** Personal cooldown/crafted-item-quality bridge candidates; **keep lecterns powerful** pending actual 2.0.14 gameplay tests of ores, smelting and collection. [Audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md). |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (3)
+## Needs investigation — insufficient source evidence yet (2)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Just Another Witchery Remake** (`witchery-remake`) | Native witchcraft, brewing and rituals may have player-cast abilities distinct from its vampire/lycanthrope progression. Public source insufficient for exact 0.5.39 spell/ritual hooks. | **Investigate non-transformation casting only:** are there player attributes or meaningful spell/ritual buffs that can share existing Pufferfish skills? Vampire, werewolf, death and stacking mechanics belong exclusively to Transformation Compat. |
 | **Pastel** (`pastel`) | Color-resonance/research magic has not been mapped to player attributes. | Inspect player facets, spell potency and crafting traits. |
 | **Totemic** (`totemic`) | Ceremony/totem magic source-level player mechanics not audited. | Inspect ceremonial skill, musician performance bonuses and buff scaling. |
 
@@ -88,7 +88,7 @@ None demonstrated.
 ## Scoped closure note (2026-11-14)
 - **Forbidden Magic, Vampirism and Werewolves:** closed to *dedicated* Pufferfish skill development because their relevant character progression is native. Source/JAR details can be investigated by **Transformation Compat**, without reopening the Pufferfish matrix. Universal player or pet bonuses do not constitute a mod-specific new tree.
 - **Goety:** keep native caster/servant integration status; do not transfer ordinary Goety spellcasting to Transformation Compat. Only Goety's lich physiology/death-state interactions transfer.
-- **JAWR base:** keep in Needs Investigation strictly for ordinary witchcraft casting, ritual abilities or any genuinely distinct player skills, not the vampire/werewolf implementation.
+- **JAWR base:** [focused audit](JAWR-0.5.39-INFUSION-SYMBOLOGY-PUFFERFISH-AUDIT-2026-11-14.md) found meaningful player **Infusion** and **Symbology** magic; move to **Compatible with work**, pending exact-jar attribute/bridge pilot. Vampire/werewolf implementation remains out of scope.
 
 ## Targeted next steps
 
@@ -96,7 +96,7 @@ None demonstrated.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
 - **Addon follow-up tests:** Ars 'n Spells separate-pool mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
 - **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks. **Psi does not join Ars/Iron's shared mana**; evaluate provisional penalty/storage/automation tuning and Psi-generated FE as a candidate alternative to BiggerReactors. See [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
-- **Broader unexplored Pufferfish systems:** JAWR's non-transformation casting, Totemic ceremonies and Pastel magic.
+- **Broader unexplored Pufferfish systems:** Totemic ceremonies and Pastel magic. JAWR player Infusion/Symbology is now in the implementation-pilot queue.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 - **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
