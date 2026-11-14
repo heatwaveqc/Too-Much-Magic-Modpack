@@ -1,0 +1,36 @@
+name: Personal QA Prism Preferences (Windows)
+on:
+  push:
+    branches: ['test/full-integration']
+    paths:
+      - 'scripts/tmm_qa_preferences.ps1'
+      - 'scripts/prism_qa_options.txt'
+      - 'scripts/IMPORT-OLD-TMM-PREFERENCES.cmd'
+      - 'scripts/build_full_integration_prism.py'
+      - 'tests/test_tmm_qa_preferences.ps1'
+      - '.github/workflows/test-prism-preferences.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa-preferences:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify pure 1.21.1 defaults and packaging separation
+        shell: pwsh
+        run: |
+          $opt = Get-Content "scripts/prism_qa_options.txt"
+          if (-not ($opt -contains "version:3955")) { throw "Wrong Minecraft options version" }
+          if (-not ($opt -match "^guiScale:")) { throw "Missing GUI defaults" }
+          if (-not ($opt -match "^soundCategory_master:")) { throw "Missing sound defaults" }
+          if ($opt -match "^key_") { throw "Do not hard-code somebody's keybindings" }
+          $builder = Get-Content "scripts/build_full_integration_prism.py" -Raw
+          foreach ($required in @("minecraft/options.txt", "PreLoadCommand=powershell.exe", "PostExitCommand=powershell.exe", "dev_only_preferences")) {
+            if (-not $builder.Contains($required)) { throw "Missing test-only packaging marker: $required" }
+          }
+          if ((Get-Content ".packwizignore" -Raw) -notmatch "/scripts/") { throw "QA script could leak into packwiz" }
+      - name: Real Windows import, apply, save and wrong-version tests
+        shell: powershell
+        run: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests/test_tmm_qa_preferences.ps1
