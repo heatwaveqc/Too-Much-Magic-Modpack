@@ -28,7 +28,12 @@ neoForge {
 dependencies {
     // The 1.21-era (1.10.x) Vampirism artifact, NOT the 2.x FactionApi split.
     // This exact version matches mods/vampirism-become-a-vampire.pw.toml.
-    implementation "de.teamlapen.vampirism:Vampirism:${vampirism_version}"
+    implementation("de.teamlapen.vampirism:Vampirism:${vampirism_version}") {
+        // Vampirism's old POM references optional integrations (JEI, Guide API,
+        // TerraBlender) which are not required to compile the Monk addon.
+        // The installed TMM pack resolves its own exact pinned runtime JARs.
+        transitive = false
+    }
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
