@@ -1,0 +1,112 @@
+name: B5 repair Caelus, Paucal, Ars Elemancy; boot
+on:
+  push:
+    branches: [build/b5-expanded-approved-roster]
+    paths: ['.github/workflows/b5-repair-round2.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compatibility-repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Compile packwiz and repair exact dependencies
+        id: repair
+        continue-on-error: true
+        run: |
+          python3 -m py_compile scripts/repair_b5_round2.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/repair_b5_round2.py
+          packwiz list
+      - name: Boot fully expanded Minecraft NeoForge dedicated server
+        id: smoke
+        if: steps.repair.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '480'
+          WORK_DIR: ${{ runner.temp }}/tmm-b5-round2
+        run: bash scripts/smoke_server.sh
+      - name: Commit immutable pins and testing status
+        if: steps.repair.outcome == 'success'
+        env:
+          BOOT_RESULT: ${{ steps.smoke.outcome }}
+          BOOT_LINK: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          success=os.environ['BOOT_RESULT']=='success'
+          e=json.loads(Path('docs/B5-RESOLUTION.json').read_text())
+          lines=["# B5 — expanded approved roster, compatibility repairs and full boot",
+              "",
+              f"**Full dedicated server boot: {'PASS' if success else 'FAIL'}**.",
+              "",
+              "- Latest run: "+os.environ['BOOT_LINK'],
+              "- First attempt: https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43552770652 (missing Lodestone).",
+              "- Second attempt: https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43553107811 (missing Caelus and Paucal; Ars Elemancy wrong version).",
+              "- MC 1.21.1 / NeoForge 21.1.265 / Java 21.",
+              f"- {e['total_pins']} immutable packwiz mod pins; baseline 71.",
+              f"- {len(e['added_mods'])} additional approved systems/addons and required libraries.",
+              "- Fixed Lodestone 1.8.2, Caelus 7.0.1, PAUCAL 0.7.0, Ars Elemancy 1.18.3.",
+              "- PAUCAL 0.7.0 for NeoForge is alpha-tagged; documented unavoidable experimental library for HexCast.",
+              "- Preserve excluded Create, Sophisticated, AE2, RS, Spell Engine, original Blood Magic, Ultimine, etc.",
+              "- Client startup, fresh-world generation, gameplay integration and Chaos Guardian/ProjectE gate NOT TESTED.",
+              "",
+              "## Newly added dependencies and systems"]
+          lines.extend("- "+s for s in e['added_mods'])
+          lines.extend(["","## Approved mods still unresolved"])
+          if not e['unresolved']:
+              lines.append("- None from the currently reconciled approved set.")
+          else:
+              lines.extend("- "+x['id']+": "+x.get('reason','unknown') for x in e['unresolved'])
+          if not success:
+              lines.extend(["","## Remaining boot issue",
+               "- See the GitHub Actions server.log/latest.log artifacts; do not classify this candidate as server-smoked."])
+          Path('docs/B5-TESTING.md').write_text('\n'.join(lines)+'\n')
+          p=Path('manifest/mods.json')
+          m=json.loads(p.read_text())
+          next(x for x in m['batches'] if x['id']=='B7')['status']=(
+              'server_smoked_client_pending' if success else 'boot_failed_after_dependency_round2')
+          p.write_text(json.dumps(m,indent=2)+'\n')
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods index.toml pack.toml manifest/mods.json docs/B5-RESOLUTION.json docs/B5-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "test(b5): Caelus, Paucal, correct Ars Elemancy and full dedicated-server result"
+            git push origin HEAD:build/b5-expanded-approved-roster
+          fi
+      - name: Upload complete server diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-b5-round2-full-server
+          path: |
+            docs/B5-TESTING.md
+            docs/B5-RESOLUTION.json
+            ${{ runner.temp }}/tmm-b5-round2/server.log
+            ${{ runner.temp }}/tmm-b5-round2/logs/latest.log
+            ${{ runner.temp }}/tmm-b5-round2/crash-reports
+          if-no-files-found: warn
+      - name: Mark unsuccessful test red
+        if: steps.repair.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
