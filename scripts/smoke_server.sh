@@ -23,6 +23,21 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
       echo "FTB Quests chapter files copied: $(find "$WORK_DIR/config/ftbquests/quests/chapters" -maxdepth 1 -name '*.snbt' -type f | wc -l)"
     fi
   fi
+  if [[ "${SMOKE_AU_DEBUG:-0}" == "1" ]]; then
+    # CI-only registry audit; never ship generated debug dumps in the Prism instance.
+    mkdir -p "$WORK_DIR/config/almostunified"
+    cat > "$WORK_DIR/config/almostunified/debug.json" <<'JSON'
+{
+  "dump_tags": true,
+  "dump_overview": true,
+  "dump_recipes": false,
+  "dump_unification": false,
+  "dump_duplicates": false,
+  "log_invalid_tags": true,
+  "cache_recipe_conditions": true
+}
+JSON
+  fi
   echo "Starting hash-pinned MODDED dedicated server"
 else
   echo "Starting loader-only dedicated server (no mods installed)"
