@@ -16,6 +16,13 @@ printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
+  if [[ -d "$ROOT/config" ]]; then
+    mkdir -p "$WORK_DIR/config"
+    cp -a "$ROOT/config/." "$WORK_DIR/config/"
+    if [[ -d "$WORK_DIR/config/ftbquests/quests/chapters" ]]; then
+      echo "FTB Quests chapter files copied: $(find "$WORK_DIR/config/ftbquests/quests/chapters" -maxdepth 1 -name '*.snbt' -type f | wc -l)"
+    fi
+  fi
   echo "Starting hash-pinned MODDED dedicated server"
 else
   echo "Starting loader-only dedicated server (no mods installed)"
