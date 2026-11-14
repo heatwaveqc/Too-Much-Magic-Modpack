@@ -19,7 +19,7 @@ matrix is historical research. The owner's later target decisions govern this wo
 
 These labels are a **target state vocabulary**. The in-code resolver only
 classifies *fully observed* snapshots; it cannot permit acquisition or make
-the referenced upstream mods coexist. The bridge currently has source/binary-verified read-only probes for Vampirism vampire/hunter and JAWR vampire. All other providers are UNKNOWN.
+the referenced upstream mods coexist. The bridge has source/binary-verified read-only probes for Vampirism vampire/hunter and JAWR vampire, plus experimental source-specific hooks for this pilot. All other providers remain UNKNOWN.
 
 ## Design partition
 
@@ -64,3 +64,9 @@ tests. Workflow: `.github/workflows/transformation-bridge.yml`.
 - JAWR 0.5.39 source behavior inspected from binary, including independent blood/hunger and cancellable healing/sun events.
 - Full-modpack dedicated-server workflow: available under `.github/workflows/transformation-vampire-server-smoke.yml`; use only actual workflow results to report PASS.
 - Remaining: source-specific pre-acquisition hooks, JAWR hunger suppression, native blood-transaction translation, cure and death arbitration, and real two-provider playtests.
+
+## Scope update: vampire chassis v1
+
+The earlier implementation checkpoints described **diagnostic-only code**. Subsequent commits introduced guarded server-side vampire hooks. Automatic native dual acquisition, one-sided cure prevention, a backup-required operator cure, single blood pool transaction routing with persistent fractional carry, and deduplicated sunlight/healing/garlic/fire paths are implemented **as experimental code**. Every mutating flag defaults to false. This is not a claim that live gameplay paths have passed.
+
+Read [VAMPIRE-CHASSIS-V1-TEST-PLAN.md](VAMPIRE-CHASSIS-V1-TEST-PLAN.md). Remaining release blockers are in-world acquisition/cure in both orders, native rollback, client/player tests, unique JAWR sun-resistant gear, bat and HUD visuals, and death handling. No packwiz installation authorized.

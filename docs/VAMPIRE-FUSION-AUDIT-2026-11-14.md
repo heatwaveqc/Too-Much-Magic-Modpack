@@ -1,8 +1,6 @@
 # Vampire fusion — pinned binary deep audit and implementation contract (2026-11-14)
 
-**Status:** Exact pinned binaries inspected in CI; first JAWR read-only observer,
-blood arithmetic, and target ownership model implemented. **No live mechanics are
-yet arbitrated or enabled in the pack.**
+**Status:** Exact pinned binaries inspected, dual-vampire source hooks and unit tests now implemented, with every mutating experimental setting OFF by default. Boot and source tests do **not** establish verified in-world behavior. Not added to the packwiz lock.
 
 ## Verified target artifacts
 
@@ -119,3 +117,15 @@ duplicate status or set data unconditionally each tick.
 **Proven:** pinned binaries and public method shapes, build/logic testing.
 **Not proven:** any live dual-vampire food or death arbitration, or
 production survival readiness. No third-party JARs have been redistributed.
+
+## Current experimental source integration (2026-11-14)
+
+- Native JAWR `VampireLeveling.setLevel` and Vampirism faction events coordinate initial acquisition from either provider if enabled. Unknown other transformations fail closed; a **separately named unsafe test override** is necessary before all other probes are implemented.
+- Native one-sided cures blocked in dual state; `/tmmtransform vampire cure` is an **operator-only, backup-required test**, explicitly disabled by default because full skill/quest rollback is not proven.
+- JAWR blood gain/cost methods route to Vampirism's blood pool and conserve fractional small gains in a versioned NeoForge player attachment, without a second authoritative pool.
+- JAWR vanilla hunger interference and passive blood regeneration suppressed in dual state. JAWR healing and sunlight events canceled; garlic ambient exposure and double fire multipliers suppressed, while native Vampirism blood/weakness rules remain.
+- JAWR empowered Sunstone pendant is recognized in Vampirism sun exposure. Other JAWR sun-resistance equipment lacks a validated quantitative translation and is a **known open gate**.
+- Event-driven relog/dimension shadow reconciliation added. No player tick polling loop silently cures or invents upstream states.
+- Cosmetic appearance, competing bat forms, and death mechanisms intentionally deferred.
+
+Live test plan: [VAMPIRE-CHASSIS-V1-TEST-PLAN.md](VAMPIRE-CHASSIS-V1-TEST-PLAN.md).
