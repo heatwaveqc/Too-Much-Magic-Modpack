@@ -1,6 +1,6 @@
 # Tyz's Skills + MXP — external tier and Monk gating contract
 
-**Design accepted:** 2026-11-14. **Status:** specification only; not yet implemented or runtime-tested. Target Minecraft 1.21.1 NeoForge. **This is the authoritative planned progression interface, superseding earlier Pufferfish-specific MXP text.**
+**Design accepted:** 2026-11-14. **Status:** specification only; not yet implemented or runtime-tested. Target Minecraft 1.21.1 NeoForge. **Category layout and universal magic skill proposals:** [Core Magic + five transformation categories](TYZS-CORE-MAGIC-AND-FORM-TREES.md). **This is the authoritative planned progression interface, superseding earlier Pufferfish-specific MXP text.**
 
 ## User-approved decisions
 
