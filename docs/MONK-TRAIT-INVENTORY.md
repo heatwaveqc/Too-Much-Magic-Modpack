@@ -147,3 +147,7 @@ independent investments**: a finite progression of valid barehand
 harvest tiers and open-ended (effective engine limits respected)
 barehand mining speed. Compare Dragon Survival's similarly separate
 `harvest_bonus` and `break_speed_multiplier` source mechanics.
+
+## From source candidates to purchasable skill candidates (2026-11-14)
+
+The original 142 IDs now have **two additional NeoForge affix-referenced attribute IDs**: `neoforge:swim_speed` (potential player skill) and `neoforge:creative_flight` (explicitly *not* purchased by Monk). See `compat/monk/profiles/extra-attribute-candidates.json`. The candidate mapping and decisions are in [MONK-SKILL-CATALOG.md](MONK-SKILL-CATALOG.md). The full static consideration set is 144; this does **not** assert these all exist as runtime player attributes. Dragon Survival is newly **approved in manifest** but not installed.

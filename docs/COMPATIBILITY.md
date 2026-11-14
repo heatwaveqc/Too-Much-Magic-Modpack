@@ -89,3 +89,7 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Owner corrected an earlier oversight: both mods were put **on hold**, not approved for the final build. Their alternate ultimate crafting and Infinity-tier equipment would undermine Draconic Evolution and post-Guardian ProjectE Gem Armor.
 - Removed the two corresponding packwiz metafiles and index entries from the new candidate, moved both IDs from active `manifest.mods` into explicit `manifest.excluded`, and updated the pack hash chain. Original B5/B8 results remain historic evidence of their **previous** presence.
 - Combined **138-mod** server and client regression tests are required for the new candidate. Do not claim the historic 140-mod B8 smoke validates this new candidate.
+
+## Pending Dragon Survival integration
+
+Owner approved Dragon Survival (2026-11-14) for the future Dracolich mechanics. Candidate: official CurseForge MC 1.21.1 NeoForge `DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar`, project 420799, file 9539454; requires GeckoLib (already installed on prior pack). Roster-only now: not added to packwiz or world-tested. Check exact GeckoLib compatibility, Dragon Survival overlapping keybinds/animation, tool-tier and harvesting callbacks, and the transformation-state bridge before promoting to installed/server-smoked.

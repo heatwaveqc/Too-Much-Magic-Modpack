@@ -43,3 +43,5 @@ any crosswalk row as an implemented power.
 TMM revisions: *no Monk Creative Flight skill*. Legal Draconic Curio
 modules provide that capability. Mining has distinct finite harvest
 tier and repeatable speed. See `world-tier-unlocks.json`.
+
+Backend-neutral proposed skills: `skill-catalog-v1.json` (172 core and mod-specific including 10 conditional non-Attribute magic talents), `skill-affix-techniques-v1.json` (99 affix adaptations with source-rarity-limited rank counts), `extra-attribute-candidates.json` (two NeoForge attributes discovered from affix source). All 25 historical Monk abilities are mapped. Read `docs/MONK-SKILL-CATALOG.md` before placing skill nodes or choosing a purchase backend.

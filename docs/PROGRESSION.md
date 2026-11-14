@@ -37,3 +37,7 @@ pack. Barehand **harvest speed** is a **separately repeatable numeric
 trait** with rising cost; more speed never bypasses harvest/drop checks.
 We have source-confirmed that Dragon Survival models harvest bonus and
 break-speed multiplier separately. See `MONK-WORLD-TIERS.md`.
+
+## Dragon Survival mod selection (2026-11-14)
+
+Dragon Survival is approved for Dragon/Dracolich transformation work. The manifest now lists 1.21.1 NeoForge v2.0.74, CurseForge file 9539454, `desired=true`, but **`enabled_in_pack=false`** until packwiz install and a combined boot/client world test. GeckoLib is present but exact compat not yet smoke-tested. This selection does not itself add a Dragon Survival player transformation or any dracolich progression.

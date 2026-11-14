@@ -148,3 +148,7 @@ Barehand harvest **speed** is a separate repeatable trait at growing
 cost. Existing Dragon Survival mechanics have distinct strength and
 speed bonuses; use that architecture without requiring a dragon
 transformation. See [MONK-WORLD-TIERS.md](MONK-WORLD-TIERS.md).
+
+## Backend-agnostic Monk skill catalog (v1)
+
+[Full catalog](MONK-SKILL-CATALOG.md): **172 core/mod-specific** skills (mapped to all 144 attribute candidates; three deliberately excluded) plus **99 Apotheosis** affix techniques. Every registered original Monk ability is accounted for. These remain design candidates and are not live gameplay. Allowable-level semantics are proposed (repeatable, bounded, single, staged, source rarity-limited) before choosing the Vampirism/Pufferfish/custom backend or assigning tiers.

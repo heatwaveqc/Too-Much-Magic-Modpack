@@ -198,3 +198,7 @@ does not grant loot or override required tool tiers. Dragon Survival
 already has separately modeled harvest strength and speed, offering
 an implementation precedent without coupling the mutually exclusive
 Monk and Dragon forms.
+
+## Proposed skill records and affix ranks
+
+There is now a named backend-neutral [skill catalog](MONK-SKILL-CATALOG.md) with 172 body, combat, utility, resource, magic and mining skills plus 99 Apotheosis adaptations. The proposed finite affix rank counts follow source-supported rarity keys: 1/2/3/4/5 useful rarity levels rather than granting every affix an artificial five. All levels, numerical values and gear-compensation stacking still require balance and actual mechanics testing. Creative Flight is excluded as a Monk unlock even though the source `Unbound` affix grants it: only permitted external Curio flight may be improved.

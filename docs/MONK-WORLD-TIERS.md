@@ -56,9 +56,7 @@ Dragon Survival source:
 - https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/main/java/by/dragonsurvivalteam/dragonsurvival/common/codecs/HarvestBonus.java
 - https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/main/java/by/dragonsurvivalteam/dragonsurvival/registry/attachments/HarvestBonuses.java
 
-**Integration caveat:** Dragon Survival source confirms these mechanics
-exist in the ecosystem, but the current `manifest/mods.json` branch
-snapshot does not list Dragon Survival as pinned/enabled. Verify the
+**Integration caveat:** Dragon Survival is now **approved and present in `manifest/mods.json` as desired**, pinned to the verified 1.21.1 NeoForge candidate file (v2.0.74), but its `enabled_in_pack` is **false** pending packwiz installation/boot. Its API is not yet available as a pack runtime dependency. Verify the
 final pack composition and exact release before assuming its events or
 classes are present. The Monk must not depend on dragon form, since the
 factions are mutually exclusive.

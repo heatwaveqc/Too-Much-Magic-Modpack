@@ -100,3 +100,7 @@ with rising costs. Dragon Survival 1.21.1 already models the
 two separately; its source is a design reference rather than an
 active dependency. Confirm Dragon Survival's actual pack pin
 separately (absent from this branch's manifest snapshot).
+
+## Proposed skills and separated decisions
+
+See `../../docs/MONK-SKILL-CATALOG.md`. The backend-neutral catalog lists **172 core/mod-specific skills** and **99** Apotheosis affix techniques. Models are `once`, `staged`, `bounded`, `repeatable`, or `finite_source_rarity`; **no skill owner or progression location is chosen yet**. Includes an explicit Creative Flight exclusion and Dragon Survival harvesting tier compatibility as an approved-but-not-installed upstream candidate.
