@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 140 pinned mods (126 B7 plus 14 including required Prickle); no Waystones or Explorer's Compass; market economy not yet validated.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -1679,11 +1679,11 @@
       "category": "server_utility",
       "desired": true,
       "version": "SimpleBackups-1.21-4.0.30",
-      "release_status": "verified_release",
+      "release_status": "experimental_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/583228",
       "enabled_in_pack": true,
       "dependencies_verified": true,
-      "note": "Owner-approved QoL integration (2026-11-13). Automatic world backups, retention and capacity caps. Configure server before long-term saves.",
+      "note": "Simple Backups 1.21-4.0.30 (CurseForge 583228/7965880) is BETA-TAGGED upstream, included in experimental client test; provider side changed server -> both so Prism singleplayer integrated server receives it. Not a proven disaster-recovery solution; test backup generation, retention, size cap, restore and offline backup before trusting valuable worlds.",
       "packwiz_slug": "simple-backups"
     },
     {

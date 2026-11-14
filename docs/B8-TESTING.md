@@ -28,3 +28,9 @@
 - `prickle-neoforge-1.21.1-21.1.11.jar` (both, CurseForge 1023259/6961457)
 - `SimpleBackups-1.21-4.0.30.jar` (server, CurseForge 583228/7965880)
 - `spark-1.10.124-neoforge.jar` (both, CurseForge 361579/6225208)
+
+## Singleplayer backup delivery correction
+- Simple Backups 1.21-4.0.30 is upstream **BETA**; packwiz side updated from server-only to **both** so Prism installs it for the singleplayer integrated server.
+- No JAR version, hash or dedicated-server composition changed from the full passing B8 boot.
+- Backup scheduling, retention and disaster recovery are NOT acceptance-tested; retain independent world saves until restore is verified.
+- This metadata-only change requires refreshed packwiz index hash and a new immutable client ZIP.

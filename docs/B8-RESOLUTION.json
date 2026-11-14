@@ -108,7 +108,7 @@
     {
       "path": "simple-backups.pw.toml",
       "filename": "SimpleBackups-1.21-4.0.30.jar",
-      "side": "server",
+      "side": "both",
       "curseforge_project": 583228,
       "curseforge_file": 7965880
     },
@@ -123,5 +123,9 @@
   "market_magic_seed_whitelist_unverified": true,
   "client_gui_pending": true,
   "waystones_enabled": false,
-  "earlier_known_good_client": "ecddc4342c439a2b973ad16acff112b7d0a4bb60"
+  "earlier_known_good_client": "ecddc4342c439a2b973ad16acff112b7d0a4bb60",
+  "simple_backups_side": "both",
+  "simple_backups_beta": true,
+  "singleplayer_backup_eligible": true,
+  "backup_restore_unverified": true
 }
