@@ -5,8 +5,8 @@
 - Java 21 in local container (`openjdk 21.0.12.1`): **PASS**.
 - Local container `packwiz` binary: **NOT INSTALLED**.
 - Local container network DNS for Minecraft/Modrinth/GitHub: **BLOCKED** (`Could not resolve host`).
-- Packwiz TOML format correctness: **PENDING** local parser and CI.
-- NeoForge installer download and dedicated server startup: **NOT RUN**.
+- Packwiz TOML hash chain, manifest exclusions and CLI read: **PASS** GitHub Actions run 43545677885, job 132296314018.
+- NeoForge 21.1.265 installer download and clean, loader-only dedicated-server startup: **PASS** GitHub Actions run 43545677885, job 132296313700; reached `Done` with script exit 0. This is a clean loader only, **not a modded-server boot**.
 - Modded server startup: **NOT RUN** (no mod files pinned).
 - Client startup / menu / fresh world: **NOT RUN** (no graphics-capable launcher).
 - KubeJS `startup_scripts` or recipe event registration: **NOT RUN** (no KubeJS JAR installed).
