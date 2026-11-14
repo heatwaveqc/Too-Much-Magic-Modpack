@@ -30,7 +30,7 @@
       "item_reward_id": "544D701000200002",
       "criterion": {
         "type": "advancement",
-        "id": "tmm"
+        "id": "tmm:first_log"
       },
       "reward": {
         "xp": 10,

@@ -98,7 +98,7 @@ hash = "e6cea2bb7400fe5b166604812d0ff1ecdc16615b39f1a7cdfdbab6bdfc92e20b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "9aa07730aeb8c8397832047d03960bb22f2aac833c92b561b8ca9bcf0be26e04"
+hash = "d4982c2a3f203e825463d21daab416bec3a1045ac2c9d9885079d06da54deabd"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"

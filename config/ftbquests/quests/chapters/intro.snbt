@@ -41,7 +41,7 @@
 				{ id: "544D701000200002", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 4 }
 			]
 			tasks: [
-				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm" }
+				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm:first_log" }
 			]
 			x: 2.0d
 			y: 0.0d
