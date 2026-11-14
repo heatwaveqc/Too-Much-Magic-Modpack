@@ -55,3 +55,9 @@ Do feature work on a branch, present reviewable pull requests, preserve main as 
 - **Aspect Alchemy is explicitly rejected** after design review; it was removed from manifest and packwiz, and added to `excluded`. This overrides older survey/B5 references to its approval.
 - B6 client launcher handoff is a Prism instance ZIP carrying **only MIT packwiz installer bootstrap**, no third-party mod JARs; packwiz downloads each mod from its original host. See `docs/B6-CLIENT-HANDOFF.md`.
 - A headless server PASS is not a graphical client/world-generation PASS, and the pack is still not a survival-ready progression release.
+
+## B7 QoL baseline
+- User reported that the B6 125-mod Prism client launches and world generation works. Preserve B6 as the last user-tested client fallback, immutable snapshot `ecddc4342c439a2b973ad16acff112b7d0a4bb60`.
+- B7 adds exactly one approved mod: **Inventory Tweaks — ReFoxed 1.21.1-1.3.2**, client-only, CF project 976858 file 6407807, SHA1 `76969e26520ab060d51515757db25282bed71b10`; Mouse Tweaks retained. B7 now has **126 packwiz pins** (118 server-side, 8 client-only).
+- [Regression](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43558589888) booted original 118 server JARs cleanly; client-side ReFoxed GUI is still **untested**, requiring user middle-click check. [Prism import artifact](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43558589888/artifacts/14098959586) references exact verified snapshot `316d11a0626e5793ab7cc5d4b463891f80aa0fe6`.
+- [Official ATM10 QoL comparison](docs/ATM10-QOL-AUDIT.md) records many recommendations; **none except ReFoxed is approved or installed**. Never auto-import ATM10's packs/storage/fast travel or Almost Unified resource rewrite without explicit owner decision.

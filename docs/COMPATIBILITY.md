@@ -72,3 +72,8 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Pam's HarvestCraft 2 Food Core `1.0.4`, Crops `1.0.9`, Trees `1.0.9`, Extended `1.0.0`; Farmer's Delight `1.3.4`; Aquaculture 2 `2.7.22`; Harvest with Ease `9.4.0` and Cobweb `1.4.0` are pinned and server-loaded. **Crop right-click harvesting and food/recipe tags untested.**
 - **Aspect Alchemy removed** in accordance with latest design approval; never reintroduce without explicit user change. Dragon Survival remains deferred; Aquaculture Delight, Pantrywork and Vampire's Delight remain research-only, not approved.
 - [Prism client handoff](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43555071188/artifacts/14097951209) uses the immutable tested packwiz snapshot `ecddc4342c439a2b973ad16acff112b7d0a4bb60`, with no bundled third-party mod JARs. Real client test pending.
+
+## B7 Inventory Tweaks — ReFoxed (2026-11-13 local)
+- Owner-approved **Inventory Tweaks ReFoxed 1.21.1-1.3.2**, exact CurseForge project 976858, file 6407807; packwiz hash SHA1 `76969e26520ab060d51515757db25282bed71b10`. Manually marked **client-only**: the provider selected `side = "both"` but its functionality is a UI feature and does not need dedicated-server loading.
+- The existing 118 server-side jar build passed [run 43558589888](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43558589888); **client sorting and auto-refill are still unverified**, check B7 Prism ZIP. Mouse Tweaks remains installed for drag/scroll. Check middle mouse key bindings and accidental sort of modded inventory slots.
+- Other ATM10 QoL recommendations remain an audit, **not approved or pinned**: see [ATM10-QOL-AUDIT.md](ATM10-QOL-AUDIT.md).
