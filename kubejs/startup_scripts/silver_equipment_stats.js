@@ -7,8 +7,8 @@
 // ArmorMaterial enchantability is a separate, known KubeJS gap.
 ItemEvents.modification(event => {
   for (const slot of ['sword', 'axe', 'pickaxe', 'shovel', 'hoe']) {
-    const id = 'eidolon_repraised:silver_' + slot
-    event.modify(id, item => {
+    // Rhino re-enters this callback without a per-iteration const scope.
+    event.modify('eidolon_repraised:silver_' + slot, item => {
       // KubeJS's 2101 ItemModificationKubeEvent#setTier mutates the
       // existing TieredItem and refreshes maxDamage + digger Tool component.
       // Unlike a bare data-component change, this makes the mining speed
