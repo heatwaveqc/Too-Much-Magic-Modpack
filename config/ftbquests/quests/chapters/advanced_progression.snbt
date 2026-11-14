@@ -57,7 +57,7 @@
 			icon: { id: "minecraft:anvil" }
 			rewards: [
 				{ id: "544D605000300001", type: "xp", xp: 25 }
-				{ id: "544D705000300002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+				{ id: "544D705000300002", type: "item", item: { id: "minecraft:iron_ingot", count: 1 }, count: 3 }
 			]
 			tasks: [
 				{ id: "544D805000300000", type: "item", item: { id: "minecraft:anvil", count: 1 } }

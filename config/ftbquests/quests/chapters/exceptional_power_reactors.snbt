@@ -371,7 +371,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D608001900001", type: "xp", xp: 50 }
-				{ id: "544D708001900002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+				{ id: "544D708001900002", type: "item", item: { id: "minecraft:comparator", count: 1 }, count: 3 }
 			]
 			tasks: [
 				{ id: "544D808001900000", type: "checkmark" }
