@@ -64,6 +64,11 @@ hash = "8c5bcaf23bcfc318917a8ad24648e601dd17424fabe089650726ca78117912e5"
 metafile = true
 
 [[files]]
+file = "mods/botania-revived.pw.toml"
+hash = "1afaf5985c453bb3aa86d411c543be420a26f41f3f0005746d6399046f5ebf33"
+metafile = true
+
+[[files]]
 file = "mods/controlling.pw.toml"
 hash = "65c8086d2ec3d39acc7bd36c7a0306ccc43b602b38fa07d13291bc478ef7dfff"
 metafile = true
@@ -270,7 +275,7 @@ metafile = true
 
 [[files]]
 file = "mods/patchouli.pw.toml"
-hash = "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d"
+hash = "3718e8a37d0dc2939cc350cce74bcb9c36b59f48baf4560e62804f7ca6478185"
 metafile = true
 
 [[files]]

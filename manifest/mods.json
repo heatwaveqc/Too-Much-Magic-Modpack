@@ -176,6 +176,19 @@
       "dependencies_verified": false
     },
     {
+      "id": "botania-revived",
+      "name": "Botania Revived",
+      "category": "magic",
+      "desired": true,
+      "version": "Botania-Revived-1.21.1-2.0.2-NeoForge",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1725641",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "botania-revived",
+      "note": "Unofficial Botania Revived NeoForge port; not official Botania, no Sophisticated Storage dependencies allowed"
+    },
+    {
       "id": "brandons-core",
       "name": "Brandon's Core",
       "category": "dependency",
@@ -1114,9 +1127,10 @@
       "members": [
         "astral-sorcery",
         "bigger-reactors-rework",
+        "botania-revived",
         "observerlib"
       ],
-      "status": "stage_astral_awaiting_boot"
+      "status": "stage_botania_awaiting_boot"
     }
   ]
 }
