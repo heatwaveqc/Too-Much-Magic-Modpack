@@ -24,3 +24,10 @@ Eventually every resource, boss drop and progression item has at least one renew
 
 ## Non-goals for first prototype
 No implemented progression locks, recipe overhaul, questline, substitutions, balance guarantees, compatibility claims beyond tests actually performed.
+
+## B6 scope and skill systems
+- **Ars Nouveau remains a core mod**, not excluded; its approved Ars add-ons remain pinned.
+- **Pufferfish's Skills and Attributes** supply a future **custom cross-mod skill tree**. Only the two underlying frameworks are currently present; the tree still needs authoring and functional tests.
+- **Improvable Skills 3** is a separate experience-point upgrade system installed on explicit user request. Audit overlap and balance against the custom Pufferfish tree once that is designed.
+- New food suite is Pam's HarvestCraft 2 all four modules, Farmer's Delight, Aquaculture 2, Harvest with Ease and Cobweb. **Aspect Alchemy is a current exclusion.**
+- **125 mods have passed a server-only boot**, not a client/world/integration certification.

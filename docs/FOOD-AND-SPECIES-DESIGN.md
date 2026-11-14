@@ -1,6 +1,6 @@
 # Food systems and alternate player physiology — design survey (2026-11-13)
 
-**Status:** Food mods approved for inclusion and registered as *planned*, not packwiz-installed. Species exclusivity and hybrid design are **proposed**, not implemented/locked. Minecraft 1.21.1 NeoForge. This document does not authorize adding unapproved species mods (including Origins) or nonselected addons.
+**Status update:** The approved food/harvest mods were packwiz-installed and passed a combined dedicated-server boot in B6; the original survey below was authored while they were only planned. Species exclusivity and hybrid design are **proposed**, not implemented/locked. Minecraft 1.21.1 NeoForge. This document does not authorize adding unapproved species mods (including Origins) or nonselected addons.
 
 ## A. Approved food, farming and fishing roster (B7)
 
@@ -153,3 +153,6 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 **Implementation blocker:** A valid modpack cannot assume native transformation exclusivity is universal. Existing [Dragons and Vampires](https://modrinth.com/mod/dragons-and-vampires) covers Dragon Survival versus Vampirism and Werewolves, but not JAWR and Goety; broader prevention requires a separate dedicated bridge and bidirectional gameplay tests. See [TRANSFORMATION-COMPATIBILITY.md](TRANSFORMATION-COMPATIBILITY.md).
 
 **No runtime tests or final pair exception decisions were made in this design note.**
+
+## B6 implementation update
+All eight approved food/farming/fishing/harvesting entries are pinned into the 125-mod candidate, with a successful hash-verified dedicated-server boot on [run 43554705678](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43554705678). Farmer's Delight selected compatible NeoForge `1.3.4`, rather than the older version `1.2.8` originally surveyed. No unapproved food addons were added. **Food tags, crop right-click harvesting with Pam's and Farmer's Delight, and worldgen placement are still untested and require the player's local graphical client.** Species/hybrid policy remains a proposal, not implemented.

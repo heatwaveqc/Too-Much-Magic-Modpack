@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B6: rejected Aspect Alchemy removed, Pufferfish Skills beta + Attributes, Improvable Skills 3, Pam's/Delight/Aquaculture/Harvest suite pinned. Test only; client/food compatibility/gating pending.",
+  "note": "B6: 125 packwiz mod pins, 118 server/both-side JARs passed full dedicated-server boot 2026-11-13 (America/Phoenix); 7 client-only JARs not GUI tested. Includes Pufferfish Skills beta and Improvable Skills 3; excludes Aspect Alchemy. Immutable client test snapshot ecddc4342c439a2b973ad16acff112b7d0a4bb60.",
   "mods": [
     {
       "id": "apotheosis",
@@ -786,7 +786,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1169,7 +1169,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 \u2014 Crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1182,7 +1182,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1195,7 +1195,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1208,7 +1208,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 \u2014 Trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -1628,7 +1628,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -1641,7 +1641,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -1740,7 +1740,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",

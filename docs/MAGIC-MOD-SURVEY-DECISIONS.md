@@ -76,7 +76,7 @@ The specific two Mystical Agriculture entries and the three disliked mods have b
 
 ## F. Tell Me More — selection resolved (2026-11-13 follow-up)
 
-### Approved for inclusion — six projects
+### Approved for inclusion — five projects
 These **are approved choices** from the earlier 'Recommended Inclusion' and 'Strongly Investigate' groups, not yet installed or validated in the assembled pack:
 
 - **Summoning Rituals** — KubeJS-backed customizable cross-mod ritual framework.
@@ -84,27 +84,29 @@ These **are approved choices** from the earlier 'Recommended Inclusion' and 'Str
 - **Pastel** — color-resonance magic, research and exploration; review any logistics against the pack's restrictions.
 - **Feywild** — distinct fey summons, characters and quests; review world generation alongside Tectonic.
 - **Enchanted: Witchcraft** — larger witchcraft system with rites and poppets; compare interactions with JAWR and Hexerei.
-- **Aspect Alchemy** — experimental aspect-based brewing. **Explicitly included because it was in the selected Strongly Investigate group**, but review interactions with the pack's many existing alchemy/potion systems and do not replace or rewrite existing mechanics without separate user approval.
 
-All six are in `manifest/mods.json` as desired but inactive. Exact target NeoForge artifact and dependency closure remain unverified.
+All five are in `manifest/mods.json` as desired but inactive. Exact target NeoForge artifact and dependency closure remain unverified.
 
-### Omit from this pack — eight projects
-The user said to leave all remaining Tell Me More candidates out. These are **current selection exclusions**, not claims they lack merit, and do not affect similarly named distinct mods:
+### Omit from this pack — nine projects
+The user said to leave all remaining Tell Me More candidates out; Aspect Alchemy was separately withdrawn after a detailed source-level review. These are **current selection exclusions**, not claims they lack merit, and do not affect similarly named distinct mods:
 
 - **Witchcraft and Curses** — small overlapping ritual features and unwanted extra biome/tree content.
 - **Pagan's Blessing** — another partially overlapping ritual system.
 - **Runology** — limited demonstrated content / maturity questions.
 - **Apothecary** — avoid adding another potion/effect layer that might conflict with the many alchemy systems already selected.
+- **Aspect Alchemy** — **removed by explicit user decision** after detailed code review. Does not justify hard-coded aspect integration, a known Jade 15.10.6 incompatibility, and extra maintenance given Neo Vitae, Ars Nouveau and Botania's deeper existing potion systems. No need to override any vanilla or other mod recipes.
 - **Magitech — Arcane Engineering** — an additional magical-tech and resource/worldgen ecosystem.
 - **Relics (RPG Series)** — avoid pulling in the RPG Series' Spell Engine-related dependencies; **not** the separately tracked base `relics` mod.
 - **Jewelry (RPG Series)** — avoid new RPG Series spellcasting/attribute infrastructure.
 - **Runic Curiosities** — underdeveloped/power-balance risk relative to our existing artifacts.
 
-These eight are recorded in the manifest's `excluded` list, with the reason that they were omitted in the user-directed survey selection. The four distinct earlier *maturity test* candidates (Manaweave and Runes, Thavma, Primeva, Mana and Artifice) remain unresolved research, not excluded.
+These nine are recorded in the manifest's `excluded` list, with the reason that they were omitted in the user-directed survey selection. The four distinct earlier *maturity test* candidates (Manaweave and Runes, Thavma, Primeva, Mana and Artifice) remain unresolved research, not excluded.
 
 ## G. Deferred / revisit later
 
-- **Dragon Survival** — interesting playable-dragon system; user reports unusual food-compatibility behavior. Defer until food compatibility is understood. This is **not a hard exclusion**.
+- **Dragon Survival** — interesting playable-dragon system, **deferred, not rejected** because of unusual food compatibility. Verified published NeoForge 1.21.1 release line (CurseForge lists v2.0.74 dated 2026-11-10), and its 1.21.1 build permits disabling dragon-specific food handling (`disable dragon food handling` option added in 2.0.36). Earlier 1.21.1 changelogs include AppleSkin food-bar handling fixes. Its separate Dragon Survival Compatibility addon is for older MC versions, not required/available for 1.21.1; authors say future compat lives in the base mod. Audit custom diet enabled vs disabled, AppleSkin, modded edible items/placeable food, dragon form/equipment/flight and gameplay/client rendering before any approval. Sources: https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/all and https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/7036245 and https://www.curseforge.com/minecraft/mc-mods/dragon-survival-compatibility .
+
+**Persistent transformation compatibility is now a required decision gate before enabling Dragon Survival.** See [TRANSFORMATION-COMPATIBILITY.md](TRANSFORMATION-COMPATIBILITY.md) for the proposed exclusive-primary-physiology policy, cross-mod cases (Vampirism, Werewolves, JAWR vampirism/lycanthropy, JAWR Forbidden Magic lich, Goety lich), and bidirectional integration tests. This is a *proposal*, not user approval or an installed feature.
 
 ## Reconciliation with the current repository
 
@@ -119,7 +121,7 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 ## Follow-up order
 
 1. Review roster discrepancies and any cases where a previously stated exclusion might conceal distinct mechanics, **without overriding user decisions**.
-2. Investigate the four maturity-test candidates and verify exact 1.21.1 NeoForge artifacts and source repositories for the six approved *Tell Me More* selections. The eight omitted mods are no longer in the research-to-include queue.
+2. Investigate the four maturity-test candidates and verify exact 1.21.1 NeoForge artifacts and source repositories for the five remaining approved *Tell Me More* selections. The nine omitted mods are no longer in the research-to-include queue.
 3. In a later build batch, resolve full dependency closures and license terms, pin approved viable mods with packwiz, perform combined server and client testing and record blockers.
 
 ## H. Newly approved supernatural factions (2026-11-13 follow-up)
@@ -130,5 +132,11 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 - This approval does **not** approve every additional Vampirism addon. The pre-existing ten named addon approvals remain separate.
 
 
-## I. B5 integration follow-up (2026-11-13 local)
-The entries above document approvals *as of the original survey* and correctly stated that they were not installed at that time. This later implementation reconciled all 32 selected entries (including Botania Revived already in B4), added 43 new mods and prerequisites to the 71-mod baseline for a total of **114** pins, and successfully booted the **107 server JARs** in [run 43553444492](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43553444492). Two initial failures were missing library constraints; the final test passed after adding Lodestone 1.8.2, Caelus 7.0.1, PAUCAL 0.7.0 and Ars Elemancy 1.18.3. The original selection exclusions and four maturity-review-only candidates remain in effect. **No gameplay/client compatibility or progression lock should be inferred from this server boot.**
+## I. Aspect Alchemy withdrawn after detailed review (2026-11-13 follow-up)
+
+- User explicitly removed **Aspect Alchemy** from approved selections. Its separate brewing implementation is not valuable enough to justify integration when Neo Vitae, Ars Nouveau, and Botania already supply deeper and longer-lasting potion capabilities.
+- Source review found hard-coded ingredient/aspect tables and no built-in datapack API for modded aspects; supporting other mods would require custom integration. An open Jade 15.10.6 compatibility issue further increases maintenance cost.
+- Moved the machine roster entry from `mods` and B6 to `excluded`. It was **never installed** in the pinned pack. Do not revisit unless user explicitly changes the decision.
+
+## B6 actual implementation follow-up
+The latest selection corrections above are authoritative: **Aspect Alchemy was rejected and is no longer installed**, overriding its provisional B5 boot-test presence. The eight approved food mods, Pufferfish Skills/Attributes and Improvable Skills 3/HammerLib have all been pinned. A total of **125** mod metadata records (118 server-side) passed the full NeoForge dedicated-server smoke in [run 43554705678](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43554705678). The graphical client, food/tag mechanics, skill-tree UI, transformation behavior and all progression locks remain untested.

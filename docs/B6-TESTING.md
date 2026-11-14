@@ -30,3 +30,9 @@
 Do not export a Modrinth or CurseForge pack ZIP that silently bundles copyrighted cross-provider mod jars.
 Use the packwiz manifest and its standard installer, or a Prism instance that downloads from upstream providers.
 Client instructions will be finalized after successful boot and launcher-package verification.
+
+## Downloadable client installer (2026-11-13 local)
+- [**Download the Prism import artifact**](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43555071188/artifacts/14097951209) (action [43555071188](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43555071188)); inner ZIP named `Too-Much-Magic-B6-Prism-Client-Test.zip`.
+- Verified Prism instance contents: `instance.cfg`, `mmc-pack.json`, `minecraft/packwiz-installer-bootstrap.jar` (MIT license) and `INSTALL-AND-TEST.txt`. **0 bundled third-party Minecraft mod JARs**.
+- Exact immutable packwiz snapshot `ecddc4342c439a2b973ad16acff112b7d0a4bb60` matched the full passing server test.
+- [Step-by-step client test instructions](B6-CLIENT-HANDOFF.md). The ZIP was structurally validated in CI, **not yet imported into a graphical Prism/Minecraft client**.

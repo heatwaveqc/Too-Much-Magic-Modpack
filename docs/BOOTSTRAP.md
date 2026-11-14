@@ -64,3 +64,8 @@ SMOKE_WITH_MODS=1 SMOKE_TIMEOUT_SECONDS=480 bash scripts/smoke_server.sh
 ```
 
 Keep actual downloaded mods in the launcher only; no JARs, saved worlds or EULAs committed to Git. The CLI/headless server cannot test the seven client-only mods and UI effects; use a separate new-world client test before considering B5 fully compatible. ProjectE/Expansion and the late tech progression remain **test-only** until explicitly gated.
+
+## B6 client test download
+Use the [Prism Launcher import artifact](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43555071188/artifacts/14097951209). GitHub downloads a wrapping artifact ZIP; extract it and select the inner `Too-Much-Magic-B6-Prism-Client-Test.zip` in Prism Launcher → Add Instance → Import. It contains only `mmc-pack.json`, `instance.cfg`, an MIT-licensed packwiz bootstrap JAR, and installation instructions. No Minecraft mod JARs are bundled. On first launch packwiz retrieves and hash-verifies the exact pinned client/both-side mods from their upstream hosts. It uses the immutable snapshot ecddc4342c439a2b973ad16acff112b7d0a4bb60; no future branch changes can silently alter this test.
+
+Select Java 21 in Prism. The instance has an 8 GiB maximum heap set (adjust for your system). Test on a **new disposable world only** and report logs/screenshots for any crashes. The 125-mod server boot passed; no one has yet run this exact graphical client locally. [Detailed quick start](B6-CLIENT-HANDOFF.md).
