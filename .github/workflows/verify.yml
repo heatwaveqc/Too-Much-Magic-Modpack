@@ -92,6 +92,9 @@ jobs:
           WORK_DIR: ${{ runner.temp }}/tmm-modded-smoke
           SMOKE_AU_DEBUG: ${{ github.ref_name == 'feature/materials-unification-mahou-doubling' && '1' || '0' }}
         run: bash scripts/smoke_server.sh
+      - name: Assert actual material tags and magical exclusions
+        if: github.ref_name == 'feature/materials-unification-mahou-doubling'
+        run: python3 scripts/check_runtime_material_tags.py "${{ runner.temp }}/tmm-modded-smoke/logs/almostunified/debug/tags.txt"
       - name: Inspect generated Neo Vitae materials and unified tags
         if: always() && github.ref_name == 'feature/materials-unification-mahou-doubling'
         run: |
