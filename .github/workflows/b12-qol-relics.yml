@@ -1,0 +1,99 @@
+name: B12 QoL and Reliquified Artifacts exact resolution
+on:
+  push:
+    branches: ['feature/qol-trash-tree-reliquified']
+    paths:
+      - '.github/workflows/b12-qol-relics.yml'
+      - 'scripts/resolve_b12_qol_relics.py'
+      - 'scripts/build_b12_prism.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve-smoke-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve exact seven reviewed Modrinth releases and required dependencies
+        run: |
+          python3 -m py_compile scripts/resolve_b12_qol_relics.py scripts/build_b12_prism.py
+          python3 scripts/resolve_b12_qol_relics.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 - <<'PY'
+          import pathlib,tomllib,json
+          root=pathlib.Path('.')
+          m=json.loads((root/'manifest/mods.json').read_text())
+          pins=m['batches'][-1]['members']
+          assert len(pins)==7
+          assert sum(x['enabled_in_pack'] for x in m['mods'])==147
+          for id in pins:
+            meta=tomllib.loads((root/f'mods/{id}.pw.toml').read_text())
+            assert meta['side']=='both' and meta['download']['hash-format']=='sha512'
+            print('B12 exact pin:',id,meta['filename'])
+          PY
+      - name: Smoke all hash-pinned server mods in fresh NeoForge world
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '600'
+          WORK_DIR: ${{ runner.temp }}/tmm-b12-qol-smoke
+        run: bash scripts/smoke_server.sh
+      - name: Commit only validated resolved provider pins
+        if: steps.smoke.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods manifest/mods.json pack.toml index.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "build(b12): hash-pin 7 QoL Relics modules after full NeoForge server smoke"
+            git push origin HEAD:feature/qol-trash-tree-reliquified
+          fi
+      - name: Fetch official packwiz installer bootstrap
+        if: steps.smoke.outcome == 'success'
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Package immutable 147-mod Prism client QA
+        if: steps.smoke.outcome == 'success'
+        run: |
+          python3 scripts/build_b12_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" \
+            "$(git rev-parse HEAD)"
+          test -f "${{ runner.temp }}/Too-Much-Magic-B12-QoL-Relics-Prism.zip"
+      - name: Preserve dedicated-server startup logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TMM-B12-Modded-Server-Logs
+          path: |
+            ${{ runner.temp }}/tmm-b12-qol-smoke/server.log
+            ${{ runner.temp }}/tmm-b12-qol-smoke/logs/latest.log
+          if-no-files-found: warn
+      - name: Upload new Prism QA import
+        if: steps.smoke.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-B12-QoL-Relics-Prism-147-Mods
+          path: ${{ runner.temp }}/Too-Much-Magic-B12-QoL-Relics-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Require successful full server smoke
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
