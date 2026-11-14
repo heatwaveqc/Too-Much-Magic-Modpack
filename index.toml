@@ -3,6 +3,27 @@ hash-format = "sha256"
 [[files]]
 file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
+
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
+
+[[files]]
+file = "mods/better-advanced-tooltips.pw.toml"
+hash = "03084ff4f74cedc1b8ac6c85a98842f75956fb4fa811d285d8ca7caa8d54da5d"
+metafile = true
+
+[[files]]
+file = "mods/kubejs.pw.toml"
+hash = "be9f3f981dd69822b4a3e5ab6fd677ec69a4e01dcf66c62e239b6ef65f31f0fd"
+metafile = true
+
+[[files]]
+file = "mods/modernfix.pw.toml"
+hash = "ef65836e005bd42a0f40df30a94eba1ad7ee5ed3194b11eafbeadc64edb44252"
+metafile = true
+
+[[files]]
+file = "mods/rhino.pw.toml"
+hash = "e55ca32b338a0e0540f4fec5170675d860566255ae0f45692a00cb4ebf2eb535"
+metafile = true
