@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B4: 71 pinned mods, all four staged dedicated-server tests passed. Includes Astral alpha, ObserverLib alpha, Draconic beta, Botania Revived release. Client, quests, boss gameplay and gated progression untested.",
+  "note": "B5: authoritative approved selections from PR #6 reconciled with B4 71-mod pinned pack; 32 new planned entries inactive until provider/loader/dep verified.",
   "mods": [
     {
       "id": "apotheosis",
@@ -90,6 +90,66 @@
       "packwiz_slug": "architectury-api"
     },
     {
+      "id": "ars-additions",
+      "name": "Ars Additions",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-controle",
+      "name": "Ars Controle",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-elemancy",
+      "name": "Ars Elemancy",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-elemental",
+      "name": "Ars Elemental",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-n-spells",
+      "name": "Ars 'n Spells",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "ars-nouveau",
       "name": "Ars Nouveau",
       "category": "magic",
@@ -102,6 +162,30 @@
       "packwiz_slug": "ars-nouveau"
     },
     {
+      "id": "ars-ocultas",
+      "name": "Ars Ocultas",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-unification",
+      "name": "Ars Unification",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "artifacts",
       "name": "Artifacts",
       "category": "power",
@@ -112,6 +196,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "artifacts"
+    },
+    {
+      "id": "aspect-alchemy",
+      "name": "Aspect Alchemy",
+      "category": "alchemy",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Experiment-driven ingredient-aspect alchemy. Explicitly in the user's selected Strongly Investigate group and therefore approved; guard against conflict with multiple existing alchemy systems. No replacement/overhaul of existing potion rules without separate consent. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
     },
     {
       "id": "astral-sorcery",
@@ -168,12 +264,13 @@
       "id": "botania",
       "name": "Botania",
       "category": "magic",
-      "desired": true,
+      "desired": false,
       "version": null,
       "release_status": "unverified",
       "source": "https://www.curseforge.com/minecraft/mc-mods/botania",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "Original Botania is not selected as the target 1.21.1 port. User explicitly approved Botania Revived and Extra Botany Revived for future verification and installation; do not substitute another port without approval."
     },
     {
       "id": "botania-revived",
@@ -322,6 +419,18 @@
       "note": "Explicit experimental testing candidate and exact pinned dependency"
     },
     {
+      "id": "eidolon-repraised",
+      "name": "Eidolon: Repraised",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "embeddium",
       "name": "Embeddium",
       "category": "performance",
@@ -332,6 +441,42 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "embeddium"
+    },
+    {
+      "id": "embers-re-ignited",
+      "name": "Embers Re-Ignited",
+      "category": "magic_industry",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "enchanted-witchcraft",
+      "name": "Enchanted: Witchcraft",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Rituals, poppets, herbology and cauldron-based witchcraft. Approved despite overlapping witchcraft content; assess integrations. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
+      "id": "enigmatic-legacy-plus",
+      "name": "Enigmatic Legacy+",
+      "category": "power",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "entity-culling",
@@ -370,6 +515,18 @@
       "packwiz_slug": "extended-crafting"
     },
     {
+      "id": "extra-botany-revived",
+      "name": "Extra Botany Revived",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "ferritecore",
       "name": "FerriteCore",
       "category": "performance",
@@ -380,6 +537,30 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "ferrite-core"
+    },
+    {
+      "id": "feywild",
+      "name": "Feywild",
+      "category": "magic_adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Fey summoning, quests, creatures and companions. Approved; audit worldgen additions with Tectonic. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
+      "id": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "forbidden-magic",
@@ -477,6 +658,18 @@
       "packwiz_slug": "gateways-to-eternity"
     },
     {
+      "id": "gaze-malum",
+      "name": "Gaze (Malum addon)",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "geckolib",
       "name": "Geckolib",
       "category": "dependency",
@@ -487,6 +680,54 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "geckolib"
+    },
+    {
+      "id": "goety",
+      "name": "Goety — The Dark Arts",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "goety-cataclysm",
+      "name": "Goety Cataclysm",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "hexcast-neoforged",
+      "name": "HexCast NEOFORGED",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "hexerei",
+      "name": "Hexerei",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "immediatelyfast",
@@ -658,6 +899,18 @@
       "packwiz_slug": "mahou-tsukai"
     },
     {
+      "id": "malum",
+      "name": "Malum",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "mezzconfig",
       "name": "MezzConfig",
       "category": "dependency",
@@ -743,6 +996,18 @@
       "packwiz_slug": "occultism"
     },
     {
+      "id": "pastel",
+      "name": "Pastel",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Color-resonance magic and discovery progression. Approved; audit magical logistics vs pack's generic-transport exclusions. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "patchouli",
       "name": "Patchouli",
       "category": "dependency",
@@ -792,6 +1057,18 @@
       "packwiz_slug": "polymorph"
     },
     {
+      "id": "primal-magick",
+      "name": "Primal Magick",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "project-expansion",
       "name": "Project Expansion",
       "category": "post_chaos",
@@ -816,6 +1093,30 @@
       "packwiz_slug": "projecte"
     },
     {
+      "id": "psi",
+      "name": "Psi",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "psi-tweaks",
+      "name": "Psi: Tweaks and Additions",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "re-avaritia",
       "name": "Re:Avaritia",
       "category": "crafting",
@@ -837,6 +1138,18 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/relics-mod",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "name": "Reliquary Reincarnations",
+      "category": "magic_utility",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "replication",
@@ -887,6 +1200,18 @@
       "packwiz_slug": "roots-classic"
     },
     {
+      "id": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Discover and compose spells in a world-specific magical language. Approved. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
+    },
+    {
       "id": "searchables",
       "name": "Searchables",
       "category": "dependency",
@@ -920,6 +1245,18 @@
       "source": null,
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "summoning-rituals",
+      "name": "Summoning Rituals",
+      "category": "ritual_framework",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for inclusion by user in Tell Me More triage, 2026-11-13. Custom ritual altar/framework; KubeJS integration. Approved; define cross-mod recipes later. Verify exact 1.21.1 NeoForge artifact, dependencies, license and integration before activation."
     },
     {
       "id": "tectonic",
@@ -957,6 +1294,42 @@
       "dependencies_verified": false,
       "note": "Required by Replication. Upstream build uses 1.21-4.0.42; exact artifact to be pinned when Replication batch is scheduled.",
       "packwiz_slug": "titanium"
+    },
+    {
+      "id": "totemic",
+      "name": "Totemic",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "vampirism",
+      "name": "Vampirism — Become a Vampire!",
+      "category": "supernatural",
+      "desired": true,
+      "version": "1.10.13",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/vampirism-become-a-vampire/files/all?page=1&version=1.21.1",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user 2026-11-13; NeoForge 1.21.1 release Vampirism-1.21-1.10.13 (2026-09-05). Skill-tree caps, leveling and balancing deliberately deferred. New vampire forest biome/territory mechanics merit worldgen review; no install yet."
+    },
+    {
+      "id": "werewolves",
+      "name": "Werewolves — Become a Beast!",
+      "category": "supernatural",
+      "desired": true,
+      "version": "2.0.3.3",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/werewolves-become-a-beast",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user 2026-11-13; NeoForge 1.21.1 release Werewolves-1.21-2.0.3.3 (2026-03-25). Requires Vampirism; pin compatible pairing before install. Skill tree caps and balancing later; adds Werewolf Heaven biome."
     },
     {
       "id": "witchery-remake",
@@ -1007,6 +1380,58 @@
     {
       "id": "separate-fe-transfer",
       "reason": "hard design exclusion"
+    },
+    {
+      "id": "elementalcraft",
+      "reason": "User explicitly rejected ElementalCraft; do not propose or install."
+    },
+    {
+      "id": "natures-aura",
+      "reason": "User explicitly rejected Nature's Aura; do not propose or install."
+    },
+    {
+      "id": "forcecraft",
+      "reason": "User explicitly rejected ForceCraft; do not propose or install."
+    },
+    {
+      "id": "mystical-agriculture",
+      "reason": "Pre-existing user design exclusion reaffirmed; resource crops undermine the intended magical resource progression."
+    },
+    {
+      "id": "mystical-agradditions",
+      "reason": "Excluded with Mystical Agriculture and its ecosystem/addons."
+    },
+    {
+      "id": "witchcraft-and-curses",
+      "reason": "Current pack decision: omit Witchcraft and Curses. Not selected in Tell Me More triage; minor overlapping ritual content and additional biome/trees."
+    },
+    {
+      "id": "pagans-blessing",
+      "reason": "Current pack decision: omit Pagan's Blessing. Not selected in Tell Me More triage; redundant small ritual system."
+    },
+    {
+      "id": "runology",
+      "reason": "Current pack decision: omit Runology. Not selected in Tell Me More triage; maturity/content concerns. Revisit only on explicit user change."
+    },
+    {
+      "id": "apothecary",
+      "reason": "Current pack decision: omit Apothecary. Not selected in Tell Me More triage. User does not want another potion/effect system interfering with the many existing alchemy mechanics."
+    },
+    {
+      "id": "magitech-arcane-engineering",
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+    },
+    {
+      "id": "relics-rpg-series",
+      "reason": "Current pack decision: omit Relics (RPG Series). Not selected in Tell Me More triage; avoid introducing RPG Series spellcasting/Spell Engine dependencies. Distinct from existing base Relics mod."
+    },
+    {
+      "id": "jewelry-rpg-series",
+      "reason": "Current pack decision: omit Jewelry (RPG Series). Not selected in Tell Me More triage; avoid pulling in RPG Series spellcasting/attribute dependencies."
+    },
+    {
+      "id": "runic-curiosities",
+      "reason": "Current pack decision: omit Runic Curiosities. Not selected in Tell Me More triage; immature and power-balance concerns."
     }
   ],
   "items_blacklist": [
@@ -1149,6 +1574,44 @@
         "observerlib"
       ],
       "status": "all_four_stages_server_smoked_client_pending"
+    },
+    {
+      "id": "B7",
+      "name": "Expanded approved roster: magic systems, addons and supernatural factions",
+      "members": [
+        "ars-additions",
+        "ars-controle",
+        "ars-elemancy",
+        "ars-elemental",
+        "ars-n-spells",
+        "ars-ocultas",
+        "ars-unification",
+        "aspect-alchemy",
+        "eidolon-repraised",
+        "embers-re-ignited",
+        "enchanted-witchcraft",
+        "enigmatic-legacy-plus",
+        "extra-botany-revived",
+        "feywild",
+        "forbidden-arcanus",
+        "gaze-malum",
+        "goety",
+        "goety-cataclysm",
+        "hexcast-neoforged",
+        "hexerei",
+        "malum",
+        "pastel",
+        "primal-magick",
+        "psi",
+        "psi-tweaks",
+        "reliquary-reincarnations",
+        "scriptor-magicae",
+        "summoning-rituals",
+        "totemic",
+        "vampirism",
+        "werewolves"
+      ],
+      "status": "approved_resolver_pending"
     }
   ]
 }
