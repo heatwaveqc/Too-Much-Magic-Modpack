@@ -111,3 +111,12 @@ Never reclassify step 1 as steps 2–5.
 ## Material unification (candidate branch, 2026-11-14)
 - Static assertions and CI syntax checks added in `scripts/verify_materials.py`; they are NOT functional recipe, dedicated-server, client or world-generation tests.
 - Full manual/game testing matrix and safety gates: `docs/MATERIAL-UNIFICATION.md`.
+
+## Silver equipment KubeJS unification — real server PASS (2026-11-14)
+
+- [GitHub Actions run 43629084400](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43629084400) **passed**, exact 128 hash-verified dedicated-server jars, Java 21 / NeoForge 21.1.265, clean disposable world, KubeJS startup + server log **zero errors**, Polymorph native diagnostic completed.
+- Polymorph total groups **93 → 84**, crafting **60 → 51**, and no remaining cross-recipe Silver Sword/axe/pick/shovel/hoe or silver armor groups. Other recipe types remain 17 smelting, 14 blasting, one smoking, one smithing.
+- Scripts: `kubejs/server_scripts/silver_equipment_unification.js` targeted recipe IDs and Werewolves silver tags; `kubejs/startup_scripts/silver_equipment_stats.js` KubeJS 2101 `setTier` plus armor durability. Static checks in `scripts/verify_silver_equipment.py`; live Polymorph assertion in `scripts/check_silver_conflicts.py`.
+- Full artifact [14127790398](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43629084400/artifacts/14127790398) retains original Polymorph log, parsed JSON/Markdown, KubeJS startup and server logs, and a 128-JAR cross-material census. The census finds **nine multi-provider normal equipment-slot families, all silver**; no similarly named ordinary tool/armor family overlap for another conventional material.
+- **NOT a client functional test**: do not claim measured mine speed, 250 tool-use lifespan, enchantability behavior, attack-to-undead fire ignition, Werewolves Silver effect, damage/reflection or repair behavior. These require JEI + disposable-world gameplay tests. Armor enchantability 20 remains pending a possible Java compat mod.
+
