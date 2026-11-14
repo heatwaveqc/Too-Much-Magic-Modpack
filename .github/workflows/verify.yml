@@ -25,6 +25,20 @@ jobs:
           go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
           "$(go env GOPATH)/bin/packwiz" list
 
+      - name: Resolve first Modrinth infrastructure pins (no repository writes)
+        run: |
+          PACKWIZ="$(go env GOPATH)/bin/packwiz"
+          "$PACKWIZ" --yes modrinth add kubejs
+          "$PACKWIZ" --yes modrinth add modernfix
+          "$PACKWIZ" refresh
+          "$PACKWIZ" list
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for p in [Path("pack.toml"), Path("index.toml"), *sorted(Path("mods").glob("*.pw.toml"))]:
+              print("TMM_SNAPSHOT " + json.dumps({"path":str(p),"content":p.read_text(encoding="utf-8")}, ensure_ascii=False))
+          PY
+
   loader-server:
     runs-on: ubuntu-latest
     timeout-minutes: 15
