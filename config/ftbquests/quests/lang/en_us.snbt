@@ -2,13 +2,13 @@
 	chapter_group.544D101000000000.title: "Introduction"
 	chapter_group.544D102000000000.title: "Progression"
 	chapter_group.544D103000000000.title: "Magic"
-	chapter_group.544D104000000000.title: "Exploration & Combat"
+	chapter_group.544D104000000000.title: "Exploration \\& Combat"
 	chapter_group.544D105000000000.title: "Endgame"
 	chapter.544D4D1000000001.title: "Getting Started"
 	chapter.544D4D1000000001.chapter_subtitle: ["First tools and shelter, then a practical magic path of your choosing."]
-	chapter.544D201000200000.title: "Tips & Tricks"
+	chapter.544D201000200000.title: "Tips \\& Tricks"
 	chapter.544D201000200000.chapter_subtitle: ["Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage."]
-	chapter.544D201000300000.title: "Food & Fishing"
+	chapter.544D201000300000.title: "Food \\& Fishing"
 	chapter.544D201000300000.chapter_subtitle: ["Farming, fishing, food preparation and modular kitchens."]
 	chapter.544D202000100000.title: "Basic Progression"
 	chapter.544D202000100000.chapter_subtitle: ["Shared resources and tools, plus separate player commodity-selling contracts."]
@@ -16,7 +16,7 @@
 	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage, ritual space and exploration supplies."]
 	chapter.544D202000300000.title: "Endgame Roadmap"
 	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
-	chapter.544D202000400000.title: "Skills & Advancement"
+	chapter.544D202000400000.title: "Skills \\& Advancement"
 	chapter.544D202000400000.chapter_subtitle: ["Pufferfish skills, attributes and Improvable Skills progression."]
 	chapter.544D202000500000.title: "Exceptional Power: Reactors"
 	chapter.544D202000500000.chapter_subtitle: ["Complete FE tech: nuclear reactor, storage, power bank and Draconic Reactor."]
@@ -32,8 +32,8 @@
 	chapter.544D203000500000.chapter_subtitle: ["Explore Enchanted: Witchcraft; more quests are being authored."]
 	chapter.544D203000600000.title: "EvilCraft"
 	chapter.544D203000600000.chapter_subtitle: ["Explore EvilCraft; more quests are being authored."]
-	chapter.544D203000700000.title: "Forbidden & Arcanus"
-	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden & Arcanus; more quests are being authored."]
+	chapter.544D203000700000.title: "Forbidden \\& Arcanus"
+	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden \\& Arcanus; more quests are being authored."]
 	chapter.544D203000800000.title: "Goety"
 	chapter.544D203000800000.chapter_subtitle: ["Explore Goety; more quests are being authored."]
 	chapter.544D203000900000.title: "Hex Casting"
@@ -161,7 +161,7 @@
 	quest.544D504001100000.title: "Collect Amethyst"
 	quest.544D504001100000.quest_desc: ["Collect eight amethyst shards, or buy them from Quest Shop if the geology refuses to cooperate. A purchased ingredient is an intentional anti-grind alternative, not a bypass of any late-game boss gate."]
 	quest.544D504001200000.title: "Bring a Water Bucket"
-	quest.544D504001200000.quest_desc: ["Keep water accessible for building, agriculture, and many magical structures. This milestone is separate from Food & Fishing's milk-bucket quest."]
+	quest.544D504001200000.quest_desc: ["Keep water accessible for building, agriculture, and many magical structures. This milestone is separate from Food \\& Fishing's milk-bucket quest."]
 	quest.544D504001300000.title: "Defend Yourself"
 	quest.544D504001300000.quest_desc: ["Make a shield. Early defensive options make it easier to travel while discovering spells and supernatural equipment."]
 	quest.544D504001400000.title: "Upgrade to Diamond Mining"
@@ -268,7 +268,7 @@
 	quest.544D508002000000.quest_desc: ["Only after the structure and sufficient fuel are assembled: monitor temperature, containment field strength, fuel conversion and energy saturation. Start with conservative settings, verify field power is sustained under peak load, and test emergency shutdown in an expendable world. This checkmark is a *manual safety acknowledgment*; it does not certify actual reactor telemetry."]
 	quest.544D304000400001.title: "Chapter Overview"
 	quest.544D304000400001.quest_desc: ["An introduction to Feywild in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D301000300001.title: "Food & Fishing Index"
+	quest.544D301000300001.title: "Food \\& Fishing Index"
 	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
 	quest.544D503000200000.title: "Start with Seeds"
 	quest.544D503000200000.quest_desc: ["Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore."]
@@ -313,7 +313,7 @@
 	quest.544D503001600000.title: "Cooking for Blockheads: Oven"
 	quest.544D503001600000.quest_desc: ["Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen."]
 	quest.544D303000700001.title: "Chapter Overview"
-	quest.544D303000700001.quest_desc: ["An introduction to Forbidden & Arcanus in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000700001.quest_desc: ["An introduction to Forbidden \\& Arcanus in Too Much Magic.","This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000300001.title: "Chapter Overview"
 	quest.544D304000300001.quest_desc: ["An introduction to Gateways to Eternity in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000800001.title: "Chapter Overview"
@@ -349,7 +349,7 @@
 	quest.544D501000D00000.title: "Iron Is Only the Beginning"
 	quest.544D501000D00000.quest_desc: ["An iron pickaxe is a baseline, not a finish line. Choose spellcasting, rituals, magical mining, farming or exploration. Basic Progression covers shared goals; Magic chapters cover individual schools. You do not need to master all 25 magical traditions."]
 	quest.544D501000E00000.title: "Find an Everyday Magical Shortcut"
-	quest.544D501000E00000.quest_desc: ["Look through Tips & Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you."]
+	quest.544D501000E00000.quest_desc: ["Look through Tips \\& Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you."]
 	quest.544D501000F00000.title: "Try a First Spell or Ritual"
 	quest.544D501000F00000.quest_desc: ["Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools."]
 	quest.544D501001000000.title: "A Little Protection"
@@ -357,7 +357,7 @@
 	quest.544D501001100000.title: "Take Your Magic Into the World"
 	quest.544D501001100000.quest_desc: ["Explore beyond your base for structures, new biomes and useful materials. Nature's Compass, FTB Chunks, your Trinkets Pouch and the exploration chapters all help. You may also specialize in base building without following every dungeon branch."]
 	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
-	quest.544D501001200000.quest_desc: ["Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration & Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."]
+	quest.544D501001200000.quest_desc: ["Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration \\& Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."]
 	quest.544D303000B00001.title: "Chapter Overview"
 	quest.544D303000B00001.quest_desc: ["An introduction to Iron's Spells 'n Spellbooks in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001700001.title: "Chapter Overview"
@@ -389,7 +389,7 @@
 	quest.544D303001400001.title: "Chapter Overview"
 	quest.544D303001400001.quest_desc: ["An introduction to Scriptor Magicae in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills & Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.quest_desc: ["An introduction to Skills \\& Advancement in Too Much Magic.","This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D507000100000.title: "Read the Two Skill Systems"
 	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
 	quest.544D507000200000.title: "Open the Skill Interface"
@@ -406,7 +406,7 @@
 	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
 	quest.544D303001500001.title: "Chapter Overview"
 	quest.544D303001500001.quest_desc: ["An introduction to Theurgy in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D301000200001.title: "Tips & Tricks Index"
+	quest.544D301000200001.title: "Tips \\& Tricks Index"
 	quest.544D301000200001.quest_desc: ["These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."]
 	quest.544D502000200000.title: "Find Recipes with JEI"
 	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
