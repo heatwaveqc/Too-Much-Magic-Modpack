@@ -133,12 +133,13 @@
       "name": "Ars Elemental",
       "category": "magic_addon",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
-      "enabled_in_pack": false,
+      "version": "ars_elemental-1.21.1-0.7.10.4",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ars-elemental",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+      "note": "B5 verified release. Approved addon resolved from upstream exact project ID.",
+      "packwiz_slug": "ars-elemental"
     },
     {
       "id": "ars-n-spells",
@@ -724,12 +725,13 @@
       "name": "Gaze (Malum addon)",
       "category": "magic_addon",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
-      "enabled_in_pack": false,
+      "version": "gaze-1.1.7.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/NlvaJ5WE",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+      "note": "B5 verified release. Approved addon resolved from upstream exact project ID.",
+      "packwiz_slug": "gaze-a-malum-addon"
     },
     {
       "id": "geckolib",
@@ -928,6 +930,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "lithostitched"
+    },
+    {
+      "id": "lodestone",
+      "name": "Lodestone",
+      "category": "dependency",
+      "desired": true,
+      "version": "lodestone-1.21.1-1.8.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/bN3xUWdo",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "lodestonelib",
+      "note": "B5 verified release. Missing prerequisite for Malum."
     },
     {
       "id": "lootr",
@@ -1740,6 +1755,7 @@
         "goety-cataclysm",
         "hexcast-neoforged",
         "hexerei",
+        "lodestone",
         "malum",
         "modopedia",
         "pastel",
@@ -1757,7 +1773,7 @@
         "vampirism",
         "werewolves"
       ],
-      "status": "server_boot_failed_pending_diagnosis"
+      "status": "server_failed_after_lodestone_repair"
     }
   ]
 }

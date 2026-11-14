@@ -54,13 +54,18 @@ hash = "1bb8715ec65c1316ab6a982df05577a44b3a339813e8278b45c9952bfec65955"
 metafile = true
 
 [[files]]
+file = "mods/ars-elemental.pw.toml"
+hash = "8e9f867e9c0ff53e08e779ae54fd1bbead92f1d7323b75369e64ade719d5d7c1"
+metafile = true
+
+[[files]]
 file = "mods/ars-n-spells.pw.toml"
 hash = "bdc153a6636772ab81ff78a63e7c41a9de4f821a63e02b2ed3317e5dbe377f83"
 metafile = true
 
 [[files]]
 file = "mods/ars-nouveau.pw.toml"
-hash = "195e22716d6181d55297bfe296716c68ad44cc2a4c09ef2eb6f68048ff00618f"
+hash = "13dc68f3429beff58fd9d02b2d48318087fc7e1281163587f07df40fd1e6a44a"
 metafile = true
 
 [[files]]
@@ -264,6 +269,11 @@ hash = "677912b683eeda568c6e81d235c2411461c1d212608b5440a79d5abbd2c5fc1d"
 metafile = true
 
 [[files]]
+file = "mods/gaze-a-malum-addon.pw.toml"
+hash = "c367923085af785c1e969e992536e3e10a053003d1bd1cdb055ffe1f2ce9c362"
+metafile = true
+
+[[files]]
 file = "mods/geckolib.pw.toml"
 hash = "4cf7eb494f48576e28895ee5f362878f95c6bad65372666106140fdae82d0c4c"
 metafile = true
@@ -356,6 +366,11 @@ metafile = true
 [[files]]
 file = "mods/lithostitched.pw.toml"
 hash = "c0611d8448bc043f372a008a435e14aa238ba8fca52fd1d79634424576ea9e12"
+metafile = true
+
+[[files]]
+file = "mods/lodestonelib.pw.toml"
+hash = "f5d0701055478e980b50849f199f266e6ab1940277a17ad2e5060df0d978be83"
 metafile = true
 
 [[files]]
