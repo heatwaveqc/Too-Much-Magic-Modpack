@@ -28,6 +28,10 @@ public final class DisciplineRules {
         return !conventionalWeaponEquipped && !conventionalArmorEquipped;
     }
 
+    public static boolean permitsStepAssist(boolean monkFaction, boolean rootSkill, boolean validEquipment) {
+        return monkFaction && rootSkill && validEquipment;
+    }
+
     public static boolean conflicting(Physiology physiology) {
         return physiology == Physiology.UNKNOWN || FORBIDDEN.contains(physiology);
     }
