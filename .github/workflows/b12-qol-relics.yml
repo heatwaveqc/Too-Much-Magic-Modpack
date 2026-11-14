@@ -60,6 +60,13 @@ jobs:
           git add mods manifest/mods.json pack.toml index.toml
           if ! git diff --cached --quiet; then
             git commit -m "build(b12): hash-pin 7 QoL Relics modules after full NeoForge server smoke"
+            # Other legitimate documentation commits may have advanced this branch
+            # while server smoke ran. Preserve them by replaying only our pin commit
+            # on the newest origin head before publishing the immutable Prism ZIP.
+            git fetch origin feature/qol-trash-tree-reliquified
+            git rebase origin/feature/qol-trash-tree-reliquified
+            python3 scripts/validate.py
+            python3 scripts/validate_quests.py
             git push origin HEAD:feature/qol-trash-tree-reliquified
           fi
       - name: Fetch official packwiz installer bootstrap
