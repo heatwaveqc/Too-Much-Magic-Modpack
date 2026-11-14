@@ -1,0 +1,32 @@
+name: Core Magic Tyz overlay static validation
+on:
+  push:
+    paths:
+      - 'compat/magic/**'
+      - '.github/workflows/tyzs-core-magic.yml'
+  pull_request:
+    paths:
+      - 'compat/magic/**'
+      - '.github/workflows/tyzs-core-magic.yml'
+permissions:
+  contents: read
+jobs:
+  validate-overlay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Tyz 99-rank configs and MXP level/currency files
+        run: python3 compat/magic/stage_preview.py --check
+      - name: Parse KubeJS native event adapter JavaScript
+        run: node --check compat/magic/tyzs-test-overlay/kubejs/server_scripts/tmm_magic_core_thrift.js
+      - name: Confirm TOML syntax
+        run: python3 -c "import pathlib,tomllib; tomllib.loads(pathlib.Path('compat/magic/tyzs-test-overlay/config/tyzs_skills-common.toml').read_text())"
+      - name: Validate pack baseline metadata (not a game boot)
+        run: python3 scripts/validate.py
