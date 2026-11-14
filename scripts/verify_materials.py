@@ -32,6 +32,26 @@ for resource in ("silver", "lead"):
         assert provider["mod"] in priorities
         assert provider["ore"]
         assert provider["ore"][0].startswith(provider["mod"] + ":")
+# Real Neo Vitae 1.1.53 generated config (12 defaults) extended by two
+# source-backed materials. New materials may process ores but must NOT leak
+# into meteor, Prismatic Demonite, or dungeon ore generation.
+neo = json.loads((root / "config/neovitae/materials.json").read_text())
+assert isinstance(neo, list)
+named = {entry["name"]:entry for entry in neo}
+assert len(neo) == 14
+for material, target in (("silver", "occultism"), ("lead", "embers")):
+    entry = named[material]
+    assert entry["generative"] is False
+    assert entry["ore_tag"] == f"c:ores/{material}"
+    assert entry["raw_tag"] == f"c:raw_materials/{material}"
+    assert entry["smelt_to"] == audit["resources"][material]["canonical"]["ingot"]
+    assert entry["gen_ore"] == audit["resources"][material]["canonical"]["ore"]
+    assert entry["gen_raw"] == audit["resources"][material]["canonical"]["raw"]
+for resource in ("iron","gold","copper","coal","netherite_scrap","demonite","hellforged","diamond","emerald","lapis","quartz","amethyst"):
+    assert resource in named, "Removed a default Neo Vitae material: " + resource
+ignored = cfg["ignored_items"]
+assert "pastel:blackslag_.*_ore" in ignored
+assert "deeperdarker:(gloomslate|sculk_stone)_.*_ore" in ignored
 assert len(audit["resources"]["silver"]["providers"]) >= 4
 assert len(audit["resources"]["lead"]["providers"]) >= 2
 for name in ("iron", "gold"):
