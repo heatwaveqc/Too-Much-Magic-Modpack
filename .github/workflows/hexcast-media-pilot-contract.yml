@@ -1,0 +1,25 @@
+name: HexCast Media Pilot - contract harness (not Minecraft)
+
+on:
+  pull_request:
+    paths:
+      - 'integration/hexcast-media-pilot/**'
+      - '.github/workflows/hexcast-media-pilot-contract.yml'
+  push:
+    branches:
+      - 'design/b6-pufferfish-unification-reconciliation'
+    paths:
+      - 'integration/hexcast-media-pilot/**'
+      - '.github/workflows/hexcast-media-pilot-contract.yml'
+
+jobs:
+  source-shaped-contract-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Check Java bridge against source-shaped stand-ins (not Minecraft)
+        run: bash integration/hexcast-media-pilot/check-contract.sh
