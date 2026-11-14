@@ -979,11 +979,11 @@ hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
 [[files]]
 file = "config/almostunified/unification/materials.json"
-hash = "4a361de4bc072567034ebac90d0b0e18f03e067677bb1e953e12ad3a23f3fe1f"
+hash = "fca2e951d56374e72cddfd2c02d1362d154f3be5727efbaffb9201f7622c6641"
 
 [[files]]
 file = "kubejs/server_scripts/material_unification.js"
-hash = "2914bb5730c5bf587f34ce8e9f3755af46ce2733713c6de00eefad4d75fcd1d0"
+hash = "39a137392d31e9603726df0f5391e0af59c36d46f5c8b3bd19d55a8c08942fce"
 
 [[files]]
 file = "config/neovitae/materials.json"
@@ -999,4 +999,4 @@ hash = "8a56605d4d2a2a2ae6a90e48cf4df00465d5d21f21e66707d09c243306354639"
 
 [[files]]
 file = "kubejs/server_scripts/material_processing_cleanup.js"
-hash = "db99099e3eaa93f1b73a15f44efefeaa0b70a0264050605da0362062e391cb83"
+hash = "86aec79e3ed4b02ad7285ca0fd2999e0e7c08aab2f4bfc4e1c9de0d5c9c7744f"
