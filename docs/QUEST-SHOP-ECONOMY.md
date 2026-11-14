@@ -48,3 +48,8 @@ The design **allows ProjectE to generate unlimited sellable materials after Chao
 3. Check `/hqs shop` and Quest Shop button in FTB Quests; check coins cannot be acquired from killing mobs. Verify real purchase decrements shared account and grants specified stack.
 4. Confirm every one-time sale is item-consuming and cannot be claimed again; repeatable bulk consumes exactly 256/128/64 blocks for **one coin**. Test with one player and then multiple teammates; verify no double payment via claim-all or team changes.
 5. Ensure no shop purchase bypasses configured magic/boss locks; run resource regression checks with ProjectE EMC production enabled **after Chaos Guardian**. Back up worlds before migrating.
+
+
+## Runtime compatibility correction — November 14, 2026
+
+Pinned Quest Shop 1.4.0's `CoinsReward.claim` returns `void`, but pinned FTB Quests 2101.1.38 requires a `boolean` return. The previously authored `questshop:coins` reward is therefore not safe to claim, despite successful mod and server boot. A team-reward serialization error was also found (`team: true` should be `team_reward: true`). The combined QA branch changes all 12 commodity sales to the native FTB command reward calling `hqs coins add {p} 1` with permission level 2 and `team_reward: true`. This is a compatibility bridge, not a permanent replacement for repairing Quest Shop against the new API. Validate coin balance and team-wide single credit in a disposable world before publishing the economy.

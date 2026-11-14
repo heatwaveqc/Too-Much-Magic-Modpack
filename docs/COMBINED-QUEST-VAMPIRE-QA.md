@@ -12,3 +12,13 @@ The GitHub Actions workflow creates a custom disposable Prism ZIP with a first-p
 6. Test a fresh Reliquified Artifacts Eternal Steak separately. Test the new TrashSlot and TreeChop/Leaves Be Gone behavior, too.
 
 The workflow must pass full-server smoke and compile before publishing its import ZIP. Even a green workflow is **not** proof that the JAWR/Vampirism synchronization or quest rendering works in-world.
+
+## Quest Shop coin claim compatibility (2026-11-14)
+
+**Previous 1.4.0 custom coin rewards are unusable with FTB Quests 2101.1.38.** Quest Shop defines `void CoinsReward.claim(ServerPlayer, boolean)`, but pinned FTB Quests 2101.1.38 defines `boolean Reward.claim(ServerPlayer, boolean)`. This binary-incompatible signature prevents reliable claims; vanilla FTB XP rewards are unaffected. Also, the old sales specified `team: true` instead of the actual 2101.1.x key `team_reward: true`.
+
+For QA, all **12 copper/emerald/diamond sale quests** now use FTB Quests' supported built-in command reward: `type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true`. The corresponding XP reward is also `team_reward: true`. This invokes Quest Shop's own team-currency command under the submitting player's identity, without relying on the obsolete custom Java reward method. Task consumption, reward IDs, quest IDs, prices and coin amounts remain unchanged.
+
+**Client QA:** submit 8 copper ingots, claim the 5 XP and the separate *command reward* (which appears as a command-block icon instead of a money bag). Confirm the message that a coin was added, then run `/hqs coins`, open `/hqs shop`, buy a cheap item if funds permit, and verify the balance decreases. Reopen the shop to force a fresh balance sync. In multiplayer, ensure one credit per team, not one per player. Repeat with emerald and diamond sales before approving economy release. A successful server boot does not test command execution at claim time.
+
+**Future:** update/replace Quest Shop 1.4.0 with a version built against the current FTB Quests API, using `CoinsService.add` for UI sync. Only then restore a proper coin-icon reward type. Current QA workaround is intentional and fail-fast validated against accidental regression.

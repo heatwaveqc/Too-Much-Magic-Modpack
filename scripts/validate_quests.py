@@ -192,14 +192,19 @@ def main() -> None:
             xp = re.search(r'type: "xp", xp: (\d+)', rewards)
             itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
-            coins = re.search(r'type: "questshop:coins", amount: (\d+)', rewards)
-            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or justified coin reward on {qid}")
-            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "questshop:coins"') == 1, f"Unexpected rewards on {qid}")
+            # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
+            # FTB Quests 2101.1.38 expects boolean; use its native command reward
+            # to invoke Quest Shop's /hqs coins add until the addon is updated.
+            coins = re.search(r'type: "command", command: "hqs coins add \{p\} (\d+)", permission_level: 2, team_reward: true', rewards)
+            ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
+            ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
+            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or command-backed coin reward on {qid}")
+            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "command"') == 1, f"Unexpected rewards on {qid}")
             if itm is not None:
                 reward_items.append((qid, itm.group(1), int(itm.group(2))))
             else:
                 coin_quests.add(qid)
-                ensure('team: true' in rewards, f"Quest Shop coins must use team-shared one-claim rewards on {qid}")
+                ensure(rewards.count("team_reward: true") == 2, f"Sale XP + coin claims must be team-shared on {qid}")
                 ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
                 ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             for item_id, required in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}(?:, count: (\d+)L)?', tasks):
@@ -231,7 +236,7 @@ def main() -> None:
         if "item" in q["reward"]:
             ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong item reward in {q['title']}")
         else:
-            ensure(qid in coin_quests and f'amount: {q["reward"]["coin"]}' in block, f"Wrong coin reward in {q['title']}")
+            ensure(qid in coin_quests and f'command: "hqs coins add {{p}} {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")

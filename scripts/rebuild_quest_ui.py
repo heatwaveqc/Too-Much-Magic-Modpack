@@ -263,6 +263,10 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
         ]
     if any(not x or x.strip() == "undefined" for x in description):
         raise ValueError(f"Broken localized description: {chapter} / {title}")
+    if ledger is not None and "coin" in ledger.get("reward", {}):
+        expected = f'command: "hqs coins add {{p}} {ledger["reward"]["coin"]}", permission_level: 2, team_reward: true'
+        if expected not in block or 'type: "questshop:coins"' in block:
+            raise ValueError(f"Unsupported coin reward ABI on {chapter} / {title}: use native command reward")
     start = block.find("\n\t\t\tdescription:")
     if start >= 0:
         open_bracket = block.find("[", start)
@@ -306,7 +310,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
     pack = re.sub(r'^version = ".*"$',
-                  'version = "0.8.8-quest-vampire-qa"',
+                  'version = "0.8.9-quest-vampire-coin-qa"',
                   pack, count=1, flags=re.M)
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(

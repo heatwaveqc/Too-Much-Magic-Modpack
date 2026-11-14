@@ -26,7 +26,7 @@ hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "3f3cfb503b79aaffe1f47ca57877e73b21444b498f1779583ba9f484f3677076"
+hash = "2d2b764602485f8127188f0bcd0dfbcad2d9d673322c318123566520e7fe3a26"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"

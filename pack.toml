@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.8.8-quest-vampire-qa"
+version = "0.8.9-quest-vampire-coin-qa"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "76a6dd601e48e45e4ad70e8345cd76b48bc263c9b49ca77bde3684b5d699a883"
+hash = "c729c81c478b6aa6a35f45e085f555f6da052091aad94c21edec9bd115d6f498"
 
 [versions]
 minecraft = "1.21.1"
