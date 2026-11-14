@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "kind": "non_attribute_trait_candidates",
+  "note": "These are not direct player attribute registry entries. Must use each mod's own API, data attachments or command paths.",
+  "systems": [
+    {
+      "mod": "mahou-tsukai",
+      "traits": [
+        "current_mahou",
+        "max_mahou",
+        "mahou_gain_capacity"
+      ],
+      "status": "command_or_config_bridge_required",
+      "pinned": "1.21.1-v1.36.31"
+    },
+    {
+      "mod": "primal-magick",
+      "traits": [
+        "attunement_per_school",
+        "mage_progression",
+        "spell_power_effects"
+      ],
+      "status": "specific_attachment_API_and_effect_stacking_needed",
+      "pinned": "1.21.1-6.0.7"
+    },
+    {
+      "mod": "neo_vitae",
+      "traits": [
+        "essentia_vitae_capacity",
+        "ritual_cost_or_altar_efficiency",
+        "sentient_armour_progression"
+      ],
+      "status": "beyond_seven_registered_attributes",
+      "pinned": "1.21.1-1.1.53"
+    },
+    {
+      "mod": "occultism",
+      "traits": [
+        "spirit_summoning_progress",
+        "familiar_benefits",
+        "magic_mining_tier"
+      ],
+      "status": "per_mod_hooks_and_entity_owner_binding_needed",
+      "pinned": "1.21.1-1.227.0"
+    },
+    {
+      "mod": "pufferfish_skills",
+      "traits": [
+        "category_experience_levels",
+        "one_time_node_unlocks"
+      ],
+      "status": "not_native_repeatable_per_attribute",
+      "pinned": "verify_manifest_name"
+    },
+    {
+      "mod": "improvable_skills",
+      "traits": [
+        "per_trait_purchase_count",
+        "skill_maximum",
+        "progressive_cost"
+      ],
+      "status": "inspect_pinned_jar_21.0.2_before_overlapping",
+      "pinned": "21.0.2"
+    },
+    {
+      "mod": "vampirism",
+      "traits": [
+        "faction_level",
+        "lord_rank",
+        "Vampirism_unique_skill_unlocks"
+      ],
+      "status": "monk_uses_faction_tree_but_not_repeatable_nodes",
+      "pinned": "1.10.13"
+    },
+    {
+      "mod": "draconic_evolution",
+      "traits": [
+        "curio_chestpiece_shield",
+        "curio_flight_modules",
+        "elytra_boost",
+        "chaos_tier_material_access"
+      ],
+      "status": "confirm_body_curio_functions_and_progression",
+      "pinned": "3.1.4.633"
+    }
+  ],
+  "next_steps": [
+    "Run runtime player-attribute registry exporter",
+    "Audit non-attribute stats and progression capacity per mod",
+    "Decide repeatable skill ranks backend only after merged inventory",
+    "Verify boss and ore tier test worlds before enabling skill gates"
+  ]
+}
