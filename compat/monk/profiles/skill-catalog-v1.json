@@ -1037,7 +1037,8 @@
         "apothic_attributes:armor_pierce"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/armor_shred",
@@ -1049,7 +1050,8 @@
         "apothic_attributes:armor_shred"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/arrow_damage",
@@ -1062,7 +1064,8 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required."
+      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/arrow_velocity",
@@ -1075,7 +1078,8 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required."
+      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/cold_damage",
@@ -1087,7 +1091,8 @@
         "apothic_attributes:cold_damage"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/cooldown_reduction",
@@ -1099,7 +1104,8 @@
         "apothic_attributes:cooldown_reduction"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/crit_chance",
@@ -1111,7 +1117,8 @@
         "apothic_attributes:crit_chance"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/crit_damage",
@@ -1123,7 +1130,8 @@
         "apothic_attributes:crit_damage"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/current_hp_damage",
@@ -1135,7 +1143,8 @@
         "apothic_attributes:current_hp_damage"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/dodge_chance",
@@ -1147,7 +1156,8 @@
         "apothic_attributes:dodge_chance"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/draw_speed",
@@ -1160,7 +1170,8 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required."
+      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/experience_gained",
@@ -1172,7 +1183,8 @@
         "apothic_attributes:experience_gained"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/fire_damage",
@@ -1184,7 +1196,8 @@
         "apothic_attributes:fire_damage"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/ghost_health",
@@ -1196,7 +1209,8 @@
         "apothic_attributes:ghost_health"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/healing_received",
@@ -1208,7 +1222,8 @@
         "apothic_attributes:healing_received"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/life_steal",
@@ -1220,7 +1235,8 @@
         "apothic_attributes:life_steal"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/overheal",
@@ -1232,7 +1248,8 @@
         "apothic_attributes:overheal"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/projectile_damage",
@@ -1245,7 +1262,8 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required."
+      "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/prot_pierce",
@@ -1257,7 +1275,8 @@
         "apothic_attributes:prot_pierce"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/prot_shred",
@@ -1269,7 +1288,8 @@
         "apothic_attributes:prot_shred"
       ],
       "availability": "verify_player_instance_and_source_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_drygmy",
@@ -1281,7 +1301,8 @@
         "ars_nouveau:ars_nouveau.perk.drygmy"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_feather",
@@ -1293,7 +1314,8 @@
         "ars_nouveau:ars_nouveau.perk.feather"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_mana_regen",
@@ -1305,7 +1327,8 @@
         "ars_nouveau:ars_nouveau.perk.mana_regen"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_max_mana",
@@ -1317,7 +1340,8 @@
         "ars_nouveau:ars_nouveau.perk.max_mana"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_saturation",
@@ -1329,7 +1353,8 @@
         "ars_nouveau:ars_nouveau.perk.saturation"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_spell_damage",
@@ -1341,7 +1366,8 @@
         "ars_nouveau:ars_nouveau.perk.spell_damage"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_warding",
@@ -1353,7 +1379,8 @@
         "ars_nouveau:ars_nouveau.perk.warding"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_weight",
@@ -1365,7 +1392,8 @@
         "ars_nouveau:ars_nouveau.perk.weight"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_wixie",
@@ -1377,7 +1405,8 @@
         "ars_nouveau:ars_nouveau.perk.wixie"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/chanting_speed",
@@ -1389,7 +1418,8 @@
         "eidolon_repraised:chanting_speed"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/magic_power",
@@ -1401,7 +1431,8 @@
         "eidolon_repraised:magic_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/persistent_soul_hearts",
@@ -1413,7 +1444,8 @@
         "eidolon_repraised:persistent_soul_hearts"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/forbidden_arcanus/generic_aureal_regeneration",
@@ -1425,7 +1457,8 @@
         "forbidden_arcanus:generic.aureal_regeneration"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/forbidden_arcanus/generic_magic_protection",
@@ -1437,7 +1470,8 @@
         "forbidden_arcanus:generic.magic_protection"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/abyss_discount",
@@ -1449,7 +1483,8 @@
         "goety:abyss_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/abyss_potency",
@@ -1461,7 +1496,8 @@
         "goety:abyss_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/casting_speed",
@@ -1473,7 +1509,8 @@
         "goety:casting_speed"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/cooldown_discount",
@@ -1485,7 +1522,8 @@
         "goety:cooldown_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/frost_discount",
@@ -1497,7 +1535,8 @@
         "goety:frost_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/frost_potency",
@@ -1509,7 +1548,8 @@
         "goety:frost_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/geomancy_discount",
@@ -1521,7 +1561,8 @@
         "goety:geomancy_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/geomancy_potency",
@@ -1533,7 +1574,8 @@
         "goety:geomancy_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/necromancy_discount",
@@ -1545,7 +1587,8 @@
         "goety:necromancy_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/necromancy_potency",
@@ -1557,7 +1600,8 @@
         "goety:necromancy_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/nether_discount",
@@ -1569,7 +1613,8 @@
         "goety:nether_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/nether_potency",
@@ -1581,7 +1626,8 @@
         "goety:nether_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/soul_discount",
@@ -1593,7 +1639,8 @@
         "goety:soul_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_burning",
@@ -1605,7 +1652,8 @@
         "goety:spell_burning"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_duration",
@@ -1617,7 +1665,8 @@
         "goety:spell_duration"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_potency",
@@ -1629,7 +1678,8 @@
         "goety:spell_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_radius",
@@ -1641,7 +1691,8 @@
         "goety:spell_radius"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_range",
@@ -1653,7 +1704,8 @@
         "goety:spell_range"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_velocity",
@@ -1665,7 +1717,8 @@
         "goety:spell_velocity"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/storm_discount",
@@ -1677,7 +1730,8 @@
         "goety:storm_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/storm_potency",
@@ -1689,7 +1743,8 @@
         "goety:storm_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/void_discount",
@@ -1701,7 +1756,8 @@
         "goety:void_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/void_potency",
@@ -1713,7 +1769,8 @@
         "goety:void_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wild_discount",
@@ -1725,7 +1782,8 @@
         "goety:wild_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wild_potency",
@@ -1737,7 +1795,8 @@
         "goety:wild_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wind_discount",
@@ -1749,7 +1808,8 @@
         "goety:wind_discount"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wind_potency",
@@ -1761,7 +1821,8 @@
         "goety:wind_potency"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/blood_magic_resist",
@@ -1773,7 +1834,8 @@
         "irons_spellbooks:blood_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/blood_spell_power",
@@ -1785,7 +1847,8 @@
         "irons_spellbooks:blood_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/cast_time_reduction",
@@ -1797,7 +1860,8 @@
         "irons_spellbooks:cast_time_reduction"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/casting_movespeed",
@@ -1809,7 +1873,8 @@
         "irons_spellbooks:casting_movespeed"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/cooldown_reduction",
@@ -1821,7 +1886,8 @@
         "irons_spellbooks:cooldown_reduction"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/eldritch_magic_resist",
@@ -1833,7 +1899,8 @@
         "irons_spellbooks:eldritch_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/eldritch_spell_power",
@@ -1845,7 +1912,8 @@
         "irons_spellbooks:eldritch_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ender_magic_resist",
@@ -1857,7 +1925,8 @@
         "irons_spellbooks:ender_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ender_spell_power",
@@ -1869,7 +1938,8 @@
         "irons_spellbooks:ender_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/evocation_magic_resist",
@@ -1881,7 +1951,8 @@
         "irons_spellbooks:evocation_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/evocation_spell_power",
@@ -1893,7 +1964,8 @@
         "irons_spellbooks:evocation_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/fire_magic_resist",
@@ -1905,7 +1977,8 @@
         "irons_spellbooks:fire_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/fire_spell_power",
@@ -1917,7 +1990,8 @@
         "irons_spellbooks:fire_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/holy_magic_resist",
@@ -1929,7 +2003,8 @@
         "irons_spellbooks:holy_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/holy_spell_power",
@@ -1941,7 +2016,8 @@
         "irons_spellbooks:holy_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ice_magic_resist",
@@ -1953,7 +2029,8 @@
         "irons_spellbooks:ice_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ice_spell_power",
@@ -1965,7 +2042,8 @@
         "irons_spellbooks:ice_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/lightning_magic_resist",
@@ -1977,7 +2055,8 @@
         "irons_spellbooks:lightning_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/lightning_spell_power",
@@ -1989,7 +2068,8 @@
         "irons_spellbooks:lightning_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/mana_regen",
@@ -2001,7 +2081,8 @@
         "irons_spellbooks:mana_regen"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/max_mana",
@@ -2013,7 +2094,8 @@
         "irons_spellbooks:max_mana"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/nature_magic_resist",
@@ -2025,7 +2107,8 @@
         "irons_spellbooks:nature_magic_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/nature_spell_power",
@@ -2037,7 +2120,8 @@
         "irons_spellbooks:nature_spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/spell_power",
@@ -2049,7 +2133,8 @@
         "irons_spellbooks:spell_power"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/spell_resist",
@@ -2061,7 +2146,8 @@
         "irons_spellbooks:spell_resist"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/summon_damage",
@@ -2073,7 +2159,8 @@
         "irons_spellbooks:summon_damage"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/arcane_resonance",
@@ -2085,7 +2172,8 @@
         "malum:arcane_resonance"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_capacity",
@@ -2097,7 +2185,8 @@
         "malum:charge_capacity"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_duration",
@@ -2109,7 +2198,8 @@
         "malum:charge_duration"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_recovery_rate",
@@ -2121,7 +2211,8 @@
         "malum:charge_recovery_rate"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/geas_limit",
@@ -2133,7 +2224,8 @@
         "malum:geas_limit"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_capacity",
@@ -2145,7 +2237,8 @@
         "malum:malignant_aegis_capacity"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_recovery_gain",
@@ -2157,7 +2250,8 @@
         "malum:malignant_aegis_recovery_gain"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_recovery_rate",
@@ -2169,7 +2263,8 @@
         "malum:malignant_aegis_recovery_rate"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_conversion",
@@ -2181,7 +2276,8 @@
         "malum:malignant_conversion"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/scythe_proficiency",
@@ -2194,7 +2290,8 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "condition": "Only as an independently adapted unarmed spirit-gathering benefit; original scythe gear prohibited."
+      "condition": "Only as an independently adapted unarmed spirit-gathering benefit; original scythe gear prohibited.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_capacity",
@@ -2206,7 +2303,8 @@
         "malum:soul_ward_capacity"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_integrity",
@@ -2218,7 +2316,8 @@
         "malum:soul_ward_integrity"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_recovery_gain",
@@ -2230,7 +2329,8 @@
         "malum:soul_ward_recovery_gain"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_recovery_rate",
@@ -2242,7 +2342,8 @@
         "malum:soul_ward_recovery_rate"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/malum/spirit_spoils",
@@ -2254,7 +2355,8 @@
         "malum:spirit_spoils"
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_armor",
@@ -2266,7 +2368,8 @@
         "minecraft:generic.armor"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_armor_toughness",
@@ -2278,7 +2381,8 @@
         "minecraft:generic.armor_toughness"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_damage",
@@ -2290,7 +2394,8 @@
         "minecraft:generic.attack_damage"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_knockback",
@@ -2302,7 +2407,8 @@
         "minecraft:generic.attack_knockback"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_speed",
@@ -2314,7 +2420,8 @@
         "minecraft:generic.attack_speed"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_burning_time",
@@ -2326,7 +2433,8 @@
         "minecraft:generic.burning_time"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_explosion_knockback_resistance",
@@ -2338,7 +2446,8 @@
         "minecraft:generic.explosion_knockback_resistance"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_fall_damage_multiplier",
@@ -2350,7 +2459,8 @@
         "minecraft:generic.fall_damage_multiplier"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_flying_speed",
@@ -2363,7 +2473,8 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "condition": "Only modifies externally provided flight, if the Draconic Curio honors the attribute; it never grants flight."
+      "condition": "Only modifies externally provided flight, if the Draconic Curio honors the attribute; it never grants flight.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_gravity",
@@ -2376,7 +2487,8 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "condition": "Never permit invalid gravity/negative physics exploits; only effective bounded ranks."
+      "condition": "Never permit invalid gravity/negative physics exploits; only effective bounded ranks.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_jump_strength",
@@ -2388,7 +2500,8 @@
         "minecraft:generic.jump_strength"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_knockback_resistance",
@@ -2400,7 +2513,8 @@
         "minecraft:generic.knockback_resistance"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_luck",
@@ -2412,7 +2526,8 @@
         "minecraft:generic.luck"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_max_absorption",
@@ -2424,7 +2539,8 @@
         "minecraft:generic.max_absorption"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_max_health",
@@ -2436,7 +2552,8 @@
         "minecraft:generic.max_health"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_movement_efficiency",
@@ -2448,7 +2565,8 @@
         "minecraft:generic.movement_efficiency"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_movement_speed",
@@ -2460,7 +2578,8 @@
         "minecraft:generic.movement_speed"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_oxygen_bonus",
@@ -2472,7 +2591,8 @@
         "minecraft:generic.oxygen_bonus"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_safe_fall_distance",
@@ -2484,7 +2604,8 @@
         "minecraft:generic.safe_fall_distance"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_scale",
@@ -2497,19 +2618,22 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "condition": "Clamp dimensions to safe player collision, networking and boss-arena behavior."
+      "condition": "Clamp dimensions to safe player collision, networking and boss-arena behavior.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_step_height",
-      "name": "High Step",
+      "name": "Step Assist",
       "family": "mobility",
-      "rank_model": "bounded",
-      "max_ranks": "runtime_effective_cap",
+      "rank_model": "once",
+      "max_ranks": 1,
       "source_attributes": [
         "minecraft:generic.step_height"
       ],
-      "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "availability": "Monk faction single-unlock, no worn boots required; actual collision behavior and reset need test",
+      "implementation_status": "design_only",
+      "condition": "One-time Monk ability to step a normal block unassisted. Greater step-height numerical scaling is not a repeatable Monk purchase unless separately accepted; avoid duplicate armor affix bonus.",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_water_movement_efficiency",
@@ -2521,7 +2645,8 @@
         "minecraft:generic.water_movement_efficiency"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_block_interaction_range",
@@ -2533,7 +2658,8 @@
         "minecraft:player.block_interaction_range"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_entity_interaction_range",
@@ -2545,7 +2671,8 @@
         "minecraft:player.entity_interaction_range"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_sneaking_speed",
@@ -2557,7 +2684,8 @@
         "minecraft:player.sneaking_speed"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_submerged_mining_speed",
@@ -2569,7 +2697,8 @@
         "minecraft:player.submerged_mining_speed"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_sweeping_damage_ratio",
@@ -2581,7 +2710,8 @@
         "minecraft:player.sweeping_damage_ratio"
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neoforge/swim_speed",
@@ -2594,7 +2724,8 @@
       ],
       "availability": "requires_runtime_player_effect_check",
       "implementation_status": "design_only",
-      "condition": "Found in Apotheosis Aquatic affix; confirm actual player attribute in integrated pack."
+      "condition": "Found in Apotheosis Aquatic affix; confirm actual player attribute in integrated pack.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/blood_shield",
@@ -2606,7 +2737,8 @@
         "neovitae:blood_shield"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/blood_siphon",
@@ -2618,7 +2750,8 @@
         "neovitae:blood_siphon"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_sacrifice",
@@ -2630,7 +2763,8 @@
         "neovitae:bonus_sacrifice"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_self_sacrifice",
@@ -2642,7 +2776,8 @@
         "neovitae:bonus_self_sacrifice"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_spiritus",
@@ -2654,7 +2789,8 @@
         "neovitae:bonus_spiritus"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/player_self_sacrifice_multiplier",
@@ -2666,7 +2802,8 @@
         "neovitae:player.self_sacrifice_multiplier"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/sigil_cost_reduction",
@@ -2678,7 +2815,8 @@
         "neovitae:sigil_cost_reduction"
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:harvest/barehand_tier",
@@ -2689,7 +2827,8 @@
       "source_attributes": [],
       "description": "Permits valid drops at progressively higher real tool tiers; no extra ranks after the highest legitimate pack tier.",
       "notes": "Must respect required tool category, non-vanilla tiers, protected ores and real drop logic.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:harvest/barehand_speed",
@@ -2704,7 +2843,8 @@
       ],
       "description": "Increasing hand-breaking speed, escalating rank costs, no arbitrary rank cap. Never improves harvest tier.",
       "notes": "One upgrade orchestrates source attributes to avoid compounding one purchase.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:harvest/glass_touch",
@@ -2715,7 +2855,8 @@
       "source_attributes": [],
       "description": "Harvest ordinary glass like Silk Touch when using compliant empty hands; original Monk registered extra.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:harvest/silk_touch",
@@ -2726,7 +2867,8 @@
       "source_attributes": [],
       "description": "Wider Silk Touch analogue for valid hand-harvestable blocks, independent from Glass Touch.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:harvest/fortune_hands",
@@ -2737,7 +2879,8 @@
       "source_attributes": [],
       "description": "Fortune-like drop bonus up to the actually achievable equipment enchantment bound, respecting recipes.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:harvest/looting_hands",
@@ -2748,7 +2891,8 @@
       "source_attributes": [],
       "description": "Looting-like bonus from qualifying unarmed or personally credited spells.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:harvest/shear_touch",
@@ -2759,7 +2903,8 @@
       "source_attributes": [],
       "description": "Legal empty-hand shearing/plant gathering without carrying shears.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/spirit_projectile",
@@ -2770,7 +2915,8 @@
       "source_attributes": [],
       "description": "Legal Monk ranged attack for combat and boss crystal interactions; other projectile upgrades apply.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/guarding_palm",
@@ -2781,7 +2927,8 @@
       "source_attributes": [],
       "description": "Innate defensive counter/reflect capability without conventional shield.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/boss_shield_contact",
@@ -2792,7 +2939,8 @@
       "source_attributes": [],
       "description": "Ensure a legal ranged/unarmed Monk attack can interact with Draconic Guardian shields and crystals by normal boss rules.",
       "notes": "Compatibility fix, not a bypass or bonus damage; only expose as skill if normal spells fail.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/withering_stare",
@@ -2803,7 +2951,8 @@
       "source_attributes": [],
       "description": "Sustained gaze damages/Withers eligible targets; preserve original Monk's distinctive stare.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/arrow_catch",
@@ -2814,7 +2963,8 @@
       "source_attributes": [],
       "description": "Intercept and optionally recover arrows while unarmed; must define projectile eligibility.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:martial/creeper_kiss",
@@ -2825,7 +2975,8 @@
       "source_attributes": [],
       "description": "Pacify or harmlessly greet a creeper while empty-handed.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:contemplation/animal_friendship",
@@ -2836,7 +2987,8 @@
       "source_attributes": [],
       "description": "Tame/friendly interactions with animals while empty-handed; never trivialize rare boss mobs.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:contemplation/hunger_discipline",
@@ -2847,7 +2999,8 @@
       "source_attributes": [],
       "description": "Reduce food exhaustion while keeping consumption and unique-food discovery meaningful.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:contemplation/cleansing",
@@ -2858,7 +3011,8 @@
       "source_attributes": [],
       "description": "Active bounded cooldown cleanse of harmful potion effects; not global permanent immunity.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:contemplation/fire_resilience",
@@ -2869,7 +3023,8 @@
       "source_attributes": [],
       "description": "Passive mitigation of fire damage independent from native burning duration.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:contemplation/lava_survival",
@@ -2880,7 +3035,8 @@
       "source_attributes": [],
       "description": "Special brief protection when in lava; not unconditional hazard immunity.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:contemplation/blast_resilience",
@@ -2891,7 +3047,8 @@
       "source_attributes": [],
       "description": "Incoming explosion damage mitigation; different from blast knockback resistance.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mobility/water_walk",
@@ -2902,7 +3059,8 @@
       "source_attributes": [],
       "description": "Walk on water surface without boots or permanent potion.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:mobility/breath_meditation",
@@ -2913,7 +3071,8 @@
       "source_attributes": [],
       "description": "Two meaningful stages: slower air depletion then full underwater breathing.",
       "notes": "max_ranks fixed 2; staged method differs from harvest tier.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mobility/blink",
@@ -2924,7 +3083,8 @@
       "source_attributes": [],
       "description": "Short-distance safe teleportation with reliable collision, cooldown, line of sight.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:mobility/momentum_glide",
@@ -2937,7 +3097,8 @@
       ],
       "description": "Post-Ender Dragon innate non-hovering glide acceleration; does NOT grant Creative Flight.",
       "notes": "Progression condition already owner-locked: Ender Dragon. Do not duplicate Draconic Curio ability.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_and_effect"
     },
     {
       "id": "tmm_monk:mastery/monastic_exp_gain",
@@ -2948,7 +3109,8 @@
       "source_attributes": [],
       "description": "Improves earned Monk Mastery XP with escalating costs and anti-exploit checks; distinct from vanilla XP.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mastery/faction_skill_point_bonus",
@@ -2959,7 +3121,8 @@
       "source_attributes": [],
       "description": "Additional skill points per completed Monk faction rank, within supported Vampirism accounting; no duplication exploits.",
       "notes": "",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mahou/maximum_capacity",
@@ -2971,7 +3134,8 @@
       "description": "Increase the player's personal maximum Mahou, subject to installed Mahou Tsukai cap; pack-wide max configuration is not a Monk-only privilege.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mahou/regeneration",
@@ -2983,7 +3147,8 @@
       "description": "Increase legal personal Mahou recovery where pinned Mahou provides an explicit controllable hook.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:mahou/spell_efficiency",
@@ -2995,7 +3160,8 @@
       "description": "Reduce Mahou cost where the pinned implementation actually provides a spend-side hook; never produce negative or zero resource cost by accident.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:primal/attunement",
@@ -3007,7 +3173,8 @@
       "description": "For each genuine registered Primal Magick school, improve attunement through its own data system; enumerate schools from pinned registry, not guesses.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:primal/spell_proficiency",
@@ -3019,7 +3186,8 @@
       "description": "Increase valid Primal Magick spell capability through verified player attachment/API; must not change attunement by accident.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:occultism/familiar_bond",
@@ -3031,7 +3199,8 @@
       "description": "Improve owned familiars only where Occultism supports meaningful per-player strength/benefits.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:occultism/summoner_mastery",
@@ -3043,7 +3212,8 @@
       "description": "Improve controllable spirit summon effectiveness without bypassing summoning rituals or item costs.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:neovitae/ritual_mastery",
@@ -3055,7 +3225,8 @@
       "description": "Improve legitimate ritual/altar efficiency only if player-linked and mechanically meaningful; not an arbitrary altar EV cheat.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:astral/attunement",
@@ -3067,7 +3238,8 @@
       "description": "Improve Astral Sorcery's supported character attunement mechanism without breaking celestial ritual gates.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     },
     {
       "id": "tmm_monk:roots/terra_mastery",
@@ -3079,7 +3251,8 @@
       "description": "Improve legal Terra capacity/regeneration or staff potency using verified Roots Classic player/staff hooks; preserve staff imprint rules.",
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
-      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost."
+      "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
+      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
     }
   ],
   "original_crosswalk": [
@@ -3295,7 +3468,15 @@
     "No wearable armor or conventional weapon is a prerequisite.",
     "All numerical skills are conditional on actual player-attached attribute and meaningful effect test. Non-attached/mob-only candidates are deliberately excluded.",
     "The backend and progression placement are intentionally undecided.",
-    "Non-attribute magic resource/attunement candidates are included as conditional proposals, not fake native attributes. Each must survive pinned-mod API review before user-facing purchase."
+    "Non-attribute magic resource/attunement candidates are included as conditional proposals, not fake native attributes. Each must survive pinned-mod API review before user-facing purchase.",
+    "Step Assist is now one-time in the Monk faction tree (distinct from a separately proposed extra-high-step numeric trait, which is not in this locked candidate list).",
+    "Tentative two-layer ownership trial: single ranks are faction mechanics; non-single ranks are faction permission plus unified Pufferfish investment; no execution until PoC validates category/skill gating and repeatability."
   ],
-  "total_skill_records_excluding_apotheosis": 172
+  "total_skill_records_excluding_apotheosis": 172,
+  "ownership_proposal": {
+    "status": "tentative_designed_not_implemented",
+    "single": "faction_tree_grants_effect",
+    "non_single": "faction_tree_grants_permission_and_unified_pufferfish_progression_owns_investment",
+    "backend_repeatability": "requires_bridge_or_explicit_multiple_one_time_nodes; native Pufferfish nodes are boolean IDs"
+  }
 }
