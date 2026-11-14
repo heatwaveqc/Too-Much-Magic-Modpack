@@ -104,7 +104,7 @@ These nine are recorded in the manifest's `excluded` list, with the reason that 
 
 ## G. Deferred / revisit later
 
-- **Dragon Survival** — interesting playable-dragon system; user reports unusual food-compatibility behavior. Defer until food compatibility is understood. This is **not a hard exclusion**.
+- **Dragon Survival** — interesting playable-dragon system, **deferred, not rejected** because of unusual food compatibility. Verified published NeoForge 1.21.1 release line (CurseForge lists v2.0.74 dated 2026-11-10), and its 1.21.1 build permits disabling dragon-specific food handling (`disable dragon food handling` option added in 2.0.36). Earlier 1.21.1 changelogs include AppleSkin food-bar handling fixes. Its separate Dragon Survival Compatibility addon is for older MC versions, not required/available for 1.21.1; authors say future compat lives in the base mod. Audit custom diet enabled vs disabled, AppleSkin, modded edible items/placeable food, dragon form/equipment/flight and gameplay/client rendering before any approval. Sources: https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/all and https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/7036245 and https://www.curseforge.com/minecraft/mc-mods/dragon-survival-compatibility .
 
 ## Reconciliation with the current repository
 
