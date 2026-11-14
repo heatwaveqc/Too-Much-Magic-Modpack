@@ -204,8 +204,11 @@ def modify():
     VAL.write_text(val,encoding="utf-8")
     result=subprocess.run([sys.executable,str(GEN)],cwd=ROOT,check=True,text=True,capture_output=True)
     print(result.stdout)
-    result=subprocess.run([sys.executable,str(VAL)],cwd=ROOT,check=True,text=True,capture_output=True)
+    result=subprocess.run([sys.executable,str(VAL)],cwd=ROOT,check=False,text=True,capture_output=True)
     print(result.stdout)
+    print(result.stderr, file=sys.stderr)
+    if result.returncode:
+        raise RuntimeError("Quest validator failed, see diagnostics above")
     print("PASS: starter choice, 8 XP bottle replacements and 4 detectable onboarding goals")
 
 if __name__=="__main__":
