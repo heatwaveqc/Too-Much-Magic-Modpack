@@ -11,8 +11,8 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | State | Count |
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **16** |
-| Compatible with work | **9** |
-| Needs investigation | **9** |
+| Compatible with work | **10** |
+| Needs investigation | **8** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
 | **Total** | **42** |
@@ -38,11 +38,12 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Psi** (`psi`) | Psi 110 defines synchronized player attributes `psi:total_psi` (default 5000) and `psi:regen` (default 25/t), a complete NeoForge `PsiEvents` KubeJS API including `preSpellCast`, `regenPsi`, and `cadStat`, and datapack-defined CAD stats and piece unlocks. | Bind Pufferfish capacity/regeneration directly; test event-based cost reductions and separate item-based CAD crafting perks. CAD stats are item properties, and compile-time limits are checked before pre-cast cost modifiers. Review PsiTweaks penalty defaults and resource interoperability. |
 | **Psi: Tweaks and Additions** (`psi-tweaks`) | Pinned 0.10.10-hotfix source registers the player attribute `psitweaks:spell_damage_factor` and applies it in multiple damaging tricks; addon equipment also buffs Psi max/regeneration and spell damage, confirming parent integration. | Apply Pufferfish damage rewards to that attribute for supported addon spells, verify coverage/double stacking, and audit Ideaspace Storage, FE Supply, Mass Block Break, Time Accelerate and configurable Psi penalty overrides before enabling skill boosts. |
 
-## Compatible with work — concrete integration path identified (9)
+## Compatible with work — concrete integration path identified (10)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
 | **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | **Shared Ars/Iron's mana is desired**. Test the built-in `iss_primary` default (Iron's authoritative) against pinned 3.3.5; verify client display, casting costs and Pufferfish spell-power stacking. Psi is explicitly excluded from this shared mana. |
+| **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Pinned 4.2.7 source exposes structure-based altar power (not player mana), datapack-defined `RiteType` with initial and tick costs, invoking player UUID in `GoldChalkBlockEntity`/`RiteParams`, player-bound poppets, and cat familiar curse enhancement. No registered native player caster-power attribute or confirmed Pufferfish hook. | **Compatible with work:** narrow player UUID-attributed ritual-power/craftsmanship bridge, bounded poppet item quality and pet cat bonuses; test conflicts of pre-death protection with totems/transformation mods. Do not automatically increase idle shared-altars or replace Kettle with obsolete Cauldron. [Audit](ENCHANTED-WITCHCRAFT-4.2.7-DEEP-DIVE-2026-11-13.md). |
 | **Extra Botany Revived** (`extra-botany-revived`) | Botania addon with custom DamageHandler, damage types, gear/Curios attributes, and custom-owned entities that do not implement OwnableEntity. | Review magic-damage tags and direct-health attacks; test universal attributes and item enhancements. |
 | **Goety Cataclysm** (`goety-cataclysm`) | Cataclysm spells/servants architecturally extend Goety Spell and Summoned in public 1.20.1 source, but the pinned 1.21.1 code is not matched. | Inspect exact 1.21.1 jar/source and test school potency, soul discount and owned-servant damage. |
 | **HexCast NEOFORGED** (`hexcast-neoforged`) | Exact `0.11.1-19+neoforge.1.21.1` public port sources provide `CastingEnvironment.addCreateEventListener`, `ExtractMedia` / `IsVecInRange` components and user/circle environments. Media is item/circle based, with no native personal media capacity/regen attribute discovered. | An **opt-in 10%/20% media-efficiency NeoForge bridge pilot** now passes 65 Java assertions, builds against exact pinned HexCast + NeoForge libraries and **boots in the full B6 dedicated server**; player casting and real media spending remain untested. It is **not** installed in normal packwiz. Keep Hex media separate from Ars/Iron's shared mana and Psi; test native charging, overcast, packaged casts and circles. No native KubeJS skill event verified. Test circles, packaged casts, server config denylist and lore/great-spell gates. [Audit](HEXCAST-SKILLS-DEEP-DIVE-2026-11-13.md). |
@@ -52,11 +53,10 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Scriptor Magicae** (`scriptor-magicae`) | Source-backed cooldown in `EntityCastCooldownExtension` (private data, no Minecraft attribute), explicit book/cast cost and lectern behavior; `Inflame` smelts furnace recipes, `Break` mines existing ore, `Bring` transports drops, `Place` generates magic blocks (not ore). Lectern caster inventory has a likely null getter bug. | **No Mana Mode.** Personal cooldown/crafted-item-quality bridge candidates; **keep lecterns powerful** pending actual 2.0.14 gameplay tests of ores, smelting and collection. [Audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md). |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (9)
+## Needs investigation — insufficient source evidence yet (8)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Rites, poppets and magical progression have not been examined for player-level stat hooks. | Determine whether there are personal magic skills or just item/ritual effects. |
 | **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Artifact-driven personal powers and possible progression; no stat API audit yet. | Determine whether relevant benefits are player attributes or purely equipment-based. |
 | **Feywild** (`feywild`) | Fey summon/quest system; pet ownership interface unexamined. | Check summon entities, owner tracking, pact mechanics and generic pet buffs. |
 | **JAWR: Forbidden Magic** (`forbidden-magic`) | JAWR: Forbidden Magic ten-level lich system has been researched conceptually, not for exact player attribute/API hooks. | Investigate lich attributes, phylactery, necromancy summoning and vampire hybrid mechanics. |
@@ -89,7 +89,7 @@ None demonstrated.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
 - **Addon follow-up tests:** Ars 'n Spells separate-pool mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
 - **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks. **Psi does not join Ars/Iron's shared mana**; evaluate provisional penalty/storage/automation tuning and Psi-generated FE as a candidate alternative to BiggerReactors. See [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
-- **Broader unexplored systems:** JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Enigmatic Legacy+.
+- **Broader unexplored systems:** JAWR, Vampirism and Werewolves, Totemic, Pastel, Feywild, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 - **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
