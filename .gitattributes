@@ -1,0 +1,10 @@
+# Hash-pinned packwiz files must be LF-normalized across Windows/Linux
+* text=auto
+*.toml text eol=lf
+*.pw.toml text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
