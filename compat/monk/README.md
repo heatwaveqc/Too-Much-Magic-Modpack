@@ -1,3 +1,5 @@
+> **PLAYABLE SLICE TEST RESULT — 2026-11-14:** The user successfully completed First Sunset, **joined the Monk faction**, saw Vampirism's configuration/skill-tree controls, and **received working Step Assist**. This validates the happy path in-game, **not** all initiation denial, equipment, transformation, persistence or multiplayer cases. Full report: [first playable slice](../../docs/MONK-FIRST-PLAYABLE-SLICE.md). The original-style bottom-right radial deed progress HUD is required for full release; current text feedback is acceptable during testing. See [HUD implementation contract](../../docs/MONK-HUD-PROGRESS-DESIGN.md). Historical "scaffold only / no initiation" statements below are superseded **only for the new playable slice**.
+
 > **PRIMARY TYZ TREE OWNERSHIP (2026-11-14):** No second Monk Tyz engine.
 > The primary global MXP/Tyz branch owns all shared skills and XP; this Monk
 > module owns only its Vampirism faction state, permissions and original/unique
