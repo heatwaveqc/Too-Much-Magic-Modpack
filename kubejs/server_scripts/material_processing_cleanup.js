@@ -71,6 +71,15 @@ ServerEvents.recipes(event => {
     experience: 2.0, cookingtime: 100
   }).id('tmm:netherite_scrap_dust_blasting')
 
+  // Both Enchanted and Pastel smelt *vanilla calcite* in an ordinary
+  // furnace, but to different products: Enchanted quicklime vs Pastel's
+  // decorative polished calcite. Keep Enchanted's quicklime smelting,
+  // Pastel's existing blast-furnace polishing, and add a natural stonecutter
+  // route for polished calcite. Polymorph is no longer required.
+  event.remove({ id: 'pastel:smelting/calcite_to_polished_calcite' })
+  event.stonecutting('pastel:polished_calcite', 'minecraft:calcite')
+    .id('tmm:stonecutting/polished_calcite')
+
   // Botania's white iridescent log already belongs to the vanilla
   // #minecraft:logs_that_burn -> charcoal smelting route, same 0.15 XP.
   event.remove({ id: 'botania:botania_extras/smelting/charcoal_white_iridescent' })
