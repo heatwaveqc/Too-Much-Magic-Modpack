@@ -1,0 +1,38 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "intro"
+	group: ""
+	icon: { id: "minecraft:oak_log" }
+	id: "544D4D1000000001"
+	images: [ ]
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D4D1100000001"
+			title: "Punch a Tree"
+			subtitle: "Get your first log"
+			description: [
+				"Pick up any log or stem. Your first one earns you an Ars Elemental Trinkets Pouch."
+				""
+				"The pouch has 27 slots for ordinary items. It is granted automatically to each player when they first acquire a log, even if the FTB quest book is closed."
+				""
+				"Other bags and storage upgrades are crafted normally. Bags must not be stored inside other portable bags; full cross-mod enforcement is undergoing integration testing."
+			]
+			icon: { id: "ars_elemental:curio_bag" }
+			rewards: [ ]
+			tasks: [
+				{
+					id: "544D4D1200000001"
+					type: "advancement"
+					advancement: "tmm:first_log"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+	]
+	subtitle: "Your first steps into a world of magic"
+	title: "Getting Started"
+}
