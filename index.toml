@@ -334,6 +334,11 @@ hash = "9bdb65981e4b9a93c82021d509ae02a3dcd18402ba9f579571fa44974b27d118"
 metafile = true
 
 [[files]]
+file = "mods/inventory-tweaks-refoxed.pw.toml"
+hash = "445b323ba9a34faa2ad10207f41aac9da7eeac8e13cd66c771ba026e8bccaaf1"
+metafile = true
+
+[[files]]
 file = "mods/irons-lib.pw.toml"
 hash = "8941da7290825037921249274369a39440567f667df2eead412cf54423168f7e"
 metafile = true

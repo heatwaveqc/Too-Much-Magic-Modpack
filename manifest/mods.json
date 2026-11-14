@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B7 proposed QoL update: owner-requested Inventory Tweaks ReFoxed added to planned roster; rest of ATM10 QoL survey is recommended-only and requires owner approval.",
+  "note": "B7: 126 metadata pins including Inventory Tweaks ReFoxed; B6 125-mod local client-good baseline retained in prior branch; no other QoL candidates yet approved.",
   "mods": [
     {
       "id": "apotheosis",
@@ -786,7 +786,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety — The Dark Arts",
+      "name": "Goety \u2014 The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -889,15 +889,16 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks — ReFoxed",
+      "name": "Inventory Tweaks \u2014 ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks-refoxed/files/all",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner-requested 2026-11-13. Exact NeoForge MC 1.21.1 stable build invtweaks-1.21.1-1.3.2.jar; CurseForge project 976858. Adds middle-click sorting to player/container inventories; auto-refill and click shortcuts. Client-only; no server boot can validate GUI. Preserve existing Mouse Tweaks; test for drag/key overlap."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Pinned in B9: stable NeoForge 1.21.1 invtweaks-1.21.1-1.3.2.jar; CurseForge project 976858, file 6407807. Exact sha256/sha1 pinned by packwiz. Client-only; ATM10 config enables all sorting and auto-refill. User must verify middle-click chest sorting in Prism; Mouse Tweaks retained.",
+      "packwiz_slug": "inventory-tweaks-refoxed"
     },
     {
       "id": "irons-lib",
@@ -1181,7 +1182,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 — Crops",
+      "name": "Pam's HarvestCraft 2 \u2014 Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1194,7 +1195,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 — Food Core",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1207,7 +1208,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1220,7 +1221,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 — Trees",
+      "name": "Pam's HarvestCraft 2 \u2014 Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -1640,7 +1641,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism — Become a Vampire!",
+      "name": "Vampirism \u2014 Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -1653,7 +1654,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves — Become a Beast!",
+      "name": "Werewolves \u2014 Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -1752,7 +1753,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
@@ -1986,7 +1987,7 @@
       "members": [
         "inventory-tweaks-refoxed"
       ],
-      "status": "approved_unpinned"
+      "status": "server_regression_pass_client_pending"
     }
   ]
 }
