@@ -65,7 +65,9 @@
     "eidolon_repraised:arcane_gold_.*",
     "malum:.*(derealized|harmonized|malignant).*",
     "malum:cthonic_gold_ore",
-    "pastel:dd_.*_ore"
+    "pastel:dd_.*_ore",
+    "pastel:blackslag_.*_ore",
+    "deeperdarker:(gloomslate|sculk_stone)_.*_ore"
   ],
   "ignored_recipe_types": [
     "cucumber:shaped_tag"
