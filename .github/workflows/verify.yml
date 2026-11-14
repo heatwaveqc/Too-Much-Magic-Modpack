@@ -26,6 +26,7 @@ jobs:
           "$(go env GOPATH)/bin/packwiz" list
 
       - name: Resolve first Modrinth infrastructure pins (no repository writes)
+        if: github.ref_name == 'build/initial-neoforge-packwiz'
         run: |
           PACKWIZ="$(go env GOPATH)/bin/packwiz"
           "$PACKWIZ" --yes modrinth add kubejs
@@ -40,6 +41,7 @@ jobs:
           PY
 
   loader-server:
+    if: github.ref_name == 'build/initial-neoforge-packwiz'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -62,4 +64,33 @@ jobs:
         with:
           name: neoforge-loader-smoke-log
           path: ${{ runner.temp }}/tmm-loader-smoke/server.log
+          if-no-files-found: warn
+
+  modded-server:
+    if: github.ref_name == 'build/b1-kubejs-infrastructure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and launch hash-pinned B1 mods on dedicated NeoForge server
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '180'
+          WORK_DIR: ${{ runner.temp }}/tmm-b1-smoke
+        run: bash scripts/smoke_server.sh
+      - name: Retain modded-server logs on success and failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-b1-modded-server-logs
+          path: |
+            ${{ runner.temp }}/tmm-b1-smoke/server.log
+            ${{ runner.temp }}/tmm-b1-smoke/logs/latest.log
           if-no-files-found: warn
