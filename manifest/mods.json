@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -1578,6 +1578,18 @@
       "packwiz_slug": "puffish-skills"
     },
     {
+      "id": "puzzles-lib",
+      "name": "Puzzles Lib",
+      "category": "dependency",
+      "desired": true,
+      "version": "21.1.60 NeoForge 1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/puzzles-lib/version/lh44g7RC",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required by Leaves Be Gone 1.21.1 NeoForge, exact compatible release 21.1.60, no other mods."
+    },
+    {
       "id": "quest-giver",
       "name": "Quest Giver",
       "category": "dependency",
@@ -2272,14 +2284,15 @@
     },
     {
       "id": "B12",
-      "name": "Vampirism-test QoL: TrashSlot, TreeChop, fast leaves, Relics + Reliquified Artifacts + OctoLib",
+      "name": "Vampirism-test QoL: TrashSlot, TreeChop, fast leaves, Relics + Reliquified Artifacts + OctoLib + Puzzles Lib",
       "members": [
         "trashslot",
         "treechop",
         "leaves-be-gone",
         "relics",
         "reliquified-artifacts",
-        "octolib"
+        "octolib",
+        "puzzles-lib"
       ],
       "status": "desired_unpinned_smoke_pending"
     }
