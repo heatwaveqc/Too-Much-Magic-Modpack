@@ -36,6 +36,15 @@ def main():
             matches.append((path,data))
     if len(matches)!=1:raise RuntimeError("ReFoxed project ID absent or ambiguous after resolve")
     path,data=matches[0]
+    # CurseForge describes this as usable on both sides, but the sorter is
+    # actually a client UI feature; never load it on the dedicated server.
+    # packwiz does not expose a side override on curseforge add.
+    if data.get("side")=="both":
+        contents=path.read_text()
+        if contents.count('side = "both"')!=1:
+            raise RuntimeError("Cannot safely override side metadata")
+        path.write_text(contents.replace('side = "both"','side = "client"',1))
+        data=tomllib.loads(path.read_text())
     if data.get("filename")!=EXACT:
         raise RuntimeError("Incompatible ReFoxed JAR selected: "+str(data.get("filename")))
     if data.get("side")!="client":
