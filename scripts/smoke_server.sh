@@ -35,6 +35,10 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
       echo "FTB Quests chapter files copied: $(find "$WORK_DIR/config/ftbquests/quests/chapters" -maxdepth 1 -name '*.snbt' -type f | wc -l)"
     fi
   fi
+  if [[ -d "$ROOT/defaultconfigs" ]]; then
+    mkdir -p "$WORK_DIR/defaultconfigs"
+    cp -a "$ROOT/defaultconfigs/." "$WORK_DIR/defaultconfigs/"
+  fi
   echo "Starting hash-pinned MODDED dedicated server"
 else
   echo "Starting loader-only dedicated server (no mods installed)"
