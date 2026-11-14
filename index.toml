@@ -988,3 +988,11 @@ hash = "ea68a96270e4bc520725065ccc3ddb07d1b70882eb4ddf1dcc3e47a480e66b56"
 [[files]]
 file = "config/neovitae/materials.json"
 hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
+
+[[files]]
+file = "kubejs/server_scripts/silver_equipment_unification.js"
+hash = "2d74384e0310b8159347a2022d51bed9b2342bee468a7e2640a232b3ff2707d2"
+
+[[files]]
+file = "kubejs/startup_scripts/silver_equipment_stats.js"
+hash = "9d10bcf2c16123ec375a96e78fcdd96f4a92a87c7a2d2cd08bb0ae52cbed09d8"
