@@ -26,11 +26,11 @@ Sources:
 - https://www.curseforge.com/minecraft/mc-mods/aquaculture/files/all?gameVersionTypeId=6&page=1&version=1.21.1
 - https://modrinth.com/mod/harvest-with-ease/version/cjDrwP2Q
 
-### Cross-mod food integration candidates (NOT approved)
+### Cross-mod food integrations (one approved, others under consideration)
 
 - **[Aquaculture Delight](https://modrinth.com/mod/aquaculture-delight/version/1.2.0)** (NeoForge 1.21.1): additional fish dishes, cooking-pot and cutting-board integration, knife reciprocity. Verify rights and recipe balance; do not silently install.
 - **[Pantrywork](https://modrinth.com/mod/pantrywork)** (NeoForge 1.21.1): server-side common food tag bridge among all four Pam's modules, Farmer's Delight, Aquaculture 2 and many other food systems; no items. Natural recipe-unification candidate. Do not silently install.
-- **[Vampire's Delight](https://modrinth.com/mod/vampires-delight)** (NeoForge 1.21.1 **beta**): dishes for human and Vampirism vampire food needs, requires Vampirism 1.10+ and Farmer's Delight. Important for species-and-food goals; not automatically approved or exempted from the current beta policy.
+- **[Vampire's Delight](https://modrinth.com/mod/vampires-delight)** — **explicitly approved for inclusion** by user (2026-11-13). NeoForge 1.21.1 **beta** 0.1.12b, requires Vampirism 1.10+ and Farmer's Delight; file pin/boot pending. Approval is **this mod-specific beta exception only** and does not waive general beta gate. Test blood meals, food effects by faction, and any conflict with JAWR independent vampirism.
 - **Vampirism Integrations** (NeoForge 1.21.1): potentially relevant compatibility, but specific Pam's/Farmer's functionality should be verified, not assumed.
 
 ### Required food acceptance tests
@@ -148,7 +148,7 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 4. Should Vampirism **hunter** remain human-only at first, or can dragons/werewolves be hunters?
 5. For vampires and liches, do we deliberately support *prepared food enjoyment* despite replacing hunger with blood/soul-energy? If yes, define a specific mechanism without destroying each mod's survival identity.
 6. Is the dragon diet part of what makes dragon play interesting? Default on for pure dragons, but allow switching it off during initial compatibility tests.
-7. Add Aquaculture Delight, Pantrywork, and/or Vampire's Delight as approved cross-mod food integration projects after reviewing the descriptions and beta policy?
+7. Consider Aquaculture Delight and Pantrywork; **Vampire's Delight is approved** (beta 0.1.12b exception). Examine whether any other cross-mod food integration is necessary.
 
 **Implementation blocker:** A valid modpack cannot assume native transformation exclusivity is universal. Existing [Dragons and Vampires](https://modrinth.com/mod/dragons-and-vampires) covers Dragon Survival versus Vampirism and Werewolves, but not JAWR and Goety; broader prevention requires a separate dedicated bridge and bidirectional gameplay tests. See [TRANSFORMATION-COMPATIBILITY.md](TRANSFORMATION-COMPATIBILITY.md).
 
