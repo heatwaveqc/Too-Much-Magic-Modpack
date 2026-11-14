@@ -58,6 +58,8 @@
   "ignored_tags": [
     "c:gems/emerald",
     "c:gems/quartz",
+    "c:ores/copper",
+    "c:ores/quartz",
     "c:storage_blocks/emerald",
     "c:storage_blocks/quartz"
   ],
