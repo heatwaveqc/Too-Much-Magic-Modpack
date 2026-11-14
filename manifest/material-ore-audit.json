@@ -11,7 +11,7 @@
         "deepslate_ore": "occultism:silver_ore_deepslate",
         "raw": "occultism:raw_silver",
         "ingot": "occultism:silver_ingot",
-        "dust": "occultism:silver_dust"
+        "dust": "neovitae:silver_dust"
       },
       "providers": [
         {
@@ -63,7 +63,8 @@
         "ingot_tag": "c:ingots/silver",
         "smelt_to": "occultism:silver_ingot",
         "generative": false
-      }
+      },
+      "dust_exception": "Mahou ritual catalysts use exact Mahou items; ignored by Almost Unified even when tagged c:dusts."
     },
     "lead": {
       "preferred": "embers",
@@ -71,7 +72,8 @@
         "ore": "embers:lead_ore",
         "deepslate_ore": "embers:deepslate_lead_ore",
         "raw": "embers:raw_lead",
-        "ingot": "embers:lead_ingot"
+        "ingot": "embers:lead_ingot",
+        "dust": "neovitae:lead_dust"
       },
       "providers": [
         {
@@ -107,10 +109,11 @@
     },
     "copper": {
       "preferred": "minecraft",
-      "dust_preferred": "occultism",
+      "dust_preferred": "neovitae",
       "dusts_verified": [
         "occultism:copper_dust",
-        "primalmagick:copper_grit"
+        "primalmagick:copper_grit",
+        "neovitae:copper_dust"
       ],
       "evidence": [
         "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/copper.json",
@@ -119,29 +122,33 @@
     },
     "iron": {
       "preferred": "minecraft",
-      "dust_preferred": "mahoutsukai",
+      "dust_preferred": "neovitae",
       "dusts_verified": [
         "mahoutsukai:powdered_iron",
-        "primalmagick:iron_grit"
+        "primalmagick:iron_grit",
+        "neovitae:iron_dust"
       ],
       "evidence": [
         "https://wiki.9minecraft.net/java/mod/mahou-tsukai/powdered-iron/",
         "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/iron.json"
-      ]
+      ],
+      "dust_exception": "mahoutsukai:powdered_iron retained as spell catalyst, not unified output"
     },
     "gold": {
       "preferred": "minecraft",
-      "dust_preferred": "mahoutsukai",
+      "dust_preferred": "neovitae",
       "dusts_verified": [
         "mahoutsukai:powdered_gold",
         "occultism:gold_dust",
-        "primalmagick:gold_grit"
+        "primalmagick:gold_grit",
+        "neovitae:gold_dust"
       ],
       "evidence": [
         "https://wiki.9minecraft.net/java/mod/mahou-tsukai/mortar-and-pestle/",
         "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/gold.json",
         "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/gold.json"
-      ]
+      ],
+      "dust_exception": "mahoutsukai:powdered_gold retained as spell catalyst, not unified output"
     },
     "sulfur": {
       "dust_preferred": "neovitae",
@@ -156,7 +163,7 @@
     },
     "quartz": {
       "gem_preferred": "minecraft",
-      "powder_preferred": "mahoutsukai",
+      "powder_preferred": "neovitae",
       "other_sources": [
         "primalmagick:quartz_ore",
         "malum:mundane_quartz"
@@ -165,7 +172,8 @@
       "evidence": [
         "https://github.com/daedalus4096/PrimalMagick/tree/main/neoforge/src/generated/resources/data/c/tags/item/ores",
         "https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/generated/resources/data/c/tags/item/gems/quartz.json"
-      ]
+      ],
+      "dust_exception": "mahoutsukai:powdered_quartz retained as spell catalyst, not unified output"
     }
   },
   "unique_not_unified": [
@@ -225,7 +233,8 @@
     "Validate special ore world-generation paths and Orechid/meteor systems; AU only changes standard ore features.",
     "Validate recipe remapping, KubeJS Mahou tool durability, legacy tags and effective server recipes.",
     "Run latest 14-material Neo Vitae config on dedicated server and verify two newly generated dust tags, no added custom-generation or client failures.",
-    "Verify ignored Deeper & Darker/Pastel dimension-specific ores survive ordinary ore suppression in actual new chunks."
+    "Verify ignored Deeper & Darker/Pastel dimension-specific ores survive ordinary ore suppression in actual new chunks.",
+    "Verify AU chooses all generated Neo Vitae conventional dusts; Mahou powdered catalysts still make spell circles and Catalyst Exchange work."
   ],
   "runtime_evidence": {
     "source": "GitHub Actions dedicated server run 43614734834 artifact 14121900565",
