@@ -963,3 +963,24 @@ metafile = true
 file = "mods/werewolves-become-a-beast.pw.toml"
 hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
+
+[[files]]
+file = "mods/almostunified.pw.toml"
+hash = "3805fe2877cffdae5e7bf74d85069a2535daa39a0f3ed766755be49294a07680"
+metafile = true
+
+[[files]]
+file = "config/almostunified/startup.json"
+hash = "2c732058a0f232ab661c21c6a460ed44149a2e8136a0d31c73eb0c855269baa0"
+
+[[files]]
+file = "config/almostunified/placeholders.json"
+hash = "c4113015af4d46f2176f1dc2da04ae59a860bcbec25230d8218e5ff3180f1bb1"
+
+[[files]]
+file = "config/almostunified/unification/materials.json"
+hash = "b567b71b5773cbffa89829d374b2b254d14b17caf25cee8edb622bb85e61caea"
+
+[[files]]
+file = "kubejs/server_scripts/material_unification.js"
+hash = "ea68a96270e4bc520725065ccc3ddb07d1b70882eb4ddf1dcc3e47a480e66b56"
