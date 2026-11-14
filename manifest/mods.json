@@ -498,12 +498,13 @@
       "name": "Just Enough Items",
       "category": "qol",
       "desired": true,
-      "version": "jei-1.21.1-neoforge-19.70.0.469",
+      "version": "jei-1.21.1-neoforge-19.64.0.455",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/u6dRKJwZ",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "jei"
+      "packwiz_slug": "jei",
+      "note": "Pinned stable upstream release instead of the B2 preexisting beta, to honor no-beta gameplay policy."
     },
     {
       "id": "just-zoom",

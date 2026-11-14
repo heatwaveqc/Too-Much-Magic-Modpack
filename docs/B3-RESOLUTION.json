@@ -534,10 +534,10 @@
       "id": "jei",
       "slug": "jei",
       "name": "Just Enough Items (JEI)",
-      "filename": "jei-1.21.1-neoforge-19.70.0.469.jar",
+      "filename": "jei-1.21.1-neoforge-19.64.0.455.jar",
       "side": "both",
       "modrinth_id": "u6dRKJwZ",
-      "version_id": "1vC6z8wV",
+      "version_id": "iv3KiVkE",
       "cf_project_id": null
     },
     {
@@ -840,5 +840,12 @@
       "version_id": null,
       "cf_project_id": 287342
     }
-  ]
+  ],
+  "jei_stable_replacement": {
+    "old_filename": "jei-1.21.1-neoforge-19.70.0.469.jar",
+    "new_filename": "jei-1.21.1-neoforge-19.64.0.455.jar",
+    "version_id": "iv3KiVkE",
+    "version_type": "release",
+    "sha512": "fdd02e57ce4dcf20b69860a5ace1b97d9a771486241179cf9edfe71e30c69bb4003b046d0cce8d8c4913b9689f1d8b04cf0542b0b04a6cf0b3b0465f3bb11702"
+  }
 }

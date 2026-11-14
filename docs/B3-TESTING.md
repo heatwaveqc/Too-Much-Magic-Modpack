@@ -17,3 +17,9 @@ NeoForge reached the Done readiness message and shut down cleanly.
 
 ## Explicit release-type exception
 PlayerAnimator is beta-tagged on NeoForge 1.21.1. This is an unavoidable runtime dependency of Iron's Spells 3.16.3; see B3-DEPENDENCY-EXCEPTIONS.json.
+
+## Stable JEI regression
+- Run: https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43550199289
+- JEI moved from beta jei-1.21.1-neoforge-19.70.0.469.jar to release jei-1.21.1-neoforge-19.64.0.455.jar.
+- Full NeoForge dedicated server result: PASS.
+- Client GUI and new-world gameplay: NOT TESTED.
