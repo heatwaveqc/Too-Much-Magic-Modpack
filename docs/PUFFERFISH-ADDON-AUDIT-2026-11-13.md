@@ -21,7 +21,7 @@ Scope: Ten addons whose parent mods have already been audited. Psi: Tweaks and A
 
 This addon does much more than contribute extra Ars glyphs. By default it merges mana pools in iss_primary mode (Iron's Spells authoritative). Other available modes include ars_primary and hybrid (other forms of unification), separate (distinct pools, cross-casts consume both), and disabled (no cross-mana behavior). Its NeoForge implementation also bridges Iron's spell-power attributes into Ars damage on the precise Ars SpellDamageEvent.Pre path; its own comment indicates the base Ars SPELL_DAMAGE_BONUS is already included in event.damage, so it deliberately avoids counting that particular bonus twice.
 
-**Revised decision (2026-11-13): one cross-school *skill tree*, but NO unified mana pools.** The earlier tentative `iss_primary` preference is withdrawn. For Ars 'n Spells, evaluate `separate` and `disabled` as candidates to keep Ars and Iron's resources distinct; `separate` may consume both for cross-casting. Verify damage/attribute stacking, double charges and source version differences before choosing. **No config changed** and no gameplay validation claimed.
+**User clarification (2026-11-13): one cross-school *skill tree*; keep Ars + Iron's **shared mana** but **do not merge Psi into it**. The intervening 'no unified mana anywhere' interpretation is withdrawn. Ars 'n Spells' default `iss_primary` (Iron's primary) is the favored first test configuration, subject to pinned 3.3.5 and client validation. Keep Psi player Psi/CAD battery and Hex Casting media independent. Verify damage/attribute stacking and casting costs; **no config changed** or gameplay validation claimed.
 
 ## Version caveat for Goety Cataclysm
 

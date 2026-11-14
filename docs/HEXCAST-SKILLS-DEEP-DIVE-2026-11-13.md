@@ -34,7 +34,7 @@
 | Staff/cypher/artifact skill craft quality | Per-item metadata + narrow item handler only after item lifecycle analysis | No reliable one-time imprint point proved yet |
 | Great-hex research | Existing advancement or explicit server permissions | Avoid bypassing original enlightenment and pattern research |
 
-**Don't invent per-player media capacity/recovery skills unless we're intentionally adding a new resource mechanic.** The Pufferfish tree can include Hex-oriented perks that reduce media cost without creating a second mana bar. Per recent user decision, **no shared mana pool** with Psi, Ars or Iron's.
+**Don't invent per-player media capacity/recovery skills unless we're intentionally adding a new resource mechanic.** The Pufferfish tree can include Hex-oriented perks that reduce media cost without a new mana bar. **Hex media remains separate**, as does Psi; **Ars + Iron's intentionally share their own bar**. The HexCast media-efficiency prototype is opt-in and does not attempt resource conversion.
 
 ## Specific hazards and test order
 

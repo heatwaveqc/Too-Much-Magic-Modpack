@@ -15,7 +15,7 @@ Do not add placeholder broken KubeJS recipes using speculative registry names.
 ## Psi-powered FE candidate (provisional)
 - Prefer trying PsiTweaks' `trick_supply_fe` as an intentionally magical FE source. Review sustainable FE/t under player regeneration, CAD efficiency, automated casts, chunk loading, Draconic energy demand and any interaction with late-game gates.
 - **BiggerReactors Rework remains installed for now.** It is a potential removal **only after** Psi can reliably handle the pack's entire generation needs, with the user's explicit subsequent approval. FE transport remains Draconic's responsibility; avoid generic energy networks.
-- No automatic mana-pool unification across Ars, Iron's, Psi, Hex Casting or other systems. Character skill progression may be shared; resources are not.
+- **Ars Nouveau + Iron's Spells intentionally share one mana pool** through Ars 'n Spells (provisional `iss_primary` setting pending exact config check). Psi stays outside this pool with its own player/CAD Psi; Hex Casting media and other native resource systems remain separate. The character skill tree is unified, not every resource meter.
 - PsiTweaks penalty overrides, Ideaspace Storage, time acceleration, mass mining and similar tuning are **provisional** pending balance/economy tests; do not implement restrictions merely because an audit flagged risks.
 
 ## B4 compatibility proviso

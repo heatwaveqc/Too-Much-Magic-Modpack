@@ -71,7 +71,7 @@ The above identifies **risks**, not a new owner-approved ban, removal, or change
 
 ## Locked magic design and provisional addon adjustments
 
-The shared Pufferfish skill tree offers **one progression vocabulary** for maximum resources, regeneration and spell/gear improvements, but the user explicitly **rejected unified mana/resource pools**. Psi retains its own player Psi and CAD battery; Ars and Iron's keep their independent resources; Hex Casting retains media. Do **not** build a cross-pool conversion layer or replace Psi's resource with Ars/Iron's mana.
+The shared Pufferfish skill tree offers **one progression vocabulary** for maximum resources, regeneration and spell/gear improvements. The user clarified that **Psi must not be merged into Ars/Iron's mana**, while **Ars Nouveau and Iron's Spells should retain their existing shared mana bar through Ars 'n Spells**. Psi retains its own player Psi and CAD battery; Hex Casting retains media. Do **not** build a Psi↔Ars/Iron's conversion layer or replace Psi's resource with the Ars/Iron's shared mana.
 
 The particular PsiTweaks tuning decisions—including damage-related Psi loss, regen cooldown, Ideaspace Storage, mass mining, time acceleration and chosen gates—are all **provisional**. They are risk findings, not authorization for config changes or removals. Psi **FE generation is a positive design candidate**, to be tested as a possible replacement for BiggerReactors Rework if it satisfies power needs and provides enjoyable magic-first infrastructure. BiggerReactors stays pinned until that is proven and the user decides.
 
@@ -86,7 +86,7 @@ The particular PsiTweaks tuning decisions—including damage-related Psi loss, r
 5. **Costs/penalties:** test Psi loss on damage, regeneration cooldown, CAD battery overflow, loopcasts, fake player/automatic casts, and addon default config.
 6. **Research and gating:** lock a test Psi piece with `psi:advancement` and another with `enabled:false`; test clipboard and already-programmed bullets. Cross-check PsiTweaks' separate `spell_unlocks` rules.
 7. **Exploit audit:** Ideaspace storage access/capacity, FE supply, mass mining, Time Accelerate, special attacks, ProjectE/Replication gates and resource generation.
-8. **Cross-school skills without pool merging:** test universal spell damage and analogous cost-efficiency *skills* against their native resources; confirm no double-counting while keeping Ars, Iron's, Psi and Hex Casting resource pools independent. Do **not** implement cross-pool conversion.
+8. **Cross-school skills with scoped shared mana:** test universal spell damage and analogous cost-efficiency *skills* against native resources; confirm no double-counting. Ars + Iron's share one pool, but Psi and Hex media remain separate. Do **not** implement Psi cross-pool conversion.
 
 ## Source references
 
