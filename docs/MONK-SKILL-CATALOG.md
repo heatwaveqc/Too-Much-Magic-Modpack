@@ -23,7 +23,8 @@ and [original Monk 25-ability crosswalk](../compat/monk/profiles/original-monk-a
 - Unique technique unlocks are **once**. Multi-stage practices have
   **staged** ranks, with the number defined by actual useful modes.
 - Exactly **99 Apotheosis techniques**, one for each pinned affix,
-  scale only through source-supported **rarity** tiers. Source affixes
+  scale only through **distinct source-supported effect** tiers. Identical
+  rarity values collapse; 32 affixes have such duplicates. Source affixes
   with no rarity scale are single-unlock. A separate, continuously
   improvable numeric stat may also contribute to the same effect;
   prevent accidental double application. Rarity rank means deterministic
@@ -60,7 +61,7 @@ progression purchase one owner in the eventual implementation.
 | **bounded** | Finite useful ranks only; upper bound is effect-specific, confirmed from runtime |
 | **once** | Exactly 1 |
 | **staged** | Exact count of useful modes: Breath Meditation 2; harvest tiers from final pack data |
-| **affix source rarities** | From 1–5 source-supported rarity steps; absent rarity values means 1 |
+| **affix distinct effect ranks** | From 1–5 nonredundant source-effect milestones; absent rarity values means 1 |
 
 ## Core and mod-specific skill inventory
 
@@ -341,8 +342,10 @@ progression purchase one owner in the eventual implementation.
 Apotheosis affix effects are gear-based upstream. Each **proposed** TMM
 technique below needs an independently implemented unarmed, defensive,
 harvest, magic-projectile, or counterattack adapter. The level cap comes
-from the original affix's *available rarity values*, not an arbitrary
-Monk cap. The source may have further quality scaling within a rarity;
+from the original affix's *distinct value tiers*, not an arbitrary
+Monk cap; **32 of 99** have repeated source values across rarities
+and those redundant tiers are not paid ranks. The source can have several rarities with **identical** values; those
+  are collapsed before purchases. The source may have further quality scaling within a rarity;
 the adapter should provide a deterministic tier effect no stronger
 than the legitimate original top roll for that tier.
 
@@ -351,31 +354,31 @@ than the legitimate original top roll for that tier.
 already-equipped Draconic Curio flight. It **must never unlock** Creative
 Flight. **Winged** cannot unlock gliding before the Dragon gate.
 
-| Apotheosis technique | Source affix | Supported rarity ranks |
+| Apotheosis technique | Source affix | Distinct source-effect milestones |
 | --- | --- | --- |
-| **Adamantine [armor]** | `apotheosis:armor/attribute/adamantine` | R → E → M (3) |
-| **Aquatic [armor]** | `apotheosis:armor/attribute/aquatic` | C → U → R → E → M (5) |
+| **Adamantine [armor]** | `apotheosis:armor/attribute/adamantine` | R → M (2) |
+| **Aquatic [armor]** | `apotheosis:armor/attribute/aquatic` | C → R → M (3) |
 | **Blessed [armor]** | `apotheosis:armor/attribute/blessed` | C → U → R → E → M (5) |
-| **Elastic [armor]** | `apotheosis:armor/attribute/elastic` | C → U → R → E → M (5) |
+| **Elastic [armor]** | `apotheosis:armor/attribute/elastic` | C → R → M (3) |
 | **Fireproof [armor]** | `apotheosis:armor/attribute/fireproof` | U → R → E → M (4) |
-| **Fortunate [armor]** | `apotheosis:armor/attribute/fortunate` | C → U → R → E → M (5) |
+| **Fortunate [armor]** | `apotheosis:armor/attribute/fortunate` | C → R → E → M (4) |
 | **Gravitational [armor]** | `apotheosis:armor/attribute/gravitational` | C → U → R → E → M (5) |
-| **Ironforged [armor]** | `apotheosis:armor/attribute/ironforged` | C → U → R → E → M (5) |
+| **Ironforged [armor]** | `apotheosis:armor/attribute/ironforged` | C → R → E → M (4) |
 | **Oxygenated [armor]** | `apotheosis:armor/attribute/oxygenated` | U → R → E → M (4) |
 | **Spiritual [armor]** | `apotheosis:armor/attribute/spiritual` | R → E → M (3) |
-| **Stalwart [armor]** | `apotheosis:armor/attribute/stalwart` | U → R → E → M (4) |
+| **Stalwart [armor]** | `apotheosis:armor/attribute/stalwart` | U → E → M (3) |
 | **Steel Touched [armor]** | `apotheosis:armor/attribute/steel_touched` | R → E → M (3) |
 | **Timekeeping [armor]** | `apotheosis:armor/attribute/timekeeping` | R → E → M (3) |
 | **Unbound [armor]** | `apotheosis:armor/attribute/unbound` | M (1) |
 | **Windswept [armor]** | `apotheosis:armor/attribute/windswept` | C → U → R → E → M (5) |
-| **Winged [armor]** | `apotheosis:armor/attribute/winged` | E → M (2) |
+| **Winged [armor]** | `apotheosis:armor/attribute/winged` | E (1) |
 | **Blast Forged [armor]** | `apotheosis:armor/dmg_reduction/blast_forged` | C → U → R → E → M (5) |
-| **Blockading [armor]** | `apotheosis:armor/dmg_reduction/blockading` | C → U → R → E → M (5) |
-| **Deflective [armor]** | `apotheosis:armor/dmg_reduction/deflective` | C → U → R → E → M (5) |
-| **Feathery [armor]** | `apotheosis:armor/dmg_reduction/feathery` | C → U → R → E → M (5) |
-| **Grounded [armor]** | `apotheosis:armor/dmg_reduction/grounded` | C → U → R → E → M (5) |
-| **Runed [armor]** | `apotheosis:armor/dmg_reduction/runed` | C → U → R → E → M (5) |
-| **Blinding [armor]** | `apotheosis:armor/mob_effect/blinding` | U → R → E → M (4) |
+| **Blockading [armor]** | `apotheosis:armor/dmg_reduction/blockading` | C → R → M (3) |
+| **Deflective [armor]** | `apotheosis:armor/dmg_reduction/deflective` | C → U → R → M (4) |
+| **Feathery [armor]** | `apotheosis:armor/dmg_reduction/feathery` | C → U → R → M (4) |
+| **Grounded [armor]** | `apotheosis:armor/dmg_reduction/grounded` | C → U → R → M (4) |
+| **Runed [armor]** | `apotheosis:armor/dmg_reduction/runed` | C → R → M (3) |
+| **Blinding [armor]** | `apotheosis:armor/mob_effect/blinding` | U → R → M (3) |
 | **Bolstering [armor]** | `apotheosis:armor/mob_effect/bolstering` | U → R → E → M (4) |
 | **Bursting [armor]** | `apotheosis:armor/mob_effect/bursting` | E → M (2) |
 | **Nimble [armor]** | `apotheosis:armor/mob_effect/nimble` | U → R → E → M (4) |
@@ -387,9 +390,9 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
 | **Sandforming [breaker]** | `apotheosis:breaker/ability/sandforming` | Single (1) |
 | **Stoneforming [breaker]** | `apotheosis:breaker/ability/stoneforming` | Single (1) |
 | **Supermassive [breaker]** | `apotheosis:breaker/ability/supermassive` | M (1) |
-| **Destructive [breaker]** | `apotheosis:breaker/attribute/destructive` | C → U → R → E → M (5) |
-| **Experienced [breaker]** | `apotheosis:breaker/attribute/experienced` | C → U → R → E → M (5) |
-| **Lengthy [breaker]** | `apotheosis:breaker/attribute/lengthy` | C → U → R → E → M (5) |
+| **Destructive [breaker]** | `apotheosis:breaker/attribute/destructive` | C → R → E → M (4) |
+| **Experienced [breaker]** | `apotheosis:breaker/attribute/experienced` | C → R → E → M (4) |
+| **Lengthy [breaker]** | `apotheosis:breaker/attribute/lengthy` | C → R → M (3) |
 | **Submerged [breaker]** | `apotheosis:breaker/attribute/submerged` | C → U → R → E → M (5) |
 | **Omnetic [breaker]** | `apotheosis:breaker/effect/omnetic` | R → E → M (3) |
 | **Radial [breaker]** | `apotheosis:breaker/effect/radial` | U → R → E → M (4) |
@@ -398,49 +401,49 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
 | **Swift [breaker]** | `apotheosis:breaker/mob_effect/swift` | U → R → E → M (4) |
 | **Lucky [generic]** | `apotheosis:generic/attribute/lucky` | U → R → E → M (4) |
 | **Telepathic [generic]** | `apotheosis:generic/telepathic` | Single (1) |
-| **Berserking [melee]** | `apotheosis:melee/attribute/berserking` | C → U → R → E → M (5) |
+| **Berserking [melee]** | `apotheosis:melee/attribute/berserking` | C → R → E → M (4) |
 | **Forceful [melee]** | `apotheosis:melee/attribute/forceful` | C → U → R → E → M (5) |
 | **Giant Slaying [melee]** | `apotheosis:melee/attribute/giant_slaying` | E → M (2) |
 | **Glacial [melee]** | `apotheosis:melee/attribute/glacial` | U → R → E → M (4) |
 | **Graceful [melee]** | `apotheosis:melee/attribute/graceful` | C → U → R → E → M (5) |
 | **Infernal [melee]** | `apotheosis:melee/attribute/infernal` | U → R → E → M (4) |
-| **Intricate [melee]** | `apotheosis:melee/attribute/intricate` | C → U → R → E → M (5) |
-| **Lacerating [melee]** | `apotheosis:melee/attribute/lacerating` | C → U → R → E → M (5) |
-| **Lengthy [melee]** | `apotheosis:melee/attribute/lengthy` | C → U → R → E → M (5) |
+| **Intricate [melee]** | `apotheosis:melee/attribute/intricate` | C → R → E → M (4) |
+| **Lacerating [melee]** | `apotheosis:melee/attribute/lacerating` | C → R → M (3) |
+| **Lengthy [melee]** | `apotheosis:melee/attribute/lengthy` | C → R → M (3) |
 | **Murderous [melee]** | `apotheosis:melee/attribute/murderous` | R → E → M (3) |
-| **Piercing [melee]** | `apotheosis:melee/attribute/piercing` | C → U → R → E → M (5) |
-| **Vampiric [melee]** | `apotheosis:melee/attribute/vampiric` | C → U → R → E → M (5) |
-| **Violent [melee]** | `apotheosis:melee/attribute/violent` | C → U → R → E → M (5) |
+| **Piercing [melee]** | `apotheosis:melee/attribute/piercing` | C → R → E → M (4) |
+| **Vampiric [melee]** | `apotheosis:melee/attribute/vampiric` | C → R → E → M (4) |
+| **Violent [melee]** | `apotheosis:melee/attribute/violent` | C → R → E → M (4) |
 | **Cleaving [melee]** | `apotheosis:melee/cleaving` | E → M (2) |
 | **Executing [melee]** | `apotheosis:melee/executing` | E → M (2) |
 | **Festive [melee]** | `apotheosis:melee/festive` | E → M (2) |
-| **Bloodletting [melee]** | `apotheosis:melee/mob_effect/bloodletting` | U → R → E → M (4) |
+| **Bloodletting [melee]** | `apotheosis:melee/mob_effect/bloodletting` | U → R → M (3) |
 | **Caustic [melee]** | `apotheosis:melee/mob_effect/caustic` | R → E → M (3) |
 | **Elusive [melee]** | `apotheosis:melee/mob_effect/elusive` | U → R → E → M (4) |
 | **Omniscient [melee]** | `apotheosis:melee/mob_effect/omniscient` | M (1) |
 | **Sophisticated [melee]** | `apotheosis:melee/mob_effect/sophisticated` | U → R → E → M (4) |
 | **Weakening [melee]** | `apotheosis:melee/mob_effect/weakening` | U → R → E → M (4) |
 | **Thunderstruck [melee]** | `apotheosis:melee/thunderstruck` | E → M (2) |
-| **Agile [ranged]** | `apotheosis:ranged/attribute/agile` | C → U → R → E → M (5) |
+| **Agile [ranged]** | `apotheosis:ranged/attribute/agile` | C → R → E → M (4) |
 | **Elven [ranged]** | `apotheosis:ranged/attribute/elven` | C → U → R → E → M (5) |
-| **Streamlined [ranged]** | `apotheosis:ranged/attribute/streamlined` | C → U → R → E → M (5) |
-| **Windswept [ranged]** | `apotheosis:ranged/attribute/windswept` | C → U → R → E → M (5) |
+| **Streamlined [ranged]** | `apotheosis:ranged/attribute/streamlined` | C → R → E → M (4) |
+| **Windswept [ranged]** | `apotheosis:ranged/attribute/windswept` | C → U → E → M (4) |
 | **Prosperous [ranged]** | `apotheosis:ranged/enchantment/prosperous` | E → M (2) |
 | **Magical [ranged]** | `apotheosis:ranged/magical` | Single (1) |
 | **Acidic [ranged]** | `apotheosis:ranged/mob_effect/acidic` | M (1) |
 | **Blighted [ranged]** | `apotheosis:ranged/mob_effect/blighted` | E → M (2) |
 | **Deathbound [ranged]** | `apotheosis:ranged/mob_effect/deathbound` | M (1) |
 | **Ensnaring [ranged]** | `apotheosis:ranged/mob_effect/ensnaring` | U → R → E → M (4) |
-| **Fleeting [ranged]** | `apotheosis:ranged/mob_effect/fleeting` | U → R → E → M (4) |
+| **Fleeting [ranged]** | `apotheosis:ranged/mob_effect/fleeting` | U → E → M (3) |
 | **Grievous [ranged]** | `apotheosis:ranged/mob_effect/grievous` | U → R → E → M (4) |
 | **Ivy Laced [ranged]** | `apotheosis:ranged/mob_effect/ivy_laced` | R → E → M (3) |
 | **Shulkers [ranged]** | `apotheosis:ranged/mob_effect/shulkers` | E → M (2) |
 | **Spectral [ranged]** | `apotheosis:ranged/spectral` | E → M (2) |
 | **Gardening [shears]** | `apotheosis:shears/effect/gardening` | Single (1) |
 | **Leafforming [shears]** | `apotheosis:shears/effect/leafforming` | Single (1) |
-| **Ironforged [shield]** | `apotheosis:shield/attribute/ironforged` | C → U → R → E → M (5) |
-| **Stalwart [shield]** | `apotheosis:shield/attribute/stalwart` | C → U → R → E → M (5) |
-| **Steel Touched [shield]** | `apotheosis:shield/attribute/steel_touched` | R → E → M (3) |
+| **Ironforged [shield]** | `apotheosis:shield/attribute/ironforged` | C → R → E → M (4) |
+| **Stalwart [shield]** | `apotheosis:shield/attribute/stalwart` | C → R → M (3) |
+| **Steel Touched [shield]** | `apotheosis:shield/attribute/steel_touched` | R → M (2) |
 | **Catalyzing [shield]** | `apotheosis:shield/catalyzing` | E → M (2) |
 | **Devilish [shield]** | `apotheosis:shield/mob_effect/devilish` | U → R → E → M (4) |
 | **Galvanizing [shield]** | `apotheosis:shield/mob_effect/galvanizing` | M (1) |
@@ -451,7 +454,7 @@ Flight. **Winged** cannot unlock gliding before the Dragon gate.
 | **Retreating [shield]** | `apotheosis:shield/retreating` | Single (1) |
 | **Nullifying [weapon]** | `apotheosis:weapon/attribute/nullifying` | R → E → M (3) |
 | **Runebreaking [weapon]** | `apotheosis:weapon/attribute/runebreaking` | R → E → M (3) |
-| **Shredding [weapon]** | `apotheosis:weapon/attribute/shredding` | C → U → R → E → M (5) |
+| **Shredding [weapon]** | `apotheosis:weapon/attribute/shredding` | C → R → E → M (4) |
 
 ## Original 25 abilities: preservation decisions
 

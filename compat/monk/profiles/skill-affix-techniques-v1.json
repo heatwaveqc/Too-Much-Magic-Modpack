@@ -4,16 +4,16 @@
   "source_release": "Apotheosis-1.21.1-8.9.0",
   "source": "https://github.com/Shadows-of-Fire/Apotheosis/tree/1.21/src/generated/resources/data/apotheosis/affixes",
   "total": 99,
-  "rank_rule": "Each affix has one purchase per genuine source-supported rarity tier, or exactly one for source definitions without rarity values. No invented tiers. Actual tier effectiveness must be copied by behavior, NOT source-code reuse. Quality roll differences within tier are not new ranks; use maximum legitimate tier effect when achieving that tier, subject to native caps.",
+  "rank_rule": "Affix ranks correspond to distinct effective source-value tiers, not every original rarity. Identical values on adjacent source rarities are collapsed (32 affixes affected). If deterministic maximum roll or native effect caps make further steps indistinguishable, omit those additional paid ranks before implementation. Source rarities are preserved as provenance, not all separate paid levels.",
   "condition": "Not a standalone weapon or armor enchantment; each technique must work for Monk's empty hands, legal spirit projectile, passives or counterattacks, without illegal gear.",
   "creative_flight_exception": "Apotheosis Unbound has neoforge:creative_flight; Monk Unbound must NOT supply this; only enhance Draconic Curio supplied flight.",
   "gameplay_status": "not_implemented",
   "rarity_rank_distribution": {
-    "1": 16,
-    "2": 15,
-    "3": 13,
-    "4": 22,
-    "5": 33
+    "1": 17,
+    "2": 16,
+    "3": 23,
+    "4": 35,
+    "5": 8
   },
   "source_attribute_technique_count": 44,
   "skills": [
@@ -23,7 +23,7 @@
       "source_affix": "apotheosis:armor/attribute/adamantine",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 3,
+      "max_ranks": 2,
       "allowed_source_rarities": [
         "rare",
         "epic",
@@ -31,9 +31,14 @@
       ],
       "source_attribute": "minecraft:generic.armor",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/aquatic",
@@ -41,7 +46,7 @@
       "source_affix": "apotheosis:armor/attribute/aquatic",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -51,9 +56,15 @@
       ],
       "source_attribute": "neoforge:swim_speed",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/blessed",
@@ -71,9 +82,17 @@
       ],
       "source_attribute": "minecraft:generic.max_health",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/elastic",
@@ -81,7 +100,7 @@
       "source_affix": "apotheosis:armor/attribute/elastic",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -91,9 +110,15 @@
       ],
       "source_attribute": "minecraft:generic.step_height",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/fireproof",
@@ -110,9 +135,16 @@
       ],
       "source_attribute": "minecraft:generic.burning_time",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/fortunate",
@@ -120,7 +152,7 @@
       "source_affix": "apotheosis:armor/attribute/fortunate",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -130,9 +162,16 @@
       ],
       "source_attribute": "minecraft:generic.luck",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/gravitational",
@@ -150,9 +189,17 @@
       ],
       "source_attribute": "minecraft:generic.gravity",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/ironforged",
@@ -160,7 +207,7 @@
       "source_affix": "apotheosis:armor/attribute/ironforged",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -170,9 +217,16 @@
       ],
       "source_attribute": "minecraft:generic.armor",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/oxygenated",
@@ -189,9 +243,16 @@
       ],
       "source_attribute": "minecraft:generic.oxygen_bonus",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/spiritual",
@@ -207,9 +268,15 @@
       ],
       "source_attribute": "apothic_attributes:healing_received",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/stalwart",
@@ -217,7 +284,7 @@
       "source_affix": "apotheosis:armor/attribute/stalwart",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 4,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "uncommon",
         "rare",
@@ -226,9 +293,15 @@
       ],
       "source_attribute": "minecraft:generic.knockback_resistance",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/steel_touched",
@@ -244,9 +317,15 @@
       ],
       "source_attribute": "minecraft:generic.armor_toughness",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/timekeeping",
@@ -262,25 +341,35 @@
       ],
       "source_attribute": "apothic_attributes:cooldown_reduction",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/unbound",
       "name": "Unbound [armor]",
       "source_affix": "apotheosis:armor/attribute/unbound",
       "family": "body_defense",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": "neoforge:creative_flight",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "CRITICAL EXCEPTION: original affix grants neoforge:creative_flight. TMM version may ONLY improve/control flight already furnished by an allowed Draconic Evolution Curio; NEVER grant Creative Flight or flight permission.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/windswept",
@@ -298,26 +387,38 @@
       ],
       "source_attribute": "minecraft:generic.movement_speed",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/attribute/winged",
       "name": "Winged [armor]",
       "source_affix": "apotheosis:armor/attribute/winged",
       "family": "body_defense",
-      "rank_model": "finite_source_rarity",
-      "max_ranks": 2,
+      "rank_model": "once",
+      "max_ranks": 1,
       "allowed_source_rarities": [
         "epic",
         "mythic"
       ],
       "source_attribute": "apothic_attributes:elytra_flight",
       "source_effect_family": "armor/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "May improve innate post-Dragon Momentum Gliding or already permitted Draconic Elytra module; must not grant glide before Dragon world tier.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/blast_forged",
@@ -335,9 +436,17 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/blockading",
@@ -345,7 +454,7 @@
       "source_affix": "apotheosis:armor/dmg_reduction/blockading",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -355,9 +464,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/deflective",
@@ -365,7 +480,7 @@
       "source_affix": "apotheosis:armor/dmg_reduction/deflective",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -375,9 +490,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/feathery",
@@ -385,7 +507,7 @@
       "source_affix": "apotheosis:armor/dmg_reduction/feathery",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -395,9 +517,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/grounded",
@@ -405,7 +534,7 @@
       "source_affix": "apotheosis:armor/dmg_reduction/grounded",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -415,9 +544,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/dmg_reduction/runed",
@@ -425,7 +561,7 @@
       "source_affix": "apotheosis:armor/dmg_reduction/runed",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -435,9 +571,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/dmg_reduction",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/mob_effect/blinding",
@@ -445,7 +587,7 @@
       "source_affix": "apotheosis:armor/mob_effect/blinding",
       "family": "body_defense",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 4,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "uncommon",
         "rare",
@@ -454,9 +596,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/mob_effect/bolstering",
@@ -473,9 +621,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/mob_effect/bursting",
@@ -490,9 +645,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/mob_effect/nimble",
@@ -509,9 +669,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/armor/mob_effect/revitalizing",
@@ -526,9 +693,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "armor/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/boots/ability/steadfast",
@@ -540,9 +712,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "boots/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Recreate the source affix's mechanically meaningful effect as a Monk-owned innate effect or permitted unarmed/magic technique, preserving its trigger and rarity-limited strength; adapter requires testing.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/boots/ability/surefooted",
@@ -554,9 +728,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "boots/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Recreate the source affix's mechanically meaningful effect as a Monk-owned innate effect or permitted unarmed/magic technique, preserving its trigger and rarity-limited strength; adapter requires testing.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/boots/ability/unhurried",
@@ -568,9 +744,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "boots/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Recreate the source affix's mechanically meaningful effect as a Monk-owned innate effect or permitted unarmed/magic technique, preserving its trigger and rarity-limited strength; adapter requires testing.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/ability/enlightened",
@@ -586,9 +764,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/ability/sandforming",
@@ -600,9 +784,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "breaker/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/ability/stoneforming",
@@ -614,25 +800,31 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "breaker/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/ability/supermassive",
       "name": "Supermassive [breaker]",
       "source_affix": "apotheosis:breaker/ability/supermassive",
       "family": "harvest",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/ability",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/attribute/destructive",
@@ -640,7 +832,7 @@
       "source_affix": "apotheosis:breaker/attribute/destructive",
       "family": "harvest",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -650,9 +842,16 @@
       ],
       "source_attribute": "apothic_attributes:mining_speed",
       "source_effect_family": "breaker/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/attribute/experienced",
@@ -660,7 +859,7 @@
       "source_affix": "apotheosis:breaker/attribute/experienced",
       "family": "harvest",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -670,9 +869,16 @@
       ],
       "source_attribute": "apothic_attributes:experience_gained",
       "source_effect_family": "breaker/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/attribute/lengthy",
@@ -680,7 +886,7 @@
       "source_affix": "apotheosis:breaker/attribute/lengthy",
       "family": "harvest",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -690,9 +896,15 @@
       ],
       "source_attribute": "minecraft:player.block_interaction_range",
       "source_effect_family": "breaker/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/attribute/submerged",
@@ -710,9 +922,17 @@
       ],
       "source_attribute": "minecraft:player.submerged_mining_speed",
       "source_effect_family": "breaker/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/effect/omnetic",
@@ -728,9 +948,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/effect/radial",
@@ -747,9 +973,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/enchantment/prosperous",
@@ -766,9 +999,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/enchantment",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/mob_effect/spelunkers",
@@ -785,9 +1025,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/breaker/mob_effect/swift",
@@ -804,9 +1051,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "breaker/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/generic/attribute/lucky",
@@ -823,9 +1077,16 @@
       ],
       "source_attribute": "minecraft:generic.luck",
       "source_effect_family": "generic/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Recreate the source affix's mechanically meaningful effect as a Monk-owned innate effect or permitted unarmed/magic technique, preserving its trigger and rarity-limited strength; adapter requires testing.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/generic/telepathic",
@@ -837,9 +1098,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "generic",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Recreate the source affix's mechanically meaningful effect as a Monk-owned innate effect or permitted unarmed/magic technique, preserving its trigger and rarity-limited strength; adapter requires testing.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/berserking",
@@ -847,7 +1110,7 @@
       "source_affix": "apotheosis:melee/attribute/berserking",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -857,9 +1120,16 @@
       ],
       "source_attribute": "apothic_attributes:overheal",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/forceful",
@@ -877,9 +1147,17 @@
       ],
       "source_attribute": "minecraft:generic.attack_knockback",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/giant_slaying",
@@ -894,9 +1172,14 @@
       ],
       "source_attribute": "apothic_attributes:current_hp_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/glacial",
@@ -913,9 +1196,16 @@
       ],
       "source_attribute": "apothic_attributes:cold_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/graceful",
@@ -933,9 +1223,17 @@
       ],
       "source_attribute": "minecraft:generic.attack_speed",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/infernal",
@@ -952,9 +1250,16 @@
       ],
       "source_attribute": "apothic_attributes:fire_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/intricate",
@@ -962,7 +1267,7 @@
       "source_affix": "apotheosis:melee/attribute/intricate",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -972,9 +1277,16 @@
       ],
       "source_attribute": "apothic_attributes:crit_chance",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/lacerating",
@@ -982,7 +1294,7 @@
       "source_affix": "apotheosis:melee/attribute/lacerating",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -992,9 +1304,15 @@
       ],
       "source_attribute": "apothic_attributes:crit_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/lengthy",
@@ -1002,7 +1320,7 @@
       "source_affix": "apotheosis:melee/attribute/lengthy",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1012,9 +1330,15 @@
       ],
       "source_attribute": "minecraft:player.entity_interaction_range",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/murderous",
@@ -1030,9 +1354,15 @@
       ],
       "source_attribute": "minecraft:generic.attack_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/piercing",
@@ -1040,7 +1370,7 @@
       "source_affix": "apotheosis:melee/attribute/piercing",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1050,9 +1380,16 @@
       ],
       "source_attribute": "apothic_attributes:armor_pierce",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/vampiric",
@@ -1060,7 +1397,7 @@
       "source_affix": "apotheosis:melee/attribute/vampiric",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1070,9 +1407,16 @@
       ],
       "source_attribute": "apothic_attributes:life_steal",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/attribute/violent",
@@ -1080,7 +1424,7 @@
       "source_affix": "apotheosis:melee/attribute/violent",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1090,9 +1434,16 @@
       ],
       "source_attribute": "minecraft:generic.attack_damage",
       "source_effect_family": "melee/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/cleaving",
@@ -1107,9 +1458,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/executing",
@@ -1124,9 +1480,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/festive",
@@ -1141,9 +1502,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/bloodletting",
@@ -1151,7 +1517,7 @@
       "source_affix": "apotheosis:melee/mob_effect/bloodletting",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 4,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "uncommon",
         "rare",
@@ -1160,9 +1526,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/caustic",
@@ -1178,9 +1550,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/elusive",
@@ -1197,25 +1575,36 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/omniscient",
       "name": "Omniscient [melee]",
       "source_affix": "apotheosis:melee/mob_effect/omniscient",
       "family": "martial",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/sophisticated",
@@ -1232,9 +1621,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/mob_effect/weakening",
@@ -1251,9 +1647,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/melee/thunderstruck",
@@ -1268,9 +1671,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "melee",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/attribute/agile",
@@ -1278,7 +1686,7 @@
       "source_affix": "apotheosis:ranged/attribute/agile",
       "family": "projectiles",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1288,9 +1696,16 @@
       ],
       "source_attribute": "apothic_attributes:draw_speed",
       "source_effect_family": "ranged/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/attribute/elven",
@@ -1308,9 +1723,17 @@
       ],
       "source_attribute": "apothic_attributes:arrow_damage",
       "source_effect_family": "ranged/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/attribute/streamlined",
@@ -1318,7 +1741,7 @@
       "source_affix": "apotheosis:ranged/attribute/streamlined",
       "family": "projectiles",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1328,9 +1751,16 @@
       ],
       "source_attribute": "apothic_attributes:arrow_velocity",
       "source_effect_family": "ranged/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/attribute/windswept",
@@ -1338,7 +1768,7 @@
       "source_affix": "apotheosis:ranged/attribute/windswept",
       "family": "projectiles",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1348,9 +1778,16 @@
       ],
       "source_attribute": "minecraft:generic.movement_speed",
       "source_effect_family": "ranged/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "uncommon",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/enchantment/prosperous",
@@ -1365,9 +1802,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/enchantment",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/magical",
@@ -1379,25 +1821,31 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "ranged",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/acidic",
       "name": "Acidic [ranged]",
       "source_affix": "apotheosis:ranged/mob_effect/acidic",
       "family": "projectiles",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/blighted",
@@ -1412,25 +1860,34 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/deathbound",
       "name": "Deathbound [ranged]",
       "source_affix": "apotheosis:ranged/mob_effect/deathbound",
       "family": "projectiles",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/ensnaring",
@@ -1447,9 +1904,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/fleeting",
@@ -1457,7 +1921,7 @@
       "source_affix": "apotheosis:ranged/mob_effect/fleeting",
       "family": "projectiles",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 4,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "uncommon",
         "rare",
@@ -1466,9 +1930,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/grievous",
@@ -1485,9 +1955,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/ivy_laced",
@@ -1503,9 +1980,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/mob_effect/shulkers",
@@ -1520,9 +2003,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/ranged/spectral",
@@ -1537,9 +2025,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "ranged",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply to legal Monk spirit/ki projectiles, not conventional bows or held ranged weapons; verify with boss shields.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shears/effect/gardening",
@@ -1551,9 +2044,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "shears/effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shears/effect/leafforming",
@@ -1565,9 +2060,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "shears/effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Use compliant barehand harvest/shearing; obey real tool tiers, block claims and valid drops, without held tools or simulated affix gear.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/attribute/ironforged",
@@ -1575,7 +2072,7 @@
       "source_affix": "apotheosis:shield/attribute/ironforged",
       "family": "guarding",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1585,9 +2082,16 @@
       ],
       "source_attribute": "minecraft:generic.armor",
       "source_effect_family": "shield/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/attribute/stalwart",
@@ -1595,7 +2099,7 @@
       "source_affix": "apotheosis:shield/attribute/stalwart",
       "family": "guarding",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 3,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1605,9 +2109,15 @@
       ],
       "source_attribute": "minecraft:generic.knockback_resistance",
       "source_effect_family": "shield/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/attribute/steel_touched",
@@ -1615,7 +2125,7 @@
       "source_affix": "apotheosis:shield/attribute/steel_touched",
       "family": "guarding",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 3,
+      "max_ranks": 2,
       "allowed_source_rarities": [
         "rare",
         "epic",
@@ -1623,9 +2133,14 @@
       ],
       "source_attribute": "minecraft:generic.armor_toughness",
       "source_effect_family": "shield/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/catalyzing",
@@ -1640,9 +2155,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/mob_effect/devilish",
@@ -1659,25 +2179,36 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/mob_effect/galvanizing",
       "name": "Galvanizing [shield]",
       "source_affix": "apotheosis:shield/mob_effect/galvanizing",
       "family": "guarding",
-      "rank_model": "finite_source_rarity",
+      "rank_model": "once",
       "max_ranks": 1,
       "allowed_source_rarities": [
         "mythic"
       ],
       "source_attribute": null,
       "source_effect_family": "shield/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/mob_effect/reinforcing",
@@ -1693,9 +2224,15 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/mob_effect/venomous",
@@ -1712,9 +2249,16 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/mob_effect/withering",
@@ -1729,9 +2273,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield/mob_effect",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/psychic",
@@ -1746,9 +2295,14 @@
       ],
       "source_attribute": null,
       "source_effect_family": "shield",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/shield/retreating",
@@ -1760,9 +2314,11 @@
       "allowed_source_rarities": [],
       "source_attribute": null,
       "source_effect_family": "shield",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Innate unarmored defense, retaliation, passive, or mobility matching source trigger; never require armor/shield slots.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/weapon/attribute/nullifying",
@@ -1778,9 +2334,15 @@
       ],
       "source_attribute": "apothic_attributes:prot_shred",
       "source_effect_family": "weapon/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/weapon/attribute/runebreaking",
@@ -1796,9 +2358,15 @@
       ],
       "source_attribute": "apothic_attributes:prot_pierce",
       "source_effect_family": "weapon/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     },
     {
       "id": "tmm_monk:apotheosis/weapon/attribute/shredding",
@@ -1806,7 +2374,7 @@
       "source_affix": "apotheosis:weapon/attribute/shredding",
       "family": "martial",
       "rank_model": "finite_source_rarity",
-      "max_ranks": 5,
+      "max_ranks": 4,
       "allowed_source_rarities": [
         "common",
         "uncommon",
@@ -1816,9 +2384,18 @@
       ],
       "source_attribute": "apothic_attributes:armor_shred",
       "source_effect_family": "weapon/attribute",
-      "source_tier_status": "Source JSON rarity coverage verified 2026-11-14; numeric effect/quality values still need adapter implementation.",
+      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
       "effect_contract": "Apply only on eligible Monk unarmed hits or compatible innate martial attacks, not weapon equipment; preserve original target conditions.",
-      "implementation_status": "design_only"
+      "implementation_status": "design_only",
+      "distinct_value_rarity_milestones": [
+        "common",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
     }
-  ]
+  ],
+  "duplicate_source_value_rarity_collapses": 32,
+  "rank_audit_status": "99/99 definitions read; 32 had duplicated value JSON across rarity steps. Final effect-specific balance testing required."
 }

@@ -127,14 +127,17 @@ final class MonkSkillPlanTest {
             assertTrue(affixIds.remove(sourceId), "Missing/unrecognized source affix: " + sourceId);
             int levels = skill.get("max_ranks").getAsInt();
             int tiers = skill.getAsJsonArray("allowed_source_rarities").size();
+            int distinct = skill.getAsJsonArray("distinct_value_rarity_milestones").size();
             assertTrue(levels >= 1 && levels <= 5);
-            assertEquals(levels, tiers == 0 ? 1 : tiers);
-            assertEquals(tiers == 0 ? "once" : "finite_source_rarity",
+            assertEquals(levels, distinct == 0 ? 1 : distinct);
+            assertTrue(distinct <= tiers);
+            assertEquals(levels == 1 ? "once" : "finite_source_rarity",
                     skill.get("rank_model").getAsString());
             assertFalse(id.equals("tmm_monk:creative_flight"));
             assertEquals("design_only", skill.get("implementation_status").getAsString());
         }
         assertTrue(affixIds.isEmpty());
+        assertEquals(32, plan.get("duplicate_source_value_rarity_collapses").getAsInt());
 
         var unbound = techniques.get(13).getAsJsonObject();
         assertEquals("apotheosis:armor/attribute/unbound", unbound.get("source_affix").getAsString());
