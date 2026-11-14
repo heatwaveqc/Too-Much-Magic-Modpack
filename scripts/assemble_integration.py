@@ -138,6 +138,14 @@ def main() -> None:
         report.append({"name": stream["name"], "branch": branch, "sha": source_sha,
                        "mode": stream["mode"], "file_count": len(selected), "files": selected,
                        "note": stream["note"]})
+    # The NEXT integrated QA build must actually replace Pufferfish Skills.
+    # Exact Tyz 6.4.2 release ID + provider SHA are verified here; never
+    # silently publish a source-only Tyz preview as a playable skill tree.
+    from activate_tyzs import activate
+    activate(ROOT, manifest)
+    git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
+        "kubejs/server_scripts/tmm_magic_core_thrift.js",
+        "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
     mod_count = sum(m["enabled_in_pack"] for m in manifest["mods"])
