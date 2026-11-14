@@ -4,6 +4,7 @@ import de.teamlapen.vampirism.api.VampirismAPI;
 import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.rules.MonkEligibility;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
+import io.github.heatwaveqc.tmm.monk.skills.MonkAttributes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -17,6 +18,8 @@ public final class MonkTechniqueEffects {
     private static final ResourceLocation PALM_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "open_palm");
     private static final ResourceLocation POISE_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "unarmored_poise");
     private static final ResourceLocation FLEET_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "fleet_footwork");
+    private static final ResourceLocation TYZ_PALM_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "tyz_iron_palm");
+    private static final ResourceLocation TYZ_HARVEST_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "tyz_barehand_harvest");
     private static final AttributeModifier PALM = new AttributeModifier(PALM_ID, 1.0, AttributeModifier.Operation.ADD_VALUE);
     private static final AttributeModifier POISE = new AttributeModifier(POISE_ID, 2.0, AttributeModifier.Operation.ADD_VALUE);
     private static final AttributeModifier FLEET = new AttributeModifier(FLEET_ID, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
@@ -32,6 +35,8 @@ public final class MonkTechniqueEffects {
             update(player, Attributes.ATTACK_DAMAGE, PALM, false);
             update(player, Attributes.ARMOR, POISE, false);
             update(player, Attributes.MOVEMENT_SPEED, FLEET, false);
+            updateAmount(player, Attributes.ATTACK_DAMAGE, TYZ_PALM_ID, 0);
+            updateAmount(player, Attributes.MINING_EFFICIENCY, TYZ_HARVEST_ID, 0);
         }
     }
 
@@ -52,6 +57,35 @@ public final class MonkTechniqueEffects {
         update(player, Attributes.ATTACK_DAMAGE, PALM, palm);
         update(player, Attributes.ARMOR, POISE, poise);
         update(player, Attributes.MOVEMENT_SPEED, FLEET, fleet);
+
+        // Tyz owns all rank values. This adapter only translates Monk-specific
+        // inert attributes into conditional benefits; no duplicate Tyz wallet.
+        double handPower = hasFaction && player.getMainHandItem().isEmpty()
+                ? attributeValue(player, MonkAttributes.UNARMED_TRAINING) : 0;
+        double handMining = hasFaction && player.getMainHandItem().isEmpty()
+                ? attributeValue(player, MonkAttributes.HAND_HARVEST_TRAINING) : 0;
+        updateAmount(player, Attributes.ATTACK_DAMAGE, TYZ_PALM_ID, handPower);
+        updateAmount(player, Attributes.MINING_EFFICIENCY, TYZ_HARVEST_ID, handMining);
+    }
+
+    private static double attributeValue(ServerPlayer player, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attribute) {
+        AttributeInstance a = player.getAttribute(attribute);
+        return a == null ? 0 : Math.max(0, Math.min(64, a.getValue()));
+    }
+
+    private static void updateAmount(ServerPlayer player,
+                                     net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attribute,
+                                     ResourceLocation modifierId, double amount) {
+        AttributeInstance a = player.getAttribute(attribute);
+        if (a == null) return;
+        AttributeModifier old = a.getModifier(modifierId);
+        if (old != null && Double.compare(old.amount(), amount) != 0) {
+            a.removeModifier(modifierId);
+            old = null;
+        }
+        if (amount > 0 && old == null) {
+            a.addTransientModifier(new AttributeModifier(modifierId, amount, AttributeModifier.Operation.ADD_VALUE));
+        }
     }
 
     private static void update(ServerPlayer player, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attribute,
