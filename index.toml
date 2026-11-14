@@ -26,7 +26,7 @@ hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
-hash = "e488fd42f0c1a801af589f59e8ff1fe2c2e2054e4364c95418fb0f2b4a309e2d"
+hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
 
 [[files]]
 file = "mods/akashic-tome.pw.toml"
