@@ -88,7 +88,12 @@ function tmmCexRestore(uuid, state) {
         // The pinned Mahou implementation shrinks THIS entity in place.
         // Newly generated random catalysts are distinct ItemEntities.
         const restore = state.original.copy()
-        restore.setCount(Math.min(remain, state.initialCount))
+        if (remain > state.initialCount) {
+          tmmCexError('Unexpected merged stack during temporary catalyst substitution')
+        }
+        // Never silently delete surplus items even if another mod merged
+        // into the temporary stack before its tick was cancelled.
+        restore.setCount(remain)
         entity.setItem(restore)
         const converted = state.initialCount - remain
         if (converted > 0 && tmmCexConversionsLogged < 5) {
@@ -141,7 +146,7 @@ NativeEvents.onEvent('net.neoforged.neoforge.event.tick.LevelTickEvent$Pre', eve
       TMM_CEX_CANDIDATES.delete(uuid)
       continue
     }
-    if (entity.level() !== level || TMM_CEX_ACTIVE.has(uuid)) continue
+    if (!entity.level().equals(level) || TMM_CEX_ACTIVE.has(uuid)) continue
     const stack = entity.getItem()
     const mahouItem = TMM_CEX_MAPPINGS[tmmCexItemId(stack)]
     if (!mahouItem) {
@@ -172,7 +177,7 @@ NativeEvents.onEvent('net.neoforged.neoforge.event.tick.LevelTickEvent$Post', ev
   const level = event.getLevel()
   if (level.isClientSide()) return
   for (const [uuid, state] of TMM_CEX_ACTIVE) {
-    if (state.entity.level() === level) tmmCexRestore(uuid, state)
+    if (state.entity.level().equals(level)) tmmCexRestore(uuid, state)
   }
 })
 
