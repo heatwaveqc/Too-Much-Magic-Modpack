@@ -1860,6 +1860,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "almostunified",
+      "name": "Almost Unified",
+      "category": "compatibility",
+      "desired": true,
+      "version": "AlmostUnified-NeoForge-1.21.1-1.4.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/almostunified/version/e8iYxxI3",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "almostunified",
+      "note": "Owner-requested conventional-material unification and Mahou ore-doubling candidate. Not release-integrated until gameplay, ore worldgen and special-gate tests."
     }
   ],
   "excluded": [
