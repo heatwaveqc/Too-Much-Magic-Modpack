@@ -9,6 +9,7 @@ import re
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"manifest/mods.json"
 CF_PROJECT=976858
+CF_FILE=6407807
 CANON="inventory-tweaks-refoxed"
 EXACT="invtweaks-1.21.1-1.3.2.jar"
 
@@ -26,7 +27,7 @@ def main():
     assert CANON not in before
     assert any(mod["id"]==CANON and mod["desired"] for mod in m["mods"])
     assert any(mod["id"]=="mouse-tweaks" and mod["enabled_in_pack"] for mod in m["mods"])
-    run("packwiz","--yes","curseforge","add","--addon-id",str(CF_PROJECT))
+    run("packwiz","--yes","curseforge","add","--addon-id",str(CF_PROJECT),"--file-id",str(CF_FILE))
     files=list((ROOT/"mods").glob("*.pw.toml"))
     matches=[]
     for path in files:
@@ -43,7 +44,7 @@ def main():
     if dl.get("hash-format") not in ("sha1","sha256","sha512") or not dl.get("hash"):
         raise RuntimeError("ReFoxed lacks pinned integrity hash")
     check_file_id=data["update"]["curseforge"].get("file-id")
-    if not isinstance(check_file_id,int):raise RuntimeError("File ID missing")
+    if check_file_id!=CF_FILE:raise RuntimeError("Unexpected CurseForge file ID "+str(check_file_id))
     assert "mouse-tweaks.pw.toml" in [p.name for p in files]
     if len(files)!=126:
         raise RuntimeError("Expected 126 exact mod metadata pins, got "+str(len(files)))

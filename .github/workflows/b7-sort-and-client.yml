@@ -1,4 +1,5 @@
 name: B7 Inventory Tweaks resolve and Prism client build
+# ReFoxed 1.3.2 pinned by official CurseForge file ID 6407807; never silently upgrade.
 on:
   push:
     branches: [build/b7-inventory-refoxed-qol-audit]
