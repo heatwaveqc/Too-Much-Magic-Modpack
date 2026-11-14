@@ -61,6 +61,15 @@
       ],
       "mode": "source-and-test-only",
       "note": "Research pilot; not added as gameplay JAR"
+    },
+    {
+      "name": "tyzs-core-first-wave",
+      "branch": "feature/tyzs-core-magic-first-wave",
+      "paths": [
+        "compat/magic/"
+      ],
+      "mode": "source-and-test-only",
+      "note": "Four 99-rank skills and MXP-only config preview; do not install the overlay without exact Tyz 6.4.2 pin and Pufferfish migration"
     }
   ],
   "covered_by_baseline": {
@@ -86,6 +95,7 @@
     "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement"
   },
   "pending_runtime_work": [
+    "Core Magic Tyz overlay is source-stageable and statically validated but not installed in packwiz until Tyz 6.4.2 is pinned; no playable skill UI yet",
     "Tyz 6.4.2 pack pin and MXP-only XP runtime bridge not yet implemented on an active branch",
     "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
     "New five-form Tyz trees and external locks are currently design-only",
