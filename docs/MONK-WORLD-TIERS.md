@@ -65,3 +65,21 @@ defeated Dragon/Guardian milestones can be credited retroactively.
 Until decided and tested, no enforcement is implemented.
 
 Machine-readable proposal: `compat/monk/profiles/world-tier-unlocks.json`.
+
+## Flight-module bypass uncovered in Draconic source
+
+**Source-verified:** `DEModules.java` declares Wyvern Flight as
+`flightData(true, false, 1)` (Elytra, no Creative), but Draconic Flight
+and Chaotic Flight as `flightData(true, true, 2)` and
+`flightData(true, true, 3.5)` respectively. The resulting flight module
+can be installed in a Draconic chestpiece, which Monk may use as a Curio.
+
+This makes the **post-Chaos Creative Flight goal potentially bypassable**
+through that Curio, even if Monk's own skill tree is locked. Audit
+Draconic flight-module recipes, acquisition and module activation in
+pinned 3.1.4.633. **Preferred solution:** gate effective true Creative
+Flight behind the Chaos Guardian at the pack/world-tier layer, not by
+banning Curios or unnecessarily duplicating a power the Monk can already
+wear. This is a newly discovered risk and **not an implemented gate**.
+
+Reference: https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/init/DEModules.java

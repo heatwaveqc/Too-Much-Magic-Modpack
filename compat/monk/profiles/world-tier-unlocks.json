@@ -63,8 +63,17 @@
     "Allow Curios including Draconic chestpiece body Curio; never treat that as disallowed conventional armor if worn in Curio slot",
     "Boss kills using qualified spells, summons, projectiles or unarmed hits must count; attribution and party-credit policy to decide",
     "World tier evidence is checked server-side at time of spending and never deduced solely from an FTB quest claim",
-    "ProjectE/Expansion must stay inaccessible until Chaos Guardian regardless of Monk rank or items"
+    "ProjectE/Expansion must stay inaccessible until Chaos Guardian regardless of Monk rank or items",
+    "Audit Draconic and Chaotic Flight modules: source grants Creative Flight before any Monk skill; if those modules are available pre-Chaos, their Curio functionality bypasses the intended gate. Do not disallow Curios; gate effective Creative mode at the pack tier."
   ],
   "attribution_policy": "pending exact owner decision on personal versus team participation; design must avoid repeatability exploits and unearned global world unlock",
-  "draconic_source": "https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/api/modules/entities/FlightEntity.java"
+  "draconic_source": "https://github.com/Draconic-Inc/Draconic-Evolution/blob/1.21/src/main/java/com/brandon3055/draconicevolution/api/modules/entities/FlightEntity.java",
+  "known_bypass_risk": {
+    "source": "Draconic-Inc/Draconic-Evolution 1.21 DEModules.java",
+    "wyvern_flight": "elytra only",
+    "draconic_flight": "elytra plus creative",
+    "chaotic_flight": "elytra plus creative",
+    "status": "not_yet_recipe_or_runtime_tested",
+    "preferred_mitigation": "central pack-wide creative flight tier gate after Chaos Guardian"
+  }
 }

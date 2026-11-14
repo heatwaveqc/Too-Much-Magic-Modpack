@@ -22,3 +22,14 @@ Do not add placeholder broken KubeJS recipes using speculative registry names.
 - **Exclude Re:Avaritia and Extended Crafting** (originally on hold, inadvertently pinned). No Infinity-tier equipment or separate ultra-crafting mechanic should obsolete Draconic Evolution or ProjectE Gem Armor.
 - Draconic Evolution and Chaos Guardian remain the critical late-game step; ProjectE and Project Expansion unlock **only after** the Guardian, as described above, and Gem Armor remains a meaningful late-game reward.
 - The Endgame category has detailed chapters for Draconic Evolution, ProjectE/Expansion and Replication. Progression has an Endgame Roadmap overview, as well as owner-approved Skills & Advancement and Exceptional Power: Reactors chapters.
+
+## Flight tier conflict noted (Monk design 2026-11-14)
+
+Monk's **innate** momentum-assisted glide unlocks after Ender Dragon;
+Monk's **innate** Creative Flight unlocks after Chaos Guardian. Draconic
+Evolution's Draconic and Chaotic Flight modules themselves enable Creative
+Flight and may be carried in the allowed Curio chestpiece. The pack must
+check whether their acquisition/use bypasses that milestone and,
+preferably, gate effective Creative Flight at the same world tier across
+all providers. Nothing has been gated in the running pack yet. See
+`MONK-WORLD-TIERS.md`.
