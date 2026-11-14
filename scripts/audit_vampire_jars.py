@@ -138,6 +138,38 @@ def inspect_pin(pin: str) -> None:
                     print("JAWR_INPUT_CALLER", cls, "exit", proc.returncode, flush=True)
                     for line in proc.stdout.splitlines()[:2200]:
                         print(" JAWR_CALLER_BC", line[:320], flush=True)
+                control_callers = []
+                for name in z.namelist():
+                    if not name.endswith(".class") or name.startswith("META-INF/"): continue
+                    raw = z.read(name)
+                    if any(marker in raw for marker in (
+                        b"clientRightClickAbility", b"handleScroll",
+                        b"AbilityHandler", b"AbilityEventHandler", b"getUTILITY_BUTTON",
+                        b"UseAbility", b"abilityIndex")):
+                        control_callers.append(name.removesuffix(".class").replace("/", "."))
+                print("JAWR_CONTROL_SECONDARY", sorted(control_callers), flush=True)
+                for cls in sorted(control_callers):
+                    if not ("mixin" in cls.lower() or "client" in cls.lower() or "Input" in cls or "Ability" in cls):
+                        continue
+                    if "$" in cls or cls.endswith(("AbilitySelectionScreen", "AbilityHudRenderer")):
+                        continue
+                    if cls in ("dev.sterner.witchery.feature.ability.AbilityHandler",
+                               "dev.sterner.witchery.feature.ability.AbilityEventHandler",
+                               "dev.sterner.witchery.feature.ability.ClientAbilityHandler",
+                               "dev.sterner.witchery.feature.ability.AbilityScrollHandler"): continue
+                    proc = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True,text=True,timeout=22)
+                    if proc.returncode != 0: continue
+                    lines=proc.stdout.splitlines()
+                    hits=[i for i,line in enumerate(lines) if
+                        any(key in line for key in ("AbilityHandler", "AbilityEventHandler",
+                            "WitcheryKeyMappings", "MouseHandler", "getUTILITY_BUTTON",
+                            "handleScroll", "clientRightClickAbility", "AbilityUseC2SPayload"))]
+                    if hits:
+                        print("JAWR_ACTIVATION_CALLER", cls, "hits",len(hits),flush=True)
+                        for i in hits[:35]:
+                            for ln in lines[max(0,i-13):min(len(lines),i+12)]:
+                                print(" JAWR_ACTIVATION", ln[:320], flush=True)
                 # Acquisition entrypoints: identify what triggers first-level advancement,
                 # how the sacrificial circle is created, and ritual materials.
                 for cls in sorted(classes):
