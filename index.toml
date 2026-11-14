@@ -979,11 +979,11 @@ hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
 [[files]]
 file = "config/almostunified/unification/materials.json"
-hash = "fca2e951d56374e72cddfd2c02d1362d154f3be5727efbaffb9201f7622c6641"
+hash = "d018b6cfea4a7f633bdb407c19c6836da45f454087a760385bb0098d818ab907"
 
 [[files]]
 file = "kubejs/server_scripts/material_unification.js"
-hash = "39a137392d31e9603726df0f5391e0af59c36d46f5c8b3bd19d55a8c08942fce"
+hash = "564f8d6891e1235c470e9e19084976466dd7d68c69f8d947b084df1258c4a53e"
 
 [[files]]
 file = "config/neovitae/materials.json"
@@ -1000,3 +1000,7 @@ hash = "8a56605d4d2a2a2ae6a90e48cf4df00465d5d21f21e66707d09c243306354639"
 [[files]]
 file = "kubejs/server_scripts/material_processing_cleanup.js"
 hash = "86aec79e3ed4b02ad7285ca0fd2999e0e7c08aab2f4bfc4e1c9de0d5c9c7744f"
+
+[[files]]
+file = "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js"
+hash = "2aa462bc5211abace54271ad0ec84de5155b17f8a2f817002fb31210133bc103"
