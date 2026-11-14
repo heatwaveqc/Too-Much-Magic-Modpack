@@ -55,3 +55,10 @@ training licenses; Pufferfish still handles nonoverlapping one-time
 shared choices. Effective caps, boss milestones, progression placement
 and any sixth stage are deferred to later review.
 See [MONK-TYZS-TIERED-ADVANCEMENT.md](MONK-TYZS-TIERED-ADVANCEMENT.md).
+
+
+## Superseding Tyz / Core Magic rule (2026-11-14)
+
+Owner's later decision **supersedes** the activity-XP/Pufferfish wording above. Pufferfish's Skills is removed from the *target skill architecture*, although the old packwiz snapshots retain its jar until the integrated Tyz migration. **MXP is the only ordinary source of Tyz experience**: normalize personal magical expenditures, rituals/crafts and boss kills, use the 1.2^P divisor for ordinary rewards, fixed undivided first ritual/boss rewards, and proposed fixed 100 MXP per Chaos Guardian repeat victory. All native Tyz activity XP sources are disabled in the Core Magic preview. Use a fixed **1,000 effective MXP / Tyz level / 1 SP** pool; Improvable Skills 3 continues using its unrelated vanilla-XP economy.
+
+The first-wave Core Magic preview on `feature/tyzs-core-magic-first-wave` provides **Reservoir, Wellspring, Thrift, Potency**, with 99 ranks each and 13 modifiers across seven mod namespaces; source-verified Ars/Iron/Psi cost hooks live in KubeJS. Stageable source only, not installed, and no MXP award dispatcher shipped. Five future form tabs (Vampire, Werewolf, Monk, Dragon, Lich) remain reserved. External tier locks use Tyz PurchasePre, with **one rank of the preceding node sufficient** for native prerequisites. See [skill preview and limitations](../compat/magic/README.md), and the in-progress [MXP integration contract (PR #27)](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27).
