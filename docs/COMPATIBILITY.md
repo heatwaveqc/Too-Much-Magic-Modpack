@@ -100,3 +100,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 
 - [Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608): 140 active pins, 127 hash-verified server-side JARs, 45 quest SNBT files copied, **dedicated server Done, exit 0**. Quest Shop and Cooking for Blockheads were resolved from the specifically approved 1.21.1 provider files, without unreviewed extra dependencies.
 - **Not proven:** GUI/shop purchases, actual QuestShop reward type claiming, Team currency propagation, repeated item-consumption sale security, Cooking Table/Oven registry or recipes, Artifacts shop SKU registry, chest/loot economy and post-Guardian gates. These remain test requirements, not assumed integrations.
+
+## Full Progression content candidate (2026-11-14)
+
+- The quest plan adds **65** new Progression tasks, including **32** nuclear/Draconic FE quests. Item identifiers and machine behavior were corroborated against the published **BiggerReactors Rework** 1.21.1 source/guide and Draconic Evolution's official `1.21` generated language keys. These are not substitutes for **live 3.1.4.633 / Rework 0.1.6 registry tests**.
+- Critical distinction: `biggerreactorsrework:reactor_terminal` is a nuclear generator interface; `draconicevolution:energy_core` is FE **storage**; `draconicevolution:reactor_core` is an extreme FE **generator** with meltdown risk. The latter's recipe may require post-Chaos materials, never granted by a quest. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md).
+- Do not assume uranium restriction, detailed endgame recipes, reactor safety, first-log give, Pufferfish tree or other integration just because the book describes them. In-game registry/item, reactor containment, book completion and GUI tests remain pending.

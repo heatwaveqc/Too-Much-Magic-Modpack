@@ -69,7 +69,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory' || github.ref_name == 'feature/ftb-quests-45-chapter-scaffold' || github.ref_name == 'feature/ftb-quests-intro-food-tips'
+    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory' || github.ref_name == 'feature/ftb-quests-45-chapter-scaffold' || github.ref_name == 'feature/ftb-quests-intro-food-tips' || github.ref_name == 'feature/progression-quests-full-tech'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

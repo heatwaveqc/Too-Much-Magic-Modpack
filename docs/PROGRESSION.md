@@ -28,3 +28,9 @@ Do not add placeholder broken KubeJS recipes using speculative registry names.
 - Add Quest Shop and Cooking for Blockheads (the latter lives in Food & Fishing). Strongly prefer thematically appropriate fixed-item quest rewards; currency only where a fixed item would be contrived, including deliberate selling contracts.
 - Quest Shop team currency may be generated indefinitely using ProjectE post-Chaos Guardian. No arbitrary item sell-anything store. Twelve copper/emerald/diamond exchange quests, three introductory sales and one highly inefficient repeatable sale per material; details in [QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md).
 - The shop can replace luck-dependent gathering (amethyst, Heart of the Sea, selected Artifacts) but never bypass signature boss/technology gates.
+
+## Full technology chapter — user decision (2026-11-14)
+
+- **Exceptional Power: Reactors is the entire approved technology questline**, not just a BiggerReactors subsection. It includes BiggerReactors Rework's uranium FE generator, cyanite/Industrial Processor, its modular Battery, optional turbine/exchanger branch; Draconic Evolution's **Energy Core multiblock FE bank**, pylons and crystal network; and the late **Draconic Reactor Core, four reactor stabilizers, injector, Flux Gate regulation and containment planning**.
+- Differentiate the Energy Core *storage bank* from Draconic Reactor *generator*, and both from BiggerReactors. Advanced operation checks are manual, safety-conscious, not fake telemetry automation. More construction instructions in [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md).
+- No extra FE transport/logistics mod. Do not unlock Chaos Shards, Draconic Reactors or ProjectE by checking a quest. Any required Chaos Guardian recipe gate is enforced independently. Uranium/draconium scarcity is still pending world-generation enforcement.

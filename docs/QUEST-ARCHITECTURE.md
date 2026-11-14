@@ -39,3 +39,7 @@ Finalize the five-category navigation and overall quests skeleton; design Introd
 ## Authored structure (feature candidate, 2026-11-14)
 
 The five FTB chapter groups and 45 chapter files, with no-reward optional overview entries, now exist on `feature/ftb-quests-45-chapter-scaffold`. This is navigation scaffolding, **not** the complete quest content or client-certified feature. The per-player first-log Trinkets Pouch prototype from PR #14 is integrated here without an additional FTB item reward. See [QUEST-SCAFFOLD.md](QUEST-SCAFFOLD.md) and the generated `manifest/quest_chapters.json` for exact IDs. Additional gating/content requires separately approved and tested steps.
+
+## Progression implementation (2026-11-14, candidate)
+
+The 45-chapter architecture is unchanged. All five Progression chapters are now populated with 65 substantive new quests on `feature/progression-quests-full-tech`; the full book has **168 entries**, including 12 earlier commodity sales and 42 still-temporary chapter overviews. Power/Reactors owns the complete BiggerReactors and Draconic Evolution FE technology track; the dedicated Endgame Draconic Evolution chapter will instead focus on boss fights and signature gear. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). Client/gameplay validation is outstanding.

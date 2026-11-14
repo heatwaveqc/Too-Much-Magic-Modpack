@@ -57,3 +57,10 @@
 - 61 authored quests + 42 other provisional chapter overviews = **103 quest entries**. Sale coins replace thematic items because these quests represent transactions; all quests grant positive XP.
 - Current economic catalog offers five categories and 29 buy entries. No generic sell-anything mechanism; ProjectE-based material printing is expressly permitted once ProjectE is unlocked.
 - Both newly approved mods were subsequently **pinned to exact provider versions, SHA-verified, and combined dedicated-server-smoked** in [B11 Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608). **Client/GUI, kitchen and team-economy integration is still pending.**
+
+## Progression first content pass (2026-11-14)
+
+- The five Progression chapters now contain **10 + 10 + 6 + 7 + 32 = 65 additional original quests**, on top of the existing 12 commodity sales. There are **168 FTB Quest objects across 45 chapters**, 126 authored quests plus 42 original overview entries.
+- **Exceptional Power: Reactors** is the **full technology tree** for this magic-focused pack, spanning BiggerReactors Rework (FE generator, fuel, battery, optional turbine and processor) and Draconic Evolution (energy storage bank, pylons, crystals, later high-risk Draconic Reactor). See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md).
+- Endgame Roadmap is read-only guide/checkmark quests with no boss kills, materials or progression bypasses; detailed boss objectives belong to their actual chapters.
+- All 65 new quests use fixed XP and item rewards. Repaired 15 older undefined descriptions. Pending Prism GUI/registry verification and dedicated server branch smoke.
