@@ -51,7 +51,7 @@
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Primary Tyz skill owner remains separate; do not duplicate purchasable trees",
+      "note": "Native Monk faction source and unit checks; Vampirism 1.10 configured-tree codec requires children array (runtime error repaired upstream); initiation and playable perks remain unimplemented",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
