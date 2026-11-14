@@ -68,3 +68,19 @@ Note: the long 95-recipe dynamic group is **one** Polymorph group. Some intentio
 - Keep a non-destructive record of flagged recipe IDs, owners, chosen fixes, and a baseline comparison.
 - Keep Polymorph pinned even if the regression suite reports zero conflicts; do not assume our scanner covers every crafting station.
 - Only mark the issue integrated when the final-world client crafting test and normal dedicated-server tests pass.
+
+## Silver equipment consolidation regression — PASS (2026-11-14)
+
+- **Pass**: [run 43629084400](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43629084400), [artifact](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43629084400/artifacts/14127790398) contains raw native `polymorph-conflicts.log`, parsed `recipe-conflicts.json`, readable report, KubeJS logs and equipment-material-family census.
+- Before targeted recipe removal: **93 potential Polymorph groups**, including **60 crafting** groups. After KubeJS removal of exactly 14 duplicate *silver-equipment* recipe IDs: **84 total** groups, including **51 crafting** groups. The change is exactly **nine resolved cross-mod equipment-slot conflicts** (five tool categories, four armor categories).
+- Regression `scripts/check_silver_conflicts.py` passes: **zero remaining cross-recipe silver-equipment groups**. No other recipe type changed its count: 17 smelting, 14 blasting, one smoking, one smithing.
+- Both `silver_equipment_stats.js` startup script and `silver_equipment_unification.js` server script loaded with **zero KubeJS errors**. Existing KubeJS fallback warnings about Psi Tweaks recipes and Malum/Botania spirit repair remain unrelated and need separate review.
+- **Still intentionally not resolved** by this equipment pass: raw silver/ore/dust furnace overlaps, silver ingot/block compaction collisions, other magical altar collisions, food collisions, and special/dynamic recipe groups. Do not use the raw 84 number as the count of player-facing bugs.
+- Modded-server startup proves registration and recipe scanner behavior. Client JEI, damage and mining speed checks are still required.
+
+### Other equipment materials — census of the actual pin set
+
+A separate scan of 128 pinned server-side JAR files indexed conventional `<material>_<equipment_slot>` item models and shaped/shapeless crafting outputs, then grouped names across mods. **Silver is the only cross-provider generic equipment family detected**: all nine slots from Embers/Eidolon/Werewolves. No cross-provider generic lead, copper, iron, gold, bronze, steel, pewter, electrum, netherite or diamond family was detected in this scan.
+
+**Scope caution:** source recipe/model names are not a complete runtime registry; the scanner does not know supernatural effects, tag overrides, specialized recipe managers or uniquely named magical gear. Existing *material* overlaps remain significant: lead ore and ingots (Embers/Eidolon), silver metal forms (four providers), sulfur dust, quartz variants, copper nugget-to-ingot conversions, and iron/gold dust smelting. Those need material-level canonical decisions, not the unified generic silver-tool treatment.
+
