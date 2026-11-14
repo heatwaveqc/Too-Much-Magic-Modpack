@@ -451,12 +451,12 @@
       "name": "Enigmatic Legacy+",
       "category": "power",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": null,
+      "version": "1.1.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/enigmatic-legacy-plus/files/9141458",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+      "note": "User-approved planned inclusion, not installed or smoke-tested. Release 1.1.2 confirmed for NeoForge 1.21.1 (CurseForge file ID 9141458, Oct 12 2026). Public source: https://github.com/Auviotre/Enigmatic-Legacy-Plus . Dependencies: Curios API, Patchouli, Caelus API (verify exact pins and server/client closure). Major death compatibility risk: Eldritch Amulet keepInventory, Storage Crystal/Ascension Amulet drops+XP and Escape Scroll oppose Corail Tombstone; Ring of Seven Curses Soul Crystal penalty can be preserved independently. See docs/POST-DEATH-OWNERSHIP.md; configuration and tests not yet applied."
     },
     {
       "id": "entity-culling",
