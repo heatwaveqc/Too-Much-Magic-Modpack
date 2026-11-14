@@ -35,15 +35,15 @@ jobs:
         run: bash scripts/smoke_server.sh
       - name: Download verified packwiz bootstrap for Prism
         run: |
-          curl --fail --location --retry 3 --retry-delay 2 \\
-            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \\
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
           test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
       - name: Package isolated Prism vampire test instance
         run: |
-          python3 scripts/build_vampire_prism.py \\
-            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \\
-            "${{ runner.temp }}" "${{ github.sha }}" \\
+          python3 scripts/build_vampire_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "${{ github.sha }}" \
             "${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
       - name: Upload importable Prism test ZIP
         uses: actions/upload-artifact@v4
