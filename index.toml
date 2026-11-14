@@ -50,7 +50,7 @@ metafile = true
 
 [[files]]
 file = "mods/ars-elemancy.pw.toml"
-hash = "1bb8715ec65c1316ab6a982df05577a44b3a339813e8278b45c9952bfec65955"
+hash = "12caf58c8583c17a41aebe2a836d0b48b4996334137e97b76c62e6b5b62791b5"
 metafile = true
 
 [[files]]
@@ -111,6 +111,11 @@ metafile = true
 [[files]]
 file = "mods/brandons-core.pw.toml"
 hash = "7904c140247e0d8a87231cf4d36718fc018e0f851dbec2517b673acdc25547df"
+metafile = true
+
+[[files]]
+file = "mods/caelus.pw.toml"
+hash = "86cf2ae835b8f3d981af2e88a4d19fdc3dc4f5aa3904c6ba30e25d77d3e9fcbb"
 metafile = true
 
 [[files]]
@@ -436,6 +441,11 @@ metafile = true
 [[files]]
 file = "mods/patchouli.pw.toml"
 hash = "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d"
+metafile = true
+
+[[files]]
+file = "mods/paucal.pw.toml"
+hash = "0ed2f660db1882809d337791ee06cc9ba49a36fb32d6e919cb9a8eb51e72d7ab"
 metafile = true
 
 [[files]]

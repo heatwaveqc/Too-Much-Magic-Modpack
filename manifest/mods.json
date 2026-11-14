@@ -120,12 +120,12 @@
       "name": "Ars Elemancy",
       "category": "magic_addon",
       "desired": true,
-      "version": "ars_elemancy-1.21.1-1.17",
+      "version": "ars_elemancy-1.21.1-1.18.3",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/mR4yp7HM",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1153666",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "User-approved in PR #6. B5 pinned and server test pending. Modrinth upstream release type: release",
+      "note": "Pinned actual required NeoForge 1.21.1 version. Required >=1.18.3 to satisfy Ars 'n Spells 3.3.5.",
       "packwiz_slug": "ars-elemancy"
     },
     {
@@ -305,6 +305,19 @@
       "dependencies_verified": false,
       "packwiz_slug": "brandons-core",
       "note": "Required library pinned by exact CurseForge file ID"
+    },
+    {
+      "id": "caelus",
+      "name": "Caelus API",
+      "category": "dependency",
+      "desired": true,
+      "version": "caelus-neoforge-7.0.1+1.21.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/308989",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "caelus",
+      "note": "Pinned actual required NeoForge 1.21.1 version. Required by HexCast and Enigmatic Legacy+."
     },
     {
       "id": "cataclysm",
@@ -1115,6 +1128,19 @@
       "packwiz_slug": "patchouli"
     },
     {
+      "id": "paucal",
+      "name": "PAUCAL",
+      "category": "dependency",
+      "desired": true,
+      "version": "paucal-0.7.0+neoforge-1.21.1",
+      "release_status": "experimental_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/597824",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "paucal",
+      "note": "Pinned actual required NeoForge 1.21.1 version. Required alpha-tagged library of HexCast; test-only candidate."
+    },
+    {
       "id": "placebo",
       "name": "Placebo",
       "category": "dependency",
@@ -1739,6 +1765,7 @@
         "ars-ocultas",
         "ars-unification",
         "aspect-alchemy",
+        "caelus",
         "cloth-config",
         "common-network",
         "databank",
@@ -1759,6 +1786,7 @@
         "malum",
         "modopedia",
         "pastel",
+        "paucal",
         "primal-magick",
         "psi",
         "psi-tweaks",
@@ -1773,7 +1801,7 @@
         "vampirism",
         "werewolves"
       ],
-      "status": "server_failed_after_lodestone_repair"
+      "status": "server_smoked_client_pending"
     }
   ]
 }
