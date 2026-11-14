@@ -15,8 +15,21 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B6: 125 packwiz mod pins, 118 server/both-side JARs passed full dedicated-server boot 2026-11-13 (America/Phoenix); 7 client-only JARs not GUI tested. Includes Pufferfish Skills beta and Improvable Skills 3; excludes Aspect Alchemy. Immutable client test snapshot ecddc4342c439a2b973ad16acff112b7d0a4bb60.",
+  "note": "B6: 125 packwiz mod pins, 118 server/both-side JARs passed full dedicated-server boot 2026-11-13 (America/Phoenix); 7 client-only JARs not GUI tested. Includes Pufferfish Skills beta and Improvable Skills 3; excludes Aspect Alchemy. Immutable client test snapshot ecddc4342c439a2b973ad16acff112b7d0a4bb60. Feature branch feature/akashic-tome-starter-storage adds a 126th pinned mod; this addition is not part of the 125-mod B6 server-smoke certification.",
   "mods": [
+    {
+      "id": "akashic-tome",
+      "name": "Akashic Tome",
+      "category": "qol",
+      "desired": true,
+      "version": "AkashicTome-1.8-30.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/akashic-tome/files/7773841",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "note": "Added to feature branch as 1.21.1 NeoForge stable release; metadata verified against public release, gameplay and combined server startup still require testing. Consolidation of starter books is a separate planned feature.",
+      "packwiz_slug": "akashic-tome"
+    },
     {
       "id": "apotheosis",
       "name": "Apotheosis",
@@ -1967,6 +1980,14 @@
         "puffish-skills"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B9",
+      "name": "Akashic Tome guidebook consolidation (feature candidate)",
+      "members": [
+        "akashic-tome"
+      ],
+      "status": "installed_smoke_pending"
     }
   ]
 }
