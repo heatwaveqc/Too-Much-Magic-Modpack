@@ -1,0 +1,47 @@
+name: MXP ledger compilation and progression tests
+on:
+  push:
+    paths:
+      - 'compat/mxp/**'
+      - '.github/workflows/mxp-core.yml'
+  pull_request:
+    paths:
+      - 'compat/mxp/**'
+      - '.github/workflows/mxp-core.yml'
+permissions:
+  contents: read
+jobs:
+  pure-arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile standalone MXP arithmetic and ledger
+        run: |
+          mkdir -p /tmp/tmm-mxp-classes
+          javac -d /tmp/tmm-mxp-classes \
+            compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpMath.java \
+            compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpAccount.java
+  compile-and-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: compat/mxp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Build NeoForge addon and run JUnit tests
+        run: gradle --no-daemon clean build
+      - name: Verify output JAR is generated
+        run: test -f build/libs/tmm_mxp-0.1.0-dev.jar
