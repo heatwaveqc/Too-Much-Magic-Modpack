@@ -113,3 +113,13 @@ skill, not duplicate mod-specific stats. The Pufferfish backend remains
 an **experiment**: documented skill nodes are binary and cannot
 indefinitely level without generated nodes or a custom bridge/UI.
 See `../../docs/MONK-TWO-LAYER-SMOKE-TEST.md`.
+
+## Ranked backend alternatives
+
+[Full assessment](../../docs/MONK-SKILL-BACKEND-EVALUATION.md):
+Improvable Skills 3 is the first candidate for an addon-registered,
+Monk-gated leveled skill because it already stores per-skill ranks and
+checks `canUpgrade` on normal server purchases. The short rank limit,
+vanilla XP costs, separate GUI and unguarded skill-scroll path require
+explicit testing before integration. No implementation or mod roster
+change has been made.

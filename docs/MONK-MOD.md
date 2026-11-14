@@ -171,3 +171,17 @@ Test a faction-permitted category or unlock-only branch sentinel first;
 use custom repeatable rank storage/UI if necessary. No actual
 Pufferfish gating or modified skill tree has been implemented.
 See [MONK-TWO-LAYER-SMOKE-TEST.md](MONK-TWO-LAYER-SMOKE-TEST.md).
+
+## Ranked-skill backend research (2026-11-14)
+
+[Detailed comparison](MONK-SKILL-BACKEND-EVALUATION.md): Improvable Skills 3,
+**already installed**, is now the preferred **first source-backed prototype**
+for purchased numeric ranks. Its API supports addon registered skills and
+an overridable `canUpgrade` faction gate; its regular upgrade packet calls
+that method server-side. Limits: player ranks persisted as Java `short`
+(normal maximum 32766), vanilla XP `int` price, separate skills-book UI,
+and skill scrolls can bypass gating if enabled. Do **not** enable scrolls
+for Monk-gated skills. Pufferfish has levelable categories but stores only
+boolean skill-node IDs. Tyz's Skills has a clean cancellable purchase API
+but a hard 99-rank cap. **No backend selection or mod addition is locked**, and
+no gameplay proof exists.

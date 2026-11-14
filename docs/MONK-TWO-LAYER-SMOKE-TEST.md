@@ -1,3 +1,10 @@
+> **Backend update, 2026-11-14:** The Pufferfish repeatable-skill purchase
+> hypothesis is not proven. First prototype should compare already-installed
+> **Improvable Skills 3** (real per-trait ranks, 32766 short upper cap,
+> server-side `canUpgrade`) as an alternate. Critical scroll bypass and
+> vanilla XP currency issues are in
+> [MONK-SKILL-BACKEND-EVALUATION.md](MONK-SKILL-BACKEND-EVALUATION.md).
+
 # Monk faction + unified Pufferfish skills: technical smoke-test proposal
 
 **Status 2026-11-14: owner-proposed architecture; not a runtime
