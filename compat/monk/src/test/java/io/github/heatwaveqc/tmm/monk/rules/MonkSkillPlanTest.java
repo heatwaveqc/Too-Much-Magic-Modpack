@@ -109,13 +109,13 @@ final class MonkSkillPlanTest {
         assertEquals(3, speed.getAsJsonArray("source_attributes").size());
     }
 
-    @Test void affixTechniquesCoverAllNinetyNineWithSourceSupportedRanks() throws Exception {
+    @Test void affixTechniquesCoverAllNinetyEightExceptUnbound() throws Exception {
         var source = load("affix-inventory-apotheosis-8.9.0.json");
         var plan = load("skill-affix-techniques-v1.json");
         var originalAffixes = source.getAsJsonArray("definitions");
         var techniques = plan.getAsJsonArray("skills");
         assertEquals(99, originalAffixes.size());
-        assertEquals(99, techniques.size());
+        assertEquals(98, techniques.size());
         Set<String> affixIds = new HashSet<>();
         for (var entry : originalAffixes) affixIds.add(entry.getAsJsonObject().get("id").getAsString());
         Set<String> skillIds = new HashSet<>();
@@ -136,13 +136,13 @@ final class MonkSkillPlanTest {
             assertFalse(id.equals("tmm_monk:creative_flight"));
             assertEquals("design_only", skill.get("implementation_status").getAsString());
         }
-        assertTrue(affixIds.isEmpty());
+        assertEquals(Set.of("apotheosis:armor/attribute/unbound"), affixIds);
         assertEquals(32, plan.get("duplicate_source_value_rarity_collapses").getAsInt());
 
-        var unbound = techniques.get(13).getAsJsonObject();
-        assertEquals("apotheosis:armor/attribute/unbound", unbound.get("source_affix").getAsString());
-        assertEquals("neoforge:creative_flight", unbound.get("source_attribute").getAsString());
-        assertTrue(unbound.get("effect_contract").getAsString().contains("NEVER grant Creative Flight"));
+        assertEquals(99, plan.get("source_total").getAsInt());
+        assertEquals(98, plan.get("total").getAsInt());
+        assertEquals("apotheosis:armor/attribute/unbound",
+                plan.getAsJsonArray("excluded_source_affixes").get(0).getAsJsonObject().get("id").getAsString());
     }
 
     @Test void dragonSurvivalRosterIsApprovedButNotInstalled() throws Exception {

@@ -55,11 +55,16 @@
     "original_monk_ability_crosswalk": "original-monk-abilities-1.4.json"
   },
   "affix_unlocks": {
-    "mode": "all_pinned_apotheosis_affix_definitions",
+    "mode": "all_source_affixes_except_unbound",
     "inventory_file": "affix-inventory-apotheosis-8.9.0.json",
-    "count_expected": 99,
+    "count_expected": 98,
     "adapters_required": true,
-    "status": "not_implemented"
+    "status": "not_implemented",
+    "source_definition_count": 99,
+    "excluded_source_ids": [
+      "apotheosis:armor/attribute/unbound"
+    ],
+    "exclusion_note": "No Monk Creative Flight unlock nor invented Unbound powered-flight benefit."
   },
   "numeric_player_attributes": {
     "mode": "all_applicable_player_attributes_runtime_registry",

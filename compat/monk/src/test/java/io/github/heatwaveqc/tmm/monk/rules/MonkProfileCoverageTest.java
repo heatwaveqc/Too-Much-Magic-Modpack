@@ -48,7 +48,9 @@ public class MonkProfileCoverageTest {
             assertEquals("requires_monk_adapter", item.get("status").getAsString());
         }
         JsonObject tmm = load("too-much-magic.json");
-        assertEquals(rows.size(), tmm.getAsJsonObject("affix_unlocks").get("count_expected").getAsInt());
+        assertEquals(rows.size()-1, tmm.getAsJsonObject("affix_unlocks").get("count_expected").getAsInt());
+        assertEquals("apotheosis:armor/attribute/unbound", tmm.getAsJsonObject("affix_unlocks")
+                .getAsJsonArray("excluded_source_ids").get(0).getAsString());
     }
 
     @Test void apothicAttributeInventoryIsCompleteForPinnedSourceSnapshot() throws IOException {

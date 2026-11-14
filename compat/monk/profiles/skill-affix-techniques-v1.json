@@ -3,19 +3,19 @@
   "kind": "tmm_monk_affix_skill_catalog",
   "source_release": "Apotheosis-1.21.1-8.9.0",
   "source": "https://github.com/Shadows-of-Fire/Apotheosis/tree/1.21/src/generated/resources/data/apotheosis/affixes",
-  "total": 99,
+  "total": 98,
   "rank_rule": "Affix ranks correspond to distinct effective source-value tiers, not every original rarity. Identical values on adjacent source rarities are collapsed (32 affixes affected). If deterministic maximum roll or native effect caps make further steps indistinguishable, omit those additional paid ranks before implementation. Source rarities are preserved as provenance, not all separate paid levels.",
   "condition": "Not a standalone weapon or armor enchantment; each technique must work for Monk's empty hands, legal spirit projectile, passives or counterattacks, without illegal gear.",
-  "creative_flight_exception": "Apotheosis Unbound has neoforge:creative_flight; Monk Unbound must NOT supply this; only enhance Draconic Curio supplied flight.",
+  "creative_flight_exception": "Removed entirely; source Unbound retained only in original 99-affix research inventory.",
   "gameplay_status": "not_implemented",
   "rarity_rank_distribution": {
-    "1": 17,
+    "1": 16,
     "2": 16,
     "3": 23,
     "4": 35,
     "5": 8
   },
-  "source_attribute_technique_count": 44,
+  "source_attribute_technique_count": 43,
   "skills": [
     {
       "id": "tmm_monk:apotheosis/armor/attribute/adamantine",
@@ -347,26 +347,6 @@
       "distinct_value_rarity_milestones": [
         "rare",
         "epic",
-        "mythic"
-      ],
-      "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
-    },
-    {
-      "id": "tmm_monk:apotheosis/armor/attribute/unbound",
-      "name": "Unbound [armor]",
-      "source_affix": "apotheosis:armor/attribute/unbound",
-      "family": "body_defense",
-      "rank_model": "once",
-      "max_ranks": 1,
-      "allowed_source_rarities": [
-        "mythic"
-      ],
-      "source_attribute": "neoforge:creative_flight",
-      "source_effect_family": "armor/attribute",
-      "source_tier_status": "Full 99/99 upstream JSON values reviewed; repeated identical source effects collapsed. This is an upper bound pending final effective semantics/native cap tests.",
-      "effect_contract": "CRITICAL EXCEPTION: original affix grants neoforge:creative_flight. TMM version may ONLY improve/control flight already furnished by an allowed Draconic Evolution Curio; NEVER grant Creative Flight or flight permission.",
-      "implementation_status": "design_only",
-      "distinct_value_rarity_milestones": [
         "mythic"
       ],
       "rank_cap_status": "source_distinct_effect_upper_bound; do not sell levels with no effective improvement"
@@ -2397,5 +2377,12 @@
     }
   ],
   "duplicate_source_value_rarity_collapses": 32,
-  "rank_audit_status": "99/99 definitions read; 32 had duplicated value JSON across rarity steps. Final effect-specific balance testing required."
+  "rank_audit_status": "99/99 source affix definitions examined; 98 TMM technique candidates after Unbound exclusion. Among 98, 32 have duplicate rarity values. Not in-game implemented.",
+  "source_total": 99,
+  "excluded_source_affixes": [
+    {
+      "id": "apotheosis:armor/attribute/unbound",
+      "reason": "Creative Flight is not a Monk skill, and a passive modifier of already granted Creative Flight is not meaningful enough to buy. Draconic Evolution Curio remains the sole chosen provider."
+    }
+  ]
 }
