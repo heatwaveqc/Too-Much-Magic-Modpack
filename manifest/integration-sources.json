@@ -60,12 +60,12 @@
     },
     {
       "name": "monk-faction",
-      "branch": "design/monk-no-pufferfish-skill-placement",
+      "branch": "feature/monk-first-sunset-step-assist",
       "paths": [
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Native Monk faction source and unit checks; Vampirism 1.10 configured-tree codec requires children array (runtime error repaired upstream); initiation and playable perks remain unimplemented",
+      "note": "Latest playable Monk first slice: First Sunset 200-tick west-horizon initiation and one Step Assist root (+0.5 step height), unit-tested source but unverified runtime. Supersedes prior Monk scaffold and no duplicate Tyz engine.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
@@ -129,7 +129,8 @@
     "design/b6-pufferfish-unification-reconciliation": "Historical Pufferfish design; newer Tyz planning supersedes it",
     "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement",
     "feature/silver-equipment-unification": "Ancestor of current material-processing-recipe-cleanup implementation branch, which carries the same materials/recipe files",
-    "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation."
+    "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation.",
+    "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot."
   },
   "pending_runtime_work": [
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
@@ -137,9 +138,9 @@
     "Tyz 6.4.2 pack pin and MXP-only XP runtime bridge not yet implemented on an active branch",
     "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
     "New five-form Tyz trees and external locks are currently design-only",
-    "Monk initiation and executable perks are not implemented by existing scaffold",
     "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
-    "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit."
+    "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
+    "New first Monk slice: 10s Overworld sunset gaze and Step Assist are compiled but must be tested in a disposable client world for eligible/non-eligible cases, persistence, gear and full transformation exclusions."
   ]
 }
