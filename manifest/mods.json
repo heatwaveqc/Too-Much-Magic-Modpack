@@ -448,6 +448,18 @@
       "packwiz_slug": "kubejs"
     },
     {
+      "id": "lithostitched",
+      "name": "Lithostitched",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lithostitched",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required dependency of Tectonic; confirm/pin the exact NeoForge 1.21.1 artifact and transitive dependencies before installing."
+    },
+    {
       "id": "lootr",
       "name": "Lootr",
       "category": "qol",
@@ -700,6 +712,18 @@
       "dependencies_verified": false
     },
     {
+      "id": "tectonic",
+      "name": "Tectonic",
+      "category": "worldgen",
+      "desired": true,
+      "version": "3.0.28",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/tectonic/files/8855043",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved terrain overhaul in place of Terralith. Preserve familiar vanilla biomes; do not add large biome catalogs. CurseForge project 686836, file 8855043 is NeoForge 1.21.1. Lithostitched and structure/ore worldgen interactions must be checked before activation."
+    },
+    {
       "id": "theurgy",
       "name": "Theurgy",
       "category": "magic",
@@ -770,6 +794,10 @@
     {
       "id": "separate-fe-transfer",
       "reason": "hard design exclusion"
+    },
+    {
+      "id": "terralith",
+      "reason": "Worldgen design exclusion: avoid excessive custom biome proliferation; use Tectonic to reshape terrain while preserving recognizable vanilla biomes."
     }
   ],
   "items_blacklist": [
@@ -833,7 +861,7 @@
     },
     {
       "id": "B3",
-      "name": "Other magic + dimensions + bosses",
+      "name": "Other magic + worldgen + dimensions + bosses",
       "members": [
         "astral-sorcery",
         "witchery-remake",
@@ -841,7 +869,9 @@
         "roots-classic",
         "evilcraft",
         "botania",
-        "cataclysm"
+        "cataclysm",
+        "lithostitched",
+        "tectonic"
       ],
       "status": "planned"
     },
