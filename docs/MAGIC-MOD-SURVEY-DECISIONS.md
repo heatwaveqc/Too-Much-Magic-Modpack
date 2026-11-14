@@ -129,3 +129,9 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 - **Defer** skill-tree point limits, caps, levels and inter-mod balance to a dedicated later pass. Exact dependency closure and version pairing still require validation before packwiz installation.
 - This approval does **not** approve every additional Vampirism addon. The pre-existing ten named addon approvals remain separate.
 
+## I. Core Ars Nouveau and Pufferfish custom progression (2026-11-13 clarification)
+
+- **Ars Nouveau stays**. It is a foundational magic mod for this pack, with all seven separately approved Ars addons already in the desired roster. Do not import a preference from a separate Minecraft playthrough that avoided Ars Nouveau.
+- **Add Pufferfish's Skills** and **Pufferfish's Attributes** as approved future additions to implement the shared character skill tree across magic mods. Both are separate projects, and both are intentionally `enabled_in_pack: false` until a future reviewed install and boot test.
+- Candidate target versions: Skills `puffish_skills-0.19.2-1.21-neoforge` (beta-tagged upstream, 1.21.1-compatible), Attributes `puffish_attributes-0.8.3-1.21-neoforge` (release). They are not pinned files and are not approved exceptions to the existing beta policy. Verify exact file IDs and dependency closure first.
+- Sources: https://www.curseforge.com/minecraft/mc-mods/puffish-skills/files/all and https://www.curseforge.com/minecraft/mc-mods/puffish-attributes/files/all .
