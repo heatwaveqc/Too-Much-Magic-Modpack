@@ -2,7 +2,7 @@
 """Normalize the 1.21.1 FTB Quests book: translations, descriptions and readable layouts.
 
 FTB Quests 2101.x reads user-visible quest text from:
-  config/ftbquests/quests/lang/en_us/chapters/<chapter>.snbt
+  config/ftbquests/quests/lang/en_us.snbt
 NOT the 'title'/'description' fields embedded in chapter data.
 This script is intentionally idempotent and never changes any quest, task or reward ID.
 """
@@ -298,7 +298,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
         regex = re.compile(r'(file = "' + re.escape(key) + r'"\nhash = ")[0-9a-f]+(")')
         if regex.search(index):
             index = regex.sub(lambda m: m.group(1) + value + m.group(2), index, count=1)
-        elif "/lang/en_us/chapters/" in key:
+        elif key.endswith("/lang/en_us.snbt"):
             index += f'\n[[files]]\nfile = "{key}"\nhash = "{value}"\n'
         else:
             raise ValueError(f"Packwiz omitted existing config file: {key}")
@@ -306,7 +306,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
     pack = re.sub(r'^version = ".*"$',
-                  'version = "0.8.6-quest-localization-ui-repair-candidate"',
+                  'version = "0.8.8-quest-vampire-qa"',
                   pack, count=1, flags=re.M)
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(
@@ -320,6 +320,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
 def main() -> None:
     positions = layout()
     changes: dict[Path, str] = {}
+    all_quest_translations: list[str] = []
     contents = []
     seen = set()
     locs = {}
@@ -362,8 +363,7 @@ def main() -> None:
         if "undefined" in original:
             raise ValueError(f"Invalid undefined value left in {chapter_path.name}")
         changes[chapter_path] = original
-        locpath = QUESTDIR / "lang/en_us/chapters" / chapter["filename"]
-        changes[locpath] = "{\n" + "\n".join(translations) + "\n}\n"
+        all_quest_translations.extend(translations)
 
     if len(seen) != 179 or intro_count != 137:
         raise ValueError(f"Expected 179 objects / 137 authored, got {len(seen)} / {intro_count}")
@@ -376,8 +376,7 @@ def main() -> None:
             f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([subtitle], ensure_ascii=False)}')
     for group in SPEC["groups"]:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
-    changes[QUESTDIR / "lang/en_us/chapter.snbt"] = "{\n" + "\n".join(chapter_translations) + "\n}\n"
-    changes[QUESTDIR / "lang/en_us/chapter_group.snbt"] = "{\n" + "\n".join(group_translations) + "\n}\n"
+    changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations) + "\n}\n"
 
     for path, content in changes.items():
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -388,14 +387,14 @@ def main() -> None:
         "schema_version": 1,
         "source": "scripts/rebuild_quest_ui.py",
         "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
-        "notes": "Fixed IDs and separate per-chapter English translations; manual stage-based layouts. Not a Prism client rendering test.",
+        "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
         "quest_count": len(contents),
         "chapters": len(SPEC["chapters"]),
         "positions": contents,
     }
     (ROOT / "manifest/quest_layouts.json").write_text(
         json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"PASS: generated 45 chapter locale files; {len(seen)} named quests, {intro_count} authored")
+    print(f"PASS: generated one FTB Quests en_us.snbt for 45 chapters; {len(seen)} named quests, {intro_count} authored")
     print("PASS: quest, task and reward IDs preserved; inline title/description/undefined removed")
     print("PASS: new chapter layouts, five labeled groups, packwiz hash chain updated")
 

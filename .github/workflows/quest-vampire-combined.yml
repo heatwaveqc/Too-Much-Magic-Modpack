@@ -1,0 +1,84 @@
+name: Combined Quest + Vampire QA
+on:
+  push:
+    branches: ['test/quest-vampire-localization-2026-11-14']
+    paths:
+      - 'scripts/migrate_quest_localization.py'
+      - 'scripts/build_vampire_prism.py'
+      - 'scripts/validate_quests.py'
+      - 'scripts/rebuild_quest_ui.py'
+      - 'compat/transformations/**'
+      - '.github/workflows/quest-vampire-combined.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qa-prism:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Migrate FTB Quests translations and refresh hash pins
+        run: |
+          python3 scripts/migrate_quest_localization.py
+          python3 -m py_compile scripts/migrate_quest_localization.py scripts/rebuild_quest_ui.py scripts/build_vampire_prism.py scripts/validate_quests.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+      - name: Commit corrected quest localization to QA branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/ftbquests/quests/lang index.toml pack.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "fix: use single FTB 2101 en_us.snbt and repair packwiz indexes"
+            git push origin HEAD:test/quest-vampire-localization-2026-11-14
+          fi
+      - name: Compile and unit-test first-party vampire bridge
+        working-directory: compat/transformations
+        run: gradle --no-daemon build
+      - name: Full B12 dedicated-server smoke with vampire bridge
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '660'
+          WORK_DIR: ${{ runner.temp }}/tmm-quest-vampire-smoke
+          SMOKE_EXTRA_MOD_JAR: ${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+        run: bash scripts/smoke_server.sh
+      - name: Fetch official packwiz bootstrap
+        run: |
+          curl -fL --retry 3 --retry-delay 2 -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Package exact commit Prism QA instance + custom bridge JAR
+        run: |
+          python3 scripts/build_vampire_prism.py "${{ runner.temp }}/packwiz-installer-bootstrap.jar" "${{ runner.temp }}" "$(git rev-parse HEAD)" "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+          test -f "${{ runner.temp }}/Too-Much-Magic-Quest-Vampire-QA-Prism.zip"
+      - name: Publish importable Prism ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Quest-Vampire-QA-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-Quest-Vampire-QA-Prism.zip
+          retention-days: 30
+          if-no-files-found: error
+      - name: Preserve disposable-server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Quest-Vampire-QA-Logs
+          path: |
+            ${{ runner.temp }}/tmm-quest-vampire-smoke/server.log
+            ${{ runner.temp }}/tmm-quest-vampire-smoke/logs/latest.log
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,64 @@
+name: Vampire bridge full-modpack dedicated-server smoke
+on:
+  push:
+    paths:
+      - 'compat/transformations/**'
+      - '.github/workflows/transformation-vampire-server-smoke.yml'
+      - 'scripts/smoke_server.sh'
+      - 'scripts/build_vampire_prism.py'
+      - 'scripts/build_b8_prism.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  modded-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Build custom bridge with its own tests
+        working-directory: compat/transformations
+        run: gradle --no-daemon build
+      - name: Boot full B8 pack plus custom vampire bridge in disposable world
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '660'
+          WORK_DIR: ${{ runner.temp }}/tmm-vampire-bridge
+          SMOKE_EXTRA_MOD_JAR: ${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+        run: bash scripts/smoke_server.sh
+      - name: Download verified packwiz bootstrap for Prism
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Package isolated Prism vampire test instance
+        run: |
+          python3 scripts/build_vampire_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "${{ github.sha }}" \
+            "${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+      - name: Upload importable Prism test ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Vampire-Chassis-Dev-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-Vampire-Chassis-Dev-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload diagnostic logs (no third-party JARs or saves)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: transformation-vampire-server-smoke-logs
+          path: |
+            ${{ runner.temp }}/tmm-vampire-bridge/server.log
+            ${{ runner.temp }}/tmm-vampire-bridge/logs/latest.log
+          if-no-files-found: warn
+          retention-days: 14

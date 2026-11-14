@@ -104,10 +104,21 @@ def main() -> None:
     grptext = (QUESTS / "chapter_groups.snbt").read_text(encoding="utf-8")
     scan_snbt(grptext, "chapter_groups")
     ensure(re.findall(r'\bid: "([0-9A-F]{16})"', grptext) == [g["id"] for g in groups], "Group order mismatch")
-    grouploc = (QUESTS / "lang" / "en_us" / "chapter_group.snbt").read_text(encoding="utf-8")
-    chapterloc = (QUESTS / "lang" / "en_us" / "chapter.snbt").read_text(encoding="utf-8")
-    scan_snbt(grouploc, "group labels")
-    scan_snbt(chapterloc, "chapter labels")
+    language_path = QUESTS / "lang" / "en_us.snbt"
+    ensure(language_path.is_file(), "FTB Quests 2101.x requires lang/en_us.snbt")
+    ensure(not (QUESTS / "lang" / "en_us").exists(), "Legacy split lang/en_us directory is invalid")
+    lang_text = language_path.read_text(encoding="utf-8")
+    scan_snbt(lang_text, str(language_path))
+    ensure("undefined" not in lang_text, "Broken English quest translations")
+    grouploc = lang_text
+    chapterloc = lang_text
+    translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
+    translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
+    ensure(len(translated_titles) == len(translated_desc) == 179,
+           f"Expected 179 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    lang_ids = set(translated_titles)
+    ensure(len(lang_ids) == 179 and lang_ids == set(translated_desc),
+           "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
     wanted = {c["filename"] for c in chapters}
@@ -134,7 +145,7 @@ def main() -> None:
         ensure(f'id: "{c["chapter_id"]}"' in text, f"Wrong chapter ID on {path.name}")
         ensure(f'filename: "{path.stem}"' in text, f"Wrong filename on {path.name}")
         ensure(f'order_index: {c["order_index"]}' in text, f"Wrong chapter index on {path.name}")
-        # Chapter title lives in lang/en_us/chapter.snbt, not the per-chapter data file.
+        # Chapter title lives in lang/en_us.snbt, not in the chapter data.
         ensure(f'chapter.{c["chapter_id"]}.title: {json.dumps(c["name"], ensure_ascii=False)}' in chapterloc,
                f"Wrong English chapter name for {path.name}")
         ensure(f'chapter.{c["chapter_id"]}.chapter_subtitle: [' in chapterloc,
@@ -149,17 +160,6 @@ def main() -> None:
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
                     "Skills & Advancement": 8, "Exceptional Power: Reactors": 33}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
-        language_path = QUESTS / "lang" / "en_us" / "chapters" / c["filename"]
-        ensure(language_path.is_file(), f"Missing quest translation file for {path.name}")
-        lang_text = language_path.read_text(encoding="utf-8")
-        scan_snbt(lang_text, str(language_path))
-        ensure("undefined" not in lang_text, f"Broken English quest translations in {path.name}")
-        translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
-        translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-        ensure(len(translated_titles) == len(blocks) == len(translated_desc),
-               f"Missing quest titles/descriptions in localized chapter {path.name}")
-        lang_ids = set(translated_titles)
-        ensure(lang_ids == set(translated_desc), f"Unmatched quest descriptions {path.name}")
         coords = set()
         for block in blocks:
             coord = re.search(r'\bx: (-?[0-9.]+)d\s+y: (-?[0-9.]+)d', block)
