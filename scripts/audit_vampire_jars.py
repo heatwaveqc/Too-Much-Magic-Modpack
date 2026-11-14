@@ -341,6 +341,21 @@ def inspect_pin(pin: str) -> None:
                     print("JAWR_SPENDING_DISASM", cls, "exit", proc.returncode, flush=True)
                     for line in proc.stdout.splitlines()[:2250]:
                         print(" JAWR_SPENDING_BC", line[:340], flush=True)
+            if source.name.startswith("just-another-witchery"):
+                cls="dev.sterner.witchery.feature.affliction.vampire.VampireEvents"
+                proc=subprocess.run(["javap","-c","-p","-classpath",str(jar),cls],
+                    capture_output=True,text=True,timeout=35)
+                lines=proc.stdout.splitlines()
+                print("JAWR_VAMPIRE_EVENTS_TICK", len(lines),"exit",proc.returncode,flush=True)
+                for i,line in enumerate(lines):
+                    if (line.startswith(("  public ", "  private ")) and
+                        any(k in line.lower() for k in
+                            ("tick(", "nightvision", "speed", "consume", "hunger", "blood", "drain", "regeneration"))):
+                        e=next((j for j in range(i+1,len(lines)) if
+                            lines[j].startswith(("  public ", "  private ", "  static ")) or lines[j]=="}"),len(lines))
+                        print("JAWR_TICK_METHOD", line,flush=True)
+                        for inner in lines[i+1:min(e,i+370)]:
+                            print(" JAWR_TICK_BC",inner[:340],flush=True)
             # Transaction-specific disassembly for exact pinned versions. Inspect
             # acquisition, cure, feeding and weaknesses before enabling mixins.
             focus = {
