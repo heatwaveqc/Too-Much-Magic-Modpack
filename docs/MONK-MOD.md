@@ -22,9 +22,9 @@ Vampirism 1.10.13; Werewolves 2.0.3.4.
    magic traditions. The exact multipliers, caps and magic attributes need
    playtesting and owner approval; do not add an unrelated mana pool.
 5. Initiation rituals, rank advancement challenges and optional Master tree
-   imitate Vampirism's progression loop. 14 is a *provisional code baseline*,
-   not a locked final rank count; original Monk's 20-level arc remains a
-   possible target.
+   imitate Vampirism's progression loop. The old provisional 14-level ceiling is replaced with a configurable
+   faction maximum (startup default 20, independently of any long-term
+   attribute ranking); the historical 20-level story is only a default.
 6. Data-driven skill tree: JSON under `data/tmm_monk/vampirism/` for
    `skill_tree`, `skill_node`, `configured_skill_tree`, later `tasks`.
    Java registers faction, player attachment, skills and actions. JSON cannot
@@ -92,3 +92,42 @@ endgame enchanted, affixed Gem Armor and weapons. The complete agreement,
 limitations, registry inventories and test plan are in
 [MONK-GEAR-PARITY.md](MONK-GEAR-PARITY.md). No gear/affix/attribute behavior
 is wired into live code yet.
+
+## New proposal: Apotheosis-infused Monk food (2026-11-14)
+
+Craft **one edible food** with **one Apotheosis rarity material** to produce
+one preserved food item carrying a one-use rarity infusion. On **successful
+consumption by a Monk**, grant a fixed configurable amount of **Monastic
+Mastery XP based only on rarity**. No XP for merely smithing the food.
+This is repeatable by consuming more rarity materials; it does not reset the
+one-time unique-food bonus, and re-infusing a marked item is forbidden.
+
+Apotheosis 8.9.0 rarity inventory:
+
+| Rarity | Material item ID | XP |
+| --- | --- | --- |
+| Common | `apotheosis:mysterious_scrap_metal` | TBD |
+| Uncommon | `apotheosis:timeworn_fabric` | TBD |
+| Rare | `apotheosis:luminous_crystal_shard` | TBD |
+| Epic | `apotheosis:arcane_sands` | TBD |
+| Mythic | `apotheosis:godforged_pearl` | TBD |
+
+**Smithing table is favored over the anvil**: a dedicated custom smithing
+recipe could consume one food and the material without the anvil's repair/
+rename/XP rules. A template ingredient and special handling for arbitrary
+edible items need review, and the resulting food must retain nutrition,
+buffs and other components while gaining a single persistent marker. Build
+as server-authoritative completed-consumption reward, not item use attempts.
+
+Refer to `compat/monk/profiles/rarity-food-infusion.json` for the full
+five-rarity data plan and test cases. **No crafting or XP code exists yet.**
+
+## Pack-wide ceilings are independent
+
+See [GLOBAL-PROGRESSION-CAPS.md](GLOBAL-PROGRESSION-CAPS.md): use each mod's
+actual maximum supported character progression rather than imposing
+artificial TMM lower caps; leave mod-specific resource caps (including
+Mahou) to a central config audit. Capped versus scalable Monk upgrade nodes
+must be classified individually. Decision between Pufferfish as leveled
+backend and a custom repeatable investment layer is deliberately **deferred
+until after full player attribute / affix registry inventory**.

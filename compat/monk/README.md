@@ -23,6 +23,12 @@ must be gated separately by the transformation bridge.
 
 - Separate Java 21 / NeoForge 21.1.265 Gradle project and CI.
 - Monk faction registration through Vampirism's 1.10 API.
+- Registration-time faction max is configurable in `config/tmm_monk-startup.toml`
+  under `progression.max_faction_level` (default 20 rather than old provisional
+  14). It is a **STARTUP** config because NeoForge registration precedes the
+  COMMON/SERVER config loading phase; clients and servers need the same value.
+  Restart both processes after changes; in-world rank requirements and large
+  UI layout remain untested. Do not lower a cap under existing player levels.
 - Monk player attachment, actions and skill handler.
 - An **inert**, zero-point root skill and the Vampirism JSON skill tree,
   skill-node, configured-tree and localization files.
@@ -43,3 +49,19 @@ Werewolves releases and verify faction registration, JSON load, player data
 save/reload, death, commands and UI. Then implement one end-to-end initiation.
 
 See `../../docs/MONK-MOD.md`.
+
+## Faction level config and future progression
+
+The former source hardcode `14` is no longer used. The NeoForge
+`STARTUP` TOML value `progression.max_faction_level` defaults to 20,
+permits up to the Java integer maximum, and is read before faction
+registration. This is NOT a promise of functioning progression/UI at all
+those ranks; test data-generation, commands, GUI and migrations before
+choosing extreme values. NeoForge does not synchronize STARTUP config:
+clients and servers **must have matching settings**. This does not
+change Vampirism's own vampire/hunter/werewolf faction caps.
+
+Pack-wide mod resource limits are tracked separately at
+`docs/GLOBAL-PROGRESSION-CAPS.md`. The proposed five-tier rarity-food
+infusion remains design-only. No decision yet on using Pufferfish to
+own repeatable numeric Monk ranks.

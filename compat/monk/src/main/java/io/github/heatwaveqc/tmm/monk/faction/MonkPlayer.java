@@ -46,7 +46,7 @@ public final class MonkPlayer extends FactionBasePlayer<IMonkPlayer> implements 
     @Override public boolean canLeaveFaction() { return true; } // debug safety until departure ritual exists
     @Override public IFaction<?> getDisguisedAs() { return getFaction(); }
     @Override public boolean isDisguised() { return false; }
-    @Override public int getMaxLevel() { return MonkFaction.PROVISIONAL_MAX_LEVEL; }
+    @Override public int getMaxLevel() { return getFaction().getHighestReachableLevel(); }
     @Override public IActionHandler<IMonkPlayer> getActionHandler() { return actions; }
     @Override public @NotNull ISkillHandler<IMonkPlayer> getSkillHandler() { return skills; }
     @Override public Predicate<LivingEntity> getNonFriendlySelector(boolean otherFactionPlayers, boolean ignoreDisguise) {

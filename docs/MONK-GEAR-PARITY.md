@@ -33,9 +33,11 @@ Curios support and individual module behavior must be tested, not assumed.
 
 1. **Monk faction progression**: entry via sunset meditation; rank/mastery
    experience from qualifying breaking, fighting and unique food; only a few
-   hard deeds. Faction level cap (currently scaffolded at 14) and 20-rank
-   historical reference do **not** cap long-term repeatable attribute
-   investments. Faction UI might require a Monk-specific upgrade tab or
+   hard deeds. Faction maximum is **configurable at registration** via the Monk STARTUP
+   config (default 20, previously provisional 14). Native Vampirism uses
+   the registered highest level to validate faction levels, but it is
+   not itself a cap on independently stored repeatable attribute purchases.
+   Cap changes require a full restart and identical client/server config. Faction UI might require a Monk-specific upgrade tab or
    button; Vampirism JSON skill nodes are not arbitrarily repeatable.
 2. **Apotheosis affix unlocks**: **all 99 pinned built-in affix definitions**
    appear on the target coverage inventory, including offensive, defensive,
@@ -156,3 +158,24 @@ enforced in-game; they are **design-only machine-readable specifications**.
 - Apotheosis 8.9.0: https://github.com/Shadows-of-Fire/Apotheosis/tree/1.21
 - Apothic Attributes 2.11.0: https://github.com/Shadows-of-Fire/Apothic-Attributes/blob/1.21/src/main/java/dev/shadowsoffire/apothic_attributes/api/ALObjects.java
 - Curios body-slot chestpiece description: https://www.curseforge.com/minecraft/mc-mods/draconic-evolution
+
+## Post-inventory architecture decisions still open
+
+The Monk's Vampirism JSON tree is the **single-level eligibility/unlock
+layer**. For repeated numeric upgrades, Pufferfish Skills is now a candidate
+alongside a standalone Monk purchase backend; the choice is **not yet made**.
+Pufferfish's standard `skills.json` nodes store unlock state only, while
+`experience.json` can manage independent category levels and XP. Verify
+whether a suitable native or API-backed per-trait rank exists before
+assuming Pufferfish can represent infinitely repeatable purchases.
+
+Classification principle: boolean/fully effective capped upgrades must
+cease accepting payments at the point of maximum effect; repeatable numeric
+upgrades may continue with rising costs where the underlying mod permits.
+An attribute like Attack Speed requires practical engine-tick testing in
+addition to its declared numeric range.
+
+A proposed **Apotheosis-rarity infused food** converts rarity materials into
+fixed, tier-based Monk XP on consumption. It is separate from one-time
+unique-food discovery, and uses the pinned five-tier rarity registry. See
+`docs/MONK-MOD.md` and `compat/monk/profiles/rarity-food-infusion.json`.

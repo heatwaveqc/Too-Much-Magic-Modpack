@@ -27,3 +27,8 @@ selector or runtime loader exists yet.
 
 Rationale and parity test plan:
 [MONK-GEAR-PARITY.md](../../../docs/MONK-GEAR-PARITY.md).
+
+The registered faction-level limit is now a NeoForge STARTUP config
+(default 20), loaded before Vampirism faction registration. This is a
+registration-time property: do not use COMMON/SERVER config for it, since
+those load later. Clients and servers must have an identical value.

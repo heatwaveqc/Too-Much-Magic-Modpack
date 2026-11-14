@@ -36,11 +36,17 @@
       "first_consumption_per_food_id"
     ],
     "few_mandatory_deeds": true,
-    "monk_rank_cap": "not_yet_selected",
+    "monk_rank_cap": "startup_config_progression.max_faction_level_default_20_not_hard_capped_by_14",
     "attribute_investment_rank_limit": null,
     "attribute_point_cost": "rising_cost_to_be_balanced",
     "skill_tree": "Vampirism JSON skills plus independent repeatable-attribute backend",
-    "grant_item_affixes_directly": false
+    "grant_item_affixes_directly": false,
+    "faction_cap_runtime_config": "config/tmm_monk-startup.toml",
+    "attribute_investment_backend": "undecided_after_inventory_vampirism_unlocks_pufferfish_levels_or_custom",
+    "bounded_traits": "finite_effective_investments_with_no_paid_overcap",
+    "uncapped_traits": "repeatable_investments_with_progressive_costs_and_native_limit_safety",
+    "equipment_affix_food_xp_recipe": "smithing_preferred_under_review",
+    "rarity_food_config": "rarity-food-infusion.json"
   },
   "affix_unlocks": {
     "mode": "all_pinned_apotheosis_affix_definitions",
