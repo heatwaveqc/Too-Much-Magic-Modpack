@@ -103,7 +103,7 @@ flowchart TD
 
 This tree has **one active long-term physiology** per player by default: human, 3 dragon species, 2 different vampires, 2 different werewolves, or 2 distinct liches. The human baseline and dragon growth/form selections are not additional transformation *stacks*. Other supernatural **abilities** can coexist.
 
-The Dragon->Dracolich dashed branch is **aspirational**, not a code-supported combination. A dracolich must choose exactly one lich provider/respawn anchor; never combine both.
+The Dragon->Dracolich dashed branch is **required as a future playable design outcome**, but is not yet code-supported. It must use one deterministic resurrection arbiter. Abomination (Vampirism vampire+Werewolves) and dual lich (Goety+JAWR) are separate research candidates; see [HYBRID-TRANSFORMATIONS.md](HYBRID-TRANSFORMATIONS.md).
 
 ### Pairwise matrix — 7 nonhuman provider states, 21 unordered pairs
 
@@ -112,14 +112,14 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 | | D | VV | WW | JV | JW | JL | GL |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **D** | Dragon species subtype choice, not 2 dragons | **Block** | **Block** | **Block** | **Block** | **Candidate dracolich ONLY** | **Candidate dracolich ONLY** |
-| **VV** | — | Same provider upgrade only | **Block** | **Block** | **Block** | **Block** | **Block** |
+| **VV** | — | Same provider upgrade only | **Candidate: Abomination** | **Block** | **Block** | **Block** | **Block** |
 | **WW** | — | — | Same provider upgrade only | **Block** | **Block** | **Block** | **Block** |
 | **JV** | — | — | — | Same provider upgrade only | **Block** | **Conditional: JAWR has some lich/vamp handler** | **Block** |
 | **JW** | — | — | — | — | Same provider upgrade only | **Block** | **Block** |
-| **JL** | — | — | — | — | — | Same provider upgrade only | **Block** |
+| **JL** | — | — | — | — | — | Same provider upgrade only | **Candidate: dual lich (unproven)** |
 | **GL** | — | — | — | — | — | — | Same provider upgrade only |
 
-**21 unordered combinations:** 18 blocked by design, **three marked conditional research only** (D+JL, D+GL, JV+JL), **zero hybrids approved yet**. JAWR's vampire+lich handler does not prove full blood, food, rendering and phylactery safety.
+**21 unordered combinations:** 16 blocked by default; **five named candidates** (D+JL, D+GL, VV+WW, JV+JL, JL+GL). Dracoliches are an **explicit user-required playable outcome**, not yet implemented. Abomination and dual-lich remain design research, and JAWR's existing vampire+lich handler does not prove full compatibility. **Pair permissions are not transitive**: a dragon+Goety lich and Goety+JAWR lich exception does not permit a triple-lich dragon.
 
 ### The meaningful mechanics of each path
 
@@ -128,7 +128,7 @@ Every pair is **blocked by default** unless approved after test. Use both direct
 - **Vampire**: persistent **undead feeding and sunlight** system with distinct branch implementations. Food policy depends on one selected vampire provider; blood availability and meal compatibility matter. Never combine independent vampire providers/stack two blood bars.
 - **Werewolf**: persistent **lycanthropic identity** whose wolf/beast modes are temporary shape phases of the same curse. Avoid another simultaneous alternate body model, especially dragon.
 - **Lich**: choose **one** necromantic immortality system (Goety Arca or JAWR phylactery); its powers, resurrection, and hunger rules remain under that chosen provider. A Goety lich's human-looking alternate appearance is not a cure or a second species.
-- **Dracolich**: special potential hybrid with dragon anatomy and *one* lich anchor; lich governs death, hunger/essence, undead vulnerabilities; Dragon Survival governs body/flight/growth; requires explicit overrides to prevent duplicate HUD/food and body/form rendering. **Do not attempt in gameplay until an addon implements it.**
+- **Dracolich**: required eventual hybrid with dragon anatomy and *one* lich anchor; lich governs death, hunger/essence, undead vulnerabilities; Dragon Survival governs body/flight/growth; requires explicit overrides to prevent duplicate HUD/food and body/form rendering. **Do not attempt in gameplay until an addon implements it.**
 - **Hunter**: Vampirism's hunter faction is primarily a profession/faction state, not automatic nonhuman physiology. Decide later whether dragon hunters are allowed; the known Dragons and Vampires helper blocks all Vampirism faction membership at dragon altars, including hunters.
 
 ### Suggested rule architecture
