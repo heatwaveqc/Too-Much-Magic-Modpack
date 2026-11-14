@@ -74,7 +74,7 @@ hash = "c9a653b1a0c2932bb473f22639cf054b5c6c4634d491be7b3da0e1602eccfba3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "2ecefe994a3781e9f2faa1546afada08f5d9a633b8f23f1cc57e7f6b8f22dcc7"
+hash = "faee2645ee7b941b585c349954c07854b90cf72f7dd965690c00131b893c7006"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -122,7 +122,7 @@ hash = "f9486807cf5245c484f0739131f0a754385119597ec90cc6ed99e67832c914fa"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/food_fishing.snbt"
-hash = "d283e224cba81e894244acec454985a5afddf2b8717cfd05823b6cf5314acf84"
+hash = "357349402f440bd8e9df2085c71b1641e522a99b5dfe6494fb36be68bcf3b2bc"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/forbidden_arcanus.snbt"
@@ -218,7 +218,7 @@ hash = "85f5eda9d770c1ceb779f685c14a8b628357247060e87b3f98f759cdafc0b58b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
-hash = "a367d24dfe09108341ffd4fe826013287dd443a8bcb8bd9d0e7fc3025c6023ca"
+hash = "cdd4c4ffee087f1326c9dd27c926116cda62871fedc158120c9444de3e671a76"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/totemic.snbt"

@@ -71,7 +71,8 @@
         "mouse-tweaks",
         "natures-compass",
         "oracle-index",
-        "polymorph"
+        "polymorph",
+        "quest-shop"
       ],
       "overview_quest_id": "544D301000200001",
       "overview_task_id": "544D401000200001"
@@ -92,7 +93,8 @@
         "pams-harvestcraft-2-crops",
         "pams-harvestcraft-2-food-core",
         "pams-harvestcraft-2-food-extended",
-        "pams-harvestcraft-2-trees"
+        "pams-harvestcraft-2-trees",
+        "cooking-for-blockheads"
       ],
       "overview_quest_id": "544D301000300001",
       "overview_task_id": "544D401000300001"

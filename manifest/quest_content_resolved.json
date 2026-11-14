@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source": "manifest/quest_content.json",
   "note": "Stable ID map for authored quests; generated at content revision",
   "quests": [
@@ -887,6 +887,322 @@
       },
       "depends": "A Patch of Sugar Cane",
       "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use the Quest Shop",
+      "quest_id": "544D502001000000",
+      "task_id": "544D802001000000",
+      "xp_reward_id": "544D602001000001",
+      "item_reward_id": "544D702001000002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:clock",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Cooking for Blockheads: Cooking Table",
+      "quest_id": "544D503001500000",
+      "task_id": "544D803001500000",
+      "xp_reward_id": "544D603001500001",
+      "item_reward_id": "544D703001500002",
+      "criterion": {
+        "type": "item",
+        "id": "cookingforblockheads:cooking_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cooked_beef",
+        "count": 4
+      },
+      "depends": "Farmer's Delight: Cooking Pot",
+      "optional": true
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Cooking for Blockheads: Oven",
+      "quest_id": "544D503001600000",
+      "task_id": "544D803001600000",
+      "xp_reward_id": "544D603001600001",
+      "item_reward_id": "544D703001600002",
+      "criterion": {
+        "type": "item",
+        "id": "cookingforblockheads:oven",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bread",
+        "count": 8
+      },
+      "depends": "Cooking for Blockheads: Cooking Table",
+      "optional": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper I — First Trade",
+      "quest_id": "544D504000100000",
+      "task_id": "544D804000100000",
+      "xp_reward_id": "544D604000100001",
+      "item_reward_id": "544D704000100002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_ingot",
+        "count": 8
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper II — Regular Buyer",
+      "quest_id": "544D504000200000",
+      "task_id": "544D804000200000",
+      "xp_reward_id": "544D604000200001",
+      "item_reward_id": "544D704000200002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_ingot",
+        "count": 32
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Copper I — First Trade",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper III — Packed Shipment",
+      "quest_id": "544D504000300000",
+      "task_id": "544D804000300000",
+      "xp_reward_id": "544D604000300001",
+      "item_reward_id": "544D704000300002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Copper II — Regular Buyer",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper IV — Industrial Exchange",
+      "quest_id": "544D504000400000",
+      "task_id": "544D804000400000",
+      "xp_reward_id": "544D604000400001",
+      "item_reward_id": "544D704000400002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_block",
+        "count": 256
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Copper III — Packed Shipment",
+      "optional": true,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds I — First Trade",
+      "quest_id": "544D504000500000",
+      "task_id": "544D804000500000",
+      "xp_reward_id": "544D604000500001",
+      "item_reward_id": "544D704000500002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald",
+        "count": 2
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds II — Regular Buyer",
+      "quest_id": "544D504000600000",
+      "task_id": "544D804000600000",
+      "xp_reward_id": "544D604000600001",
+      "item_reward_id": "544D704000600002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald",
+        "count": 8
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds I — First Trade",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds III — Packed Shipment",
+      "quest_id": "544D504000700000",
+      "task_id": "544D804000700000",
+      "xp_reward_id": "544D604000700001",
+      "item_reward_id": "544D704000700002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds II — Regular Buyer",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds IV — Industrial Exchange",
+      "quest_id": "544D504000800000",
+      "task_id": "544D804000800000",
+      "xp_reward_id": "544D604000800001",
+      "item_reward_id": "544D704000800002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald_block",
+        "count": 128
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds III — Packed Shipment",
+      "optional": true,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds I — First Trade",
+      "quest_id": "544D504000900000",
+      "task_id": "544D804000900000",
+      "xp_reward_id": "544D604000900001",
+      "item_reward_id": "544D704000900002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond",
+        "count": 1
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds II — Regular Buyer",
+      "quest_id": "544D504000A00000",
+      "task_id": "544D804000A00000",
+      "xp_reward_id": "544D604000A00001",
+      "item_reward_id": "544D704000A00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond",
+        "count": 4
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds I — First Trade",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds III — Packed Shipment",
+      "quest_id": "544D504000B00000",
+      "task_id": "544D804000B00000",
+      "xp_reward_id": "544D604000B00001",
+      "item_reward_id": "544D704000B00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_block",
+        "count": 8
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds II — Regular Buyer",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds IV — Industrial Exchange",
+      "quest_id": "544D504000C00000",
+      "task_id": "544D804000C00000",
+      "xp_reward_id": "544D604000C00001",
+      "item_reward_id": "544D704000C00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_block",
+        "count": 64
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds III — Packed Shipment",
+      "optional": true,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true
     }
   ]
 }

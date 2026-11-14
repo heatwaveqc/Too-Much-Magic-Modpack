@@ -2,9 +2,9 @@
   "schema_version": 1,
   "origin": "TMM original quests informed by ATM10 structure; no copied quest prose",
   "rules": {
-    "each_quest_requires": "positive experience and an item reward",
-    "reward_shortcuts": "no reward item equals any currently authored item criterion",
-    "criteria_reuse": "none across authored item/advancement tasks; manual checkmark entries intentionally distinct by task ID",
+    "each_quest_requires": "positive experience and a purposeful fixed item reward, except specifically justified coin-only exchange/merchant quests",
+    "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
+    "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
     "overview_placeholders": "until authored, minimal paper + XP checkmark rewards"
   },
   "quests": [
@@ -846,6 +846,322 @@
       "optional": true,
       "overview": false,
       "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use the Quest Shop",
+      "description": "Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:clock",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "purpose": "shop-introduction"
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Cooking for Blockheads: Cooking Table",
+      "description": "Build the Cooking Table to discover dishes available from nearby kitchen ingredients. Cooking for Blockheads works alongside Farmer's Delight and Pam's HarvestCraft, expanding an organized base kitchen.",
+      "criterion": {
+        "type": "item",
+        "id": "cookingforblockheads:cooking_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cooked_beef",
+        "count": 4
+      },
+      "depends": "Farmer's Delight: Cooking Pot",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "purpose": "cooking-kitchen"
+    },
+    {
+      "chapter": "Food & Fishing",
+      "title": "Cooking for Blockheads: Oven",
+      "description": "Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen.",
+      "criterion": {
+        "type": "item",
+        "id": "cookingforblockheads:oven",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bread",
+        "count": 8
+      },
+      "depends": "Cooking for Blockheads: Cooking Table",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "purpose": "cooking-kitchen"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper I — First Trade",
+      "description": "Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_ingot",
+        "count": 8
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper II — Regular Buyer",
+      "description": "Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_ingot",
+        "count": 32
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Copper I — First Trade",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper III — Packed Shipment",
+      "description": "Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Copper II — Regular Buyer",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Copper IV — Industrial Exchange",
+      "description": "Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:copper_block",
+        "count": 256
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Copper III — Packed Shipment",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds I — First Trade",
+      "description": "Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald",
+        "count": 2
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds II — Regular Buyer",
+      "description": "Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald",
+        "count": 8
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds I — First Trade",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds III — Packed Shipment",
+      "description": "Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds II — Regular Buyer",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Emeralds IV — Industrial Exchange",
+      "description": "Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:emerald_block",
+        "count": 128
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Emeralds III — Packed Shipment",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds I — First Trade",
+      "description": "Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond",
+        "count": 1
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds II — Regular Buyer",
+      "description": "Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond",
+        "count": 4
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds I — First Trade",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds III — Packed Shipment",
+      "description": "Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_block",
+        "count": 8
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds II — Regular Buyer",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Diamonds IV — Industrial Exchange",
+      "description": "Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:diamond_block",
+        "count": 64
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 1
+      },
+      "depends": "Sell Diamonds III — Packed Shipment",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
     }
   ]
 }

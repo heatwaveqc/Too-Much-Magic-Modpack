@@ -367,6 +367,36 @@
 			x: 10.0d
 			y: 7.0d
 		}
+		{
+			id: "544D503001500000"
+			title: "Cooking for Blockheads: Cooking Table"
+			description: [undefined]
+			icon: { id: "cookingforblockheads:cooking_table" }
+			dependencies: ["544D503001100000"]
+			optional: true
+			rewards: [
+				{ id: "544D603001500001", type: "xp", xp: 25 }
+				{ id: "544D703001500002", type: "item", item: { id: "minecraft:cooked_beef", count: 1 }, count: 4 }
+			]
+			tasks: [{ id: "544D803001500000", type: "item", item: { id: "cookingforblockheads:cooking_table", count: 1 } }]
+			x: 12.00d
+			y: 0.00d
+		}
+		{
+			id: "544D503001600000"
+			title: "Cooking for Blockheads: Oven"
+			description: [undefined]
+			icon: { id: "cookingforblockheads:oven" }
+			dependencies: ["544D503001500000"]
+			optional: true
+			rewards: [
+				{ id: "544D603001600001", type: "xp", xp: 35 }
+				{ id: "544D703001600002", type: "item", item: { id: "minecraft:bread", count: 1 }, count: 8 }
+			]
+			tasks: [{ id: "544D803001600000", type: "item", item: { id: "cookingforblockheads:oven", count: 1 } }]
+			x: 14.00d
+			y: 0.00d
+		}
 	]
 	subtitle: "Food, fishing, growing, cooking and seed market; verify magical crop acquisition cannot bypass progression gates."
 	title: "Food & Fishing"

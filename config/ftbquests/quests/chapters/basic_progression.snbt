@@ -30,6 +30,189 @@
 			x: 0.0d
 			y: 0.0d
 		}
+		{
+			id: "544D504000100000"
+			title: "Sell Copper I — First Trade"
+			description: [undefined]
+			icon: { id: "minecraft:copper_ingot" }
+			optional: true
+			rewards: [
+				{ id: "544D604000100001", type: "xp", xp: 5, team: true }
+				{ id: "544D704000100002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000100000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
+			x: 2.00d
+			y: 2.00d
+		}
+		{
+			id: "544D504000200000"
+			title: "Sell Copper II — Regular Buyer"
+			description: [undefined]
+			icon: { id: "minecraft:copper_ingot" }
+			dependencies: ["544D504000100000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000200001", type: "xp", xp: 10, team: true }
+				{ id: "544D704000200002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000200000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 32L, consume_items: true, task_screen_only: false }]
+			x: 3.25d
+			y: 2.00d
+		}
+		{
+			id: "544D504000300000"
+			title: "Sell Copper III — Packed Shipment"
+			description: [undefined]
+			icon: { id: "minecraft:copper_block" }
+			dependencies: ["544D504000200000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000300001", type: "xp", xp: 15, team: true }
+				{ id: "544D704000300002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000300000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
+			x: 4.50d
+			y: 2.00d
+		}
+		{
+			id: "544D504000400000"
+			title: "Sell Copper IV — Industrial Exchange"
+			description: [undefined]
+			icon: { id: "minecraft:copper_block" }
+			dependencies: ["544D504000300000"]
+			optional: true
+			can_repeat: true
+			repeat_cooldown: 2
+			rewards: [
+				{ id: "544D604000400001", type: "xp", xp: 1, team: true }
+				{ id: "544D704000400002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000400000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 256L, consume_items: true, task_screen_only: false }]
+			x: 5.75d
+			y: 2.00d
+		}
+		{
+			id: "544D504000500000"
+			title: "Sell Emeralds I — First Trade"
+			description: [undefined]
+			icon: { id: "minecraft:emerald" }
+			optional: true
+			rewards: [
+				{ id: "544D604000500001", type: "xp", xp: 5, team: true }
+				{ id: "544D704000500002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000500000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 2L, consume_items: true, task_screen_only: false }]
+			x: 6.00d
+			y: 5.00d
+		}
+		{
+			id: "544D504000600000"
+			title: "Sell Emeralds II — Regular Buyer"
+			description: [undefined]
+			icon: { id: "minecraft:emerald" }
+			dependencies: ["544D504000500000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000600001", type: "xp", xp: 10, team: true }
+				{ id: "544D704000600002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000600000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
+			x: 7.25d
+			y: 5.00d
+		}
+		{
+			id: "544D504000700000"
+			title: "Sell Emeralds III — Packed Shipment"
+			description: [undefined]
+			icon: { id: "minecraft:emerald_block" }
+			dependencies: ["544D504000600000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000700001", type: "xp", xp: 15, team: true }
+				{ id: "544D704000700002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000700000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
+			x: 8.50d
+			y: 5.00d
+		}
+		{
+			id: "544D504000800000"
+			title: "Sell Emeralds IV — Industrial Exchange"
+			description: [undefined]
+			icon: { id: "minecraft:emerald_block" }
+			dependencies: ["544D504000700000"]
+			optional: true
+			can_repeat: true
+			repeat_cooldown: 2
+			rewards: [
+				{ id: "544D604000800001", type: "xp", xp: 1, team: true }
+				{ id: "544D704000800002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000800000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 128L, consume_items: true, task_screen_only: false }]
+			x: 9.75d
+			y: 5.00d
+		}
+		{
+			id: "544D504000900000"
+			title: "Sell Diamonds I — First Trade"
+			description: [undefined]
+			icon: { id: "minecraft:diamond" }
+			optional: true
+			rewards: [
+				{ id: "544D604000900001", type: "xp", xp: 5, team: true }
+				{ id: "544D704000900002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000900000", type: "item", item: { id: "minecraft:diamond", count: 1 }, consume_items: true, task_screen_only: false }]
+			x: 10.00d
+			y: 8.00d
+		}
+		{
+			id: "544D504000A00000"
+			title: "Sell Diamonds II — Regular Buyer"
+			description: [undefined]
+			icon: { id: "minecraft:diamond" }
+			dependencies: ["544D504000900000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000A00001", type: "xp", xp: 10, team: true }
+				{ id: "544D704000A00002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000A00000", type: "item", item: { id: "minecraft:diamond", count: 1 }, count: 4L, consume_items: true, task_screen_only: false }]
+			x: 11.25d
+			y: 8.00d
+		}
+		{
+			id: "544D504000B00000"
+			title: "Sell Diamonds III — Packed Shipment"
+			description: [undefined]
+			icon: { id: "minecraft:diamond_block" }
+			dependencies: ["544D504000A00000"]
+			optional: true
+			rewards: [
+				{ id: "544D604000B00001", type: "xp", xp: 15, team: true }
+				{ id: "544D704000B00002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000B00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
+			x: 12.50d
+			y: 8.00d
+		}
+		{
+			id: "544D504000C00000"
+			title: "Sell Diamonds IV — Industrial Exchange"
+			description: [undefined]
+			icon: { id: "minecraft:diamond_block" }
+			dependencies: ["544D504000B00000"]
+			optional: true
+			can_repeat: true
+			repeat_cooldown: 2
+			rewards: [
+				{ id: "544D604000C00001", type: "xp", xp: 1, team: true }
+				{ id: "544D704000C00002", type: "questshop:coins", amount: 1, team: true }
+			]
+			tasks: [{ id: "544D804000C00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 64L, consume_items: true, task_screen_only: false }]
+			x: 13.75d
+			y: 8.00d
+		}
 	]
 	subtitle: "General survival, earliest magic entry paths, storage, materials and choice of specialties."
 	title: "Basic Progression"

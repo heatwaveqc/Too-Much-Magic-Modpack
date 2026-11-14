@@ -17,8 +17,8 @@
 | Proposed chapter | Primary contents / related mod IDs | Scope and caveats |
 | --- | --- | --- |
 | **Getting Started** | `ftb-quests` | FTB quest navigation, starting equipment and first-log Trinkets Pouch; the grant is implemented separately on PR #14. |
-| **Tips & Tricks** | `akashic-tome`, `appleskin`, `better-advancements`, `controlling`, `corail-tombstone`, `crafting-tweaks`, `enchantment-descriptions`, `ftb-chunks`, `inventory-tweaks-refoxed`, `jade`, `jei`, `just-zoom`, `keybind-bundles`, `lootr`, `more-overlays-updated`, `mouse-tweaks`, `natures-compass`, `oracle-index`, `polymorph` | Controls, guidebooks, death recovery, inventories, maps, claims, tools and overlooked interactions. Browsable reference, not mandatory tasks. |
-| **Food & Fishing** | `aquaculture`, `farmers-delight`, `farming-for-blockheads`, `harvest-with-ease`, `pams-harvestcraft-2-crops`, `pams-harvestcraft-2-food-core`, `pams-harvestcraft-2-food-extended`, `pams-harvestcraft-2-trees` | Food, fishing, growing, cooking and seed market; verify magical crop acquisition cannot bypass progression gates. |
+| **Tips & Tricks** | `akashic-tome`, `appleskin`, `better-advancements`, `controlling`, `corail-tombstone`, `crafting-tweaks`, `enchantment-descriptions`, `ftb-chunks`, `inventory-tweaks-refoxed`, `jade`, `jei`, `just-zoom`, `keybind-bundles`, `lootr`, `quest-shop`, `more-overlays-updated`, `mouse-tweaks`, `natures-compass`, `oracle-index`, `polymorph` | Controls, guidebooks, death recovery, inventories, maps, claims, tools and overlooked interactions. Browsable reference, not mandatory tasks. |
+| **Food & Fishing** | `aquaculture`, `cooking-for-blockheads`, `farmers-delight`, `farming-for-blockheads`, `harvest-with-ease`, `pams-harvestcraft-2-crops`, `pams-harvestcraft-2-food-core`, `pams-harvestcraft-2-food-extended`, `pams-harvestcraft-2-trees` | Food, fishing, growing, cooking and seed market; verify magical crop acquisition cannot bypass progression gates. |
 
 ### Progression — 5 chapters
 
@@ -140,3 +140,9 @@ Special cases:
 - **Re:Avaritia** (`re-avaritia`) — explicitly excluded; its Infinity-tier endgame undermines signature Draconic Evolution progression and ProjectE Gem Armor.
 - **Extended Crafting** (`extended-crafting`) — explicitly excluded; no competing standalone ultimate-crafting chapter or alternate final crafting economy.
 - Previous B5/B8 smoke-test records that mention these mods are **historic** and must not be mistaken for the updated 138-mod candidate. The chapter plan is now 45, not 46.
+
+## B11 owner-approved additions — updated roster (2026-11-14)
+
+- **Cooking for Blockheads** is added to the existing Food & Fishing chapter (no new category/chapter). Two kitchen milestone quests join it.
+- **Quest Shop** is referenced in Tips & Tricks, with the 12-resource sale milestone branch in Basic Progression; currency flows are described in [QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md). This supplements the original 45-chapter skeleton; chapter counts do not change.
+- These two are desired but not packwiz-pinned until B11 resolver and combined server smoke pass. The older 138-mod inventory counts are a historical B8 snapshot; the proposed end state is 140 pinned mods once validated.
