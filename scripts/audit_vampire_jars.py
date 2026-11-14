@@ -161,7 +161,7 @@ def inspect_pin(pin: str) -> None:
             if source.name.startswith("just-another-witchery"):
                 audit_acquisition = [
                     c for c in classes if any(k in c.split(".")[-1] for k in
-                    ("SacrificialCircleBlock", "LilithEntity", "ElleEntity",
+                    ("SacrificialBlock", "SacrificialBlockComponent", "SacrificialBlockEntity", "SacrificialCircleBlock", "LilithEntity", "ElleEntity",
                      "TornPageItem", "WineGlassItem", "InfernalChalkBlock",
                      "ArthanaItem", "VampireLeveling"))
                     and "$" not in c
@@ -178,7 +178,7 @@ def inspect_pin(pin: str) -> None:
                                 "onEntityInteract(", "onUseTick(", "onPlace(", "setLevel(",
                                 "increaseLevel(", "interact(", "onPlayerInteract(", "hurtEnemy(",
                                 "onEntityKill(", "tryCreate(", "create(", "handle(", "tick(",
-                                "onInteract(", "onEntityDeath(")):
+                                "onInteract(", "onEntityDeath(", "placeBlock(", "getStateForPlacement(", "onRemove(", "setPlacedBy(", "neighborChanged(", "playerWillDestroy(", "onDestroyedByPlayer(")):
                             end = next((j for j in range(i+1, len(lines)) if lines[j].startswith(
                                 ("  public ", "  private ", "  protected ", "  static ")
                             ) or lines[j] == "}"), len(lines))
