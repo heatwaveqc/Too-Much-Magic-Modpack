@@ -1,0 +1,119 @@
+name: Full Integration - Unstable Prism QA
+on:
+  push:
+    branches: ['test/full-integration']
+    paths:
+      - '.github/workflows/full-integration.yml'
+      - 'scripts/assemble_integration.py'
+      - 'scripts/build_full_integration_prism.py'
+      - 'scripts/smoke_server.sh'
+      - 'manifest/integration-sources.json'
+      - '.packwizignore'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: full-integration-qa
+  cancel-in-progress: false
+
+jobs:
+  combine-build-smoke-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/full-integration
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Fetch working-branch heads and configure safe integration writes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+      - name: Assemble all registered workstreams and fail on unclassified active branches
+        run: |
+          python3 scripts/assemble_integration.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 -m py_compile scripts/assemble_integration.py scripts/build_full_integration_prism.py
+      - name: Confirm changed resource recipes and materials statically
+        run: |
+          python3 scripts/verify_materials.py
+          python3 scripts/verify_silver_equipment.py
+      - name: Compile and unit test latest vampire bridge
+        working-directory: compat/transformations
+        run: gradle --no-daemon build
+      - name: Compile and unit test latest Monk faction addon
+        working-directory: compat/monk
+        run: gradle --no-daemon build
+      - name: Verify HexCast MXP exploratory contract (source only; not in pack)
+        working-directory: integration/hexcast-media-pilot
+        run: bash check-contract.sh
+      - name: Full dedicated-server smoke WITH BOTH first-party compiled modules
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
+          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+        run: bash scripts/smoke_server.sh
+      - name: Refuse to publish if extra first-party modules were not actually installed
+        run: |
+          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
+          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
+          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
+          echo "Both custom module JARs included in passing server test"
+      - name: Publish only the successfully tested commit to the unstable integration branch
+        run: |
+          git add manifest/mods.json manifest/integration-lock.json pack.toml index.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "test: refresh full integration workstream snapshot after full server QA"
+            git push origin HEAD:test/full-integration
+          fi
+          git diff --exit-code
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+      - name: Obtain official packwiz bootstrap
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Produce commit-locked all-workstreams Prism client ZIP
+        run: |
+          python3 scripts/build_full_integration_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "$(git rev-parse HEAD)" \
+            "compat/monk/build/libs/tmm_monk-0.1.0-dev.jar" \
+            "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+      - name: Upload the one comprehensive unstable test build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Full-Integration-Prism-UNSTABLE
+          path: ${{ runner.temp }}/Too-Much-Magic-Full-Integration-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Always retain diagnostics and exact source provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Full-Integration-Test-Evidence
+          path: |
+            manifest/integration-sources.json
+            manifest/integration-lock.json
+            ${{ runner.temp }}/tmm-full-integration-smoke/server.log
+            ${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log
+          retention-days: 30
+          if-no-files-found: warn
