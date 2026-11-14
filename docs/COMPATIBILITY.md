@@ -72,3 +72,12 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Pam's HarvestCraft 2 Food Core `1.0.4`, Crops `1.0.9`, Trees `1.0.9`, Extended `1.0.0`; Farmer's Delight `1.3.4`; Aquaculture 2 `2.7.22`; Harvest with Ease `9.4.0` and Cobweb `1.4.0` are pinned and server-loaded. **Crop right-click harvesting and food/recipe tags untested.**
 - **Aspect Alchemy removed** in accordance with latest design approval; never reintroduce without explicit user change. Dragon Survival remains deferred; Aquaculture Delight, Pantrywork and Vampire's Delight remain research-only, not approved.
 - [Prism client handoff](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43555071188/artifacts/14097951209) uses the immutable tested packwiz snapshot `ecddc4342c439a2b973ad16acff112b7d0a4bb60`, with no bundled third-party mod JARs. Real client test pending.
+
+## Portable bag nesting — cross-mod release blocker (2026-11-13)
+
+- Owner rule: **all bags are prohibited inside any other portable bag**, regardless of mod, color, or access path. This includes Ars Elemental Trinkets Pouch and Spellcaster Bag, Occultism Satchel and ritual/Ender satchels, and all 16 ProjectE Alchemical Bag colors. Audit bundles and shulker boxes as additional nested portable storage.
+- **Ars destination:** source-backed `#ars_elemental:blacklist_bag_item` tag is extended via `#tmm:portable_bags` datapack tag in the feature branch. Validity requires in-game direct/shift-click/automation tests.
+- **Occultism destination:** its existing `StorageSatchelSlot.mayPlace` rejects only its own Satchel. Direct insert of Ars/ProjectE bags is not proven blocked. Also inspect backing `SatchelInventory` and bypass/automation paths.
+- **ProjectE destination:** `AlchBagContainer` uses default `InventoryContainerSlot` and per-player color-coded `ItemStackHandler` with no shared cross-mod blacklist; item tags alone do not enforce this.
+- **Fix required:** small server-authoritative bridge or verified upstream integration that denies insertion of all `#tmm:portable_bags` (plus nested storage containers as needed) into the relevant destination inventory handlers, including programmatic insertion; do not retroactively purge items.
+- **Status:** PARTIAL. Do not mark universal nested-bag protection as implemented or survival-ready until targeted tests pass.
