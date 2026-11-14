@@ -34,6 +34,11 @@ hash = "716d930feff599bf9ce732e05979fbae8025dc8a3c13ccf4f1cb207a70883bc6"
 metafile = true
 
 [[files]]
+file = "mods/aquaculture.pw.toml"
+hash = "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff"
+metafile = true
+
+[[files]]
 file = "mods/architectury-api.pw.toml"
 hash = "657a01a86bbf8617e4726c77df08f708e43a3db12db74b837eebd8eb1d93faae"
 metafile = true
@@ -84,11 +89,6 @@ hash = "416b7f130791397fb2ceb9e89ce3fd0e870f207c8e40b759c069cb58b7544314"
 metafile = true
 
 [[files]]
-file = "mods/aspect-alchemy.pw.toml"
-hash = "3ffaee6ebb424629b05db027fffbcf4b0b9cda094b8aad355096a30e8e230aa6"
-metafile = true
-
-[[files]]
 file = "mods/astral-sorcery.pw.toml"
 hash = "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c"
 metafile = true
@@ -121,6 +121,11 @@ metafile = true
 [[files]]
 file = "mods/cloth-config.pw.toml"
 hash = "22286fa216349c0767808903a0a38662857d2adee54950a18cbf26c167a06029"
+metafile = true
+
+[[files]]
+file = "mods/cobweb.pw.toml"
+hash = "40802547d9f1f916dfeefea8e0c52499edfc6940daca5b7f60e5c365a4ead296"
 metafile = true
 
 [[files]]
@@ -224,6 +229,11 @@ hash = "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f"
 metafile = true
 
 [[files]]
+file = "mods/farmers-delight.pw.toml"
+hash = "d9ed9ac8e0db9db29078dafa22bc2d86ac702f10863ae7cb1d5245111c5ea17b"
+metafile = true
+
+[[files]]
 file = "mods/fenns_totemic.pw.toml"
 hash = "97691b1ad518bd03fa1c85a6b0af69049939483641eaf1bf5a7755627dac7de6"
 metafile = true
@@ -294,6 +304,16 @@ hash = "269e6225a8f6ef2bff759a8870e3db2300a72a782600b84e875e79cfbe819591"
 metafile = true
 
 [[files]]
+file = "mods/hammer-lib.pw.toml"
+hash = "1e43aa344f623cf2fa46e0ec8b5afeb28e629310faf754b20f8ad58e54746d8e"
+metafile = true
+
+[[files]]
+file = "mods/harvest-with-ease.pw.toml"
+hash = "6dce3c6a38846be3777d4daef77e848d7f054628a7b058d74f77c2dd3bf34152"
+metafile = true
+
+[[files]]
 file = "mods/hexcast-neoforged.pw.toml"
 hash = "4e4a30448deb52c54122c16c29467023e5861de25d6daa1dd1ec999c9fc73bcc"
 metafile = true
@@ -306,6 +326,11 @@ metafile = true
 [[files]]
 file = "mods/immediatelyfast.pw.toml"
 hash = "4601b9be31b6e131dca8a148c974d015444bcac7c82fcb66fbd8751a67933a5d"
+metafile = true
+
+[[files]]
+file = "mods/improvable-skills.pw.toml"
+hash = "9bdb65981e4b9a93c82021d509ae02a3dcd18402ba9f579571fa44974b27d118"
 metafile = true
 
 [[files]]
@@ -434,6 +459,26 @@ hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
 metafile = true
 
 [[files]]
+file = "mods/pams-harvestcraft-2-crops.pw.toml"
+hash = "6f9626c4489bfad0bdf6e1f0718f54c6652ba54ca51a18b14face54893a5f182"
+metafile = true
+
+[[files]]
+file = "mods/pams-harvestcraft-2-food-core.pw.toml"
+hash = "eb045b8823c41b658530d231ce14c53f43deb2981c17f03eb48d12cebb18f296"
+metafile = true
+
+[[files]]
+file = "mods/pams-harvestcraft-2-food-extended.pw.toml"
+hash = "5fe860bdef3f16ae211dbe360061f8225b68e3b5a3b699ffeb5d8926536bd91b"
+metafile = true
+
+[[files]]
+file = "mods/pams-harvestcraft-2-trees.pw.toml"
+hash = "d48697a0d75267fe97428fa6b8442ec419846d7396e2dc9b4dd2c90e13f17daa"
+metafile = true
+
+[[files]]
 file = "mods/pastel.pw.toml"
 hash = "aef91b49956d6a5ddb71b2b0b8b60fffb045de7af8ebd9ec8946b2d579ed8f4c"
 metafile = true
@@ -486,6 +531,16 @@ metafile = true
 [[files]]
 file = "mods/psitweaks.pw.toml"
 hash = "4fadd0b789a63993b2a8f44ccc5e1d91345e653851719042ea997f62b530a5d5"
+metafile = true
+
+[[files]]
+file = "mods/puffish-attributes.pw.toml"
+hash = "22d273512f73d6ea8b27dddb628dce14639a35894bb4c27368f7c7a47bb3c2df"
+metafile = true
+
+[[files]]
+file = "mods/puffish-skills.pw.toml"
+hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
 metafile = true
 
 [[files]]
