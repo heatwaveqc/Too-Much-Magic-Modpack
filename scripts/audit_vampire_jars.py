@@ -84,6 +84,10 @@ def inspect_pin(pin: str) -> None:
                     "data/witchery/modonomicon/books/guidebook/entries/vampirism/vamp_1.json",
                     "data/witchery/modonomicon/books/guidebook/categories/vampirism.json",
                     "data/witchery/modonomicon/books/guidebook/book.json",
+                    "data/witchery/advancement/vampire/1.json",
+                    "data/witchery/advancement/vampire/2.json",
+                    "data/witchery/advancement/vampire/3.json",
+                    "data/witchery/advancement/witchery/1.json",
                     "data/witchery/recipe/guidebook.json",
                     "data/witchery/recipe/wine_glass.json",
                 ):
