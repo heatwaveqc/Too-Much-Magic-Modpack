@@ -46,7 +46,7 @@ def main() -> None:
     index_path.write_text(data, encoding="utf-8")
     pack_path = ROOT/"pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
-    pack, n = re.subn(r'^version = "[^"]+"$', 'version = "0.8.9-quest-vampire-coin-qa"', pack, count=1, flags=re.M)
+    pack, n = re.subn(r'^version = "[^"]+"$', 'version = "0.8.10-quest-text-format-qa"', pack, count=1, flags=re.M)
     assert n == 1
     pack, n = re.subn(r'(\[index\]\nfile = "index.toml"\nhash-format = "sha256"\nhash = ")[0-9a-f]+(")',
         lambda m: m.group(1) + checksum(data.encode("utf-8")) + m.group(2), pack, count=1)
