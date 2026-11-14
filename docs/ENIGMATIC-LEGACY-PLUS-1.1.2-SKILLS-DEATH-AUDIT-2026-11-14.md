@@ -57,6 +57,6 @@ Registered in [`EnigmaticAttributes`](https://github.com/Auviotre/Enigmatic-Lega
 ## Design choices and actions
 
 - **User approved for Enchanted: Witchcraft:** *no custom bridge/skills planned*, leaving its ritual, poppet and altar mechanics intact. This is a distinct user decision from **Enigmatic**.
-- **Recommendation for Enigmatic:** source hooks **Confirmed**, **no bespoke Pufferfish track**. Native `lifesteal`, `projectile_deflect`, `etherium_shield` may optionally participate in broad existing Pufferfish passive skills after balance testing. Do not touch spellstone cooldowns, alter immortality rules, or add new mana/caster attributes without explicit design approval.
+- **User decision for Enigmatic (2026-11-14):** source hooks **Confirmed**, **no bespoke Pufferfish track or custom spellstone bridge**. Native `lifesteal`, `projectile_deflect`, `etherium_shield` may optionally participate in broad existing Pufferfish passive skills after balance testing. Do not touch spellstone cooldowns, alter immortality rules, or add new mana/caster attributes without explicit design approval.
 - **Priority:** death-handlers + graves + cooldown interoperability tests, then gameplay ability spot checks.
 - **No mod additions/removals, config modifications, KubeJS integration, datapack patches or gameplay changes made** during this audit.
