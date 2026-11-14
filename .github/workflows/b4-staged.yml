@@ -1,0 +1,48 @@
+name: B4 reactor fork and experimental magic validation
+on:
+  push:
+    branches: [build/b4-reactors-experimental]
+    paths:
+      - '.github/workflows/b4-staged.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage-pin-smoke-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Validate Python and compile exact packwiz version
+        run: |
+          python3 -m py_compile scripts/stage_b4.py scripts/ci_b4.py scripts/download_mods.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Four independently recorded stages (reactor, Astral, Botania, Draconic)
+        run: python3 scripts/ci_b4.py
+      - name: Retain all four test logs and resolution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b4-reactor-and-beta-stage-logs
+          path: |
+            docs/B4-TESTING.md
+            docs/B4-RESOLUTION.json
+            ${{ runner.temp }}/tmm-b4-*/server.log
+            ${{ runner.temp }}/tmm-b4-*/logs/latest.log
+            ${{ runner.temp }}/tmm-b4-*/crash-reports
+          if-no-files-found: warn
