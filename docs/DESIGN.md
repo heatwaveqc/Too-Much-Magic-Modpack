@@ -10,6 +10,9 @@ Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curv
 ## Exceptional technology
 Only Bigger Reactors (energy source) and Draconic Evolution (energy use/transfer/high-end gear). Avoid introducing another general energy/logistics stack. Uranium and draconic materials should be restricted to deep exploration and/or Occultism extraction. Do not assume these restrictions are implemented.
 
+## World generation philosophy
+Tectonic is the approved *planned* terrain overhaul for Minecraft 1.21.1 NeoForge; Terralith is excluded. Prefer dramatic terrain, valleys, mountains and geography while preserving recognizable vanilla biome identity. Avoid the sprawling custom-biome catalogs and unusual tree proliferation associated with all-the-biomes worldgen packs. Tectonic is **not yet installed or smoke-tested**. Before enabling it, resolve Lithostitched and test new disposable worlds for biome distribution, structure placement, performance, and magic/technology ore-generation interactions (including progression-gated resources).
+
 ## World and loot
 Rich exploration via Cataclysm, Stalwart/Starlight themed structures and Deeper and Darker where compatible. Evaluate early exploration density and performance. Review and block game-breaking single-hit artifacts in normal loot, not just crafting.
 
