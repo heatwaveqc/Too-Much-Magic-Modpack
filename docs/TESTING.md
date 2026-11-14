@@ -71,3 +71,13 @@ Never reclassify step 1 as steps 2–5.
 - Design/documentation: 43→42 magic integration entries after removing rejected Aspect Alchemy, with its B6 exclusion unchanged. Added the source-backed addon audit and approved cross-school unification preference.
 - Source carry-forward: experimental Roots scripts from PR #8 now live in the B6-derived development branch, still gated behind `tmm_roots_integration_test` and using temporary tags instead of Pufferfish skill IDs.
 - **No Minecraft boot or gameplay smoke was performed for this branch.** The prior B6 125-mod server pass predates these KubeJS files and cannot certify them. Re-run server startup, disposable client world, staff first-pickup tests (1–4 slots), 40→60 Terra/HUD, death/login/dimension changes, and Ars/Iron's unified mana/caster-damage tests before promotion.
+
+## HexCast opt-in media-efficiency pilot — Java contract run (2026-11-13)
+
+- **Source:** `integration/hexcast-media-pilot/src/main/java` (NeoForge bridge **not** installed in B6); `harness/src` contains **test stand-ins**, not HexCast binaries. All mods and packwiz pins remain unchanged.
+- **Command executed locally:** `bash integration/hexcast-media-pilot/check-contract.sh` in a Java 21 environment.
+- **Result:** `PASS: 65 assertions; bridge compiles against source-shaped stand-ins; NOT Minecraft runtime.`
+- **Independent GitHub CI:** [HexCast Media Pilot - contract harness run 43559997938](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43559997938), **success** (push, head `f728d7d003ec6b389151ef3918d2db674f217ad8`).
+- **Covered:** no default effects; opt-in + 10% and 20% media discounts; no cost-free small values; long-safe arithmetic; no circle inheritance; missing caster; exactly one per-environment modifier; tier snapshot.
+- **NOT DONE:** compile bridge against actual published HexCast/NeoForge JAR, build/install a runnable mod, boot Minecraft with the bridge, or measure in-game media, overcasting health, NBT item state, server/client sync, or latency. A local contract PASS and existing B6 server PASS do not cover these.
+- **Next:** build in a matching NeoForge workspace with pinned 0.11.1-19 HexCast and its dependencies; test exclusively in a disposable client and server world before enabling for normal players or mapping Pufferfish skill nodes.

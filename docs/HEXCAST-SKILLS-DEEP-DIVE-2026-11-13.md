@@ -56,3 +56,18 @@
 - Media denomination: https://github.com/a1exrom/hex_cast_NEOFORGED/blob/main/Common/src/main/java/at/petrak/hexcasting/api/misc/MediaConstants.java
 - Config / denylist: https://github.com/a1exrom/hex_cast_NEOFORGED/blob/main/Forge/src/main/java/at/petrak/hexcasting/forge/ForgeHexConfig.java
 - Modrinth published port: https://modrinth.com/mod/lZGsiJ1L
+
+## Opt-in bridge pilot — executed contract checks (2026-11-13)
+
+Source lives in [`integration/hexcast-media-pilot/`](../integration/hexcast-media-pilot/README.md). An isolated Java 21 bridge skeleton hooks `FMLCommonSetupEvent` to register a `CastingEnvironment.addCreateEventListener`, attaches `CastingEnvironmentComponent.ExtractMedia` **only for `PlayerBasedCastEnv`**, and reads temporary test tags:
+
+- `tmm_hex_media_test` **required**; no test tag, no modification.
+- `tmm_hex_media_t1` → **10% media cost discount**, floor-rounded savings.
+- `tmm_hex_media_t2` → **20% discount**, wins if both tier tags exist.
+- Circles are excluded even if `getCaster()` is non-null; the entire world/circle/permission/great-spell/overcasting systems remain native.
+
+**Actual testing:** `bash integration/hexcast-media-pilot/check-contract.sh` on Java 21 compiled the **production bridge source against source-shaped interface stand-ins** and passed **65 assertions** for opt-in gating, player-only scoping, bounded/overflow-safe costs, large values, tiers, and one extension per environment. Independently passed on GitHub Actions [run 43559997938](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43559997938) (push event, conclusion success). **This is not a NeoForge binary compilation or Minecraft runtime test.** The bridge is neither in packwiz nor installed as a mod; `neoforge.mods.toml` is preparation for a later build. No Pufferfish skill IDs yet exist.
+
+**Open risks before production:** compile against the exact published HexCast and NeoForge JARs and their dependency graph; integrated server/client boot; actual consumed media and overcast-health accounting; staff/packaged items; circle interaction; skill refund mid-spell, death/login/dimension changes, and long-running VM snapshot behavior. Tier is intentionally captured when the VM starts, so respec while a hex is running does not immediately revoke that running VM's bonus.
+
+**Mana clarification:** Ars Nouveau and Iron's **do** share mana via Ars 'n Spells. Psi does **not** join that pool. Hex media remains separate. The pilot only affects media costs for opt-in Hex player casts.
