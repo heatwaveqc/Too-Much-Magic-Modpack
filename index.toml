@@ -979,7 +979,7 @@ hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
 [[files]]
 file = "config/almostunified/unification/materials.json"
-hash = "ad7e787e18005d370f0466cf11c2c5321cfcc5cc4792c0c270cc00f32a4d0bd1"
+hash = "0b981b3cd03132aed9049d8f9528aaabf9d63b0d531c741dfe2f07bfe1451ef1"
 
 [[files]]
 file = "kubejs/server_scripts/material_unification.js"
