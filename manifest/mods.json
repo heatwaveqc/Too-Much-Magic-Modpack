@@ -90,6 +90,66 @@
       "packwiz_slug": "architectury-api"
     },
     {
+      "id": "ars-additions",
+      "name": "Ars Additions",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-controle",
+      "name": "Ars Controle",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-elemancy",
+      "name": "Ars Elemancy",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-elemental",
+      "name": "Ars Elemental",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-n-spells",
+      "name": "Ars 'n Spells",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "ars-nouveau",
       "name": "Ars Nouveau",
       "category": "magic",
@@ -100,6 +160,30 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "ars-nouveau"
+    },
+    {
+      "id": "ars-ocultas",
+      "name": "Ars Ocultas",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "ars-unification",
+      "name": "Ars Unification",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "artifacts",
@@ -153,12 +237,25 @@
       "id": "botania",
       "name": "Botania",
       "category": "magic",
-      "desired": true,
+      "desired": false,
       "version": null,
       "release_status": "unverified",
       "source": "https://www.curseforge.com/minecraft/mc-mods/botania",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "Original Botania is not selected as the target 1.21.1 port. User explicitly approved Botania Revived and Extra Botany Revived for future verification and installation; do not substitute another port without approval."
+    },
+    {
+      "id": "botania-revived",
+      "name": "Botania Revived",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "brandons-core",
@@ -278,6 +375,18 @@
       "dependencies_verified": false
     },
     {
+      "id": "eidolon-repraised",
+      "name": "Eidolon: Repraised",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "embeddium",
       "name": "Embeddium",
       "category": "performance",
@@ -288,6 +397,30 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "embeddium"
+    },
+    {
+      "id": "embers-re-ignited",
+      "name": "Embers Re-Ignited",
+      "category": "magic_industry",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "enigmatic-legacy-plus",
+      "name": "Enigmatic Legacy+",
+      "category": "power",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "entity-culling",
@@ -326,6 +459,18 @@
       "packwiz_slug": "extended-crafting"
     },
     {
+      "id": "extra-botany-revived",
+      "name": "Extra Botany Revived",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "ferritecore",
       "name": "FerriteCore",
       "category": "performance",
@@ -336,6 +481,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "ferrite-core"
+    },
+    {
+      "id": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "forbidden-magic",
@@ -433,6 +590,18 @@
       "packwiz_slug": "gateways-to-eternity"
     },
     {
+      "id": "gaze-malum",
+      "name": "Gaze (Malum addon)",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "geckolib",
       "name": "Geckolib",
       "category": "dependency",
@@ -443,6 +612,54 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "geckolib"
+    },
+    {
+      "id": "goety",
+      "name": "Goety — The Dark Arts",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "goety-cataclysm",
+      "name": "Goety Cataclysm",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "hexcast-neoforged",
+      "name": "HexCast NEOFORGED",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "hexerei",
+      "name": "Hexerei",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "immediatelyfast",
@@ -614,6 +831,18 @@
       "packwiz_slug": "mahou-tsukai"
     },
     {
+      "id": "malum",
+      "name": "Malum",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "mezzconfig",
       "name": "MezzConfig",
       "category": "dependency",
@@ -746,6 +975,18 @@
       "packwiz_slug": "polymorph"
     },
     {
+      "id": "primal-magick",
+      "name": "Primal Magick",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "project-expansion",
       "name": "Project Expansion",
       "category": "post_chaos",
@@ -770,6 +1011,30 @@
       "packwiz_slug": "projecte"
     },
     {
+      "id": "psi",
+      "name": "Psi",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
+      "id": "psi-tweaks",
+      "name": "Psi: Tweaks and Additions",
+      "category": "magic_addon",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "re-avaritia",
       "name": "Re:Avaritia",
       "category": "crafting",
@@ -791,6 +1056,18 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/relics-mod",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "name": "Reliquary Reincarnations",
+      "category": "magic_utility",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
       "id": "replication",
@@ -913,6 +1190,18 @@
       "packwiz_slug": "titanium"
     },
     {
+      "id": "totemic",
+      "name": "Totemic",
+      "category": "magic",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": null,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
+    },
+    {
       "id": "witchery-remake",
       "name": "Just Another Witchery Remake",
       "category": "magic",
@@ -961,6 +1250,26 @@
     {
       "id": "separate-fe-transfer",
       "reason": "hard design exclusion"
+    },
+    {
+      "id": "elementalcraft",
+      "reason": "User explicitly rejected ElementalCraft; do not propose or install."
+    },
+    {
+      "id": "natures-aura",
+      "reason": "User explicitly rejected Nature's Aura; do not propose or install."
+    },
+    {
+      "id": "forcecraft",
+      "reason": "User explicitly rejected ForceCraft; do not propose or install."
+    },
+    {
+      "id": "mystical-agriculture",
+      "reason": "Pre-existing user design exclusion reaffirmed; resource crops undermine the intended magical resource progression."
+    },
+    {
+      "id": "mystical-agradditions",
+      "reason": "Excluded with Mystical Agriculture and its ecosystem/addons."
     }
   ],
   "items_blacklist": [
@@ -1031,7 +1340,6 @@
         "mahou-tsukai",
         "roots-classic",
         "evilcraft",
-        "botania",
         "cataclysm"
       ],
       "status": "planned"
@@ -1090,6 +1398,37 @@
         "witchery-remake"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B6",
+      "name": "User-approved additional magic systems and cross-mod addons; selection only",
+      "members": [
+        "goety",
+        "malum",
+        "eidolon-repraised",
+        "forbidden-arcanus",
+        "hexerei",
+        "primal-magick",
+        "reliquary-reincarnations",
+        "enigmatic-legacy-plus",
+        "botania-revived",
+        "extra-botany-revived",
+        "ars-elemental",
+        "ars-ocultas",
+        "ars-additions",
+        "ars-controle",
+        "ars-unification",
+        "ars-elemancy",
+        "ars-n-spells",
+        "goety-cataclysm",
+        "gaze-malum",
+        "psi-tweaks",
+        "psi",
+        "hexcast-neoforged",
+        "embers-re-ignited",
+        "totemic"
+      ],
+      "status": "planned_unresolved_releases"
     }
   ]
 }
