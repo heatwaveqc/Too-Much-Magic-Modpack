@@ -23,6 +23,7 @@ jobs:
         run: |
           node --check kubejs/server_scripts/material_unification.js
           node --check kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js
+          node --check kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js
       - name: Validate five-group FTB Quests navigation
         run: python3 scripts/validate_quests.py
       - uses: actions/setup-go@v5
@@ -75,7 +76,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory' || github.ref_name == 'feature/ftb-quests-45-chapter-scaffold' || github.ref_name == 'feature/ftb-quests-intro-food-tips' || github.ref_name == 'feature/materials-unification-mahou-doubling' || github.ref_name == 'feature/neo-vitae-canonical-dusts'
+    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic' || github.ref_name == 'build/b4-reactors-experimental' || github.ref_name == 'build/b5-expanded-approved-roster' || github.ref_name == 'build/b6-food-pufferfish-skills-client-handoff' || github.ref_name == 'build/b7-inventory-refoxed-qol-audit' || github.ref_name == 'build/b8-qol-compass-farming-market' || github.ref_name == 'design/five-category-quest-chapter-inventory' || github.ref_name == 'feature/ftb-quests-45-chapter-scaffold' || github.ref_name == 'feature/ftb-quests-intro-food-tips' || github.ref_name == 'feature/materials-unification-mahou-doubling' || github.ref_name == 'feature/neo-vitae-canonical-dusts' || github.ref_name == 'feature/mahou-catalyst-exchange-kubejs'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
