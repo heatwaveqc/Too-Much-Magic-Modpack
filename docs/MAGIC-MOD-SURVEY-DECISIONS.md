@@ -76,7 +76,7 @@ The specific two Mystical Agriculture entries and the three disliked mods have b
 
 ## F. Tell Me More — selection resolved (2026-11-13 follow-up)
 
-### Approved for inclusion — six projects
+### Approved for inclusion — five projects
 These **are approved choices** from the earlier 'Recommended Inclusion' and 'Strongly Investigate' groups, not yet installed or validated in the assembled pack:
 
 - **Summoning Rituals** — KubeJS-backed customizable cross-mod ritual framework.
@@ -84,23 +84,23 @@ These **are approved choices** from the earlier 'Recommended Inclusion' and 'Str
 - **Pastel** — color-resonance magic, research and exploration; review any logistics against the pack's restrictions.
 - **Feywild** — distinct fey summons, characters and quests; review world generation alongside Tectonic.
 - **Enchanted: Witchcraft** — larger witchcraft system with rites and poppets; compare interactions with JAWR and Hexerei.
-- **Aspect Alchemy** — experimental aspect-based brewing. **Explicitly included because it was in the selected Strongly Investigate group**, but review interactions with the pack's many existing alchemy/potion systems and do not replace or rewrite existing mechanics without separate user approval.
 
-All six are in `manifest/mods.json` as desired but inactive. Exact target NeoForge artifact and dependency closure remain unverified.
+All five are in `manifest/mods.json` as desired but inactive. Exact target NeoForge artifact and dependency closure remain unverified.
 
-### Omit from this pack — eight projects
-The user said to leave all remaining Tell Me More candidates out. These are **current selection exclusions**, not claims they lack merit, and do not affect similarly named distinct mods:
+### Omit from this pack — nine projects
+The user said to leave all remaining Tell Me More candidates out; Aspect Alchemy was separately withdrawn after a detailed source-level review. These are **current selection exclusions**, not claims they lack merit, and do not affect similarly named distinct mods:
 
 - **Witchcraft and Curses** — small overlapping ritual features and unwanted extra biome/tree content.
 - **Pagan's Blessing** — another partially overlapping ritual system.
 - **Runology** — limited demonstrated content / maturity questions.
 - **Apothecary** — avoid adding another potion/effect layer that might conflict with the many alchemy systems already selected.
+- **Aspect Alchemy** — **removed by explicit user decision** after detailed code review. Does not justify hard-coded aspect integration, a known Jade 15.10.6 incompatibility, and extra maintenance given Neo Vitae, Ars Nouveau and Botania's deeper existing potion systems. No need to override any vanilla or other mod recipes.
 - **Magitech — Arcane Engineering** — an additional magical-tech and resource/worldgen ecosystem.
 - **Relics (RPG Series)** — avoid pulling in the RPG Series' Spell Engine-related dependencies; **not** the separately tracked base `relics` mod.
 - **Jewelry (RPG Series)** — avoid new RPG Series spellcasting/attribute infrastructure.
 - **Runic Curiosities** — underdeveloped/power-balance risk relative to our existing artifacts.
 
-These eight are recorded in the manifest's `excluded` list, with the reason that they were omitted in the user-directed survey selection. The four distinct earlier *maturity test* candidates (Manaweave and Runes, Thavma, Primeva, Mana and Artifice) remain unresolved research, not excluded.
+These nine are recorded in the manifest's `excluded` list, with the reason that they were omitted in the user-directed survey selection. The four distinct earlier *maturity test* candidates (Manaweave and Runes, Thavma, Primeva, Mana and Artifice) remain unresolved research, not excluded.
 
 ## G. Deferred / revisit later
 
@@ -119,7 +119,7 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 ## Follow-up order
 
 1. Review roster discrepancies and any cases where a previously stated exclusion might conceal distinct mechanics, **without overriding user decisions**.
-2. Investigate the four maturity-test candidates and verify exact 1.21.1 NeoForge artifacts and source repositories for the six approved *Tell Me More* selections. The eight omitted mods are no longer in the research-to-include queue.
+2. Investigate the four maturity-test candidates and verify exact 1.21.1 NeoForge artifacts and source repositories for the five remaining approved *Tell Me More* selections. The nine omitted mods are no longer in the research-to-include queue.
 3. In a later build batch, resolve full dependency closures and license terms, pin approved viable mods with packwiz, perform combined server and client testing and record blockers.
 
 ## H. Newly approved supernatural factions (2026-11-13 follow-up)
@@ -129,3 +129,9 @@ These eight are recorded in the manifest's `excluded` list, with the reason that
 - **Defer** skill-tree point limits, caps, levels and inter-mod balance to a dedicated later pass. Exact dependency closure and version pairing still require validation before packwiz installation.
 - This approval does **not** approve every additional Vampirism addon. The pre-existing ten named addon approvals remain separate.
 
+
+## I. Aspect Alchemy withdrawn after detailed review (2026-11-13 follow-up)
+
+- User explicitly removed **Aspect Alchemy** from approved selections. Its separate brewing implementation is not valuable enough to justify integration when Neo Vitae, Ars Nouveau, and Botania already supply deeper and longer-lasting potion capabilities.
+- Source review found hard-coded ingredient/aspect tables and no built-in datapack API for modded aspects; supporting other mods would require custom integration. An open Jade 15.10.6 compatibility issue further increases maintenance cost.
+- Moved the machine roster entry from `mods` and B6 to `excluded`. It was **never installed** in the pinned pack. Do not revisit unless user explicitly changes the decision.
