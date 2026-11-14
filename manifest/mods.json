@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: Dragon Survival 1.21.1 v2.0.74 approved and added to desired manifest (not installed/packwiz-pinned).",
   "mods": [
     {
       "id": "akashic-tome",
@@ -552,6 +552,20 @@
       "dependencies_verified": false,
       "packwiz_slug": "draconic-evolution",
       "note": "Explicit experimental testing candidate and exact pinned dependency"
+    },
+    {
+      "id": "dragon-survival",
+      "name": "Dragon Survival",
+      "category": "transformation",
+      "desired": true,
+      "version": "DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/9539454",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved 2026-11-14 as prerequisite for unified dragon/dracolich transformation integration. CurseForge project 420799 file 9539454 is a NeoForge MC 1.21.1 release. GeckoLib is already in the candidate pack; verify precise dependency compatibility and potential conflicts before pinning/boot. Manifest approval only, NOT installed; no dragon-world or client test.",
+      "candidate_file_id": 9539454,
+      "packwiz_slug": "dragon-survival"
     },
     {
       "id": "eidolon-repraised",
