@@ -82,7 +82,8 @@
       "release_status": "unverified",
       "source": "https://www.curseforge.com/minecraft/mc-mods/biggerreactors",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "RogueLogix original only publishes <=1.20.1 on official CurseForge as of 2026-11-13. Unofficial 1.21.1 NeoForge Rework and Revived forks available but REQUIRE user approval before substitution."
     },
     {
       "id": "botania",
@@ -471,14 +472,15 @@
     },
     {
       "id": "replication",
-      "name": "Replication / Deepslate Replica Ore",
+      "name": "Replication",
       "category": "late_ore",
       "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
+      "version": "1.21.1-1.2.7",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/replication",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "Official Buuz135 NeoForge 1.21.1 artifact; requires Titanium, whose exact pin remains pending. Replication pipes are internal network mechanics, subject to tech-branch rule."
     },
     {
       "id": "rhino",
@@ -534,6 +536,18 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/theurgy",
       "enabled_in_pack": false,
       "dependencies_verified": false
+    },
+    {
+      "id": "titanium",
+      "name": "Titanium",
+      "category": "dependency",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/titanium",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Required by Replication. Upstream build uses 1.21-4.0.42; exact artifact to be pinned when Replication batch is scheduled."
     },
     {
       "id": "witchery-remake",
