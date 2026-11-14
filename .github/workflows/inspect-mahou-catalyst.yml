@@ -19,7 +19,7 @@ jobs:
         run: |
           set -euo pipefail
           curl -fL --retry 3 --retry-delay 1 -o mahou.jar 'https://cdn.modrinth.com/data/7jOxn6qJ/versions/GrYWbBFj/mahoutsukai-1.21.1-v1.36.31.jar'
-          printf '%s  %s\n' '0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a529' mahou.jar | sha512sum -c -
+          printf '%s  %s\n' '0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a' mahou.jar | sha512sum -c -
           jar tf mahou.jar | grep -iE 'catalyst|exchange|mahoujin' | head -150 | tee classnames.txt
           grep -iE 'catalyst.*\\.class|exchange.*\\.class' classnames.txt | grep -v '\\$' | head -50 | sed 's#/#.#g; s#\\.class$##' > candidates.txt
           while IFS= read -r cls; do
