@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "policy": "docs/BUILD-CHANNELS-AND-TESTING.md on test/full-integration",
+  "updated": "2026-11-14",
+  "channels": {
+    "integration": {
+      "branch": "test/full-integration",
+      "status": "rolling-UNSTABLE",
+      "github_workflow": "full-integration-launcher.yml",
+      "artifact": "Too-Much-Magic-Full-Integration-Prism-UNSTABLE"
+    },
+    "candidate": {
+      "immutable_tag": null,
+      "status": "none-approved-yet",
+      "promotion": "explicit freeze of a passing integration SHA and ZIP digest"
+    },
+    "stable": {
+      "immutable_tag": null,
+      "status": "none-certified-yet",
+      "promotion": "explicit manual approval after real client/world/gameplay gates"
+    }
+  },
+  "historic_rollback_evidence": [
+    {
+      "name": "B6 client-tested 125-mod baseline",
+      "commit": "ecddc4342c439a2b973ad16acff112b7d0a4bb60",
+      "evidence": "Owner reported successful Prism client launch and world generation; not full gameplay acceptance",
+      "promoted_stable": false
+    },
+    {
+      "name": "B7 sorting extension 126-mod QA",
+      "commit": "316d11a0626e5793ab7cc5d4b463891f80aa0fe6",
+      "evidence": "Dedicated-server smoke and Prism artifact; ReFoxed client sorting unverified",
+      "promoted_stable": false
+    },
+    {
+      "name": "B8 140-mod QoL test",
+      "commit": "0c214d24793f2c9d912b4540e609bd04cb7b5e9a",
+      "evidence": "Dedicated-server smoke and Prism artifact; no full client gameplay acceptance",
+      "promoted_stable": false
+    }
+  ],
+  "notes": [
+    "Never automatically promote an integration or CI-green build to stable",
+    "Stable tags and candidate tags must identify immutable tested commits and recorded ZIP SHA-256",
+    "Do not overwrite historical rollback references; update this registry only when evidence changes"
+  ]
+}
