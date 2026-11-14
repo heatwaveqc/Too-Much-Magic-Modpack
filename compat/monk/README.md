@@ -1,3 +1,10 @@
+> **Backend chosen 2026-11-14:** Tyz's Skills 6.4.2 for
+> 99-rank leveled purchases, with x10 stage effect/cost.
+> Monk native faction stores licenses/singular powers;
+> Pufferfish retains nonoverlapping one-time nodes.
+> Tyz approved, not yet installed; no live integration.
+> See [tiered skill plan](../../docs/MONK-TYZS-TIERED-ADVANCEMENT.md).
+
 # TMM Monk — Vampirism faction addon
 
 **State: technical scaffold, not survival-integrated or playable progression.**

@@ -41,3 +41,17 @@ break-speed multiplier separately. See `MONK-WORLD-TIERS.md`.
 ## Dragon Survival mod selection (2026-11-14)
 
 Dragon Survival is approved for Dragon/Dracolich transformation work. The manifest now lists 1.21.1 NeoForge v2.0.74, CurseForge file 9539454, `desired=true`, but **`enabled_in_pack=false`** until packwiz install and a combined boot/client world test. GeckoLib is present but exact compat not yet smoke-tested. This selection does not itself add a Dragon Survival player transformation or any dracolich progression.
+## Tyz's Skills chosen for leveled traits (2026-11-14)
+
+The user selected **Tyz's Skills 6.4.2**, verified NeoForge
+1.21.1 CF project 990190 / file 8118598, as the dedicated
+SP-purchased trait backend. It is **manifest-approved** (`desired=true`)
+but not yet packwiz-installed or smoke-tested. The tier strategy
+uses five separate 99-rank skill stages for a sufficiently scalable
+attribute, tenfold stronger and tenfold more costly per stage.
+Tyz SP is derived from the mod's own activity-based XP, not vanilla
+experience. Native Monk tree still handles one-time powers and
+training licenses; Pufferfish still handles nonoverlapping one-time
+shared choices. Effective caps, boss milestones, progression placement
+and any sixth stage are deferred to later review.
+See [MONK-TYZS-TIERED-ADVANCEMENT.md](MONK-TYZS-TIERED-ADVANCEMENT.md).

@@ -1,3 +1,13 @@
+> **Backend decision (2026-11-14):** native Monk faction unlocks
+> one-time abilities and licenses; **Tyz's Skills 6.4.2** owns leveled
+> purchases as successive 99-rank tiers (10× per-rank bonus and price).
+> **Pufferfish** stays for nonoverlapping one-time nodes; **Improvable
+> Skills** stays installed as optional unrelated gameplay, but does
+> **not** charge Monk tier purchases using vanilla XP. This changes
+> earlier deferred-backend proposals below. Tyz is approved but not
+> yet packwiz-installed. See
+> [current tier plan](MONK-TYZS-TIERED-ADVANCEMENT.md).
+
 # Monk addon — charter and technical plan (2026-11-14)
 
 **Owner-approved direction:** a new standalone addon module

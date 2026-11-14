@@ -1,3 +1,11 @@
+> **HISTORICAL COMPARISON — decision superseded 2026-11-14.**
+> The owner selected **Tyz's Skills 6.4.2**, using chained
+> 99-rank skills with 10× bonus and SP price per tier.
+> The former suggestion to prototype Improvable Skills as the
+> Monk rank backend is no longer current. The original comparison
+> remains for provenance. See
+> [MONK-TYZS-TIERED-ADVANCEMENT.md](MONK-TYZS-TIERED-ADVANCEMENT.md).
+
 # Monk ranked-skill backend evaluation
 
 **2026-11-14 — source-backed research, not an implementation decision.**

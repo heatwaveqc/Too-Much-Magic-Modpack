@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Static design integrity; does NOT test in-game skill behavior, costs, or progression.
- * The intended backend remains undecided.
+ * Tyz's Skills is selected for leveled traits, but no live integration exists.
  */
 final class MonkSkillPlanTest {
     private static JsonObject load(String filename) throws Exception {
@@ -31,7 +31,7 @@ final class MonkSkillPlanTest {
         assertEquals(172, skills.size());
         assertEquals(144, references.size());
         assertEquals(25, original.size());
-        assertTrue(plan.get("backend_decision").getAsString().startsWith("DEFERRED"));
+        assertTrue(plan.get("backend_decision").getAsString().startsWith("SELECTED"));
         assertTrue(plan.get("placement_decision").getAsString().startsWith("DEFERRED"));
 
         Set<String> ids = new HashSet<>();

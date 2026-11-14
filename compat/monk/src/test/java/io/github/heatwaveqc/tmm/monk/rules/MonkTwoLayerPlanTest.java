@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Design-only architecture consistency test. Not an in-game Pufferfish integration test. */
+/** Design-only architecture consistency test. Not an in-game Tyz's Skills integration test. */
 final class MonkTwoLayerPlanTest {
     private static JsonObject load(String name) throws Exception {
         try (var reader = Files.newBufferedReader(Path.of("profiles", name))) {
@@ -22,7 +22,7 @@ final class MonkTwoLayerPlanTest {
 
     @Test void allSourceAttributesHaveOneOwnerWhenUnified() throws Exception {
         var plan = load("skill-unification-proposal.json");
-        assertEquals("architecture_smoke_test_not_runtime_or_final_skill_roster",
+        assertEquals("owner_selected_tyzs_levels_pufferfish_one_time_uninstalled_pending_runtime",
                 plan.get("status").getAsString());
         var groups = plan.getAsJsonArray("groups");
         assertEquals(24, groups.size());
@@ -33,6 +33,7 @@ final class MonkTwoLayerPlanTest {
             assertTrue(ids.add(group.get("canonical_skill_id").getAsString()));
             assertEquals("source_backed_aggregate_not_implemented",
                     group.get("adapter_status").getAsString());
+            assertEquals("tyzs_skills", group.get("rank_backend").getAsString());
             for (var member : group.getAsJsonArray("source_members")) {
                 var source = member.getAsJsonObject();
                 assertTrue(seen.add(source.get("source_attribute").getAsString()),

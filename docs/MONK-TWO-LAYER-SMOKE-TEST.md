@@ -1,3 +1,10 @@
+> **SUPERSEDED two-layer prototype design (2026-11-14).**
+> Faction unlocks still license leveled skills, but **Tyz's Skills**
+> has been selected for purchased levels, not Pufferfish or
+> Improvable Skills. Pufferfish retains nonoverlapping one-time
+> nodes. This older smoke test is preserved as engineering history.
+> Use [current Tyz acceptance tests](MONK-TYZS-TIERED-ADVANCEMENT.md).
+
 > **Backend update, 2026-11-14:** The Pufferfish repeatable-skill purchase
 > hypothesis is not proven. First prototype should compare already-installed
 > **Improvable Skills 3** (real per-trait ranks, 32766 short upper cap,

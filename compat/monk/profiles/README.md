@@ -1,3 +1,10 @@
+> **Current selected backend:** Tyz's Skills 6.4.2. See
+> `tyzs-tiered-skills-v1.json` for five-stage x99
+> scaling and `../tyzs-prototypes/` for disabled Strength
+> proof-of-concept JSONs. Pufferfish one-time, Monk
+> native one-time/licenses, Tyz owns leveled ranks.
+> Earlier Pufferfish level-backend proposals are superseded.
+
 # Monk profiles — design only
 
 Two **distinct** definitions; never treat them as one tunable config:

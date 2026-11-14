@@ -1,3 +1,11 @@
+> **Leveled-skill backend change 2026-11-14:** owner selected
+> Tyz's Skills 6.4.2, five optional 99-rank tiers at 10× bonus/cost,
+> native Monk license/one-time skills, Pufferfish nonoverlapping
+> single unlocks. See
+> [MONK-TYZS-TIERED-ADVANCEMENT.md](MONK-TYZS-TIERED-ADVANCEMENT.md).
+> Older Pufferfish/Improvable backend options below are retained as
+> provenance and superseded.
+
 # Monk gear-equivalence and infinite progression contract
 
 Date: 2026-11-14. **Owner's design direction; source inventories committed;

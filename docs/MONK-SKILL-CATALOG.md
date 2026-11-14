@@ -1,3 +1,10 @@
+> **Decision update, 2026-11-14:** Tyz's Skills 6.4.2 is the selected
+> leveled backend. Default **five consecutive 99-rank stages**, with
+> per-rank effect and price multiplied by 10 at each stage; sixth is
+> optional only where the underlying attribute genuinely supports it.
+> See [tier policy](MONK-TYZS-TIERED-ADVANCEMENT.md).
+> This catalog remains source-candidate based, not yet a compiled UI.
+
 # TMM Monk skill catalog v1 — backend and placement agnostic
 
 **State: proposed skill roster for review, not gameplay or a final balance
@@ -29,10 +36,13 @@ and [original Monk 25-ability crosswalk](../compat/monk/profiles/original-monk-a
   improvable numeric stat may also contribute to the same effect;
   prevent accidental double application. Rarity rank means deterministic
   upper source-tier effect, not a random item rarity roll.
-- Backend choice (Vampirism JSON vs Pufferfish vs separate repeatable
-  backend) and the position/cost/gate of each skill remain **undecided**.
-  The only locked flight gate here is the post-Dragon momentum glide.
-  Do not silently set universal rank thresholds as part of this list.
+- **Owner-selected backend: Tyz's Skills 6.4.2** for leveled traits,
+  with each 99-rank skill followed by tenfold higher-value/cost skill
+  tiers when a stat meaningfully supports more investment. The Monk
+  native faction tree retains single-use powers and permissions;
+  Pufferfish retains nonoverlapping one-time shared choices.
+  **Exact skill/world-tier placement remains undecided**, beyond the
+  post-Dragon momentum glide. No Tyz runtime integration has been built.
 - Additional mana/attunement and summoning talents are **conditional**
   on verified player-specific API hooks in the exact pinned mods. No
   imaginary attributes should be awarded just to hit a count.
@@ -545,3 +555,26 @@ See [two-layer architecture smoke test](MONK-TWO-LAYER-SMOKE-TEST.md) and
 [`skill-unification-proposal.json`](../compat/monk/profiles/skill-unification-proposal.json).
 **Placement, category split, repeated-rank UI, upgrade costs and per-school
 specialization remain subject to test and review.**
+
+## Selected leveling backend: Tyz's Skills, 99-rank tier ladder
+
+Previous tentative ownership labels naming Pufferfish as the repeatable
+backend are superseded. The **one-time** skill nodes (Step Assist, Blink,
+Catch Arrows, after-Dragon Momentum Glide) stay in the native Monk
+faction tree. **Each leveled** Monk discipline has a native Monk
+permission unlock; actual levels are purchased using **Tyz's Skills SP**
+from its own action-based XP, **not vanilla XP**. Universal traits
+remain universal: Monk's innate permission changes legitimate
+applications, not the ownership of ordinary shared stat purchases.
+Pufferfish remains for one-time general choices, not the same
+numeric modifiers.
+
+The five-tier ladder is only for **repeatable** stats with enough
+native numerical headroom; other skills stop at their native
+effective cap, and the 98 selected Apotheosis techniques remain
+finite and rarity/effect-limited. The illustrative Strength tier
+definitions are intentionally inactive because large damage bonuses
+could hit Minecraft's effective attribute ceiling. The server
+must enforce prior tier level 99 and refund highest tier first.
+
+[Full backend rules and proof gates](MONK-TYZS-TIERED-ADVANCEMENT.md).
