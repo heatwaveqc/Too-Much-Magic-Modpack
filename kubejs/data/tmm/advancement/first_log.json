@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "first_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:logs"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "tmm:rewards/first_log"
+  },
+  "sends_telemetry_event": false
+}
