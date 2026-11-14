@@ -102,7 +102,7 @@ def modify():
                 item=RENAMES[key[1]][1]
                 block=one(block,'type: "checkmark"',f'type: "item", item: {{ id: "{item}", count: 1 }}',"intro criterion")
             if key in BOTTLES:
-                block=one(block,'id: "minecraft:experience_bottle"',f'id: "{BOTTLES[key]}"',"bottle item")
+                block=one(block,'type: "item", item: { id: "minecraft:experience_bottle"',f'type: "item", item: {{ id: "{BOTTLES[key]}"',"bottle item")
             return block
         file.write_text(pattern.sub(change,source),encoding="utf-8")
     intro=CHAPTERS/"intro.snbt"
