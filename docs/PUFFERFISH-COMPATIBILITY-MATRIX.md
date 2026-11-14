@@ -1,10 +1,10 @@
-# Pufferfish Skills × Too Much Magic — 43-mod compatibility matrix
+# Pufferfish Skills × Too Much Magic — 42-mod compatibility matrix
 
-Updated 2026-11-13. Scope: all 43 approved magic-related entries in the B5 planning manifest, including Enigmatic Legacy+. Pufferfish Skills and Attributes remain approved but uninstalled, pending their custom tree. **Psi: Tweaks and Additions stays in Needs Investigation until the main Psi audit.**
+Updated 2026-11-13. Scope: the 42 retained magic-related entries from the original 43-mod B5 survey, including Enigmatic Legacy+. Aspect Alchemy is excluded as of B6 and is not part of this matrix. Pufferfish Skills and Attributes are both pinned and dedicated-server-smoked in B6; the custom skill tree is not yet authored or gameplay-tested. **Psi: Tweaks and Additions stays in Needs Investigation until the main Psi audit.**
 
 **How to read these states:** Confirmed means source-verified player stats/hooks OR demonstrably inherited parent spell-casting hooks, **not runtime-tested skill tree integration**. Compatible with work means a concrete bridge, configuration or implementation test remains. Needs investigation means evidence is insufficient and incompatibility cannot be inferred. Proven incompatible requires demonstrable impossibility (none so far). Nothing separate to enhance means there is no justified *independent mod-specific player progression track*, not that universal Pufferfish attributes cannot apply.
 
-The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFFERFISH-ADDON-AUDIT-2026-11-13.md), including upstream Java references, version caveats, and the Ars 'n Spells mana-unification design issue.
+**Design preference:** unify overlapping magic resources and scalable spell mechanics wherever supported by the underlying mods, with the unified Pufferfish tree as the cross-school progression layer. Preserve unique spellcraft and progression where no safe shared hook exists; avoid double-applying the same bonuses. The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFFERFISH-ADDON-AUDIT-2026-11-13.md), including upstream Java references, version caveats, and the Ars 'n Spells mana-unification design issue.
 
 ## Summary
 
@@ -12,10 +12,10 @@ The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFF
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **13** |
 | Compatible with work | **6** |
-| Needs investigation | **16** |
+| Needs investigation | **15** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
-| **Total** | **43** |
+| **Total** | **42** |
 
 ## Confirmed — source-backed or parent-inherited Pufferfish compatibility (13)
 
@@ -39,18 +39,17 @@ The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFF
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | Choose mana-unification mode and test possible Pufferfish cross-system spell-power stacking (3.3.5 pinned vs newer source). |
+| **Ars 'n Spells** (`ars-n-spells`) | Bridges Ars and Iron's mana/spell damage; NeoForge SpellDamageEvent.Pre handler adds Iron's power to Ars damage without explicitly recounting Ars damage perk. | Unified mana is the preferred design. Start by testing the mod's default `iss_primary` (Iron's authoritative); verify no Pufferfish cross-system spell-power double counting (3.3.5 pinned vs newer source). |
 | **Extra Botany Revived** (`extra-botany-revived`) | Botania addon with custom DamageHandler, damage types, gear/Curios attributes, and custom-owned entities that do not implement OwnableEntity. | Review magic-damage tags and direct-health attacks; test universal attributes and item enhancements. |
 | **Goety Cataclysm** (`goety-cataclysm`) | Cataclysm spells/servants architecturally extend Goety Spell and Summoned in public 1.20.1 source, but the pinned 1.21.1 code is not matched. | Inspect exact 1.21.1 jar/source and test school potency, soul discount and owned-servant damage. |
 | **Occultism** (`occultism`) | Ordinary spirits extend TamableAnimal; generic pet attributes should apply, but special familiars use custom PathfinderMob ownership. | Test spirits; build reusable owner adapter for familiars if needed. |
 | **Primal Magick** (`primal-magick`) | A single datapack damage tag can bridge primalmagick:is_sorcery to Pufferfish magic attributes. Attunement has public setters; pixies/golems use custom ownership. | Test tag; add reusable companion owner bridge; defer skill→attunement if unnecessary. |
-| **Roots Classic** (`roots-classic`) | KubeJS pre-pickup Crystal Staff imprinting and server/client Terra attachment mirroring implemented as opt-in PR #8; not gameplay-tested. | Test staff components and 40→60 Terra HUD across login, death and dimensions. |
+| **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (16)
+## Needs investigation — insufficient source evidence yet (15)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Aspect Alchemy** (`aspect-alchemy`) | Brewing/alchemy plugin has not been checked for player crafting perks. | Check yield, potion potency, time, item stats and recipe API. |
 | **Embers Re-Ignited** (`embers-re-ignited`) | Magical industry/resource system not audited for player-specific upgrades. | Check whether player-based casting or skill-scalable crafting exists. |
 | **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Rites, poppets and magical progression have not been examined for player-level stat hooks. | Determine whether there are personal magic skills or just item/ritual effects. |
 | **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Artifact-driven personal powers and possible progression; no stat API audit yet. | Determine whether relevant benefits are player attributes or purely equipment-based. |
@@ -88,16 +87,16 @@ None demonstrated.
 
 - **No repeat full audit needed** for Ars Additions, Ars Controle, Ars Elemancy or Ars Elemental. Parent mechanics are source-backed; record only focused in-game regression tests for new glyphs, armor and summoned pets.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
-- **Addon follow-up tests:** Ars 'n Spells mana mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's source/binary. These stay separate from the broader investigation queue.
+- **Addon follow-up tests:** Ars 'n Spells unified mana and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's source/binary. These stay separate from the broader investigation queue.
 - **Deferred with parent:** Psi: Tweaks and Additions remains unexamined.
-- **Broader unexplored systems:** Psi, Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Aspect Alchemy, Feywild, Embers, Enigmatic Legacy+.
+- **Broader unexplored systems:** Psi, Hex Casting, Scriptor Magicae, JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 
 ## Evidence locations
 
 - Upstream Java references and caveats for all ten addons: [addon audit](PUFFERFISH-ADDON-AUDIT-2026-11-13.md).
 - Locked pack roster: [manifest/mods.json](../manifest/mods.json).
-- Roots prototype: https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/8.
+- Roots prototype: [local experimental integration](ROOTS-SKILLS-KUBEJS-PROTOTYPE.md), originally developed in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/8.
 - Goety: https://github.com/Vivideru/Goety-3/blob/main/src/main/java/com/Polarice3/Goety/init/ModAttributes.java.
 - Primal Magick: https://github.com/daedalus4096/PrimalMagick/blob/MC1.21.1/common/src/main/java/com/verdantartifice/primalmagick/common/attunements/AttunementManager.java.
 - Pufferfish pet/damage attribute implementation: https://github.com/pufmat/attributesmod/blob/1.21/Common/src/main/java/net/puffish/attributesmod/mixin/LivingEntityMixin.java.
