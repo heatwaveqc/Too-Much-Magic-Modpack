@@ -131,6 +131,45 @@ def inspect_pin(pin: str) -> None:
                             if follower.startswith("  public") or follower.startswith("  private") or follower.startswith("  protected") or follower == "}":
                                 break
                             print(" BC", follower[:280])
+
+            # Transaction-specific disassembly for exact pinned versions. Inspect
+            # acquisition, cure, feeding and weaknesses before enabling mixins.
+            focus = {
+                "dev.sterner.witchery.feature.affliction.vampire.VampireLeveling": (
+                    "setLevel(", "increaseLevel(", "checkAndLevelUp("),
+                "dev.sterner.witchery.feature.affliction.vampire.VampireEvents": (
+                    "handleHurt(", "handleSunDamage(", "onItemUseFinish(", "onLogin(", "handleBloodHunger("),
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler": (
+                    "increaseBlood(", "decreaseBlood("),
+                "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment": (
+                    "setData(", "getData("),
+                "dev.sterner.witchery.content.ritual_event.RemoveCurseRitualEvent": (
+                    "onFinish(", "start(", "complete(", "run(", "apply("),
+                "dev.sterner.witchery.content.ability.DrinkBloodAbility": (
+                    "transferBlood(", "vampireDrinkBloodAbility("),
+                "dev.sterner.witchery.content.item.BottleOfBloodItem": (
+                    "finishUsingItem(", "use("),
+                "de.teamlapen.vampirism.entity.factions.FactionPlayerHandler": (
+                    "setFactionAndLevel(", "leaveFaction("),
+                "de.teamlapen.vampirism.entity.player.vampire.VampirePlayer": (
+                    "drinkBlood(", "useBlood(", "removeBlood("),
+            }
+            for cls, needles in focus.items():
+                if cls not in classes:
+                    continue
+                pr = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                                    capture_output=True, text=True, timeout=45)
+                ls = pr.stdout.splitlines()
+                print("FOCUS_CLASS", cls, "exit", pr.returncode, flush=True)
+                for i, line in enumerate(ls):
+                    if line.startswith("  ") and not line.startswith("    ") and any(n in line for n in needles):
+                        next_method = next((j for j in range(i+1, len(ls))
+                            if ls[j].startswith(("  public ", "  private ", "  protected ", "  static "))
+                            or ls[j] == "}"), len(ls))
+                        excerpt = ls[i:min(next_method, i+190)]
+                        print("FOCUS_METHOD", cls, line.strip(), flush=True)
+                        for instr in excerpt[1:]:
+                            print(" FOCUS", instr[:270], flush=True)
         jar.unlink()
 
 
