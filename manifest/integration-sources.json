@@ -64,12 +64,12 @@
     },
     {
       "name": "monk-faction",
-      "branch": "fix/monk-sunset-diagnostics",
+      "branch": "feature/monk-early-mastery-two-trees",
       "paths": [
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Full First Sunset and Step Assist implementation plus B15 read-only /tmmmonk diagnose and explicitly operator-only /tmmmonk testjoin for disposable worlds. External transformation exclusion and client GUI remain unverified.",
+      "note": "Newest first-party Monk native progression (sunset/Step Assist + initial rank 2-4 native tree); compiled and shipped as ONE native Monk JAR. Its Tyz skill JSON prototypes stay INACTIVE and are not copied into live Tyz config until shared form gates exist.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
@@ -83,6 +83,15 @@
       ],
       "mode": "source-and-test-only",
       "note": "Research pilot; not added as gameplay JAR"
+    },
+    {
+      "name": "mxp-ledger-math-pilot",
+      "branch": "feature/mxp-ledger-dispatcher",
+      "paths": [
+        "compat/mxp/"
+      ],
+      "mode": "source-and-test-only",
+      "note": "Canonical one-wallet fractional MXP ledger math pilot, source-only. No gameplay JAR, no second currency and no unauthorized Tyz XP awards until dispatcher is validated."
     },
     {
       "name": "tyzs-primary-runtime-migration",
@@ -149,9 +158,11 @@
     "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot.",
     "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic.",
     "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work.",
-    "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated."
+    "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated.",
+    "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree."
   },
   "pending_runtime_work": [
+    "Monk active early-mastery branch now compiled into test builds; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is distinct from global Tyz XP.",
     "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
     "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
