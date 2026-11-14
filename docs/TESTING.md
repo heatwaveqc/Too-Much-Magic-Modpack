@@ -107,3 +107,7 @@ Never reclassify step 1 as steps 2–5.
 - Both requested exact NeoForge 1.21.1 jars pinned with reviewed provider hashes; **140 mod pins**, **127 dedicated-server jars downloaded/verified**, 13 client-only pins. **45 FTB Quests chapter files copied** into disposable server. Combined NeoForge server startup reached **Done** and exited **0**. Packwiz hash-chain validation PASS; quest static validator PASS (**45 chapters / 103 FTB quest objects / XP+meaningful item or explicitly allowed coin**).
 - **Still untested in a client:** Quest Shop menu, category rendering and sale prices, category unlocking, coin reward actual claiming, team-sharing/double-claim behavior, consumption and repeat reset, Cooking for Blockheads blocks/recipes, artifact registry IDs, and real progression gating. Dedicated-server startup is not proof these operate correctly.
 - Original B11 notes saying pending pin/smoke are superseded by this entry. PR remains draft until client acceptance. Do not import into an existing valued world without backups.
+
+## Material unification (candidate branch, 2026-11-14)
+- Static assertions and CI syntax checks added in `scripts/verify_materials.py`; they are NOT functional recipe, dedicated-server, client or world-generation tests.
+- Full manual/game testing matrix and safety gates: `docs/MATERIAL-UNIFICATION.md`.
