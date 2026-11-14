@@ -15,6 +15,18 @@ java -jar installer.jar --installServer
 printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
+  # Explicitly install every compiled first-party JAR; never report a bridge smoke
+  # PASS if the declared JAR was missing, ignored, or not copied into mods/.
+  EXTRA_JAR_LIST="${SMOKE_EXTRA_MOD_JARS:-${SMOKE_EXTRA_MOD_JAR:-}}"
+  if [[ -n "$EXTRA_JAR_LIST" ]]; then
+    IFS=':' read -r -a EXTRA_JARS <<< "$EXTRA_JAR_LIST"
+    for EXTRA in "${EXTRA_JARS[@]}"; do
+      [[ -f "$EXTRA" && "$EXTRA" == *.jar ]] || { echo "Missing or invalid first-party JAR: $EXTRA"; exit 4; }
+      cp -v -- "$EXTRA" "$WORK_DIR/mods/$(basename "$EXTRA")"
+      cmp -- "$EXTRA" "$WORK_DIR/mods/$(basename "$EXTRA")"
+    done
+    echo "Custom first-party modules installed: ${#EXTRA_JARS[@]}"
+  fi
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
   if [[ -d "$ROOT/config" ]]; then
     mkdir -p "$WORK_DIR/config"
