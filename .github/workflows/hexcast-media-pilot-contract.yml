@@ -50,3 +50,27 @@ jobs:
           name: tmm-hexcast-media-bridge-pilot
           path: integration/hexcast-media-pilot/build/libs/*-pilot.jar
           if-no-files-found: error
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Boot full B6 dedicated server with opt-in pilot JAR
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '600'
+          WORK_DIR: ${{ runner.temp }}/tmm-hexcast-pilot-server
+        run: |
+          BRIDGE_JAR="$(find integration/hexcast-media-pilot/build/libs -maxdepth 1 -type f -name '*-pilot.jar' | head -n 1)"
+          test -f "$BRIDGE_JAR"
+          export SMOKE_EXTRA_MOD_JAR="$GITHUB_WORKSPACE/$BRIDGE_JAR"
+          bash scripts/smoke_server.sh
+      - name: Upload isolated server boot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-hexcast-pilot-server-logs
+          path: |
+            ${{ runner.temp }}/tmm-hexcast-pilot-server/server.log
+            ${{ runner.temp }}/tmm-hexcast-pilot-server/logs/latest.log
+            ${{ runner.temp }}/tmm-hexcast-pilot-server/crash-reports/
+          if-no-files-found: warn
+

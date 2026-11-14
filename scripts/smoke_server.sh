@@ -16,6 +16,12 @@ printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
+  # Optional, CI-only test fixture; normal pack smoke is unchanged without this variable.
+  if [[ -n "${SMOKE_EXTRA_MOD_JAR:-}" ]]; then
+    test -f "$SMOKE_EXTRA_MOD_JAR" || { echo "Missing injected pilot JAR: $SMOKE_EXTRA_MOD_JAR"; exit 2; }
+    cp -- "$SMOKE_EXTRA_MOD_JAR" "$WORK_DIR/mods/"
+    echo "Injected one explicit external test-only JAR: $(basename "$SMOKE_EXTRA_MOD_JAR")"
+  fi
   echo "Starting hash-pinned MODDED dedicated server"
 else
   echo "Starting loader-only dedicated server (no mods installed)"
