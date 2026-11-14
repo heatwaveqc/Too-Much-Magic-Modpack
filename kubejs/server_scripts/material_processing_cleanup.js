@@ -83,6 +83,9 @@ ServerEvents.recipes(event => {
   // Botania's white iridescent log already belongs to the vanilla
   // #minecraft:logs_that_burn -> charcoal smelting route, same 0.15 XP.
   event.remove({ id: 'botania:botania_extras/smelting/charcoal_white_iridescent' })
+  // Pink iridescent logs also already smelt via the same vanilla tag
+  // into exactly 1 charcoal, 0.15 XP, 200 ticks.
+  event.remove({ id: 'botania:botania_extras/smelting/charcoal_pink_iridescent' })
 
   console.info('[TMM processing] Deduplicated copper/silver compaction, silver/lead/hellforged/netherite dust and ore furnace recipes; preserved special dimension outputs')
 })
