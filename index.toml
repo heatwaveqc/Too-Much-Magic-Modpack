@@ -189,14 +189,6 @@ file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
-file = "config/ftbquests/quests/lang/en_us/chapter.snbt"
-hash = "516d7e2ef4cc0b7042c51a609bdd3436edf8c65b0614e81eb5e1cd0c05392e32"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapter_group.snbt"
-hash = "b2c689f518f8768ac3b8d78fae7f3c90c6039a08e1fb9250b4df7e63b7e5a58a"
-
-[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
@@ -965,186 +957,6 @@ hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
 
 [[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/advanced_progression.snbt"
-hash = "b4144640055f642d175a85b267a522d043283c63acfcdb0a4a96b3477bc32062"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/apotheosis.snbt"
-hash = "d79aea21a0e1ca33fbac7076bd08feafed6ec0937faf0a894d7fda8f6d879e5f"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/ars_nouveau.snbt"
-hash = "046f5310f29b33882234b3fa110432b4597177bd8eeedd04511ed87a97a71c8a"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/artifacts.snbt"
-hash = "b2f73079a7538d558855f1bc73e54baa409e12003a8e1db2c30a516cf11d0f7f"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/astral_sorcery.snbt"
-hash = "ddedd6cda79ed58557ce67fbf0dc81ef70a4e9864e4e2ec0977e66c70cca8fa7"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/basic_progression.snbt"
-hash = "be7edca72dba20aea4ab80421880285d39cac204abe9c2520597fe48c734f486"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/botania_revived.snbt"
-hash = "2af26fea42319d64eea9cd76dc467be5bf631c5fd31fc0bac8a89f267ff76923"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/deeper_and_darker.snbt"
-hash = "4286ddd8a4fa9f4f52027155a926d8a979d1ffaf3cde38eb830688f178a76c48"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/draconic_evolution.snbt"
-hash = "2cb5df966fbfe9eb201d0fec73b7813118525ba550fbd6695faf2db64f496082"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/eidolon_repraised.snbt"
-hash = "41c2d833d1a63a8ce625f7ecdfa5171df5da50f35ae68470c0e6729573e5c1de"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/embers_re_ignited.snbt"
-hash = "347281096716ce549b1bea924d4ae63f0ccea515a95f29d18140c5ce2aeda860"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/enchanted_witchcraft.snbt"
-hash = "f110da322a98d74c9d2300570c3b6dd403d13952d20ec001469cbe6e23005fc7"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/endgame_roadmap.snbt"
-hash = "79a9a2e9989b50346ccfd69c8dcb1bd3836a28e67197bba6756e733647d3b8f3"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/enigmatic_legacy.snbt"
-hash = "058342a342dd2605fcd9fa75029a74770ee08b9cbc634fad98a6435191591abb"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/evilcraft.snbt"
-hash = "1fe9a77db7d0afa7d2e4f5e83a694e305d3b26f653706ef2f1622f3fcb350efc"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/exceptional_power_reactors.snbt"
-hash = "fe1d7927593e444c7fc903a95f4f345de5d5ff258401ab2761212bb65095c912"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/feywild.snbt"
-hash = "75c8ee2999d1982073c5de26ab08d3419fe5635c5000ce8f08f3379158ec4a11"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/food_fishing.snbt"
-hash = "c952b5383afaaada41be33a0db0b8c853ee9f34ba90d25ca625e46ab8540ce5f"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/forbidden_arcanus.snbt"
-hash = "831a262c2c2a3a6b61bb12228efde2eff6983d5b9c5495e5fc764b86bd48e804"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/gateways_to_eternity.snbt"
-hash = "e1ef5451a997f0bf8d59c24c7038c2224dee1d241733913d85069a6b3093386c"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/goety.snbt"
-hash = "bd405fd5f1fb8a26b0dba0c12f29b668b7a7730b899fb896a8aa2a132fa589b4"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/hex_casting.snbt"
-hash = "3f1464cce2fc6d090606a450c80b04c3789a22da859a8272a5eb94d10ed733e6"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/hexerei.snbt"
-hash = "7e55bcab32ecf0c35ae72f10231394d0a587a35b993311cac4bd0156fbe68bac"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/intro.snbt"
-hash = "3235a711e379befbb98143ad6bd06d41938786b86076ae745867e21acb499247"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/irons_spells_n_spellbooks.snbt"
-hash = "aacc6b7dc1b8c417a7a5a978a04c4de3cad609ad380dc435301ae79add598304"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/just_another_witchery_remake.snbt"
-hash = "24df5fdc5e2aa99b9eeba6a1c7abf26c52ef3f33df09aa4181ee5552c70de865"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/l_enders_cataclysm.snbt"
-hash = "3cf7e8f6f3e54b2cc0f2238e73df177881a5cdcd6bc04449cac2c37a8f81cd9d"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/mahou_tsukai.snbt"
-hash = "6d1e16a8da6875a915e32ba6040ff3a57428c53c9392a9eb8989c9fd532278d9"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/malum.snbt"
-hash = "d8d30982670d492b09b31f52f652d5bbb49c8ca5e79665a80f4bb08b18b5bb6b"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/neo_vitae.snbt"
-hash = "5527a34f958fb41b92c489bbd293f223cf599b2a44029d26e0a426ea52d4768a"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/occultism.snbt"
-hash = "a497fea7e1496049bfb97959f733e065128b6525587599d4913cbe6fd66922e7"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/pastel.snbt"
-hash = "0786f67107c4614efea771a950b0391206178be9dd3df8770819fd3a2fb9fa6f"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/primal_magick.snbt"
-hash = "303116783e61cf708ff23e2d75126f6a6cfaf8d1cabf3a3031027234803ae6b5"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/projecte.snbt"
-hash = "f4ff35a91355066a1991241d9d9a31294c72d1215f096c56bb214544948838d1"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/psi.snbt"
-hash = "2250d215126777aa1326a74395392451d9dd7835c2978f1fb2637fe035e89bf8"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/reliquary_reincarnations.snbt"
-hash = "0f9cb42dd1050699632cfb44acd453e51ba53b02f8d5472174207b1c4cd1ad00"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/replication.snbt"
-hash = "0e3282e9eaf7624006c79effafcabd72becada590d7eec06effa6e948cc92dbc"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/roots_classic.snbt"
-hash = "db6d28752997723781eff1032bc52534ca6721bfde1b60508ca784b7be52ba09"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/scriptor_magicae.snbt"
-hash = "5b455ed742435cd5c9507e882c6944edef35648f6c899886d3fe4fc084d2142a"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/skills_advancement.snbt"
-hash = "d53d3b6e9e9638b68140fae1dd8096d1bd73ac3e57942b2bb7b70b64bf3e1aa2"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/theurgy.snbt"
-hash = "5d55b9541c9f9fd1b3b2a57276d73b598346e638b3539c595e3afc481172f9d4"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/tips_tricks.snbt"
-hash = "80bd414204807e595cdb7d3f44a3baffcb1480a8687a196215b61d3a12f64d83"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/totemic.snbt"
-hash = "856466c719c3ebbcde33e446de22fe7e15d4c8e102f0b26272f43086d0282bed"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/vampirism.snbt"
-hash = "b44044b8adcceb3ed60d59d809d1c154212026642f5c2b90de10f9129820fb84"
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us/chapters/werewolves.snbt"
-hash = "4fedcb8532bcffa4f8f92cdd9d0045993cd29019732fc13fdc4820029f3ecd0a"
-
-[[files]]
 file = "mods/trashslot.pw.toml"
 hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
 metafile = true
@@ -1178,3 +990,7 @@ metafile = true
 file = "mods/puzzles-lib.pw.toml"
 hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
 metafile = true
+
+[[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
