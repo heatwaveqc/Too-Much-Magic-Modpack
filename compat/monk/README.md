@@ -1,3 +1,11 @@
+> **Current Monk catalog target (2026-11-14):** No Pufferfish Skills.
+> Tyz 6.4.2 handles new rank purchases; Improvable Skills 3 remains a separate
+> existing general perk engine; native Vampirism Monk faction handles identity,
+> one-time powers and permission. See
+> [v2 source-by-source placement](../../docs/MONK-SKILL-PLACEMENT-NO-PUFFERFISH.md).
+> Older Pufferfish architecture descriptions below are historical. No actual
+> launcher pack, mod installation, or game behavior is changed by this design.
+
 > **Backend chosen 2026-11-14:** Tyz's Skills 6.4.2 for
 > 99-rank leveled purchases, with x10 stage effect/cost.
 > Monk native faction stores licenses/singular powers;
