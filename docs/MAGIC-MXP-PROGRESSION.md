@@ -1,17 +1,17 @@
 # Universal Magic Experience (MXP) — progression contract
 
-**Decision date:** 2026-11-14. **Status:** design specification only; not yet implemented or smoke-tested. Minecraft 1.21.1 / NeoForge / Pufferfish's Skills 0.19.2. See [MXP source registry](MAGIC-MXP-SOURCE-REGISTRY.md).
+**Decision date:** 2026-11-14. **Status:** design specification only; not yet implemented or smoke-tested. Minecraft 1.21.1 / NeoForge / Tyz's Skills 6.4+ API on the 1.21.1 branch. See [MXP source registry](MAGIC-MXP-SOURCE-REGISTRY.md).
 
 ## Goal and fundamentals
 
-One universal Pufferfish **Magic XP (MXP)** category and a single broadly applicable magic skill tree. Native mods retain their distinct energy resources, spells, item power, ritual minigames, research, and progression. Ars Nouveau and Iron's Spells intentionally share one mana resource via Ars 'n Spells, provisionally ISS Primary; Psi, Hex media, Pastel Ink, Terra, etc. remain independent. Vanilla XP does not buy magic points: Apotheosis makes vanilla experience easy to farm.
+One universal **Magic XP (MXP)** progression pipeline feeding Tyz's Skills' *global* XP/SP wallet and a single broadly applicable magic skill tree. Native mods retain their distinct energy resources, spells, item power, ritual minigames, research, and progression. Ars Nouveau and Iron's Spells intentionally share one mana resource via Ars 'n Spells, provisionally ISS Primary; Psi, Hex media, Pastel Ink, Terra, etc. remain independent. Vanilla XP does not buy magic points: Apotheosis makes vanilla experience easy to farm.
 
-One MXP level gives one skill point; **each level always requires 1,000 effective MXP**. Let **P** be the number of magic skill points earned from leveling **before** an award, not currently invested nodes or points granted by quests/commands.
+Only MXP grants ordinary Tyz experience. One Tyz level grants **one skill point** using our custom level pool; **each level always requires 1,000 effective MXP**. Let **P** be the number of magic skill points earned from leveling **before** an award, not currently invested nodes or points granted by quests/commands.
 
 - **Ordinary award:** effective MXP = base MXP / (1.2 ^ P).
 - Recompute the divisor **mid-award** if one award crosses multiple levels. Process the uncredited base amount piecewise at the applicable current point count.
 - Store an authoritative server-side player XP ledger, earned-level count, fractional award accumulator and discovery history; support respec without resetting P or discovery flags. A point reset must not make XP more lucrative.
-- Preserve fractional awards before forwarding safe, bounded integer experience amounts to Pufferfish's Skills. Verify the actual 0.19.2 API and fixed-threshold configuration before implementation; its publicly documented experience-add command establishes an integration possibility, not that custom implementation is already running.
+- Preserve fractional awards in the compatibility mod's server ledger before forwarding safe, bounded float amounts to the verified Tyz's Skills experience API. The skill-tree backend is now Tyz, not Pufferfish. See [Tyz-only XP and external progression-gating contract](TYZS-MXP-EXTERNAL-GATES.md) for the global XP wallet, custom level pool, disabled native XP sources, external tier/Monk gates, bulk-purchase caveats, and refunds.
 
 ## Fixed exceptions — user-approved design
 
@@ -49,7 +49,7 @@ Illustrative anchors, **not approved amounts**: basic ceremony first 1,000, repe
 
 ## Safety and balance acceptance tests
 
-- Pufferfish level-up across a single large award; correct divisor change between points; accumulated fractional XP; overflow / underflow behavior; respec and bonus points.
+- Tyz's Skills XP, level and SP progression across a single large award; correct divisor change between points; fractional XP accounting; overflow/underflow; XP source allowlisting; external tier/Monk gates; bulk purchases; respec and direct-rank grants.
 - Resource economy: pre-efficiency cost vs real positive debit, stacking of native and skill efficiency, passive charging, power transfers, failed casts, automated activation, logout, death and multiplayer.
 - Ars 'n Spells ISS Primary: one **actual debit and one award** regardless of which school's spell was cast.
 - Rituals: failure vs success, repeating effect ticks, first/second completion, co-op participant UUID selection, dimension changes, chunk unload and missing crafter ownership.
@@ -59,7 +59,7 @@ Illustrative anchors, **not approved amounts**: basic ceremony first 1,000, repe
 
 ## Evidence / technical reading
 
-- [Pufferfish Skills, commands and API](https://www.curseforge.com/minecraft/mc-mods/puffish-skills)
+- [Tyz's Skills 1.21.1 Java API](https://github.com/Tyzbrand/TyzsSkills/blob/mc1.21.1-(main)/src/main/java/com/tyzsskills/api/TyzsSkillsAPI.java), [KubeJS XP and skill APIs](https://github.com/Tyzbrand/TyzsSkills/blob/mc1.21.1-(main)/docs/kubejs/kubejs_methods.md)
 - [Totemic KubeJS ceremonyStartupSuccess event](https://kubejs.com/wiki/addons/totemic)
 - [Embers source-backed EmberRemoveEvent review](EMBERS-SKILLS-AND-ECONOMY-AUDIT-2026-11-13.md)
 - [Ars 'n Spells shared-mana modes](https://www.curseforge.com/minecraft/mc-mods/ars-n-spells)
