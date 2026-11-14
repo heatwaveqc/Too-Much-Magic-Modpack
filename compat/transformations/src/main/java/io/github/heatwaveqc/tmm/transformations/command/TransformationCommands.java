@@ -8,6 +8,9 @@ import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.core.StateSnapshot;
 import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
+import io.github.heatwaveqc.tmm.transformations.vampire.VampireDiagnostics;
+import io.github.heatwaveqc.tmm.transformations.vampire.VampireOwnership;
+import io.github.heatwaveqc.tmm.transformations.vampire.VampireSubsystem;
 import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachments;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -21,7 +24,29 @@ public final class TransformationCommands {
 
     public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("tmmtransform")
-                .then(Commands.literal("status").executes(ctx -> status(ctx.getSource()))));
+                .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
+                .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))));
+    }
+
+    private static int vampire(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        StateSnapshot snapshot = ProbeRegistry.observe(player);
+        var vampirism = snapshot.get(ProviderState.VAMPIRISM_VAMPIRE);
+        var jawr = snapshot.get(ProviderState.JAWR_VAMPIRE);
+        source.sendSuccess(() -> Component.literal("Vampire fusion diagnostic: Vampirism=" + vampirism
+                + ", JAWR=" + jawr + "; no cross-mod writes or reconciliation enabled"), false);
+        source.sendSuccess(() -> Component.literal("Vampirism raw meters: "
+                + VampireDiagnostics.vampirism(player).map(v ->
+                        "native level " + v.level() + ", blood " + v.blood() + "/" + v.maxBlood())
+                        .orElse("unreadable or mod absent")), false);
+        source.sendSuccess(() -> Component.literal("JAWR raw meters: "
+                + VampireDiagnostics.jawr(player).map(v ->
+                        "native level " + v.level() + ", blood " + v.blood() + "/" + v.maxBlood())
+                        .orElse("unreadable or mod absent")), false);
+        source.sendSuccess(() -> Component.literal("Intended single blood owner: " +
+                VampireOwnership.target(vampirism, jawr, VampireSubsystem.BLOOD_STORAGE)
+                + " (design target only; runtime arbitration NOT active)"), false);
+        return Command.SINGLE_SUCCESS;
     }
 
     private static int status(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {

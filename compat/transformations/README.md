@@ -27,3 +27,12 @@ See [transition policy](../../docs/TRANSFORMATION-TRANSITION-POLICY.md) and
 [implementation gates](../../docs/TRANSFORMATION-BRIDGE-IMPLEMENTATION.md).
 
 Never bypass uncertain observations, erase progression, silently install Dragon Survival, or merge this project into The Monk Mod.
+
+## Vampire dual-state pilot (2026-11-14)
+
+- Both Vampirism 1.10.13 and JAWR 0.5.39 binary APIs have been hash-verified.
+- Registered read-only JAWR vampire observer (alongside Vampirism vampire/hunter observers).
+- `/tmmtransform vampire` reports real native progression/blood meters and intended resource ownership.
+- Pure projected blood conversion, ownership contract and unit tests exist. **No blood synchronization or event cancellation is enabled.**
+- See [the exact-binary deep audit](../../docs/VAMPIRE-FUSION-AUDIT-2026-11-14.md) for source-backed conflicts, intended unified state and mandatory gameplay gates.
+- Separate vampire skill progression remains intact; nothing is auto-granted or cured.

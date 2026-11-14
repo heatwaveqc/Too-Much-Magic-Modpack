@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations;
 
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
+import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
 import io.github.heatwaveqc.tmm.transformations.command.TransformationCommands;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
@@ -21,7 +22,8 @@ public final class TransformationsMod {
         TransformationAttachments.ATTACHMENTS.register(modBus);
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_VAMPIRE));
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_HUNTER));
+        ProbeRegistry.register(new JAWRVampireProbe());
         NeoForge.EVENT_BUS.addListener(TransformationCommands::register);
-        LOGGER.warn("Transformation bridge read-only Vampirism observers loaded; no transitions or death handling are enforced.");
+        LOGGER.warn("Transformation bridge read-only Vampirism and JAWR observers loaded; no transitions or death handling are enforced.");
     }
 }
