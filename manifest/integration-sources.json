@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "baseline": "test/quest-vampire-localization-2026-11-14",
+  "channel": "integration",
+  "streams": [
+    {
+      "name": "vampire-bridge",
+      "branch": "feature/transformation-bridge-scaffold",
+      "paths": [
+        "compat/transformations/"
+      ],
+      "mode": "compile-and-load",
+      "note": "Latest standalone bridge source; all experimental behaviors still default off"
+    },
+    {
+      "name": "silver-ore-materials",
+      "branch": "feature/silver-equipment-unification",
+      "paths": [
+        "config/almostunified/",
+        "config/neovitae/materials.json",
+        "kubejs/server_scripts/material_unification.js",
+        "kubejs/server_scripts/silver_equipment_unification.js",
+        "kubejs/startup_scripts/silver_equipment_stats.js",
+        "mods/almostunified.pw.toml",
+        "manifest/material-ore-audit.json"
+      ],
+      "manifest_mod_ids": [
+        "almostunified"
+      ],
+      "mode": "runtime-experimental",
+      "note": "Supersedes material-unification and polymorph-audit feature branches"
+    },
+    {
+      "name": "roots-mxp-prototypes",
+      "branch": "feature/roots-kubejs-first-pickup-terra-poc",
+      "paths": [
+        "kubejs/client_scripts/roots_terra_client.js",
+        "kubejs/server_scripts/roots_staff_first_pickup.js",
+        "kubejs/server_scripts/roots_terra_server.js"
+      ],
+      "mode": "runtime-experimental",
+      "note": "Prototype only, not the finished universal MXP implementation"
+    },
+    {
+      "name": "monk-faction",
+      "branch": "design/monk-no-pufferfish-skill-placement",
+      "paths": [
+        "compat/monk/"
+      ],
+      "mode": "compile-and-load",
+      "note": "Primary Tyz skill owner remains separate; do not duplicate purchasable trees"
+    },
+    {
+      "name": "mxp-hexcast-contract",
+      "branch": "design/universal-mxp-progression-registry",
+      "paths": [
+        "integration/hexcast-media-pilot/"
+      ],
+      "mode": "source-and-test-only",
+      "note": "Research pilot; not added as gameplay JAR"
+    }
+  ],
+  "covered_by_baseline": {
+    "feature/qol-trash-tree-reliquified": "Already in B12 baseline",
+    "fix/more-overlays-auto-client-install": "Already in B12 baseline",
+    "fix/quest-localization-layout-onboarding": "Already in combined quest QA baseline; single en_us localization correction has priority",
+    "feature/ftb-quests-45-chapter-scaffold": "Already in quest QA baseline",
+    "feature/ftb-quests-intro-food-tips": "Already in quest QA baseline",
+    "feature/progression-quests-full-tech": "Already in quest QA baseline",
+    "feature/questshop-cooking-currency-economy": "Already in quest QA baseline including command coin-claim fix",
+    "feature/akashic-tome-starter-storage": "Already in quest QA baseline",
+    "design/five-category-quest-chapter-inventory": "Already in quest QA baseline",
+    "design/expanded-magic-mod-decisions": "Historical approval roster, inherited by baseline",
+    "design/tectonic-worldgen": "Historical worldgen design, inherited by baseline",
+    "research/early-magic-utility-inventory": "Already in quest QA baseline",
+    "test/quest-vampire-localization-2026-11-14": "Explicit build base"
+  },
+  "superseded_or_non_runtime": {
+    "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
+    "audit/polymorph-conflicts-2026-11-14": "Superseded by silver-equipment branch carrying audit and materials",
+    "feature/monk-faction-framework": "Superseded by design/monk-no-pufferfish-skill-placement which contains full module",
+    "design/b6-pufferfish-unification-reconciliation": "Historical Pufferfish design; newer Tyz planning supersedes it",
+    "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement"
+  },
+  "pending_runtime_work": [
+    "Tyz 6.4.2 pack pin and MXP-only XP runtime bridge not yet implemented on an active branch",
+    "Removing Pufferfish Skills and migrating its existing quest/skill configuration is an approved next-full-build task, not yet merged",
+    "New five-form Tyz trees and external locks are currently design-only",
+    "Monk initiation and executable perks are not implemented by existing scaffold",
+    "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments"
+  ]
+}
