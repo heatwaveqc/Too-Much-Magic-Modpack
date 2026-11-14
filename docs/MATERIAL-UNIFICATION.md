@@ -6,9 +6,30 @@ Status: **implemented as a reviewable candidate; NOT game-tested or release-appr
 
 - One preferred ore (per stone variant), raw material, ingot/gem and dust for each conventional material. All recipe consumers should accept `c:` tags; player-facing outputs prefer one item.
 - Almost Unified 1.4.2 NeoForge handles supported recipe, JEI, loot and vanilla-style ore-feature rewriting. It does not add ores or fix custom generation.
-- Conventional whitelist: aluminum, copper, diamond, emerald, gold, iron, lead, nickel, platinum, quartz, silver, tin, zinc. Expand only after inspecting installed tags. No Create dependency.
-- Priority: Minecraft, Mahou, Occultism, Neo Vitae, Theurgy. Mahou wins for iron/gold/diamond/emerald/quartz *dusts only*; other dusts favor Occultism then Neo Vitae.
-- No uranium, draconium, iesnium, Replication ore, or special reagents in unification tags. Corrupted Dust, Ender/Eye powder and ritual items remain distinct.
+- Source-audited whitelist: copper, diamond, emerald, gold, iron, lead, quartz, silver, sulfur and saltpeter. Aluminum, nickel, platinum, tin and zinc are **not** force-unified: the actual installed sources inspected so far do not demonstrate duplicate standard ore sets for them. No Create dependency.
+- Preferred material providers: **Occultism for silver** (ore/raw/ingot/dust), **Embers for lead** (ore/raw/ingot), and Minecraft for copper/iron/gold/diamond/emerald. Mahou wins iron/gold/diamond/emerald/quartz *dusts only*, while Occultism wins copper dust and Neo Vitae wins sulfur dust. Primal Magick grits, Eidolon, Werewolves and Embers are now part of the priority list. The provider inventory and exact source-backed IDs are in `manifest/material-ore-audit.json`.
+- No uranium, draconium, iesnium, Replication ore, arcane gold, Malum's transformed metals or Pastel's dimension-specific ores in unification. Corrupted Dust, Ender/Eye powder and ritual items remain distinct. Occultism/Eidolon/Embers/Werewolves conventional silver ore variants are unified; Eidolon and Embers lead ore variants are unified.
+
+## Verified duplicate ore registry sets (source-backed, not yet a runtime dump)
+
+| Material | Preferred | Confirmed duplicate suppliers | Source evidence |
+|---|---|---|---|
+| **Silver** | `occultism` | `occultism:silver_ore`, `embers:silver_ore`, `eidolon_repraised:silver_ore`, `werewolves:silver_ore`, plus all four deepslate variants | Each mod's published 1.21.x `data/c/tags/item/ores/silver.json` |
+| **Lead** | `embers` | `embers:lead_ore`, `eidolon_repraised:lead_ore`, plus deepslate variants | Each mod's `data/c/tags/item/ores/lead.json` |
+| **Copper dust** | `occultism` | `occultism:copper_dust`, `primalmagick:copper_grit` | Item tag `c:dusts/copper` |
+| **Iron/gold dust** | `mahoutsukai` | Mahou powders, Primal Magick grits; Occultism gold dust | Item tag `c:dusts/iron` / `c:dusts/gold` |
+| **Sulfur dust** | `neovitae` | `eidolon_repraised:sulfur`, Neo Vitae's dynamic sulfur dust | Item tag `c:dusts/sulfur` |
+
+Embers and Eidolon have separately verified natural silver/lead ore placed features. Occultism and Werewolves also generate silver by configured ore features. These should converge through Almost Unified **for newly generated chunks**. In old chunks, existing duplicate ore blocks remain, but their drops and smelting recipes should converge.
+
+**These specific source files have been inspected** in the 1.21.1/1.21 GitHub source branches. The exact pinned JAR registries and the dynamic Neo Vitae materials must still be compared against a dedicated-server item/tag dump. `manifest/material-ore-audit.json` is the machine-readable inventory; it is not a fabricated claim of complete runtime coverage.
+
+### Material-specific exclusions
+
+- Eidolon's **Arcane Gold** stays different from gold; Malum's **Cthonic Gold**, modified silver/lead variants, and soulstone remain different.
+- Pastel's special ores, including blackslag/deep-dark mineral variants, are separate because their drops and dimension mechanics matter.
+- Primal Magick's rock salt is not nether quartz; its **iron, gold and copper grits** do participate in dust unification.
+- Draconium, uranium, Iesnium and Deepslate Replica Ore are not regular metals in our pack progression; do not standardize or expose their generation.
 
 ## Mahou early-game processing
 
