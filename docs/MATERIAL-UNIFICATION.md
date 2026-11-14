@@ -51,6 +51,28 @@ Embers and Eidolon have separately verified natural silver/lead ore placed featu
 - No implementation claim of in-world success: verify actual Neo Vitae output from Occultism crusher, Embers/Eidolon processing, Primal Magick grits and Neo Vitae Athanor/Tabula; verify Mahou's Alarm Boundary and Catalyst Exchange **using the Mahou catalyst**, not merely JEI crafting. If a hardcoded processing machine bypasses JSON outputs, add a targeted KubeJS/API integration or tiny Java adapter only for that proven exception.
 - Keep Polymorph as a fallback. A recipe scan and client JEI must check that redirecting output did not create or conceal conflicts, or change 1:1/2:1/3:1 economics.
 
+## Neo Vitae -> Mahou circles: KubeJS interaction bridge (experimental)
+
+- `kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js` recognizes direct **right-clicks on a blank `mahoutsukai:mahoujin`** with `neovitae:iron_dust`, `gold_dust`, `diamond_dust`, `emerald_dust` or `quartz_dust`.
+- KubeJS `NativeEvents` listens at NeoForge's `UseItemOnBlockEvent` BLOCK phase. The script temporarily presents the corresponding actual Mahou powdered catalyst to the **native** circle interaction and restores the original held Neo Vitae stack, consuming exactly one Neo Vitae dust **only when the Mahou interaction returns success**. Normal Mahou powders remain supported unchanged. It does not rewrite any spells or alter ingredient economics.
+- This is **not yet gameplay-verified**. A passing JavaScript parse or dedicated-server boot does **not** prove a circle recognizes the catalyst. Validate both hands, stacked items, blank/partially-completed circles, creative mode, no-op clicks, and no duplication/loss. Pay special attention to client/server inventory synchronization.
+- **Deliberate scope limit:** Catalyst Exchange is a *dropped-item* powered circle; a block right-click bridge does not modify how that spell searches for eligible item entities. Treat Neo Vitae dust input for Catalyst Exchange as a separate KubeJS entity-interaction task, and only escalate to a Java compat bridge if that cannot be handled safely through exposed events.
+- If the native event callback is not accessible in pinned KubeJS or Mahou does not use the normal `BlockState.useItemOn` route, disable this script, record the failure, and implement a focused Java adapter after inspecting the pinned Mahou JAR. Never fake success by directly setting circle block states.
+
+### Additional direct-circle test cases
+
+| Action | Required result |
+|---|---|
+| Neo Vitae iron dust, one item, click blank Mahou circle | One dust consumed; circle shows iron catalyst |
+| Neo iron dust stack of 64, click | Stack becomes 63; exactly one catalyst added |
+| Neo iron twice + Neo quartz on same circle | Produces Alarm Boundary |
+| Offhand Neo dust | Works once without consuming main-hand items |
+| Wrong dust, wrong block, or blocked interaction | No dust loss or phantom catalyst |
+| Creative-mode catalyst | Same behavior as native Mahou creative powders |
+| Existing Mahou powdered iron on the same circle | Native behavior unchanged |
+| Client rejoin after completed circle | Circle state and dust counts remain consistent |
+| Neo dust dropped on completed Catalyst Exchange | **Not covered** by this right-click bridge; test separately |
+
 ## Mahou early-game processing
 
 - `raw_iron` or `raw_gold` + Mahou Hammer -> 1 matching Mahou powder.
