@@ -1,5 +1,8 @@
 # Persistent player transformation compatibility — design proposal (2026-11-13)
 
+> **SUPERSEDED TRANSFORMATION DECISIONS (2026-11-13):** The user's later **locked target** is [TRANSFORMATION-TARGET.md](TRANSFORMATION-TARGET.md): two vampire progression trees under one physiology; two werewolf trees under one physiology; Abomination combines all four parent source states; both lichdoms **must stack into Archlich**; dragons permit exactly one lich but never Archlich/Vampire/Werewolf/Abomination; Hunter is exclusive. Any contrary provisional matrix or status below is **historical research only**. Death-event work is tracked in [DEATH-MECHANICS-AUDIT.md](DEATH-MECHANICS-AUDIT.md). No bridge is yet implemented.
+
+
 **Status: proposed architecture / research and acceptance gates, not an implemented feature or a decision to include Dragon Survival.** The current installed B3 pack does not include Dragon Survival, Vampirism, Werewolves, Goety or the other new candidate systems, except that **JAWR and JAWR: Forbidden Magic are already installed**. Do not claim this document makes transformations exclusive.
 
 ## The failure mode
