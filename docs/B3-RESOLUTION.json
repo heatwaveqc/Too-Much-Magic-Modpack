@@ -1,0 +1,844 @@
+{
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "generated_at_utc": "2026-11-14T03:02:52.537541+00:00",
+  "candidates": [
+    {
+      "id": "tectonic",
+      "slug": "tectonic",
+      "project_id": "lWDHr9jE",
+      "version_id": "n4iyW7aB",
+      "version_number": "3.0.28-neoforge-21.1",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "occultism",
+      "slug": "occultism",
+      "project_id": "sbJh4AZw",
+      "version_id": "SFDVXWYt",
+      "version_number": "1.21.1-neoforge-1.227.0",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "ars-nouveau",
+      "slug": "ars-nouveau",
+      "project_id": "TKB6INcv",
+      "version_id": "ALmdjtiq",
+      "version_number": "5.13.5",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "irons-spells",
+      "slug": "irons-spells-n-spellbooks",
+      "project_id": "s4OWxYQQ",
+      "version_id": "slKLosTb",
+      "version_number": "1.21.1-3.16.3",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "theurgy",
+      "slug": "theurgy",
+      "project_id": "uOVMgoil",
+      "version_id": "EBO0aQOY",
+      "version_number": "1.21.1-neoforge-1.79.0",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "neovitae",
+      "slug": "neovitae",
+      "project_id": "rvaW4C93",
+      "version_id": "FR26bWPa",
+      "version_number": "1.21.1-1.1.53",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "witchery-remake",
+      "slug": "just-another-witchery-remake",
+      "project_id": "LCO8KZvC",
+      "version_id": "TWcJbsjg",
+      "version_number": "0.5.39",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "mahou-tsukai",
+      "slug": "mahou-tsukai",
+      "project_id": "7jOxn6qJ",
+      "version_id": "GrYWbBFj",
+      "version_number": "1.36.31",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "evilcraft",
+      "slug": "evilcraft",
+      "project_id": "3ANq2btA",
+      "version_id": "mOGfae8K",
+      "version_number": "1.21.1-1.2.100",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "roots-classic",
+      "slug": "roots-classic",
+      "status": "blocked",
+      "reason": "Upstream Modrinth project/version not found"
+    },
+    {
+      "id": "cataclysm",
+      "slug": "l_enders-cataclysm",
+      "project_id": "46KJle7n",
+      "version_id": "PsPYpoCC",
+      "version_number": "3.33",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "apotheosis",
+      "slug": "apotheosis",
+      "project_id": "rqFWfVlz",
+      "version_id": "veL1ccTb",
+      "version_number": "1.21.1-8.9.0",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "artifacts",
+      "slug": "artifacts",
+      "project_id": "P0Mu4wcQ",
+      "version_id": "lMfuK0o7",
+      "version_number": "13.2.5",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "relics",
+      "slug": "relics",
+      "status": "blocked",
+      "reason": "No 1.21.1 NeoForge stable release JAR on Modrinth"
+    },
+    {
+      "id": "deeper-darker",
+      "slug": "deeperdarker",
+      "project_id": "fnAffV0n",
+      "version_id": "TuD0Zvi3",
+      "version_number": "1.4.1-neoforge-1.21.1",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "gateways-to-eternity",
+      "slug": "gateways-to-eternity",
+      "project_id": "8OIeAukW",
+      "version_id": "FNtkt80G",
+      "version_number": "1.21.1-5.1.0",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "extended-crafting",
+      "slug": "extended-crafting",
+      "project_id": "5JMG1gql",
+      "version_id": "Oxp773uX",
+      "version_number": "7.0.9",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "re-avaritia",
+      "slug": "re-avaritia",
+      "project_id": "QeB3NRC5",
+      "version_id": "RN6Eu9Y3",
+      "version_number": "1.21.1-1.4.4-release",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "project-expansion",
+      "slug": "project-expansion",
+      "project_id": "a7yNQPzW",
+      "version_id": "F5C1OobM",
+      "version_number": "1.21.1-1.0.6",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "construction-gadgets",
+      "slug": "construction-gadgets",
+      "status": "blocked",
+      "reason": "Upstream Modrinth project/version not found"
+    },
+    {
+      "id": "forbidden-magic",
+      "slug": "jawr-forbidden-magic",
+      "project_id": "pitZv4pV",
+      "version_id": "YgPMe2M7",
+      "version_number": "0.5.37",
+      "version_type": "release",
+      "status": "resolved"
+    },
+    {
+      "id": "roots-classic",
+      "source": "curseforge",
+      "project_id": 295780,
+      "expected_release_file": "RootsClassic-1.21.1-1.5.10",
+      "status": "resolved"
+    },
+    {
+      "id": "projecte",
+      "source": "curseforge",
+      "project_id": 226410,
+      "expected_release_file": "ProjectE-1.21.1-PE1.1.0",
+      "status": "resolved"
+    },
+    {
+      "id": "replication",
+      "source": "curseforge",
+      "project_id": 638351,
+      "expected_release_file": "Replication-1.21.1-1.2.7",
+      "status": "resolved"
+    }
+  ],
+  "explicit_skips": {
+    "astral-sorcery": "User expressly excluded the alpha build",
+    "botania": "User expressly excluded until stable/approved",
+    "draconic-evolution": "Available build is a beta; user requested no betas",
+    "bigger-reactors": "Original official mod has no compatible 1.21.1 NeoForge release; forks not approved",
+    "observerlib": "Astral Sorcery dependency, deferred with Astral",
+    "brandons-core": "Draconic Evolution dependency, deferred with beta",
+    "magical-satchel": "Unresolved upstream project identity; no guessing",
+    "formation-wand": "Unresolved upstream project identity; no guessing",
+    "roguelike-dungeons": "Unresolved requested mod identity; no guessing",
+    "starlight-structures": "Unresolved requested mod identity; no guessing"
+  },
+  "before_count": 30,
+  "now_count": 62,
+  "metafiles": [
+    {
+      "id": "apotheosis",
+      "slug": "apotheosis",
+      "name": "Apotheosis",
+      "filename": "Apotheosis-1.21.1-8.9.0.jar",
+      "side": "both",
+      "modrinth_id": "rqFWfVlz",
+      "version_id": "veL1ccTb",
+      "cf_project_id": null
+    },
+    {
+      "id": "apothic-attributes",
+      "slug": "apothic-attributes",
+      "name": "Apothic Attributes",
+      "filename": "ApothicAttributes-1.21.1-2.11.0.jar",
+      "side": "both",
+      "modrinth_id": "DGaH8Rh0",
+      "version_id": "64fZbLnj",
+      "cf_project_id": null
+    },
+    {
+      "id": "apothic-enchanting",
+      "slug": "apothic-enchanting",
+      "name": "Apothic-Enchanting",
+      "filename": "ApothicEnchanting-1.21.1-1.6.4.jar",
+      "side": "both",
+      "modrinth_id": "pL8MtgqY",
+      "version_id": "JAQJkLJ1",
+      "cf_project_id": null
+    },
+    {
+      "id": "apothic-spawners",
+      "slug": "apothic-spawners",
+      "name": "Apothic-Spawners",
+      "filename": "ApothicSpawners-1.21.1-1.4.0.jar",
+      "side": "both",
+      "modrinth_id": "DfxVkOAO",
+      "version_id": "pWfxcfO2",
+      "cf_project_id": null
+    },
+    {
+      "id": "appleskin",
+      "slug": "appleskin",
+      "name": "AppleSkin",
+      "filename": "appleskin-neoforge-mc1.21-3.0.9.jar",
+      "side": "both",
+      "modrinth_id": "EsAfCjCV",
+      "version_id": "uAKA6Laj",
+      "cf_project_id": null
+    },
+    {
+      "id": "architectury-api",
+      "slug": "architectury-api",
+      "name": "Architectury API",
+      "filename": "architectury-13.0.11-neoforge.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 419699
+    },
+    {
+      "id": "ars-nouveau",
+      "slug": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "filename": "ars_nouveau-1.21.1-5.13.5.jar",
+      "side": "both",
+      "modrinth_id": "TKB6INcv",
+      "version_id": "ALmdjtiq",
+      "cf_project_id": null
+    },
+    {
+      "id": "artifacts",
+      "slug": "artifacts",
+      "name": "Artifacts",
+      "filename": "artifacts-neoforge-13.2.5.jar",
+      "side": "both",
+      "modrinth_id": "P0Mu4wcQ",
+      "version_id": "lMfuK0o7",
+      "cf_project_id": null
+    },
+    {
+      "id": "better-advanced-tooltips",
+      "slug": "better-advanced-tooltips",
+      "name": "Better Advanced Tooltips",
+      "filename": "better-advanced-tooltips-2101.1.0-build.5.jar",
+      "side": "both",
+      "modrinth_id": "iHLDc0eo",
+      "version_id": "uPFbnD32",
+      "cf_project_id": null
+    },
+    {
+      "id": "controlling",
+      "slug": "controlling",
+      "name": "Controlling",
+      "filename": "Controlling-neoforge-1.21.1-19.0.5.jar",
+      "side": "client",
+      "modrinth_id": "xv94TkTM",
+      "version_id": "FaNppCJJ",
+      "cf_project_id": null
+    },
+    {
+      "id": "corail-tombstone",
+      "slug": "corail-tombstone",
+      "name": "Corail Tombstone",
+      "filename": "tombstone-neoforge-1.21.1-9.5.6.jar",
+      "side": "both",
+      "modrinth_id": "YT5K34AB",
+      "version_id": "e68NhQJm",
+      "cf_project_id": null
+    },
+    {
+      "id": "cucumber",
+      "slug": "cucumber",
+      "name": "Cucumber Library",
+      "filename": "Cucumber-1.21.1-8.0.16.jar",
+      "side": "both",
+      "modrinth_id": "Rw1NrDzF",
+      "version_id": "8421rqFF",
+      "cf_project_id": null
+    },
+    {
+      "id": "curios-api",
+      "slug": "curios",
+      "name": "Curios API",
+      "filename": "curios-neoforge-9.5.1+1.21.1.jar",
+      "side": "both",
+      "modrinth_id": "vvuO3ImH",
+      "version_id": "yohfFbgD",
+      "cf_project_id": null
+    },
+    {
+      "id": "cyclops-core",
+      "slug": "cyclops-core",
+      "name": "Cyclops Core",
+      "filename": "cyclopscore-1.21.1-neoforge-1.30.1.jar",
+      "side": "both",
+      "modrinth_id": "Z9DM0LJ4",
+      "version_id": "axSK9vET",
+      "cf_project_id": null
+    },
+    {
+      "id": "deeper-darker",
+      "slug": "deeperdarker",
+      "name": "Deeper and Darker",
+      "filename": "deeperdarker-neoforge-1.21.1-1.4.1.jar",
+      "side": "both",
+      "modrinth_id": "fnAffV0n",
+      "version_id": "TuD0Zvi3",
+      "cf_project_id": null
+    },
+    {
+      "id": "embeddium",
+      "slug": "embeddium",
+      "name": "Embeddium",
+      "filename": "embeddium-1.0.15+mc1.21.1.jar",
+      "side": "client",
+      "modrinth_id": "sk9rgfiA",
+      "version_id": "J7b96IEd",
+      "cf_project_id": null
+    },
+    {
+      "id": "entity-culling",
+      "slug": "entityculling",
+      "name": "Entity Culling",
+      "filename": "entityculling-neoforge-1.12.1-mc1.21.1.jar",
+      "side": "client",
+      "modrinth_id": "NNAgCjsB",
+      "version_id": "DDaDZQ47",
+      "cf_project_id": null
+    },
+    {
+      "id": "evilcraft",
+      "slug": "evilcraft",
+      "name": "EvilCraft",
+      "filename": "evilcraft-1.21.1-neoforge-1.2.100.jar",
+      "side": "both",
+      "modrinth_id": "3ANq2btA",
+      "version_id": "mOGfae8K",
+      "cf_project_id": null
+    },
+    {
+      "id": "extended-crafting",
+      "slug": "extended-crafting",
+      "name": "Extended Crafting",
+      "filename": "ExtendedCrafting-1.21.1-7.0.9.jar",
+      "side": "both",
+      "modrinth_id": "5JMG1gql",
+      "version_id": "Oxp773uX",
+      "cf_project_id": null
+    },
+    {
+      "id": "ferritecore",
+      "slug": "ferrite-core",
+      "name": "FerriteCore",
+      "filename": "ferritecore-7.0.3-neoforge.jar",
+      "side": "both",
+      "modrinth_id": "uXXizFIs",
+      "version_id": "x7kQWVju",
+      "cf_project_id": null
+    },
+    {
+      "id": "ftb-chunks",
+      "slug": "ftb-chunks-forge",
+      "name": "FTB Chunks (NeoForge)",
+      "filename": "ftb-chunks-neoforge-2101.1.24.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 314906
+    },
+    {
+      "id": "ftb-library",
+      "slug": "ftb-library-forge",
+      "name": "FTB Library (NeoForge)",
+      "filename": "ftb-library-neoforge-2101.1.39.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 404465
+    },
+    {
+      "id": "ftb-quests",
+      "slug": "ftb-quests-forge",
+      "name": "FTB Quests (NeoForge)",
+      "filename": "ftb-quests-neoforge-2101.1.38.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 289412
+    },
+    {
+      "id": "ftb-teams",
+      "slug": "ftb-teams-forge",
+      "name": "FTB Teams (NeoForge)",
+      "filename": "ftb-teams-neoforge-2101.1.12.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 404468
+    },
+    {
+      "id": "ftb-xmod-compat",
+      "slug": "ftb-xmod-compat",
+      "name": "FTB XMod Compat",
+      "filename": "ftb-xmod-compat-neoforge-21.1.14.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 889915
+    },
+    {
+      "id": "gateways-to-eternity",
+      "slug": "gateways-to-eternity",
+      "name": "Gateways to Eternity",
+      "filename": "GatewaysToEternity-1.21.1-5.1.0.jar",
+      "side": "both",
+      "modrinth_id": "8OIeAukW",
+      "version_id": "FNtkt80G",
+      "cf_project_id": null
+    },
+    {
+      "id": "geckolib",
+      "slug": "geckolib",
+      "name": "Geckolib",
+      "filename": "geckolib-neoforge-1.21.1-4.9.3.jar",
+      "side": "both",
+      "modrinth_id": "8BmcQJ2H",
+      "version_id": "Grwn5rUB",
+      "cf_project_id": null
+    },
+    {
+      "id": "immediatelyfast",
+      "slug": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "filename": "ImmediatelyFast-NeoForge-1.6.15+1.21.1.jar",
+      "side": "client",
+      "modrinth_id": "5ZwdcRci",
+      "version_id": "EJzmEPZV",
+      "cf_project_id": null
+    },
+    {
+      "id": "irons-spells",
+      "slug": "irons-spells-n-spellbooks",
+      "name": "Iron's Spells 'n Spellbooks",
+      "filename": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "side": "both",
+      "modrinth_id": "s4OWxYQQ",
+      "version_id": "slKLosTb",
+      "cf_project_id": null
+    },
+    {
+      "id": "jade",
+      "slug": "jade",
+      "name": "Jade \ud83d\udd0d",
+      "filename": "Jade-1.21.1-NeoForge-15.10.6.jar",
+      "side": "both",
+      "modrinth_id": "nvQzSEkH",
+      "version_id": "eYz2YBGT",
+      "cf_project_id": null
+    },
+    {
+      "id": "forbidden-magic",
+      "slug": "jawr-forbidden-magic",
+      "name": "JAWR: Forbidden Magic",
+      "filename": "witchery_forbidden_magic-0.5.37+mc1.21.1.jar",
+      "side": "both",
+      "modrinth_id": "pitZv4pV",
+      "version_id": "YgPMe2M7",
+      "cf_project_id": null
+    },
+    {
+      "id": "jei",
+      "slug": "jei",
+      "name": "Just Enough Items (JEI)",
+      "filename": "jei-1.21.1-neoforge-19.70.0.469.jar",
+      "side": "both",
+      "modrinth_id": "u6dRKJwZ",
+      "version_id": "1vC6z8wV",
+      "cf_project_id": null
+    },
+    {
+      "id": "witchery-remake",
+      "slug": "just-another-witchery-remake",
+      "name": "Just Another Witchery Remake",
+      "filename": "witchery-0.5.39+mc1.21.1.jar",
+      "side": "both",
+      "modrinth_id": "LCO8KZvC",
+      "version_id": "TWcJbsjg",
+      "cf_project_id": null
+    },
+    {
+      "id": "just-zoom",
+      "slug": "just-zoom",
+      "name": "Just Zoom",
+      "filename": "justzoom_neoforge_3.1.0_MC_1.21.1.jar",
+      "side": "client",
+      "modrinth_id": "iAiqcykM",
+      "version_id": "Ha3713r0",
+      "cf_project_id": null
+    },
+    {
+      "id": "konkrete",
+      "slug": "konkrete",
+      "name": "Konkrete",
+      "filename": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "side": "both",
+      "modrinth_id": "J81TRJWm",
+      "version_id": "stJDU839",
+      "cf_project_id": null
+    },
+    {
+      "id": "kotlin-for-forge",
+      "slug": "kotlin-for-forge",
+      "name": "Kotlin for Forge",
+      "filename": "kotlinforforge-5.12.0-all.jar",
+      "side": "both",
+      "modrinth_id": "ordsPcFz",
+      "version_id": "uhJhCT7X",
+      "cf_project_id": null
+    },
+    {
+      "id": "kubejs",
+      "slug": "kubejs",
+      "name": "KubeJS",
+      "filename": "kubejs-neoforge-2101.7.2-build.381.jar",
+      "side": "both",
+      "modrinth_id": "umyGl7zF",
+      "version_id": "GDXCpKlp",
+      "cf_project_id": null
+    },
+    {
+      "id": "cataclysm",
+      "slug": "l_enders-cataclysm",
+      "name": "L_Ender's Cataclysm",
+      "filename": "L_Ender's Cataclysm 1.21.1-3.33.jar",
+      "side": "both",
+      "modrinth_id": "46KJle7n",
+      "version_id": "PsPYpoCC",
+      "cf_project_id": null
+    },
+    {
+      "id": "lionfish-api",
+      "slug": "lionfish-api",
+      "name": "Lionfish-API",
+      "filename": "lionfishapi-3.1.jar",
+      "side": "both",
+      "modrinth_id": "FoVacERa",
+      "version_id": "fTRMVgyZ",
+      "cf_project_id": null
+    },
+    {
+      "id": "lithostitched",
+      "slug": "lithostitched",
+      "name": "Lithostitched",
+      "filename": "lithostitched-1.8.1-neoforge-21.1.jar",
+      "side": "both",
+      "modrinth_id": "XaDC71GB",
+      "version_id": "cZu4cHY3",
+      "cf_project_id": null
+    },
+    {
+      "id": "lootr",
+      "slug": "lootr",
+      "name": "Lootr",
+      "filename": "lootr-neoforge-1.21.1-1.11.38.127.jar",
+      "side": "both",
+      "modrinth_id": "EltpO5cN",
+      "version_id": "SPOrIzX8",
+      "cf_project_id": null
+    },
+    {
+      "id": "mahou-tsukai",
+      "slug": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "filename": "mahoutsukai-1.21.1-v1.36.31.jar",
+      "side": "both",
+      "modrinth_id": "7jOxn6qJ",
+      "version_id": "GrYWbBFj",
+      "cf_project_id": null
+    },
+    {
+      "id": "mezzconfig",
+      "slug": "mezzconfig",
+      "name": "MezzConfig",
+      "filename": "mezz_config-1.21.1-neoforge-0.7.1-standalone.jar",
+      "side": "both",
+      "modrinth_id": "7tEfOcA7",
+      "version_id": "V6oWFnxW",
+      "cf_project_id": null
+    },
+    {
+      "id": "modernfix",
+      "slug": "modernfix",
+      "name": "ModernFix",
+      "filename": "modernfix-neoforge-5.27.27+mc1.21.1.jar",
+      "side": "both",
+      "modrinth_id": "nmDcB62a",
+      "version_id": "ZDZENbHH",
+      "cf_project_id": null
+    },
+    {
+      "id": "modonomicon",
+      "slug": "modonomicon",
+      "name": "Modonomicon",
+      "filename": "modonomicon-1.21.1-neoforge-1.123.0.jar",
+      "side": "both",
+      "modrinth_id": "692GClaE",
+      "version_id": "OKyLanIn",
+      "cf_project_id": null
+    },
+    {
+      "id": "mouse-tweaks",
+      "slug": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "filename": "MouseTweaks-neoforge-mc1.21-2.26.1.jar",
+      "side": "client",
+      "modrinth_id": "aC3cM3Vq",
+      "version_id": "9I21YYxf",
+      "cf_project_id": null
+    },
+    {
+      "id": "neovitae",
+      "slug": "neovitae",
+      "name": "Neo Vitae",
+      "filename": "neovitae-1.21.1-1.1.53.jar",
+      "side": "both",
+      "modrinth_id": "rvaW4C93",
+      "version_id": "FR26bWPa",
+      "cf_project_id": null
+    },
+    {
+      "id": "occultism",
+      "slug": "occultism",
+      "name": "Occultism",
+      "filename": "occultism-1.21.1-neoforge-1.227.0.jar",
+      "side": "both",
+      "modrinth_id": "sbJh4AZw",
+      "version_id": "SFDVXWYt",
+      "cf_project_id": null
+    },
+    {
+      "id": "patchouli",
+      "slug": "patchouli",
+      "name": "Patchouli",
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "side": "both",
+      "modrinth_id": "nU0bVIaL",
+      "version_id": "BIogJv2D",
+      "cf_project_id": null
+    },
+    {
+      "id": "placebo",
+      "slug": "placebo",
+      "name": "Placebo",
+      "filename": "Placebo-1.21.1-9.9.4.jar",
+      "side": "both",
+      "modrinth_id": "tCkE8p2N",
+      "version_id": "B5zbSVlT",
+      "cf_project_id": null
+    },
+    {
+      "id": "polymorph",
+      "slug": "polymorph",
+      "name": "Polymorph",
+      "filename": "polymorph-neoforge-1.2.0+1.21.1.jar",
+      "side": "both",
+      "modrinth_id": "tagwiZkJ",
+      "version_id": "9yWvrF5o",
+      "cf_project_id": null
+    },
+    {
+      "id": "project-expansion",
+      "slug": "project-expansion",
+      "name": "Project Expansion",
+      "filename": "projectexpansion-1.21.1-1.0.6.jar",
+      "side": "both",
+      "modrinth_id": "a7yNQPzW",
+      "version_id": "F5C1OobM",
+      "cf_project_id": null
+    },
+    {
+      "id": "projecte",
+      "slug": "projecte",
+      "name": "ProjectE",
+      "filename": "ProjectE-1.21.1-PE1.1.0.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 226410
+    },
+    {
+      "id": "re-avaritia",
+      "slug": "re-avaritia",
+      "name": "Re:Avaritia",
+      "filename": "Re-Avaritia-neoforge-1.21.1-1.4.4-release.jar",
+      "side": "both",
+      "modrinth_id": "QeB3NRC5",
+      "version_id": "RN6Eu9Y3",
+      "cf_project_id": null
+    },
+    {
+      "id": "replication",
+      "slug": "replication",
+      "name": "Replication",
+      "filename": "Replication-1.21.1-1.2.7.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 638351
+    },
+    {
+      "id": "rhino",
+      "slug": "rhino",
+      "name": "Rhino",
+      "filename": "rhino-2101.2.7-build.85.jar",
+      "side": "both",
+      "modrinth_id": "sk9knFPE",
+      "version_id": "cQ4POTah",
+      "cf_project_id": null
+    },
+    {
+      "id": "roots-classic",
+      "slug": "roots-classic",
+      "name": "Roots Classic",
+      "filename": "RootsClassic-1.21.1-1.5.10.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 295780
+    },
+    {
+      "id": "searchables",
+      "slug": "searchables",
+      "name": "Searchables",
+      "filename": "Searchables-neoforge-1.21.1-1.0.2.jar",
+      "side": "client",
+      "modrinth_id": "fuuu3xnx",
+      "version_id": "iEE85X0w",
+      "cf_project_id": null
+    },
+    {
+      "id": "smartbrainlib",
+      "slug": "smartbrainlib",
+      "name": "SmartBrainLib",
+      "filename": "SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+      "side": "both",
+      "modrinth_id": "PuyPazRT",
+      "version_id": "O5EpeqI3",
+      "cf_project_id": null
+    },
+    {
+      "id": "tectonic",
+      "slug": "tectonic",
+      "name": "Tectonic",
+      "filename": "tectonic-3.0.28-neoforge-21.1.jar",
+      "side": "both",
+      "modrinth_id": "lWDHr9jE",
+      "version_id": "n4iyW7aB",
+      "cf_project_id": null
+    },
+    {
+      "id": "theurgy",
+      "slug": "theurgy",
+      "name": "Theurgy",
+      "filename": "theurgy-1.21.1-neoforge-1.79.0.jar",
+      "side": "both",
+      "modrinth_id": "uOVMgoil",
+      "version_id": "EBO0aQOY",
+      "cf_project_id": null
+    },
+    {
+      "id": "titanium",
+      "slug": "titanium",
+      "name": "Titanium",
+      "filename": "titanium-1.21-4.0.52.jar",
+      "side": "both",
+      "modrinth_id": null,
+      "version_id": null,
+      "cf_project_id": 287342
+    }
+  ]
+}

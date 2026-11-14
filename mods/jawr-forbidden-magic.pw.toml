@@ -1,0 +1,13 @@
+name = "JAWR: Forbidden Magic"
+filename = "witchery_forbidden_magic-0.5.37+mc1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/pitZv4pV/versions/YgPMe2M7/witchery_forbidden_magic-0.5.37%2Bmc1.21.1.jar"
+hash-format = "sha512"
+hash = "f6604accc4bb7c65131a3f74a80aa3c0d1ae4daa6399f1bbb04a001ac98a8c47e88c55040fcfecd3e8832aaf4a89e1d1eda772f16407ab51c814ea3aa80ceead"
+
+[update]
+[update.modrinth]
+mod-id = "pitZv4pV"
+version = "YgPMe2M7"

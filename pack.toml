@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.2.0-meta-qol-server-smoked"
+version = "0.3.0-stable-gameplay-test"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "8badf04f1cc104cd88588037239ba6da85798e10449e0bf413513f52f55ae22a"
+hash = "a4c5cb055988f83140414170def566e5e14fd027a9ecb61ed9c5750c73dfc318"
 
 [versions]
 minecraft = "1.21.1"
