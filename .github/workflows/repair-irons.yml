@@ -1,0 +1,110 @@
+name: Repair Iron's dependencies and smoke gameplay pack
+on:
+  push:
+    branches: [build/b3-stable-magic-tectonic]
+    paths: ['.github/workflows/repair-irons.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair-and-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build packwiz and pin missing prerequisites
+        id: pin
+        run: |
+          python3 -m py_compile scripts/add_required_irons_libs.py scripts/resolve_stable_gameplay.py scripts/download_mods.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/add_required_irons_libs.py
+          packwiz list
+      - name: Smoke the complete magic-plus-Tectonic dedicated server
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '420'
+          WORK_DIR: ${{ runner.temp }}/tmm-b3-repaired
+        run: bash scripts/smoke_server.sh
+      - name: Record actual result and commit reviewed artifact pins
+        if: steps.pin.outcome == 'success'
+        env:
+          TEST_OUTCOME: ${{ steps.smoke.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os, json
+          from pathlib import Path
+          ok=os.environ['TEST_OUTCOME']=='success'
+          url=os.environ['RUN_URL']
+          e=json.loads(Path('docs/B3-RESOLUTION.json').read_text())
+          exceptions=json.loads(Path('docs/B3-DEPENDENCY-EXCEPTIONS.json').read_text())
+          lines=[
+            '# Gameplay and Tectonic: full server integration',
+            '',
+            f'**Dedicated-server smoke: {"PASS" if ok else "FAILED"}**',
+            '',
+            f'- Run: {url}',
+            '- Previous missing-dependency error: Iron\'s Lib and playerAnimator.',
+            '- Added Iron\'s Lib as a stable release and playerAnimator as an explicitly documented beta-tagged **required library**.',
+            '- All main gameplay mods were selected from release channels; beta Astral Sorcery, Botania and Draconic Evolution were omitted.',
+            '- Relics 1.21.1 builds remain beta; Construction Gadgets is not a verified exact project.',
+            f'- {e["now_count"]} mods were pinned before library fix; plus two required libraries.',
+            '- Roots Classic, ProjectE and Replication were pinned from their official stable CurseForge builds.',
+            '- ProjectE and Project Expansion are **test-only until Chaos Guardian progression is actually enforced**.',
+            '- Graphical client boot and fresh-world gameplay: **NOT TESTED**.',
+            '',
+            '## Status of actual game boot',
+            ('NeoForge reached the Done readiness message and shut down cleanly.' if ok else
+             'See the GitHub Actions server.log and latest.log attachments for exact remaining blocker.'),
+            '',
+            '## Explicit release-type exception',
+            'PlayerAnimator is beta-tagged on NeoForge 1.21.1. This is an unavoidable runtime dependency of Iron\'s Spells 3.16.3; see B3-DEPENDENCY-EXCEPTIONS.json.'
+          ]
+          Path('docs/B3-TESTING.md').write_text('\n'.join(lines)+'\n')
+          m=Path('manifest/mods.json')
+          data=json.loads(m.read_text())
+          for batch in data['batches']:
+              if batch['id']=='B5':
+                  batch['status']='server_smoked_client_pending' if ok else 'server_boot_failed_dependency_repaired'
+          m.write_text(json.dumps(data,indent=2)+'\n')
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml mods manifest/mods.json docs/B3-DEPENDENCY-EXCEPTIONS.json docs/B3-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "fix(gameplay): install Iron's required libraries and record true smoke result"
+            git push origin HEAD:build/b3-stable-magic-tectonic
+          fi
+      - name: Save server evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-irons-dependency-repair-smoke
+          path: |
+            docs/B3-DEPENDENCY-EXCEPTIONS.json
+            docs/B3-TESTING.md
+            ${{ runner.temp }}/tmm-b3-repaired/server.log
+            ${{ runner.temp }}/tmm-b3-repaired/logs/latest.log
+            ${{ runner.temp }}/tmm-b3-repaired/crash-reports
+          if-no-files-found: warn
+      - name: Fail if boot failed
+        if: steps.pin.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
