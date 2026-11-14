@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "proposed_tyzs_rank_stage_policy",
-  "status": "approved_concept_awaiting_runtime_validation",
+  "status": "HISTORICAL_SOURCE_PROTOTYPE_SUPERSEDED_BY_PRIMARY_MXP_TYZS_GATE_CONTRACT",
   "version": "6.4.2",
   "mod_id": "tyzs_skills",
   "current_mod_pack_status": "manifest_approved_not_packwiz_installed",
@@ -18,18 +18,19 @@
     "levels_across_five_stages": 495,
     "total_at_99_all_five_for_strength": 1099989,
     "rank_cost_curve": "base_SP_cost * 10^(stage-1) * (1 + floor((rank-1)/11))",
-    "rank_cost_curve_note": "Demonstration only; a rank 1 price of tier N+1 exceeds the rank 99 price of tier N. No current XP/price balancing promised.",
+    "rank_cost_curve_note": "Demonstration only; a rank 1 price of tier N+1 exceeds the rank 99 price of tier N. No current XP/price balancing promised. HISTORICAL DEMONSTRATION ONLY; global MXP divisor makes steep 10x SP prices require simulation",
     "sp_currency": "Tyz's Skills Skill Points earned via its own leveling XP; not vanilla XP",
     "strength_example_total_SP_for_all_495": 5499945,
     "source_attribute": "minecraft:generic.attack_damage",
     "native_upper_limit": "Vanilla Minecraft attack_damage attribute max 2048 (Minecraft Wiki attribute table); 5 full Strength stages are NOT achievable via the attribute. Actual high-damage scaling must use independently audited event-based damage logic or stop at native cap.",
-    "strength_native_example_note": "At player base 2 damage, full stage I (+99) and II (+990) leave approximately 957 headroom. Strength III (+100 each) reaches the 2048 cap around rank 10; remaining Strength III stages and stages IV/V have no effect as vanilla attribute bonuses."
+    "strength_native_example_note": "At player base 2 damage, full stage I (+99) and II (+990) leave approximately 957 headroom. Strength III (+100 each) reaches the 2048 cap around rank 10; remaining Strength III stages and stages IV/V have no effect as vanilla attribute bonuses.",
+    "stage_policy_supersession": "Max 99 purchased ranks per node, but not all 99 are prerequisites for next stage"
   },
   "eligibility": {
     "native_monk_faction": "single-use ability skills and license for leveled Monk abilities",
     "universal_tyz": "Shared Pufferfish-style utility/attributes from Tyz owned ranks should also be available to non-Monks where appropriate",
-    "stage_unlock": "Tier N requires previous tier's ACTUAL SERVER level equal to 99; merely owning tier N-1 is insufficient",
-    "purchase_guard": "Tyz's Skills SkillActionEvent.PurchasePre for regular and bulk; cancel if tier or Monk license wrong or native benefit ineffective",
+    "stage_unlock": "SUPERSEDED: one prior rank (not 99) satisfies native prerequisite; independently require external milestone on server when configured",
+    "purchase_guard": "Primary global external-gate dispatcher; Tyz PurchasePre for regular/bulk; stage N requires prior N-1 owned >=1 unless external milestone says otherwise",
     "refund_guard": "SkillActionEvent.RefundPre for regular and bulk; reject earlier-tier refunds while any later tier has rank > 0",
     "admin_bypass": "Tyz's Skills ISkillManager.setSkillLevel does not fire PurchasePre; admin/direct API is trusted only or requires separate reconciliation; no naive client-only gate",
     "respec_policy": "Preserve purchased universal ranks; Monk-only rank effects must be suspended safely if Monk identity/license removed, without deleting levels; this requires code bridge."
@@ -80,5 +81,15 @@
       "total_added": 990000
     }
   },
-  "stage_effective_cap_note": "Illustrative Strength V is almost certainly beyond a realistic vanilla attack damage attribute cap. It does NOT authorize live installation as configured. Per-trait generated tiers must truncate to native effective maximum, plus actual gameplay and physics safety."
+  "stage_effective_cap_note": "Illustrative Strength V is almost certainly beyond a realistic vanilla attack damage attribute cap. It does NOT authorize live installation as configured. Per-trait generated tiers must truncate to native effective maximum, plus actual gameplay and physics safety.",
+  "active_policy": {
+    "primary_branch": "design/universal-mxp-progression-registry",
+    "global_Tyz_XP": "ONLY_MXP_dispatcher_grants_it",
+    "prior_stage_requirement": "OWN_AT_LEAST_ONE_RANK_of_previous_node",
+    "server_gates": "purchase_pre_and_refund_pre_plus_admin_reconciliation",
+    "Monk_stage": "Monk_only_tier_licenses_use_existing_tmm_monk_category",
+    "five_stages": "optional_Monk_magnitude_ceiling_not_automatic",
+    "economy": "10x_price_requires_simulation_with_1_2_divisor",
+    "old_policy_below": "Historical only, DO NOT implement priorStageLevel==99 or native Tyz XP"
+  }
 }
