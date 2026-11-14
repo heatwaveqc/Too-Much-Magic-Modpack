@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.monk;
 
 import io.github.heatwaveqc.tmm.monk.config.MonkStartupConfig;
 import io.github.heatwaveqc.tmm.monk.command.MonkAttributeInventoryCommand;
+import io.github.heatwaveqc.tmm.monk.command.MonkMasteryCommand;
 import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.faction.MonkPlayerData;
 import io.github.heatwaveqc.tmm.monk.gameplay.SunsetInitiation;
@@ -50,6 +51,7 @@ public final class MonkMod {
         // but before Vampirism closes faction registrations at IMC processing.
         modBus.addListener(this::registerFaction);
         NeoForge.EVENT_BUS.addListener(MonkAttributeInventoryCommand::register);
+        NeoForge.EVENT_BUS.addListener(MonkMasteryCommand::register);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onFactionChangePre);
         NeoForge.EVENT_BUS.addListener(SunsetInitiation::onLogout);
