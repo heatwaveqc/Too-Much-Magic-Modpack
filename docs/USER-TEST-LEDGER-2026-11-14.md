@@ -13,8 +13,8 @@ Source: reported in the active Magic Minecraft Modpack conversation; user claims
 | FTB Essentials travel | **PASS — player-tested** | "travel works". Non-OP, home limit, RTP claim safety, cooldowns and restart persistence still need separate boundary checks. |
 | General QoL | **PASS — player-tested** | "qol functions". Group-level pass, not proof every individual overlay, sorting, TrashSlot and TreeChop edge case passed. |
 | Vampirism dual-progression bridge | **IN PROGRESS — player testing** | Owner continues integration and progression tests. Do not promote to stable. |
-| Monk first sunset | **FAIL — user-reported** | No visible action bar/graphic/completion after watching sunset. Natural procedure has strict 10-second uninterrupted sunset, western gaze, clear weather, no equipment, neutral faction and survival preconditions. No graphic was implemented, actionbar only on valid 40-tick intervals. Cause not yet diagnosed. |
-| Monk skill tree | **FAIL / NOT READY — user-reported** | User sees empty skill tree / no Monk skill tree. The module currently defines only a zero-cost Step Assist root, with no later nodes. Before faction join the GUI may be absent. Need B15 operator diagnostics and actual faction-join test to distinguish registration errors from locked UI. |
+| Monk first sunset | **PASS — player-tested on earlier integrated build** | Owner re-tested after realizing the sunset viewing direction was wrong; the natural initiation worked. Original failure was incorrect test procedure, not confirmed broken rite code. B15 diagnostic commands remain untested. An animated confirmation graphic is still a future polish task. |
+| Monk skill tree | **PARTIAL / FOLLOW-UP** | Earlier empty UI was seen before correct initiation. Natural faction joining now passes, but this does not prove the whole tree is populated or working. Current native Monk prototype defines one zero-cost Step Assist root; broader skill progression remains work in progress. |
 | Starting inventory | **PENDING B15** | New first-tick reward: one empty Akashic Tome + 2 vanilla cooked beef + direct Improvable Skills Book access. Check separate first-log pouch, duplication, return-world migration. |
 | Materials, Neo Vitae processing, Silver/Lead | **UNTESTED** | No new player results in this report. |
 | Monk Step Assist on +0.5 step height | **UNTESTED** | Not reachable until faction join. |
@@ -34,3 +34,7 @@ The accepted workflow is an **all-active-streams unstable integration build** wi
 6. Confirm the integrated resources + Monk still boot together. Test registered compats under user world, not just server log.
 
 Do not mark Monk or Vampirism fully accepted based on compilation or mod registration alone.
+
+## Follow-up correction (user report, 2026-11-14)
+
+The owner corrected the Monk sunset procedure and successfully initiated on the older test build. Treat First Sunset's **natural initiation** as a player-tested pass. Do not extrapolate this to the B15 diagnostics, filled Monk skill tree, universal Tyz integration, or complete transformations compatibility. The earlier FAIL entry was the test procedure, not confirmed code failure.
