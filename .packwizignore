@@ -1,0 +1,17 @@
+# Source and build files are NOT part of the installed Minecraft instance.
+/README.md
+/AGENTS.md
+/.github/
+/docs/
+/manifest/
+/scripts/
+/.gitignore
+/.gitattributes
+/.packwizignore
+# Downloaded binary mods and local build outputs are never indexed
+/*.jar
+/*.zip
+/*.mrpack
+/.smoke-loader/
+/server/
+/client/
