@@ -80,6 +80,15 @@ def inspect_pin(pin: str) -> None:
                             "wine_glass", "sacrif", "circle", "ritual"
                         )):
                         print("JAWR_RELEVANT_RESOURCE", res, flush=True)
+                for target in (
+                    "data/witchery/modonomicon/books/guidebook/entries/vampirism/vamp_1.json",
+                    "data/witchery/modonomicon/books/guidebook/categories/vampirism.json",
+                    "data/witchery/modonomicon/books/guidebook/book.json",
+                    "data/witchery/recipe/guidebook.json",
+                    "data/witchery/recipe/wine_glass.json",
+                ):
+                    if target in z.namelist():
+                        print("JAWR_EXACT_JSON", target, z.read(target).decode("utf-8")[:16000], flush=True)
                 for cls in sorted(classes):
                     if any(x in cls for x in (
                         "WitcheryItems", "WitcheryItemRegistry", "WitcheryItem",
