@@ -90,3 +90,11 @@ Never reclassify step 1 as steps 2–5.
 - **Pack baseline validation PASS:** [Verify bootstrap branch run](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43630187440), for source/metadata structure only. It is **not** a native Tyz mod or game boot.
 - **Not run:** packwiz staging, Tyz jar pin/dependency resolution, Forge/NeoForge server boot with Tyz and source event script, client launch, native attribute tests, rank purchases/refunds, paid casting/discount and shared mana dedup, external Monk gates, or MXP experience award dispatch. DO NOT label as gameplay-passed or next downloadable client build.
 - **Next action:** integrate the overlay into a disposable full pack after Tyz 6.4.2 pin, retire Pufferfish only after dependency check, then test native attrs and cost hooks via admin Tyz XP grants while the full MXP dispatcher is being built. [Checklist](../compat/magic/README.md).
+
+
+## MXP Java module initial build/test (2026-11-14)
+
+- **Source**: draft [PR #40](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/40), feature/mxp-ledger-dispatcher, based on the Core Magic first-wave branch. Standalone Java module under compat/mxp is **not packwiz-installed** and **has not been launched in Minecraft**.
+- **Compilation + arithmetic unit test PASS**: [GitHub Actions MXP ledger module](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43644249747). Covers fixed first rewards, ordinary divisor changes at award boundaries, resource normalization, high-level/fixed repeat exceptions, craft first-time divided behavior, transaction dedup, no-debit zero awards and fractional pending XP.
+- **Source pilot**: Psi 110 preSpellCast/spellCast script verifies actual paid cost and then grants MXP through Java; it is deliberately outside packwiz and still lacks client/server runtime confirmation. Demo boss-rule script is inactive; no values silently activated.
+- **Pending**: exact Tyz 6.4.2 ABI runtime, Java class-filter access in KubeJS, Source ADT signature in client/server, saved player data after reload/death, boss victory attribution, Ψ cost efficiency, and Ars/Iron's canonical payment settlement. No current distributed test-client build contains MXP.
