@@ -198,7 +198,7 @@ hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
-hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
+hash = "e7e81361ea6653ba447364ab6352a176e14232fb7bd5be6fcd3b2e0b69f40fe5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/apotheosis.snbt"
@@ -218,7 +218,7 @@ hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "2d2b764602485f8127188f0bcd0dfbcad2d9d673322c318123566520e7fe3a26"
+hash = "7b3acdbe60e207a753eb8220842cdf3da1c6211f174011eb0706b9870ff988d4"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -246,7 +246,7 @@ hash = "34bc09a5737e0d1046d30589443b9d8c0c3fdd847d76b3e02991fa8d8cb4dc4f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/endgame_roadmap.snbt"
-hash = "04442ac5eb44c9895750a077090e86bf09329ce037ecdadc392d03b9cc654521"
+hash = "c2b6cf6670069cd1bf06cc97e4d86ce350198218bbebcbae4cdecd5b088c32ad"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/enigmatic_legacy.snbt"
@@ -258,7 +258,7 @@ hash = "58f5b63d4150914df4abd5fbc114fd7a8f48a41bc9e93d0b97f8323513cb8bb5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt"
-hash = "58644f9c3c0d1c72fcd8e5b0a02f8ad8f9513de6f7f834961602c7163fb6d4c5"
+hash = "b124261f5a679afa1a592923363a8bcbf9b5e0aadbe534af7f27e0b71c3db585"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/feywild.snbt"
@@ -290,7 +290,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "9c8d6b87a88641dc96cc525df158ffe1f13b0e3744ba320b6a25df16859ba02f"
+hash = "845630b07bea02f2356a1270dac17de7e18d42235233b5f751a3521f272789ef"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -354,7 +354,7 @@ hash = "420a37e68dd5bf081730c9becfed87d18316c5e8614013494ab96be3c538ff8f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
-hash = "6d7ccd495f1c4528b08a58a64c1c457dcfe7ccb7e9c7d79ed69d73da2afabb33"
+hash = "13c3be741ae89777055d75d35fad92c24d32722d28188da50e77bb5a165451a5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
@@ -382,7 +382,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7071c451494b21d645ab8fc98f43c710ee770289725fee8473eb3f5f5b435ccf"
+hash = "7f4b5c818ba622c7dd28c3d628c770f4f61e8720d116c319b968f14fd73c7e96"
 
 [[files]]
 file = "config/questshop-common.toml"

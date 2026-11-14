@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.8.11-ftb-essentials-home-rtp-qa"
+version = "0.8.12-quest-standard-qa"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "e5bde8f315851ea39509d65f403144b68b99faca13342bfe8c19d5db8f45caea"
+hash = "120adf5612ca046a4c8e3c24c2f308a7bfa4811d2c9020b9f561bd37352046e0"
 
 [versions]
 minecraft = "1.21.1"
