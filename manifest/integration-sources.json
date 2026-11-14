@@ -14,7 +14,7 @@
     },
     {
       "name": "silver-ore-materials",
-      "branch": "feature/silver-equipment-unification",
+      "branch": "feature/material-processing-recipe-cleanup",
       "paths": [
         "config/almostunified/",
         "config/neovitae/materials.json",
@@ -31,7 +31,7 @@
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Supersedes material-unification and polymorph-audit feature branches"
+      "note": "Current descendant of silver-equipment unification, with material recipes and native Polymorph scanning; retains earlier verified KubeJS scripts"
     },
     {
       "name": "roots-mxp-prototypes",
@@ -113,7 +113,9 @@
     "audit/polymorph-conflicts-2026-11-14": "Superseded by silver-equipment branch carrying audit and materials",
     "feature/monk-faction-framework": "Superseded by design/monk-no-pufferfish-skill-placement which contains full module",
     "design/b6-pufferfish-unification-reconciliation": "Historical Pufferfish design; newer Tyz planning supersedes it",
-    "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement"
+    "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement",
+    "feature/silver-equipment-unification": "Ancestor of current material-processing-recipe-cleanup implementation branch, which carries the same materials/recipe files",
+    "design/quest-standards-starter-choice-2026-11-14": "Quest reward and starter-path standards proposal only; not yet a new quest runtime implementation"
   },
   "pending_runtime_work": [
     "Core Magic Tyz overlay is source-stageable and statically validated but not installed in packwiz until Tyz 6.4.2 is pinned; no playable skill UI yet",
