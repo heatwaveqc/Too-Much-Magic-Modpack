@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.attachment.IAttachmentHolder;
 import net.neoforged.neoforge.attachment.IAttachmentSerializer;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.jetbrains.annotations.NotNull;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -34,6 +35,7 @@ public final class MonkPlayer extends FactionBasePlayer<IMonkPlayer> implements 
         skills = new SkillHandler<>(this, MonkFaction.FACTION);
     }
 
+    @Override public void onUpdatePlayer(PlayerTickEvent event) { }
     @Override public boolean canLeaveFaction() { return true; } // debug safety until departure ritual exists
     @Override public IFaction<?> getDisguisedAs() { return getFaction(); }
     @Override public boolean isDisguised() { return false; }

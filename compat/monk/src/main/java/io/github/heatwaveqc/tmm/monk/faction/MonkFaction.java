@@ -14,10 +14,11 @@ public final class MonkFaction {
 
     private MonkFaction() { }
 
+    @SuppressWarnings("unchecked")
     public static synchronized void registerOnce() {
         if (FACTION != null) return;
         FACTION = VampirismAPI.factionRegistry()
-                .createPlayableFaction(ID, IMonkPlayer.class, MonkPlayerData.MONK_PLAYER::get)
+                .createPlayableFaction(ID, IMonkPlayer.class, () -> (net.neoforged.neoforge.attachment.AttachmentType<IMonkPlayer>)(net.neoforged.neoforge.attachment.AttachmentType<?>) MonkPlayerData.MONK_PLAYER.get())
                 .color(0xE1C477)
                 .highestLevel(PROVISIONAL_MAX_LEVEL)
                 .chatColor(ChatFormatting.YELLOW)

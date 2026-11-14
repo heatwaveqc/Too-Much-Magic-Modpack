@@ -140,3 +140,14 @@ Special cases:
 - **Re:Avaritia** (`re-avaritia`) — explicitly excluded; its Infinity-tier endgame undermines signature Draconic Evolution progression and ProjectE Gem Armor.
 - **Extended Crafting** (`extended-crafting`) — explicitly excluded; no competing standalone ultimate-crafting chapter or alternate final crafting economy.
 - Previous B5/B8 smoke-test records that mention these mods are **historic** and must not be mistaken for the updated 138-mod candidate. The chapter plan is now 45, not 46.
+
+## Planned standalone Monk chapter (not installed or counted in B8)
+
+The owner has approved a new Vampirism-style Monk faction addon, source-scaffolded
+in `compat/monk/`. Reserve **Monk** as its own **Exploration & Combat** chapter,
+adjacent to Vampirism and Werewolves. It should teach initiation, the ascetic
+restriction on conventional weapons and armor, rank trials, and the distinctive
+high-experience/high-magic skill progression. Link to Skills & Advancement and
+magic-school chapters for cross-mod synergies. No FTB chapter JSON or quests
+are authored yet. Do not modify the B8 45-chapter/138-installed-mod counts
+until the Monk mod is actually packed and its gameplay tested.
