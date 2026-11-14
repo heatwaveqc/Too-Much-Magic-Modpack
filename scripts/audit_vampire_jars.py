@@ -299,6 +299,32 @@ def inspect_pin(pin: str) -> None:
                             if follower == "}":
                                 break
                             print(" TORN_PAGE_BC", follower[:330], flush=True)
+            if source.name.startswith("just-another-witchery"):
+                for cls in (
+                    "dev.sterner.witchery.feature.affliction.vampire.VampireLeveling",
+                    "dev.sterner.witchery.core.registry.WitcheryAbilities",
+                    "dev.sterner.witchery.client.hud.QuestHudRenderer",
+                ):
+                    proc = subprocess.run(
+                        ["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=35)
+                    print("JAWR_PROGRESSION_DISASM", cls, "exit", proc.returncode, flush=True)
+                    lines = proc.stdout.splitlines()
+                    if cls.endswith("QuestHudRenderer"):
+                        for i,line in enumerate(lines):
+                            if line.startswith("  public final") and "getVampireQuests" in line:
+                                for snippet in lines[i:min(i+1250,len(lines))]:
+                                    if any(k in snippet for k in ("String", "Integer.valueOf", "getLEVEL_REQUIREMENTS", "getAdvancement", "getLevel", "getFill", "getNight", "getHalf", "getSelected", "getProgress", "getAbility")):
+                                        print(" JAWR_PROGRESSION_QUEST", snippet[:320], flush=True)
+                    else:
+                        for line in lines[:2500]:
+                            print(" JAWR_PROGRESSION_BC", line[:350], flush=True)
+                # Check known 1->2 and 2->3 advancement and guide book references.
+                for candidate in sorted(z.namelist()):
+                    if candidate.startswith("data/witchery/modonomicon/books/guidebook/entries/vampirism/") and candidate.endswith(".json"):
+                        obj = __import__("json").loads(z.read(candidate))
+                        if candidate.endswith(("vamp_1.json", "vamp_2.json", "vamp_3.json", "vamp_4.json")):
+                            print("JAWR_PROGRESSION_BOOK", candidate, __import__("json").dumps(obj)[:4500], flush=True)
             # Transaction-specific disassembly for exact pinned versions. Inspect
             # acquisition, cure, feeding and weaknesses before enabling mixins.
             focus = {
