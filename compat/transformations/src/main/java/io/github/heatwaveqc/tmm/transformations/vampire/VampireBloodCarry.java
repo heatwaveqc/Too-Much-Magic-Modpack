@@ -1,19 +1,10 @@
 package io.github.heatwaveqc.tmm.transformations.vampire;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 /**
  * Fractional native blood earned from JAWR transfers, preserved across relog.
  * Never a second blood pool: less than one unit of canonical Vampirism blood.
  */
 public record VampireBloodCarry(int denominator, int numerator) {
-    public static final Codec<VampireBloodCarry> CODEC = RecordCodecBuilder.create(instance ->
-            instance.group(
-                    Codec.INT.fieldOf("denominator").forGetter(VampireBloodCarry::denominator),
-                    Codec.INT.fieldOf("numerator").forGetter(VampireBloodCarry::numerator)
-            ).apply(instance, VampireBloodCarry::new));
-
     public static VampireBloodCarry empty() { return new VampireBloodCarry(1, 0); }
 
     public VampireBloodCarry {
