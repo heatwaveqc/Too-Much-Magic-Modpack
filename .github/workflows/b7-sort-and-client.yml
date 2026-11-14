@@ -1,0 +1,132 @@
+name: B7 Inventory Tweaks resolve and Prism client build
+on:
+  push:
+    branches: [build/b7-inventory-refoxed-qol-audit]
+    paths: ['.github/workflows/b7-sort-and-client.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pinned-client-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Build packwiz
+        run: |
+          python3 -m py_compile scripts/resolve_b7.py scripts/build_b7_prism.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact NeoForge 1.21.1 ReFoxed mod into packwiz
+        id: resolve
+        continue-on-error: true
+        run: |
+          python3 scripts/resolve_b7.py
+          packwiz list
+      - name: Full dedicated-server regression (client-only mod excluded)
+        id: smoke
+        if: steps.resolve.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '540'
+          WORK_DIR: ${{ runner.temp }}/tmm-b7-qol
+        run: bash scripts/smoke_server.sh
+      - name: Commit pinned mod and test evidence
+        if: steps.resolve.outcome == 'success'
+        env:
+          SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          result=os.environ["SMOKE_OUTCOME"]
+          meta=json.loads(Path("docs/B7-RESOLUTION.json").read_text())
+          lines=[
+            "# B7 — ATM10 QoL / Inventory Tweaks — ReFoxed",
+            "",
+            "## Dedicated-server regression: "+("PASS" if result=="success" else "FAILED"),
+            "- [Full CI resolver and server regression]("+os.environ["RUN_URL"]+")",
+            "- Minecraft 1.21.1, NeoForge 21.1.265, Java 21.",
+            "- Existing 125-mod B6 baseline retained; exactly one new **client-only** mod pinned.",
+            "- ReFoxed exact: "+meta["expected_filename"],
+            "- ReFoxed CurseForge project "+str(meta["curseforge_project"])+
+              ", file "+str(meta["curseforge_file"])+
+              ", hash format "+meta["metadata_hash_format"]+".",
+            "- Mouse Tweaks remains installed; Inventory Tweaks handles sorting and auto-refill.",
+            "- No other proposed ATM10 quality-of-life mods approved or added.",
+            "- **The new client-only ReFoxed JAR is not loaded by a dedicated server.**",
+            "- A server regression PASS means the previous server mod stack still boots, **not** that middle-click sorting was tested.",
+            "- Client test required: import the B7 Prism zip, open chest, middle-click to sort,",
+            "  inspect personal inventory, auto-refill, and Mouse Tweaks gestures.",
+            "",
+            "## Rollback",
+            "Prior known-good local client generation baseline: B6, 125 mods,",
+            "commit `ecddc4342c439a2b973ad16acff112b7d0a4bb60`.",
+            "Detailed ATM10 comparison: [ATM10-QOL-AUDIT.md](ATM10-QOL-AUDIT.md).",
+          ]
+          Path("docs/B7-TESTING.md").write_text("\n".join(lines)+"\n")
+          mpath=Path("manifest/mods.json")
+          m=json.loads(mpath.read_text())
+          next(x for x in m["batches"] if x["id"]=="B9")["status"]=(
+            "server_regression_pass_client_pending" if result=="success"
+            else "server_regression_failed_client_pending"
+          )
+          mpath.write_text(json.dumps(m,indent=2)+"\n")
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest/mods.json pack.toml index.toml mods docs/B7-TESTING.md docs/B7-RESOLUTION.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(b7): pin Inventory Tweaks ReFoxed and verify dedicated-server baseline"
+            git push origin HEAD:build/b7-inventory-refoxed-qol-audit
+          fi
+      - name: Fetch original packwiz bootstrap and construct new Prism package
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+          python3 scripts/build_b7_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" \
+            "$(git rev-parse HEAD)"
+      - name: Upload Prism client ZIP
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-B7-Inventory-Sorting-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-B7-Inventory-Sorting-Prism.zip
+          retention-days: 30
+          if-no-files-found: error
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B7-Inventory-Sorting-Test-Logs
+          path: |
+            docs/B7-TESTING.md
+            docs/B7-RESOLUTION.json
+            ${{ runner.temp }}/tmm-b7-qol/server.log
+            ${{ runner.temp }}/tmm-b7-qol/logs/latest.log
+          if-no-files-found: warn
+      - name: Mark build failed if resolution or regression failed
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1

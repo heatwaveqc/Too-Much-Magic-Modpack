@@ -90,5 +90,5 @@ Minecraft mod JARs.
       "minecraft":"1.21.1","neoforge":"21.1.265","source":source
     },indent=2),flush=True)
 if __name__=="__main__":
-    if len(sys.argv)!=3:sys.exit("Usage: build_b6_prism.py BOOTSTRAP_JAR OUTPUT_DIR")
-    main(sys.argv[1],sys.argv[2])
+    if len(sys.argv)!=4:sys.exit("Usage: build_b7_prism.py BOOTSTRAP_JAR OUTPUT_DIR SNAPSHOT_SHA")
+    main(sys.argv[1],sys.argv[2],sys.argv[3])
