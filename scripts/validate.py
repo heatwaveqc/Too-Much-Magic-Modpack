@@ -43,6 +43,7 @@ def main() -> None:
     check(all(m["release_status"] in allowed for m in mods), "Unknown release state")
     excludes = {m["id"].lower() for m in manifest["excluded"]}
     check("create" in excludes and "ftb-ultimine" in excludes, "Missing hard exclusions")
+    check({"extended-crafting", "re-avaritia"}.issubset(excludes), "Missing owner-locked ultimate crafting exclusions")
     check("Ring of the Seven Deadly Sins" in manifest["items_blacklist"], "Missing ring ban")
     check(not any(m["id"].lower() in excludes for m in mods), "Excluded mod included")
 
