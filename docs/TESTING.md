@@ -115,3 +115,10 @@ Never reclassify step 1 as steps 2–5.
 - Fixed legacy bad text in **all twelve commodity sale descriptions**, the Quest Shop tip, and both Cooking for Blockheads entries. Automated validator now rejects literal `description: [undefined]`.
 - Source-backed modded item-ID references are in [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). **Still need live item registry and JEI/recipe inspection** on the exact installed 140-mod version and a client rendering test. No custom Pufferfish tree, source-to-power bridge or mining gate is asserted to be implemented.
 - Quest structural validation, packwiz hash check, server start CI and outcomes are tracked in the corresponding branch Actions workflow; do not classify the feature as integrated solely on validation.
+
+## FTB Quest UI localization and layout repair — 2026-11-14
+
+- User client QA reported broken names/error-like formatting, poor quest arrangement, and Getting Started ending at iron. Diagnosed missing **per-chapter English `lang/en_us/chapters/*.snbt` files**, plus **65 literal `undefined` Progression descriptions** from old authoring. [Details](QUEST-CLIENT-QA-FIX.md).
+- Generator `scripts/rebuild_quest_ui.py` regenerates 45 chapter-language files, 5 group names, chapter names/subtitles, 179 correct quest descriptions, and intentional branch coordinates; preserves all existing quest/task/reward IDs. In GitHub Actions run [43618497460](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43618497460), the generator, metadata check and quest static validator passed twice, including idempotence. **This is NOT client rendering verification.**
+- Seven additional Getting Started quests (18 total) and four new Tips & Tricks guides (20 total), including Scriptor Inflame fuel-free smelting. Total book **179** entries. The shop remains unchanged.
+- Fresh server smoke on this repaired commit and fresh Prism GUI test remain distinct; check workflow status before declaring them passed.

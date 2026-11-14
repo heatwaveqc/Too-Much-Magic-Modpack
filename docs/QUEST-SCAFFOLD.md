@@ -64,3 +64,10 @@
 - **Exceptional Power: Reactors** is the **full technology tree** for this magic-focused pack, spanning BiggerReactors Rework (FE generator, fuel, battery, optional turbine and processor) and Draconic Evolution (energy storage bank, pylons, crystals, later high-risk Draconic Reactor). See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md).
 - Endgame Roadmap is read-only guide/checkmark quests with no boss kills, materials or progression bypasses; detailed boss objectives belong to their actual chapters.
 - All 65 new quests use fixed XP and item rewards. Repaired 15 older undefined descriptions. Pending Prism GUI/registry verification and dedicated server branch smoke.
+
+## UI compatibility repair and new onboarding (2026-11-14)
+
+- Client testing revealed that FTB Quests 1.21.1 **ignores the old inline quest title/description strings**, and 65 Progression quest descriptions had literally serialized as `undefined`. Fixed by generating and hash-indexing **all 45 `lang/en_us/chapters/*.snbt` files**; verified all five group and 45 chapter labels against the canonical manifest.
+- Reworked all eight populated chapter layouts into clearer grouped/branched arrangements; positions saved in `manifest/quest_layouts.json` and builder `scripts/rebuild_quest_ui.py`.
+- Getting Started **18**, Tips & Tricks **20**, Food & Fishing **22**, all Progression chapters maintained and unchanged in count. **179 total FTB Quest entries**, with 137 authored quests and 42 other placeholder overviews. See [QUEST-CLIENT-QA-FIX.md](QUEST-CLIENT-QA-FIX.md).
+- All fixes are still pending fresh client rendering tests; no shop/currency implementation or endgame gates changed.
