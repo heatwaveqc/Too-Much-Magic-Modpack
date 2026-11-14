@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B6: 125 packwiz mod pins, 118 server/both-side JARs passed full dedicated-server boot 2026-11-13 (America/Phoenix); 7 client-only JARs not GUI tested. Includes Pufferfish Skills beta and Improvable Skills 3; excludes Aspect Alchemy. Immutable client test snapshot ecddc4342c439a2b973ad16acff112b7d0a4bb60.",
+  "note": "B7 proposed QoL update: owner-requested Inventory Tweaks ReFoxed added to planned roster; rest of ATM10 QoL survey is recommended-only and requires owner approval.",
   "mods": [
     {
       "id": "apotheosis",
@@ -886,6 +886,18 @@
       "dependencies_verified": false,
       "note": "B6 user-approved boot-test candidate. Improvable Skills XP-based upgrade system, distinct from Pufferfish; HammerLib required.",
       "packwiz_slug": "improvable-skills"
+    },
+    {
+      "id": "inventory-tweaks-refoxed",
+      "name": "Inventory Tweaks — ReFoxed",
+      "category": "qol",
+      "desired": true,
+      "version": "invtweaks-1.21.1-1.3.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks-refoxed/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-requested 2026-11-13. Exact NeoForge MC 1.21.1 stable build invtweaks-1.21.1-1.3.2.jar; CurseForge project 976858. Adds middle-click sorting to player/container inventories; auto-refill and click shortcuts. Client-only; no server boot can validate GUI. Preserve existing Mouse Tweaks; test for drag/key overlap."
     },
     {
       "id": "irons-lib",
@@ -1967,6 +1979,14 @@
         "puffish-skills"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B9",
+      "name": "ATM10 QoL recovery: Inventory Tweaks ReFoxed",
+      "members": [
+        "inventory-tweaks-refoxed"
+      ],
+      "status": "approved_unpinned"
     }
   ]
 }
