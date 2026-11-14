@@ -1,0 +1,61 @@
+name: B8 final singleplayer backup metadata and Prism client artifact
+on:
+  push:
+    branches: [build/b8-qol-compass-farming-market]
+    paths: ['.github/workflows/b8-final-client.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  b8-final-client:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Build packwiz
+        run: |
+          python3 -m py_compile scripts/finalize_b8_client.py scripts/build_b8_prism.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Correct Simple Backups package side for local worlds; update hashes
+        run: |
+          python3 scripts/finalize_b8_client.py
+          packwiz list
+      - name: Save exact revised manifest, dependencies and validation evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/simple-backups.pw.toml pack.toml index.toml manifest/mods.json docs/B8-RESOLUTION.json docs/B8-TESTING.md
+          if ! git diff --cached --quiet; then
+            git commit -m "packaging(b8): ship Simple Backups in Prism singleplayer, flag upstream beta"
+            git push origin HEAD:build/b8-qol-compass-farming-market
+          fi
+      - name: Download original MIT packwiz bootstrap
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Build immutable Prism import ZIP for final exact 140-pin snapshot
+        run: |
+          python3 scripts/build_b8_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" \
+            "$(git rev-parse HEAD)"
+      - name: Publish final Prism singleplayer-test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-B8-QoL-Compass-Market-Final-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-B8-QoL-Compass-Market-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
