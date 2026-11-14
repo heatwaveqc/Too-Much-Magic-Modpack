@@ -8,10 +8,13 @@ gameplay not implemented.**
 **The original Monk Mod** is a separately preserved historical reference:
 RWTema's Minecraft 1.12.2 Monk 1.4, 21 configured milestones 0–20,
 one named deed per milestone and a finite package of unarmed/unarmored powers.
-The original author's published code is source for factual study, not the
+This classic-style profile is the intended **standalone default** once the
+new addon is playable; it is currently only a reference specification. The
+original author's published code is source for factual study, not the
 source for our copied assets or code.
 
-**The Too Much Magic Monk** is not intended to be balanced to that original
+**The Too Much Magic Monk** must be explicitly selected by the pack and
+is not intended to be balanced to that original
 mod. It is a new endgame path based on a Vampirism 1.10.13 playable faction
 and JSON skill tree, supplemented by an independent **repeatable mastery
 investment backend**. It must stand alongside top-end Abominations,
