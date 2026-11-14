@@ -31,3 +31,10 @@ The reviewed snapshot is in [docs/META-QOL-RESOLUTION.json](META-QOL-RESOLUTION.
 `python3 scripts/resolve_meta_qol.py` is the automated resolver for a clean branch, and `bash scripts/smoke_server.sh` with `SMOKE_WITH_MODS=1` tests the server. Do not run resolution as an update operation without reviewing resulting changed pins.
 
 Do not call the server test a graphical client test; Embeddium, ImmediatelyFast, Controlling, Mouse Tweaks, Entity Culling, Just Zoom and Searchables are client-only in this snapshot.
+
+## B3 full magic/Tectonic release candidate
+On `build/b3-stable-magic-tectonic`, **64 packwiz mod pins** exist: 57 downloadable server-side JARs and 7 client-only JARs. The modded server successfully reached `Done` and exited cleanly in [CI run 43550199289](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43550199289). Use `SMOKE_WITH_MODS=1 SMOKE_TIMEOUT_SECONDS=420 bash scripts/smoke_server.sh` to reproduce from a disposable server directory. Root/JVM config and world saves are never committed.
+
+For a client: use a graphics-capable Java 21 launcher supporting packwiz, Minecraft 1.21.1 and NeoForge 21.1.265, install/download the full pack, inspect main menu for errors and create a throwaway world; **not yet performed**. Check Tectonic world generation, FTB Quests, spell UI, sky/rendering performance and KubeJS logs. Do not treat dedicated-server `Done` as client world-entry validation.
+
+ProjectE and Project Expansion are currently included for reproducible startup tests only, **not permitted as an ungated survival release** until the Chaos Guardian lock is enforced. The only beta-tagged active dependency is playerAnimator, required by stable Iron's Spells; see [the exception record](B3-DEPENDENCY-EXCEPTIONS.json). No other beta gameplay mods were installed.

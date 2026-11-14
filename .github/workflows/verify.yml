@@ -67,7 +67,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol'
+    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' || github.ref_name == 'build/b3-stable-magic-tectonic'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -82,7 +82,7 @@ jobs:
       - name: Install and launch hash-pinned mods on dedicated NeoForge server
         env:
           SMOKE_WITH_MODS: '1'
-          SMOKE_TIMEOUT_SECONDS: '180'
+          SMOKE_TIMEOUT_SECONDS: '420'
           WORK_DIR: ${{ runner.temp }}/tmm-modded-smoke
         run: bash scripts/smoke_server.sh
       - name: Retain modded-server logs on success and failure
