@@ -144,6 +144,38 @@ Desired only in `manifest/mods.json`: **not yet packwiz-installed**.
 Next client test: 10/20/50+/100+ hearts, half hearts, absorption, negative
 status colors, and HUD rendering with Vampirism, JAWR and AppleSkin.
 
+## Newly approved Mahou Tsukai interaction — Drain Life boundary
+
+**Design required; not implemented or player-tested yet.** The pinned modpack uses
+Mahou Tsukai 1.36.31 and the vampire bridge's authoritative blood pool is
+Vampirism. Normal Mahou Boundary of Drain Life accepts each target and rewards
+the caster in priority order: injured player -> healing; at full health,
+hunger restoration (when `DRAIN_LIFE_IGNORE_HUNGER=false`); otherwise Mahou
+mana. For a dual vampire, **replace only the hunger-restoration reward with
+a canonical blood gain**, with JAWR's shadow derived from it. Never fill
+`FoodData` or pay blood twice. Do not route Mahou **health healing** into
+blood. At full health **and** full vampire blood, retain the native Mahou
+regen reward. If Mahou's ignore-hunger config is enabled, retain its behavior
+and do not grant vampire blood. Note vampires' managed `FoodData` may be
+artificially nonfull, so inspect the **original reward selection branch**;
+a post-hoc food-change watcher risks missed/repeated rewards.
+
+**Implementation gate:** pin and inspect Mahou 1.36.31 bytecode/API for the
+actual Drain Life reward method; place a server-side, source-specific
+conditional interception at the hunger-reward stage when the caster is
+both native vampires. Keep human and other nondual forms unchanged. Use a
+bounded amount per accepted target, preserving native mana costs/radius,
+attack frequency and player ownership, and explicitly decide a proportional
+conversion if capacities differ.
+
+**New acceptance test:** with an active controlled Drain Life boundary and
+one live target, measure canonical/JAWR blood, player health, FoodData and
+Mahou before/after (a) hurt vampire, (b) full-health partially hungry
+vampire, (c) full-health full-blood vampire, and (d) human caster; additionally
+toggle ignore-hunger, vary number of targets, test near-full, reload/dimension
+changes, and confirm no duplication/free mana. This does not replace case
+4's urgent JAWR-ability *spending* test.
+
 ## Deliberately deferred to next pass
 
 - Bat form/input exclusivity, cosmetic rendering/HUD unification, model changes.
