@@ -28,6 +28,8 @@ The Monk Java addon registers both attributes and conditionally translates value
 
 The native Monk progression is independent of a working Tyz tree. Do not route native mastery XP into Tyz or make normal mining/kills/food award native Tyz XP as a shortcut.
 
+Use operator command `/tmmmonk mastery` to inspect the player’s current rank, mastery, food count and native faction skill points without altering them.
+
 ## Smoke tests for next combined test build
 
 1. Enter an existing Monk character from the successful sunset test. Make sure Step Assist remains granted and native skill-tree button still opens.
