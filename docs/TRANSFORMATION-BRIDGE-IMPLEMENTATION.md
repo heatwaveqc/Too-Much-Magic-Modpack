@@ -28,8 +28,11 @@ the referenced upstream mods coexist. The mod has no probes installed.
   coordinating only mechanics that actually conflict.
 - Shared resource meters, feeding, model/body, resurrection and cure need
   an explicit owner for each permitted compound state.
-- Monk (under consideration) is a discipline/faction, not an additional
-  permanent transformation provider; faction coexistence is TBD.
+- Monk is a dedicated Vampirism-style playable faction in `compat/monk/`,
+  not an additional permanent physiology. Monk membership is exclusive of
+  Vampirism vampire/hunter/werewolf factions and all external supernatural
+  forms, including lich and dragon. The Monk exclusion policy is only modeled
+  in source and **not yet enforced by live transformation hooks**.
 
 ## Adapter acceptance gates (per mod/version)
 

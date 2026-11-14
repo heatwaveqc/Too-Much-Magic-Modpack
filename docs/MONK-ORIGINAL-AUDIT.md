@@ -15,6 +15,7 @@ mandatory deeds, and the original Monk abilities/deeds as the design baseline.
   bare-handed at level 0** and then **ten** for level 1. Meditating while looking at
   **sunrise or sunset** was the **level 2** deed, not initiation. Original mod page:
   https://www.curseforge.com/minecraft/mc-mods/the-monk-mod
+- The original [Factory.java](https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/factory/Factory.java) sets **10 × 20 = 200 ticks**, so the proposed 10-second initiation matches its actual duration.
 - The original sunrise/sunset handler
   [MonkRequirementSunriseSunset.java](https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/advancements/criteria/MonkRequirementSunriseSunset.java)
   computes celestial angle, checks sun near horizon (abs(cos(angle)) < 0.1), and
