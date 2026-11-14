@@ -3035,7 +3035,7 @@
       "implementation": "faction_skill_node_and_effect",
       "validation_flags": [
         "source_condition",
-        "Elastic_affix_3_milestones_vs_Step_Assist_once"
+        "one_Step_Assist_native_unlock; Elastic_same_effect_not_purchasable"
       ],
       "source_condition": "One-time Monk ability to step a normal block unassisted. Greater step-height numerical scaling is not a repeatable Monk purchase unless separately accepted; avoid duplicate armor affix bonus.",
       "status": "design_only"
@@ -3837,10 +3837,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "player_state_confirmed_code_API_unverified"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "player_state_confirmed_code_API_unverified",
+        "next": "Inspect pinned Mahou 1.36.31 player mana ABI; avoid production admin-command adapter",
+        "implementation": "Java per_player_max_mahou_bridge_if_pinned_setter_confirmed",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:mahou/regeneration",
@@ -3858,10 +3867,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "regen_mechanic_confirmed_no_public_API"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "regen_mechanic_confirmed_no_public_API",
+        "next": "Inspect pinned Java player mana and per-tick hooks before implementing recovery",
+        "implementation": "optional_server_tick_credited_mana_only_after_pinned_abi",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:mahou/spell_efficiency",
@@ -3879,10 +3897,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "blocked_no_cost_pipeline_API_verified"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "blocked_no_cost_pipeline_API_verified",
+        "next": "Do not enable; identify cost attribution across personal mana/circuits/gems/continuous circles",
+        "implementation": "blocked_pending_bytecode_or_source",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:primal/attunement",
@@ -3900,10 +3927,19 @@
       "access": "universal_candidate",
       "implementation": "Java_bridge_only_after_confirmed_API",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "source_verified_direct_player_API"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "source_verified_direct_player_API",
+        "next": "Implement reversible INDUCED attunement per registered Source, 50 cap; never touch PERMANENT research",
+        "implementation": "AttunementManager.getAttunement_setAttunement_incrementAttunement",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:primal/spell_proficiency",
@@ -3921,10 +3957,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "research_expertise_not_spell_power"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "research_expertise_not_spell_power",
+        "next": "Hold original candidate; consider optional Sorcery expertise-award multiplier without overriding research progression",
+        "implementation": "redesign_required_ExpertiseManager_not_damage_hook",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:occultism/familiar_bond",
@@ -3942,10 +3987,19 @@
       "access": "universal_candidate",
       "implementation": "Java_bridge_only_after_confirmed_API",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "source_verified_owned_familiar_entity_bridge"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "source_verified_owned_familiar_entity_bridge",
+        "next": "UUID-scoped legal familiar effects; handle entity lifecycle and ownership",
+        "implementation": "FamiliarEntity.getOwnerId_getFamiliarOwner",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:occultism/summoner_mastery",
@@ -3963,10 +4017,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "source_verified_owned_spirit_entity_bridge"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "source_verified_owned_spirit_entity_bridge",
+        "next": "Restrict to eligible owned spirit entities; separate combat vs utility; preserve rituals",
+        "implementation": "SpiritEntity_extends_TamableAnimal_plus_server_entity_modifiers",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:neovitae/ritual_mastery",
@@ -3984,10 +4047,19 @@
       "access": "universal_candidate",
       "implementation": "Java_bridge_only_after_confirmed_API",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "blocked_no_personal_ritual_scope"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "blocked_no_personal_ritual_scope",
+        "next": "Do not purchase ritual-only bonus: AltarRuneEvent has no player and AnimaTicket no purpose; optional redesign as all_EV_efficiency requires approval",
+        "implementation": "blocked_pending_owner_ritual_attribution",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:astral/attunement",
@@ -4005,10 +4077,19 @@
       "access": "universal_candidate",
       "implementation": "Java_bridge_only_after_confirmed_API",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "one_time_attunement_not_repeatable"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "one_time_attunement_not_repeatable",
+        "next": "Do not sell repeated attunement; consider perk XP gain or perk-effect skill after dedicated review",
+        "implementation": "ResearchHelper.attuneConstellation_addPerkExp; redesign",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:roots/terra_mastery",
@@ -4027,10 +4108,19 @@
       "access": "universal",
       "implementation": "one_unified_Tyz_upgrade; per_resource_attribute_or_bridge",
       "validation_flags": [
-        "needs_exact_per_player_mod_API"
+        "needs_exact_per_player_mod_API",
+        "source_verified_player_mana_attachment"
       ],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "api_verification": {
+        "checked_on": "2026-11-14",
+        "verdict": "source_verified_player_mana_attachment",
+        "next": "Rename Roots Mana Mastery; use setMaxMana and optional additonal regeneration at +1 every five ticks, never double-stack; staff imprint only at craft/first pickup",
+        "implementation": "RootsAttachments.MANA_ManaAttachment_get_setMana_get_setMaxMana",
+        "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+        "runtime_verified": false
+      }
     },
     {
       "source_id": "tmm_monk:apotheosis/armor/attribute/adamantine",
@@ -4134,9 +4224,32 @@
       "implementation": "mirror_canonical_benefit; derive_rarity_milestones_without_extra_modifier",
       "validation_flags": [
         "coalesce_derived_attribute_rarity_milestones",
-        "Elastic_milestone_conflict_with_once_Step_Assist"
+        "Elastic_once_Step_Assist_resolved_no_separate_rank"
       ],
-      "status": "design_only"
+      "status": "design_only",
+      "elastic_resolution": {
+        "owner_decision": "one_Step_Assist_only",
+        "sell_separate_elastic": false,
+        "monk_effect": "one_block_native_Step_Assist",
+        "higher_apotheosis_step_height_rarity_bonuses_in_Monk_tree": false,
+        "source_rarity_bounds": {
+          "common": 0.5,
+          "uncommon": 0.5,
+          "rare": [
+            0.5,
+            1.5
+          ],
+          "epic": [
+            0.5,
+            1.5
+          ],
+          "mythic": [
+            1,
+            2
+          ]
+        },
+        "source": "https://github.com/Shadows-of-Fire/Apotheosis/blob/1.21/src/generated/resources/data/apotheosis/affixes/armor/attribute/elastic.json"
+      }
     },
     {
       "source_id": "tmm_monk:apotheosis/armor/attribute/fireproof",
@@ -6583,5 +6696,16 @@
     "Pufferfish_packwiz_and_quest_dependency_migration_before_actual_removal",
     "native_numeric_effective_caps_SP_int_overflow_and_2048_attack_damage_limit",
     "Monk_skill_tree_UI_layout_and_faction_20_default_level_limit"
-  ]
+  ],
+  "api_verification": {
+    "reviewed_on": "2026-11-14",
+    "source_level_only": true,
+    "live_jar_abi_verified": false,
+    "source_doc": "docs/MONK-MOD-API-VERIFICATION-2026-11-14.md",
+    "source_supported_extension_paths": 4,
+    "mahou_personal_mechanics_with_unverified_java_API": 2,
+    "semantic_redesign_required": 2,
+    "blocked_as_proposed": 2,
+    "elastic_duplicate_resolved": true
+  }
 }
