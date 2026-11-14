@@ -4,6 +4,8 @@ import io.github.heatwaveqc.tmm.monk.config.MonkStartupConfig;
 import io.github.heatwaveqc.tmm.monk.command.MonkAttributeInventoryCommand;
 import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.faction.MonkPlayerData;
+import io.github.heatwaveqc.tmm.monk.gameplay.SunsetInitiation;
+import io.github.heatwaveqc.tmm.monk.gameplay.StepAssistEffects;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -17,8 +19,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Monk addon entrypoint for the pinned Vampirism 1.10.x API.
  *
- * No initiation, powers, experience boosts, equipment restrictions or
- * cross-mod exclusions are active in this bootstrap.
+ * First Sunset initiation and the single reversible Step Assist root power
+ * are active. Universal Tyz/MXP and other Monk techniques live elsewhere.
  */
 @Mod(MonkMod.MOD_ID)
 public final class MonkMod {
@@ -36,7 +38,14 @@ public final class MonkMod {
         // but before Vampirism closes faction registrations at IMC processing.
         modBus.addListener(this::registerFaction);
         NeoForge.EVENT_BUS.addListener(MonkAttributeInventoryCommand::register);
-        LOGGER.warn("Monk development scaffold loaded: no powers or discipline restrictions are implemented.");
+        NeoForge.EVENT_BUS.addListener(SunsetInitiation::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(SunsetInitiation::onFactionChangePre);
+        NeoForge.EVENT_BUS.addListener(SunsetInitiation::onLogout);
+        NeoForge.EVENT_BUS.addListener(SunsetInitiation::onDimensionChange);
+        NeoForge.EVENT_BUS.addListener(StepAssistEffects::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(StepAssistEffects::onFactionChanged);
+        NeoForge.EVENT_BUS.addListener(StepAssistEffects::onLogout);
+        LOGGER.info("Monk First Sunset and Step Assist prototype registered (external physiology bridge pending).");
     }
 
     private void registerFaction(RegisterEvent event) {
