@@ -38,7 +38,8 @@ def main(bootstrap: str, output_dir: str, snapshot: str, our_jar: str) -> None:
             dest.writestr("VAMPIRE-CHASSIS-TEST.txt",
                 "TOO MUCH MAGIC - FIXED QUESTS + EXPERIMENTAL VAMPIRE CHASSIS\n"
                 "Do NOT use an existing save. Custom JAR is not in the packwiz lock.\n"
-                "Both mod vampire states must be tested with experiment flags.\n                "All vampire features are OFF by default. Enable only after\n"
+                "Both mod vampire states must be tested with experiment flags.\n"
+                "All vampire features are OFF by default. Enable only after\n"
                 "reading docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md in the GitHub repo.\n"
                 "Use /tmmtransform vampire for read-only live metrics.\n"
                 "Native acquisition and cure paths need in-world verification.\n"
