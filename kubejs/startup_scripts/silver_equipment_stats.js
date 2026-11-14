@@ -2,19 +2,23 @@
 // Changes to item defaults require a complete client/server restart.
 // ItemEvents.modification is a KubeJS startup event, not a reloadable recipe.
 //
-// We deliberately preserve the native tool tiers/harvest restrictions and do
-// not attempt broken 1.21.1 item.tier or ArmorMaterial enchantability changes.
+// We preserve the original iron harvest restriction and attack/enchant values;
+// only the existing tool tier's durability and mining speed are updated.
+// ArmorMaterial enchantability is a separate, known KubeJS gap.
 ItemEvents.modification(event => {
   for (const slot of ['sword', 'axe', 'pickaxe', 'shovel', 'hoe']) {
     const id = 'eidolon_repraised:silver_' + slot
     event.modify(id, item => {
-      // From Werewolves: 250 durability (vs Eidolon's native 193).
-      item.maxDamage = 250
-      if (slot !== 'sword') {
-        // From Embers: 7.6 mining speed (vs Eidolon's native 7.0).
-        // 1.21.1 direct setter; does NOT modify the underlying mining tier.
-        item.digSpeed = 7.6
-      }
+      // KubeJS's 2101 ItemModificationKubeEvent#setTier mutates the
+      // existing TieredItem and refreshes maxDamage + digger Tool component.
+      // Unlike a bare data-component change, this makes the mining speed
+      // reflect the revised native tier. Preserve iron harvest capability,
+      // attack bonus 2 and enchantability 20 from Eidolon's silver tier.
+      // Verify against the *pinned* 2101.7.2-build.381 at server launch.
+      item.setTier(tier => {
+        tier.setUses(250)
+        tier.setSpeed(7.6)
+      })
     })
   }
 
