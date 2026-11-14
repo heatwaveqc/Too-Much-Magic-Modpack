@@ -42,3 +42,13 @@ A successful CI build or client boot cannot promote this to `integrated`.
    add it to packwiz's installed lock until the owner approves an integration build.
 
 See [implementation gates](../../docs/TRANSFORMATION-BRIDGE-IMPLEMENTATION.md).
+
+## New Dragon Survival release selection
+
+`manifest/mods.json` has newly approved Dragon Survival 1.21.1
+NeoForge v2.0.74, CF file 9539454. It is **NOT** packwiz-pinned or
+installed. This bridge will ultimately observe real Dragon Survival
+progression and allow Dragon + exactly one lichdom (Dracolich), rejecting
+an additional lichdom and other forms. No read-only Dragon Survival probe,
+state stacking or veto is live yet. GeckoLib dependency is already
+present in the pack, but combined boot and world testing remain required.

@@ -49,6 +49,26 @@ the referenced upstream mods coexist. The mod has no probes installed.
 6. Run clean dedicated-server boot AND real client gameplay. Save logs.
 7. Only then enable a feature flag and consider inclusion in packwiz.
 
+## Dragon Survival now approved (candidate; not installed)
+
+Official 1.21.1 NeoForge Dragon Survival **v2.0.74**, CurseForge
+project 420799 / file 9539454 is now listed in `manifest/mods.json`
+with `desired=true`, `enabled_in_pack=false`. GeckoLib is
+already present in the installed dependency set, but the exact new
+combined load/animation/state interactions still need server and
+client tests. This **does not** imply a Dragon Survival implementation
+or functional transformation compat.
+
+Dragon Survival is the intended primary dragon-form provider and
+progression engine for the future **Dracolich** state. The bridge
+must combine **one** of the two lich systems with Dragon Survival
+and reject a second simultaneous lichdom, vampire, werewolf,
+Abomination, Hunter or Monk. Native dragon growth/abilities remain
+owned by Dragon Survival; the bridge must not duplicate that
+progression. For Monk barehand harvest tiers, its split
+harvest-bonus/speed code is a mechanical reference only; Monk
+cannot become a dragon.
+
 ## First pilot candidate
 
 Start with passive **Vampirism** and **JAWR** vampire-state observers, using

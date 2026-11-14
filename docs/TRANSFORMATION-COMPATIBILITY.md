@@ -1,4 +1,16 @@
-# Persistent player transformation compatibility — design proposal (2026-11-13)
+# Persistent player transformation compatibility — historical research (2026-11-13)
+
+**SUPERSEDED 2026-11-14:** Earlier sections describe a now-replaced
+"no stackable physiologies" proposal and Dragon Survival as unapproved.
+The owner's accepted target is **two lichdoms → Archlich; unified
+Vampire/Werewolf; Abomination (both plus lichdoms); Dragon + exactly
+one lichdom → Dracolich; Hunter and Monk mutually exclusive with
+supernatural transformations.** The definitive current state is
+[TRANSFORMATION-BRIDGE-IMPLEMENTATION.md](TRANSFORMATION-BRIDGE-IMPLEMENTATION.md).
+**Dragon Survival is now approved** as a 1.21.1 NeoForge candidate
+(v2.0.74 file 9539454) in `manifest/mods.json`, but it is NOT installed,
+packwiz-pinned or multiplayer-tested. The old "not approved" lines below
+are preserved as dated historical research, not current decisions.
 
 **Status: proposed architecture / research and acceptance gates, not an implemented feature or a decision to include Dragon Survival.** The current installed B3 pack does not include Dragon Survival, Vampirism, Werewolves, Goety or the other new candidate systems, except that **JAWR and JAWR: Forbidden Magic are already installed**. Do not claim this document makes transformations exclusive.
 
