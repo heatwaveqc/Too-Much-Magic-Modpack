@@ -2587,6 +2587,208 @@
       "optional": true,
       "role": "manual-safety",
       "stage": "draconic-reactor"
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Build a Bookshelf",
+      "quest_id": "544D501000C00000",
+      "task_id": "544D801000C00000",
+      "xp_reward_id": "544D601000C00001",
+      "item_reward_id": "544D701000C00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:bookshelf",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:lantern",
+        "count": 2
+      },
+      "depends": "Begin a Library",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Iron Is Only the Beginning",
+      "quest_id": "544D501000D00000",
+      "task_id": "544D801000D00000",
+      "xp_reward_id": "544D601000D00001",
+      "item_reward_id": "544D701000D00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": "Iron Pickaxe",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Find an Everyday Magical Shortcut",
+      "quest_id": "544D501000E00000",
+      "task_id": "544D801000E00000",
+      "xp_reward_id": "544D601000E00001",
+      "item_reward_id": "544D701000E00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:glowstone_dust",
+        "count": 4
+      },
+      "depends": "Iron Is Only the Beginning",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Try a First Spell or Ritual",
+      "quest_id": "544D501000F00000",
+      "task_id": "544D801000F00000",
+      "xp_reward_id": "544D601000F00001",
+      "item_reward_id": "544D701000F00002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": "Find an Everyday Magical Shortcut",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "A Little Protection",
+      "quest_id": "544D501001000000",
+      "task_id": "544D801001000000",
+      "xp_reward_id": "544D601001000001",
+      "item_reward_id": "544D701001000002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_chestplate",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:arrow",
+        "count": 16
+      },
+      "depends": "Iron Pickaxe",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Take Your Magic Into the World",
+      "quest_id": "544D501001100000",
+      "task_id": "544D801001100000",
+      "xp_reward_id": "544D601001100001",
+      "item_reward_id": "544D701001100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:firework_rocket",
+        "count": 4
+      },
+      "depends": "Iron Is Only the Beginning",
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "The Rest of the Pack Is Yours",
+      "quest_id": "544D501001200000",
+      "task_id": "544D801001200000",
+      "xp_reward_id": "544D601001200001",
+      "item_reward_id": "544D701001200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": "Try a First Spell or Ritual",
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Smelt Without Fuel: Scriptor Lectern",
+      "quest_id": "544D502001100000",
+      "task_id": "544D802001100000",
+      "xp_reward_id": "544D602001100001",
+      "item_reward_id": "544D702001100002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:charcoal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Double Raw Ore: Occultism or Mahou?",
+      "quest_id": "544D502001200000",
+      "task_id": "544D802001200000",
+      "xp_reward_id": "544D602001200001",
+      "item_reward_id": "544D702001200002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:coal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Need Early Flight? Compare Brooms",
+      "quest_id": "544D502001300000",
+      "task_id": "544D802001300000",
+      "xp_reward_id": "544D602001300001",
+      "item_reward_id": "544D702001300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:feather",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Vengeance Pickaxe: Fortune with a Price",
+      "quest_id": "544D502001400000",
+      "task_id": "544D802001400000",
+      "xp_reward_id": "544D602001400001",
+      "item_reward_id": "544D702001400002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true
     }
   ]
 }

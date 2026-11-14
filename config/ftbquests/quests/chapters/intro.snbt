@@ -208,6 +208,139 @@
 			x: 6.0d
 			y: 3.0d
 		}
+		{
+			id: "544D501000C00000"
+			icon: { id: "minecraft:bookshelf" }
+			title: "Build a Bookshelf"
+			description: [
+				"Craft a bookshelf to establish a magical research corner. Bookshelves also appear in early Scriptor Magicae tools. The spellbook and world-specific magical vocabulary must still be acquired or discovered."
+			]
+			dependencies: ["544D501000B00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601000C00001", type: "xp", xp: 20 }
+				{ id: "544D701000C00002", type: "item", item: { id: "minecraft:lantern", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000C00000", type: "item", item: { id: "minecraft:bookshelf", count: 1 } }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000D00000"
+			icon: { id: "minecraft:enchanted_book" }
+			title: "Iron Is Only the Beginning"
+			description: [
+				"An iron pickaxe is a baseline, not a finish line. Choose spellcasting, rituals, magical mining, farming or exploration. Basic Progression covers shared goals; Magic chapters cover individual schools. You do not need to master all 25 magical traditions."
+			]
+			dependencies: ["544D501000A00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601000D00001", type: "xp", xp: 20 }
+				{ id: "544D701000D00002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000D00000", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000E00000"
+			icon: { id: "minecraft:enchanted_book" }
+			title: "Find an Everyday Magical Shortcut"
+			description: [
+				"Look through Tips & Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you."
+			]
+			dependencies: ["544D501000D00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601000E00001", type: "xp", xp: 20 }
+				{ id: "544D701000E00002", type: "item", item: { id: "minecraft:glowstone_dust", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D801000E00000", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501000F00000"
+			icon: { id: "minecraft:enchanted_book" }
+			title: "Try a First Spell or Ritual"
+			description: [
+				"Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools."
+			]
+			dependencies: ["544D501000E00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601000F00001", type: "xp", xp: 30 }
+				{ id: "544D701000F00002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544D801000F00000", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501001000000"
+			icon: { id: "minecraft:iron_chestplate" }
+			title: "A Little Protection"
+			description: [
+				"Craft an iron chestplate for dangerous exploring. This is optional: players who prefer farming, research or base magic can progress without rushing combat."
+			]
+			dependencies: ["544D501000A00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601001000001", type: "xp", xp: 20 }
+				{ id: "544D701001000002", type: "item", item: { id: "minecraft:arrow", count: 1 }, count: 16 }
+			]
+			tasks: [
+				{ id: "544D801001000000", type: "item", item: { id: "minecraft:iron_chestplate", count: 1 } }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501001100000"
+			icon: { id: "minecraft:enchanted_book" }
+			title: "Take Your Magic Into the World"
+			description: [
+				"Explore beyond your base for structures, new biomes and useful materials. Nature's Compass, FTB Chunks, your Trinkets Pouch and the exploration chapters all help. You may also specialize in base building without following every dungeon branch."
+			]
+			dependencies: ["544D501000D00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601001100001", type: "xp", xp: 25 }
+				{ id: "544D701001100002", type: "item", item: { id: "minecraft:firework_rocket", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544D801001100000", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "544D501001200000"
+			icon: { id: "minecraft:enchanted_book" }
+			title: "The Rest of the Pack Is Yours"
+			description: [
+				"Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration & Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."
+			]
+			dependencies: ["544D501000F00000"]
+			optional: true
+			rewards: [
+				{ id: "544D601001200001", type: "xp", xp: 30 }
+				{ id: "544D701001200002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D801001200000", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 0.0d
+		}
 	]
 	subtitle: "FTB quest navigation, starting equipment and first-log Trinkets Pouch; the grant is implemented separately on PR #14."
 	title: "Getting Started"

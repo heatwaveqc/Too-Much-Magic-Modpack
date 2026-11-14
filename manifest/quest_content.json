@@ -6,7 +6,9 @@
     "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
     "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
     "overview_placeholders": "until authored, minimal paper + XP checkmark rewards",
-    "progression_chapters": "65 authored milestones; power chapter covers BiggerReactors Rework, its battery, Draconic Evolution Energy Core bank, FE routing, and post-gate risky Draconic Reactor. Roadmap checkmarks do not duplicate boss detection."
+    "progression_chapters": "65 authored milestones; power chapter covers BiggerReactors Rework, its battery, Draconic Evolution Energy Core bank, FE routing, and post-gate risky Draconic Reactor. Roadmap checkmarks do not duplicate boss detection.",
+    "onboarding": "Seven added Getting Started quests beyond iron, guiding first spell/ritual and exploration; no specific magical school required.",
+    "new_tips": "Four optional practical Tips: Scriptor fuel-free automatic smelting, Occultism/Mahou ore processing, broom alternatives, and Vengeance Pickaxe."
   },
   "quests": [
     {
@@ -2545,6 +2547,197 @@
       "role": "manual-safety",
       "stage": "draconic-reactor",
       "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Build a Bookshelf",
+      "description": "Craft a bookshelf to establish a magical research corner. Bookshelves also appear in early Scriptor Magicae tools. The spellbook and world-specific magical vocabulary must still be acquired or discovered.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:bookshelf",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:lantern",
+        "count": 2
+      },
+      "depends": "Begin a Library",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Iron Is Only the Beginning",
+      "description": "An iron pickaxe is a baseline, not a finish line. Choose spellcasting, rituals, magical mining, farming or exploration. Basic Progression covers shared goals; Magic chapters cover individual schools. You do not need to master all 25 magical traditions.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": "Iron Pickaxe",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Find an Everyday Magical Shortcut",
+      "description": "Look through Tips & Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:glowstone_dust",
+        "count": 4
+      },
+      "depends": "Iron Is Only the Beginning",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Try a First Spell or Ritual",
+      "description": "Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:golden_carrot",
+        "count": 2
+      },
+      "depends": "Find an Everyday Magical Shortcut",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "A Little Protection",
+      "description": "Craft an iron chestplate for dangerous exploring. This is optional: players who prefer farming, research or base magic can progress without rushing combat.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_chestplate",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:arrow",
+        "count": 16
+      },
+      "depends": "Iron Pickaxe",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Take Your Magic Into the World",
+      "description": "Explore beyond your base for structures, new biomes and useful materials. Nature's Compass, FTB Chunks, your Trinkets Pouch and the exploration chapters all help. You may also specialize in base building without following every dungeon branch.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:firework_rocket",
+        "count": 4
+      },
+      "depends": "Iron Is Only the Beginning",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "The Rest of the Pack Is Yours",
+      "description": "Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration & Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": "Try a First Spell or Ritual",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Smelt Without Fuel: Scriptor Lectern",
+      "description": "Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:charcoal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Double Raw Ore: Occultism or Mahou?",
+      "description": "Occultism's early Foliot Crusher turns supported raw ores into two dusts after its first spirit ritual; confirm that these dusts smelt in our pack. Mahou Tsukai's Mortar and Pestle presently produces two catalyst powders from ingots/gems, NOT two smeltable ingots from one raw ore. Our planned ore/dust unification is separate unfinished compatibility work. The cursed EvilCraft Vengeance Pickaxe boosts mined drops through Fortune instead of doubling furnace input.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:coal",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Need Early Flight? Compare Brooms",
+      "description": "EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:feather",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Vengeance Pickaxe: Fortune with a Price",
+      "description": "EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
       "overview": false,
       "first_log": false
     }
