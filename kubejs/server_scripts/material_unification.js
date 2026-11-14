@@ -33,11 +33,11 @@ ServerEvents.recipes(event => {
     )
   }
 
-  // Existing Neo Vitae / Occultism dusts also use these tags.
-  event.smelting('minecraft:iron_ingot', '#c:dusts/iron').id('tmm:iron_dust_smelting')
-  event.blasting('minecraft:iron_ingot', '#c:dusts/iron').id('tmm:iron_dust_blasting')
-  event.smelting('minecraft:gold_ingot', '#c:dusts/gold').id('tmm:gold_dust_smelting')
-  event.blasting('minecraft:gold_ingot', '#c:dusts/gold').id('tmm:gold_dust_blasting')
+  // Do NOT add extra furnace recipes here: the already-loaded, AU-unified
+  // Primal Magick iron-grit furnace recipes and Neo Vitae gold-dust recipes
+  // each accept the *full* c:dusts/iron or c:dusts/gold tag, including
+  // Mahou powders and Occultism dusts. Adding tmm:* tag-wide furnace
+  // recipes created four overlapping Polymorph groups, with no new inputs.
 
   // Remove the obvious ingot -> dust shortcuts from the two smeltable metals.
   // Audit all other crushing routes against the exact jar before release.
