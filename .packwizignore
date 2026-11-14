@@ -15,3 +15,7 @@
 /.smoke-loader/
 /server/
 /client/
+
+# First-party source projects are built separately; never ship their source as packwiz files.
+/compat/
+/integration/
