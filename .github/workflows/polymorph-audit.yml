@@ -5,6 +5,7 @@ on:
     branches:
       - audit/polymorph-conflicts-2026-11-14
       - feature/silver-equipment-unification
+      - feature/material-processing-recipe-cleanup
   workflow_dispatch:
 
 permissions:
@@ -35,6 +36,7 @@ jobs:
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_POLYMORPH_AUDIT: '1'
+          SMOKE_AU_FULL_RECIPE_DEBUG: '1'
           SMOKE_TIMEOUT_SECONDS: '480'
           WORK_DIR: ${{ runner.temp }}/tmm-polymorph-audit
         run: bash scripts/smoke_server.sh
@@ -69,6 +71,8 @@ jobs:
             ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.json
             ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.md
             ${{ runner.temp }}/tmm-polymorph-audit/logs/kubejs/
+            ${{ runner.temp }}/tmm-polymorph-audit/logs/almostunified/debug/
+            ${{ runner.temp }}/tmm-polymorph-audit/logs/almostunified/almostunified.log
             ${{ runner.temp }}/tmm-polymorph-audit/server.log
             ${{ runner.temp }}/tmm-polymorph-audit/logs/latest.log
           if-no-files-found: warn
