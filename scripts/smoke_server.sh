@@ -23,6 +23,22 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
       echo "FTB Quests chapter files copied: $(find "$WORK_DIR/config/ftbquests/quests/chapters" -maxdepth 1 -name '*.snbt' -type f | wc -l)"
     fi
   fi
+  if [[ "${SMOKE_AU_FULL_RECIPE_DEBUG:-0}" == "1" ]]; then
+    # Diagnostic only: full recipe before/after, AU's dedup decisions and
+    # transformations. These can be large: never ship enabled to players.
+    mkdir -p "$WORK_DIR/config/almostunified"
+    cat > "$WORK_DIR/config/almostunified/debug.json" <<'JSON'
+{
+  "dump_tags": true,
+  "dump_overview": true,
+  "dump_recipes": true,
+  "dump_unification": true,
+  "dump_duplicates": true,
+  "log_invalid_tags": true,
+  "cache_recipe_conditions": true
+}
+JSON
+  fi
   if [[ "${SMOKE_AU_DEBUG:-0}" == "1" ]]; then
     # CI-only registry audit; never ship generated debug dumps in the Prism instance.
     mkdir -p "$WORK_DIR/config/almostunified"
