@@ -120,6 +120,24 @@ def inspect_pin(pin: str) -> None:
                     print("JAWR_INPUT_DISASM", cls, "exit", proc.returncode, flush=True)
                     for line in proc.stdout.splitlines()[:2200]:
                         print(" JAWR_INPUT", line[:310], flush=True)
+                candidate_names = []
+                for name in z.namelist():
+                    if name.endswith(".class") and not name.startswith("META-INF/"):
+                        raw = z.read(name)
+                        if any(tag in raw for tag in (
+                            b"WitcheryKeyMappings", b"ClientAbilityHandler",
+                            b"AbilityScrollHandler", b"AbilityUseC2SPayload",
+                            b"AbilityUsePayload", b"getUTILITY_BUTTON")):
+                            candidate_names.append(name.removesuffix(".class").replace("/", "."))
+                print("JAWR_INPUT_CALLER_CANDIDATES", sorted(candidate_names), flush=True)
+                for cls in sorted(candidate_names):
+                    if "$" in cls or cls.startswith("dev.sterner.witchery.feature.ability.AbilityHudRenderer"):
+                        continue
+                    proc = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=25)
+                    print("JAWR_INPUT_CALLER", cls, "exit", proc.returncode, flush=True)
+                    for line in proc.stdout.splitlines()[:2200]:
+                        print(" JAWR_CALLER_BC", line[:320], flush=True)
                 # Acquisition entrypoints: identify what triggers first-level advancement,
                 # how the sacrificial circle is created, and ritual materials.
                 for cls in sorted(classes):
