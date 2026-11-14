@@ -61,12 +61,12 @@
     },
     {
       "name": "monk-faction",
-      "branch": "feature/monk-first-sunset-step-assist",
+      "branch": "fix/monk-sunset-diagnostics",
       "paths": [
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Latest playable Monk first slice: First Sunset 200-tick west-horizon initiation and one Step Assist root (+0.5 step height), unit-tested source but unverified runtime. Supersedes prior Monk scaffold and no duplicate Tyz engine.",
+      "note": "Full First Sunset and Step Assist implementation plus B15 read-only /tmmmonk diagnose and explicitly operator-only /tmmmonk testjoin for disposable worlds. External transformation exclusion and client GUI remain unverified.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
@@ -106,6 +106,16 @@
       ],
       "mode": "runtime-when-pinned",
       "note": "Register current source immediately and bring the approved FTB Essentials 2101.1.10 pack pin into integration automatically after upstream B13 resolves; non-op home/RTP still require in-world QA"
+    },
+    {
+      "name": "starter-inventory-akashic-improvable",
+      "branch": "feature/starter-kit-akashic-improvable",
+      "paths": [
+        "kubejs/data/tmm/advancement/starter_kit.json",
+        "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
+      ],
+      "mode": "runtime-experimental",
+      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch."
     }
   ],
   "covered_by_baseline": {
@@ -131,7 +141,8 @@
     "design/pufferfish-skills-attributes-ars-core": "Historical Pufferfish proposal; planned for replacement, not for test reinstatement",
     "feature/silver-equipment-unification": "Ancestor of current material-processing-recipe-cleanup implementation branch, which carries the same materials/recipe files",
     "design/quest-standards-starter-choice-2026-11-14": "Proposal replaced by explicitly sourced B14 runtime quest implementation.",
-    "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot."
+    "design/monk-no-pufferfish-skill-placement": "Superseded by feature/monk-first-sunset-step-assist, which includes its full Monk scaffold plus live sunset/Step Assist pilot.",
+    "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic."
   },
   "pending_runtime_work": [
     "NEXT INTEGRATION BUILD: Comforts 9.0.5+1.21.1 (NeoForge) is approved in manifest/mods.json with desired=true, enabled=false. Resolve exact hash-pinned packwiz metadata, check dependencies, include both client/server and smoke; verify portable sleeping bags never reset spawn and hammocks change day to night. Do not claim it is installed until pinned.",
@@ -142,6 +153,9 @@
     "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
-    "New first Monk slice: 10s Overworld sunset gaze and Step Assist are compiled but must be tested in a disposable client world for eligible/non-eligible cases, persistence, gear and full transformation exclusions."
+    "New first Monk slice: 10s Overworld sunset gaze and Step Assist are compiled but must be tested in a disposable client world for eligible/non-eligible cases, persistence, gear and full transformation exclusions.",
+    "Player-tested PASS (2026-11-14): quest book, starter-choice interface, Quest Shop coin button, quest rewards, FTB Essentials /sethome and /rtp, QoL functions. Vampirism tests ongoing. Monk user-reported FAIL: no sunset progress, no resulting Monk skill tree/UI; investigate with B15 diagnostic/testjoin.",
+    "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
+    "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified."
   ]
 }
