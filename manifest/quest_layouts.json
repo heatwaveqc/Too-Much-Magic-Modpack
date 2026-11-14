@@ -1,0 +1,1621 @@
+{
+  "schema_version": 1,
+  "source": "scripts/rebuild_quest_ui.py",
+  "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
+  "notes": "Fixed IDs and separate per-chapter English translations; manual stage-based layouts. Not a Prism client rendering test.",
+  "quest_count": 179,
+  "chapters": 45,
+  "positions": [
+    {
+      "quest_id": "544D301000100001",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D4D1100000001",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        3
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000300000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000400000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        9
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000500000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000600000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        15
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000700000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000800000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000900000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000A00000",
+      "chapter": "Getting Started",
+      "position": [
+        0,
+        21
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000B00000",
+      "chapter": "Getting Started",
+      "position": [
+        8,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000C00000",
+      "chapter": "Getting Started",
+      "position": [
+        8,
+        9
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000D00000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        21
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000E00000",
+      "chapter": "Getting Started",
+      "position": [
+        8,
+        21
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501000F00000",
+      "chapter": "Getting Started",
+      "position": [
+        8,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501001000000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501001100000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        27
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501001200000",
+      "chapter": "Getting Started",
+      "position": [
+        8,
+        27
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D301000200001",
+      "chapter": "Tips & Tricks",
+      "position": [
+        0,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000200000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000300000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        3,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000400000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        6,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000500000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        9,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000600000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        12,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000700000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000800000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        3,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000900000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        6,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000A00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        9,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000B00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        12,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000C00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        0,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000D00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        3,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000E00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        6,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502000F00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        9,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001000000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        12,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001100000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        0,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001200000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        3,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001300000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        6,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001400000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        9,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D301000300001",
+      "chapter": "Food & Fishing",
+      "position": [
+        0,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000200000",
+      "chapter": "Food & Fishing",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000300000",
+      "chapter": "Food & Fishing",
+      "position": [
+        3,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000400000",
+      "chapter": "Food & Fishing",
+      "position": [
+        6,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000500000",
+      "chapter": "Food & Fishing",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000600000",
+      "chapter": "Food & Fishing",
+      "position": [
+        0,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000700000",
+      "chapter": "Food & Fishing",
+      "position": [
+        3,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000800000",
+      "chapter": "Food & Fishing",
+      "position": [
+        6,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000900000",
+      "chapter": "Food & Fishing",
+      "position": [
+        0,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000A00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        3,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000B00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        3,
+        21
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000C00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        6,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000D00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        9,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000E00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        12,
+        17
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503000F00000",
+      "chapter": "Food & Fishing",
+      "position": [
+        9,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001000000",
+      "chapter": "Food & Fishing",
+      "position": [
+        9,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001100000",
+      "chapter": "Food & Fishing",
+      "position": [
+        12,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001200000",
+      "chapter": "Food & Fishing",
+      "position": [
+        6,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001300000",
+      "chapter": "Food & Fishing",
+      "position": [
+        12,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001400000",
+      "chapter": "Food & Fishing",
+      "position": [
+        3,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001500000",
+      "chapter": "Food & Fishing",
+      "position": [
+        15,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D503001600000",
+      "chapter": "Food & Fishing",
+      "position": [
+        18,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D302000100001",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D504000100000",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        14
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000200000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        14
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000300000",
+      "chapter": "Basic Progression",
+      "position": [
+        6,
+        14
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000400000",
+      "chapter": "Basic Progression",
+      "position": [
+        9,
+        14
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000500000",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000600000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000700000",
+      "chapter": "Basic Progression",
+      "position": [
+        6,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000800000",
+      "chapter": "Basic Progression",
+      "position": [
+        9,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000900000",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000A00000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000B00000",
+      "chapter": "Basic Progression",
+      "position": [
+        6,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000C00000",
+      "chapter": "Basic Progression",
+      "position": [
+        9,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000D00000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000E00000",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504000F00000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001000000",
+      "chapter": "Basic Progression",
+      "position": [
+        6,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001100000",
+      "chapter": "Basic Progression",
+      "position": [
+        9,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001200000",
+      "chapter": "Basic Progression",
+      "position": [
+        12,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001300000",
+      "chapter": "Basic Progression",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001400000",
+      "chapter": "Basic Progression",
+      "position": [
+        3,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001500000",
+      "chapter": "Basic Progression",
+      "position": [
+        6,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D504001600000",
+      "chapter": "Basic Progression",
+      "position": [
+        9,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D302000200001",
+      "chapter": "Advanced Progression",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D505000100000",
+      "chapter": "Advanced Progression",
+      "position": [
+        3,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000200000",
+      "chapter": "Advanced Progression",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000300000",
+      "chapter": "Advanced Progression",
+      "position": [
+        3,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000400000",
+      "chapter": "Advanced Progression",
+      "position": [
+        6,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000500000",
+      "chapter": "Advanced Progression",
+      "position": [
+        9,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000600000",
+      "chapter": "Advanced Progression",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000700000",
+      "chapter": "Advanced Progression",
+      "position": [
+        3,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000800000",
+      "chapter": "Advanced Progression",
+      "position": [
+        6,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000900000",
+      "chapter": "Advanced Progression",
+      "position": [
+        9,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D505000A00000",
+      "chapter": "Advanced Progression",
+      "position": [
+        9,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D302000300001",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D506000100000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D506000200000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        4,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D506000300000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        8,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D506000400000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D506000500000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        4,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D506000600000",
+      "chapter": "Endgame Roadmap",
+      "position": [
+        8,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D302000400001",
+      "chapter": "Skills & Advancement",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D507000100000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000200000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        4,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000300000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        8,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000400000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000500000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        4,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000600000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        8,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D507000700000",
+      "chapter": "Skills & Advancement",
+      "position": [
+        0,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D302000500001",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D508000100000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        4,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000200000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000300000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000400000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000500000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000600000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000700000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000800000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000900000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000A00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000B00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000C00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000D00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000E00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508000F00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001000000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001100000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        18
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001200000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        21
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001300000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001400000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        22
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001500000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001600000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001700000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001800000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001900000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        32
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001A00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        32
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001B00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        0,
+        38
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001C00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        3,
+        38
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001D00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        38
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001E00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        38
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508001F00000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        9,
+        42
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D508002000000",
+      "chapter": "Exceptional Power: Reactors",
+      "position": [
+        6,
+        42
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D303000100001",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000200001",
+      "chapter": "Astral Sorcery",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000300001",
+      "chapter": "Botania Revived",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000400001",
+      "chapter": "Eidolon: Repraised",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000500001",
+      "chapter": "Enchanted: Witchcraft",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000600001",
+      "chapter": "EvilCraft",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000700001",
+      "chapter": "Forbidden & Arcanus",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000800001",
+      "chapter": "Goety",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000900001",
+      "chapter": "Hex Casting",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000A00001",
+      "chapter": "Hexerei",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000B00001",
+      "chapter": "Iron's Spells 'n Spellbooks",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000C00001",
+      "chapter": "Mahou Tsukai",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000D00001",
+      "chapter": "Malum",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000E00001",
+      "chapter": "Neo Vitae",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303000F00001",
+      "chapter": "Occultism",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001000001",
+      "chapter": "Pastel",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001100001",
+      "chapter": "Primal Magick",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001200001",
+      "chapter": "Psi",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001300001",
+      "chapter": "Roots Classic",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001400001",
+      "chapter": "Scriptor Magicae",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001500001",
+      "chapter": "Theurgy",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001600001",
+      "chapter": "Totemic",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001700001",
+      "chapter": "Just Another Witchery Remake",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001800001",
+      "chapter": "Embers Re-Ignited",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D303001900001",
+      "chapter": "Reliquary Reincarnations",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000100001",
+      "chapter": "L_Ender's Cataclysm",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000200001",
+      "chapter": "Deeper and Darker",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000300001",
+      "chapter": "Gateways to Eternity",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000400001",
+      "chapter": "Feywild",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000500001",
+      "chapter": "Apotheosis",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000600001",
+      "chapter": "Artifacts",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000700001",
+      "chapter": "Enigmatic Legacy+",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000800001",
+      "chapter": "Vampirism",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D304000900001",
+      "chapter": "Werewolves",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D305000100001",
+      "chapter": "Draconic Evolution",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D305000200001",
+      "chapter": "ProjectE",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    },
+    {
+      "quest_id": "544D305000300001",
+      "chapter": "Replication",
+      "position": [
+        0,
+        0
+      ],
+      "authored": false
+    }
+  ]
+}

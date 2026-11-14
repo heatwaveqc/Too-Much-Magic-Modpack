@@ -13,17 +13,12 @@
 		{
 			id: "544D303001900001"
 			icon: { id: "minecraft:ghast_tear" }
-			title: "Chapter Overview"
-			description: [
-				"Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D903001900001", type: "xp", xp: 2 }
 				{ id: "544DA03001900002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D403001900001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter."
-	title: "Reliquary Reincarnations"
 }

@@ -13,11 +13,6 @@
 		{
 			id: "544D301000200001"
 			icon: { id: "minecraft:book" }
-			title: "Tips & Tricks Index"
-			description: [
-				"These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000100001", type: "xp", xp: 5 }
@@ -26,17 +21,12 @@
 			tasks: [
 				{ id: "544D401000200001", type: "checkmark" }
 			]
-			x: -2.0d
-			y: -2.0d
+			x: 0.0d
+			y: 0.0d
 		}
 		{
 			id: "544D502000200000"
 			icon: { id: "minecraft:book" }
-			title: "Find Recipes with JEI"
-			description: [
-				"Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000200001", type: "xp", xp: 5 }
@@ -46,16 +36,11 @@
 				{ id: "544D802000200000", type: "checkmark" }
 			]
 			x: 0.0d
-			y: 0.0d
+			y: 4.0d
 		}
 		{
 			id: "544D502000300000"
 			icon: { id: "minecraft:book" }
-			title: "Identify Blocks with Jade"
-			description: [
-				"Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000300001", type: "xp", xp: 5 }
@@ -64,17 +49,12 @@
 			tasks: [
 				{ id: "544D802000300000", type: "checkmark" }
 			]
-			x: 2.0d
-			y: 0.0d
+			x: 3.0d
+			y: 4.0d
 		}
 		{
 			id: "544D502000400000"
 			icon: { id: "minecraft:book" }
-			title: "Sort Your Inventory"
-			description: [
-				"Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000400001", type: "xp", xp: 5 }
@@ -83,17 +63,12 @@
 			tasks: [
 				{ id: "544D802000400000", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 0.0d
+			x: 6.0d
+			y: 4.0d
 		}
 		{
 			id: "544D502000500000"
 			icon: { id: "minecraft:book" }
-			title: "Use Crafting Tweaks"
-			description: [
-				"Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000500001", type: "xp", xp: 5 }
@@ -102,17 +77,12 @@
 			tasks: [
 				{ id: "544D802000500000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 0.0d
+			x: 9.0d
+			y: 4.0d
 		}
 		{
 			id: "544D502000600000"
 			icon: { id: "minecraft:book" }
-			title: "Search the Controls Screen"
-			description: [
-				"Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000600001", type: "xp", xp: 5 }
@@ -121,17 +91,12 @@
 			tasks: [
 				{ id: "544D802000600000", type: "checkmark" }
 			]
-			x: 8.0d
-			y: 0.0d
+			x: 12.0d
+			y: 4.0d
 		}
 		{
 			id: "544D502000700000"
 			icon: { id: "minecraft:book" }
-			title: "Gather Your Guidebooks"
-			description: [
-				"Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000700001", type: "xp", xp: 5 }
@@ -141,16 +106,11 @@
 				{ id: "544D802000700000", type: "checkmark" }
 			]
 			x: 0.0d
-			y: 2.0d
+			y: 8.0d
 		}
 		{
 			id: "544D502000800000"
 			icon: { id: "minecraft:book" }
-			title: "Curios and Portable Bags"
-			description: [
-				"Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000800001", type: "xp", xp: 5 }
@@ -159,17 +119,12 @@
 			tasks: [
 				{ id: "544D802000800000", type: "checkmark" }
 			]
-			x: 2.0d
-			y: 2.0d
+			x: 3.0d
+			y: 8.0d
 		}
 		{
 			id: "544D502000900000"
 			icon: { id: "minecraft:book" }
-			title: "Claim Your Base"
-			description: [
-				"Use FTB Chunks to claim an area around your base. Chunk loading depends on server settings; protection and backups solve different problems."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000900001", type: "xp", xp: 5 }
@@ -178,17 +133,12 @@
 			tasks: [
 				{ id: "544D802000900000", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 2.0d
+			x: 6.0d
+			y: 8.0d
 		}
 		{
 			id: "544D502000A00000"
 			icon: { id: "minecraft:book" }
-			title: "Understand Lootr Chests"
-			description: [
-				"Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000A00001", type: "xp", xp: 5 }
@@ -197,17 +147,12 @@
 			tasks: [
 				{ id: "544D802000A00000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 2.0d
+			x: 9.0d
+			y: 8.0d
 		}
 		{
 			id: "544D502000B00000"
 			icon: { id: "minecraft:book" }
-			title: "Plan for Death"
-			description: [
-				"Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000B00001", type: "xp", xp: 5 }
@@ -216,17 +161,12 @@
 			tasks: [
 				{ id: "544D802000B00000", type: "checkmark" }
 			]
-			x: 8.0d
-			y: 2.0d
+			x: 12.0d
+			y: 8.0d
 		}
 		{
 			id: "544D502000C00000"
 			icon: { id: "minecraft:book" }
-			title: "Search Biomes"
-			description: [
-				"Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000C00001", type: "xp", xp: 5 }
@@ -236,16 +176,11 @@
 				{ id: "544D802000C00000", type: "checkmark" }
 			]
 			x: 0.0d
-			y: 4.0d
+			y: 12.0d
 		}
 		{
 			id: "544D502000D00000"
 			icon: { id: "minecraft:book" }
-			title: "Resolve Recipe Conflicts"
-			description: [
-				"Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000D00001", type: "xp", xp: 5 }
@@ -254,17 +189,12 @@
 			tasks: [
 				{ id: "544D802000D00000", type: "checkmark" }
 			]
-			x: 2.0d
-			y: 4.0d
+			x: 3.0d
+			y: 12.0d
 		}
 		{
 			id: "544D502000E00000"
 			icon: { id: "minecraft:book" }
-			title: "Understand Character Growth"
-			description: [
-				"Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000E00001", type: "xp", xp: 5 }
@@ -273,17 +203,12 @@
 			tasks: [
 				{ id: "544D802000E00000", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 4.0d
+			x: 6.0d
+			y: 12.0d
 		}
 		{
 			id: "544D502000F00000"
 			icon: { id: "minecraft:book" }
-			title: "Zoom and Overlay Controls"
-			description: [
-				"Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."
-				"Read this entry and mark it complete with the checkmark. Informational quests deliberately use separate manual tasks."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602000F00001", type: "xp", xp: 5 }
@@ -292,15 +217,11 @@
 			tasks: [
 				{ id: "544D802000F00000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 4.0d
+			x: 9.0d
+			y: 12.0d
 		}
 		{
 			id: "544D502001000000"
-			title: "Use the Quest Shop"
-			description: [
-				"Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."
-			]
 			icon: { id: "minecraft:emerald" }
 			optional: true
 			rewards: [
@@ -308,16 +229,12 @@
 				{ id: "544D702001000002", type: "item", item: { id: "minecraft:clock", count: 1 }, count: 1 }
 			]
 			tasks: [{ id: "544D802001000000", type: "checkmark" }]
-			x: 12.00d
-			y: 4.00d
+			x: 12.0d
+			y: 12.0d
 		}
 		{
 			id: "544D502001100000"
 			icon: { id: "minecraft:enchanted_book" }
-			title: "Smelt Without Fuel: Scriptor Lectern"
-			description: [
-				"Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602001100001", type: "xp", xp: 15 }
@@ -327,15 +244,11 @@
 				{ id: "544D802001100000", type: "checkmark" }
 			]
 			x: 0.0d
-			y: 0.0d
+			y: 17.0d
 		}
 		{
 			id: "544D502001200000"
 			icon: { id: "minecraft:enchanted_book" }
-			title: "Double Raw Ore: Occultism or Mahou?"
-			description: [
-				"Occultism's early Foliot Crusher turns supported raw ores into two dusts after its first spirit ritual; confirm that these dusts smelt in our pack. Mahou Tsukai's Mortar and Pestle presently produces two catalyst powders from ingots/gems, NOT two smeltable ingots from one raw ore. Our planned ore/dust unification is separate unfinished compatibility work. The cursed EvilCraft Vengeance Pickaxe boosts mined drops through Fortune instead of doubling furnace input."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602001200001", type: "xp", xp: 15 }
@@ -344,16 +257,12 @@
 			tasks: [
 				{ id: "544D802001200000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 0.0d
+			x: 3.0d
+			y: 17.0d
 		}
 		{
 			id: "544D502001300000"
 			icon: { id: "minecraft:enchanted_book" }
-			title: "Need Early Flight? Compare Brooms"
-			description: [
-				"EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602001300001", type: "xp", xp: 10 }
@@ -362,16 +271,12 @@
 			tasks: [
 				{ id: "544D802001300000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 0.0d
+			x: 6.0d
+			y: 17.0d
 		}
 		{
 			id: "544D502001400000"
 			icon: { id: "minecraft:enchanted_book" }
-			title: "Vengeance Pickaxe: Fortune with a Price"
-			description: [
-				"EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D602001400001", type: "xp", xp: 15 }
@@ -380,10 +285,8 @@
 			tasks: [
 				{ id: "544D802001400000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 0.0d
+			x: 9.0d
+			y: 17.0d
 		}
 	]
-	subtitle: "Controls, guidebooks, death recovery, inventories, maps, claims, tools and overlooked interactions. Browsable reference, not mandatory tasks."
-	title: "Tips & Tricks"
 }

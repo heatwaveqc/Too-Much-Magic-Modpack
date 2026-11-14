@@ -13,17 +13,12 @@
 		{
 			id: "544D303000900001"
 			icon: { id: "minecraft:amethyst_cluster" }
-			title: "Chapter Overview"
-			description: [
-				"Patterns, spell programming, media and artifacts."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D903000900001", type: "xp", xp: 2 }
 				{ id: "544DA03000900002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D403000900001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Patterns, spell programming, media and artifacts."
-	title: "Hex Casting"
 }

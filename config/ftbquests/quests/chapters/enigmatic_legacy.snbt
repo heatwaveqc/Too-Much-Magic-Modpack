@@ -13,17 +13,12 @@
 		{
 			id: "544D304000700001"
 			icon: { id: "minecraft:totem_of_undying" }
-			title: "Chapter Overview"
-			description: [
-				"Curios, hidden challenges, unique equipment and consequences."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D904000700001", type: "xp", xp: 2 }
 				{ id: "544DA04000700002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D404000700001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Curios, hidden challenges, unique equipment and consequences."
-	title: "Enigmatic Legacy+"
 }

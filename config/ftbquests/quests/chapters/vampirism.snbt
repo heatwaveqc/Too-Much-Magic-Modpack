@@ -13,17 +13,12 @@
 		{
 			id: "544D304000800001"
 			icon: { id: "minecraft:fermented_spider_eye" }
-			title: "Chapter Overview"
-			description: [
-				"Vampire/hunter factions and progression; unified transformation rules crosslink."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D904000800001", type: "xp", xp: 2 }
 				{ id: "544DA04000800002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D404000800001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Vampire/hunter factions and progression; unified transformation rules crosslink."
-	title: "Vampirism"
 }

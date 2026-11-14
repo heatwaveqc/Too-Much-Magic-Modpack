@@ -13,17 +13,12 @@
 		{
 			id: "544D302000100001"
 			icon: { id: "minecraft:crafting_table" }
-			title: "Chapter Overview"
-			description: [
-				"General survival, earliest magic entry paths, storage, materials and choice of specialties."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D902000100001", type: "xp", xp: 2 }
 				{ id: "544DA02000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D402000100001", type: "checkmark" }
 			]
@@ -32,10 +27,6 @@
 		}
 		{
 			id: "544D504000100000"
-			title: "Sell Copper I — First Trade"
-			description: [
-				"Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:copper_ingot" }
 			optional: true
 			rewards: [
@@ -43,15 +34,11 @@
 				{ id: "544D704000100002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000100000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
-			x: 2.00d
-			y: 2.00d
+			x: 0.0d
+			y: 14.0d
 		}
 		{
 			id: "544D504000200000"
-			title: "Sell Copper II — Regular Buyer"
-			description: [
-				"Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:copper_ingot" }
 			dependencies: ["544D504000100000"]
 			optional: true
@@ -60,15 +47,11 @@
 				{ id: "544D704000200002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000200000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 32L, consume_items: true, task_screen_only: false }]
-			x: 3.25d
-			y: 2.00d
+			x: 3.0d
+			y: 14.0d
 		}
 		{
 			id: "544D504000300000"
-			title: "Sell Copper III — Packed Shipment"
-			description: [
-				"Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:copper_block" }
 			dependencies: ["544D504000200000"]
 			optional: true
@@ -77,15 +60,11 @@
 				{ id: "544D704000300002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000300000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
-			x: 4.50d
-			y: 2.00d
+			x: 6.0d
+			y: 14.0d
 		}
 		{
 			id: "544D504000400000"
-			title: "Sell Copper IV — Industrial Exchange"
-			description: [
-				"Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."
-			]
 			icon: { id: "minecraft:copper_block" }
 			dependencies: ["544D504000300000"]
 			optional: true
@@ -96,15 +75,11 @@
 				{ id: "544D704000400002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000400000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 256L, consume_items: true, task_screen_only: false }]
-			x: 5.75d
-			y: 2.00d
+			x: 9.0d
+			y: 14.0d
 		}
 		{
 			id: "544D504000500000"
-			title: "Sell Emeralds I — First Trade"
-			description: [
-				"Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:emerald" }
 			optional: true
 			rewards: [
@@ -112,15 +87,11 @@
 				{ id: "544D704000500002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000500000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 2L, consume_items: true, task_screen_only: false }]
-			x: 6.00d
-			y: 5.00d
+			x: 0.0d
+			y: 18.0d
 		}
 		{
 			id: "544D504000600000"
-			title: "Sell Emeralds II — Regular Buyer"
-			description: [
-				"Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:emerald" }
 			dependencies: ["544D504000500000"]
 			optional: true
@@ -129,15 +100,11 @@
 				{ id: "544D704000600002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000600000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
-			x: 7.25d
-			y: 5.00d
+			x: 3.0d
+			y: 18.0d
 		}
 		{
 			id: "544D504000700000"
-			title: "Sell Emeralds III — Packed Shipment"
-			description: [
-				"Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:emerald_block" }
 			dependencies: ["544D504000600000"]
 			optional: true
@@ -146,15 +113,11 @@
 				{ id: "544D704000700002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000700000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
-			x: 8.50d
-			y: 5.00d
+			x: 6.0d
+			y: 18.0d
 		}
 		{
 			id: "544D504000800000"
-			title: "Sell Emeralds IV — Industrial Exchange"
-			description: [
-				"Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."
-			]
 			icon: { id: "minecraft:emerald_block" }
 			dependencies: ["544D504000700000"]
 			optional: true
@@ -165,15 +128,11 @@
 				{ id: "544D704000800002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000800000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 128L, consume_items: true, task_screen_only: false }]
-			x: 9.75d
-			y: 5.00d
+			x: 9.0d
+			y: 18.0d
 		}
 		{
 			id: "544D504000900000"
-			title: "Sell Diamonds I — First Trade"
-			description: [
-				"Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:diamond" }
 			optional: true
 			rewards: [
@@ -181,15 +140,11 @@
 				{ id: "544D704000900002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000900000", type: "item", item: { id: "minecraft:diamond", count: 1 }, consume_items: true, task_screen_only: false }]
-			x: 10.00d
-			y: 8.00d
+			x: 0.0d
+			y: 22.0d
 		}
 		{
 			id: "544D504000A00000"
-			title: "Sell Diamonds II — Regular Buyer"
-			description: [
-				"Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:diamond" }
 			dependencies: ["544D504000900000"]
 			optional: true
@@ -198,15 +153,11 @@
 				{ id: "544D704000A00002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000A00000", type: "item", item: { id: "minecraft:diamond", count: 1 }, count: 4L, consume_items: true, task_screen_only: false }]
-			x: 11.25d
-			y: 8.00d
+			x: 3.0d
+			y: 22.0d
 		}
 		{
 			id: "544D504000B00000"
-			title: "Sell Diamonds III — Packed Shipment"
-			description: [
-				"Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."
-			]
 			icon: { id: "minecraft:diamond_block" }
 			dependencies: ["544D504000A00000"]
 			optional: true
@@ -215,15 +166,11 @@
 				{ id: "544D704000B00002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000B00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
-			x: 12.50d
-			y: 8.00d
+			x: 6.0d
+			y: 22.0d
 		}
 		{
 			id: "544D504000C00000"
-			title: "Sell Diamonds IV — Industrial Exchange"
-			description: [
-				"Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."
-			]
 			icon: { id: "minecraft:diamond_block" }
 			dependencies: ["544D504000B00000"]
 			optional: true
@@ -234,16 +181,12 @@
 				{ id: "544D704000C00002", type: "questshop:coins", amount: 1, team: true }
 			]
 			tasks: [{ id: "544D804000C00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 64L, consume_items: true, task_screen_only: false }]
-			x: 13.75d
-			y: 8.00d
+			x: 9.0d
+			y: 22.0d
 		}
 		{
 			id: "544D504000D00000"
 			icon: { id: "minecraft:amethyst_shard" }
-			title: "Choose a Magical Tradition"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D604000D00001", type: "xp", xp: 15 }
@@ -252,16 +195,12 @@
 			tasks: [
 				{ id: "544D804000D00000", type: "checkmark" }
 			]
-			x: 2.00d
-			y: 12.00d
+			x: 3.0d
+			y: 0.0d
 		}
 		{
 			id: "544D504000E00000"
 			icon: { id: "minecraft:raw_copper" }
-			title: "Secure Some Copper"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604000E00001", type: "xp", xp: 15 }
 				{ id: "544D704000E00002", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 8 }
@@ -269,16 +208,12 @@
 			tasks: [
 				{ id: "544D804000E00000", type: "item", item: { id: "minecraft:raw_copper", count: 1 }, count: 8L }
 			]
-			x: 4.30d
-			y: 12.00d
+			x: 0.0d
+			y: 4.0d
 		}
 		{
 			id: "544D504000F00000"
 			icon: { id: "minecraft:raw_gold" }
-			title: "Prospect for Gold"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604000F00001", type: "xp", xp: 20 }
 				{ id: "544D704000F00002", type: "item", item: { id: "minecraft:coal", count: 1 }, count: 4 }
@@ -286,16 +221,12 @@
 			tasks: [
 				{ id: "544D804000F00000", type: "item", item: { id: "minecraft:raw_gold", count: 1 }, count: 4L }
 			]
-			x: 6.60d
-			y: 12.00d
+			x: 3.0d
+			y: 4.0d
 		}
 		{
 			id: "544D504001000000"
 			icon: { id: "minecraft:lapis_lazuli" }
-			title: "Learn to Recognize Lapis"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001000001", type: "xp", xp: 15 }
 				{ id: "544D704001000002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
@@ -303,16 +234,12 @@
 			tasks: [
 				{ id: "544D804001000000", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 8L }
 			]
-			x: 8.90d
-			y: 12.00d
+			x: 6.0d
+			y: 4.0d
 		}
 		{
 			id: "544D504001100000"
 			icon: { id: "minecraft:amethyst_shard" }
-			title: "Collect Amethyst"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001100001", type: "xp", xp: 20 }
 				{ id: "544D704001100002", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 8 }
@@ -320,16 +247,12 @@
 			tasks: [
 				{ id: "544D804001100000", type: "item", item: { id: "minecraft:amethyst_shard", count: 1 }, count: 8L }
 			]
-			x: 11.20d
-			y: 12.00d
+			x: 9.0d
+			y: 4.0d
 		}
 		{
 			id: "544D504001200000"
 			icon: { id: "minecraft:water_bucket" }
-			title: "Bring a Water Bucket"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001200001", type: "xp", xp: 10 }
 				{ id: "544D704001200002", type: "item", item: { id: "minecraft:glass_bottle", count: 1 }, count: 2 }
@@ -337,16 +260,12 @@
 			tasks: [
 				{ id: "544D804001200000", type: "item", item: { id: "minecraft:water_bucket", count: 1 } }
 			]
-			x: 2.00d
-			y: 14.40d
+			x: 12.0d
+			y: 4.0d
 		}
 		{
 			id: "544D504001300000"
 			icon: { id: "minecraft:shield" }
-			title: "Defend Yourself"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001300001", type: "xp", xp: 15 }
 				{ id: "544D704001300002", type: "item", item: { id: "minecraft:arrow", count: 1 }, count: 16 }
@@ -354,16 +273,12 @@
 			tasks: [
 				{ id: "544D804001300000", type: "item", item: { id: "minecraft:shield", count: 1 } }
 			]
-			x: 4.30d
-			y: 14.40d
+			x: 0.0d
+			y: 8.0d
 		}
 		{
 			id: "544D504001400000"
 			icon: { id: "minecraft:diamond_pickaxe" }
-			title: "Upgrade to Diamond Mining"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001400001", type: "xp", xp: 35 }
 				{ id: "544D704001400002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 2 }
@@ -371,16 +286,12 @@
 			tasks: [
 				{ id: "544D804001400000", type: "item", item: { id: "minecraft:diamond_pickaxe", count: 1 } }
 			]
-			x: 6.60d
-			y: 14.40d
+			x: 3.0d
+			y: 8.0d
 		}
 		{
 			id: "544D504001500000"
 			icon: { id: "minecraft:blaze_rod" }
-			title: "Reach the Nether for Ingredients"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001500001", type: "xp", xp: 30 }
 				{ id: "544D704001500002", type: "item", item: { id: "minecraft:nether_wart", count: 1 }, count: 4 }
@@ -388,16 +299,12 @@
 			tasks: [
 				{ id: "544D804001500000", type: "item", item: { id: "minecraft:blaze_rod", count: 1 } }
 			]
-			x: 8.90d
-			y: 14.40d
+			x: 6.0d
+			y: 8.0d
 		}
 		{
 			id: "544D504001600000"
 			icon: { id: "minecraft:ender_pearl" }
-			title: "Gather Ender Pearls"
-			description: [
-				undefined
-			]
 			rewards: [
 				{ id: "544D604001600001", type: "xp", xp: 35 }
 				{ id: "544D704001600002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
@@ -405,10 +312,8 @@
 			tasks: [
 				{ id: "544D804001600000", type: "item", item: { id: "minecraft:ender_pearl", count: 1 }, count: 4L }
 			]
-			x: 11.20d
-			y: 14.40d
+			x: 9.0d
+			y: 8.0d
 		}
 	]
-	subtitle: "General survival, earliest magic entry paths, storage, materials and choice of specialties."
-	title: "Basic Progression"
 }

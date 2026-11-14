@@ -13,17 +13,12 @@
 		{
 			id: "544D303000700001"
 			icon: { id: "minecraft:crying_obsidian" }
-			title: "Chapter Overview"
-			description: [
-				"Arcane items, rituals, crafting and world-specific acquisitions."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D903000700001", type: "xp", xp: 2 }
 				{ id: "544DA03000700002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D403000700001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Arcane items, rituals, crafting and world-specific acquisitions."
-	title: "Forbidden & Arcanus"
 }

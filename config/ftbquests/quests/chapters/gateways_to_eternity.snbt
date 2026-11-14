@@ -13,17 +13,12 @@
 		{
 			id: "544D304000300001"
 			icon: { id: "minecraft:ender_eye" }
-			title: "Chapter Overview"
-			description: [
-				"Summoned combat arenas and repeatable encounters; balance mob drop farming."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D904000300001", type: "xp", xp: 2 }
 				{ id: "544DA04000300002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D404000300001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Summoned combat arenas and repeatable encounters; balance mob drop farming."
-	title: "Gateways to Eternity"
 }

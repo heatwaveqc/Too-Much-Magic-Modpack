@@ -13,17 +13,12 @@
 		{
 			id: "544D302000300001"
 			icon: { id: "minecraft:ender_eye" }
-			title: "Chapter Overview"
-			description: [
-				"Overview of boss/late-resource requirements and links into the dedicated Endgame category; do not duplicate Endgame quests or rewards."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D902000300001", type: "xp", xp: 2 }
 				{ id: "544DA02000300002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D402000300001", type: "checkmark" }
 			]
@@ -33,10 +28,6 @@
 		{
 			id: "544D506000100000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: Read Before the Endgame"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000100001", type: "xp", xp: 10 }
@@ -45,16 +36,12 @@
 			tasks: [
 				{ id: "544D806000100000", type: "checkmark" }
 			]
-			x: 2.00d
-			y: 2.00d
+			x: 0.0d
+			y: 4.0d
 		}
 		{
 			id: "544D506000200000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: The End and Draconic Materials"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000200001", type: "xp", xp: 10 }
@@ -63,16 +50,12 @@
 			tasks: [
 				{ id: "544D806000200000", type: "checkmark" }
 			]
-			x: 5.00d
-			y: 2.00d
+			x: 4.0d
+			y: 4.0d
 		}
 		{
 			id: "544D506000300000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: Cataclysm Boss Resources"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000300001", type: "xp", xp: 10 }
@@ -81,16 +64,12 @@
 			tasks: [
 				{ id: "544D806000300000", type: "checkmark" }
 			]
-			x: 8.00d
-			y: 2.00d
+			x: 8.0d
+			y: 4.0d
 		}
 		{
 			id: "544D506000400000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: Occultism's Final Miner"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000400001", type: "xp", xp: 10 }
@@ -99,16 +78,12 @@
 			tasks: [
 				{ id: "544D806000400000", type: "checkmark" }
 			]
-			x: 2.00d
-			y: 4.60d
+			x: 0.0d
+			y: 8.0d
 		}
 		{
 			id: "544D506000500000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: Chaos Guardian as the Gate"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000500001", type: "xp", xp: 10 }
@@ -117,16 +92,12 @@
 			tasks: [
 				{ id: "544D806000500000", type: "checkmark" }
 			]
-			x: 5.00d
-			y: 4.60d
+			x: 4.0d
+			y: 8.0d
 		}
 		{
 			id: "544D506000600000"
 			icon: { id: "minecraft:filled_map" }
-			title: "Roadmap: What Unlocks Afterwards"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D606000600001", type: "xp", xp: 10 }
@@ -135,10 +106,8 @@
 			tasks: [
 				{ id: "544D806000600000", type: "checkmark" }
 			]
-			x: 8.00d
-			y: 4.60d
+			x: 8.0d
+			y: 8.0d
 		}
 	]
-	subtitle: "Overview of boss/late-resource requirements and links into the dedicated Endgame category; do not duplicate Endgame quests or rewards."
-	title: "Endgame Roadmap"
 }

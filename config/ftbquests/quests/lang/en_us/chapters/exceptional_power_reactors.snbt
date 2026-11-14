@@ -1,0 +1,68 @@
+{
+	quest.544D302000500001.title: "Chapter Overview"
+	quest.544D302000500001.quest_desc: ["An introduction to Exceptional Power: Reactors in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
+	quest.544D508000100000.quest_desc: ["Too Much Magic deliberately limits its industrial ecosystem. BiggerReactors Rework provides nuclear generation, its own battery, turbines and processor. Draconic Evolution provides generators, FE routing, the expandable Energy Core bank and later the high-risk Draconic Reactor. There is no Create, AE2 or generic FE transport mod."]
+	quest.544D508000200000.title: "Read the Reactor Guide"
+	quest.544D508000200000.quest_desc: ["Craft BiggerReactors Rework's Reactor Guide and consult its current build diagrams, calculator and materials pages. This particular 1.21.1 rework has its own machine and fuel behavior; don't blindly follow older Big Reactors measurements."]
+	quest.544D508000300000.title: "Prepare Uranium Fuel"
+	quest.544D508000300000.quest_desc: ["Obtain two uranium ingots from the allowed deep exploration or mining route, then check the Reactor Guide's fuel handling. The stricter uranium distribution envisioned for this pack is not implemented merely by writing this quest."]
+	quest.544D508000400000.title: "Prepare Graphite Moderators"
+	quest.544D508000400000.quest_desc: ["Acquire four graphite ingots. Graphite can be used as a reactor moderator and several machine components. The exact build should follow BiggerReactors Rework's in-game Reactor Guide and JEI."]
+	quest.544D508000500000.title: "Lay the Reactor Casing"
+	quest.544D508000500000.quest_desc: ["Craft at least eight Reactor Casings. Reactor frames require casing edges and corners; some wall/roof faces can use Reactor Glass. The machine must form a closed rectangular shell; verify the valid dimensions in the guide."]
+	quest.544D508000600000.title: "Set Up Fuel Rods"
+	quest.544D508000600000.quest_desc: ["Craft two Reactor Fuel Rods. Inside the shell, fuel columns must run continuously from floor toward roof. Each column is topped by its own Reactor Control Rod in the roof; no gaps are permitted."]
+	quest.544D508000700000.title: "Install a Control Rod"
+	quest.544D508000700000.quest_desc: ["Make a Reactor Control Rod for the top of a fuel column. Greater rod insertion reduces reaction rate; start conservatively, then adjust for efficient FE and fuel consumption."]
+	quest.544D508000800000.title: "Add the Reactor Terminal"
+	quest.544D508000800000.quest_desc: ["Craft the Reactor Terminal and install it in an exterior face. Use its GUI to see assembly errors, temperatures, waste, power output and rod-control state; it is the principal machine panel."]
+	quest.544D508000900000.title: "Fit the Fuel Access Port"
+	quest.544D508000900000.quest_desc: ["Make an Access Port. Feed uranium fuel and remove cyanite waste through correctly configured ports. Do not confuse the input and output settings, especially when automating."]
+	quest.544D508000A00000.title: "Fit the FE Power Tap"
+	quest.544D508000A00000.quest_desc: ["Craft a Power Tap and install it on the exterior. Passive reactors export FE through taps; coolant-cooled designs use coolant ports instead and require a different, deliberate setup."]
+	quest.544D508000B00000.title: "Assemble and Start a Bigger Reactor"
+	quest.544D508000B00000.quest_desc: ["Build a closed casing shell with the terminal, fuel rod columns topped by control rods, fuel access and an FE output. Open the terminal, correct assembly errors, add fuel, connect an energy consumer/bank, then start at low output. Check FE production, heat and fuel usage yourself before marking complete."]
+	quest.544D508000C00000.title: "Recover Cyanite Waste"
+	quest.544D508000C00000.quest_desc: ["Retrieve cyanite from a running reactor's waste. This is a useful byproduct rather than just a loss; the mod includes an industrial processing pathway."]
+	quest.544D508000D00000.title: "Build the Industrial Processor"
+	quest.544D508000D00000.quest_desc: ["Craft the Industrial Processor to explore cyanite reprocessing into higher-tier nuclear materials. Check the actual input, water and FE requirements in the machine UI and JEI; do not assume automatic material recycling without connections."]
+	quest.544D508000E00000.title: "Build a Battery Shell"
+	quest.544D508000E00000.quest_desc: ["Craft eight Battery Casings. Rework's optional rectangular battery uses casing on every frame edge and corner; glass can fill eligible exterior faces. This is a smaller FE storage option distinct from the enormous Draconic Energy Core."]
+	quest.544D508000F00000.title: "Install Battery Cells"
+	quest.544D508000F00000.quest_desc: ["Obtain four Battery Cells. Place them within the rectangular shell. Cells define stored energy and per-tick input/output throughput, and charged cells retain their energy when moved."]
+	quest.544D508001000000.title: "Install the Battery Terminal"
+	quest.544D508001000000.quest_desc: ["Craft a Battery Terminal. It displays charge and transfer; the machine needs at least one cell, a terminal, and two Energy Ports to assemble."]
+	quest.544D508001100000.title: "Give the Battery Two Ports"
+	quest.544D508001100000.quest_desc: ["Craft at least two Battery Energy Ports. Once assembled, configure one as FE input and one as FE output; the wrench and port UI control direction."]
+	quest.544D508001200000.title: "Operate the Nuclear Battery"
+	quest.544D508001200000.quest_desc: ["Finish the casing/cell/terminal/port structure, link reactor output to battery input and battery output to a consumer. Observe both charge and throughput. This operation is confirmed manually because the quest book has no actual FE telemetry task."]
+	quest.544D508001300000.title: "Try a Steam Turbine"
+	quest.544D508001300000.quest_desc: ["Optional advanced nuclear branch: the turbine needs a closed casing, two bearings, a continuous shaft, rotor blades, appropriate coils and correctly configured fluid/power ports. Use the Rework guide for accepted coils and fluid loops."]
+	quest.544D508001400000.title: "Try a Heat Exchanger"
+	quest.544D508001400000.quest_desc: ["Optional infrastructure for coolant/steam loops. Build a valid heat-exchanger structure and connect the flows according to Rework's current guide; it is not needed for a basic passive FE reactor."]
+	quest.544D508001500000.title: "Craft a Draconic Generator"
+	quest.544D508001500000.quest_desc: ["Draconic Evolution supplies a basic generator for starting its FE network. This path can be explored independently of nuclear generation; JEI confirms the fuel and exact recipe in this installed build."]
+	quest.544D508001600000.title: "Craft the Draconic Energy Core"
+	quest.544D508001600000.quest_desc: ["Craft the Energy Core block. It is the center of a multiblock FE storage bank, not the unstable power-producing Draconic Reactor Core. Pick a protected site and keep your generation and storage separate."]
+	quest.544D508001700000.title: "Prepare Energy Core Stabilizers"
+	quest.544D508001700000.quest_desc: ["Craft four Energy Core Stabilizers. Arrange them symmetrically in a single plane outside the desired spherical core shell. Larger storage tiers need additional structural blocks; check the in-game Build Guide for each tier."]
+	quest.544D508001800000.title: "Build Input and Output Pylons"
+	quest.544D508001800000.quest_desc: ["Craft two Energy Pylons, one for charging and another for discharge. Link them to the Energy Core as the actual FE input/output interface; configure each direction separately in the installed build."]
+	quest.544D508001900000.title: "Activate the Draconic Power Bank"
+	quest.544D508001900000.quest_desc: ["Assemble the Energy Core and four stabilizers, consult the core's Build Guide and tier controls, activate the completed structure, and configure one pylon as input and another as output. Connect a source and consumer; verify stored FE increases and decreases. Never dismantle a charged core without first checking loss behavior."]
+	quest.544D508001A00000.title: "Route FE with a Crystal"
+	quest.544D508001A00000.quest_desc: ["Craft a Basic Energy I/O Crystal. Draconic Evolution's crystal networking is the pack's intended FE transfer solution, with relay and wireless variants for more complex layouts. Configure input/output direction before connecting machines."]
+	quest.544D508001B00000.title: "Regulate Power with a Flux Gate"
+	quest.544D508001B00000.quest_desc: ["Build a Flux Gate for controlled FE throughput. A Draconic Reactor needs controlled power delivery and extraction rather than an unrestricted connection, and its safety should be tested in a disposable world."]
+	quest.544D508001C00000.title: "Acquire the Draconic Reactor Core"
+	quest.544D508001C00000.quest_desc: ["Craft the Draconic Reactor Core—the high-output, high-risk FE generator. Inspect its *exact installed recipe*: it may require Chaos Shards or other resources that can only be acquired after the Guardian, and this quest does not grant or bypass those materials."]
+	quest.544D508001D00000.title: "Four Reactor Stabilizers"
+	quest.544D508001D00000.quest_desc: ["Craft four Reactor Stabilizers and arrange them around the Draconic Reactor Core with unobstructed line of sight at the proper spacing for this version. These maintain the containment field; they are *not* Energy Core Stabilizers."]
+	quest.544D508001E00000.title: "Build the Reactor Energy Injector"
+	quest.544D508001E00000.quest_desc: ["Craft the Reactor Energy Injector and ensure it can continuously supply FE to maintain the containment field during operation. Design independent field-power reserves and a safe shutdown path before attempting a start."]
+	quest.544D508001F00000.title: "Plan Safe Reactor Containment"
+	quest.544D508001F00000.quest_desc: ["On a disposable world, plan a remote reactor site away from your base and important chunks. Separate high-output extraction from containment-field input, add controlled Flux Gate paths and a sufficient battery buffer. A reactor field collapse or runaway heat can destroy the area; do not treat this as safe baseline generation."]
+	quest.544D508002000000.title: "Operate a Draconic Reactor Safely"
+	quest.544D508002000000.quest_desc: ["Only after the structure and sufficient fuel are assembled: monitor temperature, containment field strength, fuel conversion and energy saturation. Start with conservative settings, verify field power is sustained under peak load, and test emergency shutdown in an expendable world. This checkmark is a *manual safety acknowledgment*; it does not certify actual reactor telemetry."]
+}

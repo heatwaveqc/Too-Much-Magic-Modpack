@@ -13,17 +13,12 @@
 		{
 			id: "544D304000500001"
 			icon: { id: "minecraft:enchanted_golden_apple" }
-			title: "Chapter Overview"
-			description: [
-				"Affixes, enchanting, spawners and improved equipment; group closely coupled Apothic modules."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D904000500001", type: "xp", xp: 2 }
 				{ id: "544DA04000500002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D404000500001", type: "checkmark" }
 			]
@@ -31,6 +26,4 @@
 			y: 0.0d
 		}
 	]
-	subtitle: "Affixes, enchanting, spawners and improved equipment; group closely coupled Apothic modules."
-	title: "Apotheosis"
 }

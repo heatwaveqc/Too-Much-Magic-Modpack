@@ -1,0 +1,18 @@
+{
+	quest.544D302000400001.title: "Chapter Overview"
+	quest.544D302000400001.quest_desc: ["An introduction to Skills & Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D507000100000.title: "Read the Two Skill Systems"
+	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
+	quest.544D507000200000.title: "Open the Skill Interface"
+	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
+	quest.544D507000300000.title: "Understand Attributes"
+	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
+	quest.544D507000400000.title: "Experiment with Improvable Skills"
+	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
+	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
+	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
+	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
+	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
+	quest.544D507000700000.title: "Choose How to Specialize"
+	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
+}

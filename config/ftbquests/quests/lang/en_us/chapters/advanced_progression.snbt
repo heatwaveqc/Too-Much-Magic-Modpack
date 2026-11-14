@@ -1,0 +1,24 @@
+{
+	quest.544D302000200001.title: "Chapter Overview"
+	quest.544D302000200001.quest_desc: ["An introduction to Advanced Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D505000100000.title: "Map Out Your Infrastructure"
+	quest.544D505000100000.quest_desc: ["A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network."]
+	quest.544D505000200000.title: "Install an Enchanting Table"
+	quest.544D505000200000.quest_desc: ["Craft an enchanting table, add bookshelves when convenient, and compare enchantments to spellcasting upgrades. Apotheosis has deeper enchantment mechanics in its own chapter."]
+	quest.544D505000300000.title: "Bring an Anvil"
+	quest.544D505000300000.quest_desc: ["Craft an anvil for conventional repairs, naming, and combining compatible enchantments. This supplements magical equipment rather than replacing its unique upgrades."]
+	quest.544D505000400000.title: "Build a Brewing Stand"
+	quest.544D505000400000.quest_desc: ["Craft a brewing stand and explore potion recipes. Potion and herb-based systems also have specialized paths in Witchcraft, Hexerei and other chapters."]
+	quest.544D505000500000.title: "Build a Portal Reserve"
+	quest.544D505000500000.quest_desc: ["Bring ten obsidian for a safe portal or important construction work. Consider well-lit, protected portal sites; dimensions remain separate exploration branches."]
+	quest.544D505000600000.title: "Keep an Ender Chest"
+	quest.544D505000600000.quest_desc: ["Craft an Ender Chest for vanilla portable access to a personal inventory. Occultism remains the pack's featured expandable magical storage path, and generic item logistics networks remain excluded."]
+	quest.544D505000700000.title: "Recover Ancient Debris Products"
+	quest.544D505000700000.quest_desc: ["Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials."]
+	quest.544D505000800000.title: "Construct a Lodestone"
+	quest.544D505000800000.quest_desc: ["Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones."]
+	quest.544D505000900000.title: "Understand Summoning Rituals"
+	quest.544D505000900000.quest_desc: ["Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested."]
+	quest.544D505000A00000.title: "Prepare a Protected Ritual Chamber"
+	quest.544D505000A00000.quest_desc: ["Reserve sufficient space for multiblocks, separate hazardous machinery, and keep vulnerable farms and storage away from explosive experiments. This is a planning checkmark, not an automated claim that a structure exists."]
+}

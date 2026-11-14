@@ -13,17 +13,12 @@
 		{
 			id: "544D302000400001"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Chapter Overview"
-			description: [
-				"Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics."
-				"This is a provisional chapter overview. Actual objectives and rewards will be authored after the system is integrated."
-				"Mark this optional reference entry as read to receive a small amount of XP and one piece of paper; other chapters remain accessible."
-			]
 			optional: true
 			rewards: [
 				{ id: "544D902000400001", type: "xp", xp: 2 }
 				{ id: "544DA02000400002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D402000400001", type: "checkmark" }
 			]
@@ -33,10 +28,6 @@
 		{
 			id: "544D507000100000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Read the Two Skill Systems"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000100001", type: "xp", xp: 10 }
@@ -45,16 +36,12 @@
 			tasks: [
 				{ id: "544D807000100000", type: "checkmark" }
 			]
-			x: 2.00d
-			y: 2.00d
+			x: 0.0d
+			y: 4.0d
 		}
 		{
 			id: "544D507000200000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Open the Skill Interface"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000200001", type: "xp", xp: 10 }
@@ -63,16 +50,12 @@
 			tasks: [
 				{ id: "544D807000200000", type: "checkmark" }
 			]
-			x: 4.60d
-			y: 2.00d
+			x: 4.0d
+			y: 4.0d
 		}
 		{
 			id: "544D507000300000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Understand Attributes"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000300001", type: "xp", xp: 15 }
@@ -81,16 +64,12 @@
 			tasks: [
 				{ id: "544D807000300000", type: "checkmark" }
 			]
-			x: 7.20d
-			y: 2.00d
+			x: 8.0d
+			y: 4.0d
 		}
 		{
 			id: "544D507000400000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Experiment with Improvable Skills"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000400001", type: "xp", xp: 15 }
@@ -99,16 +78,12 @@
 			tasks: [
 				{ id: "544D807000400000", type: "checkmark" }
 			]
-			x: 9.80d
-			y: 2.00d
+			x: 0.0d
+			y: 8.0d
 		}
 		{
 			id: "544D507000500000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Inspect Cooldown and Casting Perks"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000500001", type: "xp", xp: 15 }
@@ -117,16 +92,12 @@
 			tasks: [
 				{ id: "544D807000500000", type: "checkmark" }
 			]
-			x: 2.00d
-			y: 4.50d
+			x: 4.0d
+			y: 8.0d
 		}
 		{
 			id: "544D507000600000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Plan for Practical Attribute Caps"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000600001", type: "xp", xp: 15 }
@@ -135,16 +106,12 @@
 			tasks: [
 				{ id: "544D807000600000", type: "checkmark" }
 			]
-			x: 4.60d
-			y: 4.50d
+			x: 8.0d
+			y: 8.0d
 		}
 		{
 			id: "544D507000700000"
 			icon: { id: "minecraft:experience_bottle" }
-			title: "Choose How to Specialize"
-			description: [
-				undefined
-			]
 			optional: true
 			rewards: [
 				{ id: "544D607000700001", type: "xp", xp: 15 }
@@ -153,10 +120,8 @@
 			tasks: [
 				{ id: "544D807000700000", type: "checkmark" }
 			]
-			x: 7.20d
-			y: 4.50d
+			x: 0.0d
+			y: 12.0d
 		}
 	]
-	subtitle: "Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics."
-	title: "Skills & Advancement"
 }
