@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.monk;
 
 import io.github.heatwaveqc.tmm.monk.config.MonkStartupConfig;
+import io.github.heatwaveqc.tmm.monk.command.MonkAttributeInventoryCommand;
 import io.github.heatwaveqc.tmm.monk.faction.MonkFaction;
 import io.github.heatwaveqc.tmm.monk.faction.MonkPlayerData;
 import io.github.heatwaveqc.tmm.monk.skills.MonkSkills;
@@ -9,6 +10,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.RegisterEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +35,7 @@ public final class MonkMod {
         // Pattern from Werewolves 2.0.x: register after Vampirism's constructor
         // but before Vampirism closes faction registrations at IMC processing.
         modBus.addListener(this::registerFaction);
+        NeoForge.EVENT_BUS.addListener(MonkAttributeInventoryCommand::register);
         LOGGER.warn("Monk development scaffold loaded: no powers or discipline restrictions are implemented.");
     }
 

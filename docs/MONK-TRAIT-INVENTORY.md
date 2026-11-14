@@ -7,20 +7,20 @@ by a player. The pinned modpack is Minecraft 1.21.1 NeoForge.
 Inventory: `compat/monk/profiles/attribute-candidates-1.21.1.json`
 and `non-attribute-trait-candidates.json`.
 
-## 143 source-based candidate attribute IDs
+## 142 source-based candidate attribute IDs
 
 | Origin | Count | Evidence notes |
 | --- | ---: | --- |
 | `minecraft` | 30 | minecraft 1.21.1 registry no runtime |
 | `apothic_attributes` | 22 | upstream 1.21 branch pinned 2.11.0 unverified binary |
 | `irons_spellbooks` | 26 | upstream 1.21 branch gradle 3.16.3 exact |
-| `ars_nouveau` | 10 | upstream main not pinned 5.13.5 |
+| `ars_nouveau` | 9 | upstream main not pinned 5.13.5 |
 | `malum` | 15 | upstream 1.21.1 branch current 1.9.0 not pinned 1.8.2 |
 | `goety` | 27 | upstream main gradle 3.2.2 exact |
 | `eidolon_repraised` | 4 | upstream 1.21.1 branch gradle 0.5.0.8 exact |
 | `forbidden_arcanus` | 2 | upstream 1.21.1 branch pinned 2.6.1 unverified |
 | `neovitae` | 7 | published api reference not pinned binary 1.1.53 |
-| **Total** | **143** | May include mob/equipment-only entries and omit other registered attributes |
+| **Total** | **142** | May include mob/equipment-only entries and omit other registered attributes |
 
 - Apothic: 22 custom attributes, including boolean Elytra Flight and
   capped Cooldown Reduction (0.95). These are not all uncapped.

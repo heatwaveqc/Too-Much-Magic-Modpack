@@ -8,14 +8,14 @@
     "minecraft": 30,
     "apothic_attributes": 22,
     "irons_spellbooks": 26,
-    "ars_nouveau": 10,
+    "ars_nouveau": 9,
     "malum": 15,
     "goety": 27,
     "eidolon_repraised": 4,
     "forbidden_arcanus": 2,
     "neovitae": 7
   },
-  "candidate_count": 143,
+  "candidate_count": 142,
   "sources": {
     "vanilla": "https://raw.githubusercontent.com/PixiGeko/Minecraft-generated-data/master/1.21/releases/1.21.1/custom-generated/registries/attribute.txt",
     "apothic": "https://raw.githubusercontent.com/Shadows-of-Fire/Apothic-Attributes/1.21/src/main/java/dev/shadowsoffire/apothic_attributes/api/ALObjects.java",
@@ -27,7 +27,7 @@
     "forbidden": "https://raw.githubusercontent.com/stal111/Forbidden-Arcanus/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/common/entity/attribute/FAAttributes.java",
     "neovitae": "https://github-wiki-see.page/m/breakinblocks/NeoVitae/wiki/API-Reference"
   },
-  "limitations": "Includes some mob-only or item-driven attribute IDs, possible source drift, and only source-discoverable registration declarations. Run /tmmmonk attributes in the pinned assembled pack to confirm player instances, actual bounds and all addon-contributed attributes. Never claim all entries are player-applicable.",
+  "limitations": "Includes some mob-only or item-driven attribute IDs, possible source drift, and only source-discoverable registration declarations. Run /tmmmonk attributes in the pinned assembled pack to confirm player instances, actual bounds and all addon-contributed attributes. Never claim all entries are player-applicable. Removed a commented-out Ars Nouveau TOUGHNESS declaration (not actually registered).",
   "attributes": [
     {
       "id": "apothic_attributes:armor_pierce",
@@ -247,14 +247,6 @@
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.spell_damage",
-      "source_mod": "ars_nouveau",
-      "class": "requires_mod_specific_mechanics_review",
-      "source_status": "upstream_main_not_pinned_5.13.5",
-      "status": "not_yet_live_dumped",
-      "notes": "Player presence and behavior must be verified in integrated runtime"
-    },
-    {
-      "id": "ars_nouveau:ars_nouveau.perk.toughness",
       "source_mod": "ars_nouveau",
       "class": "requires_mod_specific_mechanics_review",
       "source_status": "upstream_main_not_pinned_5.13.5",

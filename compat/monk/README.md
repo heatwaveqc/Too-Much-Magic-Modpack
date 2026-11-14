@@ -65,3 +65,21 @@ Pack-wide mod resource limits are tracked separately at
 `docs/GLOBAL-PROGRESSION-CAPS.md`. The proposed five-tier rarity-food
 infusion remains design-only. No decision yet on using Pufferfish to
 own repeatable numeric Monk ranks.
+
+## Live trait inventory diagnostic (new)
+
+Run `/tmmmonk attributes` as an operator (permission level 2) **while
+connected as a player** in a disposable 1.21.1 world containing the full
+pack. The server writes `<world>/tmm-monk-player-attributes.json`, a
+snapshot of the actual attribute instances on that player: resource ID,
+base/current values, native bounds (where available). This command is
+read-only; no attribute, item, skill or world-tier data is changed. No
+personally identifying data is written. It is not an attribute unlock or
+a list of mod-specific resource attachments.
+
+Static source candidates:
+`profiles/attribute-candidates-1.21.1.json` (142 IDs after removing a
+commented-out Ars definition), `profiles/non-attribute-trait-candidates.json`.
+Design-only world boss and flight milestones:
+`profiles/world-tier-unlocks.json`. Actual in-game verification remains
+necessary; no boss events or flight handlers have been implemented.
