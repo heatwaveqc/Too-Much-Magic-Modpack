@@ -74,7 +74,7 @@ hash = "f9486807cf5245c484f0739131f0a754385119597ec90cc6ed99e67832c914fa"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/food_fishing.snbt"
-hash = "357349402f440bd8e9df2085c71b1641e522a99b5dfe6494fb36be68bcf3b2bc"
+hash = "e982c23e84b25533788d619eeeac63fcf1fd587e1e123e07ab40ba12432e86a9"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/forbidden_arcanus.snbt"
@@ -170,7 +170,7 @@ hash = "85f5eda9d770c1ceb779f685c14a8b628357247060e87b3f98f759cdafc0b58b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
-hash = "cdd4c4ffee087f1326c9dd27c926116cda62871fedc158120c9444de3e671a76"
+hash = "775f20cfde720bb6cc7791f2352810adafdea064415e8708ef88e98a0970d9cc"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/totemic.snbt"

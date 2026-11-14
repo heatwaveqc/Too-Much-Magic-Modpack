@@ -298,7 +298,9 @@
 		{
 			id: "544D502001000000"
 			title: "Use the Quest Shop"
-			description: [undefined]
+			description: [
+				"Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."
+			]
 			icon: { id: "minecraft:emerald" }
 			optional: true
 			rewards: [

@@ -370,7 +370,9 @@
 		{
 			id: "544D503001500000"
 			title: "Cooking for Blockheads: Cooking Table"
-			description: [undefined]
+			description: [
+				"Build the Cooking Table to discover dishes available from nearby kitchen ingredients. Cooking for Blockheads works alongside Farmer's Delight and Pam's HarvestCraft, expanding an organized base kitchen."
+			]
 			icon: { id: "cookingforblockheads:cooking_table" }
 			dependencies: ["544D503001100000"]
 			optional: true
@@ -385,7 +387,9 @@
 		{
 			id: "544D503001600000"
 			title: "Cooking for Blockheads: Oven"
-			description: [undefined]
+			description: [
+				"Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen."
+			]
 			icon: { id: "cookingforblockheads:oven" }
 			dependencies: ["544D503001500000"]
 			optional: true
