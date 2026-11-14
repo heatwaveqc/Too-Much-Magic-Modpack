@@ -1,0 +1,60 @@
+name: Pin and package More Overlays for Prism client
+on:
+  push:
+    branches: ['fix/more-overlays-auto-client-install']
+    paths:
+      - '.github/workflows/more-overlays-autoinstall.yml'
+      - 'scripts/resolve_more_overlays.py'
+      - 'scripts/validate_client_overlays.py'
+      - 'scripts/build_quest_ui_prism.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  client-pack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact file identity and re-pin official Modrinth URL
+        run: |
+          python3 -m py_compile scripts/resolve_more_overlays.py scripts/validate_client_overlays.py
+          python3 scripts/resolve_more_overlays.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 scripts/validate_client_overlays.py
+      - name: Save approved Modrinth pin before packaging
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/more-overlays-updated.pw.toml index.toml pack.toml manifest/mods.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fix(client): download byte-identical More Overlays from Modrinth"
+            git push origin HEAD:fix/more-overlays-auto-client-install
+          fi
+      - name: Fetch upstream packwiz installer
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Build immutable Prism QA package with both + client-side mods
+        run: |
+          python3 scripts/build_quest_ui_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "$(git rev-parse HEAD)"
+          test -f "${{ runner.temp }}/Too-Much-Magic-More-Overlays-Auto-Prism.zip"
+      - name: Upload new Prism test import
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-More-Overlays-Auto-Client-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-More-Overlays-Auto-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
