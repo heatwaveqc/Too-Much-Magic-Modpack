@@ -95,3 +95,8 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - **Quest Shop v1.4.0** is officially published for NeoForge 1.21.1 ([CurseForge file 9046797](https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797)), MIT. It integrates FTB Quests coin reward type `questshop:coins` and uses FTB Teams' shared currency account. Native shop supports purchases, not generic sell offers; material sales must be implemented with FTB item-consuming tasks.
 - **Cooking for Blockheads v21.1.24** is officially published for NeoForge 1.21.1 ([Modrinth version MQCIy6VF](https://modrinth.com/mod/cooking-for-blockheads/version/MQCIy6VF)). It requires Balm, already pinned. License: all rights reserved. No redistributing its JAR in Git.
 - Exact pin and a fresh combined server smoke must precede claims of installed compatibility; GUI, JEI, team coins, item-consuming repeatable task, recipe and artifact registry checks remain manual integration tests.
+
+## B11 exact combined NeoForge boot — passed (2026-11-14)
+
+- [Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608): 140 active pins, 127 hash-verified server-side JARs, 45 quest SNBT files copied, **dedicated server Done, exit 0**. Quest Shop and Cooking for Blockheads were resolved from the specifically approved 1.21.1 provider files, without unreviewed extra dependencies.
+- **Not proven:** GUI/shop purchases, actual QuestShop reward type claiming, Team currency propagation, repeated item-consumption sale security, Cooking Table/Oven registry or recipes, Artifacts shop SKU registry, chest/loot economy and post-Guardian gates. These remain test requirements, not assumed integrations.

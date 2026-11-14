@@ -56,4 +56,4 @@
 - Same five categories and 45 chapters. New Quest Shop tip in Tips & Tricks; Cooking Table and Oven quests in Food & Fishing; 12 item-consuming sale quests in Basic Progression.
 - 61 authored quests + 42 other provisional chapter overviews = **103 quest entries**. Sale coins replace thematic items because these quests represent transactions; all quests grant positive XP.
 - Current economic catalog offers five categories and 29 buy entries. No generic sell-anything mechanism; ProjectE-based material printing is expressly permitted once ProjectE is unlocked.
-- This draft branch initially carries two **desired-but-unpinned** mods until GitHub Actions resolves exact releases and successfully boots the combined pack. Do not treat roster intent as installed status.
+- Both newly approved mods were subsequently **pinned to exact provider versions, SHA-verified, and combined dedicated-server-smoked** in [B11 Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608). **Client/GUI, kitchen and team-economy integration is still pending.**

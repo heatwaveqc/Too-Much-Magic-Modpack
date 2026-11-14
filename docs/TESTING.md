@@ -100,3 +100,10 @@ Never reclassify step 1 as steps 2–5.
 - 103 FTB quest entries, with 12 deliberate coin-only sale tasks, must be validated in the **client** after server smoke. Sales use `consume_items: true`; 3 final tiers `can_repeat: true`, with one team credit per consumed shipment. Interactions with claiming and XP reset need in-world tests.
 - Shop economy is provisional: data-driven catalog, monster coin drops disabled via `questshop-common.toml`, source-specified team-shared balance, exact artifact registry IDs and persistent shop categories/GUI still need validation.
 - Production blocking: no world back-compat claim, no market seed bypass, no ProjectE/Chaos Guardian leak, no bag nesting. Record the CI run ID after the resolved 140-mod test completes.
+
+## B11 final resolved pinned server evidence — 2026-11-14
+
+- **PASS** [GitHub Actions run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608), workflow *Resolve Quest Shop and Cooking for Blockheads* (resolved source commit `8d3b61d2689aaf1b1dc9d8055a5487148f653447`, metadata bot commit `04af77f4db967c567c7349ef45672f7c5e12346d`).
+- Both requested exact NeoForge 1.21.1 jars pinned with reviewed provider hashes; **140 mod pins**, **127 dedicated-server jars downloaded/verified**, 13 client-only pins. **45 FTB Quests chapter files copied** into disposable server. Combined NeoForge server startup reached **Done** and exited **0**. Packwiz hash-chain validation PASS; quest static validator PASS (**45 chapters / 103 FTB quest objects / XP+meaningful item or explicitly allowed coin**).
+- **Still untested in a client:** Quest Shop menu, category rendering and sale prices, category unlocking, coin reward actual claiming, team-sharing/double-claim behavior, consumption and repeat reset, Cooking for Blockheads blocks/recipes, artifact registry IDs, and real progression gating. Dedicated-server startup is not proof these operate correctly.
+- Original B11 notes saying pending pin/smoke are superseded by this entry. PR remains draft until client acceptance. Do not import into an existing valued world without backups.

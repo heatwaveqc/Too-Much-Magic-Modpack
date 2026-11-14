@@ -2,9 +2,9 @@
 
 **Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
 
-- **146** selected-roster records; **138** enabled packwiz mod pins; **8** inactive/unpinned entries; the removed two are listed in `excluded`, not as inactive candidates.
+- **148** selected-roster records; **140** enabled packwiz mod pins (B11 smoke pass); **8** inactive/unpinned entries; the two rejected ultimate-crafting mods are listed in `excluded`, not as inactive candidates.
 - **45** proposed chapters grouped into exactly **five** top-level categories: **Introduction (3), Progression (5), Magic (25), Exploration & Combat (9), Endgame (3)**.
-- **87 of 138** active mods are explicitly associated with one primary chapter as its content or closely related addon; **51 of 138** are cross-cutting libraries, performance mods, or server tooling with **no independent chapter**. Mod IDs in tables are intended for reconciliation, not all exact game item IDs.
+- **89 of 140** active mods are explicitly associated with one primary chapter as its content or closely related addon; **51 of 140** are cross-cutting libraries, performance mods, or server tooling with **no independent chapter**. Mod IDs in tables are intended for reconciliation, not all exact game item IDs.
 - This inventory uses the **newer B8 branch**. The already-authored preliminary FTB first-log quest and Akashic Tome plan are maintained separately in [PR #14](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/14), based on B6, and need reconciliation before actual quest deployment.
 - **This branch also implements the owner's explicit removal** of Re:Avaritia and Extended Crafting; no new mod additions, item-gating or quest rewards are authorized by the inventory.
 
@@ -145,4 +145,4 @@ Special cases:
 
 - **Cooking for Blockheads** is added to the existing Food & Fishing chapter (no new category/chapter). Two kitchen milestone quests join it.
 - **Quest Shop** is referenced in Tips & Tricks, with the 12-resource sale milestone branch in Basic Progression; currency flows are described in [QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md). This supplements the original 45-chapter skeleton; chapter counts do not change.
-- These two are desired but not packwiz-pinned until B11 resolver and combined server smoke pass. The older 138-mod inventory counts are a historical B8 snapshot; the proposed end state is 140 pinned mods once validated.
+- **Both are now exact packwiz-pinned and server-smoked** ([B11 run 43610383608](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43610383608)): **140** active pins; **45** chapter groups unchanged. The previous 138-mod counts describe historical B8 state, not the current branch. Client/GUI behavior remains unverified.
