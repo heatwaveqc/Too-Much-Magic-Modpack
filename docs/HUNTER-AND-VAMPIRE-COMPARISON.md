@@ -53,3 +53,42 @@ Sources:
 5. Keep two vampire systems distinct: they are not complementary flags and are blocked from accidentally stacking.
 
 This policy belongs to the modpack's compatibility layer; no code is implemented yet.
+
+
+## Research alternative: unify Vampirism and JAWR vampires (2026-11-13)
+
+**Status: USER ASKED FOR FEASIBILITY, NOT YET APPROVED.** The currently selected policy still blocks simultaneous independent vampire physiologies. Do not change transformation matrix or implement until the design is confirmed.
+
+**JAWR DOES have player lycanthropy/werewolves** (independent of the Werewolves addon): changelog 0.5.13 explicitly names curing lycanthropy, 0.5.22 mentions buffing werewolf-players, naturally spawning werewolves and werewolf villagers, and 0.5.37 improved synchronization of lich/vamp/werewolf attributes. Source:
+- https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake/files/9089145
+- https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake/files/9208345
+- https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake/files/9426744
+
+**Proposed alternative:** both entry routes converge on ONE canonical `tmm:vampire` effective physiology; mirror the native Vampirism faction and native JAWR vampire marker as compatibility state (if required for JAWR quest checks), but do NOT allow both independent survival mechanics to run fully. Source code for the complete current JAWR physiology has not been confirmed public; the official Github repository hosts documentation/issues but not the playable source. Exact hook/mixin count remains unknown.
+
+| Concern | Recommended authoritative provider | Integration needed |
+| --- | --- | --- |
+| Vampire membership / player status | TMM state manager plus Vampirism faction | Enter from Sanguinare or JAWR initiation; synchronize native flags; initialize level 1 but **do not** grant advanced levels automatically |
+| Blood meter / dietary hunger | Vampirism | Disable/suppress JAWR independent blood drain and its HUD; convert JAWR blood feeding, Neo Vitae orb/altar and witchcraft blood items into Vampirism blood units with explicit conversion rate; Vampire's Delight already targets Vampirism |
+| Sun exposure / penalties | Vampirism | Suppress JAWR's independent sun damage source rather than merely removing debuffs afterward. Configure JAWR vampire immortality off when feasible, avoiding conflicting death prevention |
+| Sun protection items/witchcraft | Whitelisted aggregate rules | Adapt JAWR sun charms/armor to affect canonical sun checks if desired; do not accidentally multiply protection/damage |
+| Vampire combat skills and quests | Both progression systems, separately gated | Retain Vampirism 14 levels and JAWR quest milestones; no automatic parallel progress, no automatic double stat bonuses; integrate only intentionally chosen powers |
+| Bat form, movement, rendering | Choose ONE owner per action/form | Prevent competing bat renderers, flight controllers, attribute modifiers and networking |
+| Curing / dying / respec | Single transactional bridge | BOTH native vampire flags must be cleared or restored together on ritual/cure; cleanup player state, skills, blood/HUD overlays, and log/respawn state |
+| Hunter inoculation | TMM hunter policy | Involuntary JAWR vampire effects must still be rejected; intentional JAWR initiation first exits Hunter and applies canonical vampire physiology |
+
+**Difficulty:** basic enter/exit flag mirroring is a small-to-moderate NeoForge-addon prototype, given Vampirism 1.21 API's cancellable `PlayerFactionEvent.FactionLevelChangePre`; correctly suppressing JAWR metabolism, sun damage, custom death protection, UI, and independent tick effects is a **medium-high integration project**, potentially requiring targeted mixins to JAWR. Source inspection of JAWR 0.5.39 runtime classes/decompiled jar and a disposable-world compatibility prototype are necessary before quantifying the work. This is likely **less work than full Abomination** (two different anatomies and a single-faction restriction) but much more work than a KubeJS recipe or a status synchronization script.
+
+**Do not implement blind "if one native flag then set other native flag every tick" polling.** It can reapply cured states, fight each mod's own events, duplicate rewards or prevent logout/death cleanup. Use an atomic transition and migration of older saves, then assert invariants at login/respawn.
+
+**Legacy Witchery supported vampire+werewolf hybrid creatures**, with tradeoffs and separate rules; JAWR's modern implementation has **not** been verified to retain this original mechanic. This may inform the separate Abomination design but is not proof of current JAWR compatibility: https://sadjakl.github.io/WitcheryWikiProject/wiki/vampirism.html
+
+### Proof gate for potential unification
+
+1. Pin and inspect JAWR 0.5.39, not just the currently server-smoked JAWR 0.5.11; document every class/event that reads/writes vampire state or controls sun, blood, immortality, transforms, HUD and cure.
+2. Build a small addon to test both directions of acquisition (Vampirism->JAWR and JAWR->Vampirism) and both cures; ensure no infinite conversion loop and no free progress from mirror initialization.
+3. Expose one blood HUD and one usable feeding resource; test ordinary food and all Vampire's Delight + Neo Vitae blood sources.
+4. Test sun exposure across dimensions/weather, garlic/fire, bat forms, high-level immortality, health/attribute changes, death, reload, PvP, and Hunter special conversion.
+5. Record confirmed GUI and server runtime behavior before promoting the research to a supported unified vampire identity.
+
+No decisions or active-mod changes have been made from this user question.
