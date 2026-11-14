@@ -6,15 +6,17 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 
 **Clarified design:** unify *character skill progression* and compatible caster bonuses across schools. **Ars Nouveau + Iron's Spells use Ars 'n Spells' shared mana bar; Psi is not part of this shared pool** and keeps its player Psi/CAD battery. Hex Casting media stays native. Avoid double-applying spell multipliers. PsiTweaks-specific balance choices are provisional. Psi-generated FE is favored and could replace BiggerReactors after measured throughput and a later decision. The ten-addons pass is documented in [PUFFERFISH-ADDON-AUDIT-2026-11-13.md](PUFFERFISH-ADDON-AUDIT-2026-11-13.md), including upstream Java references, version caveats, and the Ars 'n Spells mana-unification design issue.
 
+**Scope boundary, approved 2026-11-14:** **Transformation Compat** owns every persistent physiology/faction and death-system interaction: two lichdoms and Archlich, vampires, werewolves, dragons, abominations, hunters, phylacteries, resurrections, soul loss, graves and death-cancel priorities. Those are **not Pufferfish discovery blockers**. A mod stays in Needs Investigation **only if** a separate meaningful personal-casting/skill integration question remains. **Goety remains Confirmed because it has independent spellcasting/soul/servant attribute hooks, not because of its lich transformation.** JAWR base remains under investigation only for non-transformation witchcraft/ritual casting. Dragon Survival is not part of the installed 42-entry survey.
+
 ## Summary
 
 | State | Count |
 |---|---:|
 | Confirmed (source-backed and parent-inherited) | **17** |
 | Compatible with work | **10** |
-| Needs investigation | **6** |
+| Needs investigation | **3** |
 | Proven incompatible | **0** |
-| Nothing separate to enhance | **9** |
+| Nothing separate to enhance | **12** |
 | **Total** | **42** |
 
 ## Confirmed — source-backed or parent-inherited Pufferfish compatibility (17)
@@ -28,7 +30,7 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Ars Nouveau** (`ars-nouveau`) | Native spell-related attributes are source-verified; central Ars casting path is a clear Pufferfish integration target. | Map skill rewards to actual attribute IDs and test with Ars spells. |
 | **Botania Revived** (`botania-revived`) | Prior audit identified player-relevant, source-verified enhancement mechanisms (including PixieHandler). | Validate cross-loader and port-specific behavior; avoid claiming Pufferfish runtime proof. |
 | **Embers Re-Ignited** (`embers-re-ignited`) | Exact 1.21.1-1.5.9 upstream source exposes `EmberRemoveEvent` (player item-based Ember expense) and `EmberProjectileEvent` (Cinder Staff and Blazing Ray); `AugmentUtil` manipulates persistent equipment augments and heat. Most features are machines and item effects, not a native player mana or magic attribute. | Source-backed hooks **Confirmed**, gameplay/Pufferfish bridge not implemented: trial bounded per-player expenditure discount, projectile scaling and optional at-craft gear quality; guard Curios discount stacking and pre-discount weapon reserve checks. Separate Ember-to-FE dynamo at theoretical 1,000 FE/t; audit dynamic metal seed renewability and static uranium exception. [Audit](EMBERS-SKILLS-AND-ECONOMY-AUDIT-2026-11-13.md). |
-| **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Exact pinned 1.21.1-1.1.2 source registers three real living-entity attributes: `enigmaticlegacyplus:etherium_shield`, `enigmaticlegacyplus:projectile_deflect`, `enigmaticlegacyplus:lifesteal` and explicitly adds them to every living type. Its spellstones offer passive and keyed active abilities using **shared item cooldown**, not mana. | **Confirmed native player attributes** (gameplay untested); **User-approved: no separate Enigmatic skill tree**. Universal Pufferfish defensive/offensive nodes *could* use attributes without a custom bridge after balance checks. **Highest priority is death-handler and Soul Crystal / Tombstone compatibility**, including Lost Engine speeding all item cooldowns. [Audit](ENIGMATIC-LEGACY-PLUS-1.1.2-SKILLS-DEATH-AUDIT-2026-11-14.md). |
+| **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Exact pinned 1.21.1-1.1.2 source registers three real living-entity attributes: `enigmaticlegacyplus:etherium_shield`, `enigmaticlegacyplus:projectile_deflect`, `enigmaticlegacyplus:lifesteal` and explicitly adds them to every living type. Its spellstones offer passive and keyed active abilities using **shared item cooldown**, not mana. | **Confirmed native player attributes** (gameplay untested); **User-approved: no separate Enigmatic skill tree**. Universal Pufferfish defensive/offensive nodes *could* use attributes without a custom bridge after balance checks. **Death-handler, Soul Crystal, Tombstone and Lost Engine cross-mod cooldown tests are tracked outside the Pufferfish skills investigation** (Transformation Compat owns death/state concerns). [Audit](ENIGMATIC-LEGACY-PLUS-1.1.2-SKILLS-DEATH-AUDIT-2026-11-14.md). |
 | **Eidolon: Repraised** (`eidolon-repraised`) | EidolonAttributes in the 1.21.1 repository establish native stat hooks. | Wire Pufferfish modifiers; test. |
 | **Forbidden & Arcanus** (`forbidden-arcanus`) | FAAttributes in the 1.21.1 repository provide native stat hooks. | Wire Pufferfish modifiers; test. |
 | **Goety — The Dark Arts** (`goety`) | 27 registered spell/school attributes, plus owned servant mechanics, inspected in Goety-3 1.21.1 source. | Test school/global precedence, cooldown edge cases, servant melee/ranged/spells. |
@@ -54,22 +56,19 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Scriptor Magicae** (`scriptor-magicae`) | Source-backed cooldown in `EntityCastCooldownExtension` (private data, no Minecraft attribute), explicit book/cast cost and lectern behavior; `Inflame` smelts furnace recipes, `Break` mines existing ore, `Bring` transports drops, `Place` generates magic blocks (not ore). Lectern caster inventory has a likely null getter bug. | **No Mana Mode.** Personal cooldown/crafted-item-quality bridge candidates; **keep lecterns powerful** pending actual 2.0.14 gameplay tests of ores, smelting and collection. [Audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md). |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (6)
+## Needs investigation — insufficient source evidence yet (3)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **JAWR: Forbidden Magic** (`forbidden-magic`) | **Initial official 0.5.37 release audit:** 10-level lichdom, quests/abilities/phylactery, soul commerce, petrification/soul severance rituals, and necromancy-infused villager/zombie fighters. Parent JAWR 0.5.37 changelog mentions lich/vamp/werewolf attribute synchronization, **not an exposed NeoForge stat**. Source/JAR not inspected; owner IDs, phylactery timing, caster stats unresolved. | **Remain Needs investigation.** Recommend preserving native lich level progression rather than duplicating it in Pufferfish (not yet a locked user choice). Obtain pinned JAR and inspect minion owner, death handlers and JAWR+Goety Archlich stack; no invented native Pufferfish hooks. [Initial audit](JAWR-FORBIDDEN-MAGIC-0.5.37-INITIAL-AUDIT-2026-11-14.md). |
-| **Just Another Witchery Remake** (`witchery-remake`) | JAWR 0.5.39 has native vampirism/lycanthropy and ritual progression; accessible public repository does not expose core Java implementation. | Inspect released JAR, player capability, spell/ritual hooks and transformation progression. |
+| **Just Another Witchery Remake** (`witchery-remake`) | Native witchcraft, brewing and rituals may have player-cast abilities distinct from its vampire/lycanthrope progression. Public source insufficient for exact 0.5.39 spell/ritual hooks. | **Investigate non-transformation casting only:** are there player attributes or meaningful spell/ritual buffs that can share existing Pufferfish skills? Vampire, werewolf, death and stacking mechanics belong exclusively to Transformation Compat. |
 | **Pastel** (`pastel`) | Color-resonance/research magic has not been mapped to player attributes. | Inspect player facets, spell potency and crafting traits. |
 | **Totemic** (`totemic`) | Ceremony/totem magic source-level player mechanics not audited. | Inspect ceremonial skill, musician performance bonuses and buff scaling. |
-| **Vampirism — Become a Vampire!** (`vampirism`) | Its built-in vampire/hunter levels and skill tree have not been audited for caps and attributes. | Check native player attributes, caps, custom resource, double-dipping and cross-mod transformation. |
-| **Werewolves — Become a Beast!** (`werewolves`) | Vampirism addon with forms and faction skills; no player attribute audit yet. | Inspect form-specific attributes, caps and interactions with Vampirism and JAWR. |
 
 ## Proven incompatible (0)
 
 None demonstrated.
 
-## Nothing separate to enhance — no distinct player skill track (9)
+## Nothing separate to enhance — no distinct player skill track (12)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -78,10 +77,18 @@ None demonstrated.
 | **Astral Sorcery** (`astral-sorcery`) | Deliberate exemption: Astral Sorcery already has its own sophisticated personal perk tree. | Preserve its internal perk tree; generic damage attributes may still affect combat. |
 | **EvilCraft** (`evilcraft`) | Prior audit found no personal adjustable magic stat; machinery, items and blood resources dominate. | Generic magic/crafting perks can still apply; no dedicated tree currently justified. |
 | **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Pinned 4.2.7 uses structure-owned altar power, physical circle rites, Kettle, ingredient workshop, player-bound poppets and a cat familiar, but has no player caster/mana attribute. A modest personal upgrade would require new code and attribution/persistence rules. | **User decision: no dedicated Pufferfish skills and no custom bridge planned**; preserve Enchanted's own gameplay. Still test poppets vs Totems/Tombstone/transformation death handling. [Deep dive](ENCHANTED-WITCHCRAFT-4.2.7-DEEP-DIVE-2026-11-13.md). |
+| **JAWR: Forbidden Magic** (`forbidden-magic`) | Already has a ten-level lich ability/progression track; necromancy, phylactery and undead-state mechanics are not a reason to invent a second Pufferfish lich tree. No sufficiently valuable *distinct* Pufferfish enhancement has been identified. | **User decision: closed for dedicated Pufferfish integration.** Preserve native lich advancement. **Transformation Compat** owns dual-lich Archlich and all death/phylactery/state interactions; universal combat/pet attributes can still apply without reopening this audit. [Initial research](JAWR-FORBIDDEN-MAGIC-0.5.37-INITIAL-AUDIT-2026-11-14.md). |
+| **Vampirism — Become a Vampire!** (`vampirism`) | Vampire/hunter faction and skill progression are native to the mod; player transformation, feeding, blood, faction state and death handling do not require a duplicate Pufferfish school. | **No dedicated Pufferfish vampire/hunter tree planned.** Transformation Compat owns faction/body/food/death interactions. Shared generic Pufferfish skills remain available as applicable. |
+| **Werewolves — Become a Beast!** (`werewolves`) | Wolf-state, forms and faction progression are native to the Vampirism addon; no independent Pufferfish casting school is justified. | **No dedicated Pufferfish werewolf tree planned.** Transformation Compat owns form/state, hunger, mixed states and death rules. Generic universal Pufferfish attributes may still apply. |
 | **Hexerei** (`hexerei`) | Prior audit found no native player-specific attribute system; mostly witchcraft items/rituals and brews. | Reopen if broom/brewing perks or personal effects merit enhancement. |
 | **Reliquary Reincarnations** (`reliquary-reincarnations`) | Primarily magical tools and artifacts; no known standalone character progression stat. | Use universal gear/perk bonuses; do not invent a separate Reliquary skill. |
 | **Summoning Rituals** (`summoning-rituals`) | A KubeJS ritual framework for cross-mod recipes rather than its own player magic progression. | Use it as integration infrastructure and recipe gating, not a standalone skill tree. |
 | **Theurgy** (`theurgy`) | Prior audit found no native player-specific adjustable magic stats; primarily world/item-based systems. | No separate Pufferfish branch until a distinct personal mechanic is identified. |
+
+## Scoped closure note (2026-11-14)
+- **Forbidden Magic, Vampirism and Werewolves:** closed to *dedicated* Pufferfish skill development because their relevant character progression is native. Source/JAR details can be investigated by **Transformation Compat**, without reopening the Pufferfish matrix. Universal player or pet bonuses do not constitute a mod-specific new tree.
+- **Goety:** keep native caster/servant integration status; do not transfer ordinary Goety spellcasting to Transformation Compat. Only Goety's lich physiology/death-state interactions transfer.
+- **JAWR base:** keep in Needs Investigation strictly for ordinary witchcraft casting, ritual abilities or any genuinely distinct player skills, not the vampire/werewolf implementation.
 
 ## Targeted next steps
 
@@ -89,7 +96,7 @@ None demonstrated.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
 - **Addon follow-up tests:** Ars 'n Spells separate-pool mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
 - **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks. **Psi does not join Ars/Iron's shared mana**; evaluate provisional penalty/storage/automation tuning and Psi-generated FE as a candidate alternative to BiggerReactors. See [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
-- **Broader unexplored systems:** JAWR, Vampirism and Werewolves, Totemic, Pastel.
+- **Broader unexplored Pufferfish systems:** JAWR's non-transformation casting, Totemic ceremonies and Pastel magic.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 - **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
