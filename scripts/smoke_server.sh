@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This performs a *loader-only* smoke. It does not install mods from the manifest.
+# Loader-only by default; set SMOKE_WITH_MODS=1 for hash-verified packwiz mod jars.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VERSION="$(python3 -c 'import tomllib,pathlib; p=tomllib.loads((pathlib.Path("'"$ROOT"'")/"pack.toml").read_text()); print(p["versions"]["neoforge"])')"
@@ -29,8 +29,8 @@ timeout "$((SMOKE_TIMEOUT_SECONDS + 60))" bash ./run.sh nogui < cmd.fifo > serve
 STATUS=$?
 set -e
 kill "$STOPPER" 2>/dev/null || true
-if grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
-  echo "PASS: loader-only dedicated server reached Done (exit=$STATUS)"
+if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
+  echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
   exit 0
 fi
 tail -100 server.log
