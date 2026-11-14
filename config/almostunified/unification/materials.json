@@ -55,7 +55,12 @@
     "c:storage_blocks/raw_{material}",
     "c:storage_blocks/{material}"
   ],
-  "ignored_tags": [],
+  "ignored_tags": [
+    "c:gems/emerald",
+    "c:gems/quartz",
+    "c:storage_blocks/emerald",
+    "c:storage_blocks/quartz"
+  ],
   "ignored_items": [
     ".*:.*corrupted_dust.*",
     ".*:.*uranium.*",
@@ -67,7 +72,12 @@
     "malum:cthonic_gold_ore",
     "pastel:dd_.*_ore",
     "pastel:blackslag_.*_ore",
-    "deeperdarker:(gloomslate|sculk_stone)_.*_ore"
+    "deeperdarker:(gloomslate|sculk_stone)_.*_ore",
+    "goety:magic_emerald",
+    "goety:awakened_emerald_block",
+    "extrabotany:.*_quartz",
+    "botania:(blaze|dark|elf|lavender|mana|red|sunny)_quartz",
+    "malum:natural_quartz"
   ],
   "ignored_recipe_types": [
     "cucumber:shaped_tag"
