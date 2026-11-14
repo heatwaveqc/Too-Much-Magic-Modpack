@@ -1,0 +1,8 @@
+{
+	default_autoclaim_rewards: "disabled"
+	default_consume_items: false
+	default_reward_team: false
+	icon: { id: "minecraft:book" }
+	progression_mode: "flexible"
+	version: 13
+}
