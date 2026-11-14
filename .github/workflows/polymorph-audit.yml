@@ -32,12 +32,17 @@ jobs:
           node --check kubejs/server_scripts/silver_equipment_unification.js
           node --check kubejs/startup_scripts/silver_equipment_stats.js
           python3 -m py_compile scripts/audit_equipment_materials.py scripts/check_silver_conflicts.py
+          python3 scripts/verify_materials.py
+          node --check kubejs/server_scripts/material_unification.js
+          node --check kubejs/server_scripts/material_processing_cleanup.js
+          python3 -m py_compile scripts/check_processing_conflicts.py scripts/check_final_processing_recipes.py
       - name: Launch complete disposable server and invoke Polymorph scan
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_POLYMORPH_AUDIT: '1'
           SMOKE_AU_FULL_RECIPE_DEBUG: '1'
-          SMOKE_TIMEOUT_SECONDS: '480'
+          SMOKE_KUBEJS_EXPORT: '1'
+          SMOKE_TIMEOUT_SECONDS: '720'
           WORK_DIR: ${{ runner.temp }}/tmm-polymorph-audit
         run: bash scripts/smoke_server.sh
       - name: Parse native Polymorph conflict report
@@ -47,6 +52,24 @@ jobs:
             --server-log "${{ runner.temp }}/tmm-polymorph-audit/server.log" \
             --output-json "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json" \
             --output-md "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md"
+      - name: Verify AU special-ore isolation and native metal processing coverage
+        run: |
+          python3 scripts/check_processing_conflicts.py \
+            --polymorph "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json" \
+            --au-after "${{ runner.temp }}/tmm-polymorph-audit/logs/almostunified/debug/recipes_after.txt"
+      - name: Verify final post-KubeJS material processing and Mahou yield safety
+        run: |
+          python3 scripts/check_final_processing_recipes.py \
+            --export "${{ runner.temp }}/tmm-polymorph-audit/local/kubejs/export" \
+            --json-out "${{ runner.temp }}/tmm-polymorph-audit/material-processing-effective.json" \
+            --md-out "${{ runner.temp }}/tmm-polymorph-audit/material-processing-effective.md"
+      - name: Assert material scripts have no runtime errors
+        run: |
+          if grep -Ei "Error in.*(material_unification|material_processing_cleanup)|Error parsing recipe tmm:netherite_scrap_dust" \
+            "${{ runner.temp }}/tmm-polymorph-audit/logs/kubejs/server.log"; then
+            echo "FAIL: material KubeJS script or recipe error"
+            exit 1
+          fi
       - name: Assert no remaining silver equipment recipe ambiguity
         run: python3 scripts/check_silver_conflicts.py "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json"
       - name: Inventory other overlapping equipment materials from installed mod JARs
@@ -68,6 +91,8 @@ jobs:
             ${{ runner.temp }}/tmm-polymorph-audit/logs/polymorph-conflicts.log
             ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json
             ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md
+            ${{ runner.temp }}/tmm-polymorph-audit/material-processing-effective.json
+            ${{ runner.temp }}/tmm-polymorph-audit/material-processing-effective.md
             ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.json
             ${{ runner.temp }}/tmm-polymorph-audit/material-equipment-overlaps.md
             ${{ runner.temp }}/tmm-polymorph-audit/logs/kubejs/
