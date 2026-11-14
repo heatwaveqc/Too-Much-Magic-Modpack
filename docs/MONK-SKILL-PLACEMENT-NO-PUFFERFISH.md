@@ -1,3 +1,10 @@
+> **Primary design precedence (2026-11-14):** This 270-source placement list is
+> **research and Monk-only feature inventory**, NOT a second skill-tree
+> implementation or 203 guaranteed unique purchases. The primary Tyz/MXP
+> category design is authoritative for one global SP wallet, universal magic
+> skills, one-rank prior-tier prerequisite, external gates, and mod adapters.
+> See [reconciliation](MONK-INTEGRATION-WITH-PRIMARY-TYZS-TREE.md).
+
 # Monk skill catalog v2 — Tyz + Improvable + Vampirism, no Pufferfish
 
 **Design classification only (2026-11-14).** Machine-readable exhaustive crosswalk:
