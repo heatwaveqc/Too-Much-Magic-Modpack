@@ -152,6 +152,8 @@ def modify():
     for old,new,name in [
       ('== 137, "Expected 137 authored quests','== 138, "Expected 138 authored quests',"auth counts"),
       ('"Getting Started": 18,','"Getting Started": 19,',"intro count"),
+      ('len(translated_titles) == len(translated_desc) == 179','len(translated_titles) == len(translated_desc) == 180',"locale count"),
+      ('Expected 179 localized quests','Expected 180 localized quests',"locale error"),
       ('len(all_blocks) == 179','len(all_blocks) == 180',"all count"),
       ('len(item_tasks) == 80','len(item_tasks) == 84',"task count")
     ]: val=one(val,old,new,name)
