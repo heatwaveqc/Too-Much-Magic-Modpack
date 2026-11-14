@@ -760,7 +760,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1241,6 +1241,30 @@
       "packwiz_slug": "psitweaks"
     },
     {
+      "id": "puffish-attributes",
+      "name": "Pufferfish's Attributes",
+      "category": "dependency",
+      "desired": true,
+      "version": "puffish_attributes-0.8.3-1.21-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/attributes",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved for the custom Pufferfish skill-tree project. NeoForge MC 1.21.1 release observed; NOT packwiz-pinned, installed, booted, or integrated. Verify file ID, dependencies, and compatibility with Pufferfish's Skills >=0.12.0 before installation."
+    },
+    {
+      "id": "puffish-skills",
+      "name": "Pufferfish's Skills",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "puffish_skills-0.19.2-1.21-neoforge",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/skills",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved/planned as the foundation of the custom cross-magic-mod skill tree. NeoForge MC 1.21.1 0.19.2 is BETA-tagged upstream, so it is NOT approved for installation into the release-channel pack without a separate experimental-build decision. Must develop custom tree; default skill tree is not automatically included."
+    },
+    {
       "id": "quest-giver",
       "name": "Quest Giver",
       "category": "dependency",
@@ -1485,7 +1509,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -1498,7 +1522,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -1597,7 +1621,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
