@@ -999,7 +999,7 @@ hash = "8a56605d4d2a2a2ae6a90e48cf4df00465d5d21f21e66707d09c243306354639"
 
 [[files]]
 file = "kubejs/server_scripts/material_processing_cleanup.js"
-hash = "86aec79e3ed4b02ad7285ca0fd2999e0e7c08aab2f4bfc4e1c9de0d5c9c7744f"
+hash = "2ab9c1de7aed0c17903f141c7571c64e8f42f1e2e8d3b8b02ab6ff315bf839e0"
 
 [[files]]
 file = "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js"
