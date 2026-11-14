@@ -3,6 +3,8 @@ package io.github.heatwaveqc.tmm.transformations.vampire;
 import io.github.heatwaveqc.tmm.transformations.TransformationsMod;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
+import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
+import io.github.heatwaveqc.tmm.transformations.core.StateSnapshot;
 import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
@@ -35,9 +37,10 @@ public final class VampireChassisRuntime {
     }
 
     private static void hold(ServerPlayer player, String reason, Exception ex) {
+        ReviewRecord old = player.getData(TransformationAttachments.REVIEW.get());
+        if (old.adminHold()) return; // avoid flooding logs and chat on each native blood tick
         TransformationsMod.LOGGER.error("Vampire bridge halted mutation for {}: {}",
                 player.getGameProfile().getName(), reason, ex);
-        ReviewRecord old = player.getData(TransformationAttachments.REVIEW.get());
         player.setData(TransformationAttachments.REVIEW.get(),
                 new ReviewRecord(ReviewRecord.CURRENT_SCHEMA, true,
                         "Vampire pilot: " + reason));
@@ -55,7 +58,7 @@ public final class VampireChassisRuntime {
                 return false;
             }
             if (newLevel > 0 && old <= 0 && VampireChassisConfig.acquisition()) {
-                if (HUNTER.observe(player) != Observation.ABSENT) return false;
+                if (!otherStatesPermitVampire(player)) return false;
                 Observation observed = VAMPIRISM.observe(player);
                 if (observed == Observation.UNKNOWN) return false;
                 if (observed == Observation.PRESENT) return true;
@@ -79,13 +82,27 @@ public final class VampireChassisRuntime {
         }
     }
 
+    private static boolean otherStatesPermitVampire(ServerPlayer player) {
+        StateSnapshot snapshot = ProbeRegistry.observe(player);
+        if (snapshot.get(ProviderState.VAMPIRISM_HUNTER) != Observation.ABSENT) return false;
+        for (ProviderState state : ProviderState.values()) {
+            if (state == ProviderState.VAMPIRISM_HUNTER || state == ProviderState.VAMPIRISM_VAMPIRE
+                    || state == ProviderState.JAWR_VAMPIRE) continue;
+            Observation observation = snapshot.get(state);
+            if (observation == Observation.PRESENT) return false;
+            if (observation == Observation.UNKNOWN && !VampireChassisConfig.allowUnverifiedProviders())
+                return false;
+        }
+        return true;
+    }
+
     public static boolean approveVampirismEntry(ServerPlayer player) {
         if (!VampireChassisConfig.acquisition() || inTransaction()) return true;
         try {
             // When starting Vampirism, JAWR's native enrollment must be available.
             return VampireNativeAccess.methodsAvailable()
                     && JAWR.observe(player) != Observation.UNKNOWN
-                    && HUNTER.observe(player) == Observation.ABSENT;
+                    && otherStatesPermitVampire(player);
         } catch (RuntimeException e) {
             hold(player, "Vampirism entry preflight failed", e);
             return false;

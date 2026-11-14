@@ -12,6 +12,9 @@ public final class VampireChassisConfig {
     public static final ModConfigSpec.BooleanValue AUTOMATIC_DUAL_ACQUISITION = BUILDER
             .comment("EXPERIMENTAL: attempt to join both native vampire paths when either is first acquired.")
             .define("experimentalAutomaticDualAcquisition", false);
+    public static final ModConfigSpec.BooleanValue ALLOW_UNVERIFIED_OTHER_PROVIDERS = BUILDER
+            .comment("DANGEROUS TEST ONLY: allow vampire acquisition while other unimplemented transformation probes are UNKNOWN. Do not use in permanent saves.")
+            .define("experimentalAllowUnverifiedOtherProviders", false);
     public static final ModConfigSpec.BooleanValue OPERATOR_CURE = BUILDER
             .comment("UNSAFE FOR VALUABLE SAVES: operator-only coordinated cure, with partial rollback and admin hold on failure.")
             .define("experimentalOperatorCure", false);
@@ -23,4 +26,5 @@ public final class VampireChassisConfig {
     public static boolean chassis() { return ENABLE_CHASSIS.get(); }
     public static boolean acquisition() { return chassis() && AUTOMATIC_DUAL_ACQUISITION.get(); }
     public static boolean cure() { return chassis() && OPERATOR_CURE.get(); }
+    public static boolean allowUnverifiedProviders() { return chassis() && ALLOW_UNVERIFIED_OTHER_PROVIDERS.get(); }
 }
