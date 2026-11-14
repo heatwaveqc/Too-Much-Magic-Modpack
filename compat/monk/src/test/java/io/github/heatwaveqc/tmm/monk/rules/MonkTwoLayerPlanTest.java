@@ -59,7 +59,7 @@ final class MonkTwoLayerPlanTest {
                 assertEquals("monk_faction_unlock_and_effect", owner);
                 assertEquals(1, row.get("max_ranks").getAsInt());
             } else {
-                assertEquals("monk_faction_unlock_then_pufferfish_investment", owner);
+                assertEquals("monk_faction_unlock_then_tyzs_investment", owner);
             }
         }
         var step = selected.get("tmm_monk:trait/minecraft/generic_step_height");

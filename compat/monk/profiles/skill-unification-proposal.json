@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "proposed_unified_pufferfish_skill_ownership",
-  "status": "architecture_smoke_test_not_runtime_or_final_skill_roster",
+  "status": "owner_selected_tyzs_levels_pufferfish_one_time_uninstalled_pending_runtime",
   "counts": {
     "unified_groups": 24,
     "source_attributes_uniquely_grouped": 43,
@@ -9,14 +9,15 @@
     "all_source_attribute_candidates": 144
   },
   "principles": {
-    "default": "One canonical shared Pufferfish trait with per-mod adapters, when semantics align, not one upgrade per source mod.",
+    "default": "One canonical shared Tyz's Skills trait with per-mod adapters and optional tenfold 99-rank tiers; Pufferfish remains for non-overlapping one-time choices.",
     "singular": "Permanent once-only Monk effects (Step Assist, Elytra/Momentum Gliding and original unique techniques) stay in native Vampirism faction tree.",
-    "leveled": "Monk faction node licenses investment. Shared general traits should remain available for other players; Monk-only special applications or expanded caps are additionally gated.",
+    "leveled": "Monk faction license gates Monk-specific tiered Tyz purchases via cancellable PurchasePre; global shared Tyz traits remain purchasable for non-Monks; no duplicate paid rank.",
     "source_skills": "The 172 preliminary attribute and special-effect rows are candidate adapters, not necessarily 172 distinct paid upgrades after unification.",
-    "category_gating": "Pufferfish can lock an entire category; per-trait gate in a shared category is NOT demonstrated; investigate forced-unlocked disconnected prereq nodes and/or server-side purchase veto.",
-    "rank_investment": "Pufferfish skills.json node storage is binary, not repeatable; finite ranks could be generated as distinct nodes; truly repeatable ranks need a custom Pufferfish-integrated counter/GUI or alternate proven repeatable API.",
-    "anti_duplication": "All numerical source modifiers have ONE canonical owner and stable modifier id, with no duplicate cross-bridge stacking.",
-    "revocation": "If eligibility is lost, suspend Monk-only effects and further Monk-specific investment; preserve earned ranks securely pending defined transition/respec, no silent player-data deletion."
+    "category_gating": "Tyz skillPrerequisites tests only ownership of prior skill, not level 99. Server SkillActionEvent.PurchasePre checks previous level==99 and the relevant Monk license; test ordinary and bulk purchases.",
+    "rank_investment": "99 levels per Tyz skill; default 5 cumulative tenfold tiers for truly repeatable stats (optional sixth if needed), only one finite tier for bounded traits; prices and values arrays each require exactly maximumLevel entries.",
+    "anti_duplication": "Tyz owns leveled canonical source modifiers; Pufferfish must not simultaneously provide the same numeric reward. Each tier uses its own valid ID, with additive values and native effective caps.",
+    "revocation": "If eligibility is lost, suspend Monk-only effects and further Monk-specific investment; preserve earned ranks securely pending defined transition/respec, no silent player-data deletion.",
+    "refunds": "RefundPre rejects refunding an earlier tier while a later tier has any ranks, and respec must respect Monk licenses and external equipment effects."
   },
   "groups": [
     {
@@ -43,7 +44,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Botania mana is principally stored in devices, not a native player attribute; include a carried reservoir ONLY if player-owned storage API exists.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:magic_regeneration",
@@ -75,7 +78,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Convert each resource's own units without cross-filling other mods' pools.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_power",
@@ -112,7 +117,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Use per-mod calibrated multipliers; do not double count Ars 'n Spells bridge.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_cast_speed",
@@ -141,7 +148,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "No faster-than-tick actions or negative cast time; preserved separate from cooldown.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_cooldown",
@@ -170,7 +179,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "One investment can modify several cooldown paths, but test double application; Apothic 95% bound and real native mechanics.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_efficiency",
@@ -189,7 +200,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Apply only where there is a real personal resource-spend hook; not automatic full-cost avoidance or altar-energy boosts.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:magic_resistance",
@@ -212,7 +225,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Generic magical damage reduction; school-specific resistance remains a separate specialization.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:summoner_potency",
@@ -232,7 +247,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Goety servants and Primal Magick summons need verified ownership forwarding; familiar bond is not automatically identical to damage.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:mining_speed",
@@ -263,7 +280,9 @@
       ],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "One common Pufferfish investment affects all legal break actions; Monk's barehand permission supplies the correct tool context, NOT a separate second speed purchase.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:fall_protection",
@@ -292,7 +311,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Combine effects in one tested calculation; at zero fall damage stop selling additional levels.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:swim_mastery",
@@ -315,7 +336,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "One rank covers swim speed and underwater movement where independently meaningful; avoid squared bonus.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:projectile_damage",
@@ -338,7 +361,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Adapt to legal spirit/ki projectiles; apply only the correct underlying attribute per projectile, not both blindly.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:projectile_velocity",
@@ -361,7 +386,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Affects speed of eligible projectiles; not hitscan or non-moving spells.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:movement_speed",
@@ -384,7 +411,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Casting movement may be a separate penalty modifier; only unify if both still improve independently.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:natural_armor",
@@ -401,7 +430,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "One common armor stat; Monk's innate unarmored application or bonus must not duplicate the same Pufferfish modifier.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:max_health",
@@ -418,7 +449,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Same effective max-health attribute for everyone; Monk may unlock enhanced scaling, not force a duplicate store.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:attack_power",
@@ -435,7 +468,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "One common stat; Monk's compliant empty-hand attacks use it, others retain conventional equipment.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:attack_speed",
@@ -452,7 +487,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Native attack cooldown and 20 TPS tick resolution impose practical ceilings.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:critical_chance",
@@ -469,7 +506,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Stop when effective critical probability reaches its bound.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "single_finite_tyz_skill_up_to_99_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:critical_damage",
@@ -486,7 +525,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Can scale with increasing cost but verify crit damage additive/multiplicative stacking.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:luck",
@@ -503,7 +544,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Shared loot luck; original Apotheosis affix variants are separate technique unlocks, avoid double counts.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:vanilla_xp_gain",
@@ -520,7 +563,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Separate from Monastic Mastery XP earned through qualifying breaking, combat, unique food and rarity-infused food.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_range",
@@ -537,7 +582,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Extend to other mods only if a normal casting-range hook exists; not the same as block interaction reach.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     },
     {
       "canonical_skill_id": "tmm_shared:spell_area",
@@ -554,7 +601,9 @@
       "conditional_core_skills": [],
       "adapter_status": "source_backed_aggregate_not_implemented",
       "notes": "Extend to other mods only with genuine AoE radius scaling and shape safety.",
-      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks"
+      "access_policy": "universal_skill_available_to_all_players; Monk faction unlock may license barehand/ascetic application or new conditional upgrade track, NOT re-charge for universally owned attribute ranks",
+      "rank_backend": "tyzs_skills",
+      "stage_policy": "up_to_5_x10_stages_at_99_each_subject_to_effective_cap"
     }
   ],
   "separate_mod_specific_specializations": [
@@ -569,13 +618,28 @@
     "Apotheosis affix-specific effect techniques (98 TMM, 99 upstream)"
   ],
   "needs_live_verification": [
-    "Pufferfish 0.19.2 per-node forced unlock availability and command/API behavior",
-    "Pufferfish per-rank purchase persistence, custom reward disposal and repeatable UX",
-    "Category lock/unlock default false and Monk initiation synchronization",
-    "Vampirism unlock event and native faction skill respec/skill removal",
-    "Shared universal stat purchases remain available to non-Monks",
-    "No duplicated damage, cooldown, mobility, magic values and no false player attributes",
-    "Player death/logout/dimension change and client/server save stability",
-    "Bounded effect caps vs unbounded rank costs, high ranks and overflow"
-  ]
+    "Tyz 6.4.2 exact JAR interface and 1.21.1 client/server boot",
+    "Tyz server PurchasePre and RefundPre both normal/bulk; block before previous tier reaches exactly 99 and when Monk-only license absent",
+    "Tyz skillPrerequisites reflects owned skill not completed ranks; test client cue vs canceled server buy",
+    "99-prices+99-values config schema, category id and custom JSON install path under config/tyzs_skills/custom/skills",
+    "Tier modifier stacking unique skill IDs and actual native attribute caps; prevent no-op purchases and overflow",
+    "XP/SP from Tyz activity system, keep vanilla XP out of upgrades, decide Monk XP/skill point relationship",
+    "Refund higher-tier first and safe Monk faction respec/skill removal",
+    "Pufferfish/Improvable numeric skill overlap detection and suppress duplication",
+    "Use actual player-specific available attribute instances; non-attribute magic skills require code adapters",
+    "SP price sum in int, SP lifetime and gain thresholds, especially stage 5 and 6",
+    "Safe backup/migration for current save as soon as new mod enabled"
+  ],
+  "selected_backend": {
+    "mod": "tyzs_skills",
+    "version": "6.4.2",
+    "installed": false,
+    "monk_native": "single powers and leveled licenses",
+    "pufferfish": "nonoverlapping one-time/shared tree choices",
+    "rank_limit_per_skill": 99,
+    "tiers_default": 5,
+    "tiers_optionally": 6,
+    "source_gameplay_modifiers": "one canonical Tyz owner per physical stat",
+    "work_needed": "purchase/refund guard and effect cap checks"
+  }
 }

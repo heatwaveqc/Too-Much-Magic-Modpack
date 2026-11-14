@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: Dragon Survival 1.21.1 v2.0.74 approved and added to desired manifest (not installed/packwiz-pinned).",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: Dragon Survival 1.21.1 v2.0.74 approved and added to desired manifest (not installed/packwiz-pinned).\n2026-11-14: Tyz's Skills 6.4.2 approved for tiered Monk and shared repeatable skills (desired, uninstalled until packwiz pin + boot); retain existing Pufferfish and Improvable Skills for their independent content.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -1786,6 +1786,21 @@
       "dependencies_verified": false,
       "note": "User-approved in PR #6. B5 pinned and server test pending. Modrinth upstream release type: release",
       "packwiz_slug": "fenns_totemic"
+    },
+    {
+      "id": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "category": "skills",
+      "desired": true,
+      "version": "Tyz's skills 6.4.2 - 1.21.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/tyzs-skills/files/8118598",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "candidate_file_id": 8118598,
+      "curseforge_project_id": 990190,
+      "packwiz_slug": "tyzs-skills",
+      "note": "User selected 2026-11-14 as leveled Monk / universal skill backend. 1.21.1 NeoForge, 6.4.2. 99 levels per skill, data-driven per-rank SP prices and attribute modifiers. Multi-tier x10 progression via custom JSON + faction-gated purchase/refund events. NOT installed in packwiz or runtime verified; add/install and test before changing enabled_in_pack. Keep Pufferfish for one-off shared skill nodes and Improvable Skills for independent gameplay; never use vanilla XP as Monk tier purchase currency."
     },
     {
       "id": "unfocused",

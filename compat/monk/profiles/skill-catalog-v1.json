@@ -12,8 +12,8 @@
     "once": "Single permanent unlock; no meaningless repeated purchases.",
     "staged": "Finite meaningful states; cap dynamically at the actual final pack tool/ability stages."
   },
-  "backend_decision": "DEFERRED: Vampirism faction JSON vs Pufferfish versus custom repeatable capability",
-  "placement_decision": "DEFERRED: do not assign rank/age/boss milestones except already approved post-Dragon Momentum Gliding",
+  "backend_decision": "SELECTED: Tyz's Skills 6.4.2 owns leveled purchases; Monk native faction tree owns ability/permission unlocks; Pufferfish only nonoverlapping one-time skills. Implementation pending.",
+  "placement_decision": "DEFERRED: exact tier/rank and boss placement not set except post-Dragon momentum glide and progression exclusions",
   "apotheosis_policy": "99 distinct affix unlocks will be enumerated in companion artifact; use source-rarity-defined finite ranks, and no affix may grant innate Creative Flight",
   "attribute_dispositions": [
     {
@@ -1038,7 +1038,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/armor_shred",
@@ -1051,7 +1051,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/arrow_damage",
@@ -1065,7 +1065,7 @@
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
       "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/arrow_velocity",
@@ -1079,7 +1079,7 @@
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
       "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/cold_damage",
@@ -1092,7 +1092,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/cooldown_reduction",
@@ -1105,7 +1105,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/crit_chance",
@@ -1118,7 +1118,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/crit_damage",
@@ -1131,7 +1131,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/current_hp_damage",
@@ -1144,7 +1144,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/dodge_chance",
@@ -1157,7 +1157,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/draw_speed",
@@ -1171,7 +1171,7 @@
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
       "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/experience_gained",
@@ -1184,7 +1184,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/fire_damage",
@@ -1197,7 +1197,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/ghost_health",
@@ -1210,7 +1210,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/healing_received",
@@ -1223,7 +1223,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/life_steal",
@@ -1236,7 +1236,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/overheal",
@@ -1249,7 +1249,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/projectile_damage",
@@ -1263,7 +1263,7 @@
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
       "condition": "Only meaningful for a legal Monk spirit/ki projectile; unarmed ranged adapter required.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/prot_pierce",
@@ -1276,7 +1276,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/apothic_attributes/prot_shred",
@@ -1289,7 +1289,7 @@
       ],
       "availability": "verify_player_instance_and_source_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_drygmy",
@@ -1302,7 +1302,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_feather",
@@ -1328,7 +1328,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_max_mana",
@@ -1341,7 +1341,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_saturation",
@@ -1354,7 +1354,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_spell_damage",
@@ -1367,7 +1367,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_warding",
@@ -1380,7 +1380,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_weight",
@@ -1393,7 +1393,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/ars_nouveau/ars_nouveau_perk_wixie",
@@ -1406,7 +1406,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/chanting_speed",
@@ -1419,7 +1419,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/magic_power",
@@ -1432,7 +1432,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/eidolon_repraised/persistent_soul_hearts",
@@ -1445,7 +1445,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/forbidden_arcanus/generic_aureal_regeneration",
@@ -1458,7 +1458,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/forbidden_arcanus/generic_magic_protection",
@@ -1471,7 +1471,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/abyss_discount",
@@ -1484,7 +1484,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/abyss_potency",
@@ -1497,7 +1497,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/casting_speed",
@@ -1510,7 +1510,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/cooldown_discount",
@@ -1523,7 +1523,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/frost_discount",
@@ -1536,7 +1536,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/frost_potency",
@@ -1549,7 +1549,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/geomancy_discount",
@@ -1562,7 +1562,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/geomancy_potency",
@@ -1575,7 +1575,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/necromancy_discount",
@@ -1588,7 +1588,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/necromancy_potency",
@@ -1601,7 +1601,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/nether_discount",
@@ -1614,7 +1614,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/nether_potency",
@@ -1627,7 +1627,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/soul_discount",
@@ -1640,7 +1640,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_burning",
@@ -1653,7 +1653,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_duration",
@@ -1666,7 +1666,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_potency",
@@ -1679,7 +1679,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_radius",
@@ -1692,7 +1692,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_range",
@@ -1705,7 +1705,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/spell_velocity",
@@ -1718,7 +1718,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/storm_discount",
@@ -1731,7 +1731,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/storm_potency",
@@ -1744,7 +1744,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/void_discount",
@@ -1757,7 +1757,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/void_potency",
@@ -1770,7 +1770,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wild_discount",
@@ -1783,7 +1783,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wild_potency",
@@ -1796,7 +1796,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wind_discount",
@@ -1809,7 +1809,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/goety/wind_potency",
@@ -1822,7 +1822,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/blood_magic_resist",
@@ -1835,7 +1835,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/blood_spell_power",
@@ -1848,7 +1848,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/cast_time_reduction",
@@ -1861,7 +1861,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/casting_movespeed",
@@ -1874,7 +1874,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/cooldown_reduction",
@@ -1887,7 +1887,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/eldritch_magic_resist",
@@ -1900,7 +1900,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/eldritch_spell_power",
@@ -1913,7 +1913,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ender_magic_resist",
@@ -1926,7 +1926,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ender_spell_power",
@@ -1939,7 +1939,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/evocation_magic_resist",
@@ -1952,7 +1952,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/evocation_spell_power",
@@ -1965,7 +1965,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/fire_magic_resist",
@@ -1978,7 +1978,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/fire_spell_power",
@@ -1991,7 +1991,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/holy_magic_resist",
@@ -2004,7 +2004,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/holy_spell_power",
@@ -2017,7 +2017,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ice_magic_resist",
@@ -2030,7 +2030,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/ice_spell_power",
@@ -2043,7 +2043,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/lightning_magic_resist",
@@ -2056,7 +2056,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/lightning_spell_power",
@@ -2069,7 +2069,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/mana_regen",
@@ -2082,7 +2082,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/max_mana",
@@ -2095,7 +2095,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/nature_magic_resist",
@@ -2108,7 +2108,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/nature_spell_power",
@@ -2121,7 +2121,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/spell_power",
@@ -2134,7 +2134,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/spell_resist",
@@ -2147,7 +2147,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/irons_spellbooks/summon_damage",
@@ -2160,7 +2160,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/arcane_resonance",
@@ -2173,7 +2173,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_capacity",
@@ -2186,7 +2186,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_duration",
@@ -2199,7 +2199,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/charge_recovery_rate",
@@ -2212,7 +2212,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/geas_limit",
@@ -2225,7 +2225,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_capacity",
@@ -2238,7 +2238,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_recovery_gain",
@@ -2251,7 +2251,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_aegis_recovery_rate",
@@ -2264,7 +2264,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/malignant_conversion",
@@ -2277,7 +2277,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/scythe_proficiency",
@@ -2291,7 +2291,7 @@
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
       "condition": "Only as an independently adapted unarmed spirit-gathering benefit; original scythe gear prohibited.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_capacity",
@@ -2304,7 +2304,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_integrity",
@@ -2317,7 +2317,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_recovery_gain",
@@ -2330,7 +2330,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/soul_ward_recovery_rate",
@@ -2343,7 +2343,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/malum/spirit_spoils",
@@ -2356,7 +2356,7 @@
       ],
       "availability": "verify_pinned_binary_and_live_player_registry",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_armor",
@@ -2369,7 +2369,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_armor_toughness",
@@ -2382,7 +2382,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_damage",
@@ -2395,7 +2395,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_knockback",
@@ -2408,7 +2408,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_attack_speed",
@@ -2421,7 +2421,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_burning_time",
@@ -2434,7 +2434,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_explosion_knockback_resistance",
@@ -2447,7 +2447,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_fall_damage_multiplier",
@@ -2460,7 +2460,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_flying_speed",
@@ -2474,7 +2474,7 @@
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
       "condition": "Only modifies externally provided flight, if the Draconic Curio honors the attribute; it never grants flight.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_gravity",
@@ -2488,7 +2488,7 @@
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
       "condition": "Never permit invalid gravity/negative physics exploits; only effective bounded ranks.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_jump_strength",
@@ -2501,7 +2501,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_knockback_resistance",
@@ -2514,7 +2514,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_luck",
@@ -2527,7 +2527,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_max_absorption",
@@ -2540,7 +2540,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_max_health",
@@ -2553,7 +2553,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_movement_efficiency",
@@ -2566,7 +2566,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_movement_speed",
@@ -2579,7 +2579,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_oxygen_bonus",
@@ -2592,7 +2592,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_safe_fall_distance",
@@ -2605,7 +2605,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_scale",
@@ -2619,7 +2619,7 @@
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
       "condition": "Clamp dimensions to safe player collision, networking and boss-arena behavior.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/generic_step_height",
@@ -2646,7 +2646,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_block_interaction_range",
@@ -2659,7 +2659,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_entity_interaction_range",
@@ -2672,7 +2672,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_sneaking_speed",
@@ -2685,7 +2685,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_submerged_mining_speed",
@@ -2698,7 +2698,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/minecraft/player_sweeping_damage_ratio",
@@ -2711,7 +2711,7 @@
       ],
       "availability": "verify_player_instance_and_mechanical_effect",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neoforge/swim_speed",
@@ -2725,7 +2725,7 @@
       "availability": "requires_runtime_player_effect_check",
       "implementation_status": "design_only",
       "condition": "Found in Apotheosis Aquatic affix; confirm actual player attribute in integrated pack.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/blood_shield",
@@ -2738,7 +2738,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/blood_siphon",
@@ -2751,7 +2751,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_sacrifice",
@@ -2764,7 +2764,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_self_sacrifice",
@@ -2777,7 +2777,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/bonus_spiritus",
@@ -2790,7 +2790,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/player_self_sacrifice_multiplier",
@@ -2803,7 +2803,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:trait/neovitae/sigil_cost_reduction",
@@ -2816,7 +2816,7 @@
       ],
       "availability": "requires_mod_attachment_or_pinned_binary_confirmation",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:harvest/barehand_tier",
@@ -2828,7 +2828,7 @@
       "description": "Permits valid drops at progressively higher real tool tiers; no extra ranks after the highest legitimate pack tier.",
       "notes": "Must respect required tool category, non-vanilla tiers, protected ores and real drop logic.",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:harvest/barehand_speed",
@@ -2844,7 +2844,7 @@
       "description": "Increasing hand-breaking speed, escalating rank costs, no arbitrary rank cap. Never improves harvest tier.",
       "notes": "One upgrade orchestrates source attributes to avoid compounding one purchase.",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:harvest/glass_touch",
@@ -2880,7 +2880,7 @@
       "description": "Fortune-like drop bonus up to the actually achievable equipment enchantment bound, respecting recipes.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:harvest/looting_hands",
@@ -2892,7 +2892,7 @@
       "description": "Looting-like bonus from qualifying unarmed or personally credited spells.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:harvest/shear_touch",
@@ -3000,7 +3000,7 @@
       "description": "Reduce food exhaustion while keeping consumption and unique-food discovery meaningful.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:contemplation/cleansing",
@@ -3024,7 +3024,7 @@
       "description": "Passive mitigation of fire damage independent from native burning duration.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:contemplation/lava_survival",
@@ -3048,7 +3048,7 @@
       "description": "Incoming explosion damage mitigation; different from blast knockback resistance.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mobility/water_walk",
@@ -3072,7 +3072,7 @@
       "description": "Two meaningful stages: slower air depletion then full underwater breathing.",
       "notes": "max_ranks fixed 2; staged method differs from harvest tier.",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mobility/blink",
@@ -3110,7 +3110,7 @@
       "description": "Improves earned Monk Mastery XP with escalating costs and anti-exploit checks; distinct from vanilla XP.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mastery/faction_skill_point_bonus",
@@ -3122,7 +3122,7 @@
       "description": "Additional skill points per completed Monk faction rank, within supported Vampirism accounting; no duplication exploits.",
       "notes": "",
       "implementation_status": "design_only",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mahou/maximum_capacity",
@@ -3135,7 +3135,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mahou/regeneration",
@@ -3148,7 +3148,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:mahou/spell_efficiency",
@@ -3161,7 +3161,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:primal/attunement",
@@ -3174,7 +3174,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:primal/spell_proficiency",
@@ -3187,7 +3187,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:occultism/familiar_bond",
@@ -3200,7 +3200,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:occultism/summoner_mastery",
@@ -3213,7 +3213,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:neovitae/ritual_mastery",
@@ -3226,7 +3226,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:astral/attunement",
@@ -3239,7 +3239,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     },
     {
       "id": "tmm_monk:roots/terra_mastery",
@@ -3252,7 +3252,7 @@
       "availability": "additional_cross_mod_api_validation_required",
       "implementation_status": "design_only",
       "notes": "Conditional; reject this skill if the exact pinned mod offers no player-specific mechanic. No fake stat or universal free boost.",
-      "tentative_owner": "monk_faction_unlock_then_pufferfish_investment"
+      "tentative_owner": "monk_faction_unlock_then_tyzs_investment"
     }
   ],
   "original_crosswalk": [
@@ -3470,13 +3470,15 @@
     "The backend and progression placement are intentionally undecided.",
     "Non-attribute magic resource/attunement candidates are included as conditional proposals, not fake native attributes. Each must survive pinned-mod API review before user-facing purchase.",
     "Step Assist is now one-time in the Monk faction tree (distinct from a separately proposed extra-high-step numeric trait, which is not in this locked candidate list).",
-    "Tentative two-layer ownership trial: single ranks are faction mechanics; non-single ranks are faction permission plus unified Pufferfish investment; no execution until PoC validates category/skill gating and repeatability."
+    "Tentative two-layer ownership trial: single ranks are faction mechanics; non-single ranks are faction permission plus unified Pufferfish investment; no execution until PoC validates category/skill gating and repeatability.",
+    "User-approved backend update 2026-11-14: Tyz's Skills 6.4.2 has 99 per-skill max; configurable tenfold stage multiplier and SP cost can emulate 495 or 594 meaningful purchase ranks. Only scale into stages with native attribute effect headroom. No vanilla XP used for purchases."
   ],
   "total_skill_records_excluding_apotheosis": 172,
   "ownership_proposal": {
-    "status": "tentative_designed_not_implemented",
-    "single": "faction_tree_grants_effect",
-    "non_single": "faction_tree_grants_permission_and_unified_pufferfish_progression_owns_investment",
-    "backend_repeatability": "requires_bridge_or_explicit_multiple_one_time_nodes; native Pufferfish nodes are boolean IDs"
+    "status": "owner_selected_tyzs_skills_6_4_2_pinned_candidate_not_runtime_installed",
+    "single": "monk_faction_skill_grants_effect",
+    "non_single": "monk_faction_skill_grants_permission_then_tyzs_skills_owns_per_trait_rank_purchases",
+    "rank_investment": "up_to_99_per_skill_staged_5_default_optional_6th_increasing_x10_stat_and_SP_price",
+    "shared_pufferfish": "retained_for_one_time_choices_and_unified_layout_only; must not grant same recurring attribute modifier"
   }
 }
