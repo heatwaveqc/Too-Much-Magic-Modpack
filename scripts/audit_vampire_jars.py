@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+"""Read-only pinned-JAR audit for the Transformation Compat vampire pilot.
+
+Downloads ONLY two unmodified, hash-pinned mod artifacts into an ephemeral temp
+directory. Prints class/API and resource inventories, never uploads/distributes JARs.
+Do not infer event semantics or player state from class names alone.
+"""
+from __future__ import annotations
+
+import hashlib
+import pathlib
+import re
+import subprocess
+import tempfile
+import tomllib
+import urllib.parse
+import urllib.request
+import zipfile
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+MOD_PINS = (
+    "mods/just-another-witchery-remake.pw.toml",
+    "mods/vampirism-become-a-vampire.pw.toml",
+)
+CLASS_TERM = re.compile(r"(vampir|blood|sanguin|sunlight|sun.?damage|immortal|death|reviv|resurrect|hunger|food|lycan|curs|batform|bat_form)", re.I)
+METHOD_TERM = re.compile(r"(vampir|blood|sanguin|sun|immortal|death|reviv|respawn|hunger|feed|eat|drink|cure|curse|transform|faction|isVampire)", re.I)
+
+
+def inspect_pin(pin: str) -> None:
+    source = ROOT / pin
+    data = tomllib.loads(source.read_text())
+    info = data["download"]
+    url = info.get("url")
+    if not url and info.get("mode") == "metadata:curseforge":
+        fid = data["update"]["curseforge"]["file-id"]
+        filename = data["filename"]
+        url = f"https://mediafilez.forgecdn.net/files/{fid//1000}/{fid%1000:03d}/{urllib.parse.quote(filename)}"
+    if not url or urllib.parse.urlparse(url).hostname not in {"mediafilez.forgecdn.net", "cdn.modrinth.com", "edge.forgecdn.net"}:
+        raise ValueError(f"Unapproved source for {pin}")
+    print(f"===== {source.name} =====", flush=True)
+    req = urllib.request.Request(url, headers={"User-Agent": "TMM-Vampire-Audit/1.0"})
+    with urllib.request.urlopen(req, timeout=90) as response:
+        payload = response.read()
+    algorithm = info["hash-format"]
+    assert algorithm in {"sha512", "sha256", "sha1"}
+    actual = getattr(hashlib, algorithm)(payload).hexdigest()
+    if actual.lower() != info["hash"].lower():
+        raise ValueError(f"Hash mismatch: {pin}")
+    print(f"HASH VERIFIED: {algorithm} {actual}, bytes={len(payload)}", flush=True)
+
+    with tempfile.TemporaryDirectory(prefix="tmm-vampire-audit-") as tmp:
+        jar = pathlib.Path(tmp) / data["filename"]
+        jar.write_bytes(payload)
+        with zipfile.ZipFile(jar) as z:
+            classes = [n.removesuffix(".class").replace("/", ".") for n in z.namelist()
+                       if n.endswith(".class") and not n.startswith("META-INF/")]
+            matching = sorted(c for c in classes if CLASS_TERM.search(c))
+            files = sorted(n for n in z.namelist() if
+                           n.startswith(("data/", "assets/")) and
+                           re.search(r"(vampir|blood|sun|curs|bat|reviv|resurrect|food)", n, re.I))
+            print(f"TOTAL classes={len(classes)}, vampire/death/food-related={len(matching)}, related resources={len(files)}")
+            print("MATCHING_CLASSES:")
+            for name in matching[:260]:
+                print(" CLASS", name)
+            if len(matching) > 260:
+                print(f" ... {len(matching)-260} more matching classes")
+            print("MATCHING_RESOURCES:")
+            for path in files[:180]:
+                print(" RESOURCE", path)
+            if len(files) > 180:
+                print(f" ... {len(files)-180} more matching resources")
+            print("ENTRYPOINT_CANDIDATES:")
+            keys = re.compile(r"(VampireData|VampirePlayer|Vampire.*Attachment|VampirismAPI|Blood.*Data|Blood.*Component|Vampire.*Component|Vampire.*Event|Vampire.*Handler|Vampire.*Ability|Vampire.*Skill|Vampire.*Power|Vampire.*Quest|Vampire.*Mixin|PlayerFactionEvent|FactionPlayerHandler|Vampire.*Death|Vampire.*Config|Vampire.*Transformation)", re.I)
+            candidates = [x for x in matching if keys.search(x.split(".")[-1]) and "$" not in x]
+            for cls in candidates[:50]:
+                proc = subprocess.run(["javap", "-p", "-classpath", str(jar), cls],
+                                       capture_output=True, text=True, timeout=12)
+                if proc.returncode == 0:
+                    print(" JAVAP", cls)
+                    for line in proc.stdout.splitlines():
+                        if METHOD_TERM.search(line) or re.search(r"^public (class|interface|record|final|abstract)", line):
+                            print("  ", line[:310])
+                else:
+                    print(" JAVAP_FAILED", cls, proc.stderr[:200])
+            if len(candidates) > 50:
+                print(f" ... {len(candidates)-50} more candidates")
+        jar.unlink()
+
+
+if __name__ == "__main__":
+    for entry in MOD_PINS:
+        inspect_pin(entry)
