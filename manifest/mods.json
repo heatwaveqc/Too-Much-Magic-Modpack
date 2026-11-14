@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "Broad stable-only gameplay integration candidate. ProjectE/Project Expansion are TEST-BUILD ONLY until Chaos Guardian locks exist.",
+  "note": "B4 experimental additions; trust only per-stage logged successful smoke tests. ProjectE and Expansion remain ungated.",
   "mods": [
     {
       "id": "apotheosis",
@@ -148,6 +148,19 @@
       "enabled_in_pack": false,
       "dependencies_verified": false,
       "note": "RogueLogix original only publishes <=1.20.1 on official CurseForge as of 2026-11-13. Unofficial 1.21.1 NeoForge Rework and Revived forks available but REQUIRE user approval before substitution."
+    },
+    {
+      "id": "bigger-reactors-rework",
+      "name": "Bigger Reactors Rework",
+      "category": "technology",
+      "desired": true,
+      "version": "biggerreactorsrework-1.21.1-0.1.6",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1760630",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "biggerreactors-rework",
+      "note": "Approved BiggerReactors Rework 1.21.1 fork, namespace biggerreactorsrework; non-migrating worlds"
     },
     {
       "id": "botania",
@@ -1090,6 +1103,14 @@
         "witchery-remake"
       ],
       "status": "server_smoked_client_pending"
+    },
+    {
+      "id": "B6",
+      "name": "BiggerReactors Rework and experimental Astral/Botania/Draconic",
+      "members": [
+        "bigger-reactors-rework"
+      ],
+      "status": "stage_reactor_awaiting_boot"
     }
   ]
 }

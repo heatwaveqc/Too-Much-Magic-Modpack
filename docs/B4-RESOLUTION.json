@@ -1,0 +1,84 @@
+{
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.265",
+  "java": 21,
+  "baseline_branch": "build/b3-stable-magic-tectonic",
+  "baseline_mods": 64,
+  "staged_targets": {
+    "reactor": [
+      {
+        "manifest_id": "bigger-reactors-rework",
+        "curseforge_project": 1760630,
+        "curseforge_file": 9448110,
+        "expected_filename": "biggerreactorsrework-1.21.1-0.1.6.jar",
+        "release_classification": "verified_release"
+      }
+    ],
+    "astral": [
+      {
+        "manifest_id": "observerlib",
+        "curseforge_project": 316833,
+        "curseforge_file": 8726128,
+        "expected_filename": "observerlib-1.10.3.jar",
+        "release_classification": "experimental_release"
+      },
+      {
+        "manifest_id": "astral-sorcery",
+        "curseforge_project": 241721,
+        "curseforge_file": 9281073,
+        "expected_filename": "AstralSorcery-2.0.3.59.jar",
+        "release_classification": "experimental_release"
+      }
+    ],
+    "botania": [
+      {
+        "manifest_id": "botania-revived",
+        "curseforge_project": 1725641,
+        "curseforge_file": 9577651,
+        "expected_filename": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+        "release_classification": "verified_release"
+      }
+    ],
+    "draconic": [
+      {
+        "manifest_id": "brandons-core",
+        "curseforge_project": 231382,
+        "curseforge_file": 7130990,
+        "expected_filename": "BrandonsCore-1.21.1-3.2.1.309.jar",
+        "release_classification": "verified_release"
+      },
+      {
+        "manifest_id": "draconic-evolution",
+        "curseforge_project": 223565,
+        "curseforge_file": 8797042,
+        "expected_filename": "Draconic-Evolution-1.21.1-3.1.4.633.jar",
+        "release_classification": "experimental_release"
+      }
+    ]
+  },
+  "results": [
+    {
+      "stage": "reactor",
+      "requested": [
+        "bigger-reactors-rework"
+      ],
+      "status": "PASS",
+      "resolved": [
+        "bigger-reactors-rework"
+      ],
+      "detail": "Clean server readiness and stop; JAR hashes verified",
+      "errors": [
+        "\u001b[m\u001b[1;31m[03:24:04.236] [main/ERROR] [loading.moddiscovery.ModFile/LOADING]: Access transformer file accesstransformer.cfg provided by mod projectexpansion does not exist!",
+        "\u001b[m\u001b[33m[03:24:07.673] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)",
+        "\u001b[m\u001b[33m[03:24:07.682] [main/WARN] [mixin/]: Error loading class: org/violetmoon/quark/content/tweaks/module/GoldToolsHaveFortuneModule (java.lang.ClassNotFoundException: org.violetmoon.quark.content.tweaks.module.GoldToolsHaveFortuneModule)"
+      ]
+    }
+  ],
+  "not_tested": [
+    "graphical client",
+    "shader/sky rendering",
+    "real player world entry",
+    "Chaos Guardian / ProjectE gating",
+    "gameplay feature balance"
+  ]
+}
