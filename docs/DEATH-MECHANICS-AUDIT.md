@@ -1,6 +1,6 @@
 # Player death and resurrection mechanics — multi-mod audit
 
-**STATUS: audited from published documentation/source, but not combined-playtested.** Date 2026-11-13. Minecraft 1.21.1 NeoForge. Do not treat this as an implemented death compatibility manager. The **locked transformation target** is [TRANSFORMATION-TARGET.md](TRANSFORMATION-TARGET.md).
+**STATUS: audited from published documentation/source, but not combined-playtested.** **User-locked actual-death ownership (2026-11-13):** Corail Tombstone alone manages recoverable inventory, XP and graves upon genuine player death; independent Enigmatic soul penalties stay. Generic totem-like savers should not be rewritten absent measured conflict. See [POST-DEATH-OWNERSHIP.md](POST-DEATH-OWNERSHIP.md) and the [D01–D24 acceptance plan](DEATH-COMPAT-TEST-PLAN.md). Any priority proposals below remain research only. Date 2026-11-13. Minecraft 1.21.1 NeoForge. Do not treat this as an implemented death compatibility manager. The **locked transformation target** is [TRANSFORMATION-TARGET.md](TRANSFORMATION-TARGET.md).
 
 ## What counts as modifying death?
 
