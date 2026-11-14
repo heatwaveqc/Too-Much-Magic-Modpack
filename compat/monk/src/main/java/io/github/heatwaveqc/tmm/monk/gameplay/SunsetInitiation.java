@@ -108,6 +108,12 @@ public final class SunsetInitiation {
         }
     }
 
+    public static void onClone(PlayerEvent.Clone event) {
+        // A death/respawn is not a continuation of the meditation.
+        PROGRESS.remove(event.getEntity().getUUID());
+        APPROVED_TRANSITIONS.remove(event.getEntity().getUUID());
+    }
+
     public static void onDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             PROGRESS.remove(player.getUUID());
