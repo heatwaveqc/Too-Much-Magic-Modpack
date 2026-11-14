@@ -1,0 +1,94 @@
+name: B13 Home + RTP combined client QA
+on:
+  push:
+    branches: ['feature/qol-ftb-essentials-sethome-rtp']
+    paths: ['.github/workflows/ftb-essentials-home-rtp.yml', 'scripts/resolve_ftb_essentials_qol.py']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resolve-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Install pinned packwiz and compile Python scripts
+        run: |
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+          python3 -m py_compile scripts/resolve_ftb_essentials_qol.py scripts/validate.py scripts/validate_quests.py
+      - name: Pin exact official FTB Essentials and validate 148-mod pack
+        run: |
+          python3 scripts/resolve_ftb_essentials_qol.py
+          packwiz list
+      - name: Compile and unit-test existing vampire compatibility bridge
+        working-directory: compat/transformations
+        run: gradle --no-daemon build
+      - name: Full 148-mod dedicated-server smoke with vampire bridge
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '660'
+          WORK_DIR: ${{ runner.temp }}/tmm-b13-home-rtp
+          SMOKE_EXTRA_MOD_JAR: ${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+        run: bash scripts/smoke_server.sh
+      - name: Commit reviewed B13 pins after validation
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("manifest/mods.json")
+          m=json.loads(p.read_text(encoding="utf-8"))
+          next(x for x in m["batches"] if x["id"] == "B13")["status"]="server_smoked_client_command_test_pending"
+          p.write_text(json.dumps(m, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+          PY
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/ftb-essentials.pw.toml mods/ftb-essentials-forge.pw.toml manifest/mods.json pack.toml index.toml
+          git add -u mods/ manifest/mods.json pack.toml index.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "build(qol): pin official FTB Essentials; home and RTP enabled, server smoked"
+            git push origin HEAD:feature/qol-ftb-essentials-sethome-rtp
+          fi
+      - name: Fetch packwiz installer bootstrap
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Package immutable Quest + Vampire + Home/RTP Prism import
+        run: |
+          python3 scripts/build_vampire_prism.py "${{ runner.temp }}/packwiz-installer-bootstrap.jar" "${{ runner.temp }}" "$(git rev-parse HEAD)" "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+          test -s "${{ runner.temp }}/Too-Much-Magic-Quest-Vampire-QA-Prism.zip"
+      - name: Upload complete Prism QA instance
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Quest-Vampire-Home-RTP-Prism
+          path: ${{ runner.temp }}/Too-Much-Magic-Quest-Vampire-QA-Prism.zip
+          retention-days: 30
+          if-no-files-found: error
+      - name: Preserve server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B13-Home-RTP-Smoke-Logs
+          path: |
+            ${{ runner.temp }}/tmm-b13-home-rtp/server.log
+            ${{ runner.temp }}/tmm-b13-home-rtp/logs/latest.log
+          if-no-files-found: warn
+          retention-days: 14
