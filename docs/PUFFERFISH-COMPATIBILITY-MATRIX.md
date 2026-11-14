@@ -10,14 +10,14 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 
 | State | Count |
 |---|---:|
-| Confirmed (source-backed and parent-inherited) | **15** |
+| Confirmed (source-backed and parent-inherited) | **16** |
 | Compatible with work | **9** |
-| Needs investigation | **10** |
+| Needs investigation | **9** |
 | Proven incompatible | **0** |
 | Nothing separate to enhance | **8** |
 | **Total** | **42** |
 
-## Confirmed — source-backed or parent-inherited Pufferfish compatibility (15)
+## Confirmed — source-backed or parent-inherited Pufferfish compatibility (16)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
@@ -27,6 +27,7 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Ars Elemental** (`ars-elemental`) | Damage glyphs extend Ars AbstractEffect and use SpellStats/SpellResolver; hence normal Ars spell perks are inherited. | Test custom damage types, elemental summons and ownership separately; no automatic generic-pet claim. |
 | **Ars Nouveau** (`ars-nouveau`) | Native spell-related attributes are source-verified; central Ars casting path is a clear Pufferfish integration target. | Map skill rewards to actual attribute IDs and test with Ars spells. |
 | **Botania Revived** (`botania-revived`) | Prior audit identified player-relevant, source-verified enhancement mechanisms (including PixieHandler). | Validate cross-loader and port-specific behavior; avoid claiming Pufferfish runtime proof. |
+| **Embers Re-Ignited** (`embers-re-ignited`) | Exact 1.21.1-1.5.9 upstream source exposes `EmberRemoveEvent` (player item-based Ember expense) and `EmberProjectileEvent` (Cinder Staff and Blazing Ray); `AugmentUtil` manipulates persistent equipment augments and heat. Most features are machines and item effects, not a native player mana or magic attribute. | Source-backed hooks **Confirmed**, gameplay/Pufferfish bridge not implemented: trial bounded per-player expenditure discount, projectile scaling and optional at-craft gear quality; guard Curios discount stacking and pre-discount weapon reserve checks. Separate Ember-to-FE dynamo at theoretical 1,000 FE/t; audit dynamic metal seed renewability and static uranium exception. [Audit](EMBERS-SKILLS-AND-ECONOMY-AUDIT-2026-11-13.md). |
 | **Eidolon: Repraised** (`eidolon-repraised`) | EidolonAttributes in the 1.21.1 repository establish native stat hooks. | Wire Pufferfish modifiers; test. |
 | **Forbidden & Arcanus** (`forbidden-arcanus`) | FAAttributes in the 1.21.1 repository provide native stat hooks. | Wire Pufferfish modifiers; test. |
 | **Goety — The Dark Arts** (`goety`) | 27 registered spell/school attributes, plus owned servant mechanics, inspected in Goety-3 1.21.1 source. | Test school/global precedence, cooldown edge cases, servant melee/ranged/spells. |
@@ -51,11 +52,10 @@ Updated 2026-11-13. Scope: the 42 retained magic-related entries from the origin
 | **Scriptor Magicae** (`scriptor-magicae`) | Source-backed cooldown in `EntityCastCooldownExtension` (private data, no Minecraft attribute), explicit book/cast cost and lectern behavior; `Inflame` smelts furnace recipes, `Break` mines existing ore, `Bring` transports drops, `Place` generates magic blocks (not ore). Lectern caster inventory has a likely null getter bug. | **No Mana Mode.** Personal cooldown/crafted-item-quality bridge candidates; **keep lecterns powerful** pending actual 2.0.14 gameplay tests of ores, smelting and collection. [Audit](SCRIPTOR-LECTERN-SKILLS-AUDIT-2026-11-13.md). |
 | **Roots Classic** (`roots-classic`) | Opt-in KubeJS first-pickup Crystal Staff imprinting and server/client Terra attachment mirroring prototyped in PR #8 and carried into the B6 reconciliation branch; not gameplay-tested. | Test script loading, staff components and 40→60 Terra HUD across login, death and dimensions. |
 
-## Needs investigation — insufficient source evidence yet (10)
+## Needs investigation — insufficient source evidence yet (9)
 
 | Mod | Current evidence / rationale | Next action |
 |---|---|---|
-| **Embers Re-Ignited** (`embers-re-ignited`) | Magical industry/resource system not audited for player-specific upgrades. | Check whether player-based casting or skill-scalable crafting exists. |
 | **Enchanted: Witchcraft** (`enchanted-witchcraft`) | Rites, poppets and magical progression have not been examined for player-level stat hooks. | Determine whether there are personal magic skills or just item/ritual effects. |
 | **Enigmatic Legacy+** (`enigmatic-legacy-plus`) | Artifact-driven personal powers and possible progression; no stat API audit yet. | Determine whether relevant benefits are player attributes or purely equipment-based. |
 | **Feywild** (`feywild`) | Fey summon/quest system; pet ownership interface unexamined. | Check summon entities, owner tracking, pact mechanics and generic pet buffs. |
@@ -89,7 +89,7 @@ None demonstrated.
 - **No independent skill nodes** for Ars Ocultas and Ars Unification; their block/recipe behavior is complementary to the parent systems.
 - **Addon follow-up tests:** Ars 'n Spells separate-pool mode and damage stacking; Extra Botany's custom magic damage; 1.21.1 Goety Cataclysm inheritance; Gaze's remaining projectile paths/bytecode. These stay separate from the broader investigation queue.
 - **Reviewed with parent:** Psi and Psi: Tweaks and Additions have source-backed player attribute and KubeJS hooks. **Psi does not join Ars/Iron's shared mana**; evaluate provisional penalty/storage/automation tuning and Psi-generated FE as a candidate alternative to BiggerReactors. See [focused audit](PSI-SKILLS-DEEP-DIVE-2026-11-13.md).
-- **Broader unexplored systems:** JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Embers, Enigmatic Legacy+.
+- **Broader unexplored systems:** JAWR, Vampirism and Werewolves, Totemic, Pastel, Enchanted: Witchcraft, Feywild, Enigmatic Legacy+.
 - **Previously designed work:** Occultism ownership adapter, Roots draft PR #8 first-pickup/Terra synchronization, Primal Magick sorcery-tag bridge.
 - **Gaze:** [focused audit and test plan](GAZE-SKILLS-AUDIT-2026-11-13.md) covers the partial Malum attribute bridge and remaining uncertainty.
 - **Psi + PsiTweaks:** [source-backed deep dive](PSI-SKILLS-DEEP-DIVE-2026-11-13.md), including Psi 110 KubeJS events, player/equipment attribute separation, addon research and balance blockers.
