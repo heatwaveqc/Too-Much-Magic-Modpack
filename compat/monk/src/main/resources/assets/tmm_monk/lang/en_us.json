@@ -6,5 +6,13 @@
   "gui.tmm_monk.skills.level": "Monk Disciplines",
   "message.tmm_monk.sunset_progress": "Sunset meditation: %s / %s seconds",
   "message.tmm_monk.sunset_complete": "You have completed the First Sunset and become a Monk.",
-  "message.tmm_monk.sunset_interrupted": "Your meditation did not complete; try again at another sunset."
+  "message.tmm_monk.sunset_interrupted": "Your meditation did not complete; try again at another sunset.",
+  "skill.tmm_monk.open_palm": "Open Palm",
+  "skill.tmm_monk.open_palm.desc": "Your unarmed strikes deal +1 attack damage while you observe the Monk discipline.",
+  "skill.tmm_monk.unarmored_poise": "Unarmored Poise",
+  "skill.tmm_monk.unarmored_poise.desc": "Your body gains +2 natural armor while wearing no conventional armor.",
+  "skill.tmm_monk.fleet_footwork": "Fleet Footwork",
+  "skill.tmm_monk.fleet_footwork.desc": "You move 5% faster while remaining within the Monk discipline.",
+  "message.tmm_monk.rank_up": "Monk cultivation advanced to rank %s! New faction skill points are available.",
+  "message.tmm_monk.mastery_gained": "+%s Monk mastery (%s): %s / %s cumulative XP"
 }
