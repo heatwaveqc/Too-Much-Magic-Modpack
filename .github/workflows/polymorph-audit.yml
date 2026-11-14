@@ -1,0 +1,52 @@
+name: Polymorph recipe conflict audit
+
+on:
+  push:
+    branches:
+      - audit/polymorph-conflicts-2026-11-14
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recipe-conflicts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify packwiz manifest and exact mod pins
+        run: python3 scripts/validate.py
+      - name: Launch complete disposable server and invoke Polymorph scan
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_POLYMORPH_AUDIT: '1'
+          SMOKE_TIMEOUT_SECONDS: '480'
+          WORK_DIR: ${{ runner.temp }}/tmm-polymorph-audit
+        run: bash scripts/smoke_server.sh
+      - name: Parse native Polymorph conflict report
+        run: |
+          python3 scripts/summarize_polymorph_conflicts.py \
+            --report "${{ runner.temp }}/tmm-polymorph-audit/logs/polymorph-conflicts.log" \
+            --server-log "${{ runner.temp }}/tmm-polymorph-audit/server.log" \
+            --output-json "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json" \
+            --output-md "${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md"
+      - name: Keep raw report and readable summaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-polymorph-conflict-audit
+          path: |
+            ${{ runner.temp }}/tmm-polymorph-audit/logs/polymorph-conflicts.log
+            ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.json
+            ${{ runner.temp }}/tmm-polymorph-audit/recipe-conflicts.md
+            ${{ runner.temp }}/tmm-polymorph-audit/server.log
+            ${{ runner.temp }}/tmm-polymorph-audit/logs/latest.log
+          if-no-files-found: warn
