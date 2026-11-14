@@ -1202,6 +1202,30 @@
       "note": "Approved by user for planned inclusion in 2026-11-13 magic survey. Exact Minecraft 1.21.1 NeoForge project identity, file/version, licensing and dependency closure must be verified before packwiz install. Not yet smoke-tested."
     },
     {
+      "id": "vampirism",
+      "name": "Vampirism — Become a Vampire!",
+      "category": "supernatural",
+      "desired": true,
+      "version": "1.10.13",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/vampirism-become-a-vampire/files/all?page=1&version=1.21.1",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user 2026-11-13; NeoForge 1.21.1 release Vampirism-1.21-1.10.13 (2026-09-05). Skill-tree caps, leveling and balancing deliberately deferred. New vampire forest biome/territory mechanics merit worldgen review; no install yet."
+    },
+    {
+      "id": "werewolves",
+      "name": "Werewolves — Become a Beast!",
+      "category": "supernatural",
+      "desired": true,
+      "version": "2.0.3.3",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/werewolves-become-a-beast",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Approved by user 2026-11-13; NeoForge 1.21.1 release Werewolves-1.21-2.0.3.3 (2026-03-25). Requires Vampirism; pin compatible pairing before install. Skill tree caps and balancing later; adds Werewolf Heaven biome."
+    },
+    {
       "id": "witchery-remake",
       "name": "Just Another Witchery Remake",
       "category": "magic",
@@ -1426,7 +1450,9 @@
         "psi",
         "hexcast-neoforged",
         "embers-re-ignited",
-        "totemic"
+        "totemic",
+        "vampirism",
+        "werewolves"
       ],
       "status": "planned_unresolved_releases"
     }
