@@ -109,6 +109,17 @@ def inspect_pin(pin: str) -> None:
                     for ln in proc.stdout.splitlines()[:750]:
                         if any(x in ln.lower() for x in ("key.", "keybind", "keymapping", "glfw_key", "mouse", "ability", "open", "activate", "toggle", "shift", "mousebutton", "key_", "input", "scroll", "select")):
                             print(" JAWR_CONTROL_BC", ln[:350], flush=True)
+                for cls in (
+                    "dev.sterner.witchery.feature.ability.ClientAbilityHandler",
+                    "dev.sterner.witchery.feature.ability.AbilityHudRenderer",
+                    "dev.sterner.witchery.client.AbilitySelectionScreen",
+                    "dev.sterner.witchery.core.registry.WitcheryKeyMappings",
+                ):
+                    proc = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                        capture_output=True, text=True, timeout=25)
+                    print("JAWR_INPUT_DISASM", cls, "exit", proc.returncode, flush=True)
+                    for line in proc.stdout.splitlines()[:2200]:
+                        print(" JAWR_INPUT", line[:310], flush=True)
                 # Acquisition entrypoints: identify what triggers first-level advancement,
                 # how the sacrificial circle is created, and ritual materials.
                 for cls in sorted(classes):
