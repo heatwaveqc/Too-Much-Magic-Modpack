@@ -74,6 +74,23 @@
       ],
       "mode": "source-and-test-only",
       "note": "Four 99-rank skills and MXP-only config preview; do not install the overlay without exact Tyz 6.4.2 pin and Pufferfish migration"
+    },
+    {
+      "name": "ftb-essentials-home-rtp",
+      "branch": "feature/qol-ftb-essentials-sethome-rtp",
+      "paths": [
+        "config/ftbessentials.snbt",
+        "defaultconfigs/ftbessentials-server.snbt",
+        "scripts/resolve_ftb_essentials_qol.py"
+      ],
+      "optional_paths": [
+        "mods/ftb-essentials.pw.toml"
+      ],
+      "manifest_mod_ids_if_available": [
+        "ftb-essentials"
+      ],
+      "mode": "runtime-when-pinned",
+      "note": "Register current source immediately and bring the approved FTB Essentials 2101.1.10 pack pin into integration automatically after upstream B13 resolves; non-op home/RTP still require in-world QA"
     }
   ],
   "covered_by_baseline": {
