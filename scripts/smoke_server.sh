@@ -46,6 +46,19 @@ STATUS=$?
 set -e
 kill "$STOPPER" 2>/dev/null || true
 if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
+  if [[ -n "${SMOKE_EXTRA_MOD_JAR:-}" ]]; then
+    if ! grep -q 'Experimental vampire chassis loaded' server.log; then
+      echo "FAIL: custom bridge did not emit its initialization marker"
+      tail -150 server.log
+      exit 1
+    fi
+    if ! grep -q 'Bound pinned Vampirism faction pre/post event observers' server.log; then
+      echo "FAIL: expected Vampirism faction listener did not register"
+      tail -150 server.log
+      exit 1
+    fi
+    echo "PASS: custom vampire bridge initialized and faction event registration appeared in server log"
+  fi
   echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
   exit 0
 fi
