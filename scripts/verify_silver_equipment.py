@@ -13,13 +13,15 @@ assert re.search(r"\['sword', 'pickaxe', 'axe', 'shovel', 'hoe'\]",s)
 assert re.search(r"\['helmet', 'chestplate', 'leggings', 'boots'\]",s)
 assert "mod: " not in s, "Never remove entire mod's recipes"
 assert "event.remove({ output:" not in s, "No broad removal by output item"
-assert "item.maxDamage = 250" in stats
-assert "item.digSpeed = 7.6" in stats
+assert "item.setTier(tier =>" in stats
+assert "tier.setUses(250)" in stats
+assert "tier.setSpeed(7.6)" in stats
+assert "item.maxDamage = maxDamage" in stats
 for slot in ("helmet","chestplate","leggings","boots"):
     assert f"['{slot}', " in stats
 assert "event.modify('werewolves:silver_'" in stats
 assert "item.tier =" not in stats and "item.armor" not in stats, (
-    "Broken 1.21.1 tier/armor mutation must not be silently reintroduced"
+    "Do not assign tier property or mutate native ArmorMaterial through unknown API"
 )
 print("PASS: nine canonical silver craftable results selected, 14 redundant recipe IDs, tags and stats configured")
 print("NOTE: actual recipe loss, native effects, armor enchantability and item stats require modded runtime/client verification")
