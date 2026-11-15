@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:vex",
+    "minecraft:iron_golem",
+    "minecraft:snow_golem",
+    {
+      "id": "#c:player_summons",
+      "required": false
+    }
+  ]
+}
