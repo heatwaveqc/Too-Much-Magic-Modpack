@@ -1,3 +1,7 @@
+> **Historical design audit.** The binary signatures may remain useful, but
+> the desired implementation changed to one-way Lilith ascension with JAWR
+> canonical blood. See [VAMPIRE-ASCENSION-V2.md](VAMPIRE-ASCENSION-V2.md).
+
 # Vampire fusion — pinned binary deep audit and implementation contract (2026-11-14)
 
 **Status:** Exact pinned binaries inspected, dual-vampire source hooks and unit tests now implemented, with every mutating experimental setting OFF by default. Boot and source tests do **not** establish verified in-world behavior. Not added to the packwiz lock.
