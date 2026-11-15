@@ -6,7 +6,7 @@
   "owner": "tmm_monk",
   "intended_max_faction_rank": 20,
   "live_source_branch": "fix/monk-tree-data-registry-2026-11-15",
-  "summary": "Full Monk faction blueprint: six live starter nodes and planned one-off powers, spells as ranged combat (Ars/Iron's), exclusive Fortune/Silk hand harvesting and an innate protected hotbar fist position.",
+  "summary": "Full Monk faction blueprint: six live starter nodes and planned one-off powers, spells as ranged combat (Ars/Iron's), exclusive Fortune/Silk hand harvesting and an innate protected hotbar fist position. Free passive fist is now hotbar slot 1; separate default-ON, toggleable Armor Lock protects against accidental graveyard autoequip.",
   "source_catalog": "compat/monk/profiles/skill-placement-no-pufferfish-v2.json",
   "external_design_refs": [
     "compat/monk/profiles/world-tier-unlocks.json",
@@ -837,9 +837,15 @@
     },
     {
       "id": "tmm_monk:reserved_fist_slot",
-      "contract": "Passive while in the Monk faction: default hotbar slot 9 (zero-based 8) is permanently empty and selectable as the unarmed fist, with safe item relocation, no item loss, GUI/pickup/automation protection, optional UI overlay, and normal inventory restoration on faction exit.",
+      "contract": "Passive while Monk: first hotbar position (key 1; zero-based index 0) stays empty/selectable as unarmed fist, with no-loss inventory insertion guards. This is independent of the optional Armor Lock toggle.",
       "source_record": null,
       "implementation": "design_only_not_wired"
+    },
+    {
+      "id": "tmm_monk:armor_lock",
+      "source_record": null,
+      "implementation": "design_only_not_wired",
+      "contract": "Free default-ON Monk toggle blocks auto-equipping anything into vanilla head/chest/legs/feet (including graveyard restores); OFF restores equip permission but actual armor still suspends skills. No item loss or Curios interference."
     }
   ],
   "deferred_non_native": [
@@ -858,7 +864,8 @@
     "Decide whether new rank-20 capstone proposals are acceptable before implementing their effects.",
     "Verify Ars/Iron's spell damage and guardian crystal attribution; spell-affix adapters cannot blindly assume all source damage events are ordinary projectiles.",
     "Confirm Fortune I plus bounded Tyz Fortune ranks and exact Silk Touch block loot semantics on empty-hand harvesting; ensure mutually exclusive loot contexts.",
-    "Implement hard reserved slot protection across pickups, number-key swaps, drag/shift-click, creative inventory, /give and modded menus, with no item loss before activating the passive."
+    "Implement hard reserved slot protection across pickups, number-key swaps, drag/shift-click, creative inventory, /give and modded menus, with no item loss before activating the passive.",
+    "Implement and validate the optional Armor Lock against vanilla equipment menus, dispenser/right-click equip and pinned gravestone restoration; ON refuses if worn pieces cannot be moved safely; OFF never bypasses actual-armor Monk power penalties."
   ],
   "explicit_owner_overrides": [
     {
@@ -882,10 +889,38 @@
       "state": "design_only_not_runtime_enabled",
       "faction_enabled": true,
       "skill_point_cost": 0,
-      "default_hotbar_index": 8,
-      "display_name": "Fist",
+      "default_hotbar_index": 0,
+      "display_name": "Fist (Hotbar 1)",
       "design_contract": "design/fist-slot-lock-contract-v1.json",
-      "runtime_status": "Requires item insertion/menu guards and safe migration tests before enabling; do not mutate inventory in current six-skill test."
+      "runtime_status": "Design only. Protect Minecraft hotbar index 0 (key 1) via all inventory/menu insertion paths before enabling; do not mutate current six-skill pilot.",
+      "activation_key": "1"
+    },
+    {
+      "id": "tmm_monk:armor_lock",
+      "state": "design_only_not_runtime_enabled",
+      "faction_enabled": true,
+      "native_skill_point_cost": 0,
+      "tyz_skill_point_cost": 0,
+      "display_name": "Armor Lock",
+      "toggleable": true,
+      "default_enabled": true,
+      "affected_vanilla_equipment_slots": [
+        "head",
+        "chest",
+        "legs",
+        "feet"
+      ],
+      "excludes": [
+        "curios",
+        "normal_inventory_cargo",
+        "offhand"
+      ],
+      "ui": "Toggle Armor Lock ON/OFF with a server-validated keybinding/settings; persist per Monk.",
+      "locked_behavior": "Prevent ALL armor/equipment insertion into four vanilla equipment slots before item movement; gravestone restoration must redirect to storage, not auto-equip.",
+      "unlocked_behavior": "Normal armor equipment is allowed, but actual armor still disables Monk powers under existing equipment discipline rules; removing worn armor restores eligibility.",
+      "transition_safety": "Turning ON with worn armor requires atomic, legal, lossless relocation to available inventory space; refuse ON with clear message if full/cursed. Never destroy/drop/duplicate items.",
+      "design_contract": "design/armor-lockout-trait-v1.json",
+      "runtime_status": "Free faction toggle is not yet wired. Native inventory/equipment slots and graveyard autorestoration still require event guards; no current test behavior change."
     }
   ]
 }
