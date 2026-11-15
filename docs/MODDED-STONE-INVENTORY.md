@@ -2,8 +2,8 @@
 
 **Data origin:** blockstate identifiers, localizations, and bundled worldgen/structure JSON from all actual hash-verified Minecraft 1.21.1 NeoForge **server** JARs in the test pack.
 **Status:** comprehensive static scan of loaded pack artifacts; NOT a world-generation, creative-tab, harvest or in-game registry test. Names may be missing for unlocalized blocks.
-**Coverage:** 142 server JARs; 2450 candidate stone-family blockstates, 545 possible primary stones, 1856 worked variants, 49 ore-bearing stones.
-**Evidence:** 31 primary stones are referenced in bundled worldgen/structure JSON. Absence of a reference does not prove an item cannot naturally generate: mods may register features in Java, templates or runtime datapacks.
+**Coverage:** 142 server JARs; 2490 candidate stone-family blockstates, 549 possible primary stones, 1879 worked variants, 62 ore-bearing stones.
+**Evidence:** 35 primary stones are referenced in bundled worldgen/structure JSON. Absence of a reference does not prove an item cannot naturally generate: mods may register features in Java, templates or runtime datapacks.
 
 The machine-readable full inventory at \`manifest/modded_stone_inventory.json\` lists EVERY matching block ID and its originating pinned mod, variant/ore classification, and concrete JSON paths.
 
@@ -21,6 +21,10 @@ The machine-readable full inventory at \`manifest/modded_stone_inventory.json\` 
 |---|---|---|---|
 | \`forbidden-arcanus.pw\` | \`forbidden_arcanus:darkstone\` | Darkstone | \`data/forbidden_arcanus/neoforge/biome_modifier/add_darkstone.json\`; \`data/forbidden_arcanus/worldgen/configured_feature/ore_darkstone.json\` … |
 | \`forbidden-arcanus.pw\` | \`forbidden_arcanus:runic_darkstone\` | Runic Darkstone | \`data/forbidden_arcanus/worldgen/configured_feature/ore_rune.json\`; \`data/forbidden_arcanus/worldgen/configured_feature/ore_rune_lower.json\` |
+| \`pastel.pw\` | \`pastel:ashen_blackslag\` | Ashen Blackslag | \`data/pastel/worldgen/configured_feature/varia_sprouts.json\`; \`data/pastel/worldgen/noise_settings/deeper_down_noise.json\` |
+| \`pastel.pw\` | \`pastel:blackslag\` | Blackslag | \`data/pastel/worldgen/biome/black_langast.json\`; \`data/pastel/worldgen/biome/deep_barrens.json\` … |
+| \`pastel.pw\` | \`pastel:infested_blackslag\` | Infested Blackslag | \`data/pastel/worldgen/configured_feature/dd_infested.json\` |
+| \`pastel.pw\` | \`pastel:overgrown_blackslag\` | Overgrown Blackslag | \`data/pastel/worldgen/configured_feature/disk_overgrown_slush.json\`; \`data/pastel/worldgen/configured_feature/hummingstone_crystal_formation.json\` … |
 | \`deeperdarker.pw\` | \`deeperdarker:blooming_sculk_stone\` | Blooming Sculk Stone | \`data/deeperdarker/worldgen/configured_feature/blooming_sculk_patch.json\`; \`data/deeperdarker/worldgen/configured_feature/ore_blooming_moss.json\` … |
 | \`deeperdarker.pw\` | \`deeperdarker:sculk_stone\` | Sculk Stone | \`data/deeperdarker/worldgen/biome/deeplands.json\`; \`data/deeperdarker/worldgen/configured_feature/ore_gloomslate_coal.json\` … |
 | \`forbidden-arcanus.pw\` | \`forbidden_arcanus:runic_stone\` | Runic Stone | \`data/forbidden_arcanus/neoforge/biome_modifier/add_runic_stone.json\`; \`data/forbidden_arcanus/worldgen/configured_feature/ore_rune.json\` … |
@@ -98,7 +102,7 @@ These can still be natural, craftable, transmutable or implemented in code. Test
 - \`tombstone:green_marble\` — Green Marble (\`corail-tombstone.pw\`)
 - \`tombstone:white_marble\` — White Marble (\`corail-tombstone.pw\`)
 
-### Dark/Black Stones (7)
+### Dark/Black Stones (9)
 
 - \`embers:ashen_stone\` — Ashen Stone (\`embers-re-ignited.pw\`)
 - \`goety:blackstone_brazier\` — Blackstone Brazier (\`goety.pw\`)
@@ -107,6 +111,8 @@ These can still be natural, craftable, transmutable or implemented in code. Test
 - \`goety:dark_altar_blackstone\` — Dark Altar (\`goety.pw\`)
 - \`goety:plinth_blackstone\` — Cursed Plinth (\`goety.pw\`)
 - \`irons_spellbooks:voidstone\` — Voidstone (\`irons-spells-n-spellbooks.pw\`)
+- \`pastel:blackslag_shimmerstone_light\` — Blackslag Shimmerstone Light (\`pastel.pw\`)
+- \`pastel:cobbled_blackslag\` — Cobbled Blackslag (\`pastel.pw\`)
 
 ### Slate And Shale (39)
 
@@ -294,7 +300,7 @@ These can still be natural, craftable, transmutable or implemented in code. Test
 - \`rechiseled:end_stone_squares\` — End Stone Squares (\`rechiseled.pw\`)
 - \`rechiseled:end_stone_squares_connecting\` — End Stone Squares Connecting (\`rechiseled.pw\`)
 
-### General Stone And Sandstone (285)
+### General Stone And Sandstone (283)
 
 - \`apothic_enchanting:stoneshelf\` — Stoneshelf (\`apothic-enchanting.pw\`)
 - \`ars_additions:sourcestone_chain\` — Sourcestone Chain (\`ars-additions.pw\`)
@@ -448,10 +454,8 @@ These can still be natural, craftable, transmutable or implemented in code. Test
 - \`occultism:othercobblestone\` — Othercobblestone (\`occultism.pw\`)
 - \`occultism:spirit_grindstone\` — Spirit Grindstone (\`occultism.pw\`)
 - \`pastel:andesite_shimmerstone_light\` — Andesite Shimmerstone Light (\`pastel.pw\`)
-- \`pastel:blackslag_shimmerstone_light\` — Blackslag Shimmerstone Light (\`pastel.pw\`)
 - \`pastel:bloodstone_block\` — Block of Bloodstone (\`pastel.pw\`)
 - \`pastel:bloodstone_cluster\` — Bloodstone Cluster (\`pastel.pw\`)
-- \`pastel:cobbled_blackslag\` — Cobbled Blackslag (\`pastel.pw\`)
 - \`pastel:decaying_light\` — Temporal Shimmerstone Light (\`pastel.pw\`)
 - \`pastel:diorite_shimmerstone_light\` — Diorite Shimmerstone Light (\`pastel.pw\`)
 - \`pastel:gemstone_shooting_star\` — Gemstone Shooting Star (\`pastel.pw\`)
@@ -593,6 +597,35 @@ These can still be natural, craftable, transmutable or implemented in code. Test
 - \`rechiseled:netherrack_stripes\` — Netherrack Stripes (\`rechiseled.pw\`)
 - \`rechiseled:netherrack_stripes_connecting\` — Netherrack Stripes Connecting (\`rechiseled.pw\`)
 
+## Key raw-stone families for generator decisions
+
+This curated index is based on real IDs in the pinned JARs. A JSON reference is evidence, not proof of spawning in a live world. No custom generator recipes are installed.
+
+| Family | Actual block ID | Worldgen/structure JSON | Suggested direction |
+|---|---|---|---|
+| Astral Marble | \`astralsorcery:marble_raw\` | Yes | Seed after discovering marble |
+| Pastel Basal Marble | \`pastel:basal_marble\` | Yes | Seed only after Pastel dimension access |
+| Primal Magick Marble | \`primalmagick:marble_raw\` | Yes | Seed after finding marble |
+| Goety Marble | \`goety:marble\` | No explicit JSON link | Confirm if ordinary stone or structure-only |
+| Tombstone Marble | \`tombstone:white_marble\` | No explicit JSON link | Decorative only, test acquisition |
+| Forbidden Darkstone | \`forbidden_arcanus:darkstone\` | Yes | Use darkstone seed + thematic material |
+| Vampirism Dark Stone | \`vampirism:dark_stone\` | Yes | Seed after discovering native supernatural route |
+| Pastel Blackslag | \`pastel:blackslag\` | Yes | Seed after discovering Pastel dimension material |
+| Pastel Ashen Blackslag | \`pastel:ashen_blackslag\` | Yes | Audit variant before adding generator |
+| Deeper Darker Sculk Stone | \`deeperdarker:sculk_stone\` | Yes | Seed after dimension access |
+| Deeper Darker Gloomslate | \`deeperdarker:gloomslate\` | Yes | Seed after dimension access |
+| Embers Ashen Stone | \`embers:ashen_stone\` | No explicit JSON link | Seed after resource discovery |
+| Iron's Voidstone | \`irons_spellbooks:voidstone\` | No explicit JSON link | Inspect progression/structure use |
+| Cataclysm Azure Seastone | \`cataclysm:azure_seastone\` | No explicit JSON link | Do not mass-produce protected structures |
+| Occultism Otherstone Natural | \`occultism:otherstone_natural\` | No explicit JSON link | Preserve native occultism transformation |
+| Botania Livingrock | \`botania:livingrock\` | No explicit JSON link | Keep native Pure Daisy production |
+| Ars Sourcestone | \`ars_nouveau:sourcestone\` | No explicit JSON link | Keep native Ars Source crafting |
+| Pastel Argillite | \`pastel:argillite\` — not found | — | Verify before recipe |
+| Pastel Nephelinite | \`pastel:nephelinite\` — not found | — | Verify before recipe |
+| Pastel Downstone | \`pastel:downstone\` | Yes | Seed after exploring native dimension |
+| Pastel Shale Clay | \`pastel:shale_clay\` | Yes | Audit mineral use before renewable recipe |
+| Astral Aquamarine Shale | \`astralsorcery:aquamarine_shale\` | Yes | Exclude from Galore; consuming native Chalice |
+
 ## Worked variants and ore stones (full IDs in machine inventory)
 
 They are recorded for **completeness**, not recommended as generator outputs. Worked variants already have ordinary crafting/native mod progression; ores often have balance/progression implications.
@@ -620,7 +653,7 @@ They are recorded for **completeness**, not recommended as generator outputs. Wo
 | \`malum.pw\` | 84 | 3 |
 | \`neovitae.pw\` | 47 | 0 |
 | \`occultism.pw\` | 20 | 1 |
-| \`pastel.pw\` | 144 | 13 |
+| \`pastel.pw\` | 167 | 26 |
 | \`primal-magick.pw\` | 41 | 3 |
 | \`rechiseled.pw\` | 971 | 0 |
 | \`replication.pw\` | 0 | 1 |

@@ -11,11 +11,11 @@
     "No automatic Galore custom recipe is generated; ore and progression stones must be excluded until approved."
   ],
   "counts": {
-    "total_stone_blockstates": 2450,
-    "primary_candidates": 545,
-    "worked_variants": 1856,
-    "ore_stones": 49,
-    "primary_with_worldgen_json_refs": 31
+    "total_stone_blockstates": 2490,
+    "primary_candidates": 549,
+    "worked_variants": 1879,
+    "ore_stones": 62,
+    "primary_with_worldgen_json_refs": 35
   },
   "scanned_mods": [
     {
@@ -146,7 +146,7 @@
     {
       "jar": "Pastel-1.1.5.5.jar",
       "packwiz": "pastel.pw",
-      "matching_stone_blockstates": 236
+      "matching_stone_blockstates": 276
     },
     {
       "jar": "Patchouli-1.21.1-93-NEOFORGE.jar",
@@ -731,6 +731,16 @@
   ],
   "blocks": [
     {
+      "id": "alloy_forgery:polished_blackslag_forge_controller",
+      "name": "Blackslag Forge Controller",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
       "id": "cataclysm:blackstone_pillar",
       "name": "Blackstone Pillar",
       "class": "worked_variant",
@@ -1129,8 +1139,536 @@
       "worldgen_json_evidence": false
     },
     {
+      "id": "pastel:ancient_chiseled_polished_blackslag",
+      "name": "Ancient Chiseled Blackslag",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:ashen_blackslag",
+      "name": "Ashen Blackslag",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/varia_sprouts.json",
+        "data/pastel/worldgen/noise_settings/deeper_down_noise.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
       "id": "pastel:black_chiseled_preservation_stone",
       "name": "Black Chiseled Preservation Stone",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag",
+      "name": "Blackslag",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/biome/black_langast.json",
+        "data/pastel/worldgen/biome/deep_barrens.json",
+        "data/pastel/worldgen/biome/deep_dripstone_caves.json",
+        "data/pastel/worldgen/biome/dragonrot_swamp.json",
+        "data/pastel/worldgen/biome/howling_spires.json",
+        "data/pastel/worldgen/biome/noxshroom_forest.json",
+        "data/pastel/worldgen/biome/razor_edge.json",
+        "data/pastel/worldgen/configured_feature/ash_geode.json",
+        "data/pastel/worldgen/configured_feature/azurite_ore.json",
+        "data/pastel/worldgen/configured_feature/blackslag_pile.json",
+        "data/pastel/worldgen/configured_feature/dd_bismuth.json",
+        "data/pastel/worldgen/configured_feature/dd_coal_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_diamond_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_emerald_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_emerald_ore_howling.json",
+        "data/pastel/worldgen/configured_feature/dd_glow_lichen.json",
+        "data/pastel/worldgen/configured_feature/dd_gold_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_infested.json",
+        "data/pastel/worldgen/configured_feature/dd_iron_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_lava_springs.json",
+        "data/pastel/worldgen/configured_feature/dd_liquid_crystal_springs.json",
+        "data/pastel/worldgen/configured_feature/dd_malachite_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_shale_clay_crystal_formation.json",
+        "data/pastel/worldgen/configured_feature/dd_water_springs.json",
+        "data/pastel/worldgen/configured_feature/disk_overgrown_slush.json",
+        "data/pastel/worldgen/configured_feature/hummingstone_crystal_formation.json",
+        "data/pastel/worldgen/configured_feature/lake_lava.json",
+        "data/pastel/worldgen/configured_feature/pyrite_ripper_wall_patch.json",
+        "data/pastel/worldgen/configured_feature/shimmerstone_ore.json",
+        "data/pastel/worldgen/noise_settings/deeper_down_noise.json",
+        "data/pastel/worldgen/placed_feature/blackslag_pile.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_amethyst_ore",
+      "name": "Blackslag Amethyst Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_azurite_ore",
+      "name": "Blackslag Azurite Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/azurite_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_brick_slab",
+      "name": "Blackslag Brick Slab",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_brick_stairs",
+      "name": "Blackslag Brick Stairs",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_brick_wall",
+      "name": "Blackslag Brick Wall",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_bricks",
+      "name": "Blackslag Bricks",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_citrine_ore",
+      "name": "Blackslag Citrine Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_coal_ore",
+      "name": "Blackslag Coal Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_coal_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_copper_ore",
+      "name": "Blackslag Copper Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_diamond_ore",
+      "name": "Blackslag Diamond Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_diamond_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_emerald_ore",
+      "name": "Blackslag Emerald Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_emerald_ore.json",
+        "data/pastel/worldgen/configured_feature/dd_emerald_ore_howling.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_gold_ore",
+      "name": "Blackslag Gold Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_gold_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_iron_ore",
+      "name": "Blackslag Iron Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_iron_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_lapis_ore",
+      "name": "Blackslag Lapis Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_malachite_ore",
+      "name": "Blackslag Malachite Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_malachite_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_moonstone_ore",
+      "name": "Blackslag Moonstone Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_onyx_ore",
+      "name": "Blackslag Onyx Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_redstone_ore",
+      "name": "Blackslag Redstone Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_shimmerstone_light",
+      "name": "Blackslag Shimmerstone Light",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_shimmerstone_ore",
+      "name": "Blackslag Shimmerstone Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/shimmerstone_ore.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:blackslag_slab",
+      "name": "Blackslag Slab",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_stairs",
+      "name": "Blackslag Stairs",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_tile_slab",
+      "name": "Blackslag Tile Slab",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_tile_stairs",
+      "name": "Blackslag Tile Stairs",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_tile_wall",
+      "name": "Blackslag Tile Wall",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_tiles",
+      "name": "Blackslag Tiles",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_topaz_ore",
+      "name": "Blackslag Topaz Ore",
+      "class": "ore_stone",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:blackslag_wall",
+      "name": "Blackslag Wall",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:chiseled_polished_blackslag",
+      "name": "Chiseled Polished Blackslag",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cobbled_blackslag",
+      "name": "Cobbled Blackslag",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cobbled_blackslag_slab",
+      "name": "Cobbled Blackslag Slab",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cobbled_blackslag_stairs",
+      "name": "Cobbled Blackslag Stairs",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cobbled_blackslag_wall",
+      "name": "Cobbled Blackslag Wall",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cracked_blackslag_bricks",
+      "name": "Cracked Blackslag Bricks",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:cracked_blackslag_tiles",
+      "name": "Cracked Blackslag Tiles",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:infested_blackslag",
+      "name": "Infested Blackslag",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/dd_infested.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:overgrown_blackslag",
+      "name": "Overgrown Blackslag",
+      "class": "primary_candidate",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [
+        "data/pastel/worldgen/configured_feature/disk_overgrown_slush.json",
+        "data/pastel/worldgen/configured_feature/hummingstone_crystal_formation.json",
+        "data/pastel/worldgen/noise_settings/deeper_down_noise.json"
+      ],
+      "worldgen_json_evidence": true
+    },
+    {
+      "id": "pastel:polished_blackslag",
+      "name": "Polished Blackslag",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_button",
+      "name": "Polished Blackslag Button",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_pillar",
+      "name": "Polished Blackslag Pillar",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_pressure_plate",
+      "name": "Polished Blackslag Pressure Plate",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_slab",
+      "name": "Polished Blackslag Slab",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_stairs",
+      "name": "Polished Blackslag Stairs",
+      "class": "worked_variant",
+      "family": "dark/black stones",
+      "owner_packwiz": "pastel.pw",
+      "jar": "Pastel-1.1.5.5.jar",
+      "worldgen_json_refs": [],
+      "worldgen_json_evidence": false
+    },
+    {
+      "id": "pastel:polished_blackslag_wall",
+      "name": "Polished Blackslag Wall",
       "class": "worked_variant",
       "family": "dark/black stones",
       "owner_packwiz": "pastel.pw",
@@ -6800,48 +7338,6 @@
       "worldgen_json_evidence": false
     },
     {
-      "id": "pastel:blackslag_moonstone_ore",
-      "name": "Blackslag Moonstone Ore",
-      "class": "ore_stone",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:blackslag_redstone_ore",
-      "name": "Blackslag Redstone Ore",
-      "class": "ore_stone",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:blackslag_shimmerstone_light",
-      "name": "Blackslag Shimmerstone Light",
-      "class": "primary_candidate",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:blackslag_shimmerstone_ore",
-      "name": "Blackslag Shimmerstone Ore",
-      "class": "ore_stone",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [
-        "data/pastel/worldgen/configured_feature/shimmerstone_ore.json"
-      ],
-      "worldgen_json_evidence": true
-    },
-    {
       "id": "pastel:bloodstone_block",
       "name": "Block of Bloodstone",
       "class": "primary_candidate",
@@ -6898,46 +7394,6 @@
         "data/pastel/worldgen/placed_feature/dragon_fossil_buried.json"
       ],
       "worldgen_json_evidence": true
-    },
-    {
-      "id": "pastel:cobbled_blackslag",
-      "name": "Cobbled Blackslag",
-      "class": "primary_candidate",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:cobbled_blackslag_slab",
-      "name": "Cobbled Blackslag Slab",
-      "class": "worked_variant",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:cobbled_blackslag_stairs",
-      "name": "Cobbled Blackslag Stairs",
-      "class": "worked_variant",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
-    },
-    {
-      "id": "pastel:cobbled_blackslag_wall",
-      "name": "Cobbled Blackslag Wall",
-      "class": "worked_variant",
-      "family": "general stone and sandstone",
-      "owner_packwiz": "pastel.pw",
-      "jar": "Pastel-1.1.5.5.jar",
-      "worldgen_json_refs": [],
-      "worldgen_json_evidence": false
     },
     {
       "id": "pastel:cyan_chiseled_preservation_stone",
