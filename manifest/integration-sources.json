@@ -106,12 +106,12 @@
     },
     {
       "name": "monk-faction",
-      "branch": "feature/monk-early-mastery-two-trees",
+      "branch": "fix/monk-tree-data-registry-2026-11-15",
       "paths": [
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Native Monk four-rank mastery + Vampirism faction one-time skills, compiled and packaged once. Updated source tests validate actual Dragon Survival packwiz installed state, not historical uninstalled-only assumption. Tyz Monk prototypes remain disabled until purchase-pre form gates exist.",
+      "note": "NEXT QA: compiled Monk pre-tree repair stream. Vampirism 1.10 plural skill-tree/node paths and level-1 faction predicate; one native SP at joining, rank-one choice Open Palm/Poise/Stone Fist, Step Assist moved behind Fleet Footwork. HT TreeChop final-fell confirmed logs credited per removed log (up to 256); player-attributed barehand training and Roots/Ars/Iron's magic-focus breaks credited; no conventional-tool XP. Static Monk Gradle unit tests passed; mandatory disposable client tests: native skill UI/purchase, actual first SP, Stone Fist, tree logs, spell break attribution. Global Tyz/MXP remains independent; do not mark playable until client QA.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
@@ -260,7 +260,8 @@
     "feature/mxp-ledger-dispatcher": "Ancestor superseded by new MXP hooks source branch; do not import both.",
     "fix/jawr-blood-debit-guard": "Previous symmetrical dual-vampire native blood debit guard; NOT used after Vampire Ascension v2 reversal.",
     "design/mxp-all-magic-sources-implementation-checklist": "Research/checklist only (docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md); no independent runtime mods; canonical MXP source code remains feature/mxp-ars-irons-botania-neo-hooks.",
-    "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately."
+    "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately.",
+    "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice."
   },
   "pending_runtime_work": [
     "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
