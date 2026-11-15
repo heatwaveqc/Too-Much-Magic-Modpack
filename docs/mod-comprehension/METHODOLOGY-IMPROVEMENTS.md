@@ -25,6 +25,8 @@ The Ars source review exposed a recurring audit trap: counting quests or catalog
 | --- | --- | --- |
 | 9 | Adopted | Track **mandatory gates vs optional choices**. Teach the progression rule and how to pursue a valid branch; do not make every optional recipe a quest milestone. Reconcile each quest's action claim against its task predicate and the profile's stage map. |
 | 10 | Adopted | If a project lacks a release tag, inspect immutable history for the commit where its version metadata changes to the pinned version. Record that commit and its declared dependency versions; this can resolve addon source identity without pretending it proves the downloaded JAR or compatibility. |
+| 11 | Adopted | Distinguish an artifact's pinned identity from direct inspection of the exact binary. Use `[jar: SHA512]` only when the downloaded file's digest matches the pack lock and the contents were actually inspected; useful when a mod is closed-source or its source snapshot cannot be matched. |
+| 12 | Adopted | For code-granted/hidden advancement chains, record the declared parent order and trigger type separately from guide prose. Treat `minecraft:impossible` as evidence that data alone cannot reveal the unlock predicate; do not convert narrative goals into exact player requirements without source or runtime evidence. |
 
 ## 1. Pin source snapshots as carefully as pack artifacts
 
@@ -81,6 +83,7 @@ The compact evidence syntax below is now normative in the work instructions and 
 | Tag | Meaning |
 | --- | --- |
 | `[pin]` | TMM manifest/packwiz version and artifact identity |
+| `[jar: SHA512]` | Direct inspection of the exact pinned binary whose digest matches the lock |
 | `[source: SHA]` | Exact source file inspected at immutable commit |
 | `[docs: version]` | Upstream documentation or guide and covered version |
 | `[pack-test: build/world]` | Reproducible in-pack observation |
@@ -94,4 +97,6 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 - 2026-11-15 — All eight adopted with scoped testing requirements; full progression, guidebook onboarding, player-value summaries and subsystem coverage added to the operating rules.
 - 2026-11-15 — Added the choice-boundary rule from the Ars walkthrough audit: mark required capability gates separately from optional recipes/branches, teach discovery through JEI/guide references, and keep quest action, detector and stage mapping independently auditable.
 - 2026-11-15 — Adopted the evidence syntax proposed above in the work instructions and profile template.
+- 2026-11-15 — Expanded that syntax with `[jar: SHA512]` after the JAWR audit showed that direct inspection of the locked JAR provides a different claim than version metadata alone, particularly for closed-source mods.
 - 2026-11-15 — Added a release-source discovery step: use version-file/Gradle history to find immutable commits for pinned addon versions when tags are missing. This found Ars Additions 21.3.0 (`91f102a90dc058cf40e4eac5a67a881e48b856b4`) and Ars Elemental 0.7.10.4 (`2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2`) source snapshots; both still declare older Ars dependencies than TMM.
+- 2026-11-15 — Adopted the advancement-chain evidence rule after the JAWR Forbidden Magic audit: separate advancement parent/trigger data, Guidebook narrative, recipe event and implementation-level unlock predicate. The addon contains four `minecraft:impossible` necromancy advancements, so the pinned JSON establishes order but cannot establish the player actions that grant ranks.

@@ -2,7 +2,7 @@
 
 **Purpose:** resumable queue for Work research sessions. See [operating instructions](WORK-CHAT-INSTRUCTIONS.md). Every row corresponds to a `manifest/mods.json` selection record, **not a claim that the mod was successfully installed or tested**.
 
-**Snapshot:** 2026-11-15 owner roster update; 164 selection records, 155 flagged enabled, 9 not enabled (including planned Alex's Caves/CodxLib). Reconcile live packwiz/runtime before claiming installation.
+**Snapshot:** 2026-11-15 updated selection (164 entries; 155 enabled, 9 inactive/planned). Exact runtime pins still require reconciliation. Alex's Caves Continued and CodxLib are planned but not yet installed; Bigger Reactors variants are excluded.
 
 ## Highest-value queue (suggested order)
 
@@ -15,13 +15,11 @@ Work one substantial slice at a time; update corresponding coverage status and l
 | 3 | `neovitae` | Ritual mechanics, energy/EV, tier gates, blood interactions |
 | 4 | `witchery-remake` | JAWR base factions, vampirism/lycanthropy and alt progression |
 | 5 | `forbidden-magic` | JAWR Forbidden Magic lich/other spell and faction extensions |
-| 6 | `vampirism` | Factions, blood pool, vampire/hunter progression and native detection |
-| 7 | `werewolves` | Forms, feeding, skills and combinations with vampirism/JAWR |
-| 8 | `summoning-rituals` | Investigate actual native input/output and customization limits |
-| 9 | `botania-revived` | Early mana, floral loops, runic crafting and port-specific changes |
-| 10 | `evilcraft` | Blood, rejuvenated flesh, vengeance systems and useful artifacts |
-| 11 | `roots-classic` | Early natural magic utility and repeatable sources |
-| 12 | `irons-spells` | Scrolls/spellbooks, spell school gates and Ars addon interaction |
+| 6 | `summoning-rituals` | Investigate actual native input/output and customization limits |
+| 7 | `botania-revived` | Early mana, floral loops, runic crafting and port-specific changes |
+| 8 | `evilcraft` | Blood, rejuvenated flesh, vengeance systems and useful artifacts |
+| 9 | `roots-classic` | Early natural magic utility and repeatable sources |
+| 10 | `irons-spells` | Scrolls/spellbooks, spell school gates and Ars addon interaction |
 | 13 | `scriptor-magicae` | Casting lectern, automated smelting and other programmable utility |
 | 14 | `goety` | Soul energy, ritual summon pipeline and mob/owner behavior |
 | 15 | `goety-cataclysm` | Precisely what addon introduces vs both parent mods |
@@ -72,7 +70,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `cyclops-core` | Cyclops Core | dependency | enabled flag | interface | queued | — |
 | `databank` | Databank | dependency | enabled flag | interface | queued | — |
 | `exclusions-lib` | Exclusions Lib | dependency | enabled flag | interface | queued | — |
-| `forbidden-magic` | JAWR: Forbidden Magic | dependency | enabled flag | full | queued | — |
+| `forbidden-magic` | JAWR: Forbidden Magic | dependency | enabled flag | full | researching | [profile](mods/forbidden-magic.md) |
 | `ftb-library` | FTB Library (NeoForge) | dependency | enabled flag | interface | queued | — |
 | `ftb-teams` | FTB Teams (NeoForge) | dependency | enabled flag | interface | queued | — |
 | `ftb-xmod-compat` | FTB XMod Compat | dependency | enabled flag | interface | queued | — |
@@ -142,7 +140,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | queued | — |
 | `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
 | `totemic` | Totemic | magic | enabled flag | full | queued | — |
-| `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | queued | — |
+| `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | researching | [profile](mods/witchery-remake.md) |
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
@@ -198,10 +196,12 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `spark` | spark | server_utility | enabled flag | interface | queued | — |
 | `improvable-skills` | Improvable Skills 3 | skills | enabled flag | full | queued | — |
 | `magical-satchel` | Magical satchel / Surprisingly Substantial Satchel | storage | inactive | full | deferred | — |
-| `vampirism` | Vampirism — Become a Vampire! | supernatural | enabled flag | full | queued | — |
-| `werewolves` | Werewolves — Become a Beast! | supernatural | enabled flag | full | queued | — |
+| `vampirism` | Vampirism — Become a Vampire! | supernatural | enabled flag | full | deferred | — |
+| `werewolves` | Werewolves — Become a Beast! | supernatural | enabled flag | full | deferred | — |
 | `draconic-evolution` | Draconic Evolution | technology | enabled flag | full | queued | — |
 | `quest-shop` | Quest Shop | utility | enabled flag | full | queued | — |
+
+**2026-11-15 decision:** Bigger Reactors original and Rework removed, no reactor profile queued. Alex's Caves Continued and CodxLib are planned through [staging PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) without its now-obsolete uranium conversion. Preserve ongoing magic-mod research additions.
 
 ## Cross-mod interaction reports
 
@@ -209,7 +209,7 @@ No reports yet. Create one Markdown file per *specific, actionable interaction* 
 
 | Interaction report | Participants | Status | Key finding |
 | --- | --- | --- | --- |
-| — | — | — | None yet; priority questions appear above |
+| [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
 
 ## Quest/compatibility design handoffs
 
@@ -228,4 +228,7 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Occultism 1.227.0 profile started from matching release source. The Dictionary progression graph and broad worker branches are mapped; the current chapter is only a checkmark stub. Matching source defines ordinary miner-tag recipes for Draconium Ore and Uranium Ore, plus an Ancient Eldritch Miner raw-uranium recipe. Common tag/runtime availability is not yet confirmed; see docs/COMPATIBILITY.md and the profile.
 
 - 2026-11-15 — Neo Vitae 1.1.53 profile added from version-aligned source and generated Scriptura Vitae; mapped tiers 0–5, parallel branches, Mine Key drops, EV/Spiritus pathways, and the source-supported Occultism storage bridge. API/version and client behavior remain untested; see the profile and compatibility note.
-- **Next action:** continue the highest-value magic systems with `witchery-remake` (rank 4), then `forbidden-magic`, `vampirism`, `werewolves`, `summoning-rituals`, and `botania-revived`. Occultism and Neo Vitae are meaningful source-research slices but remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — JAWR 0.5.39 profile started from the exact hash-pinned JAR. Mapped the 223-entry native Guidebook and nine-stage supernatural journals; identified the reported cauldron Altar Power bypass in all ten cauldron-crafting recipes and a cross-version familiar recipient report. See the profile and `docs/COMPATIBILITY.md`.
+- 2026-11-15 — Forbidden Magic 0.5.37 profile started from the exact hash-pinned JAR. Mapped its gated Soul Magic guide additions, four code-granted necromancy ranks, soul rites and phylactery creation/binding path. The user's separate Archlich target requires Phylactery before Arca; Arca is not present in this addon. See the profile.
+- 2026-11-15 — Standalone Vampirism and Werewolves are marked deferred for this knowledge queue because the owner-approved target retires those mods after Hunter/Monk migration; this is a research-status reconciliation only, not a runtime change.
+- **Next action:** continue with `summoning-rituals`, then `botania-revived`, `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR and Forbidden Magic remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
