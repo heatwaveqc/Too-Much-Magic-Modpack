@@ -4,5 +4,7 @@
   "key.tmm_progression.armor": "Toggle Monk Armor Lock",
   "key.tmm_progression.treasure": "Toggle Treasure Hand Fortune / Silk",
   "key.tmm_progression.glide": "Toggle Momentum Glide",
-  "key.tmm_progression.ordeal": "Start / Abort Blindness Ordeal"
+  "key.tmm_progression.ordeal": "Start / Abort Blindness Ordeal",
+  "item.tmm_progression.bio_mutagen": "Bio-Mutagen",
+  "item.tmm_progression.mutagenic_brew": "Mutagenic Brew"
 }
