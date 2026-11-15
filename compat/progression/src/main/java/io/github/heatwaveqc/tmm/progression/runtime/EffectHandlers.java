@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
@@ -29,7 +30,8 @@ public final class EffectHandlers {
         "harvest_tier","gear_durability","animal_friendship",
         "blink","catch_arrows","armor_lock","reserved_fist","water_breathing",
         "purification","faction_neutrality","creeper_peace","treasure_hand",
-        "glass_touch","hunger_discipline","monk_leap","withering_stare");
+        "glass_touch","hunger_discipline","monk_leap","withering_stare",
+        "water_walk","momentum_glide","blindness_ordeal");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
@@ -57,6 +59,8 @@ public final class EffectHandlers {
         default void targetChange(ServerPlayer player, LivingChangeTargetEvent event,
                                   Definition.Effect effect, int rank) {}
         default void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event,
+                          Definition.Effect effect, int rank) {}
+        default void fall(ServerPlayer player, LivingFallEvent event,
                           Definition.Effect effect, int rank) {}
     }
 
@@ -120,5 +124,8 @@ public final class EffectHandlers {
     }
     public static void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event) {
         dispatch(player,(h,e,r) -> h.jump(player,event,e,r));
+    }
+    public static void fall(ServerPlayer player, LivingFallEvent event) {
+        dispatch(player,(h,e,r) -> h.fall(player,event,e,r));
     }
 }
