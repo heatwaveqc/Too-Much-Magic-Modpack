@@ -82,3 +82,10 @@ This is observability/testing scaffolding, not a claim of gameplay acceptance.
 Dragon Survival has an independent death-triggered passive ability that may
 heal and cancel death before lich handlers; test it before reordering events.
 See [Dracolich pilot / six-world QA](docs/DRACOLICH-PILOT.md).
+# Dracolich skeleton art pilot
+
+The [original skeleton model kit](art/dracolich/README.md) supplies editable
+static GEO/GLB files, a neutral atlas, an actual mesh preview and a fail-closed
+local assembler for the installed 272-bone Dragon Survival rig. Native
+GeckoLib geometry baking passed; automatic visual switching, state sync,
+species textures/glow and client animation acceptance remain pending.

@@ -89,3 +89,20 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 - Owner corrected an earlier oversight: both mods were put **on hold**, not approved for the final build. Their alternate ultimate crafting and Infinity-tier equipment would undermine Draconic Evolution and post-Guardian ProjectE Gem Armor.
 - Removed the two corresponding packwiz metafiles and index entries from the new candidate, moved both IDs from active `manifest.mods` into explicit `manifest.excluded`, and updated the pack hash chain. Original B5/B8 results remain historic evidence of their **previous** presence.
 - Combined **138-mod** server and client regression tests are required for the new candidate. Do not claim the historic 140-mod B8 smoke validates this new candidate.
+# Dracolich skeletal model pilot — 2026-11-15
+
+Original 428-cube geometry and neutral material are uploaded under
+`compat/transformations/art/dracolich/`. Local assembly preserves the
+installed Dragon Survival 2.0.74 rig's 272 bones; five animation reference
+sets and native GeckoLib 4.9.3 geometry/cube baking pass. Standalone static
+review GEO/GLB contain only original geometry, not the extracted native rig.
+
+**Visual integration blocker:** art is not installed or automatically selected
+in-game. Client-local assembly/resource loading, authoritative per-player
+Dracolich flag sync, conditional model/texture/glow selection and cure
+restoration remain to implement. Thin-bone joint motion, all five bodies,
+15 species/body combinations, all growth stages and attachments require
+graphical client testing. The three species texture themes remain pending.
+Do not ship a global dragon replacement or redistribute the locally
+assembled upstream rig independently. See the model directory README and
+validation report for exact scope and reproduction commands.

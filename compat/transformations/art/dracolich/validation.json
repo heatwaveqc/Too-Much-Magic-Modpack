@@ -1,0 +1,59 @@
+{
+  "native_bones": 272,
+  "authored_attachment_points": 54,
+  "authored_cubes": 428,
+  "rig_preserved_exactly": true,
+  "upstream_cube_count": 384,
+  "upstream_cubes_retained": 0,
+  "uv_bounds": "PASS",
+  "body_animation_reference_checks": {
+    "center": {
+      "animations": 104,
+      "tracks": 185,
+      "native_missing_tracks": [],
+      "new_missing_tracks": []
+    },
+    "east": {
+      "animations": 106,
+      "tracks": 190,
+      "native_missing_tracks": [],
+      "new_missing_tracks": []
+    },
+    "north": {
+      "animations": 104,
+      "tracks": 183,
+      "native_missing_tracks": [],
+      "new_missing_tracks": []
+    },
+    "south": {
+      "animations": 107,
+      "tracks": 190,
+      "native_missing_tracks": [],
+      "new_missing_tracks": []
+    },
+    "west": {
+      "animations": 106,
+      "tracks": 199,
+      "native_missing_tracks": [],
+      "new_missing_tracks": []
+    }
+  },
+  "client_render": "NOT RUN",
+  "in_game_animation": "NOT RUN",
+  "automatic_dracolich_switch_and_cure": "NOT IMPLEMENTED",
+  "source_commit": "658c63608adc0194c9c9516804ecd66c1fd10112",
+  "geckolib_native_bake": {
+    "version": "4.9.3",
+    "java": "OpenJDK 21.0.13",
+    "result": "PASS",
+    "rig_bones": 272,
+    "rig_cubes": 428,
+    "static_review_bones": 42,
+    "static_review_cubes": 386
+  },
+  "static_export_max_vertex_error": 5.37e-06,
+  "changed_rig_rejected": true,
+  "unknown_attachment_rejected": true,
+  "standalone_glb": "PASS",
+  "visual_inspection": "Offline four-view PNG inspected; corrected leg endpoints and wing edge hinge"
+}

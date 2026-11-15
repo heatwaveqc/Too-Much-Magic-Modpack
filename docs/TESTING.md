@@ -92,3 +92,44 @@ Never reclassify step 1 as steps 2–5.
 - **Next-build desired-only client mod:** Colorful Hearts 10.5.9 for NeoForge MC 1.21.1, confirmed publication but *not yet installed*; must client-test high health and compatibility with JAWR/Vampirism/AppleSkin.
 
 These results are first-person client test reports, **not** independently captured diagnostic readouts or automatically reproduced CI results. Do not promote the vampire bridge to release-ready.
+# Dracolich model build — 2026-11-15
+
+Linux container, Python 3 (Pillow/NumPy/Matplotlib/SciPy), OpenJDK 21.0.13;
+Dragon Survival source `1.21.1`, version 2.0.74, immutable snapshot
+`658c63608adc0194c9c9516804ecd66c1fd10112`. No pack/loader/mod upgrades.
+
+Executed from repository root (source checkout and generated complete rig
+are private sibling directories, not repository content):
+
+```bash
+python3 scripts/build_dracolich_mesh.py
+python3 scripts/assemble_dracolich_model.py ../dragon-upstream --output ../dracolich-local-build
+python3 scripts/preview_dracolich_model.py ../dracolich-local-build/dracolich.geo.json --output compat/transformations/art/dracolich
+python3 scripts/check_dracolich_model.py ../dragon-upstream ../dracolich-local-build/dracolich.geo.json
+```
+
+PASS: 428 new cubes/54 attachments; 272 native bone fields/hierarchy preserved
+exactly; 0 original cubes retained; UV bounds; all 527 animations across Center,
+East, North, South, West have no new missing bone tracks. Changed rig and
+unknown joint are rejected. Static review GEO vertices match the locally
+assembled original mesh within 0.000006 model units. GLB is self-contained
+and has correct buffers/triangle counts. Four-view actual mesh PNG inspected;
+thin leg joint endpoints and native wing-edge hinge were corrected and rebuilt.
+
+Native GeckoLib check, using Java 21 and existing GeckoLib 4.9.3 plus installed
+Minecraft/NeoForge runtime library JARs on the classpath:
+
+```bash
+java -cp "$gecko_jar:$minecraft_runtime_classpath" scripts/CheckDracolichGeo.java ../dracolich-local-build/dracolich.geo.json 272 428
+java -cp "$gecko_jar:$minecraft_runtime_classpath" scripts/CheckDracolichGeo.java compat/transformations/art/dracolich/dracolich-neutral-review.geo.json 42 386
+```
+
+Both PASS: actual library JSON deserialization, GeometryTree hierarchy and
+BakedModelFactory cube baking, rather than Python JSON parsing alone.
+The smaller static preview omits alternate small-wing/flipper geometry and
+does not contain the upstream rig. Evidence: model directory `validation.json`.
+
+NOT RUN: Minecraft client render, in-game animation/Molang, growth, armor,
+items/rider, wing toggles, multiplayer, transformation/cure restoration, or a
+new dedicated-server/full-pack boot. Model-only upload adds no runtime hook;
+no claim of client integration. No world was opened or modified.
