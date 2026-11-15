@@ -60,10 +60,10 @@
 
 | Source | Proposed award source | Hook and validation |
 |---|---|---|
-| Vanilla Wither / Ender Dragon | First fixed, repeat divided | NeoForge server-side entity defeat; verify dragon death sequence |
-| L_Ender's Cataclysm bosses | First fixed, repeat divided | Enumerate actual entity IDs, death and phase handling |
-| Draconic Evolution Chaos Guardian | **First fixed, subsequent 100 MXP fixed** (value proposed) | Verify exact entity, genuinely completed death, end-island repeat progression, damage contributors |
-| Iron's Spells Dead King / Tyros | First fixed, repeat divided | Dead King respawn/phylactery and ominous variant require policy |
+| Vanilla Wither / Ender Dragon | First **1,000 MXP fixed**, repeat divided | NeoForge server-side entity defeat; verify dragon death sequence |
+| L_Ender's Cataclysm bosses | First **1,000 MXP fixed**, repeat divided | Enumerate actual entity IDs, death and phase handling |
+| Draconic Evolution Chaos Guardian | **First 1,000 MXP fixed, subsequent 100 MXP fixed** (repeat proposed) | Verify exact entity, genuinely completed death, end-island repeat progression, damage contributors |
+| Iron's Spells Dead King / Tyros | First **1,000 MXP fixed**, repeat divided | Dead King respawn/phylactery and ominous variant require policy |
 | Goety / Goety Cataclysm | First fixed, repeat divided | Summoned bosses and boss-class entities; casting-only summons not an award |
 | Totemic Baykok and other eligible ceremony bosses | First fixed, repeat divided | Ceremony success is different from boss defeat: both can reward if legitimately completed |
 | Feywild seasonal bosses | First fixed, repeat divided | Determine boss identity, quest mechanics and entity death behavior |
