@@ -24,6 +24,7 @@ The Ars source review exposed a recurring audit trap: counting quests or catalog
 | # | Decision | Scope |
 | --- | --- | --- |
 | 9 | Adopted | Track **mandatory gates vs optional choices**. Teach the progression rule and how to pursue a valid branch; do not make every optional recipe a quest milestone. Reconcile each quest's action claim against its task predicate and the profile's stage map. |
+| 10 | Adopted | If a project lacks a release tag, inspect immutable history for the commit where its version metadata changes to the pinned version. Record that commit and its declared dependency versions; this can resolve addon source identity without pretending it proves the downloaded JAR or compatibility. |
 
 ## 1. Pin source snapshots as carefully as pack artifacts
 
@@ -92,3 +93,4 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 - 2026-11-15 — Initial recommendations from Ars Nouveau 5.13.5.
 - 2026-11-15 — All eight adopted with scoped testing requirements; full progression, guidebook onboarding, player-value summaries and subsystem coverage added to the operating rules.
 - 2026-11-15 — Added the choice-boundary rule from the Ars walkthrough audit: mark required capability gates separately from optional recipes/branches, teach discovery through JEI/guide references, and keep quest action, detector and stage mapping independently auditable.
+- 2026-11-15 — Added a release-source discovery step: use version-file/Gradle history to find immutable commits for pinned addon versions when tags are missing. This found Ars Additions 21.3.0 and Ars Elemental 0.7.10.4 source snapshots; both still declare older Ars dependencies than TMM.

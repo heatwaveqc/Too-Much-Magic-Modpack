@@ -36,9 +36,9 @@
 | Rituals, structures and Wilden Chimera | Summoning source inspected; most ritual procedures/prerequisites not enumerated | **Partial** — build/setup instructions, full tablet progression and guide sections needed | Not run |
 | Magical creatures, familiar and automation | High-level Notebook strings and some source | **Partial** — recipes, placement diagrams, eligibility, upkeep and all creature systems need review | Not run |
 | Crops/world generation and equipment | Survey-level only | **Partial** — acquisition, discovery and tiered equipment guide gaps | Not run |
-| Ars Additions | [Focused profile](ars-additions.md); 21.3.0 hash-verified by pilot; source branch version/dependency drifts | Partial: pilot covers 3 logistics items; README declares glyphs, structures, rituals, Codex and Wixie Apparatus too | Not run; exact pin/source comparison open |
+| Ars Additions | [Focused profile](ars-additions.md); 21.3.0 release-source commit found; its declared Ars 5.11.2 dependency is older than the pack's 5.13.5 | Partial: pilot covers 3 logistics items; release README declares glyphs, structures, rituals, Codex and Wixie Apparatus too | Not run; artifact/source comparison open |
 | Ars Controle | [Focused profile](ars-controle.md); 1.6.16 source commit identified | Partial: pilot covers Remote, Sensor and Brazier Relay; Scryer's Linkage, Scroll Holder, Prism and control glyphs remain | Not run |
-| Ars Elemental | [Focused profile](ars-elemental.md); exact 0.7.10.4 pin, inspected source is 0.7.11.0 | Partial: fire worked example only; foci, armor, helpers, turrets, relays, prisms and biomes remain | Not run |
+| Ars Elemental | [Focused profile](ars-elemental.md); exact 0.7.10.4 release-source commit found; declared Ars 5.13.2 vs pack 5.13.5 | Partial: fire worked example only; foci, armor, helpers, turrets, relays, prisms and biomes remain | Not run |
 | Ars Elemancy | [Focused profile](ars-elemancy.md); 1.18.3 source / dependency version gap noted | Partial: Cinder Essence + hat; six combined essences and Elemancer shard route mapped from source | Not run |
 | Ars Ocultas | [Focused profile](ars-ocultas.md); 2.6.2 version source | Partial: gem alternative, jar and altar item milestones; actual worker/ritual operation remains | Not run |
 | Ars 'n Spells | [Focused profile](ars-n-spells.md); 3.3.5 source and pilot advancement map | Partial: Loom→transcribe→bind→cross-cast; TMM config/runtime behavior remains | Not run |
@@ -225,7 +225,7 @@ The Worn Notebook's recipe is the entry point for instructions, not a mandatory 
 | Ars 'n Spells + Iron's | 3.3.5 documents five mana modes, scaling/progression, transcription, binding and cross-cast into Iron's native wheel. | Source-backed; current TMM mode/config and client payment remain unverified. See [profile](ars-n-spells.md). |
 | Ars Unification + Farmer's Delight | Cut imports Farmer's Delight Cutting Board recipes. | Pinned adapter class and pilot recipes; client action not tested. See [profile](ars-unification.md). |
 | Ars Unification + Occultism | Crush imports Occultism Crusher Spirit recipes; both mods are enabled in the current manifest. | Newly identified installed branch omitted by the pilot; add to quest plan after JEI verification. |
-| Ars Elemental + Ars Nouveau | Elemental foci, spell effects, armor, Source/water and automation; current source snapshot 0.7.11.0 is ahead of pin 0.7.10.4. | Source lead only for unpiloted mechanics; see [profile](ars-elemental.md). |
+| Ars Elemental + Ars Nouveau | Exact 0.7.10.4 source includes elemental foci, spell effects, armor, Source/water and automation. Its declared Ars dependency (5.13.2) predates the pack's 5.13.5 base. | Source-backed mechanics at addon version; cross-version compatibility and unpiloted behavior need client verification. See [profile](ars-elemental.md). |
 
 ## Quest and teaching opportunities (research, not actual quests)
 
@@ -315,7 +315,7 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 - [ ] Map the default starter glyph set and book-tier unlock behavior against the assembled pack; audit representative spell mana costs, cast validity, and the guide/JEI references for a practical first spell in each tier. Core recipe data has 82 glyph recipes at 27/55/160 XP, but individual recipes/validity remain choice-driven and the exact pinned artifact is not available here.
 - [ ] Complete source link formulas/ranges, Source Jar transfer/transport and all custom recipe/ritual schemas; distinguish code-derived rates from measured rates.
 - [ ] Establish complete creature acquisition/charm recipes, Drygmy eligible-entity list, Wixie inventory rules, every ritual input and storage/Bookwyrm cap in 5.13.5.
-- [ ] Close exact-version addon gaps: Ars Additions 21.3.0 artifact/source match; Ars Elemental 0.7.10.4 vs inspected 0.7.11.0; full Ars Controle/Elemancy/Ocultas feature and JEI inventories; validate Occultism Crush in Ars Unification and current Ars 'n Spells server config.
+- [ ] Inspect the pinned Ars/Additions and Ars/Elemental JARs against their newly identified addon-version source commits; review the remaining Controle/Elemancy/Ocultas feature and JEI inventories; validate Occultism Crush in Ars Unification and current Ars 'n Spells server config.
 - [ ] Verify notebook and every critical build page in the assembled client; add a Worn Notebook onboarding quest to the pilot and review all setup prose against actual GUI behavior.
 - [ ] Confirm FTB task types that can detect a valid spell cast or functioning Source link without relying on a crafted item alone.
 - [ ] Run disposable client and dedicated-server checks; upgrade profile to `verified-in-pack` only with reproducible evidence.
