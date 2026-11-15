@@ -182,6 +182,14 @@ final class MonkFullTreeSkeletonTest {
         JsonObject armor = read(Path.of("design", "armor-lockout-trait-v1.json"));
         assertEquals("DESIGN_ONLY_NOT_RUNTIME_ENABLED", armor.get("state").getAsString());
         assertTrue(armor.get("default_enabled_for_new_monks").getAsBoolean());
+        assertEquals("ALWAYS accept ON for a Monk", armor
+                .getAsJsonObject("toggle_behavior")
+                .get("when_turning_on_with_armor").getAsString().substring(0, 26));
+        assertEquals(20, armor.getAsJsonObject("bound_armor_wear")
+                .get("default_interval_server_ticks").getAsInt());
+        assertEquals(1, armor.getAsJsonObject("bound_armor_wear")
+                .get("default_damage_per_interval").getAsInt());
+        assertEquals("DESIGN_ONLY_NOT_RUNTIME_ENABLED", armor.get("state").getAsString());
         assertEquals(0, armor.get("native_skill_point_cost").getAsInt());
         assertEquals(4, armor.getAsJsonObject("slot_policy")
                 .getAsJsonArray("armor_equipment_slots").size());
