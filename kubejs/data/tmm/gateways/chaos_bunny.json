@@ -377,15 +377,6 @@
           "value": 0.95
         },
         {
-          "type": "gateways:mob_effect",
-          "effect": {
-            "effect": "minecraft:resistance",
-            "amplifier": 2,
-            "ambient": true,
-            "visible": false
-          }
-        },
-        {
           "type": "gateways:loot_table",
           "loot_table": "tmm:entities/empty"
         }
