@@ -166,5 +166,6 @@
       ]
     }
   ],
-  "max_level": 20
+  "max_level": 20,
+  "enrollment": "manual"
 }
