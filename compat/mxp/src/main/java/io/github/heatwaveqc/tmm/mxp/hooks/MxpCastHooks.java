@@ -25,6 +25,11 @@ public final class MxpCastHooks {
 
     private MxpCastHooks() {}
 
+    /** Suppress Botania source awards while its items merely fund another spell. */
+    public static boolean isProcessingSpell() {
+        return IRON.get() != null || ARS.get() != null;
+    }
+
     /** Invoked by the Iron's SpellOnCastEvent constructor after its fields are set. */
     public static void ironQuoted(Object event) {
         Object player = MxpReflect.call(event, "getEntity");
