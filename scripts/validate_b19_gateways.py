@@ -13,12 +13,13 @@ def read(p): return (ROOT / p).read_text(encoding="utf-8")
 def main():
     source = json.loads(read("manifest/gateway_required_mobs.json"))
     assert source["minecraft"] == "1.21.1"
-    assert len(source["targets"]) >= 14
+    assert len(source["targets"]) >= 17
     assert source["policy"]["no_extra_mob_loot"]
     forbidden = set(source["policy"]["native_boss_and_friendly_npc_exclusions"])
     assert all(t["entity"] not in forbidden for t in source["targets"])
     assert {t["entity"] for t in source["targets"] if t["family"] == "ars"} == {
-        "ars_nouveau:wilden_hunter", "ars_nouveau:wilden_stalker", "ars_nouveau:wilden_guardian"}
+        "ars_nouveau:wilden_hunter", "ars_nouveau:wilden_stalker", "ars_nouveau:wilden_guardian",
+        "ars_nouveau:starbuncle", "ars_nouveau:whirlisprig", "ars_nouveau:drygmy"}
     assert {"irons_spellbooks:necromancer", "irons_spellbooks:citadel_keeper"}.issubset({
         t["entity"] for t in source["targets"]})
     r = subprocess.run([sys.executable, str(ROOT / "scripts/build_progression_gateways.py")],
@@ -38,7 +39,14 @@ def main():
         assert recipe["result"] == {"id": "gateways:gate_pearl"}
         assert len(gate["waves"]) == 3
         assert sum(w["entities"][0]["count"] for w in gate["waves"]) == (3 if t["tier"] == "elite" else 6)
-        assert all(w["entities"][0]["entity"] == t["entity"] for w in gate["waves"])
+        friendly = t.get("kind") == "friendly_reward"
+        opponent = t["encounter_entity"] if friendly else t["entity"]
+        assert all(w["entities"][0]["entity"] == opponent for w in gate["waves"])
+        if friendly:
+            assert any(r["type"] == "gateways:summon" and r["entity"]["entity"] == t["entity"] for r in gate["rewards"])
+            assert all(w["entities"][0]["entity"] != t["entity"] for w in gate["waves"]), "No killing friendly mobs"
+        else:
+            assert all(r["type"] != "gateways:summon" for r in gate["rewards"])
         assert not gate["failures"] and gate["rules"]["remove_mobs_on_failure"]
         assert all(not w.get("rewards") for w in gate["waves"]), "No bonus mob loot from waves"
         for path in (gp, rp):

@@ -1,12 +1,13 @@
 # B19 — Renewable progression-mob Gateways and wandering trader policy
 
-**Status:** 14 source-verified Gateways JSONs + 14 native Gateways crafting recipes + en_us Gate Pearl names staged in an independent PR against test/full-integration. Gateways 1.21.1-5.1.0, Minecraft 1.21.1 NeoForge. **Static source work only; no in-game boot, entity registry, crafting, loot or wave test.**
+**Status:** 17 source-backed Gateways JSONs + 17 native Gateways crafting recipes + en_us Gate Pearl names staged in an independent PR against test/full-integration. Gateways 1.21.1-5.1.0, Minecraft 1.21.1 NeoForge. **Static source work only; no in-game boot, entity registry, crafting, loot or wave test.**
 
 ## Scope
 
-The user requests **at least one Gateway for every scarce/random-spawning mob required by a mod**: Ars Wilden monsters, Iron's necromancers and knights, and equivalent mobs in other mods. This PR implements the **first 14 encounters** with verified source entity IDs:
+The user requests **at least one Gateway for every scarce/random-spawning mob required by a mod**: Ars Wilden monsters, Iron's necromancers and knights, and equivalent mobs in other mods. This PR implements the **first 17 encounters** with verified source entity IDs:
 - Ars Nouveau: Wilden Hunter, Wilden Stalker, Wilden Guardian. These supply the normal Wilden Horn/Wing/Spike loop. **Do not replace** the normal Wilden Chimera summoning ritual with a farmable boss gate.
 - Iron's Spells 'n Spellbooks: Necromancer, Pyromancer, Cryomancer, Archevoker, Magehunter Vindicator, Citadel Keeper (Ancient Knight), Apothecarist, Cultist, Cursed Armor Stand, Ice Spider and Catacombs Zombie.
+- Ars Nouveau utility creatures: **Starbuncle, Whirlisprig and Drygmy**. Their three new Gateways require killing other, hostile mobs before giving a live wild specimen as a native `gateways:summon` completion reward. Player can obtain a token in the usual Ars way (Gold Nugget, grow a tree, or Wilden Horn); none of these three is an enemy wave.
 - **Explicit exclusions:** Iron's Priest is a *neutral tradable support NPC*, not a natural hostile kill-farm target. Also exclude native bosses (Dead King, Fire Boss, Wilden Chimera), summoned minions, projectile effects and Wandering Trader.
 
 This is **not yet exhaustive** for all magic mods: the machine-readable manual cohort in \`manifest/gateway_required_mobs.json\` should be expanded after checking source JAR loot tables, actual mob spawn paths, loot/recipe dependencies and the full loaded registry for Malum, Goety, Cataclysm, Forbidden & Arcanus, Occultism, Feywild, Neo Vitae, etc. Only add progression-required enemies; do not automatically add every mob or biome feature just because it is in the entity registry.
@@ -17,7 +18,7 @@ Sources: https://github.com/Shadows-of-Fire/GatewaysToEternity/tree/1.21/schema 
 
 Each \`tmm:mob_<mod>_<entity>\` gateway is registered as \`data/tmm/gateways/mob_*.json\` and each Gate Pearl as \`data/tmm/recipe/gateways/mob_*.json\`. \`gateways:gate_recipe\` uses an **Ender Pearl**, **two Iron Ingots**, one magical focus (**Ars Source Gem** or **Iron's Arcane Essence**), and a **unique vanilla catalyst** associated with that target. All are native, statically indexed data files.
 
-- Three timed waves; counts 1, 2 and 3 for common mobs; 1, 1 and 1 for the elite Citadel Keeper.
+- Three timed waves; counts 1, 2 and 3 for common mobs; 1, 1 and 1 for the elite Citadel Keeper. Three nonlethal friendly Gates reward a live creature after fighting vanilla hostiles or Wilden.
 - No extra entity-loot rewards (use normal mob death drops, subject to in-world testing), no explosions or block-damage on failure; cleanup on failure; enforced separation between nearby gateways, and failures when no player remains.
 - **Vanilla XP only** on completion (40 normal, 100 elite), not custom Monk/Hunter or magic progression XP.
 - Gates support spells and player-summoned minions, so \`player_damage_only\` stays at default false. No spawn egg or treasure bypass for unique boss mobs.
@@ -36,9 +37,9 @@ Sources: https://github.com/iron431/irons-spells-n-spellbooks/blob/1.21/src/main
 
 ## B19 QA gates
 
-1. Dedicated-server boot and client startup with all generated Gateways/recipe/lang files; 14 gate pearls present in JEI/creative search; recipes craft exactly their expected gateway pearl and resolve correct entity.
-2. Verify all 14 entity types exist in the *pinned* complete mod registry, reject missing IDs and fix names/catalysts, then test each combat/AI behavior. The source registry may evolve between versions.
-3. Test Wilden Horn, Wing and Spike obtained by actually killing these enemies; verify Iron's mob loot/drop compatibility and XP, including any item requiring special spawn NBT, dimension or loot context.
+1. Dedicated-server boot and client startup with all generated Gateways/recipe/lang files; 17 gate pearls present in JEI/creative search; recipes craft exactly their expected gateway pearl and resolve correct entity.
+2. Verify all 17 target entities and all surrogate enemy types exist in the *pinned* complete mod registry, reject missing IDs and fix names/catalysts, then test each combat/AI behavior. The source registry may evolve between versions.
+3. Test that the three summoned friendly creatures persist, can be befriended and provide proper tokens. Test Wilden Horn, Wing and Spike obtained by actually killing these enemies; verify Iron's mob loot/drop compatibility and XP, including any item requiring special spawn NBT, dimension or loot context.
 4. Ensure no special boss, neutral priest, summon-only entity, or required worldgen discovery is shortcut by the gate.
 5. Benchmark wave spawning and tick time with consecutive and concurrent gates on disposable test world; verify cleanup and no drops/XP dupes on aborts, despawn, chunk unload or failed gates.
 6. Record remaining progression-required hostiles across *all other magic mods* and add at least one gated encounter per verified required random-spawn mob. Complete this sweep before calling the user's **all required mobs** design goal satisfied.

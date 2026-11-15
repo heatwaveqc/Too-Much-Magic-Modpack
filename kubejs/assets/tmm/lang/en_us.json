@@ -12,5 +12,8 @@
   "tmm.mob_irons_cultist": "Cultist Encounter",
   "tmm.mob_irons_cursed_armor_stand": "Cursed Armor Stand Encounter",
   "tmm.mob_irons_ice_spider": "Ice Spider Encounter",
-  "tmm.mob_irons_catacombs_zombie": "Catacombs Zombie Encounter"
+  "tmm.mob_irons_catacombs_zombie": "Catacombs Zombie Encounter",
+  "tmm.mob_ars_starbuncle": "Wild Starbuncle Encounter",
+  "tmm.mob_ars_whirlisprig": "Wild Whirlisprig Encounter",
+  "tmm.mob_ars_drygmy": "Wild Drygmy Encounter"
 }

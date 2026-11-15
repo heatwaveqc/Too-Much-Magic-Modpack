@@ -31,6 +31,10 @@ def render(manifest: dict) -> dict[str, str]:
         assert ID.fullmatch(entity), entity
         assert t["family"] in ("ars", "irons"), entity
         assert t["tier"] in ("common", "elite"), entity
+        assert t.get("kind", "combat") in ("combat", "friendly_reward"), entity
+        if t.get("kind") == "friendly_reward":
+            assert ID.fullmatch(t["encounter_entity"]), entity
+            assert t["family"] == "ars", entity
         assert ID.fullmatch(t["catalyst"]) and t["catalyst"].startswith("minecraft:"), entity
         rid = f"mob_{t['family']}_{entity.split(':', 1)[1]}"
         assert rid not in recipes, rid
@@ -38,6 +42,11 @@ def render(manifest: dict) -> dict[str, str]:
         gateway = f"tmm:{rid}"
         elite = t["tier"] == "elite"
         n = [1, 1, 1] if elite else [1, 2, 3]
+        friendly = t.get("kind") == "friendly_reward"
+        opponent = t["encounter_entity"] if friendly else entity
+        rewards = ([{"type": "gateways:summon", "entity": {
+            "entity": entity, "count": 1, "finalize_spawn": True}}] if friendly else [])
+        rewards.append({"type": "gateways:experience", "experience": 100 if elite else 40, "orb_size": 20})
         definition = {
             "type": "gateways:normal",
             "size": "medium" if elite else "small",
@@ -46,11 +55,11 @@ def render(manifest: dict) -> dict[str, str]:
                 "spawn_range": 8, "leash_range": 32, "spacing": 48,
                 "remove_mobs_on_failure": True, "requires_nearby_player": True},
             "waves": [
-                {"entities": [{"entity": entity, "count": count, "finalize_spawn": True}],
+                {"entities": [{"entity": opponent, "count": count, "finalize_spawn": True}],
                  "max_wave_time": 1400 if elite else 1000,
                  "setup_time": 100 if i == 0 else 160}
                 for i, count in enumerate(n)],
-            "rewards": [{"type": "gateways:experience", "experience": 100 if elite else 40, "orb_size": 20}],
+            "rewards": rewards,
             "failures": []}
         recipe = {
             "type": "gateways:gate_recipe", "group": "tmm_progression_mobs",

@@ -1368,4 +1368,28 @@ hash = "fd133f30e4b036e2637ca9d222aeac346ad7f11ce2a961544e7602c905b5ea7f"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "ee407466f679b29bf67a49ff3745fea63fe0870e7d5653ab0f761417895f5eb9"
+hash = "80171eed4a196964e6b2c7619be48a3fd909db552897fc19a863fea86b7c154d"
+
+[[files]]
+file = "kubejs/data/tmm/gateways/mob_ars_starbuncle.json"
+hash = "c2ff7ac42388ff2c5125a608e66584b2ef89ae29821f1d90f0cf391bf2997516"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/gateways/mob_ars_starbuncle.json"
+hash = "7f959022d9e3bff154e3a3f9b6375046b3e6d6d1a13a1520b39eac15f6d96227"
+
+[[files]]
+file = "kubejs/data/tmm/gateways/mob_ars_whirlisprig.json"
+hash = "8ec8b0c9c851dd1d0eb859e4cc163f25dd27a54ea7dbafd53b6b540d7fbc5a8f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/gateways/mob_ars_whirlisprig.json"
+hash = "81f6e885ffbfe5b18dc156c12da416b0fa9f29db4d0c3eb93c6db3abb15fe2ce"
+
+[[files]]
+file = "kubejs/data/tmm/gateways/mob_ars_drygmy.json"
+hash = "c017942001deb9b762c1051e092a1f57341a55ed8f8f09f1400b70937f5c7d44"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/gateways/mob_ars_drygmy.json"
+hash = "b06495b9f11366749bb6c9b4a365952d3b1e2749c414304d7020defcfbd67fab"

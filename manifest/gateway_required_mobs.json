@@ -5,7 +5,7 @@
   "gateway_mod": "GatewaysToEternity-1.21.1-5.1.0",
   "implementation_status": "source_staged_runtime_pending",
   "group": "B19",
-  "description": "One controlled, craftable standard Gate Pearl per eligible progression-relevant hostile in the initial Ars Nouveau and Iron's cohort. Extend via source-audited dependency mob roster. This is not yet exhaustive across every installed magic mod.",
+  "description": "Seventeen first-pass Gateways: fourteen repeatable combat mobs plus three nonlethal live wild Ars creature rewards. Broader magic-mod dependency audit outstanding.",
   "recipe": {
     "pattern": [
       " C ",
@@ -35,7 +35,8 @@
       "irons_spellbooks:priest",
       "minecraft:wandering_trader"
     ],
-    "future_audit": "Check pinned JAR entity registries, required mob-only drops, mob spawning route and recipe usage across every magic mod; expand catalog only after validation."
+    "future_audit": "Check pinned JAR entity registries, required mob-only drops, mob spawning route and recipe usage across every magic mod; expand catalog only after validation.",
+    "friendly_mob_policy": "For rare naturally spawning utility creatures, award the living creature upon completion of combat waves; never require killing a friendly creature."
   },
   "targets": [
     {
@@ -176,6 +177,42 @@
       "tier": "common",
       "reason": "Provides repeatable Catacombs hostile without granting Dead King boss rewards.",
       "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:starbuncle",
+      "display_name": "Wild Starbuncle",
+      "family": "ars",
+      "catalyst": "minecraft:gold_nugget",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "minecraft:zombie",
+      "reason": "Wild item-transport familiar; reward a live wild creature to befriend.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:whirlisprig",
+      "display_name": "Wild Whirlisprig",
+      "family": "ars",
+      "catalyst": "minecraft:oak_sapling",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "minecraft:skeleton",
+      "reason": "Wild botanical familiar; reward a live wild creature to grow a tree near.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:drygmy",
+      "display_name": "Wild Drygmy",
+      "family": "ars",
+      "catalyst": "minecraft:hay_block",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "ars_nouveau:wilden_hunter",
+      "reason": "Rare wild mob-loot familiar; reward a live wild creature, to befriend with Wilden Horn.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
       "verified_in_running_pack": false
     }
   ]
