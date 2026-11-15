@@ -78,10 +78,11 @@
       "name": "mahou-catalyst-exchange-neo-dust",
       "branch": "feature/mahou-catalyst-exchange-kubejs",
       "paths": [
-        "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js"
+        "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js",
+        "scripts/test_mahou_catalyst_exchange.cjs"
       ],
       "mode": "runtime-experimental",
-      "note": "Test-only exact Neo dust -> temporary native Mahou PowderedCatalyst proxy for dropped-item Catalyst Exchange. Verified pinned Mahou bytecode and offline transaction model; actual NeoForge server/client and no-mana game behavior require disposable-world testing. Does not replace direct blank-circle right-click bridge."
+      "note": "CORRECTED after reported first-world crash 2026-11-14: Rhino Entity.level is an object, never call entity.level(). All five dust conversions use the native Mahou Catalyst Exchange mana rules, with unrelated dropped-item/first-tick Akashic Tome regression in Node. Client/world catalyst and partial-stack gameplay remain untested. Fail CI on test failure."
     },
     {
       "name": "roots-mxp-prototypes",
@@ -239,6 +240,7 @@
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately."
   },
   "pending_runtime_work": [
+    "Crash report 2026-11-14 19:19:15 showed dropped starter Akashic Tome triggered an EntityTickEvent.Pre KubeJS crash in Catalyst Exchange at line 129 (entity.level() attempted as callable though Rhino exposes object). Changed every entity-level access and added boot-time non-dust regression; test world defaultconfig auto-enables Vampirism ascension on new disposable worlds. Never call fully gameplay tested until in-world user confirmation.",
     "NEW mob-alliance prototype on current vampire bridge: undead should not proactively attack vampires/lich, while retaliation and exempt bosses remain valid; forest dragon-fae and cave dragon-demon attitudes are tag-driven and may have no matching dragon entity IDs yet. No gameplay acceptance until in-world tests.",
     "NEXT QA MUST HAVE: Dragon Survival v2.0.74, its Sea/Forest/Cave food compatibility scripts, Comforts and client-only Colorful Hearts all hash-pinned and installed. Server smoke must pass; client gameplay remains unverified.",
     "NEW Vampire Ascension v2 selected instead of old symmetric acquisition: normal Vampirism-only infection, one-way Lilith upgrade into JAWR/Vampirism, JAWR authoritative blood/hunger, both native cure paths, disabled fangs and vampire forest shelter. Gameplay confirmation mandatory.",
