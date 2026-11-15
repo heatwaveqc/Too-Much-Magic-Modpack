@@ -1,0 +1,19 @@
+{
+  "replace": true,
+  "values": [
+    "#werewolves:raw_food",
+    "#werewolves:cooked_fish",
+    "#minecraft:meat",
+    "werewolves:wolf_berries",
+    "minecraft:sweet_berries",
+    "minecraft:glow_berries",
+    {
+      "id": "#werewolves:cooked_food",
+      "required": false
+    },
+    {
+      "id": "relics:infinity_ham",
+      "required": false
+    }
+  ]
+}
