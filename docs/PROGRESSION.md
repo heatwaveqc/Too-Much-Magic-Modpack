@@ -1,5 +1,7 @@
 # Locked design decisions — implementation deferred
 
+> **New owner target (2026-11-15), design only:** Remove TeamLapen **Vampirism** and **Werewolves** after Hunter/Monk dependency migrations; **JAWR alone owns vampire and lycanthrope physiology**. Do **not** preserve dropped-mod worldgen, villages/structures, raids, pets, faction minions or lord systems. Only selected personal skills migrate to the existing Vampire/Werewolf Tyz categories. See [retirement target](TEAM-LAPEN-RETIREMENT-TARGET-2026-11-15.md) and [source-backed skill triage](TEAM-LAPEN-SKILL-TREE-TRIAGE-2026-11-15.md). Older dual-vampire and TeamLapen Abomination designs are superseded; no runtime files changed. 
+
 > **Updated owner decision (2026-11-14):** **ProjectE Philosopher's Stone uses a *tradeable* boss-associated drop as its center ingredient**, with **three alternatives** (Wilden Tribute, Gaia Spirit, Neo Vitae Mine Key). **Chaos Shard is required for Red MK3+ Power Flower direct recipes and MK3 upgrade**. This replaces the old per-player boss-kill gate proposal; older all-post-Chaos rules below are legacy. EMC coverage across all items is separately planned. See [the current tiered proposal](PROJECTE-TIERED-GATING-PROPOSAL.md) and [the full checklist](FEATURE-CHECKLIST.md). The historic post-Chaos-only rules below describe the **previous design**, not an implemented lock. Do not rework live recipes before the boss IDs and negative bypass audit are verified.
 
 These are design invariants, not claims about live game behavior.
