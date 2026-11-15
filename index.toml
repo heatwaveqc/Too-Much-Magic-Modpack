@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "MOD-COMPREHENSION.md"
+hash = "06ed173177edab8720eeddf087bc56738ae7fc12fa5f85bbbc41f93140b62b04"
+
+[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
@@ -189,12 +193,28 @@ file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
 [[files]]
+file = "config/tmm_transformations-server.toml"
+hash = "d6bb4354548550e9f2e728323044880367f506e8946e6145ba02f62daeaaeeac"
+
+[[files]]
+file = "defaultconfigs/tmm_transformations-server.toml"
+hash = "51c6ad0246d67747018dd716ccf96b1a4486756115fe7ca0cf0000332420aebd"
+
+[[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+
+[[files]]
+file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
@@ -249,8 +269,32 @@ file = "kubejs/data/tmm/tags/item/portable_bags.json"
 hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
 
 [[files]]
+file = "kubejs/data/werewolves/tags/item/cooked_fish.json"
+hash = "a5ad4e945cef1c25454bad300d89d1c6ac2ed378e344690cbfb94c07e1ebebd3"
+
+[[files]]
+file = "kubejs/data/werewolves/tags/item/cooked_food.json"
+hash = "5e88b9a29c8d37c8f5d2e4237b7bc0b368d842a9ae35ca45a1b165f5f2763d4a"
+
+[[files]]
+file = "kubejs/data/werewolves/tags/item/raw_fish.json"
+hash = "deeca44678294a22a8e9d1f6f3747ceceb9de66c07e7112cd390ca0424642248"
+
+[[files]]
+file = "kubejs/data/werewolves/tags/item/raw_food.json"
+hash = "265c6a08d7744607a74cddf367c70692f9b97e7ba1694e7374a96d363e87114b"
+
+[[files]]
+file = "kubejs/data/werewolves/tags/item/werewolf_food.json"
+hash = "02b63441afb9ec221193cb8b5ac6b55f6d8cd246af0fbba5edb4bc2eb2aa41a5"
+
+[[files]]
 file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
+
+[[files]]
+file = "kubejs/server_scripts/dragon_diets.js"
+hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
@@ -382,6 +426,11 @@ hash = "7904c140247e0d8a87231cf4d36718fc018e0f851dbec2517b673acdc25547df"
 metafile = true
 
 [[files]]
+file = "mods/brewin-and-chewin.pw.toml"
+hash = "22d9510588b081cf9905f6549d24bc11012aa8d9c7d38a8619ab9db5ccb7b9a8"
+metafile = true
+
+[[files]]
 file = "mods/caelus.pw.toml"
 hash = "86cf2ae835b8f3d981af2e88a4d19fdc3dc4f5aa3904c6ba30e25d77d3e9fcbb"
 metafile = true
@@ -394,6 +443,11 @@ metafile = true
 [[files]]
 file = "mods/cobweb.pw.toml"
 hash = "40802547d9f1f916dfeefea8e0c52499edfc6940daca5b7f60e5c365a4ead296"
+metafile = true
+
+[[files]]
+file = "mods/cocktails-delight.pw.toml"
+hash = "e18ad62cc2ea0a113d100652f5e4adc08ca67ca35422981b87c0478dc62ca511"
 metafile = true
 
 [[files]]
@@ -424,6 +478,11 @@ metafile = true
 [[files]]
 file = "mods/crafting-tweaks.pw.toml"
 hash = "9942062b933fc042f551ff9539c81ca37ef8e97eec7d35f7800805a9d285b956"
+metafile = true
+
+[[files]]
+file = "mods/crystalix.pw.toml"
+hash = "4f26c7dac908030d9f2849db8d8ebb32d1710030347b828d22cf4ccd4fa69fba"
 metafile = true
 
 [[files]]
@@ -562,6 +621,11 @@ hash = "2cfad52dbc5bd12df95bf3b3f8de574bb7d185a90caaf32829a9b19bc98aebe8"
 metafile = true
 
 [[files]]
+file = "mods/fusion-connected-textures.pw.toml"
+hash = "108739f2fdaa6a885a3217ae692b2521ab10b8e71fa1222c67274ea0562649a5"
+metafile = true
+
+[[files]]
 file = "mods/gateways-to-eternity.pw.toml"
 hash = "677912b683eeda568c6e81d235c2411461c1d212608b5440a79d5abbd2c5fc1d"
 metafile = true
@@ -682,6 +746,21 @@ hash = "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5"
 metafile = true
 
 [[files]]
+file = "mods/leaves-be-gone.pw.toml"
+hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-beachparty.pw.toml"
+hash = "fd2a321d4abc440ff159e477dc75ebc9d32a9efa246e61ceeb6142391c55bfcf"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-furniture.pw.toml"
+hash = "2b28e81ed8fe72b4e53fe36b05f0615097cac431f1cc840950288da3c2b28886"
+metafile = true
+
+[[files]]
 file = "mods/lionfish-api.pw.toml"
 hash = "64acab1580ca6edd8b1dd185e914aeee7aa551a88a7cd7f0f9370a82aaadfef6"
 metafile = true
@@ -759,6 +838,11 @@ metafile = true
 [[files]]
 file = "mods/occultism.pw.toml"
 hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
+metafile = true
+
+[[files]]
+file = "mods/octolib.pw.toml"
+hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
 metafile = true
 
 [[files]]
@@ -857,6 +941,11 @@ hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
 metafile = true
 
 [[files]]
+file = "mods/puzzles-lib.pw.toml"
+hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
+metafile = true
+
+[[files]]
 file = "mods/quest-giver.pw.toml"
 hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
 metafile = true
@@ -867,8 +956,23 @@ hash = "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9"
 metafile = true
 
 [[files]]
+file = "mods/rechiseled.pw.toml"
+hash = "55fcb8b7508262d7e384f81dc86c0cf0c28ec98194d2dd842208b96291931c0c"
+metafile = true
+
+[[files]]
+file = "mods/relics.pw.toml"
+hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
+metafile = true
+
+[[files]]
 file = "mods/reliquary-reincarnations.pw.toml"
 hash = "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5"
+metafile = true
+
+[[files]]
+file = "mods/reliquified-artifacts.pw.toml"
+hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
 metafile = true
 
 [[files]]
@@ -922,6 +1026,16 @@ hash = "59b49692f23195e2d53945afef3d8c29ecfd942305c5c3daa1d52275e939d7d6"
 metafile = true
 
 [[files]]
+file = "mods/supermartijn642s-config-lib.pw.toml"
+hash = "62bd7012826fdcccf17a089055be67f87fb7335c88e73efc52bc9e51a1bf3188"
+metafile = true
+
+[[files]]
+file = "mods/supermartijn642s-core-lib.pw.toml"
+hash = "0b8161b7e8c71379084080673b304a090e187b1ad45ddc2bb90ebae11f401f6f"
+metafile = true
+
+[[files]]
 file = "mods/tectonic.pw.toml"
 hash = "dd46fad79cf33a00123be0a74c73581da72cd98503ef23822a624a08f4b10ff2"
 metafile = true
@@ -934,6 +1048,16 @@ metafile = true
 [[files]]
 file = "mods/titanium.pw.toml"
 hash = "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99"
+metafile = true
+
+[[files]]
+file = "mods/trashslot.pw.toml"
+hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
+metafile = true
+
+[[files]]
+file = "mods/treechop.pw.toml"
+hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
 metafile = true
 
 [[files]]
@@ -957,40 +1081,13 @@ hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
 
 [[files]]
-file = "mods/trashslot.pw.toml"
-hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
-metafile = true
+file = "tests/test_feature_checklist.py"
+hash = "d13bacc189ef0e98d716e0c6ed69b17a4e3e0cad9537f9e237bcff98d77eb88c"
 
 [[files]]
-file = "mods/treechop.pw.toml"
-hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
-metafile = true
+file = "tests/test_prism_qa_packaging.py"
+hash = "ecc1ecac0e22cd8c18cb3337c4de2e2b12a64369fe4016bec9968bd28b1d35b6"
 
 [[files]]
-file = "mods/leaves-be-gone.pw.toml"
-hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
-metafile = true
-
-[[files]]
-file = "mods/relics.pw.toml"
-hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
-metafile = true
-
-[[files]]
-file = "mods/reliquified-artifacts.pw.toml"
-hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
-metafile = true
-
-[[files]]
-file = "mods/octolib.pw.toml"
-hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
-metafile = true
-
-[[files]]
-file = "mods/puzzles-lib.pw.toml"
-hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
-metafile = true
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
+file = "tests/test_tmm_qa_preferences.ps1"
+hash = "f390036a167b4c7602d688018425e6665c73d6b3b19015b9c6b6a764e362a601"

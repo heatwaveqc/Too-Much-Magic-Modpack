@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -366,9 +366,10 @@
       "version": "4.5.0+1.21.1-neoforge",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/brewin-and-chewin/version/MbcR48Ou",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "brewin-and-chewin"
     },
     {
       "id": "caelus",
@@ -428,9 +429,10 @@
       "version": "Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/cocktails-delight/files/9482953",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "cocktails-delight"
     },
     {
       "id": "codechicken-lib-1-8",
@@ -538,9 +540,10 @@
       "version": "crystalix-3.0.3.jar",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/crystalix/files/9251153",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "crystalix"
     },
     {
       "id": "cucumber",
@@ -897,9 +900,10 @@
       "version": "1.3.16-neoforge-mc1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/fusion-connected-textures/version/AYDaLPK8",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "fusion-connected-textures"
     },
     {
       "id": "gateways-to-eternity",
@@ -940,7 +944,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety — The Dark Arts",
+      "name": "Goety \u2014 The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1043,7 +1047,7 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks — ReFoxed",
+      "name": "Inventory Tweaks \u2014 ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
@@ -1186,9 +1190,10 @@
       "version": "letsdo-beachparty-neoforge-2.1.5.jar",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/lets-do-beachparty/version/HN4rzKRl",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "lets-do-beachparty"
     },
     {
       "id": "lets-do-furniture",
@@ -1198,9 +1203,10 @@
       "version": "letsdo-furniture-neoforge-1.1.10.jar",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/lets-do-furniture/version/FxbGZtS6",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "lets-do-furniture"
     },
     {
       "id": "lionfish-api",
@@ -1438,7 +1444,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 — Crops",
+      "name": "Pam's HarvestCraft 2 \u2014 Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1451,7 +1457,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 — Food Core",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1464,7 +1470,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1477,7 +1483,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 — Trees",
+      "name": "Pam's HarvestCraft 2 \u2014 Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -1713,9 +1719,10 @@
       "version": "rechiseled-1.2.5-neoforge-mc1.21",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/rechiseled/version/S5FnErRw",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "rechiseled"
     },
     {
       "id": "relics",
@@ -1911,9 +1918,10 @@
       "version": "1.1.8-neoforge-mc1.21",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/supermartijn642s-config-lib/version/qKL9jM75",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "supermartijn642s-config-lib"
     },
     {
       "id": "supermartijn642-core-lib",
@@ -1923,9 +1931,10 @@
       "version": "1.1.20-neoforge-mc1.21",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/supermartijn642s-core-lib/version/MQOzQxLt",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "packwiz_slug": "supermartijn642s-core-lib"
     },
     {
       "id": "tectonic",
@@ -2029,7 +2038,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism — Become a Vampire!",
+      "name": "Vampirism \u2014 Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -2042,7 +2051,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves — Become a Beast!",
+      "name": "Werewolves \u2014 Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -2141,7 +2150,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
@@ -2445,7 +2454,7 @@
         "supermartijn642-config-lib",
         "fusion-connected-textures"
       ],
-      "status": "approved_resolution_pending"
+      "status": "server_smoked_client_pending"
     }
   ]
 }
