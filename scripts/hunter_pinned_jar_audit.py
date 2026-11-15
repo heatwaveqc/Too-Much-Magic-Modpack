@@ -80,8 +80,10 @@ def analyze_jar(data,expected_ids):
 rows=[];evidence_rows=[];status=[]
 index=tomllib.loads((ROOT/"index.toml").read_text())
 pin_files={pathlib.Path(x["file"]).stem.removesuffix(".pw"):ROOT/x["file"] for x in index["files"] if x.get("metafile")}
+manifest=json.loads((ROOT/"manifest/mods.json").read_text())
+slugs={x["id"]:x.get("packwiz_slug",x["id"]) for x in manifest["mods"]}
 for mod in sorted(TARGETS-IGNORE):
-    path=pin_files.get(mod) or ROOT/"mods"/(mod+".pw.toml")
+    path=pin_files.get(slugs.get(mod,mod)) or ROOT/"mods"/(slugs.get(mod,mod)+".pw.toml")
     if not path.exists():
         rows.append({"mod":mod,"pin":"","result":"NOT_PINNED","sha":"","bytes":"","class_files":"","classes_scanned":"","meta_files":""})
         continue
@@ -109,5 +111,6 @@ write("pin-verification.csv",rows,["mod","pin","result","sha","bytes","class_fil
 write("source-id-binary-strings.csv",evidence_rows,["mod","registered_id","pinned_hash_verified","exact_suffix_in_entity_class","exact_suffix_in_registration_named_class","class_paths","registration_paths"])
 summary={"targets":len(TARGETS-IGNORE),"hash_verified":sum(r["result"]=="PASS" for r in rows),"errors":[{"mod":r["mod"],"result":r["result"]} for r in rows if r["result"]!="PASS"],"registry_string_matched":sum(r["exact_suffix_in_entity_class"]=="YES" for r in evidence_rows),"registry_string_total":len(evidence_rows),"warning":"Strings in binary classes are corroboration only; not proof of runtime registration or class inheritance; no exact JAR uploads."}
 (OUT/"summary.json").write_text(json.dumps(summary,indent=2)+"\n")
+print("AUDIT_MISSING_IDS",json.dumps([r for r in evidence_rows if r["exact_suffix_in_entity_class"]!="YES"]),flush=True)
 print("AUDIT_SUMMARY",json.dumps(summary),flush=True)
 if not summary["hash_verified"]:sys.exit("No target JARs verified; audit cannot claim success")
