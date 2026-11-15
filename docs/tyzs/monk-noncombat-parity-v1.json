@@ -323,7 +323,7 @@
   ],
   "qa": [
     "Record per-mod gearless/gear-only/skill-only/full-build baseline and actual final attribute at representative rank checkpoints.",
-    "For Sea Luck verify genuine supported player Luck attribute and all real loot contexts that read it, then pick a buildable fully optimized gear template and compute target capped Monk=0.8×measured Sea X.",
+    "For Sea Luck verify genuine supported player Luck attribute and all real loot contexts that read it, then pick a buildable fully optimized gear template and compute target capped Monk=0.85×measured Sea X.",
     "For each noncombat row, run same task with equivalent legal source, claims and world conditions, including source-verified debits and no double-dip.",
     "Ensure Monk abilities suspend when wearing conventional armor or weapons as required, and that armor-lock self-damage/safe-swap rules remain separate.",
     "Do not apply 85% to all magic schools without source support or automatically grant species-locked blood/hybrid/immortality.",
