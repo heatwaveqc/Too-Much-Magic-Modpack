@@ -36,7 +36,8 @@ def main():
     index = read("index.toml")
     pack = tomllib.loads(read("pack.toml"))
     assert hashlib.sha256(index.encode()).hexdigest() == pack["index"]["hash"]
-    files = ["manifest/ars_structure_locator_policy.json",
+    files = ["kubejs/server_scripts/tmm_structure_registry_export.js",
+             "manifest/ars_structure_locator_policy.json",
              "kubejs/data/tmm/recipe/locate_structure/mineshaft.json"]
     for name, target in tags.items():
         path = f"kubejs/data/ars_additions/tags/worldgen/structure/{name}.json"
@@ -44,8 +45,10 @@ def main():
         data = json.loads(read(path))
         assert data == {"replace": True, "values": [{"id": target, "required": False}]}
         assert "minecraft:" not in str(data)
-    m = json.loads(read(files[1]))
+    m = json.loads(read("kubejs/data/tmm/recipe/locate_structure/mineshaft.json"))
     assert m["structure"] == {"tag": "bettermineshafts:better_mineshafts"}
+    exporter = read(files[0])
+    assert "ServerEvents.basicCommand" in exporter and "minecraft:worldgen/structure" in exporter
     for path in files:
         digest = hashlib.sha256(read(path).encode()).hexdigest()
         assert f'file = "{path}"\nhash = "{digest}"' in index, path

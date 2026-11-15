@@ -50,6 +50,11 @@ Policy file \`manifest/ars_structure_locator_policy.json\` lists disabled IDs, n
 
 **Important limitation:** this is a recipe-generation path, **not a runtime arbitrary-text structure picker**. To select literally any structure by entering its registry name in a UI would require a custom runtime bridge/augmented item that the native Ars recipe codec does not supply. The current registry dump is NOT in the repository, so no all-structures output has been generated or certified. Structures present in the registry but disabled through mod configs must be enumerated in \`disabled_structures\` before generation; registry membership alone is not proof of world-generation availability.
 
+
+### Registry export from the disposable test world
+
+A **source-stage, admin-only** KubeJS command has been added at `kubejs/server_scripts/tmm_structure_registry_export.js`. In a disposable integrated world, run `/tmm_structure_registry` (requires operator permission), then copy the JSON content following `TMM_STRUCTURE_REGISTRY_JSON=` from `logs/latest.log` to a file and pass it as `--registry` to the compiler. The command uses the documented 1.21.1 KubeJS `Registry.of('minecraft:worldgen/structure').getKeys()` API and `ServerEvents.basicCommand`; the exact client/server runtime remains untested. Export only, no world mutation or files written outside normal logs. **Registry presence does not prove worldgen is enabled**; apply the disabled ID list to avoid unreachable recipes.
+
 ### Required acceptance
 1. Obtain actual live structure registry IDs and dimension/worldgen status from a disposable server running *exactly* this pack; confirm every enabled modded structure appears, with no phantom biomes/features.
 2. Confirm each YUNG replacement tag is nonempty in live registry and that its vanilla predecessor does not generate. Use Ars ritual to locate those replacements in new chunks; test the stronghold End portal and Nether fortress blaze/wither skeleton spawning.

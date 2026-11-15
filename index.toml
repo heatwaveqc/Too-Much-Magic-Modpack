@@ -1176,3 +1176,7 @@ hash = "b5beed6078c182adbcd52ce31bc9b91fc1d5b40da75da97947424ae445dc5150"
 [[files]]
 file = "kubejs/data/ars_additions/tags/worldgen/structure/witch_hut.json"
 hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
+
+[[files]]
+file = "kubejs/server_scripts/tmm_structure_registry_export.js"
+hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
