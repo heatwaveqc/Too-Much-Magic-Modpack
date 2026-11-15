@@ -201,6 +201,14 @@ file = "config/ftbquests/quests/lang/en_us.snbt"
 hash = "962113607f631e188c737e746d8f14af707d9f5b6a790cdc84d1cf8a10d92f76"
 
 [[files]]
+file = "config/relics.yaml"
+hash = "cb3d69b009e7c028b973f2fa88bb5f09010dae00f93a2dcdc8af956ea8dd0707"
+
+[[files]]
+file = "config/relics/relics/ring_of_the_seven_deadly_sins.yaml"
+hash = "575a02a56feb5ba7317201bcf9753574fcdeb97cb2b8d1e70a6b1d6bb388ea23"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
