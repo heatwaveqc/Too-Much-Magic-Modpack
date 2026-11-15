@@ -30,8 +30,12 @@ public final class MonkSkills {
             SKILLS.register("open_palm", () -> new SimpleMonkSkill(1));
     public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> POISE =
             SKILLS.register("unarmored_poise", () -> new SimpleMonkSkill(1));
+    public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> STONE_FIST =
+            SKILLS.register("stone_fist", () -> new SimpleMonkSkill(1));
     public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> FLEET =
             SKILLS.register("fleet_footwork", () -> new SimpleMonkSkill(1));
+    public static final DeferredHolder<ISkill<?>, ISkill<IMonkPlayer>> STEP_ASSIST =
+            SKILLS.register("step_assist", () -> new SimpleMonkSkill(1));
 
     private MonkSkills() { }
 
