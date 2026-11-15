@@ -110,7 +110,7 @@ Under the deliberately extreme assumption of four Mythic armor pieces, each with
 
 This **is not a verified attainable full-build maximum**. It assumes allowed simultaneous affix rolls, four-socket pieces (the 5% branch), non-unique gem repetition, normal affix level 1.0 and no other sources. If one Splendor on the helmet is replaced with Perfect Royalty and its multiplier applies after all add-value Luck contributions, the illustrative subtotal changes to `(124−5)×1.15 = 136.85`. Extra legal held-item/Curios/temporary buffs, Supremacy/Malice, other enchanting mechanics and item restrictions may raise or reduce that further.
 
-**Game-state matters**: `minecraft:generic.luck` is normally zero before modifiers, so a literal “Extreme +100% to current Luck” gives zero. We must define *additive Luck units* for Sea Dragon and Monk, then test where **Luck actually influences outcomes**. **Fortune, Looting, Luck of the Sea, extra-loot-roll Scavenger and actual raw Luck are different systems**. This is why the prior Sea-Luck X and Monk 0.8X values remain **unresolved**.
+**Game-state matters**: `minecraft:generic.luck` is normally zero before modifiers, so a literal “Extreme +100% to current Luck” gives zero. We must define *additive Luck units* for Sea Dragon and Monk, then test where **Luck actually influences outcomes**. **Fortune, Looting, Luck of the Sea, extra-loot-roll Scavenger and actual raw Luck are different systems**. This is why the prior Sea-Luck X and Monk 0.85X values remain **unresolved**.
 
 ## 5. A single item may accumulate large effective enchant levels
 
@@ -208,9 +208,9 @@ Use **four distinct validation profiles**, not the old oversimplified naked-vs-e
 
 For a comparable property `Y`:
 
-`Y_Monk(intrinsic + legal Curios) ≈ 0.80–0.90 × Y_Specialist(skills + legal optimized conventional equipment + Curios)`
+`Y_Monk(intrinsic + legal Curios) ≈ 0.85 × Y_Specialist(skills + legal optimized conventional equipment + Curios)`
 
-Use **85%** for generic Luck (Sea Dragon X → Monk 0.85X) and **85%** for all other truly comparable noncombat outputs, comparing the theoretical LEGAL optimum rather than typical loadouts, after actual effect stacking. **Inner Fortune**, **Inner Reservoir** and **Worldly Cultivation** need their rank curves **recomputed after shared Curios effects** are measured. Do not make Monk's intrinsic Luck equal to 0.8×Sea's *entire* raw stat **and then add Monk Curios on top**; that would overshoot the proposed balance target.
+Use **85%** for generic Luck (Sea Dragon X → Monk 0.85X) and **85%** for all other truly comparable noncombat outputs, comparing the theoretical LEGAL optimum rather than typical loadouts, after actual effect stacking. **Inner Fortune**, **Inner Reservoir** and **Worldly Cultivation** need their rank curves **recomputed after shared Curios effects** are measured. Do not make Monk's intrinsic Luck equal to 0.85×Sea's *entire* raw stat **and then add Monk Curios on top**; that would overshoot the proposed balance target.
 
 ## 9. Required next test measurements, with acceptance notes
 
