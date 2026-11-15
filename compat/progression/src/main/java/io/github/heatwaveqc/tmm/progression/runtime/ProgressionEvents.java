@@ -129,9 +129,11 @@ public final class ProgressionEvents {
         }
     }
     private static void incoming(LivingIncomingDamageEvent event) {
+        if (event.isCanceled()) return;
         ClassAbilities.incoming(event);
+        if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
-        EffectHandlers.incoming(event);
+        if (!event.isCanceled()) EffectHandlers.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
