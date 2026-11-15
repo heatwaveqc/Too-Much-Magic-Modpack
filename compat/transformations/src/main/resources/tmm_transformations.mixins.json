@@ -7,8 +7,7 @@
     "JAWRVampireLevelingMixin",
     "JAWRBloodPoolMixin",
     "JAWRVampireEventsMixin",
-    "VampirismBloodStatsMixin",
-    "VampirismSunProtectionMixin"
+    "VampirismBloodStatsMixin"
   ],
   "injectors": {"defaultRequire": 1}
 }
