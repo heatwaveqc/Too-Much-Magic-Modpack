@@ -46,6 +46,17 @@ def run(root: Path = ROOT) -> None:
     vamp = root / "defaultconfigs/vampirism-server.toml"
     assert vamp.exists() and "fangInfection = false" in vamp.read_text(), "Missing fang infection override"
     assert "defaultconfigs/vampirism-server.toml" in indexed, "Vampire defaultconfig missing from packwiz"
+    # Build-specific QA defaults are copied into NEW world's /serverconfig/.
+    # Java/SERVER mod defaults intentionally stay false for stable channels.
+    qa_config = "defaultconfigs/tmm_transformations-server.toml"
+    assert qa_config in indexed, "Experimental vampire QA config must be in packwiz snapshot"
+    profile = tomllib.loads((root / qa_config).read_text())
+    assert profile == {
+        "experimentalVampireChassis": True,
+        "experimentalAutomaticDualAcquisition": True,
+        "experimentalAllowUnverifiedOtherProviders": True,
+        "experimentalOperatorCure": False
+    }, "QA-only ascension defaults changed; never enable operator forced cure by accident"
     for p in [
         "kubejs/data/tmm/questshop/shop_categories/ores.json",
         "kubejs/data/tmm/questshop/shop_entries/ores.json",
