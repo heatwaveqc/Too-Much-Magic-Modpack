@@ -176,6 +176,166 @@
           "per_rank": 1
         }
       ]
+    },
+    {
+      "id": "tmm_progression:rooted",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:knockback_resistance",
+          "per_rank": 0.1
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:evasion_undead",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "evasion",
+          "target": "#tmm_progression:undead",
+          "per_rank": 0.04
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:evasion_raiders",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "evasion",
+          "target": "#tmm_progression:raiders",
+          "per_rank": 0.04
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:sword_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tmm_progression:swords",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:axe_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tmm_progression:axes",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:scythe_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tmm_progression:scythes",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:bow_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "minecraft:bow",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:crossbow_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "minecraft:crossbow",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:fast_hands_bow",
+      "max_rank": 5,
+      "required_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "fast_hands",
+          "weapon": "minecraft:bow",
+          "per_rank": 0.2
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:fast_hands_crossbow",
+      "max_rank": 5,
+      "required_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "fast_hands",
+          "weapon": "minecraft:crossbow",
+          "per_rank": 0.2
+        }
+      ]
     }
   ],
   "max_level": 20,
