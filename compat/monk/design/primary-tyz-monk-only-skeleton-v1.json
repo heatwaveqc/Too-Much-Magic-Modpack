@@ -12,7 +12,9 @@
     "Seven Monk-only Tyz trait candidates have one-time native permission/licenses in the staged tree. Their Tyz numeric effects are not implemented or enabled.",
     "All Monk-only effects require native Monk faction and conventional-equipment eligibility at use-time, not merely at purchase. Global/general Tyz ranks remain available outside Monk.",
     "No Tyz purchase may be allowed without real server-side SkillActionEvent.PurchasePre and RefundPre gate plus direct admin-level reconciliation.",
-    "Repeatable universal skill attributes remain owned by primary Tyz; neither this file nor the Monk addon installs all 203 preliminary source endpoints."
+    "Repeatable universal skill attributes remain owned by primary Tyz; neither this file nor the Monk addon installs all 203 preliminary source endpoints.",
+    "Treasure Hand (tmm_monk:harvest_touch) is the ONE combined native unlock for two audited sources: silk_touch and fortune_hands. The Fortune Tyz entry is a bonus rank modifier above the finite native baseline, not an independent toggle node.",
+    "Ars Nouveau and Iron's Spellbooks provide Monk ranged attacks; no native Spirit Projectile is registered. Affix conversions into spell effects are source-checked and attributed, not new projectile weapons."
   ],
   "counts": {
     "native_licensed_tyz": 7,
@@ -29,10 +31,11 @@
       "rank_model": "bounded",
       "proposed_max_purchases": null,
       "distinct_rarity_milestones": null,
-      "native_license_node": "tmm_monk:fortunate_hands_license",
-      "native_license_earliest_rank_hint": 13,
+      "native_license_node": "tmm_monk:harvest_touch",
+      "native_license_earliest_rank_hint": 10,
       "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
-      "active": false
+      "active": false,
+      "extra_design_rule": "Treasure Hand is one native purchase with exclusive Fortune/Silk modes. This Tyz entry adds only additional finite Fortune power, does not issue a second native purchase, and is suppressed while in Silk Touch mode."
     },
     {
       "source_id": "tmm_monk:harvest/looting_hands",
