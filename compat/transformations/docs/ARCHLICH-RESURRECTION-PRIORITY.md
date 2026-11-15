@@ -1,6 +1,6 @@
 # Archlich resurrection priority — pinned 1.21.1 test target
 
-Status: **Implemented as an opt-in experimental handler.** Not gameplay validated,
+Status: **Implemented as an experimental handler enabled by default in pre-alpha QA.** Not gameplay validated,
 not stable. Enabled only for players who are simultaneously a **Goety lich**
 and a **JAWR: Forbidden Magic lich**. Neither standalone lich is modified.
 
@@ -29,8 +29,7 @@ soul currency, death destination or resurrection advancement is introduced.
 ## Safety
 
 - Controlled by `tmm_archlich-server.toml` (SERVER config):
-  `experimentalArchlichPhylacteryFirst = true` to opt in for disposable
-  QA worlds. **Default false**.
+  `experimentalArchlichPhylacteryFirst = true` is **default true** in new test-world server configs. Set false to disable.
 - Runtime gates inspect real provider APIs, not guessed NBT. Active only for
   precisely the pinned `goety:3.2.2` and
   `witchery_forbidden_magic:0.5.37+mc1.21.1` version prefixes.
@@ -71,8 +70,7 @@ stop the test and inspect the mod versions.
 
 ## Mandatory in-game test matrix
 
-Disposable world, backup first. Enable
-`experimentalArchlichPhylacteryFirst = true` and restart server.
+Disposable world, backup first. New-world server config defaults to true; existing config files retain their stored value. Check `/tmmtransform archlich` before testing.
 
 | Test | Expected result |
 | --- | --- |
