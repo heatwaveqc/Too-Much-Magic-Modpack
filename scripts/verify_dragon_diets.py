@@ -57,6 +57,41 @@ def main() -> None:
     assert 'nethersdelight:nether_skewer' not in cave
     assert cave['dragonsurvival:charred_seafood']['properties'] == {'nutrition': 7, 'saturation': 11.0}
 
+    # Explicit magical nourishment only; no broad effect-derived or name-based tags.
+    magical_allowlist = (
+        'evilcraft:flesh_rejuvenated',
+        'botania:infinite_fruit',
+        'botania:mana_cookie',
+        'spectrum:enchanted_star_candy',
+        'spectrum:magnificent_star_candy',
+        'spectrum:enchanted_golden_carrot',
+    )
+    for species, entries in by_item.items():
+        for item in magical_allowlist:
+            assert item in entries, f'{species} missing magical food: {item}'
+            assert entries[item]['retain_effects'] is True, (species, item)
+            if item in ('evilcraft:flesh_rejuvenated', 'botania:infinite_fruit'):
+                # The two reusable items use custom on-use feeding: avoid free
+                # extra food points in the Dragon Survival diet data map.
+                assert entries[item]['properties']['nutrition'] == 0
+                assert entries[item]['properties']['saturation'] == 0
+        for forbidden in ('artifacts:eternal_steak', 'spectrum:star_candy'):
+            assert forbidden not in entries, (species, forbidden)
+    assert 'artifacts:everlasting_beef' in cave
+    assert 'artifacts:everlasting_beef' not in forest
+    assert 'artifacts:everlasting_beef' not in sea
+    assert 'minecraft:rotten_flesh' not in forest
+    assert 'born_in_chaos_v1:monster_flesh' not in forest
+
+    werewolf_food = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/werewolf_food.json').read_text(encoding='utf-8'))
+    werewolf_raw = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/raw_food.json').read_text(encoding='utf-8'))
+    assert werewolf_food['replace'] is False and werewolf_raw['replace'] is False
+    assert set(magical_allowlist).issubset(set(werewolf_food['values']))
+    assert 'artifacts:everlasting_beef' in werewolf_food['values']
+    assert {'artifacts:everlasting_beef', 'evilcraft:flesh_rejuvenated'} <= set(werewolf_raw['values'])
+    assert 'artifacts:eternal_steak' not in werewolf_food['values']
+    assert 'botania:mana_cookie' not in werewolf_raw['values']
+
     # Verify regex selectors cover examples but do not admit baked/grain products.
     selectors = [x for x in forest if x.startswith('pamhc2')]
     assert any(re.fullmatch(x.split(':', 1)[1], 'apricotjellyitem') for x in selectors if x.startswith('pamhc2foodextended:'))
@@ -71,7 +106,7 @@ def main() -> None:
     for disallowed in ('ServerEvents.recipes(', 'charred_meat_with_coal',
                        'charred_seafood_with_coal', 'charrable_meat', 'charrable_seafood'):
         assert disallowed not in js, f'Unexpected Cave Dragon recipe shortcut: {disallowed}'
-    print('PASS: authored dragon diet structure, exclusions, food values, and native-only charring')
+    print('PASS: dragon diets, explicit magical nourishment, werewolf tags, exclusions, and native-only charring')
     print('NOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay')
 
 
