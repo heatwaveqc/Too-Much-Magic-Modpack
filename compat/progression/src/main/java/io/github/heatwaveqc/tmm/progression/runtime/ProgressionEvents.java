@@ -66,6 +66,8 @@ public final class ProgressionEvents {
     }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        // Detect completed vanilla potion drinking independently of whether it counts as food.
+        Enrollment.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         ProgressionApi.recordConsumedFood(player,event.getItem());
