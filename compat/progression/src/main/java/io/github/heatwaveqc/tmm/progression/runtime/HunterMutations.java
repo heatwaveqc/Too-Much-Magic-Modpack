@@ -96,10 +96,18 @@ public final class HunterMutations {
         HunterMutationState state = player.getData(ProgressionAttachments.HUNTER_MUTATIONS.get());
         if (state.unlocked().isEmpty()) return;
 
-        // Count DISTINCT mutation effects, not levels or active potion instances.
+        // Count DISTINCT ACTIVE eligible effects, not levels or existing Potion buffs.
+        // Re-blacklisting an old mutation stops both its effect and its metabolic tax.
         // Called once per 20 server ticks by ProgressionEvents.
+        long activeMutations = state.unlocked().keySet().stream().filter(key -> {
+            ResourceLocation id = ResourceLocation.tryParse(key);
+            if (id == null) return false;
+            var holder = BuiltInRegistries.MOB_EFFECT.getHolder(id).orElse(null);
+            return holder != null && policy.eligible(key,holder.value().isInstantenous());
+        }).count();
+        if (activeMutations == 0) return;
         player.causeFoodExhaustion(
-            policy.exhaustionPerMutationTick() * 20 * state.unlocked().size());
+            policy.exhaustionPerMutationTick() * 20 * activeMutations);
 
         // Periodic short refresh rather than a mutable infinite effect. When
         // Hunter eligibility is lost, these expire naturally within ~12 seconds.
