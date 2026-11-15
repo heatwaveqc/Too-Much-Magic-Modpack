@@ -39,12 +39,16 @@ jobs:
           mkdir -p run
           printf 'eula=true\n' > run/eula.txt
           set +e
-          timeout --signal=INT --kill-after=12s 180s gradle --no-daemon runServer --console=plain > progression-server.log 2>&1
+          timeout --signal=INT --kill-after=12s 120s gradle --no-daemon runServer --console=plain > progression-server.log 2>&1
           code=$?
           set -e
           tail -n 100 progression-server.log
-          if ! grep -Eq 'Done \\(|For help, type' progression-server.log; then
+          if ! grep -Fq 'For help, type' progression-server.log; then
             echo 'FAIL: standalone dedicated server did not reach ready state' >&2
+            exit 1
+          fi
+          if ! grep -Fq 'Loaded 2 progression path definitions' progression-server.log; then
+            echo 'FAIL: server loaded fewer than two progression paths' >&2
             exit 1
           fi
           if grep -Ei 'Exception in server tick loop|ModLoadingException|Failed to load mod|Error loading' progression-server.log; then
