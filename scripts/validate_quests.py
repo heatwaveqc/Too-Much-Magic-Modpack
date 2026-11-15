@@ -332,7 +332,17 @@ def main() -> None:
     for commodity in intentional_sale_ids:
         ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
     shop = json.loads((ROOT / "manifest" / "quest_shop_catalog.json").read_text(encoding="utf-8"))
-    ensure(len(shop["categories"]) == 5, "Shop must have five planned categories")
+    ensure(len(shop["categories"]) == 6, "Shop must have six custom categories including Ore Blocks & Mining")
+    assert sum(len(c["entries"]) for c in shop["categories"]) == 47, "Expected 29 original plus 18 ore offers"
+    ore = next((c for c in shop["categories"] if c["id"] == "ores"), None)
+    ensure(ore is not None and ore["display"] == "Ore Blocks & Mining" and len(ore["entries"]) == 18,
+           "Missing or incomplete approved vanilla-ore category")
+    forbidden_ore = {"minecraft:ancient_debris", "minecraft:netherite_block"}
+    ensure(not forbidden_ore.intersection({row[0] for row in ore["entries"]}), "Forbidden high-tier ore listed")
+    ensure(len({row[0] for row in ore["entries"]}) == 18,
+           "Duplicate ore offer item")
+    ensure(all(row[0].startswith("minecraft:") and row[1] > 0 and row[2] > 0
+               for row in ore["entries"]), "Ore inventory must have vanilla registry IDs and positive prices")
     for category in shop["categories"]:
         cat = category["id"]
         catfile = ROOT / "kubejs" / "data" / "tmm" / "questshop" / "shop_categories" / (cat + ".json")
@@ -340,6 +350,9 @@ def main() -> None:
         ensure(catfile.is_file() and entriesfile.is_file(), f"Missing shop datapack files for {cat}")
         parsed = json.loads(entriesfile.read_text(encoding="utf-8"))
         ensure(len(parsed) == len(category["entries"]), f"Shop item count mismatch for {cat}")
+        ensure([(p["item"], p["amount"], p["cost"]) for p in parsed] ==
+               [tuple(q) for q in category["entries"]],
+               f"Shop catalog and KubeJS datapack differ in {cat}")
         for product in parsed:
             ensure(product["category"] == "tmm:" + cat, f"Wrong namespaced shop category in {cat}")
             ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
