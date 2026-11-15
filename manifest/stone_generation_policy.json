@@ -52,10 +52,7 @@
     "vampirism:cobbled_dark_stone"
   ],
   "vanilla_natural_stones_not_already_in_galore": [
-    "minecraft:blackstone",
     "minecraft:deepslate",
-    "minecraft:end_stone",
-    "minecraft:calcite",
     "minecraft:dripstone_block",
     "minecraft:smooth_basalt",
     "minecraft:magma_block",
@@ -82,6 +79,7 @@
     "The pack's existing Galore base recipes for stone/cobble/andesite/diorite/granite/tuff/basalt/obsidian/netherrack are NOT replaced.",
     "Marble stonecutter conversions are 1:1 and bidirectional across four palette families; no loss or output multiplication.",
     "No ore items or drops become Galore outputs, and named natural stone's first-acquisition requirement is preserved by the seed modifier.",
-    "Natural dimension-dominant stones stay as their native worldgen blocks; only the truly duplicate ordinary overworld marble gets one canonical material."
+    "Natural dimension-dominant stones stay as their native worldgen blocks; only the truly duplicate ordinary overworld marble gets one canonical material.",
+    "Exact published Galore 0.2.9 JAR already implements blackstone, calcite and end_stone: preserve native recipes, do not add duplicates."
   ]
 }
