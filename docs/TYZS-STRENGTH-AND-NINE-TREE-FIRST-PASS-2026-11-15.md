@@ -1,6 +1,6 @@
 # Tyz — Strength tiers and complete nine-tree first pass (2026-11-15)
 
-> **Status: DESIGN ONLY; not activated in the Tyz modpack.** The 165 entries and eight capstones below are first-pass investment budgets, not tested game balance or functional mods. The source-of-truth machine catalog is [nine-tree-strength-first-pass-v1.json](tyzs/nine-tree-strength-first-pass-v1.json). Reuses the [nine-tree identities](TYZS-NINE-TREE-BLUEPRINT-2026-11-15.md), [stock skill audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/tyzs-primary-tree-runtime-migration/docs/TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md) and [retired-mod ability triage](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/TEAM-LAPEN-SKILL-TREE-TRIAGE-2026-11-15.md).
+> **Status: DESIGN ONLY; not activated in the Tyz modpack.** The 168 entries and eight capstones below are first-pass investment budgets, not tested game balance or functional mods. The source-of-truth machine catalog is [nine-tree-strength-first-pass-v1.json](tyzs/nine-tree-strength-first-pass-v1.json). Reuses the [nine-tree identities](TYZS-NINE-TREE-BLUEPRINT-2026-11-15.md), [stock skill audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/tyzs-primary-tree-runtime-migration/docs/TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md) and [retired-mod ability triage](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/TEAM-LAPEN-SKILL-TREE-TRIAGE-2026-11-15.md).
 
 ## 1. Reusable math and terminology
 
@@ -34,8 +34,8 @@
 | **Werewolf** | 18 | 1 | Strong health/HP regen; Strong/Extreme nature magic |
 | **Lich** | 12 | 1 | Strong/Extreme personal blood magic with nature tradeoff |
 | **Hunter** | 22 | 1 | Strong high-level combat; Weak/Middling equipment maintenance |
-| **Monk** | 14 | 1 | Average/Strong unarmed body, mobility and hand tools |
-| **Total** | **165** | **8** | **Design options, not 164 mandatory purchases** |
+| **Monk** | 17 | 1 | Average/Strong unarmed body; **new late Luck, capacity, cultivation parity candidates** |
+| **Total** | **168** | **8** | **Design options, not 168 mandatory purchases** |
 
 ## 2A. Gear-normalized endgame balance — Monk against geared specialists (owner-approved, revised 2026-11-15)
 
@@ -421,7 +421,7 @@ Stock skill entries have a **† symbol** in the detailed tables. These are *des
 
 **Capstone: Sovereign of Ash** — one purchase, **5 SP provisional**, treated as **Extreme power-budget** but **not** a literal unlimited +100% permanent stat buff. Requires verified final native milestone, a different-lane prerequisite and intended cooldown/resource limits. High-tier necromantic command stance requiring advanced lich progression and stable anchor ownership.
 
-**Lich exchange formula:** owning the three blood-specialist tracks reduces only the lich player's **personal nature spell potency** (Botania/Roots), respectively **-2, -3, -5 percentage points per purchased blood-specialist rank**. Combined reduction maxes at **75%**, applied **after** positive Core effects so it remains a real weakness. EvilCraft/Neo Vitae buffs apply only to source-verified player blood effects, not multiblock automation or all items.
+**Lich exchange formula:** owning the three blood-specialist tracks reduces only the lich player's **personal nature spell potency** (source-qualified Botania/Roots/Feywild spells, Iron’s Nature school, other verified Nature actions), respectively **-2, -3, -5 percentage points per purchased blood-specialist rank**. Combined reduction maxes at **75%**, applied **after** positive Core effects so it remains a real weakness. EvilCraft/Neo Vitae buffs apply only to source-verified player blood effects, not multiblock automation or all items.
 
 ## 10. Hunter — `tmm_hunter`
 
@@ -528,14 +528,32 @@ Stock skill entries have a **† symbol** in the detailed tables. These are *des
 
 **Capstone: Empty-Hand Paragon** — one purchase, **5 SP provisional**, treated as **Extreme power-budget** but **not** a literal unlimited +100% permanent stat buff. Requires verified final native milestone, a different-lane prerequisite and intended cooldown/resource limits. **The entire maxed Monk tree (not merely this capstone) must permit a skilled player to solo the genuine Chaos Guardian without any worn equipment or weapons**; source-verified phases and meaningful danger remain required.
 
+### Gearless Noncombat Mastery
+
+The following are **candidate high-rank innate Monk effects** to satisfy the approved 80%-90% of a fully optimized geared specialist's *final noncombat outcome*, not a raw numeric guarantee. The values in the tier column are only provisional strength budgets; the actual reference units must be back-calibrated using source-specific equipment and XP/milestones.
+
+| Skill | Tier / rank bonus | Rank cap | SP per rank | Capped measurement target |
+|---|---|---:|---:|---|
+| **Inner Fortune** | Extreme **+100% of defined reference** | **50** | 1 | **80%** of maxed Sea Dragon's total personal **Luck** after its full legal Luck gear |
+| **Inner Reservoir** | Extreme **+100% of defined reference** | **25** | 1 | **85%** of fully geared Dragon's legitimately comparable maximum personal mana pool per mod, including common Core skills |
+| **Worldly Cultivation** | Strong **+50% of defined reference** | **25** | 1 | **85%** of fully geared Forest Dragon's real personally performed farming, growth and husbandry yield/throughput under identical conditions |
+
+**Mathematical baseline:** `Monk required new endgame bonus = max(0, k × final specialist geared output − Monk native + Core + earlier Monk bonus)`, with `k ∈ [0.80, 0.90]`, `k = 0.80` for Sea Luck and `k = 0.85` by default elsewhere. Compute each source/unit separately, then distribute across the selected rank cap with rounding and event caps. Do not make Fortune or Looting enchantment levels masquerade as the real generic **Luck** attribute. A zero vanilla Luck baseline requires a real additive attribute unit, not +100% of zero.
+
+See [full individual noncombat calibration and affinity audit](TYZS-NONCOMBAT-PARITY-AND-MAGIC-AFFINITIES-2026-11-15.md) for all eight comparable metrics and 40-classified magic systems. Existing Monk mining speed and mobility ranks also need evaluation against actual enchanted/Apotheosis-enhanced tools, armor and Curios before their rank values are finalized.
+
 **Monk integration and endgame acceptance:** this is the **strongest intrinsic gear-independent combat path**, and its maxed version must finish the real Chaos Guardian without worn gear or weapons. **The comparison is a fully geared, similarly progressed specialist**, whose armor, enchanted/Apotheosis-affixed weapons and tools, Curios, gems and other legitimate equipment should make them broadly competitive overall, with modest advantages in their one or two intended specialties. Ungeared specialists can lack Monk's complete no-gear combat toolkit. Standalone Monk is the one-off native permission owner, not Vampirism. **No innate spirit projectile.** Ars Nouveau / Iron's supply ranged spells. First hotbar slot reserved for the fist, armor lock togglable default-on and non-purchasable, one Treasure Hand Fortune/Silk Touch mode toggle. There are separately **40 bounded Apotheosis affix-rarity** candidates retained in Monk's native source audit, not expanded to fake 25/50-level bonuses.
+
+
+**Affinity update (2026-11-15):** [Nature / Blood / Other taxonomy](TYZS-NONCOMBAT-PARITY-AND-MAGIC-AFFINITIES-2026-11-15.md). Lich buffs player-attributed Blood magic (Neo Vitae, EvilCraft personal Blood actions, Iron Blood school) while reducing eligible player Nature magic (Botania/Roots/verified Feywild, Iron Nature school). Soul/demon powers such as Goety and Occultism default **Other**, not Blood. In mixed-school mods, the spell school or legitimate personal action overrides the parent mod's broad category. No machine/pool/automation effect. 
 
 ## Review and test order
 
 1. **Approve the class power ratios and caps** before plugging in per-mod actual attributes. Extreme Dragon mana ×25 gives **+2,500%** by design and is a major endgame target; Extreme spell potency ×10 gives **+1,000%** and needs damage-school/boss caps. Strong Werewolf HP ×25 is **+1,250% of starting max HP**; test against real boss damage before acceptance. These are first-pass *targets*, not hard commitments.
 2. Source-map each bonus to an installed attribute/event and an **unmodified reference baseline**. A tag named demon/fae or a name with "blood" is not proof of correct magic or entity classification.
-3. Build narrow representative vertical tests: average five-level Core Reservoir, Extreme Dragon Reservoir/Potency, Strong late Hunter Bane + capped Glowing, Werewolf maximum hearts and health ticks, Forest Dragon crop/bonemeal, Lich one positive blood plus nature penalty, and Monk Fortune/Silk mode; then a dedicated no-worn-gear, no-weapons Chaos Guardian solo acceptance run after actual Monk abilities exist.
-4. Preserve the 32 original Tyz skills with **identical IDs** until actual relocation parity and player data conversion are verified. The original four default categories retire last. A disabled or missing skill must not silently confiscate spent SP or continue firing after cure.
-5. Measure balance against the modpack's gear ceiling, enemies (including high-level Cataclysm encounters and dragons), single-player and multiplayer stress, and the steeply increasing MXP cost per earned SP. Avoid unlimited immunity, infinite magic self-funding, arbitrary worldgen/pets or over-broad mob categories.
+3. **Gear-normalized noncombat targets:** measure the best fully geared Sea Luck = X and inner Monk Luck target = 0.8X; evaluate 85% in legal harvesting, Forest agriculture and dragon personal mana. Source-calibrate endgame rank maxima before hardcoding any new numerical modifier.
+4. Build narrow representative vertical tests: average five-level Core Reservoir, Extreme Dragon Reservoir/Potency, Strong late Hunter Bane + capped Glowing, Werewolf maximum hearts and health ticks, Forest Dragon crop/bonemeal, Lich one positive blood plus nature penalty, and Monk Fortune/Silk mode; then a dedicated no-worn-gear, no-weapons Chaos Guardian solo acceptance run after actual Monk abilities exist.
+5. Preserve the 32 original Tyz skills with **identical IDs** until actual relocation parity and player data conversion are verified. The original four default categories retire last. A disabled or missing skill must not silently confiscate spent SP or continue firing after cure.
+6. Measure balance against the modpack's gear ceiling, enemies (including high-level Cataclysm encounters and dragons), single-player and multiplayer stress, and the steeply increasing MXP cost per earned SP. Avoid unlimited immunity, infinite magic self-funding, arbitrary worldgen/pets or over-broad mob categories.
 
 **Boundary:** this design does **not** install new form powers, disable any original mod, change the current five-rank Core Skills config, or prove any effect works in game.
