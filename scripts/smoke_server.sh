@@ -15,6 +15,12 @@ java -jar installer.jar --installServer
 printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
+  # Read-only analysis of the circle's NATIVE processing path. The old
+  # global KubeJS item-tick bridge is blocked by the assembler.
+  if [[ -f "$ROOT/scripts/audit_mahou_catalyst_bytecode.py" ]]; then
+    python3 "$ROOT/scripts/audit_mahou_catalyst_bytecode.py" \
+      "$WORK_DIR/mods/mahoutsukai-1.21.1-v1.36.31.jar"
+  fi
   # Explicitly install every compiled first-party JAR; never report a bridge smoke
   # PASS if the declared JAR was missing, ignored, or not copied into mods/.
   EXTRA_JAR_LIST="${SMOKE_EXTRA_MOD_JARS:-${SMOKE_EXTRA_MOD_JAR:-}}"
@@ -46,8 +52,12 @@ fi
 # Every full modded QA that includes the Mahou KubeJS catalyst bridge must
 # exercise an actual dropped-item entity tick. A plain server boot did not
 # catch the reported world-start crash.
-if [[ "${SMOKE_WITH_MODS:-0}" == "1" && -f "$WORK_DIR/kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js" ]]; then
+if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   SMOKE_ITEM_TICK_TEST=1
+  test ! -f "$WORK_DIR/kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js" || {
+    echo "FAIL: legacy global Catalyst Exchange ItemEntity tick script was packaged"
+    exit 5
+  }
 fi
 mkfifo cmd.fifo
 # Stop as soon as the server becomes ready, instead of needlessly idling for minutes.
