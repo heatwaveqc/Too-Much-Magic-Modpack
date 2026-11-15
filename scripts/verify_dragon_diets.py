@@ -58,11 +58,14 @@ def main() -> None:
     assert not any(re.fullmatch(x.split(':', 1)[1], 'roastedalmonditem') for x in selectors if x.startswith('pamhc2trees:'))
 
     js = SCRIPT.read_text(encoding='utf-8')
-    for token in ("ServerEvents.tags('item'", "ServerEvents.recipes(", "Platform.isLoaded('dragonsurvival')",
-                  "'#minecraft:coals'", "'#c:foods/raw_fish'", "'#c:foods/raw_meat'",
-                  "'farmersdelight:cabbage'", 'TMM_GRAIN_WORDS'):
+    for token in ("ServerEvents.tags('item'", "Platform.isLoaded('dragonsurvival')",
+                  "'farmersdelight:cabbage'", 'TMM_GRAIN_WORDS',
+                  "'dragonsurvival:cooked_mushrooms'", 'event.remove(sourceTag, id)'):
         assert token in js, f'Missing implementation guard: {token}'
-    print('PASS: authored dragon diet structure, exclusions, food values, and charring fallback')
+    for disallowed in ('ServerEvents.recipes(', 'charred_meat_with_coal',
+                       'charred_seafood_with_coal', 'charrable_meat', 'charrable_seafood'):
+        assert disallowed not in js, f'Unexpected Cave Dragon recipe shortcut: {disallowed}'
+    print('PASS: authored dragon diet structure, exclusions, food values, and native-only charring')
     print('NOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay')
 
 
