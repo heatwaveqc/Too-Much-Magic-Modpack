@@ -210,7 +210,7 @@ For a comparable property `Y`:
 
 `Y_Monk(intrinsic + legal Curios) ≈ 0.80–0.90 × Y_Specialist(skills + legal optimized conventional equipment + Curios)`
 
-Use **80%** for generic Luck (Sea Dragon X → Monk 0.8X) and **85%** for other truly comparable noncombat outputs, after actual effect stacking. **Inner Fortune**, **Inner Reservoir** and **Worldly Cultivation** need their rank curves **recomputed after shared Curios effects** are measured. Do not make Monk's intrinsic Luck equal to 0.8×Sea's *entire* raw stat **and then add Monk Curios on top**; that would overshoot the proposed balance target.
+Use **85%** for generic Luck (Sea Dragon X → Monk 0.85X) and **85%** for all other truly comparable noncombat outputs, comparing the theoretical LEGAL optimum rather than typical loadouts, after actual effect stacking. **Inner Fortune**, **Inner Reservoir** and **Worldly Cultivation** need their rank curves **recomputed after shared Curios effects** are measured. Do not make Monk's intrinsic Luck equal to 0.8×Sea's *entire* raw stat **and then add Monk Curios on top**; that would overshoot the proposed balance target.
 
 ## 9. Required next test measurements, with acceptance notes
 
@@ -225,3 +225,5 @@ Use **80%** for generic Luck (Sea Dragon X → Monk 0.8X) and **85%** for other 
 9. **Regression**: repeated equips/unequips, dimension changes, source hybrid forms/cures, death/tombstone, storage, enchant item copies, client/server attribute sync and duplicate bonus sources.
 
 **No client/server QA or packed JAR registry extraction was completed in this pass.** Structural source research and an inventory screen do **not** certify an exact full equipment ceiling. The follow-on should produce a pinned runtime inventory rather than prematurely freezing Luck, mana or Monk stat numbers.
+
+**Owner clarification — capped noncombat, 2026-11-15:** The capped Monk target is now **exactly 85% of the theoretical highest LEGALLY ATTAINABLE fully specialized and fully equipped build**, including Luck (superseding the former 80% Sea Dragon exception). This is not 85% of a representative build and not 85% of the registered attribute hard ceiling unless an all-in legal build actually reaches that ceiling. Both Monk and specialist include real eligible Curios only once. See [source-registered bounds audit](tyzs/theoretical-attribute-hard-caps-v1.json) and [Curios item/slot audit](tyzs/curios-all-in-eligibility-v1.json); banned Seven Deadly Sins Ring excluded from all legal builds.
