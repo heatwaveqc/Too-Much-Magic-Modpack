@@ -131,6 +131,8 @@ public final class HunterExperience {
         }
         if (!hasEffect) return;
         String claim = "tmm_progression:potion_claim/" + potionId.replace(':','/');
+        // Refuse namespaced recipes whose claim cannot be persisted: no uncapped repeat XP.
+        if (claim.length() > 128 || !claim.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")) return;
         String stored = ProgressionApi.mode(player,claim,"");
         boolean discovery = stored.isEmpty();
         long now = player.server.overworld().getGameTime();
