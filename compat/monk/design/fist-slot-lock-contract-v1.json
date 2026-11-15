@@ -18,10 +18,10 @@
     "visual_context": "First hotbar position (far left), normally selected by pressing numeral 1."
   },
   "config": {
-    "override_eligible": "operator_config_and_explicit_in_game_slot_selection_only",
+    "override_eligible": "No player-driven relocation in initial implementation; fist slot is ALWAYS hotbar position 1 (zero-based 0). Alternative slots would require an explicit future design change.",
     "valid_index_min": 0,
-    "valid_index_max": 8,
-    "change_policy": "server-validated; avoid moving occupied content without lossless relocation; client HUD selection follows stored index",
+    "valid_index_max": 0,
+    "change_policy": "Fixed to key 1 / inventory index 0 for all Monks. No GUI option or config can silently move this invariant.",
     "initial_default": 0
   },
   "active_when": "Player belongs to the Monk faction, independently of temporary equipment discipline suppression; after leaving faction slot returns to normal; remains locked regardless of optional no-armor lock toggle, because the two inventory guards are independent.",
@@ -38,7 +38,7 @@
     "allows": "normal empty-hand punching/mining/block interaction; magic can still be cast from legal spells/staffs/books held in other hotbar positions; inventory cursor cannot put items into reserved slot; player should be able to press key 1 before using fists",
     "does_not_do": "spawn fake inventory item, grant creative flight, change offhand, delete items, allow conventional weapons during Monk discipline, grant a secondary item hand",
     "visual": "Render non-item translucent fist icon and Fist label on the FIRST (far-left) slot, activated by key 1; must not alter inventory ItemStack.",
-    "interface": "Client receives reservation state and slot from server; input and inventory transactions remain server-authoritative; no client-only illusion."
+    "interface": "Client displays immutable fist reservation at hotbar key 1, synced from server; inventory transactions remain server-authoritative."
   },
   "hooks_to_verify": [
     {
@@ -75,7 +75,7 @@
     "Shift-click and mouse drag into slot 1, number-key swapping with inventory and chest, creative insertion, /give and item commands",
     "Items from ars_nouveau spellbooks/irons_spellbooks staffs remain equipable in other eight positions and magic damage is not suppressed merely because of fist reservation",
     "On death/relog/clone/keepInventory, all items retain NBT/components/count, no dupe/drop on entry/exit",
-    "Multiplayer: two Monks can hold different reserved slot indices without cross-player effects",
+    "Multiplayer: both Monks reserve their own first hotbar slot (key 1/index 0) without cross-player item movement or effects",
     "Non-Monk/vampire/hunter/werewolf has all nine normal slots and no false fist HUD",
     "Temporary discipline disqualification by wearing armor does NOT re-enable the reserved slot or allow item injection",
     "Server or modded menu directly calls setItem(0) bypassing hooks: no loss/no dupes and recovery data survives restart"
