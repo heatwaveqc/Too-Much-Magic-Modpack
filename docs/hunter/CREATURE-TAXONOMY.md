@@ -1,125 +1,102 @@
-# Hunter creature census and faction-affinity research — active inventory
+# Hunter creature taxonomy and faction-affinity contract
 
-**State:** research only; candidate classifications, not runtime tags or implemented skills.  
-**Date:** 2026-11-15. **Target:** Minecraft 1.21.1 / NeoForge 21.1.265.  
-**Working baseline:** `test/full-integration` manifest, read at commit `f6f1c5894ffd1ebcdcd4fd5d0989375fcc4d8f78`.  
-**Machine-readable working inventory:** [creature-inventory.csv](creature-inventory.csv).
+**Updated:** 2026-11-15 — exact-pin verification pass. **Platform:** Minecraft 1.21.1 / NeoForge 21.1.265. **Status:** researched and runtime-registered; **no Hunter ability, AI, faction, skill, XP or quest implementation** has been changed by this PR.
 
-## Coverage
+## Authoritative inventory and evidence
 
-The working CSV contains **370 candidate named entries** from **21 source groups**, including wildlife, summoned entities, NPCs and noncombat cases. The research now also includes **95 source-confirmed registered entity IDs** from seven upstream modules in [registration-evidence.csv](registration-evidence.csv). These are upstream source registrations, **not pinned-JAR or server-runtime confirmations**. See the [verification pass and acceptance plan](REGISTRY-VERIFICATION-PASS.md).
+- [creature-inventory.csv](creature-inventory.csv): **477** named candidate records across **22 source groups**; includes friendly NPCs, player summons, legacy/unavailable entries and 44 prospective Alex's Caves creatures. Not 477 huntable entities.
+- [runtime-entity-census.csv](runtime-entity-census.csv): **1,393 actual namespaced entity IDs** (including projectiles, boats, visual effects and other nonliving entities) from a disposable dedicated-server run of the exact integrated pack; records active tags and `MobCategory`.
+- [candidate-runtime-crosswalk.csv](candidate-runtime-crosswalk.csv): 477 named candidates linked against that server's registry. **424 runtime-present**, **44 prospective Alex's Caves**, **five Malum cultists absent from the pinned build**, **four source-only names without distinct runtime entity IDs**.
+- [registration-evidence.csv](registration-evidence.csv): **95 upstream source-registration candidates** across seven mods. **90 matching entity-registration strings** found in SHA-verified JARs; the five mismatches are those absent Malum cultists.
+- [PINNED-RUNTIME-VERIFICATION.md](PINNED-RUNTIME-VERIFICATION.md): actual test results, caveats and unresolved taxonomy.
+- [Full JAR and server CI](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43755119592) and [hash-verification CI](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43754945690): **22/22 targeted pinned JARs SHA-verified**; server started, census ran. We have **NOT** demonstrated all natural spawns, attacker AI, hostility, ownership handling or Hunter XP eligibility in client/world tests.
 
-| Source group | Candidate records | Evidence basis |
-| --- | ---: | --- |
-| Vanilla 1.21.1 | 56 | baseline |
-| Cataclysm | 39 | roster; pinned 3.33 JAR not inspected |
-| Eidolon: Repraised | 7 | roster; pinned 0.5.0.8 JAR not inspected |
-| Iron's Spells | 21 | roster; pinned 3.16.3 JAR not inspected |
-| Alex's Caves | 44 | **prospective only; no approved/pinned port** |
-| Draconic Evolution | 1 | Chaos Guardian seed |
-| Goety | 76 | 3.2.2 roster; pin-level registry not yet inspected |
-| Deeper and Darker | 11 | [v1.4.1 source registration](https://github.com/KyaniteMods/DeeperAndDarker/blob/v1.4.1/src/main/java/com/kyanite/deeperdarker/content/DDEntities.java) |
-| Feywild | 13 | candidate roster |
-| Occultism | 7 | candidate roster |
-| EvilCraft | 6 | candidate roster |
-| Just Another Witchery Remake | 7 | candidate roster |
-| Neo Vitae | 16 | Daemonium bestiary and candidates |
-| Ars Nouveau | 13 | Wilden + summoned helpers |
-| Botania Revived | 2 | source portability review |
-| Malum | 6 | five [1.21.1 branch cultists](https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/main/java/com/sammy/malum/registry/common/entity/MalumCultistEntityTypes.java) plus nonliving spirit |
-| Primal Magick | 36 | [6.0.7 tagged source](https://github.com/daedalus4096/PrimalMagick/blob/6.0.7/common/src/main/java/com/verdantartifice/primalmagick/common/entities/EntityTypesPM.java) |
-| Hexerei | 2 | [1.21.1 branch](https://github.com/JoeFoxe/Hexerei/blob/1.21.1/src/main/java/net/joefoxe/hexerei/client/renderer/entity/ModEntityTypes.java) |
-| Enchanted: Witchcraft | 2 | [1.21.1 branch](https://github.com/Favouriteless/Enchanted/blob/1.21.1/common/src/main/java/net/favouriteless/enchanted/common/init/EEntityTypes.java); Ent commented out |
-| Roots Classic | 1 | [1.21.1 branch](https://github.com/Lothrazar/RootsClassic/blob/1.21.1/src/main/java/elucent/rootsclassic/registry/RootsEntities.java) |
-| Forbidden & Arcanus | 4 | [1.21.1 branch](https://github.com/stal111/Forbidden-Arcanus/blob/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/core/init/ModEntities.java) |
+**Caution:** a runtime `EntityType` registration is real evidence of existence **in the tested pack**, but does not prove that it is living, normally hostile, naturally spawning, or legal to hunt. `MobCategory.MONSTER` alone cannot prove unprovoked attacks. Source tags such as `minecraft:undead` establish a useful default classification, but unusual modded mobs may be untagged and need explicit compatibility additions.
 
-### Evidence and limits
+| Source | Candidate rows | Evidence status |
+|---|---:|---|
+| Vanilla Minecraft | 56 | live registry and tags |
+| Cataclysm | 39 | live registry and tags; some nature from lore |
+| Eidolon: Repraised | 7 | six non-MISC mobs plus one historical/noncombat case |
+| Iron's Spells | 20 | runtime registrations; duplicate Ancient Knight/Citadel Keeper merged |
+| Alex's Caves | 44 | **prospective only; no selected or pinned port** |
+| Draconic Evolution | 1 | Chaos Guardian linked to active `draconicevolution:draconic_guardian` alias |
+| Goety | 76 | live registry + author classifications; remaining servants in full census |
+| Goety Cataclysm | 32 | added from runtime, many summons; XP eligibility unverified |
+| Deeper and Darker | 11 | v1.4.1 tagged source + live registry |
+| Feywild | 13 | live IDs matched or reviewed |
+| Occultism | 63 | 62 registered mob IDs + one historical `Wild Spirit` name not independently registered |
+| EvilCraft | 6 | five IDs + Werewolvian Villager is not a distinct registered entity |
+| Witchery Remake | 27 | 26 mob registrations + one unregistered `Spirit Villager` candidate |
+| Neo Vitae | 16 | 15 mob registrations + no registered `Sanguine Ward` entity |
+| Ars Nouveau | 13 | live IDs matched |
+| Botania Revived | 2 | Gaia Guardian's registry ID is `botania:doppleganger` |
+| Malum | 6 | **five upstream-only cultists absent**; `natural_spirit` is a nonliving resource |
+| Primal Magick | 36 | pinned JAR and live source IDs (Pixies are Fae) |
+| Hexerei | 2 | crow/ owl; passive companions, not ordinary prey |
+| Enchanted: Witchcraft | 2 | familiar cat and hostile Mandrake; source Ent registration commented out |
+| Roots Classic | 1 | Phantom Skeleton; targets other monsters, not unprovoked players |
+| Forbidden & Arcanus | 4 | three non-aggressive Lost Souls, Dark Trader; not normal XP prey |
 
-- The CSV records **display names**, not fabricated namespaced entity IDs. `entity_id`, native entity tags, creature attributes and actual runtime membership are **not yet verified** against the pinned JARs or a live registry.
-- Wiki pages may describe newer or older mod versions than the target; this inventory is a source-backed **candidate**, not version-matched completion. Some catalog pages list decorative or scripted entities as 'mobs', so the CSV explicitly distinguishes summoned, corpse, noncombat and uncertain cases.
-- Alex's Caves has multiple distinct unofficial NeoForge 1.21.1 ports, including [Alex's Caves Neo](https://modrinth.com/mod/alexscavesneo), [another unofficial port](https://modrinth.com/project/alexs-caves-%28unofficial-port%29), and [Alex's Caves Continued](https://modrinth.com/mod/alexs-caves-continued). No port has been approved/pinned for this pack, so **do not install or assume port-specific parity** from this research.
-- The earlier 168- and 325-entry passes have been expanded, but the CSV does **not** claim complete hostile-entity coverage. A registered entity dump is still the acceptance criterion.
+## Owner-locked design rules
 
-## Taxonomy policy — owner decisions
+1. Hunter specialization follows **species, supernatural ancestry, coherent faction or coherent ecological group**, never simply a dimension, biome, weapon, tactic or difficulty.
+2. **Do not create** Mage Slayer, Explosive Threat, Endborn, Netherborn, Spirit or Boss Hunter trees. **Spirit is merged into Undead** for actual dead/ghostly beings; a summoned outsider merely called a spirit is not necessarily undead.
+3. Vanilla **Creeper = Plant** by pack design, including variants with real botanical ancestry. Exploding is not a category.
+4. **Void** includes Enderman, Endermite, confirmed variants, Ender Dragon and Draconic Evolution Chaos Guardian. It can also include Goety's `goety:enderlings` Watchlings/Blastlings/Snarelings. **Do not classify every End mob as Void**; Shulker remains unresolved.
+5. **Piglin** includes Piglin, Brute, Hoglin and coherent faction/ecosystem variants; **zombified Piglins and Zoglins are Undead**, not Piglin specialists.
+6. **Aquatic** is an intentional ecology/physiology group across any dimension; animals, Deeplings, Cataclysm ocean mobs and other genuinely adapted enemies can count.
+7. Multi-tag creatures are legitimate: Ender Dragon = Dragon + Void; Drowned = Undead + Aquatic; Clawdian = Aquatic + Arthropod. **Cap or diminish damage stacking** so obtaining several specialist branches does not trivialize multi-tag bosses.
+8. `boss`, `summoned`, `owner`, `hostile`, `flying`, `spellcasting`, `explosion`, `armor` and `teleportation` are **combat/encounter attributes**, not specialist branches.
+9. A data-driven registry must permit third-party mods to declare creature categories, tags, and individual exclusions. Neither the standalone progression Core nor standalone Monk should hardcode this taxonomy.
 
-1. Categories represent **species/lineage, supernatural origin, or coherent faction/ecosystem**; they are not attack mechanics or dimensions.
-2. **No** Mage Slayer, Explosive Threat, Endborn, Netherborn, Spirit or Boss specialization. **Spirit has been merged into Undead**: wraiths, ghosts, revenants and other postmortem/incorporeal dead count as Undead where supported; spectral movement is a trait, not a skill tree. Do not automatically treat non-dead beings called spirits as undead.
-3. **Creepers are Plants** by pack design, notwithstanding uncertain in-game biology. Preserve the special case for ordinary Creepers; for mechanical or modified Creeper analogues review whether the plant ancestry still applies.
-4. **Void** includes Endermen, Endermites and their confirmed variants, Ender Dragon, and Draconic Evolution's Chaos Guardian (inventoried as a seed); **not** every mob in the End. The latter requires a Draconic Evolution entry in a future wave.
-5. **Piglin** includes Piglins, Brutes, Hoglins, and coherent related fauna/faction members; **not** zombified Piglins or Zoglins, which are Undead.
-6. A creature may have multiple *genuine* memberships; e.g., Ender Dragon = Dragon + Void; Drowned = Undead + Aquatic. Tactical traits (flight, casting, summoning, explosion, armor) remain separate non-skill-tree metadata.
-7. Boss/elite flags may affect **balance, XP, and neutrality exceptions**, but never grant a Boss damage specialization.
-8. Passive wildlife, friendly traders, and player-owned summons should not become routine farmable Hunter XP or contracts. The CSV distinguishes `yes`, `defensive-only`, `no`, and `review` policies.
-9. Registration should be data-driven and overridable in a standalone Hunter mod; the progression core should not hardcode mod names, monsters, or Minecraft lore.
+### Working specialization families
 
-### Working families
+Base families: **Undead, Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon, Fae, Aberration**.
 
-Existing: Undead (including spectral dead), Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon, Fae, Aberration.
+Additional **candidate families, not yet owner-approved as skill trees**:
+- **Wilden** — Ars Nouveau Stalker/Hunter/Guardian/Chimera creature lineage.
+- **Goety Cult** — Goety Heretic, Warlock, Maverick, Crone, Apostle; this is a coherent social faction and not generic magical combat. [Goety's cultist listing](https://goety.wiki.gg/wiki/Category:Cultist).
+- **Hobgoblin** — JAWR's Hobgoblin community and patrons Mog/Gulg, pending decisions on whether patrons share species bonuses or only faction-counter abilities.
+- **Prehistoric**, **Mutant**, **Confection**, and perhaps **Darkness-born** — especially useful if Alex's Caves is added; that mod remains unpinned.
+- **Malum Cult is NOT currently viable**: five tempting cultist registrations occur in a later upstream branch but **none exists in the pinned 1.8.2 runtime**. This candidate is suspended, not a supported pack tree.
 
-**Candidate additions exposed by Alex's Caves (not yet approved skill trees):**
-- **Prehistoric**: dinosaurs and ancient fauna across several mods; do not reduce to 'anything from a cave'.
-- **Mutant**: creatures actually transformed by radiation/biological mutation, potentially including Brainiac/Gammaroach/Tremorzilla; distinguish hazardous attack effects from mutated physiology.
-- **Confection**: magically living candy organisms. May warrant a narrow standalone tree if there are sufficient meaningful prey and abilities, otherwise fold into a broader lineage with a data tag.
-- **Darkness-born**: the Watcher/Forsaken and any confirmed shared supernatural ancestry; research needed before making a skill tree. A mole cultist's worship does not by itself establish Darkness-born biology.
+### Corrected examples from exact runtime or lore
 
-**Candidate families exposed by this expanded pass (not approved yet):**
-- **Wilden**: coherent Ars Nouveau creature lineage (Stalker, Pack Hunter, Defender, Chimera), rather than a category for magical attacks or forests.
-- **Malum Cult**: five related monster-category cultist registrations in the 1.21.1 source branch; exact 1.8.2 pinned binary parity unverified. A specific social faction, not generic Mage Slayer or all cultists.
+| Creature | Classification | Evidence / gameplay implication |
+|---|---|---|
+| Minecraft Ghast | **Undead** | Actual `minecraft:undead` entity-type tag; no Netherborn |
+| Eidolon Necromancer | **Undead** | Actual `minecraft:undead` tag, unlike earlier assumptions |
+| Iron's Necromancer | **Undead** | Actual `minecraft:undead` tag, unlike earlier assumptions |
+| Cataclysm Ancient Remnant | **Undead + Prehistoric** | Actual `minecraft:undead` tag on extinct dinosaur |
+| Cataclysm The Watcher | **Construct** | EMP-sensitive Ancient Factory robotic sentry; same for Goety's summoned Watcher |
+| Goety Blastling / Snareling / Watchling | **Void** | `goety:enderlings` lineage, not merely found in the End |
+| Witchery Imp / Demon / Mirror Demon | **Demon** | Actual `witchery:demonic_entity` tags |
+| Vanilla Vex | **Illager ecosystem** (not biologically illager) | Evoker-summoned raider ally; no standalone Spirit bonus |
+| Goety Wartling | **Arthropod** | Actual `minecraft:arthropod` tag; not Plant merely from its name |
+| Malum `natural_spirit` | **Not prey** | Nonliving `MISC` spirit-item entity, not Undead |
+| Primal Magick pixies | **Fae** | Void/Infernal/Sea refer to magical affinities, not species |
+| Enchanted Familiar Cat / Hexerei Owl | **Beast, not legal prey** | Registered companions; XP excluded |
 
-**Explicit review cases:** Shulker, Ghast, Cataclysm Ignis/Wadjet/Clawdian/The Watcher, Iron's Ancient Knight/Citadel Keeper/Echo of Tyros, Eidolon Wraith and Necromancer, and Alex's Caves Nucleeper/Gumbeeper/Caniac. Do not force assignments based on spellcasting, names, locations, or model appearance alone.
+## Faction neutrality — related but independently configurable
 
-## Faction neutrality — separate from Hunter damage taxonomy
+`creature_memberships` governs **what Hunters study and fight**. `affinity_rules` governs **who naturally targets whom**. `hunt_reward_policy` independently governs **what earns XP, progression milestones or contracts**. These must not be one table with inseparable meaning.
 
-**Design requirement:** vampires are normally neutral to most Undead; werewolves to most Beasts. Hunter remains a mutually exclusive non-supernatural identity. Neutrality is **no unprovoked target acquisition**, not taming, invulnerability, permanent pacification, or a ban on retaliation.
+Proposed default affinity:
+- Most ordinary Undead do **not** acquire an unprovoked vampire/lich target. This includes modded undead validated by runtime tags (e.g. Ghasts, certain necromancers), *subject to explicit story/boss exceptions*.
+- Most ordinary Beasts do **not** acquire an unprovoked werewolf target. This does not grant taming, protect from damage or override social enemies (e.g. Illager-ridden Ravager).
+- Preserve owner/commanded defense targets, retaliation, PvP rules, and specifically configured boss/story exceptions before applying broad neutral affinities. Exceptions are AI flags, **not a Boss specialization**.
+- Hunters remain mutually exclusive with incompatible supernatural species; their transformation immunity requires dedicated provider hooks, not merely a status-effect cure.
 
-Two separate layers are necessary:
-- `creature_memberships`: what a mob *is* and which Hunter specialization affects it;
-- `affinity_rules`: which player species or creature factions it naturally treats as neutral, including per-mob exceptions and provocation conditions.
+**Current behavior is not implemented by this research PR.** The separate `feature/mob-alliance-neutrality` prototype already contains vampire/lich-to-undead targeting hooks, with owner and retaliation exemptions, but has no werewolf-to-Beast rule and is not proven active here. Do not claim neutral AI from a server census alone.
 
-A third `hunt_reward_policy` prevents abuse by farming passive fauna, traders, repeated player summons or inert corpse/progression entities. A neutral mob may still be classified as a Hunter prey type without offering a kill contract.
+## Remaining acceptance tests
 
-### Proposed precedence
+1. Verify entity *instance* classes (`LivingEntity`/Mob) as opposed to registry `MobCategory`; exclude projectiles, boats, FX, decorative models and non-living MISC types.
+2. Test naturally-spawning versus ritual/summoned acquisition, owner chains, boss flags, faction affiliations, triggered-spawn cases and despawns.
+3. Test no XP for passive livestock, player-owned familiars/summons, merchants, collectible souls, repeated self-created minions or duplicate kill-credit.
+4. Test two or more simultaneous categories (Dragon+Void, Undead+Aquatic) for sensible stacking and neutrality precedence.
+5. Verify faction neutrality against actual native AI targeting (vampire→Undead, werewolf→Beast), provocation, social faction override and hostile bosses.
+6. Resolve [the intentionally narrow remaining taxonomy list](PINNED-RUNTIME-VERIFICATION.md), only with confirmed lineage, not guesses.
 
-1. **Explicit owner/commander/defense target and damage retaliation** take priority; neither vampire nor werewolf affinity defeats owner-directed minions.
-2. **Named boss/story encounter exemptions** can override neutrality; this is a behavior flag, **not** a Boss specialization.
-3. **Specific social factions** can override broad lineage affinity. An Illager-aligned Ravager should not abandon its patrol because the player is a werewolf; Piglin/Hoglin relations require faction precedence.
-4. **Baseline affinity:** non-exempt ordinary Undead do not initiate attacks against confirmed vampires/liches; non-exempt Beast mobs do not initiate attacks against confirmed werewolves. Include optional species providers only when their state can be verified.
-5. **Native AI/default behavior** applies otherwise.
-
-### Spirit-to-Undead fold: cross-mod caveats
-
-- Eidolon Wraith and Goety Wraith are Undead; death-derived spectral enemies inherit Undead when verified. No separate Spirit specialization or duplicate damage stacking.
-- **Occultism Foliot, Djinni, Afrit and Marid are supernatural outsiders labeled spirits by Occultism, not automatically dead souls.** They provisionally belong to Demon, and being player-owned summons prohibits Hunter XP farming.
-- **Malum spirit items and spirit-extraction entities are resources, not undead mobs.** A `natural_spirit` noncombat `SpiritItemEntity` was found in Malum's source; it must not become an Undead prey entry.
-- The Alex's Caves Watcher remains Unresolved; its spectral appearance does not prove it is a dead soul.
-
-### Current audit priorities
-
-- **Exact registry audit:** extract IDs, class, MobCategory, spawn egg, living status, owner metadata and tag memberships from the pinned JAR or booted registry. An upstream name/ID is evidence for a candidate only; do not assume it matches a pin.
-- **Werewolf neutrality:** implement/tag a *separate* `Beast` no-first-aggro relationship with explicit owner/faction/boss exceptions; Goety summons and ravagers must not be pacified just for being beasts.
-- **Name reconciliation:** source references use different names for Ars Wilden Guardian vs Defender, Hunter vs Pack Hunter; merge only after exact registry comparison.
-- **Source-registered in this pass:** Enchanted: Witchcraft, Forbidden & Arcanus, Hexerei, Primal Magick and Roots Classic. These still need exact pinned-JAR matching. **Pending:** Goety Cataclysm servant registrations, Gaze/Malum addon, Witchery/Goety/Ars variants, and other entity providers. Some add no huntable mobs; prove absence rather than guessing.
-- **Port check:** Alex's Caves is not in the selected pack, and any future NeoForge port requires approval, provenance and version comparison before its rows become enabled.
- Damage and kill-credit rules remain native unless separately designed.
-
-Do not automatically make every `Undead` row vampire-friendly: e.g., Wither, Maledictus, Dead King, summoned servants may need exclusions. Likewise, predatory or giant beasts (Tremorsaurus/Tremorzilla) and rival factions should be deliberate exceptions if needed. Hunter combat tags should not encode these social exceptions.
-
-### Existing compatibility prototype
-
-The repository has a **separate, unmerged-to-integration** `feature/mob-alliance-neutrality` branch containing:
-- `compat/transformations/.../mob/MobAllianceEvents.java`: target-change cancellation and periodic target clearing; 600-tick retaliation memory; vanilla + extra Undead tagging; vampire/lich verification; fae/forest-dragon and demon/cave-dragon relationships; optional summoned and boss exemptions; `TMM_MOB_CENSUS` server log.
-- `compat/transformations/.../mob/MobAlliancePolicy.java` and corresponding test.
-
-**Gap:** no werewolf–Beast rule, no unified Hunter taxonomy registration, and no evidence that either behavior is functional in the current integration build. **Do not mistake this design-pass note for a runtime update.**
-
-**Census concern:** that prototype skips every `MobCategory.MISC` entity. Some modded bosses, spawned summons, or scripted living entities may use unconventional categories, so a reliable entity census should inspect actual living/mob registrants and filter out projectiles separately; log `minecraft` entries too.
-
-## Next census stages
-
-1. **Exact-version registry census:** get `namespace:path` from pinned JAR entity registrations or a clean test-server dump; record entity class, living flag, natural behavior, owner/summon type, and vanilla/mod tags. Do not infer IDs from display names. Include boss and MISC edge cases.
-2. **Expand active-mod coverage:** the remainder of Draconic Evolution; Goety + Goety Cataclysm; JAWR and its addons; Feywild; Occultism; EvilCraft; Ars Nouveau + additions; Neo Vitae; Botania Revived; and remaining pack entities. Recheck source-covered mods against pinned JARs. Reconcile each against actual `mods/*.pw.toml` and version.
-3. **Neutrality matrix:** vampire, lich, werewolf, human Hunter, and dragon/fey/demon species states × tags/individual exceptions; test no-aggro, retaliation, commanded summons, PvP and boss encounters independently.
-4. **Coverage gates:** no unknown natural hostile entity silently assigned to a default specialist; no neutral/trader automatically treated as a legal contract; no summon-farming bypass; no broad multi-tag boss damage multiplication.
-5. **Review proposed new trees** after the full installed-mod census to determine if Prehistoric, Mutant, Confection, or Darkness-born have sufficient shared identity and gameplay to justify standalone specializations.
-
-This pass changes **documentation only**. It does not alter packwiz, gameplay classes, skills, mob AI, loot or faction assignment.
+**This PR changes research documentation and data only. It does not rewrite the pack's runtime, install Alex's Caves or ship Hunter/Monk abilities.**
