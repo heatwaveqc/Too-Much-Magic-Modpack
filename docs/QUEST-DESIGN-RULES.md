@@ -1,5 +1,7 @@
 # Too Much Magic — quest design contract
 
+> **Pending ProjectE gate revision:** The earlier all-post-Chaos quest policy below is being superseded by a proposed **two-stage** gate: basic ProjectE after Gaia Guardian I **or** Neo Vitae Foreman; advanced ProjectE/Expansion after Chaos Guardian. Until in-game enforcement and quest revisions are completed, all older quest text must be treated as stale design guidance. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
+
 Approved 2026-11-14. Inspired by ATM10's navigational and branching approach. Quest text, reward choices, IDs and layouts are original; no copied ATM10 quests, images, loot tables or proprietary assets.
 
 1. **Every quest must grant positive experience and a meaningful reward.** Strongly prefer a **thematic, fixed item**, not currency; coins may substitute **only when no good fixed item makes sense**, principally selling-contract quests. The 42 provisional overview checkmarks still use temporary 2 XP + one paper rewards, to be redesigned as those chapters mature. No random-only or no-reward quests.
