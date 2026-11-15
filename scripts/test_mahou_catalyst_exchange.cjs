@@ -32,13 +32,12 @@ class ItemStack {
 }
 class ItemEntity {
   constructor(level, id, count, pos = {x:1,y:65,z:1}) {
-    this.world = level
+    this.level = level
     this.stack = new ItemStack(id, count)
     this.pos = pos
     this.removed = false
     this.uuid = 'qa-test-' + (++uuidSerial)
   }
-  level() { return this.world }
   getUUID() { return this.uuid }
   isRemoved() { return this.removed }
   getItem() { return this.stack }
@@ -48,7 +47,7 @@ class ItemEntity {
 }
 class Level {
   constructor(targetPresent=true) { this.targetPresent=targetPresent }
-  isClientSide() { return false }
+  get isClientSide() { return false }
   hasChunkAt() { return true }
   equals(obj) { return this === obj }
   getBlockState(pos) {
@@ -73,6 +72,26 @@ const context = {
   NativeEvents: {onEvent(name,fn) {assert.ok(!nativeHandlers.has(name));nativeHandlers.set(name,fn)}}
 }
 vm.runInNewContext(source,context,{filename:'mahou_neo_vitae_catalyst_exchange.js'})
+
+
+// Regression for the actual first-world crash: starter Akashic Tome is a
+// completely unrelated item, and Rhino exposes ItemEntity.level as an object.
+// Any call to item.level() used to crash on its very first entity tick.
+{
+  const level = new Level(), tome = new ItemEntity(level, 'akashictome:tome', 1)
+  let cancelled = false
+  const fn = nativeHandlers.get('net.neoforged.neoforge.event.tick.EntityTickEvent$Pre')
+  fn({getEntity:()=>tome, setCanceled:v=>{cancelled=v}})
+  assert.equal(cancelled, false, 'Starter Akashic Tome must remain a normal item')
+  assert.equal(tome.getItem().getItem().id, 'akashictome:tome')
+  assert.equal(tome.level, level, 'Test must use Rhino object-property shape')
+  // Also check spawn observation and level pre/post events.
+  const spawnProbe = kubeHandlers.get('minecraft:item')
+  spawnProbe({entity:tome})
+  nativeHandlers.get('net.neoforged.neoforge.event.tick.LevelTickEvent$Pre')({getLevel:()=>level})
+  nativeHandlers.get('net.neoforged.neoforge.event.tick.LevelTickEvent$Post')({getLevel:()=>level})
+  assert.equal(tome.getItem().getCount(), 1)
+}
 
 const entityTick = nativeHandlers.get('net.neoforged.neoforge.event.tick.EntityTickEvent$Pre')
 const tickPre = nativeHandlers.get('net.neoforged.neoforge.event.tick.LevelTickEvent$Pre')
@@ -144,5 +163,6 @@ for (const [id,target] of [
 }
 
 assert.ok(!logs.some(x=>x.startsWith('ERROR:')),'No error in tested paths')
+console.log('PASS: first-world dropped Akashic Tome with Rhino Entity.level object and Level.isClientSide property')
 console.log('PASS: all five mappings, native proxy lifecycle, zero/partial/full consumption, wrong circles, source components and exclusion cases')
 console.log('NOT A MINECRAFT BOOT OR ACTUAL MAHOU IN-GAME TEST')
