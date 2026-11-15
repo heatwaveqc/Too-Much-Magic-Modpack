@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "goety:hellhound",
+      "required": false
+    },
+    {
+      "id": "goety:damned",
+      "required": false
+    }
+  ]
+}

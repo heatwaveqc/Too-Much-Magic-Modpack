@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "eidolon_repraised:zombie_brute",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:wraith",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:giant_skeleton",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:wraith",
+      "required": false
+    },
+    {
+      "id": "goety:border_wraith",
+      "required": false
+    },
+    {
+      "id": "goety:muck_wraith",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_wolf",
+      "required": false
+    }
+  ]
+}

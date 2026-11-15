@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "scope": "Installed Minecraft 1.21.1 NeoForge mods; source-controlled source trees and upstream tags, not a live registry dump.",
+  "authority": "Source tag JSON for Minecraft 1.21.1 branches of installed mods; exact pinned JAR/runtime should be verified.",
+  "resources": {
+    "silver": {
+      "preferred": "occultism",
+      "canonical": {
+        "ore": "occultism:silver_ore",
+        "deepslate_ore": "occultism:silver_ore_deepslate",
+        "raw": "occultism:raw_silver",
+        "ingot": "occultism:silver_ingot",
+        "dust": "neovitae:silver_dust"
+      },
+      "providers": [
+        {
+          "mod": "occultism",
+          "ore": [
+            "occultism:silver_ore",
+            "occultism:silver_ore_deepslate"
+          ],
+          "raw": "occultism:raw_silver",
+          "ingot": "occultism:silver_ingot",
+          "source": "https://github.com/klikli-dev/occultism/tree/version/1.21.1/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "embers",
+          "ore": [
+            "embers:silver_ore",
+            "embers:deepslate_silver_ore"
+          ],
+          "raw": "embers:raw_silver",
+          "ingot": "embers:silver_ingot",
+          "source": "https://github.com/Riieno/EmbersRekindled-Reignited/tree/main/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "eidolon_repraised",
+          "ore": [
+            "eidolon_repraised:silver_ore",
+            "eidolon_repraised:deep_silver_ore"
+          ],
+          "raw": "eidolon_repraised:raw_silver",
+          "ingot": "eidolon_repraised:silver_ingot",
+          "source": "https://github.com/Alexthw46/Eidolon-Repraised/tree/1.21.1/src/main/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "werewolves",
+          "ore": [
+            "werewolves:silver_ore",
+            "werewolves:deepslate_silver_ore"
+          ],
+          "raw": "werewolves:raw_silver",
+          "ingot": "werewolves:silver_ingot",
+          "source": "https://github.com/TeamLapen/Werewolves/tree/1.21/src/generated/resources/data/c/tags/item/ores"
+        }
+      ],
+      "expectation": "All four c:ores/silver item-tag sets converge on Occultism; redundant ores removed in NEW chunks, existing stacks still usable.",
+      "new_neo_vitae_processing": {
+        "name": "silver",
+        "new_dust": "neovitae:silver_dust",
+        "ore_tag": "c:ores/silver",
+        "ingot_tag": "c:ingots/silver",
+        "smelt_to": "occultism:silver_ingot",
+        "generative": false
+      },
+      "dust_exception": "Mahou ritual catalysts use exact Mahou items; ignored by Almost Unified even when tagged c:dusts."
+    },
+    "lead": {
+      "preferred": "embers",
+      "canonical": {
+        "ore": "embers:lead_ore",
+        "deepslate_ore": "embers:deepslate_lead_ore",
+        "raw": "embers:raw_lead",
+        "ingot": "embers:lead_ingot",
+        "dust": "neovitae:lead_dust"
+      },
+      "providers": [
+        {
+          "mod": "embers",
+          "ore": [
+            "embers:lead_ore",
+            "embers:deepslate_lead_ore"
+          ],
+          "raw": "embers:raw_lead",
+          "ingot": "embers:lead_ingot",
+          "source": "https://github.com/Riieno/EmbersRekindled-Reignited/tree/main/src/generated/resources/data/c/tags/item/ores"
+        },
+        {
+          "mod": "eidolon_repraised",
+          "ore": [
+            "eidolon_repraised:lead_ore",
+            "eidolon_repraised:deep_lead_ore"
+          ],
+          "raw": "eidolon_repraised:raw_lead",
+          "ingot": "eidolon_repraised:lead_ingot",
+          "source": "https://github.com/Alexthw46/Eidolon-Repraised/tree/1.21.1/src/main/resources/data/c/tags/item/ores"
+        }
+      ],
+      "expectation": "Two conventional lead ore sets converge on Embers; Eidolon's lead and pewter recipes continue accepting tags.",
+      "new_neo_vitae_processing": {
+        "name": "lead",
+        "new_dust": "neovitae:lead_dust",
+        "ore_tag": "c:ores/lead",
+        "ingot_tag": "c:ingots/lead",
+        "smelt_to": "embers:lead_ingot",
+        "generative": false
+      }
+    },
+    "copper": {
+      "preferred": "minecraft",
+      "dust_preferred": "neovitae",
+      "dusts_verified": [
+        "occultism:copper_dust",
+        "primalmagick:copper_grit",
+        "neovitae:copper_dust"
+      ],
+      "evidence": [
+        "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/copper.json",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/copper.json"
+      ]
+    },
+    "iron": {
+      "preferred": "minecraft",
+      "dust_preferred": "neovitae",
+      "dusts_verified": [
+        "mahoutsukai:powdered_iron",
+        "primalmagick:iron_grit",
+        "neovitae:iron_dust"
+      ],
+      "evidence": [
+        "https://wiki.9minecraft.net/java/mod/mahou-tsukai/powdered-iron/",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/iron.json"
+      ],
+      "dust_exception": "mahoutsukai:powdered_iron retained as spell catalyst, not unified output"
+    },
+    "gold": {
+      "preferred": "minecraft",
+      "dust_preferred": "neovitae",
+      "dusts_verified": [
+        "mahoutsukai:powdered_gold",
+        "occultism:gold_dust",
+        "primalmagick:gold_grit",
+        "neovitae:gold_dust"
+      ],
+      "evidence": [
+        "https://wiki.9minecraft.net/java/mod/mahou-tsukai/mortar-and-pestle/",
+        "https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/dusts/gold.json",
+        "https://github.com/daedalus4096/PrimalMagick/blob/main/neoforge/src/generated/resources/data/c/tags/item/dusts/gold.json"
+      ],
+      "dust_exception": "mahoutsukai:powdered_gold retained as spell catalyst, not unified output"
+    },
+    "sulfur": {
+      "dust_preferred": "neovitae",
+      "dusts_verified": [
+        "eidolon_repraised:sulfur",
+        "neovitae:sulfur"
+      ],
+      "evidence": [
+        "https://github.com/Alexthw46/Eidolon-Repraised/blob/1.21.1/src/main/resources/data/c/tags/item/dusts/sulfur.json",
+        "https://github-wiki-see.page/m/breakinblocks/NeoVitae/wiki/Pack-Makers-DataMaps-and-Recipes"
+      ]
+    },
+    "quartz": {
+      "gem_preferred": "minecraft",
+      "powder_preferred": "neovitae",
+      "other_sources": [
+        "primalmagick:quartz_ore",
+        "malum:mundane_quartz"
+      ],
+      "note": "Primal Magick has overworld quartz ore (distinct stone strata from vanilla Nether). Malum adds mundane quartz to c:gems/quartz. Do not merge quartz with Pastel special gemstones.",
+      "evidence": [
+        "https://github.com/daedalus4096/PrimalMagick/tree/main/neoforge/src/generated/resources/data/c/tags/item/ores",
+        "https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/generated/resources/data/c/tags/item/gems/quartz.json"
+      ],
+      "dust_exception": "mahoutsukai:powdered_quartz retained as spell catalyst, not unified output"
+    }
+  },
+  "unique_not_unified": [
+    {
+      "mod": "occultism",
+      "resource": "Iesnium",
+      "reason": "Endgame Occultism-specific metal; preserves acquisition gates"
+    },
+    {
+      "mod": "draconicevolution",
+      "resource": "Draconium and awakened draconium",
+      "reason": "Distinct tiers, multi-dimensional ore yield and planned progression"
+    },
+    {
+      "mod": "replication",
+      "resource": "Deepslate Replica Ore",
+      "reason": "Late miner gated tech resource"
+    },
+    {
+      "mod": "forbidden_arcanus",
+      "resource": "Arcane crystal, runic and stellarite ores",
+      "reason": "Specific magical resources, not mundane metal variants"
+    },
+    {
+      "mod": "eidolon_repraised",
+      "resource": "Arcane gold",
+      "reason": "Alchemically altered gold; not equivalent to vanilla gold"
+    },
+    {
+      "mod": "malum",
+      "resource": "Cthonic gold, soulstone, brilliant and blazing-quartz ores; transformed silver/lead",
+      "reason": "Special alchemical resources with distinct identities"
+    },
+    {
+      "mod": "pastel",
+      "resource": "Azurite, topaz, citrine, moonstone, malachite, onyx, shimmerstone, stratine etc.",
+      "reason": "Separate gems, dimension-specific strata and recipes; no mundane conversion"
+    },
+    {
+      "mod": "primalmagick",
+      "resource": "Rock salt and raw marble ores",
+      "reason": "Distinct resources, iron/gold/copper grits are the conventional overlaps"
+    },
+    {
+      "mod": "totemic",
+      "resource": "No ore duplicates verified from 1.21 source tree",
+      "reason": "Cedar world generation, not conventional mineral overlap"
+    },
+    {
+      "mod": "neovitae",
+      "resource": "Dynamically generated dust/fragments/gravel from discovered ore tags",
+      "reason": "Must inspect generated config and ensure selected generator IDs; do not replace generated items with hand-guessed entries"
+    }
+  ],
+  "pending_live": [
+    "Check tag dumps for all installed JARs (other addons may add additional silver/lead or dust variants).",
+    "Validate special ore world-generation paths and Orechid/meteor systems; AU only changes standard ore features.",
+    "Validate recipe remapping, KubeJS Mahou tool durability, legacy tags and effective server recipes.",
+    "Run latest 14-material Neo Vitae config on dedicated server and verify two newly generated dust tags, no added custom-generation or client failures.",
+    "Verify ignored Deeper & Darker/Pastel dimension-specific ores survive ordinary ore suppression in actual new chunks.",
+    "Verify AU chooses all generated Neo Vitae conventional dusts; Mahou powdered catalysts still make spell circles and Catalyst Exchange work."
+  ],
+  "runtime_evidence": {
+    "source": "GitHub Actions dedicated server run 43614734834 artifact 14121900565",
+    "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43614734834",
+    "status": "PASS: NeoForge 21.1.265 reached Done with 128 hash-verified server-side mods. Tag dump and material config recovered; gameplay/JEI/worldgen not tested.",
+    "silver": {
+      "ore_variants": 8,
+      "ore_sources": [
+        "occultism",
+        "embers",
+        "eidolon_repraised",
+        "werewolves"
+      ],
+      "raw_variants": 4,
+      "ingot_variants": 4,
+      "nugget_variants": 4,
+      "storage_block_variants": 4
+    },
+    "lead": {
+      "ore_variants": 4,
+      "ore_sources": [
+        "embers",
+        "eidolon_repraised"
+      ],
+      "raw_variants": 2,
+      "ingot_variants": 2,
+      "nugget_variants": 2
+    },
+    "dust_variants": {
+      "copper": [
+        "neovitae:copper_dust",
+        "occultism:copper_dust",
+        "primalmagick:copper_grit"
+      ],
+      "gold": [
+        "mahoutsukai:powdered_gold",
+        "neovitae:gold_dust",
+        "occultism:gold_dust",
+        "primalmagick:gold_grit"
+      ],
+      "iron": [
+        "mahoutsukai:powdered_iron",
+        "neovitae:iron_dust",
+        "occultism:iron_dust",
+        "primalmagick:iron_grit"
+      ],
+      "silver": [
+        "occultism:silver_dust"
+      ],
+      "sulfur": [
+        "eidolon_repraised:sulfur",
+        "neovitae:sulfur"
+      ]
+    },
+    "neo_vitae_startup_materials": [
+      "iron",
+      "gold",
+      "copper",
+      "coal",
+      "netherite_scrap",
+      "demonite",
+      "hellforged",
+      "diamond",
+      "emerald",
+      "lapis",
+      "quartz",
+      "amethyst"
+    ],
+    "additional_dimension_stone_ores": [
+      "deeperdarker:gloomslate_iron_ore",
+      "deeperdarker:sculk_stone_iron_ore",
+      "pastel:blackslag_iron_ore",
+      "deeperdarker:gloomslate_gold_ore",
+      "deeperdarker:sculk_stone_gold_ore",
+      "pastel:blackslag_gold_ore",
+      "deeperdarker:gloomslate_copper_ore",
+      "deeperdarker:sculk_stone_copper_ore",
+      "pastel:blackslag_copper_ore"
+    ]
+  }
+}
