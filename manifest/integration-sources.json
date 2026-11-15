@@ -192,7 +192,8 @@
     "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated.",
     "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree.",
     "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA.",
-    "test/quest-standards-starter-choice-2026-11-14": "Prior 180-entry quest source; feature/quest-reward-humor-first-pass is a descendant with identical IDs plus checked filler reward replacement."
+    "test/quest-standards-starter-choice-2026-11-14": "Prior 180-entry quest source; feature/quest-reward-humor-first-pass is a descendant with identical IDs plus checked filler reward replacement.",
+    "feature/lilith-ascended-vampire": "Currently documentation-only Lilith/JAWR testing notes (latest commit changes only VAMPIRE-CHASSIS-V1-TEST-PLAN.md). Keep selected runtime from fix/jawr-blood-debit-guard; review and register executable changes if this branch later adds implementation."
   },
   "pending_runtime_work": [
     "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
@@ -212,6 +213,7 @@
     "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA.",
     "Latest JAWR native blood debit guard imported for QA. Verify that blood-spending abilities actually decrement the shared blood pool, including no-cost intended abilities, and no infinite-spend loopholes.",
     "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests.",
-    "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles."
+    "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles.",
+    "Lilith ascended vampire continuation branch currently contains documentation/test notes; no separate runtime stream until its implementation changes are reviewed. Current native blood-debit guard remains selected for QA."
   ]
 }
