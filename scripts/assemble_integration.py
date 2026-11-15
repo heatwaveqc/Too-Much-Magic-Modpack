@@ -155,6 +155,13 @@ def main() -> None:
         "mods/colorful-hearts.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
+    # Run the SAME KubeJS JS source with a Rhino-shaped ItemEntity/Level mock
+    # before any expensive server boot. This catches the crash at first world
+    # tick caused by calling an object-valued entity.level property.
+    test_script = ROOT / "scripts/test_mahou_catalyst_exchange.cjs"
+    if not test_script.is_file():
+        raise RuntimeError("Mahou first-world item-tick regression test was not imported")
+    subprocess.run(["node", str(test_script)], cwd=ROOT, check=True)
     mod_count = sum(m["enabled_in_pack"] for m in manifest["mods"])
     lock = {
         "schema": 1, "channel": "INTEGRATION-NOT-STABLE",
