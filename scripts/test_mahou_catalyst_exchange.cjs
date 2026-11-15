@@ -38,7 +38,7 @@ class ItemEntity {
     this.removed = false
     this.uuid = 'qa-test-' + (++uuidSerial)
   }
-  getUUID() { return this.uuid }
+  getUuid() { return this.uuid } // KubeJS remapped API; native getUUID is unavailable
   isRemoved() { return this.removed }
   getItem() { return this.stack }
   setItem(stack) { this.stack = stack }
@@ -74,6 +74,8 @@ const context = {
   EntityEvents: {spawned(name,fn) {assert.equal(name,'minecraft:item');kubeHandlers.set(name,fn)}},
   NativeEvents: {onEvent(name,fn) {assert.ok(!nativeHandlers.has(name));nativeHandlers.set(name,fn)}}
 }
+// CI must fail if a future implementation reintroduces the Java-only name.
+assert.doesNotMatch(source, /\.getUUID\s*\(/, 'Rhino KubeJS Entity remaps getUUID to getUuid')
 vm.runInNewContext(source,context,{filename:'mahou_neo_vitae_catalyst_exchange.js'})
 
 
