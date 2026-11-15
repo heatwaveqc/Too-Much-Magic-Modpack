@@ -1,0 +1,102 @@
+name: B13 - Beach, Glass and Decorative Six-Mod Integration
+on:
+  push:
+    branches: ['feature/b13-beach-glass-building-audit']
+    paths:
+      - '.github/workflows/b13-beach-decor.yml'
+      - 'scripts/resolve_b13.py'
+      - 'docs/BUILDING-CAPABILITY-AUDIT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b13-beach-decor-qa
+  cancel-in-progress: false
+
+jobs:
+  resolve-and-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Install pinned packwiz tool
+        run: |
+          python3 -m py_compile scripts/resolve_b13.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Resolve six approved NeoForge 1.21.1 mods and three required libraries
+        id: resolve
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/resolve_b13.py
+          packwiz list
+      - name: Assert building gadgets are absent
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          obj = json.loads(pathlib.Path('manifest/mods.json').read_text())
+          on = {m['id'] for m in obj['mods'] if m['enabled_in_pack']}
+          assert not on.intersection({'construction-gadgets', 'formation-wand', 'building-gadgets-2',
+                                      'effortless-building', 'framedblocks'}), on
+          assert len(on) == 156, len(on)
+          print('PASS: exactly 156 pins, no duplicate construction tools')
+          PY
+      - name: Combined dedicated-server smoke of B13 alongside baseline
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: ${{ runner.temp }}/tmm-b13-smoke
+        run: bash scripts/smoke_server.sh
+      - name: Commit exact hashed packwiz pins only after PASS
+        if: steps.resolve.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('manifest/mods.json')
+          m = json.loads(path.read_text())
+          next(b for b in m['batches'] if b['id'] == 'B13')['status'] = 'server_smoked_client_pending'
+          m['note'] += '\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.'
+          path.write_text(json.dumps(m, indent=2) + '\n')
+          PY
+          packwiz refresh
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml manifest/mods.json mods
+          if ! git diff --cached --quiet; then
+            git commit -m "build(b13): hash-pin six additions and three libs after combined server PASS"
+            git push origin HEAD:feature/b13-beach-glass-building-audit
+          fi
+      - name: Preserve server evidence and metadata even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b13-beach-glass-decor-logs
+          path: |
+            ${{ runner.temp }}/tmm-b13-smoke/server.log
+            ${{ runner.temp }}/tmm-b13-smoke/logs/latest.log
+            pack.toml
+            index.toml
+            manifest/mods.json
+          if-no-files-found: warn
+      - name: Enforce server PASS before calling anything integrated
+        if: steps.resolve.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
