@@ -101,7 +101,34 @@
       "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/efficiency.json",
       "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/sharpness.json",
       "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/protection.json"
-    ]
+    ],
+    "illustrative_effects_if_level_reaches_conditional": {
+      "efficiency_XVI": {
+        "level": 16,
+        "source_formula": "level²+1 additive mining_efficiency",
+        "numeric_value": 257,
+        "compared_to_vanilla_V": 26,
+        "notice": "actual block break speed depends on underlying speed, tool, tier and eligibility; level16 not confirmed effective"
+      },
+      "sharpness_XVI": {
+        "level": 16,
+        "source_formula": "1+0.5*(level-1) bonus attack damage",
+        "numeric_value": 8.5,
+        "compared_to_vanilla_V": 3,
+        "notice": "is not entire DPS; attack speed, armor, crit, procs and enemy caps apply"
+      },
+      "protection_XV": {
+        "level": 15,
+        "source_formula": "1 protection point per enchant level for each valid piece",
+        "numeric_value": 15,
+        "notice": "vanilla protection/EPF cap on summed protection and other mitigation means 4×15 does NOT give 60 usable protection points"
+      },
+      "fortune_XIX": {
+        "level": 19,
+        "source_formula": "loot table-specific Fortune level effect",
+        "notice": "cannot assume all drops scale linearly with enchant level; distinct from generic Luck, Looting, Scavenger and loot transforms"
+      }
+    }
   },
   "apotheosis": {
     "source_definition_count": 99,
