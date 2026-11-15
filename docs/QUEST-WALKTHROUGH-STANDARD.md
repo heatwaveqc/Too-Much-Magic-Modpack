@@ -49,6 +49,8 @@ Before authoring quest entries, research and maintain a **progression coverage m
 
 Each matrix row should map to (a) one or more quests or a clearly named teaching section, (b) prerequisites and next step, (c) guidebook/JEI reference, (d) authentic detection method or honest surrogate, (e) a safe XP/item reward direction, and (f) source/test status. A required progression row with no quest/reference is a **coverage gap**, not "complete".
 
+Show the **choice boundary** in the matrix: distinguish mandatory tiers/capability gates from player-selected spell, recipe, equipment or automation branches. Teach how the player can identify and complete a valid option using JEI and the in-game guide; do not require every optional recipe as a chapter milestone. Link a representative choice quest to the broader discoverable option set when useful.
+
 The chapter must remain browseable, with sensible dependency arrows and crosslinks. Use *optional* quest branches for side content; never create arbitrary mechanical gates by quest dependency when the game doesn't enforce them. The player should be able to look ahead, choose strategies and return later.
 
 ## Existing pilot reconciliation

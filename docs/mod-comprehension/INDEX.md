@@ -221,7 +221,8 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 
 ## Session notes / next pickup
 
-- 2026-11-15 — Ars profile updated to walkthrough standard and seven addon profiles added. Important discovery: the installed Ars Unification + Occultism combination exposes a Crusher Spirit Crush route omitted by the pilot. The remaining Ars work is exact-version gap resolution, full glyph/creature/adapter inventory and client acceptance.
-- 2026-11-15 — Adopted eight methodology refinements plus player-value summary and subsystem coverage; new [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
+- 2026-11-15 — Ars profile updated to walkthrough standard and seven addon profiles added. Important discovery: the installed Ars Unification + Occultism combination exposes a Crusher Spirit Crush route omitted by the pilot. Core glyph learning and Scribes Table operation are now source-mapped; the remaining Ars work is exact-version gap resolution, full creature/ritual/adapter inventory and client acceptance.
+- 2026-11-15 — Adopted the eight original methodology refinements plus player-value summary and subsystem coverage; the [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
+- 2026-11-15 — Added choice-boundary guidance: distinguish mandatory gates from player-selected branches and audit quest prose separately from task predicates and progression coverage.
 
 - **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template. When quest implementation is authorized, reconcile [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add the Worn Notebook onboarding quest and the Occultism Crush lesson, then close remaining source/client gaps.
