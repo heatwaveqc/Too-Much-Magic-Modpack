@@ -60,6 +60,9 @@ public final class PathJson {
         }
         if (thresholds.isEmpty() || thresholds.size() > 200 || thresholds.getFirst() != 0)
             throw new IllegalArgumentException("rank_xp must start at 0 and contain 1..200 entries");
+        int declaredMax = number(source,"max_level",thresholds.size());
+        if (declaredMax != thresholds.size())
+            throw new IllegalArgumentException("max_level must equal rank_xp length");
         int pointsPerRank = number(source,"points_per_rank",1);
         if (pointsPerRank < 0 || pointsPerRank > 1000)
             throw new IllegalArgumentException("Bad points_per_rank");
@@ -154,16 +157,26 @@ public final class PathJson {
                     throw new IllegalArgumentException("auto_ranks must ascend within path ranks");
                 auto.add(at);
             }
+            String choiceGroup = str(j,"choice_group","");
+            if (!choiceGroup.isEmpty()) id(choiceGroup);
+            List<String> anySkills = strings(j,"requires_any_skills");
             if (auto.size() > max || (!auto.isEmpty() && (!strings(j,"requires_skills").isEmpty()
-                    || !strings(j,"requires_milestones").isEmpty())))
-                throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites");
+                    || !anySkills.isEmpty() || !strings(j,"requires_milestones").isEmpty()
+                    || !choiceGroup.isEmpty())))
+                throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites or choices");
             skills.add(new Definition.Skill(sid,max,required,base,step,strings(j,"requires_skills"),
-                strings(j,"requires_milestones"),auto,effects));
+                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects));
         }
         for (Definition.Skill skill : skills) {
             for (String needed : skill.requiresSkills())
                 if (!skillsSeen.contains(needed))
                     throw new IllegalArgumentException("Unknown required skill " + needed);
+            for (String needed : skill.requiresAnySkills())
+                if (!skillsSeen.contains(needed))
+                    throw new IllegalArgumentException("Unknown alternative required skill " + needed);
+            if (!skill.choiceGroup().isEmpty() &&
+                    skill.requiresSkills().contains(skill.id()))
+                throw new IllegalArgumentException("Self-required skill " + skill.id());
             for (String needed : skill.requiresMilestones())
                 if (!milestonesSeen.contains(needed))
                     throw new IllegalArgumentException("Unknown required milestone " + needed);
@@ -172,7 +185,26 @@ public final class PathJson {
             for (String prereq : m.after())
                 if (!milestonesSeen.contains(prereq))
                     throw new IllegalArgumentException("Unknown milestone prerequisite " + prereq);
+        // Fail closed on circular dependency graphs, even via alternative branches.
+        Map<String,Integer> visits = new HashMap<>();
+        for (Definition.Skill skill : skills) checkAcyclic(skill.id(),skills,visits);
         return new Definition.Path(pathId,str(source,"exclusive_group",""),
             thresholds,pointsPerRank,activities,milestones,skills);
     }
+    private static void checkAcyclic(String id, List<Definition.Skill> skills,
+                                     Map<String,Integer> visits) {
+        int visit = visits.getOrDefault(id,0);
+        if (visit == 2) return;
+        if (visit == 1) throw new IllegalArgumentException("Cyclic skill prerequisites at " + id);
+        visits.put(id,1);
+        for (Definition.Skill skill : skills) {
+            if (!skill.id().equals(id)) continue;
+            for (String prerequisite : skill.requiresSkills())
+                checkAcyclic(prerequisite,skills,visits);
+            for (String prerequisite : skill.requiresAnySkills())
+                checkAcyclic(prerequisite,skills,visits);
+        }
+        visits.put(id,2);
+    }
+
 }
