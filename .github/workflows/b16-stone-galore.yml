@@ -48,6 +48,11 @@ jobs:
         env:
           B16_JAR_DIR: "${{ runner.temp }}/tmm-b16-verified-jars"
         run: |
+          # Bring in any earlier QA-generated files BEFORE replacing the owned
+          # recipe directories. Prevent stale broad-marble recipes persisting
+          # when a prior workflow push raced a policy change.
+          git fetch --no-tags origin feature/b16-natural-stone-galore-unification
+          git rebase origin/feature/b16-natural-stone-galore-unification
           python3 scripts/generate_stone_galore.py "$B16_JAR_DIR"
           python3 - <<'PY'
           from pathlib import Path
