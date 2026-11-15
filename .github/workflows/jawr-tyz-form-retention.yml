@@ -1,0 +1,46 @@
+name: JAWR Tyz form-retention source checks
+on:
+  push:
+    paths:
+      - "compat/forms/**"
+      - ".github/workflows/jawr-tyz-form-retention.yml"
+  pull_request:
+    paths:
+      - "compat/forms/**"
+      - ".github/workflows/jawr-tyz-form-retention.yml"
+  workflow_dispatch:
+
+jobs:
+  validate-trees:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate safe catalog and preview generator
+        run: |
+          python compat/forms/tyzs-retention/build_preview.py --check
+          python -m unittest discover -s compat/forms/tyzs-retention -p 'test_*.py' -v
+      - name: Fail on accidental live activation or introduced third-party mod pins
+        shell: bash
+        run: |
+          if grep -R -E '"active": true' compat/forms/tyzs-retention --include='*.json'; then
+            echo 'Form prototype activated without gated runtime validation' >&2; exit 1
+          fi
+          test ! -e mods/tmm-form-skills.pw.toml
+
+  compile-addon:
+    runs-on: ubuntu-latest
+    needs: validate-trees
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile experimental addon source
+        run: gradle -p compat/forms classes --no-daemon --stacktrace
