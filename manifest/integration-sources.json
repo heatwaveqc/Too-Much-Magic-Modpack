@@ -27,6 +27,17 @@
       "note": "B14 finalized quest source: six-option personal starter choice, 180 quests and no XP-bottle grants, first-line item detectability, corrected localization. Includes source and validator only; old baseline carries 147 mods, FTBE source is independently imported."
     },
     {
+      "name": "questshop-vanilla-ore-blocks",
+      "branch": "feature/questshop-vanilla-ore-blocks",
+      "paths": [
+        "manifest/quest_shop_catalog.json",
+        "kubejs/data/tmm/questshop/shop_categories/ores.json",
+        "kubejs/data/tmm/questshop/shop_entries/ores.json"
+      ],
+      "mode": "runtime-experimental",
+      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world."
+    },
+    {
       "name": "silver-ore-materials",
       "branch": "feature/neo-vitae-canonical-dusts",
       "paths": [
@@ -184,6 +195,7 @@
     "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
     "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified.",
     "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending.",
-    "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed."
+    "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed.",
+    "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA."
   ]
 }
