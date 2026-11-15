@@ -57,6 +57,7 @@ public final class PathJson {
         if (!Set.of("admin","manual","sunset","potion").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
         PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
+        HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
         List<Long> thresholds = new ArrayList<>();
         for (JsonElement el : entries(source,"rank_xp")) {
             long n = el.getAsLong();
@@ -146,6 +147,8 @@ public final class PathJson {
                     throw new IllegalArgumentException("Damage reduction must be in [0,1]");
                 if (type.equals("evasion") && (!target.startsWith("#") || amount < 0 || amount > 0.75))
                     throw new IllegalArgumentException("Evasion requires a quarry entity tag and a chance in [0,0.75]");
+                if (type.equals("hunter_specialty") && (!target.startsWith("#") || !weapon.isEmpty()))
+                    throw new IllegalArgumentException("Hunter specialty requires a creature category tag");
                 if (type.equals("fast_hands") && (weapon.isEmpty() || amount < 0 || amount > 2))
                     throw new IllegalArgumentException("Fast Hands requires a weapon ID/tag and bounded speed bonus");
                 Map<String,String> params = new HashMap<>();
