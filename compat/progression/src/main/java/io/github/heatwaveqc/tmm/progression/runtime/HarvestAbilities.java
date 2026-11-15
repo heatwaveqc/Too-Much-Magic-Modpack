@@ -19,14 +19,11 @@ import java.util.List;
 /** Post-break loot replacement for explicitly unlocked, barehand-only harvesting techniques. */
 public final class HarvestAbilities {
     private HarvestAbilities() {}
-    private static boolean has(ServerPlayer p,String type) {
+    private static boolean has(ServerPlayer p,String type,BlockState state) {
         for (var a : EffectRuntime.active(p))
-            if (a.effect().type().equals(type) && Selectors.block(a.effect().selector(),
-                currentState.get())) return true;
+            if (a.effect().type().equals(type) && Selectors.block(a.effect().selector(),state)) return true;
         return false;
     }
-    // Only call on the authoritative server, during a single block's synchronous loot event.
-    private static final ThreadLocal<BlockState> currentState = new ThreadLocal<>();
 
     private static boolean canHarvestBarehand(ServerPlayer player, BlockState state) {
         int required = EffectRuntime.requiredTier(state);
@@ -48,9 +45,7 @@ public final class HarvestAbilities {
         BlockPos pos = event.getPos();
         if (state.getDestroySpeed(event.getLevel(),pos) < 0
                 || !canHarvestBarehand(player,state)) return;
-        currentState.set(state);
-        try {
-            if (has(player,"treasure_hand")) {
+        if (has(player,"treasure_hand",state)) {
                 String mode = ProgressionApi.mode(player,"tmm_progression:treasure_mode","fortune");
                 if (!mode.equals("fortune") && !mode.equals("silk")) return;
                 ItemStack contextTool = new ItemStack(Items.NETHERITE_PICKAXE);
@@ -66,7 +61,7 @@ public final class HarvestAbilities {
                         pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,stack));
                 return;
             }
-            if (has(player,"glass_touch") &&
+        if (has(player,"glass_touch",state) &&
                 (state.is(Blocks.GLASS) || state.is(Blocks.GLASS_PANE)
                     || state.getBlock() instanceof StainedGlassBlock
                     || state.getBlock() instanceof StainedGlassPaneBlock)) {
@@ -75,8 +70,5 @@ public final class HarvestAbilities {
                     pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,
                     new ItemStack(state.getBlock())));
             }
-        } finally {
-            currentState.remove();
-        }
     }
 }
