@@ -25,9 +25,9 @@
   },
   "core": {
     "id": "tmm_magic_core",
-    "title": "Core Magic",
-    "requires": "always; node-level cross-mod adapter eligibility",
-    "identity": "One universal magic specialist regardless of magic school",
+    "title": "Core Skills",
+    "requires": "always; skill-specific integration and item/form use gates as applicable",
+    "identity": "Universal baseline: magical traits plus physical, combat, crafting, exploration and other shared skills",
     "families": [
       {
         "id": "tmm_magic_reservoir",
@@ -127,7 +127,7 @@
       "id": "tmm_dragon_cave",
       "title": "Cave Dragon",
       "requires": "verified cave dragon state; no other dragon species",
-      "identity": "Excavator, armored bruiser, and underground apex predator",
+      "identity": "Supreme high-capacity/high-potency dragon caster with armor, claws and harvest at premium SP prices; special emphasis on demonic magic.",
       "lanes": [
         {
           "name": "Claw & Fang",
@@ -283,14 +283,14 @@
           ]
         },
         {
-          "name": "Cavern Instinct",
+          "name": "Infernal Attunement",
           "nodes": [
             {
-              "id": "tmm_dragon_cave_gloom_eyes",
+              "id": "tmm_dragon_cave_infernal_resonance",
               "stage": "entry",
-              "label": "Gloom Eyes",
-              "effect": "Improve dark navigation without permanent global spectral vision.",
-              "method": "light/vision hook",
+              "label": "Infernal Resonance",
+              "effect": "Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals.",
+              "method": "tagged personal spell adapter",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -300,14 +300,14 @@
               }
             },
             {
-              "id": "tmm_dragon_cave_echo_sense",
+              "id": "tmm_dragon_cave_hellbound_command",
               "stage": "advanced",
-              "label": "Echo Sense",
-              "effect": "Detect nearby moving creatures underground on a cooldown.",
-              "method": "entity proximity adapter",
+              "label": "Hellbound Command",
+              "effect": "Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions.",
+              "method": "owner attribution / demon tags",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_cave_gloom_eyes"
+                "tmm_dragon_cave_infernal_resonance"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -316,14 +316,14 @@
               }
             },
             {
-              "id": "tmm_dragon_cave_deep_sovereignty",
+              "id": "tmm_dragon_cave_infernal_dominion",
               "stage": "mastery",
-              "label": "Deep Sovereignty",
-              "effect": "Situational breath or body-power enhancement underground; preserve native dragon-breath identity.",
-              "method": "verified breath hook",
+              "label": "Infernal Dominion",
+              "effect": "Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated.",
+              "method": "demon spell-source adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_cave_echo_sense"
+                "tmm_dragon_cave_hellbound_command"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -344,13 +344,13 @@
             "tmm_dragon_cave_seismic_pounce",
             "tmm_dragon_cave_mountain_bastion",
             "tmm_dragon_cave_deep_excavation",
-            "tmm_dragon_cave_deep_sovereignty"
+            "tmm_dragon_cave_infernal_dominion"
           ],
           "plus_one_advanced_from_different_lane": [
             "tmm_dragon_cave_crushing_bite",
             "tmm_dragon_cave_earthbound_poise",
             "tmm_dragon_cave_vein_sense",
-            "tmm_dragon_cave_echo_sense"
+            "tmm_dragon_cave_hellbound_command"
           ]
         },
         "external_gate": "verified final native progression plus explicit late-game achievement",
@@ -361,14 +361,21 @@
       },
       "notes": [
         "No cross-species dragon purchases or free dragon growth.",
-        "Mining benefits must not bypass protected ores, world claims or late-game materials."
-      ]
+        "Mining benefits must not bypass protected ores, world claims or late-game materials.",
+        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power."
+      ],
+      "design_requirements": {
+        "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
+        "magic_regeneration": "No dragon-exclusive mana regeneration node",
+        "pricing": "Physical armor/damage/harvest benefits cost more SP per unit than specialized combat/harvest creatures; mana and spell potency provide much more benefit per SP",
+        "source_gate": "Any fae/demon/sea classification needs exact-version verified source tags"
+      }
     },
     {
       "id": "tmm_dragon_sea",
       "title": "Sea Dragon",
       "requires": "verified sea dragon state; no other dragon species",
-      "identity": "High-mobility aquatic spellfighter and ocean explorer",
+      "identity": "High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes.",
       "lanes": [
         {
           "name": "Tideshaping",
@@ -524,14 +531,14 @@
           ]
         },
         {
-          "name": "Marine Communion",
+          "name": "Tidal & Abyssal Magic",
           "nodes": [
             {
-              "id": "tmm_dragon_sea_ocean_forager",
+              "id": "tmm_dragon_sea_tidal_attunement",
               "stage": "entry",
-              "label": "Ocean Forager",
-              "effect": "Enhance valid fish/seafood gathering and food utility without infinite loot.",
-              "method": "harvest/loot hook",
+              "label": "Tidal Attunement",
+              "effect": "Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status.",
+              "method": "classified spell effect",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -541,14 +548,14 @@
               }
             },
             {
-              "id": "tmm_dragon_sea_friendly_waters",
+              "id": "tmm_dragon_sea_stormcalling",
               "stage": "advanced",
-              "label": "Friendly Waters",
-              "effect": "Improve interactions with eligible nonhostile aquatic mobs; no boss pacification.",
-              "method": "faction-relation adapter",
+              "label": "Stormcalling",
+              "effect": "Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control.",
+              "method": "classified spell caster hook",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_sea_ocean_forager"
+                "tmm_dragon_sea_tidal_attunement"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -557,14 +564,14 @@
               }
             },
             {
-              "id": "tmm_dragon_sea_abyssal_explorer",
+              "id": "tmm_dragon_sea_abyssal_sovereignty",
               "stage": "mastery",
-              "label": "Abyssal Explorer",
-              "effect": "Safe short-duration navigation/sensing in deep oceans.",
-              "method": "environment/vision hook",
+              "label": "Abyssal Sovereignty",
+              "effect": "High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic.",
+              "method": "source-specific school/attribute adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_sea_friendly_waters"
+                "tmm_dragon_sea_stormcalling"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -585,13 +592,13 @@
             "tmm_dragon_sea_undertow",
             "tmm_dragon_sea_deepwater_refuge",
             "tmm_dragon_sea_ocean_leap",
-            "tmm_dragon_sea_abyssal_explorer"
+            "tmm_dragon_sea_abyssal_sovereignty"
           ],
           "plus_one_advanced_from_different_lane": [
             "tmm_dragon_sea_tidal_strike",
             "tmm_dragon_sea_brine_scales",
             "tmm_dragon_sea_slipstream",
-            "tmm_dragon_sea_friendly_waters"
+            "tmm_dragon_sea_stormcalling"
           ]
         },
         "external_gate": "verified final native progression plus explicit late-game achievement",
@@ -602,14 +609,22 @@
       },
       "notes": [
         "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
-        "No free permanent underwater invulnerability or world fluid griefing."
-      ]
+        "No free permanent underwater invulnerability or world fluid griefing.",
+        "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
+        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices."
+      ],
+      "design_requirements": {
+        "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
+        "magic_regeneration": "No dragon-exclusive mana regeneration node",
+        "pricing": "Physical armor/damage/harvest benefits cost more SP per unit than specialized combat/harvest creatures; mana and spell potency provide much more benefit per SP",
+        "source_gate": "Any fae/demon/sea classification needs exact-version verified source tags"
+      }
     },
     {
       "id": "tmm_dragon_forest",
       "title": "Forest Dragon",
       "requires": "verified forest dragon state; no other dragon species",
-      "identity": "Nature guardian, mobile skirmisher and ecological support",
+      "identity": "High-capacity/high-potency fae dragon caster with ecological control, crop bounty, breeding and bonemeal effects; generic combat/harvest ranks cost a premium.",
       "lanes": [
         {
           "name": "Verdant Vitality",
@@ -714,14 +729,14 @@
           ]
         },
         {
-          "name": "Canopy Mobility",
+          "name": "Fertility & Bounty",
           "nodes": [
             {
-              "id": "tmm_dragon_forest_canopy_stride",
+              "id": "tmm_dragon_forest_germination_touch",
               "stage": "entry",
-              "label": "Canopy Stride",
-              "effect": "Improve movement through leaves/forests; no generic always-on sprint power.",
-              "method": "biome/movement hook",
+              "label": "Germination Touch",
+              "effect": "Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth.",
+              "method": "bonemeal use/plant growth events",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -731,14 +746,14 @@
               }
             },
             {
-              "id": "tmm_dragon_forest_rooted_landing",
+              "id": "tmm_dragon_forest_breeder_s_blessing",
               "stage": "advanced",
-              "label": "Rooted Landing",
-              "effect": "Safer falls and precision landings, capped by equipment.",
-              "method": "fall-damage hook",
+              "label": "Breeder's Blessing",
+              "effect": "Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents.",
+              "method": "breed events with anti-duplicate constraints",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_forest_canopy_stride"
+                "tmm_dragon_forest_germination_touch"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -747,14 +762,14 @@
               }
             },
             {
-              "id": "tmm_dragon_forest_sylvan_bound",
+              "id": "tmm_dragon_forest_harvest_bounty",
               "stage": "mastery",
-              "label": "Sylvan Bound",
-              "effect": "Short leap between safe landing points; collision and claim checks.",
-              "method": "movement hook",
+              "label": "Harvest Bounty",
+              "effect": "Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks.",
+              "method": "harvest loot transaction / Harvest with Ease",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_forest_rooted_landing"
+                "tmm_dragon_forest_breeder_s_blessing"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -765,14 +780,14 @@
           ]
         },
         {
-          "name": "Forest Fellowship",
+          "name": "Fae Affinity",
           "nodes": [
             {
               "id": "tmm_dragon_forest_fey_courtesy",
               "stage": "entry",
               "label": "Fey Courtesy",
-              "effect": "Conditional neutrality with selected eligible fae mobs, excluding hostile bosses.",
-              "method": "explicit faction allowlist",
+              "effect": "Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification.",
+              "method": "tagged fae spell/relations",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -782,11 +797,11 @@
               }
             },
             {
-              "id": "tmm_dragon_forest_harvest_harmony",
+              "id": "tmm_dragon_forest_fey_conduit",
               "stage": "advanced",
-              "label": "Harvest Harmony",
-              "effect": "Quality-of-life harvest/replant assistance without resource multiplication.",
-              "method": "crop event adapter",
+              "label": "Fey Conduit",
+              "effect": "Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP.",
+              "method": "verified fae spell/pet adapter",
               "status": "concept_only",
               "prerequisites": [
                 "tmm_dragon_forest_fey_courtesy"
@@ -801,11 +816,11 @@
               "id": "tmm_dragon_forest_grove_guardian",
               "stage": "mastery",
               "label": "Grove Guardian",
-              "effect": "Bounded support bonus to nearby allies and pets in natural environments.",
-              "method": "ownership/area hook",
+              "effect": "Bounded fae-aligned personal magic and allied-support synergy without taking over world production.",
+              "method": "classified fae magic/owner adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_dragon_forest_harvest_harmony"
+                "tmm_dragon_forest_fey_conduit"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -825,14 +840,14 @@
           "any_one": [
             "tmm_dragon_forest_elder_grove",
             "tmm_dragon_forest_thornstorm",
-            "tmm_dragon_forest_sylvan_bound",
+            "tmm_dragon_forest_harvest_bounty",
             "tmm_dragon_forest_grove_guardian"
           ],
           "plus_one_advanced_from_different_lane": [
             "tmm_dragon_forest_living_bark",
             "tmm_dragon_forest_entangling_breath",
-            "tmm_dragon_forest_rooted_landing",
-            "tmm_dragon_forest_harvest_harmony"
+            "tmm_dragon_forest_breeder_s_blessing",
+            "tmm_dragon_forest_fey_conduit"
           ]
         },
         "external_gate": "verified final native progression plus explicit late-game achievement",
@@ -843,8 +858,16 @@
       },
       "notes": [
         "Do not turn Forest Dragon neutrality into global creature pacification.",
-        "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate."
-      ]
+        "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.",
+        "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
+        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana."
+      ],
+      "design_requirements": {
+        "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
+        "magic_regeneration": "No dragon-exclusive mana regeneration node",
+        "pricing": "Physical armor/damage/harvest benefits cost more SP per unit than specialized combat/harvest creatures; mana and spell potency provide much more benefit per SP",
+        "source_gate": "Any fae/demon/sea classification needs exact-version verified source tags"
+      }
     },
     {
       "id": "tmm_vampire",
@@ -1091,17 +1114,17 @@
       "id": "tmm_werewolf",
       "title": "Werewolf",
       "requires": "unified werewolf/lycanthrope state; exact physiology owner remains unselected",
-      "identity": "Hunter, sprinter, brawler and pack leader",
+      "identity": "Exceptional max hearts and physical health regeneration, feral melee, and strong nature magic synergy.",
       "lanes": [
         {
-          "name": "Hunting Senses",
+          "name": "Lupine Vitality",
           "nodes": [
             {
-              "id": "tmm_werewolf_keen_scent",
+              "id": "tmm_werewolf_feral_vigor",
               "stage": "entry",
-              "label": "Keen Scent",
-              "effect": "Locate nearby tracked targets at limited range, not players through claims or walls without rule.",
-              "method": "target/sensing hook",
+              "label": "Feral Vigor",
+              "effect": "Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts.",
+              "method": "max health form-gated attribute",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1111,14 +1134,14 @@
               }
             },
             {
-              "id": "tmm_werewolf_blood_trail",
+              "id": "tmm_werewolf_regenerative_flesh",
               "stage": "advanced",
-              "label": "Blood Trail",
-              "effect": "Brief tracking of wounded mobs with privacy/multiplayer restrictions.",
-              "method": "combat-target marker",
+              "label": "Regenerative Flesh",
+              "effect": "Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen.",
+              "method": "health tick / form hook",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_werewolf_keen_scent"
+                "tmm_werewolf_feral_vigor"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -1127,14 +1150,14 @@
               }
             },
             {
-              "id": "tmm_werewolf_apex_tracker",
+              "id": "tmm_werewolf_unbreakable_beast",
               "stage": "mastery",
-              "label": "Apex Tracker",
-              "effect": "Improved tracking against eligible dangerous mobs, cooldown limited.",
-              "method": "threat-category hook",
+              "label": "Unbreakable Beast",
+              "effect": "High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities.",
+              "method": "health + damage form hook",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_werewolf_blood_trail"
+                "tmm_werewolf_regenerative_flesh"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -1247,14 +1270,14 @@
           ]
         },
         {
-          "name": "Pack Instinct",
+          "name": "Wild Communion",
           "nodes": [
             {
-              "id": "tmm_werewolf_pack_sense",
+              "id": "tmm_werewolf_wild_attunement",
               "stage": "entry",
-              "label": "Pack Sense",
-              "effect": "Detect/coordinate eligible allied wolves and player-owned companions.",
-              "method": "ownership/alliance adapter",
+              "label": "Wild Attunement",
+              "effect": "Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid.",
+              "method": "nature spell classification",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1264,14 +1287,14 @@
               }
             },
             {
-              "id": "tmm_werewolf_protect_the_pack",
+              "id": "tmm_werewolf_rootsong",
               "stage": "advanced",
-              "label": "Protect the Pack",
-              "effect": "Bounded defense near allies, no pet invulnerability.",
-              "method": "ally-proximity hook",
+              "label": "Rootsong",
+              "effect": "Further increase player nature spell potency or healing, separate from ordinary combat regeneration.",
+              "method": "nature spell/heal adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_werewolf_pack_sense"
+                "tmm_werewolf_wild_attunement"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -1280,14 +1303,14 @@
               }
             },
             {
-              "id": "tmm_werewolf_war_howl",
+              "id": "tmm_werewolf_grove_howl",
               "stage": "mastery",
-              "label": "War Howl",
-              "effect": "Cooldown-limited temporary group buff; only one stacking instance per leader.",
-              "method": "area buff hook",
+              "label": "Grove Howl",
+              "effect": "High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects.",
+              "method": "nature spell / pet attribution",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_werewolf_protect_the_pack"
+                "tmm_werewolf_rootsong"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -1300,21 +1323,21 @@
       ],
       "capstone": {
         "label": "Moon Apex",
-        "effect": "Late-form transformation mastery for a short ferocious burst, preserving silver/other verified weaknesses.",
+        "effect": "Late-game feral ascendancy emphasizing massive health, sustained HP regeneration, melee ferocity and nature magic; retain native silver/moon weaknesses.",
         "status": "concept_only",
         "id": "tmm_werewolf_capstone",
         "prerequisite_rule": {
           "any_one": [
-            "tmm_werewolf_apex_tracker",
+            "tmm_werewolf_unbreakable_beast",
             "tmm_werewolf_primal_fury",
             "tmm_werewolf_lunar_chase",
-            "tmm_werewolf_war_howl"
+            "tmm_werewolf_grove_howl"
           ],
           "plus_one_advanced_from_different_lane": [
-            "tmm_werewolf_blood_trail",
+            "tmm_werewolf_regenerative_flesh",
             "tmm_werewolf_savage_momentum",
             "tmm_werewolf_pouncing_leap",
-            "tmm_werewolf_protect_the_pack"
+            "tmm_werewolf_rootsong"
           ]
         },
         "external_gate": "verified final native progression plus explicit late-game achievement",
@@ -1325,14 +1348,20 @@
       },
       "notes": [
         "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
-        "Natural form-change progression remains native, not purchased again in Tyz."
-      ]
+        "Natural form-change progression remains native, not purchased again in Tyz.",
+        "Werewolf regen means HEALTH regeneration, not passive magic regeneration."
+      ],
+      "design_requirements": {
+        "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
+        "power_budget": "Review relative benefit per SP versus Core Skills and other species before freezing ranks and cost",
+        "implementation": "Concept-only, no new known working skill effects"
+      }
     },
     {
       "id": "tmm_lich",
       "title": "Lich",
       "requires": "verified Goety or JAWR/Forbidden Magic lich state; also Archlich and valid Dracolich",
-      "identity": "Soul economy, necromancy, controlled immortality",
+      "identity": "Necromantic and blood-magic specialist, explicitly exchanging personal nature-magic potency for amplified blood magic.",
       "lanes": [
         {
           "name": "Soul Economy",
@@ -1386,14 +1415,14 @@
           ]
         },
         {
-          "name": "Death Magic",
+          "name": "Blood & Nature Opposition",
           "nodes": [
             {
-              "id": "tmm_lich_grave_touch",
+              "id": "tmm_lich_sanguine_attunement",
               "stage": "entry",
-              "label": "Grave Touch",
-              "effect": "Scalable effect on verified lich necrotic spell/melee attacks only.",
-              "method": "damage-source hook",
+              "label": "Sanguine Attunement",
+              "effect": "Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power.",
+              "method": "dual positive/negative spell effect adapter",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1403,14 +1432,14 @@
               }
             },
             {
-              "id": "tmm_lich_lingering_curse",
+              "id": "tmm_lich_crimson_channel",
               "stage": "advanced",
-              "label": "Lingering Curse",
-              "effect": "Bounded duration of attributable lich debuffs, not a global potion multiplier.",
-              "method": "status-effect hook",
+              "label": "Crimson Channel",
+              "effect": "Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput.",
+              "method": "both-school spell adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_lich_grave_touch"
+                "tmm_lich_sanguine_attunement"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -1419,14 +1448,14 @@
               }
             },
             {
-              "id": "tmm_lich_dread_conduit",
+              "id": "tmm_lich_verdant_severance",
               "stage": "mastery",
-              "label": "Dread Conduit",
-              "effect": "Strengthen source-verified lich spell lines without unlocking forbidden research.",
-              "method": "spell-context hook",
+              "label": "Verdant Severance",
+              "effect": "High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff.",
+              "method": "source-aware effect arbitration",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_lich_lingering_curse"
+                "tmm_lich_crimson_channel"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -1547,13 +1576,13 @@
         "prerequisite_rule": {
           "any_one": [
             "tmm_lich_soul_treasury",
-            "tmm_lich_dread_conduit",
+            "tmm_lich_verdant_severance",
             "tmm_lich_death_host",
             "tmm_lich_final_passage"
           ],
           "plus_one_advanced_from_different_lane": [
             "tmm_lich_soul_reserve",
-            "tmm_lich_lingering_curse",
+            "tmm_lich_crimson_channel",
             "tmm_lich_grave_regiment",
             "tmm_lich_anchor_attunement"
           ]
@@ -1567,24 +1596,30 @@
       "notes": [
         "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
         "For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves.",
-        "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species."
-      ]
+        "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.",
+        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf."
+      ],
+      "design_requirements": {
+        "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
+        "power_budget": "Review relative benefit per SP versus Core Skills and other species before freezing ranks and cost",
+        "implementation": "Concept-only, no new known working skill effects"
+      }
     },
     {
       "id": "tmm_hunter",
       "title": "Hunter",
       "requires": "verified Vampirism hunter faction; mutually exclusive with supernatural states",
-      "identity": "Prepared anti-supernatural specialist, scouting and counterplay",
+      "identity": "Anti-undead/demon/fae apex monster-slayer; best combat upgrades, robust survival and equipment conservation, virtually no spell-stat growth",
       "lanes": [
         {
-          "name": "Investigation",
+          "name": "Quarry Lore & Tracking",
           "nodes": [
             {
               "id": "tmm_hunter_monster_lore",
               "stage": "entry",
               "label": "Monster Lore",
-              "effect": "Reveal eligible hostile supernatural type/weakness cues after actual observation.",
-              "method": "entity tag/observation adapter",
+              "effect": "Recognize verified undead, demon and fae categories, including weaknesses without revealing unrelated bosses.",
+              "method": "entity taxonomy / observation hook",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1597,8 +1632,8 @@
               "id": "tmm_hunter_quarry_mark",
               "stage": "advanced",
               "label": "Quarry Mark",
-              "effect": "Mark one tracked supernatural target, with limited range and duration.",
-              "method": "target marker",
+              "effect": "Mark one legitimate undead, demon or fae quarry for specialized hunter tactics.",
+              "method": "targeted quarry marker",
               "status": "concept_only",
               "prerequisites": [
                 "tmm_hunter_monster_lore"
@@ -1610,11 +1645,11 @@
               }
             },
             {
-              "id": "tmm_hunter_master_pursuit",
+              "id": "tmm_hunter_hunter_tracking",
               "stage": "mastery",
-              "label": "Master Pursuit",
-              "effect": "Improved tracking of wounded or fleeing marked targets, respecting concealment rules.",
-              "method": "target/sensing hook",
+              "label": "Hunter Tracking",
+              "effect": "Very high-level proximity effect: apply short, refreshed Glowing to eligible undead, demons and fae; explicit radius/cooldown and no unrelated mobs.",
+              "method": "bounded server entity scan / effect",
               "status": "concept_only",
               "prerequisites": [
                 "tmm_hunter_quarry_mark"
@@ -1628,14 +1663,14 @@
           ]
         },
         {
-          "name": "Weapons Training",
+          "name": "Arms & Ammunition",
           "nodes": [
             {
-              "id": "tmm_hunter_silver_discipline",
+              "id": "tmm_hunter_weapon_tempering",
               "stage": "entry",
-              "label": "Silver Discipline",
-              "effect": "Bounded bonus using verified anti-supernatural material/weapon tags.",
-              "method": "equipment/tag adapter",
+              "label": "Weapon Tempering",
+              "effect": "Reduce real durability loss from Hunter weapons without healing or duplicating equipment.",
+              "method": "durability-debit adapter",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1645,14 +1680,14 @@
               }
             },
             {
-              "id": "tmm_hunter_weak_point_strike",
+              "id": "tmm_hunter_measured_bolt",
               "stage": "advanced",
-              "label": "Weak-Point Strike",
-              "effect": "Conditional bonus after observing a marked target, not global crit multiplier.",
-              "method": "combat/mark adapter",
+              "label": "Measured Bolt",
+              "effect": "Chance to avoid consuming actual crossbow projectile ammo on successful fire; keep special ammo/fireworks excluded until source QA.",
+              "method": "crossbow ammo transaction adapter",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_hunter_silver_discipline"
+                "tmm_hunter_weapon_tempering"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -1661,14 +1696,14 @@
               }
             },
             {
-              "id": "tmm_hunter_slayer_s_technique",
+              "id": "tmm_hunter_supernatural_bane",
               "stage": "mastery",
-              "label": "Slayer's Technique",
-              "effect": "Cooldown-limited counterattack against specific supernatural telegraphs.",
-              "method": "defensive combat adapter",
+              "label": "Supernatural Bane",
+              "effect": "Very high-level significant damage bonus against verified undead, demons and fae; source-tag and boss caps.",
+              "method": "damage event with quarry allowlist",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_hunter_weak_point_strike"
+                "tmm_hunter_measured_bolt"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -1679,14 +1714,14 @@
           ]
         },
         {
-          "name": "Wards & Remedies",
+          "name": "Armor & Survival",
           "nodes": [
             {
-              "id": "tmm_hunter_steadfast_mind",
+              "id": "tmm_hunter_armored_longevity",
               "stage": "entry",
-              "label": "Steadfast Mind",
-              "effect": "Limited resistance to eligible charm/fear/supernatural debuffs.",
-              "method": "effect-tag hook",
+              "label": "Armored Longevity",
+              "effect": "Reduce real durability damage to equipped armor; preserve equipment break and exclude repair exploits.",
+              "method": "armor durability-debit adapter",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1696,14 +1731,14 @@
               }
             },
             {
-              "id": "tmm_hunter_warding_kit",
+              "id": "tmm_hunter_survivor_s_grit",
               "stage": "advanced",
-              "label": "Warding Kit",
-              "effect": "Improve duration/efficacy of approved consumable anti-monster items, not free production.",
-              "method": "item-use hook",
+              "label": "Survivor's Grit",
+              "effect": "Strong nonmagical survival upgrade for a prepared Hunter without mimicking regeneration/immortality.",
+              "method": "damage/health attribute hook",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_hunter_steadfast_mind"
+                "tmm_hunter_armored_longevity"
               ],
               "external_gate": "verified native mid-progression",
               "rank_model": {
@@ -1712,14 +1747,14 @@
               }
             },
             {
-              "id": "tmm_hunter_hexbreaker",
+              "id": "tmm_hunter_dreadbane_defense",
               "stage": "mastery",
-              "label": "Hexbreaker",
-              "effect": "Resource-cost/cooldown supernatural cleanse of eligible effects; not boss dispel.",
-              "method": "targeted dispel hook",
+              "label": "Dreadbane Defense",
+              "effect": "Very high-level improved survivability specifically against verified undead, demons and fae.",
+              "method": "typed incoming-damage classification",
               "status": "concept_only",
               "prerequisites": [
-                "tmm_hunter_warding_kit"
+                "tmm_hunter_survivor_s_grit"
               ],
               "external_gate": "verified native late-progression",
               "rank_model": {
@@ -1730,14 +1765,14 @@
           ]
         },
         {
-          "name": "Ambush & Counter",
+          "name": "Monster-Slayer Tactics",
           "nodes": [
             {
               "id": "tmm_hunter_fieldcraft",
               "stage": "entry",
               "label": "Fieldcraft",
-              "effect": "Short preparation-speed and stealth bonuses in natural environments.",
-              "method": "tool/stealth adapter",
+              "effect": "Prepare and maneuver under threat with weapon-based tactics, not generic magic damage.",
+              "method": "movement/combat state",
               "status": "concept_only",
               "prerequisites": [],
               "external_gate": "provider eligible; native entry",
@@ -1750,8 +1785,8 @@
               "id": "tmm_hunter_consecrated_snare",
               "stage": "advanced",
               "label": "Consecrated Snare",
-              "effect": "Craft/use a bounded anti-monster trap; ownership and claim-safe placement.",
-              "method": "trap entity adapter",
+              "effect": "Place claim-safe anti-monster traps using appropriate hunter resources, without generating magical mana.",
+              "method": "placement/ownership adapter",
               "status": "concept_only",
               "prerequisites": [
                 "tmm_hunter_fieldcraft"
@@ -1763,11 +1798,11 @@
               }
             },
             {
-              "id": "tmm_hunter_spell_intercept",
+              "id": "tmm_hunter_slayer_s_counter",
               "stage": "mastery",
-              "label": "Spell Intercept",
-              "effect": "High-tier, timed interrupt window for verified hostile supernatural casts; bosses exempt unless explicitly whitelisted.",
-              "method": "event-driven cast hook",
+              "label": "Slayer's Counter",
+              "effect": "High-level counterattack window against identified supernatural enemies; bosses require special approval.",
+              "method": "combat event cooldown",
               "status": "concept_only",
               "prerequisites": [
                 "tmm_hunter_consecrated_snare"
@@ -1783,20 +1818,20 @@
       ],
       "capstone": {
         "label": "Master Slayer",
-        "effect": "Late hunter-only preparation stance combining marks and counterattacks against supernatural mobs.",
+        "effect": "Hunter combat capstone: powerful damage and defense versus verified undead/demons/fae, Hunter Tracking synergy, weapon proficiency; no broad spell power.",
         "status": "concept_only",
         "id": "tmm_hunter_capstone",
         "prerequisite_rule": {
           "any_one": [
-            "tmm_hunter_master_pursuit",
-            "tmm_hunter_slayer_s_technique",
-            "tmm_hunter_hexbreaker",
-            "tmm_hunter_spell_intercept"
+            "tmm_hunter_hunter_tracking",
+            "tmm_hunter_supernatural_bane",
+            "tmm_hunter_dreadbane_defense",
+            "tmm_hunter_slayer_s_counter"
           ],
           "plus_one_advanced_from_different_lane": [
             "tmm_hunter_quarry_mark",
-            "tmm_hunter_weak_point_strike",
-            "tmm_hunter_warding_kit",
+            "tmm_hunter_measured_bolt",
+            "tmm_hunter_survivor_s_grit",
             "tmm_hunter_consecrated_snare"
           ]
         },
@@ -1808,8 +1843,15 @@
       },
       "notes": [
         "Hunter purchases never require vampire, wolf, or lich powers.",
-        "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return."
-      ]
+        "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.",
+        "Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment.",
+        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar."
+      ],
+      "design_requirements": {
+        "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
+        "power_budget": "Review relative benefit per SP versus Core Skills and other species before freezing ranks and cost",
+        "implementation": "Concept-only, no new known working skill effects"
+      }
     },
     {
       "id": "tmm_monk",
@@ -2079,5 +2121,84 @@
     "source_audit": "PR #85",
     "interim_visible_tabs": 13,
     "final_visible_tabs": 9
+  },
+  "principle_version": "2026-11-15-class-identities-v2",
+  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved.",
+  "class_identity_rules": {
+    "core_skills": {
+      "display_name": "Core Skills",
+      "stable_id": "tmm_magic_core",
+      "display_name_only": true,
+      "includes": "universal magic and nonmagical stock skill relocations",
+      "stock_retirement": "rehome 32 stock skills by verified identical IDs before removing four default categories"
+    },
+    "hunter": {
+      "combat_role": "top-tier dedicated anti-monster combat specialist; few if any magic-power purchases",
+      "hunters_quarry": [
+        "undead",
+        "demons",
+        "fae"
+      ],
+      "very_late_progression": [
+        "significant offensive bonuses against verified quarry types",
+        "significant defensive survival bonuses against verified quarry types",
+        "bounded proximity Glowing on eligible quarry as Hunter Tracking"
+      ],
+      "early_mid_progression": [
+        "reduce real armor durability damage",
+        "reduce real melee/ranged weapon durability damage",
+        "chance to save one actually consumed crossbow projectile; exempt fireworks/special ammo pending validation"
+      ],
+      "source_policies": [
+        "one canonical data-driven entity category allowlist or tags; overlap counts once; tagged bosses require explicit balance review",
+        "player-specific server-side Glowing effect refresh, range and cooldown; prevent stacking scans or spam",
+        "durability prevention must happen at actual consumption/damage hook; cannot award duplicate ammo or break weapon-item identity",
+        "native Hunter faction eligibility at purchase and at effect use"
+      ]
+    },
+    "dragons": {
+      "shared_between_species_not_extra_category": true,
+      "mana_capacity": "VERY LARGE additional maximum personal magical resource pools; much more capacity per SP than Core Skills; no machine/world reserve boosts",
+      "spell_power": "substantially larger spell potency gain per SP than other paths (above Core Skills for the same budget), only on truly scalable personal spells",
+      "mana_regeneration": "NO dragon-specific mana or magic-resource regeneration bonuses. Universal Core Skills Wellspring remains purchasable and is not disabled by becoming a dragon; this is about dragon-exclusive skill bonuses, not a global regen prohibition.",
+      "common_physical_skills": [
+        "armor/scales",
+        "physical damage/claws",
+        "legal harvest speed/talons"
+      ],
+      "price_rule": "dragon physical armor/damage/harvest ranks have higher SP prices for similar benefit than specialized melee/harvest identities; dragon magic/mana ranks have highest value per SP",
+      "source_policy": "enhance native spell schools/resource meters without inventing shared mana or bypassing harvest constraints; dragon family bonuses must not stack more than one species",
+      "cave": "demonic/infernal spell and owned demon-servant synergy; source classes verified in Goety/related mods",
+      "forest": "fae magic/owned fae synergy plus bonemeal utility, controlled animal-breeding improvements and extra valid crop yields",
+      "sea": "provisional tide/ice/storm/abyssal spell affinity and aquatic control; choose source-verified spell tags/mod hooks before promising specific school coverage"
+    },
+    "lich": {
+      "specialty": "blood magic (e.g. actual eligible Neo Vitae, EvilCraft personal activations) and necromancy",
+      "tradeoff": "purchasing the blood-specialist skill boosts verified personal blood spell power while reducing that same lich player's eligible nature-magic potency (Botania/Roots); penalty is not a debuff cast on enemies",
+      "stage_policy": "tradeoff magnitudes grow or scale with the purchased investment, remain meaningful even after universal Core Skills Potency and do not modify world mana machines or crafting infra",
+      "source_policy": "build source-tagged positive and negative spell effect hooks; do not touch unrelated passive generation or apply a modwide nerf; preserve Archlich and Dracolich lifecycle semantics"
+    },
+    "werewolf": {
+      "identity": "enormous extra maximum HP (hearts), strong but bounded actual health regeneration and boosts to nature spellcasting",
+      "survival_distinction": "health regen, not infinite mana regeneration; native silver/mob vulnerabilities and wolf-form restrictions remain meaningful",
+      "balance": "more health and HP regen per SP than general Core Skills/Dragon physical ranks; verified Botania/Roots nature-spell potency boosts, with explicit spell/cast classification"
+    },
+    "forest_dragon_agriculture": {
+      "bonemeal": "improve actual bonemeal effects or resource efficiency; avoid free infinite bonemeal cycles",
+      "animals": "improve eligible animal breeding/husbandry through verified events; do not multiply animals automatically or ignore cooldowns",
+      "crop": "extra legal crop outcomes on committed harvest events, with anti-double-credit vs Green Thumb, Harvest with Ease, and protected claims"
+    }
+  },
+  "stock_rehome_change_request": {
+    "green_thumb": {
+      "from": "tmm_magic_core",
+      "to": "tmm_dragon_forest",
+      "reason": "Forest-specific extra crop results"
+    },
+    "shepherd_s_blessing": {
+      "from": "tmm_magic_core",
+      "to": "tmm_dragon_forest",
+      "reason": "Forest-specific animal raising/breeding"
+    }
   }
 }
