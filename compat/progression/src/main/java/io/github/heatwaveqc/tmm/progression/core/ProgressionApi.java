@@ -4,6 +4,7 @@ import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import io.github.heatwaveqc.tmm.progression.state.Ledger;
 import io.github.heatwaveqc.tmm.progression.state.Discoveries;
+import io.github.heatwaveqc.tmm.progression.state.Modes;
 import io.github.heatwaveqc.tmm.progression.runtime.Selectors;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
@@ -66,6 +67,19 @@ public final class ProgressionApi {
     /** For verified external milestones and compatible mods; cannot mint arbitrary XP. */
     public static void recordExternal(ServerPlayer player, String namespacedEventId) {
         record(player,Signal.external(namespacedEventId));
+    }
+
+    /** Server-only independent mode storage, for Fortune/Silk and Monk Armor Lock toggles. */
+    public static String mode(ServerPlayer player, String key, String fallback) {
+        return player.getData(ProgressionAttachments.PLAYER_MODES.get()).get(key,fallback);
+    }
+    public static boolean setMode(ServerPlayer player, String key, String value) {
+        if (!key.matches("[a-z0-9_.-]+:[a-z0-9_./-]+") || key.length() > 128
+                || value == null || value.length() > 80 || !value.matches("[a-z0-9_./-]+")) return false;
+        Modes before = player.getData(ProgressionAttachments.PLAYER_MODES.get());
+        Modes after = before.with(key,value);
+        if (before != after) player.setData(ProgressionAttachments.PLAYER_MODES.get(),after);
+        return true;
     }
 
     /** First-consumption reward is global per player, not per NBT variant, saved across death/relog. */
