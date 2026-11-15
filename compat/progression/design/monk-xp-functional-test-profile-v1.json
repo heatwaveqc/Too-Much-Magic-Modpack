@@ -234,6 +234,16 @@
       },
       "xp_bonus": 260,
       "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_bedrock_sleep",
+      "criterion": {
+        "event": "external",
+        "target": "tmm_progression:bedrock_rest_completed",
+        "count": 1
+      },
+      "xp_bonus": 230,
+      "bonus_native_points": 0
     }
   ],
   "examples": [
@@ -314,5 +324,15 @@
     "Actual skill UI, progress toast, logged per-activity XP breakdown and multiplayer/claims smoke test."
   ],
   "test_only": true,
-  "integration_manifest_unchanged": true
+  "integration_manifest_unchanged": true,
+  "new_native_feature": {
+    "id": "tmm_progression:bedrock_rest",
+    "rank": 17,
+    "free": true,
+    "repeatable": true,
+    "activation": "Empty-mainhand right-click two adjacent bedrock blocks with 2 blocks of clear space above at night or thunder, in dimension with normal safe bed sleep.",
+    "effect": "Real sleeping pose/time skip/phantom rest without changing stored respawn; normal nearby monster and sleep-vote checks; valid only while unarmored.",
+    "one_time_deed": "tmm_progression:trial_bedrock_sleep +230 XP after sleep duration >= vanilla normal threshold, once per character.",
+    "danger": "Real sleep server lifecycle and stopSleepInBed positioning must be manually verified on a dedicated client."
+  }
 }
