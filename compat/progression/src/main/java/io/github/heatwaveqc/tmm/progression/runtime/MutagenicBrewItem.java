@@ -1,6 +1,10 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.ChatFormatting;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
@@ -21,6 +25,13 @@ public final class MutagenicBrewItem extends PotionItem {
 
     @Override public String getDescriptionId(ItemStack stack) {
         return "item.tmm_progression.mutagenic_brew";
+    }
+
+    @Override public void appendHoverText(ItemStack stack, Item.TooltipContext context,
+                                          List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack,context,tooltip,flag);
+        tooltip.add(Component.translatable("tooltip.tmm_progression.mutagenic_brew")
+            .withStyle(ChatFormatting.DARK_PURPLE));
     }
 
     @Override public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
