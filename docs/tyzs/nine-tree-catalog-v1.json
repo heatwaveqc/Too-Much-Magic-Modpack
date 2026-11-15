@@ -5,12 +5,6 @@
   "created": "2026-11-15",
   "prior_concept": "six_custom_categories_including_generic_dragon_from_PR27",
   "category_count": 9,
-  "tyz_default_categories_preserved": [
-    "abilities",
-    "combat",
-    "misc",
-    "nature"
-  ],
   "economic_contract": {
     "xp_source": "MXP-only",
     "effective_mxp_per_level": 1000,
@@ -41,7 +35,7 @@
         "effect": "Max eligible personal resource capacity; not machine tanks",
         "method": "Existing 99-rank preview; native attributes/adapters",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -50,7 +44,7 @@
         "effect": "Personal resource regeneration; never passive world generators",
         "method": "Existing 99-rank preview; native attributes/adapters",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -59,7 +53,7 @@
         "effect": "Real positive-cost reduction for personal casts, with floor and cross-mod dedupe",
         "method": "Existing 99-rank preview; debit-event adapters",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -68,7 +62,7 @@
         "effect": "Scalable offensive/healing magic effect, damage-tag and owner aware",
         "method": "Existing 99-rank preview; native attributes/context",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -77,7 +71,7 @@
         "effect": "Personal cast/activation speed only",
         "method": "Future per-mod cast timing adapter",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -86,7 +80,7 @@
         "effect": "Valid spell-target range, not AoE radius",
         "method": "Future range/raycast adapter",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -95,7 +89,7 @@
         "effect": "Temporary effects and eligible controlled summons duration",
         "method": "Future duration adapter",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -104,7 +98,7 @@
         "effect": "Strengthen personally owned summoned allies with bounded stats",
         "method": "Future owner-attribution adapter",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
@@ -113,7 +107,7 @@
         "effect": "Mitigate confirmed magical damage only",
         "method": "Future damage-tag listener",
         "status": "proposal_or_preview_only",
-        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       }
     ],
@@ -123,7 +117,7 @@
       "Ritual mastery (must not erase native minigames)"
     ],
     "notes": [
-      "Initial existing preview: four active 99-rank files Reservoir/Wellspring/Thrift/Potency; do not create an incompatible second set.",
+      "Initial existing preview: four base five-rank files Reservoir/Wellspring/Thrift/Potency; do not create an incompatible second set.",
       "Keep approved per-mod MXP cost normalization separate from actual resource discounts.",
       "No mod-specific free magic-school tree; effects apply only if compatible mechanics exist."
     ]
@@ -2073,5 +2067,17 @@
     "mastery": "at least 1 rank of same-lane advanced node plus verified native late-stage",
     "capstone": "at least 1 rank in any mastery node AND 1 rank in an advanced node from a different lane; plus final native progression and independently verified late milestone",
     "prerequisite_refunds": "deny predecessor refund if dependent downstream ranks remain owned; do not silently erase purchases"
+  },
+  "tyz_default_categories_transition_only": [
+    "abilities",
+    "combat",
+    "misc",
+    "nature"
+  ],
+  "old_categories_retirement_gate": {
+    "mode": "after_all_32_stock_skill_IDs_preserved_and_verified",
+    "source_audit": "PR #85",
+    "interim_visible_tabs": 13,
+    "final_visible_tabs": 9
   }
 }
