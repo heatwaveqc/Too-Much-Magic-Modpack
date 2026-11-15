@@ -2151,7 +2151,7 @@
     "final_visible_tabs": 9
   },
   "principle_version": "2026-11-15-class-identities-v2",
-  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo **at roughly the combat power of a fully progressed, appropriately geared specialist**, with specialist marginal niche edges (Dragon mana and power AFTER gear); Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog. Monks' capped comparable NONCOMBAT effects target 80-90% of full geared specialist (Sea Luck 80%) and mixed magic mods are classified by source per action, not blanket mod themes. Canonical numerical catalog now 168 design-only rows. Curios explicitly available on Monk under normal rules; strict no-worn-items Chaos trial is separately retained. Exact endgame affix/enchant/gem combination (including Supremacy/Malice overcharges) documented in dedicated 2026-11-15 equipment ceiling audit.",
+  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo **at roughly the combat power of a fully progressed, appropriately geared specialist**, with specialist marginal niche edges (Dragon mana and power AFTER gear); Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog. Monks' capped comparable NONCOMBAT effects target 80-90% of full geared specialist (Sea Luck 80%) and mixed magic mods are classified by source per action, not blanket mod themes. Canonical numerical catalog now 168 design-only rows. Curios explicitly available on Monk under normal rules; strict no-worn-items Chaos trial is separately retained. Exact endgame affix/enchant/gem combination (including Supremacy/Malice overcharges) documented in dedicated 2026-11-15 equipment ceiling audit. Owner clarification 2026-11-15 overrides Sea Luck 80% to exactly 85% of the attainable all-in optimized Sea Dragon max; hard registration cap is not necessarily achievable.",
   "class_identity_rules": {
     "core_skills": {
       "display_name": "Core Skills",
@@ -2259,11 +2259,11 @@
   "noncombat_capped_monk_policy_2026_11_15": {
     "reference": "docs/tyzs/monk-noncombat-parity-v1.json",
     "detail": "docs/TYZS-NONCOMBAT-PARITY-AND-MAGIC-AFFINITIES-2026-11-15.md",
-    "min_ratio": 0.8,
+    "min_ratio": 0.85,
     "default_ratio": 0.85,
-    "max_ratio": 0.9,
-    "sea_luck_ratio": 0.8,
-    "comparator": "Ordinary maxed Monk (full intrinsic native/Core/Tyz plus legal Curios, NO conventional armor/weapons) compared to fully optimized specialist's endgame enchanted/Affixed gear and legal Curios. Same relative 80-90%, 80% Sea Luck. Strict no-worn Guardian challenge distinct.",
+    "max_ratio": 0.85,
+    "sea_luck_ratio": 0.85,
+    "comparator": "Monk capped final including legal Curios at 85% of the theoretically achievable highest fully maxed legal equipped specialist (not typical/representative build); all comparable noncombat traits including Sea Luck, shared Curios counted once.",
     "late_monk_candidates": [
       {
         "id": "tmm_monk_inner_fortune",
@@ -2282,7 +2282,8 @@
       }
     ],
     "special_note": "Old 96-node identity catalog omits these three new budget candidates; canonical rank ledger has 168 total including the 32 stock skills. Do not use this old file as complete active rank list.",
-    "equipment_source": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json"
+    "equipment_source": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json",
+    "theoretical_cap_source": "docs/tyzs/theoretical-attribute-hard-caps-v1.json"
   },
   "magic_affinity_2026_11_15": {
     "reference": "docs/tyzs/magic-affinity-nature-blood-other-v1.json",
