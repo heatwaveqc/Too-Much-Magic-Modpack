@@ -86,7 +86,8 @@ Suggested QA — disposable worlds ONLY:
   fish, Aquaculture sushi and kelp; rejects cooked fish and grain dishes.
   Forest accepts raw Pam's produce, fruit preserves and sugar; rejects
   corn, rice and baked foods. Cave accepts native foods and charred
-  meat/seafood using the coal recipes. Compare JEI, hunger/saturation
+  meat/seafood using Dragon Survival's NATIVE charring, not a coal
+  shortcut recipe. Compare JEI, hunger/saturation
   and KubeJS/recipe logs; test each food type and negative cases.
 - Vampire ascension v2, on a throwaway backed-up world with explicit
   experimental flags: regular infection creates VAMPIRISM ONLY; Lilith
