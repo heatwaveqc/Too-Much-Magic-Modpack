@@ -34,8 +34,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:torch",
-        "count": 4
+        "item": "ars_elemental:curio_bag",
+        "count": 1
       },
       "depends": null,
       "optional": false
