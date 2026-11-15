@@ -7,33 +7,38 @@
 
 ## Coverage
 
-The working CSV now contains **325 named candidate entries** from **16 sources**. It is not a list of 325 independently verified living, hostile entity IDs. It deliberately includes noncombat, neutral, passive, summoned and prospective cases so the registry can exclude inappropriate hunt rewards.
+The working CSV contains **370 candidate named entries** from **21 source groups**, including wildlife, summoned entities, NPCs and noncombat cases. The research now also includes **95 source-confirmed registered entity IDs** from seven upstream modules in [registration-evidence.csv](registration-evidence.csv). These are upstream source registrations, **not pinned-JAR or server-runtime confirmations**. See the [verification pass and acceptance plan](REGISTRY-VERIFICATION-PASS.md).
 
-| Mod | Entries | Evidence status |
+| Source group | Candidate records | Evidence basis |
 | --- | ---: | --- |
-| [Vanilla Minecraft 1.21.1](https://minecraft.wiki/w/Mob) | 56 | baseline |
-| [L_Ender's Cataclysm](https://lendercataclysm.wiki.gg/wiki/Mobs) | 39 | pinned 3.33; wiki roster candidates |
-| [Eidolon: Repraised](https://wiki.9minecraft.net/java/mod/eidolon-repraised/) | 7 | pinned 0.5.0.8; wiki candidates |
-| [Iron's Spells 'n Spellbooks](https://iron.wiki/) | 21 | pinned 3.16.3; catalog candidates |
-| [Alex's Caves](https://alexscaves.wiki.gg/wiki/Mobs) | 44 | prospective; **not approved/pinned** |
-| [Draconic Evolution](https://github.com/Draconic-Inc/PI-Docs) | 1 | pinned 3.1.4.633; historical guardian reference |
-| [Goety](https://goety.wiki.gg/wiki/Mobs) | 76 | pinned 3.2.2; wiki candidates |
-| [Deeper and Darker](https://www.minecraft-guides.com/mod/deeper-and-darker/wiki/) | 11 | pinned 1.4.1; 1.4.1 guide |
-| [Feywild](https://modrinth.com/mod/feywild) | 13 | pinned 5.6.4; project description |
-| [Occultism](https://wiki.9minecraft.net/java/mod/occultism/guides/occultism-mobs/) | 7 | pinned 1.227.0; entity-guide candidates |
-| [EvilCraft](https://github.com/CyclopsMC/EvilCraft/blob/master-26-lts/CHANGELOG-1.21.1.md) | 6 | pinned 1.2.100; matching changelog |
-| [Just Another Witchery Remake](https://github.com/mrsterner/witchery-issues) | 7 | pinned 0.5.39; recent changelog + legacy candidates |
-| [Neo Vitae](https://github-wiki-see.page/m/breakinblocks/NeoVitae/wiki/Daemonium-Bestiary) | 16 | pinned 1.1.53; developer bestiary |
-| [Ars Nouveau](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/generated/resources/assets/ars_nouveau/lang/en_us.json) | 13 | pinned 5.13.5; source text + creature guide |
-| [Botania Revived](https://wiki.9minecraft.net/java/mod/botania/guides/botania-bosses-the-gaia-guardian/) | 2 | pinned 2.0.2; upstream behavior not confirmed in port |
-| [Malum](https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/main/java/com/sammy/malum/registry/common/entity/MalumCultistEntityTypes.java) | 6 | pinned 1.8.2; current 1.21.1 branch source; **pin comparison pending** |
+| Vanilla 1.21.1 | 56 | baseline |
+| Cataclysm | 39 | roster; pinned 3.33 JAR not inspected |
+| Eidolon: Repraised | 7 | roster; pinned 0.5.0.8 JAR not inspected |
+| Iron's Spells | 21 | roster; pinned 3.16.3 JAR not inspected |
+| Alex's Caves | 44 | **prospective only; no approved/pinned port** |
+| Draconic Evolution | 1 | Chaos Guardian seed |
+| Goety | 76 | 3.2.2 roster; pin-level registry not yet inspected |
+| Deeper and Darker | 11 | [v1.4.1 source registration](https://github.com/KyaniteMods/DeeperAndDarker/blob/v1.4.1/src/main/java/com/kyanite/deeperdarker/content/DDEntities.java) |
+| Feywild | 13 | candidate roster |
+| Occultism | 7 | candidate roster |
+| EvilCraft | 6 | candidate roster |
+| Just Another Witchery Remake | 7 | candidate roster |
+| Neo Vitae | 16 | Daemonium bestiary and candidates |
+| Ars Nouveau | 13 | Wilden + summoned helpers |
+| Botania Revived | 2 | source portability review |
+| Malum | 6 | five [1.21.1 branch cultists](https://github.com/SammySemicolon/Malum-Mod/blob/1.21.1/src/main/java/com/sammy/malum/registry/common/entity/MalumCultistEntityTypes.java) plus nonliving spirit |
+| Primal Magick | 36 | [6.0.7 tagged source](https://github.com/daedalus4096/PrimalMagick/blob/6.0.7/common/src/main/java/com/verdantartifice/primalmagick/common/entities/EntityTypesPM.java) |
+| Hexerei | 2 | [1.21.1 branch](https://github.com/JoeFoxe/Hexerei/blob/1.21.1/src/main/java/net/joefoxe/hexerei/client/renderer/entity/ModEntityTypes.java) |
+| Enchanted: Witchcraft | 2 | [1.21.1 branch](https://github.com/Favouriteless/Enchanted/blob/1.21.1/common/src/main/java/net/favouriteless/enchanted/common/init/EEntityTypes.java); Ent commented out |
+| Roots Classic | 1 | [1.21.1 branch](https://github.com/Lothrazar/RootsClassic/blob/1.21.1/src/main/java/elucent/rootsclassic/registry/RootsEntities.java) |
+| Forbidden & Arcanus | 4 | [1.21.1 branch](https://github.com/stal111/Forbidden-Arcanus/blob/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/core/init/ModEntities.java) |
 
 ### Evidence and limits
 
 - The CSV records **display names**, not fabricated namespaced entity IDs. `entity_id`, native entity tags, creature attributes and actual runtime membership are **not yet verified** against the pinned JARs or a live registry.
 - Wiki pages may describe newer or older mod versions than the target; this inventory is a source-backed **candidate**, not version-matched completion. Some catalog pages list decorative or scripted entities as 'mobs', so the CSV explicitly distinguishes summoned, corpse, noncombat and uncertain cases.
 - Alex's Caves has multiple distinct unofficial NeoForge 1.21.1 ports, including [Alex's Caves Neo](https://modrinth.com/mod/alexscavesneo), [another unofficial port](https://modrinth.com/project/alexs-caves-%28unofficial-port%29), and [Alex's Caves Continued](https://modrinth.com/mod/alexs-caves-continued). No port has been approved/pinned for this pack, so **do not install or assume port-specific parity** from this research.
-- The earlier 168-entry starter has been expanded, but it does **not** claim complete modpack hostile entity coverage. A registered entity dump is still the acceptance criterion.
+- The earlier 168- and 325-entry passes have been expanded, but the CSV does **not** claim complete hostile-entity coverage. A registered entity dump is still the acceptance criterion.
 
 ## Taxonomy policy — owner decisions
 
@@ -93,7 +98,7 @@ A third `hunt_reward_policy` prevents abuse by farming passive fauna, traders, r
 - **Exact registry audit:** extract IDs, class, MobCategory, spawn egg, living status, owner metadata and tag memberships from the pinned JAR or booted registry. An upstream name/ID is evidence for a candidate only; do not assume it matches a pin.
 - **Werewolf neutrality:** implement/tag a *separate* `Beast` no-first-aggro relationship with explicit owner/faction/boss exceptions; Goety summons and ravagers must not be pacified just for being beasts.
 - **Name reconciliation:** source references use different names for Ars Wilden Guardian vs Defender, Hunter vs Pack Hunter; merge only after exact registry comparison.
-- **Pending installed mob sources:** Enchanted: Witchcraft, Forbidden & Arcanus, Hexerei, Gaze/Malum addon, Goety Cataclysm, Primal Magick, Roots Classic, remaining Ars addons, and other registered entity providers. Some add no huntable mobs; prove absence from registry rather than guessing.
+- **Source-registered in this pass:** Enchanted: Witchcraft, Forbidden & Arcanus, Hexerei, Primal Magick and Roots Classic. These still need exact pinned-JAR matching. **Pending:** Goety Cataclysm servant registrations, Gaze/Malum addon, Witchery/Goety/Ars variants, and other entity providers. Some add no huntable mobs; prove absence rather than guessing.
 - **Port check:** Alex's Caves is not in the selected pack, and any future NeoForge port requires approval, provenance and version comparison before its rows become enabled.
  Damage and kill-credit rules remain native unless separately designed.
 
@@ -112,7 +117,7 @@ The repository has a **separate, unmerged-to-integration** `feature/mob-alliance
 ## Next census stages
 
 1. **Exact-version registry census:** get `namespace:path` from pinned JAR entity registrations or a clean test-server dump; record entity class, living flag, natural behavior, owner/summon type, and vanilla/mod tags. Do not infer IDs from display names. Include boss and MISC edge cases.
-2. **Expand active-mod coverage:** Deeper and Darker; the remainder of Draconic Evolution; Goety + Goety Cataclysm; JAWR and its addons; Feywild; Enchanted: Witchcraft; Malum; Occultism; EvilCraft; Ars Nouveau + additions; Neo Vitae; Hexerei; Botania Revived; Forbidden & Arcanus; Primal Magick; Roots Classic; other packs creating living entities. Reconcile each against actual `mods/*.pw.toml` and version.
+2. **Expand active-mod coverage:** the remainder of Draconic Evolution; Goety + Goety Cataclysm; JAWR and its addons; Feywild; Occultism; EvilCraft; Ars Nouveau + additions; Neo Vitae; Botania Revived; and remaining pack entities. Recheck source-covered mods against pinned JARs. Reconcile each against actual `mods/*.pw.toml` and version.
 3. **Neutrality matrix:** vampire, lich, werewolf, human Hunter, and dragon/fey/demon species states × tags/individual exceptions; test no-aggro, retaliation, commanded summons, PvP and boss encounters independently.
 4. **Coverage gates:** no unknown natural hostile entity silently assigned to a default specialist; no neutral/trader automatically treated as a legal contract; no summon-farming bypass; no broad multi-tag boss damage multiplication.
 5. **Review proposed new trees** after the full installed-mod census to determine if Prehistoric, Mutant, Confection, or Darkness-born have sufficient shared identity and gameplay to justify standalone specializations.
