@@ -92,23 +92,33 @@ if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; t
     fi
     echo "PASS: real modded server ticked dropped Stone without KubeJS errors"
   fi
-  # For the QA pack, prove NeoForge copied the experimental default config
-  # into the new world, not merely that packwiz indexed the template file.
+  # NeoForge 1.21.1 SERVER config normally loads from config/; a
+  # world/serverconfig file, when present, takes precedence. Some servers
+  # never create a per-world copy. Validate the effective candidate, not
+  # the existence of an optional per-world override.
   if [[ -f "$WORK_DIR/defaultconfigs/tmm_transformations-server.toml" ]]; then
-    python3 - "$WORK_DIR/world/serverconfig/tmm_transformations-server.toml" <<'PY'
+    python3 - "$WORK_DIR" <<'PY'
 import sys, tomllib
 from pathlib import Path
-path = Path(sys.argv[1])
-assert path.is_file(), f"Missing newly-created vampire serverconfig: {path}"
-settings = tomllib.loads(path.read_text(encoding="utf-8"))
+root = Path(sys.argv[1])
+global_path = root / "config/tmm_transformations-server.toml"
+override = root / "world/serverconfig/tmm_transformations-server.toml"
+template = root / "defaultconfigs/tmm_transformations-server.toml"
+assert global_path.is_file(), f"QA vampire SERVER config missing: {global_path}"
+assert template.is_file(), f"QA vampire world template missing: {template}"
 expected = {
     "experimentalVampireChassis": True,
     "experimentalAutomaticDualAcquisition": True,
     "experimentalAllowUnverifiedOtherProviders": True,
     "experimentalOperatorCure": False,
 }
-assert settings == expected, f"New-world vampire settings not loaded as intended: {settings}"
-print("PASS: new world really activated the disposable QA vampire config defaults")
+for p in (global_path, template):
+    assert tomllib.loads(p.read_text()) == expected, f"Invalid QA vampire profile {p}"
+effective = override if override.is_file() else global_path
+actual = tomllib.loads(effective.read_text())
+assert actual == expected, f"Active vampire QA world config differs from test profile: {effective}: {actual}"
+print(f"PASS: NeoForge QA vampire flags resolved from {effective}")
+print(f"INFO: world-specific override {'present' if override.is_file() else 'absent; global SERVER config used'}")
 PY
   fi
   echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
