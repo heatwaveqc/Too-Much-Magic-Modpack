@@ -1,5 +1,7 @@
 # Too Much Magic — Quest Shop and player sales
 
+> **Economy rebalance required (2026-11-14):** ProjectE's initial access is proposed to move to Gaia Guardian I **or** Neo Vitae Foreman; advanced EMC production and Project Expansion remain post-Chaos. This changes the former assumption that ProjectE bulk resource conversion/coin production begins only after Chaos. Re-audit commodity resale loops and coin pricing before releasing the tiered gate. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
+
 Owner-approved 2026-11-14. **Integration candidate**, not a tested economy. Quest Shop is the only new shop; Cooking for Blockheads is in Food & Fishing.
 
 ## Quest rewards
