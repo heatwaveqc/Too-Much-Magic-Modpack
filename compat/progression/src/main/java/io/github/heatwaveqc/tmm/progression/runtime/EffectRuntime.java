@@ -53,7 +53,7 @@ public final class EffectRuntime {
                 if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
                     Definition.Effect effect = skill.effects().get(n);
-                    if (eligible(player,effect)) {
+                    if (eligible(player,effect,track)) {
                         String id = path.id().replace(':','/') + "/" +
                             skill.id().replace(':','/') + "/" + n;
                         out.add(new Active(id,effect,rank));
@@ -63,7 +63,11 @@ public final class EffectRuntime {
         }
         return out;
     }
-    private static boolean eligible(ServerPlayer p, Definition.Effect effect) {
+    private static boolean eligible(ServerPlayer p, Definition.Effect effect, Track track) {
+        String milestone = effect.params().get("requires_milestone");
+        if (milestone != null && !track.completed(milestone)) return false;
+        if ("true".equals(effect.params().get("requires_sprinting")) && !p.isSprinting()) return false;
+        if ("true".equals(effect.params().get("requires_not_sneaking")) && p.isCrouching()) return false;
         if (effect.emptyHand() && !p.getMainHandItem().isEmpty()) return false;
         if (effect.unarmored()) {
             for (ItemStack worn : p.getArmorSlots()) if (!worn.isEmpty()) return false;
