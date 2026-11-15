@@ -60,6 +60,11 @@ public final class ProgressionEvents {
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
             ProgressionApi.record(player,Selectors.kill(event.getEntity()));
+            // Extra practice credit is reserved for actual barehanded melee,
+            // never an arrow, summon or attributed spell projectile.
+            if (event.getSource().getDirectEntity() == player
+                    && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.unarmedKill(event.getEntity()));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }
@@ -84,6 +89,10 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            // Only a real, non-cancelled post-break empty-hand harvest yields
+            // the Monk's physical practice signal. Generic block_break remains.
+            if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
