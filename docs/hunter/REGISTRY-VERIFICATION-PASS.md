@@ -1,4 +1,7 @@
-# Hunter creature registry verification — source pass, 2026-11-15
+# Hunter creature registry verification — historical source-only pass (2026-11-15)
+
+> **SUPERSEDED:** The exact pinned JARs were subsequently downloaded and hash-verified (22/22); a full integrated NeoForge server boot succeeded and enumerated 1,393 runtime IDs. Read the current [PINNED-RUNTIME-VERIFICATION.md](PINNED-RUNTIME-VERIFICATION.md) and [candidate-runtime-crosswalk.csv](candidate-runtime-crosswalk.csv) rather than treating the source-only caveats below as the current test result. The historical notes below are retained to show what was unknown before actual verification.
+
 
 **Research-only.** No mods, game behavior, equipment, skills, world-generation settings or AI goals were changed. Baseline: live `test/full-integration` pins, Minecraft 1.21.1 / NeoForge. This pass extends PR #97.
 
