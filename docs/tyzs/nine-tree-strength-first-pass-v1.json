@@ -147,7 +147,7 @@
         "max": 0.85,
         "sea_luck": 0.85
       },
-      "rule": "For any genuinely comparable non-combat personal output, adjust Monk late ranks so its complete final output is 80%-90% of the fully optimized specialist's final result, including gear. Use 80% for Sea Luck and 85% default. Scope excludes combat, native vampire blood/lich biology, machines and noncomparable systems.",
+      "rule": "For any genuinely comparable non-combat personal output, adjust Monk late ranks so its complete final output is 85% of the fully optimized specialist's final result, including gear. Use 80% for Sea Luck and 85% default. Scope excludes combat, native vampire blood/lich biology, machines and noncomparable systems.",
       "monk_new_nodes": [
         "tmm_monk_inner_fortune",
         "tmm_monk_inner_reservoir",
@@ -4141,7 +4141,7 @@
               "native_progression_gate": "legitimate upper Monk skill progression",
               "notes": [
                 "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
-                "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
+                "Tier percentages are a reference scale; capped *final* output ratio 85% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
                 "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue.",
                 "Calibration subtracts source-verified Monk Curios contribution from 80/85% target, rather than adding Curios ON TOP of fully budgeted Monk innate skill."
               ]
@@ -4166,7 +4166,7 @@
               "native_progression_gate": "standalone Monk native Gardening plus upper mastery",
               "notes": [
                 "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
-                "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
+                "Tier percentages are a reference scale; capped *final* output ratio 85% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
                 "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue.",
                 "Calibration subtracts source-verified Monk Curios contribution from 80/85% target, rather than adding Curios ON TOP of fully budgeted Monk innate skill."
               ]
@@ -4214,7 +4214,7 @@
         "Monk is absolute top of overall personal combat / survivability / movement / adaptability power hierarchy. No other tree can be comparable in all those domains at once. A specialist can rival Monk only in one or two designated niches.",
         "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt.",
         "Balance all Monk total effects, including innate gear/Apotheosis-like affix substitutes, AGAINST a comparably progressed specialist wearing appropriately-tiered enchantable/Affixed armor, weapons/tools and Curios. Monk is not required to defeat the FULLY GEARED equivalent in overall effective power; it must be approximately competitive.",
-        "Maxed Monk noncombat sources target 80%-90% of FULLY GEARED best comparable specialist, not 80%-90% of innate Tyz bonus. Sea Luck explicitly 0.8× equipped Sea Luck.",
+        "Maxed Monk noncombat sources target 85% of FULLY GEARED best comparable specialist, not 85% of innate Tyz bonus. Sea Luck explicitly 0.85× equipped Sea Luck.",
         "Curios are explicitly legal on Monk. Ordinary noncombat/combat parity counts Monk+legal Curios versus fully enchanted/Affixed geared specialist+legal Curios; keep optional STRICT no-worn-items Guardian trial separately.",
         "2026-11-15 OWNER UPDATE: capped comparable noncombat including true Luck is 85% of theoretically achievable, legality-checked all-in specialist maximum including final Curios; this supersedes prior 80% Sea Luck exception and practical percentile comparator."
       ]
@@ -4238,5 +4238,5 @@
     "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
     "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
   ],
-  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains. For noncombat metrics, gearless capped Monk aims for 80%-90% of full geared specialist, Sea Luck exactly 80%; this adds three Monk late candidate skills (168 total) requiring source calibration. Nature/Blood/Other affinity tags are source-scoped; Iron spells split by registered school, Goety/Occultism soul/demon Other, Nature penalty covers all verified personal nature spells. Equipment ceiling audit: 99 affixes/23 gems/20 Apothic enchants and Supremacy/Malice + Iesnium. Monks wear Curios in normal builds; strict Chaos zero-worn challenge remains separate. Skill-level targets require equipped including Curios actual source values. Owner final noncombat interpretation: theoretical all-in capped legal specialists, not practical endgame; all comparable noncombat ratios including Sea Luck exactly 85%, supersedes old 80% Sea special."
+  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains. For noncombat metrics, gearless capped Monk aims for 85% of full geared specialist, Sea Luck exactly 80%; this adds three Monk late candidate skills (168 total) requiring source calibration. Nature/Blood/Other affinity tags are source-scoped; Iron spells split by registered school, Goety/Occultism soul/demon Other, Nature penalty covers all verified personal nature spells. Equipment ceiling audit: 99 affixes/23 gems/20 Apothic enchants and Supremacy/Malice + Iesnium. Monks wear Curios in normal builds; strict Chaos zero-worn challenge remains separate. Skill-level targets require equipped including Curios actual source values. Owner final noncombat interpretation: theoretical all-in capped legal specialists, not practical endgame; all comparable noncombat ratios including Sea Luck exactly 85%, supersedes old 80% Sea special."
 }
