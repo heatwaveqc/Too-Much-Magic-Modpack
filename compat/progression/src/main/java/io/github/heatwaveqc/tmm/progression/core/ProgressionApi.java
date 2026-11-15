@@ -13,6 +13,9 @@ import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.BiPredicate;
 import java.util.UUID;
 
 /**
@@ -22,6 +25,13 @@ import java.util.UUID;
 public final class ProgressionApi {
     private ProgressionApi() {}
     private static final Map<UUID,Map<String,Long>> cooldowns = new HashMap<>();
+    /** Registration-time join vetoes, including optional supernatural-species compatibility. */
+    private static final List<BiPredicate<ServerPlayer,String>> JOIN_VETOES = new CopyOnWriteArrayList<>();
+
+    /** Optional trusted adapter: return false to reject joining the given path. */
+    public static void registerJoinVeto(BiPredicate<ServerPlayer,String> policy) {
+        JOIN_VETOES.add(java.util.Objects.requireNonNull(policy));
+    }
 
     public static Track track(ServerPlayer player, String pathId) {
         return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
@@ -32,6 +42,8 @@ public final class ProgressionApi {
         if (path == null) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
+        for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
+            if (!veto.test(player,pathId)) return false;
         if (!path.exclusiveGroup().isBlank()) {
             for (Definition.Path other : PathRegistry.all().values()) {
                 if (!pathId.equals(other.id()) && path.exclusiveGroup().equals(other.exclusiveGroup())
