@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "profile_id": "rwtema-monk-1.4-historical",
+  "purpose": "original_like_standalone_default_target_NOT_LIVE",
+  "original_mod": "Monk Mod 1.4 (Minecraft 1.12.2)",
+  "source_url": "https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
+  "original_milestones": {
+    "first": 0,
+    "last": 20,
+    "total": 21
+  },
+  "sunset_milestone": 2,
+  "sunset_ticks": 200,
+  "progression": "configured individual deed per milestone",
+  "selected_by_pack": false,
+  "note": "Historical comparison only; do not copy original source, settings or textures into the runnable addon.",
+  "intended_when_implemented": "Standalone Monk addon selects this classic-style finite progression; Too Much Magic pack explicitly selects its own extended profile.",
+  "selected_by_default_in_future_standalone_build": true,
+  "implemented_in_game": false,
+  "milestone_deeds": [
+    "break_wood_once",
+    "break_10_wood_barehanded",
+    "watch_sunrise_or_sunset",
+    "deep_ocean_dive",
+    "break_5_stone_barehanded",
+    "pet_20_animals",
+    "sprint_200_blocks",
+    "defeat_10_undead",
+    "dodge_5_arrows",
+    "break_4_iron_blocks_barehanded",
+    "meditate_on_boat_under_moon",
+    "meditate_near_calm_endermen",
+    "walk_through_fire",
+    "break_obsidian_barehanded",
+    "approach_creeper",
+    "stare_down_wither_skeleton",
+    "survive_40_block_fall",
+    "sleep_on_bedrock",
+    "defeat_5_hostiles_while_blind",
+    "defeat_wither",
+    "complete_void_ordeal"
+  ]
+}

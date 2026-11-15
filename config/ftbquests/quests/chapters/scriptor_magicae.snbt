@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D903001400001", type: "xp", xp: 2 }
-				{ id: "544DA03001400002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA03001400002", type: "item", item: { id: "minecraft:ink_sac", count: 1 }, count: 2 }
 			]
 			size: 1.5d
 			tasks: [

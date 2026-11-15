@@ -1,0 +1,49 @@
+{
+  "active": false,
+  "id": "tmm_monk_barehand_harvest_training",
+  "maximumLevel": 10,
+  "prices": [
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5
+  ],
+  "type": "CUSTOM",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/iron_pickaxe.png",
+  "displayName": "Barehand Harvest Training",
+  "description": "Mine faster with empty hands; harvesting tier remains separately gated.",
+  "modifiers": [
+    {
+      "attribute": "tmm_monk:hand_harvest_training",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2,
+        2.5,
+        3,
+        3.5,
+        4,
+        4.5,
+        5
+      ],
+      "unit": "mining speed"
+    }
+  ],
+  "customValues": {},
+  "config": {
+    "levelRequirement": 0,
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}

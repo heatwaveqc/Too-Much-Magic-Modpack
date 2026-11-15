@@ -1,208 +1,284 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/almostunified/placeholders.json"
+hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
+
+[[files]]
+file = "config/almostunified/startup.json"
+hash = "2c732058a0f232ab661c21c6a460ed44149a2e8136a0d31c73eb0c855269baa0"
+
+[[files]]
+file = "config/almostunified/unification/materials.json"
+hash = "d018b6cfea4a7f633bdb407c19c6836da45f454087a760385bb0098d818ab907"
+
+[[files]]
+file = "config/ftbessentials.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
-hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
+hash = "74fb7e9479c47194f32e72853b7b023ee57561e5f95bbae011083c2533515deb"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/apotheosis.snbt"
-hash = "c9bbff2c864c6fdb80334c157523f8ae377408c9aab665064f385ebf9b9e007f"
+hash = "cc1e6e849918c0c08bf14f8ffc00d7ac884293726d1dea659d044bc207a12e7b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/ars_nouveau.snbt"
-hash = "f9b68bec3255cccdd1b5859945907634d785efce0b00d7b461db20166a67b898"
+hash = "68ef117e22ad6d985a5f0de958d41b1cd4b22949ed83f19a99d7f3810191298a"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/artifacts.snbt"
-hash = "f50762eb6a74e3af06b94c9779606480b572d496138a709b2503f833949ccd9d"
+hash = "7d45c35ce7b9d95144fb9717b0ea14c98bc3a4323940ebc5afeb84b495b84a95"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/astral_sorcery.snbt"
-hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
+hash = "03a57567de00b0e35a509bbdb02f6499676e94127de6c5aaa89e3178a7c38020"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "2d2b764602485f8127188f0bcd0dfbcad2d9d673322c318123566520e7fe3a26"
+hash = "d9a1954f8890758a12945ff878c8eadbb4a66f592ee4cc313f9afed07fb5d0f9"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
-hash = "70703356535d0c2100a5e2980619920a8ee666474f986a2bd8c5424a21d0acbe"
+hash = "5ccb34b817d66e65b0312a22da3e86f562e84b63f7886c8d0eb1e4318a86c2d9"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/deeper_and_darker.snbt"
-hash = "74b38fa281e422ea66cda98e4b78f9cf08d131ad71f427db28f9862c273d9d30"
+hash = "e025f4f75ff2bbf1e7a975944a102ba614876305c07639253ff23554918ed04c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/draconic_evolution.snbt"
-hash = "7c43a087800557d4ea06469777a97433e1872f48da45a54fad0f00de2991b6bc"
+hash = "8b665581acbb7cf746c5fbddd36600df11d3ec96ae4c287200648a67ee175926"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/eidolon_repraised.snbt"
-hash = "faa6ac17037269d767158723fd5ab00fa7366ec9dfe9e9e9da5c7df9b9a7e0c1"
+hash = "fab10fd16b22cb0f04d273a0154df256b2166126bdb8d350c8b7d919fed31b69"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/embers_re_ignited.snbt"
-hash = "0ec8e40fb7026a578aa325905adb97f2d812d8ec8c99c04a15a121ea7328b390"
+hash = "c10dbfdc60a4d108810339717ebdfb1fa337e24e030ade6819770d98dd8f18a2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/enchanted_witchcraft.snbt"
-hash = "34bc09a5737e0d1046d30589443b9d8c0c3fdd847d76b3e02991fa8d8cb4dc4f"
+hash = "36d09a05d7988265761936ea63ad84fd52628318be4f2628168ee984b9ca38e9"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/endgame_roadmap.snbt"
-hash = "04442ac5eb44c9895750a077090e86bf09329ce037ecdadc392d03b9cc654521"
+hash = "a3bb31496798691bd91b21ade1ce28a80426a2a0fa9fa8b918b2c70f2ec210b3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/enigmatic_legacy.snbt"
-hash = "8ec2738b33c847a2fd99296b3be46cc62ec0cfbac377fea8dc0107a5fe2c33e0"
+hash = "d8d993a0499eaac1d186325b33c2328a81091ef4ac17c6baee205f039fc02f6e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/evilcraft.snbt"
-hash = "58f5b63d4150914df4abd5fbc114fd7a8f48a41bc9e93d0b97f8323513cb8bb5"
+hash = "f87e841066b201ab2fb24b13649766c4880cd7b0a90d6816d2e55e07a41df39d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt"
-hash = "58644f9c3c0d1c72fcd8e5b0a02f8ad8f9513de6f7f834961602c7163fb6d4c5"
+hash = "5311dce93575d114d38ef4ab96a13309293bc8caf0b63232bac115c0baad6b80"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/feywild.snbt"
-hash = "ca982becf7b9afcece194d3090d3dfcd6eb8f85977a12e6723e62723c6f5e276"
+hash = "1376f0448e2f4c251fcb72f00b6e9e37260746a5ae9220946a150f043d502ee3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/food_fishing.snbt"
-hash = "4080967ace641543b15acecad3b70d821f05708d83436d98b0c3e633e18cb935"
+hash = "e7c94e288e9d2476cdc12d79ef0d0c1fc1a550323312c8d1ba01c05fbd9f7704"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/forbidden_arcanus.snbt"
-hash = "544f11c2c38a0a3a9407af61b14182f9e10ecaa3a80076cf4100e1d18bd5c08f"
+hash = "f0bffbbb38f1298142d1a129f9447ad4853ebb03abba123819612c02b0ea53b8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/gateways_to_eternity.snbt"
-hash = "f29ec65decb7ff1d6a41c1d39e853f287f0f05330197c935f7514c8675f1c14c"
+hash = "132a21a93becf5560e39e7be60f850b7fab29a31cc79dbc3d7f84e17542d0c06"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/goety.snbt"
-hash = "7cf82adf679443f710d3ee7585a29693dd29815aab95c1a2eccb673bd352aba6"
+hash = "d346e7befb88616601f8bb8eb8bacd02c017a5d1ced5a9879e5f9b69a475df1b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/hex_casting.snbt"
-hash = "9fa90901b5e7814b04088389514bdc8fae2fe20682474f059208847cc369e349"
+hash = "92b07b008d791d92b8f4cbb0d5fdbc215f66154b42ef452d1a82e45d70ce59e7"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/hexerei.snbt"
-hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
+hash = "5c53aa5757889bf44ab66f311e9d8486d1e36f892f3c66d2f5926c78e1509aab"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "9c8d6b87a88641dc96cc525df158ffe1f13b0e3744ba320b6a25df16859ba02f"
+hash = "0ff7950cea54284eb289bf766fdc9e8b3272745bf6e77d4628af8c39e9163e4e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
-hash = "67b8635cd0bb4986374e256ddf30535e01fc593a8190d492f8e6bc6c3a469c51"
+hash = "5a98a72b8b3247bfa23026f718f3ac20790e3c3fbfee8a2063945865006bcefa"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/just_another_witchery_remake.snbt"
-hash = "ac6a3abfac4026fc8f52b6d69382a0f721a18706759bda5e26cdd6bb84408c79"
+hash = "1989cd2491898e7e2e45d2c871e67bdecd261545724778561b67f729bfca97d3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/l_enders_cataclysm.snbt"
-hash = "ee2e460b221b819f421b36a4d4d8a1bb1995fe1568d3bb66fa9d92f329e83ed1"
+hash = "64a5551a4b6147014533e9d269a0d440ea18c88ba83eb2e7ac245703c490b934"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/mahou_tsukai.snbt"
-hash = "4632df969b862739dbfe2b7463a5f1e2e4c41cad225b83fa48ec2de02b969cbf"
+hash = "ce3adafaf9661f6e198cc8b097ec0a251f36e8fcc7378c7b1f4c06721ce0143e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/malum.snbt"
-hash = "7252b0ca937ceb1aaadd0a86edc30e06716a5dba208a284925a911790519469e"
+hash = "e65b93c74f91cfbeb0c4da107de50667173ed702f8938a147c97109cc9a236ba"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/neo_vitae.snbt"
-hash = "3425bdf8dd4bf3c1fcfb77aaa3742ed9c7771075ac471dffda829d86d6090a2f"
+hash = "b19c143093d5dfbd340c23d773c20603db993709993b1771f9528780ea3081ce"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/occultism.snbt"
-hash = "c273ac665335d9e4ffd2c1f15dc1a1a284febde5af65c58e0918c42a5387c098"
+hash = "2a9e752dc59329aa66665bf8c950a1eb096146f200840c0fe80df5e454e46bd2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/pastel.snbt"
-hash = "68d793c2dc04ad67f0f2846d1f4a7185e6cbb6c37a00f0b138c04f2615f7d8cb"
+hash = "0bdc2200ff0b0cdfe3aef1a93325a6749e7cad4aede6795331b7ccf2bc74e2bf"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/primal_magick.snbt"
-hash = "eba09d436dd8a10482eaa807a070a82ce7c8d3e11c396fb9d42ac3b74877147e"
+hash = "25919537e4220aadcff65f864a56b72f21897792402b1e2495f0931eebf26b9b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/projecte.snbt"
-hash = "b0c6c86a1e902f021c6cc5101d3697a00dedc2ba10bb5015b0cee53add74ab5e"
+hash = "7a027d30f9a130126c51a5915d1883a952507cb9b0426acf83582e20ae9aa3f0"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/psi.snbt"
-hash = "9ac485bbc0cd1c7e2ee7839d00067bb070dbe55fa80124dc44847e1e73c5ae2b"
+hash = "e2761e4e86b20a559f32c6b67b10bb2cedf0cf24213fd2476daa9c0eb1299b2a"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/reliquary_reincarnations.snbt"
-hash = "9c60287a9be60dc3e09236d3507d43146c5a08616dbfebc9e145856c07d4e986"
+hash = "70d8d1e249d3fde363ad846f1daf8aac1a1e0b330cd2909833db06f9454b40f3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/replication.snbt"
-hash = "e2922df4c73c1f8ed5103cfc150f018b7f87c2bcacecd6506dfd88bb8ba1820f"
+hash = "f6905737e973e163b952e3c788fb20e5c16a06e03d70e9f5a8eb77f76233aa11"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/roots_classic.snbt"
-hash = "e5cd1db95027b4a5d462e5a6647fad9c98c8db2b63342368c96c34bc137a3b22"
+hash = "d6a75da2b9faa56dadd7258d34f0743aa50529e91ab257d8996379a1c6eeffe1"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/scriptor_magicae.snbt"
-hash = "420a37e68dd5bf081730c9becfed87d18316c5e8614013494ab96be3c538ff8f"
+hash = "63eae2e73c5e7ca212391382c2fd1cf37d880f4c2dc1e9390cf42f1720ee9fc6"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
-hash = "6d7ccd495f1c4528b08a58a64c1c457dcfe7ccb7e9c7d79ed69d73da2afabb33"
+hash = "4c510f4add412ef66e837858a28f080b40bb1630439db913b02084a089e3518b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
-hash = "6acde0e3fbc8318f6bb3d601760cf2c9a1cd5966b1309316c63787548f9289e2"
+hash = "11587356869235ace0e502c83823ce43f1aa4fb283ebda4ed2cdecb74a907609"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
-hash = "e1d26a2b47fbbb1a81ee6b795a8542742933f01337fcd59d03ccbb0fdc66ba14"
+hash = "383395b9bbe8a7b8fd913501c12d7466749c07cfdfc074d6d514a8529357d2e1"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/totemic.snbt"
-hash = "d062191141d5cd969231ccb1ba7194781da44130f83f01989b79bdbe973f5d57"
+hash = "a06444e1bcf3e98da3065eb78809280ba13160a110ac2056f87ab7d6124681b8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/vampirism.snbt"
-hash = "499f8420231718b94d97839fe950579add18892e56e25b60bf127c580160aeb2"
+hash = "3de6aedff9c386a3bb3fa5675db43b5237ce43cf64b117cca9a2857f3e3247eb"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/werewolves.snbt"
-hash = "4ca8d0726b3028470e18474202cfea8e1844e8f22c0252fe148a068231c2bb47"
+hash = "3fd5182fc5c516f96b671831a5f2382efe91ae20e51f4279f598cd3aa72d759a"
 
 [[files]]
 file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "7f4b5c818ba622c7dd28c3d628c770f4f61e8720d116c319b968f14fd73c7e96"
+
+[[files]]
+file = "config/neovitae/materials.json"
+hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
+
+[[files]]
+file = "config/tyzs_skills-common.toml"
+hash = "c2f15be8bc5ef7b81d7b440e4458d259b737442ae093b0e5a0f0e96c850a1896"
+
+[[files]]
+file = "config/tyzs_skills/custom/data/categories.json"
+hash = "f7845abe4fe9d003f426bc39e014301af5fa780d3510543d8d653fb96c53005b"
+
+[[files]]
+file = "config/tyzs_skills/custom/data/level-pool.json"
+hash = "a25fd4a294ae0411eebe82305c53cfe039dcbdec3463b2ef9bc6192bc87815e0"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_potency_1.json"
+hash = "aff5539dd005ac1966f9c5749cb2f86f34fd7e1d2b5cc3244ca89d27363e233e"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_reservoir_1.json"
+hash = "5c90284a390e1a08b3c7dacdbd485d7edd96889b60d0b25fd42662636cfebb48"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_thrift_1.json"
+hash = "1ba1fc86fbfd04a2d95b6b670894da8504c1d7ef68265498bdb47552ffb6b338"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_wellspring_1.json"
+hash = "bdd7e03753bf6fcb09eb31eb67ab881fbfa60a58234f28014aa6d17eecefb64a"
+
+[[files]]
+file = "defaultconfigs/ftbessentials-server.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
+file = "defaultconfigs/vampirism-server.toml"
+hash = "81d4b4acde948c122e0c2e848f98a69ccbce1acfc944a665c50436ae44d9f1b6"
+
+[[files]]
+file = "kubejs/client_scripts/roots_terra_client.js"
+hash = "d18371b4e7a81d55c4c36af9054f8a11a70f2c639e79da260268f56c0de4a895"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
 
 [[files]]
+file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+hash = "9b3e5db5ac38cb1b1a3cbb40da1e189c9dd4130b4a8d60d108ff64388eae7767"
+
+[[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
 hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
 
 [[files]]
+file = "kubejs/data/tmm/advancement/starter_kit.json"
+hash = "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
+
+[[files]]
 file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
 hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
+hash = "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"
@@ -215,6 +291,10 @@ hash = "70f3d6c825bd7e10d549c32cdc810655b120845406247e9662637b81e1259ff5"
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/food.json"
 hash = "52d2a83ab9214a3d1a56ad11de2dd88ae50b31da418f276d71ed20d9b5961985"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/ores.json"
+hash = "109a39d371617838d10893e52e30390feacf42ce2b599daacf0079d0117e74a6"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/reagents.json"
@@ -237,12 +317,20 @@ file = "kubejs/data/tmm/questshop/shop_entries/food.json"
 hash = "7ce9fc49e8869cba4b203f8ebf4234703432892043a0d9e5ae7c3130348e8af4"
 
 [[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/ores.json"
+hash = "793950980a69031b7977976db2eb0ea3ba545722c82fb199103666c13f8bee00"
+
+[[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/reagents.json"
 hash = "89960c1e990de96dfe4851d03628d89e9794c637429e26e846a96aa5461d30a9"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
 hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
+
+[[files]]
+file = "kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json"
+hash = "33e0521e08cfd3de4fec82547288676c7cd443dffa48425fb154cd985ac3b936"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
@@ -253,12 +341,61 @@ file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
 [[files]]
+file = "kubejs/server_scripts/dragon_diets.js"
+hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
+
+[[files]]
+file = "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js"
+hash = "ac1585eb34566787e08edae2ec0ecc377810a64424774f8bb289229f56d78a8e"
+
+[[files]]
+file = "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js"
+hash = "2aa462bc5211abace54271ad0ec84de5155b17f8a2f817002fb31210133bc103"
+
+[[files]]
+file = "kubejs/server_scripts/material_processing_cleanup.js"
+hash = "2ab9c1de7aed0c17903f141c7571c64e8f42f1e2e8d3b8b02ab6ff315bf839e0"
+
+[[files]]
+file = "kubejs/server_scripts/material_unification.js"
+hash = "564f8d6891e1235c470e9e19084976466dd7d68c69f8d947b084df1258c4a53e"
+
+[[files]]
+file = "kubejs/server_scripts/projecte_boss_stone_and_powerflowers.js"
+hash = "13bc34ecdbf75b07a47d83e7c20e5c851c00759d445302090e8af1e5b66a16da"
+
+[[files]]
+file = "kubejs/server_scripts/roots_staff_first_pickup.js"
+hash = "9e058c8d4adf05986eb3f3b9133ec9a63f7a296f73e259f3752d1f3dafe5e589"
+
+[[files]]
+file = "kubejs/server_scripts/roots_terra_server.js"
+hash = "b09619c08dc1883e67c1cfa26b758f82f7d8030f3bc62273bae501af9e3865ab"
+
+[[files]]
+file = "kubejs/server_scripts/silver_equipment_unification.js"
+hash = "2d74384e0310b8159347a2022d51bed9b2342bee468a7e2640a232b3ff2707d2"
+
+[[files]]
+file = "kubejs/server_scripts/tmm_magic_core_thrift.js"
+hash = "f5573b3a60c30ab6c328397cacd8360073e258931ff00c6278887c5b4726e96c"
+
+[[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
 
 [[files]]
+file = "kubejs/startup_scripts/silver_equipment_stats.js"
+hash = "8a56605d4d2a2a2ae6a90e48cf4df00465d5d21f21e66707d09c243306354639"
+
+[[files]]
 file = "mods/akashic-tome.pw.toml"
 hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
+metafile = true
+
+[[files]]
+file = "mods/almostunified.pw.toml"
+hash = "3805fe2877cffdae5e7bf74d85069a2535daa39a0f3ed766755be49294a07680"
 metafile = true
 
 [[files]]
@@ -402,6 +539,16 @@ hash = "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a"
 metafile = true
 
 [[files]]
+file = "mods/colorful-hearts.pw.toml"
+hash = "3f6e74711a0c2677548ec3a5ef36a3fbf79b5a9f2b406aab73b1ca678fc518f9"
+metafile = true
+
+[[files]]
+file = "mods/comforts.pw.toml"
+hash = "36f2f6e74b7dbeccb504572d47006582207544fa234a095093b97adfc7ecd5ac"
+metafile = true
+
+[[files]]
 file = "mods/common-network.pw.toml"
 hash = "e5052ab66811e9217d662d712781796c72f7105fbbc81e1de3469ccf6178d5a0"
 metafile = true
@@ -454,6 +601,11 @@ metafile = true
 [[files]]
 file = "mods/draconic-evolution.pw.toml"
 hash = "5b4d79435b6c6307cdcb141561b46a536fcf317a5661dbcafe33dfcde3cfe80f"
+metafile = true
+
+[[files]]
+file = "mods/dragon-survival.pw.toml"
+hash = "d0c3a7c57607057d8358fde72ec0386db27fe9176ac75a96d11f631c4ee45552"
 metafile = true
 
 [[files]]
@@ -539,6 +691,11 @@ metafile = true
 [[files]]
 file = "mods/ftb-chunks-forge.pw.toml"
 hash = "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521"
+metafile = true
+
+[[files]]
+file = "mods/ftb-essentials.pw.toml"
+hash = "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df"
 metafile = true
 
 [[files]]
@@ -682,6 +839,11 @@ hash = "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5"
 metafile = true
 
 [[files]]
+file = "mods/leaves-be-gone.pw.toml"
+hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
+metafile = true
+
+[[files]]
 file = "mods/lionfish-api.pw.toml"
 hash = "64acab1580ca6edd8b1dd185e914aeee7aa551a88a7cd7f0f9370a82aaadfef6"
 metafile = true
@@ -759,6 +921,11 @@ metafile = true
 [[files]]
 file = "mods/occultism.pw.toml"
 hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
+metafile = true
+
+[[files]]
+file = "mods/octolib.pw.toml"
+hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
 metafile = true
 
 [[files]]
@@ -852,8 +1019,8 @@ hash = "22d273512f73d6ea8b27dddb628dce14639a35894bb4c27368f7c7a47bb3c2df"
 metafile = true
 
 [[files]]
-file = "mods/puffish-skills.pw.toml"
-hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
+file = "mods/puzzles-lib.pw.toml"
+hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
 metafile = true
 
 [[files]]
@@ -867,8 +1034,18 @@ hash = "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9"
 metafile = true
 
 [[files]]
+file = "mods/relics.pw.toml"
+hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
+metafile = true
+
+[[files]]
 file = "mods/reliquary-reincarnations.pw.toml"
 hash = "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5"
+metafile = true
+
+[[files]]
+file = "mods/reliquified-artifacts.pw.toml"
+hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
 metafile = true
 
 [[files]]
@@ -937,6 +1114,21 @@ hash = "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99"
 metafile = true
 
 [[files]]
+file = "mods/trashslot.pw.toml"
+hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
+metafile = true
+
+[[files]]
+file = "mods/treechop.pw.toml"
+hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
+metafile = true
+
+[[files]]
+file = "mods/tyzs-skills.pw.toml"
+hash = "71d2e7aa272dfcfa20e8ea6cbe316d25e17624af84e8201708b0f435b5ff1767"
+metafile = true
+
+[[files]]
 file = "mods/unfocused.pw.toml"
 hash = "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e"
 metafile = true
@@ -955,42 +1147,3 @@ metafile = true
 file = "mods/werewolves-become-a-beast.pw.toml"
 hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
-
-[[files]]
-file = "mods/trashslot.pw.toml"
-hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
-metafile = true
-
-[[files]]
-file = "mods/treechop.pw.toml"
-hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
-metafile = true
-
-[[files]]
-file = "mods/leaves-be-gone.pw.toml"
-hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
-metafile = true
-
-[[files]]
-file = "mods/relics.pw.toml"
-hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
-metafile = true
-
-[[files]]
-file = "mods/reliquified-artifacts.pw.toml"
-hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
-metafile = true
-
-[[files]]
-file = "mods/octolib.pw.toml"
-hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
-metafile = true
-
-[[files]]
-file = "mods/puzzles-lib.pw.toml"
-hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
-metafile = true
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7071c451494b21d645ab8fc98f43c710ee770289725fee8473eb3f5f5b435ccf"

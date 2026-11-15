@@ -60,15 +60,13 @@ public final class VampireFactionEvents {
             int nextLevel = ((Number) event.getClass().getMethod("getNewLevel").invoke(event)).intValue();
             boolean fromVampire = old.equals("vampirism:vampire");
             boolean toVampire = next.equals("vampirism:vampire") && nextLevel > 0;
-            if (fromVampire && !toVampire && VampireChassisRuntime.isDual(p)) {
+            if (fromVampire && !toVampire
+                    && !VampireChassisRuntime.preflightVampirismCure(p)) {
                 ((ICancellableEvent) event).setCanceled(true);
                 p.sendSystemMessage(Component.literal(
-                        "Dual-vampire partial cure blocked. Use the backed-up operator test cure."));
-            } else if (!fromVampire && toVampire && !VampireChassisRuntime.approveVampirismEntry(p)) {
-                ((ICancellableEvent) event).setCanceled(true);
-                p.sendSystemMessage(Component.literal(
-                        "Vampire bridge cannot safely initialize the JAWR vampire branch."));
+                        "Full vampire cure refused: could not preflight JAWR removal."));
             }
+            // Ordinary human -> Vampirism must NOT initialize JAWR.
         } catch (ReflectiveOperationException | RuntimeException e) {
             TransformationsMod.LOGGER.error("Vampirism pre-faction hook failed", e);
             if (event instanceof ICancellableEvent cancel) cancel.setCanceled(true);
@@ -76,17 +74,17 @@ public final class VampireFactionEvents {
     }
 
     private static void onPost(Event event) {
-        if (!VampireChassisConfig.acquisition()) return;
+        if (!VampireChassisConfig.chassis()) return;
         try {
             ServerPlayer p = player(event);
             if (p == null || VampireChassisRuntime.inTransaction()) return;
             String old = factionId(event.getClass().getMethod("getOldFaction").invoke(event));
             String next = factionId(event.getClass().getMethod("getCurrentFaction").invoke(event));
-            if (!old.equals("vampirism:vampire") && next.equals("vampirism:vampire")) {
-                VampireChassisRuntime.afterVampirismEntry(p);
+            if (old.equals("vampirism:vampire") && !next.equals("vampirism:vampire")) {
+                VampireChassisRuntime.afterVampirismCure(p);
             }
         } catch (ReflectiveOperationException | RuntimeException e) {
-            TransformationsMod.LOGGER.error("Vampirism post-faction synchronization failed", e);
+            TransformationsMod.LOGGER.error("Vampirism cure synchronization failed", e);
         }
     }
 }

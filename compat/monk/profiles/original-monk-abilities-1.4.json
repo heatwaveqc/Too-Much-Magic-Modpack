@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "kind": "full_original_registered_abilities_crosswalk",
+  "source": "https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/factory/Factory.java",
+  "defaults": "https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
+  "original_registered_count": 25,
+  "source_attribute_candidates": 142,
+  "coverage_status": "design_mapping_only_not_implemented",
+  "notes": "All 25 ability factories registered in original Monk Mod 1.4. Numeric attributes do NOT capture special actions, collision, loot, environment, protection, food, pet, mining-tier or flight behavior. Original unused extras retained; fly preserved for historical reference only. MonkAbilityFastDraw exists as a class but is not registered as a factory.",
+  "abilities": [
+    {
+      "id": "armor",
+      "original_default": true,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.armor",
+      "tmm_mapping": "unarmored passive defense",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "armor_toughness",
+      "original_default": false,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.armor_toughness",
+      "tmm_mapping": "original configurable but absent default rank rewards",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "blindness",
+      "original_default": true,
+      "tmm_class": "negative_trial_not_purchasable",
+      "attribute_candidate": null,
+      "tmm_mapping": "original temporary blindness ordeal, not a positive power",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "blink",
+      "original_default": true,
+      "tmm_class": "custom_action",
+      "attribute_candidate": null,
+      "tmm_mapping": "line-of-sight short-range teleport with safe arrival and cooldown",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "catch_arrows",
+      "original_default": true,
+      "tmm_class": "custom_action",
+      "attribute_candidate": null,
+      "tmm_mapping": "intercept incoming arrows and optionally catch them",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "kiss_creeper",
+      "original_default": true,
+      "tmm_class": "custom_interaction",
+      "attribute_candidate": null,
+      "tmm_mapping": "pacify or harmlessly interact with creepers, retaining playful original",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "explosion_resistance",
+      "original_default": true,
+      "tmm_class": "damage_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "reduce explosion damage beyond knockback stats",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "feather_fall",
+      "original_default": true,
+      "tmm_class": "attribute_plus_rule",
+      "attribute_candidate": "minecraft:generic.fall_damage_multiplier",
+      "tmm_mapping": "also safe_fall_distance; preserve real fall protection",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "fly",
+      "original_default": true,
+      "tmm_class": "retained_historical_only",
+      "attribute_candidate": null,
+      "tmm_mapping": "TMM omits innate Creative Flight; Draconic Evolution Curio supplies it",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "glass_touch",
+      "original_default": false,
+      "tmm_class": "custom_loot_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "silk-like glass harvesting; registered by original but unused by default",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "potion_immunity",
+      "original_default": true,
+      "tmm_class": "custom_cleansing_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "negative potion removal; bounded or active, not unconditional immunity",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "health",
+      "original_default": false,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.max_health",
+      "tmm_mapping": "registered by original but unused by default",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "hunger",
+      "original_default": true,
+      "tmm_class": "custom_resource_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "hunger consumption; TMM should coexist with food-discovery motivation",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "jump",
+      "original_default": true,
+      "tmm_class": "attribute_plus_rule",
+      "attribute_candidate": "minecraft:generic.jump_strength",
+      "tmm_mapping": "original multiplies jump impulse, also reduces fall distance",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "mining",
+      "original_default": true,
+      "tmm_class": "split_harvest_and_speed",
+      "attribute_candidate": "minecraft:player.mining_efficiency",
+      "tmm_mapping": "original harvest_level separate from speed_increase; TMM fixed harvest tier and repeatable speed",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "fire_resistance",
+      "original_default": true,
+      "tmm_class": "damage_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "fire damage reduction",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "lava_protection",
+      "original_default": true,
+      "tmm_class": "custom_environment_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "lava protection separate from ordinary fire reduction",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "swift",
+      "original_default": true,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.movement_speed",
+      "tmm_mapping": "sprinting-enhanced speed in original",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "step_up",
+      "original_default": true,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.step_height",
+      "tmm_mapping": "step over blocks while unarmored",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "strength",
+      "original_default": true,
+      "tmm_class": "numeric_attribute",
+      "attribute_candidate": "minecraft:generic.attack_damage",
+      "tmm_mapping": "unarmed attack damage",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "tame_animals",
+      "original_default": true,
+      "tmm_class": "custom_interaction",
+      "attribute_candidate": null,
+      "tmm_mapping": "animal friendship / easier taming from empty-hand interaction",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "water_walking",
+      "original_default": true,
+      "tmm_class": "custom_collision_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "walk on water surface without consuming items",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "water_breathing_partial",
+      "original_default": true,
+      "tmm_class": "custom_air_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "partial air refill, distinct from full underwater breathing",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "water_breathing_full",
+      "original_default": false,
+      "tmm_class": "custom_air_rule",
+      "attribute_candidate": null,
+      "tmm_mapping": "full underwater breathing; registered by original but unused by default",
+      "status": "planned_or_historical_not_implemented"
+    },
+    {
+      "id": "withering_stare",
+      "original_default": true,
+      "tmm_class": "custom_gaze_attack",
+      "attribute_candidate": null,
+      "tmm_mapping": "wither and damage undead by sustained gaze",
+      "status": "planned_or_historical_not_implemented"
+    }
+  ]
+}

@@ -18,6 +18,12 @@ public abstract class JAWRVampireLevelingMixin {
         if (!VampireChassisRuntime.onJAWRSetLevel(player, level)) ci.cancel();
     }
 
+    @Inject(method = "setLevel(Lnet/minecraft/server/level/ServerPlayer;I)V",
+            at = @At("RETURN"), remap = false)
+    private void tmm$afterJAWRLevel(ServerPlayer player, int level, CallbackInfo ci) {
+        VampireChassisRuntime.afterJAWRSetLevel(player);
+    }
+
     @Inject(method = "increaseLevel(Lnet/minecraft/server/level/ServerPlayer;)V",
             at = @At("RETURN"), remap = false)
     private void tmm$afterJAWRIncrease(ServerPlayer player, CallbackInfo ci) {
