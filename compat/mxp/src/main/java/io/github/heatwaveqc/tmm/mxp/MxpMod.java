@@ -26,6 +26,7 @@ public final class MxpMod {
     public static final Logger LOGGER = LoggerFactory.getLogger(MxpMod.class);
 
     public MxpMod(IEventBus bus, ModContainer container) {
+        container.registerConfig(ModConfig.Type.COMMON, MxpSourceConfig.SPEC);
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
         NeoForge.EVENT_BUS.addListener(this::onBossDeath);
         NeoForge.EVENT_BUS.addListener(this::onServerStopping);
