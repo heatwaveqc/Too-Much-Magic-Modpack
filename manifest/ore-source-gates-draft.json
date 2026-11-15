@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "draft_source_staged_not_integrated",
+  "target_integration": "next QA after active run; registration deliberately deferred",
+  "resources": [
+    {
+      "material": "reactor uranium",
+      "affected_blocks": [
+        "biggerreactorsrework:uranium_ore",
+        "biggerreactorsrework:deepslate_uranium_ore"
+      ],
+      "natural_generation_allowed": [],
+      "original_modifier": "biggerreactorsrework:overworld_ores",
+      "disabled_by": "kubejs/data/biggerreactorsrework/neoforge/biome_modifier/overworld_ores.json",
+      "allowed_non_worldgen_sources": [
+        "explicit conversion from alexscaves:uranium"
+      ],
+      "other_sources": "pending full uranium source audit"
+    },
+    {
+      "material": "Toxic Caves uranium",
+      "affected_blocks": [
+        "alexscaves:radrock_uranium_ore"
+      ],
+      "natural_generation_allowed": [
+        {
+          "dimension": "minecraft:overworld",
+          "biome": "alexscaves:toxic_caves",
+          "host_block": "alexscaves:radrock",
+          "feature": "alexscaves:radrock_uranium_ore"
+        }
+      ],
+      "original_modifier": "native alexscaves toxic_caves biome generation",
+      "disabled_by": null,
+      "allowed_non_worldgen_sources": [
+        "native Alex's Caves shards and items"
+      ],
+      "other_sources": "verify cave map/structures/mob drops in client QA"
+    }
+  ],
+  "assertions": {
+    "no_unrestricted_reactor_uranium_worldgen": true,
+    "no_dimension_allowlist_except_minecraft_overworld": true,
+    "native_alexs_toxic_ore_remains_enabled": true,
+    "cross_mod_uranium_conversion": "1 alexscaves:uranium -> 1 biggerreactorsrework:uranium_ingot",
+    "no_new_fake_worldgen_feature": true,
+    "client_display_jer_not_security_enforcement": true
+  },
+  "known_pending": [
+    "Verify pinned BiggerReactors Rework 0.1.6 JAR uses same biome modifier and ore registry as upstream master source",
+    "Verify Alex's Caves Continued 1.1.2 Toxic Caves generate successfully with Tectonic in disposable worlds",
+    "Verify no other uranium mining/loot/dungeon/Occultism/ProjectE paths bypass gates",
+    "Verify unusual dimension biome import cannot re-use Toxic Caves biome and place ore elsewhere",
+    "Verify JEI/JER displays post-data-pack ore distributions accurately",
+    "Test client actual smelting/crafting and dimensions, not just server readiness"
+  ]
+}
