@@ -7,6 +7,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -50,6 +51,8 @@ public final class EffectHandlers {
                                       Definition.Effect effect, int rank) {}
         default void equipmentChange(ServerPlayer player, LivingEquipmentChangeEvent event,
                                      Definition.Effect effect, int rank) {}
+        default void targetChange(ServerPlayer player, LivingChangeTargetEvent event,
+                                  Definition.Effect effect, int rank) {}
         default void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event,
                           Definition.Effect effect, int rank) {}
     }
@@ -108,6 +111,9 @@ public final class EffectHandlers {
     }
     public static void equipmentChange(ServerPlayer player, LivingEquipmentChangeEvent event) {
         dispatch(player,(h,e,r) -> h.equipmentChange(player,event,e,r));
+    }
+    public static void targetChange(ServerPlayer player, LivingChangeTargetEvent event) {
+        dispatch(player,(h,e,r) -> h.targetChange(player,event,e,r));
     }
     public static void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event) {
         dispatch(player,(h,e,r) -> h.jump(player,event,e,r));
