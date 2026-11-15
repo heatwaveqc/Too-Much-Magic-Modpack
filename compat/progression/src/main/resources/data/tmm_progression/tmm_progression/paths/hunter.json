@@ -605,7 +605,18 @@
       "minecraft:weaving",
       "minecraft:oozing",
       "minecraft:wind_charged",
-      "tombstone:ghostly_shape"
+      "tombstone:ghostly_shape",
+      "minecraft:poison",
+      "minecraft:wither",
+      "minecraft:levitation",
+      "minecraft:blindness",
+      "minecraft:darkness",
+      "minecraft:hunger",
+      "minecraft:nausea",
+      "minecraft:weakness",
+      "minecraft:slowness",
+      "minecraft:mining_fatigue",
+      "minecraft:unluck"
     ]
   }
 }
