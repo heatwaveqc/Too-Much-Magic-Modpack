@@ -144,6 +144,14 @@ Use the complete progression table above as the **canonical chapter outline**; t
 
 Consider *Tips & Tricks* for universally useful early discoveries, and the mod's chapter for deep progression. Do **not** add new quest tasks, loot or rewards as part of this research.
 
+## Existing chapter / pilot reconciliation
+
+| Walkthrough stage | Current quest ID/title and status | Intended action vs actual detector | Named in-game guide/JEI reference | Gap / next action |
+| --- | --- | --- | --- | --- |
+| <each required stage> | <none / branch / merged / client-accepted> | <operation, item proxy or manual fallback> | <exact page/recipe/category> | <missing instruction, test or no gap> |
+
+Inspect canonical authoring data and generated quest data, not only a PR summary. Separately compare every addon feature with the installed pack roster; a pilot count is not coverage proof.
+
 ## Conflicts, limitations and version drift
 
 - <tested conflict, observed behavior or unconfirmed hypothesis, each labeled>
