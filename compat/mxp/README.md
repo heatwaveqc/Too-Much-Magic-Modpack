@@ -61,3 +61,8 @@ In a disposable NeoForge 1.21.1 world with **Tyz 6.4.2 and the Core Magic level-
 **Default baselines** in the generated `tmm_mxp-common.toml`: Ars 100 (5.13.5 baseMax), Iron's 100 (3.16.3 MAX_MANA default), Botania 500,000 (ordinary tablet and mana ring, 2.0.2), Neo Vitae **5,000 EV** (Tier 0 Novicius blood orb's Anima capacity, approved). A source baseline is fixed, not updated as player max mana grows. All registered first-boss rewards are now fixed at 1,000 effective MXP regardless of the configured repeat reward. A special repeated Chaos Guardian payout remains prospective only, awaiting exact entity verification.
 
 **Hook inventory:** MxpArsResolverMixin, MxpAnsArsCommitMixin, MxpIronsEventMixin, MxpIronsCastMixin, MxpBotaniaManaMixin, MxpNeoNetworkMixin. Ars 'n Spells cross-paying spells need a dedicated in-game dedup test. Botania snapshots verify the physical eligible stacks and *actual debit*, not the broader handler's total granted amount.
+
+
+## Complete future source coverage — design checklist
+
+The full follow-on implementation target inventory is [42/42 MXP magic source candidates](../../docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md). It distinguishes real paid personal resources, meaningful manually completed rites/crafts, parent-inherited addons, the shared Ars/Iron bridge, and intentionally excluded standalone sources. It prioritizes Roots, Hex Casting, Occultism's tiered **Book of Binding** completion rewards, Mahou and other missing adapters. **No implementation in this documentation branch.**
