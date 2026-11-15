@@ -32,9 +32,18 @@ public final class ProgressionMath {
         int owned = old.skillRank(skillId);
         if (!skill.autoRanks().isEmpty()) return old; // baseline grants are not purchased
         if (owned >= skill.maxRank() || old.points() < skill.price(owned)) return old;
+        if (owned == 0 && !skill.choiceGroup().isEmpty()) {
+            for (Definition.Skill other : spec.skills()) {
+                if (!other.id().equals(skill.id()) &&
+                    skill.choiceGroup().equals(other.choiceGroup()) && old.skillRank(other.id()) > 0)
+                    return old;
+            }
+        }
         for (String required : skill.requiresSkills()) {
             if (old.skillRank(required) < 1) return old;
         }
+        if (!skill.requiresAnySkills().isEmpty() &&
+            skill.requiresAnySkills().stream().noneMatch(needed -> old.skillRank(needed) > 0)) return old;
         if (!old.milestones().containsAll(skill.requiresMilestones())) return old;
         return old.withSkill(skillId, owned + 1, old.points() - skill.price(owned));
     }
