@@ -19,6 +19,9 @@ jobs:
         run: python3 scripts/validate.py
       - name: Validate five-group FTB Quests navigation
         run: python3 scripts/validate_quests.py
+      - name: Self-test fail-closed live quest registry validation
+        if: hashFiles('scripts/quest_registry_gate.py') != ''
+        run: python3 scripts/quest_registry_gate.py selftest
       - uses: actions/setup-go@v5
         with:
           go-version: 'stable'
