@@ -1,13 +1,13 @@
 # Work handoff — scalable quest-book production
 **For:** ChatGPT Work operating against \`heatwaveqc/Too-Much-Magic-Modpack\` via the connected GitHub app/browser.  
-**Read first:** root [AGENTS.md](../AGENTS.md), [Quest Authoring Standard v2](QUEST-AUTHORING-STANDARDS-V2.md), [Critical Audit](QUEST-CRITICAL-AUDIT-2026-11-14.md), [45-chapter architecture](QUEST-ARCHITECTURE.md), [shop economy](QUEST-SHOP-ECONOMY.md), and [build channels](BUILD-CHANNELS-AND-TESTING.md).  
-**Authority:** owner's latest instructions > root AGENTS.md hard restrictions > current pinned integration lock and runnable source > approved quest architecture > v2 proposal for new content > stale B6/B8/B11 descriptions. **Do not assume proposed v2 reward-policy changes are approved** until owner accepts them.
+**Read first:** root [AGENTS.md](../AGENTS.md), [Quest Authoring Standard v2](QUEST-AUTHORING-STANDARDS-V2.md), [Reward Palette v1](QUEST-REWARD-PALETTE-V1.md), [Critical Audit](QUEST-CRITICAL-AUDIT-2026-11-14.md), [45-chapter architecture](QUEST-ARCHITECTURE.md), [shop economy](QUEST-SHOP-ECONOMY.md), and [build channels](BUILD-CHANNELS-AND-TESTING.md).  
+**Authority:** owner's latest instructions > root AGENTS.md hard restrictions > current pinned integration lock and runnable source > approved quest architecture > v2 standard and approved reward palette > stale B6/B8/B11 descriptions. **Owner has approved funny/useful tangible rewards, an explicit cooking-pot bowl exception and purchasable vanilla ore blocks**; unreviewed ID/claim migration still requires approval.
 
 ## Objective
 
 Turn the functioning but sparse **180-entry** FTB Quest book (138 authored + 42 temporary overview entries) into a coherent, magic-first **guide** across the 45 approved chapters. The goal is **accurate, enjoyable and testable quests**, not a numerical fill target or a new hard progression system. Keep stable save/claim IDs and the good existing starter choice, shop, resources, first-log kit, vampirism and Monk work.
 
-**Do not start by writing hundreds of JSON/SNBT quests.** The current authoring tool cannot safely compile new chapters at scale. Fix that first.
+**Run two parallel tracks now.** (A) Improve the compiler for safe runtime insertion. (B) **Research and draft the magic-mod quest lines immediately** in isolated source-only manifests with pinned-registries evidence and themed rewards. The compiler blocks bulk *runtime integration*, not the writing/review of mod questlines. Do not manually patch hundreds of SNBT entries.
 
 ## Repository and branch entrypoints
 
@@ -29,13 +29,13 @@ Turn the functioning but sparse **180-entry** FTB Quest book (138 authored + 42 
 
 **Checkpoint 0 artifact:** \`docs/QUEST-WORK-BASELINE.md\` plus a proposed schema and a list of constraints. Continue to compiler work if source integrity is established; stop on missing authority or dangerous save-ID ambiguity.
 
-## Phase 1 — make authoring safe (required before bulk content)
+## Phase 1A — make authoring safe (required before bulk runtime content)
 
 Implement or replace quest compilation so **one canonical authored source** produces: quest SNBT blocks, localized \`en_us.snbt\`, the chapter/group mappings, coordinates/layout and packwiz indexes/hashes.
 
 - **Don't key stable IDs by titles.** Existing IDs must be preserved even when renaming title/description. New IDs must be unique/deterministic.
 - Represent kind: \`reference | milestone | challenge | choice | exchange\`. Track real \`task_type\`, \`task_target\`, completion semantics, \`manual_reason\`, optional/dependency list **by stable ID**, reward kind, individual/team scope, repeat settings, verification evidence and status.
-- Represent references as non-claimable in a way **actually supported by pinned FTB Quests**, or clearly isolate that feature for player UI testing. No giant paper/XP farm from 42 scaffolds.
+- Represent optional reference entries honestly and verify whether non-claimable UI works. Claimable tips should still pay **direct XP plus a funny/useful physical gift or a shared coin fallback**—never generic paper/cookie junk. Remove temporary scaffolds as real content replaces them.
 - Do not write unrelated logic into KubeJS just to trick a checkmark into auto-completing. Prefer verified FTB native types. For crafting goals, investigate \`ItemTask.only_from_crafting\`; for use/visit goals, investigate \`InteractionTask\`, \`ObservationTask\`, \`DimensionTask\`, \`StructureTask\`, \`StatTask\`, \`AdvancementTask\`, \`KillTask\` in the pinned 1.21.1 version.
 - Update validation to **derive counts** rather than asserting 180/138 and to accept new quests in former placeholder-only chapters. Validate formatting \`&\` escapes, IDs, quest graph cycles, duplicate grants, exact registry IDs, manual exceptions, reward bans, and authored/source generated consistency.
 - Two-run reproducibility check: compiling twice with no changed source must produce identical SNBT, locale and index/hash outputs.
@@ -44,6 +44,13 @@ Implement or replace quest compilation so **one canonical authored source** prod
 
 **Checkpoint 1:** a PR containing compiler, validators, roundtrip tests and unchanged (or clearly documented equivalent) generated book. This is the first major quality gate. A library or JSON parse test does not replace a complete NeoForge server startup.
 
+## Phase 1B — write mod quests in parallel (start immediately)
+
+- Independently research and draft chapters in source-only data, without waiting for compiler completion. Start with EvilCraft, Ars Nouveau and Occultism. Then populate the other **25 Magic, nine Exploration & Combat and three Endgame** slots in coherent waves. Don't set artificial quest-count targets.
+- For each quest, record a real task, verified exact pinned item/advancement IDs, why it exists, prerequisite rationale, user-facing helpful prose and a **small funny or useful reward**. A strong example: EvilCraft Dark Gem acquisition → two `evilcraft:dark_gem_crushed` (Crushed Dark Gem) items, an early derivative normally discovered later. Don't gift a tier completion or a random cookie.
+- Check the [reward palette](QUEST-REWARD-PALETTE-V1.md). Pam's unusual foods are great but their 1.21.1 IDs remain candidate-only until pinned JAR/JEI confirmation. A coin is the fallback, not the default; no XP-bottle item grants.
+- Draft in small reviewable commits while the compiler team works. Maintain separate content/evidence status from live integration. Runtime packaging only after compiler, task semantics, stable IDs and tests are ready.
+
 ## Phase 2 — editorial cleanup (approval-sensitive)
 
 Do a content-only review of **Getting Started, Tips & Tricks, Food & Fishing and five Progression chapters**:
@@ -51,7 +58,7 @@ Do a content-only review of **Getting Started, Tips & Tricks, Food & Fishing and
 - Shorten or make optional the traditional wooden → stone → iron tutorial. Move \`Try a First Spell or Ritual\` out of the iron → barrel → vanilla lectern chain so the early magic path actually opens after the starter choice. Preserve old quest IDs if moved.
 - Convert misleading action titles: \`Catch a Cod\` is just \`minecraft:cod\` possession; \`Chart Your Next Journey\` just checks filled-map possession; \`Build a Research Lectern\` only checks vanilla lectern item. Use true detection where available, or rename truthfully.
 - Correct Pufferfish-only prose to distinguish installed Improvable Skills, the unfinished Tyz/MXP implementation and the eventual retirement of Pufferfish. Never assert live Tyz bonuses if still source-only.
-- Remove or consolidate needless paper/checkmark tips and stale author warnings from player descriptions. **Propose** rewardless reference pages and XP-only simple milestones rather than silently changing existing rewards/claim states.
+- Replace paper, cookies, compasses and empty-bowl filler with **specific funny or useful physical gifts**, keeping stable claim IDs. The deliberate one-bowl exception is the Farmer's Delight Cooking Pot quest. Do **not** convert existing accepted tangible grants to rewardless or XP-only.
 - Evaluate all duplicate filler rewards; report exceptions and before/after player impact. Do not change the approved twelve economy contracts or ProjectE gates.
 - Food & Fishing needs actionable guidance on the modded kitchens and farming/specialty trees rather than only vanilla input acquisition. The old 22 quests average only ~16 words.
 
@@ -93,9 +100,9 @@ Perform a real gameplay acceptance pass before declaring any chapter **client-ve
 
 ## Owner decisions / explicit stop conditions
 
-**May proceed autonomously:** source research, content outlines, source-to-SNBT compiler, static validation, draft pilot chapters, reviewable commits, documentation and dedicated-server smoke.
+**May proceed autonomously:** source research and **parallel draft questlines for multiple mods**, reward palette and small themed reward replacements, source-to-SNBT compiler, static validation, draft pilot chapters, reviewable commits, documentation and dedicated-server smoke.
 
-**Stop and request a review before:** changing prior player-visible grants to no-reward or XP-only; changing shop prices/sale rates; changing existing quest/reward IDs; activating new late-game mechanics/recipe/loot gates; replacing established stable source; changing which mods are installed; or shipping a survival-ready pack.
+**Stop and request a review before:** removing tangible rewards, changing existing quest/reward IDs, altering the twelve commodity **sell** rates, activating new late-game mechanics/recipe/loot gates, changing the installed mod roster or shipping a survival-ready pack. The owner explicitly approved themed/funny physical rewards and an ore-block **purchase** category; do those in experimental builds with economy checks.
 
 **Must not do:** invent recipe IDs or make unsupported runtime claims, copy another modpack's quest text, reward XP bottles, enable forbidden items or mods, put a hand-wave checkmark on every mod, hand players boss rewards, or announce a successful client test from a server log.
 
