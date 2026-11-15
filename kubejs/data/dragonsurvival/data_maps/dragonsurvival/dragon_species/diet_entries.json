@@ -1039,6 +1039,14 @@
         {
           "items": "minecraft:golden_carrot",
           "retain_effects": true
+        },
+        {
+          "items": "ars_nouveau:sourceberry_bush",
+          "properties": {
+            "nutrition": 2,
+            "saturation": 1,
+            "can_always_eat": true
+          }
         }
       ]
     },
