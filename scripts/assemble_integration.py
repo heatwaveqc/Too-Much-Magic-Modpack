@@ -143,9 +143,16 @@ def main() -> None:
     # silently publish a source-only Tyz preview as a playable skill tree.
     from activate_tyzs import activate
     activate(ROOT, manifest)
+    # The next full QA build must pin the exact Dragon Survival release alongside
+    # the already-approved Comforts and Colorful Hearts; fail on missing hashes.
+    # Dragon diets only work if the actual dragon JAR is installed.
+    from pin_next_test_mods import activate as pin_next_test_mods
+    pin_next_test_mods(ROOT, manifest)
     git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
         "kubejs/server_scripts/tmm_magic_core_thrift.js",
-        "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml")
+        "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml",
+        "mods/dragon-survival.pw.toml", "mods/comforts.pw.toml",
+        "mods/colorful-hearts.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
     mod_count = sum(m["enabled_in_pack"] for m in manifest["mods"])
