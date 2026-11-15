@@ -215,6 +215,20 @@ test('normal partial and bulk refunds are not paid twice', () => {
   assert.equal(p.ranks.tmm_werewolf_health, 0)
 })
 
+test('ordinary Tyz bulk refunds fully consume the remaining paid ledger', () => {
+  const h = harness()
+  const p = h.player('three-b', { vampire: true })
+  assert(h.buy(p, 'tmm_vampire_health', 3))
+  assert.equal(p.sp, 86)
+  const discounted = h.normalRefund(p, 'tmm_vampire_health', 3)
+  assert.equal(discounted, 4, 'native normal refund is partial, not 100%')
+  assert.equal(p.sp, 90)
+  p.vampire = false
+  h.tick(p, 3)
+  assert.equal(p.sp, 90, 'cure must not credit points previously refunded')
+  assert.equal(p.ranks.tmm_vampire_health, 0)
+})
+
 test('untracked free grants do not generate skill points on cure', () => {
   const h = harness()
   const p = h.player('four', { vampire: true })
