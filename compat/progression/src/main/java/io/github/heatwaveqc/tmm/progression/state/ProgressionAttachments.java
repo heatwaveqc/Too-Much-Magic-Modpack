@@ -11,6 +11,9 @@ public final class ProgressionAttachments {
 
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS =
         DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, ProgressionMod.MOD_ID);
+    public static final Supplier<AttachmentType<Modes>> PLAYER_MODES =
+        ATTACHMENTS.register("player_modes", () -> AttachmentType.builder(Modes::empty)
+            .serialize(Modes.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<Discoveries>> FOOD_HISTORY =
         ATTACHMENTS.register("food_history", () -> AttachmentType.builder(Discoveries::empty)
             .serialize(Discoveries.CODEC).copyOnDeath().build());
