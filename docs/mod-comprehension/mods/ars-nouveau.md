@@ -5,9 +5,10 @@
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
 | Category / parent or addons | Primary magic system; see [Ars Elemental](ars-elemental.md), [Ars 'n Spells](ars-n-spells.md), [Ars Ocultas](ars-ocultas.md), [Ars Unification](ars-unification.md) when profiles exist |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` at base `385c69889fccf281f94957ba4063488e1646a2e0` |
+| Upstream source snapshot | `baileyholl/Ars-Nouveau` commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098`; source version matches pin, binary not locally compared |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
 | Profile status | source-complete; exact pinned JAR not downloaded for local inspection; not verified in TMM gameplay |
-| Evidence reached | Exact-version upstream source tree (`mod_version=5.13.5`), pinned packwiz metadata, upstream release notes; secondary gameplay guide explicitly targets 5.11 |
+| Evidence reached | Version-aligned upstream source tree at commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098` (`mod_version=5.13.5`), pinned packwiz metadata, upstream release notes; secondary gameplay guide explicitly targets 5.11 |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). Quest plan only; no authored quest content verified. |
 
