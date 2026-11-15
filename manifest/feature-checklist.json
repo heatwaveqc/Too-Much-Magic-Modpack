@@ -802,27 +802,27 @@
     {
       "id": "end.projecte_start",
       "area": "World, combat and endgame",
-      "title": "Basic ProjectE after Gaia Guardian I OR Neo Vitae Foreman",
-      "state": "planned",
-      "acceptance": "True kill gate required for Philosopher's Stone, Transmutation Table and starter EMC gear; no early loot/EMC/quests bypass",
+      "title": "Philosopher's Stone with interchangeable magical boss trophies",
+      "state": "source_ready",
+      "acceptance": "Remove both original diamond-center recipes, keep original redstone/glowstone outer eight; accept exactly one Wilden Tribute, Gaia Spirit or Neo Vitae Mine Key in center, and test all three paths in JEI and in survival; no personal kill tracking",
       "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
       "evidence": ""
     },
     {
       "id": "end.projecte_high",
       "area": "World, combat and endgame",
-      "title": "ProjectE automation and extreme items stay later",
-      "state": "planned",
-      "acceptance": "Collectors, relays, condensers and high-end matter tools/armor require a separate Chaos Guardian-tier gate",
+      "title": "Chaos Shard required for Red MK3+ Power Flowers",
+      "state": "source_ready",
+      "acceptance": "Direct MK3 and every higher direct Power Flower recipe plus MK3 upgrade consume one Chaos Shard; MK1/2 remain, later upgrades still need previous flower; review Matter Upgrader and EMC bypass",
       "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
       "evidence": ""
     },
     {
       "id": "end.expansion",
       "area": "World, combat and endgame",
-      "title": "Project Expansion post-Chaos Guardian",
-      "state": "planned",
-      "acceptance": "All Project Expansion item crafting, loot and use have enforced late boss gate",
+      "title": "Project Expansion tier progression and alternative bypasses",
+      "state": "in_progress",
+      "acceptance": "MK1/2 function normally; MK3+ direct and MK3 upgrade use Chaos Shard; no unintended early bypass via Matter Upgrader, EMC knowledge, trading or loot; all related recipes usable in legitimate progression",
       "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
       "evidence": ""
     },
@@ -856,10 +856,37 @@
     {
       "id": "end.emc_abuse",
       "area": "World, combat and endgame",
-      "title": "No pre-gate EMC bypass via exchange, bag or loot",
+      "title": "Prevent EMC-positive loops and unintended acquisition exploits",
       "state": "planned",
-      "acceptance": "Try all ProjectE use/acquisition routes incl machine GUIs, knowledge, EMC and cross-mod transmutations",
+      "acceptance": "Check Fortune/Silk Touch, ore/dust conversion, reversible alchemy, Quest Shop, boss trophy/Chaos Shard EMC duplication, stored inventories, filled tools and dynamic data for profitable bypasses",
       "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.emc_every_item",
+      "area": "World, combat and endgame",
+      "title": "Every registered item has EMC, barring approved cheap exceptions",
+      "state": "source_ready",
+      "acceptance": "Export the exact full item registry and post-mapping ProjectE values; positive EMC for 100% of registered items apart from approved tiny glass panes; no silent skips and zero missing in enforced audit",
+      "source": "manifest/emc-coverage-policy.json",
+      "evidence": ""
+    },
+    {
+      "id": "end.emc_balancing",
+      "area": "World, combat and endgame",
+      "title": "EMC values safe for all magic schools and all item state",
+      "state": "planned",
+      "acceptance": "Audit expensive bosses, rare loot, recipes, transforms and value limits, NBT/contents and automatic reproduction so setting an EMC number never creates an uncontrollable conversion or duplication loop",
+      "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.projecte_trophies",
+      "area": "World, combat and endgame",
+      "title": "Three verified boss-associated trophy ingredient routes",
+      "state": "source_ready",
+      "acceptance": "Validate actual registry IDs ars_nouveau:wilden_tribute, botania:life_essence and neovitae:mine_key; document Mine Key also has trial-spawner source and verify all are consumed",
+      "source": "kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json",
       "evidence": ""
     },
     {
