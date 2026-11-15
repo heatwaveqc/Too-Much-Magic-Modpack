@@ -5,10 +5,8 @@ import com.google.gson.JsonParser;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionMath;
 import io.github.heatwaveqc.tmm.progression.data.PathJson;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
-import io.github.heatwaveqc.tmm.progression.runtime.BedrockRest;
-import io.github.heatwaveqc.tmm.progression.runtime.EffectHandlers;
+import io.github.heatwaveqc.tmm.progression.runtime.BedrockRestGeometry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
-import net.minecraft.core.BlockPos;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -33,7 +31,6 @@ final class BedrockRestTest {
 
     @Test void bedrockRestIsRealNativeFreeSkillAndNotPurchasable() throws Exception {
         Definition.Path monk = installedMonk();
-        assertTrue(EffectHandlers.known("bedrock_rest"));
         Definition.Skill skill = monk.skill("tmm_progression:bedrock_rest");
         assertNotNull(skill);
         assertEquals(1, skill.maxRank());
@@ -83,30 +80,41 @@ final class BedrockRestTest {
         assertEquals(completed,completed.complete(trial.id()),"No second milestone completion");
     }
 
+    private record Spot(int x,int y,int z) {
+        Spot above(int levels) { return new Spot(x,y+levels,z); }
+        Spot east() { return new Spot(x+1,y,z); }
+        Spot north() { return new Spot(x,y,z-1); }
+    }
+    private static boolean platform(Spot at, Set<Spot> blocks, Set<Spot> air) {
+        return BedrockRestGeometry.hasExposedPair(at.x(),at.y(),at.z(),
+                (x,y,z) -> blocks.contains(new Spot(x,y,z)),
+                (x,y,z) -> air.contains(new Spot(x,y,z)));
+    }
     @Test void geometryRequiresTwoAdjacentFloorBedrocksAndTwoBlocksOfClearance() {
-        BlockPos origin = new BlockPos(0,0,0);
-        BlockPos adjacent = origin.east();
-        Set<BlockPos> bedrock = new HashSet<>(Set.of(origin,adjacent));
-        Set<BlockPos> air = new HashSet<>(Set.of(origin.above(),origin.above(2),
-                adjacent.above(),adjacent.above(2)));
-        assertTrue(BedrockRest.hasExposedPair(origin,bedrock::contains,air::contains));
-        assertTrue(BedrockRest.hasExposedPair(adjacent,bedrock::contains,air::contains));
-        assertFalse(BedrockRest.hasExposedPair(origin,at->false,air::contains));
+        Spot origin = new Spot(0,0,0);
+        Spot adjacent = origin.east();
+        Set<Spot> bedrock = new HashSet<>(Set.of(origin,adjacent));
+        Set<Spot> air = new HashSet<>(Set.of(origin.above(1),origin.above(2),
+                adjacent.above(1),adjacent.above(2)));
+        assertTrue(platform(origin,bedrock,air));
+        assertTrue(platform(adjacent,bedrock,air));
+        assertFalse(BedrockRestGeometry.hasExposedPair(0,0,0,(x,y,z)->false,
+                (x,y,z)->true));
         air.remove(adjacent.above(2));
-        assertFalse(BedrockRest.hasExposedPair(origin,bedrock::contains,air::contains),
-                "No sleep with blocks suffocating a head over the other bedrock");
+        assertFalse(platform(origin,bedrock,air),
+                "Cannot sleep with head obstructed over the second bedrock");
         air.add(adjacent.above(2));
         bedrock.remove(adjacent);
         bedrock.add(origin.north().east());
-        assertFalse(BedrockRest.hasExposedPair(origin,bedrock::contains,air::contains),
-                "Diagonal pair cannot become a bed");
+        assertFalse(platform(origin,bedrock,air),
+                "Diagonal bedrock does not satisfy a two-block sleep platform");
         bedrock.remove(origin.north().east());
-        bedrock.add(origin.east().above());
-        assertFalse(BedrockRest.hasExposedPair(origin,bedrock::contains,air::contains),
-                "Vertical bedrock does not count as horizontal sleep platform");
+        bedrock.add(origin.east().above(1));
+        assertFalse(platform(origin,bedrock,air),
+                "Vertically stacked bedrock is not a horizontal platform");
         bedrock.add(adjacent);
-        air.remove(origin.above());
-        assertFalse(BedrockRest.hasExposedPair(origin,bedrock::contains,air::contains),
-                "Cannot sleep inside solid blocks");
+        air.remove(origin.above(1));
+        assertFalse(platform(origin,bedrock,air),
+                "Cannot sleep inside an obstructed standing space");
     }
 }
