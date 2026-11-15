@@ -98,6 +98,8 @@ def verify() -> list[Path]:
     categories = json.loads(
         (OVERLAY / "config/tyzs_skills/custom/data/categories.json").read_text(encoding="utf-8")
     )
+    if categories.get("tmm_magic_core", {}).get("displayName") != "Core Skills":
+        raise ValueError("Core Skills UI display label changed unexpectedly")
     if not (DEFAULT_CATEGORIES | {"tmm_magic_core"}).issubset(categories):
         raise ValueError("Category override would remove Tyz's existing categories")
     levels = json.loads(

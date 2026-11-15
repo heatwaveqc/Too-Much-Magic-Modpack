@@ -1,4 +1,4 @@
-# Core Magic first-wave — Tyz test overlay
+# Core Skills first-wave — Tyz test overlay
 
 Status: **stageable source, not yet in packwiz, not game-tested**. Target MC 1.21.1 NeoForge, Tyz's Skills 6.4.2, KubeJS 2101. This branch builds on the Monk Tyz design; the MXP source registry and deeper contract are in [PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27).
 
@@ -17,7 +17,7 @@ Native attributes are backed by source API; the KubeJS script uses NativeEvents.
 
 ## Staging into the next test build
 
-Overlay path: compat/magic/tyzs-test-overlay. It contains four active CUSTOM skill JSONs with exactly five price/attribute values per skill, five categories (the four Tyz defaults plus Core Magic), a fallback level pool of 1000 XP => 1 SP, a common TOML disabling native Tyz activity XP, and the Thrift KubeJS server script.
+Overlay path: compat/magic/tyzs-test-overlay. It contains four active CUSTOM skill JSONs with exactly five price/attribute values per skill, five categories (the four Tyz defaults plus Core Skills), a fallback level pool of 1000 XP => 1 SP, a common TOML disabling native Tyz activity XP, and the Thrift KubeJS server script.
 
 Run from the repository:
 
@@ -26,13 +26,13 @@ Run from the repository:
 
 The staging script merges existing categories rather than deleting third-party category additions. It avoids overwriting existing files unless explicitly authorized. The preview intentionally does not edit index.toml or install Tyz; the integrated build owner must pin Tyz 6.4.2, run packwiz refresh, validate the resulting hashes, address Pufferfish migration, and boot a clean server + client. Preserve B6/B8 rollback snapshots. Do not stage into a live survival instance.
 
-The current nine-tree blueprint reserves Core Magic, three dragons, Vampire, Werewolf, Lich, Hunter and Monk. The next step is to relocate and verify all 32 stock Tyz skills before removing their old category tabs; this first-wave overlay keeps those tabs as transitional compatibility.
+The current nine-tree blueprint reserves Core Skills, three dragons, Vampire, Werewolf, Lich, Hunter and Monk. The next step is to relocate and verify all 32 stock Tyz skills before removing their old category tabs; this first-wave overlay keeps those tabs as transitional compatibility.
 
 The five ranks represent 20%, 40%, 60%, 80%, 100% of the PREVIOUS rank-99 maximum value, not necessarily a literal +20% for every underlying attribute. See [full stock inventory and migration plan](../../docs/TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md). Existing snapshots with 6-99 purchased ranks require a save migration/refund plan before activation outside disposable QA worlds.
 
 ## What to test in a disposable world
 
-1. Load four skills, Core Magic category, and all native attributes with no KubeJS errors. Test /skills reload.
+1. Load four skills, Core Skills category, and all native attributes with no KubeJS errors. Test /skills reload.
 2. Give **administrative test XP**, e.g. /skills xp PLAYER add 1000. Confirm exactly one Tyz level + one SP. Ordinary mining/food/crafting/exploration/vanilla kills should award zero Tyz XP. This is a test mechanism, not a planned survival source.
 3. Buy one rank of each skill; compare server player attributes and actual spell/resource behavior before/after. Refund and repeat; verify persistence and no duplicate modifiers.
 4. Compare paid Ars and Iron's spell costs at Thrift ranks 0/1/3/5 with Ars 'n Spells shared mana. Test standard, channeled, cross-cast, free/scroll and enchanted equipment cases, including Botania's optional Ars source bridge. Do not award MXP twice.
@@ -56,3 +56,5 @@ The five ranks represent 20%, 40%, 60%, 80%, 100% of the PREVIOUS rank-99 maximu
 - [Psi player attributes](https://github.com/VazkiiMods/Psi/blob/master/Xplat/src/main/java/vazkii/psi/common/attribute/base/ModAttributes.java)
 - [Goety attributes](https://github.com/Vivideru/Goety-3/blob/main/src/main/java/com/Polarice3/Goety/init/ModAttributes.java)
 - [Neo Vitae sigils](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/item/sigil/SigilItem.java)
+
+**UI name decision (2026-11-15):** The Tyz tab is now **Core Skills**, retaining stable category ID `tmm_magic_core`, existing four `tmm_magic_*` skill IDs, and the shared MXP/Tyz wallet. This is a display-label change, not a registry migration.
