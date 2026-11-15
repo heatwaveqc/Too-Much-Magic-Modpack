@@ -25,9 +25,9 @@ Vampirism's internal blood data is a **read-only gameplay mirror** except throug
 
 ## Cures and sunlight
 
-All curing must remove BOTH vampire states. A JAWR cure preflights Vampirism's canLeaveFaction and removes the Vampirism faction before allowing JAWR `setLevel(0)`. A native Vampirism faction removal runs a preflight and, after removal, clears JAWR level. Cases where native mod hooks bypass these paths are not proven and need live test coverage. Partial rollback on failed external mutation remains a risk; **do not use permanent saves**.
+All curing must remove BOTH vampire states. A JAWR cure preflights Vampirism's canLeaveFaction and removes the Vampirism faction before allowing JAWR `setLevel(0)`. A native Vampirism faction removal runs a preflight and, after removal, clears JAWR level. Cases where native mod hooks bypass these paths are covered by a persisted ascended-state marker and a server-side one-second reconciliation check, but those alternate cure routes still require live test coverage. Partial rollback on failed external mutation remains a risk; **do not use permanent saves**.
 
-JAWR's cancellable `VampireAfflictionEvent.SunDamageApplied` is canceled inside Vampirism's `vampirism:has_faction/vampire` biome tag (includes Vampire Forest). Outside it, original JAWR sunlight behavior is unchanged. No additional sunstone mapping is activated. Actual bytecode/runtime event timing still needs validation: this event might fire too late to prevent damage.
+JAWR's `VampireEvents.handleSunExposure` is intercepted **before sunlight timers accumulate** inside the explicit `vampirism:vampire_forest` biome or the `vampirism:has_faction/vampire` biome tag. Its native `decreaseSunTick` method is called while sheltered. JAWR's cancellable `VampireAfflictionEvent.SunDamageApplied` is also canceled in those biomes as a defensive fallback. Outside it, original JAWR sunlight behavior is unchanged. No additional sunstone mapping is activated. Actual bytecode/runtime event timing still needs validation: this event might fire too late to prevent damage.
 
 ## Fang item and config
 
