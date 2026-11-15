@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0  # Merge the shared baseline using complete common-ancestor history
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
