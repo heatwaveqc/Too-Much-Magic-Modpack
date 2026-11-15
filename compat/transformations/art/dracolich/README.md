@@ -1,8 +1,18 @@
-# Dracolich skeleton model — first geometry pilot
+# Dracolich models and Cave/Center visual pilot
 
-**Real original 3D geometry, model-only. No automatic in-game replacement yet.**
+**Original geometry kit. Cave/Center now also has an experimental runtime visual implementation and skin; client acceptance remains required.**
 
-![Actual mesh render](dracolich-preview.png)
+See [Cave/Center implementation and test plan](../../docs/DRACOLICH-CAVE-CENTER-PILOT.md),
+[actual Cave skin preview](dracolich-cave-center-preview.png) and
+[textured Cave review model](dracolich-cave-center-review.glb).
+
+![Actual Cave skin and geometry render](dracolich-cave-center-preview.png)
+
+Current Cave/Center: 407 original cubes, individually mapped diffuse/emissive
+atlases, automatic conditional visual code and original casting effects.
+[Cave validation report](cave-center-validation.json).
+
+The neutral reference kit below is the earlier shared structural model:
 
 428 solid cubes on 54 native attachment points: hollow skull and separate jaw,
 six paired open ribs, shoulder blades, open pelvis, four articulated legs with
@@ -10,10 +20,10 @@ paired lower bones and toes, neck vertebrae, segmented tail, skeletal wing
 fingers, and bone spars for the alternate bodies' small wings/flippers.
 There are no opaque body shells, wing membranes or transparent-skin tricks.
 
-The neutral ivory/brown material is for checking structure. Cave black bone
-with inner fire, Sea prismarine/coral, and Forest white bone/moss remain the
-approved **next texture pass**, not completed skins. Amber eye cubes are a
-material placeholder, not an implemented emissive rendering layer.
+The neutral ivory/brown material is for checking structure. The Cave/Center pilot now has original black-bone/inner-fire diffuse and emissive
+atlases in runtime resources. Sea prismarine/coral and Forest white bone/moss
+remain future texture passes. The neutral kit below retains its original
+material placeholders for structural reference.
 
 ## Files
 
@@ -72,7 +82,7 @@ python3 scripts/check_dracolich_model.py /path/to/DragonSurvival-source \
   /path/to/private/dracolich-local-build/dracolich.geo.json
 ```
 
-## Validation and integration boundary
+## Initial neutral-kit validation and boundary
 
 Passed: exact 272-bone rig preservation, 428 authored solid cubes, UV bounds,
 all five native animation files' named bone references (527 animations),
@@ -80,15 +90,11 @@ fail-closed rejection of a changed rig or unknown attachment, static review
 export vertex equivalence, GLB structure, and **actual GeckoLib 4.9.3 JSON
 deserialization + GeometryTree construction + 428-cube bake** under Java 21.
 
-No Java gameplay code, mod dependency, species/body entry, packwiz lock or
-integration source selector is changed. Art is deliberately outside
-`src/main/resources`, so this upload does not silently replace every dragon.
-No new full test build was triggered.
+The initial neutral kit itself remains outside runtime resources. The subsequent
+Cave/Center implementation described above adds conditional client rendering,
+replicated cosmetic state and separate original runtime assets. It preserves
+native species/body entries, skin settings and gameplay ownership.
 
-Next implementation: client-local rig assembly/resource loading, per-player
-Dracolich visual selection and texture/glow choice, server-to-client state
-sync, and exact restoration of the original skin after cure. This model
-upload does not claim those features. Must still verify in-game all 15
-species/body combinations, growth stages including Ancient, walking,
-flight/swimming, thin-joint alignment during animation, wing toggles,
-first-person neck hiding, armor, items, riders, multiplayer and cure.
+The Cave/Center runtime features now have source and static checks; see its
+implementation document for the remaining in-game acceptance matrix. The other
+species/body combinations remain outside this pilot.

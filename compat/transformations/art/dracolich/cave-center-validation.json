@@ -1,0 +1,65 @@
+{
+  "scope": "Cave/Center + exactly one native Goety/Forbidden Magic lichdom",
+  "target": {
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.265",
+    "dragon_survival": "2.0.74",
+    "curseforge_file": 9539454,
+    "geckolib": "4.9.3",
+    "java": "Temurin 21.0.13+9"
+  },
+  "gradle_build": "PASS",
+  "junit": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "official_jar_rig_fingerprint": "PASS",
+  "runtime_resource_manager_assembly": "PASS",
+  "native_geckolib_bake": {
+    "bones": 272,
+    "authored_cubes": 407,
+    "result": "PASS"
+  },
+  "atlas": {
+    "size": [
+      1024,
+      1024
+    ],
+    "distinct_nonoverlapping_uv_faces": 2442,
+    "diffuse_png_crc": "PASS",
+    "emissive_png_crc": "PASS"
+  },
+  "native_rig_fields_preserved": "PASS",
+  "changed_rig_safe_fallback": "PASS",
+  "native_armor_pose_copy": "PASS",
+  "dedicated_server": {
+    "ready": true,
+    "exit": 0,
+    "jar_sha256": "75e04b4df26237da518d2500284fee857bccb113fe93e5db9aa56c2d9adf1e5f",
+    "jar_count": 137,
+    "world": "new disposable-cave-final",
+    "log": "private server-final.log"
+  },
+  "graphical_client_resources": {
+    "resource_smoke": true,
+    "scope": "Minimal DS 2.0.74 + GeckoLib 4.9.3 + compiled TMM; Java21; authenticated TCP Xvfb + software GL",
+    "in_world_dracolich": "NOT RUN",
+    "controlled_teardown": true
+  },
+  "actual_skin_preview": "Offline actual-atlas render inspected; textured static GLB includes no native rig",
+  "known_native_animation_errors": [
+    "mass_buff",
+    "flapping_wings_standing"
+  ],
+  "remaining": [
+    "Actual native acquisition/cure appearance changes",
+    "In-world motion, wing folding, growth and Ancient",
+    "Armor, claw overlays, items, rider and breath alignment",
+    "Multiplayer tracking, login, dimension and native resurrection",
+    "Resource reload while transformed and exact custom-skin restoration"
+  ],
+  "promotion": "Compiled + server startup + graphical resource smoke; NOT client-world accepted or integrated",
+  "distribution": "Original TMM assets only; installed native rig/armor remains in memory; no full launcher ZIP generated"
+}

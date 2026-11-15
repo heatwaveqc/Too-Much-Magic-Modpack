@@ -87,5 +87,14 @@ See [Dracolich pilot / six-world QA](docs/DRACOLICH-PILOT.md).
 The [original skeleton model kit](art/dracolich/README.md) supplies editable
 static GEO/GLB files, a neutral atlas, an actual mesh preview and a fail-closed
 local assembler for the installed 272-bone Dragon Survival rig. Native
-GeckoLib geometry baking passed; automatic visual switching, state sync,
-species textures/glow and client animation acceptance remain pending.
+GeckoLib geometry baking passed. The Cave/Center implementation below now adds
+conditional rendering, cosmetic sync and an original skin/glow atlas; client
+gameplay acceptance and the other species/body variants remain pending.
+
+## Cave/Center Dracolich renderer and skin
+
+The [Cave/Center pilot](docs/DRACOLICH-CAVE-CENTER-PILOT.md) implements automatic
+server-derived cosmetic state sync, client-local rig assembly, conditional model/skin/glow,
+native armor-UV compatibility, original casting glyphs and native skin restoration.
+Only real Cave/Center dragons with exactly one lich provider qualify. Client gameplay
+acceptance remains required; see the linked test matrix and actual textured preview.

@@ -133,3 +133,50 @@ NOT RUN: Minecraft client render, in-game animation/Molang, growth, armor,
 items/rider, wing toggles, multiplayer, transformation/cure restoration, or a
 new dedicated-server/full-pack boot. Model-only upload adds no runtime hook;
 no claim of client integration. No world was opened or modified.
+## Cave/Center runtime and skin implementation — 2026-11-15
+
+Linux, Minecraft 1.21.1, NeoForge 21.1.265, Gradle 9.2.1, full Temurin
+21.0.13+9 JDK, official CF Dragon Survival 420799/9539454 v2.0.74 and the
+already-installed GeckoLib 4.9.3. No Minecraft/mod/loader upgrade. The minimal
+container JRE lacked compiler release data; local compilation used a complete
+JDK at the same Java 21.0.13 version. Development downloads/caches stayed private.
+
+Executed from repository root:
+
+```bash
+gradle --no-daemon -p compat/transformations build
+python3 scripts/build_dracolich_cave_skin.py
+python3 scripts/verify_dracolich_cave_assets.py --jar compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+java -cp "$check_classpath" scripts/CheckDracolichCave.java /official/DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar /repository /private/cave_center.geo.json
+python3 scripts/preview_dracolich_cave.py /private/cave_center.geo.json
+```
+
+PASS: compilation and **43 JUnit tests / 0 failures / 0 errors / 0 skipped**;
+407 original cubes, 2,442 separate nonoverlapping UV rectangles, matching
+1024x1024 RGBA diffuse/emissive atlas CRCs and packaged runtime files with no
+extracted upstream assets. The actual runtime ResourceManager loader assembled
+the official JAR's 272-bone rig and GeckoLib baked 407 cubes. Native rig fields
+and attachment controls stayed intact. A changed native rig returned a harmless
+marker rejected by selection. Native armor pose-copy checks passed for rotation,
+position, scale, bone hiding and child visibility. Offline actual-atlas preview
+and textured GLB were produced and visually inspected.
+
+PASS, graphical **resource smoke only**: `gradle runClient` in an isolated
+authenticated TCP Xvfb display with software OpenGL, minimal Dragon Survival +
+GeckoLib + TMM development client. The new version-gated mixins loaded without
+injection failures; the real client ResourceManager logged successful Cave/Center
+assembly, then created its GUI and other texture atlases. The test harness
+deliberately stopped the process after resource readiness. No world was entered.
+Initial display attempts were blocked by unavailable UNIX sockets; the final
+same-process TCP display completed the resource-loading smoke.
+
+Observed baseline warnings: native `mass_buff` and `flapping_wings_standing`
+animation parsing errors, unavailable headless audio and offline Mojang
+authentication lookups. These did not block the completed resource reload and
+are not counted as successful animation/skin display tests.
+
+Dedicated-server startup evidence and exact module hash are in the Cave/Center
+validation report. Remaining manual in-world gates: genuine acquisition/cure,
+actual rendering/animation, growth, armor/items/riders, multiplayer tracking,
+native resurrection and restoration of the original custom skin. No full
+integration launcher ZIP or survival release was built by this work.

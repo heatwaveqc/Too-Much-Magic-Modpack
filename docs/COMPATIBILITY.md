@@ -106,3 +106,23 @@ graphical client testing. The three species texture themes remain pending.
 Do not ship a global dragon replacement or redistribute the locally
 assembled upstream rig independently. See the model directory README and
 validation report for exact scope and reproduction commands.
+## Cave/Center Dracolich visual implementation — 2026-11-15
+
+The follow-up to the initial geometry-only kit implements Java in-memory rig
+assembly, real server-derived cosmetic flags and client replication, per-player
+model/skin/glow selection, an original obsidian-bone/inner-fire skin, native-UV
+armor rendering and original casting glyphs. Scope is exactly Cave + Center +
+one real lich provider. Native dragon/lich mechanics and saved skin settings are
+unchanged. New mixin hooks apply only to Dragon Survival 2.0.74 + GeckoLib 4.9.3;
+unsupported versions, custom models or failed assembly keep normal rendering.
+
+The normal inventory player is supported. Fake skin-editor/smithing previews
+retain native preview behavior. Curse removal or leaving the supported form
+scope clears the visual override after state sync (within five server ticks).
+
+**Remaining client acceptance:** actual acquisition/cure, limb/wing motion,
+growth, armor/claws/items/riders, multiplayer tracking and native death/respawn.
+Graphical resource loading is a separate smoke test, not an in-world PASS.
+Known upstream `mass_buff`/`flapping_wings_standing` parser errors remain and
+need ordinary-dragon controls during animation QA. No survival-ready claim.
+See `compat/transformations/docs/DRACOLICH-CAVE-CENTER-PILOT.md`.

@@ -7,6 +7,8 @@ import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.DragonSurvivalProbe;
 import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichDragonFirstEvents;
+import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichAppearanceEvents;
+import io.github.heatwaveqc.tmm.transformations.network.DracolichVisualNetworking;
 import io.github.heatwaveqc.tmm.transformations.adapters.GoetyLichProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.ForbiddenMagicLichProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
@@ -36,6 +38,7 @@ public final class TransformationsMod {
         container.registerConfig(ModConfig.Type.SERVER, ArchlichResurrectionConfig.SPEC,
                 "tmm_archlich-server.toml");
         TransformationAttachments.ATTACHMENTS.register(modBus);
+        modBus.addListener(DracolichVisualNetworking::register);
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_VAMPIRE));
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_HUNTER));
         ProbeRegistry.register(new JAWRVampireProbe());
@@ -49,6 +52,7 @@ public final class TransformationsMod {
         MobAllianceEvents.register();
         ArchlichResurrectionEvents.register();
         DracolichDragonFirstEvents.register();
+        DracolichAppearanceEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default.");
         LOGGER.warn("Opt-in Archlich resurrection priority bridge registered; "
                 + "experimentalArchlichPhylacteryFirst defaults ON for disposable pre-alpha QA.");

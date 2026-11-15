@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8.5",
   "package": "io.github.heatwaveqc.tmm.transformations.mixin",
+  "plugin": "io.github.heatwaveqc.tmm.transformations.mixin.DracolichMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "JAWRVampireLevelingMixin",
@@ -17,6 +18,10 @@
     "defaultRequire": 1
   },
   "client": [
-    "VampirismBloodBarMixin"
+    "VampirismBloodBarMixin",
+    "DracolichModelLoadMixin",
+    "DracolichDragonModelMixin",
+    "DracolichGlowLayerMixin",
+    "DracolichArmorLayerMixin"
   ]
 }

@@ -28,6 +28,8 @@ neoForge {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    // Same Gson as Minecraft 1.21.1; exposed to the pure geometry tests only.
+    testImplementation 'com.google.code.gson:gson:2.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

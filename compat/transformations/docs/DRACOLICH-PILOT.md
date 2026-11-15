@@ -59,7 +59,9 @@ with the chosen lich's fixed hunger value. Do not add a third food tick writer.
 - `DracolichPolicyTest`: positive Goety/JAWR cases, pure states, and
   forbidden dual-lich dragon conflict.
 
-No automatic transformation or forced visual overlay has been implemented.
+No automatic acquisition transformation is introduced. A separate experimental
+[Cave/Center visual pilot](DRACOLICH-CAVE-CENTER-PILOT.md) now implements
+conditional skeletal rendering, skin/glow and cosmetic state synchronization.
 Native dragon-first death and second-lich acquisition guards are active
 in the pre-alpha transform module, but require server and client acceptance.
 No new hunger, soul currency, resurrection destination or Dragon Survival
@@ -116,4 +118,5 @@ establish that the two native transformation rituals accept a dragon,
 that a direct native capability/NBT mutation cannot bypass our canonical
 entrypoint guards, or that the prioritization works in every event-order
 configuration. Those are client acceptance tests before alpha.
-Skeletal appearance remains an independent visual design task.
+The Cave/Center skeletal appearance is a separate implemented visual pilot,
+with in-world client acceptance still required; other species/bodies remain planned.
