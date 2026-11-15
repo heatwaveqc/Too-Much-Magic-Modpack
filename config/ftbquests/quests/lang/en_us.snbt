@@ -97,7 +97,7 @@
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
 	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it."]
 	quest.544D4D1100000001.title: "Punch a Tree"
-	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
+	quest.544D4D1100000001.quest_desc: ["Pick up a log or stem to complete this quest, then claim your 27-slot Trinkets Pouch and 10 XP from the questbook. Equip the pouch in the single Bundle Curios slot; never nest portable bags inside other bags."]
 	quest.544D501000300000.title: "Make a Crafting Table"
 	quest.544D501000300000.quest_desc: ["Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."]
 	quest.544D501001300000.title: "Choose Your First Path"
