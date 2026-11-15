@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pin the approved next-QA additions: Dragon Survival, Comforts and Colorful Hearts.
+"""Pin the approved next-QA additions: Dragon Survival, Comforts, Colorful Hearts and Vampire's Delight.
 
 Fixed MC/loader/version IDs; exact provider files only. No mod binaries are
 stored in Git or redistributed with Prism. The integration smoke downloads the
@@ -27,6 +27,8 @@ EXPECTED_HASHES = {
 MODRINTH = (
     ("comforts", "SaCpeal4", "3kpPjcTc", "9.0.5+1.21.1", "both"),
     ("colorful-hearts", "wQfMUdZT", "us0gze50", "10.5.9", "client"),
+    # Owner-approved one-version BETA exception for the NEXT QA only.
+    ("vampires-delight", "9Vo2deFq", "oe9B4zXP", "0.1.12b", "both"),
 )
 USER_AGENT = {"User-Agent": "TooMuchMagic-NeoForge-QA/1.0"}
 ALLOWED_CDN = {"mediafilez.forgecdn.net", "edge.forgecdn.net"}
@@ -46,7 +48,8 @@ def modrinth_pin(mod_id: str, project: str, release: str, expected: str, side: s
     assert metadata.get("version_number") == expected, f"{mod_id} version mismatch: {metadata.get('version_number')}"
     assert "1.21.1" in metadata.get("game_versions", []), f"{mod_id} wrong game version"
     assert "neoforge" in metadata.get("loaders", []), f"{mod_id} wrong loader"
-    assert metadata.get("version_type") == "release", f"{mod_id} is not a release"
+    expected_channel = "beta" if mod_id == "vampires-delight" else "release"
+    assert metadata.get("version_type") == expected_channel, f"{mod_id} unexpected release channel"
     candidates = [f for f in metadata.get("files", [])
                   if f.get("primary") and f.get("filename", "").endswith(".jar")
                   and not f.get("filename", "").endswith("-sources.jar")]
@@ -63,10 +66,23 @@ def modrinth_pin(mod_id: str, project: str, release: str, expected: str, side: s
         raise ValueError(f"{mod_id}: missing SHA-512")
     if "1.21.1" not in filename or "/" in filename or "\\" in filename:
         raise ValueError(f"{mod_id}: wrong JAR filename")
-    if sha.lower() != EXPECTED_HASHES[mod_id]:
+    if mod_id == "vampires-delight":
+        # This exact BETA ID is the only newly authorized beta in this pin set.
+        # Check the precise file name and verify the downloaded payload against
+        # provider SHA-512 before writing its immutable packwiz checksum.
+        if filename != "VampiresDelight-1.21.1-0.1.12b.jar":
+            raise ValueError(f"vampires-delight: unexpected JAR {filename}")
+        binary = get(url)
+        if hashlib.sha512(binary).hexdigest() != sha.lower():
+            raise ValueError("vampires-delight: downloaded JAR does not match provider SHA-512")
+        with zipfile.ZipFile(io.BytesIO(binary)) as jar:
+            if "META-INF/neoforge.mods.toml" not in jar.namelist() and "META-INF/mods.toml" not in jar.namelist():
+                raise ValueError("vampires-delight: JAR lacks NeoForge mod metadata")
+    elif sha.lower() != EXPECTED_HASHES[mod_id]:
         raise ValueError(f"{mod_id}: provider SHA-512 changed; refuse unexpected binary")
     # Retain the exact upstream URLs, SHA-512, and pinned version IDs.
-    meta = (f"name = {toml_quote('Comforts' if mod_id == 'comforts' else 'Colorful Hearts')}\n"
+    names = {'comforts': 'Comforts', 'colorful-hearts': 'Colorful Hearts', 'vampires-delight': "Vampire's Delight"}
+    meta = (f"name = {toml_quote(names[mod_id])}\n"
             f"filename = {toml_quote(filename)}\n"
             f"side = {toml_quote(side)}\n\n"
             f"[download]\nurl = {toml_quote(url)}\n"
@@ -118,6 +134,9 @@ def activate(root: Path, manifest: dict) -> None:
     rows = {m["id"]: m for m in manifest["mods"]}
     assert "geckolib" in rows and rows["geckolib"]["enabled_in_pack"], "Required GeckoLib absent"
     assert (root / "mods/geckolib.pw.toml").is_file(), "Required GeckoLib not pinned"
+    for dependency in ("vampirism", "farmers-delight"):
+        assert rows.get(dependency, {}).get("enabled_in_pack"), f"Vampire's Delight requires {dependency}"
+        assert (root / f"mods/{dependency if dependency != 'vampirism' else 'vampirism-become-a-vampire'}.pw.toml").is_file(), f"Missing {dependency} pin"
     installs: list[tuple[str, str, str]] = []
     dragon_data, dragon_filename = dragon_pin()
     installs.append(("dragon-survival", dragon_data, dragon_filename))
@@ -130,15 +149,20 @@ def activate(root: Path, manifest: dict) -> None:
             raise ValueError(f"{mod_id} already pinned; inspect source rather than replacing silently")
         path.write_text(data, encoding="utf-8")
         if mod_id not in rows:
-            if mod_id != "colorful-hearts":
+            if mod_id not in ("colorful-hearts", "vampires-delight"):
                 raise ValueError(f"Missing preapproved manifest row for {mod_id}")
-            row = {"id": mod_id, "name": "Colorful Hearts", "category": "qol",
-                   "desired": True, "version": "10.5.9",
-                   "release_status": "verified_release",
-                   "source": "https://modrinth.com/mod/colorful-hearts/version/us0gze50",
+            row = {"id": mod_id, "name": "Colorful Hearts" if mod_id == "colorful-hearts" else "Vampire's Delight",
+                   "category": "qol" if mod_id == "colorful-hearts" else "food",
+                   "desired": True, "version": "10.5.9" if mod_id == "colorful-hearts" else "0.1.12b",
+                   "release_status": "verified_release" if mod_id == "colorful-hearts" else "experimental_release",
+                   "source": ("https://modrinth.com/mod/colorful-hearts/version/us0gze50"
+                              if mod_id == "colorful-hearts" else
+                              "https://modrinth.com/mod/vampires-delight/version/oe9B4zXP"),
                    "enabled_in_pack": False, "dependencies_verified": False,
                    "packwiz_slug": mod_id,
-                   "note": "Owner-requested colored health layers instead of stacked hearts; client-only NeoForge 1.21.1 QA."}
+                   "note": ("Owner-requested colored health layers instead of stacked hearts; client-only NeoForge 1.21.1 QA."
+                            if mod_id == "colorful-hearts" else
+                            "Owner explicitly approved Vampire's Delight 0.1.12b BETA only for upcoming combined NeoForge 1.21.1 QA. Food mixins must be tested against JAWR and Werewolves.")}
             manifest["mods"].append(row)
             rows[mod_id] = row
         row = rows[mod_id]
@@ -146,10 +170,11 @@ def activate(root: Path, manifest: dict) -> None:
             raise ValueError(f"{mod_id} not approved")
         row["enabled_in_pack"] = True
         row["packwiz_slug"] = mod_id
-        row["dependencies_verified"] = mod_id == "dragon-survival"
+        row["dependencies_verified"] = mod_id in ("dragon-survival", "vampires-delight")
         row["note"] = (
             "Exact version and remote binary hash resolved for combined next test. "
             "Run clean dedicated-server and client gameplay tests; NOT survival certified. "
-            "Dragon requires existing GeckoLib; client-only hearts excluded from server."
+            "Dragon requires existing GeckoLib; client-only hearts excluded from server; "
+            "Vampire\'s Delight 0.1.12b is a test-only beta and may affect food consumption hooks."
         )
-    print("NEXT QA PIN SET: Dragon Survival + Comforts + client-only Colorful Hearts")
+    print("NEXT QA PIN SET: Dragon Survival + Comforts + client-only Colorful Hearts + Vampire\'s Delight BETA 0.1.12b")
