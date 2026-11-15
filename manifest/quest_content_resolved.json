@@ -2822,6 +2822,964 @@
       },
       "depends": null,
       "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars: A Workshop with Teeth",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544D303000100001",
+      "task_id": "544D403000100001",
+      "xp_reward_id": "544D903000100001"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Your First Spellbook",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:novice_spell_book"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "ars_nouveau:source_berry_roll",
+        "count": 2
+      },
+      "depends": "Ars: A Workshop with Teeth",
+      "optional": false,
+      "quest_id": "544DB13000010000",
+      "task_id": "544DB23000010000",
+      "xp_reward_id": "544DB33000010000",
+      "item_reward_id": "544DB43000010000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Amethyst Goes In, Source Gems Come Out",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:imbuement_chamber",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "ars_nouveau:source_gem",
+        "count": 4
+      },
+      "depends": "Your First Spellbook",
+      "optional": false,
+      "quest_id": "544DB13000020000",
+      "task_id": "544DB23000020000",
+      "xp_reward_id": "544DB33000020000",
+      "item_reward_id": "544DB43000020000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Table That Eats Your Homework",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:scribes_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:lapis_lazuli",
+        "count": 6
+      },
+      "depends": "Your First Spellbook",
+      "optional": false,
+      "quest_id": "544DB13000030000",
+      "task_id": "544DB23000030000",
+      "xp_reward_id": "544DB33000030000",
+      "item_reward_id": "544DB43000030000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Bottle the Workshop Budget",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:source_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:blue_stained_glass",
+        "count": 8
+      },
+      "depends": "Amethyst Goes In, Source Gems Come Out",
+      "optional": false,
+      "quest_id": "544DB13000040000",
+      "task_id": "544DB23000040000",
+      "xp_reward_id": "544DB33000040000",
+      "item_reward_id": "544DB43000040000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Your Garden Has a Second Job",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:agronomic_sourcelink",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bone_meal",
+        "count": 12
+      },
+      "depends": "Bottle the Workshop Budget",
+      "optional": false,
+      "quest_id": "544DB13000050000",
+      "task_id": "544DB23000050000",
+      "xp_reward_id": "544DB33000050000",
+      "item_reward_id": "544DB43000050000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Link Direction Is a Verb",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:relay",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:lever",
+        "count": 2
+      },
+      "depends": "Bottle the Workshop Budget",
+      "optional": true,
+      "quest_id": "544DB13000060000",
+      "task_id": "544DB23000060000",
+      "xp_reward_id": "544DB33000060000",
+      "item_reward_id": "544DB43000060000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Eight Pedestals and a Plan",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:enchanting_apparatus",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "ars_nouveau:arcane_pedestal",
+        "count": 8
+      },
+      "depends": "Amethyst Goes In, Source Gems Come Out",
+      "optional": false,
+      "quest_id": "544DB13000070000",
+      "task_id": "544DB23000070000",
+      "xp_reward_id": "544DB33000070000",
+      "item_reward_id": "544DB43000070000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Grow Your Own Wardrobe",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:magebloom_crop",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:string",
+        "count": 12
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": true,
+      "quest_id": "544DB13000080000",
+      "task_id": "544DB23000080000",
+      "xp_reward_id": "544DB33000080000",
+      "item_reward_id": "544DB43000080000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Mage Upgrade",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:apprentice_spell_book"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:air_essence",
+        "count": 2
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": false,
+      "quest_id": "544DB13000090000",
+      "task_id": "544DB23000090000",
+      "xp_reward_id": "544DB33000090000",
+      "item_reward_id": "544DB43000090000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Rituals Need Floor Space",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_brazier",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:soul_lantern",
+        "count": 4
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": false,
+      "quest_id": "544DB130000A0000",
+      "task_id": "544DB230000A0000",
+      "xp_reward_id": "544DB330000A0000",
+      "item_reward_id": "544DB430000A0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Schedule a Very Bad Meeting",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_wilden_summon",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:cooked_beef",
+        "count": 8
+      },
+      "depends": "Rituals Need Floor Space",
+      "optional": false,
+      "quest_id": "544DB130000B0000",
+      "task_id": "544DB230000B0000",
+      "xp_reward_id": "544DB330000B0000",
+      "item_reward_id": "544DB430000B0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Meeting Has Escalated",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:ars_pilot/chimera"
+      },
+      "reward": {
+        "xp": 200,
+        "item": "ars_nouveau:music_disc_firel_the_wild_hunt",
+        "count": 1
+      },
+      "depends": "Schedule a Very Bad Meeting",
+      "optional": false,
+      "quest_id": "544DB130000C0000",
+      "task_id": "544DB230000C0000",
+      "xp_reward_id": "544DB330000C0000",
+      "item_reward_id": "544DB430000C0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Archmage, Pending Paperwork",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:archmage_spell_book"
+      },
+      "reward": {
+        "xp": 250,
+        "item": "ars_nouveau:thread_spellpower",
+        "count": 1
+      },
+      "depends": "The Meeting Has Escalated",
+      "optional": false,
+      "quest_id": "544DB130000D0000",
+      "task_id": "544DB230000D0000",
+      "xp_reward_id": "544DB330000D0000",
+      "item_reward_id": "544DB430000D0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Robes with Actual Benefits",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:arcanist_robes",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:purple_dye",
+        "count": 4
+      },
+      "depends": "Grow Your Own Wardrobe",
+      "optional": true,
+      "quest_id": "544DB130000E0000",
+      "task_id": "544DB230000E0000",
+      "xp_reward_id": "544DB330000E0000",
+      "item_reward_id": "544DB430000E0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Read the Slot Before Sewing",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:alteration_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "ars_nouveau:blank_thread",
+        "count": 2
+      },
+      "depends": "Robes with Actual Benefits",
+      "optional": true,
+      "quest_id": "544DB130000F0000",
+      "task_id": "544DB230000F0000",
+      "xp_reward_id": "544DB330000F0000",
+      "item_reward_id": "544DB430000F0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Hire a Small Orange Courier",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:starby_charm"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "ars_nouveau:starbuncle_shades",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000100000",
+      "task_id": "544DB23000100000",
+      "xp_reward_id": "544DB33000100000",
+      "item_reward_id": "544DB43000100000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Gardener with Standards",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:whirlisprig_charm"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:flowering_azalea",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000110000",
+      "task_id": "544DB23000110000",
+      "xp_reward_id": "544DB33000110000",
+      "item_reward_id": "544DB43000110000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Loot without the Assembly Line",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:drygmy_charm"
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:mossy_cobblestone",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000120000",
+      "task_id": "544DB23000120000",
+      "xp_reward_id": "544DB33000120000",
+      "item_reward_id": "544DB43000120000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Witch with a Work Order",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:wixie_charm"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:nether_wart",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000130000",
+      "task_id": "544DB23000130000",
+      "xp_reward_id": "544DB33000130000",
+      "item_reward_id": "544DB43000130000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Promote a Helper to Familiar",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:familiar"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:source_berry_pie",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000140000",
+      "task_id": "544DB23000140000",
+      "xp_reward_id": "544DB33000140000",
+      "item_reward_id": "544DB43000140000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Spell with a Day Job",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:basic_spell_turret"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:daylight_detector",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000150000",
+      "task_id": "544DB23000150000",
+      "xp_reward_id": "544DB33000150000",
+      "item_reward_id": "544DB43000150000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Craft from a Magical Library",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:storage_lectern",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "ars_nouveau:archwood_sign",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000160000",
+      "task_id": "544DB23000160000",
+      "xp_reward_id": "544DB33000160000",
+      "item_reward_id": "544DB43000160000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Give the Library a Catalog",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:repository",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:name_tag",
+        "count": 2
+      },
+      "depends": "Craft from a Magical Library",
+      "optional": true,
+      "quest_id": "544DB13000170000",
+      "task_id": "544DB23000170000",
+      "xp_reward_id": "544DB33000170000",
+      "item_reward_id": "544DB43000170000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Leave Yourself a Way Home",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:warp_scroll"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glow_item_frame",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000180000",
+      "task_id": "544DB23000180000",
+      "xp_reward_id": "544DB33000180000",
+      "item_reward_id": "544DB43000180000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Creative Flight, Local Subscription",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_flight",
+        "count": 1
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:hay_block",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000190000",
+      "task_id": "544DB23000190000",
+      "xp_reward_id": "544DB33000190000",
+      "item_reward_id": "544DB43000190000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Put an Emergency Spell in Your Pocket",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:enchanters_mirror",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:feather",
+        "count": 12
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130001A0000",
+      "task_id": "544DB230001A0000",
+      "xp_reward_id": "544DB330001A0000",
+      "item_reward_id": "544DB430001A0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Potion for More than One Occasion",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:potion_flask"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glistering_melon_slice",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130001B0000",
+      "task_id": "544DB230001B0000",
+      "xp_reward_id": "544DB330001B0000",
+      "item_reward_id": "544DB430001B0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "An Amethyst Department",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:amethyst_golem_charm"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:calcite",
+        "count": 16
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130001C0000",
+      "task_id": "544DB230001C0000",
+      "xp_reward_id": "544DB330001C0000",
+      "item_reward_id": "544DB430001C0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: Bulk Linking, Fewer Clicks",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:advanced_dominion_wand",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:glow_ink_sac",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130001D0000",
+      "task_id": "544DB230001D0000",
+      "xp_reward_id": "544DB330001D0000",
+      "item_reward_id": "544DB430001D0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: The Library Travels with You",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:warp_index",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "ars_nouveau:archwood_hanging_sign",
+        "count": 2
+      },
+      "depends": "Additions: Bulk Linking, Fewer Clicks",
+      "optional": true,
+      "quest_id": "544DB130001E0000",
+      "task_id": "544DB230001E0000",
+      "xp_reward_id": "544DB330001E0000",
+      "item_reward_id": "544DB430001E0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: Source on the Other End",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:ender_source_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 75,
+        "item": "minecraft:ender_eye",
+        "count": 2
+      },
+      "depends": "Additions: The Library Travels with You",
+      "optional": true,
+      "quest_id": "544DB130001F0000",
+      "task_id": "544DB230001F0000",
+      "xp_reward_id": "544DB330001F0000",
+      "item_reward_id": "544DB430001F0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: Configure from a Distance",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:remote",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:redstone_torch",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000200000",
+      "task_id": "544DB23000200000",
+      "xp_reward_id": "544DB33000200000",
+      "item_reward_id": "544DB43000200000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: Give the Farm an Off Switch",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:temporal_stability_sensor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:repeater",
+        "count": 4
+      },
+      "depends": "Controle: Configure from a Distance",
+      "optional": true,
+      "quest_id": "544DB13000210000",
+      "task_id": "544DB23000210000",
+      "xp_reward_id": "544DB33000210000",
+      "item_reward_id": "544DB43000210000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: A Ritual That Follows You",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:portable_brazier_relay",
+        "count": 1
+      },
+      "reward": {
+        "xp": 65,
+        "item": "minecraft:firework_rocket",
+        "count": 8
+      },
+      "depends": "Controle: Configure from a Distance",
+      "optional": true,
+      "quest_id": "544DB13000220000",
+      "task_id": "544DB23000220000",
+      "xp_reward_id": "544DB33000220000",
+      "item_reward_id": "544DB43000220000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Choose an Element, Keep Options",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:lesser_fire_focus",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:magma_cream",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000230000",
+      "task_id": "544DB23000230000",
+      "xp_reward_id": "544DB33000230000",
+      "item_reward_id": "544DB43000230000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Source-Powered Plumbing",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:everfull_urn",
+        "count": 1
+      },
+      "reward": {
+        "xp": 55,
+        "item": "minecraft:cauldron",
+        "count": 1
+      },
+      "depends": "Elemental: Choose an Element, Keep Options",
+      "optional": true,
+      "quest_id": "544DB13000240000",
+      "task_id": "544DB23000240000",
+      "xp_reward_id": "544DB33000240000",
+      "item_reward_id": "544DB43000240000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Dress for Your School",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:fire_hat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:orange_dye",
+        "count": 4
+      },
+      "depends": "Elemental: Choose an Element, Keep Options",
+      "optional": true,
+      "quest_id": "544DB13000250000",
+      "task_id": "544DB23000250000",
+      "xp_reward_id": "544DB33000250000",
+      "item_reward_id": "544DB43000250000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemancy: Fire Meets Air",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemancy:cinder_essence",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "ars_nouveau:manipulation_essence",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000260000",
+      "task_id": "544DB23000260000",
+      "xp_reward_id": "544DB33000260000",
+      "item_reward_id": "544DB43000260000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemancy: Two Schools, One Hat",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemancy:cinder_hat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:fire_charge",
+        "count": 8
+      },
+      "depends": "Elemancy: Fire Meets Air",
+      "optional": true,
+      "quest_id": "544DB13000270000",
+      "task_id": "544DB23000270000",
+      "xp_reward_id": "544DB33000270000",
+      "item_reward_id": "544DB43000270000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: Attunement without a Diamond",
+      "criterion": {
+        "type": "item",
+        "id": "occultism:spirit_attuned_gem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:purple_candle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB13000280000",
+      "task_id": "544DB23000280000",
+      "xp_reward_id": "544DB33000280000",
+      "item_reward_id": "544DB43000280000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: Prepare a Spirit Office",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:mob_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 55,
+        "item": "minecraft:hopper",
+        "count": 2
+      },
+      "depends": "Ocultas: Attunement without a Diamond",
+      "optional": true,
+      "quest_id": "544DB13000290000",
+      "task_id": "544DB23000290000",
+      "xp_reward_id": "544DB33000290000",
+      "item_reward_id": "544DB43000290000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: The Sacrifice Has Been Delegated",
+      "criterion": {
+        "type": "item",
+        "id": "ars_ocultas:altar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:crying_obsidian",
+        "count": 4
+      },
+      "depends": "Ocultas: Prepare a Spirit Office",
+      "optional": true,
+      "quest_id": "544DB130002A0000",
+      "task_id": "544DB230002A0000",
+      "xp_reward_id": "544DB330002A0000",
+      "item_reward_id": "544DB430002A0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Build the Spell Loom",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:craft_spell_loom"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "ars_n_spells:blank_scroll",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130002B0000",
+      "task_id": "544DB230002B0000",
+      "xp_reward_id": "544DB330002B0000",
+      "item_reward_id": "544DB430002B0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Weave a Carrier Scroll",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:transcribe_spell"
+      },
+      "reward": {
+        "xp": 60,
+        "item": "irons_spellbooks:arcane_essence",
+        "count": 8
+      },
+      "depends": "Ars 'n Spells: Build the Spell Loom",
+      "optional": true,
+      "quest_id": "544DB130002C0000",
+      "task_id": "544DB230002C0000",
+      "xp_reward_id": "544DB330002C0000",
+      "item_reward_id": "544DB430002C0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Bind It into the Wheel",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:bind_spell"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:source_berry_roll",
+        "count": 4
+      },
+      "depends": "Ars 'n Spells: Weave a Carrier Scroll",
+      "optional": true,
+      "quest_id": "544DB130002D0000",
+      "task_id": "544DB230002D0000",
+      "xp_reward_id": "544DB330002D0000",
+      "item_reward_id": "544DB430002D0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Cast across the Curriculum",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:first_cross_cast"
+      },
+      "reward": {
+        "xp": 125,
+        "item": "minecraft:enchanted_golden_apple",
+        "count": 1
+      },
+      "depends": "Ars 'n Spells: Bind It into the Wheel",
+      "optional": true,
+      "quest_id": "544DB130002E0000",
+      "task_id": "544DB230002E0000",
+      "xp_reward_id": "544DB330002E0000",
+      "item_reward_id": "544DB430002E0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Unification: A Knife Made of Magic",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:pumpkin_slice",
+        "count": 4
+      },
+      "reward": {
+        "xp": 35,
+        "item": "farmersdelight:pumpkin_soup",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "quest_id": "544DB130002F0000",
+      "task_id": "544DB230002F0000",
+      "xp_reward_id": "544DB330002F0000",
+      "item_reward_id": "544DB430002F0000"
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Unification: Prep More, Chase Less",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cabbage_leaf",
+        "count": 8
+      },
+      "reward": {
+        "xp": 40,
+        "item": "farmersdelight:cabbage_rolls",
+        "count": 2
+      },
+      "depends": "Unification: A Knife Made of Magic",
+      "optional": true,
+      "quest_id": "544DB13000300000",
+      "task_id": "544DB23000300000",
+      "xp_reward_id": "544DB33000300000",
+      "item_reward_id": "544DB43000300000"
     }
   ]
 }

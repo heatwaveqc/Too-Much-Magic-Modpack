@@ -53,3 +53,7 @@ These owner decisions supersede the old blanket rule that every informational qu
 
 **Shop:** The currently pinned Quest Shop 1.4.0 already injects a coin button into the FTB Quests sidebar. Maintain its single 29-offer custom catalog and the command fallback /hqs shop. The button's client appearance and purchase behavior require explicit in-game validation; a green server smoke does not prove either.
 
+
+## Ars pilot implementation — 2026-11-15
+
+The Ars chapter replaces its overview with 49 authored quests, including 20 across all seven pinned add-ons. One initial orientation is explicitly XP-only, retaining the stable overview IDs; the other 48 entries use detectable tasks and direct XP plus fixed thematic rewards. This narrow exception supersedes the old compulsory-item rule for that orientation only. See [ARS-QUEST-PILOT.md](ARS-QUEST-PILOT.md) for exact coverage, reward-repeat rationale, truthful equipment/product detection limits, and disposable client acceptance. No other chapter is declared compliant by this pilot.

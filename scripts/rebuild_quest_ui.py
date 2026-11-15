@@ -18,6 +18,7 @@ QUESTDIR = ROOT / "config/ftbquests/quests"
 SPEC = json.loads((ROOT / "manifest/quest_chapters.json").read_text(encoding="utf-8"))
 AUTHOR = json.loads((ROOT / "manifest/quest_content.json").read_text(encoding="utf-8"))
 RESOLVED = json.loads((ROOT / "manifest/quest_content_resolved.json").read_text(encoding="utf-8"))
+ARS = json.loads((ROOT / "manifest/ars_quest_pilot.json").read_text(encoding="utf-8"))
 BY_AUTHOR = {(q["chapter"], q["title"]): q for q in AUTHOR["quests"]}
 BY_ID = {q["quest_id"]: q for q in RESOLVED["quests"]}
 BLOCK = re.compile(r"\n\t\t\{\n.*?\n\t\t\}", flags=re.S)
@@ -27,7 +28,7 @@ ROOT_SUBTITLE = re.compile(r'\n\tsubtitle: "(?:\\.|[^"\\])*"')
 
 
 def ftb_escape(s: str) -> str:
-    """FTB text formatting uses &; literal ampersands must be \&."""
+    r"""FTB text formatting uses &; literal ampersands must be \&."""
     return s.replace("&", r"\&")
 
 
@@ -208,10 +209,13 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     ]
     for title, xy in zip(reactor, [(0, 38), (3, 38), (6, 38), (9, 38), (9, 42), (6, 42)], strict=True):
         put(tech, title, *xy)
+    for quest in ARS["quests"]:
+        put("Ars Nouveau", quest["title"], *quest["position"])
     return result
 
 
 SUBTITLE = {
+    "Ars Nouveau": "Spellbooks, Source, Wilden Chimera, useful workshop tricks and all seven Ars add-ons.",
     "Getting Started": "First tools and shelter, then a practical magic path of your choosing.",
     "Tips & Tricks": "Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage.",
     "Food & Fishing": "Farming, fishing, food preparation and modular kitchens.",
@@ -375,8 +379,11 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 180 or intro_count != 138:
-        raise ValueError(f"Expected 180 objects / 138 authored, got {len(seen)} / {intro_count}")
+    expected_authored = len(AUTHOR["quests"])
+    expected_total = expected_authored + sum(
+        chapter["overview_quest_id"] not in BY_ID for chapter in SPEC["chapters"])
+    if len(seen) != expected_total or intro_count != expected_authored:
+        raise ValueError(f"Expected {expected_total} objects / {expected_authored} authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:

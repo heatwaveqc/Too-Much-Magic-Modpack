@@ -206,7 +206,7 @@ hash = "cc1e6e849918c0c08bf14f8ffc00d7ac884293726d1dea659d044bc207a12e7b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/ars_nouveau.snbt"
-hash = "68ef117e22ad6d985a5f0de958d41b1cd4b22949ed83f19a99d7f3810191298a"
+hash = "cb044ded8a6c98377f4f293bbb7dddf8dcc4237ab4261dc4b3bb99e23542a741"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/artifacts.snbt"
@@ -290,7 +290,7 @@ hash = "5c53aa5757889bf44ab66f311e9d8486d1e36f892f3c66d2f5926c78e1509aab"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "30681f5ca6e0532a99547702e22fd2a23f7526abc2eb0031cf29dabc26e35674"
+hash = "0ff7950cea54284eb289bf766fdc9e8b3272745bf6e77d4628af8c39e9163e4e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -382,7 +382,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7f4b5c818ba622c7dd28c3d628c770f4f61e8720d116c319b968f14fd73c7e96"
+hash = "a34daa6653597e6754ce8122ba76485675aef46a9500cbeb76fd1ea944cd347a"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -1195,3 +1195,7 @@ metafile = true
 file = "mods/werewolves-become-a-beast.pw.toml"
 hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
+
+[[files]]
+file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
+hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"

@@ -16,6 +16,11 @@ printf 'eula=true\n' > eula.txt  # CI smoke only, disposable world
 if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
   python3 "$ROOT/scripts/download_mods.py" "$WORK_DIR/mods"
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
+  if [[ -n "${SMOKE_EXTRA_KUBEJS_SERVER_SCRIPT:-}" ]]; then
+    test -f "$SMOKE_EXTRA_KUBEJS_SERVER_SCRIPT"
+    mkdir -p "$WORK_DIR/kubejs/server_scripts"
+    cp "$SMOKE_EXTRA_KUBEJS_SERVER_SCRIPT" "$WORK_DIR/kubejs/server_scripts/qa_ars_pilot.js"
+  fi
   if [[ -d "$ROOT/config" ]]; then
     mkdir -p "$WORK_DIR/config"
     cp -a "$ROOT/config/." "$WORK_DIR/config/"

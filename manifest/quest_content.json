@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "origin": "TMM original quests informed by ATM10 structure; no copied quest prose",
   "rules": {
-    "each_quest_requires": "positive experience and a purposeful fixed item reward, except specifically justified coin-only exchange/merchant quests",
+    "each_quest_requires": "Positive XP; substantive objectives get useful thematic fixed items. Explicitly authored initial orientation may be XP-only.",
     "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
     "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
     "overview_placeholders": "until authored, minimal paper + XP checkmark rewards",
@@ -10,7 +10,8 @@
     "onboarding": "Seven added Getting Started quests beyond iron, guiding first spell/ritual and exploration; no specific magical school required.",
     "new_tips": "Four optional practical Tips: Scriptor fuel-free automatic smelting, Occultism/Mahou ore processing, broom alternatives, and Vengeance Pickaxe.",
     "experience_bottle": "Forbidden item quest reward: minecraft:experience_bottle, including choice options. XP points are permitted.",
-    "manual_checkmarks": "Allow only genuinely unobservable actions or initial information/choice; older scaffolds need conversion."
+    "manual_checkmarks": "Allow only genuinely unobservable actions or initial information/choice; older scaffolds need conversion.",
+    "ars_pilot": "manifest/ars_quest_pilot.json owns the authored Ars chapter. One initial orientation checkmark; all remaining tasks are items or advancements. No repeatable gifts or boss-resource rewards."
   },
   "quests": [
     {
@@ -2774,6 +2775,819 @@
       "optional": true,
       "overview": false,
       "first_log": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars: A Workshop with Teeth",
+      "description": "Start with a spellbook, build a Source-powered workshop, then challenge the Wilden Chimera and pursue archmage spells. Side branches teach helpers, practical tricks, and all seven installed Ars add-ons. Explore freely; the side branches are optional, and recipes still enforce their own costs.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "manual_rationale": "Brief initial chapter orientation; no gameplay accomplishment or item payout is claimed."
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Your First Spellbook",
+      "description": "Obtain a Novice Spell Book, either by crafting it or choosing it as your starter gift. Open its spell editor and begin with a simple Touch spell before stacking expensive effects. Mana pays for personal casting; Source in jars runs your workshop. Those are different resources.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:novice_spell_book"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "ars_nouveau:source_berry_roll",
+        "count": 2
+      },
+      "depends": "Ars: A Workshop with Teeth",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Amethyst Goes In, Source Gems Come Out",
+      "description": "Craft an Imbuement Chamber and place amethyst or lapis inside to make Source Gems. It can slowly complete basic recipes without a generator; nearby Source accelerates production. For essence recipes, arrange the displayed ingredients on nearby pedestals. Those surrounding ingredients are catalysts, so keep them for the next batch.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:imbuement_chamber",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "ars_nouveau:source_gem",
+        "count": 4
+      },
+      "depends": "Your First Spellbook",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Table That Eats Your Homework",
+      "description": "Craft a Scribe's Table, then use your spellbook on it to choose a glyph. Supply the displayed ingredients and the required experience; learning the resulting glyph expands your spell editor. The table can pull ingredients from nearby inventories. A Dominion Wand can disable that behavior when your storage starts volunteering valuables.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:scribes_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:lapis_lazuli",
+        "count": 6
+      },
+      "depends": "Your First Spellbook",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Bottle the Workshop Budget",
+      "description": "Craft a Source Jar before expecting a Sourcelink to power your machines. Jars store Source, rather than your personal casting mana. Keep the first jar close to both your generator and its consumers, and watch its fill level while you work. An empty jar is an attractive explanation for a stalled recipe.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:source_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:blue_stained_glass",
+        "count": 8
+      },
+      "depends": "Amethyst Goes In, Source Gems Come Out",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Your Garden Has a Second Job",
+      "description": "Craft an Agronomic Sourcelink and place it near growing crops or trees, with a Source Jar nearby. Natural growth generates Source; magical plants receive bonuses. Bone meal does not directly earn Source from this link, so use the reward to establish the garden rather than expecting a perpetual bone-meal power station.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:agronomic_sourcelink",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bone_meal",
+        "count": 12
+      },
+      "depends": "Bottle the Workshop Budget",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Link Direction Is a Verb",
+      "description": "Craft a Source Relay to move energy beyond a single workbench. With a Dominion Wand, select the jar first and the relay second to draw Source; select the relay first and a destination jar second to deliver it. Redstone disables a relay. This is useful when your factory needs an actual off switch.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:relay",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:lever",
+        "count": 2
+      },
+      "depends": "Bottle the Workshop Budget",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Eight Pedestals and a Plan",
+      "description": "Craft an Enchanting Apparatus and give it an Arcane Core at its base. Arrange Arcane Pedestals within three blocks, load the recipe's surrounding ingredients, then use its central reagent on the apparatus. Supply Source when the recipe requests it. The reward covers the pedestal ring; it does not replace the core or the ingredients.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:enchanting_apparatus",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "ars_nouveau:arcane_pedestal",
+        "count": 8
+      },
+      "depends": "Amethyst Goes In, Source Gems Come Out",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Grow Your Own Wardrobe",
+      "description": "Obtain Magebloom Seeds through the apparatus recipe, then grow a renewable supply. Magebloom becomes fiber for magical clothing and also contributes to an Agronomic Sourcelink's garden. Reserve some harvest for crafting before feeding everything into another machine. A wizard whose shirt was eaten by the power plant has made a planning error.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:magebloom_crop",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:string",
+        "count": 12
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Mage Upgrade",
+      "description": "Upgrade your Novice Spell Book to the Mage's Spell Book, whose registry name still says apprentice. This unlocks the second spell tier and more room for combinations. Upgrade the existing book so your work travels with you. Your next experiments can include mobility and automation, rather than simply making every projectile more expensive.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:apprentice_spell_book"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:air_essence",
+        "count": 2
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Rituals Need Floor Space",
+      "description": "Craft a Ritual Brazier and leave working space around it. Insert the desired tablet, supply any required augments, and activate with an empty hand. Read the ritual's Source requirements before lighting it. Different rituals have different effects and costs; a decorative brazier on the bookshelf is a poor place to discover that distinction.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_brazier",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:soul_lantern",
+        "count": 4
+      },
+      "depends": "Eight Pedestals and a Plan",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Schedule a Very Bad Meeting",
+      "description": "Craft the Tablet of Summon Wilden, then prepare a separate arena away from your workshop. Unaugmented, it summons ordinary Wilden. To call the Chimera, augment the ritual with a Wilden Spike, Horn, and Wing before activating it. The Chimera summon destroys nearby blocks, so keep your storage, home, and other players' builds out of the clearing. Bring armor, reliable damage, food, and a way to recover from movement mistakes. Merely making the tablet completes this preparation quest; the next quest requires a credited kill.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_wilden_summon",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:cooked_beef",
+        "count": 8
+      },
+      "depends": "Rituals Need Floor Space",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "The Meeting Has Escalated",
+      "description": "Defeat a Wilden Chimera with a player-credited kill. Keep moving through its changing attacks, and collect the Wilden Tribute before leaving the arena. This quest detects the kill itself; buying or borrowing a Tribute does not substitute. Your commemorative soundtrack is considerably less destructive than the performance you just attended.",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:ars_pilot/chimera"
+      },
+      "reward": {
+        "xp": 200,
+        "item": "ars_nouveau:music_disc_firel_the_wild_hunt",
+        "count": 1
+      },
+      "depends": "Schedule a Very Bad Meeting",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Archmage, Pending Paperwork",
+      "description": "Upgrade your Mage's Spell Book to an Archmage Spell Book to unlock the highest native spell tier. The recipe also demands a Wilden Tribute, Nether Star, Totem, and other valuables; winning the Chimera fight is only part of the bill. The Spell Power thread is a finishing gift for your existing armor, not a substitute for its upgrades.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:archmage_spell_book"
+      },
+      "reward": {
+        "xp": 250,
+        "item": "ars_nouveau:thread_spellpower",
+        "count": 1
+      },
+      "depends": "The Meeting Has Escalated",
+      "optional": false
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Robes with Actual Benefits",
+      "description": "Craft Arcanist's Robes as your entry into Ars magical armor. Armor families trade protection against their thread-slot arrangements, so compare them before committing resources to a full set. Upgrade recipes and enchanting matter too. The dye is for professional credibility; enemies remain unconvinced by academic dress alone.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:arcanist_robes",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:purple_dye",
+        "count": 4
+      },
+      "depends": "Grow Your Own Wardrobe",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Read the Slot Before Sewing",
+      "description": "Craft an Alteration Table to manage armor threads. Match each thread to a slot that supports its required level; some effects only work in a level-three slot. Thread of Gliding is a particularly useful later target. Owning a thread and wearing armor are not enough if you have stitched it into the wrong slot.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:alteration_table",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "ars_nouveau:blank_thread",
+        "count": 2
+      },
+      "depends": "Robes with Actual Benefits",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Hire a Small Orange Courier",
+      "description": "Obtain a Starbuncle Charm, then use it to establish your first item-carrying helper. Use the Dominion Wand to assign inventories and test a short route before building a complicated factory. Keep walkable paths between its jobs. The sunglasses are compensation for being asked to carry your entire magical career one stack at a time.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:starby_charm"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "ars_nouveau:starbuncle_shades",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Gardener with Standards",
+      "description": "Obtain a Whirlisprig Charm and read its garden requirements before setting up production. Give the helper a varied, suitable environment and Source, rather than an empty box with one miserable plant. Observe the output before expanding. The reward helps decorate its workplace; job satisfaction is unusually literal in this branch of horticulture.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:whirlisprig_charm"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:flowering_azalea",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Loot without the Assembly Line",
+      "description": "Obtain a Drygmy Charm, then build its henge and supply Source near suitable creatures. Drygmy automation can generate drops without repeatedly killing its neighbors. More setup and creature variety matter; it is not a promise that every boss or special drop is eligible. Test ordinary mobs before designing your retirement around a rare loot table.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:drygmy_charm"
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:mossy_cobblestone",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Witch with a Work Order",
+      "description": "Obtain a Wixie Charm to start investigating potion and crafting automation. Consult its notebook entry for the correct base block and workstation setup, then provide reachable ingredients and Source. Test a single recipe before scaling. The reward starts a potion ingredient reserve; it does not persuade a Wixie to work without the rest of its recipe.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:wixie_charm"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:nether_wart",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Promote a Helper to Familiar",
+      "description": "Use the Ritual of Binding with an eligible Ars creature to unlock a familiar, then select it through your spellbook's familiar controls. A working helper and a summoned familiar serve different roles. This quest waits for Ars's familiar-unlock advancement, so merely carrying a charm does not count. Celebrate with pie before assigning another shift.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:familiar"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:source_berry_pie",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Spell with a Day Job",
+      "description": "Obtain a Basic Spell Turret, inscribe a simple spell, and provide Source plus a redstone trigger. A light or crop utility spell makes a better first test than uncontrolled explosions. Verify its aim and cost before giving it a repeating signal. The daylight detector offers a practical scheduling option once the spell behaves.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:basic_spell_turret"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:daylight_detector",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Craft from a Magical Library",
+      "description": "Craft a Storage Lectern to browse and craft from linked inventories. Connect inventory to lectern with the Dominion Wand and add Bookwyrms when you need more connections. Name storage clearly so future searches make sense. This is Ars's storage lectern, distinct from both the ordinary lectern and Scriptor's fuel-free Casting Lectern.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:storage_lectern",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "ars_nouveau:archwood_sign",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Give the Library a Catalog",
+      "description": "Craft a Repository as compact storage for your magical library. Naming repositories makes their tabs easier to recognize, while a Repository Catalog can proxy a connected chain for the lectern. Read filter behavior before connecting automated input. The name tags are an invitation to improve your filing system, not to label every chest Miscellaneous Two.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:repository",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:name_tag",
+        "count": 2
+      },
+      "depends": "Craft from a Magical Library",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Leave Yourself a Way Home",
+      "description": "Obtain a Warp Scroll and bind a safe destination before taking it exploring. Scrolls also participate in Ars portal building; read the notebook's frame and activation instructions for that route. Mark the destination clearly and test it before relying on a desperate escape. A return address inside a wall is still an address.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:warp_scroll"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glow_item_frame",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Creative Flight, Local Subscription",
+      "description": "Craft the Tablet of Flight for Source-powered work around a base. Its ritual refreshes nearby players' temporary flight buff when they jump; leaving the ritual area or exhausting Source ends that convenience. Build a safe landing area and test the range close to the ground. This is excellent construction infrastructure, but it is not permanent global flight.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:ritual_flight",
+        "count": 1
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:hay_block",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Put an Emergency Spell in Your Pocket",
+      "description": "Craft an Enchanter's Mirror and inscribe a useful self-targeted spell at the Scribe's Table. Slowfall is a good safety experiment once learned, particularly before testing Launch movement. Select the intended spell before inscribing and test at a safe height. A beautifully copied attack spell is not a parachute.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:enchanters_mirror",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:feather",
+        "count": 12
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "A Potion for More than One Occasion",
+      "description": "Obtain a Potion Flask to investigate reusable potion storage rather than carrying a bag of individual drinks. Use the Ars notebook's filling instructions and compare the extended or amplified flask upgrades later. Keep a reliable healing or utility supply for rituals and boss attempts. The reward supplies brewing ingredients; it does not fill the flask automatically.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:potion_flask"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glistering_melon_slice",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "An Amethyst Department",
+      "description": "Obtain an Amethyst Golem Charm and investigate its amethyst-farming role around a geode. Preserve your budding amethyst and give the helper suitable access rather than mining the productive blocks away. This pairs naturally with Source Gem production. The calcite is decorative compensation for turning a geological discovery into another department.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_nouveau:amethyst_golem_charm"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:calcite",
+        "count": 16
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: Bulk Linking, Fewer Clicks",
+      "description": "Craft an Advanced Dominion Wand for configurable link order and bulk selection. Use its radial controls to choose first or second endpoint and single or multiple targets. In multi mode, crouch-use can find connected matching blocks. Test on a small row first; a convenient bulk tool also makes it convenient to misunderstand a whole row at once.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:advanced_dominion_wand",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:glow_ink_sac",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: The Library Travels with You",
+      "description": "Craft a Warp Index and link it to your Storage Lectern for remote inventory access in the same dimension. The lectern must remain chunk-loaded; distance access does not keep your base running. The Stabilized Warp Index extends access across dimensions. Label the destination and verify a small withdrawal before leaving your entire expedition kit in remote storage.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:warp_index",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "ars_nouveau:archwood_hanging_sign",
+        "count": 2
+      },
+      "depends": "Additions: Bulk Linking, Fewer Clicks",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Additions: Source on the Other End",
+      "description": "Craft an Ender Source Jar to investigate its shared Source pool across placed jars. Supply generation at your base, keep the relevant areas loaded, and compare a consumer's behavior before and after connecting it. Shared storage moves your Source budget; it does not multiply production. The reward helps fund more spatially questionable workshop experiments.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_additions:ender_source_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 75,
+        "item": "minecraft:ender_eye",
+        "count": 2
+      },
+      "depends": "Additions: The Library Travels with You",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: Configure from a Distance",
+      "description": "Craft Controle's Remote for Dominion-Wand-compatible configuration. Crouch-use a target, then choose endpoint locking and single or multiple selection with its radial controls. For example, locking a Storage Lectern as the last endpoint simplifies inventory linking. Clear the stored target when finished. The Remote reports invalid or cross-dimension targets rather than making every connection possible.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:remote",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:redstone_torch",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: Give the Farm an Off Switch",
+      "description": "Craft a Temporal Stability Sensor and read it with a comparator. Higher output indicates the world is closer to lagging; use that signal to stop optional automation before it overwhelms the server. Start with a reversible farm cutoff and test both states. This is a control signal, not a machine that removes lag by existing nearby.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:temporal_stability_sensor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:repeater",
+        "count": 4
+      },
+      "depends": "Controle: Configure from a Distance",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Controle: A Ritual That Follows You",
+      "description": "Craft a Portable Brazier Relay to investigate carrying supported ritual effects with you. The original brazier must stay loaded and supplied with Source, and some rituals are blacklisted. Start with a safe utility ritual and verify its behavior near the base before traveling. Portability relocates the benefit; it does not make the original ritual self-sufficient.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_controle:portable_brazier_relay",
+        "count": 1
+      },
+      "reward": {
+        "xp": 65,
+        "item": "minecraft:firework_rocket",
+        "count": 8
+      },
+      "depends": "Controle: Configure from a Distance",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Choose an Element, Keep Options",
+      "description": "Create a Lesser Fire Focus in the Imbuement Chamber as an introduction to elemental specialization. Read the focus's bonuses and its penalties to other schools before equipping it. Upgrading to the major focus is a later project. This fire example does not lock your character into fire; other elemental foci remain available when your spell designs change.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:lesser_fire_focus",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:magma_cream",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Source-Powered Plumbing",
+      "description": "Craft an Urn of Endless Waters and link a supported destination with a Dominion Wand. It converts Source into water for containers such as cauldrons and Botania's Apothecary. Supply Source and check the destination before expanding. The reward gives it an immediate job, and establishes that even an endless urn can have a utility bill.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:everfull_urn",
+        "count": 1
+      },
+      "reward": {
+        "xp": 55,
+        "item": "minecraft:cauldron",
+        "count": 1
+      },
+      "depends": "Elemental: Choose an Element, Keep Options",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemental: Dress for Your School",
+      "description": "Craft a Pyromancer's Hat as a first elemental armor upgrade. Compare its school benefits, thread slots, and full-set conditions with your current armor before replacing every piece. The recipe's actual armor tier matters, so inspect it in JEI. You may pursue the water, air, or earth counterparts independently; this quest uses fire as a worked example.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemental:fire_hat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:orange_dye",
+        "count": 4
+      },
+      "depends": "Elemental: Choose an Element, Keep Options",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemancy: Fire Meets Air",
+      "description": "Make Cinder Essence by imbuing Manipulation Essence with Fire and Air Essences on the surrounding pedestals. This introduces Elemancy's combined-school crafting without asking you to memorize every combination. The surrounding catalysts stay in place during imbuement; keep them for another batch. Cinder is the fire-and-air route, while other pairings have their own essences and armor.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemancy:cinder_essence",
+        "count": 1
+      },
+      "reward": {
+        "xp": 60,
+        "item": "ars_nouveau:manipulation_essence",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Elemancy: Two Schools, One Hat",
+      "description": "Craft a Cindermancer Hat through Elemancy's upgraded armor route. Its fire-and-air identity builds on elemental specialization; compare the actual recipe and set conditions before converting your favorite armor. Inspect retained threads and enchantments after upgrading. The reward is a small supply of literal firepower, because apparently the combined-school hat was not sufficient warning.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_elemancy:cinder_hat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 100,
+        "item": "minecraft:fire_charge",
+        "count": 8
+      },
+      "depends": "Elemancy: Fire Meets Air",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: Attunement without a Diamond",
+      "description": "Obtain a Spirit Attuned Gem. Ars Ocultas offers an Enchanting Apparatus route using a Source Gem, Conjuration Essence, Manipulation Essence, and Demon's Dream Essence, plus Source. Check JEI against your available ingredients. This inventory objective accepts a gem from either valid route; it teaches an alternative when diamonds are scarce without pretending to identify how you crafted it.",
+      "criterion": {
+        "type": "item",
+        "id": "occultism:spirit_attuned_gem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:purple_candle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: Prepare a Spirit Office",
+      "description": "Obtain a Containment Jar, then investigate placing a summoned Occultism worker spirit inside through Ars containment. Jarred spirits retain their normal jobs without expiring, and accept suitable nearby items or hopper input. A crusher still needs output collection. This task detects the jar as equipment; trapping and testing a worker are the practical next steps, not an implied completed automation.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_nouveau:mob_jar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 55,
+        "item": "minecraft:hopper",
+        "count": 2
+      },
+      "depends": "Ocultas: Attunement without a Diamond",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ocultas: The Sacrifice Has Been Delegated",
+      "description": "Craft the Sacrificial Altar through Ars Ocultas's apparatus recipe. Its integration supports Occultism ritual work involving nearby contained creatures and supplied items. Follow the installed recipe and test with an ordinary eligible ritual before trusting valuable summons to the arrangement. Acquiring the altar is the milestone here; it does not prove a ritual ran or waive its native requirements.",
+      "criterion": {
+        "type": "item",
+        "id": "ars_ocultas:altar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 80,
+        "item": "minecraft:crying_obsidian",
+        "count": 4
+      },
+      "depends": "Ocultas: Prepare a Spirit Office",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Build the Spell Loom",
+      "description": "Build a Spell Loom to carry an Ars spell into Iron's Spellbooks. Select the desired spell in a reusable Ars book, place it in the source slot, and supply a blank scroll. Names, backgrounds, and icons help identify the result; they do not change its school or cost. A filled Iron's scroll is not a blank target.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:craft_spell_loom"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "ars_n_spells:blank_scroll",
+        "count": 3
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Weave a Carrier Scroll",
+      "description": "Use the Spell Loom to inscribe an Ars spell onto a blank target scroll. A reusable book or focus stays intact; a disposable parchment costs one unit. Clear the output slot before another inscription. This quest uses the add-on's transcription advancement, so owning a Loom alone is insufficient. Avoid Convert unless you intend to erase an existing spell.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:transcribe_spell"
+      },
+      "reward": {
+        "xp": 60,
+        "item": "irons_spellbooks:arcane_essence",
+        "count": 8
+      },
+      "depends": "Ars 'n Spells: Build the Spell Loom",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Bind It into the Wheel",
+      "description": "Bind your inscribed carrier scroll into a real Iron's spellbook at its Inscription Table, or use the Spellbook Binding ritual. For that ritual, leave exactly one carrier and one book within three blocks, with no other dropped items, then activate the brazier empty-handed. Binding consumes the carrier and adds a spell-wheel entry; a full or duplicate book can refuse it.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:bind_spell"
+      },
+      "reward": {
+        "xp": 75,
+        "item": "ars_nouveau:source_berry_roll",
+        "count": 4
+      },
+      "depends": "Ars 'n Spells: Weave a Carrier Scroll",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Ars 'n Spells: Cast across the Curriculum",
+      "description": "Select the bound Ars entry in Iron's native spell wheel and successfully cast it. This quest waits for the add-on's cross-cast advancement. Watch the shared mana payment and begin with a cheap harmless spell; cross-casting can add overhead and follows server resource settings. Having two casting interfaces is not permission to spend the same mana twice.",
+      "criterion": {
+        "type": "advancement",
+        "id": "ars_n_spells:first_cross_cast"
+      },
+      "reward": {
+        "xp": 125,
+        "item": "minecraft:enchanted_golden_apple",
+        "count": 1
+      },
+      "depends": "Ars 'n Spells: Bind It into the Wheel",
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Unification: A Knife Made of Magic",
+      "description": "Collect four Pumpkin Slices. Ars Unification imports supported Farmer's Delight cutting recipes into the Cut glyph: try Touch, Cut, Sensitive on a dropped pumpkin, and inspect the Cut category in JEI. Keep the experiment away from valuables. This collection task accepts slices from any valid preparation method; it introduces the magical route without claiming to track which tool made them.",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:pumpkin_slice",
+        "count": 4
+      },
+      "reward": {
+        "xp": 35,
+        "item": "farmersdelight:pumpkin_soup",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Ars Nouveau",
+      "title": "Unification: Prep More, Chase Less",
+      "description": "Collect eight Cabbage Leaves, trying the imported Cut recipe on dropped cabbages. Sensitive enables nearby-item processing; AoE expands the search and Pierce increases how many items Cut processes. Test a small stack and collect its output before automating. The leaves are inventory-detected regardless of preparation method. Only installed integrations contribute recipes; an add-on is not a promise of every machine from absent mods.",
+      "criterion": {
+        "type": "item",
+        "id": "farmersdelight:cabbage_leaf",
+        "count": 8
+      },
+      "reward": {
+        "xp": 40,
+        "item": "farmersdelight:cabbage_rolls",
+        "count": 2
+      },
+      "depends": "Unification: A Knife Made of Magic",
+      "optional": true
     }
   ]
 }

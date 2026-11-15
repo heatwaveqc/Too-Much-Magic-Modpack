@@ -1,0 +1,54 @@
+name: Ars quest pilot validation
+on:
+  push:
+    branches: ['feature/ars-quest-pilot']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-and-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile, enforce quest standards and check reproducibility
+        run: |
+          python scripts/build_ars_quest_pilot.py
+          python scripts/validate.py
+          python scripts/validate_quests.py
+          python scripts/validate_ars_quest_pilot.py
+          git diff --exit-code
+          python scripts/build_ars_quest_pilot.py
+          git diff --exit-code
+      - name: Create a disposable live-registry probe
+        run: python scripts/write_ars_quest_probe.py "${{ runner.temp }}/ars_quest_probe.js"
+      - name: Boot the complete pinned pack with the authored chapter
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '660'
+          WORK_DIR: ${{ runner.temp }}/ars-quest-smoke
+          SMOKE_EXTRA_KUBEJS_SERVER_SCRIPT: ${{ runner.temp }}/ars_quest_probe.js
+        run: bash scripts/smoke_server.sh
+      - name: Verify all quest references against the loaded registries and exact upstream artifacts
+        run: |
+          python scripts/validate_ars_quest_pilot.py --jars "${{ runner.temp }}/ars-quest-smoke/mods"
+          grep -F '[TMM ARS PILOT] PASS: 93 items and 17 advancements resolved' "${{ runner.temp }}/ars-quest-smoke/server.log"
+          if grep -E '\[TMM ARS PILOT\] FAIL|qa_ars_pilot.js.*(Error|Exception)|Error loading (quest|chapter|advancement)' "${{ runner.temp }}/ars-quest-smoke/server.log"; then exit 1; fi
+      - name: Preserve server evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ars-Quest-Pilot-Server-Logs
+          path: |
+            ${{ runner.temp }}/ars-quest-smoke/server.log
+            ${{ runner.temp }}/ars-quest-smoke/logs/latest.log
+            ${{ runner.temp }}/ars-quest-smoke/kubejs/logs/server.log
+          if-no-files-found: warn
+          retention-days: 14

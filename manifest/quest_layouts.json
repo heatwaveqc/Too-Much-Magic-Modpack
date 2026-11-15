@@ -3,7 +3,7 @@
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
   "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 180,
+  "quest_count": 228,
   "chapters": 45,
   "positions": [
     {
@@ -1300,7 +1300,439 @@
         0,
         0
       ],
-      "authored": false
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000010000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000020000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000030000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -8,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000040000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        8,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000050000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        8,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000060000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000070000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        16
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000080000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -8,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000090000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000A0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        8,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000B0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        8,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000C0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000D0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        32
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000E0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130000F0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000100000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -8,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000110000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -24,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000120000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000130000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -8,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000140000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -8,
+        36
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000150000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000160000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        24,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000170000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        24,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000180000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000190000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        32
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001A0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        24,
+        32
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001B0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        24,
+        36
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001C0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -24,
+        36
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001D0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        44
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001E0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        48
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130001F0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        52
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000200000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        44
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000210000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        48
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000220000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        52
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000230000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        44
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000240000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        48
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000250000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        52
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000260000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        60
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000270000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        64
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000280000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        60
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000290000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        64
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002A0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        0,
+        68
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002B0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        60
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002C0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        64
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002D0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        68
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002E0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        16,
+        72
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB130002F0000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        72
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB13000300000",
+      "chapter": "Ars Nouveau",
+      "position": [
+        -16,
+        76
+      ],
+      "authored": true
     },
     {
       "quest_id": "544D303000200001",
