@@ -113,7 +113,7 @@ class PathJsonTest {
                 new java.io.InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8))
                 .getAsJsonObject());
             assertEquals(20,path.maxRank());
-            assertEquals(28000,path.rankXp().getLast());
+            assertEquals(28000L,path.rankXp().getLast().longValue());
             assertEquals(1,path.pointsPerRank());
             for (String skillId : new String[] {
                 "rooted", "evasion_undead", "evasion_raiders", "sword_specialist",
