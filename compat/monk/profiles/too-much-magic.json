@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "profile_id": "too-much-magic",
+  "purpose": "pack_design_target_not_runtime_config",
+  "mod_id": "tmm_monk",
+  "source_mod_versions": {
+    "apotheosis": "8.9.0",
+    "apothic_attributes": "2.11.0",
+    "vampirism": "1.10.13",
+    "werewolves": "2.0.3.4",
+    "tyzs_skills": "6.4.2 (approved, not installed)"
+  },
+  "exclusive_vampirism_faction": true,
+  "disallow_nonmonk_transformations": [
+    "vampire",
+    "werewolf",
+    "lich",
+    "archlich",
+    "dragon",
+    "dracolich",
+    "abomination",
+    "hunter"
+  ],
+  "equipment": {
+    "regular_weapons": false,
+    "regular_tools": false,
+    "armor_slots": false,
+    "curios": true,
+    "draconic_chestpiece_curio": "permitted_if_working_in_pinned_version; module functions must be verified",
+    "magic_foci": "decision_pending: allow curated nonweapon spell implements"
+  },
+  "progression": {
+    "initiation": "watch_sunset",
+    "ordinary_sources": [
+      "qualifying_block_break",
+      "credited_enemy_kill",
+      "first_consumption_per_food_id"
+    ],
+    "few_mandatory_deeds": true,
+    "monk_rank_cap": "startup_config_progression.max_faction_level_default_20_not_hard_capped_by_14",
+    "attribute_investment_rank_limit": null,
+    "attribute_point_cost": "rising_cost_to_be_balanced",
+    "skill_tree": "Vampirism native one-time Monk ability/permission skills, Tyz's Skills for leveled purchases, Pufferfish for shared one-time choices only",
+    "grant_item_affixes_directly": false,
+    "faction_cap_runtime_config": "config/tmm_monk-startup.toml",
+    "attribute_investment_backend": "tyzs_skills_6_4_2_99_rank_stages_x10_with_cancellable_monk_purchase_pre",
+    "bounded_traits": "finite_effective_investments_with_no_paid_overcap",
+    "uncapped_traits": "repeatable_investments_with_progressive_costs_and_native_limit_safety",
+    "equipment_affix_food_xp_recipe": "smithing_preferred_under_review",
+    "rarity_food_config": "rarity-food-infusion.json",
+    "innate_creative_flight": false,
+    "allowed_creative_flight_provider": "Draconic Evolution chestpiece via Curios (gameplay availability governed by source mod; no Monk skill unlock)",
+    "momentum_gliding": "post_ender_dragon_innate_nonhover_glide",
+    "barehand_harvest_tier": "finite capability unlocks up to actual tool tier requirement of the pack; no bypass of mining gates",
+    "barehand_harvest_speed": "separate repeatable numeric trait with increasing cost, no arbitrary purchase limit; respect native effective safety",
+    "original_monk_ability_crosswalk": "original-monk-abilities-1.4.json",
+    "tyzs_tier_policy": "tyzs-tiered-skills-v1.json",
+    "purchase_currency": "Tyz's skill points from independent activity XP, NOT vanilla XP",
+    "tier_rank_limit": 99,
+    "default_repeatable_tiers": 5,
+    "optional_sixth_tier": "only if actual native/effective stat supports meaningful additional gain"
+  },
+  "affix_unlocks": {
+    "mode": "all_source_affixes_except_unbound",
+    "inventory_file": "affix-inventory-apotheosis-8.9.0.json",
+    "count_expected": 98,
+    "adapters_required": true,
+    "status": "not_implemented",
+    "source_definition_count": 99,
+    "excluded_source_ids": [
+      "apotheosis:armor/attribute/unbound"
+    ],
+    "exclusion_note": "No Monk Creative Flight unlock nor invented Unbound powered-flight benefit."
+  },
+  "numeric_player_attributes": {
+    "mode": "all_applicable_player_attributes_runtime_registry",
+    "pinned_apothic_inventory_file": "attributes-apothic-2.11.0.json",
+    "count_apothic_baseline": 22,
+    "repeatable_purchases": true,
+    "arbitrary_purchase_cap": false,
+    "engine_value_limits_still_apply": true,
+    "conditional_boolean_attributes_need_unlock_not_numeric_scaling": true
+  },
+  "missing_gear_compensation": {
+    "armor_and_protection_enchantments": true,
+    "weapon_and_tool_enchantments": true,
+    "apotheosis_affix_effects": true,
+    "gem_socket_effects": true,
+    "vanilla_and_modded_attributes": true,
+    "projecte_gem_armor_special_abilities": true,
+    "draconic_chestpiece_curio_effects": false,
+    "other_curio_effects": false
+  },
+  "parity_targets": [
+    "endgame_abomination_in_maximized_gear",
+    "endgame_archlich_in_maximized_gear",
+    "endgame_dracolich_in_maximized_gear"
+  ],
+  "verification": "No design target here is live gameplay. All effect adapters, per-attribute scaling rules and parity benchmarks require implementation and testing."
+}

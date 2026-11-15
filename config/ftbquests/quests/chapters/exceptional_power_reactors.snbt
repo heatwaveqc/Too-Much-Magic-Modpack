@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D902000500001", type: "xp", xp: 2 }
-				{ id: "544DA02000500002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA02000500002", type: "item", item: { id: "minecraft:firework_rocket", count: 1 }, count: 2 }
 			]
 			size: 1.5d
 			tasks: [
@@ -371,7 +371,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D608001900001", type: "xp", xp: 50 }
-				{ id: "544D708001900002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+				{ id: "544D708001900002", type: "item", item: { id: "minecraft:comparator", count: 1 }, count: 3 }
 			]
 			tasks: [
 				{ id: "544D808001900000", type: "checkmark" }

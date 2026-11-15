@@ -136,7 +136,7 @@ public final class VampireNativeAccess {
     public static boolean spendNativeBlood(ServerPlayer player, int amount) throws ReflectiveOperationException {
         Object vp = vampirismVampire(player);
         return asBool(vp.getClass().getMethod("useBlood", int.class, boolean.class)
-                .invoke(vp, amount, true));
+                .invoke(vp, amount, false)); // require the full debit; never accept a partial payment
     }
 
     public static Object jawrBloodData(ServerPlayer player) throws ReflectiveOperationException {
