@@ -26,7 +26,9 @@ public final class EffectHandlers {
     private EffectHandlers() {}
     private static final Set<String> BUILTIN = Set.of(
         "attribute","melee_bonus","damage_bonus","damage_multiplier","break_speed",
-        "harvest_tier","gear_durability","animal_friendship");
+        "harvest_tier","gear_durability","animal_friendship",
+        "blink","catch_arrows","armor_lock","reserved_fist","water_breathing",
+        "purification","faction_neutrality","creeper_peace","treasure_hand");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
