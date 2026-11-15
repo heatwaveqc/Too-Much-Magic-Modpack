@@ -1,6 +1,6 @@
 # TMM MXP — initial NeoForge ledger and award dispatcher
 
-**Stage:** feature/mxp-ledger-dispatcher, 2026-11-14. Actual Java source, build and progression tests exist; **not yet packwiz-pinned, game-launched or verified with the Tyz 6.4.2 runtime JAR**. Designed not to delay the next full test build. Based on the Core Magic feature branch; reconcile with [MXP specification PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27) and [Core Magic implementation PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33).
+**Stage:** feature/mxp-ars-irons-botania-neo-hooks, 2026-11-14 (extends MXP dispatcher). Actual Java source, build and progression tests exist; **not yet packwiz-pinned, game-launched or verified with the Tyz 6.4.2 runtime JAR**. Designed not to delay the next full test build. Based on the Core Magic feature branch; reconcile with [MXP specification PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27) and [Core Magic implementation PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33).
 
 ## Implemented
 
@@ -18,15 +18,15 @@
 
 Call MxpService.resource(player, sourceId, transactionId, nominalCost, firstAccessPool, actualDebit) **after** an accepted and committed magical action. Transaction IDs must uniquely identify the world operation, and should be common across two adapters observing the **same cast**. No XP for previews, simulation, transfers, idle mana generators, cost-free casts or machine maintenance. Shared Ars/Iron mana is **one logical transaction** and should not be counted twice. Positive regen and efficiency effects still improve sustainable nominal MXP earned.
 
-Call MxpService.ritual(player, id, completionTxId, firstFixed, repeatDivided) on confirmed ceremony completion, not on every ritual tick. Call MxpService.craft similarly, but **both** first and later craft awards are divided. Boss rules use MxpService.registerBossRule(canonicalEntityId, first, repeat, fixedRepeat), then the native final-death hook handles configured entities. Example rules in pilot/kubejs/server_scripts/tmm_mxp_boss_rules_example.js are disabled, with purely illustrative amounts.
+Call MxpService.ritual(player, id, completionTxId, firstFixed, repeatDivided) on confirmed ceremony completion, not on every ritual tick. Call MxpService.craft similarly, but **both** first and later craft awards are divided. Boss rules use MxpService.registerBossRule(canonicalEntityId, repeat, fixedRepeat), then the native final-death hook handles configured entities. Example rules in pilot/kubejs/server_scripts/tmm_mxp_boss_rules_example.js are disabled, with purely illustrative amounts.
 
 The core does NOT store mod resource baselines for all 42 entries yet; the per-source adapter currently supplies a verified reference B. See [per-mod registry](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-SOURCE-REGISTRY.md).
 
 ## Deliberately deferred automatic sources
 
-- **Neo Vitae AnimaEvent.PostSyphon:** owner UUID, nominal ticket and actual EV are exposed, but **AnimaTicket has only an integer amount, no activity provenance**. A blanket callback would credit machine transfers and passive drains. Require proven player-activated sigil/action context first.
-- **Ars Nouveau/Iron's:** spell events expose prepayment data, but the shared Ars 'n Spells bridge can redirect/refund the actual debit. XP must be granted at a verified committed payment, not when Thrift prices the cast.
-- **Botania Revived:** centralized item mana requests include availability simulation, cross-funding via Ars, item transfers and armor/weapon upkeep; classify the actual activation before awarding.
+- **Neo Vitae AnimaEvent.PostSyphon:** now hooked. Only real EV-network PostSyphon debits earn MXP for an online owner; other resources do not. The network has **no intrinsic first-access maximum**, so Neo EV baseline defaults to 0 (disabled) until explicitly configured. Because AnimaTicket does not label its source, every actual network expense (including automated upkeep) is eligible while the owner is online; revisit this rule before survival release.
+- **Ars Nouveau/Iron's:** optional native mixins capture original spell costs and observe native committed debits; Ars 'n Spells paid reservations are observed at its commit path, with cross-cast transaction IDs to prevent double credit. **Pinned ANS 3.3.5 ABI and payer behavior still need a runtime smoke test**; no MXP is awarded by a prepayment event alone.
+- **Botania Revived:** native handler hook counts actual mana drained exclusively from eligible tablets and mana rings in player inventory/offhand or Curios, including equipment repairs. Excludes world pools, mana mirrors, transfers, simulations and outside Ars funding. Mixed payments are prorated, and Botania financing another spell is suppressed to prevent double credit.
 - **Totemic:** ceremonyStartupSuccess can be canceled and does not itself identify meaningful music participants. Determine the successful completion + UUID attribution before granting fixed first-time XP.
 - **Boss exceptions:** multipart dragon and Chaos Guardian completion need source-verified final defeat. MVP only attributes the final blow to a direct player; party contribution, pet damage and owner attribution are future work.
 
@@ -52,3 +52,12 @@ In a disposable NeoForge 1.21.1 world with **Tyz 6.4.2 and the Core Magic level-
 - The command/test hooks are for trusted server operators, not arbitrary client packets. Do not enable artificial grants as normal gameplay rewards.
 
 **Implementation milestone, not approved as next-build integrated or survival-ready.**
+
+
+## Ars / Iron's / Botania / Neo source hooks (2026-11-14)
+
+**Implemented, not game-tested:** branch `feature/mxp-ars-irons-botania-neo-hooks` adds compiled NeoForge mixins for all four resources. See [source hookup and runtime acceptance matrix](SOURCE-HOOKS-2026-11-14.md). Nothing is installed in the current packwiz client snapshot, and neither a dedicated server nor Prism client has loaded these new native mixins.
+
+**Default baselines** in the generated `tmm_mxp-common.toml`: Ars 100 (5.13.5 baseMax), Iron's 100 (3.16.3 MAX_MANA default), Botania 500,000 (ordinary tablet and mana ring, 2.0.2), Neo Vitae 0 (disabled until a canonical first EV-network reference is approved and configured). A source baseline is fixed, not updated as player max mana grows. All registered first-boss rewards are now fixed at 1,000 effective MXP regardless of the configured repeat reward. A special repeated Chaos Guardian payout remains prospective only, awaiting exact entity verification.
+
+**Hook inventory:** MxpArsResolverMixin, MxpAnsArsCommitMixin, MxpIronsEventMixin, MxpIronsCastMixin, MxpBotaniaManaMixin, MxpNeoNetworkMixin. Ars 'n Spells cross-paying spells need a dedicated in-game dedup test. Botania snapshots verify the physical eligible stacks and *actual debit*, not the broader handler's total granted amount.
