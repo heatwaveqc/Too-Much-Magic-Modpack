@@ -64,8 +64,8 @@ The vanilla pilot tag `#tmm_progression:monk_training_hostiles` combines existin
 
 The path contains **15 one-time XP milestone definitions**: First Sunset; 10 and 100 barehand logs; five stone; 10 empty-fist undead; 20 accepted animal interactions; four iron blocks; one obsidian; Creeper Kiss; five blind-hostile defeats; player-credited Wither; Dragon; 20 hostile defeats; 10 and 30 earned advancements. These persist on the native path ledger and cannot pay repeatedly.
 
-- `trial_creeper_kiss` uses a newly emitted **trusted server external event** on a creeper's first successful pacification.
-- `blind_ordeal_victory` now requires **five** server-credited kills while the player has the opt-in Blindness ordeal active. Automatic rank 18 does not falsely complete the ordeal; the player can abort and resume, and no permanent blindness is enforced.
+- `trial_creeper_kiss` uses a newly emitted **trusted server external event** on each valid Monk creeper interaction; **the milestone pays only once per player**, even if a different Monk already pacified that creeper.
+- `blind_ordeal_victory` now requires **five** server-credited **direct-fist** hostile kills while the player has the opt-in Blindness ordeal active. Automatic rank 18 does not falsely complete the ordeal; the player can abort and resume, and no permanent blindness is enforced.
 - Original pet20 is **not yet distinct-by-animal**. The current partial milestone awards once after 20 successful interactions; a unique-entity ledger is required for exact parity.
 - Original Wither damage-contribution conditions are **not yet enforced**. The present player-credited kill milestone is a provisional optional XP award, not classic parity certification.
 - The remaining 10 original environment and movement gates are **design-only** until proper server detectors exist. No fake `external` stub milestone is loaded in the runtime.
@@ -109,7 +109,7 @@ Test ten real barehand logs first (**+2 each; tenth additionally +35**). Mine fi
 
 Eat several distinct edible items, then repeat the same food; **only new registry IDs** yield +10. Earn a real visible advancement (+25), then unlock a recipe-only advancement (should be **zero**). After 100 legit logs, confirm the one-time 100-log reward and any rank-ups; relog and make sure no milestone pays twice.
 
-At the appropriate ranks, try `/tmmprogress power ordeal` and make **five blinded hostile kills**, checking that rank 18 alone does not close the challenge. Try `/tmmprogress power treasure`, `/tmmprogress power armor`, and Creeper Kiss as additional server event checks. Ender Dragon advancement must be in the native completed-milestones set before gliding is legal even at rank 20.
+At the appropriate ranks, try `/tmmprogress power ordeal` and make **five direct-fist blinded hostile kills**, checking that rank 18 alone does not close the challenge. Try `/tmmprogress power treasure`, `/tmmprogress power armor`, and Creeper Kiss as additional server event checks. Ender Dragon advancement must be in the native completed-milestones set before gliding is legal even at rank 20.
 
 To bypass First Sunset strictly for testing, OP can use `/tmmprogress admin join tmm_progression:monk`. That is an operator cheat and not player enrollment. No general XP-grant command is needed for normal testing.
 
