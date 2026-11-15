@@ -1,0 +1,43 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+version = project.mod_version
+group = project.mod_group_id
+base { archivesName = project.mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories { maven { url 'https://jitpack.io' } }
+neoForge {
+    version = project.neo_version
+    mods {
+        "${mod_id}" { sourceSet(sourceSets.main) }
+    }
+}
+dependencies {
+    // Official Tyz 6.4.2 API; not a second copy of Tyz.
+    compileOnly 'com.github.Tyzbrand:TyzsSkills:6.4.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+tasks.named('test', Test) { useJUnitPlatform() }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+// Preserve one single catalog as source for skill prefabs and inactive overrides.
+tasks.named('processResources') {
+    from('tyzs-retention/catalog.json') { rename { 'tmm-form-skills.json' } }
+}
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    def properties = [
+        mod_id:mod_id, mod_name:mod_name, mod_version:mod_version,
+        mod_license:mod_license, neo_version:neo_version,
+        minecraft_version_range:minecraft_version_range,
+        loader_version_range:loader_version_range
+    ]
+    inputs.properties properties
+    expand properties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
