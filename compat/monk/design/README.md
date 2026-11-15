@@ -112,6 +112,12 @@ Only faction-specific one-time/progression permission, not a second generic mana
 | 12 | Telepathic | monastic learning license | Planned |
 | 14 | Acidic Spirit | magical spirit | Planned |
 
+## Corresponding Monk-specific Tyz progression
+
+The [primary Tyz Monk-only skeleton](primary-tyz-monk-only-skeleton-v1.json) catalogs the **seven** planned Monk-licensed ranked traits and **40** independently bounded Apotheosis effect-rank traits. This is **a supplement to the ONE global primary Tyz/MXP tree, not another Tyz runtime configuration**. The seven licenses link to the native skill-tree nodes above; the 40 affixes retain their actual distinct rarity milestones rather than fabricated 99-level ranks. All 47 are `active:false` until purchase/refund/faction gates and verified effect adapters exist.
+
+The other universal skills, source-derived attribute aliases and magic-compatibility ranks remain in the primary Tyz source. For Monk they are compatible and useful, but they are not repurchased just for joining the faction.
+
 ## Separate rules that must not get lost
 
 - **No Creative Flight skill.** Flight comes from permitted Draconic Evolution Curios. Momentum Gliding, once implemented, is a different ability: controlled non-creative fall-flying with thrust after verified Ender Dragon participation.
