@@ -2,6 +2,10 @@
 
 This file governs every automated contributor and pack change.
 
+## Mod comprehension research
+
+When asked to "work on the mod comprehension project", read [the entry point](MOD-COMPREHENSION.md), [Work instructions](docs/mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) and [coverage index](docs/mod-comprehension/INDEX.md). Autonomously continue a substantive single-mod profile or cross-mod interaction report, with exact-version sources and honest verification status. Research only: no unsolicited quest/config/KubeJS/gameplay changes, no copied JARs/assets, and no guesses about runtime compatibility.
+
 ## Hard baseline
 - Minecraft 1.21.1, NeoForge 21.1.265 (provisional until launcher/installer verification), Java 21.
 - Git tracks source, config, packwiz metadata and verification evidence. NEVER commit downloaded copyrighted mod JARs, caches, generated worlds, saves, logs, credentials, or EULA files.
