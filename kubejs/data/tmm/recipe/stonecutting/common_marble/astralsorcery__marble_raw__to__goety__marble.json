@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "astralsorcery:marble_raw",
-  "result": {
-    "id": "goety:marble",
-    "count": 1
-  }
-}

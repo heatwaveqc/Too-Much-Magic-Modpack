@@ -1,7 +1,7 @@
 # Natural stone Galore recipes and marble worldgen unification
 
 Generated from exact hash-pinned Minecraft 1.21.1 NeoForge server JARs.
-Generation: 24 Galore recipes, 12 marble stonecutter conversions, one Primal worldgen override.
+Generation: 24 Galore recipes, 2 marble stonecutter conversions, one Primal worldgen override.
 
 ## Generator operation
 Place one of the listed stone blocks BELOW Cobblegen Galore. Water on one horizontal side, lava on the opposite side. One item per cycle at base speed (tier scales output), inserted directly into an inventory above. No water/lava consumption. Seed block remains in world.
@@ -33,7 +33,7 @@ Galore's own cobblestone, stone, basalt, granite, andesite, diorite, tuff, nethe
 ## Marble unification
 
 The original configured Primal Magick ore-marble feature, source primalmagick-neoforge-1.21.1-6.0.7.jar, replaces primalmagick:marble_raw with astralsorcery:marble_raw. It preserves original target tag, count, size, placement, biomes and biome modifiers. This alters only new ordinary overworld terrain; existing chunks unchanged.
-Pastel Basal Marble stays in its dimension because it is an intentionally different biome stone; Goety's dedicated structure palettes are unchanged. All four marble block types have 1:1 bidirectional stonecutter conversions.
+Pastel Basal Marble stays in its dimension because it is an intentionally different biome stone; Goety's dedicated structure palettes are unchanged. Only Astral and Primal Magick's identical ordinary Marble blocks have 1:1 bidirectional stonecutter conversions; Goety Marble preserves its Cursed Infuser/totem crafting path and Pastel Basal Marble stays dimension-specific.
 
 ## Excluded stone-named worldgen materials
 

@@ -401,52 +401,12 @@ file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
 hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
 
 [[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__goety__marble.json"
-hash = "7e0bde55df6bcd1ac586872a6c83cf71ff64fa2cf48e981f88584229d8d0fbd2"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__pastel__basal_marble.json"
-hash = "6f6bd48571ef905ef6c03ed173f690dea519a58b670007e65257ec5e8cb847e2"
-
-[[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__primalmagick__marble_raw.json"
 hash = "dd8712498dc8b5b23f4b77649369e73d6ab555c7f7783f01499a10b83ac4a0a8"
 
 [[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/goety__marble__to__astralsorcery__marble_raw.json"
-hash = "42791f28023f1990c44f8717ed56b236288ddb1add68a8a236a88a23a0387d9e"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/goety__marble__to__pastel__basal_marble.json"
-hash = "f57e2ecd46e574f5808bc63ea9fa95caaa45ce3f84c6206ce71c8c8e6f05db63"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/goety__marble__to__primalmagick__marble_raw.json"
-hash = "37a960b3725bd9f8731f3b17003b7ea2c022e6f32df109f6dae1bf5c7c0d2859"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/pastel__basal_marble__to__astralsorcery__marble_raw.json"
-hash = "e52f5b68571dc6b3e82979a4506cf2519857a42a8f0b1dfbccc5b7260f897b67"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/pastel__basal_marble__to__goety__marble.json"
-hash = "fdab1b83378cf014de03cb051b5bf8f11efdb2ac53a925d4ccfaac7fb9ca9c9f"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/pastel__basal_marble__to__primalmagick__marble_raw.json"
-hash = "95a94b932bad56d43fda7f310875019c1ae6030eb26a58802b950a1e0e8dcd02"
-
-[[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__astralsorcery__marble_raw.json"
 hash = "f9fde86e835b2b6e88ca201d0f26dc6a9d278092d1d430f91092e579fad73bce"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__goety__marble.json"
-hash = "081074add80ced6c7f7028d19ef3c8565ec351c3f767d89faf69115e6c2b04b9"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__pastel__basal_marble.json"
-hash = "d6d4dbcc0155d4060dbb4eb10ca9251dde4429d0fda43c4e1ef33894f247cfd8"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
