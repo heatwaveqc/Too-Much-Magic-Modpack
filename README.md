@@ -14,6 +14,14 @@ Target: Minecraft **1.21.1**, NeoForge **21.1.265** (provisional baseline drawn 
 
 Before removing Pufferfish from the packwiz index and manifest, audit transitive mod dependencies; determine separately whether **Pufferfish's Attributes (`puffish-attributes`)** is still needed by anything. Migrate or remove Pufferfish category/tree configuration, advancement/quest references and rewards; install and pin Tyz, and carry out clean dedicated-server and client regression testing. Retain immutable known-good B6/B8 snapshots for rollback. Do **not** silently remove the Attributes library just because Pufferfish Skills is leaving. See [Monk catalog migration draft](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/31).
 
+## Living feature-and-test checklist
+
+**[Open the full 109-item feature checklist](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/FEATURE-CHECKLIST.md)** — complete goals across the build pipeline, quest content, every magic school, materials/dusts, Tyz skills and MXP, transformations, QoL, bosses, progression and release readiness. Each item has its own ID, a concrete acceptance test, and an evidence-backed state; a green server boot does not count as a gameplay PASS.
+
+**[ProjectE tiered-gate proposal](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/PROJECTE-TIERED-GATING-PROPOSAL.md)** — proposed initial transmutation unlock after **Gaia Guardian I OR Neo Vitae Foreman**, while extreme EMC machinery and Project Expansion remain post-Chaos Guardian. This is not implemented yet; the former single post-Chaos gate remains unimplemented too.
+
+The machine-readable register is [manifest/feature-checklist.json](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/feature-checklist.json), checked by its [validation workflow](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/feature-checklist.yml). All changes to statuses require evidence and preserve the known-good build channels.
+
 ## Test build channels (2026-11-14)
 
 Use the [Continuous Full Integration Launcher](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/full-integration-launcher.yml) for a **single comprehensive, explicitly UNSTABLE Prism test build** rather than multiple isolated branch ZIPs. It reads the latest registered feature heads from [integration sources](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/integration-sources.json), verifies and boots the combined pack including first-party modules, and preserves an exact commit-locked build manifest. New unclassified feature branches **block**, rather than vanish from, the test build.
