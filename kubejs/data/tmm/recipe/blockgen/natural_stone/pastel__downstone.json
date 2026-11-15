@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "pastel:downstone",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "pastel:downstone"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}

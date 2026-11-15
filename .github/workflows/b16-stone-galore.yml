@@ -1,0 +1,166 @@
+name: B16 - Native Stone Galore Recipes and Marble Worldgen
+on:
+  push:
+    branches: ['feature/b16-natural-stone-galore-unification']
+    paths:
+      - '.github/workflows/b16-stone-galore.yml'
+      - 'scripts/generate_stone_galore.py'
+      - 'manifest/stone_generation_policy.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b16-natural-stone-qa
+  cancel-in-progress: false
+
+jobs:
+  material-recipes-and-server-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0  # Merge the shared baseline using complete common-ancestor history
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Install pinned packwiz and validate generator syntax
+        run: |
+          python3 -m py_compile scripts/generate_stone_galore.py scripts/validate.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Reconcile latest shared test baseline BEFORE download
+        id: reconcile
+        run: |
+          git fetch --no-tags origin feature/b16-natural-stone-galore-unification test/full-integration
+          git rebase origin/feature/b16-natural-stone-galore-unification
+          if ! git merge-base --is-ancestor origin/test/full-integration HEAD; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git merge --no-commit --no-ff -X ours origin/test/full-integration
+            export PATH="$(go env GOPATH)/bin:$PATH"
+            packwiz refresh
+            python3 scripts/validate.py
+            git add -A pack.toml index.toml
+            git commit -m "merge(b16): reconcile latest shared baseline and refresh packwiz"
+          fi
+          python3 scripts/validate.py
+      - name: Hash-verify every pinned server JAR
+        id: jars
+        env:
+          B16_JAR_DIR: "${{ runner.temp }}/tmm-b16-verified-jars"
+        run: python3 scripts/download_mods.py "$B16_JAR_DIR"
+      - name: Generate complete policy-based recipes against actual JARs
+        id: build
+        env:
+          B16_JAR_DIR: "${{ runner.temp }}/tmm-b16-verified-jars"
+        run: |
+          python3 scripts/generate_stone_galore.py "$B16_JAR_DIR"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          base=Path("kubejs/data/tmm/recipe/blockgen/natural_stone")
+          cuts=Path("kubejs/data/tmm/recipe/stonecutting/common_marble")
+          p=json.loads(Path("manifest/stone_generation_policy.json").read_text())
+          assert len(list(base.glob("*.json")))==24
+          assert len(list(cuts.glob("*.json")))==2
+          for f in base.glob("*.json"):
+              x=json.loads(f.read_text())
+              assert x["type"]=="cobblegengalore:blockgen"
+              assert x["result"]["id"] not in p["excluded_natural_candidates"]
+              assert x["modifier"]["Name"]==x["result"]["id"]
+              assert not x["consumeLeft"] and not x["consumeRight"]
+          for f in cuts.glob("*.json"):
+              x=json.loads(f.read_text())
+              assert x["type"]=="minecraft:stonecutting"
+              assert x["ingredient"]!=x["result"]["id"]
+              assert x["result"]["count"]==1
+          data=json.loads(Path("kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json").read_text())
+          assert data["config"]["targets"][0]["state"]["Name"]=="astralsorcery:marble_raw"
+          print("PASS: custom generator count, all block modifiers and exact marble output")
+          PY
+      - name: Packwiz refresh, full index checks and deterministic recipe rerun
+        id: validate
+        env:
+          B16_JAR_DIR: "${{ runner.temp }}/tmm-b16-verified-jars"
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          packwiz refresh
+          python3 scripts/validate.py
+          find kubejs/data/tmm/recipe/blockgen/natural_stone \
+            kubejs/data/tmm/recipe/stonecutting/common_marble -name '*.json' -print0 \
+            | sort -z | xargs -0 sha256sum > /tmp/b16-recipe-hashes-before
+          sha256sum kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json \
+            docs/NATURAL-STONE-GALORE-RECIPES.md >> /tmp/b16-recipe-hashes-before
+          python3 scripts/generate_stone_galore.py "$B16_JAR_DIR"
+          find kubejs/data/tmm/recipe/blockgen/natural_stone \
+            kubejs/data/tmm/recipe/stonecutting/common_marble -name '*.json' -print0 \
+            | sort -z | xargs -0 sha256sum > /tmp/b16-recipe-hashes-after
+          sha256sum kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json \
+            docs/NATURAL-STONE-GALORE-RECIPES.md >> /tmp/b16-recipe-hashes-after
+          diff -u /tmp/b16-recipe-hashes-before /tmp/b16-recipe-hashes-after
+          packwiz refresh
+          python3 scripts/validate.py
+          test -z "$(git diff -- mods)"
+      - name: Actual combined NeoForge dedicated-server smoke
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: "${{ runner.temp }}/tmm-b16-server-smoke"
+        run: |
+          bash scripts/smoke_server.sh
+          test -s "$WORK_DIR/server.log"
+          if grep -Ei '(Failed to parse|Failed to load recipe|Unknown recipe serializer|Error parsing recipe).*(tmm:|cobblegengalore|primalmagick:ore_marble_raw)' "$WORK_DIR/server.log"; then
+            echo 'FAIL: generated stone or worldgen parse error'
+            exit 1
+          fi
+      - name: Commit generated recipes only after full server PASS
+        if: steps.jars.outcome == 'success' && steps.build.outcome == 'success' && steps.validate.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          packwiz refresh
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml \
+            docs/NATURAL-STONE-GALORE-RECIPES.md \
+            kubejs/data/tmm/recipe/blockgen/natural_stone \
+            kubejs/data/tmm/recipe/stonecutting/common_marble \
+            kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(b16): install seeded Galore stones, bidirectional marble stonecutter and worldgen canonicalization"
+            git fetch --no-tags origin feature/b16-natural-stone-galore-unification
+            git rebase origin/feature/b16-natural-stone-galore-unification
+            python3 scripts/validate.py
+          fi
+          # Also push a baseline merge that produced no net recipe changes.
+          git push origin HEAD:feature/b16-natural-stone-galore-unification
+      - name: Store logs and stone policy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b16-stone-generation-qa
+          path: |
+            docs/NATURAL-STONE-GALORE-RECIPES.md
+            manifest/stone_generation_policy.json
+            kubejs/data/tmm/recipe/blockgen/natural_stone
+            kubejs/data/tmm/recipe/stonecutting/common_marble
+            kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json
+            ${{ runner.temp }}/tmm-b16-server-smoke/server.log
+            ${{ runner.temp }}/tmm-b16-server-smoke/logs/latest.log
+          if-no-files-found: warn
+      - name: Enforce generator and server smoke PASS
+        if: steps.jars.outcome != 'success' || steps.build.outcome != 'success' || steps.validate.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1

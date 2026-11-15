@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.9.3-b15-galore-stone-inventory-qa"
+version = "0.9.4-b16-natural-stone-galore-qa"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "6b58863dc23eb024620b042396916bbdc2e355294c563ea8b2a988cf7152f3c9"
+hash = "4a30acf003164bac9c26f6c17a032578c5ce4f480ec0b9f4a9a76aa1c4e3d782"
 
 [versions]
 minecraft = "1.21.1"

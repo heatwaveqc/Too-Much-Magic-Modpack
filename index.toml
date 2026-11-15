@@ -201,16 +201,16 @@ file = "config/ftbquests/quests/lang/en_us.snbt"
 hash = "962113607f631e188c737e746d8f14af707d9f5b6a790cdc84d1cf8a10d92f76"
 
 [[files]]
+file = "config/questshop-common.toml"
+hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
+
+[[files]]
 file = "config/relics.yaml"
 hash = "cb3d69b009e7c028b973f2fa88bb5f09010dae00f93a2dcdc8af956ea8dd0707"
 
 [[files]]
 file = "config/relics/relics/ring_of_the_seven_deadly_sins.yaml"
 hash = "575a02a56feb5ba7317201bcf9753574fcdeb97cb2b8d1e70a6b1d6bb388ea23"
-
-[[files]]
-file = "config/questshop-common.toml"
-hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
 [[files]]
 file = "config/tmm_transformations-server.toml"
@@ -243,6 +243,10 @@ hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
 [[files]]
 file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
+
+[[files]]
+file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
+hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
@@ -293,12 +297,116 @@ file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
 hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/astralsorcery__marble_raw.json"
+hash = "eb5873aae0928e8509b649e2e057249e25e82a6ab27ee88b95d43c750eef3215"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/deeperdarker__blooming_sculk_stone.json"
+hash = "dd0ee15b1b2a4af0489a454ba4fe87b1be414e65a29d9d77de65c938c913fca0"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/deeperdarker__cobbled_gloomslate.json"
+hash = "d150d687f4ed903b1d1b0ea6fbfe3760a168516b01369ae7f353d043da63b292"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/deeperdarker__cobbled_sculk_stone.json"
+hash = "98d4194aef4b655ea3c895aead2195f87def7b250d8b8501a4683c41005202c9"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/deeperdarker__gloomslate.json"
+hash = "23dd62a223acdc06e531e42238f152c46ef28d1c5791bd60a449454a1dfd3f14"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/deeperdarker__sculk_stone.json"
+hash = "3c18e50ae7aaae0c24fe169dc2a43a4dfa4bb6fee55e436124fa152f0cc2b618"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/forbidden_arcanus__darkstone.json"
+hash = "2b576ae0fa4b60b44f1c0e3c750f506f42cb2fa38c1f8c146dad02eaf33f444e"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__deepslate.json"
+hash = "445c2d77eb7baf19457ad55de30c8189a7f91ed3a457ffecb5ac7b3711394257"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__dripstone_block.json"
+hash = "15296711790172815eeb740b9be26fef89f1e1ef969f1b4fda710ba07877ba0b"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__magma_block.json"
+hash = "bfba31d610323d84e2cc2a59a917644c4a8d6c0b32d25c4e338dc1de488c19f4"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__red_sandstone.json"
+hash = "9740a1681e0a09cb4f62a6da3d57a336b27dca94dadf10f213bb4513e2a2426f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__sandstone.json"
+hash = "21d6adf6fd7dee6908bcb67417b54e9612d9d8281b4a6e0e44f0f43c4790602c"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/minecraft__smooth_basalt.json"
+hash = "a06a7394464b958c263c69a2e8e3bba6cb6a2787ca9f3833ee45814327a5e1c7"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__ashen_blackslag.json"
+hash = "2ba5ea10e62571693e2f39530a24f12ef6439d5a5c74dbf72f72bfb0e15a3f17"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__basal_marble.json"
+hash = "81bcaf7f3384eaceda73c2db26a33afab024e83fc198da495031880bca30dc6e"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__blackslag.json"
+hash = "09cc68758c36faad3fcc6e53339a1aff674d9b5c899c0e3b98729c09dbaf0cdd"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__cobbled_blackslag.json"
+hash = "64e9b208edc5e897a47e07a9d0bc2e8f68d730303c92469b3edc0fbb17bbf08c"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__downstone.json"
+hash = "2f3a93f9eccfff9a4ece5a3f9e7680518f113ab7a16136079c33d9002279365b"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__hummingstone.json"
+hash = "7381b9d9ab363af144a877bceb4a30e85bcb69c16e60e4f456b8201eadeb7f68"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__overgrown_blackslag.json"
+hash = "2b47ad9094e9ed94aac0fe62be2015da6aaf986fb8a704ed8fbcb9bb6db43784"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/pastel__shale_clay.json"
+hash = "5d99cb0c17145020f16e37716d9bd85d2de84f04647e37b7bb97d343d836be5e"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.json"
+hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/vampirism__cobbled_dark_stone.json"
+hash = "98f04175b631e26e764c58c922ae9ac46b94c1ba2c7cdf91626d0f6254df034d"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/blockgen/natural_stone/vampirism__dark_stone.json"
+hash = "891c0094d9aebd1a7822efd0cd6ad1a05a7435e477f2506279aa2571295398eb"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
 hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__primalmagick__marble_raw.json"
+hash = "dd8712498dc8b5b23f4b77649369e73d6ab555c7f7783f01499a10b83ac4a0a8"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__astralsorcery__marble_raw.json"
+hash = "f9fde86e835b2b6e88ca201d0f26dc6a9d278092d1d430f91092e579fad73bce"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
@@ -430,13 +538,13 @@ hash = "416b7f130791397fb2ceb9e89ce3fd0e870f207c8e40b759c069cb58b7544314"
 metafile = true
 
 [[files]]
-file = "mods/attributefix.pw.toml"
-hash = "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1"
+file = "mods/astral-sorcery.pw.toml"
+hash = "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c"
 metafile = true
 
 [[files]]
-file = "mods/astral-sorcery.pw.toml"
-hash = "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c"
+file = "mods/attributefix.pw.toml"
+hash = "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1"
 metafile = true
 
 [[files]]

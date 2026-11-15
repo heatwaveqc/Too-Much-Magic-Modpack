@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "purpose": "Every pinned-JAR worldgen-confirmed raw non-ore stone gets a seed-block Galore recipe; specialist ore resources and non-stone features excluded.",
+  "base_inputs": {
+    "left": "minecraft:water",
+    "right": "minecraft:lava",
+    "speed": 1
+  },
+  "natural_stones": [
+    "forbidden_arcanus:darkstone",
+    "pastel:ashen_blackslag",
+    "pastel:blackslag",
+    "pastel:overgrown_blackslag",
+    "deeperdarker:blooming_sculk_stone",
+    "deeperdarker:sculk_stone",
+    "pastel:downstone",
+    "pastel:hummingstone",
+    "vampirism:dark_stone",
+    "astralsorcery:marble_raw",
+    "pastel:basal_marble",
+    "primalmagick:marble_raw",
+    "deeperdarker:gloomslate",
+    "pastel:shale_clay"
+  ],
+  "excluded_natural_candidates": {
+    "forbidden_arcanus:runic_darkstone": "Rune-bearing ore; mining yields Forbidden Rune, not common building stone",
+    "forbidden_arcanus:runic_stone": "Rune-bearing ore",
+    "forbidden_arcanus:runic_deepslate": "Rune-bearing ore",
+    "malum:brilliant_stone": "Brilliant ore-forming resource block; verify loot before unlimited generation",
+    "malum:brilliant_deepslate": "Brilliant ore variant, not plain terrain",
+    "pastel:infested_blackslag": "Infested host block; not ordinary stone",
+    "pastel:budding_moonstone": "Budding gemstone crop, not stone",
+    "pastel:moonstone_block": "Gemstone storage/geode; not common stone",
+    "pastel:moonstone_cluster": "Gemstone crystal crop",
+    "pastel:small_moonstone_bud": "Gemstone crystal crop",
+    "pastel:medium_moonstone_bud": "Gemstone crystal crop",
+    "pastel:large_moonstone_bud": "Gemstone crystal crop",
+    "pastel:rock_crystal": "Special rock crystal resource, not common stone",
+    "pastel:hummingstone_glass": "Glass, not stone",
+    "evilcraft:infested_nether_netherrack": "Infested special Nether resource block",
+    "astralsorcery:aquamarine_shale": "Aquamarine-bearing ore-equivalent; native Chalice fluid consumption retained",
+    "pastel:slate_noxcap_block": "Fungal block named Slate, not mineral stone",
+    "pastel:slate_noxcap_gills": "Fungal gills, not mineral stone",
+    "pastel:slate_noxcap_stem": "Fungal stem, not mineral stone",
+    "pastel:slate_noxshroom": "Mushroom, not mineral stone",
+    "pastel:stripped_slate_noxcap_stem": "Stripped fungal stem, not mineral stone"
+  },
+  "harvested_stone_variants": [
+    "pastel:cobbled_blackslag",
+    "deeperdarker:cobbled_sculk_stone",
+    "deeperdarker:cobbled_gloomslate",
+    "vampirism:cobbled_dark_stone"
+  ],
+  "vanilla_natural_stones_not_already_in_galore": [
+    "minecraft:deepslate",
+    "minecraft:dripstone_block",
+    "minecraft:smooth_basalt",
+    "minecraft:magma_block",
+    "minecraft:sandstone",
+    "minecraft:red_sandstone"
+  ],
+  "marble_equivalence": [
+    "astralsorcery:marble_raw",
+    "primalmagick:marble_raw"
+  ],
+  "worldgen_unification": {
+    "native_feature_resource": "data/primalmagick/worldgen/configured_feature/ore_marble_raw.json",
+    "original_block": "primalmagick:marble_raw",
+    "canonical_block": "astralsorcery:marble_raw",
+    "scope": "Primal Magick ordinary marble ore-generation feature only; preserved placement and biome mods. Pastel Basal Marble dimension terrain and Goety structures remain unchanged."
+  },
+  "material_discovery_gate": "Each Galore recipe requires a matching placed block directly below generator: no block until first obtained/placed; uses stationary water/lava adjacent, no fluid consumption.",
+  "no_free_shale": true,
+  "notes": [
+    "Worldgen evidence from static pinned JAR JSON is not proof of live spawn; client/terrain tests remain.",
+    "Intentional exceptions to the blanket rule are documented in excluded_natural_candidates, primarily ore equivalents, special infested hosts, gemstones, and fungi.",
+    "The pack's existing Galore base recipes for stone/cobble/andesite/diorite/granite/tuff/basalt/obsidian/netherrack are NOT replaced.",
+    "Marble stonecutter conversions are 1:1 bidirectional between Astral and Primal Magick's identically named ordinary overworld marble. Pastel Basal Marble remains dimension-specific; Goety Marble keeps its totem/Cursed Infuser progression and dedicated structures.",
+    "No ore items or drops become Galore outputs, and named natural stone's first-acquisition requirement is preserved by the seed modifier.",
+    "Natural dimension-dominant stones stay as their native worldgen blocks; only the truly duplicate ordinary overworld marble gets one canonical material.",
+    "Exact published Galore 0.2.9 JAR already implements blackstone, calcite and end_stone: preserve native recipes, do not add duplicates."
+  ]
+}
