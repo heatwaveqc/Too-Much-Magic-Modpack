@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "kubejs/data/tmm/recipe/locate_structure/mineshaft.json": ("tmm:mineshaft", "minecraft:rail", "minecraft:mineshaft"),
+    "kubejs/data/tmm/recipe/locate_structure/mineshaft.json": ("tmm:mineshaft", "minecraft:rail", "bettermineshafts:better_mineshafts"),
     "kubejs/data/tmm/recipe/locate_structure/shipwreck.json": ("tmm:shipwreck", "minecraft:nautilus_shell", "minecraft:shipwreck"),
 }
 
