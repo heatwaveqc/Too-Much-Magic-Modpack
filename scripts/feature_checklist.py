@@ -134,12 +134,12 @@ def render(data: dict) -> str:
         "",
         "## Gate policy",
         "",
-        "The earlier ProjectE-after-Chaos design is under revision. "
-        "See [the tiered ProjectE gate proposal](PROJECTE-TIERED-GATING-PROPOSAL.md): "
-        "initial transmutation after either Gaia Guardian I **or** Neo Vitae Foreman; "
-        "extreme EMC generation and Project Expansion after Chaos Guardian. "
-        "This is an explicit **proposal**, not an implemented server-side gate. "
-        "Never use a quest checkbox as the only enforcement.",
+        "The former all-post-Chaos ProjectE policy is superseded. "
+        "See [the boss-trophy recipe policy](PROJECTE-TIERED-GATING-PROPOSAL.md): "
+        "interchangeable Ars/Gaia/Foreman-associated drops in the Stone's center, "
+        "and Chaos Shard in Red MK3+ direct Power Flowers and the MK3 upgrade. "
+        "These recipe changes are source-staged pending in-world QA, **not personal boss-kill permissions**; "
+        "Matter Upgrader and EMC synthesis are separate tests.",
         "",
     ])
     return "\n".join(out)
