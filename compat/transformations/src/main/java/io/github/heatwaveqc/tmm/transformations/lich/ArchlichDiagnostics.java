@@ -18,6 +18,12 @@ public final class ArchlichDiagnostics {
             return "Archlich priority=" + enabled
                     + "; Goety and Forbidden Magic must both be loaded.";
         }
+        String goetyVersion = ModList.get().getModContainerById("goety")
+                .map(mod -> mod.getModInfo().getVersion().toString()).orElse("unknown");
+        String forbiddenVersion = ModList.get().getModContainerById("witchery_forbidden_magic")
+                .map(mod -> mod.getModInfo().getVersion().toString()).orElse("unknown");
+        boolean versionsMatch = goetyVersion.startsWith("3.2.2")
+                && forbiddenVersion.startsWith("0.5.37");
         try {
             Class<?> goetyType = Class.forName("com.Polarice3.Goety.utils.LichdomHelper");
             boolean goety = (Boolean) goetyType.getMethod("isLich", Player.class)
@@ -36,10 +42,12 @@ public final class ArchlichDiagnostics {
             Object pool = poolType.getField("INSTANCE").get(null);
             int souls = ((Number) poolType.getMethod(
                     "getCurrentSouls", ServerPlayer.class).invoke(pool, player)).intValue();
-            boolean willPrioritize = enabled
+            boolean willPrioritize = enabled && versionsMatch
                     && ArchlichResurrectionPolicy.prioritizePhylactery(
                     goety, forbidden, level, souls, false);
             return "Archlich priority=" + enabled
+                    + "; pinned native API compatible=" + versionsMatch
+                    + " (Goety " + goetyVersion + ", Forbidden Magic " + forbiddenVersion + ")"
                     + "; native Goety lich=" + goety
                     + ", Forbidden Magic lich=" + forbidden
                     + ", Forbidden Magic level=" + level
