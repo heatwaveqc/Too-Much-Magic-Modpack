@@ -120,7 +120,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | researching | [profile](mods/ars-nouveau.md) |
 | `astral-sorcery` | Astral Sorcery | magic | enabled flag | full | queued | — |
 | `botania` | Botania | magic | inactive | full | deferred | — |
-| `botania-revived` | Botania Revived | magic | enabled flag | full | queued | — |
+| `botania-revived` | Botania Revived | magic | enabled flag | full | researching | [profile](mods/botania-revived.md) |
 | `eidolon-repraised` | Eidolon: Repraised | magic | enabled flag | full | queued | — |
 | `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | queued | — |
 | `evilcraft` | EvilCraft | magic | enabled flag | full | queued | — |
@@ -232,4 +232,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Forbidden Magic 0.5.37 profile started from the exact hash-pinned JAR. Mapped its gated Soul Magic guide additions, four code-granted necromancy ranks, soul rites and phylactery creation/binding path. The user's separate Archlich target requires Phylactery before Arca; Arca is not present in this addon. See the profile.
 - 2026-11-15 — Standalone Vampirism and Werewolves are marked deferred for this knowledge queue because the owner-approved target retires those mods after Hunter/Monk migration; this is a research-status reconciliation only, not a runtime change.
 - 2026-11-15 — Summoning Rituals 3.14.2 profile added from exact-release source. Confirmed it is a recipe framework with no default rituals and no TMM altar acquisition/recipe scripts; documented typed input/output channels, sacrifice semantics and command risks. See profile and compatibility notes.
-- **Next action:** continue with `botania-revived`, `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR, Forbidden Magic and Summoning Rituals remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — Botania Revived 2.0.2 profile and Botania × Ars source-supported interaction report added from the exact hash-matched JAR/source. Recorded default-enabled Asgard/creative/exploration modules, Loonium loot-mode risk, and Ars mana/Source bridge for later balance/client tests. See profile, interaction report and compatibility notes.
+- **Next action:** continue with `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
