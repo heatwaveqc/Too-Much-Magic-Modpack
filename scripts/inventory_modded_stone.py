@@ -22,7 +22,7 @@ STONE_RE = re.compile(
     r"chalk|travertine|mudstone|soapstone|argillite|quartzite|sandstone|"
     r"cobbled|scoria|asurine|veridium|crimsite|ochrum|endstone|deepslate|"
     r"menhir|pumice|ashstone|soulstone|otherstone|livingrock|"
-    r"jasper|dolomite|rhyolite|brimstone|flintrock",
+    r"jasper|dolomite|rhyolite|brimstone|flintrock|blackslag|nephelinite|picrite|breccia",
     re.I,
 )
 # Ore is tracked separately even when it appears in a stone family.
@@ -44,7 +44,7 @@ WORLDGEN_RE = re.compile(
 # Strict-ish structural references; no loot-table references counted as natural generation.
 GROUPS = (
     ("marble", r"marble"),
-    ("dark/black stones", r"darkstone|blackstone|black_rock|black_.*stone|dreadstone|shadowstone|voidstone|ashen|scoria"),
+    ("dark/black stones", r"darkstone|blackstone|blackslag|black_rock|black_.*stone|dreadstone|shadowstone|voidstone|ashen|scoria"),
     ("slate and shale", r"slate|shale|schist"),
     ("limestone, calcite and chalk", r"limestone|calcite|chalk|travertine|dolomite"),
     ("rock, basalt and volcanic stone", r"basalt|gabbro|obsidian|pumice|rhyolite|scoria|rock"),
@@ -231,7 +231,47 @@ def main() -> None:
         lines += ["### Other minerals/stones", ""]
         lines += [f"- \`{e['id']}\` — {e['name']} (\`{e['owner_packwiz']}\`)" for e in group]
         lines.append("")
+    lines += [
+        "## Key raw-stone families for generator decisions", "",
+        "This curated index is based on real IDs in the pinned JARs. A JSON reference is evidence, "
+        "not proof of spawning in a live world. No custom generator recipes are installed.", "",
+        "| Family | Actual block ID | Worldgen/structure JSON | Suggested direction |",
+        "|---|---|---|---|",
+    ]
+    key_families = [
+        ("Astral Marble", "astralsorcery:marble_raw", "Seed after discovering marble"),
+        ("Pastel Basal Marble", "pastel:basal_marble", "Seed only after Pastel dimension access"),
+        ("Primal Magick Marble", "primalmagick:marble_raw", "Seed after finding marble"),
+        ("Goety Marble", "goety:marble", "Confirm if ordinary stone or structure-only"),
+        ("Tombstone Marble", "tombstone:white_marble", "Decorative only, test acquisition"),
+        ("Forbidden Darkstone", "forbidden_arcanus:darkstone", "Use darkstone seed + thematic material"),
+        ("Vampirism Dark Stone", "vampirism:dark_stone", "Seed after discovering native supernatural route"),
+        ("Pastel Blackslag", "pastel:blackslag", "Seed after discovering Pastel dimension material"),
+        ("Pastel Ashen Blackslag", "pastel:ashen_blackslag", "Audit variant before adding generator"),
+        ("Deeper Darker Sculk Stone", "deeperdarker:sculk_stone", "Seed after dimension access"),
+        ("Deeper Darker Gloomslate", "deeperdarker:gloomslate", "Seed after dimension access"),
+        ("Embers Ashen Stone", "embers:ashen_stone", "Seed after resource discovery"),
+        ("Iron's Voidstone", "irons_spellbooks:voidstone", "Inspect progression/structure use"),
+        ("Cataclysm Azure Seastone", "cataclysm:azure_seastone", "Do not mass-produce protected structures"),
+        ("Occultism Otherstone Natural", "occultism:otherstone_natural", "Preserve native occultism transformation"),
+        ("Botania Livingrock", "botania:livingrock", "Keep native Pure Daisy production"),
+        ("Ars Sourcestone", "ars_nouveau:sourcestone", "Keep native Ars Source crafting"),
+        ("Pastel Argillite", "pastel:argillite", "Seed after exploring native dimension"),
+        ("Pastel Nephelinite", "pastel:nephelinite", "Seed after exploring native dimension"),
+        ("Pastel Downstone", "pastel:downstone", "Seed after exploring native dimension"),
+        ("Pastel Shale Clay", "pastel:shale_clay", "Audit mineral use before renewable recipe"),
+        ("Astral Aquamarine Shale", "astralsorcery:aquamarine_shale", "Exclude from Galore; consuming native Chalice"),
+    ]
+    for label, block_id, decision in key_families:
+        item = entries.get(block_id)
+        if item is None:
+            lines.append(f"| {label} | \`{block_id}\` — not found | — | Verify before recipe |")
+        else:
+            evidence = "Yes" if item["worldgen_json_evidence"] else "No explicit JSON link"
+            lines.append(f"| {label} | \`{block_id}\` | {evidence} | {decision} |")
+    lines.append("")
     lines += ["## Worked variants and ore stones (full IDs in machine inventory)","",
+
               "They are recorded for **completeness**, not recommended as generator outputs. "
               "Worked variants already have ordinary crafting/native mod progression; ores often "
               "have balance/progression implications.","",

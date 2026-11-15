@@ -29,10 +29,19 @@ def main() -> None:
     m=json.loads(ROSTER.read_text(encoding="utf-8"))
     active=[x for x in m["mods"] if x["enabled_in_pack"]]
     original={path.name:path.read_bytes() for path in MODS.glob("*.pw.toml")}
-    assert len(active)==len(original)==155,(len(active),len(original))
+    assert len(active)==len(original),(len(active),len(original))
     candidate=next(x for x in m["mods"] if x["id"]==MOD_ID)
-    assert candidate["desired"] and not candidate["enabled_in_pack"]
-    assert candidate["version"]==VERSION
+    assert candidate["desired"] and candidate["version"]==VERSION
+    if candidate["enabled_in_pack"]:
+        assert len(active)==156,len(active)
+        existing=tomllib.loads((MODS/(candidate["packwiz_slug"]+".pw.toml")).read_text())
+        cf=existing.get("update",{}).get("curseforge",{})
+        assert (cf.get("project-id"),cf.get("file-id"))==(CF_PROJECT,CF_FILE)
+        assert existing["filename"]==VERSION and existing["download"]["hash"]
+        command("python3","scripts/validate.py")
+        print("PASS existing B14 pin, no packwiz changes",flush=True)
+        return
+    assert len(active)==155,len(active)
     assert m["batches"][-1]["id"]=="B14"
     command("packwiz","--yes","curseforge","add","--addon-id",str(CF_PROJECT),"--file-id",str(CF_FILE))
     all_pins={p.name:p for p in MODS.glob("*.pw.toml")}
