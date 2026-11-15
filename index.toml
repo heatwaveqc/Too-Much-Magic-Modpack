@@ -325,6 +325,10 @@ file = "kubejs/data/werewolves/tags/item/werewolf_food.json"
 hash = "02b63441afb9ec221193cb8b5ac6b55f6d8cd246af0fbba5edb4bc2eb2aa41a5"
 
 [[files]]
+file = "kubejs/server_scripts/ban_seven_sins_ring.js"
+hash = "ca24abbb4ce289f4906a30cc766ee60c5c1f5eaf02eb9414b4e67a1bcc04e957"
+
+[[files]]
 file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
