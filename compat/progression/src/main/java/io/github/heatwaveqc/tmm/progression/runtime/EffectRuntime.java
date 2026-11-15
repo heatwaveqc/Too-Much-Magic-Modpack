@@ -36,7 +36,7 @@ public final class EffectRuntime {
     private static final Map<UUID,Map<ResourceLocation,String>> previousAttributes = new HashMap<>();
 
     public static List<Active> active(ServerPlayer player) {
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER);
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         List<Active> out = new ArrayList<>();
         for (Definition.Path path : PathRegistry.all().values()) {
             Track track = ledger.get(path.id());

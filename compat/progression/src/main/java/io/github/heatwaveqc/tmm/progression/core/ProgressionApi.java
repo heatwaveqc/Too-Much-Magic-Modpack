@@ -19,13 +19,13 @@ public final class ProgressionApi {
     private static final Map<UUID,Map<String,Long>> cooldowns = new HashMap<>();
 
     public static Track track(ServerPlayer player, String pathId) {
-        return player.getData(ProgressionAttachments.LEDGER).get(pathId);
+        return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
     }
 
     public static boolean join(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER);
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
         if (!path.exclusiveGroup().isBlank()) {
             for (Definition.Path other : PathRegistry.all().values()) {
@@ -33,7 +33,7 @@ public final class ProgressionApi {
                     && ledger.get(other.id()).joined()) return false;
             }
         }
-        player.setData(ProgressionAttachments.LEDGER,
+        player.setData(ProgressionAttachments.LEDGER.get(),
             ledger.with(pathId,ProgressionMath.join(path,ledger.get(pathId))));
         return true;
     }
@@ -42,19 +42,19 @@ public final class ProgressionApi {
     public static boolean buy(ServerPlayer player, String pathId, String skillId) {
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER);
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Track before = ledger.get(pathId);
         Track after = ProgressionMath.buy(path,before,skillId);
         if (after == before) return false;
-        player.setData(ProgressionAttachments.LEDGER,ledger.with(pathId,after));
+        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
         return true;
     }
 
     public static boolean respec(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null || !track(player,pathId).joined()) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER);
-        player.setData(ProgressionAttachments.LEDGER,
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        player.setData(ProgressionAttachments.LEDGER.get(),
             ledger.with(pathId,ProgressionMath.refundAll(path,ledger.get(pathId))));
         return true;
     }
@@ -67,7 +67,7 @@ public final class ProgressionApi {
     /** Standardized activity events: one authoritative signal, all joined paths. */
     public static void record(ServerPlayer player, Signal signal) {
         if (player.isCreative() || player.isSpectator()) return;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER);
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         for (Definition.Path path : PathRegistry.all().values()) {
             Track state = next.get(path.id());
@@ -122,7 +122,7 @@ public final class ProgressionApi {
             } while(changed);
             if (!state.equals(next.get(path.id()))) next = next.with(path.id(),state);
         }
-        if (next != ledger) player.setData(ProgressionAttachments.LEDGER,next);
+        if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
     }
 
     public static void forgetTransient(UUID playerId) { cooldowns.remove(playerId); }
