@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.server.level.ServerPlayer;
+import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
@@ -110,6 +111,7 @@ public final class ProgressionEvents {
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
+            Enrollment.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
         }
@@ -118,6 +120,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
+            Enrollment.clear(player);
         }
     }
 }
