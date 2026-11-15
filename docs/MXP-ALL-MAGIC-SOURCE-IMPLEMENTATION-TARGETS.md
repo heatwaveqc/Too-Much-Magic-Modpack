@@ -154,3 +154,7 @@ The first-access normalized baseline **B is undecided**. A single amethyst dust 
 - [Feywild 5.6.4 altar has no crafter UUID](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/FEYWILD-5.6.4-INITIAL-SKILLS-AUDIT-2026-11-14.md)
 - [JAWR 0.5.39 Infusion and Symbology audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/JAWR-0.5.39-INFUSION-SYMBOLOGY-PUFFERFISH-AUDIT-2026-11-14.md)
 - [Primal Magick 6.0.7 change log about wand-stored mana](https://modrinth.com/mod/primal-magick/version/6.0.7)
+
+## Ritual/completion balance proposal for the 11 mods (not yet approved)
+
+See [11-mod ritual and magical-completion MXP value matrix](MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md) for fixed first ritual reward bands, divided repeat base, smaller manually attributable craft/quest awards, Occultism Foliot→Marid four-tier pricing, Astral 2.0 attunement, Totemic and Enchanted rites, Hexerei's unimplemented rituals, and the fact that Summoning Rituals supplies **no built-in recipes**. **Proposal only; no values implemented.**
