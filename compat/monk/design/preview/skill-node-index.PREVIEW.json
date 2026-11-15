@@ -1,14 +1,15 @@
 {
   "state": "NOT_RUNTIME_LOADABLE",
-  "warning": "44 blueprint-only skill IDs have no Java registry entries or effects. DO NOT copy this into src/main/resources.",
+  "warning": "42 blueprint-only skills have no Java registry entries or effects. DO NOT copy these into src/main/resources. Spellcasting comes from Ars and Iron's, not Spirit Projectile; Fortune/Silk uses one Treasure Hand node.",
   "nodes": [
     {
-      "configured_node": "tmm_monk:monk/acidic_spirit",
-      "skill": "tmm_monk:acidic_spirit",
+      "configured_node": "tmm_monk:monk/acidic_casting",
+      "skill": "tmm_monk:acidic_casting",
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 14,
-      "source_record": "tmm_monk:apotheosis/ranged/mob_effect/acidic"
+      "source_record": "tmm_monk:apotheosis/ranged/mob_effect/acidic",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/animal_friendship",
@@ -16,7 +17,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 6,
-      "source_record": "tmm_monk:contemplation/animal_friendship"
+      "source_record": "tmm_monk:contemplation/animal_friendship",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/blink",
@@ -24,7 +26,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 11,
-      "source_record": "tmm_monk:mobility/blink"
+      "source_record": "tmm_monk:mobility/blink",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/breath_meditation_1",
@@ -32,7 +35,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 4,
-      "source_record": "tmm_monk:mobility/breath_meditation"
+      "source_record": "tmm_monk:mobility/breath_meditation",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/breath_meditation_2",
@@ -40,7 +44,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 10,
-      "source_record": "tmm_monk:mobility/breath_meditation"
+      "source_record": "tmm_monk:mobility/breath_meditation",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/catch_arrows",
@@ -48,7 +53,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 6,
-      "source_record": "tmm_monk:martial/arrow_catch"
+      "source_record": "tmm_monk:martial/arrow_catch",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/creeper_kiss",
@@ -56,15 +62,17 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 12,
-      "source_record": "tmm_monk:martial/creeper_kiss"
+      "source_record": "tmm_monk:martial/creeper_kiss",
+      "source_records": null
     },
     {
-      "configured_node": "tmm_monk:monk/deathbound",
-      "skill": "tmm_monk:deathbound",
+      "configured_node": "tmm_monk:monk/deathbound_casting",
+      "skill": "tmm_monk:deathbound_casting",
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 18,
-      "source_record": "tmm_monk:apotheosis/ranged/mob_effect/deathbound"
+      "source_record": "tmm_monk:apotheosis/ranged/mob_effect/deathbound",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/defense_1",
@@ -72,15 +80,8 @@
       "implementation": "live",
       "backend_role": "one_time_native",
       "earliest_rank_design": 1,
-      "source_record": null
-    },
-    {
-      "configured_node": "tmm_monk:monk/delicate_hands",
-      "skill": "tmm_monk:delicate_hands",
-      "implementation": "blueprint_only",
-      "backend_role": "one_time_native",
-      "earliest_rank_design": 10,
-      "source_record": "tmm_monk:harvest/silk_touch"
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/diamond_fist",
@@ -88,7 +89,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 9,
-      "source_record": "tmm_monk:harvest/barehand_tier"
+      "source_record": "tmm_monk:harvest/barehand_tier",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/empty_hand_paragon",
@@ -96,7 +98,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 20,
-      "source_record": null
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/exotic_fist",
@@ -104,7 +107,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 18,
-      "source_record": "tmm_monk:harvest/barehand_tier"
+      "source_record": "tmm_monk:harvest/barehand_tier",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/explosion_resilience_license",
@@ -112,7 +116,8 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 9,
-      "source_record": "tmm_monk:contemplation/blast_resilience"
+      "source_record": "tmm_monk:contemplation/blast_resilience",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/fire_resilience_license",
@@ -120,7 +125,8 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 7,
-      "source_record": "tmm_monk:contemplation/fire_resilience"
+      "source_record": "tmm_monk:contemplation/fire_resilience",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/focused_advancement_license",
@@ -128,15 +134,8 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 10,
-      "source_record": "tmm_monk:mastery/faction_skill_point_bonus"
-    },
-    {
-      "configured_node": "tmm_monk:monk/fortunate_hands_license",
-      "skill": "tmm_monk:fortunate_hands_license",
-      "implementation": "blueprint_only",
-      "backend_role": "tyz_license_only",
-      "earliest_rank_design": 13,
-      "source_record": "tmm_monk:harvest/fortune_hands"
+      "source_record": "tmm_monk:mastery/faction_skill_point_bonus",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/galvanizing",
@@ -144,7 +143,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 11,
-      "source_record": "tmm_monk:apotheosis/shield/mob_effect/galvanizing"
+      "source_record": "tmm_monk:apotheosis/shield/mob_effect/galvanizing",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/gardening",
@@ -152,7 +152,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 9,
-      "source_record": "tmm_monk:apotheosis/shears/effect/gardening"
+      "source_record": "tmm_monk:apotheosis/shears/effect/gardening",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/gentle_shearing",
@@ -160,7 +161,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 7,
-      "source_record": "tmm_monk:harvest/shear_touch"
+      "source_record": "tmm_monk:harvest/shear_touch",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/glass_touch",
@@ -168,7 +170,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 7,
-      "source_record": "tmm_monk:harvest/glass_touch"
+      "source_record": "tmm_monk:harvest/glass_touch",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/guarding_palm",
@@ -176,7 +179,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 4,
-      "source_record": "tmm_monk:martial/guarding_palm"
+      "source_record": "tmm_monk:martial/guarding_palm",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/harvest_1",
@@ -184,7 +188,20 @@
       "implementation": "live",
       "backend_role": "one_time_native",
       "earliest_rank_design": 1,
-      "source_record": "tmm_monk:harvest/barehand_tier"
+      "source_record": "tmm_monk:harvest/barehand_tier",
+      "source_records": null
+    },
+    {
+      "configured_node": "tmm_monk:monk/harvest_touch",
+      "skill": "tmm_monk:harvest_touch",
+      "implementation": "blueprint_only",
+      "backend_role": "one_time_toggle_and_tyz_license",
+      "earliest_rank_design": 10,
+      "source_record": "tmm_monk:harvest/silk_touch",
+      "source_records": [
+        "tmm_monk:harvest/silk_touch",
+        "tmm_monk:harvest/fortune_hands"
+      ]
     },
     {
       "configured_node": "tmm_monk:monk/hunger_discipline_license",
@@ -192,7 +209,8 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 6,
-      "source_record": "tmm_monk:contemplation/hunger_discipline"
+      "source_record": "tmm_monk:contemplation/hunger_discipline",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/iron_fist",
@@ -200,7 +218,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 5,
-      "source_record": "tmm_monk:harvest/barehand_tier"
+      "source_record": "tmm_monk:harvest/barehand_tier",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/lava_survival",
@@ -208,7 +227,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 13,
-      "source_record": "tmm_monk:contemplation/lava_survival"
+      "source_record": "tmm_monk:contemplation/lava_survival",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/leafforming",
@@ -216,7 +236,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 13,
-      "source_record": "tmm_monk:apotheosis/shears/effect/leafforming"
+      "source_record": "tmm_monk:apotheosis/shears/effect/leafforming",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/level_root",
@@ -224,7 +245,8 @@
       "implementation": "live",
       "backend_role": "faction_root",
       "earliest_rank_design": 1,
-      "source_record": null
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/looting_palm_license",
@@ -232,15 +254,17 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 9,
-      "source_record": "tmm_monk:harvest/looting_hands"
+      "source_record": "tmm_monk:harvest/looting_hands",
+      "source_records": null
     },
     {
-      "configured_node": "tmm_monk:monk/magical_spirit",
-      "skill": "tmm_monk:magical_spirit",
+      "configured_node": "tmm_monk:monk/magical_casting",
+      "skill": "tmm_monk:magical_casting",
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 11,
-      "source_record": "tmm_monk:apotheosis/ranged/magical"
+      "source_record": "tmm_monk:apotheosis/ranged/magical",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/martial_1",
@@ -248,7 +272,8 @@
       "implementation": "live",
       "backend_role": "one_time_native",
       "earliest_rank_design": 1,
-      "source_record": null
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/mobility_1",
@@ -256,7 +281,8 @@
       "implementation": "live",
       "backend_role": "one_time_native",
       "earliest_rank_design": 2,
-      "source_record": null
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/mobility_2",
@@ -264,7 +290,8 @@
       "implementation": "live",
       "backend_role": "one_time_native",
       "earliest_rank_design": 3,
-      "source_record": "tmm_monk:trait/minecraft/generic_step_height"
+      "source_record": "tmm_monk:trait/minecraft/generic_step_height",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/momentum_gliding",
@@ -272,7 +299,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 15,
-      "source_record": "tmm_monk:mobility/momentum_glide"
+      "source_record": "tmm_monk:mobility/momentum_glide",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/monastic_learning_license",
@@ -280,7 +308,8 @@
       "implementation": "blueprint_only",
       "backend_role": "tyz_license_only",
       "earliest_rank_design": 5,
-      "source_record": "tmm_monk:mastery/monastic_exp_gain"
+      "source_record": "tmm_monk:mastery/monastic_exp_gain",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/netherite_fist",
@@ -288,7 +317,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 14,
-      "source_record": "tmm_monk:harvest/barehand_tier"
+      "source_record": "tmm_monk:harvest/barehand_tier",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/omniscient",
@@ -296,7 +326,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 16,
-      "source_record": "tmm_monk:apotheosis/melee/mob_effect/omniscient"
+      "source_record": "tmm_monk:apotheosis/melee/mob_effect/omniscient",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/purifying_meditation",
@@ -304,7 +335,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 12,
-      "source_record": "tmm_monk:contemplation/cleansing"
+      "source_record": "tmm_monk:contemplation/cleansing",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/retreating",
@@ -312,7 +344,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 14,
-      "source_record": "tmm_monk:apotheosis/shield/retreating"
+      "source_record": "tmm_monk:apotheosis/shield/retreating",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/sandforming",
@@ -320,15 +353,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 9,
-      "source_record": "tmm_monk:apotheosis/breaker/ability/sandforming"
-    },
-    {
-      "configured_node": "tmm_monk:monk/spirit_projectile",
-      "skill": "tmm_monk:spirit_projectile",
-      "implementation": "blueprint_only",
-      "backend_role": "one_time_native",
-      "earliest_rank_design": 6,
-      "source_record": "tmm_monk:martial/spirit_projectile"
+      "source_record": "tmm_monk:apotheosis/breaker/ability/sandforming",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/steadfast",
@@ -336,7 +362,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 7,
-      "source_record": "tmm_monk:apotheosis/boots/ability/steadfast"
+      "source_record": "tmm_monk:apotheosis/boots/ability/steadfast",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/stillness_paragon",
@@ -344,7 +371,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 20,
-      "source_record": null
+      "source_record": null,
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/stoneforming",
@@ -352,7 +380,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 13,
-      "source_record": "tmm_monk:apotheosis/breaker/ability/stoneforming"
+      "source_record": "tmm_monk:apotheosis/breaker/ability/stoneforming",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/supermassive",
@@ -360,7 +389,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 18,
-      "source_record": "tmm_monk:apotheosis/breaker/ability/supermassive"
+      "source_record": "tmm_monk:apotheosis/breaker/ability/supermassive",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/surefooted",
@@ -368,7 +398,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 10,
-      "source_record": "tmm_monk:apotheosis/boots/ability/surefooted"
+      "source_record": "tmm_monk:apotheosis/boots/ability/surefooted",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/telepathic",
@@ -376,7 +407,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 12,
-      "source_record": "tmm_monk:apotheosis/generic/telepathic"
+      "source_record": "tmm_monk:apotheosis/generic/telepathic",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/unhurried",
@@ -384,7 +416,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 14,
-      "source_record": "tmm_monk:apotheosis/boots/ability/unhurried"
+      "source_record": "tmm_monk:apotheosis/boots/ability/unhurried",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/water_walking",
@@ -392,7 +425,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 8,
-      "source_record": "tmm_monk:mobility/water_walk"
+      "source_record": "tmm_monk:mobility/water_walk",
+      "source_records": null
     },
     {
       "configured_node": "tmm_monk:monk/withering_stare",
@@ -400,7 +434,8 @@
       "implementation": "blueprint_only",
       "backend_role": "one_time_native",
       "earliest_rank_design": 12,
-      "source_record": "tmm_monk:martial/withering_stare"
+      "source_record": "tmm_monk:martial/withering_stare",
+      "source_records": null
     }
   ]
 }
