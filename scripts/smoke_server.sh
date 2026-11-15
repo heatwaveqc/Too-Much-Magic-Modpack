@@ -43,6 +43,12 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
 else
   echo "Starting loader-only dedicated server (no mods installed)"
 fi
+# Every full modded QA that includes the Mahou KubeJS catalyst bridge must
+# exercise an actual dropped-item entity tick. A plain server boot did not
+# catch the reported world-start crash.
+if [[ "${SMOKE_WITH_MODS:-0}" == "1" && -f "$WORK_DIR/kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js" ]]; then
+  SMOKE_ITEM_TICK_TEST=1
+fi
 mkfifo cmd.fifo
 # Stop as soon as the server becomes ready, instead of needlessly idling for minutes.
 # A time limit remains to avoid indefinite hangs on a broken startup.
@@ -79,6 +85,25 @@ if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; t
       exit 1
     fi
     echo "PASS: real modded server spawned/ticked an ordinary dropped item without crashing"
+  fi
+  # For the QA pack, prove NeoForge copied the experimental default config
+  # into the new world, not merely that packwiz indexed the template file.
+  if [[ -f "$WORK_DIR/defaultconfigs/tmm_transformations-server.toml" ]]; then
+    python3 - "$WORK_DIR/world/serverconfig/tmm_transformations-server.toml" <<'PY'
+import sys, tomllib
+from pathlib import Path
+path = Path(sys.argv[1])
+assert path.is_file(), f"Missing newly-created vampire serverconfig: {path}"
+settings = tomllib.loads(path.read_text(encoding="utf-8"))
+expected = {
+    "experimentalVampireChassis": True,
+    "experimentalAutomaticDualAcquisition": True,
+    "experimentalAllowUnverifiedOtherProviders": True,
+    "experimentalOperatorCure": False,
+}
+assert settings == expected, f"New-world vampire settings not loaded as intended: {settings}"
+print("PASS: new world really activated the disposable QA vampire config defaults")
+PY
   fi
   echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
   exit 0
