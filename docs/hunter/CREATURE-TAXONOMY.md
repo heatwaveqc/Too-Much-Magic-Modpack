@@ -46,19 +46,19 @@
 4. **Void** includes Enderman, Endermite, confirmed variants, Ender Dragon and Draconic Evolution Chaos Guardian. It can also include Goety's `goety:enderlings` Watchlings/Blastlings/Snarelings. **Do not classify every End mob as Void**; Shulker remains unresolved.
 5. **Piglin** includes Piglin, Brute, Hoglin and coherent faction/ecosystem variants; **zombified Piglins and Zoglins are Undead**, not Piglin specialists.
 6. **Aquatic** is an intentional ecology/physiology group across any dimension; animals, Deeplings, Cataclysm ocean mobs and other genuinely adapted enemies can count.
-7. Multi-tag creatures are legitimate: Ender Dragon = Dragon + Void; Drowned = Undead + Aquatic; Clawdian = Aquatic + Arthropod. **Cap or diminish damage stacking** so obtaining several specialist branches does not trivialize multi-tag bosses.
+7. **Dinosaurs and prehistoric fauna are Beasts**, rather than a separate Prehistoric specialty. Actual aquatic arthropods (e.g., Trilocaris) remain Aquatic + Arthropod, since these describe their biology and combat ecology. Ancient Remnant/Modern Remnant are Beast + Undead in this pack; boss neutrality exclusions still apply. Multi-tag creatures are legitimate: Ender Dragon = Dragon + Void; Drowned = Undead + Aquatic; Clawdian = Aquatic + Arthropod. **Cap or diminish damage stacking** so obtaining several specialist branches does not trivialize multi-tag bosses.
 8. `boss`, `summoned`, `owner`, `hostile`, `flying`, `spellcasting`, `explosion`, `armor` and `teleportation` are **combat/encounter attributes**, not specialist branches.
 9. A data-driven registry must permit third-party mods to declare creature categories, tags, and individual exclusions. Neither the standalone progression Core nor standalone Monk should hardcode this taxonomy.
 
 ### Working specialization families
 
-Base families: **Undead, Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon, Fae, Aberration**.
+Base families: **Undead, Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon, Fae, Aberration**. **Dinosaurs are Beasts; there is no Prehistoric specialization.** Species traits like ancient/prehistoric may be retained as descriptive metadata, never as a Hunter damage category.
 
 Additional **candidate families, not yet owner-approved as skill trees**:
 - **Wilden** — Ars Nouveau Stalker/Hunter/Guardian/Chimera creature lineage.
 - **Goety Cult** — Goety Heretic, Warlock, Maverick, Crone, Apostle; this is a coherent social faction and not generic magical combat. [Goety's cultist listing](https://goety.wiki.gg/wiki/Category:Cultist).
 - **Hobgoblin** — JAWR's Hobgoblin community and patrons Mog/Gulg, pending decisions on whether patrons share species bonuses or only faction-counter abilities.
-- **Prehistoric**, **Mutant**, **Confection**, and perhaps **Darkness-born** — especially useful if Alex's Caves is added; that mod remains unpinned.
+- **Mutant**, **Confection**, and perhaps **Darkness-born** — especially useful if Alex's Caves is added; that mod remains unpinned.
 - **Malum Cult is NOT currently viable**: five tempting cultist registrations occur in a later upstream branch but **none exists in the pinned 1.8.2 runtime**. This candidate is suspended, not a supported pack tree.
 
 ### Corrected examples from exact runtime or lore
@@ -68,7 +68,7 @@ Additional **candidate families, not yet owner-approved as skill trees**:
 | Minecraft Ghast | **Undead** | Actual `minecraft:undead` entity-type tag; no Netherborn |
 | Eidolon Necromancer | **Undead** | Actual `minecraft:undead` tag, unlike earlier assumptions |
 | Iron's Necromancer | **Undead** | Actual `minecraft:undead` tag, unlike earlier assumptions |
-| Cataclysm Ancient Remnant | **Undead + Prehistoric** | Actual `minecraft:undead` tag on extinct dinosaur |
+| Cataclysm Ancient Remnant | **Undead + Beast** | Actual `minecraft:undead` tag on extinct dinosaur |
 | Cataclysm The Watcher | **Construct** | EMP-sensitive Ancient Factory robotic sentry; same for Goety's summoned Watcher |
 | Goety Blastling / Snareling / Watchling | **Void** | `goety:enderlings` lineage, not merely found in the End |
 | Witchery Imp / Demon / Mirror Demon | **Demon** | Actual `witchery:demonic_entity` tags |
