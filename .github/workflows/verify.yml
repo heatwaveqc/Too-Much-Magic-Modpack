@@ -96,3 +96,13 @@ jobs:
             ${{ runner.temp }}/tmm-modded-smoke/server.log
             ${{ runner.temp }}/tmm-modded-smoke/logs/latest.log
           if-no-files-found: warn
+
+  graphite-recipe:
+    if: github.ref_name == 'feature/diamond-graphite-furnace-compat'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify diamond-only reactor graphite recipes and JS syntax
+        run: |
+          node --check kubejs/server_scripts/reactors_diamond_graphite.js
+          node scripts/test_reactors_graphite_recipes.cjs
