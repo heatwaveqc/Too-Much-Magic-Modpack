@@ -45,7 +45,7 @@ public final class ProgressionEvents {
             && !event.getState().isAir()) {
             // The break event occurs at the verified block-breaking attempt.
             // Modded bulk mining may need a post-break adapter to count all actual blocks.
-            ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            // XP is NOT earned here: this is pre-commit and can still be vetoed.
             EffectHandlers.blockBreak(player,event);
         }
     }
@@ -71,8 +71,11 @@ public final class ProgressionEvents {
     }
     /** Loot-aware callback needed for Monk Glass Touch and Treasure Hand; no generic drop mutation. */
     private static void blockDrops(BlockDropsEvent event) {
-        if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player)
+        if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
+            ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
+        }
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
