@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pastel:basal_marble",
+  "result": {
+    "id": "primalmagick:marble_raw",
+    "count": 1
+  }
+}

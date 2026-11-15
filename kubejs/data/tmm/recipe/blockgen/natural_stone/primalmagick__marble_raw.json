@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "primalmagick:marble_raw",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "primalmagick:marble_raw"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}

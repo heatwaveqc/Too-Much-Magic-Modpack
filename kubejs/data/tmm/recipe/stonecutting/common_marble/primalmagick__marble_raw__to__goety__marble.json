@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "primalmagick:marble_raw",
+  "result": {
+    "id": "goety:marble",
+    "count": 1
+  }
+}

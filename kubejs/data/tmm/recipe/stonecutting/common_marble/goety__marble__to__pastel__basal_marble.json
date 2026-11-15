@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "goety:marble",
+  "result": {
+    "id": "pastel:basal_marble",
+    "count": 1
+  }
+}

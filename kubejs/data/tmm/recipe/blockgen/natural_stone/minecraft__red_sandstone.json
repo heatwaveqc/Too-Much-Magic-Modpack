@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "minecraft:red_sandstone",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "minecraft:red_sandstone"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}

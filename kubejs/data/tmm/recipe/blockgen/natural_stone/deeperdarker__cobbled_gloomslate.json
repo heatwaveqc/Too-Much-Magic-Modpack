@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "deeperdarker:cobbled_gloomslate",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "deeperdarker:cobbled_gloomslate"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}

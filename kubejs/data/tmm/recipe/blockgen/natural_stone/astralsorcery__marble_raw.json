@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "astralsorcery:marble_raw",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "astralsorcery:marble_raw"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}

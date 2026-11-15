@@ -1,0 +1,19 @@
+{
+  "type": "cobblegengalore:blockgen",
+  "result": {
+    "id": "pastel:blackslag",
+    "count": 1
+  },
+  "left": {
+    "Name": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:lava"
+  },
+  "modifier": {
+    "Name": "pastel:blackslag"
+  },
+  "speed": 1,
+  "consumeLeft": false,
+  "consumeRight": false
+}
