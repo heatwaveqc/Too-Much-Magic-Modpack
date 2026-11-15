@@ -1168,3 +1168,7 @@ hash = "f473fecd727575d652e2b8b69b01eef8d1ccddb1cb71da76dddba41d1568bedd"
 [[files]]
 file = "kubejs/data/tmm/recipe/hexerei/iron_vial_to_hex_blood.json"
 hash = "7e4503d42f76355ddb3628bf2595155407910d8a536890327ab08952f977e39c"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/irons_spellbooks/native_blood_to_vial.json"
+hash = "fd28afd0c1394c8505c797581a7f715ddecc46088c52cb17d8ea98224b814e32"
