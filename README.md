@@ -8,6 +8,10 @@ Read [AGENTS.md](AGENTS.md), [the design contract](docs/DESIGN.md), [the compati
 
 Target: Minecraft **1.21.1**, NeoForge **21.1.265** (provisional baseline drawn from ATM10 8.5), Java **21**.
 
+## Autonomous mod comprehension project
+
+A Work session given **"Work on the mod comprehension project"** should start with the [live mod-comprehension entry point](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/MOD-COMPREHENSION.md), then follow the [Work operating instructions](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) and [coverage index](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/mod-comprehension/INDEX.md). The full research knowledge base is maintained on **`test/full-integration`**; this `main` branch is a lightweight discovery/bootstrap entry point. Research sessions work incrementally, document actual version-scoped mechanics, and open scoped PRs; they do not modify live gameplay without separate authorization.
+
 ## Next full build — planned skill-backend migration (decision 2026-11-14)
 
 **Pufferfish's Skills (`puffish-skills`) is slated for removal in the next full integrated pack build**, not the currently tested/locked client snapshots. Replace the Pufferfish-based tree/XP/one-time progression wiring with **Tyz's Skills 6.4.2** (new purchasable ranks and Skill Points), preserve **Improvable Skills 3** as its distinct existing general perk engine, and preserve the native **Vampirism faction skill frameworks** (including the Monk faction) for faction-specific unlocks and permissions. This is an approved *build target*, not an assertion that replacement/removal has happened.
