@@ -24,20 +24,7 @@
     28000
   ],
   "points_per_rank": 1,
-  "activities": [
-    {
-      "event": "kill",
-      "target": "#tmm_progression:undead",
-      "xp": 5,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "kill",
-      "target": "#tmm_progression:raiders",
-      "xp": 6,
-      "cooldown_ticks": 0
-    }
-  ],
+  "activities": [],
   "milestones": [
     {
       "id": "tmm_progression:trial_of_venom",
@@ -336,6 +323,230 @@
           "per_rank": 0.2
         }
       ]
+    },
+    {
+      "id": "tmm_progression:specialty_undead",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:undead"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_illager",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:illager"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_dragon",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:dragon"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_void",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:void"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_piglin",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:piglin"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_sculk",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:sculk"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_aquatic",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:aquatic"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_construct",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:construct"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_beast",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:beast"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_arthropod",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:arthropod"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_plant",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:plant"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_elemental",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:elemental"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_ooze",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:ooze"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_demon",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:demon"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_fae",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:fae"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:specialty_aberration",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tmm_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tmm_progression:aberration"
+        }
+      ]
     }
   ],
   "max_level": 20,
@@ -353,5 +564,56 @@
       "minecraft:poison"
     ],
     "completion_event": "tmm_progression:hunter_trial_of_venom"
+  },
+  "hunter_xp": {
+    "health_divisor": 4,
+    "specialty_multiplier": 2,
+    "min_kill_xp": 1,
+    "potion_base_xp": 2,
+    "potion_discovery_multiplier": 2,
+    "potion_repeat_cooldown_ticks": 12000,
+    "potion_brewing_difficulty": {
+      "minecraft:weakness": 1,
+      "minecraft:long_weakness": 2,
+      "minecraft:swiftness": 2,
+      "minecraft:long_swiftness": 3,
+      "minecraft:strong_swiftness": 4,
+      "minecraft:slowness": 2,
+      "minecraft:long_slowness": 3,
+      "minecraft:strong_slowness": 4,
+      "minecraft:leaping": 2,
+      "minecraft:long_leaping": 3,
+      "minecraft:strong_leaping": 4,
+      "minecraft:healing": 3,
+      "minecraft:strong_healing": 4,
+      "minecraft:harming": 3,
+      "minecraft:strong_harming": 4,
+      "minecraft:poison": 3,
+      "minecraft:long_poison": 4,
+      "minecraft:strong_poison": 5,
+      "minecraft:regeneration": 5,
+      "minecraft:long_regeneration": 6,
+      "minecraft:strong_regeneration": 7,
+      "minecraft:strength": 4,
+      "minecraft:long_strength": 5,
+      "minecraft:strong_strength": 6,
+      "minecraft:fire_resistance": 4,
+      "minecraft:long_fire_resistance": 5,
+      "minecraft:water_breathing": 4,
+      "minecraft:long_water_breathing": 5,
+      "minecraft:night_vision": 3,
+      "minecraft:long_night_vision": 4,
+      "minecraft:invisibility": 5,
+      "minecraft:long_invisibility": 6,
+      "minecraft:slow_falling": 4,
+      "minecraft:long_slow_falling": 5,
+      "minecraft:turtle_master": 5,
+      "minecraft:long_turtle_master": 6,
+      "minecraft:strong_turtle_master": 7,
+      "minecraft:infested": 3,
+      "minecraft:oozing": 3,
+      "minecraft:weaving": 3,
+      "minecraft:wind_charged": 3
+    }
   }
 }
