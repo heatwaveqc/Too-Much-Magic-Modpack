@@ -4,7 +4,7 @@ This file governs every automated contributor and pack change.
 
 ## Mod comprehension research
 
-When asked to "work on the mod comprehension project", read [the entry point](MOD-COMPREHENSION.md), [Work instructions](docs/mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) and [coverage index](docs/mod-comprehension/INDEX.md). Autonomously continue a substantive single-mod profile or cross-mod interaction report, with exact-version sources and honest verification status. Research only: no unsolicited quest/config/KubeJS/gameplay changes, no copied JARs/assets, and no guesses about runtime compatibility.
+When asked to "work on the mod comprehension project", read [the entry point](MOD-COMPREHENSION.md), [Work instructions](docs/mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) and [coverage index](docs/mod-comprehension/INDEX.md). Autonomously continue a substantive single-mod profile or cross-mod interaction report, with exact-version sources and honest verification status. Research only: no unsolicited quest/config/KubeJS/gameplay changes, no copied JARs/assets, and no guesses about runtime compatibility. Every substantial profile must ultimately map **full native progression and guidebook access** to a complete player walkthrough; read [QUEST-WALKTHROUGH-STANDARD.md](docs/QUEST-WALKTHROUGH-STANDARD.md). A mechanics survey with mandatory tier/how-to gaps is still researching.
 
 ## Hard baseline
 - Minecraft 1.21.1, NeoForge 21.1.265 (provisional until launcher/installer verification), Java 21.

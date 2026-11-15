@@ -3,11 +3,11 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
-| Category / parent or addons | Primary magic system; four separate addon profiles are queued: Ars Elemental, Ars 'n Spells, Ars Ocultas and Ars Unification. Track them in the [coverage index](../INDEX.md). |
+| Category / parent or addons | Primary system. **All seven pinned addons** need separate evidence/coverage: `ars-additions`, `ars-controle`, `ars-elemancy`, `ars-elemental`, `ars-n-spells`, `ars-ocultas`, `ars-unification`. Track them in the [coverage index](../INDEX.md). |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` at base `385c69889fccf281f94957ba4063488e1646a2e0` |
 | Upstream source snapshot | `baileyholl/Ars-Nouveau` commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098`; source version matches pin, binary not locally compared |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
-| Profile status | source-complete; exact pinned JAR not downloaded for local inspection; not verified in TMM gameplay |
+| Profile status | **researching — strong first mechanics survey, not full walkthrough/source-complete**; core unlock costs/tiers, guide acquisition/build references, complete addon coverage and pinned JAR analysis still require work; no TMM gameplay test |
 | Evidence reached | Version-aligned upstream source tree at commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098` (`mod_version=5.13.5`), pinned packwiz metadata, upstream release notes; secondary gameplay guide explicitly targets 5.11 |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). Quest plan only; no authored quest content verified. |
@@ -16,9 +16,34 @@
 
 **What the player actually does:** Ars has two related but distinct economies. The player builds custom spells by combining a cast form, effects and augments into a spell stored in a spellbook or compatible casting item; casting spends the player's mana. Separately, Sourcelinks create **Source** from supported events or inputs and Source Jars store it for nearby devices and rituals. Source powers item processing (Imbuement Chamber, Enchanting Apparatus, Scribes Table), ritual effects and magical automation. The mod's summoned and befriended creatures extend that automation: Starbuncles move filtered items, Whirlisprigs reward diverse plant growth with Source, Wixies automate supported potion/item recipes, and Drygmys turn nearby living entities into repeatable item and experience-gem output. Exploration supplies Wilden parts, magical plants, creatures, and other progression materials. This is both a flexible combat/utility spell system and a small creature-run base-automation system, not only a spellbook.
 
-**Why it matters in TMM:** Its distinctive contribution is player-authored spell composition plus Source-powered magical processing and creature automation. That complements Iron's authored spellbook/school progression, Occultism's spirit labor and storage, and Neo Vitae's altar economy. These are possible comparison points, not evidence of a working integration. Ars currently has four separately pinned addon records in the pack; addon-specific mechanics are not covered by this base profile.
+**Why it matters in TMM:** Its distinctive contribution is player-authored spell composition plus Source-powered magical processing and creature automation. That complements Iron's authored spellbook/school progression, Occultism's spirit labor and storage, and Neo Vitae's altar economy. These are possible comparison points, not evidence of a working integration. Ars has **seven** separately pinned addon records; addon-specific mechanics are not established by this base profile. The [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) covers all seven addons on a separate feature branch; it inspected exact pinned JARs, but is not evidence that those quests have been integrated or client-accepted.
 
 **Quick start:** Craft the Novice Spell Book (the 5.11 secondary guide documents book plus ordinary iron tools), read the Worn Notebook, and use the Scribes Table to make glyphs. Build a Sourcelink and a Source Jar as the first Source loop; choose the link whose input matches what is already available (crop/tree growth, qualifying potion jars, food, fuel, or entity events). Keep Source Jars close to Source-consuming blocks. Exact early recipes and the current TMM recipe state still need a direct recipe/artifact check.
+
+## Player-value snapshot and coverage (research audit)
+
+**Five standout strengths:** user-defined reusable spells; event-driven/consumable-powered Source production; magical item processing/enchanting; creature-run item/plant/potion automation; repeatable ritual summoning including Wilden encounters. These are **mechanics supported by the first source survey**, not client-verified TMM promises.
+
+**Three useful early candidates:** crop/tree Agronomic Source workshop; Mycelial surplus-food conversion; Novice Book + Scribes Table for controlled utility glyphs. **Access costs and stage placement are not fully established**; compare exact pinned recipes/JEI before calling these universal day-one choices. Drygmy farming belongs to a later tier until its charm, Henge and Source burden are known.
+
+**Three cross-mod leads:** Ars Ocultas + Occultism; Ars 'n Spells + Iron's; Ars material/food/tag interfaces with pack resources and other magic. All are **candidates pending two-sided evidence**, not established compatible routes.
+
+| Major subsystem / branch | Current evidence and coverage | Full progression/how-to coverage | In-pack tests |
+| --- | --- | --- | --- |
+| Spellbooks, glyph tiers and spell casting | Source-backed concepts; precise unlock costs and recipes incomplete | **Partial** — tier path and practical cast instructions need exact-JAR/JEI review | Not run |
+| Source links, storage and crafting devices | Several link formulas backed by version-aligned source | **Partial** — exact setup costs, jars/ranges and construction references not fully checked | Not run |
+| Rituals, structures and Wilden Chimera | Summoning source inspected; most ritual procedures/prerequisites not enumerated | **Partial** — build/setup instructions, full tablet progression and guide sections needed | Not run |
+| Magical creatures, familiar and automation | High-level Notebook strings and some source | **Partial** — recipes, placement diagrams, eligibility, upkeep and all creature systems need review | Not run |
+| Crops/world generation and equipment | Survey-level only | **Partial** — acquisition, discovery and tiered equipment guide gaps | Not run |
+| Seven pinned addons | Separate profiles not yet done; exact-JAR quest pilot available on PR #74 | **Not covered here** — all seven need separate profiles and parent chapter crosslinks | Not run |
+
+## Guidebook / walkthrough readiness
+
+- **Player's reference:** Worn Notebook (name and detailed contents mentioned in source); exact pinned-5.13.5 acquisition/crafting/opening path must be checked before a guide onboarding quest can be finalized.
+- **Mandatory early guide quest:** A separate [49-quest Ars pilot](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) includes orientation and Novice Book onboarding plus references to Notebook build instructions. A review of the 49 pilot records found **no dedicated quest explaining how to obtain or open the Notebook**; add one or revise the earliest instructional quest before calling the chapter walkthrough-complete.
+- **Specific instructions needed:** Name the relevant Notebook section and the actual JEI recipe/use category for Source link layout/transport, Apparatus + Core/Pedestals, Ritual Brazier and advanced ritual setups, Wixie/Drygmy/etc. infrastructure, warp portals, spellbook tier upgrades and Chimera summoning. Verify page titles on the pinned version.
+- **Existing progress:** PR #74 documents 29 core quests + 20 across all seven addons; 93 item IDs and 17 advancement IDs were resolved during its source/registry test. It is a **separate quest implementation pilot**, not a substitute for complete mod comprehension or a graphical/client walkthrough test.
+- **Open path to source-complete:** Reconcile the exact pilot/JAR observations with the base source profile; close the required tier/material/guidebook gaps below, and produce a full stage-by-stage progression-to-quest coverage table. Do not promote this profile because the current survey is long.
 
 ## Systems and full mechanics inventory
 
@@ -79,6 +104,24 @@ These details were read from upstream source files in a source tree whose `gradl
 | Wilden progression | Dens or Summon Wilden tablet; collect parts | Equipment/ritual crafting, Chimera and Wilden Tribute | Base-source ritual can summon; the TMM ProjectE center recipe is separately designed to accept Wilden Tribute, but this profile does not claim that gate is implemented |
 | Advanced | Magebloom, advanced glyphs, rituals, additional equipment and addons | Broad utility/combat/automation options | Exact tier sequence and current addon recipes remain to be researched |
 
+## Full progression-to-quest gap matrix (follow-up required)
+
+The short progression table above describes the known *shape*, not a sufficient full walkthrough. All rows below must have exact-version prerequisites, actionable steps and a named guidebook/JEI reference before declaring `source-complete`. The [Ars pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) provides implementation evidence on its own branch, **not automatically live quests**.
+
+| Required player stage | Present research / pilot teaching | Mandatory remaining how-to or evidence |
+| --- | --- | --- |
+| Obtain/open Worn Notebook | Notebook mentioned; no separate obtain/open quest found in pilot | Verify exact access method; add/revise onboarding quest with safe XP/thematic reward |
+| Novice Book → first effective spell | Book basics/source-backed, Novice advancement in pilot | Exact initial ingredients; spell editor use; basic cast cost, target and success feedback; guide/JEI reference |
+| First Source link → Jar → operating processing machine | Five Sourcelinks source-backed; pilot has Jar/Agronomic and imbuement milestones | Exact recipes, range/transfer rules, build steps, success signal, practical alternatives and names of guide sections |
+| Scribes / crafting / Apparatus | System overview and pilot tasks present | Full glyph tier costs, real crafting/XP requirements, Apparatus/Core/Pedestal spatial construction, failure recovery and reference page |
+| Mage/Archmage book tiers and upgrades | Pilot includes novice→mage→archmage and Chimera route | All unlock prerequisites, recipe chain/alternatives, spell/tier restrictions and what each upgrade teaches |
+| Rituals, Wilden progression and Chimera | Summon Wilden source inspected; pilot describes fight route | Complete ritual-brazier setup and item costs, legal arena prep, repeatable materials, boss eligibility, terminal completion |
+| Helpers, binding, automation and storage | Pilot teaches Wixie/Starbuncle/lectern etc. | Exact creature acquisition and setup for every major worker, storage linking, upkeep/source, supported output and checkable use |
+| Optional gear, exploration and spells | General overview, selected pilot tasks | Subsystem inventory, advanced equipment/threads, worldgen, optional branches and in-game guide references |
+| Seven addon branches | 20 pilot quests across Additions, Controle, Elemental, Elemancy, Ocultas, 'n Spells and Unification | Separate addon profiles; verify teaching and true detector/guide reference per major addon capability |
+
+Questbook + JEI + the Notebook should cover each row without an external website. **No in-pack client test has yet confirmed that result**.
+
 ## Internal combinations and overlooked mechanics
 
 | Combination | Full chain | Benefit | Limitation / risk |
@@ -120,7 +163,7 @@ These details were read from upstream source files in a source tree whose `gradl
 | Ritual API | `AbstractRitual`, `RitualRegistry`, ritual context/event queue and ritual-specific classes | No custom ritual or altar edit made |
 | Tags | Source link logic reads tags for magic crops, saplings, food, fuel and Wilden drops | Exact current registry tags and pack-added membership need artifact/registry dump |
 | Advancement/guidebook | Upstream generated language includes milestones for core blocks/items and familiar / boss actions | No client observation of advancement triggers or book UI |
-| Addons | Pinned companion manifests include Ars Elemental, Ars 'n Spells, Ars Ocultas and Ars Unification | Addon interactions are not established by shared theme or installed pins; separate profiles and two-sided evidence needed |
+| Addons | All seven pinned companion records: Ars Additions, Controle, Elemancy, Elemental, 'n Spells, Ocultas, Unification; [49-quest Ars pilot](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) inspects their pinned distribution JARs | Addon interactions are not established by shared theme or pins; separate profiles and two-sided evidence remain needed |
 
 ## Compatibility leads
 
@@ -189,15 +232,17 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 
 ## Unknowns and next research
 
-- [ ] Inspect the exact CurseForge JAR or source artifact by its SHA-1; compare recipes, tags, guidebook, registry and config with the matching upstream tree.
+- [ ] Inspect the exact CurseForge JAR or source artifact by its SHA-1; compare recipes, tags, guidebook, registry and config with the matching upstream tree. Reuse exact pinned-JAR investigations already recorded in the 49-quest Ars pilot rather than repeating them unnecessarily.
 - [ ] Audit all 5.13.5 custom recipe JSON types and recipe costs; confirm which are exposed to KubeJS and JEI in the pinned KubeJS stack.
-- [ ] Establish exact spell-book tier/unlock progression, glyph recipe XP costs and representative spell mana costs.
+- [ ] Establish **full** spellbook tier/unlock progression, glyph recipe XP costs, representative spell mana costs and how a new player is expected to learn and cast; build a step-by-step progression-to-quest matrix.
 - [ ] Inspect all source link input formulas, Sourcelink event range, Source Jar transfer/transport and machine pull radius across pinned code; validate measured rates.
 - [ ] Establish creature acquisition, required charm recipes, complete Drygmy supported entity handling and Wixie linked-inventory rules in 5.13.5.
 - [ ] Compare installed addons one by one, then select the first two-sided interaction report: Ars Ocultas × Occultism or Ars 'n Spells × Iron's.
+- [ ] Verify Worn Notebook acquisition/opening and named guide sections for every critical multiblock, ritual and automation build; audit PR #74 for missing guide onboarding and honest detector/action distinctions.
 - [ ] Confirm FTB task types that can detect a valid spell cast or functioning Source link without relying on a crafted item alone.
 - [ ] Run disposable client and dedicated-server checks; upgrade profile to `verified-in-pack` only with reproducible evidence.
 
 ## Revision notes
 
 - 2026-11-15 — First source-backed profile. Exact pack pin and upstream source version match; source details and version-lag limits recorded. Gameplay not tested.
+- 2026-11-15 — Methodology adopted: downgrade from `source-complete` to `researching` until full progression, guidebook and all-seven-addon coverage. Add explicit guidebook/quest pilot gap audit. No new runtime test asserted.
