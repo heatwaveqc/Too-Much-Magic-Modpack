@@ -29,7 +29,7 @@ def main() -> None:
     m=json.loads(ROSTER.read_text(encoding="utf-8"))
     active=[x for x in m["mods"] if x["enabled_in_pack"]]
     original={path.name:path.read_bytes() for path in MODS.glob("*.pw.toml")}
-    assert len(active)==len(original)==156,(len(active),len(original))
+    assert len(active)==len(original)==155,(len(active),len(original))
     candidate=next(x for x in m["mods"] if x["id"]==MOD_ID)
     assert candidate["desired"] and not candidate["enabled_in_pack"]
     assert candidate["version"]==VERSION
