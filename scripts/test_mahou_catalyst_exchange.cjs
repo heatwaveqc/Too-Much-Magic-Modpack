@@ -75,7 +75,8 @@ const context = {
   NativeEvents: {onEvent(name,fn) {assert.ok(!nativeHandlers.has(name));nativeHandlers.set(name,fn)}}
 }
 // CI must fail if a future implementation reintroduces the Java-only name.
-assert.doesNotMatch(source, /\.getUUID\s*\(/, 'Rhino KubeJS Entity remaps getUUID to getUuid')
+const executable = source.split('\n').filter(line => !line.trim().startsWith('//')).join('\n')
+assert.doesNotMatch(executable, /\.getUUID\s*\(/, 'Rhino KubeJS Entity remaps getUUID to getUuid')
 vm.runInNewContext(source,context,{filename:'mahou_neo_vitae_catalyst_exchange.js'})
 
 
