@@ -126,10 +126,17 @@ public final class ProgressionApi {
 
     /** Standardized activity events: one authoritative signal, all joined paths. */
     public static void record(ServerPlayer player, Signal signal) {
+        recordFiltered(player,signal,path -> true);
+    }
+
+    /** Trusted server-side event provenance filter: reject rewards for a specific path. */
+    public static void recordFiltered(ServerPlayer player, Signal signal,
+                                      java.util.function.Predicate<Definition.Path> eligiblePath) {
         if (player.isCreative() || player.isSpectator()) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         for (Definition.Path path : PathRegistry.all().values()) {
+            if (!eligiblePath.test(path)) continue;
             Track state = next.get(path.id());
             if (!state.joined()) continue;
 
