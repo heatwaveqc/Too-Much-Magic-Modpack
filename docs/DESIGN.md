@@ -46,3 +46,7 @@ No implemented progression locks, recipe overhaul, questline, substitutions, bal
 - Shop is a **bad-luck and repetitive-grind relief valve**, covering common supplies, amethyst, Heart of the Sea and selected Artifacts. It must not grant boss-critical or pre-Guardian ProjectE progression.
 - Allow ProjectE to print sellable resources (and hence coins) after its actual Chaos Guardian unlock. Keep per-sale payouts very small at industrial quantities; do not add general buy/sell arbitrary inventory conversions.
 - Quest Shop's current upstream FTB Teams integration provides a **team-shared coin account**. Audit repeatable item-consuming quests for team overpayment, then document/resolve any policy questions before release.
+
+## Programmable technology and Iesnium shortcut (2026-11-15 B14)
+
+CC: Tweaked 1.121.0 is selected for Draconic Reactor monitoring and control, **not** AE2/general FE logistics. Desktop/pocket computer crafting requires an Eldritch Logic Core from the **Ancient Eldritch Miner** output table. Its weighted result is a late-game first-acquisition gate; CC turtles inherit that requirement. Source-verified native Occultism Spirit Fire can convert **Silk-Touched End Draconium Ore** into Iesnium Ore 1:1, without a custom entity tick handler. See [CC pilot and acceptance](CC-TWEAKED-ELDRITCH-GATE.md). Exact installed binary, JEI and server/client behavior remain untested.

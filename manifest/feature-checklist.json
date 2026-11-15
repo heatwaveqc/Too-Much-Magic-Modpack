@@ -172,9 +172,9 @@
     {
       "id": "quests.tech",
       "area": "Introduction and quests",
-      "title": "Full Exceptional Power: Reactors chapter",
+      "title": "A Sufficiently Advanced Magic — Draconic Evolution and CC: Tweaked",
       "state": "source_ready",
-      "acceptance": "All progression branches readable; distinguish Bigger Reactors, Energy Core, Draconic Reactor, safety procedures",
+      "acceptance": "Teach Draconic energy generation/storage/reactor and late-game CC: Tweaked monitor/control after Eldritch Miner; no Bigger Reactors or AE2.",
       "source": "docs/POWER-TECH-QUEST-GUIDE.md",
       "evidence": ""
     },
@@ -291,7 +291,7 @@
       "area": "Magic schools and cross-mod casting",
       "title": "Occultism summoning, storage and miners",
       "state": "server_smoked",
-      "acceptance": "Summon crushers and miners, test storage, dimensional access, and item portability in fresh world",
+      "acceptance": "Summoning/crushers/miners/storage operate; Eldritch Ancient Miner is the exclusive survival source of the new Logic Core; Spirit Fire transmutes Silk-Touched End Draconium Ore to Iesnium Ore, both in-world and JEI.",
       "source": "docs/DESIGN.md",
       "evidence": ""
     },
@@ -847,9 +847,9 @@
     {
       "id": "end.reactor",
       "area": "World, combat and endgame",
-      "title": "Bigger Reactors and Draconic Reactor safety",
+      "title": "Draconic Reactor and CC computer supervision",
       "state": "source_ready",
-      "acceptance": "Reactor startup, injection, stabilizers, Flux Gates, coolant and failure recovery tested in disposable worlds",
+      "acceptance": "With a disposable reactor, confirm native CC peripherals for stabilizer/injector, Flux Gate and Energy Pylon; test monitor status, safe shutdown and native failsafe independently of Lua; no Bigger Reactors components.",
       "source": "docs/POWER-TECH-QUEST-GUIDE.md",
       "evidence": ""
     },
