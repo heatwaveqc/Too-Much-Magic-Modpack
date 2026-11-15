@@ -47,6 +47,7 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
         "Welcome to Too Much Magic": (0, 0),
         "Punch a Tree": (0, 3),
         "Make a Crafting Table": (0, 6),
+        "Choose Your First Path": (4, 9),
         "Make a Wooden Pickaxe": (0, 9),
         "Gather Stone": (0, 12),
         "Upgrade to Stone": (0, 15),
@@ -56,12 +57,12 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
         "Light the Furnace": (4, 12),
         "Begin a Library": (8, 6),
         "Build a Bookshelf": (8, 9),
-        "Iron Is Only the Beginning": (4, 21),
-        "Find an Everyday Magical Shortcut": (8, 21),
+        "Prepare a Field Kit": (4, 21),
+        "Build a Research Lectern": (8, 21),
         "Try a First Spell or Ritual": (8, 24),
         "A Little Protection": (4, 24),
-        "Take Your Magic Into the World": (4, 27),
-        "The Rest of the Pack Is Yours": (8, 27),
+        "Scout with a Spyglass": (4, 27),
+        "Chart Your Next Journey": (8, 27),
     }
     for title, xy in intro.items():
         put("Getting Started", title, *xy)
@@ -315,7 +316,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
     pack = re.sub(r'^version = ".*"$',
-                  'version = "0.8.10-quest-text-format-qa"',
+                  'version = "0.8.12-quest-standard-qa"',
                   pack, count=1, flags=re.M)
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(
@@ -374,8 +375,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 179 or intro_count != 137:
-        raise ValueError(f"Expected 179 objects / 137 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 180 or intro_count != 138:
+        raise ValueError(f"Expected 180 objects / 138 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:

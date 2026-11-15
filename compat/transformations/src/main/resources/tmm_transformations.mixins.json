@@ -8,7 +8,12 @@
     "JAWRBloodPoolMixin",
     "JAWRVampireEventsMixin",
     "VampirismBloodStatsMixin",
-    "VampirismSunProtectionMixin"
+    "JAWRVampireSunAccessor"
   ],
-  "injectors": {"defaultRequire": 1}
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "VampirismBloodBarMixin"
+  ]
 }
