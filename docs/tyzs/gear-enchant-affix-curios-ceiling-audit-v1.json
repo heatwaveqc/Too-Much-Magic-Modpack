@@ -38,7 +38,70 @@
     "configured_max": "source function or data-map per enchant; cannot substitute vanilla level max; do not claim a universal one-to-one level for every enchant",
     "iesnium_rule": "max allowed for fresh equal-level merge = ApothicEnchantingIntegration.getApothicMaxLevel(enchantment)+1 at exact Occultism 1.227.0 release commit; no unconstrained repeated +1s",
     "level_cap": "strict enforced caps can limit even bonuses; distinguish stored enchantment level, effective level after affix/gems, and gameplay effect",
-    "compatibility": "vanilla/mod enchanted item support and incompatibilities checked even by Iesnium; high-level book might be different from item applicable"
+    "compatibility": "vanilla/mod enchanted item support and incompatibilities checked even by Iesnium; high-level book might be different from item applicable",
+    "derived_vanilla_default_200_power_examples": [
+      {
+        "id": "minecraft:fortune",
+        "vanilla_level": 3,
+        "min_cost": 15,
+        "per_level_above_first": 9,
+        "default_max_under_apothic_power_200": 8,
+        "last_min_power": 195,
+        "next_min_power": 240,
+        "iesnium_at_max": 9,
+        "potential_effective_with_bonuses": 19,
+        "extra_effective_from_affix_and_gems": 10,
+        "certainty": "SOURCE_FORMULA_DERIVED_DEFAULT_NOT_VERIFIED_LOADED_CONFIG"
+      },
+      {
+        "id": "minecraft:efficiency",
+        "vanilla_level": 5,
+        "min_cost": 1,
+        "per_level_above_first": 10,
+        "default_max_under_apothic_power_200": 9,
+        "last_min_power": 171,
+        "next_min_power": 221,
+        "iesnium_at_max": 10,
+        "potential_effective_with_bonuses": 16,
+        "extra_effective_from_affix_and_gems": 6,
+        "certainty": "SOURCE_FORMULA_DERIVED_DEFAULT_NOT_VERIFIED_LOADED_CONFIG"
+      },
+      {
+        "id": "minecraft:sharpness",
+        "vanilla_level": 5,
+        "min_cost": 1,
+        "per_level_above_first": 11,
+        "default_max_under_apothic_power_200": 9,
+        "last_min_power": 188,
+        "next_min_power": 243,
+        "iesnium_at_max": 10,
+        "potential_effective_with_bonuses": 16,
+        "extra_effective_from_affix_and_gems": 6,
+        "certainty": "SOURCE_FORMULA_DERIVED_DEFAULT_NOT_VERIFIED_LOADED_CONFIG"
+      },
+      {
+        "id": "minecraft:protection",
+        "vanilla_level": 4,
+        "min_cost": 1,
+        "per_level_above_first": 11,
+        "default_max_under_apothic_power_200": 8,
+        "last_min_power": 177,
+        "next_min_power": 232,
+        "iesnium_at_max": 9,
+        "potential_effective_with_bonuses": 15,
+        "extra_effective_from_affix_and_gems": 6,
+        "certainty": "SOURCE_FORMULA_DERIVED_DEFAULT_NOT_VERIFIED_LOADED_CONFIG"
+      }
+    ],
+    "derivation": "In pinned Apothic Enchanting 1.6.4 source, default maximum is the last enchant level whose power function does not exceed 200. For level > vanilla max: vanilla min-cost base + slope*(level-1) + slope*truncate((level-vanillaMax)^1.6). Derived vanilla 1.21.1 enchant definitions are Fortune base15 slope9/max3, Efficiency base1 slope10/max5, Sharpness base1 slope11/max5, Protection base1 slope11/max4. Actual enchant-info overrides, strict level caps, slots and effective gem behavior still need runtime verification.",
+    "source_refs": [
+      "https://github.com/Shadows-of-Fire/Apothic-Enchanting/blob/1.21/src/main/java/dev/shadowsoffire/apothic_enchanting/PowerFunction.java",
+      "https://github.com/Shadows-of-Fire/Apothic-Enchanting/blob/1.21/src/main/java/dev/shadowsoffire/apothic_enchanting/ApothicEnchanting.java",
+      "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/fortune.json",
+      "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/efficiency.json",
+      "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/sharpness.json",
+      "https://mcasset.cloud/1.21.1/data/minecraft/enchantment/protection.json"
+    ]
   },
   "apotheosis": {
     "source_definition_count": 99,
