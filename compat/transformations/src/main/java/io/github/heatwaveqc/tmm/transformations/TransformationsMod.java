@@ -36,6 +36,7 @@ public final class TransformationsMod {
         VampireFactionEvents.register();
         JAWRDefenseEvents.register();
         VampireLifecycleEvents.register();
-        LOGGER.warn("Experimental transformation chassis loaded; mutations and the Abomination action pilot are OFF by default. No Abomination faction is registered yet.");
+        LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default. Death/appearance remain untouched.");
+        LOGGER.info("Abomination two-action operator pilot is OFF by default; no new faction registered yet.");
     }
 }
