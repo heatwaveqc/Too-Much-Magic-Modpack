@@ -3,7 +3,7 @@
 Date surveyed: 2026-11-13. Source details for individual entries are in `manifest/mods.json`. **A published NeoForge 1.21.1 jar does not establish pairwise or runtime compatibility.**
 
 ## Known compatible release targets (publication verified only)
-- Neo Vitae 1.21.1-1.1.51; Occultism 1.21.1-neoforge-1.227.0; Ars Nouveau 5.13.5; Iron's Spells 3.16.3.
+- Neo Vitae 1.21.1-1.1.53; Occultism 1.21.1-neoforge-1.227.0; Ars Nouveau 5.13.5; Iron's Spells 3.16.3.
 - Theurgy 1.79.0; Astral Sorcery 2.0.3 **alpha**; Roots Classic 1.5.10; Mahou Tsukai 1.36.31; EvilCraft 1.2.100.
 - Just Another Witchery Remake 0.5.11; Cataclysm 3.33. **Historical published files for Extended Crafting 7.0.9 and Re:Avaritia 1.4.4 are now excluded by owner decision.**
 - Draconic Evolution 3.1.4.633 **beta**; Project Expansion 1.0.6; FTB Quests 2101.1.38; FTB Chunks 2101.1.24; KubeJS 2101.7.2-build.381.
@@ -11,8 +11,9 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 
 ## Open blockers / audits
 - **Bigger Reactors (original unavailable), Botania, ProjectE, Apotheosis, Artifacts, Relics, Gateways to Eternity, Deeper and Darker, Starlight/structure mods, magical satchel**: no exact compatible file or full dependency graph has been committed here. Not silently omitted from the decision roster; see manifest pending rows.
-- Full transitive dependency graph remains **unverified for noninstalled magic systems**, particularly Neo Vitae, Astral Sorcery (Curios + ObserverLib reported), Ars Nouveau, Occultism (Modonomicon), Draconic Evolution (Brandon's Core), and rendering mods. Treat these names as dependency candidates, not validated installed IDs.
+- Full transitive dependency graph remains **unverified for noninstalled magic systems**, particularly Astral Sorcery (Curios + ObserverLib reported), Ars Nouveau, Draconic Evolution (Brandon's Core), and rendering mods. Neo Vitae 1.1.53 source declares GeckoLib and Modonomicon as required and both are pinned; its optional Occultism bridge compiles against 1.224.3 while TMM pins Occultism 1.227.0. This is a client/API verification item, not a demonstrated incompatibility. Treat remaining dependency names as candidates, not validated installed IDs.
 - Unresolved overlaps: Astral Sorcery sky/rendering with shaders/Embeddium; content/loot balance across Apotheosis/Relics/Cataclysm; acquisition leak paths for ProjectE and banned ring; world-generation interactions.
+- **Neo Vitae / Occultism integration audit required:** Neo Vitae 1.1.53 source implements the Sigil of Bound Treasures against Occultism storage controllers and proxies. Its source build declares Occultism 1.224.3 as compileOnly while TMM pins 1.227.0; server co-load passed in B8, but menu opening, access checks and reservation have not been tested. See [`docs/mod-comprehension/mods/neovitae.md`](mod-comprehension/mods/neovitae.md).
 - **Occultism miner gate audit required:** matching 1.227.0 source defines ore-miner recipes for Draconium Ore and Uranium Ore using the ordinary occultism:miners/ores tag (weight 142 and 140), plus raw uranium from the Ancient Eldritch Miner (eldritch tag, weight 90). The recipes load only when their Occultism miner and common output tags are nonempty. These are source-confirmed possible gate bypasses, not yet confirmed in the assembled pack: resolve c:ores/draconium, c:ores/uranium and c:storage_blocks/raw_uranium, then test loaded recipes and miner tiers. Compare all miner tables with docs/PROGRESSION.md, including Replica Ore and protected boss drops. The intended miner source is design intent, not an enforced gate yet.
 - No pairwise incompatibility has yet been **demonstrated** in a crash. Unknown is not incompatible.
 - Potential substitute ideas require explicit approval: *dedicated magical satchel* for first-day carried storage; *different magical structure mod* if a requested dungeon mod lacks a 1.21.1 release. No automatic substitutions.

@@ -74,9 +74,9 @@ Acquiring a Source Jar is not the same as generating Source. Crafting a glyph is
 
 **Suggested improvement:** record, for every proposed quest milestone, (a) intended player learning, (b) the actual observable criterion, (c) whether FTB Quests can detect it natively, and (d) a manual/checklist fallback if not. Keep item ownership and system operation as separate milestone types. Don't write implementation-specific task IDs until the live FTB task schema/version is checked.
 
-## Recommended small addition to the instructions
+## Adopted evidence syntax
 
-A compact reusable evidence syntax could prevent repeated caveats while preserving readability:
+The compact evidence syntax below is now normative in the work instructions and profile template; use it to avoid repeated caveats while preserving readability:
 
 | Tag | Meaning |
 | --- | --- |
@@ -93,4 +93,5 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 - 2026-11-15 — Initial recommendations from Ars Nouveau 5.13.5.
 - 2026-11-15 — All eight adopted with scoped testing requirements; full progression, guidebook onboarding, player-value summaries and subsystem coverage added to the operating rules.
 - 2026-11-15 — Added the choice-boundary rule from the Ars walkthrough audit: mark required capability gates separately from optional recipes/branches, teach discovery through JEI/guide references, and keep quest action, detector and stage mapping independently auditable.
+- 2026-11-15 — Adopted the evidence syntax proposed above in the work instructions and profile template.
 - 2026-11-15 — Added a release-source discovery step: use version-file/Gradle history to find immutable commits for pinned addon versions when tags are missing. This found Ars Additions 21.3.0 (`91f102a90dc058cf40e4eac5a67a881e48b856b4`) and Ars Elemental 0.7.10.4 (`2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2`) source snapshots; both still declare older Ars dependencies than TMM.

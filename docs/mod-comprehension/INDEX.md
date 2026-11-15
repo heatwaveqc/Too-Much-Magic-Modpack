@@ -131,7 +131,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `irons-spells` | Iron's Spells 'n Spellbooks | magic | enabled flag | full | queued | — |
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | queued | — |
 | `malum` | Malum | magic | enabled flag | full | queued | — |
-| `neovitae` | Neo Vitae | magic | enabled flag | full | queued | — |
+| `neovitae` | Neo Vitae | magic | enabled flag | full | researching | [profile](mods/neovitae.md) |
 | `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | queued | — |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | queued | — |
@@ -227,4 +227,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Resolved source identity for two previously uncertain addon pins by tracing version metadata history: Ars Additions 21.3.0 and Ars Elemental 0.7.10.4 now have immutable source commits. Their declared Ars Nouveau dependencies are older than TMM's base pin, so compatibility remains a client/source review item.
 - 2026-11-15 — Occultism 1.227.0 profile started from matching release source. The Dictionary progression graph and broad worker branches are mapped; the current chapter is only a checkmark stub. Matching source defines ordinary miner-tag recipes for Draconium Ore and Uranium Ore, plus an Ancient Eldritch Miner raw-uranium recipe. Common tag/runtime availability is not yet confirmed; see docs/COMPATIBILITY.md and the profile.
 
-- **Next action:** finish Occultism's exact recipe, miner-output, storage and familiar audits; then proceed to `neovitae` (rank 3). Quest implementation is a later pass; reconcile its chapter with the final research matrix only when authorized.
+- 2026-11-15 — Neo Vitae 1.1.53 profile added from version-aligned source and generated Scriptura Vitae; mapped tiers 0–5, parallel branches, Mine Key drops, EV/Spiritus pathways, and the source-supported Occultism storage bridge. API/version and client behavior remain untested; see the profile and compatibility note.
+- **Next action:** continue the highest-value magic systems with `witchery-remake` (rank 4), then `forbidden-magic`, `vampirism`, `werewolves`, `summoning-rituals`, and `botania-revived`. Occultism and Neo Vitae are meaningful source-research slices but remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
