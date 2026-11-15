@@ -64,17 +64,20 @@ def main() -> None:
         if name.startswith("pocket_"):
             require(data["key"].get("A") == {"item": "minecraft:golden_apple"}, "Lost pocket apple " + name)
 
-    fire = recipe("kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json")
+    betterend = [m for m in roster["mods"] if m["id"] == "betterend-new-dawn"]
+    require(len(betterend) == 1 and betterend[0]["desired"], "BetterEnd: New Dawn must be on approved next-build list")
+    fire = recipe("kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json")
     require(fire == {
         "type": "occultism:spirit_fire",
-        "ingredient": {"item": "draconicevolution:end_draconium_ore"},
+        "ingredient": {"item": "betterend:thallasium_ore"},
         "result": {"count": 1, "id": "occultism:iesnium_ore"}
-    }, "Spirit Fire recipe drift or unsupported ore ID")
+    }, "Thallasium Spirit Fire contract drift")
 
+    require(not (ROOT / "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json").exists(), "Obsolete End Draconium Spirit Fire recipe still present")
     index = read("index.toml")
     files = [pin_path, "kubejs/startup_scripts/eldritch_logic_core.js",
              "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json",
-             "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"]
+             "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"]
     files += ["kubejs/data/computercraft/recipe/" + k + ".json" for k in TARGETS]
     for file in files:
         wanted = hashlib.sha256(read(file).encode("utf-8")).hexdigest()
@@ -82,7 +85,7 @@ def main() -> None:
                 "Missing/incorrect packwiz entry for " + file)
     pack = tomllib.loads(read("pack.toml"))
     require(pack["index"]["hash"] == hashlib.sha256(index.encode("utf-8")).hexdigest(), "Packwiz index digest broken")
-    print("PASS: CC exact pin, Eldritch-only native mining, four gated computer recipes, and Iesnium Spirit Fire")
+    print("PASS: CC exact pin, Eldritch-only native mining, four gated computer recipes, and planned Thallasium Iesnium Spirit Fire")
     print("PASS: all added pilot files indexed with correct SHA256 and top-level pack hash")
     print("NOT GAME TESTED: startup registry, loaded recipe IDs, JEI, mining output, DR reactor peripherals still need client/server acceptance")
 

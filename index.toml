@@ -289,8 +289,8 @@ file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
 [[files]]
-file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
-hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
+file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"
+hash = "04ed7eb15534723135713a763e7ef8d2bf6f3f5cf56184f933326132cf859f2f"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
