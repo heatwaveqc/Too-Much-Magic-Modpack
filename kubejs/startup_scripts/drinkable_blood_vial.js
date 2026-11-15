@@ -10,11 +10,12 @@
 ItemEvents.modification(event => {
   event.modify('irons_spellbooks:blood_vial', item => {
     item.useAnimation('drink')
-    item.foodProperties = food => {
-      food.nutrition(1)
-      food.saturation(1)
+    // KubeJS 2101.7.2-build.381 exposes setFood/modifyFood, NOT
+    // the legacy foodProperties assignment. Verified via full-server log.
+    item.setFood(1, 1.0)
+    item.modifyFood(food => {
       food.alwaysEdible()
       food.usingConvertsTo(Item.of('minecraft:glass_bottle'))
-    }
+    })
   })
 })
