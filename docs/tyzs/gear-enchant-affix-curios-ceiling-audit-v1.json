@@ -1128,5 +1128,1500 @@
     "Record Curios slot registry and effects for naked Monk, Monk+Curios, fully geared specialist+Curios, and strict naked Monk trial separately.",
     "Dump each per-mod mana/spell power, gear modifier operation and actual source event after activation, source-attribution and forms.",
     "Measure source median endgame build vs rare 4-socket best-possible, with practical acquisition costs and mutually compatible exact item combinations."
-  ]
+  ],
+  "manifest_screen": {
+    "source": "test/full-integration/manifest/mods.json (current test snapshot, not future approved retirement)",
+    "count": 164,
+    "enabled_count": 155,
+    "inactive_count": 9,
+    "full_candidate_review_status": "all 164 manifest entries inventory-screened; exact ability effects/Curios set item-by-item remain a separate runtime/source audit, this is not certified exhaustive all enchant registrations",
+    "tier_counts": {
+      "no_direct_bonus_identified_scan_runtime_anyway": 46,
+      "inactive_not_in_current_pin": 9,
+      "verified_major_stacking_source": 5,
+      "infrastructure_library_check_events": 48,
+      "major_candidate_direct_gear_or_stat": 41,
+      "cross_mod_bridge_potential": 13,
+      "enabled_legacy_to_retire": 2
+    },
+    "entries": [
+      {
+        "id": "akashic-tome",
+        "name": "Akashic Tome",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "alexs-caves-continued",
+        "name": "Alex's Caves Continued",
+        "manifest_category": "adventure",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "apotheosis",
+        "name": "Apotheosis",
+        "manifest_category": "power",
+        "enabled_in_pack": true,
+        "screening_tier": "verified_major_stacking_source",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exact tags/slots/caps and loaded-client item tests"
+      },
+      {
+        "id": "apothic-attributes",
+        "name": "Apothic Attributes",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "verified_major_stacking_source",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exact tags/slots/caps and loaded-client item tests"
+      },
+      {
+        "id": "apothic-enchanting",
+        "name": "Apothic-Enchanting",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "verified_major_stacking_source",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exact tags/slots/caps and loaded-client item tests"
+      },
+      {
+        "id": "apothic-spawners",
+        "name": "Apothic-Spawners",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "appleskin",
+        "name": "AppleSkin",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "aquaculture",
+        "name": "Aquaculture 2",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "architectury-api",
+        "name": "Architectury API",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-additions",
+        "name": "Ars Additions",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-controle",
+        "name": "Ars Controle",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-elemancy",
+        "name": "Ars Elemancy",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-elemental",
+        "name": "Ars Elemental",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-n-spells",
+        "name": "Ars 'n Spells",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-nouveau",
+        "name": "Ars Nouveau",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-ocultas",
+        "name": "Ars Ocultas",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ars-unification",
+        "name": "Ars Unification",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "artifacts",
+        "name": "Artifacts",
+        "manifest_category": "power",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "astral-sorcery",
+        "name": "Astral Sorcery",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "balm",
+        "name": "Balm",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "better-advanced-tooltips",
+        "name": "Better Advanced Tooltips",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "better-advancements",
+        "name": "Better Advancements",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "bookshelf",
+        "name": "Bookshelf",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "botania",
+        "name": "Botania",
+        "manifest_category": "magic",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "botania-revived",
+        "name": "Botania Revived",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "brandons-core",
+        "name": "Brandon's Core",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "brewin-and-chewin",
+        "name": "Brewin' And Chewin'",
+        "manifest_category": "food_beverage",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "caelus",
+        "name": "Caelus API",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cataclysm",
+        "name": "L_Ender's Cataclysm",
+        "manifest_category": "adventure",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cloth-config",
+        "name": "Cloth Config API (Fabric/Forge/NeoForge)",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cobweb",
+        "name": "Cobweb",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cocktails-delight",
+        "name": "Cocktails Delight",
+        "manifest_category": "food_beverage",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "codechicken-lib-1-8",
+        "name": "CodeChicken Lib 1.8.+",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "codxlib",
+        "name": "CodxLib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "comforts",
+        "name": "Comforts",
+        "manifest_category": "qol",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "common-network",
+        "name": "Common Network",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "construction-gadgets",
+        "name": "Construction Gadgets",
+        "manifest_category": "qol",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "controlling",
+        "name": "Controlling",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cooking-for-blockheads",
+        "name": "Cooking for Blockheads",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "corail-tombstone",
+        "name": "Corail Tombstone",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "crafting-tweaks",
+        "name": "Crafting Tweaks",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "crystalix",
+        "name": "Crystalix",
+        "manifest_category": "decoration_glass",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "cucumber",
+        "name": "Cucumber Library",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "curios-api",
+        "name": "Curios API",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "verified_major_stacking_source",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exact tags/slots/caps and loaded-client item tests"
+      },
+      {
+        "id": "cyclops-core",
+        "name": "Cyclops Core",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "databank",
+        "name": "Databank",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "deeper-darker",
+        "name": "Deeper and Darker",
+        "manifest_category": "adventure",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "draconic-evolution",
+        "name": "Draconic Evolution",
+        "manifest_category": "technology",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "eidolon-repraised",
+        "name": "Eidolon: Repraised",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "embeddium",
+        "name": "Embeddium",
+        "manifest_category": "performance",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "embers-re-ignited",
+        "name": "Embers Re-Ignited",
+        "manifest_category": "magic_industry",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "enchanted-witchcraft",
+        "name": "Enchanted: Witchcraft",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "enchantment-descriptions",
+        "name": "Enchantment Descriptions",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "enigmatic-legacy-plus",
+        "name": "Enigmatic Legacy+",
+        "manifest_category": "power",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "entity-culling",
+        "name": "Entity Culling",
+        "manifest_category": "performance",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "evilcraft",
+        "name": "EvilCraft",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "exclusions-lib",
+        "name": "Exclusions Lib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "extra-botany-revived",
+        "name": "Extra Botany Revived",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "farmers-delight",
+        "name": "Farmer's Delight",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "farming-for-blockheads",
+        "name": "Farming for Blockheads",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ferritecore",
+        "name": "FerriteCore",
+        "manifest_category": "performance",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "feywild",
+        "name": "Feywild",
+        "manifest_category": "magic_adventure",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "forbidden-arcanus",
+        "name": "Forbidden & Arcanus",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "forbidden-magic",
+        "name": "JAWR: Forbidden Magic",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "formation-wand",
+        "name": "Formation Wand",
+        "manifest_category": "qol",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "ftb-chunks",
+        "name": "FTB Chunks (NeoForge)",
+        "manifest_category": "infrastructure",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ftb-library",
+        "name": "FTB Library (NeoForge)",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ftb-quests",
+        "name": "FTB Quests (NeoForge)",
+        "manifest_category": "infrastructure",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ftb-teams",
+        "name": "FTB Teams (NeoForge)",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "ftb-xmod-compat",
+        "name": "FTB XMod Compat",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "fusion-connected-textures",
+        "name": "Fusion (Connected Textures)",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "gateways-to-eternity",
+        "name": "Gateways to Eternity",
+        "manifest_category": "adventure",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "gaze-malum",
+        "name": "Gaze (Malum addon)",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "geckolib",
+        "name": "Geckolib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "goety",
+        "name": "Goety — The Dark Arts",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "goety-cataclysm",
+        "name": "Goety Cataclysm",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "hammerlib",
+        "name": "HammerLib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "harvest-with-ease",
+        "name": "Harvest with Ease",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "hexcast-neoforged",
+        "name": "HexCast NEOFORGED",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "hexerei",
+        "name": "Hexerei",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "immediatelyfast",
+        "name": "ImmediatelyFast",
+        "manifest_category": "performance",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "improvable-skills",
+        "name": "Improvable Skills 3",
+        "manifest_category": "skills",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "inventory-tweaks-refoxed",
+        "name": "Inventory Tweaks — ReFoxed",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "irons-lib",
+        "name": "Iron's Lib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "irons-spells",
+        "name": "Iron's Spells 'n Spellbooks",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "jade",
+        "name": "Jade",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "jei",
+        "name": "Just Enough Items",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "just-zoom",
+        "name": "Just Zoom",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "keybind-bundles",
+        "name": "KeyBind Bundles",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "konkrete",
+        "name": "Konkrete",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "kotlin-for-forge",
+        "name": "Kotlin for Forge",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "kubejs",
+        "name": "KubeJS",
+        "manifest_category": "infrastructure",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "leaves-be-gone",
+        "name": "Leaves Be Gone",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lets-do-beachparty",
+        "name": "[Let's Do] Beachparty",
+        "manifest_category": "decoration_beach",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lets-do-furniture",
+        "name": "[Let's Do] Furniture",
+        "manifest_category": "decoration_furniture",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lionfish-api",
+        "name": "Lionfish-API",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lithostitched",
+        "name": "Lithostitched",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lodestone",
+        "name": "Lodestone",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "lootr",
+        "name": "Lootr",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "magical-satchel",
+        "name": "Magical satchel / Surprisingly Substantial Satchel",
+        "manifest_category": "storage",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "mahou-tsukai",
+        "name": "Mahou Tsukai",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "malum",
+        "name": "Malum",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "mezzconfig",
+        "name": "MezzConfig",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "modernfix",
+        "name": "ModernFix",
+        "manifest_category": "performance",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "modonomicon",
+        "name": "Modonomicon",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "modopedia",
+        "name": "Modopedia",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "more-overlays-updated",
+        "name": "More Overlays Updated",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "mouse-tweaks",
+        "name": "Mouse Tweaks",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "natures-compass",
+        "name": "Nature's Compass",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "neovitae",
+        "name": "Neo Vitae",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "observerlib",
+        "name": "ObserverLib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "occultism",
+        "name": "Occultism",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "verified_major_stacking_source",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exact tags/slots/caps and loaded-client item tests"
+      },
+      {
+        "id": "octolib",
+        "name": "ShatterLib | OctoLib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "oracle-index",
+        "name": "Oracle Index",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "pams-harvestcraft-2-crops",
+        "name": "Pam's HarvestCraft 2 — Crops",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "pams-harvestcraft-2-food-core",
+        "name": "Pam's HarvestCraft 2 — Food Core",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "pams-harvestcraft-2-food-extended",
+        "name": "Pam's HarvestCraft 2 — Food Extended",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "pams-harvestcraft-2-trees",
+        "name": "Pam's HarvestCraft 2 — Trees",
+        "manifest_category": "food",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "pastel",
+        "name": "Pastel",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "patchouli",
+        "name": "Patchouli",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "paucal",
+        "name": "PAUCAL",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "placebo",
+        "name": "Placebo",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "playeranimator",
+        "name": "playerAnimator",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "polymorph",
+        "name": "Polymorph",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "prickle",
+        "name": "Prickle",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "primal-magick",
+        "name": "Primal Magick",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "project-expansion",
+        "name": "Project Expansion",
+        "manifest_category": "emc_progression",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "projecte",
+        "name": "ProjectE",
+        "manifest_category": "magic_progression",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "psi",
+        "name": "Psi",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "psi-tweaks",
+        "name": "Psi: Tweaks and Additions",
+        "manifest_category": "magic_addon",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "puffish-attributes",
+        "name": "Pufferfish's Attributes",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "puffish-skills",
+        "name": "Pufferfish's Skills",
+        "manifest_category": "infrastructure",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "puzzles-lib",
+        "name": "Puzzles Lib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "quest-giver",
+        "name": "Quest Giver",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "quest-shop",
+        "name": "Quest Shop",
+        "manifest_category": "utility",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "rechiseled",
+        "name": "Rechiseled",
+        "manifest_category": "decoration",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "relics",
+        "name": "Relics",
+        "manifest_category": "power",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "reliquary-reincarnations",
+        "name": "Reliquary Reincarnations",
+        "manifest_category": "magic_utility",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "reliquified-artifacts",
+        "name": "Reliquified Artifacts",
+        "manifest_category": "power",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "replication",
+        "name": "Replication",
+        "manifest_category": "late_ore",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "rhino",
+        "name": "Rhino",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "roguelike-dungeons",
+        "name": "Roguelike-style dungeon provider",
+        "manifest_category": "adventure",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "roots-classic",
+        "name": "Roots Classic",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "scriptor-magicae",
+        "name": "Scriptor Magicae",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "searchables",
+        "name": "Searchables",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "simple-backups",
+        "name": "Simple Backups",
+        "manifest_category": "server_utility",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "smartbrainlib",
+        "name": "SmartBrainLib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "spark",
+        "name": "spark",
+        "manifest_category": "server_utility",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "starlight-structures",
+        "name": "Starlight / Stalwart Dungeons candidate",
+        "manifest_category": "adventure",
+        "enabled_in_pack": false,
+        "screening_tier": "inactive_not_in_current_pin",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude unless approved and pinned"
+      },
+      {
+        "id": "stateobserver",
+        "name": "StateObserver",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "summoning-rituals",
+        "name": "Summoning Rituals",
+        "manifest_category": "ritual_framework",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "supermartijn642-config-lib",
+        "name": "SuperMartijn642's Config Lib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "supermartijn642-core-lib",
+        "name": "SuperMartijn642's Core Lib",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "tectonic",
+        "name": "Tectonic",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "theurgy",
+        "name": "Theurgy",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "titanium",
+        "name": "Titanium",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "totemic",
+        "name": "Totemic",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "trashslot",
+        "name": "TrashSlot",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "treechop",
+        "name": "HT's TreeChop",
+        "manifest_category": "qol",
+        "enabled_in_pack": true,
+        "screening_tier": "no_direct_bonus_identified_scan_runtime_anyway",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "unfocused",
+        "name": "Unfocused",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "cross_mod_bridge_potential",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "valhelsia-core",
+        "name": "Valhelsia Core",
+        "manifest_category": "dependency",
+        "enabled_in_pack": true,
+        "screening_tier": "infrastructure_library_check_events",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      },
+      {
+        "id": "vampirism",
+        "name": "Vampirism — Become a Vampire!",
+        "manifest_category": "supernatural",
+        "enabled_in_pack": true,
+        "screening_tier": "enabled_legacy_to_retire",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude from future gear target after removal"
+      },
+      {
+        "id": "werewolves",
+        "name": "Werewolves — Become a Beast!",
+        "manifest_category": "supernatural",
+        "enabled_in_pack": true,
+        "screening_tier": "enabled_legacy_to_retire",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "exclude from future gear target after removal"
+      },
+      {
+        "id": "witchery-remake",
+        "name": "Just Another Witchery Remake",
+        "manifest_category": "magic",
+        "enabled_in_pack": true,
+        "screening_tier": "major_candidate_direct_gear_or_stat",
+        "verified_endgame_enchant_affix_gem_support": "ONLY_PARTIALLY_SOURCE_AUDITED",
+        "needed_next": "verify enchantment registry, equippable slot and legal item bonuses if present"
+      }
+    ]
+  },
+  "gap_to_exhaustive": "Full runtime item and enchant registry/eligible slots is still required; the manifest screen identifies possible sources but cannot claim every dynamically added enchantment, Curios modifier, modded item, or KubeJS override has been tested."
 }
