@@ -10,7 +10,7 @@
     "all_in_optimize": "Use every actually available legal Curios slot for each form, respect unique/equip restrictions and source magnitude, and optimize each metric separately.",
     "illegal_assumption": "Do NOT assume every Curio fits every slot, carries Apotheosis affixes/gems, or gains armor enchantments. Do not assume category count equals slot count.",
     "banned_ring_id": "relics:ring_of_the_seven_deadly_sins",
-    "banned_ring_status": "excluded_from_normal_loot_via_test_full_integration_PR130; existing and creative copies still exist; omit from theoretical legal TMM builds by explicit design policy",
+    "banned_ring_status": "normal_loot_blocked_by_PR130_and_normal_Curios_ring_equip_tag_removed_by_KubeJS_PR132_on_test_full_integration; already-equipped and creative/command copies remain; omit from balance builds",
     "strict_guardian": "Separate strict no worn items INCLUDING Curios challenge, not ordinary Monk progression"
   },
   "relics_source": {
