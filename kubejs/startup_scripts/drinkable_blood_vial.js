@@ -9,6 +9,7 @@
 // Requires a full client/server restart; /reload does not apply item changes.
 ItemEvents.modification(event => {
   event.modify('irons_spellbooks:blood_vial', item => {
+    item.useAnimation('drink')
     item.foodProperties = food => {
       food.nutrition(1)
       food.saturation(1)
