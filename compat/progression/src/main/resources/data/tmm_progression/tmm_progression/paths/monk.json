@@ -248,6 +248,18 @@
       ],
       "xp": 260,
       "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_bedrock_sleep",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:bedrock_rest_completed",
+          "count": 1
+        }
+      ],
+      "xp": 230,
+      "points": 0
     }
   ],
   "skills": [
@@ -789,6 +801,23 @@
       "effects": [
         {
           "type": "lava_protection"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:bedrock_rest",
+      "max_rank": 1,
+      "required_rank": 17,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        17
+      ],
+      "effects": [
+        {
+          "type": "bedrock_rest",
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     }
