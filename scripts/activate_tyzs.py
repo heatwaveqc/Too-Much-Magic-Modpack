@@ -122,7 +122,7 @@ def activate(root: Path, manifest: dict) -> None:
                    check=True, cwd=root)
     cfg = root / "config/tyzs_skills/custom/data/categories.json"
     cats = json.loads(cfg.read_text(encoding="utf-8"))
-    if not DEFAULT_CATEGORIES.issubset(cats) or "tmm_magic_core" not in cats:
+    if not DEFAULT_CATEGORIES.issubset(cats) or cats.get("tmm_magic_core", {}).get("displayName") != "Core Skills":
         raise ValueError("Tyz category override lost its default tabs")
     skills = root / "config/tyzs_skills/custom/skills"
     if {x.stem for x in skills.glob("tmm_*.json")} != SKILL_IDS:
