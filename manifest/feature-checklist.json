@@ -890,6 +890,24 @@
       "evidence": ""
     },
     {
+      "id": "world.caerbannog_gateway",
+      "area": "World, combat and endgame",
+      "title": "Vanilla Killer Bunny gateway and Ars rabbit-foot reward",
+      "state": "source_ready",
+      "acceptance": "Kill exactly one hostile vanilla Killer Bunny and receive one Rabbit's Foot plus 12 genuine rabbit entity-loot rolls; validate Gate Pearl recipe, labels, repeatability and Looting context",
+      "source": "docs/CAERBANNOG-GATEWAYS.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.chaos_bunny_gateway",
+      "area": "World, combat and endgame",
+      "title": "Chaos Bunny of Caerbannog six-wave trophy superboss",
+      "state": "in_progress",
+      "acceptance": "Five waves of 5/10/20/40/80 armored 40-HP 20-damage Killer Bunnies; final Chaos Guardian-class rabbit with random God-tier Apothic modifiers and 10% frog-tongue instakill; only trophy drops and satisfactory 80-entity TPS",
+      "source": "docs/CAERBANNOG-GATEWAYS.md",
+      "evidence": ""
+    },
+    {
       "id": "qol.travel",
       "area": "QoL, food, multiplayer and release",
       "title": "FTB Essentials /home, /sethome, /rtp",
