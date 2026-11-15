@@ -365,7 +365,7 @@
         "Mining benefits must not bypass protected ores, world claims or late-game materials.",
         "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power.",
         "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
-        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curiο effects."
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
@@ -617,7 +617,7 @@
         "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
         "Abyssal Fortune (Extreme ×50) is an extra specialty beyond this v1 four-lane sketch; full 165-row strength catalog contains it with exact proposed cap and test cautions.",
         "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
-        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curiο effects."
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
@@ -878,7 +878,7 @@
         "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
         "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana.",
         "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
-        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curiο effects."
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
