@@ -36,6 +36,12 @@
     }
   ]
 
+  for (const form of FORMS) {
+    if (form.clazz == null) {
+      console.warn('[TMM form cure] JAWR ' + form.id + ' attachment not accessible: purchases denied and resets suppressed.')
+    }
+  }
+
   const LEDGER_PREFIX = 'tmm_tyz_paid_ranks_v1_'
   const seenAbsent = {}
   const pendingBuy = {}
@@ -266,5 +272,9 @@
   PlayerEvents.loggedOut(event => {
     const player = event.player
     for (const form of FORMS) delete seenAbsent[key(player, form.category)]
+    const prefix = String(player.getUUID()) + '::'
+    for (const purchaseKey of Object.keys(pendingBuy)) {
+      if (purchaseKey.startsWith(prefix)) delete pendingBuy[purchaseKey]
+    }
   })
 })()
