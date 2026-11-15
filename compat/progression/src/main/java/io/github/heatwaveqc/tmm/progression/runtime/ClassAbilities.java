@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.minecraft.world.entity.monster.Monster;
@@ -185,8 +186,7 @@ public final class ClassAbilities {
         double max = Math.max(2,Math.min(24,number(active,"range",20)));
         var candidates = p.serverLevel().getEntitiesOfClass(LivingEntity.class,
             p.getBoundingBox().inflate(max), living ->
-                living.isAlive() && living != p && !(living instanceof WitherBoss)
-                && !(living instanceof EnderDragon)
+                living.isAlive() && living != p && !(living instanceof EnderDragon)
                 && Selectors.entity(active.effect().selector(),living));
         LivingEntity candidate = null;
         double nearest = max*max;
@@ -199,6 +199,12 @@ public final class ClassAbilities {
             candidate = living;
         }
         if (candidate == null) return;
+        if (candidate instanceof WitherBoss) {
+            // Let the vanilla boss's damage code enforce spawn invulnerability
+            // and current phase, rather than forcing effects or ignoring immunity.
+            candidate.hurt(p.damageSources().magic(),1.0f);
+            return;
+        }
         boolean applied = candidate.addEffect(new MobEffectInstance(MobEffects.WITHER,50,0),p);
         // Vanilla undead can reject Wither status; still permit a modest direct gaze effect.
         if (!applied && candidate.getType().is(EntityTypeTags.UNDEAD))
@@ -332,6 +338,13 @@ public final class ClassAbilities {
 
     /** Per-mob retaliation. Neutral creatures still fight back after a qualifying strike. */
     public static void incoming(LivingIncomingDamageEvent event) {
+        if (event.getEntity() instanceof ServerPlayer defender
+                && event.getSource().is(DamageTypes.LAVA)
+                && !defender.isOnFire() && unlocked(defender,"lava_protection")) {
+            // Distinct from the generic fire resistance: one-off protection on
+            // otherwise non-burning players contacting lava, not blanket immunity.
+            event.setAmount(event.getAmount() * 0.5f);
+        }
         if (event.getSource().getEntity() instanceof ServerPlayer player
                 && event.getEntity() instanceof Mob mob) {
             RETALIATION.put(mob.getUUID(),new Retaliation(player.getUUID(),
