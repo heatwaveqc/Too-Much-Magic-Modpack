@@ -24,8 +24,8 @@ public final class MxpSourceConfig {
             .defineInRange("irons_initial_mana", 100.0, 0.0, 1.0e12);
         BOTANIA_PORTABLE_POOL = b.comment("A first mana tablet or ordinary mana ring holds 500000 (Botania Revived 2.0.2). 0 disables.")
             .defineInRange("botania_portable_initial_mana", 500000.0, 0.0, 1.0e12);
-        NEO_EV_NETWORK_POOL = b.comment("NO universal Anima/EV starting capacity in Neo Vitae 1.1.53. Set this to the APPROVED initial EV normalization amount to enable. 0 disables.")
-            .defineInRange("neovitae_ev_network_initial", 0.0, 0.0, 1.0e12);
+        NEO_EV_NETWORK_POOL = b.comment("Tier-0 Novicius/Weak Blood Orb Anima capacity = 5000 EV in Neo Vitae 1.1.53 blood_orb_stats data map. Fixed MXP reference; 0 disables the adapter.")
+            .defineInRange("neovitae_ev_network_initial", 5000.0, 0.0, 1.0e12);
         b.pop();
         SPEC = b.build();
     }
