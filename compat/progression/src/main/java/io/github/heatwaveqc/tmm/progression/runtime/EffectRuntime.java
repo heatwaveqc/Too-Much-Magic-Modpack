@@ -168,7 +168,7 @@ public final class EffectRuntime {
         }
     }
     private static boolean sourceMatches(String selector, DamageSource source) {
-        if (selector.isEmpty()) return true;
+        if (selector.isEmpty() || selector.equals("*")) return true;
         String key = selector.startsWith("#") ? selector.substring(1) : selector;
         ResourceLocation id = ResourceLocation.parse(key);
         return selector.startsWith("#") ?
