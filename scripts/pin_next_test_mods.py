@@ -19,6 +19,11 @@ from pathlib import Path
 DRAGON_FILE_ID = 9539454
 DRAGON_PROJECT_ID = 420799
 DRAGON_FILE = "DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar"
+EXPECTED_HASHES = {
+    "dragon-survival": "e11429dda4688711e174625bb7420873a255a715",
+    "comforts": "e9de2952545e9e773a6e78fc501e8cd231ea19750c30404355b71df9928eb5bd0921a4429aeca9d0fa10e67717f77fcf7a2aae117ac953b8f7de246b0ad685e4",
+    "colorful-hearts": "4791dddc6932a74c28a5e58b51865c09a6be0715bf235eb4d95a050a9130b4013cf4883d35f7c7ccea6997534a0e3cd0e5ec59b79acc8ce01f52d230d476a889",
+}
 MODRINTH = (
     ("comforts", "SaCpeal4", "3kpPjcTc", "9.0.5+1.21.1", "both"),
     ("colorful-hearts", "wQfMUdZT", "us0gze50", "10.5.9", "client"),
@@ -58,6 +63,8 @@ def modrinth_pin(mod_id: str, project: str, release: str, expected: str, side: s
         raise ValueError(f"{mod_id}: missing SHA-512")
     if "1.21.1" not in filename or "/" in filename or "\\" in filename:
         raise ValueError(f"{mod_id}: wrong JAR filename")
+    if sha.lower() != EXPECTED_HASHES[mod_id]:
+        raise ValueError(f"{mod_id}: provider SHA-512 changed; refuse unexpected binary")
     # Retain the exact upstream URLs, SHA-512, and pinned version IDs.
     meta = (f"name = {toml_quote('Comforts' if mod_id == 'comforts' else 'Colorful Hearts')}\n"
             f"filename = {toml_quote(filename)}\n"
@@ -97,6 +104,8 @@ def dragon_pin() -> tuple[str, str]:
     if data is None:
         raise ValueError("Official Dragon Survival CDN retrieval failed: " + " | ".join(errors))
     sha1 = hashlib.sha1(data).hexdigest()
+    if sha1 != EXPECTED_HASHES["dragon-survival"]:
+        raise ValueError("Dragon Survival exact file ID has unexpected SHA-1; refuse altered binary")
     meta = (f'name = "Dragon Survival"\nfilename = {toml_quote(DRAGON_FILE)}\n'
             'side = "both"\n\n[download]\nhash-format = "sha1"\n'
             f'hash = "{sha1}"\nmode = "metadata:curseforge"\n\n'
