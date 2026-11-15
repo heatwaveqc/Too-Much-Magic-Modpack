@@ -49,6 +49,14 @@ mkfifo cmd.fifo
 (
   for ((elapsed=0; elapsed<SMOKE_TIMEOUT_SECONDS; elapsed++)); do
     if grep -Eq 'Done \(' server.log 2>/dev/null; then
+      # A loader reaching "Done" does NOT execute KubeJS EntityTickEvent.Pre.
+      # The reported first-world crash happened on the first dropped item.
+      # Enable this only for the comprehensive modded integration QA job.
+      if [[ "${SMOKE_ITEM_TICK_TEST:-0}" == "1" ]]; then
+        printf 'forceload add 0 0\n'
+        printf 'summon minecraft:item 0 128 0 {Item:{id:"minecraft:stone",count:1}}\n'
+        sleep 5  # Let the real NeoForge server tick the item several times.
+      fi
       printf 'stop\n'
       exit 0
     fi
@@ -63,6 +71,15 @@ STATUS=$?
 set -e
 kill "$STOPPER" 2>/dev/null || true
 if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
+  if [[ "${SMOKE_ITEM_TICK_TEST:-0}" == "1" ]]; then
+    # If the summoned item failed to spawn, the regression wasn't exercised.
+    if ! grep -Fq 'Summoned new Item' server.log; then
+      tail -100 server.log
+      echo "FAIL: dropped item regression summon not confirmed in server log"
+      exit 1
+    fi
+    echo "PASS: real modded server spawned/ticked an ordinary dropped item without crashing"
+  fi
   echo "PASS: dedicated server reached Done and shut down cleanly (modded=${SMOKE_WITH_MODS:-0}; exit=$STATUS)"
   exit 0
 fi
