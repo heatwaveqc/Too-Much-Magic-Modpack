@@ -1,0 +1,121 @@
+name: B15 - Cobblegen Galore and Full Stone Inventory
+on:
+  push:
+    branches: ['feature/b15-galore-stone-inventory']
+    paths:
+      - '.github/workflows/b15-cobblegen-stones.yml'
+      - 'scripts/resolve_b15.py'
+      - 'scripts/inventory_modded_stone.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b15-cobblegen-stone-inventory
+  cancel-in-progress: false
+
+jobs:
+  pin-inventory-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Install exact packwiz
+        run: |
+          python3 -m py_compile scripts/resolve_b15.py scripts/inventory_modded_stone.py
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Hash-pin exact NeoForge Galore 0.2.9 and leave prior mods untouched
+        id: resolve
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 scripts/resolve_b15.py
+          python3 scripts/validate.py
+      - name: Download all source JARs with upstream hash verification
+        id: download
+        env:
+          INVENTORY_DIR: "${{ runner.temp }}/tmm-b15-stone-jars"
+        run: python3 scripts/download_mods.py "$INVENTORY_DIR"
+      - name: Inventory all stone families, variants, ores and bundled worldgen evidence
+        id: audit
+        env:
+          INVENTORY_DIR: "${{ runner.temp }}/tmm-b15-stone-jars"
+        run: |
+          python3 scripts/inventory_modded_stone.py "$INVENTORY_DIR"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("manifest/modded_stone_inventory.json").read_text())
+          assert d["source_mod_count"] >= 140
+          assert d["counts"]["primary_candidates"] > 0
+          assert d["counts"]["total_stone_blockstates"] > d["counts"]["primary_candidates"]
+          assert any("marble" in x["id"] for x in d["blocks"])
+          assert any("darkstone" in x["id"] for x in d["blocks"])
+          assert any("aquamarine_shale" in x["id"] for x in d["blocks"])
+          print("PASS full JAR inventory",d["counts"])
+          PY
+      - name: Combined real dedicated-server smoke test
+        id: smoke
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: "${{ runner.temp }}/tmm-b15-server-smoke"
+        run: bash scripts/smoke_server.sh
+      - name: Validate and commit exact pins plus generated stone inventory after PASS
+        if: steps.resolve.outcome == 'success' && steps.download.outcome == 'success' && steps.audit.outcome == 'success' && steps.smoke.outcome == 'success'
+        run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("manifest/mods.json")
+          m=json.loads(p.read_text())
+          b=next(b for b in m["batches"] if b["id"]=="B15")
+          b["status"]="server_smoked_inventory_complete_client_pending"
+          m["note"]+="\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified."
+          p.write_text(json.dumps(m,indent=2)+"\n")
+          PY
+          packwiz refresh
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pack.toml index.toml manifest/mods.json \
+            manifest/modded_stone_inventory.json docs/MODDED-STONE-INVENTORY.md \
+            mods/cobblegen-galore.pw.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "build(b15): hash-pin Galore and publish full modded-stone JAR inventory after server PASS"
+            git fetch --no-tags origin feature/b15-galore-stone-inventory
+            git rebase origin/feature/b15-galore-stone-inventory
+            python3 scripts/validate.py
+            git push origin HEAD:feature/b15-galore-stone-inventory
+          fi
+      - name: Store audit and smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b15-stone-audit-and-server-logs
+          path: |
+            docs/MODDED-STONE-INVENTORY.md
+            manifest/modded_stone_inventory.json
+            pack.toml
+            index.toml
+            ${{ runner.temp }}/tmm-b15-server-smoke/server.log
+            ${{ runner.temp }}/tmm-b15-server-smoke/logs/latest.log
+          if-no-files-found: warn
+      - name: Require complete PASS
+        if: steps.resolve.outcome != 'success' || steps.download.outcome != 'success' || steps.audit.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
