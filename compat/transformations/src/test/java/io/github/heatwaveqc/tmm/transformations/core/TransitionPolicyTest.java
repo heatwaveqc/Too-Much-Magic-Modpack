@@ -41,6 +41,10 @@ class TransitionPolicyTest {
         assertFalse(TransitionPolicy.assess(states(VAMPIRISM_HUNTER), states(JAWR_VAMPIRE), NORMAL).allowed());
         assertFalse(TransitionPolicy.assess(states(GOETY_LICH, FORBIDDEN_MAGIC_LICH),
                 states(VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF, GOETY_LICH, FORBIDDEN_MAGIC_LICH), NORMAL).allowed());
+        assertFalse(TransitionPolicy.assess(states(VAMPIRISM_VAMPIRE),
+                states(VAMPIRISM_VAMPIRE, JAWR_LYCANTHROPE), NORMAL).allowed());
+        assertFalse(TransitionPolicy.assess(states(WEREWOLVES_WEREWOLF),
+                states(WEREWOLVES_WEREWOLF, JAWR_VAMPIRE), NORMAL).allowed());
     }
 
     @Test void hunterReplacementExplicitAndAtomic() {
@@ -50,13 +54,21 @@ class TransitionPolicyTest {
         assertFalse(TransitionPolicy.assess(states(), states(VAMPIRISM_VAMPIRE), VOLUNTARY_HUNTER_REPLACEMENT).allowed());
     }
 
-    @Test void abominationMustBeAtomicFromArchlich() {
-        var archlich = states(GOETY_LICH, FORBIDDEN_MAGIC_LICH);
-        var abomination = states(GOETY_LICH, FORBIDDEN_MAGIC_LICH, JAWR_VAMPIRE, JAWR_LYCANTHROPE);
-        assertTrue(TransitionPolicy.assess(archlich, abomination, ABOMINATION_RITUAL).allowed());
-        assertFalse(TransitionPolicy.assess(archlich,
-                states(GOETY_LICH, FORBIDDEN_MAGIC_LICH, JAWR_VAMPIRE), ABOMINATION_RITUAL).allowed());
-        assertFalse(TransitionPolicy.assess(states(), abomination, ABOMINATION_RITUAL).allowed());
+    @Test void abominationRequiresExplicitRitualFromEitherParent() {
+        var vampire = states(VAMPIRISM_VAMPIRE, JAWR_VAMPIRE);
+        var werewolf = states(WEREWOLVES_WEREWOLF, JAWR_LYCANTHROPE);
+        var hybrid = states(VAMPIRISM_VAMPIRE, JAWR_VAMPIRE,
+                WEREWOLVES_WEREWOLF, JAWR_LYCANTHROPE);
+        assertTrue(TransitionPolicy.assess(vampire, hybrid, ABOMINATION_RITUAL).allowed());
+        assertTrue(TransitionPolicy.assess(werewolf, hybrid, ABOMINATION_RITUAL).allowed());
+        assertFalse(TransitionPolicy.assess(vampire, hybrid, NORMAL).allowed());
+        assertFalse(TransitionPolicy.assess(werewolf, hybrid, NORMAL).allowed());
+        assertFalse(TransitionPolicy.assess(states(), hybrid, ABOMINATION_RITUAL).allowed());
+        assertFalse(TransitionPolicy.assess(states(GOETY_LICH, FORBIDDEN_MAGIC_LICH),
+                hybrid, ABOMINATION_RITUAL).allowed());
+        assertFalse(TransitionPolicy.assess(vampire,
+                states(VAMPIRISM_VAMPIRE, JAWR_VAMPIRE, WEREWOLVES_WEREWOLF, GOETY_LICH),
+                ABOMINATION_RITUAL).allowed());
     }
 
     @Test void curesCannotCreateNewStates() {
