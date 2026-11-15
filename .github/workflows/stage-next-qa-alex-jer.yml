@@ -1,0 +1,49 @@
+name: Stage next QA — JER, Alex's Caves and uranium (no integration publish)
+on:
+  push:
+    branches: ['stage/next-qa-jer-alex-uranium']
+    paths:
+      - '.github/workflows/stage-next-qa-alex-jer.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pin-and-check-stage-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: stage/next-qa-jer-alex-uranium
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm we are on isolated staging branch, not live integration
+        run: |
+          test "$(git branch --show-current)" = 'stage/next-qa-jer-alex-uranium'
+          test -e scripts/stage_next_qa_alex_jer.py
+      - name: Resolve exact official Modrinth metadata and write stage-only pins
+        run: python3 scripts/stage_next_qa_alex_jer.py --write
+      - name: Check uranium recipe, worldgen override and pack metadata
+        run: |
+          node --check kubejs/server_scripts/toxic_caves_reactor_uranium.js
+          node scripts/test_next_qa_uranium.cjs
+          python3 -m py_compile scripts/stage_next_qa_alex_jer.py
+          python3 scripts/validate.py
+      - name: Commit only staging artifacts; never update or tag integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest/mods.json mods/alexs-caves-continued.pw.toml mods/codxlib.pw.toml mods/just-enough-resources-jer.pw.toml index.toml pack.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "stage: pin JER Alex's Caves and CodxLib for next QA only"
+            git push origin HEAD:refs/heads/stage/next-qa-jer-alex-uranium
+          fi
+      - name: Report staging gate only
+        run: |
+          echo "STAGED ONLY — no test/full-integration update; no Prism build was invoked."
+          git rev-parse HEAD
