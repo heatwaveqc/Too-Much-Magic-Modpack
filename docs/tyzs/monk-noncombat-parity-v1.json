@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "id": "tmm:gear_normalized_monk_noncombat_parity_v1",
+  "status": "DESIGN_TARGET_ONLY_NOT_MEASURED",
+  "created": "2026-11-15",
+  "governing_decision": "At maximum legitimate Monk progression without worn gear, every genuinely comparable noncombat capability should be 80-90% of the optimized appropriately-geared specialist's equivalent output; use 85% by default. Sea Dragon Luck is explicitly 80%.",
+  "applies_to": "Directly comparable personal noncombat capabilities, not mandatory grants of class-locked blood/lich/dragon physiology; separate combat/health/healing/boss balance. A special player's gear/equipment restriction must be honored by source.",
+  "ratios": {
+    "min": 0.8,
+    "default": 0.85,
+    "max": 0.9,
+    "sea_dragon_luck": 0.8
+  },
+  "formula": {
+    "specialist_full": "F_S = measured(native_specialist + permanent_skill_ranks + legal_gear_enchants_Apotheosis_gems_Curios + relevant_buffs), honoring the actual engine's additive/multiplicative operations; not simple sum of tooltips",
+    "monk_target": "F_M(capped) = target_ratio * F_S(fully_optimized_appropriate_tier); subtract innate Monk + common Core Skills contribution to determine the remaining Monk-specific skill budget",
+    "monk_rank_curve": "For a proposed N-rank incremental Monk skill: additional_monk_at_rank(r) = max(0, target_ratio*F_S - F_M_before_this_skill)*r/N for 0<=r<=N, recalibrate nonlinearly for discrete level, proc, range, claim and event-capped traits",
+    "when_baseline_zero": "Absolute stat units, explicit nonzero reference or observable output distribution required; never multiply 0 vanilla Luck by an arbitrary percent and call that progression",
+    "spell_and_gear": "All source-specific final attributes/modifiers must be measured in legitimate endgame gear before adding skill effects; no magic industrial tanks or passive machine budgets"
+  },
+  "calibration_state": "NO VERIFIED NUMERIC X VALUES YET. The 100-point example is a normalized index only and does not represent raw Minecraft Luck or an actual equipped Sea Dragon.",
+  "luck_example": {
+    "unit": "hypothetical normalized Luck index, not real game Luck",
+    "optimized_sea_dragon_total": 100,
+    "hypothetical_sea_skill_contribution_at_50": 75,
+    "hypothetical_sea_gear_and_other_contribution": 25,
+    "monk_target_at_50": 80,
+    "monk_stage_baseline": 0,
+    "monk_cap_50_curve": [
+      {
+        "rank": 0,
+        "sea_skill_only_index": 0,
+        "monk_index": 0
+      },
+      {
+        "rank": 1,
+        "sea_skill_only_index": 1.5,
+        "monk_index": 1.6
+      },
+      {
+        "rank": 5,
+        "sea_skill_only_index": 7.5,
+        "monk_index": 8
+      },
+      {
+        "rank": 10,
+        "sea_skill_only_index": 15,
+        "monk_index": 16
+      },
+      {
+        "rank": 25,
+        "sea_skill_only_index": 37.5,
+        "monk_index": 40
+      },
+      {
+        "rank": 50,
+        "sea_skill_only_index": 75,
+        "monk_index": 80
+      }
+    ],
+    "note": "This example only demonstrates how to back-solve per-rank Monk values from FINAL Sea with full gear. Real Luck attribute/loot calculations are source-specific and will not share these invented index units."
+  },
+  "benchmarks": [
+    {
+      "id": "luck",
+      "specialist": "tmm_dragon_sea",
+      "specialist_skill": "tmm_dragon_sea_abyssal_fortune",
+      "monk_skills": [
+        "tmm_monk_inner_fortune"
+      ],
+      "target_ratio": 0.8,
+      "metric": "real_player_luck_attribute_units",
+      "rank_cap": 50,
+      "gear": [
+        "lucky armor attributes",
+        "Luck enchantments where compatible",
+        "Apotheosis affixes and gems",
+        "Curios and held item Luck modifiers"
+      ],
+      "dedupe": "Fortune, Looting and generic loot amount are NOT the Luck attribute",
+      "priority": "P0",
+      "examples": [
+        0,
+        5,
+        10,
+        25,
+        50
+      ]
+    },
+    {
+      "id": "personal_mana_capacity",
+      "specialist": "tmm_dragon_cave|tmm_dragon_sea|tmm_dragon_forest",
+      "specialist_skill": "*_draconic_reservoir",
+      "monk_skills": [
+        "tmm_magic_reservoir_1",
+        "tmm_monk_inner_reservoir"
+      ],
+      "target_ratio": 0.85,
+      "metric": "max_authoritative_personal_spell_resource_pool_per_mod",
+      "rank_cap": 25,
+      "gear": [
+        "mana/spellbook armor affixes",
+        "Curios mana capacity",
+        "enchantments",
+        "modded held implements"
+      ],
+      "dedupe": "Does not multiply one shared Ars/Iron pool twice; industrial mana tanks excluded",
+      "priority": "P0",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "legal_block_break_throughput",
+      "specialist": "tmm_dragon_cave",
+      "specialist_skill": "tmm_dragon_cave_tunneler|tmm_dragon_cave_draconic_talons",
+      "monk_skills": [
+        "tmm_monk_barehand_efficiency"
+      ],
+      "target_ratio": 0.85,
+      "metric": "legally_broken_matched_blocks_per_second_with_loot_and_tier_checks",
+      "rank_cap": 25,
+      "gear": [
+        "Efficiency/harvest enchantments",
+        "high-tier enchanted mining tool",
+        "Apotheosis tool affixes",
+        "Curios mining bonuses"
+      ],
+      "dedupe": "Cannot compare a Monk who lacks the required native harvest-tier unlock against a tool that can mine the block",
+      "priority": "P0",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "crop_yield_and_growing",
+      "specialist": "tmm_dragon_forest",
+      "specialist_skill": "tmm_dragon_forest_harvest_bounty|green_thumb|tmm_dragon_forest_germination_touch",
+      "monk_skills": [
+        "tmm_monk_worldly_cultivation",
+        "tmm_monk_fortunate_hands"
+      ],
+      "target_ratio": 0.85,
+      "metric": "valid_ripe_crop_units_and_bonemeal_effective_growth_per_same_player_action",
+      "rank_cap": 25,
+      "gear": [
+        "enchanted farming tool",
+        "Apotheosis affixes",
+        "Curios and actual harvest-buff equipment"
+      ],
+      "dedupe": "Never multiply the same loot event twice or count machines/automatic farms",
+      "priority": "P0",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "animal_husbandry",
+      "specialist": "tmm_dragon_forest",
+      "specialist_skill": "tmm_dragon_forest_breeder_s_blessing|shepherd_s_blessing",
+      "monk_skills": [
+        "tmm_monk_worldly_cultivation"
+      ],
+      "target_ratio": 0.85,
+      "metric": "legitimate_breeding_growth_efficiency_per_valid_couple_and_feed",
+      "rank_cap": 25,
+      "gear": [
+        "valid breeding speed equipment/bonuses, if any"
+      ],
+      "dedupe": "Does not create extra animals from a single parent; maturation vs breeding separate measures",
+      "priority": "P1",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "underwater_movement",
+      "specialist": "tmm_dragon_sea",
+      "specialist_skill": "tmm_dragon_sea_sleek_form|tmm_dragon_sea_current_rider",
+      "monk_skills": [
+        "tmm_monk_body_speed",
+        "tmm_monk_glide_control"
+      ],
+      "target_ratio": 0.85,
+      "metric": "real_travel_meters_per_second_on_equal_water_course",
+      "rank_cap": 25,
+      "gear": [
+        "Depth Strider",
+        "Dolphin's Grace if actually sourced",
+        "Apotheosis boots attributes",
+        "Curios mobility bonuses"
+      ],
+      "dedupe": "Do not treat flying, swimming and teleporting as the same measurement",
+      "priority": "P1",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "general_ground_mobility",
+      "specialist": "tmm_hunter|tmm_werewolf|tmm_dragon_forest",
+      "specialist_skill": "form_mobility_specialization",
+      "monk_skills": [
+        "tmm_monk_body_speed",
+        "tmm_monk_balanced_landing"
+      ],
+      "target_ratio": 0.85,
+      "metric": "measured_unassisted_obstacle_course_speed_no_combat",
+      "rank_cap": 25,
+      "gear": [
+        "enchanted boots",
+        "Apotheosis movement affixes",
+        "Curios movement",
+        "form-native movement"
+      ],
+      "dedupe": "No free creative flight; respect collision and traversability",
+      "priority": "P1",
+      "examples": [
+        0,
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    {
+      "id": "personally_usable_blood_magic_resource",
+      "specialist": "tmm_vampire|tmm_lich",
+      "specialist_skill": "real_blood_resource_and_cost_efficiency",
+      "monk_skills": [],
+      "target_ratio": null,
+      "metric": "native_blood_or_soul_resource_for_real_eligible_transformed_player",
+      "rank_cap": null,
+      "gear": [
+        "blood spell gear where allowed"
+      ],
+      "dedupe": "Not universally comparable: Monk cannot be assumed to acquire JAWR blood physiology or lich soul/phylactery",
+      "priority": "EXCLUDED_NO_COMMON_ACTION",
+      "examples": []
+    },
+    {
+      "id": "personal_spell_potency",
+      "specialist": "tmm_dragon_cave|tmm_dragon_sea|tmm_dragon_forest",
+      "specialist_skill": "*_draconic_potency",
+      "monk_skills": [
+        "tmm_magic_potency_1"
+      ],
+      "target_ratio": null,
+      "metric": "actual_spell_damage_and_healing_effectiveness",
+      "rank_cap": null,
+      "gear": [
+        "spell damage enchantments and affixes",
+        "spell focus",
+        "Curios"
+      ],
+      "dedupe": "COMBAT stat: excluded from universal 80-90% NONCOMBAT rule; separate gear-normalized combat rule",
+      "priority": "EXCLUDED_COMBAT",
+      "examples": []
+    },
+    {
+      "id": "fortune_and_looting",
+      "specialist": "tmm_dragon_forest|tmm_hunter",
+      "specialist_skill": "green_thumb|sunder_armor",
+      "monk_skills": [
+        "tmm_monk_fortunate_hands",
+        "tmm_monk_looting_palm"
+      ],
+      "target_ratio": 0.85,
+      "metric": "actual_drop_distribution_over_matched_valid_kills_or_harvests",
+      "rank_cap": 10,
+      "gear": [
+        "Fortune tool enchantment",
+        "Looting weapons",
+        "Apotheosis loot affixes"
+      ],
+      "dedupe": "Separate from generic Luck and exclude static boss/advancement drops",
+      "priority": "P1",
+      "examples": [
+        0,
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  ],
+  "gaps": [
+    "Monk currently has no generic Luck attribute skill: add `tmm_monk_inner_fortune` as DESIGN ONLY and verify real Luck consumers.",
+    "Monk has no native intrinsic capacity equal to 85% of full geared Dragon: add late `tmm_monk_inner_reservoir` candidate but do not activate without real per-mod mana baselines.",
+    "Monk's native Gardening/Hazard/Fortune and proper harvest tier gates may not match optimized Forest crop output: add `tmm_monk_worldly_cultivation` candidate, then benchmark and avoid duplicate harvest.",
+    "The 1.2^P XP divisor makes 50-rank skills exceptionally expensive; decide whether all-tree Monk max is a reachable survival target and whether endgame fixed MXP milestones cover it.",
+    "No actual source-verified gear stat maximum measured for Luck, manacap, farming tools or high-tier attributes. Raw x is unknown until pinned mechanics/gear are audited."
+  ],
+  "qa": [
+    "Record per-mod gearless/gear-only/skill-only/full-build baseline and actual final attribute at representative rank checkpoints.",
+    "For Sea Luck verify genuine supported player Luck attribute and all real loot contexts that read it, then pick a buildable fully optimized gear template and compute target capped Monk=0.8×measured Sea X.",
+    "For each noncombat row, run same task with equivalent legal source, claims and world conditions, including source-verified debits and no double-dip.",
+    "Ensure Monk abilities suspend when wearing conventional armor or weapons as required, and that armor-lock self-damage/safe-swap rules remain separate.",
+    "Do not apply 85% to all magic schools without source support or automatically grant species-locked blood/hybrid/immortality."
+  ],
+  "related_magic_affinity_registry": "docs/tyzs/magic-affinity-nature-blood-other-v1.json",
+  "related_tree_catalog": "docs/tyzs/nine-tree-strength-first-pass-v1.json"
+}

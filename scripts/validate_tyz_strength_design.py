@@ -68,7 +68,7 @@ def verify() -> None:
         else:
             assert tree["id"] == "tmm_magic_core" or tree["capstone"]["level_cap"] == 1
 
-    assert len(ids) == 165
+    assert len(ids) == 168
     assert len(rehomes) == len(set(rehomes)) == 32
     assert len([t for t in data["trees"] if t.get("capstone")]) == 8
     assert all(all_entries[sid]["strength"] == "Average" and all_entries[sid]["level_cap"] == 5 for sid in CORE_IDS)
@@ -98,6 +98,44 @@ def verify() -> None:
     assert monk["capstone"]["benchmark_status"] == "DESIGN_REQUIREMENT_NOT_YET_TESTED"
     assert "no worn equipment" in monk["capstone"]["benchmark"]
     assert "no weapons" in monk["capstone"]["benchmark"]
+
+    # Late noncombat Monk normalization is measured against COMPLETE geared builds.
+    parity = json.loads((ROOT / "docs/tyzs/monk-noncombat-parity-v1.json").read_text(encoding="utf-8"))
+    assert parity["status"] == "DESIGN_TARGET_ONLY_NOT_MEASURED"
+    assert parity["ratios"] == {"min": 0.8, "default": 0.85, "max": 0.9, "sea_dragon_luck": 0.8}
+    assert len(parity["benchmarks"]) == 10
+    luck = next(row for row in parity["benchmarks"] if row["id"] == "luck")
+    assert luck["specialist_skill"] == "tmm_dragon_sea_abyssal_fortune"
+    assert luck["monk_skills"] == ["tmm_monk_inner_fortune"]
+    assert luck["target_ratio"] == 0.8
+    assert parity["luck_example"]["monk_cap_50_curve"][-1]["monk_index"] == 80
+    assert data["balancing"]["noncombat_parity_2026_11_15"]["ratio"]["default"] == 0.85
+    for sid, strength, cap in (
+        ("tmm_monk_inner_fortune", "Extreme", 50),
+        ("tmm_monk_inner_reservoir", "Extreme", 25),
+        ("tmm_monk_worldly_cultivation", "Strong", 25),
+    ):
+        skill = all_entries[sid]
+        assert skill["tree"] == "tmm_monk"
+        assert (skill["strength"], skill["level_cap"]) == (strength, cap)
+    aff = json.loads((ROOT / "docs/tyzs/magic-affinity-nature-blood-other-v1.json").read_text(encoding="utf-8"))
+    assert aff["status"] == "DESIGN_ONLY_NOT_RUNTIME_TAGS"
+    assert aff["categories"] == ["Nature", "Blood", "Other"]
+    names = [mod["id"] for mod in aff["mods"]]
+    assert len(names) == len(set(names)) == 40
+    tags = {mod["id"]: mod["primary"] for mod in aff["mods"]}
+    assert all(category in aff["categories"] for category in tags.values())
+    assert tags["neovitae"] == tags["evilcraft"] == "Blood"
+    assert all(tags[x] == "Nature" for x in
+               ("botania-revived", "roots-classic", "feywild", "extra-botany-revived", "totemic"))
+    assert all(tags[x] == "Other" for x in
+               ("goety", "occultism", "malum", "forbidden-magic", "irons-spells"))
+    overrides = {(o["parent"], o["id"]): o for o in aff["contract"]["mixed_overrides"]}
+    assert overrides[("irons-spells", "irons_spellbooks:blood")]["category"] == "Blood"
+    assert overrides[("irons-spells", "irons_spellbooks:nature")]["category"] == "Nature"
+    manifest = json.loads((ROOT / "manifest/mods.json").read_text(encoding="utf-8"))
+    installed_ids = {mod["id"] for mod in manifest["mods"]}
+    assert set(names) <= installed_ids, f"Affinity registry missing manifest IDs: {set(names)-installed_ids}"
 
     assert "tmm_monk_spirit_bolt_mastery" not in ids
     assert "tmm_monk_unarmed_precision" in ids
