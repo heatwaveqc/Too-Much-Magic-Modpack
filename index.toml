@@ -290,7 +290,7 @@ hash = "5c53aa5757889bf44ab66f311e9d8486d1e36f892f3c66d2f5926c78e1509aab"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "0ff7950cea54284eb289bf766fdc9e8b3272745bf6e77d4628af8c39e9163e4e"
+hash = "a508fe1093e5094a98b111f69de3d976a3e118580f42ee984d99dc90784a9a9a"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -382,7 +382,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "a34daa6653597e6754ce8122ba76485675aef46a9500cbeb76fd1ea944cd347a"
+hash = "15b3f9eb0d21e2c5d6feef0e133c57c97be7b6fc82605301a22aa892000e29ae"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -398,11 +398,11 @@ hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
-hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
+hash = "b6884a54ff24a9f23d32a364fb8ee0aa2adee11b67a5ac8fa99795c8da62a6dd"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
-hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
+hash = "ba4918dfaf4e4725ac0e75282ffd58c0e4aadac04a8c038bd18209d9432f1963"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"
@@ -1199,3 +1199,19 @@ metafile = true
 [[files]]
 file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
+
+[[files]]
+file = "kubejs/data/tmm/curios/slots/bundle.json"
+hash = "1e60dd41531f71dfce62c1a9c999544cecaf7e9c08daf7e1c8eaaf928fc3103a"
+
+[[files]]
+file = "kubejs/data/tmm/curios/entities/player.json"
+hash = "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
+
+[[files]]
+file = "kubejs/data/curios/tags/item/bundle.json"
+hash = "f9ffaafaad32dd4fafaa862ba15e1a6acb3a0db629d33fc538db97a24ae2a46a"
+
+[[files]]
+file = "kubejs/assets/tmm/lang/en_us.json"
+hash = "5def9a6d6b676f56a6a41dc8e41ac9a70304d51addb88bad09d5f66c9c1ccc4b"
