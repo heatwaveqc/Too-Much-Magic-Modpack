@@ -101,7 +101,7 @@
         "compat/monk/"
       ],
       "mode": "compile-and-load",
-      "note": "Current first-party Monk native progression, compiled and packaged as ONE addon JAR. Cross-branch unit test now verifies Tyz desired-vs-actual packwiz installation rather than asserting old source-only state. Monk Tyz prototypes remain inactive; no duplicate global XP wallet.",
+      "note": "Native Monk four-rank mastery + Vampirism faction one-time skills, compiled and packaged once. Updated source tests validate actual Dragon Survival packwiz installed state, not historical uninstalled-only assumption. Tyz Monk prototypes remain disabled until purchase-pre form gates exist.",
       "manifest_mod_ids": [
         "dragon-survival",
         "tyzs-skills"
