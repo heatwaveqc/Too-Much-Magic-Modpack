@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
@@ -338,6 +339,13 @@ public final class ClassAbilities {
 
     /** Per-mob retaliation. Neutral creatures still fight back after a qualifying strike. */
     public static void incoming(LivingIncomingDamageEvent event) {
+        // Parity sync from the shared progression core's concurrent lava handler.
+        // Its overlap with general fire mitigation remains flagged for later QA.
+        if (event.getEntity() instanceof ServerPlayer defender
+                && event.getSource().is(DamageTypes.LAVA)
+                && !defender.isOnFire() && unlocked(defender,"lava_protection")) {
+            event.setAmount(event.getAmount() * 0.5f);
+        }
         if (event.getSource().getEntity() instanceof ServerPlayer player
                 && event.getEntity() instanceof Mob mob) {
             RETALIATION.put(mob.getUUID(),new Retaliation(player.getUUID(),
