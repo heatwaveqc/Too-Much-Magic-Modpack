@@ -24,7 +24,7 @@
 | --- | --- | --- | --- | --- |
 | 1 | ... | ... | ... | ... |
 
-Document **both sides of the contract**. Record a missing link rather than assuming the bridge exists. Describe recipe serializers, tags, energy/fluid units, event/player capability, entities and world-state consequences where relevant. Identify pack config/implementation files, if any.
+Document **both sides of the typed contract** (item stack vs dropped entity, fluid vs special capability, entity vs experience gem), including accepted IDs/tags, quantity, consumed/remainder behavior, output location, cadence/trigger and range/capacity. Record a missing link rather than assuming the bridge exists. Describe recipe serializers, tags, energy/fluid units, event/player capability, entities and world-state consequences where relevant. Identify pack config/implementation files, if any.
 
 ## Existing support vs work required
 
@@ -53,13 +53,14 @@ Document **both sides of the contract**. Record a missing link rather than assum
 
 ## Quest / Tips & Tricks opportunity
 
-<Concrete milestone; detection surface; safe reward direction; source profile chapter; whether this is a universal tip or specialist deep-dive. All subject to the existing quest rules.>
+<Concrete **instructional how-to** (prerequisites, actions, success result and relevant guidebook section/JEI category); truthful FTB detection vs behavior; safe XP + thematic reward; owning chapter and whether optional. See [walkthrough standard](../../QUEST-WALKTHROUGH-STANDARD.md).>
 
 ## Verification plan
 
-| Test ID | Disposable-world setup and exact actions | Expected pass result / failure signal | Observed status |
+| Test ID | Positive or boundary case with disposable-world steps | Expected observable value/behavior; distinguish source formula from measured rate | Observed status |
 | --- | --- | --- | --- |
-| INT-01 | ... | ... | not run |
+| INT-01 positive | ... | ... | not run |
+| INT-01 boundary (required for significant gates/compat/economy) | ... | ... | not run |
 
 ## Evidence and open questions
 
