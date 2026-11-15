@@ -1,0 +1,47 @@
+name: Apply humorous quest rewards (static QA)
+on:
+  push:
+    branches: ['feature/quest-reward-humor-first-pass']
+    paths:
+      - '.github/workflows/quest-reward-humor-qa.yml'
+      - 'scripts/apply_quest_reward_palette_v1.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  migrate-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Import six-category shop QA fixture (same as full integration)
+        run: |
+          git fetch origin feature/questshop-vanilla-ore-blocks
+          git restore --source=FETCH_HEAD --staged --worktree -- manifest/quest_shop_catalog.json kubejs/data/tmm/questshop/shop_categories/ores.json kubejs/data/tmm/questshop/shop_entries/ores.json
+      - name: Apply source and SNBT item rewards; preserve claim IDs
+        run: |
+          python3 -m py_compile scripts/apply_quest_reward_palette_v1.py
+          python3 scripts/apply_quest_reward_palette_v1.py
+          python3 scripts/rebuild_quest_ui.py
+          python3 scripts/validate_quests.py
+      - name: Check conversion idempotence
+        run: |
+          python3 scripts/apply_quest_reward_palette_v1.py
+          python3 scripts/validate_quests.py
+      - name: Commit validated reward changes on branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest/quest_content.json manifest/quest_content_resolved.json manifest/progression_quest_content.json manifest/quest_layouts.json manifest/quest_shop_catalog.json
+          git add config/ftbquests/quests/ scripts/validate_quests.py index.toml pack.toml
+          git add kubejs/data/tmm/questshop/shop_categories/ores.json kubejs/data/tmm/questshop/shop_entries/ores.json
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(quests): replace 61 paper/cookie/compass/bowl filler payouts with themed gifts"
+            git push origin HEAD:feature/quest-reward-humor-first-pass
+          fi
