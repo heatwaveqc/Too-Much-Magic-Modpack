@@ -2,7 +2,7 @@
 
 **Purpose:** resumable queue for Work research sessions. See [operating instructions](WORK-CHAT-INSTRUCTIONS.md). Every row corresponds to a `manifest/mods.json` selection record, **not a claim that the mod was successfully installed or tested**.
 
-**Snapshot:** 2026-11-15 updated selection (164 entries; 155 enabled, 9 inactive/planned). Exact runtime pins still require reconciliation. Alex's Caves Continued and CodxLib are planned but not yet installed; Bigger Reactors variants are excluded.
+**Snapshot:** 2026-11-15 updated selection (165 entries; 156 enabled, 9 inactive/planned). Exact runtime pins still require reconciliation. Alex's Caves Continued and CodxLib are planned but not yet installed; Bigger Reactors variants are excluded.
 
 ## Highest-value queue (suggested order)
 
@@ -197,10 +197,11 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `magical-satchel` | Magical satchel / Surprisingly Substantial Satchel | storage | inactive | full | deferred | — |
 | `vampirism` | Vampirism — Become a Vampire! | supernatural | enabled flag | full | deferred | — |
 | `werewolves` | Werewolves — Become a Beast! | supernatural | enabled flag | full | deferred | — |
+| `cc-tweaked` | CC: Tweaked | technology | enabled flag | full | researching | [source-backed pilot](../CC-TWEAKED-ELDRITCH-GATE.md) |
 | `draconic-evolution` | Draconic Evolution | technology | enabled flag | full | queued | — |
 | `quest-shop` | Quest Shop | utility | enabled flag | full | queued | — |
 
-**2026-11-15 decision:** Bigger Reactors original and Rework removed, no reactor profile queued. Alex's Caves Continued and CodxLib are planned through [staging PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) without its now-obsolete uranium conversion. Preserve ongoing magic-mod research additions.
+**2026-11-15 B14:** CC: Tweaked 1.121.0 beta selected as programmable Draconic power control, with native Occultism Eldritch item gate and Spirit Fire Iesnium recipe. Runtime/JEI still pending. **Prior decision:** Bigger Reactors original and Rework removed, no reactor profile queued. Alex's Caves Continued and CodxLib are planned through [staging PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) without its now-obsolete uranium conversion. Preserve ongoing magic-mod research additions.
 
 ## Cross-mod interaction reports
 
