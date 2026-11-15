@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
@@ -25,6 +26,7 @@ public final class ProgressionEvents {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
@@ -53,6 +55,7 @@ public final class ProgressionEvents {
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
             ProgressionApi.record(player,Selectors.kill(event.getEntity()));
+            ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }
     }
@@ -100,6 +103,12 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player)
             ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal("advancement",
                 event.getAdvancement().id().toString(),java.util.Set.of()));
+    }
+    private static void fall(LivingFallEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            ClassAbilities.fall(player,event);
+            EffectHandlers.fall(player,event);
+        }
     }
     private static void incoming(LivingIncomingDamageEvent event) {
         ClassAbilities.incoming(event);
