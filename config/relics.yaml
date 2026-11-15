@@ -1,0 +1,3 @@
+# Enable individual Relics YAML so the seven-sins ring can be excluded from natural loot.
+# OctoLib fills unspecified properties with the pinned Relics defaults.
+enabledExtendedConfigs: true
