@@ -13,7 +13,7 @@ The nine custom categories are **Core Skills; Cave Dragon; Sea Dragon; Forest Dr
 - **Ranks on cure:** purchased ranks persist as dormant investments; incompatible-form effects stop immediately. No automatic refunds or deletions. A player can respec through validated Tyz refund rules. Any native change that invalidates actual Hunter eligibility immediately suspends Hunter effects, without assuming a forced faction exclusivity rule.
 - **Tyz limitations:** normal custom categories are global, not per-player hidden. Keep all old default category definitions in the full replacement category JSON; **4 default + 9 custom = 13 temporary categories**, reducing to **9 total** after the stock-skill migration and safe default-category retirement. Category visibility is not permission. A later client mask might hide unfamiliar tabs, but purchase/refund enforcement belongs to the server.
 - **Purchase integrity:** enforce native state, node-specific stage, and outside milestones with the server's Tyz `PurchasePre` and `RefundPre` gates, plus an authorized direct-grant reconciliation path. Tyz bulk-buy checks a pre-event once: put external gates at **node boundaries**, not mid-node rank thresholds. One rank in a predecessor is sufficient as a native node prerequisite; advanced stages additionally require real native milestones.
-- **Power ceiling:** talents improve forms without replacing Chaos Guardian, Draconic Evolution, ProjectE or Gem Armor. No creative flight, global creature pacification, immortality for free, protected-block mining bypass, infinite energy, or unlimited combat evasion.
+- **Power ceiling — OWNER OVERRIDE (2026-11-15):** **Monk is the overall combat apex. At full Monk progression, a player must be able to solo the genuine Chaos Guardian without worn equipment or weapons**, using legitimate encounter mechanics. This supersedes the earlier generic ban on surpassing Draconic/Gem equipment in *gearless combat*. Other classes may be nearly as good in **one or two designated specialties**, and should be **significantly worse in most other combat/adventuring areas**; narrow powers such as Dragon spell capacity, Hunter quarry combat, Werewolf sustain and Sea Dragon Luck can still exceed Monk on their individual measurement. No creative-mode invulnerability, cheese/phase skips, free immunity, infinite energy or protected mining bypass.
 
 **Cross-reference:** [original primary Tyz design PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27), [Core Skills preview PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33), [Monk live fixes and complete native skeleton PR #71](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71), [MXP source rules](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-PROGRESSION.md), [transformation target PR #77](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/77).
 
@@ -22,6 +22,13 @@ The nine custom categories are **Core Skills; Cave Dragon; Sea Dragon; Forest Dr
 
 The **current first-pass strength/tier and caps source of truth** is [TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md](TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md), plus [machine-readable 164-entry budget](tyzs/nine-tree-strength-first-pass-v1.json). Every proposed family has a tier (5/10/20/50/100% per rank), cap (5/10/25/50 except one-off capstones), per-rank SP price, and notes for non-mana conversion. These values **supersede the prototype 10/5/3-rank node suggestions** in the older machine catalogue; none is yet live.
 
+
+
+### Apex and specialist benchmark (owner decision, 2026-11-15)
+
+The full benchmark and limitations are in [nine-tree strength and caps design](TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md#2a-global-endgame-ceiling--monk-first). A **fully maxed Monk** (native+Tyz, legitimate late game) should be able to win an actual **solo Chaos Guardian** fight with **empty armor/Curios/worn gear slots and no weapons**. The fight must remain dangerous and source-accurate: hostile attacks, movement demands, crystal/shield or phase restrictions, and completion all matter. Test support, spellcasting implements and non-worn consumables are separately specified later; no one gets permission to bypass the Guardian, and no rejected Monk innate Spirit Bolt is reintroduced. This is a target, **not yet implemented or tested**.
+
+**Differentiation rule:** Every other tree is allowed a near-Monk niche or two, but loses clearly in most overall combat capacities. Sea Dragon has a deliberate high-end **Abyssal Fortune** niche: **Extreme (+100% of a defined nonzero Luck benchmark per rank), 50 ranks**, to be wired only into source-supported luck systems. This is not a guaranteed global 50-fold loot multiplier or a boss drop gate bypass. Monk is best *overall*, not simultaneously the best raw magician, best crop farmer, luckiest character and best anti-undead weapon specialist.
 
 ## 2. Tier pattern and purchasing model
 
@@ -101,7 +108,7 @@ Always available. This is the **broad universal** tree, including eligible origi
 
 ### Sea Dragon — `tmm_dragon_sea`
 
-**Identity:** High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes.. **Eligibility:** verified sea dragon state; no other dragon species.
+**Identity:** High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility, extremely high Luck and defenses with costly generic combat/harvest nodes.. **Eligibility:** verified sea dragon state; no other dragon species.
 
 | Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
@@ -115,6 +122,8 @@ Always available. This is the **broad universal** tree, including eligible origi
 **Implementation conditions:** Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic. No free permanent underwater invulnerability or world fluid griefing. Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs. No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.
 
 **Shared Dragon base (must still be added to this species' real tree):** huge personal max mana, very efficient spell potency, expensive scales/armor, expensive claws/physical damage and expensive legal harvest-speed talents; **zero dragon-exclusive magical regeneration**. The current four-lane prototype does **not** exhaustively enumerate these shared fundamentals, so it is not yet a finished dragon tree.
+
+**Sea-only extra specialization:** **Abyssal Fortune**, Extreme ×50. Luck is a very high personal strength that must be mapped to actual source-supported loot/fishing/roll consumers, not used to duplicate protected boss drops or create loot from nothing.
 
 ### Forest Dragon — `tmm_dragon_forest`
 
@@ -204,7 +213,7 @@ Always available. This is the **broad universal** tree, including eligible origi
 | **Footwork** | **Body Speed:** Repeatable speed under no conventional gear discipline; native Fleet Footwork remains a one-off. | **Balanced Landing:** Fall/knockback control; native Step Assist remains a one-off in native tree. | **Glide Control:** Improve native momentum gliding only after rank-15 native unlock; never creative flight. |
 | **Hands as Tools** | **Barehand Efficiency:** Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers. | **Fortunate Hands:** Bounded fortune-like bonus only after the one native Treasure Hand Fortune/Silk Touch mode license and legitimate drop event. | **Looting Palm:** Bounded unarmed looting after native rank-9 license; no creature-drop duplication. |
 
-**Capstone — Empty-Hand Paragon:** After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.
+**Capstone — Empty-Hand Paragon:** The maxed Monk tree, including legitimate native abilities and any approved endgame capstone, must support a real **solo Chaos Guardian victory with no worn equipment or weapons**; the fight still requires skilled execution and honors its normal mechanics. Other class trees are not prerequisites.
 
 **Implementation conditions:** Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills. First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards. Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.
 
