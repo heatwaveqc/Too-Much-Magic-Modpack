@@ -11,7 +11,7 @@
         "defaultconfigs/vampirism-server.toml"
       ],
       "mode": "compile-and-load",
-      "note": "Latest descendant of Vampire Ascension v2, preserving normal Vampirism-only infection, Lilith JAWR ascension, JAWR canonical blood/hunger, both cures and forest sun exemption; additionally implements experimental non-boss mob target-alliance rules and server census. Compile and ship ONE transformation JAR; client gameplay and faction checks remain UNTESTED."
+      "note": "Current one-way Lilith Vampire Ascension v2 plus experimental mob targeting/census on feature/mob-alliance-neutrality; latest branch replaces removed Minecraft MobType/getMobType check with EntityTypeTags.UNDEAD for 1.21.1. This is one compiled transformation JAR; client behavior, sunlight, cures, AI provocation remain UNTESTED."
     },
     {
       "name": "quest-standards-and-starter-choice",
