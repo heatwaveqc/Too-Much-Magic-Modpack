@@ -66,6 +66,16 @@ A **standard max-roll affix has level 1.0**, but at this version [AffixHelper](h
 
 The actual effect at 1.5 and 2.0 comes from each affix's **StepFunction** or other value producer. It is unsafe to equate level 1.5 to exactly +50% of every final tooltip; some bounded effects may clamp, some may extrapolate, and rarities/booleans may behave differently. **A four-socket max-roll Mythic item is not the highest possible affix-powered item.**
 
+**Source-calculated overcharge values for Luck:** I checked [Placebo 9.9.4 StepFunction](https://github.com/Shadows-of-Fire/Placebo/blob/1.21/src/main/java/dev/shadowsoffire/placebo/util/StepFunction.java), which the pinned Apothic/Apotheosis affixes call. Its `get(level)` method **extrapolates beyond level 1.0**, using stepped increments. In the Mythic JSON, this yields:
+
+| Affix | Normal level 1.0 | Supremacy level 1.5 | Malice level 2.0 |
+|---|---:|---:|---:|
+| Lucky (generic) | **+6 Luck** | **+7.5 Luck** | **+9 Luck** |
+| Fortunate (armor) | **+5 Luck** | **+6 Luck** | **+7 Luck** |
+
+Thus four ideal Mythic armor pieces with both Luck affixes raised by Supremacy and four Perfect Splendors apiece yield the **source-component subtotal** `4×(7.5+6+4×5) = 134 raw Luck`. That's above the **124** standard-affix subtotal and still excludes Royalty multipliers, held gear and Curios. Malice can raise one affix farther but normally resets another; it is **not** permission to place all affixes at 2.0. The data values are exact for this source combination, but actually rolling/owning four such items with all permitted affixes still requires gameplay verification.
+
+
 ### Sockets and gems
 
 - [Mythic item rarity data](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/rarities/mythic.json) prescribes **four stat affixes, two basic-effect affixes, one ability**, and **1–3 sockets with 95% chance or four sockets with 5% chance**. It also has an independent durability/unbreakability roll. It does not guarantee the exact affixes you want.
