@@ -18,6 +18,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,PotionEnrollmentTrigger> potionTriggers = Map.of();
     private static volatile Map<String,HunterXpPolicy> hunterXpPolicies = Map.of();
     public static HunterXpPolicy hunterXp(String path) { return hunterXpPolicies.get(path); }
+    private static volatile Map<String,HunterMutationPolicy> mutationPolicies = Map.of();
+    public static HunterMutationPolicy hunterMutationPolicy(String path) { return mutationPolicies.get(path); }
     public static Map<String,PotionEnrollmentTrigger> potionTriggers() { return potionTriggers; }
     public static String enrollment(String path) { return enrollmentModes.getOrDefault(path,"admin"); }
 
@@ -31,6 +33,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,String> modes = new HashMap<>();
         Map<String,PotionEnrollmentTrigger> triggers = new HashMap<>();
         Map<String,HunterXpPolicy> xpPolicies = new HashMap<>();
+        Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         data.forEach((key,element) -> {
             try {
                 Definition.Path path = PathJson.read(key.toString(), element.getAsJsonObject());
@@ -38,6 +41,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 if (trigger != null) triggers.put(path.id(),trigger);
                 HunterXpPolicy xpPolicy = HunterXpPolicy.parse(element.getAsJsonObject());
                 if (xpPolicy != null) xpPolicies.put(path.id(),xpPolicy);
+                HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
+                if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
                 next.put(path.id(),path);
                 modes.put(path.id(),element.getAsJsonObject().has("enrollment") ?
                     element.getAsJsonObject().get("enrollment").getAsString() : "admin");
@@ -47,6 +52,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         potionTriggers = Map.copyOf(triggers);
         hunterXpPolicies = Map.copyOf(xpPolicies);
+        mutationPolicies = Map.copyOf(mutations);
         enrollmentModes = Map.copyOf(modes);
         active = Map.copyOf(next);
         ProgressionMod.LOGGER.info("Loaded {} progression path definitions",active.size());
