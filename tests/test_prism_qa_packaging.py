@@ -42,8 +42,26 @@ def main() -> None:
                 sys.executable, str(BUILDER), str(bootstrap), str(folder),
                 commit, str(addons[0]), str(addons[1]),
             ], check=True)
+            # The builder intentionally stages a DIRECTORY at this .zip-named
+            # upload path. GitHub Actions wraps its contents in one ZIP. Previous
+            # tests tried opening the staging directory as a ZIP and incorrectly
+            # failed on Windows after we eliminated the nested ZIP.
             archive = folder / "Too-Much-Magic-Full-Integration-Prism.zip"
-            with zipfile.ZipFile(archive) as z:
+            assert archive.is_dir(), "GitHub upload must receive an instance directory"
+            contents = sorted(p.relative_to(archive).as_posix()
+                              for p in archive.rglob("*") if p.is_file())
+            assert "instance.cfg" in contents and "mmc-pack.json" in contents
+            assert not any(n.lower().endswith((".zip", ".mrpack"))
+                           for n in contents), "No nested modpack archive allowed"
+            github_download = folder / "github-artifact-download.zip"
+            with zipfile.ZipFile(github_download, "w", zipfile.ZIP_DEFLATED) as out:
+                for name in contents:
+                    out.write(archive / name, name)
+            # Assert the precise single-ZIP import shape players receive.
+            with zipfile.ZipFile(github_download) as z:
+                assert sorted(z.namelist()) == contents
+                assert "instance.cfg" in z.namelist()
+                assert "mmc-pack.json" in z.namelist()
                 expected = {
                     "minecraft/options.txt",
                     "minecraft/tmm-qa-preferences.ps1",
@@ -66,7 +84,7 @@ def main() -> None:
                 assert sum(x.endswith(".jar") for x in z.namelist()) == 3
                 assert not any(p.startswith("minecraft/saves/") for p in z.namelist())
                 assert not any(p.startswith("minecraft/config/") for p in z.namelist())
-            print("PASS: QA-only seeded options, local sync hooks, immutable packwiz, two first-party JARs and no personal data or configs")
+            print("PASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, two first-party JARs and no personal data or configs")
         finally:
             if existing is None:
                 target.unlink(missing_ok=True)
