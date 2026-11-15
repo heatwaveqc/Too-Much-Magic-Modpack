@@ -1,6 +1,6 @@
-# ATM10 Specialist Power Benchmark — v0.1 (2026-11-15)
+# ATM10 Specialist Power Benchmark — v0.2 (2026-11-15)
 
-**Status:** SOURCE-VERIFIED GEAR BASELINES + OPTIMIZATION WORKLIST. **NOT YET AN ATTAINABLE ALL-MODIFIER MAXIMUM.** This is a design/audit document, not an active balance patch.
+**Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
 **Owner-approved comparison rule:** A TMM character with the best legal native spellbook/armor, maximum compatible enchantments, gems, affixes, appropriate accessories and maximum *non-Monk* specialist skill investment should perform approximately as well as a similarly optimized ATM10 Unobtainium caster. Once each TMM specialist maximum is established, Monk's compatible, unarmored performance target is **85% of the TMM specialist's measured final performance**, not 85% of an arbitrary technical attribute cap. Suggested acceptance band for the TMM-versus-ATM10 performance metric is +/-5%; this band is a proposed test tolerance, not a current observation.
 
@@ -145,3 +145,58 @@ No balance values for Monk or other classes should be committed to runtime JSON 
 - [Iron's regen/cooldowns](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/capabilities/magic/MagicManager.java)
 - [Apotheosis Mythic socket rule](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/rarities/mythic.json)
 - [Apotheosis Royalty gem (helmet only)](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json)
+
+
+## v0.2 — computed constrained maxima (source-derived; runtime confirmation pending)
+
+These are **actual numeric solutions within explicitly defined item pools**, and are now recorded in \`manifest/atm10_specialist_benchmark.json\` under \`constrained_optimized_loadouts\`. All globally optimized \`optimized_atm10_max\` fields remain null until full-pack equipment and buffs are checked. This avoids falsely certifying a partial item search as the pack's maximum.
+
+### Iron's: maximum mana and recovery in the examined caster slots
+
+Source evidence: \`ArcaneAnvilMenu\` checks \`getTotalUpgrades() < ServerConfigs.MAX_UPGRADES\`; \`ServerConfigs\` defines \`maxUpgrades=3\`; \`Utils.canBeUpgraded\` accepts \`SpellBook\`, \`ArmorItem\`, and \`CastingItem\`; a Graybeard Staff extends \`CastingItem\`; \`UpgradeOrbTypeRegistry\` defines the Mana Orb as **+50 max mana**. Iron's 1.21 Curios JSON registers **2 ring**, **1 necklace**, **1 spellbook** slots. Iron's own item registry defines **Ring of Mana +100**, **Amethyst Resonance Charm +15% regen, add_multiplied_base**, and the \`StaffTier.GRAYBEARD\` grants **+25% regen, add_multiplied_base** and **+10% generic SPELL_POWER, add_multiplied_base**.
+
+- Five-slot-only maximum mana (four armor + one book, 15 Mana orbs): **2,950 mana**, with **103.19136875 mana/sec** at default regen and no other accessories.
+- Expanded standard caster-slot **mana** configuration: four Unobtainium armor pieces + Unobtainium book + Graybeard Staff in the main hand. All six are upgraded with three Mana Orbs each (18 total), with two Rings of Mana and an Amethyst Resonance Charm: **100 + 4×450 + 300 + 18×50 + 2×100 = 3,300 maximum mana**.
+- The above standard-slot **recovery** result: **3,300 × .02 × (1.15)^4 × (1 + .25 + .15) = 161.6081775 mana/sec**. +25% staff and +15% necklace bonuses are add_multiplied_base, hence combined as +40% before the four independently multiplied armor bonuses.
+- The regular two-ring capacity is **source-backed** in Iron's 1.21 datapack (\`data/irons_spellbooks/curios/slots/ring.json\`), but the effective ATM10 runtime may have *additional slots* from accessories/other mods; the above explicitly includes only the standard two.
+- The absolute TMM and ATM10 maximum might also use magic items in the offhand, alternative ring/Curios modifiers, spell effects or abilities. Do not label 3,300/161.61 as the final pack-wide cap.
+
+### Iron's: single-school damage and fast casting, distinct legal loadouts
+
+- **Single-school power**: four Unobtainium mage armor pieces yield \`1.4^4 = 3.8416×\` generic power; a Graybeard Staff adds +10% \`add_multiplied_base\`, yielding **4.22576×** generic power. If all 18 allowable upgrades on the four armor pieces, Curios book and mainhand staff are the **+5% to one school** orbs, the school attribute becomes \`1 + 18×.05 = 1.90×\`. The combined single-school spell-power multiplier is **4.22576 × 1.90 = 8.028944×** before spell level and target resistances. This is not a global multiplier to every school; it spends all 18 orb allocations on one school.
+- **Cooldown**: Unobtainium spellbook +50% multiplied-total cooldown attribute, Artificer Staff +10% multiplied-base cooldown, two Cooldown Rings +15% multiplied-base each, and 18 cooldown orbs +5% multiplied-base each: \`raw = (1 + .10 + 2×.15 + 18×.05)×1.50 = 3.45\`. Iron's uses \`durationFraction = 2 - (2 - 0.25/(raw - 1))\` for raw >1.5, producing **0.1020408163× original duration = 89.79591837% reduction**. Actual cooldown rounds to integral ticks per spell; casts also consume mana. Cooldown ring slots cannot be mana/cast-time rings at the same time.
+- **Cast time**: Unobtainium book +35% multiplied-total cast-time attribute, Artificer Staff +10% multiplied-base, two Cast Time Rings +15% multiplied-base each: \`raw = (1 + .10 + 2×.15)×1.35 = 1.89\`. For noncontinuous casts the effective duration fraction is **0.2808988764× = 71.91011236% cast-time reduction**. The registry contains no ordinary \`cast_time\` upgrade orb; filling orb slots with cooldown or mana orbs does not boost this stat. Continuous casts use a different calculation.
+
+**These cooldown and casting loadouts are separate optimizations**, and the spellbook itself contributes its +300 max mana and 15 spell slots in all cases. Neither reduction should be treated as permanently applicable to every spell type without checking spell event hooks and tick rounding.
+
+### Apotheosis: Mythic health-specialist test case
+
+This is an instructive **extreme survivability build**, not a generic mage benchmark and not a proof of global maximum. Apotheosis 1.21 Mythic has a **rare four-socket outcome**. From its datapack gems and affix definitions:
+
+- Each of four Mythic armor pieces: Blessed stat affix at maximum **+8 Max Health** (total +32). Base player health assumed 20.
+- Unobtainium chestplate's four sockets: four **Perfect Warlord** gems, each **+35% add_multiplied_base max health**; \`unique\` is absent/false. Total multiplied-base +140%.
+- Unobtainium leggings' four sockets: four **Perfect Brawlers** gems, each **+12 Max Health**; \`unique\` is absent/false. Total +48.
+- Helmet: one **Perfect Royalty** gem, **+15% add_multiplied_total max health**; unique means once **per item**, not per entire loadout.
+- Boots: one **Perfect Tyrannical** gem, **+40% add_multiplied_total max health**, with its associated negative life-steal tradeoff.
+- Armor-only result: \`(20 + 32 + 48) × (1 + 4×.35) × 1.15 × 1.4\` = **386.4 maximum health** (193.2 normal hearts), before all additional accessories/other mod effects.
+- If additionally carrying an eligible four-socket Mythic shield with four **Perfect Brawlers** gems, each +30% multiplied-total max health, the resulting health is **386.4 × (1.3)^4 = 1,103.59704 maximum health** (~551.8 hearts) **conditional on the four socketed gem modifiers applying separately at runtime**.
+- This offhand shield configuration is incompatible with an offhand staff, focus or dual-wield comparison. Neither the helmet nor boots must use all four sockets for this specific example; the four-socket assumptions on chest, leggings, and shield are the important ones.
+
+**Gem uniqueness is per ITEM**: Apotheosis's \`Gem.canApplyTo\` checks the gem list of the specific socketed stack, and its guide calls Unique a one-of-a-kind-per-item restriction. Four identical non-unique gems on one item are allowed by the gem uniqueness rule, though actual modifier ID stacking and full-pack overrides still need testing. The shield, armor and book's **effective LootCategory** must also be checked in-game; the v0.2 health calculation is a well-supported **conditional equipment scenario**, not a certified observed stat.
+
+The very high defense values underscore why Monk parity must be tied to *actual effective health / sustained incoming damage under realistic enemy tests* rather than naively giving Monk 85% of the largest theoretical health attribute from an ultra-narrow glass-cannon HP build.
+
+### Sources added for v0.2
+
+- [Iron's source: Arcane Anvil upgrades](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/gui/arcane_anvil/ArcaneAnvilMenu.java)
+- [Iron's maximum upgrades and default configuration](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/config/ServerConfigs.java)
+- [Iron's upgrade orb values](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/registries/UpgradeOrbTypeRegistry.java)
+- [Iron's registered rings and necklaces](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/registries/ItemRegistry.java)
+- [Iron's StaffTier stats](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/item/weapons/StaffTier.java)
+- [Iron's ring slot count 2](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/resources/data/irons_spellbooks/curios/slots/ring.json)
+- [Apotheosis Warlord gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/warlord.json)
+- [Apotheosis Brawlers gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/brawlers.json)
+- [Apotheosis Royalty gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json)
+- [Apotheosis Tyrannical gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/tyrannical.json)
+- [Apotheosis Blessed affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/blessed.json)
+- [Apotheosis uniqueness rule](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/main/java/dev/shadowsoffire/apotheosis/socket/gem/Gem.java)
