@@ -43,6 +43,16 @@ public final class Selectors {
         return new Signal("block_break",
             BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString(), tags);
     }
+    /** Server-confirmed block drops made by a player with an actually empty main hand. */
+    public static Signal barehandBlockBreak(BlockState state) {
+        Signal original = blockBreak(state);
+        return new Signal("barehand_block_break",original.target(),original.tags());
+    }
+    /** Credited non-projectile, true empty-main-hand melee kill. */
+    public static Signal unarmedKill(LivingEntity target) {
+        Signal original = kill(target);
+        return new Signal("unarmed_kill",original.target(),original.tags());
+    }
     public static Signal itemAction(String event, ItemStack stack) {
         Set<String> tags = stack.getTags().map(tag -> tag.location().toString())
             .collect(Collectors.toSet());
