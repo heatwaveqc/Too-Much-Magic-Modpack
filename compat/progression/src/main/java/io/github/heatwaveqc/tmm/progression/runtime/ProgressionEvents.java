@@ -65,7 +65,8 @@ public final class ProgressionEvents {
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
-        if (!EffectRuntime.animalFriendship(player,event))
+        if (!ClassAbilities.entityInteract(player,event)
+                && !EffectRuntime.animalFriendship(player,event))
             EffectHandlers.entityInteract(player,event);
     }
     /** Loot-aware callback needed for Monk Glass Touch and Treasure Hand; no generic drop mutation. */
@@ -75,7 +76,8 @@ public final class ProgressionEvents {
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
-            EffectHandlers.projectileImpact(defender,event);
+            { ClassAbilities.arrowImpact(defender,event);
+              EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
@@ -83,7 +85,8 @@ public final class ProgressionEvents {
     }
     private static void targetChange(LivingChangeTargetEvent event) {
         if (event.getNewAboutToBeSetTarget() instanceof ServerPlayer player)
-            EffectHandlers.targetChange(player,event);
+            { ClassAbilities.targetChange(player,event);
+              EffectHandlers.targetChange(player,event); }
     }
     private static void jump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
@@ -95,6 +98,7 @@ public final class ProgressionEvents {
                 event.getAdvancement().id().toString(),java.util.Set.of()));
     }
     private static void incoming(LivingIncomingDamageEvent event) {
+        ClassAbilities.incoming(event);
         EffectRuntime.incoming(event);
         EffectHandlers.incoming(event);
     }
@@ -112,6 +116,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
             Enrollment.tick(player);
+            ClassAbilities.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
         }
@@ -121,6 +126,7 @@ public final class ProgressionEvents {
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            ClassAbilities.forget(player);
         }
     }
 }
