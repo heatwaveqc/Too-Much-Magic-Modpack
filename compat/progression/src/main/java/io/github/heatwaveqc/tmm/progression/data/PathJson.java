@@ -144,6 +144,10 @@ public final class PathJson {
                     throw new IllegalArgumentException("Attribute handler requires attribute");
                 if (type.equals("damage_multiplier") && (amount < 0 || amount > 1))
                     throw new IllegalArgumentException("Damage reduction must be in [0,1]");
+                if (type.equals("evasion") && (!target.startsWith("#") || amount < 0 || amount > 0.75))
+                    throw new IllegalArgumentException("Evasion requires a quarry entity tag and a chance in [0,0.75]");
+                if (type.equals("fast_hands") && (weapon.isEmpty() || amount < 0 || amount > 2))
+                    throw new IllegalArgumentException("Fast Hands requires a weapon ID/tag and bounded speed bonus");
                 Map<String,String> params = new HashMap<>();
                 if (f.has("params")) {
                     f.getAsJsonObject("params").entrySet().forEach(entry -> {
