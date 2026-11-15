@@ -26,7 +26,7 @@
         "scripts/apply_quest_reward_palette_v1.py"
       ],
       "mode": "runtime-experimental",
-      "note": "B14 180-quest book plus validated QA-first reward refresh: 19 authored + 42 temporary overview rewards replaced with funny/useful gifts; no paper/cookie/compass filler, and exactly one empty bowl for Farmer's Delight Cooking Pot. Quest IDs/XP/reward IDs unchanged. Six-shop-category and 47-offer checks imported; client rewards still need verification."
+      "note": "B14 180-quest book plus validated QA-first reward refresh: 19 authored + 42 temporary overview rewards replaced with funny/useful gifts; no paper/cookie/compass filler, and exactly one empty bowl for Farmer's Delight Cooking Pot. Quest IDs/XP/reward IDs unchanged. Six-shop-category and 47-offer checks imported; client rewards still need verification. The sixth starter-path option is now a Spyglass (not a compass), preserving stable choice ID; client choice option must be retested."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -214,6 +214,7 @@
     "Latest JAWR native blood debit guard imported for QA. Verify that blood-spending abilities actually decrement the shared blood pool, including no-cost intended abilities, and no infinite-spend loopholes.",
     "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests.",
     "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles.",
-    "Lilith ascended vampire continuation branch currently contains documentation/test notes; no separate runtime stream until its implementation changes are reviewed. Current native blood-debit guard remains selected for QA."
+    "Lilith ascended vampire continuation branch currently contains documentation/test notes; no separate runtime stream until its implementation changes are reviewed. Current native blood-debit guard remains selected for QA.",
+    "Starter-path explorer gift switched from generic compass to useful spyglass in active quest source. Re-test Claim All and once-per-player choice with new client import; do not duplicate claims on existing players."
   ]
 }
