@@ -30,6 +30,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
@@ -72,6 +73,13 @@ public final class ProgressionEvents {
         if (event.getItem().getFoodProperties(player) == null) return;
         ProgressionApi.recordConsumedFood(player,event.getItem());
         EffectHandlers.foodConsumed(player,event.getItem());
+    }
+    /** Server-authoritative bow draw and crossbow charging adjustments. */
+    private static void useTick(LivingEntityUseItemEvent.Tick event) {
+        if (event.getEntity() instanceof ServerPlayer player && !event.isCanceled()) {
+            EffectRuntime.useTick(player,event);
+            EffectHandlers.useTick(player,event);
+        }
     }
     private static void pickup(ItemEntityPickupEvent.Pre event) {
         if (event.getPlayer() instanceof ServerPlayer p) ClassAbilities.pickup(p,event);
