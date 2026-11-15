@@ -3417,7 +3417,14 @@
       "implementation": "faction_skill_node_and_effect",
       "validation_flags": [],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "owner_override_2026_11_15": {
+        "decision": "combined_one_time_native_toggle",
+        "replacement_native_node": "tmm_monk:harvest_touch",
+        "combined_with_source": "tmm_monk:harvest/fortune_hands",
+        "mode": "silk_touch",
+        "note": "No separate Delicate Hands purchase; one native skill switches between exclusive Silk and Fortune modes."
+      }
     },
     {
       "source_id": "tmm_monk:harvest/fortune_hands",
@@ -3436,7 +3443,14 @@
       "implementation": "Tyz_purchase_plus_Monk_faction_permission_and_server_effect",
       "validation_flags": [],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "owner_override_2026_11_15": {
+        "decision": "one_native_toggle_plus_primary_tyz_bonus_ranks",
+        "replacement_native_node": "tmm_monk:harvest_touch",
+        "combined_with_source": "tmm_monk:harvest/silk_touch",
+        "mode": "fortune",
+        "note": "One native unlock gives base Fortune I; primary Tyz Fortunate Hands adds bounded incremental Fortune levels, suppressed in Silk mode."
+      }
     },
     {
       "source_id": "tmm_monk:harvest/looting_hands",
@@ -3493,7 +3507,12 @@
       "implementation": "faction_skill_node_and_effect",
       "validation_flags": [],
       "source_condition": null,
-      "status": "design_only"
+      "status": "design_only",
+      "owner_override_2026_11_15": {
+        "decision": "excluded_unapproved_after_user_review",
+        "source_status": "historical_source_audit_only",
+        "replacement": "Existing Ars Nouveau and Iron's Spellbooks player-cast ranged magic; no new Monk projectile, no native skill node, no free spirit arrow powers."
+      }
     },
     {
       "source_id": "tmm_monk:martial/guarding_palm",
@@ -6729,5 +6748,12 @@
     "roots_capacity_adapter": "reuse_primary_Reservoir_and_Wellspring",
     "invented_separate_Monk_engine": false,
     "puffish_skills": "scheduled_removal_next_full_build"
+  },
+  "latest_owner_decisions_2026_11_15": {
+    "source_of_truth": "compat/monk/design/native-full-tree-skeleton-v1.json",
+    "spirit_projectile": "excluded: ranged combat uses Ars Nouveau and Iron's Spellbooks",
+    "harvest_loot": "Fortune/Silk combined mutually exclusive toggle in one native skill; scaling Fortune uses only the primary Tyz",
+    "fist_slot": "free faction passive hotbar slot 9 index 8, always empty and no-loss inventory guard; planned, not active",
+    "historical_counts_preserved": true
   }
 }
