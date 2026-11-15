@@ -1,0 +1,225 @@
+# Scriptor Magicae — mechanics and gameplay profile
+
+| Field | Value |
+| --- | --- |
+| Manifest ID / actual mod ID | `scriptor-magicae` / `scriptor` |
+| Category / parent or addons | magic; standalone language-based spell system |
+| MC / loader / pack target | 1.21.1 / NeoForge / TMM integration snapshot `08833df52e8eaf558bfe0b04ab116d70f175ba19` |
+| Pinned version / artifact / hash | `mods/scriptor-magicae.pw.toml`; 2.0.14; CurseForge file 8899737; SHA-1 `32fece570d3f1086cc59229b1b861fd277da41e8`; SHA-512 `01c270afe332fd4b7b924f6e0239331aa76ce0cd0124193b296c87383261c6cbc02509a971ae1b54a0ab0eb3aba557c9fc58ef4b340727bf548104150bf259af` |
+| Source snapshot | tag `v2.0.14-1.21.1`, commit `6adb295b15e5124319e7748fa7d167710cb0bad2`; version-aligned; binary provenance not proven |
+| Guide/documentation version gap | Upstream docs in the tagged source; exact pinned JAR inspected. In-game book/client details and generated spell wording need a live check. |
+| Profile status | researching |
+| Evidence reached | exact pinned JAR hash verified and data inspected; version-aligned source/docs inspected; no TMM client/world test |
+| Reviewed | 2026-11-15 |
+| Quest ownership | `config/ftbquests/quests/chapters/scriptor_magicae.snbt`; single optional generic checkmark, not a walkthrough |
+
+## Executive gameplay map
+
+**What the player actually does:** find one of four tiers of Ancient Tome, use it to receive a world-generated spellbook, and learn the save's randomly generated spell vocabulary by comparing books and identifying unknown words. A Writing Table turns discovered words into notes and lets the player record definitions in a Scriptionary or compose a spellbook or one-use scroll. The player uses books for safer, cheaper repeat casting, scrolls for a stronger single cast, or verbal casting to experiment at significant personal risk. Spell grammar and language are generated for the world, so a recipe or exact incantation from another save is not a reliable recipe here. Casting Lecterns and Engravings automate or remotely trigger spells, subject to cost caps, cooldowns, redstone and targeting. The mod's four tome tiers are discovery tiers, not a linear machine-upgrade ladder.
+
+**Why it matters in TMM:** Scriptor is a programmable utility and spell discovery system with unusual item and block targeting. Its native Inflame action can smelt items as a spell, while other actions can heal or harm entities, move items/entities, place or break blocks, teleport, modify weather/time, create effects, bind tools or trigger projectiles. This offers different utility from Ars Source crafting or Botania mana, but the language is save-specific and automation requires a researched spellbook rather than a fixed recipe.
+
+**Quick start:** search village libraries/structure loot for an Ancient Tome or use the Librarian village-saving reward route; use the tome to reveal a spellbook; make the Scriptionary and Writing Table from JEI recipes; compare tome books, use an Identify Scroll when available, and record confirmed words. The table recipes are simple: Writing Table = wooden slabs, glass bottle, paper, purple wool; Casting Lectern = wooden slabs, bookshelf, purple wool. Exact recipe outputs are in the pinned jar. [pin] [jar: SHA512] [source: 6adb295]
+
+### Player-value snapshot
+
+| Five standout capabilities | Three genuinely early practical unlocks | Three candidate integrations |
+| --- | --- | --- |
+| 1. Spell-based smelting / item conversion (Inflame) 2. Item and entity movement (Bring/Goto/Swap) 3. Healing, damage, and status effects 4. Block placement/breaking, water and weather/time actions 5. Bound weapons/tools and lectern/engraving automation | 1. Tome-derived self/utility spells after the first library find 2. Writing Table + Scriptionary for personal vocabulary and spell authoring 3. Casting Lectern for repeat casting once an appropriate low-cost spell is known | 1. Inflame as passive fuel-free ore processing—input/output buffers and balance still need a client test 2. Blood-cost words potentially coupled with a real blood resource—no native TMM blood bridge established 3. custom datapack spell actions/reagents and the pack's progression economy—needs explicit review before adding content |
+
+### Subsystem coverage at a glance
+
+| Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
+| --- | --- | --- | --- | --- | --- |
+| World language, books and four tome tiers | [pin] [jar: SHA512] [source: 6adb295] | partial: acquisition routes mapped; exact loot weights and every generated tome definition not mapped | Scriptor item tooltips, upstream Spellcrafting docs; no fixed grammar | not run | inspect pinned loot tables and UI in a disposable world |
+| Note-taking, Scriptionary and spell writing | [source: 6adb295] | partial: core workflow mapped; all screen affordances need client confirmation | upstream Writing Desk page is sparse; embedded Scriptor help has more detail | not run | confirm slot interactions and whether notes persist across reconnects |
+| Casting, costs and conditions | [source: 6adb295] | partial: casting methods and configured caps mapped; every registered word implementation not exhaustively tested | embedded Markdown help and tooltips; JEI for recipes | not run | map exact grammar/action menu and failure UI in game |
+| Casting Lectern, crystals and Engravings | [jar: SHA512] [source: 6adb295] | partial: operation/cooldown and focus rules mapped; installation behavior untested | embedded help, JEI recipes | not run | test redstone, chest buffers, target direction/range and cooldown |
+| Data-pack customization | [source: 6adb295] | partial: resource families and command-action surface mapped | upstream Datapack docs | not run | inspect current pack datapacks and any Scriptor overrides |
+
+## Guidebook onboarding — required before the player's first complex step
+
+- **Guide name and access:** source exposes embedded Markdown help under the Scriptor item entries, plus external repository documentation. An advancement named `scriptor:tome` is triggered on tome collection and rewards loot table `scriptor:patchouli_book`; this does **not** by itself prove a full Patchouli guide or which book item is awarded. Inspect the pinned loot table and open the awarded item in-game before claiming a guide is provided. [source: 6adb295]
+- **Earliest attainable stage:** first Ancient Tome from a library or village-saving Librarian route. Tomes are consumed on use (except creative); a generated spellbook is placed in inventory or dropped if full. [docs: 2.0.14] [source: 6adb295]
+- **First instructional quest:** teach how to find and use an Ancient Tome, then make/open the Writing Table and Scriptionary, compare two spellbooks, and identify/record a word. These are research recommendations only; no quest edits in this pass.
+- **Reference map:** upstream source docs cover Spellcrafting, Casting, Datapacks, Ancient Tome, Identify Scroll, Scriptionary, Casting Crystal, Spellbook, Scroll and Writing Desk. The Writing Desk page is too short to explain its slot/UI operations; the embedded Scriptor writing-desk Markdown does explain recording from book text, adding scraps, and spell writing. [docs: v2.0.14]
+- **Where guide is insufficient:** source docs do not give a fixed spell grammar (intentionally world-generated), complete recipe-by-recipe walkthrough, embedded help item mapping, or every machine build/use detail. A quest chapter should explain the discovery workflow, spellbook/scroll differences, lectern automation, and the safety consequences of vocal casting.
+- **Other in-game help:** JEI recipes; spellbook and tome descriptions; embedded Markdown entries; Identify Scroll reports two features per use. The latter may take multiple scrolls to reveal a spell. [docs: v2.0.14]
+
+## Systems and full mechanics inventory
+
+| Subsystem | How accessed | Inputs + costs | Effects / outputs | Limits, failure conditions and source |
+| --- | --- | --- | --- | --- |
+| Random world grammar | Generated dictionary on world creation/load; words are learned via spellbooks, scraps and notes | no player resource; language data is per save | known word-to-component observations are stored per player; spellbook strings are parsed through that world's dictionary | do not reuse incantations from another world; source has separate community-mode generation path |
+| Ancient Tomes | Libraries; Librarian reward for saving a village; source also defines tiered loot data | consume one tome on use (non-creative); no mana cost | creates a spellbook containing a generated, authored spell; if inventory full, drops it beside player | four tiers; generated spell may be multi-action and can trigger complex-spell advancement; exact loot odds not yet documented |
+| Identify Scroll | loot in Overworld/Nether/End or high-level Librarian trade | one scroll use per identification action | reveals two features of the target spellbook | may take several uses; exact feature order and scroll consumption verified only by source docs/code review |
+| Vocabulary recording | Scriptionary + Writing Table; embedded UI | written book/spellbook or scrap; player-entered definition | records discovered word/definition to player vocabulary; scraps can populate a component entry | Scriptionary holds notes, not a universal world dictionary; GUI/client testing open |
+| Spell authoring | Writing Table with writable book/spellbook, spellbook and quill, or scroll path | written text/words; paper/string/copper for default scroll recipe | Spellbook, spellbook copy/translation, or one-use scroll depending on operation | grammar is randomized; invalid/incomplete text may parse as no spell; book text and exact crafting flows need client confirmation |
+| Spellbook casting | use a Spellbook | no universal mana resource; spell cost becomes cooldown/cost behavior by casting mode | casts contained spell; safer than verbal cast and typically about 70% of verbal cooldown | book power/cost cap; spell can fizzle above cap; default tome max cost 50, but actual rules/config use should be confirmed in pin |
+| Scroll casting | use a written scroll | scroll is one-use; default recipe paper + string + copper ingot | casts a stronger spell than a book can support | default scroll max cost 75; one-shot; exact input and spell-writing UI still needs a client check |
+| Verbal/chat casting | default chat casting enabled; command casting disabled by default in config | spell cost may consume hunger and health at high thresholds; cooldown; throat/mute effects | casts spell for experimentation or rapid construction; source includes cast/fizzle criteria | dangerous: high-cost vocal casting can kill the caster; default vocal max cost -1 means no explicit cap; proximity-chat option and 64-block default range matter only if enabled |
+| Casting Lectern | craft and place; insert Spellbook; optional Casting Crystal; redstone inhibits | spellbook persists; no mana/fuel; cooldown based on spell cost, min 10 ticks after a valid parse; over-cap fizzle uses fixed 200-tick cooldown at default multiplier | casts facing outward (front of target is opposite the block's facing); can target below/adjacent container, nearby item, player, nearby mobs/animals or up to four coordinate foci via crystals | default max cost 25; crystals limited to 16 blocks and must be same level; no vertical lectern orientation; an active redstone signal disables casting. Spell/action can affect nearby world/entities; entity safety and chest output need test |
+| Engraving/Chalk | chalk words onto engraving blocks and connect adjacent chain; activate with Engraving Tool | spell text across blocks; cooldown scales with cost at 20 ticks per point in source | chain parses and casts once at terminal engraving; visited blocks receive cooldown and spent state | max cost default 250; connected chain only follows cardinal horizontal neighbors in code excerpt; placement/activation and spell costs require client test |
+| Artifact casters | high-level loot areas including Ancient Cities, Bastions and End Cities (docs) | artifact-specific item/cooldown, no crafting route | can cast spells beyond normal caster cost restrictions | rare; exact artifact pool, use rules and all loot tables not fully inventoried |
+| Native word/action grammar | generated subject + actions + descriptors | each word contributes additive/multiplicative/post-additive cost; descriptors may alter range/targets, duration, power or costs | registered actions include Inflame, Light, Heal, Smite, Explosion, Goto, Swap, Bring, Break, Dry, Place, Conjure Water, Harm, Color, Time, Write, Clear Weather, Rain, Evoker Fangs, bound sword/axe/shovel/pickaxe and food/saturation | target/descriptor combinations, action-specific costs and griefing limits vary; complete registry inventory must be surfaced in UI/test before quest safety claims |
+| Datapack customization | data resources under `scriptor/` | custom tomes/scraps/reagents/token generators/bindings/actions | add or alter vocabulary, prewritten spellbooks, reagents and custom action behavior; custom command actions can run commands | command actions and target semantics are high-impact. Pack has no Scriptor-specific override found in searched config/KubeJS/docs locations; full datapack sweep remains |
+
+### Material / capability input-output contracts
+
+| System | Input kind + exact ID/tag/event | Input qty/formula; consumed/remainder | Output kind, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
+| --- | --- | --- | --- | --- | --- |
+| Tome reveal | item `scriptor:tome_tier1` … `scriptor:tome_tier4`; player use | one consumed outside creative | spellbook item in player inventory or dropped at player if inventory full | right click/use; generated from per-world tome resource | native; source `AncientSpellbook.use`; exact JAR contains matching recipes/loot data [jar: SHA512] [source: 6adb295] |
+| Inflame smelting | item stack targeted by spell subject; default lectern may target a container below or behind | shrinks the matched smelt ingredient by recipe ingredient count; no fuel/FE/Source/mana input in this action; recipe result copied to target inventory or spawned nearby if output buffer unavailable | normal furnace recipe result; remainder/extra recipe outputs not handled by source path examined | each cast; strength descriptor controls repetitions; lectern cooldown applies | native; `InflameAction` + `ItemTargetableHelper`; source confirms item transformation, chest automation and overflow behavior need game test [source: 6adb295] |
+| Lectern cast | item `minecraft:written_book_content` on spellbook; optional crystal in focus slot | no item consumed by tick; spell text parsed every eligible tick | spell-specific block/entity/item/state change | tick-driven; default 25 max cost, 10 tick minimum cooldown; crystal target range 16 | native block entity; redstone pauses; output varies by spell [source: 6adb295] |
+| Reagent descriptors | item components defined under `scriptor/reagents/` | source descriptors may consume an item to discount cost; precise item/qty configured per reagent | reduced spell cost/cooldown or material cost | on cast and descriptor hooks | datapack interface; inspect each packaged reagent definition before stating exact amounts [source: 6adb295] |
+| Ritual-like/world actions | spell subject/action and target world position/entity | varies; can mutate blocks, weather/time, entity effects, inventory, or spawn projectile/fangs | world state, items, entity effects/damage, teleport or resource changes | cast-driven; affected by target/chain/range descriptors | no generalized ritual input/output system; these are spells, not Summoning Rituals recipes |
+| Player magic resource | Scriptor mana API/extension | default code has a mana extension and optional `scriptor_mana` integration check; no base spell mana pool evidenced in reviewed casting flow | mana may be supplied by companion addon/API, not established for this standalone pin | unknown/config or integration dependent | do not assume Ars Source, JAWR blood, or TMM mana is connected; inspect the extension and addon before any cross-system claim |
+| XP | advancement triggers for collecting tomes / tier tomes / complex spell / fizzles | no general XP-orb conversion identified | advancements, including tome advancement reward loot table | event-driven | XP integration not established; distinguish advancement reward from XP points |
+
+### Acquisition, renewability and output economics
+
+- Four tiers of Ancient Tome supply discovery across a range of spell complexity; source data includes world loot tables and generated tome pools. Exact weight/structure-by-structure distribution is still open.
+- Tome reveal is finite per tome, but exploration and Librarian reward routes provide additional tomes. Identify Scrolls also come from loot/trades. No player-built renewable tome generator was established.
+- Inflame uses vanilla-style smelting recipes and consumes ingredient stacks per the recipe; it does not consume fuel, FE, Terra, Botania mana or Source in the inspected action. Its spell complexity/cost and lectern cadence bound throughput. Do not claim precise items/minute until measured.
+- Do not infer duplicate outputs for recipes with multiple result/remainder behavior: the inspected path deposits one result stack and only reads the first ingredient's count. Verify exact pinned behavior with representative recipes and output overflow.
+
+## Complete player progression / walkthrough blueprint
+
+**Completion test:** Scriptor is open-ended rather than a tiered campaign. The closest useful completion target is: acquire all four tome tiers, learn the language/identify at least one unknown spell, create a personal spellbook or scroll, cast a valid spell safely, and automate a chosen utility spell with a lectern or engraving. Tier collection is not a mandatory dependency for the basic writing/casting loop.
+
+| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0. Find the guide/help | strongly recommended | first Scriptor item or tome; source advancement also awards a `scriptor:patchouli_book` loot table | inspect embedded Scriptor help; check tome advancement reward item | know world-specific process and where to record notes | Scriptor embedded help; upstream Spellcrafting and Casting | teach opening the awarded guide only after confirming actual loot item; generic advancement or item ownership does not prove reading | source-backed trigger/reward table; awarded guide content not opened in-game |
+| 1. Acquire first tome | first discovery gate | library/loot or Librarian saving-village reward route | obtain any tiered tome | tome advancement; use it | Ancient Tome doc / loot JEI | teach search/trade routes; reward practical book/ink, not a tome that skips finding the language | docs + source; weights incomplete |
+| 2. Reveal a world spell | required for easiest start; can author from scraps/known words | one tome, available inventory slot or safe drop space | right-click tome; inspect generated spellbook and author/text | one authored spell string in this world's vocabulary; tome consumed | tome tooltip and Scriptor spell help | detect resulting book/tome trigger if FTB supports it; do not treat tome ownership as spell reveal | source `AncientSpellbook.use` |
+| 3. Build research corner | optional but strongly recommended | wooden slabs, bottle, paper, purple wool for Writing Table; recipe components for Scriptionary | craft table; craft Scriptionary; place/operate together | notes and dictionary entries can be recorded | JEI `scriptor:writing_table`, Scriptionary entry | teach exact menu interactions via live UI; book/spellbook/scrap into desk; manual fallback if event detector absent | recipe JSON + embedded Markdown; client untested |
+| 4. Learn vocabulary | optional method, core for reliable authorship | at least two books or an Identify Scroll; desk and Scriptionary | compare common word positions/effects; use scroll to identify two features; record definition | observed component notes appear in player Scriptionary | Spellcrafting, Identify Scroll, Writing Desk | reward paper/ink or an informative component; task must represent observation/recording rather than scroll possession | docs and source; UI test open |
+| 5. Make usable casting item | choose book, scroll or verbal | Spellbook Binder + Written Book; or scroll materials (paper/string/copper); or chat casting enabled | copy/convert/write the observed incantation; choose a low-risk spell | prepared spell item or controlled verbal test | Spellbook, Scroll, Casting | how-to must explain book vs one-shot scroll vs risky verbal path; do not reward a finished combat book | recipe JSON/docs; grammar cannot be a fixed quest recipe |
+| 6. Safely test and manage cost | required before automation | low-cost simple spell, safe target area, clear hunger/health | cast with book first; observe fizzle and cooldown; reserve verbal experiments for safe areas | successful target effect and learned cap behavior | Casting; spell cost/config references | manually confirm actual spell cast unless a verified task trigger exists; reward low-risk components | source formulas/config, no in-world test |
+| 7. Build a Casting Lectern | optional automation branch | wooden slabs, bookshelf and purple wool; spellbook; optional crystal and tag | place facing intended target, insert book, insert crystal if needed; use redstone to pause; control target direction | repeated cast on cooldown with no fuel/mana input | JEI Casting Lectern, Casting Crystal docs | explain front/back orientation, 16-block crystal limit, no vertical casts, default 25 cost cap, redstone stop; detector should check effect not block ownership | recipe/source mapped; chest and target behavior test outstanding |
+| 8. Build Engravings | optional remote-trigger branch | chalk, engraving blocks/tool; a valid spell string split across adjacent blocks | write sequence, connect cardinally, use tool/trigger and wait cooldown | chain executes at endpoint | JEI Engraving/Chalk; embedded Writing Desk help | no quest until precise placement, activation and cooldown are verified | source-level partial |
+| 9. Explore higher tomes and advanced spells | optional discovery branch | tier 2–4 tomes from loot pool | repeat reveal and compare effects; use multi-spell/tier sources to expand language | four tier tome advancements; complex-spell trigger on reveal | loot tables, Scriptor help | teach how to find each route without inventing guaranteed structure loot; task can detect tome trigger but that only proves collection | advancement JSON + source; loot route inventory partial |
+| 10. Add custom pack content | pack-author/admin branch | datapack knowledge and validation | add tomes, scraps, reagents, token generators/bindings or command actions | new generated content after reload | upstream Datapack docs | not player progression; compatibility/code review gate required, especially command action | source docs/code; no pack override found |
+
+### Dependency graph and alternate routes
+
+`find tome → reveal generated spellbook → (compare/identify words → record with Scriptionary) → write/copy book or scroll → cast → optionally automate with lectern or engraving`.
+
+The graph branches after first book: experimentation does not require identifying every word; a usable tome book can be cast immediately. Scrolls sacrifice reusability for stronger casts; verbal casting trades item requirements for health/hunger and throat risks. The four tome tiers are independent discovery goals, not sequential crafting gates. Native behavior is governed by generated dictionary, configured cost limits and casting implement. No TMM recipe, mana, or guide override was found in searched paths.
+
+## Structures, rituals, automation and other how-to instructions
+
+| Required setup | Placement/shape/activation and operating inputs | Guidebook page/JEI category to cite by name | Failure symptoms, throughput or maintenance | Quest where taught |
+| --- | --- | --- | --- | --- |
+| Writing Table | recipe: 3×3 pattern includes wooden slabs, glass bottle, paper and purple wool; place; put Scriptionary in top slot and book/spellbook/scrap in other slot per embedded help; interact with words/definitions | Writing Table (JEI), Writing Desk embedded help | upstream prose docs omit slot layout; GUI and recipe pattern should be checked against pin | none yet; proposed after UI validation |
+| Casting Lectern | place facing desired horizontal direction; insert one spellbook; optional focus crystal; adjacent redstone signal pauses; container target may be below or behind | Casting Lectern (JEI), Casting / Casting Crystal | fizzle if spell above max cost; default over-cap cooldown 200 ticks; normal cost cooldown = 10×cost ticks with minimum 10 at multiplier 100. No vertical firing. Each tick logic can repeat; profile has not observed output-buffer cadence or safety | none yet; proposed |
+| Engraving chain | connect cardinally adjacent blocks; place spell words across chain; activate with Engraving Tool; code follows chain segments | Engraving/Chalk (JEI) | cooldown per visited block is 20× spell cost ticks; invalid chain fizzle; placement/use details need test | none yet; proposed |
+
+## Advanced and terminal objectives
+
+- **Normal completion:** language literacy plus a chosen spellbook/scroll and one verified working spell; then optionally a safe, low-cost lectern setup.
+- **Optional completion:** acquire all four tome tiers, identify multi-effect books, test artifacts, discover all subject/action/descriptor combinations, or author pack datagen.
+- **Remaining progression blockers:** exact loot distribution and route per tome tier; actual advancement reward book; all embedded help and Writing Table UI; generated token grammar; exact spell costs/caps per implement; test automation target/container operation and spell safety; exact current datagen overrides.
+- **Quest coverage check:** the current chapter is a single optional checkmark. A full rewarded how-to must cover guide/help, book discovery, vocabulary workflow, casting modes/cost risk, and at least one practical spell; optional chapters can teach lectern/engraving automation. Quest chapter changes are outside this knowledge pass.
+
+## Internal combinations and overlooked mechanics
+
+| Internal combination | Full chain | Benefit | Limitation / exploit potential | Evidence |
+| --- | --- | --- | --- | --- |
+| Inflame + lectern + container | book with Inflame → lectern → target container slot containing smeltable stack → recipe output deposited back into container or spawned if no room | automated furnace-like processing without fuel/FE/mana | exact target slot, container placement, result merging, remainder/multi-output and overflow need live test; high-value processing bypass candidate | source helper/action and lectern code |
+| Bring/Goto/Swap + focus crystal | spellbook with item/entity movement → player/coordinate/nearby focus → lectern | automated item routing or remote effects | 16-block focus radius; source defaults player inventory targeting off; arbitrary entity/position movement could cross intended boundaries | source code; pack testing open |
+| Bound-tool actions | bound tool action + appropriate block tag | summoned durable tool/combat item via spell | tool tier is stone; block tags determine targets; drop/harvest and skill XP effects need test | source action/item registration |
+| Alchimiae / blood-cost descriptors | spell word descriptor can trade blood or items for reduced cost | distinctive cost-shaping and future bridge surface | no proof of TMM blood-resource integration; don't conflate descriptor's internal cost with JAWR/Vampirism/Blood magic | source registry + descriptor; integration unknown |
+
+## Low-hanging setups useful in ordinary survival
+
+### 1. Safe utility spellbook — early
+- **Goal and payoff:** repeat a self/utility spell without dangerous verbal-cast costs.
+- **Minimum entry and ingredients:** any authored tome spellbook; written book + Spellbook Binder if recopying.
+- **Build/use steps:** reveal tome; identify or compare the spell; cast once in a safe area; use spellbook for repeat casts.
+- **Sustainability and limits:** reusable; cooldown and spellbook cost ceiling apply; no fixed language recipe.
+- **Evidence / pack test:** source/docs; in-pack cost and effect untested.
+
+### 2. Inflame smelting lectern — early-to-mid, subject to test
+- **Goal and payoff:** automate smelting of ordinary furnace recipes without fuel.
+- **Minimum entry and ingredients:** book containing Inflame, Casting Lectern recipe, suitable target container and smeltable input.
+- **Build/use steps:** place lectern facing the intended target; insert book; target a container through the lectern's below/behind buffer; ensure redstone is off; test with one low-value item.
+- **Sustainability and limits:** no fuel/mana cost per cast; cooldown/cost cap limits speed; chest transfer exactness and overflow are not yet verified in pack.
+- **Evidence / pack test:** Inflame item conversion + lectern inventory target are source-backed; no in-world test.
+
+### 3. Crystal-focused spell station — mid
+- **Goal and payoff:** cast a spell repeatedly at a player, coordinate, nearby mob/animal or item focus.
+- **Minimum entry and ingredients:** lectern, spellbook, Casting Crystal and relevant tag (player/coordinate/mob/animal).
+- **Build/use steps:** craft crystal from amethyst/redstone base and desired tag; configure coordinate slots if relevant; put it in focus slot; remain within 16 blocks; stop with redstone.
+- **Sustainability and limits:** rotating coordinate crystal stores four targets; same-dimension and range checks apply; exact cycle order and mob filters need client test.
+- **Evidence / pack test:** source/doc; target selection not tested.
+
+## API, integration and pack-config surfaces
+
+| Hook or customization surface | Namespace / exact file, API or serializer | Capabilities / constraints | Current TMM override? | Evidence |
+| --- | --- | --- | --- | --- |
+| Config | Scriptor config fields: tome/scroll/lectern/chalk/vocal/other-item caps and cooldown multipliers; chat casting, range, entity casting, player inventory-target toggle | controls cost gate/cooldowns, default chat casting enabled; command casting false; players' inventories cannot be targeted by default | none found in config or KubeJS search | `[source: 6adb295]`; exact generated config not inspected |
+| Data packs | `data/<namespace>/scriptor/{tomes,scraps,reagents,token_generators,bindings,actions,...}` | content injection and random dictionary composition; custom actions can have command power | none found | `[docs: 2.0.14]` [source: 6adb295] |
+| Advancement triggers | `scriptor:tome_collect`, `tome1_collect`…`tome4_collect`, `complex_spell`, `fizzle`, `community` | tome root reward table; tier collection and cast events; not all imply successful effect | no quest reuse confirmed | pinned advancement JSON + source |
+| Player data/API | `ScriptorPlayerData`, mana/cooldown extensions and optional `scriptor_mana` presence check | exposes cast checks, cooldown/mana; standalone integration contract not mapped completely | no TMM attribute bridge found | source review partial |
+| Client controls/UI | chat casting, spell overlays, writing UI, dictionary UI, block entity renderer | client interaction/keybind overlap possible | no client test | source only |
+
+## Compatibility leads
+
+| Other mod | Candidate link and why | Native / pack-built / would require bridge | Status / source |
+| --- | --- | --- | --- |
+| Scriptor Mana / mana addon | optional mana presence is checked by Scriptor; may add a real Scriptor resource | addon/native API | exact matching installed addon not found in manifest query; inspect full roster before conclusion |
+| Ars Nouveau | possible shared spell, source, cast attribute or mana relation | would require explicit bridge | none established; do not claim Source or spell-power sharing |
+| JAWR / Vampirism / Neo Vitae | blood descriptor offers a thematic blood-cost surface | would require explicit integration | no code evidence that descriptor spends these mods' blood resources |
+| Iron's Spells | spellbooks and casting APIs are separately implemented | candidate only | no direct bridge established |
+| Tectonic and structure mods | Scriptor artifact chambers, engravings, and loot injection/worldgen may overlap configured terrain/structure placement | native worldgen interaction | not tested; inspect pinned structure placement and generation in pack |
+
+## Quest and teaching opportunities (research, not actual quests)
+
+| Stage | Actionable how-to | Guide/JEI | Detector truth / fallback | Reward/risk |
+| --- | --- | --- | --- | --- |
+| First tome | find a library/trade route and use a tiered tome | Ancient Tome docs | tome advancement proves collection, not opening; manual instruction or spellbook item | small XP + book/ink; don't grant tome |
+| Research desk | craft/place Writing Table and Scriptionary, explain input slots | JEI + embedded Writing Desk help | item task proves crafting, not discovery/recording; manual check until an event exists | paper/ink; no finished spellbook |
+| Identify a spell | use scroll on actual spellbook and explain two-feature reveal | Identify Scroll docs | consumption/possession does not prove identification; manual/checkmark fallback | scroll or component reward risks skipping rare discovery |
+| Safe casting | start with spellbook/low-cost spell and describe fizzle/cooldown; warn verbal casts can harm caster | Casting help | cast effect has no generic quest predicate yet; manual fallback | XP or cheap reagent; avoid dangerous cast objective |
+| Fuel-free smelting | build lectern, orient it, insert Inflame book, test one furnace input/output | JEI Casting Lectern | block/book task cannot prove smelting; require observed output/manual task | useful but modest reward; do not grant gated ore results |
+| Engraving chain | write adjacent word blocks and use Engraving Tool after exact UI test | Engraving/Chalk JEI | actual cast event needed; manual fallback | thematic chalk reward; avoid high-cost spell rewards |
+
+## Evidence ledger
+
+| Claim | Exact source | Evidence/limit |
+| --- | --- | --- |
+| Pin and binary | `mods/scriptor-magicae.pw.toml`, CurseForge file 8899737; SHA-1 `32fece570d3f1086cc59229b1b861fd277da41e8`; directly inspected downloaded jar SHA-512 `01c270afe332fd4b7b924f6e0239331aa76ce0cd0124193b296c87383261c6cbc02509a971ae1b54a0ab0eb3aba557c9fc58ef4b340727bf548104150bf259af` | exact locked artifact inspected |
+| Version-aligned source | `ssblur/scriptor`, tag `v2.0.14-1.21.1`, commit `6adb295b15e5124319e7748fa7d167710cb0bad2` | tag declares release version; source-to-JAR reproducibility not proven |
+| World grammar/tomes | `common/.../resources/Tomes.kt`, `ScriptorResources.kt`; `item/books/AncientSpellbook.kt`; bundled `data/scriptor/tomes`, `loot_table` | 4 tome tiers; tome use generates spellbook; detailed loot odds incomplete |
+| Writing/casting | `WritingDesk` UI, `ScriptionaryHelper`, `DictionarySavedData`, `Spell.kt`, item/block entities | action grammar, language, cost and target framework; not every word's behavior mapped |
+| Lectern and Inflame | `blockentity/CastingLecternBlockEntity.kt`, `helpers/targetable/LecternTargetable.kt`, `helpers/ItemTargetableHelper.kt`, `word/action/InflameAction.kt` | redstone gate, cost cap/cooldown, item-stack conversion and buffer logic; no client confirmation |
+| Quest/config state | chapter `scriptor_magicae.snbt`; tracked config/KubeJS search | one optional checkmark; no Scriptor-specific runtime override found |
+| External docs | source-tag `doc/mechanics/*`, `doc/items/*`, `doc/blocks/writing-desk.md` | docs tag; Writing Desk guide is sparse, embedded markdown is more operational |
+
+## Disposable-world test plan
+
+| Test | Positive/boundary setup | Expected observable | Performed? |
+| --- | --- | --- | --- |
+| Guide reward | collect first tome; inspect `scriptor:patchouli_book` loot and open result | identify actual guide item and whether it contains usable walkthrough | no |
+| Tome progression | collect/use each tier; compare resulting spellbooks and advancement criteria | exact availability, spell complexity distribution, consumption and inventory-full drop | no |
+| Writing UI | test book/spellbook/scroll/Scriptionary/scrap combinations | discover and record words; establish precise inputs and persistence | no |
+| Casting costs | low/high-cost spells through book, scroll and chat | exact caps, cooldown, hunger/health debit order, fizzle behavior | no |
+| Lectern orientation | place in all four directions and target block/item/entity | cast goes out correct face; determine which adjacent container and slot are targeted | no |
+| Inflame processing | single and stack input, multi-ingredient recipe, remainder, full output, output overflow | exact consumption/result, repeats and item drop location; no ore duplication beyond normal smelting | no |
+| Lectern boundary | redstone on/off, spell cost 25/26, crystals at 16/17 blocks, dimension/height edge | pause/cooldown/fizzle and target acceptance match source | no |
+| Engravings | invalid word sequence, disconnected blocks, loops, cost cap boundary, valid chain | activation, chain order, cooldown/spent state, no duplicate cast | no |
+| Integration | FTB chunk claim/protected blocks, JAWR factions, dragon/forms, Ars mana, player inventory target toggle | record grief/damage/faction/resource and permission effects | no |
+
+## Unknowns and next research
+
+- [ ] Inspect every pinned loot table and structure placement for tome tiers, artifacts, engravings and the advancement reward; record guaranteed vs weighted routes.
+- [ ] Open the actual `scriptor:patchouli_book` output and embedded help in client; map the first-use screen and exact Writing Table slots.
+- [ ] Audit all action, subject and descriptor registrations and representative target behavior, especially item/entity movement, block break/place, projectiles, command action and player inventory access.
+- [ ] Confirm version-pinned config defaults are the generated live values; determine if Scriptor Mana is in the full manifest and map its API if present.
+- [ ] Test Inflame with the exact TMM container arrangement and ordinary plus gated recipes; measure throughput and output overflow.
+- [ ] Reconcile the one-checkmark quest chapter in the later quest pass. No runtime or quest files changed for this profile.
+
+## Revision notes
+
+- 2026-11-15 — Added Scriptor Magicae 2.0.14 exact-JAR/source profile. Mapped world-specific grammar discovery, tome workflow, authoring/casting modes, registered action families, lectern automation, crystals, datagen surfaces, typed I/O and the existing quest gap. Confirmed fuel-free Inflame smelting as a source-supported spell path; chest and in-world behavior remain untested. No quest/runtime files changed.
