@@ -1518,26 +1518,28 @@
     {
       "id": "project-expansion",
       "name": "Project Expansion",
-      "category": "post_chaos",
+      "category": "emc_progression",
       "desired": true,
       "version": "projectexpansion-1.21.1-1.0.6",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/a7yNQPzW",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "project-expansion"
+      "packwiz_slug": "project-expansion",
+      "note": "Basic MK1/Dark MK2 flowers precede Chaos-shard requirement. Red MK3+ direct recipes and Red MK3 upgrade require Chaos Shard in KubeJS source; Matter Upgrader and EMC-learn bypasses remain QA. Not all Expansion items are blanket post-Chaos."
     },
     {
       "id": "projecte",
       "name": "ProjectE",
-      "category": "post_chaos",
+      "category": "magic_progression",
       "desired": true,
       "version": "ProjectE-1.21.1-PE1.1.0",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/projecte",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "projecte"
+      "packwiz_slug": "projecte",
+      "note": "Boss-associated trophy-center Philosopher's Stone (Wilden Tribute, Botania Gaia Spirit or Neo Vitae Mine Key), maintaining original redstone/glowstone layouts. Recipe source staged for QA, not client-accepted. Full registry EMC coverage remains a planned separate audit."
     },
     {
       "id": "psi",
