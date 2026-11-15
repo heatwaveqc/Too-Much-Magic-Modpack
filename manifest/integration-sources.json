@@ -161,6 +161,17 @@
       ],
       "mode": "runtime-experimental",
       "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch."
+    },
+    {
+      "name": "dragon-diets-food-compat",
+      "branch": "feature/dragon-diets-food-compat",
+      "paths": [
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/server_scripts/dragon_diets.js",
+        "scripts/verify_dragon_diets.py"
+      ],
+      "mode": "runtime-experimental",
+      "note": "Strict grain-free Sea/Forest/Cave diets, raw Aquaculture sushi, raw produce and sugar, tagged Cave charring fallback. Full upstream 1.21.1 data-map snapshot requires v2.0.74 jar comparison; not gameplay-tested. Only load after Dragon Survival is hash-pinned; run static verifier and disposable-world QA."
     }
   ],
   "covered_by_baseline": {
@@ -215,6 +226,7 @@
     "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests.",
     "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles.",
     "Lilith ascended vampire continuation branch currently contains documentation/test notes; no separate runtime stream until its implementation changes are reviewed. Current native blood-debit guard remains selected for QA.",
-    "Starter-path explorer gift switched from generic compass to useful spyglass in active quest source. Re-test Claim All and once-per-player choice with new client import; do not duplicate claims on existing players."
+    "Starter-path explorer gift switched from generic compass to useful spyglass in active quest source. Re-test Claim All and once-per-player choice with new client import; do not duplicate claims on existing players.",
+    "Dragon Survival diet compatibility is a new runtime-experimental stream. Test common-tag expansion for every Pam crop/fruit, data-map precedence, fruit preserves, Sea fish & non-rice sushi, raw fish/charcoal charring, effects, and strict grain/cooked negatives; compare diet snapshot with exact Dragon Survival 2.0.74 jar. No claim of in-game acceptance."
   ]
 }
