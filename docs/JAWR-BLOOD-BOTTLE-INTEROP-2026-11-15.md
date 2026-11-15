@@ -69,7 +69,7 @@ Every ordinary cauldron transfer:
 
 ## Recipe and medicinal unification (KubeJS first)
 
-**KubeJS startup code:** `kubejs/startup_scripts/drinkable_blood_vial.js` modifies Iron's Blood Vial only, using `ItemEvents.modification` and `foodProperties` with 1 nutrition, saturation modifier 1, `alwaysEdible` and a `usingConvertsTo` Glass Bottle. A full restart is required.
+**KubeJS startup code:** `kubejs/startup_scripts/drinkable_blood_vial.js` modifies Iron's Blood Vial only, using `ItemEvents.modification` with **pinned KubeJS 2101.7.2-build.381's `item.setFood(1, 1.0)` and `item.modifyFood(...)`**, a native `drink` animation, `alwaysEdible`, and `usingConvertsTo` Glass Bottle. A full restart is required. A discarded prototype used the unsupported `item.foodProperties` assignment; [smoke run 43768247822](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43768247822) identified its exact failure in the Minecraft startup log, and that incompatible setter has been removed.
 
 **KubeJS datapack recipes:** 
 - `tmm:ordinary_blood_bottles` contains only `irons_spellbooks:blood_vial` and `hexerei:blood_bottle` (NOT JAWR).
