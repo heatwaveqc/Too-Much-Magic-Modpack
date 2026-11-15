@@ -34,9 +34,22 @@ function tmmCexItemId(stack) {
   return String(TMM_CEX_REGISTRY.ITEM.getKey(stack.getItem()))
 }
 
+// Minecraft Entity.level is exposed by Rhino as an object/property, not a
+// callable method. Using entity.level() crashed immediately when a starter
+// Akashic Tome was spawned into a brand-new world (2026-11-14).
+// Level.isClientSide may also resolve to a field instead of a method.
+function tmmCexEntityLevel(entity) {
+  return entity.level
+}
+function tmmCexIsClientLevel(level) {
+  return typeof level.isClientSide === 'function'
+    ? Boolean(level.isClientSide())
+    : Boolean(level.isClientSide)
+}
+
 function tmmCexTrack(entity) {
   if (!(entity instanceof TMM_CEX_ITEM_ENTITY)) return
-  if (entity.level().isClientSide()) return
+  if (tmmCexIsClientLevel(tmmCexEntityLevel(entity))) return
   const uuid = String(entity.getUUID())
   if (entity.isRemoved() || entity.getItem().isEmpty()) {
     TMM_CEX_CANDIDATES.delete(uuid)
@@ -126,7 +139,7 @@ EntityEvents.spawned('minecraft:item', event => {
 // them. They remain accessible to Mahou's independent above-block scanner.
 NativeEvents.onEvent('net.neoforged.neoforge.event.tick.EntityTickEvent$Pre', event => {
   const entity = event.getEntity()
-  if (!(entity instanceof TMM_CEX_ITEM_ENTITY) || entity.level().isClientSide()) return
+  if (!(entity instanceof TMM_CEX_ITEM_ENTITY) || tmmCexIsClientLevel(tmmCexEntityLevel(entity))) return
   const uuid = String(entity.getUUID())
   if (TMM_CEX_ACTIVE.has(uuid)) {
     event.setCanceled(true)
@@ -139,14 +152,14 @@ NativeEvents.onEvent('net.neoforged.neoforge.event.tick.EntityTickEvent$Pre', ev
 // one level tick only, not until the next mana cycle and not across a restart.
 NativeEvents.onEvent('net.neoforged.neoforge.event.tick.LevelTickEvent$Pre', event => {
   const level = event.getLevel()
-  if (level.isClientSide()) return
+  if (tmmCexIsClientLevel(level)) return
 
   for (const [uuid, entity] of TMM_CEX_CANDIDATES) {
     if (entity.isRemoved() || entity.getItem().isEmpty()) {
       TMM_CEX_CANDIDATES.delete(uuid)
       continue
     }
-    if (!entity.level().equals(level) || TMM_CEX_ACTIVE.has(uuid)) continue
+    if (!tmmCexEntityLevel(entity).equals(level) || TMM_CEX_ACTIVE.has(uuid)) continue
     const stack = entity.getItem()
     const mahouItem = TMM_CEX_MAPPINGS[tmmCexItemId(stack)]
     if (!mahouItem) {
@@ -175,9 +188,9 @@ NativeEvents.onEvent('net.neoforged.neoforge.event.tick.LevelTickEvent$Pre', eve
 
 NativeEvents.onEvent('net.neoforged.neoforge.event.tick.LevelTickEvent$Post', event => {
   const level = event.getLevel()
-  if (level.isClientSide()) return
+  if (tmmCexIsClientLevel(level)) return
   for (const [uuid, state] of TMM_CEX_ACTIVE) {
-    if (state.entity.level().equals(level)) tmmCexRestore(uuid, state)
+    if (tmmCexEntityLevel(state.entity).equals(level)) tmmCexRestore(uuid, state)
   }
 })
 
