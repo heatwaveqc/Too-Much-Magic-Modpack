@@ -5,7 +5,7 @@
 ## Categories
 
 1. **Introduction** — `Getting Started`, `Tips & Tricks`, `Food & Fishing`. Consolidates intro, player reference, cooking/farming, seed market and fishing.
-2. **Progression** — `Basic Progression`, `Advanced Progression`, `Endgame Roadmap`; additional `Skills & Advancement` and `Magical Power & FE` owner-approved because they are cross-mod mechanics, not schools of magic. Endgame Roadmap is an overview, **not** duplicated Endgame rewards.
+2. **Progression** — `Basic Progression`, `Advanced Progression`, `Endgame Roadmap`; additional `Skills & Advancement` and `A Sufficiently Advanced Magic` owner-approved because they are cross-mod mechanics, not schools of magic. Endgame Roadmap is an overview, **not** duplicated Endgame rewards.
 3. **Magic** — chapter for every substantial independent *primary* magic system. Integrate addon content into the parent chapter wherever possible; 25 candidates from B8, including magical industry and Reliquary.
 4. **Exploration & Combat** — each substantial dimension, boss, encounter, special equipment or supernatural faction system; 9 candidates from B8.
 5. **Endgame** — dedicated late-game mod systems and ultimate milestones; 3 approved chapters: Draconic Evolution, ProjectE + Expansion, Replication. Re:Avaritia and Extended Crafting are excluded because they displace the intended Draconic Evolution/Gem Armor peak. Real locks belong to game mechanics, not quest completion alone.
@@ -42,7 +42,7 @@ Finalize the five-category navigation and overall quests skeleton; design Introd
 
 - **Do not install Re:Avaritia or Extended Crafting** or reserve Endgame chapters for them. The owner previously placed both on hold; they were mistakenly pinned in B5/B8 and carried forward into an incorrect 46-chapter inventory.
 - Intended top-tier play is Draconic Evolution, Chaos Guardian, ProjectE and Project Expansion's Gem Armor, plus difficult resource acquisition. Their signature equipment should not be made obsolete by Infinity-tier gear or a competing standalone ultimate-crafting stack.
-- **Skills & Advancement** and **Magical Power & FE** are explicitly approved as additional Progression chapters.
+- **Skills & Advancement** and **A Sufficiently Advanced Magic** are explicitly approved as additional Progression chapters.
 
 ## Authored structure (feature candidate, 2026-11-14)
 
@@ -50,4 +50,4 @@ The five FTB chapter groups and 45 chapter files, with no-reward optional overvi
 
 ## Progression implementation (2026-11-14, candidate)
 
-**Historical 2026-11-14 snapshot:** the five Progression chapters contained 65 tasks, including BiggerReactors Rework. **2026-11-15 decision:** retire 19 BiggerReactors tasks; keep the Draconic generator, Energy Core, crystals and high-risk Reactor track in *Magical Power & FE*, crosslinking Botania's Mana Fluxfield. The five groups and 45 chapter IDs stay unchanged. Alex's Caves Continued and CodxLib are planned but not yet installed. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). Client/gameplay validation remains outstanding.
+**Historical 2026-11-14 snapshot:** the five Progression chapters contained 65 tasks, including BiggerReactors Rework. **2026-11-15 decision:** retire 19 BiggerReactors tasks; keep the Draconic generator, Energy Core, crystals and high-risk Reactor track in *A Sufficiently Advanced Magic*, crosslinking Botania's Mana Fluxfield. The five groups and 45 chapter IDs stay unchanged. Alex's Caves Continued and CodxLib are planned but not yet installed. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). Client/gameplay validation remains outstanding.

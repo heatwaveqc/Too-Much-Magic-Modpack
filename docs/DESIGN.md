@@ -38,7 +38,7 @@ No implemented progression locks, recipe overhaul, questline, substitutions, bal
 
 - **Re:Avaritia and Extended Crafting are excluded.** Both were placed on hold in the selection discussion but incorrectly remained pinned through B8. Their infinity-tier/ultimate crafting power would compete with signature Draconic Evolution progression and ProjectE's Gem Armor.
 - Maintain Draconic Evolution, the Chaos Guardian, and post-Guardian ProjectE/Project Expansion as the intended equipment apex. Do not reintroduce those two mods or design quests for them without new owner approval.
-- **Skills & Advancement** and **Exceptional Power: Reactors** are approved as distinct subchapters of the **Progression** top-level category.
+- **Skills & Advancement** and **A Sufficiently Advanced Magic** are approved as distinct subchapters of the **Progression** top-level category.
 
 ## Quest shop economy (2026-11-14 owner decision)
 

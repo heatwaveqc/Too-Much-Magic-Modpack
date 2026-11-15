@@ -1,6 +1,6 @@
-# Magical Power & FE — TMM source-backed plan
+# A Sufficiently Advanced Magic — TMM source-backed plan
 
-**Owner decision: 2026-11-15.** Remove original Bigger Reactors and Bigger Reactors Rework; their uranium reactor, battery, turbine and exchanger lines are retired. This document replaces the previous nuclear build guide. The live fifth Progression chapter retains the historic file/ID but uses the title **Magical Power & FE**. No additional FE transport/logistics mods are approved.
+**Owner decision: 2026-11-15.** Remove original Bigger Reactors and Bigger Reactors Rework; their uranium reactor, battery, turbine and exchanger lines are retired. This document replaces the previous nuclear build guide. The fifth Progression chapter retains its stable FTB chapter/quest IDs and now uses the file `a_sufficiently_advanced_magic.snbt` and title **A Sufficiently Advanced Magic**. No additional general FE transport/logistics mods are approved. Future explicitly approved technology mods belong in this chapter, while Botania's Mana Fluxfield remains part of its own magic chapter.
 
 ## Progression
 

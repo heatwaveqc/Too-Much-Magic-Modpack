@@ -1,3 +1,5 @@
+> **Superseding technology decision (2026-11-15):** The active Progression chapter is **A Sufficiently Advanced Magic**, currently covering Draconic Evolution FE generation, storage, crystals and its high-risk Reactor, plus future explicitly approved technology mods. Bigger Reactors original/Rework and uranium/graphite/cyanite machinery are retired. Older B4 and technology descriptions below are historical and not active instructions.
+
 # Locked design decisions — implementation deferred
 
 > **New owner target (2026-11-15), design only:** Remove TeamLapen **Vampirism** and **Werewolves** after Hunter/Monk dependency migrations; **JAWR alone owns vampire and lycanthrope physiology**. Do **not** preserve dropped-mod worldgen, villages/structures, raids, pets, faction minions or lord systems. Only selected personal skills migrate to the existing Vampire/Werewolf Tyz categories. See [retirement target](TEAM-LAPEN-RETIREMENT-TARGET-2026-11-15.md) and [source-backed skill triage](TEAM-LAPEN-SKILL-TREE-TRIAGE-2026-11-15.md). Older dual-vampire and TeamLapen Abomination designs are superseded; no runtime files changed. 

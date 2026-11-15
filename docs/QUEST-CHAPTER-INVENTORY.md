@@ -1,6 +1,6 @@
 # Quest chapter inventory — historical B8 snapshot with 2026-11-15 overrides
 
-> **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *Magical Power & FE* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
+> **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *A Sufficiently Advanced Magic* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
 
 **Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
 
@@ -30,7 +30,7 @@
 | **Advanced Progression** | `summoning-rituals` | Cross-mod infrastructure, rare materials, automations, summoning altar as custom-pack recipe framework; it has no built-in ritual recipes. **Review:** No separate Summoning Rituals chapter unless meaningful authored recipes exist. |
 | **Endgame Roadmap** | Shared storyline; no exclusive mod | Overview of boss/late-resource requirements and links into the dedicated Endgame category; do not duplicate Endgame quests or rewards. |
 | **Skills & Advancement** | `improvable-skills`, `puffish-skills`, `puffish-attributes` | Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics. **Review:** Pufferfish tree itself is not authored yet. |
-| **Magical Power & FE** | `draconic-evolution` (crosslink `botania-revived`) | Keep Draconic Generator, Energy Core storage/FE crystals and optional high-risk Draconic Reactor; removed BiggerReactors Rework and its uranium pathway. |
+| **A Sufficiently Advanced Magic** | `draconic-evolution` (crosslink `botania-revived`) | Keep Draconic Generator, Energy Core storage/FE crystals and optional high-risk Draconic Reactor; removed BiggerReactors Rework and its uranium pathway. |
 
 ### Magic — 25 chapters
 
@@ -129,7 +129,7 @@ Special cases:
 4. **Enigmatic Legacy+**: assigned to Exploration & Combat because discoveries/equipment make a stronger quest spine than another spell-tree chapter.
 5. **Apotheosis**: assigned to Exploration & Combat rather than Magic; close-coupled Apothic Attributes, Enchanting and Spawners stay in its chapter.
 6. **Vampirism and Werewolves**: **two** chapters, crosslinked to JAWR/Goety transformations and future unified rules. Do not build quests that assume unreviewed transformation conflicts.
-7. **Draconic Evolution** sits in Endgame rather than Magic; **Magical Power & FE** covers Draconic energy infrastructure; Bigger Reactors Rework has been removed. This preserves the pack's deliberate limited tech scope.
+7. **Draconic Evolution** sits in Endgame rather than Magic; **A Sufficiently Advanced Magic** covers Draconic energy infrastructure; Bigger Reactors Rework has been removed. This preserves the pack's deliberate limited tech scope.
 8. **Gateways to Eternity** remains a full combat chapter despite potential drop-farming exploits; quest design must not trivialize boss-loot gating.
 
 ## Production notes

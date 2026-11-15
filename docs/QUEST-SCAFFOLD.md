@@ -1,3 +1,5 @@
+> **Current 2026-11-15 supersession:** Bigger Reactors Rework and its 19 quests are retired. Progression's technology chapter is now **A Sufficiently Advanced Magic**, with the original stable chapter ID, covering Draconic Evolution and future approved tech. The active book has 160 quests (118 authored); older 179/168 statistics below are historical build snapshots.
+
 # FTB Quests five-category, 45-chapter scaffold
 
 **Status:** authored source candidate, **not client-integrated or quest behavior verified**. Branch `feature/ftb-quests-45-chapter-scaffold` based on PR #17's corrected 138-mod pack (without Re:Avaritia/Extended Crafting).
@@ -7,7 +9,7 @@
 | Group | Count | Chapters |
 | --- | ---: | --- |
 | Introduction | 3 | Getting Started; Tips & Tricks; Food & Fishing |
-| Progression | 5 | Basic Progression; Advanced Progression; Endgame Roadmap; Skills & Advancement; Exceptional Power: Reactors |
+| Progression | 5 | Basic Progression; Advanced Progression; Endgame Roadmap; Skills & Advancement; A Sufficiently Advanced Magic |
 | Magic | 25 | Ars Nouveau; Astral Sorcery; Botania Revived; Eidolon: Repraised; Enchanted: Witchcraft; EvilCraft; Forbidden & Arcanus; Goety; Hex Casting; Hexerei; Iron's Spells 'n Spellbooks; Mahou Tsukai; Malum; Neo Vitae; Occultism; Pastel; Primal Magick; Psi; Roots Classic; Scriptor Magicae; Theurgy; Totemic; Just Another Witchery Remake; Embers Re-Ignited; Reliquary Reincarnations |
 | Exploration & Combat | 9 | L_Ender's Cataclysm; Deeper and Darker; Gateways to Eternity; Feywild; Apotheosis; Artifacts; Enigmatic Legacy+; Vampirism; Werewolves |
 | Endgame | 3 | Draconic Evolution; ProjectE; Replication |
