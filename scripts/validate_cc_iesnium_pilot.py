@@ -78,7 +78,7 @@ def main() -> None:
     files += ["kubejs/data/computercraft/recipe/" + k + ".json" for k in TARGETS]
     for file in files:
         wanted = hashlib.sha256(read(file).encode("utf-8")).hexdigest()
-        require('file = "' + file + '"\\nhash = "' + wanted + '"' in index,
+        require('file = "' + file + '"' + chr(10) + 'hash = "' + wanted + '"' in index,
                 "Missing/incorrect packwiz entry for " + file)
     pack = tomllib.loads(read("pack.toml"))
     require(pack["index"]["hash"] == hashlib.sha256(index.encode("utf-8")).hexdigest(), "Packwiz index digest broken")
