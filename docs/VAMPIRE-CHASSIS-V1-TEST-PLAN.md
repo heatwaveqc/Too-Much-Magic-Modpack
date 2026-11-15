@@ -1,3 +1,7 @@
+> **SUPERSEDED by [VAMPIRE-ASCENSION-V2.md](VAMPIRE-ASCENSION-V2.md).**
+> Historical v1 symmetric-acquisition and Vampirism-canonical assumptions
+> below are not the current pack design.
+
 # Vampire chassis v1 — experimental integration and acceptance (2026-11-14)
 
 **NOT SURVIVAL READY.** This branch integrates Minecraft 1.21.1 / NeoForge
