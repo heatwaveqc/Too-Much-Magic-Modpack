@@ -376,7 +376,7 @@
       "id": "tmm_dragon_sea",
       "title": "Sea Dragon",
       "requires": "verified sea dragon state; no other dragon species",
-      "identity": "High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes.",
+      "identity": "High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes. Sea Dragon is the highest-luck path by a ridiculous margin.",
       "lanes": [
         {
           "name": "Tideshaping",
@@ -612,13 +612,24 @@
         "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
         "No free permanent underwater invulnerability or world fluid griefing.",
         "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
-        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices."
+        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
+        "Abyssal Fortune (Extreme ×50) is an extra specialty beyond this v1 four-lane sketch; full 165-row strength catalog contains it with exact proposed cap and test cautions."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
         "magic_regeneration": "No dragon-exclusive mana regeneration node",
         "pricing": "Physical armor/damage/harvest benefits cost more SP per unit than specialized combat/harvest creatures; mana and spell potency provide much more benefit per SP",
         "source_gate": "Any fae/demon/sea classification needs exact-version verified source tags"
+      },
+      "luck_specialization": {
+        "id": "tmm_dragon_sea_abyssal_fortune",
+        "label": "Abyssal Fortune",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "cap": 50,
+        "status": "design_only_detailed_in_strength_catalog",
+        "goal": "Extremely high personal Luck in supported actual loot/roll mechanics; much higher than any non-Sea specialty",
+        "source_limit": "Requires a nonzero Luck reference and verification of actual Luck-consumer events; never apply percent to zero, multiply all drops, or bypass bosses/quest gates"
       }
     },
     {
@@ -2069,7 +2080,7 @@
       ],
       "capstone": {
         "label": "Empty-Hand Paragon",
-        "effect": "After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.",
+        "effect": "Full Monk native + Tyz progression must allow a skilled solo player to finish the real Chaos Guardian encounter with no worn gear and no weapons while honoring every legal boss mechanic; one-off capstone strengthens Monk's unmatched overall self-sufficient combat versatility.",
         "status": "concept_only",
         "id": "tmm_monk_capstone",
         "prerequisite_rule": {
@@ -2096,7 +2107,8 @@
         "Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills.",
         "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
         "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
-        "Owner explicitly vetoed spirit projectile; first hotbar slot dedicated fist and free armor toggle are native/non-purchasable; native Treasure Hand is one Fortune/Silk Touch toggle."
+        "Owner explicitly vetoed spirit projectile; first hotbar slot dedicated fist and free armor toggle are native/non-purchasable; native Treasure Hand is one Fortune/Silk Touch toggle.",
+        "Monk is overall combat apex, **naked/unarmed Chaos Guardian solo** is the accepted future QA target, NOT a current playable claim; other trees near Monk in at most one or two specialties."
       ]
     }
   ],
@@ -2127,7 +2139,7 @@
     "final_visible_tabs": 9
   },
   "principle_version": "2026-11-15-class-identities-v2",
-  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved.",
+  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo; Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog.",
   "class_identity_rules": {
     "core_skills": {
       "display_name": "Core Skills",
@@ -2206,5 +2218,13 @@
     }
   },
   "balance_model_current": "docs/tyzs/nine-tree-strength-first-pass-v1.json",
-  "source_retirement_architecture": "JAWR-only vampire/wolf physiology; standalone Hunter/Monk; no TeamLapen provider for future"
+  "source_retirement_architecture": "JAWR-only vampire/wolf physiology; standalone Hunter/Monk; no TeamLapen provider for future",
+  "global_power_ceiling_2026_11_15": {
+    "apex": "Monk",
+    "benchmark": "Fully maximized standalone Monk native + Tyz path must be capable of defeating the real Chaos Guardian solo, with no worn equipment or weapons, legally completing authentic encounter mechanics.",
+    "specialist_rule": "All other paths can approach Monk in one or two designated niches, but must be significantly worse in most personal combat and adventuring capabilities. Named narrow numeric specialties may exceed Monk in their specialized metric; Monk leads overall.",
+    "evaluation": "No armor, Curios, any other worn equipment, held weapons, or other specialist-tree perks required. Explicitly decide allowance of consumables and held spellcasting implements in QA; do not silently bypass Guardian shields or conjure an innate Monk Spirit Bolt.",
+    "test_status": "conceptual target only; no playtest or implementation claim",
+    "canonical_detail": "docs/tyzs/nine-tree-strength-first-pass-v1.json"
+  }
 }

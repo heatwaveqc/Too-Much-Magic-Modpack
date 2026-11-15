@@ -39,7 +39,42 @@
     "native_owners": "JAWR vampire/wolf; standalone Monk/Hunter; Dragon Survival dragons; verified Lich/Goety/Forbidden Magic; TeamLapen Vampirism/Werewolves are retirement targets and are not future skill providers.",
     "hunter_special_rules": "Undead, demon and fae identified by actual sourced tags; one entity counts once, gated boss multipliers; target glowing at late rank with bounded scan/cooldown and no players. Dragon quarry specialization independent of dimension or boss tags.",
     "lich_blood_nature_tradeoff": "Blood nodes strengthen source-verified personal Neo Vitae/EvilCraft/other blood spell outputs; after all positive nature modifiers, multiply only the lich's own personal Botania/Roots nature spell output by (1 - min(0.75, 0.02*entry_blood_ranks + 0.03*advanced_blood_ranks + 0.05*mastery_blood_ranks)). No machine or passive production debuffs.",
-    "monk_policy": "Do not add spirit projectile; Ars/Iron's spells supply range. Treasure Hand single native Fortune/Silk toggle, Fortune Tyz modifier licensed; reserved hotbar slot 1 and armor-lock toggle are non-purchasable native effects. All 40 source-bounded affix rarities have 2-5 special caps, not generalized to 5/10/25/50."
+    "monk_policy": "Do not add spirit projectile; Ars/Iron's spells supply range. Treasure Hand single native Fortune/Silk toggle, Fortune Tyz modifier licensed; reserved hotbar slot 1 and armor-lock toggle are non-purchasable native effects. All 40 source-bounded affix rarities have 2-5 special caps, not generalized to 5/10/25/50.",
+    "overall_endgame_power_hierarchy": {
+      "primary_benchmark": "Monk is the highest overall endgame combat tier, especially equipment-free self-sufficient combat. A maxed Monk is intended to solo Chaos Guardian naked/unarmed, and has the broadest total combination of offense, defense, mobility, endurance, boss mechanics and adaptability.",
+      "other_tree_limit": "Every non-Monk tree may approach Monk in at most one or two specialties, but remains substantially worse in most other combat and adventuring dimensions at comparable progression. Do not create a universal spellcaster, Hunter, or lycanthrope build whose total toolkit is as broad or independent as maxed Monk.",
+      "narrow_niches_may_exceed_monk": "Monk being overall top does not override already approved named narrow specialty multipliers: Dragons can lead in raw mana/spell throughput, Hunters can approach in quarry-specific weapon combat, Werewolves in sustained health regeneration, and Sea Dragons in Luck. These advantages do not imply comparable general no-gear boss readiness.",
+      "no_cross_tree_cheat": "Assess the intended maximum for each standalone tree with universal Core Skills held at an explicitly specified common baseline. Do not let unrelated maxed trees or a Dracolich hybrid be required to satisfy the Monk standard or quietly erase its lead.",
+      "matchup_test": "Use a capability matrix: unarmed/no-worn-gear Guardian clear; sustained and burst offense; incoming damage; healing/endurance; traversal and aerial engagement; ranged/reach solutions; control; magic capacity; economy/loot; specialization. Monk wins aggregate combat capability, not every spreadsheet cell.",
+      "qualification": "Numbers and actual Chaos Guardian attack/shield/crystal rules must be source-verified and tested before feasibility is claimed. No current mod implementation or single-player victory is implied."
+    },
+    "chaos_guardian_monk_acceptance": {
+      "desired_result": "A solo maxed Monk can finish the real Chaos Guardian encounter with no armor, no Curios, no other worn equipment and no weapons.",
+      "required_scope": [
+        "survive sustained actual Guardian attacks",
+        "legally interact with its damage/defense and crystal/shield phases",
+        "handle the movement and attack reach required during the actual encounter",
+        "finish without external players, pre-damaged boss, commands or boss rule bypass",
+        "retain meaningful threat, timing, healing/cooldown and skill expression; not permanent invulnerability"
+      ],
+      "budget_constraints": [
+        "No mandatory armor/Curios/weapons",
+        "No other specialist class skills required",
+        "Do not add a native Monk projectile; ranged solutions must comply with actual allowed source-backed casting or movement/strike mechanics",
+        "The allowed consumables, spellcasting implements and non-worn inventory items are a later explicit playtest contract and are NOT silently assumed to be prohibited"
+      ],
+      "status": "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST"
+    },
+    "sea_dragon_luck": {
+      "signature": "Abyssal Fortune",
+      "strength": "Extreme",
+      "percent_per_rank": 100,
+      "level_cap": 50,
+      "max_nominal_reference_bonus_pct": 5000,
+      "qualifier": "Luck % is a relative design budget against a nonzero Luck benchmark; native Luck starts at zero in many cases, so do not automatically apply relative percentage to raw current Luck. Actual per-rank Luck attribute value or mod-specific odds formula is undecided.",
+      "goal": "Intentionally exceptional Luck far above other classes, including in legitimate source-verified luck-aware systems. No global guaranteed rare-drop duplication or boss-gating bypass.",
+      "verification": "Audit actual NeoForge 1.21.1 Luck attribute and installed mod loot/fishing/roll behavior."
+    }
   },
   "trees": [
     {
@@ -1394,6 +1429,35 @@
               "native_progression_gate": "verified late native form rank + prerequisite rank"
             }
           ]
+        },
+        {
+          "name": "Abyssal Fortune",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_abyssal_fortune",
+              "label": "Abyssal Fortune",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 50,
+              "sp_per_rank": 1,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 5000,
+              "stage": "mastery",
+              "effect": "Extremely high Sea Dragon luck; powerful personal Luck-stat and source-verified luck-sensitive results, but no unconditional duplicate item generation or boss/quest gate bypass.",
+              "reference_basis": "defined_nonzero_personal_Luck_reference_unit_or_source_verified_luck_sensitive_event",
+              "notes": [
+                "Owner explicitly wants Sea Dragon Luck at a ridiculously high ceiling; Extreme +100% of a defined Luck reference per rank, 50 ranks, is an intentional exceptional specialist scale.",
+                "Vanilla Luck is usually zero before modifiers; never calculate percent of zero and claim a benefit. Map each rank to an independently specified nonzero Luck unit after verifying exact attribute ID/behavior.",
+                "High Luck attribute values do not automatically imply more loot in every mod. Test fishing and other loot tables and named mod effects to identify which mechanics actually honor Luck; no made-up global drop chance.",
+                "Never multiply fixed boss loot, critical keys, quest-only items, ProjectE gate materials or nonrandom recipe outputs. Avoid extra credit on loot-generation hooks.",
+                "Gate exceptionally high levels behind real Sea Dragon progression/late milestones; obtain real saturated-limit curves before numbers are frozen."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "late verified Sea Dragon milestones; no other dragon species"
+            }
+          ]
         }
       ],
       "capstone": {
@@ -1431,7 +1495,8 @@
         "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
         "No free permanent underwater invulnerability or world fluid griefing.",
         "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
-        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices."
+        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
+        "Abyssal Fortune (Extreme ×50) is the dominant Sea Dragon luck specialty. It is intentionally absurdly strong as a design target but must be mapped to real Luck consumers, not globally duplicating loot."
       ]
     },
     {
@@ -3904,7 +3969,7 @@
       ],
       "capstone": {
         "label": "Empty-Hand Paragon",
-        "effect": "After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.",
+        "effect": "Final Monk combat ceiling: a fully mastered Monk must be able to defeat the actual Chaos Guardian alone with absolutely no worn armor, Curios or other worn equipment and no weapons. This is a complete-fight mastery requirement, not free damage immunity, skipping Guardian mechanics, or importing a new Monk projectile. The test must exercise all authentic combat phases, crystals/shields and hostile threats with pack-approved legal unarmed/Monk abilities.",
         "status": "concept_only",
         "id": "tmm_monk_capstone",
         "prerequisite_rule": {
@@ -3931,12 +3996,16 @@
         "level_cap": 1,
         "sp_per_rank": 5,
         "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
-        "implementation": "DESIGN_ONLY"
+        "implementation": "DESIGN_ONLY",
+        "benchmark": "Monk maxed must defeat real Chaos Guardian solo, no worn equipment and no weapons, using Monk-owned abilities and any expressly allowed ordinary resources; no reliance on other class-specific skills, external player help, a pre-killed boss, immortal cheese or boss bypass.",
+        "benchmark_status": "DESIGN_REQUIREMENT_NOT_YET_TESTED"
       },
       "notes": [
         "Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills.",
         "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
-        "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks."
+        "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
+        "Monk is absolute top of overall personal combat / survivability / movement / adaptability power hierarchy. No other tree can be comparable in all those domains at once. A specialist can rival Monk only in one or two designated niches.",
+        "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt."
       ]
     }
   ],
@@ -3957,5 +4026,6 @@
     "JAWR 0.5.39 actual vampire/wolf blood, moon, regeneration and form predicates",
     "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
     "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
-  ]
+  ],
+  "revision_note_2026_11_15": "Monk is overall combat apex with gearless Chaos Guardian solo as explicit maximum-progression acceptance benchmark; non-Monk trees rival one or two niches only. Sea Dragon gains extreme long-tail luck."
 }
