@@ -32,6 +32,18 @@
     {
       "id": "goety:skeleton_wolf",
       "required": false
+    },
+    {
+      "id": "goety:haunted_armor",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_ravager",
+      "required": false
     }
   ]
 }
