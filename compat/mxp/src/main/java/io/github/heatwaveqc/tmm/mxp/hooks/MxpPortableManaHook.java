@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.mxp.hooks;
 import io.github.heatwaveqc.tmm.mxp.MxpMod;
 import io.github.heatwaveqc.tmm.mxp.MxpService;
 import io.github.heatwaveqc.tmm.mxp.MxpSourceConfig;
+import io.github.heatwaveqc.tmm.mxp.core.PortableManaPolicy;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayDeque;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -22,11 +22,6 @@ import java.util.UUID;
  * amount: PlayerManaSources can provide Ars or other outside energy.
  */
 public final class MxpPortableManaHook {
-    private static final Set<String> STORAGE = Set.of(
-            "botania:mana_tablet",
-            "botania:mana_ring",
-            "botania:mana_ring_greater");
-
     private record Snapshot(ServerPlayer player, ItemStack requester, int requested,
                             double nominalCost, Map<ItemStack, Integer> before) {}
 
@@ -87,9 +82,8 @@ public final class MxpPortableManaHook {
         if (portableDebit <= 0) return;
         // If Ars or another PlayerManaSources adapter supplied the remainder,
         // credit ONLY the proportional cost paid by tablets/rings.
-        double fraction = Math.min(1.0,
-                portableDebit / (double) Math.max(1, amountActuallyGranted));
-        double eligibleNominal = snapshot.nominalCost * fraction;
+        double eligibleNominal = PortableManaPolicy.eligibleNominal(
+                snapshot.nominalCost, portableDebit, amountActuallyGranted);
         double baseline = MxpSourceConfig.BOTANIA_PORTABLE_POOL.get();
         if (!Double.isFinite(baseline) || baseline <= 0 || eligibleNominal <= 0) return;
         try {
@@ -102,7 +96,8 @@ public final class MxpPortableManaHook {
     }
 
     private static boolean isStorage(ItemStack stack) {
-        return STORAGE.contains(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+        return PortableManaPolicy.eligibleStorage(
+                BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
     }
 
     private static Map<ItemStack, Integer> snapshotStorage(ServerPlayer player,
