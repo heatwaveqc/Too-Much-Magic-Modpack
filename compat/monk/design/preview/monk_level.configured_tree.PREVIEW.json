@@ -53,17 +53,7 @@
           "node": "tmm_monk:monk/iron_fist",
           "children": [
             {
-              "node": "tmm_monk:monk/glass_touch",
-              "children": [
-                {
-                  "node": "tmm_monk:monk/delicate_hands",
-                  "children": [
-                    {
-                      "node": "tmm_monk:monk/fortunate_hands_license"
-                    }
-                  ]
-                }
-              ]
+              "node": "tmm_monk:monk/glass_touch"
             },
             {
               "node": "tmm_monk:monk/diamond_fist",
@@ -86,6 +76,9 @@
             },
             {
               "node": "tmm_monk:monk/sandforming"
+            },
+            {
+              "node": "tmm_monk:monk/harvest_touch"
             }
           ]
         },
@@ -156,19 +149,6 @@
                   "node": "tmm_monk:monk/retreating"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "node": "tmm_monk:monk/spirit_projectile",
-          "children": [
-            {
-              "node": "tmm_monk:monk/magical_spirit",
-              "children": [
-                {
-                  "node": "tmm_monk:monk/acidic_spirit"
-                }
-              ]
             },
             {
               "node": "tmm_monk:monk/withering_stare",
@@ -182,9 +162,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "node": "tmm_monk:monk/deathbound"
             }
           ]
         },
@@ -198,6 +175,17 @@
       "children": [
         {
           "node": "tmm_monk:monk/focused_advancement_license"
+        },
+        {
+          "node": "tmm_monk:monk/magical_casting",
+          "children": [
+            {
+              "node": "tmm_monk:monk/acidic_casting"
+            },
+            {
+              "node": "tmm_monk:monk/deathbound_casting"
+            }
+          ]
         },
         {
           "node": "tmm_monk:monk/telepathic"
