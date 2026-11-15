@@ -22,18 +22,32 @@ normally has a single lich death anchor. There is no Goety-vs-JAWR
 resurrection race unless a second lich state has been acquired, which the
 current form classifier rejects.
 
-**Discovered conflict to investigate:** Dragon Survival defines an
-`OnDeath` ability trigger that may heal a player and cancel the
-`LivingDeathEvent`. Its `DragonFoodHandler` changes food properties, and
-its `HungerEffect` abilities can add hunger/saturation/exhaustion. We must
-measure trigger order and whether any active dragon ability overwrites the
-fixed lich hunger value. Do **not** globally disable dragon abilities
-or impose a third 20-tick food reset without evidence.
+**Resolved target ordering (pre-alpha implementation):** Dragon Survival's
+native `OnDeath.trigger` is registered at NORMAL priority (source:
+`DragonSurvival.java` line 82). For a genuine Dracolich, our HIGHEST-priority
+handler calls the **native** dragon death passive once before either lich
+provider's default death listener. If the dragon heals enough to cancel
+death, **neither Arca nor phylactery is spent**. Otherwise the selected
+lich's original handler runs as fallback. A narrow mixin suppresses a
+second NORMAL-priority invocation for that same event. Test client-world
+ordering and exactly-once ability costs before declaring runtime success.
+
+**Hard exclusivity rule:** A Dracolich cannot acquire the other kind
+of lichdom. Goety's native `LichdomHelper.setLich(Player, true)` is vetoed
+if the dragon already has Forbidden Magic lichdom; Forbidden Magic's
+native `LichdomLeveling.setLevel(ServerPlayer, positive)` is vetoed if the
+dragon already has Goety lichdom. Native state is checked before mutation;
+unknown state fails closed for dragon candidates. Same-provider upgrades
+and cures are untouched. The classifier still rejects Dragon + both liches.
+
+Dragon Survival also has `DragonFoodHandler` and `HungerEffect` abilities
+that can add hunger/saturation/exhaustion. We must verify their interaction
+with the chosen lich's fixed hunger value. Do not add a third food tick writer.
 
 ## Implemented first slice
 
-- `DracolichPolicy`: pure classification for the two legitimate one-lich
-  Dracolich variants, a pure dragon, and the two-lich conflict.
+- `DracolichPolicy`: pure classification and acquisition veto for the two
+  legitimate one-lich Dracolich variants, a pure dragon, and the conflict.
 - `/tmmtransform dracolich`: *read-only* native probe using the pinned
   upstream public methods:
   `DragonStateProvider.isDragon(Entity)` and `getData(Player).speciesId()`;
@@ -46,8 +60,10 @@ or impose a third 20-tick food reset without evidence.
   forbidden dual-lich dragon conflict.
 
 No automatic transformation or forced visual overlay has been implemented.
-No new hunger, soul debit, resurrection or Dragon Survival diet logic was
-introduced in this first slice.
+Native dragon-first death and second-lich acquisition guards are active
+in the pre-alpha transform module, but require server and client acceptance.
+No new hunger, soul currency, resurrection destination or Dragon Survival
+diet changes were introduced.
 
 ## Disposable-world QA matrix
 
@@ -63,23 +79,30 @@ introduced in this first slice.
 4. Verify chosen lich fixed food level (Goety 17, JAWR 12) is stable
    during standing still, sprinting, exertion and dragon spells,
    especially abilities using `HungerEffect`; check saturation too.
-5. Test with/without configured dragon `OnDeath` passive:
-   note whether it first cancels death through healing; if it cannot
-   save the character, verify the single chosen lich anchor acts once.
-   No double soul cost, duplicate healing, death-loop or teleport race.
+5. Test with/without configured dragon `OnDeath` passive: it must execute
+   before the selected lich anchor, **exactly once**. When it rescues the
+   player, spend 0 JAWR souls / 0 Goety Soul Energy; otherwise verify
+   exactly one native lich anchor and no duplicate dragon passive cost.
+   Test both mod load orders and an unrelated normal dragon control.
 6. Test both soul resources empty, anchor missing, cross-dimensional
    anchors, and rejoin persistence; no invalid dragon-state removal.
 7. Test normal dragon foods, forbidden foods and magical foods for each
    species; liches should not require ordinary meals just to survive.
-8. Verify non-lich dragon diet rules and standalone lich abilities
-   remain unchanged. Never enable two lich sources for a dragon unless
-   testing the explicitly rejected CONFLICT state.
+8. Attempt both forbidden acquisition orders:
+   **Cave/Forest/Sea + Goety -> Forbidden Magic** and
+   **Cave/Forest/Sea + Forbidden Magic -> Goety**. Each must be vetoed
+   before native state changes; verify ritual item/cost side effects
+   separately and ensure a refused level does not show progress credit.
+   Same-track levelling and curing must still work.
+9. Verify non-lich dragon diet rules and standalone lich abilities
+   remain unchanged. Creative/operator writes that bypass canonical
+   levelling methods need separate negative testing.
 
 ## Release gate
 
-The first slice can compile and be packaged in the existing
-`tmm_transformations` module. It does **not** establish that dual
-dragon/lich acquisition works, that a Dragon Survival player can satisfy
-both mods' rituals, that the intended death-event ordering runs, or that
-a skeletal skin is available. Those are client acceptance tests before
-the pack can approach alpha.
+The integration is compiled in `tmm_transformations`, but does **not**
+establish that the two native transformation rituals accept a dragon,
+that a direct native capability/NBT mutation cannot bypass our canonical
+entrypoint guards, or that the prioritization works in every event-order
+configuration. Those are client acceptance tests before alpha.
+Skeletal appearance remains an independent visual design task.
