@@ -88,11 +88,10 @@
       "name": "mahou-catalyst-exchange-neo-dust",
       "branch": "feature/mahou-catalyst-exchange-kubejs",
       "paths": [
-        "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js",
-        "scripts/test_mahou_catalyst_exchange.cjs"
+        "scripts/audit_mahou_catalyst_bytecode.py"
       ],
-      "mode": "runtime-experimental",
-      "note": "Hotfix from exact 2026-11-14 first-world crash: Rhino ItemEntity.level is an object (not entity.level()), and client-side flags may be boxed Java Boolean (never infer from object truthiness). Node regression executes exact KubeJS source against world-tick-3 Akashic Tome, five Neo dust mappings, native no-mana and one-input economics and explicit client/server boxed flags. Dedicated-server startup plus client play test still needed."
+      "mode": "source-only",
+      "note": "DISABLED: old KubeJS Neo dust exchange adapter registered EntityTickEvent.Pre for every dropped item on every tick plus LevelTick scans. No longer imported into runtime. Native Mahou Catalyst Exchange stays functional for Mahou powdered items. Exact pinned circle bytecode probe added to design narrow Java/mixin circle-scanner injection preserving native mana/output; DO NOT reinstall old global tick script."
     },
     {
       "name": "roots-mxp-prototypes",
@@ -250,6 +249,8 @@
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately."
   },
   "pending_runtime_work": [
+    "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
+    "BLOCKER: do not reinstate kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js: global dropped-item tick costs and proxy item lifecycle are unacceptable. Replace with scoped native Mahou Catalyst Exchange scanner patch; preserve native mana/consumption and no item duplication.",
     "Regression for 2026-11-14 first-world KubeJS Catalyst Exchange crash now mandatory in CI: Akashic Tome item tick, boxed Java false/true, native-only dust proxy and restore. QA-only Vampire Ascension flags set TRUE in defaultconfigs for new worlds and asserted from world/serverconfig after server boot; operator-only forced cure stays FALSE.",
     "NEW mob-alliance prototype on current vampire bridge: undead should not proactively attack vampires/lich, while retaliation and exempt bosses remain valid; forest dragon-fae and cave dragon-demon attitudes are tag-driven and may have no matching dragon entity IDs yet. No gameplay acceptance until in-world tests.",
     "NEXT QA MUST HAVE: Dragon Survival v2.0.74, its Sea/Forest/Cave food compatibility scripts, Comforts and client-only Colorful Hearts all hash-pinned and installed. Server smoke must pass; client gameplay remains unverified.",
