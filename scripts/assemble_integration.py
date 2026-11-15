@@ -155,6 +155,17 @@ def main() -> None:
         "mods/colorful-hearts.pw.toml", "mods/vampires-delight.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
+    # Every packwiz reference must be in the GIT INDEX, not merely the CI
+    # worktree. A prior Vampire's Delight build downloaded correctly in CI
+    # but published a broken Prism snapshot: the generated .pw.toml was
+    # referenced by index.toml and omitted from git add.
+    tracked = set(git("ls-files", "--cached").splitlines())
+    indexed = tomllib.loads((ROOT / "index.toml").read_text(encoding="utf-8"))
+    missing = [entry["file"] for entry in indexed["files"]
+               if entry["file"] not in tracked]
+    if missing:
+        raise RuntimeError("Packwiz references files missing from immutable Git snapshot: "
+                           + ", ".join(missing))
     # Run the SAME KubeJS JS source with a Rhino-shaped ItemEntity/Level mock
     # before any expensive server boot. This catches the crash at first world
     # tick caused by calling an object-valued entity.level property.
