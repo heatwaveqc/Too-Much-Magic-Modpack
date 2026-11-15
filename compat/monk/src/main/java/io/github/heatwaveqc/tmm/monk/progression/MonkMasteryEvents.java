@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -32,8 +33,14 @@ public final class MonkMasteryEvents {
 
     public static void onBlockDrops(BlockDropsEvent event) {
         if (!(event.getBreaker() instanceof ServerPlayer player)) return;
-        if (!event.getTool().isEmpty() || !event.getState().is(TRAINING_BLOCKS)) return;
-        award(player, 1, "training");
+        // Credit either truly empty-handed training or a legitimate magic focus.
+        // Conventional tools (even if they have enchantments) never qualify.
+        boolean barehand = player.getMainHandItem().isEmpty() && event.getTool().isEmpty();
+        boolean magic = isMagicImplement(player.getMainHandItem()) || isMagicImplement(event.getTool());
+        if (!(magic || (barehand && event.getState().is(TRAINING_BLOCKS)))) return;
+        if (MonkTreeChopBridge.isPendingLog(player, event.getPos())) return;
+        MonkMagicBreakTracker.onDropsCredited(player, event.getPos());
+        award(player, 1, magic ? "magic_break" : "training");
     }
 
     public static void onHostileDeath(LivingDeathEvent event) {
@@ -53,6 +60,34 @@ public final class MonkMasteryEvents {
         if (state.discoverFood(foodId)) {
             awardTo(player, state, 8, "new_food");
         }
+    }
+
+    /**
+     * Explicit focus whitelist. Registry IDs here are *item classes* and do not
+     * grant XP for ordinary enchanted tools, fake players or nearby automation.
+     * Unknown cast sources require their own audited source-specific adapter.
+     */
+    public static boolean isMagicImplement(ItemStack item) {
+        if (item.isEmpty()) return false;
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item.getItem());
+        String namespace = id.getNamespace();
+        if (!(namespace.equals("ars_nouveau") || namespace.equals("irons_spellbooks")
+                || namespace.equals("roots") || namespace.equals("rootsclassic")
+                || namespace.equals("roots_classic"))) return false;
+        String path = id.getPath();
+        return path.contains("spell_book") || path.contains("spellbook")
+                || path.contains("staff") || path.contains("wand")
+                || path.contains("focus") || path.contains("tome");
+    }
+
+    /** Only HT TreeChop's completed, actually removed log positions count. */
+    public static void awardConfirmedFell(ServerPlayer player, int removedLogs) {
+        if (removedLogs > 0) award(player, Math.min(256, removedLogs), "felled_logs");
+    }
+
+    /** Successful no-drops break, confirmed on a subsequent server tick. */
+    public static void awardConfirmedMagicBreak(ServerPlayer player) {
+        award(player, 1, "magic_break");
     }
 
     private static void award(ServerPlayer player, int amount, String source) {
