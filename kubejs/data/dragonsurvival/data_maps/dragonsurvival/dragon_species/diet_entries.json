@@ -208,6 +208,44 @@
             "nutrition": 1,
             "saturation": 2
           }
+        },
+        {
+          "items": "artifacts:everlasting_beef",
+          "retain_effects": true
+        },
+        {
+          "items": "evilcraft:flesh_rejuvenated",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:infinite_fruit",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:mana_cookie",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:magnificent_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_golden_carrot",
+          "retain_effects": true
         }
       ]
     },
@@ -250,13 +288,6 @@
             "eat_seconds": 0.6,
             "nutrition": 2,
             "saturation": 2
-          }
-        },
-        {
-          "items": "minecraft:rotten_flesh",
-          "properties": {
-            "nutrition": 2,
-            "saturation": 4
           }
         },
         {
@@ -558,13 +589,6 @@
           }
         },
         {
-          "items": "born_in_chaos_v1:monster_flesh",
-          "properties": {
-            "nutrition": 1,
-            "saturation": 1
-          }
-        },
-        {
           "items": "betteranimalsplus:pheasantraw",
           "properties": {
             "nutrition": 7,
@@ -817,13 +841,6 @@
           }
         },
         {
-          "items": "artifacts:everlasting_beef",
-          "properties": {
-            "nutrition": 0,
-            "saturation": 0
-          }
-        },
-        {
           "items": "byg:soul_shroom",
           "properties": {
             "nutrition": 9,
@@ -1038,6 +1055,44 @@
         },
         {
           "items": "minecraft:golden_carrot",
+          "retain_effects": true
+        },
+        {
+          "items": "ars_nouveau:sourceberry_bush",
+          "retain_effects": true
+        },
+        {
+          "items": "evilcraft:flesh_rejuvenated",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:infinite_fruit",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:mana_cookie",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:magnificent_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_golden_carrot",
           "retain_effects": true
         }
       ]
@@ -2160,6 +2215,40 @@
             "nutrition": 1,
             "saturation": 1
           }
+        },
+        {
+          "items": "evilcraft:flesh_rejuvenated",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:infinite_fruit",
+          "properties": {
+            "nutrition": 0,
+            "saturation": 0,
+            "eat_seconds": 1.6
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "botania:mana_cookie",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:magnificent_star_candy",
+          "retain_effects": true
+        },
+        {
+          "items": "spectrum:enchanted_golden_carrot",
+          "retain_effects": true
         }
       ]
     }
