@@ -1,0 +1,89 @@
+name: Alcohol is Magic - Compile and Smoke Quests
+on:
+  push:
+    branches: ['feature/alcohol-is-magic-quests']
+    paths:
+      - '.github/workflows/alcohol-is-magic-quests.yml'
+      - 'scripts/add_alcohol_quests.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alcohol-is-magic-quest-build
+  cancel-in-progress: false
+
+jobs:
+  author-validate-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile and statically validate canonical quest data
+        id: compile
+        run: |
+          python3 -m py_compile scripts/add_alcohol_quests.py
+          python3 scripts/add_alcohol_quests.py
+          python3 scripts/validate_quests.py
+          python3 scripts/validate.py
+      - name: Prove deterministic second pass without changed output
+        if: steps.compile.outcome == 'success'
+        run: |
+          git diff --binary > /tmp/alcohol-first-pass.patch
+          python3 scripts/add_alcohol_quests.py
+          git diff --binary > /tmp/alcohol-second-pass.patch
+          cmp /tmp/alcohol-first-pass.patch /tmp/alcohol-second-pass.patch
+      - name: Fresh dedicated-server smoke, including FTB Quests
+        id: smoke
+        if: steps.compile.outcome == 'success'
+        continue-on-error: true
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: "${{ runner.temp }}/alcohol-is-magic-smoke"
+        run: bash scripts/smoke_server.sh
+      - name: Commit generated chapter and validated packwiz hash chain
+        if: steps.smoke.outcome == 'success'
+        run: |
+          python3 scripts/validate_quests.py
+          python3 scripts/validate.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/QUEST-ARCHITECTURE.md \
+            manifest/quest_chapters.json manifest/quest_content.json \
+            manifest/quest_content_resolved.json manifest/quest_layouts.json \
+            scripts/rebuild_quest_ui.py scripts/validate_quests.py \
+            config/ftbquests/quests/chapters/alcohol_is_magic.snbt \
+            config/ftbquests/quests/lang/en_us.snbt \
+            index.toml pack.toml
+          if ! git diff --cached --quiet; then
+            git commit -m "quest: add 19-step Alcohol is Magic brewery and tropical bar chapter"
+            git push origin HEAD:feature/alcohol-is-magic-quests
+          fi
+      - name: Preserve server logs and generated quest evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alcohol-is-magic-quest-validation
+          path: |
+            ${{ runner.temp }}/alcohol-is-magic-smoke/server.log
+            ${{ runner.temp }}/alcohol-is-magic-smoke/logs/latest.log
+            config/ftbquests/quests/chapters/alcohol_is_magic.snbt
+            config/ftbquests/quests/lang/en_us.snbt
+            manifest/quest_layouts.json
+            pack.toml
+            index.toml
+          if-no-files-found: warn
+      - name: Require successful full integration
+        if: steps.compile.outcome != 'success' || steps.smoke.outcome != 'success'
+        run: exit 1
