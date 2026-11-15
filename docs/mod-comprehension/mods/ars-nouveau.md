@@ -3,12 +3,12 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
-| Category / parent or addons | Primary system. **All seven pinned addons** need separate evidence/coverage: `ars-additions`, `ars-controle`, `ars-elemancy`, `ars-elemental`, `ars-n-spells`, `ars-ocultas`, `ars-unification`. Track them in the [coverage index](../INDEX.md). |
+| Category / parent or addons | Primary system with seven separately pinned addons; focused profiles are linked in the subsystem matrix below and tracked in the [coverage index](../INDEX.md). |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` at base `385c69889fccf281f94957ba4063488e1646a2e0` |
 | Source snapshot | `baileyholl/Ars-Nouveau` commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098`; declares 1.21.1 / 5.13.5 |
 | Guide/documentation version gap | Notebook JSON is from the version-aligned source commit. The separate gameplay guide targets 5.11 and is not used to assert current recipes. The pinned JAR hash was verified for the 49-quest pilot, but source-tree-to-binary equivalence is not independently established here. |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
-| Profile status | **researching** — core route and guide references now mapped; still lacks full recipe/glyph-cost and creature eligibility audit, seven separate addon profiles, source/JAR equivalence, and client walkthrough acceptance |
+| Profile status | **researching** — core route and seven addon profiles are mapped; full glyph/creature/altar inventories, exact artifact/source comparison for version-drifted addons, in-pack config confirmation and client walkthrough remain open |
 | Evidence reached | Exact pack pin/hash; version-aligned upstream source/Notebook JSON; PR #74 reports all eight pinned Ars JARs hash-verified and a server registry probe; no client/world gameplay test |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). The authored 49-quest pilot is on separate PR #74; not integrated or client-accepted. |
@@ -27,7 +27,7 @@
 
 **Three useful early candidates:** crop/tree Agronomic Source workshop; Mycelial surplus-food conversion; Novice Book + Scribes Table for controlled utility glyphs. **Access costs and stage placement are not fully established**; compare exact pinned recipes/JEI before calling these universal day-one choices. Drygmy farming belongs to a later tier until its charm, Henge and Source burden are known.
 
-**Three cross-mod leads:** Ars Ocultas + Occultism; Ars 'n Spells + Iron's; Ars material/food/tag interfaces with pack resources and other magic. All are **candidates pending two-sided evidence**, not established compatible routes.
+**Three cross-mod links:** Ars Ocultas + Occultism and Ars 'n Spells + Iron's have explicit upstream integration code/docs and separate pinned addon profiles; neither has client acceptance here. Ars Unification supports Farmer's Delight Cut and Occultism Crush; both target mods are enabled in TMM, while only the Farmer's Delight branch appears in the pilot.
 
 | Major subsystem / branch | Current evidence and coverage | Full progression/how-to coverage | In-pack tests |
 | --- | --- | --- | --- |
@@ -36,7 +36,13 @@
 | Rituals, structures and Wilden Chimera | Summoning source inspected; most ritual procedures/prerequisites not enumerated | **Partial** — build/setup instructions, full tablet progression and guide sections needed | Not run |
 | Magical creatures, familiar and automation | High-level Notebook strings and some source | **Partial** — recipes, placement diagrams, eligibility, upkeep and all creature systems need review | Not run |
 | Crops/world generation and equipment | Survey-level only | **Partial** — acquisition, discovery and tiered equipment guide gaps | Not run |
-| Seven pinned addons | Separate profiles not yet done; exact-JAR quest pilot available on PR #74 | **Not covered here** — all seven need separate profiles and parent chapter crosslinks | Not run |
+| Ars Additions | [Focused profile](ars-additions.md); 21.3.0 hash-verified by pilot; source branch version/dependency drifts | Partial: pilot covers 3 logistics items; README declares glyphs, structures, rituals, Codex and Wixie Apparatus too | Not run; exact pin/source comparison open |
+| Ars Controle | [Focused profile](ars-controle.md); 1.6.16 source commit identified | Partial: pilot covers Remote, Sensor and Brazier Relay; Scryer's Linkage, Scroll Holder, Prism and control glyphs remain | Not run |
+| Ars Elemental | [Focused profile](ars-elemental.md); exact 0.7.10.4 pin, inspected source is 0.7.11.0 | Partial: fire worked example only; foci, armor, helpers, turrets, relays, prisms and biomes remain | Not run |
+| Ars Elemancy | [Focused profile](ars-elemancy.md); 1.18.3 source / dependency version gap noted | Partial: Cinder Essence + hat; six combined essences and Elemancer shard route mapped from source | Not run |
+| Ars Ocultas | [Focused profile](ars-ocultas.md); 2.6.2 version source | Partial: gem alternative, jar and altar item milestones; actual worker/ritual operation remains | Not run |
+| Ars 'n Spells | [Focused profile](ars-n-spells.md); 3.3.5 source and pilot advancement map | Partial: Loom→transcribe→bind→cross-cast; TMM config/runtime behavior remains | Not run |
+| Ars Unification | [Focused profile](ars-unification.md); 1.2.23 source | Partial: Farmer's Delight Cut; installed Occultism Crusher Spirit integration was missing from pilot coverage | Not run |
 
 ## Guidebook / walkthrough readiness
 
@@ -203,12 +209,13 @@ The Worn Notebook's recipe is the entry point for instructions, not a mandatory 
 
 ## Compatibility leads
 
-| Other mod | Candidate link | Status |
+| Other mod | Verified source-level bridge | Status / remaining proof |
 | --- | --- | --- |
-| Ars Ocultas + Occultism | Ars Ocultas describes a bridge involving Occultism spirits and Ars containment/processing. Exact recipes, entity behavior, and whether current pinned builds agree must be confirmed in both profiles and an in-pack test. | Candidate only; no interaction report yet |
-| Ars 'n Spells + Iron's Spells 'n Spellbooks | Addon explicitly positions itself as integration between the two spell systems. Need inspect both exact artifact sides, addon-supported conversion/casting and progression settings. | Candidate only |
-| Ars Elemental + Ars Nouveau | Addon extends glyphs, foci, equipment and creatures. Core profile does not absorb its subsystem details. | Separate profile queued |
-| Ars Unification + multiple content mods | Name implies recipe/tag harmonization; actual covered materials and compatibility rules unknown. | Separate profile queued |
+| Ars Ocultas + Occultism | 2.6.2 README says spirits work from Containment Jars, process nearby items, expose item capability, and add an Ars Ocultas Notebook section. | Source-backed at pinned version; verify full recipe set, spirit bounds and actual client behavior. See [profile](ars-ocultas.md). |
+| Ars 'n Spells + Iron's | 3.3.5 documents five mana modes, scaling/progression, transcription, binding and cross-cast into Iron's native wheel. | Source-backed; current TMM mode/config and client payment remain unverified. See [profile](ars-n-spells.md). |
+| Ars Unification + Farmer's Delight | Cut imports Farmer's Delight Cutting Board recipes. | Pinned adapter class and pilot recipes; client action not tested. See [profile](ars-unification.md). |
+| Ars Unification + Occultism | Crush imports Occultism Crusher Spirit recipes; both mods are enabled in the current manifest. | Newly identified installed branch omitted by the pilot; add to quest plan after JEI verification. |
+| Ars Elemental + Ars Nouveau | Elemental foci, spell effects, armor, Source/water and automation; current source snapshot 0.7.11.0 is ahead of pin 0.7.10.4. | Source lead only for unpiloted mechanics; see [profile](ars-elemental.md). |
 
 ## Quest and teaching opportunities (research, not actual quests)
 
@@ -292,15 +299,15 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 - [ ] Independently compare the exact SHA-1-pinned JAR data/code against the version-aligned upstream source for recipes, guide pages, tags, registries and config. PR #74 reports the eight hashes were verified, but this profile has not reproduced source-to-binary equivalence.
 - [ ] Audit all 5.13.5 custom recipe JSON types and recipe costs; confirm which are exposed to KubeJS and JEI in the pinned KubeJS stack.
 - [ ] Audit all glyph recipes and XP costs, default/first learnable glyphs, representative spell mana costs, and cast validity; link every mandatory step to current JEI/Notebook evidence.
-- [ ] Inspect all source link input formulas, Sourcelink event range, Source Jar transfer/transport and machine pull radius across pinned code; validate measured rates.
-- [ ] Establish creature acquisition, required charm recipes, complete Drygmy supported entity handling and Wixie linked-inventory rules in 5.13.5.
-- [ ] Create the seven addon profiles, verify their actual guide/JEI references and mechanics, then research one two-sided interaction such as Ars Ocultas × Occultism or Ars 'n Spells × Iron's.
+- [ ] Complete source link formulas/ranges, Source Jar transfer/transport and all custom recipe/ritual schemas; distinguish code-derived rates from measured rates.
+- [ ] Establish complete creature acquisition/charm recipes, Drygmy eligible-entity list, Wixie inventory rules, every ritual input and storage/Bookwyrm cap in 5.13.5.
+- [ ] Close exact-version addon gaps: Ars Additions 21.3.0 artifact/source match; Ars Elemental 0.7.10.4 vs inspected 0.7.11.0; full Ars Controle/Elemancy/Ocultas feature and JEI inventories; validate Occultism Crush in Ars Unification and current Ars 'n Spells server config.
 - [ ] Verify notebook and every critical build page in the assembled client; add a Worn Notebook onboarding quest to the pilot and review all setup prose against actual GUI behavior.
 - [ ] Confirm FTB task types that can detect a valid spell cast or functioning Source link without relying on a crafted item alone.
 - [ ] Run disposable client and dedicated-server checks; upgrade profile to `verified-in-pack` only with reproducible evidence.
 
 ## Revision notes
 
-- 2026-11-15 — Applied the walkthrough standard: exact Worn Notebook recipe/access quest; named source-version guide pages; full native tier route and major optional/addon branches; actionable structure instructions; detector/reward honesty; and remaining evidence gaps. Added Ars-derived methodology improvements.
+- 2026-11-15 — Applied the walkthrough standard: exact Worn Notebook recipe/access quest; named source-version guide pages; full native tier route and major optional branches; actionable structure instructions; detector/reward honesty; and explicit evidence gaps. Added seven focused addon profiles, including source-version drift and the omitted installed Occultism Crush adapter. Added Ars-derived methodology improvements.
 - 2026-11-15 — First source-backed profile. Exact pack pin and upstream source version match; source details and version-lag limits recorded. Gameplay not tested.
 - 2026-11-15 — Methodology adopted: downgrade from `source-complete` to `researching` until full progression, guidebook and all-seven-addon coverage. Add explicit guidebook/quest pilot gap audit. No new runtime test asserted.
