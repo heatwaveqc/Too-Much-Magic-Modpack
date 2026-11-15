@@ -105,7 +105,7 @@ def update_manifest(manifest: dict) -> None:
         manifest["mods"].append(new)
     new["desired"] = True
     new["enabled_in_pack"] = True
-    new["note"] = ("First-wave integration: four 99-rank Core Magic skills, one shared Tyz "
+    new["note"] = ("First-wave integration: four five-rank Core Magic skills, one shared Tyz "
                    "SP wallet, all Tyz native activity XP disabled. Until the canonical "
                    "MXP dispatcher is runtime-integrated, XP is available via explicit "
                    "operator test grants only. Core Magic and vanilla Tyz categories "
