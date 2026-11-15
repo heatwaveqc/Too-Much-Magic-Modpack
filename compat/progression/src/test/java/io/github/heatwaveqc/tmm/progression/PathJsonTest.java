@@ -53,7 +53,7 @@ class PathJsonTest {
             """;
         assertEquals(2,PathJson.read("test:choice",
             JsonParser.parseString(graph).getAsJsonObject()).skills().size());
-        String wrong = graph.replace("\\"interval_ticks\\":\\"20\\"","\\"interval_ticks\\":\\"0\\"");
+        String wrong = graph.replace("repair","explode");
         assertThrows(IllegalArgumentException.class, () -> PathJson.read("test:choice",
             JsonParser.parseString(wrong).getAsJsonObject()));
     }
