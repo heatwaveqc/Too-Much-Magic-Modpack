@@ -92,6 +92,25 @@ jobs:
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery-0.5.39+mc1.21.1.jar" \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery_forbidden_magic-0.5.37+mc1.21.1.jar" \
             --limit 48 --output "${{ runner.temp }}/tmm-jawr-food-audit"
+      - name: Verify vampire ascension flags copied into the new smoke world's serverconfig
+        env:
+          SMOKE_WORLD: ${{ runner.temp }}/tmm-full-integration-smoke/world
+        run: |
+          python3 - <<'PY'
+          import os, tomllib
+          from pathlib import Path
+          cfg = Path(os.environ["SMOKE_WORLD"]) / "serverconfig/tmm_transformations-server.toml"
+          assert cfg.is_file(), f"NeoForge did not install the QA vampire defaults into {cfg}"
+          state = tomllib.loads(cfg.read_text(encoding="utf-8"))
+          expected = {
+              "experimentalVampireChassis": True,
+              "experimentalAutomaticDualAcquisition": True,
+              "experimentalAllowUnverifiedOtherProviders": True,
+              "experimentalOperatorCure": False,
+          }
+          assert state == expected, f"Vampire world config not in QA test state: {state!r}"
+          print("PASS: new server world copied and activated QA-only Vampire Ascension flags")
+          PY
       - name: Refuse to publish if extra first-party modules were not actually installed
         run: |
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
