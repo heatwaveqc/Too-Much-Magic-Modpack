@@ -16,12 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Pseudo
 @Mixin(targets = "dev.sterner.witchery.feature.affliction.vampire.VampireEvents", remap = false)
 public abstract class JAWRVampireEventsMixin {
-    @Inject(method = "handleBloodHunger(Lnet/minecraft/server/level/ServerPlayer;)V",
-            at = @At("HEAD"), cancellable = true, remap = false)
-    private void tmm$hunger(ServerPlayer player, CallbackInfo ci) {
-        if (VampireChassisRuntime.isDual(player)) ci.cancel();
-    }
-
     @Inject(method = "tickGarlicExposure(Lnet/minecraft/world/entity/LivingEntity;)V",
             at = @At("HEAD"), cancellable = true, remap = false)
     private void tmm$garlic(LivingEntity living, CallbackInfo ci) {
