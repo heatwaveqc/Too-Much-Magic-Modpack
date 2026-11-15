@@ -55,7 +55,7 @@ SCAFFOLD=[
 ("Deeper and Darker","glow_berries",4),
 ("Gateways to Eternity","slime_ball",2),("Feywild","sea_pickle",2),
 ("Apotheosis","lapis_lazuli",2),("Artifacts","leather",2),
-("Enigmatic Legacy+","glow_ink_sac",2),("Vampirism","milk_bucket",1),
+("Enigmatic Legacy+","glow_ink_sac",2),("Vampirism","beetroot_soup",1),
 ("Werewolves","bone",4),("Draconic Evolution","firework_rocket",2),
 ("ProjectE","slime_ball",2),("Replication","amethyst_shard",2),
 ]
