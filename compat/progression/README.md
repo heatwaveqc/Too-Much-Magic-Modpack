@@ -56,7 +56,7 @@ This milestone records initiation only. **Poison immunity, shortened harmful-eff
 
 ### Hunter specialty and computed XP
 
-The shipped Hunter path now offers 16 mutually exclusive, zero-point creature-family choices at rank 1. `/tmmprogress specialty list` displays valid families; one chosen tag doubles XP from a qualifying creature. Multi-family creatures are never doubled more than once.
+The shipped Hunter path now offers 14 currently active mutually exclusive, zero-point creature-family choices (Fae and Aberration remain taxonomy placeholders without eligible prey) at rank 1. `/tmmprogress specialty list` displays valid families; one chosen tag doubles XP from a qualifying creature. Multi-family creatures are never doubled more than once.
 
 Server-validated kill XP: `round(victim.maxHealth / 4 × (matchingSpecialty ? 2 : 1))`, minimum 1, with a 1,000,000-per-event overflow guard. Fixed Hunter Undead/Raider kill activities were removed. Qualifying kills require a hostile living victim or explicit inclusion; player, tame-animal and excluded-type victims are rejected, and server adapters can veto more via `HunterExperience.registerKillGuard`. Summon and automation adapters still need pack-specific implementation.
 
