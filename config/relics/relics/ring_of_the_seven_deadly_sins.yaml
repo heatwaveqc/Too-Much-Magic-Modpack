@@ -1,0 +1,5 @@
+# Too Much Magic policy: Ring of the Seven Deadly Sins is excluded from generated loot.
+# This is a selective loot exclusion, not a registry removal: existing/creative/command copies remain possible.
+# Other ability and leveling settings inherit the Relics 0.12.5 defaults.
+lootData:
+  entries: []
