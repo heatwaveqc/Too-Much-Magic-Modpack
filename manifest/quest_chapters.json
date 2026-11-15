@@ -157,12 +157,12 @@
       "category": "Progression",
       "group_id": "544D102000000000",
       "chapter_id": "544D202000500000",
-      "name": "Exceptional Power: Reactors",
+      "name": "Magical Power & FE",
       "filename": "exceptional_power_reactors.snbt",
       "order_index": 4,
-      "icon": "minecraft:redstone_block",
+      "icon": "draconicevolution:generator",
       "mod_ids": [
-        "bigger-reactors-rework"
+        "draconic-evolution"
       ],
       "overview_quest_id": "544D302000500001",
       "overview_task_id": "544D402000500001"

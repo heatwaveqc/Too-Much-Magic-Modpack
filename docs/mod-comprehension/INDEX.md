@@ -2,7 +2,7 @@
 
 **Purpose:** resumable queue for Work research sessions. See [operating instructions](WORK-CHAT-INSTRUCTIONS.md). Every row corresponds to a `manifest/mods.json` selection record, **not a claim that the mod was successfully installed or tested**.
 
-**Snapshot:** 2026-11-15, initial roster from `test/full-integration` (155 selection rows; 147 marked `enabled_in_pack` by manifest; 8 inactive/deferred). Work must reconcile with live packwiz pins and integrated runtime before claiming version or activation. The repository may evolve after this snapshot.
+**Snapshot:** 2026-11-15 updated selection (164 entries; 155 enabled, 9 inactive/planned). Exact runtime pins still require reconciliation. Alex's Caves Continued and CodxLib are planned but not yet installed; Bigger Reactors variants are excluded.
 
 ## Highest-value queue (suggested order)
 
@@ -45,6 +45,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 
 | Manifest ID | Name | Category | Manifest record | Depth | Research status | Profile |
 | --- | --- | --- | --- | --- | --- | --- |
+| `alexs-caves-continued` | Alex's Caves Continued | adventure | **planned, not installed** | full | deferred | — |
 | `cataclysm` | L_Ender's Cataclysm | adventure | enabled flag | full | queued | — |
 | `deeper-darker` | Deeper and Darker | adventure | enabled flag | full | queued | — |
 | `gateways-to-eternity` | Gateways to Eternity | adventure | enabled flag | full | queued | — |
@@ -61,6 +62,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `caelus` | Caelus API | dependency | enabled flag | interface | queued | — |
 | `cloth-config` | Cloth Config API (Fabric/Forge/NeoForge) | dependency | enabled flag | interface | queued | — |
 | `cobweb` | Cobweb | dependency | enabled flag | interface | queued | — |
+| `codxlib` | CodxLib | dependency | **planned, not installed** | interface | deferred | — |
 | `codechicken-lib-1-8` | CodeChicken Lib 1.8.+ | dependency | enabled flag | interface | queued | — |
 | `common-network` | Common Network | dependency | enabled flag | interface | queued | — |
 | `cucumber` | Cucumber Library | dependency | enabled flag | interface | queued | — |
@@ -196,10 +198,10 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `magical-satchel` | Magical satchel / Surprisingly Substantial Satchel | storage | inactive | full | deferred | — |
 | `vampirism` | Vampirism — Become a Vampire! | supernatural | enabled flag | full | deferred | — |
 | `werewolves` | Werewolves — Become a Beast! | supernatural | enabled flag | full | deferred | — |
-| `bigger-reactors` | Bigger Reactors | technology | inactive | full | deferred | — |
-| `bigger-reactors-rework` | Bigger Reactors Rework | technology | enabled flag | full | queued | — |
 | `draconic-evolution` | Draconic Evolution | technology | enabled flag | full | queued | — |
 | `quest-shop` | Quest Shop | utility | enabled flag | full | queued | — |
+
+**2026-11-15 decision:** Bigger Reactors original and Rework removed, no reactor profile queued. Alex's Caves Continued and CodxLib are planned through [staging PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) without its now-obsolete uranium conversion. Preserve ongoing magic-mod research additions.
 
 ## Cross-mod interaction reports
 

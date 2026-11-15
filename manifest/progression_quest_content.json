@@ -6,21 +6,21 @@
     "Advanced Progression",
     "Endgame Roadmap",
     "Skills & Advancement",
-    "Exceptional Power: Reactors"
+    "Magical Power & FE"
   ],
-  "quest_count": 65,
+  "quest_count": 46,
   "counts": {
     "Basic Progression": 10,
     "Advanced Progression": 10,
     "Endgame Roadmap": 6,
     "Skills & Advancement": 7,
-    "Exceptional Power: Reactors": 32
+    "Magical Power & FE": 13
   },
   "notes": [
     "Existing Basic Progression sale quests remain intact except repair of previously undefined descriptions.",
     "Endgame Roadmap is manual reference; no duplicate boss detection.",
     "Manual operating/safety checkmarks acknowledge player action but cannot verify a machine's actual state.",
-    "BiggerReactors Rework namespace biggerreactorsrework, Draconic Evolution namespace draconicevolution; live registry check remains necessary."
+    "Bigger Reactors has been removed; FE power is supplied by Draconic and magical generators. In-pack rates remain unverified."
   ],
   "quests": [
     {
@@ -650,12 +650,12 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Too Much Magic deliberately limits its industrial ecosystem. BiggerReactors Rework provides nuclear generation, its own battery, turbines and processor. Draconic Evolution provides generators, FE routing, the expandable Energy Core bank and later the high-risk Draconic Reactor. There is no Create, AE2 or generic FE transport mod.",
+      "description": "Too Much Magic relies on magical FE sources, not a nuclear tech stack. Draconic Evolution provides an early fuel generator, crystals, storage in its Energy Core, and the high-risk endgame Reactor. Botania Revived's Mana Fluxfield converts mana into FE. Psi and Hex Casting are further candidates pending exact-version verification. No Bigger Reactors, Create, AE2 or general industrial logistics mod is selected.",
       "reward": {
         "xp": 20,
         "item": "minecraft:redstone",
@@ -668,383 +668,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Read the Reactor Guide",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:guide_book",
-        "count": 1
-      },
-      "description": "Craft BiggerReactors Rework's Reactor Guide and consult its current build diagrams, calculator and materials pages. This particular 1.21.1 rework has its own machine and fuel behavior; don't blindly follow older Big Reactors measurements.",
-      "reward": {
-        "xp": 20,
-        "item": "minecraft:coal",
-        "count": 16
-      },
-      "depends": null,
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Prepare Uranium Fuel",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:uranium_ingot",
-        "count": 2
-      },
-      "description": "Obtain two uranium ingots from the allowed deep exploration or mining route, then check the Reactor Guide's fuel handling. The stricter uranium distribution envisioned for this pack is not implemented merely by writing this quest.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:iron_ingot",
-        "count": 6
-      },
-      "depends": "Read the Reactor Guide",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Prepare Graphite Moderators",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:graphite_ingot",
-        "count": 4
-      },
-      "description": "Acquire four graphite ingots. Graphite can be used as a reactor moderator and several machine components. The exact build should follow BiggerReactors Rework's in-game Reactor Guide and JEI.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Read the Reactor Guide",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Lay the Reactor Casing",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_casing",
-        "count": 8
-      },
-      "description": "Craft at least eight Reactor Casings. Reactor frames require casing edges and corners; some wall/roof faces can use Reactor Glass. The machine must form a closed rectangular shell; verify the valid dimensions in the guide.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Prepare Uranium Fuel",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Set Up Fuel Rods",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_fuel_rod",
-        "count": 2
-      },
-      "description": "Craft two Reactor Fuel Rods. Inside the shell, fuel columns must run continuously from floor toward roof. Each column is topped by its own Reactor Control Rod in the roof; no gaps are permitted.",
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:iron_ingot",
-        "count": 8
-      },
-      "depends": "Lay the Reactor Casing",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install a Control Rod",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_control_rod",
-        "count": 1
-      },
-      "description": "Make a Reactor Control Rod for the top of a fuel column. Greater rod insertion reduces reaction rate; start conservatively, then adjust for efficient FE and fuel consumption.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Set Up Fuel Rods",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Add the Reactor Terminal",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_terminal",
-        "count": 1
-      },
-      "description": "Craft the Reactor Terminal and install it in an exterior face. Use its GUI to see assembly errors, temperatures, waste, power output and rod-control state; it is the principal machine panel.",
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:repeater",
-        "count": 2
-      },
-      "depends": "Install a Control Rod",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Fit the Fuel Access Port",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_access_port",
-        "count": 1
-      },
-      "description": "Make an Access Port. Feed uranium fuel and remove cyanite waste through correctly configured ports. Do not confuse the input and output settings, especially when automating.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:iron_ingot",
-        "count": 6
-      },
-      "depends": "Add the Reactor Terminal",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Fit the FE Power Tap",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_power_tap",
-        "count": 1
-      },
-      "description": "Craft a Power Tap and install it on the exterior. Passive reactors export FE through taps; coolant-cooled designs use coolant ports instead and require a different, deliberate setup.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Fit the Fuel Access Port",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Assemble and Start a Bigger Reactor",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "description": "Build a closed casing shell with the terminal, fuel rod columns topped by control rods, fuel access and an FE output. Open the terminal, correct assembly errors, add fuel, connect an energy consumer/bank, then start at low output. Check FE production, heat and fuel usage yourself before marking complete.",
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:redstone",
-        "count": 16
-      },
-      "depends": "Fit the FE Power Tap",
-      "optional": false,
-      "role": "manual-operation",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Recover Cyanite Waste",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:cyanite_ingot",
-        "count": 1
-      },
-      "description": "Retrieve cyanite from a running reactor's waste. This is a useful byproduct rather than just a loss; the mod includes an industrial processing pathway.",
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:quartz",
-        "count": 8
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Build the Industrial Processor",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:cyanite_reprocessor",
-        "count": 1
-      },
-      "description": "Craft the Industrial Processor to explore cyanite reprocessing into higher-tier nuclear materials. Check the actual input, water and FE requirements in the machine UI and JEI; do not assume automatic material recycling without connections.",
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Recover Cyanite Waste",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-reactor",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Build a Battery Shell",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_casing",
-        "count": 8
-      },
-      "description": "Craft eight Battery Casings. Rework's optional rectangular battery uses casing on every frame edge and corner; glass can fill eligible exterior faces. This is a smaller FE storage option distinct from the enormous Draconic Energy Core.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install Battery Cells",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_cell",
-        "count": 4
-      },
-      "description": "Obtain four Battery Cells. Place them within the rectangular shell. Cells define stored energy and per-tick input/output throughput, and charged cells retain their energy when moved.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Build a Battery Shell",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install the Battery Terminal",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_terminal",
-        "count": 1
-      },
-      "description": "Craft a Battery Terminal. It displays charge and transfer; the machine needs at least one cell, a terminal, and two Energy Ports to assemble.",
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:comparator",
-        "count": 2
-      },
-      "depends": "Install Battery Cells",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Give the Battery Two Ports",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_energy_port",
-        "count": 2
-      },
-      "description": "Craft at least two Battery Energy Ports. Once assembled, configure one as FE input and one as FE output; the wrench and port UI control direction.",
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Install the Battery Terminal",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Operate the Nuclear Battery",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "description": "Finish the casing/cell/terminal/port structure, link reactor output to battery input and battery output to a consumer. Observe both charge and throughput. This operation is confirmed manually because the quest book has no actual FE telemetry task.",
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Give the Battery Two Ports",
-      "optional": false,
-      "role": "manual-operation",
-      "stage": "bigger-battery",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Try a Steam Turbine",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:turbine_terminal",
-        "count": 1
-      },
-      "description": "Optional advanced nuclear branch: the turbine needs a closed casing, two bearings, a continuous shaft, rotor blades, appropriate coils and correctly configured fluid/power ports. Use the Rework guide for accepted coils and fluid loops.",
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:iron_ingot",
-        "count": 8
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-turbine",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Try a Heat Exchanger",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:heat_exchanger_terminal",
-        "count": 1
-      },
-      "description": "Optional infrastructure for coolant/steam loops. Build a valid heat-exchanger structure and connect the flows according to Rework's current guide; it is not needed for a basic passive FE reactor.",
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:glass",
-        "count": 8
-      },
-      "depends": "Try a Steam Turbine",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-turbine",
-      "layout": null
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Craft a Draconic Generator",
       "criterion": {
         "type": "item",
@@ -1064,7 +688,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Craft the Draconic Energy Core",
       "criterion": {
         "type": "item",
@@ -1084,7 +708,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Prepare Energy Core Stabilizers",
       "criterion": {
         "type": "item",
@@ -1104,7 +728,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Build Input and Output Pylons",
       "criterion": {
         "type": "item",
@@ -1124,7 +748,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Activate the Draconic Power Bank",
       "criterion": {
         "type": "checkmark"
@@ -1142,7 +766,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Route FE with a Crystal",
       "criterion": {
         "type": "item",
@@ -1162,7 +786,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Regulate Power with a Flux Gate",
       "criterion": {
         "type": "item",
@@ -1182,7 +806,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Acquire the Draconic Reactor Core",
       "criterion": {
         "type": "item",
@@ -1202,7 +826,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Four Reactor Stabilizers",
       "criterion": {
         "type": "item",
@@ -1222,7 +846,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Build the Reactor Energy Injector",
       "criterion": {
         "type": "item",
@@ -1242,7 +866,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Plan Safe Reactor Containment",
       "criterion": {
         "type": "checkmark"
@@ -1260,7 +884,7 @@
       "layout": null
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Operate a Draconic Reactor Safely",
       "criterion": {
         "type": "checkmark"

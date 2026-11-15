@@ -1,4 +1,6 @@
-# Quest chapter inventory — B8 live roster
+# Quest chapter inventory — historical B8 snapshot with 2026-11-15 overrides
+
+> **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *Magical Power & FE* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
 
 **Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
 
@@ -28,7 +30,7 @@
 | **Advanced Progression** | `summoning-rituals` | Cross-mod infrastructure, rare materials, automations, summoning altar as custom-pack recipe framework; it has no built-in ritual recipes. **Review:** No separate Summoning Rituals chapter unless meaningful authored recipes exist. |
 | **Endgame Roadmap** | Shared storyline; no exclusive mod | Overview of boss/late-resource requirements and links into the dedicated Endgame category; do not duplicate Endgame quests or rewards. |
 | **Skills & Advancement** | `improvable-skills`, `puffish-skills`, `puffish-attributes` | Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics. **Review:** Pufferfish tree itself is not authored yet. |
-| **Exceptional Power: Reactors** | `bigger-reactors-rework` | Exceptional FE power source, fuels, balancing against magical power paths and Draconic Evolution. **Review:** Standalone progression chapter within Progression; not a general technology-tree invitation. |
+| **Magical Power & FE** | `draconic-evolution` (crosslink `botania-revived`) | Keep Draconic Generator, Energy Core storage/FE crystals and optional high-risk Draconic Reactor; removed BiggerReactors Rework and its uranium pathway. |
 
 ### Magic — 25 chapters
 
@@ -106,7 +108,7 @@ Special cases:
 
 | Entry | Roster ID | Action |
 | --- | --- | --- |
-| Bigger Reactors | `bigger-reactors` | Use pinned Rework; original is unavailable for target build |
+| Bigger Reactors | `bigger-reactors` | **Removed** 2026-11-15; original and Rework both excluded |
 | Botania | `botania` | Do not activate original Botania; Botania Revived is already chaptered |
 | Construction Gadgets | `construction-gadgets` | No chapter until a verified compatible mod is installed |
 | Formation Wand | `formation-wand` | No chapter until a verified compatible mod is installed |
@@ -114,6 +116,10 @@ Special cases:
 | Relics | `relics` | Potential Exploration & Combat chapter only after install/approval |
 | Roguelike-style dungeon provider | `roguelike-dungeons` | Potential Exploration & Combat chapter after exact mod identity and installation confirmed |
 | Starlight / Stalwart Dungeons candidate | `starlight-structures` | Potential Exploration & Combat chapter after exact mod identity and installation confirmed |
+
+## Approved future exploration, not yet installed
+
+**Alex's Caves Continued 1.1.2** for NeoForge 1.21.1 and required **CodxLib 1.5.1** are planned. [Staging PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) has exact version pins, but it is a draft and **must not be merged wholesale**: remove its obsolete BiggerReactors uranium gating and conversion. Its cave biomes, exploration, Cave Compendium and mobs warrant a later progression chapter/design review. A new chapter is not yet authored, and existing category counts are unchanged.
 
 ## Items requiring an editorial decision
 
@@ -123,7 +129,7 @@ Special cases:
 4. **Enigmatic Legacy+**: assigned to Exploration & Combat because discoveries/equipment make a stronger quest spine than another spell-tree chapter.
 5. **Apotheosis**: assigned to Exploration & Combat rather than Magic; close-coupled Apothic Attributes, Enchanting and Spawners stay in its chapter.
 6. **Vampirism and Werewolves**: **two** chapters, crosslinked to JAWR/Goety transformations and future unified rules. Do not build quests that assume unreviewed transformation conflicts.
-7. **Draconic Evolution** sits in Endgame rather than Magic; **Bigger Reactors Rework** sits in Progression's exceptional-power chapter. This preserves the pack's deliberate limited tech scope.
+7. **Draconic Evolution** sits in Endgame rather than Magic; **Magical Power & FE** covers Draconic energy infrastructure; Bigger Reactors Rework has been removed. This preserves the pack's deliberate limited tech scope.
 8. **Gateways to Eternity** remains a full combat chapter despite potential drop-farming exploits; quest design must not trivialize boss-loot gating.
 
 ## Production notes

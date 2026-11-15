@@ -53,10 +53,10 @@ IMPORT INTO PRISM:
 4. Follow any CurseForge manual download instructions exactly if prompted.
 5. Create a NEW disposable test world. NEVER open a valued survival save.
 6. Open FTB Quests. Confirm all five groups, Basic/Advanced/Roadmap/Skills/
-   Reactors quests and descriptions, shop menu, cooking interfaces and rewards.
+   Magical Power & FE quests and descriptions, shop menu, cooking interfaces and rewards.
 7. Verify 12 commodity sale quests ACTUALLY CONSUME materials and credit one
    team coin, and check a repeatable bulk trade only in a disposable world.
-8. Read Exceptional Power: Reactors. Test machine recipes and Energy Core
+8. Read Magical Power & FE. Test Draconic generator recipes and Energy Core
    construction first; ONLY test the dangerous Draconic Reactor in a throwaway
    creative world, far from anything important.
 9. Confirm the first-log pouch is issued once per player and never duplicated

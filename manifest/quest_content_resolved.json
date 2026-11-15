@@ -1897,7 +1897,7 @@
       "stage": ""
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "quest_id": "544D508000100000",
       "task_id": "544D808000100000",
@@ -1917,421 +1917,7 @@
       "stage": "tech-intro"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Read the Reactor Guide",
-      "quest_id": "544D508000200000",
-      "task_id": "544D808000200000",
-      "xp_reward_id": "544D608000200001",
-      "item_reward_id": "544D708000200002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:guide_book",
-        "count": 1
-      },
-      "reward": {
-        "xp": 20,
-        "item": "minecraft:coal",
-        "count": 16
-      },
-      "depends": null,
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Prepare Uranium Fuel",
-      "quest_id": "544D508000300000",
-      "task_id": "544D808000300000",
-      "xp_reward_id": "544D608000300001",
-      "item_reward_id": "544D708000300002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:uranium_ingot",
-        "count": 2
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:iron_ingot",
-        "count": 6
-      },
-      "depends": "Read the Reactor Guide",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Prepare Graphite Moderators",
-      "quest_id": "544D508000400000",
-      "task_id": "544D808000400000",
-      "xp_reward_id": "544D608000400001",
-      "item_reward_id": "544D708000400002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:graphite_ingot",
-        "count": 4
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Read the Reactor Guide",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Lay the Reactor Casing",
-      "quest_id": "544D508000500000",
-      "task_id": "544D808000500000",
-      "xp_reward_id": "544D608000500001",
-      "item_reward_id": "544D708000500002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_casing",
-        "count": 8
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Prepare Uranium Fuel",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Set Up Fuel Rods",
-      "quest_id": "544D508000600000",
-      "task_id": "544D808000600000",
-      "xp_reward_id": "544D608000600001",
-      "item_reward_id": "544D708000600002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_fuel_rod",
-        "count": 2
-      },
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:iron_ingot",
-        "count": 8
-      },
-      "depends": "Lay the Reactor Casing",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install a Control Rod",
-      "quest_id": "544D508000700000",
-      "task_id": "544D808000700000",
-      "xp_reward_id": "544D608000700001",
-      "item_reward_id": "544D708000700002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_control_rod",
-        "count": 1
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Set Up Fuel Rods",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Add the Reactor Terminal",
-      "quest_id": "544D508000800000",
-      "task_id": "544D808000800000",
-      "xp_reward_id": "544D608000800001",
-      "item_reward_id": "544D708000800002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_terminal",
-        "count": 1
-      },
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:repeater",
-        "count": 2
-      },
-      "depends": "Install a Control Rod",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Fit the Fuel Access Port",
-      "quest_id": "544D508000900000",
-      "task_id": "544D808000900000",
-      "xp_reward_id": "544D608000900001",
-      "item_reward_id": "544D708000900002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_access_port",
-        "count": 1
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:iron_ingot",
-        "count": 6
-      },
-      "depends": "Add the Reactor Terminal",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Fit the FE Power Tap",
-      "quest_id": "544D508000A00000",
-      "task_id": "544D808000A00000",
-      "xp_reward_id": "544D608000A00001",
-      "item_reward_id": "544D708000A00002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:reactor_power_tap",
-        "count": 1
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Fit the Fuel Access Port",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Assemble and Start a Bigger Reactor",
-      "quest_id": "544D508000B00000",
-      "task_id": "544D808000B00000",
-      "xp_reward_id": "544D608000B00001",
-      "item_reward_id": "544D708000B00002",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:redstone",
-        "count": 16
-      },
-      "depends": "Fit the FE Power Tap",
-      "optional": true,
-      "role": "manual-operation",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Recover Cyanite Waste",
-      "quest_id": "544D508000C00000",
-      "task_id": "544D808000C00000",
-      "xp_reward_id": "544D608000C00001",
-      "item_reward_id": "544D708000C00002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:cyanite_ingot",
-        "count": 1
-      },
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:quartz",
-        "count": 8
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Build the Industrial Processor",
-      "quest_id": "544D508000D00000",
-      "task_id": "544D808000D00000",
-      "xp_reward_id": "544D608000D00001",
-      "item_reward_id": "544D708000D00002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:cyanite_reprocessor",
-        "count": 1
-      },
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Recover Cyanite Waste",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-reactor"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Build a Battery Shell",
-      "quest_id": "544D508000E00000",
-      "task_id": "544D808000E00000",
-      "xp_reward_id": "544D608000E00001",
-      "item_reward_id": "544D708000E00002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_casing",
-        "count": 8
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install Battery Cells",
-      "quest_id": "544D508000F00000",
-      "task_id": "544D808000F00000",
-      "xp_reward_id": "544D608000F00001",
-      "item_reward_id": "544D708000F00002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_cell",
-        "count": 4
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Build a Battery Shell",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Install the Battery Terminal",
-      "quest_id": "544D508001000000",
-      "task_id": "544D808001000000",
-      "xp_reward_id": "544D608001000001",
-      "item_reward_id": "544D708001000002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_terminal",
-        "count": 1
-      },
-      "reward": {
-        "xp": 25,
-        "item": "minecraft:comparator",
-        "count": 2
-      },
-      "depends": "Install Battery Cells",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Give the Battery Two Ports",
-      "quest_id": "544D508001100000",
-      "task_id": "544D808001100000",
-      "xp_reward_id": "544D608001100001",
-      "item_reward_id": "544D708001100002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:battery_energy_port",
-        "count": 2
-      },
-      "reward": {
-        "xp": 30,
-        "item": "minecraft:redstone",
-        "count": 8
-      },
-      "depends": "Install the Battery Terminal",
-      "optional": false,
-      "role": "milestone",
-      "stage": "bigger-battery"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Operate the Nuclear Battery",
-      "quest_id": "544D508001200000",
-      "task_id": "544D808001200000",
-      "xp_reward_id": "544D608001200001",
-      "item_reward_id": "544D708001200002",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:glass",
-        "count": 16
-      },
-      "depends": "Give the Battery Two Ports",
-      "optional": true,
-      "role": "manual-operation",
-      "stage": "bigger-battery"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Try a Steam Turbine",
-      "quest_id": "544D508001300000",
-      "task_id": "544D808001300000",
-      "xp_reward_id": "544D608001300001",
-      "item_reward_id": "544D708001300002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:turbine_terminal",
-        "count": 1
-      },
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:iron_ingot",
-        "count": 8
-      },
-      "depends": "Assemble and Start a Bigger Reactor",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-turbine"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
-      "title": "Try a Heat Exchanger",
-      "quest_id": "544D508001400000",
-      "task_id": "544D808001400000",
-      "xp_reward_id": "544D608001400001",
-      "item_reward_id": "544D708001400002",
-      "criterion": {
-        "type": "item",
-        "id": "biggerreactorsrework:heat_exchanger_terminal",
-        "count": 1
-      },
-      "reward": {
-        "xp": 35,
-        "item": "minecraft:glass",
-        "count": 8
-      },
-      "depends": "Try a Steam Turbine",
-      "optional": true,
-      "role": "milestone",
-      "stage": "bigger-turbine"
-    },
-    {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Craft a Draconic Generator",
       "quest_id": "544D508001500000",
       "task_id": "544D808001500000",
@@ -2353,7 +1939,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Craft the Draconic Energy Core",
       "quest_id": "544D508001600000",
       "task_id": "544D808001600000",
@@ -2375,7 +1961,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Prepare Energy Core Stabilizers",
       "quest_id": "544D508001700000",
       "task_id": "544D808001700000",
@@ -2397,7 +1983,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Build Input and Output Pylons",
       "quest_id": "544D508001800000",
       "task_id": "544D808001800000",
@@ -2419,7 +2005,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Activate the Draconic Power Bank",
       "quest_id": "544D508001900000",
       "task_id": "544D808001900000",
@@ -2439,7 +2025,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Route FE with a Crystal",
       "quest_id": "544D508001A00000",
       "task_id": "544D808001A00000",
@@ -2461,7 +2047,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Regulate Power with a Flux Gate",
       "quest_id": "544D508001B00000",
       "task_id": "544D808001B00000",
@@ -2483,7 +2069,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Acquire the Draconic Reactor Core",
       "quest_id": "544D508001C00000",
       "task_id": "544D808001C00000",
@@ -2505,7 +2091,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Four Reactor Stabilizers",
       "quest_id": "544D508001D00000",
       "task_id": "544D808001D00000",
@@ -2527,7 +2113,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Build the Reactor Energy Injector",
       "quest_id": "544D508001E00000",
       "task_id": "544D808001E00000",
@@ -2549,7 +2135,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Plan Safe Reactor Containment",
       "quest_id": "544D508001F00000",
       "task_id": "544D808001F00000",
@@ -2569,7 +2155,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Exceptional Power: Reactors",
+      "chapter": "Magical Power & FE",
       "title": "Operate a Draconic Reactor Safely",
       "quest_id": "544D508002000000",
       "task_id": "544D808002000000",
