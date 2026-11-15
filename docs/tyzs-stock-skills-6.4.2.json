@@ -1,0 +1,1201 @@
+{
+  "schema_version": 1,
+  "status": "source_verified_preset_only_not_live_migration",
+  "pin": {
+    "mod": "Tyz's Skills",
+    "version": "6.4.2",
+    "mc": "1.21.1",
+    "branch": "mc1.21.1-(main)",
+    "source_file": "src/main/java/com/tyzsskills/impl/server/skills/SkillPresets.java",
+    "localization_file": "src/main/resources/assets/tyzs_skills/lang/en_us.json",
+    "source_repo": "https://github.com/Tyzbrand/TyzsSkills",
+    "source_github_sha_note": "Use exact 6.4.2 code; gradle.properties reports mod_version=6.4.2"
+  },
+  "counts": {
+    "total": 32,
+    "by_category": {
+      "abilities": 9,
+      "combat": 12,
+      "misc": 9,
+      "nature": 2
+    }
+  },
+  "rules": [
+    "This is full upstream built-in skill snapshot and design-only proposed destinations; no original Tyz skill disabled.",
+    "Do not remove built-in category until every original ID is either relocated with equivalent behavior or explicitly owner-approved retirement.",
+    "Same skill ID and type preserve original Java SkillDataRegistry effect binding; 6.4.2 override loading confirmed in SkillLoader.",
+    "Reproduce exact original modifier arrays and customValues unless a balance revision is approved; any new native state gating must be enforced on use, not only PurchasePre.",
+    "Tyz default files regenerate on launch; customize only config/tyzs_skills/custom/skills. Data categories override entire file."
+  ],
+  "skills": [
+    {
+      "id": "health_boost",
+      "displayName": "Health Boost",
+      "description": "Increases maximum health by {value} half hearts",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 10,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        14,
+        17,
+        20
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:generic.max_health",
+          "operation": "ADD_VALUE",
+          "values": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal vitality; preserve",
+      "review_caveat": "Rebalance against Monk/Dragon natural health and equipment",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "oxygen_boost",
+      "displayName": "Oxygen Boost",
+      "description": "Increases underwater breathing time by {value}%",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 4,
+      "prices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:generic.oxygen_bonus",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            25,
+            50,
+            75,
+            100
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal breath training; preserve",
+      "review_caveat": "Do not supersede Monk native Breath Meditation or permanent Sea Dragon water breathing",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "block_reach",
+      "displayName": "Block Reach",
+      "description": "Increases the range at which the player can place and destroy by {value} blocks",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 4,
+      "prices": [
+        4,
+        6,
+        8,
+        12
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:player.block_interaction_range",
+          "operation": "ADD_VALUE",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal manipulation reach; preserve",
+      "review_caveat": "Respect claims, protected target distance and range caps",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "attack_damage",
+      "displayName": "Attack Damage",
+      "description": "Increases melee damage by {value}",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 3,
+      "prices": [
+        5,
+        8,
+        12
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "ADD_VALUE",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal combat training; preserve",
+      "review_caveat": "Avoid stacking unconditional free damage with Monk barehand and wolf claws",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "sneak_speed",
+      "displayName": "Sneaking Speed",
+      "description": "Increases movement speed while sneaking by {value}%",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:player.sneaking_speed",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            20,
+            40,
+            60,
+            80,
+            100
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal footwork/stealth; preserve",
+      "review_caveat": "Native vanilla attribute; additive interaction with Hunter/Vampire",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "speed_boost",
+      "displayName": "speed_boost",
+      "description": "NO ENGLISH STRING FOUND",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            15,
+            30,
+            45,
+            60,
+            75
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal mobility; preserve",
+      "review_caveat": "Cap stacked movement with dragon flight and wolf sprint",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "step_height",
+      "displayName": "Step Height",
+      "description": "Allows stepping up blocks up to {value} blocks high without jumping",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        2,
+        3
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:generic.step_height",
+          "operation": "ADD_VALUE",
+          "values": [
+            0.5,
+            1,
+            1.5
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal traversal, delay/condition",
+      "review_caveat": "Must not trivialize intentionally gated Monk Fleet Footwork→Step Assist; consider replacing generic tier with costly late universal movement",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "swim_speed",
+      "displayName": "Swim Speed",
+      "description": "Increases swim speed by {value}%",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "neoforge:swim_speed",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            15,
+            30,
+            45,
+            60,
+            75
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal swimming; preserve",
+      "review_caveat": "Sea Dragon adds form-specific benefits; avoid double applying same swim attribute",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "excavation",
+      "displayName": "Excavation",
+      "description": "Increases mining speed by {value}%",
+      "source_category": "abilities",
+      "type": "GENERIC",
+      "maximumLevel": 10,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        6,
+        6
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "minecraft:player.block_break_speed",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            20,
+            40,
+            60,
+            80,
+            100,
+            120,
+            140,
+            160,
+            180,
+            200
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal mining efficiency; preserve",
+      "review_caveat": "Cave Dragon and Monk have special permission/harvest tiers; cannot bypass block harvest conditions",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "venomous_attack",
+      "displayName": "Venomous Strike",
+      "description": "Adds a {success_probability}% chance to poison targets on hit",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            3,
+            8,
+            14,
+            25,
+            40
+          ]
+        }
+      ],
+      "original_java_effect_class": "VenomousAttackEffect",
+      "target_tree_id": "tmm_dragon_forest",
+      "migration_proposal": "Forest Dragon thorn/venom strikes; preserve with gate",
+      "review_caveat": "Source handler is general melee hit; require dragon eligibility at use-time",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "critical_hit",
+      "displayName": "Critical Strike",
+      "description": "Adds a {success_probability}% chance to deal a critical hit (double damage)",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            5,
+            10,
+            15,
+            20,
+            25
+          ]
+        }
+      ],
+      "original_java_effect_class": "CriticalHitEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal critical strikes; preserve",
+      "review_caveat": "Native behavior uses chance and doubled damage; test boss damage pipeline",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "damage_deal",
+      "displayName": "Deflection",
+      "description": "Adds a {success_probability}% chance to negate and reflect incoming melee damage",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            3,
+            7,
+            11,
+            15,
+            20
+          ]
+        }
+      ],
+      "original_java_effect_class": "DamageDealEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal Deflection; preserve with rebalance",
+      "review_caveat": "Reflect/negate incoming melee damage; avoid shields/Monk Guard duplication and near-total immunity",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "bloodlust",
+      "displayName": "Bloodlust",
+      "description": "Killing a hostile mob regenerates {health_percentage}% of its max health",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 4,
+      "prices": [
+        5,
+        8,
+        12,
+        18
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "health_percentage",
+          "values": [
+            3,
+            7,
+            11,
+            15
+          ]
+        }
+      ],
+      "original_java_effect_class": "BloodlustEffect",
+      "target_tree_id": "tmm_vampire",
+      "migration_proposal": "Vampire predatory recovery; preserve with rework",
+      "review_caveat": "Native handler heals based on slain enemy max HP; must not bypass canonical blood costs or undead recovery policy",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "resistance",
+      "displayName": "Resistance",
+      "description": "Reduces all incoming damage by {damage_resistance}%",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 6,
+      "prices": [
+        5,
+        8,
+        12,
+        18,
+        24,
+        32
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "damage_resistance",
+          "values": [
+            7,
+            15,
+            20,
+            30,
+            35,
+            45
+          ]
+        }
+      ],
+      "original_java_effect_class": "ResistanceEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal fortitude; major rebalance",
+      "review_caveat": "Native up-to-45% all-damage reduction competes with endgame equipment; cap and tier gate",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "backstab",
+      "displayName": "Backstab",
+      "description": "Increases damage dealt from behind by {damage_buff}%",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "damage_buff",
+          "values": [
+            5,
+            10,
+            15,
+            20,
+            25
+          ]
+        }
+      ],
+      "original_java_effect_class": "BackstabEffect",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "Hunter ambush + optional Vampire variant",
+      "review_caveat": "Unmodified source remains universally usable by valid Hunter if gated; Vampire might get own ability",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "rage",
+      "displayName": "Rage",
+      "description": "Increases damage by {damage_buff}% when health is below {health_threshold}%",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "damage_buff",
+          "values": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        },
+        {
+          "name": "health_threshold",
+          "values": [
+            10,
+            10,
+            20,
+            20,
+            30
+          ]
+        }
+      ],
+      "original_java_effect_class": "RageEffect",
+      "target_tree_id": "tmm_werewolf",
+      "migration_proposal": "Werewolf fury; preserve with wolf-form gate",
+      "review_caveat": "Maintain core native moon/shape consequences; source scales on low health",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "adrenaline",
+      "displayName": "Adrenaline",
+      "description": "Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}%",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        4,
+        6
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "health_threshold",
+          "values": [
+            10,
+            20,
+            30
+          ]
+        },
+        {
+          "name": "effect_duration",
+          "values": [
+            3,
+            5,
+            8
+          ]
+        }
+      ],
+      "original_java_effect_class": "AdrenalineEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal emergency survival; preserve with cooldown review",
+      "review_caveat": "Source grants Absorption and Speed III at low HP; test event re-triggers",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "resilience",
+      "displayName": "Resilience",
+      "description": "Reduces the duration of negative status effects by {effect_time_reduction}%",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 9,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        14,
+        17
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "effect_time_reduction",
+          "values": [
+            15,
+            25,
+            35,
+            45,
+            55,
+            65,
+            75,
+            85,
+            95
+          ]
+        }
+      ],
+      "original_java_effect_class": "ResilienceEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal condition resilience; rebalance",
+      "review_caveat": "Native up-to-95% negative effect reduction; preserve meaningful curses",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "jinxed",
+      "displayName": "Jinxed",
+      "description": "Adds a {success_probability}% chance to scramble the target's hotbar on hit",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 3,
+      "prices": [
+        5,
+        8,
+        12
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            3,
+            5,
+            7
+          ]
+        }
+      ],
+      "original_java_effect_class": "JinxedEffect",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "Hunter disruption / PvP-only talent; hold",
+      "review_caveat": "Native implementation shuffles other players' hotbars only; not meaningful PvE and intrusive in multiplayer; proposal needs owner sign-off",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "true_strike",
+      "displayName": "True Strike",
+      "description": "Adds a {success_probability}% chance to deal true damage on hit",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 3,
+      "prices": [
+        10,
+        15,
+        20
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            3,
+            6,
+            9
+          ]
+        }
+      ],
+      "original_java_effect_class": "TrueStrikeEffect",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "Hunter supernatural piercing strike; hold for damage audit",
+      "review_caveat": "Native true damage cancels original and reissues indirect magic damage; boss/protection implications",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "sunder_armor",
+      "displayName": "Sunder Armor",
+      "description": "Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor",
+      "source_category": "combat",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        4,
+        6,
+        8,
+        12,
+        16
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            3,
+            6,
+            9,
+            12,
+            15
+          ]
+        },
+        {
+          "name": "damage_percentage",
+          "values": [
+            20,
+            40,
+            60,
+            80,
+            100
+          ]
+        }
+      ],
+      "original_java_effect_class": "SunderArmorEffect",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "Hunter armor breaking; hold for PvP/boss policy",
+      "review_caveat": "Native equipment durability attacks; assess griefing and entity armor behavior",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "swift_learn",
+      "displayName": "Swift Learning",
+      "description": "Increases Skill XP gain by {value}%",
+      "source_category": "misc",
+      "type": "GENERIC",
+      "maximumLevel": 4,
+      "prices": [
+        8,
+        12,
+        18,
+        24
+      ],
+      "native_attribute_modifiers": [
+        {
+          "attribute": "tyzs_skills:skill_xp_multiplier",
+          "operation": "ADD_MULTIPLIED_BASE",
+          "values": [
+            15,
+            30,
+            45,
+            60
+          ]
+        }
+      ],
+      "immutable_values": [],
+      "original_java_effect_class": null,
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Study/Cultivation specialization; redesign",
+      "review_caveat": "Native +60% Tyz XP multiplier conflicts with MXP-only normalized 1.2^P economy; do not transplant raw",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "nutrition",
+      "displayName": "Metabolism",
+      "description": "Increases food value (nutrition & saturation) by {nutrition_bonus}%",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "nutrition_bonus",
+          "values": [
+            5,
+            10,
+            15,
+            20,
+            25
+          ]
+        }
+      ],
+      "original_java_effect_class": "NutritionEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal food metabolism; preserve",
+      "review_caveat": "For hunger-using forms only; vampires/liches need canonical food-resource exception",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "experience_boost",
+      "displayName": "Wisdom",
+      "description": "Increases Vanilla XP gain by {bonus_percentage}%",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        4,
+        6,
+        8,
+        12,
+        16
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "bonus_percentage",
+          "values": [
+            20,
+            40,
+            60,
+            80,
+            100
+          ]
+        }
+      ],
+      "original_java_effect_class": "ExperienceBoostEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal vanilla XP wisdom; preserve",
+      "review_caveat": "Should affect only vanilla XP; not MXP or first-boss fixed awards",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "stealth",
+      "displayName": "Stealth",
+      "description": "Reduces the detection range of hostile mobs by {range_reduction}%",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        4,
+        6,
+        8,
+        12,
+        16
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "range_reduction",
+          "values": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ],
+      "original_java_effect_class": "StealthEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal enemy-detection avoidance; preserve",
+      "review_caveat": "Hunter/Vampire get conditional expansions; ensure client/AI consistency",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "magnet",
+      "displayName": "Magnet",
+      "description": "Attracts items within a {block_radius} block radius",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 4,
+      "prices": [
+        4,
+        6,
+        8,
+        12
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "block_radius",
+          "values": [
+            3,
+            5,
+            7,
+            10
+          ]
+        }
+      ],
+      "original_java_effect_class": "MagnetEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal item attraction; preserve",
+      "review_caveat": "Claims, inventory and loot ownership; mod overlap",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "spare_parts",
+      "displayName": "Spare Parts",
+      "description": "Grants a {refund_chance}% chance for each ingredient to be recovered when crafting.\nUp to {max_materials} item(s) per craft",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        5,
+        8,
+        12,
+        18,
+        24
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "refund_chance",
+          "values": [
+            4,
+            8,
+            12,
+            16,
+            20
+          ]
+        },
+        {
+          "name": "max_materials",
+          "values": [
+            1,
+            1,
+            2,
+            2,
+            3
+          ]
+        }
+      ],
+      "original_java_effect_class": "SparePartsEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal manual crafting thrift; hold audit",
+      "review_caveat": "Refunding items risks EMC loops and late-gated ingredient duplication; keep existing 4/9 identical guard",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "twist_of_fate",
+      "displayName": "Twist Of Fate",
+      "description": "Increases the quantity of items found in structure loot chests by {loot_multiplier}%",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        4,
+        6,
+        8,
+        12,
+        16
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "loot_multiplier",
+          "values": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ],
+      "original_java_effect_class": "TwistOfFateEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal explorer's fortune; hold loot audit",
+      "review_caveat": "Source modifies structure chest quantities; avoid multiplying boss/forbidden/ProjectE gated loot",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "keepsake",
+      "displayName": "Safekept",
+      "description": "Safeguards the first {saved_slots} slot(s) of your inventory upon death",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 8,
+      "prices": [
+        4,
+        6,
+        8,
+        12,
+        16,
+        20,
+        25,
+        30
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "saved_slots",
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "original_java_effect_class": "KeepsakeEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal death inventory insurance; adapt",
+      "review_caveat": "Corail Tombstone and native lich resurrection arbitration need a single real-death save/slot policy",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "haggler",
+      "displayName": "Haggler",
+      "description": "Holding an Emerald attracts villagers within a {block_radius} block radius.\n\nThey will follow you with a {villager_speed}% speed bonus",
+      "source_category": "misc",
+      "type": "IMMUTABLE",
+      "maximumLevel": 4,
+      "prices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "block_radius",
+          "values": [
+            10,
+            15,
+            20,
+            25
+          ]
+        },
+        {
+          "name": "villager_speed",
+          "values": [
+            0,
+            5,
+            5,
+            10
+          ]
+        }
+      ],
+      "original_java_effect_class": "HagglerEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal villager trading utility; preserve",
+      "review_caveat": "Source attracts villagers holding emerald; bounded radius/speed; no automatic discounts",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "green_thumb",
+      "displayName": "Green Thumb",
+      "description": "Adds a {success_probability}% chance to double drops when harvesting crops and plants",
+      "source_category": "nature",
+      "type": "IMMUTABLE",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "success_probability",
+          "values": [
+            15,
+            30,
+            45,
+            60,
+            75
+          ]
+        }
+      ],
+      "original_java_effect_class": "GreenThumbEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal agriculture; preserve",
+      "review_caveat": "Forest Dragon may get separate eco benefits; check harvest plugins and duplication",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    },
+    {
+      "id": "shepherd_s_blessing",
+      "displayName": "Shepherd’s Blessing",
+      "description": "Baby animals grow {growth_speed}% faster",
+      "source_category": "nature",
+      "type": "IMMUTABLE",
+      "maximumLevel": 15,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        9
+      ],
+      "native_attribute_modifiers": [],
+      "immutable_values": [
+        {
+          "name": "growth_speed",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            550,
+            600,
+            650,
+            700,
+            750
+          ]
+        }
+      ],
+      "original_java_effect_class": "ShepherdsBlessingEffect",
+      "target_tree_id": "tmm_magic_core",
+      "migration_proposal": "Universal husbandry; preserve",
+      "review_caveat": "Animal baby growth multiplier can affect farms; evaluate performance",
+      "migration_state": "NOT_MIGRATED",
+      "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
+    }
+  ]
+}
