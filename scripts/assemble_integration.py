@@ -166,13 +166,15 @@ def main() -> None:
     if missing:
         raise RuntimeError("Packwiz references files missing from immutable Git snapshot: "
                            + ", ".join(missing))
-    # Run the SAME KubeJS JS source with a Rhino-shaped ItemEntity/Level mock
-    # before any expensive server boot. This catches the crash at first world
-    # tick caused by calling an object-valued entity.level property.
-    test_script = ROOT / "scripts/test_mahou_catalyst_exchange.cjs"
-    if not test_script.is_file():
-        raise RuntimeError("Mahou first-world item-tick regression test was not imported")
-    subprocess.run(["node", str(test_script)], cwd=ROOT, check=True)
+    # Explicitly reject the old every-entity-tick KubeJS Catalyst Exchange
+    # implementation. Mahou native powder remains supported; Neo Vitae dust
+    # compatibility is suspended until a circle-scoped Java hook is validated.
+    old_tick_bridge = ROOT / "kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js"
+    if old_tick_bridge.exists():
+        raise RuntimeError("Legacy global ItemEntity tick Catalyst Exchange shim must not ship")
+    if "scripts/audit_mahou_catalyst_bytecode.py" not in imported:
+        raise RuntimeError("Missing targeted Mahou bytecode audit source for native fix")
+    print("PASS: no KubeJS global ItemEntity Catalyst Exchange hook in client/server pack")
     mod_count = sum(m["enabled_in_pack"] for m in manifest["mods"])
     lock = {
         "schema": 1, "channel": "INTEGRATION-NOT-STABLE",
