@@ -66,7 +66,8 @@ public final class TransformationCommands {
                         .orElse("unreadable or mod absent")), false);
         source.sendSuccess(() -> Component.literal("Intended single blood owner: " +
                 VampireOwnership.target(vampirism, jawr, VampireSubsystem.BLOOD_STORAGE)
-                + " (design target only; runtime arbitration NOT active)"), false);
+                + " (design target; ascended bridge active=" + VampireChassisRuntime.isDual(player)
+                + "; JAWR blood canonical when active)"), false);
         return Command.SINGLE_SUCCESS;
     }
 

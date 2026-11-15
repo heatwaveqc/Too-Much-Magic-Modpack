@@ -15,8 +15,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_berries",
+        "count": 4
       },
       "depends": null,
       "optional": true
@@ -54,11 +54,36 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:bowl",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Punch a Tree",
       "optional": false
+    },
+    {
+      "chapter": "Getting Started",
+      "title": "Choose Your First Path",
+      "quest_id": "544D501001300000",
+      "task_id": "544D801001300000",
+      "xp_reward_id": "544D601001300001",
+      "item_reward_id": "544D701001300002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "choice": [
+          "ars_nouveau:novice_spell_book",
+          "irons_spellbooks:copper_spell_book",
+          "minecraft:fishing_rod",
+          "botania:lexicon",
+          "occultism:dictionary_of_spirits",
+          "minecraft:spyglass"
+        ],
+        "claim_scope": "player"
+      },
+      "depends": "Make a Crafting Table",
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -232,8 +257,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -250,7 +275,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:brush",
         "count": 1
       },
       "depends": null,
@@ -304,7 +329,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
+        "item": "minecraft:shears",
         "count": 1
       },
       "depends": null,
@@ -322,8 +347,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_ink_sac",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -340,8 +365,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:ink_sac",
+        "count": 4
       },
       "depends": null,
       "optional": true
@@ -484,8 +509,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -502,7 +527,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:pumpkin_pie",
         "count": 1
       },
       "depends": null,
@@ -562,8 +587,8 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Prepare a Field",
       "optional": false
@@ -622,7 +647,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
+        "item": "minecraft:pumpkin_pie",
         "count": 2
       },
       "depends": null,
@@ -822,8 +847,8 @@
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:baked_potato",
-        "count": 4
+        "item": "minecraft:bowl",
+        "count": 1
       },
       "depends": "Farmer's Delight: Cutting Board",
       "optional": false
@@ -1282,7 +1307,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:glowstone_dust",
         "count": 2
       },
       "depends": null,
@@ -1414,7 +1439,7 @@
       },
       "reward": {
         "xp": 35,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:blaze_powder",
         "count": 3
       },
       "depends": null,
@@ -1434,8 +1459,8 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:scaffolding",
+        "count": 16
       },
       "depends": null,
       "optional": true,
@@ -1478,7 +1503,7 @@
       },
       "reward": {
         "xp": 25,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:iron_ingot",
         "count": 3
       },
       "depends": null,
@@ -1588,7 +1613,7 @@
       },
       "reward": {
         "xp": 40,
-        "item": "minecraft:compass",
+        "item": "minecraft:glow_item_frame",
         "count": 1
       },
       "depends": null,
@@ -1708,8 +1733,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:ladder",
+        "count": 12
       },
       "depends": null,
       "optional": true,
@@ -1728,8 +1753,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:firework_rocket",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -1748,7 +1773,7 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:phantom_membrane",
         "count": 2
       },
       "depends": null,
@@ -1768,7 +1793,7 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:golden_carrot",
         "count": 2
       },
       "depends": null,
@@ -1788,8 +1813,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:honey_bottle",
+        "count": 1
       },
       "depends": null,
       "optional": true,
@@ -1868,7 +1893,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:clock",
         "count": 2
       },
       "depends": null,
@@ -2430,7 +2455,7 @@
       },
       "reward": {
         "xp": 50,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:comparator",
         "count": 3
       },
       "depends": "Build Input and Output Pylons",
@@ -2610,17 +2635,19 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Iron Is Only the Beginning",
+      "title": "Prepare a Field Kit",
       "quest_id": "544D501000D00000",
       "task_id": "544D801000D00000",
       "xp_reward_id": "544D601000D00001",
       "item_reward_id": "544D701000D00002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:barrel",
+        "count": 1
       },
       "reward": {
         "xp": 20,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:bread",
         "count": 2
       },
       "depends": "Iron Pickaxe",
@@ -2628,20 +2655,22 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Find an Everyday Magical Shortcut",
+      "title": "Build a Research Lectern",
       "quest_id": "544D501000E00000",
       "task_id": "544D801000E00000",
       "xp_reward_id": "544D601000E00001",
       "item_reward_id": "544D701000E00002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:lectern",
+        "count": 1
       },
       "reward": {
         "xp": 20,
         "item": "minecraft:glowstone_dust",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Prepare a Field Kit",
       "optional": true
     },
     {
@@ -2659,7 +2688,7 @@
         "item": "minecraft:golden_carrot",
         "count": 2
       },
-      "depends": "Find an Everyday Magical Shortcut",
+      "depends": "Build a Research Lectern",
       "optional": true
     },
     {
@@ -2684,35 +2713,39 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Take Your Magic Into the World",
+      "title": "Scout with a Spyglass",
       "quest_id": "544D501001100000",
       "task_id": "544D801001100000",
       "xp_reward_id": "544D601001100001",
       "item_reward_id": "544D701001100002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:spyglass",
+        "count": 1
       },
       "reward": {
         "xp": 25,
         "item": "minecraft:firework_rocket",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Prepare a Field Kit",
       "optional": true
     },
     {
       "chapter": "Getting Started",
-      "title": "The Rest of the Pack Is Yours",
+      "title": "Chart Your Next Journey",
       "quest_id": "544D501001200000",
       "task_id": "544D801001200000",
       "xp_reward_id": "544D601001200001",
       "item_reward_id": "544D701001200002",
       "criterion": {
-        "type": "checkmark"
+        "type": "item",
+        "id": "minecraft:filled_map",
+        "count": 1
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:compass",
+        "item": "minecraft:oak_boat",
         "count": 1
       },
       "depends": "Try a First Spell or Ritual",

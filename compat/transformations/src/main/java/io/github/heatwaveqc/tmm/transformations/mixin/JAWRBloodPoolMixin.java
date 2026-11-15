@@ -9,27 +9,29 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Translate JAWR blood transactions only for players with both native vampire flags. */
+/**
+ * JAWR remains untouched as the canonical owner of blood and hunger.
+ * Mirror only its actual completed changes into Vampirism's internal
+ * compatibility meter; do not cancel native JAWR deductions or regeneration.
+ */
 @Pseudo
 @Mixin(targets = "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler", remap = false)
 public abstract class JAWRBloodPoolMixin {
     @Inject(method = "increaseBlood(Lnet/minecraft/world/entity/LivingEntity;I)V",
-            at = @At("HEAD"), cancellable = true, remap = false)
-    private static void tmm$increase(LivingEntity entity, int amount, CallbackInfo ci) {
-        if (entity instanceof ServerPlayer p && VampireChassisRuntime.interceptJAWRBlood(p, amount, true))
-            ci.cancel();
+            at = @At("RETURN"), remap = false)
+    private static void tmm$afterGain(LivingEntity entity, int amount, CallbackInfo ci) {
+        if (entity instanceof ServerPlayer sp) VampireChassisRuntime.onJAWRBloodChanged(sp);
     }
 
     @Inject(method = "decreaseBlood(Lnet/minecraft/world/entity/LivingEntity;I)V",
-            at = @At("HEAD"), cancellable = true, remap = false)
-    private static void tmm$decrease(LivingEntity entity, int amount, CallbackInfo ci) {
-        if (entity instanceof ServerPlayer p && VampireChassisRuntime.interceptJAWRBlood(p, amount, false))
-            ci.cancel();
+            at = @At("RETURN"), remap = false)
+    private static void tmm$afterSpend(LivingEntity entity, int amount, CallbackInfo ci) {
+        if (entity instanceof ServerPlayer sp) VampireChassisRuntime.onJAWRBloodChanged(sp);
     }
 
     @Inject(method = "tickBloodRegen(Lnet/minecraft/world/entity/LivingEntity;)V",
-            at = @At("HEAD"), cancellable = true, remap = false)
-    private void tmm$passiveRegen(LivingEntity entity, CallbackInfo ci) {
-        if (entity instanceof ServerPlayer p && VampireChassisRuntime.isDual(p)) ci.cancel();
+            at = @At("RETURN"), remap = false)
+    private void tmm$afterRegen(LivingEntity entity, CallbackInfo ci) {
+        if (entity instanceof ServerPlayer sp) VampireChassisRuntime.onJAWRBloodChanged(sp);
     }
 }
