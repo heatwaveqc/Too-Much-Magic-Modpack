@@ -28,7 +28,8 @@ public final class EffectHandlers {
         "attribute","melee_bonus","damage_bonus","damage_multiplier","break_speed",
         "harvest_tier","gear_durability","animal_friendship",
         "blink","catch_arrows","armor_lock","reserved_fist","water_breathing",
-        "purification","faction_neutrality","creeper_peace","treasure_hand");
+        "purification","faction_neutrality","creeper_peace","treasure_hand",
+        "glass_touch");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
