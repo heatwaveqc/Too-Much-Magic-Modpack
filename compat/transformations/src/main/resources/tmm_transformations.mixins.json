@@ -9,7 +9,7 @@
     "JAWRVampireEventsMixin",
     "VampirismBloodStatsMixin",
     "VampirismSunProtectionMixin",
-    "BotaniaThermalilyNoWasteMixin"
+    "BotaniaThermalilyNoCooldownMixin"
   ],
   "injectors": {
     "defaultRequire": 1
