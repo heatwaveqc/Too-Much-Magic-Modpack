@@ -5,12 +5,12 @@
   "streams": [
     {
       "name": "vampire-bridge",
-      "branch": "feature/transformation-bridge-scaffold",
+      "branch": "fix/jawr-blood-debit-guard",
       "paths": [
         "compat/transformations/"
       ],
       "mode": "compile-and-load",
-      "note": "Latest standalone bridge source; all experimental behaviors still default off"
+      "note": "Latest first-party JAWR blood debit guard branch; carry older bridge logic and tests, compile/load for unstable QA. Check actual native JAWR spending/damage, blood levels and limits in disposable worlds; do not assume client acceptance."
     },
     {
       "name": "quest-standards-and-starter-choice",
@@ -179,7 +179,8 @@
     "feature/monk-first-sunset-step-assist": "Ancestor superseded by fix/monk-sunset-diagnostics; retains full Monk runtime with new diagnostic command and same Step Assist logic.",
     "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work.",
     "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated.",
-    "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree."
+    "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree.",
+    "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA."
   },
   "pending_runtime_work": [
     "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
@@ -196,6 +197,7 @@
     "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified.",
     "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending.",
     "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed.",
-    "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA."
+    "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA.",
+    "Latest JAWR native blood debit guard imported for QA. Verify that blood-spending abilities actually decrement the shared blood pool, including no-cost intended abilities, and no infinite-spend loopholes."
   ]
 }
