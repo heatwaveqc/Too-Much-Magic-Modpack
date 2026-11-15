@@ -1,5 +1,7 @@
 # Locked design decisions — implementation deferred
 
+> **Progression change under review (2026-11-14):** Owner now wants **basic ProjectE earlier than Chaos Guardian**, with **Gaia Guardian I OR Neo Vitae Foreman** as candidate milestones; high-output EMC gear and Project Expansion remain Chaos-tier. See [the current tiered proposal](PROJECTE-TIERED-GATING-PROPOSAL.md) and [the full checklist](FEATURE-CHECKLIST.md). The historic post-Chaos-only rules below describe the **previous design**, not an implemented lock. Do not rework live recipes before the boss IDs and negative bypass audit are verified.
+
 These are design invariants, not claims about live game behavior.
 
 1. **ProjectE and Project Expansion:** all usable systems post-Chaos Guardian (Draconic Evolution). Lock all acquisition routes and functionality, not just crafting-table recipes. Check loot, villagers, quests, advancements, item duplication/EMC, starter items, commands and integrations for leaks; admin commands may remain a test bypass.
