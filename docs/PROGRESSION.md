@@ -1,6 +1,6 @@
 # Locked design decisions — implementation deferred
 
-> **Progression change under review (2026-11-14):** Owner now wants **basic ProjectE earlier than Chaos Guardian**, with **Gaia Guardian I OR Neo Vitae Foreman** as candidate milestones; high-output EMC gear and Project Expansion remain Chaos-tier. See [the current tiered proposal](PROJECTE-TIERED-GATING-PROPOSAL.md) and [the full checklist](FEATURE-CHECKLIST.md). The historic post-Chaos-only rules below describe the **previous design**, not an implemented lock. Do not rework live recipes before the boss IDs and negative bypass audit are verified.
+> **Updated owner decision (2026-11-14):** **ProjectE Philosopher's Stone uses a *tradeable* boss-associated drop as its center ingredient**, with **three alternatives** (Wilden Tribute, Gaia Spirit, Neo Vitae Mine Key). **Chaos Shard is required for Red MK3+ Power Flower direct recipes and MK3 upgrade**. This replaces the old per-player boss-kill gate proposal; older all-post-Chaos rules below are legacy. EMC coverage across all items is separately planned. See [the current tiered proposal](PROJECTE-TIERED-GATING-PROPOSAL.md) and [the full checklist](FEATURE-CHECKLIST.md). The historic post-Chaos-only rules below describe the **previous design**, not an implemented lock. Do not rework live recipes before the boss IDs and negative bypass audit are verified.
 
 These are design invariants, not claims about live game behavior.
 
