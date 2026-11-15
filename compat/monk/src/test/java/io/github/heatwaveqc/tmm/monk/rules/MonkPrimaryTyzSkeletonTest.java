@@ -48,6 +48,12 @@ final class MonkPrimaryTyzSkeletonTest {
                 assertEquals("monk_specific_tyz_trait", entry.get("kind").getAsString());
                 assertFalse(entry.get("native_license_node").isJsonNull(), "Tyz Monk trait needs one native license");
                 assertTrue(entry.get("native_license_earliest_rank_hint").getAsInt() >= 1);
+                if (sourceId.equals("tmm_monk:harvest/fortune_hands")) {
+                    assertEquals("tmm_monk:harvest_touch",
+                            entry.get("native_license_node").getAsString(),
+                            "Fortune ranks share one native toggle with Silk Touch");
+                    assertEquals(10, entry.get("native_license_earliest_rank_hint").getAsInt());
+                }
             } else {
                 assertEquals("unique_bounded_Tyz_Monk_affix", disposition);
                 assertEquals("bounded_source_affix", entry.get("kind").getAsString());
