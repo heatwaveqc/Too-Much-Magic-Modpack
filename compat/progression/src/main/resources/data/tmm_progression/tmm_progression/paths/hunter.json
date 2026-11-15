@@ -587,5 +587,25 @@
       "minecraft:weaving": 3,
       "minecraft:wind_charged": 3
     }
+  },
+  "hunter_mutations": {
+    "target_duration_ticks": 720000,
+    "exhaustion_per_mutation_tick": 0.0005,
+    "maximum_amplifier": 3,
+    "effect_blacklist": [
+      "minecraft:absorption",
+      "minecraft:saturation",
+      "minecraft:instant_health",
+      "minecraft:instant_damage",
+      "minecraft:bad_omen",
+      "minecraft:raid_omen",
+      "minecraft:trial_omen",
+      "minecraft:hero_of_the_village",
+      "minecraft:infested",
+      "minecraft:weaving",
+      "minecraft:oozing",
+      "minecraft:wind_charged",
+      "tombstone:ghostly_shape"
+    ]
   }
 }
