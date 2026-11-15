@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.transformations;
 
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
+import io.github.heatwaveqc.tmm.transformations.adapters.JAWRLycanthropeProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
 import io.github.heatwaveqc.tmm.transformations.command.TransformationCommands;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
@@ -30,10 +31,12 @@ public final class TransformationsMod {
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_VAMPIRE));
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_HUNTER));
         ProbeRegistry.register(new JAWRVampireProbe());
+        ProbeRegistry.register(new JAWRLycanthropeProbe());
         NeoForge.EVENT_BUS.addListener(TransformationCommands::register);
         VampireFactionEvents.register();
         JAWRDefenseEvents.register();
         VampireLifecycleEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default. Death/appearance remain untouched.");
+        LOGGER.info("Abomination two-action operator pilot is OFF by default; no new faction registered yet.");
     }
 }

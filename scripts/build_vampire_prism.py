@@ -35,6 +35,19 @@ def main(bootstrap: str, output_dir: str, snapshot: str, our_jar: str) -> None:
                         b"Too Much Magic - Vampire Chassis Dev - Disposable Worlds Only")
                 dest.writestr(name, value)
             dest.writestr("minecraft/mods/" + jar.name, data)
+            dest.writestr("ABOMINATION-TWO-ABILITY-PILOT.txt",
+                "TOO MUCH MAGIC - ABOMINATION TWO NATIVE ACTIONS TEST\n"
+                "OPERATOR-ONLY, DISPOSABLE WORLDS ONLY.\n"
+                "This is NOT an Abomination faction or skill tree yet.\n"
+                "SERVER config: experimentalAbominationTwoAbilityPilot=true\n"
+                "Acquire JAWR vampire and JAWR lycanthrope by legitimate paths.\n"
+                "Then run: /tmmtransform abomination pilot\n"
+                "Ability one: /tmmtransform abomination pilot vampire\n"
+                "Ability two: /tmmtransform abomination pilot werewolf\n"
+                "Native Hiss/Howl are invoked via original player attachments.\n"
+                "Skill unlock entitlement and native packet/cooldown events are\n"
+                "intentionally bypassed by this operator test; no levels granted.\n"
+                "See docs/ABOMINATION-TWO-ABILITY-PILOT-TEST-PLAN.md on GitHub.\n")
             dest.writestr("VAMPIRE-CHASSIS-TEST.txt",
                 "TOO MUCH MAGIC - EXPERIMENTAL VAMPIRE CHASSIS\n"
                 "Do NOT use an existing save. Custom JAR is not in the packwiz lock.\n"

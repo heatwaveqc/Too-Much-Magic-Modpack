@@ -41,3 +41,20 @@ Never bypass uncertain observations, erase progression, silently install Dragon 
 ## Enablement and safety (test worlds only)
 
 Read [Vampire chassis v1 test plan](../../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md) before changing flags. The world-server config defines `experimentalVampireChassis`, `experimentalAutomaticDualAcquisition`, `experimentalAllowUnverifiedOtherProviders` and `experimentalOperatorCure`, **all default false**. The last two are especially unsafe and should never be enabled in a valuable world. Existing permanent transformations must not be migrated automatically. Do not add the JAR to packwiz while native cure, level progression, HUD, independent player isolation and death cases remain untested.
+
+
+## Abomination two-native-action proof (2026-11-15)
+
+The selected **theoretical target** is one `tmm_transformations:abomination` faction with two retained TeamLapen progression branches, separately earned JAWR vampire and lycanthrope progressions, and later earned Abomination powers. **A native combined faction and its normal skill tree are NOT registered in this initial pilot.** See [the locked architecture](../../docs/ABOMINATION-FACTION-MODEL-2026-11-15.md).
+
+For the **next disposable Prism test instance** the bridge now contains a narrowly scoped, operator-only, default-OFF *two native action delegation* experiment. The player must already have both JAWR affliction states (read by hash-verified 0.5.39 attachments), while Hunter status is verified absent. It calls Vampirism's real **HissingAction** and Werewolves' real **HowlingAction** on the original mod's typed player attachment. The command path **deliberately skips earned native skill entitlements and native action event/packet dispatch** to isolate bridge feasibility; it never invents levels, swaps faction membership, or modifies existing skill trees. Do not mistake it for unlocked survival gameplay.
+
+To enable on a disposable world: set `experimentalAbominationTwoAbilityPilot=true` in `tmm_transformations-server.toml`. Then run as OP:
+
+- `/tmmtransform abomination pilot` — read-only dual-JAWR state and safety diagnostics.
+- `/tmmtransform abomination pilot vampire` — one native Vampirism Hiss effect.
+- `/tmmtransform abomination pilot werewolf` — one native Werewolves Howl effect.
+
+The underlying native action config/`canUse` is respected; a separate 1–60-second test cooldown prevents rapid accidental spam. Both actions are refused if either JAWR affliction is missing or unverified, the mod trio is unavailable, Hunter is detected or unverified, or the experimental toggle is OFF.
+
+See [full test steps](../../docs/ABOMINATION-TWO-ABILITY-PILOT-TEST-PLAN.md). Both the pure policy JUnit tests and pinned native ABI check are CI targets. Real faction-registration, earned dual skill-tree UI, persisted mixed-faction level logic and client hotkey dispatch remain future implementation gates.

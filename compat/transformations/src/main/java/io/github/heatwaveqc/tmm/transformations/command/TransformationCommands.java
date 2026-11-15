@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations.command;
 
 import com.mojang.brigadier.Command;
+import io.github.heatwaveqc.tmm.transformations.abomination.AbominationActionPilot;
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
 import io.github.heatwaveqc.tmm.transformations.core.EffectiveForm;
 import io.github.heatwaveqc.tmm.transformations.core.FormResolver;
@@ -29,7 +30,40 @@ public final class TransformationCommands {
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
                 .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))
                         .then(Commands.literal("cure").requires(s -> s.hasPermission(2))
-                                .executes(ctx -> cure(ctx.getSource())))));
+                                .executes(ctx -> cure(ctx.getSource()))))
+                .then(Commands.literal("abomination").requires(s -> s.hasPermission(2))
+                        .then(Commands.literal("pilot")
+                                .executes(ctx -> abominationStatus(ctx.getSource()))
+                                .then(Commands.literal("vampire")
+                                        .executes(ctx -> abominationAbility(ctx.getSource(), AbominationActionPilot.Ability.HISS)))
+                                .then(Commands.literal("werewolf")
+                                        .executes(ctx -> abominationAbility(ctx.getSource(), AbominationActionPilot.Ability.HOWL))))));
+    }
+
+    private static int abominationStatus(CommandSourceStack source)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        var state = AbominationActionPilot.readiness(player);
+        source.sendSuccess(() -> Component.literal("Abomination model: planned ONE new faction + independent vampire/werewolf/JAWR progressions; faction not yet registered."), false);
+        source.sendSuccess(() -> Component.literal("Two-native-ability pilot: " + state.verdict()
+                + "; JAWR vampire=" + state.vampire() + ", JAWR lycanthrope=" + state.wolf()
+                + ", Hunter=" + state.hunter() + "; " + state.reason()), false);
+        source.sendSuccess(() -> Component.literal("Native Hiss skill: " + AbominationActionPilot.nativeEntitlement(player, AbominationActionPilot.Ability.HISS)
+                + "; native Howl skill: " + AbominationActionPilot.nativeEntitlement(player, AbominationActionPilot.Ability.HOWL)), false);
+        source.sendSuccess(() -> Component.literal("Test uses native HissingAction and HowlingAction effects via their original player attachments, "
+                + "but bypasses original skill unlocks and normal action event/packet handlers. It NEVER grants levels or skills."), false);
+        return state.ready() ? Command.SINGLE_SUCCESS : 0;
+    }
+
+    private static int abominationAbility(CommandSourceStack source, AbominationActionPilot.Ability ability)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        var result = AbominationActionPilot.activate(source.getPlayerOrException(), ability);
+        if (result.success()) {
+            source.sendSuccess(() -> Component.literal("Abomination pilot: " + result.message()), false);
+            return Command.SINGLE_SUCCESS;
+        }
+        source.sendFailure(Component.literal("Abomination pilot refused: " + result.message()));
+        return 0;
     }
 
     private static int cure(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
