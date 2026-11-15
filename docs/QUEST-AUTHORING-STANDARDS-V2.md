@@ -1,7 +1,7 @@
 # Too Much Magic — Quest Authoring Standard v2.0
-**Status:** comprehensive **proposed** content standard for owner review and Work authoring. Preserves explicitly locked owner decisions. It does **not** by itself authorize a migration of player claim data or a change to an existing reward.  
+**Status:** authoring standard updated with owner-approved *funny and useful tangible rewards* (2026-11-14). Other progression/ID/migration changes still require review. It does **not** by itself authorize a migration of player claim data or an unreviewed change to an existing reward.  
 **Minecraft:** 1.21.1 / NeoForge; verify actual pinned mod versions using the current **integration lock**, not a historical B8/B11 roster.  
-**Related documents:** [critical audit](QUEST-CRITICAL-AUDIT-2026-11-14.md), [Work execution handoff](QUEST-WORK-HANDOFF.md), [45-chapter approved architecture](QUEST-ARCHITECTURE.md), [shop economy](QUEST-SHOP-ECONOMY.md).
+**Related documents:** [funny and useful reward palette](QUEST-REWARD-PALETTE-V1.md), [critical audit](QUEST-CRITICAL-AUDIT-2026-11-14.md), [Work execution handoff](QUEST-WORK-HANDOFF.md), [45-chapter approved architecture](QUEST-ARCHITECTURE.md), [shop economy](QUEST-SHOP-ECONOMY.md).
 
 ## 0. Goal and hierarchy
 
@@ -15,7 +15,7 @@ All authoring decisions must satisfy these priorities, in order:
 2. **Player agency** — many independent schools and builds; no artificial mandatory unrelated school, reactor or vanilla item detour.
 3. **Actual learning** — teach unfamiliar mechanics and diagnose likely errors; don't restate JEI or vanilla achievements.
 4. **Honest verification** — a quest completes only on the action/state it says is being measured.
-5. **Relevant compensation** — meaningful reward when appropriate; don't make the player's inventory into a trash can.
+5. **Delightful compensation** — every claimable achievement should feel like a present: an amusing odd food, a useful cheap tool or an early related derivative. A coin is the fallback. Humor, not junk, is the objective.
 6. **Navigability** — coherent chapter ownership, optional branches, small readable diagrams and searchable names.
 7. **Maintenance** — traceable sources, stable IDs, versionable authored schema, automatic checks and multiplayer-safe rewards.
 
@@ -30,16 +30,16 @@ All authoring decisions must satisfy these priorities, in order:
 - First-entry personal starter kit (Akashic Tome, two ordinary cooked steaks and Improvable Skills book access) and first-log Trinkets Pouch are separate **once-per-player** grants. Do not double-award them via quests or repeat on relog/death.
 - Tyz's Skills and the unified MXP plan supersede **future Pufferfish tree design**. Pufferfish removal and live Tyz ranks must not be represented as shipped until the actual runtime does so.
 
-### Proposed revised content policy awaiting owner sign-off
+### Owner-approved physical reward policy (2026-11-14)
 
-Previous v1 required **positive XP plus a fixed item for every quest**, even informational pages. That resulted in 42 paper-granting placeholders and many incidental drops. **Recommend replacing this** with: reference/navigation entries may have **no claim/reward**, small onboarding milestones may pay **direct XP only**, and substantial goals give an appropriate reward. Until approved, Work can design using this model but must isolate reward-policy changes for explicit review before they replace existing player progress.
+Keep the **direct XP plus an enjoyable tangible reward** principle for claimable quests. The problem was not giving rewards; it was giving **paper, cookies, bowls, compasses and arbitrary filler**. Prefer a quirky food, modest useful tool, relevant ingredient, or an early head start on a related mechanic; give one shared Quest Shop coin only if no good physical gift is suitable. **One explicit empty-bowl exception:** the Farmer's Delight Cooking Pot quest awards a bowl as a deliberate joke. **Never reward XP bottles as items.** No blank paper/cookies/compasses/empty bowls as generic placeholders. Consult [the reward palette](QUEST-REWARD-PALETTE-V1.md) and record why each grant is interesting. Pure *non-claimable* reference pages are allowed only where the actual UI semantics support them; don't convert previously accepted claimable rewards to no-reward without owner review.
 
 ## 1. Four player-facing node types (plus exchange)
 
 | Kind | Exists because… | Objective & UI | Reward | Typical place |
 | --- | --- | --- | --- | --- |
-| **Reference / navigation** | The player needs knowledge or a link, not a task | Non-claimable page if FTB interface supports it; otherwise a clearly marked reference node without fake activity | **Proposed:** none; do not reward reading a paragraph | Chapter index, controls, safety, crosslinks |
-| **Milestone** | Something useful was actually acquired, crafted, visited, or achieved | Native auto-detect criterion whose **semantics match the title** | Small-to-moderate direct XP and a deliberately helpful item **or** XP-only if item would be filler | First spellbook, first ritual component, first usable machine |
+| **Reference / navigation** | The player needs knowledge or a link | Genuine non-claimable page if supported; if made claimable, it must be a purposeful optional tip, not a fake task | Claimable tips: direct XP plus a delightful **small** useful/odd gift (or a shared coin fallback); no arbitrary paper | Chapter index, controls, safety, crosslinks |
+| **Milestone** | Something useful was actually acquired, crafted, visited, or achieved | Native auto-detect criterion whose **semantics match the title** | Direct XP plus a modest, deliberate physical gift: next-stage component, cheap useful tool or funny consumable; a coin if necessary | First spellbook, first ritual component, first usable machine |
 | **Challenge / mastery** | Optional skillful or costly achievement that advances real play | Boss kill, structure, advancement, verified interaction, sustained mechanic or explicit justified checkmark | Relevant earned supplies/utility, not a boss bypass or an item from the next gate | Specialization, powerful rituals, boss or optional feat |
 | **One-time choice** | The player makes a meaningful but nonexclusive opening selection | Native FTB choice reward, no Claim All autoselection; separate personal claim state | One reviewed starter gift per player, no permanent class lock | Choose Your First Path |
 | **Economy exchange** | Player chooses to trade resources for anti-grind currency | **Consuming** item task with a clearly stated one-time/repeat contract | Team-shared coins **exactly once** per valid contract | Copper/emerald/diamond sale line |
@@ -78,8 +78,8 @@ Rules for every description:
 | **Build a Research Lectern** + plain lectern item | Does not measure placement, use or the separate Scriptor Casting Lectern | **Obtain a Lectern** as optional library item; move actual Scriptor fuel-free magic to its own Magic chapter |
 | **Try a First Spell or Ritual**, blocked behind iron pickaxe → barrel → lectern | Generic magic initiation tied to unrelated survival equipment | Make the first-magic guide directly accessible after starter choice; each school's real spell/ritual requirements live in that chapter |
 | "Pufferfish's Skills will support…" | Deprecated architectural expectation disguised as current guidance | Status-aware guide about **currently shipped** Improvable Skills; later replace with tested Tyz/MXP instructions |
-| **Tips: use JEI**, checkmark, paper reward | Reading an explanation is not progress | Non-claimable reference with one helpful example keybinding and how to inspect recipe *uses* |
-| **Make a Crafting Table**, reward two bowls | Functioning loot, no purpose | Retain only if onboarding needs it; reward utility relevant to the next step, or direct XP only after approval |
+| **Tips: use JEI**, checkmark, paper reward | Reading an explanation is not progress and paper is rubbish | Make a genuinely useful optional tip with a strange small edible/tool reward; or a true non-claimable reference, if verified and appropriate |
+| **Make a Crafting Table**, reward two bowls | Functioning loot, no purpose | Reward a useful trinket or bizarre snack. Reserve the **single bowl** joke for Farmer's Delight Cooking Pot |
 
 ## 3. Structure, dependencies and chapter composition
 
@@ -143,10 +143,10 @@ Also available upstream: biome, energy/FE, fluid, XP, stage, custom tasks. **Ava
 
 ### Reward policy
 
-- **No experience bottles as quest-item grants.** Direct XP points are fine.
-- **Reference content:** recommended no tangible reward and no claim button; obtain owner signoff before migrating existing reward records.
-- **Simple milestones:** direct XP; a fixed item only if genuinely related and useful. Examples: a missing mundane ingredient needed *after* the milestone, a small beginner consumable, not a random cookie.
-- **Significant milestones and mastery:** thoughtful resource grants, convenience or cosmetic items, possibly a verified choice; no guaranteed boss drops or next-tier unlock bypasses.
+- **No experience bottles as quest-item grants.** Direct XP points are fine. No routine paper, cookies, compasses or empty bowls; one exception is the Farmer's Delight Cooking Pot quest rewarding one empty bowl.
+- **Reference content:** avoid unnecessary claim buttons; genuinely claimable optional tips should give direct XP plus a small funny/useful present, never trash. Do not rewrite existing IDs or claimed rewards without a migration review.
+- **Simple milestones:** direct XP **plus a deliberate item**. Examples: a relevant next-ingredient, a compact reusable tool, a weird edible treat, or a one-coin fallback if a physical reward really does not fit.
+- **Significant milestones and mastery:** meaningful resource grants (e.g. first EvilCraft Dark Gem → 1–2 Crushed Dark Gems), utility or cosmetic items, possibly a verified choice; no guaranteed boss drops or next-tier unlock bypasses.
 - **Starting rewards:** one personal starter choice, one separate personal starter kit, one first-log pouch. Do not multiply these grants in FTB, advancements and KubeJS.
 - **Trade contracts:** team-owned coin balance, consuming tasks, exact 12-approved sale semantics. No repeatable XP/currency loops through partial claiming, resets or team swaps.
 
@@ -160,7 +160,7 @@ Before approving any physical reward, answer **all five**:
 4. *Does this item fulfill a different authored goal?* If so, is that a documented intended shortcut, with stack quantities and team claim scope checked?
 5. *Would a second claim, teammate or repeated quest break the economy?* One-time, repeatable, per-player and team must be explicit.
 
-Static lint should **warn** if a chapter pays the same item more than twice or the book does so more than four times; a maintainer can approve a thematic exception. **Hard fail** if the reward is forbidden, unregistered, wrongly team-shared, can be duplicated unintentionally or breaks a real progression gate. All reward IDs, counts and click/Claim All behavior require eventual client QA.
+Static lint should **warn** if a chapter pays the same item more than twice or the book does so more than four times; a maintainer can approve a thematic exception. **Humor and intentional utility matter more than an arbitrary uniqueness count.** **Hard fail** if the reward is forbidden, unregistered, wrongly team-shared, can be duplicated unintentionally or breaks a real progression gate. All reward IDs, counts and click/Claim All behavior require eventual client QA.
 
 Use **relative XP tiers** (orientation, introductory milestone, middle system, capstone) pending an XP balance review; do not inflate payouts to compensate for empty reference entries. The existing 5–100 point rewards are a baseline, **not** a calibrated target.
 
@@ -187,7 +187,7 @@ Every non-vanilla quest needs a compact **author-only evidence record**:
 
 **This is a blocker to Work scale today.** Existing \`scripts/rebuild_quest_ui.py\` only rewrites existing SNBT quest blocks, contains hand-listed coordinates, and expects exactly 180/138 entries. Existing \`scripts/validate_quests.py\` rejects extra content in placeholder-only chapters, and the old v1 document contains contradictory reward rules.
 
-Before bulk chapter writing, implement a **versioned, declarative compiler**:
+Before **runtime insertion of bulk new chapters**, implement a **versioned, declarative compiler**. However, **drafting source-verified mod questlines can and should proceed concurrently** in isolated content-only branches; the compiler is not a blocker to researching, writing or reviewing them:
 
 - One canonical authored quest record per stable logical ID; ID should **not depend on title**. Store canonical chapter, kind, description, task specification, reward specification, dependencies by stable quest ID, optional/hidden/repeat flags, claim scope, manual exception reason and evidence status.
 - Regenerate **FTB SNBT, localization and index/hash** from that canonical source; never hand-maintain three diverging copies of the same quest. Preserve IDs for existing completed quests; new IDs allocated deterministically with collision checks.
