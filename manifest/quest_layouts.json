@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
-  "notes": "Fixed IDs and separate per-chapter English translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 160,
-  "chapters": 45,
+  "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
+  "quest_count": 179,
+  "chapters": 46,
   "positions": [
     {
       "quest_id": "544D301000100001",
@@ -543,6 +543,177 @@
       "position": [
         18,
         4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000001",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        0,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000002",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        3,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000003",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        6,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000004",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        9,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000005",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        12,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000006",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        15,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000007",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        15,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000008",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        15,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000009",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        18,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000A",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        3,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000B",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        6,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000C",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        9,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000D",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        12,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000E",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        3,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C100000000000F",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        6,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000010",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        9,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000011",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        12,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000012",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        15,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "A1C1000000000013",
+      "chapter": "Alcohol is Magic",
+      "position": [
+        18,
+        12
       ],
       "authored": true
     },

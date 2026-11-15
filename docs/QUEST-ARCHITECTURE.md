@@ -51,3 +51,8 @@ The five FTB chapter groups and 45 chapter files, with no-reward optional overvi
 ## Progression implementation (2026-11-14, candidate)
 
 **Historical 2026-11-14 snapshot:** the five Progression chapters contained 65 tasks, including BiggerReactors Rework. **2026-11-15 decision:** retire 19 BiggerReactors tasks; keep the Draconic generator, Energy Core, crystals and high-risk Reactor track in *A Sufficiently Advanced Magic*, crosslinking Botania's Mana Fluxfield. The five groups and 45 chapter IDs stay unchanged. Alex's Caves Continued and CodxLib are planned but not yet installed. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). Client/gameplay validation remains outstanding.
+
+## New brewer chapter (2026-11-15)
+
+The owner explicitly requested **Alcohol is Magic** as a separate Introduction chapter following Food & Fishing. The five-group architecture remains, but Introduction now contains four chapters, for **46 chapters total**. A 19-quest how-to teaches Brewin' and Chewin', Cocktails Delight, and Let's Do Beachparty without duplicating Food & Fishing or the vanilla Brewing Stand track. All operation-only steps use honestly described manual checkmarks; item steps detect possession, not actual usage. The Piña Colada is optional and conditional on pineapple/coconut item tags.
+

@@ -113,6 +113,30 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     for title, x, y in food:
         put("Food & Fishing", title, x, y)
 
+    alcohol = [
+        ("Welcome to the Magic of Alcohol", 0, 0),
+        ("Read the Brewer's In-Game Reference", 3, 0),
+        ("Build a Keg", 6, 0),
+        ("Make Your Serving Tankards", 9, 0),
+        ("Prime the Keg and Read Its Temperature", 12, 0),
+        ("First Brew: Beer", 15, 0),
+        ("A Honey Mead Batch", 15, 4),
+        ("A Keg Makes Food, Too", 15, 8),
+        ("Transfer a Full Keg", 18, 4),
+        ("Cocktails Delight: Learn the Two Workflows", 3, 6),
+        ("Ferment White Rum", 6, 6),
+        ("Mix a Drink and Check Its Side Effects", 9, 6),
+        ("The Piña Colada Ingredient Puzzle", 12, 6),
+        ("Find Coconuts and Palm Wood", 3, 12),
+        ("Construct a Palm Bar", 6, 12),
+        ("Build a Mini Fridge for Ice", 9, 12),
+        ("Serve a Coconut Cocktail", 12, 12),
+        ("Place, Sip, and Compare Effects", 15, 12),
+        ("Open the Beach Bungalow", 18, 12),
+    ]
+    for title, x, y in alcohol:
+        put("Alcohol is Magic", title, x, y)
+
     basic = [
         ("Chapter Overview", 0, 0),
         ("Choose a Magical Tradition", 3, 0),
@@ -188,6 +212,7 @@ SUBTITLE = {
     "Getting Started": "First tools and shelter, then a practical magic path of your choosing.",
     "Tips & Tricks": "Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage.",
     "Food & Fishing": "Farming, fishing, food preparation and modular kitchens.",
+    "Alcohol is Magic": "Fermentation, cocktails, tropical bars and beverage effects.",
     "Basic Progression": "Shared resources and tools, plus separate player commodity-selling contracts.",
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
@@ -281,7 +306,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
         regex = re.compile(r'(file = "' + re.escape(key) + r'"\nhash = ")[0-9a-f]+(")')
         if regex.search(index):
             index = regex.sub(lambda m: m.group(1) + value + m.group(2), index, count=1)
-        elif key.endswith("/lang/en_us.snbt"):
+        elif key.endswith("/lang/en_us.snbt") or key == "config/ftbquests/quests/chapters/alcohol_is_magic.snbt":
             index += f'\n[[files]]\nfile = "{key}"\nhash = "{value}"\n'
         else:
             raise ValueError(f"Packwiz omitted existing config file: {key}")
@@ -289,7 +314,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
     pack = re.sub(r'^version = ".*"$',
-                  'version = "0.8.9-quest-vampire-coin-qa"',
+                  'version = "0.9.1-alcohol-is-magic-quests-qa"',
                   pack, count=1, flags=re.M)
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(
@@ -377,7 +402,7 @@ def main() -> None:
     }
     (ROOT / "manifest/quest_layouts.json").write_text(
         json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"PASS: generated one FTB Quests en_us.snbt for 45 chapters; {len(seen)} named quests, {intro_count} authored")
+    print(f"PASS: generated one FTB Quests en_us.snbt for 46 chapters; {len(seen)} named quests, {intro_count} authored")
     print("PASS: quest, task and reward IDs preserved; inline title/description/undefined removed")
     print("PASS: new chapter layouts, five labeled groups, packwiz hash chain updated")
 
