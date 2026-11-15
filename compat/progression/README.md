@@ -18,7 +18,7 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 | --- | --- |
 | `schema: 1` | Strict format version; invalid JSON/policy errors reject the path |
 | `exclusive_group` | Optional mutually exclusive path set; external transformations still need their own arbitration |
-| `enrollment` | `admin` (QA/default), `manual` (user joins with command), or `sunset` (Monk-only First Sunset). Trusted adapters may call `ProgressionApi.join` after validating their own rituals |
+| `enrollment` | `admin` (QA/default), `manual` (user joins with command), `sunset` (Monk-only First Sunset), or `potion` (Hunter Trial of Venom). Trusted adapters may call `ProgressionApi.join` after validating their own rituals |
 | `rank_xp` | Cumulative **native progression XP** thresholds beginning at 0; configurable rate and curve |
 | `max_level` | Optional explicit level cap (1..200); must equal number of entries in `rank_xp` |
 | `points_per_rank` | Native optional technique points; **not Tyz MXP** |
@@ -28,7 +28,7 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 | `auto_ranks` | For mandatory milestone/rank-granted powers; rank thresholds at which effect ranks automatically increase **for free** |
 | `effects` | Native effect type with optional `target`, `weapon`, `damage_tag`, `attribute`, `operation`, `per_rank`, `tier`, `empty_hand`, `unarmored`, `params` |
 
-Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tmmprogress enroll tmm_progression:hunter` uses the Hunter's JSON `enrollment: manual`, while Monk `enrollment: sunset` requires 200 continuous valid, unarmored, empty-handed westward-looking sky-visible sunset ticks. OP join remains QA-only.
+Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tmmprogress enroll <path>` works only for paths configured with `enrollment: manual`. The shipped Hunter instead uses the completed Poison Potion + Regeneration + Monster Hunter ritual; Monk requires 200 valid sunset ticks. OP join remains QA-only.
 
 ### Data-defined potion enrollment (Trial of Venom)
 
@@ -54,6 +54,14 @@ Hunter and Monk share `exclusive_group: "tmm_progression:human_disciplines"`, pr
 
 This milestone records initiation only. **Poison immunity, shortened harmful-effect durations and involuntary transformation prevention are separate Hunter abilities and provider adapters not implemented here.** Removing the trial's immediate Poison effect on successful enrollment should not be presented as permanent immunity. A rejected path consumes the potion normally; no item is restored or duplicated.
 
+### Hunter specialty and computed XP
+
+The shipped Hunter path now offers 16 mutually exclusive, zero-point creature-family choices at rank 1. `/tmmprogress specialty list` displays valid families; one chosen tag doubles XP from a qualifying creature. Multi-family creatures are never doubled more than once.
+
+Server-validated kill XP: `round(victim.maxHealth / 4 × (matchingSpecialty ? 2 : 1))`, minimum 1, with a 1,000,000-per-event overflow guard. Fixed Hunter Undead/Raider kill activities were removed. Qualifying kills require a hostile living victim or explicit inclusion; player, tame-animal and excluded-type victims are rejected, and server adapters can veto more via `HunterExperience.registerKillGuard`. Summon and automation adapters still need pack-specific implementation.
+
+Completed drinking of curated registered potions awards XP proportional to configured brewing difficulty, effect amplifier and effect duration, with first-variant discovery bonus and persistent per-variant cooldown. Only custom Hunter XP is changed, not vanilla enchant XP or Tyz. See `docs/hunter/SPECIALTY-XP-WITCHER-FUNCTIONAL-REQUIREMENTS.md`.
+
 ### Built-in effect handlers
 
 | Type | Gameplay |
@@ -72,6 +80,8 @@ This milestone records initiation only. **Poison immunity, shortened harmful-eff
 | `water_breathing`, `water_walk`, `momentum_glide` | Air supply stages; crouch escape for water-surface buoyancy; post-Dragon limited aerial descent, never Creative Flight |
 | `hunger_discipline`, `monk_leap`, `purification`, `withering_stare`, `creeper_peace` | Native hunger reduction, jump/fall adaptation, normal harmful-effect cleanse, anti-undead gaze and mob-specific pacification |
 | `faction_neutrality`, `blindness_ordeal` | Target change suppression with retaliation guard; optional blinded challenge with reset/clear state |
+| `evasion`, `fast_hands` | Quarry-tagged hit negation; faster bow/crossbow use ticks |
+| `hunter_specialty` | Data-only selected creature family; powers Hunter XP multiplier |
 
 Supported generic conditions: `empty_hand`, `unarmored`. Default values mean no restriction. Tag selectors start with `#` and are resolved from live server registries.
 
@@ -90,7 +100,9 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 /tmmprogress respec tmm_progression:hunter
 /tmmprogress admin join tmm_progression:monk        # OP-only
 /tmmprogress admin event tmm_progression:monk_first_sunset  # OP-only
-/tmmprogress enroll tmm_progression:hunter         # Player-controlled manual join
+/tmmprogress specialty list                       # Available Hunter creature specialties
+/tmmprogress specialty undead                     # Select one free specialty
+/tmmprogress enroll <path>                         # Only for paths enrolled manually
 /tmmprogress power blink                          # Blink; also V key
 /tmmprogress power armor                          # Toggle Armor Lock
 /tmmprogress power treasure                       # Toggle Fortune/Silk hand mode
