@@ -3,6 +3,12 @@ on:
   push:
     paths:
       - 'compat/transformations/**'
+      # The bottle bridge now depends on KubeJS food and blood crafting overlays.
+      - 'kubejs/startup_scripts/drinkable_blood_vial.js'
+      - 'kubejs/data/hexerei/recipe/*broom_from_mixing_cauldron.json'
+      - 'kubejs/data/irons_spellbooks/recipe/netherite_spell_book.json'
+      - 'kubejs/data/tmm/tags/item/ordinary_blood_bottles.json'
+      - 'kubejs/data/irons_spellbooks/tags/item/blood_focus.json'
       - '.github/workflows/transformation-vampire-server-smoke.yml'
       - 'scripts/smoke_server.sh'
       - 'scripts/build_vampire_prism.py'
