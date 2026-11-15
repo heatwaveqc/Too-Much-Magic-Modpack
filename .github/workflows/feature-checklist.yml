@@ -6,6 +6,8 @@ on:
       - 'manifest/feature-checklist.json'
       - 'docs/FEATURE-CHECKLIST.md'
       - 'docs/PROJECTE-TIERED-GATING-PROPOSAL.md'
+      - 'manifest/progression-gates.json'
+      - 'scripts/validate_progression_gates.py'
       - 'scripts/feature_checklist.py'
       - 'tests/test_feature_checklist.py'
       - '.github/workflows/feature-checklist.yml'
@@ -34,5 +36,7 @@ jobs:
           fi
       - name: Check core track coverage and bounded ProjectE design
         run: python3 -m unittest discover -s tests -p 'test_feature_checklist.py' -v
+      - name: Validate machine-readable ProjectE unlock proposal without claiming gameplay implementation
+        run: python3 scripts/validate_progression_gates.py
       - name: Print current evidence summary
         run: python3 scripts/feature_checklist.py summary
