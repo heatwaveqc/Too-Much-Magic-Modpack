@@ -62,6 +62,14 @@ Server-validated kill XP: `round(victim.maxHealth / 4 × (matchingSpecialty ? 2 
 
 Completed drinking of curated registered potions awards XP proportional to configured brewing difficulty, effect amplifier and effect duration, with first-variant discovery bonus and persistent per-variant cooldown. Only custom Hunter XP is changed, not vanilla enchant XP or Tyz. See `docs/hunter/SPECIALTY-XP-WITCHER-FUNCTIONAL-REQUIREMENTS.md`.
 
+### Mutagenic Brew and permanent Hunter mutations (draft)
+
+Hunter now registers Bio-Mutagen (shaped from moss blocks, spider eyes and rotten flesh) and a nonstandard drinkable Mutagenic Brew created in a brewing stand. Dynamic `IBrewingRecipe` conversion preserves normal `PotionContents` for standard vanilla and compatible modded `PotionItem` inputs. The brew **does not grant the normal potion effects**; drinking it as a Hunter adds its original positive duration toward a permanent mutation. This also means it earns no separate normal potion-consumption XP.
+
+The Hunter JSON `hunter_mutations` policy defines **720,000 effect ticks / 10 hours**, **no minimum effect duration**, exact-effect blacklist, default max amplifier and **0.0005 hunger exhaustion per server tick per distinct active mutation**. Mutations have **no count or slot cap**. Stronger ranks of the same effect do not increase the distinct-effect count. Progress and unlocked levels persist across death and logout. Instant effects and banned effects are ineligible for direct permanence.
+
+`/tmmprogress mutations` displays a mutation summary; no dedicated GUI or cure procedure is implemented. See [mutagenic-feature design and QA](../../docs/hunter/MUTAGENIC-BREW-AND-EVERLASTING-ABILITY-AUDIT.md). Draft PR #148 is stacked on #143, #141, #136, #127. **Not yet approved for the integrated pack.**
+
 ### Built-in effect handlers
 
 | Type | Gameplay |
