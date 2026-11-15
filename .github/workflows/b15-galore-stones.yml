@@ -3,7 +3,7 @@ on:
   push:
     branches: ['feature/b15-galore-stone-inventory']
     paths:
-      - '.github/workflows/b15-cobblegen-stones.yml'
+      - '.github/workflows/b15-galore-stones.yml'
       - 'scripts/resolve_b15.py'
       - 'scripts/inventory_modded_stone.py'
   workflow_dispatch:
