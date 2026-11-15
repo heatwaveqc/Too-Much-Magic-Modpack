@@ -7,10 +7,10 @@ public final class VampireChassisConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     public static final ModConfigSpec.BooleanValue ENABLE_CHASSIS = BUILDER
-            .comment("EXPERIMENTAL: enable dual-vampire blood and weakness interception in test worlds only.")
+            .comment("EXPERIMENTAL: enable ascended JAWR-owned blood and targeted cross-mod interception in test worlds only.")
             .define("experimentalVampireChassis", false);
     public static final ModConfigSpec.BooleanValue AUTOMATIC_DUAL_ACQUISITION = BUILDER
-            .comment("EXPERIMENTAL: attempt to join both native vampire paths when either is first acquired.")
+            .comment("EXPERIMENTAL: Lilith/JAWR acquisition also enrolls Vampirism; ordinary Vampirism infection never enrolls JAWR.")
             .define("experimentalAutomaticDualAcquisition", false);
     public static final ModConfigSpec.BooleanValue ALLOW_UNVERIFIED_OTHER_PROVIDERS = BUILDER
             .comment("DANGEROUS TEST ONLY: allow vampire acquisition while other unimplemented transformation probes are UNKNOWN. Do not use in permanent saves.")

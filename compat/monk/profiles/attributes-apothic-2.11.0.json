@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "kind": "reference_attribute_snapshot",
+  "upstream_version": "2.11.0",
+  "source": "https://github.com/Shadows-of-Fire/Apothic-Attributes/blob/1.21/src/main/java/dev/shadowsoffire/apothic_attributes/api/ALObjects.java",
+  "attribute_count": 22,
+  "attributes": [
+    {
+      "id": "apothic_attributes:armor_pierce",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:armor_shred",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:arrow_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:arrow_velocity",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:cold_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:crit_chance",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:crit_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:current_hp_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:dodge_chance",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:draw_speed",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:experience_gained",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:fire_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:ghost_health",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:healing_received",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:life_steal",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:mining_speed",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:overheal",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:projectile_damage",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:prot_pierce",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:prot_shred",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:elytra_flight",
+      "kind": "boolean",
+      "status": "unmapped_attribute_modifier"
+    },
+    {
+      "id": "apothic_attributes:cooldown_reduction",
+      "kind": "numeric",
+      "status": "unmapped_attribute_modifier"
+    }
+  ]
+}

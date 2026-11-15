@@ -166,6 +166,38 @@ public final class VampireNativeAccess {
                 .invoke(null, player, newData);
     }
 
+    /**
+     * JAWR is the authoritative ascended blood pool. Use JAWR's native
+     * transaction methods so its normal progress/ability hooks still run.
+     */
+    public static void addJAWRBlood(ServerPlayer player, int amount)
+            throws ReflectiveOperationException {
+        if (amount <= 0) return;
+        callStatic("dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",
+                "increaseBlood", new Class<?>[]{LivingEntity.class, int.class}, player, amount);
+    }
+
+    public static void removeJAWRBlood(ServerPlayer player, int amount)
+            throws ReflectiveOperationException {
+        if (amount <= 0) return;
+        callStatic("dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",
+                "decreaseBlood", new Class<?>[]{LivingEntity.class, int.class}, player, amount);
+    }
+
+    /**
+     * This is a compatibility mirror, never the resource owner. The pinned
+     * Vampirism BloodStats setter is package-private, so reflection is used.
+     * Do not call drinkBlood: that would duplicate feeding rewards.
+     */
+    public static void setNativeShadowBlood(ServerPlayer player, int amount)
+            throws ReflectiveOperationException {
+        Object stats = vampirismVampire(player).getClass()
+                .getMethod("getBloodStats").invoke(vampirismVampire(player));
+        java.lang.reflect.Method setter = stats.getClass().getDeclaredMethod("setBloodLevel", int.class);
+        setter.setAccessible(true);
+        setter.invoke(stats, Math.max(0, Math.min(nativeMax(player), amount)));
+    }
+
     /** Exposed for exact-version diagnostic readiness; never infer success from class presence alone. */
     public static boolean methodsAvailable() {
         try {

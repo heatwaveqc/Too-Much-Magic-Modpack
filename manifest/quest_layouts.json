@@ -2,8 +2,8 @@
   "schema_version": 1,
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
-  "notes": "Fixed IDs and separate per-chapter English translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 179,
+  "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
+  "quest_count": 180,
   "chapters": 45,
   "positions": [
     {
@@ -30,6 +30,15 @@
       "position": [
         0,
         6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D501001300000",
+      "chapter": "Getting Started",
+      "position": [
+        4,
+        9
       ],
       "authored": true
     },

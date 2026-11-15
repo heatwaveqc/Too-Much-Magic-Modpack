@@ -428,9 +428,10 @@
       "version": "comforts-neoforge-9.0.5+1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved 2026-11-14 for NEXT FULL INTEGRATION BUILD: portable sleeping bags (retain home respawn) and hammocks (advance day to night). Exact NeoForge 1.21.1 9.0.5 release exists; verify dependencies, resolve hash-pinned packwiz mod file, include on both client and server, smoke, and exercise daytime hammock/sleeping bag spawn behavior before marking enabled. Desired != installed."
+      "note": "Exact version and remote binary hash resolved for combined next test. Run clean dedicated-server and client gameplay tests; NOT survival certified. Dragon requires existing GeckoLib; client-only hearts excluded from server; Vampire's Delight 0.1.12b is a test-only beta and may affect food consumption hooks.",
+      "packwiz_slug": "comforts"
     },
     {
       "id": "common-network",
@@ -1584,13 +1585,13 @@
       "id": "puffish-skills",
       "name": "Pufferfish's Skills",
       "category": "infrastructure",
-      "desired": true,
+      "desired": false,
       "version": "puffish_skills-0.19.2-1.21-neoforge",
       "release_status": "experimental_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/835091",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "B6 user-approved boot-test candidate. Pufferfish Skills release is beta-tagged, not custom skill tree content.",
+      "note": "Removed from the rolling Tyz 6.4.2 integration channel; historical B6/B8 rollback remains immutable. Pufferfish Attributes is a separate dependency and is retained pending audit.",
       "packwiz_slug": "puffish-skills"
     },
     {
@@ -1954,6 +1955,87 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "almostunified",
+      "name": "Almost Unified",
+      "category": "compatibility",
+      "desired": true,
+      "version": "AlmostUnified-NeoForge-1.21.1-1.4.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/almostunified/version/e8iYxxI3",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "almostunified",
+      "note": "Owner-requested conventional-material unification and Mahou ore-doubling candidate. Not release-integrated until gameplay, ore worldgen and special-gate tests."
+    },
+    {
+      "id": "dragon-survival",
+      "name": "Dragon Survival",
+      "category": "transformation",
+      "desired": true,
+      "version": "DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/dragons-survival/files/9539454",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact version and remote binary hash resolved for combined next test. Run clean dedicated-server and client gameplay tests; NOT survival certified. Dragon requires existing GeckoLib; client-only hearts excluded from server; Vampire's Delight 0.1.12b is a test-only beta and may affect food consumption hooks.",
+      "candidate_file_id": 9539454,
+      "packwiz_slug": "dragon-survival"
+    },
+    {
+      "id": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "category": "skills",
+      "desired": true,
+      "version": "Tyz's skills 6.4.2 - 1.21.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/tyzs-skills/files/8118598",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "candidate_file_id": 8118598,
+      "curseforge_project_id": 990190,
+      "packwiz_slug": "tyzs-skills",
+      "note": "First-wave integration: four 99-rank Core Magic skills, one shared Tyz SP wallet, all Tyz native activity XP disabled. Until the canonical MXP dispatcher is runtime-integrated, XP is available via explicit operator test grants only. Core Magic and vanilla Tyz categories are NOT a second Monk tree."
+    },
+    {
+      "id": "ftb-essentials",
+      "name": "FTB Essentials (NeoForge)",
+      "category": "qol",
+      "desired": true,
+      "version": "2101.1.10",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-essentials/files/8442866",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "B13: official FTB Essentials 2101.1.10 NeoForge 1.21.1 CurseForge 410811/8442866. Explicit home and rtp enablement in config and defaultconfigs. One home per player, 10s home cooldown, 600s RTP cooldown, 500-25000 blocks from spawn. Gameplay permissions and teleport behavior need fresh world QA.",
+      "packwiz_slug": "ftb-essentials"
+    },
+    {
+      "id": "vampires-delight",
+      "name": "Vampire's Delight",
+      "category": "food",
+      "desired": true,
+      "version": "0.1.12b",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/vampires-delight/version/oe9B4zXP",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "vampires-delight",
+      "note": "Exact version and remote binary hash resolved for combined next test. Run clean dedicated-server and client gameplay tests; NOT survival certified. Dragon requires existing GeckoLib; client-only hearts excluded from server; Vampire's Delight 0.1.12b is a test-only beta and may affect food consumption hooks."
+    },
+    {
+      "id": "colorful-hearts",
+      "name": "Colorful Hearts",
+      "category": "qol",
+      "desired": true,
+      "version": "10.5.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/colorful-hearts/version/us0gze50",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "colorful-hearts",
+      "note": "Exact version and remote binary hash resolved for combined next test. Run clean dedicated-server and client gameplay tests; NOT survival certified. Dragon requires existing GeckoLib; client-only hearts excluded from server; Vampire's Delight 0.1.12b is a test-only beta and may affect food consumption hooks."
     }
   ],
   "excluded": [

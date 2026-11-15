@@ -1,3 +1,12 @@
+# Vampire v2 architecture note
+
+This branch supersedes the original symmetric Vampire Chassis v1
+design. **Normal infection is Vampirism-only; Lilith's Blood adds JAWR,
+which becomes canonical for blood/hunger/healing; either cure must remove
+both states.** The test contract is [VAMPIRE-ASCENSION-V2.md](../../docs/VAMPIRE-ASCENSION-V2.md).
+All v1 examples below remain historical and SHOULD NOT be interpreted as
+current desired mechanics.
+
 # Too Much Magic — transformation compatibility bridge (development)
 
 **Status: experimental vampire chassis compiled; runtime-changing options all OFF by default. NOT integrated as survival-ready transformation enforcement.**
