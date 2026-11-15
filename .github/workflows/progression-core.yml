@@ -32,3 +32,30 @@ jobs:
           gradle-version: '9.2.1'
       - name: Compile and run core tests
         run: gradle --no-daemon build
+      - name: Boot disposable dedicated NeoForge server with standalone progression JAR
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          mkdir -p run
+          printf 'eula=true\n' > run/eula.txt
+          set +e
+          timeout --signal=INT --kill-after=12s 180s gradle --no-daemon runServer --console=plain > progression-server.log 2>&1
+          code=$?
+          set -e
+          tail -n 100 progression-server.log
+          if ! grep -Eq 'Done \\(|For help, type' progression-server.log; then
+            echo 'FAIL: standalone dedicated server did not reach ready state' >&2
+            exit 1
+          fi
+          if grep -Ei 'Exception in server tick loop|ModLoadingException|Failed to load mod|Error loading' progression-server.log; then
+            echo 'FAIL: observed mod/server startup error' >&2
+            exit 1
+          fi
+          echo "PASS: server reached ready state (Gradle runner exit code $code)"
+      - name: Upload standalone server boot log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: progression-standalone-server-failure
+          path: compat/progression/progression-server.log
+          if-no-files-found: ignore
