@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "#betterstrongholds:better_strongholds",
+      "required": false
+    }
+  ]
+}

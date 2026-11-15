@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.\n2026-11-15 B14: owner approved CC: Tweaked, selected Modrinth 1.121.0 NeoForge 1.21.1 beta. Added pilot recipes for Eldritch Logic Core (Ancient Eldritch Miner exclusively) gating computers, and Spirit Fire conversion of End Draconium Ore to Iesnium Ore. Not runtime-verified; Silk Touch is needed to preserve End Draconium Ore as a block item.\nB15: owner-approved Cobblegen Galore 0.2.9 on top of CC: Tweaked B14; preserve original CC/IESNIUM recipes; no Shale Galore recipe and no unrelated Summoning Rituals removal.\nB15 pinned exactly one Galore 0.2.9 release, no other mod files changed.\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified.\n2026-11-15 B17: user approved LootJS, Clumps, YUNG Better Strongholds and Better Nether Fortresses (plus YUNG API), Extreme Sound Muffler, Get It Together Drops!, and AttributeFix. All eight version-scoped candidates staged as desired but NOT enabled/pinned. Explorer's Compass deliberately excluded: use the Ars Additions Locate Structure data-driven ritual and extend structure tags/augment recipes. New safe vanilla mineshaft and shipwreck locate recipes staged for source validation; modded structures require registry-ID inventory and client testing.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.\n2026-11-15 B14: owner approved CC: Tweaked, selected Modrinth 1.121.0 NeoForge 1.21.1 beta. Added pilot recipes for Eldritch Logic Core (Ancient Eldritch Miner exclusively) gating computers, and Spirit Fire conversion of End Draconium Ore to Iesnium Ore. Not runtime-verified; Silk Touch is needed to preserve End Draconium Ore as a block item.\nB15: owner-approved Cobblegen Galore 0.2.9 on top of CC: Tweaked B14; preserve original CC/IESNIUM recipes; no Shale Galore recipe and no unrelated Summoning Rituals removal.\nB15 pinned exactly one Galore 0.2.9 release, no other mod files changed.\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified.\n2026-11-15 B17: user approved LootJS, Clumps, YUNG Better Strongholds and Better Nether Fortresses (plus YUNG API), Extreme Sound Muffler, Get It Together Drops!, and AttributeFix. All eight version-scoped candidates staged as desired but NOT enabled/pinned. Explorer's Compass deliberately excluded: use the Ars Additions Locate Structure data-driven ritual and extend structure tags/augment recipes. New safe vanilla mineshaft and shipwreck locate recipes staged for source validation; modded structures require registry-ID inventory and client testing.\n2026-11-15 B18: owner approved remaining eight YUNG structure mods plus conditional Better End Island. All are planned, exact NeoForge 1.21.1 versions identified, not pinned/installed; Better End Island requires paired BetterEnd compatibility QA. Ars Additions Locate Structure target tags for YUNG-replaced vanilla structures must exclude vanished vanilla IDs, including strongholds. A generator will cover every active modded registered structure from a verified registry export, minus disabled IDs; no generic Explorer's Compass.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -2184,6 +2184,76 @@
       "packwiz_slug": "yungs-api"
     },
     {
+      "id": "yungs-better-desert-temples",
+      "name": "YUNG's Better Desert Temples",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-4.1.5",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-desert-temples/version/1.21.1-NeoForge-4.1.5",
+      "modrinth_version_id": "GQ9iNWkI",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-desert-temples",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
+      "id": "yungs-better-dungeons",
+      "name": "YUNG's Better Dungeons",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-dungeons/version/1.21.1-NeoForge-5.1.0",
+      "modrinth_version_id": "ZWDbFefV",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-dungeons",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
+      "id": "yungs-better-end-island",
+      "name": "YUNG's Better End Island",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-3.1.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-end-island/version/I52NZ1qK",
+      "modrinth_version_id": "I52NZ1qK",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-end-island",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA. CONDITIONAL: must pass BetterEnd: New Dawn compatibility tests (End dragon arena, obsidian pillars, exit portal, gateway spawning) before promotion."
+    },
+    {
+      "id": "yungs-better-jungle-temples",
+      "name": "YUNG's Better Jungle Temples",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-3.1.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-jungle-temples/version/1.21.1-NeoForge-3.1.0",
+      "modrinth_version_id": "rimnNoke",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-jungle-temples",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
+      "id": "yungs-better-mineshafts",
+      "name": "YUNG's Better Mineshafts",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-mineshafts/version/Go3nbneL",
+      "modrinth_version_id": "Go3nbneL",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-mineshafts",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
       "id": "yungs-better-nether-fortresses",
       "name": "YUNG's Better Nether Fortresses",
       "category": "adventure",
@@ -2198,6 +2268,20 @@
       "packwiz_slug": "yungs-better-nether-fortresses"
     },
     {
+      "id": "yungs-better-ocean-monuments",
+      "name": "YUNG's Better Ocean Monuments",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-4.1.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-ocean-monuments/version/NWit9vEK",
+      "modrinth_version_id": "NWit9vEK",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-ocean-monuments",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
       "id": "yungs-better-strongholds",
       "name": "YUNG's Better Strongholds",
       "category": "adventure",
@@ -2210,6 +2294,48 @@
       "modrinth_version_id": "8U0dIfSM",
       "note": "Owner-approved B17. Requires YUNG's API. Test Eyes of Ender, Ars ritual twelve-eye stronghold locator, portal integrity, and worldgen on fresh disposable Overworld. Expected deployment side: server.",
       "packwiz_slug": "yungs-better-strongholds"
+    },
+    {
+      "id": "yungs-better-witch-huts",
+      "name": "YUNG's Better Witch Huts",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-4.1.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-witch-huts/version/AvedwcIe",
+      "modrinth_version_id": "AvedwcIe",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-better-witch-huts",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
+      "id": "yungs-bridges",
+      "name": "YUNG's Bridges",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-bridges/version/1.21.1-NeoForge-5.1.0",
+      "modrinth_version_id": "yA2nuSdw",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-bridges",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
+    },
+    {
+      "id": "yungs-extras",
+      "name": "YUNG's Extras",
+      "category": "adventure_worldgen",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-extras/version/1.21.1-NeoForge-5.1.0",
+      "modrinth_version_id": "uE6pFqck",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "yungs-extras",
+      "note": "Owner approved 2026-11-15 next-build addition. Needs YUNG's API (planned B17), exact hash-pinned mod file and new-world generation QA."
     }
   ],
   "excluded": [
@@ -2637,6 +2763,23 @@
       ],
       "status": "approved_version_identified_unpinned_static_ars_pilot",
       "note": "Seven user-selected mods plus required YUNG API. Verified 1.21.1 NeoForge release candidates only; no mods/*.pw.toml yet, so none installed. Two new Ars Additions Locate Structure datapack recipes are staged independently for mineshafts and shipwrecks. Explorer's Compass excluded."
+    },
+    {
+      "id": "B18",
+      "name": "YUNG additional structure overhauls and universal Ars Additions locator compiler",
+      "members": [
+        "yungs-better-mineshafts",
+        "yungs-better-dungeons",
+        "yungs-better-desert-temples",
+        "yungs-better-jungle-temples",
+        "yungs-better-ocean-monuments",
+        "yungs-better-witch-huts",
+        "yungs-bridges",
+        "yungs-extras",
+        "yungs-better-end-island"
+      ],
+      "status": "approved_exact_versions_unpinned_ars_tag_overrides_staged",
+      "note": "Eight worldgen/structure mods approved for next full integration; ninth (YUNG Better End Island) staged with explicit BetterEnd: New Dawn compatibility hold. Seven default Ars Additions locator targets that would include disabled vanilla replacements are narrowed to YUNG-only structures using override tags, with mineshaft augment retargeted. Universal modded-structure ritual generation requires authoritative live registry export; source generator staged."
     }
   ]
 }

@@ -47,3 +47,7 @@ Both use the native Ars Additions ritual; no Java or new structure compass mod. 
 6. Use `python3 scripts/validate_b17_ars_locators.py` for the staged static schema and packwiz hash checks; this does **not** replace an actual Minecraft registry or gameplay test.
 
 **No change to existing worlds, quest balance, loot or progression gates is approved by simply adding these mods.**
+
+## B18 superseding expansion (2026-11-15)
+
+Nine more YUNG modules approved (Better End Island conditional), plus a complete native Ars Additions target-tag audit and a registry-driven all-modded-structures locator generator. See [B18-YUNG-ARS-STRUCTURES.md](B18-YUNG-ARS-STRUCTURES.md). The earlier B17 mineshaft target is now the YUNG replacement tag, not vanilla.

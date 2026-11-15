@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "betterwitchhuts:witch_hut",
+      "required": false
+    }
+  ]
+}
