@@ -4,7 +4,6 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +22,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerWakeUpEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Predicate;
 
 /**
  * Repeatable, rank-unlocked actual sleep on a pair of bedrock blocks.
@@ -39,28 +37,18 @@ public final class BedrockRest {
     private record RestSession(BlockPos bedrock, ResourceKey<Level> dimension) {}
     private static final Map<UUID, RestSession> SESSIONS = new HashMap<>();
 
-    /**
-     * Structural predicate extracted for deterministic unit testing and to
-     * avoid treating all of vanilla bedrock as a bed for other players.
-     */
-    public static boolean hasExposedPair(BlockPos clicked,
-                                         Predicate<BlockPos> bedrock,
-                                         Predicate<BlockPos> air) {
-        if (!bedrock.test(clicked) || !air.test(clicked.above())
-                || !air.test(clicked.above(2))) return false;
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockPos other = clicked.relative(direction);
-            if (bedrock.test(other) && air.test(other.above())
-                    && air.test(other.above(2))) return true;
-        }
-        return false;
-    }
-
     /** Match the original stage-17 pair of horizontally adjacent bedrock. */
     public static boolean validBedrock(ServerLevel world, BlockPos clicked) {
-        return hasExposedPair(clicked,
-                pos -> world.hasChunkAt(pos) && world.getBlockState(pos).is(Blocks.BEDROCK),
-                pos -> world.hasChunkAt(pos) && world.getBlockState(pos).isAir());
+        return BedrockRestGeometry.hasExposedPair(
+                clicked.getX(), clicked.getY(), clicked.getZ(),
+                (x,y,z) -> {
+                    BlockPos at = new BlockPos(x,y,z);
+                    return world.hasChunkAt(at) && world.getBlockState(at).is(Blocks.BEDROCK);
+                },
+                (x,y,z) -> {
+                    BlockPos at = new BlockPos(x,y,z);
+                    return world.hasChunkAt(at) && world.getBlockState(at).isAir();
+                });
     }
 
     private static boolean canStart(ServerPlayer player, BlockPos clicked) {
