@@ -63,7 +63,7 @@
 | Possession/summoning | Yellow/green chalk rites and correct tier book | Possessed mobs, summoned spirits, unbound spirits and familiars | Risks and requirements vary; summoned tamed animals/familiars may arrive untamed |
 | Worker roles | Bound Calling Book and role recipe | Crusher, smelter, crystallizer, farmer, lumberjack, transporter, cleaner, machine operator, traders and special outputs | Tier, accepted inputs, speed and job instructions vary |
 | Crusher | Accepted item stack, usually raw ore | Guide examples give 2/3/4/6 dust per ore for Foliot/Djinni/Afrit/Marid | Recipe-specific; rate and maximum batches require source/config audit and client measurement |
-| Otherworld mining | Dimensional Mineshaft plus supported bound miner | Item stacks stored in the mineshaft | Tier/loot table are progression-sensitive; exact outputs and cycle not yet reconciled |
+| Otherworld mining | Dimensional Mineshaft plus supported bound miner | Item stacks stored in the mineshaft | 194 matching-source miner recipes: 108 ordinary ore recipes, 59 eldritch, 9 deeps, 5 master, 11 basic-resource and 2 debug recipe files. Foliot, Djinni, Afrit and Marid miners are all included in the ordinary ore tag; see source-confirmed gate findings below |
 | Storage | Storage Controller, actuators, stabilizers, remotes | Large remote item storage and crafting/automation interfaces | Item system; no fluid or FE storage channel found. Structure/capacity needs audit |
 | Familiars | Familiar rites; familiar ring and binding items | Player effects, utility, combat, protection, mobility or upgrades | Specific effect, food, costs and death behavior vary; client verification needed |
 | Advanced rites | Battlefield, extractor, resurrection, satchels, Iesnium tools, chalices | Encounters, special entity/item results, improved ritual prep or materials | Each has its own recipe and condition; not one linear final tier |
@@ -87,6 +87,22 @@ No evidence in inspected source supports arbitrary fluid, FE, mana, blood, or XP
 - Spirit Fire transforms only registered recipe inputs; it is not a fuel-powered machine or general transmuter.
 - Tiered crushers have high multiplication. Source guide examples state 2/3/4/6 dust per ore operation, but exact supported ores, max batches and time depend on recipe and tier. Do not turn those outputs into a throughput estimate.
 - Dimensional Mineshaft is a potentially high-impact renewable source. Compare every miner output with TMM's Replication, uranium, draconic-material and boss-drop rules before claiming completion.
+
+### Source-confirmed miner gate findings
+
+The matching release recipe data already contains cross-mod outputs, not just generic vanilla ore support:
+
+| Recipe | Miner tier tag | Result tag | Weight | TMM consequence |
+| --- | --- | --- | ---: | --- |
+| recipe/miner/ores/draconium_ore.json | occultism:miners/ores (includes Foliot unspecialized, Djinni ores, Afrit deeps and Marid master miners) | c:ores/draconium | 142 | Potential early draconium ore acquisition if the pack's common tag is populated and the recipe condition loads; conflicts with design intent to gate draconic materials to dangerous progression |
+| recipe/miner/ores/uranium_ore.json | occultism:miners/ores (same tier inclusion) | c:ores/uranium | 140 | Potential ordinary miner uranium route; conflicts with plan to reserve uranium for controlled extraction |
+| recipe/miner/eldritch/raw_uranium.json | occultism:miners/eldritch (Ancient Eldritch Miner only) | c:storage_blocks/raw_uranium | 90 | Additional late-tier raw uranium storage-block route; the source condition disables this recipe if common tag is empty |
+| recipe/miner/eldritch/raw_yellorium.json | occultism:miners/eldritch | c:storage_blocks/raw_yellorium | 90 | Potential Bigger Reactors Rework input if the item registers this common tag |
+| recipe/miner/eldritch/raw_draconium.json | occultism:miners/eldritch | c:storage_blocks/raw_draconium | 90 | Potential late-tier draconium block route if the common tag is populated |
+
+Each recipe has NeoForge conditions requiring a nonempty Occultism miner tag and nonempty common output tag. Draconium Ore and Uranium Ore use the ordinary ore tag, which includes the Foliot unspecialized miner: if the recipe loads, those are early-tier outputs, not only endgame miner rewards. The matching startup config defaults to one roll per operation, with mining times/durability of 400 ticks/1000 for Foliot, 300/400 for Djinni, 200/800 for Afrit, 100/1600 for Marid, and 15/3200 for Ancient Eldritch. These are source defaults, not measured runtime. Recipe weights feed weighted random selection among matching results, so 140/142/90 are not percent chances or rates. The code also allows Fortune to add extra weighted rolls and Silk Touch to multiply each result; the guide documents Efficiency as reducing mining time. Exact settings can be changed in startup/server config.
+
+The source data found no Replication Deepslate Replica Ore recipe by filename search; this does not prove none can be supplied by another mod/datapack. Check loaded registries, not only Occultism's generated files. The Dictionary's Dimensional Mineshaft page says it discards items it cannot store; top side is lamp slot, bottom side ore slot, other sides all slots; redstone pauses the spirit; comparator reads inventory/lamp durability, and signal 10 is a cue to stop. It documents enchantment effects and a server option to save miners before breakage. Include these details in the eventual how-to.
 
 ## Complete player progression / walkthrough blueprint
 
@@ -173,7 +189,7 @@ This is a source-backed outline, not quest data. For every nontrivial ritual, th
 | Pam's / Farmer's Delight crops | Foliot Farmer may use crop tags or recipes | Unknown; do not assume all added crops are accepted |
 | AE2, Refined Storage, generic logistics/backpacks | Occultism's own storage is allowed by pack design; other network/logistics mods are excluded | Do not add or promise bridges |
 
-**Compatibility issue to carry on the repo:** audit every Dimensional Mineshaft miner recipe and loot table against TMM's world, dimension, ore, and boss gates before progression sign-off. Specifically test Replica Ore, uranium, draconic materials, and protected boss drops. Current design docs identify intended sources but say enforcement remains pending. This is a high-risk unverified compatibility issue, not an observed defect.
+**Compatibility issue to carry on the repo:** matching Occultism source already defines regular ore-miner recipes for Draconium Ore and Uranium Ore, both in the Foliot-accessible ordinary miner tag, plus Ancient Eldritch raw uranium/yellorium/draconium storage-block recipes. These are source-confirmed possible bypasses of the pack's design gate, contingent on common ore/storage-block tags being populated and the recipe conditions loading. TMM's PROGRESSION.md intends controlled sources and says enforcement is pending. Resolve exact tag contents, loaded recipe availability and tier reachability in the assembled pack before calling this an observed leak. This discrepancy is also recorded in docs/COMPATIBILITY.md.
 
 **Additional balance issue:** compare the 2/3/4/6 dust per operation crusher tiers against other installed doubling routes and audit raw ore availability before assigning early-game rewards or progression roles.
 
@@ -211,7 +227,7 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 | Dictionary/Spirit Fire | Fresh world: seed→book; valid Spirit Fire input vs unrelated item | Valid conversion only; guide opens; quest item task distinct from transformation | no client |
 | Ritual waits | Valid Foliot pentacle vs wrong color/missing bowl; test rite requiring sacrifice with and without named event | Correct setup proceeds; wrong/waiting state observable; task credit checked separately | no client |
 | Crusher | Same ore at four tiers, record output and ticks; test unsupported input | Confirm recipe yield/speed and no unsupported conversion; task matches real operation | no client |
-| Miner gates | Audit all tiers and outputs for Replica Ore, uranium, draconic material and boss-protected items | Only intended sources/tier produce gated materials | not run; required before walkthrough-ready |
+| Miner gates | Test Foliot-accessible Draconium/Uranium recipes and Ancient Eldritch raw-material recipes after verifying common tag contents; audit Replica Ore and protected drops | Only intended sources/tier produce gated materials | not run; required before walkthrough-ready |
 | Storage/bag | Base controller and stabilizer upgrades; insert/retrieve; inspect all four tag consumers and team ownership | Capacity/link behavior and tag purpose confirmed | no client |
 | Ars Unification | Test Crusher Spirit recipe under exact pins, including output and unavailable target | Expected native recipe loads and operates | no client |
 
@@ -220,7 +236,7 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 ## Unknowns and next research
 
 - [ ] Reconcile each major ritual and crushing JSON with its guide entry; record inputs, outputs, events and IDs.
-- [ ] Enumerate miner tier recipes and all resource tables; compare against TMM gates for Replica Ore, uranium, draconic materials and protected drops.
+- [ ] Resolve common ore/storage-block tag contents; test source-confirmed Foliot Draconium/Uranium and Ancient Eldritch raw-resource recipes by tier; audit all 194 recipe files and any other mod/datapack recipe for Replica Ore and protected boss outputs.
 - [ ] Extract storage diagrams, capacities, remotes and automation interfaces.
 - [ ] Close familiar, resurrection, battlefield/extractor, Otherworld tool and advanced chalk branches.
 - [ ] Obtain exact pinned JAR and test guide, tasks, Ars Unification bridge, and bag-tag consumer behavior in client.
