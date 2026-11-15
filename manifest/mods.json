@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "target": {
     "minecraft": "1.21.1",
     "loader": "neoforge",
@@ -241,6 +241,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "artifacts"
+    },
+    {
+      "id": "attributefix",
+      "name": "AttributeFix",
+      "category": "qol",
+      "desired": true,
+      "version": "attributefix-neoforge-1.21.1-21.1.3",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/attributefix/files/7115922",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved attribute hard-cap expansion, NeoForge 1.21.1 version 21.1.3, CurseForge 280510 file 7115922, pinned SHA1 7aae849f6d2a6cb1368227407ea5deb552e100ba. Requires existing Bookshelf and Prickle. Exact source defaults raise max_health, armor, armor_toughness, attack_damage, attack_knockback to 1,000,000; all other RangedAttributes have config files but are NOT raised by default, including Luck and modded mana/spell attributes. Test source/runtime before treating new attribute caps as attainable full-build ceilings.",
+      "packwiz_slug": "attributefix"
     },
     {
       "id": "astral-sorcery",
@@ -969,7 +982,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1072,7 +1085,7 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks \u2014 ReFoxed",
+      "name": "Inventory Tweaks — ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
@@ -1469,7 +1482,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 \u2014 Crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1482,7 +1495,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1495,7 +1508,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1508,7 +1521,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 \u2014 Trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -2063,7 +2076,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -2076,7 +2089,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -2175,7 +2188,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
