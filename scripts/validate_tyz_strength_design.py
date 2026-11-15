@@ -76,6 +76,16 @@ def verify() -> None:
     # Canonical owner ceiling: Monk overall-combat apex, Sea Dragon absurd Luck niche.
     hierarchy = data["balancing"]["overall_endgame_power_hierarchy"]
     assert "Monk" in hierarchy["primary_benchmark"]
+    assert "appropriately progressed specialist" in hierarchy["primary_benchmark"]
+    gear = data["balancing"]["gear_normalized_balance_contract"]
+    assert gear["status"] == "DESIGN_REQUIREMENT_NOT_MEASURED"
+    assert "Monk" in gear["question"]
+    assert "NONE" in gear["primary_monk_profile"]["worn_equipment"]
+    assert "enchantments" in gear["comparison_specialist_profile"]["enhancements"]
+    assert "Apotheosis" in gear["comparison_specialist_profile"]["enhancements"]
+    assert "Curios" in gear["comparison_specialist_profile"]["gear"]
+    assert any("Dragon mana" in condition for condition in gear["success_conditions"])
+    assert any("Monk can" in condition for condition in gear["success_conditions"])
     boss = data["balancing"]["chaos_guardian_monk_acceptance"]
     assert boss["status"] == "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST"
     assert "Chaos Guardian" in boss["desired_result"]

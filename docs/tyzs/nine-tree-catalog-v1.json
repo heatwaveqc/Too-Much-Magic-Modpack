@@ -363,7 +363,9 @@
       "notes": [
         "No cross-species dragon purchases or free dragon growth.",
         "Mining benefits must not bypass protected ores, world claims or late-game materials.",
-        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power."
+        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
@@ -613,7 +615,9 @@
         "No free permanent underwater invulnerability or world fluid griefing.",
         "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
         "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
-        "Abyssal Fortune (Extreme ×50) is an extra specialty beyond this v1 four-lane sketch; full 165-row strength catalog contains it with exact proposed cap and test cautions."
+        "Abyssal Fortune (Extreme ×50) is an extra specialty beyond this v1 four-lane sketch; full 165-row strength catalog contains it with exact proposed cap and test cautions.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
@@ -872,7 +876,9 @@
         "Do not turn Forest Dragon neutrality into global creature pacification.",
         "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.",
         "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
-        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana."
+        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
+        "Gear-inclusive high-tier personal mana/spell power should slightly exceed gearless Monk; re-evaluate prior skill percentage allocation after enchant/affix/Curio effects."
       ],
       "design_requirements": {
         "shared_dragon_core": "Must add per-species Draconic Reservoir (major personal mana capacity), Draconic Potency (exceptional spell power per SP), Scales (armor), Claws (damage), Talons (legal harvest speed); no extra Dragon category.",
@@ -1120,7 +1126,8 @@
       "notes": [
         "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
         "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.",
-        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems."
+        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
       ]
     },
     {
@@ -1363,7 +1370,8 @@
         "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
         "Natural form-change progression remains native, not purchased again in Tyz.",
         "Werewolf regen means HEALTH regeneration, not passive magic regeneration.",
-        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems."
+        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
       ],
       "design_requirements": {
         "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
@@ -1611,7 +1619,8 @@
         "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
         "For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves.",
         "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.",
-        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf."
+        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
       ],
       "design_requirements": {
         "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
@@ -1859,7 +1868,8 @@
         "Hunter purchases never require vampire, wolf, or lich powers.",
         "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.",
         "Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment.",
-        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar."
+        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
       ],
       "design_requirements": {
         "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
@@ -2108,7 +2118,8 @@
         "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
         "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
         "Owner explicitly vetoed spirit projectile; first hotbar slot dedicated fist and free armor toggle are native/non-purchasable; native Treasure Hand is one Fortune/Silk Touch toggle.",
-        "Monk is overall combat apex, **naked/unarmed Chaos Guardian solo** is the accepted future QA target, NOT a current playable claim; other trees near Monk in at most one or two specialties."
+        "Monk is the gear-independent combat apex; naked/unarmed Chaos Guardian solo remains the future QA goal. Against a comparably progressed FULLY GEARED specialist, balance aims for approximate overall parity, with slight specialist advantages in one or two niches.",
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
       ]
     }
   ],
@@ -2139,7 +2150,7 @@
     "final_visible_tabs": 9
   },
   "principle_version": "2026-11-15-class-identities-v2",
-  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo; Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog.",
+  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo **at roughly the combat power of a fully progressed, appropriately geared specialist**, with specialist marginal niche edges (Dragon mana and power AFTER gear); Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog.",
   "class_identity_rules": {
     "core_skills": {
       "display_name": "Core Skills",
@@ -2203,6 +2214,22 @@
       "bonemeal": "improve actual bonemeal effects or resource efficiency; avoid free infinite bonemeal cycles",
       "animals": "improve eligible animal breeding/husbandry through verified events; do not multiply animals automatically or ignore cooldowns",
       "crop": "extra legal crop outcomes on committed harvest events, with anti-double-credit vs Green Thumb, Harvest with Ease, and protected claims"
+    },
+    "overall_balance_2026_11_15": {
+      "compare": "Monk with full skills and no equipped gear vs other class with comparable progression plus expected enchanted/Affixed equipment and Curios.",
+      "total_power": "Approximately balanced overall, not Monk far above all geared builds.",
+      "dragon": "Dragon with full tier-appropriate mana/spell gear slightly exceeds maxed equipment-free Monk for max mana and practical spell power.",
+      "equipment_included": [
+        "armor",
+        "weapons",
+        "tools",
+        "enchantments",
+        "Apotheosis affixes",
+        "Apotheosis gems/sockets/reforges",
+        "Curios",
+        "cast implements"
+      ],
+      "keep_monk_chaos_guardian_solo": true
     }
   },
   "stock_rehome_change_request": {
@@ -2220,11 +2247,12 @@
   "balance_model_current": "docs/tyzs/nine-tree-strength-first-pass-v1.json",
   "source_retirement_architecture": "JAWR-only vampire/wolf physiology; standalone Hunter/Monk; no TeamLapen provider for future",
   "global_power_ceiling_2026_11_15": {
-    "apex": "Monk",
-    "benchmark": "Fully maximized standalone Monk native + Tyz path must be capable of defeating the real Chaos Guardian solo, with no worn equipment or weapons, legally completing authentic encounter mechanics.",
-    "specialist_rule": "All other paths can approach Monk in one or two designated niches, but must be significantly worse in most personal combat and adventuring capabilities. Named narrow numeric specialties may exceed Monk in their specialized metric; Monk leads overall.",
-    "evaluation": "No armor, Curios, any other worn equipment, held weapons, or other specialist-tree perks required. Explicitly decide allowance of consumables and held spellcasting implements in QA; do not silently bypass Guardian shields or conjure an innate Monk Spirit Bolt.",
-    "test_status": "conceptual target only; no playtest or implementation claim",
+    "apex": "Monk—best INTRINSIC / no-gear all-around fighter; NOT assumed stronger than appropriately geared comparably progressed specialists.",
+    "benchmark": "Maxed Monk must solo real Chaos Guardian with no worn equipment or weapons and real boss mechanics. For balanced progression compare its FULL no-gear kit against specialist FULL gear-inclusive kit.",
+    "specialist_rule": "Geared alternative progression paths should be broadly competitive in total combat capability, allowed slightly more strength in one or two specializations. Fully geared Dragon should be slightly above no-gear maxed Monk in effective personal max mana and spell potency AFTER equipped enchantments, Apotheosis affixes/gems and Curios are counted.",
+    "loadout_comparator": "Appropriately-tiered armor, weapons/tools, enchanting, Apotheosis affixes/reforges/socketed gems, Curios and legal casting equipment on the non-Monk. Monk uses no worn gear and no weapons in strict Guardian benchmark. No naked-to-naked comparison as the target.",
+    "evaluation": "Compare real observed full-build endgame performance, including effect procs and equipment restrictions. Same progress milestones and normalized MXP/SP budgets; realistic accessible gear tier.",
+    "test_status": "conceptual target, not approved numeric parity and not tested",
     "canonical_detail": "docs/tyzs/nine-tree-strength-first-pass-v1.json"
   }
 }
