@@ -12,6 +12,11 @@ Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curv
 ## Exceptional technology
 **2026-11-15 owner decision:** remove Bigger Reactors original and Rework. Draconic Evolution supplies the dedicated furnace-fuel generator, FE storage/transfer and dangerous endgame reactor; Botania Revived converts mana to FE with its Mana Fluxfield. Psi, Hex Casting and other magic systems may also supply FE, but require exact-version research before promising output rates. No separate nuclear/uranium tech progression or generic FE/logistics stack. Preserve real Draconic endgame material gates, not the obsolete reactor-uranium plan.
 
+
+## Physical blood unification (owner target 2026-11-15)
+
+All ordinary, player-facing physical blood fluids should be standardized on `evilcraft:blood` so world-placed blood retains EvilCraft's random-tick drying to Hardened Blood. Neo Vitae's altar accepts canonical blood but retains internal EV accounting; its outward fluid capability should return canonical blood. Iron's, Hexerei and JAWR ordinary bottled-blood recipe paths should interoperate without replacing JAWR vampire blood banks, Neo Vitae Anima/Spiritus, or special vampire-blood metadata. Existing fluid IDs remain registered for compatibility and legacy saves. **This is a design decision, not a tested implementation.** See [source-backed engineering/acceptance plan](CANONICAL-BLOOD-FLUID-DESIGN-2026-11-15.md).
+
 ## World and loot
 Rich exploration via Cataclysm, Stalwart/Starlight themed structures and Deeper and Darker where compatible. **Alex's Caves Continued** is approved as *planned* exploration content on NeoForge 1.21.1, with required CodxLib; exact pins are on staging PR #56, but neither mod is currently installed. Evaluate early exploration density and performance. Review and block game-breaking single-hit artifacts in normal loot, not just crafting.
 
