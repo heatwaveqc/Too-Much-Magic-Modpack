@@ -29,7 +29,8 @@ def verify(root: Path = ROOT) -> None:
     assert rows["puffish-skills"]["enabled_in_pack"] is False
     assert rows["puffish-attributes"]["enabled_in_pack"] is True
     cats = json.loads((root / "config/tyzs_skills/custom/data/categories.json").read_text())
-    assert REQUIRED_TABS.issubset(cats), "Missing original Tyz or Core Magic tabs"
+    assert REQUIRED_TABS.issubset(cats), "Missing transitional Tyz or Core Skills tabs"
+    assert cats["tmm_magic_core"]["displayName"] == "Core Skills", "Wrong universal tab label"
     assert json.loads((root / "config/tyzs_skills/custom/data/level-pool.json").read_text()) == {
         "-1": {"goal": 1000, "reward": 1}
     }, "Wrong global MXP -> SP threshold"
