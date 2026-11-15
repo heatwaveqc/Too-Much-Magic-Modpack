@@ -1,4 +1,4 @@
-// Too Much Magic — KubeJS 2101.7.2 / NeoForge 1.21.1.
+// Too Much Magic - KubeJS 2101.7.2 / NeoForge 1.21.1.
 // Iron's Blood Vial is a plain Item and cannot be consumed natively.
 // Only add ordinary vanilla food-use semantics and a glass-bottle remainder.
 // The existing first-party JAWR bottle bridge handles native JAWR blood pool
