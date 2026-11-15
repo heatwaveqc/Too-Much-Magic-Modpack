@@ -1,0 +1,65 @@
+name: JAWR-only Abomination feasibility
+
+on:
+  push:
+    branches:
+      - research/jawr-only-abomination-feasibility-2026-11-15
+    paths:
+      - "compat/abomination/**"
+      - "scripts/test_jawr_abomination_observer.js"
+      - ".github/workflows/jawr-abomination-research.yml"
+  pull_request:
+    paths:
+      - "compat/abomination/**"
+      - "scripts/test_jawr_abomination_observer.js"
+      - ".github/workflows/jawr-abomination-research.yml"
+  workflow_dispatch:
+
+jobs:
+  pinned-jawr-and-observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: JavaScript syntax and lifecycle mock
+        run: |
+          node --check compat/abomination/jawr_dual_affliction_observer.js
+          node scripts/test_jawr_abomination_observer.js
+      - name: Verify JAWR binary pin and native dual-attachment ABI
+        shell: bash
+        run: |
+          set -euo pipefail
+          jar="$RUNNER_TEMP/witchery.jar"
+          curl --fail --location --silent --show-error --retry 3 \
+            --output "$jar" \
+            'https://cdn.modrinth.com/data/LCO8KZvC/versions/TWcJbsjg/witchery-0.5.39%2Bmc1.21.1.jar'
+          echo "a3d50e65bb494b4d9b709163a295ddcecf53c498314df473d6de55633a4a5ebe810b9a0b5672f97f41786c03af01ef3ac91f0262216e074887e75d6afc35141d  $jar" | sha512sum --check
+          for pair in \
+            'affliction.vampire.VampirePlayerAttachment' \
+            'affliction.werewolf.WerewolfPlayerAttachment' \
+            'transformation.TransformationPlayerAttachment'; do
+            javap -classpath "$jar" "dev.sterner.witchery.feature.$pair" > "$RUNNER_TEMP/abi.txt"
+            grep -Fq 'getData(net.minecraft.world.entity.player.Player)' "$RUNNER_TEMP/abi.txt"
+          done
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment$Data' > "$RUNNER_TEMP/v.txt"
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment$Data' > "$RUNNER_TEMP/w.txt"
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.transformation.TransformationPlayerAttachment$Data' > "$RUNNER_TEMP/t.txt"
+          grep -Fq 'isVampire()' "$RUNNER_TEMP/v.txt"
+          grep -Fq 'isWerewolf()' "$RUNNER_TEMP/w.txt"
+          grep -Fq 'getLevel()' "$RUNNER_TEMP/v.txt"
+          grep -Fq 'getLevel()' "$RUNNER_TEMP/w.txt"
+          grep -Fq 'getTransformationType()' "$RUNNER_TEMP/t.txt"
+          echo 'PASS: both JAWR independent level attachments and one active form have pinned ABI'
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.transformation.TransformationPlayerAttachment$TransformationType' | grep -E ' (NONE|BAT|WOLF|WEREWOLF);'
+          echo 'PASS: observed JAWR model enum supports the expected active forms'
+      - name: Ensure observer remains non-installed
+        run: |
+          test ! -e kubejs/server_scripts/jawr_dual_affliction_observer.js
+          echo 'PASS: read-only observer is staged and not installed'
