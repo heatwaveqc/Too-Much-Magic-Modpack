@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D603000100001", type: "xp", xp: 5 }
-				{ id: "544D703000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D703000100002", type: "item", item: { id: "minecraft:pumpkin_pie", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D401000300001", type: "checkmark" }
@@ -57,7 +57,7 @@
 			dependencies: ["544D503000300000"]
 			rewards: [
 				{ id: "544D603000400001", type: "xp", xp: 15 }
-				{ id: "544D703000400002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 2 }
+				{ id: "544D703000400002", type: "item", item: { id: "minecraft:rabbit_stew", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D803000400000", type: "item", item: { id: "minecraft:wheat", count: 1 }, count: 4L }
@@ -96,7 +96,7 @@
 			icon: { id: "minecraft:egg" }
 			rewards: [
 				{ id: "544D603000700001", type: "xp", xp: 15 }
-				{ id: "544D703000700002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 2 }
+				{ id: "544D703000700002", type: "item", item: { id: "minecraft:pumpkin_pie", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D803000700000", type: "item", item: { id: "minecraft:egg", count: 1 }, count: 2L }
@@ -234,7 +234,7 @@
 			dependencies: ["544D503001000000"]
 			rewards: [
 				{ id: "544D603001100001", type: "xp", xp: 30 }
-				{ id: "544D703001100002", type: "item", item: { id: "minecraft:baked_potato", count: 1 }, count: 4 }
+				{ id: "544D703001100002", type: "item", item: { id: "minecraft:bowl", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D803001100000", type: "item", item: { id: "farmersdelight:cooking_pot", count: 1 } }

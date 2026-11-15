@@ -1,0 +1,4 @@
+# Applies to newly created worlds. Existing worlds need this under
+# saves/<world>/serverconfig/vampirism-server.toml as well.
+# Fangs remain available for hunter recipes but cannot infect players.
+fangInfection = false
