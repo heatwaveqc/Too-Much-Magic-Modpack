@@ -290,7 +290,136 @@
           "empty_hand": true
         }
       ]
+    },
+    {
+      "id": "tmm_progression:reserved_fist",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1
+      ],
+      "effects": [
+        {
+          "type": "reserved_fist"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:armor_lock",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1
+      ],
+      "effects": [
+        {
+          "type": "armor_lock"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:catch_arrows",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        8
+      ],
+      "effects": [
+        {
+          "type": "catch_arrows",
+          "empty_hand": true
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:blink",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        11
+      ],
+      "effects": [
+        {
+          "type": "blink",
+          "params": {
+            "range": "16",
+            "cooldown_ticks": "40"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:breath_meditation",
+      "max_rank": 2,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        3,
+        19
+      ],
+      "effects": [
+        {
+          "type": "water_breathing"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:purification",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        19
+      ],
+      "effects": [
+        {
+          "type": "purification"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:creeper_kiss",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        14
+      ],
+      "effects": [
+        {
+          "type": "creeper_peace",
+          "empty_hand": true
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:treasure_hand",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        12
+      ],
+      "effects": [
+        {
+          "type": "treasure_hand",
+          "empty_hand": true
+        }
+      ]
     }
   ],
-  "max_level": 20
+  "max_level": 20,
+  "enrollment": "sunset"
 }
