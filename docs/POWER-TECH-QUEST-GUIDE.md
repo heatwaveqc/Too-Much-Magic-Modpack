@@ -25,3 +25,13 @@
 - [Next-QA draft PR #56](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56) — retain planned Alex's Caves + CodxLib, **do not import reactor uranium bridge**.
 
 **World migration warning:** removing the currently pinned Rework may remove its blocks, items and uranium from existing worlds. Back up test saves and perform new-world QA. Source inspection alone is not a client/pack test.
+
+## Programmable technology — CC: Tweaked (B14 pilot)
+
+**Approved 2026-11-15:** CC: Tweaked 1.121.0 NeoForge 1.21.1 beta is now the pack's selected programmable control mod; exact SHA1-pinned packwiz entry staged, client/server acceptance pending. Direct computer crafting requires an **Eldritch Logic Core**, a new source-checked weighted output of Occultism's **Ancient Eldritch Miner**. This is a late-game first-acquisition gate, not a requirement to keep running the machine. Do not require ProjectE, AE2 or external networking mods.
+
+The existing Draconic Evolution source directly exposes reactor telemetry, charge/activate/stop/failsafe and Flux Gate control to CC: Tweaked. The exact pinned-binary integration and controller Lua remain **runtime QA targets**. Never describe an automated controller as perfectly safe; build in a disposable world first.
+
+**Item progression:** Eldritch Miner → `tmm:eldritch_logic_core` → normal/advanced/pocket CC computers → monitor/modem + reactor/Flux Gate supervision. CC turtles inherit the computer gate and remain balance-sensitive; no turtle-related addons approved.
+
+**Otherworld Iesnium alternative:** throw **Silk Touched End Draconium Ore** `draconicevolution:end_draconium_ore` into Occultism Spirit Fire to obtain `occultism:iesnium_ore` 1:1 via native `occultism:spirit_fire` recipe. It does not replace default Nether or miner sources. The End ore normally yields dust without Silk Touch. Details and QA: [CC-TWEAKED-ELDRITCH-GATE.md](CC-TWEAKED-ELDRITCH-GATE.md).

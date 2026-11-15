@@ -1,0 +1,63 @@
+name: B14 - CC Tweaked Eldritch Gate and Iesnium Smoke
+on:
+  push:
+    branches: ['feature/cc-tweaked-eldritch-iesnium-spirit-fire-2026-11-15']
+  pull_request:
+    paths:
+      - '.github/workflows/b14-cc-eldritch-iesnium.yml'
+      - 'mods/cc-tweaked.pw.toml'
+      - 'manifest/mods.json'
+      - 'kubejs/data/computercraft/recipe/**'
+      - 'kubejs/data/tmm/recipe/**'
+      - 'kubejs/startup_scripts/eldritch_logic_core.js'
+      - 'scripts/validate_cc_iesnium_pilot.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: b14-cc-eldritch-iesnium-qa
+  cancel-in-progress: false
+
+jobs:
+  source-and-server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Static source and exact packwiz hash validation
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 scripts/validate_cc_iesnium_pilot.py
+          python3 -m py_compile scripts/validate_cc_iesnium_pilot.py
+      - name: Install packwiz and inspect active pins
+        run: |
+          go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
+          "$(go env GOPATH)/bin/packwiz" list
+      - name: Run exact 156-pin NeoForge dedicated-server smoke
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: ${{ runner.temp }}/tmm-b14-cc-smoke
+        run: bash scripts/smoke_server.sh
+      - name: Preserve exact B14 server logs for gameplay QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b14-cc-eldritch-iesnium-server-logs
+          path: |
+            ${{ runner.temp }}/tmm-b14-cc-smoke/server.log
+            ${{ runner.temp }}/tmm-b14-cc-smoke/logs/latest.log
+          if-no-files-found: warn

@@ -56,3 +56,7 @@ The five FTB chapter groups and 45 chapter files, with no-reward optional overvi
 
 The owner explicitly requested **Alcohol is Magic** as a separate Introduction chapter following Food & Fishing. The five-group architecture remains, but Introduction now contains four chapters, for **46 chapters total**. A 19-quest how-to teaches Brewin' and Chewin', Cocktails Delight, and Let's Do Beachparty without duplicating Food & Fishing or the vanilla Brewing Stand track. All operation-only steps use honestly described manual checkmarks; item steps detect possession, not actual usage. The Piña Colada is optional and conditional on pineapple/coconut item tags.
 
+
+## B14: ComputerCraft via Eldritch progression (2026-11-15)
+
+**A Sufficiently Advanced Magic** now includes CC: Tweaked as a companion to Draconic Evolution. Computers are obtained after the Eldritch Ancient Miner produces a new Eldritch Logic Core; dedicated CC: Tweaked quest content follows the knowledge-base audit and in-world integration test. Keep the existing 45 chapters; no new top-level group or early-game generic automation path. Iesnium has an optional Spirit Fire transformation of Silk-Touched End Draconium Ore, described in [CC-TWEAKED-ELDRITCH-GATE.md](CC-TWEAKED-ELDRITCH-GATE.md). AE2 and addons remain excluded.

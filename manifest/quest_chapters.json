@@ -178,7 +178,8 @@
       "order_index": 4,
       "icon": "draconicevolution:generator",
       "mod_ids": [
-        "draconic-evolution"
+        "draconic-evolution",
+        "cc-tweaked"
       ],
       "overview_quest_id": "544D302000500001",
       "overview_task_id": "544D402000500001"
