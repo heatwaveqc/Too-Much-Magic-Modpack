@@ -19,11 +19,16 @@ public final class VampireChassisConfig {
             .comment("UNSAFE FOR VALUABLE SAVES: operator-only coordinated cure, with partial rollback and admin hold on failure.")
             .define("experimentalOperatorCure", false);
 
+    public static final ModConfigSpec.BooleanValue ABOMINATION_TWO_ABILITY_PILOT = BUILDER
+            .comment("EXPERIMENTAL OPERATOR-ONLY TEST: delegate native Vampirism Hiss and Werewolves Howl while JAWR has both afflictions. No faction, skill unlock or progression changes; normal skill entitlement and event dispatch are deliberately bypassed.")
+            .define("experimentalAbominationTwoAbilityPilot", false);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private VampireChassisConfig() { }
 
     public static boolean chassis() { return ENABLE_CHASSIS.get(); }
+    public static boolean abominationPilot() { return ABOMINATION_TWO_ABILITY_PILOT.get(); }
     public static boolean acquisition() { return chassis() && AUTOMATIC_DUAL_ACQUISITION.get(); }
     public static boolean cure() { return chassis() && OPERATOR_CURE.get(); }
     public static boolean allowUnverifiedProviders() { return chassis() && ALLOW_UNVERIFIED_OTHER_PROVIDERS.get(); }
