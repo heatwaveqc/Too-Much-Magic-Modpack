@@ -18,10 +18,6 @@ import net.neoforged.neoforge.common.NeoForge;
  * native to both mods pending a live double-damage audit.
  */
 public final class JAWRDefenseEvents {
-    private static final TagKey<Biome> VAMPIRE_FOREST = TagKey.create(
-            Registries.BIOME,
-            ResourceLocation.fromNamespaceAndPath("vampirism", "has_faction/vampire"));
-
     private JAWRDefenseEvents() { }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -43,7 +39,7 @@ public final class JAWRDefenseEvents {
         try {
             Object raw = event.getClass().getMethod("getPlayer").invoke(event);
             if (raw instanceof ServerPlayer player
-                    && player.level().getBiome(player.blockPosition()).is(VAMPIRE_FOREST)
+                    && VampireForestShelter.isSheltered(player)
                     && event instanceof ICancellableEvent cancellable) {
                 cancellable.setCanceled(true);
             }
