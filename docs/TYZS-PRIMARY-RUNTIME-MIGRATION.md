@@ -17,7 +17,7 @@ Transformation category IDs are reserved for future work; do **not** show empty
 form tabs or advertise playable form skills.
 
 The initial Tyz UI must include native `abilities`, `combat`, `misc`,
-`nature` and `tmm_magic_core`. Core Magic first-wave skills are Reservoir,
+`nature` and `tmm_magic_core`. Core Skills first-wave skills are Reservoir,
 Wellspring, Thrift and Potency, modifying source-verified player attributes
 from Ars Nouveau, Iron's, Psi, Forbidden & Arcanus, Goety, Neo Vitae and Eidolon.
 They are not separate skill purchases per mod. Other magic compatibility
@@ -31,7 +31,7 @@ families and native Tyz combat/nature tuning remain additional waves.
    exact upstream **Modrinth project 4rKNK5O2 / version OUmvFAPs**
    (CurseForge file 8118598), checks loader 1.21.1 NeoForge and provider
    SHA-512. No `latest` resolver or unhashed JAR download is acceptable.
-3. Stage the previously authored Core Magic config into the pack, preserving
+3. Stage the previously authored Core Skills config into the pack, preserving
    the four original Tyz tabs. Remove `mods/puffish-skills.pw.toml`, mark
    its manifest row disabled, retain `mods/puffish-attributes.pw.toml`.
 4. Regenerate packwiz index hashes, run `scripts/verify_tyz_migration.py`
@@ -69,7 +69,7 @@ families and native Tyz combat/nature tuning remain additional waves.
 
 ## Stock-tree migration and five-rank balance update (2026-11-15)
 
-The four Core Magic base nodes now each have **five** ranks, each representing 20% of that attribute's former rank-99 maximum effect. Five SP now fully purchase a base node, rather than 99 SP. This is a deliberate power-curve acceleration and only suitable for disposable QA until replay/migration handling is verified. See [full 32-skill default inventory and migration plan](TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md). The original Tyz four categories remain present **temporarily**; remove them only after every original skill has been safely placed, behavior-verified and gated in the nine custom categories. Existing 6+ ranks must not be silently clipped in retained world data.
+The four Core Skills base nodes now each have **five** ranks, each representing 20% of that attribute's former rank-99 maximum effect. Five SP now fully purchase a base node, rather than 99 SP. This is a deliberate power-curve acceleration and only suitable for disposable QA until replay/migration handling is verified. See [full 32-skill default inventory and migration plan](TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md). The original Tyz four categories remain present **temporarily**; remove them only after every original skill has been safely placed, behavior-verified and gated in the nine custom categories. Existing 6+ ranks must not be silently clipped in retained world data.
 
 ## Acceptance status
 
@@ -85,3 +85,5 @@ Primary contracts: `docs/TYZS-MXP-EXTERNAL-GATES.md`,
 `docs/TYZS-CORE-MAGIC-AND-FORM-TREES.md` on
 `design/universal-mxp-progression-registry` and
 `compat/magic/README.md` in this branch.
+
+**2026-11-15 display label update:** The installed source overlay labels `tmm_magic_core` as **Core Skills**. Existing skill/category IDs remain unchanged; no data migration or second wallet is implied.
