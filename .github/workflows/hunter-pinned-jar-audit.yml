@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/hunter-pinned-jar-audit.yml'
       - 'scripts/hunter_pinned_jar_audit.py'
+      - 'scripts/hunter_census_patch.py'
   workflow_dispatch:
 
 permissions:
@@ -13,7 +14,7 @@ permissions:
 jobs:
   pinned-jar-audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,6 +22,30 @@ jobs:
           python-version: '3.12'
       - name: Verify pinned JAR hashes and inspect entity registration constants
         run: python3 scripts/hunter_pinned_jar_audit.py
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Install read-only server entity census into disposable first-party JAR
+        run: |
+          python3 scripts/hunter_census_patch.py
+          cd compat/transformations
+          gradle --no-daemon build
+      - name: Boot exact full server pack with temporary census listener
+        env:
+          SMOKE_WITH_MODS: '1'
+          SMOKE_TIMEOUT_SECONDS: '900'
+          WORK_DIR: ${{ runner.temp }}/tmm-hunter-census
+          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+        run: |
+          bash scripts/smoke_server.sh
+          grep -h 'HUNTER_RUNTIME_ENTITY' "${{ runner.temp }}/tmm-hunter-census/server.log" > docs/hunter/ci-evidence/runtime-census.log
+          grep -q 'HUNTER_RUNTIME_ENTITY_COUNT' docs/hunter/ci-evidence/runtime-census.log
+          echo "PASS: captured runtime registry in disposable world"
       - name: Upload structured audit evidence (no JARs)
         if: always()
         uses: actions/upload-artifact@v4
