@@ -77,6 +77,8 @@ Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; 
 | 1. Starting setup | <required / one valid option> | ... | ... | ... | ... | ... | ... |
 | <every actual tier/unlock/subsystem, alternate path and capstone> | <required gate / selected branch / optional> | ... | ... | ... | ... | ... | ... |
 
+For code-granted/hidden advancements, include the advancement parent chain and trigger type as source facts. Keep those separate from Guidebook narrative, recipe/ritual events, and the implementation predicate that actually grants progression. If a trigger is `minecraft:impossible`, the unlock action remains unknown until source or runtime evidence establishes it.
+
 ### Dependency graph and alternate routes
 
 <Explain branching quest dependencies, costs of tier transitions, repeatable progression currency/research, biome/dimension/boss prerequisites, alternate recipes, side systems and irreversible faction choices. Specify gates enforced by the native mod versus currently implemented TMM code versus future proposals. Use text or a small Mermaid diagram if helpful.>
