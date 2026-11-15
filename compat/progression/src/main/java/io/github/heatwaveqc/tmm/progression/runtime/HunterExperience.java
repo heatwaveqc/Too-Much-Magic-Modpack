@@ -66,6 +66,28 @@ public final class HunterExperience {
         return false;
     }
 
+    /** Data-defined, not hardcoded into the command registration. */
+    public static java.util.List<String> availableSpecialties() {
+        Definition.Path path = PathRegistry.get(HUNTER);
+        if (path == null) return java.util.List.of();
+        return path.skills().stream()
+            .filter(skill -> "tmm_progression:hunter_favored_enemy".equals(skill.choiceGroup())
+                && skill.id().startsWith("tmm_progression:specialty_"))
+            .map(skill -> skill.id().substring("tmm_progression:specialty_".length()))
+            .sorted().toList();
+    }
+
+    public static String selectedSpecialty(ServerPlayer player) {
+        Definition.Path path = PathRegistry.get(HUNTER);
+        if (path == null) return "none";
+        var state = ProgressionApi.track(player,HUNTER);
+        return path.skills().stream()
+            .filter(skill -> "tmm_progression:hunter_favored_enemy".equals(skill.choiceGroup())
+                && state.skillRank(skill.id()) > 0)
+            .map(skill -> skill.id().replace("tmm_progression:specialty_",""))
+            .findFirst().orElse("none");
+    }
+
     /** Returns true only when a qualified creature can count toward Hunter milestones. */
     public static boolean kill(ServerPlayer player, LivingEntity target) {
         HunterXpPolicy policy = PathRegistry.hunterXp(HUNTER);
