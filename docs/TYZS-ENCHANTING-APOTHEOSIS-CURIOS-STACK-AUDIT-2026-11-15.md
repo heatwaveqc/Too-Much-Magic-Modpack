@@ -113,6 +113,21 @@ For an enchantment with **Apothic configured max `B`**, these are **source-compo
 | **Efficiency** | Iesnium +1, Perfect Inferno +4, Perfect Endersurge global +2 | **B + 7** |
 | **Protection** | Iesnium +1, Perfect Earth +4, Perfect Endersurge global +2 | **B + 7** |
 
+### Projected numeric levels under the pinned default Apothic power formula
+
+I went beyond the category lists and evaluated the **actual 1.6.4** source's default cap procedure. Apothic's `getDefaultMaxLevel` advances an enchantment while its minimum enchant power stays **at or below 200**. Above vanilla max level, the `DefaultMinPowerFunction` adds `slope × floor((level − vanilla_max)^1.6)` to the enchantment's vanilla linear min-cost. From the **Minecraft 1.21.1 definitions** this gives:
+
+| Enchantment | Vanilla max | Projected default Apothic max B | Iesnium B+1 | Hypothetical effective with supported gems/affixes |
+|---|---:|---:|---:|---:|
+| Fortune | III | **VIII** | **IX** | **XIX** (B+11) |
+| Efficiency | V | **IX** | **X** | **XVI** (B+7) |
+| Sharpness | V | **IX** | **X** | **XVI** (B+7) |
+| Protection | IV | **VIII** | **IX** | **XV** (B+7) |
+
+The final column is a **conditional paper build**, not a claim the running server allows those effective values or provides the corresponding multiplied output. It assumes no custom enchant-info/data-map or hard enchant-level caps, that the item accepts both gems/affixes and their effects stack, and that Iesnium can produce the stored level before the effective buffs. Sigils of Supremacy/Malice might raise affix-based Fortune even higher. The actual enchant powers, min/next power and formulas are in the machine audit.
+
+Sources: [Apothic maximum-level function](https://github.com/Shadows-of-Fire/Apothic-Enchanting/blob/1.21/src/main/java/dev/shadowsoffire/apothic_enchanting/ApothicEnchanting.java), [power evaluator](https://github.com/Shadows-of-Fire/Apothic-Enchanting/blob/1.21/src/main/java/dev/shadowsoffire/apothic_enchanting/PowerFunction.java), Minecraft 1.21.1 [Fortune](https://mcasset.cloud/1.21.1/data/minecraft/enchantment/fortune.json), [Efficiency](https://mcasset.cloud/1.21.1/data/minecraft/enchantment/efficiency.json), [Sharpness](https://mcasset.cloud/1.21.1/data/minecraft/enchantment/sharpness.json), [Protection](https://mcasset.cloud/1.21.1/data/minecraft/enchantment/protection.json).
+
 All these require the enchantment to be present when its bonuses are `existing`-mode; the two unique gems may coexist with one another if their types are distinct and valid for that item. The gem and affix modifiers may apply as **effective-level events**, not stored NBT, and strict enchant level caps can block further power. **Prosperous may be stronger after Supremacy/Malice**; therefore B+11 is *not* the universal absolute Fortune ceiling.
 
 A higher Protection display must still respect effective damage/EPF caps; Efficiency and mining speed combine nonlinearly; Miner's Fervor is **exclusive with Efficiency**; and overwrought Fortune/Scavenger/Apotheosis loot cannot grant duplicated fixed boss rewards or bypass pack gates by design. Validate actual tool output and 1000+ relevant legal blocks/kills instead of extrapolating purely from tooltip numbers.
