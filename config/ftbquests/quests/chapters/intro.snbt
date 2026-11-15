@@ -72,7 +72,7 @@
 						{ id: "544D901001300003", type: "item", item: { id: "minecraft:fishing_rod", count: 1 }, count: 1 }
 						{ id: "544D901001300004", type: "item", item: { id: "botania:lexicon", count: 1 }, count: 1 }
 						{ id: "544D901001300005", type: "item", item: { id: "occultism:dictionary_of_spirits", count: 1 }, count: 1 }
-						{ id: "544D901001300006", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+						{ id: "544D901001300006", type: "item", item: { id: "minecraft:spyglass", count: 1 }, count: 1 }
 						]
 					}
 				}

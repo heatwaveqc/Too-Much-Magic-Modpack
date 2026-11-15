@@ -228,7 +228,7 @@ def main() -> None:
                 for item in (
                     "ars_nouveau:novice_spell_book", "irons_spellbooks:copper_spell_book",
                     "minecraft:fishing_rod", "botania:lexicon",
-                    "occultism:dictionary_of_spirits", "minecraft:compass"
+                    "occultism:dictionary_of_spirits", "minecraft:spyglass"
                 ):
                     ensure(rewards.count(f'id: "{item}"') == 1, f"Starter option missing {item}")
                 choice_quests.add(qid)

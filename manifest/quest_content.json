@@ -82,7 +82,7 @@
           "minecraft:fishing_rod",
           "botania:lexicon",
           "occultism:dictionary_of_spirits",
-          "minecraft:compass"
+          "minecraft:spyglass"
         ],
         "claim_scope": "player"
       },
