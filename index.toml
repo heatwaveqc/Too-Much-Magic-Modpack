@@ -1148,10 +1148,23 @@ hash = "0dacfb317113343b3b3f7f5b1b4e7d0d8810e70bbc81eb7a5be912d4c3041ad3"
 file = "kubejs/data/tmm/recipe/hexerei/evilcraft_blood_to_hex_bottle.json"
 hash = "97e16033a1e748d8a13cb4f0580bf8da78cb495ea92def1a2b53c817a4809296"
 
-[[files]]
-file = "kubejs/data/tmm/recipe/hexerei/iron_vial_to_evilcraft.json"
-hash = "004c10f26784295439a91cfe273e1878d8b67e23d90b98815af0920bca4d44b5"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/irons_spellbooks/hex_bottle_to_evilcraft.json"
 hash = "075777d83861a7a81855a0dbbfb287b577c2aeec7beb7d8b203faf7a8785aa22"
+
+[[files]]
+file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
+hash = "6774b31442511ec57c9790eae91c89e95f2974f53ea933fdc9bdfbc25e6fbc77"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/hex_blood_to_evilcraft_bucket.json"
+hash = "5ff09f89b7d5ad33a23b7bbc683be8ddd38d5174f0e56e04a73926c6bc5bb993"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/evilcraft_bucket_to_hex_blood.json"
+hash = "f473fecd727575d652e2b8b69b01eef8d1ccddb1cb71da76dddba41d1568bedd"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/iron_vial_to_hex_blood.json"
+hash = "7e4503d42f76355ddb3628bf2595155407910d8a536890327ab08952f977e39c"
