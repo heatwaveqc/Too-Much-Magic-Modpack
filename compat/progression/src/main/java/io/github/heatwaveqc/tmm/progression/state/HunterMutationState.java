@@ -11,10 +11,15 @@ import java.util.Map;
  * second ongoing hunger tax. Never trust this state from a client packet.
  */
 public record HunterMutationState(Map<String,Long> progress, Map<String,Integer> unlocked) {
-    public static final Codec<HunterMutationState> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-        Codec.unboundedMap(Codec.STRING,Codec.LONG).fieldOf("progress").forGetter(HunterMutationState::progress),
-        Codec.unboundedMap(Codec.STRING,Codec.INT).fieldOf("unlocked").forGetter(HunterMutationState::unlocked)
-    ).apply(instance,HunterMutationState::new));
+    // Lazy codec initialization keeps plain-JVM mutation math tests independent of
+    // Minecraft's Codec runtime; the game asks for it only at attachment registration.
+    private static final class CodecHolder {
+        private static final Codec<HunterMutationState> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.unboundedMap(Codec.STRING,Codec.LONG).fieldOf("progress").forGetter(HunterMutationState::progress),
+            Codec.unboundedMap(Codec.STRING,Codec.INT).fieldOf("unlocked").forGetter(HunterMutationState::unlocked)
+        ).apply(instance,HunterMutationState::new));
+    }
+    public static Codec<HunterMutationState> codec() { return CodecHolder.CODEC; }
 
     public HunterMutationState {
         progress = Map.copyOf(progress);
