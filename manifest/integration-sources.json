@@ -117,12 +117,12 @@
     },
     {
       "name": "mxp-ledger-math-pilot",
-      "branch": "feature/mxp-ledger-dispatcher",
+      "branch": "feature/mxp-ars-irons-botania-neo-hooks",
       "paths": [
         "compat/mxp/"
       ],
       "mode": "source-and-test-only",
-      "note": "Canonical one-wallet fractional MXP ledger math pilot, source-only. No gameplay JAR, no second currency and no unauthorized Tyz XP awards until dispatcher is validated."
+      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet."
     },
     {
       "name": "tyzs-primary-runtime-migration",
@@ -218,9 +218,11 @@
     "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree.",
     "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA.",
     "test/quest-standards-starter-choice-2026-11-14": "Prior 180-entry quest source; feature/quest-reward-humor-first-pass is a descendant with identical IDs plus checked filler reward replacement.",
-    "feature/lilith-ascended-vampire": "Currently documentation-only Lilith/JAWR testing notes (latest commit changes only VAMPIRE-CHASSIS-V1-TEST-PLAN.md). Keep selected runtime from fix/jawr-blood-debit-guard; review and register executable changes if this branch later adds implementation."
+    "feature/lilith-ascended-vampire": "Currently documentation-only Lilith/JAWR testing notes (latest commit changes only VAMPIRE-CHASSIS-V1-TEST-PLAN.md). Keep selected runtime from fix/jawr-blood-debit-guard; review and register executable changes if this branch later adds implementation.",
+    "feature/mxp-ledger-dispatcher": "Ancestor superseded by new MXP hooks source branch; do not import both."
   },
   "pending_runtime_work": [
+    "MXP full-source hook branch is present but not runtime-installed; validate real spent resource debits/multi-cast ordering, then compile and package only after explicit test approval.",
     "NEXT FULL QA: ProjectE Stone boss-trophy center and MK3+ Power Flower Chaos-Shard recipes staged from feature/projecte-boss-trophy-stone-and-emc-audit. Validate both Stone layouts and all high-tier direct recipes + red upgrade in live JEI/crafting. Mine Key also comes from Neo Vitae mine spawners, so it is an item route, NOT proof of a Foreman kill.",
     "EMC COMPLETENESS: each actual registered item must have positive EMC except approved cheap glass panes. Audit against SAME-BUILD full registry plus post-mapping ProjectE EMC; fill all missing IDs and test conversion loops. No auto-values until exports.",
     "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
