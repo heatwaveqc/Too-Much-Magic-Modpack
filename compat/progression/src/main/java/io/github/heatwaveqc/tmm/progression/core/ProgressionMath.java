@@ -1,0 +1,62 @@
+package io.github.heatwaveqc.tmm.progression.core;
+
+import io.github.heatwaveqc.tmm.progression.model.Definition;
+import io.github.heatwaveqc.tmm.progression.state.Track;
+import java.util.List;
+import java.util.Map;
+
+/** Side-effect-free progression math: can be unit-tested without starting a world. */
+public final class ProgressionMath {
+    private ProgressionMath() {}
+
+    public static Track join(Definition.Path spec, Track old) {
+        return old.joined() ? old : old.joinedAtRankOne(spec.pointsPerRank());
+    }
+
+    public static Track grantXp(Definition.Path spec, Track old, long award) {
+        if (!old.joined() || award <= 0) return old;
+        long xp = old.xp() > Long.MAX_VALUE - award ? Long.MAX_VALUE : old.xp() + award;
+        int rank = old.rank();
+        int points = old.points();
+        List<Long> thresholds = spec.rankXp();
+        while (rank < thresholds.size() && xp >= thresholds.get(rank)) {
+            rank++;
+            points = (int) Math.min(Integer.MAX_VALUE, (long) points + spec.pointsPerRank());
+        }
+        return old.progress(xp, rank, points);
+    }
+
+    public static Track buy(Definition.Path spec, Track old, String skillId) {
+        Definition.Skill skill = spec.skill(skillId);
+        if (!old.joined() || skill == null || old.rank() < skill.requiredRank()) return old;
+        int owned = old.skillRank(skillId);
+        if (owned >= skill.maxRank() || old.points() < skill.price(owned)) return old;
+        for (String required : skill.requiresSkills()) {
+            if (old.skillRank(required) < 1) return old;
+        }
+        if (!old.milestones().containsAll(skill.requiresMilestones())) return old;
+        return old.withSkill(skillId, owned + 1, old.points() - skill.price(owned));
+    }
+
+    public static Track refundAll(Definition.Path spec, Track old) {
+        long refund = 0;
+        for (Definition.Skill skill : spec.skills()) {
+            int owned = old.skillRank(skill.id());
+            for (int n = 0; n < owned; n++) refund += skill.price(n);
+        }
+        return new Track(old.joined(), old.xp(), old.rank(),
+            (int) Math.min(Integer.MAX_VALUE, (long) old.points() + refund),
+            Map.of(), old.milestones(), old.counters());
+    }
+
+    /** Persistent, namespaced criterion counters, independent of current active dependencies. */
+    public static String counterKey(String milestone, int criterion) {
+        return milestone + "/" + criterion;
+    }
+
+    public static Track recordCriterion(Track old, String key, int amount) {
+        if (!old.joined() || amount <= 0) return old;
+        int n = old.criterionCount(key);
+        return old.withCounter(key, (int) Math.min(Integer.MAX_VALUE, (long) n + amount));
+    }
+}
