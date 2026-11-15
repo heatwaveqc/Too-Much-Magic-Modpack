@@ -27,6 +27,7 @@ Never add the Ring of the Seven Deadly Sins to any normal acquisition route.
 6. Never mutate a server world to test economy or recipes. Test with disposable worlds and backup before migrations.
 7. Record blockers in docs/COMPATIBILITY.md and run details in docs/TESTING.md; keep a changelog in commits/PR.
 8. Prefer source-backed recipe and loot changes with item IDs confirmed from a live registry (via JEI/commands/data dump). No fabricated item IDs.
+9. Before publishing any full-integration QA build, use the exact-load quest registry check (`scripts/quest_registry_gate.py`) to validate every quest item task, reward and icon against the live item registry in the same dedicated-server smoke. Missing IDs, absent probe logs, and unknown field formats are hard failures, not allowlisted warnings. See [Nov 15 repair backlog](docs/NEXT-QA-REPAIR-BACKLOG-2026-11-15.md).
 
 ## Promotion gates
 `candidate` = published version / unresolved deps; `installed` = hash-pinned in packwiz; `server-smoked` = fresh dedicated server reaches ready; `client-smoked` = GUI loads world; `integrated` = feature test with gates.
