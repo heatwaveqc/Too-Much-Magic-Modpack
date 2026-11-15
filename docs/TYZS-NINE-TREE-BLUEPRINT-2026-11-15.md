@@ -1,6 +1,6 @@
 # Tyz Skills — nine-tree final-direction blueprint (2026-11-15)
 
-> **Status: CONCEPT / REVIEW.** This is a proposed complete *catalog and dependency design*, not active Tyz JSON, tested attributes, native skills, or approved numerical balance. Do not stage it automatically in a client build. It replaces the **six-category conceptual layout** (one Core + five form categories) with **nine new custom categories**, while preserving the separate four existing Tyz default categories until explicitly changed. A separate machine-readable companion file enumerates candidate IDs.
+> **Status: CONCEPT / REVIEW.** This is a proposed complete *catalog and dependency design*, not active Tyz JSON, tested attributes, native skills, or approved numerical balance. Do not stage it automatically in a client build. It replaces the **six-category conceptual layout** (one Core + five form categories) with **nine new custom categories**, while preserving the separate four existing Tyz default categories only **until all 32 built-in skills have been inventoried, reassigned and independently validated**. A separate machine-readable companion file enumerates candidate IDs.
 
 ## 1. Scope and canonical progression rules
 
@@ -11,7 +11,7 @@ The nine custom categories are **Core Magic; Cave Dragon; Sea Dragon; Forest Dra
 - **Eligibility:** server-authoritative form snapshots from Transformation Compat, not merely a tag or visible tab. Hunter is exclusive; dragon is one of three; Lich applies to one lichdom, Archlich, and a valid Dracolich. Monk requires its real native faction and equipment discipline; cross-faction coexistence is not assumed.
 - **Allowed hybrids:** valid Dracolich gets one dragon tree + the one shared Lich tree. Archlich gets one shared Lich tree, not two duplicate purchases. Abomination remains excluded from combined-tree design until base hybrid physiology is live-tested; a hypothetical allowed future Abomination may reference its separately valid components only after arbitration. No invalid hybrid can acquire ranks by merely buying Tyz nodes.
 - **Ranks on cure:** purchased ranks persist as dormant investments; incompatible-form effects stop immediately. No automatic refunds or deletions. A player can respec through validated Tyz refund rules. Voluntary Hunter replacement explicitly suspends Hunter effects.
-- **Tyz limitations:** normal custom categories are global, not per-player hidden. Keep all old default category definitions in the full replacement category JSON; **4 default + 9 custom = 13 total categories** unless old defaults are separately retired. Category visibility is not permission. A later client mask might hide unfamiliar tabs, but purchase/refund enforcement belongs to the server.
+- **Tyz limitations:** normal custom categories are global, not per-player hidden. Keep all old default category definitions in the full replacement category JSON; **4 default + 9 custom = 13 temporary categories**, reducing to **9 total** after the stock-skill migration and safe default-category retirement. Category visibility is not permission. A later client mask might hide unfamiliar tabs, but purchase/refund enforcement belongs to the server.
 - **Purchase integrity:** enforce native state, node-specific stage, and outside milestones with the server's Tyz `PurchasePre` and `RefundPre` gates, plus an authorized direct-grant reconciliation path. Tyz bulk-buy checks a pre-event once: put external gates at **node boundaries**, not mid-node rank thresholds. One rank in a predecessor is sufficient as a native node prerequisite; advanced stages additionally require real native milestones.
 - **Power ceiling:** talents improve forms without replacing Chaos Guardian, Draconic Evolution, ProjectE or Gem Armor. No creative flight, global creature pacification, immortality for free, protected-block mining bypass, infinite energy, or unlimited combat evasion.
 
@@ -30,7 +30,7 @@ These are *design stages*, not promises of specific form levels; map stages to r
 
 Within a form specialization lane the explicit dependency is **Entry → Advanced → Mastery**, requiring one rank in the directly preceding node. A proposed capstone requires at least **one Mastery purchase and one Advanced purchase in a different lane**, plus the verified native end stage and a real late milestone. These are intended edge rules, not native Tyz runtime wiring yet. 
 
-There is **no universal rule that every skill has 99 ranks**. The four existing Core Magic preview traits already reserve 99 ranks and should be preserved/rebalanced rather than overwritten. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
+There is **no universal rule that every skill has 99 ranks**. **New decision (2026-11-15): the four initial Core Magic base skills compress from 99 ranks to 5 ranks, each giving 20% of its former rank-99 maximum attribute benefit (20/40/60/80/100% of cap).** Exact prior ceilings are preserved, with integer rounding where applicable. Later magnitude-tier skills may be 99-rank specialty bands if independently approved. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
 
 ## 3. Nine categories, complete proposed skill families
 
@@ -52,7 +52,7 @@ Always available. Keep the original 9 families; this is the cross-mod baseline, 
 
 Potential extensions: Expansion/AoE (only after source-verified area hooks); Artifice (only after real crafter attribution); Ritual mastery (must not erase native minigames). These are **not** launch commitments.
 
-**Structure:** four foundation roots (Reservoir, Wellspring, Thrift, Potency), three spellcraft specialists (Quickening, Projection, Persistence), and two independent specialist roots (Conjuration, Warding). A family can have staged I→V successor nodes with one prior rank as prerequisite and verified milestones for late stages. Do not make a mage buy unrelated foundations to reach Warding. The existing four 99-rank preview skill files are the starting point, **not** an alternative separate wallet.
+**Structure:** four foundation roots (Reservoir, Wellspring, Thrift, Potency), three spellcraft specialists (Quickening, Projection, Persistence), and two independent specialist roots (Conjuration, Warding). A family can have staged I→V successor nodes with one prior rank as prerequisite and verified milestones for late stages. Do not make a mage buy unrelated foundations to reach Warding. The existing four first-wave skill IDs are the starting point; their **new five-rank versions** are staged in [PR #85](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/85), **not** an alternative separate wallet.
 
 ### Cave Dragon — `tmm_dragon_cave`
 
@@ -212,9 +212,9 @@ Do not implement high-risk abilities as permanent passive buffs just because Tyz
 
 ## 6. Build sequence and acceptance cases
 
-**Phase A — concept-to-config:** Add nine categories, preserve four Tyz defaults, validate 13-tab pagination and localization; create inactive/skeleton node IDs. Handle old planned `tmm_dragon` gracefully: no automatic one-to-three point duplication; if any actual players own generic dragon ranks, make an explicit migration/refund map and back up saves first.
+**Phase A — concept-to-config:** Audit all 32 original Tyz built-in skills and preserve their IDs/behavior handlers in safe same-ID overrides assigned to the nine trees. During transition retain four old categories and validate 13-tab pagination. **Only after every stock skill's new placement and behavior works**, remove the four old category IDs and validate 9-tab pagination; create inactive/skeleton form node IDs. Handle old planned `tmm_dragon` gracefully: no automatic one-to-three point duplication; if any actual players own generic dragon ranks, make an explicit migration/refund map and back up saves first.
 
-**Phase B — narrow playable vertical slice:** Existing four Core Magic rank files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after blood repair*, Werewolf Predator's Stride *after shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore, and Monk Empty-Hand Force *after native tree purchase repair*.
+**Phase B — narrow playable vertical slice:** Existing four Core Magic **five-rank** files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after blood repair*, Werewolf Predator's Stride *after shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore, and Monk Empty-Hand Force *after native tree purchase repair*.
 
 **Phase C — multi-lane progression:** Add three lane tiers, chosen mid/final native milestones, refunds, capstones and class-specific adapters. Never certify based only on clean JSON/compilation/server boot. Keep all new skills flagged as conceptual until individually implemented and client-verified.
 
@@ -227,6 +227,11 @@ Do not implement high-risk abilities as permanent passive buffs just because Tyz
 - Which vampire and werewolf source powers should receive separate source-locked sub-nodes versus one shared equivalent.
 - Specific native stage and boss gates, rank caps and individual percentages after source/version inventory and actual player timings.
 - Whether to retain all four default Tyz categories unchanged indefinitely, or later curate them after no-overlap review.
+
+
+### Source inventory and removal gate (added 2026-11-15)
+
+The full 32-skill default inventory and source-to-destination proposals are in [PR #85](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/85) ([read the migration ledger](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/tyzs-stock-inventory-five-rank-core-2026-11-15/docs/TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md)). The current four default categories are a transitional compatibility layer, **not** permanent expansion to 13 tabs. Do not delete defaults until all 32 original IDs have equivalent effects in the nine final categories, including explicit decisions for unsafe skill-learning/PvP/economy behavior. Native Tyz `IMMUTABLE` handlers attach by skill ID; same-ID JSON overrides let us rehome behavior without generic JSON approximations, subject to exact-version runtime tests.
 
 ## 7. What this commit does *not* do
 
