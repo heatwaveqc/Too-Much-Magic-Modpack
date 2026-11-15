@@ -59,7 +59,7 @@ Cover all meaningful subsystems; expand with subsections if there are distinct m
 | --- | --- | --- | --- | --- | --- |
 | <system> | item stack vs dropped entity; fluid vs Source vs player mana; FE, XP orb vs gem, entity/world state, etc. | <specific; not established if unknown> | <inventory, world drop, skill/effect, dimension; exact units> | event/timer/consumed item/fluid/entity state/world interaction | native / API / recipe JSON / KubeJS proven? [pin]/[source: SHA]/[pack-test: build/world] |
 
-Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; entities; mobs and AI; damage/effects; player or equipment state; block/world changes; automation; inputs to and outputs from rituals.** If a category is unsupported, support the negative finding with implementation evidence or say *not established*.
+Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; entities; mobs and AI; damage/effects; player or equipment state; block/world changes; automation; inputs to and outputs from rituals.** Separate true consumed/spawned values from initiator items, entity sacrifices, fake-entity UI proxies, display-only outputs, server commands and custom events. If a category is unsupported, support the negative finding with implementation evidence or say *not established*.
 
 ### Acquisition, renewability and output economics
 
