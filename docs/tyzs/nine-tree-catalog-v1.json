@@ -2119,7 +2119,8 @@
         "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
         "Owner explicitly vetoed spirit projectile; first hotbar slot dedicated fist and free armor toggle are native/non-purchasable; native Treasure Hand is one Fortune/Silk Touch toggle.",
         "Monk is the gear-independent combat apex; naked/unarmed Chaos Guardian solo remains the future QA goal. Against a comparably progressed FULLY GEARED specialist, balance aims for approximate overall parity, with slight specialist advantages in one or two niches.",
-        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms."
+        "Final balance uses gearless maxed Monk versus appropriately progressed THIS TREE WITH FULL tier-matched enchanted/Apotheosis-modified equipment, including Curios/weapons/tools, when legal to wear. Comparable overall power, slight specialty edge for geared forms.",
+        "Monk may wear Curios in normal play. The strict no-worn gear/Curios Guardian challenge is a separate test, not a permanent Curios ban; balancing numerator includes legal Curios."
       ]
     }
   ],
@@ -2150,7 +2151,7 @@
     "final_visible_tabs": 9
   },
   "principle_version": "2026-11-15-class-identities-v2",
-  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo **at roughly the combat power of a fully progressed, appropriately geared specialist**, with specialist marginal niche edges (Dragon mana and power AFTER gear); Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog. Monks' capped comparable NONCOMBAT effects target 80-90% of full geared specialist (Sea Luck 80%) and mixed magic mods are classified by source per action, not blanket mod themes. Canonical numerical catalog now 168 design-only rows.",
+  "concept_policy": "The 96 existing node positions are exploratory, not an approved final list. In the design iteration below they are revised to embody new class identities; numbers/costs and final API bindings remain unapproved. OWNER DESIGN CEILING: maxed Monk naked/unarmed Chaos Guardian solo **at roughly the combat power of a fully progressed, appropriately geared specialist**, with specialist marginal niche edges (Dragon mana and power AFTER gear); Sea Dragon gets extraordinary Extreme ×50 Luck, see 165-row strength catalog. Monks' capped comparable NONCOMBAT effects target 80-90% of full geared specialist (Sea Luck 80%) and mixed magic mods are classified by source per action, not blanket mod themes. Canonical numerical catalog now 168 design-only rows. Curios explicitly available on Monk under normal rules; strict no-worn-items Chaos trial is separately retained. Exact endgame affix/enchant/gem combination (including Supremacy/Malice overcharges) documented in dedicated 2026-11-15 equipment ceiling audit.",
   "class_identity_rules": {
     "core_skills": {
       "display_name": "Core Skills",
@@ -2250,7 +2251,7 @@
     "apex": "Monk—best INTRINSIC / no-gear all-around fighter; NOT assumed stronger than appropriately geared comparably progressed specialists.",
     "benchmark": "Maxed Monk must solo real Chaos Guardian with no worn equipment or weapons and real boss mechanics. For balanced progression compare its FULL no-gear kit against specialist FULL gear-inclusive kit.",
     "specialist_rule": "Geared alternative progression paths should be broadly competitive in total combat capability, allowed slightly more strength in one or two specializations. Fully geared Dragon should be slightly above no-gear maxed Monk in effective personal max mana and spell potency AFTER equipped enchantments, Apotheosis affixes/gems and Curios are counted.",
-    "loadout_comparator": "Appropriately-tiered armor, weapons/tools, enchanting, Apotheosis affixes/reforges/socketed gems, Curios and legal casting equipment on the non-Monk. Monk uses no worn gear and no weapons in strict Guardian benchmark. No naked-to-naked comparison as the target.",
+    "loadout_comparator": "Ordinary maxed Monk native/Tyz with legal Curios but no conventional armor/weapons versus full specialist with armor/enchantments/Apotheosis plus legal Curios; separate strict no-worn Monk Chaos Guardian solo trial.",
     "evaluation": "Compare real observed full-build endgame performance, including effect procs and equipment restrictions. Same progress milestones and normalized MXP/SP budgets; realistic accessible gear tier.",
     "test_status": "conceptual target, not approved numeric parity and not tested",
     "canonical_detail": "docs/tyzs/nine-tree-strength-first-pass-v1.json"
@@ -2262,7 +2263,7 @@
     "default_ratio": 0.85,
     "max_ratio": 0.9,
     "sea_luck_ratio": 0.8,
-    "comparator": "True gearless capped Monk full noncombat output relative to final comparable fully geared optimized specialist output, including all enchants, Apotheosis affixes/gems, Curios and enchanted tools",
+    "comparator": "Ordinary maxed Monk (full intrinsic native/Core/Tyz plus legal Curios, NO conventional armor/weapons) compared to fully optimized specialist's endgame enchanted/Affixed gear and legal Curios. Same relative 80-90%, 80% Sea Luck. Strict no-worn Guardian challenge distinct.",
     "late_monk_candidates": [
       {
         "id": "tmm_monk_inner_fortune",
@@ -2280,7 +2281,8 @@
         "cap": 25
       }
     ],
-    "special_note": "Old 96-node identity catalog omits these three new budget candidates; canonical rank ledger has 168 total including the 32 stock skills. Do not use this old file as complete active rank list."
+    "special_note": "Old 96-node identity catalog omits these three new budget candidates; canonical rank ledger has 168 total including the 32 stock skills. Do not use this old file as complete active rank list.",
+    "equipment_source": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json"
   },
   "magic_affinity_2026_11_15": {
     "reference": "docs/tyzs/magic-affinity-nature-blood-other-v1.json",
@@ -2293,5 +2295,27 @@
     "lich_nature_penalty": "All verified player Nature spells including Botania, Roots Classic, Feywild, Iron Nature school; no machine penalty",
     "lich_blood_boost": "Source-verified personal Neo Vitae/EvilCraft blood effects and Iron Blood school, not all necromancy",
     "no_double_apply": "one final spell source and event attribution; no duplicated school buff on cross-cast"
+  },
+  "gear_ceiling_source_audit_2026_11_15": {
+    "report": "docs/TYZS-ENCHANTING-APOTHEOSIS-CURIOS-STACK-AUDIT-2026-11-15.md",
+    "snapshot": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json",
+    "status": "SOURCE_AUDITED_NOT_RUNTIME_MEASURED",
+    "counts": {
+      "affixes": 99,
+      "gems": 23,
+      "apothic_new_enchantments": 20,
+      "attribute_candidates": 142,
+      "pack_manifest_entries": 164
+    },
+    "upper_ceiling_factors": [
+      "Iesnium Anvil +1 above Apothic max from exact Occultism 1.227.0",
+      "Mythic affixes + rare 4 socket rolls + multi nonunique Perfect gems",
+      "Sigil of Supremacy affix level1.5 on all affixes",
+      "Sigil of Malice level2.0 on one affix usually resetting another",
+      "all eligible equipment enchantments, attribute operations and effective-level bonuses",
+      "Curios allowed for Monk AND other progression forms"
+    ],
+    "balance": "Ordinary comparison is Monk native+Tyz+LEGALLY EQUIPPED CURIOS (but no conventional armor/weapons) versus specialist native+Tyz+enchanted/Affixed armor/tools/weapons+legal Curios. Strict Chaos Guardian no-worn-items trial is separate, and still forbids Curios only for that trial.",
+    "luck": "Under normal affix values source theoretical 4-piece armor Luck 124 (or Royalty alternate 136.85) pre-Supremacy, pre-Malice and pre-hands, pre-Curios, pre-potions. NOT absolute cap. Monk cap Luck target 80% of measured equipped Sea final including its legal Curios, with Monk own legal Curios already counted."
   }
 }

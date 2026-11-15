@@ -41,12 +41,12 @@
     "lich_blood_nature_tradeoff": "Per-action classified Blood personal spells from source-verified Neo Vitae, EvilCraft, Iron's `irons_spellbooks:blood` and other legitimate blood effects gain the acquired Lich power. Personal Nature spell power from source-verified Botania Revived, Roots Classic, Feywild, Iron's `irons_spellbooks:nature` and other explicitly Nature-tagged player spells gets penalized AFTER positive modifiers by (1 - min(0.75, 0.02*entry_blood_ranks + 0.03*advanced_blood_ranks + 0.05*mastery_blood_ranks)). Do not penalize world machines, fauna/worldgen, automation or unrelated Other / demon / soul spells. Use docs/tyzs/magic-affinity-nature-blood-other-v1.json as design taxonomy; actual event IDs pending.",
     "monk_policy": "Do not add spirit projectile; Ars/Iron's spells supply range. Treasure Hand single native Fortune/Silk toggle, Fortune Tyz modifier licensed; reserved hotbar slot 1 and armor-lock toggle are non-purchasable native effects. All 40 source-bounded affix rarities have 2-5 special caps, not generalized to 5/10/25/50.",
     "overall_endgame_power_hierarchy": {
-      "primary_benchmark": "A fully progressed Monk, using no armor, Curios, worn equipment or weapons, must be approximately combat-equivalent OVERALL to another appropriately progressed specialist with progression-appropriate fully enchanted and Apotheosis-affixed gear. Monk remains the strongest intrinsic/no-gear specialist. No blanket rule that Monk beats fully geared characters.",
+      "primary_benchmark": "An ordinary maxed Monk with full native + Tyz skills and BEST LEGAL CURIOS (but no conventional armor or weapons) should be approximately combat-equivalent OVERALL to a similarly progressed specialist with appropriately-tiered enchanted/Apotheosis-enhanced conventional armor/weapons/tools PLUS best legal Curios. The strict solo Chaos Guardian challenge remains a separate zero-worn-items including Curios test.",
       "other_tree_limit": "Compared as complete BUILDS, equipped specialists can slightly exceed Monk in one or two intended niches and be moderately weaker elsewhere, yielding broadly comparable endgame ability, not dramatically lower aggregate power. Other trees without gear are not the primary comparator.",
       "narrow_niches_may_exceed_monk": "A fully specced AND appropriately geared dragon should have greater practical maximum mana and spell power than equipment-free maxed Monk, after counting all worn spell-stat items, Apotheosis affixes, gems and enchantments; Hunter's equipped quarry combat, Werewolf's equipped HP regeneration, and Sea Dragon's gear-inclusive Luck may likewise be superior.",
       "no_cross_tree_cheat": "Use a common/declared Core Skills baseline and comparable total native-form and Tyz skill progression. Exclude extra independent specialist trees from default one-to-one tests. Hybrid and mixed-form builds require separate budgets.",
-      "equipment_normalization": "Full comparable progression-tier loadouts are part of the non-Monk baseline, never omitted. Count armor, weapons, tools, enchanted gear, Apotheosis affixes/reforges/sockets and gems, Curios and other equipped/accessory bonuses, offhand/cast foci and legitimate consumables under a declared test profile. Do not compare against naked alternatives or selectively suppress gear effects.",
-      "monk_benchmark_loadout": "No worn armor, Curios or worn gear; no wielded weapons/tools/shields for the naked/unarmed Chaos Guardian acceptance test. Nonworn food/consumables and cast implements still require explicit ruling; do not invent an innate projectile.",
+      "equipment_normalization": "Curios are legal on BOTH Monk and specialist, subject to real slot registration, form and item eligibility. Other classes also count full armor, weapons/tools, enchantments, Apotheosis affixes/Supremacy/Malice, gems/reforges/socket rarity, magic equipment, buffs and tool access. Compare normal endgame builds separately from a strictly no-worn-item Monk solo challenge.",
+      "monk_benchmark_loadout": "ORDINARY MAXED MONK: no conventional armor or weapons, but legal Curios allowed. STRICT CHAOS GUARDIAN: no worn equipment including Curios and no weapons, preserving the earlier specific benchmark. Testing Curios is separate and NOT forbidden globally.",
       "comparison_dimensions": [
         "measured damage and boss kill time",
         "survivability in real encounter",
@@ -60,7 +60,7 @@
         "luck-aware loot economy"
       ],
       "target_relation": "Monk has greatest INTRINSIC full-kit, gear-independent combat capacity, but total Monk-vs-geared-specialist capability should be roughly balanced. Specialists may win slightly in their roles; Monk is not automatically 50% or 100% stronger when worn gear and enchantments are counted.",
-      "qualification": "No numerical balance achieved yet. Percentage values are skill tiers only, not full-build output guarantees; gear may materially shift every theoretical rank. Source-verified modifiers and head-to-head playtests required."
+      "qualification": "No numerical balance achieved yet. Percentage values are skill tiers only, not full-build output guarantees; gear may materially shift every theoretical rank. Source-verified modifiers and head-to-head playtests required. Source equipment ceiling audit at docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json; do not use a naked Monk as the only ordinary parity comparator when Curios are approved."
     },
     "chaos_guardian_monk_acceptance": {
       "desired_result": "A solo maxed Monk can finish the real Chaos Guardian encounter with no armor, no Curios, no other worn equipment and no weapons.",
@@ -78,7 +78,8 @@
         "The allowed consumables, spellcasting implements and non-worn inventory items are a later explicit playtest contract and are NOT silently assumed to be prohibited"
       ],
       "status": "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST",
-      "comparison_note": "This is a constraint on unarmed/unworn MONK viability, not proof that Monk should exceed appropriately geared characters in aggregate. Other forms get armor/Curios, enchanted weapons/tools and Apotheosis affixes in the balance comparison."
+      "comparison_note": "This is a constraint on unarmed/unworn MONK viability, not proof that Monk should exceed appropriately geared characters in aggregate. Other forms get armor/Curios, enchanted weapons/tools and Apotheosis affixes in the balance comparison.",
+      "curios_interpretation": "Curios are ALLOWED in normal Monk progression. The stricter owner request for Guardian solo with no worn equipment is retained as a separate testing profile that excludes Curios for that run, not as a global Monk Curios ban."
     },
     "sea_dragon_luck": {
       "signature": "Abyssal Fortune",
@@ -93,17 +94,17 @@
     "gear_normalized_balance_contract": {
       "decision_date": "2026-11-15",
       "status": "DESIGN_REQUIREMENT_NOT_MEASURED",
-      "question": "Can an equipment-free fully progressed Monk and a similarly progressed specialist in appropriately-tiered fully modified gear handle the same late-game challenge at broadly comparable effectiveness, with modest specialist advantages?",
+      "question": "Can an unarmored, unarmed fully progressed Monk wearing LEGAL CURIOS and a similarly progressed specialist wearing ALL legitimate enchanted/Apotheosis-enhanced gear AND legal Curios handle the same late-game challenge at broadly comparable effectiveness, with specialist advantages? Separately, can Monk win the strict Guardian challenge without ANY worn items?",
       "primary_monk_profile": {
         "progression": "Legitimately maxed standalone Monk native and Monk Tyz talents; identical universal Core Skills budget/reference where appropriate",
-        "worn_equipment": "NONE (empty armor, Curios/accessory slots and any other worn slots)",
+        "worn_equipment": "NO CONVENTIONAL ARMOR; LEGAL CURIOS ALLOWED, including compatible Draconic body Curio if verified. Strict Guardian variant has NONE including Curios.",
         "hand_equipment": "No held weapons or tools for strict naked/unarmed combat benchmark; decide precise spell implement and non-worn consumable policy before test",
-        "innate_power": "Monk-only natural defenses, physical skills, legal unarmed strikes/harvesting, and properly licensed affix-equivalent effects; never assume normal equipped Apotheosis gear bonuses are also present",
-        "challenge": "Real Chaos Guardian solo clear with legal authentic fight mechanics"
+        "innate_power": "Monk-only natural defenses, physical skills, legal unarmed strikes/harvesting, and properly licensed affix-equivalent effects; never assume normal equipped Apotheosis gear bonuses are also present Never assume an equipped Curio has an affix/socket category without runtime verification.",
+        "challenge": "Ordinary Monk+Curios is the gear-normalized comparison. Separate stricter Monk with fully empty armor, Curios/accessory and all worn slots must legally solo the real Chaos Guardian."
       },
       "comparison_specialist_profile": {
         "progression": "Legitimately comparable faction/species advancement and appropriately comparable Tyz SP budget, normalized Core Skills rank portfolio, not stacked other specialists",
-        "gear": "Appropriate-tier armor, weapon(s), tools, offhand/casting implement, Curios and other equipped accessories as legitimately usable by that form",
+        "gear": "Appropriate-tier armor, weapon(s), tools, offhand/casting implement, Curios and other equipped accessories as legitimately usable by that form. Include Sigil of Supremacy/rare Malice overcharge where legitimately obtainable; distinguish representative versus theoretical maximum.",
         "enhancements": "Allowed enchantments, Apotheosis affixes/reforges and sockets/gems on eligible pieces, item attributes, material progression and applicable legitimate buffs",
         "quality_band": "Representative achievable tier-appropriate endgame configuration, NOT naked, not unreasonably perfect RNG or unavailable hypothetical item builds",
         "accounting": "Measure final effective output with every actual modifier, cap, proc and source rule applied; do not treat labels such as 'Extreme' as a replacement for geared output measurement."
@@ -114,7 +115,9 @@
         "One or two designated specialist metrics may be slightly above Monk at full gear; the target for Dragon mana and spell power is ABOVE Monk after enchantments and Apotheosis are included",
         "Ungeared specialists are allowed to be far weaker than Monk, because gear-dependent scaling is intentional",
         "No double credit: Monk cannot simultaneously receive a conceptual replacement for gear affixes and actual worn affix bonuses while under equipment-free mode",
-        "Rank and affix stacking remain source-accurate; use measured gameplay outcomes for defense, magic and damage rather than naïvely adding displayed percent bonuses"
+        "Rank and affix stacking remain source-accurate; use measured gameplay outcomes for defense, magic and damage rather than naïvely adding displayed percent bonuses",
+        "Monk uses appropriate legal Curios in the standard build, specialist also uses appropriate legal Curios; neither receives automatic Affix/Gem stats on Curios without actual item-category support.",
+        "Strict Chaos Guardian zero-worn-item/no-weapons test is a separate challenge and does not ban Curios from ordinary Monk progression."
       ],
       "tests": [
         "Construct matching progress snapshots: advancement milestone, effective MXP/Tyz lifetime budget, class skill investment, magic mod unlocks, and resource time investment",
@@ -122,19 +125,22 @@
         "Measure spell power and mana against base, full gear-only, full skills-only, and gear-plus-skills snapshots to detect duplicated or multiplicative stacking",
         "Measure Chaos Guardian genuine survival/kill time/mobility/range and phase handling across at least Monk and Hunter/Dragon/Werewolf profiles without skipping phases",
         "Measure identical non-boss archetypes and special quarry/farm/resource scenarios; a slightly better niche is allowed but a universal-class blowout is not",
-        "Audit source attribution for rare Apotheosis modifier procs and enchanted tools instead of comparing tooltip percentages only"
+        "Audit source attribution for rare Apotheosis modifier procs and enchanted tools instead of comparing tooltip percentages only",
+        "Measure Monk base innate, Monk+legal Curios, specialist enchanted/Affixed armor/tools without Curios, specialist+Curios, and strict zero-worn gear Monk. Track gear model and source values.",
+        "Distinguish typical Mythic up-to-3-socket, exceptionally rolled four-socket, and Sigil of Supremacy/Malice overcharged gear. Explicitly test enchantment effect levels after Iesnium and gems."
       ],
       "pending_decisions": [
         "What constitutes a representative appropriately-tiered endgame gear set per class/mod",
         "Which non-worn items and casting implements are allowed for the strict Monk fight",
         "How to normalize per-class MXP/SP earned vs native progression gates",
-        "Quantitative acceptable parity band and specialist niche edge"
+        "Quantitative acceptable parity band and specialist niche edge",
+        "Determine standard Monk Curios slot layout, Draconic Evolution chestpiece legality and whether the owner wants to relax the separate strict Guardian zero-Curios trial."
       ]
     },
     "noncombat_parity_2026_11_15": {
       "source": "docs/tyzs/monk-noncombat-parity-v1.json",
       "status": "DESIGN_BENCHMARK_NOT_IMPLEMENTED",
-      "comparison": "legitimately maxed gearless Monk versus same-stage fully optimized LEGALLY geared specialist including armor/tools/Curios, enchantments, affixes/gems and normal source",
+      "comparison": "ordinary maxed Monk intrinsic + same best legally compatible Curios, NO conventional armor or weapon, versus comparably progressed specialist with enchanted/Affixed gear/tools AND best legal Curios; strict Guardian zero-Curios profile remains separate",
       "ratio": {
         "min": 0.8,
         "default": 0.85,
@@ -147,8 +153,9 @@
         "tmm_monk_inner_reservoir",
         "tmm_monk_worldly_cultivation"
       ],
-      "rank_calibration": "Monk rank step = max(0, ratio*specialist_full_geared - already_present_monk_plus_core)/max_rank, after source-specific rounding; do not use %-of-vanilla-zero for Luck.",
-      "risk": "If +100% tier base Dragon mana/Sea Luck exceeds plausible Monk values with gear, the class source baselines must be recalibrated after exact-mod equipment audit. New Monk skills are not installed."
+      "rank_calibration": "Let full specialist X include spec+armor/ench/affixes/gems+legal Curios, and Monk current M include native/Core/earlier skills+legal Curios. New Monk rank slope = max(0, ratio*X - M)/remaining_ranks under true source semantics. Avoid Curios double credit and percent-of-zero Luck.",
+      "risk": "If +100% tier base Dragon mana/Sea Luck exceeds plausible Monk values with gear, the class source baselines must be recalibrated after exact-mod equipment audit. New Monk skills are not installed.",
+      "curios_source": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json"
     },
     "magic_affinity_contract": {
       "source": "docs/tyzs/magic-affinity-nature-blood-other-v1.json",
@@ -168,6 +175,19 @@
         "JAWR herb/blood effects classified individually, addon Forbidden Magic necromancy Other by default"
       ],
       "lich_nature_and_wolf": "Lich nature penalty and Werewolf nature bonuses only on legitimate player Nature magic, not just Botania and Roots; catalog gets detailed matrix."
+    },
+    "equipment_ceiling_2026_11_15": {
+      "source": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json",
+      "report": "docs/TYZS-ENCHANTING-APOTHEOSIS-CURIOS-STACK-AUDIT-2026-11-15.md",
+      "status": "SOURCE_AUDIT_NO_RUNTIME_REGISTRY",
+      "source_affixes": 99,
+      "source_gems": 23,
+      "apothic_source_enchants": 20,
+      "manifest_entries": 164,
+      "attribute_candidates": 142,
+      "iesnium": "Apothic configured maximum +1 from exact Occultism 1.227.0 code; additive enchant affixes, gems and 1.5/2.0 affix overcharge separately account",
+      "curios": "legal for Monk and specialists; user Curios permission is NOT nullified by Monk conventional armor/weapon bans",
+      "challenge": "strict Guardian no worn item including Curios remains separate case"
     }
   },
   "trees": [
@@ -4095,7 +4115,8 @@
               "notes": [
                 "Luck is not Fortune/Looting; vanilla Luck baseline often zero; use true source-verified Luck attribute, not arbitrary percent of zero.",
                 "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
-                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue.",
+                "Calibration subtracts source-verified Monk Curios contribution from 80/85% target, rather than adding Curios ON TOP of fully budgeted Monk innate skill."
               ]
             },
             {
@@ -4119,7 +4140,8 @@
               "notes": [
                 "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
                 "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
-                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue.",
+                "Calibration subtracts source-verified Monk Curios contribution from 80/85% target, rather than adding Curios ON TOP of fully budgeted Monk innate skill."
               ]
             },
             {
@@ -4143,7 +4165,8 @@
               "notes": [
                 "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
                 "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
-                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue.",
+                "Calibration subtracts source-verified Monk Curios contribution from 80/85% target, rather than adding Curios ON TOP of fully budgeted Monk innate skill."
               ]
             }
           ]
@@ -4189,7 +4212,8 @@
         "Monk is absolute top of overall personal combat / survivability / movement / adaptability power hierarchy. No other tree can be comparable in all those domains at once. A specialist can rival Monk only in one or two designated niches.",
         "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt.",
         "Balance all Monk total effects, including innate gear/Apotheosis-like affix substitutes, AGAINST a comparably progressed specialist wearing appropriately-tiered enchantable/Affixed armor, weapons/tools and Curios. Monk is not required to defeat the FULLY GEARED equivalent in overall effective power; it must be approximately competitive.",
-        "Maxed Monk noncombat sources target 80%-90% of FULLY GEARED best comparable specialist, not 80%-90% of innate Tyz bonus. Sea Luck explicitly 0.8× equipped Sea Luck."
+        "Maxed Monk noncombat sources target 80%-90% of FULLY GEARED best comparable specialist, not 80%-90% of innate Tyz bonus. Sea Luck explicitly 0.8× equipped Sea Luck.",
+        "Curios are explicitly legal on Monk. Ordinary noncombat/combat parity counts Monk+legal Curios versus fully enchanted/Affixed geared specialist+legal Curios; keep optional STRICT no-worn-items Guardian trial separately."
       ]
     }
   ],
@@ -4211,5 +4235,5 @@
     "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
     "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
   ],
-  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains. For noncombat metrics, gearless capped Monk aims for 80%-90% of full geared specialist, Sea Luck exactly 80%; this adds three Monk late candidate skills (168 total) requiring source calibration. Nature/Blood/Other affinity tags are source-scoped; Iron spells split by registered school, Goety/Occultism soul/demon Other, Nature penalty covers all verified personal nature spells."
+  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains. For noncombat metrics, gearless capped Monk aims for 80%-90% of full geared specialist, Sea Luck exactly 80%; this adds three Monk late candidate skills (168 total) requiring source calibration. Nature/Blood/Other affinity tags are source-scoped; Iron spells split by registered school, Goety/Occultism soul/demon Other, Nature penalty covers all verified personal nature spells. Equipment ceiling audit: 99 affixes/23 gems/20 Apothic enchants and Supremacy/Malice + Iesnium. Monks wear Curios in normal builds; strict Chaos zero-worn challenge remains separate. Skill-level targets require equipped including Curios actual source values."
 }

@@ -76,11 +76,13 @@ def verify() -> None:
     # Canonical owner ceiling: Monk overall-combat apex, Sea Dragon absurd Luck niche.
     hierarchy = data["balancing"]["overall_endgame_power_hierarchy"]
     assert "Monk" in hierarchy["primary_benchmark"]
-    assert "appropriately progressed specialist" in hierarchy["primary_benchmark"]
+    assert "similarly progressed specialist" in hierarchy["primary_benchmark"]
     gear = data["balancing"]["gear_normalized_balance_contract"]
     assert gear["status"] == "DESIGN_REQUIREMENT_NOT_MEASURED"
     assert "Monk" in gear["question"]
-    assert "NONE" in gear["primary_monk_profile"]["worn_equipment"]
+    assert "LEGAL CURIOS ALLOWED" in gear["primary_monk_profile"]["worn_equipment"]
+    assert "no Curios" in data["balancing"]["chaos_guardian_monk_acceptance"]["desired_result"]
+    assert "Curios are ALLOWED" in data["balancing"]["chaos_guardian_monk_acceptance"]["curios_interpretation"]
     assert "enchantments" in gear["comparison_specialist_profile"]["enhancements"]
     assert "Apotheosis" in gear["comparison_specialist_profile"]["enhancements"]
     assert "Curios" in gear["comparison_specialist_profile"]["gear"]
@@ -108,7 +110,7 @@ def verify() -> None:
     assert luck["specialist_skill"] == "tmm_dragon_sea_abyssal_fortune"
     assert luck["monk_skills"] == ["tmm_monk_inner_fortune"]
     assert luck["target_ratio"] == 0.8
-    assert parity["luck_example"]["monk_cap_50_curve"][-1]["monk_index"] == 80
+    assert parity["luck_example"]["monk_cap_50_curve"][-1]["monk_with_curios_index"] == 80
     assert data["balancing"]["noncombat_parity_2026_11_15"]["ratio"]["default"] == 0.85
     for sid, strength, cap in (
         ("tmm_monk_inner_fortune", "Extreme", 50),
@@ -136,6 +138,21 @@ def verify() -> None:
     manifest = json.loads((ROOT / "manifest/mods.json").read_text(encoding="utf-8"))
     installed_ids = {mod["id"] for mod in manifest["mods"]}
     assert set(names) <= installed_ids, f"Affinity registry missing manifest IDs: {set(names)-installed_ids}"
+
+    gear_audit = json.loads((ROOT / "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json").read_text(encoding="utf-8"))
+    assert gear_audit["status"] == "SOURCE_AUDIT_PRELIMINARY_NOT_RUNTIME_VERIFIED"
+    assert gear_audit["apotheosis"]["source_definition_count"] == 99
+    assert gear_audit["gem_catalog"]["count"] == 23
+    assert gear_audit["apothic_custom_enchantments"]["count"] == 20
+    assert gear_audit["manifest_screen"]["count"] == 164
+    assert gear_audit["manifest_screen"]["enabled_count"] == 155
+    assert gear_audit["curios_policy"]["standard_monk_allowed"]
+    assert gear_audit["apotheosis"]["overcharge"]["sigil_of_supremacy"]["level"] == 1.5
+    assert gear_audit["apotheosis"]["overcharge"]["sigil_of_malice"]["level"] == 2.0
+    assert len(gear_audit["apotheosis"]["source_affix_groups"]) >= 20
+    assert sum(g["count"] for g in gear_audit["apotheosis"]["source_affix_groups"].values()) == 99
+    assert "MONK" in data["balancing"]["overall_endgame_power_hierarchy"]["monk_benchmark_loadout"]
+    assert data["balancing"]["equipment_ceiling_2026_11_15"]["source_affixes"] == 99
 
     assert "tmm_monk_spirit_bolt_mastery" not in ids
     assert "tmm_monk_unarmed_precision" in ids

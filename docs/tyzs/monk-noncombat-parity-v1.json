@@ -3,8 +3,8 @@
   "id": "tmm:gear_normalized_monk_noncombat_parity_v1",
   "status": "DESIGN_TARGET_ONLY_NOT_MEASURED",
   "created": "2026-11-15",
-  "governing_decision": "At maximum legitimate Monk progression without worn gear, every genuinely comparable noncombat capability should be 80-90% of the optimized appropriately-geared specialist's equivalent output; use 85% by default. Sea Dragon Luck is explicitly 80%.",
-  "applies_to": "Directly comparable personal noncombat capabilities, not mandatory grants of class-locked blood/lich/dragon physiology; separate combat/health/healing/boss balance. A special player's gear/equipment restriction must be honored by source.",
+  "governing_decision": "At max Monk progression with no conventional armor/weapons but WITH legal Curios, every comparable NONCOMBAT final metric should equal 80–90% of fully equipped specialist skills+armor/tools/enchants/affixes/gems AND legal Curios. Use 85% default, 80% for Sea Dragon Luck. Strict Guardian no-worn gear/Curios challenge is a separate test.",
+  "applies_to": "Same-source personally usable comparable noncombat outcomes including real legal Curios on BOTH players, not class-locked transformations or arbitrary machinery. Excludes combat/health/boss scaling; no automatic Apothic gem slot support for Curios.",
   "ratios": {
     "min": 0.8,
     "default": 0.85,
@@ -12,53 +12,61 @@
     "sea_dragon_luck": 0.8
   },
   "formula": {
-    "specialist_full": "F_S = measured(native_specialist + permanent_skill_ranks + legal_gear_enchants_Apotheosis_gems_Curios + relevant_buffs), honoring the actual engine's additive/multiplicative operations; not simple sum of tooltips",
-    "monk_target": "F_M(capped) = target_ratio * F_S(fully_optimized_appropriate_tier); subtract innate Monk + common Core Skills contribution to determine the remaining Monk-specific skill budget",
-    "monk_rank_curve": "For a proposed N-rank incremental Monk skill: additional_monk_at_rank(r) = max(0, target_ratio*F_S - F_M_before_this_skill)*r/N for 0<=r<=N, recalibrate nonlinearly for discrete level, proc, range, claim and event-capped traits",
+    "specialist_full": "F_S = actual measured complete specialist property with legally enhanced armor/tools, all source enchantment+Iesnium+affix including Sigil overcharge+gems, legal Curios, native/Tyz ranks, relevant buffs and caps",
+    "monk_target": "F_M = measured Monk native+Core+earlier Monk talents+LEGAL CURIOS. New Monk innate rank budget = max(0,target_ratio×F_S−F_M). Curios are not forbidden to Monk and must never be added twice.",
+    "monk_rank_curve": "Provisional Monk rank (r) contributes max(0, target_ratio*F_S - existing Monk including Curios)*r/N to eligible source effect, then apply per-effect rounding/discrete/caps; distinguish strict no-worn boss test.",
     "when_baseline_zero": "Absolute stat units, explicit nonzero reference or observable output distribution required; never multiply 0 vanilla Luck by an arbitrary percent and call that progression",
     "spell_and_gear": "All source-specific final attributes/modifiers must be measured in legitimate endgame gear before adding skill effects; no magic industrial tanks or passive machine budgets"
   },
   "calibration_state": "NO VERIFIED NUMERIC X VALUES YET. The 100-point example is a normalized index only and does not represent raw Minecraft Luck or an actual equipped Sea Dragon.",
   "luck_example": {
-    "unit": "hypothetical normalized Luck index, not real game Luck",
+    "unit": "hypothetical normalized Luck INDEX, not actual MC minecraft:generic.luck",
     "optimized_sea_dragon_total": 100,
     "hypothetical_sea_skill_contribution_at_50": 75,
-    "hypothetical_sea_gear_and_other_contribution": 25,
+    "hypothetical_sea_conventional_armor_tool_contribution": 15,
+    "hypothetical_both_players_legal_curios": 10,
+    "monk_curios_baseline": 10,
     "monk_target_at_50": 80,
-    "monk_stage_baseline": 0,
+    "monk_innate_needed_at_50": 70,
     "monk_cap_50_curve": [
       {
         "rank": 0,
         "sea_skill_only_index": 0,
-        "monk_index": 0
+        "monk_innate_index": 0,
+        "monk_with_curios_index": 10
       },
       {
         "rank": 1,
         "sea_skill_only_index": 1.5,
-        "monk_index": 1.6
+        "monk_innate_index": 1.4,
+        "monk_with_curios_index": 11.4
       },
       {
         "rank": 5,
         "sea_skill_only_index": 7.5,
-        "monk_index": 8
+        "monk_innate_index": 7,
+        "monk_with_curios_index": 17
       },
       {
         "rank": 10,
         "sea_skill_only_index": 15,
-        "monk_index": 16
+        "monk_innate_index": 14,
+        "monk_with_curios_index": 24
       },
       {
         "rank": 25,
         "sea_skill_only_index": 37.5,
-        "monk_index": 40
+        "monk_innate_index": 35,
+        "monk_with_curios_index": 45
       },
       {
         "rank": 50,
         "sea_skill_only_index": 75,
-        "monk_index": 80
+        "monk_innate_index": 70,
+        "monk_with_curios_index": 80
       }
     ],
-    "note": "This example only demonstrates how to back-solve per-rank Monk values from FINAL Sea with full gear. Real Luck attribute/loot calculations are source-specific and will not share these invented index units."
+    "note": "Sea 75 skills+15 armor/tool+10 legal Curios=100, Monk 10 legal Curios+70 innate=80. Numbers are arbitrary illustrative index units, not actual Luck values. Curios set need not be same item if form restrictions differ; measure their real effects."
   },
   "benchmarks": [
     {
@@ -309,15 +317,23 @@
     "Monk has no native intrinsic capacity equal to 85% of full geared Dragon: add late `tmm_monk_inner_reservoir` candidate but do not activate without real per-mod mana baselines.",
     "Monk's native Gardening/Hazard/Fortune and proper harvest tier gates may not match optimized Forest crop output: add `tmm_monk_worldly_cultivation` candidate, then benchmark and avoid duplicate harvest.",
     "The 1.2^P XP divisor makes 50-rank skills exceptionally expensive; decide whether all-tree Monk max is a reachable survival target and whether endgame fixed MXP milestones cover it.",
-    "No actual source-verified gear stat maximum measured for Luck, manacap, farming tools or high-tier attributes. Raw x is unknown until pinned mechanics/gear are audited."
+    "No actual source-verified gear stat maximum measured for Luck, manacap, farming tools or high-tier attributes. Raw x is unknown until pinned mechanics/gear are audited.",
+    "Affix overcharge Sigil of Supremacy 1.5 / Malice 2.0 and excessive gem Luck can make Sea fully optimized X enormous; preserve 0.8 ratio as design target only, never commit untested raw Monk Luck."
   ],
   "qa": [
     "Record per-mod gearless/gear-only/skill-only/full-build baseline and actual final attribute at representative rank checkpoints.",
     "For Sea Luck verify genuine supported player Luck attribute and all real loot contexts that read it, then pick a buildable fully optimized gear template and compute target capped Monk=0.8×measured Sea X.",
     "For each noncombat row, run same task with equivalent legal source, claims and world conditions, including source-verified debits and no double-dip.",
     "Ensure Monk abilities suspend when wearing conventional armor or weapons as required, and that armor-lock self-damage/safe-swap rules remain separate.",
-    "Do not apply 85% to all magic schools without source support or automatically grant species-locked blood/hybrid/immortality."
+    "Do not apply 85% to all magic schools without source support or automatically grant species-locked blood/hybrid/immortality.",
+    "On same player record no Curios / each Curio individually / full Curios for Monk and specialist before deriving Inner Fortune baseline; separate strict Guardian zero-worn trial."
   ],
   "related_magic_affinity_registry": "docs/tyzs/magic-affinity-nature-blood-other-v1.json",
-  "related_tree_catalog": "docs/tyzs/nine-tree-strength-first-pass-v1.json"
+  "related_tree_catalog": "docs/tyzs/nine-tree-strength-first-pass-v1.json",
+  "curios_policy": {
+    "normal_monk": "Curios are allowed; compute actual Monk base and legal Curio contribution, including potential Draconic chestpiece body slot only after source/client verification",
+    "normal_specialist": "Includes full enchanted/Affixed weapons/armor and legal Curios; no implied Curio affixability",
+    "strict_guardian": "Preserve separate zero-worn-items incl Curios, no-weapons Monk Chaos Guardian challenge from prior request",
+    "gear_ceiling_audit": "docs/tyzs/gear-enchant-affix-curios-ceiling-audit-v1.json"
+  }
 }
