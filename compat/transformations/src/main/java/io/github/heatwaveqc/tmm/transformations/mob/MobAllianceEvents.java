@@ -14,7 +14,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.MobType;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
@@ -24,7 +23,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 /**
  * Cross-mod mob neutrality, without altering damage, drops or native AI goals.
- * Applies to any naturally undead MobType or the vanilla/custom entity tags.
+ * Applies to the vanilla undead entity tag and explicit cross-mod tags.
  * The two dragon relationships are tag-driven and become operative when
  * actual dragon entity types are assigned by a future mod integration.
  */
@@ -55,8 +54,7 @@ public final class MobAllianceEvents {
     }
 
     private static boolean undead(Mob mob) {
-        return mob.getMobType() == MobType.UNDEAD
-                || mob.getType().is(EntityTypeTags.UNDEAD)
+        return mob.getType().is(EntityTypeTags.UNDEAD)
                 || mob.getType().is(EXTRA_UNDEAD);
     }
 
