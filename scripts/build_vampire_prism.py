@@ -41,10 +41,10 @@ def main(bootstrap: str, output_dir: str, snapshot: str, our_jar: str) -> None:
                 "All vampire features are OFF by default. Enable only after\n"
                 "reading docs/VAMPIRE-ASCENSION-V2.md in the GitHub repo.\n"
                 "Use /tmmtransform vampire for read-only live metrics.\n"
-                "Ordinary infection gives Vampirism only; Lilith ascends to JAWR.\\n"
-                "JAWR hunger/healing remain native. Either cure must clear both.\\n"
-                "New worlds disable fang infection; existing worlds must edit config.\\n"
-                "Sunlight and HUD behavior need CLIENT gameplay verification.\\n"
+                "Ordinary infection gives Vampirism only; Lilith ascends to JAWR.\n"
+                "JAWR hunger/healing remain native. Either cure must clear both.\n"
+                "New worlds disable fang infection; existing worlds must edit config.\n"
+                "Sunlight and HUD behavior need CLIENT gameplay verification.\n"
                 f"Snapshot: {snapshot}\n"
                 f"Our bridge SHA256: {hashlib.sha256(data).hexdigest()}\n")
     with zipfile.ZipFile(target) as z:
