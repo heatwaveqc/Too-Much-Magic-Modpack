@@ -1175,7 +1175,7 @@ hash = "fd28afd0c1394c8505c797581a7f715ddecc46088c52cb17d8ea98224b814e32"
 
 [[files]]
 file = "kubejs/startup_scripts/drinkable_blood_vial.js"
-hash = "a6fc652579dbf1cd552fe400862659f92a39a12d99833d381d787cdba6550dab"
+hash = "c6917b25e8d9f259f072cb180b1c63ed03f4d24e55a9c707806124da4e48eb84"
 
 [[files]]
 file = "kubejs/data/hexerei/recipe/willow_broom_from_mixing_cauldron.json"
