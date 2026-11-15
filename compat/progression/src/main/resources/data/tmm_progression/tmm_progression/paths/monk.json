@@ -74,6 +74,30 @@
       ],
       "xp": 50,
       "points": 2
+    },
+    {
+      "id": "tmm_progression:dragon_defeated",
+      "criteria": [
+        {
+          "event": "advancement",
+          "target": "minecraft:end/kill_dragon",
+          "count": 1
+        }
+      ],
+      "xp": 200,
+      "points": 2
+    },
+    {
+      "id": "tmm_progression:blind_ordeal_victory",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:blind_hostile_kill",
+          "count": 1
+        }
+      ],
+      "xp": 100,
+      "points": 2
     }
   ],
   "skills": [
@@ -502,7 +526,10 @@
           "attribute": "minecraft:step_height",
           "operation": "add_value",
           "per_rank": 0.5,
-          "unarmored": true
+          "unarmored": true,
+          "params": {
+            "requires_not_sneaking": "true"
+          }
         }
       ]
     },
@@ -523,6 +550,64 @@
           "operation": "add_multiplied_base",
           "per_rank": 0.12,
           "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "minecraft:movement_speed",
+          "operation": "add_multiplied_base",
+          "per_rank": 0.12,
+          "unarmored": true,
+          "params": {
+            "requires_sprinting": "true"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:water_walking",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        10
+      ],
+      "effects": [
+        {
+          "type": "water_walk"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:momentum_glide",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        20
+      ],
+      "effects": [
+        {
+          "type": "momentum_glide",
+          "params": {
+            "requires_milestone": "tmm_progression:dragon_defeated"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:optional_blindness_ordeal",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        17
+      ],
+      "effects": [
+        {
+          "type": "blindness_ordeal"
         }
       ]
     }
