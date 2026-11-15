@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "additional_attribute_candidates",
+  "count": 2,
+  "attributes": [
+    {
+      "id": "neoforge:swim_speed",
+      "source_mod": "neoforge",
+      "class": "numeric_candidate",
+      "source_status": "identified_as_apotheosis_aquatic_attribute_target_not_yet_live_dumped",
+      "status": "not_yet_live_dumped",
+      "notes": "Apotheosis Aquatic affix targets neoforge:swim_speed; check actual player attribute and bounds"
+    },
+    {
+      "id": "neoforge:creative_flight",
+      "source_mod": "neoforge",
+      "class": "boolean_external_only",
+      "source_status": "identified_as_apotheosis_unbound_attribute_target_not_yet_live_dumped",
+      "status": "not_yet_live_dumped",
+      "notes": "Apotheosis Unbound grants flight, but TMM Monk MUST NOT. External Draconic Curio source only."
+    }
+  ]
+}

@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000100001", type: "xp", xp: 5 }
-				{ id: "544D702000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D702000100002", type: "item", item: { id: "minecraft:sea_pickle", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D401000200001", type: "checkmark" }
@@ -30,7 +30,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000200001", type: "xp", xp: 5 }
-				{ id: "544D702000200002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D702000200002", type: "item", item: { id: "minecraft:brush", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D802000200000", type: "checkmark" }
@@ -72,7 +72,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000500001", type: "xp", xp: 5 }
-				{ id: "544D702000500002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 1 }
+				{ id: "544D702000500002", type: "item", item: { id: "minecraft:shears", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D802000500000", type: "checkmark" }
@@ -86,7 +86,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000600001", type: "xp", xp: 5 }
-				{ id: "544D702000600002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D702000600002", type: "item", item: { id: "minecraft:glow_ink_sac", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D802000600000", type: "checkmark" }
@@ -100,7 +100,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000700001", type: "xp", xp: 5 }
-				{ id: "544D702000700002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D702000700002", type: "item", item: { id: "minecraft:ink_sac", count: 1 }, count: 4 }
 			]
 			tasks: [
 				{ id: "544D802000700000", type: "checkmark" }
@@ -212,7 +212,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D602000F00001", type: "xp", xp: 5 }
-				{ id: "544D702000F00002", type: "item", item: { id: "minecraft:cookie", count: 1 }, count: 1 }
+				{ id: "544D702000F00002", type: "item", item: { id: "minecraft:sea_pickle", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D802000F00000", type: "checkmark" }
