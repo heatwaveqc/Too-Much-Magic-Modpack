@@ -9,14 +9,14 @@
 - A Lich may acquire the other lichdom to become an Archlich.
 - Dragon and one lichdom may form a Dracolich, regardless of acquisition order; dragon plus both liches is invalid.
 - Hunter is exclusive, but an expressly voluntary replacement ceremony can remove Hunter and add one supernatural state atomically.
-- Abomination requires Vampire + Werewolf + both lichdoms. From Archlich, the vampire and werewolf states **must be committed atomically**; two partial intermediate combinations are invalid.
+- Abomination requires **Vampire + Werewolf only**, with no lich prerequisite. Explicit hybridization from either existing parent state is a special transition; ordinary cross-infection remains blocked. Lich stacking on Abomination is undecided, not implicitly enabled. Native JAWR vampire/lycanthrope coexistence must be audited before implementing any new hybrid engine.
 - Ordinary acquisitions cannot remove a state. Cures must be explicitly classified as controlled cures and verified per provider. No data cleanup is currently implemented.
 - Unknown or conflicting snapshots always fail preflight; no ticking purge or silent mutation. An existing conflict requires backup and administrative review.
 
 ## Implemented this pass
 
 - `TransitionPolicy.assess(before, after, kind)` with `NORMAL`, `CONTROLLED_CURE`, `VOLUNTARY_HUNTER_REPLACEMENT`, `ABOMINATION_RITUAL`.
-- Exhaustive 256-result-state unit test plus checks for upgrades, cures, hunter transitions, Archlich and Abomination.
+- Exhaustive 256-result-state unit test plus checks for upgrades, cures, hunter transitions, Archlich and both directions of an Abomination ritual. These are pure classification/preflight tests, not evidence that JAWR currently supports hybrid runtime behavior.
 - Two read-only Vampirism 1.10.x observers: vampire and hunter factions. These use the public `VampirismAPI.factionPlayerHandler(Player)`, `IFactionPlayerHandler.getCurrentFaction()` and `IFaction.getID()` shape from official 1.21 source; not the incompatible 2.x/FactionApi API.
 - `/tmmtransform status` reports each provider as PRESENT, ABSENT, or UNKNOWN.
 
