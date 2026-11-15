@@ -6,7 +6,8 @@
 - [Staged Vampirism configured-tree-shaped preview](preview/monk_level.configured_tree.PREVIEW.json) (NOT installed)
 - [Node ID / Java-skill registry index](preview/skill-node-index.PREVIEW.json) (NOT installed)
 - [Monk-only Tyz supplement](primary-tyz-monk-only-skeleton-v1.json) — 7 Monk-licensed ranks and 40 bounded affix families, all inactive
-- [Reserved fist slot implementation contract](fist-slot-lock-contract-v1.json) — passive convenience, not purchasable, not yet wired
+- [Reserved fist slot implementation contract](fist-slot-lock-contract-v1.json) — first hotbar slot (`1` key), free passive, not yet wired
+- [No-Armor Lock trait contract](armor-lockout-trait-v1.json) — free, default-ON toggle preventing automatic armor equips, not yet wired
 
 ## Important owner changes
 
@@ -32,11 +33,22 @@ Glass Touch remains a distinct early glass-only harvesting interaction; it is **
 
 The Monk gains a **free passive fist slot** upon joining the faction — not a branch node or another native SP purchase.
 
-The default is **hotbar slot 9, inventory index 8**. When the Monk selects it, the main hand stays genuinely empty, suitable for punching/mining, while the other eight hotbar positions can hold Ars spellbooks, Iron's spellbooks, magic staffs or food. A small translucent fist overlay may identify the otherwise-empty slot but **must not be an actual inventory item**. The slot remains protected even if conventional equipment temporarily suppresses a Monk technique.
+The default is **hotbar slot 1, inventory index 0** — the far-left position, selected with the **numeral 1 key**. When the Monk selects it, the main hand stays genuinely empty, suitable for punching/mining, while the other eight hotbar positions can hold Ars spellbooks, Iron's spellbooks, magic staffs or food. A small translucent fist overlay may identify the otherwise-empty slot but **must not be an actual inventory item**. The slot remains protected even if conventional equipment temporarily suppresses a Monk technique.
 
 Real inventory lockout is a server-authoritative **inventory feature** and must cover pickup routing, GUI click/drag/shift-click, number-key swaps, /give, creative and modded menu injections, plus client sync and logout/death. Items already in the position at initiation must be transferred *atomically* if they fit; **if there is no room, initiation must not destroy or drop them or silently continue**. Any mod bypass must be recovered without loss/dupes. If all other inventory slots are full, picked-up items must remain on the ground.
 
 **The contract is staged but not implemented in the current test build.** A periodic tick moving items after the fact would *not* satisfy a hard lockout. Read [the full acceptance matrix](fist-slot-lock-contract-v1.json) before hooking menus/inventory code.
+
+### Optional No-Armor Lock (ON by default)
+
+**No-Armor Lock** is a second **free, non-purchasable Monk faction trait**, independent of the permanently reserved fist slot. It is a protective control for graveyard/gravestone recovery and mods that auto-equip gear.
+
+- **ON (default):** The four vanilla armor/equipment slots (head, chest, legs, feet) cannot accept *any* item. The player may still carry armor in ordinary inventory, hold legal magic focuses, and use **Curios** (including legal Draconic flight gear); an Elytra in the vanilla chest slot is blocked. Equipment restored by a graveyard mod must go to cargo inventory or remain safely recoverable at its source, not silently get equipped.
+- **OFF:** Armor can be equipped manually or by ordinary mod restore behavior. This is **not** permission to wear conventional armor while keeping Monk bonuses: current `MonkEligibility` still disables qualifying Monk abilities whenever armor is actually worn, whether lock is ON or OFF. Removing the armor re-enables eligibility.
+- **Toggling ON with armor worn:** Only enable after every equipped item can be legally and atomically moved intact into permitted inventory space. Full inventory, Curse of Binding, or an unequip restriction must produce a clear refusal without item drops, deletion, duplication, or bypassing the restriction.
+- **State and interface:** Server-authoritative, per-character persisted ON/OFF with a configurable keybind or settings toggle and actionbar/HUD status; do not use a skill point, item or GUI-only illusion. Lock protects against GUI clicks, shift-click, equipment actions, direct inventory writes, modded grave restoration, and dispensers; Curios are explicitly unaffected.
+
+The [armor lock contract](armor-lockout-trait-v1.json) records the complete pre-equipment interception, post-mutation fallback and no-loss acceptance requirements. NeoForge's `LivingEquipmentChangeEvent` fires **after** an equipment change, so listening to it alone cannot prevent a brief armor equip and Monk power shutdown. The protective feature is **not yet active**; its pure Java rules and unit tests do not constitute actual equip interception. The near-term six-skill pilot is unchanged. When implemented, inventory lock and fist lock remain independent: disabling Armor Lock must never release hotbar slot 1.
 
 ## Architecture and world progression
 
