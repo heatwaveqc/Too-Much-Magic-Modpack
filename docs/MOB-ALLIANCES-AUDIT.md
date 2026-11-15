@@ -14,11 +14,11 @@
 
 | Origin | Entities / groups | Notes |
 | --- | --- | --- |
-| Minecraft vanilla | `EntityTypeTags.UNDEAD` or `MobType.UNDEAD` | Covers ordinary zombies, skeletons, drowned, husks and other naturally undead |
+| Minecraft vanilla | `EntityTypeTags.UNDEAD` or `EntityTypeTags.UNDEAD` | Covers ordinary zombies, skeletons, drowned, husks and other naturally undead |
 | Eidolon: Repraised 1.21.1 | `eidolon_repraised:zombie_brute`, `eidolon_repraised:wraith`, `eidolon_repraised:giant_skeleton`, `eidolon_repraised:necromancer` | Eidolon source places these four under `minecraft:undead`; the explicit optional tag provides a fallback |
-| Goety 3.2.x | `goety:wraith`, `goety:border_wraith`, `goety:muck_wraith`, `goety:skeleton_wolf` | Verified Goety 1.21.1 registry IDs; additional undead variants should be included if their MobType/vanilla tags already say undead |
+| Goety 3.2.x | `goety:wraith`, `goety:border_wraith`, `goety:muck_wraith`, `goety:skeleton_wolf`, `goety:haunted_armor`, `goety:bone_spider`, `goety:zombie_ravager` | Verified Goety 1.21.1 registry IDs. Additional variants may already appear under vanilla undead tags |
 | Goety lich | `za.co.infernos.goety.utils.LichdomHelper.isLich(Player)` | Optional reflective call to the Goety 1.21.1 native lichdom accessor; requires validation with the pack-pinned 3.2.2 JAR |
-| Feywild 5.6.4 | Most living entities in `feywild` namespace | Provisionally assigned to fae, with boss exceptions; needs manual review of populated registry census |
+| Feywild 5.6.4 | 14 verified non-boss types: seasonal pixies (4), seasonal tree ents (4), shroomling, mandragora, bellsnickel, bee knight, bee mount, sprite | Explicit `feywild` entity registry IDs from SaphieNyako/Feywild source. `feywild:titania`, `feywild:mab`, `feywild:oberon`, and `feywild:ashen_lord` are excluded as court bosses. The mooshroom cow is not classed as fae |
 | Goety demon group | `goety:hellhound`, `goety:damned` | Provisional demon candidates, explicitly tagged, not a claim all Goety monsters are demons |
 
 Source references: `Alexthw46/Eidolon-Repraised` branch `1.21.1` entity classes and `src/generated/resources/data/minecraft/tags/entity_type/undead.json`; `azukaar/Goety-3` branch `1.21.1` `LichdomHelper` and `ModEntityType`; official NeoForge 21.1.265 `LivingChangeTargetEvent` contract.
@@ -38,7 +38,7 @@ At runtime the bridge emits `TMM_MOB_CENSUS` for every non-vanilla, non-MISC Ent
 
 - **Goety**: distinguish undead, illagers, summon/owner-bound servants, demons and bosses; prefer existing MobType and tagging rather than treating the entire Goety namespace as one faction.
 - **Malum / Enchanted Witchcraft / JAWR / Forbidden Magic / Iron's / Cataclysm / Neo Vitae**: enumerate registry IDs from the pinned-JAR server census, then classify as undead, other supernatural factions, bosses, or independent.
-- **Feywild**: distinguish friendly pixies, shroomlings, mandragoras, ents, and powerful court bosses using the actual 5.6.4 registry IDs before removing boss exemptions.
+- **Feywild**: 14 source-verified non-boss registry IDs are now explicitly tagged; re-audit against pinned 5.6.4 JAR after server census. Four court boss IDs are explicitly exempt.
 - **Additional lich providers**: Goety is wired; Forbidden Magic and any future lich state needs an exact pinned API adapter.
 - **Dragon Survival**: the mod is not currently in this pack. Future dragon transformation player states require adapters to the tags or server-side state rather than interpreting player vanilla entity type as a dragon.
 
