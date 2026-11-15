@@ -9,6 +9,7 @@ import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachment
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisConfig;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireFactionEvents;
 import io.github.heatwaveqc.tmm.transformations.vampire.JAWRDefenseEvents;
+import io.github.heatwaveqc.tmm.transformations.vampire.JAWRBottleInterop;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireLifecycleEvents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -33,6 +34,7 @@ public final class TransformationsMod {
         NeoForge.EVENT_BUS.addListener(TransformationCommands::register);
         VampireFactionEvents.register();
         JAWRDefenseEvents.register();
+        JAWRBottleInterop.register();
         VampireLifecycleEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default. Death/appearance remain untouched.");
     }
