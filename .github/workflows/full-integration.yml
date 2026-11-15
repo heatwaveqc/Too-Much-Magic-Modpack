@@ -54,7 +54,7 @@ jobs:
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
-          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
+          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
@@ -83,6 +83,12 @@ jobs:
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
           SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
         run: bash scripts/smoke_server.sh
+      - name: Collect read-only JAWR and Forbidden Magic bytecode food inventory
+        run: |
+          python3 scripts/audit_jawr_food_jar.py \
+            "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery-0.5.39+mc1.21.1.jar" \
+            "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery_forbidden_magic-0.5.37+mc1.21.1.jar" \
+            --limit 48 --output "${{ runner.temp }}/tmm-jawr-food-audit"
       - name: Refuse to publish if extra first-party modules were not actually installed
         run: |
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
@@ -138,5 +144,6 @@ jobs:
             manifest/integration-lock.json
             ${{ runner.temp }}/tmm-full-integration-smoke/server.log
             ${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log
+            ${{ runner.temp }}/tmm-jawr-food-audit/
           retention-days: 30
           if-no-files-found: warn
