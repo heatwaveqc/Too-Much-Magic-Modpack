@@ -1,56 +1,82 @@
-# Monk faction — full native skill-tree skeleton (v1, 2026-11-15)
+# Monk — full native faction tree skeleton (owner revision, 2026-11-15)
 
-**State: fully outlined, NOT active gameplay.** This is the progression blueprint for the 20-rank Monk faction, not a silent activation of 44 unfinished abilities. It is carried into the next all-stream integration build by the existing `compat/monk/` import. The six already-live skills and their JSON/Java/effects remain unchanged while the initial Monk UI/purchase test is pending.
+**State: conceptual tree and source-only preview, not 42 playable new abilities.** The existing **6 live pilot entries**, including the free root, are unchanged in the installed Vampirism tree while the next player test checks native skill-point purchases and hand-harvesting. The revised **48-node** blueprint is the authority for subsequent implementations.
 
-**Canonical machine-readable plan:** [native-full-tree-skeleton-v1.json](native-full-tree-skeleton-v1.json). CI validates the graph and complete native/source-affix coverage through `MonkFullTreeSkeletonTest`.
+- [Machine-readable canonical blueprint](native-full-tree-skeleton-v1.json)
+- [Staged Vampirism configured-tree-shaped preview](preview/monk_level.configured_tree.PREVIEW.json) (NOT installed)
+- [Node ID / Java-skill registry index](preview/skill-node-index.PREVIEW.json) (NOT installed)
+- [Monk-only Tyz supplement](primary-tyz-monk-only-skeleton-v1.json) — 7 Monk-licensed ranks and 40 bounded affix families, all inactive
+- [Reserved fist slot implementation contract](fist-slot-lock-contract-v1.json) — passive convenience, not purchasable, not yet wired
 
-## Staged native JSON preview
+## Important owner changes
 
-The [full configured-tree preview](preview/monk_level.configured_tree.PREVIEW.json) mirrors Vampirism's nested `configured_skill_tree` shape with all 50 intended nodes. The [node-to-skill ID index](preview/skill-node-index.PREVIEW.json) identifies what Java registry entries and leaf files would need to exist later. Both are located **outside** `src/main/resources` and cannot be loaded by the game. They are implementation scaffolding, **not** a patch to copy directly into the client: 44 referenced skills have no Java implementations, guards or safe purchase behavior.
+### No Spirit Projectile
 
-## Important architecture
+**Monks fight at range with their existing spell systems**, particularly **Ars Nouveau** and **Iron's Spellbooks**, and may use other legitimate magic sources. No native Monk Spirit Projectile, Spirit Arrows or alternate projectile currency should ever be generated from the old source inventory. The original `tmm_monk:martial/spirit_projectile` record is kept only as an explicitly rejected historical audit candidate; it is **not** a live or planned skill.
 
-The **native Vampirism Monk tree** spends native Monk points on one-time techniques, limited meaningful stages (barehand tool tiers and breath training), and **permissions** to buy separately implemented Monk-only Tyz ranks. It does not own general numeric training in attack, movement speed, spell power, mana, mining speed, or the 40 bounded special-affix ranks: those belong to **one primary Tyz/MXP economy**.
+Source-backed ranged Apotheosis one-time techniques (Magical, Acidic, Deathbound) remain in the arcane branch as *conditional spell-hit adapters*: use proven player-cast Ars/Iron's damage provenance, normal target immunity rules, and actual source semantics. They **do not** create attacks or duplicate universal Potency/Magic stats. Withering Stare stays an independent martial technique, not a projectile upgrade. No native purchase may be required merely to cast an Ars or Iron's spell. Legal spell attacks must retain their intended progression against Draconic Guardian crystals/shields; investigate boss interaction through the real spell damage source, not a made-up native bolt.
 
-There are **50 entries**: 6 live initial nodes (including the zero-cost root) and 44 **blueprint-only, unregistered nodes**. There are five tracks, some cross-track prerequisites, and two provisional post-Chaos capstones. The current one-native-point-per-rank pilot would award 20 native points by rank 20, so this represents **choice and specialization**, not a promise one character can buy every technique. Costs, rank pacing, rank-up deeds and capstone balance are open.
+### Treasure Hand: exclusive Fortune / Silk Touch
 
-Rank numbers below are **suggested earliest progression windows**. They are *not* currently enforced by the Vampirism native skill GUI. When a technique is implemented, a server-authoritative unlock must enforce its real gate; prerequisite layout alone is not an authoritative boss-defeat test.
+Former **Delicate Hands** and **Fortunate Hands License** are **one** proposed native ability, `tmm_monk:harvest_touch`, purchasable once after the Iron Fist path. When enabled, a deliberate server-authoritative toggle chooses exactly **Fortune** or **Silk Touch**.
 
-## Milestone roadmap
+- **Fortune mode:** Initial **Fortune I** baseline; extra effective Fortune is purchased only in the primary Tyz/MXP `Fortunate Hands` ranking, with source-validated limits. A rank is an increment to this technique, not a second native unlock.
+- **Silk Touch mode:** Effective Silk Touch I from the same native technique. Fortune must be absent from this break's loot calculation, regardless of saved Tyz ranks.
+- **Both modes:** Only valid **player-attributed barehand mining**, respecting real harvest tool tiers and loot tables. Ordinary held tools, protected/canceled blocks, automatic farms and ownerless magical mining must not qualify. Later compatibility work can expand to a specific spell only when its actual loot context can safely accept the mode.
+- **Switching:** A configurable keybind/action, validated on the server and persisted per Monk. Default mode Fortune. Display current mode via actionbar and in the fist-slot HUD; never toggle automatically because the player sneaks, changes target block or picks up loot.
+- **Compatibility gate:** Cannot implement correctly merely by modifying drops after they are created. Verify the actual block loot context and tool enchantment semantics so Silk/Fortune apply once and no normal drops or XP duplicate.
 
-| Rank window | Expected developments | Tests / hard gates |
-| --- | --- | --- |
-| 1–4 | First Sunset; choose Open Palm, Unarmored Poise or Stone Fist; early fleet/step and meditation/guarding | First Sunset is live. Native purchase/UI fix pending player test |
-| 5–8 | Iron-hand mining, spirit projectile, arrow-catching, basic breath/animal practice, water walking | Complete block/spell credits; no forced optional stunts |
-| 9–12 | Diamond-hand mining, refinement, cleansing, legal advanced ranged skills, Blink | Verify source hooks/claims and keep ordinary Tyz stats universal |
-| 13–16 | More specialized affixes, high-tier resilience and tool-free harvesting, Ender-Dragon-gated momentum glide | Ender Dragon evidence must be server-verified, not item/quest-only |
-| 17–20 | Optional rare harvest effects, extreme techniques, two proposed capstones | Highest tool requirements require evidence; provisional capstones gated on actual Chaos Guardian defeat |
+Glass Touch remains a distinct early glass-only harvesting interaction; it is **not** another Silk Touch purchase.
 
-## Proposed faction-tree branches
+### Permanent reserved fist hotbar position
+
+The Monk gains a **free passive fist slot** upon joining the faction — not a branch node or another native SP purchase.
+
+The default is **hotbar slot 9, inventory index 8**. When the Monk selects it, the main hand stays genuinely empty, suitable for punching/mining, while the other eight hotbar positions can hold Ars spellbooks, Iron's spellbooks, magic staffs or food. A small translucent fist overlay may identify the otherwise-empty slot but **must not be an actual inventory item**. The slot remains protected even if conventional equipment temporarily suppresses a Monk technique.
+
+Real inventory lockout is a server-authoritative **inventory feature** and must cover pickup routing, GUI click/drag/shift-click, number-key swaps, /give, creative and modded menu injections, plus client sync and logout/death. Items already in the position at initiation must be transferred *atomically* if they fit; **if there is no room, initiation must not destroy or drop them or silently continue**. Any mod bypass must be recovered without loss/dupes. If all other inventory slots are full, picked-up items must remain on the ground.
+
+**The contract is staged but not implemented in the current test build.** A periodic tick moving items after the fact would *not* satisfy a hard lockout. Read [the full acceptance matrix](fist-slot-lock-contract-v1.json) before hooking menus/inventory code.
+
+## Architecture and world progression
+
+The **native Vampirism faction** owns one-off abilities, the two-stage Breath Meditation, finite hand-harvest tiers, explicit milestone permissions, and *licenses* for Monk-only Tyz effects. **One global Tyz/MXP backend** owns stat ranks, Skill Points and the universal magical specialties; no second numeric Monk tree or duplicate spell-power purchase is allowed. The installed Monk pilot currently awards one native faction point per rank (20 by default), so this 48-node plan requires meaningful choice, specialization and review of capstone costs rather than promising everything is purchasable by one character.
+
+Rank numbers in the following tables are **suggested earliest rank bands**, not yet enforced. Before any node is enabled, add a verified server-side rank, skill and world milestone gate. Momentum Gliding is still **after verified Ender Dragon defeat**, and the two proposed rank-20 capstones still require **verified Chaos Guardian participation**. The Monk never gains Creative Flight as a native skill; the permitted Draconic Curio provides external flight. Apotheosis Unbound remains excluded.
+
+## Intended rank roadmap
+
+| Rank window | Direction |
+| --- | --- |
+| 1–4 | First Sunset; Open Palm, Unarmored Poise or Stone Fist; early footwork, guarded combat and breath training |
+| 5–8 | Better hand mining, animal empathy, Catch Arrows, early water mobility; ranged magic already works from Ars/Iron's |
+| 9–12 | Fortune/Silk Touch toggle, advanced hand harvesting, Blink, source-gated spell-affix unlocks |
+| 13–16 | Higher useful harvest tiers, increased environmental resilience, verified post-Dragon momentum glide |
+| 17–20 | Late source-affix specialties and **proposed** post-Chaos capstones — no innate Creative Flight |
+
+## Five branches
 
 ### Martial Discipline
 
-Legal unarmed combat, counters, spirit projectiles, boss interaction and selected affix conversions.
+Legal empty-hand combat, parries, counters, staring techniques, and source-faithful unarmed affixes. Ranged combat comes from Ars/Iron's.
 
-| Suggested rank | Native node | Prerequisite | Status |
+| Rank guide | Node | Prerequisite | State |
 | ---: | --- | --- | --- |
 | 1 | Open Palm | monk root | **Live pilot** |
 | 4 | Guarding Palm | open palm | Planned |
 | 6 | Catch Arrows | guarding palm | Planned |
-| 6 | Spirit Projectile | open palm | Planned |
-| 9 | Looting Palm License | open palm | Planned (Tyz license) |
+| 9 | Looting Palm License | open palm | Planned (Tyz permission) |
 | 11 | Galvanizing | guarding palm | Planned |
-| 12 | Withering Stare | spirit projectile | Planned |
+| 12 | Withering Stare | guarding palm | Planned |
 | 14 | Retreating | galvanizing | Planned |
 | 16 | Omniscient | withering stare | Planned |
-| 18 | Deathbound Spirit | spirit projectile | Planned |
-| 20 | Empty-Hand Paragon | omniscient | Planned; gate: verified chaos guardian milestone |
+| 20 | Empty-Hand Paragon | omniscient | Planned; verified chaos guardian milestone |
 
 ### Body & Mobility
 
 Safe traversal, footwork, water movement, teleportation and post-Dragon momentum glide.
 
-| Suggested rank | Native node | Prerequisite | Status |
+| Rank guide | Node | Prerequisite | State |
 | ---: | --- | --- | --- |
 | 2 | Fleet Footwork | open palm | **Live pilot** |
 | 3 | Step Assist | fleet footwork | **Live pilot** |
@@ -59,31 +85,31 @@ Safe traversal, footwork, water movement, teleportation and post-Dragon momentum
 | 10 | Surefooted | steadfast | Planned |
 | 11 | Blink | water walking | Planned |
 | 14 | Unhurried | surefooted | Planned |
-| 15 | Momentum Gliding | blink | Planned; gate: personal or credited ender dragon defeat verified server side |
+| 15 | Momentum Gliding | blink | Planned; personal or credited ender dragon defeat verified server side |
 
 ### Contemplation & Resilience
 
 Meditation, animal empathy, breathing and non-absolute environmental protection.
 
-| Suggested rank | Native node | Prerequisite | Status |
+| Rank guide | Node | Prerequisite | State |
 | ---: | --- | --- | --- |
 | 1 | Unarmored Poise | monk root | **Live pilot** |
 | 4 | Breath Meditation I | unarmored poise | Planned |
 | 6 | Animal Friendship | breath meditation 1 | Planned |
-| 6 | Hunger Discipline License | breath meditation 1 | Planned (Tyz license) |
-| 7 | Fire Resilience License | unarmored poise | Planned (Tyz license) |
-| 9 | Explosion Resilience License | unarmored poise | Planned (Tyz license) |
+| 6 | Hunger Discipline License | breath meditation 1 | Planned (Tyz permission) |
+| 7 | Fire Resilience License | unarmored poise | Planned (Tyz permission) |
+| 9 | Explosion Resilience License | unarmored poise | Planned (Tyz permission) |
 | 10 | Breath Meditation II | breath meditation 1 | Planned |
 | 12 | Creeper Kiss | animal friendship | Planned |
 | 12 | Purifying Meditation | breath meditation 2 | Planned |
 | 13 | Lava Survival | fire resilience license | Planned |
-| 20 | Stillness Paragon | purifying meditation | Planned; gate: verified chaos guardian milestone |
+| 20 | Stillness Paragon | purifying meditation | Planned; verified chaos guardian milestone |
 
 ### Empty-Hand Harvest
 
-Real finite harvest tiers and distinctive tool-free gathering while repeatable mining speed stays in Tyz.
+Finite effective harvest tiers, one exclusive Fortune/Silk Touch toggle and tool-free gathering; repeatable mining speed remains in Tyz.
 
-| Suggested rank | Native node | Prerequisite | Status |
+| Rank guide | Node | Prerequisite | State |
 | ---: | --- | --- | --- |
 | 1 | Stone Fist | monk root | **Live pilot** |
 | 5 | Iron Fist | stone fist | Planned |
@@ -92,58 +118,42 @@ Real finite harvest tiers and distinctive tool-free gathering while repeatable m
 | 9 | Diamond Fist | iron fist | Planned |
 | 9 | Gardening | gentle shearing | Planned |
 | 9 | Sandforming | iron fist | Planned |
-| 10 | Delicate Hands | glass touch | Planned |
-| 13 | Fortunate Hands License | delicate hands | Planned (Tyz license) |
+| 10 | Treasure Hand — Fortune / Silk Touch | iron fist | Planned (Fortune/Silk toggle and Tyz Fortune license); verified hand loot context adapter |
 | 13 | Leafforming | gardening | Planned |
 | 13 | Stoneforming | diamond fist | Planned |
 | 14 | Netherite Fist | diamond fist | Planned |
-| 18 | Exotic Fist | netherite fist | Planned; gate: discover actual pack tool tiers and effective drops |
+| 18 | Exotic Fist | netherite fist | Planned; discover actual pack tool tiers and effective drops |
 | 18 | Supermassive | netherite fist | Planned |
 
 ### Arcane Mastery & Licenses
 
-Only faction-specific one-time/progression permission, not a second generic mana or spell-stat wallet.
+Monk-only progress licenses and source-faithful spell-affix adaptations for Ars Nouveau and Iron's; not a second generic mana/spell-stat wallet.
 
-| Suggested rank | Native node | Prerequisite | Status |
+| Rank guide | Node | Prerequisite | State |
 | ---: | --- | --- | --- |
-| 5 | Monastic Mastery Learning License | monk root | Planned (Tyz license) |
-| 10 | Focused Advancement License | monastic learning license | Planned (Tyz license) |
-| 11 | Magical Spirit | spirit projectile | Planned; gate: spirit projectile enabled |
+| 5 | Monastic Mastery Learning License | monk root | Planned (Tyz permission) |
+| 10 | Focused Advancement License | monastic learning license | Planned (Tyz permission) |
+| 11 | Magical Spell Affix | monastic learning license | Planned; verified ars or irons spell hit source |
 | 12 | Telepathic | monastic learning license | Planned |
-| 14 | Acidic Spirit | magical spirit | Planned |
+| 14 | Acidic Spell Affix | magical casting | Planned; verified player spell damage attribution |
+| 18 | Deathbound Spell Affix | magical casting | Planned; verified player spell damage attribution |
 
-## Corresponding Monk-specific Tyz progression
+## The separate primary Tyz portion
 
-The [primary Tyz Monk-only skeleton](primary-tyz-monk-only-skeleton-v1.json) catalogs the **seven** planned Monk-licensed ranked traits and **40** independently bounded Apotheosis effect-rank traits. This is **a supplement to the ONE global primary Tyz/MXP tree, not another Tyz runtime configuration**. The seven licenses link to the native skill-tree nodes above; the 40 affixes retain their actual distinct rarity milestones rather than fabricated 99-level ranks. All 47 are `active:false` until purchase/refund/faction gates and verified effect adapters exist.
+The [47-entry Monk-specific primary Tyz supplement](primary-tyz-monk-only-skeleton-v1.json) preserves **7** native-licensed Tyz ranks and **40** source-rarity-bounded special-affix traits; all are `active:false`. The `Fortunate Hands` Tyz family is now licensed by **Treasure Hand**, not an independent native node. Its effective Fortune bonus must be suppressed while Treasure Hand is set to Silk Touch. The general and universal Tyz skills, their independent magic-mod adapters and **43** attribute-equivalent affix aliases are NOT registered here again. The **15 one-time affix adaptations** are shown in the native tree; the 40 bounded source-affix families do not become 40 new native SP gates.
 
-The other universal skills, source-derived attribute aliases and magic-compatibility ranks remain in the primary Tyz source. For Monk they are compatible and useful, but they are not repurchased just for joining the faction.
+## Activation order
 
-## Separate rules that must not get lost
+1. Run the current initial test for First Sunset, the native Monk tree/purchases, Stone Fist, TreeChop and verified magic-break credit. None of the 42 blueprint-only nodes are in the runtime datapack.
+2. Implement hard-reserved fist slot across inventory/menu entry points with no item loss/dupes, client display and multiplayer tests; this is a **free Monk faction utility**, not a paywall.
+3. For Treasure Hand, implement a reliable hand-break loot context and server-side mode toggle/persistence and test Fortune vs Silk, permission limits, protected blocks, XP, save/load, other mods and a real Tyz rank.
+4. For each later ability, build/compile the Java effect and adapters, register a unique skill ID, add language/GUI labels, and enforce rank/prerequisite/world gates on the server before changing the installed resource tree.
+5. For Ars/Iron's affix conversions, use source-proven cast/hit/loot attribution; no forged attacks, no generic blanket damage buff, and no duplication of primary Tyz Potency.
+6. Refresh the blueprint's `implementation` state and CI allowances **only after** a disposable client/server smoke. Keep all new player saves disposable until state migration is validated.
 
-- **No Creative Flight skill.** Flight comes from permitted Draconic Evolution Curios. Momentum Gliding, once implemented, is a different ability: controlled non-creative fall-flying with thrust after verified Ender Dragon participation.
-- **No Apotheosis Unbound.** All **15** selected, unique, one-time Apotheosis affix behaviors have a place in the blueprint; the 43 attribute aliases and 40 bounded Tyz-owned affix ranks are deliberately not cloned here.
-- **Finite harvest tier vs repeatable harvest speed.** Stone Fist is live. Later Iron, Diamond, Netherite and *optional* exotic hand tiers must reflect real pack mining requirements. General mining efficiency belongs to Tyz, not more fixed native purchases.
-- **No free global immunity.** Fire/Lava, explosions, cleansing and arrow catching require limited mechanics and real defensive event hooks.
-- **No compulsory checklist of the original Monk's twenty stunts.** Most rank XP remains from real block breaking, fighting and food variety; special deeds can be optional challenges and relevant unlocks.
-- **Native skill licenses aren't Tyz points.** Buying a license doesn't silently purchase a numeric Tyz level, manufacture shared MXP, or force another purchase of a universal spell-power stat.
-- **New capstones are proposals.** Empty-Hand Paragon and Stillness Paragon are reserved names/effects for discussion; neither is approved as a working perk.
+## Historical sources and current source of truth
 
-## Making blueprint nodes active later
-
-Before converting any planned node into an installed `skill_nodes` and `configured_skill_tree` resource:
-
-1. Implement and test its actual server-side effect with the Monk equipment/faction gate.
-2. Validate native Vampirism skill-point purchase, respec, save/restore and client display on the current six-skill test.
-3. Add the necessary Java skill registration and stable internal skill ID; add localization/descriptions and any dedicated cross-mod event adapter.
-4. Enforce **real minimum rank, prior skill, and world gate** on the server; avoid unlock predicates that only make the client look locked.
-5. Update the canonical blueprint entry to `live` and extend the CI test's list of permitted active skills, then confirm the combined server smoke and disposable client purchases.
-6. For a Tyz license, coordinate with the **primary** Tyz/MXP implementation and verify purchase/refund/direct grant restrictions without a duplicate wallet.
-
-**Near-term test safety:** No blueprint-only JSON lives in `src/main/resources`; the currently active skill tree still contains the root plus Open Palm, Unarmored Poise, Stone Fist, Fleet Footwork and Step Assist. The next test can distinguish existing broken purchase behavior from future planned abilities.
-
-## Sources
-
-- [Original Monk audit](../../../docs/MONK-ORIGINAL-AUDIT.md): baseline milestones and 25 registered abilities, including historical flight and blindness exceptions.
-- [Skill placement v2](../profiles/skill-placement-no-pufferfish-v2.json): 17 native technique candidates, seven Monk-only Tyz licenses and 15 one-time affix adaptations.
-- [World tiers](../profiles/world-tier-unlocks.json): verified milestone targets; no claimed completion logic.
-- [Current pre-tree QA matrix](../NEXT-QA-2026-11-15.md): player tests required before expanding active purchases.
+- [Original Monk 1.4 audit](../../../docs/MONK-ORIGINAL-AUDIT.md): source of physical deeds and all 25 original registered abilities, not binding design for the TMM spellcasting Monk.
+- [No-Pufferfish skill placement v2](../profiles/skill-placement-no-pufferfish-v2.json): historical complete 270-record audit. **Explicit owner overrides in the current blueprint supersede** Spirit Projectile and the separate Fortune/Silk purchases without deleting the source audit.
+- [Milestone and flight targets](../profiles/world-tier-unlocks.json): the Ender Dragon / Chaos Guardian progression contract.
+- [Next live Monk QA](../NEXT-QA-2026-11-15.md): installed pilot state. Verify it first.
