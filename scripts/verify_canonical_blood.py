@@ -92,8 +92,11 @@ def main() -> None:
     src = food_script.read_text(encoding="utf-8")
     assert "ItemEvents.modification" in src and "irons_spellbooks:blood_vial" in src
     assert "usingConvertsTo(Item.of('minecraft:glass_bottle'))" in src
+    assert "item.setFood(1, 1.0)" in src
+    assert "item.modifyFood(food => {" in src
     assert "food.alwaysEdible()" in src
     assert "item.useAnimation('drink')" in src
+    assert "item.foodProperties =" not in src, "Pinned KubeJS has no foodProperties setter"
     assert "witchery:bottle_of_blood" not in src, (
         "JAWR's native finishUsingItem must NOT be replaced by a food override"
     )
