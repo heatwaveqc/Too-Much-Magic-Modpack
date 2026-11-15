@@ -994,3 +994,7 @@ metafile = true
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
 hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
+
+[[files]]
+file = "kubejs/server_scripts/reactors_diamond_graphite.js"
+hash = "a7a67848180a86fc82b3def39abfd83b87cb8a9090241a636ff139b631fb2f41"
