@@ -259,7 +259,9 @@ public final class ClassAbilities {
     public static void creditedKill(ServerPlayer p, LivingDeathEvent event) {
         if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")
                 || !p.hasEffect(MobEffects.BLINDNESS)
-                || !(event.getEntity() instanceof Monster)) return;
+                || !(event.getEntity() instanceof Monster)
+                || event.getSource().getDirectEntity() != p
+                || !p.getMainHandItem().isEmpty()) return;
         ProgressionApi.recordExternal(p,"tmm_progression:blind_hostile_kill");
         // Original trial required five credited hostile defeats while blinded.
         // Record through the server-owned milestone counter, not a local tick counter.
@@ -375,9 +377,10 @@ public final class ClassAbilities {
         if (event.getHand() != InteractionHand.MAIN_HAND || !p.getMainHandItem().isEmpty())
             return false;
         if (event.getTarget() instanceof Creeper creeper && unlocked(p,"creeper_peace")) {
-            // One-time deed progress on the first legitimate pacification of this creeper.
-            if (!creeper.getPersistentData().getBoolean("tmm_progression:pacified"))
-                ProgressionApi.recordExternal(p,"tmm_progression:creeper_kissed");
+            // Every Monk may complete the deed on a legitimate empty-hand
+            // interaction, including a creeper another Monk has already calmed.
+            // Persistent milestone completion guarantees at most one XP payout.
+            ProgressionApi.recordExternal(p,"tmm_progression:creeper_kissed");
             creeper.getPersistentData().putBoolean("tmm_progression:pacified",true);
             creeper.setTarget(null);
             creeper.setSwellDir(-1);
