@@ -25,7 +25,7 @@ Primary source: https://github.com/Jarva/Ars-Additions/blob/1.21.0/src/main/java
 
 ### Proof-of-format, non-gated additions
 
-- `kubejs/data/tmm/recipe/locate_structure/mineshaft.json`: offer one vanilla **Rail** to locate `#minecraft:mineshaft`, covering regular and badlands mineshafts.
+- `kubejs/data/tmm/recipe/locate_structure/mineshaft.json`: offer one vanilla **Rail** to locate `#bettermineshafts:better_mineshafts`, intentionally excluding disabled vanilla mineshafts when YUNG's replacement is enabled.
 - `kubejs/data/tmm/recipe/locate_structure/shipwreck.json`: offer one vanilla **Nautilus Shell** to locate `#minecraft:shipwreck`, covering both at-sea and beached shipwrecks.
 
 Both use the native Ars Additions ritual; no Java or new structure compass mod. These two files are staged as a **source pilot**. The reference vanilla structure tags are documented in https://minecraft.wiki/w/Structure . The JSON's embedded `id` is intentionally a unique `tmm:` ID, as required by the upstream codec.
