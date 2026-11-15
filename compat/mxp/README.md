@@ -6,7 +6,7 @@
 
 - Standalone **tmm_mxp** NeoForge 1.21.1 / Java 21 module under compat/mxp. Tyz's Skills 6.4.2 is declared a required runtime dependency; its source-verified public API is called reflectively so the third-party JAR need not be redistributed.
 - Pure Java progression math: base = **1000 × nominalCost / first-access resource pool B**; ordinary effective XP = base / (1.2^P), with the divisor **recomputed mid-award** at each 1000-effective-XP point boundary. No vanilla XP spent.
-- First successful ritual and first boss victory are **undivided**, repeat rituals/bosses are divided. An explicit boss rule may mark repeat victories as fixed (Chaos Guardian **proposed** 100 MXP repeat, not activated). First-time magical crafts are **still divided**.
+- First successful ritual and **every registered first boss victory awards exactly 1,000 effective MXP** without the divisor; repeat rituals/bosses are divided. An explicit boss rule may mark repeat victories as fixed (Chaos Guardian **proposed** 100 MXP repeat, not activated). First-time magical crafts are **still divided**.
 - Overworld SavedData by player UUID persists lifetime MXP-earned levels P, effective progress, undelivered fractional XP, discovered ritual/boss/craft IDs, and the latest 1024 transaction IDs. Respec/death/dimension changes cannot reset the earned lifetime divisor.
 - Tyz public API bridge measures **actual** Tyz level/XP change after the award. It stores sub-0.01 fractional awards until deliverable, and retains undelivered portions of partially accepted awards.
 - Public server integration API via MxpService.resource, ritual, craft, boss and inspect. Resource awards require both nominal pre-efficiency cost and **positive actual debit after successful player action**.
