@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
+import io.github.heatwaveqc.tmm.progression.runtime.HunterExperience;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.commands.Commands;
@@ -57,6 +58,27 @@ public final class ProgressionCommands {
                                 success ? "Skill rank purchased" : "Skill purchase blocked"),false);
                             return success ? 1 : 0;
                         }))))
+            .then(Commands.literal("specialty")
+                .then(Commands.literal("list")
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        ctx.getSource().sendSuccess(() -> Component.literal(
+                            "Hunter specialty: " + HunterExperience.selectedSpecialty(player)
+                                + " | choices: " + String.join(", ",HunterExperience.availableSpecialties())),false);
+                        return 1;
+                    }))
+                .then(Commands.argument("family",StringArgumentType.word())
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        String family = StringArgumentType.getString(ctx,"family");
+                        boolean ok = HunterExperience.availableSpecialties().contains(family)
+                            && ProgressionApi.buy(player,HunterExperience.HUNTER,
+                                "tmm_progression:specialty_" + family);
+                        ctx.getSource().sendSuccess(() -> Component.literal(ok ?
+                            "Hunter specialty selected: " + family :
+                            "Selection blocked: join Hunter first, or your specialty is already set"),false);
+                        return ok ? 1 : 0;
+                    })))
             .then(Commands.literal("respec")
                 .then(Commands.argument("path",StringArgumentType.word())
                     .executes(ctx -> {
