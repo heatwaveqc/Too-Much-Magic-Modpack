@@ -89,8 +89,13 @@ public final class ProgressionEvents {
               EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player)
+        if (event.getEntity() instanceof ServerPlayer player) {
+            // Always re-evaluate the Monk's unarmored buffs on equipment changes.
+            // This works with Armor Lock OFF too: wearing armor suppresses powers.
+            ClassAbilities.enforceArmorLock(player,false);
+            EffectRuntime.reconcile(player);
             EffectHandlers.equipmentChange(player,event);
+        }
     }
     private static void targetChange(LivingChangeTargetEvent event) {
         if (event.getNewAboutToBeSetTarget() instanceof ServerPlayer player)
