@@ -1,38 +1,93 @@
-# Ars 'n Spells — focused addon profile
+# Ars 'n Spells — bridge mechanics and walkthrough profile
 
 | Field | Value |
 | --- | --- |
 | Manifest ID / mod ID | `ars-n-spells` / `ars_n_spells` |
-| Parent | [Ars Nouveau](ars-nouveau.md) × Iron's Spells 'n Spellbooks |
-| Pack pin | `ars_n_spells-3.3.5.jar`; SHA-512 `21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2` |
-| Source snapshot | [3.3.5 release work commit](https://github.com/otectus/ars-n-spells/commit/f94539f6fcccb6a4ed8b9041663944dfceb27627); the project maintains a separate NeoForge 1.21.1 port. The 3.3.5 changelog and 1.21.1 testing report cover the payment boundary, but no direct JAR/source hash comparison was done. |
-| Status | **researching** — core bridge and spell export/binding route mapped; current pack config, full cross-cast interactions and client walk-through remain open. |
-| Guide | Spell Loom and binding routes are taught in the addon README/JEI and pilot quest text; no Worn Notebook page title verified. |
+| Category / parent | [Ars Nouveau](ars-nouveau.md) addon; bridges to [Iron's Spells 'n Spellbooks](irons-spells.md) (Iron's is optional in the addon metadata) |
+| Pack target | Minecraft 1.21.1 / NeoForge; manifest enables it and `index.toml` pins it |
+| Pinned artifact | `ars_n_spells-3.3.5.jar`, Modrinth version `5OeZngO7`; SHA-512 `21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2` (recomputed against downloaded artifact) |
+| Declared requirements | NeoForge `[21.1.0,21.2)`, MC `[1.21.1,1.21.2)`, Ars Nouveau `[5.13,6.0)`; Iron's `[1.21.1-3.16.3,1.21.1-4.0.0)` optional |
+| Source snapshot | [NeoForge 1.21.1 source commit `f25c379d5e0521821ab6e80a9f485ae41d4506a0`](https://github.com/otectus/ars-n-spells/commit/f25c379d5e0521821ab6e80a9f485ae41d4506a0), dated 2026-10-03. Version/dependency metadata align with the pin; a reproducible JAR-to-source build comparison was not performed. |
+| Status | **researching** — the bridge's source-defined routes are mapped; pack runtime/config and client walkthrough remain unverified. |
+| Guide access | No Patchouli/Modonomicon book or page tree is shipped. Use the mod's README for mechanics, JEI for craft recipes, and the named Ars ritual descriptions/tooltips for ritual inputs; TMM quests should give the operational steps below. |
+| Quest placement | Ars Nouveau chapter groups this addon with the other Ars addons. Current integration chapter is an orientation scaffold; the separate Ars quest pilot branch has the detailed addon lessons but is not merged into this integration branch. |
 
-## Mechanics and resource contracts
+## What the addon changes
 
-Ars 'n Spells bridges Ars spells and Iron's spell wheel. It adds more than a scroll craft: mana, scaling/progression, inscription/binding and casting all cross the mod boundary.
+Ars 'n Spells combines Ars and Iron's mana, spell power, school progression and casting. It also adds two different spell inscription workflows: one binds an Ars spell into a real Iron's scroll and then an Iron's spellbook wheel; the other places either mod's spell onto a blank item for right-click casting. These are not the same ritual. The addon does not add an independent spell-school tier ladder: players first progress in Ars Nouveau and/or Iron's, then use the addon to connect spells, resource pools and bonuses across those systems.
 
-| Feature | Operation | Resource / output | Important constraint |
+## Systems and resource contracts
+
+| System | Player input and cost | Result | Constraints and evidence |
 | --- | --- | --- | --- |
-| Mana modes | Config/command supports `iss_primary`, `ars_primary`, `hybrid`, `separate`, and `disabled`. | In `iss_primary`, Iron's pool is authoritative and Ars casts drain it; in `ars_primary`, Ars mana is authoritative and Iron's spells drain it; `hybrid` shares bidirectional; `separate` splits costs; disabled preserves pools. | TMM's prior design preference is `iss_primary`; current effective server config is not verified here. Do not claim the pack is using it. |
-| Cross-school progression | Iron's spell-power attributes scale eligible Ars spells; the addon exposes school/affinity integration. | Turns Iron's spell power and affinity into Ars spell effectiveness/progression where supported. | Exact attribute formula/registry and exclusions need version-specific inventory. |
-| Spell Loom / transcription | Craft Loom; select a reusable Ars spell; put source in slot and blank target scroll; inscribe. A 3.3.5 carrier can target real Iron's blank scrolls as well as addon Blank Scrolls. | Creates an inscribed carrier; reusable source stays or is consumed according to chosen input. | Choose correct blank target; inspect/clear output before next inscription. |
-| Binding | Use Iron's Inscription Table or Ars *Spellbook Binding* ritual. Ritual method: one carrier and one book within 3 blocks, no other dropped items; empty-hand activation. | Adds an Ars spell entry to Iron's spellbook; carrier is consumed. | Full/duplicate book can refuse the bind. A Loom/scroll item is not proof of binding. |
-| Cross-casting | Select bound Ars entry in Iron's native spell wheel and cast. | Cost passes through configured shared/split resource policy; can have added overhead/cooldown. | A cost or payment failure is distinct from a spell effect failure. 3.3.5 specifically repairs Iron payment boundary behavior and cancelled casts. |
+| Mana unification | Select server config `mana_unification_mode`; no recipe. Modes: `iss_primary`, `ars_primary`, `hybrid`, `separate`, `disabled`. Conversion rates default to 1:1; separate mode defaults to 50%/50% split for cross-system cost. | Chooses which pool is read, drained and regenerated by Ars/Iron casts; hybrid shares bidirectionally and can select which mana bar is shown. | Fresh config defaults to `iss_primary`; this is not evidence that TMM's effective config uses it. The current pack has no Ars 'n Spells override. `enable_mana_unification=false` forces the integration off. Source: `config/AnsConfig.java`, `config/ManaUnificationMode.java`, README config section. |
+| Gear and mana regeneration | Ars and Iron's gear modifiers, relevant enchantments, potions, and (where enabled by native attributes) Curios. Source jars can provide a proximity regeneration bonus. | Gear contributions and regeneration are routed/translated to the active pool. In `iss_primary`, Ars Mana Regen potion levels contribute 0.5 mana/sec per level before configured conversion. | Exact final player totals depend on equipment, config, parent-mod attributes and TMM tuning. Do not assume an Ars source jar produces Source and casting mana is the same resource; it is not. |
+| Cross-school damage | Cast eligible Ars or Iron's spells; no separate item cost. Iron's global and matching school spell power scale Ars damage; Ars `SPELL_DAMAGE_BONUS` contributes additively to Iron's damage. | Damage scaling runs in both directions. Multi-school Ars spells use a configurable `primary`, `max`, or `average` policy; the scalar has a default 3.0 cap. | Independent of mana unification; it can remain active in `disabled` mana mode. Missing Iron's means no cross-mod combat scaling. Exact high-end totals and interactions with TMM's equipment/attribute caps are unmeasured. |
+| Per-school progression and affinity | Cast Ars or Iron's spells in a school; no separate consumable. | Persistent cast counts derive a per-school progression bonus (defaults: 0.1% per cast, capped at +25% after 250 casts); affinity tracks recently used schools and contributes to scaling. Both directions share the school maps. | Affinity decay is opt-in; fresh config default is off. It is separate from the Ars Affinity addon perk tree. Source `ProgressionData`, `AffinityData`, `ProgressionAttributes`, `AffinityCalculator`; formulas and user-facing HUD still need client confirmation. |
+| Resonance | Maintain mana at/above configured threshold; no separate item cost. | Adds a mana-fullness bonus to spell damage; fresh threshold is 95%, with 100-tick lingering duration after dropping below threshold. | Configuration permits separate Ars/Iron toggles and strength/cap values. Do not teach this as a guaranteed buff until the pack's effective settings and UI are checked. |
+| Unified cooldowns | Cast a spell; no extra consumable. | Optional categories (offensive, defensive, utility, movement) can share cooldown across both mods. Ars spells bound into Iron's books have a separate configurable native cooldown; fresh 3.3.5 config is 40 ticks. | Category cooldown sharing is off by default. A refused/unpaid proxy cast starts no cooldown. Two bound spells sharing one Iron's proxy slot can share that slot's cooldown. |
+| Generic Spell Transcription | Craft a Spell Transcription tablet with the Ars Enchanting Apparatus: novice Ars spellbook reagent, an Iron's spellbook-tag item, Archwood log, Source Gem Block; costs 2,000 Source. Drop exactly one spell-bearing source and one blank target within 3 blocks of the Brazier; activate empty-handed. | Stamps the source spell onto the blank target as a right-click cross-cast. Source is consumed; target becomes inscribed. | Source can be an Ars filled parchment, focus or spellbook, or an Iron's scroll. Multiple sources/targets, already-inscribed items, unsupported caster-bound glyphs, or extra ambiguous inputs are refused. Iron's spellbook availability is gated by the optional mod. |
+| Spell Loom | Craft: gold ingot over lapis–book–lapis over three obsidian. Place one Ars spell source, a blank Iron's scroll or addon Blank Scroll, then inscribe in the Loom UI. Blank Scroll recipe: Ars blank parchment + Source Gem. | Produces a real Iron's scroll carrying an Ars spell. Loom UI lets the player set display name, nature and icon. | Filled parchment is consumed; reusable Ars book/focus sources are retained. One target unit is transformed; output slot must be empty. Actual output carrier is an Iron's scroll. Source `SpellLoomBlockEntity`, `LoomInscription`, `InscriptionPlanner`; operation not client-tested in TMM. |
+| Bind Ars spell into Iron's book | Craft Spellbook Binding tablet: novice Ars spellbook reagent, Iron's spellbook-tag item, Iron's scroll, Source Gem Block, Archwood log; costs 2,500 Source. Drop exactly one carrier scroll and one Iron's book within 3 blocks of Brazier, nothing else; activate empty-handed. | Consumes one carrier scroll and adds its Ars spell as an entry in the Iron's native spell wheel. | Binding is controlled by a server cap (fresh default `-1`, no extra cap) and is still bounded by eight registered proxy slots; duplicates/full books/disabled binding/uncastable payload refuse. An Iron's Inscription Table is a second route, but its precise player-facing steps need client confirmation. Do not confuse this ritual with Ars Nouveau's own `ritual_binding`, which binds mobs. |
+| Spell Uninscription | Craft tablet with blank parchment reagent, water bucket, Source Gem, Archwood; costs 500 Source. Drop one inscribed item only, within 3 blocks of Brazier; activate empty-handed. | Removes the cross-cast inscription and returns the item to a blank target state. | Iron's is not required. Other dropped items or multiple eligible items cause refusal. |
+| Mana Infusion | Apparatus recipe: blank parchment reagent; Source Gem Block, Source Gem, Iron's Arcane Essence, Archwood; costs 1,500 Source. Perform the resulting ritual. | One-time configurable mana grant (fresh default 500) to the player credited for the ritual, routed to the active mana pool. | Recipe is conditional on Iron's being loaded, although source code routes the grant through the bridge. Grant amount is server-configurable. |
+| Mana Well | Apparatus recipe: blank parchment reagent; Source Gem Block, Iron's Arcane Essence, water bucket, Archwood; costs 2,000 Source. Perform the ritual. | While active, gives 2 mana per tick by default to each player in the configured radius (default 8 blocks), routed through the active bridge. | This is a sustained area effect while the ritual runs; the ritual's actual duration and net economy in this pack have not been tested. Recipe is Iron's-conditional. |
 
-## Walkthrough and coverage
+### Two inscription routes, kept distinct
 
-1. Craft Spell Loom; JEI recipe. Create a safe low-cost Ars spell.
-2. Produce a blank carrier; inspect the selected school/name, source and target slot. Transcribe and collect the output.
-3. Bind through the Inscription Table or follow the complete Binding ritual item layout.
-4. Select the new spell in Iron's wheel and cast a harmless spell; observe mana debit and effect separately.
-5. Test one cheap and one higher-cost cast; verify config mode and cooldown, then retry a cast cancelled before the effect.
+**Ars → Iron's wheel:** Spell Loom creates the Iron's scroll carrier → Spellbook Binding ritual or Iron's Inscription Table binds the carrier into an Iron's book → select the entry in Iron's wheel and cast. Fresh config cap is `-1` (unlimited); the eight registered proxy slots are the actual upper bound per book. Casting uses the bridge's cost and scaling path. The source's registered `ars_n_spells:ars_cross_1..8` proxy spell slots preserve ordinary Iron's entries, but books can share cooldown by proxy slot.
 
-The pilot has four separate milestones (Loom, transcription, binding, actual cross-cast) with addon advancements for the latter three. Its exact detector IDs are listed in `manifest/ars_quest_pilot.json`; server registry probing is not client acceptance.
+**Either mod → a right-click carrier:** craft the generic Spell Transcription tablet → place one spell-bearing source and one blank target at its Brazier → activate → right-click the inscribed target to cast. This is a broader item-to-item cross-cast route. The cross-cast cost multiplier defaults to 1.25. Sneak-right-click cycles entries if a target holds multiple inscriptions. Spell Uninscription clears one inscription for reuse.
 
-## Evidence and limits
+The addon tag `ars_n_spells:cross_cast_blacklist` rejects Ars Zero temporal context form and anchor/select/sustain/discard effects because those require their original caster context. Other addon glyphs should be treated as unverified until checked against the tag/source and tested.
 
-- Pin/hash and all four advancement IDs: pilot manifest.
-- [3.3.5 changelog](https://github.com/otectus/ars-n-spells/blob/f94539f6fcccb6a4ed8b9041663944dfceb27627/CHANGELOG.md); [NeoForge 1.21.1 testing report](https://github.com/otectus/ars-n-spells/blob/port/neoforge-1.21.1/docs/3.3.5/testing.md); TMM's source-targeted [MXP integration PR #45](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/45) provides additional code-path context but remains a separate candidate.
-- Not run: TMM config mode; one shared-pool cast; cross-cast from each carrier type; cooldown; blocked target; book capacity/duplicate; second player and multiplayer payment.
+## Player walkthrough blueprint
+
+This is a compact optional branch after the player has a working Ars spell and has access to Iron's spellbooks. There is no addon tier gate after that; the completion criterion is a real cross-cast, not merely crafting a Loom or tablet.
+
+| Step | How-to and visible success | Recipe/help surface | Coverage state |
+| --- | --- | --- | --- |
+| 1. Prepare one safe Ars spell | Create a low-cost, non-channelled Ars spell using the Ars Nouveau system; make sure it does not require a caster context or use a blacklisted glyph. | Ars spell UI and JEI spell component recipes; Ars Nouveau profile | Parent walkthrough, not this addon |
+| 2. Make a carrier | Craft Spell Loom; make a blank scroll if a blank Iron's scroll is not available; insert the Ars source and target; set a name if desired; inscribe and collect output. | JEI `ars_n_spells:spell_loom`, `blank_scroll`; Spell Loom UI | Detailed addon lesson exists on `feature/ars-quest-pilot`, not in current integration quest data |
+| 3. Bind to Iron's book | Craft Spellbook Binding tablet in the Apparatus; drop one carrier and one Iron's book by its Brazier; clear all other dropped items; activate empty-handed. Confirm new entry in the wheel. | JEI `ars_n_spells:spellbook_binding`; Brazier ritual description | Same pilot branch; Inscription Table alternative requires client-confirmed how-to |
+| 4. Cast and inspect payment | Select the Ars entry in Iron's wheel and cast at a safe target. Check effect and mana balance separately. Repeat in the chosen mode with a spell that costs more than the first. | Iron's spell wheel; config `mana_unification_mode`; command `/ans mode` for operators | The three addon advancement criteria exist for transcription, binding and first cross-cast; they use `minecraft:impossible` and only prove source explicitly grants them after events. Actual player-facing quest detector/client behavior is unverified. |
+| 5. Optional alternate carrier route | Craft Spell Transcription tablet, then place exactly one source and blank target by the Brazier. Right-click the resulting carrier to cast; use Spell Uninscription to clear it. | JEI apparatus recipes; ritual descriptions/tooltips | Source-mapped; no current integration quest lesson |
+| 6. Optional mana utilities | Craft Mana Infusion or Mana Well tablet and compare mana before/after in a disposable world with active config noted. | JEI apparatus recipe; ritual descriptions/tooltips | Source-mapped, not in TMM tests |
+
+The native advancement parent chain is `craft_spell_loom` → `transcribe_spell` → `bind_spell` → `first_cross_cast`. `craft_spell_loom` triggers from inventory possession. The latter three declare `minecraft:impossible`; source calls grant them after corresponding successful actions. That trigger declaration alone does not make a quest detector or prove the cross-cast worked in the client.
+
+## In-game teaching and current quest coverage
+
+No in-game guidebook or tutorial chapter is packaged. Recipe discovery is via JEI, spell creation belongs to Ars Nouveau, and the ritual items have localized descriptions with operation hints. For self-contained teaching, quest text must name the exact tablet and distinguish the two inscription routes, include dropped-item radius and empty-hand activation, and explain the blank carrier choice.
+
+The current integration `config/ftbquests/quests/chapters/ars_nouveau.snbt` is an orientation scaffold; no Ars 'n Spells quests are present there. A separate feature branch contains a broader Ars addon pilot and three distinct Ars 'n Spells advancement-linked lessons, but it remains separate from this branch. No quest/runtime files were changed for this profile.
+
+## Pack fit, config and unverified behavior
+
+- Installed dependencies align with artifact declarations: pinned Ars Nouveau is 5.13.5, and Iron's 3.16.3 is the optional minimum pinned for the current integration. The addon metadata also mentions optional Ars Elemental/Zero/Elemancy versions.
+- The config's fresh default is `iss_primary`, but no checked-in `config/ars_n_spells-common.toml` or `defaultconfigs` override was found. Do not treat the default as the pack's tested setting.
+- Cross-mod damage and resonance can change spell balance independently of mana mode. TMM's AttributeFix and magic equipment benchmark should be included when the total damage/defense tuning is audited.
+- Mod README reports a 3.3.5 NeoForge GameTest run against Iron's 1.21.1-3.16.3; after its payment-boundary fix, 132 required upstream GameTests passed, with separate profiles for Iron's present/absent and Ars Affinity. This is upstream evidence only, not a TMM server/client test. Animus itself was not run by that report.
+- Mod release notes say 3.3.5 fixes third-party Iron's payment checks/channelled last-pulse behavior and `ars_primary` regeneration interactions, and adds inscribed-Ars native cooldown. Do not claim those were exercised in this pack.
+
+## Evidence ledger and limits
+
+| Evidence | What it establishes | What it does not establish |
+| --- | --- | --- |
+| Exact pinned Modrinth JAR; hash above; `META-INF/neoforge.mods.toml` | Artifact identity, MC/loader/dependency ranges and mod id/version | Reproducible correspondence between this downloaded binary and inspected commit |
+| Source commit `f25c379d5e0521821ab6e80a9f485ae41d4506a0`; `README.md`; `CHANGELOG.md` | Declared mechanics, config defaults, source workflow, known 3.3.5 changes | TMM runtime behavior/config or player UI acceptance |
+| `src/main/resources/data/ars_n_spells/recipe/*.json` and `recipe/apparatus/*.json` | Exact crafting/apparatus ingredients, Source costs and conditional Iron's recipes | Live JEI category presentation |
+| `SpellLoomBlockEntity`, `LoomInscription`, `InscriptionPlanner`, ritual classes | Server-side source/target validation, consumed/reusable stack behavior, range/ambiguity rules, mana grant routing | Behavior under TMM's complete mod list and multiplayer latency |
+| `advancement/*.json` plus `AdvancementUtil` call sites | Advancement ancestry, declared trigger types and corresponding source grants | A useful task detector in the live client or quest credit in TMM |
+| TMM manifest, `mods/*.pw.toml`, `index.toml`, current chapter data | Selection and pinned pack facts; no Ars 'n Spells quests in the current integrated chapter | Successful client launch or addon mechanics in a world |
+
+### Not tested in TMM
+
+- Active mana mode, HUD bar, regeneration totals, cross-cast payment/shortage boundary, both spell directions and all five modes.
+- Loom output, blank-scroll and reusable-source consumption, spell wheel capacity, binding-table route, duplicate/full-book behavior, and uninscription.
+- Damage/affinity/resonance together with current TMM gear/attributes; cooldown display and persistence; the mana rituals' duration and net economy.
+- Multiplayer ownership/credit, client advancement credit, JEI presentation and live spell cast behavior.
+
+## Revision notes
+
+- 2026-11-15 — Replaced the stale Forge 1.20.1 source link with the NeoForge 1.21.1 3.3.5 source snapshot; rechecked the pinned JAR hash; separated the generic cross-cast ritual from the Loom → Iron's wheel workflow; added exact recipe costs, reusable/consumed input rules, other utility rituals, config limits, and current quest coverage. Kept `researching` because TMM runtime/client acceptance and effective config are still unknown.
