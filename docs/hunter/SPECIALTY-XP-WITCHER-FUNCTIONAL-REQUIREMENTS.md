@@ -8,12 +8,12 @@
 
 **One free selection at Hunter rank 1**, saved in the existing persistent Hunter skill ledger. A single choice group prevents concurrent selection of a second family. A Hunter retains normal kill XP for any eligible creature; the chosen quarry earns twice the normal amount. The choice can currently be changed by a full Hunter respec; a distinct costed specialization-switch ritual may replace that later.
 
-Available initial families: **Undead, Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon, Fae, Aberration**. No Prehistoric (dinosaurs are Beast); no Mage Slayer, Boss, Endborn/Netherborn, Spirit, Explosive, or dimension-as-species tree. Goety Cult, Wilden, Hobgoblin, etc. remain candidates pending owner review.
+Available **playable** families: **Undead, Illager, Dragon, Void, Piglin, Sculk, Aquatic, Construct, Beast, Arthropod, Plant, Elemental, Ooze, Demon**. The taxonomy also recognizes **Fae and Aberration**, but the pinned audit has zero verified XP-eligible members of either family; their candidate tags remain for future extension, and their **selection nodes are withheld** to prevent a dead-end choice. No Prehistoric (dinosaurs are Beast); no Mage Slayer, Boss, Endborn/Netherborn, Spirit, Explosive, or dimension-as-species tree. Goety Cult, Wilden, Hobgoblin, etc. remain candidates pending owner review.
 
 - Each choice is a one-rank, zero-point `hunter_specialty` marker pointing at `#tmm_progression:<family>`.
 - Example commands: `/tmmprogress specialty list` and `/tmmprogress specialty dragon` (no Hunter GUI yet).
 - A multi-family creature, e.g. Ender Dragon tagged both Dragon and Void, receives at most **one** 2× multiplier from the chosen category; specialty bonuses do not stack with themselves.
-- The initial tags intentionally cover only established vanilla lineages and a few verified optional tags (e.g. Goety Enderlings, Witchery demons, DE Chaos Guardian). Empty or partial Construct/Fae/Aberration tags need the pinned creature-registry crosswalk before shipping. Tags represent lineage, **not** XP legality or faction friendliness.
+- The initial tags intentionally cover only established vanilla lineages and a few verified optional tags (e.g. Goety Enderlings, Witchery demons, DE Chaos Guardian). Construct is seeded with runtime-confirmed hostile Cataclysm, Iron's and Goety entries. Fae/Aberration remain unselectable until real legal prey is available; further modded species still require curated crosswalk imports. Tags represent lineage, **not** XP legality or faction friendliness.
 - Existing Undead/Raider **pilot combat skills remain**; this does not yet rewrite every ability into the canonical 16-family taxonomy.
 
 ### HP-derived kill XP
@@ -114,7 +114,7 @@ A possible sixth lore Sign, **Heliotrope**, can remain an optional defensive tec
 | Contracts/bestiary | native milestones only | evidence, contracts, unique trophy credit |
 | Schools/mutagens | none | equipment/capability/reward design |
 
-**Suggested order:** (A) finish Hunter physiology and provenance; (B) enrich taxonomy and actual available prey; (C) implement Senses + bestiary; (D) implement toxicity/oils/decoctions and signs as independent modules; (E) add contracts/mutagens/schools; (F) profile XP sources and total skill-point spend against 16 specialty paths before approving rank count or cap.
+**Suggested order:** (A) finish Hunter physiology and provenance; (B) enrich taxonomy and actual available prey; (C) implement Senses + bestiary; (D) implement toxicity/oils/decoctions and signs as independent modules; (E) add contracts/mutagens/schools; (F) profile XP sources and total skill-point spend against playable specialty paths before approving rank count or cap.
 
 **Cap decision deferred as requested:** the active path is still 20 ranks/28,000 XP, and its 24-point ceiling is insufficient even for some existing 10-rank pilot skills. Adding full Witcher parity would increase the number of purchasable *options* dramatically; level cap and points must be derived from desired complete builds and real encounter frequency, not set by counting all skills as though a player should buy every branch.
 
