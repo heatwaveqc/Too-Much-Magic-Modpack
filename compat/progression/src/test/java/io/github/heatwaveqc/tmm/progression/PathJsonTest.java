@@ -77,7 +77,7 @@ class PathJsonTest {
                     stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
                 var parsed = PathJson.read("tmm_progression:" + name,source);
                 assertEquals(source.get("max_level").getAsInt(),parsed.maxRank());
-                assertEquals("monk".equals(name) ? "sunset" : "manual",
+                assertEquals("monk".equals(name) ? "sunset" : "potion",
                     source.get("enrollment").getAsString());
                 assertFalse(parsed.skills().isEmpty());
             }
