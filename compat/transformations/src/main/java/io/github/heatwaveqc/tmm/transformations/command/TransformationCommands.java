@@ -48,6 +48,8 @@ public final class TransformationCommands {
         source.sendSuccess(() -> Component.literal("Two-native-ability pilot: " + state.verdict()
                 + "; JAWR vampire=" + state.vampire() + ", JAWR lycanthrope=" + state.wolf()
                 + ", Hunter=" + state.hunter() + "; " + state.reason()), false);
+        source.sendSuccess(() -> Component.literal("Native Hiss skill: " + AbominationActionPilot.nativeEntitlement(player, AbominationActionPilot.Ability.HISS)
+                + "; native Howl skill: " + AbominationActionPilot.nativeEntitlement(player, AbominationActionPilot.Ability.HOWL)), false);
         source.sendSuccess(() -> Component.literal("Test uses native HissingAction and HowlingAction effects via their original player attachments, "
                 + "but bypasses original skill unlocks and normal action event/packet handlers. It NEVER grants levels or skills."), false);
         return state.ready() ? Command.SINGLE_SUCCESS : 0;
