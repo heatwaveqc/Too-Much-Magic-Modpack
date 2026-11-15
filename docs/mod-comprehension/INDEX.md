@@ -191,7 +191,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `polymorph` | Polymorph | qol | enabled flag | focused | queued | — |
 | `trashslot` | TrashSlot | qol | enabled flag | focused | queued | — |
 | `treechop` | HT's TreeChop | qol | enabled flag | focused | queued | — |
-| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | queued | — |
+| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | researching | [profile](mods/summoning-rituals.md) |
 | `simple-backups` | Simple Backups | server_utility | enabled flag | interface | queued | — |
 | `spark` | spark | server_utility | enabled flag | interface | queued | — |
 | `improvable-skills` | Improvable Skills 3 | skills | enabled flag | full | queued | — |
@@ -231,4 +231,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — JAWR 0.5.39 profile started from the exact hash-pinned JAR. Mapped the 223-entry native Guidebook and nine-stage supernatural journals; identified the reported cauldron Altar Power bypass in all ten cauldron-crafting recipes and a cross-version familiar recipient report. See the profile and `docs/COMPATIBILITY.md`.
 - 2026-11-15 — Forbidden Magic 0.5.37 profile started from the exact hash-pinned JAR. Mapped its gated Soul Magic guide additions, four code-granted necromancy ranks, soul rites and phylactery creation/binding path. The user's separate Archlich target requires Phylactery before Arca; Arca is not present in this addon. See the profile.
 - 2026-11-15 — Standalone Vampirism and Werewolves are marked deferred for this knowledge queue because the owner-approved target retires those mods after Hunter/Monk migration; this is a research-status reconciliation only, not a runtime change.
-- **Next action:** continue with `summoning-rituals`, then `botania-revived`, `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR and Forbidden Magic remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — Summoning Rituals 3.14.2 profile added from exact-release source. Confirmed it is a recipe framework with no default rituals and no TMM altar acquisition/recipe scripts; documented typed input/output channels, sacrifice semantics and command risks. See profile and compatibility notes.
+- **Next action:** continue with `botania-revived`, `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR, Forbidden Magic and Summoning Rituals remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
