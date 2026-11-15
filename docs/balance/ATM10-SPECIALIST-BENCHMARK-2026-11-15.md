@@ -1,4 +1,4 @@
-# ATM10 Specialist Power Benchmark — v0.2 (2026-11-15)
+# ATM10 Specialist Power Benchmark — v0.3 (2026-11-15)
 
 **Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
@@ -200,3 +200,26 @@ The very high defense values underscore why Monk parity must be tied to *actual 
 - [Apotheosis Tyrannical gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/tyrannical.json)
 - [Apotheosis Blessed affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/blessed.json)
 - [Apotheosis uniqueness rule](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/main/java/dev/shadowsoffire/apotheosis/socket/gem/Gem.java)
+
+
+## v0.3 — additional constrained defensive maxima (not simultaneous)
+
+Using only the Unobtainium armor base, source-defined Mythic affixes, and the listed Perfect gems, these are source-computable **scenario peaks** (pending in-client item category/roll/stack verification). Same 40 armor / 24 armor-toughness Unobtainium mage armor reference, but each row allocates its sockets differently. Minecraft AttributeFix in ATM10 makes the ordinary vanilla armor/toughness 30/20 bounds unsuitable as assumed clamping ceilings for the examined default-enabled attributes.
+
+| Optimization | Four-piece armor only | Four-piece armor + offhand shield |
+|---|---:|---:|
+| **Armor points** | **182.16** | **381.524** |
+| **Armor toughness** | **81.0** | **145.8** |
+| **Max health** (from v0.2) | **386.4** | **1,103.59704** |
+
+**Armor loadout, no shield:** 40 base + four Mythic Ironforged (+8 each) + one Perfect Guardian (+8) on each of chestplate and leggings = 88 additive armor; multiply base by 1.8 from two Mythic Adamantine (+40% each), then 1.15 from one Perfect Royalty helmet gem: \`88 × 1.8 × 1.15 = 182.16\`.
+
+**Armor loadout with shield:** add shield Mythic Ironforged (+30% multiplied base), Royalty Perfect shield (+50% multiplied base), and Guardian Perfect shield (+45% multiplied total): \`88 × (1+.4+.4+.3+.5) × 1.15 × 1.45 = 381.524\`.
+
+**Toughness loadout, no shield:** 24 base + four Mythic Steel Touched (+6 each) + Perfect Tyrannical gems (+6 each chest and leggings) = 60 additive toughness; multiply by 1.35 from one Perfect Samurai leggings gem: \`60 × 1.35 = 81\`.
+
+**Toughness loadout with shield:** additionally shield Mythic Steel Touched (+30% multiplied base) and a Perfect Tyrannical shield gem (+50% multiplied base): \`60 × (1+.3+.5) × 1.35 = 145.8\`.
+
+Each set is a **different** specialized optimization. The 381.524 armor, 145.8 toughness and 1,103.6 HP values **cannot be assigned as simultaneous** without solving the intersecting gem-slot allocation problem. Armor+toughness values are not direct effective damage reduction under Apothic Attributes; physical and bypass-hit tests are still required. Other item effects, potions, Curios, different base gear and alternate enchantments could make a larger entire-pack maximum.
+
+Source files: [Ironforged armor affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/ironforged.json), [Adamantine affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/adamantine.json), [Steel Touched affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/steel_touched.json), [Guardian gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/guardian.json), [Samurai gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/samurai.json), [Tyrannical gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/tyrannical.json), [Royalty gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json), [Shield ironforged affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/shield/attribute/ironforged.json), [Shield steel touched affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/shield/attribute/steel_touched.json).
