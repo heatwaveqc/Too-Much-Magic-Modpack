@@ -184,7 +184,7 @@ final class MonkFullTreeSkeletonTest {
         assertTrue(armor.get("default_enabled_for_new_monks").getAsBoolean());
         assertEquals("ALWAYS accept ON for a Monk", armor
                 .getAsJsonObject("toggle_behavior")
-                .get("when_turning_on_with_armor").getAsString().substring(0, 26));
+                .get("when_turning_on_with_armor").getAsString().substring(0, 27));
         assertEquals(20, armor.getAsJsonObject("bound_armor_wear")
                 .get("default_interval_server_ticks").getAsInt());
         assertEquals(1, armor.getAsJsonObject("bound_armor_wear")
