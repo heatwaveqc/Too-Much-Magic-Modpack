@@ -1,0 +1,21 @@
+{
+  "display": {
+    "count": 1,
+    "id": "minecraft:book"
+  },
+  "faction": {
+    "id": "tmm_monk:monk"
+  },
+  "name": {
+    "translate": "gui.tmm_monk.skills.level"
+  },
+  "unlock_predicate": {
+    "type_specific": {
+      "type": "vampirism:faction",
+      "faction": {
+        "id": "tmm_monk:monk"
+      },
+      "level": 1
+    }
+  }
+}
