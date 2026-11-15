@@ -22,11 +22,13 @@ public final class MxpService {
                               long lifetimeLevels, double progress, double pendingXP,
                               String note) {}
 
-    public record BossRule(double first, double repeat, boolean repeatFixed) {
+    /** Every first registered boss victory awards exactly 1,000 effective MXP. */
+    public static final double FIRST_BOSS_MXP = 1000.0;
+
+    public record BossRule(double repeat, boolean repeatFixed) {
         public BossRule {
-            if (!Double.isFinite(first) || first <= 0
-                    || !Double.isFinite(repeat) || repeat <= 0)
-                throw new IllegalArgumentException("Invalid MXP boss reward");
+            if (!Double.isFinite(repeat) || repeat <= 0)
+                throw new IllegalArgumentException("Invalid MXP repeat-boss reward");
         }
     }
 
@@ -34,12 +36,12 @@ public final class MxpService {
 
     private MxpService() {}
 
-    public static void registerBossRule(String entityId, double first,
+    public static void registerBossRule(String entityId,
                                         double repeat, boolean repeatFixed) {
         ResourceLocation id = ResourceLocation.tryParse(entityId);
         if (id == null || !id.toString().equals(entityId))
             throw new IllegalArgumentException("Use canonical boss entity ID");
-        BOSS_RULES.put(id.toString(), new BossRule(first, repeat, repeatFixed));
+        BOSS_RULES.put(id.toString(), new BossRule(repeat, repeatFixed));
     }
 
     public static BossRule bossRule(String entityId) {
@@ -79,7 +81,7 @@ public final class MxpService {
         BossRule rule = bossRule(bossId);
         if (rule == null) return ignored(player, "Boss not in the explicit MXP registry");
         return award(player, record -> record.boss(bossId, transactionId,
-                rule.first(), rule.repeat(), rule.repeatFixed()));
+                FIRST_BOSS_MXP, rule.repeat(), rule.repeatFixed()));
     }
 
     public static AwardStatus fixedDiagnostic(ServerPlayer player, String transactionId,
