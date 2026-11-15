@@ -27,12 +27,12 @@ The original mod was **not XP-based**. The next stage was awarded exclusively by
 | 14 | Pacify creeper with empty-hand interaction | Live optional deed | +175 |
 | 15 | 200-tick Wither Skeleton gaze in Nether Fortress | Pending detector | +190 |
 | 16 | 40-block fall onto hay | Pending detector | +210 |
-| 17 | Sleep and wake on paired bedrock blocks | Pending detector | +230 |
+| 17 | Sleep and wake on paired bedrock blocks | **Live repeatable Bedrock Rest (rank 17)** | +230 once |
 | 18 | Kill 5 hostiles while blinded | Live optional deed | +270 |
 | 19 | Deal >25% of Wither HP unarmored/nonprojectile | Partial evidence | +550 |
 | 20 | 15 intercepted lethal void falls | Intentional replacement | +500 |
 
-**What the audit verified:** 7 source-inspired deeds have working server event mappings; 2 are intentionally replaced (one-log initiation → First Sunset, repeated void deaths → Dragon-gated Momentum Gliding); 2 are partial (distinct animal proof and Wither contribution); 10 need dedicated detectors and are **not** disguised as valid live milestones.
+**What the audit verified:** 8 source-inspired deeds have working server event mappings, including rank-17 repeatable Bedrock Rest; 2 are intentionally replaced (one-log initiation → First Sunset, repeated void deaths → Dragon-gated Momentum Gliding); 2 are partial (distinct animal proof and Wither contribution); 9 need dedicated detectors and are **not** disguised as valid live milestones.
 
 Distinct source details matter. Animal petting counted **20 different animals per player**, not 20 repeated clicks. The skeleton trial tracked arrows fired by skeletons targeting the Monk and reset upon impact. The Wither trial required **over 25% max-HP damage personally dealt**, unarmored and without projectile damage; a merely player-credited Wither death is a weaker trial. The last original stage canceled **15 lethal deep-void falls**, restored health and granted Creative Flight. That dangerous loop is deliberately *not* carried forward.
 
@@ -62,7 +62,7 @@ The vanilla pilot tag `#tmm_progression:monk_training_hostiles` combines existin
 
 ### One-time classic-inspired milestones
 
-The path contains **15 one-time XP milestone definitions**: First Sunset; 10 and 100 barehand logs; five stone; 10 empty-fist undead; 20 accepted animal interactions; four iron blocks; one obsidian; Creeper Kiss; five blind-hostile defeats; player-credited Wither; Dragon; 20 hostile defeats; 10 and 30 earned advancements. These persist on the native path ledger and cannot pay repeatedly.
+The path contains **16 one-time XP milestone definitions**: First Sunset; 10 and 100 barehand logs; five stone; 10 empty-fist undead; 20 accepted animal interactions; four iron blocks; one obsidian; Creeper Kiss; five blind-hostile defeats; player-credited Wither; Dragon; 20 hostile defeats; 10 and 30 earned advancements. These persist on the native path ledger and cannot pay repeatedly.
 
 - `trial_creeper_kiss` uses a newly emitted **trusted server external event** on each valid Monk creeper interaction; **the milestone pays only once per player**, even if a different Monk already pacified that creeper.
 - `blind_ordeal_victory` now requires **five** server-credited **direct-fist** hostile kills while the player has the opt-in Blindness ordeal active. Automatic rank 18 does not falsely complete the ordeal; the player can abort and resume, and no permanent blindness is enforced.
@@ -118,10 +118,14 @@ To bypass First Sunset strictly for testing, OP can use `/tmmprogress admin join
 1. **Placed-block XP farming:** the generic engine does not yet distinguish naturally generated from player-placed blocks. A repeated place/break loop can grant hand mining XP. We leave zero per-log cooldown so a verified TreeChop multi-log action can eventually credit *every actual removed log*. Before shipping, add provenance and claim-safe final-credit deduplication.
 2. **TreeChop and magic attribution:** post-commit all-log signals and spell-owner mining signals need adapter QA. A path JSON alone cannot guarantee those events exist.
 3. **Modded hostiles:** the training target tag covers a vanilla-only pilot roster, not the full creature taxonomy being assembled in the Hunter thread.
-4. **Source-flavored missing deeds:** moonboat, sunset gaze, drowning, sprint distance, skeleton dodge, nonaggressive Enderman meditation, firewalk, Wither Skeleton gaze, 40-block hay landing and bedrock sleep need verified server-world detectors.
+4. **Source-flavored missing deeds:** moonboat, sunset gaze, drowning, sprint distance, skeleton dodge, nonaggressive Enderman meditation, firewalk, Wither Skeleton gaze and 40-block hay landing need verified server-world detectors.
 5. **Boss credit and history:** Dragon advancement earned *before* Monk enrollment will not automatically backfill; the current advancement may also include nearby participants rather than a strictly credited personal defeat. Wither 25% gearless contribution is not yet tracked.
 6. **Harmful status lifecycle:** Blindness Ordeal works only through server verified kills. Death/relog/abort must clear lingering forced blindness; progress counts persist unless explicitly reset.
 7. **Advancement abuse:** recipe IDs are filtered, but hidden modded technical advancements also need vetting before a broad pack release.
 8. **Balance after actual play:** use survival XP-per-hour logs across three progression styles before treating 14,300 as a fixed cap.
 
 **Engineering verification:** [MonkClassicXpTrialTest](../src/test/java/io/github/heatwaveqc/tmm/progression/MonkClassicXpTrialTest.java) parses the *live* Monk JSON and all 21 source gates, validates authorized signals and 15 milestone definitions, checks free classic automatic unlocks, and simulates three XP curves. A green JUnit/server-boot check is not an in-world XP rate audit.
+
+### New rank-17 native utility: Bedrock Rest
+
+An unarmored, empty-handed Monk at native rank 17 may **right-click the top-accessible side of two horizontally adjacent bedrock blocks** to start *real* sleep at night or during thunderstorms. There must be two blocks of headroom above both floor blocks, the dimension must support ordinary bed sleeping, and nearby hostile monsters block starting the rest. This is a **persistent, automatic, free native skill**, usable every night, not a consumable ritual or a Tyz purchase. It uses the sleeping pose and server sleep vote, but **does not reset the player's respawn position** and never treats arbitrary bedrock as a bed for other players. Only the very first sufficiently long sleep awards the `trial_bedrock_sleep` +230-XP historic-deed bonus. Real-world QA must confirm server/client wake position, vanilla weather/night skipping, no Nether/End behavior, and sleep mod interactions. See `BedrockRest.java` and `BedrockRestTest.java`.
