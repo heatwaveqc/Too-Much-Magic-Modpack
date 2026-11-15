@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "exclusive_group": "",
+  "exclusive_group": "tmm_progression:human_disciplines",
   "rank_xp": [
     0,
     20,
