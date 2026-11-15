@@ -146,7 +146,7 @@ final class MonkSkillPlanTest {
                 plan.getAsJsonArray("excluded_source_affixes").get(0).getAsJsonObject().get("id").getAsString());
     }
 
-    @Test void dragonSurvivalRosterIsApprovedButNotInstalled() throws Exception {
+    @Test void dragonSurvivalManifestMustMatchActualPinnedPackState() throws Exception {
         try (var reader = Files.newBufferedReader(Path.of("..", "..", "manifest", "mods.json"))) {
             var manifest = JsonParser.parseReader(reader).getAsJsonObject();
             var mods = manifest.getAsJsonArray("mods");
@@ -157,9 +157,18 @@ final class MonkSkillPlanTest {
             }
             assertNotNull(dragon);
             assertTrue(dragon.get("desired").getAsBoolean());
-            assertFalse(dragon.get("enabled_in_pack").getAsBoolean());
             assertEquals("verified_release", dragon.get("release_status").getAsString());
             assertEquals(9539454, dragon.get("candidate_file_id").getAsInt());
+            // Standalone Monk sources still have Dragon approved-but-uninstalled.
+            // The combined disposable full QA pack has the pin, so this is a
+            // state invariant, not a historical false-only expectation.
+            boolean pinned = Files.isRegularFile(Path.of("..", "..", "mods", "dragon-survival.pw.toml"));
+            assertEquals(pinned, dragon.get("enabled_in_pack").getAsBoolean(),
+                "Dragon Survival active manifest state must match actual packwiz pin");
+            if (pinned) {
+                assertTrue(Files.isRegularFile(Path.of("..", "..", "mods", "geckolib.pw.toml")),
+                    "Dragon Survival requires GeckoLib");
+            }
         }
     }
 }
