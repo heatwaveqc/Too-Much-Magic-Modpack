@@ -40,63 +40,81 @@
         "label": "Reservoir",
         "effect": "Max eligible personal resource capacity; not machine tanks",
         "method": "Existing 99-rank preview; native attributes/adapters",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_wellspring",
         "label": "Wellspring",
         "effect": "Personal resource regeneration; never passive world generators",
         "method": "Existing 99-rank preview; native attributes/adapters",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_thrift",
         "label": "Thrift",
         "effect": "Real positive-cost reduction for personal casts, with floor and cross-mod dedupe",
         "method": "Existing 99-rank preview; debit-event adapters",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_potency",
         "label": "Potency",
         "effect": "Scalable offensive/healing magic effect, damage-tag and owner aware",
         "method": "Existing 99-rank preview; native attributes/context",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_quickening",
         "label": "Quickening",
         "effect": "Personal cast/activation speed only",
         "method": "Future per-mod cast timing adapter",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_projection",
         "label": "Projection",
         "effect": "Valid spell-target range, not AoE radius",
         "method": "Future range/raycast adapter",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_persistence",
         "label": "Persistence",
         "effect": "Temporary effects and eligible controlled summons duration",
         "method": "Future duration adapter",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_conjuration",
         "label": "Conjuration",
         "effect": "Strengthen personally owned summoned allies with bounded stats",
         "method": "Future owner-attribution adapter",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       },
       {
         "id": "tmm_magic_warding",
         "label": "Warding",
         "effect": "Mitigate confirmed magical damage only",
         "method": "Future damage-tag listener",
-        "status": "proposal_or_preview_only"
+        "status": "proposal_or_preview_only",
+        "proposed_tiers": "I→V where needed; preserve current 99-rank first-wave preview nodes",
+        "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
       }
     ],
     "conditional": [
@@ -126,7 +144,13 @@
               "label": "Stone Claws",
               "effect": "Scale unarmed/claw damage only in dragon body; no weapon-wide bonus.",
               "method": "attribute/attack hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_crushing_bite",
@@ -134,7 +158,15 @@
               "label": "Crushing Bite",
               "effect": "Bounded armor/knockback pressure on confirmed bite hits.",
               "method": "dragon attack-event adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_stone_claws"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_seismic_pounce",
@@ -142,7 +174,15 @@
               "label": "Seismic Pounce",
               "effect": "Cooldown-limited landing shockwave against entities; terrain damage off by default.",
               "method": "movement/combat hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_crushing_bite"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -155,7 +195,13 @@
               "label": "Stonehide",
               "effect": "Incremental natural armor; respect equipment stacking caps.",
               "method": "attribute/form gate",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_earthbound_poise",
@@ -163,7 +209,15 @@
               "label": "Earthbound Poise",
               "effect": "Reduce knockback and fall damage while grounded.",
               "method": "damage/motion adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_stonehide"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_mountain_bastion",
@@ -171,7 +225,15 @@
               "label": "Mountain Bastion",
               "effect": "Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity.",
               "method": "custom activated ability",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_earthbound_poise"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -184,7 +246,13 @@
               "label": "Tunneler",
               "effect": "Improve legal claw-mining speed; preserve vanilla/tool harvest checks.",
               "method": "block-break adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_vein_sense",
@@ -192,7 +260,15 @@
               "label": "Vein Sense",
               "effect": "Short-range, timed ore awareness without unrestricted x-ray or chunk scans.",
               "method": "server bounded scan",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_tunneler"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_deep_excavation",
@@ -200,7 +276,15 @@
               "label": "Deep Excavation",
               "effect": "Controlled multi-block excavation; count actual blocks, honor claims and server limits.",
               "method": "protected block-break pipeline",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_vein_sense"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -213,7 +297,13 @@
               "label": "Gloom Eyes",
               "effect": "Improve dark navigation without permanent global spectral vision.",
               "method": "light/vision hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_echo_sense",
@@ -221,7 +311,15 @@
               "label": "Echo Sense",
               "effect": "Detect nearby moving creatures underground on a cooldown.",
               "method": "entity proximity adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_gloom_eyes"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_cave_deep_sovereignty",
@@ -229,7 +327,15 @@
               "label": "Deep Sovereignty",
               "effect": "Situational breath or body-power enhancement underground; preserve native dragon-breath identity.",
               "method": "verified breath hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_cave_echo_sense"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -237,7 +343,27 @@
       "capstone": {
         "label": "Heart of the Mountain",
         "effect": "After late native dragon progression, briefly combine armor and excavation benefits; no Chaos Guardian-tier gear replacement.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_dragon_cave_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_cave_seismic_pounce",
+            "tmm_dragon_cave_mountain_bastion",
+            "tmm_dragon_cave_deep_excavation",
+            "tmm_dragon_cave_deep_sovereignty"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_cave_crushing_bite",
+            "tmm_dragon_cave_earthbound_poise",
+            "tmm_dragon_cave_vein_sense",
+            "tmm_dragon_cave_echo_sense"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "No cross-species dragon purchases or free dragon growth.",
@@ -259,7 +385,13 @@
               "label": "Current Rider",
               "effect": "Improve movement control in water, including currents.",
               "method": "water movement hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_tidal_strike",
@@ -267,7 +399,15 @@
               "label": "Tidal Strike",
               "effect": "Enhance wet-target combat and native aquatic attacks, not generic damage.",
               "method": "attack/wet-state hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_current_rider"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_undertow",
@@ -275,7 +415,15 @@
               "label": "Undertow",
               "effect": "Cooldown-limited pull/slow applied to legal targets without moving world water blocks.",
               "method": "targeted crowd-control",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_tidal_strike"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -288,7 +436,13 @@
               "label": "Pressure Adaptation",
               "effect": "Reduce underwater environmental penalties.",
               "method": "environment adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_brine_scales",
@@ -296,7 +450,15 @@
               "label": "Brine Scales",
               "effect": "Situational protection while submerged; no blanket armor bonus on land.",
               "method": "damage/form gate",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_pressure_adaptation"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_deepwater_refuge",
@@ -304,7 +466,15 @@
               "label": "Deepwater Refuge",
               "effect": "Bounded underwater healing or defense with a meaningful resource/cooldown cost.",
               "method": "resource-aware effect",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_brine_scales"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -317,7 +487,13 @@
               "label": "Sleek Form",
               "effect": "Increase underwater speed, capped against sprint/exotic gear.",
               "method": "water movement attribute",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_slipstream",
@@ -325,7 +501,15 @@
               "label": "Slipstream",
               "effect": "Short burst dodge in water with collision safety.",
               "method": "dash movement hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_sleek_form"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_ocean_leap",
@@ -333,7 +517,15 @@
               "label": "Ocean Leap",
               "effect": "Leap from water and control reentry without free flight.",
               "method": "momentum movement hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_slipstream"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -346,7 +538,13 @@
               "label": "Ocean Forager",
               "effect": "Enhance valid fish/seafood gathering and food utility without infinite loot.",
               "method": "harvest/loot hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_friendly_waters",
@@ -354,7 +552,15 @@
               "label": "Friendly Waters",
               "effect": "Improve interactions with eligible nonhostile aquatic mobs; no boss pacification.",
               "method": "faction-relation adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_ocean_forager"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_sea_abyssal_explorer",
@@ -362,7 +568,15 @@
               "label": "Abyssal Explorer",
               "effect": "Safe short-duration navigation/sensing in deep oceans.",
               "method": "environment/vision hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_sea_friendly_waters"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -370,7 +584,27 @@
       "capstone": {
         "label": "Tide Sovereign",
         "effect": "Late-game, time-limited aquatic combat and mobility surge; must be distinctly weaker on land.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_dragon_sea_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_sea_undertow",
+            "tmm_dragon_sea_deepwater_refuge",
+            "tmm_dragon_sea_ocean_leap",
+            "tmm_dragon_sea_abyssal_explorer"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_sea_tidal_strike",
+            "tmm_dragon_sea_brine_scales",
+            "tmm_dragon_sea_slipstream",
+            "tmm_dragon_sea_friendly_waters"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
@@ -392,7 +626,13 @@
               "label": "Green Recovery",
               "effect": "Small recovery benefit in living biomes, not in all dimensions.",
               "method": "biome/regen adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_living_bark",
@@ -400,7 +640,15 @@
               "label": "Living Bark",
               "effect": "Situational natural defense near vegetation, with stacking caps.",
               "method": "biome/attribute hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_green_recovery"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_elder_grove",
@@ -408,7 +656,15 @@
               "label": "Elder Grove",
               "effect": "Time-limited regeneration/support pulse, costing dragon resource.",
               "method": "area heal adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_living_bark"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -421,7 +677,13 @@
               "label": "Bramble Claw",
               "effect": "Add a bounded nature-themed status to confirmed claw attacks.",
               "method": "attack/status adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_entangling_breath",
@@ -429,7 +691,15 @@
               "label": "Entangling Breath",
               "effect": "Native breath enhancer applying short slows only where source breath supports it.",
               "method": "breath/context adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_bramble_claw"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_thornstorm",
@@ -437,7 +707,15 @@
               "label": "Thornstorm",
               "effect": "Cooldown-limited small-area crowd control with no world block destruction.",
               "method": "targeting adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_entangling_breath"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -450,7 +728,13 @@
               "label": "Canopy Stride",
               "effect": "Improve movement through leaves/forests; no generic always-on sprint power.",
               "method": "biome/movement hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_rooted_landing",
@@ -458,7 +742,15 @@
               "label": "Rooted Landing",
               "effect": "Safer falls and precision landings, capped by equipment.",
               "method": "fall-damage hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_canopy_stride"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_sylvan_bound",
@@ -466,7 +758,15 @@
               "label": "Sylvan Bound",
               "effect": "Short leap between safe landing points; collision and claim checks.",
               "method": "movement hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_rooted_landing"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -479,7 +779,13 @@
               "label": "Fey Courtesy",
               "effect": "Conditional neutrality with selected eligible fae mobs, excluding hostile bosses.",
               "method": "explicit faction allowlist",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_harvest_harmony",
@@ -487,7 +793,15 @@
               "label": "Harvest Harmony",
               "effect": "Quality-of-life harvest/replant assistance without resource multiplication.",
               "method": "crop event adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_fey_courtesy"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_dragon_forest_grove_guardian",
@@ -495,7 +809,15 @@
               "label": "Grove Guardian",
               "effect": "Bounded support bonus to nearby allies and pets in natural environments.",
               "method": "ownership/area hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_dragon_forest_harvest_harmony"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -503,7 +825,27 @@
       "capstone": {
         "label": "Elderwood Heart",
         "effect": "Late native progression grants a timed defensive/support state in forest biomes.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_dragon_forest_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_forest_elder_grove",
+            "tmm_dragon_forest_thornstorm",
+            "tmm_dragon_forest_sylvan_bound",
+            "tmm_dragon_forest_grove_guardian"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_forest_living_bark",
+            "tmm_dragon_forest_entangling_breath",
+            "tmm_dragon_forest_rooted_landing",
+            "tmm_dragon_forest_harvest_harmony"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Do not turn Forest Dragon neutrality into global creature pacification.",
@@ -525,7 +867,13 @@
               "label": "Efficient Feeding",
               "effect": "Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions.",
               "method": "canonical blood transaction adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_deep_reservoir",
@@ -533,7 +881,15 @@
               "label": "Deep Reservoir",
               "effect": "Increase one authoritative usable blood capacity, not two independent HUD pools.",
               "method": "single-pool capacity adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_efficient_feeding"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_crimson_renewal",
@@ -541,7 +897,15 @@
               "label": "Crimson Renewal",
               "effect": "Trade a real measured blood debit for bounded emergency healing.",
               "method": "blood/heal hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_deep_reservoir"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -554,7 +918,13 @@
               "label": "Nocturnal Vision",
               "effect": "Better low-light perception with native-sunlight penalties untouched.",
               "method": "vision hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_shadow_stalker",
@@ -562,7 +932,15 @@
               "label": "Shadow Stalker",
               "effect": "Short stealth advantage in darkness; avoid invisibility in full daylight.",
               "method": "light/stealth hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_nocturnal_vision"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_bat_mastery",
@@ -570,7 +948,15 @@
               "label": "Bat Mastery",
               "effect": "Improve native bat-form controls/efficiency after that native ability is acquired.",
               "method": "verified native-form hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_shadow_stalker"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -583,7 +969,13 @@
               "label": "Fang Training",
               "effect": "Scale only verified vampire bite/melee attacks.",
               "method": "combat native-tag hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_measured_feast",
@@ -591,7 +983,15 @@
               "label": "Measured Feast",
               "effect": "Limited post-kill blood recovery from eligible kills, with transaction deduplication.",
               "method": "kill/blood hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_fang_training"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_blood_duelist",
@@ -599,7 +999,15 @@
               "label": "Blood Duelist",
               "effect": "Focused single-target bonuses under low blood; prevent intentional zero-cost loops.",
               "method": "combat-state hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_measured_feast"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -612,7 +1020,13 @@
               "label": "Pale Resilience",
               "effect": "Bounded poison/disease-type mitigation where the source system allows it.",
               "method": "damage/condition adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_sunshroud",
@@ -620,7 +1034,15 @@
               "label": "Sunshroud",
               "effect": "Short resource-funded sunlight resistance; never erase core daylight tradeoffs.",
               "method": "sunlight event bridge",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_pale_resilience"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_vampire_elder_presence",
@@ -628,7 +1050,15 @@
               "label": "Elder Presence",
               "effect": "Bounded defensive/control aura with cooldown, not full charm immunity.",
               "method": "area ability",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_vampire_sunshroud"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -636,7 +1066,27 @@
       "capstone": {
         "label": "Blood Regent",
         "effect": "Blood-funded high-tier predatory stance requiring advanced native vampire progression.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_vampire_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_vampire_crimson_renewal",
+            "tmm_vampire_bat_mastery",
+            "tmm_vampire_blood_duelist",
+            "tmm_vampire_elder_presence"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_vampire_deep_reservoir",
+            "tmm_vampire_shadow_stalker",
+            "tmm_vampire_measured_feast",
+            "tmm_vampire_sunshroud"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
@@ -658,7 +1108,13 @@
               "label": "Keen Scent",
               "effect": "Locate nearby tracked targets at limited range, not players through claims or walls without rule.",
               "method": "target/sensing hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_blood_trail",
@@ -666,7 +1122,15 @@
               "label": "Blood Trail",
               "effect": "Brief tracking of wounded mobs with privacy/multiplayer restrictions.",
               "method": "combat-target marker",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_keen_scent"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_apex_tracker",
@@ -674,7 +1138,15 @@
               "label": "Apex Tracker",
               "effect": "Improved tracking against eligible dangerous mobs, cooldown limited.",
               "method": "threat-category hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_blood_trail"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -687,7 +1159,13 @@
               "label": "Rending Claws",
               "effect": "Scale claw damage in valid wolf/beast form, respecting weapon modifiers.",
               "method": "native-form combat hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_savage_momentum",
@@ -695,7 +1173,15 @@
               "label": "Savage Momentum",
               "effect": "Short stacking melee bonus after actual hits, capped and reset out of combat.",
               "method": "combat-state adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_rending_claws"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_primal_fury",
@@ -703,7 +1189,15 @@
               "label": "Primal Fury",
               "effect": "Timed burst consuming native appropriate resource or applying fatigue.",
               "method": "activated melee ability",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_savage_momentum"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -716,7 +1210,13 @@
               "label": "Predator's Stride",
               "effect": "Bonus mobility in valid wolf form.",
               "method": "movement/form hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_pouncing_leap",
@@ -724,7 +1224,15 @@
               "label": "Pouncing Leap",
               "effect": "Targeted controlled leap with landing safety.",
               "method": "movement/combat hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_predator_s_stride"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_lunar_chase",
@@ -732,7 +1240,15 @@
               "label": "Lunar Chase",
               "effect": "Short chase burst under moon conditions with weaker daytime counterpart.",
               "method": "time/state hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_pouncing_leap"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -745,7 +1261,13 @@
               "label": "Pack Sense",
               "effect": "Detect/coordinate eligible allied wolves and player-owned companions.",
               "method": "ownership/alliance adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_protect_the_pack",
@@ -753,7 +1275,15 @@
               "label": "Protect the Pack",
               "effect": "Bounded defense near allies, no pet invulnerability.",
               "method": "ally-proximity hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_pack_sense"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_werewolf_war_howl",
@@ -761,7 +1291,15 @@
               "label": "War Howl",
               "effect": "Cooldown-limited temporary group buff; only one stacking instance per leader.",
               "method": "area buff hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_werewolf_protect_the_pack"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -769,7 +1307,27 @@
       "capstone": {
         "label": "Moon Apex",
         "effect": "Late-form transformation mastery for a short ferocious burst, preserving silver/other verified weaknesses.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_werewolf_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_werewolf_apex_tracker",
+            "tmm_werewolf_primal_fury",
+            "tmm_werewolf_lunar_chase",
+            "tmm_werewolf_war_howl"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_werewolf_blood_trail",
+            "tmm_werewolf_savage_momentum",
+            "tmm_werewolf_pouncing_leap",
+            "tmm_werewolf_protect_the_pack"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
@@ -791,7 +1349,13 @@
               "label": "Soul Conservation",
               "effect": "Lower eligible personal necromancy spell costs, not global ritual/machine cost.",
               "method": "resource debit hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_soul_reserve",
@@ -799,7 +1363,15 @@
               "label": "Soul Reserve",
               "effect": "Bounded native personal soul/Arca resource capacity where extensible.",
               "method": "source-specific resource adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_soul_conservation"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_soul_treasury",
@@ -807,7 +1379,15 @@
               "label": "Soul Treasury",
               "effect": "Small high-level sustain on committed necromantic actions, no passive self-funding loop.",
               "method": "resource/reward adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_soul_reserve"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -820,7 +1400,13 @@
               "label": "Grave Touch",
               "effect": "Scalable effect on verified lich necrotic spell/melee attacks only.",
               "method": "damage-source hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_lingering_curse",
@@ -828,7 +1414,15 @@
               "label": "Lingering Curse",
               "effect": "Bounded duration of attributable lich debuffs, not a global potion multiplier.",
               "method": "status-effect hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_grave_touch"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_dread_conduit",
@@ -836,7 +1430,15 @@
               "label": "Dread Conduit",
               "effect": "Strengthen source-verified lich spell lines without unlocking forbidden research.",
               "method": "spell-context hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_lingering_curse"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -849,7 +1451,13 @@
               "label": "Bone Captain",
               "effect": "Modest bonus to personally owned undead servants.",
               "method": "owner-linked summon adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_grave_regiment",
@@ -857,7 +1465,15 @@
               "label": "Grave Regiment",
               "effect": "Improved servant coordination/leash and bounded count efficiency.",
               "method": "servant owner adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_bone_captain"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_death_host",
@@ -865,7 +1481,15 @@
               "label": "Death Host",
               "effect": "Late temporary enhancement to current owned minions with hard entity budget.",
               "method": "bounded group effect",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_grave_regiment"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -878,7 +1502,13 @@
               "label": "Cold Persistence",
               "effect": "Limited tolerance of wither/undead hazards, preserving explicit weaknesses.",
               "method": "damage hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_anchor_attunement",
@@ -886,7 +1516,15 @@
               "label": "Anchor Attunement",
               "effect": "Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost.",
               "method": "anchor API verification",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_cold_persistence"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_lich_final_passage",
@@ -894,7 +1532,15 @@
               "label": "Final Passage",
               "effect": "Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger.",
               "method": "post-rescue arbiter hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_lich_anchor_attunement"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -902,7 +1548,27 @@
       "capstone": {
         "label": "Sovereign of Ash",
         "effect": "High-tier necromantic command stance requiring advanced lich progression and stable anchor ownership.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_lich_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_lich_soul_treasury",
+            "tmm_lich_dread_conduit",
+            "tmm_lich_death_host",
+            "tmm_lich_final_passage"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_lich_soul_reserve",
+            "tmm_lich_lingering_curse",
+            "tmm_lich_grave_regiment",
+            "tmm_lich_anchor_attunement"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
@@ -925,7 +1591,13 @@
               "label": "Monster Lore",
               "effect": "Reveal eligible hostile supernatural type/weakness cues after actual observation.",
               "method": "entity tag/observation adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_quarry_mark",
@@ -933,7 +1605,15 @@
               "label": "Quarry Mark",
               "effect": "Mark one tracked supernatural target, with limited range and duration.",
               "method": "target marker",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_monster_lore"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_master_pursuit",
@@ -941,7 +1621,15 @@
               "label": "Master Pursuit",
               "effect": "Improved tracking of wounded or fleeing marked targets, respecting concealment rules.",
               "method": "target/sensing hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_quarry_mark"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -954,7 +1642,13 @@
               "label": "Silver Discipline",
               "effect": "Bounded bonus using verified anti-supernatural material/weapon tags.",
               "method": "equipment/tag adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_weak_point_strike",
@@ -962,7 +1656,15 @@
               "label": "Weak-Point Strike",
               "effect": "Conditional bonus after observing a marked target, not global crit multiplier.",
               "method": "combat/mark adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_silver_discipline"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_slayer_s_technique",
@@ -970,7 +1672,15 @@
               "label": "Slayer's Technique",
               "effect": "Cooldown-limited counterattack against specific supernatural telegraphs.",
               "method": "defensive combat adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_weak_point_strike"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -983,7 +1693,13 @@
               "label": "Steadfast Mind",
               "effect": "Limited resistance to eligible charm/fear/supernatural debuffs.",
               "method": "effect-tag hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_warding_kit",
@@ -991,7 +1707,15 @@
               "label": "Warding Kit",
               "effect": "Improve duration/efficacy of approved consumable anti-monster items, not free production.",
               "method": "item-use hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_steadfast_mind"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_hexbreaker",
@@ -999,7 +1723,15 @@
               "label": "Hexbreaker",
               "effect": "Resource-cost/cooldown supernatural cleanse of eligible effects; not boss dispel.",
               "method": "targeted dispel hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_warding_kit"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -1012,7 +1744,13 @@
               "label": "Fieldcraft",
               "effect": "Short preparation-speed and stealth bonuses in natural environments.",
               "method": "tool/stealth adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_consecrated_snare",
@@ -1020,7 +1758,15 @@
               "label": "Consecrated Snare",
               "effect": "Craft/use a bounded anti-monster trap; ownership and claim-safe placement.",
               "method": "trap entity adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_fieldcraft"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_hunter_spell_intercept",
@@ -1028,7 +1774,15 @@
               "label": "Spell Intercept",
               "effect": "High-tier, timed interrupt window for verified hostile supernatural casts; bosses exempt unless explicitly whitelisted.",
               "method": "event-driven cast hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_hunter_consecrated_snare"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -1036,7 +1790,27 @@
       "capstone": {
         "label": "Master Slayer",
         "effect": "Late hunter-only preparation stance combining marks and counterattacks against supernatural mobs.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_hunter_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_hunter_master_pursuit",
+            "tmm_hunter_slayer_s_technique",
+            "tmm_hunter_hexbreaker",
+            "tmm_hunter_spell_intercept"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_hunter_quarry_mark",
+            "tmm_hunter_weak_point_strike",
+            "tmm_hunter_warding_kit",
+            "tmm_hunter_consecrated_snare"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Hunter purchases never require vampire, wolf, or lich powers.",
@@ -1058,7 +1832,13 @@
               "label": "Empty-Hand Force",
               "effect": "Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap.",
               "method": "unarmed combat attribute",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_flowing_counter",
@@ -1066,7 +1846,15 @@
               "label": "Flowing Counter",
               "effect": "Bounded counterattack after a verified native Guarding Palm/parry unlock.",
               "method": "native-license combat hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_empty_hand_force"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_spirit_bolt_mastery",
@@ -1074,7 +1862,15 @@
               "label": "Spirit Bolt Mastery",
               "effect": "Boost native spirit projectile after its native rank-6 license, not duplicate its unlock.",
               "method": "native-spirit projectile hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_flowing_counter"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -1087,7 +1883,13 @@
               "label": "Natural Poise",
               "effect": "Scale unarmored protection beyond native Unarmored Poise +2; never scale equipped armor.",
               "method": "armor-state attribute",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_hunger_discipline",
@@ -1095,7 +1897,15 @@
               "label": "Hunger Discipline",
               "effect": "Bounded food/exhaustion efficiency after native license; do not remove all hunger.",
               "method": "food/hunger adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_natural_poise"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_fire_blast_tempering",
@@ -1103,7 +1913,15 @@
               "label": "Fire & Blast Tempering",
               "effect": "Limited environmental damage mitigation after both matching native licenses.",
               "method": "damage-type hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_hunger_discipline"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -1116,7 +1934,13 @@
               "label": "Body Speed",
               "effect": "Repeatable speed under no conventional gear discipline; native Fleet Footwork remains a one-off.",
               "method": "conditional movement modifier",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_balanced_landing",
@@ -1124,7 +1948,15 @@
               "label": "Balanced Landing",
               "effect": "Fall/knockback control; native Step Assist remains a one-off in native tree.",
               "method": "fall/knockback adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_body_speed"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_glide_control",
@@ -1132,7 +1964,15 @@
               "label": "Glide Control",
               "effect": "Improve native momentum gliding only after rank-15 native unlock; never creative flight.",
               "method": "native gliding hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_balanced_landing"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         },
@@ -1145,7 +1985,13 @@
               "label": "Barehand Efficiency",
               "effect": "Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers.",
               "method": "harvest-speed attribute",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [],
+              "external_gate": "provider eligible; native entry",
+              "rank_model": {
+                "max_ranks_provisional": 10,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_fortunate_hands",
@@ -1153,7 +1999,15 @@
               "label": "Fortunate Hands",
               "effect": "Bounded fortune-like bonus only after native rank-13 license and legitimate drop event.",
               "method": "legal loot adapter",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_barehand_efficiency"
+              ],
+              "external_gate": "verified native mid-progression",
+              "rank_model": {
+                "max_ranks_provisional": 5,
+                "sp_cost_each_provisional": 1
+              }
             },
             {
               "id": "tmm_monk_looting_palm",
@@ -1161,7 +2015,15 @@
               "label": "Looting Palm",
               "effect": "Bounded unarmed looting after native rank-9 license; no creature-drop duplication.",
               "method": "kill/loot hook",
-              "status": "concept_only"
+              "status": "concept_only",
+              "prerequisites": [
+                "tmm_monk_fortunate_hands"
+              ],
+              "external_gate": "verified native late-progression",
+              "rank_model": {
+                "max_ranks_provisional": 3,
+                "sp_cost_each_provisional": 1
+              }
             }
           ]
         }
@@ -1169,7 +2031,27 @@
       "capstone": {
         "label": "Empty-Hand Paragon",
         "effect": "After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.",
-        "status": "concept_only"
+        "status": "concept_only",
+        "id": "tmm_monk_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_monk_spirit_bolt_mastery",
+            "tmm_monk_fire_blast_tempering",
+            "tmm_monk_glide_control",
+            "tmm_monk_looting_palm"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_monk_flowing_counter",
+            "tmm_monk_hunger_discipline",
+            "tmm_monk_balanced_landing",
+            "tmm_monk_fortunate_hands"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        }
       },
       "notes": [
         "Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills.",
@@ -1184,5 +2066,12 @@
     "abomination": "defer combined skill design until native physiology passes",
     "hunter": "exclusive"
   },
-  "status_caveat": "All form nodes and capstones are conceptual; no live config or gameplay changed."
+  "status_caveat": "All form nodes and capstones are conceptual; no live config or gameplay changed.",
+  "dependency_contract": {
+    "entry": "form eligibility only",
+    "advanced": "at least 1 rank of same-lane entry node plus verified native mid-stage",
+    "mastery": "at least 1 rank of same-lane advanced node plus verified native late-stage",
+    "capstone": "at least 1 rank in any mastery node AND 1 rank in an advanced node from a different lane; plus final native progression and independently verified late milestone",
+    "prerequisite_refunds": "deny predecessor refund if dependent downstream ranks remain owned; do not silently erase purchases"
+  }
 }
