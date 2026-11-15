@@ -221,7 +221,7 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 
 ## Session notes / next pickup
 
-- 2026-11-15 — Ars Nouveau source-backed mechanics survey merged from PR #81. It remains `researching` because full tier unlocks, guidebook acquisition and complete progression-to-quest references are not yet established; no in-pack gameplay test was performed.
+- 2026-11-15 — Ars profile updated to the walkthrough standard: confirmed Worn Notebook recipe/access, named version-aligned guide pages, mapped novice→apprentice→archmage costs, required build/ritual instructions, optional systems and all seven add-on branches. It remains `researching`: addon profiles, full recipe/glyph/creature audits, independent JAR/source equivalence and client acceptance remain open.
 - 2026-11-15 — Adopted eight methodology refinements plus player-value summary and subsystem coverage; new [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
 
-- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template; separately revisit `ars-nouveau` to reconcile the seven addons and [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add an explicit Worn Notebook access quest and close the full tier/recipe/how-to gaps. Check for active research branches before duplicating work.
+- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template. Ars follow-up: create the seven separate addon profiles, reconcile them with [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add the explicit Worn Notebook onboarding quest in a separate quest implementation task, and close remaining source/client gaps.
