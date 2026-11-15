@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.progression.command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
+import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.commands.Commands;
@@ -65,6 +66,33 @@ public final class ProgressionCommands {
                             success ? "Purchased skills refunded; free milestones retained" :
                                       "Respec unavailable"),false);
                         return success ? 1 : 0;
+                    })))
+            .then(Commands.literal("power")
+                .then(Commands.literal("blink")
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.blink(player);
+                        player.displayClientMessage(Component.literal(ok ?
+                            "Blink" : "Blink blocked, unavailable or cooling down"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("armor")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"armor");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Armor Lock: " + ClassAbilities.mode(p,"armor") :
+                            "Armor Lock not unlocked"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("treasure")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"treasure");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Treasure Hand: " + ClassAbilities.mode(p,"treasure") :
+                            "Treasure Hand not unlocked"),true);
+                        return ok ? 1 : 0;
                     })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
                 .then(Commands.literal("join")
