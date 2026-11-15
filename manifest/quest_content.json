@@ -34,15 +34,15 @@
     {
       "chapter": "Getting Started",
       "title": "Punch a Tree",
-      "description": "Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
+      "description": "Pick up a log or stem to complete this quest, then claim your 27-slot Trinkets Pouch and 10 XP from the questbook. Equip the pouch in the single Bundle Curios slot; never nest portable bags inside other bags.",
       "criterion": {
         "type": "advancement",
         "id": "tmm:first_log"
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:torch",
-        "count": 4
+        "item": "ars_elemental:curio_bag",
+        "count": 1
       },
       "depends": null,
       "optional": false,
