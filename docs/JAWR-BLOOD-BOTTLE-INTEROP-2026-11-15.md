@@ -49,9 +49,11 @@ The adapter is `JAWRBottleInterop.java` in the existing first-party `compat/tran
 | Ordinary JAWR Blood Bottle | Right-click Iron's Alchemist Cauldron, if 250 mB fits | Exactly **250 mB** `evilcraft:blood`; return one glass bottle |
 | JAWR Chicken Blood Bottle | Either cauldron | **No compat conversion**; remains JAWR-special |
 | JAWR Vampire Blood Bottle / marked 'Blood?' | Either cauldron | **No compat conversion**; retains vampire progression data |
-| Iron's `blood_vial` | JAWR vampire right-clicks the item | Native JAWR blood pool **+500**, consume one vial, return glass bottle (instant drink) |
-| Hexerei `blood_bottle` | JAWR vampire finishes drinking it | Native Hexerei food/effects apply; native JAWR blood pool **+500** on finish |
-| JAWR own bottles and wine glasses | Existing native behavior | **Unmodified**, including special effects and vampire leveling |
+| Iron's `blood_vial` | Player drinks normally (KubeJS food configuration, 1 hunger, glass remainder) | Hexerei-equivalent medicine for everyone; **+500 JAWR pool** for vampires on finish |
+| Hexerei `blood_bottle` | Player finishes native drinking | Native Hexerei medicine for everyone; **+500 JAWR pool** for vampires on finish, no duplicate medicine |
+| Ordinary JAWR `bottle_of_blood` | Player finishes native drinking | Native **+500 JAWR blood** for vampires (exactly once), plus Hexerei-equivalent medicine for everyone |
+| JAWR chicken/vampire-marked bottles | Native JAWR use and drinking | **No generic medicine override, no ordinary crafting tag, original special effects/progression preserved** |
+| JAWR wine glasses | Existing native behavior | Unmodified; glass-to-bottle transfer still not confirmed |
 
 The code detects the **native JAWR vampire attachment**, not arbitrary vampire-themed item names. It calls the **native JAWR `BloodPoolHandler.increaseBlood`** method. Non-vampire players do not gain blood credit.
 
@@ -65,13 +67,31 @@ Every ordinary cauldron transfer:
 
 `BloodBottlePolicy.java` is a pure Java fail-closed classification helper with four JUnit cases covering no marker, chicken-only, vampire-only and dual-marker samples.
 
+## Recipe and medicinal unification (KubeJS first)
+
+**KubeJS startup code:** `kubejs/startup_scripts/drinkable_blood_vial.js` modifies Iron's Blood Vial only, using `ItemEvents.modification` and `foodProperties` with 1 nutrition, saturation modifier 1, `alwaysEdible` and a `usingConvertsTo` Glass Bottle. A full restart is required.
+
+**KubeJS datapack recipes:** 
+- `tmm:ordinary_blood_bottles` contains only `irons_spellbooks:blood_vial` and `hexerei:blood_bottle` (NOT JAWR).
+- Iron's blood focus tag now includes Hexerei's bottle; Iron's `netherite_spell_book` shaped recipe consumes either ordinary bottle.
+- Hexerei willow, witch hazel and mahogany broom mixing-cauldron recipes accept either ordinary bottle in each existing blood slot. All remaining fluid inputs/outputs and other ingredients are copied from the upstream 1.21.1 recipes, including their unusual witch hazel `liquidOutput` field.
+- The default `irons_spellbooks:blood_vial` can still be obtained from Iron's own 250 mB blood produced by entity damage; our separate source-fluid-specific recipe fixed an earlier extraction regression.
+
+**Native hook remaining:** The first-party Java bridge `JAWRBottleInterop.java` is still required to check the actual JAWR special data components at cauldron boundaries and to award its native vampire blood pool on the completed drink. KubeJS recipe tags cannot safely distinguish ordinary from chicken or vampire-marked stacks sharing `witchery:bottle_of_blood`. No custom fluids, polling or broad recipe wildcard are used.
+
+**Gameplay acceptance:** try crafting each exact broom and Netherite Spell Book with both ordinary bottle types; ensure JEI displays the tag ingredients and no special JAWR stack is accepted directly. Drink all three ordinary bottles with full and partial hunger, test absence of double return bottles and double blood credit, plus verify curse/milk cure removes positive as well as negative effects. Server startup is not proof of these interactions.
+
 ## Packaging and verification limitations
 
 - This Java source is in the **existing experimental first-party transformation module**, not in KubeJS. It will only operate in test builds that compile and **load** the transformation JAR. Merely merging the datapack/recipe files does not activate it.
 - The main integration assembler currently imports `compat/transformations/` from another transformation feature branch. **Reconcile and promote this class/registration into the authoritative transformation stream before expecting it in the next combined pack.** Avoid overwriting active work in that source branch.
 - The GitHub Actions transformation-module Gradle build and unit tests validate compilation and the pure classification gate. They do not reproduce a vanilla client, actual item counts, JAWR attachment initialization or interactions at a full cauldron.
 - After server startup, verify the log `JAWR ordinary blood bottle bridge enabled (strict component gate)`. The module deliberately **fails closed** if pinned JAWR component/API reflection fails.
-- Right-click item drinking of Iron's vial is instantaneous, since that item is a plain `Item`; a timed animation would require an additional hook and is not in this minimum-code version.
+- Iron's native `blood_vial` item is a plain `Item`; it is now made a standard always-edible food with a glass-bottle use remainder by `kubejs/startup_scripts/drinkable_blood_vial.js`. The old instant right-click JAWR credit listener has been **removed**. The sole +500 JAWR credit runs on successful `LivingEntityUseItemEvent.Finish`, shared with Hexerei's drink event.
+- Ordinary JAWR bottles keep their own `BottleOfBloodItem.finishUsingItem` and native blood credit. The bridge adds only Hexerei-equivalent medicine to ordinary JAWR bottles, and **never** separately awards them +500 blood.
+- Hexerei medicine means `removeEffectsCuredBy(EffectCures.MILK)` followed by **Absorption I for 200 ticks**. This removes beneficial milk-curable buffs too, matching Hexerei's own behavior. The Hexerei bottle is left native to avoid applying those effects twice.
+- The KubeJS recipe tag `tmm:ordinary_blood_bottles` deliberately contains only **Iron's + Hexerei**. Native JAWR's single item ID cannot be whitelisted without also allowing special blood. Its ordinary bottle enters the common economy via the **Java component-checked 250 mB cauldron transfer**.
+- KubeJS datapack overrides use `tmm:ordinary_blood_bottles` in Iron's Netherite Spell Book and Hexerei's three mixing-cauldron broom recipes; Iron's `blood_focus` tag includes Hexerei's bottle. The KubeJS datapack custom-recipe ingredient codecs must pass runtime test on pinned binaries.
 
 ## Disposable-world acceptance tests
 
@@ -79,8 +99,8 @@ Every ordinary cauldron transfer:
 2. Right-click an empty and partially filled Hexerei cauldron with each. Only ordinary deposits 250 mB of Hexerei blood and returns an empty bottle; protected bottles remain exactly unchanged.
 3. Repeat with Iron's Alchemist Cauldron: only ordinary deposits 250 mB of EvilCraft blood.
 4. Check that components on special JAWR stacks (including source UUID) survive attempts, repeated clicks, reload, saves and JEI searches.
-5. As a native JAWR vampire, drink an Iron's Vial in each hand: observe +500 native JAWR pool, exactly one consumed vial, one returned empty bottle, no double credit or hunger counter replacement. As a non-vampire, right-clicking must not drain the vial.
-6. As a native JAWR vampire, drink a Hexerei Bottle: observe its existing Absorption/Milk-cure rules, +500 JAWR pool **once at finish**, and normal returned glass bottle. Verify no reward for merely starting / cancelling drinking.
+5. As a native JAWR vampire, **finish drinking** Iron's Vial with normal use animation in each hand: observe +500 native JAWR pool, exactly one consumed vial, one returned empty bottle, and 200-tick Absorption I. Beginning and cancelling drinking must not consume or award credit. Non-vampires should be able to drink it for the medicine **without** gaining JAWR blood.
+6. As a native JAWR vampire, drink a Hexerei Bottle: observe its existing Absorption/Milk-cure rules, +500 JAWR pool **once at finish**, and normal returned glass bottle. Verify no reward for merely starting / cancelling drinking. Test ordinary JAWR bottle with and without source UUID: native +500 must **not double** and medicine should apply. Test chicken and vampire-marked JAWR bottles: no added medicine.
 7. Check full and nearly full JAWR blood pools; native cap should enforce bounds and not result in double credit.
 8. Native JAWR Blood Bottle and Wine Glass drinking, chicken poison and vampire-blood progression remain unmodified.
 9. Inspect dedicated-server startup, integrated multiplayer client and login/reload; ensure component resolution occurs **after** registries load (ServerStartingEvent) and rejects unknown component types.
