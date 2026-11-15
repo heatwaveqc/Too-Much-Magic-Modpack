@@ -42,6 +42,12 @@ def main() -> None:
 
     assert '#tmm:dragon_food/forest_produce' in forest
     assert 'minecraft:sugar' in forest
+    # Ars Nouveau Sourceberries are registered as an edible block item rather
+    # than a conventional berry item; do not depend on a common fruit tag.
+    assert 'ars_nouveau:sourceberry_bush' in forest
+    assert forest['ars_nouveau:sourceberry_bush']['properties']['can_always_eat'] is True
+    # This is the vanilla golden carrot, not an unverified modded enchanted carrot.
+    assert 'minecraft:golden_carrot' in forest
     assert 'aquaculture:turtle_soup' not in forest
     assert 'minecolonies:chorus_bread' not in forest
     assert '#c:foods/cooked_meat' not in forest
