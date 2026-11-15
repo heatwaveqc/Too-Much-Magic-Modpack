@@ -34,6 +34,9 @@ function tmmCexItemId(stack) {
   return String(TMM_CEX_REGISTRY.ITEM.getKey(stack.getItem()))
 }
 
+// KubeJS remaps Minecraft Entity.getUUID() to Entity.getUuid() in Rhino.
+// Never use the Java method name here: it is deliberately hidden from JS.
+
 // Minecraft Entity.level is exposed by Rhino as an object/property, not a
 // callable method. Using entity.level() crashed immediately when a starter
 // Akashic Tome was spawned into a brand-new world (2026-11-14).
@@ -52,7 +55,7 @@ function tmmCexIsClientLevel(level) {
 function tmmCexTrack(entity) {
   if (!(entity instanceof TMM_CEX_ITEM_ENTITY)) return
   if (tmmCexIsClientLevel(tmmCexEntityLevel(entity))) return
-  const uuid = String(entity.getUUID())
+  const uuid = String(entity.getUuid())
   if (entity.isRemoved() || entity.getItem().isEmpty()) {
     TMM_CEX_CANDIDATES.delete(uuid)
     return
@@ -142,7 +145,7 @@ EntityEvents.spawned('minecraft:item', event => {
 NativeEvents.onEvent('net.neoforged.neoforge.event.tick.EntityTickEvent$Pre', event => {
   const entity = event.getEntity()
   if (!(entity instanceof TMM_CEX_ITEM_ENTITY) || tmmCexIsClientLevel(tmmCexEntityLevel(entity))) return
-  const uuid = String(entity.getUUID())
+  const uuid = String(entity.getUuid())
   if (TMM_CEX_ACTIVE.has(uuid)) {
     event.setCanceled(true)
   } else {
