@@ -76,6 +76,23 @@ public final class ProgressionApi {
         return true;
     }
 
+    /**
+     * Trusted logical-server grant for reward sources with computed outcomes, such as
+     * quarry maximum-health XP and potion potency. Never expose over a client packet.
+     */
+    public static boolean awardServerXp(ServerPlayer player, String pathId, long xp) {
+        if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
+        Definition.Path path = PathRegistry.get(pathId);
+        if (path == null) return false;
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        Track before = ledger.get(pathId);
+        if (!before.joined()) return false;
+        Track after = ProgressionMath.grantXp(path,before,xp);
+        if (before.equals(after)) return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
+        return true;
+    }
+
     /** For verified external milestones and compatible mods; cannot mint arbitrary XP. */
     public static void recordExternal(ServerPlayer player, String namespacedEventId) {
         record(player,Signal.external(namespacedEventId));
