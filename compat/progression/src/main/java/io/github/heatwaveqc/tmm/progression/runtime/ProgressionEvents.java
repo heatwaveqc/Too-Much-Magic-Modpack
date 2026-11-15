@@ -43,6 +43,8 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::logout);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::respawn);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::dimension);
     }
 
     private static void breakBlock(BlockEvent.BreakEvent event) {
@@ -139,6 +141,17 @@ public final class ProgressionEvents {
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
         }
+    }
+    private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Enrollment.clear(player);
+            ClassAbilities.forget(player);
+            AbilityNetwork.forget(player);
+            EffectRuntime.reconcile(player);
+        }
+    }
+    private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) Enrollment.clear(player);
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
