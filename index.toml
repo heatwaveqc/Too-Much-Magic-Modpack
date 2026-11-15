@@ -1172,3 +1172,31 @@ hash = "7e4503d42f76355ddb3628bf2595155407910d8a536890327ab08952f977e39c"
 [[files]]
 file = "kubejs/data/tmm/recipe/irons_spellbooks/native_blood_to_vial.json"
 hash = "fd28afd0c1394c8505c797581a7f715ddecc46088c52cb17d8ea98224b814e32"
+
+[[files]]
+file = "kubejs/startup_scripts/drinkable_blood_vial.js"
+hash = "8d3fbbbef09f832b563c4f9acbe45035395370953faeb94571b5782de055635c"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/willow_broom_from_mixing_cauldron.json"
+hash = "c5046e7278e8ab6b99797e92d84d788dab5eaa791e7e1e4d6d7191bad9956d5a"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/mahogany_broom_from_mixing_cauldron.json"
+hash = "0e194a073a96622eb41a254834cbed7c64329043b0dcf4c42156fbfb7eab24ee"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/witch_hazel_broom_from_mixing_cauldron.json"
+hash = "864eac00a15c27e3765ca203d60c9da923693613a5d22b801aa4bec983a2656a"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/netherite_spell_book.json"
+hash = "d1d6454595bb1d59411bac05a572c06e84cf0932408812d2604690cfc3edd082"
+
+[[files]]
+file = "kubejs/data/tmm/tags/item/ordinary_blood_bottles.json"
+hash = "a008a3d2481547b0fa52282a41225b53be3dfefb1874324ba88636d7d22be43f"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/tags/item/blood_focus.json"
+hash = "553f16c2f12fb6758053ed0684e72f0313ee9f607fea3555922105288b7f03f5"
