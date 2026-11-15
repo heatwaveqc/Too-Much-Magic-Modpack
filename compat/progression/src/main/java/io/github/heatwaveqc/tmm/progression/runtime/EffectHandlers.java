@@ -33,7 +33,7 @@ public final class EffectHandlers {
         "purification","faction_neutrality","creeper_peace","treasure_hand",
         "glass_touch","hunger_discipline","monk_leap","withering_stare",
         "water_walk","momentum_glide","blindness_ordeal","lava_protection",
-        "evasion","fast_hands");
+        "evasion","fast_hands","hunter_specialty");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
