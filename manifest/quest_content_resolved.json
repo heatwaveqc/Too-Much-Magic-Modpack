@@ -1897,7 +1897,7 @@
       "stage": ""
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "quest_id": "544D508000100000",
       "task_id": "544D808000100000",
@@ -1917,7 +1917,7 @@
       "stage": "tech-intro"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Craft a Draconic Generator",
       "quest_id": "544D508001500000",
       "task_id": "544D808001500000",
@@ -1939,7 +1939,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Craft the Draconic Energy Core",
       "quest_id": "544D508001600000",
       "task_id": "544D808001600000",
@@ -1961,7 +1961,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Prepare Energy Core Stabilizers",
       "quest_id": "544D508001700000",
       "task_id": "544D808001700000",
@@ -1983,7 +1983,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Build Input and Output Pylons",
       "quest_id": "544D508001800000",
       "task_id": "544D808001800000",
@@ -2005,7 +2005,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Activate the Draconic Power Bank",
       "quest_id": "544D508001900000",
       "task_id": "544D808001900000",
@@ -2025,7 +2025,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Route FE with a Crystal",
       "quest_id": "544D508001A00000",
       "task_id": "544D808001A00000",
@@ -2047,7 +2047,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Regulate Power with a Flux Gate",
       "quest_id": "544D508001B00000",
       "task_id": "544D808001B00000",
@@ -2069,7 +2069,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Acquire the Draconic Reactor Core",
       "quest_id": "544D508001C00000",
       "task_id": "544D808001C00000",
@@ -2091,7 +2091,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Four Reactor Stabilizers",
       "quest_id": "544D508001D00000",
       "task_id": "544D808001D00000",
@@ -2113,7 +2113,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Build the Reactor Energy Injector",
       "quest_id": "544D508001E00000",
       "task_id": "544D808001E00000",
@@ -2135,7 +2135,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Plan Safe Reactor Containment",
       "quest_id": "544D508001F00000",
       "task_id": "544D808001F00000",
@@ -2155,7 +2155,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Operate a Draconic Reactor Safely",
       "quest_id": "544D508002000000",
       "task_id": "544D808002000000",

@@ -158,7 +158,7 @@ def main() -> None:
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 18, "Tips & Tricks": 20, "Food & Fishing": 22,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
-                    "Skills & Advancement": 8, "Magical Power & FE": 14}.get(c["name"], 1)
+                    "Skills & Advancement": 8, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
         for block in blocks:
@@ -219,7 +219,7 @@ def main() -> None:
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
             if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Basic Progression",
-                                 "Advanced Progression", "Endgame Roadmap", "Skills & Advancement", "Magical Power & FE"}:
+                                 "Advanced Progression", "Endgame Roadmap", "Skills & Advancement", "A Sufficiently Advanced Magic"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
@@ -260,13 +260,13 @@ def main() -> None:
     ensure(len(item_tasks) == 63, f"Unexpected unique item-task count: {len(item_tasks)}")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
     planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
-               "Skills & Advancement": 7, "Magical Power & FE": 13}
+               "Skills & Advancement": 7, "A Sufficiently Advanced Magic": 13}
     ensure(len(progression["quests"]) == 46 and progression["counts"] == planned,
            "Full Progression source count or chapter distribution drift")
     ensure(all(x["criterion"]["type"] == "checkmark" for x in progression["quests"] if x["chapter"] == "Endgame Roadmap"),
            "Roadmap must not duplicate boss/material progression tasks")
     tech_items = {x["criterion"].get("id") for x in progression["quests"]
-                  if x["chapter"] == "Magical Power & FE"}
+                  if x["chapter"] == "A Sufficiently Advanced Magic"}
     for core in ("draconicevolution:energy_core",
                  "draconicevolution:energy_pylon", "draconicevolution:reactor_core",
                  "draconicevolution:reactor_stabilizer", "draconicevolution:reactor_injector"):

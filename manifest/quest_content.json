@@ -1859,7 +1859,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "criterion": {
         "type": "checkmark"
@@ -1879,7 +1879,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Craft a Draconic Generator",
       "criterion": {
         "type": "item",
@@ -1901,7 +1901,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Craft the Draconic Energy Core",
       "criterion": {
         "type": "item",
@@ -1923,7 +1923,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Prepare Energy Core Stabilizers",
       "criterion": {
         "type": "item",
@@ -1945,7 +1945,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Build Input and Output Pylons",
       "criterion": {
         "type": "item",
@@ -1967,7 +1967,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Activate the Draconic Power Bank",
       "criterion": {
         "type": "checkmark"
@@ -1987,7 +1987,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Route FE with a Crystal",
       "criterion": {
         "type": "item",
@@ -2009,7 +2009,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Regulate Power with a Flux Gate",
       "criterion": {
         "type": "item",
@@ -2031,7 +2031,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Acquire the Draconic Reactor Core",
       "criterion": {
         "type": "item",
@@ -2053,7 +2053,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Four Reactor Stabilizers",
       "criterion": {
         "type": "item",
@@ -2075,7 +2075,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Build the Reactor Energy Injector",
       "criterion": {
         "type": "item",
@@ -2097,7 +2097,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Plan Safe Reactor Containment",
       "criterion": {
         "type": "checkmark"
@@ -2117,7 +2117,7 @@
       "first_log": false
     },
     {
-      "chapter": "Magical Power & FE",
+      "chapter": "A Sufficiently Advanced Magic",
       "title": "Operate a Draconic Reactor Safely",
       "criterion": {
         "type": "checkmark"
