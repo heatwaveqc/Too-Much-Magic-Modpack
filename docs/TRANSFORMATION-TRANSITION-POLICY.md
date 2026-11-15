@@ -6,10 +6,10 @@
 
 - Human may become Hunter, Vampire, Werewolf, one Lich, or Dragon.
 - Vampire and Werewolf are unified physiology labels; each has independent Vampirism/Werewolves and JAWR provider branches.
-- A Lich may acquire the other lichdom to become an Archlich.
+- A Lich may acquire the other lichdom to become an Archlich. **Archlich resurrection priority is JAWR/Forbidden Magic phylactery first, Goety Arca second** when the first anchor cannot perform a rescue; never allow two successful rescues or duplicate charges on one lethal event. This is a locked target, not implemented code.
 - Dragon and one lichdom may form a Dracolich, regardless of acquisition order; dragon plus both liches is invalid.
 - Hunter is exclusive, but an expressly voluntary replacement ceremony can remove Hunter and add one supernatural state atomically.
-- Abomination requires **Vampire + Werewolf only**, with no lich prerequisite. Explicit hybridization from either existing parent state is a special transition; ordinary cross-infection remains blocked. Lich stacking on Abomination is undecided, not implicitly enabled. Native JAWR vampire/lycanthrope coexistence must be audited before implementing any new hybrid engine.
+- Abomination requires **Vampire + Werewolf only**, with no lich prerequisite. Explicit hybridization from either existing parent state is a special transition; ordinary cross-infection remains blocked. Lich stacking on Abomination is undecided, not implicitly enabled. Native JAWR vampire/lycanthrope coexistence must be audited before implementing any new hybrid engine. **Abomination skill trees are deferred until base mechanics are working; werewolf physiology ownership is undecided.**
 - Ordinary acquisitions cannot remove a state. Cures must be explicitly classified as controlled cures and verified per provider. No data cleanup is currently implemented.
 - Unknown or conflicting snapshots always fail preflight; no ticking purge or silent mutation. An existing conflict requires backup and administrative review.
 
