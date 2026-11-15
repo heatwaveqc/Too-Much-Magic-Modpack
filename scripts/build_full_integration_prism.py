@@ -78,29 +78,53 @@ WINDOWS PERSONAL QA SETTINGS (NOT PART OF PUBLIC MODPACK):
 Only the TWO first-party custom JARs are bundled. All other mods are fetched
 by packwiz from their original hosts using checked hashes.
 
-Suggested QA:
-- All five FTB category labels, chapter titles, and 179 quest descriptions.
-- Copper quest: submit 8, claim XP AND command coin; check /hqs coins and shop.
-- Confirm TrashSlot, TreeChop, fast leaf decay, the NEW Eternal Steak,
-  and More Overlays are available automatically.
-- If FTB Essentials is pinned in BUILD-MANIFEST, verify non-OP /sethome,
-  /home after reconnect, /delhome, /listhomes and /rtp safety/cooldown;
-  allow one home and keep the test world disposable (RTP is not claim-aware).
-- Test conventional dust, silver equipment and ore-doubling conflicts.
-  Compare Polymorph choices. Do not use scarce/valuable materials.
-- Roots first staff pickup/Terra pilot if enabled by its source conditions.
-- /tmmtransform vampire read-only metrics before/after each infection path.
-  The experiment flags are OFF by default; enable ONLY in disposable worlds.
-- /tmmmonk attributes is a read-only diagnostic, NOT a complete Monk skill tree.
-- REQUIRED first-wave Tyz Skills 6.4.2 replaces Pufferfish's Skills. Open
-  all four default Tyz tabs and Core Magic; run /skills reload and verify
-  Reservoir, Wellspring, Thrift and Potency each show 99 purchasable ranks.
-- Ordinary mining, crafting, sleep, eating and kills must grant ZERO Tyz XP.
-  In an operator-only disposable world test /skills xp PLAYER add 1000 to
-  buy one rank, refund it, and verify actual attributes before/after relog.
-- Real MXP-to-Tyz XP dispatch, Monk/form gates, advanced tiers and all-form
-  skill trees remain PENDING. Do NOT mark normal survival XP or cross-mod
-  effects passed until tested; no duplicate Monk universal skill ranks.
+Suggested QA — disposable worlds ONLY:
+- Mods list must contain Dragon Survival v2.0.74, GeckoLib, Comforts,
+  client-only Colorful Hearts 10.5.9, and Tyz's Skills 6.4.2.
+  Pufferfish Skills must be ABSENT.
+- Dragon Survival: create Cave, Forest and Sea dragons. Sea accepts raw
+  fish, Aquaculture sushi and kelp; rejects cooked fish and grain dishes.
+  Forest accepts raw Pam's produce, fruit preserves and sugar; rejects
+  corn, rice and baked foods. Cave accepts native foods and charred
+  meat/seafood using the coal recipes. Compare JEI, hunger/saturation
+  and KubeJS/recipe logs; test each food type and negative cases.
+- Vampire ascension v2, on a throwaway backed-up world with explicit
+  experimental flags: regular infection creates VAMPIRISM ONLY; Lilith
+  Blood upgrades human or normal vampire to JAWR+Vampirism with JAWR
+  canonical hunger/blood and a derived Vampirism display. Test normal
+  and ascended feeds, paid abilities, healing, all cures, relog, second
+  player, Fang infection OFF, and open-sky daytime inside/outside
+  Vampire Forest. Verify ordinary/ascended blood HUDs are not doubled.
+  Do not run mutation experiments on valuable existing worlds.
+- Monk First Sunset still joins, root Step Assist still works. Test
+  native mastery points/ranks 2-4 from training blocks, hostile mobs
+  and new foods; Open Palm, Unarmored Poise, Fleet Footwork, equipment
+  suppression, save/quit and death. Tyz Monk prototypes remain INACTIVE
+  until form purchase gates are installed.
+- Tyz: open abilities/combat/misc/nature/Core Magic categories. Check
+  four 99-rank skills Reservoir/Wellspring/Thrift/Potency, independent
+  mod attributes and refund persistence. Mining/eating/kills/crafting
+  must grant ZERO native Tyz XP. Use operator-only /skills xp PLAYER
+  add 1000 in a disposable world for the rank test; universal MXP
+  award dispatch is still source-only.
+- Colorful Hearts: 20, 50 and 100+ hearts, half hearts, absorption,
+  AppleSkin compatibility and both vampire UI variants at GUI scale 3.
+- Comforts: portable bag night sleep must not set respawn; daytime
+  hammock must advance to night. Test relog and dimension behavior.
+- FTB Quests: five groups, 45 chapters, 180 quest entries, starter
+  Spyglass option, 61 newly humorous/useful rewards and exactly one
+  intentional Cooking Pot bowl. Test Claim All, item detectability,
+  coin claims, team ownership and duplicate-claim prevention.
+- Quest Shop: 18 vanilla ore offers in sixth custom shop category;
+  confirm currency debits and no positive trading/processing loops.
+- Existing QoL: TrashSlot, TreeChop, fast leaves, Eternal Steak,
+  More Overlays, FTB Essentials /sethome /rtp, Akashic Tome and QA
+  preference persistence. Verify client keybinds and volume.
+- Neo Vitae canonical dust, Mahou Catalyst Exchange, unified silver,
+  Polymorph conflicts, ProjectE trophies and MK3+ Power Flower gates.
+  Log unexpected KubeJS errors and cross-mod exploits.
+- Test two players, reload, relog, death, dimensions and a separate
+  dedicated server. Preserve before/after screenshots and exact logs.
 - Save logs/latest.log, Prism console, screenshots and feature results.
 
 Stable/candidate promotion is a SEPARATE manual operation. No automatic
