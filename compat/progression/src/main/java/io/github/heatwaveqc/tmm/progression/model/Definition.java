@@ -33,10 +33,11 @@ public final class Definition {
     /** Costs increase by stepCost for each purchased rank. */
     public record Skill(String id, int maxRank, int requiredRank, int baseCost, int stepCost,
                         List<String> requiresSkills, List<String> requiresMilestones,
-                        List<Effect> effects) {
+                        List<Integer> autoRanks, List<Effect> effects) {
         public Skill {
             requiresSkills = List.copyOf(requiresSkills);
             requiresMilestones = List.copyOf(requiresMilestones);
+            autoRanks = List.copyOf(autoRanks);
             effects = List.copyOf(effects);
         }
         public int price(int owned) {

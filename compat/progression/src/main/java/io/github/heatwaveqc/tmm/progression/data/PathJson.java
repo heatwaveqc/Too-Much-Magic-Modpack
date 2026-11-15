@@ -136,8 +136,18 @@ public final class PathJson {
                 effects.add(new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
                     amount,tier,flag(f,"empty_hand"),flag(f,"unarmored")));
             }
+            List<Integer> auto = new ArrayList<>();
+            for (JsonElement r : entries(j,"auto_ranks")) {
+                int at = r.getAsInt();
+                if (at < 1 || at > thresholds.size() || (!auto.isEmpty() && at <= auto.getLast()))
+                    throw new IllegalArgumentException("auto_ranks must ascend within path ranks");
+                auto.add(at);
+            }
+            if (auto.size() > max || (!auto.isEmpty() && (!strings(j,"requires_skills").isEmpty()
+                    || !strings(j,"requires_milestones").isEmpty())))
+                throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites");
             skills.add(new Definition.Skill(sid,max,required,base,step,strings(j,"requires_skills"),
-                strings(j,"requires_milestones"),effects));
+                strings(j,"requires_milestones"),auto,effects));
         }
         for (Definition.Skill skill : skills) {
             for (String needed : skill.requiresSkills())

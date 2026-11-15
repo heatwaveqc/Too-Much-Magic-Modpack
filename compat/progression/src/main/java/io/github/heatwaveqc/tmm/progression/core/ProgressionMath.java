@@ -10,7 +10,7 @@ public final class ProgressionMath {
     private ProgressionMath() {}
 
     public static Track join(Definition.Path spec, Track old) {
-        return old.joined() ? old : old.joinedAtRankOne(spec.pointsPerRank());
+        return old.joined() ? old : applyAutomatic(spec, old.joinedAtRankOne(spec.pointsPerRank()));
     }
 
     public static Track grantXp(Definition.Path spec, Track old, long award) {
@@ -23,13 +23,14 @@ public final class ProgressionMath {
             rank++;
             points = (int) Math.min(Integer.MAX_VALUE, (long) points + spec.pointsPerRank());
         }
-        return old.progress(xp, rank, points);
+        return applyAutomatic(spec, old.progress(xp, rank, points));
     }
 
     public static Track buy(Definition.Path spec, Track old, String skillId) {
         Definition.Skill skill = spec.skill(skillId);
         if (!old.joined() || skill == null || old.rank() < skill.requiredRank()) return old;
         int owned = old.skillRank(skillId);
+        if (!skill.autoRanks().isEmpty()) return old; // baseline grants are not purchased
         if (owned >= skill.maxRank() || old.points() < skill.price(owned)) return old;
         for (String required : skill.requiresSkills()) {
             if (old.skillRank(required) < 1) return old;
@@ -41,12 +42,25 @@ public final class ProgressionMath {
     public static Track refundAll(Definition.Path spec, Track old) {
         long refund = 0;
         for (Definition.Skill skill : spec.skills()) {
-            int owned = old.skillRank(skill.id());
+            int owned = skill.autoRanks().isEmpty() ? old.skillRank(skill.id()) : 0;
             for (int n = 0; n < owned; n++) refund += skill.price(n);
         }
-        return new Track(old.joined(), old.xp(), old.rank(),
+        return applyAutomatic(spec, new Track(old.joined(), old.xp(), old.rank(),
             (int) Math.min(Integer.MAX_VALUE, (long) old.points() + refund),
-            Map.of(), old.milestones(), old.counters());
+            Map.of(), old.milestones(), old.counters()));
+    }
+
+    public static Track applyAutomatic(Definition.Path spec, Track state) {
+        if (!state.joined()) return state;
+        Track result = state;
+        for (Definition.Skill skill : spec.skills()) {
+            if (skill.autoRanks().isEmpty()) continue;
+            int earned = 0;
+            for (int at : skill.autoRanks()) if (state.rank() >= at) earned++;
+            if (result.skillRank(skill.id()) != earned)
+                result = result.withSkill(skill.id(), earned, result.points());
+        }
+        return result;
     }
 
     /** Persistent, namespaced criterion counters, independent of current active dependencies. */
