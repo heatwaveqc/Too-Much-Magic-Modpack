@@ -68,11 +68,27 @@ def verify() -> None:
         else:
             assert tree["id"] == "tmm_magic_core" or tree["capstone"]["level_cap"] == 1
 
-    assert len(ids) == 164
+    assert len(ids) == 165
     assert len(rehomes) == len(set(rehomes)) == 32
     assert len([t for t in data["trees"] if t.get("capstone")]) == 8
     assert all(all_entries[sid]["strength"] == "Average" and all_entries[sid]["level_cap"] == 5 for sid in CORE_IDS)
     assert all(all_entries[sid]["sp_per_rank"] == 1 for sid in CORE_IDS)
+    # Canonical owner ceiling: Monk overall-combat apex, Sea Dragon absurd Luck niche.
+    hierarchy = data["balancing"]["overall_endgame_power_hierarchy"]
+    assert "Monk" in hierarchy["primary_benchmark"]
+    boss = data["balancing"]["chaos_guardian_monk_acceptance"]
+    assert boss["status"] == "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST"
+    assert "Chaos Guardian" in boss["desired_result"]
+    assert "no weapons" in boss["desired_result"]
+    sea_luck = all_entries["tmm_dragon_sea_abyssal_fortune"]
+    assert sea_luck["tree"] == "tmm_dragon_sea"
+    assert (sea_luck["strength"], sea_luck["level_cap"], sea_luck["percent_per_rank"]) == ("Extreme", 50, 100)
+    monk = next(t for t in data["trees"] if t["id"] == "tmm_monk")
+    assert "Chaos Guardian" in monk["capstone"]["benchmark"]
+    assert monk["capstone"]["benchmark_status"] == "DESIGN_REQUIREMENT_NOT_YET_TESTED"
+    assert "no worn equipment" in monk["capstone"]["benchmark"]
+    assert "no weapons" in monk["capstone"]["benchmark"]
+
     assert "tmm_monk_spirit_bolt_mastery" not in ids
     assert "tmm_monk_unarmed_precision" in ids
     assert all_entries["green_thumb"]["tree"] == "tmm_dragon_forest"
