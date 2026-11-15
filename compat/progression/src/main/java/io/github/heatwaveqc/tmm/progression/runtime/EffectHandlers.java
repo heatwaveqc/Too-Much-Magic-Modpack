@@ -3,6 +3,8 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -33,6 +35,10 @@ public final class EffectHandlers {
                                 Definition.Effect effect, int rank) {}
         default void kill(ServerPlayer player, LivingDeathEvent event,
                           Definition.Effect effect, int rank) {}
+        default void foodConsumed(ServerPlayer player, ItemStack food,
+                                  Definition.Effect effect, int rank) {}
+        default void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event,
+                                    Definition.Effect effect, int rank) {}
     }
 
     public static void register(String id, Handler handler) {
@@ -74,5 +80,11 @@ public final class EffectHandlers {
     }
     public static void kill(ServerPlayer player, LivingDeathEvent event) {
         dispatch(player,(h,e,r) -> h.kill(player,event,e,r));
+    }
+    public static void foodConsumed(ServerPlayer player, ItemStack item) {
+        dispatch(player,(h,e,r) -> h.foodConsumed(player,item,e,r));
+    }
+    public static void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event) {
+        dispatch(player,(h,e,r) -> h.entityInteract(player,event,e,r));
     }
 }
