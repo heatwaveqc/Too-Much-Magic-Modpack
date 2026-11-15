@@ -17,9 +17,10 @@ final class MonkFistSlotRulesTest {
                     MonkFistSlotRules.mayInsert(true, 0, inventoryIndex),
                     "Monk cannot put items in numeral-1 fist slot");
         }
-        assertTrue(MonkFistSlotRules.mayInsert(true, 8, 0),
-                "Server-chosen alternate slot should not still reserve position 1");
-        assertFalse(MonkFistSlotRules.mayInsert(true, 8, 8));
+        assertThrows(IllegalArgumentException.class, () ->
+                MonkFistSlotRules.mayInsert(true, 8, 0),
+                "The fist cannot migrate to a different hotbar position");
+        assertFalse(MonkFistSlotRules.mayInsert(true, 0, 0));
         assertThrows(IllegalArgumentException.class, () -> MonkFistSlotRules.mayInsert(true, 9, 0));
         assertThrows(IllegalArgumentException.class, () -> MonkFistSlotRules.mayInsert(false, -1, 0));
     }
@@ -61,12 +62,14 @@ final class MonkFistSlotRulesTest {
                 MonkFistSlotRules.planLosslessRelocation(10, 0, capacity));
     }
 
-    @Test void optionalAlternateHotbarPositionStillWorksWithoutDoubleReservation() {
+    @Test void fistReservationCannotBeReconfiguredAwayFromTheFirstHotbarSlot() {
         int[] capacities = new int[36];
         capacities[0] = 64;
         capacities[1] = 64;
-        var allocation = MonkFistSlotRules.planLosslessRelocation(24, 1, capacities).orElseThrow();
-        assertEquals(0, allocation[1]);
-        assertEquals(24, allocation[0]);
+        assertThrows(IllegalArgumentException.class, () ->
+                MonkFistSlotRules.planLosslessRelocation(24, 1, capacities));
+        assertThrows(IllegalArgumentException.class, () ->
+                MonkFistSlotRules.mayInsert(true, 1, 1));
+        assertTrue(MonkFistSlotRules.planLosslessRelocation(24, 0, capacities).isPresent());
     }
 }
