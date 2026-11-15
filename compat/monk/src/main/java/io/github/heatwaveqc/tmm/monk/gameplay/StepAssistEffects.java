@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 /**
- * One native Monk root power, applied only while the faction/root skill and
+ * One later-tier Monk mobility power, applied only while the faction/root skill and
  * equipment discipline are valid. A transient, stable-id modifier means
  * relogs and faction changes cannot permanently inflate the player's base
  * STEP_HEIGHT. It never modifies a universal Tyz rank.
@@ -45,7 +45,7 @@ public final class StepAssistEffects {
         boolean monk = MonkFaction.FACTION != null
                 && de.teamlapen.vampirism.api.VampirismAPI.factionPlayerHandler(player).isInFaction(MonkFaction.FACTION);
         boolean root = monk && MonkFaction.FACTION.getPlayerCapability(player)
-                .map(p -> p.getLevel() > 0 && p.getSkillHandler().isSkillEnabled(MonkSkills.ROOT.get()))
+                .map(p -> p.getLevel() > 0 && p.getSkillHandler().isSkillEnabled(MonkSkills.STEP_ASSIST.get()))
                 .orElse(false);
         boolean active = DisciplineRules.permitsStepAssist(monk, root, MonkEligibility.equipmentAllowsDiscipline(player));
         boolean applied = step.getModifier(MODIFIER_ID) != null;
