@@ -257,7 +257,7 @@ def add_chapter() -> None:
     existing_ids = set()
     for obj in resolved["quests"]:
         existing_ids |= {obj["quest_id"], obj["task_id"], obj["xp_reward_id"], obj["item_reward_id"]}
-    candidate_reward_items = {q[8] for q in QUESTS}
+    candidate_reward_items = {q[7] for q in QUESTS}
     assert not candidate_reward_items.intersection(new_tasks | existing_tasks), (
         f"Reward shortcut: {candidate_reward_items.intersection(new_tasks | existing_tasks)}"
     )
