@@ -2,7 +2,7 @@
 
 **Planning only, November 14, 2026.** Compared the [42-mod MXP source inventory](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-SOURCE-REGISTRY.md) to the 148-entry manifest on the MXP development line. The list below defines **targets for future implementation**. No source hooks, pack configuration, mods, gameplay rules or builds are changed by this document.
 
-**Classification:** R = resource-paid magic; C = successful magical completion (including hybrid systems with no confirmed comparable player reserve); I = inherits parent adapter; B = shared payment bridge; N = no standalone MXP source. **Counts: 16 R + 11 C + 11 I + 1 B + 3 N = 42.** Priorities: P0 = existing prototype needing runtime validation; P1 = next useful adapter; P2 = later/specialized system. This is a proposed work queue, not a schedule.
+**Classification:** R = resource-paid magic; C = successful magical completion (including hybrid systems with no confirmed comparable player reserve); I = inherits parent adapter; B = shared payment bridge; N = no standalone MXP source. **Counts: 15 R + 12 C + 11 I + 1 B + 3 N = 42.** Priorities: P0 = existing prototype needing runtime validation; P1 = next useful adapter; P2 = later/specialized system. This is a proposed work queue, not a schedule.
 
 ## Universal award contract
 
@@ -14,7 +14,7 @@
 - **Dedup:** one magical action = one MXP transaction, even if a shared resource, parent addon, crafting outcome and summoning event are all observable. Resource transfers, filling reservoirs, factory power, farming vanilla XP/EMC, idle machines, purely decorative spells and free spam are not valid experience faucets.
 - Existing source prototypes are **source-compiled, not game-tested**. Existing Ars/Iron/Botania/Neo hooks are in [PR #45](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/45); Psi KubeJS pilot in [PR #40](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/40). Neither is necessarily pinned into a playable pack.
 
-## A. Direct resource-spending sources — 16 mods
+## A. Direct resource-spending sources — 15 mods
 
 | # | Mod | Resource and baseline | Award trigger / exclusions | Priority |
 |---:|---|---|---|:---:|
@@ -29,7 +29,6 @@
 | 11 | **Just Another Witchery Remake (JAWR)** | **Three distinct systems:** personal Infusion charge (B **TBD**); paid Symbology (B **TBD**); **vampire blood (B=900)** for Lilith-unlocked JAWR vampires. Do not use 900 for infusion. | Confirmed paid infusion/symbol action, **active vampire blood-spending ability after Lilith's Blood upgrade**, and completed player circle rites. Only actual primary JAWR blood debit counts, not routine hunger or feeding. **Altar power is structure energy, not personal infusion.** | P1 |
 | 12 | **EvilCraft** | Portable Blood used by active magic; first usable portable reservoir B **TBD** | Genuine blood debit tied to player item ability/weapon; distinct significant manual Blood crafting if attributable. No XP from collecting, filling, transferring or machine-siphoning blood. | P1 |
 | 13 | **Goety** | Personal accessible **Soul Energy**, initial totem/arca B **TBD** | Real Soul Energy spent by an accepted player spell or paid summon; meaningful manual rite completion can separately count. No XP for automatic servant labor, passive Soul Energy generation or autonomous blocks. | P1 |
-| 16 | **Forbidden & Arcanus** | Potential player **Aureal** or artifact charges; paid reserve B **TBD** | If resource actually pays for an ability, track the committed cost; otherwise reward successful personal arcane/Hephaestus crafts and rituals. The presence of an Aureal regen attribute is **not proof of spend hook**. | P2 |
 | 20 | **Botania Revived** | Portable tablet / standard or greater Mana Ring in inventory, offhand or Curios; B=**500,000** mana | Award only mana actually drawn from eligible carried/equipped items for a magical action or equipment repair; prorate mixed sources. **Existing native prototype.** No pools, mirrors, transfers, storage fills, other mod power or machine output. | P0 |
 | 21 | **Pastel** | Portable **Ink** (multiple colors, tools and palettes), first usable Ink reservoir B **TBD** | Accepted player Ink-powered spell/tool with real spend; optional meaningful craft results if manual. Investigate multicolor payment and Curios; avoid separate awards for each color or refilling ink. | P1 |
 | 36 | **Embers Re-Ignited** | Portable **Ember Jar, 2,000 Ember** (cartridge larger at 6,000) | **EmberRemoveEvent** after actual player weapon/tool/active augment debit, using pre-reduction nominal cost. Source-confirmed event; exclude machines, item filling, transfer and passive generation. | P1 |
@@ -37,7 +36,7 @@
 
 **Resource-audit warning:** simply having a cost property does not make a player activity eligible. Verify the initial source, the original pre-discount price, actual paid units, owner UUID, accepted outcome, and duplication across any shared payment path.
 
-## B. Completed magical work — 11 mods with no comparable general mana source confirmed
+## B. Completed magical work — 12 mods with no comparable general mana source confirmed
 
 | # | Mod | Target successful outcome | Why not a generic mana award | Priority |
 |---:|---|---|---|:---:|
@@ -45,6 +44,7 @@
 | 9 | **Occultism** | Finished binding/summoning/crafting **ritual**, reward based on tier of its **actual Book of Binding** and canonical recipe identity | A ritual has no equivalent personal mana pool; start/tick/sacrificial bowl input not completion. Mining/crushing servant work is automation. See detailed section below. | P1 |
 | 14 | **Malum** | Completed manual spirit work / runework / active paid ritual; optional resource-backed tool if audited | No consistent universal player reserve verified; normal spirit drops/collection or spirit workstations are not XP. | P2 |
 | 15 | **Eidolon: Repraised** | Finished chant/altar rite and significant manually completed magic craft | Ceremony progress/ticks are not resource expenditure; attribute the initiating player and true result. | P2 |
+| 16 | **Forbidden & Arcanus** | **Hephaestus Forge successful ritual or forge-tier upgrade**, not free essence supply | Use source-confirmed `RitualManager.finishRitual` with initiating UUID and canonical recipe ID; award fixed first + divided repeat, based on the **recipe-required** tier and difficulty. **Proposed** tier 1–5 first/repeat: 1,000/200; 1,600/320; 2,400/480; 3,500/700; 5,000/1,000. No XP from starting a rite, filling forge tanks, automatic production, or vanilla experience essence. | P1 |
 | 17 | **Hexerei** | Finished player-owned cauldron potion, meaningful witchcraft craft/binding or paid magic item | Physical kettle/craft operations, no comparable player-wide bar; automated hoppers/cauldrons cannot be farmed for XP. | P2 |
 | 18 | **Enchanted: Witchcraft** | **Completed RiteType** circle magic, meaningful Kettle brewing and player poppet binding | World **altar power** is not personal mana. Chalk activation stores initiator UUID; verify actual rite success. No XP from plant recharge, unattended Kettle or passive poppets. | P1 |
 | 19 | **Astral Sorcery** | Player-finished altar craft, personal attunement or significant unique research | Starlight is an altar/world resource; keep native Astral perk XP, no XP for passive collector output. | P2 |
@@ -100,6 +100,15 @@
 
 **Lich/Dragon distinction:** lich and Dragon/Dracolich forms are *not* analogous blood-spending sources. Their main advancement occurs through custom **Lich and Dragon Tyz skill trees**, with vanilla/mod advancement flags and native form milestones serving as external purchase gates. Only a separate, genuine ritual/craft/boss activity may earn MXP; no ongoing transformation XP or passive form-tick rewards.
 
+
+## Forbidden & Arcanus Hephaestus Forge — completion source
+
+**Confirmed pack-enabled:** `forbidden-arcanus` 2.6.1. Its Forge rituals have a real player-owned completion seam: pinned-lineage 1.21.1 source `RitualManager.startRitual` records the initiating `ServerPlayer` UUID; `finishRitual` carries the registered ritual ID and triggers an advancement for that player on success, while `failRitual` does not. Hook the **confirmed successful ritual result** and deduplicate against the advancement criterion and output item. No award at gavel activation, on forge ticks, essence input, failed rites, idle processes, or from the four forge essence storages themselves.
+
+Five recipe-tier reward bands (first fixed effective MXP / repeat divided **base** MXP): **T1 1,000/200; T2 1,600/320; T3 2,400/480; T4 3,500/700; T5 5,000/1,000**. These are balancing **proposals**, not approved or implemented. Use the *ritual recipe's minimum required forge tier* and item/essence difficulty, **not current forge level**; only genuine unique upgrade rituals earn one first completion. Since forge Aureal, Souls, Blood and Experience are **structure reserves**, not player mana, there is **no personal forge pool normalization** and no vanilla XP-to-MXP conversion.
+
+Sources: [1.21.1 RitualManager](https://github.com/stal111/Forbidden-Arcanus/blob/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/common/block/entity/forge/ritual/RitualManager.java), [RitualRequirements](https://github.com/stal111/Forbidden-Arcanus/blob/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/common/block/entity/forge/ritual/RitualRequirements.java). Compare exact installed 2.6.1 JAR before implementing.
+
 ## Occultism: Book of Binding tier rewards (high-priority implementation target)
 
 **The Dictionary of Spirits is the guide book.** For XP scaling, use the ritual's **Book of Binding** (usually its actual bound activation item), whose four supported spirit tiers are **Foliot, Djinni, Afrit, Marid**. The exact 1.21.1 Occultism branch shows a Golden Sacrificial Bowl keeping **castingPlayerId** and **currentRitualRecipe**, and Ritual.finish(level, pos, bowl, castingPlayer, activationItem) called at actual completion. Prefer a terminal successful ritual outcome, not starting the bowl or watching the duration timer.
@@ -141,7 +150,7 @@ The first-access normalized baseline **B is undecided**. A single amethyst dust 
 1. **P0: verify existing source prototypes** — Ars/Iron/Ars 'n Spells, Botania inventory+Curios, Neo Vitae **5,000-EV** network and Psi CAD. End-to-end settled cast -> MXP ledger -> Tyz XP, with no duplicate. Confirm correct pinned JARs and disposable-world server/client tests.
 2. **P1 resource adapters** — Roots, Hex Casting, Mahou, Primal Magick, Goety, Pastel, EvilCraft, Embers and JAWR, **including the Lilith-unlocked vampire blood-spend adapter at B=900**. Keep ordinary Vampirism out and use the one canonical JAWR blood debit. Choose starting B and source-backed committed debit for other resources.
 3. **P1 completion adapters** — Occultism four-tier Books of Binding and completion, Totemic ceremonies, Enchanted Witchcraft rites, Summoning Rituals and meaningful manual Scriptor spell use. No passive lecterns/altars.
-4. **P2 specialists** — Malum, Eidolon, Forbidden & Arcanus, Hexerei, Astral Sorcery, Theurgy, Feywild and Reliquary. Audit unusual player-owned resource use before assuming a pool.
+4. **P2 specialists** — Malum, Eidolon, Hexerei, Astral Sorcery, Theurgy, Feywild and Reliquary. Audit unusual player-owned resource use before assuming a pool. **Forbidden & Arcanus** now targets P1 forge-completion XP.
 5. **Inheritance and boss closeout** — verify all ten addons use the parent payment correctly; finish the boss registry and multiplayer attribution. Reconcile two distinct event families when one magic act also triggers a quest, rite or summon.
 
 **For each source, completion means:** exact pinned MC/mod binary and registry IDs; first accessible B **or** completion-category weight; successful payment/result event; initiator UUID; the first/repeat per-ID policy; cancellation/automation/dupe tests; unit tests; dedicated server boot; client world-entry and confirmed practical MXP/Tyz award. Nothing in this checklist alone is evidence of a passed game test.
@@ -155,6 +164,6 @@ The first-access normalized baseline **B is undecided**. A single amethyst dust 
 - [JAWR 0.5.39 Infusion and Symbology audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/JAWR-0.5.39-INFUSION-SYMBOLOGY-PUFFERFISH-AUDIT-2026-11-14.md)
 - [Primal Magick 6.0.7 change log about wand-stored mana](https://modrinth.com/mod/primal-magick/version/6.0.7)
 
-## Ritual/completion balance proposal for the 11 mods (not yet approved)
+## Ritual/completion balance proposal for the 12 mods (not yet approved)
 
-See [11-mod ritual and magical-completion MXP value matrix](MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md) for fixed first ritual reward bands, divided repeat base, smaller manually attributable craft/quest awards, Occultism Foliot→Marid four-tier pricing, Astral 2.0 attunement, Totemic and Enchanted rites, Hexerei's unimplemented rituals, and the fact that Summoning Rituals supplies **no built-in recipes**. **Proposal only; no values implemented.**
+See [12-mod ritual and magical-completion MXP value matrix](MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md) for fixed first ritual reward bands, divided repeat base, smaller manually attributable craft/quest awards, Occultism Foliot→Marid four-tier pricing, Astral 2.0 attunement, Totemic and Enchanted rites, Hexerei's unimplemented rituals, and the fact that Summoning Rituals supplies **no built-in recipes**. **Proposal only; no values implemented.**
