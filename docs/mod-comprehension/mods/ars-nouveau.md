@@ -171,7 +171,7 @@ These are research recommendations only. Chapter organization, task wording, rew
 | P-013 | [Glyph recipe](https://github.com/baileyholl/Ars-Nouveau/blob/4d323fba9200c3293a4f4848cf1e0fe70beb7098/src/main/java/com/hollingsworth/arsnouveau/common/crafting/recipes/GlyphRecipe.java), source inspected | Inputs, output and XP fields in the custom recipe serializer |
 | P-014 | [Generated English strings and Notebook content](https://github.com/baileyholl/Ars-Nouveau/blob/4d323fba9200c3293a4f4848cf1e0fe70beb7098/src/generated/resources/assets/ars_nouveau/lang/en_us.json), source data | Named milestones, item tooltips, familiar, ritual and automation descriptions; presentation not client-tested |
 | P-015 | [Ars Nouveau 1.21.1 wiki](https://www.minecraft-guides.com/mod/ars-nouveau/wiki/), secondary, explicitly 5.11 | Explanatory guide only; not authoritative for 5.13.5 or TMM overrides |
-| P-016 | [1.21.1 addon guide](https://github.com/Ars-Nouveau/Ars-Auxilia/blob/4d323fba9200c3293a4f4848cf1e0fe70beb7098/apps/ars.guide/src/content/docs/1.21.1/ars-addons/guide.mdx), upstream project guide | Addon identity leads; not proof of current addon feature details/compatibility |
+| P-016 | [1.21.1 addon guide](https://github.com/Ars-Nouveau/Ars-Auxilia/blob/a915c9b810165e4fce9f5a794e3878f34eae86af/apps/ars.guide/src/content/docs/1.21.1/ars-addons/guide.mdx), upstream project guide | Addon identity leads; not proof of current addon feature details/compatibility |
 
 ## Disposable-world test plan
 
