@@ -33,12 +33,12 @@ final class MonkFullTreeSkeletonTest {
         }
     }
 
-    @Test void allFiftyNodesHaveValidParentsRanksAndStatuses() throws Exception {
+    @Test void allFortyEightNodesHaveValidParentsRanksAndStatuses() throws Exception {
         JsonObject blueprint = read(PLAN);
         assertEquals("DESIGN_ONLY_NOT_RUNTIME_LOADED", blueprint.get("state").getAsString());
         assertEquals(20, blueprint.get("intended_max_faction_rank").getAsInt());
         JsonArray nodes = blueprint.getAsJsonArray("nodes");
-        assertEquals(50, nodes.size(), "Changing the skeleton needs explicit review");
+        assertEquals(48, nodes.size(), "Changing the skeleton needs explicit review");
         Map<String, JsonObject> byId = new HashMap<>();
         Set<String> live = new HashSet<>();
         for (var element : nodes) {
@@ -79,7 +79,7 @@ final class MonkFullTreeSkeletonTest {
         }
     }
 
-    @Test void nativeSourceInventoryHasCompleteNonduplicatingCoverage() throws Exception {
+    @Test void nativeSourceInventoryRespectsExplicitOwnerOverrides() throws Exception {
         JsonObject blueprint = read(PLAN);
         JsonObject catalog = read(CATALOG);
         Set<String> allSourceIds = new HashSet<>();
@@ -96,24 +96,94 @@ final class MonkFullTreeSkeletonTest {
                 case "unique_one_time_Monk_affix" -> uniqueAffixes.add(sourceId);
             }
         }
+        // The source audit is historical; the owner explicitly removed the old
+        // independent spirit projectile in favor of Ars Nouveau and Iron's.
+        Set<String> explicitRejections = new HashSet<>();
+        for (var el : blueprint.getAsJsonArray("explicit_owner_overrides")) {
+            var override = el.getAsJsonObject();
+            if (override.get("decision").getAsString().equals("excluded")) {
+                explicitRejections.add(override.get("source_record").getAsString());
+            }
+        }
+        assertEquals(Set.of("tmm_monk:martial/spirit_projectile"), explicitRejections);
+        assertTrue(nativeSources.removeAll(explicitRejections));
+
         Set<String> covered = new HashSet<>();
         Map<String, Integer> affixUse = new HashMap<>();
         for (var el : blueprint.getAsJsonArray("nodes")) {
             JsonObject node = el.getAsJsonObject();
-            if (node.get("source_record").isJsonNull()) continue;
-            String source = node.get("source_record").getAsString();
-            assertTrue(allSourceIds.contains(source), "Not in approved catalog: " + source);
-            covered.add(source);
-            if (uniqueAffixes.contains(source)) affixUse.merge(source, 1, Integer::sum);
-            if (monkTyzLicenses.contains(source)) {
-                assertEquals("tyz_license_only", node.get("backend_role").getAsString());
+            Set<String> assigned = new HashSet<>();
+            if (!node.get("source_record").isJsonNull()) {
+                assigned.add(node.get("source_record").getAsString());
+            }
+            if (node.has("source_records")) {
+                for (var sr : node.getAsJsonArray("source_records")) assigned.add(sr.getAsString());
+            }
+            for (String source : assigned) {
+                assertTrue(allSourceIds.contains(source), "Not in audited inventory: " + source);
+                assertFalse(explicitRejections.contains(source), "Rejected innate projectile cannot be revived");
+                covered.add(source);
+                if (uniqueAffixes.contains(source)) affixUse.merge(source, 1, Integer::sum);
+                if (monkTyzLicenses.contains(source)) {
+                    String role = node.get("backend_role").getAsString();
+                    assertTrue(role.equals("tyz_license_only")
+                                    || role.equals("one_time_toggle_and_tyz_license"),
+                            "Monk-only Tyz source requires a native license: " + node.get("id"));
+                }
             }
         }
-        assertTrue(covered.containsAll(nativeSources), "Every native Monk source must be represented");
+        assertTrue(covered.containsAll(nativeSources), "Every retained native source must be represented");
         assertTrue(covered.containsAll(monkTyzLicenses), "Every Monk-only Tyz license must be represented");
         assertTrue(covered.containsAll(uniqueAffixes), "All 15 one-time affix techniques need a place");
         assertEquals(15, uniqueAffixes.size(), "Changes to affix source inventory require review");
         for (String source : uniqueAffixes) assertEquals(1, affixUse.getOrDefault(source, 0));
+    }
+
+    @Test void spellCombatFortuneSilkAndFistSlotMatchOwnerDirection() throws Exception {
+        JsonObject blueprint = read(PLAN);
+        Map<String, JsonObject> byId = new HashMap<>();
+        for (var el : blueprint.getAsJsonArray("nodes")) {
+            var node = el.getAsJsonObject();
+            byId.put(node.get("id").getAsString(), node);
+        }
+        assertFalse(byId.containsKey("tmm_monk:spirit_projectile"));
+        assertFalse(byId.containsKey("tmm_monk:delicate_hands"));
+        assertFalse(byId.containsKey("tmm_monk:fortunate_hands_license"));
+        for (String id : Set.of("tmm_monk:magical_casting",
+                "tmm_monk:acidic_casting", "tmm_monk:deathbound_casting")) {
+            JsonObject node = byId.get(id);
+            assertNotNull(node);
+            assertEquals("arcane", node.get("lane").getAsString());
+            assertEquals("blueprint_only", node.get("implementation").getAsString());
+            assertTrue(node.get("effect_contract").getAsString().contains("Ars"));
+        }
+
+        JsonObject touch = byId.get("tmm_monk:harvest_touch");
+        assertNotNull(touch);
+        assertEquals("blueprint_only", touch.get("implementation").getAsString());
+        assertEquals("one_time_toggle_and_tyz_license", touch.get("backend_role").getAsString());
+        assertEquals(2, touch.getAsJsonArray("source_records").size());
+        JsonObject toggle = touch.getAsJsonObject("toggle");
+        assertEquals("fortune", toggle.get("initial_mode").getAsString());
+        assertTrue(toggle.get("exclusive").getAsBoolean());
+        assertEquals(2, toggle.getAsJsonArray("available_modes").size());
+        assertEquals("silk_touch", toggle.getAsJsonArray("available_modes").get(1).getAsString());
+
+        JsonObject slot = read(Path.of("design", "fist-slot-lock-contract-v1.json"));
+        assertEquals("DESIGN_ONLY_NOT_RUNTIME_ENABLED", slot.get("state").getAsString());
+        JsonObject position = slot.getAsJsonObject("default_slot");
+        assertEquals(8, position.get("zero_based_hotbar_index").getAsInt());
+        assertEquals(9, position.get("user_visible_hotbar_position").getAsInt());
+        assertTrue(position.get("not_item").getAsBoolean());
+        assertEquals("automatic_on_valid_monk_faction_join_no_skill_point_purchase",
+                slot.get("unlock").getAsString());
+        assertTrue(slot.getAsJsonArray("prelaunch_tests").size() >= 10);
+
+        String preview = Files.readString(Path.of("design", "preview",
+                "monk_level.configured_tree.PREVIEW.json"));
+        assertFalse(preview.contains("spirit_projectile"), "Never restore native Spirit Projectile");
+        assertTrue(preview.contains("tmm_monk:monk/harvest_touch"));
+        assertTrue(preview.contains("tmm_monk:monk/magical_casting"));
     }
 
     @Test void liveConfiguredTreeContainsOnlyWorkingPilotSkills() throws Exception {
@@ -125,7 +195,7 @@ final class MonkFullTreeSkeletonTest {
                 planned.add(node.get("id").getAsString());
             }
         }
-        assertEquals(44, planned.size());
+        assertEquals(42, planned.size());
         JsonObject root = read(LIVE.resolve("configured_skill_tree/monk_level.json"));
         Set<String> actual = new HashSet<>();
         traverse(root, actual);
