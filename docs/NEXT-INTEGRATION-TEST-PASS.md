@@ -22,8 +22,9 @@ Use [the live feature checklist](FEATURE-CHECKLIST.md) for the whole project and
 | 14 | `form.hunger`, `form.cure`, `form.sunlight` | Check hunger over time, full cure, real sun versus Vampire Forest shade; avoid mixing pre- and post-ascension saves |
 | 15 | `skills.backend`, `skills.core`, `skills.mxp` | If Tyz actually pinned and Pufferfish removed, inspect 99-rank tree and admin XP test. MXP is NOT assumed live until dispatcher verified |
 | 16 | `world.tectonic`, `world.dungeons` | Scout fresh generated structures, Neo Vitae Mines and Botania Gaia path; confirm no structure softlock or visually broken sky |
-| 17 | `end.projecte_start`, `end.projecte_high` | **Blocked pending real implementation.** Document boss and registry IDs, but do not report bypass tests as passing while vanilla ProjectE recipes still exist |
-| 18 | `release.multi`, `shop.multiplayer` | After core singleplayer cases pass, connect a second player; verify separate starter inventory/Monk rites, team coins, save/restart |
+| 17 | `end.projecte_start`, `end.projecte_trophies`, `end.projecte_high` | Confirm **three verified boss-associated center ingredients** craft the Stone in BOTH old orientations, diamond fails, original eight outer ingredients stay; Red MK3 direct/upgrade and higher direct Power Flowers consume a Chaos Shard. Audit EMC and Matter Upgrader bypasses; source-stage is NOT a gameplay PASS |
+| 18 | `end.emc_every_item`, `end.emc_balancing` | Export same-build loaded item registry + post-mapping ProjectE EMC, run strict zero-missing audit except cheap glass panes; check low-cost cycles before claiming coverage |
+| 19 | `release.multi`, `shop.multiplayer` | After core singleplayer cases pass, connect a second player; verify separate starter inventory/Monk rites, team coins, save/restart |
 
 ## Suggested test report
 
