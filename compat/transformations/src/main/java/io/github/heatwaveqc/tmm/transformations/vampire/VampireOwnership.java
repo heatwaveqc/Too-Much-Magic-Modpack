@@ -26,10 +26,11 @@ public final class VampireOwnership {
         }
         return switch (system) {
             case BLOOD_STORAGE, PASSIVE_BLOOD_DRAIN, VANILLA_FOOD_EXHAUSTION,
-                 PASSIVE_HEALING, SUN_DAMAGE, GENUINE_DEATH_INTERCEPTION,
-                 VISUAL_BLOOD_HUD -> VampireOwner.VAMPIRISM;
+                 PASSIVE_HEALING, VISUAL_BLOOD_HUD -> VampireOwner.JAWR;
+            case GENUINE_DEATH_INTERCEPTION -> VampireOwner.VAMPIRISM;
             case PROGRESSION -> VampireOwner.SEPARATE_NATIVE_PROGRESSIONS;
-            case GARLIC_AND_FIRE_DAMAGE, TEMPORARY_BAT_FORM -> VampireOwner.BRIDGE_REQUIRED;
+            case SUN_DAMAGE, GARLIC_AND_FIRE_DAMAGE, TEMPORARY_BAT_FORM ->
+                    VampireOwner.BRIDGE_REQUIRED;
         };
     }
 }
