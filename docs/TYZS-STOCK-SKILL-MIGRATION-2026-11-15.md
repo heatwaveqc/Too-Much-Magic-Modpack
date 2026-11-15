@@ -7,7 +7,7 @@
 | Existing category | Skill count | Target |
 |---|---:|---|
 | Abilities | 9 | Mostly universal Core, with Monk/Dragon overlap audited |
-| Combat | 12 | Mostly Core; predation to Vampire, fury to Werewolf, hunter combat specials |
+| Combat | 12 | Highest-impact original combat effects to Hunter; predation Vampire, rage Werewolf, baseline attack Core Skills |
 | Miscellaneous | 9 | Core survival, crafting, exploration and economy; risky loops gated |
 | Nature | 2 | **Both native skills proposed for Forest Dragon** (Green Thumb, Shepherd’s Blessing) |
 | **Total** | **32** | **All original IDs inventoried and provisionally mapped** |
@@ -32,14 +32,14 @@ The **Effect** column is the English tooltip from the original 6.4.2 localizatio
 | abilities | **Swim Speed** (`swim_speed`) | 5 / 21 | Increases swim speed by {value}% | swim_speed: 15→75 | `tmm_magic_core` | Universal swimming; preserve |
 | abilities | **Excavation** (`excavation`) | 10 / 40 | Increases mining speed by {value}% | player.block_break_speed: 20→200 | `tmm_magic_core` | Universal mining efficiency; preserve |
 | combat | **Venomous Strike** (`venomous_attack`) | 5 / 21 | Adds a {success_probability}% chance to poison targets on hit | success_probability: 3→40 | `tmm_dragon_forest` | Forest Dragon thorn/venom strikes; preserve with gate |
-| combat | **Critical Strike** (`critical_hit`) | 5 / 21 | Adds a {success_probability}% chance to deal a critical hit (double damage) | success_probability: 5→25 | `tmm_magic_core` | Universal critical strikes; preserve |
-| combat | **Deflection** (`damage_deal`) | 5 / 21 | Adds a {success_probability}% chance to negate and reflect incoming melee damage | success_probability: 3→20 | `tmm_magic_core` | Universal Deflection; preserve with rebalance |
+| combat | **Critical Strike** (`critical_hit`) | 5 / 21 | Adds a {success_probability}% chance to deal a critical hit (double damage) | success_probability: 5→25 | `tmm_hunter` | Universal critical strikes; preserve |
+| combat | **Deflection** (`damage_deal`) | 5 / 21 | Adds a {success_probability}% chance to negate and reflect incoming melee damage | success_probability: 3→20 | `tmm_hunter` | Universal Deflection; preserve with rebalance |
 | combat | **Bloodlust** (`bloodlust`) | 4 / 43 | Killing a hostile mob regenerates {health_percentage}% of its max health | health_percentage: 3→15 | `tmm_vampire` | Vampire predatory recovery; preserve with rework |
-| combat | **Resistance** (`resistance`) | 6 / 99 | Reduces all incoming damage by {damage_resistance}% | damage_resistance: 7→45 | `tmm_magic_core` | Universal fortitude; major rebalance |
+| combat | **Resistance** (`resistance`) | 6 / 99 | Reduces all incoming damage by {damage_resistance}% | damage_resistance: 7→45 | `tmm_hunter` | Universal fortitude; major rebalance |
 | combat | **Backstab** (`backstab`) | 5 / 21 | Increases damage dealt from behind by {damage_buff}% | damage_buff: 5→25 | `tmm_hunter` | Hunter ambush + optional Vampire variant |
 | combat | **Rage** (`rage`) | 5 / 21 | Increases damage by {damage_buff}% when health is below {health_threshold}% | damage_buff: 10→50; health_threshold: 10→30 | `tmm_werewolf` | Werewolf fury; preserve with wolf-form gate |
-| combat | **Adrenaline** (`adrenaline`) | 3 / 12 | Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}% | health_threshold: 10→30; effect_duration: 3→8 | `tmm_magic_core` | Universal emergency survival; preserve with cooldown review |
-| combat | **Resilience** (`resilience`) | 9 / 72 | Reduces the duration of negative status effects by {effect_time_reduction}% | effect_time_reduction: 15→95 | `tmm_magic_core` | Universal condition resilience; rebalance |
+| combat | **Adrenaline** (`adrenaline`) | 3 / 12 | Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}% | health_threshold: 10→30; effect_duration: 3→8 | `tmm_hunter` | Universal emergency survival; preserve with cooldown review |
+| combat | **Resilience** (`resilience`) | 9 / 72 | Reduces the duration of negative status effects by {effect_time_reduction}% | effect_time_reduction: 15→95 | `tmm_hunter` | Universal condition resilience; rebalance |
 | combat | **Jinxed** (`jinxed`) | 3 / 25 | Adds a {success_probability}% chance to scramble the target's hotbar on hit | success_probability: 3→7 | `tmm_hunter` | Hunter disruption / PvP-only talent; hold |
 | combat | **True Strike** (`true_strike`) | 3 / 45 | Adds a {success_probability}% chance to deal true damage on hit | success_probability: 3→9 | `tmm_hunter` | Hunter supernatural piercing strike; hold for damage audit |
 | combat | **Sunder Armor** (`sunder_armor`) | 5 / 46 | Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor | success_probability: 3→15; damage_percentage: 20→100 | `tmm_hunter` | Hunter armor breaking; hold for PvP/boss policy |
@@ -55,6 +55,9 @@ The **Effect** column is the English tooltip from the original 6.4.2 localizatio
 | nature | **Green Thumb** (`green_thumb`) | 5 / 14 | Adds a {success_probability}% chance to double drops when harvesting crops and plants | success_probability: 15→75 | `tmm_dragon_forest` | Forest Dragon crop-yield specialization; preserve exact same-ID behavior pending gate checks |
 | nature | **Shepherd’s Blessing** (`shepherd_s_blessing`) | 15 / 79 | Baby animals grow {growth_speed}% faster | growth_speed: 50→750 | `tmm_dragon_forest` | Forest Dragon husbandry specialization; preserve exact same-ID behavior pending gate checks |
 
+
+
+**Hunter stock correction:** Existing Critical Strike, Deflection, Resistance, Adrenaline, and Resilience are now proposed for **Hunter**, not universal Core Skills. The original effects remain untouched until rehoming is implemented and tested, with use-time faction checks and late-stage balance. In particular, the stock 45% all-damage resistance and 95% status-duration reduction must not become cheap early purchases. These are not replacements for new crossbow ammo conservation, equipment durability reduction, or Hunter Tracking.
 
 ## Species identity update — 2026-11-15 (not runtime)
 
