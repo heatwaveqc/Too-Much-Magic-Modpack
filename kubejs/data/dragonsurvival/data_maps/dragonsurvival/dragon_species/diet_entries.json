@@ -1035,6 +1035,10 @@
             "saturation": 2
           },
           "retain_effects": true
+        },
+        {
+          "items": "minecraft:golden_carrot",
+          "retain_effects": true
         }
       ]
     },
@@ -2159,20 +2163,6 @@
         },
         {
           "items": "aquaculture:jellyfish",
-          "properties": {
-            "nutrition": 1,
-            "saturation": 1
-          }
-        },
-        {
-          "items": "pamhc2crops:kelpitem",
-          "properties": {
-            "nutrition": 1,
-            "saturation": 1
-          }
-        },
-        {
-          "items": "pamhc2crops:seaweeditem",
           "properties": {
             "nutrition": 1,
             "saturation": 1
