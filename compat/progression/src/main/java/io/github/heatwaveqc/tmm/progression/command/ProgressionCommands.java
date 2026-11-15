@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.progression.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.commands.Commands;
@@ -21,6 +22,16 @@ public final class ProgressionCommands {
                         "Paths: " + String.join(", ",PathRegistry.all().keySet())),false);
                     return 1;
                 }))
+            .then(Commands.literal("enroll")
+                .then(Commands.argument("path",StringArgumentType.word())
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        String id = StringArgumentType.getString(ctx,"path");
+                        boolean ok = Enrollment.enrollManual(player,id);
+                        ctx.getSource().sendSuccess(() -> Component.literal(
+                            ok ? "Joined " + id : "Enrollment unavailable or requirements unmet"),false);
+                        return ok ? 1 : 0;
+                    })))
             .then(Commands.literal("status")
                 .then(Commands.argument("path",StringArgumentType.word())
                     .executes(ctx -> {
