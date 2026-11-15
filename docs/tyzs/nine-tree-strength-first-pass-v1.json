@@ -130,6 +130,25 @@
         "How to normalize per-class MXP/SP earned vs native progression gates",
         "Quantitative acceptable parity band and specialist niche edge"
       ]
+    },
+    "noncombat_parity_2026_11_15": {
+      "source": "docs/tyzs/monk-noncombat-parity-v1.json",
+      "status": "DESIGN_BENCHMARK_NOT_IMPLEMENTED",
+      "comparison": "legitimately maxed gearless Monk versus same-stage fully optimized LEGALLY geared specialist including armor/tools/Curios, enchantments, affixes/gems and normal source",
+      "ratio": {
+        "min": 0.8,
+        "default": 0.85,
+        "max": 0.9,
+        "sea_luck": 0.8
+      },
+      "rule": "For any genuinely comparable non-combat personal output, adjust Monk late ranks so its complete final output is 80%-90% of the fully optimized specialist's final result, including gear. Use 80% for Sea Luck and 85% default. Scope excludes combat, native vampire blood/lich biology, machines and noncomparable systems.",
+      "monk_new_nodes": [
+        "tmm_monk_inner_fortune",
+        "tmm_monk_inner_reservoir",
+        "tmm_monk_worldly_cultivation"
+      ],
+      "rank_calibration": "Monk rank step = max(0, ratio*specialist_full_geared - already_present_monk_plus_core)/max_rank, after source-specific rounding; do not use %-of-vanilla-zero for Luck.",
+      "risk": "If +100% tier base Dragon mana/Sea Luck exceeds plausible Monk values with gear, the class source baselines must be recalibrated after exact-mod equipment audit. New Monk skills are not installed."
     }
   },
   "trees": [
@@ -4032,6 +4051,83 @@
               "runtime_status": "DESIGN_ONLY"
             }
           ]
+        },
+        {
+          "name": "Gearless Noncombat Mastery",
+          "skills": [
+            {
+              "id": "tmm_monk_inner_fortune",
+              "label": "Inner Fortune",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 50,
+              "sp_per_rank": 1,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 5000,
+              "stage": "late_mastery",
+              "effect": "True equipment-free personal Luck strength, aiming at rank cap for exactly 80% of the optimized, fully geared Sea Dragon Luck attribute, after actual source effects and gear bonuses have been counted.",
+              "reference_basis": "nonzero_gear_normalized_source_derived_Luck_reference",
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_unarmed_precision"
+              ],
+              "native_progression_gate": "legitimate upper Monk skill progression",
+              "notes": [
+                "Luck is not Fortune/Looting; vanilla Luck baseline often zero; use true source-verified Luck attribute, not arbitrary percent of zero.",
+                "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+              ]
+            },
+            {
+              "id": "tmm_monk_inner_reservoir",
+              "label": "Inner Reservoir",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 2500,
+              "stage": "late_mastery",
+              "effect": "Personal magical resource reserve, targeting ~85% of geared full Dragon maximum capacity in each comparable mana-based spell system, not equivalent spell damage or mana regeneration.",
+              "reference_basis": "per_mod_personal_pool_gear_normalized_Dragon_reference",
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_unarmed_precision"
+              ],
+              "native_progression_gate": "legitimate upper Monk skill progression",
+              "notes": [
+                "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
+                "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+              ]
+            },
+            {
+              "id": "tmm_monk_worldly_cultivation",
+              "label": "Worldly Cultivation",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "late_mastery",
+              "effect": "Personally controlled crop growth, legal breeding and harvesting efficiency, calibrated to ~85% of fully optimized Forest Dragon outcome for the same source action; reinforces native Monk Gardening rather than installing automated farm machinery.",
+              "reference_basis": "completed_same_context_nature_harvest_growth_or_breeding_action",
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_fortunate_hands"
+              ],
+              "native_progression_gate": "standalone Monk native Gardening plus upper mastery",
+              "notes": [
+                "Source-specific outcome must be measured against fully equipped peer, never base skill rank alone.",
+                "Tier percentages are a reference scale; capped *final* output ratio 80%-90% controls actual numeric slope and event behavior, not unlimited proc multipliers.",
+                "No worn equipment or weapons needed to activate Monk late innate skill; all other Monk gear restrictions continue."
+              ]
+            }
+          ]
         }
       ],
       "capstone": {
@@ -4073,7 +4169,8 @@
         "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
         "Monk is absolute top of overall personal combat / survivability / movement / adaptability power hierarchy. No other tree can be comparable in all those domains at once. A specialist can rival Monk only in one or two designated niches.",
         "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt.",
-        "Balance all Monk total effects, including innate gear/Apotheosis-like affix substitutes, AGAINST a comparably progressed specialist wearing appropriately-tiered enchantable/Affixed armor, weapons/tools and Curios. Monk is not required to defeat the FULLY GEARED equivalent in overall effective power; it must be approximately competitive."
+        "Balance all Monk total effects, including innate gear/Apotheosis-like affix substitutes, AGAINST a comparably progressed specialist wearing appropriately-tiered enchantable/Affixed armor, weapons/tools and Curios. Monk is not required to defeat the FULLY GEARED equivalent in overall effective power; it must be approximately competitive.",
+        "Maxed Monk noncombat sources target 80%-90% of FULLY GEARED best comparable specialist, not 80%-90% of innate Tyz bonus. Sea Luck explicitly 0.8× equipped Sea Luck."
       ]
     }
   ],
@@ -4095,5 +4192,5 @@
     "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
     "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
   ],
-  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains."
+  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains. For noncombat metrics, gearless capped Monk aims for 80%-90% of full geared specialist, Sea Luck exactly 80%; this adds three Monk late candidate skills (168 total) requiring source calibration."
 }
