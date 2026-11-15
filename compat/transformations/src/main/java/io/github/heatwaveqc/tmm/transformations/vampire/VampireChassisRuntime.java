@@ -48,17 +48,36 @@ public final class VampireChassisRuntime {
                 "Vampire bridge error: " + reason + ". Admin review required; do not retry on a valuable save."));
     }
 
+    /**
+     * One-way ascension: ordinary Vampirism stays untouched; JAWR acquisition
+     * (Lilith's Blood) first enrolls Vampirism if needed.
+     * For JAWR-native cures, remove Vampirism before accepting JAWR's removal.
+     */
     public static boolean onJAWRSetLevel(ServerPlayer player, int newLevel) {
         if (!VampireChassisConfig.chassis() || inTransaction()) return true;
         try {
             int old = VampireNativeAccess.jawrLevel(player);
-            if (old > 0 && newLevel <= 0 && VAMPIRISM.observe(player) == Observation.PRESENT) {
-                player.sendSystemMessage(Component.literal(
-                        "Dual-vampire cure blocked; use the controlled test cure after backing up the world."));
-                return false;
-            }
-            if (newLevel > 0 && old <= 0 && VampireChassisConfig.acquisition()) {
+            if (old > 0 && newLevel <= 0) {
+                if (VAMPIRISM.observe(player) == Observation.PRESENT) {
+                    if (!VampireNativeAccess.canLeaveVampirism(player)) {
+                        player.sendSystemMessage(Component.literal(
+                                "Full vampire cure refused by Vampirism. Both states remain."));
+                        return false;
+                    }
+                    MUTATING.set(true);
+                    try {
+                        if (!VampireNativeAccess.leaveVampirism(player)
+                                || VAMPIRISM.observe(player) != Observation.ABSENT) {
+                            throw new IllegalStateException("Vampirism cure did not commit");
+                        }
+                    } finally {
+                        MUTATING.remove();
+                    }
+                }
                 player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
+                return true;
+            }
+            if (old <= 0 && newLevel > 0 && VampireChassisConfig.acquisition()) {
                 if (!otherStatesPermitVampire(player)) return false;
                 Observation observed = VAMPIRISM.observe(player);
                 if (observed == Observation.UNKNOWN) return false;
@@ -69,16 +88,15 @@ public final class VampireChassisRuntime {
                 try {
                     if (!VampireNativeAccess.enterVampirism(player, 1)
                             || !VampireNativeAccess.isVampirismVampire(player)) {
-                        return false;
+                        throw new IllegalStateException("Vampirism ascension enrollment failed");
                     }
                 } finally {
                     MUTATING.remove();
                 }
-                return true;
             }
             return true;
-        } catch (ReflectiveOperationException | LinkageError e) {
-            hold(player, "JAWR transformation preparation failed", new IllegalStateException(e));
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            hold(player, "JAWR ascension or coordinated cure failed", new IllegalStateException(e));
             return false;
         }
     }
@@ -97,99 +115,112 @@ public final class VampireChassisRuntime {
         return true;
     }
 
+    /** Ordinary infection is native Vampirism only; never auto-join JAWR. */
     public static boolean approveVampirismEntry(ServerPlayer player) {
-        if (!VampireChassisConfig.acquisition() || inTransaction()) return true;
-        try {
-            // When starting Vampirism, JAWR's native enrollment must be available.
-            return VampireNativeAccess.methodsAvailable()
-                    && JAWR.observe(player) != Observation.UNKNOWN
-                    && otherStatesPermitVampire(player);
-        } catch (RuntimeException e) {
-            hold(player, "Vampirism entry preflight failed", e);
-            return false;
-        }
+        return true;
     }
 
-    public static void afterVampirismEntry(ServerPlayer player) {
-        if (!VampireChassisConfig.acquisition() || inTransaction()) return;
-        try {
-            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
-            if (JAWR.observe(player) == Observation.ABSENT) {
-                MUTATING.set(true);
-                try {
-                    VampireNativeAccess.startJAWR(player);
-                } finally {
-                    MUTATING.remove();
-                }
-            }
-            if (JAWR.observe(player) != Observation.PRESENT) {
-                hold(player, "JAWR enrollment did not commit", new IllegalStateException("missing JAWR vampire"));
-            } else {
-                onNativeBloodChanged(player);
-            }
-        } catch (ReflectiveOperationException | LinkageError e) {
-            hold(player, "Vampirism entry could not initialize JAWR", new IllegalStateException(e));
-        }
-    }
-
-    public static void onNativeBloodChanged(ServerPlayer player) {
+    /** Called after JAWR changes, without modifying JAWR's native transaction. */
+    public static void onJAWRBloodChanged(ServerPlayer player) {
         if (!isDual(player)) return;
         try {
             int nativeMax = VampireNativeAccess.nativeMax(player);
             int jawrMax = VampireNativeAccess.jawrMax(player);
-            if (nativeMax <= 0 || jawrMax <= 0) return; // native leveling may still initialize max.
+            if (nativeMax <= 0 || jawrMax <= 0) return;
             int projected = VampireBloodMath.project(
-                    VampireNativeAccess.nativeCurrent(player), nativeMax, jawrMax);
-            if (projected != VampireNativeAccess.jawrCurrent(player)) {
-                VampireNativeAccess.setJAWRShadowBlood(player, projected);
+                    VampireNativeAccess.jawrCurrent(player), jawrMax, nativeMax);
+            if (projected != VampireNativeAccess.nativeCurrent(player)) {
+                VampireNativeAccess.setNativeShadowBlood(player, projected);
             }
         } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
-            hold(player, "Blood shadow update failed", new IllegalStateException(e));
+            hold(player, "Vampirism shadow mirror update failed", new IllegalStateException(e));
         }
     }
 
-    /** Return true when JAWR's native mutation must be cancelled. */
-    public static boolean interceptJAWRBlood(ServerPlayer player, int amount, boolean gain) {
+    /**
+     * Divert an original Vampirism feeding operation into JAWR. Return the
+     * unused native units in the same convention as BloodStats.addBlood().
+     */
+    public static int feedFromVampirism(ServerPlayer player, int amount) {
+        if (amount <= 0 || !isDual(player)) return amount;
+        try {
+            int jawrMax = VampireNativeAccess.jawrMax(player);
+            int nativeMax = VampireNativeAccess.nativeMax(player);
+            int before = VampireNativeAccess.jawrCurrent(player);
+            if (jawrMax <= 0 || nativeMax <= 0) throw new IllegalStateException("invalid blood capacity");
+            if (before >= jawrMax) return amount;
+            int gain = VampireBloodMath.costRoundUp(amount, nativeMax, jawrMax);
+            VampireNativeAccess.addJAWRBlood(player, gain);
+            int after = VampireNativeAccess.jawrCurrent(player);
+            if (after <= before) throw new IllegalStateException("JAWR did not accept feed");
+            onJAWRBloodChanged(player);
+            // Consume only the units actually credited, rounded upward to
+            // avoid gaining JAWR blood without consuming the feeding source.
+            int credited = VampireBloodMath.costRoundUp(after - before, jawrMax, nativeMax);
+            return Math.max(0, amount - credited);
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            hold(player, "Vampirism feed to JAWR failed", new IllegalStateException(e));
+            return amount;
+        }
+    }
+
+    /** All-or-nothing Vampirism power/weapon expenditure against JAWR. */
+    public static boolean spendFromVampirism(ServerPlayer player, int amount) {
         if (!isDual(player)) return false;
         if (amount <= 0) return true;
         try {
-            int maxJAWR = VampireNativeAccess.jawrMax(player);
-            int maxNative = VampireNativeAccess.nativeMax(player);
-            if (maxJAWR <= 0 || maxNative <= 0) {
-                hold(player, "Uninitialized dual vampire blood capacity",
-                        new IllegalStateException("blood max <= 0"));
-                return true;
+            int max = VampireNativeAccess.jawrMax(player);
+            int nativeMax = VampireNativeAccess.nativeMax(player);
+            if (max <= 0 || nativeMax <= 0) throw new IllegalStateException("invalid blood capacity");
+            int cost = VampireBloodMath.costRoundUp(amount, nativeMax, max);
+            int before = VampireNativeAccess.jawrCurrent(player);
+            if (before < cost) return false;
+            VampireNativeAccess.removeJAWRBlood(player, cost);
+            int after = VampireNativeAccess.jawrCurrent(player);
+            if (before - after != cost) {
+                hold(player, "Vampirism translated charge mismatched",
+                        new IllegalStateException("expected " + cost + ", observed " + (before - after)));
+                return false;
             }
-            if (gain) {
-                int originalBlood = VampireNativeAccess.nativeCurrent(player);
-                if (originalBlood >= maxNative) {
-                    player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
-                    return true;
-                }
-                VampireBloodCarry carry = player.getData(TransformationAttachments.BLOOD_CARRY.get());
-                VampireBloodCarry.Gain credit = carry.gain(amount, maxJAWR, maxNative);
-                int nativeUnits = Math.min(credit.wholeUnits(), maxNative - originalBlood);
-                VampireNativeAccess.gainNativeBlood(player, nativeUnits);
-                int updated = VampireNativeAccess.nativeCurrent(player);
-                if (updated < originalBlood + nativeUnits) {
-                    throw new IllegalStateException("Vampirism rejected credited JAWR blood; pending admin review");
-                }
-                player.setData(TransformationAttachments.BLOOD_CARRY.get(),
-                        updated >= maxNative ? VampireBloodCarry.empty() : credit.remainder());
-            } else {
-                int nativeUnits = VampireBloodMath.costRoundUp(amount, maxJAWR, maxNative);
-                VampireNativeAccess.spendNativeBlood(player, nativeUnits);
-            }
-            // Canonical mutation hooks sync the JAWR shadow; this is a defensive recheck.
-            onNativeBloodChanged(player);
+            onJAWRBloodChanged(player);
+            return true;
         } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
-            hold(player, "JAWR blood transaction translation failed", new IllegalStateException(e));
+            hold(player, "Vampirism charge to JAWR failed", new IllegalStateException(e));
+            return false;
         }
-        return true; // never let a second JAWR food/blood mutation through.
+    }
+
+    /** A native Vampirism cure removes JAWR too, rather than downgrading. */
+    public static boolean preflightVampirismCure(ServerPlayer player) {
+        if (!isDual(player)) return true;
+        try {
+            return VampireNativeAccess.methodsAvailable()
+                    && VampireNativeAccess.jawrLevel(player) > 0;
+        } catch (ReflectiveOperationException | LinkageError e) {
+            hold(player, "Vampirism cure could not preflight JAWR", new IllegalStateException(e));
+            return false;
+        }
+    }
+
+    public static void afterVampirismCure(ServerPlayer player) {
+        if (!VampireChassisConfig.chassis() || inTransaction()) return;
+        if (JAWR.observe(player) != Observation.PRESENT) return;
+        try {
+            MUTATING.set(true);
+            VampireNativeAccess.setJAWRLevel(player, 0);
+            if (JAWR.observe(player) != Observation.ABSENT) {
+                throw new IllegalStateException("JAWR state retained after Vampirism cure");
+            }
+            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            hold(player, "Vampirism cure could not complete JAWR removal", new IllegalStateException(e));
+        } finally {
+            MUTATING.remove();
+        }
     }
 
     public static void onJAWRLevelAdvanced(ServerPlayer player) {
-        if (isDual(player)) onNativeBloodChanged(player);
+        if (isDual(player)) onJAWRBloodChanged(player);
     }
 
     /**
