@@ -4,11 +4,24 @@
 
 Approved 2026-11-14. Inspired by ATM10's navigational and branching approach. Quest text, reward choices, IDs and layouts are original; no copied ATM10 quests, images, loot tables or proprietary assets.
 
+**2026-11-15 walkthrough decision:** All **mod progression chapters** must follow [QUEST-WALKTHROUGH-STANDARD.md](QUEST-WALKTHROUGH-STANDARD.md). They are **rewarded how-to guides**, not a collection checklist. Together with JEI and the mod's own in-game guide they must enable a new player to follow **the complete native progression without external references**. The five rules below remain binding; the walkthrough standard adds instructional coverage, not an exemption to rewards or mechanical gates.
+
 1. **Every quest must grant positive experience and a meaningful reward.** Strongly prefer a **thematic, fixed item**, not currency; coins may substitute **only when no good fixed item makes sense**, principally selling-contract quests. The 42 provisional overview checkmarks still use temporary 2 XP + one paper rewards, to be redesigned as those chapters mature. No random-only or no-reward quests.
 2. **Item rewards must not auto-complete another quest.** The initial stricter rule forbids ANY fixed reward item ID from matching ANY authored item-task ID; validator checks this. Exception for introductory quests or awarding more of the SAME resource is permissible only if individually documented and tested. Shop purchases are deliberate paid choices, not automatic quest rewards; they may fulfill eligible ordinary resource tasks but must never bypass boss/technology gates.
 3. **Completion criteria should be unique across quests unless intentionally reused.** Repeated items are allowed only in the expressly documented ascending-volume copper, emerald and diamond sale tiers (six specific item IDs, each reused twice), using consuming tasks and different submission counts. No other duplicates or advancements. Informational checkmarks are manual and use unique task IDs.
 4. Branch freely across magic schools, exploration and food. Within a chapter, give sensible optional dependency lines without enforcing unrelated specialties or duplicating rewards.
 5. ProjectE and Project Expansion remain post-Chaos Guardian, and no quest may give the excluded Ring of the Seven Deadly Sins, Re:Avaritia or Extended Crafting items. Quests explain real gates; they do not implement those gates.
+
+## Required instructional structure for every mod chapter
+
+- **Start with the guide:** If an in-game guide/manual/Notebook/UI guide exists, include an early quest describing the *actual* way to obtain, craft, receive or open it; alternatively provide it as a safe quest reward. A physical book is not required if the guide is a menu/keybind, but the player must know how to access it.
+- **Teach each real progression step:** A quest explains **why** the stage matters, what it requires, **how** to do it, how success looks, and which meaningful next stage it enables. Cover mandatory tiers from initial setup to capstone and all significant optional systems and addons. Do not require a player to know recipes/build shapes from an external wiki.
+- **Explicit guidebook/JEI references:** When a quest needs a multiblock shape, altar arrangement, ritual, machine UI, dimension/biome-specific setup or other hard-to-recall procedure, identify the **specific in-game guide section/page or JEI recipe/use category**, with enough instructions in the quest itself to begin. "See the guidebook" without naming where to look is insufficient.
+- **Detection must be honest:** Owning a block does not prove it was operated. Prefer native behavior advancements/events; otherwise teach the actual behavior while describing acquisition criteria as acquisition proxies, or use an expressly permitted manual confirmation. Never assert that FTB verified an event it could not detect.
+- **Reward instructional milestones:** Keep positive XP, a useful thematic fixed item by default, existing documented exception policy, unique criteria and no automatic unrelated quest completions. Rewards must not bypass boss/faction/material gates.
+- **Audit before declaring completion:** Build a progression coverage matrix first, then client-test whether a fresh player can complete the mod using **quests + JEI + guidebook** alone. A chapter with gaps is a pilot or partial walkthrough, even if its data compiles and all task IDs resolve.
+
+The research-side [mod profile template](mod-comprehension/templates/MOD-PROFILE.md) and [quest handoff template](mod-comprehension/templates/QUEST-COMPAT-HANDOFF.md) supply the path, real prerequisites and guide references needed for authoring.
 
 ## First authored batch
 

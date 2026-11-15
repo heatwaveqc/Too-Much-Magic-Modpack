@@ -7,7 +7,9 @@
 | Manifest ID / actual mod ID | `<manifest-id>` / `<actual game namespace(s)>` |
 | Category / parent or addons | <category; linked profiles> |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `<integration SHA or branch>` |
-| Pinned version / artifact / hash | <exact packwiz file and resolved artifact or UNVERIFIED> |
+| Pinned version / artifact / hash | <exact packwiz file + SHA1/SHA256 or UNVERIFIED> |
+| Source snapshot | <immutable commit SHA/release tag; binary equivalence tested? yes/no> |
+| Guide/documentation version gap | <matching / earlier-later; what still needs validation> |
 | Profile status | researching |
 | Evidence reached | documented upstream / inspected exact artifact / tested in pack / mixed |
 | Reviewed | YYYY-MM-DD |
@@ -21,6 +23,28 @@
 
 **Quick start:** <the cheapest viable entry sequence, including environment and prereqs>
 
+### Player-value snapshot (a quick reference for quest designers)
+
+| Five standout capabilities | Three genuinely early practical unlocks | Three candidate integrations |
+| --- | --- | --- |
+| <ranked brief features and use cases> | <access cost, setup and benefit; if fewer exist, say why> | <benefit and actual missing/known bridge; mark hypothesis> |
+
+### Subsystem coverage at a glance
+
+| Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
+| --- | --- | --- | --- | --- | --- |
+| <one row for every major system, addon separately> | [source: SHA] / [docs: version] / unverified | complete / partial / unresearched | <specific section or not established> | not run / tested | <precise gap> |
+
+## Guidebook onboarding — required before the player's first complex step
+
+- **Guide name and access:** <exact physical item recipe, first acquisition route or UI/keybind; give if safe as a quest reward>
+- **Earliest attainable stage:** <environment, ingredients or progression gate>
+- **First instructional quest:** <proposed quest name, steps to obtain/open/read, truthful task and thematic reward>
+- **Reference map:** <guidebook section/page names for machines, multiblocks, rituals, structures, spells, upgrades, bosses, addons; verify pinned version>
+- **Where guide is insufficient:** <missing or outdated instructions that quest text must supply>
+- **Other in-game help:** <JEI recipes/uses/categories, tooltips, in-game quest/tutorial UI, discoveries>
+- **If no guide exists:** <explicitly say so; document the self-contained quest instructions that replace it>
+
 ## Systems and full mechanics inventory
 
 | Subsystem | How accessed | Inputs + costs | Effects / outputs | Limits, failure conditions and source |
@@ -31,9 +55,9 @@ Cover all meaningful subsystems; expand with subsections if there are distinct m
 
 ## Material / capability input-output contracts
 
-| Producer / system | Accepted inputs (type and IDs where confirmed) | Output / world effect | Consumed? | Native automation or scriptability | Evidence |
+| System | Input **kind** + exact ID/tag/event | Input qty/formula; consumed/remainder | Output **kind**, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
 | --- | --- | --- | --- | --- | --- |
-| ... | items, item tags, fluids, XP, essence, FE, mana, blood, entity, block state, biome, effect, command, etc. | items, fluids, enchantments, XP, entity spawn, attribute, effect, blocks, dimension, scoreboard, etc. | ... | built-in / recipe JSON / KubeJS / other / unknown | ... |
+| <system> | item stack vs dropped entity; fluid vs Source vs player mana; FE, XP orb vs gem, entity/world state, etc. | <specific; not established if unknown> | <inventory, world drop, skill/effect, dimension; exact units> | event/timer/consumed item/fluid/entity state/world interaction | native / API / recipe JSON / KubeJS proven? [pin]/[source: SHA]/[pack-test: build/world] |
 
 Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; entities; mobs and AI; damage/effects; player or equipment state; block/world changes; automation; inputs to and outputs from rituals.** If a category is unsupported, support the negative finding with implementation evidence or say *not established*.
 
@@ -43,15 +67,32 @@ Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; 
 - <quantities and exact output forms: raw ore vs smeltable dust vs ingot; temporary vs persistent entity; resource drained per use>
 - <items/tags subject to pack-specific substitutions>
 
-## Progression map
+## Complete player progression / walkthrough blueprint
 
-| Milestone / tier | Entry requirements and acquisition | Unlocks and practical payoff | Can be skipped? / gate | Evidence |
+**Completion test:** could a player get from nothing to the real final milestone using only the proposed quest steps, JEI and the in-game guide? Include **every essential intermediate step**, not a three-row early/mid/late summary. Treat addon unlocks and optional branches separately and explain which choices are mutually exclusive.
+
+| Path and step | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0. Find/open guide | <source or UI keybind> | <craft/open/access> | <guide access> | <guide name/page> | <guide onboarding quest, XP + safe reward> | ... |
+| 1. Starting setup | ... | ... | ... | ... | ... | ... |
+| <every actual tier/unlock/subsystem, alternate path and capstone> | ... | ... | ... | ... | ... | ... |
+
+### Dependency graph and alternate routes
+
+<Explain branching quest dependencies, costs of tier transitions, repeatable progression currency/research, biome/dimension/boss prerequisites, alternate recipes, side systems and irreversible faction choices. Specify gates enforced by the native mod versus currently implemented TMM code versus future proposals. Use text or a small Mermaid diagram if helpful.>
+
+### Structures, rituals, automation and other how-to instructions
+
+| Required setup | Placement/shape/activation and operating inputs | Guidebook page/JEI category to cite **by name** | Failure symptoms, throughput or maintenance | Quest where taught |
 | --- | --- | --- | --- | --- |
-| Earliest | ... | ... | ... | ... |
-| Midgame | ... | ... | ... | ... |
-| Late/endgame | ... | ... | ... | ... |
+| <all critical altars, multiblocks, other builds> | ... | ... | ... | ... |
 
-Add boss and dimension dependencies, worldgen/biome needs, knowledge-book dependencies, required player actions and alternate routes. Clearly separate built-in mechanic gates, current TMM enforcement and proposed future gates.
+### Advanced and terminal objectives
+
+- **Normal completion:** <what counts as finishing the main progression, or the closest open-ended endpoint>
+- **Optional completion:** <meaningful side branches and addons, combat/bosses/automation>
+- **Remaining progression blockers:** <unknown prerequisites, guide holes and exact research/test action>
+- **Quest coverage check:** <all required stages linked to how-to quest or precise guide reference; if not, label profile partial>
 
 ## Internal combinations and overlooked mechanics
 
@@ -94,9 +135,12 @@ Document addons that introduce cross-mod content; explicit IDs only when checked
 
 ## Quest and teaching opportunities (research, not actual quests)
 
-| Suggested stage | Meaningful player action or demonstrable milestone | Possible detection task | Possible safe thematic reward | Caveats |
-| --- | --- | --- | --- | --- |
-| ... | ... | observed item, advancement, event, read/checkmark if necessary | ... | unique task, gates, reward not auto-completing other quests |
+Use the complete progression table above as the **canonical chapter outline**; this table prioritizes the instructional details for authoring. Each quest is a **how-to with XP and a thematic reward**, not an unexplained acquisition checkbox.
+
+| Stage and teaching goal | Actionable in-game instructions (prerequisites → steps → result) | Named guidebook section or JEI recipe | Intended behavior vs truthful FTB detector / fallback | Useful XP + fixed reward direction | Coverage and gating risk |
+| --- | --- | --- | --- | --- | --- |
+| First guidebook access | <how to obtain/open; never just 'read the wiki'> | <guide name + page> | <item/advancement vs actual reading; manual fallback> | <safe, no gift loop> | ... |
+| <every needed stage> | ... | ... | <validated ID/event if known; item proxy explicitly limited> | ... | ... |
 
 Consider *Tips & Tricks* for universally useful early discoveries, and the mod's chapter for deep progression. Do **not** add new quest tasks, loot or rewards as part of this research.
 
@@ -108,19 +152,21 @@ Consider *Tips & Tricks* for universally useful early discoveries, and the mod's
 
 ## Evidence ledger
 
-| Claim / section | Source URL or exact inspected `file:path` + version/SHA | Kind (upstream / artifact / pack-test / community) | What it proves / remaining limits |
+| Claim / section | Source URL or exact inspected `file:path` + immutable SHA | Evidence tag / version of source | Pack version gap / what it proves / remaining limits |
 | --- | --- | --- | --- |
-| P-001 | ... | ... | ... |
+| P-001 | ... | [source: SHA] / [docs: version] / [pack-test: build/world] / [inference] | ... |
 
 Cite the source **next to the important claim** as well as here. If a primary source is unavailable, state the attempted source and blocker.
 
 ## Disposable-world test plan
 
-| Test | Preconditions / commands / steps | Expected observable result | Performed? / evidence |
+| Test | Positive/boundary case and disposable-world setup | Expected observable result (actual mechanic AND quest credit separately) | Performed? / evidence |
 | --- | --- | --- | --- |
-| ... | ... | ... | not run / pass / fail (include world/build if run) |
+| <important progression or integration test> | valid setup + invalid/blocked variation | ... | not run / pass / fail (include build/world) |
 
-No implicit test credit from parsing, compilation or dedicated server startup.
+No implicit test credit from parsing, compilation or dedicated server startup. For high-risk resource loops, gated entity drops and compatibility, include a positive and a negative/boundary test with controlled measurements. Label source formula and measured throughput separately. For routine low-risk features, a positive test is sufficient.
+
+**Status requirement:** `source-complete` means full mechanics + every mandatory progression tier/branch has a source-backed how-to and guide/JEI reference, with unknowns confined to nonblocking details. It does **not** mean gameplay-tested. If the walkthrough graph has required unknown steps, keep `researching` and describe completed subsystems.
 
 ## Unknowns and next research
 

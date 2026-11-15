@@ -26,6 +26,14 @@
 - Only the pinned NeoForge 1.21.1 roster is in scope; 8 inactive roster entries do not receive standalone quests.
 - The full navigation scaffold is authored separately; this architecture document does not authorize new gameplay rewards or gates. Verify all authored FTB quests and rewards on a disposable client/server world.
 
+## Mod chapter completeness: walkthroughs, not just milestones
+
+The [binding walkthrough standard](QUEST-WALKTHROUGH-STANDARD.md) requires each substantive mod's chapter to teach the **full player-accessible progression**, from first guidebook access and initial materials through required tiers, crafting/multiblock/ritual setup, operation, automation, optional subbranches, addons and final milestones. A novice should need no external wiki: **quests + JEI + the in-game guide** must suffice. Quest text gives short actionable instructions and directs the player to the **specific guidebook section or JEI category** for complex builds; a generic link to the manual is not enough.
+
+Each mod with an in-game book/UI manual must have an early quest explaining how to get or open it, or reward the guide if safe. Full coverage is established in the comprehension profile's **progression-to-quest matrix**, not inferred from quest counts. Mod addons normally remain in the parent chapter with their own clear instructional branches and independent research coverage. For branching or irreconcilable faction choices, explain alternatives and mark quests optional instead of enforcing impossible completion.
+
+A working data validator and a passing server boot establish neither complete progression teaching nor client usability. Review earlier pilots, including the 49-quest Ars chapter on [PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), for specific guidebook onboarding, tier, setup/how-to and final-capstone coverage gaps. Keep all five groups and the existing reward/gate policies.
+
 ## Recommended design order
 
 Finalize the five-category navigation and overall quests skeleton; design Introduction and its Food & Fishing chapter first; write Basic/Advanced/Endgame Roadmap crosslinks; then flesh out Magic and Exploration & Combat in mod clusters. Defer detailed Endgame rewards and bosses until gates are integrated and validated.

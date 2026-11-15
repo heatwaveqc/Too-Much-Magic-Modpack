@@ -1,6 +1,21 @@
 # Mod-comprehension methodology improvements collected
 
-This is a proposal log, not a change to the operating contract. It records process refinements that surfaced while profiling Ars Nouveau 1.21.1-5.13.5. Adopt or fold them into the instructions only after review.
+This log originated as **proposals** from the Ars Nouveau 1.21.1-5.13.5 first pass. **Decision 2026-11-15:** all eight are adopted into [Work instructions](WORK-CHAT-INSTRUCTIONS.md), [templates](templates/MOD-PROFILE.md) and the [quest walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md), with the scope refinements below. The numbered prose records the original suggestions; normative rules live in those linked documents.
+
+### Adoption decisions and refinements
+
+| # | Decision | Scope |
+| --- | --- | --- |
+| 1 | Adopted | Exact artifact hash + immutable source SHA; label source/JAR equivalence unknown until actually compared |
+| 2 | Adopted | Compact per-claim evidence tags and subsystem coverage; retain source ledger |
+| 3 | Adopted, foundational | Typed I/O with consumed/remainder, output position, triggers, cadence and API |
+| 4 | Adopted selectively | Positive and boundary/negative tests **required for consequential** compatibility/economy/gates, not trivial low-risk behavior |
+| 5 | Adopted | Trigger-aware renewability, code formulas separate from measured in-game throughput |
+| 6 | Adopted | Evidence version/gap and hash-based stale review; automation is a future enhancement, not implemented |
+| 7 | Adopted | Separate per-addon coverage, both-side evidence for any claimed bridge |
+| 8 | Adopted | Teach actual operation, don't claim item ownership proves behavior; honest detectors/fallbacks |
+
+**Additional approved requirements:** concise player-value summary (*five standout uses / three early unlocks / three integration leads* where applicable), a **subsystem coverage dashboard**, and a **complete start-to-finish progression/guidebook/quest coverage matrix**. A full mod profile is not source-complete with mandatory tier or build-guide gaps. Every mod's quest chapter is intended to function as a rewarded how-to guide in combination with JEI and the mod's own guidebook.
 
 ## 1. Pin source snapshots as carefully as pack artifacts
 
@@ -66,4 +81,5 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 
 ## Revision notes
 
-- 2026-11-15 — Initial recommendations from the Ars Nouveau 5.13.5 profile. No operating rules changed.
+- 2026-11-15 — Initial recommendations from Ars Nouveau 5.13.5.
+- 2026-11-15 — All eight adopted with scoped testing requirements; full progression, guidebook onboarding, player-value summaries and subsystem coverage added to the operating rules.

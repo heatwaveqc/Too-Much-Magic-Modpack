@@ -39,7 +39,7 @@ Once two source-supported profiles expose complementary I/O, test a **cross-mod*
 
 ## Complete roster and status tracker
 
-**Statuses:** `queued` (not researched), `researching` (partial), `source-complete` (major mechanics evidenced, client not necessarily tested), `verified-in-pack` (reproducible client/world test), `blocked` (explicit reason in profile), `deferred` (inactive manifest selection), `stale` (version changed and evidence needs refresh).
+**Statuses:** `queued` (not researched), `researching` (one or more subsystems/tiers/guidebook or walkthrough paths remain incomplete), `source-complete` (full mechanics **and full tier progression / guidebook / quest coverage** source-backed; not necessarily client-tested), `verified-in-pack` (reproducible client/world test), `blocked` (explicit reason in profile), `deferred` (inactive manifest selection), `stale` (version changed and evidence needs refresh).
 
 **Depth:** `full` = all gameplay systems, outputs, progression and low-hanging setups; `focused` = user-facing utility and key interactions; `interface` = API, dependencies, configuration and effects on integrated mods, not a fictitious gameplay path. If a supposed dependency has real player gameplay, elevate it to `full`.
 
@@ -117,7 +117,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `kubejs` | KubeJS | infrastructure | enabled flag | full | queued | — |
 | `puffish-skills` | Pufferfish's Skills | infrastructure | enabled flag | focused | queued | — |
 | `replication` | Replication | late_ore | enabled flag | full | queued | — |
-| `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | source-complete | [profile](mods/ars-nouveau.md) |
+| `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | researching | [profile](mods/ars-nouveau.md) |
 | `astral-sorcery` | Astral Sorcery | magic | enabled flag | full | queued | — |
 | `botania` | Botania | magic | inactive | full | deferred | — |
 | `botania-revived` | Botania Revived | magic | enabled flag | full | queued | — |
@@ -217,11 +217,11 @@ None yet. The [handoff directory](handoffs/README.md) holds source-backed design
 
 ## Methodology improvements collected
 
-Proposals from research runs are logged in [METHODOLOGY-IMPROVEMENTS.md](METHODOLOGY-IMPROVEMENTS.md); they do not change the operating contract.
+Original proposals and **2026-11-15 adoption decisions** are recorded in [METHODOLOGY-IMPROVEMENTS.md](METHODOLOGY-IMPROVEMENTS.md). The [Work instructions](WORK-CHAT-INSTRUCTIONS.md), [profile template](templates/MOD-PROFILE.md) and [quest walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) are now normative. Future researchers should audit the full progression-to-quest path and guide access, not merely inventory mechanics.
 
 ## Session notes / next pickup
 
-- 2026-11-15 — Research framework initialized; Ars Nouveau now has a source-backed profile. The exact pin is documented; no in-pack gameplay test has been performed.
-- 2026-11-15 — Added [methodology improvement proposals](METHODOLOGY-IMPROVEMENTS.md) based on source/version gaps, typed I/O contracts, falsifiable tests, renewable-loop economics, addon boundaries and quest-task observability. Suggestions are not policy changes.
+- 2026-11-15 — Ars Nouveau source-backed mechanics survey merged from PR #81. It remains `researching` because full tier unlocks, guidebook acquisition and complete progression-to-quest references are not yet established; no in-pack gameplay test was performed.
+- 2026-11-15 — Adopted eight methodology refinements plus player-value summary and subsystem coverage; new [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
 
-- **Next action:** continue with `occultism` (rank 2), reconcile its exact pin and inspect the source before profiling storage, ore processing and entity labor. Check for open research branches first.
+- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template; separately revisit `ars-nouveau` to reconcile the seven addons and [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add an explicit Worn Notebook access quest and close the full tier/recipe/how-to gaps. Check for active research branches before duplicating work.
