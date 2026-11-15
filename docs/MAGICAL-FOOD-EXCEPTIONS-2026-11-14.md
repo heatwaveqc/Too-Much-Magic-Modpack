@@ -1,7 +1,7 @@
 # Magical nourishment exceptions — next food compatibility pass (2026-11-14)
 
-**Status:** approved design direction, implementation and runtime QA pending. **Documentation-only handoff.**
-**Branch:** `feature/dragon-diets-food-compat`; do not modify the currently tested integration build or stable channel as part of this note.
+**Status:** Dragon Survival diet data map, Werewolves addon tags, and static guard tests **implemented** on feature and `test/full-integration` branches. **In-world runtime QA and special-item consumption verification remain pending; not stable-approved.**
+**Branches:** `feature/dragon-diets-food-compat` and `test/full-integration` (unstable source). Stable/main remains unchanged. New builds from integration pick up config; an already-exported Prism instance does not update itself.
 **Dependencies:** Dragon Survival 2.0.74 (NeoForge 1.21.1), installed magical-food providers, and the two werewolf/lich systems.
 
 ## Governing policy
@@ -20,13 +20,14 @@ The pre-existing species food rules continue unchanged:
 
 | Item | Human | All three dragons | Werewolves (both player systems) | Liches (both systems) | Notes |
 | --- | --- | --- | --- | --- | --- |
-| EvilCraft Rejuvenated Flesh (`evilcraft:flesh_rejuvenated`, verify exact installed ID) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve blood-recharge durability and any native blood cost. |
-| Botania Fruit of Grisaia (confirm installed ID in Botania Revived) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve mana cost, activation, and reusable behavior. |
-| Botania Mana Cookie (`botania:mana_cookie`, verify installed ID) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve original magic/hunger/saturation behavior. |
+| EvilCraft Rejuvenated Flesh (`evilcraft:flesh_rejuvenated`) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve blood-recharge durability and any native blood cost. |
+| Botania Fruit of Grisaia (`botania:infinite_fruit`) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve mana cost, activation, and reusable behavior. |
+| Botania Mana Cookie (`botania:mana_cookie`) | Normal native behavior | Magical exception | Magical exception | Exclude pending specific hunger check | Preserve original magic/hunger/saturation behavior. |
 | Artifacts Everlasting Beef (`artifacts:everlasting_beef`) | Native behavior | **Cave only** (raw meat) | Allowed in both | No extra permission | Not universal magical nourishment; preserve original item functionality. |
 | Artifacts Eternal Steak (confirm registry ID) | Native behavior | **No** dragon exception | Native werewolf rules only | No extra permission | Cooked: deliberately excluded as an exception. |
-| Pastel Enchanted Star Candy (`pastel:enchanted_star_candy`, verify installed ID) | Native behavior | **Proposed** magical exception | **Proposed** | Exclude pending check | Test large restoration, healing and effect-clearing for no duplication. |
-| Pastel Enchanted Golden Carrot (`pastel:enchanted_golden_carrot`, verify installed ID) | Native behavior | **Proposed** magical exception | **Proposed** | Exclude pending check | Verify original effects and installed ID. |
+| Pastel Enchanted Star Candy (`spectrum:enchanted_star_candy`) | Native behavior | **Proposed** magical exception | **Proposed** | Exclude pending check | Clears all harmful effects, has 8 base nutrition; it does **not** fully heal or fill hunger. |
+| Pastel Enchanted Golden Carrot (`spectrum:enchanted_golden_carrot`) | Native behavior | **Proposed** magical exception | **Proposed** | Exclude pending check | Verify original effects and installed ID. |
+| Pastel Magnificent Star Candy (`spectrum:magnificent_star_candy`) | Native behavior | Magical exception | Magical exception | Exclude pending check | **This** is the full-heal/full-hunger candy; preserve its one-time custom on-use behavior. |
 | Vanilla Enchanted Golden Apple | Native behavior | **Candidate** for universal exception | Candidate / native | Exclude pending check | Do not silently promote this candidate; Forest already accepts this item. |
 | Ordinary Golden Apple | Native behavior | Existing species rules | Native rules | Native rules | Still fundamentally fruit; **not** a universal exception. |
 | Pastel ordinary Star Candy | Native behavior | Existing species rules | Native rules | Native rules | A potion effect by itself does not make it universal. |
@@ -57,4 +58,17 @@ Correct Everlasting Beef to Cave only, remove the unintended Forest treatment, a
 
 Existing context: `docs/DRAGON-DIETS-2026-11-14.md`, `docs/FOOD-AND-SPECIES-DESIGN.md`, and (on `test/full-integration`) `docs/JAWR-FOOD-TEST-PLAN-2026-11-14.md`.
 
-**No food-compatibility code or test-build modifications are implied by this document.**
+## Deployed source changes (2026-11-14)
+- Dragon Survival explicit map: `kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json`, all three species include the six approved magical foods. The two custom-use non-FoodProperties items (`evilcraft:flesh_rejuvenated`, `botania:infinite_fruit`) receive **0 nutrition / 0 saturation** in the diet map to permit dragon recognition without inventing free food; their native handlers must deliver the actual nutrition/resource cost.
+- `artifacts:everlasting_beef` transferred from Forest to Cave; `minecraft:rotten_flesh` and `born_in_chaos_v1:monster_flesh` removed from Forest. No new Eternal Steak exception.
+- Forest `ars_nouveau:sourceberry_bush` is enabled **using original FoodProperties and retain_effects**, preserving Mana Regeneration; despite its registry name, this block-item is the consumable Sourceberry.
+- Werewolves addon: `kubejs/data/werewolves/tags/item/werewolf_food.json` and `raw_food.json` append the approved foods without replacing upstream tags. The addon checks `FoodProperties != null` for its meat categorization, so the two custom-use items still need explicit live QA; a source tag alone does **not** prove the Werewolves addon accepts them when the Not Meat skill is absent.
+- Static guardrails: `scripts/verify_dragon_diets.py`. Direct map/tag inspection passed; **no actual Java client or server consumed food during this check**.
+- JAWR werewolf behavior is still unverified because it does not use the Werewolves addon tag authority; JAWR and Goety lich changes are expressly outside this pass.
+
+## Runtime acceptance
+1. On every dragon test special items with/without depleted hunger and drained mana/blood; no free repeat use or duplicated effects.
+2. Werewolves addon test with and without Not Meat; JAWR lycan in human/wolf forms separately. Verify magic food restores hunger/effects under native conditions, not just animation.
+3. Confirm sourceberry Mana Regeneration, Pastel Enchanted candy harmful-effect removal, Magnificent candy full restoration, enchanted carrot effect durations, Rejuvenated Flesh blood drain, Fruit of Grisaia mana drain, and reusable-beef cooldown.
+4. No stable promotion without successful dedicated-server + client runtime testing. An existing playtest export is not changed retroactively.
+
