@@ -448,15 +448,15 @@
         {
           "items": "pamhc2foodextended:rawtofabbititem",
           "properties": {
-            "nutrition": 0,
-            "saturation": 0
+            "nutrition": 3,
+            "saturation": 2
           }
         },
         {
           "items": "pamhc2foodextended:rawtofickenitem",
           "properties": {
-            "nutrition": 0,
-            "saturation": 0
+            "nutrition": 3,
+            "saturation": 2
           }
         },
         {
@@ -469,8 +469,8 @@
         {
           "items": "pamhc2foodextended:rawtofuttonitem",
           "properties": {
-            "nutrition": 0,
-            "saturation": 0
+            "nutrition": 3,
+            "saturation": 2
           }
         },
         {
@@ -1421,13 +1421,6 @@
         },
         {
           "items": "unnamedanimalmod:leafy_seadragon",
-          "properties": {
-            "nutrition": 5,
-            "saturation": 6
-          }
-        },
-        {
-          "items": "unnamedanimalmod:elephantnose_fish",
           "properties": {
             "nutrition": 5,
             "saturation": 6
