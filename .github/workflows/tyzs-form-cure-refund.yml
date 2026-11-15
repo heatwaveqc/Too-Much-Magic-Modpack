@@ -24,12 +24,34 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
       - name: JavaScript syntax
         run: |
           node --check compat/form-cure/tyzs_form_cure_refund.js
           node --check scripts/test_tyz_form_cure_refund.js
       - name: KubeJS, Tyz and JAWR mock lifecycle cases
         run: node scripts/test_tyz_form_cure_refund.js
+      - name: Validate exact pinned JAWR 0.5.39 native state API
+        shell: bash
+        run: |
+          set -euo pipefail
+          jar="$RUNNER_TEMP/jawr-0.5.39.jar"
+          curl --fail --location --silent --show-error --retry 3 \
+            --output "$jar" \
+            'https://cdn.modrinth.com/data/LCO8KZvC/versions/TWcJbsjg/witchery-0.5.39%2Bmc1.21.1.jar'
+          echo "a3d50e65bb494b4d9b709163a295ddcecf53c498314df473d6de55633a4a5ebe810b9a0b5672f97f41786c03af01ef3ac91f0262216e074887e75d6afc35141d  $jar" | sha512sum --check
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment' | tee "$RUNNER_TEMP/vampire.txt"
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment' | tee "$RUNNER_TEMP/werewolf.txt"
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment$Data' | tee "$RUNNER_TEMP/vampire-data.txt"
+          javap -classpath "$jar" 'dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment$Data' | tee "$RUNNER_TEMP/werewolf-data.txt"
+          grep -q 'getData(net.minecraft.world.entity.player.Player)' "$RUNNER_TEMP/vampire.txt"
+          grep -q 'getData(net.minecraft.world.entity.player.Player)' "$RUNNER_TEMP/werewolf.txt"
+          grep -q 'isVampire()' "$RUNNER_TEMP/vampire-data.txt"
+          grep -q 'isWerewolf()' "$RUNNER_TEMP/werewolf-data.txt"
+          echo 'PASS: pinned JAWR attachment APIs agree with KubeJS source'
       - name: Refuse accidental live activation
         run: |
           test ! -e kubejs/server_scripts/tyzs_form_cure_refund.js
