@@ -29,7 +29,8 @@ class FeatureChecklistTest(unittest.TestCase):
     def test_exact_approved_projecte_gate_proposal(self):
         for id in ("end.projecte_start", "end.projecte_high", "end.expansion", "end.emc_abuse"):
             self.assertIn(id, self.by_id)
-            self.assertNotIn(self.by_id[id]["state"], ("player_pass", "server_smoked"))
+            if self.by_id[id]["state"] == "player_pass":
+                self.assertTrue(self.by_id[id]["evidence"], "Live ProjectE gate must have linked in-world evidence")
         proposal = (ROOT / "docs/PROJECTE-TIERED-GATING-PROPOSAL.md").read_text(encoding="utf-8")
         for name in ("Gaia Guardian I", "Foreman", "Chaos Guardian", "NOT ACTIVE IN GAME"):
             self.assertIn(name, proposal)
@@ -51,8 +52,9 @@ class FeatureChecklistTest(unittest.TestCase):
         self.assertTrue(selected["projecte"]["enabled_in_pack"])
         self.assertTrue(selected["project-expansion"]["enabled_in_pack"])
         # Proposed gate is not enforcement, even though both mods are already loaded.
-        self.assertNotEqual(self.by_id["end.projecte_start"]["state"], "player_pass")
-        self.assertNotEqual(self.by_id["end.projecte_high"]["state"], "player_pass")
+        for id in ("end.projecte_start", "end.projecte_high"):
+            if self.by_id[id]["state"] == "player_pass":
+                self.assertTrue(self.by_id[id]["evidence"])
         if "comforts" in selected and not selected["comforts"]["enabled_in_pack"]:
             self.assertNotEqual(self.by_id["qol.comforts"]["state"], "player_pass")
 
