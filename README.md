@@ -18,6 +18,8 @@ Before removing Pufferfish from the packwiz index and manifest, audit transitive
 
 **[Open the full 109-item feature checklist](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/FEATURE-CHECKLIST.md)** — complete goals across the build pipeline, quest content, every magic school, materials/dusts, Tyz skills and MXP, transformations, QoL, bosses, progression and release readiness. Each item has its own ID, a concrete acceptance test, and an evidence-backed state; a green server boot does not count as a gameplay PASS.
 
+**[Next full-integrated client playtest: 18-step worksheet](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/NEXT-INTEGRATION-TEST-PASS.md)** — prioritize the current experimental build's concrete checks and record their feature IDs without claiming source-only work is playable.
+
 **[ProjectE tiered-gate proposal](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/PROJECTE-TIERED-GATING-PROPOSAL.md)** — proposed initial transmutation unlock after **Gaia Guardian I OR Neo Vitae Foreman**, while extreme EMC machinery and Project Expansion remain post-Chaos Guardian. This is not implemented yet; the former single post-Chaos gate remains unimplemented too.
 
 The machine-readable register is [manifest/feature-checklist.json](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/feature-checklist.json), checked by its [validation workflow](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/feature-checklist.yml). All changes to statuses require evidence and preserve the known-good build channels.
