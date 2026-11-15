@@ -41,7 +41,8 @@ public final class TransformationsMod {
         VampireLifecycleEvents.register();
         MobAllianceEvents.register();
         ArchlichResurrectionEvents.register();
-        LOGGER.warn("Experimental vampire chassis and opt-in Archlich priority bridge loaded; "
-                + "resurrection interception is OFF until explicitly enabled in disposable worlds.");
+        LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default.");
+        LOGGER.warn("Opt-in Archlich resurrection priority bridge registered; "
+                + "experimentalArchlichPhylacteryFirst is OFF by default.");
     }
 }
