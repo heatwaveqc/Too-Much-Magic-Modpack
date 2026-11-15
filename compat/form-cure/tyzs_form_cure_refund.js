@@ -150,7 +150,7 @@
       level: currentRank(player, skill),
       sp: Number($Tyz.sp().getSP(player))
     }
-    player.stages.add(form.stage)
+    if (!player.stages.has(form.stage)) player.stages.add(form.stage)
   })
 
   TyzsSkillsEvents.skill_purchase_post(event => {
@@ -252,7 +252,7 @@
       }
       if (present === true) {
         delete seenAbsent[k]
-        player.stages.add(form.stage)
+        if (!player.stages.has(form.stage)) player.stages.add(form.stage)
         for (const skill of allSkillsOf(form)) syncLedger(player, skill)
         continue
       }
@@ -260,7 +260,16 @@
       // Two confirmed observations to avoid form-state transition flicker.
       seenAbsent[k] = (seenAbsent[k] || 0) + 1
       if (seenAbsent[k] < 2) continue
-      clearCuredForm(player, form)
+      // Do not rewrite NBT each second for every ordinary, never-cursed player.
+      const skills = allSkillsOf(form)
+      let needsCleanup = player.stages.has(form.stage)
+      for (const skill of skills) {
+        if (currentRank(player, skill) > 0 || readLedgerRaw(player, skill).length > 0) {
+          needsCleanup = true
+          break
+        }
+      }
+      if (needsCleanup) clearCuredForm(player, form)
     }
   }
 
