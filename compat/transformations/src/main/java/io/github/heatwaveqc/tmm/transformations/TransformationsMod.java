@@ -43,6 +43,6 @@ public final class TransformationsMod {
         ArchlichResurrectionEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default.");
         LOGGER.warn("Opt-in Archlich resurrection priority bridge registered; "
-                + "experimentalArchlichPhylacteryFirst is OFF by default.");
+                + "experimentalArchlichPhylacteryFirst defaults ON for disposable pre-alpha QA.");
     }
 }
