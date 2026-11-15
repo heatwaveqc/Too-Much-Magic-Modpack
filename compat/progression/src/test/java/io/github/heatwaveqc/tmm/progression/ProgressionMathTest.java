@@ -67,7 +67,7 @@ class ProgressionMathTest {
         var advanced = new Definition.Skill("test:advanced",1,1,1,0,List.of(),
             List.of("test:swift","test:strong"),List.of(),"",List.of(),List.of());
         var path = new Definition.Path("test:branch","",List.of(0L,10L,20L,30L),
-            2,List.of(),List.of(),List.of(root,swift,strong,advanced));
+            3,List.of(),List.of(),List.of(root,swift,strong,advanced));
         Track joined = ProgressionMath.join(path,Track.empty());
         assertSame(joined,ProgressionMath.buy(path,joined,"test:swift"));
         Track withRoot = ProgressionMath.buy(path,joined,"test:root");
