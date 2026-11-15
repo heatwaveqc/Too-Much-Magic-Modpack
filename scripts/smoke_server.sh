@@ -79,12 +79,18 @@ kill "$STOPPER" 2>/dev/null || true
 if [[ "$STATUS" -eq 0 ]] && grep -Eq 'Done \([0-9.,]+s\)!|Done \(' server.log; then
   if [[ "${SMOKE_ITEM_TICK_TEST:-0}" == "1" ]]; then
     # If the summoned item failed to spawn, the regression wasn't exercised.
-    if ! grep -Fq 'Summoned new Item' server.log; then
+    if ! grep -Fq 'Summoned new Stone' server.log; then
       tail -100 server.log
       echo "FAIL: dropped item regression summon not confirmed in server log"
       exit 1
     fi
-    echo "PASS: real modded server spawned/ticked an ordinary dropped item without crashing"
+    # KubeJS errors are logged but may not crash the JVM; fail closed.
+    if grep -Eq '\[KubeJS Server/\].*(Error in|ERROR)' server.log; then
+      grep -E '\[KubeJS Server/\].*(Error in|ERROR)' server.log | tail -30
+      echo "FAIL: KubeJS server-side script error during dropped-item smoke"
+      exit 1
+    fi
+    echo "PASS: real modded server ticked dropped Stone without KubeJS errors"
   fi
   # For the QA pack, prove NeoForge copied the experimental default config
   # into the new world, not merely that packwiz indexed the template file.
