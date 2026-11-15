@@ -1,6 +1,6 @@
 # Standalone player-enhancement progression core — early implementation
 
-**Status:** compiling/development chassis only; not activated as an integrated modpack JAR or declared gameplay parity. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
+**Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
 
 ## Goal and ownership
 
@@ -18,6 +18,7 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 | --- | --- |
 | `schema: 1` | Strict format version; invalid JSON/policy errors reject the path |
 | `exclusive_group` | Optional mutually exclusive path set; external transformations still need their own arbitration |
+| `enrollment` | `admin` (QA/default), `manual` (user joins with command), or `sunset` (Monk-only First Sunset). Trusted adapters may call `ProgressionApi.join` after validating their own rituals |
 | `rank_xp` | Cumulative **native progression XP** thresholds beginning at 0; configurable rate and curve |
 | `max_level` | Optional explicit level cap (1..200); must equal number of entries in `rank_xp` |
 | `points_per_rank` | Native optional technique points; **not Tyz MXP** |
@@ -27,7 +28,7 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 | `auto_ranks` | For mandatory milestone/rank-granted powers; rank thresholds at which effect ranks automatically increase **for free** |
 | `effects` | Native effect type with optional `target`, `weapon`, `damage_tag`, `attribute`, `operation`, `per_rank`, `tier`, `empty_hand`, `unarmored`, `params` |
 
-Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. The only current in-game path join is an OP command for QA.
+Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tmmprogress enroll tmm_progression:hunter` uses the Hunter's JSON `enrollment: manual`, while Monk `enrollment: sunset` requires 200 continuous valid, unarmored, empty-handed westward-looking sky-visible sunset ticks. OP join remains QA-only.
 
 ### Built-in effect handlers
 
@@ -41,14 +42,20 @@ Native activity/criterion event types: `kill`, `block_break`, `external`, `food_
 | `harvest_tier` | Effective vanilla tier 0..3, limited by attained rank; can make bare hands harvest higher tiers |
 | `gear_durability` | Periodic native wear (`params.action:damage`) or repair (`repair`) on equipment `slot` mainhand/offhand/head/chest/legs/feet/armor/all; `target` item tag/ID; `interval_ticks` 1..72000, `per_rank` 0..64 |
 | `animal_friendship` | Empty-main-hand adult Animal love via server-side interaction; targets entity ID/tag or `*`, awards `animal_petted` when accepted |
+| `blink`, `catch_arrows` | Server-only safe-ray aimed hop and frontal eligible arrow catch, unlocked by auto-ranks |
+| `armor_lock`, `reserved_fist` | Persistent armor mode and first-hotbar slot inventory relocation; bound armor takes normal wear every 20 ticks when lock is ON; full inventory guarded rather than deleted |
+| `glass_touch`, `treasure_hand` | Post-break empty-hand glass drops and Fortune I/Silk Touch I loot replacement with persistent manual toggle; no block entity substitution |
+| `water_breathing`, `water_walk`, `momentum_glide` | Air supply stages; crouch escape for water-surface buoyancy; post-Dragon limited aerial descent, never Creative Flight |
+| `hunger_discipline`, `monk_leap`, `purification`, `withering_stare`, `creeper_peace` | Native hunger reduction, jump/fall adaptation, normal harmful-effect cleanse, anti-undead gaze and mob-specific pacification |
+| `faction_neutrality`, `blindness_ordeal` | Target change suppression with retaliation guard; optional blinded challenge with reset/clear state |
 
 Supported generic conditions: `empty_hand`, `unarmored`. Default values mean no restriction. Tag selectors start with `#` and are resolved from live server registries.
 
-**New unusual power?** Register once in Java: `EffectHandlers.register("yourmod:blink", handler)`, with implementation of the `Handler` interface. The datapack can then refer to `{"type":"yourmod:blink","params":{"range":"16"}}` under any skill. Server hooks offered: `tick`, `incoming`, `harvest`, `breakSpeed`, `blockBreak` (pre-break), `kill`, `foodConsumed`, `entityInteract`, `blockDrops` (loot), `projectileImpact` (arrow interception), `equipmentChange`, `jump` and `targetChange` (neutrality/aggro). The latter two allow novel-food and per-animal effects without hardcoding Monk/Hunter IDs. Registration must be performed by trusted Java before datapack reload; arbitrary scripts in JSON are not executed.
+**New unusual power?** Register once in Java: `EffectHandlers.register("yourmod:blink", handler)`, with implementation of the `Handler` interface. The datapack can then refer to `{"type":"yourmod:blink","params":{"range":"16"}}` under any skill. Server hooks offered: `tick`, `incoming`, `harvest`, `breakSpeed`, `blockBreak` (pre-break), `kill`, `foodConsumed`, `entityInteract`, `blockDrops` (loot), `projectileImpact` (arrow interception), `equipmentChange`, `jump` and `targetChange` (neutrality/aggro). These hooks allow custom abilities without hardcoding Monk/Hunter IDs in the generic event dispatcher. Registration must be performed by trusted Java before datapack reload; arbitrary scripts in JSON are not executed.
 
 ### Persistent player ledger
 
-Saved per player: path enrollment, rank, cumulative XP, native technique points, purchased and automatically granted skill ranks, completed milestones, criterion counts. A **separate copy-on-death food-history attachment** saves first-consumed item IDs without changing the previous path-ledger serialized layout. Another persistent mode attachment and server-only `ProgressionApi.mode/setMode` hold validated namespaced switches (e.g. future Armor Lock and Fortune/Silk state), but their controls and gameplay gating must still be implemented. Native attachment is copy-on-death; transient attribute modifiers are reconciled, rather than permanently stamped. Invalid reload definitions do not deliberately delete stored progress. There is **no player GUI or client sync protocol yet**; command output is server-side.
+Saved per player: path enrollment, rank, cumulative XP, native technique points, purchased and automatically granted skill ranks, completed milestones, criterion counts. A **separate copy-on-death food-history attachment** saves first-consumed item IDs without changing the previous path-ledger serialized layout. Another persistent mode attachment and server-only `ProgressionApi.mode/setMode` hold validated namespaced switches used by Armor Lock, Fortune/Silk, Blink cooldown, glide and ordeal. A one-way validated serverbound ability action packet and optional rebindable client keys exist; no full bidirectional skill-tree state-sync protocol or visual GUI yet. Native attachment is copy-on-death; transient attribute modifiers are reconciled, rather than permanently stamped. Invalid reload definitions do not deliberately delete stored progress. There is **no player skill-tree GUI or client status sync protocol yet**; actions have keybinds and server validation, but progression status still comes from commands.
 
 ### QA commands
 
@@ -59,17 +66,23 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 /tmmprogress respec tmm_progression:hunter
 /tmmprogress admin join tmm_progression:monk        # OP-only
 /tmmprogress admin event tmm_progression:monk_first_sunset  # OP-only
+/tmmprogress enroll tmm_progression:hunter         # Player-controlled manual join
+/tmmprogress power blink                          # Blink; also V key
+/tmmprogress power armor                          # Toggle Armor Lock
+/tmmprogress power treasure                       # Toggle Fortune/Silk hand mode
+/tmmprogress power glide                          # Toggle Momentum Glide after Dragon
+/tmmprogress power ordeal                         # Start/abort blindness ordeal
 ```
 
-To run the module from this directory with Gradle: `gradle --no-daemon build` then `gradle runServer` or `gradle runClient`. GitHub Actions workflow `progression-core.yml` checks compilation/JUnit on pushes and PRs; check the latest run on the PR before treating this revision as passing.
+To run the module from this directory with Gradle: `gradle --no-daemon build` then `gradle runServer` or `gradle runClient`. GitHub Actions `progression-core.yml` checks Java/JUnit, boots a disposable dedicated server, and requires both Monk/Hunter datapacks to load; check the most recent branch CI run.
 
 ## Incomplete / guarded behavior
 
-1. **Not full Monk or Hunter:** Monk first-sunset initiation, 15+ classic mechanics beyond this pilot, extraordinary custom effects (armor lock, fist slot, Fortune/Silk, water walking, leap/blink, arrow catch, Momentum Glide, animal charm, Withering Stare, etc.), and Hunter specialized tracking and taxonomy integration are outstanding.
+1. **Not full Monk or Hunter:** Many powers now have early Java handlers, not in-world verified parity. High-risk gaps remain: strict first-hotbar/armor click interception and full-inventory behavior, actual no-dupe treasure drops, water physics and Momentum Glide client prediction, Wither boss gaze exception, distinct Lava Protection, advanced Animal calming, class-specific GUI and Hunter tracking/camouflage/execute. None of these should be described as complete.
 2. **Tag semantics:** Pilot `tmm_progression:` tags cover a handful of vanilla entities/tools only. No claims about hundreds of modded mobs; consult Hunter taxonomy research. Do not assume external mods' tags exist.
-3. **XP legitimacy:** `BlockEvent.BreakEvent` is a pre-break event; canceled events are ignored but other systems may subsequently veto a break. TreeChop/mass-break and automation attribution need audited post-commit bridges. Kill ownership currently credits the immediate source player; summon ownership/spell credit needs adapters. Activity cooldowns are process-local.
+3. **XP legitimacy:** Raw `BlockEvent.BreakEvent` remains a pre-break hook but no longer awards path XP; loot-post-commit `BlockDropsEvent` now awards XP. TreeChop/mass-break, claim-protection rules and automated block destruction still need verified adapters and anti-farm tests. Kill ownership currently credits the immediate source player; summon ownership/spell credit needs adapters. Activity cooldowns are process-local.
 4. **Equipment and compatibility:** Armor checks use four vanilla armor slots, not Curios. Mining tiers currently implement vanilla stone/iron/diamond checks and not every modded tool tier. Event interactions with other combat modifiers require dedicated integration testing.
-5. **UI, migration and safety:** No custom HUD/skill tree GUI, client-sync, versioned progress migration, path-leave/cure/reset, configured respec price, anti-farm event dedupe, effect-handler hot reload/registration timing tests, or pack-manifest inclusion. No in-game QA has passed.
+5. **UI, migration and safety:** Serverbound action keybinds exist but no visual skill-tree GUI or server-to-client progress sync, versioned progress migration, path-leave/cure/reset, configured respec price, anti-farm event dedupe, effect-handler hot reload/registration timing tests, or pack-manifest inclusion. No in-game QA has passed.
 6. **Lifecycle:** Unregistering/removing a datapack path retains its saved ledger but cannot apply or respec effects until the definition returns. Effects have transient IDs; login/logout/reset consistency must pass tests.
 7. **Security:** Never expose `join`, `recordExternal` or arbitrary XP awards to untrusted client packets. The integration adapter must validate true initiation/trial completion server-side.
 
