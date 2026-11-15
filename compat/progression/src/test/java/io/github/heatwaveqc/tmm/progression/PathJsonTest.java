@@ -29,4 +29,17 @@ class PathJsonTest {
         assertThrows(IllegalArgumentException.class,
             () -> PathJson.read("test:monk",JsonParser.parseString(altered).getAsJsonObject()));
     }
+    @Test void maxLevelIsExplicitAndValidated() {
+        String valid = VALID.replace("\"schema\":1", "\"schema\":1,\"max_level\":3");
+        assertEquals(3,PathJson.read("test:monk",JsonParser.parseString(valid).getAsJsonObject()).maxRank());
+        String mismatch = VALID.replace("\"schema\":1", "\"schema\":1,\"max_level\":5");
+        assertThrows(IllegalArgumentException.class,
+            () -> PathJson.read("test:monk",JsonParser.parseString(mismatch).getAsJsonObject()));
+    }
+    @Test void cycleAndUnknownAlternativeFailClosed() {
+        String bad = VALID.replace("\"max_rank\":2", "\"max_rank\":2,\"requires_any_skills\":[\"test:missing\"]");
+        assertThrows(IllegalArgumentException.class,
+            () -> PathJson.read("test:monk",JsonParser.parseString(bad).getAsJsonObject()));
+    }
+
 }
