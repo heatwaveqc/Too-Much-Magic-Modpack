@@ -10,15 +10,15 @@ import org.junit.jupiter.api.Test;
  */
 class JAWRBottleInteropTest {
     @Test void ordinaryNoSpecialMarkers() {
-        assertTrue(JAWRBottleInterop.ordinaryMarkersAbsent(false, false));
+        assertTrue(BloodBottlePolicy.isOrdinary(false, false));
     }
     @Test void chickenMarkerIsProtected() {
-        assertFalse(JAWRBottleInterop.ordinaryMarkersAbsent(true, false));
+        assertFalse(BloodBottlePolicy.isOrdinary(true, false));
     }
     @Test void lilithVampireMarkerIsProtected() {
-        assertFalse(JAWRBottleInterop.ordinaryMarkersAbsent(false, true));
+        assertFalse(BloodBottlePolicy.isOrdinary(false, true));
     }
     @Test void anyAmbiguousSpecialCombinationFailsClosed() {
-        assertFalse(JAWRBottleInterop.ordinaryMarkersAbsent(true, true));
+        assertFalse(BloodBottlePolicy.isOrdinary(true, true));
     }
 }
