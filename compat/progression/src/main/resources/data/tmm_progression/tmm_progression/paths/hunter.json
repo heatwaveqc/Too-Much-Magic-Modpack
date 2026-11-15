@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "exclusive_group": "",
+  "rank_xp": [
+    0,
+    20,
+    55,
+    105,
+    180,
+    280,
+    420,
+    600,
+    850,
+    1200,
+    1700,
+    2400,
+    3400,
+    4800,
+    6600,
+    9000,
+    12000,
+    16000,
+    21000,
+    28000
+  ],
+  "points_per_rank": 1,
+  "activities": [
+    {
+      "event": "kill",
+      "target": "#minecraft:undead",
+      "xp": 5,
+      "cooldown_ticks": 0
+    },
+    {
+      "event": "kill",
+      "target": "#minecraft:raiders",
+      "xp": 6,
+      "cooldown_ticks": 0
+    }
+  ],
+  "milestones": [
+    {
+      "id": "tmm_progression:undead_studies",
+      "criteria": [
+        {
+          "event": "kill",
+          "target": "#minecraft:undead",
+          "count": 20
+        }
+      ],
+      "xp": 100,
+      "points": 2
+    },
+    {
+      "id": "tmm_progression:raider_studies",
+      "criteria": [
+        {
+          "event": "kill",
+          "target": "#minecraft:raiders",
+          "count": 20
+        }
+      ],
+      "xp": 100,
+      "points": 2
+    }
+  ],
+  "skills": [
+    {
+      "id": "tmm_progression:undead_slayer",
+      "max_rank": 10,
+      "required_rank": 1,
+      "base_cost": 1,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "melee_bonus",
+          "target": "#minecraft:undead",
+          "weapon": "#minecraft:swords",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:raider_slayer",
+      "max_rank": 10,
+      "required_rank": 1,
+      "base_cost": 1,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "melee_bonus",
+          "target": "#minecraft:raiders",
+          "weapon": "#minecraft:axes",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:monster_resilience",
+      "max_rank": 5,
+      "required_rank": 5,
+      "base_cost": 2,
+      "step_cost": 1,
+      "requires_milestones": [
+        "tmm_progression:undead_studies"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 1
+        }
+      ]
+    }
+  ]
+}
