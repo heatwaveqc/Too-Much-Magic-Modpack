@@ -1090,3 +1090,31 @@ hash = "f390036a167b4c7602d688018425e6665c73d6b3b19015b9c6b6a764e362a601"
 [[files]]
 file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
 hash = "cc5229ca496bfe85b2d1e12826fdbb8d91f2781a36c8e5687c44edae0daec70c"
+
+[[files]]
+file = "kubejs/data/neovitae/tags/fluid/essentia_vitae.json"
+hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
+
+[[files]]
+file = "kubejs/data/c/tags/fluid/blood.json"
+hash = "fd9928696fe7b6cfd1f5a8139a7747f81f9fb5d7bdf468b464f8c716efcc31e9"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/fill_blood_vial.json"
+hash = "e2ae63a726cace14c7ec574455d835ef5a476a52b9814ef0e0d39ddc005902c2"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/empty_blood_vial.json"
+hash = "0dacfb317113343b3b3f7f5b1b4e7d0d8810e70bbc81eb7a5be912d4c3041ad3"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/evilcraft_blood_to_hex_bottle.json"
+hash = "97e16033a1e748d8a13cb4f0580bf8da78cb495ea92def1a2b53c817a4809296"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/iron_vial_to_evilcraft.json"
+hash = "004c10f26784295439a91cfe273e1878d8b67e23d90b98815af0920bca4d44b5"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/irons_spellbooks/hex_bottle_to_evilcraft.json"
+hash = "075777d83861a7a81855a0dbbfb287b577c2aeec7beb7d8b203faf7a8785aa22"
