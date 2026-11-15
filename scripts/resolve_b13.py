@@ -61,6 +61,7 @@ def main() -> None:
     assert "1.3.4" in next(p.read_text() for p in (ROOT / "mods").glob("farmers-delight.pw.toml")), (
         "Brewin' and Chewin' 4.5 requires Farmer's Delight 1.3.2+"
     )
+    architectury_original = (ROOT / "mods" / "architectury-api.pw.toml").read_text(encoding="utf-8")
     original = {p.name for p in (ROOT / "mods").glob("*.pw.toml")}
     assert len(original) == BASE_PINS, f"Expected {BASE_PINS} original pins, saw {len(original)}"
     # Pin known libraries FIRST so dependency auto-resolution cannot choose
@@ -70,6 +71,19 @@ def main() -> None:
             run("packwiz", "--yes", "curseforge", "add", "--addon-id", project, "--file-id", version)
         else:
             run("packwiz", "--yes", "modrinth", "add", "--project-id", project, "--version-id", version)
+
+    # Modrinth/CurseForge dependency resolvers may overwrite existing pins:
+    # Cocktails Delight auto-converts the same Brewin' 4.5.0 jar to a
+    # CurseForge metafile, while Beachparty upgrades Architectury silently.
+    # Restore our exact chosen Brewin provider and the known-good pinned
+    # Architectury 13.0.11 after every auto-resolution step.
+    run("packwiz", "--yes", "modrinth", "add",
+        "--project-id", "hIu9KJTT", "--version-id", "MbcR48Ou")
+    run("packwiz", "--yes", "curseforge", "add",
+        "--addon-id", "419699", "--file-id", "8492726")
+    assert (ROOT / "mods" / "architectury-api.pw.toml").read_text(encoding="utf-8") == architectury_original, (
+        "Unexpected Architectury baseline modification"
+    )
 
     added = {p.name for p in (ROOT / "mods").glob("*.pw.toml")} - original
     assert len(added) == len(PIN), (
