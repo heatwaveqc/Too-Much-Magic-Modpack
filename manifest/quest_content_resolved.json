@@ -15,8 +15,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_berries",
+        "count": 4
       },
       "depends": null,
       "optional": true
@@ -54,8 +54,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:bowl",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Punch a Tree",
       "optional": false
@@ -257,8 +257,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -275,7 +275,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:brush",
         "count": 1
       },
       "depends": null,
@@ -329,7 +329,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
+        "item": "minecraft:shears",
         "count": 1
       },
       "depends": null,
@@ -347,8 +347,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_ink_sac",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -365,8 +365,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:ink_sac",
+        "count": 4
       },
       "depends": null,
       "optional": true
@@ -509,8 +509,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true
@@ -527,7 +527,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:pumpkin_pie",
         "count": 1
       },
       "depends": null,
@@ -587,8 +587,8 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Prepare a Field",
       "optional": false
@@ -647,7 +647,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
+        "item": "minecraft:pumpkin_pie",
         "count": 2
       },
       "depends": null,
@@ -847,8 +847,8 @@
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:baked_potato",
-        "count": 4
+        "item": "minecraft:bowl",
+        "count": 1
       },
       "depends": "Farmer's Delight: Cutting Board",
       "optional": false
@@ -1459,8 +1459,8 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:scaffolding",
+        "count": 16
       },
       "depends": null,
       "optional": true,
@@ -1613,7 +1613,7 @@
       },
       "reward": {
         "xp": 40,
-        "item": "minecraft:compass",
+        "item": "minecraft:glow_item_frame",
         "count": 1
       },
       "depends": null,
@@ -1733,8 +1733,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:ladder",
+        "count": 12
       },
       "depends": null,
       "optional": true,
@@ -1753,8 +1753,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:firework_rocket",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -1773,7 +1773,7 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
+        "item": "minecraft:phantom_membrane",
         "count": 2
       },
       "depends": null,
@@ -1813,8 +1813,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:honey_bottle",
+        "count": 1
       },
       "depends": null,
       "optional": true,
@@ -2745,7 +2745,7 @@
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:compass",
+        "item": "minecraft:oak_boat",
         "count": 1
       },
       "depends": "Try a First Spell or Ritual",

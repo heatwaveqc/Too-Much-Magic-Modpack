@@ -22,8 +22,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_berries",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -59,8 +59,8 @@
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:bowl",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Punch a Tree",
       "optional": false,
@@ -252,8 +252,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true,
@@ -269,7 +269,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:brush",
         "count": 1
       },
       "depends": null,
@@ -320,7 +320,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
+        "item": "minecraft:shears",
         "count": 1
       },
       "depends": null,
@@ -337,8 +337,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:glow_ink_sac",
+        "count": 2
       },
       "depends": null,
       "optional": true,
@@ -354,8 +354,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
-        "count": 1
+        "item": "minecraft:ink_sac",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -490,8 +490,8 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:cookie",
-        "count": 1
+        "item": "minecraft:sea_pickle",
+        "count": 2
       },
       "depends": null,
       "optional": true,
@@ -507,7 +507,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "minecraft:pumpkin_pie",
         "count": 1
       },
       "depends": null,
@@ -564,8 +564,8 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
-        "count": 2
+        "item": "minecraft:rabbit_stew",
+        "count": 1
       },
       "depends": "Prepare a Field",
       "optional": false,
@@ -621,7 +621,7 @@
       },
       "reward": {
         "xp": 15,
-        "item": "minecraft:cookie",
+        "item": "minecraft:pumpkin_pie",
         "count": 2
       },
       "depends": null,
@@ -811,8 +811,8 @@
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:baked_potato",
-        "count": 4
+        "item": "minecraft:bowl",
+        "count": 1
       },
       "depends": "Farmer's Delight: Cutting Board",
       "optional": false,
@@ -1419,8 +1419,8 @@
       "description": "A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network.",
       "reward": {
         "xp": 15,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:scaffolding",
+        "count": 16
       },
       "depends": null,
       "optional": true,
@@ -1573,7 +1573,7 @@
       "description": "Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones.",
       "reward": {
         "xp": 40,
-        "item": "minecraft:compass",
+        "item": "minecraft:glow_item_frame",
         "count": 1
       },
       "depends": null,
@@ -1693,8 +1693,8 @@
       "description": "The Eldritch Ancient Miner is intended to offer a difficult renewable Replication ore route. The proposed cost is two to four Marid-tier components plus high-level boss materials, possibly late Botania; none of these recipe changes is assumed implemented.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:ladder",
+        "count": 12
       },
       "depends": null,
       "optional": true,
@@ -1713,8 +1713,8 @@
       "description": "Defeating the Chaos Guardian must precede every usable ProjectE and Project Expansion acquisition or function. This is a rule for actual gameplay enforcement, not something a checked roadmap page can unlock. The boss objective belongs to Draconic Evolution's Endgame chapter.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:firework_rocket",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -1733,7 +1733,7 @@
       "description": "After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
+        "item": "minecraft:phantom_membrane",
         "count": 2
       },
       "depends": null,
@@ -1773,8 +1773,8 @@
       "description": "Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:honey_bottle",
+        "count": 1
       },
       "depends": null,
       "optional": true,
@@ -2699,7 +2699,7 @@
       },
       "reward": {
         "xp": 30,
-        "item": "minecraft:compass",
+        "item": "minecraft:oak_boat",
         "count": 1
       },
       "depends": "Try a First Spell or Ritual",

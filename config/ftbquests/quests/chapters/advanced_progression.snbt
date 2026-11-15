@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D902000200001", type: "xp", xp: 2 }
-				{ id: "544DA02000200002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA02000200002", type: "item", item: { id: "minecraft:scaffolding", count: 1 }, count: 8 }
 			]
 			size: 1.5d
 			tasks: [
@@ -31,7 +31,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D605000100001", type: "xp", xp: 15 }
-				{ id: "544D705000100002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+				{ id: "544D705000100002", type: "item", item: { id: "minecraft:scaffolding", count: 1 }, count: 16 }
 			]
 			tasks: [
 				{ id: "544D805000100000", type: "checkmark" }
@@ -124,7 +124,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D605000800001", type: "xp", xp: 40 }
-				{ id: "544D705000800002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+				{ id: "544D705000800002", type: "item", item: { id: "minecraft:glow_item_frame", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D805000800000", type: "item", item: { id: "minecraft:lodestone", count: 1 } }

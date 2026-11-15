@@ -244,6 +244,11 @@ def main() -> None:
                 ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or command-backed coin reward on {qid}")
                 ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "command"') == 1, f"Unexpected rewards on {qid}")
                 if itm is not None:
+                    ensure(itm.group(1) not in {"minecraft:paper", "minecraft:cookie", "minecraft:compass"},
+                           f"Generic filler reward on {qid}: {itm.group(1)}")
+                    ensure(itm.group(1) != "minecraft:bowl" or
+                           (qid == "544D503001100000" and int(itm.group(2)) == 1),
+                           f"Only Farmer's Delight Cooking Pot may reward one empty bowl: {qid}")
                     reward_items.append((qid, itm.group(1), int(itm.group(2))))
                 else:
                     coin_quests.add(qid)

@@ -230,8 +230,8 @@
       "description": "A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network.",
       "reward": {
         "xp": 15,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:scaffolding",
+        "count": 16
       },
       "depends": null,
       "optional": false,
@@ -370,7 +370,7 @@
       "description": "Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones.",
       "reward": {
         "xp": 40,
-        "item": "minecraft:compass",
+        "item": "minecraft:glow_item_frame",
         "count": 1
       },
       "depends": null,
@@ -478,8 +478,8 @@
       "description": "The Eldritch Ancient Miner is intended to offer a difficult renewable Replication ore route. The proposed cost is two to four Marid-tier components plus high-level boss materials, possibly late Botania; none of these recipe changes is assumed implemented.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:ladder",
+        "count": 12
       },
       "depends": null,
       "optional": false,
@@ -496,8 +496,8 @@
       "description": "Defeating the Chaos Guardian must precede every usable ProjectE and Project Expansion acquisition or function. This is a rule for actual gameplay enforcement, not something a checked roadmap page can unlock. The boss objective belongs to Draconic Evolution's Endgame chapter.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:compass",
-        "count": 1
+        "item": "minecraft:firework_rocket",
+        "count": 4
       },
       "depends": null,
       "optional": false,
@@ -514,7 +514,7 @@
       "description": "After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:experience_bottle",
+        "item": "minecraft:phantom_membrane",
         "count": 2
       },
       "depends": null,
@@ -550,8 +550,8 @@
       "description": "Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available.",
       "reward": {
         "xp": 10,
-        "item": "minecraft:paper",
-        "count": 2
+        "item": "minecraft:honey_bottle",
+        "count": 1
       },
       "depends": null,
       "optional": false,

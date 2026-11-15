@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D902000400001", type: "xp", xp: 2 }
-				{ id: "544DA02000400002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA02000400002", type: "item", item: { id: "minecraft:honey_bottle", count: 1 }, count: 1 }
 			]
 			size: 1.5d
 			tasks: [
@@ -45,7 +45,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D607000200001", type: "xp", xp: 10 }
-				{ id: "544D707000200002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+				{ id: "544D707000200002", type: "item", item: { id: "minecraft:honey_bottle", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D807000200000", type: "checkmark" }
