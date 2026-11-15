@@ -1954,6 +1954,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "vampires-delight",
+      "name": "Vampire's Delight",
+      "category": "food",
+      "desired": true,
+      "version": "0.1.12b",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/vampires-delight/version/oe9B4zXP",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "vampires-delight",
+      "note": "Owner-approved TEST-ONLY NeoForge 1.21.1 beta (Modrinth project 9Vo2deFq version oe9B4zXP), requires already pinned Vampirism 1.10+ and Farmer's Delight. Affects player food-property/use mixins; JAWR and Werewolves compatibility must be tested before candidate/stable. Installed only by next full-integration pin script."
     }
   ],
   "excluded": [
