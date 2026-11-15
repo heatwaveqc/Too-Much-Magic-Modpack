@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.server.level.ServerPlayer;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
+import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
@@ -140,6 +141,7 @@ public final class ProgressionEvents {
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
             ClassAbilities.forget(player);
+            AbilityNetwork.forget(player);
         }
     }
 }
