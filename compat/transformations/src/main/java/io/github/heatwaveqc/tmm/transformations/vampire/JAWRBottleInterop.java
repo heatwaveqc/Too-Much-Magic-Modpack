@@ -168,9 +168,10 @@ public final class JAWRBottleInterop {
                 || !(event.getEntity() instanceof ServerPlayer player)) return;
         if (!IRONS_VIAL.equals(BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem()))) return;
         if (!isJAWRVampire(player) || !creditNativeBlood(player)) return;
+        net.minecraft.world.item.Item consumedVial = event.getItemStack().getItem();
         giveEmptyBottle(player, event.getHand());
         sound(player);
-        player.awardStat(Stats.ITEM_USED.get(event.getItemStack().getItem()));
+        player.awardStat(Stats.ITEM_USED.get(consumedVial));
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
     }
