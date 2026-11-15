@@ -20,40 +20,40 @@
 
 The **Effect** column is the English tooltip from the original 6.4.2 localization; exact rank arrays are in the machine snapshot. Costs and caps are the upstream presets, *not* approved pack balancing. Destinations are proposals; no skills have moved.
 
-| Original category | Original skill (ID) | Max ranks | Native tooltip / gameplay | Proposed target | Action |
-|---|---|---:|---|---|---|
-| abilities | **Health Boost** (`health_boost`) | 10 | Increases maximum health by {value} half hearts | `tmm_magic_core` | Universal vitality; preserve |
-| abilities | **Oxygen Boost** (`oxygen_boost`) | 4 | Increases underwater breathing time by {value}% | `tmm_magic_core` | Universal breath training; preserve |
-| abilities | **Block Reach** (`block_reach`) | 4 | Increases the range at which the player can place and destroy by {value} blocks | `tmm_magic_core` | Universal manipulation reach; preserve |
-| abilities | **Attack Damage** (`attack_damage`) | 3 | Increases melee damage by {value} | `tmm_magic_core` | Universal combat training; preserve |
-| abilities | **Sneaking Speed** (`sneak_speed`) | 5 | Increases movement speed while sneaking by {value}% | `tmm_magic_core` | Universal footwork/stealth; preserve |
-| abilities | **speed_boost** (`speed_boost`) | 5 | NO ENGLISH STRING FOUND | `tmm_magic_core` | Universal mobility; preserve |
-| abilities | **Step Height** (`step_height`) | 3 | Allows stepping up blocks up to {value} blocks high without jumping | `tmm_magic_core` | Universal traversal, delay/condition |
-| abilities | **Swim Speed** (`swim_speed`) | 5 | Increases swim speed by {value}% | `tmm_magic_core` | Universal swimming; preserve |
-| abilities | **Excavation** (`excavation`) | 10 | Increases mining speed by {value}% | `tmm_magic_core` | Universal mining efficiency; preserve |
-| combat | **Venomous Strike** (`venomous_attack`) | 5 | Adds a {success_probability}% chance to poison targets on hit | `tmm_dragon_forest` | Forest Dragon thorn/venom strikes; preserve with gate |
-| combat | **Critical Strike** (`critical_hit`) | 5 | Adds a {success_probability}% chance to deal a critical hit (double damage) | `tmm_magic_core` | Universal critical strikes; preserve |
-| combat | **Deflection** (`damage_deal`) | 5 | Adds a {success_probability}% chance to negate and reflect incoming melee damage | `tmm_magic_core` | Universal Deflection; preserve with rebalance |
-| combat | **Bloodlust** (`bloodlust`) | 4 | Killing a hostile mob regenerates {health_percentage}% of its max health | `tmm_vampire` | Vampire predatory recovery; preserve with rework |
-| combat | **Resistance** (`resistance`) | 6 | Reduces all incoming damage by {damage_resistance}% | `tmm_magic_core` | Universal fortitude; major rebalance |
-| combat | **Backstab** (`backstab`) | 5 | Increases damage dealt from behind by {damage_buff}% | `tmm_hunter` | Hunter ambush + optional Vampire variant |
-| combat | **Rage** (`rage`) | 5 | Increases damage by {damage_buff}% when health is below {health_threshold}% | `tmm_werewolf` | Werewolf fury; preserve with wolf-form gate |
-| combat | **Adrenaline** (`adrenaline`) | 3 | Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}% | `tmm_magic_core` | Universal emergency survival; preserve with cooldown review |
-| combat | **Resilience** (`resilience`) | 9 | Reduces the duration of negative status effects by {effect_time_reduction}% | `tmm_magic_core` | Universal condition resilience; rebalance |
-| combat | **Jinxed** (`jinxed`) | 3 | Adds a {success_probability}% chance to scramble the target's hotbar on hit | `tmm_hunter` | Hunter disruption / PvP-only talent; hold |
-| combat | **True Strike** (`true_strike`) | 3 | Adds a {success_probability}% chance to deal true damage on hit | `tmm_hunter` | Hunter supernatural piercing strike; hold for damage audit |
-| combat | **Sunder Armor** (`sunder_armor`) | 5 | Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor | `tmm_hunter` | Hunter armor breaking; hold for PvP/boss policy |
-| misc | **Swift Learning** (`swift_learn`) | 4 | Increases Skill XP gain by {value}% | `tmm_magic_core` | Study/Cultivation specialization; redesign |
-| misc | **Metabolism** (`nutrition`) | 5 | Increases food value (nutrition & saturation) by {nutrition_bonus}% | `tmm_magic_core` | Universal food metabolism; preserve |
-| misc | **Wisdom** (`experience_boost`) | 5 | Increases Vanilla XP gain by {bonus_percentage}% | `tmm_magic_core` | Universal vanilla XP wisdom; preserve |
-| misc | **Stealth** (`stealth`) | 5 | Reduces the detection range of hostile mobs by {range_reduction}% | `tmm_magic_core` | Universal enemy-detection avoidance; preserve |
-| misc | **Magnet** (`magnet`) | 4 | Attracts items within a {block_radius} block radius | `tmm_magic_core` | Universal item attraction; preserve |
-| misc | **Spare Parts** (`spare_parts`) | 5 | Grants a {refund_chance}% chance for each ingredient to be recovered when crafting. Up to {max_materials} item(s) per craft | `tmm_magic_core` | Universal manual crafting thrift; hold audit |
-| misc | **Twist Of Fate** (`twist_of_fate`) | 5 | Increases the quantity of items found in structure loot chests by {loot_multiplier}% | `tmm_magic_core` | Universal explorer's fortune; hold loot audit |
-| misc | **Safekept** (`keepsake`) | 8 | Safeguards the first {saved_slots} slot(s) of your inventory upon death | `tmm_magic_core` | Universal death inventory insurance; adapt |
-| misc | **Haggler** (`haggler`) | 4 | Holding an Emerald attracts villagers within a {block_radius} block radius.  They will follow you with a {villager_speed}% speed bonus | `tmm_magic_core` | Universal villager trading utility; preserve |
-| nature | **Green Thumb** (`green_thumb`) | 5 | Adds a {success_probability}% chance to double drops when harvesting crops and plants | `tmm_magic_core` | Universal agriculture; preserve |
-| nature | **Shepherd’s Blessing** (`shepherd_s_blessing`) | 15 | Baby animals grow {growth_speed}% faster | `tmm_magic_core` | Universal husbandry; preserve |
+| Original category | Skill (original ID) | Ranks / total SP | Upstream described effect | Exact stock level 1 → max parameters | Proposed new tree | Review action |
+|---|---|---:|---|---|---|---|
+| abilities | **Health Boost** (`health_boost`) | 10 / 92 | Increases maximum health by {value} half hearts | generic.max_health: 2→20 | `tmm_magic_core` | Universal vitality; preserve |
+| abilities | **Oxygen Boost** (`oxygen_boost`) | 4 / 14 | Increases underwater breathing time by {value}% | generic.oxygen_bonus: 25→100 | `tmm_magic_core` | Universal breath training; preserve |
+| abilities | **Block Reach** (`block_reach`) | 4 / 30 | Increases the range at which the player can place and destroy by {value} blocks | player.block_interaction_range: 1→4 | `tmm_magic_core` | Universal manipulation reach; preserve |
+| abilities | **Attack Damage** (`attack_damage`) | 3 / 25 | Increases melee damage by {value} | generic.attack_damage: 1→3 | `tmm_magic_core` | Universal combat training; preserve |
+| abilities | **Sneaking Speed** (`sneak_speed`) | 5 / 14 | Increases movement speed while sneaking by {value}% | player.sneaking_speed: 20→100 | `tmm_magic_core` | Universal footwork/stealth; preserve |
+| abilities | **speed_boost** (`speed_boost`) | 5 / 21 | NO ENGLISH STRING FOUND | generic.movement_speed: 15→75 | `tmm_magic_core` | Universal mobility; preserve |
+| abilities | **Step Height** (`step_height`) | 3 / 7 | Allows stepping up blocks up to {value} blocks high without jumping | generic.step_height: 0.5→1.5 | `tmm_magic_core` | Universal traversal, delay/condition |
+| abilities | **Swim Speed** (`swim_speed`) | 5 / 21 | Increases swim speed by {value}% | swim_speed: 15→75 | `tmm_magic_core` | Universal swimming; preserve |
+| abilities | **Excavation** (`excavation`) | 10 / 40 | Increases mining speed by {value}% | player.block_break_speed: 20→200 | `tmm_magic_core` | Universal mining efficiency; preserve |
+| combat | **Venomous Strike** (`venomous_attack`) | 5 / 21 | Adds a {success_probability}% chance to poison targets on hit | success_probability: 3→40 | `tmm_dragon_forest` | Forest Dragon thorn/venom strikes; preserve with gate |
+| combat | **Critical Strike** (`critical_hit`) | 5 / 21 | Adds a {success_probability}% chance to deal a critical hit (double damage) | success_probability: 5→25 | `tmm_magic_core` | Universal critical strikes; preserve |
+| combat | **Deflection** (`damage_deal`) | 5 / 21 | Adds a {success_probability}% chance to negate and reflect incoming melee damage | success_probability: 3→20 | `tmm_magic_core` | Universal Deflection; preserve with rebalance |
+| combat | **Bloodlust** (`bloodlust`) | 4 / 43 | Killing a hostile mob regenerates {health_percentage}% of its max health | health_percentage: 3→15 | `tmm_vampire` | Vampire predatory recovery; preserve with rework |
+| combat | **Resistance** (`resistance`) | 6 / 99 | Reduces all incoming damage by {damage_resistance}% | damage_resistance: 7→45 | `tmm_magic_core` | Universal fortitude; major rebalance |
+| combat | **Backstab** (`backstab`) | 5 / 21 | Increases damage dealt from behind by {damage_buff}% | damage_buff: 5→25 | `tmm_hunter` | Hunter ambush + optional Vampire variant |
+| combat | **Rage** (`rage`) | 5 / 21 | Increases damage by {damage_buff}% when health is below {health_threshold}% | damage_buff: 10→50; health_threshold: 10→30 | `tmm_werewolf` | Werewolf fury; preserve with wolf-form gate |
+| combat | **Adrenaline** (`adrenaline`) | 3 / 12 | Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}% | health_threshold: 10→30; effect_duration: 3→8 | `tmm_magic_core` | Universal emergency survival; preserve with cooldown review |
+| combat | **Resilience** (`resilience`) | 9 / 72 | Reduces the duration of negative status effects by {effect_time_reduction}% | effect_time_reduction: 15→95 | `tmm_magic_core` | Universal condition resilience; rebalance |
+| combat | **Jinxed** (`jinxed`) | 3 / 25 | Adds a {success_probability}% chance to scramble the target's hotbar on hit | success_probability: 3→7 | `tmm_hunter` | Hunter disruption / PvP-only talent; hold |
+| combat | **True Strike** (`true_strike`) | 3 / 45 | Adds a {success_probability}% chance to deal true damage on hit | success_probability: 3→9 | `tmm_hunter` | Hunter supernatural piercing strike; hold for damage audit |
+| combat | **Sunder Armor** (`sunder_armor`) | 5 / 46 | Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor | success_probability: 3→15; damage_percentage: 20→100 | `tmm_hunter` | Hunter armor breaking; hold for PvP/boss policy |
+| misc | **Swift Learning** (`swift_learn`) | 4 / 62 | Increases Skill XP gain by {value}% | skill_xp_multiplier: 15→60 | `tmm_magic_core` | Study/Cultivation specialization; redesign |
+| misc | **Metabolism** (`nutrition`) | 5 / 21 | Increases food value (nutrition & saturation) by {nutrition_bonus}% | nutrition_bonus: 5→25 | `tmm_magic_core` | Universal food metabolism; preserve |
+| misc | **Wisdom** (`experience_boost`) | 5 / 46 | Increases Vanilla XP gain by {bonus_percentage}% | bonus_percentage: 20→100 | `tmm_magic_core` | Universal vanilla XP wisdom; preserve |
+| misc | **Stealth** (`stealth`) | 5 / 46 | Reduces the detection range of hostile mobs by {range_reduction}% | range_reduction: 10→50 | `tmm_magic_core` | Universal enemy-detection avoidance; preserve |
+| misc | **Magnet** (`magnet`) | 4 / 30 | Attracts items within a {block_radius} block radius | block_radius: 3→10 | `tmm_magic_core` | Universal item attraction; preserve |
+| misc | **Spare Parts** (`spare_parts`) | 5 / 67 | Grants a {refund_chance}% chance for each ingredient to be recovered when crafting. Up to {max_materials} item(s) per craft | refund_chance: 4→20; max_materials: 1→3 | `tmm_magic_core` | Universal manual crafting thrift; hold audit |
+| misc | **Twist Of Fate** (`twist_of_fate`) | 5 / 46 | Increases the quantity of items found in structure loot chests by {loot_multiplier}% | loot_multiplier: 10→50 | `tmm_magic_core` | Universal explorer's fortune; hold loot audit |
+| misc | **Safekept** (`keepsake`) | 8 / 121 | Safeguards the first {saved_slots} slot(s) of your inventory upon death | saved_slots: 1→8 | `tmm_magic_core` | Universal death inventory insurance; adapt |
+| misc | **Haggler** (`haggler`) | 4 / 14 | Holding an Emerald attracts villagers within a {block_radius} block radius.  They will follow you with a {villager_speed}% speed bonus | block_radius: 10→25; villager_speed: 0→10 | `tmm_magic_core` | Universal villager trading utility; preserve |
+| nature | **Green Thumb** (`green_thumb`) | 5 / 14 | Adds a {success_probability}% chance to double drops when harvesting crops and plants | success_probability: 15→75 | `tmm_magic_core` | Universal agriculture; preserve |
+| nature | **Shepherd’s Blessing** (`shepherd_s_blessing`) | 15 / 79 | Baby animals grow {growth_speed}% faster | growth_speed: 50→750 | `tmm_magic_core` | Universal husbandry; preserve |
 
 ## Direct-move candidates and actual implementation limits
 
