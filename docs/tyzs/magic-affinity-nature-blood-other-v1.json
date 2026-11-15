@@ -381,7 +381,7 @@
       "evidence_level": "theme_verified_hook_id_pending"
     },
     {
-      "id": "gaze-a-malum-addon",
+      "id": "gaze-malum",
       "name": "Gaze (Malum addon)",
       "primary": "Other",
       "theme": "Malum spirit/spell addon",
@@ -441,7 +441,7 @@
       "evidence_level": "theme_verified_hook_id_pending"
     },
     {
-      "id": "psitweaks",
+      "id": "psi-tweaks",
       "name": "Psi: Tweaks and Additions",
       "primary": "Other",
       "theme": "Psi extended components/automation",
