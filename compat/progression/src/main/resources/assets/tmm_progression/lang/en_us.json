@@ -6,5 +6,6 @@
   "key.tmm_progression.glide": "Toggle Momentum Glide",
   "key.tmm_progression.ordeal": "Start / Abort Blindness Ordeal",
   "item.tmm_progression.bio_mutagen": "Bio-Mutagen",
-  "item.tmm_progression.mutagenic_brew": "Mutagenic Brew"
+  "item.tmm_progression.mutagenic_brew": "Mutagenic Brew",
+  "tooltip.tmm_progression.mutagenic_brew": "Hunter mutation progress only; does not grant potion effects."
 }
