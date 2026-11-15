@@ -17,6 +17,9 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<Discoveries>> FOOD_HISTORY =
         ATTACHMENTS.register("food_history", () -> AttachmentType.builder(Discoveries::empty)
             .serialize(Discoveries.CODEC).copyOnDeath().build());
+    public static final Supplier<AttachmentType<HunterMutationState>> HUNTER_MUTATIONS =
+        ATTACHMENTS.register("hunter_mutations", () -> AttachmentType.builder(HunterMutationState::empty)
+            .serialize(HunterMutationState.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(Ledger.CODEC).copyOnDeath().build());
