@@ -34,6 +34,11 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
     echo "Custom first-party modules installed: ${#EXTRA_JARS[@]}"
   fi
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
+  # Optional CI-only quest item registry probe. Do not stage this in packwiz.
+  if [[ -n "${QUEST_REGISTRY_PROBE:-}" ]]; then
+    [[ -f "$QUEST_REGISTRY_PROBE" ]] || { echo "Missing live quest registry probe: $QUEST_REGISTRY_PROBE"; exit 6; }
+    cp -- "$QUEST_REGISTRY_PROBE" "$WORK_DIR/kubejs/server_scripts/zz_tmm_quest_item_registry_ci.js"
+  fi
   if [[ -d "$ROOT/config" ]]; then
     mkdir -p "$WORK_DIR/config"
     cp -a "$ROOT/config/." "$WORK_DIR/config/"
