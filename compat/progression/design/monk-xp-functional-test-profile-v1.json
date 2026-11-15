@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "id": "tmm_progression:monk_cultivation_xp_trial_v1",
+  "state": "EXPERIMENTAL_LOADABLE_JSON_ACTIVE_ONLY_IF_BRANCH_SELECTED",
+  "date": "2026-11-15",
+  "locale": "en_us",
+  "branch": "feature/monk-classic-trials-functional-xp-2026-11-15",
+  "gameplay_intent": "Practice earns repeatable cultivation XP; memorable classic Monk deeds provide one-time XP bonuses; rank advancement is not hard-gated by classic ordeals. No Tyz/MXP involved.",
+  "orig_source": "https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
+  "original_gate_catalog": "design/monk-original-21-gate-inventory-v1.json",
+  "rank_cap": 20,
+  "rank_thresholds_cumulative_xp": [
+    0,
+    20,
+    55,
+    105,
+    180,
+    280,
+    420,
+    600,
+    850,
+    1200,
+    1650,
+    2200,
+    2900,
+    3750,
+    4800,
+    6100,
+    7700,
+    9600,
+    11800,
+    14300
+  ],
+  "tuning": "Initial test profile; early ranks 1-4 preserved, ranks 5-20 accelerated from previous 28,000 max to 14,300 max. Review against live server logs and expected sessions before shipping.",
+  "economy": "Monk custom XP, not vanilla XP or Tyz MXP; one native technique point per rank. Classic native abilities are auto-granted regardless of points.",
+  "repeatable_sources": [
+    {
+      "event": "barehand_block_break",
+      "target": "#minecraft:logs",
+      "xp_per_accepted_signal": 2,
+      "cooldown_ticks": 0,
+      "risk": "Placed-block XP farming requires provenance guard before release"
+    },
+    {
+      "event": "barehand_block_break",
+      "target": "#minecraft:mineable/pickaxe",
+      "xp_per_accepted_signal": 1,
+      "cooldown_ticks": 0,
+      "risk": "Placed-block XP farming requires provenance guard before release"
+    },
+    {
+      "event": "kill",
+      "target": "#tmm_progression:monk_training_hostiles",
+      "xp_per_accepted_signal": 8,
+      "cooldown_ticks": 0,
+      "risk": "Only curated Minecraft vanilla mob list; modded mobs require opt-in tag extensions"
+    },
+    {
+      "event": "unarmed_kill",
+      "target": "#tmm_progression:monk_training_hostiles",
+      "xp_per_accepted_signal": 4,
+      "cooldown_ticks": 0,
+      "risk": null
+    },
+    {
+      "event": "food_discovered",
+      "target": "*",
+      "xp_per_accepted_signal": 10,
+      "cooldown_ticks": 0,
+      "risk": null
+    },
+    {
+      "event": "advancement",
+      "target": "*",
+      "xp_per_accepted_signal": 25,
+      "cooldown_ticks": 0,
+      "risk": "No recipe-unlock XP; historical advancements earned before Monk enrollment are not backfilled"
+    },
+    {
+      "event": "animal_petted",
+      "target": "*",
+      "xp_per_accepted_signal": 2,
+      "cooldown_ticks": 20,
+      "risk": null
+    }
+  ],
+  "one_time_deeds": [
+    {
+      "id": "tmm_progression:first_sunset",
+      "criterion": {
+        "event": "external",
+        "target": "tmm_progression:monk_first_sunset",
+        "count": 1
+      },
+      "xp_bonus": 0,
+      "bonus_native_points": 1
+    },
+    {
+      "id": "tmm_progression:trial_ten_logs",
+      "criterion": {
+        "event": "barehand_block_break",
+        "target": "#minecraft:logs",
+        "count": 10
+      },
+      "xp_bonus": 35,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_five_stone",
+      "criterion": {
+        "event": "barehand_block_break",
+        "target": "minecraft:stone",
+        "count": 5
+      },
+      "xp_bonus": 50,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:steady_hands",
+      "criterion": {
+        "event": "barehand_block_break",
+        "target": "#minecraft:logs",
+        "count": 100
+      },
+      "xp_bonus": 110,
+      "bonus_native_points": 2
+    },
+    {
+      "id": "tmm_progression:trial_ten_unarmed_undead",
+      "criterion": {
+        "event": "unarmed_kill",
+        "target": "#tmm_progression:undead",
+        "count": 10
+      },
+      "xp_bonus": 120,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_animal_friendship",
+      "criterion": {
+        "event": "animal_petted",
+        "target": "*",
+        "count": 20
+      },
+      "xp_bonus": 80,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_four_iron_blocks",
+      "criterion": {
+        "event": "barehand_block_break",
+        "target": "minecraft:iron_block",
+        "count": 4
+      },
+      "xp_bonus": 100,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_obsidian_hand",
+      "criterion": {
+        "event": "barehand_block_break",
+        "target": "minecraft:obsidian",
+        "count": 1
+      },
+      "xp_bonus": 175,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_creeper_kiss",
+      "criterion": {
+        "event": "external",
+        "target": "tmm_progression:creeper_kissed",
+        "count": 1
+      },
+      "xp_bonus": 175,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:trial_wither_victory",
+      "criterion": {
+        "event": "kill",
+        "target": "minecraft:wither",
+        "count": 1
+      },
+      "xp_bonus": 550,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:blind_ordeal_victory",
+      "criterion": {
+        "event": "external",
+        "target": "tmm_progression:blind_hostile_kill",
+        "count": 5
+      },
+      "xp_bonus": 270,
+      "bonus_native_points": 2
+    },
+    {
+      "id": "tmm_progression:dragon_defeated",
+      "criterion": {
+        "event": "advancement",
+        "target": "minecraft:end/kill_dragon",
+        "count": 1
+      },
+      "xp_bonus": 500,
+      "bonus_native_points": 2
+    },
+    {
+      "id": "tmm_progression:training_twenty_hostiles",
+      "criterion": {
+        "event": "kill",
+        "target": "#tmm_progression:monk_training_hostiles",
+        "count": 20
+      },
+      "xp_bonus": 100,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:training_ten_advancements",
+      "criterion": {
+        "event": "advancement",
+        "target": "*",
+        "count": 10
+      },
+      "xp_bonus": 140,
+      "bonus_native_points": 0
+    },
+    {
+      "id": "tmm_progression:training_thirty_advancements",
+      "criterion": {
+        "event": "advancement",
+        "target": "*",
+        "count": 30
+      },
+      "xp_bonus": 260,
+      "bonus_native_points": 0
+    }
+  ],
+  "examples": [
+    {
+      "name": "First-hour novice (illustrative)",
+      "activities": {
+        "barehand_logs": 12,
+        "barehand_pickaxe_blocks": 5,
+        "hostile_kills": 5,
+        "unique_foods": 3,
+        "advancements": 3
+      },
+      "deeds": [
+        "trial_ten_logs",
+        "trial_five_stone"
+      ],
+      "estimated_xp": 259,
+      "estimated_rank": 5,
+      "caution": "Not a guarantee of minutes or exact XP; assumes all events are server-valid and both one-time deeds earned"
+    },
+    {
+      "name": "Mixed day of training",
+      "activities": {
+        "barehand_logs": 100,
+        "barehand_pickaxe_blocks": 50,
+        "hostile_kills": 40,
+        "unarmed_hostile_kills_subset": 20,
+        "unique_foods": 15,
+        "advancements": 15
+      },
+      "deeds": [
+        "trial_ten_logs",
+        "trial_five_stone",
+        "steady_hands",
+        "training_twenty_hostiles",
+        "training_ten_advancements",
+        "trial_ten_unarmed_undead"
+      ],
+      "estimated_xp": 1730,
+      "estimated_rank": 11,
+      "caution": "Unarmed subset and undead deed imply suitable eligible enemy species and direct fist kills"
+    },
+    {
+      "name": "High-activity endgame",
+      "activities": {
+        "barehand_logs": 650,
+        "barehand_pickaxe_blocks": 500,
+        "hostile_kills": 900,
+        "unarmed_hostile_kills_subset": 300,
+        "unique_foods": 65,
+        "advancements": 90,
+        "successful_animal_friendships": 20
+      },
+      "deeds": [
+        "various earned one-time bonuses totaling 2200 XP"
+      ],
+      "estimated_xp": 15340,
+      "estimated_rank": 20,
+      "caution": "Intended as high-end arithmetic sanity check, not a recommended grinding route or claim that 90 visible advancements exist in a specific install"
+    }
+  ],
+  "safe_server_events": [
+    "barehand_block_break: only on uncanceled BlockDropsEvent with player breaker, no equipped mainhand item and empty event tool; pre-commit BlockEvent.BreakEvent alone grants no XP.",
+    "unarmed_kill: only when credited player is the actual damage source's direct entity and has an empty main hand; arrows and spell projectiles are not treated as fist strikes.",
+    "kill: player-attributed source, restricted by a configurable curated hostile entity tag. Spell kills remain viable where owner attribution works.",
+    "food_discovered: one award per item registry ID, persisted across death/relog; item data variants do not refresh discovery.",
+    "advancement: one standard earned advancement signal, recipe unlock IDs explicitly ignored; other technical hidden advancements still require auditing.",
+    "animal_petted: only accepted server-owned Animal Friendship interactions; 20 distinct animal source semantics not yet enforced."
+  ],
+  "production_blockers": [
+    "Player-placed block provenance and protected-block final success audit; early stone/obsidian milestone can be earned using player-placed blocks once, but repeatable XP should not reward cheap place-break farming.",
+    "HT TreeChop and modded magic completed blocks must signal every genuine player-credited block; mass break multicredit is not verified.",
+    "Modded mob taxonomy expansion beyond tag's vanilla pilot roster; don't reward passive farm mobs.",
+    "Past completed advancement migration, especially personally credited Dragon kill, for established world saves.",
+    "Original environmental/gaze/dodge/sprint/sleep/fall deeds are pending actual server detectors and are excluded from live milestones.",
+    "Source Animal pet-20 distinct UID requirement not enforced; one-time milestone cannot pay repeatedly but can count multiple breedings of same animal.",
+    "Wither deed currently uses credited death, not original >=25%-boss-health unarmored non-projectile contribution ledger.",
+    "Actual skill UI, progress toast, logged per-activity XP breakdown and multiplayer/claims smoke test."
+  ],
+  "test_only": true,
+  "integration_manifest_unchanged": true
+}
