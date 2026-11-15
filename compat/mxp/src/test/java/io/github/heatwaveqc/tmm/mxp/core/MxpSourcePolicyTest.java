@@ -39,4 +39,15 @@ final class MxpSourcePolicyTest {
         assertEquals(0.0, PortableManaPolicy.eligibleNominal(100, 100, Double.NaN));
         assertEquals(500000.0, PortableManaPolicy.FIRST_PORTABLE_POOL);
     }
+
+    @Test void neovitaeTierZeroWeakOrbAnimaPoolIsFiveThousandEV() {
+        // Confirmed in Neo Vitae 1.21.1 blood_orb_stats.json:
+        // neovitae:blood_orb_weak tier 0; animaCapacity=5000.
+        // Its fluidCapacity=4000 is a DIFFERENT storage system.
+        assertEquals(5000.0, ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV);
+        assertEquals(1.0, MxpMath.normalizedBase(5, ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV), 1e-12);
+        assertEquals(1000.0, MxpMath.normalizedBase(5000, ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV), 1e-10);
+        assertEquals(100.0, MxpMath.normalizedBase(500, ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV), 1e-10);
+    }
+
 }
