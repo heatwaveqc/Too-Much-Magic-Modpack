@@ -20,7 +20,7 @@
     "order": 4
   },
   "tmm_magic_core": {
-    "displayName": "Core Magic",
+    "displayName": "Core Skills",
     "icon": "minecraft:textures/item/enchanted_book.png",
     "order": 5
   }
