@@ -4,6 +4,8 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -15,6 +17,8 @@ public final class ProgressionEvents {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
@@ -38,6 +42,18 @@ public final class ProgressionEvents {
             EffectHandlers.kill(player,event);
         }
     }
+    private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        // getItem() is the original pre-consumption stack; successful completion only.
+        if (event.getItem().getFoodProperties(player) == null) return;
+        ProgressionApi.recordConsumedFood(player,event.getItem());
+        EffectHandlers.foodConsumed(player,event.getItem());
+    }
+    private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
+        if (!EffectRuntime.animalFriendship(player,event))
+            EffectHandlers.entityInteract(player,event);
+    }
     private static void incoming(LivingIncomingDamageEvent event) {
         EffectRuntime.incoming(event);
         EffectHandlers.incoming(event);
@@ -55,6 +71,7 @@ public final class ProgressionEvents {
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
+            EffectRuntime.tick(player);
             EffectHandlers.tick(player);
         }
     }
