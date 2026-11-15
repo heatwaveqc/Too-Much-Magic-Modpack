@@ -1,4 +1,14 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "cataclysm:netherite_monstrosity",
+    "cataclysm:the_harbinger",
+    "cataclysm:ender_golem",
+    "cataclysm:the_prowler",
+    "cataclysm:the_watcher",
+    "irons_spellbooks:citadel_keeper",
+    "irons_spellbooks:cursed_armor_stand",
+    "goety:hostile_redstone_golem",
+    "goety:hostile_redstone_monstrosity"
+  ]
 }
