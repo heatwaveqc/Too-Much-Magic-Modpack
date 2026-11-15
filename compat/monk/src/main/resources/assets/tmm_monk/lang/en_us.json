@@ -1,8 +1,8 @@
 {
   "faction.tmm_monk.monk": "Monk",
   "faction.tmm_monk.monks": "Monks",
-  "skill.tmm_monk.monk_root": "Step Assist",
-  "skill.tmm_monk.monk_root.desc": "Step up full blocks while avoiding conventional weapons and armor. The first gift of the sunset rite.",
+  "skill.tmm_monk.monk_root": "First Sunset Initiate",
+  "skill.tmm_monk.monk_root.desc": "The first sunset rite awakens your Monk discipline. Choose an early technique using your starting skill point.",
   "gui.tmm_monk.skills.level": "Monk Disciplines",
   "message.tmm_monk.sunset_progress": "Sunset meditation: %s / %s seconds",
   "message.tmm_monk.sunset_complete": "You have completed the First Sunset and become a Monk.",
@@ -14,5 +14,9 @@
   "skill.tmm_monk.fleet_footwork": "Fleet Footwork",
   "skill.tmm_monk.fleet_footwork.desc": "You move 5% faster while remaining within the Monk discipline.",
   "message.tmm_monk.rank_up": "Monk cultivation advanced to rank %s! New faction skill points are available.",
-  "message.tmm_monk.mastery_gained": "+%s Monk mastery (%s): %s / %s cumulative XP"
+  "message.tmm_monk.mastery_gained": "+%s Monk mastery (%s): %s / %s cumulative XP",
+  "skill.tmm_monk.step_assist": "Step Assist",
+  "skill.tmm_monk.step_assist.desc": "Advanced mobility discipline: step up full blocks without conventional weapons or armor.",
+  "skill.tmm_monk.stone_fist": "Stone Fist",
+  "skill.tmm_monk.stone_fist.desc": "Bare-handed training: harvest pickaxe-mineable stone-tier blocks and mine them faster without tools. Higher ores still require later techniques."
 }
