@@ -278,7 +278,27 @@
     },
     "sigil_of_socketing_max_sockets": 2,
     "absolute_socket_helper_internal_bound": 16,
-    "significance": "max sockets for legal recipe and world rolls, not runtime clamp of 16; default sigil cannot produce >2, natural mythic roll can reach 4"
+    "significance": "max sockets for legal recipe and world rolls, not runtime clamp of 16; default sigil cannot produce >2, natural mythic roll can reach 4",
+    "overcharge": {
+      "source_exact_pin": "https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/main/java/dev/shadowsoffire/apotheosis/affix/AffixHelper.java",
+      "affix_max_level_constant": 2,
+      "standard_max_level": 1,
+      "sigil_of_supremacy": {
+        "level": 1.5,
+        "action": "raises ALL existing affixes on the item to 1.5",
+        "availability": "world-tier endless gateway wave100 source target",
+        "behavior": "source verified in exact 8.9.0 commit; actual per-affix values at 1.5 must be computed with source value factory"
+      },
+      "sigil_of_malice": {
+        "level": 2,
+        "action": "raises ONE affix to 2.0, usually resets another affix; rare chance of no reset on final upgrade",
+        "no_reset_chance_on_lone_upgrade": 0.033,
+        "availability": "source registry recipe; verify acquisition and crafting",
+        "behavior": "source verified; no assumption that all affixes can be simultaneously 2.0 without rare conditional effects"
+      },
+      "effect": "Regular mythic max rolls of Lucky +6 and Fortunate +5 are NOT guaranteed hard cap once overcharged. Any Luck/Fortune/XP/tank potency cap must model full Sigil mechanics before numerical balancing.",
+      "risk": "The 124 armor raw Luck subtotal is a NO-OVERCHARGE paper base and can be exceeded after Sigil of Supremacy/Malice, royalty, hands, Curios and future adds."
+    }
   },
   "gem_catalog": {
     "count": 23,
@@ -837,6 +857,18 @@
       "family": "spell effect attribute",
       "source": "ars_nouveau:ars_nouveau.perk.spell_damage",
       "example": "Source-specific, not automatically an Apotheosis generic armor affix"
+    },
+    {
+      "stat": "all_affix_levels",
+      "family": "overcharge_affix_strength",
+      "source": "apotheosis:sigil_of_supremacy",
+      "example": "raises all item affix effective levels to 1.5 (standard max 1.0; MAX_LEVEL 2.0)"
+    },
+    {
+      "stat": "one_affix_level",
+      "family": "overcharge_affix_strength",
+      "source": "apotheosis:sigil_of_malice",
+      "example": "raises one affix to 2.0 and usually sacrifices another; non-reset rare conditional chance 3.3%"
     }
   ],
   "derived_scenarios": [
@@ -850,7 +882,10 @@
         "4 Perfect Splendor non-unique gems each piece; legal socket cap of four from source rarity",
         "no other equipment, potion, Luck effect or percentage modifier included"
       ],
-      "status": "THEORETICAL_SOURCE_COMPONENT_SUM_NOT_PROVEN_FULL_BUILD_OR_ECONOMICALLY_TYPICAL"
+      "status": "SOURCE_COMPONENT_SUM_AT_STANDARD_AFFIX_MAX_PRE_SUPREMACY_MALICE_NOT_ABSOLUTE_CEILING",
+      "notes": [
+        "Overcharging affixes to 1.5 or 2.0 can exceed the regular mythic values; see apotheosis.overcharge."
+      ]
     },
     {
       "id": "royalty_helmet_alternative",
@@ -1115,7 +1150,8 @@
     "What equipment modded armor can acquire Apotheosis affixes/reforging/sockets at all",
     "Actual late-game legal ProjectE Gem Armor and Draconic chestpiece endgame capability under class rules",
     "Additional non-Apotheosis enchant providers in other mods; exact IDs for all packs await registry dump",
-    "Monk Curios eligibility, armor lock and Chaos Guardian benchmark without violating earlier strict no-worn-gear condition"
+    "Monk Curios eligibility, armor lock and Chaos Guardian benchmark without violating earlier strict no-worn-gear condition",
+    "Compute exact affix level 1.5 (Supremacy) / 2.0 (Malice) numeric value factories and possible simultaneous-roll combinations; prior raw Luck examples are pre-overcharge and underestimate absolute ceiling."
   ],
   "qa_plan": [
     "Dump loaded enchantments: registry ID, vanilla/datapack max, Apothic configured max, strict level cap, max anvil combine, item support and mutually exclusive sets.",
@@ -1127,7 +1163,8 @@
     "Test Sharpness/Efficiency/Protection equivalent and stress source caps; include Miner's Fervor exclusivity and damage/mitigation caps.",
     "Record Curios slot registry and effects for naked Monk, Monk+Curios, fully geared specialist+Curios, and strict naked Monk trial separately.",
     "Dump each per-mod mana/spell power, gear modifier operation and actual source event after activation, source-attribution and forms.",
-    "Measure source median endgame build vs rare 4-socket best-possible, with practical acquisition costs and mutually compatible exact item combinations."
+    "Measure source median endgame build vs rare 4-socket best-possible, with practical acquisition costs and mutually compatible exact item combinations.",
+    "Acquire or simulate exact Sigil of Supremacy and Malice on gear with Lucky/Fortunate/Prosperous, record their values at levels 1.0, 1.5, 2.0 and any reset tradeoffs; test after socketing."
   ],
   "manifest_screen": {
     "source": "test/full-integration/manifest/mods.json (current test snapshot, not future approved retirement)",
