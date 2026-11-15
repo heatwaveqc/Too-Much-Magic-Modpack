@@ -60,7 +60,9 @@ public final class ProgressionEvents {
     private static void kill(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
-            ProgressionApi.record(player,Selectors.kill(event.getEntity()));
+            boolean eligibleHunterKill = HunterExperience.kill(player,event.getEntity());
+            ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
+                path -> !HunterExperience.HUNTER.equals(path.id()) || eligibleHunterKill);
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }
@@ -69,6 +71,7 @@ public final class ProgressionEvents {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         // Detect completed vanilla potion drinking independently of whether it counts as food.
         Enrollment.potionFinished(player,event.getItem());
+        HunterExperience.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         ProgressionApi.recordConsumedFood(player,event.getItem());
