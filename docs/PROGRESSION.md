@@ -80,7 +80,7 @@ Baselines: Ars 100; Iron's 100; Botania 500,000. **Neo EV network normalizes to 
 
 ## Full MXP source target inventory — planning only (2026-11-14)
 
-The next implementation wave has been reconciled against the entire 42-mod magic-source registry and 148-entry manifest. **[Read the 42/42 MXP implementation target checklist](MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md)** for 16 resource-paid mods, 11 ritual/craft/event-driven mods, **11 inherited/conditional source targets**, one shared payment bridge and **three** intentional no-standalone-XP entries. High priorities are Roots Classic, Hex Casting, Occultism book-tier ritual completion, Mahou, Primal Magick, Goety, Pastel and Totemic; the checklist also records 5,000 EV for Neo Tier 0, the limits on Botania inventory/Curios mana, proposed nonapproved Occultism tier weights, and exclusions for passive automation. **Documentation only; no new adapters or award logic implemented in this review.**
+The next implementation wave has been reconciled against the entire 42-mod magic-source registry and 148-entry manifest. **[Read the 42/42 MXP implementation target checklist](MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md)** for 15 resource-paid mods, 12 ritual/craft/event-driven mods, **11 inherited/conditional source targets**, one shared payment bridge and **three** intentional no-standalone-XP entries. High priorities are Roots Classic, Hex Casting, Occultism book-tier ritual completion, Mahou, Primal Magick, Goety, Pastel and Totemic; the checklist also records 5,000 EV for Neo Tier 0, the limits on Botania inventory/Curios mana, proposed nonapproved Occultism tier weights, and exclusions for passive automation. **Documentation only; no new adapters or award logic implemented in this review.**
 
 
 ## Vampire/Lich/Dragon MXP earning distinction (2026-11-14 — planning only)
@@ -93,3 +93,8 @@ Werewolf form/progression remains native and is **not an MXP source**. Lich and 
 ## 11-mod ritual reward value draft (2026-11-14)
 
 The [completion-based MXP reward matrix](MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md) proposes generous fixed first ritual rewards (normally 1,000–3,000 effective MXP, exceptionally 4,000–5,000), divided ordinary repeats (~20% base of first), and divided first/repeat crafts and quest milestones. Occultism's bound Book of Binding determines the tier; Totemic ceremonies, Enchanted chalk rites, Eidolon Brazier rites and Astral personal attunement get major awards. Hexerei's rituals remain unimplemented, and Summoning Rituals has no defaults; workshop operations are not blindly called rituals. **Only a design proposal, not an approved config or source implementation.**
+
+
+## Forbidden & Arcanus Hephaestus Forge award target — planning only (2026-11-14)
+
+**Forbidden & Arcanus 2.6.1 is enabled in the pack manifest.** Its 1.21.1 `RitualManager` confirms server-side UUID attribution and recipe-ID-specific successful ritual completion. Treat successful **Hephaestus Forge** rituals as the twelfth completion-based magic system; no XP for filling Aureal/Souls/Blood/Experience bars, gavel start, failed rites, forge ticks, unattended output or consuming vanilla XP essence. **Proposed** fixed first-completion / divided repeat BASE by *recipe-required* forge tier: **T1 1,000/200; T2 1,600/320; T3 2,400/480; T4 3,500/700; T5 5,000/1,000**. One per canonical ritual per player, no separate craft/advancement duplicate. This is not yet approved/implemented. See [12-mod reward proposal](MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md).
