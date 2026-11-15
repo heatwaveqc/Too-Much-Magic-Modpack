@@ -255,7 +255,7 @@ Apothic default source power-200 cap formula plus Iesnium +1 and fully compatibl
 | `necklace` | `relics:reflective_necklace`, `relics:jellyfish_necklace` |
 | `ring` | `relics:ring_of_the_seven_deadly_sins` |
 
-The **Ring of the Seven Deadly Sins** (`relics:ring_of_the_seven_deadly_sins`) is explicitly **ineligible for all-in balance builds**. **PR #130** on `test/full-integration` enabled Relics' extended configuration and empties that specific Ring's `lootData.entries` in packwiz. This prevents generation through normal Relics chest loot. Existing/creative/command-supplied Rings are still possible; do not count them as legal pack equipment, and a runtime ban for pre-existing copies would require additional code or administrative cleanup.
+The **Ring of the Seven Deadly Sins** (`relics:ring_of_the_seven_deadly_sins`) is explicitly **ineligible for all-in balance builds**. **PR #130** on `test/full-integration` blocks Ring generation through Relics chest loot, and **PR #132** removes it from the default `curios:ring` item tag with KubeJS, blocking normal new equips. Existing/creative/command-supplied Rings are still possible; do not count them as legal pack equipment, and a runtime ban for pre-existing copies would require additional code or administrative cleanup.
 
 Additional current Curios candidates include Artifacts, Relics add-ons, Enigmatic Legacy+, Draconic Evolution body modules, Botania baubles, Iron/Ars spellcasting accessories, Malum, Goety and Neo Vitae. **None** is automatically eligible for four Apotheosis gems just because it occupies a Curios slot; affix loot categories and gem class checks remain independent.
 
