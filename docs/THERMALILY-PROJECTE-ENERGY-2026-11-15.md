@@ -2,30 +2,36 @@
 
 ## Approved scope
 
-Minecraft 1.21.1, NeoForge 21.1.265, Java 21. The owner wants to avoid needless Thermalily lava use and add a ProjectE-based late-game FE/OP conversion path. **No new Neo Vitae FE ritual or blood flower** is needed to satisfy this request.
+Minecraft 1.21.1, NeoForge 21.1.265, Java 21. The owner approved removing Thermalily's cooldown outright, preventing cooldown-related lava loss, and adding a ProjectE-based late-game FE/OP conversion path. **No new Neo Vitae FE ritual or blood flower** is needed to satisfy this request.
 
-## Source-audited Thermalily behavior
+## Source-audited Thermalily behavior - owner revision: NO COOLDOWN
 
-In the Botania Revived 1.21.1 source, `FluidGeneratorBlockEntity.tickFlower` contains a native `getMana() < getMaxMana()` check, so a **fully filled internal mana buffer already prevents a new lava pickup**.
+Botania Revived 2.0.2's `ThermalilyBlockEntity.getCooldownTime(boolean)` normally returns 400 ticks multiplied by a randomly selected cooldown strength. The owner has now approved **removing that entire cooldown** rather than merely preventing wasted lava.
 
-The actual lossy case is a Thermalily that has **room in its buffer but is still cooling down**. `FluidGeneratorBlockEntity` destroys an adjacent matching lava source *before* testing `cooldown == 0`. For Thermalily, `getCooldownTime(false)` returns zero, so that dropped lava can also disrupt cooldown progression. The documented original Botania behavior intentionally destroys lava during cooldown.
+The pinned port's `FluidGeneratorBlockEntity` superclass already gates source pickup on **`burnTime == 0` and `getMana() < getMaxMana()`**. Thus no source is consumed while the flower is actively burning or has a full mana buffer. When its existing 600-tick burn ends, it can consume the next adjacent lava source immediately if its mana buffer has room.
 
-### Implemented narrow fix (experimental Java mixin)
+### Minimal implementation - single subclass mixin
 
-The existing optional first-party `compat/transformations` module adds `BotaniaThermalilyNoWasteMixin`, targeting the **fluid collector's mana-capacity expression** only for runtime class `ThermalilyBlockEntity`. If `burnTime == 0 && cooldown > 0`, the one collector capacity check behaves as full. It does not change the flower's stored mana, FE, normal burn generation, cooldown decrement, other flowers' intake, recipes, or Hydroangeas.
+`BotaniaThermalilyNoCooldownMixin` now targets only the actual `ThermalilyBlockEntity` class. A cancellable injection at the beginning of `getCooldownTime(Z)I` returns **0**. We removed the earlier shared-fluid-generator injection and its associated policy helper/unit tests entirely; they are no longer necessary.
 
-The production change uses MixinExtras `@ModifyExpressionValue` and must be checked against the actual pinned Botania Revived **2.0.2** JAR, not only current upstream source. It is intentionally a separate compatibility change rather than a vendor mod JAR fork. A pure `ThermalilyLavaPolicy` unit test verifies full, cooling, active and ready states.
+This leaves untouched:
+- The native burn duration (600 ticks), per-tick mana generation (45 mana), and total mana-buffer capacity.
+- Existing lava source consumption **when the flower successfully starts a new burn**.
+- The superclass' check that prevents consumption while internal mana is full.
+- Hydroangeas, all other flowers, normal mana transfer and all ProjectE EMC/FE converter settings.
 
-**IMPORTANT:** The code will not run until the experimental `tmm_transformations` JAR is actually built **and shipped on both sides**, reconciled with other transformation work, and validated in-world. Merely installing ProjectE converters does not turn this behavior on.
+The former randomized cooldown and its comparator output are effectively bypassed. This is an intentional **balance increase**, allowing repeat burning when supplied with lava; output can still stall when its mana buffer is full. Under default values a fresh 600-tick burn lasts **30 seconds** of loaded-world time (at 20 ticks/second); the stored mana buffer is smaller than the theoretical 27,000 mana generated across the complete burn, so a fully blocked output can waste potential mana during a burn. It will not *start another* burn while still full.
 
-### Gameplay acceptance in a disposable world
+This is a pinned-version-specific mixin requiring first-party `tmm_transformations` to be built and shipped. It does not change Botania Revived's own mod JAR.
 
-1. Supply lava with a ready, empty Thermalily: exactly one lava source is consumed and mana generation begins.
-2. Place eight lava source blocks while the Thermalily is cooling down, with a free mana buffer: none should disappear; the countdown proceeds.
-3. Fill its internal mana storage (disconnect the spreader if needed) while ready: no lava should disappear while full.
-4. Check active production, mana transfer, cooldown randomly assigned, save/reload, and redstone if relevant.
-5. Check a Hydroangeas adjacent to water: behavior unchanged.
-6. Run both a dedicated server and a graphical client; verify the mixin applies cleanly with the pinned Botania Revived 2.0.2 version.
+### Disposable-world acceptance
+
+1. Adjacent lava while a ready Thermalily has an empty buffer: exactly one source is consumed and a 600-tick burn begins.
+2. Supply a continuous stream of adjacent lava sources: there must be **no cooldown** between two completed burns if mana storage has room.
+3. Fill its internal mana storage and stop external mana movement: it must not consume another lava source while full.
+4. Save/reload during a burn and immediately after it ends; check item displays, comparator, mana output, and state.
+5. Confirm Hydroangeas behaves identically to its native implementation.
+6. Verify dedicated-server boot on pinned Botania Revived 2.0.2 plus graphical client interaction before promoting.
 
 ## Added converter
 
@@ -43,6 +49,6 @@ The production change uses MixinExtras `@ModifyExpressionValue` and must be chec
 
 ### Verification status
 
-Static manifest and packwiz checks, Java compile/JUnit and the new `.github/workflows/thermalily-energy-server-smoke.yml` combined real modded dedicated-server test constitute separate gates. A headless ready message does not prove mixin-side lava behavior, 30 converter types, FE transfer rates, recipes, or client graphics. No proprietary jars, generated worlds, logs or third-party files should be committed.
+Static manifest and packwiz checks, Java compilation and the new `.github/workflows/thermalily-energy-server-smoke.yml` combined real modded dedicated-server test constitute separate gates. A headless ready message does not prove mixin-side lava behavior, 30 converter types, FE transfer rates, recipes, or client graphics. No proprietary jars, generated worlds, logs or third-party files should be committed.
 
 **Do not merge into the main integration branch before review and the appropriate CI/runtime evidence.**
