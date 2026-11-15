@@ -10,10 +10,10 @@ matrix is historical research. The owner's later target decisions govern this wo
 - Human/untransformed.
 - Hunter: exclusive of supernatural states; remains a faction/profession.
 - Vampire: common base physiology with independent Vampirism and JAWR branches.
-- Werewolf: common base physiology with Werewolves and JAWR branches.
+- Werewolf: common base physiology with Werewolves and JAWR branches; canonical hunger, body, forced transformation and rendering ownership is **UNDECIDED**, pending native tests.
 - Lich: Goety or Forbidden Magic.
-- Archlich: both lich systems.
-- Abomination: vampire + werewolf (both source families, with independent progressions), no lich prerequisite; planned custom progression. Unreviewed lich stacking remains blocked. Original Witchery hybrid behavior is documented, but JAWR 0.5.39 native hybrid behavior still requires binary or gameplay verification.
+- Archlich: both lich systems, with **phylactery first and Arca second** for fatal-event rescue; see [locked priority and no-double-rescue rules](ARCHLICH-RESURRECTION-PRIORITY-2026-11-15.md). This arbitration is not implemented.
+- Abomination: vampire + werewolf (both source families, with independent progressions), no lich prerequisite. **Build and verify base transformation/physiology/progression-preservation first; defer combined/custom skill trees until then.** Unreviewed lich stacking remains blocked. JAWR 0.5.39's dual-affliction layout has been inspected in [the pinned binary audit](JAWR-VAMPIRE-LYCANTHROPE-BINARY-AUDIT-2026-11-15.md), but live gameplay remains unverified.
 - Dragon: dragon physiology, no vampire, werewolf, hunter or abomination.
 - Dracolich: dragon plus **one** lichdom, never archlich.
 

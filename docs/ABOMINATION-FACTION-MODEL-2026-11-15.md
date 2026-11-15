@@ -7,11 +7,12 @@
 - **Abomination = Vampire + Werewolf.** Neither lichdom is a prerequisite. Lich stacking remains prohibited pending a separate explicit decision.
 - The intended TeamLapen integration is **one custom playable faction**, `tmm_transformations:abomination` (displayed as *Abomination*). The `Vampirism` framework's faction handler currently stores exactly one active faction.
 - Retain and independently earn four underlying progressions: **Vampirism vampire**, **Werewolves: Become a Beast werewolf**, **JAWR vampire**, and **JAWR lycanthrope**. Acquiring a base vampire/werewolf identity must never auto-grant JAWR levels, advanced powers, quests, or unearned skills. JAWR altar-and-trapped-werewolf is an advanced lycanthropy milestone; JAWR Lilith is the vampire milestone.
-- A future **combined Abomination skill interface** exposes two independently paced TeamLapen branches plus an Abomination-specific branch and JAWR progression. Do not overwrite native skill histories or simply cast vampire/waswolf skills to a new player generic type; their code expects `IVampirePlayer` and `IWerewolfPlayer` respectively.
+- A future **combined Abomination skill interface** exposes two independently paced TeamLapen branches plus an Abomination-specific branch and JAWR progression. **Skill-tree design and implementation are explicitly deferred until core Abomination transformation, coexistence, survival, persistence and ability mechanisms have been demonstrated in gameplay.** Do not overwrite native skill histories or simply cast vampire/werewolf skills to a new player generic type; their code expects `IVampirePlayer` and `IWerewolfPlayer` respectively.
 - **Explicit hybridization only.** Uncontrolled bite/infection cannot make a hybrid. The transition bridge must use preflight, state snapshots, persistence validation and rollback before switching factions.
 - Reuse JAWR native dual-affliction player data and its single-form enum as the first runtime candidate. Its dual-affliction code is structurally permissive, not live-proven. The later faction must delegate native actions using correct original typed player attachments and preserve separate earned/unlocked skill histories.
 - Use **one** physiology owner for hunger/blood, protection, cooldowns, rendering and death arbitration. Vampirism is the proposed canonical blood source, not a production fact. JAWR cure currently clears all active JAWR afflictions; it must not silently erase the Abomination.
 - Wolf and vampire forms must be mutually exclusive on one body. Preserve both original weakness sets, without multiplying duplicate survival effects.
+- **Werewolf physiology ownership is UNDECIDED**: do not select either JAWR or Werewolves as canonical for food/hunger, forced full-moon changes, model/forms, or transformation modifiers before a native-behavior comparison. This does not reopen the approved dual-progression goal.
 
 ## Two-ability experimental proof of delegation
 
@@ -19,12 +20,12 @@ The **first runnable slice is intentionally smaller than a real new faction**. U
 
 This is an **adapter proof, not the custom faction implementation**. A successful test shows one player carrying JAWR vampire + wolf states can use both native action implementations under controlled conditions. It does **not** show four-tree native UIs, faction equivalence, normal hotkey dispatch, real unlock prerequisites, or survival reconciliation. Do not represent it as such.
 
-## Next-stage implementation gates
+## Next-stage implementation gates — order locked 2026-11-15
 
-1. Confirm two JAWR afflictions can coexist in either acquisition order, survive save/relog and preserve progress and forms.
-2. Implement a proper `IPlayableFaction<AbominationPlayer>` using the **embedded 1.21 Vampirism** faction API, not 2.x standalone FactionApi. Register on the correct lifecycle, with independent persisted progression data and safe migration.
-3. Build and wire custom skill tree registry nodes; verify skill screen, dynamic reload, synchronization, independent costs and progress. Make original action dispatch respect the single new faction without raw casts or automatic grants.
-4. Promote the two native action adapters from operator-only testing into earned skill nodes, with full original permission, cooldown, action event and client packet processing. Test one Vampirism and one Werewolves action before expanding.
-5. Integrate visual, diet, weakness, other species exclusions, permanent cures, death arbitration, and multiplayer, then enable by configuration in disposable worlds.
+1. **Mechanics first:** confirm two JAWR afflictions coexist in either acquisition order and survive relog/restart with independent progression intact. Verify original Hiss/Howl ability delegation, then additional unmodified upstream abilities without free unlocks.
+2. **One faction and consistent state:** implement the real `IPlayableFaction<AbominationPlayer>` using the embedded 1.21 Vampirism API, preserving native states and histories. Verify explicit ritual entry, controlled cure, rollback, logout, client/server synchronization and multiplayer isolation. This is necessary core infrastructure, not permission to build the custom skill tree yet.
+3. **Physiology and model coexistence:** investigate rather than preselect the canonical werewolf body/hunger/shape owner; resolve unified blood, food, weaknesses, wolf/bat/other forms, death and resurrection, plus exclusions against dragon/lich/hunter. Exercise the real 1.21.1 mods and decide ownership from evidence.
+4. **Base-mechanics acceptance gate:** a disposable-world Abomination can enter and exit safely, use validated powers from both parent mods, survive relog/death as intended, and has one coherent resource/body/death engine. Only after this is working can custom progression design/implementation begin.
+5. **Deferred:** author combined skill-tree registry nodes, native prerequisite/point-cost mapping, one or two custom Abomination branches (count/content still TBD), UI and normal hotkey action dispatch. These are **not** prerequisites for testing the base mechanics and are **not** part of the current pilot.
 
 See `docs/JAWR-VAMPIRE-LYCANTHROPE-BINARY-AUDIT-2026-11-15.md`.
