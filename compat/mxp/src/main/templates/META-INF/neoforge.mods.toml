@@ -8,6 +8,9 @@ version="${mod_version}"
 displayName="${mod_name}"
 description='''Server-authoritative magic experience ledger and verified awards.'''
 
+[[mixins]]
+config="tmm_mxp.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type="required"
