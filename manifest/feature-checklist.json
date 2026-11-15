@@ -1,0 +1,1001 @@
+{
+  "schema_version": 1,
+  "project": "Too Much Magic",
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "updated": "2026-11-14",
+  "policy": {
+    "planned": "Approved or proposed goal only; no runtime assertion",
+    "in_progress": "Implementation or review actively underway; no runtime assertion",
+    "source_ready": "Source/config authored or static checked; not client-certified",
+    "server_smoked": "Relevant components or pack have passed server load; behavior unverified",
+    "player_partial": "Owner saw some behavior; acceptance criteria not exhausted",
+    "player_pass": "Owner reported this bounded feature behavior working; not final release certification",
+    "blocked": "Specific unresolved technical blocker",
+    "deferred": "Explicitly not targeted in current test window"
+  },
+  "release_rule": "Only player_pass with recorded evidence may render a checked box; never equate server-smoked or source-ready with in-world complete",
+  "features": [
+    {
+      "id": "build.integrate",
+      "area": "Build pipeline",
+      "title": "All active implementation branches in one test build",
+      "state": "server_smoked",
+      "acceptance": "Assemble every registered stream; fail on unknown branches and path/version conflicts; verify resulting server startup",
+      "source": "manifest/integration-sources.json",
+      "evidence": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/full-integration.yml"
+    },
+    {
+      "id": "build.lock",
+      "area": "Build pipeline",
+      "title": "Immutable integrated QA snapshot and provenance",
+      "state": "source_ready",
+      "acceptance": "Each experimental ZIP names the exact frozen source SHA, first-party jar checksums, upstream pinned mods, and pending features",
+      "source": "scripts/build_full_integration_prism.py",
+      "evidence": ""
+    },
+    {
+      "id": "build.prism",
+      "area": "Build pipeline",
+      "title": "Prism GUI launch and fresh disposable world",
+      "state": "player_partial",
+      "acceptance": "Import one full integration ZIP, reach title screen, create a fresh world, rejoin and inspect logs with all selected modules",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "build.client_server",
+      "area": "Build pipeline",
+      "title": "Dedicated server and multi-client parity",
+      "state": "in_progress",
+      "acceptance": "Same mod IDs and versions join successfully; no class loading, registry or keybind conflicts across singleplayer and multiplayer",
+      "source": "scripts/smoke_server.sh",
+      "evidence": ""
+    },
+    {
+      "id": "build.profile",
+      "area": "Build pipeline",
+      "title": "Persistent private QA controls/UI/audio across downloads",
+      "state": "source_ready",
+      "acceptance": "Import old options, change binds and GUI scale, quit; next Windows QA instance restores them; no private profile in public pack",
+      "source": "docs/PRISM-TEST-PREFERENCES.md",
+      "evidence": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/test-prism-preferences.yml"
+    },
+    {
+      "id": "build.stable",
+      "area": "Build pipeline",
+      "title": "Candidate and Stable channels with explicit sign-off",
+      "state": "in_progress",
+      "acceptance": "Only successful QA SHA becomes candidate; only manually accepted client/world build becomes immutable stable; rollback remains available",
+      "source": "docs/BUILD-CHANNELS-AND-TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "build.modlist",
+      "area": "Build pipeline",
+      "title": "Selected 1.21.1 NeoForge mods and dependencies",
+      "state": "server_smoked",
+      "acceptance": "All active mod JAR hashes and dependencies pass a full server boot and current player menus/registries checked",
+      "source": "manifest/mods.json",
+      "evidence": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/workflows/full-integration.yml"
+    },
+    {
+      "id": "build.release",
+      "area": "Build pipeline",
+      "title": "Public release strips QA-only settings and commands",
+      "state": "planned",
+      "acceptance": "Public ZIP contains no developer options, local sync scripts, test commands, unfinished feature claims, or developer save data",
+      "source": "docs/PRISM-TEST-PREFERENCES.md",
+      "evidence": ""
+    },
+    {
+      "id": "build.performance",
+      "area": "Build pipeline",
+      "title": "Performance and stability soak",
+      "state": "planned",
+      "acceptance": "Mixed exploration + full magic base for extended single/multiplayer play; measure startup, memory, TPS, and crash-free save/reload",
+      "source": "docs/TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.categories",
+      "area": "Introduction and quests",
+      "title": "Five coherent categories and chapter navigation",
+      "state": "player_pass",
+      "acceptance": "Introduction, Progression, Magic, Exploration & Combat, Endgame render and navigate properly; verify every chapter",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "quests.localization",
+      "area": "Introduction and quests",
+      "title": "Quest names, descriptions, localization and layouts",
+      "state": "player_pass",
+      "acceptance": "Inspect title/description/icon/dependencies; no ERROR, undefined, untranslated text or overlap in sampled book",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "quests.starter_path",
+      "area": "Introduction and quests",
+      "title": "Starter choice branching and no duplicate claims",
+      "state": "player_partial",
+      "acceptance": "Choose each option, receive exactly one reward, persist across logout/death; test multiplayer and Claim All",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "quests.starter_items",
+      "area": "Introduction and quests",
+      "title": "Akashic Tome, 2 cooked beef and Improvable access",
+      "state": "source_ready",
+      "acceptance": "Exactly once per player; survives relogs; no extra copies on old worlds, death or multiplayer join",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.pouch",
+      "area": "Introduction and quests",
+      "title": "One-time first-log Trinkets Pouch",
+      "state": "player_partial",
+      "acceptance": "One pouch per player on first true log; not awarded again by quest claim, relog, or new inventory code",
+      "source": "docs/QUEST-DESIGN-RULES.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.intro",
+      "area": "Introduction and quests",
+      "title": "Getting Started beyond iron and optional first magic",
+      "state": "player_pass",
+      "acceptance": "New player reaches magic/farming/exploration choices without forcing a particular magic school",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "quests.magic",
+      "area": "Introduction and quests",
+      "title": "Complete original magic-school quest lines",
+      "state": "in_progress",
+      "acceptance": "Replace every 42 chapter scaffold; correct items/tasks/links and meaningful rewards for each installed school",
+      "source": "manifest/quest_chapters.json",
+      "evidence": ""
+    },
+    {
+      "id": "quests.evilcraft",
+      "area": "Introduction and quests",
+      "title": "EvilCraft 9-node pilot and useful Crushed Dark Gem reward",
+      "state": "source_ready",
+      "acceptance": "Confirm registry IDs, quest trigger, reward and dark gem processing on a fresh client",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "quests.tech",
+      "area": "Introduction and quests",
+      "title": "Full Exceptional Power: Reactors chapter",
+      "state": "source_ready",
+      "acceptance": "All progression branches readable; distinguish Bigger Reactors, Energy Core, Draconic Reactor, safety procedures",
+      "source": "docs/POWER-TECH-QUEST-GUIDE.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.combat",
+      "area": "Introduction and quests",
+      "title": "Exploration and Combat boss progression quests",
+      "state": "planned",
+      "acceptance": "Meaningful ordered navigation through structures and bosses; no quest grants gated materials on claim",
+      "source": "docs/QUEST-ARCHITECTURE.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.rewards",
+      "area": "Introduction and quests",
+      "title": "Thematic, useful and occasionally funny rewards",
+      "state": "source_ready",
+      "acceptance": "Replace trash filler; maintain XP; no reward auto-completes a later quest except approved exception; cooking pot earns a bowl",
+      "source": "docs/QUEST-DESIGN-RULES.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.no_xp_bottles",
+      "area": "Introduction and quests",
+      "title": "No XP-bottle rewards or banned filler",
+      "state": "source_ready",
+      "acceptance": "Static validator rejects XP bottles; audit paper, compasses, bowls, cookies and every 42 placeholder",
+      "source": "manifest/quest_content.json",
+      "evidence": ""
+    },
+    {
+      "id": "quests.detection",
+      "area": "Introduction and quests",
+      "title": "Task completion/consumption and quest reward delivery",
+      "state": "player_partial",
+      "acceptance": "Test every kind of task, multiple claims, xp and item rewards, consumption and team ownership",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "quests.tooltip",
+      "area": "Introduction and quests",
+      "title": "Sensible icons/links/client experience for 45 chapters",
+      "state": "player_partial",
+      "acceptance": "No obscured labels, overlapping lines, broken guides, bogus translations or unreadable reward controls",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": ""
+    },
+    {
+      "id": "shop.button",
+      "area": "Shop and economy",
+      "title": "In-book Quest Shop button/coin balance",
+      "state": "player_pass",
+      "acceptance": "From FTB book see current coin balance and open shop",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "shop.coin",
+      "area": "Shop and economy",
+      "title": "Copper/emerald/diamond consuming sales",
+      "state": "player_partial",
+      "acceptance": "Each of twelve contract tasks consumes correct quantity, awards 1 team coin and XP, never mints duplicate money",
+      "source": "docs/QUEST-SHOP-ECONOMY.md",
+      "evidence": "docs/COMBINED-QUEST-VAMPIRE-QA.md"
+    },
+    {
+      "id": "shop.funds",
+      "area": "Shop and economy",
+      "title": "Shop buy/claim and insufficient-funds behavior",
+      "state": "player_partial",
+      "acceptance": "Purchase common resource, decrement balance once, no purchase without money, reload UI accurately",
+      "source": "docs/QUEST-SHOP-ECONOMY.md",
+      "evidence": ""
+    },
+    {
+      "id": "shop.catalog",
+      "area": "Shop and economy",
+      "title": "Useful supplies, magic materials, artifacts and food",
+      "state": "server_smoked",
+      "acceptance": "All five categories and every entry use actual item IDs; prices and delivery verified in UI",
+      "source": "manifest/quest_shop_catalog.json",
+      "evidence": ""
+    },
+    {
+      "id": "shop.ores",
+      "area": "Shop and economy",
+      "title": "Vanilla ore block market entries",
+      "state": "source_ready",
+      "acceptance": "All 18 ore listings appear, deliver correct ore, prices cannot print net-positive currency with Fortune",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "shop.loops",
+      "area": "Shop and economy",
+      "title": "EMC-to-shop currency permitted, but without coin duplication",
+      "state": "planned",
+      "acceptance": "Test late-stage bulk sales and resale arbitrage, commodity pricing and no boss-critical item purchase",
+      "source": "docs/QUEST-SHOP-ECONOMY.md",
+      "evidence": ""
+    },
+    {
+      "id": "shop.multiplayer",
+      "area": "Shop and economy",
+      "title": "Team-shared currency and repeatable-quest safety",
+      "state": "planned",
+      "acceptance": "Two teammates cannot claim duplicate coins; cooldown and team switching cannot create bonus money",
+      "source": "docs/QUEST-SHOP-ECONOMY.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.occultism",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Occultism summoning, storage and miners",
+      "state": "server_smoked",
+      "acceptance": "Summon crushers and miners, test storage, dimensional access, and item portability in fresh world",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.iron",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Iron's spells and spellbooks",
+      "state": "server_smoked",
+      "acceptance": "Use spellbooks, casting and scaling; conflicts with Ars and item scripts checked",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.ars",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Ars Nouveau and approved addons",
+      "state": "server_smoked",
+      "acceptance": "Spell crafting, source machines and addon spells work; no overpowered conversion exploit",
+      "source": "docs/MAGIC-MOD-SURVEY-DECISIONS.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.neovitae",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Neo Vitae altars, EV networks and tier progression",
+      "state": "server_smoked",
+      "acceptance": "EV extraction, upgrades and network use; max-value and torment mechanics remain functional",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.mahou",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Mahou circles, costs and resource interactions",
+      "state": "server_smoked",
+      "acceptance": "Costs, drain, catalyst exchange and high-maximum cap checked in-world",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.botania",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Botania Revived progression and mana sources",
+      "state": "server_smoked",
+      "acceptance": "Mana generation, tablets/rings, Terrasteel and Gaia ritual; client and server agree",
+      "source": "docs/MAGIC-MOD-SURVEY-DECISIONS.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.astral",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Astral Sorcery sky/constellations and altars",
+      "state": "server_smoked",
+      "acceptance": "Attunement, starlight, 17x17 structure and effects render and work alongside overlays/shaders",
+      "source": "docs/COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.roots",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Roots Classic Terra and first-staff pickup",
+      "state": "source_ready",
+      "acceptance": "Once-only staff detection, Terra cast, KubeJS link, reload and multiplayer isolation",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "magic.evilcraft",
+      "area": "Magic schools and cross-mod casting",
+      "title": "EvilCraft blood, broom, and materials",
+      "state": "server_smoked",
+      "acceptance": "Blood power and broom use function; dark gem processing aligns with unification and quest line",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.jawr",
+      "area": "Magic schools and cross-mod casting",
+      "title": "JAWR witchcraft and Forbidden Magic lich",
+      "state": "server_smoked",
+      "acceptance": "Rituals, hexes, blood/hunger, lichhood and model effects work without incompatible overlapping states",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.other",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Goety, Hexerei, Malum, Fey and ritual content",
+      "state": "in_progress",
+      "acceptance": "Smoke selected schools; verify progression, rituals, block/items, worldgen and cross-mod identity",
+      "source": "docs/MAGIC-MOD-SURVEY-DECISIONS.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.hexcast",
+      "area": "Magic schools and cross-mod casting",
+      "title": "HexCast NEOFORGED and Psi programmable magic",
+      "state": "server_smoked",
+      "acceptance": "Mana/cast cost behavior, failures, client effects, and no infinite XP/conversion loops",
+      "source": "docs/MAGIC-MOD-SURVEY-DECISIONS.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.market",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Magic seeds and Farming for Blockheads gating",
+      "state": "planned",
+      "acceptance": "Market seeds enforce chosen magical scarcity; no alternate shop or loot bypass",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "magic.renewable",
+      "area": "Magic schools and cross-mod casting",
+      "title": "Every unique material has renewable magical path",
+      "state": "planned",
+      "acceptance": "Audit all items; document renewable source, tier and test in-world without bypassing gates",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.ores",
+      "area": "Resources, dusts and recipes",
+      "title": "Single canonical silver, lead and shared raw resources",
+      "state": "source_ready",
+      "acceptance": "Verify configured canonical ingots, ores, blocks and tag entries; no multiple conflicting outputs",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "materials.neodust",
+      "area": "Resources, dusts and recipes",
+      "title": "Neo Vitae dusts as canonical dust outputs",
+      "state": "source_ready",
+      "acceptance": "Raw ore crushing and alternative recipes consistently yield Neo Vitae dust with shared tags",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "materials.occultism",
+      "area": "Resources, dusts and recipes",
+      "title": "Occultism crushing to canonical outputs",
+      "state": "in_progress",
+      "acceptance": "One and doubled dust paths yield identical canonical item and correct smelt yield",
+      "source": "docs/QUEST-CLIENT-QA-FIX.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.mahou",
+      "area": "Resources, dusts and recipes",
+      "title": "Mahou Catalyst Exchange recognizes Neo Vitae dust",
+      "state": "source_ready",
+      "acceptance": "Dropped items detected and mana paid; zero-mana attempt fails; partial stacks preserve count and no duplicates",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "materials.silver",
+      "area": "Resources, dusts and recipes",
+      "title": "Unified silver weapons and armor",
+      "state": "server_smoked",
+      "acceptance": "Nine silver slots each resolve to one canonical meaningful output; damage/armor/silver effects in client verified",
+      "source": "docs/COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.polymorph",
+      "area": "Resources, dusts and recipes",
+      "title": "Polymorph retained as failsafe, not needed ideally",
+      "state": "in_progress",
+      "acceptance": "Native report lists zero unintended recipe conflicts after fixes; player JEI choices reviewed",
+      "source": "docs/TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.other",
+      "area": "Resources, dusts and recipes",
+      "title": "Sulfur, quartz, lead, copper and related overlaps",
+      "state": "in_progress",
+      "acceptance": "Run recipe census and explicit cross-mod processing exceptions; prevent double ingot printing",
+      "source": "docs/COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.oregate",
+      "area": "Resources, dusts and recipes",
+      "title": "Deep uranium/draconium scarcity",
+      "state": "planned",
+      "acceptance": "Worldgen and miner recipes restrict these resources; cannot farm normal shallow ores for free",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.replication",
+      "area": "Resources, dusts and recipes",
+      "title": "Deepslate Replica Ore exclusive miner route",
+      "state": "planned",
+      "acceptance": "No natural ore worldgen/loot bypass; Eldritch Ancient Miner produces ore at controlled late tier",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.miner",
+      "area": "Resources, dusts and recipes",
+      "title": "Eldritch Ancient Miner tier recipe",
+      "state": "planned",
+      "acceptance": "Two to four Marid, late Cataclysm material requirement, renewable but challenging path",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "materials.bags",
+      "area": "Resources, dusts and recipes",
+      "title": "No bag-within-bag across all item handlers",
+      "state": "blocked",
+      "acceptance": "Check every magic storage pair incl Curios, vanilla bundles, corpse and nested containers; forbid cycles",
+      "source": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/16",
+      "evidence": ""
+    },
+    {
+      "id": "skills.backend",
+      "area": "Tyz Skills and MXP",
+      "title": "Tyz's Skills 6.4.2 pinned, Pufferfish Skills removed",
+      "state": "in_progress",
+      "acceptance": "Exactly pinned Tyz runtime, no Pufferfish Skills, Attributes retained if dependencies require; tree loads in Prism",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.core",
+      "area": "Tyz Skills and MXP",
+      "title": "Regular 99-rank Core Magic tree",
+      "state": "source_ready",
+      "acceptance": "All configured core nodes, prices, ranks, UX and prerequisites loaded and spend correctly",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.forms",
+      "area": "Tyz Skills and MXP",
+      "title": "Dedicated Werewolf, Vampire, Monk, Dragon and Lich trees",
+      "state": "planned",
+      "acceptance": "Visibility reflects transformation; no crossover purchase, grant bypass, ghost tree or lost points",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.ranklocks",
+      "area": "Tyz Skills and MXP",
+      "title": "Sequential ranks and external milestone prerequisites",
+      "state": "planned",
+      "acceptance": "Rank N requires N-1; external unlock only works when milestone achieved; no bypass via /grant/refund",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.mxp",
+      "area": "Tyz Skills and MXP",
+      "title": "Universal MXP ledger and 1.2^P normalization",
+      "state": "in_progress",
+      "acceptance": "Only MXP grants global skill XP, correct scaling and accounting; no double count",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.boss",
+      "area": "Tyz Skills and MXP",
+      "title": "First boss defeat pays 1000 effective MXP",
+      "state": "planned",
+      "acceptance": "Exactly once per unique boss per player; all later kills grant no first-kill bonus",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.ars",
+      "area": "Tyz Skills and MXP",
+      "title": "Ars spent Source -> MXP",
+      "state": "planned",
+      "acceptance": "Actual player-spent costs only; no refill or passive producer farming; one credit per cast",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.iron",
+      "area": "Tyz Skills and MXP",
+      "title": "Iron's spell mana -> MXP",
+      "state": "planned",
+      "acceptance": "Actual mana spent only, cancellation/refunds and zero-cost casts handled correctly",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.botania",
+      "area": "Tyz Skills and MXP",
+      "title": "Botania player-owned inventory/Curios mana -> MXP",
+      "state": "planned",
+      "acceptance": "Only mana from carried tablets/rings; network pools, machines, other-player resources excluded",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.neo",
+      "area": "Tyz Skills and MXP",
+      "title": "Neo Vitae EV-network expenditure -> MXP",
+      "state": "planned",
+      "acceptance": "Only network-paid actual EV, not source creation, transfers or buffered/inventory fake expenditure",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.mahou",
+      "area": "Tyz Skills and MXP",
+      "title": "Mahou XP efficiency and very high cap",
+      "state": "planned",
+      "acceptance": "Verify cap beyond 100k; prevent self-powered XP loops and refund exploits",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "skills.improvable",
+      "area": "Tyz Skills and MXP",
+      "title": "Improvable Skills independent engine and starting access",
+      "state": "player_partial",
+      "acceptance": "Personal upgrade path unaffected by Tyz, no duplicate XP economy, book accessible as designed",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.vampire_acquire",
+      "area": "Transformations and Monk",
+      "title": "Conventional vampirism versus Lilith ascension",
+      "state": "in_progress",
+      "acceptance": "Infection gives ordinary vampire; Lilith blood upgrades one way to dual JAWR/Vampirism behavior; no fang infection path",
+      "source": "docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.blood",
+      "area": "Transformations and Monk",
+      "title": "Unified blood spending, drinking and damage",
+      "state": "player_partial",
+      "acceptance": "Native JAWR debits common blood pool; feeding by both providers restores; damage drains correctly; no underflow",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.hunger",
+      "area": "Transformations and Monk",
+      "title": "JAWR natural hunger / periodic blood rules",
+      "state": "in_progress",
+      "acceptance": "Native JAWR hunger still acts; regular vs ascended differences intentional and no duplicate upkeep drains",
+      "source": "docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.cure",
+      "area": "Transformations and Monk",
+      "title": "Any vampire cure clears all providers",
+      "state": "planned",
+      "acceptance": "Every cure clears Vampirism and JAWR vampire attributes/skills/diet/sun penalties without stale state",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.sunlight",
+      "area": "Transformations and Monk",
+      "title": "Vampire Forest shade and true sunlight rules",
+      "state": "planned",
+      "acceptance": "JAWR respects Vampirism Vampire Forest sunlight behavior, including boundaries, roofs and dimensions",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.drainlife",
+      "area": "Transformations and Monk",
+      "title": "Mahou Drain Life boundary restores vampire hunger",
+      "state": "planned",
+      "acceptance": "Drain Life effects credit appropriate vampire satiation without double-healing exploits",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "form.werewolf",
+      "area": "Transformations and Monk",
+      "title": "Werewolves addon faction and skill progression",
+      "state": "server_smoked",
+      "acceptance": "Transform, skill unlock, hunger, full moon, reversals and world restart verified",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.dragon",
+      "area": "Transformations and Monk",
+      "title": "Dragon Survival and food compatibility",
+      "state": "planned",
+      "acceptance": "Approved pin/loader, dietary toggle, AppleSkin, equipment, rendering, flight and cure paths tested",
+      "source": "docs/FOOD-AND-SPECIES-DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.lich",
+      "area": "Transformations and Monk",
+      "title": "JAWR/Goety lich state and phylactery",
+      "state": "planned",
+      "acceptance": "Lich upgrades, death/revival, diet, gear and storage functional without lost player state",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "form.exclusive",
+      "area": "Transformations and Monk",
+      "title": "Exclusive primary physiology and safe transitions",
+      "state": "planned",
+      "acceptance": "Reject incompatible cross-mod transformations; reversible conversions clean all flags; explicit exceptions only",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "monk.sunset",
+      "area": "Transformations and Monk",
+      "title": "First Sunset rite and faction initialization",
+      "state": "player_pass",
+      "acceptance": "10s westward Overworld sunset unarmored gaze joins Monk and provides Step Assist; repeat no duplicates",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "monk.tree",
+      "area": "Transformations and Monk",
+      "title": "Monk native skill-tree initial branch",
+      "state": "player_partial",
+      "acceptance": "Open actual Vampirism faction UI; Step Assist root and early mastery nodes purchase and persist",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "monk.step",
+      "area": "Transformations and Monk",
+      "title": "Monk Step Assist +0.5 height",
+      "state": "player_partial",
+      "acceptance": "Moves over allowed half-block heights only; armor and weapons may suppress where designed",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "monk.training",
+      "area": "Transformations and Monk",
+      "title": "Monk training progression and graphical progress indicator",
+      "state": "source_ready",
+      "acceptance": "Actual cultivation earns native points; full UI progress ring replaces temporary actionbar counter",
+      "source": "manifest/integration-sources.json",
+      "evidence": ""
+    },
+    {
+      "id": "world.tectonic",
+      "area": "World, combat and endgame",
+      "title": "Tectonic world generation and exploration density",
+      "state": "server_smoked",
+      "acceptance": "Fresh terrain, structures, world boundaries and terrain performance inspected in new worlds",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.dungeons",
+      "area": "World, combat and endgame",
+      "title": "Cataclysm, Neo Vitae, Deeper and Darker and chosen structures",
+      "state": "server_smoked",
+      "acceptance": "Locations generate, enemies spawn correctly, loot balanced, no missing structures or softlocks",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.apotheosis",
+      "area": "World, combat and endgame",
+      "title": "Apotheosis affix, loot and player power",
+      "state": "server_smoked",
+      "acceptance": "Gear drops and enchantment progression sensible; no one-hit exploits or premature boss skips",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.loot",
+      "area": "World, combat and endgame",
+      "title": "Forbidden items absent everywhere",
+      "state": "planned",
+      "acceptance": "Ring of Seven Deadly Sins, Re:Avaritia and Extended Crafting unavailable via loot, trade, chest, reward and drops",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.boss_credit",
+      "area": "World, combat and endgame",
+      "title": "Boss first-kill, personal/team accounting and replay",
+      "state": "planned",
+      "acceptance": "Credit only eligible kills including revived/respawned boss; verify offline teammates/party and restart persistence",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "world.survival",
+      "area": "World, combat and endgame",
+      "title": "Renewable boss drops and advanced crafting routes",
+      "state": "planned",
+      "acceptance": "All boss-critical items and rare resources eventually reproducible by explicit not-trivial path",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.projecte_start",
+      "area": "World, combat and endgame",
+      "title": "Basic ProjectE after Gaia Guardian I OR Neo Vitae Foreman",
+      "state": "planned",
+      "acceptance": "True kill gate required for Philosopher's Stone, Transmutation Table and starter EMC gear; no early loot/EMC/quests bypass",
+      "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.projecte_high",
+      "area": "World, combat and endgame",
+      "title": "ProjectE automation and extreme items stay later",
+      "state": "planned",
+      "acceptance": "Collectors, relays, condensers and high-end matter tools/armor require a separate Chaos Guardian-tier gate",
+      "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.expansion",
+      "area": "World, combat and endgame",
+      "title": "Project Expansion post-Chaos Guardian",
+      "state": "planned",
+      "acceptance": "All Project Expansion item crafting, loot and use have enforced late boss gate",
+      "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.chaos",
+      "area": "World, combat and endgame",
+      "title": "Draconic Chaos Guardian encounter and materials",
+      "state": "server_smoked",
+      "acceptance": "Fight spawns correctly, including shields/ranged attacks; materials only from legitimate progression",
+      "source": "docs/PROGRESSION.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.energy",
+      "area": "World, combat and endgame",
+      "title": "Draconic Energy Core, pylons and crystal links",
+      "state": "source_ready",
+      "acceptance": "Built multiblock and full FE network work; differentiate storage from generation",
+      "source": "docs/POWER-TECH-QUEST-GUIDE.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.reactor",
+      "area": "World, combat and endgame",
+      "title": "Bigger Reactors and Draconic Reactor safety",
+      "state": "source_ready",
+      "acceptance": "Reactor startup, injection, stabilizers, Flux Gates, coolant and failure recovery tested in disposable worlds",
+      "source": "docs/POWER-TECH-QUEST-GUIDE.md",
+      "evidence": ""
+    },
+    {
+      "id": "end.emc_abuse",
+      "area": "World, combat and endgame",
+      "title": "No pre-gate EMC bypass via exchange, bag or loot",
+      "state": "planned",
+      "acceptance": "Try all ProjectE use/acquisition routes incl machine GUIs, knowledge, EMC and cross-mod transmutations",
+      "source": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.travel",
+      "area": "QoL, food, multiplayer and release",
+      "title": "FTB Essentials /home, /sethome, /rtp",
+      "state": "player_pass",
+      "acceptance": "Basic travel command works; limit, cooldown and claims boundary tests still tracked separately",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+    },
+    {
+      "id": "qol.travel_limits",
+      "area": "QoL, food, multiplayer and release",
+      "title": "FTB Essentials safety, permissions and persistence",
+      "state": "planned",
+      "acceptance": "Non-OP one home, /delhome, /listhomes, /rtp safe destination, claims, reconnect and cooldown",
+      "source": "docs/BUILD-CHANNELS-AND-TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.comforts",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Comforts sleeping bags and hammocks",
+      "state": "planned",
+      "acceptance": "Pin exact NeoForge file, server+client boot, portable sleep without respawn change, hammock day-to-night",
+      "source": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/34",
+      "evidence": ""
+    },
+    {
+      "id": "qol.hearts",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Colored layered hearts instead of tall heart rows",
+      "state": "planned",
+      "acceptance": "Appropriate approved mod loads; clear health display at high maximum HP without conflict",
+      "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.trash",
+      "area": "QoL, food, multiplayer and release",
+      "title": "TrashSlot and recover deleted item",
+      "state": "player_partial",
+      "acceptance": "Trash hotkey and recover-last behavior; no risk to valuable stack and no conflicts with inventory bindings",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.trees",
+      "area": "QoL, food, multiplayer and release",
+      "title": "TreeChop and Leaves Be Gone",
+      "state": "player_partial",
+      "acceptance": "Several hits fell tree; sneak bypass, fast leaf decay, sapling drops, special trees and claims behave",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.overlays",
+      "area": "QoL, food, multiplayer and release",
+      "title": "JEI, Jade, light/chunk overlays and tooltips",
+      "state": "player_partial",
+      "acceptance": "F7/F9, hover tooltips, zoom, sorting, recipe search and hotkeys agree in Prism",
+      "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
+      "evidence": ""
+    },
+    {
+      "id": "qol.backup",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Backups, Tombstone, Lootr and chunk claims",
+      "state": "server_smoked",
+      "acceptance": "Backup restore, death retrieval, per-player Lootr and permissions/claim protection verified",
+      "source": "docs/DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "food.crops",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Pam's full crop/fruit and right-click harvest",
+      "state": "server_smoked",
+      "acceptance": "Mature common, Pam's, and Farmer's crops harvested without duplication, root damage or unwanted replant",
+      "source": "docs/FOOD-AND-SPECIES-DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "food.cooking",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Farmer's Delight / Cooking for Blockheads / Pam's",
+      "state": "player_partial",
+      "acceptance": "Cooking pot, board, market, ovens and recipe tags provide real edible outputs",
+      "source": "docs/FOOD-AND-SPECIES-DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "food.fishing",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Aquaculture fishing and modded recipes",
+      "state": "server_smoked",
+      "acceptance": "Fishing gear, catches, food prep and modded fish tags work across biomes",
+      "source": "docs/FOOD-AND-SPECIES-DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "food.nutrition",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Food remains useful for different transformations",
+      "state": "planned",
+      "acceptance": "Normal meals, alternative nourishment and vampire/dragon diets retain reasonable gameplay purpose",
+      "source": "docs/FOOD-AND-SPECIES-DESIGN.md",
+      "evidence": ""
+    },
+    {
+      "id": "release.multi",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Two-player real-world acceptance test",
+      "state": "planned",
+      "acceptance": "Different players join, quests/team coins, dimensions, progression, first loot and death states survive restart",
+      "source": "docs/TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "release.fresh",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Fresh-world milestone-to-endgame run",
+      "state": "planned",
+      "acceptance": "Play introduction, early schools, boss gates, machines, advanced resources, transformations and late bosses without cheat paths",
+      "source": "docs/TESTING.md",
+      "evidence": ""
+    },
+    {
+      "id": "release.docs",
+      "area": "QoL, food, multiplayer and release",
+      "title": "Final change log, support docs and feedback intake",
+      "state": "planned",
+      "acceptance": "Document mod selection, controls, performance, expected incompatibilities, server install, changelog and rollback",
+      "source": "docs/BUILD-CHANNELS-AND-TESTING.md",
+      "evidence": ""
+    }
+  ]
+}
