@@ -135,7 +135,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `pastel` | Pastel | magic | enabled flag | full | queued | — |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | queued | — |
 | `psi` | Psi | magic | enabled flag | full | queued | — |
-| `roots-classic` | Roots Classic | magic | enabled flag | full | queued | — |
+| `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | queued | — |
 | `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
 | `totemic` | Totemic | magic | enabled flag | full | queued | — |
@@ -234,4 +234,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Summoning Rituals 3.14.2 profile added from exact-release source. Confirmed it is a recipe framework with no default rituals and no TMM altar acquisition/recipe scripts; documented typed input/output channels, sacrifice semantics and command risks. See profile and compatibility notes.
 - 2026-11-15 — Botania Revived 2.0.2 profile and Botania × Ars source-supported interaction report added from the exact hash-matched JAR/source. Recorded default-enabled Asgard/creative/exploration modules, Loonium loot-mode risk, and Ars mana/Source bridge for later balance/client tests. See profile, interaction report and compatibility notes.
 - 2026-11-15 — EvilCraft 1.2.100 profile and Rejuvenated Flesh × Dragon Survival interaction report added from the exact hash-matched JAR and matching tagged source. The guidebook path, two-age advancement triggers, Blood Infuser examples, spirit/environment systems and food handler are mapped. Recorded the placeholder quest, worldgen/Tectonic and faction gaps; no pairwise client tests.
-- **Next action:** continue with `roots-classic`, `irons-spells`, then `scriptor-magicae` and Goety. EvilCraft, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — Roots Classic 1.5.10 profile added from the exact hash-matched JAR and version-aligned source. Mapped Runic Tablet onboarding, component/spell/staff progression, altar tiers, ritual setup, powered stones and crystal staff. Recorded the Terra regeneration config mismatch, staff-use debit before mana validation, Earth Spike block-copy boundary, and placeholder FTB chapter. Runtime checks remain open; see profile and compatibility notes.
+- **Next action:** continue with `irons-spells`, then `scriptor-magicae` and Goety. EvilCraft, Roots Classic, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
