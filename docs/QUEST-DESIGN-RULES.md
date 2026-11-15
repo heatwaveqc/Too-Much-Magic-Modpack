@@ -1,6 +1,6 @@
 # Too Much Magic — quest design contract
 
-> **Pending ProjectE gate revision:** The earlier all-post-Chaos quest policy below is being superseded by a proposed **two-stage** gate: basic ProjectE after Gaia Guardian I **or** Neo Vitae Foreman; advanced ProjectE/Expansion after Chaos Guardian. Until in-game enforcement and quest revisions are completed, all older quest text must be treated as stale design guidance. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
+> **Current ProjectE recipe policy:** The Philosopher's Stone must consume *one of several magical boss-associated drops* (Wilden Tribute, Gaia Spirit, Mine Key) in its center; all original other ingredients remain. Red MK3+ Power Flowers need Chaos Shard via direct recipes and MK3 upgrade. This is a recipe requirement, **not a player-kill quest lock**. Previous all-post-Chaos text below is historical. Until in-game enforcement and quest revisions are completed, all older quest text must be treated as stale design guidance. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
 
 Approved 2026-11-14. Inspired by ATM10's navigational and branching approach. Quest text, reward choices, IDs and layouts are original; no copied ATM10 quests, images, loot tables or proprietary assets.
 
