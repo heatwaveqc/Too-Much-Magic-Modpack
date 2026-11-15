@@ -77,7 +77,7 @@ def render(data: dict) -> str:
         "# Too Much Magic — full feature & test checklist",
         "",
         "> Generated from [the machine-readable registry](../manifest/feature-checklist.json) by ",
-        "> \`python3 scripts/feature_checklist.py render\`. Do not edit this Markdown by hand.",
+        "> `python3 scripts/feature_checklist.py render`. Do not edit this Markdown by hand.",
         "",
         f"**{len(features)} acceptance items** across **{len(byarea)} tracks**. "
         f"**{totals['player_pass']}** have bounded owner-reported player PASS evidence; "
@@ -116,7 +116,7 @@ def render(data: dict) -> str:
             title = row["title"].replace("|", "/")
             test = row["acceptance"].replace("\n", " ").replace("|", "/")
             out.append(
-                f"- [{checked}] **{title}** (\`{row['id']}\`) "
+                f"- [{checked}] **{title}** (`{row['id']}`) "
                 f"— *{DISPLAY[row['state']]}*. {test}.{src}{evidence}"
             )
         out.append("")
@@ -125,12 +125,12 @@ def render(data: dict) -> str:
         "",
         "1. Record the **specific build SHA or artifact** and a client/real-world outcome in the evidence source.",
         "2. Run the concrete acceptance test and meaningful negative/bypass cases (including relog and multiplayer where relevant).",
-        "3. Promote **only that row** to \`player_pass\`; keep adjacent incomplete features open.",
+        "3. Promote **only that row** to `player_pass`; keep adjacent incomplete features open.",
         "4. Do not auto-mark gameplay PASS from a Gradle test, JSON validator, dedicated-server ready line or a generated quest.",
         "",
-        "Update safely: \`python3 scripts/feature_checklist.py mark <id> <state> --evidence <path-or-url>\`",
-        "followed by \`python3 scripts/feature_checklist.py render\`. "
-        "Use \`python3 scripts/feature_checklist.py render --check\` in CI.",
+        "Update safely: `python3 scripts/feature_checklist.py mark <id> <state> --evidence <path-or-url>`",
+        "followed by `python3 scripts/feature_checklist.py render`. "
+        "Use `python3 scripts/feature_checklist.py render --check` in CI.",
         "",
         "## Gate policy",
         "",
