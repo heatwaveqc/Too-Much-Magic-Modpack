@@ -31,6 +31,8 @@ import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
+import net.neoforged.neoforge.common.util.TriState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import java.util.ArrayList;
@@ -93,6 +95,23 @@ public final class ClassAbilities {
             if (p.getInventory().getItem(i).isEmpty()) return i;
         return -1;
     }
+    /** Ground pickups must never use reserved index 0 as the only available slot. */
+    public static void pickup(ServerPlayer p, ItemEntityPickupEvent.Pre event) {
+        if (!unlocked(p,"reserved_fist")) return;
+        ItemStack item = event.getItemEntity().getItem();
+        if (item.isEmpty()) return;
+        int capacity = 0;
+        for (int i = 1; i < 36; i++) {
+            ItemStack slot = p.getInventory().getItem(i);
+            if (slot.isEmpty()) capacity += item.getMaxStackSize();
+            else if (ItemStack.isSameItemSameComponents(slot,item))
+                capacity += Math.max(0,slot.getMaxStackSize()-slot.getCount());
+            if (capacity >= item.getCount()) return;
+        }
+        // Leave the original item entity untouched on the ground.
+        event.setCanPickup(TriState.FALSE);
+    }
+
     public static void tick(ServerPlayer p) {
         if (unlocked(p,"reserved_fist") && !p.getInventory().getItem(0).isEmpty()) {
             int free = emptyInventorySlot(p);
