@@ -42,9 +42,11 @@ function tmmCexEntityLevel(entity) {
   return entity.level
 }
 function tmmCexIsClientLevel(level) {
-  return typeof level.isClientSide === 'function'
-    ? Boolean(level.isClientSide())
-    : Boolean(level.isClientSide)
+  const flag = level.isClientSide
+  if (typeof flag === 'function') return String(flag.call(level)) === 'true'
+  // A Java Boolean wrapper for false is still truthy as a JS object.
+  // Compare its value, not the wrapper object's truthiness.
+  return String(flag) === 'true'
 }
 
 function tmmCexTrack(entity) {
