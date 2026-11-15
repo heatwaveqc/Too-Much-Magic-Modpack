@@ -112,8 +112,10 @@ public final class BedrockRest {
             return;
         boolean correctPosition = player.getSleepingPos()
                 .map(pos -> pos.equals(session.bedrock().above())).orElse(false);
-        if (!correctPosition || !validBedrock(player.serverLevel(), session.bedrock())) {
+        if (!correctPosition || !validBedrock(player.serverLevel(), session.bedrock())
+                || !ClassAbilities.unlocked(player, "bedrock_rest")) {
             SESSIONS.remove(player.getUUID());
+            event.setContinueSleeping(false);
             return;
         }
         // Do not override daytime, mod-imposed restrictions, or safety failures.
