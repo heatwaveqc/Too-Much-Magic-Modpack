@@ -1,0 +1,12 @@
+name = "ProjectE Energy Converters"
+filename = "projecte-energy-0.1.4.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9072881
+project-id = 1727449
