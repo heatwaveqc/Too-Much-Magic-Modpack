@@ -88,12 +88,7 @@ public final class JAWRBottleInterop {
     /** A native JAWR blood bottle is ordinary ONLY when neither protected marker exists. */
     public static boolean isOrdinaryJAWRBottle(ItemStack stack) {
         return ready && JAWR_BOTTLE.equals(BuiltInRegistries.ITEM.getKey(stack.getItem()))
-                && ordinaryMarkersAbsent(stack.has(chickenMarker), stack.has(vampireMarker));
-    }
-
-    /** Pure gate shared with offline unit tests; absence, not flag value, is intentional. */
-    public static boolean ordinaryMarkersAbsent(boolean hasChickenMarker, boolean hasVampireMarker) {
-        return !hasChickenMarker && !hasVampireMarker;
+                && BloodBottlePolicy.isOrdinary(stack.has(chickenMarker), stack.has(vampireMarker));
     }
 
     private static boolean isJAWRVampire(ServerPlayer player) {
