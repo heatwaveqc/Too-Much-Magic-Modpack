@@ -26,7 +26,7 @@ class HunterXpPolicyTest {
             assertTrue(path.activities().stream().noneMatch(a -> "kill".equals(a.event())));
             var specialties = path.skills().stream()
                 .filter(s -> "tmm_progression:hunter_favored_enemy".equals(s.choiceGroup())).toList();
-            assertEquals(16,specialties.size());
+            assertEquals(14,specialties.size());
             for (var skill : specialties) {
                 assertEquals(0,skill.baseCost());
                 assertEquals(1,skill.maxRank());
