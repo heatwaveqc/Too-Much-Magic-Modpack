@@ -1,0 +1,78 @@
+package io.github.heatwaveqc.tmm.progression.runtime;
+
+import io.github.heatwaveqc.tmm.progression.model.Definition;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Mod-to-mod extension seam. A custom effect handler is written ONCE; a datapack can
+ * then instantiate it on any path/skill with rank, conditions and string parameters.
+ * This is trusted Java registration, never script execution from player/config JSON.
+ */
+public final class EffectHandlers {
+    private EffectHandlers() {}
+    private static final Set<String> BUILTIN = Set.of(
+        "attribute","melee_bonus","damage_multiplier","break_speed","harvest_tier");
+    private static final Map<String,Handler> CUSTOM = new HashMap<>();
+
+    public interface Handler {
+        default void tick(ServerPlayer player, Definition.Effect effect, int rank) {}
+        default void incoming(ServerPlayer owner, LivingIncomingDamageEvent event,
+                              Definition.Effect effect, int rank) {}
+        default void harvest(ServerPlayer player, PlayerEvent.HarvestCheck event,
+                             Definition.Effect effect, int rank) {}
+        default void breakSpeed(ServerPlayer player, PlayerEvent.BreakSpeed event,
+                                Definition.Effect effect, int rank) {}
+        default void blockBreak(ServerPlayer player, BlockEvent.BreakEvent event,
+                                Definition.Effect effect, int rank) {}
+        default void kill(ServerPlayer player, LivingDeathEvent event,
+                          Definition.Effect effect, int rank) {}
+    }
+
+    public static void register(String id, Handler handler) {
+        if (!id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+            throw new IllegalArgumentException("Custom effect requires namespaced type");
+        if (CUSTOM.putIfAbsent(id,handler) != null || BUILTIN.contains(id))
+            throw new IllegalArgumentException("Duplicate effect type " + id);
+    }
+    public static boolean known(String id) { return BUILTIN.contains(id) || CUSTOM.containsKey(id); }
+
+    private static void dispatch(ServerPlayer player, Invoker call) {
+        for (EffectRuntime.Active active : EffectRuntime.active(player)) {
+            Handler handler = CUSTOM.get(active.effect().type());
+            if (handler != null) call.call(handler,active.effect(),active.rank());
+        }
+    }
+    @FunctionalInterface private interface Invoker {
+        void call(Handler handler, Definition.Effect effect, int rank);
+    }
+
+    public static void tick(ServerPlayer player) {
+        dispatch(player,(h,e,r) -> h.tick(player,e,r));
+    }
+    public static void incoming(LivingIncomingDamageEvent event) {
+        if (event.getEntity() instanceof ServerPlayer victim)
+            dispatch(victim,(h,e,r) -> h.incoming(victim,event,e,r));
+        if (event.getSource().getEntity() instanceof ServerPlayer attacker
+                && attacker != event.getEntity())
+            dispatch(attacker,(h,e,r) -> h.incoming(attacker,event,e,r));
+    }
+    public static void harvest(ServerPlayer player, PlayerEvent.HarvestCheck event) {
+        dispatch(player,(h,e,r) -> h.harvest(player,event,e,r));
+    }
+    public static void breakSpeed(ServerPlayer player, PlayerEvent.BreakSpeed event) {
+        dispatch(player,(h,e,r) -> h.breakSpeed(player,event,e,r));
+    }
+    public static void blockBreak(ServerPlayer player, BlockEvent.BreakEvent event) {
+        dispatch(player,(h,e,r) -> h.blockBreak(player,event,e,r));
+    }
+    public static void kill(ServerPlayer player, LivingDeathEvent event) {
+        dispatch(player,(h,e,r) -> h.kill(player,event,e,r));
+    }
+}
