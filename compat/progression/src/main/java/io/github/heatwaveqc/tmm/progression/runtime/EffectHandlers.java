@@ -4,6 +4,10 @@ import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
+import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -40,6 +44,14 @@ public final class EffectHandlers {
                                   Definition.Effect effect, int rank) {}
         default void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event,
                                     Definition.Effect effect, int rank) {}
+        default void blockDrops(ServerPlayer player, BlockDropsEvent event,
+                                Definition.Effect effect, int rank) {}
+        default void projectileImpact(ServerPlayer player, ProjectileImpactEvent event,
+                                      Definition.Effect effect, int rank) {}
+        default void equipmentChange(ServerPlayer player, LivingEquipmentChangeEvent event,
+                                     Definition.Effect effect, int rank) {}
+        default void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event,
+                          Definition.Effect effect, int rank) {}
     }
 
     public static void register(String id, Handler handler) {
@@ -87,5 +99,17 @@ public final class EffectHandlers {
     }
     public static void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event) {
         dispatch(player,(h,e,r) -> h.entityInteract(player,event,e,r));
+    }
+    public static void blockDrops(ServerPlayer player, BlockDropsEvent event) {
+        dispatch(player,(h,e,r) -> h.blockDrops(player,event,e,r));
+    }
+    public static void projectileImpact(ServerPlayer player, ProjectileImpactEvent event) {
+        dispatch(player,(h,e,r) -> h.projectileImpact(player,event,e,r));
+    }
+    public static void equipmentChange(ServerPlayer player, LivingEquipmentChangeEvent event) {
+        dispatch(player,(h,e,r) -> h.equipmentChange(player,event,e,r));
+    }
+    public static void jump(ServerPlayer player, LivingEvent.LivingJumpEvent event) {
+        dispatch(player,(h,e,r) -> h.jump(player,event,e,r));
     }
 }
