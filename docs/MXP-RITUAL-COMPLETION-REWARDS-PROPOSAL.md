@@ -1,4 +1,4 @@
-# MXP Ritual & Magical Completion Balance Proposal — All 11 Target Mods
+# MXP Ritual & Magical Completion Balance Proposal — All 12 Target Mods
 
 **Planning proposal, 2026-11-14. No game implementation, config values, scripts, XP rules, pack files or build changes in this revision.** Target pack versions: Scriptor 2.0.14; Occultism 1.227.0; Malum 1.8.2; Eidolon: Repraised 0.5.0.8; Hexerei 0.5.0.3; Enchanted: Witchcraft 4.2.7; Astral Sorcery 2.0.3.59; Theurgy 1.79.0; Totemic 0.12.18; Feywild 5.6.4; Summoning Rituals 3.14.2.
 
@@ -22,6 +22,7 @@
 | 9 | **Occultism** | **Foliot 1,000/200; Djinni 1,750/350; Afrit 3,000/600; Marid 5,000/1,000** per genuinely distinct completed binding/summoning ritual | Mundane manual ritual-item crafts **200–600 / 40–120** BASE only if separately attributable; do not double-pay a completed ritual and output craft | Determine tier from actual bound Book of Binding activation item, not guide/strongest carried book; non-book recipes by verified spirit/pentacle category |
 | 14 | **Malum** | **No routine fixed ritual by default**; if a true player-owned ceremonial rite is established, **1,500–3,000 / 300–600** | Spirit Infusion / Runeworking **250–700 / 50–140**; difficult Soul Binding **800–1,500 / 160–300** | Malum has very many spirit-workbench recipes; treating each station recipe as undivided fixed ritual would flood Tyz SP. Unattended processing earns nothing |
 | 15 | **Eidolon: Repraised** | Brazier rites: **1,000 / 200** basic; **2,000 / 400** advanced; **3,500 / 700** major summoning/ward | Crucible/Worktable magical crafts **250–750 / 50–150** | Genuine completed brazier outcome, not each offering, prayer, altar update, chant tick or minor soul-charge transfer |
+| 16 | **Forbidden & Arcanus** | **Hephaestus Forge T1 1,000/200; T2 1,600/320; T3 2,400/480; T4 3,500/700; T5 5,000/1,000**, using completed recipe's required tier | No second ordinary craft bonus for the same Forge output; separate manual arcane crafts only after proof | Forge is a genuine *ritual* machine with starter UUID and per-recipe completion trigger. Don't scale by current machine tier or reward filling Aureal, Souls, Blood, Experience, vanilla XP essence or automated operation |
 | 17 | **Hexerei** | **None currently verified**; only if actual ritual content ships, later consider **1,000–3,000 / 200–600** | Successful manually attributable Cauldron brew **200–450 / 40–90**; rare complicated brew **600–900 / 120–180** | Current mod description lists spells/rituals as future content; don't invent a ritual completion API. Auto-processed cauldrons earn 0 |
 | 18 | **Enchanted: Witchcraft** | Chalk rites: **1,000 / 200** introductory; **2,000 / 400** major; **4,000 / 800** exceptional world-scale or costly rites | Kettle potion **250–500 / 50–100**; meaningful player-bound poppet **350–750 / 70–150** | Ring geometry, ingredients, altar world-power demand and conditions justify ritual tier; world altar power is *not* character mana. Canonicalize ~50 stock rite variants by outcome family to avoid duplicate first bonus for trivial targeting variants |
 | 19 | **Astral Sorcery 2.0** | **First personal constellation attunement 3,000 fixed**; *reattuning/respec gives 0*, not another "first" reward | Altar crafts by tier **350 / 75** (Resonating), **700 / 140** (Luminous), **1,200 / 240** (Iridescent); significant discovered constellation/research milestones **400–800 / 0** | Modern 1.21.1 removes older ritual pedestal system. Do not pay first ritual bonuses on ordinary altar crafts or repeatedly retune for more awards; no XP for passive starlight/Lumen generation |
@@ -42,6 +43,9 @@
 | Marid | 5,000 | 1,000 |
 
 For many cheap similar recipes with the same practical effect, apply a *canonical ritual family* rather than paying a distinct fixed discovery for minor parameter variants. Distinct real rituals do count separately, including learned advanced summons.
+
+
+**Forbidden & Arcanus:** despite looking like crafting, the Hephaestus Forge is a registered ritual processor. The 1.21.1 `RitualManager` keeps the starting player UUID, distinguishes `finishRitual` from `failRitual`, and triggers a ritual-specific advancement. Five tiers support a real reward ladder. T1 1,000 / T5 5,000 first fixed, repeats 20% BASE. Base tiers on **each recipe's minimum required forge tier and unique effects**, never on the upgraded forge's current tier. A forge-tier upgrade itself counts only if the completed ritual has its own canonical ID; no extra award for its output or advancement. Although forge essences include vanilla experience, they are **multiblock resources** and are not normalized personal spell fuel. This is an added twelfth completion mod, not a forty-third mod in the MXP roster.
 
 **Totemic:** native ceremony requirements (instrument performance, musical timing and actual completion) justify larger flat first payouts than a simple item craft. The proposed three-tier 1,200 / 2,200 / 3,500 band is a starting assumption; map the exact Totemic 0.12.18 ceremony registry/required music difficulty before approving individual assignments.
 
@@ -64,6 +68,8 @@ At P=0, a repeated 400-BASE ritual pays 400 effective MXP. At P=10 it pays ~65. 
 3. Record actor UUID, canonical activity ID, first/repeat history, successful outcome and transaction UUID. Credit co-op only to genuine participants, never everyone close to the altar.
 4. Link any advancement/quest detection for this same ritual to its **existing reward**, not an additional MXP award. Use current MXP-only Tyz global wallet.
 5. Test first/repeat, canceled, failed, rerun, recipe change, automated operation, shared-owner/offline edge, relog and XP divisor behavior. **No implementation is authorized by these illustrative amounts.**
+
+- [Forbidden & Arcanus 1.21.1 Forge ritual success/caster identity](https://github.com/stal111/Forbidden-Arcanus/blob/1.21.1/neoforge/src/main/java/com/stal111/forbidden_arcanus/common/block/entity/forge/ritual/RitualManager.java)
 
 ## Sources reviewed
 
