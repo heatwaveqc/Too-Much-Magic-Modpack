@@ -59,7 +59,7 @@ final class MonkPathParityCoverageTest {
         }
     }
 
-    @Test void everyClassicSourcePowerIsAuditedAndOnlyLavaAwaitingARealHandler() throws Exception {
+    @Test void everyClassicPowerHasANativeAutomaticMappingWithHonestRuntimeGaps() throws Exception {
         Definition.Path path = monkPath();
         JsonObject manifest = coverage();
         assertEquals("CONFIGURED_PATH_NOT_RUNTIME_PARITY_COMPLETE",
@@ -71,7 +71,7 @@ final class MonkPathParityCoverageTest {
 
         Set<String> sourceIds = new HashSet<>();
         Set<String> originalOffDefault = new HashSet<>();
-        int unavailable = 0;
+        int mapped = 0;
         for (var element : rows) {
             JsonObject ability = element.getAsJsonObject();
             String source = ability.get("classic_id").getAsString();
@@ -80,24 +80,24 @@ final class MonkPathParityCoverageTest {
             assertTrue(ability.get("native_only").getAsBoolean());
             assertFalse(ability.get("tyz_required").getAsBoolean());
             var targets = ability.getAsJsonArray("native_skill_ids");
+            assertTrue(targets.size() > 0, "Classic ability lacks native auto-skill: " + source);
+            mapped++;
+            for (var target : targets) {
+                Definition.Skill skill = path.skill(target.getAsString());
+                assertNotNull(skill, "Native capability absent from installed Monk JSON: " + target);
+                assertFalse(skill.autoRanks().isEmpty(), "Classic baseline must auto-unlock: " + target);
+                assertFalse(skill.effects().isEmpty(), "Never claim a classic ability with a no-op: " + target);
+            }
             if (source.equals("lava_protection")) {
-                unavailable++;
-                assertTrue(targets.size() == 0, "Distinct contextual lava handler is NOT built");
-                assertEquals("missing_effect_handler",
-                        ability.get("status").getAsString());
-            } else {
-                assertTrue(targets.size() > 0, "Classic ability lacks a configured native skill: " + source);
-                for (var target : targets) {
-                    Definition.Skill skill = path.skill(target.getAsString());
-                    assertNotNull(skill, "Native capability absent from loadable Monk JSON: " + target);
-                    assertFalse(skill.autoRanks().isEmpty(), "Classic baseline must auto-unlock: " + target);
-                    assertFalse(skill.effects().isEmpty(), "Never use paid or empty no-op classics: " + target);
-                }
+                assertEquals("handler_partial", ability.get("status").getAsString(),
+                        "Lava handler exists but still overlaps generic fire damage mitigation");
+                assertEquals(java.util.List.of(12),
+                        path.skill("tmm_progression:lava_protection").autoRanks());
             }
             assertFalse(ability.get("code_or_qa_gap").getAsString().isBlank(),
                     "Missing factual QA status: " + source);
         }
-        assertEquals(1, unavailable, "New missing abilities need explicit owner-visible accounting");
+        assertEquals(25, mapped, "All source families must have native auto-rank skills");
         assertEquals(Set.of("armor_toughness", "health", "glass_touch", "water_breathing_full"),
                 originalOffDefault);
         assertEquals(25, sourceIds.size());
@@ -137,8 +137,10 @@ final class MonkPathParityCoverageTest {
         Definition.Path path = monkPath();
         assertNull(path.skill("tmm_progression:spirit_projectile"));
         assertNull(path.skill("tmm_progression:creative_flight"));
-        assertNull(path.skill("tmm_progression:lava_protection"),
-                "Until an actual distinct lava handler exists, do NOT ship a no-op or double-dipping skill");
+        var lava = path.skill("tmm_progression:lava_protection");
+        assertNotNull(lava, "Core now has a native rank-12 lava handler");
+        assertEquals("lava_protection", lava.effects().getFirst().type());
+        assertEquals(java.util.List.of(12), lava.autoRanks());
         var glide = path.skill("tmm_progression:momentum_glide");
         assertNotNull(glide);
         assertEquals("tmm_progression:dragon_defeated",
