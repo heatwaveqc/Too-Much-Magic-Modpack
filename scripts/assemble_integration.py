@@ -152,7 +152,7 @@ def main() -> None:
         "kubejs/server_scripts/tmm_magic_core_thrift.js",
         "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml",
         "mods/dragon-survival.pw.toml", "mods/comforts.pw.toml",
-        "mods/colorful-hearts.pw.toml")
+        "mods/colorful-hearts.pw.toml", "mods/vampires-delight.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
     # Run the SAME KubeJS JS source with a Rhino-shaped ItemEntity/Level mock
