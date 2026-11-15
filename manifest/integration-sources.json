@@ -150,7 +150,7 @@
         "scripts/verify_tyz_migration.py"
       ],
       "mode": "runtime-experimental",
-      "note": "MANDATORY next rolling QA build: exact Tyz 6.4.2 Modrinth SHA-512 pin, four 99-rank Core Magic skills staged as real config, old Pufferfish Skills pin removed, native Tyz activity XP disabled. Shared MXP awards and external form gates are still pending; admin-only XP for first in-game tests."
+      "note": "MANDATORY next rolling QA build: exact Tyz 6.4.2 Modrinth SHA-512 pin, four five-rank (20% of each previous rank-99 ceiling per rank) Core Magic skills staged as real config, old Pufferfish Skills pin removed, native Tyz activity XP disabled. Shared MXP awards and external form gates are still pending; admin-only XP for first in-game tests. Built-in Tyz 6.4.2 inventory contains 32 skills across Abilities/Combat/Misc/Nature; fully documented and proposed relocation map committed, but none of those native skills/categories is disabled yet. Do not remove stock category tabs before same-ID parity QA."
     },
     {
       "name": "ftb-essentials-home-rtp",
