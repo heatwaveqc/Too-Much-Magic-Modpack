@@ -43,10 +43,10 @@ final class MonkPathParityCoverageTest {
         Definition.Path path = monkPath();
         assertEquals(20, path.maxRank());
         assertTrue(path.skills().size() >= 28);
-        assertEquals(0, path.rankXp().getFirst());
-        assertEquals(20, path.rankXp().get(1));
-        assertEquals(55, path.rankXp().get(2));
-        assertEquals(105, path.rankXp().get(3));
+        assertEquals(0L, path.rankXp().getFirst().longValue());
+        assertEquals(20L, path.rankXp().get(1).longValue());
+        assertEquals(55L, path.rankXp().get(2).longValue());
+        assertEquals(105L, path.rankXp().get(3).longValue());
         for (Definition.Skill skill : path.skills()) {
             if (skill.autoRanks().isEmpty()) continue;
             assertEquals(0, skill.baseCost(), "Classic automatically unlocked talents are free: " + skill.id());
@@ -82,11 +82,11 @@ final class MonkPathParityCoverageTest {
             var targets = ability.getAsJsonArray("native_skill_ids");
             if (source.equals("lava_protection")) {
                 unavailable++;
-                assertTrue(targets.isEmpty(), "Distinct contextual lava handler is NOT built");
+                assertTrue(targets.size() == 0, "Distinct contextual lava handler is NOT built");
                 assertEquals("missing_effect_handler",
                         ability.get("status").getAsString());
             } else {
-                assertFalse(targets.isEmpty(), "Classic ability lacks a configured native skill: " + source);
+                assertTrue(targets.size() > 0, "Classic ability lacks a configured native skill: " + source);
                 for (var target : targets) {
                     Definition.Skill skill = path.skill(target.getAsString());
                     assertNotNull(skill, "Native capability absent from loadable Monk JSON: " + target);
@@ -108,7 +108,7 @@ final class MonkPathParityCoverageTest {
         Definition.Skill speed = path.skill("tmm_progression:hand_mining");
         assertNotNull(speed);
         assertEquals(5, speed.autoRanks().size());
-        assertEquals(17, speed.autoRanks().getLast());
+        assertEquals(17, speed.autoRanks().getLast().intValue());
         assertEquals(1, speed.effects().size());
         var bonus = speed.effects().getFirst();
         assertEquals("break_speed", bonus.type());
