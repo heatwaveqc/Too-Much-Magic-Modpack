@@ -50,7 +50,7 @@ We distinguish **fatal-damage avoidance** (normal damage never becomes death), *
 
 1. **Guardian + Ars Totem Perk + Mahou soul points + vanilla totem:** One fatal hit triggers multiple cancellation-capable sources; if side effects precede or ignore a cancelled event, the player could lose multiple resources for one rescue.
 2. **Vampirism DBNO + JAWR vampire immortality:** Unified vampire physiology requires a single downed/resurrection workflow. Two native vampire flags must NOT double-trigger death effects or grant two independent recovery windows.
-3. **JAWR lich + Goety lich = Archlich:** The two immortality paths must both be genuinely acquired and retained, but **one fatal event** has exactly **one designated rescue resolution**. Deterministic anchor routing; if a fallthrough/failover is wanted, it must be explicitly designed and rate-limited rather than assuming both handlers work in arbitrary order.
+3. **JAWR lich + Goety lich = Archlich:** The two immortality paths must both be genuinely acquired and retained. **Locked 2026-11-15: JAWR/Forbidden Magic phylactery is first, Goety Arca is second only when the phylactery cannot complete a rescue.** A fatal event may have only one successful rescue; neither backend should double-charge, double-teleport or independently rescue after successful intervention. Unresolved partial consumption/rollback must be diagnosed before implementing fallback.
 4. **Dragon + one lich = Dracolich:** Dragon Survival body persists through lich death handling; only the single chosen lich anchor participates. Dragon **must not** also access the other lich's Archlich rescue.
 5. **Abomination:** Unified vampire and werewolf progression and powers coexist; choose a **single** authoritative vampire DBNO/other death-save behavior, with no inherited double immunity.
 6. **Corail Tombstone after a true death:** Only AFTER all prevention/DBNO/rescue opportunities are exhausted should inventory be placed in a grave. Soulbound, Curios, magical storage, dropped items, levels, respawn effects and any return-to-anchor teleport must not duplicate or delete gear.
@@ -95,7 +95,7 @@ This is a **logical classification**, not the real event firing order or a commi
 ## Open design decisions
 
 - Which rescue *class* takes precedence, protective consumables or innate vampire/lich rescue? Should it be player-configurable?
-- For an Archlich, does the player select Arca/phylactery as primary anchor, with the other as fallback, or is there a different resource arbitration policy?
+- **Archlich priority is now locked: phylactery first, Arca fallback.** Remaining question: how do actual JAWR/Goetied backends report ineligibility and partially consumed resources for safe failover? Do not introduce a player preference or invoke both on a successful save.
 - Should the death-saving perk from Ars rearm on sleep for an Archlich, and should Occultism Guardian limbs remain consumable before/after immortality? Their native mechanics can remain intact if only one wins a hit.
 - What happens on player `/kill`, void damage, dimension removal, or blocked resurrection anchor? Different mods exclude some death sources.
 - Where should Corail's grave appear if a lich **actually dies** and respawns at an anchor rather than the death position? Default proposal: actual death position; do not create a grave for successfully **prevented** death.
