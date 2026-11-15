@@ -1,3 +1,5 @@
+> **Owner revision, 2026-11-15 (supersedes earlier roster decisions):** The full Monk tree no longer offers an innate Spirit Projectile; legal ranged offense is user-cast Ars Nouveau and Iron's Spellbooks spells. Fortune and Silk Touch are two mutually exclusive modes of one native Treasure Hand skill, with bounded additional Fortune ranks owned by primary Tyz. The ninth hotbar slot is reserved as a free empty-hand Monk fist slot when the strict inventory/GUI lockout is implemented. The original 270 candidate entries below are retained as an *audit of source possibilities*, not approvals. See [current blueprint](../compat/monk/design/README.md) and [source overrides](../compat/monk/profiles/skill-placement-no-pufferfish-v2.json).
+
 > **Primary Tyz tree supersession (2026-11-14):** This is a source audit,
 > not a second general skill tree. Primary Tyz/MXP plan owns the global wallet,
 > common category and universal skills; Monk supplies only faction-specific
