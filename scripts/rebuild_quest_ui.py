@@ -192,7 +192,7 @@ SUBTITLE = {
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
     "Skills & Advancement": "Pufferfish skills, attributes and Improvable Skills progression.",
-    "A Sufficiently Advanced Magic": "Magical FE sources, Draconic storage and endgame reactor.",
+    "A Sufficiently Advanced Magic": "Draconic generation, energy storage, FE crystals, reactor safety and future approved technology.",
 }
 
 
