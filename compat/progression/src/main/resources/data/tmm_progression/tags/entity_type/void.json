@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:enderman",
+    "minecraft:endermite",
+    "minecraft:ender_dragon",
+    {
+      "id": "draconicevolution:draconic_guardian",
+      "required": false
+    },
+    {
+      "id": "#goety:enderlings",
+      "required": false
+    }
+  ]
+}
