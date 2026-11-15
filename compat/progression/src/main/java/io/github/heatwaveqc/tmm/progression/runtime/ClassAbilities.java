@@ -62,7 +62,7 @@ public final class ClassAbilities {
         if ("armor".equals(what) && unlocked(p,"armor_lock")) {
             String next = ProgressionApi.mode(p,ARMOR_MODE,"on").equals("on") ? "off" : "on";
             if (!ProgressionApi.setMode(p,ARMOR_MODE,next)) return false;
-            if (next.equals("on")) enforceArmorLock(p);
+            if (next.equals("on")) enforceArmorLock(p,false);
             return true;
         }
         if ("treasure".equals(what) && unlocked(p,"treasure_hand")) {
@@ -98,7 +98,7 @@ public final class ClassAbilities {
      *
      * The lock is not an item-placement ban: it corrects equipment state.
      */
-    public static void enforceArmorLock(ServerPlayer p) {
+    public static void enforceArmorLock(ServerPlayer p, boolean applyWear) {
         if (!unlocked(p,"armor_lock") || !ProgressionApi.mode(p,ARMOR_MODE,"on").equals("on"))
             return;
         for (EquipmentSlot slot : List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,
@@ -108,7 +108,7 @@ public final class ClassAbilities {
             boolean bound = EnchantmentHelper.has(worn,EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE);
             if (bound) {
                 // Bound armor stays equipped. Life Mending and Unbreaking still apply normally.
-                if (worn.isDamageableItem() && p.tickCount % 20 == 0)
+                if (applyWear && worn.isDamageableItem() && p.tickCount % 20 == 0)
                     worn.hurtAndBreak(1,p,slot);
                 continue;
             }
@@ -130,7 +130,7 @@ public final class ClassAbilities {
             long now = p.serverLevel().getGameTime();
             RETALIATION.entrySet().removeIf(entry -> entry.getValue().until() < now);
         }
-        enforceArmorLock(p);
+        enforceArmorLock(p,true);
 
         exhaustion(p);
         stare(p);
