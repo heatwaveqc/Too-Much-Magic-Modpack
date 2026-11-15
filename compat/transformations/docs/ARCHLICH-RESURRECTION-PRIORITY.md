@@ -60,6 +60,15 @@ soul currency, death destination or resurrection advancement is introduced.
 - Unit test: `ArchlichResurrectionPolicyTest` includes dual charged,
   empty soul fallback, pre-level-2, standalone and pre-canceled event.
 
+## Read-only diagnostic
+
+Before the first fatal test, run `/tmmtransform archlich` in the disposable
+test world. It reports whether the feature is enabled, the two actual lich
+flags, Forbidden Magic level, the number of charged JAWR phylactery souls,
+and whether a phylactery-first attempt is planned. It performs no
+transformation, expenditure or resurrection. If the state cannot be read,
+stop the test and inspect the mod versions.
+
 ## Mandatory in-game test matrix
 
 Disposable world, backup first. Enable
