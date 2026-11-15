@@ -290,3 +290,6 @@ The full 32-skill default inventory and source-to-destination proposals are in [
 ## 7. What this commit does *not* do
 
 This is a design-only catalog and machine-readable sketch. It does **not** create active Tyz skills, mutate the level pool, add custom mod code, mark transformations compatible, fix the Monk UI or vampire blood pool, alter a diet, add a new faction, or change a release/build manifest. The existing staged Core Skills and Monk implementation remain where they are. Content is intended for review and later mechanically checked conversion into runtime config.
+
+**AttributeFix 21.1.3 addendum:** The experimental pack now selects source-pinned AttributeFix. It changes default hard maximum of exactly **five** vanilla attributes (health, armor, armor toughness, attack damage, attack knockback) to 1,000,000; **Luck and all magic resource attributes remain unchanged unless configured individually**. The 85%-of-theoretically-attainable-specialist Monk noncombat rule remains unchanged; see [delta audit](TYZS-ATTRIBUTEFIX-CAP-DELTA-2026-11-15.md) and [source cap overlay](tyzs/theoretical-attribute-hard-caps-v1.json). Never use 85% of 1,000,000 as a shortcut for specialist's actual legal loadout.
+
