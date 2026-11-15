@@ -519,34 +519,6 @@
           "target": "#tmm_progression:demon"
         }
       ]
-    },
-    {
-      "id": "tmm_progression:specialty_fae",
-      "max_rank": 1,
-      "required_rank": 1,
-      "base_cost": 0,
-      "step_cost": 0,
-      "choice_group": "tmm_progression:hunter_favored_enemy",
-      "effects": [
-        {
-          "type": "hunter_specialty",
-          "target": "#tmm_progression:fae"
-        }
-      ]
-    },
-    {
-      "id": "tmm_progression:specialty_aberration",
-      "max_rank": 1,
-      "required_rank": 1,
-      "base_cost": 0,
-      "step_cost": 0,
-      "choice_group": "tmm_progression:hunter_favored_enemy",
-      "effects": [
-        {
-          "type": "hunter_specialty",
-          "target": "#tmm_progression:aberration"
-        }
-      ]
     }
   ],
   "max_level": 20,
