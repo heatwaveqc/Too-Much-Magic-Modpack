@@ -11,25 +11,38 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Event-driven shadow update at *native mutations*, not a polling rewrite. */
+/**
+ * Ordinary vampires keep Vampirism blood untouched. Only dual / ascended
+ * vampires divert Vampirism feeding and spending to canonical JAWR blood.
+ * Disable Vampirism's FoodData/exhaustion/healing loop in that state so
+ * JAWR's native hunger and recovery remain authoritative.
+ */
 @Pseudo
 @Mixin(targets = "de.teamlapen.vampirism.entity.player.vampire.BloodStats", remap = false)
 public abstract class VampirismBloodStatsMixin {
     @Shadow @Final private Player player;
 
-    @Inject(method = "onUpdate()Z", at = @At("RETURN"), remap = false)
-    private void tmm$afterExhaustion(CallbackInfoReturnable<Boolean> cir) {
-        if (player instanceof ServerPlayer sp && cir.getReturnValue())
-            VampireChassisRuntime.onNativeBloodChanged(sp);
+    @Inject(method = "onUpdate()Z", at = @At("HEAD"), cancellable = true, remap = false)
+    private void tmm$skipDuplicatedUpkeep(CallbackInfoReturnable<Boolean> cir) {
+        if (player instanceof ServerPlayer sp && VampireChassisRuntime.isDual(sp)) {
+            cir.setReturnValue(false);
+        }
     }
 
-    @Inject(method = "addBlood(IF)I", at = @At("RETURN"), remap = false)
-    private void tmm$afterFeeding(int amount, float saturation, CallbackInfoReturnable<Integer> cir) {
-        if (player instanceof ServerPlayer sp) VampireChassisRuntime.onNativeBloodChanged(sp);
+    @Inject(method = "addBlood(IF)I", at = @At("HEAD"), cancellable = true, remap = false)
+    private void tmm$redirectFeeding(int amount, float saturation,
+            CallbackInfoReturnable<Integer> cir) {
+        if (player instanceof ServerPlayer sp && VampireChassisRuntime.isDual(sp)) {
+            cir.setReturnValue(VampireChassisRuntime.feedFromVampirism(sp, amount));
+        }
     }
 
-    @Inject(method = "removeBlood(IZ)Z", at = @At("RETURN"), remap = false)
-    private void tmm$afterSpend(int amount, boolean partial, CallbackInfoReturnable<Boolean> cir) {
-        if (player instanceof ServerPlayer sp) VampireChassisRuntime.onNativeBloodChanged(sp);
+    @Inject(method = "removeBlood(IZ)Z", at = @At("HEAD"), cancellable = true, remap = false)
+    private void tmm$redirectSpending(int amount, boolean allowPartial,
+            CallbackInfoReturnable<Boolean> cir) {
+        if (player instanceof ServerPlayer sp && VampireChassisRuntime.isDual(sp)) {
+            // Never allow partial charges to power a full ability.
+            cir.setReturnValue(VampireChassisRuntime.spendFromVampirism(sp, amount));
+        }
     }
 }
