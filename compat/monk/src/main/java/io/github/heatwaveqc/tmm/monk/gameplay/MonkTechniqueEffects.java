@@ -17,11 +17,13 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public final class MonkTechniqueEffects {
     private static final ResourceLocation PALM_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "open_palm");
     private static final ResourceLocation POISE_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "unarmored_poise");
+    private static final ResourceLocation HARVEST_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "stone_fist_harvest_speed");
     private static final ResourceLocation FLEET_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "fleet_footwork");
     private static final ResourceLocation TYZ_PALM_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "tyz_iron_palm");
     private static final ResourceLocation TYZ_HARVEST_ID = ResourceLocation.fromNamespaceAndPath("tmm_monk", "tyz_barehand_harvest");
     private static final AttributeModifier PALM = new AttributeModifier(PALM_ID, 1.0, AttributeModifier.Operation.ADD_VALUE);
     private static final AttributeModifier POISE = new AttributeModifier(POISE_ID, 2.0, AttributeModifier.Operation.ADD_VALUE);
+    private static final AttributeModifier HARVEST = new AttributeModifier(HARVEST_ID, 4.0, AttributeModifier.Operation.ADD_VALUE);
     private static final AttributeModifier FLEET = new AttributeModifier(FLEET_ID, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 
     private MonkTechniqueEffects() { }
@@ -35,6 +37,7 @@ public final class MonkTechniqueEffects {
             update(player, Attributes.ATTACK_DAMAGE, PALM, false);
             update(player, Attributes.ARMOR, POISE, false);
             update(player, Attributes.MOVEMENT_SPEED, FLEET, false);
+            update(player, Attributes.MINING_EFFICIENCY, HARVEST, false);
             updateAmount(player, Attributes.ATTACK_DAMAGE, TYZ_PALM_ID, 0);
             updateAmount(player, Attributes.MINING_EFFICIENCY, TYZ_HARVEST_ID, 0);
         }
@@ -51,12 +54,15 @@ public final class MonkTechniqueEffects {
                 && state.map(s -> s.getSkillHandler().isSkillEnabled(MonkSkills.OPEN_PALM.get())).orElse(false);
         boolean poise = hasFaction
                 && state.map(s -> s.getSkillHandler().isSkillEnabled(MonkSkills.POISE.get())).orElse(false);
+        boolean harvest = hasFaction && player.getMainHandItem().isEmpty()
+                && state.map(s -> s.getSkillHandler().isSkillEnabled(MonkSkills.STONE_FIST.get())).orElse(false);
         boolean fleet = hasFaction
                 && state.map(s -> s.getSkillHandler().isSkillEnabled(MonkSkills.FLEET.get())).orElse(false);
 
         update(player, Attributes.ATTACK_DAMAGE, PALM, palm);
         update(player, Attributes.ARMOR, POISE, poise);
         update(player, Attributes.MOVEMENT_SPEED, FLEET, fleet);
+        update(player, Attributes.MINING_EFFICIENCY, HARVEST, harvest);
 
         // Tyz owns all rank values. This adapter only translates Monk-specific
         // inert attributes into conditional benefits; no duplicate Tyz wallet.
