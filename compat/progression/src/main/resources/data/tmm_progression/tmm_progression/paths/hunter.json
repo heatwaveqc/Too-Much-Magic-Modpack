@@ -111,6 +111,60 @@
           "per_rank": 1
         }
       ]
+    },
+    {
+      "id": "tmm_progression:ranged_quarry",
+      "max_rank": 5,
+      "required_rank": 4,
+      "base_cost": 2,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "#tmm_progression:undead",
+          "weapon": "#tmm_progression:ranged_weapons",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:equipment_care",
+      "max_rank": 3,
+      "required_rank": 8,
+      "base_cost": 2,
+      "step_cost": 1,
+      "choice_group": "tmm_progression:hunter_training_style",
+      "effects": [
+        {
+          "type": "gear_durability",
+          "target": "*",
+          "per_rank": 1,
+          "params": {
+            "slot": "all",
+            "action": "repair",
+            "interval_ticks": "200"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:fortified_training",
+      "max_rank": 3,
+      "required_rank": 8,
+      "base_cost": 2,
+      "step_cost": 1,
+      "choice_group": "tmm_progression:hunter_training_style",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 1
+        }
+      ]
     }
-  ]
+  ],
+  "max_level": 20
 }
