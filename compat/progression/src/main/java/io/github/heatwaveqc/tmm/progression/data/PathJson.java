@@ -54,8 +54,9 @@ public final class PathJson {
     public static Definition.Path read(String pathId, JsonObject source) {
         id(pathId);
         if (number(source,"schema",0) != 1) throw new IllegalArgumentException("schema must be 1");
-        if (!Set.of("admin","manual","sunset").contains(str(source,"enrollment","admin")))
+        if (!Set.of("admin","manual","sunset","potion").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
+        PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
         List<Long> thresholds = new ArrayList<>();
         for (JsonElement el : entries(source,"rank_xp")) {
             long n = el.getAsLong();

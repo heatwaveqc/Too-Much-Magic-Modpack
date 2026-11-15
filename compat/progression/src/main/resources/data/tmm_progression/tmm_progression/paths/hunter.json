@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "exclusive_group": "",
+  "exclusive_group": "tmm_progression:human_disciplines",
   "rank_xp": [
     0,
     20,
@@ -39,6 +39,18 @@
     }
   ],
   "milestones": [
+    {
+      "id": "tmm_progression:trial_of_venom",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:hunter_trial_of_venom",
+          "count": 1
+        }
+      ],
+      "xp": 0,
+      "points": 0
+    },
     {
       "id": "tmm_progression:undead_studies",
       "criteria": [
@@ -167,5 +179,19 @@
     }
   ],
   "max_level": 20,
-  "enrollment": "manual"
+  "enrollment": "potion",
+  "enrollment_trigger": {
+    "item": "minecraft:potion",
+    "potions": [
+      "minecraft:poison",
+      "minecraft:long_poison",
+      "minecraft:strong_poison"
+    ],
+    "required_effect": "minecraft:regeneration",
+    "required_advancement": "minecraft:adventure/kill_a_mob",
+    "clear_effects": [
+      "minecraft:poison"
+    ],
+    "completion_event": "tmm_progression:hunter_trial_of_venom"
+  }
 }

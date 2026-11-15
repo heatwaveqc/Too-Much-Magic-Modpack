@@ -30,6 +30,30 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 
 Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tmmprogress enroll tmm_progression:hunter` uses the Hunter's JSON `enrollment: manual`, while Monk `enrollment: sunset` requires 200 continuous valid, unarmored, empty-handed westward-looking sky-visible sunset ticks. OP join remains QA-only.
 
+### Data-defined potion enrollment (Trial of Venom)
+
+Any path may use `"enrollment": "potion"` plus a strictly validated `enrollment_trigger`. The example Hunter path now requires **Monster Hunter**, an active **Regeneration** status effect, and fully drinking a **vanilla Potion of Poison**, including extended or strong variants. Its trigger is:
+
+```json
+{
+  "enrollment": "potion",
+  "enrollment_trigger": {
+    "item": "minecraft:potion",
+    "potions": ["minecraft:poison", "minecraft:long_poison", "minecraft:strong_poison"],
+    "required_effect": "minecraft:regeneration",
+    "required_advancement": "minecraft:adventure/kill_a_mob",
+    "clear_effects": ["minecraft:poison"],
+    "completion_event": "tmm_progression:hunter_trial_of_venom"
+  }
+}
+```
+
+The **logical server** evaluates `LivingEntityUseItemEvent.Finish` and the pre-consumption ItemStack's exact `DataComponents.POTION_CONTENTS` base-potion ID. Splash/lingering applications, interrupted drinks, food, arbitrary Poison status, custom-effect potions, creative/spectator and missing Advancement/Regeneration do not enroll. A successful `ProgressionApi.join` checks existing path exclusivity and registered `registerJoinVeto` callbacks before clearing Poison and recording the one-time external completion milestone.
+
+Hunter and Monk share `exclusive_group: "tmm_progression:human_disciplines"`, preventing dual enrollment. Other form providers (JAWR, vampire/werewolf/dragon, etc.) must register **trusted** joining vetoes with `ProgressionApi.registerJoinVeto((player,pathId) -> ...)`. The core intentionally does not depend on their classes. The potion hook alone is **not proof** that all third-party transformations have been checked; the pack's species arbitration adapter remains required before release. Administrative QA join still bypasses the *ritual*, but not registered join vetoes.
+
+This milestone records initiation only. **Poison immunity, shortened harmful-effect durations and involuntary transformation prevention are separate Hunter abilities and provider adapters not implemented here.** Removing the trial's immediate Poison effect on successful enrollment should not be presented as permanent immunity. A rejected path consumes the potion normally; no item is restored or duplicated.
+
 ### Built-in effect handlers
 
 | Type | Gameplay |
