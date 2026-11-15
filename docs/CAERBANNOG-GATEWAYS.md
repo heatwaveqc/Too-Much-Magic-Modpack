@@ -1,0 +1,38 @@
+# Caerbannog Gateway encounters — draft gameplay contract
+
+Status: **experimental source on a feature branch; neither dedicated-server nor client mechanics verified**. This branch is not an approved integrated test build. Minecraft 1.21.1 / NeoForge / Gateways to Eternity 5.1.0.
+
+## Gateway of Caerbannog (`tmm:caerbannog`)
+
+- One vanilla Killer Bunny: `minecraft:rabbit` with `RabbitType:99` and `finalize_spawn:false`.
+- Completion awards exactly one guaranteed `minecraft:rabbit_foot` plus **12 `gateways:entity_loot` rabbit rolls**. The killed rabbit may additionally drop its ordinary natural drops; the phrase '12 rolls' applies to Gateway completion rewards.
+- Pearl recipe uses only vanilla redstone, carrot, rabbit hide and an ender pearl; deliberately does **not** consume a rabbit's foot.
+- Verify in-game that Killer Bunny AI and the reward tooltip/loot roll behave as intended, and that Fortune-related Ars Nouveau recipes really use `minecraft:rabbit_foot` in the installed version.
+
+## Gateway of the Chaos Bunny (`tmm:chaos_bunny`)
+
+- **Exactly five horde waves** of 5, 10, 20, 40 and 80 special Killer Bunnies, then **one boss** as the sixth gateway wave. Total: 155 horde rabbits + one boss.
+- Horde targets: 40 health (20 hearts), 20 attack damage (10 hearts pre-mitigation), 20 armor, 12 armor toughness, knockback resistance 75%, magic resistance. Current JSON uses +37 max health and +12 attack damage on Killer Bunny base attributes, plus *Resistance II* (40% general damage reduction) as a provisional substitute for spell-specific mitigation. Attributes and potion should be verified via `/attribute` and actual attacks; check whether Gateways applies modifiers before health fill.
+- The final boss currently has a **provisional** 1000 max-health target, 100 attack damage, 30 armor, 20 toughness, 95% knockback resistance and Resistance III. These are **not yet a verified Chaos Guardian-equivalent fight**: Draconic Evolution's 1.21 Guardian has a separately configured large shield. Balance against the installed Guardian rather than assuming equal HP means equal difficulty.
+- Intended *true* boss mechanics still missing: a randomized selection of **God-tier Apotheotic combat modifiers** on the actual rabbit, not a random Apothic Invader or an affixed weapon; 10% chance for a *frog-tongue instant kill* on a **successful boss bite**, with visible tongue/telegraph effect and correct behavior around totems, shields, PvP, pets and the pack's resurrection mechanics.
+- An **experimental KubeJS `EntityEvents.afterHurt` hook** attempts the 10% lethal attack by recognizing the boss tag and killing the target. This is not proof of functioning frog tongue or guaranteed kills in every protected form. No visual tongue effect exists yet.
+- **Only completion item** is one `kubejs:chaos_bunny_trophy`; five horde waves and boss wave have no reward arrays. The trophy is a one-stack cosmetic item, currently using a rabbit-foot icon as placeholder; replace with a proper display model before release.
+- Special rabbits use `gateways:loot_table` pointing to `tmm:entities/empty`, and an experimental drops-cancellation KubeJS hook. Verify all **vanilla, Apotheosis and other global-loot extra drops**, kill XP and external farming side effects; no other rewards are allowed. Explicitly blacklist the trophy from EMC, duplication recipes and other progression resources once the authoritative ProjectE/loot registry path is confirmed.
+- **No survival recipe for the Chaos pearl yet**, on purpose: do not make an incomplete superboss publicly craftable until randomized God-tier modifiers, tongue visual and loot isolation are implemented and tested. Administrators can inspect with the Gateways open command once source data is loaded.
+
+## Required acceptance tests
+
+1. `/reload` or fresh boot recognizes both gateways; game client shows their names and Gate Pearls correctly (add en_us localization before publishing).
+2. Plain gateway yields one guaranteed foot plus twelve independent rabbit loot rolls; check Looting interactions and repeat uses.
+3. Horde spawn counts 5/10/20/40/80 exactly, all rabbit types are 99, all are hostile, health actually starts full at 40 HP, and base hit deals 20 before protection.
+4. On a fresh disposable world, test mage damage sources from Ars Nouveau, Iron's Spellbooks and other installed systems; armor and spell mitigation behave intentionally.
+5. Sixth wave is a single boss. Verify successful melee strikes have approximately 10% lethal procs over a sufficiently large controlled test (never claim pass based on one hit). Add a tongue animation/particle effect.
+6. Test with two players, summoned allies, broken line-of-sight, portals, failure timeout, mob cleanup, lag/TPS on 80 rabbits, and all transformation resurrection conditions.
+7. No item or resource drops at all from **any** of 156 Chaos rabbits; finishing grants exactly one trophy, with no conversion, EMC or loot-duplication exploit. Investigate XP as an incidental resource separately.
+8. Compare fully effective health, offense, mobility, anti-cheese and player gear requirements against **the installed Chaos Guardian**, then finalize the boss target numbers.
+
+## Upstream references
+
+- Gateways 1.21 branch: `schema/Gateway.md`, `schema/components/{Wave,WaveEntity,WaveModifier,Reward,GateRules}.md`, stock recipe `src/main/resources/data/gateways/recipe/overworldian_nights.json`.
+- Apotheosis 1.21: `compat/gateways/AffixWaveModifier.java` only affixes mob equipment and does not itself give a weaponless rabbit randomized combat traits. Native elite wrappers require a *specific* elite and are not equivalent to random God-tier modifiers.
+- Draconic Evolution 1.21: `DEConfig.java` defaults Guardian health to 1000, *plus* a separate 16000 shield; inspect installed build and custom config before signing off difficulty.
