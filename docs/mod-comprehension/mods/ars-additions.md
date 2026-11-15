@@ -5,7 +5,7 @@
 | Manifest ID / mod ID | `ars-additions` / `ars_additions` |
 | Parent | [Ars Nouveau](ars-nouveau.md); depends on Ars Nouveau |
 | Pack pin | `ars_additions-1.21.1-21.3.0.jar`; CurseForge/Modrinth pin in `mods/ars-additions.pw.toml`; SHA-512 `3f06e6e838c6a5bb14cb1f475f393c0ceeb7b78a7faf9f73df008adae69f68410382cde4511d2b73c0e99dd38732ba1e5d192aac941bb26f2ab771f8bbdbcc43` |
-| Source and version gap | Exact addon release source found at [commit 91f102a](https://github.com/Jarva/Ars-Additions/commit/91f102a), whose `version` file is `21.3.0`; its Gradle metadata depends on Ars 5.11.2 while TMM pins Ars 5.13.5. This aligns the addon source revision to the pack's addon version, but does not prove source-to-JAR equivalence or compatibility with the newer base. |
+| Source and version gap | Exact addon release source found at [commit `91f102a90dc058cf40e4eac5a67a881e48b856b4`](https://github.com/Jarva/Ars-Additions/commit/91f102a90dc058cf40e4eac5a67a881e48b856b4), whose `version` file is `21.3.0`; its Gradle metadata depends on Ars 5.11.2 while TMM pins Ars 5.13.5. This aligns the addon source revision to the pack's addon version, but does not prove source-to-JAR equivalence or compatibility with the newer base. |
 | Status | **researching** — release-version source and the primary feature surface are mapped; exact artifact comparison, addon interaction details and player routes need review. No client test. |
 | Guide access | Use Ars Nouveau's Worn Notebook for shared Source/storage procedures. No Ars Additions guide section was verified. Addon quests must give full addon-specific instructions and cite the precise JEI item recipe/use. |
 
@@ -30,6 +30,6 @@ The [49-quest pilot](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/7
 ## Evidence and next actions
 
 - Exact pin/hash and quest evidence: `manifest/ars_quest_pilot.json` on the pilot branch.
-- Upstream primary overview: [Ars Additions README at 21.3.0 release source](https://github.com/Jarva/Ars-Additions/blob/91f102a/README.md).
+- Upstream primary overview: [Ars Additions README at 21.3.0 release source](https://github.com/Jarva/Ars-Additions/blob/91f102a90dc058cf40e4eac5a67a881e48b856b4/README.md).
 - Outstanding: inspect the exact 21.3.0 JAR; compare registries, recipes, loot, worldgen, config and Notebook entries; verify current Ars 5.13.5 compatibility, supported endpoints and chunk-loading behavior.
 - Client tests: positive and unloaded/missing-link boundary for Warp Index; two jars with one shared Source event; bulk wand single vs multi endpoint; both portal structures; one Mark/Recall and one Retaliate timing boundary; confirm the Arcane Permanent default remains disabled.
