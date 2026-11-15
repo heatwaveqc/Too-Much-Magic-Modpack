@@ -28,7 +28,9 @@ These are *design stages*, not promises of specific form levels; map stages to r
 | Mastery | Real native high progression, verified achievement where relevant, and previous node rank >=1 | 1–3 ranks/node or one-on-cooldown active; meaningful but bounded |
 | Tree capstone | Verified final native stage plus appropriate late-game milestone | One 2–5 SP purchase, *provisional* price, test before acceptance |
 
-Within a form specialization lane the explicit dependency is **Entry → Advanced → Mastery**, requiring one rank in the directly preceding node. A proposed capstone requires at least **one Mastery purchase and one Advanced purchase in a different lane**, plus the verified native end stage and a real late milestone. These are intended edge rules, not native Tyz runtime wiring yet.\n\nThere is **no universal rule that every skill has 99 ranks**. The four existing Core Magic preview traits already reserve 99 ranks and should be preserved/rebalanced rather than overwritten. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
+Within a form specialization lane the explicit dependency is **Entry → Advanced → Mastery**, requiring one rank in the directly preceding node. A proposed capstone requires at least **one Mastery purchase and one Advanced purchase in a different lane**, plus the verified native end stage and a real late milestone. These are intended edge rules, not native Tyz runtime wiring yet. 
+
+There is **no universal rule that every skill has 99 ranks**. The four existing Core Magic preview traits already reserve 99 ranks and should be preserved/rebalanced rather than overwritten. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
 
 ## 3. Nine categories, complete proposed skill families
 
