@@ -72,6 +72,6 @@ public final class ProgressionCommands {
                                 StringArgumentType.getString(ctx,"event_id"));
                             ctx.getSource().sendSuccess(() -> Component.literal("Event recorded"),false);
                             return 1;
-                        }))));
+                        })))));
     }
 }
