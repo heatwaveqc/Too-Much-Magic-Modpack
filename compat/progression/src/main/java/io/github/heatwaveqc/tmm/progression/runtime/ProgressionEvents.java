@@ -17,6 +17,8 @@ import net.neoforged.neoforge.event.entity.player.AdvancementEvent;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
+import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerWakeUpEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -31,6 +33,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::continueSleeping);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::wake);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
@@ -158,19 +163,24 @@ public final class ProgressionEvents {
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) Enrollment.clear(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Enrollment.clear(player);
+            BedrockRest.forget(player);
+        }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
         }
