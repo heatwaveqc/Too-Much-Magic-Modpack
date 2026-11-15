@@ -1,6 +1,6 @@
 # Too Much Magic — Quest Shop and player sales
 
-> **Economy rebalance required (2026-11-14):** ProjectE's initial access is proposed to move to Gaia Guardian I **or** Neo Vitae Foreman; advanced EMC production and Project Expansion remain post-Chaos. This changes the former assumption that ProjectE bulk resource conversion/coin production begins only after Chaos. Re-audit commodity resale loops and coin pricing before releasing the tiered gate. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
+> **Economy rebalance required (2026-11-14):** Basic ProjectE moves to a **boss-trophy-center Philosopher's Stone** recipe, with three tradeable ingredient routes and no per-player kill lock. Red MK3+ Power Flowers consume Chaos Shard in crafting; after acquisition boss drops/shards may also be EMC duplicated. The former post-Chaos-only commodity-conversion assumption is obsolete. Universal EMC coverage magnifies the need to audit Quest Shop resale cycles. This changes the former assumption that ProjectE bulk resource conversion/coin production begins only after Chaos. Re-audit commodity resale loops and coin pricing before releasing the tiered gate. See [ProjectE plan](PROJECTE-TIERED-GATING-PROPOSAL.md).
 
 Owner-approved 2026-11-14. **Integration candidate**, not a tested economy. Quest Shop is the only new shop; Cooking for Blockheads is in Food & Fishing.
 
