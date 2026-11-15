@@ -60,8 +60,7 @@ cancels the death event, so Goety does not charge its Arca. If the JAWR
 phylactery is not charged, native Goety remains the fallback without
 any TMM manual resurrection. Other liches are left alone.
 
-This is **OFF by default**: enable `experimentalArchlichPhylacteryFirst`
-in `tmm_archlich-server.toml` only in a backed-up, disposable test world.
+This is **ON by default** for fresh disposable pre-alpha worlds: `experimentalArchlichPhylacteryFirst = true` in `tmm_archlich-server.toml`. Set false explicitly to opt out; existing world configs retain their values.
 The exact native API is version gated. It does not implement the proposed
 shared hunger value, cures, or immortality cross-provider lifecycle.
 See [Archlich priority and QA](docs/ARCHLICH-RESURRECTION-PRIORITY.md).
