@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/full-integration.yml'
       - 'scripts/assemble_integration.py'
+      - 'scripts/quest_registry_gate.py'
       - 'scripts/build_full_integration_prism.py'
       - 'scripts/tmm_qa_preferences.ps1'
       - 'scripts/prism_qa_options.txt'
@@ -55,6 +56,13 @@ jobs:
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
           python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
+      - name: Verify quest registry probe logic and generate exact staged IDs
+        run: |
+          python3 scripts/quest_registry_gate.py selftest
+          python3 scripts/quest_registry_gate.py prepare \
+            --chapters config/ftbquests/quests/chapters \
+            --manifest "${{ runner.temp }}/tmm-quest-item-registry-manifest.json" \
+            --probe "${{ runner.temp }}/tmm-quest-item-registry-probe.js"
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
@@ -82,8 +90,14 @@ jobs:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
+          QUEST_REGISTRY_PROBE: ${{ runner.temp }}/tmm-quest-item-registry-probe.js
           SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
         run: bash scripts/smoke_server.sh
+      - name: REQUIRED live item registry check for every staged quest icon, task and reward
+        run: |
+          python3 scripts/quest_registry_gate.py verify \
+            --manifest "${{ runner.temp }}/tmm-quest-item-registry-manifest.json" \
+            --log "${{ runner.temp }}/tmm-full-integration-smoke/server.log"
       - name: Fail on unresolved Werewolves food tags in the full server log
         run: |
           if grep -Eq "Couldn't load tag werewolves:werewolf_food" "${{ runner.temp }}/tmm-full-integration-smoke/server.log" "${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log"; then
@@ -153,5 +167,7 @@ jobs:
             ${{ runner.temp }}/tmm-full-integration-smoke/server.log
             ${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log
             ${{ runner.temp }}/tmm-jawr-food-audit/
+            ${{ runner.temp }}/tmm-quest-item-registry-manifest.json
+            ${{ runner.temp }}/tmm-quest-item-registry-probe.js
           retention-days: 30
           if-no-files-found: warn
