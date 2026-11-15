@@ -20,7 +20,8 @@ import java.util.Set;
 public final class EffectHandlers {
     private EffectHandlers() {}
     private static final Set<String> BUILTIN = Set.of(
-        "attribute","melee_bonus","damage_multiplier","break_speed","harvest_tier");
+        "attribute","melee_bonus","damage_bonus","damage_multiplier","break_speed",
+        "harvest_tier","gear_durability","animal_friendship");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
