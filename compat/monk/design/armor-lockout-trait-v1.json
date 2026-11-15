@@ -34,7 +34,9 @@
     "when_turning_off": "Unblock all four armor slots immediately. Keep currently equipped items unchanged and warn if putting on armor will suppress Monk skills. Fist hotbar slot remains independently protected.",
     "on_faction_exit": "Release armor lock and revert ordinary equipment handling; retain no phantom armor items. Rejoining policy may restore default ON or saved state after explicit design decision.",
     "warning": "No skill point spend. Toggling ON with bound armor DOES NOT guarantee safety, immediate removal or retained Monk skills: a damageable bound piece wears down and can break; Life Mending and other repair effects continue naturally and may drain or kill the character. The Monk can toggle OFF at any time but equipped Curse of Binding still cannot be removed normally. Do not auto-disarm the toggle to avoid death.",
-    "quick_toggle_safety": "Use a deliberately distinct configurable Armor Lock keybind or settings toggle and provide actionbar feedback. Allow immediate toggling ON/OFF even with bound armor; no required confirmation or capacity gate. Warn that active bound armor will deteriorate while ON and Life Mending can be lethal."
+    "quick_toggle_safety": "Use a deliberately distinct configurable Armor Lock keybind or settings toggle and provide actionbar feedback. Allow immediate toggling ON/OFF even with bound armor; no required confirmation or capacity gate. Warn that active bound armor will deteriorate while ON and Life Mending can be lethal.",
+    "feedback_when_enabled_with_bound_armor": "Armor Lock ON — bound armor deteriorating; Life Mending may drain health. This is informational feedback, not a required confirmation or toggle veto.",
+    "feedback_when_disabled": "Armor Lock OFF — added wear stopped; armor remains equipped and Monk techniques stay suspended until removal."
   },
   "slot_policy": {
     "armor_equipment_slots": [
@@ -108,7 +110,8 @@
     "Already equipped non-damageable/Unbreakable cursed item: toggle ON succeeds; item remains, no fake break, powers disabled until ordinary removal/death/command.",
     "One removable armor piece with storage full and another Curse of Binding piece: ON accepted, ordinary piece stays intact pending space, cursed piece wears; no forced deletion or dupes.",
     "Low tick rate, relog, death/keepInventory and dimensions: server cadence does not double fire or apply wear to deleted/offline items; broken gear remains broken and no fake re-equip.",
-    "Ordinary vanilla Unbreaking/repair and item-break hooks function; no direct damage component override or bypass of Life Mending."
+    "Ordinary vanilla Unbreaking/repair and item-break hooks function; no direct damage component override or bypass of Life Mending.",
+    "Armor Lock ON with Bound + Life Mending: display a non-blocking warning once when toggled, don't auto OFF, and verify no custom health damage outside Life Mending."
   ],
   "release_gate": "Design and pure policy only; do not enable the default-ON runtime guard or binding wear without an actual server-side configurable toggle, mod-aware equip interception, source-correct break pathway, per-slot server tick cadence, no-loss transfer, persistence and in-game Life Mending QA. The intended lethal repair loop is approved, but needs runtime verification.",
   "independent_from": "tmm_monk:reserved_fist_slot",
@@ -132,6 +135,7 @@
     "life_mending": "Repair effects remain fully operative. Apotheosis Life Mending is documented to spend wearer health repairing equipment; if repair outpaces Armor Lock's durability wear, trapped cursed armor can keep drawing health and the Monk may die. This is an intended player-choice trap, not a bug; do not disable Life Mending, prevent damage or auto-toggle OFF.",
     "integrity": "Do not add health damage directly. Distinguish Armor Lock mechanical durability wear from Life Mending's independent health cost; do not strip Enchantment components or exploit inventory duplication.",
     "reference_enchantment_semantics": "minecraft:prevent_armor_change in Minecraft 1.21.1; Curse of Binding is the vanilla source.",
-    "test_expectations": "Damage on server only at configured cadence; respect actual item durability, enchantments, break events and damageability. Verify pinned Apotheosis Life Mending behavior on disposable world; source text alone does not prove this pack's exact pinned implementation."
+    "test_expectations": "Damage on server only at configured cadence; respect actual item durability, enchantments, break events and damageability. Verify pinned Apotheosis Life Mending behavior on disposable world; source text alone does not prove this pack's exact pinned implementation.",
+    "precedence": "At each periodic server check, evaluate the current equipment, real eligibility to remove and ItemStack damageability; do not cache a curse diagnosis across gear changes. Preserve normal enchant repair/damage behavior, then synchronize current slot stack/break state."
   }
 }
