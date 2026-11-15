@@ -38,3 +38,18 @@ Do not mark Monk or Vampirism fully accepted based on compilation or mod registr
 ## Follow-up correction (user report, 2026-11-14)
 
 The owner corrected the Monk sunset procedure and successfully initiated on the older test build. Treat First Sunset's **natural initiation** as a player-tested pass. Do not extrapolate this to the B15 diagnostics, filled Monk skill tree, universal Tyz integration, or complete transformations compatibility. The earlier FAIL entry was the test procedure, not confirmed code failure.
+
+
+## Full-integration direct-import ZIP player report — 2026-11-14 local, QA #43672219306
+
+Full item-by-item observations, exact immutable commit and explicit untested boundaries are in [QA-CLIENT-PLAYTEST-43672219306-2026-11-14.md](QA-CLIENT-PLAYTEST-43672219306-2026-11-14.md).
+
+- **PASS (bounded):** ordinary magic skill use; quests; shop; general QoL; the graphite-from-diamonds change and coal-as-fuel shift-click fix. Monk native mastery XP/ranks also increased correctly.
+- **PARTIAL:** most regular dragon foods and normal vampire interactions worked.
+- **FAIL / release blocker:** Lilith/JAWR vampire upgrade reset both blood pools to empty. Feeding failed to restore them until re-login. Even after re-login, JAWR's own blood HUD remained invisible. Do not mark ascension/blood accepted.
+- **FAIL / release blocker:** Monk skill UI denied purchases ("You cannot buy skills" approximately), despite mastery leveling. Do not mark Monk skill tree playable.
+- **FAIL / missing diet cases:** Sea Dragon could not eat sushi; Forest Dragon could eat enchanted Golden Apple, but not reported enchanted Golden Carrot or Sourceberries. `aquaculture:sushi` already exists in the authored diet map, so diagnose runtime food/data-map and exact ID rather than assuming omitted config. Exact registry ID of "enchanted golden carrot" remains unconfirmed.
+- **OBSERVATION:** Treecapitator yields a single Monk block-break XP event for a whole tree. **REQUEST:** credit successfully completed, player-attributed magical block breaks, plus provide credible noncombat Monk level-one advancement and/or small starter combat improvement.
+- **DO NOT INFER:** No report here of all 180 quests, all ore-shop prices, multiplayer, universal MXP dispatch, lich diets or ProjectE endgame. Treat aggregate passes as bounded.
+
+This newer playtest supersedes the earlier ledger's Monk tree "not yet proven" status with **observed purchase FAIL** and vampire "in progress" status with **observed upgrade FAIL**. No stable promotion or reclassification of unrelated features.
