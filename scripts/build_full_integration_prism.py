@@ -89,9 +89,13 @@ Suggested QA — disposable worlds ONLY:
   meat/seafood using Dragon Survival's NATIVE charring, not a coal
   shortcut recipe. Compare JEI, hunger/saturation
   and KubeJS/recipe logs; test each food type and negative cases.
-- Vampire ascension v2, on a throwaway backed-up world with explicit
-  experimental flags: regular infection creates VAMPIRISM ONLY; Lilith
-  Blood upgrades human or normal vampire to JAWR+Vampirism with JAWR
+- Vampire ascension v2 test flags are PRE-ENABLED in QA-only
+  defaultconfigs/tmm_transformations-server.toml for every NEW world:
+  chassis=true, Lilith dual acquisition=true, unknown providers=true.
+  Operator-only forced cure stays OFF; use native cures. Existing worlds
+  keep their own serverconfig and do not receive this automatically.
+  Regular infection creates VAMPIRISM ONLY; Lilith Blood upgrades
+  human or normal vampire to JAWR+Vampirism with JAWR
   canonical hunger/blood and a derived Vampirism display. Test normal
   and ascended feeds, paid abilities, healing, all cures, relog, second
   player, Fang infection OFF, and open-sky daytime inside/outside
@@ -123,6 +127,11 @@ Suggested QA — disposable worlds ONLY:
   preference persistence. Verify client keybinds and volume.
 - Neo Vitae canonical dust, Mahou Catalyst Exchange, unified silver,
   Polymorph conflicts, ProjectE trophies and MK3+ Power Flower gates.
+  REGRESSION: World creation must NOT crash when the starter Akashic Tome
+  is dropped. Other dropped items must tick normally; Neo Vitae dust
+  should substitute only above a genuine Catalyst Exchange, restore
+  unused remainder if no Mahou mana, and preserve components. Test
+  Mahou's native 1-for-1 consume and charge behavior at partial stacks.
   Log unexpected KubeJS errors and cross-mod exploits.
 - Test two players, reload, relog, death, dimensions and a separate
   dedicated server. Preserve before/after screenshots and exact logs.
