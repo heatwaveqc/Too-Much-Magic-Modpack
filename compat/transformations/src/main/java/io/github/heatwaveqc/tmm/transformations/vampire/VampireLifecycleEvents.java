@@ -5,7 +5,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 /**
- * Event-driven reconciliation of derived JAWR shadow after loading a player or
+ * Event-driven reconciliation of derived Vampirism blood mirror after loading a player or
  * crossing a dimension. No periodic polling and no transformations applied.
  */
 public final class VampireLifecycleEvents {
@@ -18,13 +18,13 @@ public final class VampireLifecycleEvents {
 
     private static void login(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            VampireChassisRuntime.onNativeBloodChanged(player);
+            VampireChassisRuntime.onJAWRBloodChanged(player);
         }
     }
 
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            VampireChassisRuntime.onNativeBloodChanged(player);
+            VampireChassisRuntime.onJAWRBloodChanged(player);
         }
     }
 }
