@@ -21,7 +21,6 @@ public final class VampireLifecycleEvents {
     private static void login(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             VampireChassisRuntime.onJAWRBloodChanged(player);
-            VampireChassisRuntime.reconcileAscension(player);
         }
     }
 
