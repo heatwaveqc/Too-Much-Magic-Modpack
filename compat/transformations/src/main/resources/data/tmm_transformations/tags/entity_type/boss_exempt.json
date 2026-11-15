@@ -17,6 +17,10 @@
     {
       "id": "feywild:ashen_lord",
       "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "required": false
     }
   ]
 }
