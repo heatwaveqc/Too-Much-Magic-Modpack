@@ -1,6 +1,6 @@
 # Standalone player-enhancement progression core — early implementation
 
-**Status:** development slice; NOT yet approved for the integrated modpack. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
+**Status:** compiling/development chassis only; not activated as an integrated modpack JAR or declared gameplay parity. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
 
 ## Goal and ownership
 
@@ -18,15 +18,16 @@ Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sampl
 | --- | --- |
 | `schema: 1` | Strict format version; invalid JSON/policy errors reject the path |
 | `exclusive_group` | Optional mutually exclusive path set; external transformations still need their own arbitration |
-| `rank_xp` | Cumulative XP thresholds starting with 0; one entry per rank |
+| `rank_xp` | Cumulative **native progression XP** thresholds beginning at 0; configurable rate and curve |
+| `max_level` | Optional explicit level cap (1..200); must equal number of entries in `rank_xp` |
 | `points_per_rank` | Native optional technique points; **not Tyz MXP** |
 | `activities` | `event`, `target` ID/#tag, `xp`, `cooldown_ticks`; XP is credited only on trusted server events |
 | `milestones` | `id`, AND-joined `criteria` (event + target + count), optional milestone IDs in `after`, one-time `xp` and `points` |
-| `skills` | `id`, `max_rank`, `required_rank`, `base_cost`, `step_cost`, optional required skills/milestones, and `effects` |
+| `skills` | `id`, `max_rank`, `required_rank`, `base_cost`, `step_cost`, `requires_skills` (all), `requires_any_skills` (one), `choice_group` (mutually exclusive), optional milestone prerequisites and `effects` |
 | `auto_ranks` | For mandatory milestone/rank-granted powers; rank thresholds at which effect ranks automatically increase **for free** |
 | `effects` | Native effect type with optional `target`, `weapon`, `damage_tag`, `attribute`, `operation`, `per_rank`, `tier`, `empty_hand`, `unarmored`, `params` |
 
-Event types currently supported: `kill`, `block_break`, `external`. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. The only current in-game path join is an OP command for QA.
+Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), and `animal_petted` (only successful server-side Animal Friendship interactions). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. The only current in-game path join is an OP command for QA.
 
 ### Built-in effect handlers
 
@@ -34,17 +35,20 @@ Event types currently supported: `kill`, `block_break`, `external`. First Sunset
 | --- | --- |
 | `attribute` | Stable, reversible attribute modifier; `per_rank` and `operation`; resource-location attribute |
 | `melee_bonus` | Added melee damage matching target entity ID/tag and optional held weapon ID/tag; `empty_hand` is supported |
+| `damage_bonus` | Target + weapon ID/tag matching for direct melee and arrow hits; `params.delivery` = `melee`, `arrow`, `any`. Arrows inspect the original firing bow/crossbow; no magic projectile guessing |
 | `damage_multiplier` | Damage reduction by source type/tag, with rank-scaled fraction; capped at zero damage |
 | `break_speed` | Multiplies speed on matching block ID/tag; allows unarmed mining condition |
 | `harvest_tier` | Effective vanilla tier 0..3, limited by attained rank; can make bare hands harvest higher tiers |
+| `gear_durability` | Periodic native wear (`params.action:damage`) or repair (`repair`) on equipment `slot` mainhand/offhand/head/chest/legs/feet/armor/all; `target` item tag/ID; `interval_ticks` 1..72000, `per_rank` 0..64 |
+| `animal_friendship` | Empty-main-hand adult Animal love via server-side interaction; targets entity ID/tag or `*`, awards `animal_petted` when accepted |
 
 Supported generic conditions: `empty_hand`, `unarmored`. Default values mean no restriction. Tag selectors start with `#` and are resolved from live server registries.
 
-**New unusual power?** Register once in Java: `EffectHandlers.register("yourmod:blink", handler)`, with implementation of the `Handler` interface. The datapack can then refer to `{"type":"yourmod:blink","params":{"range":"16"}}` under any skill. Server hooks offered: `tick`, `incoming`, `harvest`, `breakSpeed`, `blockBreak`, `kill`. Registration must be performed by trusted Java before datapack reload; arbitrary scripts in JSON are not executed.
+**New unusual power?** Register once in Java: `EffectHandlers.register("yourmod:blink", handler)`, with implementation of the `Handler` interface. The datapack can then refer to `{"type":"yourmod:blink","params":{"range":"16"}}` under any skill. Server hooks offered: `tick`, `incoming`, `harvest`, `breakSpeed`, `blockBreak` (pre-break), `kill`, `foodConsumed`, `entityInteract`. The latter two allow novel-food and per-animal effects without hardcoding Monk/Hunter IDs. Registration must be performed by trusted Java before datapack reload; arbitrary scripts in JSON are not executed.
 
 ### Persistent player ledger
 
-Saved per player: path enrollment, rank, cumulative XP, native technique points, purchased and automatically granted skill ranks, completed milestones, criterion counts. Native attachment is copy-on-death; transient attribute modifiers are reconciled, rather than permanently stamped. Invalid reload definitions do not deliberately delete stored progress. There is **no player GUI or client sync protocol yet**; command output is server-side.
+Saved per player: path enrollment, rank, cumulative XP, native technique points, purchased and automatically granted skill ranks, completed milestones, criterion counts. A **separate copy-on-death food-history attachment** saves first-consumed item IDs without changing the previous path-ledger serialized layout. Native attachment is copy-on-death; transient attribute modifiers are reconciled, rather than permanently stamped. Invalid reload definitions do not deliberately delete stored progress. There is **no player GUI or client sync protocol yet**; command output is server-side.
 
 ### QA commands
 
@@ -57,7 +61,7 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 /tmmprogress admin event tmm_progression:monk_first_sunset  # OP-only
 ```
 
-To run the module from this directory with Gradle: `gradle --no-daemon build` then `gradle runServer` or `gradle runClient`. Github Actions workflow `progression-core.yml` checks compilation/JUnit on pushes and PRs; no successful run is claimed yet.
+To run the module from this directory with Gradle: `gradle --no-daemon build` then `gradle runServer` or `gradle runClient`. GitHub Actions workflow `progression-core.yml` checks compilation/JUnit on pushes and PRs; check the latest run on the PR before treating this revision as passing.
 
 ## Incomplete / guarded behavior
 
@@ -68,6 +72,31 @@ To run the module from this directory with Gradle: `gradle --no-daemon build` th
 5. **UI, migration and safety:** No custom HUD/skill tree GUI, client-sync, versioned progress migration, path-leave/cure/reset, configured respec price, anti-farm event dedupe, effect-handler hot reload/registration timing tests, or pack-manifest inclusion. No in-game QA has passed.
 6. **Lifecycle:** Unregistering/removing a datapack path retains its saved ledger but cannot apply or respec effects until the definition returns. Effects have transient IDs; login/logout/reset consistency must pass tests.
 7. **Security:** Never expose `join`, `recordExternal` or arbitrary XP awards to untrusted client packets. The integration adapter must validate true initiation/trial completion server-side.
+
+## Configured mini-examples (not complete classes)
+
+```json
+{
+  "schema": 1,
+  "max_level": 3,
+  "rank_xp": [0, 25, 75],
+  "points_per_rank": 2,
+  "activities": [
+    {"event":"kill","target":"#tmm_progression:undead","xp":5,"cooldown_ticks":0},
+    {"event":"food_discovered","target":"*","xp":8,"cooldown_ticks":0}
+  ],
+  "skills": [
+    {"id":"example:sword","required_rank":2,"choice_group":"example:stance",
+     "effects":[{"type":"damage_bonus","weapon":"#tmm_progression:swords",
+                 "target":"#tmm_progression:undead","per_rank":1,
+                 "params":{"delivery":"melee"}}]},
+    {"id":"example:bow","required_rank":2,"choice_group":"example:stance",
+     "effects":[{"type":"damage_bonus","weapon":"#tmm_progression:ranged_weapons",
+                 "target":"#tmm_progression:undead","per_rank":1,
+                 "params":{"delivery":"arrow"}}]}
+  ]
+}
+```
 
 ## Acceptance gates before merging into test/full-integration
 
