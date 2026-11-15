@@ -224,6 +224,67 @@ public final class VampireChassisRuntime {
     }
 
     /**
+     * Observe actual post-mutation state, not a desired level. A persisted
+     * ascension marker allows safe recovery from alternate upstream cures.
+     */
+    public static void afterJAWRSetLevel(ServerPlayer player) {
+        if (!VampireChassisConfig.chassis() || inTransaction()) return;
+        if (isDual(player)) {
+            player.setData(TransformationAttachments.ASCENDED_VAMPIRE.get(), true);
+            onJAWRBloodChanged(player);
+        } else if (player.getData(TransformationAttachments.ASCENDED_VAMPIRE.get())) {
+            reconcileAscension(player);
+        }
+    }
+
+    /**
+     * Known native cure entrypoints are synchronous; this is the fallback for
+     * alternate attachment mutations. Only a formerly dual vampire is
+     * eligible. No ordinary Vampirism-only player is ever auto-cured.
+     */
+    public static void reconcileAscension(ServerPlayer player) {
+        if (!VampireChassisConfig.chassis() || inTransaction()) return;
+        if (player.getData(TransformationAttachments.REVIEW.get()).adminHold()) return;
+        if (isDual(player)) {
+            if (!player.getData(TransformationAttachments.ASCENDED_VAMPIRE.get())) {
+                player.setData(TransformationAttachments.ASCENDED_VAMPIRE.get(), true);
+            }
+            return;
+        }
+        if (!player.getData(TransformationAttachments.ASCENDED_VAMPIRE.get())) return;
+        Observation vamp = VAMPIRISM.observe(player);
+        Observation jawr = JAWR.observe(player);
+        if (vamp == Observation.UNKNOWN || jawr == Observation.UNKNOWN) return;
+        if (vamp == Observation.ABSENT && jawr == Observation.ABSENT) {
+            player.setData(TransformationAttachments.ASCENDED_VAMPIRE.get(), false);
+            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
+            return;
+        }
+        try {
+            MUTATING.set(true);
+            if (vamp == Observation.PRESENT && jawr == Observation.ABSENT) {
+                if (!VampireNativeAccess.canLeaveVampirism(player)
+                        || !VampireNativeAccess.leaveVampirism(player)) {
+                    throw new IllegalStateException("Vampirism refused partial-cure reconciliation");
+                }
+            } else if (vamp == Observation.ABSENT && jawr == Observation.PRESENT) {
+                VampireNativeAccess.setJAWRLevel(player, 0);
+            }
+            if (VAMPIRISM.observe(player) != Observation.ABSENT
+                    || JAWR.observe(player) != Observation.ABSENT) {
+                throw new IllegalStateException("Partial cure persisted after reconciliation");
+            }
+            player.setData(TransformationAttachments.ASCENDED_VAMPIRE.get(), false);
+            player.setData(TransformationAttachments.BLOOD_CARRY.get(), VampireBloodCarry.empty());
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            hold(player, "Incomplete vampire cure; restore from test backup if needed",
+                    new IllegalStateException(e));
+        } finally {
+            MUTATING.remove();
+        }
+    }
+
+    /**
      * Operator-only, disposable-world test cure. Preflight guards known failure
      * paths; third-party side effects cannot yet be fully rolled back.
      */
