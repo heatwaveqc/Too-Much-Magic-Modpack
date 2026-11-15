@@ -15,7 +15,7 @@
     },
     {
       "name": "quest-standards-and-starter-choice",
-      "branch": "feature/quest-reward-humor-first-pass",
+      "branch": "feature/ars-quest-pilot",
       "paths": [
         "config/ftbquests/quests/",
         "manifest/quest_content.json",
@@ -24,10 +24,16 @@
         "scripts/rebuild_quest_ui.py",
         "scripts/validate_quests.py",
         "manifest/progression_quest_content.json",
-        "scripts/apply_quest_reward_palette_v1.py"
+        "scripts/apply_quest_reward_palette_v1.py",
+        "manifest/ars_quest_pilot.json",
+        "manifest/ars_quest_pilot_validation.json",
+        "scripts/build_ars_quest_pilot.py",
+        "scripts/validate_ars_quest_pilot.py",
+        "scripts/write_ars_quest_probe.py",
+        "kubejs/data/tmm/advancement/ars_pilot/"
       ],
       "mode": "runtime-experimental",
-      "note": "B14 180-quest book plus validated QA-first reward refresh: 19 authored + 42 temporary overview rewards replaced with funny/useful gifts; no paper/cookie/compass filler, and exactly one empty bowl for Farmer's Delight Cooking Pot. Quest IDs/XP/reward IDs unchanged. Six-shop-category and 47-offer checks imported; client rewards still need verification. The sixth starter-path option is now a Spyglass (not a compass), preserving stable choice ID; client choice option must be retested."
+      "note": "Current quest source descends from the humorous-reward and B14 starter-choice branches, preserving all other quest IDs/rewards. Ars scaffold is replaced by 49 authored pilot quests: 29 core + 20 across all seven Ars add-ons; book totals 228 quests / 187 authored. One initial XP-only orientation, 48 detectable item/advancement objectives with thematic fixed rewards, actual Chimera kill advancement, real ANS transcription/binding/cross-cast. Local quest-source baseline server smoke passed (135 server JARs, 93 item refs and 17 advancement refs resolved). Client layout, action credit, multiplayer claims and combined all-stream behavior remain UNTESTED. Preserve sixth starter Spyglass choice, six-shop/47-offer catalog and the inherited filler/XP-bottle exclusions. Required pilot source, validator/compiler and Chimera datapack path must be imported together."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -261,7 +267,8 @@
     "fix/jawr-blood-debit-guard": "Previous symmetrical dual-vampire native blood debit guard; NOT used after Vampire Ascension v2 reversal.",
     "design/mxp-all-magic-sources-implementation-checklist": "Research/checklist only (docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md); no independent runtime mods; canonical MXP source code remains feature/mxp-ars-irons-botania-neo-hooks.",
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately.",
-    "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice."
+    "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice.",
+    "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source."
   },
   "pending_runtime_work": [
     "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
@@ -295,6 +302,7 @@
     "NEXT INTEGRATION QA: graphite production uses 1 diamond -> 1 BiggerReactors Rework graphite ingot in vanilla furnace and blast furnace. Original coal/charcoal-to-graphite cooking removed, but live JEI and furnace SHIFT-CLICK coal/charcoal routing must confirm other mod recipes do not still classify coal as input; see feature/diamond-graphite-furnace-compat.",
     "NEXT QA: Werewolves food compatibility with Relics. Require no TagLoader failure on werewolves:werewolf_food (formerly missing relics:infinity_ham); verify Aquaculture raw/cooked fish, Farmer's Delight raw/cooked meats, native berries and Not Meat? skill. Archlich food value 17/saturation 0 is a separate design candidate, not shipped; verify Goety/JAWR hunger/regen/death hooks first.",
     "ARCHLICH TARGET / NEXT QA: `tmm_transformations` module now includes pre-alpha-default-enabled JAWR-phylactery-first native LivingDeathEvent dispatch and Goety Arca fallback. In disposable world verify experimentalArchlichPhylacteryFirst=true in tmm_archlich-server.toml, then prove charged greater/lesser JAWR souls debit once and credit progression; empty JAWR pool falls back to Arca without JAWR charge; missing both anchors dies normally. Verify no double health/teleport, native Soul Hunger, dimension changes and relog. Default enabled for fresh disposable pre-alpha QA worlds; disable manually in any saved test-world serverconfig if needed. Not yet client-accepted. Shared 17 hunger/0 saturation and two cure systems remain separate proposed work.",
-    "DRACOLICH TARGET (pre-alpha investigation): a Dragon Survival Cave/Forest/Sea dragon plus exactly ONE lich source (Goety OR JAWR Forbidden Magic), never both. Keep Dragon Survival species, size/growth/abilities and magic resource; retain chosen lich native death anchor (Goety Arca or JAWR phylactery) and hunger behavior rather than inventing a third one. Inspect Dragon Survival OnDeath.trigger passive healing, hunger-effect abilities, player respawn and all 6 source combinations; test unifying visual undead state and native healing/cure separately. Do not alter Dragon Survival diets or global nutrition for ordinary dragons."
+    "DRACOLICH TARGET (pre-alpha investigation): a Dragon Survival Cave/Forest/Sea dragon plus exactly ONE lich source (Goety OR JAWR Forbidden Magic), never both. Keep Dragon Survival species, size/growth/abilities and magic resource; retain chosen lich native death anchor (Goety Arca or JAWR phylactery) and hunger behavior rather than inventing a third one. Inspect Dragon Survival OnDeath.trigger passive healing, hunger-effect abilities, player respawn and all 6 source combinations; test unifying visual undead state and native healing/cure separately. Do not alter Dragon Survival diets or global nutrition for ordinary dragons.",
+    "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up."
   ]
 }
