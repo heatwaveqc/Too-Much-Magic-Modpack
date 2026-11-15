@@ -413,9 +413,9 @@
         }
       ],
       "original_java_effect_class": "CriticalHitEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal critical strikes; preserve",
-      "review_caveat": "Native behavior uses chance and doubled damage; test boss damage pipeline",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "High-impact Hunter combat/survival specialty; preserve original skill ID; gate purchase and use by Hunter faction, with late-stage/cost balance review",
+      "review_caveat": "Native behavior uses chance and doubled damage; test boss damage pipeline Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -447,9 +447,9 @@
         }
       ],
       "original_java_effect_class": "DamageDealEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal Deflection; preserve with rebalance",
-      "review_caveat": "Reflect/negate incoming melee damage; avoid shields/Monk Guard duplication and near-total immunity",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "High-impact Hunter combat/survival specialty; preserve original skill ID; gate purchase and use by Hunter faction, with late-stage/cost balance review",
+      "review_caveat": "Reflect/negate incoming melee damage; avoid shields/Monk Guard duplication and near-total immunity Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -515,9 +515,9 @@
         }
       ],
       "original_java_effect_class": "ResistanceEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal fortitude; major rebalance",
-      "review_caveat": "Native up-to-45% all-damage reduction competes with endgame equipment; cap and tier gate",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "High-impact Hunter combat/survival specialty; preserve original skill ID; gate purchase and use by Hunter faction, with late-stage/cost balance review",
+      "review_caveat": "Native up-to-45% all-damage reduction competes with endgame equipment; cap and tier gate Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -631,9 +631,9 @@
         }
       ],
       "original_java_effect_class": "AdrenalineEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal emergency survival; preserve with cooldown review",
-      "review_caveat": "Source grants Absorption and Speed III at low HP; test event re-triggers",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "High-impact Hunter combat/survival specialty; preserve original skill ID; gate purchase and use by Hunter faction, with late-stage/cost balance review",
+      "review_caveat": "Source grants Absorption and Speed III at low HP; test event re-triggers Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -673,9 +673,9 @@
         }
       ],
       "original_java_effect_class": "ResilienceEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal condition resilience; rebalance",
-      "review_caveat": "Native up-to-95% negative effect reduction; preserve meaningful curses",
+      "target_tree_id": "tmm_hunter",
+      "migration_proposal": "High-impact Hunter combat/survival specialty; preserve original skill ID; gate purchase and use by Hunter faction, with late-stage/cost balance review",
+      "review_caveat": "Native up-to-95% negative effect reduction; preserve meaningful curses Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -1209,6 +1209,13 @@
     "dragon_notes": "All three dragons must have huge mana capacity, outstanding spell potency per SP, no dragon-specific regen and expensive armor/damage/harvest bonuses.",
     "lich_notes": "Personal blood spell power gain with personal nature spell power penalty; source-verified Neo Vitae/EvilCraft versus Botania/Roots.",
     "werewolf_notes": "Many extra hearts, actual HP regeneration and personal nature magic power.",
-    "status": "design only; no stock category/skill override moved in runtime"
+    "status": "design only; no stock category/skill override moved in runtime",
+    "hunter_rehomes": [
+      "critical_hit",
+      "damage_deal",
+      "resistance",
+      "adrenaline",
+      "resilience"
+    ]
   }
 }
