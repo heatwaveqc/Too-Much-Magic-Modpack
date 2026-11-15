@@ -64,12 +64,12 @@ final class MxpMathTest {
         MxpAccount acc = new MxpAccount();
         acc.restore(new MxpMath.Counter(5000, 0), 0,
                 java.util.List.of(), java.util.List.of(), java.util.List.of(), java.util.List.of());
-        assertEquals(500, acc.boss("draconicevolution:chaos_guardian", "guardian1",
-                500, 100, true).effectiveXP());
+        assertEquals(1000, acc.boss("draconicevolution:chaos_guardian", "guardian1",
+                1000, 100, true).effectiveXP());
         assertEquals(100, acc.boss("draconicevolution:chaos_guardian", "guardian2",
                 500, 100, true).effectiveXP());
-        assertEquals(5000, acc.counter().lifetimeLevels());
-        assertEquals(600, acc.counter().progress(), 1e-9);
+        assertEquals(5001, acc.counter().lifetimeLevels());
+        assertEquals(100, acc.counter().progress(), 1e-9);
     }
 
     @Test void firstCraftIsDividedAndPersistenceSurvivesCopyAndRespec() {
