@@ -418,6 +418,113 @@
           "empty_hand": true
         }
       ]
+    },
+    {
+      "id": "tmm_progression:glass_touch",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        7
+      ],
+      "effects": [
+        {
+          "type": "glass_touch",
+          "empty_hand": true
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:hunger_discipline",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        2
+      ],
+      "effects": [
+        {
+          "type": "hunger_discipline"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:monk_leap",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        6
+      ],
+      "effects": [
+        {
+          "type": "monk_leap",
+          "params": {
+            "factor": "1.2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:withering_stare",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        15
+      ],
+      "effects": [
+        {
+          "type": "withering_stare",
+          "target": "#tmm_progression:undead",
+          "params": {
+            "range": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:step_assist",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        8
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:step_height",
+          "operation": "add_value",
+          "per_rank": 0.5,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:swift_step",
+      "max_rank": 2,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        6,
+        8
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:movement_speed",
+          "operation": "add_multiplied_base",
+          "per_rank": 0.12,
+          "unarmored": true
+        }
+      ]
     }
   ],
   "max_level": 20,
