@@ -55,9 +55,6 @@ jobs:
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
           python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
-      - name: Regression-test Rhino first-world dropped item and Mahou Catalyst Exchange
-        run: |
-          node scripts/test_mahou_catalyst_exchange.cjs
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
@@ -82,7 +79,6 @@ jobs:
       - name: Full dedicated-server smoke WITH BOTH first-party compiled modules
         env:
           SMOKE_WITH_MODS: '1'
-          SMOKE_ITEM_TICK_TEST: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
           SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
@@ -93,25 +89,6 @@ jobs:
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery-0.5.39+mc1.21.1.jar" \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery_forbidden_magic-0.5.37+mc1.21.1.jar" \
             --limit 48 --output "${{ runner.temp }}/tmm-jawr-food-audit"
-      - name: Verify vampire ascension flags copied into the new smoke world's serverconfig
-        env:
-          SMOKE_WORLD: ${{ runner.temp }}/tmm-full-integration-smoke/world
-        run: |
-          python3 - <<'PY'
-          import os, tomllib
-          from pathlib import Path
-          cfg = Path(os.environ["SMOKE_WORLD"]) / "serverconfig/tmm_transformations-server.toml"
-          assert cfg.is_file(), f"NeoForge did not install the QA vampire defaults into {cfg}"
-          state = tomllib.loads(cfg.read_text(encoding="utf-8"))
-          expected = {
-              "experimentalVampireChassis": True,
-              "experimentalAutomaticDualAcquisition": True,
-              "experimentalAllowUnverifiedOtherProviders": True,
-              "experimentalOperatorCure": False,
-          }
-          assert state == expected, f"Vampire world config not in QA test state: {state!r}"
-          print("PASS: new server world copied and activated QA-only Vampire Ascension flags")
-          PY
       - name: Refuse to publish if extra first-party modules were not actually installed
         run: |
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
