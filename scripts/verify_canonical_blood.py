@@ -58,6 +58,45 @@ def main() -> None:
         "irons_spellbooks:blood", HEXE, "hexerei:blood_flowing",
         "neovitae:essentia_vitae_source", "neovitae:essentia_vitae_flowing",
     })
+    # Ordinary blood crafting tag covers ONLY distinct single-purpose items.
+    # JAWR one-ID/three-component subtypes may never join a global item tag.
+    ordinary = read("tmm/tags/item/ordinary_blood_bottles.json")
+    assert ordinary["replace"] is False
+    assert set(ordinary["values"]) == {
+        "hexerei:blood_bottle", "irons_spellbooks:blood_vial",
+    }, "Special JAWR variants would be laundered by a blanket item tag"
+    focus = read("irons_spellbooks/tags/item/blood_focus.json")
+    assert focus == {"replace": False, "values": ["hexerei:blood_bottle"]}
+
+    book = read("irons_spellbooks/recipe/netherite_spell_book.json")
+    assert book["type"] == "minecraft:crafting_shaped"
+    assert book["key"]["B"] == {"tag": "tmm:ordinary_blood_bottles"}
+    assert book["result"]["id"] == "irons_spellbooks:netherite_spell_book"
+
+    for broom, blood_slots in [
+        ("willow_broom_from_mixing_cauldron", 1),
+        ("mahogany_broom_from_mixing_cauldron", 2),
+        ("witch_hazel_broom_from_mixing_cauldron", 2),
+    ]:
+        recipe = read(f"hexerei/recipe/{broom}.json")
+        assert recipe["type"] == "hexerei:mixingcauldron", broom
+        assert recipe["fluid"] == {"id": "minecraft:water", "amount": 1000}, broom
+        assert recipe["output"]["id"] == "hexerei:" + broom.split("_broom_")[0] + "_broom", broom
+        assert recipe["ingredients"].count(
+            {"tag": "tmm:ordinary_blood_bottles"}
+        ) == blood_slots, broom
+        assert not any(i.get("item") == "hexerei:blood_bottle"
+                       for i in recipe["ingredients"]), broom
+
+    food_script = ROOT / "kubejs" / "startup_scripts" / "drinkable_blood_vial.js"
+    src = food_script.read_text(encoding="utf-8")
+    assert "ItemEvents.modification" in src and "irons_spellbooks:blood_vial" in src
+    assert "usingConvertsTo(Item.of('minecraft:glass_bottle'))" in src
+    assert "food.alwaysEdible()" in src
+    assert "witchery:bottle_of_blood" not in src, (
+        "JAWR's native finishUsingItem must NOT be replaced by a food override"
+    )
+
     # The native altar is recipe-driven for buckets; there is no reason to
     # patch the capability just to change the player's item output.
     altar = read("neovitae/recipe/ara_vitae/bucket_life.json")
@@ -112,7 +151,7 @@ def main() -> None:
     assert not (DATA / "hexerei/recipe/cauldron_emptying/blood_to_bottle.json").exists(), (
         "Native Hexerei blood bottle output must remain intact"
     )
-    print("PASS: eleven authored JSONs meet canonical bucket/fluid/vial boundaries")
+    print("PASS: seventeen authored JSONs and one startup script meet canonical blood contracts")
     print("NOT RUNTIME VALIDATED: test recipe loading, right-click buckets, pipes, and bottles in a disposable world")
 
 
