@@ -1,21 +1,27 @@
 # Tyz Skills — nine-tree final-direction blueprint (2026-11-15)
 
-> **Status: CONCEPT / REVIEW.** This is a proposed complete *catalog and dependency design*, not active Tyz JSON, tested attributes, native skills, or approved numerical balance. Do not stage it automatically in a client build. It replaces the **six-category conceptual layout** (one Core + five form categories) with **nine new custom categories**, while preserving the separate four existing Tyz default categories only **until all 32 built-in skills have been inventoried, reassigned and independently validated**. A separate machine-readable companion file enumerates candidate IDs.
+> **Status: CONCEPT / REVIEW.** This is an *identity-first predecessor concept*, not active Tyz JSON or tested gameplay. **The new [all-nine-tree strength and caps pass](TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md) supersedes prototype rank guesses and supplies explicit tier/cap/point assignments.** Do not stage it automatically in a client build. It replaces the **six-category conceptual layout** (one Core + five form categories) with **nine new custom categories**, while preserving the separate four existing Tyz default categories only **until all 32 built-in skills have been inventoried, reassigned and independently validated**. A separate machine-readable companion file enumerates candidate IDs.
 
 ## 1. Scope and canonical progression rules
 
 The nine custom categories are **Core Skills; Cave Dragon; Sea Dragon; Forest Dragon; Vampire; Werewolf; Lich; Hunter; Monk**. These are one shared Tyz XP/SP wallet, not nine currencies. The three Dragon categories replace the old single planned `tmm_dragon` category; the Hunter category is new.
 
 - **XP source:** only cross-mod magic-practice MXP dispatcher, not vanilla XP or Tyz's native activity XP. Every effective **1,000 MXP** = one Tyz level = one SP. Ordinary awards divide by `1.2^P` where `P` is lifetime points earned from level progression; first rituals / first bosses and authorized fixed repeats obey the existing exceptions. Respec does not rewind `P`.
-- **Native ownership:** Vampirism/Werewolves, Dragon Survival, Forbidden Magic/JAWR, Goety, and the custom Monk faction retain real transformations, form abilities, native advancement, feeding, death and cures. Tyz ranks enhance or add carefully bounded effects *after* the native permission has been earned, never simulate acquisition.
-- **Eligibility:** server-authoritative form snapshots from Transformation Compat, not merely a tag or visible tab. Hunter is exclusive; dragon is one of three; Lich applies to one lichdom, Archlich, and a valid Dracolich. Monk requires its real native faction and equipment discipline; cross-faction coexistence is not assumed.
+- **Native ownership (new target 2026-11-15):** JAWR alone owns vampire/lycanthrope physiology; Dragon Survival owns dragons; Forbidden Magic/JAWR and Goety own supported lich states; standalone Hunter and Monk mods own their independent native permissions. TeamLapen Vampirism and Werewolves are slated for retirement after standalone migrations, and must not be used as future tree providers. Tyz boosts eligible skills after actual native milestones. Tyz ranks enhance or add carefully bounded effects *after* the native permission has been earned, never simulate acquisition.
+- **Eligibility:** server-authoritative form snapshots from Transformation Compat, not merely a tag or visible tab. Hunter is a standalone class whose cross-form compatibility is undecided, not automatically a Vampirism-exclusive faction; dragon is one of three; Lich applies to one lichdom, Archlich, and a valid Dracolich. Monk requires its real native faction and equipment discipline; cross-faction coexistence is not assumed.
 - **Allowed hybrids:** valid Dracolich gets one dragon tree + the one shared Lich tree. Archlich gets one shared Lich tree, not two duplicate purchases. Abomination remains excluded from combined-tree design until base hybrid physiology is live-tested; a hypothetical allowed future Abomination may reference its separately valid components only after arbitration. No invalid hybrid can acquire ranks by merely buying Tyz nodes.
-- **Ranks on cure:** purchased ranks persist as dormant investments; incompatible-form effects stop immediately. No automatic refunds or deletions. A player can respec through validated Tyz refund rules. Voluntary Hunter replacement explicitly suspends Hunter effects.
+- **Ranks on cure:** purchased ranks persist as dormant investments; incompatible-form effects stop immediately. No automatic refunds or deletions. A player can respec through validated Tyz refund rules. Any native change that invalidates actual Hunter eligibility immediately suspends Hunter effects, without assuming a forced faction exclusivity rule.
 - **Tyz limitations:** normal custom categories are global, not per-player hidden. Keep all old default category definitions in the full replacement category JSON; **4 default + 9 custom = 13 temporary categories**, reducing to **9 total** after the stock-skill migration and safe default-category retirement. Category visibility is not permission. A later client mask might hide unfamiliar tabs, but purchase/refund enforcement belongs to the server.
 - **Purchase integrity:** enforce native state, node-specific stage, and outside milestones with the server's Tyz `PurchasePre` and `RefundPre` gates, plus an authorized direct-grant reconciliation path. Tyz bulk-buy checks a pre-event once: put external gates at **node boundaries**, not mid-node rank thresholds. One rank in a predecessor is sufficient as a native node prerequisite; advanced stages additionally require real native milestones.
 - **Power ceiling:** talents improve forms without replacing Chaos Guardian, Draconic Evolution, ProjectE or Gem Armor. No creative flight, global creature pacification, immortality for free, protected-block mining bypass, infinite energy, or unlimited combat evasion.
 
 **Cross-reference:** [original primary Tyz design PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27), [Core Skills preview PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33), [Monk live fixes and complete native skeleton PR #71](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71), [MXP source rules](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-PROGRESSION.md), [transformation target PR #77](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/77).
+
+
+### Updated canonical balance handoff
+
+The **current first-pass strength/tier and caps source of truth** is [TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md](TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md), plus [machine-readable 164-entry budget](tyzs/nine-tree-strength-first-pass-v1.json). Every proposed family has a tier (5/10/20/50/100% per rank), cap (5/10/25/50 except one-off capstones), per-rank SP price, and notes for non-mana conversion. These values **supersede the prototype 10/5/3-rank node suggestions** in the older machine catalogue; none is yet live.
+
 
 ## 2. Tier pattern and purchasing model
 
@@ -23,14 +29,14 @@ These are *design stages*, not promises of specific form levels; map stages to r
 
 | Stage | Eligibility | Typical purchase shape |
 |---|---|---|
-| Entry | Own the actual valid form/faction; no arbitrary quest gate | Repeatable, low-impact ranks, typically 3–10 ranks/node at 1 SP/rank |
-| Advanced | Relevant native mid-progression (or Monk rank/ability license) and previous node rank >=1 | 3–5 ranks/node; utility / control / specialized combat |
-| Mastery | Real native high progression, verified achievement where relevant, and previous node rank >=1 | 1–3 ranks/node or one-on-cooldown active; meaningful but bounded |
-| Tree capstone | Verified final native stage plus appropriate late-game milestone | One 2–5 SP purchase, *provisional* price, test before acceptance |
+| Entry | Own the actual valid form/faction; no arbitrary quest gate | Standard cap 5/10/25/50 depending on effect; usually 1 SP/rank, physical Dragon talents may cost 2 |
+| Advanced | Relevant native mid-progression (or Monk rank/ability license) and previous node rank >=1 | Standard 5/10/25/50 caps; verified native milestones, bounded utility/control |
+| Mastery | Real native high progression, verified achievement where relevant, and previous node rank >=1 | Usually 5 or 10 ranks for strong mastery, 1 rank only for justified one-off unlocks |
+| Tree capstone | Verified final native stage plus appropriate late-game milestone | One 5 SP provisional purchase, calibrated as qualitative Extreme impact, not unlimited passive +100% |
 
 Within a form specialization lane the explicit dependency is **Entry → Advanced → Mastery**, requiring one rank in the directly preceding node. A proposed capstone requires at least **one Mastery purchase and one Advanced purchase in a different lane**, plus the verified native end stage and a real late milestone. These are intended edge rules, not native Tyz runtime wiring yet. 
 
-There is **no universal rule that every skill has 99 ranks**. **New decision (2026-11-15): the four initial Core Skills base skills compress from 99 ranks to 5 ranks, each giving 20% of its former rank-99 maximum attribute benefit (20/40/60/80/100% of cap).** Exact prior ceilings are preserved, with integer rounding where applicable. Later magnitude-tier skills may be 99-rank specialty bands if independently approved. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
+Strength-tiers now standardize **Weak 5%, Middling 10%, Average 20%, Strong 50%, Extreme 100% per rank**, additive to a source-defined base, and **5/10/25/50** standard rank caps. See detailed [new strength allocation](TYZS-STRENGTH-AND-NINE-TREE-FIRST-PASS-2026-11-15.md). There is **no universal rule that every skill has 99 ranks**. **New decision (2026-11-15): the four initial Core Skills base skills compress from 99 ranks to 5 ranks, each giving 20% of its former rank-99 maximum attribute benefit (20/40/60/80/100% of cap).** Exact prior ceilings are preserved, with integer rounding where applicable. Later magnitude-tier skills may be 99-rank specialty bands if independently approved. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
 
 ## 3. Identity-first class rules (revised 2026-11-15)
 
@@ -140,7 +146,7 @@ Always available. This is the **broad universal** tree, including eligible origi
 
 **Capstone — Blood Regent:** Blood-funded high-tier predatory stance requiring advanced native vampire progression.
 
-**Implementation conditions:** One canonical blood owner; no dual-pool double gains or duplicate feeding rewards. Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.
+**Implementation conditions:** JAWR is the single planned blood and vampire physiology owner; no TeamLapen dual-pool bridging or duplicate feeding rewards. Cure suspends effects without deleting invested ranks; JAWR blood and effect hooks still require exact-version testing.
 
 ### Werewolf — `tmm_werewolf`
 
@@ -155,7 +161,7 @@ Always available. This is the **broad universal** tree, including eligible origi
 
 **Capstone — Moon Apex:** Late-game feral ascendancy emphasizing massive health, sustained HP regeneration, melee ferocity and nature magic; retain native silver/moon weaknesses.
 
-**Implementation conditions:** Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit. Natural form-change progression remains native, not purchased again in Tyz. Werewolf regen means HEALTH regeneration, not passive magic regeneration.
+**Implementation conditions:** JAWR is the planned sole authority for lycanthrope hunger, forms and forced-moon mechanics; source adapters must be verified against the installed JAWR version. Natural form-change progression remains native, not purchased again in Tyz. Werewolf regen means HEALTH regeneration, not passive magic regeneration.
 
 ### Lich — `tmm_lich`
 
@@ -193,10 +199,10 @@ Always available. This is the **broad universal** tree, including eligible origi
 
 | Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
-| **Martial Body** | **Empty-Hand Force:** Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap. | **Flowing Counter:** Bounded counterattack after a verified native Guarding Palm/parry unlock. | **Spirit Bolt Mastery:** Boost native spirit projectile after its native rank-6 license, not duplicate its unlock. |
+| **Martial Body** | **Empty-Hand Force:** Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap. | **Flowing Counter:** Bounded counterattack after a verified native Guarding Palm/parry unlock. | **Empty-Hand Precision:** Bonus to real unarmed combat after native martial prerequisites; **no Monk innate spirit projectile**—Ars Nouveau and Iron's provide ranged spells. |
 | **Conditioning** | **Natural Poise:** Scale unarmored protection beyond native Unarmored Poise +2; never scale equipped armor. | **Hunger Discipline:** Bounded food/exhaustion efficiency after native license; do not remove all hunger. | **Fire & Blast Tempering:** Limited environmental damage mitigation after both matching native licenses. |
 | **Footwork** | **Body Speed:** Repeatable speed under no conventional gear discipline; native Fleet Footwork remains a one-off. | **Balanced Landing:** Fall/knockback control; native Step Assist remains a one-off in native tree. | **Glide Control:** Improve native momentum gliding only after rank-15 native unlock; never creative flight. |
-| **Hands as Tools** | **Barehand Efficiency:** Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers. | **Fortunate Hands:** Bounded fortune-like bonus only after native rank-13 license and legitimate drop event. | **Looting Palm:** Bounded unarmed looting after native rank-9 license; no creature-drop duplication. |
+| **Hands as Tools** | **Barehand Efficiency:** Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers. | **Fortunate Hands:** Bounded fortune-like bonus only after the one native Treasure Hand Fortune/Silk Touch mode license and legitimate drop event. | **Looting Palm:** Bounded unarmed looting after native rank-9 license; no creature-drop duplication. |
 
 **Capstone — Empty-Hand Paragon:** After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.
 
@@ -206,14 +212,14 @@ Always available. This is the **broad universal** tree, including eligible origi
 
 | Native provider | Native tree or state remains responsible for | Tyz is responsible for |
 |---|---|---|
-| Dragon Survival | Species choice, growth, actual scale/body, innate movement/breath, food policy | Bounded species-specific improvements to existing movement, physical, harvesting, combat and breath |
-| Vampirism + JAWR | Both underlying vampire progression paths, unified blood/sun/feeding, form unlocks | Blood economy *against the one canonical pool*, physical/stealth modifiers, ability refinements |
-| Werewolves + JAWR | Both native progressions, forced/voluntary shape and authoritative wolf physiology (not decided yet) | Beast-form-only strength/motion, senses, limited pack buffs |
-| Forbidden Magic + Goety | Two distinct lich progressions; phylactery and Arca mechanics | Personal soul efficiency, undead summons, controlled offensive/status upgrades |
-| Vampirism Hunter | Hunter profession/faction, native perks and equipment access | Anti-monster tactical specialization and gear-use enhancement; never supernatural physiology |
-| Custom Monk + Vampirism faction host | First Sunset, native 20-rank plan, one-off Step Assist/Stone Fist/Open Palm/etc, native hand-harvest licenses | Repeatable conditional stats, hand-loot traits and any bounded affix-like bonuses after native licenses |
+| Dragon Survival | Cave/Sea/Forest species choice, growth, body and native breath | Large mana/spell power, expensive armor/claw/harvest ranks, species schools |
+| **JAWR (only future vampire owner)** | Vampire form, blood/feeding, daylight effects, native rank and cures | JAWR-gated personal blood specialization and survival, no duplicate Lord/minion tree |
+| **JAWR (only future lycanthrope owner)** | Wolf body/morph, hunger, moon/silver, native rank and cures | Strong hearts and HP regen, nature magic and selected retained player skill concepts |
+| Forbidden Magic + Goety | Two lich progressions; phylactery/Arca precedence | Blood magic vs nature magic tradeoff, necromantic personal capacity/summons |
+| **Standalone Hunter module** | Hunter eligibility, specialist target classification and native skills | Hunter combat investments, weapon/armor preservation, ammo saving, proximity supernatural tracking |
+| **Standalone Monk module** | First Sunset; native fist slot, armor toggle, legal hand harvest, Treasure Hand Fortune/Silk mode | Form-conditional finite martial stats/Apotheosis affixes under the one Tyz wallet |
 
-**Monk exception:** PR #71 already defines a **50-node conceptual native Monk tree**, with six live data nodes for client QA. Its second skeleton contains **47 Monk-only Tyz candidates** (seven traits plus forty bounded Apotheosis affix conversions); those are research candidates, not extra compulsory skills. This document distills their gameplay into four Tyz lanes. Preserve existing native rank-one Open Palm (+1 barehand attack), Unarmored Poise (+2 armor), Stone Fist, and later Fleet Footwork→Step Assist. Native Monk mastery credit (legal barehand block breaks, actual spell-attributed breaks, combat, and first foods) remains independent of the Tyz MXP ledger. Avoid double-awarding the same event into the same wallet or repeating native unlocks in Tyz.
+**Monk exception:** PR #71 already defines a **50-node conceptual Monk design** (the old six-node Vampirism-hosted pilot is a migration reference, not the standalone future backend). Its second skeleton contains **47 Monk-only Tyz candidates** (seven traits plus forty bounded Apotheosis affix conversions); those are research candidates, not extra compulsory skills. This document distills their gameplay into four Tyz lanes. Preserve existing native rank-one Open Palm (+1 barehand attack), Unarmored Poise (+2 armor), Stone Fist, and later Fleet Footwork→Step Assist. Native Monk mastery credit (legal barehand block breaks, actual spell-attributed breaks, combat, and first foods) remains independent of the Tyz MXP ledger. Avoid double-awarding the same event into the same wallet or repeating native unlocks in Tyz.
 
 **Lich exception:** both native lichdoms remain earnable and stack into Archlich. One Lich Tyz category covers both (source-specific nodes may require the matching native provider). When two exist, phylactery saves first; Goety Arca is fallback only if phylactery cannot rescue. A Tyz rank cannot grant or reorder death saves.
 
@@ -223,17 +229,17 @@ No row in this blueprint should be mistaken for an already working mod hook. Imp
 
 1. **Native attribute mapping** (low risk after ID check): attack, movement, health/armor, confirmed spell attributes. Changes must be reverted when form/equipment conditions fail.
 2. **Shared event adapter** (medium): damage kinds, status effects, real drops, real resource debit, bounded owner-attributed summons, actual world/biome conditions.
-3. **Exact-provider adapter** (high): dragon breath/body, Vampire dual blood pool, JAWR/Werewolves physiology and shape, phylactery/Arca death events, Monk special techniques and Apotheosis affixes.
+3. **Exact-provider adapter** (high): dragon breath/body, JAWR-only vampire feeding and lycanthrope physiology/shape, phylactery/Arca death events, standalone Monk special techniques and Apotheosis affixes.
 4. **New activated skill** (highest): custom dash, scan, shockwave, traps, control, defensive stance; requires cooldown, cost, anti-griefing, particles/UI and multiplayer replication.
 
 Do not implement high-risk abilities as permanent passive buffs just because Tyz JSON cannot express the activation. Confirm dedicated-server and client behavior against exact 1.21.1 pinned binaries.
 
 ### Mechanics that must never be silently overridden
 
-- Native special diets and magical-food exceptions, finite food resource costs and double-source vampire feeding.
+- Native special diets and magical-food exceptions, finite food resource costs and JAWR-only vampire feeding.
 - One canonical per-resource debit and one MXP award for Ars/Iron's shared mana; other costs normalized by original reference capacities.
 - Quest/resource gates for endgame; no mining talent bypassing disabled ores or Dragon Survival harvest checks.
-- Transform/cure, dual progression history, death-rescue arbitration, client HUD and body renderer.
+- Transform/cure, JAWR progression history, death-rescue arbitration, client HUD and body renderer.
 - Claim protections, server performance ceilings, safe teleport destination and attribution of player-created summons.
 - Silver/sunlight/other native vulnerabilities remain meaningful; a Tyz node is never a blanket no-drawback transformation.
 
@@ -241,7 +247,7 @@ Do not implement high-risk abilities as permanent passive buffs just because Tyz
 
 **Phase A — concept-to-config:** Audit all 32 original Tyz built-in skills and preserve their IDs/behavior handlers in safe same-ID overrides assigned to the nine trees. During transition retain four old categories and validate 13-tab pagination. **Only after every stock skill's new placement and behavior works**, remove the four old category IDs and validate 9-tab pagination; create inactive/skeleton form node IDs. Handle old planned `tmm_dragon` gracefully: no automatic one-to-three point duplication; if any actual players own generic dragon ranks, make an explicit migration/refund map and back up saves first.
 
-**Phase B — narrow playable vertical slice:** Existing four Core Skills **five-rank** files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after blood repair*, Werewolf Predator's Stride *after shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore, and Monk Empty-Hand Force *after native tree purchase repair*.
+**Phase B — narrow playable vertical slice:** Existing four Core Skills **five-rank** files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after JAWR blood hook verification*, Werewolf Feral Vigor *after JAWR shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore *after standalone Hunter state validation*, and Monk Empty-Hand Force *after standalone Monk backend verification*.
 
 **Phase C — multi-lane progression:** Add the shared high-value Dragon mana/potency packages and expensive physical baselines to each species; source-classified Cave/Forest/Sea affinity, Forest agriculture, Hunter late anti-supernatural combat and tracking, Lich blood/nature tradeoffs and Werewolf HP/health regen. Then add chosen mid/final native milestones, refunds, capstones and class-specific adapters. Never certify based only on clean JSON/compilation/server boot. Keep all new skills flagged as conceptual until individually implemented and client-verified.
 
@@ -250,10 +256,10 @@ Do not implement high-risk abilities as permanent passive buffs just because Tyz
 ### Explicit decisions not yet locked
 
 - Exact number of points desired in a typical playthrough: the 1.2^P MXP slowdown makes exhaustive maxing unrealistic; decide whether distinct builds are intentionally permanent or normal respec is expected.
-- Hunter-vs-Monk faction coexistence: current authoritative state/provider may not support it; design as independent categories but **never** allow combined use until transition policy approves.
-- Which vampire and werewolf source powers should receive separate source-locked sub-nodes versus one shared equivalent.
-- Specific native stage and boss gates, rank caps and individual percentages after source/version inventory and actual player timings.
-- Whether to retain all four default Tyz categories unchanged indefinitely, or later curate them after no-overlap review.
+- Standalone Hunter and Monk coexistence, including transformations: do **not** inherit TeamLapen exclusivity; await their verified native state APIs and the transformation compatibility policy.
+- Which JAWR actions already cover the older retired-mod skill concepts, to avoid duplicate native player powers.
+- Source-specific percentage reference units, boss-tier damage caps and real native milestone gates; first-pass percentages/caps now exist but are not gameplay-approved.
+- Exact source-compatible order for retiring the four default Tyz categories after all 32 same-ID skills are safely rehomed and validated.
 
 
 ### Source inventory and removal gate (added 2026-11-15)
