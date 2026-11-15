@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "defaultconfigs/vampirism-server.toml"
+hash = "81d4b4acde948c122e0c2e848f98a69ccbce1acfc944a665c50436ae44d9f1b6"
+
+[[files]]
 file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
