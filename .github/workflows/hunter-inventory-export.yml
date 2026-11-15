@@ -1,0 +1,20 @@
+name: Hunter - Export research CSV for read-only analysis
+on:
+  push:
+    branches: ['research/hunter-pinned-jar-audit-ci']
+    paths: ['.github/workflows/hunter-inventory-export.yml']
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hunter-research-inventory
+          path: |
+            docs/hunter/creature-inventory.csv
+            docs/hunter/registration-evidence.csv
+          if-no-files-found: error
+          retention-days: 2
