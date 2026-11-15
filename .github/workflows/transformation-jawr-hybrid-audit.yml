@@ -1,0 +1,38 @@
+name: JAWR hybrid pinned-JAR bytecode audit
+on:
+  push:
+    paths:
+      - 'scripts/audit_jawr_hybrids.py'
+      - '.github/workflows/transformation-jawr-hybrid-audit.yml'
+      - 'mods/just-another-witchery-remake.pw.toml'
+  pull_request:
+    paths:
+      - 'scripts/audit_jawr_hybrids.py'
+      - '.github/workflows/transformation-jawr-hybrid-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Validate audit syntax
+        run: python3 -m py_compile scripts/audit_jawr_hybrids.py
+      - name: Hash-verify pinned JAWR and inspect hybrid-relevant bytecode
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 scripts/audit_jawr_hybrids.py | tee jawr-hybrid-audit.txt
+      - name: Upload evidence report (never includes mod JAR)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jawr-0-5-39-hybrid-static-audit
+          path: jawr-hybrid-audit.txt
+          if-no-files-found: ignore
