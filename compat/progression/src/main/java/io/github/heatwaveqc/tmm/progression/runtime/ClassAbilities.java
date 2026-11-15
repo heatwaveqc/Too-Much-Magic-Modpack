@@ -6,6 +6,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -38,6 +41,7 @@ public final class ClassAbilities {
     private static final String ARMOR_MODE = "tmm_progression:armor_lock";
     private static final String TREASURE_MODE = "tmm_progression:treasure_mode";
     private static final Map<UUID,Retaliation> RETALIATION = new HashMap<>();
+    private static final Map<UUID,Float> LAST_EXHAUSTION = new HashMap<>();
     private record Retaliation(UUID attacker, long until) {}
 
     private static EffectRuntime.Active effect(ServerPlayer p, String type) {
@@ -105,6 +109,8 @@ public final class ClassAbilities {
             }
         }
 
+        exhaustion(p);
+        stare(p);
         if (unlocked(p,"water_breathing") && p.isUnderWater()) {
             int level = effect(p,"water_breathing").rank();
             if (level >= 2) p.setAirSupply(p.getMaxAirSupply());
@@ -116,6 +122,54 @@ public final class ClassAbilities {
                 if (instance.getEffect().value().getCategory() == MobEffectCategory.HARMFUL)
                     p.removeEffect(instance.getEffect());
         }
+    }
+
+    /** Halve new exhaustion increments; never give food levels or override ordinary eating. */
+    private static void exhaustion(ServerPlayer p) {
+        float now = p.getFoodData().getExhaustionLevel();
+        Float old = LAST_EXHAUSTION.put(p.getUUID(),now);
+        if (old == null || !unlocked(p,"hunger_discipline")) return;
+        if (now > old) {
+            float reduced = old + (now - old) * 0.5f;
+            p.getFoodData().setExhaustion(reduced);
+            LAST_EXHAUSTION.put(p.getUUID(),reduced);
+        }
+    }
+
+    /** Conservative gaze implementation: line of sight, range, no invulnerable bosses. */
+    private static void stare(ServerPlayer p) {
+        var active = effect(p,"withering_stare");
+        if (active == null || p.tickCount % 20 != 0) return;
+        double max = Math.max(2,Math.min(24,number(active,"range",20)));
+        var candidates = p.serverLevel().getEntitiesOfClass(LivingEntity.class,
+            p.getBoundingBox().inflate(max), living ->
+                living.isAlive() && living != p && !(living instanceof WitherBoss)
+                && !(living instanceof EnderDragon)
+                && Selectors.entity(active.effect().selector(),living));
+        LivingEntity candidate = null;
+        double nearest = max*max;
+        for (LivingEntity living : candidates) {
+            Vec3 direction = living.getEyePosition().subtract(p.getEyePosition());
+            double dist = direction.lengthSqr();
+            if (dist >= nearest || dist < 0.1 || !p.hasLineOfSight(living)) continue;
+            if (p.getLookAngle().dot(direction.normalize()) < 0.985) continue;
+            nearest = dist;
+            candidate = living;
+        }
+        if (candidate == null) return;
+        boolean applied = candidate.addEffect(new MobEffectInstance(MobEffects.WITHER,50,0),p);
+        // Vanilla undead can reject Wither status; still permit a modest direct gaze effect.
+        if (!applied && candidate.getType().is(EntityTypeTags.UNDEAD))
+            candidate.hurt(p.damageSources().magic(),1.0f);
+    }
+
+    public static void jump(ServerPlayer p, LivingEvent.LivingJumpEvent event) {
+        var active = effect(p,"monk_leap");
+        if (active == null) return;
+        double factor = Math.max(1.0,Math.min(1.5,number(active,"factor",1.2)));
+        Vec3 speed = p.getDeltaMovement();
+        p.setDeltaMovement(speed.x,speed.y*factor,speed.z);
+        p.hurtMarked = true;
     }
 
     /** Server-authoritative aimed movement; does not load chunks or teleport through solid blocks. */
@@ -221,6 +275,7 @@ public final class ClassAbilities {
         return false;
     }
     public static void forget(ServerPlayer p) {
+        LAST_EXHAUSTION.remove(p.getUUID());
         RETALIATION.entrySet().removeIf(x -> x.getValue().attacker().equals(p.getUUID()));
     }
 }
