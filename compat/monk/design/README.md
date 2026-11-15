@@ -4,6 +4,10 @@
 
 **Canonical machine-readable plan:** [native-full-tree-skeleton-v1.json](native-full-tree-skeleton-v1.json). CI validates the graph and complete native/source-affix coverage through `MonkFullTreeSkeletonTest`.
 
+## Staged native JSON preview
+
+The [full configured-tree preview](preview/monk_level.configured_tree.PREVIEW.json) mirrors Vampirism's nested `configured_skill_tree` shape with all 50 intended nodes. The [node-to-skill ID index](preview/skill-node-index.PREVIEW.json) identifies what Java registry entries and leaf files would need to exist later. Both are located **outside** `src/main/resources` and cannot be loaded by the game. They are implementation scaffolding, **not** a patch to copy directly into the client: 44 referenced skills have no Java implementations, guards or safe purchase behavior.
+
 ## Important architecture
 
 The **native Vampirism Monk tree** spends native Monk points on one-time techniques, limited meaningful stages (barehand tool tiers and breath training), and **permissions** to buy separately implemented Monk-only Tyz ranks. It does not own general numeric training in attack, movement speed, spell power, mana, mining speed, or the 40 bounded special-affix ranks: those belong to **one primary Tyz/MXP economy**.
