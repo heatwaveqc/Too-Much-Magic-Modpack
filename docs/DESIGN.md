@@ -1,5 +1,7 @@
 # Design contract (2026-11-13)
 
+> **2026-11-14 proposal under review:** Shift **basic ProjectE** to an earlier Gaia Guardian I **or** Neo Vitae Foreman unlock, while keeping extreme EMC generation, Project Expansion, and advanced equipment Chaos-Guardian-tier. Existing older post-Chaos-only text below is historical. See [tiered gate design](PROJECTE-TIERED-GATING-PROPOSAL.md) and [feature checklist](FEATURE-CHECKLIST.md). No runtime gate has been implemented yet.
+
 ## Vision
 Magic is the everyday infrastructure, not a cosmetic wrapper around industrial logistics. Independent magic schools must have sustained roles. Resource transport, crafting, storage, navigation and mining should favor occult/magical mechanics. The technology branch is exceptional and late-game.
 
