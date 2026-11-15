@@ -1,58 +1,93 @@
-# ProjectE — proposed two-stage unlock (2026-11-14)
+# ProjectE and Project Expansion — boss-trophy recipe progression
 
-**Status: DESIGN PROPOSAL after user requested moving ProjectE earlier than Chaos Guardian. NOT ACTIVE IN GAME.**
-This proposal supersedes the old *all ProjectE post-Chaos Guardian* design **if accepted**. Existing ProjectE and Project Expansion JARs are already packwiz-enabled without the actual gate. A passing server boot is not a gate implementation. Do not advertise the pack as gated survival until all positive and negative acquisition tests pass.
+**Owner decision, 2026-11-14:** use **interchangeable boss-associated drops** as the *middle ingredient* of the Philosopher's Stone; keep the other eight ingredients and both orientations. Add a **Draconic Chaos Shard** to the **third (Red/MK3) Power Flower** recipe and close higher-tier direct-recipe bypasses.
 
-## Motivation
+**Current status:** a KubeJS implementation exists on `feature/projecte-boss-trophy-stone-and-emc-audit` and is registered for the rolling full integration. **Source/contract checked only until a full KubeJS server and Prism client test confirms it loads.** These are *ingredient/recipe* gates, **not boss-kill progression flags**. Trading, team sharing and later EMC duplication of an acquired drop are allowed.
 
-Requiring Draconic Evolution's Chaos Guardian before the first Philosopher's Stone prevents players from experiencing ProjectE's iconic transmutation until very late. Conversely, handing out energy collectors and condensers immediately collapses much of the magical material economy and the intended Occultism/Neo Vitae progression. Split **initial transmutation** from **industrial/unbounded EMC production and endgame equipment**.
+## Philosopher's Stone — original outer ring, interchangeable center
 
-## Proposed playable tiers
+ProjectE PE1.1.0 has TWO recipes:
 
-| Milestone | What becomes available | What remains locked |
+```text
+R G R       G R G
+G D G       R D R
+R G R       G R G
+```
+
+`R` is redstone dust (`#c:dusts/redstone`), `G` is glowstone dust (`#c:dusts/glowstone`), and `D` was a diamond.
+
+**The only change:** `D` becomes one of these three center items, in either orientation.
+
+| Magic path | Accepted item ID | Gameplay provenance |
 | --- | --- | --- |
-| Early game | No ProjectE/Project Expansion survival acquisition or functional access | All ProjectE and Project Expansion |
-| **First major magic boss: Gaia Guardian I OR Neo Vitae Foreman** | **Basic ProjectE:** Philosopher's Stone, Transmutation Table, covalence dust and conservative alchemical crafting/storage, with carefully capped manual EMC turnover | Energy Collectors, Anti-Matter Relays, Energy Condensers, Matter furnaces, automatic EMC farms, Gem Armor and other extreme gear, Project Expansion |
-| **Chaos Guardian** | **Advanced ProjectE + Project Expansion**, including collector/relay/condenser automation, high-tier matter, powerful rings/equipment and expansion progression | Any explicitly excluded item such as Ring of Seven Deadly Sins; other technology/ore restrictions remain independent |
+| Ars Nouveau Wilden Chimera | `ars_nouveau:wilden_tribute` | True Chimera boss drop, also needed for Archmage progression |
+| Botania Revived Gaia Guardian | `botania:life_essence` | Gaia Spirit; name **is not** `botania:gaia_spirit` |
+| Neo Vitae Foreman / Mines | `neovitae:mine_key` | Mine Dungeon Key. **Also obtainable from Mines trial spawners** in the upstream version, so this path is **not an exclusive Foreman kill proof** |
 
-This is **either boss, not both**. It offers a nature-magic path (Botania Revived ritual, Gaia Guardian I) and a combat/dungeon path (Neo Vitae Foreman). Both are earlier milestones than the Chaos Guardian, but this needs in-world balance comparison. Gaia Guardian II can replace Gaia I if testing shows basic ProjectE comes too early. Do not infer that every Botania or Neo Vitae 1.21.1 port has the exact classic item or boss entity ID.
+The three values live in `kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json`, and both original ProjectE recipe IDs are replaced with KubeJS shaped variants. Adding another verified boss drop only requires adding its exact item registry ID to that tag. **Do not use Wilden horns, wings or spikes**; those come from regular Wilden, not the Chimera. Avoid adding a boss item available through easy crafting, loot or the Quest Shop unintentionally.
 
-**Concrete boss context:** Gaia is Botania's altar-summoned guardian with Gaia Spirit rewards; the Foreman is a 600 HP Neo Vitae Mine Dungeon boss that drops Mine Dungeon Keys. A **loot item alone must not substitute for personal boss credit**, or players can trade, duplicate or loot it into an unlock.
+This recipe policy intentionally removes the old requirement for **server-side personal defeat credit**. It allows a boss-killer to trade a trophy to somebody who specializes in another school. That is a design feature, not a bypass.
 
-## Mechanism — implementation contract
+## Power Flowers: Chaos Shard at MK3
 
-1. **Discover exact installed registry IDs before changing any recipes.** Query the actual pinned Botania Revived, Neo Vitae, ProjectE and Project Expansion builds/registries for Gaia entity and tier, Foreman entity, stone, table, all automatic EMC devices and expansion items. The sources are not permission to guess identifiers.
-2. **Record first eligible victory server-side** per player (or explicitly defined team credit after multiplayer design review). Ensure Gaia I and Foreman grant the same starter access, and award credit only after the legitimate boss's death. Never grant access from holding a Gaia Spirit, Mine key, spawn egg, stolen trophy or quest checkbox.
-3. **Enforce positive early gate** at every recipe type: ordinary crafting, alchemical/transmutation conversion, machine/altar crafting, possible ProjectE shift-crafting, other mod crafts and worldgen/loot/trades/quests. The starter unlock must be discoverable and available to a player who legitimately beat either boss.
-4. **Enforce negative late gate**: no pre-Chaos Energy Collectors, Condensers, Relays, automated EMC farm, advanced matter gear, Project Expansion or unbounded EMC exploitation, even if the items arrive through creative/admin test placement, inventory grants, other players, loot or nonstandard crafting. Creative/admin bypass is separately labeled for testing only.
-5. **Avoid item-by-item broken placeholders.** If ProjectE does not expose a comprehensive in-world use/EMC deny API, implement an appropriate first-party NeoForge runtime bridge instead of pretending recipe removal suffices.
-6. **EMC values and economy:** deny/restrict EMC on boss-gated materials, upgrade components and self-reproducing loops; verify whether Quest Shop coin conversion after basic ProjectE undermines exploration. The current small-per-sale payout was designed with ProjectE available only post-Chaos, so assess prices again.
-7. **No full ProjectE auto-knowledge.** Tome of Knowledge, cross-mod EMC knowledge, transmutation tablets and shortcut items must not bypass tier checks. Simulate fresh player, post-boss player, and Chaos-complete player.
-8. **Update the actual Endgame/Progression/Quest chapters only after runtime gate mechanics pass.** Quest dependencies guide the user but never are the gate.
+Project Expansion 1.0.6 defines sequential tiers **Basic MK1**, **Dark MK2**, **Red MK3**, then Magenta, Pink, Purple, Violet, Blue, Cyan, Green, Lime, Yellow, Orange, White, Fading and Final. Third is **`projectexpansion:red_power_flower`**, not a generic `tier_3_power_flower` item.
 
-## QA matrix (initial and endgame must be tested independently)
+The direct recipe uses two `<tier>_compressed_collector`, one `<tier>_emc_link`, and six `<tier>_relay`. For every **Red-or-higher direct recipe** we replace one relay with `draconicevolution:chaos_shard`:
 
-- [ ] Fresh survival player, no boss: cannot craft, find, purchase, use or EMC-learn starter/advanced ProjectE.
-- [ ] Gaia I legitimately killed: basic table/stone usable; high-tier EMC automation unavailable.
-- [ ] Foreman legitimately killed (different player/world): same starter entitlement without Gaia, plus correct other dungeon consequences.
-- [ ] Defeating either boss through a party: explicit personal/team-credit decision is consistently applied.
-- [ ] A traded Gaia Spirit or Mine Dungeon Key does **not** confer boss credit or bypass gate.
-- [ ] Boss rematch, multiple deaths, logout, dimension change and server restart do not duplicate or remove entitlements.
-- [ ] Pre-Chaos tier-one player: no loot/quest/reward/trade/EMC/condenser/machine automation bypass.
-- [ ] Post-Chaos: high-end ProjectE and Project Expansion work and normal boss-gated materials remain governed independently.
-- [ ] Ring of Seven Deadly Sins remains entirely unavailable in survival; Re:Avaritia/Extended Crafting remain excluded.
-- [ ] Farming common ore and selling to Quest Shop after tier one does not print effectively unlimited coins in a way that trivializes other milestones.
-- [ ] Multiplayer split progression and cheats/admin toggles tested in a disposable server.
+```text
+C L C
+R R R
+R S R
+```
 
-## Source audit required
+The **Red upgrade** originally uses Dark Power Flower in the center. We preserve that center and instead swap one lower relay to a Chaos Shard:
 
-- Existing design that previously locked *all* ProjectE: [docs/PROGRESSION.md](PROGRESSION.md), [docs/DESIGN.md](DESIGN.md), [docs/QUEST-DESIGN-RULES.md](QUEST-DESIGN-RULES.md).
-- Original quest sale economy assumed post-Chaos ProjectE: [docs/QUEST-SHOP-ECONOMY.md](QUEST-SHOP-ECONOMY.md).
-- Current integration and item roster: [manifest/mods.json](../manifest/mods.json), [manifest/feature-checklist.json](../manifest/feature-checklist.json).
-- Implementation remains **planned** and must not silently modify known-good saves, quests or existing users' permissions. Until bridge and tests exist, this stays a prospective design.
+```text
+C L C
+R P R
+R S R
+```
 
-### Key open choices
+`P` is `projectexpansion:dark_power_flower`. The other higher-tier upgrade recipes still require the preceding Power Flower and retain their own original ingredients. Every direct MK3+ recipe also requires the shard, so crafting a higher tier from scratch cannot evade the entry milestone. The two remaining early flowers can be explored before Chaos if other recipes permit.
 
-1. **Gaia Guardian I vs Gaia II**: recommended **I** for accessibility; raise to II if the early unlock trivializes middle tiers.
-2. **Personal versus team first-kill credit:** recommend individual credit for owned skill/economy progression, but explicitly test coordinated boss fights so co-participants aren't unfairly excluded.
-3. **Which basic ProjectE items are genuinely safe** with the pinned extensions, especially alchemical bag/EMC interactions: use a verified registry-item allowlist after a live balance audit.
+**Boundary:** Project Expansion's `ItemMatterUpgrader` code can convert already placed flowers or collectors using learned EMC without invoking a crafting recipe. ProjectE transmutation/knowledge may also synthesize learned flowers or shards. The KubeJS change **does not block those routes**, nor does it prevent admin grants, loot or trades. Test whether the Matter Upgrader is survival-obtainable; if it makes the intended MK3 threshold trivial, add a separate targeted guard instead of claiming these recipes are a universal use lock.
+
+## Universal EMC coverage — additional owner goal
+
+**Target 100%:** every registered item in our actual 1.21.1 NeoForge modpack has an EMC value **greater than zero**, with an explicitly approved short list of cheap exceptions such as **glass panes**. This applies to all installed mods, new mods and variants—not merely vanilla items or objects with normal recipes.
+
+Source-of-truth policy: `manifest/emc-coverage-policy.json`.
+
+Audit workflow:
+
+1. Export **every loaded item registry ID** from the same immutable build (not a guessed mod-list approximation) and ProjectE's **post-mapping** EMC values. The custom override file alone is not a complete map.
+2. Run `python3 scripts/audit_emc_coverage.py --items path/to/items.json --emc path/to/final-emc.json --output emc-audit.json --enforce`.
+3. ProjectE's native recipe/conversion mappers already assign many values. Give manually researched, positive base values to **every remaining missing root item** using ProjectE's native `custom_emc.json` mechanism. Do **not** install `KubeJS ProjectE` just because old documentation shows an event—it has published Forge builds for 1.19.2, not our 1.21.1 NeoForge target.
+4. Re-export the *actual resulting map*, rerun the audit until **zero non-exception misses**, and retain the report as build evidence. Future mod additions must pass the same coverage gate.
+5. Run profitable-cycle tests: dust/ore processing, Fortune/Silk Touch, item disassembly, reversible recipes, Quest Shop sales, generated matter, repaired/damaged items, fluid/energy-filled items, and NBT/data-bearing inventory items. Assigning a positive EMC value can enable **synthesis and duplication**; this is especially relevant to boss trophies, Chaos Shards, spawn eggs, relics, phylacteries, filled storage and non-stackable items.
+6. Existing expensive Project Expansion items may exceed ProjectE's normal signed-long EMC value bounds; resolve rather than silently setting them to zero. Any extra exception beyond the cheap-item allowlist requires a new owner decision.
+
+The audit script does **not** invent values or silently default missing items to 1. It fails `--enforce` unless every non-excepted item is backed by a positive *observed* value. Only glass panes and the 16 stained variants are initially exempted in the policy. If the owner prefers exact one-item exceptions instead, narrow the list before setting EMC maps.
+
+## Next client QA — essential
+
+- [ ] Both Stone orientations disappear with diamond and appear with Wilden Tribute, Gaia Spirit or Mine Dungeon Key as center.
+- [ ] One trophy is consumed, eight original outer ingredients still required, correct output.
+- [ ] All boss trophy IDs actually exist in the pinned 1.21.1 registry.
+- [ ] No duplicate old Stone recipe remains in JEI or alternate crafting tables.
+- [ ] Basic (MK1), Dark (MK2) original flower recipes remain; Red MK3 direct and Red upgrade **both** require Chaos Shard.
+- [ ] All higher **direct** Power Flower routes require Chaos Shard; later upgrades retain proper preceding flower dependency.
+- [ ] Test knowledge-table EMC recreation and Project Expansion Matter Upgrader for unintended bypass/EMC loops.
+- [ ] At least one in-world test for each boss-associated center plus two denied cheap-diamond and zero-shard test crafts.
+- [ ] Confirm the exact same final item values on client and dedicated server after complete EMC audit; no exclusions beyond reviewed list.
+
+**Evidence hierarchy:** JS-source/fixture tests → full dedicated server including KubeJS scripts with zero recipe errors → Prism JEI and in-world craft tests → multiplayer/conversion and economy acceptance. Never upgrade status directly from source tests.
+
+### Verified upstream sources
+
+- [ProjectE two original Stone recipes](https://github.com/sinkillerj/ProjectE/tree/mc1.21.1/src/datagen/generated/data/projecte/recipe).
+- [Ars Nouveau Wilden Tribute registry](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/setup/registry/ItemsRegistry.java).
+- [Botania Revived `life_essence` registry](https://github.com/Velron-Devs/Botania-Revived/blob/main/src/main/java/velrondevs/botania/registry/BotaniaItems.java).
+- [Neo Vitae Mines / Foreman and trial-spawner key](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/wiki/The-Endless-Dungeon.md).
+- [Project Expansion Power Flower recipes and generated tiers](https://github.com/DonovanDMC/ProjectExpansion/tree/1.21.1/src/main/generation/generators/recipe).
+- [ProjectE native custom EMC parser](https://github.com/sinkillerj/ProjectE/blob/mc1.21.1/src/main/java/moze_intel/projecte/config/CustomEMCParser.java).
