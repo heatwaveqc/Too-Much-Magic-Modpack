@@ -7,7 +7,7 @@
 
 ## Coverage
 
-The first inventory has **167 named entries** (not 167 proven distinct, registered, living combat entities):
+The first inventory has **168 named entries** (not 168 proven distinct, registered, living combat entities):
 
 | Source | Entries | Current pack state | Evidence |
 | --- | ---: | --- | --- |
@@ -16,20 +16,21 @@ The first inventory has **167 named entries** (not 167 proven distinct, register
 | Eidolon: Repraised | 7 | pinned; manifest says 1.21.1-0.5.0.8 | [Eidolon entity listing](https://wiki.9minecraft.net/java/mod/eidolon-repraised/) (third party; includes a possible noncombat Chant Caster) |
 | Iron's Spells 'n Spellbooks | 21 | pinned; manifest says 1.21.1-3.16.3 | [Official changelog](https://iron.wiki/changelog/), [official site](https://iron.wiki/), [creature guide](https://www.minecraft-guides.com/mod/irons-spells-and-spellbooks/wiki/) |
 | Alex's Caves | 44 | **prospective, NOT in manifest or packwiz** | [Alex's Caves wiki](https://alexscaves.wiki.gg/wiki/Mobs) |
+| Draconic Evolution | 1 | pinned; manifest says 1.21.1-3.1.4.633 | [Developer's Chaos Guardian lore](https://github.com/Draconic-Inc/PI-Docs/blob/master/ModDocs/draconicevolution/2.3.0/en_us/chaos_guardian_4c4fd.md) (older version; entity ID unverified) |
 
 ### Evidence and limits
 
 - The CSV records **display names**, not fabricated namespaced entity IDs. `entity_id`, native entity tags, creature attributes and actual runtime membership are **not yet verified** against the pinned JARs or a live registry.
 - Wiki pages may describe newer or older mod versions than the target; this inventory is a source-backed **candidate**, not version-matched completion. Some catalog pages list decorative or scripted entities as 'mobs', so the CSV explicitly distinguishes summoned, corpse, noncombat and uncertain cases.
 - Alex's Caves has multiple distinct unofficial NeoForge 1.21.1 ports, including [Alex's Caves Neo](https://modrinth.com/mod/alexscavesneo), [another unofficial port](https://modrinth.com/project/alexs-caves-%28unofficial-port%29), and [Alex's Caves Continued](https://modrinth.com/mod/alexs-caves-continued). No port has been approved/pinned for this pack, so **do not install or assume port-specific parity** from this research.
-- This is a starter inventory of five rosters. It does **not** claim complete modpack hostile entity coverage.
+- This is a starter inventory of five rosters plus a deliberate Chaos Guardian seed. It does **not** claim complete modpack hostile entity coverage.
 
 ## Taxonomy policy — owner decisions
 
 1. Categories represent **species/lineage, supernatural origin, or coherent faction/ecosystem**; they are not attack mechanics or dimensions.
 2. **No** Mage Slayer, Explosive Threat, Endborn, Netherborn or Boss specialization.
 3. **Creepers are Plants** by pack design, notwithstanding uncertain in-game biology. Preserve the special case for ordinary Creepers; for mechanical or modified Creeper analogues review whether the plant ancestry still applies.
-4. **Void** includes Endermen, Endermites and their confirmed variants, Ender Dragon, and Draconic Evolution's Chaos Guardian; **not** every mob in the End. The latter requires a Draconic Evolution entry in a future wave.
+4. **Void** includes Endermen, Endermites and their confirmed variants, Ender Dragon, and Draconic Evolution's Chaos Guardian (inventoried as a seed); **not** every mob in the End. The latter requires a Draconic Evolution entry in a future wave.
 5. **Piglin** includes Piglins, Brutes, Hoglins, and coherent related fauna/faction members; **not** zombified Piglins or Zoglins, which are Undead.
 6. A creature may have multiple *genuine* memberships; e.g., Ender Dragon = Dragon + Void; Drowned = Undead + Aquatic. Tactical traits (flight, casting, summoning, explosion, armor) remain separate non-skill-tree metadata.
 7. Boss/elite flags may affect **balance, XP, and neutrality exceptions**, but never grant a Boss damage specialization.
@@ -81,7 +82,7 @@ The repository has a **separate, unmerged-to-integration** `feature/mob-alliance
 ## Next census stages
 
 1. **Exact-version registry census:** get `namespace:path` from pinned JAR entity registrations or a clean test-server dump; record entity class, living flag, natural behavior, owner/summon type, and vanilla/mod tags. Do not infer IDs from display names. Include boss and MISC edge cases.
-2. **Expand active-mod coverage:** Deeper and Darker; Draconic Evolution/Chaos Guardian; Goety + Goety Cataclysm; JAWR and its addons; Feywild; Enchanted: Witchcraft; Malum; Occultism; EvilCraft; Ars Nouveau + additions; Neo Vitae; Hexerei; Botania Revived; Forbidden & Arcanus; Primal Magick; Roots Classic; other packs creating living entities. Reconcile each against actual `mods/*.pw.toml` and version.
+2. **Expand active-mod coverage:** Deeper and Darker; the remainder of Draconic Evolution; Goety + Goety Cataclysm; JAWR and its addons; Feywild; Enchanted: Witchcraft; Malum; Occultism; EvilCraft; Ars Nouveau + additions; Neo Vitae; Hexerei; Botania Revived; Forbidden & Arcanus; Primal Magick; Roots Classic; other packs creating living entities. Reconcile each against actual `mods/*.pw.toml` and version.
 3. **Neutrality matrix:** vampire, lich, werewolf, human Hunter, and dragon/fey/demon species states × tags/individual exceptions; test no-aggro, retaliation, commanded summons, PvP and boss encounters independently.
 4. **Coverage gates:** no unknown natural hostile entity silently assigned to a default specialist; no neutral/trader automatically treated as a legal contract; no summon-farming bypass; no broad multi-tag boss damage multiplication.
 5. **Review proposed new trees** after the full installed-mod census to determine if Prehistoric, Mutant, Confection, or Darkness-born have sufficient shared identity and gameplay to justify standalone specializations.
