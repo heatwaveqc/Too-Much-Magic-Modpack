@@ -12,6 +12,30 @@ EXPECTED = {"Introduction": 3, "Progression": 5, "Magic": 25, "Exploration & Com
 ID_RE = re.compile(r"^[0-9A-F]{16}$")
 
 
+def ftb_quoted(s: str) -> str:
+    """Serialize a literal ampersand through both formatter and SNBT."""
+    return json.dumps(s.replace("&", r"\&"), ensure_ascii=False)
+
+
+def validate_ftb_text_escapes(lang_text: str) -> None:
+    # Audit all localized strings, including chapter subtitles and descriptions.
+    for line in lang_text.splitlines():
+        line = line.strip()
+        if not line or line in ("{", "}"):
+            continue
+        ensure(": " in line, f"Malformed localization line: {line}")
+        key, encoded = line.split(": ", 1)
+        ensure(key.startswith(("chapter_group.", "chapter.", "quest.")),
+               f"Unexpected localization key: {key}")
+        value = json.loads(encoded)
+        strings = [value] if isinstance(value, str) else value
+        ensure(isinstance(strings, list) and all(isinstance(s, str) for s in strings),
+               f"Unexpected localization value type: {key}")
+        for s in strings:
+            ensure("&" not in s.replace(r"\&", ""),
+                   f"Unescaped ampersand triggers red formatting error: {key}")
+
+
 def ensure(ok: bool, message: str) -> None:
     if not ok:
         raise ValueError(message)
@@ -109,6 +133,7 @@ def main() -> None:
     ensure(not (QUESTS / "lang" / "en_us").exists(), "Legacy split lang/en_us directory is invalid")
     lang_text = language_path.read_text(encoding="utf-8")
     scan_snbt(lang_text, str(language_path))
+    validate_ftb_text_escapes(lang_text)
     ensure("undefined" not in lang_text, "Broken English quest translations")
     grouploc = lang_text
     chapterloc = lang_text
@@ -120,7 +145,7 @@ def main() -> None:
     ensure(len(lang_ids) == 179 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
-        ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
+        ensure(f'chapter_group.{g["id"]}.title: {ftb_quoted(g["name"])}' in grouploc, f"Missing group label {g['name']}")
     wanted = {c["filename"] for c in chapters}
     existing = {x.name for x in (QUESTS / "chapters").glob("*.snbt")}
     ensure(wanted == existing, f"Wrong chapter files: extra={existing-wanted} missing={wanted-existing}")
@@ -146,7 +171,7 @@ def main() -> None:
         ensure(f'filename: "{path.stem}"' in text, f"Wrong filename on {path.name}")
         ensure(f'order_index: {c["order_index"]}' in text, f"Wrong chapter index on {path.name}")
         # Chapter title lives in lang/en_us.snbt, not in the chapter data.
-        ensure(f'chapter.{c["chapter_id"]}.title: {json.dumps(c["name"], ensure_ascii=False)}' in chapterloc,
+        ensure(f'chapter.{c["chapter_id"]}.title: {ftb_quoted(c["name"])}' in chapterloc,
                f"Wrong English chapter name for {path.name}")
         ensure(f'chapter.{c["chapter_id"]}.chapter_subtitle: [' in chapterloc,
                f"Missing localized chapter subtitle for {path.name}")
@@ -173,14 +198,14 @@ def main() -> None:
             ensure(qid in lang_ids, f"Quest missing a locale entry: {qid} in {path.name}")
             record = resolved_by_id.get(qid)
             expected_title = record["title"] if record is not None else "Chapter Overview"
-            ensure(f'quest.{qid}.title: {json.dumps(expected_title, ensure_ascii=False)}' in lang_text,
+            ensure(f'quest.{qid}.title: {ftb_quoted(expected_title)}' in lang_text,
                    f"Wrong English quest title: {qid} ({expected_title})")
             if record is not None:
                 authored_record = authored_by_key.get((c["name"], expected_title))
                 ensure(authored_record is not None, f"Missing canonical source text for {qid}")
                 desc = authored_record["description"]
                 ensure(isinstance(desc, str) and bool(desc.strip()), f"Empty authoring description for {qid}")
-                wanted_desc = f'quest.{qid}.quest_desc: [{json.dumps(desc, ensure_ascii=False)}]'
+                wanted_desc = f'quest.{qid}.quest_desc: [{ftb_quoted(desc)}]'
                 ensure(wanted_desc in lang_text, f"Quest description differs from its authoring source: {qid}")
             ensure(qid not in all_blocks, f"Duplicate quest ID: {qid}")
             all_blocks[qid] = block
