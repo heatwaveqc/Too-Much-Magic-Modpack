@@ -10,13 +10,15 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -32,7 +34,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
  *
  * The bridge only handles player-facing bottles, leaving JAWR's own use,
  * drinking, crucible, wine glass, chicken and Lilith interactions untouched.
- * No per-tick handler; two click events and one native drink-finish event.
+ * No per-tick handler; one component-gated cauldron click and a drink-finish event.
  */
 public final class JAWRBottleInterop {
     private static final ResourceLocation JAWR_BOTTLE = id("witchery:bottle_of_blood");
@@ -74,7 +76,6 @@ public final class JAWRBottleInterop {
         // registries are not populated until after mod construction.
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onServerStarting);
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickBlock);
-        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickItem);
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onDrinkFinish);
     }
 
@@ -162,25 +163,43 @@ public final class JAWRBottleInterop {
         event.setCanceled(true);
     }
 
-    /** Iron's blood vial has no native use action; consume it only for JAWR vampires. */
-    private static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (!ready || !ModList.get().isLoaded("irons_spellbooks")
-                || !(event.getEntity() instanceof ServerPlayer player)) return;
-        if (!IRONS_VIAL.equals(BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem()))) return;
-        if (!isJAWRVampire(player) || !creditNativeBlood(player)) return;
-        net.minecraft.world.item.Item consumedVial = event.getItemStack().getItem();
-        giveEmptyBottle(player, event.getHand());
-        sound(player);
-        player.awardStat(Stats.ITEM_USED.get(consumedVial));
-        event.setCancellationResult(InteractionResult.SUCCESS);
-        event.setCanceled(true);
+    /**
+     * Hexerei's native BottleBloodtem.finishUsingItem removes milk-curable
+     * effects before ordinary food use grants Absorption I for 200 ticks.
+     * Equivalent medicine for other ordinary bottles must not overwrite
+     * either JAWR's special item components or its native consumeBlood flow.
+     *
+     * Milk curing includes POSITIVE potion effects: this is an intentional
+     * parity-with-Hexerei rule, not just a poison cure.
+     */
+    private static void applyHexereiMedicine(ServerPlayer player) {
+        player.removeEffectsCuredBy(EffectCures.MILK);
+        player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0));
     }
 
-    /** Hexerei bottles remain native food/drink items, with native effects intact. */
+    /**
+     * All three ordinary blood bottles grant Hexerei-style medicine.
+     * Only Hexerei/Iron's need a JAWR native +500 credit. JAWR's OWN bottle
+     * already calls WineGlassItem.consumeBlood and must NOT be credited twice.
+     * Iron's becomes normal food via a KubeJS startup script, with a native
+     * FoodProperties.usingConvertsTo glass-bottle remainder; this handler
+     * does not manually shrink it or grant a second glass bottle.
+     */
     private static void onDrinkFinish(LivingEntityUseItemEvent.Finish event) {
-        if (!ready || !ModList.get().isLoaded("hexerei")
-                || !(event.getEntity() instanceof ServerPlayer player)) return;
-        if (!HEX_BOTTLE.equals(BuiltInRegistries.ITEM.getKey(event.getItem().getItem()))) return;
-        if (isJAWRVampire(player)) creditNativeBlood(player);
+        if (!ready || !(event.getEntity() instanceof ServerPlayer player)) return;
+        ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(event.getItem().getItem());
+        if (itemId.equals(HEX_BOTTLE) && ModList.get().isLoaded("hexerei")) {
+            // Hexerei already applies BOTH milk-cure and Absorption via its native item.
+            if (isJAWRVampire(player)) creditNativeBlood(player);
+        } else if (itemId.equals(IRONS_VIAL) && ModList.get().isLoaded("irons_spellbooks")) {
+            applyHexereiMedicine(player);
+            if (isJAWRVampire(player)) creditNativeBlood(player);
+        } else if (itemId.equals(JAWR_BOTTLE) && isOrdinaryJAWRBottle(event.getItem())) {
+            applyHexereiMedicine(player);
+            // NO credit: native BottleOfBloodItem.finishUsingItem already adds 500.
+        }
+        // Chicken and vampire/Lilith JAWR variants retain their original effects
+        // and must never be mistaken for an ordinary blood bottle.
     }
+
 }
