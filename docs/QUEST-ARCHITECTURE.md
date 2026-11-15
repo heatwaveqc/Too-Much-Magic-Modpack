@@ -51,3 +51,8 @@ The five FTB chapter groups and 45 chapter files, with no-reward optional overvi
 ## Progression implementation (2026-11-14, candidate)
 
 The 45-chapter architecture is unchanged. All five Progression chapters are now populated with 65 substantive new quests on `feature/progression-quests-full-tech`; the full book has **168 entries**, including 12 earlier commodity sales and 42 still-temporary chapter overviews. Power/Reactors owns the complete BiggerReactors and Draconic Evolution FE technology track; the dedicated Endgame Draconic Evolution chapter will instead focus on boss fights and signature gear. See [POWER-TECH-QUEST-GUIDE.md](POWER-TECH-QUEST-GUIDE.md). Client/gameplay validation is outstanding.
+
+## New brewer chapter (2026-11-15)
+
+The owner explicitly requested **Alcohol is Magic** as a separate Introduction chapter following Food & Fishing. The five-group architecture remains, but Introduction now contains four chapters, for **46 chapters total**. A 19-quest how-to teaches Brewin' and Chewin', Cocktails Delight, and Let's Do Beachparty without duplicating Food & Fishing or the vanilla Brewing Stand track. All operation-only steps use honestly described manual checkmarks; item steps detect possession, not actual usage. The Piña Colada is optional and conditional on pineapple/coconut item tags.
+

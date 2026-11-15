@@ -1,12 +1,12 @@
 name = "Too Much Magic"
 author = "heatwaveqc"
-version = "0.9.0-b13-beach-decor-qa"
+version = "0.9.1-alcohol-is-magic-quests-qa"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "48617a23425b7bfd7e1936483281120500a3269254d4f43d3dce4ff10c309f42"
+hash = "209b25d4a02fce359a8423f00a50bde36aae970d113722f7e1fc4952da2e4dc7"
 
 [versions]
 minecraft = "1.21.1"

@@ -2789,6 +2789,360 @@
       },
       "depends": null,
       "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Welcome to the Magic of Alcohol",
+      "quest_id": "A1C1000000000001",
+      "task_id": "A1C2000000000001",
+      "xp_reward_id": "A1C3000000000001",
+      "item_reward_id": "A1C4000000000001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Read the Brewer's In-Game Reference",
+      "quest_id": "A1C1000000000002",
+      "task_id": "A1C2000000000002",
+      "xp_reward_id": "A1C3000000000002",
+      "item_reward_id": "A1C4000000000002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": "Welcome to the Magic of Alcohol",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Build a Keg",
+      "quest_id": "A1C1000000000003",
+      "task_id": "A1C2000000000003",
+      "xp_reward_id": "A1C3000000000003",
+      "item_reward_id": "A1C4000000000003",
+      "criterion": {
+        "type": "item",
+        "id": "brewinandchewin:keg",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:honeycomb",
+        "count": 2
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Make Your Serving Tankards",
+      "quest_id": "A1C1000000000004",
+      "task_id": "A1C2000000000004",
+      "xp_reward_id": "A1C3000000000004",
+      "item_reward_id": "A1C4000000000004",
+      "criterion": {
+        "type": "item",
+        "id": "brewinandchewin:tankard",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Build a Keg",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Prime the Keg and Read Its Temperature",
+      "quest_id": "A1C1000000000005",
+      "task_id": "A1C2000000000005",
+      "xp_reward_id": "A1C3000000000005",
+      "item_reward_id": "A1C4000000000005",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "depends": "Make Your Serving Tankards",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "First Brew: Beer",
+      "quest_id": "A1C1000000000006",
+      "task_id": "A1C2000000000006",
+      "xp_reward_id": "A1C3000000000006",
+      "item_reward_id": "A1C4000000000006",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "A Honey Mead Batch",
+      "quest_id": "A1C1000000000007",
+      "task_id": "A1C2000000000007",
+      "xp_reward_id": "A1C3000000000007",
+      "item_reward_id": "A1C4000000000007",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:honey_bottle",
+        "count": 2
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "A Keg Makes Food, Too",
+      "quest_id": "A1C1000000000008",
+      "task_id": "A1C2000000000008",
+      "xp_reward_id": "A1C3000000000008",
+      "item_reward_id": "A1C4000000000008",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cocoa_beans",
+        "count": 4
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Transfer a Full Keg",
+      "quest_id": "A1C1000000000009",
+      "task_id": "A1C2000000000009",
+      "xp_reward_id": "A1C3000000000009",
+      "item_reward_id": "A1C4000000000009",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:barrel",
+        "count": 1
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Cocktails Delight: Learn the Two Workflows",
+      "quest_id": "A1C100000000000A",
+      "task_id": "A1C200000000000A",
+      "xp_reward_id": "A1C300000000000A",
+      "item_reward_id": "A1C400000000000A",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Ferment White Rum",
+      "quest_id": "A1C100000000000B",
+      "task_id": "A1C200000000000B",
+      "xp_reward_id": "A1C300000000000B",
+      "item_reward_id": "A1C400000000000B",
+      "criterion": {
+        "type": "item",
+        "id": "cocktailsdelight:rum",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:sugar",
+        "count": 4
+      },
+      "depends": "Cocktails Delight: Learn the Two Workflows",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Mix a Drink and Check Its Side Effects",
+      "quest_id": "A1C100000000000C",
+      "task_id": "A1C200000000000C",
+      "xp_reward_id": "A1C300000000000C",
+      "item_reward_id": "A1C400000000000C",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": "Ferment White Rum",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "The Piña Colada Ingredient Puzzle",
+      "quest_id": "A1C100000000000D",
+      "task_id": "A1C200000000000D",
+      "xp_reward_id": "A1C300000000000D",
+      "item_reward_id": "A1C400000000000D",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:flower_pot",
+        "count": 2
+      },
+      "depends": "Mix a Drink and Check Its Side Effects",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Find Coconuts and Palm Wood",
+      "quest_id": "A1C100000000000E",
+      "task_id": "A1C200000000000E",
+      "xp_reward_id": "A1C300000000000E",
+      "item_reward_id": "A1C400000000000E",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:sand",
+        "count": 8
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Construct a Palm Bar",
+      "quest_id": "A1C100000000000F",
+      "task_id": "A1C200000000000F",
+      "xp_reward_id": "A1C300000000000F",
+      "item_reward_id": "A1C400000000000F",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:palm_bar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Find Coconuts and Palm Wood",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Build a Mini Fridge for Ice",
+      "quest_id": "A1C1000000000010",
+      "task_id": "A1C2000000000010",
+      "xp_reward_id": "A1C3000000000010",
+      "item_reward_id": "A1C4000000000010",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:mini_fridge",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Construct a Palm Bar",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Serve a Coconut Cocktail",
+      "quest_id": "A1C1000000000011",
+      "task_id": "A1C2000000000011",
+      "xp_reward_id": "A1C3000000000011",
+      "item_reward_id": "A1C4000000000011",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:coconut_cocktail",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:honeycomb",
+        "count": 3
+      },
+      "depends": "Build a Mini Fridge for Ice",
+      "optional": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Place, Sip, and Compare Effects",
+      "quest_id": "A1C1000000000012",
+      "task_id": "A1C2000000000012",
+      "xp_reward_id": "A1C3000000000012",
+      "item_reward_id": "A1C4000000000012",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:sea_pickle",
+        "count": 2
+      },
+      "depends": "Serve a Coconut Cocktail",
+      "optional": true
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Open the Beach Bungalow",
+      "quest_id": "A1C1000000000013",
+      "task_id": "A1C2000000000013",
+      "xp_reward_id": "A1C3000000000013",
+      "item_reward_id": "A1C4000000000013",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:lantern",
+        "count": 2
+      },
+      "depends": "Serve a Coconut Cocktail",
+      "optional": true
     }
   ]
 }

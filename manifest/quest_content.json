@@ -2740,6 +2740,341 @@
       "optional": true,
       "overview": false,
       "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Welcome to the Magic of Alcohol",
+      "description": "This chapter teaches three DIFFERENT installed drink systems: Brewin' and Chewin' ferments liquids and foods in a Keg; Cocktails Delight adds spirits and mixed drinks, some conditional on other food mods; Beachparty mixes tropical cocktails at a Palm Bar, with a Mini Fridge for ice. Food & Fishing covers farms and meals, while Advanced Progression covers the vanilla Brewing Stand. No separate brewmaster book is required. Read the branches, then check this orientation quest. Task: manual acknowledgment, not a recipe check.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "overview": true,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Read the Brewer's In-Game Reference",
+      "description": "Brewin' and Chewin' has NO physical guidebook. Open Advancements (L by default, or your custom keybinding), find the Brewin' and Chewin' tab marked with a beer icon, and browse its Keg progression. For a Keg item use JEI recipe lookup (R) and usages (U); search 'Keg', 'Fermenting' and 'Keg Pouring'. Cocktails Delight recipes are in JEI, including optional integrations; Beachparty uses JEI's Palm Bar Mixing and Mini Fridge Freezing categories. Task: manual check after you open the references; this does not prove brewing.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": "Welcome to the Magic of Alcohol",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Build a Keg",
+      "description": "The Keg is Brewin' and Chewin's main workstation. In a crafting table put three planks across the bottom, iron ingots at top-left/top-right and center-left/center-right, a plank at top-middle, and a honeycomb at center-middle (recipe pattern i-p-i / i-h-i / p-p-p). Any vanilla plank-tag wood qualifies. Place the Keg in a safe workroom and open its inventory. JEI: brewinandchewin:keg recipe. Task: acquire a Keg; this detects possession, not placement.",
+      "criterion": {
+        "type": "item",
+        "id": "brewinandchewin:keg",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:honeycomb",
+        "count": 2
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Make Your Serving Tankards",
+      "description": "Craft Tankards from planks and iron nuggets: top row plank/empty/plank, middle iron nugget/empty/iron nugget, bottom three planks; one craft yields four Tankards. Place empties in the Keg's finished-fluid serving slot, or use the correct container directly on the Keg, to take brewed drinks. The output preview tells you which container fits. JEI: brewinandchewin:tankard. Task: acquire a Tankard (the recipe produces four).",
+      "criterion": {
+        "type": "item",
+        "id": "brewinandchewin:tankard",
+        "count": 1
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Build a Keg",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Prime the Keg and Read Its Temperature",
+      "description": "Open the placed Keg. The top four slots hold ingredients; the separate container slot fills the base-fluid tank with water, honey or milk as the JEI Fermenting recipe requires. A Keg stores up to 1000 mB (one bucket). Temperature comes from the environment/nearby blocks and can determine whether the recipe progresses. Match the recipe's full fluid amount, ingredients and temperature; monitor its progress before serving into the indicated container. Task: manually confirm you saw a fermentation progress indicator. Holding a Keg alone does not count.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "depends": "Make Your Serving Tankards",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "First Brew: Beer",
+      "description": "In JEI, select Brewin' and Chewin's Beer Fermenting recipe. One 1000 mB water batch uses wheat dough via the c:foods/dough/wheat tag (NOT just raw wheat), wheat seeds and a brown mushroom; leave the unused fourth ingredient slot empty. Use Farmer's Delight / JEI to craft an accepted dough ingredient. Fill the Keg, adjust temperature if JEI requires it, watch fermentation finish, then fill Tankards. Task: manual check after you actually pour Beer; the quest does not falsely infer brewing from item possession.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "A Honey Mead Batch",
+      "description": "For a second recipe route, select Mead in JEI's Fermenting recipes: use 1000 mB honey as the base fluid plus wheat, wheat seeds and sweet berries (the fourth ingredient slot is empty). Honey is a FLUID input rather than a sugar substitute; obtain it from supported containers. Confirm the recipe's temperature and pour into its required serving container. Task: manual completion after preparing and serving Mead. This is an optional fermentation specialization, not a gate for other drinks.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:honey_bottle",
+        "count": 2
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "A Keg Makes Food, Too",
+      "description": "A brewery needn't produce only alcohol. The same Keg ferments cheese and fudge. JEI: Fermenting -> Cocoa Fudge uses 250 mB milk, sugar, and two cocoa beans, and requires temperature 2 in the upstream 1.21.1 recipe. Cheeses have their own serving requirements; when the fluid/output indicator requests Honeycomb, use it rather than a Tankard. See JEI's individual recipes and Farmer's Delight Cutting Board usages for slicing prepared cheese. Task: manual check after successfully producing ONE edible fermented food; optional.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cocoa_beans",
+        "count": 4
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Transfer a Full Keg",
+      "description": "A Keg may be carried with liquid still inside, and its capacity is 1000 mB. Use this to move a prepared batch from a brewing shed to a bar. First inspect the stored fluid before breaking or moving it, then place the Keg and confirm its contents remain. Do not assume ingredients or finished servings survive all pickup methods; test safely with an ordinary batch. Task: manual confirmation of successful fluid transport. Optional utility trick.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:barrel",
+        "count": 1
+      },
+      "depends": "Prime the Keg and Read Its Temperature",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Cocktails Delight: Learn the Two Workflows",
+      "description": "Cocktails Delight EXTENDS the Keg with new fermented spirits and uses ordinary crafting recipes for many mixed cocktails. In JEI, find the Fermenting and Keg Pouring categories for spirits, then press U on the obtained drink item to see its crafting-table cocktail uses. Many drinks work with vanilla and Farmer's Delight; others are conditional on external crop/item tags. Do not assume every advertised drink exists in this pack. Task: manual check after inspecting at least one fermentation and one mixed-drink recipe; optional branch.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Ferment White Rum",
+      "description": "Cocktails Delight's White Rum is brewed in the Brewin' and Chewin' Keg, NOT at Beachparty's Palm Bar. Upstream Fermenting recipe: 1000 mB water, THREE sugar cane and ONE sugar; fermentation time 8400 ticks and required temperature value 4. Check JEI for which conditions achieve that heat in this version. Pour the finished rum using Keg Pouring into the serving item indicated by JEI. Task: acquire cocktailsdelight:rum; an item check does not confirm HOW the drink was brewed. Optional if you prefer the tropical route.",
+      "criterion": {
+        "type": "item",
+        "id": "cocktailsdelight:rum",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:sugar",
+        "count": 4
+      },
+      "depends": "Cocktails Delight: Learn the Two Workflows",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Mix a Drink and Check Its Side Effects",
+      "description": "A spirit is usually an INPUT to a cocktail, not the finished mixed drink. Press U on the White Rum or another Cocktails Delight ingredient in JEI and select a recipe available with this pack's crops, bottle count and crafting table. Craft a mixed drink and inspect its tooltip before drinking. Many alcoholic drinks trigger Brewin' and Chewin's Tipsy/Intoxication; some Cocktails Delight recipes grant combat or XP effects. Avoid stacking effects during XP/skill testing until compatibility has been audited. Task: manual completion after mixing one available drink; optional.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:cookie",
+        "count": 2
+      },
+      "depends": "Ferment White Rum",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "The Piña Colada Ingredient Puzzle",
+      "description": "Yes, there IS a Piña Colada item in Cocktails Delight, but its recipe is CONDITIONAL. In JEI search cocktailsdelight:pina_colada. The upstream recipe is shapeless: TWO items under c:foods/pineapple_item, ONE item under c:foods/coconut, ONE White Rum and FOUR glass bottles; it yields four cocktails. It is registered only when BOTH food tags are nonempty. Beachparty coconuts and Pam's crops must actually populate those common tags; do not assume they do. If JEI lacks the recipe, record the missing-tag incompatibility instead of chasing an impossible craft. Task: manual check after verifying the available recipe or identifying the tag gap; optional, NEVER blocks the chapter.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:flower_pot",
+        "count": 2
+      },
+      "depends": "Mix a Drink and Check Its Side Effects",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Find Coconuts and Palm Wood",
+      "description": "Beachparty's tropical work starts on a coast with naturally generated palms. Gather Palm Logs and coconuts hanging beneath foliage; turn logs into Palm Planks. Coconuts can be opened for drink ingredients and can help produce palm sprouts on suitable sand. The beach biome and worldgen are a discovery route, not a hard quest lock: bring home saplings if you want a base elsewhere. Use JEI on Palm Planks and Coconut Open. Task: manual check when you have examined a palm and obtained its useful materials.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:sand",
+        "count": 8
+      },
+      "depends": "Read the Brewer's In-Game Reference",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Construct a Palm Bar",
+      "description": "Beachparty's Palm Bar is a separate cocktail mixer; it does NOT ferment your Keg's spirits. Craft it using SEVEN Palm Planks arranged ### / ##(empty) / ##(empty) in a crafting grid; the recipe yields three Palm Bars. Place one in your bungalow, open it, and inspect JEI's Palm Bar Mixing recipes. Task: acquire beachparty:palm_bar, which detects possession rather than an actual successful cocktail.",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:palm_bar",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Find Coconuts and Palm Wood",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Build a Mini Fridge for Ice",
+      "description": "For Beachparty cocktails, the Mini Fridge makes ice without requiring a frozen biome. Craft a Mini Fridge from FIVE iron ingots and ONE redstone (pattern III / IRI), then put a WATER potion bottle in it: the Mini Fridge Freezing recipe produces Ice after 1200 ticks (about a minute). Verify the JEI Freezing recipe and collect the Ice for Palm Bar Mixing. Task: acquire beachparty:mini_fridge; you must separately test that freezing works.",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:mini_fridge",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:glass_bottle",
+        "count": 4
+      },
+      "depends": "Construct a Palm Bar",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Serve a Coconut Cocktail",
+      "description": "At the Palm Bar, mix ONE Open Coconut (beachparty:coconut_open), ONE block of Ice and ONE Honey Bottle. JEI category: Palm Bar Mixing -> Coconut Cocktail. This makes beachparty:coconut_cocktail, a refreshing tropical drink with a temporary Strength effect. It is DISTINCT from Cocktails Delight's conditional Piña Colada, and does NOT need rum or a Keg. Task: acquire the Coconut Cocktail; possession doesn't verify drinking it.",
+      "criterion": {
+        "type": "item",
+        "id": "beachparty:coconut_cocktail",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:honeycomb",
+        "count": 3
+      },
+      "depends": "Build a Mini Fridge for Ice",
+      "optional": false,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Place, Sip, and Compare Effects",
+      "description": "Beachparty cocktails are placeable drinks. Set a Coconut Cocktail on a table/counter and interact with it to sip servings; the upstream wiki describes three placed servings (30 seconds each), compared with consuming it directly. Other Palm Bar flavors have their own effects: Sweet Berries (Absorption), Cocoa (Regeneration), Pumpkin (Fire Resistance), Honey (Haste), Melon (Luck). Check the effects and durations in this pinned client. Task: manual check after placing a drink and taking a serving. Optional: do not require alcohol consumption to finish the book.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:sea_pickle",
+        "count": 2
+      },
+      "depends": "Serve a Coconut Cocktail",
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Alcohol is Magic",
+      "title": "Open the Beach Bungalow",
+      "description": "Final open-ended build: set up a Palm Bar, Mini Fridge and a stocked Coconut Cocktail table at a coastal bungalow. Optionally include a Keg, Tankards, cheese and a Cocktails Delight mixing area; provide a lounge chair, fishing spot and a safe storage barrel. Aquaculture 2 supplies fishing, Farmer's Delight and Pam's provide food, and Let's Do Furniture supplies extra décor. You do NOT need to craft all 40+ Cocktails Delight recipes or obtain conditional missing ingredients. Task: manual check after your functioning beach bar is assembled; chapter complete!",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:lantern",
+        "count": 2
+      },
+      "depends": "Serve a Coconut Cocktail",
+      "optional": true,
+      "overview": false,
+      "first_log": false
     }
   ]
 }

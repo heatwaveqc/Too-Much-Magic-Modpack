@@ -194,7 +194,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
+hash = "a8a533b0ca9f6d1e2a241eb85db7711ced13a7d64e8ce7dfc717ad0a3d264ce0"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -1091,3 +1091,7 @@ hash = "ecc1ecac0e22cd8c18cb3337c4de2e2b12a64369fe4016bec9968bd28b1d35b6"
 [[files]]
 file = "tests/test_tmm_qa_preferences.ps1"
 hash = "f390036a167b4c7602d688018425e6665c73d6b3b19015b9c6b6a764e362a601"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
+hash = "cc5229ca496bfe85b2d1e12826fdbb8d91f2781a36c8e5687c44edae0daec70c"
