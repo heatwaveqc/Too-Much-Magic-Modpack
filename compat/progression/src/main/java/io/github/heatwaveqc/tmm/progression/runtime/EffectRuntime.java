@@ -216,11 +216,16 @@ public final class EffectRuntime {
     public static boolean animalFriendship(ServerPlayer player, PlayerInteractEvent.EntityInteract event) {
         if (event.getHand() != InteractionHand.MAIN_HAND || !player.getMainHandItem().isEmpty()
                 || !(event.getTarget() instanceof Animal animal)) return false;
-        if (!animal.canFallInLove()) return false; // Adults, non-breeding state, cooldown.
+        // The original ability has two distinct uses: calm a revenge-targeting
+        // passive animal, OR put an eligible adult into the normal breeding state.
+        boolean calmed = animal.getTarget() == player;
+        boolean breeds = animal.canFallInLove();
+        if (!calmed && !breeds) return false;
         for (Active active : active(player)) {
             Definition.Effect fx = active.effect();
             if (!fx.type().equals("animal_friendship") || !Selectors.entity(fx.selector(),animal)) continue;
-            animal.setInLove(player);
+            if (calmed) animal.setTarget(null);
+            if (breeds) animal.setInLove(player);
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
             ProgressionApi.record(player,Selectors.entityAction("animal_petted",animal));
