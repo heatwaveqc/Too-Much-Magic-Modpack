@@ -163,7 +163,7 @@ def main():
                   "Galore's own cobblestone, stone, basalt, granite, andesite, diorite, tuff, netherrack, obsidian and cobbled deepslate recipes are preserved.",
                   "","## Marble unification","",
                   "The original configured Primal Magick ore-marble feature, source "+exact[0][0]+", replaces "+old+" with astralsorcery:marble_raw. It preserves original target tag, count, size, placement, biomes and biome modifiers. This alters only new ordinary overworld terrain; existing chunks unchanged.",
-                  "Pastel Basal Marble stays in its dimension because it is an intentionally different biome stone; Goety's dedicated structure palettes are unchanged. All four marble block types have 1:1 bidirectional stonecutter conversions.",
+                  "Pastel Basal Marble stays in its dimension because it is an intentionally different biome stone; Goety's dedicated structure palettes are unchanged. Only Astral and Primal Magick's identical ordinary Marble blocks have 1:1 bidirectional stonecutter conversions; Goety Marble preserves its Cursed Infuser/totem crafting path and Pastel Basal Marble stays dimension-specific.",
                   "","## Excluded stone-named worldgen materials","",
                   "| Block ID | Reason |","|---|---|"]
         for item,why in sorted(policy["excluded_natural_candidates"].items()):
