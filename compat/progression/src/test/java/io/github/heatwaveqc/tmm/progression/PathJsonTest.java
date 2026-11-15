@@ -42,4 +42,30 @@ class PathJsonTest {
             () -> PathJson.read("test:monk",JsonParser.parseString(bad).getAsJsonObject()));
     }
 
+    @Test void branchingAndGearParametersValidate() {
+        String graph = """
+            {"schema":1,"max_level":2,"rank_xp":[0,10],"skills":[
+                {"id":"test:a","choice_group":"test:stance","effects":[]},
+                {"id":"test:b","choice_group":"test:stance","requires_any_skills":["test:a"],
+                 "effects":[{"type":"gear_durability","target":"*","per_rank":1,
+                  "params":{"slot":"all","action":"repair","interval_ticks":"20"}}]}
+            ]}
+            """;
+        assertEquals(2,PathJson.read("test:choice",
+            JsonParser.parseString(graph).getAsJsonObject()).skills().size());
+        String wrong = graph.replace("\\"interval_ticks\\":\\"20\\"","\\"interval_ticks\\":\\"0\\"");
+        assertThrows(IllegalArgumentException.class, () -> PathJson.read("test:choice",
+            JsonParser.parseString(wrong).getAsJsonObject()));
+    }
+    @Test void prerequisiteCycleRejected() {
+        String cycle = """
+            {"schema":1,"rank_xp":[0,10],"skills":[
+                {"id":"test:a","requires_skills":["test:b"]},
+                {"id":"test:b","requires_any_skills":["test:a"]}
+            ]}
+            """;
+        assertThrows(IllegalArgumentException.class,
+            () -> PathJson.read("test:cycle",JsonParser.parseString(cycle).getAsJsonObject()));
+    }
+
 }
