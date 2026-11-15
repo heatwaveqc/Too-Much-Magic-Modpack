@@ -812,7 +812,7 @@
   "validation_gates": [
     "freeze ATM10 exact distributable version and effective datapacks",
     "probe ATM10 spellbook loot category gem socket eligibility",
-    "validate Atlas Mythic actual legal affixes and gem class exclusivity",
+    "validate Apotheosis Mythic actual legal affixes and gem class exclusivity",
     "verify all Arcane mana VII enchant stacking on four pieces",
     "enumerate Ars learned glyph maximum and tier-6 threads",
     "verify Iron's orb counts/Curios and caster soft cap stacking",
