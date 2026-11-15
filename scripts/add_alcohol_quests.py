@@ -59,7 +59,7 @@ QUESTS = [
     (
         "First Brew: Beer",
         "In JEI, select Brewin' and Chewin's Beer Fermenting recipe. One 1000 mB water batch uses wheat dough via the c:foods/dough/wheat tag (NOT just raw wheat), wheat seeds and a brown mushroom; leave the unused fourth ingredient slot empty. Use Farmer's Delight / JEI to craft an accepted dough ingredient. Fill the Keg, adjust temperature if JEI requires it, watch fermentation finish, then fill Tankards. Task: manual check after you actually pour Beer; the quest does not falsely infer brewing from item possession.",
-        None, "Prime the Keg and Read Its Temperature", False, 15, 0, "minecraft:wheat", 4, 30, "brewinandchewin:beer_tankard",
+        None, "Prime the Keg and Read Its Temperature", False, 15, 0, "minecraft:glass_bottle", 4, 30, "brewinandchewin:beer_tankard",
     ),
     (
         "A Honey Mead Batch",
