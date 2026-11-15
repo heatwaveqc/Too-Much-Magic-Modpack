@@ -33,7 +33,7 @@
     },
     {
       "event": "kill",
-      "target": "#minecraft:undead",
+      "target": "#tmm_progression:undead",
       "xp": 4,
       "cooldown_ticks": 0
     }

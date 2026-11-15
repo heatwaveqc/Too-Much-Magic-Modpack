@@ -27,13 +27,13 @@
   "activities": [
     {
       "event": "kill",
-      "target": "#minecraft:undead",
+      "target": "#tmm_progression:undead",
       "xp": 5,
       "cooldown_ticks": 0
     },
     {
       "event": "kill",
-      "target": "#minecraft:raiders",
+      "target": "#tmm_progression:raiders",
       "xp": 6,
       "cooldown_ticks": 0
     }
@@ -44,7 +44,7 @@
       "criteria": [
         {
           "event": "kill",
-          "target": "#minecraft:undead",
+          "target": "#tmm_progression:undead",
           "count": 20
         }
       ],
@@ -56,7 +56,7 @@
       "criteria": [
         {
           "event": "kill",
-          "target": "#minecraft:raiders",
+          "target": "#tmm_progression:raiders",
           "count": 20
         }
       ],
@@ -74,8 +74,8 @@
       "effects": [
         {
           "type": "melee_bonus",
-          "target": "#minecraft:undead",
-          "weapon": "#minecraft:swords",
+          "target": "#tmm_progression:undead",
+          "weapon": "#tmm_progression:swords",
           "per_rank": 1
         }
       ]
@@ -89,8 +89,8 @@
       "effects": [
         {
           "type": "melee_bonus",
-          "target": "#minecraft:raiders",
-          "weapon": "#minecraft:axes",
+          "target": "#tmm_progression:raiders",
+          "weapon": "#tmm_progression:axes",
           "per_rank": 1
         }
       ]
