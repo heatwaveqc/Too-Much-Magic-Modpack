@@ -4,7 +4,7 @@
 
 ## 1. Scope and canonical progression rules
 
-The nine custom categories are **Core Magic; Cave Dragon; Sea Dragon; Forest Dragon; Vampire; Werewolf; Lich; Hunter; Monk**. These are one shared Tyz XP/SP wallet, not nine currencies. The three Dragon categories replace the old single planned `tmm_dragon` category; the Hunter category is new.
+The nine custom categories are **Core Skills; Cave Dragon; Sea Dragon; Forest Dragon; Vampire; Werewolf; Lich; Hunter; Monk**. These are one shared Tyz XP/SP wallet, not nine currencies. The three Dragon categories replace the old single planned `tmm_dragon` category; the Hunter category is new.
 
 - **XP source:** only cross-mod magic-practice MXP dispatcher, not vanilla XP or Tyz's native activity XP. Every effective **1,000 MXP** = one Tyz level = one SP. Ordinary awards divide by `1.2^P` where `P` is lifetime points earned from level progression; first rituals / first bosses and authorized fixed repeats obey the existing exceptions. Respec does not rewind `P`.
 - **Native ownership:** Vampirism/Werewolves, Dragon Survival, Forbidden Magic/JAWR, Goety, and the custom Monk faction retain real transformations, form abilities, native advancement, feeding, death and cures. Tyz ranks enhance or add carefully bounded effects *after* the native permission has been earned, never simulate acquisition.
@@ -15,7 +15,7 @@ The nine custom categories are **Core Magic; Cave Dragon; Sea Dragon; Forest Dra
 - **Purchase integrity:** enforce native state, node-specific stage, and outside milestones with the server's Tyz `PurchasePre` and `RefundPre` gates, plus an authorized direct-grant reconciliation path. Tyz bulk-buy checks a pre-event once: put external gates at **node boundaries**, not mid-node rank thresholds. One rank in a predecessor is sufficient as a native node prerequisite; advanced stages additionally require real native milestones.
 - **Power ceiling:** talents improve forms without replacing Chaos Guardian, Draconic Evolution, ProjectE or Gem Armor. No creative flight, global creature pacification, immortality for free, protected-block mining bypass, infinite energy, or unlimited combat evasion.
 
-**Cross-reference:** [original primary Tyz design PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27), [Core Magic preview PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33), [Monk live fixes and complete native skeleton PR #71](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71), [MXP source rules](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-PROGRESSION.md), [transformation target PR #77](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/77).
+**Cross-reference:** [original primary Tyz design PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27), [Core Skills preview PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33), [Monk live fixes and complete native skeleton PR #71](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71), [MXP source rules](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-PROGRESSION.md), [transformation target PR #77](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/77).
 
 ## 2. Tier pattern and purchasing model
 
@@ -30,80 +30,108 @@ These are *design stages*, not promises of specific form levels; map stages to r
 
 Within a form specialization lane the explicit dependency is **Entry → Advanced → Mastery**, requiring one rank in the directly preceding node. A proposed capstone requires at least **one Mastery purchase and one Advanced purchase in a different lane**, plus the verified native end stage and a real late milestone. These are intended edge rules, not native Tyz runtime wiring yet. 
 
-There is **no universal rule that every skill has 99 ranks**. **New decision (2026-11-15): the four initial Core Magic base skills compress from 99 ranks to 5 ranks, each giving 20% of its former rank-99 maximum attribute benefit (20/40/60/80/100% of cap).** Exact prior ceilings are preserved, with integer rounding where applicable. Later magnitude-tier skills may be 99-rank specialty bands if independently approved. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
+There is **no universal rule that every skill has 99 ranks**. **New decision (2026-11-15): the four initial Core Skills base skills compress from 99 ranks to 5 ranks, each giving 20% of its former rank-99 maximum attribute benefit (20/40/60/80/100% of cap).** Exact prior ceilings are preserved, with integer rounding where applicable. Later magnitude-tier skills may be 99-rank specialty bands if independently approved. The Monk's source-backed native one-off permissions and finite affix rarities should never be inflated to 99 generic ranks. Every proposed stage is separately purchasable; no 99/99 prerequisite. Suggested costs and percentages are not approved balance and remain unencoded.
 
-## 3. Nine categories, complete proposed skill families
+## 3. Identity-first class rules (revised 2026-11-15)
 
-### Core Magic — `tmm_magic_core`
+**This section takes precedence over earlier prototype nodes when they conflict.** The catalog is a *skill design working sketch*, not a locked exhaustive 96-node ship list. Preserve one Tyz wallet and nine final tabs; do not add a separate common Dragon tab. See the `class_identity_rules` section of [machine-readable catalog](tyzs/nine-tree-catalog-v1.json) for binding considerations and source-classification policies.
 
-Always available. Keep the original 9 families; this is the cross-mod baseline, not a new exclusive mage class.
-
-| Family | Effect contract | Current status |
+| Tree | Where its skill points should be most effective | Hard design guardrails |
 |---|---|---|
-| **Reservoir** | Max eligible personal resource capacity; not machine tanks | Existing 99-rank preview; native attributes/adapters |
-| **Wellspring** | Personal resource regeneration; never passive world generators | Existing 99-rank preview; native attributes/adapters |
-| **Thrift** | Real positive-cost reduction for personal casts, with floor and cross-mod dedupe | Existing 99-rank preview; debit-event adapters |
-| **Potency** | Scalable offensive/healing magic effect, damage-tag and owner aware | Existing 99-rank preview; native attributes/context |
+| **Core Skills** | Broad utility, baseline magic, combat, survival, crafting and exploration; home for stock skill relocations | Same stable category ID `tmm_magic_core`, one MXP wallet; not a mage-only category |
+| **Hunter** | **Best specialized combat upgrades**: weapon/armor durability preservation, crossbow ammo conservation, and late anti-undead/demon/fae damage and survivability | Very little bonus magic power; **Hunter Tracking** Glowing on nearby qualified supernatural mobs only at very high advancement |
+| **All three Dragons** | **Huge maximum personal mana** and **highest spell-power gain per SP** | **No dragon-exclusive mana regeneration bonuses**; Core Skills Wellspring remains a universal option. Every dragon gets armor, physical damage and legal harvest-speed skills, but these cost more SP per unit than a specialist's |
+| **Cave Dragon** | Infernal/demonic spell power and eligible demonic servants | No blanket buff to all Goety production or summoning; effect classification must be verified |
+| **Forest Dragon** | Fae magic and eligible fae servants; bonemeal effects, animal breeding and extra crop yields | Combat/harvest efficiency outside ecology remains expensive; preserve protected claims and harvest deduplication |
+| **Sea Dragon** | **Provisional** tide, ice, storm and abyssal personal magic; aquatic control | Exact supported spell/effect schools still need mod-level research. Storm affinity does not imply free weather control |
+| **Lich** | Blood magic, source-verified Neo Vitae/EvilCraft uses, necromancy | Blood specialization **also weakens the lich's own Botania/Roots nature magic**, measured after relevant shared Core Skills modifiers. Neither world machinery nor other players are globally nerfed |
+| **Werewolf** | **Lots of extra hearts**, strong **health regeneration**, close combat, and nature magic | Health regen is not mana regen; retain native form rules, wolf weaknesses and resource feeding |
+| **Vampire / Monk** | Existing blood/predation or equipment-independent cultivation identities | Their existing native progression/physiology ownership remains unchanged in this pass |
+
+**Power budget, not numbers:** Hunters should buy substantially more effective monster-slaying survivability/offense per SP than generalists, dragons should buy far more spell power/mana per SP than any other class, and Werewolves should buy far more sustained health/health regeneration. Dragon armor/claw/harvest upgrades are deliberately **less** cost-efficient than specialist equivalents. Precise ranks, prices, caps, and damage/regen formulae await comparative late-game balance work, and nothing in this section is live code.
+
+**Damage classification:** `undead`, `demon`, and `fae` need source-verified entity types/tags for mods in this pack. One creature in multiple groups is counted **once** for Hunter Bane/Tracking. High-level Hunter Glowing must use bounded per-player server scans/cooldowns and should not inadvertently mark players or disable intended nonquarry invisibility. **Crossbow conservation** operates on the actual projectile debit; fireworks and special ammo stay excluded until specifically tested. Equipment durability reduction operates on real durability loss (not free repair). Avoid source-based exploits against protected boss gear and no duplicate vanilla projectile refund.
+
+**Nature and blood classification:** Only legitimate player-attributed blood/nature effects receive Lich potency modifiers. Neo Vitae and EvilCraft are *candidate providers* requiring actual hook checks, not a claim that every block/ritual belongs to a blood spell school. Botania and Roots are the target nature spell families; mana flowers, unattended processors and other world infrastructure are not spellcasting and must not be changed. Lich nature penalty must not be hidden by buying universal Potency. Werewolf nature bonuses and Forest fae bonuses likewise affect source-classified personal magic only.
+
+**Forest legacy transfers:** Two existing Tyz `IMMUTABLE` skills, **Green Thumb** and **Shepherd’s Blessing**, now belong in the Forest Dragon migration proposal instead of Core Skills. Their original IDs, values and Java behavior should be preserved pending player testing, with explicit form eligibility and use-time gating. Additional Forest bonemeal/animal-breeding skills remain conceptual; moving existing skills alone does not guarantee all requested mechanics.
+
+## 3A. Proposed tree families and provisional node sequences
+
+### Core Skills — `tmm_magic_core`
+
+Always available. This is the **broad universal** tree, including eligible original Tyz stock skills after relocation, plus these nine magic-specific families. The initial four active skill **source** files use **5 ranks × 20% of previous ceiling**, not 99 ranks.
+
+| Family | Universal magic component | Implementation stage |
+|---|---|---|
+| **Reservoir** | Max eligible personal resource capacity; not machine tanks | Five-rank base prototype; native attributes/adapters |
+| **Wellspring** | Personal resource regeneration; never passive world generators | Five-rank base prototype; native attributes/adapters |
+| **Thrift** | Real positive-cost reduction for personal casts, with floor and cross-mod dedupe | Five-rank base prototype; debit-event adapters |
+| **Potency** | Scalable offensive/healing magic effect, damage-tag and owner aware | Five-rank base prototype; native attributes/context |
 | **Quickening** | Personal cast/activation speed only | Future per-mod cast timing adapter |
 | **Projection** | Valid spell-target range, not AoE radius | Future range/raycast adapter |
 | **Persistence** | Temporary effects and eligible controlled summons duration | Future duration adapter |
 | **Conjuration** | Strengthen personally owned summoned allies with bounded stats | Future owner-attribution adapter |
 | **Warding** | Mitigate confirmed magical damage only | Future damage-tag listener |
 
-Potential extensions: Expansion/AoE (only after source-verified area hooks); Artifice (only after real crafter attribution); Ritual mastery (must not erase native minigames). These are **not** launch commitments.
-
-**Structure:** four foundation roots (Reservoir, Wellspring, Thrift, Potency), three spellcraft specialists (Quickening, Projection, Persistence), and two independent specialist roots (Conjuration, Warding). A family can have staged I→V successor nodes with one prior rank as prerequisite and verified milestones for late stages. Do not make a mage buy unrelated foundations to reach Warding. The existing four first-wave skill IDs are the starting point; their **new five-rank versions** are staged in [PR #85](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/85), **not** an alternative separate wallet.
+**Possible future expansions:** Expansion/AoE (only after source-verified area hooks); Artifice (only after real crafter attribution); Ritual mastery (must not erase native minigames). Do not copy a stock skill into both Core Skills and a specialist category, or let regular Core Skills stat growth erase specialist efficiency advantages.
 
 ### Cave Dragon — `tmm_dragon_cave`
 
-**Eligibility:** verified cave dragon state; no other dragon species. **Role:** Excavator, armored bruiser, and underground apex predator.
+**Identity:** Supreme high-capacity/high-potency dragon caster with armor, claws and harvest at premium SP prices; special emphasis on demonic magic.. **Eligibility:** verified cave dragon state; no other dragon species.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Claw & Fang** | **Stone Claws:** Scale unarmed/claw damage only in dragon body; no weapon-wide bonus. | **Crushing Bite:** Bounded armor/knockback pressure on confirmed bite hits. | **Seismic Pounce:** Cooldown-limited landing shockwave against entities; terrain damage off by default. |
 | **Stone Scales** | **Stonehide:** Incremental natural armor; respect equipment stacking caps. | **Earthbound Poise:** Reduce knockback and fall damage while grounded. | **Mountain Bastion:** Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity. |
 | **Excavation** | **Tunneler:** Improve legal claw-mining speed; preserve vanilla/tool harvest checks. | **Vein Sense:** Short-range, timed ore awareness without unrestricted x-ray or chunk scans. | **Deep Excavation:** Controlled multi-block excavation; count actual blocks, honor claims and server limits. |
-| **Cavern Instinct** | **Gloom Eyes:** Improve dark navigation without permanent global spectral vision. | **Echo Sense:** Detect nearby moving creatures underground on a cooldown. | **Deep Sovereignty:** Situational breath or body-power enhancement underground; preserve native dragon-breath identity. |
+| **Infernal Attunement** | **Infernal Resonance:** Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals. | **Hellbound Command:** Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions. | **Infernal Dominion:** Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated. |
 
 **Capstone — Heart of the Mountain:** After late native dragon progression, briefly combine armor and excavation benefits; no Chaos Guardian-tier gear replacement.
 
-**Special rules:** No cross-species dragon purchases or free dragon growth. Mining benefits must not bypass protected ores, world claims or late-game materials.
+**Implementation conditions:** No cross-species dragon purchases or free dragon growth. Mining benefits must not bypass protected ores, world claims or late-game materials. No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power.
+
+**Shared Dragon base (must still be added to this species' real tree):** huge personal max mana, very efficient spell potency, expensive scales/armor, expensive claws/physical damage and expensive legal harvest-speed talents; **zero dragon-exclusive magical regeneration**. The current four-lane prototype does **not** exhaustively enumerate these shared fundamentals, so it is not yet a finished dragon tree.
 
 ### Sea Dragon — `tmm_dragon_sea`
 
-**Eligibility:** verified sea dragon state; no other dragon species. **Role:** High-mobility aquatic spellfighter and ocean explorer.
+**Identity:** High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes.. **Eligibility:** verified sea dragon state; no other dragon species.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Tideshaping** | **Current Rider:** Improve movement control in water, including currents. | **Tidal Strike:** Enhance wet-target combat and native aquatic attacks, not generic damage. | **Undertow:** Cooldown-limited pull/slow applied to legal targets without moving world water blocks. |
 | **Abyssal Defense** | **Pressure Adaptation:** Reduce underwater environmental penalties. | **Brine Scales:** Situational protection while submerged; no blanket armor bonus on land. | **Deepwater Refuge:** Bounded underwater healing or defense with a meaningful resource/cooldown cost. |
 | **Swimmer's Grace** | **Sleek Form:** Increase underwater speed, capped against sprint/exotic gear. | **Slipstream:** Short burst dodge in water with collision safety. | **Ocean Leap:** Leap from water and control reentry without free flight. |
-| **Marine Communion** | **Ocean Forager:** Enhance valid fish/seafood gathering and food utility without infinite loot. | **Friendly Waters:** Improve interactions with eligible nonhostile aquatic mobs; no boss pacification. | **Abyssal Explorer:** Safe short-duration navigation/sensing in deep oceans. |
+| **Tidal & Abyssal Magic** | **Tidal Attunement:** Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status. | **Stormcalling:** Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control. | **Abyssal Sovereignty:** High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic. |
 
 **Capstone — Tide Sovereign:** Late-game, time-limited aquatic combat and mobility surge; must be distinctly weaker on land.
 
-**Special rules:** Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic. No free permanent underwater invulnerability or world fluid griefing.
+**Implementation conditions:** Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic. No free permanent underwater invulnerability or world fluid griefing. Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs. No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.
+
+**Shared Dragon base (must still be added to this species' real tree):** huge personal max mana, very efficient spell potency, expensive scales/armor, expensive claws/physical damage and expensive legal harvest-speed talents; **zero dragon-exclusive magical regeneration**. The current four-lane prototype does **not** exhaustively enumerate these shared fundamentals, so it is not yet a finished dragon tree.
 
 ### Forest Dragon — `tmm_dragon_forest`
 
-**Eligibility:** verified forest dragon state; no other dragon species. **Role:** Nature guardian, mobile skirmisher and ecological support.
+**Identity:** High-capacity/high-potency fae dragon caster with ecological control, crop bounty, breeding and bonemeal effects; generic combat/harvest ranks cost a premium.. **Eligibility:** verified forest dragon state; no other dragon species.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Verdant Vitality** | **Green Recovery:** Small recovery benefit in living biomes, not in all dimensions. | **Living Bark:** Situational natural defense near vegetation, with stacking caps. | **Elder Grove:** Time-limited regeneration/support pulse, costing dragon resource. |
 | **Thorn & Root** | **Bramble Claw:** Add a bounded nature-themed status to confirmed claw attacks. | **Entangling Breath:** Native breath enhancer applying short slows only where source breath supports it. | **Thornstorm:** Cooldown-limited small-area crowd control with no world block destruction. |
-| **Canopy Mobility** | **Canopy Stride:** Improve movement through leaves/forests; no generic always-on sprint power. | **Rooted Landing:** Safer falls and precision landings, capped by equipment. | **Sylvan Bound:** Short leap between safe landing points; collision and claim checks. |
-| **Forest Fellowship** | **Fey Courtesy:** Conditional neutrality with selected eligible fae mobs, excluding hostile bosses. | **Harvest Harmony:** Quality-of-life harvest/replant assistance without resource multiplication. | **Grove Guardian:** Bounded support bonus to nearby allies and pets in natural environments. |
+| **Fertility & Bounty** | **Germination Touch:** Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth. | **Breeder's Blessing:** Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents. | **Harvest Bounty:** Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks. |
+| **Fae Affinity** | **Fey Courtesy:** Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification. | **Fey Conduit:** Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP. | **Grove Guardian:** Bounded fae-aligned personal magic and allied-support synergy without taking over world production. |
 
 **Capstone — Elderwood Heart:** Late native progression grants a timed defensive/support state in forest biomes.
 
-**Special rules:** Do not turn Forest Dragon neutrality into global creature pacification. Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.
+**Implementation conditions:** Do not turn Forest Dragon neutrality into global creature pacification. Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate. Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers. No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana.
+
+**Shared Dragon base (must still be added to this species' real tree):** huge personal max mana, very efficient spell potency, expensive scales/armor, expensive claws/physical damage and expensive legal harvest-speed talents; **zero dragon-exclusive magical regeneration**. The current four-lane prototype does **not** exhaustively enumerate these shared fundamentals, so it is not yet a finished dragon tree.
 
 ### Vampire — `tmm_vampire`
 
-**Eligibility:** unified vampire state recognized by transformation bridge; retains both native provider progressions. **Role:** Blood economy, predatory stealth and undead survival.
+**Identity:** Blood economy, predatory stealth and undead survival. **Eligibility:** unified vampire state recognized by transformation bridge; retains both native provider progressions.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Bloodcraft** | **Efficient Feeding:** Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions. | **Deep Reservoir:** Increase one authoritative usable blood capacity, not two independent HUD pools. | **Crimson Renewal:** Trade a real measured blood debit for bounded emergency healing. |
 | **Nightstalker** | **Nocturnal Vision:** Better low-light perception with native-sunlight penalties untouched. | **Shadow Stalker:** Short stealth advantage in darkness; avoid invisibility in full daylight. | **Bat Mastery:** Improve native bat-form controls/efficiency after that native ability is acquired. |
@@ -112,58 +140,58 @@ Potential extensions: Expansion/AoE (only after source-verified area hooks); Art
 
 **Capstone — Blood Regent:** Blood-funded high-tier predatory stance requiring advanced native vampire progression.
 
-**Special rules:** One canonical blood owner; no dual-pool double gains or duplicate feeding rewards. Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.
+**Implementation conditions:** One canonical blood owner; no dual-pool double gains or duplicate feeding rewards. Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.
 
 ### Werewolf — `tmm_werewolf`
 
-**Eligibility:** unified werewolf/lycanthrope state; exact physiology owner remains unselected. **Role:** Hunter, sprinter, brawler and pack leader.
+**Identity:** Exceptional max hearts and physical health regeneration, feral melee, and strong nature magic synergy.. **Eligibility:** unified werewolf/lycanthrope state; exact physiology owner remains unselected.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
-| **Hunting Senses** | **Keen Scent:** Locate nearby tracked targets at limited range, not players through claims or walls without rule. | **Blood Trail:** Brief tracking of wounded mobs with privacy/multiplayer restrictions. | **Apex Tracker:** Improved tracking against eligible dangerous mobs, cooldown limited. |
+| **Lupine Vitality** | **Feral Vigor:** Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts. | **Regenerative Flesh:** Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen. | **Unbreakable Beast:** High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities. |
 | **Feral Might** | **Rending Claws:** Scale claw damage in valid wolf/beast form, respecting weapon modifiers. | **Savage Momentum:** Short stacking melee bonus after actual hits, capped and reset out of combat. | **Primal Fury:** Timed burst consuming native appropriate resource or applying fatigue. |
 | **Moonrunner** | **Predator's Stride:** Bonus mobility in valid wolf form. | **Pouncing Leap:** Targeted controlled leap with landing safety. | **Lunar Chase:** Short chase burst under moon conditions with weaker daytime counterpart. |
-| **Pack Instinct** | **Pack Sense:** Detect/coordinate eligible allied wolves and player-owned companions. | **Protect the Pack:** Bounded defense near allies, no pet invulnerability. | **War Howl:** Cooldown-limited temporary group buff; only one stacking instance per leader. |
+| **Wild Communion** | **Wild Attunement:** Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid. | **Rootsong:** Further increase player nature spell potency or healing, separate from ordinary combat regeneration. | **Grove Howl:** High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects. |
 
-**Capstone — Moon Apex:** Late-form transformation mastery for a short ferocious burst, preserving silver/other verified weaknesses.
+**Capstone — Moon Apex:** Late-game feral ascendancy emphasizing massive health, sustained HP regeneration, melee ferocity and nature magic; retain native silver/moon weaknesses.
 
-**Special rules:** Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit. Natural form-change progression remains native, not purchased again in Tyz.
+**Implementation conditions:** Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit. Natural form-change progression remains native, not purchased again in Tyz. Werewolf regen means HEALTH regeneration, not passive magic regeneration.
 
 ### Lich — `tmm_lich`
 
-**Eligibility:** verified Goety or JAWR/Forbidden Magic lich state; also Archlich and valid Dracolich. **Role:** Soul economy, necromancy, controlled immortality.
+**Identity:** Necromantic and blood-magic specialist, explicitly exchanging personal nature-magic potency for amplified blood magic.. **Eligibility:** verified Goety or JAWR/Forbidden Magic lich state; also Archlich and valid Dracolich.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Soul Economy** | **Soul Conservation:** Lower eligible personal necromancy spell costs, not global ritual/machine cost. | **Soul Reserve:** Bounded native personal soul/Arca resource capacity where extensible. | **Soul Treasury:** Small high-level sustain on committed necromantic actions, no passive self-funding loop. |
-| **Death Magic** | **Grave Touch:** Scalable effect on verified lich necrotic spell/melee attacks only. | **Lingering Curse:** Bounded duration of attributable lich debuffs, not a global potion multiplier. | **Dread Conduit:** Strengthen source-verified lich spell lines without unlocking forbidden research. |
+| **Blood & Nature Opposition** | **Sanguine Attunement:** Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power. | **Crimson Channel:** Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput. | **Verdant Severance:** High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff. |
 | **Undead Host** | **Bone Captain:** Modest bonus to personally owned undead servants. | **Grave Regiment:** Improved servant coordination/leash and bounded count efficiency. | **Death Host:** Late temporary enhancement to current owned minions with hard entity budget. |
 | **Soul Preservation** | **Cold Persistence:** Limited tolerance of wither/undead hazards, preserving explicit weaknesses. | **Anchor Attunement:** Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost. | **Final Passage:** Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger. |
 
 **Capstone — Sovereign of Ash:** High-tier necromantic command stance requiring advanced lich progression and stable anchor ownership.
 
-**Special rules:** Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once. For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves. For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.
+**Implementation conditions:** Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once. For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves. For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species. Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf.
 
 ### Hunter — `tmm_hunter`
 
-**Eligibility:** verified Vampirism hunter faction; mutually exclusive with supernatural states. **Role:** Prepared anti-supernatural specialist, scouting and counterplay.
+**Identity:** Anti-undead/demon/fae apex monster-slayer; best combat upgrades, robust survival and equipment conservation, virtually no spell-stat growth. **Eligibility:** verified Vampirism hunter faction; mutually exclusive with supernatural states.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
-| **Investigation** | **Monster Lore:** Reveal eligible hostile supernatural type/weakness cues after actual observation. | **Quarry Mark:** Mark one tracked supernatural target, with limited range and duration. | **Master Pursuit:** Improved tracking of wounded or fleeing marked targets, respecting concealment rules. |
-| **Weapons Training** | **Silver Discipline:** Bounded bonus using verified anti-supernatural material/weapon tags. | **Weak-Point Strike:** Conditional bonus after observing a marked target, not global crit multiplier. | **Slayer's Technique:** Cooldown-limited counterattack against specific supernatural telegraphs. |
-| **Wards & Remedies** | **Steadfast Mind:** Limited resistance to eligible charm/fear/supernatural debuffs. | **Warding Kit:** Improve duration/efficacy of approved consumable anti-monster items, not free production. | **Hexbreaker:** Resource-cost/cooldown supernatural cleanse of eligible effects; not boss dispel. |
-| **Ambush & Counter** | **Fieldcraft:** Short preparation-speed and stealth bonuses in natural environments. | **Consecrated Snare:** Craft/use a bounded anti-monster trap; ownership and claim-safe placement. | **Spell Intercept:** High-tier, timed interrupt window for verified hostile supernatural casts; bosses exempt unless explicitly whitelisted. |
+| **Quarry Lore & Tracking** | **Monster Lore:** Recognize verified undead, demon and fae categories, including weaknesses without revealing unrelated bosses. | **Quarry Mark:** Mark one legitimate undead, demon or fae quarry for specialized hunter tactics. | **Hunter Tracking:** Very high-level proximity effect: apply short, refreshed Glowing to eligible undead, demons and fae; explicit radius/cooldown and no unrelated mobs. |
+| **Arms & Ammunition** | **Weapon Tempering:** Reduce real durability loss from Hunter weapons without healing or duplicating equipment. | **Measured Bolt:** Chance to avoid consuming actual crossbow projectile ammo on successful fire; keep special ammo/fireworks excluded until source QA. | **Supernatural Bane:** Very high-level significant damage bonus against verified undead, demons and fae; source-tag and boss caps. |
+| **Armor & Survival** | **Armored Longevity:** Reduce real durability damage to equipped armor; preserve equipment break and exclude repair exploits. | **Survivor's Grit:** Strong nonmagical survival upgrade for a prepared Hunter without mimicking regeneration/immortality. | **Dreadbane Defense:** Very high-level improved survivability specifically against verified undead, demons and fae. |
+| **Monster-Slayer Tactics** | **Fieldcraft:** Prepare and maneuver under threat with weapon-based tactics, not generic magic damage. | **Consecrated Snare:** Place claim-safe anti-monster traps using appropriate hunter resources, without generating magical mana. | **Slayer's Counter:** High-level counterattack window against identified supernatural enemies; bosses require special approval. |
 
-**Capstone — Master Slayer:** Late hunter-only preparation stance combining marks and counterattacks against supernatural mobs.
+**Capstone — Master Slayer:** Hunter combat capstone: powerful damage and defense versus verified undead/demons/fae, Hunter Tracking synergy, weapon proficiency; no broad spell power.
 
-**Special rules:** Hunter purchases never require vampire, wolf, or lich powers. Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.
+**Implementation conditions:** Hunter purchases never require vampire, wolf, or lich powers. Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return. Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment. Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar.
 
 ### Monk — `tmm_monk`
 
-**Eligibility:** valid tmm_monk native faction plus equipment-discipline condition on use; tier licenses from native Monk tree. **Role:** Unarmed martial arts, unarmored body, motion and hand-harvest specialization.
+**Identity:** Unarmed martial arts, unarmored body, motion and hand-harvest specialization. **Eligibility:** valid tmm_monk native faction plus equipment-discipline condition on use; tier licenses from native Monk tree.
 
-| Lane | Entry node | Advanced node | Mastery node |
+| Lane | Entry (concept) | Advanced (concept) | Mastery (concept) |
 |---|---|---|---|
 | **Martial Body** | **Empty-Hand Force:** Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap. | **Flowing Counter:** Bounded counterattack after a verified native Guarding Palm/parry unlock. | **Spirit Bolt Mastery:** Boost native spirit projectile after its native rank-6 license, not duplicate its unlock. |
 | **Conditioning** | **Natural Poise:** Scale unarmored protection beyond native Unarmored Poise +2; never scale equipped armor. | **Hunger Discipline:** Bounded food/exhaustion efficiency after native license; do not remove all hunger. | **Fire & Blast Tempering:** Limited environmental damage mitigation after both matching native licenses. |
@@ -172,8 +200,7 @@ Potential extensions: Expansion/AoE (only after source-verified area hooks); Art
 
 **Capstone — Empty-Hand Paragon:** After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.
 
-**Special rules:** Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills. First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards. Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.
-
+**Implementation conditions:** Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills. First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards. Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.
 
 ## 4. Native ability versus Tyz purchase: no double purchase
 
@@ -214,9 +241,9 @@ Do not implement high-risk abilities as permanent passive buffs just because Tyz
 
 **Phase A — concept-to-config:** Audit all 32 original Tyz built-in skills and preserve their IDs/behavior handlers in safe same-ID overrides assigned to the nine trees. During transition retain four old categories and validate 13-tab pagination. **Only after every stock skill's new placement and behavior works**, remove the four old category IDs and validate 9-tab pagination; create inactive/skeleton form node IDs. Handle old planned `tmm_dragon` gracefully: no automatic one-to-three point duplication; if any actual players own generic dragon ranks, make an explicit migration/refund map and back up saves first.
 
-**Phase B — narrow playable vertical slice:** Existing four Core Magic **five-rank** files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after blood repair*, Werewolf Predator's Stride *after shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore, and Monk Empty-Hand Force *after native tree purchase repair*.
+**Phase B — narrow playable vertical slice:** Existing four Core Skills **five-rank** files + **one entry node per each of eight form trees**. Each must be visible, gated by real provider state, spend exactly one wallet, change an actually measured stat/effect in the correct context, and deactivate on cure/relog. Prioritize simple measurable effects: Cave Stonehide, Sea Sleek Form, Forest Green Recovery, Vampire Efficient Feeding *after blood repair*, Werewolf Predator's Stride *after shape authority*, Lich Bone Captain *after ownership validation*, Hunter Monster Lore, and Monk Empty-Hand Force *after native tree purchase repair*.
 
-**Phase C — multi-lane progression:** Add three lane tiers, chosen mid/final native milestones, refunds, capstones and class-specific adapters. Never certify based only on clean JSON/compilation/server boot. Keep all new skills flagged as conceptual until individually implemented and client-verified.
+**Phase C — multi-lane progression:** Add the shared high-value Dragon mana/potency packages and expensive physical baselines to each species; source-classified Cave/Forest/Sea affinity, Forest agriculture, Hunter late anti-supernatural combat and tracking, Lich blood/nature tradeoffs and Werewolf HP/health regen. Then add chosen mid/final native milestones, refunds, capstones and class-specific adapters. Never certify based only on clean JSON/compilation/server boot. Keep all new skills flagged as conceptual until individually implemented and client-verified.
 
 **Phase D — cross-form and exploit QA:** Verify every allowable and disallowed combination, all acquisition orders, logout/respawn/dimension travel, native skill purchases, bulk buys, direct grants, refund predecessor chains, packet sync, time-of-day/environment, claims, anti-grief rules, pet attributions, hunger/blood, food exceptions and resource loops. Record separate acceptance per skill; a passing Tyz GUI does not make the effects work.
 
@@ -235,4 +262,4 @@ The full 32-skill default inventory and source-to-destination proposals are in [
 
 ## 7. What this commit does *not* do
 
-This is a design-only catalog and machine-readable sketch. It does **not** create active Tyz skills, mutate the level pool, add custom mod code, mark transformations compatible, fix the Monk UI or vampire blood pool, alter a diet, add a new faction, or change a release/build manifest. The existing staged Core Magic and Monk implementation remain where they are. Content is intended for review and later mechanically checked conversion into runtime config.
+This is a design-only catalog and machine-readable sketch. It does **not** create active Tyz skills, mutate the level pool, add custom mod code, mark transformations compatible, fix the Monk UI or vampire blood pool, alter a diet, add a new faction, or change a release/build manifest. The existing staged Core Skills and Monk implementation remain where they are. Content is intended for review and later mechanically checked conversion into runtime config.
