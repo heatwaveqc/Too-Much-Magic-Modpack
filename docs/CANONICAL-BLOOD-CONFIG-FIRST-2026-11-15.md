@@ -1,6 +1,6 @@
 # Canonical EvilCraft Blood — Configuration-First Implementation (2026-11-15)
 
-> Experimental branch. No Java, mixins, or global tick handlers. Runtime, client and exact pinned-JAR tests are still outstanding. Source references describe the upstream Minecraft 1.21.1 implementations and are not a substitute for testing the selected pack versions.
+> Experimental branch. The **fluid, bucket and cauldron recipe stage uses no Java**. JAWR ordinary-bottle component gates and cross-mod vampire drinking now add a small module in existing first-party `compat/transformations` code; see [the exact-JAR JAWR bottle audit and strict backend bridge](JAWR-BLOOD-BOTTLE-INTEROP-2026-11-15.md). Runtime bottle/click validation is still outstanding. Source references describe the upstream Minecraft 1.21.1 implementations and are not a substitute for testing the selected pack versions.
 
 ## Owner-approved boundary model
 
