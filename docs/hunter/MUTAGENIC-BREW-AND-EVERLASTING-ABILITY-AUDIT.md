@@ -35,5 +35,5 @@ The brewing handler currently accepts PotionItem subclasses that expose standard
 - Test Pylons/Everlasting interactions and modded potions with custom item classes; fail closed on unsuitable effects.
 - Confirm no hunger bypass via permanent Saturation, infinite food from modded effects, other mods' hunger-elimination mechanisms, or unauthorized data.
 - Add a purge/cure or voluntary permanent mutation removal procedure before shipping, since unfavorable modded effects could otherwise make a player character unplayable.
-- Decide whether future blacklisting of an already unlocked mutation should also remove metabolic upkeep (the current implementation suppresses the effect; state remains saved).
+- Blacklisting an already unlocked mutation suppresses both its effect and metabolic upkeep while retaining saved historical progress. Decide whether future policy migration should delete old progress.
 - Hunter still lacks a dedicated mutation GUI; /tmmprogress mutations currently gives a command summary.
