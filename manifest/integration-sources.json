@@ -15,7 +15,7 @@
     },
     {
       "name": "quest-standards-and-starter-choice",
-      "branch": "feature/ars-quest-pilot",
+      "branch": "fix/first-log-bundle-curio-quest-2026-11-15",
       "paths": [
         "config/ftbquests/quests/",
         "manifest/quest_content.json",
@@ -30,10 +30,16 @@
         "scripts/build_ars_quest_pilot.py",
         "scripts/validate_ars_quest_pilot.py",
         "scripts/write_ars_quest_probe.py",
-        "kubejs/data/tmm/advancement/ars_pilot/"
+        "kubejs/data/tmm/advancement/ars_pilot/",
+        "kubejs/data/tmm/advancement/first_log.json",
+        "kubejs/data/tmm/function/rewards/first_log.mcfunction",
+        "kubejs/data/tmm/curios/slots/bundle.json",
+        "kubejs/data/tmm/curios/entities/player.json",
+        "kubejs/data/curios/tags/item/bundle.json",
+        "kubejs/assets/tmm/lang/en_us.json"
       ],
       "mode": "runtime-experimental",
-      "note": "Current quest source descends from the humorous-reward and B14 starter-choice branches, preserving all other quest IDs/rewards. Ars scaffold is replaced by 49 authored pilot quests: 29 core + 20 across all seven Ars add-ons; book totals 228 quests / 187 authored. One initial XP-only orientation, 48 detectable item/advancement objectives with thematic fixed rewards, actual Chimera kill advancement, real ANS transcription/binding/cross-cast. Local quest-source baseline server smoke passed (135 server JARs, 93 item refs and 17 advancement refs resolved). Client layout, action credit, multiplayer claims and combined all-stream behavior remain UNTESTED. Preserve sixth starter Spyglass choice, six-shop/47-offer catalog and the inherited filler/XP-bottle exclusions. Required pilot source, validator/compiler and Chimera datapack path must be imported together."
+      "note": "Current quest source descends from the humorous-reward and B14 starter-choice branches, preserving all other quest IDs/rewards. Ars scaffold is replaced by 49 authored pilot quests: 29 core + 20 across all seven Ars add-ons; book totals 228 quests / 187 authored. One initial XP-only orientation, 48 detectable item/advancement objectives with thematic fixed rewards, actual Chimera kill advancement, real ANS transcription/binding/cross-cast. Local quest-source baseline server smoke passed (135 server JARs, 93 item refs and 17 advancement refs resolved). Client layout, action credit, multiplayer claims and combined all-stream behavior remain UNTESTED. Preserve sixth starter Spyglass choice, six-shop/47-offer catalog and the inherited filler/XP-bottle exclusions. Required pilot source, validator/compiler and Chimera datapack path must be imported together. FIRST-LOG POUCH UPDATE: tmm:first_log remains task-only; 10 XP + ars_elemental:curio_bag is a claimable FTB quest reward instead of torches; advancement function grant disabled. One Curios Bundle slot on player, tag accepts pouch + caster upgrade. Tests required for per-player reward, no auto-grant, client equipment/persistence. Source is successor to feature/ars-quest-pilot; do not import old source independently."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -268,7 +274,8 @@
     "design/mxp-all-magic-sources-implementation-checklist": "Research/checklist only (docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md); no independent runtime mods; canonical MXP source code remains feature/mxp-ars-irons-botania-neo-hooks.",
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately.",
     "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice.",
-    "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source."
+    "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source.",
+    "feature/ars-quest-pilot": "Ancestor superseded by fix/first-log-bundle-curio-quest-2026-11-15 (same 49-quest Ars source plus claimable pouch and one Bundle Curios slot). Import successor only."
   },
   "pending_runtime_work": [
     "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
@@ -303,6 +310,7 @@
     "NEXT QA: Werewolves food compatibility with Relics. Require no TagLoader failure on werewolves:werewolf_food (formerly missing relics:infinity_ham); verify Aquaculture raw/cooked fish, Farmer's Delight raw/cooked meats, native berries and Not Meat? skill. Archlich food value 17/saturation 0 is a separate design candidate, not shipped; verify Goety/JAWR hunger/regen/death hooks first.",
     "ARCHLICH TARGET / NEXT QA: `tmm_transformations` module now includes pre-alpha-default-enabled JAWR-phylactery-first native LivingDeathEvent dispatch and Goety Arca fallback. In disposable world verify experimentalArchlichPhylacteryFirst=true in tmm_archlich-server.toml, then prove charged greater/lesser JAWR souls debit once and credit progression; empty JAWR pool falls back to Arca without JAWR charge; missing both anchors dies normally. Verify no double health/teleport, native Soul Hunger, dimension changes and relog. Default enabled for fresh disposable pre-alpha QA worlds; disable manually in any saved test-world serverconfig if needed. Not yet client-accepted. Shared 17 hunger/0 saturation and two cure systems remain separate proposed work.",
     "DRACOLICH TARGET (pre-alpha investigation): a Dragon Survival Cave/Forest/Sea dragon plus exactly ONE lich source (Goety OR JAWR Forbidden Magic), never both. Keep Dragon Survival species, size/growth/abilities and magic resource; retain chosen lich native death anchor (Goety Arca or JAWR phylactery) and hunger behavior rather than inventing a third one. Inspect Dragon Survival OnDeath.trigger passive healing, hunger-effect abilities, player respawn and all 6 source combinations; test unifying visual undead state and native healing/cure separately. Do not alter Dragon Survival diets or global nutrition for ordinary dragons.",
-    "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up."
+    "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up.",
+    "FIRST LOG QA (next integration): on a fresh player, picking up any log marks Punch a Tree but gives NO pouch directly; claiming quest awards one ars_elemental:curio_bag plus 10 XP once per player. Verify dedicated Bundle Curios slot (size one), pouch/caster equip, no unrelated item acceptance, full inventory persistence/relog/death and team claims. Inherited first_log function is inert, old branch superseded."
   ]
 }
