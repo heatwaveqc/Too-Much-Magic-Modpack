@@ -27,12 +27,12 @@ class FeatureChecklistTest(unittest.TestCase):
             self.assertTrue(any(i.startswith(prefix) for i in self.by_id), prefix)
 
     def test_exact_approved_projecte_gate_proposal(self):
-        for id in ("end.projecte_start", "end.projecte_high", "end.expansion", "end.emc_abuse"):
+        for id in ("end.projecte_start", "end.projecte_high", "end.expansion", "end.emc_abuse", "end.emc_every_item", "end.projecte_trophies"):
             self.assertIn(id, self.by_id)
             if self.by_id[id]["state"] == "player_pass":
                 self.assertTrue(self.by_id[id]["evidence"], "Live ProjectE gate must have linked in-world evidence")
         proposal = (ROOT / "docs/PROJECTE-TIERED-GATING-PROPOSAL.md").read_text(encoding="utf-8")
-        for name in ("Gaia Guardian I", "Foreman", "Chaos Guardian", "NOT ACTIVE IN GAME"):
+        for name in ("Wilden Chimera", "Foreman", "Chaos Shard", "botania:life_essence", "100%"):
             self.assertIn(name, proposal)
 
     def test_reviewable_player_passes(self):
