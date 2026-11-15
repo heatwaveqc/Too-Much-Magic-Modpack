@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression.model;
 
 import java.util.List;
+import java.util.Map;
 
 /** Data-only schema. Implementations are shared by Monk, Hunter and future paths. */
 public final class Definition {
@@ -47,5 +48,8 @@ public final class Definition {
     /** attribute, melee_bonus, damage_multiplier, break_speed, harvest_tier. */
     public record Effect(String type, String attribute, String operation,
                          String selector, String weapon, String damageTag,
-                         double amountPerRank, int tier, boolean emptyHand, boolean unarmored) {}
+                         double amountPerRank, int tier, boolean emptyHand, boolean unarmored,
+                         Map<String,String> params) {
+        public Effect { params = Map.copyOf(params); }
+    }
 }

@@ -7,6 +7,9 @@ import io.github.heatwaveqc.tmm.progression.model.Definition;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import io.github.heatwaveqc.tmm.progression.runtime.EffectHandlers;
 import java.util.Set;
 
 /** Strict data-only parser. Unknown effect types fail closed rather than silently executing. */
@@ -111,8 +114,7 @@ public final class PathJson {
             for (JsonElement effect : entries(j,"effects")) {
                 JsonObject f = effect.getAsJsonObject();
                 String type = str(f,"type","");
-                if (!Set.of("attribute","melee_bonus","damage_multiplier",
-                            "break_speed","harvest_tier").contains(type))
+                if (!EffectHandlers.known(type))
                     throw new IllegalArgumentException("Unregistered effect handler: " + type);
                 String attribute = str(f,"attribute","");
                 String target = str(f,"target","");
@@ -133,8 +135,17 @@ public final class PathJson {
                     throw new IllegalArgumentException("Attribute handler requires attribute");
                 if (type.equals("damage_multiplier") && (amount < 0 || amount > 1))
                     throw new IllegalArgumentException("Damage reduction must be in [0,1]");
+                Map<String,String> params = new HashMap<>();
+                if (f.has("params")) {
+                    f.getAsJsonObject("params").entrySet().forEach(entry -> {
+                        String value = entry.getValue().getAsString();
+                        if (entry.getKey().length() > 80 || value.length() > 1024)
+                            throw new IllegalArgumentException("Effect parameter too long");
+                        params.put(entry.getKey(),value);
+                    });
+                }
                 effects.add(new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
-                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored")));
+                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params));
             }
             List<Integer> auto = new ArrayList<>();
             for (JsonElement r : entries(j,"auto_ranks")) {
