@@ -150,7 +150,7 @@ public final class AbominationActionPilot {
             tag.putLong(key, AbominationPilotPolicy.nextReadyTick(now, cooldown));
             return new Result(true, "Native " + ability.command + " action ran using its own player attachment. "
                     + "Native skill entitlement/packet events are NOT tested.");
-        } catch (ReflectiveOperationException | LinkageError | SecurityException | IllegalArgumentException e) {
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
             Throwable cause = e instanceof InvocationTargetException invocation
                     ? invocation.getTargetException() : e;
             TransformationsMod.LOGGER.error("Abomination pilot {} could not delegate native action", ability, cause);
