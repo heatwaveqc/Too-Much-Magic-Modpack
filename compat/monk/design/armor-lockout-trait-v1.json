@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "kind": "monk_optional_no_armor_lock",
+  "state": "DESIGN_ONLY_NOT_RUNTIME_ENABLED",
+  "created": "2026-11-15",
+  "owner": "tmm_monk",
+  "feature_id": "tmm_monk:armor_lock",
+  "name": "No-Armor Lock",
+  "ui_name": "Armor Lock",
+  "type": "free_faction_passive_toggle",
+  "native_skill_point_cost": 0,
+  "tyz_skill_point_cost": 0,
+  "unlock": "automatic_at_First_Sunset",
+  "default_enabled_for_new_monks": true,
+  "setting_scope": "per_player_persistent_server_authoritative",
+  "purpose": "Prevent graveyard/gravestone recovery, automatic gear equipment and inventory actions from unexpectedly equipping armor and shutting down Monk skills. Intentionally equipping armor remains possible by switching OFF, but actual armor still suspends Monk discipline.",
+  "states": {
+    "enabled": {
+      "ui": "Armor Lock: ON",
+      "semantics": "All four vanilla equipment/armor slots stay empty. Item insertion/equip into any of the four armor slots is rejected before mutation; cargo armor items in inventory remain allowed. Curios and ordinary inventory/offhand remain outside the lock.",
+      "effective_buffs": "Monk abilities still require all existing equipment conditions; ON does not make prohibited worn gear legal or force power reactivation."
+    },
+    "disabled": {
+      "ui": "Armor Lock: OFF",
+      "semantics": "Monk can equip items normally into the four equipment/armor slots, including armor/elytra, and automatic gravestone restoration may place items there.",
+      "effective_buffs": "No permission bypass: actual equipped conventional armor still suspends Monk powers through MonkEligibility.equipmentAllowsDiscipline; powers reactivate after gear removal if otherwise eligible."
+    }
+  },
+  "toggle_behavior": {
+    "explicit_control": "Single configurable keybinding, clearly named Armor Lock, plus optional settings-screen toggle; client sends request to authoritative server.",
+    "persistence": "Saved with Monk player state, restored on login, server/client synced after toggle, death, respawn, dimension transfer and faction transitions.",
+    "when_turning_on_with_empty_armor": "Enable immediately, confirm via actionbar and icon.",
+    "when_turning_on_with_armor": "Try lossless, atomic transfer to legal player inventory slots without disturbing contents or items/components. If no space, refuse ON with explicit 'Clear armor slots or free inventory space' message and keep the original state; never delete/drop/duplicate items. Items with Curse of Binding or mod-specific unequip restrictions require conservative refusal, not bypass.",
+    "when_turning_off": "Unblock all four armor slots immediately. Keep currently equipped items unchanged and warn if putting on armor will suppress Monk skills. Fist hotbar slot remains independently protected.",
+    "on_faction_exit": "Release armor lock and revert ordinary equipment handling; retain no phantom armor items. Rejoining policy may restore default ON or saved state after explicit design decision.",
+    "warning": "No skill-point spend, no auto-grant of armor skill, no circumvention of ascetic equipment penalties.",
+    "quick_toggle_safety": "Prevent accidental toggle by requiring named keybind not bound to hotbar, movement, attack, or standard armor actions; actionbar ON/OFF feedback."
+  },
+  "slot_policy": {
+    "armor_equipment_slots": [
+      "head",
+      "chest",
+      "legs",
+      "feet"
+    ],
+    "all_items_protected": "Every nonempty stack in a vanilla armor equipment slot must be blocked while ON, not only armor-tagged items. This matches current MonkEligibility equipment gate, which suspends power for any nonempty armor slot.",
+    "excluded_slots": [
+      "curios_inventory",
+      "main_inventory",
+      "offhand",
+      "hotbar_except_fist_slot"
+    ],
+    "elytra": "A chest-slot Elytra is equipment and blocked while ON; a permitted flight Curio in Curios slots is not a vanilla armor slot and remains allowed.",
+    "source_restore": "Gravestone/graveyard mods must restore armor stacks into legal inventory space (or retain in grave/claimable source) rather than equip into forbidden slots. If no legal room, do not destroy/drop/mint armor items or abort entire recovery without telling the player.",
+    "never_erase": "No destructive on-tick armor stripping. If a mod bypasses all validated pre-equip hooks, provide atomic server-side recovery with item/component preservation and persist pending claimable contents in a no-dupe recovery buffer if needed, or block the unsupported pathway pending adapter."
+  },
+  "integration_points": [
+    {
+      "name": "ordinary vanilla GUI equipment slots",
+      "requirement": "MayPlace and quick-move/shift-click/number-key/drag/swap restrictions; match armor equipment slots rather than container visual indices."
+    },
+    {
+      "name": "right-click wearable / dispensers / auto-equip",
+      "requirement": "Intercept actual server equip request or action prior to moving stack, not merely the client action."
+    },
+    {
+      "name": "NeoForge equipment capabilities",
+      "requirement": "Audit PlayerInventoryWrapper/LivingEntityEquipmentWrapper, canEquip and each mod-supported transfer path; an unmodified item canEquip result alone does not prevent third-party direct setItem."
+    },
+    {
+      "name": "gravestone restoration",
+      "requirement": "Audit pinned gravestone mods' restore algorithm and intercept or redirect armor slot insertion before item movement; test full inventory fallback."
+    },
+    {
+      "name": "change events / tick guards",
+      "requirement": "LivingEquipmentChangeEvent is post-change and cannot be assumed a cancellable veto. Use as violation signal/reconciliation only and avoid a transient gear-disable exploit."
+    },
+    {
+      "name": "Monk discipline effects",
+      "requirement": "Do not modify MonkEligibility based on toggle alone. Equipment state still rules whether martial/harvest/step skill modifiers apply."
+    }
+  ],
+  "prelaunch_tests": [
+    "Join Monk after First Sunset: default Armor Lock ON, four armor slots empty, all existing six live Monk skills behave as before",
+    "Press Armor Lock toggle OFF; manually equip helmet, chestplate, leggings and boots; armor equips and Monk powers suspend",
+    "Remove armor: powers reactivate even while toggle remains OFF (based on actual gear); no duplicate permanent modifiers",
+    "Toggle ON while gear is equipped with sufficient free legal inventory space: each item moves intact to cargo slots, no loss",
+    "Toggle ON while worn gear has no legal storage destination: toggle refused, gear preserved, warning shown",
+    "Toggle ON with Curse of Binding/modded unequip restrictions: conservative refusal without bypass or duplication",
+    "Armor Lock ON: inventory shift-click, direct click, number-key swap, drag and pickup autoequip cannot place stack into any of four armor slots",
+    "Armor Lock ON: gravestone recovery with all armor pieces and free main inventory stores gear as cargo, no temporary equip that disables power",
+    "Armor Lock ON: full cargo inventory during gravestone recovery leaves items safely in grave/recovery rather than dumping or erasing",
+    "Armor Lock OFF: gravestone restoration follows ordinary rules and can equip armor, with clearly reported Monk skill suspension",
+    "Four vanilla armor slots remain blocked but Curios, including permitted Draconic flight gear, remain legal",
+    "Armor Lock ON: chest-slot Elytra is prohibited; an equivalent Curio slot item is not rejected merely because it has armor-like appearance",
+    "Lock state remains correct after relog, death, keepInventory, dimension change, faction switch and server restart",
+    "Non-Monk, vampires, hunters and werewolves unaffected even if they share armor slot/Curios implementations",
+    "Two multiplayer Monks can independently toggle with no cross-player interference",
+    "Other mods calling direct setItem or bypassing canEquip cannot silently erase/duplicate stacks or create transient unprotected equipment",
+    "Hotbar fist position remains protected at key 1 regardless of Armor Lock ON/OFF; toggles do not share item slots"
+  ],
+  "release_gate": "This specification is NOT a live equipment event guard; do not claim protection from graveyard autoequip until mod-specific restoration, menu/equip hooks, client sync and no-loss/no-dupe QA pass.",
+  "independent_from": "tmm_monk:reserved_fist_slot",
+  "related_contract": "design/fist-slot-lock-contract-v1.json"
+}
