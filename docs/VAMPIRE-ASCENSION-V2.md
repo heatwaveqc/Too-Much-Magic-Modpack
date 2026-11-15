@@ -52,6 +52,6 @@ Never activate the latter in a permanent world. `experimentalOperatorCure` remai
 7. Either cure path (JAWR Lilith garlic or Remove Curse; Vampirism Altar of Cleansing): BOTH vampire states absent; no half-cure on failed preflight. Validate even for operator/admin/alternate routes.
 8. Vampire Forest day at open sky: no JAWR sun damage. Leave forest: native JAWR sun behavior resumes. Check boundary, logged out/in, daylight/rain, and whether double sun damage exists outside forest.
 9. Single-player and dedicated server, two players at different states, disconnect/dimension, death and grave behavior.
-10. Client HUD: ordinary Vampirism bar, ascended JAWR bar only. This requires version-specific client rendering code; **not implemented/validated in this patch**.
+10. Client HUD: ordinary Vampirism bar, ascended JAWR bar only. A client-only BloodBarOverlay mixin is **implemented but not yet gameplay-validated**; verify the pinned 1.10.13 class signature and actual player sync.
 
-**Known blockers:** source-compatible compiled hooks are not equivalent to in-game success. In particular, cure atomicity across third-party hooks, complete forwarding of every Vampirism blood source (including auxiliary inventory APIs), and the ascended-only Vampirism HUD suppression remain to be proven. This is not release ready.
+**Known blockers:** source-compatible compiled hooks are not equivalent to in-game success. In particular, cure atomicity across third-party hooks, complete forwarding of every Vampirism blood source (including auxiliary inventory APIs), and the ascended-only Vampirism HUD suppression remain to be proven in-game. This is not release ready.
