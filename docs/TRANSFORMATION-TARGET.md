@@ -17,7 +17,7 @@ Native providers and their *separately earnable progression*:
 
 **Abomination:** A deliberately unlocked hybrid of **both unified vampire and unified werewolf** identities, meaning **all four underlying provider base states/recognitions and their four progressions** are available and retained, plus **one or two custom progression tracks** (final count TBD). One canonical blood/feeding model, one canonical sunlight/garlic/silver/wolfsbane consequence rule per hazard, one active shape renderer, one coherent ability/cooldown ownership. Because Vampirism 1.21 has a **single active faction**, maintaining four literal independent runtime flags without a bridge is *not* an accepted implementation: design a custom faction/attachment + helper adaptations and expose equivalent states to both parent mods.
 
-**Lichdom:** The **two lichdoms are independent paths** and **must stack into Archlich** when the player earns both. Do not collapse them into one generic lich tree or require choosing permanently between them. Retain both progression histories/abilities; **dual actual death/resurrection backends require arbitration** rather than uncoordinated duplicate death cancellation.
+**Lichdom:** The **two lichdoms are independent paths** and **must stack into Archlich** when the player earns both. Do not collapse them into one generic lich tree or require choosing permanently between them. Retain both progression histories/abilities. **Archlich resurrection order locked 2026-11-15: JAWR/Forbidden Magic phylactery first, Goety Arca second as fallback if the phylactery cannot rescue, true death if neither works.** Only one successful rescue and no double-spend/teleport; exact native hook/rollback details remain to be tested.
 
 ## 2. Compatibility target matrix
 
@@ -88,9 +88,9 @@ A source survey of actual [Vampirism and Werewolves data-driven skill-tree JSON]
 
 ## 6. Open detailed design (not a reopening of the locked target)
 
-- Which exact blood/HUD/sun/wolf-shape implementation is the single authority? Existing proposal uses Vampirism for vampire blood/sun and Werewolves for wolf forms; test JAWR differences first.
-- Abomination extra progression count: **one or two custom tracks**, content and skill caps TBD.
-- Archlich death arbitration and whether the Arca or phylactery takes primary priority/acts as fallback TBD.
+- Which exact blood/HUD/sun/wolf-shape implementation is the single authority? Existing proposal uses Vampirism for vampire blood/sun. **Werewolf hunger/form/body/forced-full-moon ownership remains intentionally undecided** until JAWR versus Werewolves runtime comparisons; do not assume Werewolves has been chosen.
+- Abomination extra progression count: **one or two custom tracks**, content and skill caps TBD. **Do not implement or design the combined/custom skill trees until the Abomination's underlying native coexistence, physiology, transformations, cures, abilities and persistence have been demonstrated in a disposable world.**
+- Archlich death priority is **decided: phylactery first, then Arca**. Still TBD: native eligibility/consumption hooks, partial failures and transaction-safe fallthrough.
 - Which other vampire/werewolf + lich combinations, if any, are designed and approved later TBD.
 - Specific reversible/cure costs and how native advancement is retained on leaving/transmuting the effective state TBD.
 
