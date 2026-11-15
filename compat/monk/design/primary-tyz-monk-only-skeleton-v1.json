@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "kind": "monk_specific_portion_of_PRIMARY_tyz_mxp_tree",
+  "state": "PLAN_ONLY_NOT_ACTIVE",
+  "created": "2026-11-15",
+  "owner": "design/universal-mxp-progression-registry",
+  "prerequisite_catalog": "compat/monk/profiles/skill-placement-no-pufferfish-v2.json",
+  "native_dependency": "compat/monk/design/native-full-tree-skeleton-v1.json",
+  "notes": [
+    "This is not a second Tyz config or XP wallet. All purchases/refunds/rank values belong to the existing primary Tyz/MXP design.",
+    "Forty event-based Apotheosis affix candidates use their distinct verified rarity milestones. Do not blindly generate 99-level stages for bounded effects or purchase a duplicate attribute affix.",
+    "Seven Monk-only Tyz trait candidates have one-time native permission/licenses in the staged tree. Their Tyz numeric effects are not implemented or enabled.",
+    "All Monk-only effects require native Monk faction and conventional-equipment eligibility at use-time, not merely at purchase. Global/general Tyz ranks remain available outside Monk.",
+    "No Tyz purchase may be allowed without real server-side SkillActionEvent.PurchasePre and RefundPre gate plus direct admin-level reconciliation.",
+    "Repeatable universal skill attributes remain owned by primary Tyz; neither this file nor the Monk addon installs all 203 preliminary source endpoints."
+  ],
+  "counts": {
+    "native_licensed_tyz": 7,
+    "unique_bounded_apotheosis": 40,
+    "total": 47
+  },
+  "entries": [
+    {
+      "source_id": "tmm_monk:harvest/fortune_hands",
+      "display_name": "Fortunate Hands",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "harvest",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:fortunate_hands_license",
+      "native_license_earliest_rank_hint": 13,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:harvest/looting_hands",
+      "display_name": "Looting Palm",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "harvest",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:looting_palm_license",
+      "native_license_earliest_rank_hint": 9,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:contemplation/hunger_discipline",
+      "display_name": "Hunger Discipline",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "contemplation",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:hunger_discipline_license",
+      "native_license_earliest_rank_hint": 6,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:contemplation/fire_resilience",
+      "display_name": "Fire Resilience",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "body_defense",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:fire_resilience_license",
+      "native_license_earliest_rank_hint": 7,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:contemplation/blast_resilience",
+      "display_name": "Explosion Resilience",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "body_defense",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:explosion_resilience_license",
+      "native_license_earliest_rank_hint": 9,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:mastery/monastic_exp_gain",
+      "display_name": "Monastic Mastery Learning",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "mastery",
+      "rank_model": "repeatable",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:monastic_learning_license",
+      "native_license_earliest_rank_hint": 5,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:mastery/faction_skill_point_bonus",
+      "display_name": "Focused Advancement",
+      "kind": "monk_specific_tyz_trait",
+      "source_affix": null,
+      "family": "mastery",
+      "rank_model": "bounded",
+      "proposed_max_purchases": null,
+      "distinct_rarity_milestones": null,
+      "native_license_node": "tmm_monk:focused_advancement_license",
+      "native_license_earliest_rank_hint": 10,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/blast_forged",
+      "display_name": "Blast Forged [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/blast_forged",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 5,
+      "distinct_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/blockading",
+      "display_name": "Blockading [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/blockading",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/deflective",
+      "display_name": "Deflective [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/deflective",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/feathery",
+      "display_name": "Feathery [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/feathery",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/grounded",
+      "display_name": "Grounded [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/grounded",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "common",
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/dmg_reduction/runed",
+      "display_name": "Runed [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/dmg_reduction/runed",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "common",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/mob_effect/blinding",
+      "display_name": "Blinding [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/mob_effect/blinding",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/mob_effect/bolstering",
+      "display_name": "Bolstering [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/mob_effect/bolstering",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/mob_effect/bursting",
+      "display_name": "Bursting [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/mob_effect/bursting",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/mob_effect/nimble",
+      "display_name": "Nimble [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/mob_effect/nimble",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/armor/mob_effect/revitalizing",
+      "display_name": "Revitalizing [armor]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:armor/mob_effect/revitalizing",
+      "family": "body_defense",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/ability/enlightened",
+      "display_name": "Enlightened [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/ability/enlightened",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/effect/omnetic",
+      "display_name": "Omnetic [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/effect/omnetic",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/effect/radial",
+      "display_name": "Radial [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/effect/radial",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/enchantment/prosperous",
+      "display_name": "Prosperous [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/enchantment/prosperous",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/mob_effect/spelunkers",
+      "display_name": "Spelunkers [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/mob_effect/spelunkers",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/breaker/mob_effect/swift",
+      "display_name": "Swift [breaker]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:breaker/mob_effect/swift",
+      "family": "harvest",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/cleaving",
+      "display_name": "Cleaving [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/cleaving",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/executing",
+      "display_name": "Executing [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/executing",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/festive",
+      "display_name": "Festive [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/festive",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/mob_effect/bloodletting",
+      "display_name": "Bloodletting [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/mob_effect/bloodletting",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/mob_effect/caustic",
+      "display_name": "Caustic [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/mob_effect/caustic",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/mob_effect/elusive",
+      "display_name": "Elusive [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/mob_effect/elusive",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/mob_effect/sophisticated",
+      "display_name": "Sophisticated [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/mob_effect/sophisticated",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/mob_effect/weakening",
+      "display_name": "Weakening [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/mob_effect/weakening",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/melee/thunderstruck",
+      "display_name": "Thunderstruck [melee]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:melee/thunderstruck",
+      "family": "martial",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/enchantment/prosperous",
+      "display_name": "Prosperous [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/enchantment/prosperous",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/blighted",
+      "display_name": "Blighted [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/blighted",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/ensnaring",
+      "display_name": "Ensnaring [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/ensnaring",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/fleeting",
+      "display_name": "Fleeting [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/fleeting",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/grievous",
+      "display_name": "Grievous [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/grievous",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/ivy_laced",
+      "display_name": "Ivy Laced [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/ivy_laced",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/mob_effect/shulkers",
+      "display_name": "Shulkers [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/mob_effect/shulkers",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/ranged/spectral",
+      "display_name": "Spectral [ranged]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:ranged/spectral",
+      "family": "projectiles",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/catalyzing",
+      "display_name": "Catalyzing [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/catalyzing",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/mob_effect/devilish",
+      "display_name": "Devilish [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/mob_effect/devilish",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/mob_effect/reinforcing",
+      "display_name": "Reinforcing [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/mob_effect/reinforcing",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 3,
+      "distinct_rarity_milestones": [
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/mob_effect/venomous",
+      "display_name": "Venomous [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/mob_effect/venomous",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 4,
+      "distinct_rarity_milestones": [
+        "uncommon",
+        "rare",
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/mob_effect/withering",
+      "display_name": "Withering [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/mob_effect/withering",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    },
+    {
+      "source_id": "tmm_monk:apotheosis/shield/psychic",
+      "display_name": "Psychic [shield]",
+      "kind": "bounded_source_affix",
+      "source_affix": "apotheosis:shield/psychic",
+      "family": "guarding",
+      "rank_model": "finite_source_rarity",
+      "proposed_max_purchases": 2,
+      "distinct_rarity_milestones": [
+        "epic",
+        "mythic"
+      ],
+      "native_license_node": null,
+      "native_license_earliest_rank_hint": null,
+      "implementation": "source_verified_Tyz_purchase+server_effect_adapter",
+      "active": false
+    }
+  ]
+}
