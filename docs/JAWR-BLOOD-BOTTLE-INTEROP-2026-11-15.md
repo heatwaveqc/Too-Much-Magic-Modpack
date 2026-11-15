@@ -85,6 +85,13 @@ Every ordinary cauldron transfer:
 8. Native JAWR Blood Bottle and Wine Glass drinking, chicken poison and vampire-blood progression remain unmodified.
 9. Inspect dedicated-server startup, integrated multiplayer client and login/reload; ensure component resolution occurs **after** registries load (ServerStartingEvent) and rejects unknown component types.
 
+## CI verification evidence — update
+
+- [Transformation bridge scaffold run 43764834523](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43764834523): **PASS**, NeoForge module compiles and the four pure Java ordinary/special-bottle policy unit tests pass.
+- [Verify bootstrap run 43764992006](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43764992006): **PASS**, packwiz hash/manifest, JSON contract and related metadata checks.
+- [Vampire dedicated-server run 43764834475](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43764834475): Bridge compilation and unit tests **PASS**; 142 pinned server-side mod JAR hashes verified; real modded dedicated server reached **Done**, ticked and shut down cleanly. The **overall workflow is marked failed solely because the ZIP upload step specified the wrong filename**. Its log shows the generated ZIP was `Too-Much-Magic-Quest-Vampire-QA-Prism.zip` but the workflow attempted `Too-Much-Magic-Vampire-Chassis-Dev-Prism.zip`. The workflow upload path has now been corrected on this branch and requires a new Actions run.
+- **Neither boot success nor unit tests prove in-game player right-click cauldron, inventory remainder, component-value preservation or blood-meter increments.** These remain disposable-client acceptance tests.
+
 ## Key source evidence
 
 - [Audited pinned-JAR source-reading workflow](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43762890498)
