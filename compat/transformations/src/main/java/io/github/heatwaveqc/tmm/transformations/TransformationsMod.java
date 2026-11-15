@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tmm.transformations;
 
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
 import io.github.heatwaveqc.tmm.transformations.mob.MobAllianceEvents;
+import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionConfig;
+import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
 import io.github.heatwaveqc.tmm.transformations.command.TransformationCommands;
@@ -27,6 +29,8 @@ public final class TransformationsMod {
 
     public TransformationsMod(IEventBus modBus, ModContainer container) {
         container.registerConfig(ModConfig.Type.SERVER, VampireChassisConfig.SPEC);
+        container.registerConfig(ModConfig.Type.SERVER, ArchlichResurrectionConfig.SPEC,
+                "tmm_archlich-server.toml");
         TransformationAttachments.ATTACHMENTS.register(modBus);
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_VAMPIRE));
         ProbeRegistry.register(new VampirismFactionProbe(ProviderState.VAMPIRISM_HUNTER));
@@ -36,6 +40,8 @@ public final class TransformationsMod {
         JAWRDefenseEvents.register();
         VampireLifecycleEvents.register();
         MobAllianceEvents.register();
-        LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default. Death/appearance remain untouched.");
+        ArchlichResurrectionEvents.register();
+        LOGGER.warn("Experimental vampire chassis and opt-in Archlich priority bridge loaded; "
+                + "resurrection interception is OFF until explicitly enabled in disposable worlds.");
     }
 }

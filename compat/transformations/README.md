@@ -50,3 +50,18 @@ Never bypass uncertain observations, erase progression, silently install Dragon 
 ## Enablement and safety (test worlds only)
 
 Read [Vampire chassis v1 test plan](../../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md) before changing flags. The world-server config defines `experimentalVampireChassis`, `experimentalAutomaticDualAcquisition`, `experimentalAllowUnverifiedOtherProviders` and `experimentalOperatorCure`, **all default false**. The last two are especially unsafe and should never be enabled in a valuable world. Existing permanent transformations must not be migrated automatically. Do not add the JAR to packwiz while native cure, level progression, HUD, independent player isolation and death cases remain untested.
+
+## Archlich native resurrection arbitration (test-only)
+
+For players with **both** Goety 3.2.2 and Forbidden Magic 0.5.37 lich flags,
+`ArchlichResurrectionEvents` (NeoForge `LivingDeathEvent` HIGHEST priority)
+attempts the original JAWR phylactery save first. An actual JAWR save
+cancels the death event, so Goety does not charge its Arca. If the JAWR
+phylactery is not charged, native Goety remains the fallback without
+any TMM manual resurrection. Other liches are left alone.
+
+This is **OFF by default**: enable `experimentalArchlichPhylacteryFirst`
+in `tmm_archlich-server.toml` only in a backed-up, disposable test world.
+The exact native API is version gated. It does not implement the proposed
+shared hunger value, cures, or immortality cross-provider lifecycle.
+See [Archlich priority and QA](docs/ARCHLICH-RESURRECTION-PRIORITY.md).
