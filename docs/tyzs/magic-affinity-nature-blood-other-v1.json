@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "id": "tmm:magic_affinity_nature_blood_other_v1",
+  "status": "DESIGN_ONLY_NOT_RUNTIME_TAGS",
+  "created": "2026-11-15",
+  "scope": "Selected significant magic and cross-mod systems from TMM 1.21.1 NeoForge manifest and mod comprehension index. Not an assertion of all currently loadable JARs. Planned/excluded mods are not auto-covered.",
+  "categories": [
+    "Nature",
+    "Blood",
+    "Other"
+  ],
+  "contract": {
+    "primary_role": "Primary mod classification is a documentation default / audit bucket, NOT blanket mutation or grant to every recipe, world tick, entity and cast.",
+    "evaluation_order": [
+      "identify actual server-authoritative player-committed use/event and installed mod/version",
+      "if explicit source spell school exists use that exact ID (Iron school above all thematic guesses)",
+      "if a specific action/item/ritual has an explicitly verified typed blood or nature effect override its parent mod default",
+      "otherwise use the primary mod default only for directly player-attributed eligible magic actions",
+      "world machines, passive automation, transfer, decorative blocks, crafting inputs, pet AI and fixed loot are not magic-spell strength events",
+      "if cross-mod adapter inherits parent school it must NOT double-trigger modifiers or MXP"
+    ],
+    "semantics": {
+      "Nature": "Nature-themed spells, druidic/wild/fae life magic and personally attributed plant/animal/forest effects; subject to werewolf nature bonus and lich nature penalty only for actual eligible effects.",
+      "Blood": "Explicit blood/EV/life-as-power player magic and named Blood spell-school effects; subject to lich blood boost. A blood-colored animation, an injured caster or a soul sacrifice alone does NOT suffice.",
+      "Other": "Arcane, elemental, stellar, soul, necromancy, demon/occult, technological and nonclassified magic. Other is NOT a synonym for unusable: it may carry independent `demonic`, `fae`, `sea_storm`, `necromancy` and similar class subtypes."
+    },
+    "source_priority": "Exact pinned source IDs > explicit spell-school IDs > validated event-specific action tags > approved mod-level default for eligible player spells > unknown/held. A mod-wide theme never overrides a source spell's own classification.",
+    "subtypes": [
+      "fae",
+      "demonic",
+      "soul",
+      "necromancy",
+      "celestial",
+      "storm",
+      "aquatic",
+      "ice",
+      "alchemy",
+      "ritual",
+      "technical",
+      "programmable",
+      "crop_grow"
+    ],
+    "eligible_only": "Source-authenticated player cast, item active ability, empowered personal attack, controlled summon, or explicit manually activated ritual after real resource payment. No blanket automation/machine/loot multiplier.",
+    "class_hooks": {
+      "lich": {
+        "bonus": "Blood",
+        "penalty": "Nature",
+        "applicability": "personal_spell_potency_only"
+      },
+      "werewolf": {
+        "bonus": "Nature",
+        "applicability": "personal_effect_only"
+      },
+      "forest_dragon": {
+        "bonus_subtype": "fae",
+        "supplement": "Nature ecology utilities have separate policies"
+      },
+      "cave_dragon": {
+        "bonus_subtype": "demonic",
+        "supplement": "Independent of Blood and Nature"
+      },
+      "sea_dragon": {
+        "bonus_subtype": "aquatic|ice|storm|abyssal",
+        "supplement": "Independent of Nature/Blood; source-backed classification required"
+      },
+      "core_and_monk": {
+        "bonus": "universal_source_specific",
+        "applicability": "only where verified"
+      }
+    },
+    "mixed_overrides": [
+      {
+        "id": "irons_spellbooks:blood",
+        "parent": "irons-spells",
+        "category": "Blood",
+        "verification": "official registered SchoolRegistry source",
+        "apply": "all committed player Blood-school spell casts"
+      },
+      {
+        "id": "irons_spellbooks:nature",
+        "parent": "irons-spells",
+        "category": "Nature",
+        "verification": "official registered SchoolRegistry source",
+        "apply": "all committed player Nature-school spell casts"
+      },
+      {
+        "id": "witchery:vampire_blood_consumption",
+        "parent": "witchery-remake",
+        "category": "Blood",
+        "verification": "RULE_CANDIDATE_EXACT_ACTION_IDS_PENDING",
+        "apply": "only actual blood-consumption / blood-powered effects, not becoming vampire itself"
+      },
+      {
+        "id": "witchery:herbal_growth",
+        "parent": "witchery-remake",
+        "category": "Nature",
+        "verification": "RULE_CANDIDATE_EXACT_ACTION_IDS_PENDING",
+        "apply": "verified personal herbal/growth effect only"
+      },
+      {
+        "id": "ars_nouveau:nature_growth",
+        "parent": "ars-nouveau",
+        "category": "Nature",
+        "verification": "RULE_CANDIDATE_EXACT_GLYPH_CHAIN_IDS_PENDING",
+        "apply": "explicit growth/plant personal spell only"
+      },
+      {
+        "id": "enchanted:herbology",
+        "parent": "enchanted-witchcraft",
+        "category": "Nature",
+        "verification": "RULE_CANDIDATE_EXACT_EFFECT_IDS_PENDING",
+        "apply": "source-verified personal nature effect only"
+      },
+      {
+        "id": "hexerei:herbal_magic",
+        "parent": "hexerei",
+        "category": "Nature",
+        "verification": "RULE_CANDIDATE_EXACT_EFFECT_IDS_PENDING",
+        "apply": "source-verified herbal magic effect only"
+      },
+      {
+        "id": "primalmagick:verdant_source",
+        "parent": "primal-magick",
+        "category": "Nature",
+        "verification": "RULE_CANDIDATE_EXACT_SOURCE_IDS_PENDING",
+        "apply": "verified nature/life source spell only"
+      }
+    ],
+    "unresolved_high_priority": [
+      "Pinned Iron and addon school custom ID registry check",
+      "JAWR 0.5.39 effect IDs: nature/blood/other breakdown, actual spell debit and native physiology ownership",
+      "EvilCraft which player-held blood items trigger a personal power hook vs only machinery",
+      "Neo Vitae Anima, EV, Sigils, Spiritus: distinct player action tags and no buff to passive altar production",
+      "Botania Revived player-item mana use versus automated mana flower and spreader",
+      "Roots Classic named spells rather than generic Roots 4 API",
+      "Feywild fae owner/player effects and summoned entities; capstone exclusions",
+      "Ars glyph definitions for any nature-specific spells; cross-casts through Ars 'n Spells and Ars Ocultas",
+      "Enchanted Witchcraft/Hexerei/Primal Magick exact nature spell classification",
+      "Forge/NeoForge Luck, chance and loot attribute consumers need separate audit"
+    ]
+  },
+  "mods": [
+    {
+      "id": "neovitae",
+      "name": "Neo Vitae",
+      "primary": "Blood",
+      "theme": "blood/life/EV/sigils; Spiritus hybrid",
+      "subtype_policy": "BLOOD_EXPLICIT",
+      "effect_attribution": "blood_sigils_or_personal_rituals",
+      "guardrails": "The Ara Vitae altar, EV pipes, tanks and passive automation remain excluded from personal spell-power buffs.",
+      "source_url": "https://modrinth.com/mod/neovitae",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "public_theme_and_source_profile"
+    },
+    {
+      "id": "evilcraft",
+      "name": "EvilCraft",
+      "primary": "Blood",
+      "theme": "blood-powered rituals and devices; vengeance spirits",
+      "subtype_policy": "BLOOD_EXPLICIT",
+      "effect_attribution": "personal_blood_tools",
+      "guardrails": "Blood Infuser, Spirit Furnace, Purifier and other machine throughput are not player spell-casts; vengeance spirit techniques require subtyping.",
+      "source_url": "https://evilcraft.rubensworks.net/",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "public_theme_and_source_profile"
+    },
+    {
+      "id": "botania-revived",
+      "name": "Botania Revived",
+      "primary": "Nature",
+      "theme": "nature-themed floral mana and devices",
+      "subtype_policy": "NATURE_MOD_WIDE_TONE_PERSONAL_EFFECTS_ONLY",
+      "effect_attribution": "player_attributed_mana_item_or_spell_effect",
+      "guardrails": "Exclude mana generating flowers, spreaders, pools, runic altars, automated producers, Gaia Guardian reward drops.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/botania-revived",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "public_theme_and_source_profile"
+    },
+    {
+      "id": "extra-botany-revived",
+      "name": "Extra Botany Revived",
+      "primary": "Nature",
+      "theme": "Botania addon floral/elf mana effects",
+      "subtype_policy": "NATURE_CHILD_VERIFY",
+      "effect_attribution": "verified_player_activated_botania_effect",
+      "guardrails": "Do not assume every addon armor stat or item action is a nature spell; confirm event and owner.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/extra-botany-revived",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "roots-classic",
+      "name": "Roots Classic",
+      "primary": "Nature",
+      "theme": "druidic natural-ingredient powders and wands",
+      "subtype_policy": "NATURE_DEFAULT_PLAYER_MAGIC",
+      "effect_attribution": "verified_wand_spell_or_personal_ritual",
+      "guardrails": "This is ROOTS CLASSIC, not Roots 4; avoid source/mana APIs from the other project.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/roots-classic",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "feywild",
+      "name": "Feywild",
+      "primary": "Nature",
+      "theme": "fey magic, seasons and fae summons",
+      "subtype_policy": "NATURE_FAE_SUBSCHOOL",
+      "effect_attribution": "verified_fae_spell_or_owned_companion",
+      "guardrails": "Fey creature identity alone does not convert every mob attack, quest, or automatic activity into player-cast Nature magic.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/feywild",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "totemic",
+      "name": "Totemic / Fenn's Totemic",
+      "primary": "Nature",
+      "theme": "ritual/totemic ceremonial natural magic",
+      "subtype_policy": "NATURE_DEFAULT_PLAYER_RITUALS",
+      "effect_attribution": "verified_player_ritual_effect",
+      "guardrails": "Check exact pinned Fenn's fork mechanics; do not buff passive world totems/machines blindly.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/fenns-totemic",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "irons-spells",
+      "name": "Iron's Spells 'n Spellbooks",
+      "primary": "Other",
+      "theme": "multi-school spells; explicit BLOOD and NATURE schools",
+      "subtype_policy": "MIXED_SCHOOL_ID_REQUIRED",
+      "effect_attribution": "verified_spell_cast_school",
+      "guardrails": "`irons_spellbooks:blood` -> Blood, `irons_spellbooks:nature` -> Nature, all other registered schools -> Other. School ID rather than spell display name.",
+      "source_url": "https://github.com/iron431/irons-spells-n-spellbooks/blob/1.21/src/main/java/io/redspace/ironsspellbooks/api/registry/SchoolRegistry.java",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "witchery-remake",
+      "name": "Just Another Witchery Remake (JAWR)",
+      "primary": "Other",
+      "theme": "witchcraft mix: blood/vampirism, herbalism and rites",
+      "subtype_policy": "MIXED_SUBSYSTEM_ID_REQUIRED",
+      "effect_attribution": "verified_subsystem_and_personal_action",
+      "guardrails": "Source-check blood/vampire actions -> Blood; confirmed plant/herb/growth personally cast spells -> Nature; other curses, sigils and generic ritual magic -> Other.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/just-another-witchery-remake",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "enchanted-witchcraft",
+      "name": "Enchanted: Witchcraft",
+      "primary": "Other",
+      "theme": "herbal witchcraft, circle rites, brewing and poppets",
+      "subtype_policy": "MIXED_SUBSYSTEM_ID_REQUIRED",
+      "effect_attribution": "verified_rite_brew_or_poppet",
+      "guardrails": "Herbology, grow/herb effects may be Nature; curses/poppetry remain Other unless explicit blood mechanics. Brewing ingredients alone are not enough.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/enchanted-witchcraft",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "hexerei",
+      "name": "Hexerei",
+      "primary": "Other",
+      "theme": "herbal cauldron witchcraft and artifacts",
+      "subtype_policy": "MIXED_SUBSYSTEM_ID_REQUIRED",
+      "effect_attribution": "verified_cauldron_or_personal_effect",
+      "guardrails": "Herbal content is a Nature candidate only when a source-verified effect actually expresses nature magic; cauldron crafting not automatically a spell.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/hexerei",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "primal-magick",
+      "name": "Primal Magick",
+      "primary": "Other",
+      "theme": "multiple primal sources; elemental research and spells",
+      "subtype_policy": "MIXED_SOURCE_ID_REQUIRED",
+      "effect_attribution": "verified_spell_source",
+      "guardrails": "Use actual source/aspect identity; flora/life/earth themed spells may be Nature when verified, generic elemental/arcane effects Other.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/primal-magick",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "primary": "Other",
+      "theme": "programmable multiglyph personal spells and source automation",
+      "subtype_policy": "MIXED_GLYPH_CLASSIFICATION_REQUIRED",
+      "effect_attribution": "player_cast_glyph_chain",
+      "guardrails": "Nature-tagged growth/plant outcomes only if explicitly classified; spells are not wholesale Nature because Archwood exists. No machine automation buff.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-nouveau",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-elemental",
+      "name": "Ars Elemental",
+      "primary": "Other",
+      "theme": "four elemental schools and foci",
+      "subtype_policy": "MIXED_GLYPH_CLASSIFICATION_REQUIRED",
+      "effect_attribution": "inherited_ars_cast_and_glyph_sources",
+      "guardrails": "Elemental is not automatically Nature; verify actual school/element tag per spell; water/ice/storm are Other with Sea Dragon sub-affinity.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-elemental",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "astral-sorcery",
+      "name": "Astral Sorcery",
+      "primary": "Other",
+      "theme": "starlight and constellations",
+      "subtype_policy": "OTHER_CELESTIAL",
+      "effect_attribution": "verified_attunement_or_player_spell",
+      "guardrails": "Cosmic/starlight magic is not automatically Nature even if nighttime/outdoors; multiblock starlight altar is excluded from personal spell-power buffs.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "eidolon-repraised",
+      "name": "Eidolon: Repraised",
+      "primary": "Other",
+      "theme": "soul shards, necromancy, theurgy, ritual and artifice",
+      "subtype_policy": "OTHER_SOUL_NECROMANCY",
+      "effect_attribution": "verified_player_brazier_ritual_or_item",
+      "guardrails": "Sacrifice, undead and soul shards do not automatically mean Blood. Require explicit blood-as-resource action for any Blood override.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/eidolon-repraised",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "goety",
+      "name": "Goety: The Dark Arts",
+      "primary": "Other",
+      "theme": "soul-energy magic, minions, curses and necromancy",
+      "subtype_policy": "OTHER_SOUL_DEMONIC",
+      "effect_attribution": "verified_personal_soul_spell_or_owned_summon",
+      "guardrails": "Soul energy is not blood. Cave Dragon demonic affinity is a separate secondary tag, not the Blood primary category.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/goety",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "goety-cataclysm",
+      "name": "Goety Cataclysm",
+      "primary": "Other",
+      "theme": "Goety addon focused on Cataclysm servants and focus effects",
+      "subtype_policy": "OTHER_DEMON_NECRO_CHILD",
+      "effect_attribution": "verified_goety_focus_or_personal_summon",
+      "guardrails": "Do not buff all Cataclysm bosses just because a Goety add-on references them.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/goety-cataclysm",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "occultism",
+      "name": "Occultism",
+      "primary": "Other",
+      "theme": "demonic/otherworld spirit summoning and rituals",
+      "subtype_policy": "OTHER_DEMONIC",
+      "effect_attribution": "verified_personal_ritual_or_owned_spirit",
+      "guardrails": "Blood-like sacrifices do not by themselves make spells Blood. Cave Dragon demonic affinity can key off a separate tagged source.",
+      "source_url": "https://modrinth.com/mod/occultism",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "malum",
+      "name": "Malum",
+      "primary": "Other",
+      "theme": "spirit arcana, soul and totem magic",
+      "subtype_policy": "OTHER_SOUL_ARCANA",
+      "effect_attribution": "verified_player_spirit_effect",
+      "guardrails": "Spirit and blight are not Blood; Runewood trees are not sufficient to make the whole mod Nature.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/malum",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "gaze-a-malum-addon",
+      "name": "Gaze (Malum addon)",
+      "primary": "Other",
+      "theme": "Malum spirit/spell addon",
+      "subtype_policy": "OTHER_INHERITED_MALUM",
+      "effect_attribution": "verified_malum_effect",
+      "guardrails": "Inherit Malum source context; no assumed blood tag.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/gaze-a-malum-addon",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "forbidden-magic",
+      "name": "JAWR: Forbidden Magic",
+      "primary": "Other",
+      "theme": "soul magic, lichdom and phylactery",
+      "subtype_policy": "OTHER_SOUL_LICH",
+      "effect_attribution": "verified_necromancy_rite_or_soul_effect",
+      "guardrails": "Soul magic and lichdom are not automatically Blood; some explicit lifeblood effects require a per-action secondary Blood classification.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/jawr-forbidden-magic",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "primary": "Other",
+      "theme": "Aureal, magical artifacts and occult elements",
+      "subtype_policy": "OTHER_AUREAL_ARCANE",
+      "effect_attribution": "verified_player_magic_action",
+      "guardrails": "Do not map souls/occult aesthetics to Blood without actual blood-powered effects.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/forbidden-arcanus",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "hexcast-neoforged",
+      "name": "HexCast NEOFORGED",
+      "primary": "Other",
+      "theme": "programmable amethyst/media hex spells",
+      "subtype_policy": "OTHER_PROGRAMMABLE",
+      "effect_attribution": "committed_player_hex_cast",
+      "guardrails": "Pattern outcome might be Nature-like; never classify solely by the port's media/amethyst cost.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/hexcasting",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "psi",
+      "name": "Psi",
+      "primary": "Other",
+      "theme": "programmable spellcasting using Psi CAD",
+      "subtype_policy": "OTHER_PROGRAMMABLE",
+      "effect_attribution": "committed_player_CAD_cast",
+      "guardrails": "A construct that makes crops grow isn't necessarily tagged nature until a verified spell effect is classified.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/psi",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "psitweaks",
+      "name": "Psi: Tweaks and Additions",
+      "primary": "Other",
+      "theme": "Psi extended components/automation",
+      "subtype_policy": "OTHER_PSI_CHILD",
+      "effect_attribution": "inherited_psi_player_cast",
+      "guardrails": "Exclude industrial Psionic Generator and energy conversion loops from nature/blood personal magic.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/psitweaks",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "primary": "Other",
+      "theme": "special effects, spell circles and personal mana",
+      "subtype_policy": "OTHER_SPELL_CIRCLES",
+      "effect_attribution": "verified_mahou_personal_spell",
+      "guardrails": "Some spells have sacrifice/HP themes; require actual blood power debit to tag Blood; do not tag all circles.",
+      "source_url": "https://modrinth.com/project/mahou-tsukai",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "pastel",
+      "name": "Pastel",
+      "primary": "Other",
+      "theme": "color-resonance magic and research",
+      "subtype_policy": "OTHER_COLOR_RESONANCE",
+      "effect_attribution": "verified_player_color_magic_effect",
+      "guardrails": "Color and natural energy aesthetics are not enough to classify as Nature.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/pastel",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "primary": "Other",
+      "theme": "language-built programmable spells",
+      "subtype_policy": "MIXED_SPELL_CONTENT",
+      "effect_attribution": "verified_written_spell_action",
+      "guardrails": "Default Other until explicit typed Nature/Blood action, not based on ingredient words.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/scriptor-magicae",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "theurgy",
+      "name": "Theurgy",
+      "primary": "Other",
+      "theme": "sulfur/salt/mercury alchemy and matter transmutation",
+      "subtype_policy": "OTHER_ALCHEMY",
+      "effect_attribution": "verified_personal_alchemy_effect",
+      "guardrails": "Machinery, sulfur processing and item duplication are not player Blood/Nature spells.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/theurgy",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "embers-re-ignited",
+      "name": "Embers Re-Ignited",
+      "primary": "Other",
+      "theme": "ember-fueled technoalchemy and production",
+      "subtype_policy": "OTHER_EMBER_TECH",
+      "effect_attribution": "verified_personal_ember_magic",
+      "guardrails": "Exclude production throughput unless separate crafting trait explicitly authorized.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/embers-rekindled",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-additions",
+      "name": "Ars Additions",
+      "primary": "Other",
+      "theme": "Ars Nouveau addon",
+      "subtype_policy": "INHERIT_ARS_GLYPH_CONTEXT",
+      "effect_attribution": "inherited_ars_cast",
+      "guardrails": "Classify by final effective Ars glyph/cast, not addon package.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-additions",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-controle",
+      "name": "Ars Controle",
+      "primary": "Other",
+      "theme": "Ars Nouveau addon/controller tools",
+      "subtype_policy": "INHERIT_ARS_GLYPH_CONTEXT",
+      "effect_attribution": "inherited_ars_cast",
+      "guardrails": "Controller/item mechanics by concrete event; do not award bonus twice.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-controle",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-elemancy",
+      "name": "Ars Elemancy",
+      "primary": "Other",
+      "theme": "Ars Nouveau elemental glyph addon",
+      "subtype_policy": "INHERIT_ARS_GLYPH_CONTEXT",
+      "effect_attribution": "inherited_ars_cast",
+      "guardrails": "Elemental school defaults Other; classify confirmed nature glyph per source.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-elemancy",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-ocultas",
+      "name": "Ars Ocultas",
+      "primary": "Other",
+      "theme": "Ars Nouveau/Occultism ritual bridge",
+      "subtype_policy": "INHERIT_PARENT_ACTION",
+      "effect_attribution": "inherited_ars_or_occultism_action",
+      "guardrails": "Jarred mobs and sacrificial ritual components do not by themselves make the result Blood; tag effect based on resource/owner.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-ocultas",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-unification",
+      "name": "Ars Unification",
+      "primary": "Other",
+      "theme": "Ars cross-system integration",
+      "subtype_policy": "INHERIT_PARENT_ACTION",
+      "effect_attribution": "inherited_ars_action",
+      "guardrails": "Bridge must not count the same spell twice.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-unification",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "ars-n-spells",
+      "name": "Ars 'n Spells",
+      "primary": "Other",
+      "theme": "Ars Nouveau and Iron's spells interoperability",
+      "subtype_policy": "INHERIT_FINAL_SPELL_SCHOOL",
+      "effect_attribution": "inherited_actual_ars_or_irons_cast",
+      "guardrails": "Use Iron Blood/Nature registered school for Iron spells; classify Ars glyph spells by verified context. Cross-cast must only get one affinity.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/ars-n-spells",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "summoning-rituals",
+      "name": "Summoning Rituals",
+      "primary": "Other",
+      "theme": "data-driven ritual framework, not a school",
+      "subtype_policy": "NEUTRAL_FRAMEWORK_INHERIT_OUTCOME",
+      "effect_attribution": "inherited_ritual_source_and_output",
+      "guardrails": "No automatic Nature or Blood from recipes requiring herbs, skulls, blood drops, or animals; classify actual effect and consumed power source.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/summoning-rituals",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "projecte",
+      "name": "ProjectE",
+      "primary": "Other",
+      "theme": "transmutation/EMC economy, not personal cast school",
+      "subtype_policy": "NON_SPELL_ECONOMY",
+      "effect_attribution": "none_for_personal_spell_buff",
+      "guardrails": "No class affinity buff to EMC machines or progression-gated items.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/projecte",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    },
+    {
+      "id": "draconic-evolution",
+      "name": "Draconic Evolution",
+      "primary": "Other",
+      "theme": "FE power systems, gear and Chaos Guardian",
+      "subtype_policy": "NON_SPELL_TECH",
+      "effect_attribution": "none_for_personal_spell_buff",
+      "guardrails": "Tech gear matters to Monk-versus-equipped-specialist balance; not a personal Nature/Blood magic school.",
+      "source_url": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
+      "inventory_status": "packwiz_pinned_or_manifest_enabled_verify_as_needed",
+      "evidence_level": "theme_verified_hook_id_pending"
+    }
+  ]
+}
