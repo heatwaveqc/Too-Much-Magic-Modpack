@@ -81,7 +81,7 @@ def verify() -> None:
     assert gear["status"] == "DESIGN_REQUIREMENT_NOT_MEASURED"
     assert "Monk" in gear["question"]
     assert "LEGAL CURIOS ALLOWED" in gear["primary_monk_profile"]["worn_equipment"]
-    assert "no worn equipment" in data["balancing"]["chaos_guardian_monk_acceptance"]["desired_result"]
+    assert "no Curios" in data["balancing"]["chaos_guardian_monk_acceptance"]["desired_result"]
     assert "Curios are ALLOWED" in data["balancing"]["chaos_guardian_monk_acceptance"]["curios_interpretation"]
     assert "enchantments" in gear["comparison_specialist_profile"]["enhancements"]
     assert "Apotheosis" in gear["comparison_specialist_profile"]["enhancements"]
@@ -151,7 +151,7 @@ def verify() -> None:
     assert gear_audit["apotheosis"]["overcharge"]["sigil_of_malice"]["level"] == 2.0
     assert len(gear_audit["apotheosis"]["source_affix_groups"]) >= 20
     assert sum(g["count"] for g in gear_audit["apotheosis"]["source_affix_groups"].values()) == 99
-    assert "Monk" in data["balancing"]["overall_endgame_power_hierarchy"]["monk_benchmark_loadout"]
+    assert "MONK" in data["balancing"]["overall_endgame_power_hierarchy"]["monk_benchmark_loadout"]
     assert data["balancing"]["equipment_ceiling_2026_11_15"]["source_affixes"] == 99
 
     assert "tmm_monk_spirit_bolt_mastery" not in ids
