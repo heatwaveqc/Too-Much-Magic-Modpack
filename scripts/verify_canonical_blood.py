@@ -78,6 +78,14 @@ def main() -> None:
                    "irons_spellbooks:alchemist_cauldron_empty",
                    GLASS, IRON, EVILCRAFT, 250)
 
+    # Iron's entity-damage cauldron produces irons_spellbooks:blood directly,
+    # bypassing recipe definitions. Keep native blood -> vial extraction so the
+    # canonical-only override does not strand its native blood production.
+    # Empty-cauldrons recipes match both the glass bottle and the exact fluid.
+    check_transfer("tmm/recipe/irons_spellbooks/native_blood_to_vial.json",
+                   "irons_spellbooks:alchemist_cauldron_empty",
+                   GLASS, IRON, "irons_spellbooks:blood", 250)
+
     # Hexerei retains HEXE as its native cauldron fluid. Recipe interaction
     # takes priority over generic FluidUtil bucket handling in MixingCauldron.
     check_transfer("tmm/recipe/hexerei/hex_blood_to_evilcraft_bucket.json",
@@ -104,7 +112,7 @@ def main() -> None:
     assert not (DATA / "hexerei/recipe/cauldron_emptying/blood_to_bottle.json").exists(), (
         "Native Hexerei blood bottle output must remain intact"
     )
-    print("PASS: ten authored JSONs meet canonical bucket/fluid/vial boundaries")
+    print("PASS: eleven authored JSONs meet canonical bucket/fluid/vial boundaries")
     print("NOT RUNTIME VALIDATED: test recipe loading, right-click buckets, pipes, and bottles in a disposable world")
 
 
