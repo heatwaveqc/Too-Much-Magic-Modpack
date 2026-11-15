@@ -71,11 +71,11 @@ Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; 
 
 **Completion test:** could a player get from nothing to the real final milestone using only the proposed quest steps, JEI and the in-game guide? Include **every essential intermediate step**, not a three-row early/mid/late summary. Treat addon unlocks and optional branches separately and explain which choices are mutually exclusive.
 
-| Path and step | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0. Find/open guide | <source or UI keybind> | <craft/open/access> | <guide access> | <guide name/page> | <guide onboarding quest, XP + safe reward> | ... |
-| 1. Starting setup | ... | ... | ... | ... | ... | ... |
-| <every actual tier/unlock/subsystem, alternate path and capstone> | ... | ... | ... | ... | ... | ... |
+| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0. Find/open guide | <required / optional> | <source or UI keybind> | <craft/open/access> | <guide access> | <guide name/page> | <guide onboarding quest, XP + safe reward> | ... |
+| 1. Starting setup | <required / one valid option> | ... | ... | ... | ... | ... | ... |
+| <every actual tier/unlock/subsystem, alternate path and capstone> | <required gate / selected branch / optional> | ... | ... | ... | ... | ... | ... |
 
 ### Dependency graph and alternate routes
 
