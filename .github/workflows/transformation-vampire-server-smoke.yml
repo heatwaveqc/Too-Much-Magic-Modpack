@@ -58,6 +58,15 @@ jobs:
           path: ${{ runner.temp }}/Too-Much-Magic-Quest-Vampire-QA-Prism.zip
           if-no-files-found: error
           retention-days: 30
+      - name: Print KubeJS startup diagnostics on failure
+        if: failure()
+        run: |
+          if [ -f "${{ runner.temp }}/tmm-vampire-bridge/logs/kubejs/startup.log" ]; then
+            echo "=== KubeJS startup.log ==="
+            tail -n 160 "${{ runner.temp }}/tmm-vampire-bridge/logs/kubejs/startup.log"
+          else
+            echo "No KubeJS startup.log at expected location"
+          fi
       - name: Upload diagnostic logs (no third-party JARs or saves)
         if: always()
         uses: actions/upload-artifact@v4
@@ -66,5 +75,7 @@ jobs:
           path: |
             ${{ runner.temp }}/tmm-vampire-bridge/server.log
             ${{ runner.temp }}/tmm-vampire-bridge/logs/latest.log
+            ${{ runner.temp }}/tmm-vampire-bridge/logs/kubejs/startup.log
+            ${{ runner.temp }}/tmm-vampire-bridge/logs/kubejs/server.log
           if-no-files-found: warn
           retention-days: 14
