@@ -71,11 +71,11 @@ Explicitly answer, where applicable: **items; fluids; FE/mana/source/blood; XP; 
 
 **Completion test:** could a player get from nothing to the real final milestone using only the proposed quest steps, JEI and the in-game guide? Include **every essential intermediate step**, not a three-row early/mid/late summary. Treat addon unlocks and optional branches separately and explain which choices are mutually exclusive.
 
-| Path and step | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0. Find/open guide | <source or UI keybind> | <craft/open/access> | <guide access> | <guide name/page> | <guide onboarding quest, XP + safe reward> | ... |
-| 1. Starting setup | ... | ... | ... | ... | ... | ... |
-| <every actual tier/unlock/subsystem, alternate path and capstone> | ... | ... | ... | ... | ... | ... |
+| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0. Find/open guide | <required / optional> | <source or UI keybind> | <craft/open/access> | <guide access> | <guide name/page> | <guide onboarding quest, XP + safe reward> | ... |
+| 1. Starting setup | <required / one valid option> | ... | ... | ... | ... | ... | ... |
+| <every actual tier/unlock/subsystem, alternate path and capstone> | <required gate / selected branch / optional> | ... | ... | ... | ... | ... | ... |
 
 ### Dependency graph and alternate routes
 
@@ -143,6 +143,14 @@ Use the complete progression table above as the **canonical chapter outline**; t
 | <every needed stage> | ... | ... | <validated ID/event if known; item proxy explicitly limited> | ... | ... |
 
 Consider *Tips & Tricks* for universally useful early discoveries, and the mod's chapter for deep progression. Do **not** add new quest tasks, loot or rewards as part of this research.
+
+## Existing chapter / pilot reconciliation
+
+| Walkthrough stage | Current quest ID/title and status | Intended action vs actual detector | Named in-game guide/JEI reference | Gap / next action |
+| --- | --- | --- | --- | --- |
+| <each required stage> | <none / branch / merged / client-accepted> | <operation, item proxy or manual fallback> | <exact page/recipe/category> | <missing instruction, test or no gap> |
+
+Inspect canonical authoring data and generated quest data, not only a PR summary. Separately compare every addon feature with the installed pack roster; a pilot count is not coverage proof.
 
 ## Conflicts, limitations and version drift
 

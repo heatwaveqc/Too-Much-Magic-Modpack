@@ -49,7 +49,15 @@ Before authoring quest entries, research and maintain a **progression coverage m
 
 Each matrix row should map to (a) one or more quests or a clearly named teaching section, (b) prerequisites and next step, (c) guidebook/JEI reference, (d) authentic detection method or honest surrogate, (e) a safe XP/item reward direction, and (f) source/test status. A required progression row with no quest/reference is a **coverage gap**, not "complete".
 
+Show the **choice boundary** in the matrix: distinguish mandatory tiers/capability gates from player-selected spell, recipe, equipment or automation branches. Teach how the player can identify and complete a valid option using JEI and the in-game guide; do not require every optional recipe as a chapter milestone. Link a representative choice quest to the broader discoverable option set when useful.
+
 The chapter must remain browseable, with sensible dependency arrows and crosslinks. Use *optional* quest branches for side content; never create arbitrary mechanical gates by quest dependency when the game doesn't enforce them. The player should be able to look ahead, choose strategies and return later.
+
+## Existing pilot reconciliation
+
+When a chapter or pilot already exists, inspect its authoring manifest and generated runtime quest data. Map every quest to the researched progression matrix and compare its prose with the actual task criterion, reward, exact ID and evidence. Record omissions (including a guidebook access step) and overclaims (such as treating item possession as operation). A pilot with many entries is not coverage proof until every required path and every installed addon has been reconciled. Distinguish proposed, implemented, merged, server-smoke-tested and client-accepted states.
+
+For addons, inventory the full primary-source feature surface, inspect the exact pack pins, then intersect supported bridges with the current enabled-mod roster. Teach installed target integrations; label absent targets as out of scope. Keep addon profiles linked from the parent profile so feature counts and version gaps are visible.
 
 ## Detection honesty and actual behavior
 

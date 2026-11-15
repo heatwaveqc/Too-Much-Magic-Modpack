@@ -10,7 +10,7 @@ Work one substantial slice at a time; update corresponding coverage status and l
 
 | Rank | Manifest ID | Research reason |
 | ---: | --- | --- |
-| 1 | `ars-nouveau` | Core spellmaking, source, automation; map Ars addons next |
+| 1 | `ars-nouveau` | Core spellmaking/source walkthrough and seven focused addon profiles; close exact-pin gaps and client acceptance |
 | 2 | `occultism` | Storage, ore crushing, bound helpers, practical first-week utility |
 | 3 | `neovitae` | Ritual mechanics, energy/EV, tier gates, blood interactions |
 | 4 | `witchery-remake` | JAWR base factions, vampirism/lycanthropy and alt progression |
@@ -141,13 +141,13 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
 | `totemic` | Totemic | magic | enabled flag | full | queued | — |
 | `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | queued | — |
-| `ars-additions` | Ars Additions | magic_addon | enabled flag | full | queued | — |
-| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | queued | — |
-| `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | queued | — |
-| `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | queued | — |
-| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | queued | — |
-| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | queued | — |
-| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | queued | — |
+| `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
+| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
+| `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
+| `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
+| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | researching | [profile](mods/ars-n-spells.md) |
+| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | researching | [profile](mods/ars-ocultas.md) |
+| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | queued | — |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | queued | — |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | queued | — |
@@ -221,7 +221,9 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 
 ## Session notes / next pickup
 
-- 2026-11-15 — Ars Nouveau source-backed mechanics survey merged from PR #81. It remains `researching` because full tier unlocks, guidebook acquisition and complete progression-to-quest references are not yet established; no in-pack gameplay test was performed.
-- 2026-11-15 — Adopted eight methodology refinements plus player-value summary and subsystem coverage; new [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
+- 2026-11-15 — Ars profile updated to walkthrough standard and seven addon profiles added. Important discovery: the installed Ars Unification + Occultism combination exposes a Crusher Spirit Crush route omitted by the pilot. Core glyph learning and Scribes Table operation are now source-mapped; the remaining Ars work is exact-version gap resolution, full creature/ritual/adapter inventory and client acceptance.
+- 2026-11-15 — Adopted the eight original methodology refinements plus player-value summary and subsystem coverage; the [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
+- 2026-11-15 — Added choice-boundary guidance: distinguish mandatory gates from player-selected branches and audit quest prose separately from task predicates and progression coverage.
+- 2026-11-15 — Resolved source identity for two previously uncertain addon pins by tracing version metadata history: Ars Additions 21.3.0 and Ars Elemental 0.7.10.4 now have immutable source commits. Their declared Ars Nouveau dependencies are older than TMM's base pin, so compatibility remains a client/source review item.
 
-- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template; separately revisit `ars-nouveau` to reconcile the seven addons and [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add an explicit Worn Notebook access quest and close the full tier/recipe/how-to gaps. Check for active research branches before duplicating work.
+- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template. When quest implementation is authorized, reconcile [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add the Worn Notebook onboarding quest and the Occultism Crush lesson, then close remaining source/client gaps.

@@ -17,6 +17,15 @@ This log originated as **proposals** from the Ars Nouveau 1.21.1-5.13.5 first pa
 
 **Additional approved requirements:** concise player-value summary (*five standout uses / three early unlocks / three integration leads* where applicable), a **subsystem coverage dashboard**, and a **complete start-to-finish progression/guidebook/quest coverage matrix**. A full mod profile is not source-complete with mandatory tier or build-guide gaps. Every mod's quest chapter is intended to function as a rewarded how-to guide in combination with JEI and the mod's own guidebook.
 
+### Additional improvement from the Ars pilot reconciliation
+
+The Ars source review exposed a recurring audit trap: counting quests or cataloging every recipe can hide the difference between a mandatory gate and a player-selected option. A chapter should teach how to choose and complete representative valid paths while making optional breadth discoverable in JEI/guide references. The pilot audit should also treat each quest's description, task detector, reward, and corresponding progression row as separate evidence fields; a matching item task cannot stand in for the operation described in prose.
+
+| # | Decision | Scope |
+| --- | --- | --- |
+| 9 | Adopted | Track **mandatory gates vs optional choices**. Teach the progression rule and how to pursue a valid branch; do not make every optional recipe a quest milestone. Reconcile each quest's action claim against its task predicate and the profile's stage map. |
+| 10 | Adopted | If a project lacks a release tag, inspect immutable history for the commit where its version metadata changes to the pinned version. Record that commit and its declared dependency versions; this can resolve addon source identity without pretending it proves the downloaded JAR or compatibility. |
+
 ## 1. Pin source snapshots as carefully as pack artifacts
 
 The TMM packwiz pin identifies a CurseForge file and SHA-1, while the upstream Ars source's `main` branch at research time declares the same `mod_version=5.13.5`. That is a strong version match, but a `main` URL is mutable and does not prove the JAR was built from that exact commit.
@@ -83,3 +92,5 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 
 - 2026-11-15 — Initial recommendations from Ars Nouveau 5.13.5.
 - 2026-11-15 — All eight adopted with scoped testing requirements; full progression, guidebook onboarding, player-value summaries and subsystem coverage added to the operating rules.
+- 2026-11-15 — Added the choice-boundary rule from the Ars walkthrough audit: mark required capability gates separately from optional recipes/branches, teach discovery through JEI/guide references, and keep quest action, detector and stage mapping independently auditable.
+- 2026-11-15 — Added a release-source discovery step: use version-file/Gradle history to find immutable commits for pinned addon versions when tags are missing. This found Ars Additions 21.3.0 (`91f102a90dc058cf40e4eac5a67a881e48b856b4`) and Ars Elemental 0.7.10.4 (`2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2`) source snapshots; both still declare older Ars dependencies than TMM.
