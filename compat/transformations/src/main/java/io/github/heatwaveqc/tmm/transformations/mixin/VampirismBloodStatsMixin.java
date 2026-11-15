@@ -21,11 +21,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(targets = "de.teamlapen.vampirism.entity.player.vampire.BloodStats", remap = false)
 public abstract class VampirismBloodStatsMixin {
     @Shadow @Final private Player player;
+    @Shadow private boolean changed;
 
     @Inject(method = "onUpdate()Z", at = @At("HEAD"), cancellable = true, remap = false)
     private void tmm$skipDuplicatedUpkeep(CallbackInfoReturnable<Boolean> cir) {
         if (player instanceof ServerPlayer sp && VampireChassisRuntime.isDual(sp)) {
-            cir.setReturnValue(false);
+            // A derived mirror write sets changed=true. Preserve the normal
+            // VampirePlayer sync signal without executing Vampirism's
+            // FoodData/exhaustion/healing logic a second time.
+            boolean needsSync = changed;
+            changed = false;
+            cir.setReturnValue(needsSync);
         }
     }
 
