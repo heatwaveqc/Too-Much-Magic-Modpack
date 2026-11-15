@@ -108,8 +108,12 @@ public final class BedrockRest {
             event.setContinueSleeping(false);
             return;
         }
-        // Do not override daytime, mod-imposed restrictions, or safety failures.
-        if (event.getProblem() == Player.BedSleepingProblem.NOT_POSSIBLE_HERE)
+        // The only permitted overrides are the missing vanilla bed block,
+        // or the vanilla daytime check during a true thunderstorm. Ordinary
+        // daytime and mod-imposed sleep restrictions stay authoritative.
+        if (event.getProblem() == Player.BedSleepingProblem.NOT_POSSIBLE_HERE
+                || (event.getProblem() == Player.BedSleepingProblem.NOT_POSSIBLE_NOW
+                    && player.serverLevel().isThundering()))
             event.setContinueSleeping(true);
     }
 
