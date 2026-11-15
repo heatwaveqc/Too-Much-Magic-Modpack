@@ -31,6 +31,19 @@
       "packwiz_slug": "akashic-tome"
     },
     {
+      "id": "alexs-caves-continued",
+      "name": "Alex's Caves Continued",
+      "category": "worldgen",
+      "desired": true,
+      "version": "1.1.2+neoforge-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/cO2CvXug/version/wSeCJMlI",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "alexs-caves-continued",
+      "note": "Staged next-build candidate only; not in the rolling test/full-integration runtime. Pin exact 1.21.1 NeoForge file. Requires client/worldgen QA."
+    },
+    {
       "id": "apotheosis",
       "name": "Apotheosis",
       "category": "power",
@@ -419,6 +432,19 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "codechicken-lib-1-8"
+    },
+    {
+      "id": "codxlib",
+      "name": "CodxLib",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.5.1+neoforge-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/6oyMM4yX/version/FW5ZWCXm",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "codxlib",
+      "note": "Staged next-build candidate only; not in the rolling test/full-integration runtime. Pin exact 1.21.1 NeoForge file. Requires client/worldgen QA."
     },
     {
       "id": "comforts",
@@ -1053,6 +1079,19 @@
       "dependencies_verified": false,
       "packwiz_slug": "jei",
       "note": "Pinned stable upstream release instead of the B2 preexisting beta, to honor no-beta gameplay policy."
+    },
+    {
+      "id": "just-enough-resources-jer",
+      "name": "Just Enough Resources (JER)",
+      "category": "qol",
+      "desired": true,
+      "version": "1.6.0.57",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/uEfK2CXF/version/A2G7NFcD",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "just-enough-resources-jer",
+      "note": "Staged next-build candidate only; not in the rolling test/full-integration runtime. Pin exact 1.21.1 NeoForge file. Requires client/worldgen QA."
     },
     {
       "id": "just-zoom",

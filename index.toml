@@ -189,12 +189,20 @@ file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+
+[[files]]
+file = "kubejs/data/biggerreactorsrework/neoforge/biome_modifier/overworld_ores.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
@@ -253,12 +261,21 @@ file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
 [[files]]
+file = "kubejs/server_scripts/toxic_caves_reactor_uranium.js"
+hash = "b2ac50582c24ed864e5e8b6f3d8134e56f623146c6f860c369cfa988379e6993"
+
+[[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
 
 [[files]]
 file = "mods/akashic-tome.pw.toml"
 hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
+metafile = true
+
+[[files]]
+file = "mods/alexs-caves-continued.pw.toml"
+hash = "49d4c3483faf58ba3cc7131ccf438edcc6c944fe92e97b2e18b5e4d19a27d7ba"
 metafile = true
 
 [[files]]
@@ -399,6 +416,11 @@ metafile = true
 [[files]]
 file = "mods/codechicken-lib-1-8.pw.toml"
 hash = "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a"
+metafile = true
+
+[[files]]
+file = "mods/codxlib.pw.toml"
+hash = "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2"
 metafile = true
 
 [[files]]
@@ -652,6 +674,11 @@ hash = "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566"
 metafile = true
 
 [[files]]
+file = "mods/just-enough-resources-jer.pw.toml"
+hash = "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b"
+metafile = true
+
+[[files]]
 file = "mods/just-zoom.pw.toml"
 hash = "4c64dc39ebe1d44d39b5876848695d3f8d4670be71019509bf74905309ac2791"
 metafile = true
@@ -679,6 +706,11 @@ metafile = true
 [[files]]
 file = "mods/l_enders-cataclysm.pw.toml"
 hash = "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5"
+metafile = true
+
+[[files]]
+file = "mods/leaves-be-gone.pw.toml"
+hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
 metafile = true
 
 [[files]]
@@ -759,6 +791,11 @@ metafile = true
 [[files]]
 file = "mods/occultism.pw.toml"
 hash = "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215"
+metafile = true
+
+[[files]]
+file = "mods/octolib.pw.toml"
+hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
 metafile = true
 
 [[files]]
@@ -857,6 +894,11 @@ hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
 metafile = true
 
 [[files]]
+file = "mods/puzzles-lib.pw.toml"
+hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
+metafile = true
+
+[[files]]
 file = "mods/quest-giver.pw.toml"
 hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
 metafile = true
@@ -867,8 +909,18 @@ hash = "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9"
 metafile = true
 
 [[files]]
+file = "mods/relics.pw.toml"
+hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
+metafile = true
+
+[[files]]
 file = "mods/reliquary-reincarnations.pw.toml"
 hash = "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5"
+metafile = true
+
+[[files]]
+file = "mods/reliquified-artifacts.pw.toml"
+hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
 metafile = true
 
 [[files]]
@@ -937,6 +989,16 @@ hash = "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99"
 metafile = true
 
 [[files]]
+file = "mods/trashslot.pw.toml"
+hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
+metafile = true
+
+[[files]]
+file = "mods/treechop.pw.toml"
+hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
+metafile = true
+
+[[files]]
 file = "mods/unfocused.pw.toml"
 hash = "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e"
 metafile = true
@@ -955,42 +1017,3 @@ metafile = true
 file = "mods/werewolves-become-a-beast.pw.toml"
 hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
 metafile = true
-
-[[files]]
-file = "mods/trashslot.pw.toml"
-hash = "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2"
-metafile = true
-
-[[files]]
-file = "mods/treechop.pw.toml"
-hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
-metafile = true
-
-[[files]]
-file = "mods/leaves-be-gone.pw.toml"
-hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
-metafile = true
-
-[[files]]
-file = "mods/relics.pw.toml"
-hash = "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1"
-metafile = true
-
-[[files]]
-file = "mods/reliquified-artifacts.pw.toml"
-hash = "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5"
-metafile = true
-
-[[files]]
-file = "mods/octolib.pw.toml"
-hash = "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de"
-metafile = true
-
-[[files]]
-file = "mods/puzzles-lib.pw.toml"
-hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
-metafile = true
-
-[[files]]
-file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "dcdccae317163aabf4818d9275c7ea9a845c2a980eefa1a050290faf6fa404d6"
