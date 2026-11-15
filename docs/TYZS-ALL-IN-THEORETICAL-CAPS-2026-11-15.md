@@ -16,6 +16,8 @@ The old Sea Luck 80% exception and prior practical-gearing basis are **supersede
 
 ## 2. Hard registration limits we can actually support
 
+**AttributeFix 21.1.3 selection update (15 November 2026):** This report's original all-mod equipment screen used a 164-entry/155-enabled test snapshot; the newer experimental pack includes **167 entries/158 enabled**, including AttributeFix. See the [AttributeFix cap delta report](TYZS-ATTRIBUTEFIX-CAP-DELTA-2026-11-15.md). **Five vanilla hard limits now target 1,000,000 by default**: maximum health (previously 1,024), armor (30), armor toughness (20), attack damage (2,048), and attack knockback (5). Other attributes (including Luck 1,024, Iron mana 1,000,000, Ars max mana 10,000, and Apothic cooldown reduction 95%) do not change by default. The individual per-mod attribute tables below retain the **unmodified source-registration maximum**; the machine ledger separately tracks `max_with_attributefix_21_1_3_defaults`. Neither value is a proven theoretically optimal attainable build.
+
 Of 142 previously inventoried source candidates, **135 attribute bound triples** are visible in Java source/vanilla 1.21.1 data, and **seven Neo Vitae maxima** are additionally documented in its public API reference but their exact pinned code/minima remain unverified.
 
 | Attribute | Registered hard maximum | Interpretation / trap |
