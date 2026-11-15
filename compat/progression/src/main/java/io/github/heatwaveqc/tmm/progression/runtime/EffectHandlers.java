@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -31,7 +32,8 @@ public final class EffectHandlers {
         "blink","catch_arrows","armor_lock","reserved_fist","water_breathing",
         "purification","faction_neutrality","creeper_peace","treasure_hand",
         "glass_touch","hunger_discipline","monk_leap","withering_stare",
-        "water_walk","momentum_glide","blindness_ordeal","lava_protection");
+        "water_walk","momentum_glide","blindness_ordeal","lava_protection",
+        "evasion","fast_hands");
     private static final Map<String,Handler> CUSTOM = new HashMap<>();
 
     public interface Handler {
@@ -48,6 +50,8 @@ public final class EffectHandlers {
                           Definition.Effect effect, int rank) {}
         default void foodConsumed(ServerPlayer player, ItemStack food,
                                   Definition.Effect effect, int rank) {}
+        default void useTick(ServerPlayer player, LivingEntityUseItemEvent.Tick event,
+                             Definition.Effect effect, int rank) {}
         default void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event,
                                     Definition.Effect effect, int rank) {}
         default void blockDrops(ServerPlayer player, BlockDropsEvent event,
@@ -106,6 +110,9 @@ public final class EffectHandlers {
     }
     public static void foodConsumed(ServerPlayer player, ItemStack item) {
         dispatch(player,(h,e,r) -> h.foodConsumed(player,item,e,r));
+    }
+    public static void useTick(ServerPlayer player, LivingEntityUseItemEvent.Tick event) {
+        dispatch(player,(h,e,r) -> h.useTick(player,event,e,r));
     }
     public static void entityInteract(ServerPlayer player, PlayerInteractEvent.EntityInteract event) {
         dispatch(player,(h,e,r) -> h.entityInteract(player,event,e,r));
