@@ -33,7 +33,7 @@
         "id": "tmm_magic_reservoir",
         "label": "Reservoir",
         "effect": "Max eligible personal resource capacity; not machine tanks",
-        "method": "Existing 99-rank preview; native attributes/adapters",
+        "method": "Existing five-rank base preview; native attributes/adapters",
         "status": "proposal_or_preview_only",
         "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
@@ -42,7 +42,7 @@
         "id": "tmm_magic_wellspring",
         "label": "Wellspring",
         "effect": "Personal resource regeneration; never passive world generators",
-        "method": "Existing 99-rank preview; native attributes/adapters",
+        "method": "Existing five-rank base preview; native attributes/adapters",
         "status": "proposal_or_preview_only",
         "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
@@ -51,7 +51,7 @@
         "id": "tmm_magic_thrift",
         "label": "Thrift",
         "effect": "Real positive-cost reduction for personal casts, with floor and cross-mod dedupe",
-        "method": "Existing 99-rank preview; debit-event adapters",
+        "method": "Existing five-rank base preview; debit-event adapters",
         "status": "proposal_or_preview_only",
         "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
@@ -60,7 +60,7 @@
         "id": "tmm_magic_potency",
         "label": "Potency",
         "effect": "Scalable offensive/healing magic effect, damage-tag and owner aware",
-        "method": "Existing 99-rank preview; native attributes/context",
+        "method": "Existing five-rank base preview; native attributes/context",
         "status": "proposal_or_preview_only",
         "proposed_tiers": "base I: five 20%-of-previous-ceiling ranks; advanced specialty bands optional after balance review",
         "prerequisite_rule": "one purchased rank of immediately prior tier for tier II+; exact IDs deferred until integration"
@@ -119,7 +119,8 @@
     "notes": [
       "Initial existing preview: four base five-rank files Reservoir/Wellspring/Thrift/Potency; do not create an incompatible second set.",
       "Keep approved per-mod MXP cost normalization separate from actual resource discounts.",
-      "No mod-specific free magic-school tree; effects apply only if compatible mechanics exist."
+      "No mod-specific free magic-school tree; effects apply only if compatible mechanics exist.",
+      "Five-tier power budget and 5/10/25/50 standard level caps are assigned in nine-tree-strength-first-pass-v1.json; original form node rank_model guesses superseded."
     ]
   },
   "forms": [
@@ -872,7 +873,7 @@
     {
       "id": "tmm_vampire",
       "title": "Vampire",
-      "requires": "unified vampire state recognized by transformation bridge; retains both native provider progressions",
+      "requires": "JAWR-only vampire state and progression; no TeamLapen second provider",
       "identity": "Blood economy, predatory stealth and undead survival",
       "lanes": [
         {
@@ -1107,13 +1108,14 @@
       },
       "notes": [
         "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
-        "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently."
+        "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.",
+        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems."
       ]
     },
     {
       "id": "tmm_werewolf",
       "title": "Werewolf",
-      "requires": "unified werewolf/lycanthrope state; exact physiology owner remains unselected",
+      "requires": "JAWR-only lycanthrope state and progression; no TeamLapen Werewolves physiology",
       "identity": "Exceptional max hearts and physical health regeneration, feral melee, and strong nature magic synergy.",
       "lanes": [
         {
@@ -1349,7 +1351,8 @@
       "notes": [
         "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
         "Natural form-change progression remains native, not purchased again in Tyz.",
-        "Werewolf regen means HEALTH regeneration, not passive magic regeneration."
+        "Werewolf regen means HEALTH regeneration, not passive magic regeneration.",
+        "Future owner is JAWR alone; Vampirism and Werewolves mods are queued for retirement after standalone Monk/Hunter migrations. Do not preserve old worldgen, minions, raids or lord systems."
       ],
       "design_requirements": {
         "source_gates": "Use actual server-authoritative transformation state, not class label or rendered form",
@@ -1608,7 +1611,7 @@
     {
       "id": "tmm_hunter",
       "title": "Hunter",
-      "requires": "verified Vampirism hunter faction; mutually exclusive with supernatural states",
+      "requires": "verified standalone Hunter mod progression; do not assume mutually exclusive with other transformations without a separate compatibility decision",
       "identity": "Anti-undead/demon/fae apex monster-slayer; best combat upgrades, robust survival and equipment conservation, virtually no spell-stat growth",
       "lanes": [
         {
@@ -1856,7 +1859,7 @@
     {
       "id": "tmm_monk",
       "title": "Monk",
-      "requires": "valid tmm_monk native faction plus equipment-discipline condition on use; tier licenses from native Monk tree",
+      "requires": "verified standalone Monk native faction and equipment discipline, not Vampirism host",
       "identity": "Unarmed martial arts, unarmored body, motion and hand-harvest specialization",
       "lanes": [
         {
@@ -1893,10 +1896,10 @@
               }
             },
             {
-              "id": "tmm_monk_spirit_bolt_mastery",
+              "id": "tmm_monk_unarmed_precision",
               "stage": "mastery",
-              "label": "Spirit Bolt Mastery",
-              "effect": "Boost native spirit projectile after its native rank-6 license, not duplicate its unlock.",
+              "label": "Empty-Hand Precision",
+              "effect": "Improve real unarmed strike precision after native martial license. No innate Monk projectile; ranged spellcasting uses Ars Nouveau and Iron's.",
               "method": "native-spirit projectile hook",
               "status": "concept_only",
               "prerequisites": [
@@ -2071,7 +2074,7 @@
         "id": "tmm_monk_capstone",
         "prerequisite_rule": {
           "any_one": [
-            "tmm_monk_spirit_bolt_mastery",
+            "tmm_monk_unarmed_precision",
             "tmm_monk_fire_blast_tempering",
             "tmm_monk_glide_control",
             "tmm_monk_looting_palm"
@@ -2092,7 +2095,8 @@
       "notes": [
         "Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills.",
         "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
-        "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks."
+        "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
+        "Owner explicitly vetoed spirit projectile; first hotbar slot dedicated fist and free armor toggle are native/non-purchasable; native Treasure Hand is one Fortune/Silk Touch toggle."
       ]
     }
   ],
@@ -2100,9 +2104,9 @@
     "archlich": "one lich category",
     "dracolich": "one dragon species plus one lich category",
     "abomination": "defer combined skill design until native physiology passes",
-    "hunter": "exclusive"
+    "hunter": "standalone Hunter spec determines coexistence; no inherited Vampirism exclusivity"
   },
-  "status_caveat": "All form nodes and capstones are conceptual; no live config or gameplay changed.",
+  "status_caveat": "Legacy conceptual candidate names only; detailed 2026-11-15 strength, caps, and provider ownership in docs/tyzs/nine-tree-strength-first-pass-v1.json. NO new abilities are live.",
   "dependency_contract": {
     "entry": "form eligibility only",
     "advanced": "at least 1 rank of same-lane entry node plus verified native mid-stage",
@@ -2200,5 +2204,7 @@
       "to": "tmm_dragon_forest",
       "reason": "Forest-specific animal raising/breeding"
     }
-  }
+  },
+  "balance_model_current": "docs/tyzs/nine-tree-strength-first-pass-v1.json",
+  "source_retirement_architecture": "JAWR-only vampire/wolf physiology; standalone Hunter/Monk; no TeamLapen provider for future"
 }
