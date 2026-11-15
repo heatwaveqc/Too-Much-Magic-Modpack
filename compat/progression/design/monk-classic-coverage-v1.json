@@ -262,12 +262,16 @@
     {
       "classic_id": "lava_protection",
       "original_default": true,
-      "native_skill_ids": [],
-      "status": "missing_effect_handler",
-      "auto_ranks": [],
+      "native_skill_ids": [
+        "tmm_progression:lava_protection"
+      ],
+      "status": "handler_partial",
+      "auto_ranks": [
+        12
+      ],
       "native_only": true,
       "tyz_required": false,
-      "code_or_qa_gap": "Cannot represent distinct contextual lava entry protection without new Java handler. Generic second lava damage_multiplier would double-dip fire reduction, so no fake/no-op skill added.",
+      "code_or_qa_gap": "Shared core now registers native lava_protection at rank12. Current implementation halves lava damage when player is not yet burning, but generic #minecraft:is_fire reduction also applies to lava; this double-stacks mitigation and does not implement the original brief Fire Resistance/extinguish interaction. Server/client QA and one-owner damage arbitration remain outstanding.",
       "source_legacy_stage": "12"
     },
     {
@@ -431,8 +435,8 @@
     {
       "code": "MONK-LAVA-01",
       "priority": "high",
-      "scope": "new per-fluid conditional protection",
-      "requirement": "Create registered native lava-specific handler or safe damage/ignition condition semantics without stacking another general fire reduction on the same lava damage instance; then add auto_ranks:[12] JSON skill."
+      "scope": "Existing native lava handler semantics and double mitigation",
+      "requirement": "Core now registers a rank-12 lava_protection handler. Reconcile its fresh-lava half damage against simultaneous #minecraft:is_fire damage_multiplier; original conditional extinguish/brief Fire Resistance still missing. Keep one credited protection route per damage, no permanent blanket lava immunity."
     },
     {
       "code": "MONK-HARVEST-02",
@@ -497,10 +501,12 @@
   ],
   "validation_requirements": [
     "Load active monk.json with PathJson.read; no unknown effect types or invalid auto rank sequences.",
-    "Exactly 25 classic IDs mapped from design target; all but lava_protection have real auto-granted native IDs.",
+    "Exactly 25 classic IDs mapped from design target; all 25 now have native auto-granted IDs, but source-faithful behavior is not yet all implemented.",
     "All native baseline grants cost 0, are not choice-gated and have no Tyz requirements.",
     "Native hand-break speed is not limited to pickaxe tags; tier rules include pickaxe, axe, shovel.",
     "Do not confuse parser-accepted JSON with working, protected, in-game parity.",
     "Both First Sunset and Dragon-earned Momentum Glide must be checked in disposable client and server."
-  ]
+  ],
+  "native_coverage_count": 25,
+  "engine_overlap_warning": "Lava protection was added concurrently to PR #127 and is now in JSON. This does not equal source-faithful behavior until fire+lava overlap and extinguish are resolved."
 }
