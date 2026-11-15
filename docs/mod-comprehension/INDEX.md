@@ -215,7 +215,11 @@ No reports yet. Create one Markdown file per *specific, actionable interaction* 
 
 None yet. The [handoff directory](handoffs/README.md) holds source-backed design recommendations, not implemented quest content or approved recipe patches.
 
-## Methodology improvements collected\n\nProposals from research runs are logged in [METHODOLOGY-IMPROVEMENTS.md](METHODOLOGY-IMPROVEMENTS.md); they do not change the operating contract.\n\n## Session notes / next pickup
+## Methodology improvements collected
+
+Proposals from research runs are logged in [METHODOLOGY-IMPROVEMENTS.md](METHODOLOGY-IMPROVEMENTS.md); they do not change the operating contract.
+
+## Session notes / next pickup
 
 - 2026-11-15 — Research framework initialized; Ars Nouveau now has a source-backed profile. The exact pin is documented; no in-pack gameplay test has been performed.
 - 2026-11-15 — Added [methodology improvement proposals](METHODOLOGY-IMPROVEMENTS.md) based on source/version gaps, typed I/O contracts, falsifiable tests, renewable-loop economics, addon boundaries and quest-task observability. Suggestions are not policy changes.
