@@ -164,43 +164,22 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     for i, title in enumerate(skills):
         put("Skills & Advancement", title, (i % 3) * 4, 4 + (i // 3) * 4)
 
-    tech = "Exceptional Power: Reactors"
+    tech = "Magical Power & FE"
     put(tech, "Chapter Overview", 0, 0)
     put(tech, "Tech Overview: Energy Without a Tech Pack", 4, 0)
-    nuclear = [
-        "Read the Reactor Guide", "Prepare Uranium Fuel", "Prepare Graphite Moderators",
-        "Lay the Reactor Casing", "Set Up Fuel Rods", "Install a Control Rod",
-        "Add the Reactor Terminal", "Fit the Fuel Access Port", "Fit the FE Power Tap",
-        "Assemble and Start a Bigger Reactor", "Recover Cyanite Waste",
-        "Build the Industrial Processor",
-    ]
-    nuclear_coords = [
-        (0, 4), (3, 4), (6, 4), (9, 4), (9, 8), (6, 8),
-        (3, 8), (0, 8), (0, 12), (3, 12), (6, 12), (9, 12),
-    ]
-    for title, xy in zip(nuclear, nuclear_coords, strict=True):
-        put(tech, title, *xy)
-    battery = [
-        "Build a Battery Shell", "Install Battery Cells", "Install the Battery Terminal",
-        "Give the Battery Two Ports", "Operate the Nuclear Battery",
-    ]
-    for title, xy in zip(battery, [(0, 18), (3, 18), (6, 18), (9, 18), (9, 21)], strict=True):
-        put(tech, title, *xy)
-    put(tech, "Try a Steam Turbine", 0, 22)
-    put(tech, "Try a Heat Exchanger", 3, 22)
     energy = [
         "Craft a Draconic Generator", "Craft the Draconic Energy Core",
         "Prepare Energy Core Stabilizers", "Build Input and Output Pylons",
         "Activate the Draconic Power Bank", "Route FE with a Crystal",
     ]
-    for title, xy in zip(energy, [(0, 28), (3, 28), (6, 28), (9, 28), (9, 32), (6, 32)], strict=True):
+    for title, xy in zip(energy, [(0, 4), (3, 4), (6, 4), (9, 4), (9, 8), (6, 8)], strict=True):
         put(tech, title, *xy)
     reactor = [
         "Regulate Power with a Flux Gate", "Acquire the Draconic Reactor Core",
         "Four Reactor Stabilizers", "Build the Reactor Energy Injector",
         "Plan Safe Reactor Containment", "Operate a Draconic Reactor Safely",
     ]
-    for title, xy in zip(reactor, [(0, 38), (3, 38), (6, 38), (9, 38), (9, 42), (6, 42)], strict=True):
+    for title, xy in zip(reactor, [(0, 14), (3, 14), (6, 14), (9, 14), (9, 18), (6, 18)], strict=True):
         put(tech, title, *xy)
     return result
 
@@ -213,7 +192,7 @@ SUBTITLE = {
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
     "Skills & Advancement": "Pufferfish skills, attributes and Improvable Skills progression.",
-    "Exceptional Power: Reactors": "Complete FE tech: nuclear reactor, storage, power bank and Draconic Reactor.",
+    "Magical Power & FE": "Magical FE sources, Draconic storage and endgame reactor.",
 }
 
 

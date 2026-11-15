@@ -9,7 +9,8 @@
 	order_index: 4
 	progression_mode: "flexible"
 	quest_links: [ ]
-	quests: [		{
+	quests: [
+		{
 			id: "544D302000500001"
 			icon: { id: "minecraft:redstone_block" }
 			optional: true
