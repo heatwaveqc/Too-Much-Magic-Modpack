@@ -5,6 +5,7 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterExperience;
+import io.github.heatwaveqc.tmm.progression.runtime.HunterMutations;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.commands.Commands;
@@ -58,6 +59,12 @@ public final class ProgressionCommands {
                                 success ? "Skill rank purchased" : "Skill purchase blocked"),false);
                             return success ? 1 : 0;
                         }))))
+            .then(Commands.literal("mutations")
+                .executes(ctx -> {
+                    ServerPlayer player = ctx.getSource().getPlayerOrException();
+                    ctx.getSource().sendSuccess(() -> Component.literal(HunterMutations.summary(player)),false);
+                    return 1;
+                }))
             .then(Commands.literal("specialty")
                 .then(Commands.literal("list")
                     .executes(ctx -> {
