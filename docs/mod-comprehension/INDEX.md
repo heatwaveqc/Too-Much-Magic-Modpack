@@ -117,7 +117,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `kubejs` | KubeJS | infrastructure | enabled flag | full | queued | — |
 | `puffish-skills` | Pufferfish's Skills | infrastructure | enabled flag | focused | queued | — |
 | `replication` | Replication | late_ore | enabled flag | full | queued | — |
-| `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | queued | — |
+| `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | source-complete | [profile](mods/ars-nouveau.md) |
 | `astral-sorcery` | Astral Sorcery | magic | enabled flag | full | queued | — |
 | `botania` | Botania | magic | inactive | full | deferred | — |
 | `botania-revived` | Botania Revived | magic | enabled flag | full | queued | — |
@@ -215,7 +215,9 @@ No reports yet. Create one Markdown file per *specific, actionable interaction* 
 
 None yet. The [handoff directory](handoffs/README.md) holds source-backed design recommendations, not implemented quest content or approved recipe patches.
 
-## Session notes / next pickup
+## Methodology improvements collected\n\nProposals from research runs are logged in [METHODOLOGY-IMPROVEMENTS.md](METHODOLOGY-IMPROVEMENTS.md); they do not change the operating contract.\n\n## Session notes / next pickup
 
-- 2026-11-15 — Research framework initialized. Every manifest row is **unresearched**; no code inspection, mod tests or cross-mod claims are being asserted here.
-- **Next action:** choose `ars-nouveau`, `occultism`, or `neovitae` (or another high-urgency workstream). Inspect exact packwiz pin, upstream docs and, if available, matching artifact/source. Deliver one deep profile with a useful low-cost setup, evidence and questions; update its table row.
+- 2026-11-15 — Research framework initialized; Ars Nouveau now has a source-backed profile. The exact pin is documented; no in-pack gameplay test has been performed.
+- 2026-11-15 — Added [methodology improvement proposals](METHODOLOGY-IMPROVEMENTS.md) based on source/version gaps, typed I/O contracts, falsifiable tests, renewable-loop economics, addon boundaries and quest-task observability. Suggestions are not policy changes.
+
+- **Next action:** continue with `occultism` (rank 2), reconcile its exact pin and inspect the source before profiling storage, ore processing and entity labor. Check for open research branches first.
