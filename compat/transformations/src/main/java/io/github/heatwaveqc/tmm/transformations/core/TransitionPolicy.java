@@ -77,14 +77,12 @@ public final class TransitionPolicy {
                         "Voluntary hunter replacement; clear the faction before applying the new state");
             }
             case ABOMINATION_RITUAL -> {
-                if (from != ARCHLICH || to != ABOMINATION || removed
-                        || !after.present(ProviderState.GOETY_LICH)
-                        || !after.present(ProviderState.FORBIDDEN_MAGIC_LICH)) {
+                if ((from != VAMPIRE && from != WEREWOLF) || to != ABOMINATION || removed) {
                     yield TransitionDecision.deny(from, to,
-                            "Abomination ritual requires Archlich and both existing lichdoms retained");
+                            "Abomination ritual requires an existing vampire or werewolf, both parent states, and no removals");
                 }
                 yield TransitionDecision.allow(from, to,
-                        "Abomination requires atomic vampire+werewolf acquisition, never invalid intermediate states");
+                        "Explicit vampire/werewolf hybridization permitted; JAWR native hybrid behavior awaits verification");
             }
         };
     }

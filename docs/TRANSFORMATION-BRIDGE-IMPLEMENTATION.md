@@ -13,7 +13,7 @@ matrix is historical research. The owner's later target decisions govern this wo
 - Werewolf: common base physiology with Werewolves and JAWR branches.
 - Lich: Goety or Forbidden Magic.
 - Archlich: both lich systems.
-- Abomination: vampire + werewolf + both lichdoms, with custom progression.
+- Abomination: vampire + werewolf (both source families, with independent progressions), no lich prerequisite; planned custom progression. Unreviewed lich stacking remains blocked. Original Witchery hybrid behavior is documented, but JAWR 0.5.39 native hybrid behavior still requires binary or gameplay verification.
 - Dragon: dragon physiology, no vampire, werewolf, hunter or abomination.
 - Dracolich: dragon plus **one** lichdom, never archlich.
 

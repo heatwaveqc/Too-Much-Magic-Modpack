@@ -32,7 +32,9 @@ public final class FormResolver {
             return liches == 1 ? EffectiveForm.DRACOLICH : EffectiveForm.DRAGON;
         }
         if (vampire && werewolf) {
-            return liches == 2 ? EffectiveForm.ABOMINATION : EffectiveForm.CONFLICT;
+            // A vampire/werewolf hybrid is Abomination by species, without any lich prerequisite.
+            // Lich stacking onto this hybrid is not approved and remains a conflict.
+            return liches == 0 ? EffectiveForm.ABOMINATION : EffectiveForm.CONFLICT;
         }
         if (vampire || werewolf) {
             if (liches > 0) {

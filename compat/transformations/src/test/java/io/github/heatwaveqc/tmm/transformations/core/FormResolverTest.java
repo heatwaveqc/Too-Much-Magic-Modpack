@@ -34,15 +34,21 @@ class FormResolverTest {
         assertEquals(EffectiveForm.DRACOLICH, FormResolver.resolve(fullyObserved(DRAGON_SURVIVAL_DRAGON, FORBIDDEN_MAGIC_LICH)));
     }
 
-    @Test void abominationRequiresAllFourBaseFamilies() {
+    @Test void abominationIsVampirePlusWerewolfWithoutLichdom() {
         assertEquals(EffectiveForm.ABOMINATION, FormResolver.resolve(fullyObserved(
-                VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF, GOETY_LICH, FORBIDDEN_MAGIC_LICH)));
+                VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF)));
+        assertEquals(EffectiveForm.ABOMINATION, FormResolver.resolve(fullyObserved(
+                JAWR_VAMPIRE, JAWR_LYCANTHROPE)));
+        assertEquals(EffectiveForm.ABOMINATION, FormResolver.resolve(fullyObserved(
+                VAMPIRISM_VAMPIRE, JAWR_VAMPIRE, WEREWOLVES_WEREWOLF, JAWR_LYCANTHROPE)));
     }
 
     @Test void illegalCombinationsFailClassification() {
         assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(VAMPIRISM_HUNTER, GOETY_LICH)));
         assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(DRAGON_SURVIVAL_DRAGON, GOETY_LICH, FORBIDDEN_MAGIC_LICH)));
-        assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF)));
+        assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF, GOETY_LICH)));
+        assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(
+                VAMPIRISM_VAMPIRE, WEREWOLVES_WEREWOLF, GOETY_LICH, FORBIDDEN_MAGIC_LICH)));
         assertEquals(EffectiveForm.CONFLICT, FormResolver.resolve(fullyObserved(JAWR_VAMPIRE, FORBIDDEN_MAGIC_LICH)));
     }
 }
