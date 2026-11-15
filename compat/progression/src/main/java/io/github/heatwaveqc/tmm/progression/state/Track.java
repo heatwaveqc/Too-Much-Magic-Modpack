@@ -1,7 +1,5 @@
 package io.github.heatwaveqc.tmm.progression.state;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,16 +8,6 @@ import java.util.Map;
 public record Track(boolean joined, long xp, int rank, int points,
                     Map<String, Integer> skills, List<String> milestones,
                     Map<String, Integer> counters) {
-    public static final Codec<Track> CODEC = RecordCodecBuilder.create(i -> i.group(
-        Codec.BOOL.fieldOf("joined").forGetter(Track::joined),
-        Codec.LONG.fieldOf("xp").forGetter(Track::xp),
-        Codec.INT.fieldOf("rank").forGetter(Track::rank),
-        Codec.INT.fieldOf("points").forGetter(Track::points),
-        Codec.unboundedMap(Codec.STRING, Codec.INT).fieldOf("skills").forGetter(Track::skills),
-        Codec.STRING.listOf().fieldOf("milestones").forGetter(Track::milestones),
-        Codec.unboundedMap(Codec.STRING, Codec.INT).fieldOf("counters").forGetter(Track::counters)
-    ).apply(i, Track::new));
-
     public Track {
         xp = Math.max(0, xp);
         rank = Math.max(0, rank);
