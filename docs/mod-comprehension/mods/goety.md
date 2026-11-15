@@ -1,0 +1,248 @@
+Warning: truncated output (original token count: 12475)
+Total output lines: 249
+
+# Goety — mechanics and gameplay profile
+
+| Field | Value |
+| --- | --- |
+| Manifest ID / actual mod ID | `goety` / `goety` |
+| Category / parent or addons | magic; related addon [Goety Cataclysm](goety-cataclysm.md) |
+| MC / loader / pack target | 1.21.1 / NeoForge / TMM integration snapshot `f84ffd51cad6e6eb8f05ed9456123ccf394812e6` |
+| Pinned version / artifact / hash | `mods/goety.pw.toml`; Goety 3.2.2; Modrinth version `xLTYSsZD`; SHA-512 `d68103012faad1b74cf96017aa22711d80033d04035e98e5452f4f70d6fbc30c6523b4d3f561fedba798e116055caf598432b472b13e8a11dca07d00468b8b46` |
+| Source snapshot | `Vivideru/Goety-3`, commit `7fdffc0b4f07aaa79d333ac1791444506b7d037f`; declares `mod_version=3.2.2`; all 15,531 source resource files in the pinned JAR matched byte-for-byte |
+| Guide/documentation version gap | Black Book/witch brewing guide entries are bundled in the exact JAR and matching source. No substantive version gap; the live book and pack worldgen are not client-tested. |
+| Profile status | researching |
+| Reviewed | 2026-11-15 |
+| Evidence reached | exact pinned JAR hash verified; matching source version and resource equality verified; no TMM client/world test |
+| Quest ownership | `config/ftbquests/quests/chapters/goety.snbt`; one optional generic checkmark, 2 XP + paper |
+
+## Executive gameplay map
+
+**What the player actually does:** study the Black Book and make a Totem of Roots, then carry it in the hotbar or a Curios charm slot while killing eligible creatures to harvest Soul Energy. The small early totem supplies soul-powered component crafting; amethyst plus any valid totem can make four Empty Foci. Lapis, gold, string and wood turn that start into Magic Fabric and a Dark Wand, whose focus is the actual spell selection. Soul Energy also fuels wand spells, servants, healing, crafting stations, Artifices and Dark Altar rituals. The Dark Altar needs an energy-bearing Cursed Cage directly below it; qualifying blocks and pedestal offerings within its radius determine the recipe or summon, and the cage pays over the ritual's duration. Optional branches add brewing through Witch's Brew and its cauldron, many themed spell focus families, structures and minibosses, and the terminal Lich/Arca route. The 3.2.2 guide includes several hundred entries across introduction, crafts, focuses, rituals, summons, mutations, structures and bestiary topics.
+
+**Why it matters in TMM:** Goety is a broad combat and minion school funded by mob deaths. Its soul economy has two distinct storage modes: portable totems and, after Arca activation, a player Soul Energy capability. Its rituals, minions, and focus combat offer a progression-rich route with direct structure/boss content; this can overlap heavily with JAWR, Iron's Spells, Cataclysm and the future Goety Cataclysm addon. Resource reward per mob, Soul Eater, summoned servants and soul-powered machines are balance/automation surfaces, not just flavor.
+
+**Quick start:** craft or obtain the Black Book; craft the Totem of Roots from wooden rods, lapis and Ectoplasm; keep it in the hotbar or a charm slot while killing soul-yielding mobs; craft Empty Foci and spell ingredients; make the Dark Wand and slot a Focus (default key `Z`). Follow JEI and the Black Book for the next components and the Cursed Infuser; later craft a Cursed Cage, feed it a charged Totem, and place a Dark Altar directly above it. The Black Book recipe is conditional on Patchouli, which TMM has. [pin] [jar: SHA512] [source: 7fdffc0]
+
+### Player-value snapshot
+
+| Five standout capabilities | Three genuinely early practical unlocks | Three candidate integrations |
+| --- | --- | --- |
+| 1. Focus-based spells cast from wands/staves 2. Soul-funded undead, elemental and illager servant roster 3. Dark Altar item/summon/enchanting rituals 4. Witch's Brew potion system 5. Lich transformation, Arca death return, and soul-powered Artifices | 1. Totem of Roots stores early soul charge (default 100 capacity from source's `maxSouls/100`) 2. Empty Foci and Dark Wand unlock spell experimentation 3. Cursed Infuser above a vanilla spawner produces listed components without directly burning player Soul Energy | 1. Goety Cataclysm unlocks Cataclysm boss-derived powers and materials (separate profile) 2. Goety's soul-yield data includes TMM mod entities, but exact values/compat conditions need targeted audit 3. Goety ritual/brewing outputs may affect the progression and farming economy; every cross-mod recipe/loot route needs gate review |
+
+### Subsystem coverage at a glance
+
+| Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
+| --- | --- | --- | --- | --- | --- |
+| Black Book and early soul pipeline | [pin] [jar: SHA512] [source: 7fdffc0] | strong for first steps; all item recipe/loot sources not reconciled yet | Black Book: First Steps; JEI | not run | test guide recipe, soul bar and real per-mob yield |
+| Wands, foci, robes and spells | [source: 7fdffc0] | partial; hundreds of focus/focus-effect combinations | Black Book: Focuses, Garments, Crafts; JEI | not run | map all focus families and user/keybind/UI behavior in game |
+| Cursed Infuser / components | [jar: SHA512] [source: 7fdffc0] | partial; source rules and representative route mapped, full recipe families not individually listed | Black Book: Cursed Infusion; JEI Cursed Infuser | not run | inspect enabled recipes, duration, input/output automation and pack gates |
+| Dark Altar ritual system | [source: 7fdffc0] | partial; structure, radius, energy use and ritual families mapped | Black Book: Rituals; JEI | not run | inventory all ritual recipes, costs, failure/refund semantics and entity outputs |
+| Servants, bosses, structures and mutations | [source: 7fdffc0] | partial; breadth mapped by guide categories, every entity/difficulty not audited | Summons, World, Bestiary and Mutations sections | not run | worldgen, AI/ownership, faction, death and reward testing |
+| Witch's Brew | [source: 7fdffc0] | partial; separate guide has eight English entries; recipe ecosystem vast | Witch's Brew Patchouli book; JEI | not run | map entry/augments, capacity, energy, outputs and item/fluid interfaces |
+| Lichdom / Arca | [source: 7fdffc0] | partial; guide and death predicates reviewed, complete acquisition chain not proven | Black Book secret Lich entry and Arca craft entry | not run | source-map prerequisites and test Soul Energy loss/resurrection boundaries |
+
+## Guidebook onboarding — required before the player's first complex step
+
+- **Guide name and access:** The Black Book (Patchouli `goety:black_book`) is crafted shapelessly from a vanilla Book plus any item in `goety:black_book_craft`; the recipe only loads when Patchouli is installed. TMM pins Patchouli. Goety's `starterBook` config defaults false, so teach the player to craft it; TMM has no tracked Goety config override. A separate Witch's Brew guide has its own craft path. [jar: SHA512] [source: 7fdffc0]
+- **Earliest attainable stage:** the tag-ingredient for the Black Book and the book itself are established by JEI; the player need not first complete the wand progression to open the book. The Totem of Roots is the explicitly described first-step craft.
+- **First instructional quest:** craft and open the Black Book, then make the Totem of Roots, place it in hotbar/charm, and collect a small amount of Soul Energy through eligible kills. State which mobs are excluded (owned summons and most non-enemy babies) and explain the soul meter.
+- **Reference map:** First Steps → On the Dark Arts, Soul Energy, Magical Components, Cursed Infusion, Magical Fabrics, Dark Wand, Miscellaneous. Then Crafting → Focuses/Garments/Artifices, Rituals → Performing Rituals and named ritual categories, Summons, Mutations, World/Bestiary. The separate Witch's Brew book covers Getting Started, Station, Cauldron, Catalysts, Capacity, Brewing Steps, Brew Bag and Augmentation. [docs/source: 3.2.2]
+- **Where guide is insufficient:** the Black Book is extensive but does not make the true player-vs-portable energy distinction easy to notice, and some technical ritual effects require JEI for exact ingredient costs. The guide explains selected rituals/builds but not every condition/failure consequence. Quest text should explicitly teach energy flow, the cage-under-altar arrangement, radius, pedestal order, XP requirements and dangerous summons.
+- **Other in-game help:** JEI is recommended upstream and needed to inspect the very broad recipe registry. The Black Book has multi-step crafting pages and ritual multiblock diagrams; the Dark Altar supports an in-game radius visualization by empty-hand sneak right-click.
+
+## Systems and full mechanics inventory
+
+| Subsystem | How accessed | Inputs + costs | Effects / outputs | Limits, failure conditions and source |
+| --- | --- | --- | --- | --- |
+| Black Book | crafted shapelessly with vanilla Book + `goety:black_book_craft` tag ingredient; requires Patchouli | item inputs consumed by crafting | 412 English Patchouli entry/category JSON files in the 3.2.2 source book covering intro, crafts, rituals, focuses, summons, mutations, world and bestiary | not auto-given by default; exact tag members should be checked in pinned JAR/JEI |
+| Totem of Roots / Soul harvest | source recipe: wooden rods + lapis + Ectoplasm; store in hotbar or Curios charm | eligible kill awards mob-specific Soul Energy; `SEHelper.getSoulGiven` reads `goety:soul_taken` overrides then mob classifications/config; owner-bound summons and baby non-enemies excluded | portable charge supports recipes and spells; default maximum is 100 (derived from default max 10,000 / 100) | source config default `maxSouls=10000`; only one totem is selected by finder, priority Curios then offhand then hotbar slots 0–9; amount per entity varies and must be audited |
+| Totem of Souls | crafted from Magic Emeralds, gold, Soul Lantern and lapis after component branch | portable totem holds default 10,000 Soul Energy; used as energy source | larger portable soul store; at full charge can prevent death if in Curios/hotbar/offhand while enabled in config | crafting recipes consume charge, leaving a remaining totem with `ItemConfig.CraftingSouls` removed when still above threshold; exact cost varies by config/recipe |
+| Dark Wand and spell casting | Magic Fabric + Empty Focus + lapis + planks; insert focus via default `Z` focus-slot key; wand wheel selects spell/focus | Soul Energy equal to focus spell's computed cost; focus cooldown and wand restrictions; cost discounts from equipment/attributes | launches spell effects, summons/commands/area actions from the selected focus | spell may fail with insufficient energy/cooldown, absent focus, or unmet focus-specific conditions; no universal spell cost; interface/keybind client check outstanding |
+| Cursed Infuser | place block directly above vanilla spawner; one item slot; recipes loaded via custom Cursed Infuser serializer | one item per operation; source class accepts only non-Grim recipe via inventory automation; cooking time per recipe | consumes input and drops recipe result as item entity at infuser; recipes include component shortcuts such as one amethyst → one Empty Focus in 60 ticks | requires vanilla spawner underneath at all times; processing pauses and progress decays 2 ticks/tick when structure missing; output always dropped, not stored; automation input only, extraction disabled. Full recipe classes, timing and comparison to altar route remain to inventory |
+| Cursed Cage as soul buffer | craft cage, place Totem/Soul Transfer in cage | totem remains as embedded energy container; Dark Altar consumes cage energy over time | exposes stored soul count to the altar; supports soul-transfer/player Arca link as separate pathway | cage must be directly beneath Dark Altar per guide; no totem/linked source or empty charge means it cannot operate |
+| Dark Altar rituals | altar above Cursed Cage; pedestals nearby; radius default 8 blocks; add pedestal inputs first, then catalyst/item at altar | soul cost charged once per second in game-time cadence (each 20 ticks) while valid ritual progresses; some enchant rituals also remove player levels each 10 ticks; sacrifices / additional ingredients depend on ritual | item crafting, enchantment, entity summon or entity conversion depending on recipe; results can be inventory/item output, world spawn, or changed entity | ritual requires matching ingredient structure/radius, sufficient energy, valid player/caster and required sacrifices. Code charges soul before ritual update/extra ingredient step; interruption/failure semantics must be fully traced per ritual before describing refunds. Ingredient loading order is important. |
+| Ritual families | Black Book Rituals: basic magic, necroturgy, divination, animation, geoturgy, frost, storm, overgrown, end, deep, sky, teleport, forge, enchanting, Sabbath, Nether tiers | recipe-specific pedestal items, environment/structure requirements, altar blocks and Soul Energy; some need an XP player | components, weapon/armor crafting, upgrades, teleportation, minions/creatures, conversions, enchanting | all recipes and source ritual predicates not exhaustively enumerated in this profile; do not infer a guide illustration means all inputs are consumed or all entities are real sacrifices |
+| Dark Altar radius and pedestals | any tagged/qualifying blocks within configured 8-block radius; blocks not ordered | block counts/tags + pedestal item stacks and altar offering | satisfy recipe predicates and start effect | guide: blocks need not be in exact locations, only within radius; altar has toggleable visible range. Verify exact vertical/radius geometry from source for each recipe |
+| Witch's Brew | Witch cauldron + Witch's Brew guide; fill and combine brew ingredients/effects; Brew Bag supports ingredient storage/selection | water/cauldron capacity, ingredients, recipe-specific soul costs, brew catalysts/modifiers; entity targeting for some brews | potion/brew effect payload; can carry effects as thrown/applied items depending recipe | separate subsystem with own 8-entry book; need exact station placement, liquid/unit, batch yield, fuel and failure-cost inventory |
+| Servants and minions | summon spells/rituals, summon items or structures as specified | Soul Energy for summon spell; ongoing healing may use 1 soul/sec for many servant families by default; some servants require commands/focus interactions | persistent allied mob with owner, combat/support behavior, equipment and sometimes special task/transport/harvest use | AI, upkeep, despawn/death, cap, chunk unload and no-friendly-fire are per entity type. Some servants return Soul Energy to owner on kill depending config/armor; test by family |
+| Artifices and soul appliances | craft items such as Soul Mender, Animator, Plinth, Soul Absorber, Sculk Grower, etc. | many consume player/cage Soul Energy; source config contains costs such as Animator distance cost, Shrine/Obelisk/repair values | buffs, item repair, block conversion, summons/transport, protection or resource processing | machine-specific cadence/ownership/ranges; resource draw and redstone/automation behavior are not all mapped |
+| Lich path | secret Black Book entry after `goety:goety/become_lich` advancement; Arca and lich-specific unlock path | ritual/item prerequisites; Soul Energy reserved/consumed by heal/death recovery; sunlight/helmet and form mechanics | undead player state, hunger changes, soul-powered healing and Arca-linked death return | guide says no Hunger/Saturation/Poison/Regeneration effects; sun vulnerability unless helmet or Fire Resistance; healing effects harm, harming effects heal; death return amount and lich-retention rules depend config and Arca/soul state |
+| Arca / advanced Soul Energy | construct/activate Arca via terminal progression; establish player Soul Energy capability and bind it to Arca | source defaults `MaxArcaSouls=100000`, Arca max capacity; death return consumes `MaxSouls=10000` in inspected path; Arca range/location mechanics | persistent player resource powers later rituals and can return player to linked Arca on fatal damage | full unlock sequence and exact item location/range requirements require a stage-by-stage source check; death semantics vary between lich/non-lich and config flags |
+| Structures, mobs and bosses | generated graveyards, Blighted Shacks, Dark Manors, Crypts, Black Assemblies, Wind Shrines, Sorcerous Keeps, etc.; guide Bestiary | exploration, combat; several boss miniboss loot/advancement triggers | rare components, scrolls, servant access, boss summons and world changes | distribution and Tectonic/structure-mod interactions untested; Goety uses a Wind Shrine jigsaw redirect mixin that has a reported conflict with Structure Layout Optimizer (not installed in TMM at current roster check) |
+| Data-driven definitions / interop | recipes, `soul_taken`, loot, tags, biome/worldgen, advancements and optional-mod integration conditions | registry items/entities/tags/config; resource reload | new rituals, souls per mob, recipes, structures, loot and compatibility routes | source contains many compatibility assets for optional mods; conditional recipe/loot conditions must be confirmed against installed IDs, not assumed active |
+
+### Material / capability input-output contracts
+
+| System | Input kind + exact ID/tag/event | Input qty/formula; consumed/remainder | Output kind, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
+| --- | --- | --- | --- | --- | --- |
+| Mob Soul Energy | entity death event, killer/player/owned servant; per-mob `goety:soul_taken` JSON or configured mob category | `floor(getSoulGiven(victim) × soulEater multiplier) × SoulTakenMultiplier`; owner-bound servants can transfer to player if config/armor conditions permit | integer player Soul Energy or embedded Soul Container amount | one qualifying death; portable totem capacity default 100 early / 10,000 Totem of Souls; Arca capacity 100,000 | event hook + data resource; must record exact TMM entity IDs and `soul_taken` values before MXP/economy use |
+| Totem recipe payment | `ITotem` item as crafting ingredient | custom remainder decreases Soul Energy by configured `ItemConfig.CraftingSouls`; if not enough, source returns spent/empty remainder depending Totem subtype | crafted item; remaining charged totem if above threshold | crafting-grid operation | native remainder; exact cost per item/config is recipe-specific |
+| Cursed Infuser | one item stack accepted by `goety:cursed_infuser_recipes` recipe, block directly over `minecraft:spawner` | one item consumed; no FE/fluid/player soul cost in machine handler | result dropped as one or more item entities next to infuser | recipe cooking ticks; single slot, 1 input at a time; automation can insert non-Grim recipe inputs; cannot extract via face | source block entity; exact recipe count and in-pack interactions need test |
+| Dark Altar | pedestal/item inputs, ritual recipe, Cursed Cage totem or Soul Transfer/player pool | some ingredients consumed continuously/by ritual update; Soul Energy debit occurs once each second; XP levels paid in some enchanting rites | crafted items, enchantment on input, spawned entity, or transformed entity/block | 1 soul-cost charge per server tick interval of 20 ticks; radius default 8, configurable | native ritual serializer/code; classify spawned vs sacrifice/display inputs per recipe before quests |
+| Witch's Brew | items/effect recipes; brew ingredient/custom recipe data | item, capacity, soul cost and duration values recipe-defined | custom potion/brew effect as recipe says | cauldron/brew capacity; exact volume/cadence not captured yet | native machine and datapack serializers; full I/O audit pending |
+| Lich heal/death | player health/death event + soul capability/Arca or portable Totem | source default healing 1 health per configured second costs 5 souls per tick interval; fatal return uses 10,000 souls in source path, with variable lich retention behavior | restored health/teleport at Arca, or loss of lich state / normal death per settings and available energy | healing default 1 second cadence; `MaxSouls=10000`, `MaxArcaSouls=100000` | player capability/commands/events; no TMM resource integration established |
+| XP | player XP levels in some rites | levels consumed at one per 10-tick interval until ritual `getLevelCost` reached | enchantment or crafted result | recipe-specific | separate from Soul Energy; record both costs independently |
+| Fluids | Witch cauldron/brew system | recipe/station specific, unquantified in this pass | brew/effect payload | capacity-based likely; exact capacity and fluids need source extraction | do not claim universal fluid API or FE integration |
+| Entities and faction | ritual summon/conversion, focus spell, servant AI; `goety` entities and supported foreign entities | some rituals sacrifice entities, some spells create minions, some conversion recipes transform them | real mob/servant, changed mob, or drops; not a generic item output | spell/ritual/AI-specific | `MobUtil` ownership and faction allegiance must be audited against JAWR/Dragon/undead hostility map |
+
+### Acquisition, renewability and output economics
+
+- The early Totem of Roots is charged by eligible deaths and has a default 100 Soul capacity based on Goety's default `maxSouls=10000` and its Roots supplier formula. The Totem of Souls raises portable capacity to 10,000. Player capability/Arca is a later, distinct mode; do not collapse these into one meter.
+- Soul per kill is not constant. `soul_taken` data overrides mob-type fallbacks; classification branches include Undead, Arthropod, Animal, Illager, Villager/NPC, Piglin, Enderman, Player and default. Config also changes categories/multipliers. Owned summon kills are explicitly excluded at the basic amount function. TMM must audit all modded mobs to avoid accidental high-yield sources.
+- Totems are spent as crafting catalysts: recipe remainder logic debits configured soul amounts. A crafted result may leave a diminished Totem or spent Totem, so JEI recipe appearance does not reveal total cost.
+- Cursed Infuser requires an existing vanilla spawner and drops processed output at the block; it is not a storage machine. It processes one input at a time, cannot output by hopper face, and only allows non-Grim recipes through automation. Progress backs down when no spawner is beneath it.
+- Dark Altar, servants and Artifices create ongoing resource sinks. Death return and Lich healing can drain stored souls; some minion families heal at a default one soul per second. Exact summon upkeep/caps differ across entity classes.
+
+## Complete player progression / walkthrough blueprint
+
+**Completion test:** Goety is an open-ended catalogue with many independent focus/ritual families. A meaningful core completion path is: obtain the Black Book; craft/charge Totem of Roots; create a Dark Wand with a valid Focus; make a Cursed Infuser and use it over a spawner for a practical component; craft a Cursed Cage and Dark Altar; perform one low-risk item ritual; then optionally complete Witch's Brew, advanced focus branches, servant/structure/boss paths and Lich/Arca progression. The latter is a separate capstone and must not be presented as mandatory to basic wand use.
+
+| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0. Get/open Black Book | recommended first step | Patchouli; vanilla Book + item in `goety:black_book_craft` tag | craft and open `patchouli:guide_book` with `patchouli:book=goety:black_book…475 tokens truncated…ooldown and safe test; casting task needs a verified spell event | source recipe and guide; client pending |
+| 5. Improve storage/equipment | optional resource branch | Magic Emerald activation route; gold, lapis, Soul Lantern; recipes/tag-specific robes | make Totem of Souls and soul discount/utility apparel | 10,000 portable capacity and spell-cost modifiers | Magical Components, Magical Fabrics, Garments | explain recipe uses stored souls/remainder separately; task should not say simply craft equals free | source formulas/config; costs not fully extracted |
+| 6. Build Cursed Cage | ritual gate | Cursed Bars recipe + a charged Totem or soul-transfer connection | place cage; right-click with Totem to insert | energy buffer recognized by altar | Miscellaneous; JEI Cursed Cage | teach direct input and how to see stored souls; block possession alone not enough | source block/entity and guide |
+| 7. Build Dark Altar and pedestal | ritual gate | altar/pedestal recipe; cage directly below; enough souls | craft/place altar above cage; pedestal item offerings; sneak-right-click with empty hand to preview radius | altar detects qualifying ritual recipe | Rituals → Performing Rituals | guide vertical stack, 8-block radius, any block order, pedestal-first then altar item; require actual ritual success rather than item tasks | guide + source; exact radius geometry per predicate partly open |
+| 8. Perform first low-risk ritual | choose item recipe | matching ritual recipe/materials; valid altar/cage/player; energy for duration | load required pedestal inputs first; add altar offering; wait while checking energy | recipe-specific item output, enchantment, summon or conversion | named ritual entry / JEI | teach ingredients and failure/cost ordering; detector may need item output or manual check | code supports general engine; representative recipe only |
+| 9. Choose spell/servant/focus branches | optional breadth | family-specific Focus and Soul cost; scroll/structure/boss unlock as required | craft or obtain focus/robe; cast, summon and command servant; refill Soul storage | combat, movement, defense, utility and minion role | Focuses, Summons, Garments, Mutations | make one how-to per meaningful branch, not every optional focus; actual summon event/ownership needs detector audit | large catalog source-backed; interactions untested |
+| 10. Learn Witch's Brew | separate optional magic branch | Witch cauldron, brewing items and catalysts, separate guide | prepare cauldron/station; brew chosen effect; use Brew Bag/augmentation as learned | custom potion/effect | Witch's Brew guide pages; JEI | specific recipe how-to and volume/cost are needed after I/O audit | eight entry book; machine not fully mapped |
+| 11. Explore structures and bosses | optional exploration branch | Overworld/Nether/End generation; several discoveries/boss fights | find Black Assembly, shack, Dark Manor, Crypt, Wind Shrine, Sorcerous Keep, etc.; acquire drops/scrolls | advanced ingredients, minions, summons, lore | World and Bestiary; advancement tree | teach survival approach and exact site; don't promise structure exists in every seed | advancement sources + book; worldgen distribution untested |
+| 12. Become a Lich | advanced/capstone, optional | `goety:goety/become_lich` advancement and hidden item/ritual path; Arca contingency | follow secret guide and perform ascension; track Soul Energy/Arca | Lich state; undead status and altered hunger/healing/day effects | secret Caveats of Being a Lich; Arca craft entry | don't quest by granting skull/Arca; exact full prerequisite/action path must be source-mapped; explain risk of losing lichdom on death | guide and event code, unlock path partial |
+| 13. Establish Arca and test return | terminal optional path | Arca recipe, energy capability, placed/linked Arca and sufficient souls | build/bind Arca, fill energy, test controlled death return in disposable world | return to Arca; costs up to `MaxSouls` and varies by state/config | Arca and Lich guide entries | must explain death is destructive; use explicit manual test in disposable world, never reward the Arca or force-death quest | source defaults and predicates; live test not run |
+
+### Dependency graph and alternate routes
+
+`Black Book → Totem of Roots → kill-based Soul Energy → components + Empty Focus → Dark Wand + Focus → spell use`.
+
+Parallel route: `Totem charge + vanilla Spawner → Cursed Infuser component shortcut`.
+
+Ritual route: `charged Totem/Soul Transfer → Cursed Cage → Dark Altar directly above → nearby block/pedestal predicates → recipe / spell / summon / conversion`. The cage has no useful independent production; it is the altar's resource adapter. The altar can also draw from a linked player's Arca/Soul capability route, which must be documented separately. Witch's Brew is a parallel path. Lichdom and Arca are optional capstones; they change survival and death behavior and must not be conflated with ordinary Soul Energy use.
+
+## Structures, rituals, automation and other how-to instructions
+
+| Required setup | Placement/shape/activation and operating inputs | Guidebook page/JEI category to cite by name | Failure symptoms, throughput or maintenance | Quest where taught |
+| --- | --- | --- | --- | --- |
+| Cursed Infuser | vanilla spawner block immediately underneath; insert one valid non-Grim recipe item; item result drops on the ground | Cursed Infusion; Cursed Infuser recipe category | stops if spawner is removed; progress drains by two units per tick while disabled; hopper insertion can work if one input slot is empty but hopper output is disabled | proposed after server/client test |
+| Dark Altar rig | Cursed Cage at y-1; altar above; set charged totem in cage; place pedestals/qualifying blocks within 8 blocks by default | Performing Rituals; named ritual entry; JEI | all ritual requirements must hold; charge is paid once each 20 ticks; some rituals also consume XP; use empty-hand sneak click to show range | proposed first ritual how-to |
+| Witch's Brew station | book's station/catalyst/cauldron/capacity instructions; exact coordinates, fluid and fire source must be read from entry and verified | Witch's Brew: Station, Cauldron, Catalysts, Capacity, Brewing Steps, Augmentation | exact recipe capacity and refill/overflow unknown from this pass; do not teach generic fluid values | not until I/O reviewed |
+| Cursed Plinth (3.2.2) | Cursed Plinth plus linked Waystone; bind golem or Haunted Armor; orient/rotate with Rotation Focus | Black Book Artifice → Plinth; JEI | release notes claim heals 2% max health/sec and repairs equipment; wakes within 4 blocks (+6 per Radius level), returns after target absent 5 seconds; exact link placement/config needs in-world test | optional QoL/servant lesson |
+
+## Advanced and terminal objectives
+
+- **Normal completion:** a charged Totem, wand with a known Focus, one successfully tested spell, and optionally a basic cage/altar recipe.
+- **Optional completion:** all focus families, ritual variants, Witch's Brew, named servants, structures/bestiary, advanced Artifices, boss summon/drop branches, Lichdom and Arca.
+- **Remaining progression blockers:** exact guide/recipe tag members and Tier gate story; full Cursed Infuser recipe inventory; per-mob soul-yield values for installed roster; all ritual recipe counts/costs and interruption semantics; Witch's Brew typed I/O; complete Lich prerequisite trigger; client controls and claim/faction safety; Tectonic structure placement; Goety Cataclysm is separate.
+- **Quest coverage check:** existing chapter has one manual checkmark only. Full rewarded how-to path should cover the book, soul harvesting, spellcasting, first machine, cage/altar construction, and useful branch selection. Don't make the highest-tier lich/Arca mandatory for ordinary chapter completion.
+
+## Internal combinations and overlooked mechanics
+
+| Internal combination | Full chain | Benefit | Limitation / exploit potential | Evidence |
+| --- | --- | --- | --- | --- |
+| Totem + soul-bearing kill loop | eligible kills → Soul Energy → portable Totem → Totem-cost recipe / spell | turns ordinary combat into the progression resource | mob type, ownership, source override, Soul Eater and kill credit change output; farming hostiles may become dominant economy; map installed mobs before granting MXP |
+| Cursed Cage + Dark Altar | cage Totem or player transfer → altar → rite consumes souls per second | shared ritual power system and ritual automation | soul cost drains during ritual; failure refund depends on ritual; linked player Arca may spend remotely; verify operation order and abort behavior |
+| Cursed Infuser shortcut | spawner under machine → one tagged input → recipe output drop | early component path that can substitute for Totem-cost crafting | requires rare preserved vanilla spawner; only non-Grim recipes hopper-insert; item outputs spill to world; input can be lost if chunk/claim or output pickup mishandled |
+| Soul Eater + high-yield target | enchant/tool soul multiplier → kill value → personal/stored energy | potentially faster power accumulation | level cap 5 default; non-player mobs/servant rewards vary; include in economics and mob faction safety tests |
+| Plinth + servant/Waystone | bind golem/Haunted Armor to Waystone and Cursed Plinth | passive guard healing/repair and reduced noise | can make a durable non-damageable stationary guard; 2%/sec, wake radius and animation need verify; may affect claim defense/performance balance |
+| Totem/Arca death return | full Totem or charged Arca and enabled setting → death intercept | extra survival/lich persistence path | consumes soul store; behavior differs for Lich/non-Lich and config; conflicts with other resurrection mods; test order/duplicate event hooks |
+
+## Low-hanging setups useful in ordinary survival
+
+### 1. Soul-funded wand — early
+- **Goal and payoff:** obtain a repeatable ranged spell without relying on an external magic resource.
+- **Minimum entry and ingredients:** Totem of Roots, Ectoplasm/lapis/wooden rods, Soul Energy, four Empty Foci worth of amethyst, Magic Fabric, and focus recipe materials.
+- **Build/use steps:** craft and carry Totem; collect Soul Energy; make Empty Focus and Magic Fabric; craft Dark Wand; press `Z` and insert one Focus; choose a spell and test on a safe target.
+- **Sustainability and limits:** mob kills refill totem only to its capacity; each spell consumes Soul Energy and has a cooldown.
+- **Evidence / pack test:** recipe, hotbar/Curios discovery, wand key and costs source-backed; no client test.
+
+### 2. Cursed Infuser over a preserved spawner — early/mid
+- **Goal and payoff:** get recipe-listed magic components from one input using a spawner's presence.
+- **Minimum entry and ingredients:** Cursed Infuser recipe components, accessible vanilla spawner, one non-Grim input recipe item.
+- **Build/use steps:** place spawner intact; set Infuser directly on top; insert item by UI or valid input automation; collect ground output.
+- **Sustainability and limits:** uses no measured player Soul Energy/FE; one item per operation; needs an actual spawner, and output may spill. Verify input/output flow and recipe availability first.
+- **Evidence / pack test:** source confirms; server/client operation not tested.
+
+### 3. Basic Dark Altar craft — mid
+- **Goal and payoff:** use stored Soul Energy for a named item recipe without a conventional crafting table.
+- **Minimum entry and ingredients:** Cursed Cage, charged Totem, Dark Altar and pedestal(s), exact recipe inputs per JEI.
+- **Build/use steps:** place Cursed Cage; insert charged Totem; place Altar directly above; put exact inputs on pedestals; add altar ingredient last; sneak-click empty-handed to show radius; wait and observe Soul meter/output.
+- **Sustainability and limits:** altar is limited by cage/player energy; costs can drain once per second; use a cheap, non-summoning recipe for first practice.
+- **Evidence / pack test:** guide + source; no in-world test.
+
+## API, integration and pack-config surfaces
+
+| Hook or customization surface | Namespace / exact file, API or serializer | Capabilities / constraints | Current TMM override? | Evidence |
+| --- | --- | --- | --- | --- |
+| Soul-yield mapping | `data/goety/soul_taken/*.json` | per-entity Soul values; exact installed entity coverage is critical for economy | no Goety override found | source resources match pinned JAR [jar: SHA512] |
+| Recipe serializers | vanilla crafting plus `goety:cursed_infuser_recipes`, brazier/altar/ritual and brewing serializers | define exact items, costs, duration, structure predicates, entity inputs/outputs | no KubeJS recipe override found in searched paths | source + JAR resources |
+| Config | MainConfig, ItemConfig, SpellConfig, MobsConfig, BrewConfig | soul maxima, starter totem/book flags, soul costs, spells, servants, raids, Lich/Arca and UI toggles | no tracked config override found; source defaults apply unless generated server config is changed | source commit; current generated config not inspected |
+| Advancement | 160 unique advancement JSON files in source `data/goety/advancement(s)` | craft/find/kill/summon/lich/boss triggers; hidden Lich guide linked to advancement | chapter does not reference these | exact JSON in source/JAR; complete parent chains need map |
+| Optional integrations | conditional resources for Cataclysm, Witchery/Vampirism, Alex's Caves, Farmer's Delight and many other mods | compat recipes, entity soul rules, tags, loot and behaviors can activate based on mod-loaded conditions | no specific override; installed addon Goety Cataclysm confirmed | exact co-load checks and server registry still needed |
+| Mixins / structures | `vivideru.mixins.json`, notably `JigsawPlacerWindShrineMixin` | modifies structure candidate weighting for Wind Shrine via Jigsaw placement redirect | TMM manifest scan found no Structure Layout Optimizer | upstream issue #7 reports conflict if SLO is installed; pack-specific impact not demonstrated |
+| APIs / ownership | `ITotem`, `ISoulContainer`, `IServant`, `SEHelper`, `MobUtil`, Curios slots | soul container methods, servant ownership/ally logic, block/entity ownership | no TMM bridge found | source APIs; pairwise alliance/claim behavior untested |
+
+## Compatibility leads
+
+| Other mod | Candidate link and why | Native / pack-built / would require bridge | Status / source |
+| --- | --- | --- | --- |
+| Goety Cataclysm | addon introduces access to Cataclysm monster spells and abilities; official version page describes it as a Goety + Cataclysm compatibility mod | native addon; requires both mods | exact addon JAR hash matches the pack lock; internal mod metadata says `1.21.1-1.8.4`, while Modrinth labels the same version ID `gv1JY0TU` as `1.21.1-1.9.0`. The addon profile records this naming discrepancy and distinguishes exact JAR data from version-mismatched public source. |
+| L_Ender's Cataclysm | Goety has optional-compatible structures/data and the separate addon | native condition assets + addon | boss progression, drops and recipe gate paths not audited |
+| JAWR / Vampirism / Werewolves | source includes soul-yield files for vampire and hunter types; souls also trigger Goety mobs/hostility | native data/config if mod loads; separate skill/resource interaction would require review | no runtime alliance or current 1.21.1 entity ID verification; user's pack target may retire standalone Vampirism/Werewolves |
+| Dragon Survival / TMM factions | Goety servants, spells and aggressive mobs can collide with player species/neutrality rules | would require tested alliance policy or pack bridge | untested |
+| Tectonic / structure ecosystem | Wind Shrine and other jigsaw structures, graveyards and ruins alter worldgen | native worldgen, no specific Tectonic bridge | not tested; code-level mixin issue exists with Structure Layout Optimizer (not in current pack roster) |
+| Botania/Ars/Roots | independent mana/soul economies, but Goety's soul pipeline is standalone | would require explicit bridge | none established |
+
+## Quest and teaching opportunities (research, not actual quests)
+
+| Stage | Actionable how-to | Guide/JEI | Detector truth / fallback | Reward/risk |
+| --- | --- | --- | --- | --- |
+| Black Book | craft from Book + tag ingredient and open | Black Book recipe, First Steps | possession is not reading; manual/opening fallback | ink/book-related reward |
+| Soul harvest | put Roots Totem in hotbar/charm and kill soul-giving target | Soul Energy page, tooltip | `get` item or kill task alone may not prove energy changed; verify soul task or manual check | modest XP; avoid prescribing villagers/players as primary targets |
+| Dark Wand | craft, press `Z`, insert Focus, select spell, cast once | Dark Wand and focus pages | recipe item does not prove focus loaded/cast; advancement/focus cooldown or manual fallback | reward only focus component, not completed wand |
+| Infuser | preserve vanilla spawner, place device above, insert one test item, retrieve output | Cursed Infusion page/JEI | crafting machine alone is insufficient; require output or manual operation | low-cost component; never award a spawner |
+| First ritual | cage under altar, feed Totem, load pedestals first and altar item last, wait | Performing Rituals and chosen recipe | task should test actual output/summon; item task alone does not prove ritual; manual fallback | XP + thematic low-level component, no high soul charge |
+| Servant | cast/summon with valid Focus and set order/guard point | Summons and focus entry | entity existence not owner/command; check owner data or manual | avoid free servant reward; include upkeep and healing |
+| Witch's Brew | follow exact brew steps with capacity/catalyst | separate guide and JEI | potion possession doesn't prove intended augmentation/cost; manual or output metadata | recipe ingredient or bag, not powerful finished brew |
+| Lich/Arca | explain full prerequisite, sun/food/effect changes and controlled resurrection | hidden Lich entry + Arca | advancement can evidence Lich state; Arca item possession does not prove linkage/fill/return | high-risk; no death quest without disposable-world instructions |
+
+## Evidence ledger
+
+| Claim | Exact source | Evidence/limit |
+| --- | --- | --- |
+| Pin and binary | `mods/goety.pw.toml`, Modrinth `4ZVIxU8x` version `xLTYSsZD`; SHA-512 above; directly downloaded exact artifact | exact pinned JAR inspected; resource payload equality compared across 15,531 shared resource files |
+| Version-aligned source | `Vivideru/Goety-3`, commit `7fdffc0b4f07aaa79d333ac1791444506b7d037f`, Gradle `mod_version=3.2.2` | 1.21.1 port source; match declaration and resource equality, not compiled bytecode proof |
+| Core progression | `assets/goety/patchouli_books/black_book/en_us/entries/intro/{soul_energy,magical_components,magical_fabrics,dark_wand,cursed_infuser}.json`; recipes in `data/goety/recipe(s)` | exact Black Book guide and pinned recipe resource files |
+| Soul acquisition | `utils/SEHelper.java`, `api/items/magic/ITotem.java`, `events/SoulEnergyEvents.java`, `config/MainConfig.java`, `data/goety/soul_taken` | formula, storage and event path source-backed; actual soul amounts depend on config and data; need mob roster scan |
+| Altar/infuser operation | `common/blocks/entities/{DarkAltarBlockEntity,CursedInfuserBlockEntity,CursedCageBlockEntity}.java`; `crafting/{RitualRecipe,CursedInfuserRecipes}.java` | cadence, spawner check, stack/output semantics and energy path source-backed; every failure path not traced |
+| Black Book coverage | `assets/.../black_book/en_us` and `witches_brew/en_us`; exact shared resources | 412 Black Book guide JSON files; separate Witch's Brew book; guide count does not equal one quest per entry |
+| Quest and pack config | `config/ftbquests/quests/chapters/goety.snbt`; config/KubeJS directory search | one generic checkmark; no tracked Goety config/script override found |
+| Structure mixin issue | Goety `vivideru.mixins.json`, `JigsawPlacerWindShrineMixin.java`; upstream issue [Vivideru/Goety-3#7](https://github.com/Vivideru/Goety-3/issues/7) | source shows redirect; upstream issue documents SLO conflict on 1.21.1 Goety 3.2.0. TMM does not currently pin SLO; no direct pack collision claim |
+
+## Disposable-world test plan
+
+| Test | Positive/boundary setup | Expected observable | Performed? |
+| --- | --- | --- | --- |
+| Guide onboarding | craft Black Book and Witch's Brew books; inspect opening state | exact tag ingredient, tab contents, all diagrams/recipe cards render | no |
+| Soul harvest | Roots Totem in slot 0, slot 9, offhand, Curios; controlled vanilla/mod mob kills | expected amount and source lookup; excluded fake/summon/baby cases; capacity clamp | no |
+| Wand cast | empty and charged totem, Focus loaded/unloaded, insufficient souls, cooldown, keybind | cast effect, energy debit order, failure cost and UI | no |
+| Cursed Infuser | intact vanilla spawner below, remove it during cook, Grim/non-Grim input, full drop area, hopper input/output | processing and progress decay; item consumed once; output drops; Grim automation rejected | no |
+| Altar recipe | valid/invalid cage, 7/8/9 block offsets, missing soul, missing one pedestal item, altar item first vs last | valid completes; exact energy debit cadence; precise rollback/consumption for each failure | no |
+| Summon/ritual entity | test real summon, real sacrifice, fake/display entity, output loot, owned creature | separate input consumption vs spawned output; owner/faction AI and drops | no |
+| Lich/Arca | test each config branch at required energy, low energy, absent Arca, destroyed Arca | death interception, resource debit, Lich retention/removal and return position | no |
+| Worldgen | new chunks with Tectonic, Cataclysm, structure mods; inspect wind shrines/crypts/dark manors | generation rate, overlap, missing-piece or jigsaw failure; logs for mixin conflict | no |
+| Compatibility | test with JAWR, dragons/species, faction config, Cataclysm addon and protected chunks | hostility, owner immunity, player death hook ordering, ritual grief/claim permission | no |
+
+## Unknowns and next research
+
+- [ ] Map every `goety:soul_taken` entity file to the TMM enabled entity roster and record exact values, config multipliers and summon farm exploits.
+- [ ] Inventory the full enabled 3.2.2 Cursed Infuser recipe set, timers, Grim restrictions and which alternatives are cheaper than Totem crafting.
+- [ ] Extract every Dark Altar/Brazier/brewing recipe's typed inputs, costs, actual outputs, XP, entity sacrifice vs spawned summon, output drops and failure refunds.
+- [ ] Trace the entire Lich/Arca progression predicate and verify the user's desired Phylactery-before-Arca design is external target work, not native Goety progression.
+- [ ] Test servant owner/command/heal upkeep, cross-faction behavior, soul credit, and interaction with block claims and corpse/boss drops.
+- [ ] Launch client and check wand keybind/focus UI/soul HUD, Black Book rendering and overlay collisions.
+- [ ] Client/world test the Wind Shrine mixin with Tectonic/installed structures; Structure Layout Optimizer conflict is not presently a TMM incompatibility because that mod is not in the current manifest.
+- [ ] Update the generic FTB chapter in a later quest pass; no quest or runtime files changed here.
+
+## Revision notes
+
+- 2026-11-15 — Added Goety 3.2.2 exact-JAR / version-matched source profile. Verified all 15,531 shared source resources against the locked JAR. Mapped Black Book/Roots Totem progression, Soul Energy and per-mob yield surfaces, Cursed Infuser spawner processing, Dark Cage/Altar ritual operation, focus casting, servants, brewing and the optional Lich/Arca capstone. Recorded the upstream Wind Shrine jigsaw mixin conflict report and confirmed the named conflicting SLO mod is absent from TMM's current roster. No quest/runtime files changed.
