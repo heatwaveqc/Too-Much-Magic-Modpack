@@ -55,7 +55,6 @@ source_mod,source_scope,creature_name,source_behavior,candidate_hunter_categorie
 "minecraft","installed","Sheep","passive","Beast","no","werewolf-beast","proposed","Domestic animal not a combat farm","https://minecraft.wiki/w/Mob"
 "minecraft","installed","Chicken","passive","Beast","no","werewolf-beast","review","Birds fit broad beast umbrella only if desired","https://minecraft.wiki/w/Mob"
 "minecraft","installed","Bee","neutral","Arthropod","defensive-only","none","proposed","Neutral until provoked","https://minecraft.wiki/w/Mob"
-"minecraft","installed","Creaking","hostile","Plant|Construct","yes","none","review","Animated wood; determine if plant or construct or both","https://minecraft.wiki/w/Mob"
 "cataclysm","installed","Netherite Monstrosity","boss","Construct","yes","none","proposed","Mechanical/forged boss; no boss specialization","https://lendercataclysm.wiki.gg/wiki/"
 "cataclysm","installed","Ender Guardian","boss","Construct","yes","none","review","Verify Void lineage independently of End location","https://lendercataclysm.wiki.gg/wiki/"
 "cataclysm","installed","The Harbinger","boss","Construct","yes","none","proposed","War machine","https://lendercataclysm.wiki.gg/wiki/"
