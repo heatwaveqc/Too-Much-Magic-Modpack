@@ -6,7 +6,7 @@
   "owner": "tmm_monk",
   "intended_max_faction_rank": 20,
   "live_source_branch": "fix/monk-tree-data-registry-2026-11-15",
-  "summary": "Progression sketch for the complete Monk faction's native one-time powers and permission unlocks; the actual live six-skill tree in src/main/resources remains unchanged for the next client test.",
+  "summary": "Full Monk faction blueprint: six live starter nodes and planned one-off powers, spells as ranged combat (Ars/Iron's), exclusive Fortune/Silk hand harvesting and an innate protected hotbar fist position.",
   "source_catalog": "compat/monk/profiles/skill-placement-no-pufferfish-v2.json",
   "external_design_refs": [
     "compat/monk/profiles/world-tier-unlocks.json",
@@ -19,14 +19,16 @@
     "rank_guides": "earliest_rank_design is a tuning guide, NOT enforced by the current Vampirism skill tree. Future server-side skill purchase gates must enforce any chosen minima or world milestones.",
     "nonlive": "Only six existing nodes are implemented and purchasable (including root). Future nodes here are not registered, not rendered, cannot consume SP and have no effects.",
     "points": "One native point per faction rank is currently the pilot; future branch allocation and any bonus-point talents require economy review, so no promise of all nodes on one character.",
-    "origin_source_policy": "Do not duplicate the 24 shared Tyz traits, 43 aliased affixes, 40 bounded Tyz affix ranks, or generate all 203 preliminary endpoints here. No creative flight and no Unbound affix.",
-    "gate_policy": "Only First Sunset is presently enforced. Ender Dragon and Chaos Guardian gates are design requirements pending robust server-side attribution; no easy FTB Quest claim or purchased item substitute."
+    "origin_source_policy": "Do not duplicate the 24 shared Tyz traits, 43 aliased affixes, 40 bounded Tyz affix ranks, or generate all 203 preliminary endpoints here. No creative flight and no Unbound affix. Source audit's Spirit Projectile is explicitly rejected by owner; ranged combat uses Ars/Iron's, not a new ranged ability.",
+    "gate_policy": "Only First Sunset is presently enforced. Ender Dragon and Chaos Guardian gates are design requirements pending robust server-side attribution; no easy FTB Quest claim or purchased item substitute.",
+    "ranged_combat": "Ars Nouveau and Iron's Spellbooks supply the ranged attacks. No native Monk Spirit Projectile, Spirit-Arrow or free spell-power duplication. The three unique Apotheosis ranged affix adapters target verified player-cast spell events only.",
+    "touch_mode": "One native Treasure Hand unlock combines Silk Touch and the Tyz Fortunate Hands license; exclusive persisted Fortune vs Silk Touch. Fortune baseline and Tyz increment are reconciled in a single loot context, with correct tool-tier and no XP/loot duplication."
   },
   "tracks": [
     {
       "id": "martial",
       "name": "Martial Discipline",
-      "goal": "Legal unarmed combat, counters, spirit projectiles, boss interaction and selected affix conversions."
+      "goal": "Legal empty-hand combat, parries, counters, staring techniques, and source-faithful unarmed affixes. Ranged combat comes from Ars/Iron's."
     },
     {
       "id": "mobility",
@@ -41,12 +43,12 @@
     {
       "id": "harvest",
       "name": "Empty-Hand Harvest",
-      "goal": "Real finite harvest tiers and distinctive tool-free gathering while repeatable mining speed stays in Tyz."
+      "goal": "Finite effective harvest tiers, one exclusive Fortune/Silk Touch toggle and tool-free gathering; repeatable mining speed remains in Tyz."
     },
     {
       "id": "arcane",
       "name": "Arcane Mastery & Licenses",
-      "goal": "Only faction-specific one-time/progression permission, not a second generic mana or spell-stat wallet."
+      "goal": "Monk-only progress licenses and source-faithful spell-affix adaptations for Ars Nouveau and Iron's; not a second generic mana/spell-stat wallet."
     }
   ],
   "nodes": [
@@ -171,26 +173,11 @@
       "notes": null
     },
     {
-      "id": "tmm_monk:spirit_projectile",
-      "name": "Spirit Projectile",
-      "lane": "martial",
-      "earliest_rank_design": 6,
-      "parent": "tmm_monk:open_palm",
-      "implementation": "blueprint_only",
-      "currency": "native_monk_skill_point",
-      "price": 1,
-      "source_record": "tmm_monk:martial/spirit_projectile",
-      "backend_role": "one_time_native",
-      "effect_contract": "Legal innate ranged attack without conventional bow; interacts with boss shield/crystal rules.",
-      "requirements": [],
-      "notes": null
-    },
-    {
       "id": "tmm_monk:withering_stare",
       "name": "Withering Stare",
       "lane": "martial",
       "earliest_rank_design": 12,
-      "parent": "tmm_monk:spirit_projectile",
+      "parent": "tmm_monk:guarding_palm",
       "implementation": "blueprint_only",
       "currency": "native_monk_skill_point",
       "price": 1,
@@ -198,7 +185,7 @@
       "backend_role": "one_time_native",
       "effect_contract": "Sustained line-of-sight gaze inflicts controlled withering on valid targets.",
       "requirements": [],
-      "notes": null
+      "notes": "Direct eye-contact technique. No projectile or ranged Monk weapon prerequisite."
     },
     {
       "id": "tmm_monk:looting_palm_license",
@@ -261,19 +248,21 @@
       "notes": null
     },
     {
-      "id": "tmm_monk:deathbound",
-      "name": "Deathbound Spirit",
-      "lane": "martial",
+      "id": "tmm_monk:deathbound_casting",
+      "name": "Deathbound Spell Affix",
+      "lane": "arcane",
       "earliest_rank_design": 18,
-      "parent": "tmm_monk:spirit_projectile",
+      "parent": "tmm_monk:magical_casting",
       "implementation": "blueprint_only",
       "currency": "native_monk_skill_point",
       "price": 1,
       "source_record": "tmm_monk:apotheosis/ranged/mob_effect/deathbound",
       "backend_role": "one_time_native",
-      "effect_contract": "Bounded one-time spirit-projectile affix effect; source mechanics must be verified.",
-      "requirements": [],
-      "notes": null
+      "effect_contract": "Source-faithful Deathbound ranged affix effect adapted to qualifying Ars/Iron's spell hits, with attribution, limits and immunity checks.",
+      "requirements": [
+        "verified_player_spell_damage_attribution"
+      ],
+      "notes": "A ranged affix conversion, not a new Monk projectile."
     },
     {
       "id": "tmm_monk:steadfast",
@@ -580,21 +569,6 @@
       "notes": null
     },
     {
-      "id": "tmm_monk:delicate_hands",
-      "name": "Delicate Hands",
-      "lane": "harvest",
-      "earliest_rank_design": 10,
-      "parent": "tmm_monk:glass_touch",
-      "implementation": "blueprint_only",
-      "currency": "native_monk_skill_point",
-      "price": 1,
-      "source_record": "tmm_monk:harvest/silk_touch",
-      "backend_role": "one_time_native",
-      "effect_contract": "Source-verified empty-hand silk-like harvesting with eligibility and tag restrictions.",
-      "requirements": [],
-      "notes": null
-    },
-    {
       "id": "tmm_monk:gentle_shearing",
       "name": "Gentle Shearing",
       "lane": "harvest",
@@ -606,21 +580,6 @@
       "source_record": "tmm_monk:harvest/shear_touch",
       "backend_role": "one_time_native",
       "effect_contract": "Tool-free shearing behaviors for appropriate entities/blocks.",
-      "requirements": [],
-      "notes": null
-    },
-    {
-      "id": "tmm_monk:fortunate_hands_license",
-      "name": "Fortunate Hands License",
-      "lane": "harvest",
-      "earliest_rank_design": 13,
-      "parent": "tmm_monk:delicate_hands",
-      "implementation": "blueprint_only",
-      "currency": "native_monk_skill_point",
-      "price": 1,
-      "source_record": "tmm_monk:harvest/fortune_hands",
-      "backend_role": "tyz_license_only",
-      "effect_contract": "Permission for bounded Tyz fortune ranks and a legitimate server loot adapter.",
       "requirements": [],
       "notes": null
     },
@@ -745,36 +704,38 @@
       "notes": null
     },
     {
-      "id": "tmm_monk:magical_spirit",
-      "name": "Magical Spirit",
+      "id": "tmm_monk:magical_casting",
+      "name": "Magical Spell Affix",
       "lane": "arcane",
       "earliest_rank_design": 11,
-      "parent": "tmm_monk:spirit_projectile",
+      "parent": "tmm_monk:monastic_learning_license",
       "implementation": "blueprint_only",
       "currency": "native_monk_skill_point",
       "price": 1,
       "source_record": "tmm_monk:apotheosis/ranged/magical",
       "backend_role": "one_time_native",
-      "effect_contract": "Source-backed magical projectile effect on legal spirit bolts.",
+      "effect_contract": "Adapt the pinned Apotheosis Magical ranged affix only through verified damage-source/SpellCast hooks for user-cast Ars Nouveau and Iron's Spellbooks. Does not grant a projectile, extra spellcasting access or generic spell power.",
       "requirements": [
-        "spirit_projectile_enabled"
+        "verified_ars_or_irons_spell_hit_source"
       ],
-      "notes": "Cross-track prerequisite from the martial branch."
+      "notes": "A one-time affix adaptation, not a requirement to learn or cast existing spells. Avoid duplicate primary Tyz Potency effects."
     },
     {
-      "id": "tmm_monk:acidic_spirit",
-      "name": "Acidic Spirit",
+      "id": "tmm_monk:acidic_casting",
+      "name": "Acidic Spell Affix",
       "lane": "arcane",
       "earliest_rank_design": 14,
-      "parent": "tmm_monk:magical_spirit",
+      "parent": "tmm_monk:magical_casting",
       "implementation": "blueprint_only",
       "currency": "native_monk_skill_point",
       "price": 1,
       "source_record": "tmm_monk:apotheosis/ranged/mob_effect/acidic",
       "backend_role": "one_time_native",
-      "effect_contract": "Pinned ranged affix conversion to spirit projectile; status effects and costs require adapter.",
-      "requirements": [],
-      "notes": null
+      "effect_contract": "Source-faithful Acidic ranged affix effect adapted to qualifying player-cast Ars/Iron's spell hits; no invented spirit bolt.",
+      "requirements": [
+        "verified_player_spell_damage_attribution"
+      ],
+      "notes": "Damage/effect trigger needs cross-mod audit; ordinary spells remain independently available."
     },
     {
       "id": "tmm_monk:empty_hand_paragon",
@@ -809,18 +770,76 @@
         "verified_chaos_guardian_milestone"
       ],
       "notes": "Proposal only; no unconditional immunity."
+    },
+    {
+      "id": "tmm_monk:harvest_touch",
+      "name": "Treasure Hand — Fortune / Silk Touch",
+      "lane": "harvest",
+      "earliest_rank_design": 10,
+      "parent": "tmm_monk:iron_fist",
+      "implementation": "blueprint_only",
+      "currency": "native_monk_skill_point",
+      "price": 1,
+      "source_record": "tmm_monk:harvest/silk_touch",
+      "source_records": [
+        "tmm_monk:harvest/silk_touch",
+        "tmm_monk:harvest/fortune_hands"
+      ],
+      "backend_role": "one_time_toggle_and_tyz_license",
+      "effect_contract": "A single hand-harvesting technique that switches between Fortune and Silk Touch. Fortune mode has a finite baseline and can be upgraded ONLY through primary Tyz Fortunate Hands. Silk Touch is an alternative mode; both must never run on one block. Requires legitimate player empty-hand break and actual effective harvest tier.",
+      "requirements": [
+        "verified_hand_loot_context_adapter"
+      ],
+      "notes": "Replaces the separately purchasable Delicate Hands and Fortunate Hands License; neither original perk is purchased a second time.",
+      "toggle": {
+        "mode_storage": "per_player_server_persistent",
+        "available_modes": [
+          "fortune",
+          "silk_touch"
+        ],
+        "initial_mode": "fortune",
+        "switch_trigger": "client_configurable_keybind_server_validated",
+        "feedback": "actionbar_mode_and_hotbar_fist_icon",
+        "fortune_base_level": 1,
+        "fortune_extra_ranks_backend": "primary_tyz_fortunate_hands_only",
+        "fortune_combination": "base_plus_nonredundant_rank_bonus_bounded_by_verified_loot_cap",
+        "silk_level": 1,
+        "exclusive": true,
+        "applies_to": [
+          "verified_player_bare_hand_harvest"
+        ],
+        "never_apply_to": [
+          "tool_items",
+          "automatic_machine_breaks",
+          "unattributed_magic",
+          "claim_denied_breaks"
+        ],
+        "notes": "Explicit player selection; no automatic flip based on block type, crouching, or player hunger. Magic source break-loot adapters require separate verification."
+      }
     }
   ],
   "automatic_no_purchase": [
     {
       "id": "tmm_monk:boss_shield_contact",
-      "contract": "A legal unarmed/spirit projectile or player-cast spell must interact with Draconic Guardian crystal and shield mechanics using normal boss checks; no paid license or bypass.",
+      "contract": "Ordinary player-cast Ars Nouveau/Iron's spells and legitimate empty-hand attacks must interact with Draconic Guardian crystals/shield only under actual verified boss rules, no separately purchased Monk projectile or bypass.",
       "source_record": "tmm_monk:martial/boss_shield_contact"
     },
     {
       "id": "tmm_monk:magic_source_integration",
       "contract": "All legal player-cast magic sources use the single shared MXP dispatcher and attribution, not extra native skill purchases.",
       "source_record": null
+    },
+    {
+      "id": "tmm_monk:spell_ranged_combat",
+      "contract": "Ars Nouveau and Iron's Spellbooks are the default Monk ranged offense. Do not mint native bolts, force spellbook-equipping into the fist slot, or make a native paywall to cast spells.",
+      "source_record": "tmm_monk:martial/spirit_projectile",
+      "source_disposition": "excluded_owner_override_not_purchasable"
+    },
+    {
+      "id": "tmm_monk:reserved_fist_slot",
+      "contract": "Passive while in the Monk faction: default hotbar slot 9 (zero-based 8) is permanently empty and selectable as the unarmed fist, with safe item relocation, no item loss, GUI/pickup/automation protection, optional UI overlay, and normal inventory restoration on faction exit.",
+      "source_record": null,
+      "implementation": "design_only_not_wired"
     }
   ],
   "deferred_non_native": [
@@ -836,6 +855,37 @@
     "Prove event adapters and protected-block/claim behavior before enabling affix powers.",
     "Validate actual higher-tier block tags, tools and drop rules before adding more harvest tiers.",
     "Define precise boss defeat credit, party credit and external gate persistence.",
-    "Decide whether new rank-20 capstone proposals are acceptable before implementing their effects."
+    "Decide whether new rank-20 capstone proposals are acceptable before implementing their effects.",
+    "Verify Ars/Iron's spell damage and guardian crystal attribution; spell-affix adapters cannot blindly assume all source damage events are ordinary projectiles.",
+    "Confirm Fortune I plus bounded Tyz Fortune ranks and exact Silk Touch block loot semantics on empty-hand harvesting; ensure mutually exclusive loot contexts.",
+    "Implement hard reserved slot protection across pickups, number-key swaps, drag/shift-click, creative inventory, /give and modded menus, with no item loss before activating the passive."
+  ],
+  "explicit_owner_overrides": [
+    {
+      "source_record": "tmm_monk:martial/spirit_projectile",
+      "decision": "excluded",
+      "rationale": "Owner requires native ranged attacks to come from Ars Nouveau or Iron's Spellbooks. The prior source audit entry remains for history only; never register an innate Monk bolt."
+    },
+    {
+      "source_records": [
+        "tmm_monk:harvest/silk_touch",
+        "tmm_monk:harvest/fortune_hands"
+      ],
+      "decision": "combined_into_single_toggle",
+      "replacement": "tmm_monk:harvest_touch",
+      "rationale": "One exclusive Fortune/Silk Touch mode unlock, using a Tyz license for bonus Fortune ranks. One native purchase, never duplicate Silk and Fortune effect purchases."
+    }
+  ],
+  "passive_features": [
+    {
+      "id": "tmm_monk:reserved_fist_slot",
+      "state": "design_only_not_runtime_enabled",
+      "faction_enabled": true,
+      "skill_point_cost": 0,
+      "default_hotbar_index": 8,
+      "display_name": "Fist",
+      "design_contract": "design/fist-slot-lock-contract-v1.json",
+      "runtime_status": "Requires item insertion/menu guards and safe migration tests before enabling; do not mutate inventory in current six-skill test."
+    }
   ]
 }
