@@ -14,7 +14,7 @@
 
 **Important architecture finding:** Tyz's loader accepts custom JSON overrides by the **same original skill ID**, and its `SkillManager.registerSkill` attaches immutable Java skill behavior by that ID. We should **move stock skill IDs to new categories instead of renaming or reimplementing them** whenever an existing effect is acceptable. Alter a stock immutable skill's `category` in an override under `config/tyzs_skills/custom/skills/`, with matching `id`, type, values, prices and config. Test source behavior after category move, including reload, saved ranks and refund. Tyz's generated `default` directory is wiped/recreated on boot: **never edit it**.
 
-**Do not remove the four stock categories yet.** With the current Core Magic pilot we have five visible tabs. Once all skills are mapped and migrated, the nine custom trees replace stock `abilities/combat/misc/nature`; under the current nine-tree blueprint, this is nine total tabs rather than thirteen. Until then, removing a category could strand visible stock skills; the global category list is an overriding *whole file*. No new category-only config or active stock overrides are installed by this audit.
+**Do not remove the four stock categories yet.** With the current Core Skills pilot we have five visible tabs. Once all skills are mapped and migrated, the nine custom trees replace stock `abilities/combat/misc/nature`; under the current nine-tree blueprint, this is nine total tabs rather than thirteen. Until then, removing a category could strand visible stock skills; the global category list is an overriding *whole file*. No new category-only config or active stock overrides are installed by this audit.
 
 ## All 32 original skills and recommended destinations
 
@@ -69,9 +69,9 @@ The **Effect** column is the English tooltip from the original 6.4.2 localizatio
 - **Resistance** defaults to up to **45% all-damage reduction**; **Resilience** removes up to **95% negative-effect duration**. Their original power is documented, not automatically endorsed for our endgame.
 - **Monk collision:** vanilla Step Height, Attack Damage, Swim/Oxygen can make native Monk unique unlocks redundant; stage/equipment/source locks required. Cave/Sea/Forest Dragon class enhancements must not double-grant identical native stats.
 
-## Five-rank Core Magic compression — user direction (2026-11-15)
+## Five-rank Core Skills compression — user direction (2026-11-15)
 
-The *existing four Core Magic CUSTOM skills* (separate from these 32 stock skills) are compressed from 99 ranks to **five purchasable levels**, with exactly 20%, 40%, 60%, 80%, 100% of their preexisting rank-99 **terminal effect**. Each costs **one SP** pending economy review; all four keep original skill IDs and same final values. For integer-only modifier values, use nearest valid whole-unit rounding at intermediate ranks. This is not uniformly a literal +20% stat per rank: Reservoir is flat mana/Psi, Wellspring is regeneration, Thrift is discount and Potency has mixed flat/ratio attributes. **The 100% refers to the original intended maximum of each attribute, not the resource itself.**
+The *existing four Core Skills CUSTOM skills* (separate from these 32 stock skills) are compressed from 99 ranks to **five purchasable levels**, with exactly 20%, 40%, 60%, 80%, 100% of their preexisting rank-99 **terminal effect**. Each costs **one SP** pending economy review; all four keep original skill IDs and same final values. For integer-only modifier values, use nearest valid whole-unit rounding at intermediate ranks. This is not uniformly a literal +20% stat per rank: Reservoir is flat mana/Psi, Wellspring is regeneration, Thrift is discount and Potency has mixed flat/ratio attributes. **The 100% refers to the original intended maximum of each attribute, not the resource itself.**
 
 | Core family | Sample rank-5 ceiling | Levels & price |
 |---|---|---|
@@ -80,12 +80,12 @@ The *existing four Core Magic CUSTOM skills* (separate from these 32 stock skill
 | Thrift | +0.297 Goety soul discount stat; +29.7 Neo Vitae sigil reduction; maintain positive debit and source-specific stacking | 5 × 1 SP |
 | Potency | +4.95 Ars spell damage; +0.99 Iron's power; +99 Goety potency | 5 × 1 SP |
 
-The earlier Core Magic 99-rank *multi-magnitude future tiers* remain possible for much later specialist progression, but the **base node** is now five ranks. No bonus or XP currency is added; MXP source/exponential divisor and native progression permissions stay unchanged.
+The earlier Core Skills 99-rank *multi-magnitude future tiers* remain possible for much later specialist progression, but the **base node** is now five ranks. No bonus or XP currency is added; MXP source/exponential divisor and native progression permissions stay unchanged.
 
 ## Implementation and retirement order
 
-1. **Completed here:** exact upstream 32-skill inventory, source effect/cost snapshot, proposed nine-tree destination, risk flags; Core Magic four-node 5-rank source config and static check updates.
-2. **Not yet done:** review destination/role decisions, especially whether the base tree should be renamed **Core Skills** now that it may contain universal martial, survival, farming and exploration traits (keep ID `tmm_magic_core` for stable save data unless approved).
+1. **Completed here:** exact upstream 32-skill inventory, source effect/cost snapshot, proposed nine-tree destination, risk flags; Core Skills four-node 5-rank source config and static check updates.
+2. **Not yet done:** review destination/role decisions, especially **Decided (2026-11-15):** the universal tab is named **Core Skills**, while retaining its stable ID `tmm_magic_core`. The label is implemented in the experimental Tyz category override; the 32 stock skills still await rehoming.
 3. Prepare **same-ID skill overrides** with original effects in new categories; add use-time form gating for form-specific Java IMMUTABLE skills; save backup and define original rank/SP migrations, including options for existing users of old categories.
 4. In a disposable client world verify migrated skill IDs/purchases/refunds, ranks, relogs, exclusions, special IMMUTABLE skill triggers, traits, and separate MXP rules. Document each pass. **Only after full coverage**, remove original category keys in the complete `categories.json` override; never remove default skill files or JAR data.
 5. Inspect Tyz's separate Traits system before deciding any modpack-wide removal. The 32 standard skills are only the preset skill catalog, *not* a claim that Traits are already mapped.
