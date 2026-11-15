@@ -2,6 +2,22 @@
 
 **Reviewed:** 2026-11-15. **Source:** live `test/full-integration` `compat/progression` implementation, namespace `tmm_progression`; [successful core CI run](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43758086560). **Intent:** retain the core as independent shared infrastructure, create Hunter as a standalone gameplay module requiring that core but **not** Tyz, and add optional pack adapters. This document is not a claim that Hunter has been implemented.
 
+## Hunter initiation design — Trial of Venom (owner-proposed, 2026-11-15)
+
+**Use existing vanilla items and effects. Do not introduce a custom potion, crafting recipe, or mandatory new item.**
+
+A human player earns the vanilla **Monster Hunter** advancement (`minecraft:adventure/kill_a_mob`, verify advancement ID against pinned runtime), gains **Regeneration** from *any* valid source, then **drinks** a standard vanilla Potion of Poison while Regeneration is still active. This is a one-time initiation ritual.
+
+**Accepted consumed potion contents** (Minecraft 1.21.1): `minecraft:poison`, `minecraft:long_poison`, `minecraft:strong_poison`; `minecraft:potion` item only. **Not accepted:** splash potion, lingering potion, poison damage, poisonous food, applied potion effect without drinking, other-mod mixtures, or potions with custom replacement effects unless separately approved.
+
+**Server-side event:** `LivingEntityUseItemEvent.Finish` (NeoForge 1.21.1), which provides the consumed-item snapshot, even though the potion effects have been applied by the time the callback fires. Verify `DataComponents.POTION_CONTENTS`/vanilla `Potions` holder, the advancement, **Regeneration active at drink completion**, and the player's native/supernatural eligibility. Invoke only a trusted server-side core join API with a Hunter-specific join policy. Do **not** join from the mere presence of Poison + Regeneration status effects or from item-use Start, to prevent splash/application false positives and aborted drinking.
+
+On successful enrollment: set persistent Hunter identity; grant baseline Hardened Physiology (Poison immunity and intended detrimental-effect duration reduction), immediately clear Poison applied by the completed potion, send initiation feedback; do not repeatedly grant awards on future poison consumption. A player who fails any gate simply consumes the potion normally. Existing alternate supernatural forms fail closed until a verified conversion/eligibility adapter exists; status-effect cleansing alone is not conversion prevention.
+
+**Cheap vanilla pathway:** golden apple grants Regeneration II for 5 seconds, enough for the ~1.6-second potion consumption if the player switches promptly. Brewing or other modded Regeneration sources work as well. This does not imply that vanilla Potion of Poison is brewable without Nether Wart, only that the ritual uses no new custom recipes.
+
+**Edge-case tests:** preexisting Monster Hunter from old worlds; prior and active Regen; exactly expiring Regen during the drink; canceled item use; poison II/extended; splash/lingering exclusion; duplicate event/respawn/reload; species-incompatible form; creative/spectator; consumed potion on failure; interruption; modded potion component spoof; server/client authority. `Finish` reports post-item-use state, so verify that a normal vanilla poison drink cannot supply its own Regen (matching exact base potion prevents this).
+
 ## Core already provides
 
 | Requirement | Core implementation |
