@@ -51,8 +51,21 @@ jobs:
           # Bring in any earlier QA-generated files BEFORE replacing the owned
           # recipe directories. Prevent stale broad-marble recipes persisting
           # when a prior workflow push raced a policy change.
-          git fetch --no-tags origin feature/b16-natural-stone-galore-unification
+          git fetch --no-tags origin feature/b16-natural-stone-galore-unification test/full-integration
           git rebase origin/feature/b16-natural-stone-galore-unification
+          # Keep the shared pack's newest approved changes. Known overlapping
+          # packwiz metadata is regenerated after the merge; unrelated files,
+          # including the Relics ring-ban config, are preserved.
+          if ! git merge-base --is-ancestor origin/test/full-integration HEAD; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git merge --no-commit --no-ff -X ours origin/test/full-integration
+            export PATH="$(go env GOPATH)/bin:$PATH"
+            packwiz refresh
+            python3 scripts/validate.py
+            git add -A pack.toml index.toml
+            git commit -m "merge(b16): reconcile latest full-integration baseline and refresh packwiz"
+          fi
           python3 scripts/generate_stone_galore.py "$B16_JAR_DIR"
           python3 - <<'PY'
           from pathlib import Path
@@ -132,8 +145,9 @@ jobs:
             git fetch --no-tags origin feature/b16-natural-stone-galore-unification
             git rebase origin/feature/b16-natural-stone-galore-unification
             python3 scripts/validate.py
-            git push origin HEAD:feature/b16-natural-stone-galore-unification
           fi
+          # Also push a baseline merge that produced no net recipe changes.
+          git push origin HEAD:feature/b16-natural-stone-galore-unification
       - name: Store logs and stone policy
         if: always()
         uses: actions/upload-artifact@v4
