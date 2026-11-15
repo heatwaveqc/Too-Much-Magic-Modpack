@@ -10,6 +10,7 @@ import io.github.heatwaveqc.tmm.transformations.core.StateSnapshot;
 import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireDiagnostics;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichDiagnostics;
+import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichDiagnostics;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireOwnership;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireSubsystem;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisConfig;
@@ -29,9 +30,18 @@ public final class TransformationCommands {
         event.getDispatcher().register(Commands.literal("tmmtransform")
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
                 .then(Commands.literal("archlich").executes(ctx -> archlich(ctx.getSource())))
+                .then(Commands.literal("dracolich").executes(ctx -> dracolich(ctx.getSource())))
                 .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))
                         .then(Commands.literal("cure").requires(s -> s.hasPermission(2))
                                 .executes(ctx -> cure(ctx.getSource())))));
+    }
+
+    private static int dracolich(CommandSourceStack source)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        String report = DracolichDiagnostics.describe(player);
+        source.sendSuccess(() -> Component.literal(report), false);
+        return Command.SINGLE_SUCCESS;
     }
 
     private static int archlich(CommandSourceStack source)

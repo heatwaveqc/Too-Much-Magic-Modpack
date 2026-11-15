@@ -64,3 +64,21 @@ This is **ON by default** for fresh disposable pre-alpha worlds: `experimentalAr
 The exact native API is version gated. It does not implement the proposed
 shared hunger value, cures, or immortality cross-provider lifecycle.
 See [Archlich priority and QA](docs/ARCHLICH-RESURRECTION-PRIORITY.md).
+
+## Dracolich 1.21.1 native-state pilot
+
+The first Dracolich code slice adds three version-checked, read-only provider
+probes (Dragon Survival 2.0.74, Goety 3.2.2, Forbidden Magic 0.5.37),
+a pure form source policy, and `/tmmtransform dracolich` diagnostics.
+
+Target: **Sea/Forest/Cave dragon + one native lich**, with the dragon
+retaining species/growth/abilities and the one lich retaining its own
+resurrection anchor, hunger and progression. Dragon plus both lich providers
+remains CONFLICT; the bridge does not choose one silently.
+
+**No automatic acquisition, native-on-death priority rewrites, hunger reset,
+texture transformation, or dual-cure handling has shipped in this pilot.**
+This is observability/testing scaffolding, not a claim of gameplay acceptance.
+Dragon Survival has an independent death-triggered passive ability that may
+heal and cancel death before lich handlers; test it before reordering events.
+See [Dracolich pilot / six-world QA](docs/DRACOLICH-PILOT.md).
