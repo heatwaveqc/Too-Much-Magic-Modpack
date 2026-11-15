@@ -24,8 +24,8 @@
 | `minecraft:ghast` | `minecraft:undead` | **Undead**, not Netherborn/Spirit |
 | `eidolon_repraised:necromancer` | `minecraft:undead` | **Undead**, despite role as caster |
 | `irons_spellbooks:necromancer` | `minecraft:undead` | **Undead**, despite role as caster |
-| `cataclysm:ancient_remnant` | `minecraft:undead` | **Undead + Prehistoric** |
-| `cataclysm:modern_remnant` | `minecraft:undead` | **Undead + Prehistoric**; neutral/contract limitations still apply |
+| `cataclysm:ancient_remnant` | `minecraft:undead` | **Undead + Beast** |
+| `cataclysm:modern_remnant` | `minecraft:undead` | **Undead + Beast**; neutral/contract limitations still apply |
 | `cataclysm:koboleton`, `cataclysm:wadjet`, `cataclysm:kobolediator`, `cataclysm:ignited_berserker` | `minecraft:undead` | **Undead**, not desert/fire/weapon-type categories |
 | `cataclysm:clawdian` | `minecraft:aquatic` + `minecraft:arthropod` | **Aquatic + Arthropod** |
 | `goety:watchling`, `goety:blastling`, `goety:snareling` | `goety:enderlings` | **Void lineage** (not general End mobs) |
