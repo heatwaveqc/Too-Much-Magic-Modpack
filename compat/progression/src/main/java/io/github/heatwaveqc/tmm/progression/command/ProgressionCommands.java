@@ -85,6 +85,24 @@ public final class ProgressionCommands {
                             "Armor Lock not unlocked"),true);
                         return ok ? 1 : 0;
                     }))
+                .then(Commands.literal("glide")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"glide");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Momentum Glide: " + ClassAbilities.mode(p,"glide") :
+                            "Momentum Glide requires verified dragon defeat and mastery"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("ordeal")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"ordeal");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Blindness Ordeal: " + ClassAbilities.mode(p,"ordeal") :
+                            "Blindness Ordeal unavailable"),true);
+                        return ok ? 1 : 0;
+                    }))
                 .then(Commands.literal("treasure")
                     .executes(ctx -> {
                         ServerPlayer p = ctx.getSource().getPlayerOrException();
