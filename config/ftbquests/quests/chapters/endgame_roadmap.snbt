@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D902000300001", type: "xp", xp: 2 }
-				{ id: "544DA02000300002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA02000300002", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 8 }
 			]
 			size: 1.5d
 			tasks: [
@@ -73,7 +73,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D606000400001", type: "xp", xp: 10 }
-				{ id: "544D706000400002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+				{ id: "544D706000400002", type: "item", item: { id: "minecraft:ladder", count: 1 }, count: 12 }
 			]
 			tasks: [
 				{ id: "544D806000400000", type: "checkmark" }
@@ -87,7 +87,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D606000500001", type: "xp", xp: 10 }
-				{ id: "544D706000500002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+				{ id: "544D706000500002", type: "item", item: { id: "minecraft:firework_rocket", count: 1 }, count: 4 }
 			]
 			tasks: [
 				{ id: "544D806000500000", type: "checkmark" }
@@ -101,7 +101,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D606000600001", type: "xp", xp: 10 }
-				{ id: "544D706000600002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+				{ id: "544D706000600002", type: "item", item: { id: "minecraft:phantom_membrane", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D806000600000", type: "checkmark" }

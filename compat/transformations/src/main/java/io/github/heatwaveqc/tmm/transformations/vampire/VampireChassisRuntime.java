@@ -178,7 +178,24 @@ public final class VampireChassisRuntime {
                         updated >= maxNative ? VampireBloodCarry.empty() : credit.remainder());
             } else {
                 int nativeUnits = VampireBloodMath.costRoundUp(amount, maxJAWR, maxNative);
-                VampireNativeAccess.spendNativeBlood(player, nativeUnits);
+                int before = VampireNativeAccess.nativeCurrent(player);
+                // JAWR's decreaseBlood is void; the ability may already have applied.
+                // Until the upstream ability preflight is hooked, an unaffordable
+                // charge must be reported as a release-blocking state, never silently
+                // ignored or partially deducted.
+                if (before < nativeUnits || !VampireNativeAccess.spendNativeBlood(player, nativeUnits)) {
+                    hold(player, "JAWR ability charge rejected; pre-activation gate required",
+                            new IllegalStateException("insufficient canonical blood for JAWR charge "
+                                    + amount + " -> " + nativeUnits + " native units; available " + before));
+                    return true;
+                }
+                int after = VampireNativeAccess.nativeCurrent(player);
+                if (before - after != nativeUnits) {
+                    hold(player, "JAWR ability charge mismatched",
+                            new IllegalStateException("expected native debit " + nativeUnits
+                                    + " but observed " + (before - after)));
+                    return true;
+                }
             }
             // Canonical mutation hooks sync the JAWR shadow; this is a defensive recheck.
             onNativeBloodChanged(player);

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "kind": "design_specification_not_live",
+  "profile_id": "too-much-magic",
+  "source": "Apotheosis 1.21 branch, src/generated/resources/data/apotheosis/rarities/*.json",
+  "recipe": {
+    "candidate_station": "smithing_table",
+    "other_candidate": "anvil",
+    "choice": "smithing_preferred_pending_in_game_test",
+    "base": "one edible item with valid food component",
+    "addition": "one rarity material resolved via Apotheosis RarityRegistry material map",
+    "template": "custom reusable monk-related template, optional, not yet decided",
+    "output": "one item preserving base food and its properties, with an attached one-use infused-rarity marker",
+    "stacking": "no infusion stacking; no re-infusing already treated food",
+    "food_identity": "original food registry id, not a new food identity",
+    "can_non_monk_craft": "undecided",
+    "can_non_monk_consume": true,
+    "grants_mastery_xp": "only if consumed by a Monk; award after successful server-confirmed consumption",
+    "repeatable": true,
+    "first_time_food_bonus": "separate one-time discovery bonus; infusion does not reset or duplicate it",
+    "note": "The material is consumed at crafting; one infused food is consumed once. Do not award XP on crafting."
+  },
+  "rarity_rewards": [
+    {
+      "rarity": "apotheosis:common",
+      "material": "apotheosis:mysterious_scrap_metal",
+      "monk_experience": null
+    },
+    {
+      "rarity": "apotheosis:uncommon",
+      "material": "apotheosis:timeworn_fabric",
+      "monk_experience": null
+    },
+    {
+      "rarity": "apotheosis:rare",
+      "material": "apotheosis:luminous_crystal_shard",
+      "monk_experience": null
+    },
+    {
+      "rarity": "apotheosis:epic",
+      "material": "apotheosis:arcane_sands",
+      "monk_experience": null
+    },
+    {
+      "rarity": "apotheosis:mythic",
+      "material": "apotheosis:godforged_pearl",
+      "monk_experience": null
+    }
+  ],
+  "test_gates": [
+    "ingredient resolution from pinned runtime rarity registry",
+    "server-authoritative consumption reward",
+    "crafting consume exactly one rarity material",
+    "keep other food effects/nutrition and required containers",
+    "don't grant XP for a recipe or partial/cancelled meal",
+    "no double-dipping for re-infused food or stack splitting",
+    "prevent automation/dupe exploits and unauthorized cheap rarity material routes",
+    "clamp overflow/save progress",
+    "verify edible items can be processed by one custom smithing recipe"
+  ]
+}

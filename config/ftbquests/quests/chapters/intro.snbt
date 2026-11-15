@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D601000100001", type: "xp", xp: 5 }
-				{ id: "544D701000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D701000100002", type: "item", item: { id: "minecraft:glow_berries", count: 1 }, count: 4 }
 			]
 			size: 1.5d
 			tasks: [
@@ -44,7 +44,7 @@
 			dependencies: ["544D4D1100000001"]
 			rewards: [
 				{ id: "544D601000300001", type: "xp", xp: 10 }
-				{ id: "544D701000300002", type: "item", item: { id: "minecraft:bowl", count: 1 }, count: 2 }
+				{ id: "544D701000300002", type: "item", item: { id: "minecraft:rabbit_stew", count: 1 }, count: 1 }
 			]
 			tasks: [
 				{ id: "544D801000300000", type: "item", item: { id: "minecraft:crafting_table", count: 1 } }
@@ -52,6 +52,38 @@
 			x: 0.0d
 			y: 6.0d
 		}
+		{
+			id: "544D501001300000"
+			icon: { id: "minecraft:enchanted_book" }
+			dependencies: ["544D501000300000"]
+			optional: true
+			rewards: [
+				{ id: "544D601001300001", type: "xp", xp: 20, team_reward: false }
+				{
+					id: "544D701001300002"
+					type: "choice"
+					team_reward: false
+					auto_claim: "disabled"
+					table_data: {
+						loot_size: 1
+						rewards: [
+						{ id: "544D901001300001", type: "item", item: { id: "ars_nouveau:novice_spell_book", count: 1 }, count: 1 }
+						{ id: "544D901001300002", type: "item", item: { id: "irons_spellbooks:copper_spell_book", count: 1 }, count: 1 }
+						{ id: "544D901001300003", type: "item", item: { id: "minecraft:fishing_rod", count: 1 }, count: 1 }
+						{ id: "544D901001300004", type: "item", item: { id: "botania:lexicon", count: 1 }, count: 1 }
+						{ id: "544D901001300005", type: "item", item: { id: "occultism:dictionary_of_spirits", count: 1 }, count: 1 }
+						{ id: "544D901001300006", type: "item", item: { id: "minecraft:spyglass", count: 1 }, count: 1 }
+						]
+					}
+				}
+			]
+			tasks: [
+				{ id: "544D801001300000", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+
 		{
 			id: "544D501000400000"
 			icon: { id: "minecraft:wooden_pickaxe" }
@@ -186,10 +218,10 @@
 			optional: true
 			rewards: [
 				{ id: "544D601000D00001", type: "xp", xp: 20 }
-				{ id: "544D701000D00002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+				{ id: "544D701000D00002", type: "item", item: { id: "minecraft:bread", count: 1 }, count: 2 }
 			]
 			tasks: [
-				{ id: "544D801000D00000", type: "checkmark" }
+				{ id: "544D801000D00000", type: "item", item: { id: "minecraft:barrel", count: 1 } }
 			]
 			x: 4.0d
 			y: 21.0d
@@ -204,7 +236,7 @@
 				{ id: "544D701000E00002", type: "item", item: { id: "minecraft:glowstone_dust", count: 1 }, count: 4 }
 			]
 			tasks: [
-				{ id: "544D801000E00000", type: "checkmark" }
+				{ id: "544D801000E00000", type: "item", item: { id: "minecraft:lectern", count: 1 } }
 			]
 			x: 8.0d
 			y: 21.0d
@@ -249,7 +281,7 @@
 				{ id: "544D701001100002", type: "item", item: { id: "minecraft:firework_rocket", count: 1 }, count: 4 }
 			]
 			tasks: [
-				{ id: "544D801001100000", type: "checkmark" }
+				{ id: "544D801001100000", type: "item", item: { id: "minecraft:spyglass", count: 1 } }
 			]
 			x: 4.0d
 			y: 27.0d
@@ -261,11 +293,11 @@
 			optional: true
 			rewards: [
 				{ id: "544D601001200001", type: "xp", xp: 30 }
-				{ id: "544D701001200002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
+				{ id: "544D701001200002", type: "item", item: { id: "minecraft:oak_boat", count: 1 }, count: 1 }
 			]
 			size: 1.5d
 			tasks: [
-				{ id: "544D801001200000", type: "checkmark" }
+				{ id: "544D801001200000", type: "item", item: { id: "minecraft:filled_map", count: 1 } }
 			]
 			x: 8.0d
 			y: 27.0d
