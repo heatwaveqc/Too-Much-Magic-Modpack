@@ -1,6 +1,8 @@
 package io.github.heatwaveqc.tmm.transformations.lich;
 
 import io.github.heatwaveqc.tmm.transformations.TransformationsMod;
+import io.github.heatwaveqc.tmm.transformations.adapters.DragonSurvivalProbe;
+import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -56,6 +58,13 @@ public final class ArchlichResurrectionEvents {
                 || !ModList.get().isLoaded("witchery_forbidden_magic")
                 || !pinnedVersion("goety", "3.2.2")
                 || !pinnedVersion("witchery_forbidden_magic", "0.5.37")) {
+            return;
+        }
+
+        // A dragon with both lich providers is an invalid combination,
+        // never a legitimate Archlich. Do not let this adapter pre-empt the
+        // dragon's native anti-death ability or consume JAWR souls.
+        if (new DragonSurvivalProbe().observe(player) == Observation.PRESENT) {
             return;
         }
 
