@@ -140,7 +140,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | queued | — |
 | `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
 | `totemic` | Totemic | magic | enabled flag | full | queued | — |
-| `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | queued | — |
+| `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | researching | [profile](mods/witchery-remake.md) |
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
@@ -209,7 +209,7 @@ No reports yet. Create one Markdown file per *specific, actionable interaction* 
 
 | Interaction report | Participants | Status | Key finding |
 | --- | --- | --- | --- |
-| — | — | — | None yet; priority questions appear above |
+| [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
 
 ## Quest/compatibility design handoffs
 
@@ -228,4 +228,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Occultism 1.227.0 profile started from matching release source. The Dictionary progression graph and broad worker branches are mapped; the current chapter is only a checkmark stub. Matching source defines ordinary miner-tag recipes for Draconium Ore and Uranium Ore, plus an Ancient Eldritch Miner raw-uranium recipe. Common tag/runtime availability is not yet confirmed; see docs/COMPATIBILITY.md and the profile.
 
 - 2026-11-15 — Neo Vitae 1.1.53 profile added from version-aligned source and generated Scriptura Vitae; mapped tiers 0–5, parallel branches, Mine Key drops, EV/Spiritus pathways, and the source-supported Occultism storage bridge. API/version and client behavior remain untested; see the profile and compatibility note.
-- **Next action:** continue the highest-value magic systems with `witchery-remake` (rank 4), then `forbidden-magic`, `vampirism`, `werewolves`, `summoning-rituals`, and `botania-revived`. Occultism and Neo Vitae are meaningful source-research slices but remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — JAWR 0.5.39 profile started from the exact hash-pinned JAR. Mapped the 223-entry native Guidebook and nine-stage supernatural journals; identified the reported cauldron Altar Power bypass in all ten cauldron-crafting recipes and a cross-version familiar recipient report. See the profile and `docs/COMPATIBILITY.md`.
+- **Next action:** continue with `forbidden-magic` (rank 5), then audit whether standalone `vampirism` / `werewolves` rows remain active under the latest owner design before spending full profile effort on them. Next priority after those integration decisions: `summoning-rituals`, then `botania-revived`, `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae and JAWR are source-research slices but remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.

@@ -19,6 +19,8 @@
 
 **Why it matters in TMM:** This is the pack’s explicit blood-altar system and one of three owner-approved alternative center items for the Philosopher’s Stone: the Neo Vitae Mine Key. The design only names the key as a candidate tradeable boss-associated drop; it does not assert an implemented gate. The optional Sigil of Bound Treasures can open Occultism storage controllers/proxies, so Neo Vitae exposes a direct integration surface that the earlier general mod inventory did not capture. [docs: `docs/DESIGN.md`; source: `2744123`, `compat/occultism`]
 
+**Cross-mod blood route:** JAWR 0.5.39 also ships a conditional Rite of Bloodbinding and Neo Vitae adapter for an Anima-powered Bloodstone Pendant; see the [source-supported interaction report](../interactions/neovitae--witchery-remake--vampire-blood.md). Exact blood/Anima transfer is untested.
+
 **Quick start:** Craft and open the Scriptura Vitae (one book plus four redstone dust in a plus pattern). In Utility → The Path of Ascension, start with a diamond on the bare Ara Vitae to draw enough nearby life for the first Novicius Orb. Right-click the orb to bleed into it; the first-use guide recommends making Tabula Rasa and Throwing Daggers. Use Tabula Vitae for Arcane Scribe Tools and reagents. Use the Scribe Tool on the ground to open an Alchemy Array and consult JEI for its two offerings. Damage eligible creatures with Throwing Daggers to collect Spiritus for the Hellfire Forge; a Sentient Sword is the more efficient harvesting route. The guide maps the later altar, ritual, armor and dungeon stages. [source: `2744123`, `GettingStartedEntry.java`, `guide_book.json`, `recipe/guide_book.json`]
 
 ### Player-value snapshot

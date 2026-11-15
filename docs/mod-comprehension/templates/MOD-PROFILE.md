@@ -162,7 +162,7 @@ Inspect canonical authoring data and generated quest data, not only a PR summary
 
 | Claim / section | Source URL or exact inspected `file:path` + immutable SHA | Evidence tag / version of source | Pack version gap / what it proves / remaining limits |
 | --- | --- | --- | --- |
-| P-001 | ... | [source: SHA] / [docs: version] / [pack-test: build/world] / [inference] | ... |
+| P-001 | ... | [pin] / [jar: SHA512] / [source: SHA] / [docs: version] / [pack-test: build/world] / [inference] | ... |
 
 Cite the source **next to the important claim** as well as here. If a primary source is unavailable, state the attempted source and blocker.
 
