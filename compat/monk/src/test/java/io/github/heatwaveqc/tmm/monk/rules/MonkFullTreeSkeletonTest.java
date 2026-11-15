@@ -172,12 +172,32 @@ final class MonkFullTreeSkeletonTest {
         JsonObject slot = read(Path.of("design", "fist-slot-lock-contract-v1.json"));
         assertEquals("DESIGN_ONLY_NOT_RUNTIME_ENABLED", slot.get("state").getAsString());
         JsonObject position = slot.getAsJsonObject("default_slot");
-        assertEquals(8, position.get("zero_based_hotbar_index").getAsInt());
-        assertEquals(9, position.get("user_visible_hotbar_position").getAsInt());
+        assertEquals(0, position.get("zero_based_hotbar_index").getAsInt());
+        assertEquals(1, position.get("user_visible_hotbar_position").getAsInt());
         assertTrue(position.get("not_item").getAsBoolean());
         assertEquals("automatic_on_valid_monk_faction_join_no_skill_point_purchase",
                 slot.get("unlock").getAsString());
         assertTrue(slot.getAsJsonArray("prelaunch_tests").size() >= 10);
+
+        JsonObject armor = read(Path.of("design", "armor-lockout-trait-v1.json"));
+        assertEquals("DESIGN_ONLY_NOT_RUNTIME_ENABLED", armor.get("state").getAsString());
+        assertTrue(armor.get("default_enabled_for_new_monks").getAsBoolean());
+        assertEquals(0, armor.get("native_skill_point_cost").getAsInt());
+        assertEquals(4, armor.getAsJsonObject("slot_policy")
+                .getAsJsonArray("armor_equipment_slots").size());
+        assertEquals("tmm_monk:reserved_fist_slot", armor.get("independent_from").getAsString());
+
+        var passiveFeatures = blueprint.getAsJsonArray("passive_features");
+        assertEquals(2, passiveFeatures.size(), "Free fist and armor lock are passives, not paid nodes");
+        assertEquals("tmm_monk:reserved_fist_slot",
+                passiveFeatures.get(0).getAsJsonObject().get("id").getAsString());
+        assertEquals(0, passiveFeatures.get(0).getAsJsonObject().get("default_hotbar_index").getAsInt());
+        assertEquals("tmm_monk:armor_lock",
+                passiveFeatures.get(1).getAsJsonObject().get("id").getAsString());
+        assertTrue(passiveFeatures.get(1).getAsJsonObject().get("default_enabled").getAsBoolean());
+        assertEquals(0, passiveFeatures.get(1).getAsJsonObject().get("native_skill_point_cost").getAsInt());
+        assertEquals("design_only_not_runtime_enabled",
+                passiveFeatures.get(1).getAsJsonObject().get("state").getAsString());
 
         String preview = Files.readString(Path.of("design", "preview",
                 "monk_level.configured_tree.PREVIEW.json"));
