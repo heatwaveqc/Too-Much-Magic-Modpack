@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -28,6 +29,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::equipmentChange);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::targetChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
@@ -77,6 +79,10 @@ public final class ProgressionEvents {
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
             EffectHandlers.equipmentChange(player,event);
+    }
+    private static void targetChange(LivingChangeTargetEvent event) {
+        if (event.getNewAboutToBeSetTarget() instanceof ServerPlayer player)
+            EffectHandlers.targetChange(player,event);
     }
     private static void jump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
