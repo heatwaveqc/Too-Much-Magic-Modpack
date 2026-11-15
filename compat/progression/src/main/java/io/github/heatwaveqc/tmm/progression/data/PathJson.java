@@ -185,12 +185,20 @@ public final class PathJson {
                 anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects));
         }
         for (Definition.Skill skill : skills) {
-            for (String needed : skill.requiresSkills())
+            for (String needed : skill.requiresSkills()) {
                 if (!skillsSeen.contains(needed))
                     throw new IllegalArgumentException("Unknown required skill " + needed);
+                if (!skill.choiceGroup().isEmpty() && skills.stream().anyMatch(other ->
+                    other.id().equals(needed) && other.choiceGroup().equals(skill.choiceGroup())))
+                    throw new IllegalArgumentException("Choice cannot require mutually exclusive skill " + needed);
+            }
             for (String needed : skill.requiresAnySkills())
                 if (!skillsSeen.contains(needed))
                     throw new IllegalArgumentException("Unknown alternative required skill " + needed);
+            if (!skill.choiceGroup().isEmpty() && !skill.requiresAnySkills().isEmpty() &&
+                skill.requiresAnySkills().stream().allMatch(needed -> skills.stream().anyMatch(other ->
+                    other.id().equals(needed) && other.choiceGroup().equals(skill.choiceGroup()))))
+                throw new IllegalArgumentException("All alternatives mutually exclusive with " + skill.id());
             if (!skill.choiceGroup().isEmpty() &&
                     skill.requiresSkills().contains(skill.id()))
                 throw new IllegalArgumentException("Self-required skill " + skill.id());
