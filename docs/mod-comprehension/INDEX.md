@@ -132,7 +132,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | queued | — |
 | `malum` | Malum | magic | enabled flag | full | queued | — |
 | `neovitae` | Neo Vitae | magic | enabled flag | full | queued | — |
-| `occultism` | Occultism | magic | enabled flag | full | queued | — |
+| `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | queued | — |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | queued | — |
 | `psi` | Psi | magic | enabled flag | full | queued | — |
@@ -225,5 +225,6 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Adopted the eight original methodology refinements plus player-value summary and subsystem coverage; the [walkthrough standard](../QUEST-WALKTHROUGH-STANDARD.md) requires early guidebook access and full rewarded how-to progression. Existing pilot quests must be gap-audited against it.
 - 2026-11-15 — Added choice-boundary guidance: distinguish mandatory gates from player-selected branches and audit quest prose separately from task predicates and progression coverage.
 - 2026-11-15 — Resolved source identity for two previously uncertain addon pins by tracing version metadata history: Ars Additions 21.3.0 and Ars Elemental 0.7.10.4 now have immutable source commits. Their declared Ars Nouveau dependencies are older than TMM's base pin, so compatibility remains a client/source review item.
+- 2026-11-15 — Occultism 1.227.0 profile started from matching release source. The Dictionary progression graph and broad worker branches are mapped; the current chapter is only a checkmark stub. New compatibility issue: audit every Dimensional Mineshaft miner output against planned ore and boss gates. This is unverified, not a confirmed leak.
 
-- **Next action:** proceed with `occultism` (rank 2) using the expanded progression-first template. When quest implementation is authorized, reconcile [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74), add the Worn Notebook onboarding quest and the Occultism Crush lesson, then close remaining source/client gaps.
+- **Next action:** finish Occultism's exact recipe, miner-output, storage and familiar audits; then proceed to `neovitae` (rank 3). Quest implementation is a later pass; reconcile its chapter with the final research matrix only when authorized.
