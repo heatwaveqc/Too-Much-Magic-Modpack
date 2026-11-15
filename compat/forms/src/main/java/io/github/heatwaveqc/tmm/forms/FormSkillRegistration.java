@@ -121,11 +121,11 @@ public final class FormSkillRegistration {
         var id = event.getSkill().getID();
         if (!NODES.containsKey(id)) return;
         var manager = com.tyzsskills.api.TyzsSkillsAPI.skills();
-        int remainingAfterSingleRefund = Math.max(0, manager.getSkillLevel(event.getPlayer(), id) - 1);
-        // Tyz invokes this same RefundPre event for bulk refunds. Therefore
-        // fail closed when *any* descendant is still owned, even for a
-        // hypothetical single-rank refund of a multi-rank parent.
-        if (remainingAfterSingleRefund > 0) return;
+        // Tyz RefundPre is shared by a single-rank and a bulk-to-zero refund,
+        // without an event flag distinguishing the two. Conservatively refuse
+        // every parent refund while a purchased descendant remains, avoiding
+        // a bulk-refund prerequisite bypass. A future typed pre-event can make
+        // individual refunds less restrictive safely.
         for (Node node : NODES.values()) {
             if ((node.prerequisites().contains(id) || node.serverPrerequisites().contains(id))
                     && manager.getSkillLevel(event.getPlayer(), node.id()) > 0) {
