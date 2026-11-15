@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " M ",
+    "SRS",
+    " M "
+  ],
+  "key": {
+    "M": "minecraft:moss_block",
+    "S": "minecraft:spider_eye",
+    "R": "minecraft:rotten_flesh"
+  },
+  "result": {
+    "id": "tmm_progression:bio_mutagen",
+    "count": 1
+  }
+}
