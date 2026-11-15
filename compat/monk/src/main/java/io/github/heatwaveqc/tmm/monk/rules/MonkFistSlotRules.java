@@ -13,7 +13,7 @@ import java.util.Optional;
 public final class MonkFistSlotRules {
     public static final int HOTBAR_SIZE = 9;
     public static final int PLAYER_STORAGE_SIZE = 36;
-    public static final int DEFAULT_FIST_INDEX = 8; // Ninth hotbar slot, zero-based.
+    public static final int DEFAULT_FIST_INDEX = 0; // First hotbar slot, numeral 1, zero-based.
 
     private MonkFistSlotRules() { }
 
