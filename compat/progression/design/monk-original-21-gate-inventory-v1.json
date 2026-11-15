@@ -445,11 +445,13 @@
         "milestone_id": "tmm_progression:trial_bedrock_sleep",
         "bonus_xp": 230,
         "enforced_as_rank_gate": false,
-        "status": "pending_compatible_meditation_adapter",
-        "server_source_event": "external tmm_progression:bedrock_sleep_verified"
+        "status": "live_repeatable_bedrock_rest_after_rank17",
+        "server_source_event": "external tmm_progression:bedrock_rest_completed after full real sleep"
       },
       "notes": [
-        "New Minecraft versions and dimensions may not permit this old custom sleep mechanic; use a safe meditation equivalent."
+        "New Minecraft versions and dimensions may not permit this old custom sleep mechanic; use a safe meditation equivalent.",
+        "Rank-17 native Bedrock Rest grants repeatable real night/thunder sleep on two exposed horizontally adjacent bedrock blocks; no respawn-set and no sleeping on bare bedrock by non-Monks.",
+        "First sufficiently long completed Bedrock Rest awards the original one-time +230 cultivation XP milestone; repeating it grants no extra milestone XP."
       ],
       "original_code": "MonkRequirementBedrockSleep.java"
     },
