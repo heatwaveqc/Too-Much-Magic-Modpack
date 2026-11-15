@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+group = 'dev.heatwaveqc.tmm'
+version = '0.0.1-pilot'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+    withSourcesJar()
+}
+
+neoForge {
+    version = '21.1.265'
+    mods {
+        tmm_hexcast_media_pilot {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    // NEVER commit the downloaded third-party JAR. CI verifies the exact B6 SHA-512.
+    compileOnly files('libs/hexcasting.jar')
+}

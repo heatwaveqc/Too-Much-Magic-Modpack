@@ -229,7 +229,7 @@
 			icon: { id: "minecraft:lapis_lazuli" }
 			rewards: [
 				{ id: "544D604001000001", type: "xp", xp: 15 }
-				{ id: "544D704001000002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+				{ id: "544D704001000002", type: "item", item: { id: "minecraft:glowstone_dust", count: 1 }, count: 2 }
 			]
 			tasks: [
 				{ id: "544D804001000000", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 8L }
@@ -307,7 +307,7 @@
 			icon: { id: "minecraft:ender_pearl" }
 			rewards: [
 				{ id: "544D604001600001", type: "xp", xp: 35 }
-				{ id: "544D704001600002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 3 }
+				{ id: "544D704001600002", type: "item", item: { id: "minecraft:blaze_powder", count: 1 }, count: 3 }
 			]
 			tasks: [
 				{ id: "544D804001600000", type: "item", item: { id: "minecraft:ender_pearl", count: 1 }, count: 4L }
