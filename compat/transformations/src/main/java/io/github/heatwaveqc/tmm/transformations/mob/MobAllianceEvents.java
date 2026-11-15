@@ -59,9 +59,7 @@ public final class MobAllianceEvents {
     }
 
     private static boolean fae(LivingEntity entity) {
-        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
-        return entity.getType().is(FAE)
-                || ("feywild".equals(id.getNamespace()) && !entity.getType().is(BOSS_EXEMPT));
+        return entity.getType().is(FAE) && !entity.getType().is(BOSS_EXEMPT);
     }
 
     private static boolean lich(ServerPlayer player) {
@@ -146,7 +144,7 @@ public final class MobAllianceEvents {
             if ("minecraft".equals(id.getNamespace()) || type.getCategory() == MobCategory.MISC) continue;
             total++;
             String group = type.is(EntityTypeTags.UNDEAD) || type.is(EXTRA_UNDEAD) ? "undead"
-                    : type.is(FAE) || "feywild".equals(id.getNamespace()) ? "fae"
+                    : type.is(FAE) ? "fae"
                     : type.is(DEMONS) ? "demon"
                     : type.is(FOREST_DRAGONS) ? "forest_dragon"
                     : type.is(CAVE_DRAGONS) ? "cave_dragon"
