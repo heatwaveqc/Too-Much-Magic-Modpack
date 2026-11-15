@@ -104,4 +104,48 @@ class PathJsonTest {
         }
     }
 
+
+    @Test void hunterStarterSkillsAndXpCurveParseAsShipped() throws Exception {
+        String resource = "data/tmm_progression/tmm_progression/paths/hunter.json";
+        try (var stream = PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
+            assertNotNull(stream);
+            var path = PathJson.read("tmm_progression:hunter",JsonParser.parseReader(
+                new java.io.InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8))
+                .getAsJsonObject());
+            assertEquals(20,path.maxRank());
+            assertEquals(28000,path.rankXp().getLast());
+            assertEquals(1,path.pointsPerRank());
+            for (String skillId : new String[] {
+                "rooted", "evasion_undead", "evasion_raiders", "sword_specialist",
+                "axe_specialist", "scythe_specialist", "bow_specialist",
+                "crossbow_specialist", "fast_hands_bow", "fast_hands_crossbow"
+            }) assertNotNull(path.skill("tmm_progression:" + skillId),skillId);
+            assertEquals("evasion",path.skill("tmm_progression:evasion_undead").effects().getFirst().type());
+            assertEquals("#tmm_progression:undead",
+                path.skill("tmm_progression:evasion_undead").effects().getFirst().selector());
+            assertEquals("fast_hands",path.skill("tmm_progression:fast_hands_bow").effects().getFirst().type());
+            assertEquals("minecraft:knockback_resistance",
+                path.skill("tmm_progression:rooted").effects().getFirst().attribute());
+        }
+    }
+
+    @Test void evasionAndFastHandsRequireSafeTargetAndSpeedConfiguration() {
+        String base = """
+            {"schema":1,"rank_xp":[0,20],"skills":[
+                {"id":"test:evasion","effects":[
+                    {"type":"evasion","target":"#test:quarry","per_rank":0.1}]},
+                {"id":"test:fast","effects":[
+                    {"type":"fast_hands","weapon":"minecraft:bow","per_rank":0.2}]}
+            ]}
+            """;
+        assertEquals(2,PathJson.read("test:hunter",
+            JsonParser.parseString(base).getAsJsonObject()).skills().size());
+        String anyAttacker = base.replace("#test:quarry","*");
+        assertThrows(IllegalArgumentException.class, () ->
+            PathJson.read("test:hunter",JsonParser.parseString(anyAttacker).getAsJsonObject()));
+        String unbounded = base.replace("\"per_rank\":0.2","\"per_rank\":3");
+        assertThrows(IllegalArgumentException.class, () ->
+            PathJson.read("test:hunter",JsonParser.parseString(unbounded).getAsJsonObject()));
+    }
+
 }
