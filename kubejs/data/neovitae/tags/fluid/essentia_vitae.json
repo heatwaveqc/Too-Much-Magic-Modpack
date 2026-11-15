@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "evilcraft:blood",
+    "irons_spellbooks:blood",
+    "hexerei:blood_fluid",
+    "hexerei:blood_flowing"
+  ]
+}
