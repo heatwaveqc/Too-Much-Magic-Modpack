@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
-| Category / parent or addons | Primary magic system; see [Ars Elemental](ars-elemental.md), [Ars 'n Spells](ars-n-spells.md), [Ars Ocultas](ars-ocultas.md), [Ars Unification](ars-unification.md) when profiles exist |
+| Category / parent or addons | Primary magic system; four separate addon profiles are queued: Ars Elemental, Ars 'n Spells, Ars Ocultas and Ars Unification. Track them in the [coverage index](../INDEX.md). |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` at base `385c69889fccf281f94957ba4063488e1646a2e0` |
 | Upstream source snapshot | `baileyholl/Ars-Nouveau` commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098`; source version matches pin, binary not locally compared |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
