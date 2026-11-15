@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -29,6 +29,18 @@
       "dependencies_verified": true,
       "note": "Owner-approved QoL integration (2026-11-13). Book-only magic guidebook organizer, not a generic backpack.",
       "packwiz_slug": "akashic-tome"
+    },
+    {
+      "id": "alexs-caves-continued",
+      "name": "Alex's Caves Continued",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.1.2+neoforge-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/alexs-caves-continued/version/wSeCJMlI",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved PLANNED inclusion 2026-11-15; not yet in active packwiz. Exact NeoForge 1.21.1 release staged in PR #56; separate CodxLib dependency. Do not import obsolete uranium-to-BiggerReactors bridge. Client/worldgen and cave-book tests pending."
     },
     {
       "id": "apotheosis",
@@ -283,31 +295,6 @@
       "packwiz_slug": "better-advancements"
     },
     {
-      "id": "bigger-reactors",
-      "name": "Bigger Reactors",
-      "category": "technology",
-      "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/biggerreactors",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "RogueLogix original only publishes <=1.20.1 on official CurseForge as of 2026-11-13. Unofficial 1.21.1 NeoForge Rework and Revived forks available but REQUIRE user approval before substitution."
-    },
-    {
-      "id": "bigger-reactors-rework",
-      "name": "Bigger Reactors Rework",
-      "category": "technology",
-      "desired": true,
-      "version": "biggerreactorsrework-1.21.1-0.1.6",
-      "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/biggerreactors-rework",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "packwiz_slug": "biggerreactors-rework",
-      "note": "Approved BiggerReactors Rework 1.21.1 fork, namespace biggerreactorsrework; non-migrating worlds"
-    },
-    {
       "id": "bookshelf",
       "name": "Bookshelf",
       "category": "dependency",
@@ -445,6 +432,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "codechicken-lib-1-8"
+    },
+    {
+      "id": "codxlib",
+      "name": "CodxLib",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.5.1+neoforge-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/6oyMM4yX/version/FW5ZWCXm",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Planned necessary Alex's Caves Continued dependency, staged on PR #56; not integrated or client-tested. Citadel is bundled with the cave port."
     },
     {
       "id": "comforts",
@@ -944,7 +943,7 @@
     },
     {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1047,7 +1046,7 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks \u2014 ReFoxed",
+      "name": "Inventory Tweaks — ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
@@ -1444,7 +1443,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 \u2014 Crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1457,7 +1456,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1470,7 +1469,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1483,7 +1482,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 \u2014 Trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -2038,7 +2037,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -2051,7 +2050,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -2150,7 +2149,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
@@ -2179,6 +2178,14 @@
     {
       "id": "building-gadgets-2",
       "reason": "Owner explicitly rejected Building Gadgets during building audit 2026-11-15"
+    },
+    {
+      "id": "bigger-reactors",
+      "reason": "Owner removed from roster 2026-11-15. Multiple native magical FE generation paths plus Draconic Evolution make a nuclear technology progression redundant; no uranium conversion/ore gate needed."
+    },
+    {
+      "id": "bigger-reactors-rework",
+      "reason": "Owner removed from roster 2026-11-15. Multiple native magical FE generation paths plus Draconic Evolution make a nuclear technology progression redundant; no uranium conversion/ore gate needed."
     }
   ],
   "items_blacklist": [
