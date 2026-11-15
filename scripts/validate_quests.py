@@ -368,10 +368,31 @@ def main() -> None:
             ensure(product["category"] == "tmm:" + cat, f"Wrong namespaced shop category in {cat}")
             ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
             ensure(not product["item"].startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:")), f"Shop progression bypass item {product['item']}")
+    # First log detects progress; the pouch is claimable ONLY through FTB Quests.
+    first_log = resolved_by_id["544D4D1100000001"]
+    ensure(first_log["reward"] == {"xp": 10, "item": "ars_elemental:curio_bag", "count": 1},
+           "Punch a Tree must give exactly one claimable Trinkets Pouch")
+    ensure('id: "544D701000200002", type: "item", item: { id: "ars_elemental:curio_bag", count: 1 }, count: 1' in all_blocks["544D4D1100000001"],
+           "Punch a Tree FTB reward is not the pouch")
     fn = (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").read_text(encoding="utf-8")
-    ensure(fn.count("give @s ars_elemental:curio_bag 1") == 1, "First-log item issued wrong number of times")
+    ensure(not re.search(r'(?m)^\\s*(?:give|loot|item|function)\\b', fn),
+           "Legacy first-log function may not grant items or chain other grants")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
-    ensure(a.get("rewards", {}).get("function") == "tmm:rewards/first_log", "First-log advancement reward changed")
+    ensure(a.get("rewards", {}).get("function") is None,
+           "First-log advancement must not trigger the old automatic pouch function")
+    ensure(a.get("criteria", {}).get("first_log", {}).get("trigger") == "minecraft:inventory_changed",
+           "First-log advancement must still detect the original progression event")
+    slot = json.loads((ROOT / "kubejs/data/tmm/curios/slots/bundle.json").read_text(encoding="utf-8"))
+    ensure(slot.get("size") == 1 and slot.get("operation") == "SET"
+           and slot.get("validators") == ["curios:tag"], "Bundle must be exactly one tagged slot")
+    entity_slots = json.loads((ROOT / "kubejs/data/tmm/curios/entities/player.json").read_text(encoding="utf-8"))
+    ensure("minecraft:player" in entity_slots.get("entities", [])
+           and entity_slots.get("slots") == ["bundle"], "Bundle Curios slot must be assigned to players")
+    bags = json.loads((ROOT / "kubejs/data/curios/tags/item/bundle.json").read_text(encoding="utf-8"))
+    ensure(set(bags.get("values", [])) == {"ars_elemental:curio_bag", "ars_elemental:caster_bag"},
+           "Bundle slot must accept the 27-slot pouch and its 54-slot upgrade only")
+    labels = json.loads((ROOT / "kubejs/assets/tmm/lang/en_us.json").read_text(encoding="utf-8"))
+    ensure(labels.get("curios.identifier.bundle") == "Bundle", "Bundle Curios slot needs a UI label")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
     for path in QUESTS.rglob("*.snbt"):
