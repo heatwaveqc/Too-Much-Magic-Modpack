@@ -230,7 +230,8 @@
     "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA.",
     "test/quest-standards-starter-choice-2026-11-14": "Prior 180-entry quest source; feature/quest-reward-humor-first-pass is a descendant with identical IDs plus checked filler reward replacement.",
     "feature/mxp-ledger-dispatcher": "Ancestor superseded by new MXP hooks source branch; do not import both.",
-    "fix/jawr-blood-debit-guard": "Previous symmetrical dual-vampire native blood debit guard; NOT used after Vampire Ascension v2 reversal."
+    "fix/jawr-blood-debit-guard": "Previous symmetrical dual-vampire native blood debit guard; NOT used after Vampire Ascension v2 reversal.",
+    "design/mxp-all-magic-sources-implementation-checklist": "Research/checklist only (docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md); no independent runtime mods; canonical MXP source code remains feature/mxp-ars-irons-botania-neo-hooks."
   },
   "pending_runtime_work": [
     "NEXT QA MUST HAVE: Dragon Survival v2.0.74, its Sea/Forest/Cave food compatibility scripts, Comforts and client-only Colorful Hearts all hash-pinned and installed. Server smoke must pass; client gameplay remains unverified.",
