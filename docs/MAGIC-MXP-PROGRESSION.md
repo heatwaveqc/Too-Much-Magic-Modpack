@@ -16,7 +16,7 @@ Only MXP grants ordinary Tyz experience. One Tyz level grants **one skill point*
 ## Fixed exceptions — user-approved design
 
 1. **First successful completion of each registered ritual or ceremony, per player:** the **entire first-time reward is fixed and is not divided**. Repeat successful completions receive a lower ordinary, divided MXP award.
-2. **First kill of each registered boss identity, per player:** the **entire first-kill reward is fixed and is not divided**. Repeated kills ordinarily receive a divided reward.
+2. **First kill of each registered boss identity, per player:** the entire first-kill reward is **exactly 1,000 effective MXP, fixed and undivided** regardless of the player's current P. Later kills ordinarily receive a divided reward; first rewards are no longer individually configurable.
 3. **Selected high-end boss repeats may grant fixed experience**, without the divisor. The initial **proposed** exception is **Draconic Evolution's Chaos Guardian: 100 MXP on each repeat kill**. This fixed repeat award **replaces**, rather than supplements, the normal divided repeat reward. A verifiable boss ID and endgame combat tests are required before activation.
 4. **Magical crafting bonuses are still divided**, including first-time craft bonuses, until an explicit separate decision expands the fixed-achievement category to crafting. Do not assume that all first-time activity is exempt.
 
@@ -45,7 +45,7 @@ For each independently consumed magic resource **r**, configure a fixed starting
 
 **Bosses:** Centralize first-time and repeat victory awards across boss mods. Track contributors (including owner-attributed pets/summons where appropriate), server-side defeat event, entity/boss registry identity, special multiphase death behavior and exactly-once award. Relevant candidates: vanilla Wither and Ender Dragon; Draconic Chaos Guardian; Cataclysm bosses; Iron's Spells Dead King / Tyros; Goety / Goety Cataclysm bosses; Totemic Baykok; Feywild seasonal bosses. Verify exact entity IDs rather than guessing.
 
-Illustrative anchors, **not approved amounts**: basic ceremony first 1,000, repeat 200; advanced first 2,000, repeat 400; significant magical craft first 750, repeat 100; ordinary boss first 2,000, repeat 500; endgame boss first 5,000, repeat 1,000. The only special candidate proposed in conversation is 100 **fixed repeat** MXP for Chaos Guardian.
+Illustrative anchors, **not approved amounts**: basic ceremony first 1,000, repeat 200; advanced first 2,000, repeat 400; significant magical craft first 750, repeat 100; ordinary boss first **1,000 fixed**, repeat 500; endgame boss first **1,000 fixed**, repeat 1,000. The only special repeat exception proposed is 100 **fixed repeat** MXP for Chaos Guardian. **All registered first boss victories, including Chaos Guardian, give exactly 1,000 effective MXP.**
 
 ## Safety and balance acceptance tests
 
