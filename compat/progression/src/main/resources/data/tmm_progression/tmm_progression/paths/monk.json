@@ -204,7 +204,8 @@
           "type": "break_speed",
           "target": "#minecraft:mineable/pickaxe",
           "per_rank": 0.8,
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -224,7 +225,8 @@
           "type": "harvest_tier",
           "target": "#minecraft:mineable/pickaxe",
           "tier": 3,
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -241,7 +243,8 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "#minecraft:is_fire",
-          "per_rank": 0.5
+          "per_rank": 0.5,
+          "unarmored": true
         }
       ]
     },
@@ -258,7 +261,8 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "#minecraft:is_explosion",
-          "per_rank": 0.5
+          "per_rank": 0.5,
+          "unarmored": true
         }
       ]
     },
@@ -275,7 +279,8 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "minecraft:fall",
-          "per_rank": 0.8
+          "per_rank": 0.8,
+          "unarmored": true
         }
       ]
     },
@@ -311,7 +316,8 @@
         {
           "type": "animal_friendship",
           "target": "*",
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -357,7 +363,8 @@
       "effects": [
         {
           "type": "catch_arrows",
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -376,7 +383,8 @@
           "params": {
             "range": "16",
             "cooldown_ticks": "40"
-          }
+          },
+          "unarmored": true
         }
       ]
     },
@@ -392,7 +400,8 @@
       ],
       "effects": [
         {
-          "type": "water_breathing"
+          "type": "water_breathing",
+          "unarmored": true
         }
       ]
     },
@@ -407,7 +416,8 @@
       ],
       "effects": [
         {
-          "type": "purification"
+          "type": "purification",
+          "unarmored": true
         }
       ]
     },
@@ -423,7 +433,8 @@
       "effects": [
         {
           "type": "creeper_peace",
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -439,7 +450,8 @@
       "effects": [
         {
           "type": "treasure_hand",
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -455,7 +467,8 @@
       "effects": [
         {
           "type": "glass_touch",
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -470,7 +483,8 @@
       ],
       "effects": [
         {
-          "type": "hunger_discipline"
+          "type": "hunger_discipline",
+          "unarmored": true
         }
       ]
     },
@@ -488,7 +502,8 @@
           "type": "monk_leap",
           "params": {
             "factor": "1.2"
-          }
+          },
+          "unarmored": true
         }
       ]
     },
@@ -507,7 +522,8 @@
           "target": "#tmm_progression:undead",
           "params": {
             "range": "20"
-          }
+          },
+          "unarmored": true
         }
       ]
     },
@@ -574,7 +590,8 @@
       ],
       "effects": [
         {
-          "type": "water_walk"
+          "type": "water_walk",
+          "unarmored": true
         }
       ]
     },
@@ -592,7 +609,8 @@
           "type": "momentum_glide",
           "params": {
             "requires_milestone": "tmm_progression:dragon_defeated"
-          }
+          },
+          "unarmored": true
         }
       ]
     },
@@ -607,7 +625,8 @@
       ],
       "effects": [
         {
-          "type": "blindness_ordeal"
+          "type": "blindness_ordeal",
+          "unarmored": true
         }
       ]
     },
@@ -622,7 +641,8 @@
       ],
       "effects": [
         {
-          "type": "lava_protection"
+          "type": "lava_protection",
+          "unarmored": true
         }
       ]
     }
