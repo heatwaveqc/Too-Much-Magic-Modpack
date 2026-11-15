@@ -125,14 +125,17 @@ Suggested QA — disposable worlds ONLY:
 - Existing QoL: TrashSlot, TreeChop, fast leaves, Eternal Steak,
   More Overlays, FTB Essentials /sethome /rtp, Akashic Tome and QA
   preference persistence. Verify client keybinds and volume.
-- Neo Vitae canonical dust, Mahou Catalyst Exchange, unified silver,
-  Polymorph conflicts, ProjectE trophies and MK3+ Power Flower gates.
-  REGRESSION: World creation must NOT crash when the starter Akashic Tome
-  is dropped. Other dropped items must tick normally; Neo Vitae dust
-  should substitute only above a genuine Catalyst Exchange, restore
-  unused remainder if no Mahou mana, and preserve components. Test
-  Mahou's native 1-for-1 consume and charge behavior at partial stacks.
-  Log unexpected KubeJS errors and cross-mod exploits.
+- Performance regression: no KubeJS Catalyst Exchange script may
+  subscribe to EntityTickEvent.Pre on all dropped items. Temporary
+  Neo Vitae dust -> Mahou exchange conversion is SUSPENDED pending a
+  circle-local native compatibility hook. Ordinary Mahou powdered
+  catalysts must still exchange with native mana costs/outputs.
+  Create and drop many unrelated items without extra script errors.
+  Check Neo Vitae canonical dust, silver, ProjectE recipe gates and
+  Polymorph conflicts. Log any KubeJS errors/exploits.
+- Vampire's Delight must AUTOMATICALLY download into the new Prism
+  instance from the included pinned metafile; if manually prompted,
+  treat as QA FAILURE and attach the installer log and pack index.
 - Test two players, reload, relog, death, dimensions and a separate
   dedicated server. Preserve before/after screenshots and exact logs.
 - Save logs/latest.log, Prism console, screenshots and feature results.
