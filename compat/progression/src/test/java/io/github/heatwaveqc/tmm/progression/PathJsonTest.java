@@ -46,7 +46,7 @@ class PathJsonTest {
         String graph = """
             {"schema":1,"max_level":2,"rank_xp":[0,10],"skills":[
                 {"id":"test:a","choice_group":"test:stance","effects":[]},
-                {"id":"test:b","choice_group":"test:stance","requires_any_skills":["test:a"],
+                {"id":"test:b","choice_group":"test:stance",
                  "effects":[{"type":"gear_durability","target":"*","per_rank":1,
                   "params":{"slot":"all","action":"repair","interval_ticks":"20"}}]}
             ]}
