@@ -6,6 +6,31 @@
 insufficient to establish in-world correctness. Never use a valuable player
 save or existing world for the experiments below.
 
+## Live spending regression / safety blocker (2026-11-14)
+
+- Owner advanced JAWR to level 4 and confirmed Transfix works without a
+  native blood debit. This is consistent with the pinned 0.5.39 audit: the
+  Transfix use path has no direct decreaseBlood call, so it is **not a valid**
+  spending test.
+- Speed also showed no immediate debit in owner testing, but we do **not**
+  yet know whether its cost is immediate, delayed, continuous, or absent
+  in JAWR 0.5.39. Confirm its exact activation/upkeep bytecode and test in
+  Survival mode with a measured timed interval before assigning blame.
+- The experimental bridge had used Vampirism `useBlood(..., true)`,
+  which expressly permits partial payment; it also ignored the boolean
+  success result. This can allow already-executed JAWR abilities to remain
+  active with no full canonical debit. The safety guard on
+  `fix/jawr-blood-debit-guard` switches to all-or-nothing payment,
+  checks the observed debit and raises admin hold on failure.
+- **Still blocked:** a method-level JAWR blood decrement is too late to
+  cancel an ability that already took effect. Add a version-verified
+  pre-activation affordability gate before accepting the unified economy.
+  A hold is a diagnostic, not a fix for free effects. Neither this patch
+  nor a successful build proves a full spending fix.
+- The `/tmmtransform vampire` status string now reports the actual
+  experimental dual interception flag, rather than hard-coding an
+  inactive-sounding message.
+
 ## Scope implemented
 
 - JAWR `VampireLeveling.setLevel` mixin recognizes initial acquisition or
