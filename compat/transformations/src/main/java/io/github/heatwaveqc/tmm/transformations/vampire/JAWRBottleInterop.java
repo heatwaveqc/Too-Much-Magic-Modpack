@@ -181,8 +181,9 @@ public final class JAWRBottleInterop {
      * All three ordinary blood bottles grant Hexerei-style medicine.
      * Only Hexerei/Iron's need a JAWR native +500 credit. JAWR's OWN bottle
      * already calls WineGlassItem.consumeBlood and must NOT be credited twice.
-     * Iron's becomes normal food via a KubeJS startup script, with a native
-     * FoodProperties.usingConvertsTo glass-bottle remainder; this handler
+     * Iron's becomes normal drinkable food via a KubeJS startup script
+     * (including DRINK use animation), with a native FoodProperties.usingConvertsTo
+     * glass-bottle remainder; this handler
      * does not manually shrink it or grant a second glass bottle.
      */
     private static void onDrinkFinish(LivingEntityUseItemEvent.Finish event) {
