@@ -66,3 +66,8 @@ In a disposable NeoForge 1.21.1 world with **Tyz 6.4.2 and the Core Magic level-
 ## Complete future source coverage — design checklist
 
 The full follow-on implementation target inventory is [42/42 MXP magic source candidates](../../docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md). It distinguishes real paid personal resources, meaningful manually completed rites/crafts, parent-inherited addons, the shared Ars/Iron bridge, and intentionally excluded standalone sources. It prioritizes Roots, Hex Casting, Occultism's tiered **Book of Binding** completion rewards, Mahou and other missing adapters. **No implementation in this documentation branch.**
+
+
+## Future JAWR vampire blood and form-tree interface (planning only)
+
+The [complete source target list](../../docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md) now reserves **one JAWR-primary 900-blood MXP source** for active blood-expending vampire powers **only after Lilith's Blood upgraded the player to full JAWR vampirism**. Abilities from regular Vampirism can qualify after that upgrade **if the actual debit is from JAWR's authoritative blood pool**. Infection-only Vampirism, hunger upkeep, feeding/refilling, resource synchronization and passive buffs do not earn MXP; never double-credit a mirrored debit. JAWR personal Infusion has an independent TBD baseline. Lich/Dragon progression predominantly belongs to their externally gated Tyz transformation skill trees. **No vampire code hook exists in this branch.**
