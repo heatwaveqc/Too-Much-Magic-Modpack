@@ -3,7 +3,7 @@
 > Generated from [the machine-readable registry](../manifest/feature-checklist.json) by 
 > `python3 scripts/feature_checklist.py render`. Do not edit this Markdown by hand.
 
-**112 acceptance items** across **9 tracks**. **6** have bounded owner-reported player PASS evidence; **15** have partial player checks; **22** are server-smoked only. This is not a stable release.
+**114 acceptance items** across **9 tracks**. **6** have bounded owner-reported player PASS evidence; **15** have partial player checks; **22** are server-smoked only. This is not a stable release.
 
 ## Reading this checklist
 
@@ -22,8 +22,8 @@
 | Player-tested PASS | 6 |
 | Player test partial | 15 |
 | Server-booted; mechanics unverified | 22 |
-| Source ready; gameplay unverified | 20 |
-| In progress | 12 |
+| Source ready; gameplay unverified | 21 |
+| In progress | 13 |
 | Planned | 36 |
 | Blocked | 1 |
 | Deferred | 0 |
@@ -132,7 +132,7 @@
 - [ ] **Monk Step Assist +0.5 height** (`monk.step`) — *Player test partial*. Moves over allowed half-block heights only; armor and weapons may suppress where designed. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk training progression and graphical progress indicator** (`monk.training`) — *Source ready; gameplay unverified*. Actual cultivation earns native points; full UI progress ring replaces temporary actionbar counter. [source](../manifest/integration-sources.json)
 
-### World, combat and endgame (16)
+### World, combat and endgame (18)
 
 - [ ] **Tectonic world generation and exploration density** (`world.tectonic`) — *Server-booted; mechanics unverified*. Fresh terrain, structures, world boundaries and terrain performance inspected in new worlds. [source](../docs/DESIGN.md)
 - [ ] **Cataclysm, Neo Vitae, Deeper and Darker and chosen structures** (`world.dungeons`) — *Server-booted; mechanics unverified*. Locations generate, enemies spawn correctly, loot balanced, no missing structures or softlocks. [source](../docs/DESIGN.md)
@@ -150,6 +150,8 @@
 - [ ] **Every registered item has EMC, barring approved cheap exceptions** (`end.emc_every_item`) — *Source ready; gameplay unverified*. Export the exact full item registry and post-mapping ProjectE values; positive EMC for 100% of registered items apart from approved tiny glass panes; no silent skips and zero missing in enforced audit. [source](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/projecte-boss-trophy-stone-and-emc-audit/manifest/emc-coverage-policy.json)
 - [ ] **EMC values safe for all magic schools and all item state** (`end.emc_balancing`) — *Planned*. Audit expensive bosses, rare loot, recipes, transforms and value limits, NBT/contents and automatic reproduction so setting an EMC number never creates an uncontrollable conversion or duplication loop. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
 - [ ] **Three verified boss-associated trophy ingredient routes** (`end.projecte_trophies`) — *Source ready; gameplay unverified*. Validate actual registry IDs ars_nouveau:wilden_tribute, botania:life_essence and neovitae:mine_key; document Mine Key also has trial-spawner source and verify all are consumed. [source](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/projecte-boss-trophy-stone-and-emc-audit/kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json)
+- [ ] **Vanilla Killer Bunny gateway and Ars rabbit-foot reward** (`world.caerbannog_gateway`) — *Source ready; gameplay unverified*. Kill exactly one hostile vanilla Killer Bunny and receive one Rabbit's Foot plus 12 genuine rabbit entity-loot rolls; validate Gate Pearl recipe, labels, repeatability and Looting context. [source](../docs/CAERBANNOG-GATEWAYS.md)
+- [ ] **Chaos Bunny of Caerbannog six-wave trophy superboss** (`world.chaos_bunny_gateway`) — *In progress*. Five waves of 5/10/20/40/80 armored 40-HP 20-damage Killer Bunnies; final Chaos Guardian-class rabbit with random God-tier Apothic modifiers and 10% frog-tongue instakill; only trophy drops and satisfactory 80-entity TPS. [source](../docs/CAERBANNOG-GATEWAYS.md)
 
 ### QoL, food, multiplayer and release (15)
 
