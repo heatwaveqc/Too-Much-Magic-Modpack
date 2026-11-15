@@ -1,0 +1,31 @@
+name: Hunter - Disposable Pinned JAR Audit
+on:
+  push:
+    branches: ['research/hunter-pinned-jar-audit-ci']
+    paths:
+      - '.github/workflows/hunter-pinned-jar-audit.yml'
+      - 'scripts/hunter_pinned_jar_audit.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-jar-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify pinned JAR hashes and inspect entity registration constants
+        run: python3 scripts/hunter_pinned_jar_audit.py
+      - name: Upload structured audit evidence (no JARs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hunter-pinned-jar-audit
+          path: docs/hunter/ci-evidence/
+          retention-days: 14
+          if-no-files-found: warn
