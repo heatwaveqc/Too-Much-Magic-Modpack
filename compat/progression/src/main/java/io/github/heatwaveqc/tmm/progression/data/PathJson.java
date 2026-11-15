@@ -147,6 +147,20 @@ public final class PathJson {
                         params.put(entry.getKey(),value);
                     });
                 }
+                if (type.equals("gear_durability")) {
+                    String slot = params.getOrDefault("slot","mainhand");
+                    String action = params.getOrDefault("action","repair");
+                    int interval;
+                    try { interval = Integer.parseInt(params.getOrDefault("interval_ticks","20")); }
+                    catch (NumberFormatException bad) { throw new IllegalArgumentException("Invalid gear interval"); }
+                    if (!Set.of("mainhand","offhand","head","chest","legs","feet","armor","all").contains(slot)
+                            || !Set.of("repair","damage").contains(action) || interval < 1 || interval > 72000
+                            || amount < 0 || amount > 64)
+                        throw new IllegalArgumentException("Unsafe gear durability effect");
+                }
+                if (type.equals("damage_bonus") &&
+                    !Set.of("melee","arrow","any").contains(params.getOrDefault("delivery","melee")))
+                    throw new IllegalArgumentException("Damage delivery must be melee, arrow or any");
                 effects.add(new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
                     amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params));
             }
