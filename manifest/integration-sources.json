@@ -161,6 +161,20 @@
       ],
       "mode": "runtime-experimental",
       "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch."
+    },
+    {
+      "name": "projecte-boss-recipes-and-emc-audit",
+      "branch": "feature/projecte-boss-trophy-stone-and-emc-audit",
+      "paths": [
+        "kubejs/server_scripts/projecte_boss_stone_and_powerflowers.js",
+        "kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json",
+        "manifest/emc-coverage-policy.json",
+        "scripts/verify_projecte_boss_recipes.cjs",
+        "scripts/audit_emc_coverage.py",
+        "scripts/verify_emc_coverage_audit.py"
+      ],
+      "mode": "runtime-recipe-experimental-plus-emc-audit-source",
+      "note": "KubeJS swaps both vanilla Stone recipes for three boss-associated trophies; requires Chaos Shard in every MK3+ Power Flower direct and MK3 upgrade. Project Expansion Matter Upgrader and EMC synthesis are separate bypass checks. EMC coverage auditor is source-only until post-mapping game exports exist."
     }
   ],
   "covered_by_baseline": {
@@ -196,6 +210,8 @@
     "feature/lilith-ascended-vampire": "Currently documentation-only Lilith/JAWR testing notes (latest commit changes only VAMPIRE-CHASSIS-V1-TEST-PLAN.md). Keep selected runtime from fix/jawr-blood-debit-guard; review and register executable changes if this branch later adds implementation."
   },
   "pending_runtime_work": [
+    "NEXT FULL QA: ProjectE Stone boss-trophy center and MK3+ Power Flower Chaos-Shard recipes staged from feature/projecte-boss-trophy-stone-and-emc-audit. Validate both Stone layouts and all high-tier direct recipes + red upgrade in live JEI/crafting. Mine Key also comes from Neo Vitae mine spawners, so it is an item route, NOT proof of a Foreman kill.",
+    "EMC COMPLETENESS: each actual registered item must have positive EMC except approved cheap glass panes. Audit against SAME-BUILD full registry plus post-mapping ProjectE EMC; fill all missing IDs and test conversion loops. No auto-values until exports.",
     "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
     "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
     "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
