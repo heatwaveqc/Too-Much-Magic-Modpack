@@ -93,7 +93,8 @@ public final class ProgressionEvents {
     }
     private static void jump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
-            EffectHandlers.jump(player,event);
+            { ClassAbilities.jump(player,event);
+              EffectHandlers.jump(player,event); }
     }
     private static void advancement(AdvancementEvent.AdvancementEarnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
