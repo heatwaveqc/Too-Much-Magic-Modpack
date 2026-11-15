@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "created": "2026-11-15",
-  "status": "source_derived_scenario_maxima_populated_not_runtime_certified",
+  "status": "source_derived_scenario_maxima_magic_defense_populated_not_runtime_certified",
   "purpose": "ATM10 max legal equipment benchmark -> TMM non-Monk specialist skill calibration -> Monk 85% of TMM specialist measured performance",
   "owner_targets": {
     "tmm_atm10_performance_tolerance_fraction": 0.05,
@@ -55,7 +55,11 @@
     "irons_cooldown_reduction_18orbs_2rings_staff": 0.8979591836734695,
     "irons_cast_time_reduction_staff_2rings": 0.7191011235955056,
     "defense_mythic_health_armor_only": 386.4,
-    "defense_mythic_health_armor_shield": 1103.59704
+    "defense_mythic_health_armor_shield": 1103.59704,
+    "defense_armor_mythic_no_shield": 182.16,
+    "defense_armor_mythic_shield": 381.524,
+    "defense_toughness_mythic_no_shield": 81,
+    "defense_toughness_mythic_shield": 145.8
   },
   "source_repos": {
     "atm10": "https://github.com/AllTheMods/ATM-10/tree/d3fef516ed2c3610f49981f5f924d7205d8536ef",
@@ -424,7 +428,19 @@
         "gems",
         "nonmagic armor alternatives"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "defense.mythic_armor_no_shield",
+          "value": 182.16,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        },
+        {
+          "scenario_id": "defense.mythic_armor_shield",
+          "value": 381.524,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        }
+      ]
     },
     {
       "id": "defense.armor_toughness",
@@ -439,7 +455,19 @@
         "gems",
         "Apothic armor formulas"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "defense.mythic_toughness_no_shield",
+          "value": 81,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        },
+        {
+          "scenario_id": "defense.mythic_toughness_shield",
+          "value": 145.8,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        }
+      ]
     },
     {
       "id": "defense.max_health",
@@ -923,7 +951,7 @@
     "verify TMM Ars 'n Spells mana primary mode and skill pipeline",
     "certify ATM10 maxima before specialist skills and Monk JSON"
   ],
-  "revision": "v0.2",
+  "revision": "v0.3",
   "updated": "2026-11-15",
   "constrained_optimized_loadouts": [
     {
@@ -1067,6 +1095,68 @@
       ],
       "confidence": "conditional_source_max_for_listed_components_pending_runtime",
       "notes": "The shield is incompatible with any offhand caster item; this is a survival specialist comparison, not simultaneous top caster damage."
+    },
+    {
+      "id": "defense.mythic_armor_no_shield",
+      "focus": "defense.armor",
+      "scope": "four Unobtainium mage armor pieces with eligible Mythic armor affixes and perfect gems; no offhand",
+      "metrics": {
+        "defense.armor": 182.16
+      },
+      "combinations": [
+        "Mythic Ironforged +8 armor on each armor piece",
+        "Mythic Adamantine +40% add_multiplied_base armor on chest and leggings",
+        "one Perfect Guardian gem +8 armor on chestplate and on leggings",
+        "one Perfect Royalty gem +15% add_multiplied_total armor on helmet"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "One Guardian gem per armor item due to unique=true. Does not combine with the separately maximized toughness/HP gems."
+    },
+    {
+      "id": "defense.mythic_armor_shield",
+      "focus": "defense.armor",
+      "scope": "same armor setup plus an eligible Mythic shield with Ironforged affix, Perfect Royalty and Perfect Guardian gems",
+      "metrics": {
+        "defense.armor": 381.524
+      },
+      "combinations": [
+        "armor from defense.mythic_armor_no_shield",
+        "shield Mythic Ironforged +30% add_multiplied_base armor",
+        "Perfect Royalty gem on shield +50% add_multiplied_base armor",
+        "Perfect Guardian gem on shield +45% add_multiplied_total armor"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "Helmet Royalty and shield Royalty coexist because unique applies per item; no additional offhand casting item possible."
+    },
+    {
+      "id": "defense.mythic_toughness_no_shield",
+      "focus": "defense.armor_toughness",
+      "scope": "four Unobtainium mage armor pieces with Mythic Steel Touched and Perfect toughness gems",
+      "metrics": {
+        "defense.armor_toughness": 81
+      },
+      "combinations": [
+        "Mythic Steel Touched +6 toughness on each armor piece",
+        "Perfect Tyrannical gem +6 toughness in chestplate and leggings",
+        "Perfect Samurai gem +35% add_multiplied_total toughness in leggings"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "Distinct from maximizing armor: Tyrannical/Samurai take gem sockets needed for other stats."
+    },
+    {
+      "id": "defense.mythic_toughness_shield",
+      "focus": "defense.armor_toughness",
+      "scope": "same toughness setup plus Mythic shield Steel Touched and Perfect Tyrannical gem",
+      "metrics": {
+        "defense.armor_toughness": 145.8
+      },
+      "combinations": [
+        "armor from defense.mythic_toughness_no_shield",
+        "Mythic shield Steel Touched +30% add_multiplied_base toughness",
+        "Perfect Tyrannical shield gem +50% add_multiplied_base toughness"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "The shield is the offhand, and this is not the armor/max-health simultaneously optimized setup."
     }
   ]
 }
