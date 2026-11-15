@@ -10,6 +10,10 @@ import io.github.heatwaveqc.tmm.monk.gameplay.StepAssistEffects;
 import io.github.heatwaveqc.tmm.monk.gameplay.MonkTechniqueEffects;
 import io.github.heatwaveqc.tmm.monk.gameplay.MonkHarvestEffects;
 import io.github.heatwaveqc.tmm.monk.progression.MonkMasteryEvents;
+import io.github.heatwaveqc.tmm.monk.progression.MonkMagicBreakTracker;
+import io.github.heatwaveqc.tmm.monk.progression.MonkTreeChopBridge;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.minecraft.server.level.ServerPlayer;
 import de.teamlapen.vampirism.api.entity.player.skills.SkillPointProviders;
 import io.github.heatwaveqc.tmm.monk.faction.IMonkPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -64,10 +68,21 @@ public final class MonkMod {
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onBlockDrops);
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onHostileDeath);
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onFoodFinished);
+        NeoForge.EVENT_BUS.addListener(MonkMagicBreakTracker::onBreakAttempt);
+        NeoForge.EVENT_BUS.addListener(MonkMagicBreakTracker::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(this::onMonkBreakLogout);
+        MonkTreeChopBridge.register();
         NeoForge.EVENT_BUS.addListener(MonkHarvestEffects::onHarvestCheck);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onTick);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onLogout);
         LOGGER.info("Monk First Sunset, native ranks 1-4, rank-one choice tree, gated Step Assist registered (external physiology bridge pending).");
+    }
+
+    private void onMonkBreakLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            MonkTreeChopBridge.onLogout(player);
+            MonkMagicBreakTracker.onLogout(player);
+        }
     }
 
     private void registerFaction(RegisterEvent event) {
