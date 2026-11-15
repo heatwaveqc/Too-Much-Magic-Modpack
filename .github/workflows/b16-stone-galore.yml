@@ -55,7 +55,7 @@ jobs:
           base=Path("kubejs/data/tmm/recipe/blockgen/natural_stone")
           cuts=Path("kubejs/data/tmm/recipe/stonecutting/common_marble")
           p=json.loads(Path("manifest/stone_generation_policy.json").read_text())
-          assert len(list(base.glob("*.json")))==27
+          assert len(list(base.glob("*.json")))==24
           assert len(list(cuts.glob("*.json")))==12
           for f in base.glob("*.json"):
               x=json.loads(f.read_text())
