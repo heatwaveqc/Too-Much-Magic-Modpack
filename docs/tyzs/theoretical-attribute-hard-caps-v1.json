@@ -10,7 +10,7 @@
   "status": "142_CANDIDATE_MAX_BOUNDS_IDENTIFIED_135_DIRECT_SOURCE_7_DOCUMENTATION_ONLY_NO_THEORETICAL_BUILD_MAX",
   "policy": {
     "noncombat_monk_ratio": 0.85,
-    "sea_dragon_luck_ratio": 0.8,
+    "sea_dragon_luck_ratio": 0.85,
     "optimizer": "Take best legally achievable player source value after MAX ranks, attribute hard bound, fully optimized modded gear, compatible enchants Iesnium +1, perfected gems, Supremacy/Malice, max legal Curios and effects. Only then compute Monk final target, subtracting its own legal Curios. Exclude the banned Ring of Seven Deadly Sins.",
     "hard_bound_is_not_build_max": "The attribute registration maximum is an engine clamp, not proof that any legal gear/progression combination can reach it. All attainable_gear_plus_skills_max remain null until legal full-build computation or tests.",
     "binary_vs_scalar": "Do not apply 85% to Boolean/unlocks, mutually exclusive effects, source-locked biology, combat damage, or capped probabilities already saturated. Compare meaningful outcomes."
@@ -81,7 +81,8 @@
     "Some max bounds (e.g. Iron spell multipliers up to 100, Goety generic potency 2048) are technically enormous but gameplay effectiveness may saturate or behave nonlinearly.",
     "Relics 0.12.5 `ring_of_the_seven_deadly_sins` loot exclusion authored on test/full-integration PR #130; existing rings require separate policy.",
     "Neo Vitae official API reference documents defaults/max for all 7 attributes, but min values/source pin behavior cannot be confirmed; this gives 142/142 documented numeric maxima with 135 verified constructor registrations and 7 API-only maxima.",
-    "Newer Neo Vitae releases revised Siphon/Shield effective caps to 95% server-configurable; pinned 1.1.53 must be inspected before using source-number bound to model effects."
+    "Newer Neo Vitae releases revised Siphon/Shield effective caps to 95% server-configurable; pinned 1.1.53 must be inspected before using source-number bound to model effects.",
+    "Owner's corrected interpretation: Sea Dragon Luck 85%, not old 80%, after maximum all-in legal specialty build and both sides' Curios."
   ],
   "attributes": [
     {
