@@ -1,7 +1,9 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.stats.Stats;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -131,8 +133,14 @@ public final class BedrockRest {
         if (previous.dimension().equals(player.serverLevel().dimension())
                 && player.getSleepingPos().map(p -> p.equals(previous.bedrock().above()))
                         .orElse(false)
-                && player.isSleepingLongEnough())
+                && player.isSleepingLongEnough()) {
+            // startSleeping, unlike startSleepInBed, deliberately never sets
+            // respawn. Complete the normal rest accounting explicitly.
+            player.awardStat(Stats.SLEEP_IN_BED);
+            player.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
+            CriteriaTriggers.SLEPT_IN_BED.trigger(player);
             ProgressionApi.recordExternal(player, "tmm_progression:bedrock_rest_completed");
+        }
     }
 
     public static void forget(ServerPlayer player) {
