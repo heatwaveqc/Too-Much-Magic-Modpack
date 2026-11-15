@@ -144,4 +144,4 @@ No balance values for Monk or other classes should be committed to runtime JSON 
 - [Iron's attribute definitions](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/api/registry/AttributeRegistry.java)
 - [Iron's regen/cooldowns](https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/capabilities/magic/MagicManager.java)
 - [Apotheosis Mythic socket rule](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/rarities/mythic.json)
-- [Apotheosis Royality gem (helmet only)](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json)
+- [Apotheosis Royalty gem (helmet only)](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json)
