@@ -1,0 +1,824 @@
+{
+  "schema": 1,
+  "created": "2026-11-15",
+  "status": "research_v0_1_not_optimized_or_runtime_certified",
+  "purpose": "ATM10 max legal equipment benchmark -> TMM non-Monk specialist skill calibration -> Monk 85% of TMM specialist measured performance",
+  "owner_targets": {
+    "tmm_atm10_performance_tolerance_fraction": 0.05,
+    "monk_to_tmm_specialist_performance_ratio": 0.85
+  },
+  "baseline_assumptions": {
+    "iron_default_base_mana": 100,
+    "iron_default_regen_pool_fraction_per_second": 0.02,
+    "iron_server_regen_multiplier_assumed": 1,
+    "ars_default_base_mana": 100,
+    "ars_default_mana_regen_per_sec": 5,
+    "ars_max_mana_per_glyph": 15,
+    "ars_regen_per_glyph": 0.33,
+    "ars_unobtainium_book_tier": 6,
+    "ars_mana_per_book_tier": 50,
+    "ars_regen_per_book_tier": 1,
+    "ars_max_glyph_bonus_count": "G_UNKNOWN",
+    "ars_max_mana_boost_enchantment_level": 7,
+    "ars_max_mana_regen_enchantment_level": 7,
+    "ars_mana_boost_per_level_per_piece": 25,
+    "ars_mana_regen_per_level_per_piece": 2,
+    "mythic_sockets_regular": [
+      1,
+      3
+    ],
+    "mythic_sockets_rare_max": 4,
+    "mythic_sockets_rare_roll_probability": 0.05
+  },
+  "calculated_examples_not_certified_maxima": {
+    "irons_gear_book_mana": 2200,
+    "irons_gear_book_generic_spell_power_multiplier": 3.8416,
+    "irons_gear_regen_multiplier": 1.74900625,
+    "irons_gear_book_regen_per_second": 76.956275,
+    "irons_conditional_5x3manaorb_ring_mana": 3050,
+    "irons_conditional_3050mana_regen_per_second": 106.68938125,
+    "ars_illustrative_glyph_count": 85,
+    "ars_at_85glyphs_with_vii_mana": 4175,
+    "ars_at_85glyphs_with_vii_regen_per_second": 143.05,
+    "ars_base_tier6_4piece_armor": 40,
+    "ars_base_tier6_4piece_toughness": 24,
+    "irons_base_4piece_armor": 40,
+    "irons_base_4piece_toughness": 24
+  },
+  "source_repos": {
+    "atm10": "https://github.com/AllTheMods/ATM-10/tree/d3fef516ed2c3610f49981f5f924d7205d8536ef",
+    "wizard": "https://github.com/iron431/all-the-wizard-armor/tree/12a8151484f3e489bb6a3ae277197af602a232fd",
+    "arcanist": "https://github.com/Jarva/All-The-Arcanist-Gear/tree/0c15d90b18b54f6ea11fe9c92636145f9e090e96",
+    "ars": "https://github.com/baileyholl/Ars-Nouveau/tree/4d323fba9200c3293a4f4848cf1e0fe70beb7098",
+    "irons": "https://github.com/iron431/irons-spells-n-spellbooks/tree/bc3671984544f10264bcab6828d4ef6f2afddee2",
+    "apotheosis": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc"
+  },
+  "metrics": [
+    {
+      "id": "irons.max_mana",
+      "group": "magic.irons",
+      "unit": "mana",
+      "verified_source_baseline": 2200,
+      "baseline_calculation": "100 + 4*450 + 300",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "max upgrade orb counts",
+        "ring and Curios eligibility",
+        "other mana affixes/enchantments"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.spell_power_generic",
+      "group": "magic.irons",
+      "unit": "multiplier",
+      "verified_source_baseline": 3.8416,
+      "baseline_calculation": "1.4 ** 4",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "school power attribute",
+        "upgrade orb slot opportunity cost",
+        "active buffs"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.mana_regen_multiplier",
+      "group": "magic.irons",
+      "unit": "multiplier",
+      "verified_source_baseline": 1.74900625,
+      "baseline_calculation": "1.15 ** 4",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "Curios",
+        "mana pool",
+        "server regen config"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.mana_regen_per_sec",
+      "group": "magic.irons",
+      "unit": "mana/second",
+      "verified_source_baseline": 76.956275,
+      "baseline_calculation": "2200 * .02 * 1.15 ** 4",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "max mana",
+        "regen config",
+        "regen Curios"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.spellbook_slots",
+      "group": "magic.irons",
+      "unit": "slots",
+      "verified_source_baseline": 15,
+      "baseline_calculation": "unobtainium book constructor",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "spell slot upgrades"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.cooldown_reduction",
+      "group": "magic.irons",
+      "unit": "fraction",
+      "verified_source_baseline": 0.5,
+      "baseline_calculation": "1 - (2 - softcap(1.5)); raw attribute = 1 * 1.5",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "cooldown orbs",
+        "softcap, rounding, cast source"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.cast_time_reduction",
+      "group": "magic.irons",
+      "unit": "fraction",
+      "verified_source_baseline": 0.35,
+      "baseline_calculation": "1 - (2 - softcap(1.35)); raw attribute = 1 * 1.35",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "instant vs long vs continuous cast",
+        "cast speed sources"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.school_spell_power",
+      "group": "magic.irons",
+      "unit": "multiplier",
+      "verified_source_baseline": 1,
+      "baseline_calculation": "base attribute only; school-specialist upgrades pending",
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "school upgrade orbs",
+        "school item or trinket"
+      ],
+      "notes": "Not a maximum"
+    },
+    {
+      "id": "irons.spell_dps",
+      "group": "magic.irons",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "spell level",
+        "target armor and defense",
+        "cooldown",
+        "cast time",
+        "mana rotation"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.spell_resistance",
+      "group": "magic.irons",
+      "unit": "damage taken factor",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "magic resists",
+        "enchants",
+        "affixes",
+        "gems"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "irons.summon_damage",
+      "group": "magic.irons",
+      "unit": "multiplier",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "spell school",
+        "summon scaling"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.max_mana",
+      "group": "magic.ars",
+      "unit": "mana",
+      "verified_source_baseline": null,
+      "baseline_calculation": "2900 + 15*G (with Mana Boost VII on each of four armor pieces, G=real glyph bonus)",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "maximum glyph count G",
+        "capacity threads",
+        "amulets",
+        "equipment modifier ID stacking"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.mana_regen_per_sec",
+      "group": "magic.ars",
+      "unit": "mana/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": "115 + 0.33*G (with Mana Regen VII x4, source defaults)",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "maximum glyph count G",
+        "regen perks",
+        "equipment modifier ID stacking"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.spell_damage_bonus",
+      "group": "magic.ars",
+      "unit": "flat attribute",
+      "verified_source_baseline": 48,
+      "baseline_calculation": "4 * 12",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "spellpower threads",
+        "conditional spellbook bonus and mobs",
+        "spell context"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.spellbook_glyphs",
+      "group": "magic.ars",
+      "unit": "glyph positions",
+      "verified_source_baseline": 20,
+      "baseline_calculation": "10 base + 10 Unobtainium bonus",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "exact slot cap from addon at runtime"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.spell_cost",
+      "group": "magic.ars",
+      "unit": "mana/cast",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "spell design",
+        "discount gear",
+        "cost hooks"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.spell_dps",
+      "group": "magic.ars",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "glyph scaling",
+        "threads",
+        "target tag",
+        "spell cost"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ars.utility_harvest_tier",
+      "group": "magic.ars",
+      "unit": "tier",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "glyph amplifier",
+        "book tier",
+        "block tags"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.armor",
+      "group": "defense",
+      "unit": "armor points",
+      "verified_source_baseline": 40,
+      "baseline_calculation": "8 + 13 + 11 + 8",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "legal affixes",
+        "gems",
+        "nonmagic armor alternatives"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.armor_toughness",
+      "group": "defense",
+      "unit": "toughness",
+      "verified_source_baseline": 24,
+      "baseline_calculation": "4 * 6",
+      "optimized_atm10_max": null,
+      "optimization_status": "verified_upstream_gear_not_runtime",
+      "dependencies": [
+        "affixes",
+        "gems",
+        "Apothic armor formulas"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.max_health",
+      "group": "defense",
+      "unit": "health points",
+      "verified_source_baseline": 20,
+      "baseline_calculation": "unmodified player base",
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "Blessed affix +8 per eligible armor slot",
+        "gems",
+        "max health potions",
+        "relics"
+      ],
+      "notes": "A four-piece Blessed +8 would add 32 if legal; not certified overall maximum"
+    },
+    {
+      "id": "defense.effective_hp",
+      "group": "defense",
+      "unit": "effective health",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "incoming damage profile",
+        "armor bypass",
+        "protection",
+        "dodge"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.knockback_resistance",
+      "group": "defense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "Stalwart affix",
+        "gem uniqueness",
+        "attribute clamp"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.dodge_chance",
+      "group": "defense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "Apothic dodge sources",
+        "eligible damage types"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.regen_sustain",
+      "group": "defense",
+      "unit": "health/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "healing_received",
+        "ghost_health",
+        "life_steal",
+        "potions"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "defense.armor_pierce_resistance",
+      "group": "defense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "Apothic toughness soft cap 60% at 30 toughness",
+        "enemy bypass"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.melee_dps",
+      "group": "offense",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "endgame weapon item stats",
+        "affixes",
+        "gems",
+        "crit",
+        "attack speed"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.unarmed_dps",
+      "group": "offense",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "no equipment",
+        "Monk TMM-only comparison"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.ranged_dps",
+      "group": "offense",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "bows/crossbows",
+        "draw speed",
+        "projectile damage",
+        "affixes",
+        "gems"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.crit_chance",
+      "group": "offense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "overcrit semantics",
+        "gem class",
+        "affixes"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.crit_damage",
+      "group": "offense",
+      "unit": "multiplier",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "critical hit calculation",
+        "legal affixes"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.armor_pierce",
+      "group": "offense",
+      "unit": "flat points",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "melee/ranged item roll",
+        "gem rules"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.armor_shred",
+      "group": "offense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "melee/ranged item roll",
+        "gem rules"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "offense.life_steal",
+      "group": "offense",
+      "unit": "fraction",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "melee class",
+        "healing efficiency"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "mobility.movement_speed",
+      "group": "mobility",
+      "unit": "blocks/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "affixes",
+        "gems",
+        "sprinting",
+        "potions"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "mobility.step_height",
+      "group": "mobility",
+      "unit": "blocks",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "base",
+        "gear",
+        "affix"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "mobility.jump_or_blink",
+      "group": "mobility",
+      "unit": "distance and cooldown",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "active ability type",
+        "cost"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "utility.mining_speed",
+      "group": "utility",
+      "unit": "blocks/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "tool tier",
+        "Silk Touch",
+        "haste",
+        "mining formula"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "utility.harvest_tier",
+      "group": "utility",
+      "unit": "harvest tier",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "required block tags",
+        "empty hand vs tool"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "utility.reach",
+      "group": "utility",
+      "unit": "blocks",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "entity_interaction_range",
+        "block_interaction_range"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "hunter.favored_target_dps",
+      "group": "hunter",
+      "unit": "damage/second",
+      "verified_source_baseline": null,
+      "baseline_calculation": null,
+      "optimized_atm10_max": null,
+      "optimization_status": "requires_optimized_runtime_loadout",
+      "dependencies": [
+        "matching mob tags",
+        "favored enemy",
+        "potion effects"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "monk.performance_ratio",
+      "group": "monk",
+      "unit": "ratio",
+      "verified_source_baseline": 0.85,
+      "baseline_calculation": "TMM Monk measured performance / matched TMM specialist measured performance",
+      "optimized_atm10_max": null,
+      "optimization_status": "owner_design_target",
+      "dependencies": [
+        "per-axis context",
+        "legal Monk equipment and exclusion",
+        "non-numeric exceptions"
+      ],
+      "notes": ""
+    }
+  ],
+  "profiles": [
+    {
+      "id": "ars_capacity_sustain",
+      "metric_ids": [
+        "ars.max_mana",
+        "ars.mana_regen_per_sec",
+        "ars.spell_cost"
+      ],
+      "status": "gear_and_enchant_formula_only"
+    },
+    {
+      "id": "ars_damage",
+      "metric_ids": [
+        "ars.spell_damage_bonus",
+        "ars.spellbook_glyphs",
+        "ars.spell_dps"
+      ],
+      "status": "gear_only"
+    },
+    {
+      "id": "irons_damage",
+      "metric_ids": [
+        "irons.spell_power_generic",
+        "irons.school_spell_power",
+        "irons.spell_dps"
+      ],
+      "status": "gear_only"
+    },
+    {
+      "id": "irons_rapid",
+      "metric_ids": [
+        "irons.cooldown_reduction",
+        "irons.cast_time_reduction",
+        "irons.spell_dps"
+      ],
+      "status": "book_only"
+    },
+    {
+      "id": "irons_sustain",
+      "metric_ids": [
+        "irons.max_mana",
+        "irons.mana_regen_per_sec",
+        "irons.spellbook_slots"
+      ],
+      "status": "gear_only"
+    },
+    {
+      "id": "hybrid_bridge",
+      "metric_ids": [
+        "ars.max_mana",
+        "irons.max_mana",
+        "ars.mana_regen_per_sec",
+        "irons.mana_regen_per_sec"
+      ],
+      "status": "requires_tmm_mana_mode"
+    },
+    {
+      "id": "melee",
+      "metric_ids": [
+        "offense.melee_dps",
+        "offense.crit_chance",
+        "offense.crit_damage",
+        "offense.armor_pierce",
+        "offense.armor_shred",
+        "offense.life_steal"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ranged",
+      "metric_ids": [
+        "offense.ranged_dps",
+        "offense.crit_chance",
+        "offense.crit_damage"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "defender",
+      "metric_ids": [
+        "defense.max_health",
+        "defense.armor",
+        "defense.armor_toughness",
+        "defense.effective_hp",
+        "defense.dodge_chance",
+        "defense.knockback_resistance"
+      ],
+      "status": "gear_only"
+    },
+    {
+      "id": "mobility",
+      "metric_ids": [
+        "mobility.movement_speed",
+        "mobility.step_height",
+        "mobility.jump_or_blink"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "utility_miner",
+      "metric_ids": [
+        "utility.mining_speed",
+        "utility.harvest_tier",
+        "utility.reach"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "hunter",
+      "metric_ids": [
+        "hunter.favored_target_dps",
+        "defense.dodge_chance",
+        "offense.melee_dps",
+        "offense.ranged_dps"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "monk",
+      "metric_ids": [
+        "monk.performance_ratio",
+        "offense.unarmed_dps",
+        "defense.effective_hp",
+        "mobility.movement_speed"
+      ],
+      "status": "design_target_only"
+    }
+  ],
+  "validation_gates": [
+    "freeze ATM10 exact distributable version and effective datapacks",
+    "probe ATM10 spellbook loot category gem socket eligibility",
+    "validate Atlas Mythic actual legal affixes and gem class exclusivity",
+    "verify all Arcane mana VII enchant stacking on four pieces",
+    "enumerate Ars learned glyph maximum and tier-6 threads",
+    "verify Iron's orb counts/Curios and caster soft cap stacking",
+    "enumerate best legal melee/ranged/defensive loadouts",
+    "measure physical and magical outputs in identical test fixtures",
+    "verify TMM Ars 'n Spells mana primary mode and skill pipeline",
+    "certify ATM10 maxima before specialist skills and Monk JSON"
+  ]
+}
