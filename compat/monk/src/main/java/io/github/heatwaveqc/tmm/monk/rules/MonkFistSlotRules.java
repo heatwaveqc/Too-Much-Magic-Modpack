@@ -22,8 +22,8 @@ public final class MonkFistSlotRules {
     }
 
     public static boolean isReserved(boolean inMonkFaction, int reservedHotbarIndex, int inventoryIndex) {
-        if (!isHotbarIndex(reservedHotbarIndex)) {
-            throw new IllegalArgumentException("Reserved fist index must be 0..8");
+        if (reservedHotbarIndex != DEFAULT_FIST_INDEX) {
+            throw new IllegalArgumentException("Monk fist is fixed to hotbar index 0 (key 1)");
         }
         return inMonkFaction && reservedHotbarIndex == inventoryIndex;
     }
@@ -41,12 +41,13 @@ public final class MonkFistSlotRules {
      *
      * @return 36-slot allocation vector if a complete relocation is possible,
      *         or Optional.empty() when the player must clear inventory space.
+     *         The dedicated fist remains fixed at the first hotbar slot.
      */
     public static Optional<int[]> planLosslessRelocation(int incomingCount,
                                                            int reservedHotbarIndex,
                                                            int[] permittedCapacity) {
-        if (!isHotbarIndex(reservedHotbarIndex)) {
-            throw new IllegalArgumentException("Reserved fist index must be 0..8");
+        if (reservedHotbarIndex != DEFAULT_FIST_INDEX) {
+            throw new IllegalArgumentException("Monk fist is fixed to hotbar index 0 (key 1)");
         }
         if (incomingCount <= 0) {
             throw new IllegalArgumentException("Relocation requires a positive stack size");
