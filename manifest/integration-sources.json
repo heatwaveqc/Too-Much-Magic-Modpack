@@ -14,17 +14,19 @@
     },
     {
       "name": "quest-standards-and-starter-choice",
-      "branch": "test/quest-standards-starter-choice-2026-11-14",
+      "branch": "feature/quest-reward-humor-first-pass",
       "paths": [
         "config/ftbquests/quests/",
         "manifest/quest_content.json",
         "manifest/quest_content_resolved.json",
         "manifest/quest_layouts.json",
         "scripts/rebuild_quest_ui.py",
-        "scripts/validate_quests.py"
+        "scripts/validate_quests.py",
+        "manifest/progression_quest_content.json",
+        "scripts/apply_quest_reward_palette_v1.py"
       ],
       "mode": "runtime-experimental",
-      "note": "B14 finalized quest source: six-option personal starter choice, 180 quests and no XP-bottle grants, first-line item detectability, corrected localization. Includes source and validator only; old baseline carries 147 mods, FTBE source is independently imported."
+      "note": "B14 180-quest book plus validated QA-first reward refresh: 19 authored + 42 temporary overview rewards replaced with funny/useful gifts; no paper/cookie/compass filler, and exactly one empty bowl for Farmer's Delight Cooking Pot. Quest IDs/XP/reward IDs unchanged. Six-shop-category and 47-offer checks imported; client rewards still need verification."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -189,7 +191,8 @@
     "feature/material-processing-recipe-cleanup": "Ancestor of feature/neo-vitae-canonical-dusts, which owns updated dust tags and KubeJS processing while retaining prior material/silver work.",
     "feature/tyzs-core-magic-first-wave": "Ancestor of the exclusive Tyz primary-tree runtime migration branch. Its 4x99 Core Magic overlay is reused, not duplicated.",
     "fix/monk-sunset-diagnostics": "Ancestor of feature/monk-early-mastery-two-trees; new Monk branch retains diagnostics and First Sunset and adds the native early mastery tree.",
-    "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA."
+    "feature/transformation-bridge-scaffold": "Ancestor superseded by fix/jawr-blood-debit-guard for next integration QA.",
+    "test/quest-standards-starter-choice-2026-11-14": "Prior 180-entry quest source; feature/quest-reward-humor-first-pass is a descendant with identical IDs plus checked filler reward replacement."
   },
   "pending_runtime_work": [
     "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
@@ -208,6 +211,7 @@
     "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed.",
     "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA.",
     "Latest JAWR native blood debit guard imported for QA. Verify that blood-spending abilities actually decrement the shared blood pool, including no-cost intended abilities, and no infinite-spend loopholes.",
-    "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests."
+    "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests.",
+    "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles."
   ]
 }
