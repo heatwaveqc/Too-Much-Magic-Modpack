@@ -26,8 +26,13 @@ ROOT_TITLE = re.compile(r'\n\ttitle: "(?:\\.|[^"\\])*"')
 ROOT_SUBTITLE = re.compile(r'\n\tsubtitle: "(?:\\.|[^"\\])*"')
 
 
+def ftb_escape(s: str) -> str:
+    """FTB text formatting uses &; literal ampersands must be \&."""
+    return s.replace("&", r"\&")
+
+
 def q(s: str) -> str:
-    return json.dumps(s, ensure_ascii=False)
+    return json.dumps(ftb_escape(s), ensure_ascii=False)
 
 
 def layout() -> dict[str, dict[str, tuple[int, int]]]:
@@ -289,7 +294,7 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
         raise ValueError(f"Missing FTB quest position for {qid}")
     if title in {"Chapter Overview", "Welcome to Too Much Magic", "The Rest of the Pack Is Yours"} and "\n\t\t\tsize:" not in block:
         block = block.replace("\n\t\t\ttasks:", "\n\t\t\tsize: 1.5d\n\t\t\ttasks:", 1)
-    loc = f"\tquest.{qid}.title: {q(title)}\n\tquest.{qid}.quest_desc: {json.dumps(description, ensure_ascii=False)}"
+    loc = f"\tquest.{qid}.title: {q(title)}\n\tquest.{qid}.quest_desc: {json.dumps([ftb_escape(s) for s in description], ensure_ascii=False)}"
     return block, loc, xy, ledger is not None
 
 
@@ -310,7 +315,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
     pack = re.sub(r'^version = ".*"$',
-                  'version = "0.8.9-quest-vampire-coin-qa"',
+                  'version = "0.8.10-quest-text-format-qa"',
                   pack, count=1, flags=re.M)
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(
@@ -377,7 +382,7 @@ def main() -> None:
         chapter_translations.append(f'\tchapter.{chapter["chapter_id"]}.title: {q(chapter["name"])}')
         subtitle = SUBTITLE.get(chapter["name"], f"Explore {chapter['name']}; more quests are being authored.")
         chapter_translations.append(
-            f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([subtitle], ensure_ascii=False)}')
+            f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([ftb_escape(subtitle)], ensure_ascii=False)}')
     for group in SPEC["groups"]:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
     changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations) + "\n}\n"
