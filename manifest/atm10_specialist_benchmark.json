@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "created": "2026-11-15",
-  "status": "research_v0_1_not_optimized_or_runtime_certified",
+  "status": "source_derived_scenario_maxima_populated_not_runtime_certified",
   "purpose": "ATM10 max legal equipment benchmark -> TMM non-Monk specialist skill calibration -> Monk 85% of TMM specialist measured performance",
   "owner_targets": {
     "tmm_atm10_performance_tolerance_fraction": 0.05,
@@ -28,7 +28,12 @@
       3
     ],
     "mythic_sockets_rare_max": 4,
-    "mythic_sockets_rare_roll_probability": 0.05
+    "mythic_sockets_rare_roll_probability": 0.05,
+    "iron_ring_slots_registered": 2,
+    "iron_necklace_slots_registered": 1,
+    "iron_spellbook_slots_registered": 1,
+    "iron_arcane_anvil_max_upgrades_default": 3,
+    "magic_caster_buff_scope": "permanent equipment/Curios only"
   },
   "calculated_examples_not_certified_maxima": {
     "irons_gear_book_mana": 2200,
@@ -43,7 +48,14 @@
     "ars_base_tier6_4piece_armor": 40,
     "ars_base_tier6_4piece_toughness": 24,
     "irons_base_4piece_armor": 40,
-    "irons_base_4piece_toughness": 24
+    "irons_base_4piece_toughness": 24,
+    "irons_6item_2rings_mana": 3300,
+    "irons_6item_2rings_charm_graybeard_regen": 161.60817749999995,
+    "irons_schoolpower_18orbs_staff": 8.028943999999997,
+    "irons_cooldown_reduction_18orbs_2rings_staff": 0.8979591836734695,
+    "irons_cast_time_reduction_staff_2rings": 0.7191011235955056,
+    "defense_mythic_health_armor_only": 386.4,
+    "defense_mythic_health_armor_shield": 1103.59704
   },
   "source_repos": {
     "atm10": "https://github.com/AllTheMods/ATM-10/tree/d3fef516ed2c3610f49981f5f924d7205d8536ef",
@@ -51,7 +63,12 @@
     "arcanist": "https://github.com/Jarva/All-The-Arcanist-Gear/tree/0c15d90b18b54f6ea11fe9c92636145f9e090e96",
     "ars": "https://github.com/baileyholl/Ars-Nouveau/tree/4d323fba9200c3293a4f4848cf1e0fe70beb7098",
     "irons": "https://github.com/iron431/irons-spells-n-spellbooks/tree/bc3671984544f10264bcab6828d4ef6f2afddee2",
-    "apotheosis": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc"
+    "apotheosis": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc",
+    "irons_items": "https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/registries/ItemRegistry.java",
+    "irons_orbs": "https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/registries/UpgradeOrbTypeRegistry.java",
+    "irons_anvil": "https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/gui/arcane_anvil/ArcaneAnvilMenu.java",
+    "apotheosis_gems": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems",
+    "apotheosis_affixes": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes"
   },
   "metrics": [
     {
@@ -67,7 +84,19 @@
         "ring and Curios eligibility",
         "other mana affixes/enchantments"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.core_mana_5_items",
+          "value": 2950,
+          "confidence": "source_derived_pending_runtime"
+        },
+        {
+          "scenario_id": "irons.mana_6_items_2rings_charm",
+          "value": 3300,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.spell_power_generic",
@@ -82,7 +111,14 @@
         "upgrade orb slot opportunity cost",
         "active buffs"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.max_school_power_from_this_loadout",
+          "value": 4.225759999999999,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.mana_regen_multiplier",
@@ -97,7 +133,14 @@
         "mana pool",
         "server regen config"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.mana_6_items_2rings_charm",
+          "value": 2.448608749999999,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.mana_regen_per_sec",
@@ -112,7 +155,19 @@
         "regen config",
         "regen Curios"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.core_mana_5_items",
+          "value": 103.19136874999997,
+          "confidence": "source_derived_pending_runtime"
+        },
+        {
+          "scenario_id": "irons.mana_6_items_2rings_charm",
+          "value": 161.60817749999995,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.spellbook_slots",
@@ -139,7 +194,14 @@
         "cooldown orbs",
         "softcap, rounding, cast source"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.cooldown_6items_2rings",
+          "value": 0.8979591836734695,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.cast_time_reduction",
@@ -153,7 +215,14 @@
         "instant vs long vs continuous cast",
         "cast speed sources"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.cast_time_2rings_staff",
+          "value": 0.7191011235955056,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.school_spell_power",
@@ -167,7 +236,14 @@
         "school upgrade orbs",
         "school item or trinket"
       ],
-      "notes": "Not a maximum"
+      "notes": "Not a maximum",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "irons.max_school_power_from_this_loadout",
+          "value": 1.9,
+          "confidence": "source_derived_pending_runtime"
+        }
+      ]
     },
     {
       "id": "irons.spell_dps",
@@ -260,7 +336,14 @@
         "conditional spellbook bonus and mobs",
         "spell context"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "ars.enchanted_source_formula",
+          "value": 48,
+          "confidence": "source_formula_pending_G_and_runtime"
+        }
+      ]
     },
     {
       "id": "ars.spellbook_glyphs",
@@ -273,7 +356,14 @@
       "dependencies": [
         "exact slot cap from addon at runtime"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "ars.enchanted_source_formula",
+          "value": 20,
+          "confidence": "source_formula_pending_G_and_runtime"
+        }
+      ]
     },
     {
       "id": "ars.spell_cost",
@@ -365,7 +455,19 @@
         "max health potions",
         "relics"
       ],
-      "notes": "A four-piece Blessed +8 would add 32 if legal; not certified overall maximum"
+      "notes": "A four-piece Blessed +8 would add 32 if legal; not certified overall maximum",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "defense.mythic_health_armor_only",
+          "value": 386.4,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        },
+        {
+          "scenario_id": "defense.mythic_health_with_shield",
+          "value": 1103.59704,
+          "confidence": "conditional_source_max_for_listed_components_pending_runtime"
+        }
+      ]
     },
     {
       "id": "defense.effective_hp",
@@ -820,5 +922,151 @@
     "measure physical and magical outputs in identical test fixtures",
     "verify TMM Ars 'n Spells mana primary mode and skill pipeline",
     "certify ATM10 maxima before specialist skills and Monk JSON"
+  ],
+  "revision": "v0.2",
+  "updated": "2026-11-15",
+  "constrained_optimized_loadouts": [
+    {
+      "id": "irons.core_mana_5_items",
+      "focus": "irons.max_mana",
+      "scope": "4 armor + Curios spellbook, no rings/necklace/staff, 3 Mana orbs per item",
+      "metrics": {
+        "irons.max_mana": 2950,
+        "irons.mana_regen_per_sec": 103.19136874999997
+      },
+      "combinations": [
+        "unobtainium_mage_helmet",
+        "unobtainium_mage_chestplate",
+        "unobtainium_mage_leggings",
+        "unobtainium_mage_boots",
+        "unobtainium_spell_book",
+        "15 mana upgrade orbs"
+      ],
+      "confidence": "source_derived_pending_runtime"
+    },
+    {
+      "id": "irons.mana_6_items_2rings_charm",
+      "focus": "irons.mana_regen_per_sec",
+      "scope": "4 armor + Curios book + mainhand Graybeard Staff + 2 Ring of Mana + Amethyst Resonance Charm, 18 mana orbs total, default regen",
+      "metrics": {
+        "irons.max_mana": 3300,
+        "irons.mana_regen_per_sec": 161.60817749999995,
+        "irons.mana_regen_multiplier": 2.448608749999999
+      },
+      "combinations": [
+        "4 unobtainium mage armor",
+        "unobtainium spellbook",
+        "graybeard staff mainhand",
+        "18 mana upgrade orbs",
+        "two mana rings",
+        "amethyst resonance charm"
+      ],
+      "confidence": "source_derived_pending_runtime",
+      "notes": "Individual Curios and staff attributes are supported upstream; other mod accessories could exceed this."
+    },
+    {
+      "id": "irons.max_school_power_from_this_loadout",
+      "focus": "irons.school_spell_power",
+      "scope": "4 armor + Curios book + Graybeard Staff mainhand, all 18 upgrade orbs assigned to a single eligible school",
+      "metrics": {
+        "irons.school_spell_power": 1.9,
+        "irons.spell_power_generic": 4.225759999999999,
+        "irons.school_specific_total_spell_power": 8.028943999999997
+      },
+      "combinations": [
+        "4 unobtainium mage armor",
+        "unobtainium spellbook",
+        "graybeard staff mainhand",
+        "18 identical school power orbs"
+      ],
+      "confidence": "source_derived_pending_runtime",
+      "notes": "This is general spell power times school power, before spell level and target mitigation; only one school optimized."
+    },
+    {
+      "id": "irons.cooldown_6items_2rings",
+      "focus": "irons.cooldown_reduction",
+      "scope": "4 armor + Curios book + Artificer Staff mainhand + 2 Cooldown Rings, all 18 orbs allocated cooldown",
+      "metrics": {
+        "irons.cooldown_raw_attribute": 3.45,
+        "irons.cooldown_reduction": 0.8979591836734695,
+        "irons.cooldown_duration_fraction": 0.1020408163265305
+      },
+      "combinations": [
+        "4 unobtainium mage armor",
+        "unobtainium spellbook",
+        "artificer staff mainhand",
+        "18 cooldown upgrade orbs",
+        "two cooldown rings"
+      ],
+      "confidence": "source_derived_pending_runtime",
+      "notes": "Soft cap is nonlinear; actual cooldown ticks are integer-rounded, and other mods may improve farther."
+    },
+    {
+      "id": "irons.cast_time_2rings_staff",
+      "focus": "irons.cast_time_reduction",
+      "scope": "4 armor + Curios book + Artificer Staff mainhand + 2 Cast Time Rings; noncontinuous long/charge casts only",
+      "metrics": {
+        "irons.cast_time_raw_attribute": 1.89,
+        "irons.cast_time_reduction": 0.7191011235955056,
+        "irons.cast_time_duration_fraction": 0.2808988764044944
+      },
+      "combinations": [
+        "unobtainium spellbook",
+        "artificer staff mainhand",
+        "two cast time rings"
+      ],
+      "confidence": "source_derived_pending_runtime",
+      "notes": "No basic cast-time upgrade orb was found in Iron's 1.21 registry; continuous spell casts use a different mechanic."
+    },
+    {
+      "id": "ars.enchanted_source_formula",
+      "focus": "ars.max_mana",
+      "scope": "4 Unobtainium Arcanist armor pieces + tier-six book + Mana Boost VII and Mana Regen VII on each armor piece, before threads and Curios",
+      "metrics": {
+        "ars.max_mana_expression": "2900+15*G",
+        "ars.mana_regen_per_sec_expression": "115+0.33*G",
+        "ars.spell_damage_bonus": 48,
+        "ars.spellbook_glyphs": 20
+      },
+      "combinations": [
+        "4 Unobtainium Arcanist armor",
+        "tier-six Unobtainium Ars spellbook",
+        "4x Mana Boost VII",
+        "4x Mana Regen VII"
+      ],
+      "confidence": "source_formula_pending_G_and_runtime",
+      "notes": "G is earned glyph bonus at full unlock, including addon glyph mechanics; cannot substitute 85 as a certified maximum."
+    },
+    {
+      "id": "defense.mythic_health_armor_only",
+      "focus": "defense.max_health",
+      "scope": "4 Unobtainium mage armor, perfect gems, Mythic four-socket roll on every piece; no offhand shield",
+      "metrics": {
+        "defense.max_health": 386.4
+      },
+      "combinations": [
+        "4 Blessed Mythic armor affixes +8 health each",
+        "4x Warlord Perfect gems in chestplate +35% multiplied base HP each",
+        "4x Brawlers Perfect gems in leggings +12 HP each",
+        "1x Royalty Perfect gem in helmet +15% multiplied total HP",
+        "1x Tyrannical Perfect gem in boots +40% multiplied total HP"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "Not entire-pack maximum. Assumes 4 legal Mythic sockets on each item, all listed affixes/gems and standard modifier-stacking behavior."
+    },
+    {
+      "id": "defense.mythic_health_with_shield",
+      "focus": "defense.max_health",
+      "scope": "Same as defense.mythic_health_armor_only plus Mythic 4-socket shield offhand with four Perfect Brawlers gems",
+      "metrics": {
+        "defense.max_health": 1103.59704
+      },
+      "combinations": [
+        "all gear in defense.mythic_health_armor_only",
+        "4x Brawlers Perfect gems on shield +30% multiplied total HP each"
+      ],
+      "confidence": "conditional_source_max_for_listed_components_pending_runtime",
+      "notes": "The shield is incompatible with any offhand caster item; this is a survival specialist comparison, not simultaneous top caster damage."
+    }
   ]
 }
