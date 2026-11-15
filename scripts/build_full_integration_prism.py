@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Produce an immutable, traceable, disposable full-integration Prism instance."""
+"""Produce a single-level GitHub artifact directly importable as a Prism instance."""
 from __future__ import annotations
 import hashlib
 import json
@@ -185,8 +185,46 @@ MaxMemAlloc=8192
         conf = z.read("instance.cfg")
         if b"PreLoadCommand=powershell.exe" not in conf or b"PostExitCommand=powershell.exe" not in conf:
             raise RuntimeError("Personal QA sync hook missing")
+    # GitHub actions/upload-artifact always wraps uploaded content in a ZIP.
+    # Uploading this ZIP as a file makes a ZIP INSIDE a ZIP for every player.
+    # Without changing the trusted workflow (which points to OUTPUT), stage
+    # the *contents* as a directory named OUTPUT. The artifact ZIP will then
+    # have instance.cfg and mmc-pack.json at its ROOT and can be imported
+    # directly by Prism, without an extraction step.
+    #
+    # Keep producing/validating an ordinary Prism ZIP above, then extract our
+    # own verified members for the artifact upload. The .zip suffix on the
+    # staging DIRECTORY is only an internal workflow-path compatibility trick.
+    # Players will download a normal, single-level GitHub ZIP.
+    validated_archive_sha = hashlib.sha256(target.read_bytes()).hexdigest()
+    staging = target.with_name(target.name + ".upload-contents")
+    if staging.exists():
+        raise RuntimeError("Upload staging already exists: " + str(staging))
+    staging.mkdir()
+    with zipfile.ZipFile(target) as z:
+        for info in z.infolist():
+            p = pathlib.PurePosixPath(info.filename)
+            if p.is_absolute() or ".." in p.parts or info.is_dir():
+                raise RuntimeError("Unexpected/unsafe Prism ZIP entry: " + info.filename)
+            out = staging.joinpath(*p.parts)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(z.read(info.filename))
+    if not (staging / "instance.cfg").is_file() or not (staging / "mmc-pack.json").is_file():
+        raise RuntimeError("Prism required files must be at artifact root")
+    if any(staging.glob("*.zip")) or any(staging.glob("*.mrpack")):
+        raise RuntimeError("Artifact must not contain a nested modpack archive")
+    with zipfile.ZipFile(target) as z:
+        for name in z.namelist():
+            if (staging / name).read_bytes() != z.read(name):
+                raise RuntimeError("Artifact staging content mismatch: " + name)
+    target.unlink()
+    staging.rename(target)
+    if not target.is_dir():
+        raise RuntimeError("GitHub upload must receive the Prism directory, not a ZIP file")
     print(json.dumps({"status": "PACKAGED-NOT-STABLE",
-        "path": str(target), "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
+        "path": str(target), "upload_is_directory": True,
+        "github_artifact_is_direct_prism_zip": True,
+        "validated_source_zip_sha256": validated_archive_sha,
         "integration_commit": commit, "first_party_jars": addons_sha,
         "third_party_jars_bundled": 0, "dev_only_preferences": True}, indent=2))
 
