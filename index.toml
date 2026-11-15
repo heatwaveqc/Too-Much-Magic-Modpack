@@ -9,8 +9,16 @@ file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
 [[files]]
+file = "config/ftbquests/quests/chapters/a_sufficiently_advanced_magic.snbt"
+hash = "1b25f9b82d8868ca29ca6b11270612165ee079a48b19d129553bce8b3feda385"
+
+[[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
 hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
+hash = "cc5229ca496bfe85b2d1e12826fdbb8d91f2781a36c8e5687c44edae0daec70c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/apotheosis.snbt"
@@ -67,10 +75,6 @@ hash = "8ec2738b33c847a2fd99296b3be46cc62ec0cfbac377fea8dc0107a5fe2c33e0"
 [[files]]
 file = "config/ftbquests/quests/chapters/evilcraft.snbt"
 hash = "58f5b63d4150914df4abd5fbc114fd7a8f48a41bc9e93d0b97f8323513cb8bb5"
-
-[[files]]
-file = "config/ftbquests/quests/chapters/a_sufficiently_advanced_magic.snbt"
-hash = "1b25f9b82d8868ca29ca6b11270612165ee079a48b19d129553bce8b3feda385"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/feywild.snbt"
@@ -213,6 +217,22 @@ file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
 
 [[files]]
+file = "kubejs/data/computercraft/recipe/computer_advanced.json"
+hash = "1b42ba9f0e2caea304b9b077f0ab624d4908ebad4f7a254a50843b031fc5ee0e"
+
+[[files]]
+file = "kubejs/data/computercraft/recipe/computer_normal.json"
+hash = "4671e80870e431c11f9fd90c5304b25482b095f2ee7dfa11f237514f8197597e"
+
+[[files]]
+file = "kubejs/data/computercraft/recipe/pocket_computer_advanced.json"
+hash = "c7136676231037f9cf7b8de785a552d424b5c4354387eae8a57e190d5ac6bf53"
+
+[[files]]
+file = "kubejs/data/computercraft/recipe/pocket_computer_normal.json"
+hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
+
+[[files]]
 file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
 
@@ -265,6 +285,14 @@ file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
 hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
+hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
+hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
+
+[[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
 hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
 
@@ -299,6 +327,10 @@ hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
+
+[[files]]
+file = "kubejs/startup_scripts/eldritch_logic_core.js"
+hash = "fafa8bf582e64b7a2448a5163cd1aa85d5d595ccd092f3a8b68feed1e40dfe0c"
 
 [[files]]
 file = "mods/akashic-tome.pw.toml"
@@ -431,8 +463,18 @@ hash = "86cf2ae835b8f3d981af2e88a4d19fdc3dc4f5aa3904c6ba30e25d77d3e9fcbb"
 metafile = true
 
 [[files]]
+file = "mods/cc-tweaked.pw.toml"
+hash = "100b5d463f36754b5e53b631056efdc06dc5b2799a5b4eb629873da58bbcde11"
+metafile = true
+
+[[files]]
 file = "mods/cloth-config.pw.toml"
 hash = "22286fa216349c0767808903a0a38662857d2adee54950a18cbf26c167a06029"
+metafile = true
+
+[[files]]
+file = "mods/cobblegen-galore.pw.toml"
+hash = "8ee8facb80c02593751f4cb8eddd681868be2b725791ebf1c35060be4fa7efaa"
 metafile = true
 
 [[files]]
@@ -1086,44 +1128,3 @@ hash = "ecc1ecac0e22cd8c18cb3337c4de2e2b12a64369fe4016bec9968bd28b1d35b6"
 [[files]]
 file = "tests/test_tmm_qa_preferences.ps1"
 hash = "f390036a167b4c7602d688018425e6665c73d6b3b19015b9c6b6a764e362a601"
-
-[[files]]
-file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
-hash = "cc5229ca496bfe85b2d1e12826fdbb8d91f2781a36c8e5687c44edae0daec70c"
-
-[[files]]
-file = "mods/cc-tweaked.pw.toml"
-hash = "100b5d463f36754b5e53b631056efdc06dc5b2799a5b4eb629873da58bbcde11"
-metafile = true
-
-[[files]]
-file = "kubejs/startup_scripts/eldritch_logic_core.js"
-hash = "fafa8bf582e64b7a2448a5163cd1aa85d5d595ccd092f3a8b68feed1e40dfe0c"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
-hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
-hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
-
-[[files]]
-file = "kubejs/data/computercraft/recipe/computer_normal.json"
-hash = "4671e80870e431c11f9fd90c5304b25482b095f2ee7dfa11f237514f8197597e"
-
-[[files]]
-file = "kubejs/data/computercraft/recipe/computer_advanced.json"
-hash = "1b42ba9f0e2caea304b9b077f0ab624d4908ebad4f7a254a50843b031fc5ee0e"
-
-[[files]]
-file = "kubejs/data/computercraft/recipe/pocket_computer_normal.json"
-hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
-
-[[files]]
-file = "kubejs/data/computercraft/recipe/pocket_computer_advanced.json"
-hash = "c7136676231037f9cf7b8de785a552d424b5c4354387eae8a57e190d5ac6bf53"
-
-[[files]]
-file = "scripts/validate_cc_iesnium_pilot.py"
-hash = "83933f720259871d8bbbc2d627cc9027532521891124a810c35e4918fdd2dd50"
