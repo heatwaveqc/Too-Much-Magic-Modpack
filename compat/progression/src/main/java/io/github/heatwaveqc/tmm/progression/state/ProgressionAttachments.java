@@ -1,0 +1,17 @@
+package io.github.heatwaveqc.tmm.progression.state;
+
+import io.github.heatwaveqc.tmm.progression.ProgressionMod;
+import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import java.util.function.Supplier;
+
+public final class ProgressionAttachments {
+    private ProgressionAttachments() {}
+
+    public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS =
+        DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, ProgressionMod.MOD_ID);
+    public static final Supplier<AttachmentType<Ledger>> LEDGER =
+        ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
+            .serialize(Ledger.CODEC).copyOnDeath().build());
+}
