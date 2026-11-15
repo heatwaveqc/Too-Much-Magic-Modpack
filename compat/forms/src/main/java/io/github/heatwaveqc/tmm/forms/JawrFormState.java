@@ -26,7 +26,7 @@ public final class JawrFormState {
             if (data == null) return false;
             Object value = accessor.present().invoke(data);
             return value instanceof Boolean b && b;
-        } catch (ReflectiveOperationException | LinkageError | SecurityException | RuntimeException failure) {
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException failure) {
             // Do not fake a form from a cached tag. Refuse effects and purchases.
             return false;
         }
