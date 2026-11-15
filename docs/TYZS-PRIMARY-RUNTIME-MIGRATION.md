@@ -10,7 +10,7 @@ audit**. `Improvable Skills 3` remains its own vanilla-XP based feature.
 The **one canonical global Tyz wallet/tree** is defined in
 `design/universal-mxp-progression-registry`. The preexisting
 `feature/tyzs-core-magic-first-wave` contains four executable CUSTOM skill JSONs
-with 99 ranks each, and this branch extends it with the integration activation
+with five ranks each, and this branch extends it with the integration activation
 and validation scripts. The Monk/Vampirism addon still owns its own one-time
 faction powers (e.g. Step Assist), not another copy of the shared magic skills.
 Transformation category IDs are reserved for future work; do **not** show empty
@@ -38,7 +38,7 @@ families and native Tyz combat/nature tuning remain additional waves.
    and general pack/quest validation, boot a clean dedicated server, package
    the test Prism launcher only on success. No binary third-party JAR in Git.
 5. In a disposable client world: verify five tabs, /skills reload, four
-   99-rank skills, rank purchases/refunds and attributes, relog persistence,
+   five-rank skills, rank purchases/refunds and attributes, relog persistence,
    no default native Tyz XP from everyday activity, no Pufferfish Skills,
    Improvable Skills still accessible, native Monk one-time root still works.
 
@@ -52,7 +52,7 @@ families and native Tyz combat/nature tuning remain additional waves.
   test XP** (`/skills xp <player> add 1000`). This is a *testable UI/rank
   slice*, not a playable progression economy. Never describe as MXP complete.
 - For rank II and later, **one** rank of the previous stage satisfies native
-  prerequisites; do not require rank 99. External boss/ritual/Monk/form gates
+  prerequisites; do not require rank 5. External boss/ritual/Monk/form gates
   must use server-side `SkillActionEvent.PurchasePre`, not client visibility.
 - Bulk buying invokes the pre-event once at the node boundary. RefundPre must
   protect predecessor ownership while higher nodes remain. Direct
@@ -67,9 +67,13 @@ families and native Tyz combat/nature tuning remain additional waves.
 - Pufferfish's Attributes remains pinned until every dependent module is
   independently audited. Only the Skills mod is retired in this migration.
 
+## Stock-tree migration and five-rank balance update (2026-11-15)
+
+The four Core Magic base nodes now each have **five** ranks, each representing 20% of that attribute's former rank-99 maximum effect. Five SP now fully purchase a base node, rather than 99 SP. This is a deliberate power-curve acceleration and only suitable for disposable QA until replay/migration handling is verified. See [full 32-skill default inventory and migration plan](TYZS-STOCK-SKILL-MIGRATION-2026-11-15.md). The original Tyz four categories remain present **temporarily**; remove them only after every original skill has been safely placed, behavior-verified and gated in the nine custom categories. Existing 6+ ranks must not be silently clipped in retained world data.
+
 ## Acceptance status
 
-- Source-backed: exact release IDs/loader, 4x99 JSON preview, native XP-disable
+- Source-backed: exact release IDs/loader, 4x5 JSON preview, native XP-disable
   config, conditional PurchasePre/RefundPre API, one-rank prerequisite semantics.
 - CI will enforce: exclusive Skills backend, correct categories, exact hash,
   static JSON/XP checks, real server boot, and correct Prism contents.

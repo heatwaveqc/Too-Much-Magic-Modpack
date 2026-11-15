@@ -38,8 +38,10 @@ def verify(root: Path = ROOT) -> None:
     for sid in IDS:
         data = json.loads((skill_dir / f"{sid}.json").read_text())
         assert data["active"] is True and data["type"] == "CUSTOM"
-        assert data["category"] == "tmm_magic_core" and data["maximumLevel"] == 99
-        assert len(data["prices"]) == 99
+        assert data["category"] == "tmm_magic_core" and data["maximumLevel"] == 5
+        assert data["prices"] == [1, 1, 1, 1, 1]
+        for modifier in data["modifiers"]:
+            assert len(modifier["values"]) == 5, "Core modifier has an invalid rank curve"
     common = tomllib.loads((root / "config/tyzs_skills-common.toml").read_text(encoding="utf-8"))
     xp = common["xp_values"]
     assert all(xp[name] is False for name in DISABLED_BOOLEAN_XP), "Unwanted native activity XP"
@@ -48,7 +50,7 @@ def verify(root: Path = ROOT) -> None:
     assert common["Limits"]["max_lvl"] == -1
     assert (root / "kubejs/server_scripts/tmm_magic_core_thrift.js").is_file()
     assert not (root / "config/puffish_skills").exists()
-    print("PASS: Tyz 6.4.2 exclusive active Skills backend, 4x99 initial Core Magic,")
+    print("PASS: Tyz 6.4.2 exclusive active Skills backend, 4x5 initial Core Magic,")
     print("      original Tyz tabs preserved, native XP disabled, independent Attributes retained.")
     print("NOT TESTED: client GUI, actual spell effects, and MXP award dispatcher.")
 

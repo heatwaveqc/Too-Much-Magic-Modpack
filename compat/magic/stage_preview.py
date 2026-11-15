@@ -25,6 +25,32 @@ CORE_IDS = {
 }
 DEFAULT_CATEGORIES = {"abilities", "combat", "misc", "nature"}
 VALID_OPERATIONS = {"ADD_VALUE", "ADD_MULTIPLIED_BASE", "ADD_MULTIPLIED_TOTAL"}
+# Preserve each original rank-99 terminal benefit while compressing the base skill to five ranks.
+# These ceilings are 6.4.2 preview values, not claims about actual in-world mod effect.
+EXPECTED_MAXIMA = {
+    "tmm_magic_reservoir_1": {
+        "ars_nouveau:ars_nouveau.perk.max_mana": 99,
+        "irons_spellbooks:max_mana": 99,
+        "psi:total_psi": 4950,
+    },
+    "tmm_magic_wellspring_1": {
+        "ars_nouveau:ars_nouveau.perk.mana_regen": 2.475,
+        "irons_spellbooks:mana_regen": 0.99,
+        "psi:regen": 24.75,
+        "forbidden_arcanus:generic.aureal_regeneration": 2.475,
+    },
+    "tmm_magic_thrift_1": {
+        "goety:soul_discount": 0.297,
+        "neovitae:sigil_cost_reduction": 29.7,
+    },
+    "tmm_magic_potency_1": {
+        "ars_nouveau:ars_nouveau.perk.spell_damage": 4.95,
+        "irons_spellbooks:spell_power": 0.99,
+        "goety:spell_potency": 99,
+        "eidolon_repraised:magic_power": 0.99,
+    },
+}
+
 
 
 def verify() -> list[Path]:
@@ -41,12 +67,16 @@ def verify() -> list[Path]:
         if item["category"] != "tmm_magic_core" or not item["active"]:
             raise ValueError(f"{name}: wrong category or inactive")
         levels = item["maximumLevel"]
-        if levels != 99 or len(item["prices"]) != levels:
-            raise ValueError(f"{name}: expected 99 ranks and 99 prices")
+        if levels != 5 or len(item["prices"]) != levels:
+            raise ValueError(f"{name}: expected five ranks and five prices")
         if any(type(n) is not int or n <= 0 for n in item["prices"]):
             raise ValueError(f"{name}: invalid prices")
+        if item["prices"] != [1, 1, 1, 1, 1]:
+            raise ValueError(f"{name}: base five-rank nodes must cost exactly 1 SP each")
         if not item["modifiers"]:
             raise ValueError(f"{name}: no modifiers")
+        if {m["attribute"] for m in item["modifiers"]} != set(EXPECTED_MAXIMA[name]):
+            raise ValueError(f"{name}: expected modifier set drifted")
         for mod in item["modifiers"]:
             attr = mod["attribute"]
             if attr in targets:
@@ -59,6 +89,12 @@ def verify() -> list[Path]:
                 raise ValueError(f"{name}: malformed values for {attr}")
             if vals[0] <= 0 or any(b <= a for a, b in zip(vals, vals[1:])):
                 raise ValueError(f"{name}: nonincreasing upgrade values for {attr}")
+            ceiling = EXPECTED_MAXIMA[name][attr]
+            for idx, actual in enumerate(vals, 1):
+                expected = round(ceiling * idx / 5) if isinstance(ceiling, int) else round(ceiling * idx / 5, 6)
+                if abs(actual - expected) > 0.000001:
+                    raise ValueError(f"{name}: rank {idx} for {attr} not 20% of original cap")
+
     categories = json.loads(
         (OVERLAY / "config/tyzs_skills/custom/data/categories.json").read_text(encoding="utf-8")
     )
@@ -122,7 +158,7 @@ if __name__ == "__main__":
     parser.add_argument("--overwrite", action="store_true", help="Permit replacing previous TMM preview files")
     args = parser.parse_args()
     files = verify()
-    print(f"PASS: {len(CORE_IDS)} skills, 99 ranks each, {len(files)} overlay files")
+    print(f"PASS: {len(CORE_IDS)} skills, five ranks each, {len(files)} overlay files")
     if args.install:
         if args.pack_root is None:
             parser.error("--install requires --pack-root")
