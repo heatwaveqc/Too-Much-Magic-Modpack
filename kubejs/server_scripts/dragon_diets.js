@@ -3,7 +3,7 @@
 // simple preserves and sugar (no grains); CAVE = native foods and charcoal-charred
 // meat/seafood. Native cooked foods remain inedible to dragons as meals.
 // No global changes to item food properties or common c: tags.
-const TMM_GRAIN_WORDS = /(amaranth|barley|buckwheat|corn|millet|oats?|quinoa|rice|rye|sorghum|spelt|teff|wheat|flour|noodle|pasta|bread|toast|tortilla|cereal|popcorn|pancake|waffle|biscuit|cookie|cake|pastry|dumpling|crouton)/i;
+const TMM_GRAIN_WORDS = /(amaranth|barley|buckwheat|corn|millet|oats?|quinoa|rice|rye|sorghum|spelt|teff|wheat|flour|noodle|pasta|bread|toast|tortilla|cereal|popcorn|pancake|waffle|biscuit|cookie|cake|pastry|dumpling|crouton|pie|muffin|donut|sandwich|burger|nugget|knish)/i;
 const TMM_COOKED_WORDS = /(?:^|_)(?:cooked|baked|fried|roasted|grilled|steamed|boiled|smoked)(?:_|$)/i;
 const TMM_SEA_PLANTS = /(kelp|seaweed|seagrass|algae)/i;
 const TMM_SPECIAL_FRUIT = new Set([
@@ -43,6 +43,21 @@ ServerEvents.tags('item', event => {
     'farmersdelight:fruit_salad', 'farmersdelight:nether_salad'
   ]) {
     if (tmmForestProduceAllowed(id)) event.add('tmm:dragon_food/forest_produce', id);
+  }
+
+  // The upstream charred-vegetable and charred-mushroom recipe tags include
+  // grain dishes such as pumpkin pie and mushroom barley. Remove only the
+  // grain-derived members from these DRAGON SURVIVAL tags, not common food tags.
+  for (const sourceTag of [
+    'dragonsurvival:cooked_vegetables',
+    'dragonsurvival:cooked_mushrooms'
+  ]) {
+    for (const value of event.get(sourceTag).getObjectIds()) {
+      const id = String(value);
+      if (TMM_GRAIN_WORDS.test(id.split(':').slice(1).join(':'))) {
+        event.remove(sourceTag, id);
+      }
+    }
   }
 
   // Charcoal-assisted fallback makes all properly tagged raw meat/fish eligible
