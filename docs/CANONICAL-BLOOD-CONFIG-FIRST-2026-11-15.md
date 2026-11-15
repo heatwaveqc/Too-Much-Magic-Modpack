@@ -25,10 +25,25 @@
 | Iron's vial → Iron's Alchemist Cauldron | `irons_spellbooks:blood_vial` | Empty glass bottle + 250 mB **EvilCraft blood** | Overrides native Iron's recipe; runtime pending |
 | Iron's Alchemist Cauldron → vial | Empty glass bottle + 250 mB EvilCraft blood | `irons_spellbooks:blood_vial` | Overrides native Iron's recipe; runtime pending |
 | Hexerei blood bottle → Iron's Alchemist Cauldron | `hexerei:blood_bottle` | Empty glass bottle + 250 mB **EvilCraft blood** | Additional Iron's recipe; runtime pending |
+| Iron's Alchemist Cauldron native damage-generated blood → vial | Empty glass bottle + 250 mB `irons_spellbooks:blood` | `irons_spellbooks:blood_vial` | **Restored fluid-specific fallback** after finding vanilla Iron's damaging-entity output bypasses recipes; static validation passed, in-game pending |
 
 **Important:** Hexerei's `CauldronFillingRecipe.matches` tests the input **item**, not the destination cauldron fluid. The prior prototype offered an `irons_spellbooks:blood_vial` → EvilCraft-fluid recipe in Hexerei alongside the proposed vial → Hexerei-fluid recipe. That would lead to nondeterministic selection of two recipes for the same bottle. The old `iron_vial_to_evilcraft.json` recipe is **deleted**. Only the vial → Hexerei blood recipe remains for Hexerei's cauldron. Iron's own cauldron still yields EvilCraft blood.
 
 The 250 mB bottled-blood transaction and 1,000 mB bucket transaction are exact one-to-one conversions. Native cauldron recipes execute *before* `FluidUtil` generic container interactions, allowing bucket conversion without an API wrapper.
+
+## Player-facing JEI reduction — not yet enabled
+
+The desired presentation is one ordinary blood fluid — `evilcraft:blood` — with one primary bucket — `evilcraft:bucket_blood`. Hide **redundant fluid entries and buckets**, not their registered IDs, after client tests. Leave vanilla and existing machine paths intact.
+
+The liquid identity is not yet universal for pipes: Neo Vitae's altar drains `neovitae:essentia_vitae_source`; Hexerei's cauldron contains `hexerei:blood_fluid`; Iron's native damage cauldron produces `irons_spellbooks:blood`. The added Iron's **native blood-to-vial** recipe ensures the custom `evilcraft:blood` vial fill override does not strand that production.
+
+Do not indiscriminately hide **all** blood bottle items or treat them as one crafting tag:
+- Iron's `irons_spellbooks:blood_vial` is used as a native `irons_spellbooks:blood_focus` and an explicit ingredient in the Netherite Spell Book. Hide only after upgrading that recipe and the spell-focus tag.
+- Hexerei's `hexerei:blood_bottle` is genuinely consumable (Absorption, removes milk-curable effects) and is an explicit ingredient in three broom recipes. It should remain discoverable unless all those uses are rewritten and its medicinal effects are clearly surfaced.
+- JAWR's *three JEI bottle variants are one item ID* distinguished by `WitcheryDataComponents.CHICKEN_BLOOD` and `VAMPIRE_BLOOD`. Only **ordinary** blood is eligible for generic hiding/conversion. Never hide special chicken/vampire blood in a blanket `witchery:bottle_of_blood` rule. Source UUID (`BLOOD` component) may exist on ordinary bottles.
+- For **KubeJS 2101.7.2 / Minecraft 1.21.1**, use `RecipeViewerEvents.removeEntries` (not legacy `JEIEvents.hideItems`). Client-side predicate filters permit selective JAWR variant hiding; this is pending validation with pinned JEI 19.64.0.455. Hiding in JEI is visual only: all items, old recipes and direct mod-native outputs still exist.
+
+**Before JEI hiding:** test all cauldron extraction/refill paths in-game, replace remaining exact-item crafting requirements where appropriate, and choose which ordinary blood bottle stays visible. No JEI hide events are committed in this branch as of this document revision.
 
 ## Why keep Hexerei Blood Bottles?
 
