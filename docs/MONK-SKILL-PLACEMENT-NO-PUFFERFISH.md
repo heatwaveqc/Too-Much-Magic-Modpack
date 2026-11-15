@@ -1,3 +1,5 @@
+> **Owner revision, 2026-11-15 (supersedes older placement choices):** Native Spirit Projectile is explicitly **excluded**; Monk ranged fighting uses Ars Nouveau and Iron's Spellbooks, with source-proven spell-affix adapters only. The formerly separate Delicate Hands and Fortunate Hands License are **one native Fortune/Silk Touch toggle** plus primary Tyz Fortune increments. The ninth hotbar slot is planned as a **free reserved fist**, never an inventory item, subject to lossless GUI/pickup controls. This file remains an archival 270-source crosswalk; the [active design overrides](../compat/monk/design/native-full-tree-skeleton-v1.json) and [implementation contract](../compat/monk/design/fist-slot-lock-contract-v1.json) are authoritative. None of these new gameplay features are wired into the upcoming six-skill test.
+
 > **Primary design precedence (2026-11-14):** This 270-source placement list is
 > **research and Monk-only feature inventory**, NOT a second skill-tree
 > implementation or 203 guaranteed unique purchases. The primary Tyz/MXP
