@@ -360,7 +360,50 @@
         "behavior": "source verified; no assumption that all affixes can be simultaneously 2.0 without rare conditional effects"
       },
       "effect": "Regular mythic max rolls of Lucky +6 and Fortunate +5 are NOT guaranteed hard cap once overcharged. Any Luck/Fortune/XP/tank potency cap must model full Sigil mechanics before numerical balancing.",
-      "risk": "The 124 armor raw Luck subtotal is a NO-OVERCHARGE paper base and can be exceeded after Sigil of Supremacy/Malice, royalty, hands, Curios and future adds."
+      "risk": "The 124 armor raw Luck subtotal is a NO-OVERCHARGE paper base and can be exceeded after Sigil of Supremacy/Malice, royalty, hands, Curios and future adds.",
+      "pinned_placebo_source": {
+        "pin": "Placebo 9.9.4",
+        "upstream_version": "9.9.4",
+        "source": "https://github.com/Shadows-of-Fire/Placebo/blob/1.21/src/main/java/dev/shadowsoffire/placebo/util/StepFunction.java",
+        "behavior": "get(level) = min + int(steps*(level+0.5/steps))*step; source explicitly extrapolates beyond 1.0 without clamping for get(level)."
+      },
+      "derived_exact_luck_affix_values": [
+        {
+          "id": "apotheosis:generic/attribute/lucky",
+          "rarity": "mythic",
+          "source": {
+            "min": 3,
+            "max": 6,
+            "step": 0.25
+          },
+          "value_by_affix_level": {
+            "1.0": 6,
+            "1.5": 7.5,
+            "2.0": 9
+          }
+        },
+        {
+          "id": "apotheosis:armor/attribute/fortunate",
+          "rarity": "mythic",
+          "source": {
+            "min": 3,
+            "max": 5,
+            "step": 0.25
+          },
+          "value_by_affix_level": {
+            "1.0": 5,
+            "1.5": 6,
+            "2.0": 7
+          }
+        }
+      ],
+      "derived_source_only_four_piece_armor_flat_luck_supremacy": 134,
+      "derived_ceiling_notes": [
+        "Standard affix only (1.0): each mythic armor item Lucky6+Fortunate5+4xPerfect Splendor5 = 31, four item subtotal124.",
+        "Supremacy applied to both affixes (1.5): Lucky7.5+Fortunate6+4x5=33.5 per item, four piece subtotal134 raw Luck, before Royalty, held gear, Curios etc.",
+        "At 2.0 via Malice, Lucky9 or Fortunate7 individually; other affix often reset, so don't model all Mythic affixes 2.0 simultaneously without legal no-reset proof.",
+        "Source level extrapolation uses exact pinned Placebo 9.9.4 StepFunction and Apothic/Apotheosis item events; actual pin binary and source validity at runtime still to test."
+      ]
     }
   },
   "gem_catalog": {
