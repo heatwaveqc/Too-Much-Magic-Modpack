@@ -117,7 +117,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `puffish-skills` | Pufferfish's Skills | infrastructure | enabled flag | focused | queued | — |
 | `replication` | Replication | late_ore | enabled flag | full | queued | — |
 | `ars-nouveau` | Ars Nouveau | magic | enabled flag | full | researching | [profile](mods/ars-nouveau.md) |
-| `astral-sorcery` | Astral Sorcery | magic | enabled flag | full | queued | — |
+| `astral-sorcery` | Astral Sorcery | magic | enabled flag | full | researching | [profile](mods/astral-sorcery.md) |
 | `botania` | Botania | magic | inactive | full | deferred | — |
 | `botania-revived` | Botania Revived | magic | enabled flag | full | researching | [profile](mods/botania-revived.md) |
 | `eidolon-repraised` | Eidolon: Repraised | magic | enabled flag | full | queued | — |
@@ -241,6 +241,6 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Goety 3.2.2 profile drafted from its exact hash-pinned JAR and version-aligned source; the first-step Soul Energy loop, wand/focus path, Infuser and Altar behavior, brew/servant systems, and Lich/Arca risks are mapped. Full recipe/ritual/advancement coverage and client tests remain open; see [profile](mods/goety.md).
 - 2026-11-15 — Goety Cataclysm profile added from the exact hash-matched 1.21.1 JAR. The addon extends the Goety Black Book with Cataclysm focuses, servants, conversions, constructs and a Fabricator; exact mechanics are partially mapped, while full boss-drop/bytecode and client behavior remain open. Modrinth labels the locked file ID 1.9.0, while the JAR metadata and filename say 1.8.4. See [profile](mods/goety-cataclysm.md).
 - 2026-11-15 — Ars Ocultas 2.6.2 profile upgraded from README summary to exact SHA-512-matched JAR and version-aligned source review. Mapped spirit jar behavior, all addon recipes, Soul Gem transfer and the Occultism bowl bridge. The altar source flags sacrifice/item-use states for 5,000 Source without consuming the matching jarred entity/item; live tests remain open. Reconciled quests 40–42 as a draft on the unmerged Ars pilot branch. See [profile](mods/ars-ocultas.md).
-- **Next action:** continue Goety source completion and verify Goety Cataclysm recipe/effect gaps; test the Ars Ocultas altar/Soul Gem boundaries before quest work, then cover remaining high-value magic systems. Scriptor Magicae, EvilCraft, Roots Classic, Iron's Spells, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
+- **Current session:** Astral Sorcery is the active profile after Roots. The first source pass maps its pin, Tome onboarding, resource loop, altar tiers, major subsystems and placeholder chapter. Next, continue Astral's recipe/perk/structure audit; then resume the remaining queued magic profiles. No quest implementation in this research pass.
 
 - 2026-11-15 — Ars 'n Spells exact 3.3.5 pin/source reviewed; corrected its source line to the NeoForge 1.21.1 commit, split its two inscription paths, and mapped its mana/config/ritual contracts. TMM runtime and client behavior remain unverified; current quest chapter has no addon lessons.
