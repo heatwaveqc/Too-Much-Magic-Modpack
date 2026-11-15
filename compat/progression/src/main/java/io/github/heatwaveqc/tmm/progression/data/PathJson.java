@@ -42,6 +42,9 @@ public final class PathJson {
             throw new IllegalArgumentException("Expected namespaced ID/tag: " + text);
         return text;
     }
+    private static String selector(String text) {
+        return "*".equals(text) ? text : id(text);
+    }
     private static String event(String text) {
         if (!Set.of("kill", "block_break", "external", "food_consumed", "food_discovered", "animal_petted").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
@@ -75,7 +78,7 @@ public final class PathJson {
             if (xp < 0 || xp > 1000000 || cooldown < 0 || cooldown > 72000)
                 throw new IllegalArgumentException("Bad activity award/cooldown");
             activities.add(new Definition.Activity(event(str(j,"event","")),
-                id(str(j,"target","")),xp,cooldown));
+                selector(str(j,"target","")),xp,cooldown));
         }
 
         List<Definition.Milestone> milestones = new ArrayList<>();
@@ -90,7 +93,7 @@ public final class PathJson {
                 int n = number(c,"count",1);
                 if (n < 1 || n > 1000000) throw new IllegalArgumentException("Bad criterion count");
                 criteria.add(new Definition.Criterion(event(str(c,"event","")),
-                    id(str(c,"target","")),n));
+                    selector(str(c,"target","")),n));
             }
             if (criteria.isEmpty()) throw new IllegalArgumentException("No criteria for " + mid);
             long xp = j.has("xp") ? j.get("xp").getAsLong() : 0;
@@ -124,9 +127,9 @@ public final class PathJson {
                 String weapon = str(f,"weapon","");
                 String damageTag = str(f,"damage_tag","");
                 if (!attribute.isEmpty()) id(attribute);
-                if (!target.isEmpty()) id(target);
-                if (!weapon.isEmpty()) id(weapon);
-                if (!damageTag.isEmpty()) id(damageTag);
+                if (!target.isEmpty()) selector(target);
+                if (!weapon.isEmpty()) selector(weapon);
+                if (!damageTag.isEmpty()) selector(damageTag);
                 String operation = str(f,"operation","add_value");
                 if (!Set.of("add_value","add_multiplied_base","add_multiplied_total").contains(operation))
                     throw new IllegalArgumentException("Bad attribute operation");
