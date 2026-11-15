@@ -53,7 +53,9 @@ public final class ArchlichResurrectionEvents {
                 || !(event.getEntity() instanceof ServerPlayer player)
                 || player.level().isClientSide()
                 || !ModList.get().isLoaded("goety")
-                || !ModList.get().isLoaded("witchery_forbidden_magic")) {
+                || !ModList.get().isLoaded("witchery_forbidden_magic")
+                || !pinnedVersion("goety", "3.2.2")
+                || !pinnedVersion("witchery_forbidden_magic", "0.5.37")) {
             return;
         }
 
@@ -112,8 +114,7 @@ public final class ArchlichResurrectionEvents {
                     "Archlich native phylactery handler failed for {}; "
                     + "disable experimental Archlich bridge and inspect save/log",
                     player.getGameProfile().getName(), failure.getCause());
-        } catch (ReflectiveOperationException | LinkageError | SecurityException
-                 | IllegalArgumentException failure) {
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException failure) {
             // Missing/incompatible version: do not guess at provider state,
             // spend souls or suppress either native handler.
             TransformationsMod.LOGGER.error(
@@ -121,6 +122,14 @@ public final class ArchlichResurrectionEvents {
                     + "leaving original death handlers untouched",
                     player.getGameProfile().getName(), failure);
         }
+    }
+
+    /** Never execute bytecode-specific native calls against uninspected updates. */
+    private static boolean pinnedVersion(String modId, String prefix) {
+        return ModList.get().getModContainerById(modId)
+                .map(mod -> mod.getModInfo().getVersion().toString()
+                        .startsWith(prefix))
+                .orElse(false);
     }
 
     private static boolean asBoolean(Object value) {
