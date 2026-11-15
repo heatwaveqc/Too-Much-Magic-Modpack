@@ -68,4 +68,40 @@ class PathJsonTest {
             () -> PathJson.read("test:cycle",JsonParser.parseString(cycle).getAsJsonObject()));
     }
 
+    @Test void shippedMonkAndHunterDefinitionsPassStrictParser() throws Exception {
+        for (String name : new String[]{"monk","hunter"}) {
+            String resource = "data/tmm_progression/tmm_progression/paths/" + name + ".json";
+            try (var stream = PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
+                assertNotNull(stream,"Missing pack-defined path " + resource);
+                var source = JsonParser.parseReader(new java.io.InputStreamReader(
+                    stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+                var parsed = PathJson.read("tmm_progression:" + name,source);
+                assertEquals(source.get("max_level").getAsInt(),parsed.maxRank());
+                assertEquals("monk".equals(name) ? "sunset" : "manual",
+                    source.get("enrollment").getAsString());
+                assertFalse(parsed.skills().isEmpty());
+            }
+        }
+    }
+
+    @Test void automaticBaselineNeverRequiresSkillPurchases() throws Exception {
+        String resource = "data/tmm_progression/tmm_progression/paths/monk.json";
+        try (var stream = PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
+            assertNotNull(stream);
+            var path = PathJson.read("tmm_progression:monk",JsonParser.parseReader(
+                new java.io.InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8))
+                .getAsJsonObject());
+            for (var skill : path.skills())
+                if (!skill.autoRanks().isEmpty()) {
+                    assertTrue(skill.requiresSkills().isEmpty());
+                    assertTrue(skill.requiresAnySkills().isEmpty());
+                    assertTrue(skill.choiceGroup().isEmpty());
+                }
+            assertNotNull(path.skill("tmm_progression:blink"));
+            assertNotNull(path.skill("tmm_progression:armor_lock"));
+            assertNotNull(path.skill("tmm_progression:reserved_fist"));
+            assertNotNull(path.skill("tmm_progression:catch_arrows"));
+        }
+    }
+
 }
