@@ -71,3 +71,8 @@ The full follow-on implementation target inventory is [42/42 MXP magic source ca
 ## Future JAWR vampire blood and form-tree interface (planning only)
 
 The [complete source target list](../../docs/MXP-ALL-MAGIC-SOURCE-IMPLEMENTATION-TARGETS.md) now reserves **one JAWR-primary 900-blood MXP source** for active blood-expending vampire powers **only after Lilith's Blood upgraded the player to full JAWR vampirism**. Abilities from regular Vampirism can qualify after that upgrade **if the actual debit is from JAWR's authoritative blood pool**. Infection-only Vampirism, hunger upkeep, feeding/refilling, resource synchronization and passive buffs do not earn MXP; never double-credit a mirrored debit. JAWR personal Infusion has an independent TBD baseline. Lich/Dragon progression predominantly belongs to their externally gated Tyz transformation skill trees. **No vampire code hook exists in this branch.**
+
+
+## Hephaestus Forge MXP ritual target — future adapter only
+
+Forbidden & Arcanus (`forbidden-arcanus` 2.6.1) is **pack enabled**. Count the Forge's successful player-owned **ritual completions** (12th completion-based mod) instead of treating its 4 forge essence storage pools as personal mana. The 1.21.1 `RitualManager.finishRitual` retains the starting UUID and canonical ritual recipe ID and triggers a completion criterion, which is a candidate post-success MXP hook. Proposed tier 1–5 first fixed/repeat divided BASE rewards: **1,000/200, 1,600/320, 2,400/480, 3,500/700, 5,000/1,000**. Do not double award on output and advancement, or credit forge fill/ticks/vanilla XP consumption. See [completion rewards](../../docs/MXP-RITUAL-COMPLETION-REWARDS-PROPOSAL.md). No code or configs altered.
