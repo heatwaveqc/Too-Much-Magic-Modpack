@@ -275,7 +275,8 @@
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately.",
     "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice.",
     "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source.",
-    "feature/ars-quest-pilot": "Ancestor superseded by fix/first-log-bundle-curio-quest-2026-11-15 (same 49-quest Ars source plus claimable pouch and one Bundle Curios slot). Import successor only."
+    "feature/ars-quest-pilot": "Ancestor superseded by fix/first-log-bundle-curio-quest-2026-11-15 (same 49-quest Ars source plus claimable pouch and one Bundle Curios slot). Import successor only.",
+    "fix/integrate-starter-bundle-quest-2026-11-15": "Integration configuration-only branch; this PR updates manifest/integration-sources.json, no runtime source is independently imported. Mark covered to keep the full assembler closed-world branch classifier deterministic."
   },
   "pending_runtime_work": [
     "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
