@@ -3,6 +3,10 @@ package io.github.heatwaveqc.tmm.progression.core;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import io.github.heatwaveqc.tmm.progression.state.Ledger;
+import io.github.heatwaveqc.tmm.progression.state.Discoveries;
+import io.github.heatwaveqc.tmm.progression.runtime.Selectors;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.server.level.ServerPlayer;
@@ -62,6 +66,19 @@ public final class ProgressionApi {
     /** For verified external milestones and compatible mods; cannot mint arbitrary XP. */
     public static void recordExternal(ServerPlayer player, String namespacedEventId) {
         record(player,Signal.external(namespacedEventId));
+    }
+
+    /** First-consumption reward is global per player, not per NBT variant, saved across death/relog. */
+    public static void recordConsumedFood(ServerPlayer player, ItemStack food) {
+        if (player.isCreative() || player.isSpectator() || food.isEmpty()) return;
+        record(player,Selectors.itemAction("food_consumed",food));
+        String id = BuiltInRegistries.ITEM.getKey(food.getItem()).toString();
+        Discoveries before = player.getData(ProgressionAttachments.FOOD_HISTORY.get());
+        Discoveries after = before.discover(id);
+        if (before != after) {
+            player.setData(ProgressionAttachments.FOOD_HISTORY.get(),after);
+            record(player,Selectors.itemAction("food_discovered",food));
+        }
     }
 
     /** Standardized activity events: one authoritative signal, all joined paths. */
