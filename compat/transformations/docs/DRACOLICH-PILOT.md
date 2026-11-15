@@ -98,6 +98,17 @@ diet changes were introduced.
    remain unchanged. Creative/operator writes that bypass canonical
    levelling methods need separate negative testing.
 
+## Skeletal appearance target (separate cosmetics workstream)
+
+The user-approved next visual goal is an unmistakably **skeletal dragon**
+for all three Dragon Survival species, without replacing species-specific
+models, growth, hitboxes, breath abilities, wing animations or armor.
+Design as an undead skin / render-layer transformation controlled by the
+*actual* Dracolich state, never a new lich item or always-on Dragon Survival
+model replacement. Verify juveniles and adult sizes, first/third person,
+flight, multiplayer clients and cure to original appearance. This is
+**not implemented** in the resurrection/acquisition guard patch.
+
 ## Release gate
 
 The integration is compiled in `tmm_transformations`, but does **not**
