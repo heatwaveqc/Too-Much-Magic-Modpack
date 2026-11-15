@@ -41,12 +41,26 @@
     "lich_blood_nature_tradeoff": "Blood nodes strengthen source-verified personal Neo Vitae/EvilCraft/other blood spell outputs; after all positive nature modifiers, multiply only the lich's own personal Botania/Roots nature spell output by (1 - min(0.75, 0.02*entry_blood_ranks + 0.03*advanced_blood_ranks + 0.05*mastery_blood_ranks)). No machine or passive production debuffs.",
     "monk_policy": "Do not add spirit projectile; Ars/Iron's spells supply range. Treasure Hand single native Fortune/Silk toggle, Fortune Tyz modifier licensed; reserved hotbar slot 1 and armor-lock toggle are non-purchasable native effects. All 40 source-bounded affix rarities have 2-5 special caps, not generalized to 5/10/25/50.",
     "overall_endgame_power_hierarchy": {
-      "primary_benchmark": "Monk is the highest overall endgame combat tier, especially equipment-free self-sufficient combat. A maxed Monk is intended to solo Chaos Guardian naked/unarmed, and has the broadest total combination of offense, defense, mobility, endurance, boss mechanics and adaptability.",
-      "other_tree_limit": "Every non-Monk tree may approach Monk in at most one or two specialties, but remains substantially worse in most other combat and adventuring dimensions at comparable progression. Do not create a universal spellcaster, Hunter, or lycanthrope build whose total toolkit is as broad or independent as maxed Monk.",
-      "narrow_niches_may_exceed_monk": "Monk being overall top does not override already approved named narrow specialty multipliers: Dragons can lead in raw mana/spell throughput, Hunters can approach in quarry-specific weapon combat, Werewolves in sustained health regeneration, and Sea Dragons in Luck. These advantages do not imply comparable general no-gear boss readiness.",
-      "no_cross_tree_cheat": "Assess the intended maximum for each standalone tree with universal Core Skills held at an explicitly specified common baseline. Do not let unrelated maxed trees or a Dracolich hybrid be required to satisfy the Monk standard or quietly erase its lead.",
-      "matchup_test": "Use a capability matrix: unarmed/no-worn-gear Guardian clear; sustained and burst offense; incoming damage; healing/endurance; traversal and aerial engagement; ranged/reach solutions; control; magic capacity; economy/loot; specialization. Monk wins aggregate combat capability, not every spreadsheet cell.",
-      "qualification": "Numbers and actual Chaos Guardian attack/shield/crystal rules must be source-verified and tested before feasibility is claimed. No current mod implementation or single-player victory is implied."
+      "primary_benchmark": "A fully progressed Monk, using no armor, Curios, worn equipment or weapons, must be approximately combat-equivalent OVERALL to another appropriately progressed specialist with progression-appropriate fully enchanted and Apotheosis-affixed gear. Monk remains the strongest intrinsic/no-gear specialist. No blanket rule that Monk beats fully geared characters.",
+      "other_tree_limit": "Compared as complete BUILDS, equipped specialists can slightly exceed Monk in one or two intended niches and be moderately weaker elsewhere, yielding broadly comparable endgame ability, not dramatically lower aggregate power. Other trees without gear are not the primary comparator.",
+      "narrow_niches_may_exceed_monk": "A fully specced AND appropriately geared dragon should have greater practical maximum mana and spell power than equipment-free maxed Monk, after counting all worn spell-stat items, Apotheosis affixes, gems and enchantments; Hunter's equipped quarry combat, Werewolf's equipped HP regeneration, and Sea Dragon's gear-inclusive Luck may likewise be superior.",
+      "no_cross_tree_cheat": "Use a common/declared Core Skills baseline and comparable total native-form and Tyz skill progression. Exclude extra independent specialist trees from default one-to-one tests. Hybrid and mixed-form builds require separate budgets.",
+      "equipment_normalization": "Full comparable progression-tier loadouts are part of the non-Monk baseline, never omitted. Count armor, weapons, tools, enchanted gear, Apotheosis affixes/reforges/sockets and gems, Curios and other equipped/accessory bonuses, offhand/cast foci and legitimate consumables under a declared test profile. Do not compare against naked alternatives or selectively suppress gear effects.",
+      "monk_benchmark_loadout": "No worn armor, Curios or worn gear; no wielded weapons/tools/shields for the naked/unarmed Chaos Guardian acceptance test. Nonworn food/consumables and cast implements still require explicit ruling; do not invent an innate projectile.",
+      "comparison_dimensions": [
+        "measured damage and boss kill time",
+        "survivability in real encounter",
+        "mobility and counterplay",
+        "range and encounter mechanic coverage",
+        "sustain and resource economy",
+        "max personal mana with all equipment",
+        "effective actual spell power with all equipment",
+        "armor and tool effectiveness at their actual tier",
+        "specialized creature matchups",
+        "luck-aware loot economy"
+      ],
+      "target_relation": "Monk has greatest INTRINSIC full-kit, gear-independent combat capacity, but total Monk-vs-geared-specialist capability should be roughly balanced. Specialists may win slightly in their roles; Monk is not automatically 50% or 100% stronger when worn gear and enchantments are counted.",
+      "qualification": "No numerical balance achieved yet. Percentage values are skill tiers only, not full-build output guarantees; gear may materially shift every theoretical rank. Source-verified modifiers and head-to-head playtests required."
     },
     "chaos_guardian_monk_acceptance": {
       "desired_result": "A solo maxed Monk can finish the real Chaos Guardian encounter with no armor, no Curios, no other worn equipment and no weapons.",
@@ -63,7 +77,8 @@
         "Do not add a native Monk projectile; ranged solutions must comply with actual allowed source-backed casting or movement/strike mechanics",
         "The allowed consumables, spellcasting implements and non-worn inventory items are a later explicit playtest contract and are NOT silently assumed to be prohibited"
       ],
-      "status": "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST"
+      "status": "DESIGN_ONLY_NEEDS_MECHANICS_AUDIT_AND_PLAYTEST",
+      "comparison_note": "This is a constraint on unarmed/unworn MONK viability, not proof that Monk should exceed appropriately geared characters in aggregate. Other forms get armor/Curios, enchanted weapons/tools and Apotheosis affixes in the balance comparison."
     },
     "sea_dragon_luck": {
       "signature": "Abyssal Fortune",
@@ -74,6 +89,47 @@
       "qualifier": "Luck % is a relative design budget against a nonzero Luck benchmark; native Luck starts at zero in many cases, so do not automatically apply relative percentage to raw current Luck. Actual per-rank Luck attribute value or mod-specific odds formula is undecided.",
       "goal": "Intentionally exceptional Luck far above other classes, including in legitimate source-verified luck-aware systems. No global guaranteed rare-drop duplication or boss-gating bypass.",
       "verification": "Audit actual NeoForge 1.21.1 Luck attribute and installed mod loot/fishing/roll behavior."
+    },
+    "gear_normalized_balance_contract": {
+      "decision_date": "2026-11-15",
+      "status": "DESIGN_REQUIREMENT_NOT_MEASURED",
+      "question": "Can an equipment-free fully progressed Monk and a similarly progressed specialist in appropriately-tiered fully modified gear handle the same late-game challenge at broadly comparable effectiveness, with modest specialist advantages?",
+      "primary_monk_profile": {
+        "progression": "Legitimately maxed standalone Monk native and Monk Tyz talents; identical universal Core Skills budget/reference where appropriate",
+        "worn_equipment": "NONE (empty armor, Curios/accessory slots and any other worn slots)",
+        "hand_equipment": "No held weapons or tools for strict naked/unarmed combat benchmark; decide precise spell implement and non-worn consumable policy before test",
+        "innate_power": "Monk-only natural defenses, physical skills, legal unarmed strikes/harvesting, and properly licensed affix-equivalent effects; never assume normal equipped Apotheosis gear bonuses are also present",
+        "challenge": "Real Chaos Guardian solo clear with legal authentic fight mechanics"
+      },
+      "comparison_specialist_profile": {
+        "progression": "Legitimately comparable faction/species advancement and appropriately comparable Tyz SP budget, normalized Core Skills rank portfolio, not stacked other specialists",
+        "gear": "Appropriate-tier armor, weapon(s), tools, offhand/casting implement, Curios and other equipped accessories as legitimately usable by that form",
+        "enhancements": "Allowed enchantments, Apotheosis affixes/reforges and sockets/gems on eligible pieces, item attributes, material progression and applicable legitimate buffs",
+        "quality_band": "Representative achievable tier-appropriate endgame configuration, NOT naked, not unreasonably perfect RNG or unavailable hypothetical item builds",
+        "accounting": "Measure final effective output with every actual modifier, cap, proc and source rule applied; do not treat labels such as 'Extreme' as a replacement for geared output measurement."
+      },
+      "success_conditions": [
+        "Monk can genuinely solo the real Chaos Guardian with no worn gear or weapons (external test restrictions to be finalized), with a challenging fight and no boss bypass",
+        "A comparably progressed, appropriately geared specialist is broadly viable in the same encounter; Monk is not assumed stronger than the specialist's complete equipped build",
+        "One or two designated specialist metrics may be slightly above Monk at full gear; the target for Dragon mana and spell power is ABOVE Monk after enchantments and Apotheosis are included",
+        "Ungeared specialists are allowed to be far weaker than Monk, because gear-dependent scaling is intentional",
+        "No double credit: Monk cannot simultaneously receive a conceptual replacement for gear affixes and actual worn affix bonuses while under equipment-free mode",
+        "Rank and affix stacking remain source-accurate; use measured gameplay outcomes for defense, magic and damage rather than naïvely adding displayed percent bonuses"
+      ],
+      "tests": [
+        "Construct matching progress snapshots: advancement milestone, effective MXP/Tyz lifetime budget, class skill investment, magic mod unlocks, and resource time investment",
+        "Prepare baseline Monarch/Monk with truly empty armor/Curios/worn slots and unarmed hotbar and specialist with expected fully enchanted/reforged high-tier items, socketed gems and armor/tool/weapon properties",
+        "Measure spell power and mana against base, full gear-only, full skills-only, and gear-plus-skills snapshots to detect duplicated or multiplicative stacking",
+        "Measure Chaos Guardian genuine survival/kill time/mobility/range and phase handling across at least Monk and Hunter/Dragon/Werewolf profiles without skipping phases",
+        "Measure identical non-boss archetypes and special quarry/farm/resource scenarios; a slightly better niche is allowed but a universal-class blowout is not",
+        "Audit source attribution for rare Apotheosis modifier procs and enchanted tools instead of comparing tooltip percentages only"
+      ],
+      "pending_decisions": [
+        "What constitutes a representative appropriately-tiered endgame gear set per class/mod",
+        "Which non-worn items and casting implements are allowed for the strict Monk fight",
+        "How to normalize per-class MXP/SP earned vs native progression gates",
+        "Quantitative acceptable parity band and specialist niche edge"
+      ]
     }
   },
   "trees": [
@@ -683,7 +739,8 @@
       ],
       "notes": [
         "The base four are Average +20% OF APPROVED REFERENCE MAX PER RANK in the current flat preview, not a verified cross-mod percentage modifier.",
-        "Mixed survival/combat/utility stock effects remain design-only, with real behavior left on old tabs until parity and save tests."
+        "Mixed survival/combat/utility stock effects remain design-only, with real behavior left on old tabs until parity and save tests.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
       ]
     },
     {
@@ -1074,7 +1131,9 @@
       "notes": [
         "No cross-species dragon purchases or free dragon growth.",
         "Mining benefits must not bypass protected ores, world claims or late-game materials.",
-        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power."
+        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+        "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
       ]
     },
     {
@@ -1496,7 +1555,9 @@
         "No free permanent underwater invulnerability or world fluid griefing.",
         "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
         "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
-        "Abyssal Fortune (Extreme ×50) is the dominant Sea Dragon luck specialty. It is intentionally absurdly strong as a design target but must be mapped to real Luck consumers, not globally duplicating loot."
+        "Abyssal Fortune (Extreme ×50) is the dominant Sea Dragon luck specialty. It is intentionally absurdly strong as a design target but must be mapped to real Luck consumers, not globally duplicating loot.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+        "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
       ]
     },
     {
@@ -1973,7 +2034,9 @@
         "Do not turn Forest Dragon neutrality into global creature pacification.",
         "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.",
         "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
-        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana."
+        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+        "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
       ]
     },
     {
@@ -2374,7 +2437,8 @@
       },
       "notes": [
         "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
-        "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently."
+        "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
       ]
     },
     {
@@ -2800,7 +2864,8 @@
       "notes": [
         "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
         "Natural form-change progression remains native, not purchased again in Tyz.",
-        "Werewolf regen means HEALTH regeneration, not passive magic regeneration."
+        "Werewolf regen means HEALTH regeneration, not passive magic regeneration.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
       ]
     },
     {
@@ -3103,7 +3168,8 @@
         "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
         "For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves.",
         "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.",
-        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf."
+        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
       ]
     },
     {
@@ -3658,7 +3724,8 @@
         "Hunter purchases never require vampire, wolf, or lich powers.",
         "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.",
         "Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment.",
-        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar."
+        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar.",
+        "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
       ]
     },
     {
@@ -3997,7 +4064,7 @@
         "sp_per_rank": 5,
         "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
         "implementation": "DESIGN_ONLY",
-        "benchmark": "Monk maxed must defeat real Chaos Guardian solo, no worn equipment and no weapons, using Monk-owned abilities and any expressly allowed ordinary resources; no reliance on other class-specific skills, external player help, a pre-killed boss, immortal cheese or boss bypass.",
+        "benchmark": "Monk maxed must defeat real Chaos Guardian solo, no worn equipment and no weapons, using Monk-owned abilities and any expressly allowed ordinary resources; no reliance on other class-specific skills, external player help, a pre-killed boss, immortal cheese or boss bypass. Comparative balance is against appropriately progressed, fully geared other paths (enchantments, Apotheosis affixes, weapons/tools, armor and Curios all counted), not a naked specialist.",
         "benchmark_status": "DESIGN_REQUIREMENT_NOT_YET_TESTED"
       },
       "notes": [
@@ -4005,7 +4072,8 @@
         "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
         "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks.",
         "Monk is absolute top of overall personal combat / survivability / movement / adaptability power hierarchy. No other tree can be comparable in all those domains at once. A specialist can rival Monk only in one or two designated niches.",
-        "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt."
+        "Boss test should require true no-worn-equipment including armor and Curios and no melee/ranged weapons; the precise policy for consumables, cast implements and non-worn utility should be frozen with the encounter acceptance test. Do not revive rejected innate Spirit Bolt.",
+        "Balance all Monk total effects, including innate gear/Apotheosis-like affix substitutes, AGAINST a comparably progressed specialist wearing appropriately-tiered enchantable/Affixed armor, weapons/tools and Curios. Monk is not required to defeat the FULLY GEARED equivalent in overall effective power; it must be approximately competitive."
       ]
     }
   ],
@@ -4027,5 +4095,5 @@
     "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
     "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
   ],
-  "revision_note_2026_11_15": "Monk is overall combat apex with gearless Chaos Guardian solo as explicit maximum-progression acceptance benchmark; non-Monk trees rival one or two niches only. Sea Dragon gains extreme long-tail luck."
+  "revision_note_2026_11_15": "Monk is strongest intrinsic gear-independent class with naked/unarmed Chaos Guardian solo benchmark. BALANCE IS GEAR-NORMALIZED: other progression paths have full tier-appropriate equipment, enchantments, Apotheosis affixes and Curios; equipped Dragon must slightly exceed monk in mana/spell power, otherwise complete builds near parity overall. Sea Dragon Extreme ×50 Luck remains."
 }
