@@ -41,10 +41,12 @@ def verify() -> list[Path]:
         if item["category"] != "tmm_magic_core" or not item["active"]:
             raise ValueError(f"{name}: wrong category or inactive")
         levels = item["maximumLevel"]
-        if levels != 99 or len(item["prices"]) != levels:
-            raise ValueError(f"{name}: expected 99 ranks and 99 prices")
+        if levels != 5 or len(item["prices"]) != levels:
+            raise ValueError(f"{name}: expected five ranks and five prices")
         if any(type(n) is not int or n <= 0 for n in item["prices"]):
             raise ValueError(f"{name}: invalid prices")
+        if item["prices"] != [1, 1, 1, 1, 1]:
+            raise ValueError(f"{name}: base five-rank nodes must cost exactly 1 SP each")
         if not item["modifiers"]:
             raise ValueError(f"{name}: no modifiers")
         for mod in item["modifiers"]:
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     parser.add_argument("--overwrite", action="store_true", help="Permit replacing previous TMM preview files")
     args = parser.parse_args()
     files = verify()
-    print(f"PASS: {len(CORE_IDS)} skills, 99 ranks each, {len(files)} overlay files")
+    print(f"PASS: {len(CORE_IDS)} skills, five ranks each, {len(files)} overlay files")
     if args.install:
         if args.pack_root is None:
             parser.error("--install requires --pack-root")
