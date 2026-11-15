@@ -13,12 +13,14 @@ class VampireOwnershipTest {
     }
 
     @Test void combinedStateHasExactlyOneSurvivalOwnerAndSeparateProgression() {
-        assertEquals(VampireOwner.VAMPIRISM,
+        assertEquals(VampireOwner.JAWR,
                 VampireOwnership.target(PRESENT, PRESENT, VampireSubsystem.BLOOD_STORAGE));
-        assertEquals(VampireOwner.VAMPIRISM,
+        assertEquals(VampireOwner.JAWR,
                 VampireOwnership.target(PRESENT, PRESENT, VampireSubsystem.VANILLA_FOOD_EXHAUSTION));
         assertEquals(VampireOwner.VAMPIRISM,
                 VampireOwnership.target(PRESENT, PRESENT, VampireSubsystem.GENUINE_DEATH_INTERCEPTION));
+        assertEquals(VampireOwner.JAWR,
+                VampireOwnership.target(PRESENT, PRESENT, VampireSubsystem.PASSIVE_HEALING));
         assertEquals(VampireOwner.SEPARATE_NATIVE_PROGRESSIONS,
                 VampireOwnership.target(PRESENT, PRESENT, VampireSubsystem.PROGRESSION));
         assertEquals(VampireOwner.BRIDGE_REQUIRED,
