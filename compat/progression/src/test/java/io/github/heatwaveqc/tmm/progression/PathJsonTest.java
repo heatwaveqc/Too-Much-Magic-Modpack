@@ -104,4 +104,31 @@ class PathJsonTest {
         }
     }
 
+    @Test void monkPowersRequireNoArmorExceptArmorLockAndSlotReservation() throws Exception {
+        String resource = "data/tmm_progression/tmm_progression/paths/monk.json";
+        try (var stream=PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
+            assertNotNull(stream);
+            var json=JsonParser.parseReader(new java.io.InputStreamReader(
+                stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            var path=PathJson.read("tmm_progression:monk",json);
+            int armorGated=0,unconditional=0;
+            for(var skill:path.skills()) for(var effect:skill.effects()) {
+                boolean control = effect.type().equals("armor_lock")
+                    || effect.type().equals("reserved_fist");
+                if(control) {
+                    assertFalse(effect.unarmored(),
+                        "Armor cleanup / slot reservation must remain available while armored");
+                    unconditional++;
+                } else {
+                    assertTrue(effect.unarmored(),
+                        "Monk cultivation power cannot function in conventional armor: "
+                            + skill.id() + " " + effect.type());
+                    armorGated++;
+                }
+            }
+            assertTrue(armorGated >= 20);
+            assertEquals(2,unconditional);
+        }
+    }
+
 }
