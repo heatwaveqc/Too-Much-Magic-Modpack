@@ -86,7 +86,7 @@ final class MonkClassicXpTrialTest {
                 assertTrue(spec.milestones().stream().noneMatch(m->m.id().equals(milestone)),
                         "No false-progress placeholder for unwired classic trial: "+milestone);
         }
-        assertArrayEquals(new int[]{7,10,2,2},categories);
+        assertArrayEquals(new int[]{8,9,2,2},categories);
         assertEquals("replaced_by_first_sunset_initiation",
                 stages.get(0).getAsJsonObject().getAsJsonObject("xp_design")
                         .get("status").getAsString());
@@ -126,7 +126,7 @@ final class MonkClassicXpTrialTest {
         assertEquals(105L,spec.rankXp().get(3).longValue());
         assertEquals(14300L,spec.rankXp().getLast().longValue());
         assertEquals(7,spec.activities().size());
-        assertEquals(15,spec.milestones().size());
+        assertEquals(16,spec.milestones().size());
         assertEquals(10,activity(spec,"food_discovered","*").xp());
         assertEquals(25,activity(spec,"advancement","*").xp());
 
@@ -156,6 +156,12 @@ final class MonkClassicXpTrialTest {
         assertEquals(10,milestone(spec,"trial_ten_unarmed_undead").criteria().getFirst().count());
         assertEquals("unarmed_kill",
                 milestone(spec,"trial_ten_unarmed_undead").criteria().getFirst().event());
+        assertEquals(1,milestone(spec,"trial_bedrock_sleep").criteria().getFirst().count());
+        assertEquals("external",
+                milestone(spec,"trial_bedrock_sleep").criteria().getFirst().event());
+        assertEquals("tmm_progression:bedrock_rest_completed",
+                milestone(spec,"trial_bedrock_sleep").criteria().getFirst().selector());
+        assertEquals(230,milestone(spec,"trial_bedrock_sleep").xp());
         assertEquals(5,milestone(spec,"blind_ordeal_victory").criteria().getFirst().count(),
                 "Historic Blindness ordeal must count five hostile kills");
         assertEquals("external",
