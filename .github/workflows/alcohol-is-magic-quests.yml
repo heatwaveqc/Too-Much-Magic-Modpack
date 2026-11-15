@@ -68,6 +68,10 @@ jobs:
             index.toml pack.toml
           if ! git diff --cached --quiet; then
             git commit -m "quest: add 19-step Alcohol is Magic brewery and tropical bar chapter"
+            git fetch --no-tags origin feature/alcohol-is-magic-quests
+            git rebase origin/feature/alcohol-is-magic-quests
+            python3 scripts/validate_quests.py
+            python3 scripts/validate.py
             git push origin HEAD:feature/alcohol-is-magic-quests
           fi
       - name: Preserve server logs and generated quest evidence
