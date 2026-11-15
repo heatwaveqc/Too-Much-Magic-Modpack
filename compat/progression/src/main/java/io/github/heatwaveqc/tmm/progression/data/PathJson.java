@@ -43,7 +43,7 @@ public final class PathJson {
         return text;
     }
     private static String event(String text) {
-        if (!Set.of("kill", "block_break", "external").contains(text))
+        if (!Set.of("kill", "block_break", "external", "food_consumed", "food_discovered", "animal_petted").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
