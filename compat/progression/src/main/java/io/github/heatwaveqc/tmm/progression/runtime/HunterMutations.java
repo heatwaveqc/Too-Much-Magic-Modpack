@@ -98,8 +98,8 @@ public final class HunterMutations {
 
         // Count DISTINCT mutation effects, not levels or active potion instances.
         // Called once per 20 server ticks by ProgressionEvents.
-        player.causeFoodExhaustion(Math.min(4.0f,
-            policy.exhaustionPerMutationTick() * 20 * state.unlocked().size()));
+        player.causeFoodExhaustion(
+            policy.exhaustionPerMutationTick() * 20 * state.unlocked().size());
 
         // Periodic short refresh rather than a mutable infinite effect. When
         // Hunter eligibility is lost, these expire naturally within ~12 seconds.
