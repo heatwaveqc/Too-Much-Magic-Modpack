@@ -58,6 +58,7 @@ public final class PathJson {
             throw new IllegalArgumentException("Unknown enrollment mechanism");
         PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
         HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
+        HunterMutationPolicy.parse(source); // blacklist, hunger and target must be safe
         List<Long> thresholds = new ArrayList<>();
         for (JsonElement el : entries(source,"rank_xp")) {
             long n = el.getAsLong();
