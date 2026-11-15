@@ -20,19 +20,19 @@ public final class Selectors {
         return ResourceLocation.parse(value.startsWith("#") ? value.substring(1) : value);
     }
     public static boolean block(String selector, BlockState state) {
-        if (selector.isEmpty()) return true;
+        if (selector.isEmpty() || selector.equals("*")) return true;
         return selector.startsWith("#") ?
             state.is(TagKey.create(Registries.BLOCK,location(selector))) :
             BuiltInRegistries.BLOCK.getKey(state.getBlock()).equals(location(selector));
     }
     public static boolean entity(String selector, LivingEntity target) {
-        if (selector.isEmpty()) return true;
+        if (selector.isEmpty() || selector.equals("*")) return true;
         return selector.startsWith("#") ?
             target.getType().is(TagKey.create(Registries.ENTITY_TYPE,location(selector))) :
             BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).equals(location(selector));
     }
     public static boolean item(String selector, ItemStack stack) {
-        if (selector.isEmpty()) return true;
+        if (selector.isEmpty() || selector.equals("*")) return true;
         return selector.startsWith("#") ?
             stack.is(TagKey.create(Registries.ITEM,location(selector))) :
             BuiltInRegistries.ITEM.getKey(stack.getItem()).equals(location(selector));
