@@ -2,7 +2,7 @@
 
 **As of 2026-11-15.** Target Minecraft 1.21.1 / NeoForge 21.1.265. This audits the **shared engine**, not a claim that either complete class is playable. See `compat/progression/README.md` for JSON and commands.
 
-## Ownership boundary
+## Current implementation (November 15 follow-on pass)\n\nPR #127 now contains actual server-side First Sunset and manual Hunter enrollment, Blink, frontal arrow catches, bound-armor wear and first-slot no-loss relocation, pickup backstop, persistent power modes, Glass Touch and Fortune/Silk drop replacement, 20-rank Monk baseline pilots, breath/purify/hunger/jump/step/water/gaze, creeper pacification, retaliation-aware target neutrality, Ender Dragon gated noncreative Momentum Glide and optional blindness ordeal. A serverbound five-action keybind packet is available, but the visual tree GUI and server-to-client rank state sync are absent.\n\n**These are code pilots, not acceptance-complete mechanics.** Strict inventory-click interception for all vanilla/modded interfaces, Forge claim permissions, modded tier drops, client physics/lag and complete saved-data and multiplayer edge tests remain. The matrix below records the original contract and its remaining verification requirements; entries describing a callback as missing refer to the initial skeleton before this pass.\n\n## Ownership boundary
 
 - **Native XP**: discipline-specific, server-authoritative. Not vanilla orb XP and not Tyz/MXP/SP. `rank_xp`, `max_level`, `points_per_rank`, `activities[].xp`, `milestones[].xp/points` and optional skill prices are JSON-configurable.
 - **Mandatory baseline**: `auto_ranks` grants native powers automatically. No branching choice or missing point budget can permanently hide the required 25 classic Monk powers.
