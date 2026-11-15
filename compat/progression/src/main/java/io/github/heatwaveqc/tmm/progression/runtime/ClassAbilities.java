@@ -211,7 +211,7 @@ public final class ClassAbilities {
     private static void glide(ServerPlayer p) {
         if (!unlocked(p,"momentum_glide")
                 || !ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on")
-                || p.isOnGround() || p.isPassenger() || p.isFallFlying()
+                || p.onGround() || p.isPassenger() || p.isFallFlying()
                 || p.isInWater() || p.isInLava()) return;
         Vec3 speed = p.getDeltaMovement();
         if (speed.y >= 0) return; // never use native thrust to climb
