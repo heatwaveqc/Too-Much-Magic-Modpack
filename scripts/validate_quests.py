@@ -375,7 +375,7 @@ def main() -> None:
     ensure('id: "544D701000200002", type: "item", item: { id: "ars_elemental:curio_bag", count: 1 }, count: 1' in all_blocks["544D4D1100000001"],
            "Punch a Tree FTB reward is not the pouch")
     fn = (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").read_text(encoding="utf-8")
-    ensure(not re.search(r'(?m)^\\s*(?:give|loot|item|function)\\b', fn),
+    ensure(not re.search(r'(?m)^\s*(?:give|loot|item|function)\b', fn),
            "Legacy first-log function may not grant items or chain other grants")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
     ensure(a.get("rewards", {}).get("function") is None,
