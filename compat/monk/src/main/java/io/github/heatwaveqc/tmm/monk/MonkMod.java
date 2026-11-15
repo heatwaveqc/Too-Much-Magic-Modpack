@@ -8,6 +8,7 @@ import io.github.heatwaveqc.tmm.monk.faction.MonkPlayerData;
 import io.github.heatwaveqc.tmm.monk.gameplay.SunsetInitiation;
 import io.github.heatwaveqc.tmm.monk.gameplay.StepAssistEffects;
 import io.github.heatwaveqc.tmm.monk.gameplay.MonkTechniqueEffects;
+import io.github.heatwaveqc.tmm.monk.gameplay.MonkHarvestEffects;
 import io.github.heatwaveqc.tmm.monk.progression.MonkMasteryEvents;
 import de.teamlapen.vampirism.api.entity.player.skills.SkillPointProviders;
 import io.github.heatwaveqc.tmm.monk.faction.IMonkPlayer;
@@ -63,6 +64,7 @@ public final class MonkMod {
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onBlockDrops);
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onHostileDeath);
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onFoodFinished);
+        NeoForge.EVENT_BUS.addListener(MonkHarvestEffects::onHarvestCheck);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onTick);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onLogout);
         LOGGER.info("Monk First Sunset, native ranks 1-4, rank-one choice tree, gated Step Assist registered (external physiology bridge pending).");
