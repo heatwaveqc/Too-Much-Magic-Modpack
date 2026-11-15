@@ -22,7 +22,7 @@ MOD_PINS = (
     "mods/just-another-witchery-remake.pw.toml",
     "mods/vampirism-become-a-vampire.pw.toml",
 )
-CLASS_TERM = re.compile(r"(vampir|blood|sanguin|sunlight|sun.?damage|immortal|death|reviv|resurrect|hunger|food|lycan|curs|batform|bat_form)", re.I)
+CLASS_TERM = re.compile(r"(vampir|blood|sanguin|sunlight|sun.?damage|immortal|death|reviv|resurrect|hunger|food|lycan|curs|batform|bat_form|bottle|goblet|wine.?glass|crucible|bone.?needle)", re.I)
 METHOD_TERM = re.compile(r"(vampir|blood|sanguin|sun|immortal|death|reviv|respawn|hunger|feed|eat|drink|cure|curse|transform|faction|isVampire)", re.I)
 
 
@@ -131,6 +131,45 @@ def inspect_pin(pin: str) -> None:
                             if follower.startswith("  public") or follower.startswith("  private") or follower.startswith("  protected") or follower == "}":
                                 break
                             print(" BC", follower[:280])
+
+            # Canonical bottled-blood economy audit: preserve special vampire blood.
+            # This is read-only inspection of the hash-pinned JAWR JAR. Never
+            # normalize transformation-capable items without checking component
+            # semantics and volume/transaction rules in this exact binary.
+            bottle_classes = [name for name in classes if re.search(
+                r"(BottleOfBlood|BloodBottle|WineGlass|GlassGoblet|BloodCrucible|BoneNeedle)",
+                name.split(".")[-1], re.I) and "$" not in name]
+            for cls in sorted(bottle_classes)[:35]:
+                signature = subprocess.run(["javap", "-p", "-classpath", str(jar), cls],
+                    capture_output=True, text=True, timeout=20)
+                print("BOTTLE_CLASS", cls, "exit", signature.returncode, flush=True)
+                for line in signature.stdout.splitlines()[:100]:
+                    print(" BOTTLE_SIGNATURE", line[:320], flush=True)
+                bytecode = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), cls],
+                    capture_output=True, text=True, timeout=35)
+                if bytecode.returncode != 0:
+                    print(" BOTTLE_BYTECODE_FAILED", bytecode.stderr[:250], flush=True)
+                    continue
+                lines = bytecode.stdout.splitlines()
+                # Show full bytecode only for small, directly relevant classes;
+                # otherwise print selected methods without huge binary dumps.
+                method_terms = re.compile(
+                    r"(finishUsingItem|use\\(|interact|fill|empty|consume|blood|vampir|isVampire|setData|getData|tooltip|appendHoverText|hurt)",
+                    re.I)
+                selected = 0
+                for i, line in enumerate(lines):
+                    if not (line.startswith(("  public ", "  private ", "  protected "))
+                            and method_terms.search(line)):
+                        continue
+                    j = next((j for j in range(i+1, len(lines))
+                        if lines[j].startswith(("  public ", "  private ", "  protected "))
+                        or lines[j] == "}"), len(lines))
+                    print(" BOTTLE_METHOD", cls, line.strip(), flush=True)
+                    for instruction in lines[i+1:min(j, i+130)]:
+                        print(" BOTTLE_BC", instruction[:250], flush=True)
+                    selected += 1
+                    if selected >= 12:
+                        break
 
             # Transaction-specific disassembly for exact pinned versions. Inspect
             # acquisition, cure, feeding and weaknesses before enabling mixins.
