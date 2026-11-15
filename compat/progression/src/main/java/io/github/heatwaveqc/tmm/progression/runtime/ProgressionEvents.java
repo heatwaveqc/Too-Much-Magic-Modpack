@@ -5,6 +5,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
+import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
+import net.neoforged.neoforge.event.entity.player.AdvancementEvent;
+import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -19,6 +25,11 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::equipmentChange);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
@@ -53,6 +64,28 @@ public final class ProgressionEvents {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
         if (!EffectRuntime.animalFriendship(player,event))
             EffectHandlers.entityInteract(player,event);
+    }
+    /** Loot-aware callback needed for Monk Glass Touch and Treasure Hand; no generic drop mutation. */
+    private static void blockDrops(BlockDropsEvent event) {
+        if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player)
+            EffectHandlers.blockDrops(player,event);
+    }
+    private static void projectileImpact(ProjectileImpactEvent event) {
+        if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
+            EffectHandlers.projectileImpact(defender,event);
+    }
+    private static void equipmentChange(LivingEquipmentChangeEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player)
+            EffectHandlers.equipmentChange(player,event);
+    }
+    private static void jump(LivingEvent.LivingJumpEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player)
+            EffectHandlers.jump(player,event);
+    }
+    private static void advancement(AdvancementEvent.AdvancementEarnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player)
+            ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal("advancement",
+                event.getAdvancement().id().toString(),java.util.Set.of()));
     }
     private static void incoming(LivingIncomingDamageEvent event) {
         EffectRuntime.incoming(event);
