@@ -1,0 +1,18 @@
+# TOO MUCH MAGIC — UNSTABLE INTEGRATION QA WORLDS ONLY.
+# This is copied into a NEW world's serverconfig on first creation.
+# Do not copy to release/stable packs or valued existing saves.
+#
+# Primary test suite: uninfected human -> normal Vampirism infection -> 
+# ascended JAWR/Vampirism via Lilith's Blood. Validate canonical JAWR blood,
+# hunger, sunlight shelter, healing and both native cure paths in-game.
+#
+# Enable the complete ascension acquisition test on every fresh QA world.
+experimentalVampireChassis = true
+experimentalAutomaticDualAcquisition = true
+# The other form providers are currently UNKNOWN; this is required to let
+# the preflight admit test vampires rather than fail closed at every attempt.
+# Do not use on a valued save: cross-form exclusivity is not proven.
+experimentalAllowUnverifiedOtherProviders = true
+# Keep operator-only forced curing disabled until separately testing
+# partial-rollback safety. Normal JAWR and Vampirism cures can be tested.
+experimentalOperatorCure = false
