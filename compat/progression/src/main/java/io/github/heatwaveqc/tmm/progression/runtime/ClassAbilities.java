@@ -6,6 +6,10 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.FluidTags;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
@@ -40,6 +44,8 @@ public final class ClassAbilities {
     private ClassAbilities() {}
     private static final String ARMOR_MODE = "tmm_progression:armor_lock";
     private static final String TREASURE_MODE = "tmm_progression:treasure_mode";
+    private static final String GLIDE_MODE = "tmm_progression:momentum_glide";
+    private static final String ORDEAL_MODE = "tmm_progression:blind_ordeal";
     private static final Map<UUID,Retaliation> RETALIATION = new HashMap<>();
     private static final Map<UUID,Float> LAST_EXHAUSTION = new HashMap<>();
     private record Retaliation(UUID attacker, long until) {}
@@ -60,11 +66,25 @@ public final class ClassAbilities {
             String next = ProgressionApi.mode(p,TREASURE_MODE,"fortune").equals("fortune") ? "silk" : "fortune";
             return ProgressionApi.setMode(p,TREASURE_MODE,next);
         }
+        if ("glide".equals(what) && unlocked(p,"momentum_glide")) {
+            String next = ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on") ? "off" : "on";
+            return ProgressionApi.setMode(p,GLIDE_MODE,next);
+        }
+        if ("ordeal".equals(what) && ProgressionApi.track(p,"tmm_progression:monk").rank() >= 17
+                && !ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("done")) {
+            String next = ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active") ? "off" : "active";
+            if (next.equals("off")) p.removeEffect(MobEffects.BLINDNESS);
+            return ProgressionApi.setMode(p,ORDEAL_MODE,next);
+        }
         return false;
     }
     public static String mode(ServerPlayer p,String type) {
-        return "armor".equals(type) ? ProgressionApi.mode(p,ARMOR_MODE,"on") :
-            ProgressionApi.mode(p,TREASURE_MODE,"fortune");
+        return switch(type) {
+            case "armor" -> ProgressionApi.mode(p,ARMOR_MODE,"on");
+            case "glide" -> ProgressionApi.mode(p,GLIDE_MODE,"off");
+            case "ordeal" -> ProgressionApi.mode(p,ORDEAL_MODE,"off");
+            default -> ProgressionApi.mode(p,TREASURE_MODE,"fortune");
+        };
     }
 
     /** No item deletion, including full inventories or creative/admin inserted equipment. */
@@ -111,6 +131,9 @@ public final class ClassAbilities {
 
         exhaustion(p);
         stare(p);
+        waterWalk(p);
+        glide(p);
+        ordeal(p);
         if (unlocked(p,"water_breathing") && p.isUnderWater()) {
             int level = effect(p,"water_breathing").rank();
             if (level >= 2) p.setAirSupply(p.getMaxAirSupply());
@@ -170,6 +193,60 @@ public final class ClassAbilities {
         Vec3 speed = p.getDeltaMovement();
         p.setDeltaMovement(speed.x,speed.y*factor,speed.z);
         p.hurtMarked = true;
+    }
+
+    /** Small native surface buoyancy: crouching always allows intentional diving. */
+    private static void waterWalk(ServerPlayer p) {
+        if (!unlocked(p,"water_walk") || p.isCrouching() || p.isPassenger()
+                || p.isUnderWater() || p.isFallFlying()) return;
+        BlockPos below = p.blockPosition().below();
+        if (p.serverLevel().getFluidState(below).is(FluidTags.WATER)) {
+            Vec3 speed = p.getDeltaMovement();
+            if (speed.y < 0.08) p.setDeltaMovement(speed.x,0.08,speed.z);
+            p.fallDistance = 0;
+        }
+    }
+
+    /** Controlled descent with limited thrust, no hovering or Creative flight flag. */
+    private static void glide(ServerPlayer p) {
+        if (!unlocked(p,"momentum_glide")
+                || !ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on")
+                || p.isOnGround() || p.isPassenger() || p.isFallFlying()
+                || p.isInWater() || p.isInLava()) return;
+        Vec3 speed = p.getDeltaMovement();
+        if (speed.y >= 0) return; // never use native thrust to climb
+        Vec3 heading = p.getLookAngle().multiply(1,0,1);
+        if (heading.lengthSqr() > 0.001) heading = heading.normalize().scale(0.025);
+        Vec3 horizontal = new Vec3(speed.x,0,speed.z).add(heading);
+        if (horizontal.lengthSqr() > 0.36) horizontal = horizontal.normalize().scale(0.6);
+        p.setDeltaMovement(horizontal.x,Math.max(-0.16,speed.y),horizontal.z);
+        p.fallDistance = 0;
+        p.hurtMarked = true;
+    }
+
+    private static void ordeal(ServerPlayer p) {
+        if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")) return;
+        if (ProgressionApi.track(p,"tmm_progression:monk").rank() >= 18) {
+            ProgressionApi.setMode(p,ORDEAL_MODE,"done");
+            p.removeEffect(MobEffects.BLINDNESS);
+            return;
+        }
+        if (p.tickCount % 20 == 0)
+            p.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,45,0,true,false));
+    }
+    /** Only a player-attributed hostile kill under actual blindness completes the ordeal. */
+    public static void creditedKill(ServerPlayer p, LivingDeathEvent event) {
+        if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")
+                || !p.hasEffect(MobEffects.BLINDNESS)
+                || !(event.getEntity() instanceof Monster)) return;
+        ProgressionApi.setMode(p,ORDEAL_MODE,"done");
+        p.removeEffect(MobEffects.BLINDNESS);
+        ProgressionApi.recordExternal(p,"tmm_progression:blind_hostile_kill");
+    }
+
+    public static void fall(ServerPlayer p,LivingFallEvent event) {
+        if (unlocked(p,"monk_leap"))
+            event.setDistance(Math.max(0.0f,event.getDistance()-3.0f));
     }
 
     /** Server-authoritative aimed movement; does not load chunks or teleport through solid blocks. */
@@ -276,6 +353,10 @@ public final class ClassAbilities {
     }
     public static void forget(ServerPlayer p) {
         LAST_EXHAUSTION.remove(p.getUUID());
+        if (ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")) {
+            ProgressionApi.setMode(p,ORDEAL_MODE,"off");
+            p.removeEffect(MobEffects.BLINDNESS);
+        }
         RETALIATION.entrySet().removeIf(x -> x.getValue().attacker().equals(p.getUUID()));
     }
 }
