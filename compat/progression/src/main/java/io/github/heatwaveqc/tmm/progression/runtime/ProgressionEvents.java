@@ -117,9 +117,13 @@ public final class ProgressionEvents {
               EffectHandlers.jump(player,event); }
     }
     private static void advancement(AdvancementEvent.AdvancementEarnEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player)
-            ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal("advancement",
-                event.getAdvancement().id().toString(),java.util.Set.of()));
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        // Data-pack recipe unlocks are technical advancements and not earned
+        // challenges; crediting them as XP would create huge crafting farms.
+        String path = event.getAdvancement().id().getPath();
+        if (path.startsWith("recipes/") || path.contains("/recipes/")) return;
+        ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal(
+                "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
     }
     private static void fall(LivingFallEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
