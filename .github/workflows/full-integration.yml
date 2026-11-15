@@ -60,6 +60,7 @@ jobs:
           python3 scripts/verify_materials.py
           python3 scripts/verify_silver_equipment.py
           python3 scripts/verify_dragon_diets.py
+          python3 scripts/verify_werewolf_food_tags.py
       - name: Verify every ProjectE recipe override and explicit EMC exception audit contract
         run: |
           node scripts/verify_projecte_boss_recipes.cjs
@@ -83,6 +84,13 @@ jobs:
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
           SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
         run: bash scripts/smoke_server.sh
+      - name: Fail on unresolved Werewolves food tags in the full server log
+        run: |
+          if grep -Eq "Couldn't load tag werewolves:werewolf_food" "${{ runner.temp }}/tmm-full-integration-smoke/server.log" "${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log"; then
+            echo "Werewolves diet tag failed to load; inspect Relics or datapack override priority" >&2
+            exit 1
+          fi
+          echo "PASS: werewolves:werewolf_food has no missing-reference error on server startup"
       - name: Collect read-only JAWR and Forbidden Magic bytecode food inventory
         run: |
           python3 scripts/audit_jawr_food_jar.py \

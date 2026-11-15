@@ -1,12 +1,19 @@
 {
-  "replace": false,
+  "replace": true,
   "values": [
-    "artifacts:everlasting_beef",
-    "evilcraft:flesh_rejuvenated",
-    "botania:infinite_fruit",
-    "botania:mana_cookie",
-    "spectrum:enchanted_star_candy",
-    "spectrum:magnificent_star_candy",
-    "spectrum:enchanted_golden_carrot"
+    "#werewolves:raw_food",
+    "#werewolves:cooked_fish",
+    "#minecraft:meat",
+    "werewolves:wolf_berries",
+    "minecraft:sweet_berries",
+    "minecraft:glow_berries",
+    {
+      "id": "#werewolves:cooked_food",
+      "required": false
+    },
+    {
+      "id": "relics:infinity_ham",
+      "required": false
+    }
   ]
 }

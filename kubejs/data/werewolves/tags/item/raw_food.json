@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    "artifacts:everlasting_beef",
-    "evilcraft:flesh_rejuvenated"
+    {
+      "id": "#c:foods/raw_meat",
+      "required": false
+    }
   ]
 }
