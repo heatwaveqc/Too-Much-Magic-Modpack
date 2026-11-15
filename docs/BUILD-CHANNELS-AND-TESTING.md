@@ -1,6 +1,6 @@
 # Build channels and integrated testing
 
-> **Living feature acceptance ledger (2026-11-14):** [109-item full feature checklist](FEATURE-CHECKLIST.md), with machine-readable [registry](../manifest/feature-checklist.json) and evidence-bounded player/test statuses. Update feature results using `scripts/feature_checklist.py`; a PASS on the server or a generated quest must never auto-check the relevant gameplay box. Proposed ProjectE gate transition: [two-stage design](PROJECTE-TIERED-GATING-PROPOSAL.md).
+> **Living feature acceptance ledger (2026-11-14):** [112-item full feature checklist](FEATURE-CHECKLIST.md), with machine-readable [registry](../manifest/feature-checklist.json) and evidence-bounded player/test statuses. Update feature results using `scripts/feature_checklist.py`; a PASS on the server or a generated quest must never auto-check the relevant gameplay box. Proposed ProjectE gate transition: [two-stage design](PROJECTE-TIERED-GATING-PROPOSAL.md).
 
 **Effective 2026-11-14.** This is the default standard for new test builds.
 
