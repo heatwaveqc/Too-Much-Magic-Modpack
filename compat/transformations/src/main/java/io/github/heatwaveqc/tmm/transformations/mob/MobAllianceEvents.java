@@ -102,7 +102,7 @@ public final class MobAllianceEvents {
         if (mob.getType().is(BOSS_EXEMPT)) return true;
         // Preserve summoned servants' explicit owner/defense behavior.
         String id = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).getPath();
-        return id.endsWith("_servant") || id.endsWith("_minion");
+        return id.endsWith("_servant") || id.endsWith("_minion") || id.startsWith("summoned_");
     }
 
     private static boolean shouldDropTarget(Mob mob, LivingEntity target) {
