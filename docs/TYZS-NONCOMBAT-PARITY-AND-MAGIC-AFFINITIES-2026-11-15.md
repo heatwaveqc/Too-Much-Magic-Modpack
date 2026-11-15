@@ -4,32 +4,32 @@
 
 ## A. New cross-tree noncombat guideline
 
-The capped fully progressed **Monk without conventional armor/weapons, but wearing legal Curios** should have **80%-90% of the total final noncombat capability** of a player with a comparably invested, fully optimized **relevant specialist tree plus all legally worn/held gear**. **85%** is the default, **80%** for Sea Dragon Luck. This is a fully optimized *build* comparison: include enchantments, Apotheosis affixes, reforges, gems, Curios, armor and legitimate enchanted tools where relevant.
+The capped fully progressed **Monk without conventional armor/weapons, but wearing legal Curios** should have **85% of the theoretically highest legally attainable final noncombat capability** of a player with a comparably invested, fully optimized **relevant specialist tree plus all legally worn/held gear**. **85% applies to every comparable noncombat specialty, including Sea Dragon Luck**; this supersedes the earlier 80% exception. This is a fully optimized *build* comparison: include enchantments, Apotheosis affixes, reforges, gems, Curios, armor and legitimate enchanted tools where relevant.
 
 **Specialist X is not a Tyz skill tooltip percentage.** It is the authoritative final measured result, after actual engine attribute calculations and all appropriate gear. For compatible effects, the intended Monk skill final addition is `max(0, desired_ratio × specialist_full_geared_output − current_Monk_plus_Core_output)`. If the skill has `N` ranks, a first linear slope is that amount divided by `N`. Round/clamp/discretize using actual event rules rather than assuming all outputs are floats. A 50-level skill uses milestone gating even though players can purchase individual ranks.
 
 **Important exceptions:** This is for *comparable noncombat outcomes*, not universal access to blood physiology, Lich phylacteries, Dragon bodies, Fae allegiance or transformed-only actions. Damage, health, damage resistance, combat regeneration, boss and PvP scaling remain governed by the separate gear-normalized combat benchmark. Do not multiply vanilla Luck by a percentage of zero and claim a change; actual Luck bonus requires a measured nonzero unit and supported consumer events.
 
-### Luck example: exact 0.8x requirement
+### Luck example: exact 0.85× theoretical optimum
 
-Let **X = a fully optimized Sea Dragon's final actual Luck**, including **all** Sea Dragon talents, armor/Curios, enchanted and Apotheosis-modified gear. Capped **Monk + legal Curios Luck = 0.8X**, not Monk intrinsic 0.8X plus Curios again. Illustrative values (not actual Minecraft Luck caps):
+Let **X = a fully optimized Sea Dragon's final actual Luck**, including **all** Sea Dragon talents, armor/Curios, enchanted and Apotheosis-modified gear. Capped **Monk + legal Curios Luck = 0.85X**, not Monk intrinsic 0.85X plus Curios again. Illustrative values (not actual Minecraft Luck caps):
 
-| Sea final Luck X | Maxed Monk target 0.8X |
+| Sea final Luck X | Maxed Monk target 0.85X |
 |---:|---:|
-| 50 | 40 |
-| 100 | 80 |
-| 200 | 160 |
+| 50 | 42.5 |
+| 100 | 85 |
+| 200 | 170 |
 
-For a **hypothetical normalized index of 100** (75 from the Sea's 50 ranks, 15 from armor/tools and 10 from its legal Curios), assume Monk's legal Curios contribute 10. Its **intrinsic** 50-rank Inner Fortune needs 70 additional units to reach 80 total. This is an illustration, not measured Minecraft Luck:
+For a **hypothetical normalized index of 100** (75 from the Sea's 50 ranks, 15 from armor/tools and 10 from its legal Curios), assume Monk's legal Curios contribute 10. Its **intrinsic** 50-rank Inner Fortune needs 75 additional units to reach 85 total. This is an illustration, not measured Minecraft Luck:
 
 | Monk Inner Fortune rank | Monk innate addition | Monk including Curios | Sea *skill-only* index at same rank |
 |---:|---:|---:|---:|
 | 0 | 0.0 | 10.0 | 0.0 |
-| 1 | 1.4 | 11.4 | 1.5 |
-| 5 | 7.0 | 17.0 | 7.5 |
-| 10 | 14.0 | 24.0 | 15.0 |
-| 25 | 35.0 | 45.0 | 37.5 |
-| 50 | 70.0 | 80.0 | 75.0 |
+| 1 | 1.5 | 11.5 | 1.5 |
+| 5 | 7.5 | 17.5 | 7.5 |
+| 10 | 15.0 | 25.0 | 15.0 |
+| 25 | 37.5 | 47.5 | 37.5 |
+| 50 | 75.0 | 85.0 | 75.0 |
 
 The 100-index example **must not be coded as a real +100 Luck attribute**. It illustrates reverse-calibration, and holding Sea's finished loadout at 100 for the reference column is intentional. Real values require a verified source pin and a buildable fully optimized Luck gear kit. **Luck, Fortune and Looting are different mechanics**; only actual Luck-aware loot sources should change via Luck.
 
@@ -39,17 +39,17 @@ These are **additional conceptual entries**; they do not replace any native Monk
 
 | Skill | Tier / strength label | Rank cap | Monk target at cap | Implementation requirement |
 |---|---|---:|---|---|
-| **Inner Fortune** (`tmm_monk_inner_fortune`) | Extreme +100% / rank as **budget** | 50 | **80%** of optimized Sea Dragon Luck **including Monk Curios** | True equipment-free personal Luck strength, aiming at rank cap for exactly 80% of the optimized, fully geared Sea Dragon Luck attribute, after actual source effects and gear bonuses have been counted. |
+| **Inner Fortune** (`tmm_monk_inner_fortune`) | Extreme +100% / rank as **budget** | 50 | **85%** of optimized Sea Dragon Luck **including Monk Curios** | True equipment-free personal Luck strength, aiming at rank cap for exactly 85% of the optimized, fully geared Sea Dragon Luck attribute, after actual source effects and gear bonuses have been counted. |
 | **Inner Reservoir** (`tmm_monk_inner_reservoir`) | Extreme +100% / rank as **budget** | 25 | **85%** of optimized Dragon personal max mana **including Monk Curios** | Personal magical resource reserve, targeting ~85% of geared full Dragon maximum capacity in each comparable mana-based spell system, not equivalent spell damage or mana regeneration. |
 | **Worldly Cultivation** (`tmm_monk_worldly_cultivation`) | Strong +50% / rank as **budget** | 25 | **85%** of optimized Forest Dragon personally performed farming **including Monk Curios** | Personally controlled crop growth, legal breeding and harvesting efficiency, calibrated to ~85% of fully optimized Forest Dragon outcome for the same source action; reinforces native Monk Gardening rather than installing automated farm machinery. |
 
-The tier and cap are *proposed investment shapes*. **The 80%-90% parity rule overrides the raw nominal multiplier** wherever gear, preexisting Core Skills ranks, zero baseline, or nonlinear events make it wrong. The existing Monk Body Speed, Barehand Efficiency, Fortunate Hands, and Looting Palm must also be checked against properly enchanted specialist movement, mining, farming tools and weapons before their numeric ranks can be considered calibrated.
+The tier and cap are *proposed investment shapes*. **The 85% parity rule overrides the raw nominal multiplier** wherever gear, preexisting Core Skills ranks, zero baseline, or nonlinear events make it wrong. The existing Monk Body Speed, Barehand Efficiency, Fortunate Hands, and Looting Palm must also be checked against properly enchanted specialist movement, mining, farming tools and weapons before their numeric ranks can be considered calibrated.
 
 ### First individual metric comparisons
 
 | Noncombat benchmark | Primary fully geared specialist | Monk response | Cap target | Source/mechanics work still needed |
 |---|---|---|---|---|
-| **luck** | `tmm_dragon_sea` | `tmm_monk_inner_fortune` | **80%** | Fortune, Looting and generic loot amount are NOT the Luck attribute |
+| **luck** | `tmm_dragon_sea` | `tmm_monk_inner_fortune` | **85%** | Fortune, Looting and generic loot amount are NOT the Luck attribute |
 | **personal mana capacity** | `tmm_dragon_cave|tmm_dragon_sea|tmm_dragon_forest` | `tmm_magic_reservoir_1` + `tmm_monk_inner_reservoir` | **85%** | Does not multiply one shared Ars/Iron pool twice; industrial mana tanks excluded |
 | **legal block break throughput** | `tmm_dragon_cave` | `tmm_monk_barehand_efficiency` | **85%** | Cannot compare a Monk who lacks the required native harvest-tier unlock against a tool that can mine the block |
 | **crop yield and growing** | `tmm_dragon_forest` | `tmm_monk_worldly_cultivation` + `tmm_monk_fortunate_hands` | **85%** | Never multiply the same loot event twice or count machines/automatic farms |
@@ -63,7 +63,9 @@ The tier and cap are *proposed investment shapes*. **The 80%-90% parity rule ove
 **Economic caution:** At the current `1.2^P` lifetime-SP MXP divisor, taking every 25/50-rank Monk endpoint to its cap is potentially unreachable in ordinary gameplay. The numerical cap is an endgame target, not proof the XP economy can attain it. Before ship, model maximum practical SP per character and account for actual form-stage gates, achievements and source XP bonuses.
 
 
-**Equipment-source correction:** The [full equipment and enchanting ceiling audit](TYZS-ENCHANTING-APOTHEOSIS-CURIOS-STACK-AUDIT-2026-11-15.md) confirms Curios are legal on both sides, an exact Occultism 1.227.0 Iesnium +1, 99 affix definitions, gem enchantment modifiers, and **Sigil overcharges above normal Mythic affix values**. So 0.8×Sea's fully geared Luck is a comparison of BOTH *final* outcomes with legal Curios, not a raw skill rank multiplier and not intrinsic Monk 0.8×Sea followed by extra Curios. The prior no-worn-gear Chaos Guardian trial is a stricter, separate test.\n
+**Equipment-source correction:** The [full equipment and enchanting ceiling audit](TYZS-ENCHANTING-APOTHEOSIS-CURIOS-STACK-AUDIT-2026-11-15.md) confirms Curios are legal on both sides, an exact Occultism 1.227.0 Iesnium +1, 99 affix definitions, gem enchantment modifiers, and **Sigil overcharges above normal Mythic affix values**. So 0.85×Sea's fully geared Luck is a comparison of BOTH *final* outcomes with legal Curios, not a raw skill rank multiplier and not intrinsic Monk 0.85×Sea followed by extra Curios. The prior no-worn-gear Chaos Guardian trial is a stricter, separate test.\n
+**Owner clarification — capped noncombat, 2026-11-15:** The capped Monk target is now **exactly 85% of the theoretical highest LEGALLY ATTAINABLE fully specialized and fully equipped build**, including Luck (superseding the former 80% Sea Dragon exception). This is not 85% of a representative build and not 85% of the registered attribute hard ceiling unless an all-in legal build actually reaches that ceiling. Both Monk and specialist include real eligible Curios only once. See [source-registered bounds audit](tyzs/theoretical-attribute-hard-caps-v1.json) and [Curios item/slot audit](tyzs/curios-all-in-eligibility-v1.json); banned Seven Deadly Sins Ring excluded from all legal builds.
+
 ## B. Nature / Blood / Other — definitions and ownership
 
 - **Nature:** legitimately player-attributed nature, druidic, plants, animals and fae spell effects. Werewolf Nature bonus and Lich Nature penalty apply only to eligible personal results; machines, natural world growth and unrelated automated producers do not receive buffs or debuffs.
@@ -155,7 +157,7 @@ The two Iron school keys **`irons_spellbooks:blood` and `irons_spellbooks:nature
 | **Forest Dragon** | Fae secondary tags (Feywild/verified fae spells or controlled fae) and own agriculture; do not treat all woodland blocks or every Ars spell as fae. |
 | **Cave Dragon** | Demonic secondary tags from legitimate Goety/Occultism and other named demon effects; demon magic is usually **Other**, not Blood. |
 | **Sea Dragon** | Aquatic/ice/storm/abyssal secondary tags from source-verified casts; by default **Other**, not Nature simply because water occurs in nature. Sea **Luck** remains distinct from loot duplication. |
-| **Monk / Core Skills** | Appropriate universal personal-source scaling, and gearless 80%-90% of fully geared specialist noncombat measured at cap; no auto-grant of species-specific ritual/biology. |
+| **Monk / Core Skills** | Appropriate universal personal-source scaling, and gearless 85% of fully geared specialist noncombat measured at cap; no auto-grant of species-specific ritual/biology. |
 
 ### Immediate source / gameplay acceptance gates
 
@@ -164,6 +166,6 @@ The two Iron school keys **`irons_spellbooks:blood` and `irons_spellbooks:nature
 3. **Neo Vitae / EvilCraft:** separate handheld active magic from industrial altar/EV/blood item processing and passive storage. Source-specific player attribution and single-debit accounting.
 4. **Botania / Roots Classic / Feywild:** confirm player item/cast/ritual action hooks; no auto nerfing passive flowers/automation for lich players.
 5. **Other mixed mods:** verify per-action or school-type source IDs for Ars, Enchanted, Hexerei, Primal Magick, and programmables. Fae/demon/sea subtypes must be orthogonal to Nature/Blood/Other.
-6. **Measured noncombat cap:** build actual Sea Dragon full Luck equipment configuration; measure raw Luck and its effects; compute Monk target **0.8X** and per-rank curve. Similarly measure Dragon max mana, Cave legal mining, Forest growth/yield, and movement. Test all at comparable endgame progression.
+6. **Measured noncombat cap:** build actual Sea Dragon full Luck equipment configuration; measure raw Luck and its effects; compute Monk target **0.85X** and per-rank curve. Similarly measure Dragon max mana, Cave legal mining, Forest growth/yield, and movement. Test all at comparable endgame progression.
 
 **State of implementation:** this is a taxonomy, first individual rank pass and measurement contract, **not** a 1.21.1 NeoForge compiled skill mod or a playable rebalanced class tree. The 32 original Tyz stock skills remain unharmed and unmoved.

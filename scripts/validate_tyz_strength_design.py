@@ -104,13 +104,13 @@ def verify() -> None:
     # Late noncombat Monk normalization is measured against COMPLETE geared builds.
     parity = json.loads((ROOT / "docs/tyzs/monk-noncombat-parity-v1.json").read_text(encoding="utf-8"))
     assert parity["status"] == "DESIGN_TARGET_ONLY_NOT_MEASURED"
-    assert parity["ratios"] == {"min": 0.8, "default": 0.85, "max": 0.9, "sea_dragon_luck": 0.8}
+    assert parity["ratios"] == {"min": 0.85, "default": 0.85, "max": 0.85, "sea_dragon_luck": 0.85}
     assert len(parity["benchmarks"]) == 10
     luck = next(row for row in parity["benchmarks"] if row["id"] == "luck")
     assert luck["specialist_skill"] == "tmm_dragon_sea_abyssal_fortune"
     assert luck["monk_skills"] == ["tmm_monk_inner_fortune"]
-    assert luck["target_ratio"] == 0.8
-    assert parity["luck_example"]["monk_cap_50_curve"][-1]["monk_with_curios_index"] == 80
+    assert luck["target_ratio"] == 0.85
+    assert parity["luck_example"]["monk_cap_50_curve"][-1]["monk_with_curios_index"] == 85
     assert data["balancing"]["noncombat_parity_2026_11_15"]["ratio"]["default"] == 0.85
     for sid, strength, cap in (
         ("tmm_monk_inner_fortune", "Extreme", 50),
@@ -153,6 +153,24 @@ def verify() -> None:
     assert sum(g["count"] for g in gear_audit["apotheosis"]["source_affix_groups"].values()) == 99
     assert "MONK" in data["balancing"]["overall_endgame_power_hierarchy"]["monk_benchmark_loadout"]
     assert data["balancing"]["equipment_ceiling_2026_11_15"]["source_affixes"] == 99
+
+    hard_caps = json.loads((ROOT / "docs/tyzs/theoretical-attribute-hard-caps-v1.json").read_text(encoding="utf-8"))
+    assert len(hard_caps["attributes"]) == 142
+    assert hard_caps["counts"]["registered_hard_bounds_found"] == 135
+    assert hard_caps["counts"]["docs_only_bounds"] == 7
+    assert hard_caps["policy"]["noncombat_monk_ratio"] == 0.85
+    assert hard_caps["policy"]["sea_dragon_luck_ratio"] == 0.85
+    bounds = {entry["id"]: entry for entry in hard_caps["attributes"]}
+    assert bounds["minecraft:generic.luck"]["max"] == 1024
+    assert bounds["irons_spellbooks:max_mana"]["max"] == 1000000
+    assert bounds["ars_nouveau:ars_nouveau.perk.max_mana"]["max"] == 10000
+    assert bounds["apothic_attributes:cooldown_reduction"]["max"] == 0.95
+    assert all(x["attainable_gear_plus_skills_max"] is None for x in hard_caps["attributes"])
+    curios = json.loads((ROOT / "docs/tyzs/curios-all-in-eligibility-v1.json").read_text(encoding="utf-8"))
+    assert curios["policy"]["shared_between_monk_and_specialists"]
+    assert curios["policy"]["banned_ring_id"] == "relics:ring_of_the_seven_deadly_sins"
+    assert curios["relics_source"]["slot_categories"] == 8
+    assert curios["relics_source"]["candidate_wearable_entries"] == 15
 
     assert "tmm_monk_spirit_bolt_mastery" not in ids
     assert "tmm_monk_unarmed_precision" in ids
