@@ -1,0 +1,3961 @@
+{
+  "schema_version": 1,
+  "id": "tmm:tyzs_strength_first_pass_v1",
+  "status": "DESIGN_ONLY_NOT_ACTIVE",
+  "date": "2026-11-15",
+  "source_catalog": "docs/tyzs/nine-tree-catalog-v1.json",
+  "source_stock": "docs/tyzs-stock-skills-6.4.2.json on feature/tyzs-primary-tree-runtime-migration",
+  "source_monk": "compat/monk/design/primary-tyz-monk-only-skeleton-v1.json",
+  "source_retirement": "docs/TEAM-LAPEN-RETIREMENT-TARGET-2026-11-15.md in test/full-integration",
+  "balancing": {
+    "strength_categories": {
+      "Weak": 5,
+      "Middling": 10,
+      "Average": 20,
+      "Strong": 50,
+      "Extreme": 100
+    },
+    "standard_level_caps": [
+      5,
+      10,
+      25,
+      50
+    ],
+    "default_SP_price_per_rank": 1,
+    "cumulative_formula": "reference_bonus = pre_skill_reference * (tier_percentage_per_rank/100) * min(purchased_rank, level_cap); no compounding, no self-referential attribute calculation",
+    "mana_resource_reference": "personal/native unmodified mana capacity for that magic system. Not shared across mods; do not apply to machines.",
+    "mixed_stat_reference": "For native fixed-unit mana, damage, health, cooldown, proc chance, status duration or utility, choose source-verified reference and conversion; class tier is power budget not mandatory direct percentage of live effect.",
+    "core_existing_4": "Five rank-one-SP first-wave files already hold 20/40/60/80/100% of their previously defined rank-99 terminal fixed values, not a verified +20% of each underlying mod's initial mana. Reconcile base value only after cross-mod QA.",
+    "capped_effects": [
+      "defenses and damage resistance not beyond a tested mitigation hard ceiling",
+      "chance 0..100%, often a much smaller tuned ceiling",
+      "cost reduction with nonzero payment floor",
+      "regeneration explicit HP/tick or HP/sec benchmarks where vanilla baseline zero",
+      "loot/yield/bonemeal/crafting no dupes, repeat credit or world automation loops",
+      "spell/buff effects only upon legitimate source-attributed action"
+    ],
+    "endgame_effective_bonus": "Nominal +500% or higher is appropriate for large Dragon mana, but no uncontrolled multiplication of competing tiers; same mechanic bonuses share a pre-skill basis and are additive unless a documented exception.",
+    "external_gating": "Native form/faction plus milestone at purchase AND effect time; refund prerequisites; direct grants reconciled; one global MXP/Tyz XP+SP wallet.",
+    "native_owners": "JAWR vampire/wolf; standalone Monk/Hunter; Dragon Survival dragons; verified Lich/Goety/Forbidden Magic; TeamLapen Vampirism/Werewolves are retirement targets and are not future skill providers.",
+    "hunter_special_rules": "Undead, demon and fae identified by actual sourced tags; one entity counts once, gated boss multipliers; target glowing at late rank with bounded scan/cooldown and no players. Dragon quarry specialization independent of dimension or boss tags.",
+    "lich_blood_nature_tradeoff": "Blood nodes strengthen source-verified personal Neo Vitae/EvilCraft/other blood spell outputs; after all positive nature modifiers, multiply only the lich's own personal Botania/Roots nature spell output by (1 - min(0.75, 0.02*entry_blood_ranks + 0.03*advanced_blood_ranks + 0.05*mastery_blood_ranks)). No machine or passive production debuffs.",
+    "monk_policy": "Do not add spirit projectile; Ars/Iron's spells supply range. Treasure Hand single native Fortune/Silk toggle, Fortune Tyz modifier licensed; reserved hotbar slot 1 and armor-lock toggle are non-purchasable native effects. All 40 source-bounded affix rarities have 2-5 special caps, not generalized to 5/10/25/50."
+  },
+  "trees": [
+    {
+      "id": "tmm_magic_core",
+      "title": "Core Skills",
+      "eligibility": "universal",
+      "groups": [
+        {
+          "name": "Universal magic fundamentals",
+          "skills": [
+            {
+              "id": "tmm_magic_reservoir_1",
+              "label": "Reservoir I",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Personal maximum mana/resources. Initial four runtime preview nodes preserve their original absolute rank-5 ceilings until per-mod base normalization is source-verified.",
+              "reference_basis": "pre_skill_native_personal_mana_baseline",
+              "notes": [
+                "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_wellspring_1",
+              "label": "Wellspring I",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Personal magical regeneration; dragon forms may purchase this UNIVERSAL option, but have no dragon-exclusive magic regen nodes.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [
+                "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_thrift_1",
+              "label": "Thrift I",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Discount personal magic payments; original resource-specific hard ceiling and minimum positive payment apply.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [
+                "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_potency_1",
+              "label": "Potency I",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Base personal spell effect strength; source-specific spells and damage tags. Existing four preview attributes stay exact until normalized.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [
+                "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_quickening",
+              "label": "Quickening",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "universal",
+              "effect": "Personal spell casting speed, not industrial throughput.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_projection",
+              "label": "Projection",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Valid spell target range, not free global AoE.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_persistence",
+              "label": "Persistence",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "universal",
+              "effect": "Duration of supported temporary effects and personally owned summons.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_conjuration",
+              "label": "Conjuration",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "universal",
+              "effect": "Bounded strength of personally owned summoned allies, not free summoned mob count.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_magic_warding",
+              "label": "Warding",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "universal",
+              "effect": "Source-verified magical damage resistance, hard mitigation cap.",
+              "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+          "skills": [
+            {
+              "id": "health_boost",
+              "label": "Health Boost",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "legacy-rehome",
+              "effect": "Increases maximum health by {value} half hearts",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Rebalance against Monk/Dragon natural health and equipment",
+                "Core weak HP is intentionally much less effective per SP than Werewolf Feral Vigor."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 10,
+              "native_sp_total": 92,
+              "behavior_class": null
+            },
+            {
+              "id": "oxygen_boost",
+              "label": "Oxygen Boost",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "legacy-rehome",
+              "effect": "Increases underwater breathing time by {value}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Do not supersede Monk native Breath Meditation or permanent Sea Dragon water breathing"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 4,
+              "native_sp_total": 14,
+              "behavior_class": null
+            },
+            {
+              "id": "block_reach",
+              "label": "Block Reach",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Increases the range at which the player can place and destroy by {value} blocks",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Respect claims, protected target distance and range caps"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 4,
+              "native_sp_total": 30,
+              "behavior_class": null
+            },
+            {
+              "id": "attack_damage",
+              "label": "Attack Damage",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "legacy-rehome",
+              "effect": "Increases melee damage by {value}",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Avoid stacking unconditional free damage with Monk barehand and wolf claws"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 3,
+              "native_sp_total": 25,
+              "behavior_class": null
+            },
+            {
+              "id": "sneak_speed",
+              "label": "Sneaking Speed",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 1,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Increases movement speed while sneaking by {value}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native vanilla attribute; additive interaction with Hunter/Vampire"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 14,
+              "behavior_class": null
+            },
+            {
+              "id": "speed_boost",
+              "label": "speed_boost",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "legacy-rehome",
+              "effect": "NO ENGLISH STRING FOUND",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Cap stacked movement with dragon flight and wolf sprint"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": null
+            },
+            {
+              "id": "step_height",
+              "label": "Step Height",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Allows stepping up blocks up to {value} blocks high without jumping",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Must not trivialize intentionally gated Monk Fleet Footwork→Step Assist; consider replacing generic tier with costly late universal movement"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 3,
+              "native_sp_total": 7,
+              "behavior_class": null
+            },
+            {
+              "id": "swim_speed",
+              "label": "Swim Speed",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "legacy-rehome",
+              "effect": "Increases swim speed by {value}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Sea Dragon adds form-specific benefits; avoid double applying same swim attribute"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": null
+            },
+            {
+              "id": "excavation",
+              "label": "Excavation",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 1,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Increases mining speed by {value}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Cave Dragon and Monk have special permission/harvest tiers; cannot bypass block harvest conditions"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "abilities",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 10,
+              "native_sp_total": 40,
+              "behavior_class": null
+            },
+            {
+              "id": "swift_learn",
+              "label": "Swift Learning",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "legacy-rehome",
+              "effect": "Increases Skill XP gain by {value}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native +60% Tyz XP multiplier conflicts with MXP-only normalized 1.2^P economy; do not transplant raw"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 4,
+              "native_sp_total": 62,
+              "behavior_class": null,
+              "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+            },
+            {
+              "id": "nutrition",
+              "label": "Metabolism",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "legacy-rehome",
+              "effect": "Increases food value (nutrition & saturation) by {nutrition_bonus}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "For hunger-using forms only; vampires/liches need canonical food-resource exception"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "NutritionEffect"
+            },
+            {
+              "id": "experience_boost",
+              "label": "Wisdom",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "legacy-rehome",
+              "effect": "Increases Vanilla XP gain by {bonus_percentage}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Should affect only vanilla XP; not MXP or first-boss fixed awards"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 46,
+              "behavior_class": "ExperienceBoostEffect"
+            },
+            {
+              "id": "stealth",
+              "label": "Stealth",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "legacy-rehome",
+              "effect": "Reduces the detection range of hostile mobs by {range_reduction}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Hunter/Vampire get conditional expansions; ensure client/AI consistency"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 46,
+              "behavior_class": "StealthEffect"
+            },
+            {
+              "id": "magnet",
+              "label": "Magnet",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Attracts items within a {block_radius} block radius",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Claims, inventory and loot ownership; mod overlap"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 4,
+              "native_sp_total": 30,
+              "behavior_class": "MagnetEffect"
+            },
+            {
+              "id": "spare_parts",
+              "label": "Spare Parts",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Grants a {refund_chance}% chance for each ingredient to be recovered when crafting.\nUp to {max_materials} item(s) per craft",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Refunding items risks EMC loops and late-gated ingredient duplication; keep existing 4/9 identical guard"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 67,
+              "behavior_class": "SparePartsEffect",
+              "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+            },
+            {
+              "id": "twist_of_fate",
+              "label": "Twist Of Fate",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "legacy-rehome",
+              "effect": "Increases the quantity of items found in structure loot chests by {loot_multiplier}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Source modifies structure chest quantities; avoid multiplying boss/forbidden/ProjectE gated loot"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 5,
+              "native_sp_total": 46,
+              "behavior_class": "TwistOfFateEffect",
+              "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+            },
+            {
+              "id": "keepsake",
+              "label": "Safekept",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Safeguards the first {saved_slots} slot(s) of your inventory upon death",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Corail Tombstone and native lich resurrection arbitration need a single real-death save/slot policy"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 8,
+              "native_sp_total": 121,
+              "behavior_class": "KeepsakeEffect"
+            },
+            {
+              "id": "haggler",
+              "label": "Haggler",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Holding an Emerald attracts villagers within a {block_radius} block radius.\n\nThey will follow you with a {villager_speed}% speed bonus",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Source attracts villagers holding emerald; bounded radius/speed; no automatic discounts"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "misc",
+              "target_category": "tmm_magic_core",
+              "native_max_levels": 4,
+              "native_sp_total": 14,
+              "behavior_class": "HagglerEffect"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "The base four are Average +20% OF APPROVED REFERENCE MAX PER RANK in the current flat preview, not a verified cross-mod percentage modifier.",
+        "Mixed survival/combat/utility stock effects remain design-only, with real behavior left on old tabs until parity and save tests."
+      ]
+    },
+    {
+      "id": "tmm_dragon_cave",
+      "title": "Cave Dragon",
+      "identity": "Supreme high-capacity/high-potency dragon caster with armor, claws and harvest at premium SP prices; special emphasis on demonic magic.",
+      "eligibility": "Dragon Survival verified species and real growth gates",
+      "groups": [
+        {
+          "name": "Universal Dragon Physiology & Sorcery (species-local)",
+          "skills": [
+            {
+              "id": "tmm_dragon_cave_draconic_reservoir",
+              "label": "Draconic Reservoir",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 2500,
+              "stage": "species-shared",
+              "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+              "reference_basis": "personal_base_max_mana_or_equivalent",
+              "notes": [
+                "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_cave_draconic_potency",
+              "label": "Draconic Potency",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 1000,
+              "stage": "species-shared",
+              "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+              "reference_basis": "personal_baseline_spell_effect",
+              "notes": [
+                "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_cave_draconic_scales",
+              "label": "Draconic Scales",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+              "reference_basis": "form_base_natural_armor_effectiveness",
+              "notes": [
+                "2 SP/rank and no immortal or near-100% reduction."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_cave_draconic_claws",
+              "label": "Draconic Claws",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Real dragon form physical strike boost; not global magic damage.",
+              "reference_basis": "unmodified_verified_dragon_melee",
+              "notes": [
+                "2 SP/rank, separately bounded from Dragon spell potency."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_cave_draconic_talons",
+              "label": "Draconic Talons",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 2,
+              "max_sp": 100,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+              "reference_basis": "legal_block_break_speed",
+              "notes": [
+                "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Claw & Fang",
+          "skills": [
+            {
+              "id": "tmm_dragon_cave_stone_claws",
+              "label": "Stone Claws",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Scale unarmed/claw damage only in dragon body; no weapon-wide bonus.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_cave_crushing_bite",
+              "label": "Crushing Bite",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Bounded armor/knockback pressure on confirmed bite hits.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_stone_claws"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_cave_seismic_pounce",
+              "label": "Seismic Pounce",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Cooldown-limited landing shockwave against entities; terrain damage off by default.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_crushing_bite"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Stone Scales",
+          "skills": [
+            {
+              "id": "tmm_dragon_cave_stonehide",
+              "label": "Stonehide",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Incremental natural armor; respect equipment stacking caps.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_cave_earthbound_poise",
+              "label": "Earthbound Poise",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Reduce knockback and fall damage while grounded.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_stonehide"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_cave_mountain_bastion",
+              "label": "Mountain Bastion",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_earthbound_poise"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Excavation",
+          "skills": [
+            {
+              "id": "tmm_dragon_cave_tunneler",
+              "label": "Tunneler",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 2,
+              "max_sp": 100,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Improve legal claw-mining speed; preserve vanilla/tool harvest checks.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_cave_vein_sense",
+              "label": "Vein Sense",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 50,
+              "stage": "advanced",
+              "effect": "Short-range, timed ore awareness without unrestricted x-ray or chunk scans.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_tunneler"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_cave_deep_excavation",
+              "label": "Deep Excavation",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "mastery",
+              "effect": "Controlled multi-block excavation; count actual blocks, honor claims and server limits.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_vein_sense"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Infernal Attunement",
+          "skills": [
+            {
+              "id": "tmm_dragon_cave_infernal_resonance",
+              "label": "Infernal Resonance",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_cave_hellbound_command",
+              "label": "Hellbound Command",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_infernal_resonance"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_cave_infernal_dominion",
+              "label": "Infernal Dominion",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_cave_hellbound_command"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Heart of the Mountain",
+        "effect": "After late native dragon progression, briefly combine armor and excavation benefits; no Chaos Guardian-tier gear replacement.",
+        "status": "concept_only",
+        "id": "tmm_dragon_cave_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_cave_seismic_pounce",
+            "tmm_dragon_cave_mountain_bastion",
+            "tmm_dragon_cave_deep_excavation",
+            "tmm_dragon_cave_infernal_dominion"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_cave_crushing_bite",
+            "tmm_dragon_cave_earthbound_poise",
+            "tmm_dragon_cave_vein_sense",
+            "tmm_dragon_cave_hellbound_command"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "No cross-species dragon purchases or free dragon growth.",
+        "Mining benefits must not bypass protected ores, world claims or late-game materials.",
+        "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power."
+      ]
+    },
+    {
+      "id": "tmm_dragon_sea",
+      "title": "Sea Dragon",
+      "identity": "High-capacity/high-potency dragon caster of tides, cold, storms and deep-sea magic; aquatic mobility and defenses with costly generic combat/harvest nodes.",
+      "eligibility": "Dragon Survival verified species and real growth gates",
+      "groups": [
+        {
+          "name": "Universal Dragon Physiology & Sorcery (species-local)",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_draconic_reservoir",
+              "label": "Draconic Reservoir",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 2500,
+              "stage": "species-shared",
+              "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+              "reference_basis": "personal_base_max_mana_or_equivalent",
+              "notes": [
+                "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_sea_draconic_potency",
+              "label": "Draconic Potency",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 1000,
+              "stage": "species-shared",
+              "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+              "reference_basis": "personal_baseline_spell_effect",
+              "notes": [
+                "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_sea_draconic_scales",
+              "label": "Draconic Scales",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+              "reference_basis": "form_base_natural_armor_effectiveness",
+              "notes": [
+                "2 SP/rank and no immortal or near-100% reduction."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_sea_draconic_claws",
+              "label": "Draconic Claws",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Real dragon form physical strike boost; not global magic damage.",
+              "reference_basis": "unmodified_verified_dragon_melee",
+              "notes": [
+                "2 SP/rank, separately bounded from Dragon spell potency."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_sea_draconic_talons",
+              "label": "Draconic Talons",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 2,
+              "max_sp": 100,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+              "reference_basis": "legal_block_break_speed",
+              "notes": [
+                "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Tideshaping",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_current_rider",
+              "label": "Current Rider",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Improve movement control in water, including currents.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_sea_tidal_strike",
+              "label": "Tidal Strike",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Enhance wet-target combat and native aquatic attacks, not generic damage.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_current_rider"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_sea_undertow",
+              "label": "Undertow",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Cooldown-limited pull/slow applied to legal targets without moving world water blocks.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_tidal_strike"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Abyssal Defense",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_pressure_adaptation",
+              "label": "Pressure Adaptation",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Reduce underwater environmental penalties.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_sea_brine_scales",
+              "label": "Brine Scales",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Situational protection while submerged; no blanket armor bonus on land.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_pressure_adaptation"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_sea_deepwater_refuge",
+              "label": "Deepwater Refuge",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Bounded underwater healing or defense with a meaningful resource/cooldown cost.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_brine_scales"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Swimmer's Grace",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_sleek_form",
+              "label": "Sleek Form",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 2,
+              "max_sp": 100,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Increase underwater speed, capped against sprint/exotic gear.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_sea_slipstream",
+              "label": "Slipstream",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Short burst dodge in water with collision safety.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_sleek_form"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_sea_ocean_leap",
+              "label": "Ocean Leap",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "mastery",
+              "effect": "Leap from water and control reentry without free flight.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_slipstream"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Tidal & Abyssal Magic",
+          "skills": [
+            {
+              "id": "tmm_dragon_sea_tidal_attunement",
+              "label": "Tidal Attunement",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_sea_stormcalling",
+              "label": "Stormcalling",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_tidal_attunement"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_sea_abyssal_sovereignty",
+              "label": "Abyssal Sovereignty",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_sea_stormcalling"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Tide Sovereign",
+        "effect": "Late-game, time-limited aquatic combat and mobility surge; must be distinctly weaker on land.",
+        "status": "concept_only",
+        "id": "tmm_dragon_sea_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_sea_undertow",
+            "tmm_dragon_sea_deepwater_refuge",
+            "tmm_dragon_sea_ocean_leap",
+            "tmm_dragon_sea_abyssal_sovereignty"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_sea_tidal_strike",
+            "tmm_dragon_sea_brine_scales",
+            "tmm_dragon_sea_slipstream",
+            "tmm_dragon_sea_stormcalling"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
+        "No free permanent underwater invulnerability or world fluid griefing.",
+        "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
+        "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices."
+      ]
+    },
+    {
+      "id": "tmm_dragon_forest",
+      "title": "Forest Dragon",
+      "identity": "High-capacity/high-potency fae dragon caster with ecological control, crop bounty, breeding and bonemeal effects; generic combat/harvest ranks cost a premium.",
+      "eligibility": "Dragon Survival verified species and real growth gates",
+      "groups": [
+        {
+          "name": "Universal Dragon Physiology & Sorcery (species-local)",
+          "skills": [
+            {
+              "id": "tmm_dragon_forest_draconic_reservoir",
+              "label": "Draconic Reservoir",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 2500,
+              "stage": "species-shared",
+              "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+              "reference_basis": "personal_base_max_mana_or_equivalent",
+              "notes": [
+                "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_forest_draconic_potency",
+              "label": "Draconic Potency",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 1000,
+              "stage": "species-shared",
+              "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+              "reference_basis": "personal_baseline_spell_effect",
+              "notes": [
+                "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_forest_draconic_scales",
+              "label": "Draconic Scales",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+              "reference_basis": "form_base_natural_armor_effectiveness",
+              "notes": [
+                "2 SP/rank and no immortal or near-100% reduction."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_forest_draconic_claws",
+              "label": "Draconic Claws",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Real dragon form physical strike boost; not global magic damage.",
+              "reference_basis": "unmodified_verified_dragon_melee",
+              "notes": [
+                "2 SP/rank, separately bounded from Dragon spell potency."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_dragon_forest_draconic_talons",
+              "label": "Draconic Talons",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 2,
+              "max_sp": 100,
+              "nominal_cumulative_percent": 250,
+              "stage": "species-shared",
+              "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+              "reference_basis": "legal_block_break_speed",
+              "notes": [
+                "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Verdant Vitality",
+          "skills": [
+            {
+              "id": "tmm_dragon_forest_green_recovery",
+              "label": "Green Recovery",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 2,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Small recovery benefit in living biomes, not in all dimensions.",
+              "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_forest_living_bark",
+              "label": "Living Bark",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 2,
+              "max_sp": 20,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Situational natural defense near vegetation, with stacking caps.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_green_recovery"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_forest_elder_grove",
+              "label": "Elder Grove",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 2,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Time-limited regeneration/support pulse, costing dragon resource.",
+              "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_living_bark"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Thorn & Root",
+          "skills": [
+            {
+              "id": "tmm_dragon_forest_bramble_claw",
+              "label": "Bramble Claw",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Add a bounded nature-themed status to confirmed claw attacks.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_forest_entangling_breath",
+              "label": "Entangling Breath",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Native breath enhancer applying short slows only where source breath supports it.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_bramble_claw"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_forest_thornstorm",
+              "label": "Thornstorm",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Cooldown-limited small-area crowd control with no world block destruction.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_entangling_breath"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Fertility & Bounty",
+          "skills": [
+            {
+              "id": "tmm_dragon_forest_germination_touch",
+              "label": "Germination Touch",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "entry",
+              "effect": "Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth.",
+              "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+              "notes": [
+                "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_forest_breeder_s_blessing",
+              "label": "Breeder's Blessing",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents.",
+              "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+              "notes": [
+                "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_germination_touch"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_forest_harvest_bounty",
+              "label": "Harvest Bounty",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "mastery",
+              "effect": "Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks.",
+              "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+              "notes": [
+                "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_breeder_s_blessing"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Fae Affinity",
+          "skills": [
+            {
+              "id": "tmm_dragon_forest_fey_courtesy",
+              "label": "Fey Courtesy",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_dragon_forest_fey_conduit",
+              "label": "Fey Conduit",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_fey_courtesy"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_dragon_forest_grove_guardian",
+              "label": "Grove Guardian",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Bounded fae-aligned personal magic and allied-support synergy without taking over world production.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_dragon_forest_fey_conduit"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Retained Tyz 6.4.2 source skills",
+          "skills": [
+            {
+              "id": "venomous_attack",
+              "label": "Venomous Strike",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to poison targets on hit",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Source handler is general melee hit; require dragon eligibility at use-time"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_dragon_forest",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "VenomousAttackEffect"
+            },
+            {
+              "id": "green_thumb",
+              "label": "Green Thumb",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to double drops when harvesting crops and plants",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Forest Dragon may get separate eco benefits; check harvest plugins and duplication Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
+                "Transferred to Forest Dragon ONLY after verified same-ID/native behavior+species use-time gate; do not duplicate with new Forest crop/breeding nodes."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "nature",
+              "target_category": "tmm_dragon_forest",
+              "native_max_levels": 5,
+              "native_sp_total": 14,
+              "behavior_class": "GreenThumbEffect"
+            },
+            {
+              "id": "shepherd_s_blessing",
+              "label": "Shepherd’s Blessing",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "legacy-rehome",
+              "effect": "Baby animals grow {growth_speed}% faster",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Animal baby growth multiplier can affect farms; evaluate performance Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
+                "Transferred to Forest Dragon ONLY after verified same-ID/native behavior+species use-time gate; do not duplicate with new Forest crop/breeding nodes."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "nature",
+              "target_category": "tmm_dragon_forest",
+              "native_max_levels": 15,
+              "native_sp_total": 79,
+              "behavior_class": "ShepherdsBlessingEffect"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Elderwood Heart",
+        "effect": "Late native progression grants a timed defensive/support state in forest biomes.",
+        "status": "concept_only",
+        "id": "tmm_dragon_forest_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_forest_elder_grove",
+            "tmm_dragon_forest_thornstorm",
+            "tmm_dragon_forest_harvest_bounty",
+            "tmm_dragon_forest_grove_guardian"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_forest_living_bark",
+            "tmm_dragon_forest_entangling_breath",
+            "tmm_dragon_forest_breeder_s_blessing",
+            "tmm_dragon_forest_fey_conduit"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Do not turn Forest Dragon neutrality into global creature pacification.",
+        "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.",
+        "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
+        "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana."
+      ]
+    },
+    {
+      "id": "tmm_vampire",
+      "title": "Vampire",
+      "identity": "Blood economy, predatory stealth and undead survival",
+      "eligibility": "JAWR verified vampire state",
+      "groups": [
+        {
+          "name": "Bloodcraft",
+          "skills": [
+            {
+              "id": "tmm_vampire_efficient_feeding",
+              "label": "Efficient Feeding",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_vampire_deep_reservoir",
+              "label": "Deep Reservoir",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Increase one authoritative usable blood capacity, not two independent HUD pools.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_efficient_feeding"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_vampire_crimson_renewal",
+              "label": "Crimson Renewal",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Trade a real measured blood debit for bounded emergency healing.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_deep_reservoir"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Nightstalker",
+          "skills": [
+            {
+              "id": "tmm_vampire_nocturnal_vision",
+              "label": "Nocturnal Vision",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 50,
+              "sp_per_rank": 1,
+              "max_sp": 50,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Better low-light perception with native-sunlight penalties untouched.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_vampire_shadow_stalker",
+              "label": "Shadow Stalker",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Short stealth advantage in darkness; avoid invisibility in full daylight.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_nocturnal_vision"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_vampire_bat_mastery",
+              "label": "Bat Mastery",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Improve native bat-form controls/efficiency after that native ability is acquired.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_shadow_stalker"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Predation",
+          "skills": [
+            {
+              "id": "tmm_vampire_fang_training",
+              "label": "Fang Training",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Scale only verified vampire bite/melee attacks.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_vampire_measured_feast",
+              "label": "Measured Feast",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Limited post-kill blood recovery from eligible kills, with transaction deduplication.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_fang_training"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_vampire_blood_duelist",
+              "label": "Blood Duelist",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Focused single-target bonuses under low blood; prevent intentional zero-cost loops.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_measured_feast"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Undead Constitution",
+          "skills": [
+            {
+              "id": "tmm_vampire_pale_resilience",
+              "label": "Pale Resilience",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Bounded poison/disease-type mitigation where the source system allows it.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_vampire_sunshroud",
+              "label": "Sunshroud",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Short resource-funded sunlight resistance; never erase core daylight tradeoffs.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_pale_resilience"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_vampire_elder_presence",
+              "label": "Elder Presence",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Bounded defensive/control aura with cooldown, not full charm immunity.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_vampire_sunshroud"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Retained Vampire Skill Concepts (JAWR-owned)",
+          "skills": [
+            {
+              "id": "tmm_vampire_blood_thrift",
+              "label": "Blood Thrift",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "entry",
+              "effect": "Reduce only real JAWR blood expenditure/hunger cost on verified committed actions.",
+              "reference_basis": "capped_blood_cost_discount",
+              "notes": [
+                "Maximum actual discount 25%; never zero positive blood payment; Core Thrift cannot double discount."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_vampire_predatory_finesse",
+              "label": "Predatory Finesse",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Blood-funded vampire-specific melee attack speed, not spell casting speed.",
+              "reference_basis": "verified_melee_attack_speed",
+              "notes": [
+                "JAWR state and real blood debit gate."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_vampire_night_runner",
+              "label": "Night Runner",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Improved vampire walking/running mobility in darkness; no universal free speed.",
+              "reference_basis": "pre_skill_vampire_movement_speed",
+              "notes": [
+                "Retains daylight weakness."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_vampire_crimson_surge",
+              "label": "Crimson Surge",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Blood-paid high-stage predatory burst, supplementing Blood Regent without minions.",
+              "reference_basis": "bounded_damage_and_mobility_burst",
+              "notes": [
+                "No TeamLapen faction lord or summon-pet mechanics."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Retained Tyz 6.4.2 source skills",
+          "skills": [
+            {
+              "id": "bloodlust",
+              "label": "Bloodlust",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "legacy-rehome",
+              "effect": "Killing a hostile mob regenerates {health_percentage}% of its max health",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native handler heals based on slain enemy max HP; must not bypass canonical blood costs or undead recovery policy"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_vampire",
+              "native_max_levels": 4,
+              "native_sp_total": 43,
+              "behavior_class": "BloodlustEffect"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Blood Regent",
+        "effect": "Blood-funded high-tier predatory stance requiring advanced native vampire progression.",
+        "status": "concept_only",
+        "id": "tmm_vampire_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_vampire_crimson_renewal",
+            "tmm_vampire_bat_mastery",
+            "tmm_vampire_blood_duelist",
+            "tmm_vampire_elder_presence"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_vampire_deep_reservoir",
+            "tmm_vampire_shadow_stalker",
+            "tmm_vampire_measured_feast",
+            "tmm_vampire_sunshroud"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
+        "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently."
+      ]
+    },
+    {
+      "id": "tmm_werewolf",
+      "title": "Werewolf",
+      "identity": "Exceptional max hearts and physical health regeneration, feral melee, and strong nature magic synergy.",
+      "eligibility": "JAWR verified lycanthrope state",
+      "groups": [
+        {
+          "name": "Lupine Vitality",
+          "skills": [
+            {
+              "id": "tmm_werewolf_feral_vigor",
+              "label": "Feral Vigor",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts.",
+              "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+              "notes": [
+                "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_werewolf_regenerative_flesh",
+              "label": "Regenerative Flesh",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [
+                "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_feral_vigor"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_werewolf_unbreakable_beast",
+              "label": "Unbreakable Beast",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities.",
+              "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+              "notes": [
+                "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_regenerative_flesh"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Feral Might",
+          "skills": [
+            {
+              "id": "tmm_werewolf_rending_claws",
+              "label": "Rending Claws",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Scale claw damage in valid wolf/beast form, respecting weapon modifiers.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_werewolf_savage_momentum",
+              "label": "Savage Momentum",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Short stacking melee bonus after actual hits, capped and reset out of combat.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_rending_claws"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_werewolf_primal_fury",
+              "label": "Primal Fury",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Timed burst consuming native appropriate resource or applying fatigue.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_savage_momentum"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Moonrunner",
+          "skills": [
+            {
+              "id": "tmm_werewolf_predator_s_stride",
+              "label": "Predator's Stride",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Bonus mobility in valid wolf form.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_werewolf_pouncing_leap",
+              "label": "Pouncing Leap",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Targeted controlled leap with landing safety.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_predator_s_stride"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_werewolf_lunar_chase",
+              "label": "Lunar Chase",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Short chase burst under moon conditions with weaker daytime counterpart.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_pouncing_leap"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Wild Communion",
+          "skills": [
+            {
+              "id": "tmm_werewolf_wild_attunement",
+              "label": "Wild Attunement",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_werewolf_rootsong",
+              "label": "Rootsong",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Further increase player nature spell potency or healing, separate from ordinary combat regeneration.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_wild_attunement"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_werewolf_grove_howl",
+              "label": "Grove Howl",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_werewolf_rootsong"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Retained Lycan Skill Concepts (JAWR-owned)",
+          "skills": [
+            {
+              "id": "tmm_werewolf_bloodlust_recovery",
+              "label": "Bloodlust Recovery",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Health restoration from actual player-credited hostile kill, with real cooldown.",
+              "reference_basis": "capped_hp_per_hostile_kill",
+              "notes": [
+                "Do not also award duplicate kills or bypass hunger cost."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_werewolf_bite_techniques",
+              "label": "Bite Techniques",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Select either limited bleeding or brief stun enhancement on confirmed wolf bites.",
+              "reference_basis": "per_bite_status_chance",
+              "notes": [
+                "No instant kill, bosses gated."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_werewolf_feral_excavation",
+              "label": "Feral Excavation",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 250,
+              "stage": "entry",
+              "effect": "Boost permitted claw mining/harvest throughput while in real JAWR wolf form.",
+              "reference_basis": "legal_wolf_claw_harvest_speed",
+              "notes": [
+                "Do not independently grant forbidden tool tiers."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_werewolf_arrow_awareness",
+              "label": "Arrow Awareness",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Limited moving-projectile evasion with shared evasion budget.",
+              "reference_basis": "capped_evade_chance",
+              "notes": [
+                "No invulnerability; dodge ceiling shared with sprint evasion."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_werewolf_tempered_silver",
+              "label": "Tempered Against Silver",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "mastery",
+              "effect": "Partial damage mitigation against source-verified silver damage without erasing weakness.",
+              "reference_basis": "silver_specific_damage_mitigation",
+              "notes": [
+                "Cap silver resistance at 30%, including other wolf ranks."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Retained Tyz 6.4.2 source skills",
+          "skills": [
+            {
+              "id": "rage",
+              "label": "Rage",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "legacy-rehome",
+              "effect": "Increases damage by {damage_buff}% when health is below {health_threshold}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Maintain core native moon/shape consequences; source scales on low health"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_werewolf",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "RageEffect"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Moon Apex",
+        "effect": "Late-game feral ascendancy emphasizing massive health, sustained HP regeneration, melee ferocity and nature magic; retain native silver/moon weaknesses.",
+        "status": "concept_only",
+        "id": "tmm_werewolf_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_werewolf_unbreakable_beast",
+            "tmm_werewolf_primal_fury",
+            "tmm_werewolf_lunar_chase",
+            "tmm_werewolf_grove_howl"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_werewolf_regenerative_flesh",
+            "tmm_werewolf_savage_momentum",
+            "tmm_werewolf_pouncing_leap",
+            "tmm_werewolf_rootsong"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
+        "Natural form-change progression remains native, not purchased again in Tyz.",
+        "Werewolf regen means HEALTH regeneration, not passive magic regeneration."
+      ]
+    },
+    {
+      "id": "tmm_lich",
+      "title": "Lich",
+      "identity": "Necromantic and blood-magic specialist, explicitly exchanging personal nature-magic potency for amplified blood magic.",
+      "eligibility": "JAWR Forbidden Magic / Goety verified lich state (Archlich and Dracolich share one Lich tree)",
+      "groups": [
+        {
+          "name": "Soul Economy",
+          "skills": [
+            {
+              "id": "tmm_lich_soul_conservation",
+              "label": "Soul Conservation",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Lower eligible personal necromancy spell costs, not global ritual/machine cost.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_lich_soul_reserve",
+              "label": "Soul Reserve",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Bounded native personal soul/Arca resource capacity where extensible.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_soul_conservation"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_lich_soul_treasury",
+              "label": "Soul Treasury",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "mastery",
+              "effect": "Small high-level sustain on committed necromantic actions, no passive self-funding loop.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_soul_reserve"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Blood & Nature Opposition",
+          "skills": [
+            {
+              "id": "tmm_lich_sanguine_attunement",
+              "label": "Sanguine Attunement",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 1250,
+              "stage": "entry",
+              "effect": "Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power.",
+              "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+              "notes": [
+                "Paired drawback: every purchased rank in this entry blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 2 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_lich_crimson_channel",
+              "label": "Crimson Channel",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput.",
+              "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+              "notes": [
+                "Paired drawback: every purchased rank in this advanced blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 3 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_sanguine_attunement"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_lich_verdant_severance",
+              "label": "Verdant Severance",
+              "strength": "Extreme",
+              "percent_per_rank": 100,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff.",
+              "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+              "notes": [
+                "Paired drawback: every purchased rank in this mastery blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 5 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_crimson_channel"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Undead Host",
+          "skills": [
+            {
+              "id": "tmm_lich_bone_captain",
+              "label": "Bone Captain",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Modest bonus to personally owned undead servants.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_lich_grave_regiment",
+              "label": "Grave Regiment",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Improved servant coordination/leash and bounded count efficiency.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_bone_captain"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_lich_death_host",
+              "label": "Death Host",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Late temporary enhancement to current owned minions with hard entity budget.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_grave_regiment"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Soul Preservation",
+          "skills": [
+            {
+              "id": "tmm_lich_cold_persistence",
+              "label": "Cold Persistence",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "entry",
+              "effect": "Limited tolerance of wither/undead hazards, preserving explicit weaknesses.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_lich_anchor_attunement",
+              "label": "Anchor Attunement",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_cold_persistence"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_lich_final_passage",
+              "label": "Final Passage",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "mastery",
+              "effect": "Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger.",
+              "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_lich_anchor_attunement"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Sovereign of Ash",
+        "effect": "High-tier necromantic command stance requiring advanced lich progression and stable anchor ownership.",
+        "status": "concept_only",
+        "id": "tmm_lich_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_lich_soul_treasury",
+            "tmm_lich_verdant_severance",
+            "tmm_lich_death_host",
+            "tmm_lich_final_passage"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_lich_soul_reserve",
+            "tmm_lich_crimson_channel",
+            "tmm_lich_grave_regiment",
+            "tmm_lich_anchor_attunement"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
+        "For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves.",
+        "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.",
+        "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf."
+      ]
+    },
+    {
+      "id": "tmm_hunter",
+      "title": "Hunter",
+      "identity": "Anti-undead/demon/fae apex monster-slayer; best combat upgrades, robust survival and equipment conservation, virtually no spell-stat growth",
+      "eligibility": "standalone Hunter progression; cross-form exclusivity not assumed",
+      "groups": [
+        {
+          "name": "Quarry Lore & Tracking",
+          "skills": [
+            {
+              "id": "tmm_hunter_monster_lore",
+              "label": "Monster Lore",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "entry",
+              "effect": "Recognize verified undead, demon and fae categories, including weaknesses without revealing unrelated bosses.",
+              "reference_basis": "bounded_range_duration_or_entity_classification",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_hunter_quarry_mark",
+              "label": "Quarry Mark",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Mark one legitimate undead, demon or fae quarry for specialized hunter tactics.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_monster_lore"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_hunter_hunter_tracking",
+              "label": "Hunter Tracking",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "mastery",
+              "effect": "Very high-level proximity effect: apply short, refreshed Glowing to eligible undead, demons and fae; explicit radius/cooldown and no unrelated mobs.",
+              "reference_basis": "tracking_radius_not_permanent_status_potency",
+              "notes": [
+                "High-tier proximity Glowing; 5 ranks refine maximum radius, default 8 + 2*rank blocks (10-18). Never Glowing for non-undead/demon/fae. Server interval bounded."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_quarry_mark"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Arms & Ammunition",
+          "skills": [
+            {
+              "id": "tmm_hunter_weapon_tempering",
+              "label": "Weapon Tempering",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "entry",
+              "effect": "Reduce real durability loss from Hunter weapons without healing or duplicating equipment.",
+              "reference_basis": "40_percentage_point_durability_saved_reference",
+              "notes": [
+                "Weak 5% of 40pp reference = 2 percentage points of actual durability saved per rank; 25 ranks caps at 50% prevented loss. Never repairs armor or prevents Curse of Binding removal."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_hunter_measured_bolt",
+              "label": "Measured Bolt",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Chance to avoid consuming actual crossbow projectile ammo on successful fire; keep special ammo/fireworks excluded until source QA.",
+              "reference_basis": "20_percentage_point_ammo_conservation_reference",
+              "notes": [
+                "Middling 10% of 20pp reference = +2 percentage points ammo conservation per rank, max 20% at rank 10. No refunds or duplicate projectile stacks; fireworks excluded pending QA."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_weapon_tempering"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_hunter_supernatural_bane",
+              "label": "Supernatural Bane",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Very high-level significant damage bonus against verified undead, demons and fae; source-tag and boss caps.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [
+                "Qualifies only type-verified undead, demons, fae; classification union counts once; late progression gate mandatory. Dreadbane Defense requires independent mitigation cap."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_measured_bolt"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Armor & Survival",
+          "skills": [
+            {
+              "id": "tmm_hunter_armored_longevity",
+              "label": "Armored Longevity",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "entry",
+              "effect": "Reduce real durability damage to equipped armor; preserve equipment break and exclude repair exploits.",
+              "reference_basis": "40_percentage_point_durability_saved_reference",
+              "notes": [
+                "Weak 5% of 40pp reference = 2 percentage points of actual durability saved per rank; 25 ranks caps at 50% prevented loss. Never repairs armor or prevents Curse of Binding removal."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_hunter_survivor_s_grit",
+              "label": "Survivor's Grit",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Strong nonmagical survival upgrade for a prepared Hunter without mimicking regeneration/immortality.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_armored_longevity"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_hunter_dreadbane_defense",
+              "label": "Dreadbane Defense",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Very high-level improved survivability specifically against verified undead, demons and fae.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [
+                "Qualifies only type-verified undead, demons, fae; classification union counts once; late progression gate mandatory. Dreadbane Defense requires independent mitigation cap."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_survivor_s_grit"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Monster-Slayer Tactics",
+          "skills": [
+            {
+              "id": "tmm_hunter_fieldcraft",
+              "label": "Fieldcraft",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Prepare and maneuver under threat with weapon-based tactics, not generic magic damage.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_hunter_consecrated_snare",
+              "label": "Consecrated Snare",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Place claim-safe anti-monster traps using appropriate hunter resources, without generating magical mana.",
+              "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_fieldcraft"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_hunter_slayer_s_counter",
+              "label": "Slayer's Counter",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "High-level counterattack window against identified supernatural enemies; bosses require special approval.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_hunter_consecrated_snare"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Other Historic Combat Integration (not duplicates)",
+          "skills": [
+            {
+              "id": "tmm_hunter_drakebane",
+              "label": "Drakebane",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "mastery",
+              "effect": "Optional specialization against verified dragons and draconic mobs, with dedicated Hunter monster-category rules rather than a boss/dimension label.",
+              "reference_basis": "verified_dragon_quarry_damage",
+              "notes": [
+                "Do not count all End mobs, and do not grant generic damage vs every boss. May remain in standalone Hunter specializations."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        },
+        {
+          "name": "Retained Tyz 6.4.2 source skills",
+          "skills": [
+            {
+              "id": "critical_hit",
+              "label": "Critical Strike",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to deal a critical hit (double damage)",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native behavior uses chance and doubled damage; test boss damage pipeline Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "CriticalHitEffect"
+            },
+            {
+              "id": "damage_deal",
+              "label": "Deflection",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to negate and reflect incoming melee damage",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Reflect/negate incoming melee damage; avoid shields/Monk Guard duplication and near-total immunity Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "DamageDealEffect"
+            },
+            {
+              "id": "resistance",
+              "label": "Resistance",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Reduces all incoming damage by {damage_resistance}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native up-to-45% all-damage reduction competes with endgame equipment; cap and tier gate Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 6,
+              "native_sp_total": 99,
+              "behavior_class": "ResistanceEffect"
+            },
+            {
+              "id": "backstab",
+              "label": "Backstab",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "legacy-rehome",
+              "effect": "Increases damage dealt from behind by {damage_buff}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Unmodified source remains universally usable by valid Hunter if gated; Vampire might get own ability"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 5,
+              "native_sp_total": 21,
+              "behavior_class": "BackstabEffect"
+            },
+            {
+              "id": "adrenaline",
+              "label": "Adrenaline",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Source grants Absorption and Speed III at low HP; test event re-triggers Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 3,
+              "native_sp_total": 12,
+              "behavior_class": "AdrenalineEffect"
+            },
+            {
+              "id": "resilience",
+              "label": "Resilience",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Reduces the duration of negative status effects by {effect_time_reduction}%",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native up-to-95% negative effect reduction; preserve meaningful curses Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 9,
+              "native_sp_total": 72,
+              "behavior_class": "ResilienceEffect"
+            },
+            {
+              "id": "jinxed",
+              "label": "Jinxed",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to scramble the target's hotbar on hit",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native implementation shuffles other players' hotbars only; not meaningful PvE and intrusive in multiplayer; proposal needs owner sign-off"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 3,
+              "native_sp_total": 25,
+              "behavior_class": "JinxedEffect",
+              "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+            },
+            {
+              "id": "true_strike",
+              "label": "True Strike",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance to deal true damage on hit",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native true damage cancels original and reissues indirect magic damage; boss/protection implications"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 3,
+              "native_sp_total": 45,
+              "behavior_class": "TrueStrikeEffect",
+              "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+            },
+            {
+              "id": "sunder_armor",
+              "label": "Sunder Armor",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "legacy-rehome",
+              "effect": "Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor",
+              "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+              "notes": [
+                "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+                "Native equipment durability attacks; assess griefing and entity armor behavior"
+              ],
+              "origin": "builtin_same_id_rehome_plan",
+              "runtime_status": "DESIGN_ONLY",
+              "origin_category": "combat",
+              "target_category": "tmm_hunter",
+              "native_max_levels": 5,
+              "native_sp_total": 46,
+              "behavior_class": "SunderArmorEffect"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Master Slayer",
+        "effect": "Hunter combat capstone: powerful damage and defense versus verified undead/demons/fae, Hunter Tracking synergy, weapon proficiency; no broad spell power. Preserve late quarry-specific anti-undead/demon/fae focus, not flat +100% vs all mobs.",
+        "status": "concept_only",
+        "id": "tmm_hunter_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_hunter_hunter_tracking",
+            "tmm_hunter_supernatural_bane",
+            "tmm_hunter_dreadbane_defense",
+            "tmm_hunter_slayer_s_counter"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_hunter_quarry_mark",
+            "tmm_hunter_measured_bolt",
+            "tmm_hunter_survivor_s_grit",
+            "tmm_hunter_consecrated_snare"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Hunter purchases never require vampire, wolf, or lich powers.",
+        "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.",
+        "Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment.",
+        "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar."
+      ]
+    },
+    {
+      "id": "tmm_monk",
+      "title": "Monk",
+      "identity": "Unarmed martial arts, unarmored body, motion and hand-harvest specialization",
+      "eligibility": "standalone Monk faction + discipline",
+      "groups": [
+        {
+          "name": "Martial Body",
+          "skills": [
+            {
+              "id": "tmm_monk_empty_hand_force",
+              "label": "Empty-Hand Force",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_monk_flowing_counter",
+              "label": "Flowing Counter",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 500,
+              "stage": "advanced",
+              "effect": "Bounded counterattack after a verified native Guarding Palm/parry unlock.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_empty_hand_force"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_monk_unarmed_precision",
+              "label": "Empty-Hand Precision",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Strengthen genuine unarmed hit precision/critical strike after Monk Guarding Palm/Monk rank; no innate spirit projectile or spell projectile",
+              "reference_basis": "verified_empty_hand_damage_event",
+              "notes": [
+                "Supersedes obsolete spirit_bolt_mastery conceptual entry; Monk ranged spells are Ars Nouveau/Iron's."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_flowing_counter"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Conditioning",
+          "skills": [
+            {
+              "id": "tmm_monk_natural_poise",
+              "label": "Natural Poise",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Scale unarmored protection beyond native Unarmored Poise +2; never scale equipped armor.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_monk_hunger_discipline",
+              "label": "Hunger Discipline",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 50,
+              "stage": "advanced",
+              "effect": "Bounded food/exhaustion efficiency after native license; do not remove all hunger.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_natural_poise"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_monk_fire_blast_tempering",
+              "label": "Fire & Blast Tempering",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 100,
+              "stage": "mastery",
+              "effect": "Limited environmental damage mitigation after both matching native licenses.",
+              "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_hunger_discipline"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Footwork",
+          "skills": [
+            {
+              "id": "tmm_monk_body_speed",
+              "label": "Body Speed",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Repeatable speed under no conventional gear discipline; native Fleet Footwork remains a one-off.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_monk_balanced_landing",
+              "label": "Balanced Landing",
+              "strength": "Middling",
+              "percent_per_rank": 10,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 100,
+              "stage": "advanced",
+              "effect": "Fall/knockback control; native Step Assist remains a one-off in native tree.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_body_speed"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_monk_glide_control",
+              "label": "Glide Control",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Improve native momentum gliding only after rank-15 native unlock; never creative flight.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_balanced_landing"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Hands as Tools",
+          "skills": [
+            {
+              "id": "tmm_monk_barehand_efficiency",
+              "label": "Barehand Efficiency",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 500,
+              "stage": "entry",
+              "effect": "Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers.",
+              "reference_basis": "pre_skill_attribute_or_action_rate",
+              "notes": [],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [],
+              "native_progression_gate": "verified eligible transformation or faction"
+            },
+            {
+              "id": "tmm_monk_fortunate_hands",
+              "label": "Fortunate Hands",
+              "strength": "Average",
+              "percent_per_rank": 20,
+              "level_cap": 10,
+              "sp_per_rank": 1,
+              "max_sp": 10,
+              "nominal_cumulative_percent": 200,
+              "stage": "advanced",
+              "effect": "Bounded fortune-like bonus only after native rank-13 license and legitimate drop event.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [
+                "One native Treasure Hand toggle chooses Fortune OR Silk; Tyz adds Fortune strength only while Fortune mode and native license are active."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_barehand_efficiency"
+              ],
+              "native_progression_gate": "verified mid native form rank + prerequisite rank"
+            },
+            {
+              "id": "tmm_monk_looting_palm",
+              "label": "Looting Palm",
+              "strength": "Strong",
+              "percent_per_rank": 50,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 250,
+              "stage": "mastery",
+              "effect": "Bounded unarmed looting after native rank-9 license; no creature-drop duplication.",
+              "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+              "notes": [
+                "Licensed by separate Monk native ability; not a new innate ranged spell."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY",
+              "prerequisites": [
+                "tmm_monk_fortunate_hands"
+              ],
+              "native_progression_gate": "verified late native form rank + prerequisite rank"
+            }
+          ]
+        },
+        {
+          "name": "Bounded Native-Licensed Tyz Enhancements",
+          "skills": [
+            {
+              "id": "tmm_monk_monastic_learning",
+              "label": "Monastic Mastery Learning",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 25,
+              "sp_per_rank": 1,
+              "max_sp": 25,
+              "nominal_cumulative_percent": 125,
+              "stage": "advanced",
+              "effect": "Improve real Monk native practice/mastery gain after its native license; **not** global MXP or Tyz XP multiplier.",
+              "reference_basis": "legitimate_native_Monk_practice_only",
+              "notes": [
+                "Do not touch 1.2^P global MXP normalization or grant free Tyz SP."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            },
+            {
+              "id": "tmm_monk_focused_advancement",
+              "label": "Focused Advancement",
+              "strength": "Weak",
+              "percent_per_rank": 5,
+              "level_cap": 5,
+              "sp_per_rank": 1,
+              "max_sp": 5,
+              "nominal_cumulative_percent": 25,
+              "stage": "mastery",
+              "effect": "One-time bounded Monk native skill-point training improvement only with owner-approved accounting.",
+              "reference_basis": "native_faction_points_not_tyz_wallet",
+              "notes": [
+                "Hold implementation until native SP award provenance and duplication audited."
+              ],
+              "origin": "new_tyz_design_not_installed",
+              "runtime_status": "DESIGN_ONLY"
+            }
+          ]
+        }
+      ],
+      "capstone": {
+        "label": "Empty-Hand Paragon",
+        "effect": "After native rank 20 and late achievements, an equipment-restricted burst of unarmed prowess; avoid eclipsing Draconic/Gem armor.",
+        "status": "concept_only",
+        "id": "tmm_monk_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_monk_unarmed_precision",
+            "tmm_monk_fire_blast_tempering",
+            "tmm_monk_glide_control",
+            "tmm_monk_looting_palm"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_monk_flowing_counter",
+            "tmm_monk_hunger_discipline",
+            "tmm_monk_balanced_landing",
+            "tmm_monk_fortunate_hands"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "notes": [
+        "Preserve the Monk native full skeleton (50 nodes, 6 pilot nodes) and 47 Monk-specific Tyz candidates as source inventories, NOT 47 new compulsory live skills.",
+        "First Sunset and native mastery from barehand breaks, kills and first foods stay separate from MXP global awards.",
+        "Step Assist after Fleet Footwork, not at rank one. Tool-free harvest tiers remain native permission unlocks."
+      ]
+    }
+  ],
+  "recommended_qa": [
+    "Core base rank 0/1/5 compare all 13 attribute effects, spell costs and MXP provenance.",
+    "One rank per tier, and cap rank, for at least one representative each source: mana, HP, damage, harvest, resource payment, proc, durability, glow, curse.",
+    "Hunter tracking stress test with large entity counts; exclude players and unrelated dimensions; verify all 3 quarry types and boss gates.",
+    "Dracolich gets exactly one species-local dragon path plus shared Lich bonuses; no duplicate mana regen, phylactery first then Arca fallback.",
+    "JAWR vampire/wolf gating before / after cure, dimension changes and relog; no TeamLapen API fallback.",
+    "Standalone Monk first hotbar slot and armor lock/touch toggle, no native projectiles, no alternate XP/SP wallet.",
+    "Built-in 32 skills: same-ID rehome preserves Java behavior or is replaced only after migration/refund plan; four default categories removed last."
+  ],
+  "future_open_balance": [
+    "Exact source-specific reference mana values for each mod, excluding gear and buffs",
+    "Final class power caps and item/boss-tier gate thresholds for multipliers greater than 100%",
+    "Costs and rarity for special effects vs linear percentage-based stats",
+    "How Hunter-specialist versus Dragon-generic attack/harvest costs should compare at 50 skill levels",
+    "JAWR 0.5.39 actual vampire/wolf blood, moon, regeneration and form predicates",
+    "Sea Dragon spell taxonomy: source-tagged water, ice, storms, abyss without assuming dimension as class",
+    "Class compatibility: standalone Hunter cross-form coexistence pending standalone spec; do not require automatic exclusivity"
+  ]
+}
