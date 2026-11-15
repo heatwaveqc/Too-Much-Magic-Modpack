@@ -164,7 +164,7 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     for i, title in enumerate(skills):
         put("Skills & Advancement", title, (i % 3) * 4, 4 + (i // 3) * 4)
 
-    tech = "Magical Power & FE"
+    tech = "A Sufficiently Advanced Magic"
     put(tech, "Chapter Overview", 0, 0)
     put(tech, "Tech Overview: Energy Without a Tech Pack", 4, 0)
     energy = [
@@ -192,7 +192,7 @@ SUBTITLE = {
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
     "Skills & Advancement": "Pufferfish skills, attributes and Improvable Skills progression.",
-    "Magical Power & FE": "Magical FE sources, Draconic storage and endgame reactor.",
+    "A Sufficiently Advanced Magic": "Draconic generation, energy storage, FE crystals, reactor safety and future approved technology.",
 }
 
 

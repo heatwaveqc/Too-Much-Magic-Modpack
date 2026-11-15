@@ -18,8 +18,8 @@
 	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
 	chapter.544D202000400000.title: "Skills & Advancement"
 	chapter.544D202000400000.chapter_subtitle: ["Pufferfish skills, attributes and Improvable Skills progression."]
-	chapter.544D202000500000.title: "Magical Power & FE"
-	chapter.544D202000500000.chapter_subtitle: ["Magical FE sources, Draconic storage and endgame reactor."]
+	chapter.544D202000500000.title: "A Sufficiently Advanced Magic"
+	chapter.544D202000500000.chapter_subtitle: ["Draconic generation, energy storage, FE crystals, reactor safety and future approved technology."]
 	chapter.544D203000100000.title: "Ars Nouveau"
 	chapter.544D203000100000.chapter_subtitle: ["Explore Ars Nouveau; more quests are being authored."]
 	chapter.544D203000200000.title: "Astral Sorcery"
@@ -201,7 +201,7 @@
 	quest.544D303000600001.title: "Chapter Overview"
 	quest.544D303000600001.quest_desc: ["An introduction to EvilCraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D302000500001.title: "Chapter Overview"
-	quest.544D302000500001.quest_desc: ["An introduction to Magical Power & FE in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000500001.quest_desc: ["An introduction to A Sufficiently Advanced Magic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
 	quest.544D508000100000.quest_desc: ["Too Much Magic relies on magical FE sources, not a nuclear tech stack. Draconic Evolution provides an early fuel generator, crystals, storage in its Energy Core, and the high-risk endgame Reactor. Botania Revived's Mana Fluxfield converts mana into FE. Psi and Hex Casting are further candidates pending exact-version verification. No Bigger Reactors, Create, AE2 or general industrial logistics mod is selected."]
 	quest.544D508001500000.title: "Craft a Draconic Generator"

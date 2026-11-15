@@ -1,3 +1,5 @@
+> **2026-11-15 supersession:** The current technology chapter is **A Sufficiently Advanced Magic** and the 19 Bigger Reactors quests are removed; the active book contains 160 entries. Original 179/168 counts below describe older QA builds.
+
 # Quest-book client feedback and repair — 2026-11-14
 
 This branch fixes quest UI problems reported after importing the **140-mod / 168-quest** Prism test ZIP. The new authored branch has **179 quest objects across the same 45 chapters and five category groups**. It is a **candidate**, not proof of client render correctness.
@@ -29,7 +31,7 @@ Instead of ad-hoc straight lines and scattered icon positions, `scripts/rebuild_
 
 Use the refreshed **Quest UI Fix** Prism package, NOT the old 168-quest Progression ZIP. In a disposable new world:
 
-1. Confirm the five top-level categories and all chapter titles render with the expected names, including **Exploration & Combat** and **Exceptional Power: Reactors**.
+1. Confirm the five top-level categories and all chapter titles render with the expected names, including **Exploration & Combat** and **A Sufficiently Advanced Magic**.
 2. Inspect titles and descriptions in Getting Started, Basic/Advanced Progression, Skills, Endgame Roadmap and the 32 reactor technology objectives; none should read `undefined`, `Unnamed` or `ERROR`.
 3. Inspect the new vertical Getting Started structure and its magic onboarding after iron; ensure independent branches and prerequisite lines are readable.
 4. Read the Scriptor tip and verify the casting-lectern recipe with JEI. If possible test chest input/output using a valid world-specific Inflame spell. Log any unexpected FTB quest error.

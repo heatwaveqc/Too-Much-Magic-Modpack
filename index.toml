@@ -69,8 +69,8 @@ file = "config/ftbquests/quests/chapters/evilcraft.snbt"
 hash = "58f5b63d4150914df4abd5fbc114fd7a8f48a41bc9e93d0b97f8323513cb8bb5"
 
 [[files]]
-file = "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt"
-hash = "f25303ecb181b1d6a28d53d8f02b64ad128314bee460abfc33c30a1ad725e6d6"
+file = "config/ftbquests/quests/chapters/a_sufficiently_advanced_magic.snbt"
+hash = "1b25f9b82d8868ca29ca6b11270612165ee079a48b19d129553bce8b3feda385"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/feywild.snbt"
@@ -194,7 +194,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "584b06e5a3350eb836edb555a2b9429fb8644b02fac7b530226a28e39ea088ac"
+hash = "28c4b9de6bf5be107093af22118e51b57e15768bafe60cd88b29618d7621cc64"
 
 [[files]]
 file = "config/questshop-common.toml"

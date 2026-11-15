@@ -1,9 +1,9 @@
 {
 	default_hide_dependency_lines: false
 	default_quest_shape: "rsquare"
-	filename: "exceptional_power_reactors"
+	filename: "a_sufficiently_advanced_magic"
 	group: "544D102000000000"
-	icon: { id: "minecraft:redstone_block" }
+	icon: { id: "draconicevolution:generator" }
 	id: "544D202000500000"
 	images: [ ]
 	order_index: 4
