@@ -168,7 +168,7 @@ public final class EffectRuntime {
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
             if (fx.type().equals("harvest_tier") && Selectors.block(fx.selector(),state)
-                && fx.tier() >= required && required >= 0) {
+                && Math.min(fx.tier(),a.rank()) >= required && required >= 0) {
                 event.setCanHarvest(true);
                 return;
             }
