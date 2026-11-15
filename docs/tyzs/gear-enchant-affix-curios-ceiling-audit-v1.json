@@ -1,0 +1,1132 @@
+{
+  "schema_version": 1,
+  "id": "tmm:equipment_ceiling_8_9_iesnium_curios_v1",
+  "created": "2026-11-15",
+  "status": "SOURCE_AUDIT_PRELIMINARY_NOT_RUNTIME_VERIFIED",
+  "pack_pins": {
+    "minecraft": "1.21.1",
+    "loader": "NeoForge",
+    "apotheosis": "8.9.0",
+    "apothic_enchanting": "1.6.4",
+    "apothic_attributes": "2.11.0",
+    "occultism": "1.227.0",
+    "curios": "9.5.1+1.21.1"
+  },
+  "source_provenance": {
+    "apotheosis_affix_source_commit": "84e27e7031c7e2ab2f2e8328daf491c88203fcbc",
+    "apotheosis_affix_inventory_repo": "fix/monk-tree-data-registry-2026-11-15/compat/monk/profiles/affix-inventory-apotheosis-8.9.0.json",
+    "occultism_exact_pinned_release_commit": "990303e",
+    "apothic_enchanting_upstream_branch": "1.21 gradle version 1.6.4",
+    "attributes_source": "compat/monk/profiles/attribute-candidates-1.21.1.json"
+  },
+  "stack_layers": [
+    "item base modifiers and material/quality/set effects",
+    "legal source-specific item enchantments: vanilla and modded; Apothic table Eterna100/Quanta/Arcana, library and overcap random Enchantability",
+    "Occultism Iesnium anvil +1 over Apothic enchant base when combining valid enchants, may not apply to other overlevel sources",
+    "Apotheosis ItemAffixes: 99 exact source definitions by item loot category, rare/mythic value ranges, multiple affix slots and conditional triggers",
+    "Apotheosis gems: 23 generated types, up to 4 sockets from rare mythic loot; some gems unique per item; 2 Twilight gated",
+    "Apothic Attributes effects (attribute modifier operation and event/proc semantics, not naive summation)",
+    "Curios and baubles: legal slots depend on user/item/Curios registry, not automatically all affix items",
+    "mod-specific spellbooks, magic gear, ProjectE, Draconic modular power and relic growth, consumable/potion charms and temporary buffs",
+    "Tyz native plus universal and form skill ranks with eligible gates; compare actual final measured stats and outcomes"
+  ],
+  "enchant_cap_policy": {
+    "eterna_ceiling": "100 by source branch default, may be lower at actual world tier",
+    "quanta": "enchant power variance",
+    "arcana": "rarity and extra rolls",
+    "enchantability_boost": "Apothic Enchanting 1.6.4 may roll +1 beyond Apothic max (1.6.1 feature); distinguish from Iesnium +1",
+    "configured_max": "source function or data-map per enchant; cannot substitute vanilla level max; do not claim a universal one-to-one level for every enchant",
+    "iesnium_rule": "max allowed for fresh equal-level merge = ApothicEnchantingIntegration.getApothicMaxLevel(enchantment)+1 at exact Occultism 1.227.0 release commit; no unconstrained repeated +1s",
+    "level_cap": "strict enforced caps can limit even bonuses; distinguish stored enchantment level, effective level after affix/gems, and gameplay effect",
+    "compatibility": "vanilla/mod enchanted item support and incompatibilities checked even by Iesnium; high-level book might be different from item applicable"
+  },
+  "apotheosis": {
+    "source_definition_count": 99,
+    "source_affix_groups": {
+      "armor/attribute": {
+        "count": 16,
+        "ids": [
+          "apotheosis:armor/attribute/adamantine",
+          "apotheosis:armor/attribute/aquatic",
+          "apotheosis:armor/attribute/blessed",
+          "apotheosis:armor/attribute/elastic",
+          "apotheosis:armor/attribute/fireproof",
+          "apotheosis:armor/attribute/fortunate",
+          "apotheosis:armor/attribute/gravitational",
+          "apotheosis:armor/attribute/ironforged",
+          "apotheosis:armor/attribute/oxygenated",
+          "apotheosis:armor/attribute/spiritual",
+          "apotheosis:armor/attribute/stalwart",
+          "apotheosis:armor/attribute/steel_touched",
+          "apotheosis:armor/attribute/timekeeping",
+          "apotheosis:armor/attribute/unbound",
+          "apotheosis:armor/attribute/windswept",
+          "apotheosis:armor/attribute/winged"
+        ]
+      },
+      "armor/dmg_reduction": {
+        "count": 6,
+        "ids": [
+          "apotheosis:armor/dmg_reduction/blast_forged",
+          "apotheosis:armor/dmg_reduction/blockading",
+          "apotheosis:armor/dmg_reduction/deflective",
+          "apotheosis:armor/dmg_reduction/feathery",
+          "apotheosis:armor/dmg_reduction/grounded",
+          "apotheosis:armor/dmg_reduction/runed"
+        ]
+      },
+      "armor/mob_effect": {
+        "count": 5,
+        "ids": [
+          "apotheosis:armor/mob_effect/blinding",
+          "apotheosis:armor/mob_effect/bolstering",
+          "apotheosis:armor/mob_effect/bursting",
+          "apotheosis:armor/mob_effect/nimble",
+          "apotheosis:armor/mob_effect/revitalizing"
+        ]
+      },
+      "boots/ability": {
+        "count": 3,
+        "ids": [
+          "apotheosis:boots/ability/steadfast",
+          "apotheosis:boots/ability/surefooted",
+          "apotheosis:boots/ability/unhurried"
+        ]
+      },
+      "breaker/ability": {
+        "count": 4,
+        "ids": [
+          "apotheosis:breaker/ability/enlightened",
+          "apotheosis:breaker/ability/sandforming",
+          "apotheosis:breaker/ability/stoneforming",
+          "apotheosis:breaker/ability/supermassive"
+        ]
+      },
+      "breaker/attribute": {
+        "count": 4,
+        "ids": [
+          "apotheosis:breaker/attribute/destructive",
+          "apotheosis:breaker/attribute/experienced",
+          "apotheosis:breaker/attribute/lengthy",
+          "apotheosis:breaker/attribute/submerged"
+        ]
+      },
+      "breaker/effect": {
+        "count": 2,
+        "ids": [
+          "apotheosis:breaker/effect/omnetic",
+          "apotheosis:breaker/effect/radial"
+        ]
+      },
+      "breaker/enchantment": {
+        "count": 1,
+        "ids": [
+          "apotheosis:breaker/enchantment/prosperous"
+        ]
+      },
+      "breaker/mob_effect": {
+        "count": 2,
+        "ids": [
+          "apotheosis:breaker/mob_effect/spelunkers",
+          "apotheosis:breaker/mob_effect/swift"
+        ]
+      },
+      "generic/attribute": {
+        "count": 1,
+        "ids": [
+          "apotheosis:generic/attribute/lucky"
+        ]
+      },
+      "generic": {
+        "count": 1,
+        "ids": [
+          "apotheosis:generic/telepathic"
+        ]
+      },
+      "melee/attribute": {
+        "count": 13,
+        "ids": [
+          "apotheosis:melee/attribute/berserking",
+          "apotheosis:melee/attribute/forceful",
+          "apotheosis:melee/attribute/giant_slaying",
+          "apotheosis:melee/attribute/glacial",
+          "apotheosis:melee/attribute/graceful",
+          "apotheosis:melee/attribute/infernal",
+          "apotheosis:melee/attribute/intricate",
+          "apotheosis:melee/attribute/lacerating",
+          "apotheosis:melee/attribute/lengthy",
+          "apotheosis:melee/attribute/murderous",
+          "apotheosis:melee/attribute/piercing",
+          "apotheosis:melee/attribute/vampiric",
+          "apotheosis:melee/attribute/violent"
+        ]
+      },
+      "melee": {
+        "count": 4,
+        "ids": [
+          "apotheosis:melee/cleaving",
+          "apotheosis:melee/executing",
+          "apotheosis:melee/festive",
+          "apotheosis:melee/thunderstruck"
+        ]
+      },
+      "melee/mob_effect": {
+        "count": 6,
+        "ids": [
+          "apotheosis:melee/mob_effect/bloodletting",
+          "apotheosis:melee/mob_effect/caustic",
+          "apotheosis:melee/mob_effect/elusive",
+          "apotheosis:melee/mob_effect/omniscient",
+          "apotheosis:melee/mob_effect/sophisticated",
+          "apotheosis:melee/mob_effect/weakening"
+        ]
+      },
+      "ranged/attribute": {
+        "count": 4,
+        "ids": [
+          "apotheosis:ranged/attribute/agile",
+          "apotheosis:ranged/attribute/elven",
+          "apotheosis:ranged/attribute/streamlined",
+          "apotheosis:ranged/attribute/windswept"
+        ]
+      },
+      "ranged/enchantment": {
+        "count": 1,
+        "ids": [
+          "apotheosis:ranged/enchantment/prosperous"
+        ]
+      },
+      "ranged": {
+        "count": 2,
+        "ids": [
+          "apotheosis:ranged/magical",
+          "apotheosis:ranged/spectral"
+        ]
+      },
+      "ranged/mob_effect": {
+        "count": 8,
+        "ids": [
+          "apotheosis:ranged/mob_effect/acidic",
+          "apotheosis:ranged/mob_effect/blighted",
+          "apotheosis:ranged/mob_effect/deathbound",
+          "apotheosis:ranged/mob_effect/ensnaring",
+          "apotheosis:ranged/mob_effect/fleeting",
+          "apotheosis:ranged/mob_effect/grievous",
+          "apotheosis:ranged/mob_effect/ivy_laced",
+          "apotheosis:ranged/mob_effect/shulkers"
+        ]
+      },
+      "shears/effect": {
+        "count": 2,
+        "ids": [
+          "apotheosis:shears/effect/gardening",
+          "apotheosis:shears/effect/leafforming"
+        ]
+      },
+      "shield/attribute": {
+        "count": 3,
+        "ids": [
+          "apotheosis:shield/attribute/ironforged",
+          "apotheosis:shield/attribute/stalwart",
+          "apotheosis:shield/attribute/steel_touched"
+        ]
+      },
+      "shield": {
+        "count": 3,
+        "ids": [
+          "apotheosis:shield/catalyzing",
+          "apotheosis:shield/psychic",
+          "apotheosis:shield/retreating"
+        ]
+      },
+      "shield/mob_effect": {
+        "count": 5,
+        "ids": [
+          "apotheosis:shield/mob_effect/devilish",
+          "apotheosis:shield/mob_effect/galvanizing",
+          "apotheosis:shield/mob_effect/reinforcing",
+          "apotheosis:shield/mob_effect/venomous",
+          "apotheosis:shield/mob_effect/withering"
+        ]
+      },
+      "weapon/attribute": {
+        "count": 3,
+        "ids": [
+          "apotheosis:weapon/attribute/nullifying",
+          "apotheosis:weapon/attribute/runebreaking",
+          "apotheosis:weapon/attribute/shredding"
+        ]
+      }
+    },
+    "monk_source_analogue_count": 98,
+    "monk_source_excluded": "apotheosis:armor/attribute/unbound",
+    "existing_monk_finite_affix_rarity_candidates": 40,
+    "crit": "98 source adapt candidates vs 40 bounded independently rankable source candidates are not equal to 99 usable simultaneous affixes",
+    "rarities": [
+      "common",
+      "uncommon",
+      "rare",
+      "epic",
+      "mythic"
+    ],
+    "mythic_json": {
+      "stat_affix_slots": 4,
+      "basic_effect_slots": 2,
+      "ability_slots": 1,
+      "socket_roll": "95% 1-3 sockets; 5% 4 sockets; not guaranteed 4",
+      "durability_roll": "may roll durability reduction or rare unbreakability; don't assume identical with enchanting Unbreaking"
+    },
+    "sigil_of_socketing_max_sockets": 2,
+    "absolute_socket_helper_internal_bound": 16,
+    "significance": "max sockets for legal recipe and world rolls, not runtime clamp of 16; default sigil cannot produce >2, natural mythic roll can reach 4"
+  },
+  "gem_catalog": {
+    "count": 23,
+    "source_groups": {
+      "core": 13,
+      "overworld": 3,
+      "the_nether": 3,
+      "the_end": 2,
+      "twilight": 2
+    },
+    "gems": [
+      {
+        "id": "apotheosis:core/ballast",
+        "unique": false,
+        "perfect_effects": [
+          "attack_damage +10 on light weapons",
+          "durability prevent 60% on tools",
+          "knockback_resistance +0.7 on chest/legs"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/brawlers",
+        "unique": false,
+        "perfect_effects": [
+          "attack_speed +50% base on light weapons",
+          "max_health +12 chest/legs",
+          "max_health +30% total shields"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/breach",
+        "unique": true,
+        "perfect_effects": [
+          "armor_pierce +12 light weapons",
+          "block_interaction_range +3 tools",
+          "prot_pierce +15 bows"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/combatant",
+        "unique": true,
+        "perfect_effects": [
+          "arrow_damage +55% base ranged",
+          "damage_reduction 27.5% core armor",
+          "durability prevent 40% melee"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/guardian",
+        "unique": false,
+        "perfect_effects": [
+          "armor +8 chest/legs",
+          "life_steal +0.3 light weapons",
+          "armor +45% total shields"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/lightning",
+        "unique": false,
+        "perfect_effects": [
+          "movement_speed +70% total leggings/boots",
+          "mining_speed +0.5 tools",
+          "arrow_velocity +55% bows"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/lunar",
+        "unique": false,
+        "perfect_effects": [
+          "gravity -104% total chest/legs; clamp/semantics review",
+          "swim_speed +80% base boots",
+          "cold_damage +8 weapons"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/samurai",
+        "unique": true,
+        "perfect_effects": [
+          "crit_chance +0.5 weapons",
+          "arrow_velocity +50% total helmets",
+          "dodge_chance +0.1 shield"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/slipstream",
+        "unique": true,
+        "perfect_effects": [
+          "mining_speed +45% base tools",
+          "dodge_chance +0.15 boots",
+          "draw_speed +60% bows"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/solar",
+        "unique": false,
+        "perfect_effects": [
+          "step_height +3 boots",
+          "gravity +104% total chest/legs",
+          "fire_damage +8 weapons"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/splendor",
+        "unique": false,
+        "perfect_effects": [
+          "Luck +5 per armor socket",
+          "experience_gained +60% base weapon/tool"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/tyrannical",
+        "unique": true,
+        "perfect_effects": [
+          "armor_toughness +6 chest/legs",
+          "attack_knockback +3.5 weapons",
+          "armor_toughness +50% base shields"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:core/warlord",
+        "unique": false,
+        "perfect_effects": [
+          "max_health +35% base chest",
+          "attack_damage +22.5% total helmet",
+          "crit_damage +70% base weapons"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:overworld/earth",
+        "unique": true,
+        "perfect_effects": [
+          "+4 Sharpness melee",
+          "+4 Protection core armor",
+          "+4 Fortune tools"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:overworld/royalty",
+        "unique": true,
+        "perfect_effects": [
+          "+15% total to 31 enumerated vanilla/Apothic stats helmet, including Luck; excludes mod-specific mana/spell power"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:overworld/verdant_ruin",
+        "unique": true,
+        "perfect_effects": [
+          "damage_reduction 20% chest",
+          "5x5 radial tools",
+          "more attribute/effect options"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:the_nether/blood_lord",
+        "unique": true,
+        "perfect_effects": [
+          "healing_received +50% base chest",
+          "various blood/proc effects"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:the_nether/inferno",
+        "unique": true,
+        "perfect_effects": [
+          "+4 Efficiency breaker",
+          "+2 Berserker's Fury chest",
+          "fire_damage +90% total helmet"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:the_nether/molten_breach",
+        "unique": true,
+        "perfect_effects": [
+          "prot_pierce +12 weapons",
+          "armor_pierce +10 bows",
+          "entity interaction and mining options"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:the_end/endersurge",
+        "unique": true,
+        "perfect_effects": [
+          "+2 to all existing enchantments via global enchant bonus; source contains Sharpness placeholder and mode global"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:the_end/mageslayer",
+        "unique": true,
+        "perfect_effects": [
+          "mage mitigation/return +35% helmet",
+          "weapon and shield effects"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "source_candidate_needs_pack_gear_test"
+      },
+      {
+        "id": "apotheosis:twilight/forest",
+        "unique": true,
+        "perfect_effects": [
+          "Twilight dimension-locked; no Twilight Forest in current pack; treat as unobtainable until verified"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "not_obtainable_by_normal_pack"
+      },
+      {
+        "id": "apotheosis:twilight/queen",
+        "unique": true,
+        "perfect_effects": [
+          "Twilight dimension-locked; no Twilight Forest in current pack; treat as unobtainable until verified"
+        ],
+        "source": "Apotheosis 8.9.0 84e27e3 generated data",
+        "availability": "not_obtainable_by_normal_pack"
+      }
+    ],
+    "source_caution": "Twilight-only gems require absent Twilight Forest; gem bonus effects source role specific, not always same on all equipment. `unique` means per item, not one across full player."
+  },
+  "apothic_custom_enchantments": {
+    "count": 20,
+    "enchantments": [
+      {
+        "id": "apothic_enchanting:berserkers_fury",
+        "source_data_max": 3,
+        "slot": "chest",
+        "risk": "burst HP costs and potion effects",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:boon_of_the_earth",
+        "source_data_max": 5,
+        "slot": "tool",
+        "risk": "bonus block loot rolls",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:chainsaw",
+        "source_data_max": 1,
+        "slot": "axe",
+        "risk": "multi-block cutting",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:chromatic",
+        "source_data_max": 1,
+        "slot": "shears",
+        "risk": "shear variant",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:crescendo_of_bolts",
+        "source_data_max": 5,
+        "slot": "crossbow",
+        "risk": "extra projectiles",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:endless_quiver",
+        "source_data_max": 1,
+        "slot": "bow",
+        "risk": "ammo conservation, incompatible Infinity",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:growth_serum",
+        "source_data_max": 1,
+        "slot": "shears",
+        "risk": "animal growth",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:icy_thorns",
+        "source_data_max": 3,
+        "slot": "chest",
+        "risk": "slow retaliation, exclusive with Thorns",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:infusion",
+        "source_data_max": 1,
+        "slot": "utility",
+        "risk": "infusion ingredient, no direct innate scale",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:knowledge_of_the_ages",
+        "source_data_max": 3,
+        "slot": "sword",
+        "risk": "drops to XP, conflicts with gear loot economy",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:life_mending",
+        "source_data_max": 3,
+        "slot": "any",
+        "risk": "health paid repair, mutually exclusive Mending",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:miners_fervor",
+        "source_data_max": 5,
+        "slot": "tool",
+        "risk": "mining boost, mutually exclusive Efficiency",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:natures_blessing",
+        "source_data_max": 3,
+        "slot": "hoe",
+        "risk": "bonemeal crop effect",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:rebounding",
+        "source_data_max": 3,
+        "slot": "armor",
+        "risk": "reflective knockback",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:reflective_defenses",
+        "source_data_max": 5,
+        "slot": "shield",
+        "risk": "projectile/attack reflect",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:scavenger",
+        "source_data_max": 3,
+        "slot": "sword",
+        "risk": "extra loot roll",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:shield_bash",
+        "source_data_max": 4,
+        "slot": "shield",
+        "risk": "attack effects",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:stable_footing",
+        "source_data_max": 1,
+        "slot": "boots",
+        "risk": "movement control",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:tempting",
+        "source_data_max": 1,
+        "slot": "hoe",
+        "risk": "attract animals",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      },
+      {
+        "id": "apothic_enchanting:worker_exploitation",
+        "source_data_max": 1,
+        "slot": "shears",
+        "risk": "special shearing output",
+        "apothic_configured_max": "MAY_DIFFER: source max is raw datapack only; effective cap computed by Apothic and data maps in pinned integrated client",
+        "iesnium_extra": "+1 over configured max if legal combine and not strict level cap; not automatic for non-scaling enchantments"
+      }
+    ],
+    "vanilla_enchantments": "additional vanilla registries also present, plus other modded enchants not enumerated by this Apothic-only list",
+    "risk": "Enchantment cap shown is source generated max_level. Apothic configured effective maximum may differ; exact pinned runtime tag/config required."
+  },
+  "attribute_inventory": {
+    "candidate_count": 142,
+    "group_counts": {
+      "minecraft": 30,
+      "apothic_attributes": 22,
+      "irons_spellbooks": 26,
+      "ars_nouveau": 9,
+      "malum": 15,
+      "goety": 27,
+      "eidolon_repraised": 4,
+      "forbidden_arcanus": 2,
+      "neovitae": 7
+    },
+    "actual_player_registry_dump": "NOT_RUN: /tmmmonk attributes (source candidate inventory may include mob-only entries and omit addon attributes)"
+  },
+  "high_impact_source_stats": [
+    {
+      "stat": "minecraft:generic.luck",
+      "family": "additive Luck affixes",
+      "source": "apotheosis:generic/attribute/lucky",
+      "example": "mythic +6; all common gear classes including tools/shields"
+    },
+    {
+      "stat": "minecraft:generic.luck",
+      "family": "armor-only Lucky source",
+      "source": "apotheosis:armor/attribute/fortunate",
+      "example": "mythic +5 per armor piece; distinct from generic Lucky"
+    },
+    {
+      "stat": "minecraft:generic.luck",
+      "family": "socket gem",
+      "source": "apotheosis:core/splendor",
+      "example": "Perfect +5 per socket on armor; non-unique; repeatable"
+    },
+    {
+      "stat": "minecraft:generic.luck",
+      "family": "socket gem multiplier",
+      "source": "apotheosis:overworld/royalty",
+      "example": "Perfect +15% TOTAL vanilla/Apothic defined stats on helmet, includes Luck, not Iron spell power"
+    },
+    {
+      "stat": "minecraft:fortune",
+      "family": "enchantment affix",
+      "source": "apotheosis:breaker/enchantment/prosperous",
+      "example": "mythic +4 existing Fortune; NOT Luck attribute"
+    },
+    {
+      "stat": "minecraft:fortune",
+      "family": "socket gem",
+      "source": "apotheosis:overworld/earth",
+      "example": "Perfect +4 Fortune if existing; unique one per item"
+    },
+    {
+      "stat": "all existing enchants",
+      "family": "socket gem",
+      "source": "apotheosis:the_end/endersurge",
+      "example": "Perfect +2 global enchantment bonus on any loot category item; unique one per item"
+    },
+    {
+      "stat": "minecraft:protection",
+      "family": "socket gem",
+      "source": "apotheosis:overworld/earth",
+      "example": "Perfect +4 existing Protection on chest/legs"
+    },
+    {
+      "stat": "minecraft:sharpness",
+      "family": "socket gem",
+      "source": "apotheosis:overworld/earth",
+      "example": "Perfect +4 existing Sharpness on melee/trident"
+    },
+    {
+      "stat": "minecraft:efficiency",
+      "family": "socket gem",
+      "source": "apotheosis:the_nether/inferno",
+      "example": "Perfect +4 Efficiency on breaker"
+    },
+    {
+      "stat": "minecraft:generic.movement_speed",
+      "family": "socket gem",
+      "source": "apotheosis:core/lightning",
+      "example": "Perfect +70% total movement speed on leggings/boots; non-unique"
+    },
+    {
+      "stat": "apothic_attributes:mining_speed",
+      "family": "socket gem",
+      "source": "apotheosis:core/slipstream",
+      "example": "Perfect +45% base mining speed on breaker; unique"
+    },
+    {
+      "stat": "apothic_attributes:crit_chance",
+      "family": "socket gem",
+      "source": "apotheosis:core/samurai",
+      "example": "Perfect +0.5 (50 percentage points if attribute uses fractional units), verify bounds"
+    },
+    {
+      "stat": "minecraft:generic.max_health",
+      "family": "socket gem",
+      "source": "apotheosis:core/warlord",
+      "example": "Perfect +35% base health on chest"
+    },
+    {
+      "stat": "minecraft:generic.max_health",
+      "family": "socket gem",
+      "source": "apotheosis:core/brawlers",
+      "example": "Perfect +12 max health on chest/legs"
+    },
+    {
+      "stat": "apothic_attributes:cooldown_reduction",
+      "family": "stat source",
+      "source": "apothic_attributes:cooldown_reduction",
+      "example": "Source caps at 0.95, do not treat as uncapped additive"
+    },
+    {
+      "stat": "irons_spellbooks:max_mana",
+      "family": "spell resource attribute",
+      "source": "irons_spellbooks:max_mana",
+      "example": "Requires Iron gear source, not present as a generic default Apotheosis affix"
+    },
+    {
+      "stat": "irons_spellbooks:spell_power",
+      "family": "spell power attribute",
+      "source": "irons_spellbooks:spell_power",
+      "example": "Requires Iron gear/attributes, not auto-buffed by Apotheosis All Stats gem"
+    },
+    {
+      "stat": "ars_nouveau:ars_nouveau.perk.max_mana",
+      "family": "spell resource attribute",
+      "source": "ars_nouveau:ars_nouveau.perk.max_mana",
+      "example": "Source-level per-mod, no generic double mana wallet"
+    },
+    {
+      "stat": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "family": "spell effect attribute",
+      "source": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "example": "Source-specific, not automatically an Apotheosis generic armor affix"
+    }
+  ],
+  "derived_scenarios": [
+    {
+      "id": "four_mythic_armor_pieces_flat_luck",
+      "formula": "4 pieces × (Mythic generic Lucky +6 + Mythic armor Fortunate +5 + four Perfect Splendor sockets ×5) = 124 Luck from JUST these armor sources",
+      "result": 124,
+      "assumptions": [
+        "all four pieces Mythic rolled four sockets (5% socket branch in rarity JSON)",
+        "both separate allowed Luck affixes rolled on each piece at max value",
+        "4 Perfect Splendor non-unique gems each piece; legal socket cap of four from source rarity",
+        "no other equipment, potion, Luck effect or percentage modifier included"
+      ],
+      "status": "THEORETICAL_SOURCE_COMPONENT_SUM_NOT_PROVEN_FULL_BUILD_OR_ECONOMICALLY_TYPICAL"
+    },
+    {
+      "id": "royalty_helmet_alternative",
+      "formula": "Replace one +5 Splendor in helmet with Perfect Royalty (+15% multiplied total to vanilla Luck included), giving (124-5)×1.15=136.85 before additional sources",
+      "result": 136.85,
+      "assumptions": [
+        "Royalty unique per item socket legal on helmet",
+        "all stats explicitly includes minecraft:generic.luck",
+        "operation add_multiplied_total stacks after add_value",
+        "other +5 Splendor still apply"
+      ],
+      "status": "PAPER_COMBINATION_REQUIRES_LIVE_ATTRIBUTE_STACK_TEST"
+    },
+    {
+      "id": "fortune_effective_enchantment",
+      "formula": "effective Fortune = configured_apothic_fortune_cap + 1 Iesnium + up to 4 Prosperous existing-mode affix + 4 Perfect Earth gem + 2 Perfect Endersurge global gem = configured_cap + 11 if all effects legal and uncapped",
+      "result": "base_cap+11",
+      "assumptions": [
+        "tool can carry Prosperous and both distinct unique gems",
+        "Fortune is already present on tool",
+        "global Endersurge bonus applies to Fortune",
+        "no strict level_cap or effective max clamps",
+        "Iesnium bonus not already counted in source's overcap rolls"
+      ],
+      "status": "HYPOTHESIS_FROM_INDEPENDENT_SOURCE_COMPONENTS_NOT_VERIFIED_GAMEPLAY"
+    },
+    {
+      "id": "sharpness",
+      "formula": "configured Sharpness cap + 1 Iesnium + 4 Perfect Earth + 2 Endersurge = cap+7, before weapon damage attributes",
+      "result": "base_cap+7",
+      "status": "SOURCE_DERIVED_HYPOTHESIS_NEEDS_RUNTIME"
+    },
+    {
+      "id": "efficiency",
+      "formula": "configured Efficiency cap + 1 Iesnium + 4 Perfect Inferno + 2 Endersurge = cap+7; NOT together with exclusive Miner's Fervor",
+      "result": "base_cap+7",
+      "status": "SOURCE_DERIVED_HYPOTHESIS_NEEDS_RUNTIME"
+    },
+    {
+      "id": "protection",
+      "formula": "configured Protection cap + 1 Iesnium + 4 Perfect Earth + 2 Endersurge = cap+7 for eligible core armor, subject to mitigation rules",
+      "result": "base_cap+7",
+      "status": "SOURCE_DERIVED_HYPOTHESIS_NEEDS_RUNTIME"
+    }
+  ],
+  "curios_policy": {
+    "standard_monk_allowed": true,
+    "all_other_classes_allowed_where_legal": true,
+    "monk_armor_equipment_restriction": "Monk normally forgoes conventional armor and weapons but may equip actual legal Curios, including candidate Draconic chestpiece in body slot pending runtime test",
+    "comparators": "Monk innate+legal Curios vs specialist traits+enchanted affixed armor/weapons/tools+legal Curios; compare actual contribution so shared Curios cancel where equal",
+    "strict_chaos_guardian_test": "Prior explicit no-worn-equipment solo benchmark remains a SEPARATE, stricter optional/required test; it excludes Curios for that test, but does not globally ban Curios on Monk characters. Owner should decide whether to relax it in a later design update.",
+    "critical": "No automatic Apothic affix or gem support on arbitrary Curios item unless LootCategory/Curios integration verifies it. Curios slot count is not a fixed universal constant."
+  },
+  "other_systems_to_validate": [
+    {
+      "id": "apotheosis",
+      "kind": "affixes_gems_rarities",
+      "pin": "8.9.0",
+      "scope": "99 affixes; five rarity data; 23 gems incl 2 Twilight gated; up to four sockets from mythic loot roll; Sigil adds to 2 only",
+      "confidence": "source_verified_8_9_commit"
+    },
+    {
+      "id": "apothic-enchanting",
+      "kind": "enchant_core_and_new_enchants",
+      "pin": "1.6.4",
+      "scope": "100 Eterna; Quanta/Arcana/Enchantment library; source 20 custom enchant definitions; max levels are enchant-source and data-map sensitive",
+      "confidence": "source_branch_version_matches"
+    },
+    {
+      "id": "occultism",
+      "kind": "iesnium_anvil",
+      "pin": "1.227.0",
+      "scope": "authoritative +1 over Apothic configured max from exact release commit 990303e; half cost; does not cancel incompatibilities",
+      "confidence": "exact_release_commit"
+    },
+    {
+      "id": "apothic-attributes",
+      "kind": "attributes",
+      "pin": "2.11.0",
+      "scope": "22 Apothic numeric/boolean attributes incl CDR, crit, dodge, armor penetration, movement/mining, XP",
+      "confidence": "repo_22_source_snapshot"
+    },
+    {
+      "id": "curios",
+      "kind": "slot_system",
+      "pin": "9.5.1+1.21.1",
+      "scope": "not a single loot bonus; slot registry and actual item eligibility determine count/effects; available to Monk and others",
+      "confidence": "pinned"
+    },
+    {
+      "id": "irons-spells-n-spellbooks",
+      "kind": "gear_enchants_casting_stats",
+      "pin": "3.16.3",
+      "scope": "source candidate 26 attributes including 9 spell schools; armor/spellbooks may raise real mana and spell power",
+      "confidence": "source_verified_candidate_attributes"
+    },
+    {
+      "id": "ars-nouveau",
+      "kind": "gear_spell_mana",
+      "pin": "5.13.5",
+      "scope": "perks and wearables, magebloom etc; nine static candidate attributes, source version drift requires QA",
+      "confidence": "candidate_source"
+    },
+    {
+      "id": "draconic-evolution",
+      "kind": "modular_equipment_curios",
+      "pin": "3.1.4.633",
+      "scope": "modular armor, shields, flight, tools; chestpiece/body Curio may work for Monk; test actual slot and modules",
+      "confidence": "pinned_item_overlaps_unverified"
+    },
+    {
+      "id": "projecte",
+      "kind": "gem_armor_and_klein_tools",
+      "pin": "pack_pin",
+      "scope": "Gem Armor and tools have strong set/active effects; may not be affix-applicable; evaluate separate branch",
+      "confidence": "candidate_unverified_compat"
+    },
+    {
+      "id": "artifacts",
+      "kind": "curios_items",
+      "pin": "13.2.5",
+      "scope": "wearable passive Artifacts and slot allocation; check item effects",
+      "confidence": "pinned"
+    },
+    {
+      "id": "relics",
+      "kind": "curios_relic_progression",
+      "pin": "0.12.5",
+      "scope": "relic-specific levelling and powers add nonlinear equipment stats; item power not represented by Apotheosis affix alone",
+      "confidence": "pinned"
+    },
+    {
+      "id": "reliquified-artifacts",
+      "kind": "accessory_extension",
+      "pin": "pack_pin",
+      "scope": "extended Artifacts/Relics interactions, duplicate effects check",
+      "confidence": "pinned"
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "kind": "charm_accessories",
+      "pin": "2.0.85.1599",
+      "scope": "artifact tools, charms, extra actions and mob drops",
+      "confidence": "pinned"
+    },
+    {
+      "id": "enigmaticlegacy-plus",
+      "kind": "accessory_build",
+      "pin": "pack_pin",
+      "scope": "Curios equipment and conditional curse/health modifiers, significant build restrictions",
+      "confidence": "pinned"
+    },
+    {
+      "id": "corail-tombstone",
+      "kind": "grave_buffs",
+      "pin": "pack_pin",
+      "scope": "scrolls/consumables and death arbitration affect gear retention, not direct raw affix stack",
+      "confidence": "pinned"
+    },
+    {
+      "id": "malum",
+      "kind": "accessories_and_spirit_gear",
+      "pin": "1.8.2",
+      "scope": "spirit/soul gear, charms and various combat/economic attributes; source candidate 15 but pinned-source skew",
+      "confidence": "candidate"
+    },
+    {
+      "id": "botania-revived",
+      "kind": "mana_trinkets_and_equipment",
+      "pin": "2.0.2",
+      "scope": "baubles, Terra/elementium and other items; cross-port active status must be verified",
+      "confidence": "source_profile"
+    },
+    {
+      "id": "extra-botany-revived",
+      "kind": "botania_addon_equipment",
+      "pin": "pack_pin",
+      "scope": "new baubles and combat gear may extend Botania baseline",
+      "confidence": "candidate"
+    },
+    {
+      "id": "neovitae",
+      "kind": "sentient_armor_and_sigils",
+      "pin": "1.1.53",
+      "scope": "sentient gear and runes; resource economy, 7 candidate attributes and special activation",
+      "confidence": "source_profile"
+    },
+    {
+      "id": "evilcraft",
+      "kind": "blood_gear_powers",
+      "pin": "pack_pin",
+      "scope": "blood-fueled item effects, no automatic generic stats",
+      "confidence": "candidate"
+    },
+    {
+      "id": "goety",
+      "kind": "robes_focus_and_casting",
+      "pin": "3.2.2",
+      "scope": "soul magic focus/items, 27 source candidate attributes, damage and cost systems",
+      "confidence": "source_candidate"
+    },
+    {
+      "id": "feywild",
+      "kind": "fae_items_and_progression",
+      "pin": "pack_pin",
+      "scope": "fae summoning equipment, charm items, special permissions",
+      "confidence": "candidate"
+    },
+    {
+      "id": "occultism_tools",
+      "kind": "magical_tool_bridge",
+      "pin": "1.227.0",
+      "scope": "Iesnium tools and exceptional anvil; special tools require item-class acceptance",
+      "confidence": "exact_pin_anvil_only"
+    },
+    {
+      "id": "hexerei",
+      "kind": "witchcraft_baubles",
+      "pin": "pack_pin",
+      "scope": "personal witchcraft/wearable modifiers and added enchantments to be inventoried",
+      "confidence": "candidate"
+    },
+    {
+      "id": "forbidden-arcanus",
+      "kind": "arcane_gear",
+      "pin": "2.6.1",
+      "scope": "artifacts and special materials, Aureal and extra enchantments possible",
+      "confidence": "candidate"
+    },
+    {
+      "id": "eidolon-repraised",
+      "kind": "theurgy_gear",
+      "pin": "0.5.0.8",
+      "scope": "player attribute and enchanted relic effects",
+      "confidence": "candidate"
+    },
+    {
+      "id": "l_enders-cataclysm",
+      "kind": "boss_weapon_gear",
+      "pin": "pack_pin",
+      "scope": "unique weapons, armor and event effects; vanilla/Apothic ench applicability per item",
+      "confidence": "candidate"
+    },
+    {
+      "id": "enchantment-descriptions",
+      "kind": "tooltip_only",
+      "pin": "21.1.11",
+      "scope": "does not itself raise enchant caps or stats",
+      "confidence": "pinned"
+    }
+  ],
+  "unresolved": [
+    "Actual complete pinned enchant registry including vanilla and third-party enchants, max levels and source level caps (runtime dump)",
+    "Native 1.21.1 attributes and item modifier slots from all equipment mods including Curios, with actual per-slot eligibility; 142 source candidates incomplete",
+    "Raw actual gear ceilings for Iron and Ars mana/spell-power: source equipment, enchantments, socket support, affix interactions",
+    "Whether Mythic Lucky+Fortunate co-roll on same armor piece and whether four-socket mythic rarity is realistically attainable/rollable in pack",
+    "Effective raw Luck after all attribute total multipliers, hands, buffs, Curios and enchantments; do not use illustrative 124/136.85 as absolute endgame x",
+    "Apothic enchanting auto +1 from Enchantability versus Iesnium +1 interaction and order",
+    "All higher-level enchanted effects: nonlinearity, EPF cap, damage reduction/attack speed/crit/CooldownReduction cap, operation precedence",
+    "Exact gem perfect bonuses in modded items and any supplemental addon gem data",
+    "Source-level true Curios slots, special relic and artifact progression, Draconic body chestpiece and form restriction",
+    "What equipment modded armor can acquire Apotheosis affixes/reforging/sockets at all",
+    "Actual late-game legal ProjectE Gem Armor and Draconic chestpiece endgame capability under class rules",
+    "Additional non-Apotheosis enchant providers in other mods; exact IDs for all packs await registry dump",
+    "Monk Curios eligibility, armor lock and Chaos Guardian benchmark without violating earlier strict no-worn-gear condition"
+  ],
+  "qa_plan": [
+    "Dump loaded enchantments: registry ID, vanilla/datapack max, Apothic configured max, strict level cap, max anvil combine, item support and mutually exclusive sets.",
+    "Build reproducible max Eterna/Quanta/Arcana setup and document World Tier, effective library and Enchantability +1 roll.",
+    "Test Iesnium two same-max books and enchanted item/book, compare before-after levels and true fee; repeat against level-cap and incompatibility.",
+    "Test Mythic four-socket armor with both Lucky and Fortunate at capped source values; add four Perfect Splendors, confirm total raw player Luck and how many apply.",
+    "Swap one Splendor with Royalty and record effective Luck attribute and effects for +15% multiplier; include mainhand and offhand categories one at a time.",
+    "Test tools with Fortune Iesnium + Prosperous + Perfect Earth + Perfect Endersurge; record stored/book tooltip, effective enchant level, sampled loot histograms. Do not infer direct Luck.",
+    "Test Sharpness/Efficiency/Protection equivalent and stress source caps; include Miner's Fervor exclusivity and damage/mitigation caps.",
+    "Record Curios slot registry and effects for naked Monk, Monk+Curios, fully geared specialist+Curios, and strict naked Monk trial separately.",
+    "Dump each per-mod mana/spell power, gear modifier operation and actual source event after activation, source-attribution and forms.",
+    "Measure source median endgame build vs rare 4-socket best-possible, with practical acquisition costs and mutually compatible exact item combinations."
+  ]
+}
