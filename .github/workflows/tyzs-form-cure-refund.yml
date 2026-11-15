@@ -1,0 +1,36 @@
+name: JAWR / Tyz Cure Refund Contract
+
+on:
+  push:
+    branches:
+      - feature/jawr-tyzs-cure-refund-kubejs-2026-11-15
+    paths:
+      - "compat/form-cure/**"
+      - "scripts/test_tyz_form_cure_refund.js"
+      - ".github/workflows/tyzs-form-cure-refund.yml"
+  pull_request:
+    paths:
+      - "compat/form-cure/**"
+      - "scripts/test_tyz_form_cure_refund.js"
+      - ".github/workflows/tyzs-form-cure-refund.yml"
+  workflow_dispatch:
+
+jobs:
+  mock-cure-lifecycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax
+        run: |
+          node --check compat/form-cure/tyzs_form_cure_refund.js
+          node --check scripts/test_tyz_form_cure_refund.js
+      - name: KubeJS, Tyz and JAWR mock lifecycle cases
+        run: node scripts/test_tyz_form_cure_refund.js
+      - name: Refuse accidental live activation
+        run: |
+          test ! -e kubejs/server_scripts/tyzs_form_cure_refund.js
+          echo "PASS: no unvalidated cure hook installed into the live pack"
