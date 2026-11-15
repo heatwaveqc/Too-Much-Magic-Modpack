@@ -1,0 +1,12 @@
+{
+  "type": "ars_additions:locate_structure",
+  "augments": [
+    {
+      "key": "minecraft:rail"
+    }
+  ],
+  "id": "tmm:mineshaft",
+  "structure": {
+    "tag": "minecraft:mineshaft"
+  }
+}

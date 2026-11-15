@@ -293,6 +293,14 @@ file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
 hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/locate_structure/mineshaft.json"
+hash = "087cc2a407615d4d35a29caa8f54678f6b6b1238971e91c64218ba97dcf7799f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/locate_structure/shipwreck.json"
+hash = "cb6fba0028b09a127fd68999fbf01e486f75cc7cc8e5ff7ce3d019954ff9c705"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 

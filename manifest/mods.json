@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.\n2026-11-15 B14: owner approved CC: Tweaked, selected Modrinth 1.121.0 NeoForge 1.21.1 beta. Added pilot recipes for Eldritch Logic Core (Ancient Eldritch Miner exclusively) gating computers, and Spirit Fire conversion of End Draconium Ore to Iesnium Ore. Not runtime-verified; Silk Touch is needed to preserve End Draconium Ore as a block item.\nB15: owner-approved Cobblegen Galore 0.2.9 on top of CC: Tweaked B14; preserve original CC/IESNIUM recipes; no Shale Galore recipe and no unrelated Summoning Rituals removal.\nB15 pinned exactly one Galore 0.2.9 release, no other mod files changed.\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.\n2026-11-15 B14: owner approved CC: Tweaked, selected Modrinth 1.121.0 NeoForge 1.21.1 beta. Added pilot recipes for Eldritch Logic Core (Ancient Eldritch Miner exclusively) gating computers, and Spirit Fire conversion of End Draconium Ore to Iesnium Ore. Not runtime-verified; Silk Touch is needed to preserve End Draconium Ore as a block item.\nB15: owner-approved Cobblegen Galore 0.2.9 on top of CC: Tweaked B14; preserve original CC/IESNIUM recipes; no Shale Galore recipe and no unrelated Summoning Rituals removal.\nB15 pinned exactly one Galore 0.2.9 release, no other mod files changed.\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified.\n2026-11-15 B17: user approved LootJS, Clumps, YUNG Better Strongholds and Better Nether Fortresses (plus YUNG API), Extreme Sound Muffler, Get It Together Drops!, and AttributeFix. All eight version-scoped candidates staged as desired but NOT enabled/pinned. Explorer's Compass deliberately excluded: use the Ars Additions Locate Structure data-driven ritual and extend structure tags/augment recipes. New safe vanilla mineshaft and shipwreck locate recipes staged for source validation; modded structures require registry-ID inventory and client testing.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -256,6 +256,20 @@
       "note": "Explicit experimental testing candidate and exact pinned dependency"
     },
     {
+      "id": "attributefix",
+      "name": "AttributeFix",
+      "category": "performance_power_compatibility",
+      "desired": true,
+      "version": "21.1.3",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/attributefix/version/21.1.3",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "TyNITLDY",
+      "note": "Owner-approved B17. Raises vanilla attribute ceilings; inspect conflicts with Apothic Attributes, Monk maximum caps and XP/stat scaling. Verify existing Bookshelf/Puzzles Lib closure. Do not call active before pinned. Expected deployment side: both.",
+      "packwiz_slug": "attributefix"
+    },
+    {
       "id": "balm",
       "name": "Balm",
       "category": "dependency",
@@ -407,6 +421,20 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "cloth-config"
+    },
+    {
+      "id": "clumps",
+      "name": "Clumps",
+      "category": "performance",
+      "desired": true,
+      "version": "19.0.0.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/clumps/version/jo7lDoK4",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "jo7lDoK4",
+      "note": "Owner-approved B17. NeoForge XP-orb aggregation for spawners, Torment Nexus, and crowded magic farms. Server-side gameplay; includes in singleplayer. Measure TPS and XP totals; no unapproved drop changes. Expected deployment side: server.",
+      "packwiz_slug": "clumps"
     },
     {
       "id": "cobblegen-galore",
@@ -770,6 +798,20 @@
       "packwiz_slug": "extra-botany-revived"
     },
     {
+      "id": "extreme-sound-muffler",
+      "name": "Extreme sound muffler",
+      "category": "qol",
+      "desired": true,
+      "version": "3.57-1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/extreme_sound_muffler/version/3.57-1.21.1",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "nUCCmquN",
+      "note": "Owner-approved B17 client-only optional sound control; verify mod audio, keybinds and UI before client certification. Expected deployment side: client.",
+      "packwiz_slug": "extreme-sound-muffler"
+    },
+    {
       "id": "farmers-delight",
       "name": "Farmer's Delight",
       "category": "food",
@@ -968,8 +1010,22 @@
       "packwiz_slug": "geckolib"
     },
     {
+      "id": "get-it-together-drops",
+      "name": "Get It Together, Drops!",
+      "category": "performance",
+      "desired": true,
+      "version": "v1.4 (1.21.x NeoForge)",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/get-it-together-drops/version/v1.4",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "K4TUzlwa",
+      "note": "Owner-approved B17. Configure modest item-merging radius and protect progression-critical items/NBT via tags. May run server-side only, including singleplayer; measure farm drop counts. Expected deployment side: server.",
+      "packwiz_slug": "get-it-together-drops"
+    },
+    {
       "id": "goety",
-      "name": "Goety \u2014 The Dark Arts",
+      "name": "Goety — The Dark Arts",
       "category": "magic",
       "desired": true,
       "version": "goety-3.2.2",
@@ -1072,7 +1128,7 @@
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks \u2014 ReFoxed",
+      "name": "Inventory Tweaks — ReFoxed",
       "category": "qol",
       "desired": true,
       "version": "invtweaks-1.21.1-1.3.2",
@@ -1269,6 +1325,20 @@
       "dependencies_verified": false,
       "packwiz_slug": "lodestonelib",
       "note": "B5 verified release. Missing prerequisite for Malum."
+    },
+    {
+      "id": "lootjs",
+      "name": "LootJS: KubeJS Addon",
+      "category": "integration",
+      "desired": true,
+      "version": "1.21.1-3.7.0+neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/lootjs/version/1.21.1-3.7.0%2Bneoforge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "5AZDyUSn",
+      "note": "Owner-approved B17. KubeJS dependency already pinned. Install scripting engine only; custom loot edits are independent proposals, not blanket authorization to rebalance loot. Expected deployment side: server.",
+      "packwiz_slug": "lootjs"
     },
     {
       "id": "lootr",
@@ -1469,7 +1539,7 @@
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 \u2014 Crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
       "category": "food",
       "desired": true,
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
@@ -1482,7 +1552,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
@@ -1495,7 +1565,7 @@
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
       "category": "food",
       "desired": true,
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
@@ -1508,7 +1578,7 @@
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 \u2014 Trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
       "category": "food",
       "desired": true,
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
@@ -2063,7 +2133,7 @@
     },
     {
       "id": "vampirism",
-      "name": "Vampirism \u2014 Become a Vampire!",
+      "name": "Vampirism — Become a Vampire!",
       "category": "supernatural",
       "desired": true,
       "version": "Vampirism-1.21-1.10.13",
@@ -2076,7 +2146,7 @@
     },
     {
       "id": "werewolves",
-      "name": "Werewolves \u2014 Become a Beast!",
+      "name": "Werewolves — Become a Beast!",
       "category": "supernatural",
       "desired": true,
       "version": "Werewolves-1.21-2.0.3.4",
@@ -2098,6 +2168,48 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "yungs-api",
+      "name": "YUNG's API",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-api/version/1.21.1-NeoForge-5.1.9",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "2prKITKh",
+      "note": "Required B17 dependency for both YUNG structure overhauls. Version 5.1.9 introduces vanilla structure replacement locator API; verify compatibility with Ars Additions locate ritual in-game. Expected deployment side: both.",
+      "packwiz_slug": "yungs-api"
+    },
+    {
+      "id": "yungs-better-nether-fortresses",
+      "name": "YUNG's Better Nether Fortresses",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.21.1-NeoForge-3.1.5",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-nether-fortresses/version/iopJiJQp",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "iopJiJQp",
+      "note": "Owner-approved B17. Requires YUNG's API. Test fortress generation, wither skeleton and blaze spawn mechanics, Ars Additions locator and Tectonic/worldgen interactions in disposable Nether. Expected deployment side: server.",
+      "packwiz_slug": "yungs-better-nether-fortresses"
+    },
+    {
+      "id": "yungs-better-strongholds",
+      "name": "YUNG's Better Strongholds",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.21.1-NeoForge-5.1.3",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yungs-better-strongholds/version/1.21.1-NeoForge-5.1.3",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "modrinth_version_id": "8U0dIfSM",
+      "note": "Owner-approved B17. Requires YUNG's API. Test Eyes of Ender, Ars ritual twelve-eye stronghold locator, portal integrity, and worldgen on fresh disposable Overworld. Expected deployment side: server.",
+      "packwiz_slug": "yungs-better-strongholds"
     }
   ],
   "excluded": [
@@ -2175,7 +2287,7 @@
     },
     {
       "id": "magitech-arcane-engineering",
-      "reason": "Current pack decision: omit Magitech \u2014 Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
+      "reason": "Current pack decision: omit Magitech — Arcane Engineering. Not selected in Tell Me More triage; separate tech/resource/biome ecosystem conflicts with design."
     },
     {
       "id": "relics-rpg-series",
@@ -2212,6 +2324,10 @@
     {
       "id": "bigger-reactors-rework",
       "reason": "Owner removed from roster 2026-11-15. Multiple native magical FE generation paths plus Draconic Evolution make a nuclear technology progression redundant; no uranium conversion/ore gate needed."
+    },
+    {
+      "id": "explorers-compass",
+      "reason": "Owner declined 2026-11-15: extend existing Ars Additions Locate Structure ritual using native JSON recipes/tags instead of adding a generic structure compass. Reconsider only on explicit request."
     }
   ],
   "items_blacklist": [
@@ -2505,6 +2621,22 @@
         "cobblegen-galore"
       ],
       "status": "server_smoked_inventory_complete_client_pending"
+    },
+    {
+      "id": "B17",
+      "name": "LootJS, Clumps, YUNG structure overhauls, Extreme Sound Muffler, GiTD and AttributeFix; Ars locate expansion",
+      "members": [
+        "attributefix",
+        "clumps",
+        "extreme-sound-muffler",
+        "get-it-together-drops",
+        "lootjs",
+        "yungs-api",
+        "yungs-better-nether-fortresses",
+        "yungs-better-strongholds"
+      ],
+      "status": "approved_version_identified_unpinned_static_ars_pilot",
+      "note": "Seven user-selected mods plus required YUNG API. Verified 1.21.1 NeoForge release candidates only; no mods/*.pw.toml yet, so none installed. Two new Ars Additions Locate Structure datapack recipes are staged independently for mineshafts and shipwrecks. Explorer's Compass excluded."
     }
   ]
 }
