@@ -60,7 +60,9 @@
     "documented_upper_bounds_found": 142,
     "source_registration_bounds_found": 135,
     "docs_only_bounds": 7,
-    "complete_registered_bounds_with_known_min": 135
+    "complete_registered_bounds_with_known_min": 135,
+    "attributefix_default_changed": 5,
+    "attributefix_default_unchanged": 137
   },
   "source_urls": {
     "vanilla": "https://api.github.com/repos/PrismarineJS/minecraft-data/contents/data/pc/1.21.1/attributes.json?ref=master",
@@ -82,7 +84,8 @@
     "Relics 0.12.5 `ring_of_the_seven_deadly_sins` loot exclusion authored on test/full-integration PR #130; existing rings require separate policy.",
     "Neo Vitae official API reference documents defaults/max for all 7 attributes, but min values/source pin behavior cannot be confirmed; this gives 142/142 documented numeric maxima with 135 verified constructor registrations and 7 API-only maxima.",
     "Newer Neo Vitae releases revised Siphon/Shield effective caps to 95% server-configurable; pinned 1.1.53 must be inspected before using source-number bound to model effects.",
-    "Owner's corrected interpretation: Sea Dragon Luck 85%, not old 80%, after maximum all-in legal specialty build and both sides' Curios."
+    "Owner's corrected interpretation: Sea Dragon Luck 85%, not old 80%, after maximum all-in legal specialty build and both sides' Curios.",
+    "AttributeFix 21.1.3 default overlay raises max health, armor, armor toughness, attack damage and attack knockback to 1,000,000. Other 137 candidate max ranges unchanged by default. Source maximum column remains pre-AttributeFix baseline; max_with_attributefix_21_1_3_defaults is the effective default cap proposed for experimental runtime, pending loaded confirmation."
   ],
   "attributes": [
     {
@@ -98,7 +101,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:armor_shred",
@@ -113,7 +119,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:arrow_damage",
@@ -128,7 +137,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:arrow_velocity",
@@ -143,7 +155,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:cold_damage",
@@ -158,7 +173,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:cooldown_reduction",
@@ -173,7 +191,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 0.95,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:crit_chance",
@@ -188,7 +209,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:crit_damage",
@@ -203,7 +227,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:current_hp_damage",
@@ -218,7 +245,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:dodge_chance",
@@ -233,7 +263,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:draw_speed",
@@ -248,7 +281,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 4,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:elytra_flight",
@@ -263,7 +299,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": true,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:experience_gained",
@@ -278,7 +317,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:fire_damage",
@@ -293,7 +335,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:ghost_health",
@@ -308,7 +353,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:healing_received",
@@ -323,7 +371,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:life_steal",
@@ -338,7 +389,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:mining_speed",
@@ -353,7 +407,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:overheal",
@@ -368,7 +425,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:projectile_damage",
@@ -383,7 +443,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:prot_pierce",
@@ -398,7 +461,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 34,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "apothic_attributes:prot_shred",
@@ -413,7 +479,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 0.9,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.drygmy",
@@ -428,7 +497,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.feather",
@@ -443,7 +515,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.mana_regen",
@@ -458,7 +533,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.max_mana",
@@ -473,7 +551,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.saturation",
@@ -488,7 +569,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.spell_damage",
@@ -503,7 +587,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.warding",
@@ -518,7 +605,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.weight",
@@ -533,7 +623,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "ars_nouveau:ars_nouveau.perk.wixie",
@@ -548,7 +641,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "eidolon_repraised:chanting_speed",
@@ -563,7 +659,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "eidolon_repraised:magic_power",
@@ -578,7 +677,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "eidolon_repraised:max_soul_hearts",
@@ -593,7 +695,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "eidolon_repraised:persistent_soul_hearts",
@@ -608,7 +713,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "forbidden_arcanus:generic.aureal_regeneration",
@@ -623,7 +731,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": "1.7976931348623157e308",
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "forbidden_arcanus:generic.magic_protection",
@@ -638,7 +749,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:abyss_discount",
@@ -653,7 +767,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:abyss_potency",
@@ -668,7 +785,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:casting_speed",
@@ -683,7 +803,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:cooldown_discount",
@@ -698,7 +821,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:frost_discount",
@@ -713,7 +839,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:frost_potency",
@@ -728,7 +857,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:geomancy_discount",
@@ -743,7 +875,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:geomancy_potency",
@@ -758,7 +893,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:necromancy_discount",
@@ -773,7 +911,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:necromancy_potency",
@@ -788,7 +929,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:nether_discount",
@@ -803,7 +947,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:nether_potency",
@@ -818,7 +965,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:soul_discount",
@@ -833,7 +983,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_burning",
@@ -848,7 +1001,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_duration",
@@ -863,7 +1019,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_potency",
@@ -878,7 +1037,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_radius",
@@ -893,7 +1055,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_range",
@@ -908,7 +1073,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:spell_velocity",
@@ -923,7 +1091,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:storm_discount",
@@ -938,7 +1109,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:storm_potency",
@@ -953,7 +1127,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:void_discount",
@@ -968,7 +1145,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:void_potency",
@@ -983,7 +1163,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:wild_discount",
@@ -998,7 +1181,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:wild_potency",
@@ -1013,7 +1199,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:wind_discount",
@@ -1028,7 +1217,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "goety:wind_potency",
@@ -1043,7 +1235,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:blood_magic_resist",
@@ -1058,7 +1253,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:blood_spell_power",
@@ -1073,7 +1271,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:cast_time_reduction",
@@ -1088,7 +1289,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:casting_movespeed",
@@ -1103,7 +1307,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:cooldown_reduction",
@@ -1118,7 +1325,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:eldritch_magic_resist",
@@ -1133,7 +1343,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:eldritch_spell_power",
@@ -1148,7 +1361,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:ender_magic_resist",
@@ -1163,7 +1379,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:ender_spell_power",
@@ -1178,7 +1397,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:evocation_magic_resist",
@@ -1193,7 +1415,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:evocation_spell_power",
@@ -1208,7 +1433,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:fire_magic_resist",
@@ -1223,7 +1451,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:fire_spell_power",
@@ -1238,7 +1469,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:holy_magic_resist",
@@ -1253,7 +1487,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:holy_spell_power",
@@ -1268,7 +1505,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:ice_magic_resist",
@@ -1283,7 +1523,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:ice_spell_power",
@@ -1298,7 +1541,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:lightning_magic_resist",
@@ -1313,7 +1559,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:lightning_spell_power",
@@ -1328,7 +1577,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:mana_regen",
@@ -1343,7 +1595,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:max_mana",
@@ -1358,7 +1613,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:nature_magic_resist",
@@ -1373,7 +1631,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:nature_spell_power",
@@ -1388,7 +1649,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:spell_power",
@@ -1403,7 +1667,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:spell_resist",
@@ -1418,7 +1685,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "irons_spellbooks:summon_damage",
@@ -1433,7 +1703,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:arcane_resonance",
@@ -1448,7 +1721,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:charge_capacity",
@@ -1463,7 +1739,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:charge_duration",
@@ -1478,7 +1757,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:charge_recovery_rate",
@@ -1493,7 +1775,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:geas_limit",
@@ -1508,7 +1793,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 8,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:malignant_aegis_capacity",
@@ -1523,7 +1811,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:malignant_aegis_recovery_gain",
@@ -1538,7 +1829,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:malignant_aegis_recovery_rate",
@@ -1553,7 +1847,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:malignant_conversion",
@@ -1568,7 +1865,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:scythe_proficiency",
@@ -1583,7 +1883,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:soul_ward_capacity",
@@ -1598,7 +1901,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:soul_ward_integrity",
@@ -1613,7 +1919,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:soul_ward_recovery_gain",
@@ -1628,7 +1937,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:soul_ward_recovery_rate",
@@ -1643,7 +1955,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "malum:spirit_spoils",
@@ -1658,7 +1973,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.armor",
@@ -1673,7 +1991,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": true,
+      "attributefix_confidence": "source_1_21_1_RangeConfig_verified_release_21_1_3_requires_runtime_load"
     },
     {
       "id": "minecraft:generic.armor_toughness",
@@ -1688,7 +2009,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": true,
+      "attributefix_confidence": "source_1_21_1_RangeConfig_verified_release_21_1_3_requires_runtime_load"
     },
     {
       "id": "minecraft:generic.attack_damage",
@@ -1703,7 +2027,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": true,
+      "attributefix_confidence": "source_1_21_1_RangeConfig_verified_release_21_1_3_requires_runtime_load"
     },
     {
       "id": "minecraft:generic.attack_knockback",
@@ -1718,7 +2045,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": true,
+      "attributefix_confidence": "source_1_21_1_RangeConfig_verified_release_21_1_3_requires_runtime_load"
     },
     {
       "id": "minecraft:generic.attack_speed",
@@ -1733,7 +2063,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.burning_time",
@@ -1748,7 +2081,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.explosion_knockback_resistance",
@@ -1763,7 +2099,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.fall_damage_multiplier",
@@ -1778,7 +2117,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.flying_speed",
@@ -1793,7 +2135,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.follow_range",
@@ -1808,7 +2153,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.gravity",
@@ -1823,7 +2171,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.jump_strength",
@@ -1838,7 +2189,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 32,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.knockback_resistance",
@@ -1853,7 +2207,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.luck",
@@ -1868,7 +2225,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.max_absorption",
@@ -1883,7 +2243,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 2048,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.max_health",
@@ -1898,7 +2261,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1000000,
+      "attributefix_default_overrides_range": true,
+      "attributefix_confidence": "source_1_21_1_RangeConfig_verified_release_21_1_3_requires_runtime_load"
     },
     {
       "id": "minecraft:generic.movement_efficiency",
@@ -1913,7 +2279,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.movement_speed",
@@ -1928,7 +2297,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.oxygen_bonus",
@@ -1943,7 +2315,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.safe_fall_distance",
@@ -1958,7 +2333,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.scale",
@@ -1973,7 +2351,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 16,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.step_height",
@@ -1988,7 +2369,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:generic.water_movement_efficiency",
@@ -2003,7 +2387,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.block_break_speed",
@@ -2018,7 +2405,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.block_interaction_range",
@@ -2033,7 +2423,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 64,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.entity_interaction_range",
@@ -2048,7 +2441,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 64,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.mining_efficiency",
@@ -2063,7 +2459,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.sneaking_speed",
@@ -2078,7 +2477,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.submerged_mining_speed",
@@ -2093,7 +2495,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 20,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "minecraft:player.sweeping_damage_ratio",
@@ -2108,7 +2513,10 @@
       "attainable_gear_plus_skills_max": null,
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
-      "registered_hard_bounds_source": true
+      "registered_hard_bounds_source": true,
+      "max_with_attributefix_21_1_3_defaults": 1,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:blood_shield",
@@ -2124,7 +2532,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 10,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:blood_siphon",
@@ -2140,7 +2551,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 1024,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:bonus_sacrifice",
@@ -2156,7 +2570,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:bonus_self_sacrifice",
@@ -2172,7 +2589,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:bonus_spiritus",
@@ -2188,7 +2608,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 1000,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:player.self_sacrifice_multiplier",
@@ -2204,7 +2627,10 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     },
     {
       "id": "neovitae:sigil_cost_reduction",
@@ -2220,7 +2646,43 @@
       "achievable_max_status": "NOT_COMPUTED",
       "monk_theoretical_85_percent_target": null,
       "documented_upper_bound": true,
-      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified"
+      "version_confidence": "Neo Vitae public wiki current; source binary + server config behavior not pinned-verified",
+      "max_with_attributefix_21_1_3_defaults": 100,
+      "attributefix_default_overrides_range": false,
+      "attributefix_confidence": "unchanged_by_default_RangeConfig"
     }
-  ]
+  ],
+  "attributefix_21_1_3_overlay": {
+    "status": "PINNED_FOR_NEXT_TEST_NO_CLIENT_BOOT",
+    "pack_mod": "attributefix-neoforge-1.21.1-21.1.3.jar",
+    "curseforge_file_id": 7115922,
+    "source_url": "https://github.com/Darkhax-Minecraft/AttributeFix/blob/1.21.1/common/src/main/java/net/darkhax/attributefix/common/impl/config/RangeConfig.java",
+    "runtime_loader": "FMLLoadCompleteEvent through AttributeFixMod.init()",
+    "default_changed_five": {
+      "minecraft:generic.max_health": {
+        "old": 1024,
+        "new": 1000000
+      },
+      "minecraft:generic.armor": {
+        "old": 30,
+        "new": 1000000
+      },
+      "minecraft:generic.armor_toughness": {
+        "old": 20,
+        "new": 1000000
+      },
+      "minecraft:generic.attack_damage": {
+        "old": 2048,
+        "new": 1000000
+      },
+      "minecraft:generic.attack_knockback": {
+        "old": 5,
+        "new": 1000000
+      }
+    },
+    "others": "The mod iterates ALL BuiltInRegistries.ATTRIBUTE RangedAttribute entries (vanilla and modded), writes one Prickle config each, and applies changes only where modify_range=true. Default true ONLY for the five listed vanilla IDs; all other default false including Luck, movement speed, Iron max mana, Ars max mana, Apothic CDR.",
+    "per_attribute_customization": "Other existing RangedAttribute min/max can be changed via config by setting modify_range=true, but not enabled in current pack; BooleanAttribute and non-ranged sources excluded.",
+    "important_caveat": "Engine max != best LEGAL form+gear+Curios value; no 85% Monk raw target should be assigned from arbitrary engine bound. Armor mitigation independent vanilla formula caps effective reduction despite 1e6 displayed armor.",
+    "evidence": "Source default list exact in branch 1.21.1; pin release 21.1.3 metadata verified via CurseForge file 7115922 and Modrinth version TyNITLDY."
+  }
 }

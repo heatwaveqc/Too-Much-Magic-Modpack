@@ -166,6 +166,27 @@ def verify() -> None:
     assert bounds["ars_nouveau:ars_nouveau.perk.max_mana"]["max"] == 10000
     assert bounds["apothic_attributes:cooldown_reduction"]["max"] == 0.95
     assert all(x["attainable_gear_plus_skills_max"] is None for x in hard_caps["attributes"])
+    # AttributeFix 21.1.3 defaults: exact 1.21.1 RangeConfig list; never confuse with attainable maxima.
+    overrides = hard_caps["attributefix_21_1_3_overlay"]["default_changed_five"]
+    expected_old = {
+        "minecraft:generic.max_health": 1024,
+        "minecraft:generic.armor": 30,
+        "minecraft:generic.armor_toughness": 20,
+        "minecraft:generic.attack_damage": 2048,
+        "minecraft:generic.attack_knockback": 5,
+    }
+    assert len(overrides) == len(expected_old) == hard_caps["counts"]["attributefix_default_changed"] == 5
+    assert hard_caps["counts"]["attributefix_default_unchanged"] == 137
+    for name, baseline in expected_old.items():
+        assert overrides[name] == {"old": baseline, "new": 1000000}
+        assert bounds[name]["max"] == baseline
+        assert bounds[name]["max_with_attributefix_21_1_3_defaults"] == 1000000
+        assert bounds[name]["attributefix_default_overrides_range"]
+    for name in ("minecraft:generic.luck", "minecraft:generic.movement_speed",
+                 "irons_spellbooks:max_mana", "ars_nouveau:ars_nouveau.perk.max_mana",
+                 "apothic_attributes:cooldown_reduction"):
+        assert bounds[name]["max_with_attributefix_21_1_3_defaults"] == bounds[name]["max"]
+        assert not bounds[name]["attributefix_default_overrides_range"]
     curios = json.loads((ROOT / "docs/tyzs/curios-all-in-eligibility-v1.json").read_text(encoding="utf-8"))
     assert curios["policy"]["shared_between_monk_and_specialists"]
     assert curios["policy"]["banned_ring_id"] == "relics:ring_of_the_seven_deadly_sins"
