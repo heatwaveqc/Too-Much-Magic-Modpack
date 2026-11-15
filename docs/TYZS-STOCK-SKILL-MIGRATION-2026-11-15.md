@@ -9,7 +9,7 @@
 | Abilities | 9 | Mostly universal Core, with Monk/Dragon overlap audited |
 | Combat | 12 | Mostly Core; predation to Vampire, fury to Werewolf, hunter combat specials |
 | Miscellaneous | 9 | Core survival, crafting, exploration and economy; risky loops gated |
-| Nature | 2 | Universal Core farming/husbandry; Forest Dragon adds specialties |
+| Nature | 2 | **Both native skills proposed for Forest Dragon** (Green Thumb, Shepherd’s Blessing) |
 | **Total** | **32** | **All original IDs inventoried and provisionally mapped** |
 
 **Important architecture finding:** Tyz's loader accepts custom JSON overrides by the **same original skill ID**, and its `SkillManager.registerSkill` attaches immutable Java skill behavior by that ID. We should **move stock skill IDs to new categories instead of renaming or reimplementing them** whenever an existing effect is acceptable. Alter a stock immutable skill's `category` in an override under `config/tyzs_skills/custom/skills/`, with matching `id`, type, values, prices and config. Test source behavior after category move, including reload, saved ranks and refund. Tyz's generated `default` directory is wiped/recreated on boot: **never edit it**.
@@ -52,8 +52,20 @@ The **Effect** column is the English tooltip from the original 6.4.2 localizatio
 | misc | **Twist Of Fate** (`twist_of_fate`) | 5 / 46 | Increases the quantity of items found in structure loot chests by {loot_multiplier}% | loot_multiplier: 10→50 | `tmm_magic_core` | Universal explorer's fortune; hold loot audit |
 | misc | **Safekept** (`keepsake`) | 8 / 121 | Safeguards the first {saved_slots} slot(s) of your inventory upon death | saved_slots: 1→8 | `tmm_magic_core` | Universal death inventory insurance; adapt |
 | misc | **Haggler** (`haggler`) | 4 / 14 | Holding an Emerald attracts villagers within a {block_radius} block radius.  They will follow you with a {villager_speed}% speed bonus | block_radius: 10→25; villager_speed: 0→10 | `tmm_magic_core` | Universal villager trading utility; preserve |
-| nature | **Green Thumb** (`green_thumb`) | 5 / 14 | Adds a {success_probability}% chance to double drops when harvesting crops and plants | success_probability: 15→75 | `tmm_magic_core` | Universal agriculture; preserve |
-| nature | **Shepherd’s Blessing** (`shepherd_s_blessing`) | 15 / 79 | Baby animals grow {growth_speed}% faster | growth_speed: 50→750 | `tmm_magic_core` | Universal husbandry; preserve |
+| nature | **Green Thumb** (`green_thumb`) | 5 / 14 | Adds a {success_probability}% chance to double drops when harvesting crops and plants | success_probability: 15→75 | `tmm_dragon_forest` | Forest Dragon crop-yield specialization; preserve exact same-ID behavior pending gate checks |
+| nature | **Shepherd’s Blessing** (`shepherd_s_blessing`) | 15 / 79 | Baby animals grow {growth_speed}% faster | growth_speed: 50→750 | `tmm_dragon_forest` | Forest Dragon husbandry specialization; preserve exact same-ID behavior pending gate checks |
+
+
+## Species identity update — 2026-11-15 (not runtime)
+
+- **Universal tree display label:** approved **Core Skills**, while keeping category ID `tmm_magic_core` for saved data. Do not rename individual skill IDs.
+- **Forest Dragon:** reassign original `green_thumb` and `shepherd_s_blessing` from the proposed Core Skills destination to **`tmm_dragon_forest`**. Retain their exact original upstream Tyz IDs, ranks and immutable effect handler references until integration tests. Green Thumb can support extra valid crop results; Shepherd’s Blessing accelerates baby-animal growth, **not** full breeding mechanics. Native bonemeal amplification and breeding improvements require separate real hooks/skills. Both vanilla effect handlers need proper forest dragon **use-time state gates**, not just purchase rules.
+- **Hunter:** the requested reduction in *own* armor and weapon durability loss is **not** the same as Tyz's stock `sunder_armor` (which damages the *target's* armor). Crossbow projectile-saving chance and high-tier proximity Glowing for tagged undead, demons and fae are also **new** mechanics. Damage/survivability specialization should be powerful late, with minimal spell-power modifiers. Keep `jinxed` PvP disruption and `true_strike` damage-source conversion on hold for separate review rather than misrepresenting them as these new abilities.
+- **Dragons:** large personal maximum mana gains, exceptionally efficient spell potency per SP, no species-specific mana regeneration, premium-priced armor/damage/harvest skills. Cave focuses demonic magic, Forest fae magic/ecology, Sea provisionally tide/ice/storm/abyssal magic. Source-classify actual spell and summoned entity IDs before runtime effects.
+- **Lich:** boost verified Neo Vitae/EvilCraft personal blood-magic effects with an accompanying penalty to the lich's own Botania/Roots nature-spell potency, not a global machine debuff.
+- **Werewolf:** extensive max-health and HP regeneration specialties, plus personal nature-magic potency. Health regen is not mana regen.
+
+These are authoritative **design directions**; **no default Tyz category or skill has been disabled** by this documentation. The full concept implementation is tracked in [nine-tree PR #83](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/83).
 
 ## Direct-move candidates and actual implementation limits
 
