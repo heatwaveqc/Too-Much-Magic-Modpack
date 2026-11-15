@@ -10,6 +10,7 @@ REQUIRED = {
     "dragon-survival": ("both", "9539454"),
     "comforts": ("both", "3kpPjcTc"),
     "colorful-hearts": ("client", "us0gze50"),
+    "vampires-delight": ("both", "oe9B4zXP"),
     "tyzs-skills": ("both", "OUmvFAPs")
 }
 
@@ -29,6 +30,11 @@ def run(root: Path = ROOT) -> None:
         update = entry.get("update", {})
         ids = update.get("curseforge", {}) | update.get("modrinth", {})
         assert (str(ids.get("file-id")) == file_id or ids.get("version") == file_id), f"{mid} wrong exact release"
+    vd = mods["vampires-delight"]
+    assert vd["release_status"] == "experimental_release", "Vampire's Delight beta must remain experimental"
+    assert vd["version"] == "0.1.12b", "Only owner-approved beta is allowed"
+    assert mods["vampirism"]["enabled_in_pack"] is True
+    assert mods["farmers-delight"]["enabled_in_pack"] is True
     assert "mods/puffish-skills.pw.toml" not in indexed
     assert mods["puffish-skills"]["enabled_in_pack"] is False
     assert mods["puffish-attributes"]["enabled_in_pack"] is True
@@ -46,7 +52,7 @@ def run(root: Path = ROOT) -> None:
         "config/ftbquests/quests/chapters/skills_advancement.snbt"
     ]:
         assert p in indexed, f"Quest/ore source missing from pack {p}"
-    print("PASS: dragon+diet, Comforts, client Colorful Hearts, vampire v2 fang config,")
+    print("PASS: dragon+diet, Comforts, client Colorful Hearts, Vampire\'s Delight 0.1.12b beta,")
     print("      Monk/primary Tyz prerequisites and updated quest/ore sources present.")
     print("NOT PROVEN: client graphics, dragon foods/forms, vampirism cures, native Monk rank, MXP, claim semantics.")
 
