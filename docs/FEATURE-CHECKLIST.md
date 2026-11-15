@@ -3,7 +3,7 @@
 > Generated from [the machine-readable registry](../manifest/feature-checklist.json) by 
 > `python3 scripts/feature_checklist.py render`. Do not edit this Markdown by hand.
 
-**109 acceptance items** across **9 tracks**. **6** have bounded owner-reported player PASS evidence; **15** have partial player checks; **22** are server-smoked only. This is not a stable release.
+**112 acceptance items** across **9 tracks**. **6** have bounded owner-reported player PASS evidence; **15** have partial player checks; **22** are server-smoked only. This is not a stable release.
 
 ## Reading this checklist
 
@@ -22,9 +22,9 @@
 | Player-tested PASS | 6 |
 | Player test partial | 15 |
 | Server-booted; mechanics unverified | 22 |
-| Source ready; gameplay unverified | 16 |
-| In progress | 11 |
-| Planned | 38 |
+| Source ready; gameplay unverified | 20 |
+| In progress | 12 |
+| Planned | 36 |
 | Blocked | 1 |
 | Deferred | 0 |
 
@@ -132,7 +132,7 @@
 - [ ] **Monk Step Assist +0.5 height** (`monk.step`) — *Player test partial*. Moves over allowed half-block heights only; armor and weapons may suppress where designed. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk training progression and graphical progress indicator** (`monk.training`) — *Source ready; gameplay unverified*. Actual cultivation earns native points; full UI progress ring replaces temporary actionbar counter. [source](../manifest/integration-sources.json)
 
-### World, combat and endgame (13)
+### World, combat and endgame (16)
 
 - [ ] **Tectonic world generation and exploration density** (`world.tectonic`) — *Server-booted; mechanics unverified*. Fresh terrain, structures, world boundaries and terrain performance inspected in new worlds. [source](../docs/DESIGN.md)
 - [ ] **Cataclysm, Neo Vitae, Deeper and Darker and chosen structures** (`world.dungeons`) — *Server-booted; mechanics unverified*. Locations generate, enemies spawn correctly, loot balanced, no missing structures or softlocks. [source](../docs/DESIGN.md)
@@ -140,13 +140,16 @@
 - [ ] **Forbidden items absent everywhere** (`world.loot`) — *Planned*. Ring of Seven Deadly Sins, Re:Avaritia and Extended Crafting unavailable via loot, trade, chest, reward and drops. [source](../docs/PROGRESSION.md)
 - [ ] **Boss first-kill, personal/team accounting and replay** (`world.boss_credit`) — *Planned*. Credit only eligible kills including revived/respawned boss; verify offline teammates/party and restart persistence. [source](../docs/PROGRESSION.md)
 - [ ] **Renewable boss drops and advanced crafting routes** (`world.survival`) — *Planned*. All boss-critical items and rare resources eventually reproducible by explicit not-trivial path. [source](../docs/DESIGN.md)
-- [ ] **Basic ProjectE after Gaia Guardian I OR Neo Vitae Foreman** (`end.projecte_start`) — *Planned*. True kill gate required for Philosopher's Stone, Transmutation Table and starter EMC gear; no early loot/EMC/quests bypass. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
-- [ ] **ProjectE automation and extreme items stay later** (`end.projecte_high`) — *Planned*. Collectors, relays, condensers and high-end matter tools/armor require a separate Chaos Guardian-tier gate. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
-- [ ] **Project Expansion post-Chaos Guardian** (`end.expansion`) — *Planned*. All Project Expansion item crafting, loot and use have enforced late boss gate. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Philosopher's Stone with interchangeable magical boss trophies** (`end.projecte_start`) — *Source ready; gameplay unverified*. Remove both original diamond-center recipes, keep original redstone/glowstone outer eight; accept exactly one Wilden Tribute, Gaia Spirit or Neo Vitae Mine Key in center, and test all three paths in JEI and in survival; no personal kill tracking. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Chaos Shard required for Red MK3+ Power Flowers** (`end.projecte_high`) — *Source ready; gameplay unverified*. Direct MK3 and every higher direct Power Flower recipe plus MK3 upgrade consume one Chaos Shard; MK1/2 remain, later upgrades still need previous flower; review Matter Upgrader and EMC bypass. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Project Expansion tier progression and alternative bypasses** (`end.expansion`) — *In progress*. MK1/2 function normally; MK3+ direct and MK3 upgrade use Chaos Shard; no unintended early bypass via Matter Upgrader, EMC knowledge, trading or loot; all related recipes usable in legitimate progression. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
 - [ ] **Draconic Chaos Guardian encounter and materials** (`end.chaos`) — *Server-booted; mechanics unverified*. Fight spawns correctly, including shields/ranged attacks; materials only from legitimate progression. [source](../docs/PROGRESSION.md)
 - [ ] **Draconic Energy Core, pylons and crystal links** (`end.energy`) — *Source ready; gameplay unverified*. Built multiblock and full FE network work; differentiate storage from generation. [source](../docs/POWER-TECH-QUEST-GUIDE.md)
 - [ ] **Bigger Reactors and Draconic Reactor safety** (`end.reactor`) — *Source ready; gameplay unverified*. Reactor startup, injection, stabilizers, Flux Gates, coolant and failure recovery tested in disposable worlds. [source](../docs/POWER-TECH-QUEST-GUIDE.md)
-- [ ] **No pre-gate EMC bypass via exchange, bag or loot** (`end.emc_abuse`) — *Planned*. Try all ProjectE use/acquisition routes incl machine GUIs, knowledge, EMC and cross-mod transmutations. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Prevent EMC-positive loops and unintended acquisition exploits** (`end.emc_abuse`) — *Planned*. Check Fortune/Silk Touch, ore/dust conversion, reversible alchemy, Quest Shop, boss trophy/Chaos Shard EMC duplication, stored inventories, filled tools and dynamic data for profitable bypasses. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Every registered item has EMC, barring approved cheap exceptions** (`end.emc_every_item`) — *Source ready; gameplay unverified*. Export the exact full item registry and post-mapping ProjectE values; positive EMC for 100% of registered items apart from approved tiny glass panes; no silent skips and zero missing in enforced audit. [source](../manifest/emc-coverage-policy.json)
+- [ ] **EMC values safe for all magic schools and all item state** (`end.emc_balancing`) — *Planned*. Audit expensive bosses, rare loot, recipes, transforms and value limits, NBT/contents and automatic reproduction so setting an EMC number never creates an uncontrollable conversion or duplication loop. [source](../docs/PROJECTE-TIERED-GATING-PROPOSAL.md)
+- [ ] **Three verified boss-associated trophy ingredient routes** (`end.projecte_trophies`) — *Source ready; gameplay unverified*. Validate actual registry IDs ars_nouveau:wilden_tribute, botania:life_essence and neovitae:mine_key; document Mine Key also has trial-spawner source and verify all are consumed. [source](../kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json)
 
 ### QoL, food, multiplayer and release (15)
 
@@ -178,4 +181,4 @@ followed by `python3 scripts/feature_checklist.py render`. Use `python3 scripts/
 
 ## Gate policy
 
-The earlier ProjectE-after-Chaos design is under revision. See [the tiered ProjectE gate proposal](PROJECTE-TIERED-GATING-PROPOSAL.md): initial transmutation after either Gaia Guardian I **or** Neo Vitae Foreman; extreme EMC generation and Project Expansion after Chaos Guardian. This is an explicit **proposal**, not an implemented server-side gate. Never use a quest checkbox as the only enforcement.
+The former all-post-Chaos ProjectE policy is superseded. See [the boss-trophy recipe policy](PROJECTE-TIERED-GATING-PROPOSAL.md): interchangeable Ars/Gaia/Foreman-associated drops in the Stone's center, and Chaos Shard in Red MK3+ direct Power Flowers and the MK3 upgrade. These recipe changes are source-staged pending in-world QA, **not personal boss-kill permissions**; Matter Upgrader and EMC synthesis are separate tests.
