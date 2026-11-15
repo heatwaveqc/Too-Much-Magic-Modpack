@@ -413,6 +413,50 @@ def inspect_pin(pin: str) -> None:
                         print("FOCUS_METHOD", cls, line.strip(), flush=True)
                         for instr in excerpt[1:]:
                             print(" FOCUS", instr[:270], flush=True)
+        # Ascension v2: check exact pinned API hooks instead of assuming
+        # the current upstream source branch describes the production binary.
+        if source.name.startswith("just-another-witchery"):
+            v2_classes = (
+                "dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",
+                "dev.sterner.witchery.feature.affliction.vampire.VampireLeveling",
+                "dev.sterner.witchery.feature.affliction.vampire.VampireEvents",
+                "dev.sterner.witchery.core.api.event.VampireAfflictionEvent$SunDamageApplied",
+            )
+        else:
+            v2_classes = (
+                "de.teamlapen.vampirism.entity.player.vampire.BloodStats",
+                "de.teamlapen.vampirism.client.gui.overlay.BloodBarOverlay",
+            )
+        for v2_class in v2_classes:
+            inspection = subprocess.run(
+                ["javap", "-p", "-s", "-classpath", str(jar), v2_class],
+                capture_output=True, text=True, timeout=25)
+            print("ASCENSION_V2_SIGNATURE", v2_class,
+                  "exit", inspection.returncode, flush=True)
+            for entry in inspection.stdout.splitlines():
+                if any(word in entry for word in (
+                        "setBloodLevel", "onUpdate(", "addBlood(", "removeBlood(",
+                        "render(", "increaseBlood(", "decreaseBlood(",
+                        "tickBloodRegen(", "setLevel(", "increaseLevel(",
+                        "SunDamageApplied", "descriptor:", "handleSunExposure(")):
+                    print(" ASCENSION_V2_SIG", entry[:320], flush=True)
+            if inspection.returncode != 0:
+                raise RuntimeError(f"Missing pinned ascension class {v2_class}: {inspection.stderr[:500]}")
+        if source.name.startswith("just-another-witchery"):
+            events = "dev.sterner.witchery.feature.affliction.vampire.VampireEvents"
+            inspection = subprocess.run(["javap", "-c", "-p", "-classpath", str(jar), events],
+                                        capture_output=True, text=True, timeout=30)
+            lines = inspection.stdout.splitlines()
+            needle = ("handleSunExposure(", "handleSunDamage(")
+            for index, line in enumerate(lines):
+                if line.startswith(("  public ", "  private ")) and any(x in line for x in needle):
+                    end = next((j for j in range(index+1, len(lines))
+                                if lines[j].startswith(("  public ", "  private ", "  protected ", "  static "))
+                                or lines[j] == "}"), len(lines))
+                    print("ASCENSION_V2_SUN_METHOD", line, flush=True)
+                    for instruction in lines[index+1:min(index+220, end)]:
+                        print(" ASCENSION_V2_SUN_BC", instruction[:250], flush=True)
+
         jar.unlink()
 
 
