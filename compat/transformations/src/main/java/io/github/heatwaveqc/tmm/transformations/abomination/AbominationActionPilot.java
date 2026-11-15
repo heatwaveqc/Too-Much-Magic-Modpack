@@ -99,6 +99,36 @@ public final class AbominationActionPilot {
     }
 
     /**
+     * Read-only native skill entitlement diagnostic. The OP-only action test
+     * deliberately ignores these entitlements; the eventual real faction must
+     * preserve and enforce them.
+     */
+    public static String nativeEntitlement(ServerPlayer player, Ability ability) {
+        if (!ModList.get().isLoaded("vampirism") || !ModList.get().isLoaded("werewolves")) {
+            return "unavailable: missing mod";
+        }
+        try {
+            Object original = Class.forName(ability.playerClass)
+                    .getMethod("get", Player.class).invoke(null, player);
+            Object holder = Class.forName(ability.registryClass)
+                    .getField(ability.registryField).get(null);
+            if (!(holder instanceof Supplier<?> supplier)) return "unavailable: action registry changed";
+            Object action = supplier.get();
+            if (action == null || original == null) return "unavailable: native attachment/action missing";
+            Object skill = action.getClass().getMethod("asSkill").invoke(action);
+            if (skill == null) return "unavailable: action has no mapped skill";
+            Object skillHandler = original.getClass().getMethod("getSkillHandler").invoke(original);
+            Class<?> skillType = Class.forName(
+                    "de.teamlapen.vampirism.api.entity.player.skills.ISkill");
+            Object enabled = skillHandler.getClass()
+                    .getMethod("isSkillEnabled", skillType).invoke(skillHandler, skill);
+            return Boolean.TRUE.equals(enabled) ? "native unlocked" : "native not unlocked";
+        } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
+            return "unavailable: native API mismatch";
+        }
+    }
+
+    /**
      * Exactly two whitelisted native action implementations. Does not touch
      * upstream faction/skill levels, nor catch-and-clear any player state.
      */
