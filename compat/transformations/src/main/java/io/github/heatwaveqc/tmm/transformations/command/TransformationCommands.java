@@ -9,6 +9,7 @@ import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.core.StateSnapshot;
 import io.github.heatwaveqc.tmm.transformations.storage.ReviewRecord;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireDiagnostics;
+import io.github.heatwaveqc.tmm.transformations.lich.ArchlichDiagnostics;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireOwnership;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireSubsystem;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisConfig;
@@ -27,9 +28,18 @@ public final class TransformationCommands {
     public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("tmmtransform")
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
+                .then(Commands.literal("archlich").executes(ctx -> archlich(ctx.getSource())))
                 .then(Commands.literal("vampire").executes(ctx -> vampire(ctx.getSource()))
                         .then(Commands.literal("cure").requires(s -> s.hasPermission(2))
                                 .executes(ctx -> cure(ctx.getSource())))));
+    }
+
+    private static int archlich(CommandSourceStack source)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        String report = ArchlichDiagnostics.describe(player);
+        source.sendSuccess(() -> Component.literal(report), false);
+        return Command.SINGLE_SUCCESS;
     }
 
     private static int cure(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
@@ -85,7 +95,7 @@ public final class TransformationCommands {
         }
         if (!snapshot.isComplete()) {
             source.sendSuccess(() -> Component.literal(
-                    "UNVERIFIED: upstream adapters are incomplete. No transformation blocking, merging or resurrection arbitration is active."), false);
+                    "UNVERIFIED: upstream adapters are incomplete; overall form cannot be trusted. Explicitly enabled specialized pilots (including Archlich death priority) are independent of this classification."), false);
         }
         source.sendSuccess(() -> Component.literal(
                 "Review metadata: schema " + review.schemaVersion()
