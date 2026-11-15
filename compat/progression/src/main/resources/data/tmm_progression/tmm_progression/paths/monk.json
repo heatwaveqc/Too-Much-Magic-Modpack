@@ -202,9 +202,10 @@
       "effects": [
         {
           "type": "break_speed",
-          "target": "#minecraft:mineable/pickaxe",
-          "per_rank": 0.8,
-          "empty_hand": true
+          "target": "*",
+          "per_rank": 2.4,
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -217,14 +218,29 @@
       "auto_ranks": [
         4,
         9,
-        14
+        13
       ],
       "effects": [
         {
           "type": "harvest_tier",
           "target": "#minecraft:mineable/pickaxe",
           "tier": 3,
-          "empty_hand": true
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "harvest_tier",
+          "target": "#minecraft:mineable/axe",
+          "tier": 3,
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "harvest_tier",
+          "target": "#minecraft:mineable/shovel",
+          "tier": 3,
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
