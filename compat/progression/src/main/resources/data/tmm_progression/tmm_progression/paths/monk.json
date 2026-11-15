@@ -36,6 +36,18 @@
       "target": "#tmm_progression:undead",
       "xp": 4,
       "cooldown_ticks": 0
+    },
+    {
+      "event": "food_discovered",
+      "target": "*",
+      "xp": 8,
+      "cooldown_ticks": 0
+    },
+    {
+      "event": "animal_petted",
+      "target": "*",
+      "xp": 2,
+      "cooldown_ticks": 20
     }
   ],
   "milestones": [
@@ -261,6 +273,24 @@
           "unarmored": true
         }
       ]
+    },
+    {
+      "id": "tmm_progression:animal_friendship",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        5
+      ],
+      "effects": [
+        {
+          "type": "animal_friendship",
+          "target": "*",
+          "empty_hand": true
+        }
+      ]
     }
-  ]
+  ],
+  "max_level": 20
 }
