@@ -1,6 +1,6 @@
 // Too Much Magic | Dragon Survival 2.0.74 | Minecraft 1.21.1 NeoForge.
 // Species rules: SEA = aquatic fish/plant raw foods; FOREST = raw fruit/vegetable,
-// simple preserves and sugar (no grains); CAVE = native foods and charcoal-charred
+// simple preserves and sugar (no grains); CAVE = native foods and Dragon Survival-charred
 // meat/seafood. Native cooked foods remain inedible to dragons as meals.
 // No global changes to item food properties or common c: tags.
 const TMM_GRAIN_WORDS = /(amaranth|barley|buckwheat|corn|millet|oats?|quinoa|rice|rye|sorghum|spelt|teff|wheat|flour|noodle|pasta|bread|toast|tortilla|cereal|popcorn|pancake|waffle|biscuit|cookie|cake|pastry|dumpling|crouton|pie|muffin|donut|sandwich|burger|nugget|knish)/i;
@@ -60,35 +60,4 @@ ServerEvents.tags('item', event => {
     }
   }
 
-  // Charcoal-assisted fallback makes all properly tagged raw meat/fish eligible
-  // for Cave Dragon charring even if another mod omits a cooked intermediate.
-  event.add('tmm:dragon_food/charrable_meat', '#c:foods/raw_meat');
-  for (const id of [
-    'farmersdelight:chicken_cuts', 'farmersdelight:bacon',
-    'farmersdelight:ham', 'farmersdelight:minced_beef',
-    'farmersdelight:mutton_chops'
-  ]) event.add('tmm:dragon_food/charrable_meat', id);
-
-  event.add('tmm:dragon_food/charrable_seafood', '#c:foods/raw_fish');
-  for (const id of [
-    'aquaculture:fish_fillet_raw', 'aquaculture:goldfish',
-    'aquaculture:minnow', 'aquaculture:jellyfish'
-  ]) event.add('tmm:dragon_food/charrable_seafood', id);
-});
-
-ServerEvents.recipes(event => {
-  if (!Platform.isLoaded('dragonsurvival')) return;
-
-  // A coal/charcoal is consumed to char uncooked meat or fish. This adds a
-  // universal fallback without colliding with native smelting/smoking recipes:
-  // cooked meat/fish -> charred meat/seafood remains available unchanged.
-  event.shapeless(
-    'dragonsurvival:charred_meat',
-    ['#tmm:dragon_food/charrable_meat', '#minecraft:coals']
-  ).id('tmm:dragon_food/charred_meat_with_coal');
-
-  event.shapeless(
-    'dragonsurvival:charred_seafood',
-    ['#tmm:dragon_food/charrable_seafood', '#minecraft:coals']
-  ).id('tmm:dragon_food/charred_seafood_with_coal');
 });
