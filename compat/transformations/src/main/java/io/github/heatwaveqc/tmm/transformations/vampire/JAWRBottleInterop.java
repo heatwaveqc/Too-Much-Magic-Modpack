@@ -19,6 +19,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -69,15 +70,21 @@ public final class JAWRBottleInterop {
     public static void register() {
         if (!ModList.get().isLoaded("witchery")) return;
         if (!ModList.get().isLoaded("hexerei") && !ModList.get().isLoaded("irons_spellbooks")) return;
+        // Do NOT resolve deferred JAWR components in the mod constructor:
+        // registries are not populated until after mod construction.
+        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onServerStarting);
+        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickBlock);
+        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickItem);
+        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onDrinkFinish);
+    }
+
+    private static void onServerStarting(ServerStartingEvent event) {
         try {
             chickenMarker = resolveMarker("getCHICKEN_BLOOD");
             vampireMarker = resolveMarker("getVAMPIRE_BLOOD");
             nativeBloodGain = Class.forName("dev.sterner.witchery.feature.blood_pool.BloodPoolHandler")
                     .getMethod("increaseBlood", LivingEntity.class, int.class);
             ready = true;
-            NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickBlock);
-            NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickItem);
-            NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onDrinkFinish);
             TransformationsMod.LOGGER.info("JAWR ordinary blood bottle bridge enabled (strict component gate)");
         } catch (ReflectiveOperationException | LinkageError | RuntimeException failure) {
             ready = false; // Fail closed: never treat unknown JAWR components as ordinary blood.
