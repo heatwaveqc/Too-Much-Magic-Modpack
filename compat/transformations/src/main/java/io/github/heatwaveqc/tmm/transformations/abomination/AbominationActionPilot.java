@@ -7,6 +7,7 @@ import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
 import io.github.heatwaveqc.tmm.transformations.core.AbominationPilotPolicy;
 import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
+import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachments;
 import io.github.heatwaveqc.tmm.transformations.vampire.VampireChassisConfig;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
@@ -73,6 +74,11 @@ public final class AbominationActionPilot {
             return new Readiness(AbominationPilotPolicy.Verdict.UNKNOWN_AFFLICTION,
                     Observation.UNKNOWN, Observation.UNKNOWN, Observation.UNKNOWN,
                     "Vampirism, Werewolves and JAWR must all be loaded");
+        }
+        if (player.getData(TransformationAttachments.REVIEW.get()).adminHold()) {
+            return new Readiness(AbominationPilotPolicy.Verdict.UNKNOWN_AFFLICTION,
+                    Observation.UNKNOWN, Observation.UNKNOWN, Observation.UNKNOWN,
+                    "Transformation bridge has an admin hold; restore a disposable backup before more experiments");
         }
         Observation vamp = VAMPIRE.observe(player);
         Observation wolf = WOLF.observe(player);
