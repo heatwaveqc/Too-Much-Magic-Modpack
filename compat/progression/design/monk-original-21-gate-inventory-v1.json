@@ -368,11 +368,12 @@
         "milestone_id": "tmm_progression:trial_creeper_kiss",
         "bonus_xp": 175,
         "enforced_as_rank_gate": false,
-        "status": "live_trusted_first_pacification_event",
+        "status": "live_trusted_server_creeper_interaction",
         "server_source_event": "external tmm_progression:creeper_kissed"
       },
       "notes": [
-        "New native creeper pacification unlocks at cultivation rank 14; optional bonus is earned after unlock, not a circular prerequisite."
+        "New native creeper pacification unlocks at cultivation rank 14; optional bonus is earned after unlock, not a circular prerequisite.",
+        "One-time milestone is per player: another Monk may earn their own deed from interacting with an already pacified creeper; no repeated reward for a completed milestone."
       ],
       "original_code": "MonkRequirementKissCreeper.java"
     },
@@ -473,7 +474,8 @@
         "server_source_event": "external tmm_progression:blind_hostile_kill count5"
       },
       "notes": [
-        "Native ordeal is optional and re-startable; server now requires five kills instead of auto-completing on the first kill or rank18."
+        "Native ordeal is optional and re-startable; server now requires five kills instead of auto-completing on the first kill or rank18.",
+        "The standalone event requires actual direct fist melee and an empty main hand; spells/projectiles cannot complete the Blindness ordeal."
       ],
       "original_code": "MonkRequirementKill.java"
     },
