@@ -43,10 +43,10 @@ public final class MonkMod {
         MonkSkills.SKILLS.register(modBus);
         MonkAttributes.ATTRIBUTES.register(modBus);
         modBus.addListener(MonkAttributes::addToPlayer);
-        // One native faction SP for each earned cultivation rank AFTER initiation.
+        // One native faction SP at initiation and one for every earned rank.
         // Tyz still owns its own MXP/SP wallet; this is only for Vampirism skills.
         SkillPointProviders.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "faction_rank"),
-                player -> player instanceof IMonkPlayer ? Math.max(0, player.getLevel() - 1) : 0);
+                player -> player instanceof IMonkPlayer ? Math.max(0, player.getLevel()) : 0);
         // Pattern from Werewolves 2.0.x: register after Vampirism's constructor
         // but before Vampirism closes faction registrations at IMC processing.
         modBus.addListener(this::registerFaction);
@@ -65,7 +65,7 @@ public final class MonkMod {
         NeoForge.EVENT_BUS.addListener(MonkMasteryEvents::onFoodFinished);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onTick);
         NeoForge.EVENT_BUS.addListener(MonkTechniqueEffects::onLogout);
-        LOGGER.info("Monk First Sunset, native ranks 1-4, initial skill tree and Step Assist registered (external physiology bridge pending).");
+        LOGGER.info("Monk First Sunset, native ranks 1-4, rank-one choice tree, gated Step Assist registered (external physiology bridge pending).");
     }
 
     private void registerFaction(RegisterEvent event) {
