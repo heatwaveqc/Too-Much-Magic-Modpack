@@ -6,6 +6,7 @@ on:
       - '.github/workflows/transformation-vampire-server-smoke.yml'
       - 'scripts/smoke_server.sh'
       - 'scripts/build_vampire_prism.py'
+      - 'scripts/audit_abomination_native_actions.py'
       - 'scripts/build_b8_prism.py'
   workflow_dispatch:
 permissions:
@@ -23,6 +24,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.2.1'
+      - name: Verify exact pinned Hiss and Howl action signatures
+        run: python3 scripts/audit_abomination_native_actions.py
       - name: Build custom bridge with its own tests
         working-directory: compat/transformations
         run: gradle --no-daemon build
