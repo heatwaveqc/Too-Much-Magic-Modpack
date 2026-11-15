@@ -966,7 +966,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodextended:.*(?:jelly|jam|preserve)item",
+          "items": "pamhc2foodextended:.*(jelly|jam|preserve)item",
           "properties": {
             "nutrition": 4,
             "saturation": 3
@@ -974,7 +974,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodcore:.*(?:jelly|jam|preserve)item",
+          "items": "pamhc2foodcore:.*(jelly|jam|preserve)item",
           "properties": {
             "nutrition": 4,
             "saturation": 3
@@ -982,7 +982,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodextended:.*(?:fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+          "items": "pamhc2foodextended:.*(fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
           "properties": {
             "nutrition": 4,
             "saturation": 3
@@ -990,7 +990,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodcore:.*(?:fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+          "items": "pamhc2foodcore:.*(fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
           "properties": {
             "nutrition": 4,
             "saturation": 3
@@ -998,7 +998,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodextended:.*(?:juice|smoothie)item",
+          "items": "pamhc2foodextended:.*(juice|smoothie)item",
           "properties": {
             "nutrition": 3,
             "saturation": 2
@@ -1006,7 +1006,7 @@
           "retain_effects": true
         },
         {
-          "items": "pamhc2foodcore:.*(?:juice|smoothie)item",
+          "items": "pamhc2foodcore:.*(juice|smoothie)item",
           "properties": {
             "nutrition": 3,
             "saturation": 2
