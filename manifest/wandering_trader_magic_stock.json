@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "status": "source_staged_runtime_validation_required",
+  "pack": "Too Much Magic",
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "guaranteed_stock": [
+    {
+      "slot": "apotheosis_equipment",
+      "min": 1,
+      "item": "random_actual_apotheosis_affixed_item",
+      "generator": "dev.shadowsoffire.apotheosis.loot.LootController.createRandomLootItem",
+      "validation": "AffixHelper.hasAffixes",
+      "tier": "nearby player's Apotheosis world tier, else HAVEN",
+      "maxUses": 1,
+      "price": "24–64 emeralds plus 1–12 diamonds according to world tier"
+    },
+    {
+      "slot": "ars_glyph_tier_1",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier I, including installed addons",
+      "maxUses": 1,
+      "price": "12 emeralds"
+    },
+    {
+      "slot": "ars_glyph_tier_2",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier II, including installed addons",
+      "maxUses": 1,
+      "price": "28 emeralds plus 4 lapis"
+    },
+    {
+      "slot": "ars_glyph_tier_3",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier III, including installed addons",
+      "maxUses": 1,
+      "price": "48 emeralds plus 4 diamonds"
+    },
+    {
+      "slot": "irons_ink_uncommon_plus",
+      "min": 1,
+      "item": "uncommon/rare/epic/legendary actual InkItem",
+      "weights": {
+        "uncommon": 55,
+        "rare": 30,
+        "epic": 12,
+        "legendary": 3
+      },
+      "maxUses": "3/2/1/1",
+      "price": "16/28/48+2 diamonds/64+8 diamonds"
+    }
+  ],
+  "preserve_existing_trades": true,
+  "implementation": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js; direct actual MerchantOffers modification on server EntityEvents.spawned with persistent marker v1",
+  "no_stock_from_other_magic_mods_yet": true,
+  "blocked_sales": [
+    "boss-only trophies",
+    "Chaos Shards",
+    "ProjectE philosopher stone and power flower gates",
+    "Iesnium ore",
+    "Thallasium ore",
+    "rare finished gear from final altar tiers",
+    "complete endgame artifacts",
+    "pre-attuned constellation/ascension unlocks"
+  ],
+  "next_candidates": [
+    {
+      "mod": "Occultism",
+      "item": "occultism:datura_seeds",
+      "purpose": "Demon's Dream/Datura seeds; removes grass-drop RNG for first occultist garden",
+      "confidence": "confirmed_item_id",
+      "proposed_price": "4 emeralds for 2 seeds",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Astral Sorcery",
+      "item": "astralsorcery:aquamarine",
+      "purpose": "Small Aquamarine supply for early altar crafting, not Aquamarine Shale or rock-crystal ore",
+      "confidence": "confirmed_localization_item_id",
+      "proposed_price": "8 emeralds for 2",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "EvilCraft",
+      "item": "evilcraft:dark_gem",
+      "purpose": "One Dark Gem helps locate the first EvilCraft ritual/guide route without selling late-tier Dark Power items",
+      "confidence": "confirmed_in_pack_profile",
+      "proposed_price": "12 emeralds for 1",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Botania Revived",
+      "item": "botania:black_lotus",
+      "purpose": "Compact mana deposit for players already operating Botania's mana network; item/version confirm with pinned Jar",
+      "confidence": "historical_project_id_needs_pin_audit",
+      "proposed_price": "20 emeralds for 1",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "JAWR Witchery",
+      "item": null,
+      "purpose": "One random Belladonna/Mandrake/Wolfsbane seed; check 0.5.39 IDs and economy",
+      "confidence": "needs_registry_item_ids",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Hexerei",
+      "item": null,
+      "purpose": "Biome-specific witch herb or Willow/Mahogany sapling to avoid hunt-by-biome without selling ritual completion",
+      "confidence": "needs_registry_item_ids",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Roots Classic",
+      "item": null,
+      "purpose": "Wildroot/Terra Moss starter botanical supplies if early-game seeds are frustratingly rare",
+      "confidence": "needs_registry_item_ids_and_balance",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Theurgy",
+      "item": null,
+      "purpose": "A small early sulfur/salt/alchemical reagent offer, not advanced transmutation blocks",
+      "confidence": "needs_registry_item_ids",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Malum",
+      "item": null,
+      "purpose": "Low-tier soulcraft material, not powerful finished spirit artifacts",
+      "confidence": "needs_item_and_progression_audit",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Goety",
+      "item": null,
+      "purpose": "A small early ritual reagent and maybe creature drop, not boss/summoning shortcuts",
+      "confidence": "needs_item_and_progression_audit",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Neo Vitae",
+      "item": null,
+      "purpose": "Common starter alchemical reagents only; no orbs, boss keys or major altar tiers",
+      "confidence": "needs_item_and_progression_audit",
+      "approval": "suggested_not_approved"
+    },
+    {
+      "mod": "Primal Magick",
+      "item": null,
+      "purpose": "Limited low-tier reagents from remote biomes, but don't sell research unlocks",
+      "confidence": "needs_item_and_progression_audit",
+      "approval": "suggested_not_approved"
+    }
+  ]
+}
