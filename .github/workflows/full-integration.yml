@@ -82,6 +82,7 @@ jobs:
       - name: Full dedicated-server smoke WITH BOTH first-party compiled modules
         env:
           SMOKE_WITH_MODS: '1'
+          SMOKE_ITEM_TICK_TEST: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
           SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
