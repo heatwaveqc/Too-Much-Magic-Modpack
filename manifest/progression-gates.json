@@ -2,91 +2,88 @@
   "schema_version": 1,
   "date": "2026-11-14",
   "authority": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
-  "decision_status": "proposed_pending_specific_milestone_and_implementation",
-  "runtime_enforcement": "NOT_IMPLEMENTED",
+  "decision_status": "owner_approved_recipe_ingredient_gates",
+  "runtime_enforcement": "KUBEJS_RECIPE_SOURCE_STAGED_CLIENT_UNTESTED",
+  "enforcement_scope": "Only crafting recipes; no per-player boss entitlement, no use-ban, no EMC knowledge restriction",
   "do_not_allow_quest_only_gating": true,
+  "trade_and_shared_boss_loot_allowed": true,
   "stages": [
     {
       "id": "basic_projecte",
-      "gate_logic": "ANY_ONE_OF",
-      "eligible_boss_events": [
+      "gate_logic": "ANY_ONE_OF_BOSS_ASSOCIATED_ITEMS",
+      "target_item": "projecte:philosophers_stone",
+      "original_recipe_ids": [
+        "projecte:philosophers_stone",
+        "projecte:philosophers_stone_alt"
+      ],
+      "center_tag": "tmm:philosophers_stone_boss_trophies",
+      "accepted_center_items": [
         {
-          "name": "Gaia Guardian I",
-          "provider": "botania-revived",
-          "entity_registry_id": null,
-          "variant_verification": "required",
-          "entitlement": "basic_projecte"
+          "item": "ars_nouveau:wilden_tribute",
+          "source": "Wilden Chimera victory",
+          "exclusive_boss_drop": true
         },
         {
-          "name": "Neo Vitae Foreman",
-          "provider": "neovitae",
-          "entity_registry_id": null,
-          "variant_verification": "required",
-          "entitlement": "basic_projecte"
+          "item": "botania:life_essence",
+          "source": "Gaia Guardian I/II victory",
+          "exclusive_boss_drop": true
+        },
+        {
+          "item": "neovitae:mine_key",
+          "source": "Foreman and Mines trial spawners",
+          "exclusive_boss_drop": false
         }
       ],
-      "unlock": [
-        "Philosopher's Stone",
-        "Transmutation Table",
-        "covalence/alchemical starter recipes",
-        "limited manually powered EMC"
-      ],
-      "deny_until_later": [
-        "Energy Collectors",
-        "Anti-Matter Relays",
-        "Energy Condensers",
-        "automated EMC farms",
-        "top-tier equipment",
-        "Project Expansion"
-      ],
-      "player_credit_policy": "pending explicit player vs team decision",
-      "confirmed_implemented": false
+      "outer_ingredients_unchanged": true,
+      "personal_kill_tracking": false,
+      "gameplay_tested": false
     },
     {
       "id": "advanced_emc_and_expansion",
-      "gate_logic": "AFTER_EXACT_BOSS_DEFEAT",
-      "eligible_boss_events": [
-        {
-          "name": "Draconic Chaos Guardian",
-          "provider": "draconic-evolution",
-          "entity_registry_id": null,
-          "variant_verification": "required",
-          "entitlement": "advanced_emc"
-        }
+      "gate_logic": "CHAOS_SHARD_POWER_FLOWER_RECIPE",
+      "ingredient": "draconicevolution:chaos_shard",
+      "specific_first_threshold": "projectexpansion:red_power_flower",
+      "first_threshold_rank": "MK 3 (after Basic MK 1 and Dark MK 2)",
+      "require_shard_in_direct_recipes_mk3_plus": true,
+      "require_shard_in_mk3_upgrade": true,
+      "tiers_direct": [
+        "red",
+        "magenta",
+        "pink",
+        "purple",
+        "violet",
+        "blue",
+        "cyan",
+        "green",
+        "lime",
+        "yellow",
+        "orange",
+        "white",
+        "fading",
+        "final"
       ],
-      "unlock": [
-        "ProjectE condensers/collectors/relays",
-        "high-tier matter gear",
-        "Project Expansion systems"
+      "higher_tier_upgrade_recipes_keep_parent_flower": true,
+      "game_mechanic_bypasses_not_enforced": [
+        "Project Expansion Matter Upgrader right-click transform",
+        "ProjectE EMC learning/recreation",
+        "loot/trade/creative acquisition"
       ],
-      "deny_until_later": [
-        "Excluded Ring of Seven Deadly Sins permanently"
-      ],
-      "player_credit_policy": "pending explicit player vs team decision",
-      "confirmed_implemented": false
+      "gameplay_tested": false
     }
   ],
-  "mandatory_guards": [
-    "all crafting stations",
-    "other-mod recipes",
-    "loot and dungeon chests",
-    "mob drops and trades",
-    "quest/item reward outputs",
-    "EMC learning/conversion",
-    "item use and machine block GUIs",
-    "worldgen",
-    "multiplayer item trade",
-    "cross-mod automation"
+  "universal_emc_goal": {
+    "policy_file": "manifest/emc-coverage-policy.json",
+    "require_positive_emc_except_cheap_exceptions": true,
+    "current_coverage": "NOT_AUDITED_FULL_REGISTRY"
+  },
+  "mandatory_recipe_tests": [
+    "Both Philosopher's Stone recipe orientations require tag trophy and no diamond",
+    "Wilden Tribute, Gaia Spirit and Mine Key actual registry IDs exist",
+    "All direct MK3+ Power Flower crafts require a Chaos Shard",
+    "Red MK3 upgrade route also requires Chaos Shard",
+    "Initial early basic/dark flower recipes remain intact",
+    "EMC duplication and Matter Upgrader bypasses inventoried",
+    "No free positive-EMC loops from boss items, recipes or powers"
   ],
-  "positive_and_negative_tests": [
-    "fresh player denied",
-    "Gaia I without Foreman permits starter not advanced",
-    "Foreman without Gaia permits starter not advanced",
-    "Gaia Spirit and dungeon key trades do not grant victory credit",
-    "Chaos Guardian unlocks advanced items",
-    "boss replay and logout never duplicate/erase credits",
-    "multiplayer credit policy respected",
-    "creative/admin bypass is explicitly opt-in only",
-    "ProjectE EMC/Quest Shop cannot devalue early resource exploration"
-  ]
+  "acceptance_rule": "Source test plus real modded server KubeJS recipe registration plus Prism JEI/crafting and gameplay EMC audit, independently."
 }
