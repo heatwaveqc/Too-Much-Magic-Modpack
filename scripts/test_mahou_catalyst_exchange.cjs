@@ -46,8 +46,11 @@ class ItemEntity {
   blockPosition() { return {...this.pos, offset(dx,dy,dz) {return {x:this.x+dx,y:this.y+dy,z:this.z+dz}}} }
 }
 class Level {
-  constructor(targetPresent=true) { this.targetPresent=targetPresent }
-  get isClientSide() { return false }
+  constructor(targetPresent=true,client=false) { this.targetPresent=targetPresent; this.client=client }
+  // Rhino may expose a Java boxed Boolean instead of a JS primitive.
+  // Boolean(new Boolean(false)) is TRUE, so the runtime guard must decode
+  // this by VALUE, not object truthiness.
+  get isClientSide() { return new Boolean(this.client) }
   hasChunkAt() { return true }
   equals(obj) { return this === obj }
   getBlockState(pos) {
@@ -162,7 +165,16 @@ for (const [id,target] of [
   assert.equal(item.getItem().getCount(),5)
 }
 
+// A boxed TRUE client-side flag must be rejected, without any proxy work.
+{
+  const level = new Level(true,true)
+  const item = new ItemEntity(level,'neovitae:iron_dust',3)
+  assert.equal(roundtrip(level,item,0),false)
+  assert.equal(item.getItem().getItem().id,'neovitae:iron_dust')
+  assert.equal(item.getItem().getCount(),3)
+}
+
 assert.ok(!logs.some(x=>x.startsWith('ERROR:')),'No error in tested paths')
-console.log('PASS: first-world dropped Akashic Tome with Rhino Entity.level object and Level.isClientSide property')
+console.log('PASS: first-world dropped Akashic Tome with Rhino Entity.level object and boxed Level.isClientSide flags')
 console.log('PASS: all five mappings, native proxy lifecycle, zero/partial/full consumption, wrong circles, source components and exclusion cases')
 console.log('NOT A MINECRAFT BOOT OR ACTUAL MAHOU IN-GAME TEST')
