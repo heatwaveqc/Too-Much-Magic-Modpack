@@ -51,6 +51,12 @@ Each matrix row should map to (a) one or more quests or a clearly named teaching
 
 The chapter must remain browseable, with sensible dependency arrows and crosslinks. Use *optional* quest branches for side content; never create arbitrary mechanical gates by quest dependency when the game doesn't enforce them. The player should be able to look ahead, choose strategies and return later.
 
+## Existing pilot reconciliation
+
+When a chapter or pilot already exists, inspect its authoring manifest and generated runtime quest data. Map every quest to the researched progression matrix and compare its prose with the actual task criterion, reward, exact ID and evidence. Record omissions (including a guidebook access step) and overclaims (such as treating item possession as operation). A pilot with many entries is not coverage proof until every required path and every installed addon has been reconciled. Distinguish proposed, implemented, merged, server-smoke-tested and client-accepted states.
+
+For addons, inventory the full primary-source feature surface, inspect the exact pack pins, then intersect supported bridges with the current enabled-mod roster. Teach installed target integrations; label absent targets as out of scope. Keep addon profiles linked from the parent profile so feature counts and version gaps are visible.
+
 ## Detection honesty and actual behavior
 
 A crafted Source Jar isn't proof of producing Source; an altar block isn't proof of performing a ritual; owning a weapon isn't proof of using it. **Never write the quest as though FTB verified an operation when the task only checks an item or inventory state.** Prefer a native advancement/event/real predicate when available; validate exact pinned task capabilities first. If unavailable, teach the behavior, state the acquisition proxy honestly, and use a clearly labeled manual read/check fallback where appropriate. Do not create unapproved repeated criteria, double rewards or new advancement triggers by assumption.
