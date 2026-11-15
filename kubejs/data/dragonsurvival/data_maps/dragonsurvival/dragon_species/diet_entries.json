@@ -966,7 +966,7 @@
           "retain_effects": true
         },
         {
-          "items": "#tmm:dragon_food/forest_preserves",
+          "items": "pamhc2foodextended:.*(?:jelly|jam|preserve)item",
           "properties": {
             "nutrition": 4,
             "saturation": 3
@@ -974,7 +974,39 @@
           "retain_effects": true
         },
         {
-          "items": "#tmm:dragon_food/forest_juices",
+          "items": "pamhc2foodcore:.*(?:jelly|jam|preserve)item",
+          "properties": {
+            "nutrition": 4,
+            "saturation": 3
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "pamhc2foodextended:.*(?:fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+          "properties": {
+            "nutrition": 4,
+            "saturation": 3
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "pamhc2foodcore:.*(?:fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+          "properties": {
+            "nutrition": 4,
+            "saturation": 3
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "pamhc2foodextended:.*(?:juice|smoothie)item",
+          "properties": {
+            "nutrition": 3,
+            "saturation": 2
+          },
+          "retain_effects": true
+        },
+        {
+          "items": "pamhc2foodcore:.*(?:juice|smoothie)item",
           "properties": {
             "nutrition": 3,
             "saturation": 2
@@ -994,6 +1026,14 @@
         },
         {
           "items": "minecraft:enchanted_golden_apple",
+          "retain_effects": true
+        },
+        {
+          "items": "pamhc2trees:(?!roasted|cooked)[a-z_]+item",
+          "properties": {
+            "nutrition": 3,
+            "saturation": 2
+          },
           "retain_effects": true
         }
       ]
