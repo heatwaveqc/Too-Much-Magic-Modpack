@@ -124,7 +124,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | queued | — |
 | `evilcraft` | EvilCraft | magic | enabled flag | full | researching | [profile](mods/evilcraft.md) |
 | `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | queued | — |
-| `goety` | Goety — The Dark Arts | magic | enabled flag | full | queued | — |
+| `goety` | Goety — The Dark Arts | magic | enabled flag | full | researching | [profile](mods/goety.md) |
 | `hexcast-neoforged` | HexCast NEOFORGED | magic | enabled flag | full | queued | — |
 | `hexerei` | Hexerei | magic | enabled flag | full | queued | — |
 | `irons-spells` | Iron's Spells 'n Spellbooks | magic | enabled flag | full | researching | [profile](mods/irons-spells.md) |
@@ -149,7 +149,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | queued | — |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | queued | — |
-| `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | queued | — |
+| `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
 | `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | queued | — |
 | `feywild` | Feywild | magic_adventure | enabled flag | full | queued | — |
 | `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | queued | — |
@@ -238,4 +238,9 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Roots Classic 1.5.10 profile added from the exact hash-matched JAR and version-aligned source. Mapped Runic Tablet onboarding, component/spell/staff progression, altar tiers, ritual setup, powered stones and crystal staff. Recorded the Terra regeneration config mismatch, staff-use debit before mana validation, Earth Spike block-copy boundary, and placeholder FTB chapter. Runtime checks remain open; see profile and compatibility notes.
 - 2026-11-15 — Scriptor Magicae 2.0.14 profile added from the exact hash-matched JAR and version-aligned source tag. Mapped world-generated spell vocabulary, four tome discovery tiers, writing/casting methods, action families, lectern automation and typed item I/O. Confirmed fuel-free Inflame smelting in source; chest operation, exact guide reward, client menus, and TMM cross-system behavior remain open. No quest/runtime files changed; see profile and compatibility notes.
 - 2026-11-15 — Iron's Spells 'n Spellbooks 3.16.3 profile added from exact hash-matched JAR and version-aligned source. Mapped spellbook/mana progression, nine core schools, Inscription Table, Scroll Forge, Arcane Anvil, cauldron, Eldritch research, structures and both boss lines. Recorded the pamphlet-only guide gap, placeholder quest, PlayerAnimator beta dependency exception and untested Ars 'n Spells resource bridge. See profile and compatibility notes.
-- **Next action:** continue with Goety and Goety Cataclysm, then cover remaining high-value magic systems. Scriptor Magicae, EvilCraft, Roots Classic, Iron's Spells, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — Goety 3.2.2 profile drafted from its exact hash-pinned JAR and version-aligned source; the first-step Soul Energy loop, wand/focus path, Infuser and Altar behavior, brew/servant systems, and Lich/Arca risks are mapped. Full recipe/ritual/advancement coverage and client tests remain open; see [profile](mods/goety.md).
+- 2026-11-15 — Goety Cataclysm profile added from the exact hash-matched 1.21.1 JAR. The addon extends the Goety Black Book with Cataclysm focuses, servants, conversions, constructs and a Fabricator; exact mechanics are partially mapped, while full boss-drop/bytecode and client behavior remain open. Modrinth labels the locked file ID 1.9.0, while the JAR metadata and filename say 1.8.4. See [profile](mods/goety-cataclysm.md).
+- 2026-11-15 — Ars Ocultas 2.6.2 profile upgraded from README summary to exact SHA-512-matched JAR and version-aligned source review. Mapped spirit jar behavior, all addon recipes, Soul Gem transfer and the Occultism bowl bridge. The altar source flags sacrifice/item-use states for 5,000 Source without consuming the matching jarred entity/item; live tests remain open. Reconciled quests 40–42 as a draft on the unmerged Ars pilot branch. See [profile](mods/ars-ocultas.md).
+- **Next action:** continue Goety source completion and verify Goety Cataclysm recipe/effect gaps; test the Ars Ocultas altar/Soul Gem boundaries before quest work, then cover remaining high-value magic systems. Scriptor Magicae, EvilCraft, Roots Classic, Iron's Spells, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
+
+- 2026-11-15 — Ars 'n Spells exact 3.3.5 pin/source reviewed; corrected its source line to the NeoForge 1.21.1 commit, split its two inscription paths, and mapped its mana/config/ritual contracts. TMM runtime and client behavior remain unverified; current quest chapter has no addon lessons.
