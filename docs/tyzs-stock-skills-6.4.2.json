@@ -1137,9 +1137,9 @@
         }
       ],
       "original_java_effect_class": "GreenThumbEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal agriculture; preserve",
-      "review_caveat": "Forest Dragon may get separate eco benefits; check harvest plugins and duplication",
+      "target_tree_id": "tmm_dragon_forest",
+      "migration_proposal": "Forest Dragon crop-yield specialization; same-ID IMMUTABLE source handler, with real form eligibility and no double harvest awards",
+      "review_caveat": "Forest Dragon may get separate eco benefits; check harvest plugins and duplication Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     },
@@ -1191,11 +1191,24 @@
         }
       ],
       "original_java_effect_class": "ShepherdsBlessingEffect",
-      "target_tree_id": "tmm_magic_core",
-      "migration_proposal": "Universal husbandry; preserve",
-      "review_caveat": "Animal baby growth multiplier can affect farms; evaluate performance",
+      "target_tree_id": "tmm_dragon_forest",
+      "migration_proposal": "Forest Dragon husbandry specialization; same-ID IMMUTABLE source handler, verify age-up and breeding improvements separately",
+      "review_caveat": "Animal baby growth multiplier can affect farms; evaluate performance Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
       "migration_state": "NOT_MIGRATED",
       "proposed_id_policy": "reuse_exact_original_skill_ID_to_preserve_native_effect_binding_and_player_data"
     }
-  ]
+  ],
+  "thematic_direction_2026_11_15": {
+    "universal_tree_display_name": "Core Skills",
+    "universal_tree_internal_id": "tmm_magic_core",
+    "forest_rehomes": [
+      "green_thumb",
+      "shepherd_s_blessing"
+    ],
+    "hunter_notes": "New requested equipment durability preservation, crossbow projectile conservation and high-tier undead/demon/fae glowing/offense/defense are NOT equivalent to existing Sunder Armor/True Strike/Jinxed IMMUTABLE handlers. Must implement as new nodes/adapters, not silently repurpose source IDs.",
+    "dragon_notes": "All three dragons must have huge mana capacity, outstanding spell potency per SP, no dragon-specific regen and expensive armor/damage/harvest bonuses.",
+    "lich_notes": "Personal blood spell power gain with personal nature spell power penalty; source-verified Neo Vitae/EvilCraft versus Botania/Roots.",
+    "werewolf_notes": "Many extra hearts, actual HP regeneration and personal nature magic power.",
+    "status": "design only; no stock category/skill override moved in runtime"
+  }
 }
