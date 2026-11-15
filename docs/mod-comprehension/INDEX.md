@@ -17,21 +17,20 @@ Work one substantial slice at a time; update corresponding coverage status and l
 | 5 | `forbidden-magic` | JAWR Forbidden Magic lich/other spell and faction extensions |
 | 6 | `summoning-rituals` | Investigate actual native input/output and customization limits |
 | 7 | `botania-revived` | Early mana, floral loops, runic crafting and port-specific changes |
-| 8 | `evilcraft` | Blood, rejuvenated flesh, vengeance systems and useful artifacts |
-| 9 | `roots-classic` | Early natural magic utility and repeatable sources |
-| 10 | `irons-spells` | Scrolls/spellbooks, spell school gates and Ars addon interaction |
-| 13 | `scriptor-magicae` | Casting lectern, automated smelting and other programmable utility |
-| 14 | `goety` | Soul energy, ritual summon pipeline and mob/owner behavior |
-| 15 | `goety-cataclysm` | Precisely what addon introduces vs both parent mods |
-| 16 | `ars-ocultas` | Occultism bridge: recipes, capabilities, exact shared hooks |
-| 17 | `ars-n-spells` | Iron's bridge: real functionality beyond descriptions |
-| 18 | `astral-sorcery` | Altars/attunement, structure dimensions, version-specific changes |
-| 19 | `mahou-tsukai` | Material powder processing, mana, circles, cheap utility |
-| 20 | `draconic-evolution` | Energy interfaces, Chaos Guardian and locked apex |
-| 21 | `projecte` | EMC and current recipe access, especially boss-gate hazards |
-| 22 | `project-expansion` | Power flowers, resource duplication boundaries |
-| 23 | `quest-shop` | Item/coin/team account semantics and rewards/balance |
-| 24 | `ftb-quests` | Existing task detectors and reliable quest authoring surfaces |
+| 8 | `roots-classic` | Early natural magic utility and repeatable sources |
+| 9 | `irons-spells` | Scrolls/spellbooks, spell school gates and Ars addon interaction |
+| 10 | `scriptor-magicae` | Casting lectern, automated smelting and other programmable utility |
+| 11 | `goety` | Soul energy, ritual summon pipeline and mob/owner behavior |
+| 12 | `goety-cataclysm` | Precisely what addon introduces vs both parent mods |
+| 13 | `ars-ocultas` | Occultism bridge: recipes, capabilities, exact shared hooks |
+| 14 | `ars-n-spells` | Iron's bridge: real functionality beyond descriptions |
+| 15 | `astral-sorcery` | Altars/attunement, structure dimensions, version-specific changes |
+| 16 | `mahou-tsukai` | Material powder processing, mana, circles, cheap utility |
+| 17 | `draconic-evolution` | Energy interfaces, Chaos Guardian and locked apex |
+| 18 | `projecte` | EMC and current recipe access, especially boss-gate hazards |
+| 19 | `project-expansion` | Power flowers, resource duplication boundaries |
+| 20 | `quest-shop` | Item/coin/team account semantics and rewards/balance |
+| 21 | `ftb-quests` | Existing task detectors and reliable quest authoring surfaces |
 
 Once two source-supported profiles expose complementary I/O, test a **cross-mod** hypothesis rather than indefinitely deferring pass 2. High-priority *unverified questions*: Ars Ocultas × Occultism; Ars 'n Spells × Iron's; JAWR × Vampirism × Werewolves (and the pack's separate transformation bridge); EvilCraft flesh and modded diets; Summoning Rituals output channels; magical processing substitutions; late-game EMC gate leakage. Do not presume any work merely because it is in this list.
 
@@ -123,7 +122,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `botania-revived` | Botania Revived | magic | enabled flag | full | researching | [profile](mods/botania-revived.md) |
 | `eidolon-repraised` | Eidolon: Repraised | magic | enabled flag | full | queued | — |
 | `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | queued | — |
-| `evilcraft` | EvilCraft | magic | enabled flag | full | queued | — |
+| `evilcraft` | EvilCraft | magic | enabled flag | full | researching | [profile](mods/evilcraft.md) |
 | `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | queued | — |
 | `goety` | Goety — The Dark Arts | magic | enabled flag | full | queued | — |
 | `hexcast-neoforged` | HexCast NEOFORGED | magic | enabled flag | full | queued | — |
@@ -210,6 +209,7 @@ No reports yet. Create one Markdown file per *specific, actionable interaction* 
 | Interaction report | Participants | Status | Key finding |
 | --- | --- | --- | --- |
 | [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
+| [EvilCraft Rejuvenated Flesh](interactions/evilcraft--dragon-survival--rejuvenated-flesh.md) | EvilCraft + Dragon Survival | source-supported | Dragon species allowlist and custom Blood-food handler are both source-confirmed; the paired item-use behavior is untested |
 
 ## Quest/compatibility design handoffs
 
@@ -233,4 +233,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Standalone Vampirism and Werewolves are marked deferred for this knowledge queue because the owner-approved target retires those mods after Hunter/Monk migration; this is a research-status reconciliation only, not a runtime change.
 - 2026-11-15 — Summoning Rituals 3.14.2 profile added from exact-release source. Confirmed it is a recipe framework with no default rituals and no TMM altar acquisition/recipe scripts; documented typed input/output channels, sacrifice semantics and command risks. See profile and compatibility notes.
 - 2026-11-15 — Botania Revived 2.0.2 profile and Botania × Ars source-supported interaction report added from the exact hash-matched JAR/source. Recorded default-enabled Asgard/creative/exploration modules, Loonium loot-mode risk, and Ars mana/Source bridge for later balance/client tests. See profile, interaction report and compatibility notes.
-- **Next action:** continue with `evilcraft`, `roots-classic` and `irons-spells`. Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed exact-recipe/client/runtime gaps. Quest implementation is a later pass.
+- 2026-11-15 — EvilCraft 1.2.100 profile and Rejuvenated Flesh × Dragon Survival interaction report added from the exact hash-matched JAR and matching tagged source. The guidebook path, two-age advancement triggers, Blood Infuser examples, spirit/environment systems and food handler are mapped. Recorded the placeholder quest, worldgen/Tectonic and faction gaps; no pairwise client tests.
+- **Next action:** continue with `roots-classic`, `irons-spells`, then `scriptor-magicae` and Goety. EvilCraft, Occultism, Neo Vitae, JAWR, Forbidden Magic, Summoning Rituals and Botania Revived remain `researching` for their listed source-completion/client/runtime gaps. Quest implementation is a later pass.
