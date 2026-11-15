@@ -53,8 +53,10 @@ public final class DracolichAcquisitionGuard {
     public static boolean permit(ServerPlayer player, Result decision, String intended) {
         if (decision == Result.ALLOW) return true;
         String reason = decision == Result.DENY_SECOND_LICH
-                ? "Dracoliches cannot acquire a second kind of lichdom. Cure the existing lichdom first."
-                : "Cannot verify the native dragon/lich states; lichdom acquisition blocked safely.";
+                ? "Dracolich: cannot acquire " + intended
+                    + " lichdom while already bound to the other lich tradition. Cure the current lichdom first."
+                : "Cannot verify dragon/lich state for " + intended
+                    + " acquisition; blocked to avoid a forbidden dual-lich Dracolich.";
         player.sendSystemMessage(Component.literal(reason));
         return false;
     }
