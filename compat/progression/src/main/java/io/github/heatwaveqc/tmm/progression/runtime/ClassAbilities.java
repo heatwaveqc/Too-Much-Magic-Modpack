@@ -114,6 +114,12 @@ public final class ClassAbilities {
     }
 
     public static void tick(ServerPlayer p) {
+        // The mob UUID retaliation ledger is transient; expire entries to avoid
+        // retaining every hunted mob for the lifetime of a dedicated server.
+        if (p.tickCount % 200 == 0) {
+            long now = p.serverLevel().getGameTime();
+            RETALIATION.entrySet().removeIf(entry -> entry.getValue().until() < now);
+        }
         if (unlocked(p,"reserved_fist") && !p.getInventory().getItem(0).isEmpty()) {
             int free = emptyInventorySlot(p);
             if (free >= 0) {
