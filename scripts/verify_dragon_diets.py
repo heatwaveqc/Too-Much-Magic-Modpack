@@ -82,6 +82,7 @@ def main() -> None:
     assert 'artifacts:everlasting_beef' not in sea
     assert 'minecraft:rotten_flesh' not in forest
     assert 'born_in_chaos_v1:monster_flesh' not in forest
+    assert forest['ars_nouveau:sourceberry_bush'] == {'items': 'ars_nouveau:sourceberry_bush', 'retain_effects': True}
 
     werewolf_food = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/werewolf_food.json').read_text(encoding='utf-8'))
     werewolf_raw = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/raw_food.json').read_text(encoding='utf-8'))
