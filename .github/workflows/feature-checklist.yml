@@ -1,0 +1,33 @@
+name: Feature Checklist - Governance and Evidence
+on:
+  push:
+    branches: ['test/full-integration']
+    paths:
+      - 'manifest/feature-checklist.json'
+      - 'docs/FEATURE-CHECKLIST.md'
+      - 'docs/PROJECTE-TIERED-GATING-PROPOSAL.md'
+      - 'scripts/feature_checklist.py'
+      - 'tests/test_feature_checklist.py'
+      - '.github/workflows/feature-checklist.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-feature-checklist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate every feature ID, status and acceptance criterion
+        run: python3 scripts/feature_checklist.py validate
+      - name: Refuse out-of-sync generated checkbox report
+        run: python3 scripts/feature_checklist.py render --check
+      - name: Check core track coverage and bounded ProjectE design
+        run: python3 -m unittest discover -s tests -p 'test_feature_checklist.py' -v
+      - name: Print current evidence summary
+        run: python3 scripts/feature_checklist.py summary
