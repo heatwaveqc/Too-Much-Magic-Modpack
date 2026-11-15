@@ -19,6 +19,16 @@ public final class DracolichPolicy {
         return Source.NONE;
     }
 
+    /**
+     * Forbid adding a *second* lich source to an existing Dracolich.
+     * Same-source rank progression and either source's cure are permitted.
+     * Unknown native state must be rejected by the calling adapter.
+     */
+    public static boolean canAcquireLich(boolean dragon, boolean otherLich,
+                                         boolean alreadyThisLich) {
+        return !dragon || !otherLich || alreadyThisLich;
+    }
+
     public static boolean isDracolich(Source source) {
         return source == Source.GOETY_ARCA
                 || source == Source.FORBIDDEN_MAGIC_PHYLACTERY;

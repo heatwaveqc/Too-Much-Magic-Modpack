@@ -13,6 +13,21 @@ class DracolichPolicyTest {
         assertTrue(DracolichPolicy.isDracolich(FORBIDDEN_MAGIC_PHYLACTERY));
     }
 
+    @Test void addingOtherLichToGoetyDracolichIsForbidden() {
+        assertFalse(DracolichPolicy.canAcquireLich(true, true, false));
+    }
+
+    @Test void addingGoetyToForbiddenMagicDracolichIsForbidden() {
+        assertFalse(DracolichPolicy.canAcquireLich(true, true, false));
+    }
+
+    @Test void firstLichOnDragonAndSameTrackLevelUpsRemainAllowed() {
+        assertTrue(DracolichPolicy.canAcquireLich(true, false, false));
+        assertTrue(DracolichPolicy.canAcquireLich(true, false, true));
+        assertTrue(DracolichPolicy.canAcquireLich(true, true, true));
+        assertTrue(DracolichPolicy.canAcquireLich(false, true, false));
+    }
+
     @Test void twoLichesPlusDragonIsConflict() {
         assertEquals(CONFLICT, DracolichPolicy.resolve(true, true, true));
         assertFalse(DracolichPolicy.isDracolich(CONFLICT));

@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionConfig;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.DragonSurvivalProbe;
+import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichDragonFirstEvents;
 import io.github.heatwaveqc.tmm.transformations.adapters.GoetyLichProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.ForbiddenMagicLichProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
@@ -47,6 +48,7 @@ public final class TransformationsMod {
         VampireLifecycleEvents.register();
         MobAllianceEvents.register();
         ArchlichResurrectionEvents.register();
+        DracolichDragonFirstEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default.");
         LOGGER.warn("Opt-in Archlich resurrection priority bridge registered; "
                 + "experimentalArchlichPhylacteryFirst defaults ON for disposable pre-alpha QA.");
