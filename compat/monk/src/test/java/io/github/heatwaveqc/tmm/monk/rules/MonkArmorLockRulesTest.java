@@ -3,71 +3,105 @@ package io.github.heatwaveqc.tmm.monk.rules;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Future graveyard-restoration guard: free toggle is not a Monk armor bypass. */
+/** Future graveyard equipment guard; the worn-binding durability trap is deliberate. */
 final class MonkArmorLockRulesTest {
-    @Test void defaultMonkArmorLockBlocksAllFourEquipmentSlots() {
+    @Test void defaultMonkArmorLockBlocksAllFourNewEquipmentSlots() {
         assertTrue(MonkArmorLockRules.DEFAULT_ENABLED);
         for (var slot : new MonkArmorLockRules.SlotKind[] {
                 MonkArmorLockRules.SlotKind.HEAD, MonkArmorLockRules.SlotKind.CHEST,
                 MonkArmorLockRules.SlotKind.LEGS, MonkArmorLockRules.SlotKind.FEET }) {
             assertTrue(MonkArmorLockRules.isVanillaArmorSlot(slot));
-            assertFalse(MonkArmorLockRules.mayEquip(true, true, slot),
-                    "Default Monk armor lock must reject auto-equip");
-            assertTrue(MonkArmorLockRules.mayEquip(true, false, slot),
-                    "Disabling the lock restores the ordinary equip route");
-            assertTrue(MonkArmorLockRules.mayEquip(false, true, slot),
-                    "Non-Monks never inherit a Monk-only inventory restriction");
+            assertFalse(MonkArmorLockRules.mayEquip(true, true, slot));
+            assertTrue(MonkArmorLockRules.mayEquip(true, false, slot));
+            assertTrue(MonkArmorLockRules.mayEquip(false, true, slot));
         }
     }
 
-    @Test void curiosAndNormalCargoNeverBecomeArmorByAccident() {
+    @Test void curiosAndCargoRemainOutsideArmorLock() {
         for (var slot : new MonkArmorLockRules.SlotKind[] {
                 MonkArmorLockRules.SlotKind.CURIOS,
                 MonkArmorLockRules.SlotKind.MAIN_HAND,
                 MonkArmorLockRules.SlotKind.OFF_HAND,
                 MonkArmorLockRules.SlotKind.STORAGE }) {
             assertFalse(MonkArmorLockRules.isVanillaArmorSlot(slot));
-            assertTrue(MonkArmorLockRules.mayEquip(true, true, slot),
-                    "Legal spellbooks, Curios and stored armor must remain accessible");
+            assertTrue(MonkArmorLockRules.mayEquip(true, true, slot));
         }
         assertThrows(IllegalArgumentException.class, () ->
                 MonkArmorLockRules.isVanillaArmorSlot(null));
     }
 
-    @Test void enablingLockCannotForceArmorOutOfCursedOrFullInventories() {
-        assertTrue(MonkArmorLockRules.mayEnable(true, false, true, false),
-                "No equipped armor means relocation capacity does not matter");
-        assertTrue(MonkArmorLockRules.mayEnable(true, true, true, true),
-                "Allow only when every piece can be removed and transferred");
-        assertFalse(MonkArmorLockRules.mayEnable(true, true, true, false),
-                "Full storage must refuse rather than delete or drop armor");
-        assertFalse(MonkArmorLockRules.mayEnable(true, true, false, true),
-                "No curse bypass or unequip restriction bypass");
-        assertFalse(MonkArmorLockRules.mayEnable(false, false, true, true),
-                "Non-Monks cannot enable the Monk trait");
+    @Test void monkMayToggleOnEvenWithBoundGearOrNoInventorySpace() {
+        assertTrue(MonkArmorLockRules.mayToggle(true));
+        assertFalse(MonkArmorLockRules.mayToggle(false));
+        assertEquals(MonkArmorLockRules.EquippedItemAction.NONE,
+                MonkArmorLockRules.classifyWornItem(false, false, false, false));
+        assertEquals(MonkArmorLockRules.EquippedItemAction.RELOCATE_LOSSLESSLY,
+                MonkArmorLockRules.classifyWornItem(true, true, true, true));
+        assertEquals(MonkArmorLockRules.EquippedItemAction.WAIT_FOR_STORAGE,
+                MonkArmorLockRules.classifyWornItem(true, true, false, true),
+                "Normal armor in a full inventory stays worn, not destroyed");
+        assertEquals(MonkArmorLockRules.EquippedItemAction.WEAR_BOUND_ITEM,
+                MonkArmorLockRules.classifyWornItem(true, false, false, true),
+                "Curse of Binding armor wears whether or not the inventory has space");
+        assertEquals(MonkArmorLockRules.EquippedItemAction.WEAR_BOUND_ITEM,
+                MonkArmorLockRules.classifyWornItem(true, false, true, true));
+        assertEquals(MonkArmorLockRules.EquippedItemAction.KEEP_UNBREAKABLE_BOUND_ITEM,
+                MonkArmorLockRules.classifyWornItem(true, false, true, false),
+                "Non-damageable binding items cannot be magically broken");
     }
 
-    @Test void turningLockOffDoesNotMakeWornArmorLegalForMonkPowers() {
+    @Test void onlyBoundDamageableWornArmorTakesPeriodicWear() {
+        var wornBinding = MonkArmorLockRules.EquippedItemAction.WEAR_BOUND_ITEM;
+        for (var armorSlot : new MonkArmorLockRules.SlotKind[]{
+                MonkArmorLockRules.SlotKind.HEAD, MonkArmorLockRules.SlotKind.CHEST,
+                MonkArmorLockRules.SlotKind.LEGS, MonkArmorLockRules.SlotKind.FEET}) {
+            assertTrue(MonkArmorLockRules.shouldWearBoundItem(true, true, armorSlot, wornBinding));
+            assertFalse(MonkArmorLockRules.shouldWearBoundItem(true, false, armorSlot, wornBinding),
+                    "Turning OFF immediately stops added durability wear");
+            assertFalse(MonkArmorLockRules.shouldWearBoundItem(false, true, armorSlot, wornBinding));
+            assertFalse(MonkArmorLockRules.shouldWearBoundItem(true, true, armorSlot,
+                    MonkArmorLockRules.EquippedItemAction.WAIT_FOR_STORAGE));
+            assertFalse(MonkArmorLockRules.shouldWearBoundItem(true, true, armorSlot,
+                    MonkArmorLockRules.EquippedItemAction.KEEP_UNBREAKABLE_BOUND_ITEM));
+        }
+        assertFalse(MonkArmorLockRules.shouldWearBoundItem(true, true,
+                MonkArmorLockRules.SlotKind.CURIOS, wornBinding));
+        assertFalse(MonkArmorLockRules.shouldWearBoundItem(true, true,
+                MonkArmorLockRules.SlotKind.STORAGE, wornBinding));
+    }
+
+    @Test void defaultOneDurabilityWearAttemptEachSecondPerAffectedItem() {
+        assertEquals(20, MonkArmorLockRules.DEFAULT_BOUND_WEAR_INTERVAL_TICKS);
+        assertEquals(1, MonkArmorLockRules.DEFAULT_BOUND_WEAR_AMOUNT);
+        for (int tick = 0; tick < 100; tick++) {
+            assertEquals(tick % 20 == 0, MonkArmorLockRules.isWearTick(tick, 20));
+        }
+        assertFalse(MonkArmorLockRules.isWearTick(-1, 20));
+        assertFalse(MonkArmorLockRules.isWearTick(19, 20));
+        assertTrue(MonkArmorLockRules.isWearTick(20, 20));
+        assertThrows(IllegalArgumentException.class, () ->
+                MonkArmorLockRules.isWearTick(20, 0));
+        assertThrows(IllegalArgumentException.class, () ->
+                MonkArmorLockRules.isWearTick(20, -5));
+    }
+
+    @Test void wornArmorSuspendsPowersEvenWhileLockOnOrOff() {
         assertTrue(MonkArmorLockRules.monkPowerEligible(true, true, false, false));
-        assertTrue(MonkArmorLockRules.monkPowerEligible(true, false, false, false),
-                "A Monk without gear retains powers even with Armor Lock OFF");
-        assertFalse(MonkArmorLockRules.monkPowerEligible(true, false, false, true),
-                "Turning lock OFF is not permission to wear armor without penalty");
+        assertTrue(MonkArmorLockRules.monkPowerEligible(true, false, false, false));
+        assertFalse(MonkArmorLockRules.monkPowerEligible(true, false, false, true));
         assertFalse(MonkArmorLockRules.monkPowerEligible(true, true, false, true),
-                "Unexpected grave gear still suspends skills until reconciled");
-        assertFalse(MonkArmorLockRules.monkPowerEligible(true, true, true, false),
-                "Conventional held weapons still suppress Monk powers");
+                "Life Mending armor still disables Monk powers until broken");
+        assertFalse(MonkArmorLockRules.monkPowerEligible(true, true, true, false));
         assertFalse(MonkArmorLockRules.monkPowerEligible(false, false, false, false));
     }
 
-    @Test void armorAndFirstFistSlotAreIndependent() {
+    @Test void firstFistSlotIsIndependentOfArmorLockAndItsLethalTrap() {
         assertEquals(0, MonkFistSlotRules.DEFAULT_FIST_INDEX);
         assertFalse(MonkFistSlotRules.mayInsert(true, 0, 0));
         assertFalse(MonkArmorLockRules.mayEquip(true, true,
                 MonkArmorLockRules.SlotKind.FEET));
         assertTrue(MonkArmorLockRules.mayEquip(true, false,
                 MonkArmorLockRules.SlotKind.FEET));
-        assertFalse(MonkFistSlotRules.mayInsert(true, 0, 0),
-                "Turning OFF armor lock cannot release the reserved fist position");
+        assertFalse(MonkFistSlotRules.mayInsert(true, 0, 0));
     }
 }
