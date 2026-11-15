@@ -98,3 +98,12 @@ Never reclassify step 1 as steps 2–5.
 - **Compilation + arithmetic unit test PASS**: [GitHub Actions MXP ledger module](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43644249747). Covers fixed first rewards, ordinary divisor changes at award boundaries, resource normalization, high-level/fixed repeat exceptions, craft first-time divided behavior, transaction dedup, no-debit zero awards and fractional pending XP.
 - **Source pilot**: Psi 110 preSpellCast/spellCast script verifies actual paid cost and then grants MXP through Java; it is deliberately outside packwiz and still lacks client/server runtime confirmation. Demo boss-rule script is inactive; no values silently activated.
 - **Pending**: exact Tyz 6.4.2 ABI runtime, Java class-filter access in KubeJS, Source ADT signature in client/server, saved player data after reload/death, boss victory attribution, Ψ cost efficiency, and Ars/Iron's canonical payment settlement. No current distributed test-client build contains MXP.
+
+
+## MXP four-mod spending adapter / first-boss regression (2026-11-14)
+
+- **Source:** `feature/mxp-ars-irons-botania-neo-hooks`; committed real NeoForge mixins for Ars / Iron's / ANS, Botania Revived's player-item mana request handler, and Neo Vitae's Anima PostSyphon. The source contract is in [compat/mxp/SOURCE-HOOKS-2026-11-14.md](../compat/mxp/SOURCE-HOOKS-2026-11-14.md).
+- **Boss rule:** every first registered victory = 1,000 fixed effective MXP; only repeat reward and fixed-repeat exception configurable. Regression tests check first payout at P=125 and 500,000 portable mana baseline and item whitelist.
+- **Static validation:** Java module plus source-policy tests pass in [GitHub CI run 43661889592](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43661889592). Another run confirms the new implementation doc version; this is not a game launch.
+- **Not tested:** optional mixins on *actual* Ars Nouveau 5.13.5, Iron's 3.16.3, Ars 'n Spells 3.3.5, Botania Revived 2.0.2, Neo Vitae 1.1.53, or Tyz 6.4.2 client/server. Also untested: Curios inventory snapshot, cross-cast dedup, mana-funded worn-item repair, automation and module-ABI compatibility. No Prism ZIP/test release has been created.
+- **Neo baseline blocker:** `neovitae_ev_network_initial` defaults to 0 disabled because native Anima storage has no stable initial max; select the canonical equivalent pool before enabling in test config. Player's EV network PostSyphon includes automatic upkeep while online; confirm balance rule before survival deployment.
