@@ -1,5 +1,7 @@
 # Persistent player transformation compatibility — design proposal (2026-11-13)
 
+> **Superseded species-provider decisions (2026-11-15):** This document preserves historical B3/B6 observations and the general compatibility problem, **not the new provider target**. The approved future target removes TeamLapen Vampirism and Werewolves; **JAWR is the only vampire/lycanthrope provider**, with no port of removed mods' worldgen, raids or pets. Old Vampirism/JAWR dual ownership, Werewolves faction and TeamLapen Abomination assumptions below are historical. See [authoritative replacement](TEAM-LAPEN-RETIREMENT-TARGET-2026-11-15.md) and [Tyz skill migration audit](TEAM-LAPEN-SKILL-TREE-TRIAGE-2026-11-15.md). The current installed test build is unchanged.
+
 **Status: proposed architecture / research and acceptance gates, not an implemented feature or a decision to include Dragon Survival.** The current installed B3 pack does not include Dragon Survival, Vampirism, Werewolves, Goety or the other new candidate systems, except that **JAWR and JAWR: Forbidden Magic are already installed**. Do not claim this document makes transformations exclusive.
 
 ## The failure mode
