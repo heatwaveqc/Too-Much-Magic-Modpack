@@ -94,36 +94,128 @@
 	chapter.544D205000200000.chapter_subtitle: ["Explore ProjectE; more quests are being authored."]
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
-	quest.544D302000200001.title: "Chapter Overview"
-	quest.544D302000200001.quest_desc: ["An introduction to Advanced Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D505000100000.title: "Map Out Your Infrastructure"
-	quest.544D505000100000.quest_desc: ["A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network."]
-	quest.544D505000200000.title: "Install an Enchanting Table"
-	quest.544D505000200000.quest_desc: ["Craft an enchanting table, add bookshelves when convenient, and compare enchantments to spellcasting upgrades. Apotheosis has deeper enchantment mechanics in its own chapter."]
-	quest.544D505000300000.title: "Bring an Anvil"
-	quest.544D505000300000.quest_desc: ["Craft an anvil for conventional repairs, naming, and combining compatible enchantments. This supplements magical equipment rather than replacing its unique upgrades."]
-	quest.544D505000400000.title: "Build a Brewing Stand"
-	quest.544D505000400000.quest_desc: ["Craft a brewing stand and explore potion recipes. Potion and herb-based systems also have specialized paths in Witchcraft, Hexerei and other chapters."]
-	quest.544D505000500000.title: "Build a Portal Reserve"
-	quest.544D505000500000.quest_desc: ["Bring ten obsidian for a safe portal or important construction work. Consider well-lit, protected portal sites; dimensions remain separate exploration branches."]
-	quest.544D505000600000.title: "Keep an Ender Chest"
-	quest.544D505000600000.quest_desc: ["Craft an Ender Chest for vanilla portable access to a personal inventory. Occultism remains the pack's featured expandable magical storage path, and generic item logistics networks remain excluded."]
-	quest.544D505000700000.title: "Recover Ancient Debris Products"
-	quest.544D505000700000.quest_desc: ["Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials."]
-	quest.544D505000800000.title: "Construct a Lodestone"
-	quest.544D505000800000.quest_desc: ["Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones."]
-	quest.544D505000900000.title: "Understand Summoning Rituals"
-	quest.544D505000900000.quest_desc: ["Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested."]
-	quest.544D505000A00000.title: "Prepare a Protected Ritual Chamber"
-	quest.544D505000A00000.quest_desc: ["Reserve sufficient space for multiblocks, separate hazardous machinery, and keep vulnerable farms and storage away from explosive experiments. This is a planning checkmark, not an automated claim that a structure exists."]
-	quest.544D304000500001.title: "Chapter Overview"
-	quest.544D304000500001.quest_desc: ["An introduction to Apotheosis in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303000100001.title: "Chapter Overview"
-	quest.544D303000100001.quest_desc: ["An introduction to Ars Nouveau in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000600001.title: "Chapter Overview"
-	quest.544D304000600001.quest_desc: ["An introduction to Artifacts in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303000200001.title: "Chapter Overview"
-	quest.544D303000200001.quest_desc: ["An introduction to Astral Sorcery in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D301000100001.title: "Welcome to Too Much Magic"
+	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it."]
+	quest.544D4D1100000001.title: "Punch a Tree"
+	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
+	quest.544D501000300000.title: "Make a Crafting Table"
+	quest.544D501000300000.quest_desc: ["Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."]
+	quest.544D501001300000.title: "Choose Your First Path"
+	quest.544D501001300000.quest_desc: ["Choose one starter gift for a path you want to try: Ars Nouveau, Iron's Spells, fishing, Botania, Occultism or exploration. This one-time personal reward does not lock a class. You may pursue every other magic mod later. An empty spellbook may still need spells or scrolls before you can cast."]
+	quest.544D501000400000.title: "Make a Wooden Pickaxe"
+	quest.544D501000400000.quest_desc: ["Craft your first wooden pickaxe. Ordinary tools are an easy way to get established before specializing in magic."]
+	quest.544D501000500000.title: "Gather Stone"
+	quest.544D501000500000.quest_desc: ["Collect sixteen cobblestone. Stone is useful for your first shelter, tools and furnace."]
+	quest.544D501000600000.title: "Upgrade to Stone"
+	quest.544D501000600000.quest_desc: ["Make a stone pickaxe so you can mine sturdier resources."]
+	quest.544D501000700000.title: "A Place for Your Things"
+	quest.544D501000700000.quest_desc: ["Craft a chest for early base storage. Magic eventually offers more specialized options than generic storage networks."]
+	quest.544D501000800000.title: "Light the Furnace"
+	quest.544D501000800000.quest_desc: ["Craft a furnace. Smelting remains useful alongside later magical processing."]
+	quest.544D501000900000.title: "Find Your First Iron"
+	quest.544D501000900000.quest_desc: ["Bring back three raw iron. Magical mining and transmutation will eventually provide alternatives."]
+	quest.544D501000A00000.title: "Iron Pickaxe"
+	quest.544D501000A00000.quest_desc: ["Craft an iron pickaxe. You now have the baseline tools to choose your first magical specialty."]
+	quest.544D501000B00000.title: "Begin a Library"
+	quest.544D501000B00000.quest_desc: ["Craft a book to begin collecting magical research and manuals. Akashic Tome can organize compatible guides without replacing each school's progression."]
+	quest.544D501000C00000.title: "Build a Bookshelf"
+	quest.544D501000C00000.quest_desc: ["Craft a bookshelf to establish a magical research corner. Bookshelves also appear in early Scriptor Magicae tools. The spellbook and world-specific magical vocabulary must still be acquired or discovered."]
+	quest.544D501000D00000.title: "Prepare a Field Kit"
+	quest.544D501000D00000.quest_desc: ["Make a barrel for sorting the ingredients, tools and supplies you carry between your first magical projects. This is a practical storage milestone, not a requirement to specialize in any particular school."]
+	quest.544D501000E00000.title: "Build a Research Lectern"
+	quest.544D501000E00000.quest_desc: ["Craft a lectern for your early magical library. This is the ordinary Minecraft lectern; Scriptor Magicae has a separate Casting Lectern for fuel-free smelting. Check JEI before confusing the two."]
+	quest.544D501000F00000.title: "Try a First Spell or Ritual"
+	quest.544D501000F00000.quest_desc: ["Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools."]
+	quest.544D501001000000.title: "A Little Protection"
+	quest.544D501001000000.quest_desc: ["Craft an iron chestplate for dangerous exploring. This is optional: players who prefer farming, research or base magic can progress without rushing combat."]
+	quest.544D501001100000.title: "Scout with a Spyglass"
+	quest.544D501001100000.quest_desc: ["Use copper and amethyst to build a spyglass for scouting structures and terrain. This is an optional exploration aid; you can still prefer base magic, rituals or farming."]
+	quest.544D501001200000.title: "Chart Your Next Journey"
+	quest.544D501001200000.quest_desc: ["Use an empty map to create a filled map of your next destination. The quest book provides independent paths through every magic school; this optional task concludes onboarding without locking your choices."]
+	quest.544D301000200001.title: "Tips \\& Tricks Index"
+	quest.544D301000200001.quest_desc: ["These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."]
+	quest.544D502000200000.title: "Find Recipes with JEI"
+	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
+	quest.544D502000300000.title: "Identify Blocks with Jade"
+	quest.544D502000300000.quest_desc: ["Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information."]
+	quest.544D502000400000.title: "Sort Your Inventory"
+	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling."]
+	quest.544D502000500000.title: "Use Crafting Tweaks"
+	quest.544D502000500000.quest_desc: ["Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface."]
+	quest.544D502000600000.title: "Search the Controls Screen"
+	quest.544D502000600000.quest_desc: ["Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles."]
+	quest.544D502000700000.title: "Gather Your Guidebooks"
+	quest.544D502000700000.quest_desc: ["Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually."]
+	quest.544D502000800000.title: "Curios and Portable Bags"
+	quest.544D502000800000.quest_desc: ["Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release."]
+	quest.544D502000900000.title: "Claim Your Base"
+	quest.544D502000900000.quest_desc: ["Use FTB Chunks to claim an area around your base. Chunk loading depends on server settings; protection and backups solve different problems."]
+	quest.544D502000A00000.title: "Understand Lootr Chests"
+	quest.544D502000A00000.quest_desc: ["Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container."]
+	quest.544D502000B00000.title: "Plan for Death"
+	quest.544D502000B00000.quest_desc: ["Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review."]
+	quest.544D502000C00000.title: "Search Biomes"
+	quest.544D502000C00000.quest_desc: ["Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system."]
+	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
+	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
+	quest.544D502000E00000.title: "Understand Character Growth"
+	quest.544D502000E00000.quest_desc: ["Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."]
+	quest.544D502000F00000.title: "Zoom and Overlay Controls"
+	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
+	quest.544D502001000000.title: "Use the Quest Shop"
+	quest.544D502001000000.quest_desc: ["Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."]
+	quest.544D502001100000.title: "Smelt Without Fuel: Scriptor Lectern"
+	quest.544D502001100000.quest_desc: ["Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."]
+	quest.544D502001200000.title: "Double Raw Ore: Occultism or Mahou?"
+	quest.544D502001200000.quest_desc: ["Occultism's early Foliot Crusher turns supported raw ores into two dusts after its first spirit ritual; confirm that these dusts smelt in our pack. Mahou Tsukai's Mortar and Pestle presently produces two catalyst powders from ingots/gems, NOT two smeltable ingots from one raw ore. Our planned ore/dust unification is separate unfinished compatibility work. The cursed EvilCraft Vengeance Pickaxe boosts mined drops through Fortune instead of doubling furnace input."]
+	quest.544D502001300000.title: "Need Early Flight? Compare Brooms"
+	quest.544D502001300000.quest_desc: ["EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls."]
+	quest.544D502001400000.title: "Vengeance Pickaxe: Fortune with a Price"
+	quest.544D502001400000.quest_desc: ["EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions."]
+	quest.544D301000300001.title: "Food \\& Fishing Index"
+	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
+	quest.544D503000200000.title: "Start with Seeds"
+	quest.544D503000200000.quest_desc: ["Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore."]
+	quest.544D503000300000.title: "Prepare a Field"
+	quest.544D503000300000.quest_desc: ["Craft a stone hoe to till farmland. Harvest with Ease can make managing mature crops simpler."]
+	quest.544D503000400000.title: "Bring in the Wheat"
+	quest.544D503000400000.quest_desc: ["Harvest four wheat. Ordinary grains form a foundation for many more elaborate meals."]
+	quest.544D503000500000.title: "A Patch of Sugar Cane"
+	quest.544D503000500000.quest_desc: ["Collect three sugar cane. Sugar and paper support cooking and magic books."]
+	quest.544D503000600000.title: "Raise a Chicken Dinner"
+	quest.544D503000600000.quest_desc: ["Acquire raw chicken. Farmer's Delight and Pam's HarvestCraft offer cooking options beyond simple smelting."]
+	quest.544D503000700000.title: "Gather Eggs"
+	quest.544D503000700000.quest_desc: ["Collect two eggs for cooking recipes."]
+	quest.544D503000800000.title: "Fresh Milk"
+	quest.544D503000800000.quest_desc: ["Get a bucket of milk. Many recipes need useful basic farm products as well as exotic ingredients."]
+	quest.544D503000900000.title: "Ready Your Fishing Rod"
+	quest.544D503000900000.quest_desc: ["Craft a fishing rod and start exploring another renewable food route."]
+	quest.544D503000A00000.title: "Catch a Cod"
+	quest.544D503000A00000.quest_desc: ["Catch cod using a rod. A small fishing expedition can feed a player before a serious farm is built."]
+	quest.544D503000B00000.title: "Catch a Salmon"
+	quest.544D503000B00000.quest_desc: ["Catch salmon in suitable water. Aquaculture expands this side of the game."]
+	quest.544D503000C00000.title: "Aquaculture: Iron Rod"
+	quest.544D503000C00000.quest_desc: ["Craft Aquaculture 2's iron fishing rod. Use JEI for its current exact recipe."]
+	quest.544D503000D00000.title: "Aquaculture: Gold Rod"
+	quest.544D503000D00000.quest_desc: ["Progress to an Aquaculture gold fishing rod. This is a distinct milestone, not another copy of the iron-rod objective."]
+	quest.544D503000E00000.title: "Aquaculture: Neptunium Rod"
+	quest.544D503000E00000.quest_desc: ["Obtain the rare Neptunium fishing rod as an optional long-term goal rather than an early prerequisite."]
+	quest.544D503000F00000.title: "Light a Campfire"
+	quest.544D503000F00000.quest_desc: ["Craft a campfire to cook basic food on the road."]
+	quest.544D503001000000.title: "Farmer's Delight: Cutting Board"
+	quest.544D503001000000.quest_desc: ["Craft Farmer's Delight's cutting board to prepare ingredients outside the normal crafting grid."]
+	quest.544D503001100000.title: "Farmer's Delight: Cooking Pot"
+	quest.544D503001100000.quest_desc: ["Make a cooking pot and use it with heat and ingredients for more satisfying meals."]
+	quest.544D503001200000.title: "Find the Seed Market"
+	quest.544D503001200000.quest_desc: ["Craft Farming for Blockheads' Market for ordinary seed and sapling trades. Magical seed trades must be audited before survival release."]
+	quest.544D503001300000.title: "Pam's HarvestCraft: Fried Chicken"
+	quest.544D503001300000.quest_desc: ["Craft a finished Fried Chicken from Pam's HarvestCraft 2 Food Core. A useful optional cooking challenge."]
+	quest.544D503001400000.title: "Pam's HarvestCraft: Starfruit"
+	quest.544D503001400000.quest_desc: ["Obtain starfruit from Pam's HarvestCraft 2 Trees, showcasing specialty plants and orchard progression."]
+	quest.544D503001500000.title: "Cooking for Blockheads: Cooking Table"
+	quest.544D503001500000.quest_desc: ["Build the Cooking Table to discover dishes available from nearby kitchen ingredients. Cooking for Blockheads works alongside Farmer's Delight and Pam's HarvestCraft, expanding an organized base kitchen."]
+	quest.544D503001600000.title: "Cooking for Blockheads: Oven"
+	quest.544D503001600000.quest_desc: ["Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen."]
 	quest.544D302000100001.title: "Chapter Overview"
 	quest.544D302000100001.quest_desc: ["An introduction to Basic Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D504000100000.title: "Sell Copper I — First Trade"
@@ -170,18 +262,28 @@
 	quest.544D504001500000.quest_desc: ["Acquire a blaze rod in the Nether. The Nether is one of several routes toward stronger magical ingredients and more dangerous encounters; this objective does not duplicate a specialist chapter's spellcasting milestone."]
 	quest.544D504001600000.title: "Gather Ender Pearls"
 	quest.544D504001600000.quest_desc: ["Collect four ender pearls. They support teleportation, several magical recipes and preparation for eventual End exploration."]
-	quest.544D303000300001.title: "Chapter Overview"
-	quest.544D303000300001.quest_desc: ["An introduction to Botania Revived in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000200001.title: "Chapter Overview"
-	quest.544D304000200001.quest_desc: ["An introduction to Deeper and Darker in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D305000100001.title: "Chapter Overview"
-	quest.544D305000100001.quest_desc: ["An introduction to Draconic Evolution in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303000400001.title: "Chapter Overview"
-	quest.544D303000400001.quest_desc: ["An introduction to Eidolon: Repraised in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303001800001.title: "Chapter Overview"
-	quest.544D303001800001.quest_desc: ["An introduction to Embers Re-Ignited in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303000500001.title: "Chapter Overview"
-	quest.544D303000500001.quest_desc: ["An introduction to Enchanted: Witchcraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000200001.title: "Chapter Overview"
+	quest.544D302000200001.quest_desc: ["An introduction to Advanced Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D505000100000.title: "Map Out Your Infrastructure"
+	quest.544D505000100000.quest_desc: ["A developed magical base benefits from a few focused work areas: enchanting and potions, ritual floors, stable item storage, and safe power machinery. Many schools are independent; there is no mandatory universal industrial network."]
+	quest.544D505000200000.title: "Install an Enchanting Table"
+	quest.544D505000200000.quest_desc: ["Craft an enchanting table, add bookshelves when convenient, and compare enchantments to spellcasting upgrades. Apotheosis has deeper enchantment mechanics in its own chapter."]
+	quest.544D505000300000.title: "Bring an Anvil"
+	quest.544D505000300000.quest_desc: ["Craft an anvil for conventional repairs, naming, and combining compatible enchantments. This supplements magical equipment rather than replacing its unique upgrades."]
+	quest.544D505000400000.title: "Build a Brewing Stand"
+	quest.544D505000400000.quest_desc: ["Craft a brewing stand and explore potion recipes. Potion and herb-based systems also have specialized paths in Witchcraft, Hexerei and other chapters."]
+	quest.544D505000500000.title: "Build a Portal Reserve"
+	quest.544D505000500000.quest_desc: ["Bring ten obsidian for a safe portal or important construction work. Consider well-lit, protected portal sites; dimensions remain separate exploration branches."]
+	quest.544D505000600000.title: "Keep an Ender Chest"
+	quest.544D505000600000.quest_desc: ["Craft an Ender Chest for vanilla portable access to a personal inventory. Occultism remains the pack's featured expandable magical storage path, and generic item logistics networks remain excluded."]
+	quest.544D505000700000.title: "Recover Ancient Debris Products"
+	quest.544D505000700000.quest_desc: ["Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials."]
+	quest.544D505000800000.title: "Construct a Lodestone"
+	quest.544D505000800000.quest_desc: ["Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones."]
+	quest.544D505000900000.title: "Understand Summoning Rituals"
+	quest.544D505000900000.quest_desc: ["Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested."]
+	quest.544D505000A00000.title: "Prepare a Protected Ritual Chamber"
+	quest.544D505000A00000.quest_desc: ["Reserve sufficient space for multiblocks, separate hazardous machinery, and keep vulnerable farms and storage away from explosive experiments. This is a planning checkmark, not an automated claim that a structure exists."]
 	quest.544D302000300001.title: "Chapter Overview"
 	quest.544D302000300001.quest_desc: ["An introduction to Endgame Roadmap in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D506000100000.title: "Roadmap: Read Before the Endgame"
@@ -196,10 +298,22 @@
 	quest.544D506000500000.quest_desc: ["Defeating the Chaos Guardian must precede every usable ProjectE and Project Expansion acquisition or function. This is a rule for actual gameplay enforcement, not something a checked roadmap page can unlock. The boss objective belongs to Draconic Evolution's Endgame chapter."]
 	quest.544D506000600000.title: "Roadmap: What Unlocks Afterwards"
 	quest.544D506000600000.quest_desc: ["After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded."]
-	quest.544D304000700001.title: "Chapter Overview"
-	quest.544D304000700001.quest_desc: ["An introduction to Enigmatic Legacy+ in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303000600001.title: "Chapter Overview"
-	quest.544D303000600001.quest_desc: ["An introduction to EvilCraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.title: "Chapter Overview"
+	quest.544D302000400001.quest_desc: ["An introduction to Skills \\& Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D507000100000.title: "Read the Two Skill Systems"
+	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
+	quest.544D507000200000.title: "Open the Skill Interface"
+	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
+	quest.544D507000300000.title: "Understand Attributes"
+	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
+	quest.544D507000400000.title: "Experiment with Improvable Skills"
+	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
+	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
+	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
+	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
+	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
+	quest.544D507000700000.title: "Choose How to Specialize"
+	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
 	quest.544D302000500001.title: "Chapter Overview"
 	quest.544D302000500001.quest_desc: ["An introduction to Exceptional Power: Reactors in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
@@ -266,104 +380,28 @@
 	quest.544D508001F00000.quest_desc: ["On a disposable world, plan a remote reactor site away from your base and important chunks. Separate high-output extraction from containment-field input, add controlled Flux Gate paths and a sufficient battery buffer. A reactor field collapse or runaway heat can destroy the area; do not treat this as safe baseline generation."]
 	quest.544D508002000000.title: "Operate a Draconic Reactor Safely"
 	quest.544D508002000000.quest_desc: ["Only after the structure and sufficient fuel are assembled: monitor temperature, containment field strength, fuel conversion and energy saturation. Start with conservative settings, verify field power is sustained under peak load, and test emergency shutdown in an expendable world. This checkmark is a *manual safety acknowledgment*; it does not certify actual reactor telemetry."]
-	quest.544D304000400001.title: "Chapter Overview"
-	quest.544D304000400001.quest_desc: ["An introduction to Feywild in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D301000300001.title: "Food \\& Fishing Index"
-	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
-	quest.544D503000200000.title: "Start with Seeds"
-	quest.544D503000200000.quest_desc: ["Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore."]
-	quest.544D503000300000.title: "Prepare a Field"
-	quest.544D503000300000.quest_desc: ["Craft a stone hoe to till farmland. Harvest with Ease can make managing mature crops simpler."]
-	quest.544D503000400000.title: "Bring in the Wheat"
-	quest.544D503000400000.quest_desc: ["Harvest four wheat. Ordinary grains form a foundation for many more elaborate meals."]
-	quest.544D503000500000.title: "A Patch of Sugar Cane"
-	quest.544D503000500000.quest_desc: ["Collect three sugar cane. Sugar and paper support cooking and magic books."]
-	quest.544D503000600000.title: "Raise a Chicken Dinner"
-	quest.544D503000600000.quest_desc: ["Acquire raw chicken. Farmer's Delight and Pam's HarvestCraft offer cooking options beyond simple smelting."]
-	quest.544D503000700000.title: "Gather Eggs"
-	quest.544D503000700000.quest_desc: ["Collect two eggs for cooking recipes."]
-	quest.544D503000800000.title: "Fresh Milk"
-	quest.544D503000800000.quest_desc: ["Get a bucket of milk. Many recipes need useful basic farm products as well as exotic ingredients."]
-	quest.544D503000900000.title: "Ready Your Fishing Rod"
-	quest.544D503000900000.quest_desc: ["Craft a fishing rod and start exploring another renewable food route."]
-	quest.544D503000A00000.title: "Catch a Cod"
-	quest.544D503000A00000.quest_desc: ["Catch cod using a rod. A small fishing expedition can feed a player before a serious farm is built."]
-	quest.544D503000B00000.title: "Catch a Salmon"
-	quest.544D503000B00000.quest_desc: ["Catch salmon in suitable water. Aquaculture expands this side of the game."]
-	quest.544D503000C00000.title: "Aquaculture: Iron Rod"
-	quest.544D503000C00000.quest_desc: ["Craft Aquaculture 2's iron fishing rod. Use JEI for its current exact recipe."]
-	quest.544D503000D00000.title: "Aquaculture: Gold Rod"
-	quest.544D503000D00000.quest_desc: ["Progress to an Aquaculture gold fishing rod. This is a distinct milestone, not another copy of the iron-rod objective."]
-	quest.544D503000E00000.title: "Aquaculture: Neptunium Rod"
-	quest.544D503000E00000.quest_desc: ["Obtain the rare Neptunium fishing rod as an optional long-term goal rather than an early prerequisite."]
-	quest.544D503000F00000.title: "Light a Campfire"
-	quest.544D503000F00000.quest_desc: ["Craft a campfire to cook basic food on the road."]
-	quest.544D503001000000.title: "Farmer's Delight: Cutting Board"
-	quest.544D503001000000.quest_desc: ["Craft Farmer's Delight's cutting board to prepare ingredients outside the normal crafting grid."]
-	quest.544D503001100000.title: "Farmer's Delight: Cooking Pot"
-	quest.544D503001100000.quest_desc: ["Make a cooking pot and use it with heat and ingredients for more satisfying meals."]
-	quest.544D503001200000.title: "Find the Seed Market"
-	quest.544D503001200000.quest_desc: ["Craft Farming for Blockheads' Market for ordinary seed and sapling trades. Magical seed trades must be audited before survival release."]
-	quest.544D503001300000.title: "Pam's HarvestCraft: Fried Chicken"
-	quest.544D503001300000.quest_desc: ["Craft a finished Fried Chicken from Pam's HarvestCraft 2 Food Core. A useful optional cooking challenge."]
-	quest.544D503001400000.title: "Pam's HarvestCraft: Starfruit"
-	quest.544D503001400000.quest_desc: ["Obtain starfruit from Pam's HarvestCraft 2 Trees, showcasing specialty plants and orchard progression."]
-	quest.544D503001500000.title: "Cooking for Blockheads: Cooking Table"
-	quest.544D503001500000.quest_desc: ["Build the Cooking Table to discover dishes available from nearby kitchen ingredients. Cooking for Blockheads works alongside Farmer's Delight and Pam's HarvestCraft, expanding an organized base kitchen."]
-	quest.544D503001600000.title: "Cooking for Blockheads: Oven"
-	quest.544D503001600000.quest_desc: ["Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen."]
+	quest.544D303000100001.title: "Chapter Overview"
+	quest.544D303000100001.quest_desc: ["An introduction to Ars Nouveau in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000200001.title: "Chapter Overview"
+	quest.544D303000200001.quest_desc: ["An introduction to Astral Sorcery in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000300001.title: "Chapter Overview"
+	quest.544D303000300001.quest_desc: ["An introduction to Botania Revived in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000400001.title: "Chapter Overview"
+	quest.544D303000400001.quest_desc: ["An introduction to Eidolon: Repraised in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000500001.title: "Chapter Overview"
+	quest.544D303000500001.quest_desc: ["An introduction to Enchanted: Witchcraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000600001.title: "Chapter Overview"
+	quest.544D303000600001.quest_desc: ["An introduction to EvilCraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000700001.title: "Chapter Overview"
-	quest.544D303000700001.quest_desc: ["An introduction to Forbidden \\& Arcanus in Too Much Magic.","This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000300001.title: "Chapter Overview"
-	quest.544D304000300001.quest_desc: ["An introduction to Gateways to Eternity in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000700001.quest_desc: ["An introduction to Forbidden \\& Arcanus in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000800001.title: "Chapter Overview"
 	quest.544D303000800001.quest_desc: ["An introduction to Goety in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000900001.title: "Chapter Overview"
 	quest.544D303000900001.quest_desc: ["An introduction to Hex Casting in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000A00001.title: "Chapter Overview"
 	quest.544D303000A00001.quest_desc: ["An introduction to Hexerei in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D301000100001.title: "Welcome to Too Much Magic"
-	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it."]
-	quest.544D4D1100000001.title: "Punch a Tree"
-	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
-	quest.544D501000300000.title: "Make a Crafting Table"
-	quest.544D501000300000.quest_desc: ["Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."]
-	quest.544D501000400000.title: "Make a Wooden Pickaxe"
-	quest.544D501000400000.quest_desc: ["Craft your first wooden pickaxe. Ordinary tools are an easy way to get established before specializing in magic."]
-	quest.544D501000500000.title: "Gather Stone"
-	quest.544D501000500000.quest_desc: ["Collect sixteen cobblestone. Stone is useful for your first shelter, tools and furnace."]
-	quest.544D501000600000.title: "Upgrade to Stone"
-	quest.544D501000600000.quest_desc: ["Make a stone pickaxe so you can mine sturdier resources."]
-	quest.544D501000700000.title: "A Place for Your Things"
-	quest.544D501000700000.quest_desc: ["Craft a chest for early base storage. Magic eventually offers more specialized options than generic storage networks."]
-	quest.544D501000800000.title: "Light the Furnace"
-	quest.544D501000800000.quest_desc: ["Craft a furnace. Smelting remains useful alongside later magical processing."]
-	quest.544D501000900000.title: "Find Your First Iron"
-	quest.544D501000900000.quest_desc: ["Bring back three raw iron. Magical mining and transmutation will eventually provide alternatives."]
-	quest.544D501000A00000.title: "Iron Pickaxe"
-	quest.544D501000A00000.quest_desc: ["Craft an iron pickaxe. You now have the baseline tools to choose your first magical specialty."]
-	quest.544D501000B00000.title: "Begin a Library"
-	quest.544D501000B00000.quest_desc: ["Craft a book to begin collecting magical research and manuals. Akashic Tome can organize compatible guides without replacing each school's progression."]
-	quest.544D501000C00000.title: "Build a Bookshelf"
-	quest.544D501000C00000.quest_desc: ["Craft a bookshelf to establish a magical research corner. Bookshelves also appear in early Scriptor Magicae tools. The spellbook and world-specific magical vocabulary must still be acquired or discovered."]
-	quest.544D501000D00000.title: "Iron Is Only the Beginning"
-	quest.544D501000D00000.quest_desc: ["An iron pickaxe is a baseline, not a finish line. Choose spellcasting, rituals, magical mining, farming or exploration. Basic Progression covers shared goals; Magic chapters cover individual schools. You do not need to master all 25 magical traditions."]
-	quest.544D501000E00000.title: "Find an Everyday Magical Shortcut"
-	quest.544D501000E00000.quest_desc: ["Look through Tips \\& Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you."]
-	quest.544D501000F00000.title: "Try a First Spell or Ritual"
-	quest.544D501000F00000.quest_desc: ["Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools."]
-	quest.544D501001000000.title: "A Little Protection"
-	quest.544D501001000000.quest_desc: ["Craft an iron chestplate for dangerous exploring. This is optional: players who prefer farming, research or base magic can progress without rushing combat."]
-	quest.544D501001100000.title: "Take Your Magic Into the World"
-	quest.544D501001100000.quest_desc: ["Explore beyond your base for structures, new biomes and useful materials. Nature's Compass, FTB Chunks, your Trinkets Pouch and the exploration chapters all help. You may also specialize in base building without following every dungeon branch."]
-	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
-	quest.544D501001200000.quest_desc: ["Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration \\& Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."]
 	quest.544D303000B00001.title: "Chapter Overview"
 	quest.544D303000B00001.quest_desc: ["An introduction to Iron's Spells 'n Spellbooks in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303001700001.title: "Chapter Overview"
-	quest.544D303001700001.quest_desc: ["An introduction to Just Another Witchery Remake in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000100001.title: "Chapter Overview"
-	quest.544D304000100001.quest_desc: ["An introduction to L_Ender's Cataclysm in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000C00001.title: "Chapter Overview"
 	quest.544D303000C00001.quest_desc: ["An introduction to Mahou Tsukai in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000D00001.title: "Chapter Overview"
@@ -376,80 +414,44 @@
 	quest.544D303001000001.quest_desc: ["An introduction to Pastel in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001100001.title: "Chapter Overview"
 	quest.544D303001100001.quest_desc: ["An introduction to Primal Magick in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D305000200001.title: "Chapter Overview"
-	quest.544D305000200001.quest_desc: ["An introduction to ProjectE in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001200001.title: "Chapter Overview"
 	quest.544D303001200001.quest_desc: ["An introduction to Psi in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303001900001.title: "Chapter Overview"
-	quest.544D303001900001.quest_desc: ["An introduction to Reliquary Reincarnations in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D305000300001.title: "Chapter Overview"
-	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001300001.title: "Chapter Overview"
 	quest.544D303001300001.quest_desc: ["An introduction to Roots Classic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001400001.title: "Chapter Overview"
 	quest.544D303001400001.quest_desc: ["An introduction to Scriptor Magicae in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills \\& Advancement in Too Much Magic.","This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D507000100000.title: "Read the Two Skill Systems"
-	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
-	quest.544D507000200000.title: "Open the Skill Interface"
-	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
-	quest.544D507000300000.title: "Understand Attributes"
-	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
-	quest.544D507000400000.title: "Experiment with Improvable Skills"
-	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
-	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
-	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
-	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
-	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
-	quest.544D507000700000.title: "Choose How to Specialize"
-	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
 	quest.544D303001500001.title: "Chapter Overview"
 	quest.544D303001500001.quest_desc: ["An introduction to Theurgy in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D301000200001.title: "Tips \\& Tricks Index"
-	quest.544D301000200001.quest_desc: ["These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."]
-	quest.544D502000200000.title: "Find Recipes with JEI"
-	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
-	quest.544D502000300000.title: "Identify Blocks with Jade"
-	quest.544D502000300000.quest_desc: ["Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information."]
-	quest.544D502000400000.title: "Sort Your Inventory"
-	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling."]
-	quest.544D502000500000.title: "Use Crafting Tweaks"
-	quest.544D502000500000.quest_desc: ["Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface."]
-	quest.544D502000600000.title: "Search the Controls Screen"
-	quest.544D502000600000.quest_desc: ["Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles."]
-	quest.544D502000700000.title: "Gather Your Guidebooks"
-	quest.544D502000700000.quest_desc: ["Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually."]
-	quest.544D502000800000.title: "Curios and Portable Bags"
-	quest.544D502000800000.quest_desc: ["Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release."]
-	quest.544D502000900000.title: "Claim Your Base"
-	quest.544D502000900000.quest_desc: ["Use FTB Chunks to claim an area around your base. Chunk loading depends on server settings; protection and backups solve different problems."]
-	quest.544D502000A00000.title: "Understand Lootr Chests"
-	quest.544D502000A00000.quest_desc: ["Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container."]
-	quest.544D502000B00000.title: "Plan for Death"
-	quest.544D502000B00000.quest_desc: ["Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review."]
-	quest.544D502000C00000.title: "Search Biomes"
-	quest.544D502000C00000.quest_desc: ["Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system."]
-	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
-	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
-	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."]
-	quest.544D502000F00000.title: "Zoom and Overlay Controls"
-	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
-	quest.544D502001000000.title: "Use the Quest Shop"
-	quest.544D502001000000.quest_desc: ["Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."]
-	quest.544D502001100000.title: "Smelt Without Fuel: Scriptor Lectern"
-	quest.544D502001100000.quest_desc: ["Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."]
-	quest.544D502001200000.title: "Double Raw Ore: Occultism or Mahou?"
-	quest.544D502001200000.quest_desc: ["Occultism's early Foliot Crusher turns supported raw ores into two dusts after its first spirit ritual; confirm that these dusts smelt in our pack. Mahou Tsukai's Mortar and Pestle presently produces two catalyst powders from ingots/gems, NOT two smeltable ingots from one raw ore. Our planned ore/dust unification is separate unfinished compatibility work. The cursed EvilCraft Vengeance Pickaxe boosts mined drops through Fortune instead of doubling furnace input."]
-	quest.544D502001300000.title: "Need Early Flight? Compare Brooms"
-	quest.544D502001300000.quest_desc: ["EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls."]
-	quest.544D502001400000.title: "Vengeance Pickaxe: Fortune with a Price"
-	quest.544D502001400000.quest_desc: ["EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions."]
 	quest.544D303001600001.title: "Chapter Overview"
 	quest.544D303001600001.quest_desc: ["An introduction to Totemic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001700001.title: "Chapter Overview"
+	quest.544D303001700001.quest_desc: ["An introduction to Just Another Witchery Remake in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001800001.title: "Chapter Overview"
+	quest.544D303001800001.quest_desc: ["An introduction to Embers Re-Ignited in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001900001.title: "Chapter Overview"
+	quest.544D303001900001.quest_desc: ["An introduction to Reliquary Reincarnations in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000100001.title: "Chapter Overview"
+	quest.544D304000100001.quest_desc: ["An introduction to L_Ender's Cataclysm in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000200001.title: "Chapter Overview"
+	quest.544D304000200001.quest_desc: ["An introduction to Deeper and Darker in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000300001.title: "Chapter Overview"
+	quest.544D304000300001.quest_desc: ["An introduction to Gateways to Eternity in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000400001.title: "Chapter Overview"
+	quest.544D304000400001.quest_desc: ["An introduction to Feywild in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000500001.title: "Chapter Overview"
+	quest.544D304000500001.quest_desc: ["An introduction to Apotheosis in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000600001.title: "Chapter Overview"
+	quest.544D304000600001.quest_desc: ["An introduction to Artifacts in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D304000700001.title: "Chapter Overview"
+	quest.544D304000700001.quest_desc: ["An introduction to Enigmatic Legacy+ in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000800001.title: "Chapter Overview"
 	quest.544D304000800001.quest_desc: ["An introduction to Vampirism in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000900001.title: "Chapter Overview"
 	quest.544D304000900001.quest_desc: ["An introduction to Werewolves in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D305000100001.title: "Chapter Overview"
+	quest.544D305000100001.quest_desc: ["An introduction to Draconic Evolution in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D305000200001.title: "Chapter Overview"
+	quest.544D305000200001.quest_desc: ["An introduction to ProjectE in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D305000300001.title: "Chapter Overview"
+	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 }

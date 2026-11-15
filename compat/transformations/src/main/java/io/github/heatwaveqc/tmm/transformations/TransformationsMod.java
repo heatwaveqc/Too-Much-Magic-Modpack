@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations;
 
 import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
+import io.github.heatwaveqc.tmm.transformations.mob.MobAllianceEvents;
 import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
 import io.github.heatwaveqc.tmm.transformations.adapters.VampirismFactionProbe;
 import io.github.heatwaveqc.tmm.transformations.command.TransformationCommands;
@@ -34,6 +35,7 @@ public final class TransformationsMod {
         VampireFactionEvents.register();
         JAWRDefenseEvents.register();
         VampireLifecycleEvents.register();
+        MobAllianceEvents.register();
         LOGGER.warn("Experimental vampire chassis loaded; mutation, acquisition and cure are OFF by default. Death/appearance remain untouched.");
     }
 }

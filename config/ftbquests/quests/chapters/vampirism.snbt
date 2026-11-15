@@ -16,7 +16,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D904000800001", type: "xp", xp: 2 }
-				{ id: "544DA04000800002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544DA04000800002", type: "item", item: { id: "minecraft:beetroot_soup", count: 1 }, count: 1 }
 			]
 			size: 1.5d
 			tasks: [
