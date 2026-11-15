@@ -111,7 +111,18 @@ def main() -> None:
                 "VampireEvents", "VampireLeveling", "VampirePlayerAttachment"))]
             chosen += [c for c in classes if "$" not in c and any(k in c.lower() for k in (
                 "removecurseritualevent", "witcheryconfig", "lycanthropyconfig", "werewolfconfig"))]
-            chosen = list(dict.fromkeys(chosen))[:65]
+            # Second-pass cross-checks: global cure arbitration, one active form,
+            # distinct serialized states, and two ability activation pipelines.
+            chosen += [
+                "dev.sterner.witchery.core.api.event.AfflictionEvents",
+                "dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment$Data",
+                "dev.sterner.witchery.feature.affliction.vampire.VampirePlayerAttachment$Data",
+                "dev.sterner.witchery.feature.transformation.TransformationPlayerAttachment$Data",
+                "dev.sterner.witchery.content.ability.BatFormAbility",
+                "dev.sterner.witchery.content.ability.WerewolfFormAbility",
+                "dev.sterner.witchery.WitcheryNeoEvents",
+            ]
+            chosen = [c for c in dict.fromkeys(chosen) if c in classes][:65]
             print("DISASSEMBLY_CLASS_COUNT", len(chosen))
             for cls in chosen:
                 proc = subprocess.run(
