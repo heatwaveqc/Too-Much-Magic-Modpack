@@ -22,6 +22,13 @@ jobs:
       - name: Self-test fail-closed live quest registry validation
         if: hashFiles('scripts/quest_registry_gate.py') != ''
         run: python3 scripts/quest_registry_gate.py selftest
+      - name: Parse every staged quest item reference (live lookup in integration smoke)
+        if: hashFiles('scripts/quest_registry_gate.py') != ''
+        run: |
+          python3 scripts/quest_registry_gate.py prepare \
+            --chapters config/ftbquests/quests/chapters \
+            --manifest "${{ runner.temp }}/quest-registry-manifest.json" \
+            --probe "${{ runner.temp }}/quest-registry-probe.js"
       - uses: actions/setup-go@v5
         with:
           go-version: 'stable'
