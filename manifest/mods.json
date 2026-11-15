@@ -15,7 +15,7 @@
     "unverified": "Exact target file and dependencies not confirmed",
     "identity_unresolved": "Mod name or project ID requires resolution"
   },
-  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.",
+  "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.",
   "mods": [
     {
       "id": "akashic-tome",
@@ -359,6 +359,18 @@
       "note": "Required library pinned by exact CurseForge file ID"
     },
     {
+      "id": "brewin-and-chewin",
+      "name": "Brewin' And Chewin'",
+      "category": "food_beverage",
+      "desired": true,
+      "version": "4.5.0+1.21.1-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/brewin-and-chewin/version/MbcR48Ou",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+    },
+    {
       "id": "caelus",
       "name": "Caelus API",
       "category": "dependency",
@@ -409,6 +421,18 @@
       "packwiz_slug": "cobweb"
     },
     {
+      "id": "cocktails-delight",
+      "name": "Cocktails Delight",
+      "category": "food_beverage",
+      "desired": true,
+      "version": "Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/cocktails-delight/files/9482953",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+    },
+    {
       "id": "codechicken-lib-1-8",
       "name": "CodeChicken Lib 1.8.+",
       "category": "dependency",
@@ -448,12 +472,13 @@
       "id": "construction-gadgets",
       "name": "Construction Gadgets",
       "category": "qol",
-      "desired": true,
+      "desired": false,
       "version": null,
       "release_status": "unverified",
       "source": "https://www.curseforge.com/minecraft/mc-mods/construction-gadgets",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "Owner explicitly rejected Building Gadgets on 2026-11-15; Astral Formation/Conversion and Ars placement replace generic tools. Not to pin."
     },
     {
       "id": "controlling",
@@ -504,6 +529,18 @@
       "dependencies_verified": true,
       "note": "Owner-approved QoL integration (2026-11-13). Rotate, balance, clear standard crafting grids.",
       "packwiz_slug": "crafting-tweaks"
+    },
+    {
+      "id": "crystalix",
+      "name": "Crystalix",
+      "category": "decoration_glass",
+      "desired": true,
+      "version": "crystalix-3.0.3.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/crystalix/files/9251153",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
     },
     {
       "id": "cucumber",
@@ -784,12 +821,13 @@
       "id": "formation-wand",
       "name": "Formation Wand",
       "category": "qol",
-      "desired": true,
+      "desired": false,
       "version": null,
       "release_status": "unverified",
       "source": null,
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "note": "Standalone Formation Wand not wanted: Astral Sorcery 1.21.1 already includes Formation Wand and Conversion Wand; do not pin duplicate."
     },
     {
       "id": "ftb-chunks",
@@ -850,6 +888,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "ftb-xmod-compat"
+    },
+    {
+      "id": "fusion-connected-textures",
+      "name": "Fusion (Connected Textures)",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.3.16-neoforge-mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/fusion-connected-textures/version/AYDaLPK8",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
     },
     {
       "id": "gateways-to-eternity",
@@ -1127,6 +1177,30 @@
       "dependencies_verified": true,
       "note": "Fast decay of leaf blocks after the final support log is removed. Server-side logic but include on both physical sides for Prism singleplayer. Dependency: Check metadata; probably optional config library; pending B12 hash-pinned resolution and combined test.\nB12 official hash pin and 147-mod fresh NeoForge server smoke PASSED (run 43625296741). Real Prism client mechanic testing pending.",
       "packwiz_slug": "leaves-be-gone"
+    },
+    {
+      "id": "lets-do-beachparty",
+      "name": "[Let's Do] Beachparty",
+      "category": "decoration_beach",
+      "desired": true,
+      "version": "letsdo-beachparty-neoforge-2.1.5.jar",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/lets-do-beachparty/version/HN4rzKRl",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+    },
+    {
+      "id": "lets-do-furniture",
+      "name": "[Let's Do] Furniture",
+      "category": "decoration_furniture",
+      "desired": true,
+      "version": "letsdo-furniture-neoforge-1.1.10.jar",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/lets-do-furniture/version/FxbGZtS6",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
     },
     {
       "id": "lionfish-api",
@@ -1632,6 +1706,18 @@
       "packwiz_slug": "quest-shop"
     },
     {
+      "id": "rechiseled",
+      "name": "Rechiseled",
+      "category": "decoration",
+      "desired": true,
+      "version": "rechiseled-1.2.5-neoforge-mc1.21",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/rechiseled/version/S5FnErRw",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+    },
+    {
       "id": "relics",
       "name": "Relics",
       "category": "power",
@@ -1816,6 +1902,30 @@
       "dependencies_verified": false,
       "note": "User-approved in PR #6. B5 pinned and server test pending. CurseForge project ID pinned; verify file maturity in test report",
       "packwiz_slug": "summoningrituals"
+    },
+    {
+      "id": "supermartijn642-config-lib",
+      "name": "SuperMartijn642's Config Lib",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.1.8-neoforge-mc1.21",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/supermartijn642s-config-lib/version/qKL9jM75",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
+    },
+    {
+      "id": "supermartijn642-core-lib",
+      "name": "SuperMartijn642's Core Lib",
+      "category": "dependency",
+      "desired": true,
+      "version": "1.1.20-neoforge-mc1.21",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/supermartijn642s-core-lib/version/MQOzQxLt",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned."
     },
     {
       "id": "tectonic",
@@ -2056,6 +2166,10 @@
     {
       "id": "re-avaritia",
       "reason": "Owner explicitly excluded following previous on-hold decision. Infinity-tier armor/tools undermine Draconic Evolution and ProjectE Gem Armor as signature endgame. Do not install, grant as loot, or create quest progression."
+    },
+    {
+      "id": "building-gadgets-2",
+      "reason": "Owner explicitly rejected Building Gadgets during building audit 2026-11-15"
     }
   ],
   "items_blacklist": [
@@ -2316,6 +2430,22 @@
         "puzzles-lib"
       ],
       "status": "server_smoked_prism_client_pending"
+    },
+    {
+      "id": "B13",
+      "name": "Owner-approved glass, beach, decor, fermentation, cocktails and requisite libraries",
+      "members": [
+        "crystalix",
+        "lets-do-beachparty",
+        "rechiseled",
+        "brewin-and-chewin",
+        "lets-do-furniture",
+        "cocktails-delight",
+        "supermartijn642-core-lib",
+        "supermartijn642-config-lib",
+        "fusion-connected-textures"
+      ],
+      "status": "approved_resolution_pending"
     }
   ]
 }
