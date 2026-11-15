@@ -29,7 +29,7 @@ class ProgressionMathTest {
         assertEquals(6,upgraded.points());
         assertEquals(2,upgraded.skillRank("test:baseline"));
         assertEquals(2,ProgressionMath.grantXp(spec,upgraded,0).skillRank("test:baseline"));
-        assertEquals(3,ProgressionMath.grantXp(spec,upgraded,Long.MAX_VALUE).rank() + 0 - 1);
+        assertEquals(4,ProgressionMath.grantXp(spec,upgraded,Long.MAX_VALUE).rank());
     }
 
     @Test void purchasedRanksRespectPriceAndRespecPreservesBaseline() {
@@ -40,7 +40,7 @@ class ProgressionMathTest {
         assertEquals(1,after.skillRank("test:optional"));
         assertEquals(4,after.points());
         Track second = ProgressionMath.buy(spec,after,"test:optional");
-        assertEquals(0,second.points());
+        assertEquals(4,second.points());
         assertEquals(1,second.skillRank("test:optional")); // second rank costs 5
         Track reset = ProgressionMath.refundAll(spec,after);
         assertEquals(0,reset.skillRank("test:optional"));
