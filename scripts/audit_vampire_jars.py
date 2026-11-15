@@ -154,7 +154,7 @@ def inspect_pin(pin: str) -> None:
                 # Show full bytecode only for small, directly relevant classes;
                 # otherwise print selected methods without huge binary dumps.
                 method_terms = re.compile(
-                    r"(finishUsingItem|use\\(|interact|fill|empty|consume|blood|vampir|isVampire|setData|getData|tooltip|appendHoverText|hurt)",
+                    r"(finishUsingItem|use\(|interact|fill|empty|consume|blood|vampir|isVampire|setData|getData|tooltip|appendHoverText|hurt)",
                     re.I)
                 selected = 0
                 for i, line in enumerate(lines):
