@@ -4,6 +4,16 @@
 
 **Policy:** The owner expects every feature declared "Ready for a live test" to be *attempted* in that test. Do not mark Gilded ready or silently defer the gold, Netherite, Piglin, food or initiation mechanics. Build or full server smoke only on explicit instruction; preserve current frozen/known-good QA artifacts.
 
+## 2026-11-16 update: Gilded lava fishing, Undying Ember, fishing compatibility
+
+- **Lava fishing unlocks immediately at Gilded initiation** (native rank 1, **not** level 12). \`GildedFishingRules\` uses a player/FluidTags.LAVA gate for any compatible \`FishingHook\` bobber (both selected mods' sources subclass FishingHook), rejects illegal catches before bonus-loot listeners, and grants **provisional 5 native Gilded XP once per successful lava bobber** using \`ItemFishedEvent\` and hook UUID dedup. Cave Dragon permission remains optional/unimplemented.
+- **Rank 18 is now \`Undying Ember\`, inspired by the zombified Piglins**. It grants immunity to all damage tagged \`#minecraft:is_fire\` (lava AND flames/burning/fire-tagged attacks), and clears active burning. It is NOT general harm immunity and rank 20 still has no independent capstone.
+- All eligible edible fish from both chosen providers go into optional \`gilded_lava_catch_foods\` tag (22 source-based candidates). Food from actual lava catches of other item types gets \`minecraft:custom_data\` \`tmm_progression:lava_caught=true\` and is edible to Gilded; ordinary unrelated cooked chicken/cod remain banned. Nonfood treasure needs no diet exception. In-world test required to confirm native fishing events carry marker to inventory.
+- **Two full-content mods** \`lava-fishing\` 1.21.1-1.2.13 and \`nether-depths-upgrade\` 3.3-1.21.1 NeoForge are now marked \`desired:true\` / \`enabled_in_pack:false\` (B17) on both the exploratory and integration manifests. **No hashes, packwiz pins, merge, full build, server smoke or client test**. Do **not** add the separate \`aq2lava\` addon: it registers the same six Aquaculture hook names as full Lava Fishing. Source check details: [lava-fishing feasibility](LAVA-FISHING-FEASIBILITY.md).
+- Existing **Improvable Skills 21.0.2** \`Luck of the Sea\` & \`Experience Harvesting\`, plus **Artifacts 13.2.5 / Relics 0.12.5 / Reliquified Artifacts 1.0.9 Angler's Hat**, require in-world testing. Angler's Hat spawns bonus *vanilla water-fishing* results and XP on lava-catch events. Open Improvable Skills [issue #38](https://github.com/dragon-forge/ImprovableSkills/issues/38) can cause repeated fishing scrolls; no config workaround applied yet.
+
+**The paragraphs below contain earlier exploratory decisions superseded by this update.** Implemented source is isolated; runtime in-game behavior remains unverified.
+
 ## Critical implementation blockers
 
 | ID | Work | Exact scope / acceptance | Current state |

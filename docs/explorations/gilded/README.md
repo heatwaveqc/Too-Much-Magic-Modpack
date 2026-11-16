@@ -2,7 +2,17 @@
 
 **Status (2026-11-16): integrated into the progression module on this isolated exploratory branch, not merged into the full pack and not yet player-tested.** The source-of-truth runtime path is now `compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/gilded.json`. The copies under `docs/explorations/gilded` are design-history snapshots. **Module compile+tests PASS:** [GitHub Actions run 43932141498](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498); no dedicated game boot, Prism, world or modded AI test has been run.
 
-## Current owner-approved mechanics — separate Looting/Fortune, lava immunity (2026-11-16)
+## 2026-11-16 update: Gilded lava fishing, Undying Ember, fishing compatibility
+
+- **Lava fishing unlocks immediately at Gilded initiation** (native rank 1, **not** level 12). \`GildedFishingRules\` uses a player/FluidTags.LAVA gate for any compatible \`FishingHook\` bobber (both selected mods' sources subclass FishingHook), rejects illegal catches before bonus-loot listeners, and grants **provisional 5 native Gilded XP once per successful lava bobber** using \`ItemFishedEvent\` and hook UUID dedup. Cave Dragon permission remains optional/unimplemented.
+- **Rank 18 is now \`Undying Ember\`, inspired by the zombified Piglins**. It grants immunity to all damage tagged \`#minecraft:is_fire\` (lava AND flames/burning/fire-tagged attacks), and clears active burning. It is NOT general harm immunity and rank 20 still has no independent capstone.
+- All eligible edible fish from both chosen providers go into optional \`gilded_lava_catch_foods\` tag (22 source-based candidates). Food from actual lava catches of other item types gets \`minecraft:custom_data\` \`tmm_progression:lava_caught=true\` and is edible to Gilded; ordinary unrelated cooked chicken/cod remain banned. Nonfood treasure needs no diet exception. In-world test required to confirm native fishing events carry marker to inventory.
+- **Two full-content mods** \`lava-fishing\` 1.21.1-1.2.13 and \`nether-depths-upgrade\` 3.3-1.21.1 NeoForge are now marked \`desired:true\` / \`enabled_in_pack:false\` (B17) on both the exploratory and integration manifests. **No hashes, packwiz pins, merge, full build, server smoke or client test**. Do **not** add the separate \`aq2lava\` addon: it registers the same six Aquaculture hook names as full Lava Fishing. Source check details: [lava-fishing feasibility](LAVA-FISHING-FEASIBILITY.md).
+- Existing **Improvable Skills 21.0.2** \`Luck of the Sea\` & \`Experience Harvesting\`, plus **Artifacts 13.2.5 / Relics 0.12.5 / Reliquified Artifacts 1.0.9 Angler's Hat**, require in-world testing. Angler's Hat spawns bonus *vanilla water-fishing* results and XP on lava-catch events. Open Improvable Skills [issue #38](https://github.com/dragon-forge/ImprovableSkills/issues/38) can cause repeated fishing scrolls; no config workaround applied yet.
+
+**The paragraphs below contain earlier exploratory decisions superseded by this update.** Implemented source is isolated; runtime in-game behavior remains unverified.
+
+## Prior owner-approved enchantment and lava notes (historic; superseded above)
 
 **Both virtual enchantments start at +3 at Gilded initiation and rise to +10 via different purchased Tyz skills.** \`tmm_gilded_fortune_mastery\` affects gold/Netherite mining tools; \`tmm_gilded_looting_mastery\` affects gold swords and axes for direct melee kills. Each skill has seven purchased Tyz ranks (one SP each), and increases only its own effect. Existing physical enchantments remain fully additive and uncapped by this design; Silk Touch wins against Fortune. The two Tyz skills use the existing one-wallet SP pool, not the native Gilded gold-mining XP progression.
 
