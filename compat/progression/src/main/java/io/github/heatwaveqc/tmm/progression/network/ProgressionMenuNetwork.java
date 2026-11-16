@@ -117,6 +117,10 @@ public final class ProgressionMenuNetwork {
         long threshold = state.rank() < path.rankXp().size()
                 ? path.rankXp().get(state.rank()) : path.rankXp().getLast();
         json.addProperty("next_xp", threshold);
+        long currentStart = state.rank() > 0
+                ? path.rankXp().get(Math.min(state.rank() - 1, path.rankXp().size() - 1))
+                : 0;
+        json.addProperty("rank_start_xp", currentStart);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
