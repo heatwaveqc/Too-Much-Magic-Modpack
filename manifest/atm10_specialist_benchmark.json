@@ -2,10 +2,17 @@
   "schema": 1,
   "created": "2026-11-15",
   "status": "source_derived_scenario_maxima_magic_defense_populated_not_runtime_certified",
-  "purpose": "ATM10 max legal equipment benchmark -> TMM non-Monk specialist skill calibration -> Monk 85% of TMM specialist measured performance",
+  "purpose": "ATM10 max legal specialist gear -> TMM non-Monk specialist trees -> Monk 80-90% of each modified final attribute; Monk Tyz full tree costs ~10x standard specialist SP and far >10x ordinary MXP",
   "owner_targets": {
     "tmm_atm10_performance_tolerance_fraction": 0.05,
-    "monk_to_tmm_specialist_performance_ratio": 0.85
+    "monk_modified_attribute_min_ratio": 0.8,
+    "monk_modified_attribute_preferred_ratio": 0.85,
+    "monk_modified_attribute_max_ratio": 0.9,
+    "monk_tyz_full_tree_sp_to_standard_specialist_ratio_target": 10,
+    "monk_tyz_full_tree_sp_ratio_min": 9,
+    "monk_tyz_full_tree_sp_ratio_max": 11,
+    "monk_ordinary_mxp_base_cost_ratio_rule": "must be substantially greater than 10x in modeled same-source ordinary-XP comparison, recalculated via 1.2^P",
+    "monk_native_progression_points_are_tyz_sp": false
   },
   "baseline_assumptions": {
     "iron_default_base_mana": 100,
@@ -798,17 +805,24 @@
     {
       "id": "monk.performance_ratio",
       "group": "monk",
-      "unit": "ratio",
+      "unit": "dimensionless per-modified-attribute final ratio",
       "verified_source_baseline": 0.85,
-      "baseline_calculation": "TMM Monk measured performance / matched TMM specialist measured performance",
+      "baseline_calculation": "TMM Monk final numeric attribute / matched TMM optimized non-Monk specialist final numeric attribute (per modified trait, 0.8 to 0.9, prefer 0.85)",
       "optimized_atm10_max": null,
       "optimization_status": "owner_design_target",
       "dependencies": [
-        "per-axis context",
-        "legal Monk equipment and exclusion",
-        "non-numeric exceptions"
+        "verified specialist final attribute",
+        "Monk lawful unarmored final attribute",
+        "per-trait matching",
+        "nonlinear gameplay cross-check",
+        "Tyz full-tree SP cost ratio and MXP simulation"
       ],
-      "notes": ""
+      "notes": "Design target, NOT a claimed source-defined ATM10 cap or throughput-only equivalence. Special numerical semantics require documentation.",
+      "target_range": [
+        0.8,
+        0.9
+      ],
+      "target_midpoint": 0.85
     }
   ],
   "profiles": [
@@ -949,7 +963,11 @@
     "enumerate best legal melee/ranged/defensive loadouts",
     "measure physical and magical outputs in identical test fixtures",
     "verify TMM Ars 'n Spells mana primary mode and skill pipeline",
-    "certify ATM10 maxima before specialist skills and Monk JSON"
+    "certify ATM10 maxima before specialist skills and Monk JSON",
+    "enforce Monk 80-90% final numeric attribute parity for EVERY Monk-modified trait; no cross-trait averaging",
+    "compare Monk tree full-purchase Tyz SP to canonical non-Monk full tree at about 10x (9-11x provisional tolerance)",
+    "simulate 1.2^P lifetime MXP economics and full Monk reachability; ordinary XP ratio must be far above 10x",
+    "differentiate Monk standalone core technique points/free classic powers from Tyz wallet"
   ],
   "revision": "v0.3",
   "updated": "2026-11-15",
@@ -1158,5 +1176,14 @@
       "confidence": "conditional_source_max_for_listed_components_pending_runtime",
       "notes": "The shield is the offhand, and this is not the armor/max-health simultaneously optimized setup."
     }
-  ]
+  ],
+  "monk_attribute_cost_contract": {
+    "document": "docs/balance/MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md",
+    "attribute_contract": "For every trait whose numeric final value Monk actively modifies, full investment yields 80-90% of the comparable optimized fully equipped TMM specialist's final numerical attribute. Report actual nonlinear performance as a secondary check.",
+    "comparison_requires": "Matched metric, specialist loadout, attribute IDs and cap/stack rules. Monk unarmored legal equipment. Non-numeric abilities tracked separately. Explicit zero/signed/reduction semantics.",
+    "tyz_cost_contract": "Total spendable Tyz SP for ALL purchasable Monk tree ranks ~= 10x the canonical completed non-Monk specialist tree (9-11x provisional band). Baseline/native discipline points are NOT Tyz SP.",
+    "xp_contract": "Tyz level-pool prototype gives one point per 1000 effective MXP and routine events scale as base / 1.2^P, P lifetime earned MXP levels. Simulate fresh/experienced players, first-time fixed bonuses, affordability and float overflow before live deployment.",
+    "nominal_ordinary_xp_formula": "XP_base_for_N_lifetime_levels=1000*(pow(1.2,N)-1)/(1.2-1) from P=0, no fixed award; 10*N ratio is far greater than 10 for nontrivial N.",
+    "status": "locked_design_not_implemented"
+  }
 }
