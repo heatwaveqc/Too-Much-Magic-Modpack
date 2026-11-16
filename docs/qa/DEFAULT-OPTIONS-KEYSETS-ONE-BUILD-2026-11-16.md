@@ -1,6 +1,6 @@
 # First-run mod keybinding defaults — Default Options and one-build KeySets evaluation
 
-**Status: mod pins and introductory quest authored; all-mod unbinding is BLOCKED until a full loaded-client keybinding inventory exists. No one should mark the requested all-mod-unbound behavior as delivered just because Default Options is installed.** This is a next owner-authorized client-test requirement, not permission to launch a full smoke or Prism build now.
+**Status: 315 observed mod-added controls are now staged and hash-indexed as unbound Default Options defaults; final-roster completeness and live-client behavior remain UNVERIFIED. Do not mark ALL modded controls unbound until a full loaded-client registration export has been reconciled.** This is a next owner-authorized client-test requirement, not permission to launch a full smoke or Prism build now.
 
 ## Goal and verified upstream behavior
 
@@ -15,7 +15,7 @@
 1. In an **owner-authorized, fresh, disposable** client carrying **all final mod JARs**, run `/defaultoptions saveKeys` (if supported on the installed screen/client) and copy the resulting `config/defaultoptions/keybindings.txt` to an **external** `loaded-keys.txt`. This records exact registered IDs, not assumptions from source mod filenames. The command may require singleplayer and should be run only in a disposable world. If it is inaccessible, obtain the equivalent mapping dump from a client-side test helper; do not guess.
 2. Obtain a second exported `vanilla-keys.txt` from a **vanilla 1.21.1 controls registry** using the same format. Verify that attack/use/forward/back/jump/inventory are present. A modpack export `options.txt` alone is NOT a reliable vanilla whitelist because it may already contain mods' mappings.
 3. Run `python3 scripts/generate_defaultoptions_keybindings.py --loaded path/to/loaded-keys.txt --vanilla path/to/vanilla-keys.txt --output config/defaultoptions/keybindings.txt --write` in the source tree. The generator errors on invalid/empty exports and leaves every vanilla entry out. It emits one unbound default per modded mapping. Review diff, index file in packwiz, and update its SHA256 plus pack.toml index hash. Run again with `--check` to fail on any omissions. Repeat generation if the final mod roster changes.
-4. Only after this file is complete and hash-indexed may the assembled build claim **ALL modded keys unbound on first launch**. The quest text describes intended release behavior, not a proven current client state.
+4. The 315-key observed baseline is now present at `config/defaultoptions/keybindings.txt` and hash-indexed in packwiz. **This is a partial first-run implementation, not a final roster certification**. Compare the live final-client export to the baseline, add any missing registered modded key IDs, and regenerate/check the file before claiming **ALL modded keys unbound on first launch**.
 5. Test separately with no prior QA profile, then with personal bindings, restart, and import a later QA instance. Existing Windows Prism helper `scripts/tmm_qa_preferences.ps1` copies prior `key_*` values into test `options.txt`; **this is deliberate personal preservation but masks fresh default testing**. For isolated test, set `TMM_QA_PROFILE_DIR` to a new temporary empty folder (do not delete the owner's `%LOCALAPPDATA%/TooMuchMagic/TestPreferences`).
 
 ## One-shot KeySets targeted test and remove-if-bad decision
@@ -28,7 +28,7 @@
 ## Acceptance labels
 
 `PINNED`: Default Options 21.1.8 and KeySets 1.3.0, source metadata.
-`BLOCKED`: exhaustive modded key inventory and generated first-run `keybindings.txt`.
+`BASELINE STAGED`: 315 observed keys are unbound in hash-indexed `config/defaultoptions/keybindings.txt`; `BLOCKED`: exhaustive final assembled-client registered-key inventory and complete coverage.
 `NOT RUN`: actual first-run client behavior, persistence, KeySets one-run pass/fail decision, removal if failed.
 
 
@@ -36,4 +36,9 @@
 
 The [local binding inventory](keybindings/README.md) supplies [315 modded-unbound records](keybindings/modded-unbound-2aacf348.txt) observed in installed build `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`. The 349 saved bindings were separated using 34 exact-1.21.1 vanilla identifiers, independently derived from vanilla Options constructors; personal assigned values were discarded. Every candidate mod record uses `key.keyboard.unknown` and an empty modifier field.
 
-This provides the requested concrete list but is **not a final all-roster certification**: current client options are not a registered-key export; vanilla reference is source-derived, not a standalone vanilla export; Default Options/KeySets and other next-build additions may add keys. Reconcile stale/missing IDs against the final client/vanilla exports before generating and indexing the runtime file. First-run behavior and KeySets trial remain NOT RUN, and the gate above remains in force. No live options/profile was modified.
+This provides the requested concrete list but is **not a final all-roster certification**: current client options are not a registered-key export; vanilla reference is source-derived, not a standalone vanilla export; Default Options/KeySets and other next-build additions may add keys. The observed candidate is now staged as the actual Default Options runtime file, but **do not call it exhaustive**. Reconcile stale/missing IDs against the final client/vanilla exports and revise the runtime file before claiming complete coverage. First-run behavior and KeySets trial remain NOT RUN, and the gate above remains in force. No live options/profile was modified.
+
+
+## Hash-indexed observed baseline — 2026-11-16
+
+The first-stage packwiz installation now includes `config/defaultoptions/keybindings.txt` with all 315 entries from [the observed local inventory](keybindings/modded-unbound-2aacf348.txt), every entry `key.keyboard.unknown`, no vanilla names. `scripts/validate_defaultoptions_keybindings.py` is invoked by the regular packwiz source validator; it refuses missing/modified observed entries, bound values, duplicates or vanilla controls. This gives a useful zero-conflict baseline while we await a **final registered-key export**, which may add controls not present in the old `options.txt`. KeySets still requires exactly one authorized client trial, then KEEP only after PASS or REMOVE from subsequent build. No client test was run by this change.

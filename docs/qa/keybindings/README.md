@@ -16,3 +16,7 @@ This is an **observed-options inventory and candidate list**, not `/defaultoptio
 Default Options and KeySets are not in this installed snapshot; next-build additions may register more keys. Before claiming ALL modded controls unbound, obtain the final assembled client's and vanilla client's registered-key exports, diff against this candidate, regenerate with `scripts/generate_defaultoptions_keybindings.py`, and index the final `config/defaultoptions/keybindings.txt` in packwiz. Do not install this dated candidate as an exhaustive next-roster list without reconciliation.
 
 No live settings/profile were changed; no mod added, client launched, test build made or full smoke triggered. Keep vanilla records omitted, preserve established player remaps, and use a separate empty temporary QA profile for first-run testing. All-unbound includes JEI, map, inventory controls and the KeyBind Bundles menu: fresh users must assign controls themselves per the current owner policy; do not silently exempt a mod.
+
+## Integration update — observed baseline staged
+
+These 315 snapshot entries are now installed at `config/defaultoptions/keybindings.txt` in the next packwiz integration source, checked by `scripts/validate_defaultoptions_keybindings.py`. **Do not infer complete final-roster coverage**: this is only the observed source inventory, with a mandatory final-client key registration reconciliation and first-run personal-persistence test remaining. The earlier warning against treating this dated inventory as an **exhaustive** next-roster list remains in force.
