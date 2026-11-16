@@ -155,6 +155,7 @@ public final class ClassAbilities {
             }
         }
 
+        VirtualElytra.reconcile(p);
         exhaustion(p);
         stare(p);
         waterWalk(p);
