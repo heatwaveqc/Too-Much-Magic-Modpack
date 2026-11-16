@@ -102,7 +102,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "9c8d6b87a88641dc96cc525df158ffe1f13b0e3744ba320b6a25df16859ba02f"
+hash = "4362f7b3a135ed292836a1a8345eef49e3ab212ae20b4336f84a725059e7064e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -186,7 +186,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "5f7de41187c4a7c69b98b1f3ab5f253a188bdc1f6dc4f80d2dfad340cf26ad35"
+hash = "e2496511754b07581ea8eae71c164fdbb5696fd3da6837b7126918e006925ae3"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -199,6 +199,14 @@ hash = "cb3d69b009e7c028b973f2fa88bb5f09010dae00f93a2dcdc8af956ea8dd0707"
 [[files]]
 file = "config/relics/relics/ring_of_the_seven_deadly_sins.yaml"
 hash = "575a02a56feb5ba7317201bcf9753574fcdeb97cb2b8d1e70a6b1d6bb388ea23"
+
+[[files]]
+file = "defaultconfigs/dragonsurvival-server.toml"
+hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
+
+[[files]]
+file = "defaultconfigs/enigmaticlegacyplus-server.toml"
+hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
@@ -234,7 +242,7 @@ hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
-hash = "6aac2c5e700f011459cd3225ecce8fd918ef34fcef161e66b31954aead6fd39f"
+hash = "7a72600b5fce074632221e656c0f22826584838a403a64f4acd73dd655258766"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"

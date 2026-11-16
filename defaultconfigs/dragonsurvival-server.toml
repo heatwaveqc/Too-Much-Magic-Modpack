@@ -1,0 +1,7 @@
+# NeoForge new-world defaults: keep Dragon Survival ritual-only.
+# Existing worlds need a separate serverconfig migration.
+[general]
+start_with_dragon_choice = false
+allow_dragon_choice_from_inventory = false
+transform_altar = true
+no_humans_allowed = false
