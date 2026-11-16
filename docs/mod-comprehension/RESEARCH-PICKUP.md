@@ -28,3 +28,10 @@ No full smoke, assembly, client launch, gameplay or new quest/config/runtime imp
 - Windows Git initially materialized CRLF text outside explicit `eol=lf` patterns. Only isolated-worktree text bytes were normalized and the unchanged index refreshed; no runtime/config changes entered the research commits. The unrelated `qa-source` edits were preserved.
 - Local Markdown check found one pre-existing template placeholder in INDEX (`mods/<manifest-id>.md`); exclude that deliberate placeholder from literal link validation. All 61 recipe keys occur exactly once in the appendix.
 - Base Goety Forbidden Fragment/Piece acquisition was already expanded on the current integration base. Do not repeat that work or keep the older claim that no sourcing is mapped. Its runtime loot acceptance remains open.
+
+## Published handoff
+
+- Review PR: [#265](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/265), targeting `test/full-integration`; not merged by this research chat.
+- Research commit `544a40e7` passed the metadata validator, read-only Integration Preflight (zero baseline replacements), docs-only scope, local Markdown link check and 61-row recipe completeness check. No client/gameplay acceptance is implied.
+- Base advanced concurrently to `45f2b6429130a521e4ddb5ca165bff6eb62adfcf`, changing only `manifest/integration-sources.json`; this branch does not alter that file. Review against the current shared baseline and rerun preflight before any eventual merge.
+- Resume this branch/worktree for the next slice, then keep commits small and update this file with exact completed and remaining coverage. Do not promote either Goety profile to source-complete yet.
