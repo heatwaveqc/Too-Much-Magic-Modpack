@@ -106,12 +106,12 @@ See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is 
 
 ## Native Dragon Survival recipe observations — owner-directed next live test (2026-11-16)
 
-**Not a new feature and not a repair authorization.** The owner originally directed that native recipes remain unchanged pending tests. **New owner-reported live evidence on 2026-11-16:** a friend crafted Hot Dragon Rod from **one Elder Dragon Dust and one Blaze Rod**, despite upstream recipe having `count: 8` inside a single shapeless ingredient. This is a **reported gameplay FAIL**, but its build SHA and exact JAR have not been supplied. Spearman Promotion has an analogous `count: 3` declaration for emerald blocks; this is still a **hypothesis**, not an observed failure. Keep C13–C16 in the next owner-authorized client test and **do not rewrite native recipes without new authorization**.
+**Owner decision updated 2026-11-16:** Treat Hot Dragon Rod and Spearman Promotion as **likely Dragon Survival upstream recipe-source bugs/quirks**, not modpack defects. The Hot Dragon Rod live report confirms it crafts using one dust + one blaze rod; its JSON's `count: 8` appears misleading/ineffective. Spearman Promotion has the analogous `count: 3` in one ingredient, but its runtime behavior is untested. **Assume shipped behavior is what the mod author intended. No KubeJS overrides, no patches, and no mandatory retest of C13/C14.** Source of Magic (C15) and addon-conditional Bottle Caps Treasure (C16) remain separately scheduled.
 
 | Case | Native recipe | Required test intake |
 | --- | --- | --- |
-| C13 | `dragonsurvival:hot_dragon_rod` | **Owner-reported FAIL:** one dust + one Blaze Rod crafts the item. Reproduce on exact packaged JAR; inspect JEI, actual 1 vs 8 dust consumption, and record SHA; leave unchanged pending patch authorization |
-| C14 | `dragonsurvival:spearman_promotion` | **Suspected matching count-field bug, not yet tested.** Inspect JEI, 1 vs 3 emerald block consumption, capture result and SHA; leave unchanged |
+| C13 | `dragonsurvival:hot_dragon_rod` | **Likely upstream source-code quirk; owner-accepted.** Friend's reported result: one Elder Dragon Dust + Blaze Rod crafts. JSON uses `count: 8` inside one ingredient. No override, no defect ticket, no required retest |
+| C14 | `dragonsurvival:spearman_promotion` | **Likely upstream source-code quirk; untested.** Single emerald-block ingredient declares `count: 3`. Accept mod author's shipped behavior; no override or required retest |
 | C15 | `dragonsurvival:forest_source_of_magic`, `dragonsurvival:sea_source_of_magic`, `dragonsurvival:cave_source_of_magic` | Craft all three; compare stone/deepslate emerald and lapis ores, and verify Cave recipe; distinguish intentional restrictions from defects; leave unchanged |
 | C16 | `dragonsurvival:bottle_caps_treasure` | **Conditional only** on `desert_monster_ds` being installed. Currently absent from checked-in roster; when absent record NOT BUILT/NOT APPLICABLE, do not install the addon. If included in a later build, investigate >9-slot shapeless recipe behavior, leave unchanged. |
 
