@@ -10,7 +10,7 @@
 - Prefab 1.0.9 remains intended housing provider; no buildings are granted until exact item/structure IDs and rewards are selected.
 - ProjectE and other advancement recipes are to be blocked for Newbies, but exact per-mod recipes/stations are a separate survey; no speculative recipe removals.
 - Persistent per-player EMC tooltip unlock after first Philosopher's Stone is **separate** issue #237.
-- Preferred optional starter flight: virtual Elytra glide with sustained boost. Implementation intentionally postponed until Dragon Survival compatibility and movement configuration are decided.
+- Starter **powered glide** now implemented in the existing Monk `ClassAbilities.glide` tick loop: automatically kicks in while falling, sustained capped forward thrust (0.045), look-up lift (0.035+0.095 * upward look), horizontal cap 0.75, upward cap 0.24; keeps survival game mode and normal chest armor. Ends on landing, entering water/lava or graduation. **This is not native Elytra wing rendering or a double-jump start**. Test air movement/anti-cheat and client feel; final virtual-Elytra pose is not yet delivered.
 
 ## Source staged in this branch
 
@@ -31,7 +31,7 @@
 
 - `/home`, `/sethome`, `/delhome`, `/listhomes`, `/rtp`, and `/back` denied for Regular non-operators via server CommandEvent. Other teleport commands (`/tpa`, `/warp`, `/spawn`, Corail's `/tbtp`) remain unmodified until travel policy is chosen.
 - FTB Essentials is a separate existing feature branch `feature/qol-ftb-essentials-sethome-rtp`. Its installed binary/permissions must be in the actual next assembled runtime; this branch does not install it.
-- Native path joins are vetoed; transform-specific entry points must be audited and guarded separately.
+- Native path joins are vetoed. Source-level `@Pseudo` mixins in `tmm_transformations` now deny **positive** JAWR VampireLeveling/WerewolfLeveling.setLevel(ServerPlayer,int) while tagged `tmm_newbie`, and prevent Dragon Survival `DragonStateHandler.setSpecies(Player,Holder,boolean)` with non-null species for a Newbie. Cures (level 0) are not blocked; existing forms are not forcibly cleared. Verify injected signatures against pinned JAWR 0.5.39 and DS 2.0.74 in the assembled runtime.
 - `canEarnMxp` is a **contract** in TMM progression, not yet called by the separately developed MXP runtime. Hook it into the finalized dispatcher before claiming XP suppression.
 - Smart Keep Inventory's condition and source mod must both be in the pack's actual registry/packwiz; KubeJS datapack source alone does nothing without Smart Keep Inventory installed.
 - Vanilla `keepInventory` world gamerule **must remain false** for mixed-mode testing.
@@ -53,6 +53,10 @@ Smart Keep Inventory hooks `GameRules.getBoolean(RULE_KEEPINVENTORY)` in the dyi
 | Crash/relog/respawn after death | No loss of retained inventory; tag and mode persist |
 | Regular `/home` etc. | Blocked without blocking Newbie commands; OP unaffected |
 | Native Monk/Hunter initiation | Blocked for Newbie, enabled after graduation |
+| JAWR new Vampire / Werewolf levels | No positive level writes for Newbies through `setLevel`; cures still work; Regular unchanged |
+| Dragon Survival species menu / altar / command | No non-null species assignment to Newbies; Regular unchanged; existing dragon Newbies are not auto-cured |
+| Newbie starter glide | Forward boost and modest climbing after jump/fall; no extra armor requirement, no Creative flight; ends on graduation |
+| Regular Monk Momentum Glide | Original slow descent, only with Monk/Tyz conditions, unaffected |
 | Tyz Safekept | Skill absent from UI and no independent inventory-copy event |
 | MXP | Once linked, no activity awards in Newbie; awards after graduation |
 | Mod pin and packwiz | Exact 1.21.1 binary and hashes; no 1.21.11/26.x mismatch |
