@@ -1,98 +1,128 @@
-# Piglin-aligned golden equipment progression — exploratory concept
+# Gilded — Piglin-aligned gold and Netherite progression (exploratory)
 
 **Status:** EXPERIMENTAL DESIGN ONLY; no implementation, runtime activation, or test-build registration.
 **Branch:** `design/piglin-gold-progression-exploratory-2026-11-15` (forked from `test/full-integration`).
 **Date:** 2026-11-15.
-**Working name:** *Gilded* / *Piglin-aligned* discipline. Naming intentionally open.
+**Locked name:** **Gilded** (owner-approved, 2026-11-15).
 
-## Player concept and intended experience
 
-A new player progression/discipline makes **ordinary gold equipment a viable specialty**. When a trained, Piglin-aligned player uses gold gear, that gear behaves much better **for that player**, without upgrading or permanently enchanting the physical item. A player who has not earned the progression should experience normal gold equipment. Unlike a global gold-tool rebalance, these effects should be tied to the player, earned ranks, and wearing/using the equipment.
+## Player concept and owner-locked equipment contract
 
-Owner's starting requests (requirements, **not** fixed values):
+**Gilded** is a player-specific Piglin-aligned discipline. Its bonuses follow the enrolled player, not permanent item enchantments or upgraded global material definitions. A non-Gilded player with the same item gets ordinary vanilla stats. Keep this path isolated from the active integrated pack until implementation and live tests are authorized.
 
-1. Piglin-aligned identity.
-2. **Improved stats** for gold gear while the aligned player wears/wields it.
-3. **Extra effective Fortune** when that player mines with gold tools.
-4. **Extra effective Unbreaking** on that player's gold equipment.
-5. **Very rapid automatic repair** of gold armor while worn and gold tools while equipped/used.
+Owner-locked requirements (2026-11-15):
 
-Do not assume a final skill-tree name, unlock ritual, XP economy, exclusivity relationship to Monk/Hunter, or numerical tuning without review.
+1. **Gold tools and gold armor operate at effective DIAMOND level while used/worn by Gilded players**: diamond-equivalent tool harvest tier and combat damage; diamond-equivalent armor points and armor toughness per slot. Keep gold's naturally faster mining speed and high enchantability—upgrading it must not accidentally *nerf* existing gold advantages.
+2. **Gold tools and Netherite tools gain extra effective Fortune** while operated by a Gilded player. Extra Fortune enhances compatible block loot only; it does not confer Looting or Silk Touch.
+3. **Gold AND Netherite tools and armor gain extra effective Unbreaking** while used/worn by a Gilded player.
+4. **Gold AND Netherite tools and armor regenerate durability at exactly the SAME configured rate**, rapidly, when worn or actively held. Damageable items only; no backpack, container or idle inventory regeneration.
+5. **Ordinary Piglins are nonhostile toward a Gilded player even without gold armor** and **must not become angry at that player for mining protected gold blocks or opening/breaking the containers covered by vanilla Piglin anger rules**. Keep aggression when the player attacks a Piglin/Piglin Brute; Piglin Brutes remain hostile.
+6. The **name Gilded is final**. Progression level curve, ability rank unlocks, Fortune/Unbreaking bonus magnitude and exact numerical repair tick interval remain **exploratory/configurable**, not owner-locked.
 
-## Proposed first skill domains (all provisional)
+Interpret “effective diamond level” by comparing **per-item combat, harvest and armor capabilities** while worn/wielded; do **not** rewrite stored max durability or item tier metadata globally. Effective gold mining tier must correctly harvest blocks that require a diamond pickaxe. Gold repair and Unbreaking address its limited native durability. Original diamond and Netherite items retain native material properties; **Netherite gains only the named virtual Fortune, Unbreaking and repair benefits**.
 
-| Domain / draft skill | Target behavior | Provisional tuning for testing, not approved balance |
+
+## Candidate skill domains (rank distribution still open)
+
+| Domain / draft skill | Owner requirement | Implementation/balance starting point |
 | --- | --- | --- |
-| **Piglin Kin** | Recognized as gold-aligned; ordinary Piglins become nonhostile by default, while genuine retaliation remains possible. Ordinary vanilla worn-gold behavior already exists; the discipline should matter beyond it. | No special handling for Piglin Brutes unless explicitly approved; do not interfere with other mods' factions. |
-| **Gilded Grip** | Improve gold-tool melee damage and/or mining speed only when wielded by an enrolled player. Gold armor receives conditional armor/armor-toughness or another combat stat benefit only while worn. | Start with small rank-scaled bonuses and test against iron/diamond/netherite; do not mutate global gold material definitions. Optional effective mining tier needs a separate decision. |
-| **Fortune's Favor** | Gold pickaxes, axes, shovels, and hoes get bonus **effective Fortune** for applicable block drops; apply even if the item is not itself enchanted, and combine sensibly with its real enchantment. | Test +1 then +2 effective levels. Example policy: actual Fortune + progression bonus, configurable effective cap (candidate 5), respecting Silk Touch precedence. Exact algorithm must be validated against loot and enchantment mods. |
-| **Lasting Gilt** | Gold tools and armor gain bonus **effective Unbreaking** only while used/worn. Physical enchantment NBT remains unchanged. | Test +1 through +3 effective levels; configurable cap. Coverage must include mining, attacking, and armor damage, not just one tool-use event. |
-| **Golden Renewal** | Damaged gold armor self-repairs rapidly while worn; damaged gold tools self-repair while actively selected/used. | Test baseline 1 durability per 20 ticks, progressing toward 1 durability per 5 ticks, with editable rate and amount. The brief is **very quick**, so this is intentionally far faster than the Hunter pilot's 1/200 ticks. |
+| **Piglin Kin** | Ordinary Piglins treat Gilded players as allies, including while Gilded opens/chops vanilla protected containers or mines protected gold. | Do not globally disable anger. Target each verified Gilded player as the instigator. Attacks remain actionable and Brutes remain hostile. |
+| **Gilded Grip** | Golden tools/armor have effective diamond-tier harvest, combat and defense stats. | Correct diamond equivalence by equipment type/armor slot; gold's existing higher mining speed and enchantability should survive. No permanent NBT edits. |
+| **Fortune's Favor** | Additional effective Fortune on **gold or Netherite mining tools**. | Additive virtual Fortune suggested, possibly +1 to +2 with a configurable cap; preserve actual enchantment and Silk Touch behavior. The bonus/cap is not approved yet. |
+| **Lasting Gilt** | Extra effective Unbreaking on **gold or Netherite tools and armor**. | Suggested +1 to +3 virtual levels with a configurable cap; apply to mining, combat and armor wear only once. Magnitude remains unapproved. |
+| **Golden Renewal** | **Identical rapid repair rate** for equipped gold and Netherite items. | Provisional test rate: 1 durability per 20 ticks ramping to 1 per 5 ticks. One tunable schedule shared by both materials, rather than per-material rates. Final rate unapproved. |
 
-### Equipment targeting
+### Equipment rules
 
-- Initial target: **vanilla golden helmet, chestplate, leggings, boots, sword, pickaxe, axe, shovel, hoe**. Handle modded gold items only after verifying IDs and explicit opt-in tags.
-- Use reusable item tags, provisionally `#tmm_progression:golden_tools`, `#tmm_progression:golden_armor`, and `#tmm_progression:golden_equipment`. These are proposed tags, **not verified existing registrations**.
-- Armor is active while equipped in the four vanilla armor slots. Tool regeneration is active while the item is selected/held for use; define whether offhand tools qualify and how to avoid offhand parking as a free inventory-wide repair exploit.
-- A gold item in a chest, main inventory, curio slot, or another player's hands gets no discipline effect by default.
-- No repair beyond full durability; no item resurrection after a stack has already broken. Respect normal damage, break callbacks, enchantments, and item identity.
+- Vanilla initial target: golden helmet/chestplate/leggings/boots, sword/pickaxe/axe/shovel/hoe; **Netherite helmet/chestplate/leggings/boots, sword/pickaxe/axe/shovel/hoe**. Modded items enter only via audited opt-in tags.
+- Proposed tags (not yet registered): `#tmm_progression:gilded_gold_tools`, `#tmm_progression:gilded_gold_armor`, `#tmm_progression:gilded_netherite_tools`, `#tmm_progression:gilded_netherite_armor`; combined tools/armor selectors may be built from these.
+- Armor bonuses/repair/unbreaking require the corresponding equipment slot. Tool bonuses/repair/unbreaking require the actual active mainhand tool at the moment of action; other hands and offhand-item support require explicit testing. No unattended entire-inventory healing.
+- Gold's **effective** diamond mining harvest tier must coexist with vanilla gold's fast mining speed. A harvest-permission workaround alone is insufficient if the client/server still apply wrong mining rules or drop logic.
+- Virtual attributes and enchantments follow the **player and the action**, not the stack's persisted enchantments, components or creative tooltips. Prevent bonuses leaking to other players, machines and equipment later removed from slots.
+- Neither repaired material can exceed full durability or be revived after breaking.
 
-## Progression and faction questions to resolve
 
-1. Is Piglin alignment a **standalone compatible discipline**, a mutually exclusive identity/class, or an additional ancestry/faction layer? **Do not add an exclusive group yet.**
-2. What unlocks it: bartering milestone, wearing a full set of gold in the Nether, a crafted totem, or manual enrollment for the first prototype? Existing chassis supports manual enrollment for QA, but no Piglin-specific rite yet.
-3. How should the relationship with Piglins work? Vanilla Piglins already tolerate a player wearing at least one gold armor piece, except for aggression causes. Should the discipline remove the gold-armor requirement, improve bartering, or both? Piglin Brutes and Hoglins should remain unaffected until separately approved.
-4. Does **improved stats** mean enough to compete with iron/diamond/netherite on damage, armor and mining speed, or a different niche (high yields, survival through regeneration, weak against burst damage)? Gold's low durability is part of vanilla's tradeoff, so repairing it quickly has major balance consequences.
-5. Does Fortune go above vanilla Fortune III when an actual enchanted tool is held? Testable prototype: additive effective level with configurable cap, but no final approved value.
-6. Will Hunter, Monk and Piglin disciplines coexist? Keep the engine path independent by default, and avoid inventing restrictions.
+## Remaining progression design decisions
 
-Potential natural XP/milestones, **ideas only**: successfully barter with a Piglin (requires a trusted server event adapter), mine a gold ore block legitimately, craft/equip gold tools, survive Nether exploration while wearing gold, and discover bastions. Avoid granting XP from merely holding/repeatedly cycling an item or generating farmed gold with automation. These new triggers are **not all available** in the current native activity event list.
+1. Is Gilded compatible with Monk/Hunter or exclusive with other identity disciplines? **No exclusivity group selected.**
+2. How does Gilded enrollment unlock: bartering with Piglins, earning trust in a Bastion, a Nether gold rite, or another action? A manual join is sufficient for the first controlled QA prototype, not a shipping unlock.
+3. Exactly how many virtual Fortune and Unbreaking levels, and what are their effective caps (including Apotheosis overlevel enchantments)?
+4. What is the repair speed progression, and should the same rate be granted immediately or unlocked at higher Gilded ranks? **Gold and Netherite always share each unlocked rate.**
+5. Whether additional bartering bonuses or Piglin reputation mechanisms should exist. **None are authorized just by the ordinary-Piglin anger exemption.**
 
-## Technical fit with the current `tmm_progression` chassis
+Potential XP/milestones (**exploratory**, not available in current source by default): successful barter, legitimately mined gold ore, crafting/using gold gear, surviving Nether exploration, and exploring Bastions. Repeatedly placing/mining player-placed gold or cycling held gear must not create trivial infinite progression XP. Credit only verified server actions.
 
-The existing standalone progression module on `test/full-integration` already supports native skills/ranks and player-specific effects. Relevant reusable handlers:
 
-- `gear_durability`: tag-selected periodic repair on equipment slots including all armor, mainhand and offhand, with `interval_ticks` and `per_rank`. This is a promising direct fit for **Golden Renewal**.
-- `attribute`, `damage_bonus`, `break_speed`, `harvest_tier`: possible building blocks for temporary gold equipment improvements; verify that a selected-item condition is applied to **attribute** effects before using them for gold-only stats. Damage and mining selectors already exist but must be checked case by case.
-- `faction_neutrality`: target-change interception with retaliation protection; may provide a starting point for Piglin alignment, but check vanilla gold-armor/Piglin anger behavior and modded aggression before claiming parity.
-- `EffectHandlers.register` and equipment/block-break/block-drops hooks provide an extension seam for reusable new effects.
+## Technical fit with the existing `tmm_progression` chassis
 
-**Missing / requires code and live verification:**
+The existing custom progression engine on the `test/full-integration` base offers per-player paths, rank XP, equipment slot tick handlers and an extension seam. **This remains a design branch: no player-mod source changed.**
 
-1. An **effective Fortune** hook for gold tools that participates in the real loot/enchantment calculation exactly once, rather than post-hoc duplicate drops. Existing `treasure_hand` is an empty-hand Monk loot replacement, **not** an appropriate drop-in for gold tools. Verify Silk Touch conflicts, Apotheosis enchantment behavior, modded ores, loot tables, block entities and claim protections.
-2. An **effective Unbreaking** hook for all relevant gold wear contexts without mutating a physical stack's enchantments or double-applying wear protection. Respect Minecraft 1.21.1 NeoForge damage semantics and source item identity.
-3. Reusable **held/worn-item conditions** for transient attribute bonuses. Do not introduce permanent attributes into a gold item, and ensure modifiers clean up on swap, death, logout, reload, class leave and respec.
-4. Piglin bartering/anger event hooks, if chosen for enrollment or XP.
+Existing candidate handlers:
+- `gear_durability` can repair eligible damageable items in equipped armor/mainhand slots by configured amount and interval. Reuse this logic for **the same rank-scaled gold/Netherite rate**, not two independent stacked repair handlers.
+- `attribute`, `damage_bonus`, `break_speed`, `harvest_tier` can partly represent Gilded gold diamond-equivalence, but currently need selected-gear and per-armor-slot conditions. The existing `harvest_tier` alone was designed for barehand harvesting; **do not assume it automatically changes the selected gold tool's effective material tier**.
+- `faction_neutrality` has target-suppression and retaliation mechanisms, but vanilla Piglin chest/gold triggers can write an anger/target memory **before** ordinary target selection. A robust implementation must intercept or filter the **specific Piglin alarm initiation** for the offending Gilded player, not only clear targets later.
+- `EffectHandlers.register` offers a trusted extension seam for validated new effect types and event contexts.
 
-The first functional prototype should be a **small datapack path plus reusable handlers** in the same progression module, not a second separate XP engine and not a Tyz MXP tree. A data-only path containing unknown effect types will be rejected by the strict parser, so **do not create an active path JSON referring to Fortune/Unbreaking before handlers exist**.
+Required new mechanics / code:
+1. **Player-and-tool-context effective Fortune** on gold and Netherite tools, applied once to normal applicable block loot, respecting actual enchantments, Silk Touch precedence, claim restrictions, high-level Apotheosis and modded loot. The Monk `treasure_hand` loot replacement is not an appropriate reusable Fortune implementation.
+2. **Player-and-item-context virtual Unbreaking**, covering both eligible materials across tool mining/attacks and armor wear without rewriting item enchantments or applying protection twice.
+3. **Effective gold diamond equivalence** for vanilla armor slots, damage and harvest/mining checks, with reconciliation when switching equipment and logging in/out. Verify existing fast gold mining speed is preserved; do not globally register gold as diamond.
+4. **Source-specific Piglin anger exemptions:** suppress opening/**breaking** protected storage and breaking protected gold blocks **only when the acting player is Gilded**. Vanilla relevant targets include gold ore variants, Nether gold ore, raw gold block, gold block, gilded blackstone, chest/trapped chest/ender chest/barrel/shulker box and chest vehicles as applicable to the target MC version. Confirm exact 1.21.1 rules against code; do not broadly exempt all storage or alter mob state across players.
+5. **Full ordinary-Piglin affiliation** while armorless, without preventing true attack retaliation or changing Piglin Brutes, Hoglins or zombified Piglins.
+6. The equipment-event machinery should snapshot the **actual player + item** during block break/use/damage, preventing post-action hand swaps from altering Fortune and durability results.
 
-## Exploit and balance concerns
+Unknown effect types fail the current strict path JSON parser. **Do not activate a Gilded path referring to Fortune/Unbreaking until the corresponding validated handlers exist.**
 
-- Full-time very fast regeneration may largely negate gold's low durability. That is part of the requested fantasy but needs intentional rate caps and comparison to Mending, Unbreaking and modded auto-repair gear.
-- Ensure effective Fortune applies to actual block loot **once**, not to existing item stack drops, chest loot, machine outputs or Silk Touch collection. Guard against duplication in vein mining, mass-breakers, spells, protected blocks and repeated event callbacks.
-- Check gold ore/Nether gold ore outputs, enchantment overcap interactions, and any gold-to-shop-coin or EMC conversion loop. Preserve existing ProjectE/boss gates and banned loot items.
-- Prevent inventory swapping immediately after an action from conferring the bonus on the wrong tool, and avoid permanently writing virtual Fortune/Unbreaking to NBT.
-- Keep vanilla equipment and non-enrolled players unchanged, including ordinary Piglin friendliness from wearing gold.
 
-## Minimum acceptance tests for a later implementation
+## Exploit review and proposed controls
 
-1. Two players on a disposable server, one aligned and one not, use visually identical gold gear: only the aligned player receives effective bonus stats, drops, reduced wear and regeneration.
-2. Gold pickaxe with Fortune 0/III and Silk Touch tested on stone/coal/diamond/gold/Nether gold and representative modded ore; no double drops, correct normal XP, correct fortune policy.
-3. Gold sword/tool/armor with Unbreaking 0/III across mining, combat and incoming damage; compare average durability loss over many trials without changing stored enchantments.
-4. Damage a full gold armor set and held gold tool; observe repair-rate progression with ticks; switch to inventory and another player, confirm appropriate suspension; no resurrection after break.
-5. Test ordinary Piglins, aggravated Piglins, Piglin Brutes, dimension changes, armor swaps and Nether bartering. Only the explicitly approved faction policy should change.
-6. Reload datapacks, relog, die/respawn, respec/leave if implemented, and run dedicated multiplayer; no stranded attribute modifiers or shared player state.
-7. Exercise Fortune/repair with item automation, mass mining, Apotheosis and ProjectE/quest economy to check for repeatable profitable bypasses.
+### Intended powers, not automatically exploits
+
+- Diamond-performance gold with gold's faster mining and Netherite's very rapid free repair can outperform ordinary diamond equipment in sustained use. **This is deliberate specialization**, not a bug to nerf away without owner input.
+- Gilded players freely mining gold/opening Bastion loot containers without angering ordinary Piglins is an **approved affinity perk**. Brutes and direct retaliation provide remaining danger.
+- Mending's usefulness decreases substantially for Gilded gold/Netherite; this is expected. Don't add an arbitrary repair consumption cost without owner approval.
+
+### Actual duplication, bypass and implementation risks
+
+| Severity | Risk | Proposed mitigation |
+| --- | --- | --- |
+| **Critical** | **Second Fortune drop roll** duplicates original block output, re-rolls protected/block-entity loot or compounds with Apotheosis/modded harvesting. | Participate once in authoritative server loot generation; no post-break append/replacement after vanilla has already rolled. Exact stack/tool provenance and original XP preserved. |
+| **High** | **Overcapped Fortune + existing Ore Blocks shop and ProjectE EMC** creates profitable transformation → shop-currency loops or bypasses progression gates. | Test ore block purchase → mine → process → sell, ore/resource EMC conversions and enchant-cap combinations; preserve existing shop balance and all boss gates. Do not disable intended Fortune merely because farm outputs are renewable. |
+| **High** | **Unbreaking or repair fired twice** (two paths, event duplicates, armor slot aggregation) causes infinite effective durability beyond the specified rate. | Calculate single effective Unbreaking level per wear event and aggregate a single capped per-slot repair tick; enforce common gold/Netherite speed. |
+| **High** | **Piglin anger immunity leaks to attacking Piglins, Piglin Brutes or unrelated players** via global anger cancellation or memory resets. | Exempt **specific anger causes + current player UUID**; preserve damage/retaliation and other targets; no wholesale clearing of mob anger. |
+| **High** | **A temporary player skill becomes a permanent item upgrade** via enchant NBT/components or attribute leakage; transfer becomes a duplication/buff exploit. | No persistent item mutations; recompute per action and reversible per-slot attributes; verify item hand-off, death, logout, respec. |
+| **Medium** | **Gold tier mismatch** allows harvesting diamond-tier blocks while drops fail or bypasses intended modded harvest requirements. | Run real break/drop tests for vanilla diamond-tier blocks, include modded harvest tags, avoid global tier writes. |
+| **Medium** | **Offhand/inventory parking** can regenerate many items with idle switching, invalid slots, grave auto-equip or duplicate repair callbacks. | Equippable armor + selected mainhand only in first prototype; per-stack verified single repair each tick interval. |
+| **Medium** | **Infinite Gilded XP** from placing/mining gold, machine-broken ore, automation or repetitive bartering farm without personal activity. | Trusted actual player action, placed-block/automation protections where relevant, cooldowns/unique milestones; don't reward item cycling. |
+| **Medium** | **Other mods' armor/attribute systems stack as diamond-equivalent gold plus extra material armor** or wrongly treat gold as diamond. | Apply only the diamond-minus-gold delta at the actual slot, reevaluate equipment stats and test all Curios/attribute interactions. |
+
+All proposed controls are design checks, not claims of implementation. This branch remains **outside** the next test build.
+
+
+## Minimum acceptance tests for later implementation
+
+1. **Comparison:** Gilded and non-Gilded players receive the same gold armor/tool and same Netherite armor/tool. Only Gilded receives the new effects. Item data and stats revert when handed to a non-Gilded player.
+2. **Gold diamond equivalence:** compare armor/armor toughness, sword/axe damage, pickaxe harvest eligibility (including diamond and obsidian), vanilla golden tool's high mining speed and enchantability; check exact armor slot deltas and no global material change.
+3. **Fortune:** gold and Netherite Fortune 0/III/overcapped gear, Silk Touch cases, representative vanilla and modded ores, rare block drops, mass mining and a multiplayer claim; count **one** loot roll and no duplicated XP.
+4. **Unbreaking:** gold and Netherite armor/tool wear under mining, combat and armor damage; sampled expected durability loss with/without physical Unbreaking and virtual ranks. Confirm no persisted enchantment changes.
+5. **Matched regeneration:** damage equal gold and Netherite gear, verify the **same** actual durability-per-tick repair rate and rank behavior on selected mainhand and worn armor, idle inventory/offhand behavior, item swap, break/removal, respec and logout.
+6. **Piglin exemption:** Gilded wearing no gold can approach ordinary Piglins, break every vanilla gold trigger and open/break relevant containers including chest vehicles **without starting anger**; non-Gilded retains vanilla rules. Attacks by Gilded still provoke retaliation; Piglin Brutes still initiate hostility. Verify a second, non-Gilded player remains a valid independent aggression target.
+7. **Economy:** run ore shop buy→Fortune mine→smelt/process→sell cycles, EMC conversions, Apotheosis Fortune beyond vanilla, and no bypass of gated materials/banned items.
+8. **Lifecycle/performance:** data reload, reconnect, death, cross-dimension, two-player dedicated server, repeatedly swapped equipment, unrelated mod inventory, protected blocks; profile frequent per-tick repairs across simultaneous players.
+
 
 ## Implementation status and isolation
 
-- [x] Exploratory branch and design recorded.
-- [x] Existing progression-chassis integration seams identified **from source**, not world-tested.
-- [ ] Name, unlock rule, faction behavior and balance finalized.
-- [ ] Active datapack path.
-- [ ] New effective Fortune and Unbreaking handlers.
-- [ ] Gold-only stats/selection QA.
-- [ ] Dedicated-server and in-world tests.
-- [ ] Registration in `manifest/integration-sources.json` and feature checklist **only after authorization**.
+- [x] Dedicated isolated exploratory branch and proposal.
+- [x] **Name locked: Gilded**.
+- [x] Gold diamond-equivalent performance, Netherite extension, and **matched rapid regeneration** recorded as owner requirements.
+- [x] Ordinary Piglin anger exemption for gold mining and container access recorded, with retained attack retaliation and Brute hostility.
+- [x] Chassis seam review and specific exploit controls documented.
+- [ ] Enrollment and skill rank costs, Fortune/Unbreaking values and repair-speed curve chosen.
+- [ ] Native Piglin anger + selected-tool enchantment mechanisms validated against exact 1.21.1 source.
+- [ ] Active validated Gilded datapack path and new effects.
+- [ ] Diamond-equivalent equipment and two-material repair implementation.
+- [ ] Dedicated-server, disposable-world and multiplayer tests.
+- [ ] Explicit owner authorization to register in integrated test manifests/checklist.
 
 **Non-goal for this branch now:** do not change `test/full-integration`, `main`, mod lists, existing Monk/Hunter JSON, integrated build manifests, QA status, quests or live configuration. Do not mark this proposal tested or build-ready.
