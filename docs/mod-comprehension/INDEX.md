@@ -261,3 +261,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — Feywild 1.21.1-5.6.4 profile added from the pack pin, official release data and a matching-version source snapshot. The public getting-started wiki is for 5.0, so the profile marks the 5.6.4 walkthrough and several guide/encounter branches as incomplete. No TMM quests or runtime files changed.
 
 - 2026-11-16 — Reliquary Reincarnations 2.0.85 profile added from the exact pack pin and current version-matched source snapshot. The old wiki diverges on the Tome's Nether Star recipe: current source doubles one `c:nether_stars` input at 256 charge. Profile remains researching; no TMM quests or runtime files changed.
+
+- 2026-11-16 — Theurgy source follow-up mapped the Incubator's two-block/three-vessel setup, heat requirement, one-item-per-input atomic consumption, output backpressure, and a representative Oak Log recipe. This is source-only: the selected 1.79.0 JAR/source provenance mismatch and client/guide/remaining progression gaps remain open. No quests/runtime edits; see [profile](mods/theurgy.md).
