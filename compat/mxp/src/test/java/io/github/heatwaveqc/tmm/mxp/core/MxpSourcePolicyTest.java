@@ -18,7 +18,7 @@ final class MxpSourcePolicyTest {
         assertEquals(5, first.progress(), 1e-10);
         var repeat = account.boss("minecraft:wither", "second-boss-uuid",
                 MxpService.FIRST_BOSS_MXP, 500, false);
-        assertEquals(500.0 / Math.pow(1.2, 126), repeat.effectiveXP(), 1e-12);
+        assertEquals(500.0 / Math.pow(MxpMath.DEFAULT_GROWTH, 126), repeat.effectiveXP(), 1e-12);
     }
 
     @Test void onlyInventoryOrCuriosTabletAndManaRingTypesAreEligible() {
