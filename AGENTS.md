@@ -8,6 +8,22 @@ For the current test build, start with [docs/qa/README.md](docs/qa/README.md), f
 
 The **full smoke authorization rule below remains in force**. Uploading or following a checklist does not authorize a full server boot, a full-smoke workflow invocation, an automatic push-triggered smoke, or a Prism build. Run quick source/static/unit checks by default; request explicit authorization for any full smoke.
 
+## Integration ownership, frozen sources, and merge lifecycle (owner decision, 2026-11-16)
+
+**One integration writer; many feature agents.** Feature agents work on isolated PR branches. They may propose source selections, but must not silently replace `test/full-integration` shared runtime/quest/config trees, `manifest/integration-sources.json`, `manifest/mods.json`, or packwiz `index.toml` / `pack.toml`. The integration writer reconciles these with current HEAD, explicit path ownership and an immutable donor revision. Re-fetch HEAD and review concurrent edits before every write.
+
+**Merged is not automatically integrated.** Every external donor stream in `manifest/integration-sources.json` must carry an immutable full 40-hex `source_commit`. Do not use a moving `origin/feature/*` head to stage a candidate. When a PR is merged, mark its relevant stream `integrated_into_baseline: true`, switch `branch` to `test/full-integration`, and retain `merged_from`, `merged_pr`, and `merged_commit` for provenance. Verify every prior reference before deleting the feature branch. GitHub's auto-delete-on-merge may remain enabled; temporary branch names are not durable build dependencies.
+
+**Do not replay stale directories.** An already-merged baseline path must not be restored from an old branch/commit. A new donor that differs from a tracked baseline file requires a specific `approved_overrides` path/pattern and meaningful explanation; otherwise assembly must fail before any writes. Never silently replace the latest starter quests, Monk/Hunter Java, Tyz overlays, config or packwiz metadata with older feature snapshots.
+
+**Mandatory lightweight merge validation.** Never use `[skip ci]` or equivalent on changes to integration sources, workflows, build scripts, packwiz, runtime code, or shared data. Before merging, run/obtain Repository CI, Module CI where applicable, and the read-only Integration Preflight: `python scripts/validate_integration_sources.py`. Run it on a clean canonical-LF checkout (see `.gitattributes`); check source references, duplicate path owners, overwrite warnings and indexed hashes. `scripts/assemble_integration.py` may run **only after explicit authorization for assembly**, and only after strict preflight. Do not invoke a self-merge of an advancing integration branch.
+
+**Draft discovery is not test inclusion.** Routine preflight reports unknown WIP branches without failing unrelated quick CI. When a chat or PR calls a feature ready for live testing, register and reconcile it under the mandatory inclusion rule below; do not silently defer it. A comprehensive test cannot be called complete with unaccounted ready items.
+
+**Test vocabulary:** use [the canonical eight levels](docs/qa/TEST-LEVELS-AND-TERMINOLOGY.md): Repository CI, Module CI, Integration Preflight (all automatic/read-only), Integration Assembly (manual), Server Boot Smoke (owner-authorized), Prism QA Package (owner-authorized), Client Launch Smoke, and Gameplay Acceptance. "Quick CI" means the first three only. Package creation is not a client PASS. Never report an unrun level as successful.
+
+**Branch protection:** GitHub repository settings must require the lightweight `Verify bootstrap / metadata` check for `test/full-integration` PRs and block direct writes, with no server smoke or Prism build as a required check. The settings are not implemented by this text alone; use [the admin setup checklist](docs/qa/BRANCH-PROTECTION-SETUP.md).
+
 ## "Ready for a live test" = mandatory next-test inclusion attempt (owner clarification, 2026-11-16)
 
 A contributor/chat saying **"ready for a live test"**, **"ready for next test build"**, or equivalent makes that feature **in scope for the next owner-authorized comprehensive unstable live-test build**. This applies to unmerged PRs, separate feature branches, KubeJS/config changes, mod pins, quests, and first-party JARs; it is not limited to changes already copied onto `test/full-integration`. **Another chat's narrower task, an old source-only label, or an entry in `deferred_pending_runtime` is NOT authorization to omit a ready feature.**
