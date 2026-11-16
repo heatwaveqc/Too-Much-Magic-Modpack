@@ -1,18 +1,17 @@
 name: Thermalily and ProjectE converters combined server smoke
 on:
-  push:
-    paths:
-      - 'compat/transformations/**'
-      - 'mods/projecte-energy-converters.pw.toml'
-      - 'manifest/mods.json'
-      - 'index.toml'
-      - 'pack.toml'
-      - '.github/workflows/thermalily-energy-server-smoke.yml'
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: read
 jobs:
   combined-server:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
