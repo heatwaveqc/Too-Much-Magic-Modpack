@@ -15,7 +15,8 @@
         "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
       ],
       "mode": "source-verified-baseline-runtime",
-      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches) with native FTB Filter System tag task (file ID 7429011), and removed hidden advancement. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS."
+      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches) with native FTB Filter System tag task (file ID 7429011), and removed hidden advancement. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS.",
+      "source_commit": "6af5ed27b53c33a153e0a7c4c2d2266f70e5b9f2"
     },
     {
       "name": "evilcraft-quest-draft",
@@ -24,7 +25,8 @@
         "manifest/quest_drafts/evilcraft.json"
       ],
       "mode": "source-and-review-only",
-      "note": "Nine documented EvilCraft source-verified draft quests with first Dark Gem -> 2 Crushed Dark Gem reward. Does not touch runtime SNBT until declarative compiler and client registry QA."
+      "note": "Nine documented EvilCraft source-verified draft quests with first Dark Gem -> 2 Crushed Dark Gem reward. Does not touch runtime SNBT until declarative compiler and client registry QA.",
+      "source_commit": "4d63166bae3176ca3322dc06aa6d6afc7129707d"
     },
     {
       "name": "questshop-vanilla-ore-blocks",
@@ -35,7 +37,8 @@
         "kubejs/data/tmm/questshop/shop_entries/ores.json"
       ],
       "mode": "runtime-experimental",
-      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world."
+      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world.",
+      "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9"
     },
     {
       "name": "silver-ore-materials",
@@ -53,7 +56,8 @@
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch."
+      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch.",
+      "source_commit": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c"
     },
     {
       "name": "mahou-catalyst-exchange-neo-dust",
@@ -62,7 +66,8 @@
         "scripts/audit_mahou_catalyst_bytecode.py"
       ],
       "mode": "source-only",
-      "note": "DISABLED: old KubeJS Neo dust exchange adapter registered EntityTickEvent.Pre for every dropped item on every tick plus LevelTick scans. No longer imported into runtime. Native Mahou Catalyst Exchange stays functional for Mahou powdered items. Exact pinned circle bytecode probe added to design narrow Java/mixin circle-scanner injection preserving native mana/output; DO NOT reinstall old global tick script."
+      "note": "DISABLED: old KubeJS Neo dust exchange adapter registered EntityTickEvent.Pre for every dropped item on every tick plus LevelTick scans. No longer imported into runtime. Native Mahou Catalyst Exchange stays functional for Mahou powdered items. Exact pinned circle bytecode probe added to design narrow Java/mixin circle-scanner injection preserving native mana/output; DO NOT reinstall old global tick script.",
+      "source_commit": "f8a1acc1226ba213b0bccf20499627fb7dc444db"
     },
     {
       "name": "roots-mxp-prototypes",
@@ -73,7 +78,8 @@
         "kubejs/server_scripts/roots_terra_server.js"
       ],
       "mode": "runtime-experimental",
-      "note": "Prototype only, not the finished universal MXP implementation"
+      "note": "Prototype only, not the finished universal MXP implementation",
+      "source_commit": "71253524c2ca73cc9873287e907fe43bdd7434bb"
     },
     {
       "name": "mxp-hexcast-contract",
@@ -82,7 +88,8 @@
         "integration/hexcast-media-pilot/"
       ],
       "mode": "source-and-test-only",
-      "note": "Research pilot; not added as gameplay JAR"
+      "note": "Research pilot; not added as gameplay JAR",
+      "source_commit": "1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049"
     },
     {
       "name": "mxp-ledger-math-pilot",
@@ -91,11 +98,12 @@
         "compat/mxp/"
       ],
       "mode": "source-and-test-only",
-      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet."
+      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet.",
+      "source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa"
     },
     {
       "name": "tyzs-primary-runtime-migration",
-      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
+      "branch": "test/full-integration",
       "paths": [
         "compat/magic/",
         "scripts/activate_tyzs.py",
@@ -103,7 +111,11 @@
         "scripts/stage_monk_tyz.py"
       ],
       "mode": "runtime-first-wave-integrated",
-      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification."
+      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification.",
+      "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
+      "integrated_into_baseline": true,
+      "merged_pr": 229,
+      "merged_commit": "f468ccf8589d0a4cbb2990c86e782f8b794f70df"
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -120,7 +132,8 @@
         "ftb-essentials"
       ],
       "mode": "runtime-when-pinned",
-      "note": "Register current source immediately and bring the approved FTB Essentials 2101.1.10 pack pin into integration automatically after upstream B13 resolves; non-op home/RTP still require in-world QA"
+      "note": "Register current source immediately and bring the approved FTB Essentials 2101.1.10 pack pin into integration automatically after upstream B13 resolves; non-op home/RTP still require in-world QA",
+      "source_commit": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85"
     },
     {
       "name": "starter-inventory-akashic-improvable",
@@ -130,7 +143,8 @@
         "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
       ],
       "mode": "runtime-experimental",
-      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch."
+      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch.",
+      "source_commit": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7"
     },
     {
       "name": "projecte-boss-recipes-and-emc-audit",
@@ -144,7 +158,8 @@
         "scripts/verify_emc_coverage_audit.py"
       ],
       "mode": "runtime-recipe-experimental-plus-emc-audit-source",
-      "note": "KubeJS swaps both vanilla Stone recipes for three boss-associated trophies; requires Chaos Shard in every MK3+ Power Flower direct and MK3 upgrade. Project Expansion Matter Upgrader and EMC synthesis are separate bypass checks. EMC coverage auditor is source-only until post-mapping game exports exist."
+      "note": "KubeJS swaps both vanilla Stone recipes for three boss-associated trophies; requires Chaos Shard in every MK3+ Power Flower direct and MK3 upgrade. Project Expansion Matter Upgrader and EMC synthesis are separate bypass checks. EMC coverage auditor is source-only until post-mapping game exports exist.",
+      "source_commit": "348d0b26e67fb6238a6fb6e94c9699d34cb83727"
     },
     {
       "name": "dragon-diets-food-compat",
@@ -154,7 +169,8 @@
         "kubejs/server_scripts/dragon_diets.js"
       ],
       "mode": "runtime-experimental",
-      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required. Static verifier is owned by integration baseline because obsolete TeamLapen Werewolves food tags must not be checked."
+      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required. Static verifier is owned by integration baseline because obsolete TeamLapen Werewolves food tags must not be checked.",
+      "source_commit": "3423131228f0645273b8b895961a46177017948b"
     },
     {
       "name": "next-qa-dragon-comforts-hearts-pins",
@@ -163,16 +179,21 @@
         "scripts/audit_jawr_food_jar.py"
       ],
       "mode": "runtime-experimental",
-      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight."
+      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight.",
+      "source_commit": "0c54fe465b072becd15769ab6ef3fac245a08cb5"
     },
     {
       "name": "standalone-monk-hunter-progression",
-      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
+      "branch": "test/full-integration",
       "paths": [
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate."
+      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate.",
+      "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
+      "integrated_into_baseline": true,
+      "merged_pr": 229,
+      "merged_commit": "f468ccf8589d0a4cbb2990c86e782f8b794f70df"
     },
     {
       "name": "jawr-native-transformation-bridge",
@@ -181,7 +202,8 @@
         "compat/transformations/"
       ],
       "mode": "compile-and-load",
-      "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins."
+      "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins.",
+      "integrated_into_baseline": true
     }
   ],
   "covered_by_baseline": {
