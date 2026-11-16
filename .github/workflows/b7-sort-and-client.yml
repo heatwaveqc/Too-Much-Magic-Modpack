@@ -2,16 +2,19 @@ name: B7 Inventory Tweaks resolve and Prism client build
 # ReFoxed 1.3.2 pinned by official CurseForge file ID 6407807; never silently upgrade.
 # Forge/CurseForge labels this dual-side, but UI-only sorting is intentionally client-scoped.
 on:
-  push:
-    branches: [build/b7-inventory-refoxed-qol-audit]
-    paths: ['.github/workflows/b7-sort-and-client.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   pinned-client-build:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
