@@ -22,7 +22,7 @@ hash = "c9bbff2c864c6fdb80334c157523f8ae377408c9aab665064f385ebf9b9e007f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/ars_nouveau.snbt"
-hash = "f9b68bec3255cccdd1b5859945907634d785efce0b00d7b461db20166a67b898"
+hash = "cb044ded8a6c98377f4f293bbb7dddf8dcc4237ab4261dc4b3bb99e23542a741"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/artifacts.snbt"
@@ -186,7 +186,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "e2496511754b07581ea8eae71c164fdbb5696fd3da6837b7126918e006925ae3"
+hash = "0a8798ed0239ba4bfff144ae4a2cd1b314ab414ca9e59d498ce8609fb57b06a6"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -238,7 +238,7 @@ hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/first_log.json"
-hash = "08ca07f60c75699e42a554e84a1c1ebbcb1e5fee4863305720565788163d660d"
+hash = "b6884a54ff24a9f23d32a364fb8ee0aa2adee11b67a5ac8fa99795c8da62a6dd"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
@@ -1203,3 +1203,7 @@ metafile = true
 file = "mods/valhelsia-core.pw.toml"
 hash = "f05197caaa06d6cf3807ae2d81928c4f5eff1336597b863207c6320ab7f2e4b0"
 metafile = true
+
+[[files]]
+file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
+hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
