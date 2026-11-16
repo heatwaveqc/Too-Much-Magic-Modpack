@@ -4,6 +4,7 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.server.level.ServerPlayer;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
+import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
@@ -27,6 +28,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
+        TreeChopXpBridge.register();
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
@@ -107,9 +109,15 @@ public final class ProgressionEvents {
     /** Loot-aware callback needed for Monk Glass Touch and Treasure Hand; no generic drop mutation. */
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
-            ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
-            if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
-                ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
+            // TreeChop and normal drops can report the same physical log.
+            if (!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
+                    || RecentBlockCredits.first(player.getUUID(),
+                    event.getLevel().dimension().location().toString(),
+                    event.getPos().asLong(),event.getLevel().getGameTime())) {
+                ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+                if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                    ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
+            }
             HarvestAbilities.blockDrops(player,event);
             TyzMonkBridge.crops(event,player);
             EffectHandlers.blockDrops(player,event);
@@ -183,7 +191,10 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             TyzMonkBridge.logout(player);
+            RecentBlockCredits.forget(player.getUUID());
+            TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
+            ProgressionMenuNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
     }
@@ -201,7 +212,10 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             TyzMonkBridge.logout(player);
+            RecentBlockCredits.forget(player.getUUID());
+            TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
+            ProgressionMenuNetwork.forget(player);
         }
     }
 }
