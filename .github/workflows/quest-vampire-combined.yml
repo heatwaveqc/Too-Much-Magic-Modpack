@@ -1,21 +1,18 @@
 name: Combined Quest + Vampire QA
 on:
-  push:
-    branches: ['test/quest-vampire-localization-2026-11-14']
-    paths:
-      - 'scripts/migrate_quest_localization.py'
-      - 'scripts/build_vampire_prism.py'
-      - 'scripts/validate_quests.py'
-      - 'scripts/rebuild_quest_ui.py'
-      - 'compat/transformations/**'
-      - '.github/workflows/quest-vampire-combined.yml'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   qa-prism:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
