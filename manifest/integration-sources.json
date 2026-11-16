@@ -15,7 +15,7 @@
         "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
       ],
       "mode": "source-verified-baseline-runtime",
-      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+torches. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS."
+      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches). Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS."
     },
     {
       "name": "evilcraft-quest-draft",

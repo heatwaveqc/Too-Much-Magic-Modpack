@@ -204,8 +204,6 @@ def main() -> None:
             starter_rewards = {
                 "544D301000100001": {("enigmaticlegacyplus:unwitnessed_amulet", "1"),
                                      ("enigmaticlegacyplus:cursed_ring", "1")},
-                "544D4D1100000001": {("minecraft:torch", "4"),
-                                     ("ars_elemental:curio_bag", "1")},
             }
             expected_reward_count = 0 if qid == "544D303000100001" else (2 if qid in starter_rewards else 1)
             ensure(rewards.count('type: "xp"') == 1 and
@@ -313,10 +311,16 @@ def main() -> None:
             ensure(product["category"] == "tmm:" + cat, f"Wrong namespaced shop category in {cat}")
             ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
             ensure(not product["item"].startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:")), f"Shop progression bypass item {product['item']}")
-    fn = (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").read_text(encoding="utf-8")
-    ensure("give @s" not in fn, "Pouch must only be claimed from Punch a Tree, not auto-granted")
+    ensure(not (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").exists(),
+           "Obsolete empty first-log reward function must not be shipped")
+    pouch = all_blocks["544D4D1100000001"]
+    ensure(pouch.count('id: "ars_elemental:curio_bag"') == 1 and 'id: "544D701000200003"' in pouch,
+           "Punch a Tree must grant the original once-claimable Curio Bag reward")
+    ensure('id: "minecraft:torch"' not in pouch, "Punch a Tree must not award torches")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
     ensure("rewards" not in a, "First-log advancement must only detect the quest objective, never dispatch a payout")
+    ensure(a["criteria"]["first_log"]["conditions"]["items"][0]["items"] == "#minecraft:logs",
+           "First-log advancement must accept any Minecraft log or stem")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
     for path in QUESTS.rglob("*.snbt"):

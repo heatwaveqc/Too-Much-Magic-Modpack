@@ -27,15 +27,15 @@
       "quest_id": "544D4D1100000001",
       "task_id": "544D4D1200000001",
       "xp_reward_id": "544D601000200001",
-      "item_reward_id": "544D701000200002",
+      "item_reward_id": "544D701000200003",
       "criterion": {
         "type": "advancement",
         "id": "tmm:first_log"
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:torch",
-        "count": 4
+        "item": "ars_elemental:curio_bag",
+        "count": 1
       },
       "depends": null,
       "optional": false
