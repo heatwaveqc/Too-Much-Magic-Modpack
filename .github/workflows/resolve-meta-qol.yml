@@ -1,15 +1,18 @@
 name: Resolve and smoke full meta/QoL batch
 on:
-  push:
-    branches: [build/b2-meta-qol]
-    paths: ['.github/workflows/resolve-meta-qol.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   resolve-boot-commit:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
