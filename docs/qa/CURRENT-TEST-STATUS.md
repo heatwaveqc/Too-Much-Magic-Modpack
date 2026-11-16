@@ -3,7 +3,7 @@
 **Created:** 2026-11-16 (America/Phoenix)  
 **Branch:** `test/full-integration`  
 **Source inspection:** repository files inspected in the November 16 readiness/recovery session; checklist initially committed at `45daad21634d6d59860b199da7cf7df9dc8c0557`. **This is not a tested build SHA.**  
-**Last actual test run from this checklist:** **NONE**. No server smoke, new Prism build, or in-game test was run while setting up these documents.  
+**Last actual test run from this checklist:** **2026-11-16 automated section A**, installed/source SHA `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`. [Full command results and blockers](AUTOMATED-QA-2026-11-16.md). No new server smoke or B/C gameplay run.
 **Next instruction to Codex:** read [the executable checklist](NEXT-TEST-CODEX-CHECKLIST.md), run only its quick/source tests when authorized to work, and append evidence here. Read `AGENTS.md` before any action.
 
 ## What is known from repository inspection (not runtime acceptance)
@@ -34,28 +34,28 @@
 
 ## A — Codex quick/static/save test results
 
-All cases below are **NOT RUN in this QA handoff**. When executing, replace only the matching case row with the tested SHA, command, status and evidence; keep historical results in `docs/TESTING.md` rather than erasing them.
+The A rows below now record the **2026-11-16 automated pass**; PASS is limited to its stated static/unit scope. When executing, replace only the matching case row with the tested SHA, command, status and evidence; keep historical results in `docs/TESTING.md` rather than erasing them.
 
 | Case | Result | Exact SHA | Command / evidence | Notes |
 | --- | --- | --- | --- | --- |
-| A01 | NOT RUN | — | — | Follow linked case in checklist |
-| A02 | NOT RUN | — | — | Follow linked case in checklist |
-| A03 | NOT RUN | — | — | Follow linked case in checklist |
-| A04 | NOT RUN | — | — | Follow linked case in checklist |
-| A05 | NOT RUN | — | — | Follow linked case in checklist |
-| A06 | NOT RUN | — | — | Follow linked case in checklist |
-| A07 | NOT RUN | — | — | Follow linked case in checklist |
-| A08 | NOT RUN | — | — | Follow linked case in checklist |
-| A09 | NOT RUN | — | — | Follow linked case in checklist |
-| A10 | NOT RUN | — | — | Follow linked case in checklist |
-| A11 | NOT RUN | — | — | Follow linked case in checklist |
-| A12 | NOT RUN | — | — | Follow linked case in checklist |
-| A13 | NOT RUN | — | — | Follow linked case in checklist |
-| A14 | NOT RUN | — | — | Follow linked case in checklist |
-| A15 | NOT RUN | — | — | Follow linked case in checklist |
-| A16 | NOT RUN | — | — | Follow linked case in checklist |
-| A17 | NOT RUN | — | — | Follow linked case in checklist |
-| A18 | NOT RUN | — | — | Follow linked case in checklist |
+| A01 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | validate.py exit 0 after canonical LF normalization; 161 installed mod hashes match |
+| A02 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | retirement validator exit 0; active content scan clean |
+| A03 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | 13 explicit deferrals retained; future assembler classification rejects feature/traders-vengence |
+| A04 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Gradle build exit 0; 43 tests pass; installed Monk/Hunter JSON matches |
+| A05 | FAIL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Real Brigadier fixture leaves :monk unread; eight word() inputs; admin xp absent |
+| A06 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Gradle build exit 0; 23 tests pass; live bridge behavior untested |
+| A07 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | silver/material validators exit 0; source-only |
+| A08 | FAIL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Policy unit tests pass but existing world log rejects Bio-Mutagen recipe ingredient codec |
+| A09 | NOT BUILT | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | No runtime MXP JAR; 1.02 feature source explicitly deferred |
+| A10 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Quest validator passes 44 chapters/177 quests; oven runtime reference FAIL |
+| A11 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | ProjectE/EMC/gate validators exit 0; source contract only |
+| A12 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | Materials validator exit 0; live Mahou not tested |
+| A13 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | B20 isolated branch validator exit 0; runtime NOT BUILT |
+| A14 | FAIL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | B19 Windows separator mismatch; normalized read-only content comparison matches; runtime NOT BUILT |
+| A15 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | B16 and B17/B18 isolated source validators exit 0; deferred runtime NOT BUILT |
+| A16 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | 47 custom offers/18 ores and Ring loot blacklist inspected; no transaction/economy testing |
+| A17 | BLOCKED | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | No paired supplied disposable before/after save copies |
+| A18 | NOT RUN | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Run evidence](AUTOMATED-QA-2026-11-16.md) | No new full-smoke authorization; existing client logs inspected only |
 
 ## B — Short command-driven player tests
 
@@ -95,6 +95,7 @@ These require a real installed QA build and the smallest necessary disposable wo
 
 | Timestamp | Source/test SHA | Case ID(s) | Level | Status | Exact evidence / URL | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026-11-16 (automated execution) | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | A01–A18; readiness observations | Static/unit, installed hashes, existing-log inspection | PARTIAL | [Exact commands/results](AUTOMATED-QA-2026-11-16.md); A05/A08 blockers, A14 Windows validator failure | Repair reported defects; B/C not run |
 | 2026-11-16 (initialization) | `45daad21634d6d59860b199da7cf7df9dc8c0557` | Documentation only | Repo inspection | NOT RUN | QA hub and checklist added; no new CI or game tests executed | Codex to run authorized quick preflight |
 
 ### Evidence format
@@ -102,3 +103,8 @@ These require a real installed QA build and the smallest necessary disposable wo
 Use `PASS`, `PARTIAL`, `FAIL`, `BLOCKED`, `NOT BUILT`, or `NOT RUN`. Always supply exact commit, executed command, meaningful output and limited interpretation. For a failing test, record expected vs actual, a reproducible fixture, and the smallest proposed repair.
 
 If an agent has only inspected documentation or committed source, **do not upgrade any case to server-smoked or player-pass**. Canonical feature acceptance remains `manifest/feature-checklist.json`; the repository's full test history remains `docs/TESTING.md`.
+
+
+## 2026-11-16 automated execution summary
+
+Tested installed/source snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` using the later three-tier checklist. All 161 installed mod hashes and both custom JAR hashes match; 43 progression and 23 transformation tests pass. Command parsing/admin XP and loaded Bio-Mutagen recipe are blockers; oven reference and Goety/ProjectE errors persist. B19 fails on Windows path spelling despite matching normalized contents. The new `feature/traders-vengence` needs explicit future assembly classification. No full smoke or world mutation; B/C untouched. Earlier source-inspection/readiness rows above are historical context, not newer runtime acceptance. See [full report](AUTOMATED-QA-2026-11-16.md) for per-R readiness conclusions and feature-branch SHAs.
