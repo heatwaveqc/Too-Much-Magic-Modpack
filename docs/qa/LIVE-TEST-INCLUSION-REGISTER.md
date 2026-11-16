@@ -14,6 +14,12 @@
 - **Removed historical deferral classifications:** Dracolich renderer is current baseline source; Bundle Curios slot is source-locked, with current first-log quest reward preserved. The older first-log ancestor and duplicate reward function must not be replayed.
 - **No automatic builds:** Repository/Module CI and Integration Preflight only. Run Integration Assembly and full server/client QA solely on a fresh, explicit owner request under `AGENTS.md`.
 
+## Owner-approved next-test dimensions — 2026-11-16
+
+**ATTEMPT REQUIRED at the next owner-authorized comprehensive unstable test, not installed now.** This is the owner's explicit inclusion decision, tracked in [the design contract](../DESIGN.md). The integration writer must source exact 1.21.1 NeoForge files, hashes, dependency graphs and packwiz entries for **The Aether, Deep Aether (addon), The Bumblezone, Dive Into the Abyss, Eternal Starlight, Twilight Forest, The Aurorian (unofficial port), Voidscape and Liroth: Revamped**. All nine are in the desired roster only until pinned; inspect new-world generation, boss/dungeon content, portal persistence, multiplayer restarts, balance and spell/mobility shortcuts before acceptance. This approval does not authorize running Assembly, Server Boot Smoke or Prism QA Packaging now.
+
+**Keep** installed Deeper and Darker. **Do not include** Dimensional Dungeons (deferred for Neo Vitae overlap) or Realms of Redemption (reserve). The Twilight Forest final-castle replacement with a **Killer Rabbit of Caerbannog** is an approved *development target*; reconcile the already staged Caerbannog Gateways prototype (PR #68) but do not treat it as a finished final-castle boss. If boss implementation is not ready for the next test, show it separately as blocked rather than silently excluding the Twilight dimension.
+
 ## Required agent procedure before the next build
 
 1. **Inventory** every report of "ready for live test" since the last owner-facing live test: ongoing and prior chat handoffs available to the agent, open PRs/descriptions, completed feature branch docs, latest `manifest/integration-sources.json` and the current QA ledger. A readiness handoff from another chat is actionable even if the branch is unmerged or not registered.
