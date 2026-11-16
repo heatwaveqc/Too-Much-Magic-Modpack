@@ -5,7 +5,7 @@
 ## Implemented
 
 - Standalone **tmm_mxp** NeoForge 1.21.1 / Java 21 module under compat/mxp. Tyz's Skills 6.4.2 is declared a required runtime dependency; its source-verified public API is called reflectively so the third-party JAR need not be redistributed.
-- Pure Java progression math: base = **1000 × nominalCost / first-access resource pool B**; ordinary effective XP = base / (1.2^P), with the divisor **recomputed mid-award** at each 1000-effective-XP point boundary. No vanilla XP spent.
+- Pure Java progression math: base = **1000 × nominalCost / first-access resource pool B**; ordinary effective XP = base / (growth_factor^P), with the **server-configured growth_factor defaulting to 1.02** and the divisor **recomputed mid-award** at each 1000-effective-XP point boundary. The supported range is 1.00–1.20, where 1.00 is linear. No vanilla XP spent.
 - First successful ritual and **every registered first boss victory awards exactly 1,000 effective MXP** without the divisor; repeat rituals/bosses are divided. An explicit boss rule may mark repeat victories as fixed (Chaos Guardian **proposed** 100 MXP repeat, not activated). First-time magical crafts are **still divided**.
 - Overworld SavedData by player UUID persists lifetime MXP-earned levels P, effective progress, undelivered fractional XP, discovered ritual/boss/craft IDs, and the latest 1024 transaction IDs. Respec/death/dimension changes cannot reset the earned lifetime divisor.
 - Tyz public API bridge measures **actual** Tyz level/XP change after the award. It stores sub-0.01 fractional awards until deliverable, and retains undelivered portions of partially accepted awards.
@@ -13,6 +13,21 @@
 - Generic LivingDeathEvent handler awards only the **server player with the final blow** for explicitly registered boss IDs. **Boss rule registry empty by default**; no invented Chaos Guardian IDs or unapproved rewards are live.
 - Operator diagnostic commands: /tmmmxp status, /tmmmxp test ordinary <base>, /tmmmxp test fixed <amount>. Only diagnostics require operator permission 2.
 - Source-backed **Psi 110** KubeJS pilot lives in pilot/kubejs/server_scripts; preSpellCast captures compiled nominal cost, spellCast verifies actual Psi/CAD drain, then calls MxpService.resource with **first-access player Psi pool 5000**. It is not shipped into packwiz.
+
+## Configurable progression rate (2026-11-15)
+
+**Implemented on branch `feature/mxp-configurable-growth-20261115`, pending PR integration and in-game testing.** The `tmm_mxp` mod now registers a **NeoForge SERVER config**, separate from the source-baseline COMMON config:
+
+- Server-world config: `<world>/serverconfig/tmm_mxp-server.toml`.
+- Section/key: `[progression] growth_factor = 1.02`.
+- Default: **1.02**. Allowed: **1.00–1.20**. A growth factor of **1.00** is linear with no level-based divisor; **1.01** is the owner's original alternative; **1.02** is the chosen default.
+- Ordinary resource/craft/repeat rewards use `effective = normalizedBase / growth_factor^P`, where P is lifetime **MXP levels earned**, not spent Tyz points; the factor is reevaluated after each level crossed within an award. First-time fixed ritual/boss grants and explicitly fixed boss repeats remain undivided.
+- The server reads its configured factor for each award and reports it via `/tmmmxp status`. Changing the factor affects **future ordinary awards**, including those on existing saves, but does **not** reset or rescale stored lifetime P, current progress, first-time completion records, transaction deduplication or undelivered Tyz fractions.
+- This is a **server-authoritative balance setting**. Treat any change in an existing world as a progression-economy change for all players, and restart/reload server configuration normally rather than editing the file during a running award.
+- One shared Tyz/MXP point economy is preserved. The standalone Monk core's native technique points are a **different** progression system.
+- The actual Monk full-purchase Tyz SP cost remains aimed at **~10x** the canonical specialist; g=1.02 implies more than tenfold ordinary nominal XP from matched fresh starts, but the exact ratio depends on real tree costs and first-time fixed rewards.
+
+Test scope: `MxpMathTest` verifies the default, linear 1.00, 1.01, 1.02, 1.10, legacy 1.20, invalid values, crossing a level boundary, changing the rate without resetting P, and fixed award behavior. Dedicated-server/client test with real Tyz JAR, config loading, reload and a preexisting MXP save is still required; source tests do not count as a world test.
 
 ## Source integration contract
 
@@ -36,7 +51,7 @@ Run in compat/mxp: gradle --no-daemon clean build. GitHub CI compiles the pure J
 
 In a disposable NeoForge 1.21.1 world with **Tyz 6.4.2 and the Core Magic level-pool settings**:
 1. Run /tmmmxp status, /tmmmxp test ordinary 1000, /tmmmxp status and /tmmmxp test fixed 1000. Verify exact Tyz levels/SP and persisted MXP P.
-2. Run further ordinary awards to verify divisor growth, fractional precision and per-level repricing. Ensure ordinary vanilla kills/mining/crafting do not award Tyz XP.
+2. Run further ordinary awards to verify default `growth_factor = 1.02`, divisor growth, fractional precision and per-level repricing. Try `1.0` (linear) and `1.2` (legacy-compatible) in separate disposable worlds. Check the value reported by `/tmmmxp status` and the world serverconfig. Ensure ordinary vanilla kills/mining/crafting do not award Tyz XP.
 3. Save, relog, die and change dimensions; verify lifetime P, progress and discovery history remain intact. Check world/data/tmm_mxp_players_v1.dat.
 4. Optionally stage **only** the Psi pilot with this compiled mod, then cast a paid CAD spell with/without Thrift and verify positive actual debit. Test failure, no-debit casts and different CAD configurations.
 5. Once values/IDs are approved, activate an explicit Wither boss rule in a test world; verify initial fixed and repeat divided awards, and deduplication.
