@@ -35,6 +35,13 @@ When asked to "work on the mod comprehension project", read [the entry point](MO
 No Create, original Blood Magic, Sophisticated Storage, generic backpacks, generic item logistics, Applied Energistics 2 (AE2), Refined Storage, FTB Ultimine. **No Re:Avaritia or Extended Crafting** (owner rejected competing Infinity-tier endgame after the earlier on-hold status was accidentally ignored). No generic FE transfer mod: Draconic Evolution supplies the high-end energy movement.
 Never add the Ring of the Seven Deadly Sins to any normal acquisition route.
 
+## No unattended full builds or Prism packages (owner decision, 2026-11-16)
+
+- **All automatic full NeoForge smoke tests, world boots, full pack builds, and Prism ZIP/package publication are prohibited** on push, pull request, or schedule. Do not restore legacy push-triggered smoke workflows when copying or rebasing a branch. The former `main` scheduled full-integration launcher is now dispatch-only.
+- Automatic CI may keep quick static checks, compilation, and isolated tests **without** a full server boot or complete Prism/release artifact. A manual build/smoke needs **fresh owner approval for that run** plus the opt-in `full_smoke: true`; packaging-only tasks need an equivalent opt-in `authorized_build: true`.
+- Include a job-level approval gate, not just a human instruction. Condition example: `if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}`. If joining the gate to branch matching, parenthesize every `||` clause first; otherwise some alternatives bypass authorization.
+- Older workflows have been corrected on their active source branches. Before introducing a new feature branch or promoting a historical workflow, audit its `.github/workflows` for copied auto-smoke or auto-packaging steps. **Do not indirectly trigger an unguarded old workflow by pushing first.**
+
 ## Full smoke test authorization (owner decision, 2026-11-15)
 - **Routine agent development and CI must use lightweight validation by default:** source/manifest/hash/quest/config checks, syntax and schema checks, Java compilation, and unit tests. Report exactly what ran. A quick green check is not a server/client PASS.
 - **Never start, schedule, automatically trigger, retry, or indirectly launch a full modded NeoForge server smoke test without an explicit owner instruction for that run.** This includes `scripts/smoke_server.sh` with the full mod roster, GitHub Actions workflow dispatch/call, or pushing into a branch with an automatic full-smoke workflow. A request to implement, merge, research, prepare a test plan, check readiness, or create a test build does **not** itself authorize a full server smoke. Ask for authorization when needed.
