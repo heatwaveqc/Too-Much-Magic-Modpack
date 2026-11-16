@@ -5,6 +5,7 @@ import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tmm.progression.runtime.GildedRules;
+import io.github.heatwaveqc.tmm.progression.runtime.TyzGildedBridge;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -24,6 +25,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         GildedRules.register();
+        TyzGildedBridge.register();
         ProgressionEvents.register();
     }
 }

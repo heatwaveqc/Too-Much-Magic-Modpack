@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tmm.progression.core.GildedFortuneMath;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -224,7 +225,9 @@ public final class GildedRules {
         if (!joined(player) || !tool.is(FORTUNE_TOOLS)
             || hasSilkTouch(tool,player)
             || context.getParamOrNull(LootContextParams.THIS_ENTITY) != player) return 0;
-        return rank(player,"gilded_fortunes_favor");
+        return GildedFortuneMath.virtualBonus(
+            rank(player,"gilded_fortunes_favor") > 0,
+            TyzGildedBridge.rawRank(player));
     }
     public static int extraLooting(ServerPlayer player, LootContext context) {
         if (!joined(player) || !player.getMainHandItem().is(GOLD_WEAPONS)

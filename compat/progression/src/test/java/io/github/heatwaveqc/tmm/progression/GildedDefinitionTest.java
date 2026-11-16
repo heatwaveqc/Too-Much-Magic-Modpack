@@ -39,4 +39,28 @@ class GildedDefinitionTest {
             assertTrue(lootingFound,"Additive gilded gold-weapon Looting skill is required");
         }
     }
+    @Test void gildedFortuneStartsAtThreeRatherThanAtNativeRankThree() throws Exception {
+        try (var stream = getClass().getClassLoader().getResourceAsStream(
+                "data/tmm_progression/tmm_progression/paths/gilded.json")) {
+            assertNotNull(stream);
+            var root=JsonParser.parseReader(new java.io.InputStreamReader(
+                stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            var skills=root.getAsJsonArray("skills");
+            boolean found=false;
+            for (var el : skills) {
+                var skill=el.getAsJsonObject();
+                if (!"tmm_progression:gilded_fortunes_favor".equals(skill.get("id").getAsString()))
+                    continue;
+                assertEquals(1,skill.get("max_rank").getAsInt());
+                assertEquals(1,skill.getAsJsonArray("auto_ranks").get(0).getAsInt());
+                var effect=skill.getAsJsonArray("effects").get(0).getAsJsonObject();
+                assertEquals(3,effect.get("per_rank").getAsInt());
+                assertEquals("10",effect.getAsJsonObject("params")
+                    .get("maximum_virtual_bonus").getAsString());
+                found=true;
+            }
+            assertTrue(found,"Gilded auto-granted base Fortune must be registered");
+        }
+    }
+
 }

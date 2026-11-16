@@ -175,25 +175,29 @@
     },
     {
       "id": "tmm_progression:gilded_fortunes_favor",
-      "max_rank": 3,
+      "max_rank": 1,
       "required_rank": 1,
       "base_cost": 0,
       "step_cost": 0,
       "auto_ranks": [
-        3,
-        7,
-        11
+        1
       ],
       "effects": [
         {
           "type": "tmm_progression:virtual_fortune",
           "target": "#tmm_progression:gilded_fortune_tools",
-          "per_rank": 1,
+          "per_rank": 3,
           "params": {
             "combine": "additive",
             "loot_rolls": "once",
             "persist_enchantment": "false",
-            "silk_touch": "honor"
+            "silk_touch": "honor",
+            "base_virtual_bonus": "3",
+            "maximum_virtual_bonus": "10",
+            "tyz_skill_id": "tmm_gilded_fortune_mastery",
+            "tyz_purchased_levels": "7",
+            "gate": "joined_gilded",
+            "stack_with_stored_enchantment": "additive"
           }
         }
       ]
