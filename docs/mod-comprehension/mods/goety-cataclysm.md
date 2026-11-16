@@ -38,6 +38,8 @@
 | Crafting materials and Fabricator | 61 addon recipe JSONs total; guide covers Abyss/Primordial Essence, mechanized iron and Fabricator | all 61 recipes crosswalked; Fabricator operation and parent training interface inspected; effective automation remains untested | Cataclysm → Crafts / Artifice; JEI | not run | client-test fuel queue, blocked spawning, cap and hopper input |
 | Loot / world / boss links | 12 advancements, 9 loot JSONs, spawn modifier and tags | drops/loot injections not fully reconciled with Cataclysm pin | Cataclysm → World/Bestiary; Cataclysm guide | not run | audit boss drop values and world spawn predicates |
 
+See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, nine addon-used ritual families, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
+
 ## Guidebook onboarding and usage
 
 - **Guide:** Goety's existing Black Book; the addon adds category `assets/goety/patchouli_books/black_book/en_us/categories/cataclysm.json` and entries under `.../categories/cataclysm/` and `.../entries/`.
@@ -103,7 +105,7 @@ The altar splits one activation item into its slot at start. Pedestal ingredient
 
 **Guide reference:** Black Book → Cataclysm → Crafts → Artifice → **Mechanical Fabricator**, bundled entry `assets/goety/patchouli_books/black_book/en_us/entries/crafts/artifice/fabricator.json`. Its ritual page links `goety_cataclysm:fabricator`.
 
-1. Establish Goety's **Forge** ritual setup using the parent Black Book/JEI structure reference; this profile does not yet independently close every parent structure requirement.
+1. Establish Goety's **Forge** ritual setup using the parent Black Book/JEI structure reference; the [altar-gate appendix](goety-ritual-gates.md) gives its exact minimum setup.
 2. Activate the Fabricator recipe with one `goety:fireball_focus`; supply pedestal ingredients: one `goety:cursed_cage`, one `cataclysm:witherite_ingot`, two `goety_cataclysm:mechanized_iron_block` and one vanilla Anvil. Keep at least the nominal 30 Soul Energy available through the parent altar/cage system, and avoid interrupting the ritual. This consumes the focus on normal craft completion. [recipe + E-BC]
 3. Place the resulting Fabricator yourself: parent placement stores the player as owner and addon variant selection chooses `WATCHER_SERVANT`. Leave a generous clear volume around and above the block for the spawn search. [E-BC]
 4. Craft additional Mechanized Iron Blocks: JEI's shaped recipe uses **five iron-ingot-tag items and four redstone-dust-tag items** for one block. Right-click the Fabricator with one block to queue one Watcher. Up to five summons can be queued; the item is spent immediately when accepted, before any eventual spawn. Queue-full/wrong-fuel hand insertion returns false without the fuel shrink in `placeItem`. [recipe + E-BC]
@@ -212,6 +214,8 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 The addon recipes use the Goety ritual framework. This pass inspected the exact parent artifact rather than relying only on version-aligned source: shared charge cadence, craft/conversion activation consumption and ordinary interruption losses are detailed in E-BC above. The addon has 28 focus recipes, including shaped table crafts; do not label all 28 altar rituals. Audit any custom callbacks and test successful/interrupted/one-charge-short recipes before claiming effective pack behavior. See [Goety profile](goety.md).
 
 ## Revision notes
+
+- 2026-11-16 — Added the pinned altar/research appendix: Forge placement and count rules; nine addon-used environment/structure gates; Necroturgy Grave Soil depletion; scroll consumption and capability checks; Bygone/Buried/Warred/Terminus sources and prerequisites; Ender Keeper blueprint container-loss boundary. All are artifact evidence, not gameplay tests.
 
 - 2026-11-16 — Resumed from locally hash-matched addon and Goety 3.2.2 artifacts. Added all 61 recipe routes and 11 conversion crosswalks; corrected ritual time/rate economics, activation consumption and interruption losses. Mapped Fabricator fuel queue, ownership, 101-tick attempt, cap, sensor ordering, blocked-spawn debit, native input and redstone output. Reconciled exact scaffold IDs and added boundary tests. Remains researching; no gameplay/quest/runtime changes.
 

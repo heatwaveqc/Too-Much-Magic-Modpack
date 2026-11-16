@@ -35,3 +35,10 @@ No full smoke, assembly, client launch, gameplay or new quest/config/runtime imp
 - Research commit `544a40e7` passed the metadata validator, read-only Integration Preflight (zero baseline replacements), docs-only scope, local Markdown link check and 61-row recipe completeness check. No client/gameplay acceptance is implied.
 - Base advanced concurrently to `45f2b6429130a521e4ddb5ca165bff6eb62adfcf`, changing only `manifest/integration-sources.json`; this branch does not alter that file. Review against the current shared baseline and rerun preflight before any eventual merge.
 - Resume this branch/worktree for the next slice, then keep commits small and update this file with exact completed and remaining coverage. Do not promote either Goety profile to source-complete yet.
+
+## Continuing after the first PR slice
+
+- User explicitly requested continuing until context exhaustion, completion or a serious blocker. Keep this same PR/branch; do not stop after one small slice by default.
+- Completed next slice: `mods/goety-ritual-gates.md` maps exact Forge setup; nine addon-used ritual/environment families; Grave Soil depletion callback; research capability/use behavior; Bygone/Buried/Warred/Terminus recipes/acquisition and prerequisites; blueprint reward-loss boundary. Linked from both parent/addon profiles and index.
+- Next active work: all 28 registered addon focuses, default costs/cast/cooldown, meaningful staff modifiers and servant summon effects. Selected classes and `GCSpellConfig`, `GCItems` are decompiled only in local scratch. `EMPSpell` is present as a class but not among the 28 `GCItems` focus registrations; do not claim an obtainable EMP focus from class presence alone.
+- Parent research evidence is exact JAR: `ResearchScroll`, `ExtraScroll`, `ResearchList`, `SEHelper`, `DarkAltarBlockEntity.activate`; ritual type classes delegate through `RitualRequirements`. `ModLootInject` is subscribed and points current singular `loot_table` resources at named vanilla tables. Old plural loot resources need separate reachability review.

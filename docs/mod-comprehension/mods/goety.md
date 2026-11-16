@@ -39,6 +39,8 @@
 | Witch's Brew | [source: 7fdffc0] | partial; separate guide has eight English entries; recipe ecosystem vast | Witch's Brew Patchouli book; JEI | not run | map entry/augments, capacity, energy, outputs and item/fluid interfaces |
 | Lichdom / Arca | [source: 7fdffc0] | Arca recipe, item advancement, Forbidden Scroll entry unlock and transformation ritual mapped; fragment sourcing and death boundaries open | Black Book secret Lich entry and Arca craft entry | not run | locate Forbidden Fragment sources and test Soul Energy loss/resurrection boundaries |
 
+See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, nine addon-used ritual families, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
+
 ## Guidebook onboarding — required before the player's first complex step
 
 - **Guide name and access:** The Black Book (Patchouli `goety:black_book`) is crafted shapelessly from a vanilla Book plus any item in `goety:black_book_craft`; the recipe only loads when Patchouli is installed. TMM pins Patchouli. Goety's `starterBook` config defaults false, so teach the player to craft it; TMM has no tracked Goety config override. A separate Witch's Brew guide has its own craft path. [jar: SHA512] [source: 7fdffc0]
@@ -276,8 +278,7 @@ Ritual route: `charged Totem/Soul Transfer → Cursed Cage → Dark Altar direct
 | Soul acquisition | `utils/SEHelper.java`, `api/items/magic/ITotem.java`, `events/SoulEnergyEvents.java`, `config/MainConfig.java`, `data/goety/soul_taken` | formula, storage and event path source-backed; actual soul amounts depend on config and data; need mob roster scan |
 | Altar/infuser operation | `common/blocks/entities/{DarkAltarBlockEntity,CursedInfuserBlockEntity,CursedCageBlockEntity}.java`; `common/ritual/Ritual.java`; `crafting/{RitualRecipe,CursedInfuserRecipes}.java` | Ritual start checks, 20-tick soul debit, progressive pedestal consumption, enchant XP debit and shared interrupt losses mapped from exact version-matched source. Recipe-specific output/interrupt overrides and runtime boundary behavior remain open. |
 | Black Book coverage | `assets/.../black_book/en_us` and `witches_brew/en_us`; exact shared resources | 412 Black Book guide JSON files; separate Witch's Brew book; guide count does not equal one quest per entry |
-| Forbidden fragment sourcing | `common/events/ModEvents.java`; `data/goety/{loot_table,loot_tables,loot_modifiers,recipe(s)}` at source commit `7fdffc0b4f07aaa79d333ac1791444506b7d037f` | Direct rich-crypt Fragment entry, structure-mob Fragment event, Necromancer/Graveyard Piece sources, conversions and 5-soul Necroturgy Piece recipe mapped. Archaeology modifier condition handling and runtime loot rates remain open |
-| Forbidden fragment sourcing | `common/events/ModEvents.java`; `data/goety/{loot_table,loot_tables,loot_modifiers,recipe(s)}` at source commit `7fdffc0b4f07aaa79d333ac1791444506b7d037f` | Direct rich-crypt Fragment entry, structure-mob Fragment event, Necromancer/Graveyard Piece sources, conversions and 5-soul Necroturgy Piece recipe mapped. Archaeology modifier condition handling and runtime loot rates remain open |
+| Forbidden fragment sourcing | `common/events/ModEvents.java`; `data/goety/{loot_table,loot_tables,loot_modifiers,recipe(s)}` at source commit `7fdffc0b4f07aaa79d333ac1791444506b7d037f` | Direct rich-crypt Fragment entry, structure-mob Fragment event, Necromancer/Graveyard Piece sources, conversions and 5-per-advance (50-total nominal) Necroturgy Piece recipe mapped. Archaeology modifier condition handling and runtime loot rates remain open |
 | 3.2.2 release additions | Modrinth Goety 3.2.2 release notes; pack pin `xLTYSsZD` | New Cursed Plinth, Sealer and Polar Crystal behaviors, Crypt rework and config-defined servants | Version matches exact pack pin; release notes are not a substitute for client/source checks |
 | Quest and pack config | `config/ftbquests/quests/chapters/goety.snbt`; config/KubeJS directory search | one generic checkmark; no tracked Goety config/script override found |
 | Structure mixin issue | Goety `vivideru.mixins.json`, `JigsawPlacerWindShrineMixin.java`; upstream issue [Vivideru/Goety-3#7](https://github.com/Vivideru/Goety-3/issues/7) | source shows redirect; upstream issue documents SLO conflict on 1.21.1 Goety 3.2.0. TMM does not currently pin SLO; no direct pack collision claim |
@@ -308,6 +309,8 @@ Ritual route: `charged Totem/Soul Transfer → Cursed Cage → Dark Altar direct
 - [ ] Update the generic FTB chapter in a later quest pass; no quest or runtime files changed here.
 
 ## Revision notes
+
+- 2026-11-16 — Added the pinned altar/research appendix: Forge placement and count rules; nine addon-used environment/structure gates; Necroturgy Grave Soil depletion; scroll consumption and capability checks; Bygone/Buried/Warred/Terminus sources and prerequisites; Ender Keeper blueprint container-loss boundary. All are artifact evidence, not gameplay tests.
 
 - 2026-11-16 — Pinned-bytecode timing audit corrected ritual duration/rate semantics: Arca nominal 30 souls, Forbidden Piece 50, transformation potion 60,000. Rechecked all three exact JAR recipes and shared altar charge/interrupt paths; Infuser cook times unchanged. Profile remains researching and no gameplay was tested.
 
