@@ -32,6 +32,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::continueSleeping);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::wake);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
@@ -63,6 +66,9 @@ public final class ProgressionEvents {
             boolean eligibleHunterKill = HunterExperience.kill(player,event.getEntity());
             ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
                 path -> !HunterExperience.HUNTER.equals(path.id()) || eligibleHunterKill);
+            if (event.getSource().getDirectEntity() == player
+                    && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.unarmedKill(event.getEntity()));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }
@@ -97,6 +103,8 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
@@ -121,9 +129,11 @@ public final class ProgressionEvents {
               EffectHandlers.jump(player,event); }
     }
     private static void advancement(AdvancementEvent.AdvancementEarnEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player)
-            ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal("advancement",
-                event.getAdvancement().id().toString(),java.util.Set.of()));
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        String path = event.getAdvancement().id().getPath();
+        if (path.startsWith("recipes/") || path.contains("/recipes/")) return;
+        ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal(
+                "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
     }
     private static void fall(LivingFallEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
@@ -161,19 +171,24 @@ public final class ProgressionEvents {
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) Enrollment.clear(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Enrollment.clear(player);
+            BedrockRest.forget(player);
+        }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
         }

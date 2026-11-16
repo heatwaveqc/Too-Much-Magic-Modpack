@@ -257,7 +257,8 @@ public final class ClassAbilities {
 
     private static void ordeal(ServerPlayer p) {
         if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")) return;
-        if (ProgressionApi.track(p,"tmm_progression:monk").rank() >= 18) {
+        if (ProgressionApi.track(p,"tmm_progression:monk")
+                .completed("tmm_progression:blind_ordeal_victory")) {
             ProgressionApi.setMode(p,ORDEAL_MODE,"done");
             p.removeEffect(MobEffects.BLINDNESS);
             return;
@@ -269,10 +270,15 @@ public final class ClassAbilities {
     public static void creditedKill(ServerPlayer p, LivingDeathEvent event) {
         if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")
                 || !p.hasEffect(MobEffects.BLINDNESS)
-                || !(event.getEntity() instanceof Monster)) return;
-        ProgressionApi.setMode(p,ORDEAL_MODE,"done");
-        p.removeEffect(MobEffects.BLINDNESS);
+                || !(event.getEntity() instanceof Monster)
+                || event.getSource().getDirectEntity() != p
+                || !p.getMainHandItem().isEmpty()) return;
         ProgressionApi.recordExternal(p,"tmm_progression:blind_hostile_kill");
+        if (ProgressionApi.track(p,"tmm_progression:monk")
+                .completed("tmm_progression:blind_ordeal_victory")) {
+            ProgressionApi.setMode(p,ORDEAL_MODE,"done");
+            p.removeEffect(MobEffects.BLINDNESS);
+        }
     }
 
     public static void fall(ServerPlayer p,LivingFallEvent event) {
@@ -380,6 +386,7 @@ public final class ClassAbilities {
         if (event.getHand() != InteractionHand.MAIN_HAND || !p.getMainHandItem().isEmpty())
             return false;
         if (event.getTarget() instanceof Creeper creeper && unlocked(p,"creeper_peace")) {
+            ProgressionApi.recordExternal(p,"tmm_progression:creeper_kissed");
             creeper.getPersistentData().putBoolean("tmm_progression:pacified",true);
             creeper.setTarget(null);
             creeper.setSwellDir(-1);
