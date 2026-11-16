@@ -309,7 +309,7 @@ def main() -> None:
             ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
             ensure(not product["item"].startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:")), f"Shop progression bypass item {product['item']}")
     fn = (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").read_text(encoding="utf-8")
-    ensure(fn.count("give @s ars_elemental:curio_bag 1") == 1, "First-log item issued wrong number of times")
+    ensure("give @s" not in fn, "Pouch must only be claimed from Punch a Tree, not auto-granted")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
     ensure(a.get("rewards", {}).get("function") == "tmm:rewards/first_log", "First-log advancement reward changed")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
