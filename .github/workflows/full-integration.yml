@@ -94,7 +94,7 @@ jobs:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
-          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.ja:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
+          SMOKE_EXTRA_MOD_JARS: '${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
         run: bash scripts/smoke_server.sh
       - name: Validate retired runtime mods, recipes and tag absence
         run: python3 scripts/verify_retirement.py
