@@ -1,4 +1,4 @@
-# ATM10 Specialist Power Benchmark — v0.3 (2026-11-15)
+# ATM10 Specialist Power Benchmark — v0.4 (2026-11-15)
 
 **Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
@@ -223,3 +223,66 @@ Using only the Unobtainium armor base, source-defined Mythic affixes, and the li
 Each set is a **different** specialized optimization. The 381.524 armor, 145.8 toughness and 1,103.6 HP values **cannot be assigned as simultaneous** without solving the intersecting gem-slot allocation problem. Armor+toughness values are not direct effective damage reduction under Apothic Attributes; physical and bypass-hit tests are still required. Other item effects, potions, Curios, different base gear and alternate enchantments could make a larger entire-pack maximum.
 
 Source files: [Ironforged armor affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/ironforged.json), [Adamantine affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/adamantine.json), [Steel Touched affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/armor/attribute/steel_touched.json), [Guardian gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/guardian.json), [Samurai gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/samurai.json), [Tyrannical gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/core/tyrannical.json), [Royalty gem](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems/overworld/royalty.json), [Shield ironforged affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/shield/attribute/ironforged.json), [Shield steel touched affix](https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes/shield/attribute/steel_touched.json).
+
+
+## v0.4 — Ars glyph-registration census, addon compatibility, and the Monk's MXP cost curve
+
+### ATM10 six-source Ars registration count — 188 candidate glyphs, *not yet a certified learned maximum*
+
+The previous \`G=85\` illustration is now identifiable as **exactly the 85 production \`registerSpell\` calls in base Ars Nouveau's \`APIRegistry.setup\`**. ATM10 also has multiple addons registering their own glyphs; 85 is therefore **not** the complete endgame ATM10 glyph count.
+
+| ATM10-installed glyph registrar | Source registration count under ATM10 mod-presence conditions | Source / qualification |
+| --- | ---: | --- |
+| Ars Nouveau 5.13.5 | 85 | \`APIRegistry.setup\`, production (not \`registerWip\`) |
+| Ars Elemental 0.7.10.4 | 40 | \`ArsNouveauRegistry.registerGlyphs\`; **branch HEAD currently 0.7.11.0**, verify pin |
+| Ars Additions 21.3.0 | 3 | Retaliate, Mark, Recall, registration method |
+| Not Enough Glyphs 4.6.2 | 40 | 45 source calls, *minus 4 overlapping Elemental glyphs* and *minus 1 Random filter which Ars Controle owns*; **branch HEAD currently 4.6.4**, verify pin |
+| Ars Controle 1.6.16 | 9 | \`ACRegistry.Glyphs.registerAll\`, source version matches pack |
+| Ars Technica 2.7.6 | 11 | \`GlyphRegistry.registerGlyphs\`, source version matches pack |
+| **Total, six surveyed glyph registrars** | **188** | Source-registered **candidate** glyphs; actual unlocked count and unreviewed addons still unresolved |
+
+At \`G = 188\`, **if every one of those registrations is present, distinct, craftable/learnable and learned in the pinned ATM10 runtime**, a tier-six Unobtainium arcanist with all four armor pieces enchanted with Mana Boost VII and Mana Regen VII, without threads/Curios, has:
+
+- **Mana = 2,900 + 15 × 188 = 5,720**.
+- **Regeneration = 115 + 0.33 × 188 = 177.04 mana/second**.
+
+This is a conditional **six-source census scenario**, not an overall pack maximum. The still unaudited Ars-named addons in ATM10 include **Ars Creo, Ars Elemancy, Ars Ocultas, Ars Unification, and Ars Énergistique**; they may add none or more registered glyphs. Confirm every unique ID in the **actual ATM10 registry**, configuration-enabled status and player-known glyph count after book interaction, rather than assuming source registrations equal completed knowledge.
+
+Proof of glyph-to-mana linkage: [Ars \`Glyph\` item](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/common/items/Glyph.java) uses \`cap.getKnownGlyphs().size()\` to increase ManaCap glyph bonus, and [Ars \`ManaUtil\`](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/api/util/ManaUtil.java) applies \`15*G\` max mana and \`.33*G\` regen at source defaults.
+
+Source registrars: [base Ars](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/setup/registry/APIRegistry.java), [Elemental](https://github.com/Alexthw46/Ars-Elemental/blob/1.21/src/main/java/alexthw/ars_elemental/ArsNouveauRegistry.java), [Additions](https://github.com/Jarva/Ars-Additions/blob/1.21.0/src/main/java/com/github/jarva/arsadditions/setup/registry/ArsNouveauRegistry.java), [Not Enough Glyphs](https://github.com/Alexthw46/NotEnoughGlyphs/blob/1.21/src/main/java/alexthw/not_enough_glyphs/init/ArsNouveauRegistry.java), [Controle](https://github.com/Vonr/Ars-Controle/blob/1.21/src/main/java/dev/qther/ars_controle/registry/ACRegistry.java), [Technica](https://github.com/zeroregard/Ars-Technica/blob/1.21.X/src/main/java/com/zeroregard/ars_technica/registry/GlyphRegistry.java).
+
+### Ars Unobtainium thread ranks and attribute modifier-ID collision hazard
+
+The Unobtainium Arcanist armor provider grants **three thread slots per piece**, with slot values **4, 5, 6** (12 total across four pieces). Source definitions for a capacity thread and spell-power thread are:
+
+- Magic Capacity: \`+0.10 * slotValue\` of \`ars_nouveau:ars_nouveau.perk.max_mana\`, \`ADD_MULTIPLIED_TOTAL\`.
+- Spell Power: \`+2 * slotValue\` of \`ars_nouveau:ars_nouveau.perk.spell_damage\`, \`ADD_VALUE\`.
+
+However, **each instance of a given thread type uses the exact same \`AttributeModifier\` resource ID, generated from \`INSTANCE.getRegistryName()\`**, *without the worn item slot as part of the ID* in the inspected perk implementation. Minecraft requires modifier IDs to be unique for a given active attribute, so adding all twelve rank values together or multiplying all twelve capacity factors **is not justified**. The effective stacking, replacement or collision behavior in an actual 1.21.1 player equip must be tested and, if necessary, patched or worked around before anyone publishes a "fully threaded" mana or damage maximum. A thread slot's capacity does **not** guarantee an additive/multiplicative attribute contribution.
+
+This differs from Ars **enchantment** attribute modifiers: [Minecraft 1.21's official attribute-enchantment semantics](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21) append the equipment slot name to enchantment modifier IDs; thus four Mana Boost VII and Mana Regen VII enchantments can coexist by design (still test effective ATM10 config).
+
+Sources: [tier-six provider layout](https://github.com/Jarva/All-The-Arcanist-Gear/blob/main/src/main/java/com/github/jarva/allthearcanistgear/setup/registry/ArsNouveauRegistry.java), [Addon's per-thread attribute iteration](https://github.com/Jarva/All-The-Arcanist-Gear/blob/main/src/main/java/com/github/jarva/allthearcanistgear/common/items/armor/AddonArmorItem.java), [capacity thread](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/common/perk/MagicCapacityPerk.java), [spell-power thread](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/common/perk/SpellDamagePerk.java). The actual runtime behavior remains unverified.
+
+### Monk Tyz point cost compared with lifetime MXP expense
+
+The approved Monk target is **80–90% of each modified optimized TMM specialist attribute**, with 85% preferred, and about **10x full-tree Tyz SP cost**. Current MXP prototype routine XP has a \`1.2^P\` **lifetime level** divisor; the test Tyz level pool grants **one SP per 1,000 effective MXP**. Without fixed first-time rewards, a newly created player advancing from lifetime \`P=0\` by N levels spends cumulative nominal ordinary XP:
+
+\`1000 × (1.2^N − 1) / 0.2\`.
+
+| Illustrative standard specialist | Illustrative Monk at 10x SP | Same-source ordinary XP ratio |
+| --- | --- | ---: |
+| 2 SP | 20 SP | **84.86×** |
+| 5 SP | 50 SP | **6,113.90×** |
+| 10 SP | 100 SP | **15,951,883.30×** |
+
+These are **math illustrations, not actual Tyz tree point totals or measured playtime**. The cost-ratio objective can generate an astronomically expensive Monk under the currently selected XP curve. Fixed first-time rewards, other tree spending and lifetime rank history affect progression. Do not silently treat ordinary XP ratio as exactly 10x or lower the owner-approved cost target without review; first make an explicit time-to-completion/earning-rate simulation. Full specification: [Monk parity and SP/XP contract](MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md).
+
+### v0.4 remaining blockers
+
+1. Pin-match the Ars Elemental 0.7.10.4 and Not Enough Glyphs 4.6.2 source/JAR registrations rather than assuming HEAD of their newer branches.
+2. Enumerate and deduplicate all remaining ATM10 Ars addon glyph IDs; validate the complete player \`knownGlyphs\` and \`glyphBonus\` in-game and all config-disabled glyphs.
+3. Test repeated capacity/spell-power threads and their \`AttributeModifier\` IDs on all four Unobtainium pieces; account for collisions before adding thread maxima.
+4. Test the exact ATM10 Unobtainium spellbook and all four pieces with maximum legal enchantments, Mythic affixes, four-socket rarity outcomes and compatible gems; only then promote numeric "scenario candidate" values to certified optimized maxima.
+5. Simulate the Monk 9–11x Tyz SP cost band against the actual MXP and Tyz node pricing; calculate reachability and practical gameplay time.
