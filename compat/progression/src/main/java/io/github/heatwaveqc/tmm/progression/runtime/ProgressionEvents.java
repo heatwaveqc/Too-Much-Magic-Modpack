@@ -26,6 +26,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
+        TreeChopXpBridge.register();
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
@@ -102,9 +103,15 @@ public final class ProgressionEvents {
     /** Loot-aware callback needed for Monk Glass Touch and Treasure Hand; no generic drop mutation. */
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
-            ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
-            if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
-                ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
+            // Both TreeChop and ordinary loot callbacks can observe the
+            // same physical log in a single server tick. Never double-credit.
+            if (RecentBlockCredits.first(player.getUUID(),
+                    event.getLevel().dimension().location().toString(),
+                    event.getPos().asLong(),event.getLevel().getGameTime())) {
+                ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+                if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                    ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
+            }
             HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
@@ -173,6 +180,8 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            RecentBlockCredits.forget(player.getUUID());
+            TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
