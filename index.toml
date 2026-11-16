@@ -114,7 +114,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "521c6a88f2e7ee697733dce09b3d67602e15bef603030a945461fce7a1b252a8"
+hash = "5a6ae3f15dd2f181c910257735f0dc5d38be698ef9c4a9e5927e4341578b17c2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -198,7 +198,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "b214dd241915a1e4dd474c542f4af8397ed0931eccb03092588698b4bb48e4b3"
+hash = "273fdc913b40d6474c854fdb9915441d767c4f6544066172118e65df30d53d29"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -1336,3 +1336,11 @@ hash = "18226a3e6d8f1fd684b9c0835d0278d05d67520e3ee0b4e275504569c8adcb7d"
 [[files]]
 file = "config/tyzs_skills/custom/skills/tmm_monk_worldly_cultivation.json"
 hash = "0088b2a83498f837491a1a76b45950df721966f78ed44d1edacf57334070cd02"
+
+[[files]]
+file = "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json"
+hash = "b7c2f00cf433affc2c1caf3868b6999645a0582e85034a68d60476c1092cf186"
+
+[[files]]
+file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
+hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
