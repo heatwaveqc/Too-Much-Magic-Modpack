@@ -1,4 +1,4 @@
-# ATM10 Specialist Power Benchmark — v0.5 (2026-11-15)
+# ATM10 Specialist Power Benchmark — v0.6 (2026-11-15)
 
 **Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
@@ -325,3 +325,16 @@ If a canonical specialist costs 10 SP and Monk costs 100 SP, those totals imply 
 **Practical design direction, not an imposed choice:** avoid choosing \`1.1\` without checking whether the Monk requires 100, 200, 300 or more SP. A mild factor like **1.01–1.03** might give dramatically better late-game pacing than 1.1 while maintaining an XP premium over 10×; linear 1.0 is reasonable if the 10× point budget itself should carry the full price. Once the owner selects a multiplier, implement it as a configurable MXP growth value with tests for g=1.0, lifetime P and fixed bonus awards. **No live MXP/skill config was altered in this research.**
 
 The full conditional contract and acceptance criteria are in [Monk specialist parity and cost](MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md); numerical candidates are in [manifest/atm10_specialist_benchmark.json](../../manifest/atm10_specialist_benchmark.json).
+
+
+## v0.6 — MXP default locked at 1.02, server-configurable implementation
+
+Owner clarification on 2026-11-15: the earlier “1.1” was a **typo for 1.01**. After reviewing the model, owner explicitly preferred **1.02** as the **default** and authorized configurable growth. Implementation is in [isolated draft PR #161](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/161), targeting the prior MXP source-hooks branch and **not yet deployed or merged** with the integrated modpack.
+
+- Setting: NeoForge **SERVER** config, \`<world>/serverconfig/tmm_mxp-server.toml\`, \`[progression] growth_factor = 1.02\`; accepted **1.00–1.20**.
+- Daily-server XP economy: ordinary normalized XP is divided by \`growth_factor^P\`, with P the **persisted lifetime MXP-earned levels** and XP repriced as levels are crossed. Fixed-first rituals/bosses and explicitly fixed boss repeats do not use the divisor.
+- \`growth_factor=1.00\` is available for linear XP; \`1.01\` is the originally intended alternative. \`1.1\` and \`1.2\` remain higher-growth compatibility/stress cases, not owner-preferred rates.
+- Changing the factor changes **subsequent XP awards**, not stored P, earned level count, spent Tyz skill points, first-time discovery flags or pending deliveries. Status command displays the configured factor.
+- At 10 specialist SP vs 100 Monk SP from a clean P=0 start and no fixed awards: selected 1.02 yields **~28.52×** ordinary base XP for the Monk vs specialist, whereas 1.0 yields exactly 10×. These comparisons are mathematical, not game-time estimates or the actual cost of unfinished trees.
+
+**Owner-locked Monk targets unchanged**: each Monk-modified final attribute 80–90% of the corresponding optimized TMM specialist, with ~10× the total Tyz SP for full Monk tree purchase. The selected growth factor adds an XP premium without requiring an astronomically large \`1.1^P\` or \`1.2^P\` rate. Real server + Tyz integration tests and complete skill-tree cost audit remain open.
