@@ -6,10 +6,10 @@
 | Category / parent or addons | magic; nature, totem poles and music |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM test/full-integration |
 | Pinned version / artifact / hash | mods/fenns_totemic.pw.toml; Totemic-neoforge-1.21.1-0.12.18.jar; Modrinth project GLffYJtD, version 6Vny8MoL; SHA512 4b3c4a6c926b8bf203b5593c558264b096f870ecfe74e6b6dbeef850825c9814a3b9a2d9f03c3a91680042dd684574f0259280210b9173750c921ff733e94896 [pin] |
-| Source snapshot | Official repository TeamTotemic/Totemic, branch 1.21. Current gradle.properties declares 1.21.1-0.12.19 alpha, not the pinned 0.12.18 release. Version mismatch; binary equivalence not tested. |
+| Source snapshot | Exact release tag `1.21.1-0.12.18` resolves to commit [`1a253b29815842aa4359d6118b8cd84cce3048a1`](https://github.com/TeamTotemic/Totemic/tree/1a253b29815842aa4359d6118b8cd84cce3048a1); tagged `gradle.properties` declares MC 1.21.1 and mod version 1.21.1-0.12.18. The GitHub connector returns 404 for source/resource files under that ref, so code-level source review remains limited to the 0.12.19 branch and is explicitly not pin-exact. Binary equivalence not tested. |
 | Guide/documentation version gap | Exact Modrinth release page: 1.21.1-0.12.18 Release, NeoForge, client/server. Release notes contain Totempedia unlock and KubeJS changes. In-game Totempedia is recommended through Patchouli, but Patchouli is not a hard dependency of Totemic itself. |
 | Profile status | researching |
-| Evidence reached | exact pack pin and official release metadata; exact version release notes; official project overview; source branch reviewed selectively but one version ahead; no exact artifact inspection or client test |
+| Evidence reached | exact pack pin; official 0.12.18 release notes; release tag and matching root Gradle metadata; branch-level 0.12.19 source inspected selectively but not applied as pin evidence; no pinned artifact inspection or client test |
 | Reviewed | 2026-11-16 |
 | Quest ownership | Proposed Magic chapter: Totemic. No quest files changed. |
 
@@ -40,7 +40,7 @@
 | Totem pole / base / carving | official description confirms passive boons and Ceremony focus; source API references TotemCarving | partial | Totempedia Totems and Carvings | not run | exact build geometry, knife recipe, carving method/effect/range |
 | Instruments | release changelog names Wind Chime and Jingle Dress entries | partial | Totempedia Instruments | not run | source-confirm all instruments, recipes, music values and selector logic |
 | Ceremonies | official description and source Ceremony API; release has music and startup parameters | partial | Totempedia Ceremonies; entries unlock by instrument | not run | map prerequisites, threshold, startup window, dance, output, duration and limits |
-| Music measurement / dance | source API models music-needed and maximum startup time; source branch is 0.12.19 alpha | partial | Ceremony HUD and book instructions | not run | verify exact 0.12.18 rules and progress/failure signals |
+| Music measurement / dance | only 0.12.19 branch source currently accessible to connector exposes musicNeeded/maxStartupTime and startup-state logic; exact 0.12.18 implementation not retrieved | partial | Ceremony HUD/book | not run | tagged Java/resource subpaths return 404; obtain source archive or pinned JAR before source-exact contracts |
 | Medicine Bag | 0.12.18 adds medicineBagBlacklist server option | partial | Totempedia Medicine Bag page unknown | not run | recipe, slots, allowed carvings, equip/use state and effect stacking |
 | KubeJS integration | official release notes expand experimental registry/event API | partial | KubeJS docs and source builder | not run | inspect exact builders/events and confirm loaded plugin |
 | World manipulation and farming | overview claims Ceremonies manipulate the world; source branch has a Zaphkiel Waltz growable block tag | partial | exact Ceremony pages unknown | not run | effect range, block tags, time/environment and repeatability |
@@ -149,7 +149,7 @@ Medicine Bag is a separate portable-effect branch. Ceremonies appear to be instr
 ## Open questions and next actions
 
 1. Inspect pinned JAR against SHA512 and extract metadata, recipes, Totempedia JSON, advancement graph, loot and config.
-2. Find source commit/tag for 0.12.18; current branch is 0.12.19 alpha. Compare exact code/data.
+2. Exact 0.12.18 release tag/commit is now located and Gradle metadata matches the pin. [ ] Compare code/data and pinned JAR. Tagged Java/resource paths return 404 through the available GitHub file connector; do not reuse 0.12.19 mechanics as pin-exact.
 3. Complete Totempedia and acquisition map; map each instrument to the Ceremony pages it unlocks.
 4. Document Totem Base/pole construction, carving recipes, tool costs, stacking, ranges and passive effects.
 5. For every Ceremony, record selector instruments, music threshold, startup window, dance, failure/reset cost, effect, radius, duration, conditions and valid targets.
@@ -173,6 +173,6 @@ No tests were run; this is knowledge Markdown only.
 - Pack pin mods/fenns_totemic.pw.toml: artifact, Modrinth project/version and SHA512 [pin].
 - [Official Modrinth release page for 1.21.1-0.12.18](https://modrinth.com/mod/fenns_totemic/version/1.21.1-0.12.18): Release, NeoForge, client/server; exact Totempedia lock, Medicine Bag config and KubeJS notes.
 - [Official Totemic project page](https://modrinth.com/mod/fenns_totemic): focus on totems/music/nature, passive boons, Ceremony description, optional Patchouli/Totempedia and built-in KubeJS.
-- [Official source repository](https://github.com/TeamTotemic/Totemic/tree/1.21): current gradle.properties declares 0.12.19 alpha, one version ahead of pin.
-- Selectively inspected branch-level source: Ceremony API has musicNeeded and maxStartupTime fields; KubeJS builder/events exist. Not pin-exact evidence.
-- Pinned JAR inspection, client/world test, Ceremony operation and TMM config/script review: not performed.
+- [Exact source release tag](https://github.com/TeamTotemic/Totemic/tree/1.21.1-0.12.18), commit [`1a253b29815842aa4359d6118b8cd84cce3048a1`](https://github.com/TeamTotemic/Totemic/commit/1a253b29815842aa4359d6118b8cd84cce3048a1): root `gradle.properties` confirms version 1.21.1-0.12.18 and MC 1.21.1.
+- Release-tag source limitation: GitHub connector retrieves root files at the tag but returns 404 for Java/resource paths, including Ceremony and Totem block/entity code. The public `1.21` branch declares 0.12.19 alpha; its code remains version-adjacent context only and is not treated as exact-pin evidence.
+- Pinned JAR inspection, exact-tag source file review, client/world test, Ceremony operation and TMM config/script review: not performed.
