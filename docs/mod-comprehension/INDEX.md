@@ -125,7 +125,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `evilcraft` | EvilCraft | magic | enabled flag | full | researching | [profile](mods/evilcraft.md) |
 | `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | researching | [profile](mods/forbidden-arcanus.md) |
 | `goety` | Goety — The Dark Arts | magic | enabled flag | full | researching | [profile](mods/goety.md) |
-| `hexcast-neoforged` | HexCast NEOFORGED | magic | enabled flag | full | queued | — |
+| `hexcast-neoforged` | HexCast NEOFORGED | magic | enabled flag | full | researching | [profile](mods/hexcast-neoforged.md) |
 | `hexerei` | Hexerei | magic | enabled flag | full | researching | [profile](mods/hexerei.md) |
 | `irons-spells` | Iron's Spells 'n Spellbooks | magic | enabled flag | full | researching | [profile](mods/irons-spells.md) |
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | researching | [profile](mods/mahou-tsukai.md) |
