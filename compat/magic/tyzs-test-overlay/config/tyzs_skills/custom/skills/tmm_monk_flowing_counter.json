@@ -1,0 +1,48 @@
+{
+  "active": true,
+  "id": "tmm_monk_flowing_counter",
+  "maximumLevel": 10,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/shield.png",
+  "displayName": "Flowing Counter",
+  "description": "Counterattack mobs that strike an unarmored Monk, with a short reaction cooldown.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        0.4,
+        0.8,
+        1.2,
+        1.6,
+        2,
+        2.4,
+        2.8,
+        3.2,
+        3.6,
+        4
+      ],
+      "unit": ""
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": [
+      "tmm_monk_empty_hand_force"
+    ]
+  }
+}
