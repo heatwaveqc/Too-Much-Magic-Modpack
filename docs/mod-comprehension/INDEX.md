@@ -123,7 +123,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `eidolon-repraised` | Eidolon: Repraised | magic | enabled flag | full | researching | [profile](mods/eidolon-repraised.md) |
 | `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | researching | [profile](mods/enchanted-witchcraft.md) |
 | `evilcraft` | EvilCraft | magic | enabled flag | full | researching | [profile](mods/evilcraft.md) |
-| `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | queued | — |
+| `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | researching | [profile](mods/forbidden-arcanus.md) |
 | `goety` | Goety — The Dark Arts | magic | enabled flag | full | researching | [profile](mods/goety.md) |
 | `hexcast-neoforged` | HexCast NEOFORGED | magic | enabled flag | full | queued | — |
 | `hexerei` | Hexerei | magic | enabled flag | full | queued | — |
