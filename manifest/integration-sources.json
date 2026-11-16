@@ -302,6 +302,19 @@
       "integrated_into_baseline": true,
       "merged_pr": 82,
       "merged_commit": ""
+    },
+    {
+      "name": "thermalily-projecte-energy-converters",
+      "branch": "feature/thermalily-no-waste-projecte-energy-2026-11-15",
+      "source_commit": "7db735c73d03e2770ce4fda7fa5281abdc1fea56",
+      "paths": [
+        "mods/projecte-energy-converters.pw.toml"
+      ],
+      "manifest_mod_ids": [
+        "projecte-energy-converters"
+      ],
+      "mode": "runtime-qa-staging",
+      "note": "Owner-approved cooldown-free 75 mana/tick Thermalily mixins are reconciled into native JAWR-only tmm_transformations baseline. Import only exact ProjectE Energy Converters 0.1.4 pin at manual Integration Assembly; economics, lava, progression gate and client/server runtime remain NOT TESTED."
     }
   ],
   "covered_by_baseline": {
@@ -404,7 +417,6 @@
     "feature/dracolich-skeletal-model": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/mxp-configurable-growth-20261115": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/thermalily-no-waste-projecte-energy-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "fix/first-log-bundle-curio-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "fix/integrate-starter-bundle-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/traders-vengence": "Draft source-only PR #219; compile/unit tests passed, but trader spawn interception, AI and Iron's missiles are not gameplay-tested or imported. Classified to prevent the assembler's unknown-branch refusal, NOT as a voluntary omission of a ready feature. Reconcile readiness under AGENTS.md and the live-test inclusion register before the next comprehensive owner-authorized QA assembly; full smoke still requires separate owner approval."

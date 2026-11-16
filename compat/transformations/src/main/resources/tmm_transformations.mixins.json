@@ -6,7 +6,9 @@
   "mixins": [
     "GoetyDracolichAcquisitionMixin",
     "ForbiddenMagicDracolichAcquisitionMixin",
-    "DragonSurvivalDeathRepeatMixin"
+    "DragonSurvivalDeathRepeatMixin",
+    "BotaniaThermalilyFiftyEndoflamesMixin",
+    "BotaniaThermalilyNoCooldownMixin"
   ],
   "injectors": {
     "defaultRequire": 1
