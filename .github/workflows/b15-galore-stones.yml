@@ -1,13 +1,12 @@
 name: B15 - Cobblegen Galore and Full Stone Inventory
 on:
-  push:
-    branches: ['feature/b15-galore-stone-inventory']
-    paths:
-      - '.github/workflows/b15-galore-stones.yml'
-      - 'scripts/resolve_b15.py'
-      - 'scripts/inventory_modded_stone.py'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke/build only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
@@ -17,6 +16,7 @@ concurrency:
 
 jobs:
   pin-inventory-and-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 80
     steps:
