@@ -4,10 +4,10 @@
 | --- | --- |
 | Manifest ID / actual mod ID | `goety-cataclysm` / `goety_cataclysm` |
 | Category / parent or addons | magic addon; extends [Goety](goety.md) and L_Ender's Cataclysm |
-| MC / loader / pack target | 1.21.1 / NeoForge / TMM snapshot `f84ffd51cad6e6eb8f05ed9456123ccf394812e6` |
+| MC / loader / pack target | 1.21.1 / NeoForge / TMM snapshot `b7023e2048a54d0c93c5e0f48977843bc302230c` |
 | Pinned version / artifact / hash | `mods/goety-cataclysm.pw.toml`; Modrinth version ID `gv1JY0TU`; file `goety_cataclysm-1.21.1-1.8.4.jar`; SHA-512 `45e390fb44ea7aa6b5f81b95b57ca224489a527a66167de1bdcf9a53c71cb5a54f6d29b69fa30b3f342e853c30bee677cf2c3701d141edf76b0be8515b6b6b60` |
 | Binary identity | Exact downloaded file hash matches the packwiz lock; its `META-INF/neoforge.mods.toml` reports `1.21.1-1.8.4`, while Modrinth's version record labels the file/version `1.21.1-1.9.0`. Treat the locked hash and JAR metadata as artifact identity; this is a naming/version-label discrepancy. |
-| Source snapshot | Public `Polarice3/Goety_Cataclysm` HEAD `6b5c8dd4f0b7f307aba8005e7634ade8f4438c5b` targets Minecraft 1.20.1 and does not match the 1.21.1 JAR. No version-aligned source inspected. Exact JAR resources and class metadata were inspected; bytecode behavior is not fully mapped. |
+| Source snapshot | Public `Polarice3/Goety_Cataclysm` HEAD `6b5c8dd4f0b7f307aba8005e7634ade8f4438c5b` targets Minecraft 1.20.1 and does not match the 1.21.1 JAR. No version-aligned source inspected. Exact JAR resources and class metadata were inspected in the prior pass; the transient JAR is unavailable in this workspace now (the remaining local link is dangling), so bytecode behavior cannot be extended in this pass. |
 | Guide/documentation version gap | 51 English Black Book entries and 15 categories for Cataclysm content are bundled in the locked JAR. No live Patchouli or client test. |
 | Profile status | researching |
 | Evidence reached | exact JAR SHA-512 verified; recipes, data resources, guide entries, mod metadata and dependency declarations inspected; gameplay not tested |
@@ -140,7 +140,9 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 - [ ] Identify the Fabricator operational recipes and sided automation API from the exact class bytecode or client runtime.
 - [ ] Verify parent Goety research-gate requirements and ritual failure costs for every addon conversion/summon.
 - [ ] Run client/world tests for guide rendering, entity behavior, loot, servant recovery and server sync before promoting beyond `researching`.
+- [ ] Reacquire the exact pinned JAR or version-aligned source before further bytecode analysis. The only public source snapshot inspected targets 1.20.1; current local JAR symlink points to a missing file, so class-level and Fabricator operation claims are a hard source-access blocker in this workspace.
 
 ## Revision notes
 
+- 2026-11-16 — Reconciled the profile's pack snapshot after Goety PR #154 and made the remaining bytecode blocker explicit: the transient exact JAR link is dangling and the only inspected public source is for 1.20.1. The existing exact-artifact resource inventory remains valid; no new class-level claims were inferred. No quest/runtime files changed.
 - 2026-11-15 — Added exact hash-matched Goety Cataclysm 1.21.1 artifact profile. Indexed its 51 English Black Book entries, 61 recipes, focus/servant/conversion branches, guide-described construct servants, dependencies, and version-label discrepancy. Recorded source mismatch and all client/behavior gaps; no quest or runtime files changed.
