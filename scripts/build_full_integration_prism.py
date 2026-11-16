@@ -11,7 +11,7 @@ import zipfile
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OUTPUT = "Too-Much-Magic-Full-Integration-Prism.zip"
 
-def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str) -> None:
+def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str, transformations_jar: str) -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise RuntimeError("Packwiz source must be an immutable commit")
     root = pathlib.Path(__file__).resolve().parents[1]
@@ -35,8 +35,8 @@ def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str) -> 
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
-    addons = [pathlib.Path(progression_jar)]
-    expected = ("tmm_progression-",)
+    addons = [pathlib.Path(progression_jar), pathlib.Path(transformations_jar)]
+    expected = ("tmm_progression-", "tmm_transformations-")
     for jar, prefix in zip(addons, expected):
         if not jar.is_file() or not jar.name.startswith(prefix) or jar.suffix != ".jar":
             raise RuntimeError("Missing expected first-party jar " + str(jar))
@@ -56,50 +56,57 @@ def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str) -> 
         "storage": "LOCALAPPDATA/TooMuchMagic/TestPreferences/options-1.21.1.txt",
     }
     guide = f"""TOO MUCH MAGIC — FULL INTEGRATION / EXPERIMENTAL
-This is NOT STABLE and has NOT PASSED IN-WORLD ACCEPTANCE TESTS.
+This build is NOT STABLE and has NOT PASSED IN-WORLD ACCEPTANCE.
 DO NOT OPEN EXISTING SAVES. Create a disposable Prism instance/world.
 Minecraft 1.21.1, NeoForge 21.1.265, Java 21.
 
 Source commit: {commit}
 Pinned packwiz: {pack}
-Exact source SHAs and first-party JAR hash: BUILD-MANIFEST.json
+Exact source SHAs and first-party JAR hashes: BUILD-MANIFEST.json
 
-NEXT TEST BUILD — TeamLapen retirement
-- Removed: Vampirism, Werewolves, Vampire's Delight, and the old
-  tmm_monk and tmm_transformations JARs.
-- JAWR is sole vampire/lycanthrope physiology provider. Existing
-  Dragon Survival, Goety and JAWR Forbidden Magic remain.
-- Included: tmm_progression standalone Monk/Hunter class paths with
-  custom XP, test commands, passive effects and several active powers.
-  This is a functional pilot, NOT a full classic Monk/Hunter release.
-- Silver: Eidolon tools and armor with normal native behavior.
-  NO free extra silver-versus-werewolf bonus; Hunter skill is future.
-- No TeamLapen villages, faction worldgen, food tags or quest chapters.
+NEXT TEST BUILD — STANDALONE MONK/HUNTER AND JAWR BRIDGE
+- Retired: TeamLapen Vampirism, Werewolves and Vampire's Delight; no
+  TeamLapen vampire blood, hunter faction or companion GUI.
+- Included: tmm_progression with native Monk and Hunter class XP/skills.
+  Monk classic trials, Bedrock Rest, armor lock, First Sunset.
+  Hunter Trial of Venom, creature specialties, silver training,
+  craftable Bio-Mutagen, Mutagenic Brew, permanent mutation pilot.
+- Included: tmm_transformations with read-only JAWR vampire/werewolf
+  form diagnostics, Goety/Forbidden Magic lich and Dragon Survival
+  probes, Archlich/Dracolich event priority and cross-mod mob alliances.
+- JAWR alone owns vampire/lycanthrope blood, hunger, progression, cures.
+- Eidolon silver tools/armor; bonus silver-versus-lycanthrope is a
+  native Hunter training skill, not an unconditional global modifier.
+- No TeamLapen quests, village worldgen, stone outputs or food tags.
 
-OPERATOR QA:
+OPERATOR/PLAYER QA:
 /tmmprogress list
 /tmmprogress admin join tmm_progression:monk
 /tmmprogress admin xp tmm_progression:monk 28000
 /tmmprogress status tmm_progression:monk
-/tmmprogress enroll tmm_progression:hunter
-/tmmprogress buy tmm_progression:hunter tmm_progression:undead_slayer
+/tmmprogress admin join tmm_progression:hunter
+/tmmprogress admin xp tmm_progression:hunter 1000
+/tmmprogress status tmm_progression:hunter
+/tmmprogress mutations
+/tmmtransform status
+/tmmtransform vampire
+/tmmtransform werewolf
+/tmmtransform archlich
+/tmmtransform dracolich
 
-Test a brand-new disposable world, including JAWR forms and cures,
-Monk First Sunset, Hunter enrollment, nonvanilla XP, saved ranks,
-armor suppression, reserved fist slot, nine silver recipes, food
-reload, Galore, death and multiplayer. Supplemental Bedrock Rest and
-Hunter mutations may still be on separate draft branches.
-The old transformation bridge's experimental Archlich/Dracolich and
-mob-neutrality fixes are NOT included; test provider interactions.
+Run QA on disposable world(s): confirm both JARs load; test Monk
+First Sunset, bare-hand XP, Bedrock Rest, safety of armor lock and
+inventory slot; Hunter potion enrollment, mutation brewing/cost,
+specialty XP and Silver Hunter, persistence across reload/death;
+JAWR vampire/werewolf forms, neutrality and resurrection priority.
+Archlich death priority is experimental and modifies event ordering.
+Client, multiplayer, third-party binary behavior, native death/cure
+and mutation persistence are NOT proven by server smoke alone.
 
-Other mods are hash-downloaded by packwiz; only one first-party
-tmm_progression JAR is bundled. Do not infer client success from a
-dedicated-server boot.
-
-WINDOWS QA-ONLY PREFERENCES: first-instance defaults for display and
-sound plus optional local options/keybind carryover remain enabled.
+Other mods download by packwiz; both first-party JARs bundled.
+WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
+plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
-They are not intended for public/stable releases.
 """
     cfg = f"""[General]
 InstanceType=OneSix
@@ -187,6 +194,6 @@ MaxMemAlloc=8192
         "third_party_jars_bundled": 0, "dev_only_preferences": True}, indent=2))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT PROGRESSION_JAR")
+    if len(sys.argv) != 6:
+        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT PROGRESSION_JAR TRANSFORMATIONS_JAR")
     main(*sys.argv[1:])

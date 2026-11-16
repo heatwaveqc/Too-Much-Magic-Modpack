@@ -11,6 +11,8 @@ on:
       - 'scripts/verify_next_test_roster.py'
       - 'scripts/validate_quests.py'
       - 'compat/progression/**'
+      - 'compat/transformations/**'
+      - 'tests/test_prism_qa_packaging.py'
       - 'kubejs/server_scripts/silver_equipment_unification.js'
       - 'kubejs/startup_scripts/silver_equipment_stats.js'
       - 'scripts/build_full_integration_prism.py'
@@ -79,15 +81,20 @@ jobs:
       - name: Compile and unit test standalone Monk/Hunter progression
         working-directory: compat/progression
         run: gradle --no-daemon build
+      - name: Compile and unit test JAWR-only transformation bridge
+        working-directory: compat/transformations
+        run: gradle --no-daemon build
+      - name: Offline regression for two-JAR Prism packaging
+        run: python3 tests/test_prism_qa_packaging.py
       - name: Verify HexCast MXP exploratory contract (source only; not in pack)
         working-directory: integration/hexcast-media-pilot
         run: bash check-contract.sh
-      - name: Full dedicated-server smoke WITH standalone progression
+      - name: Full dedicated-server smoke WITH Monk, Hunter and JAWR transformation bridge
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
-          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar
+          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.ja:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
         run: bash scripts/smoke_server.sh
       - name: Validate retired runtime mods, recipes and tag absence
         run: python3 scripts/verify_retirement.py
@@ -100,10 +107,10 @@ jobs:
       - name: Fail if standalone module is absent or retired modules leak
         run: |
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_progression-0.1.0-dev.jar"
-          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 1
+          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
           test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
-          test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
-          echo "Standalone tmm_progression tested; old custom modules absent"
+          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
+          echo "Standalone tmm_progression and JAWR-only tmm_transformations both server-tested; old tmm_monk absent"
       - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
         run: |
           # All staged source imports, exact mod manifests and the source lock belong
@@ -134,7 +141,8 @@ jobs:
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "${{ runner.temp }}" "$(git rev-parse HEAD)" \
-            "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar"
+            "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar" \
+            "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
       - name: Upload the one comprehensive unstable test build
         uses: actions/upload-artifact@v4
         with:

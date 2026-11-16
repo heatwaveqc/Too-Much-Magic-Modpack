@@ -33,5 +33,5 @@ def run(root=ROOT):
     assert "config/tmm_transformations-server.toml" not in paths
     assert "kubejs/server_scripts/dragon_diets.js" in paths
     assert "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json" in paths
-    print("PASS next-QA: new roster, Tyz and standalone class; TeamLapen absent")
+    print("PASS next-QA: JAWR-native roster, Tyz, standalone Monk/Hunter and bridge; TeamLapen absent")
 if __name__=="__main__": run()

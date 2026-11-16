@@ -25,7 +25,8 @@ for path in ("kubejs/server_scripts/silver_equipment_unification.js",
 reg = json.loads((ROOT/"manifest/integration-sources.json").read_text())
 streams = {x["name"] for x in reg["streams"]}
 assert "standalone-monk-hunter-progression" in streams
+assert "jawr-native-transformation-bridge" in streams
 assert not ({"vampire-bridge", "monk-faction", "werewolf-food-relics-compat"} & streams)
 assert "kubejs/server_scripts/dragon_diets.js" in paths
 assert "config/ftbquests/quests/chapters/just_another_witchery_remake.snbt" in paths
-print("PASS: retired mods/quests/stone/tags absent; standalone class, JAWR and dragon diet remain")
+print("PASS: TeamLapen retired; standalone Monk/Hunter and JAWR-only bridge selected for two-JAR QA")
