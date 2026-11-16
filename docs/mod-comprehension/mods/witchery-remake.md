@@ -10,7 +10,7 @@
 | Guide/documentation version | Guidebook JSON and en_us localization extracted from the exact pinned 0.5.39 JAR. |
 | Profile status | researching |
 | Evidence reached | Exact JAR identity verified; native guidebook, recipe/ritual/loot/advancement/structure data and dependency metadata inspected. Full dedicated-server roster has previously co-loaded JAWR; no new client or world test in this pass. |
-| Reviewed | 2026-11-15 |
+| Reviewed | 2026-11-16 |
 | Quest ownership | Existing FTB chapter is one optional manual checkmark with 2 XP and paper; inspected but not edited. |
 
 ## Executive gameplay map
@@ -19,7 +19,7 @@
 
 **Why it matters in TMM:** JAWR is the intended native home for vampire and lycanthrope physiology after the separately installed TeamLapen Vampirism and Werewolves mods are retired. Those removals are design work in progress; their worldgen, raids, pets and factions are not being migrated. JAWR also has a direct Neo Vitae integration: its conditional guide page and compiled compatibility package add a Viteomantic Bloodstone Pendant that lets vampire blood-feeding use the wearer's Anima network. That matters to the pack's blood economy and the current vampire/skill migration plans. [docs: `docs/PROGRESSION.md`; jar: `integration/neovitae/NeoVitaeCompat.class`, `ritual/rite_of_bloodbinding` guide/recipe; docs: official 0.5.12–0.5.13 changelog]
 
-**Quick start:** Break wild grass for Witchery seeds; grow and use Belladonna among the guidebook ingredients. Craft the Guidebook from an ordinary book, Belladonna Flower, Ink Sac, Feather and any coal-tag item in the shown plus pattern. Open General → The First Steps. Build a Witch's Oven and use its recipe pages to obtain the fumes and essences that feed the rest of the mod. Then make a nature-powered Altar and Cauldron; consult the guide's exact construction and recipe pages, plus JEI. A Cauldron recipe is an ordered ingredient sequence, not arbitrary shapeless mixing. [jar: guidebook recipe, General entries, JEI recipe data]
+**Quick start:** Break wild grass for Witchery seeds and grow Belladonna for the Guidebook recipe. Craft and open the Guidebook, then follow General → The First Steps. For the first Altar, grow Mandrake, use the Witch's Oven/JEI route to obtain Exhale of the Horned One, and make four Mutandis in the cauldron by adding Mandrake Root → Exhale → Egg. In pinned 0.5.39 the recipe displays 500 Altar Power but the cauldron crafting path does not check or debit it, so this first craft can bootstrap Rowan saplings and Rowan Wood for the Altar; this is a reported, bytecode-backed exact-version finding, not a TMM world test. Mutation targets/probabilities and the complete Jar/Oven input chain still need direct recipe/source review. Cauldron recipes use ordered ingredients, not arbitrary shapeless mixing. [jar: guidebook and cauldron recipe data] [issue: 0.5.39 #127]
 
 ### Player-value snapshot
 
@@ -31,7 +31,7 @@
 
 | Subsystem / branch | Evidence | Progression completeness | Guide / JEI | Client validation | Remaining blocker |
 | --- | --- | --- | --- | --- | --- |
-| Core witchcraft ingredients and workstations | exact JAR data | strong overview; ingredient graph partial | General (32 entries), oven/altar/cauldron recipe pages | not run | Resolve first Rowan wood / Mutandis gate and test workstations |
+| Core witchcraft ingredients and workstations | exact pinned JAR recipes + creator issue report | opening Mutandis → Rowan → Altar loop mapped; broader ingredient graph partial | General (32 entries), oven/altar/cauldron pages + JEI | not run | Audit Jar/Oven chain and mutation targets/probability; test workstation transactions |
 | Altar power, chalk and rituals | exact JAR recipe/schema and issue report | structure and ritual model mapped; individual rites partial | Rituals (53), ritual recipe pages, JEI | not run | Verify altar supply, sequencing, radius and ritual outputs |
 | Brewing, cauldron crafting and infusions | 23 brews, 10 crafts, 25 infusions in pinned JAR | systems mapped; ingredients and effects partial | Brewing (34), JEI | not run | Known power-cost bypass in cauldron craft path; see issue below |
 | Oven / Distillery / Spinning Wheel / Brazier | exact guide categories/pages and recipe data | category inventory complete; full chains partial | General, Brewing, Brazier; JEI | not run | Measure yields, fuel/inputs and side outputs |
@@ -154,10 +154,10 @@ This covers major mandatory onboarding and high-level branches; it does not make
 
 | Stage / branch | Player-facing action and reference | Observable success separate from item ownership | Coverage / open research |
 | --- | --- | --- | --- |
-| 0. Find first seeds | Break wild grass; collect and grow Witchery plants. Open General → The First Steps. | Seed drop/crop yield observed | Exact seed drop probabilities and plant locations not audited |
+| 0. Find first plants | Break wild grass for seeds; grow Belladonna for the Guidebook and Mandrake for the first Mutandis batch. Read General → The First Steps. | Seed/crop yield not measured | Route/action is documented, but drop probabilities/biome distribution and client harvest remain unaudited |
 | 1. Make Guidebook | Craft `witchery:guidebook` using book + Belladonna + Ink Sac + Feather + coal-tag item in the shown pattern. | Book opens; General category readable | Exact pattern source-confirmed; client UI not tested |
-| 2. Witch's Oven loop | Build oven; use exact input recipe to produce fumes/essences; distill or use them as the guide/JEI specifies. | Expected side product appears; recipe operation completes | Full dependency graph and production rates open |
-| 3. Early workstations and Altar | Build Cauldron and 3×1×2 Altar; place nature nearby; check Altar Power with Jade/UI/JEI where available. | Power rises with valid nature; known consumer succeeds and debits power | Need quantify area, range, formula and initial Rowan/Mutandis route |
+| 2. First Mutandis batch | Make a Jar and use the Witch's Oven/JEI route to obtain Exhale of the Horned One; fill/heat the cauldron, then add Mandrake Root → Exhale → Egg. The 0.5.39 recipe declares 500 Altar Power and outputs 4 Mutandis, but the crafting code path does not enforce or spend that power. | Four Mutandis produced; no Altar required for this declared-cost recipe in the reported release behavior | Ingredients, order and output are exact-JAR/report backed; full Jar/Oven chain, timing and TMM reproduction remain open |
+| 3. Rowan bootstrap and first Altar | Use Mutandis on eligible plants until Rowan Sapling is obtained; grow and harvest Rowan Wood; craft the 3×1×2 Altar and Cauldron. Surround the Altar with valid nature inputs and confirm its stored power. The power-cost bypass is what avoids a first-Altar deadlock in pinned 0.5.39. | Rowan tree yields wood; Altar stores power from valid nature sources | Mutation table/attempt odds and nature range/formula need exact audit; Altar operation untested |
 | 4. Brewing/crafting | Fill and heat cauldron; add ingredients in recipe order; perform one brew, one crafting recipe and one infusion as separate operations. | Correct output/effect and observed power cost | Note cauldron cost mismatch for ten recipes; exact path tests required |
 | 5. Chalk/ritual entry | Make appropriate chalk and draw a guide/JEI pattern; satisfy time, weather, item/entity and coven conditions in order. | Ritual enters output phase, debits altar, performs requested effect | Need representative cheap rite, wait/timeout case, boundary tests |
 | 6. Utility branches | Choose a useful route: poppet protection, familiar, Brazier, Tarot/Symbology, brew mobility or Spirit World. | Activate protection/effect or complete travel and return | Branches optional; no requirement to complete every page |
@@ -198,10 +198,25 @@ This covers major mandatory onboarding and high-level branches; it does not make
 | Existing quest | `config/ftbquests/quests/chapters/just_another_witchery_remake.snbt` | One optional checkmark; not a real progression walkthrough |
 | Retirement design | `docs/PROGRESSION.md`, `docs/TEAM-LAPEN-RETIREMENT-TARGET-2026-11-15.md` | JAWR owns future native vampire/lycanthrope physiology; TeamLapen content retirement still pending code/runtime migrations |
 
+## Opening resource loop — Mutandis to the first Altar
+
+This is the currently supported starting route for the pinned release. It resolves the circular gate that the broad walkthrough had left open, while separating the exact recipe data from unmeasured world behavior.
+
+1. Break wild grass for Witchery seeds. Grow Belladonna for the Guidebook; grow Mandrake for Mutandis. The guide's General → The First Steps page is the in-game entry point. Seed/drop rates are not yet measured.
+2. Craft a Jar and use the Witch's Oven recipe shown by JEI/its General pages to obtain Exhale of the Horned One. The source audit has not yet enumerated the exact Jar recipe, accepted oven fuel, cook duration or side outputs, so consult the live in-pack recipe and treat those values as open in this profile.
+3. Fill and heat the Cauldron. Add **Mandrake Root → Exhale of the Horned One → Egg** in order. The exact pinned 0.5.39 Mutandis recipe declares 500 Altar Power and produces four Mutandis. The public creator issue documents the exact recipe and a binary inspection: the regular cauldron-crafting completion path does not query or debit Altar Power, and the reporter reproduced the output without an Altar. The creator acknowledged the issue as a 1.21.1 report and said it was fixed in development, then noted no rush; no published fix is established for this pin. [exact JAR data; creator issue #127]
+4. Apply Mutandis to eligible plants until a Rowan Sapling is produced, grow the tree and harvest Rowan Wood. The issue report identifies Mutandis as the means to obtain Rowan and the Altar recipe as requiring Rowan. Which plant targets are eligible, success chance, per-use consumption, blacklist and whether the tree can spawn naturally are still unverified.
+5. Craft the Witchery Altar from Rowan Wood and follow General → Altar for the 3×1×2 layout. Use its nature-source guide and JEI to charge it. That turns later Altar-dependent systems into an actual progression branch.
+
+**Boundary:** The declared 500-power display remains visible in JEI/guide data even though the reported 0.5.39 code path does not enforce it. Do not teach it as a working power cost, and do not infer all ten recipes have been individually reproduced: Mutandis was the in-world reproduction; the other nine are affected by the same inspected craft path. [creator issue #127]
+
+**Newer release notes:** Modrinth lists 0.5.39 additions for a boss entity tag and Lilith's garlic cure/enchant interactions, alongside fixes for cauldron item drops and other handling. These are release-note claims; the exact in-game recipe/trigger details are not yet integrated into the source-mapped content inventory. [docs: Modrinth release 0.5.39]
+
 ## Unknowns and next research
 
 - [ ] Audit all ten cauldron crafting recipes and all altar-consuming infusions/rituals; track power costs separately from code enforcement.
-- [ ] Resolve ordinary Witchery starting materials, especially Rowan wood/Mutandis, and all alternative renewable sources before any cost is enforced.
+- [x] Resolve the pinned-release Rowan/Mutandis bootstrap at source/report level: the exact Mutandis cauldron order/output and non-enforced 500 Altar Power requirement are documented; no in-pack reproduction claimed.
+- [ ] Audit the exact Jar → Oven route for Exhale, eligible Mutandis targets/probability/consumption, possible natural Rowan sources and other first-wood alternatives.
 - [ ] Map every recipe dependency from Oven → Distillery → Altar/Cauldron → Chalk/Ritual and major outputs with exact item IDs; current profile gives categories and key routes, not the entire recipe graph.
 - [ ] Extract exact Vampire and Werewolf rank predicates from a matching source/bytecode inspection or game client; test resource caps, nourishment, cures, dual-state behavior, form-specific attributes and rejoin synchronization.
 - [ ] Review every ritual JSON/Guidebook pairing for requirements, consumption, output and side effects; capture day/night, weather, coven and timeout gates.
@@ -214,3 +229,5 @@ This covers major mandatory onboarding and high-level branches; it does not make
 ## Revision notes
 
 - 2026-11-15 — Started exact JAR profile for 0.5.39; confirmed 223 guide entries and category/advancement gates, mapped nine-step bloodline guides, inspected recipe and dependency data, and documented confirmed cauldron Altar Power bypass plus cross-version multiplayer report. No quest or runtime files changed.
+
+- 2026-11-16 — Resolved the opening Rowan/first-Altar circularity at source/report level: exact Mutandis ingredient order/output and the 500 Altar Power enforcement bug are documented, with an actionable plant → oven → Mutandis → Rowan → Altar route. Updated 0.5.39 release-note deltas. Mutation odds, Jar/Oven chain details, remaining systems and in-pack tests remain open; no quests/runtime changes.
