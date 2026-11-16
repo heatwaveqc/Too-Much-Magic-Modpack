@@ -14,7 +14,8 @@ def main():
     assert all(x["min"]>=1 for x in p["guaranteed_stock"])
     assert set(x["slot"] for x in p["guaranteed_stock"]) == {
       "apotheosis_equipment", "ars_glyph_tier_1", "ars_glyph_tier_2", "ars_glyph_tier_3", "irons_ink_uncommon_plus", "random_relic_or_artifact"}
-    assert sum(p["guaranteed_stock"][-1]["weights"].values()) == 100
+    ink = next(x for x in p["guaranteed_stock"] if x["slot"] == "irons_ink_uncommon_plus")
+    assert sum(ink["weights"].values()) == 100
     assert p["preserve_existing_trades"] and not p["no_stock_from_other_magic_mods_yet"]
     assert p["premium_selection_count"] == 4
     premium = p["premium_stock_choices"]
@@ -50,7 +51,7 @@ def main():
     assert hashlib.sha256(index.encode()).hexdigest() == tomllib.loads(read("pack.toml"))["index"]["hash"]
     hashval=hashlib.sha256(script.encode()).hexdigest()
     assert f'file = "{script_path}"\nhash = "{hashval}"' in index
-    print("PASS: B20 five guaranteed stock slots, weighted >= uncommon ink, true affixed gear, configurable Ars glyph tiers and packwiz hashes")
+    print("PASS: B20 six guaranteed stock slots, twelve premium items, weighted >= uncommon ink, true affixed gear, configured glyph tiers and packwiz hashes")
     print("PENDING: NeoForge/KubeJS runtime API, actual server+client trader offers, Apotheosis rarity/affix generation and item GUI")
 
 if __name__=="__main__":
