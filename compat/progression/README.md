@@ -65,6 +65,8 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 /tmmprogress buy tmm_progression:hunter tmm_progression:undead_slayer
 /tmmprogress respec tmm_progression:hunter
 /tmmprogress admin join tmm_progression:monk        # OP-only
+/tmmprogress admin xp tmm_progression:monk 28000  # OP-only: grant native XP; level 20 from 0
+/tmmprogress admin xp tmm_progression:hunter 1000  # OP-only: test Hunter leveling
 /tmmprogress admin event tmm_progression:monk_first_sunset  # OP-only
 /tmmprogress enroll tmm_progression:hunter         # Player-controlled manual join
 /tmmprogress power blink                          # Blink; also V key
@@ -85,6 +87,22 @@ To run the module from this directory with Gradle: `gradle --no-daemon build` th
 5. **UI, migration and safety:** Serverbound action keybinds exist but no visual skill-tree GUI or server-to-client progress sync, versioned progress migration, path-leave/cure/reset, configured respec price, anti-farm event dedupe, effect-handler hot reload/registration timing tests, or pack-manifest inclusion. No in-game QA has passed.
 6. **Lifecycle:** Unregistering/removing a datapack path retains its saved ledger but cannot apply or respec effects until the definition returns. Effects have transient IDs; login/logout/reset consistency must pass tests.
 7. **Security:** Never expose `join`, `recordExternal` or arbitrary XP awards to untrusted client packets. The integration adapter must validate true initiation/trial completion server-side.
+
+## Testing native progression without grinding
+
+Use `/tmmprogress admin xp <path> <amount>` as an operator (permission level 2).
+This awards **that path's custom progression XP**, not vanilla XP, Tyz XP or skill points
+directly. The normal `rank_xp` thresholds, level caps, automatic rank-granted abilities
+and points-per-level apply, including large one-time grants. The path must already be
+joined, so for a brand-new test character first run `/tmmprogress admin join
+tmm_progression:monk`. A grant does **not** complete non-XP milestones (First Sunset,
+Dragon defeat, blind ordeal) and deliberately does not unlock optional paid skills.
+
+```mcfunction
+/tmmprogress admin join tmm_progression:monk
+/tmmprogress admin xp tmm_progression:monk 28000
+/tmmprogress status tmm_progression:monk
+```
 
 ## Armor discipline and dedicated fist slot (current policy)
 
