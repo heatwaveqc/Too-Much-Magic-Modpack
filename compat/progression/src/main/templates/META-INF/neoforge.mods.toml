@@ -28,3 +28,7 @@ side="BOTH"
 # Client-only controls policy; leave unrelated experimental progression mixins unchanged.
 [[mixins]]
 config="tmm_controls_defaults.mixins.json"
+
+# Gameplay loot predicate injection, separate from client controls policy.
+[[mixins]]
+config="tmm_progression.mixins.json"
