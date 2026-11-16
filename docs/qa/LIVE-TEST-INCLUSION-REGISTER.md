@@ -53,4 +53,11 @@ All of these appeared under `deferred_pending_runtime` during the previous retir
 | --- | --- | --- | --- | --- | --- |
 | YYYY-MM-DD · chat/PR URL | Feature name, `branch` / #PR, quoted readiness decision or owner instruction | Paths/JARs/mod pins and needed integration | ATTEMPT REQUIRED | — | Bxx/Cxx |
 
+## November 16 quick QA and starter reward repair handoff
+
+| Date / origin | Ready feature and source | Code / pins / conflicts | Inclusion status | Evidence (SHA, destination or blocker) | Assigned QA case |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-16 · [PR #221](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/221) | Bio-Mutagen 1.21.1 codec, ritual-only Dragon Survival and starter quest rewards · `fix/quick-qa-and-starter-rewards-2026-11-16` | `compat/progression/` recipe + JUnit; `defaultconfigs/dragonsurvival-server.toml`, `defaultconfigs/enigmaticlegacyplus-server.toml`; Introduction quest + canonical manifests/localization; `kubejs/data/tmm/function/rewards/first_log.mcfunction`; updated packwiz hashes. Reconcile any subsequent general quest/Monk branch so it does not overwrite these two starter quests; no new mod pins. | **ATTEMPT REQUIRED** at next owner-authorized comprehensive live build | Committed to isolated source PR; not yet installed, no client acceptance. Confirm compiled progression JAR recipe, new-world config copies and actual FTB claim delivery after integration. | A08, B05, C01; new-player starter/dragon smoke |
+| 2026-11-16 · [PR #222](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/222) | Windows-normalized B19 Gateway catalog · `fix/b19-windows-path-catalog-2026-11-16` | One-line `scripts/build_progression_gateways.py` fix against deferred B19 feature branch; no Gateway pack files installed by this change. | **ATTEMPT REQUIRED** when B19 is assembled | B19 quick CI bootstrap passed; run B19 validator on Windows and ensure the corrected feature branch is imported rather than its stale parent. | A14, B19 |
+
 **Lifecycle:** `READY REPORTED` → `ATTEMPT REQUIRED` → `INCLUDED` / `BLOCKED` / `OWNER-DEFERRED`; only then may a comprehensive test candidate claim a complete inclusion matrix. Do not treat source-readiness as runtime acceptance.
