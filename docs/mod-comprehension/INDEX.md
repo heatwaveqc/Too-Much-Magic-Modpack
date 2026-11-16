@@ -134,7 +134,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | researching | [profile](mods/pastel.md) |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | queued | — |
-| `psi` | Psi | magic | enabled flag | full | queued | — |
+| `psi` | Psi | magic | enabled flag | full | researching | [profile](mods/psi.md) |
 | `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | source-complete | [profile](mods/scriptor-magicae.md) |
 | `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
