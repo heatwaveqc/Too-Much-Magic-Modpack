@@ -1,5 +1,7 @@
 # Test ledger
 
+> **Current/next-test handoff:** [QA hub](qa/README.md) · [Codex-executable three-tier checklist](qa/NEXT-TEST-CODEX-CHECKLIST.md) · [current test status and evidence](qa/CURRENT-TEST-STATUS.md). This file is the historical test log; the QA status document is the active handoff, and `manifest/feature-checklist.json` remains the feature-level authority.
+
 **2026-11-13 bootstrap environment**
 - GitHub repository created by user and first README commit verified: **PASS**.
 - Java 21 in local container (`openjdk 21.0.12.1`): **PASS**.
