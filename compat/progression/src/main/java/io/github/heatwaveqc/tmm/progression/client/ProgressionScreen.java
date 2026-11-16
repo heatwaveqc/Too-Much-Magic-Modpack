@@ -152,6 +152,7 @@ public final class ProgressionScreen extends Screen {
         int points = data.get("points").getAsInt();
         long xp = data.get("xp").getAsLong();
         long nextXp = data.get("next_xp").getAsLong();
+        long rankStart = data.get("rank_start_xp").getAsLong();
         gui.drawString(font, joined ? "Rank " + rank + "/" + maxRank : "Not enrolled",
                 left + 14, 69, joined ? 0xFFA6DCD0 : 0xFFFFB6A0, false);
         gui.drawString(font, "Native skill points: " + points,
@@ -160,7 +161,9 @@ public final class ProgressionScreen extends Screen {
                 left + 314, 69, 0xFFD0D0D0, false);
         gui.fill(left + 13, 84, left + 491, 91, 0xFF353941);
         double fraction = rank >= maxRank ? 1.0
-                : nextXp <= 0 ? 0.0 : Math.max(0, Math.min(1.0, (double) xp / nextXp));
+                : nextXp <= rankStart ? 0.0
+                : Math.max(0, Math.min(1.0,
+                        (double) (xp - rankStart) / (nextXp - rankStart)));
         gui.fill(left + 13, 84, left + 13 + (int) (478 * fraction), 91, 0xFF529E84);
         gui.drawString(font, "Automatic gifts: blue | Learned: green | Purchasable: gold",
                 left + 13, 96, 0xFFAFBAC6, false);
