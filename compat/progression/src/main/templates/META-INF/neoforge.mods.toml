@@ -24,3 +24,7 @@ type="required"
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
+# Client-only controls policy; leave unrelated experimental progression mixins unchanged.
+[[mixins]]
+config="tmm_controls_defaults.mixins.json"

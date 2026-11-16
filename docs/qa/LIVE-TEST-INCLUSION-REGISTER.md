@@ -116,3 +116,10 @@ See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is 
 | C16 | `dragonsurvival:bottle_caps_treasure` | **Conditional only** on `desert_monster_ds` being installed. Currently absent from checked-in roster; when absent record NOT BUILT/NOT APPLICABLE, do not install the addon. If included in a later build, investigate >9-slot shapeless recipe behavior, leave unchanged. |
 
 No full smoke, build, or client run is authorized by this intake note.
+
+
+## Automatic default-unbound controls from the runtime client registry (2026-11-16)
+
+| Origin / readiness | Source / inclusion | Next owner-authorized QA acceptance | Status |
+| --- | --- | --- | --- |
+| Owner explicitly requested next-build implementation, 2026-11-16 | Existing first-party `tmm_progression` JAR's client-only `ClientKeyDefaults` + `ControlsDefaultsPolicy` + dedicated `tmm_controls_defaults.mixins.json`; keep all 315 fallback Default Options bindings and KeySets one-shot trial | Build the **new** progression JAR and include it in the unified Prism test, verify mixins applied and no client crash; clean profile with alternate `TMM_QA_PROFILE_DIR`: vanilla 34 unchanged, all actual standard modded registered keys start unbound including `keyset.open`, Controls Reset remains unbound, custom bindings survive restart; normal QA profile retains all earlier bindings; when a new mod adds a key, auto-unbind without another inventory export. Test KeySets/Controlling compatibility and obey one-shot KeySets PASS/REMOVE decision. External/custom hotkey providers require separate audit; snapshot read failure must fail closed. | **SOURCE STAGED / REQUIRED NEXT LIVE TEST**; do not call client-smoked based on Java build |
