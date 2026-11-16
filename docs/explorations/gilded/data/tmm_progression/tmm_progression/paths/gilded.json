@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "exclusive_group": "",
-  "enrollment": "manual",
+  "enrollment": "admin",
   "rank_xp": [
     0,
     20,
@@ -80,7 +80,10 @@
           "params": {
             "enforce": "before_consumption_finish",
             "nonfood_consumables": "unaffected",
-            "unlisted_food": "deny"
+            "unlisted_food": "deny",
+            "gold_foods_tag": "#tmm_progression:gilded_gold_foods",
+            "gold_recipe_policy": "tmm_progression:gilded_gold_food_policy",
+            "allow_recipe_derived_gold_foods": "true"
           }
         }
       ]

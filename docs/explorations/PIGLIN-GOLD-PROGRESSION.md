@@ -45,7 +45,7 @@ Interpret “effective diamond level” by comparing **per-item combat, harvest 
 ## Remaining progression design decisions
 
 1. Is Gilded compatible with Monk/Hunter or exclusive with other identity disciplines? **No exclusivity group selected.**
-2. How does Gilded enrollment unlock: bartering with Piglins, earning trust in a Bastion, a Nether gold rite, or another action? A manual join is sufficient for the first controlled QA prototype, not a shipping unlock.
+2. **Enrollment is locked:** in the Nether, wearing a complete four-piece golden armor set, successfully eat a golden apple, enchanted golden apple, or golden carrot. The new event adapter must enroll at successful consumption completion; the self-serve manual command must not bypass the ritual.
 3. How many virtual Unbreaking levels and at what ranks? Fortune is **locked at +3 additive levels**, with no new Gilded-specific cap; test natural enchantment overlevels including Apotheosis.
 4. What is the repair speed progression, and should the same rate be granted immediately or unlocked at higher Gilded ranks? **Gold and Netherite always share each unlocked rate.**
 5. Whether additional bartering bonuses or Piglin reputation mechanics should exist. **None are authorized by Piglin/Piglin-Brute friendship or anger-prevention alone.**
@@ -126,6 +126,24 @@ Source references for verification: `docs/QUEST-SHOP-ECONOMY.md`, `manifest/ques
 - For Minecraft 1.21.1 NeoForge, **My Nether's Delight 1.10.4.1** (not the older original *Nether's Delight*) is the recommended future addition *when Gilded ships*. Requires Farmer's Delight, already present. No packwiz or manifest changes authorized yet.
 - JSON-only cannot enforce the consumption ban with current `tmm_progression`: `food_consumed` hooks fire too late. A trusted pre-consume handler is required to block hunger/food effects; the draft JSON intentionally resides in `docs/explorations/gilded/` and will be rejected if loaded before handlers are registered.
 - Draft datapack schema, optional-food whitelist, equipment/entity tags and implementation checklist: [Gilded inactive prototype](gilded/README.md). The 16-category class ideation map is in [monster-aligned disciplines](MONSTER-ALIGNED-CLASS-IDEAS.md).
+
+## Owner-locked golden initiation and food extension (2026-11-16)
+
+**Required initiation:** In `minecraft:the_nether`, wear **all four ordinary golden armor pieces** in their actual head/chest/legs/feet slots and *successfully finish eating* one of `minecraft:golden_apple`, `minecraft:enchanted_golden_apple`, or `minecraft:golden_carrot`. This triggers Gilded enrollment once, on the server. A golden carrot requires the usual hunger preconditions; enchanted golden apples can be eaten when full. No Piglin barter, extra altar, XP precondition or outside-Nether initiation. If a mod adds an enchanted golden carrot, confirm its actual registered ID and add it to the rite tag (none in vanilla).
+
+**Diet = Nether food OR any legitimate gold food.** The Gilded restriction allows (a) explicit Nether-attainable food types from the existing tag, **or** (b) explicit golden food types, **or** (c) any food whose **crafting** recipe has a gold nugget/ingot/block ingredient, including gold-equivalent ingredient tags and nested golden food ingredients in a recipe chain. This gold exception applies even when other recipe ingredients originate outside the Nether. Do not derive membership merely from the word “gold” in an item name or mod namespace. Enchanted golden apples qualify explicitly even though uncraftable in modern vanilla.
+
+The inactive prototype now includes:
+- `gilded_initiation.json`: ritual conditions and a proposed successful-eating adapter contract.
+- `data/tmm_progression/tags/item/gilded_rite_foods.json`: vanilla golden apple, enchanted golden apple and golden carrot; verified modded enchanted variants may be added here.
+- `data/tmm_progression/tags/item/gilded_gold_foods.json`: explicit golden-food whitelist that is incorporated by the Nether-food tag.
+- `gilded_food_policy.json`: proposed data-driven server recipe classifier for additional gold-derived crafted foods.
+
+**Technical safety:** The existing `PathJson` only understands enrollment markers `admin`, `manual` and `sunset`. To prevent non-operator players bypassing this rite through `/tmmprogress enroll`, the prototype uses **`enrollment: "admin"` as a compatibility flag**. Actual players enroll by a **new trusted adapter calling `ProgressionApi.join(player,"tmm_progression:gilded")` only after the successful-use conditions**. Operator `admin join` remains for QA. The new ritual and food-policy JSON files are **data contracts only** and are NOT yet read by the engine. Enroll on successful **finish**, not click/use-start; verify item actually consumed and prevent repeated enrollment feedback or granting XP on the rite.
+
+**Food enforcement:** Existing `ProgressionEvents.consumedFood` fires at `LivingEntityUseItemEvent.Finish`, too late to reliably cancel food effects. Implement a separate pre-consumption validation/cancellation hook for **already-Gilded** characters; ensure the rite remains accessible before enrollment. Validate both direct item tag entries and recipe-derived gold foods on the dedicated server, updating cache on recipe datapack reload. The discovered recipe ingredient tags must exist in the actual pack registry or be treated as empty, not cause parser failure. An empty or self-referential recipe tree must not grant a food category. Preserve unrelated potions, healing and non-food consumables.
+
+**Live QA:** consume each of all three vanilla rite items in Nether with full gold armor => joins once; any missing piece, wrong armor material, Overworld/End, failed/canceled eating, creative/spectator, and attempts to run `/tmmprogress enroll` => fail. Verify armor swapping mid-eat, second-hand item, multiplayer, relog and named/gold-looking non-gold foods. Food checks: golden apples/carrots, gold-nugget recipe outputs, recipes using golden carrots, enchanted golden apple, all previously approved Nether foods, non-gold Overworld foods denied. Modded enchanted carrot only if actually registered.
 
 ## Minimum acceptance tests for later implementation
 

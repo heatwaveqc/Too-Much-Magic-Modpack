@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "status": "design_only_pending_java_adapter",
+  "path": "tmm_progression:gilded",
+  "allow_if_any": [
+    {
+      "kind": "item_tag",
+      "id": "#tmm_progression:gilded_nether_foods"
+    },
+    {
+      "kind": "item_tag",
+      "id": "#tmm_progression:gilded_gold_foods"
+    },
+    {
+      "kind": "crafting_recipe_contains_gold",
+      "recipe_type": "minecraft:crafting",
+      "ingredient_items": [
+        "minecraft:gold_nugget",
+        "minecraft:gold_ingot",
+        "minecraft:gold_block"
+      ],
+      "ingredient_tags": [
+        "#c:nuggets/gold",
+        "#c:ingots/gold",
+        "#c:storage_blocks/gold"
+      ],
+      "recursive_through_food_ingredients": true,
+      "maximum_depth": 8
+    }
+  ],
+  "require_food_component": true,
+  "allow_non_food_consumables": true,
+  "note": "Gold-food recipe qualification overrides Nether-origin requirement. Match actual server recipe ingredients, including tags and nested gold-bearing food ingredients, without relying on item display names. Prevent recursion cycles, reload on datapack changes, do not broaden to non-crafting machine recipes. Explicitly whitelist enchanted golden apple (not craftable in current vanilla)."
+}
