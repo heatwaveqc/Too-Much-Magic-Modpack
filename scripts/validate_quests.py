@@ -96,7 +96,7 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 44, "Expected five groups and 44 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 187, "Expected 187 authored quests with Ars and Alcohol is Magic")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 188, "Expected 188 authored quests with Ars and Alcohol is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -114,10 +114,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 226,
-           f"Expected 225 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 227,
+           f"Expected 227 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 226 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 227 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -156,7 +156,7 @@ def main() -> None:
             global_ids.add(ident)
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
-        expected = {"Getting Started": 19, "Tips & Tricks": 20, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
+        expected = {"Getting Started": 20, "Tips & Tricks": 20, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
                     "Skills & Advancement": 8, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
@@ -199,7 +199,13 @@ def main() -> None:
             coins = re.search(r'type: "command", command: "hqs coins add \{p\} (\d+)", permission_level: 2, team_reward: true', rewards)
             ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
             ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
-            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0) or qid == "544D303000100001", f"Missing fixed item or command-backed coin reward on {qid}")
+            newbie_graduation = qid == "544D309000100001" and (
+                'type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in rewards
+                and 'type: "checkmark"' in tasks and c["name"] == "Getting Started"
+            )
+            ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0)
+                   or qid == "544D303000100001" or newbie_graduation,
+                   f"Missing fixed item or approved command reward on {qid}")
             # Only the two existing Getting Started quests may carry an extra starter item.
             starter_rewards = {
                 "544D301000100001": {("enigmaticlegacyplus:unwitnessed_amulet", "1"),
@@ -220,7 +226,8 @@ def main() -> None:
                 ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
                 ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             else:
-                ensure(qid == "544D303000100001" and 'type: "checkmark"' in tasks, "Only Ars orientation may be XP-only")
+                ensure((qid == "544D303000100001" and 'type: "checkmark"' in tasks)
+                       or newbie_graduation, "Unapproved no-item quest reward")
             for item_id, required in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}(?:, count: (\d+)L)?', tasks):
                 count = int(required) if required else 1
                 existing = item_tasks.get(item_id, [])
@@ -239,7 +246,7 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 226, f"Expected 226 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 227, f"Expected 227 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
