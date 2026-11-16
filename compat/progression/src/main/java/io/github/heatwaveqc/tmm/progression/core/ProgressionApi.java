@@ -39,6 +39,19 @@ public final class ProgressionApi {
         return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
     }
 
+    /**
+     * Any active native Progression membership makes a player ineligible
+     * for acquiring a new supernatural species. Inspect all persisted paths,
+     * including custom future paths and paths absent from the current registry.
+     */
+    public static boolean anyJoined(ServerPlayer player) {
+        return hasJoinedPaths(player.getData(ProgressionAttachments.LEDGER.get()));
+    }
+
+    public static boolean hasJoinedPaths(Ledger ledger) {
+        return ledger.paths().values().stream().anyMatch(Track::joined);
+    }
+
     public static boolean join(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return false;
