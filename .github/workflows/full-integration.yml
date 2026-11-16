@@ -90,6 +90,7 @@ jobs:
       - name: Integration Preflight — frozen source refs, no writes or mod downloads
         run: |
           python3 scripts/validate_integration_sources.py
+          python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
           python3 scripts/validate.py
           python3 scripts/validate_quests.py
           python3 -m py_compile scripts/validate_integration_sources.py scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
