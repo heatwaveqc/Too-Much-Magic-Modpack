@@ -245,15 +245,19 @@ function tmmPremiumRotation(trader, count) {
   const pool = TMM_PremiumCatalog.slice();
   const chosen = [];
   if (count > pool.length) throw new Error('Not enough trader premium types');
-  for (let i = 0; i < count; i++) {
+  while (pool.length > 0 && chosen.length < count) {
     const index = trader.getRandom().nextInt(pool.length);
     const picked = pool.splice(index, 1)[0];
-    // Build every stack before touching the merchant's actual offers;
-    // missing registry items or mod APIs abort this optional rotation,
-    // but they do not invalidate the five baseline guaranteed offers.
-    const stack = picked.make(trader);
-    chosen.push({id: picked.id, offer: tmmExpensiveTrade(stack, picked.price, picked.uses)});
+    try {
+      // A missing registry ID/API must not prevent other valid stock from being
+      // offered. Retry with a different item, never counterfeit missing items.
+      const stack = picked.make(trader);
+      chosen.push({id: picked.id, offer: tmmExpensiveTrade(stack, picked.price, picked.uses)});
+    } catch (e) {
+      console.warn('[TMM Trader] Skipping unavailable premium ' + picked.id + ': ' + e);
+    }
   }
+  if (chosen.length !== count) throw new Error('Only ' + chosen.length + ' of ' + count + ' premium offers available');
   return chosen;
 }
 

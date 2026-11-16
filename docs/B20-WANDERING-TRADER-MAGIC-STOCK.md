@@ -62,7 +62,7 @@ All prices exceeding 64 emeralds use the merchant's second input slot for anothe
 4. Confirm exactly 500,000 normal Botania mana, never creative; confirm all accessory possibilities exist and work in Curios.
 5. Verify Astral's paper grants only an **currently eligible** constellation after being placed into the player's inventory (and doesn't pre-unlock later research tiers).
 6. Confirm 1 Iesnium ingot is unraw, one use/trader; check no TMM progression milestone is skipped merely by item acquisition.
-7. Verify Roots Classic Runic Focus is accepted in the Engraved Blade ritual and all four Theurgy rare niter item IDs exist. If any ID/API is missing, the premium rotation currently fails its transaction and logs an error; do not claim full merchant compliance.
+7. Verify Roots Classic Runic Focus is accepted in the Engraved Blade ritual and all four Theurgy rare niter item IDs exist. If one ID or API is unavailable, the selector skips it and draws another distinct premium offer from the remaining catalog; if fewer than four valid options exist, the rotation fails its transaction and logs an error. Do not claim runtime compliance until tested.
 8. Maintain no hard gate/boss purchase bypass; in particular ensure rare stock does not grant custom Monk/Hunter achievements or quest unlocks just for item possession.
 
 ## Source inspection references
