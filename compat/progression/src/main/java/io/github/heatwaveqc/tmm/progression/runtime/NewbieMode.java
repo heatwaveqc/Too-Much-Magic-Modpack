@@ -63,6 +63,7 @@ public final class NewbieMode {
             throw new IllegalArgumentException("Unrecognized player mode: " + mode);
         ProgressionApi.setMode(player, KEY, mode);
         syncTag(player);
+        VirtualElytra.reconcile(player);
     }
 
     private static void syncTag(ServerPlayer player) {
