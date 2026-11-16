@@ -22,9 +22,20 @@ Use [the live feature checklist](FEATURE-CHECKLIST.md) for the whole project and
 | 14 | `form.hunger`, `form.cure`, `form.sunlight` | Check hunger over time, full cure, real sun versus Vampire Forest shade; avoid mixing pre- and post-ascension saves |
 | 15 | `skills.backend`, `skills.core`, `skills.mxp` | If Tyz actually pinned and Pufferfish removed, inspect 99-rank tree and admin XP test. MXP is NOT assumed live until dispatcher verified |
 | 16 | `world.tectonic`, `world.dungeons` | Scout fresh generated structures, Neo Vitae Mines and Botania Gaia path; confirm no structure softlock or visually broken sky |
+| 16a | `world.jawr_wild_vampires` (**NEXT-CANDIDATE TARGET**) | **Only if new pack-owned JAWR spawn config is included:** confirm `witchery:vampire` with `/summon witchery:vampire ~ ~ ~` (entity/ownership smoke), then verify truly natural nighttime Overworld spawns, singleton groups, human/Monk/Hunter hostility, daylight/relog behavior, no inherited Vampire Child owner, and observed rate toward ~1 vampire per 20 naturally spawned zombies. Record spawn counts, biome and logs; if no config shipped, mark **NOT BUILT**. |
 | 17 | `end.projecte_start`, `end.projecte_trophies`, `end.projecte_high` | Confirm **three verified boss-associated center ingredients** craft the Stone in BOTH old orientations, diamond fails, original eight outer ingredients stay; Red MK3 direct/upgrade and higher direct Power Flowers consume a Chaos Shard. Audit EMC and Matter Upgrader bypasses; source-stage is NOT a gameplay PASS |
 | 18 | `end.emc_every_item`, `end.emc_balancing` | Export same-build loaded item registry + post-mapping ProjectE EMC, run strict zero-missing audit except cheap glass panes; check low-cost cycles before claiming coverage |
 | 19 | `release.multi`, `shop.multiplayer` | After core singleplayer cases pass, connect a second player; verify separate starter inventory/Monk rites, team coins, save/restart |
+
+## Next-candidate lightweight config gate: JAWR wild vampires
+
+This item is **queued for the next config integration**, not retroactively included in the in-progress/frozen client ZIP. See [the exact design and QA target](hunter/AFFINITY-AND-ENCHANTMENT-DEVELOPMENT-TARGET.md#next-build-config-target-wild-jawr-vampires).
+
+1. **Source/static:** check the exact pinned JAWR 0.5.39 `witchery:vampire` spawn placement, existing mod spawn rules, owner/master initialization and the 1.21.1 NeoForge `add_spawns` JSON schema. Config-first; fallback to Java only if necessary, with a new implementation target rather than hidden test-build code.
+2. **Fast command test:** in a new disposable world use `/summon witchery:vampire ~ ~ ~`; test ordinary unowned entity viability, hostility, sunlight, relog and logs. This does not validate natural spawn selection.
+3. **Actual spawn and rate test:** after the next build includes the datapack modifier, count naturally spawning `witchery:vampire` versus ordinary zombies on repeat eligible nights in several Overworld biomes. Target roughly **1:20**; do not equate spawn weight directly to a percent. Require only singleton wild vampires and no accidental ownership of player-created vampire children.
+
+If the newly built ZIP does not contain the modifier, report **NOT BUILT**. A successful `/summon` alone is **PARTIAL**, not a natural-spawn PASS.
 
 ## Suggested test report
 
