@@ -1,15 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " M ",
-    "SRS",
-    " M "
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:moss_block",
+    "minecraft:moss_block",
+    "minecraft:moss_block",
+    "minecraft:moss_block",
+    "minecraft:rotten_flesh",
+    "minecraft:rotten_flesh",
+    "minecraft:rotten_flesh",
+    "minecraft:rotten_flesh",
+    "minecraft:spider_eye"
   ],
-  "key": {
-    "M": "minecraft:moss_block",
-    "S": "minecraft:spider_eye",
-    "R": "minecraft:rotten_flesh"
-  },
   "result": {
     "id": "tmm_progression:bio_mutagen",
     "count": 1
