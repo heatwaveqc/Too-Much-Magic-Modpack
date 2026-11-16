@@ -197,7 +197,9 @@
     "design/tectonic-worldgen": "Historical worldgen design, inherited by baseline",
     "research/early-magic-utility-inventory": "Already in quest QA baseline",
     "test/quest-vampire-localization-2026-11-14": "Explicit build base",
-    "feature/cc-tweaked-eldritch-iesnium-spirit-fire-2026-11-15": "B14 CC: Tweaked 1.121.0 exact pin, native Eldritch Logic Core miner result, four computer recipe overrides, Spirit Fire Iesnium, static validator and documentation were merged directly into test/full-integration. No extra branch import needed. Source-only until full server/client QA."
+    "feature/cc-tweaked-eldritch-iesnium-spirit-fire-2026-11-15": "B14 CC: Tweaked 1.121.0 exact pin, native Eldritch Logic Core miner result, four computer recipe overrides, Spirit Fire Iesnium, static validator and documentation were merged directly into test/full-integration. No extra branch import needed. Source-only until full server/client QA.",
+    "feature/alcohol-is-magic-quests": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA",
+    "feature/b14-cobblegen-stone-inventory": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA"
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
@@ -231,7 +233,14 @@
     "feature/hunter-starter-skills-xp-audit-2026-11-15": "Hunter supplement pending merge into core",
     "feature/hunter-specialty-health-potion-xp-witcher-2026-11-15": "Hunter supplement pending merge into core",
     "feature/hunter-venom-enrollment-2026-11-15": "Hunter supplement pending merge into core",
-    "feature/progression-chassis-hunter-monk-capabilities-2026-11-15": "Source baseline copied to retirement QA branch for targeted silver Hunter skill; continue original core work independently"
+    "feature/progression-chassis-hunter-monk-capabilities-2026-11-15": "Source baseline copied to retirement QA branch for targeted silver Hunter skill; continue original core work independently",
+    "design/canonical-evilcraft-blood-2026-11-15": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "design/monk-standalone-classic-parity-2026-11-15": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "design/tyzs-nine-trees-2026-11-15": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "research/atm10-specialist-benchmark-20261115": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "research/hunter-creature-inventory-2026-11-15": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "research/hunter-pinned-jar-audit-ci": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "research/mod-comprehension-neovitae": "Design/research-only, not active gameplay content for the TeamLapen retirement QA"
   },
   "pending_runtime_work": [
     "BLOCKER: do not reinstate kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js: global dropped-item tick costs and proxy item lifecycle are unacceptable. Replace with scoped native Mahou Catalyst Exchange scanner patch; preserve native mana/consumption and no item duplication.",
@@ -257,6 +266,22 @@
     "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up.",
     "Alex's Caves Continued 1.1.2 and CodxLib 1.5.1 are PLANNED, NOT INSTALLED. Draft PR #56 contains valid stage pin metadata but must have all BiggerReactors uranium worldgen and recipe bridges stripped before future integration; don't overwrite B13 packwiz/index/manifest with staged snapshots.",
     "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts.",
-    "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction and transformation bridge excluded. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active."
-  ]
+    "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction and transformation bridge excluded. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
+    "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test."
+  ],
+  "deferred_pending_runtime": {
+    "feature/b16-betterend-thallasium-iesnium": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/b17-loot-performance-yungs-ars-locate": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/b19-required-mob-gateways-trader": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/b20-wandering-trader-guaranteed-magic-stock": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/caerbannog-gateways-prototype": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/canonical-blood-config-first-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/dracolich-skeletal-model": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/mxp-configurable-growth-20261115": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "feature/thermalily-no-waste-projecte-energy-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "fix/first-log-bundle-curio-quest-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "fix/integrate-starter-bundle-quest-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
+    "fix/quest-registry-gate-and-qa-priorities-2026-11-15": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded."
+  }
 }

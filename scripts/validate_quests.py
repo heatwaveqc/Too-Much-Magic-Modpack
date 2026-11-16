@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "config" / "ftbquests" / "quests"
-EXPECTED = {"Introduction": 4, "Progression": 5, "Magic": 25, "Exploration & Combat": 9, "Endgame": 3}
+EXPECTED = {"Introduction": 4, "Progression": 5, "Magic": 25, "Exploration & Combat": 7, "Endgame": 3}
 ID_RE = re.compile(r"^[0-9A-F]{16}$")
 
 
@@ -114,10 +114,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 179,
-           f"Expected 179 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 177,
+           f"Expected 177 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 179 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 177 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -225,7 +225,7 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 179, f"Expected 179 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 177, f"Expected 177 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
