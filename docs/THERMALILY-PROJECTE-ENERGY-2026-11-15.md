@@ -15,12 +15,12 @@ The pinned port's `FluidGeneratorBlockEntity` superclass already gates source pi
 `BotaniaThermalilyNoCooldownMixin` now targets only the actual `ThermalilyBlockEntity` class. A cancellable injection at the beginning of `getCooldownTime(Z)I` returns **0**. We removed the earlier shared-fluid-generator injection and its associated policy helper/unit tests entirely; they are no longer necessary.
 
 This leaves untouched:
-- The native burn duration (600 ticks), per-tick mana generation (45 mana), and total mana-buffer capacity.
+- The native burn duration (600 ticks) and total mana-buffer capacity; the output rate is deliberately increased to **75 mana/tick** in the 50-Endoflame balance patch.
 - Existing lava source consumption **when the flower successfully starts a new burn**.
 - The superclass' check that prevents consumption while internal mana is full.
 - Hydroangeas, all other flowers, normal mana transfer and all ProjectE EMC/FE converter settings.
 
-The former randomized cooldown and its comparator output are effectively bypassed. This is an intentional **balance increase**, allowing repeat burning when supplied with lava; output can still stall when its mana buffer is full. Under default values a fresh 600-tick burn lasts **30 seconds** of loaded-world time (at 20 ticks/second); the stored mana buffer is smaller than the theoretical 27,000 mana generated across the complete burn, so a fully blocked output can waste potential mana during a burn. It will not *start another* burn while still full.
+The former randomized cooldown and its comparator output are effectively bypassed. This is an intentional **balance increase**, allowing repeat burning when supplied with lava; output can still stall when its mana buffer is full. Under default values a fresh 600-tick burn lasts **30 seconds** of loaded-world time (at 20 ticks/second); the stored mana buffer is smaller than the theoretical 45,000 mana generated across the complete burn, so a fully blocked output can waste potential mana during a burn. It will not *start another* burn while still full.
 
 This is a pinned-version-specific mixin requiring first-party `tmm_transformations` to be built and shipped. It does not change Botania Revived's own mod JAR.
 
@@ -33,29 +33,31 @@ This is a pinned-version-specific mixin requiring first-party `tmm_transformatio
 5. Confirm Hydroangeas behaves identically to its native implementation.
 6. Verify dedicated-server boot on pinned Botania Revived 2.0.2 plus graphical client interaction before promoting.
 
-## Locked generation goal: one Thermalily ≈ ten Endoflames
+## Locked generation goal: one Thermalily ≈ **50 Endoflames**
 
-Exact Botania Revived 2.0.2 source figures, **while continuously burning and successfully exporting mana**:
+The owner clarified that the earlier 10-Endoflame goal was intended as a buff, rather than a nerf. The new goal is **50 Endoflames**. Confirmed in Botania Revived's 1.21.1 source for the pinned 2.0.2 port:
 
-| Flower | Native mana event | Mean active output | Equivalent Endoflames |
+| Flower | Mana generated while burning | Average active output | Endoflame equivalent |
 | --- | --- | ---: | ---: |
-| Endoflame | +3 mana every second game tick | **1.5 mana/tick** | 1 |
-| Thermalily, before balance patch | +45 mana each game tick | **45 mana/tick** | 30 |
-| Thermalily, approved target | +45 mana every **three** game ticks | **15 mana/tick** | **10** |
+| Endoflame (unchanged) | 3 mana every 2 ticks | **1.5 mana/tick** | 1 |
+| Thermalily (native) | 45 mana every tick | **45 mana/tick** | 30 |
+| **Thermalily (new target)** | **75 mana every tick** | **75 mana/tick** | **50** |
 
-**Achievable with a tiny subclass-conditional mixin.** `FluidGeneratorBlockEntity.getGenerationDelay()` normally returns 1; the new `BotaniaThermalilyTenEndoflamesMixin` sets that getter to **3 for Thermalily only**, leaving Endoflame, Hydroangeas, other flowers, and the Thermallily's underlying mana-per-event field untouched. No new block or recipe required.
+This is a **66.7% buff over the native Thermalily**, together with the separately approved removal of its cooldown. The lava cost and underlying burn duration stay the same.
 
-The separate owner-approved `BotaniaThermalilyNoCooldownMixin` continues to set its cooldown to zero. With a continuous lava supply and a Mana Spreader able to drain its local 750-mana buffer, one Thermalily generates 15 average mana/tick throughout an active 600-tick burn: **9,000 mana per 1,000 mB lava source**, a source every 30 seconds at 20 TPS. If the buffer or collector is blocked, *actual delivered mana will be less*: this target is a production ceiling for a constantly burning, properly connected flower, not a guarantee regardless of transport capacity.
+**Implementation:** A small `BotaniaThermalilyFiftyEndoflamesMixin` uses MixinExtras `@ModifyExpressionValue` to replace the `manaPerTick` field's value **only when accessed by the Thermalily instance during `FluidGeneratorBlockEntity.tickFlower()`**. The native 1-tick generation interval is restored, so the output is 75 mana on every active production tick. Other flowers retain their original `manaPerTick`, generation intervals, recipes and consumption logic. No direct modification of Botania Revived's distributed JAR.
 
-The 3-tick pulse is not mathematically uniform each individual tick: production arrives in 45-mana pulses spaced three ticks apart. Its **time-averaged** throughput is exactly 15 mana/tick. We prefer this to an invasive patch of constructor arguments.
+With a continuously burning Thermalily and sufficient mana transfer, the ideal output over each native 600-tick burn is **45,000 mana per 1,000 mB lava source** (75 mana/tick × 600 ticks), equivalent to **50 Endoflames**, each generating 1.5 mana/tick. Lava sources can be consumed consecutively without a cooldown when the internal buffer has room.
+
+**Capacity caveat:** The Thermalily's local mana buffer holds only 750 mana. If its spreader / downstream receiver cannot keep up, generated mana is capped and actual output will be less than 75 mana/tick. The new rate also merits checking spreader throughput before calling the 50:1 ratio the *delivered* production rate.
 
 ### Acceptance tests
 
-1. Verify **ten** fueled Endoflames in a properly drained mana network deliver the same output as **one** fueled Thermalily when both run continuously over a long matching interval, after excluding startup transients.
-2. Verify exactly 9,000 mana can be generated during a complete, uninterrupted 600-tick Thermalily burn when its buffer drains freely.
-3. Test adjacent lava source pickup at the end of consecutive burns with the zero-cooldown patch enabled; ensure no additional lava is destroyed while the buffer is full.
-4. Confirm Hydroangeas output and ordinary Endoflame output remain unmodified; no changes to ProjectE converter efficiency or recipes.
-5. Repeat after a server restart and in a multiplayer client; the test must run with the real packaged `tmm_transformations` compatibility JAR.
+1. On a freely draining setup, compare **one Thermalily** against **50 continuously fueled Endoflames** over matching, sustained intervals; both should generate approximately 75 mana per game tick.
+2. Verify **45,000 mana** from one 600-tick uninterrupted Thermalily burn when all generated mana can be drained.
+3. Verify immediate consecutive lava burns with zero cooldown, and no extra lava consumption while the local mana buffer is full.
+4. Confirm native Endoflame and Hydroangeas outputs are unchanged; ProjectE converter rates and recipes are unchanged.
+5. Repeat after save/reload and on a client with the real packaged `tmm_transformations` compatibility JAR.
 
 ## Added converter
 
