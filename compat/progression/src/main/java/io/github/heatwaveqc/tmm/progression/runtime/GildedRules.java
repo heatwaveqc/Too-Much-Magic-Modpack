@@ -49,6 +49,7 @@ public final class GildedRules {
     private static final TagKey<Item> RITE_FOOD = itemTag("gilded_rite_foods");
     private static final TagKey<Item> FORTUNE_TOOLS = itemTag("gilded_fortune_tools");
     private static final TagKey<Item> GOLD_WEAPONS = itemTag("gilded_gold_weapons");
+    private static final TagKey<Item> WEARABLE_GEAR = itemTag("gilded_repairable_equipment");
     private static final TagKey<net.minecraft.world.level.block.Block> GOLD_ORES =
         TagKey.create(Registries.BLOCK,ResourceLocation.fromNamespaceAndPath("tmm_progression","gilded_gold_ores"));
     private static final ResourceLocation ARMOR_ID =
@@ -231,7 +232,7 @@ public final class GildedRules {
         return rank(player,"gilded_looting");
     }
     public static int extraUnbreaking(ServerPlayer player, ItemStack tool) {
-        if (!joined(player) || rank(player,"gilded_last_gilt") < 1) return 0;
+        if (!joined(player) || !tool.is(WEARABLE_GEAR) || rank(player,"gilded_last_gilt") < 1) return 0;
         boolean worn = player.getItemBySlot(EquipmentSlot.HEAD) == tool
             || player.getItemBySlot(EquipmentSlot.CHEST) == tool
             || player.getItemBySlot(EquipmentSlot.LEGS) == tool
