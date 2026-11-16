@@ -190,7 +190,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `polymorph` | Polymorph | qol | enabled flag | focused | queued | — |
 | `trashslot` | TrashSlot | qol | enabled flag | focused | queued | — |
 | `treechop` | HT's TreeChop | qol | enabled flag | focused | queued | — |
-| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | researching | [profile](mods/summoning-rituals.md) |
+| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | source-complete | [profile](mods/summoning-rituals.md) |
 | `simple-backups` | Simple Backups | server_utility | enabled flag | interface | queued | — |
 | `spark` | spark | server_utility | enabled flag | interface | queued | — |
 | `improvable-skills` | Improvable Skills 3 | skills | enabled flag | full | queued | — |
@@ -305,3 +305,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Goety Cataclysm servant care/recovery](mods/goety-cataclysm-servants.md) maps listed healing inputs/amounts, last-item post-shrink checks, death payloads, revival targets, Prowler cube and skull/head recognizers. Spirit revival and skull reconstruction have different failure debit order; Ancient Remnant skull yields a juvenile Modern Remnant. All gameplay acceptance remains open.
 
 - 2026-11-16 — [Goety ritual gates](mods/goety-ritual-gates.md) now covers all15 registered family predicates and shared conversion semantics, including entity-tag selection, caster ownership assignment, equipment clearing before spawn and ignored spawn-add failure. Divination candles are counted individually and extinguished on completion; enchanting contributions truncate per block. All boundary tests remain unrun.
+
+- 2026-11-16 — [Summoning Rituals](mods/summoning-rituals.md) is source-complete **for its unused framework baseline** after pinned binary lifecycle and current-content audit. No survival altar/ritual path is present in inspected scopes; future authored content requires new coverage. Corrected item debit timing, extraction denial, active-save gap and server command context. No client/world validation.
