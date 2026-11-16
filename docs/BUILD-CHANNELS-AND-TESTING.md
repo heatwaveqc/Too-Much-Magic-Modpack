@@ -6,6 +6,14 @@
 
 **Canonical test names:** [Repository CI, Module CI, Integration Preflight, Integration Assembly, Server Boot Smoke, Prism QA Package, Client Launch Smoke and Gameplay Acceptance](qa/TEST-LEVELS-AND-TERMINOLOGY.md). "Quick CI" means the first three; assembly, server boot and packaging have separate proof and explicit manual authorization. A Prism ZIP existing does **not** prove client launch.
 
+## Progression subsystem branch pipeline (2026-11-16)
+
+**Progression is one code-owning module; Monk, Hunter, Gilded, etc. are configuration-only paths.** The shared Progression engine owns **all** Java/API/mixin/event/network/effect-handler/executable-test changes. A class branch may only change its own declarative path/skill/Tyz JSON, datapack tags/assets, localization, docs and non-executable fixtures. Class-specific runtime code, including KubeJS scripts, is not an acceptable shortcut; an engine change belongs in a separate `feature/progression-*` PR.
+
+Use `dev/progression` as the coherent rolling subsystem branch. Engine PRs and config-only class PRs branch from it and target it; the designated Progression writer reviews their combinations. A missing engine capability may be developed in parallel and a config PR temporarily stacked on its PR. Promote coherent, frozen `dev/progression` commits to `test/full-integration` by a reviewed PR under the existing one-writer, SHA provenance, and quick CI rules. Keep `dev/progression` synchronized with relevant current integration changes, but never blindly restore old paths or overwrite the latest baseline. **Promotion does not itself authorize Assembly, Server Boot Smoke or Prism QA Package.**
+
+This is the required branch/ownership procedure: [Branch coordination and configuration-owned Progression paths](BRANCH-AND-PROGRESSION-WORKFLOW.md). Current historical PR stacks may not comply and must be inventoried/migrated individually rather than automatically rebased, merged or deleted.
+
 ## Channels
 
 - **Integration (UNSTABLE):** all classified, active testable implementation streams in a single Prism instance. The canonical branch is test/full-integration. Updates may fail or break gameplay.
