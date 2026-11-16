@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.progression;
 
 import io.github.heatwaveqc.tmm.progression.command.ProgressionCommands;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
+import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge;
@@ -25,6 +26,7 @@ public final class ProgressionMod {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
+        modBus.addListener(ProgressionMenuNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
