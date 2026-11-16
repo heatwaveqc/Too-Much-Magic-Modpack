@@ -29,6 +29,9 @@ The Ars source review exposed a recurring audit trap: counting quests or catalog
 | 12 | Adopted | For code-granted/hidden advancement chains, record the declared parent order and trigger type separately from guide prose. Treat `minecraft:impossible` as evidence that data alone cannot reveal the unlock predicate; do not convert narrative goals into exact player requirements without source or runtime evidence. |
 | 13 | Adopted | For ritual/recipe frameworks, distinguish true consumed inputs and spawned outputs from initiators, sacrifice entities, fake-entity display proxies, display-only output icons, commands and custom events. A recipe viewer is evidence of declared fields, not proof that every displayed output occurs in-world. |
 | 14 | Adopted | Record operation order and failure costs across all state: identify which inputs, charges, durability, mana, fluids or other resources are debited before checks, and record cooldowns, lockouts or other penalties imposed by rejected, interrupted or failed attempts even when inputs are returned. |
+| 15 | Adopted | Treat custom in-game reference systems as first-class onboarding: identify the actual registered item, UI route, embedded content format, default pages, and unlock conditions. Cross-check advancement reward IDs against item registries, loot resources, and declared dependencies before teaching that reward path. |
+| 16 | Adopted | Trace each declared config gate to its consumer and operation order. A field name/default is not evidence of enforcement; flag unused parameters, warning-only branches, and divergent enforcement by casting implement. |
+| 17 | Adopted | Audit loot injection and trades in registration/event source as well as static loot JSON. Mods can add chance-gated pools to built-in vanilla tables at runtime, so static data alone may omit core acquisition routes. |
 
 ## 1. Pin source snapshots as carefully as pack artifacts
 
@@ -78,6 +81,26 @@ Acquiring a Source Jar is not the same as generating Source. Crafting a glyph is
 
 **Suggested improvement:** record, for every proposed quest milestone, (a) intended player learning, (b) the actual observable criterion, (c) whether FTB Quests can detect it natively, and (d) a manual/checklist fallback if not. Keep item ownership and system operation as separate milestone types. Don't write implementation-specific task IDs until the live FTB task schema/version is checked.
 
+## Improvements from the Scriptor source/JAR audit
+
+### 15. Verify custom guide routes and reward references
+
+Scriptor's usable guide is a custom Dictionary screen loading bundled Unfocused Markdown, while its tome advancement references a Patchouli-book loot table that is absent from the pinned JAR. Searching only for Patchouli books or assuming the advancement reward works would miss the actual help path and teach a dead route.
+
+**Suggested improvement:** when a mod presents a guidebook/manual, identify the registered item and exact UI route; inspect screen buttons, default content and item-triggered page unlocks. Cross-check every advancement reward identifier against the bundled loot-table resources, registered items and declared dependencies. Record unresolved references explicitly and teach only the confirmed route.
+
+### 16. Validate config enforcement in code
+
+The pinned Scriptor configuration declares book/scroll max-cost fields, but the shared casting helper marks its `maxCost` argument unused. The verbal max-cost branch reports a mute warning without returning before spell execution. A settings screen or config default therefore does not prove a working restriction.
+
+**Suggested improvement:** for every progression, balance or safety setting, trace the value from declaration through every consumer to the final side effect. Record per-implementation differences (book, scroll, chat, machine), unused arguments and warning-only checks. Keep config defaults separate from effective behavior.
+
+### 17. Inspect event-based loot augmentation
+
+Scriptor adds independent chance-gated pools to selected vanilla built-in loot tables in source. These routes are not represented completely by the mod's static `data/**/loot_table` resources, and static inspection would miss a large portion of tome acquisition.
+
+**Suggested improvement:** when auditing acquisition, inspect loot modification events, built-in table hooks, villager trades and structure injection as well as static JSON. Record the table/entity name, chance per added pool, whether that probability is conditional or cumulative, and whether it was source-derived or measured in generated worlds.
+
 ## Adopted evidence syntax
 
 The compact evidence syntax below is now normative in the work instructions and profile template; use it to avoid repeated caveats while preserving readability:
@@ -105,3 +128,4 @@ Use tags only where they clarify provenance; the existing evidence ledger remain
 - 2026-11-15 — Adopted a typed ritual display rule after the Summoning Rituals profile showed that fake entity inputs and display-only outputs can look like actual altar items in JEI/EMI. Record actual sacrifice/consumption and spawned outputs separately from UI proxies, initiators, commands and custom events.
 - 2026-11-15 — Adopted failure-order semantics after Roots Classic source review found a spell cast can spend a staff use before checking whether the player has enough Terra. Typed I/O now records debit-before-validation and rejected/interrupted-attempt costs.
 - 2026-11-15 — Broadened the failure-order rule after Iron's Spells source review found Cinderous Soulcaller failures preserve the item but still apply cooldown. Record non-item penalties and lockouts along with consumed inputs.
+- 2026-11-16 — Added improvements 15–17 from Scriptor Magicae: verify custom UI guide routes and advancement reward IDs, trace config enforcement to side effects, and audit event-injected loot/trades alongside static loot data.
