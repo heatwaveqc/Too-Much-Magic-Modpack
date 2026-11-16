@@ -1247,6 +1247,21 @@
       "packwiz_slug": "kubejs"
     },
     {
+      "id": "lava-fishing",
+      "name": "Lava Fishing",
+      "category": "adventure",
+      "desired": true,
+      "version": "lavafishing-1.21.1-1.2.13-all.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lavafishing/files/7781402",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1035887,
+      "candidate_file_id": 7781402,
+      "packwiz_slug": "lava-fishing",
+      "note": "OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: full TeamSunset Lava Fishing 1.21.1 NeoForge, Aquaculture 2 + Kotlin for Forge both already in canonical pack. Source contains Aquaculture lava hooks and loot table injection. CANNOT co-install Girafi aq2lava addon without resolving duplicate Aquaculture hook registrations. Check official SHA pin, modded hook registry, loot, fishing Gilded class gate, two catch events, vanilla XP/Improvable Skills Luck of the Sea, Reliquified Artifacts Angler's Hat and full pack. Desired, NOT installed."
+    },
+    {
       "id": "leaves-be-gone",
       "name": "Leaves Be Gone",
       "category": "qol",
@@ -1482,6 +1497,21 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "neovitae"
+    },
+    {
+      "id": "nether-depths-upgrade",
+      "name": "Nether Depths Upgrade",
+      "category": "adventure",
+      "desired": true,
+      "version": "netherdepthsupgrade-3.3-1.21.1-NeoForge.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/nether-depths-upgrade/files/8940364",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 670011,
+      "candidate_file_id": 8940364,
+      "packwiz_slug": "nether-depths-upgrade",
+      "note": "OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: separate Nether Depths Upgrade fishing rod/lava bobber, fish, lava fauna, vents, lava glass/worldgen. 1.21.1 NeoForge 3.3 (Sep 21 2026) replaces previously noted 3.2. GeckoLib already in canonical pack; exact JAR hash, worldgen and two lava fishing mod conflict must be checked. Own ItemFishedEvent used; Gilded XP must count once per bobber. Desired, NOT installed."
     },
     {
       "id": "observerlib",
@@ -2280,6 +2310,10 @@
     {
       "id": "vampires-delight",
       "reason": "Owner-retired; JAWR remains physiology owner"
+    },
+    {
+      "id": "aquaculture-2-lava-fishing-addon",
+      "reason": "Not selected alongside full Lava Fishing 1.2.13. Source from TeamMetallurgy/Aquaculture2-Lava-Fishing-Addon duplicates six aquaculture hook names registered by Lava Fishing; it adds no native loot. Reconsider only if full Lava Fishing is removed or source registration is reconciled."
     }
   ],
   "items_blacklist": [
@@ -2582,6 +2616,16 @@
       ],
       "status": "owner_approved_pin_pending",
       "note": "Tagged for the next Gilded-enabled UNSTABLE QA; official NeoForge 1.21.1 release verified. No binary, hashes, packwiz file or test build has been produced by this registry update."
+    },
+    {
+      "id": "B17",
+      "name": "Two distinct lava-fishing content providers for Gilded QA",
+      "members": [
+        "lava-fishing",
+        "nether-depths-upgrade"
+      ],
+      "status": "owner_desired_conflict_audit_pin_pending",
+      "note": "Include full Lava Fishing + Nether Depths Upgrade in one first approved Gilded-enabled QA ONLY AFTER official SHA pins and double-rod/loot/Angler's Hat/Improvable Skills compatibility gates pass. The separate Aquaculture 2 Lava Fishing Addon is NOT selected due six duplicate AQ2 hooks. No automatic full server smoke or client launch."
     }
   ]
 }
