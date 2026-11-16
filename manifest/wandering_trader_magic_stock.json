@@ -1,6 +1,6 @@
 {
-  "schema": 1,
-  "status": "source_staged_runtime_validation_required",
+  "schema": 2,
+  "status": "owner_approved_premium_rotation_source_staged_runtime_qa_pending",
   "pack": "Too Much Magic",
   "minecraft": "1.21.1",
   "loader": "NeoForge",
@@ -52,7 +52,7 @@
   ],
   "preserve_existing_trades": true,
   "implementation": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js; direct actual MerchantOffers modification on server EntityEvents.spawned with persistent marker v1",
-  "no_stock_from_other_magic_mods_yet": true,
+  "no_stock_from_other_magic_mods_yet": false,
   "blocked_sales": [
     "boss-only trophies",
     "Chaos Shards",
@@ -63,94 +63,147 @@
     "complete endgame artifacts",
     "pre-attuned constellation/ascension unlocks"
   ],
-  "next_candidates": [
+  "next_candidates": [],
+  "premium_stock_mode": "four_distinct_randomly_chosen_offers_from_owner_approved_ten",
+  "premium_stock_choices": [
     {
+      "id": "occultism_iesnium_ingot",
       "mod": "Occultism",
-      "item": "occultism:datura_seeds",
-      "purpose": "Demon's Dream/Datura seeds; removes grass-drop RNG for first occultist garden",
-      "confidence": "confirmed_item_id",
-      "proposed_price": "4 emeralds for 2 seeds",
-      "approval": "suggested_not_approved"
+      "item": "occultism:iesnium_ingot",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Single finished Iesnium ingot; not ore/raw; allow midgame assist without handing the Dimensional Miner route"
     },
     {
+      "id": "astral_undiscovered_constellation",
       "mod": "Astral Sorcery",
-      "item": "astralsorcery:aquamarine",
-      "purpose": "Small Aquamarine supply for early altar crafting, not Aquamarine Shale or rock-crystal ore",
-      "confidence": "confirmed_localization_item_id",
-      "proposed_price": "8 emeralds for 2",
-      "approval": "suggested_not_approved"
+      "item": "astralsorcery:constellation_paper",
+      "price_emeralds": 48,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Blank paper; Astral inventory tick only reveals a currently discoverable constellation; no preselected hidden constellation"
     },
     {
+      "id": "evilcraft_random_broom",
       "mod": "EvilCraft",
-      "item": "evilcraft:dark_gem",
-      "purpose": "One Dark Gem helps locate the first EvilCraft ritual/guide route without selling late-tier Dark Power items",
-      "confidence": "confirmed_in_pack_profile",
-      "proposed_price": "12 emeralds for 1",
-      "approval": "suggested_not_approved"
+      "item": "evilcraft:broom",
+      "price_emeralds": 112,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Real randomized rod/brush/cap + two random modifiers from EvilCraft's registries, uncharged; preserves blood fuel"
     },
     {
+      "id": "botania_full_mana_tablet",
+      "mod": "Botania Revived",
+      "item": "botania:mana_tablet",
+      "price_emeralds": 128,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Normal ManaTabletItem with MAX_MANA 500000 set by port API; never creative mana"
+    },
+    {
+      "id": "botania_random_curio",
+      "mod": "Botania Revived",
+      "item": "one_of_curated_non_boss_botania_rings",
+      "price_emeralds": 80,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Magnet, mana, aura, far-reach, water, mining rings only; no Gaia items"
+    },
+    {
+      "id": "botania_black_lotus",
       "mod": "Botania Revived",
       "item": "botania:black_lotus",
-      "purpose": "Compact mana deposit for players already operating Botania's mana network; item/version confirm with pinned Jar",
-      "confidence": "historical_project_id_needs_pin_audit",
-      "proposed_price": "20 emeralds for 1",
-      "approval": "suggested_not_approved"
+      "price_emeralds": 32,
+      "uses": 2,
+      "decision": "approved",
+      "notes": "Genuine Botania Revived item; moderate burst mana"
     },
     {
-      "mod": "JAWR Witchery",
-      "item": null,
-      "purpose": "One random Belladonna/Mandrake/Wolfsbane seed; check 0.5.39 IDs and economy",
-      "confidence": "needs_registry_item_ids",
-      "approval": "suggested_not_approved"
+      "id": "rootsclassic_engraved_blade",
+      "mod": "Roots Classic",
+      "item": "rootsclassic:engraved_blade",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved_substitution",
+      "notes": "Engraved Blade is complete late Roots ritual sword, not a precursor. Terra Moss is from another Roots mod and absent in Roots Classic 1.5.10."
+    },
+    {
+      "id": "malum_brilliance_chunk",
+      "mod": "Malum",
+      "item": "malum:chunk_of_brilliance",
+      "price_emeralds": 48,
+      "uses": 1,
+      "decision": "provisional_selection_for_owner_unnamed_hard_resource",
+      "notes": "Midgame brilliant material; avoid Void Salts, Umbral Spirit or Weeping Well research bypass until assessed."
+    },
+    {
+      "id": "theurgy_rare_niter",
+      "mod": "Theurgy",
+      "item": "random_rare_niter_metals_gems_mobs_other_minerals",
+      "price_emeralds": 56,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Picks one item from four rare alchemical niter groups; no precious progression tier"
+    },
+    {
+      "id": "forbidden_arcanus_growing_edelwood",
+      "mod": "Forbidden & Arcanus",
+      "item": "forbidden_arcanus:growing_edelwood",
+      "price_emeralds": 64,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Actual 'Growing Edelwood' plantable sapling-equivalent item, not an arbitrary wood block"
+    }
+  ],
+  "pricing_policy": "Emeralds only: 1–64 in first merchant cost slot; 65–128 as up to 64 additional emeralds in the second slot. Higher value costs more, never free gear.",
+  "progression_policy": "Offer items that accelerate or enable a midgame activity without performing player-gated advancements/research or replacing unique boss progression. One item per rotation; repeated traders do permit multiple purchases over time, controlled by rare spawn and high cost.",
+  "under_review": [
+    {
+      "mod": "Witchery/JAWR",
+      "option": "witchery:drop_of_luck",
+      "why": "Long-cauldron-chain utility reagent; inspect pinned 0.5.0.39 item ID and whether buying would grant advancement",
+      "status": "suggest_not_active"
+    },
+    {
+      "mod": "Witchery/JAWR",
+      "option": "witchery:mutandis_extremis",
+      "why": "Speeds obtaining tricky plant variants; likely less valuable than Drop of Luck",
+      "status": "suggest_not_active"
     },
     {
       "mod": "Hexerei",
-      "item": null,
-      "purpose": "Biome-specific witch herb or Willow/Mahogany sapling to avoid hunt-by-biome without selling ritual completion",
-      "confidence": "needs_registry_item_ids",
-      "approval": "suggested_not_approved"
+      "option": "hexerei:ender_satchel",
+      "why": "Useful magic portable storage bypassing lengthy wet-dip/broom materials but not a spell/ritual gate; confirm actual 0.5.0.3 item ID and Curios",
+      "status": "suggest_not_active"
     },
     {
-      "mod": "Roots Classic",
-      "item": null,
-      "purpose": "Wildroot/Terra Moss starter botanical supplies if early-game seeds are frustratingly rare",
-      "confidence": "needs_registry_item_ids_and_balance",
-      "approval": "suggested_not_approved"
-    },
-    {
-      "mod": "Theurgy",
-      "item": null,
-      "purpose": "A small early sulfur/salt/alchemical reagent offer, not advanced transmutation blocks",
-      "confidence": "needs_registry_item_ids",
-      "approval": "suggested_not_approved"
+      "mod": "Hexerei",
+      "option": "hexerei:entangled_coffer",
+      "why": "Useful late-midgame logistics magic if wanted; may overlap Occultism and warrant high price",
+      "status": "suggest_not_active"
     },
     {
       "mod": "Malum",
-      "item": null,
-      "purpose": "Low-tier soulcraft material, not powerful finished spirit artifacts",
-      "confidence": "needs_item_and_progression_audit",
-      "approval": "suggested_not_approved"
-    },
-    {
-      "mod": "Goety",
-      "item": null,
-      "purpose": "A small early ritual reagent and maybe creature drop, not boss/summoning shortcuts",
-      "confidence": "needs_item_and_progression_audit",
-      "approval": "suggested_not_approved"
-    },
-    {
-      "mod": "Neo Vitae",
-      "item": null,
-      "purpose": "Common starter alchemical reagents only; no orbs, boss keys or major altar tiers",
-      "confidence": "needs_item_and_progression_audit",
-      "approval": "suggested_not_approved"
-    },
-    {
-      "mod": "Primal Magick",
-      "item": null,
-      "purpose": "Limited low-tier reagents from remote biomes, but don't sell research unlocks",
-      "confidence": "needs_item_and_progression_audit",
-      "approval": "suggested_not_approved"
+      "option": "malum:chunk_of_brilliance",
+      "why": "Current provisional midgame material; ask if user was thinking of a more specific rare Malum resource",
+      "status": "already_provisional_in_rotation"
     }
-  ]
+  ],
+  "premium_selection_count": 4,
+  "versioned_marker": "tmmRotatingMagicStockVersion=1",
+  "exclusions": {
+    "disallowed": [
+      "creative mana tablet",
+      "boss drops",
+      "gaia rings",
+      "Void Salts",
+      "Umbral Spirit",
+      "Chaos Shard",
+      "raw/ore Iesnium",
+      "Thallasium",
+      "ProjectE philosopher's stone"
+    ]
+  }
 }

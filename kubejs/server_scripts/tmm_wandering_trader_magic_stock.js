@@ -120,35 +120,193 @@ function tmmInkOffer(trader) {
   return tmmTrade(new TMM_Stack(TMM_InkItems.INK_LEGENDARY.get()), 64, TMM_Items.DIAMOND, 8, 1);
 }
 
+// B20.1 — Player-approved premium rotation. Vanilla and Iron's stock remain intact.
+// Four distinct items per trader are drawn from the approved ten-item catalog.
+// 1–128 emeralds via MerchantOffer's two price slots, capped at one purchase
+// except inexpensive consumables. No ore, boss trophies, or completed progression gates.
+const TMM_PremiumVersion = 1;
+const TMM_Builtins = Java.loadClass('net.minecraft.core.registries.BuiltInRegistries');
+const TMM_RL = Java.loadClass('net.minecraft.resources.ResourceLocation');
+
+function tmmKnownItem(id) {
+  const item = TMM_Builtins.ITEM.get(TMM_RL.parse(id));
+  if (item === null || String(TMM_Builtins.ITEM.getKey(item)) !== id) {
+    throw new Error('[TMM Trader] Missing registered item ' + id);
+  }
+  return item;
+}
+
+function tmmNormalStack(id) { return new TMM_Stack(tmmKnownItem(id)); }
+
+function tmmExpensiveTrade(stack, emeralds, maxUses) {
+  if (emeralds < 1 || emeralds > 128) throw new Error('Premium emerald price out of bounds: ' + emeralds);
+  return emeralds <= 64
+    ? tmmTrade(stack, emeralds, null, 0, maxUses)
+    : tmmTrade(stack, 64, TMM_Items.EMERALD, emeralds - 64, maxUses);
+}
+
+function tmmRandomEvilcraftBroom(trader) {
+  // Reuses EvilCraft's own broom-part/modifier registries, as its loot modifier does.
+  // The broom is uncharged: the buyer supplies their own blood to power sustained flight.
+  const BroomParts = Java.loadClass('org.cyclops.evilcraft.core.broom.BroomParts');
+  const BroomMods = Java.loadClass('org.cyclops.evilcraft.api.broom.BroomModifiers');
+  const JList = Java.loadClass('java.util.ArrayList');
+  const JMap = Java.loadClass('java.util.HashMap');
+  const parts = BroomParts.REGISTRY.getParts().toArray();
+  const random = trader.getRandom();
+  function randomPart(prefix) {
+    const matches = [];
+    for (let i = 0; i < parts.length; i++) {
+      if (String(parts[i].getId().getPath()).startsWith(prefix)) matches.push(parts[i]);
+    }
+    if (matches.length === 0) throw new Error('No EvilCraft broom parts for ' + prefix);
+    return matches[random.nextInt(matches.length)];
+  }
+  const stack = tmmNormalStack('evilcraft:broom');
+  const selected = new JList();
+  selected.add(randomPart('rod'));
+  selected.add(randomPart('brush'));
+  selected.add(randomPart('cap'));
+  BroomParts.REGISTRY.setBroomParts(stack, selected);
+
+  const options = BroomMods.REGISTRY.getModifiers().toArray();
+  if (options.length < 2) throw new Error('EvilCraft has fewer than two broom modifiers');
+  const a = random.nextInt(options.length);
+  let b = random.nextInt(options.length - 1);
+  if (b >= a) b++;
+  const picked = new JMap();
+  picked.put(options[a], options[a].getTierValue());
+  picked.put(options[b], options[b].getTierValue());
+  BroomMods.REGISTRY.setModifiers(stack, picked);
+  return stack;
+}
+
+function tmmFullManaTablet() {
+  // IMPORTANT: normal charged item, never creative_mana_tablet or creative flag.
+  const BotaniaItems = Java.loadClass('velrondevs.botania.registry.BotaniaItems');
+  const ManaTablet = Java.loadClass('velrondevs.botania.common.item.ManaTabletItem');
+  const tablet = new TMM_Stack(BotaniaItems.manaTablet);
+  ManaTablet.setMana(tablet, ManaTablet.MAX_MANA); // normal 500,000 mana
+  return tablet;
+}
+
+function tmmRandomBotaniaCurio(trader) {
+  const BotaniaItems = Java.loadClass('velrondevs.botania.registry.BotaniaItems');
+  // No Gaia rings, creative items, or high-tier boss reward accessories.
+  const eligible = [
+    BotaniaItems.magnetRing, BotaniaItems.manaRing, BotaniaItems.auraRing,
+    BotaniaItems.reachRing, BotaniaItems.waterRing, BotaniaItems.miningRing
+  ];
+  const choice = eligible[trader.getRandom().nextInt(eligible.length)];
+  if (choice === null) throw new Error('No Botania non-boss curio in selected pool');
+  return new TMM_Stack(choice);
+}
+
+function tmmRareTheurgyNiter(trader) {
+  const ids = [
+    'theurgy:alchemical_niter_metals_rare',
+    'theurgy:alchemical_niter_gems_rare',
+    'theurgy:alchemical_niter_mobs_rare',
+    'theurgy:alchemical_niter_other_minerals_rare'
+  ];
+  return tmmNormalStack(ids[trader.getRandom().nextInt(ids.length)]);
+}
+
+const TMM_PremiumCatalog = [
+  {id: 'occultism_iesnium_ingot', price: 96, uses: 1,
+   make: trader => tmmNormalStack('occultism:iesnium_ingot')},
+  {id: 'astral_undiscovered_constellation', price: 48, uses: 1,
+   // EMPTY paper: Astral 1.21.1 will assign only constellations the buyer
+   // is currently eligible to discover according to its own research API.
+   make: trader => tmmNormalStack('astralsorcery:constellation_paper')},
+  {id: 'evilcraft_random_broom', price: 112, uses: 1,
+   make: trader => tmmRandomEvilcraftBroom(trader)},
+  {id: 'botania_full_mana_tablet', price: 128, uses: 1,
+   make: trader => tmmFullManaTablet()},
+  {id: 'botania_random_curio', price: 80, uses: 1,
+   make: trader => tmmRandomBotaniaCurio(trader)},
+  {id: 'botania_black_lotus', price: 32, uses: 2,
+   make: trader => tmmNormalStack('botania:black_lotus')},
+  {id: 'rootsclassic_engraved_blade', price: 96, uses: 1,
+   // Terra Moss is NOT an item in installed Roots Classic 1.5.10.
+   make: trader => tmmNormalStack('rootsclassic:engraved_blade')},
+  {id: 'malum_brilliance_chunk', price: 48, uses: 1,
+   // Does not substitute Weeping Well discovery or rare Umbral Spirit.
+   make: trader => tmmNormalStack('malum:chunk_of_brilliance')},
+  {id: 'theurgy_rare_niter', price: 56, uses: 1,
+   make: trader => tmmRareTheurgyNiter(trader)},
+  {id: 'forbidden_arcanus_growing_edelwood', price: 64, uses: 1,
+   // The mod's plantable Edelwood equivalent is "Growing Edelwood".
+   make: trader => tmmNormalStack('forbidden_arcanus:growing_edelwood')}
+];
+
+function tmmPremiumRotation(trader, count) {
+  const pool = TMM_PremiumCatalog.slice();
+  const chosen = [];
+  if (count > pool.length) throw new Error('Not enough trader premium types');
+  for (let i = 0; i < count; i++) {
+    const index = trader.getRandom().nextInt(pool.length);
+    const picked = pool.splice(index, 1)[0];
+    // Build every stack before touching the merchant's actual offers;
+    // missing registry items or mod APIs abort this optional rotation,
+    // but they do not invalidate the five baseline guaranteed offers.
+    const stack = picked.make(trader);
+    chosen.push({id: picked.id, offer: tmmExpensiveTrade(stack, picked.price, picked.uses)});
+  }
+  return chosen;
+}
+
 EntityEvents.spawned('minecraft:wandering_trader', event => {
   const trader = event.entity;
   if (trader.level().isClientSide()) return;
   const data = trader.getPersistentData();
-  if (data.getInt('tmmGuaranteedMagicStockVersion') >= TMM_StockVersion) return;
+  const needsCore = data.getInt('tmmGuaranteedMagicStockVersion') < TMM_StockVersion;
+  const needsPremium = data.getInt('tmmRotatingMagicStockVersion') < TMM_PremiumVersion;
+  if (!needsCore && !needsPremium) return;
 
-  try {
-    // Build everything BEFORE mutating the offers. Any missing tier or invalid
-    // API must fail visibly rather than claim to fulfill the stock guarantees.
-    const required = [
-      tmmAffixGear(trader),
-      tmmGlyphForTier(trader, 1),
-      tmmGlyphForTier(trader, 2),
-      tmmGlyphForTier(trader, 3),
-      tmmInkOffer(trader)
-    ];
-    const offers = trader.getOffers(); // creates normal vanilla/other mod offers
-    const before = offers.size();
+  // Preserve preexisting original B20 premium stock markers on old traders;
+  // upgrading from stock-v1 to rotation-v1 must never duplicate those five.
+  if (needsCore) {
     try {
-      for (let i = 0; i < required.length; i++) offers.add(required[i]);
-    } catch (commitError) {
-      while (offers.size() > before) offers.remove(offers.size() - 1);
-      throw commitError;
+      const required = [
+        tmmAffixGear(trader),
+        tmmGlyphForTier(trader, 1),
+        tmmGlyphForTier(trader, 2),
+        tmmGlyphForTier(trader, 3),
+        tmmInkOffer(trader)
+      ];
+      const offers = trader.getOffers();
+      const before = offers.size();
+      try {
+        for (let i = 0; i < required.length; i++) offers.add(required[i]);
+      } catch (e) {
+        while (offers.size() > before) offers.remove(offers.size() - 1);
+        throw e;
+      }
+      data.putInt('tmmGuaranteedMagicStockVersion', TMM_StockVersion);
+      console.info('[TMM Trader] Five base magic offers added: ' + trader.getUUID());
+    } catch (e) {
+      console.error('[TMM Trader] Five required magic offers FAILED: ' + e);
     }
-    data.putInt('tmmGuaranteedMagicStockVersion', TMM_StockVersion);
-    console.info('[TMM Trader] Added guaranteed affixed gear, glyphs I/II/III, and >= uncommon ink to trader ' + trader.getUUID());
-  } catch (err) {
-    console.error('[TMM Trader] Guaranteed stock FAILED for ' + trader.getUUID() + ': ' + err);
-    // Do not set the version marker on failure, so the problem is detectable
-    // and a future respawn/reload can retry after fixes.
+  }
+  if (needsPremium) {
+    try {
+      // Four different premium offers, each exactly one of ten reviewed item types.
+      // Avoids a trader GUI with 10+ extra high-value offers at every spawn.
+      const chosen = tmmPremiumRotation(trader, 4);
+      const offers = trader.getOffers();
+      const before = offers.size();
+      try {
+        for (let i = 0; i < chosen.length; i++) offers.add(chosen[i].offer);
+      } catch (e) {
+        while (offers.size() > before) offers.remove(offers.size() - 1);
+        throw e;
+      }
+      data.putInt('tmmRotatingMagicStockVersion', TMM_PremiumVersion);
+      console.info('[TMM Trader] Four premium rotating offers: ' +
+        chosen.map(x => x.id).join(', ') + ' on trader ' + trader.getUUID());
+    } catch (e) {
+      console.error('[TMM Trader] Premium stock FAILED, no rotation marker set: ' + e);
+    }
   }
 });
