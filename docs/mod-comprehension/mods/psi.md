@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | psi / \`psi\` |
-| Category / parent or addons | Magic; spell-programming system. Installed addon: [Psi: Tweaks and Additions](psi-tweaks.md) (separate profile required). |
+| Category / parent or addons | Magic; spell-programming system. Installed addon: Psi: Tweaks and Additions (separate profile required) (separate profile required). |
 | MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM \`test/full-integration\` |
 | Pinned version / artifact / hash | \`mods/psi.pw.toml\`; \`Psi-neoforge-1.21.1-110.jar\`; Modrinth project \`pOeA0exL\`, version \`j9TFdTKC\`; SHA512 \`2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a\` [pin] |
 | Source snapshot | Official \`VazkiiMods/Psi\` tag \`release-1.21.1-110\`; its \`gradle.properties\` declares MC 1.21.1, mod ID \`psi\`, version 110. Tag commit SHA and artifact equivalence were not established; source is version-aligned, not proof of JAR provenance. |
