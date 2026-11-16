@@ -58,8 +58,11 @@ def verify() -> list[Path]:
     """Fail fast on malformed Tyz JSON/config before copying anything."""
     skill_dir = OVERLAY / "config/tyzs_skills/custom/skills"
     actual = {p.stem for p in skill_dir.glob("*.json")}
-    if actual != (CORE_IDS | MONK_IDS):
+    if actual != (CORE_IDS | MONK_IDS | {"keepsake"}):
         raise ValueError(f"Expected {sorted(CORE_IDS)}, found {sorted(actual)}")
+    keepsake = json.loads((skill_dir / "keepsake.json").read_text(encoding="utf-8"))
+    if keepsake.get("id") != "keepsake" or keepsake.get("active") is not False:
+        raise ValueError("Tyz Safekept must be disabled to avoid Corail Tombstone death-handler conflicts")
     targets = set()
     for name in sorted(CORE_IDS):
         item = json.loads((skill_dir / (name + ".json")).read_text(encoding="utf-8"))
