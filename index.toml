@@ -1,6 +1,14 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ftbchunks-client.snbt"
+hash = "7ee2b7ea2aafebfe3720e3865cbdc59532726856e4f93ecee8d00710dedfd205"
+
+[[files]]
+file = "config/ftblibrary-client.snbt"
+hash = "06432c29ac8a505481f5fb7dcb9738925e7cb674435e7487e245d03f57998eee"
+
+[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
