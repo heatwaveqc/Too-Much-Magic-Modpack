@@ -168,3 +168,8 @@ To run the module from this directory with Gradle: `gradle --no-daemon build` th
 - [ ] Later migration and GUI plan; only then integrate JAR and dependent paths into pack manifests
 
 This is **an implementation skeleton and functional pilot**, not release-ready Monk/Hunter or a verified build.
+
+
+## Client-only default-unbound controls (2026-11-16)
+
+This dual-sided progression JAR also carries the client-only `ClientKeyDefaults` policy and separately registered `tmm_controls_defaults.mixins.json`. It reads the original `options.txt` key names at `Options.load()` HEAD, before Default Options can rewrite them; then inspects the **runtime** client key registry rather than maintaining a per-mod key list. It leaves all 34 vanilla 1.21.1 names unchanged. New standard modded keys start unbound and have an unbound Reset default, while any pre-existing saved key remains assigned. A failed options snapshot disables changes, rather than risking user settings. Custom out-of-registry hotkeys need separate adapters. Unit checks live in `ControlsDefaultsPolicyTest`, graphical client and KeySets persistence still require an authorized live test. The separate mixin config deliberately does not activate unrelated experimental progression mixins.
