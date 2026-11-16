@@ -243,19 +243,6 @@
       "packwiz_slug": "artifacts"
     },
     {
-      "id": "attributefix",
-      "name": "AttributeFix",
-      "category": "qol",
-      "desired": true,
-      "version": "attributefix-neoforge-1.21.1-21.1.3",
-      "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/attributefix/files/7115922",
-      "enabled_in_pack": true,
-      "dependencies_verified": true,
-      "note": "Owner-approved attribute hard-cap expansion, NeoForge 1.21.1 version 21.1.3, CurseForge 280510 file 7115922, pinned SHA1 7aae849f6d2a6cb1368227407ea5deb552e100ba. Requires existing Bookshelf and Prickle. Exact source defaults raise max_health, armor, armor_toughness, attack_damage, attack_knockback to 1,000,000; all other RangedAttributes have config files but are NOT raised by default, including Luck and modded mana/spell attributes. Test source/runtime before treating new attribute caps as attainable full-build ceilings.",
-      "packwiz_slug": "attributefix"
-    },
-    {
       "id": "astral-sorcery",
       "name": "Astral Sorcery",
       "category": "magic",
@@ -267,6 +254,19 @@
       "dependencies_verified": false,
       "packwiz_slug": "astral-sorcery",
       "note": "Explicit experimental testing candidate and exact pinned dependency"
+    },
+    {
+      "id": "attributefix",
+      "name": "AttributeFix",
+      "category": "qol",
+      "desired": true,
+      "version": "attributefix-neoforge-1.21.1-21.1.3",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/attributefix/files/7115922",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved attribute hard-cap expansion, NeoForge 1.21.1 version 21.1.3, CurseForge 280510 file 7115922, pinned SHA1 7aae849f6d2a6cb1368227407ea5deb552e100ba. Requires existing Bookshelf and Prickle. Exact source defaults raise max_health, armor, armor_toughness, attack_damage, attack_knockback to 1,000,000; all other RangedAttributes have config files but are NOT raised by default, including Luck and modded mana/spell attributes. Test source/runtime before treating new attribute caps as attainable full-build ceilings.",
+      "packwiz_slug": "attributefix"
     },
     {
       "id": "balm",
@@ -1405,6 +1405,21 @@
       "packwiz_slug": "mouse-tweaks"
     },
     {
+      "id": "my-nethers-delight",
+      "name": "My Nether's Delight",
+      "category": "food",
+      "desired": true,
+      "version": "MyNethersDelight-1.21.1-1.10.4.1.jar",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight/files/8854319",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "candidate_file_id": 8854319,
+      "curseforge_project_id": 1003673,
+      "packwiz_slug": "my-nethers-delight",
+      "note": "OWNER APPROVED FOR NEXT GILDED-ENABLED UNSTABLE QA (2026-11-16): 1.21.1 NeoForge release 1.10.4.1, official CurseForge file 8854319. Requires already-selected Farmer's Delight. NOT YET HASH-PINNED OR INSTALLED: before next authorized integration build, resolve official provider hashes, mod ID, dependency version, packwiz .pw.toml/index and server/client diet + Hoglin loot compatibility. Desired does not mean enabled. Do not run an automatic full smoke test from this metadata entry."
+    },
+    {
       "id": "natures-compass",
       "name": "Nature's Compass",
       "category": "qol",
@@ -2504,6 +2519,15 @@
         "cobblegen-galore"
       ],
       "status": "server_smoked_inventory_complete_client_pending"
+    },
+    {
+      "id": "B16",
+      "name": "My Nether's Delight for Gilded Nether-food progression",
+      "members": [
+        "my-nethers-delight"
+      ],
+      "status": "owner_approved_pin_pending",
+      "note": "Tagged for the next Gilded-enabled UNSTABLE QA; official NeoForge 1.21.1 release verified. No binary, hashes, packwiz file or test build has been produced by this registry update."
     }
   ]
 }
