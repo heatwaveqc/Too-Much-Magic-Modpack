@@ -15,7 +15,7 @@ class GildedDefinitionTest {
         assertEquals((0.6+0.4/7.0)/(0.6+0.4/4.0),
             GildedWearMath.keepProbability(3,3,true),1.0e-8);
     }
-    @Test void jsonTargetsOnlyGoldWeaponsAndUsesThreeAdditiveRanks() throws Exception {
+    @Test void jsonTargetsGoldWeaponsAndGrantsThreeLootingImmediately() throws Exception {
         var loader = getClass().getClassLoader();
         var json = loader.getResourceAsStream(
             "data/tmm_progression/tmm_progression/paths/gilded.json");
@@ -28,12 +28,16 @@ class GildedDefinitionTest {
             for (var el : root.getAsJsonArray("skills")) {
                 var skill=el.getAsJsonObject();
                 if (!skill.get("id").getAsString().equals("tmm_progression:gilded_looting")) continue;
-                assertEquals(3,skill.get("max_rank").getAsInt());
-                assertEquals(3,skill.getAsJsonArray("auto_ranks").size());
+                assertEquals(1,skill.get("max_rank").getAsInt());
+                assertEquals(1,skill.getAsJsonArray("auto_ranks").size());
+                assertEquals(1,skill.getAsJsonArray("auto_ranks").get(0).getAsInt());
                 var effect=skill.getAsJsonArray("effects").get(0).getAsJsonObject();
                 assertEquals("tmm_progression:virtual_looting",effect.get("type").getAsString());
                 assertEquals("#tmm_progression:gilded_gold_weapons",effect.get("target").getAsString());
-                assertEquals(1,effect.get("per_rank").getAsInt());
+                assertEquals(3,effect.get("per_rank").getAsInt());
+                assertEquals("tmm_gilded_looting_mastery",
+                    effect.getAsJsonObject("params").get("tyz_skill_id").getAsString());
+                assertEquals("10",effect.getAsJsonObject("params").get("maximum_virtual_bonus").getAsString());
                 lootingFound=true;
             }
             assertTrue(lootingFound,"Additive gilded gold-weapon Looting skill is required");
@@ -63,4 +67,23 @@ class GildedDefinitionTest {
         }
     }
 
+    @Test void moltenSovereigntyUnlocksOnlyAtRankEighteen() throws Exception {
+        try(var stream = getClass().getClassLoader().getResourceAsStream(
+                "data/tmm_progression/tmm_progression/paths/gilded.json")) {
+            assertNotNull(stream);
+            var root = JsonParser.parseReader(new java.io.InputStreamReader(
+                stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            boolean found = false;
+            for (var entry : root.getAsJsonArray("skills")) {
+                var s=entry.getAsJsonObject();
+                if (!"tmm_progression:gilded_molten_sovereignty".equals(s.get("id").getAsString())) continue;
+                assertEquals(18,s.get("required_rank").getAsInt());
+                assertEquals(18,s.getAsJsonArray("auto_ranks").get(0).getAsInt());
+                assertEquals("tmm_progression:lava_immunity",s.getAsJsonArray("effects")
+                    .get(0).getAsJsonObject().get("type").getAsString());
+                found = true;
+            }
+            assertTrue(found,"High-level lava immunity is required");
+        }
+    }
 }

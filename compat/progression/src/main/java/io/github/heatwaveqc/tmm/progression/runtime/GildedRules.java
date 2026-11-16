@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.core.GildedFortuneMath;
+import io.github.heatwaveqc.tmm.progression.core.GildedLootingMath;
+import net.minecraft.world.damagesource.DamageTypes;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -119,6 +121,22 @@ public final class GildedRules {
         EffectHandlers.register("tmm_progression:virtual_looting", new EffectHandlers.Handler() {});
         // Applied by GildedDurabilityMixin at the owner-scoped durability wear call.
         EffectHandlers.register("tmm_progression:virtual_unbreaking", new EffectHandlers.Handler() {});
+        // Native Gilded rank 18: safe to remain in lava; unrelated ambient fire still hurts.
+        EffectHandlers.register("tmm_progression:lava_immunity", new EffectHandlers.Handler() {
+            @Override public void incoming(ServerPlayer player, LivingIncomingDamageEvent event,
+                                           Definition.Effect effect, int rank) {
+                if (rank < 1 || event.getEntity() != player) return;
+                if (event.getSource().is(DamageTypes.LAVA)
+                    || (player.isInLava() && (event.getSource().is(DamageTypes.ON_FIRE)
+                        || event.getSource().is(DamageTypes.IN_FIRE)))) {
+                    event.setCanceled(true);
+                }
+            }
+            @Override public void tick(ServerPlayer player, Definition.Effect effect, int rank) {
+                if (rank > 0 && player.isInLava() && player.getRemainingFireTicks() > 0)
+                    player.setRemainingFireTicks(0);
+            }
+        });
     }
 
     private static int goldWeaponBonus(ItemStack stack) {
@@ -235,7 +253,9 @@ public final class GildedRules {
             || context.getParamOrNull(LootContextParams.DAMAGE_SOURCE) == null
             || context.getParamOrNull(LootContextParams.DAMAGE_SOURCE).getDirectEntity() != player)
             return 0;
-        return rank(player,"gilded_looting");
+        return GildedLootingMath.virtualBonus(
+            rank(player,"gilded_looting") > 0,
+            TyzGildedBridge.rawLootingRank(player));
     }
     public static int extraUnbreaking(ServerPlayer player, ItemStack tool) {
         if (!joined(player) || !tool.is(WEARABLE_GEAR) || rank(player,"gilded_last_gilt") < 1) return 0;

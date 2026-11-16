@@ -1,0 +1,40 @@
+{
+  "active": true,
+  "id": "tmm_gilded_looting_mastery",
+  "maximumLevel": 7,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_gilded",
+  "icon": "minecraft:textures/item/golden_sword.png",
+  "displayName": "Golden Spoils",
+  "description": "Gilded begins with +3 virtual Looting for direct melee kills using golden swords and axes. Each independent Tyz purchase adds +1 up to +10, stacking with real Looting.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unit": " virtual Looting"
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}

@@ -228,26 +228,53 @@
     },
     {
       "id": "tmm_progression:gilded_looting",
-      "max_rank": 3,
+      "max_rank": 1,
       "required_rank": 1,
       "base_cost": 0,
       "step_cost": 0,
       "auto_ranks": [
-        3,
-        7,
-        11
+        1
       ],
       "effects": [
         {
           "type": "tmm_progression:virtual_looting",
           "target": "#tmm_progression:gilded_gold_weapons",
-          "per_rank": 1,
+          "per_rank": 3,
           "params": {
             "combine": "additive",
             "delivery": "direct_melee",
             "gold_only": "true",
             "persist_enchantment": "false",
-            "affects_rare_loot": "true"
+            "affects_rare_loot": "true",
+            "base_virtual_bonus": "3",
+            "maximum_virtual_bonus": "10",
+            "tyz_skill_id": "tmm_gilded_looting_mastery",
+            "tyz_purchased_levels": "7",
+            "gate": "joined_gilded",
+            "stack_with_stored_enchantment": "additive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_molten_sovereignty",
+      "max_rank": 1,
+      "required_rank": 18,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        18
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:lava_immunity",
+          "target": "minecraft:lava",
+          "params": {
+            "lava_contact_damage": "immune",
+            "fire_tick_while_in_lava": "immune",
+            "other_fire": "normal",
+            "fire_damage_after_leaving_lava": "normal",
+            "applies_to": "player_only"
           }
         }
       ]
