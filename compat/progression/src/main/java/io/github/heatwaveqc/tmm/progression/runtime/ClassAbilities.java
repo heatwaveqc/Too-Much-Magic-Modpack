@@ -240,50 +240,42 @@ public final class ClassAbilities {
     }
 
     /**
-     * Shared airborne movement loop. Regular Monks retain the original controlled descent.
-     * Newbies get a stronger virtual-elytra-like powered glide, without any chest-slot item
-     * or Creative Mode privileges. Newbie thrust starts while falling or already Elytra flying.
-     * This is NOT the vanilla Elytra pose; client glide presentation is a separate concern.
+     * The vanilla Elytra pipeline supplies all glide/turn/pitch physics.
+     * Our ONLY movement addition is a light persistent firework-like
+     * impulse during real fall-flying, never simulated gliding or hovering.
+     *
+     * Keep it below the strength needed for a steep climb: looking far
+     * upward reduces both components to zero, and normal Elytra stalls.
      */
     private static void glide(ServerPlayer p) {
-        if (p.onGround() || p.isPassenger() || p.isInWater() || p.isInLava()) return;
-        boolean newbie = NewbieMode.isNewbie(p);
-        if (!newbie && (!unlocked(p,"momentum_glide")
-                || !ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on")
-                || p.isFallFlying())) return;
-        Vec3 speed = p.getDeltaMovement();
-        if (speed.y >= 0 && !p.isFallFlying()) return; // first take off or jump normally
+        if (!p.isFallFlying() || !VirtualElytra.eligible(p)
+                || p.isPassenger() || p.isInWater() || p.isInLava()) return;
 
-        if (newbie) {
-            // Sustained boost and look-direction lift, not hovering or instant teleportation.
-            // Deliberately hard capped so a beginner can maneuver without extreme velocity.
-            Vec3 look = p.getLookAngle();
-            Vec3 horizontalLook = new Vec3(look.x,0,look.z);
-            if (horizontalLook.lengthSqr() > 0.0001)
-                horizontalLook = horizontalLook.normalize().scale(0.045);
-            Vec3 horizontal = new Vec3(speed.x,0,speed.z).add(horizontalLook);
-            final double maximum = 0.75;
-            if (horizontal.lengthSqr() > maximum*maximum)
-                horizontal = horizontal.normalize().scale(maximum);
-            double lift = 0.035 + Math.max(0.0,look.y)*0.095;
-            double vertical = Math.max(-0.13,Math.min(0.24,speed.y+lift));
-            p.setDeltaMovement(horizontal.x,vertical,horizontal.z);
-            p.fallDistance = 0;
-            p.hurtMarked = true;
-            return;
-        }
+        Vec3 velocity = p.getDeltaMovement();
+        Vec3 look = p.getLookAngle();
+        double horizontalLook = Math.hypot(look.x,look.z);
+        double horizontalSpeed = Math.hypot(velocity.x,velocity.z);
+        // A near-vertical pitch receives NO boost; the player cannot rocket skyward.
+        double levelFactor = Math.max(0.0, 1.0 - Math.pow(Math.abs(look.y) / 0.65, 2));
+        if (horizontalLook < 0.2 || levelFactor <= 0.0) return;
 
-        // Original Monk momentum-glide progression, including Tyz steering ranks.
-        if (speed.y >= 0) return; // regular Monk thrust never climbs
-        Vec3 heading = p.getLookAngle().multiply(1,0,1);
-        double control = TyzMonkBridge.glideSpeedBonus(p);
-        if (heading.lengthSqr() > 0.001) heading = heading.normalize().scale(0.025+control*0.1);
-        Vec3 horizontal = new Vec3(speed.x,0,speed.z).add(heading);
-        double maximum = 0.6 + control;
-        if (horizontal.lengthSqr() > maximum*maximum)
-            horizontal = horizontal.normalize().scale(maximum);
-        p.setDeltaMovement(horizontal.x,Math.max(-0.16+control*0.5,speed.y),horizontal.z);
-        p.fallDistance = 0;
+        // Monk's existing Tyz control skill improves the small thrust, not eligibility.
+        double monkControl = NewbieMode.isNewbie(p) ? 0.0 : TyzMonkBridge.glideSpeedBonus(p);
+        double forwardBoost = (0.016 + monkControl * 0.04) * levelFactor;
+        Vec3 heading = new Vec3(look.x / horizontalLook, 0, look.z / horizontalLook);
+        Vec3 horizontal = new Vec3(velocity.x,0,velocity.z);
+        // We never snap/reduce natural Elytra or firework speed; only stop adding thrust.
+        if (horizontalSpeed < 1.05)
+            horizontal = horizontal.add(heading.scale(Math.min(forwardBoost,1.05-horizontalSpeed)));
+
+        // At level pitch with existing airspeed, the ~0.026/tick lift offsets
+        // vanilla Elytra's shallow descent and supports a slow altitude gain.
+        // Starting from a standstill cannot generate vertical thrust.
+        double airspeedFactor = Math.min(1.0,Math.max(0.0,(horizontalSpeed-0.2)/0.35));
+        double lift = 0.026 * levelFactor * airspeedFactor;
+        double vertical = velocity.y;
+        if (vertical < 0.065) vertical = Math.min(0.065,vertical+lift);
+        p.setDeltaMovement(horizontal.x,vertical,horizontal.z);
         p.hurtMarked = true;
     }
 
