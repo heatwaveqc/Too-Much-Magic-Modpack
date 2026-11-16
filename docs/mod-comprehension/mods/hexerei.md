@@ -215,7 +215,7 @@ No quest entries were edited.
 | Source history | [commit a91395c0a933eb3bf6fbeecd89f30a0ea98248b2](https://github.com/JoeFoxe/Hexerei/commit/a91395c0a933eb3bf6fbeecd89f30a0ea98248b2), gradle.properties | Declares 0.5.0.1; code/data only near-release evidence |
 | Guide | data/hexerei/recipe/book_of_shadows.json; book JSON/pages/lang | Exact recipe, chapters and instructions; source patch gap |
 | Cauldron | MixingCauldron.java, MixingCauldronTile.java, MixingCauldronRecipe.java, recipe JSON | Recipe schema and guide contract; .3 behavior unverified |
-| Blood Sigil output | [source commit a91395c](https://github.com/JoeFoxe/Hexerei/blob/a91395c0a933eb3bf6fbeecd89f30a0ea98248b2/src/main/java/net/joefoxe/hexerei/tileentity/MixingCauldronTile.java) | Source-declared 2,000 mB tank, 250 mB increment, 3 magic damage, cooldown 6; fluid check follows damage call and source has no LivingEntity or hurt-result guard. Commit metadata declares 0.5.0.1; this does not prove behavior of pinned 0.5.0.3. |
+| Blood Sigil output | [source commit a91395c](https://github.com/JoeFoxe/Hexerei/blob/a91395c0a933eb3bf6fbeecd89f30a0ea98248b2/src/main/java/net/joefoxe/hexerei/tileentity/MixingCauldronTile.java) | Source-declared 2,000 mB tank, 250 mB increment, 3 magic damage, cooldown 6; fluid check follows damage call, same-fluid path uses unclamped `grow(250)`, and source has no LivingEntity or hurt-result guard. Commit metadata declares 0.5.0.1; this does not prove behavior of pinned 0.5.0.3. |
 | Familiar/flight/storage | CrowEntity.java, BroomEntity.java, HerbJar/Coffer classes and book pages | Instructions and implementation presence; limits need runtime test |
 | License | Modrinth release page vs Gradle properties | Conflicting upstream metadata; no legal interpretation |
 
@@ -226,7 +226,7 @@ No quest entries were edited.
 | Book/JEI | Craft book/altar; open chapters; test hover recipe/uses keybinds | Navigation and JEI links work; possession separate from reading | Not run |
 | Cauldron | Valid heated, unheated and wrong-fluid recipes | Only valid input/condition processes; record item/fluid debit and outputs | Not run |
 | Potion fix | Exact 0.5.0.3; water + two Nether Wart; inspect fluid and output | Verify two-bucket capacity and actual consumption | Not run |
-| Blood Sigil | Empty/partial/full cauldron; incompatible fluid; player, ordinary mob, immune/dead entity and non-living entity; cross contact cooldown; check with/without sigil | Record exact-pin 250 mB increment, 3-magic damage, whether damage success/type gates fluid, full/incompatible tank order, and bottle threshold/three-jump claim | Not run; a91395c source behavior only |
+| Blood Sigil | Empty/partial/full cauldron; incompatible fluid; player, ordinary mob, immune/dead entity and non-living entity; cross contact cooldown; check with/without sigil | Record exact-pin 250 mB increment, 3-magic damage, whether damage success/type gates fluid, full/incompatible tank order, partial non-multiple overfill, and bottle threshold/three-jump claim | Not run; a91395c source behavior only |
 | Herb/pestle | One drying and one mortar recipe; interrupt before/after complete input | Verify time, lock boundary, remainders and output | Not run |
 | Crow/farm | Harvesting then gathering; vanilla/modded crops; protected chunk | Measure range/cooldown/drops/storage ownership and server cost | Not run |
 | Broom | Same route with each broom; test brush damage, fire/water tips, Curios | Record controls, speed, durability, attachments | Not run |
