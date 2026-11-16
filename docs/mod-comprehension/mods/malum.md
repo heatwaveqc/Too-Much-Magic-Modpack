@@ -19,7 +19,7 @@
 
 **Why it matters in TMM:** Malum gives the pack a combat-fed spirit economy and early material utility. Its clearest immediate fit is spirit harvesting and altar-based processing; later it offers gear, rites, permanent Curio effects, material focusing and world exploration. Do not treat spirits as Source, mana, XP, FE, fluids, or a ritual entity sacrifice: they are Malum-specific items.
 
-**Quick start (source-informed; validate the exact recipe in JEI):**
+**Quick start (secondary-guide-informed; validate exact recipes in JEI):**
 1. Mine Soulstone Ore, smelt Raw Soulstone into Processed Soulstone, and obtain Runewood from Runewood/Azure Runewood trees.
 2. Craft the Encyclopedia Arcana from a Book and Processed Soulstone; the third-party guide also reports a first-undead-kill drop, which needs exact-source validation.
 3. Craft a Crude Scythe and strike each target before killing it. The 1.8.2 guide describes a 10-second soul-exposure window, so a different weapon or environmental damage can finish the target within that period.
@@ -45,7 +45,7 @@
 | Spirit Repair / Repair Pylon | 1.8.2 guide and prior source notes; source ref unavailable | partial | JEI Spirit Repair; page unknown | not run | confirm pinned recipe set, pylon placement/storage, repair amount and costs |
 | Totemancy / Rites / Soulwood / Blight | secondary 1.8.2 guide, not yet corroborated against implementation | partial | encyclopedia rite pages; exact sequence map absent | not run | source-map every rite, pole order, radius, duration, block/entity effects and spread/cleanup |
 | Soul Binding / Geas / Curios | 1.21.1 secondary page inventories 36 Soul Binding recipes, not exhaustively inspected | partial | JEI Soul Binding and guide entries unknown | not run | inspect branches, costs, Curio requirements, permanence/removal and effects |
-| Void / Weeping Well / Umbral | generated guide includes The Weeping Well entry; external guide identifies structure and transformation claims | partial | Encyclopedia Arcana → The Weeping Well / Void; exact unlock order unknown | not run | verify generation, transmutation, rejection costs and Umbral source |
+| Void / Weeping Well / Umbral | 1.8.2 external guide identifies a Weeping Well entry, structure and transformation claims; prior source ref unavailable | partial | Encyclopedia Arcana → The Weeping Well / Void; exact unlock order unknown | not run | verify generation, transmutation, rejection costs and Umbral source |
 | Worldgen and combat additions | 1.8.2 release/guide descriptions; 1.9 source snapshot is not treated as pin evidence | partial | unknown | not run | inventory 1.8.2 mobs, equipment, structures, hostile effects and loot |
 | KubeJS/config/API and pack integration | matching source unavailable; 1.9 source metadata does not establish 1.8.2 hooks | unresearched | n/a | not run | inspect recipe serializers/config defaults and live pack overrides |
 
@@ -83,7 +83,7 @@
 | Spirit drops | living entity + soul-exposure event | target must be exposed before death per guide; exact trigger and item qty per mob unknown | Malum spirit item, reportedly flies to player inventory | death event; exposure window reported as 10 seconds | spawner loot behavior and magnetization not confirmed; source implementation needed |
 | Spirit Infusion | item stack on altar, spirit stacks, extra item stacks on pedestals | recipe-defined counts; failed-attempt costs unknown | recipe result item at altar | altar cycle/range/timing remain unverified for pin | prior source ref unavailable; recipe datagen and altar operation need matched 1.8.2 source or JAR review |
 | Totem rites | placed block state + ordered carved totem poles | guide says one matching spirit per pole during carving; sustained resource cost unknown | effect, block operation or world state | activation/ticking; range/duration unknown | not established; inspect exact implementation |
-| Spirit Crucible | spirit item plus valid focusing recipe and installed Impetus | spirit cost per recipe; Impetus durability cost unquantified | focusing recipe output | machine tick; operation timing unknown | item insertion/automation untested; source class mentions spirit inventory, recipe and queued cracks |
+| Spirit Crucible | spirit item plus valid focusing recipe and installed Impetus | spirit cost per recipe; Impetus durability cost unquantified | focusing recipe output | machine tick; operation timing unknown | item insertion/automation untested; operation and output queue need matched source/JAR review |
 | Repair Pylon | equipment + guide-reported matching material + spirit stacks | recipe quantities and consumption unverified | durability restored | operation trigger/cadence unknown | source builder field cannot be verified while the recorded source SHA is unavailable; do not interpret an earlier 0.5f note as an amount or percent |
 | Weeping Well | dropped item entity | exact count, eligibility and consumption timing unknown | transformed item, reportedly emerges from well | throw/item-in-well contact | entity event/world interaction; automation and failure cost unknown |
 | FE, fluids, Source, XP, blood | not established as a core Malum economy | not established | not established | not established | do not infer a conversion from spirit imagery |
@@ -114,7 +114,7 @@ This is a secondary-guide-informed draft, not yet a quest-authoring handoff; the
 | 9. Spirit Crucible | major optional processing | furnace core, Tainted/Twisted Rock, Hex Ash, spirits, Alchemical Impetus | craft via altar, install Impetus, run focus recipes, repair/replace worn tool | spirit-funded material processing and augments | JEI Spirit Focusing and “The Spirit Crucible” | operate one recipe and observe output; item is proxy; XP + processing ingredients | recipes/output guide; source costs unverified |
 | 10. Repair Pylon | optional maintenance | pylon, worn valid gear, matching material and spirits | run repair recipe | recover durability | JEI Spirit Repair | show durability before/after; state detector/manual fallback; XP + repair inputs | recipe builder partial; pylon mechanics open |
 | 11. Soul Binding / Geas | advanced optional | offering recipes and spirit types; exact station unknown | choose and perform one binding; explain replaceability/exclusivity | Curio/pact/authority capability | JEI Soul Binding and book entry missing | teach one selected pact and full option list; detect bound item/effect; XP + safe secondary material | recipe count secondary; setup gap |
-| 12. Explore Weeping Well | rare progression/exploration | locate structure; treat it as a world interaction, not a generic fluid | perform confirmed item transformation; separately document Umbral access | rare transmuted items and Umbral branch | Encyclopedia Arcana → The Weeping Well / Void | optional exploration; require correct output, not structure visit alone; XP + safe exploration reward | source entry exists; transformation costs incomplete |
+| 12. Explore Weeping Well | rare progression/exploration | locate structure; treat it as a world interaction, not a generic fluid | perform confirmed item transformation; separately document Umbral access | rare transmuted items and Umbral branch | Encyclopedia Arcana → The Weeping Well / Void | optional exploration; require correct output, not structure visit alone; XP + safe exploration reward | guide reports the Well/Void branch; transformation costs and exact entry remain unconfirmed |
 | 13. Terminal capability audit | open-ended | meaningful branches above | demonstrate chosen combat, crafting, rite, focusing, binding and rare-resource paths | capability checklist, not forced completion of all recipes | encyclopedia and JEI categories | optional capstone; authentic action per chosen branch; XP + thematic reward | cannot declare endpoint until source/recipe inventory is complete |
 
 ### Dependency graph and alternate routes
@@ -123,11 +123,11 @@ Soulstone + Runewood → Encyclopedia / Crude Scythe → exposed-soul drops → 
 
 The Soulwood/Blight route is a potentially irreversible world-editing branch; keep it optional and teach containment. Soul Binding/Geas and Weeping Well are advanced branches with separate unknowns. Do not make every spirit type, rite, pact, or infusion recipe a compulsory quest. Distinguish craft-item tasks from demonstrations of altar, pylon, totem or well operation.
 
-**Native gate vs TMM gate:** No pack progression lock, recipe change, quest reward route or TMM-specific integration has been reviewed for Malum. A source-defined recipe-unlock advancement is not proof of a quest gate or a hidden tier.
+**Native gate vs TMM gate:** No pack progression lock, recipe change, quest reward route or TMM-specific integration has been reviewed for Malum. A recipe or advancement mentioned by secondary material is not proof of a TMM quest gate or a hidden tier.
 
 ## Internal synergies and low-hanging setups
 
-- **Early fuel:** Runewood Logs → Arcane Charcoal via furnace (guide reports longer burn time than charcoal). Low cost after the first tree; useful for smelting Soulstone. Confirm ratio/time against JEI/source.
+- **Early fuel:** Runewood Logs → Arcane Charcoal via furnace (guide reports longer burn time than charcoal). Low cost after the first tree; useful for smelting Soulstone. Confirm ratio/time against exact release JEI or JAR.
 - **Altar starter:** Soulstone + Runewood + Gold → Spirit Altar; try a simple Hex Ash recipe if JEI confirms it. Reserve pedestal clearance before decorating.
 - **Spirit inventory:** Spirit Fabric → Spirit Pouch and Hallowed Gold → Spirit Jars are described as early storage aids; exact recipes/limits require pinned data.
 - **Hunting:** scythe tag → ordinary kill method allows a bow, fall or other finisher after the setup hit. Mob-farm proposals need exposure timing, per-mob yields, collection, ownership and hopper/jar boundaries tested.
