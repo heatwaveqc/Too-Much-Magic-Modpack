@@ -10,6 +10,11 @@ public final class VengeanceRules {
 
     private VengeanceRules() {}
 
+    /** Only hits which changed health count as an attack; shields/canceled hits do not. */
+    public static boolean isActualHealthDamage(float appliedDamage) {
+        return appliedDamage > 0.0F;
+    }
+
     public static boolean nearSeaLevel(int feetY, int seaLevel) {
         return Math.abs(feetY - seaLevel) <= SEA_LEVEL_TOLERANCE;
     }

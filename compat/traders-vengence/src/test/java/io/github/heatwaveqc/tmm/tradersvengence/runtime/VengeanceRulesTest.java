@@ -4,6 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class VengeanceRulesTest {
+    @Test void onlyActualHealthLossCausesAssaultBlacklisting() {
+        assertTrue(VengeanceRules.isActualHealthDamage(0.5F));
+        assertTrue(VengeanceRules.isActualHealthDamage(20.0F));
+        assertFalse(VengeanceRules.isActualHealthDamage(0.0F));
+        assertFalse(VengeanceRules.isActualHealthDamage(-1.0F));
+    }
     @Test void heightLimitsAreInclusive() {
         assertTrue(VengeanceRules.nearSeaLevel(53, 63));
         assertTrue(VengeanceRules.nearSeaLevel(73, 63));

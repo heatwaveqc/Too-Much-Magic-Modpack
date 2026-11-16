@@ -16,6 +16,8 @@ public final class TradersVengence {
 
     public TradersVengence(IEventBus modBus) {
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onDeath);
+        NeoForge.EVENT_BUS.addListener(VendettaEvents::onDefenderHurt);
+        NeoForge.EVENT_BUS.addListener(VendettaEvents::onPriestAggro);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onJoin);
         NeoForge.EVENT_BUS.addListener(VendettaCommands::register);
     }

@@ -7,8 +7,15 @@ Isolated NeoForge 1.21.1 / Java 21 module, branched from `test/full-integration`
 not edit the packwiz index or the running QA build.
 
 ## Implemented in source
-- World-global permanent offender UUID list saved via Overworld SavedData; direct player
-  and player-owned projectile kills use the damage source's responsible entity.
+- World-global permanent offender UUID list saved via Overworld SavedData.
+  Three offense triggers share the same permanent record and admin pardon:
+  (1) player kills a wandering trader; (2) player deals actual health damage to
+  a villager or iron golem; (3) an Iron's `irons_spellbooks:priest` takes a
+  player as its current attack target. Direct melee, arrows, and player-attributed
+  spell damage all credit the responsible player; canceled/zero-health-damage
+  attacks do not count. Merely angering a priest below aggression threshold does
+  not count. A priest must actually target the player, rather than simply
+  see/trade with them.
 - New wandering traders blocked unless their spawn feet have sky access, are within
   10 blocks of dimension sea level, and stand on `#traders_vengence:valid_trader_ground`.
   Existing traders loaded from disk are preserved.
@@ -33,10 +40,13 @@ not edit the packwiz index or the running QA build.
 4. Iron's projectiles are instantiated via its registered entity type, with reflective
    `shoot(Vec3)` and `setDamage(float)` calls. These must be validated against the
    **pinned Iron's 3.16.3 runtime**; compile alone won't test them. Failures log once.
-5. Goal installation on entity joins is unverified for repeated join/unload cycles.
+5. Priest target observation is source-implemented but still requires an in-world
+   check with the pinned Iron's 3.16.3 jar. Confirm hostile target acquisition is
+   observed, and that other players are not wrongly flagged.
+6. Goal installation on entity joins is unverified for repeated join/unload cycles.
    Also test villagers, player-created golems, trader llamas, ordinary llamas,
    creative/spectator immunity and cross-mod hostility overrides.
-6. Default sign radius, attacks, and damage are currently constants. Configuration,
+7. Default sign radius, attacks, and damage are currently constants. Configuration,
    unique sign item, in-game repentance and localization are deferred.
 
 ## Quick checks (no modded smoke without explicit permission)
@@ -50,6 +60,14 @@ Test in a disposable save after an owner-authorized test build:
   ground blocks work with unobstructed sky.
 - Kill a trader with direct hit then projectile, verify UUID persists after server
   restart, and golem/llama/villager retaliation occurs only for the offender.
+- On a fresh unblacklisted player, strike a villager or iron golem (melee, then
+  player-fired projectile); confirm all three defender types target that player
+  and the new status persists after relog/server restart. Confirm canceled damage,
+  environmental damage, and hits from another mob do not falsely blacklist.
+- On another fresh unblacklisted player, provoke an Iron's Priest until it truly
+  selects the player as its attack target; confirm the permanent village vendetta.
+  Verify approaching or trading with a neutral Priest does NOT create an offense;
+  also verify transient below-threshold anger does not count.
 - Exercise operator pardon and make sure combat stops even after reloading chunks.
 - Confirm villager trading and schedules return to normal for non-offenders.
 

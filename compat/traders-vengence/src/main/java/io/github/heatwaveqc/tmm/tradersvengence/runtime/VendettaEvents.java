@@ -5,6 +5,8 @@ import io.github.heatwaveqc.tmm.tradersvengence.mixin.MobGoalsAccessor;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.WantedPlayerTargetGoal;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.WantedRangedAttackGoal;
 import io.github.heatwaveqc.tmm.tradersvengence.state.TraderBlacklist;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Mob;
@@ -14,11 +16,23 @@ import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 /** Player-specific retaliation, including newly spawned or reloaded defenders. */
 public final class VendettaEvents {
+    private static final ResourceLocation PRIEST =
+        ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "priest");
+
     private VendettaEvents() {}
+
+    private static void accuse(ServerLevel level, ServerPlayer offender, String reason) {
+        if (TraderBlacklist.get(level).accuse(offender.getUUID())) {
+            TradersVengence.LOGGER.info("Player {} permanently blacklisted: {}",
+                offender.getGameProfile().getName(), reason);
+        }
+    }
 
     public static void onDeath(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof WanderingTrader)
@@ -26,10 +40,39 @@ public final class VendettaEvents {
             || !(event.getSource().getEntity() instanceof ServerPlayer killer)) {
             return;
         }
-        if (TraderBlacklist.get(level).accuse(killer.getUUID())) {
-            TradersVengence.LOGGER.info("Player {} permanently blacklisted for killing wandering trader",
-                killer.getGameProfile().getName());
+        accuse(level, killer, "killed a wandering trader");
+    }
+
+    /**
+     * Damaging a resident or iron golem declares the attacker an enemy of every village.
+     * Uses POST damage: vetoed, invulnerable and fully absorbed attacks are not recorded.
+     * DamageSource#getEntity credits the responsible player for their arrows and spells.
+     */
+    public static void onDefenderHurt(LivingDamageEvent.Post event) {
+        if (!VengeanceRules.isActualHealthDamage(event.getNewDamage())
+            || !(event.getEntity() instanceof Villager || event.getEntity() instanceof IronGolem)
+            || !(event.getEntity().level() instanceof ServerLevel level)
+            || !(event.getSource().getEntity() instanceof ServerPlayer attacker)) {
+            return;
         }
+        accuse(level, attacker,
+            event.getEntity() instanceof Villager ? "attacked a villager" : "attacked an iron golem");
+    }
+
+    /**
+     * Iron's Priest extends NeutralWizard. Its anger alone is not combat aggression:
+     * wait until its AI actually has a player attack target. Checking after the tick
+     * avoids blacklisting players for a canceled or superseded target selection.
+     * Idempotent UUID storage makes this safe while the priest remains hostile.
+     */
+    public static void onPriestAggro(EntityTickEvent.Post event) {
+        if (!(event.getEntity() instanceof Mob mob)
+            || !(mob.level() instanceof ServerLevel level)
+            || !BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).equals(PRIEST)
+            || !(mob.getTarget() instanceof ServerPlayer offender)) {
+            return;
+        }
+        accuse(level, offender, "targeted by Iron's Priest");
     }
 
     public static void onJoin(EntityJoinLevelEvent event) {
