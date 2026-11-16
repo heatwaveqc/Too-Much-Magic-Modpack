@@ -209,6 +209,34 @@ file = "config/relics/relics/ring_of_the_seven_deadly_sins.yaml"
 hash = "575a02a56feb5ba7317201bcf9753574fcdeb97cb2b8d1e70a6b1d6bb388ea23"
 
 [[files]]
+file = "config/tyzs_skills-common.toml"
+hash = "c2f15be8bc5ef7b81d7b440e4458d259b737442ae093b0e5a0f0e96c850a1896"
+
+[[files]]
+file = "config/tyzs_skills/custom/data/categories.json"
+hash = "7b8b9d78b5234287309d2fdbd69fe5f78468e18dcfb1c203c15495c7afc65916"
+
+[[files]]
+file = "config/tyzs_skills/custom/data/level-pool.json"
+hash = "a25fd4a294ae0411eebe82305c53cfe039dcbdec3463b2ef9bc6192bc87815e0"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_potency_1.json"
+hash = "7ec37e3d55ebbef03819ebea780ae7186501dd49ca08cb837595c069ad34571c"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_reservoir_1.json"
+hash = "814204d46b85b41e16c8d69ae44ce9681ae98a0076709768b307f0522e855b1b"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_thrift_1.json"
+hash = "23cabc127de0343e557371981c548c0783783ade816dda57edad531baf60bea8"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_magic_wellspring_1.json"
+hash = "ce1805585fe392c62757e649fc5a284e3a37afb53ff9220d167dfcb89eb31cc4"
+
+[[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
 hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
@@ -416,6 +444,10 @@ hash = "4e3af9879096859002f21b25f66f78ccb5816b1a44a7e71671273bab34f8427e"
 [[files]]
 file = "kubejs/server_scripts/silver_equipment_unification.js"
 hash = "7a2a9d09c982902b4950de4feec816795cb38660e3613201de53bb243e1200db"
+
+[[files]]
+file = "kubejs/server_scripts/tmm_magic_core_thrift.js"
+hash = "23e76ac071eef579b612dfcaa8f412b21afe5a6318db1c6e8bda06e0a02f40f4"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
@@ -1075,11 +1107,6 @@ hash = "22d273512f73d6ea8b27dddb628dce14639a35894bb4c27368f7c7a47bb3c2df"
 metafile = true
 
 [[files]]
-file = "mods/puffish-skills.pw.toml"
-hash = "6a8bd3d5ea95c5ddec80171d27e2b150f04b650b0035988e8dbfe55e759a8566"
-metafile = true
-
-[[files]]
 file = "mods/puzzles-lib.pw.toml"
 hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
 metafile = true
@@ -1197,6 +1224,11 @@ metafile = true
 [[files]]
 file = "mods/treechop.pw.toml"
 hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
+metafile = true
+
+[[files]]
+file = "mods/tyzs-skills.pw.toml"
+hash = "71d2e7aa272dfcfa20e8ea6cbe316d25e17624af84e8201708b0f435b5ff1767"
 metafile = true
 
 [[files]]

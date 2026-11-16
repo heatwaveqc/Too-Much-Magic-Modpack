@@ -101,8 +101,8 @@
         "scripts/activate_tyzs.py",
         "scripts/verify_tyz_migration.py"
       ],
-      "mode": "runtime-experimental",
-      "note": "MANDATORY next rolling QA build: exact Tyz 6.4.2 Modrinth SHA-512 pin, four five-rank (20% of each previous rank-99 ceiling per rank) Core Skills (stable ID tmm_magic_core) skills staged as real config, old Pufferfish Skills pin removed, native Tyz activity XP disabled. Shared MXP awards and external form gates are still pending; admin-only XP for first in-game tests. Built-in Tyz 6.4.2 inventory contains 32 skills across Abilities/Combat/Misc/Nature; fully documented and proposed relocation map committed (Green Thumb and Shepherd’s Blessing now earmarked for Forest Dragon), but none of those native skills/categories is disabled yet. Do not remove stock category tabs before same-ID parity QA."
+      "mode": "runtime-first-wave-integrated",
+      "note": "Existing Tyz 6.4.2 exact SHA-512 pin replaces Pufferfish Skills on integration baseline; four 5-rank Core Skills, Tyz native XP off, 1000 XP/level. Independent Pufferfish Attributes still pinned pending dependency audit. No MXP gameplay JAR and no complete nine-tree custom progression yet."
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -253,8 +253,8 @@
     "MXP full-source hook branch is present but not runtime-installed; validate real spent resource debits/multi-cast ordering, then compile and package only after explicit test approval.",
     "NEXT FULL QA: ProjectE Stone boss-trophy center and MK3+ Power Flower Chaos-Shard recipes staged from feature/projecte-boss-trophy-stone-and-emc-audit. Validate both Stone layouts and all high-tier direct recipes + red upgrade in live JEI/crafting. Mine Key also comes from Neo Vitae mine spawners, so it is an item route, NOT proof of a Foreman kill.",
     "EMC COMPLETENESS: each actual registered item must have positive EMC except approved cheap glass panes. Audit against SAME-BUILD full registry plus post-mapping ProjectE EMC; fill all missing IDs and test conversion loops. No auto-values until exports.",
-    "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
-    "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
+    "Tyz 6.4.2 now present in test/full-integration; remove no longer applicable Pufferfish Skills backend. Verify exact pinned JAR and four Core Skills in next owner-authorized test build. Independent Pufferfish Attributes kept until dependency audit.",
+    "MxpService->TyzBridge Java API connection exists in source feature/mxp-configurable-growth-20261115 with configurable 1.02 default. It is NOT a packaged MXP mod/JAR. Compile/integrate and live-test Tyz credit/XP-SP/persistence and spell resource debits before calling MXP operational; nine custom form and Monk/Hunter trees are still not built.",
     "New five-form Tyz trees and external locks are currently design-only",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
