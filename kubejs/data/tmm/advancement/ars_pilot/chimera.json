@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "kill_chimera": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "ars_nouveau:wilden_boss"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_chimera"
+    ]
+  ]
+}

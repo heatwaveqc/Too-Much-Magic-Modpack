@@ -62,6 +62,15 @@ All of these appeared under `deferred_pending_runtime` during the previous retir
 
 **Lifecycle:** `READY REPORTED` → `ATTEMPT REQUIRED` → `INCLUDED` / `BLOCKED` / `OWNER-DEFERRED`; only then may a comprehensive test candidate claim a complete inclusion matrix. Do not treat source-readiness as runtime acceptance.
 
+## Ars and starter quest reconciliation — ready candidate (2026-11-16)
+
+| Feature | Source | Inclusion attempt | Live acceptance |
+| --- | --- | --- | --- |
+| Complete Ars Nouveau + seven addon questline | `feature/ars-quest-pilot` → `fix/ars-quests-current-baseline-2026-11-16` | **MERGED IN `test/full-integration` @ `edd555a`; NEXT ASSEMBLED RUNTIME CHECK REQUIRED**. 49 nodes, Chimera kill advancement, locale and authoring data; avoids older Alcohol/Welcome overwrite. | 49 Ars nodes and 19 Alcohol quests visible; novice, addons, Chimera, rewards claimed |
+| Quest-claimed first-log Curio Bag | Concurrent quick starter fix + `fix/ars-quests-current-baseline-2026-11-16` | **MERGED IN `test/full-integration` @ `edd555a`; NEXT ASSEMBLED RUNTIME CHECK REQUIRED**. First log has no advancement reward dispatch; quest retains Curio Bag, four torches, XP. | Fresh player gets no auto bag; personal once-only quest claim; old player duplicate-policy check |
+
+See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is an in-world PASS or authorization to start a full smoke.
+
 ## Dragon Survival, Jade and FTB UI defaults — next-client-test intake (2026-11-16)
 
 | Date / origin | Ready feature and source | Code / pins / conflicts | Inclusion status | Evidence (SHA, destination or blocker) | Assigned QA case |
