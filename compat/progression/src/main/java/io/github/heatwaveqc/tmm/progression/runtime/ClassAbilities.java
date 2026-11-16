@@ -239,14 +239,42 @@ public final class ClassAbilities {
         }
     }
 
-    /** Controlled descent with limited thrust, no hovering or Creative flight flag. */
+    /**
+     * Shared airborne movement loop. Regular Monks retain the original controlled descent.
+     * Newbies get a stronger virtual-elytra-like powered glide, without any chest-slot item
+     * or Creative Mode privileges. Newbie thrust starts while falling or already Elytra flying.
+     * This is NOT the vanilla Elytra pose; client glide presentation is a separate concern.
+     */
     private static void glide(ServerPlayer p) {
-        if (!unlocked(p,"momentum_glide")
+        if (p.onGround() || p.isPassenger() || p.isInWater() || p.isInLava()) return;
+        boolean newbie = NewbieMode.isNewbie(p);
+        if (!newbie && (!unlocked(p,"momentum_glide")
                 || !ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on")
-                || p.onGround() || p.isPassenger() || p.isFallFlying()
-                || p.isInWater() || p.isInLava()) return;
+                || p.isFallFlying())) return;
         Vec3 speed = p.getDeltaMovement();
-        if (speed.y >= 0) return; // never use native thrust to climb
+        if (speed.y >= 0 && !p.isFallFlying()) return; // first take off or jump normally
+
+        if (newbie) {
+            // Sustained boost and look-direction lift, not hovering or instant teleportation.
+            // Deliberately hard capped so a beginner can maneuver without extreme velocity.
+            Vec3 look = p.getLookAngle();
+            Vec3 horizontalLook = new Vec3(look.x,0,look.z);
+            if (horizontalLook.lengthSqr() > 0.0001)
+                horizontalLook = horizontalLook.normalize().scale(0.045);
+            Vec3 horizontal = new Vec3(speed.x,0,speed.z).add(horizontalLook);
+            final double maximum = 0.75;
+            if (horizontal.lengthSqr() > maximum*maximum)
+                horizontal = horizontal.normalize().scale(maximum);
+            double lift = 0.035 + Math.max(0.0,look.y)*0.095;
+            double vertical = Math.max(-0.13,Math.min(0.24,speed.y+lift));
+            p.setDeltaMovement(horizontal.x,vertical,horizontal.z);
+            p.fallDistance = 0;
+            p.hurtMarked = true;
+            return;
+        }
+
+        // Original Monk momentum-glide progression, including Tyz steering ranks.
+        if (speed.y >= 0) return; // regular Monk thrust never climbs
         Vec3 heading = p.getLookAngle().multiply(1,0,1);
         double control = TyzMonkBridge.glideSpeedBonus(p);
         if (heading.lengthSqr() > 0.001) heading = heading.normalize().scale(0.025+control*0.1);
