@@ -113,3 +113,10 @@ Tested installed/source snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` usin
 ## 2026-11-16 subsequent player tests
 
 [Complete player findings and screenshot descriptions](PLAYER-FOLLOWUP-2026-11-16.md) supersede earlier NOT RUN statements only for the bounded B/C rows updated above. **Two distinct TreeChop bugs:** progress bar disappears after first break; no Monk XP even after complete felling. Quest navigation shows ampersand formatting errors and an Unnamed chapter. Tome empty, three separate guidebooks and Enigmatic trinkets granted, bag directly granted and absent as quest reward; first-slot fix passes. Ars and starter-reward integrations are deferred/not built. Bio-Mutagen JEI visibility and bottle graphics need work. UI is not shipped, not a failed keybinding. No unchanged JAWR baseline retest requested.
+
+
+## Final player confirmations — 2026-11-16
+
+Installed snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`: partial Hunter mutation progress survives world reloads (read-only per-effect attachment query); non-Hunter Mutagenic Brew applies Wither; tested invalid initiation attempt rejected (exact missing prerequisite not specified). Dedicated bundle Curios slot exists and accepts bag. Dragon login species choice still enabled: ritual-only config requirement remains unmet. Bag direct grant/absent quest reward is independent of working slot. See [final player report]( PLAYER-FOLLOWUP-2026-11-16.md) for full scope.
+
+**Owner ended this pass:** defer remaining tests until infrastructure exists and intended features are included. Permanent mutation unlock/hunger-cost checks, high-rank fixtures, death-anchor setups and unshipped Thermalily/Dracolich rendering remain unaccepted/deferred. Do not re-run unchanged baseline or infer stable readiness. No new smoke/build authorized.
