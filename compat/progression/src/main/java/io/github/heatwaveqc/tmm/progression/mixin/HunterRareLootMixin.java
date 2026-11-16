@@ -23,7 +23,7 @@ public abstract class HunterRareLootMixin {
     private int tmm$favoredLootingChance(Holder<Enchantment> enchantment, LivingEntity attacker,
                 Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
         int nativeLevel = original.call(enchantment, attacker);
-        if (!enchantment.is(Enchantments.MOB_LOOTING) || !(attacker instanceof ServerPlayer player))
+        if (!enchantment.is(Enchantments.LOOTING) || !(attacker instanceof ServerPlayer player))
             return nativeLevel;
         return nativeLevel + NativeLootBonuses.hunterLooting(player, context);
     }
