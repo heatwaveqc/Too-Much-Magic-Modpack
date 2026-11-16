@@ -1,5 +1,7 @@
 # Next full-integration client test pass — practical priority order
 
+> **Scope correction (2026-11-16):** Before issuing a comprehensive live test, reconcile every feature reported **ready for a live test** in any development chat or PR using the [QA inclusion register](qa/LIVE-TEST-INCLUSION-REGISTER.md). A previous `deferred_pending_runtime` classification is not permission to skip it again. Attempt inclusion, document technical blockers, and obtain owner approval for a partial test if necessary. This sheet describes tests of what is shipped, not permission to omit ready features.
+
 Use [the live feature checklist](FEATURE-CHECKLIST.md) for the whole project and [the source registry](../manifest/feature-checklist.json) for stable IDs. This page is a **short, prioritized exercise sheet**, not a claim that every feature is in the downloaded ZIP. Check [BUILD-MANIFEST.json](../manifest/integration-sources.json) and Mods screen to confirm which source modules actually shipped.
 
 **Environment:** one freshly imported FULL-INTEGRATION-UNSTABLE Prism ZIP, Minecraft 1.21.1 / NeoForge 21.1.265, Java 21, a new throwaway world, plus an existing configured tester Prism instance for preference comparison. Keep old survival worlds **closed** during these tests. Record the ZIP run ID and immutable SHA before testing. If a feature is not in the ZIP, write **NOT BUILT**, not FAIL or PASS. A successful CI server boot is a *prerequisite*, not proof of client behavior.
@@ -41,4 +43,4 @@ For each row write:
 
 ## Why not force everything into one test run?
 
-The experimental branch contains some source-only work that has not been pinned or enabled, notably the Tyz form/MXP network and some quest drafts. Testing an absent mod or applying unverified transformations to an important save creates false regressions. The master checklist is comprehensive; this sheet is the efficient sampling order for whatever actually shipped.
+A live test must not claim to exercise code absent from its assembled artifact, and no important save may be used as the test fixture. **However, any feature previously reported ready for live testing must be attempted for inclusion before the next comprehensive live-test build**. Record incompatible dependencies and merge conflicts as explicit blockers rather than repeating stale deferrals. The master checklist and [inclusion register](qa/LIVE-TEST-INCLUSION-REGISTER.md) control scope; this sheet provides the short player exercise order for the resulting tested artifact.
