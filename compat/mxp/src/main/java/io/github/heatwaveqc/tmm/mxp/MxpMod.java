@@ -27,6 +27,7 @@ public final class MxpMod {
 
     public MxpMod(IEventBus bus, ModContainer container) {
         container.registerConfig(ModConfig.Type.COMMON, MxpSourceConfig.SPEC);
+        container.registerConfig(ModConfig.Type.SERVER, MxpProgressionConfig.SPEC);
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
         NeoForge.EVENT_BUS.addListener(this::onBossDeath);
         NeoForge.EVENT_BUS.addListener(this::onServerStopping);
@@ -67,9 +68,10 @@ public final class MxpMod {
                 MxpAccount account = MxpService.inspect(player);
                 ctx.getSource().sendSuccess(() -> Component.literal(String.format(
                     "MXP lifetime levels: %d | progress: %.4f/1000 | "
-                    + "pending Tyz delivery: %.6f | first rituals: %d | first bosses: %d",
+                    + "pending Tyz delivery: %.6f | growth factor: %.4f | first rituals: %d | first bosses: %d",
                     account.counter().lifetimeLevels(), account.counter().progress(),
-                    account.pendingDelivery(), account.firstRituals().size(),
+                    account.pendingDelivery(), MxpProgressionConfig.GROWTH_FACTOR.get(),
+                    account.firstRituals().size(),
                     account.firstBosses().size())), false);
                 return 1;
             }))
