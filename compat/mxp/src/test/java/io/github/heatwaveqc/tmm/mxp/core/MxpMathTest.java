@@ -76,7 +76,7 @@ final class MxpMathTest {
         MxpAccount acc = new MxpAccount();
         acc.ritual("totemic:rain", "ritual1", 1000, 200);
         var copy = acc.copy();
-        assertEquals(100, copy.craft("theurgy:transmutation", "craft1", 120, 50).effectiveXP(), 1e-8);
+        assertEquals(120 / MxpMath.DEFAULT_GROWTH, copy.craft("theurgy:transmutation", "craft1", 120, 50).effectiveXP(), 1e-8);
         assertEquals(200 / MxpMath.DEFAULT_GROWTH, copy.ritual("totemic:rain", "ritual2", 1000, 200).effectiveXP(), 1e-8);
         // No link to Tyz skill points or purchased skill ranks.
         assertEquals(0, acc.firstCrafts().size());
@@ -101,7 +101,7 @@ final class MxpMathTest {
         assertEquals(0, acc.pendingDelivery(), 1e-6);
     }
 
-    @Test void repeatedRegularBossAtP5000CannotOutpaceFixed() {
+    @Test void extremelyHighLifetimeXPStillHasNoOverflow() {
         MxpAccount acc = new MxpAccount();
         acc.restore(new MxpMath.Counter(50000, 0), 0,
                 java.util.List.of(), java.util.List.of("minecraft:wither"),
