@@ -1,15 +1,18 @@
 name: Pin stable JEI and verify full gameplay server
 on:
-  push:
-    branches: [build/b3-stable-magic-tectonic]
-    paths: ['.github/workflows/pin-stable-jei.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   stable-jei-and-server:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
