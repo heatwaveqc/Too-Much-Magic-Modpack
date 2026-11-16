@@ -152,7 +152,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
 | `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | researching | [profile](mods/psi-tweaks.md) |
 | `feywild` | Feywild | magic_adventure | enabled flag | full | queued | — |
-| `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | queued | — |
+| `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | researching | [profile](mods/embers-re-ignited.md) |
 | `projecte` | ProjectE | magic_progression | enabled flag | full | researching | [profile](mods/projecte.md) |
 | `reliquary-reincarnations` | Reliquary Reincarnations | magic_utility | enabled flag | full | queued | — |
 | `embeddium` | Embeddium | performance | enabled flag | interface | queued | — |
