@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "created": "2026-11-15",
-  "status": "source_derived_scenario_maxima_monk_cost_contract_and_ars_registry_census_not_runtime_certified",
+  "status": "source_derived_ars_thread_nonstacking_and_mxp_growth_scenarios_not_runtime_certified",
   "purpose": "ATM10 max legal specialist gear -> TMM non-Monk specialist trees -> Monk 80-90% of each modified final attribute; Monk Tyz full tree costs ~10x standard specialist SP and far >10x ordinary MXP",
   "owner_targets": {
     "tmm_atm10_performance_tolerance_fraction": 0.05,
@@ -11,7 +11,7 @@
     "monk_tyz_full_tree_sp_to_standard_specialist_ratio_target": 10,
     "monk_tyz_full_tree_sp_ratio_min": 9,
     "monk_tyz_full_tree_sp_ratio_max": 11,
-    "monk_ordinary_mxp_base_cost_ratio_rule": "must be substantially greater than 10x in modeled same-source ordinary-XP comparison, recalculated via 1.2^P",
+    "monk_ordinary_mxp_base_cost_ratio_rule": "UNDER REVIEW: 1.2^P current, user considering 1.1^P or 1.0^P. At growth=1.0 Monk with 10x SP costs 10x ordinary base XP; >10x only if growth>1.0, ignoring fixed bonuses. Do not treat 'much greater than 10x' as unconditional.",
     "monk_native_progression_points_are_tyz_sp": false
   },
   "baseline_assumptions": {
@@ -69,7 +69,9 @@
     "defense_toughness_mythic_shield": 145.8,
     "ars_six_source_registration_count": 188,
     "ars_188_registration_cohort_mana": 5720,
-    "ars_188_registration_cohort_regen": 177.04000000000002
+    "ars_188_registration_cohort_regen": 177.04000000000002,
+    "ars_188_candidate_with_one_level6_capacity_max_mana": 9152,
+    "ars_188_candidate_with_one_level6_spellpower_flat_spell_power": 60
   },
   "source_repos": {
     "atm10": "https://github.com/AllTheMods/ATM-10/tree/d3fef516ed2c3610f49981f5f924d7205d8536ef",
@@ -326,6 +328,11 @@
           "scenario_id": "ars.six_source_glyph_census_example",
           "value": 5720,
           "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation"
+        },
+        {
+          "scenario_id": "ars.six_source_glyph_census_with_best_unique_threads",
+          "value": 9152,
+          "confidence": "source_documented_nostack_conditional_candidate_pending_pinned_jar_runtime"
         }
       ]
     },
@@ -348,6 +355,11 @@
           "scenario_id": "ars.six_source_glyph_census_example",
           "value": 177.04000000000002,
           "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation"
+        },
+        {
+          "scenario_id": "ars.six_source_glyph_census_with_best_unique_threads",
+          "value": 177.04,
+          "confidence": "source_documented_nostack_conditional_candidate_pending_pinned_jar_runtime"
         }
       ]
     },
@@ -370,6 +382,11 @@
           "scenario_id": "ars.enchanted_source_formula",
           "value": 48,
           "confidence": "source_formula_pending_G_and_runtime"
+        },
+        {
+          "scenario_id": "ars.six_source_glyph_census_with_best_unique_threads",
+          "value": 60,
+          "confidence": "source_documented_nostack_conditional_candidate_pending_pinned_jar_runtime"
         }
       ]
     },
@@ -983,13 +1000,13 @@
     "certify ATM10 maxima before specialist skills and Monk JSON",
     "enforce Monk 80-90% final numeric attribute parity for EVERY Monk-modified trait; no cross-trait averaging",
     "compare Monk tree full-purchase Tyz SP to canonical non-Monk full tree at about 10x (9-11x provisional tolerance)",
-    "simulate 1.2^P lifetime MXP economics and full Monk reachability; ordinary XP ratio must be far above 10x",
+    "simulate configurable g^P MXP economics for g=1.0, 1.01, 1.02, 1.05, 1.1, 1.2; map expected XP cost and feasible hours based on real tree SP and income; >10x XP is conditional on g>1",
     "differentiate Monk standalone core technique points/free classic powers from Tyz wallet",
     "audit remaining ATM10 Ars addon code, deduplicate glyph IDs and confirm version-pinned 4.6.2 NEG and 0.7.10.4 Elemental registries",
-    "measure whether repeated Ars Magic Capacity/Spell Power threads with static modifier IDs apply, replace or collide across slots and armor items",
-    "runtime verify attainable G rather than treating code registration count as learned glyph maximum"
+    "runtime verify attainable G rather than treating code registration count as learned glyph maximum",
+    "confirm exactly one effective Magic Capacity/Spell Power thread at level VI each, in distinct level-six slots, and check 1.6x mana +12 power in pinned game"
   ],
-  "revision": "v0.4",
+  "revision": "v0.5",
   "updated": "2026-11-15",
   "constrained_optimized_loadouts": [
     {
@@ -1218,6 +1235,28 @@
       ],
       "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation",
       "notes": "Not full ATM10 total. Some audited source branches differ from exact ATM10 jar versions; other addons and threads/accessories not included."
+    },
+    {
+      "id": "ars.six_source_glyph_census_with_best_unique_threads",
+      "focus": "ars.max_mana",
+      "scope": "Same 188 candidate learnable glyph count and 4x ATM10 Mana Boost VII / Mana Regen VII with Unobtainium tier-six book, plus ONE Magic Capacity VI and ONE Spell Power VI thread in separate sixth-level armor slots, before Curios, potions, additional glyphs or other buffs",
+      "metrics": {
+        "ars.max_mana": 9152,
+        "ars.spell_damage_bonus": 60,
+        "ars.mana_regen_per_sec": 177.04,
+        "ars.thread_capacity_multiplier": 1.6,
+        "ars.thread_spell_damage_flat_add": 12
+      },
+      "combinations": [
+        "Six-code-source 188 candidate known glyph count",
+        "4 Unobtainium Arcanist armor",
+        "1 Unobtainium Ars tier-six spellbook",
+        "4x Mana Boost VII + 4x Mana Regeneration VII",
+        "1 Magic Capacity VI thread in a level-six slot",
+        "1 Spell Power VI thread in a different level-six slot"
+      ],
+      "confidence": "source_documented_nostack_conditional_candidate_pending_pinned_jar_runtime",
+      "notes": "Only one of a given thread counts across an armor set. Other installed glyph sources and accessories unknown. Values are not certified ATM10 pack-wide maxima."
     }
   ],
   "monk_attribute_cost_contract": {
@@ -1225,9 +1264,10 @@
     "attribute_contract": "For every trait whose numeric final value Monk actively modifies, full investment yields 80-90% of the comparable optimized fully equipped TMM specialist's final numerical attribute. Report actual nonlinear performance as a secondary check.",
     "comparison_requires": "Matched metric, specialist loadout, attribute IDs and cap/stack rules. Monk unarmored legal equipment. Non-numeric abilities tracked separately. Explicit zero/signed/reduction semantics.",
     "tyz_cost_contract": "Total spendable Tyz SP for ALL purchasable Monk tree ranks ~= 10x the canonical completed non-Monk specialist tree (9-11x provisional band). Baseline/native discipline points are NOT Tyz SP.",
-    "xp_contract": "Tyz level-pool prototype gives one point per 1000 effective MXP and routine events scale as base / 1.2^P, P lifetime earned MXP levels. Simulate fresh/experienced players, first-time fixed bonuses, affordability and float overflow before live deployment.",
+    "xp_contract": "XP growth rate under review: 1.2 prototype vs proposed 1.1 or 1.0; can be calibrated (possibly 1.01-1.05). 1.0 yields linear ordinary XP and 10x points -> 10x XP, so earlier >10x XP expectation is contingent on growth>1.0. Native Monk and Tyz wallets remain separate.",
     "nominal_ordinary_xp_formula": "XP_base_for_N_lifetime_levels=1000*(pow(1.2,N)-1)/(1.2-1) from P=0, no fixed award; 10*N ratio is far greater than 10 for nontrivial N.",
-    "status": "locked_design_not_implemented"
+    "status": "locked_design_not_implemented",
+    "xp_growth_decision": "open; no live config/code change"
   },
   "ars_glyph_registry_census": {
     "description": "Six ATM10-installed glyph-bearing mod registration sources; theoretical source-registration cohort, not a full ATM10 or learned glyph maximum",
@@ -1318,7 +1358,7 @@
     "status": "version_mixed_source_candidate_not_certified_runtime"
   },
   "ars_thread_modifier_collision_audit": {
-    "status": "high_priority_runtime_test",
+    "status": "source_documentation_confirms_nonstacking; exact duplicate_attribute_precedence_not_needed_if_one_copy_per_thread",
     "tier_six_armor_slots_each": [
       4,
       5,
@@ -1331,7 +1371,7 @@
     "spell_damage_thread_modifier_id": "ars_nouveau:thread_spellpower",
     "spell_damage_thread_operation": "add_value",
     "spell_damage_thread_per_slot_level": 2,
-    "issue": "The upstream MagicCapacityPerk and SpellDamagePerk use the same AttributeModifier ResourceLocation per perk regardless of piece or slot. Attribute modifier IDs must be unique for a given entity attribute. Do not sum all 12 thread slot modifiers until observed runtime semantics / dedup and slot-specific ID handling are verified.",
+    "issue": "Ars in-game documentation explicitly states same-type threads apply once per armor set, not cumulatively. Source PerkUtil.countForPerk selects maximum slot rank for relevant per-perk calculations. For attribute threads, duplicate IDs mean additional copies must NOT be counted; slot selection with duplicates need not be assumed because optimal legal loadout uses exactly one level-six Capacity thread and one separate level-six Spell Power thread.",
     "compared_enchantment_behavior": "Minecraft enchantment attribute effects postfix the modifier id with the armor slot name, so identical Mana Boost/Mana Regen enchantments on different armor slots are designed to coexist.",
     "source_modules": [
       "Jarva/All-The-Arcanist-Gear:ArsNouveauRegistry.java",
@@ -1339,7 +1379,19 @@
       "baileyholl/Ars-Nouveau:common/perk/SpellDamagePerk.java",
       "Jarva/All-The-Arcanist-Gear:common/items/armor/AddonArmorItem.java"
     ],
-    "do_not_certify_numeric_thread_maximum": true
+    "do_not_certify_numeric_thread_maximum": false,
+    "theoretical_max_single_thread_value": 6,
+    "magic_capacity_from_one_level_six_thread": {
+      "operation": "add_multiplied_total",
+      "multiplier": 1.6
+    },
+    "spell_damage_from_one_level_six_thread": {
+      "operation": "add_value",
+      "flat_spell_power": 12
+    },
+    "runtime_gate": "Verify exact ATM10 Unobtainium level-six perk-slot availability and effective final attributes. No duplicate-thread stacking is assumed.",
+    "documentation_source": "https://ars.guide/book/armor/applying_perks/",
+    "max_level_source": "https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/api/util/PerkUtil.java"
   },
   "monk_mxp_ordinary_xp_examples": [
     {
@@ -1358,5 +1410,267 @@
       "ratio": 15951883.297598101,
       "conditions": "Fresh P=0 lifetime, no fixed award/other tree XP, each point corresponds one MXP level; illustrative only; cost may be infeasible at high P."
     }
-  ]
+  ],
+  "monk_mxp_growth_scenario_comparison": {
+    "status": "USER_CONSIDERING_NOT_SELECTED",
+    "source_prototype": "feature/mxp-ars-irons-botania-neo-hooks compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpMath.java (currently hardcoded 1.2)",
+    "ordinary_xp_model": "one SP per 1000 effective XP; routine awards effective=base/(growth^P), P lifetime MXP levels. From lifetime P=0: nominal_base_xp_to_N_points=1000*((growth^N)-1)/(growth-1); growth=1 gives 1000*N.",
+    "target_sp_cost_ratio_for_monk": 10,
+    "earlier_xp_goal_update": "At growth=1, Monk 10x points => 10x ordinary XP, not significantly-more-than-10x. At growth>1, ratio can be vastly higher; this is an open design tradeoff, not a locked runtime rule.",
+    "candidates": [
+      {
+        "growth": 1.2,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 186687.99962237364
+          },
+          {
+            "points": 50,
+            "base_xp": 45497190.75001065
+          },
+          {
+            "points": 100,
+            "base_xp": 414089867610.0709
+          },
+          {
+            "points": 200,
+            "base_xp": 34294084519644926000
+          },
+          {
+            "points": 300,
+            "base_xp": 2.840166618003764e+27
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 6113.898993497453
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 15951883.297598086
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 183697316319280.7
+          }
+        ]
+      },
+      {
+        "growth": 1.1,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 57274.99949325605
+          },
+          {
+            "points": 50,
+            "base_xp": 1163908.5287969562
+          },
+          {
+            "points": 100,
+            "base_xp": 137796123.39822352
+          },
+          {
+            "points": 200,
+            "base_xp": 1899052754604.6426
+          },
+          {
+            "points": 300,
+            "base_xp": 26170109961874556
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 190.64528489245976
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 8646.07217590083
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 33156748.51866651
+          }
+        ]
+      },
+      {
+        "growth": 1.05,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 33065.95410288843
+          },
+          {
+            "points": 50,
+            "base_xp": 209347.9957150739
+          },
+          {
+            "points": 100,
+            "base_xp": 2610025.1569260797
+          },
+          {
+            "points": 200,
+            "base_xp": 345831616.30320287
+          },
+          {
+            "points": 300,
+            "base_xp": 45479902572.04843
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 37.886711263093034
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 207.50894075055731
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 10458.842809347312
+          }
+        ]
+      },
+      {
+        "growth": 1.02,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 24297.369798917724
+          },
+          {
+            "points": 50,
+            "base_xp": 84579.40145368032
+          },
+          {
+            "points": 100,
+            "base_xp": 312232.30591261707
+          },
+          {
+            "points": 200,
+            "base_xp": 2574244.868935438
+          },
+          {
+            "points": 300,
+            "base_xp": 18961725.403076757
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 16.252641957643984
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 28.51509238638063
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 105.94747045625088
+          }
+        ]
+      },
+      {
+        "growth": 1.01,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 22019.003994796687
+          },
+          {
+            "points": 50,
+            "base_xp": 64463.18218438821
+          },
+          {
+            "points": 100,
+            "base_xp": 170481.3829421527
+          },
+          {
+            "points": 200,
+            "base_xp": 631601.7851829949
+          },
+          {
+            "points": 300,
+            "base_xp": 1878846.6261924424
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 12.637349318029429
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 16.294964594926398
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 28.684393959520094
+          }
+        ]
+      },
+      {
+        "growth": 1,
+        "comparison_from_level_0": [
+          {
+            "points": 20,
+            "base_xp": 20000
+          },
+          {
+            "points": 50,
+            "base_xp": 50000
+          },
+          {
+            "points": 100,
+            "base_xp": 100000
+          },
+          {
+            "points": 200,
+            "base_xp": 200000
+          },
+          {
+            "points": 300,
+            "base_xp": 300000
+          }
+        ],
+        "monk_ratio_scenarios": [
+          {
+            "specialist_sp": 5,
+            "monk_sp": 50,
+            "xp_ratio": 10
+          },
+          {
+            "specialist_sp": 10,
+            "monk_sp": 100,
+            "xp_ratio": 10
+          },
+          {
+            "specialist_sp": 20,
+            "monk_sp": 200,
+            "xp_ratio": 10
+          }
+        ]
+      }
+    ],
+    "decision_needed": "Choose growth factor only after target tree costs, repeatable MXP income/hour, fixed first-boss bonuses and total intended playtime are known. Change prototype Java to configurable growth once choice approved; do not change server XP yet."
+  }
 }
