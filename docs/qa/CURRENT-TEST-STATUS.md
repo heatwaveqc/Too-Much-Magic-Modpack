@@ -6,6 +6,14 @@
 **Last actual test run from this checklist:** **NONE**. No server smoke, new Prism build, or in-game test was run while setting up these documents.  
 **Next instruction to Codex:** read [the executable checklist](NEXT-TEST-CODEX-CHECKLIST.md), run only its quick/source tests when authorized to work, and append evidence here. Read `AGENTS.md` before any action.
 
+## New inclusion requirement (owner correction, 2026-11-16)
+
+For the **next comprehensive live test**, every feature that any development chat/PR reported **"Ready for a live test"** must be **attempted for integration**. Historical `deferred_pending_runtime` is **not sufficient** to exclude a ready feature. The working inventory is [LIVE-TEST-INCLUSION-REGISTER.md](LIVE-TEST-INCLUSION-REGISTER.md), which explicitly reopens all 13 previously deferred runtime branches for re-review and tracks exact INCLUDED/BLOCKED/OWNER-DEFERRED outcomes.
+
+**Do not reinterpret the old R08 "Known deferred" row below as permission to omit the same features again.** It records a prior narrowed retirement build's scope and now represents a **next-test inclusion-reconciliation task**. For a fresh comprehensive QA build, first collect readiness handoffs from every chat and PR, attempt each ready import, and give the owner a matrix of included and blocked work. A blocked import does not become an automatic owner deferral; a smaller/partial test requires the owner's scope decision.
+
+The user has reported that some recent tests were completed and others could not be run; **no individual test result is inferred or marked PASS/FAIL from that statement alone**. Add exact run-specific evidence below when supplied. This policy documentation change itself does not start a new test.
+
 ## What is known from repository inspection (not runtime acceptance)
 
 - PR [#165](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/165) retired TeamLapen Vampirism/Werewolves/Vampire's Delight from the integration manifest and pin index. Later repairs [#167](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/167) and [#168](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/168) were merged.
