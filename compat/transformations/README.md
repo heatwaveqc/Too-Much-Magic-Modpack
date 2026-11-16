@@ -1,3 +1,12 @@
+# Vampire v2 architecture note
+
+This branch supersedes the original symmetric Vampire Chassis v1
+design. **Normal infection is Vampirism-only; Lilith's Blood adds JAWR,
+which becomes canonical for blood/hunger/healing; either cure must remove
+both states.** The test contract is [VAMPIRE-ASCENSION-V2.md](../../docs/VAMPIRE-ASCENSION-V2.md).
+All v1 examples below remain historical and SHOULD NOT be interpreted as
+current desired mechanics.
+
 # Too Much Magic — transformation compatibility bridge (development)
 
 **Status: experimental vampire chassis compiled; runtime-changing options all OFF by default. NOT integrated as survival-ready transformation enforcement.**
@@ -41,3 +50,35 @@ Never bypass uncertain observations, erase progression, silently install Dragon 
 ## Enablement and safety (test worlds only)
 
 Read [Vampire chassis v1 test plan](../../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md) before changing flags. The world-server config defines `experimentalVampireChassis`, `experimentalAutomaticDualAcquisition`, `experimentalAllowUnverifiedOtherProviders` and `experimentalOperatorCure`, **all default false**. The last two are especially unsafe and should never be enabled in a valuable world. Existing permanent transformations must not be migrated automatically. Do not add the JAR to packwiz while native cure, level progression, HUD, independent player isolation and death cases remain untested.
+
+## Archlich native resurrection arbitration (test-only)
+
+For players with **both** Goety 3.2.2 and Forbidden Magic 0.5.37 lich flags,
+`ArchlichResurrectionEvents` (NeoForge `LivingDeathEvent` HIGHEST priority)
+attempts the original JAWR phylactery save first. An actual JAWR save
+cancels the death event, so Goety does not charge its Arca. If the JAWR
+phylactery is not charged, native Goety remains the fallback without
+any TMM manual resurrection. Other liches are left alone.
+
+This is **ON by default** for fresh disposable pre-alpha worlds: `experimentalArchlichPhylacteryFirst = true` in `tmm_archlich-server.toml`. Set false explicitly to opt out; existing world configs retain their values.
+The exact native API is version gated. It does not implement the proposed
+shared hunger value, cures, or immortality cross-provider lifecycle.
+See [Archlich priority and QA](docs/ARCHLICH-RESURRECTION-PRIORITY.md).
+
+## Dracolich 1.21.1 native-state pilot
+
+The first Dracolich code slice adds three version-checked, read-only provider
+probes (Dragon Survival 2.0.74, Goety 3.2.2, Forbidden Magic 0.5.37),
+a pure form source policy, and `/tmmtransform dracolich` diagnostics.
+
+Target: **Sea/Forest/Cave dragon + one native lich**, with the dragon
+retaining species/growth/abilities and the one lich retaining its own
+resurrection anchor, hunger and progression. Dragon plus both lich providers
+remains CONFLICT; the bridge does not choose one silently.
+
+**No automatic acquisition, native-on-death priority rewrites, hunger reset,
+texture transformation, or dual-cure handling has shipped in this pilot.**
+This is observability/testing scaffolding, not a claim of gameplay acceptance.
+Dragon Survival has an independent death-triggered passive ability that may
+heal and cancel death before lich handlers; test it before reordering events.
+See [Dracolich pilot / six-world QA](docs/DRACOLICH-PILOT.md).

@@ -8,7 +8,15 @@
     "JAWRBloodPoolMixin",
     "JAWRVampireEventsMixin",
     "VampirismBloodStatsMixin",
-    "VampirismSunProtectionMixin"
+    "JAWRVampireSunAccessor",
+    "GoetyDracolichAcquisitionMixin",
+    "ForbiddenMagicDracolichAcquisitionMixin",
+    "DragonSurvivalDeathRepeatMixin"
   ],
-  "injectors": {"defaultRequire": 1}
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "VampirismBloodBarMixin"
+  ]
 }
