@@ -12,6 +12,12 @@ on:
       - 'kubejs/startup_scripts/eldritch_logic_core.js'
       - 'scripts/validate_cc_iesnium_pilot.py'
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Full server smoke ONLY after explicit owner authorization for this run'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -47,6 +53,7 @@ jobs:
           go install github.com/packwiz/packwiz@v0.0.0-20261014010756-170b22d78595
           "$(go env GOPATH)/bin/packwiz" list
       - name: Run exact 156-pin NeoForge dedicated-server smoke
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
