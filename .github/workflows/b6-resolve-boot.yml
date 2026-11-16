@@ -1,15 +1,18 @@
 name: B6 final food skills pack resolve and boot
 on:
-  push:
-    branches: [build/b6-food-pufferfish-skills-client-handoff]
-    paths: ['.github/workflows/b6-resolve-boot.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   b6-full-server:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
