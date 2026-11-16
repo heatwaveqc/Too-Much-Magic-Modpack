@@ -72,6 +72,21 @@
 | Botania Revived modules | `[modules]` config keys read at startup; module registration conditions | Optional items, recipes, loot, structures and sky rendering | Upstream defaults enable Botania Extras, Exploration, Creative Crafting and Asgard; Skybox is off. Disabled module content is not registered. No TMM Botania config override is tracked, so upstream defaults are the expected starting behavior. |
 | Ars Nouveau compatibility | Optional integration activates with Ars Nouveau; see cross-mod report | Bidirectional mana/Source capability adapters plus player spell/gear conversion | Exact ratios and item paths are code-backed but not measured. Both systems remain distinct resources; do not treat `1 Source = 15 mana` as a universal conversion for every player/machine path. |
 
+### Gaia Guardian summon, arena, credit and reward contract
+
+The following comes from Botania Revived 2.0.2's immutable source snapshot. It is not a tested TMM fight.
+
+| Stage | Source behavior | Player-facing / pack consequence |
+| --- | --- | --- |
+| Summon | Right-click the central Beacon with one Terrasteel Ingot for normal mode or one Gaia Ingot for hard mode. Server-side validation requires a real player, non-Peaceful difficulty, no existing Guardian in the nearby arena box, all four Gaia Pylons at offsets (±4,+1,±4), and a valid arena. The item is consumed only after all checks pass. | A failed structure/difficulty/duplicate check should not consume the ingot. The source multiblock accepts a 3×3 Beacon-base-block pattern, using Minecraft's Beacon base block tag. |
+| Arena | Horizontal radius is 12 around the Beacon. The checker inspects two layers below through five above; it requires a floor in the lower layers and rejects colliding blocks above unless they are in the Gaia break-blacklist tag. The four pylon corner columns are exempt. | The multi-block guide/preview should be taught with the source's actual radius and vertical clearance. Pack tag resolution and exact redstone/claim interactions remain open. |
+| Player scaling and start | Player count is measured from real players in an AABB extending 15 blocks on each axis around the Beacon. Base max health is 320; with more than one counted player, the multiplier is 1 + playerCount × 0.25 (so 2 counted players gives 480, 3 gives 560). Hard mode instead sets 15 armor. Spawn starts at 1 health, grants 160 ticks of invulnerability, and heals toward maximum over that window. | Hard mode's source configuration is not an extra health multiplier in this method. Counted players also affect encounter spawns; test the actual join/leave behavior. |
+| Damage and contributors | The Guardian only accepts hits whose damage source entity is a real Player and while its invulnerability time is zero; it records unique player UUIDs that hit it. The common config default per-hit damage cap is 10,000, while the class has a separate 32 fallback constant. | Environmental/automated damage is not equivalent to a player-owned hit in the source check. TMM's effective config and projectile/player attribution need testing. |
+| Death and advancement | On death, every recorded real-player contributor gets a player-killed criterion path and a loot-table call at their own position. The loot code sets the player as last attacker for that call. The true final player killer is tracked separately for bonus Life Essence. “No Armor” is team-wide and latched: once any nearby player is observed wearing armor, the shared flag stays true and the no-armor criterion is not triggered for any contributor. | Contribution rewards are per attacker, not just the last hit. The no-armor advancement does not check each participant independently. |
+| Normal-mode items | Each qualifying contributor's normal loot call gives 6 Life Essence (8 to the true killer) and a 20% Gaia music-disc chance. | Do not model normal loot as one shared drop for the party. |
+| Hard-mode items | Each qualifying contributor gets 10 Life Essence (16 for the true killer); further pools include a 50% Black Lotus table, one random Ancient Will, 25% Overgrowth Seeds (1–3), separate Manasteel (90%, 16–27), Mana Pearl (70%, 8–13) and Mana Diamond (50%, 4–6) pools, 1–6 Rune rolls (2–4 per roll), 20% Pinkinator, 44% weighted music-disc pool, and a Dice of Fate pool when Relics are enabled. | Hard mode has substantial repeatable material output and may multiply it across contributors. Relics reward also depends on the module config. Compare the exact pool with TMM's boss gates before using Gaia as a quest reward milestone. |
+
+The source's participant loop and temporary last-attacker swap are material to reward counts; exact item drops, item entity ownership/pickup, XP, all projectiles, and party-size boundaries still need a client test. The fight's ten-wave/low-health phase and attack patterns remain outside this source slice.
 ## Walkthrough blueprint for later quest work
 
 | Step | Player action | Observable success | Lexica/JEI reference and status |
@@ -117,6 +132,7 @@
 
 | Test | Positive and boundary cases | Expected observable | Performed? |
 | --- | --- | --- | --- |
+| Gaia Guardian summon/reward | Test failed then valid Beacon/Pylon/arena setups; normal/hard ingot consumption; 1 vs 2+ real players; direct/projectile/contributor credit; armored participant then armor removal; normal/hard loot; Relics enabled/disabled | Confirms no item loss on invalid summon, arena boundaries, health/player scaling, per-contributor rewards, true-killer bonus, and team-wide latched no-armor predicate | not run; exact source only |
 | Lexica and guide | Craft from sapling/book, trigger category advancements, read module pages with enabled/disabled config | Correct guide opens and reveals only relevant pages | no |
 | Core mana loop | Pure Daisy with valid/invalid blocks; Endoflame with fuel/no fuel; flower/spreader/pool bindings and several distances | Correct block conversion, burst, loss and pool value are visible | no |
 | Runic / Terrasteel | Correct and missing ingredient, valid/invalid multiblock, low mana and sufficient mana | Recipe accepts mana only when valid; expected output returns and mana is accounted | no |
@@ -132,6 +148,7 @@
 
 | Claim | Exact source | What it establishes / limit |
 | --- | --- | --- |
+| Gaia Guardian summon/combat/rewards | [GaiaGuardianEntity.java](https://github.com/Velron-Devs/Botania-Revived/blob/5f803227d484598da1f1093a91d5d7cf5cf9600d/src/main/java/velrondevs/botania/common/entity/GaiaGuardianEntity.java), [GaiaGuardianLootProvider.java](https://github.com/Velron-Devs/Botania-Revived/blob/5f803227d484598da1f1093a91d5d7cf5cf9600d/src/main/java/velrondevs/botania/datagen/providers/loot/GaiaGuardianLootProvider.java), [TrueGuardianKiller.java](https://github.com/Velron-Devs/Botania-Revived/blob/5f803227d484598da1f1093a91d5d7cf5cf9600d/src/main/java/velrondevs/botania/common/loot/TrueGuardianKiller.java), [RealPlayerCondition.java](https://github.com/Velron-Devs/Botania-Revived/blob/5f803227d484598da1f1093a91d5d7cf5cf9600d/src/main/java/velrondevs/botania/common/loot/RealPlayerCondition.java), [BotaniaConfigSpec.java](https://github.com/Velron-Devs/Botania-Revived/blob/5f803227d484598da1f1093a91d5d7cf5cf9600d/src/main/java/velrondevs/botania/config/BotaniaConfigSpec.java) | Exact port tag 2.0.2 source maps spawn input/structure, participant health scaling, true-player hit filter, per-contributor loot calls, true-killer bonus, team-wide no-armor state and loot pools. Pinned JAR parity, effective module config and client fight remain unverified. |
 | Pinned artifact | `mods/botania-revived.pw.toml`; CurseForge 1725641/9577651; exact JAR SHA-1 above | Hash-matched direct inspection of the selected bytes |
 | Version-aligned source | [commit `5f803227`](https://github.com/Velron-Devs/Botania-Revived/tree/5f803227d484598da1f1093a91d5d7cf5cf9600d), exact `gradle.properties` and README | Source declares same 1.21.1 NeoForge 2.0.2 release; port docs and source behavior |
 | Guidebook/access and scope | Pinned JAR `assets/botania/patchouli_books/lexicon/**`, `data/botania/recipe/lexicon.json` and `assets/botania/lang/en_us.json` | Lexica recipe, categories, entries, page references and translations; not UI rendering |
@@ -149,9 +166,11 @@
 - [ ] Confirm module config defaults in the actual TMM client, especially Asgard, Creative Crafting, Loonium and Exploration, and decide whether any need an owner-authorized settings change later.
 - [ ] Measure flower rates, spreader loss and Ars conversion at exact versions; do not infer throughput from source formulas.
 - [ ] Complete separate Extra Botany Revived 1.0.4 profile and review its bosses, relics, Baubles, flower inputs, worldgen and Mini Handbag.
-- [ ] Verify Gaia Guardian summon arena, combat phases and reward table in a disposable client world.
+- [ ] Verify Gaia Guardian arena and reward table in a disposable client world: exact item consumption, arena clearance, player-count scaling, participant vs true-killer credit, team-wide no-armor trigger, loot pools and module config. Source contracts are now mapped; no encounter behavior has been reproduced.
 - [ ] Reconcile the authored TMM quest chapter against all mandatory setup stages only in the later quest pass; leave it untouched now.
 
 ## Revision notes
 
 - 2026-11-15 — Added exact-artifact/source profile for Botania Revived 2.0.2. Mapped the 13-category/291-entry Lexica, core mana progression, addon/module defaults and Ars Nouveau bridge. Flagged high-output Asgard, creative crafting, Loonium and structure/worldgen questions; none are claimed tested. No quest or runtime files changed.
+
+- 2026-11-16 — Botania Revived follow-up mapped the 2.0.2 Gaia Guardian summon/arena contract, Terrasteel vs Gaia Ingot modes, party-health scaling, true-player hit accounting, per-contributor loot calls, true-killer bonus, team-wide latched No Armor state and normal/hard reward pools. The reward tables are source-level and may multiply per attacker; exact pinned-JAR parity, effective config, item pickup and fight behavior remain untested. No quest/runtime edits.
