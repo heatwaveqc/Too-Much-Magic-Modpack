@@ -49,6 +49,12 @@ Primary source reference URLs:
 - `https://lexxie.dev/neoforge/1.21.1/net/minecraft/world/food/FoodData.html`
 - `https://lexxie.dev/neoforge/1.21.1/net/neoforged/neoforge/event/entity/living/LivingEntityUseItemEvent.Start.html`
 
+## New Fortune ownership (2026-11-16)
+
+Gilded's native rank-one skill auto-grants **+3 virtual Fortune**. Seven rank purchases in `tmm_gilded_fortune_mastery` (Tyz, one existing SP wallet) grow it to **+10** total; no rank-3/7/11 Fortune unlocks remain in the active path. `TyzGildedBridge` reads purchased Tyz levels only for joined Gilded players; Tyz absence leaves the native +3 intact. See `compat/gilded/tyzs-overlay/README.md` for guarded overlay staging, including the category patch that preserves existing Monk/Core Magic skill trees.
+
+**My Nether's Delight** is now tagged desired for next Gilded QA in the branch and canonical integration `manifest/mods.json`, but is **not yet installed or hash-pinned**. The exact 1.21.1 NeoForge release is 1.10.4.1, CurseForge ID 8854319. Targeted Java [compile+tests passed](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43933596444). No full modpack smoke or client acceptance test has been run.
+
 ## Source implementation handoff (2026-11-16)
 
 - **Wired:** `runtime/GildedRules.java`, `ProgressionMod` registration, `ProgressionEvents` enrollment/XP hooks, `ClassAbilities` retaliation accessor, resource path/tags.
@@ -71,7 +77,7 @@ The JSON was originally drafted against the existing progression parser for `act
 - `food_whitelist` must cancel/deny unauthorized **food use before the effects or hunger/saturation apply** (including instant food, long food-use interactions, modded bowls and placed feasts). Nonfood potions/medicines should be unaffected; must not disable all consumables. No automatic blacklist of another mod's valid Nether-only foods—explicitly add to tag after verifying ingredients.
 - `piglin_affinity` must prevent unprovoked anger *initiation* from mining gold/opening/breaking protected storage, and neutralize ordinary targeting for the specific enrolled player by **Piglins and Brutes**. Do not wipe or reset existing anger/other-player targets; retaliation after player attack remains valid.
 - `gold_diamond_equivalence` must reflect equivalent damage, harvest tier, armor points/toughness for **worn/wielded gold** without changing persistent item components or lowering gold's vanilla fast mining speed.
-- `virtual_fortune` adds +1 per unlocked rank (three ranks, **+3 at rank 11**) to actual Fortune once at legitimate block loot generation, with Silk Touch precedence and no item NBT mutation. User-locked final bonus = +3. No artificial enchantment cap.
+- `virtual_fortune` starts at **+3 additive virtual Fortune at initiation**, then seven purchased Tyz skill ranks increase it by one each to **+10**. Stored enchantments are still fully additive, Silk Touch wins, no second loot roll or item NBT mutation.
 - `virtual_unbreaking` adds +1 effective level per unlocked rank (three ranks, **+3 at rank 12** as a provisional proposed final value) without changing stack enchantments; exact bonus magnitude remains open.
 - `gear_durability` is the existing registered effect; both gold and Netherite share one tag and **the exact same** 1, 2 or 3 durability restored per five ticks at path levels 1, 10 and 18. These rates and unlock levels are prototype values, not owner-locked. Armor and active mainhand qualify; verify whether the existing `slot:all` behavior permits offhand parked equipment and narrow it if necessary.
 - The `external` activity `tmm_progression:gilded_gold_ore_broken_without_silk` can earn XP **repeatedly** via `ProgressionApi.recordExternal`, but a new trusted block-break adapter must emit the signal **once per successful player-originated gold ore break when the actual tool does not have Silk Touch**. Use the exact verified ore tag. Do not award from raw drop count, pre-canceled breaks, recipes, ordinary gold blocks, general Nether activities or automation. No extra non-owner-approved restriction on placed/purchased ore is built into this prototype.
@@ -80,14 +86,14 @@ The JSON was originally drafted against the existing progression parser for `act
 
 - 20 ranks, same cumulative XP ladder as the current Hunter pilot (0 to 28,000), 10 class XP per eligible ore. Two milestone bonuses at 32 and 256 qualifying blocks.
 - Class abilities are automatic at certain path ranks; there are no spendable points; the Nether/full-gold/eat-golden-food initiation is **owner-locked** and described in `gilded_initiation.json` but still requires Java.
-- Food restriction, Piglin/Brute affinity, gold diamond equivalence and first-tier renewal unlock with enrollment. Fortune I+1 at ranks 3/7/11, Unbreaking +1 at ranks 4/8/12; this distribution is a draft, not a locked class progression decision.
+- Food restriction, Piglin/Brute affinity, gold diamond equivalence and first-tier renewal unlock with enrollment. Fortune +3 immediately and up to +10 via seven purchased Tyz levels, Unbreaking +1 at native ranks 4/8/12; this distribution is a draft, not a locked class progression decision.
 
 ## Mod decision, not an installation
 
-The original Nether's Delight is a different, older add-on; for MC 1.21.1/NeoForge use **My Nether's Delight `1.10.4.1`** (official Modrinth `https://modrinth.com/mod/my-nethers-delight`, CurseForge `https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight`). Requires `farmersdelight`, already in pack. It is **suggested for the future Gilded-enabled build**, NOT installed, pinned, or added to manifests by this work. Check exact file metadata/hashes and gameplay compatibility before inclusion.
+The original Nether's Delight is a different, older add-on; for MC 1.21.1/NeoForge use **My Nether's Delight `1.10.4.1`** (official Modrinth `https://modrinth.com/mod/my-nethers-delight`, CurseForge `https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight`). Requires `farmersdelight`, already in pack. It is **now owner-approved and tagged for next Gilded QA in both mod manifests** (`desired: true`, `enabled_in_pack: false`); still NOT pinned, installed or world-tested. Check exact file metadata/hashes and gameplay compatibility before inclusion.
 
 ## QA and isolation
 
-Check path parser in a harness after handler registration, test diet before consumption, empty hunger, placed feast and modded consumables, verify Piglin+Brute/no armor, gold alarm suppression preserving retaliation, gold-diamond property switches, Fortune III +3 = VI, netherite bonus, no item persistence, equal gold/Netherite repair, ore XP no-Silk only, and multiplayer claim/actor origin. Do not claim in-game tests without dedicated-server and client evidence.
+Check path parser in a harness after handler registration, test diet before consumption, empty hunger, placed feast and modded consumables, verify Piglin+Brute/no armor, gold alarm suppression preserving retaliation, gold-diamond property switches, Fortune III +3 = VI at initiation, Fortune III +10 = XIII at Tyz seven ranks, netherite bonus, no item persistence, equal gold/Netherite repair, ore XP no-Silk only, and multiplayer claim/actor origin. Do not claim in-game tests without dedicated-server and client evidence.
 
-This prototype is **not active**, **not compiled**, and **not in the current candidate test build**.
+This source is active **only on the exploratory development branch** and passes Java unit tests; it is NOT in the current full integration test build or player-tested.
