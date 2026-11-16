@@ -102,7 +102,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "4362f7b3a135ed292836a1a8345eef49e3ab212ae20b4336f84a725059e7064e"
+hash = "40495fa84dbbaf3faed302914552f82f1f11e7fdb3b9303fdcfd830439407497"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -186,7 +186,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "0a8798ed0239ba4bfff144ae4a2cd1b314ab414ca9e59d498ce8609fb57b06a6"
+hash = "477826e7b96f2c55983b6299f5a785032de0d1c9b6567708d1a36221fc008e04"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -240,9 +240,6 @@ hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 file = "kubejs/data/tmm/advancement/first_log.json"
 hash = "b6884a54ff24a9f23d32a364fb8ee0aa2adee11b67a5ac8fa99795c8da62a6dd"
 
-[[files]]
-file = "kubejs/data/tmm/function/rewards/first_log.mcfunction"
-hash = "7a72600b5fce074632221e656c0f22826584838a403a64f4acd73dd655258766"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"

@@ -19,7 +19,12 @@ def main():
     assert intro.count('id: "enigmaticlegacyplus:unwitnessed_amulet"') == 1
     assert intro.count('id: "enigmaticlegacyplus:cursed_ring"') == 1
     assert intro.count('id: "ars_elemental:curio_bag"') == 2 # icon + reward
-    assert "give @s" not in read("kubejs/data/tmm/function/rewards/first_log.mcfunction")
+    assert not (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").exists()
+    log_quest = intro.split('id: "544D4D1100000001"', 1)[1].split("\n\t\t}", 1)[0]
+    assert 'id: "544D701000200003"' in log_quest
+    assert 'id: "minecraft:torch"' not in log_quest
+    a = json.loads(read("kubejs/data/tmm/advancement/first_log.json"))
+    assert "rewards" not in a and a["criteria"]["first_log"]["conditions"]["items"][0]["items"] == "#minecraft:logs"
     authored = json.loads(read("manifest/quest_content.json"))["quests"]
     resolved = json.loads(read("manifest/quest_content_resolved.json"))["quests"]
     for records in (authored, resolved):
@@ -27,7 +32,8 @@ def main():
         assert welcome["reward"]["item"] == "enigmaticlegacyplus:unwitnessed_amulet"
     for rec in authored:
         if rec["title"] == "Punch a Tree" and rec["chapter"] == "Getting Started":
-            assert "pouch is now a quest reward" in rec["description"]
+            assert rec["reward"] == {"xp": 10, "item": "ars_elemental:curio_bag", "count": 1}
+            assert "claim this quest" in rec["description"]
     dragon = read("defaultconfigs/dragonsurvival-server.toml")
     for s in ("start_with_dragon_choice = false", "allow_dragon_choice_from_inventory = false",
               "transform_altar = true", "no_humans_allowed = false"):
@@ -39,7 +45,7 @@ def main():
     assert f'hash = "{hashlib.sha256(index.encode()).hexdigest()}"' in pack
     files = ("config/ftbquests/quests/chapters/intro.snbt",
              "config/ftbquests/quests/lang/en_us.snbt",
-             "kubejs/data/tmm/function/rewards/first_log.mcfunction",
+             "kubejs/data/tmm/advancement/first_log.json",
              "defaultconfigs/dragonsurvival-server.toml",
              "defaultconfigs/enigmaticlegacyplus-server.toml")
     for p in files:
