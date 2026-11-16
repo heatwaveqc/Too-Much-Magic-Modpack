@@ -241,7 +241,8 @@
     "research/atm10-specialist-benchmark-20261115": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
     "research/hunter-creature-inventory-2026-11-15": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
     "research/hunter-pinned-jar-audit-ci": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
-    "research/mod-comprehension-neovitae": "Design/research-only, not active gameplay content for the TeamLapen retirement QA"
+    "research/mod-comprehension-neovitae": "Design/research-only, not active gameplay content for the TeamLapen retirement QA",
+    "design/piglin-gold-progression-exploratory-2026-11-15": "Exploratory Piglin gold progression design documented only under docs/explorations; no runtime files or approved next-build feature."
   },
   "pending_runtime_work": [
     "BLOCKER: do not reinstate kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js: global dropped-item tick costs and proxy item lifecycle are unacceptable. Replace with scoped native Mahou Catalyst Exchange scanner patch; preserve native mana/consumption and no item duplication.",
