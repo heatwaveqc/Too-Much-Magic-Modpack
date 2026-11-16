@@ -4,6 +4,7 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.server.level.ServerPlayer;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
+import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
@@ -183,6 +184,7 @@ public final class ProgressionEvents {
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
+            ProgressionMenuNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
     }
@@ -200,6 +202,7 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
+            ProgressionMenuNetwork.forget(player);
         }
     }
 }
