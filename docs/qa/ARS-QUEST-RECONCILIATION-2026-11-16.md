@@ -1,6 +1,6 @@
 # Ars Nouveau and first-log starter reward reconciliation — 2026-11-16
 
-**Candidate:** `fix/ars-quests-current-baseline-2026-11-16` targeted at `test/full-integration`. **Static/source candidate only; no owner-authorized full smoke, Prism packaging, or live client acceptance.**
+**Merged:** PR [#225](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/225), commit `edd555accf09765d802686cc6aceef5b8a2b24ea` on `test/full-integration`. Quick PR validation passed; **no owner-authorized full smoke, Prism packaging, or live client acceptance**.
 
 ## Source reconciliation
 - Ported the complete 49-node Ars questline (29 core + 20 in seven installed add-ons) from `feature/ars-quest-pilot` into the current 44-chapter book, preserving all 19 Alcohol Is Magic quests, all 18 Getting Started quests and two new Welcome starter items.
