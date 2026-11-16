@@ -190,7 +190,7 @@ def main() -> None:
             rewards = block[reward_start:task_start]
             tasks = block[task_start:]
             xp = re.search(r'type: "xp", xp: (\d+)', rewards)
-            item_matches = re.findall(r'type: "item", item: \\{ id: "([^"]+)", count: 1 \\}, count: (\\d+)', rewards)
+            item_matches = re.findall(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
             # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
