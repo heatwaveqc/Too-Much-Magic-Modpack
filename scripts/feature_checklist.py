@@ -115,9 +115,10 @@ def render(data: dict) -> str:
             evidence = f" [evidence]({link_to(row['evidence'])})" if row["evidence"] else ""
             title = row["title"].replace("|", "/")
             test = row["acceptance"].replace("\n", " ").replace("|", "/")
+            punctuation = "" if test.endswith(".") else "."
             out.append(
                 f"- [{checked}] **{title}** (`{row['id']}`) "
-                f"— *{DISPLAY[row['state']]}*. {test}.{src}{evidence}"
+                f"— *{DISPLAY[row['state']]}*. {test}{punctuation}{src}{evidence}"
             )
         out.append("")
     out.extend([

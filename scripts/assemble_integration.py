@@ -86,7 +86,8 @@ def main() -> None:
     git("merge", "--no-edit", base_ref)
     sources = {s["branch"] for s in cfg["streams"]}
     covered = set(cfg["covered_by_baseline"]) | set(cfg["superseded_or_non_runtime"])
-    known = sources | covered
+    deferred = set(cfg.get("deferred_pending_runtime", {}))
+    known = sources | covered | deferred
     remote = git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines()
     unexpected = sorted(name[7:] for name in remote
                         if name.startswith(tuple("origin/" + prefix for prefix in TRACKED_PREFIXES))
@@ -189,6 +190,7 @@ def main() -> None:
         "baseline": cfg["baseline"], "baseline_sha": git("rev-parse", base_ref),
         "workstreams": report, "covered_by_baseline": cfg["covered_by_baseline"],
         "superseded_or_non_runtime": cfg["superseded_or_non_runtime"],
+        "deferred_pending_runtime": cfg.get("deferred_pending_runtime", {}),
         "pending_runtime_work": cfg["pending_runtime_work"],
         "pinned_mod_count": mod_count,
         "pack_sha256": sha256(ROOT / "pack.toml"),
