@@ -63,12 +63,12 @@ Do not start B tests until there is an authorized test build and the exact comma
 
 | Case | Result | Exact SHA | Player/command evidence | Notes |
 | --- | --- | --- | --- | --- |
-| B00 | NOT RUN | — | — | Follow linked case in checklist |
+| B00 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Player follow-up](PLAYER-FOLLOWUP-2026-11-16.md) | User confirms both paths and enabled datapacks; no full checklist claim |
 | B01 | NOT RUN | — | — | Follow linked case in checklist |
 | B02 | NOT RUN | — | — | Follow linked case in checklist |
-| B03 | NOT RUN | — | — | Follow linked case in checklist |
-| B04 | NOT RUN | — | — | Follow linked case in checklist |
-| B05 | NOT RUN | — | — | Follow linked case in checklist |
+| B03 | PASS | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Player follow-up](PLAYER-FOLLOWUP-2026-11-16.md) | Natural Monk initiation; skip repeats unless relevant implementation changes |
+| B04 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Player follow-up](PLAYER-FOLLOWUP-2026-11-16.md) | Hunter potion enrollment and specialty interaction work; kill XP and negative controls not checked |
+| B05 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Player follow-up](PLAYER-FOLLOWUP-2026-11-16.md) | Command-supplied catalyst brews/drinks, credits progress without Speed; recipe fails, JEI missing, unlock/hunger untested |
 | B06 | NOT RUN | — | — | Follow linked case in checklist |
 | B07 | NOT RUN | — | — | Follow linked case in checklist |
 | B08 | NOT RUN | — | — | Follow linked case in checklist |
@@ -81,7 +81,7 @@ These require a real installed QA build and the smallest necessary disposable wo
 
 | Case | Result | Exact SHA | Screenshot/log/test evidence | Notes |
 | --- | --- | --- | --- | --- |
-| C01 | NOT RUN | — | — | Follow linked case in checklist |
+| C01 | PARTIAL | `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` | [Player follow-up](PLAYER-FOLLOWUP-2026-11-16.md) | Client navigation observed; graphical progression UI NOT BUILT; quest formatting confirmed broken |
 | C02 | NOT RUN | — | — | Follow linked case in checklist |
 | C03 | NOT RUN | — | — | Follow linked case in checklist |
 | C04 | NOT RUN | — | — | Follow linked case in checklist |
@@ -108,3 +108,8 @@ If an agent has only inspected documentation or committed source, **do not upgra
 ## 2026-11-16 automated execution summary
 
 Tested installed/source snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4` using the later three-tier checklist. All 161 installed mod hashes and both custom JAR hashes match; 43 progression and 23 transformation tests pass. Command parsing/admin XP and loaded Bio-Mutagen recipe are blockers; oven reference and Goety/ProjectE errors persist. B19 fails on Windows path spelling despite matching normalized contents. The new `feature/traders-vengence` needs explicit future assembly classification. No full smoke or world mutation; B/C untouched. Earlier source-inspection/readiness rows above are historical context, not newer runtime acceptance. See [full report](AUTOMATED-QA-2026-11-16.md) for per-R readiness conclusions and feature-branch SHAs.
+
+
+## 2026-11-16 subsequent player tests
+
+[Complete player findings and screenshot descriptions](PLAYER-FOLLOWUP-2026-11-16.md) supersede earlier NOT RUN statements only for the bounded B/C rows updated above. **Two distinct TreeChop bugs:** progress bar disappears after first break; no Monk XP even after complete felling. Quest navigation shows ampersand formatting errors and an Unnamed chapter. Tome empty, three separate guidebooks and Enigmatic trinkets granted, bag directly granted and absent as quest reward; first-slot fix passes. Ars and starter-reward integrations are deferred/not built. Bio-Mutagen JEI visibility and bottle graphics need work. UI is not shipped, not a failed keybinding. No unchanged JAWR baseline retest requested.
