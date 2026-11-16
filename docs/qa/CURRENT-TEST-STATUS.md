@@ -98,6 +98,10 @@ These require a real installed QA build and the smallest necessary disposable wo
 | C07 | NOT RUN | — | — | Follow linked case in checklist |
 | C08 | NOT RUN | — | — | Follow linked case in checklist |
 | C09 | NOT RUN | — | — | Follow linked case in checklist |
+| C13 | NOT RUN | — | — | Dragon Survival Hot Dragon Rod 1-versus-8 dust native crafting; no recipe change |
+| C14 | NOT RUN | — | — | Dragon Survival Spearman Promotion 1-versus-3 emerald blocks native crafting; no recipe change |
+| C15 | NOT RUN | — | — | Dragon Survival Forest/Sea/Cave Source of Magic native crafting; ore form comparisons; no recipe change |
+| C16 | NOT RUN | — | — | Bottle Caps Treasure conditional: `desert_monster_ds` absent in current pack roster; verify final build then NOT BUILT/NOT APPLICABLE if absent |
 
 ## Session log (append one row per actual execution)
 
@@ -110,3 +114,7 @@ These require a real installed QA build and the smallest necessary disposable wo
 Use `PASS`, `PARTIAL`, `FAIL`, `BLOCKED`, `NOT BUILT`, or `NOT RUN`. Always supply exact commit, executed command, meaningful output and limited interpretation. For a failing test, record expected vs actual, a reproducible fixture, and the smallest proposed repair.
 
 If an agent has only inspected documentation or committed source, **do not upgrade any case to server-smoked or player-pass**. Canonical feature acceptance remains `manifest/feature-checklist.json`; the repository's full test history remains `docs/TESTING.md`.
+
+## Pending Dragon Survival native recipe checks (owner instruction, 2026-11-16)
+
+These are **test requests only**, not accepted bug reports or approved recipe changes. Inspect the exact 2.0.74 JAR and observe actual JEI/crafting first. `C13` Hot Dragon Rod, `C14` Spearman Promotion, and `C15` all three Sources of Magic must be attempted in the next owner-authorized live test if Dragon Survival is installed. `C16` Bottle Caps Treasure is optional and conditioned on `desert_monster_ds`; absent dependency = not built/not applicable, with no addon installation solely for this check. Previous review of authored JSON identified possible quantity/tag mismatches but did **not** demonstrate a gameplay failure. Leave every native recipe unchanged pending results.

@@ -103,3 +103,16 @@ See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is 
 | Origin | Ready feature / source | Runtime destinations | Next-test status | Acceptance and evidence |
 | --- | --- | --- | --- | --- |
 | Owner's failed live recipe test; [PR #231](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/231) | Seasoned Fish accepts any raw fish instead of only salmon, `fix/dragon-seasoned-fish-raw-fish-2026-11-16` | `kubejs/server_scripts/dragon_seasoned_fish.js`; lightweight static test `scripts/verify_dragon_seasoned_fish.cjs`; requires pinned Dragon Survival + KubeJS + `#c:foods/raw_fish` | **READY FOR NEXT TEST; source-staged, not yet runtime-verified**. Once PR merged, confirm final pack actually includes the script; this table does not assert inclusion in an already-created ZIP. | The player already reported a **salmon-only FAIL** on the previous client. On a new disposable client with the new script, check actual `dragonsurvival:seasoned_fish` JEI entry and craft with cod, salmon, tropical fish and pufferfish, one ink sac and one kelp each. Cooked fish should fail. Check no duplicate or vanished recipe, and capture exact build SHA and KubeJS logs. Do **not** conflate with the distinct eight-dust `dragonsurvival:sea_dragon_treat`. Source validator locally PASS; no Minecraft test in this fix session. |
+
+## Native Dragon Survival recipe observations — owner-directed next live test (2026-11-16)
+
+**Not a new feature and not a repair authorization.** The owner specifically directed that the native recipes below remain unchanged because the apparent source-level concerns have not been demonstrated to be runtime bugs. Carry these observations into the next owner-authorized comprehensive live test (C13–C16 in the executable checklist). Do not rewrite these recipes during assembly, and do not mark them FAIL without reproducing actual recipe behavior in the installed 2.0.74 environment.
+
+| Case | Native recipe | Required test intake |
+| --- | --- | --- |
+| C13 | `dragonsurvival:hot_dragon_rod` | Inspect JEI, recipe loading and actual one-versus-eight Elder Dragon Dust crafting/consumption; leave unchanged |
+| C14 | `dragonsurvival:spearman_promotion` | Inspect JEI, recipe loading and one-versus-three emerald block crafting/consumption; leave unchanged |
+| C15 | `dragonsurvival:forest_source_of_magic`, `dragonsurvival:sea_source_of_magic`, `dragonsurvival:cave_source_of_magic` | Craft all three; compare stone/deepslate emerald and lapis ores, and verify Cave recipe; distinguish intentional restrictions from defects; leave unchanged |
+| C16 | `dragonsurvival:bottle_caps_treasure` | **Conditional only** on `desert_monster_ds` being installed. Currently absent from checked-in roster; when absent record NOT BUILT/NOT APPLICABLE, do not install the addon. If included in a later build, investigate >9-slot shapeless recipe behavior, leave unchanged. |
+
+No full smoke, build, or client run is authorized by this intake note.
