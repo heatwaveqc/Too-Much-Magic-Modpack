@@ -61,3 +61,12 @@ All of these appeared under `deferred_pending_runtime` during the previous retir
 | 2026-11-16 · [PR #222](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/222) | Windows-normalized B19 Gateway catalog · `fix/b19-windows-path-catalog-2026-11-16` | One-line `scripts/build_progression_gateways.py` fix against deferred B19 feature branch; no Gateway pack files installed by this change. | **ATTEMPT REQUIRED** when B19 is assembled | B19 quick CI bootstrap passed; run B19 validator on Windows and ensure the corrected feature branch is imported rather than its stale parent. | A14, B19 |
 
 **Lifecycle:** `READY REPORTED` → `ATTEMPT REQUIRED` → `INCLUDED` / `BLOCKED` / `OWNER-DEFERRED`; only then may a comprehensive test candidate claim a complete inclusion matrix. Do not treat source-readiness as runtime acceptance.
+
+## Ars and starter quest reconciliation — ready candidate (2026-11-16)
+
+| Feature | Source | Inclusion attempt | Live acceptance |
+| --- | --- | --- | --- |
+| Complete Ars Nouveau + seven addon questline | `feature/ars-quest-pilot` → `fix/ars-quests-current-baseline-2026-11-16` | **SOURCE INCLUDED ON FIX BRANCH; PR MERGE AND FINAL ASSEMBLED RUNTIME CHECK REQUIRED**. 49 nodes, Chimera kill advancement, locale and authoring data; avoids older Alcohol/Welcome overwrite. | 49 Ars nodes and 19 Alcohol quests visible; novice, addons, Chimera, rewards claimed |
+| Quest-claimed first-log Curio Bag | Concurrent quick starter fix + `fix/ars-quests-current-baseline-2026-11-16` | **SOURCE INCLUDED ON FIX BRANCH; PR MERGE AND FINAL ASSEMBLED RUNTIME CHECK REQUIRED**. First log has no advancement reward dispatch; quest retains Curio Bag, four torches, XP. | Fresh player gets no auto bag; personal once-only quest claim; old player duplicate-policy check |
+
+See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is an in-world PASS or authorization to start a full smoke.
