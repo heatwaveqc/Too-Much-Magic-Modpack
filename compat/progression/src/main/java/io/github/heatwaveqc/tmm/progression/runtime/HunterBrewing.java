@@ -7,7 +7,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
-/** Any standard POTION_CONTENTS input (including registered modded potions). */
+/** Only effects resulting from registered ordinary brewing-stand potion recipes. */
 public final class HunterBrewing {
     private HunterBrewing() {}
     public static void register(RegisterBrewingRecipesEvent event) {
@@ -16,7 +16,8 @@ public final class HunterBrewing {
                 if (!(input.getItem() instanceof PotionItem)
                     || input.is(HunterItems.MUTAGENIC_BREW.get())) return false;
                 PotionContents contents = input.get(DataComponents.POTION_CONTENTS);
-                return contents != null && HunterMutations.hasEligibleEffect(contents);
+                return StandPotionEligibility.eligible(contents)
+                    && HunterMutations.hasEligibleEffect(contents);
             }
 
             @Override public boolean isIngredient(ItemStack ingredient) {
@@ -28,8 +29,8 @@ public final class HunterBrewing {
                 PotionContents contents = input.get(DataComponents.POTION_CONTENTS);
                 if (contents == null) return ItemStack.EMPTY;
                 ItemStack result = new ItemStack(HunterItems.MUTAGENIC_BREW.get());
-                // PotionContents carries registered vanilla/modded potion references AND
-                // custom effects. Never trust client-provided arbitrary XP/progress values.
+                // Only whitelist-verified outputs from ordinary brewing-stand recipes.
+                // No arbitrary custom effects / alt-machine potion components.
                 result.set(DataComponents.POTION_CONTENTS,contents);
                 return result;
             }
