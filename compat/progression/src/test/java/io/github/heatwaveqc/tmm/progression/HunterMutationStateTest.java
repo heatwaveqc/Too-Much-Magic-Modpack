@@ -31,6 +31,20 @@ class HunterMutationStateTest {
         assertEquals(2,withNightVision.unlocked().size());
     }
 
+    @Test void strongerPotencyReplacesLowerAndCannotBeEarnedWithLowerBottles() {
+        var speedI = HunterMutationState.empty()
+            .credit("minecraft:speed",0,TEN_HOURS,TEN_HOURS);
+        var halfSpeedII = speedI.credit("minecraft:speed",1,TEN_HOURS/2,TEN_HOURS);
+        assertEquals(0,halfSpeedII.unlocked().get("minecraft:speed"));
+        assertEquals(TEN_HOURS/2,halfSpeedII.progress("minecraft:speed",1));
+        var withMoreSpeedI = halfSpeedII.credit("minecraft:speed",0,TEN_HOURS,TEN_HOURS);
+        assertSame(halfSpeedII,withMoreSpeedI); // no I -> II upgrade
+        var speedII = halfSpeedII.credit("minecraft:speed",1,TEN_HOURS/2,TEN_HOURS);
+        assertEquals(1,speedII.unlocked().get("minecraft:speed"));
+        assertEquals(1,speedII.unlocked().size()); // never simultaneous I and II
+        assertSame(speedII,speedII.credit("minecraft:speed",0,TEN_HOURS,TEN_HOURS));
+    }
+
     @Test void accumulationSaturatesWithoutOverflowOrNegativeTime() {
         var s = HunterMutationState.empty();
         assertSame(s,s.credit("test:effect",0,0,TEN_HOURS));
