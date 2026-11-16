@@ -68,6 +68,7 @@ public final class ProgressionEvents {
         if (event.getItem().getFoodProperties(player) == null) return;
         ProgressionApi.recordConsumedFood(player,event.getItem());
         EffectHandlers.foodConsumed(player,event.getItem());
+        GildedRules.finishedFood(player,event.getItem());
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
@@ -81,6 +82,7 @@ public final class ProgressionEvents {
             ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
             HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
+            GildedRules.oreBroken(event);
         }
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
@@ -155,6 +157,7 @@ public final class ProgressionEvents {
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            GildedRules.clearArmor(player);
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);

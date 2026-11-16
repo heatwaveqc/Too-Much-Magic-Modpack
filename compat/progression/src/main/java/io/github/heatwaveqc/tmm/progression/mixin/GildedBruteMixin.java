@@ -1,0 +1,30 @@
+package io.github.heatwaveqc.tmm.progression.mixin;
+
+import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
+import io.github.heatwaveqc.tmm.progression.runtime.GildedRules;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
+import net.minecraft.world.entity.monster.piglin.PiglinBruteAi;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import java.util.Optional;
+
+/** Brutes are not placated by gold armor; filter only an unprovoked new target. */
+@Mixin(PiglinBruteAi.class)
+public abstract class GildedBruteMixin {
+    @Inject(method = "findNearestValidAttackTarget", at = @At("RETURN"), cancellable = true)
+    private static void gilded$ignoreUnprovokingPlayer(AbstractPiglin brute,
+            CallbackInfoReturnable<Optional<? extends LivingEntity>> cir) {
+        var candidate = cir.getReturnValue();
+        if (candidate != null && candidate.isPresent()
+            && candidate.get() instanceof ServerPlayer player
+            && GildedRules.joined(player)
+            && !ClassAbilities.isRecentRetaliation(brute,player)
+            && !brute.getBrain().hasMemoryValue(MemoryModuleType.ANGRY_AT))
+            cir.setReturnValue(Optional.empty());
+    }
+}

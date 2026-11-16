@@ -4,7 +4,13 @@
   "package": "io.github.heatwaveqc.tmm.progression.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "InventoryReservationMixin"
+    "InventoryReservationMixin",
+    "GildedFortuneMixin",
+    "GildedLootingMixin",
+    "GildedRareLootMixin",
+    "GildedPiglinMixin",
+    "GildedBruteMixin",
+    "GildedDurabilityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

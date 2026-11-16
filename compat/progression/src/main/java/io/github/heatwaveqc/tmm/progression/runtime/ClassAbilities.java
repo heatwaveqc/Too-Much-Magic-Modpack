@@ -334,6 +334,12 @@ public final class ClassAbilities {
                 player.serverLevel().getGameTime()+600));
         }
     }
+    /** True only for a qualifying direct player hit during the existing retaliation window. */
+    public static boolean isRecentRetaliation(Mob mob, ServerPlayer player) {
+        var last = RETALIATION.get(mob.getUUID());
+        return last != null && last.attacker().equals(player.getUUID())
+            && player.serverLevel().getGameTime() <= last.until();
+    }
     public static void targetChange(ServerPlayer p, LivingChangeTargetEvent event) {
         if (!(event.getEntity() instanceof Mob mob)) return;
         if (mob instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon

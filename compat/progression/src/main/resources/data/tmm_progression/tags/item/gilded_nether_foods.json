@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:mushroom_stew",
+    "minecraft:porkchop",
+    "minecraft:cooked_porkchop",
+    "minecraft:rotten_flesh",
+    {
+      "id": "mynethersdelight:hoglin_loin",
+      "required": false
+    },
+    {
+      "id": "mynethersdelight:cooked_loin",
+      "required": false
+    },
+    {
+      "id": "mynethersdelight:strider_slice",
+      "required": false
+    },
+    {
+      "id": "mynethersdelight:strider_with_grilled_fungus",
+      "required": false
+    },
+    "#tmm_progression:gilded_gold_foods"
+  ]
+}

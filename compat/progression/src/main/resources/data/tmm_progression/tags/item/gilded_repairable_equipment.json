@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:golden_helmet",
+    "minecraft:golden_chestplate",
+    "minecraft:golden_leggings",
+    "minecraft:golden_boots",
+    "minecraft:golden_sword",
+    "minecraft:golden_pickaxe",
+    "minecraft:golden_axe",
+    "minecraft:golden_shovel",
+    "minecraft:golden_hoe",
+    "minecraft:netherite_helmet",
+    "minecraft:netherite_chestplate",
+    "minecraft:netherite_leggings",
+    "minecraft:netherite_boots",
+    "minecraft:netherite_sword",
+    "minecraft:netherite_pickaxe",
+    "minecraft:netherite_axe",
+    "minecraft:netherite_shovel",
+    "minecraft:netherite_hoe"
+  ]
+}

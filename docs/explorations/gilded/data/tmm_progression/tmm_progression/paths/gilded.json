@@ -156,7 +156,17 @@
           "target": "#tmm_progression:gilded_repairable_equipment",
           "per_rank": 1,
           "params": {
-            "slot": "all",
+            "slot": "armor",
+            "action": "repair",
+            "interval_ticks": "5"
+          }
+        },
+        {
+          "type": "gear_durability",
+          "target": "#tmm_progression:gilded_repairable_equipment",
+          "per_rank": 1,
+          "params": {
+            "slot": "mainhand",
             "action": "repair",
             "interval_ticks": "5"
           }
@@ -208,6 +218,32 @@
             "combine": "additive",
             "persist_enchantment": "false",
             "per_damage_event": "once"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_looting",
+      "max_rank": 3,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        3,
+        7,
+        11
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:virtual_looting",
+          "target": "#tmm_progression:gilded_gold_weapons",
+          "per_rank": 1,
+          "params": {
+            "combine": "additive",
+            "delivery": "direct_melee",
+            "gold_only": "true",
+            "persist_enchantment": "false",
+            "affects_rare_loot": "true"
           }
         }
       ]
