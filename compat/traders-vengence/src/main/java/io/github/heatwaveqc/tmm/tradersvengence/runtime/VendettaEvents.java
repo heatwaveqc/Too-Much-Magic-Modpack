@@ -55,11 +55,7 @@ public final class VendettaEvents {
         }
 
         MobGoalsAccessor access = (MobGoalsAccessor) mob;
-        access.tradersVengence$targetSelector().addGoal(1,
-            new NearestAttackableTargetGoal<>(mob, Player.class, 10, true, false,
-                target -> target instanceof ServerPlayer player
-                    && !player.isCreative() && !player.isSpectator()
-                    && TraderBlacklist.get(level).contains(player.getUUID())));
+        access.tradersVengence$targetSelector().addGoal(1, new WantedPlayerTargetGoal(mob, level));
 
         if (mob instanceof Villager villager) {
             access.tradersVengence$goalSelector().addGoal(2,
