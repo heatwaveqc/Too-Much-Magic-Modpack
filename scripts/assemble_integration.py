@@ -16,7 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "manifest/integration-sources.json"
 RECORD = ROOT / "manifest/integration-lock.json"
-TRACKED_PREFIXES = ("feature/", "fix/", "design/", "research/", "audit/")
+# Research branches are documentation workstreams, not runtime feature heads.
+# Explicit feature/fix/design/audit branches still require classification.
+TRACKED_PREFIXES = ("feature/", "fix/", "design/", "audit/")
 PACK_DIRS = ("config", "defaultconfigs", "kubejs", "mods")
 
 def git(*args: str, check: bool = True) -> str:
