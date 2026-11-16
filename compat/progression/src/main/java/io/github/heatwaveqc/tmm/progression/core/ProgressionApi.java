@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.progression.state.Ledger;
 import io.github.heatwaveqc.tmm.progression.state.Discoveries;
 import io.github.heatwaveqc.tmm.progression.state.Modes;
 import io.github.heatwaveqc.tmm.progression.runtime.Selectors;
+import io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
@@ -151,7 +152,8 @@ public final class ProgressionApi {
                 if (last != Long.MIN_VALUE && now >= last && now - last < activity.cooldownTicks())
                     continue;
                 recent.put(cooldownKey,now);
-                state = ProgressionMath.grantXp(path,state,activity.xp());
+                state = ProgressionMath.grantXp(path,state,
+                    TyzMonkBridge.bonusMonkXp(player,path.id(),activity.xp()));
             }
 
             for (Definition.Milestone milestone : path.milestones()) {
@@ -190,6 +192,23 @@ public final class ProgressionApi {
             if (!state.equals(next.get(path.id()))) next = next.with(path.id(),state);
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
+    }
+
+    /**
+     * Permanent, non-refundable Tyz-to-native advancement conversion.
+     * Each marker can grant exactly one native Monk point over a character's
+     * lifetime, even after relog, skill reload, admin grants or later respec.
+     * This deliberately does NOT mint Tyz SP or global MXP.
+     */
+    public static boolean awardMonkTyzPointOnce(ServerPlayer player, String marker) {
+        if (marker == null || !marker.matches("tmm_progression:tyz_focused_advancement_[1-5]"))
+            return false;
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        Track monk = ledger.get("tmm_progression:monk");
+        if (!monk.joined() || monk.rank() < 17 || monk.completed(marker)) return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),
+                ledger.with("tmm_progression:monk",monk.complete(marker).grantPoints(1)));
+        return true;
     }
 
     public static void forgetTransient(UUID playerId) { cooldowns.remove(playerId); }

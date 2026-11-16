@@ -95,14 +95,15 @@
     },
     {
       "name": "tyzs-primary-runtime-migration",
-      "branch": "feature/tyzs-primary-tree-runtime-migration",
+      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "paths": [
         "compat/magic/",
         "scripts/activate_tyzs.py",
-        "scripts/verify_tyz_migration.py"
+        "scripts/verify_tyz_migration.py",
+        "scripts/stage_monk_tyz.py"
       ],
       "mode": "runtime-first-wave-integrated",
-      "note": "Existing Tyz 6.4.2 exact SHA-512 pin replaces Pufferfish Skills on integration baseline; four 5-rank Core Skills, Tyz native XP off, 1000 XP/level. Independent Pufferfish Attributes still pinned pending dependency audit. No MXP gameplay JAR and no complete nine-tree custom progression yet."
+      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification."
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -166,12 +167,12 @@
     },
     {
       "name": "standalone-monk-hunter-progression",
-      "branch": "test/full-integration",
+      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "paths": [
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Shared Monk/Hunter JAR upgraded from stacked advanced Hunter (Trial of Venom, specialty XP, permanent mutations) and Monk Bedrock Rest/classic physical trials. Retains native Silver Hunter and JAWR lycanthrope selector. Two first-party JARs are built and server-smoked for QA."
+      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate."
     },
     {
       "name": "jawr-native-transformation-bridge",

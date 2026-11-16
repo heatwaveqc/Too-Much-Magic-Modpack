@@ -80,7 +80,7 @@ jobs:
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
-          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
+          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py

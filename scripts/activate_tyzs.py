@@ -20,6 +20,7 @@ MODRINTH_VERSION = "OUmvFAPs"  # Tyz 6.4.2, MC 1.21.1 NeoForge. Never "latest".
 EXPECTED_VERSION = "6.4.2"
 EXPECTED_SHA512 = "070abb0665dee3a442b57a9957eed206adf4b510e66ce648ba3e68098fa1cd4e570af01950df0be3163eaf0469d84b79e1afc8d3c44924399f074584084b55f3"
 RELEASE_URL = f"https://api.modrinth.com/v2/version/{MODRINTH_VERSION}"
+MONK_IDS = {"tmm_monk_empty_hand_force", "tmm_monk_flowing_counter", "tmm_monk_unarmed_precision", "tmm_monk_natural_poise", "tmm_monk_hunger_discipline", "tmm_monk_fire_blast_tempering", "tmm_monk_body_speed", "tmm_monk_balanced_landing", "tmm_monk_glide_control", "tmm_monk_barehand_efficiency", "tmm_monk_fortunate_hands", "tmm_monk_looting_palm", "tmm_monk_monastic_learning", "tmm_monk_focused_advancement", "tmm_monk_inner_fortune", "tmm_monk_inner_reservoir", "tmm_monk_worldly_cultivation", "tmm_monk_capstone"}
 DEFAULT_CATEGORIES = {"abilities", "combat", "misc", "nature"}
 SKILL_IDS = {"tmm_magic_reservoir_1", "tmm_magic_wellspring_1",
              "tmm_magic_thrift_1", "tmm_magic_potency_1"}
@@ -125,7 +126,7 @@ def activate(root: Path, manifest: dict) -> None:
     if not DEFAULT_CATEGORIES.issubset(cats) or cats.get("tmm_magic_core", {}).get("displayName") != "Core Skills":
         raise ValueError("Tyz category override lost its default tabs")
     skills = root / "config/tyzs_skills/custom/skills"
-    if {x.stem for x in skills.glob("tmm_*.json")} != SKILL_IDS:
+    if {x.stem for x in skills.glob("tmm_*.json")} != SKILL_IDS | MONK_IDS:
         raise ValueError("First-wave Tyz skill set incomplete")
     write_packwiz(root, filename, url, sha512)
     update_manifest(manifest)

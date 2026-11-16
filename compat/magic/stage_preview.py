@@ -23,6 +23,7 @@ CORE_IDS = {
     "tmm_magic_thrift_1",
     "tmm_magic_potency_1",
 }
+MONK_IDS = {"tmm_monk_empty_hand_force", "tmm_monk_flowing_counter", "tmm_monk_unarmed_precision", "tmm_monk_natural_poise", "tmm_monk_hunger_discipline", "tmm_monk_fire_blast_tempering", "tmm_monk_body_speed", "tmm_monk_balanced_landing", "tmm_monk_glide_control", "tmm_monk_barehand_efficiency", "tmm_monk_fortunate_hands", "tmm_monk_looting_palm", "tmm_monk_monastic_learning", "tmm_monk_focused_advancement", "tmm_monk_inner_fortune", "tmm_monk_inner_reservoir", "tmm_monk_worldly_cultivation", "tmm_monk_capstone"}
 DEFAULT_CATEGORIES = {"abilities", "combat", "misc", "nature"}
 VALID_OPERATIONS = {"ADD_VALUE", "ADD_MULTIPLIED_BASE", "ADD_MULTIPLIED_TOTAL"}
 # Preserve each original rank-99 terminal benefit while compressing the base skill to five ranks.
@@ -57,7 +58,7 @@ def verify() -> list[Path]:
     """Fail fast on malformed Tyz JSON/config before copying anything."""
     skill_dir = OVERLAY / "config/tyzs_skills/custom/skills"
     actual = {p.stem for p in skill_dir.glob("*.json")}
-    if actual != CORE_IDS:
+    if actual != (CORE_IDS | MONK_IDS):
         raise ValueError(f"Expected {sorted(CORE_IDS)}, found {sorted(actual)}")
     targets = set()
     for name in sorted(CORE_IDS):
@@ -98,9 +99,29 @@ def verify() -> list[Path]:
     categories = json.loads(
         (OVERLAY / "config/tyzs_skills/custom/data/categories.json").read_text(encoding="utf-8")
     )
+    for mid in MONK_IDS:
+        item = json.loads((skill_dir / (mid + ".json")).read_text(encoding="utf-8"))
+        if item.get("id") != mid or item.get("type") != "IMMUTABLE" or item.get("category") != "tmm_monk" or not item.get("active"):
+            raise ValueError(f"{mid}: missing active IMMUTABLE Monk skill")
+        limit = item["maximumLevel"]
+        if limit < 1 or limit > 50 or len(item.get("prices", [])) != limit:
+            raise ValueError(f"{mid}: invalid rank cap or price curve")
+        if any(not isinstance(n, int) or n <= 0 for n in item["prices"]):
+            raise ValueError(f"{mid}: nonpositive price")
+        power = item.get("customValues", {}).get("power", {}).get("values", [])
+        if len(power) != limit or any(not isinstance(n, (int, float)) for n in power):
+            raise ValueError(f"{mid}: missing native-bridge effect values")
+        if item.get("modifiers") != []:
+            raise ValueError(f"{mid}: Monk IMMUTABLE abilities must not apply unrestricted vanilla modifiers")
+        if item.get("config", {}).get("refundable") is not False and mid == "tmm_monk_focused_advancement":
+            raise ValueError("Focused Advancement must not refund permanent native points")
+        if item.get("config", {}).get("skillPrerequisites", []) and not set(item["config"]["skillPrerequisites"]).issubset(MONK_IDS):
+            raise ValueError(f"{mid}: undeclared Monk prerequisite")
+    if categories.get("tmm_monk", {}).get("displayName") != "Monk":
+        raise ValueError("Missing Monk category")
     if categories.get("tmm_magic_core", {}).get("displayName") != "Core Skills":
         raise ValueError("Core Skills UI display label changed unexpectedly")
-    if not (DEFAULT_CATEGORIES | {"tmm_magic_core"}).issubset(categories):
+    if not (DEFAULT_CATEGORIES | {"tmm_magic_core", "tmm_monk"}).issubset(categories):
         raise ValueError("Category override would remove Tyz's existing categories")
     levels = json.loads(
         (OVERLAY / "config/tyzs_skills/custom/data/level-pool.json").read_text(encoding="utf-8")
@@ -137,7 +158,7 @@ def install(pack_root: Path, paths: list[Path], overwrite: bool) -> None:
         desired = json.loads(
             (OVERLAY / "config/tyzs_skills/custom/data/categories.json").read_text(encoding="utf-8")
         )
-        current.update({k: v for k, v in desired.items() if k == "tmm_magic_core"})
+        current.update({k: v for k, v in desired.items() if k in ("tmm_magic_core", "tmm_monk")})
         merged = json.dumps(current, indent=2) + "\n"
     else:
         merged = None
@@ -160,7 +181,7 @@ if __name__ == "__main__":
     parser.add_argument("--overwrite", action="store_true", help="Permit replacing previous TMM preview files")
     args = parser.parse_args()
     files = verify()
-    print(f"PASS: {len(CORE_IDS)} skills, five ranks each, {len(files)} overlay files")
+    print(f"PASS: {len(CORE_IDS)} Core skills and {len(MONK_IDS)} Monk skills, {len(files)} overlay files")
     if args.install:
         if args.pack_root is None:
             parser.error("--install requires --pack-root")

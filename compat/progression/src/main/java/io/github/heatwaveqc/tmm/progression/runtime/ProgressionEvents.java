@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
@@ -28,6 +29,7 @@ public final class ProgressionEvents {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
@@ -73,6 +75,9 @@ public final class ProgressionEvents {
             EffectHandlers.kill(player,event);
         }
     }
+    private static void mobDrops(LivingDropsEvent event) {
+        if (!event.isCanceled()) TyzMonkBridge.mobDrops(event);
+    }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         // Detect completed vanilla potion drinking independently of whether it counts as food.
@@ -106,6 +111,7 @@ public final class ProgressionEvents {
             if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
                 ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             HarvestAbilities.blockDrops(player,event);
+            TyzMonkBridge.crops(event,player);
             EffectHandlers.blockDrops(player,event);
         }
     }
@@ -147,9 +153,11 @@ public final class ProgressionEvents {
         if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
         if (!event.isCanceled()) EffectHandlers.incoming(event);
+        if (!event.isCanceled()) TyzMonkBridge.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
+        TyzMonkBridge.breakSpeed(event);
         if (event.getEntity() instanceof ServerPlayer player)
             EffectHandlers.breakSpeed(player,event);
     }
@@ -161,6 +169,7 @@ public final class ProgressionEvents {
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
+            TyzMonkBridge.tick(player);
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
@@ -173,6 +182,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            TyzMonkBridge.logout(player);
             AbilityNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
@@ -190,6 +200,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            TyzMonkBridge.logout(player);
             AbilityNetwork.forget(player);
         }
     }

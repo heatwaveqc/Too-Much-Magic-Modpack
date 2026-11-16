@@ -1,0 +1,36 @@
+{
+  "active": true,
+  "id": "tmm_monk_focused_advancement",
+  "maximumLevel": 5,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/book.png",
+  "displayName": "Focused Advancement",
+  "description": "Permanently earn at most one extra native Monk technique point per learned rank; cannot refund to farm points.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "unit": ""
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": false,
+    "skillPrerequisites": []
+  }
+}

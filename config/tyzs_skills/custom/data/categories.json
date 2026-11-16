@@ -23,5 +23,10 @@
     "displayName": "Core Skills",
     "icon": "minecraft:textures/item/enchanted_book.png",
     "order": 5
+  },
+  "tmm_monk": {
+    "displayName": "Monk",
+    "icon": "minecraft:textures/item/nether_star.png",
+    "order": 6
   }
 }

@@ -218,7 +218,7 @@ hash = "c2f15be8bc5ef7b81d7b440e4458d259b737442ae093b0e5a0f0e96c850a1896"
 
 [[files]]
 file = "config/tyzs_skills/custom/data/categories.json"
-hash = "7b8b9d78b5234287309d2fdbd69fe5f78468e18dcfb1c203c15495c7afc65916"
+hash = "08c4939b8d3316e5cda31fa5010663ab752f9be5adfed2b375406415679bb6a8"
 
 [[files]]
 file = "config/tyzs_skills/custom/data/level-pool.json"
@@ -1264,3 +1264,75 @@ metafile = true
 file = "mods/keysets.pw.toml"
 hash = "47c24d04888f7e7242cfc9b281e359a0251f6674c7b6026d3a35eb5df959fda7"
 metafile = true
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_balanced_landing.json"
+hash = "24f3e52a3b038b52e65f3a5f84ffe9f0671ac3e0f2c72768ba9940900383ee6f"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_barehand_efficiency.json"
+hash = "87362f14f1c43f90f20afc0cb9a546c7b11804c864ea8c43bd33ca60464d851f"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_body_speed.json"
+hash = "873821c287c9e1080e6b1d6af9ba0944f5c6598c1bf06feb8f4db67395d32572"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_capstone.json"
+hash = "35809c2440090331518bf5925db4ffb59b13a88aed6ae03083723ac48bd43ec6"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_empty_hand_force.json"
+hash = "5a446e91a7323234536a6d21702fbc4b396226354f22b4cf55c786e4a7be4513"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_fire_blast_tempering.json"
+hash = "b4c64f2124afad43dcdd534de1050457600bc0a842cd1ac42a5e7d122406f43d"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_flowing_counter.json"
+hash = "051f8166db05129d1a06a593e908c1848f3bdc4d28b1fc6b83c75812e700f67e"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_focused_advancement.json"
+hash = "acf4426a1f9a594c8fc22440b23d70015abc5640559f092e290c49b7cd469f2a"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_fortunate_hands.json"
+hash = "2a36ec15eb70faafdb20f91f9620580750cf6b483b776d102074efb4581a89ff"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_glide_control.json"
+hash = "2d24876e27dd8089132b6fd2cede0a35dc9b62c4f908f5e978fe65ab5e42862d"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_hunger_discipline.json"
+hash = "910950642dc15665e4a4a35ba8bcb386df1d7489ebd438b8aebdbe9854f643bb"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_inner_fortune.json"
+hash = "d7744a080c1a126e54ef23e928dc2d3c0a2815c77ebebf175e39e7ab0b98da64"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_inner_reservoir.json"
+hash = "7585c403da74f4ff821c9837b27ae36ff6c03d77c2ca67d90fc82372c4eaa900"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_looting_palm.json"
+hash = "279672f18e91f316ed5b323b3095e696a423625c7189abd07f38dd885caf8914"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_monastic_learning.json"
+hash = "906a9d1d81b8530192f54815844ac9bf3a14dacb95db9047a98447012a2d6c1d"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_natural_poise.json"
+hash = "6ff21f891d8627cd7a075cb2c2884cb3a484b0c45c2bdcacb3cad0afd0ae0beb"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_unarmed_precision.json"
+hash = "18226a3e6d8f1fd684b9c0835d0278d05d67520e3ee0b4e275504569c8adcb7d"
+
+[[files]]
+file = "config/tyzs_skills/custom/skills/tmm_monk_worldly_cultivation.json"
+hash = "0088b2a83498f837491a1a76b45950df721966f78ed44d1edacf57334070cd02"

@@ -1,0 +1,48 @@
+{
+  "active": true,
+  "id": "tmm_monk_balanced_landing",
+  "maximumLevel": 10,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/feather.png",
+  "displayName": "Balanced Landing",
+  "description": "Additional fall damage control and knockback resistance when unarmored.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        0.03,
+        0.06,
+        0.09,
+        0.12,
+        0.15,
+        0.18,
+        0.21,
+        0.24,
+        0.27,
+        0.3
+      ],
+      "unit": ""
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": [
+      "tmm_monk_body_speed"
+    ]
+  }
+}

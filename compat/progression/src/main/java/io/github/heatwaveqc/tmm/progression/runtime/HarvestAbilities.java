@@ -51,7 +51,8 @@ public final class HarvestAbilities {
                 ItemStack contextTool = new ItemStack(Items.NETHERITE_PICKAXE);
                 var enchants = event.getLevel().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
                 contextTool.enchant(enchants.getOrThrow(mode.equals("silk") ?
-                    Enchantments.SILK_TOUCH : Enchantments.FORTUNE),1);
+                    Enchantments.SILK_TOUCH : Enchantments.FORTUNE),
+                    mode.equals("silk") ? 1 : 1 + TyzMonkBridge.fortuneBonus(player));
                 List<ItemStack> rolled = Block.getDrops(state,event.getLevel(),pos,
                     null,player,contextTool);
                 // Replace, NEVER append to original drops; preserve original vanilla XP.

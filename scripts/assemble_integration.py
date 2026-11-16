@@ -150,6 +150,8 @@ def main() -> None:
         rows = {m["id"]: m for m in manifest["mods"]}
         if not rows["tyzs-skills"]["enabled_in_pack"] or rows["puffish-skills"]["enabled_in_pack"]:
             raise RuntimeError("Tyz packwiz and manifest disagree")
+        from stage_monk_tyz import stage as stage_monk_tyz
+        stage_monk_tyz(ROOT)
         verify_tyz_migration(ROOT)
     else:
         from activate_tyzs import activate

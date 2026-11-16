@@ -179,7 +179,8 @@ public final class ClassAbilities {
         Float old = LAST_EXHAUSTION.put(p.getUUID(),now);
         if (old == null || !unlocked(p,"hunger_discipline")) return;
         if (now > old) {
-            float reduced = old + (now - old) * 0.5f;
+            float reduced = old + (now - old) * 0.5f
+                    * TyzMonkBridge.hungerMultiplier(p);
             p.getFoodData().setExhaustion(reduced);
             LAST_EXHAUSTION.put(p.getUUID(),reduced);
         }
@@ -247,10 +248,13 @@ public final class ClassAbilities {
         Vec3 speed = p.getDeltaMovement();
         if (speed.y >= 0) return; // never use native thrust to climb
         Vec3 heading = p.getLookAngle().multiply(1,0,1);
-        if (heading.lengthSqr() > 0.001) heading = heading.normalize().scale(0.025);
+        double control = TyzMonkBridge.glideSpeedBonus(p);
+        if (heading.lengthSqr() > 0.001) heading = heading.normalize().scale(0.025+control*0.1);
         Vec3 horizontal = new Vec3(speed.x,0,speed.z).add(heading);
-        if (horizontal.lengthSqr() > 0.36) horizontal = horizontal.normalize().scale(0.6);
-        p.setDeltaMovement(horizontal.x,Math.max(-0.16,speed.y),horizontal.z);
+        double maximum = 0.6 + control;
+        if (horizontal.lengthSqr() > maximum*maximum)
+            horizontal = horizontal.normalize().scale(maximum);
+        p.setDeltaMovement(horizontal.x,Math.max(-0.16+control*0.5,speed.y),horizontal.z);
         p.fallDistance = 0;
         p.hurtMarked = true;
     }
