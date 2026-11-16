@@ -51,7 +51,7 @@ public final class NewbieMode {
 
     /** Can be invoked only by a trusted server-side quest reward or an operator. */
     public static boolean graduate(ServerPlayer player) {
-        if (!isNewbie(player)) return false;
+        if (!isNewbie(player)) return true;
         set(player, REGULAR);
         player.sendSystemMessage(Component.literal(
             "You're now in Regular Mode. Newbie inventory and travel protection has ended."));
@@ -127,6 +127,8 @@ public final class NewbieMode {
         if (raw.startsWith("/")) raw = raw.substring(1);
         if (raw.isEmpty()) return;
         String root = raw.split("\\s+", 2)[0].toLowerCase(Locale.ROOT);
+        // The namespaced Brigadier alias must not bypass the regular-mode policy.
+        if (root.contains(":")) root = root.substring(root.lastIndexOf(\":\") + 1);
         if (!NEWBIE_ONLY_COMMANDS.contains(root)) return;
         event.setCanceled(true);
         player.sendSystemMessage(Component.literal(
