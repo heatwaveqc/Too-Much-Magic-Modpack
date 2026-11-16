@@ -121,7 +121,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `botania` | Botania | magic | inactive | full | deferred | — |
 | `botania-revived` | Botania Revived | magic | enabled flag | full | researching | [profile](mods/botania-revived.md) |
 | `eidolon-repraised` | Eidolon: Repraised | magic | enabled flag | full | researching | [profile](mods/eidolon-repraised.md) |
-| `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | queued | — |
+| `enchanted-witchcraft` | Enchanted: Witchcraft | magic | enabled flag | full | researching | [profile](mods/enchanted-witchcraft.md) |
 | `evilcraft` | EvilCraft | magic | enabled flag | full | researching | [profile](mods/evilcraft.md) |
 | `forbidden-arcanus` | Forbidden & Arcanus | magic | enabled flag | full | queued | — |
 | `goety` | Goety — The Dark Arts | magic | enabled flag | full | researching | [profile](mods/goety.md) |
