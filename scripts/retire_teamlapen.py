@@ -15,6 +15,8 @@ FILES = (
     "mods/vampires-delight.pw.toml",
     "config/ftbquests/quests/chapters/vampirism.snbt",
     "config/ftbquests/quests/chapters/werewolves.snbt",
+    # Obsolete reactor chapter resurrected by an older quest donor, not in the approved registry.
+    "config/ftbquests/quests/chapters/exceptional_power_reactors.snbt",
     "config/tmm_transformations-server.toml",
     "defaultconfigs/tmm_transformations-server.toml",
     "defaultconfigs/vampirism-server.toml",
