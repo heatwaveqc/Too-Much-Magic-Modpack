@@ -1,6 +1,6 @@
 # Gilded — Piglin-aligned gold and Netherite progression (exploratory)
 
-**Status:** EXPERIMENTAL DESIGN ONLY; no implementation, runtime activation, or test-build registration.
+**Status (2026-11-16): experimental runtime implementation compiled on isolated branch; NOT merged, dedicated-server-tested, client-tested or present in a frozen full integration QA build.**
 **Branch:** `design/piglin-gold-progression-exploratory-2026-11-15` (forked from `test/full-integration`).
 **Date:** 2026-11-15.
 **Locked name:** **Gilded** (owner-approved, 2026-11-15).
@@ -21,6 +21,12 @@ Owner-locked requirements (2026-11-15):
 
 Interpret “effective diamond level” by comparing **per-item combat, harvest and armor capabilities** while worn/wielded; do **not** rewrite stored max durability or item tier metadata globally. Effective gold mining tier must correctly harvest blocks that require a diamond pickaxe. Gold repair and Unbreaking address its limited native durability. Original diamond and Netherite items retain native material properties; **Netherite gains only the named virtual Fortune, Unbreaking and repair benefits**.
 
+
+## Added owner request: gold weapon Looting (2026-11-16)
+
+**Golden swords and axes** gain up to **+3 effective additive Looting**, in three automatic +1 ranks at Gilded 3/7/11; stored Looting III therefore calculates as VI for the qualifying Gilded player's direct melee mob kill. This does not grant Looting to Netherite, gold tools used only for mining, or non-Gilded players; item enchantments are never rewritten. The source implementation uses two Ars Nouveau-style native Looting loot-function wrappers (count and chance) and rejects arrow-fired kills even when the killer holds a gold sword when the arrow lands. Exact-pack / in-world compatibility validation remains necessary.
+
+**Source handoff:** [Gilded implementation and readiness](gilded/LIVE-TEST-READINESS.md). Path now resides at `compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/gilded.json` on the exploratory branch; initial compile+JUnit succeeded [here](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498).
 
 ## Candidate skill domains (rank distribution still open)
 

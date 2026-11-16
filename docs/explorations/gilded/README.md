@@ -1,6 +1,6 @@
-# Gilded — inactive JSON prototype
+# Gilded — development-branch runtime implementation
 
-**Status: draft, intentionally NOT in active datapack path.** This subtree is deliberately under `docs/explorations/gilded/` so the JSON cannot be accidentally loaded into a server or the next test build.
+**Status (2026-11-16): integrated into the progression module on this isolated exploratory branch, not merged into the full pack and not yet player-tested.** The source-of-truth runtime path is now `compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/gilded.json`. The copies under `docs/explorations/gilded` are design-history snapshots. **Module compile+tests PASS:** [GitHub Actions run 43932141498](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498); no dedicated game boot, Prism, world or modded AI test has been run.
 
 ## Owner-locked golden initiation and food extension (2026-11-16)
 
@@ -49,9 +49,24 @@ Primary source reference URLs:
 - `https://lexxie.dev/neoforge/1.21.1/net/minecraft/world/food/FoodData.html`
 - `https://lexxie.dev/neoforge/1.21.1/net/neoforged/neoforge/event/entity/living/LivingEntityUseItemEvent.Start.html`
 
+## Source implementation handoff (2026-11-16)
+
+- **Wired:** `runtime/GildedRules.java`, `ProgressionMod` registration, `ProgressionEvents` enrollment/XP hooks, `ClassAbilities` retaliation accessor, resource path/tags.
+- **Gold weapon Looting:** golden swords and axes gain virtual +1/+2/+3 Looting at ranks 3/7/11, additive to stored enchantments and limited to direct melee mob kills. `GildedLootingMixin` and `GildedRareLootMixin` follow the pack-pinned Ars Nouveau Drygmy loot-function wrapping pattern; compatibility with simultaneous Drygmy perks must be tested live.
+- **Fortune:** `GildedFortuneMixin` adjusts the existing loot formula's level argument; no duplicated rolls. Validate the exact actual method injection in a disposable client and overlevel enchantment stacking.
+- **Unbreaking:** `GildedDurabilityMixin` prefilters damage for expected combined effective level; `GildedWearMath` has isolated probability tests. Verify both armor and actively held tool call paths at runtime; the compiler cannot establish that every wear event reaches this overload.
+- **Gold equipment:** transient armor/toughness attribute differences, direct melee bonus and vanilla diamond-block harvest check. Gold's underlying item properties stay unchanged. Verify the effective pickaxe's speed/drops together, and confirm compatibility with any modded melee damage hooks.
+- **Piglins:** narrow suppression at `PiglinAi.angerNearbyPiglins`, wearing-gold equivalent for Gilded, targeted Brute selection filter and existing retaliation event. Test not just first target selection but ongoing Brain memories and multi-player broadcast anger.
+- **Food:** pre-use denial, successful-consumption ritual, golden food recipe recognition and second `FoodData.eat` call for 2× hunger/saturation gains only. Modded serving/feast pathways need in-world checks.
+- **Repair:** the existing gear handler is now configured as separate `armor` and `mainhand` effects rather than `all`, excluding offhand-only gear. Gold and Netherite retain identical repair rates.
+- **XP:** uses `BlockDropsEvent.getTool()` to verify Silk Touch from the real breaking tool, awarding one Gilded event per actual player gold-ore break rather than one per generated drop.
+- **Not yet included:** My Nether's Delight has an identified NeoForge 1.21.1 release but is not hash-pinned in the mod manifest. Preserve the existing full-integration candidate unchanged until an explicit build request.
+
+**The immediately following checklist was written before this implementation.** It is retained as a design contract, *not* a current status report.
+
 ## Required Java implementation before activation
 
-The JSON structure is syntactically valid and follows the existing progression parser for `activities`, `milestones`, `skills`, `auto_ranks` and the real `gear_durability` handler. **However five custom handler names are intentionally NOT registered in the engine**: `tmm_progression:food_whitelist`, `tmm_progression:piglin_affinity`, `tmm_progression:gold_diamond_equivalence`, `tmm_progression:virtual_fortune`, `tmm_progression:virtual_unbreaking`. The parser **rejects this path if moved into active `src/main/resources/data/` today**. The handler parameters are *proposed contracts*, not a promise that Java already reads them. Do not stub the handler to no-op merely to pass the parser.
+The JSON was originally drafted against the existing progression parser for `activities`, `milestones`, `skills`, `auto_ranks` and the real `gear_durability` handler. **Historical prerequisite (NOW ADDRESSED in source): five Gilded-specific effect names previously were not registered**: `tmm_progression:food_whitelist`, `tmm_progression:piglin_affinity`, `tmm_progression:gold_diamond_equivalence`, `tmm_progression:virtual_fortune`, `tmm_progression:virtual_unbreaking`. The current experimental runtime registers the handlers before path reload; the active development path was copied into `src/main/resources/data/`. The original statement that the parser would reject the path is obsolete. The handler parameters are *proposed contracts*, not a promise that Java already reads them. Do not stub the handler to no-op merely to pass the parser.
 
 - `food_whitelist` must cancel/deny unauthorized **food use before the effects or hunger/saturation apply** (including instant food, long food-use interactions, modded bowls and placed feasts). Nonfood potions/medicines should be unaffected; must not disable all consumables. No automatic blacklist of another mod's valid Nether-only foods—explicitly add to tag after verifying ingredients.
 - `piglin_affinity` must prevent unprovoked anger *initiation* from mining gold/opening/breaking protected storage, and neutralize ordinary targeting for the specific enrolled player by **Piglins and Brutes**. Do not wipe or reset existing anger/other-player targets; retaliation after player attack remains valid.
