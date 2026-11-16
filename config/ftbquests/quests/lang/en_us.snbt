@@ -545,4 +545,6 @@
 	quest.544D301000110001.title: "Choose Your Magic Controls"
 	quest.544D301000110001.quest_desc: ["Too Much Magic keeps Minecraft's normal movement, combat, and inventory controls. For a fresh player, mod-added keybindings are intended to start unbound so dozens of mods cannot silently fight over shortcuts. Open Options > Controls > Key Binds to assign only the magic and utility actions you want. Controlling helps find bindings and conflicts. Your changes are personal; this quest does not reset anything. KeySets is included for one test build and may be removed if its controls or saved profiles prove unreliable."]
 	task.544D4D1200000001.title: "Any Log or Stem"
+	quest.544D309000100001.title: "I'm Ready for Regular Mode"
+	quest.544D309000100001.quest_desc: ["New players begin in Newbie Mode, with protected inventory/experience and convenience travel, but without MXP or faction enrollment. When YOU are ready for full survival progression, check this box and claim your personal graduation reward. This permanently enables Regular Mode for your character: normal death and Corail graves, no home/rtp/back, MXP and class enrollment. Graduation is one-way without an administrator. In a team, each player must claim their own reward; never force graduation on teammates."]
 }
