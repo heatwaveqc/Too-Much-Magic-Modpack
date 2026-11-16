@@ -1,4 +1,4 @@
-name: Full Integration - Unstable Prism QA
+name: Full Integration - Quick CI (full server smoke opt-in)
 on:
   push:
     branches: ['test/full-integration']
@@ -23,14 +23,28 @@ on:
       - 'manifest/integration-sources.json'
       - '.packwizignore'
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full NeoForge server smoke and immutable Prism QA ZIP (unchecked = quick checks only)'
+        type: boolean
+        required: false
+        default: false
   workflow_call:
+    inputs:
+      full_smoke:
+        description: 'Must be true ONLY after explicit owner instruction for this full smoke run'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
 
 concurrency:
-  group: full-integration-qa
-  cancel-in-progress: false
+  # Routine quick runs supersede stale quick runs; approved full smokes are never canceled.
+  # The former overnight full-smoke group remains untouched by this change.
+  group: full-integration-${{ inputs.full_smoke == true && 'approved-smoke' || 'quick' }}
+  cancel-in-progress: ${{ inputs.full_smoke != true }}
 
 jobs:
   combine-build-smoke-package:
@@ -89,7 +103,13 @@ jobs:
       - name: Verify HexCast MXP exploratory contract (source only; not in pack)
         working-directory: integration/hexcast-media-pilot
         run: bash check-contract.sh
+      - name: Note quick checks are NOT a full smoke
+        if: ${{ inputs.full_smoke != true }}
+        run: |
+          echo '## Quick checks only — no server smoke or Prism QA ZIP' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Static checks and two-module Gradle compile/unit tests ran. A server-tested build requires explicit owner authorization and a manual full_smoke=true invocation.' >> "$GITHUB_STEP_SUMMARY"
       - name: Full dedicated-server smoke WITH Monk, Hunter and JAWR transformation bridge
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
@@ -97,14 +117,17 @@ jobs:
           SMOKE_EXTRA_MOD_JARS: '${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
         run: bash scripts/smoke_server.sh
       - name: Validate retired runtime mods, recipes and tag absence
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: python3 scripts/verify_retirement.py
       - name: Collect read-only JAWR and Forbidden Magic bytecode food inventory
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           python3 scripts/audit_jawr_food_jar.py \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery-0.5.39+mc1.21.1.jar" \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery_forbidden_magic-0.5.37+mc1.21.1.jar" \
             --limit 48 --output "${{ runner.temp }}/tmm-jawr-food-audit"
       - name: Fail if standalone module is absent or retired modules leak
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_progression-0.1.0-dev.jar"
           test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
@@ -112,6 +135,7 @@ jobs:
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
           echo "Standalone tmm_progression and JAWR-only tmm_transformations both server-tested; old tmm_monk absent"
       - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           # All staged source imports, exact mod manifests and the source lock belong
           # to the tested snapshot. Never push it back to test/full-integration:
@@ -131,12 +155,14 @@ jobs:
           echo "Snapshot immutable commit: $(git rev-parse HEAD)"
           echo "Snapshot tag: $TAG"
       - name: Obtain official packwiz bootstrap
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           curl -fL --retry 3 --retry-delay 2 \
             -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
           test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
       - name: Produce commit-locked all-workstreams Prism client ZIP
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
@@ -144,6 +170,7 @@ jobs:
             "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar" \
             "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
       - name: Upload the one comprehensive unstable test build
+        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         uses: actions/upload-artifact@v4
         with:
           name: Too-Much-Magic-Full-Integration-Prism-UNSTABLE
@@ -151,7 +178,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
       - name: Always retain diagnostics and exact source provenance
-        if: always()
+        if: ${{ always() && inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         uses: actions/upload-artifact@v4
         with:
           name: Full-Integration-Test-Evidence
