@@ -8,6 +8,7 @@ import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import java.util.HashMap;
@@ -28,7 +29,8 @@ public final class GildedFishingRules {
 
     public static void register() {
         NeoForge.EVENT_BUS.addListener(GildedFishingRules::bobberTick);
-        NeoForge.EVENT_BUS.addListener(GildedFishingRules::caught);
+        // Let most other fishing modifiers run before awarding one native class XP.
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, GildedFishingRules::caught);
     }
 
     /** Only Gilded players may fish in lava, starting immediately on faction join.
