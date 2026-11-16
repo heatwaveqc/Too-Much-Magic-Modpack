@@ -1,4 +1,3 @@
-# Disposition seed matrix for Hunter and shared progression; design-only. DEFAULT preserves native AI, not forced hostility. NEUTRAL_PROPOSED suppresses unprovoked attacks with exceptions; no currently removed vampire/werewolf player state is implied.
 creature_family,human,hunter,monk,vampire_form,lich_form,werewolf_form,forest_dragon_form,cave_dragon_form,disposition_scope_and_exceptions,decision_status,implementation_status
 Undead,DEFAULT,DEFAULT,DEFAULT,NEUTRAL_PROPOSED,NEUTRAL_PROPOSED,DEFAULT,DEFAULT,DEFAULT,"Ordinary undead including verified modded; wither/bosses, summoned servants, commanded targets and retaliation override neutrality; vampire provider retired so this is future policy",PREVIOUSLY_DEFINED_NEEDS_REBIND,OLD_BRIDGE_ONLY_NOT_ACTIVE
 Illager,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,Normal Illager raids/alliances remain native; no blanket player affinity,DEFAULT_NO_AFFINITY,NOT_A_NEUTRALITY_RULE
