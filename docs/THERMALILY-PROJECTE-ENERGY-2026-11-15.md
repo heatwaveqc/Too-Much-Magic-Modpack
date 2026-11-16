@@ -33,6 +33,30 @@ This is a pinned-version-specific mixin requiring first-party `tmm_transformatio
 5. Confirm Hydroangeas behaves identically to its native implementation.
 6. Verify dedicated-server boot on pinned Botania Revived 2.0.2 plus graphical client interaction before promoting.
 
+## Locked generation goal: one Thermalily ≈ ten Endoflames
+
+Exact Botania Revived 2.0.2 source figures, **while continuously burning and successfully exporting mana**:
+
+| Flower | Native mana event | Mean active output | Equivalent Endoflames |
+| --- | --- | ---: | ---: |
+| Endoflame | +3 mana every second game tick | **1.5 mana/tick** | 1 |
+| Thermalily, before balance patch | +45 mana each game tick | **45 mana/tick** | 30 |
+| Thermalily, approved target | +45 mana every **three** game ticks | **15 mana/tick** | **10** |
+
+**Achievable with a tiny subclass-conditional mixin.** `FluidGeneratorBlockEntity.getGenerationDelay()` normally returns 1; the new `BotaniaThermalilyTenEndoflamesMixin` sets that getter to **3 for Thermalily only**, leaving Endoflame, Hydroangeas, other flowers, and the Thermallily's underlying mana-per-event field untouched. No new block or recipe required.
+
+The separate owner-approved `BotaniaThermalilyNoCooldownMixin` continues to set its cooldown to zero. With a continuous lava supply and a Mana Spreader able to drain its local 750-mana buffer, one Thermalily generates 15 average mana/tick throughout an active 600-tick burn: **9,000 mana per 1,000 mB lava source**, a source every 30 seconds at 20 TPS. If the buffer or collector is blocked, *actual delivered mana will be less*: this target is a production ceiling for a constantly burning, properly connected flower, not a guarantee regardless of transport capacity.
+
+The 3-tick pulse is not mathematically uniform each individual tick: production arrives in 45-mana pulses spaced three ticks apart. Its **time-averaged** throughput is exactly 15 mana/tick. We prefer this to an invasive patch of constructor arguments.
+
+### Acceptance tests
+
+1. Verify **ten** fueled Endoflames in a properly drained mana network deliver the same output as **one** fueled Thermalily when both run continuously over a long matching interval, after excluding startup transients.
+2. Verify exactly 9,000 mana can be generated during a complete, uninterrupted 600-tick Thermalily burn when its buffer drains freely.
+3. Test adjacent lava source pickup at the end of consecutive burns with the zero-cooldown patch enabled; ensure no additional lava is destroyed while the buffer is full.
+4. Confirm Hydroangeas output and ordinary Endoflame output remain unmodified; no changes to ProjectE converter efficiency or recipes.
+5. Repeat after a server restart and in a multiplayer client; the test must run with the real packaged `tmm_transformations` compatibility JAR.
+
 ## Added converter
 
 - **Project:** [ProjectE Energy Converters](https://www.curseforge.com/minecraft/mc-mods/projecte-energy-converters)
