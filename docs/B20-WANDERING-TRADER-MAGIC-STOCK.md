@@ -107,3 +107,17 @@ This remains a source-level restriction until a client/server in-world test conf
 - Forbidden & Arcanus growing tree item: `forbidden_arcanus:growing_edelwood`.
 
 **Source staged only:** Java API interop and actual trade inventory cannot be certified without running a real NeoForge/Prism world. Existing B20 five-guarantee runtime QA still applies.
+
+## B20.4 — Planned: Iron's Ruined Book in premium rotation (2026-11-15)
+
+**Owner request; documentation-only target, not included in the current build.** Add one `irons_spellbooks:ruined_book` to the existing **rotating premium** wandering-trader catalog. Iron's sources it from Ancient Cities and uses it as a powerful spellbook crafting ingredient, so this is a meaningful exploration/progression shortcut rather than common starter stock.
+
+| Mod | Offer | Proposed emerald cost | Uses |
+| --- | --- | ---: | ---: |
+| Iron's Spells 'n Spellbooks | 1 `irons_spellbooks:ruined_book` | 96 | 1 |
+
+- **Next implementation pass only:** grow the premium catalog from twelve to **thirteen distinct categories**; continue choosing **four distinct** premium offers per trader without replacement. This item is **eligible**, not guaranteed.
+- Implement the 96-emerald price using the existing two-slot emerald payment behavior, subject to the normal live trade-price QA. Price is a proposal to review with the broader premium economy if necessary.
+- Do **not** change the original five guaranteed base offers, the separately guaranteed Relic/Artifact, the vanilla/Iron's additions, existing entity stock markers, or the Ring of the Seven Deadly Sins exclusion.
+- Resolve and validate the registered item ID against the pinned Iron's version before exposing the trade. Check the output is exactly one real Ruined Book and that recipe progression and the four-offer rotation continue to work.
+- **Do not modify scripts, configs, build manifests, or the currently running test build for this request.** Defer implementation and QA to the subsequent trader integration pass.
