@@ -17,7 +17,7 @@ public interface KeyMappingDefaultAccessor {
     @Mutable
     void tmm$setDefaultKey(InputConstants.Key key);
 
-    @Accessor("defaultKeyModifier")
+    @Accessor("keyModifierDefault")
     @Mutable
     void tmm$setDefaultKeyModifier(KeyModifier modifier);
 }
