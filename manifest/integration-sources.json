@@ -7,23 +7,14 @@
       "name": "quest-standards-and-starter-choice",
       "branch": "feature/ars-quest-pilot",
       "paths": [
-        "config/ftbquests/quests/",
-        "manifest/quest_content.json",
-        "manifest/quest_content_resolved.json",
-        "manifest/quest_layouts.json",
-        "scripts/rebuild_quest_ui.py",
-        "scripts/validate_quests.py",
-        "manifest/progression_quest_content.json",
-        "scripts/apply_quest_reward_palette_v1.py",
         "manifest/ars_quest_pilot.json",
         "manifest/ars_quest_pilot_validation.json",
         "scripts/build_ars_quest_pilot.py",
         "scripts/validate_ars_quest_pilot.py",
-        "scripts/write_ars_quest_probe.py",
-        "kubejs/data/tmm/advancement/ars_pilot/"
+        "scripts/write_ars_quest_probe.py"
       ],
-      "mode": "runtime-experimental",
-      "note": "Current quest source descends from the humorous-reward and B14 starter-choice branches, preserving all other quest IDs/rewards. Ars scaffold is replaced by 49 authored pilot quests: 29 core + 20 across all seven Ars add-ons; book totals 228 quests / 187 authored. One initial XP-only orientation, 48 detectable item/advancement objectives with thematic fixed rewards, actual Chimera kill advancement, real ANS transcription/binding/cross-cast. Local quest-source baseline server smoke passed (135 server JARs, 93 item refs and 17 advancement refs resolved). Client layout, action credit, multiplayer claims and combined all-stream behavior remain UNTESTED. Preserve sixth starter Spyglass choice, six-shop/47-offer catalog and the inherited filler/XP-bottle exclusions. Required pilot source, validator/compiler and Chimera datapack path must be imported together."
+      "mode": "source-and-review-only",
+      "note": "TARGETED RETIREMENT QA: defer runtime quest import from this older Ars pilot, which overwrites the current 19 Alcohol Is Magic quests, restores a now-removed reactor chapter, and conflicts with the updated 44-chapter source. Preserve existing quests and test only TeamLapen removal. Ars pilot source/data staged for explicit future reconciliation."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -268,7 +259,8 @@
     "Alex's Caves Continued 1.1.2 and CodxLib 1.5.1 are PLANNED, NOT INSTALLED. Draft PR #56 contains valid stage pin metadata but must have all BiggerReactors uranium worldgen and recipe bridges stripped before future integration; don't overwrite B13 packwiz/index/manifest with staged snapshots.",
     "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts.",
     "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction and transformation bridge excluded. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
-    "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test."
+    "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
+    "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss."
   ],
   "deferred_pending_runtime": {
     "feature/b16-betterend-thallasium-iesnium": "Awaiting independent feature-head integration audit; deliberately EXCLUDED from this targeted TeamLapen retirement QA. Not represented as completed or superseded.",
