@@ -1,0 +1,22 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.tmm_unassembled_marker",
+        "texture_width": 1024,
+        "texture_height": 1024
+      },
+      "bones": [
+        {
+          "name": "tmm_unassembled_marker",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

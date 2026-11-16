@@ -31,3 +31,7 @@ ritual. Monk and Hunter are independent `tmm_progression` disciplines, not speci
 `cd compat/transformations && gradle --no-daemon build` checks unit tests. Full integration
 runs a disposable dedicated-server smoke with both first-party JARs, and packages a separate
 Prism QA client. Neither is a replacement for a client/world gameplay test.
+
+## Cave/Center Dracolich visual pilot (next client QA)
+
+The original generated geometry, rig validator, armor/glow renderer and exact pinned-version Dragon Survival client mixins are staged in this first-party module. See [the scoped pilot and graphical acceptance plan](docs/DRACOLICH-CAVE-CENTER-PILOT.md). Its client rendering and cure/reversion remain **NOT RUN** in the combined pack; source compile is not graphical acceptance.

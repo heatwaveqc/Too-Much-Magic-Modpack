@@ -75,7 +75,8 @@ public final class DracolichDiagnostics {
                         case FORBIDDEN_MAGIC_PHYLACTERY -> "native JAWR phylactery";
                         case CONFLICT -> "CONFLICT: two liches with a dragon (do not resolve automatically)";
                         case NONE -> "no Dracolich resurrection owner";
-                    } + "; no TMM death interception applied.";
+                    } + "; Cave/Center visual eligible=" + DracolichAppearanceEvents.active(player)
+                    + "; client model/texture loading and visibility require client acceptance.";
         } catch (ReflectiveOperationException | LinkageError | RuntimeException e) {
             return "Dracolich: native API not readable ("
                     + e.getClass().getSimpleName() + "): " + e.getMessage()
