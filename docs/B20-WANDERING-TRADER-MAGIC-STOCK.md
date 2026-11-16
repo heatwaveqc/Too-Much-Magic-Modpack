@@ -87,6 +87,17 @@ This expands the premium pool **from ten to twelve categories**. Each trader sti
 
 **QA additions:** Confirm exactly one true Relic/Artifact (not ordinary equipment, nonrelic food, or an item missing native progression data); test Reliquified Artifacts rank/XP/durability behavior on a trader-bought Artifact; check no duplicated collectible on chunk load; verify Witchery Drop of Luck and Hexerei Replacer Satchel IDs and functional items from pinned binaries; verify premium selection distinct and base offers preserved. Also verify no mandatory advancement/research gate triggers merely from possessing a purchased item.
 
+### B20.3 — Ring of the Seven Deadly Sins must never appear as trader stock
+
+**Owner rule, 2026-11-15:** `relics:ring_of_the_seven_deadly_sins` has already been removed from ordinary Relics loot, but remains a registered item. The trader's dynamic `RelicItem` scan must **not** reintroduce it.
+
+Enforcement is deliberately redundant:
+1. Explicit item-ID denial list excludes the Ring from **candidate selection**, before it can enter the lottery.
+2. The selected `ItemStack` is validated once more before a merchant offer is created.
+3. On each server-side trader entity spawn/load, inspect and **remove any existing offers** whose output is on the denylist, *even if that trader already has all stock markers*. This protects existing traders and other injected pools.
+
+This remains a source-level restriction until a client/server in-world test confirms the Ring cannot appear among a large sample of traders, and that legacy traders with a forced Ring offer are scrubbed on load. A unit/static contract is added to `scripts/validate_b20_trader_stock.py`.
+
 ## Source inspection references
 - Astral paper: `HellFirePvP/AstralSorcery` branch `1.21.1`, `ConstellationPaperItem.java`
 - EvilCraft broom: `CyclopsMC/EvilCraft` tag `1.21.1-1.2.100`, `LootModifierInjectBroom.java`

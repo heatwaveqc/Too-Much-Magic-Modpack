@@ -57,7 +57,7 @@
       "maxUses": 1,
       "price": "128 emeralds for Relic; 96 emeralds for Artifact",
       "marker": "tmmRelicArtifactStockVersion=1",
-      "notes": "Always exactly one on each new trader, separate from and in addition to five older guarantees; normal default ItemStack preserves Relics native loot semantics and Reliquified Artifacts's item-based progression; validate exact in-game behavior."
+      "notes": "Always exactly one on each new trader, separate from and in addition to five older guarantees; normal default ItemStack preserves Relics native loot semantics and Reliquified Artifacts's item-based progression; validate exact in-game behavior. Explicitly excludes relics:ring_of_the_seven_deadly_sins; registered item must remain untradeable even though disabled as ordinary loot."
     }
   ],
   "preserve_existing_trades": true,
@@ -219,8 +219,13 @@
       "Chaos Shard",
       "raw/ore Iesnium",
       "Thallasium",
-      "ProjectE philosopher's stone"
-    ]
+      "ProjectE philosopher's stone",
+      "relics:ring_of_the_seven_deadly_sins"
+    ],
+    "forbidden_trader_item_ids": [
+      "relics:ring_of_the_seven_deadly_sins"
+    ],
+    "enforcement": "Filter before dynamic Relic/Artifact selection, reject selected result, and purge disallowed outputs from existing trader offers on server-side entity spawn/chunk reload; do this even for traders with completed stock markers."
   },
   "relic_artifact_guarantee": "One independently injected, non-duplicating, one-use Relics or Artifacts offer per trader (50/50 between families when both available)",
   "collectible_versioned_marker": "tmmRelicArtifactStockVersion=1"

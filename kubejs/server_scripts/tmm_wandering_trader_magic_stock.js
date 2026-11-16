@@ -257,6 +257,29 @@ const TMM_PremiumCatalog = [
 const TMM_RelicItem = Java.loadClass('it.hurts.sskirillss.relics.items.relics.base.RelicItem');
 const TMM_ArtifactItem = Java.loadClass('artifacts.item.ArtifactItem');
 
+// These remain registered even when excluded from world loot. Do not allow
+// the merchant's dynamic item registry scan to reintroduce them.
+const TMM_ForbiddenTraderItemIds = ['relics:ring_of_the_seven_deadly_sins'];
+
+function tmmIsForbiddenTraderItem(item) {
+  return TMM_ForbiddenTraderItemIds.includes(String(TMM_Builtins.ITEM.getKey(item)));
+}
+
+// Defense in depth: remove blacklisted results from ANY existing offers,
+// not only this script's own random Relic/Artifact selection. Run before
+// checking stock markers so old traders get cleaned up on chunk load.
+function tmmPurgeForbiddenTraderOffers(trader) {
+  const offers = trader.getOffers();
+  for (let i = offers.size() - 1; i >= 0; i--) {
+    const result = offers.get(i).getResult();
+    if (result !== null && !result.isEmpty() && tmmIsForbiddenTraderItem(result.getItem())) {
+      offers.remove(i);
+      console.warn('[TMM Trader] Removed forbidden trade offer: ' +
+        String(TMM_Builtins.ITEM.getKey(result.getItem())));
+    }
+  }
+}
+
 function tmmRandomRelicOrArtifact(trader) {
   const relics = [];
   const artifacts = [];
@@ -264,6 +287,7 @@ function tmmRandomRelicOrArtifact(trader) {
 
   for (let i = 0; i < entries.length; i++) {
     const item = entries[i].getValue();
+    if (tmmIsForbiddenTraderItem(item)) continue;
     if (item instanceof TMM_RelicItem) {
       relics.push(item);
     } else if (item instanceof TMM_ArtifactItem && !item.isCosmetic()) {
@@ -286,6 +310,9 @@ function tmmRandomRelicOrArtifact(trader) {
   const item = options[random.nextInt(options.length)];
   const stack = item.getDefaultInstance(); // Relics' own loot uses this API
   if (stack === null || stack.isEmpty()) throw new Error('Empty ' + selectedFamily + ' stack');
+  if (tmmIsForbiddenTraderItem(stack.getItem())) {
+    throw new Error('Forbidden Relic/Artifact trade output rejected');
+  }
   const cost = selectedFamily === 'relics' ? 128 : 96;
   return {family: selectedFamily, itemId: String(TMM_Builtins.ITEM.getKey(item)),
           offer: tmmExpensiveTrade(stack, cost, 1)};
@@ -314,6 +341,8 @@ function tmmPremiumRotation(trader, count) {
 EntityEvents.spawned('minecraft:wandering_trader', event => {
   const trader = event.entity;
   if (trader.level().isClientSide()) return;
+  // This prohibition applies even to traders with all stock-version markers.
+  tmmPurgeForbiddenTraderOffers(trader);
   const data = trader.getPersistentData();
   const needsCore = data.getInt('tmmGuaranteedMagicStockVersion') < TMM_StockVersion;
   const needsPremium = data.getInt('tmmRotatingMagicStockVersion') < TMM_PremiumVersion;

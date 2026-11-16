@@ -25,6 +25,9 @@ def main():
     assert all(x["uses"] in (1,2) for x in premium)
     assert {x["id"] for x in premium}.issuperset({"witchery_drop_of_luck","hexerei_replacer_satchel"})
     assert p["collectible_versioned_marker"] == "tmmRelicArtifactStockVersion=1"
+    denied = p["exclusions"]["forbidden_trader_item_ids"]
+    assert "relics:ring_of_the_seven_deadly_sins" in denied
+    assert "relics:ring_of_the_seven_deadly_sins" in p["exclusions"]["disallowed"]
     assert all(x["status"] == "suggest_not_active" or x["status"] == "already_provisional_in_rotation" for x in p["under_review"])
     assert all(x["approval"] == "suggested_not_approved" for x in p["next_candidates"])
     script_path="kubejs/server_scripts/tmm_wandering_trader_magic_stock.js"
@@ -39,6 +42,11 @@ def main():
                   "tmmRotatingMagicStockVersion", "tmmRelicArtifactStockVersion",
                   "tmmRandomRelicOrArtifact(trader)", "tmmRandomRelicOrArtifact",
                   "TMM_ArtifactItem", "TMM_RelicItem", "isCosmetic()",
+                  "TMM_ForbiddenTraderItemIds",
+                  "relics:ring_of_the_seven_deadly_sins",
+                  "if (tmmIsForbiddenTraderItem(item)) continue;",
+                  "tmmIsForbiddenTraderItem(stack.getItem())",
+                  "tmmPurgeForbiddenTraderOffers(trader)",
                   "witchery:drop_of_luck", "hexerei:replacer_satchel",
                   "setMana(tablet, ManaTablet.MAX_MANA)",
                   "getParts().toArray()", "getModifiers().toArray()",
@@ -47,6 +55,10 @@ def main():
                   "offers.add(chosen[i].offer)", "data.putInt("]:
         assert token in script, "Missing implementation contract: " + token
     assert "INK_COMMON.get()" not in script
+    assert script.index("tmmPurgeForbiddenTraderOffers(trader);") < script.index("const data = trader.getPersistentData();", script.index("EntityEvents.spawned('minecraft:wandering_trader'"))
+    # Regression guard: never let the configured disallowed ID disappear from
+    # both the runtime hard-denylist and policy silently.
+    assert script.count("relics:ring_of_the_seven_deadly_sins") >= 1
     index=read("index.toml")
     assert hashlib.sha256(index.encode()).hexdigest() == tomllib.loads(read("pack.toml"))["index"]["hash"]
     hashval=hashlib.sha256(script.encode()).hexdigest()
