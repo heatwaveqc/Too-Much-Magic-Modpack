@@ -137,7 +137,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `psi` | Psi | magic | enabled flag | full | researching | [profile](mods/psi.md) |
 | `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | source-complete | [profile](mods/scriptor-magicae.md) |
-| `theurgy` | Theurgy | magic | enabled flag | full | queued | — |
+| `theurgy` | Theurgy | magic | enabled flag | full | researching | [profile](mods/theurgy.md) |
 | `totemic` | Totemic | magic | enabled flag | full | researching | [profile](mods/totemic.md) |
 | `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | researching | [profile](mods/witchery-remake.md) |
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
