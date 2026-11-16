@@ -1,13 +1,12 @@
 name: B13 - Beach, Glass and Decorative Six-Mod Integration
 on:
-  push:
-    branches: ['feature/b13-beach-glass-building-audit']
-    paths:
-      - '.github/workflows/b13-beach-decor.yml'
-      - 'scripts/resolve_b13.py'
-      - 'docs/BUILDING-CAPABILITY-AUDIT.md'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke/build only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
@@ -17,6 +16,7 @@ concurrency:
 
 jobs:
   resolve-and-boot:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 70
     steps:
