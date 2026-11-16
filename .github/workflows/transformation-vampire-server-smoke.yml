@@ -1,27 +1,17 @@
 name: Vampire bridge full-modpack dedicated-server smoke
 on:
-  push:
-    paths:
-      - 'compat/transformations/**'
-      # The bottle bridge now depends on KubeJS food and blood crafting overlays.
-      - 'kubejs/startup_scripts/drinkable_blood_vial.js'
-      - 'kubejs/data/hexerei/recipe/*broom_from_mixing_cauldron.json'
-      - 'kubejs/data/irons_spellbooks/recipe/netherite_spell_book.json'
-      - 'kubejs/data/tmm/tags/item/ordinary_blood_bottles.json'
-      - 'kubejs/data/tmm/recipe/hexerei/*.json'
-      - 'kubejs/data/tmm/recipe/irons_spellbooks/*.json'
-      - 'kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/*.json'
-      - 'kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json'
-      - 'kubejs/data/irons_spellbooks/tags/item/blood_focus.json'
-      - '.github/workflows/transformation-vampire-server-smoke.yml'
-      - 'scripts/smoke_server.sh'
-      - 'scripts/build_vampire_prism.py'
-      - 'scripts/build_b8_prism.py'
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke and Prism packaging only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: read
 jobs:
   modded-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
