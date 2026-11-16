@@ -98,7 +98,7 @@ These require a real installed QA build and the smallest necessary disposable wo
 | C07 | NOT RUN | — | — | Follow linked case in checklist |
 | C08 | NOT RUN | — | — | Follow linked case in checklist |
 | C09 | NOT RUN | — | — | Follow linked case in checklist |
-| C13 | NOT RUN | — | — | Dragon Survival Hot Dragon Rod 1-versus-8 dust native crafting; no recipe change |
+| C13 | **FAIL — USER-REPORTED** | **Unknown; friend-tested environment** | Owner reports friend crafted `dragonsurvival:hot_dragon_rod` with exactly **1 Elder Dragon Dust + 1 Blaze Rod** despite source JSON `count: 8` on a single shapeless ingredient | Likely count ignored as ingredient multiplicity; reproduce against exact assembled v2.0.74/JAR, capture SHA and logs; no recipe change authorized |
 | C14 | NOT RUN | — | — | Dragon Survival Spearman Promotion 1-versus-3 emerald blocks native crafting; no recipe change |
 | C15 | NOT RUN | — | — | Dragon Survival Forest/Sea/Cave Source of Magic native crafting; ore form comparisons; no recipe change |
 | C16 | NOT RUN | — | — | Bottle Caps Treasure conditional: `desert_monster_ds` absent in current pack roster; verify final build then NOT BUILT/NOT APPLICABLE if absent |
@@ -108,6 +108,7 @@ These require a real installed QA build and the smallest necessary disposable wo
 | Timestamp | Source/test SHA | Case ID(s) | Level | Status | Exact evidence / URL | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-11-16 (initialization) | `45daad21634d6d59860b199da7cf7df9dc8c0557` | Documentation only | Repo inspection | NOT RUN | QA hub and checklist added; no new CI or game tests executed | Codex to run authorized quick preflight |
+| 2026-11-16 (friend playtest reported by owner) | **Unknown / external test** | C13 | User-reported live crafting | **FAIL — REPORTED, NOT INDEPENDENTLY REPRODUCED** | Hot Dragon Rod successfully crafted using one Elder Dragon Dust and one Blaze Rod; upstream `hot_dragon_rod.json` contains `count: 8` inside one shapeless ingredient object | Retest exact pinned 2.0.74 version; C14 Spearman Promotion shares this format but remains UNTESTED; preserve native recipes until user authorizes patch |
 
 ### Evidence format
 
@@ -117,4 +118,4 @@ If an agent has only inspected documentation or committed source, **do not upgra
 
 ## Pending Dragon Survival native recipe checks (owner instruction, 2026-11-16)
 
-These are **test requests only**, not accepted bug reports or approved recipe changes. Inspect the exact 2.0.74 JAR and observe actual JEI/crafting first. `C13` Hot Dragon Rod, `C14` Spearman Promotion, and `C15` all three Sources of Magic must be attempted in the next owner-authorized live test if Dragon Survival is installed. `C16` Bottle Caps Treasure is optional and conditioned on `desert_monster_ds`; absent dependency = not built/not applicable, with no addon installation solely for this check. Previous review of authored JSON identified possible quantity/tag mismatches but did **not** demonstrate a gameplay failure. Leave every native recipe unchanged pending results.
+These are **test requests only**, not accepted bug reports or approved recipe changes. Inspect the exact 2.0.74 JAR and observe actual JEI/crafting first. `C13` Hot Dragon Rod, `C14` Spearman Promotion, and `C15` all three Sources of Magic must be attempted in the next owner-authorized live test if Dragon Survival is installed. `C16` Bottle Caps Treasure is optional and conditioned on `desert_monster_ds`; absent dependency = not built/not applicable, with no addon installation solely for this check. **Updated 2026-11-16:** A friend's real crafting test, relayed by the owner, now demonstrates a **Hot Dragon Rod quantity failure** (one dust + one rod produces the item). Exact build/JAR SHA is unreported and this has not been independently reproduced by CI. The same malformed-count pattern in Spearman Promotion is **suspected**, not tested. Leave native recipes unchanged pending explicit owner approval; retain exact-pack verification as C13/C14.
