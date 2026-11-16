@@ -43,6 +43,24 @@ public final class ProgressionApi {
         return true;
     }
 
+    /**
+     * Operator-only test grant, called by the command dispatcher after checking
+     * permission level 2. Bypasses activity rates, not enrollment or the
+     * normal rank and automatic-skill calculations. Does not award vanilla XP.
+     */
+    public static boolean grantAdminXp(ServerPlayer player, String pathId, long amount) {
+        if (amount <= 0) return false;
+        Definition.Path path = PathRegistry.get(pathId);
+        if (path == null) return false;
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        Track before = ledger.get(pathId);
+        if (!before.joined()) return false;
+        Track after = ProgressionMath.grantXp(path,before,amount);
+        if (after.xp() == before.xp()) return false; // saturated
+        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
+        return true;
+    }
+
     /** Fail-closed if the path is missing, gated, full, or short on skill points. */
     public static boolean buy(ServerPlayer player, String pathId, String skillId) {
         Definition.Path path = PathRegistry.get(pathId);
