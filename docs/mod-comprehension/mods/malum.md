@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | malum / malum |
-| Category / parent or addons | magic; independent soul and spirit-arcana system |
+| Category / parent or addons | magic; independent soul and spirit-arcana system; addon: [Gaze](gaze-malum.md) |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM test/full-integration |
 | Pinned version / artifact / hash | mods/malum.pw.toml; malum-1.21.1-1.8.2.jar; Modrinth project jgzwYsAN, version BIbVs1fo; SHA512 dd9ccc1dea3b090f69f807be3e7a8b99ec6d3d7d6b047e2893cb49ca505860bbf640cf767082c1a32ea403b35e2a9f9d1755327890bbfb2f8778058a9597a99e [pin] |
 | Source snapshot | SammySemicolon/Malum-Mod, branch 1.21.1, commit 03b743a37f3eeb0cc7f4364f0730e1f135f78408. gradle.properties declares Malum 1.8.2, MC 1.21.1, NeoForge 21.1.213, Lodestone 1.8.2.523 and Curios 9.3.1+1.21.1. Version-aligned; binary equivalence not tested [source: gradle.properties] |

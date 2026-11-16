@@ -148,7 +148,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | blocked | [profile](mods/ars-ocultas.md) |
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
-| `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | queued | — |
+| `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | researching | [profile](mods/gaze-malum.md) |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
 | `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | researching | [profile](mods/psi-tweaks.md) |
 | `feywild` | Feywild | magic_adventure | enabled flag | full | queued | — |
