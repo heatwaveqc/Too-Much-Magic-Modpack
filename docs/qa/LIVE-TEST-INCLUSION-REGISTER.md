@@ -47,6 +47,14 @@ All of these appeared under `deferred_pending_runtime` during the previous retir
 
 **Reconciliation owners:** whichever Codex/agent assembles the next comprehensive test must fill in each row's exact commit and change status based on evidence; further newly ready work must be appended, not substituted for these. The owner has **not** given a blanket waiver for the above branches.
 
+## Tyz migration / MXP integration boundary (2026-11-16)
+
+| Feature | Current source status | Next test |
+| --- | --- | --- |
+| Tyz backend `fix/retire-puffish-skills-pin-tyz-2026-11-16` | **INCLUDED in baseline source**: exact Tyz pin, Pufferfish Skills removed, four Core Skills, native activity XP off; independent Attributes kept. Not a new client PASS. | Test Tyz GUI, 4x5 ranks, XP/SP, persistence, and no Pufferfish Skills in next authorized QA. |
+| MXP engine `feature/mxp-configurable-growth-20261115` | **NOT RUNTIME INCLUDED**: `MxpService→TyzBridge.deliver` exists in Java, but no tmm_mxp JAR in pack. | Compile/integrate the newest source and verify the bridge plus resource/cross-cast hooks in disposable world; no automatic deferral. |
+| Full nine-tree skill program | **OWNER-DEFERRED until built**; initial four-skill Core Skills pilot remains. | No empty dragon/form/Monk/Hunter category placeholders. |
+
 ## New ready feature record template
 
 | Date / origin | Ready feature and source | Code / pins / conflicts | Inclusion status | Evidence (SHA, destination or blocker) | Assigned QA case |

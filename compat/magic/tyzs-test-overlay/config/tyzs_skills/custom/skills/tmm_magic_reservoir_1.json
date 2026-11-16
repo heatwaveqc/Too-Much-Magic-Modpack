@@ -1,0 +1,62 @@
+{
+  "active": true,
+  "id": "tmm_magic_reservoir_1",
+  "maximumLevel": 5,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "CUSTOM",
+  "category": "tmm_magic_core",
+  "icon": "minecraft:textures/item/enchanted_book.png",
+  "displayName": "Reservoir I",
+  "description": "Increases personal magical capacity (Ars, Iron's, Psi).",
+  "modifiers": [
+    {
+      "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+      "operation": "ADD_VALUE",
+      "values": [
+        20,
+        40,
+        59,
+        79,
+        99
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "irons_spellbooks:max_mana",
+      "operation": "ADD_VALUE",
+      "values": [
+        20,
+        40,
+        59,
+        79,
+        99
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "psi:total_psi",
+      "operation": "ADD_VALUE",
+      "values": [
+        990,
+        1980,
+        2970,
+        3960,
+        4950
+      ],
+      "unit": ""
+    }
+  ],
+  "customValues": {},
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}

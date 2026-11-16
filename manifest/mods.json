@@ -1715,13 +1715,13 @@
       "id": "puffish-skills",
       "name": "Pufferfish's Skills",
       "category": "infrastructure",
-      "desired": true,
+      "desired": false,
       "version": "puffish_skills-0.19.2-1.21-neoforge",
       "release_status": "experimental_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/835091",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "B6 user-approved boot-test candidate. Pufferfish Skills release is beta-tagged, not custom skill tree content.",
+      "note": "Removed from the rolling Tyz 6.4.2 integration channel; historical B6/B8 rollback remains immutable. Pufferfish Attributes is a separate dependency and is retained pending audit.",
       "packwiz_slug": "puffish-skills"
     },
     {
@@ -2098,6 +2098,21 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "category": "skills",
+      "desired": true,
+      "version": "Tyz's skills 6.4.2 - 1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/tyzs-skills/version/6.4.2",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "candidate_file_id": 8118598,
+      "curseforge_project_id": 990190,
+      "packwiz_slug": "tyzs-skills",
+      "note": "First-wave integration: four five-rank Core Magic skills, one shared Tyz SP wallet, all Tyz native activity XP disabled. Until the canonical MXP dispatcher is runtime-integrated, XP is available via explicit operator test grants only. Core Magic and vanilla Tyz categories are NOT a second Monk tree."
     }
   ],
   "excluded": [
