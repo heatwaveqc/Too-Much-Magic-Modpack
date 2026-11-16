@@ -52,7 +52,7 @@ All prices exceeding 64 emeralds use the merchant's second input slot for anothe
 
 **Witchery / JAWR:** recommend a **Drop of Luck**: it represents substantial cauldron/distillery effort and supports other recipes, making it a better premium trade than seeds. An alternative is **Mutandis Extremis** to reduce plant-variant hunting, but avoid shortcuts around the Altar/cauldron research. Confirm exact IDs and advancement side effects against installed JAWR `0.5.0.39` before enabling.
 
-**Hexerei:** consider an **Ender Satchel** (magic portable storage, perhaps 96 emeralds) or an **Entangled Coffer** (magic logistics, perhaps 112 emeralds). Both relieve materials/organization tedium; choose one that complements rather than displaces Occultism's storage role. Their IDs and actual 0.5.0.3 crafting/research gates need verification. Do not enable until the owner chooses.
+**Hexerei:** my first recommendation is the **Replacer Satchel** (`hexerei:replacer_satchel`, proposed 96 emeralds). It is a broom satchel upgrade with 18 slots and automatically equips a spare brush when the active broom brush wears out. That removes meaningful broom-maintenance tedium, and its crafting involves multiple dried flowers, ender pearls, and a filled cauldron. An **Entangled Coffer** (about 112 emeralds) is an alternative for shared magical storage but overlaps Occultism's role. No Hexerei bonus stock is active until the owner selects it and the precise pinned-JAR mechanics/IDs are checked.
 
 ### Updated runtime QA
 
