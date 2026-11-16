@@ -78,6 +78,21 @@ public final class TreeChopXpBridge {
                 stream.limit(8192).forEach(candidate -> {
                     if (!(candidate instanceof BlockPos pos) || !level.hasChunkAt(pos)) return;
                     BlockState state = level.getBlockState(pos);
+                    // TreeChop replaces partially chopped trunks with its
+                    // own block entity; recover the underlying log material.
+                    if (!state.is(BlockTags.LOGS)
+                            && net.minecraft.core.registries.BuiltInRegistries.BLOCK
+                            .getKey(state.getBlock()).toString().equals("treechop:chopped_log")) {
+                        var entity = level.getBlockEntity(pos);
+                        if (entity != null) {
+                            try {
+                                Object original = invoke(entity, "getOriginalState");
+                                if (original instanceof BlockState originalState) state = originalState;
+                            } catch (ReflectiveOperationException ignored) {
+                                // Do not fabricate log XP for missing source state.
+                            }
+                        }
+                    }
                     if (state.is(BlockTags.LOGS)) logs.add(new OriginalLog(pos.immutable(), state));
                 });
             }
