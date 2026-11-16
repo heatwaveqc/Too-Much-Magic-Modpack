@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tmm.transformations.mixin;
 
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
+import io.github.heatwaveqc.tmm.transformations.core.NativeSpeciesJoinGuard;
+import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -9,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Reject becoming a Dragon Survival dragon at its authoritative species setter. */
+/** Dragon Survival species entrypoint: enforce shared acquisition policy without blocking cures. */
 @Pseudo
 @Mixin(targets = "by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateHandler", remap = false)
 public abstract class NewbieDragonAcquisitionMixin {
@@ -17,10 +19,8 @@ public abstract class NewbieDragonAcquisitionMixin {
             at = @At("HEAD"), cancellable = true, remap = false)
     private void tmm$denyNewbieDragon(Player player, Holder<?> species, boolean savedForSoul, CallbackInfo ci) {
         if (species != null && player instanceof ServerPlayer server
-                && server.getTags().contains("tmm_newbie")) {
+                && !NativeSpeciesJoinGuard.permit(server, ProviderState.DRAGON_SURVIVAL_DRAGON, "Dragon")) {
             ci.cancel();
-            server.sendSystemMessage(net.minecraft.network.chat.Component.literal(
-                "Dragon transformation is unavailable in Newbie Mode. Complete the Introduction graduation quest first."));
         }
     }
 }
