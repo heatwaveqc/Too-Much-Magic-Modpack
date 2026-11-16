@@ -39,12 +39,18 @@ public final class VendettaEvents {
     }
 
     public static void onDeath(LivingDeathEvent event) {
-        if (!(event.getEntity() instanceof WanderingTrader)
-            || !(event.getEntity().level() instanceof ServerLevel level)
+        if (!(event.getEntity().level() instanceof ServerLevel level)
             || !(event.getSource().getEntity() instanceof ServerPlayer killer)) {
             return;
         }
-        accuse(level, killer, "killed a wandering trader");
+        if (event.getEntity() instanceof WanderingTrader) {
+            accuse(level, killer, "killed a wandering trader");
+        } else if (event.getEntity() instanceof Villager) {
+            // Vanilla VILLAGER_KILLED gossip is witness-dependent. Preserve the
+            // global vendetta even if the victim was the only villager nearby.
+            // The blacklist is a UUID set: reputation mixin + death hook are idempotent.
+            accuse(level, killer, "killed a villager");
+        }
     }
 
     /**

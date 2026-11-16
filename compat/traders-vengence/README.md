@@ -15,6 +15,9 @@ not edit the packwiz index or the running QA build.
   `irons_spellbooks:priest` takes a player as its current attack target.
   The villager reputation signal is observed by a narrow Mixin on
   `Villager.onReputationEventFrom`; **vanilla gossip and prices are unchanged**.
+  A narrowly scoped villager death fallback captures kills with no nearby
+  gossip witnesses, so isolated villagers are still protected by the global
+  blacklist. This fallback never edits gossip or trade prices.
   Iron golem damage remains a separate hook because vanilla only has
   `GOLEM_KILLED`, not `GOLEM_HURT`. Merely angering a priest below its
   aggression threshold does not count.
@@ -78,9 +81,10 @@ Test in a disposable save after an owner-authorized test build:
   restart, and golem/llama/villager retaliation occurs only for the offender.
 - On a fresh unblacklisted player, strike a villager or iron golem (melee, then
   player-fired projectile); confirm all three defender types target that player
-  and the new status persists after relog/server restart. Confirm vanilla
-  villager reputation events trigger our blacklist and ordinary gossip and price
-  changes are still vanilla. Confirm no double-penalties to gossip, while golem
+  and the new status persists after relog/server restart. Also test a single
+  isolated villager killed in one hit with no witnesses; the vendetta must still
+  be applied. Confirm vanilla villager reputation events trigger our blacklist
+  and ordinary gossip and price changes are still vanilla. Confirm no double-penalties to gossip, while golem
   assault is caught even without a villager present.
 - Spawn a pillager or zombie alongside a villager; confirm the villager only
   retaliates after being attacked (not on seeing the mob), casts Iron's Magic
