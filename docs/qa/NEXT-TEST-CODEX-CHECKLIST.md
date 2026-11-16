@@ -242,7 +242,7 @@ Keep physical setup minimal; one shared disposable laboratory world, command-sup
 | C07 | Two real players on authorized server | Independent Monk/Hunter ledgers, team coins/quests, inventory/Curios sync, reconnect and death | Pre-candidate |
 | C08 | Disposable backup and restore | Simple Backups and removed-mod-save handling on copies, never valued worlds | Pre-candidate |
 | C09 | CC peripherals / boss progression | One active FE/CC peripheral and one prioritized ritual / boss-gate bypass attempt | Later |
-| C10 | Dragon Survival/Jade/FTB client UI | Confirm actual Dragon Survival JAR; reproduce Jade Keypad-1 overlay toggle vs dragon Skill #1; verify Dragon Inventory tab vs editable FTB sidebar; capture top-right icons vs FTB minimap, move via M → settings and assess pack default config. See [Dragon/Jade UI triage](../DRAGON-SURVIVAL-JADE-CLIENT-UI-TRIAGE-2026-11-16.md) | Next client QA; no server-only substitute |
+| C10 | Dragon Survival/Jade/FTB client UI | Confirm actual Dragon Survival JAR; reproduce Jade Keypad-1 overlay toggle vs dragon Skill #1; verify **packaged** FTB Library sidebar bottom-left vs upper dragon inventory tabs; verify FTB Chunks **top-left** minimap vs two top-right dragon icons and bottom-right ability HUD, GUI scale 2/3, and persistence of local changes. See [Dragon/Jade UI triage](../DRAGON-SURVIVAL-JADE-CLIENT-UI-TRIAGE-2026-11-16.md) | Next client QA; no server-only substitute |
 
 ## Reporting and acceptance (Codex must follow)
 
