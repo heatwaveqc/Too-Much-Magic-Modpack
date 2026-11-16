@@ -53,7 +53,9 @@ public final class HunterMutations {
             || !ProgressionApi.track(player,HUNTER).joined()
             || !brewed.is(HunterItems.MUTAGENIC_BREW.get())) return false;
         PotionContents contents = brewed.get(DataComponents.POTION_CONTENTS);
-        if (!hasEligibleEffect(contents)) return false;
+        // Defense in depth: a mutated/command-granted brew cannot bypass the
+        // brewing-stand source gate simply by carrying POTION_CONTENTS.
+        if (!StandPotionEligibility.eligible(contents) || !hasEligibleEffect(contents)) return false;
         HunterMutationState old = player.getData(ProgressionAttachments.HUNTER_MUTATIONS.get());
         HunterMutationState next = old;
         List<String> changed = new ArrayList<>();
