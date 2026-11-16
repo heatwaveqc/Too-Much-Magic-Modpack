@@ -79,8 +79,9 @@ def main() -> None:
         raise RuntimeError("Unknown source manifest schema/channel")
     if git("branch", "--show-current") != "test/full-integration":
         raise RuntimeError("Run only on test/full-integration")
-    if git("status", "--porcelain"):
-        raise RuntimeError("Integration checkout is not clean")
+    dirty = git("status", "--porcelain")
+    if dirty:
+        raise RuntimeError("Integration checkout is not clean:\n" + dirty)
     base_ref = "refs/remotes/origin/" + cfg["baseline"]
     git("rev-parse", "--verify", base_ref)
     # Integrate later baseline quest/economy corrections before importing owned paths.
