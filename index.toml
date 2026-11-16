@@ -435,6 +435,10 @@ file = "kubejs/server_scripts/dragon_diets.js"
 hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
 
 [[files]]
+file = "kubejs/server_scripts/dragon_seasoned_fish.js"
+hash = "a18b40bb1ee8b3f722f915424f725458766f5843400c367fa67b8581894f0fbc"
+
+[[files]]
 file = "kubejs/server_scripts/material_processing_cleanup.js"
 hash = "4e3af9879096859002f21b25f66f78ccb5816b1a44a7e71671273bab34f8427e"
 
