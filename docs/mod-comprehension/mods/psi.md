@@ -6,31 +6,31 @@
 | Category / parent or addons | Magic; spell-programming system. Installed addon: [Psi: Tweaks and Additions](psi-tweaks.md) (separate profile). |
 | MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM `test/full-integration` |
 | Pinned version / artifact / hash | `mods/psi.pw.toml`; `Psi-neoforge-1.21.1-110.jar`; Modrinth project `pOeA0exL`, version `j9TFdTKC`; SHA512 `2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a` [pin] |
-| Source snapshot | Official `VazkiiMods/Psi` tag `release-1.21.1-110`; its `gradle.properties` declares MC 1.21.1, mod ID `psi`, version 110. Tag commit SHA and artifact equivalence were not established; source is version-aligned, not proof of JAR provenance. |
-| Guide/documentation version gap | Official overview describes a leveling system with in-game documentation/tutorials; official Codex page says it mirrors the in-game Encyclopaedia opened by the Psi master keybind. The web Codex could not be retrieved; exact 1.21.1 guide entries, unlock conditions and names remain unverified. |
+| Source snapshot | Official `VazkiiMods/Psi` tag `release-1.21.1-110`; its `gradle.properties` declares MC 1.21.1, NeoForge 21.1.207, mod ID `psi`, version 110. The tag's content files were inspected directly; peeled tag commit SHA and pinned-JAR equivalence remain unverified. |
+| Guide/documentation version gap | The exact 1.21.1 tag contains an Encyclopaedia Psionica Patchouli book, with Basics, Components, Items and Legacy Entries categories. It labels the book a work in progress and places six tutorials under Legacy Entries. Old localization keys still describe a leveling menu; the current source's default 29 spell-piece groups are not enforced unlock gates, so do not treat that older text as current progression behavior. |
 | Profile status | researching |
-| Evidence reached | Exact packwiz pin; official upstream release tag metadata; official project overview, FAQ and changelog; no direct JAR inspection or client test |
+| Evidence reached | Exact packwiz pin; matching upstream tag metadata; exact-tag Patchouli page definitions/localized guide content, default spell-piece group registry, CAD recipe/data, cast/resource source; no direct JAR inspection or client test |
 | Reviewed | 2026-11-16 |
 | Quest ownership | No Psi quest chapter reconciled in this pass. No quest files changed. |
 
 ## Executive gameplay map
 
-**What the player actually does:** Psi is a programming-focused magic system. The player writes an action sequence (a spell) from selectors, operators and actions using vector/math concepts, then runs that spell in the world. Its official description says the mod teaches concepts and spell pieces through a leveling system with in-game documentation/tutorials, tying progression rewards to the player's creation process. The official site and current pinned source metadata do not establish the exact survival unlock order, item costs, spell-piece tiers, or terminal progression. Treat specific CAD, bullet, tool, armor and material progression as research questions until checked against the pinned artifact and guide.
+**What the player actually does:** Psi is a spell-programming system built around CADs, spell bullets, and a grid-based Programmer. The 1.21.1 guide gives a concrete opening: craft a CAD Assembler and Iron CAD Assembly, assemble the starter CAD, then use it on dropped Redstone Dust to create Psidust. The Encyclopaedia teaches authoring and casting through six tutorials, with a broader catalog of components, bullets, tools, armor and spell pieces. In the source tag, default spell-piece groups organize and announce learning events, but do not lock their pieces behind a leveling tree.
 
-**Why it matters in TMM:** Psi offers player-authored conditional logic and programmable actions rather than a fixed spell list or altar recipe. This could cover utility or combat behaviors unavailable in other schools, but the enabled roster also contains Psi: Tweaks and Additions; inventory the addon's actual contribution before writing quests or promising capabilities.
+**Why it matters in TMM:** Psi gives players a programmable action system with explicit spell statistics, resource costs, and CAD constraints. The installed Psi: Tweaks and Additions addon has a separate profile; its actions, extra progression and optional Mekanism-dependent content should not be attributed to base Psi.
 
-**Quick start (research outline, not yet a verified walkthrough):**
-1. In Controls, locate the Psi master keybind and open the Encyclopaedia/Codex; confirm the in-game label and first tutorial in a client.
-2. Follow the earliest tutorial to obtain the first programming interface and casting instrument. Exact acquisition, station and material requirements are not established from the sources retrieved.
-3. Program and validate a minimal spell using the guide's first example; identify how the guide awards progress and unlocks additional pieces.
-4. Transfer the validated spell into the first castable item/device and test the actual target, cost and success feedback.
-5. Continue through all guide levels, component upgrades, casting forms and equipment branches. The full sequence and endpoint still need source/JAR review.
+**Quick start (source-mapped, client acceptance still open):**
+1. Open the Encyclopaedia Psionica using the Psi master keybind; its introduction directs the player to a CAD Assembler and Iron CAD Assembly.
+2. Craft the CAD Assembler (5 iron ingots + 1 piston) and Iron CAD Assembly (4 iron ingots), then assemble the basic CAD in the machine.
+3. Drop Redstone Dust on the ground and use the bare CAD while aiming at the item to craft Psidust. The source action spends 100 Psi and applies a 60-tick regeneration cooldown.
+4. Craft a Spell Programmer (5 iron ingots + 1 Psidust) and a basic Spell Bullet (1 iron ingot + 1 Psidust). Follow the guide's six Legacy Entries tutorials to write, compile, transfer, select and cast the example spells.
+5. Use JEI for recipes: the guide explicitly presents recipes for the CAD Assembler and CAD components, but says it is not a complete recipe book. Source-to-JAR parity and live client labels remain untested.
 
 ### Player-value snapshot
 
 | Five standout capabilities | Three genuinely early practical unlocks | Three candidate integrations |
 | --- | --- | --- |
-| Player-authored action sequences; vector/math-based spell construction; tutorial/leveling progression; broad spell-piece vocabulary (exact pinned catalog not yet enumerated); shared/importable spell workflows (exact 1.21.1 support needs verification). | Exact early recipes and functions not established. The in-game tutorial system is the likely first teaching route, but its initial access trigger needs confirmation. Do not label a specific spell or tool an early unlock until verified. | Psi: Tweaks and Additions is installed and must be profiled independently; programmable actions may complement other spell schools (hypothesis only); spell cast/progression events may be useful quest detectors (API/event evidence not yet inspected). |
+| Authorable spells assembled from typed pieces; five CAD spell statistics and resource-efficiency tuning; multiple bullet execution forms; block/entity/movement/effect/smelting spell tricks; Psimetal tools and exosuit pieces that trigger spells from actions or sensors. | Bare CAD crafts Psidust from dropped Redstone Dust; the six tutorial entries teach the compile-and-cast loop; CAD components and bullets expand spell capability. | Psi: Tweaks and Additions is a separate installed addon; spell-group completion events could support scripted progression if a listener is confirmed; Psi spell actions may complement other schools (no resource or registry bridge claimed). |
 
 ### Subsystem coverage at a glance
 
@@ -56,11 +56,47 @@
 
 | Subsystem | How accessed | Inputs + costs | Effects / outputs | Limits, failure conditions and source |
 | --- | --- | --- | --- | --- |
-| Tutorial / leveling | In-game Encyclopaedia and leveling system per official project overview; exact first trigger unknown | Exact XP, action, item, advancement or spell completion triggers not established | Unlocks tutorial concepts/pieces according to the official overview; exact output and tier count unknown | Do not infer the advancement graph from old-version walkthroughs. [docs: official site; tag release-1.21.1-110] |
-| Spell authoring | Spell-programming UI; official project describes player-created action sequences and mathematical/vector concepts | Exact spell piece registry, parameters, cost formula, validation and compile failure behavior not inspected | A programmed sequence that can be executed in-world; precise persistence/copy flow unknown | Identify compile/runtime errors, complexity/potency limits, permission checks and costs from pinned source and artifact |
-| Spell execution | Exact casting instrument and input action not confirmed | Energy/mana/Psi resource, durability, cooldown and consumption order not established | Intended output is the spell's programmed world action | Do not claim FE/mana conversion, automation or target rules without source evidence |
-| Spell sharing / transport | Official Modrinth description says spells can be shared/copied using in-game sharing tools and points to the community compendium | Exact copy medium, supported version encoding, item costs and addon dependencies unverified | Sharing/import/export of spell definitions, not necessarily gameplay resources | Check compatibility warnings and missing piece behavior at pin |
-| Psi: Tweaks and Additions | Separate installed addon | Not established in this base profile | Not attributed to base Psi | Audit exact addon source/pin separately |
+| Encyclopaedia Psionica | Patchouli book opened with Psi's master keybind | No item cost established | Basics, Components, Items and Legacy Entries tutorial material | Book labels itself a work in progress; exact guide content is in the version-aligned tag, not proof of client display. |
+| CAD Assembler and components | Craft the machine and CAD components; insert an assembly and/or spell bullets | CAD Assembler uses 5 iron ingots + piston; Iron CAD Assembly uses 4 iron ingots; full CAD needs Core + Socket for casting | Builds a CAD and loads nonempty bullets into its sockets | CAD stats gate casting. Source-to-binary and client acceptance not verified. |
+| Psidust | Use the bare CAD while targeting dropped Redstone Dust | 100 Psi; 60-tick regeneration cooldown | Crafts Psidust from the targeted dropped item | Source checks that the held CAD is the player's equipped CAD, avoids duplicate CAD use, and emits the fake-level tutorial event after first successful Psidust craft. |
+| Spell Programmer | Craft, then right-click to program spells | 5 iron ingots + 1 Psidust | Typed piece grid; compile status and spell-stat readout | Invalid connections/parameters fail compilation; piece registry and full compiler limits remain to audit. |
+| Spell Bullet and CAD | Put compiled spell into a bullet, then load the bullet into a CAD via the Assembler | Basic bullet: iron ingot + Psidust; casting cost derives from spell cost, CAD Efficiency and bullet modifier | Radial-select and cast through CAD; projectile/loopcast/circle/grenade/charge/mine bullets change execution form | Cost overflow consumes CAD stored Psi before damaging player; exact battery and cooldown edge cases need further source/client review. |
+| Default spell-piece groups | 29 data-driven groups in source | Main-piece execution posts a completion event | Groups classify tutorials and spell-piece families | Default groups do not enforce a level gate; external/custom advancements can gate groups if correctly configured. |
+| Spells / runtime | Cast with a valid CAD and spell container | Positive final cost deducted; zero final cost skips deduction | Server executes spell; client predicts cast | Needs Psi available, a non-overflowed player, valid spell and sufficient CAD stats. Guide states 32-block trick range from focus with fizzle on violation. |
+
+### Verified 1.21.1 guide and starter progression
+
+The exact-tag book assets identify the manual as Encyclopaedia Psionica. Its landing page says the book is a work in progress and points readers to the Legacy Entries section for the old tutorials. The tag contains six tutorial entries:
+
+| Guide entry | Source-backed teaching step |
+| --- | --- |
+| Tutorial 1: Writing A Spell | Use the Programmer grid, connect Selector: Caster to Trick: Debug, configure the parameter, check the compile status, then place the compiled spell into a bullet. |
+| Tutorial 2: Casting A Spell | Load the bullet into the CAD using the CAD Assembler, select the bullet with the master-keybind radial menu, and cast the Debug spell. |
+| Tutorial 3: Types & Numbers | Teach typed spell parameters, numeric constants/operators and connectors. |
+| Tutorial 4: Move It | Build an Add Motion spell using the caster, look vector and numeric strength. |
+| Tutorial 5: Limits | Read the Programmer's five spell statistics and learn the focal-point range/fizzle boundary. |
+| Tutorial 6: EXPLOSION | Combine a raycast with the Explode trick and use the Error Suppressor for intentional failure cases. |
+
+The documented starter recipes are:
+- CAD Assembler: a shaped recipe with five iron ingots and one piston.
+- Iron CAD Assembly: four iron ingots; insert it in the CAD Assembler to produce the basic CAD.
+- Spell Programmer: five iron ingots and one Psidust.
+- Basic Spell Bullet: one iron ingot and one Psidust.
+- Psidust: drop Redstone Dust and use the basic CAD while targeting it. Source calls for 100 Psi and a 60-tick regeneration cooldown.
+
+The starter CAD is sufficient for the Psidust action but not general spell casting. The manual says a casting CAD needs a Core and Socket as well; a Battery increases maximum Psi and a Colorizer is cosmetic. The complete component recipes and tier stats are still open for audit. The guide also warns to carry only one CAD; multiple carried CADs interfere with casting.
+
+### Spell statistics, energy and cast boundaries
+
+The Programmer exposes Complexity, Potency, Cost, Projection and Bandwidth. CAD checks the spell's required stat values against the CAD's component-derived stats before casting; Efficiency modifies the Psi cost, and a spell-bullet container may apply an additional cost multiplier. Source defaults for player attributes are 5,000 maximum Psi and 25 Psi regeneration per tick, both modifiable through attributes. A cast can be refused if the spell is invalid, the CAD stats are insufficient, the player has no available Psi, or the player is already overflowed. The basic cast path posts a pre-cast event before charging; a positive final cost is deducted, while zero cost does not invoke that deduction.
+
+When a deduction exceeds available Psi, the player's CAD may consume stored Psi first; remaining overflow is converted to damage and marks the player overflowed, preventing further casts until the overflow state clears. This boundary should be handled carefully in any future balancing or quest examples. The 1.21.1 guide states that ordinary spell tricks cannot affect targets beyond 32 blocks from the spell's focal point (except the caster); an out-of-range spell fizzles and stops remaining tricks.
+
+### Default spell-piece groups and progression behavior
+
+The 1.21.1 source registers 29 default groups, spanning four tutorials, numbers, vectors, entities, projectiles, block operations/conjuration/movement, tool casting, loopcasting, flow control, movement, elemental and positive/negative effects, exosuit casting, smelting, infusion, memory/list operations, detection and miscellaneous tricks. Groups are data-driven and may be customized by datapacks.
+
+The default groups use the execute-main unlock behavior. Executing a group's main piece posts a PieceGroupAdvancementComplete event; Psi does not itself award the group advancement, and default pieces remain placeable/compilable/castable without that advancement. A custom group can use an advancement unlock to hide its pieces and reject compilation/import until the named advancement is complete. The client only receives advancements with a display, so a custom gate must point at a displayed advancement. This is a potential future integration surface, not evidence that TMM currently gates Psi or that FTB Quests listens for the event. [source: exact-tag docs/spell-pieces.md, PsiSpellPieceGroups.java, PlayerData.java]
 
 ## Material / capability input-output contracts
 
@@ -192,14 +228,15 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 
 ## Unknowns and next research
 
-- [ ] Retrieve exact 1.21.1 Codex/tutorial content and enumerate all sections, prerequisites and progression levels.
+- [x] Retrieve the exact-tag Patchouli entry definitions and localization keys; identify Basics, Components, Items, Legacy Entries and all six tutorials. Complete page-by-page guide review remains open.
 - [ ] Inspect the pinned JAR transiently: metadata, registries, recipes, advancement tree, config defaults, loot/data and guide JSON; do not commit the JAR or extracted copyrighted assets.
-- [ ] Resolve the upstream release tag to an immutable commit SHA and compare its resource/metadata behavior to the pinned file where possible.
-- [ ] Map first materials, spell interface, casting instruments, all item/component tiers and resource/durability/cooldown costs.
-- [ ] Inventory the exact enabled Psi: Tweaks and Additions pin and profile it separately.
+- [ ] Resolve the release tag to its peeled commit SHA and compare the exact pinned JAR to source/resources.
+- [x] Map the starter interface, CAD/Programmer/bullet recipes, Psidust action, baseline Psi attributes, spell-stat checks and the guide's 32-block cast boundary. Full component tiers, piece costs and individual trick limits remain open.
+- [x] Inventory the enabled Psi: Tweaks and Additions pin and profile it separately; see the linked addon profile.
 - [ ] Search quest authoring and generated files for any existing Psi pilot before a quest handoff.
 - [ ] Perform clean client and dedicated-server disposable-world tests only when the user requests implementation verification.
 
 ## Revision notes
 
-- 2026-11-16 — Created a source-aligned, explicitly partial profile from the exact pack pin, official release metadata, project overview, FAQ and available docs. No quest, runtime or configuration files changed.
+- 2026-11-16 — Created an explicitly partial profile from the exact pack pin, official release metadata and project/docs sources. No quest, runtime or configuration files changed.
+- 2026-11-16 — Reconciled the 1.21.1 guide and progression model against the exact release tag: mapped its six tutorial entries and starter recipes, default 5,000/25 Psi attributes, CAD/stat/resource casting rules, 32-block fizzle boundary and 29 default piece groups. Corrected the stale leveling-tree implication: the default groups are not enforced unlock gates. Tag-to-JAR equivalence, complete component/trick coverage and client acceptance remain open. No quest/runtime edits.
