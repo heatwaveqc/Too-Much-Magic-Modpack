@@ -83,7 +83,7 @@ def main():
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
     expected = render(json.loads(MANIFEST.read_text(encoding="utf-8")))
-    existing = [str(p.relative_to(ROOT)) for prefix in (
+    existing = [p.relative_to(ROOT).as_posix() for prefix in (
         "kubejs/data/tmm/gateways", "kubejs/data/tmm/recipe/gateways")
         for p in (ROOT / prefix).glob("mob_*.json")]
     if args.write:
