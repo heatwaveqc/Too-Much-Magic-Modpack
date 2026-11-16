@@ -95,14 +95,14 @@
     },
     {
       "name": "tyzs-primary-runtime-migration",
-      "branch": "feature/tyzs-primary-tree-runtime-migration",
+      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "paths": [
         "compat/magic/",
         "scripts/activate_tyzs.py",
         "scripts/verify_tyz_migration.py"
       ],
       "mode": "runtime-experimental",
-      "note": "MANDATORY next rolling QA build: exact Tyz 6.4.2 Modrinth SHA-512 pin, four five-rank (20% of each previous rank-99 ceiling per rank) Core Skills (stable ID tmm_magic_core) skills staged as real config, old Pufferfish Skills pin removed, native Tyz activity XP disabled. Shared MXP awards and external form gates are still pending; admin-only XP for first in-game tests. Built-in Tyz 6.4.2 inventory contains 32 skills across Abilities/Combat/Misc/Nature; fully documented and proposed relocation map committed (Green Thumb and Shepherd’s Blessing now earmarked for Forest Dragon), but none of those native skills/categories is disabled yet. Do not remove stock category tabs before same-ID parity QA."
+      "note": "NEXT BUILD: use pinned Tyz 6.4.2 plus four tested five-rank Core Skills and 18 newly staged Monk specialization nodes (17 designed abilities plus Empty-Hand Paragon), all using ONE shared Tyz XP/SP wallet. Custom Monk skills are IMMUTABLE rank/value storage and require the native tmm_progression TyzMonkBridge Java handlers for effects and native eligibility. Do not silently replace this combined overlay with older four-Core-only version. Native Tyz activity XP remains disabled. No other eight form trees are deployed by this work."
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -166,12 +166,12 @@
     },
     {
       "name": "standalone-monk-hunter-progression",
-      "branch": "test/full-integration",
+      "branch": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "paths": [
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Shared Monk/Hunter JAR upgraded from stacked advanced Hunter (Trial of Venom, specialty XP, permanent mutations) and Monk Bedrock Rest/classic physical trials. Retains native Silver Hunter and JAWR lycanthrope selector. Two first-party JARs are built and server-smoked for QA."
+      "note": "Native Monk/Hunter engine and existing content preserved with optional reflective Tyz 6.4.2 Monk 18-skill runtime hooks, purchase/refund gates and current-class / equipment-conditioned stat/event effects. This branch must build its tmm_progression JAR for the next authorized integration candidate; without it the 18 Tyz Monk IMMUTABLE definitions are NOT functional."
     },
     {
       "name": "jawr-native-transformation-bridge",
