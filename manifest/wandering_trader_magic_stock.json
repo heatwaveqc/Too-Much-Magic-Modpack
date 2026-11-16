@@ -1,6 +1,6 @@
 {
-  "schema": 2,
-  "status": "owner_approved_premium_rotation_source_staged_runtime_qa_pending",
+  "schema": 3,
+  "status": "owner_approved_rare_collectible_and_witchery_hexerei_offers_staged_runtime_qa_pending",
   "pack": "Too Much Magic",
   "minecraft": "1.21.1",
   "loader": "NeoForge",
@@ -48,6 +48,16 @@
       },
       "maxUses": "3/2/1/1",
       "price": "16/28/48+2 diamonds/64+8 diamonds"
+    },
+    {
+      "slot": "random_relic_or_artifact",
+      "min": 1,
+      "item": "one_actual_Relics_RelicItem_or_noncosmetic_Artifacts_ArtifactItem",
+      "picker": "runtime registered item types (RelicItem, ArtifactItem), one family chosen 50/50, then uniform within selected family; falls back if a family has no valid items",
+      "maxUses": 1,
+      "price": "128 emeralds for Relic; 96 emeralds for Artifact",
+      "marker": "tmmRelicArtifactStockVersion=1",
+      "notes": "Always exactly one on each new trader, separate from and in addition to five older guarantees; normal default ItemStack preserves Relics native loot semantics and Reliquified Artifacts's item-based progression; validate exact in-game behavior."
     }
   ],
   "preserve_existing_trades": true,
@@ -64,7 +74,7 @@
     "pre-attuned constellation/ascension unlocks"
   ],
   "next_candidates": [],
-  "premium_stock_mode": "four_distinct_randomly_chosen_offers_from_owner_approved_ten",
+  "premium_stock_mode": "four_distinct_randomly_chosen_offers_from_twelve_owner_approved_types",
   "premium_stock_choices": [
     {
       "id": "occultism_iesnium_ingot",
@@ -155,6 +165,24 @@
       "uses": 1,
       "decision": "approved",
       "notes": "Actual 'Growing Edelwood' plantable sapling-equivalent item, not an arbitrary wood block"
+    },
+    {
+      "id": "witchery_drop_of_luck",
+      "mod": "Witchery (JAWR)",
+      "item": "witchery:drop_of_luck",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Complex cauldron ingredient that saves crafting time without awarding finished rituals or Witchery faction unlocks."
+    },
+    {
+      "id": "hexerei_replacer_satchel",
+      "mod": "Hexerei",
+      "item": "hexerei:replacer_satchel",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Real broom accessory; automatically replaces worn brushes from supplies; broom and brush fueling mechanics remain."
     }
   ],
   "pricing_policy": "Emeralds only: 1–64 in first merchant cost slot; 65–128 as up to 64 additional emeralds in the second slot. Higher value costs more, never free gear.",
@@ -162,21 +190,9 @@
   "under_review": [
     {
       "mod": "Witchery/JAWR",
-      "option": "witchery:drop_of_luck",
-      "why": "Long-cauldron-chain utility reagent; inspect pinned 0.5.0.39 item ID and whether buying would grant advancement",
-      "status": "recommended_not_active"
-    },
-    {
-      "mod": "Witchery/JAWR",
       "option": "witchery:mutandis_extremis",
       "why": "Speeds obtaining tricky plant variants; likely less valuable than Drop of Luck",
       "status": "suggest_not_active"
-    },
-    {
-      "mod": "Hexerei",
-      "option": "hexerei:replacer_satchel",
-      "why": "Broom satchel upgrade with 18 inventory slots, automatically replaces broken broom brushes from supplies; saved midgame potion-cauldron crafting and useful maintenance without making an Occultism storage duplicate.",
-      "status": "recommended_not_active"
     },
     {
       "mod": "Hexerei",
@@ -205,5 +221,7 @@
       "Thallasium",
       "ProjectE philosopher's stone"
     ]
-  }
+  },
+  "relic_artifact_guarantee": "One independently injected, non-duplicating, one-use Relics or Artifacts offer per trader (50/50 between families when both available)",
+  "collectible_versioned_marker": "tmmRelicArtifactStockVersion=1"
 }

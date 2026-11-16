@@ -21,7 +21,7 @@ The trader should offer **at least**:
 
 ## User-approved B20.1 premium merchant rotation
 
-**2026-11-15 owner correction:** the merchant must stock valuable midgame accelerators, not commonly gathered starter seeds or gems. High value is priced in **more emeralds**. The existing five guaranteed offers remain in place. Each trader gets **four distinct rotating premium offers** drawn uniformly from the ten approved item categories below (no duplicate category per trader). These are server-side `MerchantOffers` additions, not unreliable additions to the `WandererTradesEvent` random-pool.
+**2026-11-15 owner correction:** the merchant must stock valuable midgame accelerators, not commonly gathered starter seeds or gems. High value is priced in **more emeralds**. The existing five guaranteed offers remain in place. Each trader gets **four distinct rotating premium offers** drawn uniformly from the twelve approved item categories below (no duplicate category per trader). These are server-side `MerchantOffers` additions, not unreliable additions to the `WandererTradesEvent` random-pool.
 
 | Mod | Item / generation | Price (emeralds) | Uses |
 | --- | --- | ---: | ---: |
@@ -50,9 +50,9 @@ All prices exceeding 64 emeralds use the merchant's second input slot for anothe
 
 ### Witchery and Hexerei — vetted suggestions, not active
 
-**Witchery / JAWR:** recommend a **Drop of Luck**: it represents substantial cauldron/distillery effort and supports other recipes, making it a better premium trade than seeds. An alternative is **Mutandis Extremis** to reduce plant-variant hunting, but avoid shortcuts around the Altar/cauldron research. Confirm exact IDs and advancement side effects against installed JAWR `0.5.0.39` before enabling.
+**Witchery / JAWR (now active in premium pool):** recommend a **Drop of Luck**: it represents substantial cauldron/distillery effort and supports other recipes, making it a better premium trade than seeds. An alternative is **Mutandis Extremis** to reduce plant-variant hunting, but avoid shortcuts around the Altar/cauldron research. Confirm exact IDs and advancement side effects against installed JAWR `0.5.0.39` before enabling.
 
-**Hexerei:** my first recommendation is the **Replacer Satchel** (`hexerei:replacer_satchel`, proposed 96 emeralds). It is a broom satchel upgrade with 18 slots and automatically equips a spare brush when the active broom brush wears out. That removes meaningful broom-maintenance tedium, and its crafting involves multiple dried flowers, ender pearls, and a filled cauldron. An **Entangled Coffer** (about 112 emeralds) is an alternative for shared magical storage but overlaps Occultism's role. No Hexerei bonus stock is active until the owner selects it and the precise pinned-JAR mechanics/IDs are checked.
+**Hexerei:** my first recommendation is the **Replacer Satchel** (`hexerei:replacer_satchel`, proposed 96 emeralds). It is a broom satchel upgrade with 18 slots and automatically equips a spare brush when the active broom brush wears out. That removes meaningful broom-maintenance tedium, and its crafting involves multiple dried flowers, ender pearls, and a filled cauldron. An **Entangled Coffer** (about 112 emeralds) is an alternative for shared magical storage but overlaps Occultism's role. Replacer Satchel is now included in the premium pool after owner approval and the precise pinned-JAR mechanics/IDs are checked.
 
 ### Updated runtime QA
 
@@ -64,6 +64,28 @@ All prices exceeding 64 emeralds use the merchant's second input slot for anothe
 6. Confirm 1 Iesnium ingot is unraw, one use/trader; check no TMM progression milestone is skipped merely by item acquisition.
 7. Verify Roots Classic Runic Focus is accepted in the Engraved Blade ritual and all four Theurgy rare niter item IDs exist. If one ID or API is unavailable, the selector skips it and draws another distinct premium offer from the remaining catalog; if fewer than four valid options exist, the rotation fails its transaction and logs an error. Do not claim runtime compliance until tested.
 8. Maintain no hard gate/boss purchase bypass; in particular ensure rare stock does not grant custom Monk/Hunter achievements or quest unlocks just for item possession.
+
+## B20.2 — Relics/Artifacts guarantee and owner-approved Witchery/Hexerei stock (2026-11-15)
+
+The owner approved a **random Relic or Artifact** as well as the Witchery and Hexerei recommendations. In addition to the original five guaranteed offers, each new wandering trader now gets **one separately guaranteed Relic OR Artifact** offer. This is not part of the four randomly selected premium slots.
+
+- **Relics:** inspect the actual loaded `it.hurts.sskirillss.relics.items.relics.base.RelicItem` registry entries (not raw items with a purple name). Uniformly select one, call `item.getDefaultInstance()` just like Relics' own loot generator, price **128 emeralds**, one use.
+- **Artifacts:** inspect the actual loaded `artifacts.item.ArtifactItem` registry entries, reject cosmetic-only artifacts, select one, and use its default stack, price **96 emeralds**, one use.
+- **Selection:** 50/50 chance of picking each mod *family* when both have available items, then choose uniformly within that family. Fall back to the other family if one has no eligible items. Keep one guaranteed result, never an empty slot. The item retains its normal Relics / Artifacts / Reliquified Artifacts mechanics rather than being converted into a generic accessory.
+- **Persistence:** independent marker `tmmRelicArtifactStockVersion=1`, so existing trader offers are not duplicated and old traders can receive only the new slot on reload. The original five offers and four rotating offers are unaffected.
+
+**Two more premium rotating goods are approved:**
+
+| Mod | Offer | Emerald cost | Uses |
+| --- | --- | ---: | ---: |
+| Witchery / JAWR | `witchery:drop_of_luck` | 96 | 1 |
+| Hexerei | `hexerei:replacer_satchel` | 96 | 1 |
+
+This expands the premium pool **from ten to twelve categories**. Each trader still receives **four distinct selections** sampled without replacement, not twelve guaranteed offers. Prices above 64 use both emerald-input slots.
+
+**Source evidence:** Relics `Octo-Studios/relics` 1.21.1 `RelicsItems.java`, `RelicItem.java`, `RelicLootModifier.java`; Artifacts `ochotonida/artifacts` 1.21.1 `ModItems.java` and `ArtifactItem.java`; Hexerei `JoeFoxe/Hexerei` 1.21.1 `ModItems.java`; Witchery JAWR `mrsterner/witchery-issues` datapack examples reference `witchery:drop_of_luck`. This verifies nominal classes/IDs from matching branches, but is **not a build-specific JAR nor in-world verification**.
+
+**QA additions:** Confirm exactly one true Relic/Artifact (not ordinary equipment, nonrelic food, or an item missing native progression data); test Reliquified Artifacts rank/XP/durability behavior on a trader-bought Artifact; check no duplicated collectible on chunk load; verify Witchery Drop of Luck and Hexerei Replacer Satchel IDs and functional items from pinned binaries; verify premium selection distinct and base offers preserved. Also verify no mandatory advancement/research gate triggers merely from possessing a purchased item.
 
 ## Source inspection references
 - Astral paper: `HellFirePvP/AstralSorcery` branch `1.21.1`, `ConstellationPaperItem.java`

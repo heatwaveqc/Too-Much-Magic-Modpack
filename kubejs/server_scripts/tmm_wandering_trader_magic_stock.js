@@ -125,6 +125,7 @@ function tmmInkOffer(trader) {
 // 1–128 emeralds via MerchantOffer's two price slots, capped at one purchase
 // except inexpensive consumables. No ore, boss trophies, or completed progression gates.
 const TMM_PremiumVersion = 1;
+const TMM_CollectibleStockVersion = 1;
 const TMM_Builtins = Java.loadClass('net.minecraft.core.registries.BuiltInRegistries');
 const TMM_RL = Java.loadClass('net.minecraft.resources.ResourceLocation');
 
@@ -238,8 +239,57 @@ const TMM_PremiumCatalog = [
    make: trader => tmmRareTheurgyNiter(trader)},
   {id: 'forbidden_arcanus_growing_edelwood', price: 64, uses: 1,
    // The mod's plantable Edelwood equivalent is "Growing Edelwood".
-   make: trader => tmmNormalStack('forbidden_arcanus:growing_edelwood')}
+   make: trader => tmmNormalStack('forbidden_arcanus:growing_edelwood')},
+  {id: 'witchery_drop_of_luck', price: 96, uses: 1,
+   // Major witchcraft crafting-time saver, not the finished ritual result.
+   make: trader => tmmNormalStack('witchery:drop_of_luck')},
+  {id: 'hexerei_replacer_satchel', price: 96, uses: 1,
+   // Genuine broom brush-replacement satchel; normal broom setup still required.
+   make: trader => tmmNormalStack('hexerei:replacer_satchel')}
 ];
+
+
+// B20.2 — guaranteed one genuinely registered Relic OR Artifact, never a
+// generic renamed accessory. Native Relic default stacks are how Relic's own
+// loot generation populates its rewards; Reliquified Artifacts can initialize
+// its progression data through the normal item mechanics.
+// Deliberately select *items*, not bosses, consumable materials, or placeholders.
+const TMM_RelicItem = Java.loadClass('it.hurts.sskirillss.relics.items.relics.base.RelicItem');
+const TMM_ArtifactItem = Java.loadClass('artifacts.item.ArtifactItem');
+
+function tmmRandomRelicOrArtifact(trader) {
+  const relics = [];
+  const artifacts = [];
+  const entries = TMM_Builtins.ITEM.entrySet().toArray();
+
+  for (let i = 0; i < entries.length; i++) {
+    const item = entries[i].getValue();
+    if (item instanceof TMM_RelicItem) {
+      relics.push(item);
+    } else if (item instanceof TMM_ArtifactItem && !item.isCosmetic()) {
+      artifacts.push(item);
+    }
+  }
+
+  if (relics.length === 0 && artifacts.length === 0) {
+    throw new Error('Neither Relics nor Artifacts has a valid registered item');
+  }
+
+  // Equal odds between the two MOD FAMILIES, not weighted by registry size.
+  // If one mod has no valid item, offer one from the other; never an empty offer.
+  const random = trader.getRandom();
+  const selectedFamily = artifacts.length === 0 ? 'relics'
+    : relics.length === 0 ? 'artifacts'
+    : random.nextBoolean() ? 'relics' : 'artifacts';
+
+  const options = selectedFamily === 'relics' ? relics : artifacts;
+  const item = options[random.nextInt(options.length)];
+  const stack = item.getDefaultInstance(); // Relics' own loot uses this API
+  if (stack === null || stack.isEmpty()) throw new Error('Empty ' + selectedFamily + ' stack');
+  const cost = selectedFamily === 'relics' ? 128 : 96;
+  return {family: selectedFamily, itemId: String(TMM_Builtins.ITEM.getKey(item)),
+          offer: tmmExpensiveTrade(stack, cost, 1)};
+}
 
 function tmmPremiumRotation(trader, count) {
   const pool = TMM_PremiumCatalog.slice();
@@ -267,7 +317,8 @@ EntityEvents.spawned('minecraft:wandering_trader', event => {
   const data = trader.getPersistentData();
   const needsCore = data.getInt('tmmGuaranteedMagicStockVersion') < TMM_StockVersion;
   const needsPremium = data.getInt('tmmRotatingMagicStockVersion') < TMM_PremiumVersion;
-  if (!needsCore && !needsPremium) return;
+  const needsCollectible = data.getInt('tmmRelicArtifactStockVersion') < TMM_CollectibleStockVersion;
+  if (!needsCore && !needsPremium && !needsCollectible) return;
 
   // Preserve preexisting original B20 premium stock markers on old traders;
   // upgrading from stock-v1 to rotation-v1 must never duplicate those five.
@@ -294,9 +345,20 @@ EntityEvents.spawned('minecraft:wandering_trader', event => {
       console.error('[TMM Trader] Five required magic offers FAILED: ' + e);
     }
   }
+  if (needsCollectible) {
+    try {
+      const selected = tmmRandomRelicOrArtifact(trader);
+      trader.getOffers().add(selected.offer);
+      data.putInt('tmmRelicArtifactStockVersion', TMM_CollectibleStockVersion);
+      console.info('[TMM Trader] Guaranteed ' + selected.family + ' collectible ' +
+        selected.itemId + ' on trader ' + trader.getUUID());
+    } catch (e) {
+      console.error('[TMM Trader] Relic/Artifact offer FAILED: ' + e);
+    }
+  }
   if (needsPremium) {
     try {
-      // Four different premium offers, each exactly one of ten reviewed item types.
+      // Four different premium offers, each exactly one of twelve reviewed item types.
       // Avoids a trader GUI with 10+ extra high-value offers at every spawn.
       const chosen = tmmPremiumRotation(trader, 4);
       const offers = trader.getOffers();
