@@ -1,0 +1,74 @@
+{
+  "active": true,
+  "id": "tmm_magic_potency_1",
+  "maximumLevel": 5,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "CUSTOM",
+  "category": "tmm_magic_core",
+  "icon": "minecraft:textures/item/enchanted_book.png",
+  "displayName": "Potency I",
+  "description": "Increases applicable spell strength across magic schools.",
+  "modifiers": [
+    {
+      "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.99,
+        1.98,
+        2.97,
+        3.96,
+        4.95
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "irons_spellbooks:spell_power",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.198,
+        0.396,
+        0.594,
+        0.792,
+        0.99
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "goety:spell_potency",
+      "operation": "ADD_VALUE",
+      "values": [
+        20,
+        40,
+        59,
+        79,
+        99
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "eidolon_repraised:magic_power",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.198,
+        0.396,
+        0.594,
+        0.792,
+        0.99
+      ],
+      "unit": ""
+    }
+  ],
+  "customValues": {},
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}
