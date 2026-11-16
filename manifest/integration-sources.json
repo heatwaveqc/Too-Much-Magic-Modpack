@@ -175,12 +175,12 @@
     },
     {
       "name": "standalone-monk-hunter-progression",
-      "branch": "feature/retire-teamlapen-next-qa-2026-11-15",
+      "branch": "test/full-integration",
       "paths": [
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Standalone native tmm_progression module replaces old Vampirism-backed Monk, implements Hunter and Monk pilot datapacks, native XP and QA commands. Not in-world tested and not all supplemental feature branches are included. QA branch snapshots the latest core and adds purchasable Hunter Silver Hunting via selective JAWR-lycan detection, keeping all changes isolated from the concurrent core workstream."
+      "note": "Standalone Monk/Hunter tmm_progression core is now merged into integration baseline. This stream reimports the exact baseline-local source and keeps its JAWR-gated Hunter silver training; no deleted feature branch required. Client/world QA pending."
     }
   ],
   "covered_by_baseline": {
@@ -199,7 +199,8 @@
     "test/quest-vampire-localization-2026-11-14": "Explicit build base",
     "feature/cc-tweaked-eldritch-iesnium-spirit-fire-2026-11-15": "B14 CC: Tweaked 1.121.0 exact pin, native Eldritch Logic Core miner result, four computer recipe overrides, Spirit Fire Iesnium, static validator and documentation were merged directly into test/full-integration. No extra branch import needed. Source-only until full server/client QA.",
     "feature/alcohol-is-magic-quests": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA",
-    "feature/b14-cobblegen-stone-inventory": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA"
+    "feature/b14-cobblegen-stone-inventory": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA",
+    "feature/retire-teamlapen-next-qa-2026-11-15": "Merged as TeamLapen retirement PR #165; GitHub deleted temporary head; source now lives on test/full-integration."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
