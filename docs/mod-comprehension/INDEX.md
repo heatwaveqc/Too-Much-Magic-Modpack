@@ -150,7 +150,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | queued | — |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | queued | — |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
-| `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | queued | — |
+| `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | researching | [profile](mods/psi-tweaks.md) |
 | `feywild` | Feywild | magic_adventure | enabled flag | full | queued | — |
 | `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | queued | — |
 | `projecte` | ProjectE | magic_progression | enabled flag | full | researching | [profile](mods/projecte.md) |
