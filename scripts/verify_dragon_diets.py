@@ -45,7 +45,6 @@ def main() -> None:
     # Ars Nouveau Sourceberries are registered as an edible block item rather
     # than a conventional berry item; do not depend on a common fruit tag.
     assert 'ars_nouveau:sourceberry_bush' in forest
-    assert forest['ars_nouveau:sourceberry_bush']['properties']['can_always_eat'] is True
     # This is the vanilla golden carrot, not an unverified modded enchanted carrot.
     assert 'minecraft:golden_carrot' in forest
     assert 'aquaculture:turtle_soup' not in forest
@@ -84,14 +83,9 @@ def main() -> None:
     assert 'born_in_chaos_v1:monster_flesh' not in forest
     assert forest['ars_nouveau:sourceberry_bush'] == {'items': 'ars_nouveau:sourceberry_bush', 'retain_effects': True}
 
-    werewolf_food = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/werewolf_food.json').read_text(encoding='utf-8'))
-    werewolf_raw = json.loads((ROOT / 'kubejs/data/werewolves/tags/item/raw_food.json').read_text(encoding='utf-8'))
-    assert werewolf_food['replace'] is False and werewolf_raw['replace'] is False
-    assert set(magical_allowlist).issubset(set(werewolf_food['values']))
-    assert 'artifacts:everlasting_beef' in werewolf_food['values']
-    assert {'artifacts:everlasting_beef', 'evilcraft:flesh_rejuvenated'} <= set(werewolf_raw['values'])
-    assert 'artifacts:eternal_steak' not in werewolf_food['values']
-    assert 'botania:mana_cookie' not in werewolf_raw['values']
+    # TeamLapen's Werewolves food tags are intentionally retired.
+    # JAWR lycanthropes do not use that removed tag namespace.
+    assert not (ROOT / 'kubejs/data/werewolves').exists()
 
     # Verify regex selectors cover examples but do not admit baked/grain products.
     selectors = [x for x in forest if x.startswith('pamhc2')]
@@ -107,7 +101,7 @@ def main() -> None:
     for disallowed in ('ServerEvents.recipes(', 'charred_meat_with_coal',
                        'charred_seafood_with_coal', 'charrable_meat', 'charrable_seafood'):
         assert disallowed not in js, f'Unexpected Cave Dragon recipe shortcut: {disallowed}'
-    print('PASS: dragon diets, explicit magical nourishment, werewolf tags, exclusions, and native-only charring')
+    print('PASS: dragon diets, magical nourishment, JAWR-only species policy, exclusions, native charring')
     print('NOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay')
 
 

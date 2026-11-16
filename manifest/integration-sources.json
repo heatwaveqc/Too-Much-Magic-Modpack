@@ -149,11 +149,10 @@
       "branch": "feature/dragon-diets-food-compat",
       "paths": [
         "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
-        "kubejs/server_scripts/dragon_diets.js",
-        "scripts/verify_dragon_diets.py"
+        "kubejs/server_scripts/dragon_diets.js"
       ],
       "mode": "runtime-experimental",
-      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required."
+      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required. Static verifier is owned by integration baseline because obsolete TeamLapen Werewolves food tags must not be checked."
     },
     {
       "name": "next-qa-dragon-comforts-hearts-pins",
