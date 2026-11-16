@@ -83,7 +83,11 @@
             "unlisted_food": "deny",
             "gold_foods_tag": "#tmm_progression:gilded_gold_foods",
             "gold_recipe_policy": "tmm_progression:gilded_gold_food_policy",
-            "allow_recipe_derived_gold_foods": "true"
+            "allow_recipe_derived_gold_foods": "true",
+            "gold_food_nutrition_multiplier": "2",
+            "gold_food_saturation_gain_multiplier": "2",
+            "non_gold_nether_food_multiplier": "1",
+            "gold_food_preserve_status_effects": "true"
           }
         }
       ]

@@ -30,5 +30,18 @@
   ],
   "require_food_component": true,
   "allow_non_food_consumables": true,
-  "note": "Gold-food recipe qualification overrides Nether-origin requirement. Match actual server recipe ingredients, including tags and nested gold-bearing food ingredients, without relying on item display names. Prevent recursion cycles, reload on datapack changes, do not broaden to non-crafting machine recipes. Explicitly whitelist enchanted golden apple (not craftable in current vanilla)."
+  "note": "Gold-food recipe qualification overrides Nether-origin requirement. Match actual server recipe ingredients, including tags and nested gold-bearing food ingredients, without relying on item display names. Prevent recursion cycles, reload on datapack changes, do not broaden to non-crafting machine recipes. Explicitly whitelist enchanted golden apple (not craftable in current vanilla).",
+  "gold_food_bonus": {
+    "eligible_when": "Gilded has already joined; food qualifies from explicit golden food tag OR crafting recipe gold ingredient/recursive golden-food ingredient",
+    "nutrition_multiplier": 2,
+    "saturation_points_multiplier": 2,
+    "saturation_modifier_multiplier": 1,
+    "applies_to": "gold_qualified_food_only",
+    "normal_nether_foods_not_gold_qualified": "unchanged",
+    "vanilla_food_bar_and_saturation_caps": true,
+    "preserve_food_potion_effects": true,
+    "consumption_count": 1,
+    "apply_after_successful_consumption": "once",
+    "recommendation": "At verified LivingEntityUseItemEvent.Finish, after vanilla food applied, call player's FoodData.eat(original FoodProperties) one additional time when joined and gold-qualified; adds only hunger/saturation, not second food potion effects. Test event order on pinned NeoForge 21.1.265 and use hand-sensitive callback where appropriate. Never globally modify item components."
+  }
 }
