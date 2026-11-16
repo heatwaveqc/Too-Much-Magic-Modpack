@@ -205,12 +205,13 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 
 ## Cross-mod interaction reports
 
-No reports yet. Create one Markdown file per *specific, actionable interaction* under [interactions/](interactions/README.md) after confirming both sides of an I/O contract. Maintain a short list here as each is added, with status `candidate` / `source-supported` / `verified-in-pack` / `blocked` / `rejected` / `stale`.
+Reports below track individual evidence scopes. Create one Markdown file per *specific, actionable interaction* under [interactions/](interactions/README.md) after confirming both sides of an I/O contract. Maintain a short list here as each is added, with status `candidate` / `source-supported` / `verified-in-pack` / `blocked` / `rejected` / `stale`.
 
 | Interaction report | Participants | Status | Key finding |
 | --- | --- | --- | --- |
 | [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
 | [EvilCraft Rejuvenated Flesh](interactions/evilcraft--dragon-survival--rejuvenated-flesh.md) | EvilCraft + Dragon Survival | source-supported | Dragon species allowlist and custom Blood-food handler are both source-confirmed; the paired item-use behavior is untested |
+| [Staged-cast payment](interactions/goety--goety-cataclysm--staged-cast-payment.md) | Goety + Goety Cataclysm | source-supported | Battlefield, Storm Serpent and Thunder Rage emit stage effects before parent completion payment; cancellation cooldowns differ. Economics require tests. |
 
 ## Quest/compatibility design handoffs
 
