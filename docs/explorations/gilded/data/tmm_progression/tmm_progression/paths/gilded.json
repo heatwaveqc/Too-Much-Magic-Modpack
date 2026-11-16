@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "exclusive_group": "",
+  "enrollment": "manual",
+  "rank_xp": [
+    0,
+    20,
+    55,
+    105,
+    180,
+    280,
+    420,
+    600,
+    850,
+    1200,
+    1700,
+    2400,
+    3400,
+    4800,
+    6600,
+    9000,
+    12000,
+    16000,
+    21000,
+    28000
+  ],
+  "max_level": 20,
+  "points_per_rank": 0,
+  "activities": [
+    {
+      "event": "external",
+      "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+      "xp": 10,
+      "cooldown_ticks": 0
+    }
+  ],
+  "milestones": [
+    {
+      "id": "tmm_progression:gilded_gold_prospecting",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+          "count": 32
+        }
+      ],
+      "xp": 50,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:gilded_gold_mastery",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+          "count": 256
+        }
+      ],
+      "after": [
+        "tmm_progression:gilded_gold_prospecting"
+      ],
+      "xp": 250,
+      "points": 0
+    }
+  ],
+  "skills": [
+    {
+      "id": "tmm_progression:gilded_nether_diet",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:food_whitelist",
+          "target": "#tmm_progression:gilded_nether_foods",
+          "params": {
+            "enforce": "before_consumption_finish",
+            "nonfood_consumables": "unaffected",
+            "unlisted_food": "deny"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_piglin_kin",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:piglin_affinity",
+          "target": "#tmm_progression:gilded_piglin_allies",
+          "params": {
+            "prevent_unprovoked_targeting": "true",
+            "prevent_gold_mining_alarm": "true",
+            "prevent_container_alarm": "true",
+            "allow_retaliation": "true",
+            "clear_existing_anger": "false"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_gold_diamond_equivalence",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:gold_diamond_equivalence",
+          "target": "#tmm_progression:gilded_gold_equipment",
+          "params": {
+            "effective_tool_tier": "diamond",
+            "effective_weapon_damage": "diamond",
+            "effective_armor": "diamond",
+            "effective_armor_toughness": "diamond",
+            "preserve_gold_mining_speed": "true",
+            "persist_item_changes": "false"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_renewal",
+      "max_rank": 3,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        1,
+        10,
+        18
+      ],
+      "effects": [
+        {
+          "type": "gear_durability",
+          "target": "#tmm_progression:gilded_repairable_equipment",
+          "per_rank": 1,
+          "params": {
+            "slot": "all",
+            "action": "repair",
+            "interval_ticks": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_fortunes_favor",
+      "max_rank": 3,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        3,
+        7,
+        11
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:virtual_fortune",
+          "target": "#tmm_progression:gilded_fortune_tools",
+          "per_rank": 1,
+          "params": {
+            "combine": "additive",
+            "loot_rolls": "once",
+            "persist_enchantment": "false",
+            "silk_touch": "honor"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:gilded_last_gilt",
+      "max_rank": 3,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        4,
+        8,
+        12
+      ],
+      "effects": [
+        {
+          "type": "tmm_progression:virtual_unbreaking",
+          "target": "#tmm_progression:gilded_repairable_equipment",
+          "per_rank": 1,
+          "params": {
+            "combine": "additive",
+            "persist_enchantment": "false",
+            "per_damage_event": "once"
+          }
+        }
+      ]
+    }
+  ]
+}

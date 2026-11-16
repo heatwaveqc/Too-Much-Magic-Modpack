@@ -119,6 +119,14 @@ No Fortune cap is needed to protect **these existing repeatable quest exchanges*
 
 Source references for verification: `docs/QUEST-SHOP-ECONOMY.md`, `manifest/quest_content.json`, ore-shop stream `manifest/quest_shop_catalog.json`, and Minecraft Fortune ore drops documentation at `https://minecraft.wiki/w/Fortune`.
 
+## Locked food restriction and prototype path (2026-11-15)
+
+- **Gilded may consume only food item types obtainable from Nether resources**, regardless of current dimension or item's actual source. This applies to ordinary hunger/food use, not potions or unrelated non-food consumables.
+- Initial explicit examples: mushroom stew, raw/cooked porkchops from Hoglins, and rotten flesh from zombified Piglins. Add suitable **My Nether's Delight** (`mynethersdelight`) meat and Nether-ingredient meals, verifying actual recipes and live food properties. Do **not** approve all items in a mod namespace just because that mod has a Nether theme.
+- For Minecraft 1.21.1 NeoForge, **My Nether's Delight 1.10.4.1** (not the older original *Nether's Delight*) is the recommended future addition *when Gilded ships*. Requires Farmer's Delight, already present. No packwiz or manifest changes authorized yet.
+- JSON-only cannot enforce the consumption ban with current `tmm_progression`: `food_consumed` hooks fire too late. A trusted pre-consume handler is required to block hunger/food effects; the draft JSON intentionally resides in `docs/explorations/gilded/` and will be rejected if loaded before handlers are registered.
+- Draft datapack schema, optional-food whitelist, equipment/entity tags and implementation checklist: [Gilded inactive prototype](gilded/README.md). The 16-category class ideation map is in [monster-aligned disciplines](MONSTER-ALIGNED-CLASS-IDEAS.md).
+
 ## Minimum acceptance tests for later implementation
 
 1. **Comparison:** Gilded and non-Gilded players receive the same gold armor/tool and same Netherite armor/tool. Only Gilded receives the new effects. Item data and stats revert when handed to a non-Gilded player.
