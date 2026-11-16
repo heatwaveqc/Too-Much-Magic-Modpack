@@ -14,13 +14,13 @@
     {
       "chapter": "Getting Started",
       "title": "Welcome to Too Much Magic",
-      "description": "A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this entry when you have read it.",
+      "description": "A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this welcome entry to claim an Unwitnessed Amulet and a Ring of the Seven Curses. Equipping the cursed ring is optional and has significant drawbacks.",
       "criterion": {
         "type": "checkmark"
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "enigmaticlegacyplus:unwitnessed_amulet",
         "count": 1
       },
       "depends": null,
@@ -31,7 +31,7 @@
     {
       "chapter": "Getting Started",
       "title": "Punch a Tree",
-      "description": "Pick up any log or stem to receive one 27-slot Trinkets Pouch automatically per player. Claim this quest's experience and torches separately. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
+      "description": "Pick up any log or stem, then claim this quest to receive one 27-slot Trinkets Pouch, four torches and experience. The pouch is now a quest reward, not an automatic grant. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
       "criterion": {
         "type": "advancement",
         "id": "tmm:first_log"

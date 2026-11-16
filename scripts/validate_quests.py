@@ -190,6 +190,7 @@ def main() -> None:
             rewards = block[reward_start:task_start]
             tasks = block[task_start:]
             xp = re.search(r'type: "xp", xp: (\d+)', rewards)
+            item_matches = re.findall(r'type: "item", item: \\{ id: "([^"]+)", count: 1 \\}, count: (\\d+)', rewards)
             itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
             # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
@@ -199,9 +200,22 @@ def main() -> None:
             ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
             ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
             ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0), f"Missing fixed item or command-backed coin reward on {qid}")
-            ensure(rewards.count('type: "xp"') == 1 and rewards.count('type: "item"') + rewards.count('type: "command"') == 1, f"Unexpected rewards on {qid}")
+            # Only the two existing Getting Started quests may carry an extra starter item.
+            starter_rewards = {
+                "544D301000100001": {("enigmaticlegacyplus:unwitnessed_amulet", "1"),
+                                     ("enigmaticlegacyplus:cursed_ring", "1")},
+                "544D4D1100000001": {("minecraft:torch", "4"),
+                                     ("ars_elemental:curio_bag", "1")},
+            }
+            expected_reward_count = 2 if qid in starter_rewards else 1
+            ensure(rewards.count('type: "xp"') == 1 and
+                   rewards.count('type: "item"') + rewards.count('type: "command"') == expected_reward_count,
+                   f"Unexpected rewards on {qid}")
+            if qid in starter_rewards:
+                ensure(len(item_matches) == 2 and set(item_matches) == starter_rewards[qid],
+                       f"Wrong special starter rewards on {qid}")
             if itm is not None:
-                reward_items.append((qid, itm.group(1), int(itm.group(2))))
+                reward_items.extend((qid, item_id, int(count)) for item_id, count in item_matches)
             else:
                 coin_quests.add(qid)
                 ensure(rewards.count("team_reward: true") == 2, f"Sale XP + coin claims must be team-shared on {qid}")

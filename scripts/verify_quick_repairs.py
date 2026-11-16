@@ -20,6 +20,14 @@ def main():
     assert intro.count('id: "enigmaticlegacyplus:cursed_ring"') == 1
     assert intro.count('id: "ars_elemental:curio_bag"') == 2 # icon + reward
     assert "give @s" not in read("kubejs/data/tmm/function/rewards/first_log.mcfunction")
+    authored = json.loads(read("manifest/quest_content.json"))["quests"]
+    resolved = json.loads(read("manifest/quest_content_resolved.json"))["quests"]
+    for records in (authored, resolved):
+        welcome = next(v for v in records if v["chapter"] == "Getting Started" and v["title"] == "Welcome to Too Much Magic")
+        assert welcome["reward"]["item"] == "enigmaticlegacyplus:unwitnessed_amulet"
+    for rec in authored:
+        if rec["title"] == "Punch a Tree" and rec["chapter"] == "Getting Started":
+            assert "pouch is now a quest reward" in rec["description"]
     dragon = read("defaultconfigs/dragonsurvival-server.toml")
     for s in ("start_with_dragon_choice = false", "allow_dragon_choice_from_inventory = false",
               "transform_altar = true", "no_humans_allowed = false"):

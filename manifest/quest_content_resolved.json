@@ -15,7 +15,7 @@
       },
       "reward": {
         "xp": 5,
-        "item": "minecraft:paper",
+        "item": "enigmaticlegacyplus:unwitnessed_amulet",
         "count": 1
       },
       "depends": null,
