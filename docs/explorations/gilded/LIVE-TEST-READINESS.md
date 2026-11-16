@@ -40,11 +40,21 @@ Primary source reference URLs:
 - `https://lexxie.dev/neoforge/1.21.1/net/minecraft/world/food/FoodData.html`
 - `https://lexxie.dev/neoforge/1.21.1/net/neoforged/neoforge/event/entity/living/LivingEntityUseItemEvent.Start.html`
 
+## New owner request — independent Looting scaling, lava immunity and fishing research
+
+- [x] Change **virtual Looting** to **+3 immediately at native Gilded rank 1**, then add exactly seven **independent** \`tmm_gilded_looting_mastery\` Tyz purchases, reaching +10 Gilded Looting. \`tmm_gilded_fortune_mastery\` separately retains +3→+10 Fortune.
+- [x] Source \`GildedLootingMath\`, optional server-owned \`TyzGildedBridge.rawLootingRank\`, native effect and two-JSON guarded stager. Java + Tyz source overlay require a fresh targeted CI result for these changes; neither Tyz skill is actually installed in the current full pack yet.
+- [x] Set level 18 **Molten Sovereignty** native unlock: direct lava damage negation and burning while immersed, but *not* ambient fire elsewhere. Actual game/fire-source interaction untested.
+- [ ] Verify leveling joins at rank 1 with +3/+3, only Fortune Tyz purchases change Fortune, only Looting Tyz purchases change Looting, both at rank 7 result +10/+10, physical Looting III +10 => effective XIII. Check Drygmy stacking and rare drops once per kill.
+- [ ] Verify level 17 vs level 18 lava damage and fire ticks, leaving lava while burning, fire from other sources, and resistance interaction. Do not call immunity accepted until a live test.
+- [ ] **Lava Fishing** 1.21.1-1.2.13 is a candidate only, **not pinned or approved for installation**. Aquaculture 2 and Kotlin for Forge are already enabled. See [LAVA-FISHING-FEASIBILITY.md](LAVA-FISHING-FEASIBILITY.md).
+- [ ] If the fishing design is authorized, gate lava-bobber access to native Gilded and optionally verified Cave Dragon species *before* catch; credit native Gilded XP only after a successful server-side catch, once per legitimate catch action, not per loot stack, cast, tick, empty reel or client event.
+
 ## Additional current work and live verification
 
 - [x] Source-level Gilded runtime, all custom handlers, Mixins and resource-path placement in standalone module.
 - [x] Source and JUnit compiled: [Standalone progression core run 43932141498](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498). This verifies bytecode compilation and pure tests, **not** runtime Mixin compatibility.
-- [x] Gold sword + gold axe virtual Looting +1/+2/+3 at ranks 3/7/11, including two native mob-loot count/chance hook paths, separate from Fortune.
+- [x] Gold sword + gold axe virtual Looting +3 upon initiation, separately upgradeable to +10 via seven Tyz purchases, including two native mob-loot count/chance hook paths, separate from Fortune.
 - [ ] Prove all Mixin injections apply in a 1.21.1 game; especially item durability Player overload, ApplyBonusCount formula, two Ars-wrapped Looting functions, Piglin/Brute AI.
 - [ ] Pin My Nether's Delight 1.10.4.1 using official SHA-512 and exact packwiz metadata. NOT installed by this source commit.
 - [ ] Reconcile `test/full-integration` baseline and actual QA feature manifest before making a frozen Prism ZIP.

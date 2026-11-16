@@ -24,9 +24,19 @@ Interpret “effective diamond level” by comparing **per-item combat, harvest 
 
 ## Added owner request: gold weapon Looting (2026-11-16)
 
-**Golden swords and axes** gain up to **+3 effective additive Looting**, in three automatic +1 ranks at Gilded 3/7/11; stored Looting III therefore calculates as VI for the qualifying Gilded player's direct melee mob kill. This does not grant Looting to Netherite, gold tools used only for mining, or non-Gilded players; item enchantments are never rewritten. The source implementation uses two Ars Nouveau-style native Looting loot-function wrappers (count and chance) and rejects arrow-fired kills even when the killer holds a gold sword when the arrow lands. Exact-pack / in-world compatibility validation remains necessary.
+**Golden swords and axes** now start with **+3 virtual Looting at Gilded initiation**, and the **independent** seven-rank `tmm_gilded_looting_mastery` Tyz purchase increases it +1 per rank, up to **+10 virtual Looting**. Stored Looting III therefore behaves as Looting VI at initiation or XIII at rank seven for the qualifying Gilded player's direct melee mob kill. Fortune uses a separate seven-rank Tyz skill; purchasing either does not grant the other. This does not grant Looting to Netherite, gold tools used only for mining, or non-Gilded players; item enchantments are never rewritten. The source implementation uses two Ars Nouveau-style native Looting loot-function wrappers (count and chance) and rejects arrow-fired kills even when the killer holds a gold sword when the arrow lands. Exact-pack / in-world compatibility validation remains necessary.
 
 **Source handoff:** [Gilded implementation and readiness](gilded/LIVE-TEST-READINESS.md). Path now resides at `compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/gilded.json` on the exploratory branch; initial compile+JUnit succeeded [here](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498).
+
+## New native high-level ability: Molten Sovereignty (2026-11-16)
+
+At **Gilded rank 18**, the new automatic native \`tmm_progression:gilded_molten_sovereignty\` grants \`tmm_progression:lava_immunity\`: ignore direct lava damage; suppress fire-tick damage and clear burning **while actually immersed in lava**. This is designed as true lava immunity, **not global immunity to fire, blaze attacks or burning outside lava**. Level 20 still has no specific capstone. Source handler and native JSON exist; dedicated runtime confirmation is outstanding.
+
+## Proposed lava-fishing path (not yet installed)
+
+Read [lava-fishing feasibility](gilded/LAVA-FISHING-FEASIBILITY.md). For NeoForge 1.21.1 the **Lava Fishing** mod 1.21.1-1.2.13 is confirmed and compatible on its published loader metadata; our pack already has its required **Aquaculture 2** and **Kotlin for Forge** dependencies. The candidate includes lava-capable rods, fish and lava/Nether loot tables. **No owner decision to include this mod or award fishing XP has yet been made; keep it out of \`manifest/mods.json\` and the active Gilded activity list until approved.**
+
+Possible progression expansion: let Gilded players lava-fish after a mid-tier class license (e.g. Gilded rank 12), optionally allow existing Dragon Survival Cave Dragons using their native form check, and award **provisional 5 native Gilded XP per verified real lava catch**. Use the actual Aquaculture bobber's fluid and owner on the server; no XP for casts, canceled retrievals, fake items, duplication, or different fluids. Cave Dragon eligibility for fishing does not itself create Gilded XP or any skill wallet. Rank 18 lava immunity improves lava access, but isn't required to fish from the shore.
 
 ## Candidate skill domains (rank distribution still open)
 

@@ -2,6 +2,14 @@
 
 **Status (2026-11-16): integrated into the progression module on this isolated exploratory branch, not merged into the full pack and not yet player-tested.** The source-of-truth runtime path is now `compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/gilded.json`. The copies under `docs/explorations/gilded` are design-history snapshots. **Module compile+tests PASS:** [GitHub Actions run 43932141498](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498); no dedicated game boot, Prism, world or modded AI test has been run.
 
+## Current owner-approved mechanics — separate Looting/Fortune, lava immunity (2026-11-16)
+
+**Both virtual enchantments start at +3 at Gilded initiation and rise to +10 via different purchased Tyz skills.** \`tmm_gilded_fortune_mastery\` affects gold/Netherite mining tools; \`tmm_gilded_looting_mastery\` affects gold swords and axes for direct melee kills. Each skill has seven purchased Tyz ranks (one SP each), and increases only its own effect. Existing physical enchantments remain fully additive and uncapped by this design; Silk Touch wins against Fortune. The two Tyz skills use the existing one-wallet SP pool, not the native Gilded gold-mining XP progression.
+
+**Molten Sovereignty is now implemented in source at native Gilded rank 18**, with \`tmm_progression:lava_immunity\`. It cancels direct lava damage and fire-tick damage while the Gilded is physically in lava; ignition is cleared while in lava. Ordinary fire away from lava still burns; this is **not** universal fire immunity. This choice is high-level and leaves rank 20 without a native capstone.
+
+**Lava fishing** is only a researched proposal, **not** added to the mod manifest or an XP source yet. See [lava-fishing feasibility](LAVA-FISHING-FEASIBILITY.md). We have a NeoForge 1.21.1 candidate; class-exclusive catch access and XP credit need Aquaculture-specific validation.
+
 ## Owner-locked golden initiation and food extension (2026-11-16)
 
 **Required initiation:** In `minecraft:the_nether`, wear **all four ordinary golden armor pieces** in their actual head/chest/legs/feet slots and *successfully finish eating* one of `minecraft:golden_apple`, `minecraft:enchanted_golden_apple`, or `minecraft:golden_carrot`. This triggers Gilded enrollment once, on the server. A golden carrot requires the usual hunger preconditions; enchanted golden apples can be eaten when full. No Piglin barter, extra altar, XP precondition or outside-Nether initiation. If a mod adds an enchanted golden carrot, confirm its actual registered ID and add it to the rite tag (none in vanilla).
@@ -97,3 +105,12 @@ The original Nether's Delight is a different, older add-on; for MC 1.21.1/NeoFor
 Check path parser in a harness after handler registration, test diet before consumption, empty hunger, placed feast and modded consumables, verify Piglin+Brute/no armor, gold alarm suppression preserving retaliation, gold-diamond property switches, Fortune III +3 = VI at initiation, Fortune III +10 = XIII at Tyz seven ranks, netherite bonus, no item persistence, equal gold/Netherite repair, ore XP no-Silk only, and multiplayer claim/actor origin. Do not claim in-game tests without dedicated-server and client evidence.
 
 This source is active **only on the exploratory development branch** and passes Java unit tests; it is NOT in the current full integration test build or player-tested.
+
+## Latest native leveling snapshot
+
+- Level 1: initiatory Piglin/Brute affinity, gold diamond-equivalence, restricted Nether-or-gold food (2× gold nutrition/saturation), equipped gold/Netherite repair I, Fortune +3, Looting +3.
+- Levels 4/8/12: additive virtual Unbreaking I/II/III.
+- Levels 10/18: equipped repair II/III for gold and Netherite at the same rate.
+- **Level 18: Molten Sovereignty / lava immunity**.
+- Level 20: no capstone yet; do not claim high-level abilities beyond those above.
+- Seven Tyz purchases **per enchantment** unlock +4…+10 Fortune and, independently, +4…+10 Looting. These are global Tyz SP purchases, *not* free Gilded levels.
