@@ -151,3 +151,10 @@ Never reclassify step 1 as steps 2–5.
 ### 2026-11-16 player follow-up to automated QA
 
 [Player observations, screenshot descriptions and scope](qa/PLAYER-FOLLOWUP-2026-11-16.md), installed SHA `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`: both paths listed, Monk natural initiation passed, Hunter enrollment/specialty/empty mutations observed, and command-supplied Bio-Mutagen successfully brewed and credited mutation progress without temporary Speed. Crafting remains blocked; catalyst missing in JEI and brew uses empty-bottle appearance. No progression UI is shipped. Empty first inventory slot works. Starter reward/Tome changes and Ars runtime pilot remain incomplete/deferred. Two separate TreeChop failures confirmed: bar disappears after first break, and no XP after full felling. Quest navigation screenshot confirms literal-ampersand formatting errors and an Unnamed chapter. No new smoke or unchanged JAWR baseline test.
+
+
+## Final player confirmations — 2026-11-16
+
+Installed snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`: partial Hunter mutation progress survives world reloads (read-only per-effect attachment query); non-Hunter Mutagenic Brew applies Wither; tested invalid initiation attempt rejected (exact missing prerequisite not specified). Dedicated bundle Curios slot exists and accepts bag. Dragon login species choice still enabled: ritual-only config requirement remains unmet. Bag direct grant/absent quest reward is independent of working slot. See [final player report]( qa/PLAYER-FOLLOWUP-2026-11-16.md) for full scope.
+
+**Owner ended this pass:** defer remaining tests until infrastructure exists and intended features are included. Permanent mutation unlock/hunger-cost checks, high-rank fixtures, death-anchor setups and unshipped Thermalily/Dracolich rendering remain unaccepted/deferred. Do not re-run unchanged baseline or infer stable readiness. No new smoke/build authorized.
