@@ -19,14 +19,18 @@
 3. A stacked source may supersede its ancestors: silver-equipment carries conventional material and Polymorph audit work; the no-Pufferfish Monk design branch carries the whole Monk scaffold. Do not duplicate skills or older implementations.
 4. Additions to the manifest are reconciled by exact mod ID and version. Fail on conflicting IDs. Only config, KubeJS and pinned mod metadata enter the packwiz instance; separate first-party source projects are built as JARs.
 5. Record source commits, actual module hashes, mod count, known pending work, and exact built commit in every ZIP. No third-party mods are redistributed.
-6. Run static packwiz, quest, material and equipment validation; compile and unit-test first-party modules; boot the full hash-pinned dedicated server with **both** custom modules actually copied into mods; then test the resulting client in a new disposable Prism world.
+6. **Default, automatic quick preflight:** run static packwiz, quest, material and equipment validation, plus first-party module compilation/unit tests; no complete mod downloads, NeoForge server boot, world generation, immutable server-tested tags or Prism QA ZIP. **Full smoke only after an explicit owner instruction for that run:** boot the full hash-pinned dedicated server with **both** custom modules actually copied into mods, and only then produce an immutable QA ZIP for a separately requested client test in a disposable Prism world.
 7. A failing or conflicting source **blocks publication**, leaves the last known-good build alone, and saves logs. A server-ready line is not a successful gameplay test.
 8. For candidates and stable builds, collect client launch, disposable-world generation, important recipes, coin claims, vampire dual acquisition and blood, Monk registration, compatibility conflicts, and progression safety gates. Record pass/fail and outstanding issues in the test ledger. Never auto-upgrade existing worlds.
 9. Do not claim planned gameplay is live. Tyz 6.4.2's MXP-only XP architecture, universal magic and form trees, replacing Pufferfish Skills, and actual Monk powers are still pending until installed and validated.
 
-## Routine
+## Routine: lightweight checks by default, full smoke by explicit request only
 
-Use GitHub Actions **Full Integration - Unstable Prism QA**, or its default-branch launcher, to incorporate the current tracked branch heads. After green CI the artifact **Too-Much-Magic-Full-Integration-Prism-UNSTABLE** is the single Prism download for that iteration. Use a fresh disposable world, report issues against the exact SHA in BUILD-MANIFEST.json, and preserve the old Prism profile.
+The **Full Integration** workflow defaults to quick preflight on tracked integration-branch pushes and on ordinary manual/reusable invocations. It assembles registered workstreams, runs metadata/resource checks, compiles both first-party modules and runs unit tests. **A successful quick run does not start Minecraft, establish mod interoperability, freeze a tested snapshot, or publish a Prism QA ZIP.** Report `QUICK CHECKS PASS; SERVER NOT TESTED`, never `server-smoked`.
+
+The owner must explicitly request a **particular full dedicated-server smoke run** before an agent is allowed to start one. For an authorized run, dispatch `.github/workflows/full-integration.yml` with the **`full_smoke` boolean checked/true** (or pass the same true value from an explicitly owner-authorized reusable launcher). This unlocks the full server boot, immutable integration tag, and **Too-Much-Magic-Full-Integration-Prism-UNSTABLE** artifact. The checkbox defaults to false. Do not use an unguarded old feature workflow or direct `scripts/smoke_server.sh` to evade this restriction. Do not automatically retry failures. An already-running overnight test approved on 2026-11-15 is not canceled by this future-run rule.
+
+For the resulting full-test artifact, use a fresh disposable world, report against the exact SHA in BUILD-MANIFEST.json, and preserve the old Prism profile. Client/world playtesting still requires its own evidence.
 
 When a contributor creates a new feature branch, register the source paths and owner in manifest/integration-sources.json or document why it is excluded. Do not silently mix competing skill engines, revert newer quest localization, or relabel a Pufferfish-era snapshot as Tyz-enabled.
 
@@ -36,7 +40,7 @@ The previous quest/vampire workflow passed SMOKE_EXTRA_MOD_JAR to scripts/smoke_
 
 ## Promotion
 
-A passing integrated CI result may be **frozen as Candidate** by preserving its commit SHA and exact ZIP checksum. **Stable** promotion must be a separate explicit, human-approved tagging operation with relevant in-world test evidence. Neither stable nor candidate refs should automatically move when an experimental branch changes.
+Only an **owner-authorized full-smoke-passing integrated CI run** with a produced QA ZIP may be **frozen as Candidate** by preserving its commit SHA and exact ZIP checksum. A quick green CI run is not a candidate. **Stable** promotion must be a separate explicit, human-approved tagging operation with relevant in-world test evidence. Neither stable nor candidate refs should automatically move when an experimental branch changes.
 
 ## Tester-only Prism preferences
 
