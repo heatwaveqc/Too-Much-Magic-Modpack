@@ -2,6 +2,12 @@
 
 This file governs every automated contributor and pack change.
 
+## Next-test QA handoff for Codex
+
+For the current test build, start with [docs/qa/README.md](docs/qa/README.md), follow the [Codex-ready three-tier checklist](docs/qa/NEXT-TEST-CODEX-CHECKLIST.md), and record results in [the current QA status ledger](docs/qa/CURRENT-TEST-STATUS.md). Re-read the exact integration SHA and source manifest before each test; planned and source-ready features are not necessarily installed. Reuse [the historical test ledger](docs/TESTING.md) and [canonical acceptance register](manifest/feature-checklist.json), and do not mark in-world PASS based on static/compile evidence.
+
+The **full smoke authorization rule below remains in force**. Uploading or following a checklist does not authorize a full server boot, a full-smoke workflow invocation, an automatic push-triggered smoke, or a Prism build. Run quick source/static/unit checks by default; request explicit authorization for any full smoke.
+
 ## Mod comprehension research
 
 When asked to "work on the mod comprehension project", read [the entry point](MOD-COMPREHENSION.md), [Work instructions](docs/mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) and [coverage index](docs/mod-comprehension/INDEX.md). Autonomously continue a substantive single-mod profile or cross-mod interaction report, with exact-version sources and honest verification status. Research only: no unsolicited quest/config/KubeJS/gameplay changes, no copied JARs/assets, and no guesses about runtime compatibility. Every substantial profile must ultimately map **full native progression and guidebook access** to a complete player walkthrough; read [QUEST-WALKTHROUGH-STANDARD.md](docs/QUEST-WALKTHROUGH-STANDARD.md). A mechanics survey with mandatory tier/how-to gaps is still researching.
