@@ -1,7 +1,10 @@
 package io.github.heatwaveqc.tmm.progression.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
+import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.commands.Commands;
@@ -21,6 +24,16 @@ public final class ProgressionCommands {
                         "Paths: " + String.join(", ",PathRegistry.all().keySet())),false);
                     return 1;
                 }))
+            .then(Commands.literal("enroll")
+                .then(Commands.argument("path",StringArgumentType.word())
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        String id = StringArgumentType.getString(ctx,"path");
+                        boolean ok = Enrollment.enrollManual(player,id);
+                        ctx.getSource().sendSuccess(() -> Component.literal(
+                            ok ? "Joined " + id : "Enrollment unavailable or requirements unmet"),false);
+                        return ok ? 1 : 0;
+                    })))
             .then(Commands.literal("status")
                 .then(Commands.argument("path",StringArgumentType.word())
                     .executes(ctx -> {
@@ -55,6 +68,51 @@ public final class ProgressionCommands {
                                       "Respec unavailable"),false);
                         return success ? 1 : 0;
                     })))
+            .then(Commands.literal("power")
+                .then(Commands.literal("blink")
+                    .executes(ctx -> {
+                        ServerPlayer player = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.blink(player);
+                        player.displayClientMessage(Component.literal(ok ?
+                            "Blink" : "Blink blocked, unavailable or cooling down"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("armor")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"armor");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Armor Lock: " + ClassAbilities.mode(p,"armor") :
+                            "Armor Lock not unlocked"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("glide")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"glide");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Momentum Glide: " + ClassAbilities.mode(p,"glide") :
+                            "Momentum Glide requires verified dragon defeat and mastery"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("ordeal")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"ordeal");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Blindness Ordeal: " + ClassAbilities.mode(p,"ordeal") :
+                            "Blindness Ordeal unavailable"),true);
+                        return ok ? 1 : 0;
+                    }))
+                .then(Commands.literal("treasure")
+                    .executes(ctx -> {
+                        ServerPlayer p = ctx.getSource().getPlayerOrException();
+                        boolean ok = ClassAbilities.toggle(p,"treasure");
+                        p.displayClientMessage(Component.literal(ok ?
+                            "Treasure Hand: " + ClassAbilities.mode(p,"treasure") :
+                            "Treasure Hand not unlocked"),true);
+                        return ok ? 1 : 0;
+                    })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
                 .then(Commands.literal("join")
                     .then(Commands.argument("path",StringArgumentType.word())
@@ -65,6 +123,25 @@ public final class ProgressionCommands {
                                 ok ? "Joined progression path" : "Path missing or exclusive"),false);
                             return ok ? 1 : 0;
                         })))
+                .then(Commands.literal("xp")
+                    .then(Commands.argument("path",StringArgumentType.word())
+                        .then(Commands.argument("amount",LongArgumentType.longArg(1))
+                            .executes(ctx -> {
+                                ServerPlayer player = ctx.getSource().getPlayerOrException();
+                                String path = StringArgumentType.getString(ctx,"path");
+                                long amount = LongArgumentType.getLong(ctx,"amount");
+                                Track previous = ProgressionApi.track(player,path);
+                                boolean ok = ProgressionApi.grantAdminXp(player,path,amount);
+                                Track current = ProgressionApi.track(player,path);
+                                ctx.getSource().sendSuccess(() -> Component.literal(ok
+                                    ? "Granted " + (current.xp() - previous.xp()) +
+                                      " native XP to " + path + ". XP: " + current.xp() +
+                                      ", level: " + current.rank() +
+                                      ", points: " + current.points()
+                                    : "XP grant blocked: path not found, not joined, or already saturated"),
+                                    false);
+                                return ok ? 1 : 0;
+                            }))))
                 .then(Commands.literal("event")
                     .then(Commands.argument("event_id",StringArgumentType.word())
                         .executes(ctx -> {

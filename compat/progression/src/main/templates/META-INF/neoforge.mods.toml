@@ -11,6 +11,9 @@ description='''Datapack-configured, server-authoritative progression and player 
 Independent of Monk, Hunter, JAWR, Vampirism and Tyz.
 '''
 
+[[mixins]]
+config="tmm_progression.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type="required"
