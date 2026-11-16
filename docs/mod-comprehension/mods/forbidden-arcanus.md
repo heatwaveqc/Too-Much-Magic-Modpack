@@ -75,6 +75,38 @@ Costs below are the values in each ritual JSON. The RitualManager's start path r
 | 4 | 1 Chiseled Polished Darkstone | 4 Stellarite Pieces + 4 Runes | 2,000 Aureal, 12,000 Blood, 100 Souls | Forge tier 3; Upgrade Tier circle; exact tier match |
 | 5 | 1 Stellarite Block | 4 Sculk Catalysts + 2 Dark Nether Stars + 2 Dragon Scales | 5,000 Aureal, 20,000 Blood, 500 Souls | Forge tier 4; Upgrade Final Tier circle; exact tier match |
 
+
+### Built-in ritual catalog — version-aligned 2.6.1 source data
+
+The pinned-version-aligned generated-resource cache lists **22** ritual JSON files. These are the declared recipes, not a claim that their inputs are obtainable in TMM or that the pinned binary has been proven identical to source. Every entry uses the create_item magic circle except the four tier upgrades, which use the named upgrade circle. “No explicit tier” means the JSON omits a forge-tier field; it is not a tested accessibility result. Pedestal inputs are listed after the main ingredient.
+
+| Result type | Ritual → output | Main ingredient | Pedestal inputs | Essence costs | Additional JSON gate |
+| --- | --- | --- | --- | --- | --- |
+| Upgrade tier | upgrade_tier_2 → tier 2 | 1 Edelwood Planks | 4 Arcane Crystals; 4 Spawner Scraps | 500 Aureal; 6,000 Blood; 10 Souls | No explicit tier |
+| Upgrade tier | upgrade_tier_3 → tier 3 | 1 Chiseled Polished Darkstone | 4 Arcane Crystals; 4 Deorum Ingots | 1,000 Aureal; 9,000 Blood; 50 Souls | Tier 2 |
+| Upgrade tier | upgrade_tier_4 → tier 4 | 1 Chiseled Polished Darkstone | 4 Stellarite Pieces; 4 Runes | 2,000 Aureal; 12,000 Blood; 100 Souls | Tier 3 |
+| Upgrade tier | upgrade_tier_5 → tier 5 | 1 Stellarite Block | 4 Sculk Catalysts; 2 Dark Nether Stars; 2 Dragon Scales | 5,000 Aureal; 20,000 Blood; 500 Souls | Tier 4; Upgrade Final Tier circle |
+| Transmute input | draco_arcanus_boots → Draco Arcanus Boots | 1 Netherite Boots | 2 Dragon Scales; 2 Obsidiansteel Ingots | 700 Aureal; 405 Blood; 370 Experience; 5 Souls | Tier 2 |
+| Transmute input | draco_arcanus_chestplate → Draco Arcanus Chestplate | 1 Netherite Chestplate | 4 Dragon Scales; 3 Obsidiansteel Ingots | 1,300 Aureal; 625 Blood; 760 Experience; 9 Souls | Tier 2 |
+| Transmute input | draco_arcanus_helmet → Draco Arcanus Helmet | 1 Netherite Helmet | 2 Dragon Scales; 3 Obsidiansteel Ingots | 820 Aureal; 475 Blood; 420 Experience; 6 Souls | Tier 2 |
+| Transmute input | draco_arcanus_leggings → Draco Arcanus Leggings | 1 Netherite Leggings | 3 Dragon Scales; 3 Obsidiansteel Ingots | 1,000 Aureal; 565 Blood; 540 Experience; 7 Souls | Tier 2 |
+| Transmute input | tyr_boots → Tyr Boots | 1 Draco Arcanus Boots | 3 Aquatic Dragon Scales; 2 Golden Dragon Scales | 4,460 Aureal; 5,620 Blood; 2,170 Experience; 40 Souls | Tier 4 |
+| Transmute input | tyr_chestplate → Tyr Chestplate | 1 Draco Arcanus Chestplate | 4 Aquatic Dragon Scales; 4 Golden Dragon Scales | 6,300 Aureal; 8,080 Blood; 3,420 Experience; 60 Souls | Tier 4 |
+| Transmute input | tyr_helmet → Tyr Helmet | 1 Draco Arcanus Helmet | 4 Aquatic Dragon Scales; 1 Golden Dragon Scale | 4,820 Aureal; 5,930 Blood; 2,450 Experience; 40 Souls | Tier 4 |
+| Transmute input | tyr_leggings → Tyr Leggings | 1 Draco Arcanus Leggings | 4 Aquatic Dragon Scales; 3 Golden Dragon Scales | 5,080 Aureal; 7,620 Blood; 3,010 Experience; 50 Souls | Tier 4 |
+| Create item | boss_catcher → Boss Catcher | 1 Quantum Catcher | 1 Nether Star; 3 Stellarite Pieces | 500 Aureal; 7,500 Blood; 1,200 Experience; 10 Souls | Tier 4 |
+| Create item | eternal_stella → Eternal Stella | 1 Diamond | 3 Xpetrified Orbs; 1 Stellarite Piece | 82 Aureal; 1,000 Blood; 1 Soul | Tier 3 |
+| Create item | ferrognetic_mixture → Ferrognetic Mixture | 1 Lodestone | 2 Clay Balls; 2 Wax; 2 Slime Balls; 1 Iron Ingot | 100 Aureal; 1,250 Blood; 2 Souls | No explicit tier |
+| Create item | quantum_catcher → Quantum Catcher | 1 Quantum Core | 4 Spawner Scraps | 200 Aureal; 1,200 Blood; 155 Experience; 5 Souls | No explicit tier |
+| Create item | quantum_injector → Quantum Injector | 1 Mundabitur Dust | 4 Quantum Cores | 5,000 Aureal; 3,000 Blood; 1,060 Experience; 50 Souls | Tier 3 |
+| Create item | sea_prism → Sea Prism | 1 Heart of the Sea | 2 Prismarine Shards; 2 Turtle Scutes; 2 Lapis Lazuli | 1,000 Aureal; 2,000 Blood; 8 Souls | Tier 3; Elementarium enhancer |
+| Create item | smelter_prism → Smelter Prism | 1 Arcane Crystal Block | 2 Coal; 4 Blaze Powder | 200 Aureal; 1,250 Blood; 4 Souls | Elementarium enhancer; no explicit tier |
+| Create item | soul_binding_crystal → Soul Binding Crystal | 1 Quartz | 1 Soul; 1 Corrupt Soul; 1 Enchanted Soul; 2 Amethyst Shards; 3 Ender Pearl Fragments | 1,500 Aureal; 375 Blood; 220 Experience; 20 Souls | Tier 4; Divine Pact enhancer |
+| Create item | terrastomp_prism → Terrastomp Prism | 1 Diamond Block | 2 Flint; 2 Dripstone Blocks; 2 Pointed Dripstone | 300 Aureal; 1,500 Blood; 9 Souls | Tier 2; Elementarium enhancer |
+| Create item | whirlwind_prism → Whirlwind Prism | 1 White Wool | 1 Bat Wing; 2 Feathers; 3 Phantom Membranes | 1,000 Aureal; 2,250 Blood; 3 Souls | Tier 3; Elementarium enhancer |
+
+The catalog corrects a potential reading of the Forge as uniformly tier-gated: tier requirements are explicit per JSON and absent from several rituals. Three registered result types are present (create_item, transmute_input, upgrade_tier); the generated JEI plugin places the first two into its smithing category and tier upgrades into a separate upgrading category. The catalog does not establish recipe availability after TMM scripts/configs, real item-acquisition routes, or successful in-world execution. [source: generated-resource cache and ritual JSONs; ForbiddenArcanusJEIPlugin.java]
+
 ## Material / capability input-output contracts
 
 | System | Input kind + exact ID/tag/event | Input qty/formula; consumed/remainder | Output kind, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
@@ -83,7 +115,7 @@ Costs below are the values in each ritual JSON. The RitualManager's start path r
 | Clibano ordinary recipes | Item stack in one input slot + fuel item | Recipe-defined; one input consumed per completion; fuel duration is vanilla fuel behavior | Recipe result to GUI output slot | Tick-driven while fuel burns; 2 input slots, 2 output slots | Menu/container item handler exists. Exact sided automation contract not checked. |
 | Clibano Soul/Enchanted Fire | Item in soul slot matching the respective item tag | One starter item consumed; 2,700-tick base Soul duration; enhancer may modify it | Fire type state; modifies recipe availability/speed/residue | Timer; one active mode at a time | Tags: `forbidden_arcanus:clibano/creates_soul_fire`, `.../creates_enchanted_fire`. [source] |
 | Clibano residue roll | Completed recipe with `residue_chance` data | Probability and residue type are recipe data; max combined storage 64 | Internal residue count; possible combined item in result slot | Per successful recipe completion | Datapack recipe type supports it; values not fully inventoried. |
-| Forge ritual | Main ingredient stack + pedestal item stacks + forge essence storage + tier/circle | Input requirements are datapack-defined; ritual duration defaults to 500 ticks when omitted. Essence is deducted on start. | Ritual result item and optional level effect; item result is returned to caller/output path | Ritual ticks; pedestal/forge geometry and valid-circle search still to document | Datapack registry `forbidden_arcanus:ritual`; 21 built-in ritual JSON entries in the pinned source tree. |
+| Forge ritual | Main ingredient stack + pedestal item stacks + forge essence storage + tier/circle | Input requirements are datapack-defined; ritual duration defaults to 500 ticks when omitted. Essence is deducted on start. | Ritual result item and optional level effect; item result is returned to caller/output path | Ritual ticks; pedestal/forge geometry and valid-circle search still to document | Datapack registry `forbidden_arcanus:ritual`; 22 built-in ritual JSON entries in the pinned source tree. |
 | Forge blood from combat | Living entities within an AABB inflated 5 blocks around forge; health observed between ticks | Source code adds integer health lost × 20 to Blood for cached nearby entities | Forge Blood essence, bounded by current tier maximum | Forge tick; checks all living entities in the 5-block inflated box | Source-level behavior in `EssenceManager.tick`; who is eligible and tick timing need validation. Could create a gated-drop/farm concern; do not propose a farm before tests. |
 | Aureal player resource | Entity essence capability and Aureal cost component | Specific wearable/tool costs not enumerated | Player Aureal changes; Forge Aureal storage exists separately | Entity/provider-driven; exact regeneration and transfer path not yet mapped | Capability and data components exist. |
 | Ritual progression | Ritual JSON inputs, tier predicate, enhancer requirements and magic-circle key | Exact inputs listed in ritual data; source checks against cached pedestal ingredients | Create-item, transmute-input, tier-upgrade result, plus some ritual level effects | Datapack-defined duration and essence costs | Data-driven registry; operation is not proven by JEI display alone. |
@@ -223,13 +255,14 @@ The progression table is the canonical partial outline. No quests were edited or
 - [ ] Determine whether the pinned JAR can be inspected locally and verify binary-to-source equivalence.
 - [ ] Find the intended survival route for Forbiddenomicon and Research Desk; explain the disabled feature state.
 - [ ] Map tier-1 forge recipe, structure shape, pedestal count/range, circle geometry, menu controls and output handling.
-- [ ] Audit all built-in ritual JSONs (21 entries), result types, exact essence inputs, side effects and source item routes.
+- [x] Audit all 22 built-in ritual JSONs at the version-aligned source snapshot: result types, exact declared inputs/essence costs, tier/enhancer fields, and outputs are cataloged below. Source item routes and pack-effective overrides remain open.
 - [ ] Map Aureal/Souls/Blood/Experience collection and each tier's maximum essence capacity; test essence transfer sources.
 - [ ] Finish Clibano geometry, recipe catalog, residue registry, valid fuel/fire inputs and sided automation.
 - [ ] Audit the remaining material, worldgen, equipment, trinket, enchantment, plant and creature branches.
-- [ ] Search current TMM recipe/config/script/quest layers for overrides and any advancement trigger exposure to FTB Quests.
+- [ ] Search current TMM recipe/config/script layers for ritual overrides; quest integration remains out of scope for this knowledge-only pass.
 - [ ] Run disposable client tests before any profile can become verified-in-pack.
 
 ## Revision notes
 
 - 2026-11-16 — Created source-backed partial profile for the pinned 2.6.1 selection. Recorded the research UI gap, extractor contract, Clibano fire mechanics, tier-upgrade costs and ritual source-level risks. No quest/runtime files changed.
+- 2026-11-16 — Audited the full 22-entry built-in ritual catalog from the 2.6.1-aligned generated-resource cache and JSONs; corrected the earlier 21-entry count and recorded each result, declared input, essence cost, and explicit tier/enhancer gate. Source-to-JAR parity, pack overrides, item routes, and in-world execution remain open. No quest/runtime files changed.
