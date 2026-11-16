@@ -163,3 +163,16 @@ The exact version-aligned Goety 3.2.2 source (`7fdffc0b4f07aaa79d333ac1791444506
 ## Goety Cataclysm parent ritual contract (2026-11-16)
 
 The Goety Cataclysm 1.21.1 addon recipe inventory declares `goety:ritual` for its focus, summon, and conversion recipes. Current Goety 3.2.2 source shows that the base altar engine progressively consumes pedestal inputs and charges Soul Energy once per 20 ticks; base interruption returns the activation item but not already-paid souls or consumed ingredients. This provides an inherited-engine risk for addon recipes, not proof that every addon ritual uses the unmodified implementation. The addon has no accessible version-aligned source in the inspected public repository, so class overrides, Fabricator behavior, exact spawn/ownership behavior and client acceptance remain unresolved.
+
+
+## Exact-build automated blockers — 2026-11-16
+
+Installed/source snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`; [full evidence](qa/AUTOMATED-QA-2026-11-16.md).
+
+- **Hunter mutation crafting blocker:** existing client/world RecipeManager rejects `tmm_progression:bio_mutagen` raw-string ingredients under MC 1.21.1. All nine ingredients need compatible objects/codec validation; the passing recipe unit test did not catch runtime decode failure.
+- **Progression command blocker:** `StringArgumentType.word()` consumes only `tmm_progression` from `tmm_progression:monk`; eight inputs affected, `admin xp` missing. Add full dispatcher parsing/permission tests before recommending B command procedures.
+- **Registry/mapping:** `cookingforblockheads:oven` remains an invalid quest icon/task; Goety totem container lookup fails ProjectE recipe mapping. Resource/optional recipe errors detailed in report; not all are fatal.
+- **Deferred B19 validator portability:** uses Windows backslash relative paths against slash-separated catalog keys. Validator exit 1; normalized file set and contents match. Runtime remains NOT BUILT.
+- **Future assembly readiness:** `feature/traders-vengence` was unclassified at remote-head audit. Classify intentionally; do not silently import it or trigger a full smoke. Thirteen documented runtime deferrals remain deferred.
+
+Both first-party modules compile and 66 unit tests pass, but this does not override these runtime/command blockers. Report-only handoff; no fixes, smoke or gameplay promotion performed.
