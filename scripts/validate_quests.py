@@ -314,7 +314,7 @@ def main() -> None:
     ensure(not (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").exists(),
            "Obsolete empty first-log reward function must not be shipped")
     pouch = all_blocks["544D4D1100000001"]
-    ensure(pouch.count('id: "ars_elemental:curio_bag"') == 1 and 'id: "544D701000200003"' in pouch,
+    ensure(pouch.count('id: "ars_elemental:curio_bag"') == 2 and 'id: "544D701000200003"' in pouch,
            "Punch a Tree must grant the original once-claimable Curio Bag reward")
     ensure('id: "minecraft:torch"' not in pouch, "Punch a Tree must not award torches")
     a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
