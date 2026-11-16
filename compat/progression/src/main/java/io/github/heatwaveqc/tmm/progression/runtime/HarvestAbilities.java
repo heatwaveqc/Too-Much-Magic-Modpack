@@ -25,7 +25,8 @@ public final class HarvestAbilities {
         return false;
     }
 
-    private static boolean canHarvestBarehand(ServerPlayer player, BlockState state) {
+    // Shared eligibility for the actual Fortune loot formula and Silk Touch reroll.
+    static boolean canHarvestBarehand(ServerPlayer player, BlockState state) {
         int required = EffectRuntime.requiredTier(state);
         if (required < 0) return false;
         for (var a : EffectRuntime.active(player)) {
@@ -45,23 +46,25 @@ public final class HarvestAbilities {
         BlockPos pos = event.getPos();
         if (state.getDestroySpeed(event.getLevel(),pos) < 0
                 || !canHarvestBarehand(player,state)) return;
-        if (has(player,"treasure_hand",state)) {
-                String mode = ProgressionApi.mode(player,"tmm_progression:treasure_mode","fortune");
-                if (!mode.equals("fortune") && !mode.equals("silk")) return;
-                ItemStack contextTool = new ItemStack(Items.NETHERITE_PICKAXE);
-                var enchants = event.getLevel().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-                contextTool.enchant(enchants.getOrThrow(mode.equals("silk") ?
-                    Enchantments.SILK_TOUCH : Enchantments.FORTUNE),
-                    mode.equals("silk") ? 1 : 1 + TyzMonkBridge.fortuneBonus(player));
-                List<ItemStack> rolled = Block.getDrops(state,event.getLevel(),pos,
+        // Fortune is now an effective enchantment level in the original loot
+        // computation (MonkFortuneMixin), not a second drop roll here.
+        // Silk Touch changes the selected loot table branch and is still
+        // rerolled using a synthetic tool until a separate context hook exists.
+        if (has(player,"treasure_hand",state)
+                && "silk".equals(ProgressionApi.mode(player,
+                    "tmm_progression:treasure_mode","fortune"))) {
+            ItemStack contextTool = new ItemStack(Items.NETHERITE_PICKAXE);
+            var enchants = event.getLevel().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+            contextTool.enchant(enchants.getOrThrow(Enchantments.SILK_TOUCH), 1);
+            List<ItemStack> rolled = Block.getDrops(state,event.getLevel(),pos,
                     null,player,contextTool);
-                // Replace, NEVER append to original drops; preserve original vanilla XP.
-                event.getDrops().clear();
-                for (ItemStack stack : rolled) if (!stack.isEmpty())
-                    event.getDrops().add(new ItemEntity(event.getLevel(),
-                        pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,stack));
-                return;
-            }
+            // Intentional replacement ONLY for Silk mode. Never append to native drops.
+            event.getDrops().clear();
+            for (ItemStack stack : rolled) if (!stack.isEmpty())
+                event.getDrops().add(new ItemEntity(event.getLevel(),
+                    pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,stack));
+            return;
+        }
         if (has(player,"glass_touch",state) &&
                 (state.is(Blocks.GLASS) || state.is(Blocks.GLASS_PANE)
                     || state.getBlock() instanceof StainedGlassBlock
