@@ -127,3 +127,13 @@ No full smoke, build, or client run is authorized by this intake note.
 | Tyz 6.4.2 `keepsake` / Safekept override | Disable inventory-slot copier with `active: false` and stage alongside Monk skill overlay | **SOURCE STAGED — ATTEMPT REQUIRED**; must confirm overlay appears in final assembled config | Skill absent in UI, no auto-restored duplicate items, purchased ranks/migration assessed |
 
 No full smoke or Prism build authorization is implied. See [implementation handoff](../NEWBIE-MODE-IMPLEMENTATION-2026-11-16.md).
+
+
+### 2026-11-16 — Virtual vanilla Elytra and all-Progression human-form gate (draft PR #241)
+
+| Source | Required inclusion | Status | Next authorized client test |
+| --- | --- | --- | --- |
+| `tmm_progression` on `feature/newbie-mode-smartkeep-2026-11-16` | `VirtualElytra` synced hidden effect, NeoForge `IItemStackExtension.canElytraFly` + `elytraFlightTick` mixin, metadata registration, shared Monk/Newbie boost loop | **CODE COMPILED in standalone CI; real-world behavior NOT verified** | With Newbie and regular Monk (skill+toggle), use a normal jump/double-jump to enter *actual* vanilla Elytra fall-flying, without an Elytra item. Check horizontal cruising, gradual shallow-climb, failure to hover or climb nearly vertically, cap at boost speed, fall collision damage, client pose, ordinary chest armor, landing, dimension changes, logout/relog, and immediate effect removal on graduation. Verify Iron's Angel Wings spell, Ars Nouveau Glide spell and Gliding Thread, and actual Elytra still work independently. |
+| `tmm_transformations` species + `tmm_progression` membership | All-path `ProgressionApi.anyJoined` / cross-mod `registerJoinVeto`; native positive acquisitions via JAWR vampire + werewolf, DS species, Goety lich, Forbidden Magic lich. Gilded experimental path in separate design branch uses `ProgressionApi.join`; merge that branch before asserting Gilded installed. | **SOURCE STAGED; runtime injections and cross-mod registration NOT verified** | Regular HUMAN can join Monk/Hunter/Gilded and then cannot become Vampire, Werewolf, Dragon or either Lich; transformed Regular cannot join any new Progression path. Existing forms may upgrade and cure; JAWR-only dual affliction follows approved exception. Two-player test ensures only affected player blocked; admin grants and relog tested. |
+
+No comprehensive server/Prism smoke or live-world test is authorized by this register entry.
