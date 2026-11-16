@@ -110,7 +110,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "40495fa84dbbaf3faed302914552f82f1f11e7fdb3b9303fdcfd830439407497"
+hash = "7d4202eb2eb7207c6bfe0ea7c939cbd85c7d48433d510a3e1e2429e706b5b99b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -194,7 +194,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "477826e7b96f2c55983b6299f5a785032de0d1c9b6567708d1a36221fc008e04"
+hash = "dd3438fdf76adbe86370f0403f3056b39e9da5d5cf2640e5797702f4b902b171"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -272,9 +272,6 @@ hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
 hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
-[[files]]
-file = "kubejs/data/tmm/advancement/first_log.json"
-hash = "b6884a54ff24a9f23d32a364fb8ee0aa2adee11b67a5ac8fa99795c8da62a6dd"
 
 
 [[files]]
@@ -769,6 +766,11 @@ metafile = true
 [[files]]
 file = "mods/ftb-chunks-forge.pw.toml"
 hash = "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521"
+metafile = true
+
+[[files]]
+file = "mods/ftb-filter-system.pw.toml"
+hash = "9cb8d355c77067b00a96d96db398f60db62a6ee238dabff45ade33dd8d9f9e3b"
 metafile = true
 
 [[files]]
