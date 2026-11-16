@@ -14,7 +14,7 @@
 
 ## Requirements
 
-1. All active implementation branches must be present in manifest/integration-sources.json or explicitly classified as already in the baseline, superseded, or non-runtime. Any new unclassified branch is a hard failure, not a quiet omission.
+1. **Live-test-ready inclusion is mandatory to attempt:** any chat/PR/branch handoff reporting a feature ready for live testing enters the next comprehensive unstable integration scope, even if unmerged or previously marked `deferred_pending_runtime`. Inventory and reconcile all reported-ready features using [the inclusion register](qa/LIVE-TEST-INCLUSION-REGISTER.md). A prior narrow test's deferral is not an exclusion. All active implementation branches must also be present in `manifest/integration-sources.json` or correctly classified; a new unclassified branch is a hard failure.
 2. Each workstream declares an owning source branch and exact paths. Import only those paths, not every old file from older PR stacks. The combined quest/vampire QA branch provides the initial base and its latest fixes have priority.
 3. A stacked source may supersede its ancestors: silver-equipment carries conventional material and Polymorph audit work; the no-Pufferfish Monk design branch carries the whole Monk scaffold. Do not duplicate skills or older implementations.
 4. Additions to the manifest are reconciled by exact mod ID and version. Fail on conflicting IDs. Only config, KubeJS and pinned mod metadata enter the packwiz instance; separate first-party source projects are built as JARs.
@@ -23,6 +23,14 @@
 7. A failing or conflicting source **blocks publication**, leaves the last known-good build alone, and saves logs. A server-ready line is not a successful gameplay test.
 8. For candidates and stable builds, collect client launch, disposable-world generation, important recipes, coin claims, vampire dual acquisition and blood, Monk registration, compatibility conflicts, and progression safety gates. Record pass/fail and outstanding issues in the test ledger. Never auto-upgrade existing worlds.
 9. Do not claim planned gameplay is live. Tyz 6.4.2's MXP-only XP architecture, universal magic and form trees, replacing Pufferfish Skills, and actual Monk powers are still pending until installed and validated.
+
+## Live-test readiness intake and no silent deferrals (owner decision, 2026-11-16)
+
+Before **every** comprehensive live-test candidate, the integrator must read development-chat handoffs and open feature PRs, not just the preselected source-map streams. "Ready for a live test," "ready for next test build," and comparable statements require a documented **attempt to include** that feature. Record each in [docs/qa/LIVE-TEST-INCLUSION-REGISTER.md](qa/LIVE-TEST-INCLUSION-REGISTER.md), including owner, source SHA, runtime destinations/pins, and actual status. A PR not merged to `test/full-integration` is still in scope if its work was reported ready.
+
+`deferred_pending_runtime` only explains an earlier snapshot. **It cannot satisfy the next-test inclusion obligation by itself.** Attempt pin resolution, module builds, data/quest merges and conflict repair; inspect the final assembled files/JARs so imported source is not silently overwritten or removed. If compatibility, dependency, missing code, or conflicting behavior blocks inclusion, record the specific failed attempt and evidence. **Only an explicit, feature-specific owner decision** authorizes voluntary deferral.
+
+Do not call a build a comprehensive or all-workstreams live test until every reported-ready feature is **INCLUDED**, **BLOCKED with evidence**, or **OWNER-DEFERRED** in the preflight inclusion matrix. If anything is BLOCKED, present the omission and obtain owner approval before issuing a narrower *partial* live-test candidate. Preserve the full-smoke authorization rules in the following section. A chat asking to prepare this register or update guidance is not authorizing a Minecraft server boot.
 
 ## Routine: lightweight checks by default, full smoke by explicit request only
 
