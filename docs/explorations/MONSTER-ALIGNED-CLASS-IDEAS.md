@@ -21,7 +21,7 @@ There is no target quota. The current 10 are *design candidates*, not owner-appr
 **Lore:** Piglin gold fixation, bartering and Bastions; native Piglin and Piglin Brute identity.  
 **Loop:** Successful non-Silk-Touch gold ore breaks award class XP, regardless of Fortune yield; become a capable gold specialist, then use Netherite.  
 **Mechanics:** Golden equipment functions at diamond-equivalent tool/armor/combat levels; +3 additive Fortune to held gold/Netherite tools; gold and Netherite equipment gain effective Unbreaking and identical rapid equipped repair; ordinary Piglins and Brutes do not initiate hostility to unprovoking Gilded, even during gold/container alarm actions.  
-**Distinctive constraint:** Only edible foods of Nether-attainable types; requires a pre-consumption deny hook and recipe-audited My Nether's Delight food whitelist.  
+**Distinctive constraint:** Eating is limited to Nether-attainable food types **or** golden/gold-crafted foods (including food with gold in its crafting recipe). Initiation is completed by successfully eating a golden apple (enchanted or ordinary) or golden carrot in the Nether while wearing four golden armor pieces. Requires pre-consumption food validation and recipe-aware eligibility, plus My Nether's Delight recipe auditing.  
 **Differentiation:** **Equipment economy and faction customs**, not Nether fire magic, a generic mob disguise, or Werewolf-style body transformation. See [Gilded specification](PIGLIN-GOLD-PROGRESSION.md).
 
 ### 2. Illager — Raidmarshal (new candidate)
