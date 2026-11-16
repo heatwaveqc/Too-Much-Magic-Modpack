@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
@@ -122,6 +123,25 @@ public final class ProgressionCommands {
                                 ok ? "Joined progression path" : "Path missing or exclusive"),false);
                             return ok ? 1 : 0;
                         })))
+                .then(Commands.literal("xp")
+                    .then(Commands.argument("path",StringArgumentType.word())
+                        .then(Commands.argument("amount",LongArgumentType.longArg(1))
+                            .executes(ctx -> {
+                                ServerPlayer player = ctx.getSource().getPlayerOrException();
+                                String path = StringArgumentType.getString(ctx,"path");
+                                long amount = LongArgumentType.getLong(ctx,"amount");
+                                Track previous = ProgressionApi.track(player,path);
+                                boolean ok = ProgressionApi.grantAdminXp(player,path,amount);
+                                Track current = ProgressionApi.track(player,path);
+                                ctx.getSource().sendSuccess(() -> Component.literal(ok
+                                    ? "Granted " + (current.xp() - previous.xp()) +
+                                      " native XP to " + path + ". XP: " + current.xp() +
+                                      ", level: " + current.rank() +
+                                      ", points: " + current.points()
+                                    : "XP grant blocked: path not found, not joined, or already saturated"),
+                                    false);
+                                return ok ? 1 : 0;
+                            }))))
                 .then(Commands.literal("event")
                     .then(Commands.argument("event_id",StringArgumentType.word())
                         .executes(ctx -> {
