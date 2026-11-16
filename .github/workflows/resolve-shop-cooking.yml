@@ -1,21 +1,18 @@
 name: Resolve Quest Shop and Cooking for Blockheads
 on:
-  push:
-    branches: ['feature/questshop-cooking-currency-economy']
-    paths:
-      - '.github/workflows/resolve-shop-cooking.yml'
-      - 'scripts/resolve_shop_cooking.py'
-      - 'kubejs/data/tmm/questshop/**'
-      - 'config/ftbquests/quests/chapters/**'
-      - 'manifest/quest_content.json'
-      - 'scripts/validate_quests.py'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for full server smoke/build'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   resolve-boot:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
