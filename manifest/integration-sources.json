@@ -292,13 +292,16 @@
     },
     {
       "name": "quest-live-registry-validator",
-      "branch": "fix/quest-registry-gate-and-qa-priorities-2026-11-15",
-      "source_commit": "492a187a29fc2476697effde7a2fa26461b48fef",
+      "branch": "test/full-integration",
       "paths": [
         "scripts/quest_registry_gate.py"
       ],
       "mode": "qa-validator-source",
-      "note": "Read-only loaded-registry quest item ID audit source. Requires actual server registry dump from authorized smoke; no synthetic registry pass claim."
+      "note": "Read-only loaded-registry quest item ID audit source. Requires actual server registry dump from authorized smoke; no synthetic registry pass claim.",
+      "merged_from": "fix/quest-registry-gate-and-qa-priorities-2026-11-15",
+      "integrated_into_baseline": true,
+      "merged_pr": 82,
+      "merged_commit": ""
     }
   ],
   "covered_by_baseline": {
