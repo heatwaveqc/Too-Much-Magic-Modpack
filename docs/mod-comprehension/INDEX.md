@@ -132,7 +132,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `malum` | Malum | magic | enabled flag | full | researching | [profile](mods/malum.md) |
 | `neovitae` | Neo Vitae | magic | enabled flag | full | researching | [profile](mods/neovitae.md) |
 | `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
-| `pastel` | Pastel | magic | enabled flag | full | queued | — |
+| `pastel` | Pastel | magic | enabled flag | full | researching | [profile](mods/pastel.md) |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | queued | — |
 | `psi` | Psi | magic | enabled flag | full | queued | — |
 | `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
