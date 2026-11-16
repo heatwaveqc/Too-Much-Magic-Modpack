@@ -20,6 +20,8 @@ on:
       - 'scripts/prism_qa_options.txt'
       - 'scripts/IMPORT-OLD-TMM-PREFERENCES.cmd'
       - 'scripts/smoke_server.sh'
+      - 'kubejs/server_scripts/dragon_seasoned_fish.js'
+      - 'scripts/verify_dragon_seasoned_fish.cjs'
       - 'manifest/integration-sources.json'
       - '.packwizignore'
   workflow_dispatch:
@@ -84,6 +86,7 @@ jobs:
           python3 scripts/verify_materials.py
           python3 scripts/verify_silver_equipment.py
           python3 scripts/verify_dragon_diets.py
+          node scripts/verify_dragon_seasoned_fish.cjs
           python3 scripts/verify_retirement.py
       - name: Verify every ProjectE recipe override and explicit EMC exception audit contract
         run: |
