@@ -13,6 +13,9 @@ import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.BiPredicate;
 import java.util.UUID;
 
 /**
@@ -22,6 +25,13 @@ import java.util.UUID;
 public final class ProgressionApi {
     private ProgressionApi() {}
     private static final Map<UUID,Map<String,Long>> cooldowns = new HashMap<>();
+    /** Registration-time join vetoes, including optional supernatural-species compatibility. */
+    private static final List<BiPredicate<ServerPlayer,String>> JOIN_VETOES = new CopyOnWriteArrayList<>();
+
+    /** Optional trusted adapter: return false to reject joining the given path. */
+    public static void registerJoinVeto(BiPredicate<ServerPlayer,String> policy) {
+        JOIN_VETOES.add(java.util.Objects.requireNonNull(policy));
+    }
 
     public static Track track(ServerPlayer player, String pathId) {
         return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
@@ -32,6 +42,8 @@ public final class ProgressionApi {
         if (path == null) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
+        for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
+            if (!veto.test(player,pathId)) return false;
         if (!path.exclusiveGroup().isBlank()) {
             for (Definition.Path other : PathRegistry.all().values()) {
                 if (!pathId.equals(other.id()) && path.exclusiveGroup().equals(other.exclusiveGroup())
@@ -40,24 +52,6 @@ public final class ProgressionApi {
         }
         player.setData(ProgressionAttachments.LEDGER.get(),
             ledger.with(pathId,ProgressionMath.join(path,ledger.get(pathId))));
-        return true;
-    }
-
-    /**
-     * Operator-only test grant, called by the command dispatcher after checking
-     * permission level 2. Bypasses activity rates, not enrollment or the
-     * normal rank and automatic-skill calculations. Does not award vanilla XP.
-     */
-    public static boolean grantAdminXp(ServerPlayer player, String pathId, long amount) {
-        if (amount <= 0) return false;
-        Definition.Path path = PathRegistry.get(pathId);
-        if (path == null) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track before = ledger.get(pathId);
-        if (!before.joined()) return false;
-        Track after = ProgressionMath.grantXp(path,before,amount);
-        if (after.xp() == before.xp()) return false; // saturated
-        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
         return true;
     }
 
@@ -79,6 +73,23 @@ public final class ProgressionApi {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
             ledger.with(pathId,ProgressionMath.refundAll(path,ledger.get(pathId))));
+        return true;
+    }
+
+    /**
+     * Trusted logical-server grant for reward sources with computed outcomes, such as
+     * quarry maximum-health XP and potion potency. Never expose over a client packet.
+     */
+    public static boolean awardServerXp(ServerPlayer player, String pathId, long xp) {
+        if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
+        Definition.Path path = PathRegistry.get(pathId);
+        if (path == null) return false;
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        Track before = ledger.get(pathId);
+        if (!before.joined()) return false;
+        Track after = ProgressionMath.grantXp(path,before,xp);
+        if (before.equals(after)) return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
         return true;
     }
 
@@ -115,10 +126,17 @@ public final class ProgressionApi {
 
     /** Standardized activity events: one authoritative signal, all joined paths. */
     public static void record(ServerPlayer player, Signal signal) {
+        recordFiltered(player,signal,path -> true);
+    }
+
+    /** Trusted server-side event provenance filter: reject rewards for a specific path. */
+    public static void recordFiltered(ServerPlayer player, Signal signal,
+                                      java.util.function.Predicate<Definition.Path> eligiblePath) {
         if (player.isCreative() || player.isSpectator()) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         for (Definition.Path path : PathRegistry.all().values()) {
+            if (!eligiblePath.test(path)) continue;
             Track state = next.get(path.id());
             if (!state.joined()) continue;
 

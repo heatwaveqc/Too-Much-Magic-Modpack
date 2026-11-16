@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "identifier": "tmm_progression:classic_monk_21_gate_inventory",
+  "historical_source": "RWTema Monk Mod 1.4, https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
+  "verified_source_files": "src/main/java/com/rwtema/monkmod/advancements/criteria/*",
+  "captured_on": "2026-11-15",
+  "status": "AUDITED_SOURCE_REQUIREMENTS_AND_EXPERIMENTAL_XP_TRIAL_DESIGN",
+  "original_hard_sequence": true,
+  "original_numbered_stages": 21,
+  "current_engine": "NeoForge 1.21.1 tmm_progression path JSON; no Vampirism and no Tyz dependencies",
+  "new_policy": {
+    "initiation": "First Sunset mandatory (200 server ticks); original stage0 log requirement inspiration only, not another compulsory gate.",
+    "advancement": "Cumulative cultivation XP rank thresholds. All classic powers autogrant by rank; no mandatory classic deed except explicit Ender Dragon gate for Momentum Gliding.",
+    "classic_deeds": "Optional one-time native milestone XP. Live only when trusted server event exists; all unsupported source checks explicitly pending adapter, not mocked by generic advancements.",
+    "anti_exploit": "Server-only event credit; post-break actual barehand events and direct true-fist kills. Placed block provenance, spell/TreeChop mass credit, distinctive mob interactions and full boss damage-contribution require more core work.",
+    "historical_hazards": "Do not force drowning, Blindness, uncontrolled fire or void-death tricks to advance in the XP-only test profile.",
+    "reward_wallet": "Native path XP/milestone points only; no vanilla XP or Tyz MXP.",
+    "xp_balance_status": "EXPERIMENTAL_FOR_DISPOSABLE_WORLD_TEST_NOT_RATIFIED"
+  },
+  "stages": [
+    {
+      "classic_stage": 0,
+      "original_icon": "meditate",
+      "original_requirement": "break_wood",
+      "original_parameters": {
+        "number": 1
+      },
+      "verified_original_behavior": "Break one wood block with bare main hand to enter the original progression; no sun meditation at classic stage 0.",
+      "original_rewards": [],
+      "xp_design": {
+        "role": "replacement_gate",
+        "milestone_id": "tmm_progression:first_sunset",
+        "bonus_xp": 0,
+        "enforced_as_rank_gate": false,
+        "status": "replaced_by_first_sunset_initiation",
+        "server_source_event": null
+      },
+      "notes": [
+        "New Monk joins via 200 continuous server-verified sunset ticks; the classic first log does NOT become a second mandatory join task."
+      ],
+      "original_code": "MonkRequirementBreakBlockBareHanded.java"
+    },
+    {
+      "classic_stage": 1,
+      "original_icon": "tree",
+      "original_requirement": "break_wood",
+      "original_parameters": {
+        "number": 10
+      },
+      "verified_original_behavior": "Break 10 wood blocks barehanded, only while waiting for the relevant classic level.",
+      "original_rewards": [
+        "mining tier 0 / speed 0 for axe, shovel and default",
+        "strength +1"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_ten_logs",
+        "bonus_xp": 35,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_barehand_event",
+        "server_source_event": "barehand_block_break #minecraft:logs"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementBreakBlockBareHanded.java"
+    },
+    {
+      "classic_stage": 2,
+      "original_icon": "sunrise",
+      "original_requirement": "mediate_sunrise",
+      "original_parameters": {
+        "ticks": 200
+      },
+      "verified_original_behavior": "Look at the actual sun direction very accurately near the horizon for 200 uninterrupted server ticks; source uses solar angle, allowing sunrise/sunset.",
+      "original_rewards": [
+        "hunger loss reduced around 50%",
+        "natural armor +1"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_sunrise",
+        "bonus_xp": 70,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_sky_look_adapter",
+        "server_source_event": "external tmm_progression:trial_sunrise_verified"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementSunriseSunset.java"
+    },
+    {
+      "classic_stage": 3,
+      "original_icon": "squid",
+      "original_requirement": "drown",
+      "original_parameters": {
+        "underwater_ticks": 280,
+        "air_below": 295,
+        "completion_random_chance_per_eligible_tick": 0.02
+      },
+      "verified_original_behavior": "Stay in water while air is below 295 for 280 ticks, then complete on ~1-in-50 subsequent eligible random tick; restores air upon successful level.",
+      "original_rewards": [
+        "partial water breathing",
+        "natural armor +2"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_deep_breath",
+        "bonus_xp": 70,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_water_breath_adapter",
+        "server_source_event": "external tmm_progression:trial_deep_breath_verified"
+      },
+      "notes": [
+        "Original RNG is not needed for optional XP challenge; use deterministic sustained underwater criterion instead."
+      ],
+      "original_code": "MonkRequirementOcean.java"
+    },
+    {
+      "classic_stage": 4,
+      "original_icon": "silverfish",
+      "original_requirement": "break_block",
+      "original_parameters": {
+        "block": "minecraft:stone",
+        "number": 5
+      },
+      "verified_original_behavior": "Break five exact Minecraft stone blocks with bare hand.",
+      "original_rewards": [
+        "mining level 1 / speed increase +2"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_five_stone",
+        "bonus_xp": 50,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_barehand_event",
+        "server_source_event": "barehand_block_break minecraft:stone"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementBreakBlockBareHanded.java"
+    },
+    {
+      "classic_stage": 5,
+      "original_icon": "love",
+      "original_requirement": "pet",
+      "original_parameters": {
+        "unique_animals": 20
+      },
+      "verified_original_behavior": "Empty-hand right-click 20 DISTINCT passive animals. Source writes the player's UUID to each animal so the same animal cannot count twice.",
+      "original_rewards": [
+        "animal calming/breeding power",
+        "natural armor +4"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_animal_friendship",
+        "bonus_xp": 80,
+        "enforced_as_rank_gate": false,
+        "status": "partial_repeatable_petting_not_distinct",
+        "server_source_event": "animal_petted *"
+      },
+      "notes": [
+        "Current event emits on successful Animal Friendship breeding and does not prove 20 unique animals; temporary bonus uses 20 interactions, not source-exact distinct-animal proof."
+      ],
+      "original_code": "MonkRequirementPet.java"
+    },
+    {
+      "classic_stage": 6,
+      "original_icon": "feather",
+      "original_requirement": "sprint",
+      "original_parameters": {
+        "distance_blocks": 200
+      },
+      "verified_original_behavior": "Travel 200 blocks while sprinting; source reads movement stats while player is sprinting and unarmored.",
+      "original_rewards": [
+        "swift movement speed +0.4",
+        "jump multiplier 1.2",
+        "strength +2"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_sprint_200",
+        "bonus_xp": 90,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_distance_adapter",
+        "server_source_event": "external tmm_progression:sprint_200_verified"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementWalk.java"
+    },
+    {
+      "classic_stage": 7,
+      "original_icon": "wolf",
+      "original_requirement": "kill_undead",
+      "original_parameters": {
+        "kills": 10
+      },
+      "verified_original_behavior": "Personally defeat ten undead while unarmed; source checks true player damage source and legal held gear.",
+      "original_rewards": [
+        "unarmed strength +4",
+        "natural armor +8"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_ten_unarmed_undead",
+        "bonus_xp": 120,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_direct_melee_event",
+        "server_source_event": "unarmed_kill #tmm_progression:undead"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementKill.java"
+    },
+    {
+      "classic_stage": 8,
+      "original_icon": "skeleton",
+      "original_requirement": "arrow_dodge",
+      "original_parameters": {
+        "dodges": 5
+      },
+      "verified_original_behavior": "Dodge five arrows fired by skeletons targeting the Monk. The original tracked trajectories and reset progress if one arrow hit.",
+      "original_rewards": [
+        "catch arrows",
+        "swift speed +0.8",
+        "Step Assist"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_arrow_dodges",
+        "bonus_xp": 100,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_trajectory_adapter",
+        "server_source_event": "external tmm_progression:five_skeleton_arrow_dodges"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementArrow.java"
+    },
+    {
+      "classic_stage": 9,
+      "original_icon": "iron_golem",
+      "original_requirement": "break_block",
+      "original_parameters": {
+        "block": "minecraft:iron_block",
+        "number": 4
+      },
+      "verified_original_behavior": "Break four full iron blocks barehanded.",
+      "original_rewards": [
+        "mining level 2 / speed increase +5"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_four_iron_blocks",
+        "bonus_xp": 100,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_barehand_event",
+        "server_source_event": "barehand_block_break minecraft:iron_block"
+      },
+      "notes": [
+        "Re-placing crafted blocks is possible; one-time bonus prevents repeatable XP but exact source generation must be reviewed."
+      ],
+      "original_code": "MonkRequirementBreakBlockBareHanded.java"
+    },
+    {
+      "classic_stage": 10,
+      "original_icon": "water",
+      "original_requirement": "meditate_water_moon",
+      "original_parameters": {
+        "ticks": 200
+      },
+      "verified_original_behavior": "While riding a BOAT, gaze toward the moon for 200 uninterrupted ticks at night.",
+      "original_rewards": [
+        "Water Walking"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_moon_boat",
+        "bonus_xp": 130,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_moon_boat_adapter",
+        "server_source_event": "external tmm_progression:moon_boat_verified"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementWaterMeditation.java"
+    },
+    {
+      "classic_stage": 11,
+      "original_icon": "enderman",
+      "original_requirement": "meditate_endermen",
+      "original_parameters": {
+        "ticks": 600,
+        "range": 20
+      },
+      "verified_original_behavior": "Spend ~600 server ticks near nonaggressive Endermen within 20 blocks; angered Endermen reset progress.",
+      "original_rewards": [
+        "Blink"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_calm_enderman",
+        "bonus_xp": 140,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_enderman_adapter",
+        "server_source_event": "external tmm_progression:calm_enderman_verified"
+      },
+      "notes": [
+        "Source can count multiple Endermen per tick; new version should count real duration, not number of nearby mobs."
+      ],
+      "original_code": "MonkRequirementMeditateEndermen.java"
+    },
+    {
+      "classic_stage": 12,
+      "original_icon": "blaze",
+      "original_requirement": "walk_fire",
+      "original_parameters": {
+        "distance_blocks": 10
+      },
+      "verified_original_behavior": "Walk 10 blocks while burning or fire-immune and in a flammable collision area; original extinguishes and briefly applies Fire Resistance on success.",
+      "original_rewards": [
+        "fire damage reduction to 0.5x",
+        "contextual Lava Protection"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_fire_walk",
+        "bonus_xp": 140,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_fire_walk_adapter",
+        "server_source_event": "external tmm_progression:fire_walk_verified"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementWalk.java"
+    },
+    {
+      "classic_stage": 13,
+      "original_icon": "ghast",
+      "original_requirement": "break_block",
+      "original_parameters": {
+        "block": "minecraft:obsidian",
+        "number": 1
+      },
+      "verified_original_behavior": "Break one obsidian block with bare hand (classic level gate only checked break, not successful ore/tool-tier loot).",
+      "original_rewards": [
+        "mining level 3 / speed increase +9",
+        "natural armor +14"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_obsidian_hand",
+        "bonus_xp": 175,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_barehand_event",
+        "server_source_event": "barehand_block_break minecraft:obsidian"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementBreakBlockBareHanded.java"
+    },
+    {
+      "classic_stage": 14,
+      "original_icon": "creeper",
+      "original_requirement": "kiss_creeper",
+      "original_parameters": {
+        "interactions": 1
+      },
+      "verified_original_behavior": "Empty-hand interact with a creeper to neutralize it by marking persistent entity state and interrupting swell/attack AI.",
+      "original_rewards": [
+        "Creeper Kiss ability",
+        "explosion damage multiplier 0.5x"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_creeper_kiss",
+        "bonus_xp": 175,
+        "enforced_as_rank_gate": false,
+        "status": "live_trusted_server_creeper_interaction",
+        "server_source_event": "external tmm_progression:creeper_kissed"
+      },
+      "notes": [
+        "New native creeper pacification unlocks at cultivation rank 14; optional bonus is earned after unlock, not a circular prerequisite.",
+        "One-time milestone is per player: another Monk may earn their own deed from interacting with an already pacified creeper; no repeated reward for a completed milestone."
+      ],
+      "original_code": "MonkRequirementKissCreeper.java"
+    },
+    {
+      "classic_stage": 15,
+      "original_icon": "evil_eye",
+      "original_requirement": "wither_stare",
+      "original_parameters": {
+        "ticks": 200,
+        "range": 20,
+        "structure": "Nether Fortress"
+      },
+      "verified_original_behavior": "Stare at a Wither Skeleton that is targeting you while inside a Nether Fortress for 200 ticks; progress decays when interrupted.",
+      "original_rewards": [
+        "Withering Stare"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_wither_skeleton_gaze",
+        "bonus_xp": 190,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_fortress_gaze_adapter",
+        "server_source_event": "external tmm_progression:wither_skeleton_gaze_verified"
+      },
+      "notes": [],
+      "original_code": "MonkRequirementStare.java"
+    },
+    {
+      "classic_stage": 16,
+      "original_icon": "ocelot",
+      "original_requirement": "fall",
+      "original_parameters": {
+        "blocks": 40,
+        "landing": "minecraft:hay_block"
+      },
+      "verified_original_behavior": "Fall at least 40 blocks and LAND ON HAY BALE; source zeroes fall multiplier if target met.",
+      "original_rewards": [
+        "Feather Fall, 0.2x fall damage",
+        "natural armor +18"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_hay_bale_fall",
+        "bonus_xp": 210,
+        "enforced_as_rank_gate": false,
+        "status": "pending_server_safe_landing_adapter",
+        "server_source_event": "external tmm_progression:hay_bale_fall_verified"
+      },
+      "notes": [
+        "Do not recreate a fatal fall as mandatory rank gate."
+      ],
+      "original_code": "MonkRequirementFall.java"
+    },
+    {
+      "classic_stage": 17,
+      "original_icon": "bed",
+      "original_requirement": "bedrock_sleep",
+      "original_parameters": {
+        "bedrock_blocks_adjacent": 2
+      },
+      "verified_original_behavior": "Right-click bedrock with another adjacent bedrock block and empty space above, sleep on the improvised bed, then wake successfully.",
+      "original_rewards": [
+        "mining level 5 / speed increase +12",
+        "strength +8",
+        "temporary Blindness ordeal starts"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_bedrock_sleep",
+        "bonus_xp": 230,
+        "enforced_as_rank_gate": false,
+        "status": "live_repeatable_bedrock_rest_after_rank17",
+        "server_source_event": "external tmm_progression:bedrock_rest_completed after full real sleep"
+      },
+      "notes": [
+        "New Minecraft versions and dimensions may not permit this old custom sleep mechanic; use a safe meditation equivalent.",
+        "Rank-17 native Bedrock Rest grants repeatable real night/thunder sleep on two exposed horizontally adjacent bedrock blocks; no respawn-set and no sleeping on bare bedrock by non-Monks.",
+        "First sufficiently long completed Bedrock Rest awards the original one-time +230 cultivation XP milestone; repeating it grants no extra milestone XP."
+      ],
+      "original_code": "MonkRequirementBedrockSleep.java"
+    },
+    {
+      "classic_stage": 18,
+      "original_icon": "blind_eye",
+      "original_requirement": "kill_blind",
+      "original_parameters": {
+        "kills": 5
+      },
+      "verified_original_behavior": "Defeat five hostile mobs personally while the imposed Blindness effect remains active and your attack gear satisfies unarmed rules.",
+      "original_rewards": [
+        "strength +16",
+        "remove imposed Blindness"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:blind_ordeal_victory",
+        "bonus_xp": 270,
+        "enforced_as_rank_gate": false,
+        "status": "live_server_count_five_ordeal_event",
+        "server_source_event": "external tmm_progression:blind_hostile_kill count5"
+      },
+      "notes": [
+        "Native ordeal is optional and re-startable; server now requires five kills instead of auto-completing on the first kill or rank18.",
+        "The standalone event requires actual direct fist melee and an empty main hand; spells/projectiles cannot complete the Blindness ordeal."
+      ],
+      "original_code": "MonkRequirementKill.java"
+    },
+    {
+      "classic_stage": 19,
+      "original_icon": "wither",
+      "original_requirement": "kill_entity_type",
+      "original_parameters": {
+        "entity": "minecraft:wither",
+        "kills": 1,
+        "damage_fraction_min": 0.25
+      },
+      "verified_original_behavior": "Help defeat Wither after personally contributing >25% of its maximum health as NON-projectile damage, staying unarmored while fighting.",
+      "original_rewards": [
+        "Purification of harmful potion effects",
+        "natural armor +20"
+      ],
+      "xp_design": {
+        "role": "optional_one_time_deed",
+        "milestone_id": "tmm_progression:trial_wither_victory",
+        "bonus_xp": 550,
+        "enforced_as_rank_gate": false,
+        "status": "partial_kill_credit_missing_contribution_validation",
+        "server_source_event": "kill minecraft:wither"
+      },
+      "notes": [
+        "Live one-time bonus currently records any directly credited Wither death. 25%-damage, nonprojectile, unarmored-throughout tracking requires a Java boss-contribution ledger."
+      ],
+      "original_code": "MonkRequirementEnemyDefeat.java"
+    },
+    {
+      "classic_stage": 20,
+      "original_icon": "ascend",
+      "original_requirement": "void_fall",
+      "original_parameters": {
+        "void_death_avoids": 15,
+        "depth_y_below": -60
+      },
+      "verified_original_behavior": "Original intercepts 15 OUT_OF_WORLD lethal events deep below Y=-60, cancels death, heals and eventually returns player to spawn to grant creative-like flight.",
+      "original_rewards": [
+        "Creative Flight"
+      ],
+      "xp_design": {
+        "role": "replacement_gate",
+        "milestone_id": "tmm_progression:dragon_defeated",
+        "bonus_xp": 500,
+        "enforced_as_rank_gate": false,
+        "status": "replaced_by_verified_dragon_momentum_glide",
+        "server_source_event": "advancement minecraft:end/kill_dragon"
+      },
+      "notes": [
+        "Intentional owner exception: do not require lethal void abuse or grant innate Creative Flight.",
+        "Current advancement credit is not necessarily the player's direct damage/kill credit; server verification needs QA."
+      ],
+      "original_code": "MonkRequirementDescentAscent.java"
+    }
+  ]
+}

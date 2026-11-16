@@ -27,29 +27,9 @@ public final class Selectors {
     }
     public static boolean entity(String selector, LivingEntity target) {
         if (selector.isEmpty() || selector.equals("*")) return true;
-        // Special JAWR player predicate: NEVER tag all minecraft:players as wolves.
-        if (selector.equals("#tmm_progression:lycanthropes")
-                && target instanceof net.minecraft.world.entity.player.Player) {
-            return jawrLycanthrope(target);
-        }
         return selector.startsWith("#") ?
             target.getType().is(TagKey.create(Registries.ENTITY_TYPE,location(selector))) :
             BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).equals(location(selector));
-    }
-    /** JAWR-only lycanthrope physiology, reflective so no hard JAWR compile dependency. */
-    private static boolean jawrLycanthrope(LivingEntity target) {
-        if (!net.neoforged.fml.ModList.get().isLoaded("witchery")) return false;
-        try {
-            Class<?> attachment = Class.forName(
-                "dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment");
-            Object data = attachment.getMethod("getData",
-                net.minecraft.world.entity.player.Player.class).invoke(null, target);
-            return data != null && Boolean.TRUE.equals(
-                data.getClass().getMethod("isWerewolf").invoke(data));
-        } catch (ReflectiveOperationException | LinkageError ex) {
-            // Fail closed: never grant bonuses to every player on an API mismatch.
-            return false;
-        }
     }
     public static boolean item(String selector, ItemStack stack) {
         if (selector.isEmpty() || selector.equals("*")) return true;

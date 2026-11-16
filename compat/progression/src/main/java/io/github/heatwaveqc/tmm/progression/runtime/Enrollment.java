@@ -2,6 +2,11 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.component.DataComponents;
+import io.github.heatwaveqc.tmm.progression.data.PotionEnrollmentTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
@@ -18,6 +23,47 @@ public final class Enrollment {
         if (!"manual".equals(PathRegistry.enrollment(path))
                 || player.isCreative() || player.isSpectator()) return false;
         return ProgressionApi.join(player,path);
+    }
+
+    /**
+     * Trusted server callback after a drink has fully finished. The supplied ItemStack is
+     * the pre-consumption item from LivingEntityUseItemEvent.Finish, not the empty bottle.
+     * Only the configured paths are eligible; custom/splash/lingering effects do not count.
+     */
+    public static void potionFinished(ServerPlayer player, ItemStack consumed) {
+        if (player.isCreative() || player.isSpectator() || consumed.isEmpty()) return;
+        var contents = consumed.get(DataComponents.POTION_CONTENTS);
+        if (contents == null || !contents.customEffects().isEmpty()) return;
+        String itemId = BuiltInRegistries.ITEM.getKey(consumed.getItem()).toString();
+        String potionId = contents.potion()
+            .flatMap(holder -> holder.unwrapKey())
+            .map(key -> key.location().toString()).orElse("");
+        for (Map.Entry<String,PotionEnrollmentTrigger> entry : PathRegistry.potionTriggers().entrySet()) {
+            String path = entry.getKey();
+            if (ProgressionApi.track(player,path).joined()) continue;
+            PotionEnrollmentTrigger trigger = entry.getValue();
+            if (!trigger.item().equals(itemId) || !trigger.potions().contains(potionId)) continue;
+            var requiredEffect = BuiltInRegistries.MOB_EFFECT.getHolder(
+                ResourceLocation.parse(trigger.requiredEffect())).orElse(null);
+            if (requiredEffect == null) continue;
+            var advancement = player.server.getAdvancements().get(
+                ResourceLocation.parse(trigger.requiredAdvancement()));
+            boolean earned = advancement != null
+                && player.getAdvancements().getOrStartProgress(advancement).isDone();
+            if (!trigger.matches(itemId,potionId,player.hasEffect(requiredEffect),earned)) continue;
+            // This method is the single authority: mutual exclusion and external join vetoes
+            // belong in ProgressionApi.join, never merely in this consumable event handler.
+            if (!ProgressionApi.join(player,path)) continue;
+            for (String effectId : trigger.clearEffects()) {
+                var effect = BuiltInRegistries.MOB_EFFECT.getHolder(
+                    ResourceLocation.parse(effectId)).orElse(null);
+                if (effect != null) player.removeEffect(effect);
+            }
+            ProgressionApi.recordExternal(player,trigger.completionEvent());
+            player.displayClientMessage(Component.literal("Trial complete: "
+                + path + " unlocked"),false);
+            break; // exactly one enrollment per completed drink
+        }
     }
 
     public static void tick(ServerPlayer player) {

@@ -32,6 +32,8 @@ import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
+import net.neoforged.neoforge.common.util.TriState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import java.util.ArrayList;
@@ -61,9 +63,7 @@ public final class ClassAbilities {
     public static boolean toggle(ServerPlayer p, String what) {
         if ("armor".equals(what) && unlocked(p,"armor_lock")) {
             String next = ProgressionApi.mode(p,ARMOR_MODE,"on").equals("on") ? "off" : "on";
-            if (!ProgressionApi.setMode(p,ARMOR_MODE,next)) return false;
-            if (next.equals("on")) enforceArmorLock(p,false);
-            return true;
+            return ProgressionApi.setMode(p,ARMOR_MODE,next);
         }
         if ("treasure".equals(what) && unlocked(p,"treasure_hand")) {
             String next = ProgressionApi.mode(p,TREASURE_MODE,"fortune").equals("fortune") ? "silk" : "fortune";
@@ -90,37 +90,27 @@ public final class ClassAbilities {
         };
     }
 
-    /**
-     * Armor Lock acts on actually equipped vanilla armor. Removable pieces are
-     * tossed safely into the world, so a full inventory never traps armor.
-     * Binding armor remains worn and takes one ordinary durability wear attempt
-     * per second while the lock is on.
-     *
-     * The lock is not an item-placement ban: it corrects equipment state.
-     */
-    public static void enforceArmorLock(ServerPlayer p, boolean applyWear) {
-        if (!unlocked(p,"armor_lock") || !ProgressionApi.mode(p,ARMOR_MODE,"on").equals("on"))
-            return;
-        for (EquipmentSlot slot : List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,
-                EquipmentSlot.LEGS,EquipmentSlot.FEET)) {
-            ItemStack worn = p.getItemBySlot(slot);
-            if (worn.isEmpty()) continue;
-            boolean bound = EnchantmentHelper.has(worn,EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE);
-            if (bound) {
-                // Bound armor stays equipped. Life Mending and Unbreaking still apply normally.
-                if (applyWear && worn.isDamageableItem() && p.tickCount % 20 == 0)
-                    worn.hurtAndBreak(1,p,slot);
-                continue;
-            }
-            // Remove first so a canceled toss can be rolled back with no duplication.
-            p.setItemSlot(slot,ItemStack.EMPTY);
-            var tossed = p.drop(worn,false);
-            if (tossed == null) {
-                p.setItemSlot(slot,worn);
-                if (p.tickCount % 100 == 0)
-                    p.displayClientMessage(Component.literal("Armor Lock: could not safely drop armor"),true);
-            }
+    /** No item deletion, including full inventories or creative/admin inserted equipment. */
+    private static int emptyInventorySlot(ServerPlayer p) {
+        for (int i = 1; i < 36; i++)
+            if (p.getInventory().getItem(i).isEmpty()) return i;
+        return -1;
+    }
+    /** Ground pickups must never use reserved index 0 as the only available slot. */
+    public static void pickup(ServerPlayer p, ItemEntityPickupEvent.Pre event) {
+        if (!unlocked(p,"reserved_fist")) return;
+        ItemStack item = event.getItemEntity().getItem();
+        if (item.isEmpty()) return;
+        int capacity = 0;
+        for (int i = 1; i < 36; i++) {
+            ItemStack slot = p.getInventory().getItem(i);
+            if (slot.isEmpty()) capacity += item.getMaxStackSize();
+            else if (ItemStack.isSameItemSameComponents(slot,item))
+                capacity += Math.max(0,slot.getMaxStackSize()-slot.getCount());
+            if (capacity >= item.getCount()) return;
         }
+        // Leave the original item entity untouched on the ground.
+        event.setCanPickup(TriState.FALSE);
     }
 
     public static void tick(ServerPlayer p) {
@@ -130,7 +120,40 @@ public final class ClassAbilities {
             long now = p.serverLevel().getGameTime();
             RETALIATION.entrySet().removeIf(entry -> entry.getValue().until() < now);
         }
-        enforceArmorLock(p,true);
+        if (unlocked(p,"reserved_fist") && !p.getInventory().getItem(0).isEmpty()) {
+            int free = emptyInventorySlot(p);
+            if (free >= 0) {
+                ItemStack old = p.getInventory().getItem(0);
+                p.getInventory().setItem(0,ItemStack.EMPTY);
+                p.getInventory().setItem(free,old);
+                p.getInventory().setChanged();
+            } else if (p.tickCount % 100 == 0) {
+                p.displayClientMessage(Component.literal("Reserved fist: clear an inventory slot to move the item safely"),true);
+            }
+        }
+        if (unlocked(p,"armor_lock") && ProgressionApi.mode(p,ARMOR_MODE,"on").equals("on")) {
+            for (EquipmentSlot slot : List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,
+                    EquipmentSlot.LEGS,EquipmentSlot.FEET)) {
+                ItemStack worn = p.getItemBySlot(slot);
+                if (worn.isEmpty()) continue;
+                boolean bound = EnchantmentHelper.has(worn,EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE);
+                if (bound) {
+                    // Must remain equipped. Ordinary wear triggers Unbreaking/break handlers,
+                    // and any Life Mending repair still runs under its own mechanics.
+                    if (worn.isDamageableItem() && p.tickCount % 20 == 0)
+                        worn.hurtAndBreak(1,p,slot);
+                    continue;
+                }
+                int free = emptyInventorySlot(p);
+                if (free >= 0) {
+                    p.setItemSlot(slot,ItemStack.EMPTY);
+                    p.getInventory().setItem(free,worn);
+                    p.getInventory().setChanged();
+                } else if (p.tickCount % 100 == 0) {
+                    p.displayClientMessage(Component.literal("Armor Lock: inventory full; armor cannot be moved safely"),true);
+                }
+            }
+        }
 
         exhaustion(p);
         stare(p);

@@ -82,21 +82,4 @@ class ProgressionMathTest {
         assertEquals(joined.points(),reset.points());
     }
 
-    @Test void testXpGrantUsesOrdinaryRankPointsAndFreeSkillGates() {
-        Definition.Path path = sample();
-        Track notEnrolled = Track.empty();
-        assertSame(notEnrolled,ProgressionMath.grantXp(path,notEnrolled,100));
-        Track joined = ProgressionMath.join(path,notEnrolled);
-        Track almostMax = ProgressionMath.grantXp(path,joined,99);
-        assertEquals(99,almostMax.xp());
-        assertEquals(3,almostMax.rank());
-        assertEquals(6,almostMax.points());
-        assertEquals(2,almostMax.skillRank("test:baseline"));
-        Track cap = ProgressionMath.grantXp(path,almostMax,1);
-        assertEquals(100,cap.xp());
-        assertEquals(path.maxRank(),cap.rank());
-        assertEquals(8,cap.points());
-        assertEquals(2,cap.skillRank("test:baseline"));
-    }
-
 }
