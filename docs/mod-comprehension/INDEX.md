@@ -151,7 +151,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | researching | [profile](mods/gaze-malum.md) |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
 | `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | researching | [profile](mods/psi-tweaks.md) |
-| `feywild` | Feywild | magic_adventure | enabled flag | full | queued | — |
+| `feywild` | Feywild | magic_adventure | enabled flag | full | researching | [profile](mods/feywild.md) |
 | `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | researching | [profile](mods/embers-re-ignited.md) |
 | `projecte` | ProjectE | magic_progression | enabled flag | full | researching | [profile](mods/projecte.md) |
 | `reliquary-reincarnations` | Reliquary Reincarnations | magic_utility | enabled flag | full | queued | — |
@@ -251,3 +251,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — Project Expansion 1.0.6 profile added from the pack pin and immutable release source. Mapped sixteen matter tiers, Power Flower generation/formula and owner behavior, Stars, Alchemical Books, portable transmutation and Matter Upgrader. The Upgrader can promote compatible placed machines without crafting, subject to target-item knowledge and EMC; TMM's staged Red MK3 Shard recipe is therefore not a universal-use lock. Full recipes, guide/tutorial path, effective config, exact JAR comparison and client testing remain open. No quest/runtime edits; see [profile](mods/project-expansion.md).
 - 2026-11-16 — Eidolon: Repraised 0.5.0.8 profile added from its CurseForge pin and version-aligned 1.21.1 source. Mapped Codex/sign barter, both independently progressing patron ladders, altar inputs, sign chants, Crucible/Worktable/Brazier and the limited WIP research registrations. Recorded the source cooldown default/minimum conflict and the previous generated config's effective 21,000 tick value; Soul Enchanter defaults are unlimited. Exact JAR comparison and client/gameplay review remain open. No quest/runtime edits; see [profile](mods/eidolon-repraised.md).
 - 2026-11-15 — Ars 'n Spells exact 3.3.5 pin/source reviewed; corrected its source line to the NeoForge 1.21.1 commit, split its two inscription paths, and mapped its mana/config/ritual contracts. TMM runtime and client behavior remain unverified; current quest chapter has no addon lessons.
+
+- 2026-11-16 — Feywild 1.21.1-5.6.4 profile added from the pack pin, official release data and a matching-version source snapshot. The public getting-started wiki is for 5.0, so the profile marks the 5.6.4 walkthrough and several guide/encounter branches as incomplete. No TMM quests or runtime files changed.
