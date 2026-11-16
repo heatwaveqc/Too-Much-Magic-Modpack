@@ -158,3 +158,8 @@ Date surveyed: 2026-11-13. Source details for individual entries are in `manifes
 ## Goety Dark Altar interruption costs — source finding (2026-11-16)
 
 The exact version-aligned Goety 3.2.2 source (`7fdffc0b4f07aaa79d333ac1791444506b7d037f`) shows that Dark Altar rituals debit the recipe's full Soul Energy cost once per 20 game ticks and advance ritual time only after payment. Enchantment rituals also remove one player XP level per 10 ticks. Pedestal ingredients are consumed progressively during the ritual; returned crafting remainders are emitted when consumed. The default interrupt path drops the activation item back but does not restore already-spent souls, XP, consumed pedestal inputs, or sacrificed entities. Loss of altar power or structure/target conditions can interrupt an in-progress recipe after earlier costs have accrued. This is a source-derived balance and walkthrough concern, not a demonstrated bug; exact boundary behavior needs a disposable-world check. No pack or quest change was made.
+
+
+## Goety Cataclysm parent ritual contract (2026-11-16)
+
+The Goety Cataclysm 1.21.1 addon recipe inventory declares `goety:ritual` for its focus, summon, and conversion recipes. Current Goety 3.2.2 source shows that the base altar engine progressively consumes pedestal inputs and charges Soul Energy once per 20 ticks; base interruption returns the activation item but not already-paid souls or consumed ingredients. This provides an inherited-engine risk for addon recipes, not proof that every addon ritual uses the unmodified implementation. The addon has no accessible version-aligned source in the inspected public repository, so class overrides, Fabricator behavior, exact spawn/ownership behavior and client acceptance remain unresolved.
