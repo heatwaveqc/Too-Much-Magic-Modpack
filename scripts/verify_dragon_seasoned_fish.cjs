@@ -44,6 +44,8 @@ assert.deepEqual(exercise(true), [{
   original: 'minecraft:salmon',
   replacement: { kind: 'item-tag', tag: '#c:foods/raw_fish' }
 }], 'Only swap the raw salmon ingredient of the existing Seasoned Fish crafting recipe');
-assert.doesNotMatch(script, /event\\.(?:remove|shapeless|shaped)\\s*\\(/, 'Keep the original recipe, ink sac, kelp, result and ID');
+for (const forbidden of ['event.remove(', 'event.shapeless(', 'event.shaped(']) {
+  assert.equal(script.includes(forbidden), false, 'Keep the original recipe, ink sac, kelp, result and ID');
+}
 console.log('PASS: Seasoned Fish KubeJS source swaps salmon for #c:foods/raw_fish only');
 console.log('NOT TESTED: actual 2.0.74 recipe matching, expanded tags, JEI, crafting in game');
