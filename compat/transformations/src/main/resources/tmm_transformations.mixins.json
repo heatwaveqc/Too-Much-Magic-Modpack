@@ -10,5 +10,12 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "plugin": "io.github.heatwaveqc.tmm.transformations.mixin.DracolichMixinPlugin",
+  "client": [
+    "DracolichModelLoadMixin",
+    "DracolichDragonModelMixin",
+    "DracolichGlowLayerMixin",
+    "DracolichArmorLayerMixin"
+  ]
 }

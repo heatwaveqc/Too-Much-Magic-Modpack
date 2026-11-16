@@ -1,0 +1,4 @@
+.gradle/
+build/
+# Root's game-instance "client/" exclusion must not hide Java source packages.
+!src/main/java/io/github/heatwaveqc/tmm/transformations/client/

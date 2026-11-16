@@ -3,6 +3,8 @@ package io.github.heatwaveqc.tmm.transformations;
 import io.github.heatwaveqc.tmm.transformations.adapters.*;
 import io.github.heatwaveqc.tmm.transformations.command.TransformationCommands;
 import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichDragonFirstEvents;
+import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichAppearanceEvents;
+import io.github.heatwaveqc.tmm.transformations.network.DracolichVisualNetworking;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionConfig;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.mob.MobAllianceEvents;
@@ -25,6 +27,7 @@ public final class TransformationsMod {
         container.registerConfig(ModConfig.Type.SERVER, ArchlichResurrectionConfig.SPEC,
                 "tmm_archlich-server.toml");
         TransformationAttachments.ATTACHMENTS.register(modBus);
+        modBus.addListener(DracolichVisualNetworking::register);
         ProbeRegistry.register(new JAWRVampireProbe());
         ProbeRegistry.register(new JAWRLycanthropeProbe());
         ProbeRegistry.register(new DragonSurvivalProbe());
@@ -34,6 +37,7 @@ public final class TransformationsMod {
         MobAllianceEvents.register();
         ArchlichResurrectionEvents.register();
         DracolichDragonFirstEvents.register();
-        LOGGER.info("JAWR-only transformation bridge: five native state probes, mob alliances, Archlich and Dracolich event arbitration registered; no TeamLapen physiology");
+        DracolichAppearanceEvents.register();
+        LOGGER.info("JAWR-only bridge: five native probes, Archlich/Dracolich arbitration and conditional Cave/Center skeletal visuals registered; no TeamLapen physiology");
     }
 }
