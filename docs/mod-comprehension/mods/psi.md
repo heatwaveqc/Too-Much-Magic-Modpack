@@ -139,8 +139,8 @@ The default groups use the execute-main unlock behavior. Executing a group's mai
 
 | Internal combination | Full chain | Benefit | Limitation / exploit potential | Evidence |
 | --- | --- | --- | --- | --- |
-| Tutorial-driven spell development | Follow guide concept → construct spell → validate → unlock/use further pieces | Learning is integrated with progressive spell construction rather than a detached manual | Exact unlock events and level rewards not verified | Official project overview; source tag metadata |
-| User spell library | Create/copy/share spell definitions → test in a controlled environment → reuse verified spell | Reduces repeated authoring and supports collaborative spell knowledge | Imported spells may be version- or addon-dependent; exact safeguards unverified | Modrinth project description; exact in-game tools need review |
+| Tutorial-driven spell development | Read a tutorial → construct and compile its example → cast through CAD | The guide supports learning by doing; default piece groups do not enforce a level tree | Tutorial milestones are not automatically granted as advancements by Psi | Exact-tag guide and docs/spell-pieces.md |
+| User spell library | Share/copy support is described by the official project page | May reduce repeated authoring and support community examples | Exact 1.21.1 import/export item/UI and validation path remain unreviewed | Current project page; profile remains researching |
 
 ## Low-hanging setups useful in ordinary survival
 
@@ -172,27 +172,27 @@ The source now supports a verified starter route and two safe tutorial setups; t
 | Hook or customization surface | Namespace / exact file, API or serializer | Capabilities / constraints | Current TMM override? | Evidence |
 | --- | --- | --- | --- | --- |
 | Mod API | Psi API includes PieceGroupAdvancementComplete and PreSpellCastEvent; source event/data classes inspected | Events expose group completion and allow a pre-cast listener to alter/cancel casts; no listener behavior presumed | No TMM listener identified in this profile pass | Exact-tag source; pack script/event search remains open |
-| Config | No exact 1.21.1 config keys inspected | Do not infer configurable costs, unlocks, or piece behavior | Unknown | Needs source/JAR review |
-| Spell sharing | Exact transfer workflow not inspected in this pass | Keep as a candidate until item/UI/import/version behavior is source-mapped | None identified | Source and client follow-up |
+| Config | Config defaults have not been inventoried from the tag/JAR | Do not infer configurable costs, unlocks, or piece behavior | Unknown | JAR/config audit remains open |
+| Spell sharing | Official project page describes sharing/copying; exact source handler and UI were not reviewed | Keep as a candidate until import/export, version mismatch and missing-addon behavior are source-mapped | None identified | Source and client follow-up |
 | Recipes and tags | Exact-tag starter recipes inspected; broader recipe registry not inventoried | No general substitution/tag-compatibility claim | No Psi override identified in inspected pack paths | Full recipe audit pending |
 
 ## Compatibility leads
 
 | Other mod | Candidate link and why | Native / pack-built / would require bridge | Status / source |
 | --- | --- | --- | --- |
-| Psi: Tweaks and Additions | Enabled addon may supply additional spell pieces or changes; exact content is unreviewed | Native addon relationship; individual features unknown | Candidate. Maintain separate addon profile. |
+| Psi: Tweaks and Additions | Installed addon adds separate types, spell pieces and research systems; see the addon profile | Treat addon content as a separate branch from base Psi | Separate profile remains researching |
 | Ars Nouveau, Iron's Spells and other spell systems | Could offer distinct or complementary spell capabilities; no shared resource, registry or bridge is established | Unknown; likely needs deliberate bridge for direct interchange | Hypothesis only; inspect both sides before proposing an interaction |
-| FTB Quests | Spell/tutorial milestones might expose advancement or operation detectors | Unknown; item possession is not proof of successful casting | Needs advancement/event/API inspection |
+| FTB Quests | Base Psi posts a piece-group completion event; no TMM listener or FTB detector verified | A custom event listener would need implementation/review; item possession is not proof of a successful cast | Candidate only; quests untouched |
 
 ## Quest and teaching opportunities (research, not actual quests)
 
 | Stage and teaching goal | Actionable in-game instructions (prerequisites → steps → result) | Named guidebook section or JEI recipe | Intended behavior vs truthful FTB detector / fallback | Useful XP + fixed reward direction | Coverage and gating risk |
 | --- | --- | --- | --- | --- | --- |
-| First guide access | Controls → locate Psi master keybind → open Encyclopaedia → identify the first tutorial | Encyclopaedia; exact page unknown | Reading/access task not known to be detectable; use first verified tutorial advancement or manual fallback | Small themed materials only after exact safe items are known | Exact access and trigger need client/source verification |
-| First spell interface | Craft/obtain and open exact first interface; follow its recipe | JEI recipe category unknown | Item task is only an interface proxy; operation should be tested separately | Programming materials after costs are confirmed | Mandatory path currently unknown |
-| Author and cast | Assemble a minimal verified spell, compile, store, select and cast; inspect visible success and cost | Exact tutorial title unknown | Require actual cast event if exposed; otherwise truthful item proxy plus manual evidence | XP + low-value crafting support | Do not reward spell bullets/items as if they prove a successful effect |
-| Unlock progression | Complete each tutorial's explicit action and verify the next unlocked piece | Exact level/tutorial names unknown | Source-confirmed advancement only; manual fallback for UI-only progress | Progressive fixed rewards that do not bypass recipe gates | Full chain required before quest authoring |
-| Advanced branches and sharing | Teach component upgrades, casting forms and safe import/export after exact inventory | Exact guide pages unknown | Test operation and separately test detector | Branch-appropriate reward direction pending item audit | Optional vs required branch not yet known |
+| First guide access | Controls → Psi Master Keybind → Encyclopaedia Psionica → Basics → Introduction | Patchouli book in source | No read-page detector confirmed; do not substitute a piece event for reading | No reward implied | Source page path mapped; client access untested |
+| First spell interface | Craft CAD Assembler and Iron CAD Assembly; insert assembly to create basic CAD | Source-mapped recipes and Basics → CAD Assembler | Crafting tasks prove recipe completion, not successful CAD operation | Material reward only if pack design later calls for it | Client machine interaction untested |
+| Author and cast | Follow Tutorials 1–2: compile Debug spell, transfer to bullet, load/select, cast and inspect output | Legacy Entries → Tutorials 1–2 | Psi has a cast event in source; FTB event bridging/listener not checked | No quest reward authored | Client/server detector behavior unverified |
+| Unlock progression | Teach Tutorials 1–6 as guide chapters; treat the 29 default groups as categories/events, not locked tiers | Legacy Entries → Tutorials 1–6 | No default advancement tree is enforced by base Psi | Rewards would be separate pack design | Tutorial-to-event mapping not tested |
+| Advanced branches and sharing | Map CAD component stats, bullet forms, equipment, and import/export before teaching | Components and Items guide categories | Operation and any detector must be verified separately | No reward authored | Full source/client audit remains |
 
 ## Existing chapter / pilot reconciliation
 
@@ -202,11 +202,11 @@ The source now supports a verified starter route and two safe tutorial setups; t
 
 ## Conflicts, limitations and version drift
 
-- The pinned artifact is 1.21.1-110. The upstream release tag `release-1.21.1-110` declares mod version 110 in Gradle metadata, but the exact tag commit SHA was not retrieved and the artifact was not hash-inspected. [pin] [source: release tag metadata]
+- The pinned artifact is 1.21.1-110. The official `release-1.21.1-110` tag declares Minecraft 1.21.1, NeoForge 21.1.207, and mod version 110. The tag's contents were queried directly, but its peeled commit SHA and equivalence to the packwiz JAR hash were not established. [pin] [source: release tag metadata]
 - Source Gradle metadata says Patchouli 1.21.1-92; the pack pins Patchouli 1.21.1-93. The upstream README and Modrinth page say Patchouli is required. This is a minor dependency-version skew, not a verified incompatibility. [source: release tag README and Gradle metadata] [pin]
 - The upstream source metadata advertises NeoForge 21.1.207 or newer; the pack target is NeoForge 21.1.265. This is within the declared range, but compatibility was not tested. [source: release tag metadata] [pin]
 - The official changelog's detailed public entries are mostly old Minecraft-version series. Those entries are not used as proof of 1.21.1 recipes or mechanics.
-- The Codex page retrieval returned a server error. This is an information-access gap, not evidence that the in-game guide is missing.
+- The exact-tag Patchouli assets and English localization provide the in-game book structure and tutorial names. The public web Codex retrieval failed; this does not prevent exact-tag source review.
 - Psi is licensed under the Psi License; licensing/distribution compatibility should be reviewed before copying or redistributing guide content. TMM is only linking and summarizing here.
 
 ## Evidence ledger
@@ -215,18 +215,18 @@ The source now supports a verified starter route and two safe tutorial setups; t
 | --- | --- | --- | --- |
 | Pack pin | `mods/psi.pw.toml` and `manifest/mods.json` in `test/full-integration` | [pin] version ID `j9TFdTKC`, SHA512 recorded above | Exact artifact identity, not artifact inspection |
 | Release metadata | [Upstream `gradle.properties`](https://github.com/VazkiiMods/Psi/blob/release-1.21.1-110/gradle.properties) | [source: tag `release-1.21.1-110`] | Declares MC 1.21.1, NeoForge baseline and mod version 110; tag SHA/JAR equivalence not established |
-| Project gameplay overview | [Official Psi site](https://psi.vazkii.net/) | [docs: current official overview] | Confirms spell/action sequence, math/vector emphasis, tutorial/leveling concept; not complete recipe/progression guide |
-| In-game guide access | [Official Codex page](https://psi.vazkii.net/codex.php) | [docs: current official site] | Search result states web Codex mirrors in-game Encyclopaedia opened by master keybind; page could not be fetched to confirm exact text |
+| Project gameplay overview | [Official Psi site](https://psi.vazkii.net/) | [docs: current official overview] | Describes spell programming and historical leveling/tutorial framing; exact-tag 1.21.1 group docs/code qualify that default groups do not enforce unlocks |
+| In-game guide and starter flow | Exact tag `Xplat/src/main/resources/assets/psi/patchouli_books/encyclopaedia_psionica/en_us/entries/` plus `Xplat/src/main/resources/assets/psi/lang/en_us.json` | [source: `release-1.21.1-110`] | Defines book categories, the six tutorial entries and their localized text; client access/rendering still untested |
 | Dependency and sharing description | [Official Modrinth project page](https://modrinth.com/project/pOeA0exL) | [docs: current project description] | States Patchouli required; describes spell sharing/copying; not a pinned artifact audit |
-| API availability | [Official FAQ](https://psi.vazkii.net/faq.php) | [docs: current official FAQ] | Confirms API exists; exact package/event surfaces not established |
+| Piece progression and cast APIs | Exact-tag `docs/spell-pieces.md`, `PsiSpellPieceGroups.java`, `PlayerData.java`, `ItemCAD.java`, `PsiSpellCosts.java` | [source: `release-1.21.1-110`] | Confirms default group event semantics, source cost path, attributes and overflow handling; no JAR parity or TMM listener claim |
 
 ## Disposable-world test plan
 
 | Test | Positive/boundary case and disposable-world setup | Expected observable result (actual mechanic AND quest credit separately) | Performed? / evidence |
 | --- | --- | --- | --- |
-| Guide access and first progression | Fresh survival world; open Controls, invoke Psi master keybind before/after first Psi item; complete first tutorial and inspect next unlock | Determine initial access gate, exact page names and level/advancement changes; separately record whether FTB can detect the actual tutorial action | Not run |
-| Spell compile and cast | Compile and cast one guide-provided starter spell, then repeat with one intentionally invalid or unavailable piece | Valid spell produces documented effect and cost; invalid spell reports error without unverified item/resource loss; quest credit recorded independently | Not run |
-| Server-side behavior | Use the same valid spell on a dedicated server with a normal target and an invalid/out-of-range target | Server-authoritative result, resource consumption, range and failure behavior; compare quest event/detector separately | Not run |
+| Guide access and starter crafting | Fresh survival world; invoke Psi Master Keybind, open the Encyclopaedia, craft the Assembler/assembly and make Psidust | Confirm client access, recipes, CAD assembly, Psidust output, cost/cooldown and item-entity debit | Not run |
+| Spell compile and cast | Follow Tutorials 1–2 with a valid Debug spell; separately try an invalid compile and a cast with inadequate CAD stats | Confirm compiler errors, bullet transfer, cast output, actual cost and failure boundaries; no quest credit assumption | Not run |
+| Server-side behavior | Use a valid spell and an invalid/out-of-range spell on a dedicated server | Confirm authoritative results, resource debit, 32-block failure and whether event hooks fire | Not run |
 | Addon boundary | Compare base Psi and enabled Psi: Tweaks and Additions in disposable installs; test one addon-only component and import behavior without addon | Confirm which content belongs to base vs addon, compatibility errors and whether spell fails safely | Not run |
 | Sharing/import | Export a simple spell, import into same version, then try an unavailable-piece/version case | Confirm actual share format, validation/warning and whether imported data grants progression (not assumed) | Not run |
 
