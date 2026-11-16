@@ -7,5 +7,7 @@
   "key.tmm_progression.ordeal": "Start / Abort Blindness Ordeal",
   "item.tmm_progression.bio_mutagen": "Bio-Mutagen",
   "item.tmm_progression.mutagenic_brew": "Mutagenic Brew",
-  "tooltip.tmm_progression.mutagenic_brew": "Hunter mutation progress only; does not grant potion effects."
+  "tooltip.tmm_progression.mutagenic_brew": "Hunter-only mutation progress. Non-Hunters suffer Wither II for five minutes. No potion effect is granted.",
+  "message.tmm_progression.mutagenic_brew_non_hunter": "The mutagen rejects your body! Wither II (5:00).",
+  "message.tmm_progression.mutagenic_brew_no_progress": "Mutation unavailable or already complete; the brew was not consumed."
 }
