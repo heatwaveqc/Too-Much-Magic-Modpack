@@ -181,7 +181,6 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 | Recipes and advancement | exact JAR `data/goety_cataclysm/recipe/`, `advancement/`, `loot_table/` and `neoforge/biome_modifier/` | 61 recipe JSONs, including 28 focus, 13 thrall and 11 conversion recipes; 12 advancement JSONs and 9 loot JSONs. Recipe declaration does not prove runtime operation. |
 | Upstream description/version | [Modrinth project](https://modrinth.com/mod/goety-cataclysm), [locked version ID page](https://modrinth.com/mod/goety-cataclysm/version/gv1JY0TU) | official description says this bridges Goety and Cataclysm; current version label is 1.21.1-1.9.0 but locked file bytes identify themselves as 1.21.1-1.8.4. |
 | Public source gap | `Polarice3/Goety_Cataclysm`, HEAD `6b5c8dd4f0b7f307aba8005e7634ade8f4438c5b` | inspected public tree uses Minecraft 1.20.1 and Goety 1.20-era dependency line; not version aligned, so not cited for 1.21.1 code semantics. |
-
 | Parent operating bytecode | Goety 3.2.2 exact SHA-512 and methods listed in E-BC above | Altar charge cadence, activation consumption, partial interruption losses, inherited training queue and sided methods; no runtime test |
 | Recipe and dependency crosswalk | [61-recipe appendix](goety-cataclysm-recipes.md); Cataclysm 3.33 `com/github/L_Ender/cataclysm/init/ModItems.class` and `ModBlocks.class` | All 47 distinct explicit `cataclysm:` recipe references matched registration names in the exact parent artifact. This does not establish acquisition, effective tags or loot execution. |
 
@@ -195,23 +194,22 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 | Thrall summon | Summon same servant below and at cap; retry with insufficient souls; reload chunk/server | correct owned entity, enforced cap, persistence, and truthful task credit | no |
 | Structure servants | Compare valid/invalid Coralssus coral types, Golem layouts, Netherite Monstrosity center block and cap | valid structure creates exactly one servant; invalid variation leaves inputs/world as documented | no |
 | Healing/recovery | Measure health before/after each listed feed; death recovery with correct vs other player's head/skull/spirit | exact item use/heal amount; owner lock and recovery action confirmed | no |
-| Fabricator | Craft block, test each GUI slot/input/output and automation face with valid/invalid recipes | actual recipe behavior, consumption, output, FE/soul cost and sided transfer captured | no |
+| Fabricator | Follow Mechanical Fabricator setup and targeted positive/boundary tests above | actual queued fuel debit, owned Watcher spawn, cap/sensor pause, blocked-spawn loss and vanilla hopper input captured | no |
 | Boss gates/loot | controlled Cataclysm boss kill with Goety addon enabled; inspect item drops and altar recipes | verify exact drops and whether they create repeatable higher-tier combat | no |
 | Multiplayer/server | player without addon joins server with addon; then both sides with matching versions | loader rejects missing addon or synchronizes content correctly; no desync/crash | no |
 
 ## Unknowns and next research
 
-- [ ] Compare every Cataclysm recipe's item IDs and tags against the exact pinned Cataclysm 3.33 JAR and establish which required drops are available from which boss.
+- [x] Match all 47 explicit Cataclysm recipe item/block IDs to pinned registration literals. Remaining: effective tags and each required item/boss acquisition path.
 - [ ] Map all 28 focus recipes to exact effect, damage, cooldown, Soul cost, staff modifiers and unsafe/griefing boundaries from the locked JAR.
-- [ ] Audit 13 summon recipes, 10 entity conversions, target tags, owner transfer, summon caps, death drops and event ordering; separate recipe display proxies from spawned entities.
+- [ ] Audit 13 summon recipes, 11 entity conversions, target tags, owner transfer, summon caps, death drops and event ordering; separate recipe display proxies from spawned entities.
 - [x] Map Fabricator operation and inherited sided queue interface from the exact addon/parent bytecode; client and hopper behavior remain untested.
 - [ ] Parent Goety 3.2.2 common transaction/failure costs are now mapped. Verify addon-specific `ritual_type` overrides, research gates, servant spawn/owner handling and every conversion/summon debit from the pinned 1.21.1 code or client.
 - [ ] Run client/world tests for guide rendering, entity behavior, loot, servant recovery and server sync before promoting beyond `researching`.
-- [ ] Hard blocker for further class-level claims: reacquire the exact pinned JAR for inspection or locate version-aligned 1.21.1 source. The only public source repository exposes a 1.20.1 branch, and the Modrinth/CurseForge binary is not available to the current repository-inspection tool. Fabricator operations, addon overrides, and exact servant persistence behavior cannot be inferred safely.
 
 ## Parent ritual contract carried forward
 
-The 28 focus and 13 summon recipes declare the Goety ritual recipe type; the 10 conversion recipes also use Goety ritual definitions. In the current pack, parent Goety 3.2.2 source shows that the shared altar engine inserts one activation item, charges the recipe's Soul Energy cost once per 20 ticks, progressively consumes pedestal ingredients, and on a base interrupt returns the activation item without refunding previously paid souls or consumed ingredients. This is a useful preparation warning for addon altar recipes, but it is an **inference from the parent engine**: addon 1.21.1 ritual subclasses and overrides have not been inspected. Confirm a successful, interrupted, and one-pulse-short recipe before teaching exact addon failure costs. See [Goety profile](goety.md).
+The addon recipes use the Goety ritual framework. This pass inspected the exact parent artifact rather than relying only on version-aligned source: shared charge cadence, craft/conversion activation consumption and ordinary interruption losses are detailed in E-BC above. The addon has 28 focus recipes, including shaped table crafts; do not label all 28 altar rituals. Audit any custom callbacks and test successful/interrupted/one-charge-short recipes before claiming effective pack behavior. See [Goety profile](goety.md).
 
 ## Revision notes
 
