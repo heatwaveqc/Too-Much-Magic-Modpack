@@ -61,3 +61,9 @@ All of these appeared under `deferred_pending_runtime` during the previous retir
 | 2026-11-16 · [PR #222](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/222) | Windows-normalized B19 Gateway catalog · `fix/b19-windows-path-catalog-2026-11-16` | One-line `scripts/build_progression_gateways.py` fix against deferred B19 feature branch; no Gateway pack files installed by this change. | **ATTEMPT REQUIRED** when B19 is assembled | B19 quick CI bootstrap passed; run B19 validator on Windows and ensure the corrected feature branch is imported rather than its stale parent. | A14, B19 |
 
 **Lifecycle:** `READY REPORTED` → `ATTEMPT REQUIRED` → `INCLUDED` / `BLOCKED` / `OWNER-DEFERRED`; only then may a comprehensive test candidate claim a complete inclusion matrix. Do not treat source-readiness as runtime acceptance.
+
+## Dragon Survival, Jade and FTB UI defaults — next-client-test intake (2026-11-16)
+
+| Date / origin | Ready feature and source | Code / pins / conflicts | Inclusion status | Evidence (SHA, destination or blocker) | Assigned QA case |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-16 · [PR #224](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/224) | Dragon/Jade/FTB UI collision mitigation · `fix/dragon-survival-jade-ui-collisions-2026-11-16` | `config/ftblibrary-client.snbt`, `config/ftbchunks-client.snbt`, `index.toml`, `pack.toml`; defaults sidebar bottom left and minimap top left. Jade Keypad-1 collision requires a *player-selected* binding remap, not a shipped personal `options.txt`. No Dragon Survival Java patch. | **ATTEMPT REQUIRED** in next comprehensive client candidate | Exact hash-pinned config staged on PR; verify config survives assembly/source override and renders appropriately, including user preference persistence. No client PASS or full smoke claimed. | C10 |
