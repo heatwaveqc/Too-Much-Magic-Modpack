@@ -96,6 +96,22 @@ def retire(root: Path, manifest: dict) -> None:
                 f["state"] = "planned"
                 f["evidence"] = ""
         write_json(checklist, j)
+    # The quest builder owns a source validator still expecting the former
+    # 45-chapter scaffold. One more chapter was already removed upstream;
+    # retiring the two TeamLapen chapters leaves exactly 44 for this QA.
+    validator = root / "scripts/validate_quests.py"
+    if validator.exists():
+        source = validator.read_text(encoding="utf-8")
+        old = 'len(chapters) == 45'
+        if old in source:
+            source = source.replace(old, 'len(chapters) == 44')
+            source = source.replace("Expected five groups and 45 chapters",
+                                    "Expected five groups and 44 chapters")
+            source = source.replace("PASS: five groups, 45 chapters",
+                                    "PASS: five groups, 44 chapters")
+            validator.write_text(source, encoding="utf-8")
+        elif 'len(chapters) == 44' not in source:
+            raise RuntimeError("Quest validator changed: verify chapter count before packaging")
     for name in FILES:
         assert not (root / name).exists(), name
     assert not food.exists()

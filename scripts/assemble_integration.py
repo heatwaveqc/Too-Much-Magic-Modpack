@@ -154,7 +154,8 @@ def main() -> None:
     retire(ROOT, manifest)
     git("add", "-A", "--", "mods", "config", "defaultconfigs", "kubejs",
         "manifest/quest_chapters.json", "manifest/feature-checklist.json",
-        "manifest/stone_generation_policy.json", "manifest/material-ore-audit.json")
+        "manifest/stone_generation_policy.json", "manifest/material-ore-audit.json",
+        "scripts/validate_quests.py")
     git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
         "kubejs/server_scripts/tmm_magic_core_thrift.js",
         "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml",
