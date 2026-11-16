@@ -2,7 +2,7 @@
 
 **Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
-**Owner-approved comparison rule:** A TMM character with the best legal native spellbook/armor, maximum compatible enchantments, gems, affixes, appropriate accessories and maximum *non-Monk* specialist skill investment should perform approximately as well as a similarly optimized ATM10 Unobtainium caster. Once each TMM specialist maximum is established, Monk's compatible, unarmored performance target is **85% of the TMM specialist's measured final performance**, not 85% of an arbitrary technical attribute cap. Suggested acceptance band for the TMM-versus-ATM10 performance metric is +/-5%; this band is a proposed test tolerance, not a current observation.
+**Owner-approved comparison rule:** A TMM character with the best legal native spellbook/armor, maximum compatible enchantments, gems, affixes, appropriate accessories and maximum *non-Monk* specialist skill investment should perform approximately as well as a similarly optimized ATM10 Unobtainium caster. Once each TMM specialist maximum is established, **every trait actively modified by Monk must individually reach 80–90% of that optimized TMM specialist's final comparable attribute** (85% preferred midpoint), under a legal unarmored Monk loadout. **The Monk Tyz tree must cost approximately 10x as many skill points to fully purchase as a standard specialist tree**, implying much more than 10x the routine MXP requirement under the 1.2^P lifetime progression curve. See [owner-locked contract](MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md). Suggested acceptance band for the TMM-versus-ATM10 performance metric is +/-5%; this band is a proposed test tolerance, not a current observation.
 
 ## Reference snapshot and confidence
 
@@ -20,7 +20,7 @@
 2. Optimize **one performance axis at a time**, then record tradeoffs. Max mana, maximum damage, lowest cooldown, maximum healing and maximum defense can require different layouts. Do not present their individually maximal statistics as one simultaneously equipped character.
 3. Passive/permanent gear and skills form the steady-state benchmark. Temporary potions, active spells, food, transformations, ritual effects and environmental buffs belong in named **burst** or **sustained-encounter** subprofiles with identical conditions on both packs.
 4. Show stat base, flat additions, multiplied-base additions, multiplied-total modifiers, clamps, and game-specific nonlinear soft caps separately. Minecraft 1.21's add_multiplied_total multiplies **each** factor; it does not simply sum their percentages.
-5. Compare final behavior (damage/sec, casts/sec, mana/sec, effective HP, etc.), not only the UI's attribute percentages. Apply the eventual Monk 85% to the comparable **observable metric**.
+5. For ATM10-versus-TMM specialist calibration compare actual final behavior (damage/sec, casts/sec, mana/sec, effective HP, etc.) as well as attribute totals; for **Monk parity**, the primary hard requirement is **80–90% on EACH numerical attribute it modifies**, against a comparable fully optimized TMM specialist. Continue testing final behavior as a secondary nonlinear-safety check.
 6. Unverified eligibility = **unknown**, not zero and not assumed maximum. Do not grant magical effects from an armor affix/gem unless the source actually lists that attribute, or a verified compat datapack adds it.
 7. ATM10's tiered Ars and Iron's magic resources are **separate source-native profiles**. TMM's Ars 'n Spells 3.3.5 can unify pools; its active mode must be confirmed before comparing TMM resource capacity. Never add two unified pools as though independent.
 8. AttributeFix expands bounds; it is not an earnings source. Check for clipping at every end-of-build attribute and for hidden hard or soft caps inside game logic.
@@ -114,9 +114,9 @@ For each capability C and test context T:
 
 Target **TMM_specialist performance ~= ATM_reference performance (within +/-5% initial tolerance)**. The required specialist skill bonuses are the difference between equipment-contributed performance and the ATM target, using the *real nonlinear game mechanics*; percentage arithmetic alone is insufficient.
 
-Then target **TMM_Monk[C,T] ~= 0.85 x TMM_specialist[C,T]** for the comparable measurable capabilities, subject to deliberate exception for nonnumeric abilities and Monk's armor restrictions. Where an action has a nonzero baseline (e.g. spell power x1), compare the final action outcome, not 85% of the *bonus component*. A 0.85 throughput target does NOT automatically imply a 0.85 reduction percentage.
+Then target **TMM_Monk_final_attribute[C,T] in [0.80, 0.90] x TMM_specialist_final_attribute[C,T]** for **every trait actively modified by Monk**, with **0.85 the preferred midpoint**, and separately verify that nonlinear performance remains sensible. Interpret signed, zero-baseline or reduction attributes by their meaningful final-attribute semantics and document exceptions for nonnumeric powers. The Monk must use a legal unarmored loadout and does not automatically receive every specialist spell capability.
 
-No balance values for Monk or other classes should be committed to runtime JSON from this v0.1 document.
+The fully purchased Monk **Tyz** tree is additionally targeted at about **10x** the aggregate Tyz SP cost of a standard full specialist tree (initial 9–11x acceptance band); ordinary XP cost must be **significantly greater than 10x** due to the lifetime-level `1.2^P` MXP divisor. Test feasibility and keep the native standalone Monk technique points separate. No balance values for Monk or other classes are committed to runtime JSON by this research document.
 
 ## Open validation gates before declaring any "full optimized maximum"
 
@@ -184,7 +184,7 @@ This is an instructive **extreme survivability build**, not a generic mage bench
 
 **Gem uniqueness is per ITEM**: Apotheosis's \`Gem.canApplyTo\` checks the gem list of the specific socketed stack, and its guide calls Unique a one-of-a-kind-per-item restriction. Four identical non-unique gems on one item are allowed by the gem uniqueness rule, though actual modifier ID stacking and full-pack overrides still need testing. The shield, armor and book's **effective LootCategory** must also be checked in-game; the v0.2 health calculation is a well-supported **conditional equipment scenario**, not a certified observed stat.
 
-The very high defense values underscore why Monk parity must be tied to *actual effective health / sustained incoming damage under realistic enemy tests* rather than naively giving Monk 85% of the largest theoretical health attribute from an ultra-narrow glass-cannon HP build.
+The extreme defensive values require **choosing the correct comparable specialist loadout**. If Monk modifies max health, armor or toughness, each **modified attribute** must be 80–90% of its chosen legal TMM specialist final attribute—not 85% of an unrelated extreme glass-cannon build. Also test effective health/incoming damage to catch nonlinear effects; this secondary check does not replace attribute-level parity.
 
 ### Sources added for v0.2
 
