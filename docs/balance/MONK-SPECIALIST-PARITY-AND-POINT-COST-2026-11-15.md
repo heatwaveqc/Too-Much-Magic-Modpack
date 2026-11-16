@@ -25,18 +25,40 @@ Let `C_s` be the **total Tyz skill points spent to fully buy all purchasable ran
 
 **One shared Tyz/MXP wallet, no special Monk XP source or free Monk discount.** Monk receives the same earnable global skill points as everyone else; each Monk node/rank costs more total points. Its benefit is distributed breadth across many traits, not a superior stat ceiling. Do not define a separate easy Monk point economy. If the standalone progression module provides classical Monk techniques automatically or uses its **native** technique-point ledger, that is **not** the Tyz spend being compared. Document both economies separately to prevent double counting and ambiguity; future design can decide which classic abilities are native and which are Tyz purchases.
 
-## XP is significantly more than 10x (and needs a playability audit)
+## MXP growth factor — 1.2 current prototype; 1.1 or 1.0 under consideration
 
-The **current MXP design prototype**, `compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpMath.java` on `feature/mxp-ars-irons-botania-neo-hooks`, makes ordinary effective XP for each event `base / (1.2 ^ P)`, where **P is lifetime levels earned through MXP**, NOT skills purchased. The Tyz level pool pilot awards **one skill point per 1,000 effective MXP**. Under pure ordinary XP from lifetime P=0, ignoring fixed-first bonuses, nominal base XP for N points/levels is:
+**Status as of 2026-11-15: open balancing decision, not authorization to change the MXP runtime.** The owner is reconsidering the current `1.2^P` lifetime level normalizer because the approved Monk full-tree **Tyz SP price remains ~10x** a normal specialist's completed tree. Explore `1.1^P` and `1.0^P` (linear), and calculate 1.01/1.02/1.03/1.05 as useful sensitivity points. Preserve **one shared MXP ledger** and **one Tyz level/skill wallet**; lowering growth must not accidentally create a separate Monk XP source.
+
+The source-only current MXP prototype at `feature/mxp-ars-irons-botania-neo-hooks` implements `effectiveEventXP = nominalBaseXP / (1.2 ^ P)`, where **P is lifetime MXP levels earned, not spent Tyz skill ranks**. The pilot Tyz level pool grants **one skill point per 1,000 effective MXP**. For growth factor `g >= 1`, an ordinary-only fresh player starting at P=0 requires
 
 ```text
-XP_base(N) = 1000 * ((1.2 ^ N) - 1) / 0.2
-XP_ratio(10*N, N) = ((1.2 ^ (10*N)) - 1) / ((1.2 ^ N) - 1)
+nominalBaseXP(N, g) = 1000 * ((g^N) - 1) / (g-1)   if g > 1
+nominalBaseXP(N, 1) = 1000 * N                     if g = 1
+ratio(N, 10*N, g) = nominalBaseXP(10*N,g) / nominalBaseXP(N,g)
 ```
 
-Therefore the Monk's approximately tenfold **point cost** implies a **much greater than tenfold ordinary XP cost**, as the owner intends, without applying an extra XP multiplier on top. **Do not equate lifetime P with spent points.** Respec/refunds don't reset the lifetime progression divisor. Fixed first-time boss/ritual awards, shared XP spent in other trees and actual price scaling change real runs; simulate those cases separately.
+### Example cumulative *ordinary base XP* to reach an illustrative total point budget
 
-**High-risk pacing warning:** This 1.2^P lifetime scaling becomes extremely steep at large N; a literal 10x point requirement may make a completed Monk practically unreachable with ordinary play. This is intended to be a high-investment capstone, but **not** license to publish an impossible progression. Before runtime skill deployment, simulate levels, ordinary nominal XP, fixed bonuses, earning rates, practical time, exhaustion/floating-point behavior and refund/respec edge cases, and present the resulting curve for balancing approval. Do not casually lower the 10x SP target to solve the XP problem; adjust how an achievable XP economy is constructed if needed.
+| Lifetime points/levels | 1.2^P (prototype) | 1.1^P (proposed) | 1.05^P (sensitivity) | 1.02^P (sensitivity) | 1.0^P (linear proposal) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 20 | 186,688 | 57,275 | 33,066 | 24,297 | 20,000 |
+| 50 | 45,497,191 | 1,163,909 | 209,348 | 84,579 | 50,000 |
+| 100 | 414,089,867,610 | 137,796,123 | 2,610,025 | 312,232 | 100,000 |
+| 200 | 3.4294e19 | 1,899,052,754,605 | 345,831,616 | 2,574,245 | 200,000 |
+
+### Effect on the Monk's 10x-spend target
+
+| Example specialist SP -> Monk SP | 1.2^P ordinary XP ratio | 1.1^P | 1.05^P | 1.02^P | 1.0^P |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 5 -> 50 | 6,114x | 190.6x | 37.9x | 16.3x | 10x |
+| 10 -> 100 | 15.95 million x | 8,646x | 207.5x | 28.5x | 10x |
+| 20 -> 200 | 1.84e14 x | 33.16 million x | 10,459x | 105.9x | 10x |
+
+**Design implication:** With **g=1.0**, the literal 10x Tyz SP target gives **10x** ordinary nominal XP from otherwise identical fresh starts—not the earlier `significantly >10x` XP objective. Thus `>10x XP` is now a **conditional preference when g>1**, not a separate hard invariant. With g=1.1, even 200 points can be impossibly expensive in normal gameplay. A very mild multiplier (1.01–1.03) could preserve a substantial experience premium without the astronomical costs of 1.1 or 1.2, but the best factor depends on the **actual eventual Tyz tree SP totals** and verified recurring income.
+
+**Pacing / implementation gates:** First enumerate the specialist and Monk complete Tyz point budgets; model the runtime game sources of *ordinary MXP per hour* and *fixed first-time milestones*, plus shared-wallet spending in other trees. Then choose the growth factor. A future implementation must make the currently **hardcoded** `MxpMath.GROWTH = 1.2` adjustable by validated config, test exact g=1.0 handling (no division-by-zero in geometric-sum models, but `Math.pow(1,P)` is valid in existing event code), test high P/floating-point overflow, and preserve lifetime P across refunds/respecs.
+
+No runtime MXP growth setting, Tyz level-pool settings or gameplay skills are changed by this research.
 
 ## Acceptance tests
 
@@ -44,7 +66,7 @@ Therefore the Monk's approximately tenfold **point cost** implies a **much great
 - [ ] At full legitimate Monk tree investment, **every modified trait** lies in its intended 80–90% band, with explicit rationale if any trait's semantics make simple ratios meaningless.
 - [ ] TMM specialist stat maxima are calibrated to legal fully enhanced ATM10 reference equipment; no comparison uses an impossible sum of mutually exclusive gems/affixes.
 - [ ] Total Tyz points needed to max Monk is 9–11x canonical full specialist tree cost; collect per-tree actual node/rank SP totals to select comparator.
-- [ ] MXP earning scenario from a fresh level-0 player, with/without first-time fixed awards, demonstrates strictly more than 10x total nominal ordinary XP for the Monk versus comparator and records the ratio and predicted progression time.
+- [ ] MXP earning scenario from a fresh level-0 player, with/without first-time fixed awards, compares g=1.0, 1.01, 1.02, 1.05, 1.1 and 1.2; records the actual nominal ordinary XP ratio (10x at g=1) and predicted progression time, with and without fixed bonuses.
 - [ ] Verify Tyz skill purchase, bulk purchase, refund, max-rank, external gate, and MXP bridge without free ranks or negative-currency exploits.
 - [ ] Preserve Monk classic powers, armor-exclusion rules and separate native discipline progression; never misrepresent standalone native points as Tyz SP.
 
@@ -56,4 +78,4 @@ Therefore the Monk's approximately tenfold **point cost** implies a **much great
 - MXP implementation math, source-only prototype: [MxpMath.java](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/mxp-ars-irons-botania-neo-hooks/compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpMath.java).
 - Tyz level pool prototype: [level-pool.json](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/mxp-ars-irons-botania-neo-hooks/compat/magic/tyzs-test-overlay/config/tyzs_skills/custom/data/level-pool.json).
 
-**Supersession:** All earlier one-number "Monk is exactly 85%" statements are superseded by 80–90% for each modified trait, with 85% only the preferred midpoint. Earlier claims that Monk needs 85% of *throughput alone* are superseded by **attribute-level parity**, with throughput retained as a secondary diagnostic.
+**Supersession:** The Monk's 80–90% attribute target and ~10x SP requirement remain owner-locked. The older unconditional >10x XP requirement is superseded: XP ratio depends on the growth factor, which remains undecided. All earlier one-number "Monk is exactly 85%" statements are superseded by 80–90% for each modified trait, with 85% only the preferred midpoint. Earlier claims that Monk needs 85% of *throughput alone* are superseded by **attribute-level parity**, with throughput retained as a secondary diagnostic.
