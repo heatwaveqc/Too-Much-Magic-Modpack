@@ -47,7 +47,7 @@ jobs:
           PY
 
   loader-server:
-    if: github.ref_name == 'build/initial-neoforge-packwiz' && github.event_name == 'workflow_dispatch' && inputs.full_smoke == true
+    if: (github.ref_name == 'build/initial-neoforge-packwiz') && github.event_name == 'workflow_dispatch' && inputs.full_smoke == true
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -73,7 +73,7 @@ jobs:
           if-no-files-found: warn
 
   modded-server:
-    if: github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol' && github.event_name == 'workflow_dispatch' && inputs.full_smoke == true
+    if: (github.ref_name == 'build/b1-kubejs-infrastructure' || github.ref_name == 'build/b2-meta-qol') && github.event_name == 'workflow_dispatch' && inputs.full_smoke == true
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
