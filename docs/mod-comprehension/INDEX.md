@@ -154,7 +154,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `feywild` | Feywild | magic_adventure | enabled flag | full | researching | [profile](mods/feywild.md) |
 | `embers-re-ignited` | Embers Re-Ignited | magic_industry | enabled flag | full | researching | [profile](mods/embers-re-ignited.md) |
 | `projecte` | ProjectE | magic_progression | enabled flag | full | researching | [profile](mods/projecte.md) |
-| `reliquary-reincarnations` | Reliquary Reincarnations | magic_utility | enabled flag | full | queued | — |
+| `reliquary-reincarnations` | Reliquary Reincarnations | magic_utility | enabled flag | full | researching | [profile](mods/reliquary-reincarnations.md) |
 | `embeddium` | Embeddium | performance | enabled flag | interface | queued | — |
 | `entity-culling` | Entity Culling | performance | enabled flag | interface | queued | — |
 | `ferritecore` | FerriteCore | performance | enabled flag | interface | queued | — |
@@ -253,3 +253,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-15 — Ars 'n Spells exact 3.3.5 pin/source reviewed; corrected its source line to the NeoForge 1.21.1 commit, split its two inscription paths, and mapped its mana/config/ritual contracts. TMM runtime and client behavior remain unverified; current quest chapter has no addon lessons.
 
 - 2026-11-16 — Feywild 1.21.1-5.6.4 profile added from the pack pin, official release data and a matching-version source snapshot. The public getting-started wiki is for 5.0, so the profile marks the 5.6.4 walkthrough and several guide/encounter branches as incomplete. No TMM quests or runtime files changed.
+
+- 2026-11-16 — Reliquary Reincarnations 2.0.85 profile added from the exact pack pin and current version-matched source snapshot. The old wiki diverges on the Tome's Nether Star recipe: current source doubles one `c:nether_stars` input at 256 charge. Profile remains researching; no TMM quests or runtime files changed.
