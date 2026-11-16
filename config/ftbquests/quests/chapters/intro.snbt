@@ -40,6 +40,21 @@
 			x: 4.0d
 			y: 0.0d
 		}
+
+		{
+			id: "544D309000100001"
+			icon: { id: "minecraft:iron_sword" }
+			optional: true
+			rewards: [
+				{ id: "544D609000100001", type: "xp", xp: 5 }
+				{ id: "544D709000100001", type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D409000100001", type: "checkmark" }
+			]
+			x: 12.0d
+			y: 0.0d
+		}
 		{
 			id: "544D4D1100000001"
 			icon: { id: "ars_elemental:curio_bag" }
