@@ -32,15 +32,15 @@
     {
       "chapter": "Getting Started",
       "title": "Punch a Tree",
-      "description": "Pick up any log or stem, then claim this quest to receive one 27-slot Trinkets Pouch, four torches and experience. The pouch is now a quest reward, not an automatic grant. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
+      "description": "Pick up any log or stem, then claim this quest for a 27-slot Trinkets Pouch and experience. A hidden, persistent advancement tracks the first log without granting items. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
       "criterion": {
         "type": "advancement",
         "id": "tmm:first_log"
       },
       "reward": {
         "xp": 10,
-        "item": "minecraft:torch",
-        "count": 4
+        "item": "ars_elemental:curio_bag",
+        "count": 1
       },
       "depends": null,
       "optional": false,
