@@ -34,7 +34,7 @@
 				{ id: "544D701000200003", type: "item", item: { id: "ars_elemental:curio_bag", count: 1 }, count: 1 }
 			]
 			tasks: [
-				{ id: "544D4D1200000001", type: "advancement", advancement: "tmm:first_log" }
+				{ id: "544D4D1200000001", type: "item", item: { components: { "ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)" }, count: 1, id: "ftbfiltersystem:smart_filter" } }
 			]
 			x: 0.0d
 			y: 3.0d

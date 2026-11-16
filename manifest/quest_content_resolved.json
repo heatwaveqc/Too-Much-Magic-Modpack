@@ -29,8 +29,9 @@
       "xp_reward_id": "544D601000200001",
       "item_reward_id": "544D701000200003",
       "criterion": {
-        "type": "advancement",
-        "id": "tmm:first_log"
+        "type": "item_tag",
+        "id": "minecraft:logs",
+        "filter": "ftbfiltersystem"
       },
       "reward": {
         "xp": 10,
