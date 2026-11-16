@@ -20,7 +20,7 @@ def main():
     assert intro.count('id: "enigmaticlegacyplus:cursed_ring"') == 1
     assert intro.count('id: "ars_elemental:curio_bag"') == 2 # icon + reward
     assert not (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").exists()
-    log_quest = intro.split('id: "544D4D1100000001"', 1)[1].split("\\n\\t\\t}", 1)[0]
+    log_quest = intro.split('id: "544D4D1100000001"', 1)[1].split("\n\t\t}", 1)[0]
     assert 'id: "544D701000200003"' in log_quest
     assert 'id: "minecraft:torch"' not in log_quest
     a = json.loads(read("kubejs/data/tmm/advancement/first_log.json"))
