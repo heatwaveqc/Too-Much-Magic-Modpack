@@ -1,0 +1,78 @@
+{
+  "active": true,
+  "id": "tmm_monk_inner_reservoir",
+  "maximumLevel": 25,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/ender_eye.png",
+  "displayName": "Inner Reservoir",
+  "description": "Adds personal magical reserve in supported mana systems, only while a Monk.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125
+      ],
+      "unit": ""
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": [
+      "tmm_monk_unarmed_precision"
+    ]
+  }
+}

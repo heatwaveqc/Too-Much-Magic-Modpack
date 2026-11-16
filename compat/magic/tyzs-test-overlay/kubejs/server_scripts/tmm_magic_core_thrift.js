@@ -1,8 +1,8 @@
-// TMM Core Magic pilot, MC 1.21.1 NeoForge.
+// TMM Core Skills five-rank pilot, MC 1.21.1 NeoForge.
 // Requires Tyz's Skills 6.4.2, KubeJS 2101, Ars Nouveau 5.13.5,
-// Iron's Spells 3.16.3 and Psi 110. Intentionally NOT part of installed pack yet.
+// Iron's Spells 3.16.3 and Psi 110. Gameplay validation still pending.
 //
-// The 99-rank Thrift node supplies Goety and Neo Vitae through native Tyz
+// The five-rank Thrift node supplies Goety and Neo Vitae through native Tyz
 // attribute modifiers. These three additional casting hooks target otherwise
 // unexposed resource costs. Their API paths were checked in upstream source.
 // MXP awards must read the pre-Thrift nominal cost, not this discounted debit.
@@ -12,13 +12,13 @@
 // disposable world before enabling the pilot in a published pack.
 
 const TMM_MAGIC_THRIFT_ID = 'tmm_magic_thrift_1'
-const TMM_MAGIC_THRIFT_PER_RANK = 0.003 // 0.3% of nominal price per rank
+const TMM_MAGIC_THRIFT_PER_RANK = 0.0594 // 5.94% per rank, five ranks = 29.7%
 const TMM_ServerPlayer = Java.loadClass('net.minecraft.server.level.ServerPlayer')
 
 function tmmThriftRank(player) {
   if (!(player instanceof TMM_ServerPlayer)) return 0
   const rank = TyzsSkills.skills().getSkillLevel(player, TMM_MAGIC_THRIFT_ID)
-  return Math.min(99, Math.max(0, rank))
+  return Math.min(5, Math.max(0, rank))
 }
 
 function tmmDiscount(nominal, rank) {

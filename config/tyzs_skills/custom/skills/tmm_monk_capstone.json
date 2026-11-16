@@ -1,0 +1,28 @@
+{
+  "active": true,
+  "id": "tmm_monk_capstone",
+  "maximumLevel": 1,
+  "prices": [
+    5
+  ],
+  "type": "IMMUTABLE",
+  "category": "tmm_monk",
+  "icon": "minecraft:textures/item/nether_star.png",
+  "displayName": "Empty-Hand Paragon",
+  "description": "Empty-Hand Paragon: late achievement-gated, no worn equipment, boosts intrinsic boss-fighting stamina. Does not bypass boss mechanics.",
+  "modifiers": [],
+  "customValues": {
+    "power": {
+      "values": [
+        1
+      ],
+      "unit": ""
+    }
+  },
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}

@@ -141,9 +141,8 @@ def main() -> None:
         report.append({"name": stream["name"], "branch": branch, "sha": source_sha,
                        "mode": stream["mode"], "file_count": len(selected), "files": selected,
                        "note": stream["note"]})
-    # The NEXT integrated QA build must actually replace Pufferfish Skills.
-    # Tyz may ALREADY be installed in the test pack. Do not destructively
-    # re-run the one-time Pufferfish migration or overwrite its shared wallet.
+    # The Tyz first-wave is already pinned on this baseline. Preserve it on
+    # reruns rather than calling the one-time Pufferfish->Tyz installer again.
     from verify_tyz_migration import verify as verify_tyz_migration
     if (ROOT / "mods/tyzs-skills.pw.toml").exists():
         if (ROOT / "mods/puffish-skills.pw.toml").exists():
@@ -157,7 +156,6 @@ def main() -> None:
     else:
         from activate_tyzs import activate
         activate(ROOT, manifest)
-        verify_tyz_migration(ROOT)
     # The next full QA build must pin the exact Dragon Survival release alongside
     # the already-approved Comforts and Colorful Hearts; fail on missing hashes.
     # Dragon diets only work if the actual dragon JAR is installed.

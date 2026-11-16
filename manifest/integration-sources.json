@@ -15,7 +15,7 @@
         "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
       ],
       "mode": "source-verified-baseline-runtime",
-      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches). Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS."
+      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches) with native FTB Filter System tag task (file ID 7429011), and removed hidden advancement. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS."
     },
     {
       "name": "evilcraft-quest-draft",
@@ -102,8 +102,8 @@
         "scripts/verify_tyz_migration.py",
         "scripts/stage_monk_tyz.py"
       ],
-      "mode": "runtime-experimental",
-      "note": "NEXT BUILD: use pinned Tyz 6.4.2 plus four tested five-rank Core Skills and 18 newly staged Monk specialization nodes (17 designed abilities plus Empty-Hand Paragon), all using ONE shared Tyz XP/SP wallet. Custom Monk skills are IMMUTABLE rank/value storage and require the native tmm_progression TyzMonkBridge Java handlers for effects and native eligibility. Do not silently replace this combined overlay with older four-Core-only version. Native Tyz activity XP remains disabled. No other eight form trees are deployed by this work."
+      "mode": "runtime-first-wave-integrated",
+      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification."
     },
     {
       "name": "ftb-essentials-home-rtp",
@@ -172,7 +172,7 @@
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Native Monk/Hunter engine and existing content preserved with optional reflective Tyz 6.4.2 Monk 18-skill runtime hooks, purchase/refund gates and current-class / equipment-conditioned stat/event effects. This branch must build its tmm_progression JAR for the next authorized integration candidate; without it the 18 Tyz Monk IMMUTABLE definitions are NOT functional."
+      "note": "Standalone Monk/Hunter with optional Monk Tyz bridge: 18 skills, conditional ability handlers and purchase/refund eligibility. Compile tmm_progression from this source for next owner-authorized candidate."
     },
     {
       "name": "jawr-native-transformation-bridge",
@@ -254,8 +254,8 @@
     "MXP full-source hook branch is present but not runtime-installed; validate real spent resource debits/multi-cast ordering, then compile and package only after explicit test approval.",
     "NEXT FULL QA: ProjectE Stone boss-trophy center and MK3+ Power Flower Chaos-Shard recipes staged from feature/projecte-boss-trophy-stone-and-emc-audit. Validate both Stone layouts and all high-tier direct recipes + red upgrade in live JEI/crafting. Mine Key also comes from Neo Vitae mine spawners, so it is an item route, NOT proof of a Foreman kill.",
     "EMC COMPLETENESS: each actual registered item must have positive EMC except approved cheap glass panes. Audit against SAME-BUILD full registry plus post-mapping ProjectE EMC; fill all missing IDs and test conversion loops. No auto-values until exports.",
-    "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
-    "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
+    "Tyz 6.4.2 now present in test/full-integration; remove no longer applicable Pufferfish Skills backend. Verify exact pinned JAR and four Core Skills in next owner-authorized test build. Independent Pufferfish Attributes kept until dependency audit.",
+    "MxpService->TyzBridge Java API connection exists in source feature/mxp-configurable-growth-20261115 with configurable 1.02 default. It is NOT a packaged MXP mod/JAR. Compile/integrate and live-test Tyz credit/XP-SP/persistence and spell resource debits before calling MXP operational; nine custom form and Monk/Hunter trees are still not built.",
     "New five-form Tyz trees and external locks are currently design-only",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",

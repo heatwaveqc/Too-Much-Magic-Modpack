@@ -51,14 +51,16 @@ def verify(root: Path = ROOT) -> None:
         assert item["category"] == "tmm_monk"
         assert len(item["prices"]) == item["maximumLevel"]
         assert len(item["customValues"]["power"]["values"]) == item["maximumLevel"]
-        assert not item["modifiers"], "Monk conditional skills may not be unconditional attribute buffs"
+        assert not item["modifiers"]
     common = tomllib.loads((root / "config/tyzs_skills-common.toml").read_text(encoding="utf-8"))
     xp = common["xp_values"]
     assert all(xp[name] is False for name in DISABLED_BOOLEAN_XP), "Unwanted native activity XP"
     assert all(xp[name] == 0 for name in DISABLED_NUMERIC_XP), "Unwanted native activity XP"
     assert common["Limits"]["xp_daily"] == -1
     assert common["Limits"]["max_lvl"] == -1
-    assert (root / "kubejs/server_scripts/tmm_magic_core_thrift.js").is_file()
+    thrift = (root / "kubejs/server_scripts/tmm_magic_core_thrift.js").read_text(encoding="utf-8")
+    assert "TMM_MAGIC_THRIFT_PER_RANK = 0.0594" in thrift, "Legacy 99-rank Thrift factor"
+    assert "Math.min(5, Math.max(0, rank))" in thrift, "Legacy 99-rank Thrift cap"
     assert not (root / "config/puffish_skills").exists()
     print("PASS: Tyz 6.4.2 exclusive active Skills backend, 4x5 initial Core Magic plus 18 native-licensed Monk Tyz nodes,")
     print("      original Tyz tabs preserved, native XP disabled, independent Attributes retained.")
