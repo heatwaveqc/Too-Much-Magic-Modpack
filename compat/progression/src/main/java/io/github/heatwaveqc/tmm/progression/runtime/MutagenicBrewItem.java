@@ -1,6 +1,9 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
@@ -36,10 +39,17 @@ public final class MutagenicBrewItem extends PotionItem {
 
     @Override public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (entity instanceof ServerPlayer player) {
-            if (!HunterMutations.drink(player,stack)) {
-                player.displayClientMessage(Component.literal(
-                    "No mutation progress: Hunter initiation or valid mutation effects required"),true);
-                return stack; // No lost brew, no ordinary potion effects.
+            if (!ProgressionApi.track(player,HunterExperience.HUNTER).joined()) {
+                // Deliberate dangerous consequence: Wither II for five minutes,
+                // even if the source potion held a positive or forbidden effect.
+                // The ordinary potion's effects are NEVER applied.
+                player.addEffect(new MobEffectInstance(MobEffects.WITHER,20 * 60 * 5,1));
+                player.displayClientMessage(Component.translatable(
+                    "message.tmm_progression.mutagenic_brew_non_hunter"),true);
+            } else if (!HunterMutations.drink(player,stack)) {
+                player.displayClientMessage(Component.translatable(
+                    "message.tmm_progression.mutagenic_brew_no_progress"),true);
+                return stack; // No wasted Hunter brew and no normal potion effects.
             }
             CriteriaTriggers.CONSUME_ITEM.trigger(player,stack);
             player.awardStat(Stats.ITEM_USED.get(this));
