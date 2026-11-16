@@ -1,6 +1,12 @@
 name: Continuous Full Integration Launcher
 on:
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full NeoForge smoke and Prism QA build; unchecked runs quick checks only'
+        required: true
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -8,3 +14,5 @@ jobs:
     permissions:
       contents: write
     uses: heatwaveqc/Too-Much-Magic-Modpack/.github/workflows/full-integration.yml@test/full-integration
+    with:
+      full_smoke: ${{ inputs.full_smoke == true }}
