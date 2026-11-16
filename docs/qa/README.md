@@ -4,6 +4,7 @@
 
 ## Start here
 
+- **[Canonical QA/test levels](TEST-LEVELS-AND-TERMINOLOGY.md):** Repository CI, Module CI, Integration Preflight, manual Integration Assembly, Server Boot Smoke, Prism QA Package, Client Launch Smoke and Gameplay Acceptance. Record exactly which level ran.
 - **[Codex next-test checklist](NEXT-TEST-CODEX-CHECKLIST.md):** ordered, executable quick checks, branch/readiness gates, in-game command recipes, and minimal setup tests. Codex should read it before testing or proposing a new QA build.
 - **[Current test status](CURRENT-TEST-STATUS.md):** living, date- and SHA-scoped handoff. Record each attempted case, result, exact evidence, and unresolved blockers. It is not a substitute for historical test records.
 - **[Live-test inclusion register](LIVE-TEST-INCLUSION-REGISTER.md):** required intake for features that any development chat or PR reports **ready for a live test**. All such features must be attempted for the next comprehensive live build, regardless of earlier `deferred_pending_runtime` classification.
@@ -15,8 +16,8 @@
 ## Codex execution contract
 
 1. Read `AGENTS.md` and the checklist. Check the **actual current branch SHA** and `manifest/integration-sources.json` before evaluating any case. For the next comprehensive live test, discover readiness handoffs beyond already-registered streams, then reconcile **every** ready feature against the assembled output using the inclusion register.
-2. **Quick checks only by default:** source/config/manifest validation, isolated Java compile/unit tests, read-only registry analysis, and read-only copies of provided disposable saves. Run commands from the repository root as the checklist specifies. Do not start a server or generate a test build without the owner's explicit instruction for that exact run.
-3. **Do not run a full NeoForge smoke, workflow dispatch/call with `full_smoke=true`, or a push that indirectly launches a full smoke** without explicit owner authorization. The quick-path workflow is separate and is not a server PASS.
+2. **Quick CI only by default:** Repository CI, Module CI and the **read-only Integration Preflight**. Neither frozen donor assembly nor source restore is automatic. Isolated Java compile/unit tests, read-only registry analysis, and read-only copies of provided disposable saves are allowed. Run commands from the repository root as the checklist specifies. Do not start a server or generate a test build without the owner's explicit instruction for that exact run.
+3. **Do not run Integration Assembly, a full NeoForge smoke, a Prism QA Package, dispatch/call with `assemble_only=true` or `full_smoke=true`, or a push that indirectly launches these** without explicit owner authorization. The quick-path workflow is separate and is not a server PASS.
 4. Mark a case `PASS`, `FAIL`, `PARTIAL`, `BLOCKED`, `NOT BUILT`, or `NOT RUN`. `PASS` is bounded to the described check; a passing static check is never a client/in-world pass. A `NOT BUILT` on a reported-ready feature is an unresolved **inclusion failure** requiring its own attempted-import/blocker record, not an accepted blanket deferral.
 5. Update `CURRENT-TEST-STATUS.md` with evidence and commands, and append historical findings to `docs/TESTING.md` when a test has actually been performed. Update the machine feature registry only with evidence via the existing `scripts/feature_checklist.py` workflow. The inclusion register must separately show each ready feature as `INCLUDED`, `BLOCKED` with evidence, or `OWNER-DEFERRED` with an explicit decision; an old `deferred_pending_runtime` entry alone is insufficient.
 6. Never commit downloaded mod JARs, generated worlds, test saves, player data, credentials, full logs, or copyrighted upstream mod assets. Link external CI/artifacts or commit small sanitized text summaries instead.
@@ -27,7 +28,7 @@
 | --- | --- |
 | Timestamp and branch commit | ISO date/time and full Git SHA |
 | Case ID | Rxx, Axx, Bxx, or Cxx from the checklist |
-| Test level | Static/unit, save inspection, authorized server smoke, client, or user in-world |
+| Test level | Canonical CI-REPO / CI-MODULE / CI-PREFLIGHT / QA-ASSEMBLY / QA-SERVER / QA-PRISM / QA-CLIENT / QA-GAMEPLAY |
 | Status | PASS / FAIL / PARTIAL / BLOCKED / NOT BUILT / NOT RUN |
 | Commands and inputs | Exact commands; sanitized paths and relevant configuration |
 | Evidence | CI run URL, log excerpt, screenshot reference, test output or read-only save comparison |
