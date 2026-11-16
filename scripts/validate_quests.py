@@ -258,8 +258,14 @@ def main() -> None:
             ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong item reward in {q['title']}")
         elif "coin" in q["reward"]:
             ensure(qid in coin_quests and f'command: "hqs coins add {{p}} {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
+        elif "command" in q["reward"]:
+            ensure(qid == "544D309000100001"
+                   and q["reward"]["command"] == "tmmnewbie admin graduate {p}"
+                   and 'team_reward: false' in block,
+                   "Graduation command must be personal and admin-authorized")
         else:
-            ensure(qid == "544D303000100001" and q["reward"] == {"xp": 5}, "Only Ars orientation is XP-only")
+            ensure(qid == "544D303000100001" and q["reward"] == {"xp": 5},
+                   "Only Ars orientation is XP-only")
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
