@@ -6,10 +6,10 @@
 | Category / parent or addons | Magic addon for [Psi](psi.md); conditional Mekanism, Mekanism Generators, Curios and Patchouli integrations |
 | MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM test/full-integration |
 | Pinned version / artifact / hash | mods/psitweaks.pw.toml; psitweaks-1.21.1-0.10.10-hotfix.jar; Modrinth project pwmvTzDk, version sazDcHZZ; SHA512 22800c1ec3a29c6b246dc0e56e0621b28f7a5ac17f13bdbdb88dfac9ff1b17b32860145fa3139fd063e0139f7847ff43ec8d1522b558cb8ae371cb0b8b7bf33e [pin]. CurseForge identifies this exact NeoForge artifact as beta. |
-| Source snapshot | Official moratan251/psitweaks 1.21.1/NeoForge master branch. Its current changelog includes v0.10.10, but source commit SHA and exact hotfix binary equivalence were not established. |
-| Guide/documentation version gap | Upstream README says addon material is documented in the Encyclopaedia Psionica through Patchouli. Changelog v0.10.10 refers to Ideaspace Storage guide pages and recipe-name display fixes. Exact guide tree and unlock graph were not inspected. |
+| Source snapshot | `moratan251/psitweaks@ebb3d3c28bb1f41790ccb7cd6bbcff31889d2363`; Gradle metadata at this immutable commit declares Minecraft 1.21.1, NeoForge 21.1.248 and `1.21.1-0.10.10-hotfix`, matching the pinned artifact name/version. Source-to-JAR byte equivalence is not established. |
+| Guide/documentation version gap | Upstream README places addon material in Psi's Patchouli Encyclopaedia; v0.10.10 changelog confirms Ideaspace pages and recipe-name display. Exact guide tree/page order and its agreement with the pinned JAR remain uninspected. |
 | Profile status | researching |
-| Evidence reached | Exact pack pin; exact CurseForge file metadata; upstream 1.21.1 README and changelog through v0.10.10; TMM roster comparison; no exact JAR inspection or client test |
+| Evidence reached | Exact pack pin; CurseForge file metadata; immutable matching-version source commit; source config, unlock handler and generated research-recipe provider reviewed; README/changelog through v0.10.10; TMM roster comparison; no exact JAR inspection or client test |
 | Reviewed | 2026-11-16 |
 | Quest ownership | No Psi addon quest chapter reconciled. No quest files changed. |
 
@@ -228,6 +228,60 @@ No setup can yet be called low-hanging because exact survival recipes and unlock
 - [ ] Test hotfix fixes on disposable client and dedicated server when requested.
 - [ ] Inspect quest authoring/generated files for existing PsiTweaks pilots before quest handoff.
 
+## Exact source audit — hotfix source commit
+
+The following source findings are tied to [commit `ebb3d3c`](https://github.com/moratan251/psitweaks/tree/ebb3d3c28bb1f41790ccb7cd6bbcff31889d2363). The commit's Gradle metadata matches the pinned version label and NeoForge line, but that does not prove the Modrinth JAR was built from this commit.
+
+### Research gate and its current TMM reachability
+
+- The common config's `spells.unlocks.requireSpellUnlocks` defaults to **true**. When enabled, the Psi piece-knowledge event cancels learning for entries in the addon unlock snapshot until the player's unlock tag is present. [source: SHA]
+- The default unlock snapshot has **19 command IDs**: `cocytus`, `time_accelerate`, `flight`, `phonon_maser`, `meteor_line`, `dry_meteor`, `supreme_infusion`, `molecular_divider`, `radiation_injection`, `radiation_filter`, `cure_radiation`, `guillotine`, `active_air_mine`, `die_flex`, `jump_flex`, `switch_flex`, `material_mutation`, `mass_block_break`, and `idea_storage`. The final ID unlocks the Ideaspace piece group; the four related deposit/withdraw/amount/connector definitions share its unlock item/tag. [source: SHA]
+- The configured unlock item is handled on right-click, and the source exposes permission-level-2 commands at `/psitweaks spellunlock <id> grant|revoke|status <player>` and `/psitweaks spellunlock all grant|revoke|status <player>`. This is admin surface, not normal survival progression. [source: SHA]
+- The Program Researcher and its block/container registration are in Mekanism-specific classes. TMM does **not** install Mekanism. The generated default research recipe set includes direct Mekanism item IDs in 10 of its 19 recipes. Upstream README says alternate recipes exist for certain materials and research programs, but this audit has not established which alternative outputs are exposed without Mekanism or how they reach players. Thus the default Program Researcher route is not a proven TMM route; the missing alternate-recipe/guide/JAR audit remains a progression blocker. [source: SHA] [pin]
+- Reloaded definitions come from datapack JSON under `data/*/spell_unlocks/*.json`; malformed/unreadable entries reject the reload as a whole and preserve the prior active snapshot. If the directory has no definitions, the handler keeps the current definitions. The server syncs the active definitions to clients. [source: SHA]
+
+### Default Program Research recipe catalog (source data)
+
+These are source-provider defaults, not a claim that the machine or every recipe is available in TMM. Recipe input counts are consumed except the Philosopher's Stone catalyst in Material Mutation. Time is source ticks (20 ticks/second). FE/t and total FE are calculated from the provider's `energy_per_tick` and `time`; they are source-data arithmetic, not measured draw. [source: SHA]
+
+| Program output | Exact source inputs | FE/t × ticks (source) | Time |
+| --- | --- | ---: | ---: |
+| Cocytus | Blank Program ×1; Mekanism Antimatter Pellet ×8; Blue Ice ×64; Sculk Shrieker ×24; Heart of the Sea ×4; Psycheonic Metal Ingot ×64 | 1,500,000 × 108,000 = 162,000,000,000 FE | 5,400 s |
+| Time Accelerate | Blank Program ×1; Clock ×8; Redstone Block ×8; Chaotic Psimetal ×8; Powered Rail ×32 | 10,000 × 1,200 = 12,000,000 FE | 60 s |
+| Flight | Blank Program ×1; Advanced Spell Bullet Loop ×16; Sublimated Spell Bullet Loop ×1; Feather ×32; Chaotic Factor ×8 | 10,000 × 600 = 6,000,000 FE | 30 s |
+| Phonon Maser | Blank Program ×1; Mekanism Laser ×1; Amethyst Shard ×12; Flashmetal ×8; Note Block ×48 | 40,000 × 2,400 = 96,000,000 FE | 120 s |
+| Meteor Line | Blank Program ×1; Nether Star ×24; Mekanism Antimatter Pellet ×16; Alloy Hypostasis ×48; Psycheonic Metal Ingot ×128 | 1,500,000 × 288,000 = 432,000,000,000 FE | 14,400 s |
+| Dry Meteor | Blank Program ×1; Packed Ice ×16; Psidust ×32; Bone ×16 | 15,000 × 1,200 = 18,000,000 FE | 60 s |
+| Supreme Infusion | Blank Program ×1; Netherite Ingot ×1; Flashmetal ×8; Psion Alloy ×24; Amethyst Block ×16 | 40,000 × 2,400 = 96,000,000 FE | 120 s |
+| Molecular Divider | Blank Program ×1; Psigem ×32; Quartz ×48; Heavy Psimetal ×8; Echo Control Circuit ×3 | 80,000 × 6,000 = 480,000,000 FE | 300 s |
+| Radiation Injection | Blank Program ×1; Mekanism Uranium Ingot ×16; Mekanism Lead Ingot ×8; Chaotic Psimetal ×8 | 60,000 × 3,600 = 216,000,000 FE | 180 s |
+| Radiation Filter | Blank Program ×1; Mekanism Lead Ingot ×16; Mekanism Fluorite Dust ×16; Chaotic Psimetal ×8 | 60,000 × 3,600 = 216,000,000 FE | 180 s |
+| Cure Radiation | Blank Program ×1; Golden Apple ×8; Mekanism Lead Ingot ×16; Chaotic Psimetal ×8 | 60,000 × 3,600 = 216,000,000 FE | 180 s |
+| Guillotine | Blank Program ×1; Wither Skeleton Skull ×1; Anvil ×3; Rotten Flesh ×24; Bone ×16; Psimetal Sword ×1 | 50,000 × 3,000 = 150,000,000 FE | 150 s |
+| Active Air Mine | Blank Program ×1; TNT ×8; Psidust ×16; Psigem ×2 | 4,000 × 400 = 1,600,000 FE | 20 s |
+| Die Flex | Blank Program ×1; Psionic Control Circuit ×16; Chaotic Psimetal ×16; Chaotic Factor ×16 | 6,000 × 600 = 3,600,000 FE | 30 s |
+| Jump Flex | Die Flex Program ×1; Echo Control Circuit ×16; Flashmetal ×24; Mekanism Polonium Pellet ×4 | 100,000 × 54,000 = 5,400,000,000 FE | 2,700 s |
+| Switch Flex | Jump Flex Program ×1; Hypostasis Control Circuit ×16; Heavy Psimetal ×32; Psitweaks Americium Pellet ×8 | 500,000 × 90,000 = 45,000,000,000 FE | 4,500 s |
+| Material Mutation | Blank Program ×1; Philosopher's Stone ×1 (catalyst, retained); Sculk Catalyst ×1; Chaotic Factor ×16; Antinite Ingot ×32; Psionic Echo ×16 | 250,000 × 24,000 = 6,000,000,000 FE | 1,200 s |
+| Mass Block Break | Blank Program ×1; Psigem ×16; Chaotic Psimetal ×16; TNT ×16 | 10,000 × 1,200 = 12,000,000 FE | 60 s |
+| Ideaspace | Blank Program ×1; Quantized Plate ×16; Hypostasis Control Circuit ×8; Mekanism Quantum Entangloporter ×2; Dimensional Crystal ×2; Psycheonic Metal Ingot ×2 | 750,000 × 36,000 = 27,000,000,000 FE | 1,800 s |
+
+The table is the generated default `program_research/*` set at the source snapshot. The provider emits JSON recipe inputs and outputs; it does not itself establish guide order, eligibility state, runtime consumption, or the alternative no-Mekanism route.
+
+### Ideaspace source limits and persistence
+
+- Common config defaults per player: **256** distinct item types; item quantity per type is **16,384 × that item's max stack size** (so stack-size-64 item: 1,048,576); **64** fluid types at **1,048,576 mB** per type; **64** Mekanism chemical types at **33,554,432 B** per type; and **Long.MAX_VALUE FE**. Config bounds allow increasing type counts up to 100,000 and setting per-type/energy amounts within positive long range. [source: SHA]
+- The persistent store is keyed by player UUID in Overworld dimension saved data, with a per-player storage record. It therefore persists across logout and is not a per-dimension inventory; this is an inspected source behavior, not a runtime test. [source: SHA]
+- The transfer tricks use server-side player context, finite positive quantities, loaded-target and interaction/protection checks; block/slot transfer paths also enforce spell radius and avoid the caster's own connector / CAD-sensitive slots. Item, fluid, chemical and FE mode availability depends on the relevant integration. Existing profile policy flag remains: this programmable storage/transfer system conflicts with the project's generic storage/logistics boundary and must not be taught as recommended TMM progression absent a policy decision. [source: SHA] [inference]
+
+### Version and audit corrections
+
+- The hotfix source config defaults `disableDamagePsiDeduction=true` and `disableRegenCooldown=true`, so the earlier base-Psi source behavior of Psi loss on damage / a regen delay is overridden in the addon setup unless a config changes it. This is config source evidence, not proof of effective server config. [source: SHA]
+- Config default `requireSpellUnlocks=true` is stronger evidence than the older changelog's generic statement that unlock requirements can be configured. The default gate is on at this source snapshot. [source: SHA]
+- The project README and release metadata identify required Psi, Curios API and Patchouli; Mekanism and Mekanism Generators are strongly recommended, not required. Their optionality does not make the Mekanism-only Program Researcher available without Mekanism. [docs: v0.10.10 source README]
+- Added claims above are source-inspected at the immutable commit, not observed in TMM. Exact pinned JAR parity, guide access/page tree, alternative no-Mekanism program routes, item recipes/material sources, and client/server acceptance remain open.
+
 ## Revision notes
 
 - 2026-11-16 — Added a source-backed partial profile for the enabled beta addon. Recorded no-Mekanism TMM mode, incomplete research/Ideaspace Storage and policy concern. No quest, runtime or config files changed.
+- 2026-11-16 — Reconciled the profile to immutable source commit `ebb3d3c28bb1f41790ccb7cd6bbcff31889d2363`: added the 19 default unlock IDs, exact research recipe catalog, default lock/config behavior and Ideaspace storage limits/persistence. The no-Mekanism alternative research route and exact JAR/guide match remain unresolved; no quest/runtime changes.
