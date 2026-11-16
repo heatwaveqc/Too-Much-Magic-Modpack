@@ -622,18 +622,18 @@
     {
       "id": "form.vampire_acquire",
       "area": "Transformations and Monk",
-      "title": "Conventional vampirism versus Lilith ascension",
-      "state": "in_progress",
-      "acceptance": "Infection gives ordinary vampire; Lilith blood upgrades one way to dual JAWR/Vampirism behavior; no fang infection path",
+      "title": "JAWR-only vampire acquisition",
+      "state": "planned",
+      "acceptance": "JAWR native infection, progression and cure work without TeamLapen",
       "source": "docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md",
       "evidence": ""
     },
     {
       "id": "form.blood",
       "area": "Transformations and Monk",
-      "title": "Unified blood spending, drinking and damage",
-      "state": "player_partial",
-      "acceptance": "Native JAWR debits common blood pool; feeding by both providers restores; damage drains correctly; no underflow",
+      "title": "JAWR-native blood accounting",
+      "state": "planned",
+      "acceptance": "JAWR alone owns blood feeding, healing and debit; no mirrored pool",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },
@@ -649,18 +649,18 @@
     {
       "id": "form.cure",
       "area": "Transformations and Monk",
-      "title": "Any vampire cure clears all providers",
+      "title": "JAWR vampire cure",
       "state": "planned",
-      "acceptance": "Every cure clears Vampirism and JAWR vampire attributes/skills/diet/sun penalties without stale state",
+      "acceptance": "JAWR cure clears native vampire state and skills, not an extra faction",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
     {
       "id": "form.sunlight",
       "area": "Transformations and Monk",
-      "title": "Vampire Forest shade and true sunlight rules",
+      "title": "JAWR sunlight and protection",
       "state": "planned",
-      "acceptance": "JAWR respects Vampirism Vampire Forest sunlight behavior, including boundaries, roofs and dimensions",
+      "acceptance": "JAWR sunlight works without the discontinued Vampire Forest",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
@@ -676,9 +676,9 @@
     {
       "id": "form.werewolf",
       "area": "Transformations and Monk",
-      "title": "Werewolves addon faction and skill progression",
-      "state": "server_smoked",
-      "acceptance": "Transform, skill unlock, hunger, full moon, reversals and world restart verified",
+      "title": "JAWR lycanthropy",
+      "state": "planned",
+      "acceptance": "JAWR lycanthrope, moon behavior, food, cure and relog work without Werewolves addon",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
@@ -712,18 +712,18 @@
     {
       "id": "monk.sunset",
       "area": "Transformations and Monk",
-      "title": "First Sunset rite and faction initialization",
-      "state": "player_pass",
-      "acceptance": "10s westward Overworld sunset unarmored gaze joins Monk and provides Step Assist; repeat no duplicates",
+      "title": "Standalone Monk First Sunset",
+      "state": "planned",
+      "acceptance": "Sunset joins native Monk progression path",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
-      "evidence": "docs/USER-TEST-LEDGER-2026-11-14.md"
+      "evidence": ""
     },
     {
       "id": "monk.tree",
       "area": "Transformations and Monk",
-      "title": "Monk native skill-tree initial branch",
-      "state": "player_partial",
-      "acceptance": "Open actual Vampirism faction UI; Step Assist root and early mastery nodes purchase and persist",
+      "title": "Standalone Monk native tree",
+      "state": "planned",
+      "acceptance": "tmm_progression skills and XP persist; no Vampirism faction UI",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },

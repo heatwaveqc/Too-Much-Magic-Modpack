@@ -15,7 +15,6 @@
     "deeperdarker:sculk_stone",
     "pastel:downstone",
     "pastel:hummingstone",
-    "vampirism:dark_stone",
     "astralsorcery:marble_raw",
     "pastel:basal_marble",
     "primalmagick:marble_raw",
@@ -48,8 +47,7 @@
   "harvested_stone_variants": [
     "pastel:cobbled_blackslag",
     "deeperdarker:cobbled_sculk_stone",
-    "deeperdarker:cobbled_gloomslate",
-    "vampirism:cobbled_dark_stone"
+    "deeperdarker:cobbled_gloomslate"
   ],
   "vanilla_natural_stones_not_already_in_galore": [
     "minecraft:deepslate",

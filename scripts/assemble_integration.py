@@ -148,11 +148,18 @@ def main() -> None:
     # Dragon diets only work if the actual dragon JAR is installed.
     from pin_next_test_mods import activate as pin_next_test_mods
     pin_next_test_mods(ROOT, manifest)
+    # Late-stage policy supersedes older donor branch resources.
+    # Run after imports and exact pinning, otherwise the assembler can revive them.
+    from retire_teamlapen import retire
+    retire(ROOT, manifest)
+    git("add", "-A", "--", "mods", "config", "defaultconfigs", "kubejs",
+        "manifest/quest_chapters.json", "manifest/feature-checklist.json",
+        "manifest/stone_generation_policy.json", "manifest/material-ore-audit.json")
     git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
         "kubejs/server_scripts/tmm_magic_core_thrift.js",
         "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml",
         "mods/dragon-survival.pw.toml", "mods/comforts.pw.toml",
-        "mods/colorful-hearts.pw.toml", "mods/vampires-delight.pw.toml")
+        "mods/colorful-hearts.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
     # Every packwiz reference must be in the GIT INDEX, not merely the CI

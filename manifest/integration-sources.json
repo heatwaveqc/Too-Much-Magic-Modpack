@@ -4,16 +4,6 @@
   "channel": "integration",
   "streams": [
     {
-      "name": "vampire-bridge",
-      "branch": "feature/mob-alliance-neutrality",
-      "paths": [
-        "compat/transformations/",
-        "defaultconfigs/vampirism-server.toml"
-      ],
-      "mode": "compile-and-load",
-      "note": "Current one-way Lilith Vampire Ascension v2 plus experimental mob targeting/census on feature/mob-alliance-neutrality; latest branch replaces removed Minecraft MobType/getMobType check with EntityTypeTags.UNDEAD for 1.21.1. This is one compiled transformation JAR; client behavior, sunlight, cures, AI provocation remain UNTESTED. 2026-11-15: add pre-alpha-default-enabled Archlich phylactery-first native death arbitration on the same transformation module; experimentalArchlichPhylacteryFirst=true by default. Priority HIGHEST; exact Goety 3.2.2 + Forbidden Magic 0.5.37 API required. No dual-lich client acceptance yet."
-    },
-    {
       "name": "quest-standards-and-starter-choice",
       "branch": "feature/ars-quest-pilot",
       "paths": [
@@ -62,23 +52,16 @@
         "config/almostunified/",
         "config/neovitae/materials.json",
         "kubejs/server_scripts/material_unification.js",
-        "kubejs/server_scripts/material_processing_cleanup.js",
         "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
-        "kubejs/server_scripts/silver_equipment_unification.js",
-        "kubejs/startup_scripts/silver_equipment_stats.js",
         "mods/almostunified.pw.toml",
-        "manifest/material-ore-audit.json",
-        "scripts/verify_materials.py",
-        "scripts/verify_silver_equipment.py",
         "scripts/check_silver_conflicts.py",
-        "scripts/check_final_processing_recipes.py",
-        "scripts/check_runtime_material_tags.py"
+        "scripts/check_final_processing_recipes.py"
       ],
       "manifest_mod_ids": [
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Latest canonical Neo Vitae dust target branch; retains earlier silver-equipment, AU and processing dedup work; new KubeJS paths and static verifier. Do not assume live registry or final exported recipes without player test."
+      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch."
     },
     {
       "name": "mahou-catalyst-exchange-neo-dust",
@@ -99,19 +82,6 @@
       ],
       "mode": "runtime-experimental",
       "note": "Prototype only, not the finished universal MXP implementation"
-    },
-    {
-      "name": "monk-faction",
-      "branch": "fix/monk-tree-data-registry-2026-11-15",
-      "paths": [
-        "compat/monk/"
-      ],
-      "mode": "compile-and-load",
-      "note": "NEXT QA: compiled Monk pre-tree repair stream. Vampirism 1.10 plural skill-tree/node paths and level-1 faction predicate; one native SP at joining, rank-one choice Open Palm/Poise/Stone Fist, Step Assist moved behind Fleet Footwork. HT TreeChop final-fell confirmed logs credited per removed log (up to 256); player-attributed barehand training and Roots/Ars/Iron's magic-focus breaks credited; no conventional-tool XP. Static Monk Gradle unit tests passed; mandatory disposable client tests: native skill UI/purchase, actual first SP, Stone Fist, tree logs, spell break attribution. Global Tyz/MXP remains independent; do not mark playable until client QA.",
-      "manifest_mod_ids": [
-        "dragon-survival",
-        "tyzs-skills"
-      ]
     },
     {
       "name": "mxp-hexcast-contract",
@@ -198,29 +168,22 @@
       "name": "next-qa-dragon-comforts-hearts-pins",
       "branch": "feature/next-qa-dragon-comforts-hearts-pins",
       "paths": [
-        "scripts/pin_next_test_mods.py",
-        "scripts/verify_next_test_roster.py",
         "scripts/audit_jawr_food_jar.py"
       ],
       "mode": "runtime-experimental",
-      "note": "Mandatory next full QA: resolve fixed Dragon Survival v2.0.74 CF 420799/9539454, GeckoLib already installed, Comforts NeoForge Modrinth 3kpPjcTc, Colorful Hearts client-only Modrinth us0gze50 and explicitly approved Vampire's Delight 0.1.12b BETA Modrinth 9Vo2deFq/oe9B4zXP; write exact checked packwiz hashes and include in immutable snapshot, server smoke; not accepted in client until human tests. The JAWR bytecode audit is read-only and not proof of hunger mechanics.",
+      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight.",
       "manifest_mod_ids": [
         "vampires-delight"
       ]
     },
     {
-      "name": "werewolf-food-relics-compat",
-      "branch": "feature/werewolf-food-tag-compat",
+      "name": "standalone-monk-hunter-progression",
+      "branch": "feature/progression-chassis-hunter-monk-capabilities-2026-11-15",
       "paths": [
-        "kubejs/data/werewolves/tags/item/werewolf_food.json",
-        "kubejs/data/werewolves/tags/item/raw_fish.json",
-        "kubejs/data/werewolves/tags/item/cooked_fish.json",
-        "kubejs/data/werewolves/tags/item/raw_food.json",
-        "kubejs/data/werewolves/tags/item/cooked_food.json",
-        "scripts/verify_werewolf_food_tags.py"
+        "compat/progression/"
       ],
-      "mode": "runtime-experimental",
-      "note": "Fix Relics 0.12.5 missing relics:infinity_ham required reference by replacing only werewolves:werewolf_food with native defaults plus optional ham, and bridge raw/cooked fish/meat tags for Aquaculture and Farmer's Delight. Verify no tag loader errors and actual Werewolves hunger after combined smoke; no lich hunger patch in this stream."
+      "mode": "compile-and-load",
+      "note": "Standalone native tmm_progression module replaces old Vampirism-backed Monk, implements Hunter and Monk pilot datapacks, native XP and QA commands. Not in-world tested and not all supplemental feature branches are included."
     }
   ],
   "covered_by_baseline": {
@@ -260,29 +223,30 @@
     "feature/lilith-ascended-vampire": "Vampire Ascension v2 parent fully retained by feature/mob-alliance-neutrality, which adds controlled mob-target neutrality/census. Do not import the parent separately.",
     "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice.",
     "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source.",
-    "feature/diamond-graphite-furnace-compat": "Owner removed Bigger Reactors original/Rework on 2026-11-15. Do not import this KubeJS graphite recipe, its tests, or reference removed mod IDs. Closed superseded PR #53."
+    "feature/diamond-graphite-furnace-compat": "Owner removed Bigger Reactors original/Rework on 2026-11-15. Do not import this KubeJS graphite recipe, its tests, or reference removed mod IDs. Closed superseded PR #53.",
+    "feature/mob-alliance-neutrality": "Archived TeamLapen transformation bridge, excluded from new test",
+    "fix/monk-tree-data-registry-2026-11-15": "Old Vampirism faction-based Monk, replaced by standalone",
+    "feature/werewolf-food-tag-compat": "Old Werewolves tag workaround retired",
+    "feature/monk-standalone-json-parity-pass-2026-11-15": "Supplemental draft, not imported over core",
+    "feature/monk-classic-trials-functional-xp-2026-11-15": "Supplemental draft, not imported over core",
+    "feature/monk-bedrock-rest-2026-11-15": "Supplemental draft, not imported over core",
+    "feature/hunter-mutagenic-brew-persistent-mutations-2026-11-15": "Hunter supplement pending merge into core",
+    "feature/hunter-starter-skills-xp-audit-2026-11-15": "Hunter supplement pending merge into core",
+    "feature/hunter-specialty-health-potion-xp-witcher-2026-11-15": "Hunter supplement pending merge into core",
+    "feature/hunter-venom-enrollment-2026-11-15": "Hunter supplement pending merge into core"
   },
   "pending_runtime_work": [
-    "Vampire's Delight auto-download: previous index.toml referenced mods/vampires-delight.pw.toml but immutable Git snapshot omitted that file. Stage generated metafile, reject any untracked indexed path and verify immutable tag path is present.",
     "BLOCKER: do not reinstate kubejs/server_scripts/mahou_neo_vitae_catalyst_exchange.js: global dropped-item tick costs and proxy item lifecycle are unacceptable. Replace with scoped native Mahou Catalyst Exchange scanner patch; preserve native mana/consumption and no item duplication.",
-    "Regression for 2026-11-14 first-world KubeJS Catalyst Exchange crash now mandatory in CI: Akashic Tome item tick, boxed Java false/true, native-only dust proxy and restore. QA-only Vampire Ascension flags set TRUE in defaultconfigs for new worlds and asserted from world/serverconfig after server boot; operator-only forced cure stays FALSE.",
-    "NEW mob-alliance prototype on current vampire bridge: undead should not proactively attack vampires/lich, while retaliation and exempt bosses remain valid; forest dragon-fae and cave dragon-demon attitudes are tag-driven and may have no matching dragon entity IDs yet. No gameplay acceptance until in-world tests.",
     "NEXT QA MUST HAVE: Dragon Survival v2.0.74, its Sea/Forest/Cave food compatibility scripts, Comforts and client-only Colorful Hearts all hash-pinned and installed. Server smoke must pass; client gameplay remains unverified.",
-    "NEW Vampire Ascension v2 selected instead of old symmetric acquisition: normal Vampirism-only infection, one-way Lilith upgrade into JAWR/Vampirism, JAWR authoritative blood/hunger, both native cure paths, disabled fangs and vampire forest shelter. Gameplay confirmation mandatory.",
     "MXP full-source hook branch is present but not runtime-installed; validate real spent resource debits/multi-cast ordering, then compile and package only after explicit test approval.",
     "NEXT FULL QA: ProjectE Stone boss-trophy center and MK3+ Power Flower Chaos-Shard recipes staged from feature/projecte-boss-trophy-stone-and-emc-audit. Validate both Stone layouts and all high-tier direct recipes + red upgrade in live JEI/crafting. Mine Key also comes from Neo Vitae mine spawners, so it is an item route, NOT proof of a Foreman kill.",
     "EMC COMPLETENESS: each actual registered item must have positive EMC except approved cheap glass panes. Audit against SAME-BUILD full registry plus post-mapping ProjectE EMC; fill all missing IDs and test conversion loops. No auto-values until exports.",
-    "Monk early-mastery branch selected for compile-and-load in next integration build; its Tyz Monk prototypes remain INACTIVE pending server-side Tyz form gates. Native Monk cultivation XP is separate from global Tyz XP.",
     "NEXT INTEGRATION QA: automatically resolve and hash-pin EXACT Tyz 6.4.2, stage regular Core Magic first-wave, and remove Pufferfish Skills; hard-fail publication on any missing pin, leftover Pufferfish Skills, missing category/skill, or server boot failure. Preserve Pufferfish Attributes until dependency audit.",
     "Tyz native XP from mining/kills/crafting/etc is disabled. The global MXP spend dispatcher and 1.2^P normalization remain a BLOCKER to survival progression; use explicit admin Tyz XP grants only for preliminary tree tests. Future external-tier, Monk and form purchase/refund/direct-grant gates are NOT shipped.",
     "New five-form Tyz trees and external locks are currently design-only",
-    "JAWR/Vampirism acquisition, blood and cure behavior remain in-world experiments",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
-    "New first Monk slice: 10s Overworld sunset gaze and Step Assist are compiled but must be tested in a disposable client world for eligible/non-eligible cases, persistence, gear and full transformation exclusions.",
-    "Player-tested PASS (2026-11-14): quest book, starter-choice interface, Quest Shop coin button, quest rewards, FTB Essentials /sethome and /rtp, QoL functions. Vampirism tests ongoing. Monk user-reported FAIL: no sunset progress, no resulting Monk skill tree/UI; investigate with B15 diagnostic/testjoin.",
     "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
-    "Monk B15 adds operator /tmmmonk diagnose and /tmmmonk testjoin to split sunset-condition failure from skill tree/UI. These are QA only; no inference of playable Monk tree until runtime verified.",
     "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending.",
     "NEXT INTEGRATION QA: import the separate Mahou Catalyst Exchange KubeJS dropped-item bridge from feature/mahou-catalyst-exchange-kubejs. Test no-mana and partial-stack preservation, exact one-item output and mana charges, native Mahou powders, client item synchronization and relog. Branch CI/server smoke is not gameplay validation; do not promote until passed.",
     "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA.",
@@ -290,12 +254,11 @@
     "Quest reward humor cleanup on selected quest branch: 61 item payout updates, XP and IDs unchanged; 42 scaffold checkmarks remain transitional. Test client rewards, one intentional Farmer's Delight Cooking Pot bowl, and no filler paper/cookies/compasses/XP bottles.",
     "Starter-path explorer gift switched from generic compass to useful spyglass in active quest source. Re-test Claim All and once-per-player choice with new client import; do not duplicate claims on existing players.",
     "Dragon Survival diet compatibility is a new runtime-experimental stream. Test common-tag expansion for every Pam crop/fruit, data-map precedence, fruit preserves, Sea fish & non-rice sushi, native cooked-to-charred recipes and absence of raw-fish/coal shortcuts, effects, and strict grain/cooked negatives; compare diet snapshot with exact Dragon Survival 2.0.74 jar. No claim of in-game acceptance.",
-    "NEXT ALL-STREAM QA: install Vampire's Delight NeoForge 1.21.1 0.1.12b BETA (explicit owner approval, only this exact version). Inspect JAWR 0.5.39 and Forbidden Magic 0.5.37 bytecode evidence artifact; test JAWR werewolf and lich separately for meat/fish/berries/cooked meals/potions, food values and hunger/exhaustion, then cross-test with Vampirism Werewolves and Vampire's Delight. No automatic conclusions about JAWR diet before a disposable-world check.",
-    "NEXT QA: Werewolves food compatibility with Relics. Require no TagLoader failure on werewolves:werewolf_food (formerly missing relics:infinity_ham); verify Aquaculture raw/cooked fish, Farmer's Delight raw/cooked meats, native berries and Not Meat? skill. Archlich food value 17/saturation 0 is a separate design candidate, not shipped; verify Goety/JAWR hunger/regen/death hooks first.",
     "ARCHLICH TARGET / NEXT QA: `tmm_transformations` module now includes pre-alpha-default-enabled JAWR-phylactery-first native LivingDeathEvent dispatch and Goety Arca fallback. In disposable world verify experimentalArchlichPhylacteryFirst=true in tmm_archlich-server.toml, then prove charged greater/lesser JAWR souls debit once and credit progression; empty JAWR pool falls back to Arca without JAWR charge; missing both anchors dies normally. Verify no double health/teleport, native Soul Hunger, dimension changes and relog. Default enabled for fresh disposable pre-alpha QA worlds; disable manually in any saved test-world serverconfig if needed. Not yet client-accepted. Shared 17 hunger/0 saturation and two cure systems remain separate proposed work.",
     "DRACOLICH TARGET (pre-alpha investigation): a Dragon Survival Cave/Forest/Sea dragon plus exactly ONE lich source (Goety OR JAWR Forbidden Magic), never both. Keep Dragon Survival species, size/growth/abilities and magic resource; retain chosen lich native death anchor (Goety Arca or JAWR phylactery) and hunger behavior rather than inventing a third one. Inspect Dragon Survival OnDeath.trigger passive healing, hunger-effect abilities, player respawn and all 6 source combinations; test unifying visual undead state and native healing/cure separately. Do not alter Dragon Survival diets or global nutrition for ordinary dragons.",
     "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up.",
     "Alex's Caves Continued 1.1.2 and CodxLib 1.5.1 are PLANNED, NOT INSTALLED. Draft PR #56 contains valid stage pin metadata but must have all BiggerReactors uranium worldgen and recipe bridges stripped before future integration; don't overwrite B13 packwiz/index/manifest with staged snapshots.",
-    "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts."
+    "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts.",
+    "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction and transformation bridge excluded. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active."
   ]
 }
