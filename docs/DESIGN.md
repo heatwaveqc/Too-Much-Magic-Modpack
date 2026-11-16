@@ -12,6 +12,16 @@ Apotheosis, Artifacts/Relics and supernatural dungeons/bosses fit the power curv
 ## Exceptional technology
 **2026-11-15 owner decision:** remove Bigger Reactors original and Rework. Draconic Evolution supplies the dedicated furnace-fuel generator, FE storage/transfer and dangerous endgame reactor; Botania Revived converts mana to FE with its Mana Fluxfield. Psi, Hex Casting and other magic systems may also supply FE, but require exact-version research before promising output rates. No separate nuclear/uranium tech progression or generic FE/logistics stack. Preserve real Draconic endgame material gates, not the obsolete reactor-uranium plan.
 
+## Approved dimension expansion — next owner-authorized comprehensive test (2026-11-16)
+
+**Owner-locked selection, not installed yet.** Attempt to resolve, hash-pin, and stage all of the following together for the next comprehensive unstable integration test, subject to exact Minecraft 1.21.1 NeoForge releases, dependencies, conflicts, and authorized test stages. No unattended server boot or Prism build is authorized by this decision.
+
+- **Nine new mods/addons:** The Aether; Deep Aether (addon to Aether, not separate dimension); The Bumblezone; Dive Into the Abyss; Eternal Starlight; The Twilight Forest; The Aurorian (unofficial port); Voidscape; Liroth: Revamped.
+- **Already installed:** Deeper and Darker (1.4.1); retain it, verify Otherside progression in client QA.
+- **Explicitly deferred / not selected:** Dimensional Dungeons (Neo Vitae already provides endless procedural dungeons; reconsider only for puzzle-specific gameplay); Realms of Redemption (reserve); Undergarden; Blue Skies; Advent of Ascension.
+- **Twilight Forest endgame:** replace the unfinished Final Castle climax with an intentionally dangerous **Killer Rabbit of Caerbannog** encounter and a real quest/trophy completion path. The separately staged Caerbannog/Chaos Bunny Gateways prototype is *not* confirmation that this final-castle encounter exists. Preserve upstream Twilight boss progression; do not claim complete until an actual rabbit final encounter is tested.
+- **Acceptance for the new cohort:** exact official files and compatible libraries, clean dedicated-server co-load, fresh-world generation, portal round trips/re-entry, meaningful content/bosses and quest access, multiplayer/dimension-save restart, performance/structure density, and mobility/teleport/flight bypasses. These are QA tasks, not claimed PASSes.
+
 ## World and loot
 Rich exploration via Cataclysm, Stalwart/Starlight themed structures and Deeper and Darker where compatible. **Alex's Caves Continued** is approved as *planned* exploration content on NeoForge 1.21.1, with required CodxLib; exact pins are on staging PR #56, but neither mod is currently installed. Evaluate early exploration density and performance. Review and block game-breaking single-hit artifacts in normal loot, not just crafting.
 

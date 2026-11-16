@@ -18,6 +18,18 @@
   "note": "B8 client test metadata: 140 exact pinned mods (127 dedicated-server/both-side, 13 client-only). Server smoke PASS; Simple Backups is installed on both client and server for singleplayer, and is explicitly beta. Market magic seed trades and GUI remain untested; Waystones excluded.\nOwner decision 2026-11-13/14: Re:Avaritia and Extended Crafting were originally on hold and unintentionally pinned in B5/B8; excluded from current pack, 138 instead of 140 pinned. B5/B8 earlier smoke reports still describe their historic snapshots, not this candidate.\n2026-11-14: owner approved Quest Shop and Cooking for Blockheads; 138 pinned until B11 resolution; two desired-but-not-pinned entries. Fixed thematic item rewards remain primary. Currency substitute permitted only when no suitable item exists, including consumed resource-selling quests; ProjectE-based material money-printing is permitted.\nB11 completed 2026-11-14: Quest Shop 1.4.0 + Cooking for Blockheads 21.1.24 hash-pinned. GitHub Actions 43610383608 downloaded/verified 127 server-side JARs and reached NeoForge Done with 140 pins. Exact client/gui/claim tests pending.\n2026-11-14 B12: user reported missing trash slot; relic-like eternal steak absent because Relics disabled and Reliquified addon absent; wants repeated tree chopping and accelerated leaf decay. Add exact six approved desired entries including required OctoLib, and hold active status pending exact Modrinth resolution/server smoke. Preserve existing Artifacts and Reliquary separately.\nB12 dependency audit: Leaves Be Gone explicitly REQUIRES Puzzles Lib on NeoForge. Added approved necessary library, seven total B12 pins, expected active 147.\nB12 resolved: 7 exact official NeoForge 1.21.1 files (TrashSlot, TreeChop, Leaves Be Gone, Relics, Reliquified Artifacts, OctoLib, Puzzles Lib). 147 total active pins; actual server/Prism runtime verification pending.\nB12 verification 2026-11-14: Actions run 43625296741 PASS: exact 7 NeoForge 1.21.1 SHA512-pinned official Modrinth files, 147 total mods, fresh combined NeoForge dedicated-server smoke exit 0, pinned Prism import artifact 14126160245. Client/GUI and vampire/Reliquified gameplay still untested.\n2026-11-15 B13: owner approved Crystalix, Beachparty, Rechiseled, Brewin' and Chewin', Let's Do Furniture, Cocktails Delight (six), with necessary Core/Config/Fusion libs. FramedBlocks, Effortless Building and Building Gadgets declined. Formation Wand standalone duplication retired (Astral's native Formation + Conversion Wands). Files remain pending exact packwiz resolution and fresh runtime test.\nB13 resolved nine exact pins (six gameplay + three libraries); server/client tests still pending.\nB13 combined dedicated-server smoke PASS; client/world, glass behavior and balance remain unverified.\n2026-11-15 owner decision: remove original Bigger Reactors + Rework from active/planned roster and quests; keep Draconic and magical FE. Alex's Caves Continued 1.1.2 plus CodxLib 1.5.1 approved as PLANNED, NOT installed. PR #56 contains reusable future exact pins but its BiggerReactors uranium bridge is obsolete.\n2026-11-15 B14: owner approved CC: Tweaked, selected Modrinth 1.121.0 NeoForge 1.21.1 beta. Added pilot recipes for Eldritch Logic Core (Ancient Eldritch Miner exclusively) gating computers, and Spirit Fire conversion of End Draconium Ore to Iesnium Ore. Not runtime-verified; Silk Touch is needed to preserve End Draconium Ore as a block item.\nB15: owner-approved Cobblegen Galore 0.2.9 on top of CC: Tweaked B14; preserve original CC/IESNIUM recipes; no Shale Galore recipe and no unrelated Summoning Rituals removal.\nB15 pinned exactly one Galore 0.2.9 release, no other mod files changed.\nB15 combined real server smoke PASS, full hash-pinned JAR stone inventory generated. Client/worldgen and measured TPS gains remain unverified.\nTEST RETIREMENT (2026-11-15): TeamLapen Vampirism, Werewolves and Vampire's Delight excluded from next integration. Standalone tmm_progression compiled as first-party test JAR.",
   "mods": [
     {
+      "id": "aether",
+      "name": "The Aether",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/aether",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified."
+    },
+    {
       "id": "akashic-tome",
       "name": "Akashic Tome",
       "category": "qol",
@@ -632,6 +644,18 @@
       "packwiz_slug": "databank"
     },
     {
+      "id": "deep-aether",
+      "name": "Deep Aether",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/deep-aether",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility."
+    },
+    {
       "id": "deeper-darker",
       "name": "Deeper and Darker",
       "category": "adventure",
@@ -655,6 +679,18 @@
       "dependencies_verified": true,
       "packwiz_slug": "default-options",
       "note": "Balm-backed client defaults. All nonvanilla keys require a fully loaded inventory export before the Default Options keybindings.txt can be safely generated; never overwrite personally chosen controls."
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "name": "Dive Into the Abyss",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/dive-into-the-abyss",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved six-temple dark-fantasy dimension for next authorized unstable QA; verify exact release pin, dependency closure, bosses/progression and dimension travel."
     },
     {
       "id": "draconic-evolution",
@@ -757,6 +793,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "entityculling"
+    },
+    {
+      "id": "eternal-starlight",
+      "name": "Eternal Starlight",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/eternal-starlight",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved magical dimension for next authorized unstable QA. Official release remains pre-1.0; test complete available progression and ensure compatibility before acceptance."
     },
     {
       "id": "evilcraft",
@@ -1311,6 +1359,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "lionfish-api"
+    },
+    {
+      "id": "liroth-revamped",
+      "name": "Liroth: Revamped",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/liroth-revamped-neoforge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance."
     },
     {
       "id": "lithostitched",
@@ -2071,6 +2131,30 @@
       "packwiz_slug": "tectonic"
     },
     {
+      "id": "the-aurorian-unofficial-port",
+      "name": "The Aurorian (unofficial port)",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-aurorian-unofficial-port",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved experimental fantasy dimension for next authorized unstable QA. An unofficial port, so confirm exact 1.21.1 NeoForge artifact, license/provider, dependencies, bosses and runtime maturity."
+    },
+    {
+      "id": "the-bumblezone",
+      "name": "The Bumblezone",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-bumblezone-forge",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved fantasy bee dimension for next owner-authorized comprehensive unstable QA. Resolve exact 1.21.1 NeoForge pin and dependencies; test bee interactions, portal travel, and worldgen."
+    },
+    {
       "id": "theurgy",
       "name": "Theurgy",
       "category": "magic",
@@ -2135,6 +2219,18 @@
       "packwiz_slug": "treechop"
     },
     {
+      "id": "twilight-forest",
+      "name": "The Twilight Forest",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved for next unstable QA despite unfinished Final Castle. DESIGN TARGET: custom Killer Rabbit of Caerbannog as finale with meaningful completion trophy/quest. Separate existing Caerbannog Gateways prototype is not proof final boss wired. Do not silently install unrelated Castle Keeper addon."
+    },
+    {
       "id": "tyzs-skills",
       "name": "Tyz's Skills",
       "category": "skills",
@@ -2172,6 +2268,18 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "valhelsia-core"
+    },
+    {
+      "id": "voidscape",
+      "name": "Voidscape",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved hostile Void fantasy dimension for next authorized unstable QA; confirm exact release pin/dependencies, travel, void effects, compatibility with other dimensions."
     },
     {
       "id": "witchery-remake",
