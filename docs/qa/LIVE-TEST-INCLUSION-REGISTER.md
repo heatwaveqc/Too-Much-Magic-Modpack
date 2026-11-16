@@ -116,3 +116,14 @@ See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is 
 | C16 | `dragonsurvival:bottle_caps_treasure` | **Conditional only** on `desert_monster_ds` being installed. Currently absent from checked-in roster; when absent record NOT BUILT/NOT APPLICABLE, do not install the addon. If included in a later build, investigate >9-slot shapeless recipe behavior, leave unchanged. |
 
 No full smoke, build, or client run is authorized by this intake note.
+
+
+## Newbie Mode and Smart Keep Inventory (2026-11-16)
+
+| Source | Inclusion target | Actual state | Required next test |
+| --- | --- | --- | --- |
+| `feature/newbie-mode-smartkeep-2026-11-16` / [issue #236](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/236) | TMM per-player Newbie/Regular attachment, new checkmark quest with per-player command reward, native faction veto, Regular-only travel command denial, `canEarnMxp` contract | **SOURCE STAGED — ATTEMPT REQUIRED**. Requires a rebuilt `tmm_progression` JAR and integrated quest client QA; independent MXP integration not complete | Newbie join/graduate/respawn/relog; 2-player FTB Team; first-time vs old player; travel commands; native joins, plus connect actual MXP dispatcher |
+| Smart Keep Inventory 1.21.1-1.0.1 NeoForge (Modrinth `JqVOLkFB` / CF `7530253`) | Server-side per-player inventory/XP keep with `tmm_newbie` tag; disable stock boss rule; leave Corail Tombstone 9.5.6 intact | **SELECTED DEV TARGET, NOT HASH-PINNED / NOT INSTALLED**. Datapack condition source added and packwiz-indexed, but cannot work until exact binary is pinned | Verify official hash/packwiz source; test Newbie/no grave and Regular/Corail grave on boss/ordinary deaths with curios, XP, logout and no duplicates |
+| Tyz 6.4.2 `keepsake` / Safekept override | Disable inventory-slot copier with `active: false` and stage alongside Monk skill overlay | **SOURCE STAGED — ATTEMPT REQUIRED**; must confirm overlay appears in final assembled config | Skill absent in UI, no auto-restored duplicate items, purchased ranks/migration assessed |
+
+No full smoke or Prism build authorization is implied. See [implementation handoff](../NEWBIE-MODE-IMPLEMENTATION-2026-11-16.md).
