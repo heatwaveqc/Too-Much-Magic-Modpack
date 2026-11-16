@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Manifest ID / actual mod ID | psi / \`psi\` |
-| Category / parent or addons | Magic; spell-programming system. Installed addon: Psi: Tweaks and Additions (separate profile required) (separate profile required). |
-| MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM \`test/full-integration\` |
-| Pinned version / artifact / hash | \`mods/psi.pw.toml\`; \`Psi-neoforge-1.21.1-110.jar\`; Modrinth project \`pOeA0exL\`, version \`j9TFdTKC\`; SHA512 \`2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a\` [pin] |
-| Source snapshot | Official \`VazkiiMods/Psi\` tag \`release-1.21.1-110\`; its \`gradle.properties\` declares MC 1.21.1, mod ID \`psi\`, version 110. Tag commit SHA and artifact equivalence were not established; source is version-aligned, not proof of JAR provenance. |
+| Manifest ID / actual mod ID | psi / `psi` |
+| Category / parent or addons | Magic; spell-programming system. Installed addon: Psi: Tweaks and Additions (separate profile required). |
+| MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM `test/full-integration` |
+| Pinned version / artifact / hash | `mods/psi.pw.toml`; `Psi-neoforge-1.21.1-110.jar`; Modrinth project `pOeA0exL`, version `j9TFdTKC`; SHA512 `2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a` [pin] |
+| Source snapshot | Official `VazkiiMods/Psi` tag `release-1.21.1-110`; its `gradle.properties` declares MC 1.21.1, mod ID `psi`, version 110. Tag commit SHA and artifact equivalence were not established; source is version-aligned, not proof of JAR provenance. |
 | Guide/documentation version gap | Official overview describes a leveling system with in-game documentation/tutorials; official Codex page says it mirrors the in-game Encyclopaedia opened by the Psi master keybind. The web Codex could not be retrieved; exact 1.21.1 guide entries, unlock conditions and names remain unverified. |
 | Profile status | researching |
 | Evidence reached | Exact packwiz pin; official upstream release tag metadata; official project overview, FAQ and changelog; no direct JAR inspection or client test |
@@ -160,7 +160,7 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 
 ## Conflicts, limitations and version drift
 
-- The pinned artifact is 1.21.1-110. The upstream release tag \`release-1.21.1-110\` declares mod version 110 in Gradle metadata, but the exact tag commit SHA was not retrieved and the artifact was not hash-inspected. [pin] [source: release tag metadata]
+- The pinned artifact is 1.21.1-110. The upstream release tag `release-1.21.1-110` declares mod version 110 in Gradle metadata, but the exact tag commit SHA was not retrieved and the artifact was not hash-inspected. [pin] [source: release tag metadata]
 - Source Gradle metadata says Patchouli 1.21.1-92; the pack pins Patchouli 1.21.1-93. The upstream README and Modrinth page say Patchouli is required. This is a minor dependency-version skew, not a verified incompatibility. [source: release tag README and Gradle metadata] [pin]
 - The upstream source metadata advertises NeoForge 21.1.207 or newer; the pack target is NeoForge 21.1.265. This is within the declared range, but compatibility was not tested. [source: release tag metadata] [pin]
 - The official changelog's detailed public entries are mostly old Minecraft-version series. Those entries are not used as proof of 1.21.1 recipes or mechanics.
@@ -169,10 +169,10 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 
 ## Evidence ledger
 
-| Claim / section | Source URL or exact inspected \`file:path\` + immutable SHA | Evidence tag / version of source | Pack version gap / what it proves / remaining limits |
+| Claim / section | Source URL or exact inspected `file:path` + immutable SHA | Evidence tag / version of source | Pack version gap / what it proves / remaining limits |
 | --- | --- | --- | --- |
-| Pack pin | \`mods/psi.pw.toml\` and \`manifest/mods.json\` in \`test/full-integration\` | [pin] version ID \`j9TFdTKC\`, SHA512 recorded above | Exact artifact identity, not artifact inspection |
-| Release metadata | [Upstream \`gradle.properties\`](https://github.com/VazkiiMods/Psi/blob/release-1.21.1-110/gradle.properties) | [source: tag \`release-1.21.1-110\`] | Declares MC 1.21.1, NeoForge baseline and mod version 110; tag SHA/JAR equivalence not established |
+| Pack pin | `mods/psi.pw.toml` and `manifest/mods.json` in `test/full-integration` | [pin] version ID `j9TFdTKC`, SHA512 recorded above | Exact artifact identity, not artifact inspection |
+| Release metadata | [Upstream `gradle.properties`](https://github.com/VazkiiMods/Psi/blob/release-1.21.1-110/gradle.properties) | [source: tag `release-1.21.1-110`] | Declares MC 1.21.1, NeoForge baseline and mod version 110; tag SHA/JAR equivalence not established |
 | Project gameplay overview | [Official Psi site](https://psi.vazkii.net/) | [docs: current official overview] | Confirms spell/action sequence, math/vector emphasis, tutorial/leveling concept; not complete recipe/progression guide |
 | In-game guide access | [Official Codex page](https://psi.vazkii.net/codex.php) | [docs: current official site] | Search result states web Codex mirrors in-game Encyclopaedia opened by master keybind; page could not be fetched to confirm exact text |
 | Dependency and sharing description | [Official Modrinth project page](https://modrinth.com/project/pOeA0exL) | [docs: current project description] | States Patchouli required; describes spell sharing/copying; not a pinned artifact audit |
@@ -188,7 +188,7 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 | Addon boundary | Compare base Psi and enabled Psi: Tweaks and Additions in disposable installs; test one addon-only component and import behavior without addon | Confirm which content belongs to base vs addon, compatibility errors and whether spell fails safely | Not run |
 | Sharing/import | Export a simple spell, import into same version, then try an unavailable-piece/version case | Confirm actual share format, validation/warning and whether imported data grants progression (not assumed) | Not run |
 
-**Status requirement:** keep \`researching\`. The progression graph, first recipe chain, guide page inventory, unlock triggers and casting resource/cost behavior are still mandatory unknowns. No gameplay tests were run.
+**Status requirement:** keep `researching`. The progression graph, first recipe chain, guide page inventory, unlock triggers and casting resource/cost behavior are still mandatory unknowns. No gameplay tests were run.
 
 ## Unknowns and next research
 
