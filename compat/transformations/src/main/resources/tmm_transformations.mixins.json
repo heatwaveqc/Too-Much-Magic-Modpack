@@ -10,7 +10,7 @@
     "VampirismBloodStatsMixin",
     "VampirismSunProtectionMixin",
     "BotaniaThermalilyNoCooldownMixin",
-    "BotaniaThermalilyTenEndoflamesMixin"
+    "BotaniaThermalilyFiftyEndoflamesMixin"
   ],
   "injectors": {
     "defaultRequire": 1
