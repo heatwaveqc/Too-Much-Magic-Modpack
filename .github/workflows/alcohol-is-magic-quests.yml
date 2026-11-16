@@ -1,12 +1,12 @@
 name: Alcohol is Magic - Compile and Smoke Quests
 on:
-  push:
-    branches: ['feature/alcohol-is-magic-reconciled']
-    paths:
-      - '.github/workflows/alcohol-is-magic-quests.yml'
-      - 'scripts/add_alcohol_quests.py'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke/build only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   author-validate-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 65
     steps:
