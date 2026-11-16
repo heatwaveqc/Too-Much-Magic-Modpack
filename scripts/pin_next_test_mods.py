@@ -130,9 +130,20 @@ def activate(root: Path, manifest: dict) -> None:
             raise ValueError(f"Already pinned: {path}; inspect before replacing")
         path.write_text(data, encoding="utf-8")
         if mod_id not in rows:
-            if mod_id != "colorful-hearts":
-                raise ValueError(f"Unapproved mod: {mod_id}")
-            row = {
+            if mod_id == "dragon-survival":
+                row = {
+                    "id": mod_id, "name": "Dragon Survival", "category": "supernatural",
+                    "desired": True, "version": "2.0.74",
+                    "release_status": "verified_release",
+                    "source": "https://www.curseforge.com/minecraft/mc-mods/dragon-survival/files/9539454",
+                    "enabled_in_pack": False, "dependencies_verified": False,
+                    "packwiz_slug": mod_id,
+                    "note": "Owner-approved next QA Dragon Survival v2.0.74; exact CurseForge file/GeckoLib pinned by this script",
+                }
+                manifest["mods"].append(row)
+                rows[mod_id] = row
+            elif mod_id == "colorful-hearts":
+                row = {
                 "id": mod_id, "name": "Colorful Hearts", "category": "qol",
                 "desired": True, "version": "10.5.9",
                 "release_status": "verified_release",
@@ -141,8 +152,10 @@ def activate(root: Path, manifest: dict) -> None:
                 "packwiz_slug": mod_id,
                 "note": "Approved client-only colored hearts test",
             }
-            manifest["mods"].append(row)
-            rows[mod_id] = row
+                manifest["mods"].append(row)
+                rows[mod_id] = row
+            else:
+                raise ValueError(f"Unapproved mod: {mod_id}")
         row = rows[mod_id]
         if not row.get("desired"):
             raise ValueError(f"Not approved: {mod_id}")
