@@ -61,3 +61,18 @@ Source links:
 - [Replication 1.21 Replica ore tag](https://github.com/Buuz135/Replication/blob/1.21/src/generated/resources/data/c/tags/item/ores/replica.json)
 - [Draconic Evolution 1.21 generated item tags](https://github.com/Draconic-Inc/Draconic-Evolution/tree/1.21/src/main/generated/data/c/tags/item)
 - [Angler's Hat default valuables tag](https://github.com/Octo-Studios/reliquified-artifacts/blob/1.21.1/src/main/resources/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json)
+
+## Iesnium eligibility — owner-approved (2026-11-16)
+
+**Keep Raw Iesnium and Raw Replica fishable.** The owner explicitly supports occasional high-tier material catches as a reward for raising the Angler's Hat to its rank-5 Treasure modifier; do not blacklist them for bypassing their normal acquisition routes. The existing `#c:raw_materials` inclusion is intentional, not a bug to "fix."
+
+**Occultism source confirmation (Minecraft 1.21.1):**
+
+- `src/generated/resources/data/c/tags/item/raw_materials/iesnium.json` contains `occultism:raw_iesnium`.
+- `src/generated/resources/data/c/tags/item/raw_materials.json` includes `#c:raw_materials/iesnium`.
+- The Angler's Hat valuables tag contains `#c:raw_materials`, so Raw Iesnium is eligible for Treasure replacement at rank 5. Its actual probability is determined by Treasure chance and the size of the fully resolved valuables pool; no standalone fixed Raw Iesnium rate is claimed.
+- There is no tag change necessary for Iesnium. Keep the whole raw-materials expansion and test representative drops in the next authorized live run; runtime data packs can change the final expanded pool.
+
+Sources:
+- https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/raw_materials/iesnium.json
+- https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/raw_materials.json
