@@ -161,7 +161,7 @@ def main() -> None:
         "scripts/validate_quests.py")
     git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
         "kubejs/server_scripts/tmm_magic_core_thrift.js",
-        "mods/puffish-skills.pw.toml", "mods/tyzs-skills.pw.toml",
+        "mods/tyzs-skills.pw.toml",
         "mods/dragon-survival.pw.toml", "mods/comforts.pw.toml",
         "mods/colorful-hearts.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
