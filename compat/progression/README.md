@@ -2,6 +2,8 @@
 
 **Status:** development slice; NOT yet approved for the integrated modpack. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
 
+> **Monk Tyz tree parity/cost policy (2026-11-15):** The pack's **Tyz** Monk tree (not this standalone module's **native** technique point ledger) must total approximately **10x the full-purchase SP of a standard non-Monk specialist tree** and confer **80–90% of the relevant final optimized TMM specialist attribute for every Monk-modified trait**; 85% is the preferred midpoint. Because the global MXP 1.2^P award normalization is on **lifetime MXP levels**, this is far beyond 10x nominal ordinary XP, subject to a playability/pacing simulation. See [design contract](../../docs/balance/MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md). The standalone powers may remain baseline/native and are not charged as Tyz ranks unless explicitly migrated; do not edit this pilot JSON based on Tyz-cost economics alone. **Specification only.**
+
 ## Goal and ownership
 
 This is a **reusable engine** for data-defined player disciplines such as Monk and Hunter, not a new version of the Vampirism-based Monk pilot and not a Tyz skill wallet. A discipline should primarily be a datapack path plus **occasional reusable Java effect handlers** rather than handwritten progression code. No mandatory Monk, Hunter, Vampirism, Werewolves, JAWR, Curios or Tyz dependency. The pack-global MXP/Tyz wallet remains separate.
