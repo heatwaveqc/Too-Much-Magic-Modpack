@@ -59,7 +59,7 @@
 | EMC Link | Place/configure tiered link | EMC, items and fluids | Import/export paths to connected inventories/fluids and EMC storage | Filters, side behavior, ownership and rates not fully audited. |
 | Power Flower | Craft from tier-matched EMC Link, two compressed Collectors, six Relays; or upgrade sequentially | Tier machines, light, owner | Generates EMC; online owner receives it, offline EMC accumulates in block storage | At default 20 tick cadence, source formula is (collectorOutputBase × 18 + relayBonusBase × 30) × powerflowerMultiplier, rounded to integer. Adjacent Compact Sun below applies another configured factor. |
 | Flower upgrades | Previous-tier Flower plus same-tier EMC Link, two compressed Collectors and five Relays | Shaped recipe family | Advances the Flower one tier | A direct recipe exists for each tier as well as sequential upgrades. TMM's staged Shard recipe must cover both Red entry routes. |
-| Matter Upgrader | Craft reusable item; right-click compatible placed machine | Must know target tier BlockItem and pay EMC value(target)-value(current) | Replaces placed block with next matter tier | Does not invoke crafting recipe. Flower and EMC Link enforce owner match and preserve state. This can bypass a recipe gate if target item can be learned and paid for. |
+| Matter Upgrader | Craft reusable item; right-click a supported placed Collector, Relay, Power Flower or EMC Link | Must know next-tier BlockItem and pay EMC(target)-EMC(current); no item consumed at use | Replaces placed block with exactly the next tier | Flower/Link require owner match and preserve stored state; Collector/Relay have no equivalent owner check in the inspected handler. Creative skips knowledge check but still pays EMC. Recipe-free route can bypass crafting-only gates. |
 | Stars | Craft a size and charge via ProjectE EMC-holder capability | EMC insertion | Portable EMC storage in Magnum, Colossal or Gargantuan families | Six sizes: Ein, Zwei, Drei, Vier, Sphere, Omega. First capacity is 204,800,000 EMC; each next registered capacity multiplies by 4 (18 type/size values). Recipes and endpoints incomplete. |
 | Alchemical Books | Use tiered portable access item; higher tiers can bind to a player | Recipe materials and owner data for bound mode | Remote access to Alchemical Chests; Advanced/Master/Arcane support binding, later tiers cross dimensions | Four tiers: Basic, Advanced, Master, Arcane. Range, binding action, chest interaction and limits need exact-version review. |
 | Arcane Transmutation Tablet | Use portable item to open transmutation menu | ProjectE Transmutation Tablet, Magenta Matter, workstation/chest tags and Magnum Ein Star per source recipe | Portable ProjectE transmutation interface | 1.0.6 release notes report a prior server-side issue fixed; operation untested here. |
@@ -73,7 +73,7 @@
 | --- | --- | --- | --- | --- | --- |
 | Power Flower | World light and placed projectexpansion:<tier>_power_flower; optional Compact Sun below | No fuel stack consumed | EMC credited to owner capability online; otherwise stored in Flower block | Default tickDelay 20 ticks; formula above | ProjectE EMC capability; delivery batched every 20 server ticks by PowerFlowerCollector; live light/rate check open |
 | Collector | ProjectE fuel/chargeable item inserted in Collector | Parent ProjectE behavior; exact count/remainder not established | EMC or charged item | Configurable operation delay; source default 20 | NeoForge item handlers; side contract incomplete |
-| Matter Upgrader | Held item plus clicked IHasMatter block; ProjectE knowledge of target block item | No recipe ingredient consumed at use; EMC subtracted by value delta; creative cost zero | Replaced placed block; Flower/link preserve owner, EMC and link state | One block per use | Item-use event; recipe-free state transition after knowledge and EMC checks |
+| Matter Upgrader | Reusable held item plus supported `IHasMatter` block; ProjectE knowledge of next-tier BlockItem | No held item/recipe ingredient consumed at use; deduct `EMC(next)-EMC(current)` after checks. Creative skips knowledge but still pays EMC. | One block replaced with next tier; Flower/Link owner and stored machine state preserved | One tier per use; Final tier fails; unknown target/insufficient EMC fail before replacement | `ItemMatterUpgrader.onItemUseFirst`; source-mapped contract, live test open |
 | Star | EMC inserted via item capability | Up to capacity | Stored EMC component | Per-star capacity | ProjectE IItemEmcHolder |
 | Book/tablet | Player-item interaction | No mana/fluid input found | Menu access or knowledge operation | Book tier/range and dimension behavior | Server menu/packets; runtime untested |
 | Fluid/item bridge | EMC Link capabilities | Exact stack details incomplete | Filtered item/fluid import/export and EMC behavior | Tier rates unknown | NeoForge item/fluid handlers and ProjectE EMC storage |
@@ -141,6 +141,18 @@
 - **Limits:** Finite storage; capacity progression source-supported, endpoints and recharge recipe chain need verification.
 - **Evidence:** ItemStar.java; not tested.
 
+### Matter Upgrader: exact use contract and progression boundary
+
+The reusable `projectexpansion:matter_upgrader` is a distinct route through each `IHasMatter` tier. Right-clicking a supported placed Collector, Relay, Power Flower or EMC Link selects exactly the next tier; a Final-tier target fails without changing. The item stack is not shrunk or damaged by the source use handler, so one crafted Upgrader can be reused.
+
+Before changing the block, the server checks that the player knows the next-tier machine **BlockItem** and has at least `EMC(target block) − EMC(current block)` in their personal ProjectE pool. An insufficient balance or missing knowledge returns before block replacement. In source order, the replacement happens before the provider balance is set to the reduced amount; exact client behavior remains untested.
+
+Power Flowers and EMC Links additionally require a non-null owner matching the acting player's UUID. On success, Flower owner/name and stored EMC are copied; EMC Links also copy owner, stored EMC, filter, item/fluid state and transfer counters. The source's Collector and Relay paths do not apply this same owner check. Creative mode skips the target-knowledge check, but the code still checks and charges the EMC delta; it does not make the upgrade free.
+
+**Gate boundary:** This supports the profile's recipe-only warning: a Shard requirement on direct and sequential crafting recipes does not itself prevent an already placed lower-tier machine from becoming a higher tier through the reusable Upgrader, once the player has learned the target BlockItem and can pay its EMC delta. The source establishes the alternate transition; it does not establish whether the staged KubeJS recipes load or whether the route is practically reachable before a Shard in TMM.
+
+**Evidence:** [release `ItemMatterUpgrader.java`](https://github.com/DonovanDMC/ProjectExpansion/blob/d103d719bacd30c6cd3d42ce7c625116749e84b3/src/main/java/cool/furry/mc/neoforge/projectexpansion/item/ItemMatterUpgrader.java) and [`matter_upgrader_1.json`](https://github.com/DonovanDMC/ProjectExpansion/blob/d103d719bacd30c6cd3d42ce7c625116749e84b3/src/generated/resources/data/projectexpansion/recipe/matter_upgrader_1.json) at PE-X-002. The recipe consumes basic Collector/EMC Link/Power Flower/Relay components plus Dark Matter and lime dye; using the resulting item consumes no recipe ingredient.
+
 ## API, integration and pack-config surfaces
 
 | Hook or surface | Namespace / exact source | Capabilities / constraints | Current TMM override? | Evidence |
@@ -188,6 +200,16 @@
 - Release notes say 1.0.6 fixes a prior Arcane Tablet server-side issue and Knowledge Sharing client-code-first crash. Notes do not replace client/server testing.
 - Do not infer Project Expansion EMC powers Draconic OP/FE or Neo Vitae EV.
 
+## Disposable-world test plan
+
+| Test | Positive case and boundary case | Expected observable | Performed? |
+| --- | --- | --- | --- |
+| Reusable tier transition | Craft one Upgrader; apply it to owned Basic Flower, then repeat on the resulting tier | Exactly one tier per use; Upgrader stack/durability unchanged; EMC falls by target-minus-current value | not run — client unavailable |
+| Knowledge and balance gate | Player who has learned target item and enough EMC succeeds; unknown target and one-EMC-short cases | Rejected attempts leave block, machine state and EMC unchanged | not run |
+| Ownership and state | Owner upgrades Flower/Link; second player tries same blocks; record stored EMC, owner and Link filter/transfer state | Owner succeeds with state preserved; non-owner fails without changing machine or balance. Collector/Relay behavior tested separately. | not run |
+| Creative and terminal bounds | Creative with target unknown but enough EMC; creative one-EMC-short; attempt upgrade at Final | Knowledge is bypassed only; EMC still charged; Final remains unchanged | not run |
+| Shard recipe boundary | With no Chaos Shard, compare direct Red recipe, sequential Red recipe, then Upgrader; repeat after learning Red item and paying delta | Recipe restrictions and recipe-free state transition are measured separately; only claim a practical gate bypass if the test shows it | not run — staged integration and client unverified |
+
 ## Evidence ledger
 
 | Claim | Exact source | Evidence | Limit |
@@ -197,7 +219,7 @@
 | PE-X-003 Matter tiers/scaling | Matter.java; generation/constants.ts at PE-X-002 | [source] | Names and ×6 base progression; config values untested |
 | PE-X-004 Flower recipe family | generators/recipe/power_flower.json, power_flower_upgrade.json, power_flower.ts | [source] | Direct + previous-tier recipe families; loaded pack override unproven |
 | PE-X-005 EMC production | BlockEntityPowerFlower.java; PowerFlowerCollector.java | [source] | Owner delivery, offline storage, batching and formula; no measured rates |
-| PE-X-006 Matter Upgrader | ItemMatterUpgrader.java; matter_upgrader_1.json | [source] | Knowledge, EMC delta and recipe-free transition; not a runtime bypass test |
+| PE-X-006 Matter Upgrader | [ItemMatterUpgrader.java](https://github.com/DonovanDMC/ProjectExpansion/blob/d103d719bacd30c6cd3d42ce7c625116749e84b3/src/main/java/cool/furry/mc/neoforge/projectexpansion/item/ItemMatterUpgrader.java); [matter_upgrader_1.json](https://github.com/DonovanDMC/ProjectExpansion/blob/d103d719bacd30c6cd3d42ce7c625116749e84b3/src/generated/resources/data/projectexpansion/recipe/matter_upgrader_1.json) | [source] | Proves next-tier mapping, personal knowledge/EMC delta, owner/state handling, reusable use and no direct recipe invocation. Does not prove practical TMM bypass or loaded recipes. |
 | PE-X-007 Stars/books | ItemStar.java; Star.java; ItemAlchemicalBook.java; ItemArcaneTransmutationTablet.java | [source] | Tier/capability surfaces; full use/recipe map incomplete |
 | PE-X-008 Pack gate | docs/PROJECTE-TIERED-GATING-PROPOSAL.md; manifest/integration-sources.json; manifest/progression-gates.json | [pack-doc] | Direction and conflicts/staged state; no enforcement proof |
 | PE-X-009 Quest status | ProjectE profile; manifest/quest_chapters.json; current quest files | [pack-doc] | ProjectE placeholder; no Expansion how-to chapter found |
