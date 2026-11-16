@@ -5,7 +5,10 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "MobGoalsAccessor",
-    "VillagerRangedAttackMixin"
+    "VillagerRangedAttackMixin",
+    "VillagerReputationMixin"
   ],
-  "injectors": { "defaultRequire": 1 }
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

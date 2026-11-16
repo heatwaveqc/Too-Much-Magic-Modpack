@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.horse.Llama;
@@ -30,7 +31,7 @@ public final class VendettaEvents {
 
     private VendettaEvents() {}
 
-    private static void accuse(ServerLevel level, ServerPlayer offender, String reason) {
+    public static void accuse(ServerLevel level, ServerPlayer offender, String reason) {
         if (TraderBlacklist.get(level).accuse(offender.getUUID())) {
             TradersVengence.LOGGER.info("Player {} permanently blacklisted: {}",
                 offender.getGameProfile().getName(), reason);
@@ -47,19 +48,20 @@ public final class VendettaEvents {
     }
 
     /**
-     * Damaging a resident or iron golem declares the attacker an enemy of every village.
-     * Uses POST damage: vetoed, invulnerable and fully absorbed attacks are not recorded.
-     * DamageSource#getEntity credits the responsible player for their arrows and spells.
+     * Vanilla's VILLAGER_HURT / VILLAGER_KILLED reputation callbacks are observed
+     * by VillagerReputationMixin. This remaining hook is ONLY for iron golems:
+     * vanilla reputation has GOLEM_KILLED, but no GOLEM_HURT event.
+     *
+     * POST damage avoids treating invulnerable/canceled attacks as new crimes.
      */
     public static void onDefenderHurt(LivingDamageEvent.Post event) {
         if (!VengeanceRules.isActualHealthDamage(event.getNewDamage())
-            || !(event.getEntity() instanceof Villager || event.getEntity() instanceof IronGolem)
+            || !(event.getEntity() instanceof IronGolem)
             || !(event.getEntity().level() instanceof ServerLevel level)
             || !(event.getSource().getEntity() instanceof ServerPlayer attacker)) {
             return;
         }
-        accuse(level, attacker,
-            event.getEntity() instanceof Villager ? "attacked a villager" : "attacked an iron golem");
+        accuse(level, attacker, "attacked an iron golem");
     }
 
     /**
@@ -117,6 +119,10 @@ public final class VendettaEvents {
         access.tradersVengence$targetSelector().addGoal(1, new WantedPlayerTargetGoal(mob, level));
 
         if (mob instanceof Villager villager) {
+            // Vanilla villagers have no combat target goals. Add a self-defense
+            // goal only; do not make them proactively hunt unprovoked monsters.
+            access.tradersVengence$targetSelector().addGoal(0,
+                new VillagerSelfDefenseGoal(villager));
             access.tradersVengence$goalSelector().addGoal(2,
                 new WantedRangedAttackGoal((RangedAttackMob) villager,
                     0.9, VengeanceRules.VILLAGER_COOLDOWN_TICKS,

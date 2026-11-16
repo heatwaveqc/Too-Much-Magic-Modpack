@@ -8,14 +8,16 @@ not edit the packwiz index or the running QA build.
 
 ## Implemented in source
 - World-global permanent offender UUID list saved via Overworld SavedData.
-  Three offense triggers share the same permanent record and admin pardon:
-  (1) player kills a wandering trader; (2) player deals actual health damage to
-  a villager or iron golem; (3) an Iron's `irons_spellbooks:priest` takes a
-  player as its current attack target. Direct melee, arrows, and player-attributed
-  spell damage all credit the responsible player; canceled/zero-health-damage
-  attacks do not count. Merely angering a priest below aggression threshold does
-  not count. A priest must actually target the player, rather than simply
-  see/trade with them.
+  The following offense triggers share the same permanent record and admin pardon:
+  (1) player kills a wandering trader; (2) a villager receives vanilla
+  `VILLAGER_HURT` or `VILLAGER_KILLED` reputation for a responsible player;
+  (3) player deals actual health damage to an iron golem; (4) an Iron's
+  `irons_spellbooks:priest` takes a player as its current attack target.
+  The villager reputation signal is observed by a narrow Mixin on
+  `Villager.onReputationEventFrom`; **vanilla gossip and prices are unchanged**.
+  Iron golem damage remains a separate hook because vanilla only has
+  `GOLEM_KILLED`, not `GOLEM_HURT`. Merely angering a priest below its
+  aggression threshold does not count.
 - New wandering traders blocked unless their spawn feet have sky access, are within
   10 blocks of dimension sea level, and stand on `#traders_vengence:valid_trader_ground`.
   Existing traders loaded from disk are preserved.
@@ -25,7 +27,10 @@ not edit the packwiz index or the running QA build.
 - Golems and llamas independently target blacklisted players; llamas inherit their
   vanilla spitting mechanic. Villagers get generic `RangedAttackGoal` and launch
   Iron's `magic_missile` entity at an offender (50-tick cooldown, 16-block range,
-  6 damage). No mana/crafting or new gun system.
+  6 damage). Villagers also reuse vanilla `HurtByTargetGoal` and fire
+  Magic Missiles at the **specific mob that attacked them**, then cease
+  retaliation when the target is no longer valid. They never proactively
+  aggro unrelated nearby monsters. No mana/crafting or new gun system.
 - **Automatic pardon:** a fresh application or renewal of Minecraft's
   `Hero of the Village` status effect clears that player's saved blacklist
   entry permanently; an existing Hero buff is not a blanket immunity to
@@ -46,6 +51,8 @@ not edit the packwiz index or the running QA build.
    is vetoed. Ensure bad candidates don't unfairly exhaust attempts.
 3. Villager brain-driven panic/job logic may contend with the added ranged goal. Verify
    that the goal executes in an actual world and add targeted brain arbitration if needed.
+   The reputation Mixin must be checked on the pinned 1.21.1 runtime (native
+   callback signature and ordering, including direct and projectile hits).
 4. Iron's projectiles are instantiated via its registered entity type, with reflective
    `shoot(Vec3)` and `setDamage(float)` calls. These must be validated against the
    **pinned Iron's 3.16.3 runtime**; compile alone won't test them. Failures log once.
@@ -71,8 +78,18 @@ Test in a disposable save after an owner-authorized test build:
   restart, and golem/llama/villager retaliation occurs only for the offender.
 - On a fresh unblacklisted player, strike a villager or iron golem (melee, then
   player-fired projectile); confirm all three defender types target that player
-  and the new status persists after relog/server restart. Confirm canceled damage,
-  environmental damage, and hits from another mob do not falsely blacklist.
+  and the new status persists after relog/server restart. Confirm vanilla
+  villager reputation events trigger our blacklist and ordinary gossip and price
+  changes are still vanilla. Confirm no double-penalties to gossip, while golem
+  assault is caught even without a villager present.
+- Spawn a pillager or zombie alongside a villager; confirm the villager only
+  retaliates after being attacked (not on seeing the mob), casts Iron's Magic
+  Missile at the actual attacker, and doesn't attack nearby unrelated mobs.
+  Confirm multiple villagers do NOT automatically join another villager's
+  combat, unless they themselves are attacked. Test attacks from another
+  neutral mob too, and verify the permanent player blacklist is unaffected.
+- Confirm environmental damage does not cause mob self-defense, and normal
+  villagers still trade and work when unprovoked.
 - On another fresh unblacklisted player, provoke an Iron's Priest until it truly
   selects the player as its attack target; confirm the permanent village vendetta.
   Verify approaching or trading with a neutral Priest does NOT create an offense;

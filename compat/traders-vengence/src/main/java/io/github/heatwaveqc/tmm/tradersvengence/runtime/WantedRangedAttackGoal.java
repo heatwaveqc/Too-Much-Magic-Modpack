@@ -3,13 +3,19 @@ package io.github.heatwaveqc.tmm.tradersvengence.runtime;
 import io.github.heatwaveqc.tmm.tradersvengence.state.TraderBlacklist;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 
 /**
- * Wrap vanilla ranged combat; don't let ordinary villager AI fire or chase
- * unblacklisted targets set by unrelated faction/brain systems.
+ * Reuses vanilla ranged combat, but allows only:
+ *   (1) blacklisted survival-mode players; or
+ *   (2) the specific mob that injured this villager.
+ *
+ * Critically, villagers must not start hunting every nearby hostile mob.
+ * Llamas remain player-vendetta-only and use their vanilla ranged attack.
  */
 public final class WantedRangedAttackGoal extends RangedAttackGoal {
     private final Mob mob;
@@ -19,11 +25,23 @@ public final class WantedRangedAttackGoal extends RangedAttackGoal {
         this.mob = (Mob) attacker;
     }
 
-    private boolean hasWantedTarget() {
-        return mob.level() instanceof ServerLevel world
-            && mob.getTarget() instanceof ServerPlayer player
+    public static boolean mayRetaliate(Mob defender, LivingEntity target) {
+        if (defender.level() instanceof ServerLevel world
+            && target instanceof ServerPlayer player
             && !player.isCreative() && !player.isSpectator()
-            && TraderBlacklist.get(world).contains(player.getUUID());
+            && TraderBlacklist.get(world).contains(player.getUUID())) {
+            return true;
+        }
+        return defender instanceof Villager
+            && target instanceof Mob attacker
+            && attacker.isAlive()
+            && attacker != defender
+            && !defender.isAlliedTo(attacker)
+            && defender.getLastHurtByMob() == attacker;
+    }
+
+    private boolean hasWantedTarget() {
+        return mayRetaliate(mob, mob.getTarget());
     }
 
     @Override
