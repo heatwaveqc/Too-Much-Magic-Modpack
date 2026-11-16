@@ -106,6 +106,9 @@ public final class MxpService {
         }
         MxpSavedData data = MxpSavedData.get(player.getServer());
         MxpAccount staged = data.snapshot(player.getUUID());
+        // Server config controls subsequent ordinary awards without changing
+        // persisted lifetime P, pending Tyz delivery or first-completion flags.
+        staged.setGrowthFactor(MxpProgressionConfig.GROWTH_FACTOR.get());
         MxpAccount.Receipt receipt = fun.apply(staged);
         if (receipt.duplicate()) {
             return new AwardStatus(false, true, false, 0, 0,
