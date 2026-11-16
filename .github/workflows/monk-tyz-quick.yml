@@ -42,7 +42,7 @@ jobs:
         run: |
           python3 compat/magic/stage_preview.py --check
           python3 -m unittest discover -s tests -p 'test_monk_tyz_tree.py'
-          python3 -m py_compile scripts/activate_tyzs.py scripts/verify_tyz_migration.py
+          python3 -m py_compile scripts/activate_tyzs.py scripts/verify_tyz_migration.py scripts/stage_monk_tyz.py
       - name: Compile and unit test the native Monk/Hunter Tyz bridge
         working-directory: compat/progression
         run: gradle --no-daemon build
