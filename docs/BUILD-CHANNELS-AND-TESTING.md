@@ -4,6 +4,8 @@
 
 **Effective 2026-11-14.** This is the default standard for new test builds.
 
+**Canonical test names:** [Repository CI, Module CI, Integration Preflight, Integration Assembly, Server Boot Smoke, Prism QA Package, Client Launch Smoke and Gameplay Acceptance](qa/TEST-LEVELS-AND-TERMINOLOGY.md). "Quick CI" means the first three; assembly, server boot and packaging have separate proof and explicit manual authorization. A Prism ZIP existing does **not** prove client launch.
+
 ## Channels
 
 - **Integration (UNSTABLE):** all classified, active testable implementation streams in a single Prism instance. The canonical branch is test/full-integration. Updates may fail or break gameplay.
@@ -34,13 +36,15 @@ Do not call a build a comprehensive or all-workstreams live test until every rep
 
 ## Routine: lightweight checks by default, full smoke by explicit request only
 
-The **Full Integration** workflow defaults to quick preflight on tracked integration-branch pushes and on ordinary manual/reusable invocations. It assembles registered workstreams, runs metadata/resource checks, compiles both first-party modules and runs unit tests. **A successful quick run does not start Minecraft, establish mod interoperability, freeze a tested snapshot, or publish a Prism QA ZIP.** Report `QUICK CHECKS PASS; SERVER NOT TESTED`, never `server-smoked`.
+The **Full Integration** workflow defaults to quick CI on tracked integration-branch pushes and ordinary manual/reusable invocations. It **does not assemble or restore donor sources on the automatic path**: it reads frozen source refs, validates metadata/resources, checks potential overrides and draft branches, and compiles/tests first-party modules already present on the baseline. **A successful quick run does not establish that external donor work is assembled, start Minecraft, establish mod interoperability, freeze a tested snapshot, or publish a Prism QA ZIP.** Report `QUICK CI PASS; ASSEMBLY AND SERVER NOT TESTED`.
+
+`Integration Assembly` is a distinct, explicitly authorized manual path: check `assemble_only=true` to stage sources and run quick tests **without** a server boot or Prism QA ZIP. The full `full_smoke=true` authorization implies assembly followed by the named Server Boot Smoke and (only if server boot passed) the Prism QA Package. Neither option may be auto-triggered.
 
 The owner must explicitly request a **particular full dedicated-server smoke run** before an agent is allowed to start one. For an authorized run, dispatch `.github/workflows/full-integration.yml` with the **`full_smoke` boolean checked/true** (or pass the same true value from an explicitly owner-authorized reusable launcher). This unlocks the full server boot, immutable integration tag, and **Too-Much-Magic-Full-Integration-Prism-UNSTABLE** artifact. The checkbox defaults to false. Do not use an unguarded old feature workflow or direct `scripts/smoke_server.sh` to evade this restriction. Do not automatically retry failures. An already-running overnight test approved on 2026-11-15 is not canceled by this future-run rule.
 
 For the resulting full-test artifact, use a fresh disposable world, report against the exact SHA in BUILD-MANIFEST.json, and preserve the old Prism profile. Client/world playtesting still requires its own evidence.
 
-When a contributor creates a new feature branch, register the source paths and owner in manifest/integration-sources.json or document why it is excluded. Do not silently mix competing skill engines, revert newer quest localization, or relabel a Pufferfish-era snapshot as Tyz-enabled.
+When a contributor creates a new feature branch, record it as WIP or ready; a WIP is reported by the read-only preflight but does not block unrelated quick checks. Once declared ready, register the source paths, exact frozen commit and owner in manifest/integration-sources.json or document the evidence-based blocker; historical deferrals are not waivers. After a feature merges, point its stream at the baseline rather than the deleted PR branch, and never restore an older donor directory over newer baseline files. Do not silently mix competing skill engines, revert newer quest localization, or relabel a Pufferfish-era snapshot as Tyz-enabled.
 
 ## Corrected test limitation
 

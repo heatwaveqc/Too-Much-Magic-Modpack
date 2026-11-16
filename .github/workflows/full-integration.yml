@@ -1,10 +1,14 @@
-name: Full Integration - Quick CI (full server smoke opt-in)
+name: Full Integration - Quick CI / Manual Assembly / Authorized Smoke
 on:
   push:
     branches: ['test/full-integration']
     paths:
       - '.github/workflows/full-integration.yml'
       - 'scripts/assemble_integration.py'
+      - 'scripts/validate_integration_sources.py'
+      - 'manifest/mods.json'
+      - 'AGENTS.md'
+      - '.gitattributes'
       - 'scripts/pin_next_test_mods.py'
       - 'scripts/retire_teamlapen.py'
       - 'scripts/verify_retirement.py'
@@ -26,6 +30,11 @@ on:
       - '.packwizignore'
   workflow_dispatch:
     inputs:
+      assemble_only:
+        description: 'Owner-authorized integration assembly without server boot or Prism package'
+        type: boolean
+        required: false
+        default: false
       full_smoke:
         description: 'Owner-authorized full NeoForge server smoke and immutable Prism QA ZIP (unchecked = quick checks only)'
         type: boolean
@@ -33,6 +42,11 @@ on:
         default: false
   workflow_call:
     inputs:
+      assemble_only:
+        description: 'Explicitly authorized source assembly; no server boot'
+        type: boolean
+        required: false
+        default: false
       full_smoke:
         description: 'Must be true ONLY after explicit owner instruction for this full smoke run'
         type: boolean
@@ -49,7 +63,7 @@ concurrency:
   cancel-in-progress: ${{ inputs.full_smoke != true }}
 
 jobs:
-  combine-build-smoke-package:
+  integration-preflight-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 75
     steps:
@@ -68,19 +82,26 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.2.1'
-      - name: Fetch working-branch heads and configure safe integration writes
+      - name: Fetch source refs for read-only preflight
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
-      - name: Assemble all registered workstreams and fail on unclassified active branches
+      - name: Integration Preflight — frozen source refs, no writes or mod downloads
+        run: |
+          python3 scripts/validate_integration_sources.py
+          python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 -m py_compile scripts/validate_integration_sources.py scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
+      - name: Integration Assembly — explicitly authorized, never on automatic push
+        if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') && (inputs.full_smoke == true || inputs.assemble_only == true) }}
         run: |
           python3 scripts/assemble_integration.py
           python3 scripts/validate.py
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
-          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
@@ -106,7 +127,7 @@ jobs:
       - name: Verify HexCast MXP exploratory contract (source only; not in pack)
         working-directory: integration/hexcast-media-pilot
         run: bash check-contract.sh
-      - name: Note quick checks are NOT a full smoke
+      - name: Report server boot omitted without explicit full_smoke authorization
         if: ${{ inputs.full_smoke != true }}
         run: |
           echo '## Quick checks only — no server smoke or Prism QA ZIP' >> "$GITHUB_STEP_SUMMARY"

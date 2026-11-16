@@ -84,26 +84,25 @@ def main() -> None:
         raise RuntimeError("Integration checkout is not clean:\n" + dirty)
     base_ref = "refs/remotes/origin/" + cfg["baseline"]
     git("rev-parse", "--verify", base_ref)
-    # Integrate later baseline quest/economy corrections before importing owned paths.
-    # A real merge conflict MUST stop the build, rather than clobbering the change.
-    git("merge", "--no-edit", base_ref)
-    sources = {s["branch"] for s in cfg["streams"]}
-    covered = set(cfg["covered_by_baseline"]) | set(cfg["superseded_or_non_runtime"])
-    deferred = set(cfg.get("deferred_pending_runtime", {}))
-    known = sources | covered | deferred
-    remote = git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines()
-    unexpected = sorted(name[7:] for name in remote
-                        if name.startswith(tuple("origin/" + prefix for prefix in TRACKED_PREFIXES))
-                        and name[7:] not in known)
-    if unexpected:
-        raise RuntimeError("New working branches require explicit integration classification: " + ", ".join(unexpected))
+    if git("rev-parse", base_ref) != git("rev-parse", "HEAD"):
+        raise RuntimeError("Integration branch advanced during run. Restart from current HEAD; never self-merge moving source.")
+    # Preflight is read-only and MUST finish before the first restore/import.
+    # Explicit exception reasons are required for replacing already-merged content.
+    from validate_integration_sources import validate as integration_preflight
+    preflight = integration_preflight(strict_overrides=True)
+    if preflight["unclassified_draft_branches"]:
+        print("DRAFT BRANCHES (informational; review readiness before comprehensive QA): "
+              + ", ".join(preflight["unclassified_draft_branches"]))
     imported: dict[str, str] = {}
     report = []
     manifest = json.loads((ROOT / "manifest/mods.json").read_text(encoding="utf-8"))
     items = {m["id"]: m for m in manifest["mods"]}
     for stream in cfg["streams"]:
         branch = stream["branch"]
-        ref = "refs/remotes/origin/" + branch
+        # Never import from moving branch heads or rely on a merged/deleted PR ref.
+        # Baseline-owned content is already present; no restore is necessary.
+        baseline_owned = bool(stream.get("integrated_into_baseline"))
+        ref = "HEAD" if baseline_owned else stream["source_commit"]
         source_sha = git("rev-parse", "--verify", ref)
         selected = []
         for selector in stream["paths"] + stream.get("optional_paths", []):
@@ -119,8 +118,9 @@ def main() -> None:
                 selected.append(path)
         selected = sorted(set(selected))
         # Never restore whole directories: removed baseline files must not be lost.
-        for path in selected:
-            git("restore", "--source=" + ref, "--staged", "--worktree", "--", path)
+        if not baseline_owned:
+            for path in selected:
+                git("restore", "--source=" + ref, "--staged", "--worktree", "--", path)
         for mod_id in stream.get("manifest_mod_ids", []) + stream.get("manifest_mod_ids_if_available", []):
             donor = json.loads(blob(ref, "manifest/mods.json"))
             found = [m for m in donor["mods"] if m["id"] == mod_id]

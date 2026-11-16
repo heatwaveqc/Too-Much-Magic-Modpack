@@ -1,0 +1,15 @@
+# Integration-owned files; advisory until branch protections require reviews.
+# The owner reconciles these paths when feature branches merge.
+/AGENTS.md @heatwaveqc
+/.github/workflows/ @heatwaveqc
+/.github/CODEOWNERS @heatwaveqc
+/manifest/integration-sources.json @heatwaveqc
+/manifest/mods.json @heatwaveqc
+/manifest/feature-checklist.json @heatwaveqc
+/index.toml @heatwaveqc
+/pack.toml @heatwaveqc
+/scripts/assemble_integration.py @heatwaveqc
+/scripts/validate_integration_sources.py @heatwaveqc
+/config/ftbquests/ @heatwaveqc
+/manifest/quest_content.json @heatwaveqc
+/manifest/quest_content_resolved.json @heatwaveqc
