@@ -1,15 +1,18 @@
 name: B5 repair Caelus, Paucal, Ars Elemancy; boot
 on:
-  push:
-    branches: [build/b5-expanded-approved-roster]
-    paths: ['.github/workflows/b5-repair-round2.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   compatibility-repair:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
