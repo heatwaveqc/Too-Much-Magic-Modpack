@@ -1,4 +1,4 @@
-# ATM10 Specialist Power Benchmark — v0.4 (2026-11-15)
+# ATM10 Specialist Power Benchmark — v0.5 (2026-11-15)
 
 **Status:** SOURCE-VERIFIED BASELINES AND **CONSTRAINED LOADOUT MAXIMA**; NOT YET A CERTIFIED ALL-MOD ENTIRE-PACK MAXIMUM. This is a design/audit document, not an active balance patch.
 
@@ -116,7 +116,7 @@ Target **TMM_specialist performance ~= ATM_reference performance (within +/-5% i
 
 Then target **TMM_Monk_final_attribute[C,T] in [0.80, 0.90] x TMM_specialist_final_attribute[C,T]** for **every trait actively modified by Monk**, with **0.85 the preferred midpoint**, and separately verify that nonlinear performance remains sensible. Interpret signed, zero-baseline or reduction attributes by their meaningful final-attribute semantics and document exceptions for nonnumeric powers. The Monk must use a legal unarmored loadout and does not automatically receive every specialist spell capability.
 
-The fully purchased Monk **Tyz** tree is additionally targeted at about **10x** the aggregate Tyz SP cost of a standard full specialist tree (initial 9–11x acceptance band); ordinary XP cost must be **significantly greater than 10x** due to the lifetime-level `1.2^P` MXP divisor. Test feasibility and keep the native standalone Monk technique points separate. No balance values for Monk or other classes are committed to runtime JSON by this research document.
+The fully purchased Monk **Tyz** tree is additionally targeted at about **10x** the aggregate Tyz SP cost of a standard full specialist tree (initial 9–11x acceptance band); the precise ordinary XP premium is **under review** (current prototype `1.2^P`, possible `1.1^P` or linear `1.0^P`). At `1.0^P` exactly 10x SP implies 10x ordinary XP; >10x XP applies only for growth>1 under matched ordinary-only conditions. Test feasibility and keep the native standalone Monk technique points separate. No balance values for Monk or other classes are committed to runtime JSON by this research document.
 
 ## Open validation gates before declaring any "full optimized maximum"
 
@@ -286,3 +286,42 @@ These are **math illustrations, not actual Tyz tree point totals or measured pla
 3. Test repeated capacity/spell-power threads and their \`AttributeModifier\` IDs on all four Unobtainium pieces; account for collisions before adding thread maxima.
 4. Test the exact ATM10 Unobtainium spellbook and all four pieces with maximum legal enchantments, Mythic affixes, four-socket rarity outcomes and compatible gems; only then promote numeric "scenario candidate" values to certified optimized maxima.
 5. Simulate the Monk 9–11x Tyz SP cost band against the actual MXP and Tyz node pricing; calculate reachability and practical gameplay time.
+
+
+
+## v0.5 — canonical Ars thread nonstacking and alternate MXP curves (supersedes v0.4 blockers)
+
+### Verified nonstack behavior — one of each thread type, not twelve
+
+**Correction to v0.4:** Ars Nouveau's official documentation says that "Threads only apply a single time on an entire armor set, and they do not stack". The [official Applying Threads guide](https://ars.guide/book/armor/applying_perks/) is primary evidence. The upstream implementation's \`PerkUtil.countForPerk\` explicitly takes the **maximum** \`slot.value()\` across armor pieces when calculating perk strength. For attribute perks, each instance also uses the same per-thread attribute modifier ID, so don't sum duplicates or assume multiple different attribute-level bonuses can be active from the same type. The question of which equipped duplicate has precedence is moot for our optimized build: equip **exactly one** of each desired thread, each in a valid highest-rank slot.
+
+ATM10 tier-six Unobtainium Arcanist armor offers **level 4, 5, and 6 slots on each of four pieces**. Consequently, put one Magic Capacity VI thread into an eligible level-six slot and one Spell Power VI thread into a *different* level-six slot. No duplicate-type slots are needed.
+
+- **Magic Capacity VI:** +60% \`ADD_MULTIPLIED_TOTAL\` on Ars max mana (\`1.6×\` final multiplier for the stated baseline).
+- **Spell Power VI:** +12 flat Ars spell-damage attribute.
+- **Six-source, G=188 candidate:** four Mana Boost VII enchanted armor pieces + tier-six Unobtainium book produce 5,720 max mana before threads, hence **5,720 × 1.6 = 9,152 mana**, before accessories, buffs or additional glyphs.
+- Same candidate armor's **+48 base spell power +12 thread = +60 flat spell power**; standard Ars enchantments adding mana regen VII produce **177.04 mana/sec** before additional effects. Magic Capacity doesn't automatically increase the Ars fixed-per-second regen statistic.
+- **Still conditional:** pinned exact ATM10 mod JAR and runtime glyph count, thread slot initialization/stack component survival, effective attribute calculations, other installed addon glyphs and accessories. 9,152 is a well-motivated *scenario result*, **not a certified pack-wide maximum**.
+
+Source references: [Ars guide](https://ars.guide/book/armor/applying_perks/), [PerkUtil maximum-slot selection](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/api/util/PerkUtil.java), [capacity thread code](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/common/perk/MagicCapacityPerk.java), [spell-power thread code](https://github.com/baileyholl/Ars-Nouveau/blob/main/src/main/java/com/hollingsworth/arsnouveau/common/perk/SpellDamagePerk.java), [Unobtainium tier-six slot layout](https://github.com/Jarva/All-The-Arcanist-Gear/blob/main/src/main/java/com/github/jarva/allthearcanistgear/setup/registry/ArsNouveauRegistry.java).
+
+The v0.4 **"attribute ID collision hazard"** was correct to warn against summing duplicate threads but should *not* be treated as an unresolved proof of a gameplay defect. The nonstacking rule is an intended user-facing mechanic. The narrow remaining check is confirming the **one-of-each-at-VI** optimized case on the pinned runtime.
+
+### Monk MXP growth — owner reconsidering 1.2^P vs 1.1^P vs 1.0^P
+
+The user's **Monk 80–90% final attribute** target and **Monk full Tyz tree costs ~10× the specialist full Tyz tree** remain locked. The prior requirement that this *must* entail "significantly more than ten times XP" is now **conditional**, because the user is considering linear MXP and the growth factor is **not yet chosen**.
+
+Prototype: one Tyz point per 1,000 effective MXP, ordinary award \`effective = nominalBase / g^P\` with \`P\` the **lifetime** MXP level counter. Source prototype currently has \`GROWTH=1.2\` as a **Java constant**, not a live editable config option. For a clean P=0 ordinary-only scenario, \`XP_base(N,g)=1000*(g^N-1)/(g-1)\` when \`g>1\`, or \`1000*N\` when \`g=1\`.
+
+| Lifetime SP/levels earned | 1.2 growth | 1.1 growth | 1.05 growth | 1.02 growth | 1.0 linear |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 20 | 186,688 | 57,275 | 33,066 | 24,297 | 20,000 |
+| 50 | 45.50 million | 1.164 million | 209,348 | 84,579 | 50,000 |
+| 100 | 414.09 billion | 137.80 million | 2.610 million | 312,232 | 100,000 |
+| 200 | 3.429e19 | 1.899e12 | 345.83 million | 2.574 million | 200,000 |
+
+If a canonical specialist costs 10 SP and Monk costs 100 SP, those totals imply **15.95 million×**, **8,646×**, **207.5×**, **28.5×**, or **10×** ordinary XP respectively (for the growth columns above). If the specialist costs 20 SP and Monk costs 200 SP, the gap becomes radically larger for any \`g>1\`.
+
+**Practical design direction, not an imposed choice:** avoid choosing \`1.1\` without checking whether the Monk requires 100, 200, 300 or more SP. A mild factor like **1.01–1.03** might give dramatically better late-game pacing than 1.1 while maintaining an XP premium over 10×; linear 1.0 is reasonable if the 10× point budget itself should carry the full price. Once the owner selects a multiplier, implement it as a configurable MXP growth value with tests for g=1.0, lifetime P and fixed bonus awards. **No live MXP/skill config was altered in this research.**
+
+The full conditional contract and acceptance criteria are in [Monk specialist parity and cost](MONK-SPECIALIST-PARITY-AND-POINT-COST-2026-11-15.md); numerical candidates are in [manifest/atm10_specialist_benchmark.json](../../manifest/atm10_specialist_benchmark.json).
