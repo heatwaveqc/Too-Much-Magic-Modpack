@@ -28,7 +28,9 @@ jobs:
         run: git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
       - name: Integration Preflight — immutable refs and source ownership
         if: ${{ github.ref == 'refs/heads/test/full-integration' || github.base_ref == 'test/full-integration' }}
-        run: python3 scripts/validate_integration_sources.py
+        run: |
+          python3 scripts/validate_integration_sources.py
+          python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
       - name: Validate five-group FTB Quests navigation
         run: python3 scripts/validate_quests.py
       - name: Verify quick QA starter rewards and recipe fixes (source-only)
