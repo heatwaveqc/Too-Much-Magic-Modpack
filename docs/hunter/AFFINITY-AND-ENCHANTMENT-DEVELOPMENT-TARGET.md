@@ -96,6 +96,31 @@ The 1.21 `exclusive_set` tag expresses incompatibility globally. If a mod's bypa
 
 The test integration roster retains **Just Another Witchery Remake 0.5.39** and its native vampire progression, while removing the separate TeamLapen **Vampirism** module. The exact-pack Hunter census registered **`witchery:vampire`** (`MobCategory.MONSTER`, guidebook `Vampire Children`); this does **not** prove wild or natural spawning. The guide describes *creating a vampire child from a villager*, its hunting and Blood Crucible return. The original Witchery mob was sired and not naturally spawned, but **do not extrapolate that rule blindly to this rewritten 0.5.39 JAR**. A version-pinned spawn registration, structure-spawn audit, or world test must settle whether independent vampire NPCs appear without player actions. Also verify its owner/faction behavior and whether `witchery:vampire` should count as Undead (the census has `witchery:supernatural_prey`, not `minecraft:undead`).
 
+## Next-build config target: wild JAWR vampires
+
+**Status:** approved *target* for the **next** integration candidate; not implemented or included in the currently running/frozen test ZIP. No code or config files changed by this planning PR.
+
+**Entity:** `witchery:vampire`, confirmed registered by the exact-pack census from retained Just Another Witchery Remake (JAWR) `0.5.39+mc1.21.1`. TeamLapen's separate Vampirism mod remains removed. Vampire entity registration is **not** evidence of natural-spawn support. The pinned JAWR vampire may require a master/owner, special spawn placement or other initialization; verify these before enabling wild spawning.
+
+### Preferred config, with escalation if needed
+
+- First inspect the pinned JAWR JAR / registry for existing spawn entries, spawn placement, initialization and owner behavior. Avoid duplicating built-in spawns.
+- Prefer a **pack-owned NeoForge 1.21.1 `neoforge:add_spawns` biome modifier JSON** for the already registered `witchery:vampire` entity, restricted to eligible Overworld hostile-mob biomes. Keep group size **1 to 1**. Start with a conservative, editable relative weight; do not indiscriminately inject the entity into special, Nether or End biomes.
+- **Frequency goal: approximately one naturally spawned JAWR vampire per 20 naturally spawned ordinary zombies under comparable conditions** (roughly a 5%-of-zombies encounter benchmark). Zombie-villager occurrence is not the same mechanism as an independent weighted biome entry; therefore a proposed `weight: 20` is **only a candidate**, not a measured 5% rate. Calibrate using a controlled multi-night count that includes the usual zombies and competing spawn-pool entries.
+- Editable pack JSON fields: biome selection/tag, weight, `minCount`, `maxCount`. Treat JSON as the first config surface, not a claim that JAWR has a compatible TOML toggle.
+- If an unowned `witchery:vampire` cannot initialize, naturally spawn or behave as an independent NPC, **do not force a broken JSON spawn**. Record the exact obstacle and defer a tiny Java spawn/ownership adapter or distinct wild variant to a later build.
+- Preserve JAWR player vampires, player lycanthropy, and player-created Vampire Children. Wild vampires should follow their ordinary native hostile behavior against humans, Monks and Hunters, with no automatically assigned creator, no child-servant commands, and no blanket class-based friendliness. Verify sunlight, persistent data, despawn, damage/death and possible village interactions.
+
+### Next integration test-build acceptance
+
+**Static checks (before build):** exact JAWR pin and entity ID present; no TeamLapen Vampirism dependency; spawn-placement/ownership and existing JAWR spawn registrations inspected; biome modifier syntax/datapack load verified; manifest explicitly includes the new config before claiming `BUILT`.
+
+**Quick commands (in a disposable world):** `/summon witchery:vampire ~ ~ ~`, observe whether it initializes without a master, renders, targets human/Hunter/Monk as expected, and survives a relog/daylight transition without errors. This is an entity smoke test, **not** proof of natural spawning.
+
+**World setup and measurement (only in a subsequent candidate that includes the config):** test nighttime natural spawning in at least two eligible Overworld biomes, with no spawners or spawn eggs. Verify wild vampires appear singly, are distinct from player-created children, preserve retaliation/owner/boss exceptions, and do not crash or crowd out other hostile mobs. Record actual natural vampire and ordinary zombie counts; tune weight toward **1:20**. Recheck saved world reload and at least one multiplayer client. Mark `PASS` only after an actual world test; otherwise `NOT BUILT`, `BLOCKED`, or `PARTIAL`.
+
+**Operational boundary:** this is a light config *candidate*, **not an instruction to modify the in-progress test build**. Keep this plan staged in documentation until the next build's config integration point.
+
 ## Evidence / design references
 
 - [Hunter taxonomy, verified census and boundary decisions — PR #97](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/97)
