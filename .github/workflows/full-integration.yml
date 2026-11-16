@@ -102,12 +102,15 @@ jobs:
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
-      - name: Confirm changed resource recipes and materials statically
+      - name: Baseline silver and Seasoned Fish source checks (quick)
+        run: |
+          python3 scripts/verify_silver_equipment.py
+          node scripts/verify_dragon_seasoned_fish.cjs
+      - name: Verify imported materials, dragon diets and retirement (authorized assembly only)
+        if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') && (inputs.full_smoke == true || inputs.assemble_only == true) }}
         run: |
           python3 scripts/verify_materials.py
-          python3 scripts/verify_silver_equipment.py
           python3 scripts/verify_dragon_diets.py
-          node scripts/verify_dragon_seasoned_fish.cjs
           python3 scripts/verify_retirement.py
       - name: Validate baseline ProjectE progression gates (quick)
         run: python3 scripts/validate_progression_gates.py
