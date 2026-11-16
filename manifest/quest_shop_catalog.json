@@ -2,7 +2,7 @@
   "schema_version": 1,
   "currency": "questshop:coins",
   "team_shared": true,
-  "policy": "Purchases remove repetitive exploration luck and mundane resource friction; shop is not allowed to sell boss-gated or banned equipment.",
+  "policy": "Purchases remove repetitive exploration luck and mundane resource friction; shop is not allowed to sell boss-gated or banned equipment. The Ore Blocks & Mining category offers 18 normal vanilla ore blocks, including deepslate/nether variants, as ordinary purchasable blocks with deliberately low quantities. No ancient debris, netherite ore, quest-gated mod ores or boss-material bypasses. Ore-to-resource yield varies with Fortune and processing: verify exchange economics in-world.",
   "categories": [
     {
       "id": "supplies",
@@ -85,6 +85,103 @@
           "minecraft:prismarine_shard",
           16,
           8
+        ]
+      ]
+    },
+    {
+      "id": "ores",
+      "display": "Ore Blocks & Mining",
+      "order": 25,
+      "entries": [
+        [
+          "minecraft:coal_ore",
+          4,
+          1
+        ],
+        [
+          "minecraft:deepslate_coal_ore",
+          4,
+          1
+        ],
+        [
+          "minecraft:copper_ore",
+          2,
+          1
+        ],
+        [
+          "minecraft:deepslate_copper_ore",
+          2,
+          1
+        ],
+        [
+          "minecraft:iron_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:deepslate_iron_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:gold_ore",
+          4,
+          4
+        ],
+        [
+          "minecraft:deepslate_gold_ore",
+          4,
+          4
+        ],
+        [
+          "minecraft:redstone_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:deepslate_redstone_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:lapis_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:deepslate_lapis_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:diamond_ore",
+          1,
+          10
+        ],
+        [
+          "minecraft:deepslate_diamond_ore",
+          1,
+          10
+        ],
+        [
+          "minecraft:emerald_ore",
+          1,
+          10
+        ],
+        [
+          "minecraft:deepslate_emerald_ore",
+          1,
+          10
+        ],
+        [
+          "minecraft:nether_quartz_ore",
+          4,
+          3
+        ],
+        [
+          "minecraft:nether_gold_ore",
+          4,
+          3
         ]
       ]
     },
