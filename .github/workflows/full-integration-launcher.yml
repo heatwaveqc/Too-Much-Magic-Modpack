@@ -1,9 +1,6 @@
 name: Continuous Full Integration Launcher
 on:
   workflow_dispatch:
-  schedule:
-    # 07:15 America/Phoenix (Arizona has no DST); user may run manually sooner.
-    - cron: '15 14 * * *'
 permissions:
   contents: write
 jobs:
