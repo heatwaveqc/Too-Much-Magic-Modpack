@@ -1,6 +1,6 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
-import com.mojang.brigadier.arguments.EntityArgument;
+import net.minecraft.commands.arguments.EntityArgument;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.state.Modes;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
