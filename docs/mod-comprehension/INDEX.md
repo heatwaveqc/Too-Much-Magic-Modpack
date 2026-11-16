@@ -129,7 +129,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `hexerei` | Hexerei | magic | enabled flag | full | researching | [profile](mods/hexerei.md) |
 | `irons-spells` | Iron's Spells 'n Spellbooks | magic | enabled flag | full | researching | [profile](mods/irons-spells.md) |
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | researching | [profile](mods/mahou-tsukai.md) |
-| `malum` | Malum | magic | enabled flag | full | queued | — |
+| `malum` | Malum | magic | enabled flag | full | researching | [profile](mods/malum.md) |
 | `neovitae` | Neo Vitae | magic | enabled flag | full | researching | [profile](mods/neovitae.md) |
 | `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | queued | — |
