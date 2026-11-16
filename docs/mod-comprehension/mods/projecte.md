@@ -76,6 +76,19 @@ Total output lines: 95
 | Stone fueled conversion | Native shaped recipe inputs: 4 lower fuel + `projecte:philosophers_stone`; reverse uses one higher fuel + Stone | Consumes fuels and retains Stone as crafting remainder | One higher fuel or four lower fuels | Crafting action | `PERecipeProvider.java`; no TMM runtime recipe claim. |
 | Custom EMC | Server config JSON path `config/ProjectE/custom_emc.json`; keys encode item stacks/NSS | Non-negative long item value; configured entry overrides/feeds mapper source as implemented in full load path | EMC value visible to consumers and clients | Server config/reload path | `CustomEMCParser.java`; config alone is not full final map because native mappers and data processors also contribute. |
 
+### Transmutation knowledge and input transaction boundaries
+
+The source separates **learning an item**, **selling a stack for EMC**, and **creating a learned output**; these actions share UI surfaces but are separate state changes:
+
+- The eight peripheral input slots and separate lock slot accept stacks matching the relay inventory predicate. Placing a valued item in one calls `handleKnowledge` (which adds persistent player knowledge if eligible) but does not itself credit the item's sell value. A compatible EMC-holder item can instead receive EMC from the player's existing balance; that amount is deducted from the player's pool.
+- The center learn/consume slot accepts a positive-EMC item or the Tome of Knowledge. Its server-side `set(nonempty stack)` calls `handleKnowledge` and then credits `sellValue × stack count` to the player's pool. This happens independently of whether the `PlayerAttemptLearnEvent` is canceled: cancellation prevents the new knowledge record, while this slot method still runs the EMC addition.
+- The shift-click path from the main inventory into the learn slot performs the same learning/value addition, then explicitly clears the moved stack. The regular slot setter adds value but does not itself clear or shrink the passed stack. Since slot extraction is inherited, validate in the exact client that an ordinary click-in / click-out sequence cannot retain both the original stack and credited EMC. This is a source-level transaction boundary, **not a confirmed dupe**.
+- Taking an output removes its EMC cost from the player's pool. The server checks available EMC and the container also constrains output by inventory space. Table/Tablet knowledge belongs to the individual player provider, not an FTB team balance; persistence, stack-component normalization and two-player behavior still need a client test.
+
+**Gate implication:** A knowledge-veto hook alone is not a complete item gate if the same interface independently credits EMC. The pack's approved Philosopher's Stone trophy requirement is recipe-only and explicitly permits trade or later duplication after one valid trophy is acquired. Do not describe it as per-player boss-kill entitlement or as proof of player kill credit.
+
+**Source:** PE1.1.0 `TransmutationContainer.java` (`quickMoveStack`), `container/slots/transmutation/SlotConsume.java`, `SlotInput.java`, `SlotOutput.java`, and `container/inventory/TransmutationInventory.java` at release commit `6aea247f7056eea1521db3f0c73d656857b75423`. This source is version-aligned, not binary-verified against the pinned SHA-1 artifact.
+
 ### Acquisition, renewability and output economics
 
 - The Stone's normal recipe is deterministic and uses a diamond plus tagged redstone/glowstone dust. Recipe acquisition is only a craft gate; it is not personal boss-kill evidence. The current TMM boss-associated-center policy permits one of three material routes, including a Mine Key that can come from a dungeon trial-spawner in the source notes.
@@ -240,6 +253,7 @@ This is the **desired pack teaching graph**, not an already enforced game progre
 | PE-006 TMM recipe gate candidate | `kubejs/server_scripts/projecte_boss_stone_and_powerflowers.js`, `kubejs/data/tmm/tags/item/philosophers_stone_boss_trophies.json` at branch [`feature/projecte-boss-trophy-stone-and-emc-audit`](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/tree/feature/projecte-boss-trophy-stone-and-emc-audit) | [pack-source]; not merged into current integration | Proves staged recipe code and tag contents only; does not prove loaded recipe removal, tag resolution, player kill or operational gate. |
 | PE-007 EMC completeness goal | `manifest/emc-coverage-policy.json`; `scripts/audit_emc_coverage.py` on feature branch | [pack-source]; explicit audit-not-run status | Shows desired full-registry policy and test method; no actual full-registry values/report. |
 | PE-008 Gate/quest records | `docs/PROJECTE-TIERED-GATING-PROPOSAL.md`; `docs/DESIGN.md`; `manifest/progression-gates.json`; `manifest/integration-sources.json`; chapter SNBT at integration SHA `e6931c39af33cb9872cfd9b06f298501d3ab6f31` | [pack-file] | Confirms placeholder and design mismatch; source records do not establish runtime enforcement. |
+| PE-009 Transmutation state and slot operation | [release `TransmutationContainer.java`](https://github.com/sinkillerj/ProjectE/blob/6aea247f7056eea1521db3f0c73d656857b75423/src/main/java/moze_intel/projecte/gameObjs/container/TransmutationContainer.java); `container/slots/transmutation/SlotConsume.java`, `SlotInput.java`, `SlotOutput.java`; `container/inventory/TransmutationInventory.java` at PE-002 | [source] exact version-aligned files | Shows learn, EMC credit, output debit and shift-click clearing order. Normal click return behavior, canceled learn event plus sell credit, and player persistence need client tests; no dupe claim made. |
 
 ## Disposable-world test plan
 
@@ -247,7 +261,7 @@ This is the **desired pack teaching graph**, not an already enforced game progre
 | --- | --- | --- | --- |
 | Artifact/release and recipe export | Install the exact CurseForge file, verify packwiz hash; export recipes/mappings | Confirm `projecte:philosophers_stone`, `philosophers_stone_alt`, table, fuel and machine recipes; compare with commit `6aea…` | not run — exact JAR unavailable |
 | Stone gate | Try both orientations with each of the three accepted item IDs; compare diamond center and rejected ordinary diamond; verify one center consumed | Correct accepted recipe yields Stone; ordinary diamond denied only if intended KubeJS changes load; FTB criterion separately tested | not run — staged KubeJS absent from current integration |
-| Learn / EMC output | Learn one item, relog, open second interface, create one item within balance and attempt one just above balance; trade learned item between players | Balance decreases by output EMC; knowledge/pool persistence and per-player boundary observed; item receipt distinct from quest credit | not run |
+| Learn / EMC output | Learn one item via peripheral input and center consume slot; compare normal click and shift-click; relog/switch Table and Tablet; test one output within and one just above balance; second player; cancel `PlayerAttemptLearnEvent` | Knowledge, item consumption, EMC credit/debit and player persistence match source; specifically verify ordinary insert/remove cannot retain both item and credited value; vetoed knowledge does not silently block separate value credit | not run — exact UI transaction unverified |
 | Collector lighting | MK1 in raw brightness 0, partial and full; Nether/ultra-warm and blocked-sky boundary; empty/full capacity | Source formula predicts scaling; measure actual EMC/tick and GUI value; verify no generation past storage | not run |
 | Relay direction and item charging | Put collector/source and EMC holder on both sides; test tiers and zero/near-capacity item | Correct transfer/charge respects tier caps and operation; no guessed FE transfer | not run |
 | Condenser target | Positive-EMC input and valid target; zero-value target and input identical to locked target as boundaries | Valid target fills; invalid/locked-as-input rejected; output count equals exact paid value. Monitor actual rate | not run |
@@ -260,7 +274,7 @@ This is the **desired pack teaching graph**, not an already enforced game progre
 
 - [ ] Inspect exact pinned JAR at SHA-1 `24fb5997727453a15e956522761a3f586e646c2a` and reconcile release-source files.
 - [ ] Finish full player-usable content inventory: every ring/amulet, mode and world transmutation; Nova devices; armor/tools; bag storage; Klein Star capacities; gear charging and equipment effects.
-- [ ] Map full Table recipe and learning/unlearning semantics, per-player data persistence, item-stack component normalization, and portable Tablet controls.
+- [ ] Complete client confirmation of the source-mapped learning/unlearning rules, per-player persistence, stack-component normalization and Tablet controls; test regular-click vs shift-click value paths, including a canceled learn event.
 - [ ] Export native item recipes/EMC mapper output and same-build full registry; run the policy audit; map each manual override back to trusted item provenance.
 - [ ] Reconcile `manifest/progression-gates.json` with the current owner-approved recipe policy and remove stale interpretation in the authoritative progression documents during a separately scoped documentation fix.
 - [ ] Complete Project Expansion source/profile work, especially Matter Upgrader and EMC bypasses.
@@ -269,3 +283,4 @@ This is the **desired pack teaching graph**, not an already enforced game progre
 ## Revision notes
 
 - 2026-11-16 — Added source-backed PE1.1.0 mechanics and TMM gate reconciliation. Exact pinned JAR, effective EMC values, full item-effect inventory and gameplay remain open; no quest/runtime edits.
+- 2026-11-16 — Traced transmutation learning, EMC credit/debit and shift-click handling at the slot/container boundary. A regular-click transaction boundary needs client validation; no dupe is claimed. Documented that learn-event veto and value credit are separate code paths.
