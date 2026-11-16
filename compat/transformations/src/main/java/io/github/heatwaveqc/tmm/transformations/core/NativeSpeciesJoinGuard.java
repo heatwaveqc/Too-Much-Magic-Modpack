@@ -36,6 +36,19 @@ public final class NativeSpeciesJoinGuard {
             return false;
         }
 
+        // The approved JAWR-only Abomination research permits the two JAWR
+        // afflictions to coexist physically before an optional joining rite.
+        // The older diagnostic TransitionPolicy still classifies that pair as
+        // CONFLICT because it assumes obsolete lich prerequisites. Do not
+        // turn that outdated diagnostic into a new gameplay ban.
+        boolean acquiringVampire = acquiring == ProviderState.JAWR_VAMPIRE;
+        boolean acquiringWerewolf = acquiring == ProviderState.JAWR_LYCANTHROPE;
+        if ((acquiringVampire && before.present(ProviderState.JAWR_LYCANTHROPE)
+                || acquiringWerewolf && before.present(ProviderState.JAWR_VAMPIRE))
+                && !before.present(ProviderState.DRAGON_SURVIVAL_DRAGON)
+                && !before.present(ProviderState.GOETY_LICH)
+                && !before.present(ProviderState.FORBIDDEN_MAGIC_LICH)) return true;
+
         EnumMap<ProviderState, Observation> proposed =
                 new EnumMap<>(ProviderState.class);
         proposed.putAll(before.observations());
