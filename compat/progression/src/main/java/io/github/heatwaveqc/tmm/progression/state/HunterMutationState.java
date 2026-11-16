@@ -36,6 +36,10 @@ public record HunterMutationState(Map<String,Long> progress, Map<String,Integer>
 
     public HunterMutationState credit(String effectId, int amplifier, long duration, long threshold) {
         if (duration <= 0 || threshold <= 0 || amplifier < 0) return this;
+        // Higher permanent potency supersedes lower, and lower-tier bottles
+        // cannot advance or downgrade an already unlocked stronger mutation.
+        // No amount of Speed I progresses Speed II; each amplifier is independent.
+        if (unlocked.getOrDefault(effectId,-1) > amplifier) return this;
         String key = effectId + "@" + amplifier;
         long old = Math.max(0, progress.getOrDefault(key,0L));
         long next = Math.min(threshold,old > threshold - Math.min(threshold,duration)
