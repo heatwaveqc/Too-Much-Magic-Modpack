@@ -2,12 +2,15 @@ package io.github.heatwaveqc.tmm.mxp.core;
 
 /**
  * Pure progression arithmetic, independent of Minecraft and Tyz.
- * 1000 effective XP buys one level; routine BASE XP is divided by 1.2^P.
+ * 1000 effective XP buys one level; routine BASE XP is divided by growth^P.
  * P is the player's lifetime levels earned through MXP, not spent skill ranks.
  */
 public final class MxpMath {
     public static final double GOAL = 1000.0;
-    public static final double GROWTH = 1.2;
+    /** World-server configurable normalizer; 1.0 is truly linear XP. */
+    public static final double DEFAULT_GROWTH = 1.02;
+    public static final double MIN_GROWTH = 1.0;
+    public static final double MAX_GROWTH = 1.2;
     public static final double MAX_EVENT_BASE = 1.0e12;
     private static final int MAX_LEVELS_PER_AWARD = 100_000;
 
@@ -32,11 +35,24 @@ public final class MxpMath {
         return base;
     }
 
+    /** Default-rate convenience for core callers and standalone tests. */
     public static Award apply(Counter original, double base, boolean fixed) {
+        return apply(original, base, fixed, DEFAULT_GROWTH);
+    }
+
+    /** Explicit-rate entry point: every award can use the server's configured rate. */
+    public static Award apply(Counter original, double base, boolean fixed, double growth) {
         if (original == null) throw new IllegalArgumentException("Missing MXP state");
+        validateGrowth(growth);
         requirePositive(base);
         if (base > MAX_EVENT_BASE) throw new IllegalArgumentException("MXP award too large");
-        return fixed ? fixed(original, base) : ordinary(original, base);
+        return fixed ? fixed(original, base) : ordinary(original, base, growth);
+    }
+
+    public static double validateGrowth(double growth) {
+        if (!Double.isFinite(growth) || growth < MIN_GROWTH || growth > MAX_GROWTH)
+            throw new IllegalArgumentException("MXP growth must be finite and in [1.0, 1.2]");
+        return growth;
     }
 
     private static Award fixed(Counter previous, double amount) {
@@ -51,7 +67,7 @@ public final class MxpMath {
         return new Award(new Counter(previous.lifetimeLevels + gained, remaining), amount);
     }
 
-    private static Award ordinary(Counter previous, double base) {
+    private static Award ordinary(Counter previous, double base, double growth) {
         long levels = previous.lifetimeLevels;
         double progress = previous.progress;
         double effective = 0;
@@ -61,8 +77,9 @@ public final class MxpMath {
         while (unspentBase > 0) {
             if (++cycles > MAX_LEVELS_PER_AWARD)
                 throw new IllegalArgumentException("Too many MXP levels in one event");
-            double divisor = Math.pow(GROWTH, levels);
-            // Once 1.2^P exceeds floating-point range, ordinary progress
+            double divisor = Math.pow(growth, levels);
+            // At high P with growth > 1, the divisor can exceed floating-point range;
+            // ordinary progress
             // approaches zero. Fixed exceptions still work.
             if (!Double.isFinite(divisor)) break;
             double effectiveRemaining = GOAL - progress;
