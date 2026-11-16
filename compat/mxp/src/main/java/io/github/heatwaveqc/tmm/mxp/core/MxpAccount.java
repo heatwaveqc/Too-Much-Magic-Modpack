@@ -15,6 +15,8 @@ public final class MxpAccount {
     public static final int RECENT_TRANSACTION_LIMIT = 1024;
 
     private MxpMath.Counter counter = new MxpMath.Counter(0, 0);
+    /** Configured on the staged account for each server-side award; not persisted. */
+    private double growthFactor = MxpMath.DEFAULT_GROWTH;
     private double pendingDelivery = 0;
     private final Set<String> rituals = new HashSet<>();
     private final Set<String> bosses = new HashSet<>();
@@ -32,6 +34,7 @@ public final class MxpAccount {
     public MxpAccount copy() {
         MxpAccount other = new MxpAccount();
         other.counter = counter;
+        other.growthFactor = growthFactor;
         other.pendingDelivery = pendingDelivery;
         other.rituals.addAll(rituals);
         other.bosses.addAll(bosses);
@@ -41,6 +44,11 @@ public final class MxpAccount {
     }
 
     public MxpMath.Counter counter() { return counter; }
+    public double growthFactor() { return growthFactor; }
+
+    public void setGrowthFactor(double factor) {
+        this.growthFactor = MxpMath.validateGrowth(factor);
+    }
     public double pendingDelivery() { return pendingDelivery; }
     public Set<String> firstRituals() { return Collections.unmodifiableSet(rituals); }
     public Set<String> firstBosses() { return Collections.unmodifiableSet(bosses); }
@@ -114,7 +122,7 @@ public final class MxpAccount {
         validateIdentity(source);
         validateIdentity(tx);
         if (recentTransactions.contains(tx)) return Receipt.duplicate(this);
-        MxpMath.Award award = MxpMath.apply(counter, base, fixed);
+        MxpMath.Award award = MxpMath.apply(counter, base, fixed, growthFactor);
         counter = award.state();
         pendingDelivery += award.effectiveXP();
         if (!Double.isFinite(pendingDelivery))
