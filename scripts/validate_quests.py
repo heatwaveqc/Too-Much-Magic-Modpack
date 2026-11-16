@@ -95,7 +95,7 @@ def main() -> None:
     groups = chapters_spec["groups"]
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
-    ensure(len(groups) == 5 and len(chapters) == 46, "Expected five groups and 45 chapters")
+    ensure(len(groups) == 5 and len(chapters) == 44, "Expected five groups and 44 chapters")
     ensure(len(authored["quests"]) == len(resolved["quests"]) == 137, "Expected 137 authored quests with Alcohol is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
@@ -297,7 +297,7 @@ def main() -> None:
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
     for path in QUESTS.rglob("*.snbt"):
         scan_snbt(path.read_text(encoding="utf-8"), str(path))
-    print(f"PASS: five groups, 46 chapters, {len(all_blocks)} quests; all give XP and a fixed item or justified coin")
+    print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP and a fixed item or justified coin")
     print("PASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")
 

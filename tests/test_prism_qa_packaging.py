@@ -25,7 +25,7 @@ def main() -> None:
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for base in ("tmm_monk-", "tmm_transformations-"):
+        for base in ("tmm_progression-",):
             jar = folder / (base + "0.1.0-dev.jar")
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
@@ -40,7 +40,7 @@ def main() -> None:
             commit = "a" * 40
             subprocess.run([
                 sys.executable, str(BUILDER), str(bootstrap), str(folder),
-                commit, str(addons[0]), str(addons[1]),
+                commit, str(addons[0]),
             ], check=True)
             # The builder intentionally stages a DIRECTORY at this .zip-named
             # upload path. GitHub Actions wraps its contents in one ZIP. Previous
@@ -81,10 +81,10 @@ def main() -> None:
                 meta = json.loads(z.read("BUILD-MANIFEST.json"))
                 assert meta["personal_settings"]["public_release"] is False
                 assert meta["dev_only_preferences"] if "dev_only_preferences" in meta else True
-                assert sum(x.endswith(".jar") for x in z.namelist()) == 3
+                assert sum(x.endswith(".jar") for x in z.namelist()) == 2
                 assert not any(p.startswith("minecraft/saves/") for p in z.namelist())
                 assert not any(p.startswith("minecraft/config/") for p in z.namelist())
-            print("PASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, two first-party JARs and no personal data or configs")
+            print("PASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, one standalone first-party JAR and no personal data or configs")
         finally:
             if existing is None:
                 target.unlink(missing_ok=True)

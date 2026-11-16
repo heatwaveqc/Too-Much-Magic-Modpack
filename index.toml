@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "MOD-COMPREHENSION.md"
-hash = "06ed173177edab8720eeddf087bc56738ae7fc12fa5f85bbbc41f93140b62b04"
-
-[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
@@ -185,20 +181,12 @@ file = "config/ftbquests/quests/chapters/totemic.snbt"
 hash = "d062191141d5cd969231ccb1ba7194781da44130f83f01989b79bdbe973f5d57"
 
 [[files]]
-file = "config/ftbquests/quests/chapters/vampirism.snbt"
-hash = "499f8420231718b94d97839fe950579add18892e56e25b60bf127c580160aeb2"
-
-[[files]]
-file = "config/ftbquests/quests/chapters/werewolves.snbt"
-hash = "4ca8d0726b3028470e18474202cfea8e1844e8f22c0252fe148a068231c2bb47"
-
-[[files]]
 file = "config/ftbquests/quests/data.snbt"
 hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "962113607f631e188c737e746d8f14af707d9f5b6a790cdc84d1cf8a10d92f76"
+hash = "5f7de41187c4a7c69b98b1f3ab5f253a188bdc1f6dc4f80d2dfad340cf26ad35"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -211,14 +199,6 @@ hash = "cb3d69b009e7c028b973f2fa88bb5f09010dae00f93a2dcdc8af956ea8dd0707"
 [[files]]
 file = "config/relics/relics/ring_of_the_seven_deadly_sins.yaml"
 hash = "575a02a56feb5ba7317201bcf9753574fcdeb97cb2b8d1e70a6b1d6bb388ea23"
-
-[[files]]
-file = "config/tmm_transformations-server.toml"
-hash = "d6bb4354548550e9f2e728323044880367f506e8946e6145ba02f62daeaaeeac"
-
-[[files]]
-file = "defaultconfigs/tmm_transformations-server.toml"
-hash = "51c6ad0246d67747018dd716ccf96b1a4486756115fe7ca0cf0000332420aebd"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
@@ -385,14 +365,6 @@ file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.j
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
 
 [[files]]
-file = "kubejs/data/tmm/recipe/blockgen/natural_stone/vampirism__cobbled_dark_stone.json"
-hash = "98f04175b631e26e764c58c922ae9ac46b94c1ba2c7cdf91626d0f6254df034d"
-
-[[files]]
-file = "kubejs/data/tmm/recipe/blockgen/natural_stone/vampirism__dark_stone.json"
-hash = "891c0094d9aebd1a7822efd0cd6ad1a05a7435e477f2506279aa2571295398eb"
-
-[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
@@ -413,26 +385,6 @@ file = "kubejs/data/tmm/tags/item/portable_bags.json"
 hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
 
 [[files]]
-file = "kubejs/data/werewolves/tags/item/cooked_fish.json"
-hash = "a5ad4e945cef1c25454bad300d89d1c6ac2ed378e344690cbfb94c07e1ebebd3"
-
-[[files]]
-file = "kubejs/data/werewolves/tags/item/cooked_food.json"
-hash = "5e88b9a29c8d37c8f5d2e4237b7bc0b368d842a9ae35ca45a1b165f5f2763d4a"
-
-[[files]]
-file = "kubejs/data/werewolves/tags/item/raw_fish.json"
-hash = "deeca44678294a22a8e9d1f6f3747ceceb9de66c07e7112cd390ca0424642248"
-
-[[files]]
-file = "kubejs/data/werewolves/tags/item/raw_food.json"
-hash = "265c6a08d7744607a74cddf367c70692f9b97e7ba1694e7374a96d363e87114b"
-
-[[files]]
-file = "kubejs/data/werewolves/tags/item/werewolf_food.json"
-hash = "02b63441afb9ec221193cb8b5ac6b55f6d8cd246af0fbba5edb4bc2eb2aa41a5"
-
-[[files]]
 file = "kubejs/server_scripts/ban_seven_sins_ring.js"
 hash = "ca24abbb4ce289f4906a30cc766ee60c5c1f5eaf02eb9414b4e67a1bcc04e957"
 
@@ -445,12 +397,24 @@ file = "kubejs/server_scripts/dragon_diets.js"
 hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
 
 [[files]]
+file = "kubejs/server_scripts/material_processing_cleanup.js"
+hash = "4e3af9879096859002f21b25f66f78ccb5816b1a44a7e71671273bab34f8427e"
+
+[[files]]
+file = "kubejs/server_scripts/silver_equipment_unification.js"
+hash = "7a2a9d09c982902b4950de4feec816795cb38660e3613201de53bb243e1200db"
+
+[[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
 
 [[files]]
 file = "kubejs/startup_scripts/eldritch_logic_core.js"
 hash = "fafa8bf582e64b7a2448a5163cd1aa85d5d595ccd092f3a8b68feed1e40dfe0c"
+
+[[files]]
+file = "kubejs/startup_scripts/silver_equipment_stats.js"
+hash = "2fd11767cb03ffd7206c2700eec52ef6eba05cdbcb8ec4bc58228b298cc552a4"
 
 [[files]]
 file = "mods/akashic-tome.pw.toml"
@@ -1231,25 +1195,3 @@ metafile = true
 file = "mods/valhelsia-core.pw.toml"
 hash = "f05197caaa06d6cf3807ae2d81928c4f5eff1336597b863207c6320ab7f2e4b0"
 metafile = true
-
-[[files]]
-file = "mods/vampirism-become-a-vampire.pw.toml"
-hash = "3b0661629899c9ecaf0892223152b869d9bb17b8d541a1ad9ddad990330d90c3"
-metafile = true
-
-[[files]]
-file = "mods/werewolves-become-a-beast.pw.toml"
-hash = "c2f2021d56e0cc49dc01c9748e624bff0fd66ad965c6cb70ffdb3e943a4d5770"
-metafile = true
-
-[[files]]
-file = "tests/test_feature_checklist.py"
-hash = "d13bacc189ef0e98d716e0c6ed69b17a4e3e0cad9537f9e237bcff98d77eb88c"
-
-[[files]]
-file = "tests/test_prism_qa_packaging.py"
-hash = "ecc1ecac0e22cd8c18cb3337c4de2e2b12a64369fe4016bec9968bd28b1d35b6"
-
-[[files]]
-file = "tests/test_tmm_qa_preferences.ps1"
-hash = "f390036a167b4c7602d688018425e6665c73d6b3b19015b9c6b6a764e362a601"
