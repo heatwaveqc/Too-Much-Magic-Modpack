@@ -1,7 +1,9 @@
 # Trader's Vengence (experimental)
 
 Isolated NeoForge 1.21.1 / Java 21 module, branched from `test/full-integration`.
-**Source prototype only; not compiled or tested in a live pack yet.** This branch does
+**Source prototype: Java compile, JAR assembly, and unit tests passed** in
+[quick CI run 43885237106](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43885237106).
+**Not tested in a live pack or game world.** This branch does
 not edit the packwiz index or the running QA build.
 
 ## Implemented in source
@@ -51,5 +53,5 @@ Test in a disposable save after an owner-authorized test build:
 - Exercise operator pardon and make sure combat stops even after reloading chunks.
 - Confirm villager trading and schedules return to normal for non-offenders.
 
-Do not merge or publish this as a tested binary until the Java compilation,
-runtime AI, and Iron's projectile integration are verified.
+Do not merge or publish this as a gameplay-tested binary until runtime AI,
+spawn restrictions, and Iron's projectile integration are verified in a disposable world.
