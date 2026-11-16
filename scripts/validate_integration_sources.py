@@ -63,6 +63,12 @@ def approved_override(stream: dict, path: str) -> bool:
         if not isinstance(reason, str) or len(reason.strip()) < 15:
             raise PreflightFailure(stream["name"] + ": override must record a meaningful reason: " + pattern)
         if fnmatch.fnmatchcase(path, pattern):
+            baseline_sha = stream.get("expected_baseline_blobs", {}).get(path)
+            if not baseline_sha or not SHA.fullmatch(baseline_sha):
+                raise PreflightFailure(stream["name"] + ": override requires expected_baseline_blobs for " + path)
+            existing_sha = git("rev-parse", "--verify", "HEAD:" + path, allow_missing=True)
+            if existing_sha != baseline_sha:
+                raise PreflightFailure(stream["name"] + ": approved override baseline has changed: " + path)
             return True
     return False
 
@@ -93,6 +99,12 @@ def validate(strict_overrides: bool = False, strict_readiness: bool = False) -> 
         ref = source_for(stream, head)
         selected = []
         optional = set(stream.get("optional_paths", []))
+        locale_paths = stream.get("merge_json_paths", [])
+        for locale in locale_paths:
+            if not isinstance(locale, str) or not locale.startswith("kubejs/assets/") or "/lang/" not in locale or not locale.endswith(".json"):
+                raise PreflightFailure(name + ": unsafe merged localization path " + str(locale))
+            if paths_at(ref, locale) != [locale]:
+                raise PreflightFailure(name + ": pinned donor missing merged locale " + locale)
         for selector in stream.get("paths", []) + stream.get("optional_paths", []):
             if not isinstance(selector, str) or not selector.startswith(ALLOWED_ROOTS) or ".." in Path(selector).parts:
                 raise PreflightFailure(name + ": unsafe source path " + str(selector))

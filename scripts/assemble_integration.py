@@ -73,6 +73,31 @@ def refresh_packwiz_index() -> None:
 def file_names(ref: str, selector: str) -> list[str]:
     return git("ls-tree", "-r", "--name-only", ref, "--", selector).splitlines()
 
+def merge_json_locales(cfg: dict) -> None:
+    """Merge donor localization keys, never replace existing shared translations."""
+    for stream in cfg["streams"]:
+        paths = stream.get("merge_json_paths", [])
+        ref = "HEAD" if stream.get("integrated_into_baseline") else stream["source_commit"]
+        for name in paths:
+            if not name.startswith("kubejs/assets/") or "/lang/" not in name or not name.endswith(".json"):
+                raise RuntimeError("Unsafe shared localization source: " + name)
+            incoming = json.loads(blob(ref, name))
+            if not isinstance(incoming, dict) or any(not isinstance(k, str) or not isinstance(v, str)
+                                                     for k, v in incoming.items()):
+                raise RuntimeError("Invalid localization map: " + ref + ":" + name)
+            destination = ROOT / name
+            previous = json.loads(destination.read_text(encoding="utf-8")) if destination.exists() else {}
+            if not isinstance(previous, dict):
+                raise RuntimeError("Existing localization not an object: " + name)
+            clashes = sorted(k for k, v in incoming.items() if k in previous and previous[k] != v)
+            if clashes:
+                raise RuntimeError("Conflicting localization keys in " + name + ": " + ", ".join(clashes))
+            if any(k not in previous for k in incoming):
+                previous.update(incoming)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text(json.dumps(previous, indent=2, ensure_ascii=False,
+                                                  sort_keys=True) + "\n", encoding="utf-8")
+
 def main() -> None:
     cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
     if cfg.get("schema") != 1 or cfg.get("channel") != "integration":
@@ -142,6 +167,9 @@ def main() -> None:
         report.append({"name": stream["name"], "branch": branch, "sha": source_sha,
                        "mode": stream["mode"], "file_count": len(selected), "files": selected,
                        "note": stream["note"]})
+    # Shared KubeJS lang maps are composed key-by-key, never imported as
+    # a whole file from one historical feature branch.
+    merge_json_locales(cfg)
     # The Tyz first-wave is already pinned on this baseline. Preserve it on
     # reruns rather than calling the one-time Pufferfish->Tyz installer again.
     from verify_tyz_migration import verify as verify_tyz_migration

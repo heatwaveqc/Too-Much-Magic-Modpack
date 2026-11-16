@@ -38,7 +38,13 @@
       ],
       "mode": "runtime-experimental",
       "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world.",
-      "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9"
+      "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
+      "approved_overrides": {
+        "manifest/quest_shop_catalog.json": "Reviewed exact donor: adds owner-approved 18 vanilla ore blocks to otherwise identical five baseline categories, and extends descriptive policy only."
+      },
+      "expected_baseline_blobs": {
+        "manifest/quest_shop_catalog.json": "7872d8284f7c581ff1748ac7abf5ab748fc99c26"
+      }
     },
     {
       "name": "silver-ore-materials",
@@ -204,6 +210,98 @@
       "mode": "compile-and-load",
       "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins.",
       "integrated_into_baseline": true
+    },
+    {
+      "name": "b19-required-mob-gateways",
+      "branch": "feature/b19-required-mob-gateways-trader",
+      "source_commit": "978c9ede228cc5da2678895c515fc6de28760101",
+      "paths": [
+        "kubejs/data/tmm/gateways/mob_ars_drygmy.json",
+        "kubejs/data/tmm/gateways/mob_ars_starbuncle.json",
+        "kubejs/data/tmm/gateways/mob_ars_whirlisprig.json",
+        "kubejs/data/tmm/gateways/mob_ars_wilden_guardian.json",
+        "kubejs/data/tmm/gateways/mob_ars_wilden_hunter.json",
+        "kubejs/data/tmm/gateways/mob_ars_wilden_stalker.json",
+        "kubejs/data/tmm/gateways/mob_irons_apothecarist.json",
+        "kubejs/data/tmm/gateways/mob_irons_archevoker.json",
+        "kubejs/data/tmm/gateways/mob_irons_catacombs_zombie.json",
+        "kubejs/data/tmm/gateways/mob_irons_citadel_keeper.json",
+        "kubejs/data/tmm/gateways/mob_irons_cryomancer.json",
+        "kubejs/data/tmm/gateways/mob_irons_cultist.json",
+        "kubejs/data/tmm/gateways/mob_irons_cursed_armor_stand.json",
+        "kubejs/data/tmm/gateways/mob_irons_ice_spider.json",
+        "kubejs/data/tmm/gateways/mob_irons_magehunter_vindicator.json",
+        "kubejs/data/tmm/gateways/mob_irons_necromancer.json",
+        "kubejs/data/tmm/gateways/mob_irons_pyromancer.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_drygmy.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_starbuncle.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_whirlisprig.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_wilden_guardian.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_wilden_hunter.json",
+        "kubejs/data/tmm/recipe/gateways/mob_ars_wilden_stalker.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_apothecarist.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_archevoker.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_catacombs_zombie.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_citadel_keeper.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_cryomancer.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_cultist.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_cursed_armor_stand.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_ice_spider.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_magehunter_vindicator.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_necromancer.json",
+        "kubejs/data/tmm/recipe/gateways/mob_irons_pyromancer.json",
+        "manifest/gateway_required_mobs.json",
+        "scripts/validate_b19_gateways.py"
+      ],
+      "mode": "runtime-qa-staging",
+      "note": "B19 17 Ars/Iron's mob Gateways + recipes; locale merged key-by-key, never overwrite shared KubeJS translation. Source staged for next authorized Integration Assembly; live entity IDs, spawn/rules and loot require acceptance.",
+      "merge_json_paths": [
+        "kubejs/assets/tmm/lang/en_us.json"
+      ]
+    },
+    {
+      "name": "b20-wandering-trader-magic-stock",
+      "branch": "feature/b20-wandering-trader-guaranteed-magic-stock",
+      "source_commit": "7bc547690a753cea70efc35b92c2c95ebe80207b",
+      "paths": [
+        "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
+        "manifest/wandering_trader_magic_stock.json",
+        "scripts/validate_b20_trader_stock.py"
+      ],
+      "mode": "runtime-qa-staging",
+      "note": "Guaranteed trader rotating magical stock and Ring of Seven Deadly Sins blacklist. Source locked for assembly; live trading and no banned item remain untested."
+    },
+    {
+      "name": "caerbannog-gateways-prototype",
+      "branch": "feature/caerbannog-gateways-prototype",
+      "source_commit": "565ad02a6e397d03cf85fff0e23b2de966e4a57b",
+      "paths": [
+        "kubejs/assets/kubejs/models/item/chaos_bunny_trophy.json",
+        "kubejs/data/tmm/gateways/caerbannog.json",
+        "kubejs/data/tmm/gateways/chaos_bunny.json",
+        "kubejs/data/tmm/loot_table/entities/empty.json",
+        "kubejs/data/tmm/recipe/caerbannog.json",
+        "kubejs/server_scripts/caerbannog_boss.js",
+        "kubejs/startup_scripts/caerbannog_trophy.js"
+      ],
+      "mode": "runtime-prealpha-staging",
+      "note": "Two optional Caerbannog/Chaos Bunny gateways, cosmetic original trophy, recipes and entity hooks; locale keys merge into existing assets. No live mob or loot acceptance.",
+      "merge_json_paths": [
+        "kubejs/assets/tmm/lang/en_us.json"
+      ]
+    },
+    {
+      "name": "quest-live-registry-validator",
+      "branch": "test/full-integration",
+      "paths": [
+        "scripts/quest_registry_gate.py"
+      ],
+      "mode": "qa-validator-source",
+      "note": "Read-only loaded-registry quest item ID audit source. Requires actual server registry dump from authorized smoke; no synthetic registry pass claim.",
+      "merged_from": "fix/quest-registry-gate-and-qa-priorities-2026-11-15",
+      "integrated_into_baseline": true,
+      "merged_pr": 82,
+      "merged_commit": ""
     }
   ],
   "covered_by_baseline": {
@@ -302,9 +400,6 @@
   "deferred_pending_runtime": {
     "feature/b16-betterend-thallasium-iesnium": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/b17-loot-performance-yungs-ars-locate": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/b19-required-mob-gateways-trader": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/b20-wandering-trader-guaranteed-magic-stock": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/caerbannog-gateways-prototype": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/canonical-blood-config-first-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/dracolich-skeletal-model": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
@@ -312,7 +407,6 @@
     "feature/thermalily-no-waste-projecte-energy-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "fix/first-log-bundle-curio-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "fix/integrate-starter-bundle-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "fix/quest-registry-gate-and-qa-priorities-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/traders-vengence": "Draft source-only PR #219; compile/unit tests passed, but trader spawn interception, AI and Iron's missiles are not gameplay-tested or imported. Classified to prevent the assembler's unknown-branch refusal, NOT as a voluntary omission of a ready feature. Reconcile readiness under AGENTS.md and the live-test inclusion register before the next comprehensive owner-authorized QA assembly; full smoke still requires separate owner approval."
   }
 }

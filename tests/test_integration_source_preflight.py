@@ -37,7 +37,12 @@ class IntegrationPreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(check.PreflightFailure, "meaningful"):
             check.approved_override(stream, "compat/demo/old.java")
         stream["approved_overrides"]["compat/demo/old.java"] = "Approved after source-level diff review"
-        self.assertTrue(check.approved_override(stream, "compat/demo/old.java"))
+        stream["expected_baseline_blobs"] = {"compat/demo/old.java": PIN}
+        with patch.object(check, "git", return_value=PIN):
+            self.assertTrue(check.approved_override(stream, "compat/demo/old.java"))
+        with patch.object(check, "git", return_value=HEAD):
+            with self.assertRaisesRegex(check.PreflightFailure, "baseline has changed"):
+                check.approved_override(stream, "compat/demo/old.java")
 
     def test_drafts_reported_and_existing_overwrite_blocks_strict_assembly(self):
         cfg = {"schema": 1, "channel": "integration", "baseline": "test/full-integration",
