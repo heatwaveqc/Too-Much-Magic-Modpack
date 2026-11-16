@@ -36,21 +36,21 @@
 
 | Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
 | --- | --- | --- | --- | --- | --- |
-| Encyclopaedia, tutorials and leveling | Official overview says levels include documentation/tutorials; official Codex page says it mirrors in-game guide accessed by master keybind [docs: current official site] | partial | Encyclopaedia/Codex; exact category and first access step unverified | not run | Retrieve exact guide content and advancement/level trigger chain from pinned artifact |
-| Spell programming | Official overview confirms action sequences (“Spells”) and vector/math concepts [docs: current official site] | partial | Tutorial sections and programmer UI references not retrieved | not run | Inventory all selectors/operators/actions and piece unlocks, constraints and compile errors |
-| Casting instruments and spell storage | Not established for exact 1.21.1 pin; older changelog mentions CADs/bullets/drives, but is not used as proof of pinned mechanics | unresearched | Exact guide entries and JEI categories unknown | not run | Inspect pinned item/recipe data and source at tag |
-| Progression materials and crafting | Not established | unresearched | JEI expected to expose recipes but actual categories not checked | not run | Confirm first materials, acquisition sources, recipe types, tiers and renewable paths |
-| Tool/armor and advanced use | Official historical changelog contains tool/armor and advanced bullet concepts for older versions only; not treated as current proof | unresearched | Exact current guide sections unknown | not run | Audit 1.21.1 registry and guide; verify every substantive branch |
-| Psi: Tweaks and Additions | Pack roster confirms addon enabled; addon mechanics not part of base Psi evidence | partial | See separate addon profile to be created | not run | Inspect exact addon pin and supported content; crosswalk to Psi |
+| Encyclopaedia and tutorials | Exact-tag Patchouli assets and localization; six legacy tutorial entries | Starter tutorial sequence mapped; later reference pages not fully reviewed | Encyclopaedia Psionica; Basics, Components, Items, Legacy Entries | Not run | Confirm the book/keybind display and controls label in the pack client |
+| Starter CAD and Psidust | Exact-tag shaped recipes and ItemCAD action | First material/crafting loop mapped | Introduction and CAD Assembler entries; JEI recipes | Not run | Verify assembler GUI and dropped-item targeting in client |
+| Spell Programmer and bullets | Exact-tag recipes and tutorial text | Compile/store/cast flow mapped; all component/bullet variants open | Tutorial 1–2, Programmer entry, Bullet entry | Not run | Audit all bullet forms and component tiers/costs |
+| Default piece groups | 29 registered groups; group docs define unlock semantics | Group categories mapped; no default enforceable level tree | Four tutorial groups plus 25 subject groups | Not run | Confirm no pack datapack overrides; trace event listeners only if integration is proposed |
+| CAD energy, spell stats and cast limits | Source for default attributes, cost calculation, overflow path; guide for stats and 32-block boundary | Baseline and general boundaries mapped | Tutorial 3–5 | Not run | Audit component stat formulas, battery storage and per-trick limits |
+| Psi: Tweaks and Additions | Separate installed addon profile | Separate research in progress | Addon content is in the base Encyclopaedia per upstream docs | Not run | Continue addon profile independently |
 
 ## Guidebook onboarding — required before the player's first complex step
 
-- **Guide name and access:** The official website calls the guide the Encyclopaedia Psionica and says it is accessed with the Psi master keybind. The exact key name/default and whether the menu is available before any item or advancement are unverified. The keybind should be located under Controls; a future chapter should give the exact menu path and recommend changing conflicts.
-- **Earliest attainable stage:** Not established. The interface may be accessible from the start, but this needs a clean survival client check.
-- **First instructional quest:** “Open the Encyclopaedia” should teach Controls → Psi master keybind → first tutorial, and require completion of the first verified tutorial or a truthful item/advancement proxy. Do not reward a guide item unless the exact version uses one.
-- **Reference map:** Official site describes in-game documentation/tutorials and the web Codex as a verbatim mirror. Specific tutorial names, level numbers, piece groups and page mappings remain unknown.
-- **Where guide is insufficient:** No exact 1.21.1 Codex content was retrievable in this pass. If the guide omits costs, unlock triggers or station recipes, quest text must fill those gaps after inspection.
-- **Other in-game help:** Spell-programming UI and JEI may expose pieces/recipes; exact coverage is not established.
+- **Guide name and access:** The exact-tag assets define the Patchouli book Encyclopaedia Psionica; its current master keybind is named Psi Master Keybind in localization. The introduction and CAD Assembler pages are present. Client display and the actual key assignment remain untested.
+- **Earliest attainable stage:** The source guide's first route uses a CAD Assembler and Iron CAD Assembly made from iron plus a piston. No earlier mod-specific unlock is named in those pages; confirm the actual client start.
+- **First instructional step:** Build the basic CAD, then use it on dropped Redstone Dust to obtain Psidust. The source action applies a 60-tick regen cooldown and deducts 100 Psi.
+- **Reference map:** Basics contains the introduction, CAD Assembler and Programmer entries; Components and Items describe equipment; Legacy Entries holds six tutorials, from spell writing through an explosion example.
+- **Where the guide is insufficient:** The book is marked work in progress and says JEI is needed for recipes. Component stat tiers, every bullet recipe, advanced acquisition routes and some trick limits remain outside this mapped starter slice.
+- **Other in-game help:** The Programmer provides compile status, error details and five spell statistics. JEI should be used for exact recipe lookups; neither surface has been checked in a client.
 
 ## Systems and full mechanics inventory
 
@@ -100,12 +100,18 @@ The default groups use the execute-main unlock behavior. Executing a group's mai
 
 ## Material / capability input-output contracts
 
-| System | Input **kind** + exact ID/tag/event | Input qty/formula; consumed/remainder | Output **kind**, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
+| System | Input kind + exact ID/tag/event | Input qty/formula; consumed/remainder | Output kind, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
 | --- | --- | --- | --- | --- | --- |
-| Tutorial progression | Player state / guide action / advancement candidate; exact event unknown | Not established | Guide visibility or progression unlock candidate; exact state transition unknown | Player action / level event, exact trigger unknown | No detector claim; inspect advancement and event code |
-| Spell authoring | UI edits and spell-piece entries; exact registry IDs not verified | Not established | Spell definition in interface or item candidate | User interaction; exact persistence boundary unknown | API and KubeJS event support not established |
-| Spell execution | Spell definition plus casting item/device candidate | Resource, item, durability and cooldown costs all not established | Programmed spell effects in world; exact effects vary by spell | Player/entity interaction; exact radius/cadence and server checks unknown | Do not presume automation; inspect each trick's server-side implementation |
-| Sharing | Spell definition and sharing tool candidate | Exact stack/form and consumption not established | Serialized/copied spell data candidate | Manual UI action | Exact input/output medium unknown; [docs: Modrinth project description] |
+| CAD Assembler | Iron ingots and piston; recipe output psi:cad_assembler | 5 iron ingots + 1 piston | One CAD Assembler | Shaped crafting recipe | Recipe JSON; exact-tag source |
+| Iron CAD Assembly | Iron ingots; recipe output psi:cad_assembly_iron | 4 iron ingots | One Iron CAD Assembly | Shaped crafting recipe | Recipe JSON; exact-tag source |
+| Starter CAD assembly | Iron Assembly inserted in CAD Assembler | One assembly | One basic CAD | GUI machine operation | Encyclopaedia intro; client operation not checked |
+| Psidust creation | Equipped player CAD targets dropped Redstone Dust | Source charges 100 Psi and sets 60-tick cooldown; exact item-entity debit path not yet audited | Psidust from the CAD crafting interaction | Player right-click; aimed at dropped redstone | ItemCAD.use and source guide; no automation claim |
+| Spell Programmer | Iron ingots + Psidust; recipe output psi:programmer | 5 iron ingots + 1 Psidust | One Spell Programmer | Shaped crafting recipe | Recipe JSON; exact-tag source |
+| Basic Spell Bullet | Iron ingot + Psidust; recipe output psi:spell_bullet | 1 iron ingot + 1 Psidust | One empty Spell Bullet | Crafting recipe | Exact recipe should be confirmed in JEI; guide text |
+| Cast cost | Spell's compiled Cost stat, CAD Efficiency, bullet/container modifier | Real cost = spell cost adjusted by CAD efficiency and, for container bullets, the bullet cost modifier; positive final cost is deducted | Spell execution plus Psi debit | Player cast; pre-cast event may alter cost and other cast parameters | PsiSpellCosts.java and ItemCAD.java; zero skips debit, insufficient balance can overflow |
+| Psi overflow | Deduction exceeding available Psi; CAD may contain stored Psi | CAD stored Psi is consumed first; remaining overflow becomes damage, except where shatter path changes handling | Player damage and overflowed state | On positive cast debit | PlayerData.deductPsi; overflow blocks subsequent casts until cleared |
+| Default group completion | Execute the group's designated main piece | No cost specified by the group registry | PieceGroupAdvancementComplete event; no advancement automatically awarded | First qualifying execution | PlayerData.java and docs/spell-pieces.md; event receiver in TMM not established |
+| Advancement-gated custom group | Custom psi:spell_piece_group entry referencing a displayed advancement | Advancement completion is prerequisite | Group pieces appear and compile/import for that player | Per-player advancement state | Datapack behavior documented upstream; no TMM custom group identified |
 
 ## Acquisition, renewability and output economics
 
@@ -116,18 +122,18 @@ The default groups use the execute-main unlock behavior. Executing a group's mai
 
 ## Complete player progression / walkthrough blueprint
 
-**Completion test:** not met. This is a structured research map, not a quest-ready progression graph.
+**Completion test:** not met. The exact-tag starter route and six tutorial subjects are mapped, but the complete component/equipment branches, every reference entry, and client acceptance remain open.
 
-| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 0. Find/open guide | Required teaching step | Exact early requirement unknown | Open Controls, find Psi master keybind and open Encyclopaedia; verify key label/default | First instructional page visible | Encyclopaedia; exact page name unknown | Teach keybind path; detect first verified tutorial completion or use manual fallback; reward small spellcrafting supplies | Official Codex description only; partial |
-| 1. Obtain first interface | Required | Recipe, materials and unlock gate unknown | Craft/obtain first programming UI and casting device according to exact JEI | Player can author and attempt a spell | Exact JEI category and guide tutorial unknown | Actionable recipe/build/use instructions pending item/recipe inspection | Unresearched |
-| 2. Author first spell | Required | Tutorial prerequisites and piece availability unknown | Place verified starter pieces, configure parameters and connect action sequence; run compiler | Valid spell definition and visible compiler success | First verified tutorial page and UI labels unknown | Teach one minimal safe utility spell; item possession does not prove it compiled | Official concept only; partial |
-| 3. Cast and diagnose | Required | First valid spell and verified casting instrument | Load/store the spell, select it and cast using exact 1.21.1 interaction | Observable effect and cost/failure feedback | Casting tutorial/JEI reference unknown | Test actual operation; quest detector must be source-confirmed, otherwise manual completion | Unresearched |
-| 4. Learn/unlock pieces | Required progression branch | Level count, XP source, threshold and unlock ordering unknown | Follow each tutorial and earn each verified unlock | New spell pieces become available | Exact Codex level/category names unknown | Map each level to a how-to stage and safe reward; do not award locked pieces | Official overview confirms leveling/tutorial concept only |
-| 5. Upgrade components and casting modes | Major branch candidate | Current CAD/component/item tiers unverified | Inventory and teach all actual component, bullet and equipment routes | Increased spell options/capacity or new casting forms if present | Exact guide and JEI pages unknown | Split branches only after registry/guide review; no unverified mechanics in quests | Older source material excluded as version proof |
-| 6. Share, copy and advanced use | Optional / terminal candidate | Official description mentions share/copy; exact version tools and completion target unknown | Use verified in-game sharing tool; test import and missing piece handling | Repeatable spell transfer and reliable advanced library | Exact guide page and UI action unknown | Teach practical import/export and safety/version checks if confirmed | Current Modrinth description; partial |
-| 7. Completion | Open-ended endpoint not established | No documented final tier/objective found | Define completion only after full level/tutorial and branch inventory | Exact terminal capability unknown | Unknown | Avoid claiming mastery or quest completion until progression graph is mapped | Blocked by source/artifact inspection |
+| Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Knowledge-base coverage |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0. Open the manual | Teaching step | Psi's Patchouli book and master keybind | Open Encyclopaedia Psionica using Psi Master Keybind | Introduction and categorized entries visible | Basics → Introduction | Source mapped; client key assignment/display untested |
+| 1. Build the starter machine and assembly | Required | 5 iron ingots + piston for CAD Assembler; 4 iron ingots for Iron CAD Assembly | Craft both; place/open assembler and insert the assembly | Basic CAD assembled | Basics → CAD Assembler; JEI recipe lookup | Source recipe and instructions mapped |
+| 2. Make Psidust | Required | Basic CAD and dropped Redstone Dust | Aim at the item and use the CAD | Psidust output; 100 Psi deducted and 60-tick regen cooldown | Basics → Introduction | Source action mapped; exact item-entity consumption not audited |
+| 3. Program and compile | Required | Spell Programmer, basic bullet, CAD; 5 iron + Psidust for Programmer, iron + Psidust for basic bullet | Write the Debug example; connect typed pieces, configure parameters, and check compile indicator | Valid spell can be stored in a bullet | Legacy Entries → Tutorial 1 | Guide steps mapped; exact item recipes require client/JEI confirmation |
+| 4. Load, select and cast | Required | Compiled bullet and assembled CAD | Use CAD Assembler to load bullet; hold CAD and use master-keybind radial selection; cast | Debug output confirms execution; inspect cost and errors | Legacy Entries → Tutorial 2 | Source guide mapped; in-game casting not tested |
+| 5. Learn the core language | Recommended learning sequence | Tutorials 3–6 | Explore types/numbers, Add Motion, spell limits, then Explode and Error Suppressor | Practical spell construction; default groups themselves do not enforce unlocks | Legacy Entries → Tutorials 3–6 | Topic order mapped; individual piece behavior remains incomplete |
+| 6. Expand components and casting forms | Optional branches | Core, Socket, Battery, Colorizer and bullet variants | Follow component/item entries and JEI recipes; test each form | Higher CAD stats, capacity or alternate delivery behavior | Components and Items categories | Full recipe, stat and limit audit remains open |
+| 7. Completion | Open-ended | No source-backed final level or mastery gate found in the reviewed slice | Define any pack completion only after the full branch audit | No terminal tier currently established | Current guide labels itself work in progress | Do not claim source-complete or client-verified status |
 
 ## Internal combinations and overlooked mechanics
 
@@ -138,37 +144,37 @@ The default groups use the execute-main unlock behavior. Executing a group's mai
 
 ## Low-hanging setups useful in ordinary survival
 
-Three grounded early setups cannot yet be named without guessing at pinned recipes, unlocks and outputs.
+The source now supports a verified starter route and two safe tutorial setups; their in-game operation has not been tested.
 
-### 1. First verified tutorial spell — early candidate
-- **Goal and payoff:** Demonstrate the core author-program-test loop.
-- **Minimum entry and ingredients:** Exact tutorial and item prerequisites are not yet established.
-- **Build/use steps:** Open the in-game Encyclopaedia, complete its first tutorial, and reproduce the example only after confirming exact 1.21.1 steps.
-- **Sustainability and limits:** Unknown until the cast resource and costs are inspected.
-- **Evidence / pack test:** Official overview confirms in-game tutorials; no client test run.
+### 1. Psidust starter loop
+- **Goal and payoff:** Produce the first spell-programming material from vanilla Redstone Dust.
+- **Minimum entry and ingredients:** CAD Assembler (5 iron ingots + piston), Iron CAD Assembly (4 iron ingots), dropped Redstone Dust.
+- **Build/use steps:** Assemble the basic CAD; target the dropped redstone and use the CAD.
+- **Sustainability and limits:** Each action deducts 100 Psi and sets a 60-tick regen cooldown; exact item drop consumption and practical throughput remain client/source follow-up.
+- **Evidence / pack test:** Exact-tag recipe/action source and guide; not client-tested.
 
-### 2. Utility spell — candidate after first tutorial
-- **Goal and payoff:** Identify one safe, repeatable survival utility action.
-- **Minimum entry and ingredients:** Piece unlocks and resource costs unknown.
-- **Build/use steps:** Select a source-backed utility effect from the pinned guide, program it, validate, cast, then test its boundary case.
-- **Sustainability and limits:** Unknown; test costs and grief protection.
-- **Evidence / pack test:** Not established; research before recommending.
+### 2. Debug tutorial spell
+- **Goal and payoff:** Confirm that typed pieces compile, store and cast through the CAD.
+- **Minimum entry and ingredients:** Spell Programmer, basic Spell Bullet, assembled CAD; programmer and bullet recipes include Psidust.
+- **Build/use steps:** Follow Tutorials 1–2 to connect Selector: Caster to Trick: Debug, compile, store in bullet, load and cast.
+- **Sustainability and limits:** Positive cast cost is adjusted by CAD Efficiency and bullet modifier; overflow may damage the player.
+- **Evidence / pack test:** Exact-tag Patchouli content and cast source; not client-tested.
 
-### 3. Shared spell workflow — candidate
-- **Goal and payoff:** Reuse or exchange a verified spell definition.
-- **Minimum entry and ingredients:** In-game share/copy tool and import procedure need verification.
-- **Build/use steps:** Produce a simple spell, export/copy via the exact tool, import into a disposable test, confirm missing-addon/version feedback.
-- **Sustainability and limits:** Spell data transfer is not a resource generator; compatibility constraints unknown.
-- **Evidence / pack test:** Current Modrinth description; not tested.
+### 3. Mobility spell tutorial
+- **Goal and payoff:** Learn a direct player-facing effect using Trick: Add Motion.
+- **Minimum entry and ingredients:** A compiled CAD spell using the caster, look vector and numeric strength.
+- **Build/use steps:** Follow Tutorial 4, compile and cast in a safe open area.
+- **Sustainability and limits:** Strength is a spell parameter and affects spell statistics; repeated casting may cause unsafe movement or Psi overflow.
+- **Evidence / pack test:** Exact-tag tutorial content; not client-tested.
 
 ## API, integration and pack-config surfaces
 
 | Hook or customization surface | Namespace / exact file, API or serializer | Capabilities / constraints | Current TMM override? | Evidence |
 | --- | --- | --- | --- | --- |
-| Mod API | Official FAQ confirms an API exists; exact 1.21.1 packages/events not inventoried | Addon authors can extend Psi; exact public interfaces and compatibility guarantees unreviewed | None found in inspected pack files for this pass | [docs: official FAQ] |
+| Mod API | Psi API includes PieceGroupAdvancementComplete and PreSpellCastEvent; source event/data classes inspected | Events expose group completion and allow a pre-cast listener to alter/cancel casts; no listener behavior presumed | No TMM listener identified in this profile pass | Exact-tag source; pack script/event search remains open |
 | Config | No exact 1.21.1 config keys inspected | Do not infer configurable costs, unlocks, or piece behavior | Unknown | Needs source/JAR review |
-| Spell sharing | Official project description documents in-game share/copy support | Exact serializer/version validation and exposed API are unknown | None identified | [docs: Modrinth project page] |
-| Recipes and tags | Not inspected in exact jar | No substitution or tag-compat claim | No Psi override identified in the paths inspected | Research pending |
+| Spell sharing | Exact transfer workflow not inspected in this pass | Keep as a candidate until item/UI/import/version behavior is source-mapped | None identified | Source and client follow-up |
+| Recipes and tags | Exact-tag starter recipes inspected; broader recipe registry not inventoried | No general substitution/tag-compatibility claim | No Psi override identified in inspected pack paths | Full recipe audit pending |
 
 ## Compatibility leads
 
@@ -224,16 +230,16 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 | Addon boundary | Compare base Psi and enabled Psi: Tweaks and Additions in disposable installs; test one addon-only component and import behavior without addon | Confirm which content belongs to base vs addon, compatibility errors and whether spell fails safely | Not run |
 | Sharing/import | Export a simple spell, import into same version, then try an unavailable-piece/version case | Confirm actual share format, validation/warning and whether imported data grants progression (not assumed) | Not run |
 
-**Status requirement:** keep `researching`. The progression graph, first recipe chain, guide page inventory, unlock triggers and casting resource/cost behavior are still mandatory unknowns. No gameplay tests were run.
+**Status requirement:** keep `researching`. The starter loop, six tutorial topics, default group behavior, baseline Psi attributes and general cast constraints are source-mapped, but the pinned JAR/source equivalence, complete component and trick catalogs, TMM overrides, progression event listeners, and client acceptance remain open. No gameplay tests were run.
 
 ## Unknowns and next research
 
 - [x] Retrieve the exact-tag Patchouli entry definitions and localization keys; identify Basics, Components, Items, Legacy Entries and all six tutorials. Complete page-by-page guide review remains open.
-- [ ] Inspect the pinned JAR transiently: metadata, registries, recipes, advancement tree, config defaults, loot/data and guide JSON; do not commit the JAR or extracted copyrighted assets.
+- [ ] Inspect the pinned JAR transiently to validate tag parity, config defaults, registries, complete recipes/data and advancements.
 - [ ] Resolve the release tag to its peeled commit SHA and compare the exact pinned JAR to source/resources.
 - [x] Map the starter interface, CAD/Programmer/bullet recipes, Psidust action, baseline Psi attributes, spell-stat checks and the guide's 32-block cast boundary. Full component tiers, piece costs and individual trick limits remain open.
 - [x] Inventory the enabled Psi: Tweaks and Additions pin and profile it separately; see the linked addon profile.
-- [ ] Search quest authoring and generated files for any existing Psi pilot before a quest handoff.
+- [ ] Search the full TMM datapack/scripts for Psi group overrides or event listeners if progression integration is later proposed; quest work remains out of scope.
 - [ ] Perform clean client and dedicated-server disposable-world tests only when the user requests implementation verification.
 
 ## Revision notes
