@@ -1,6 +1,6 @@
 # Next test — Codex-executable three-tier checklist
 
-**Owner request:** prepare a ready check and next test plan; **do not build yet**.  
+**Scope:** next comprehensive test intake, readiness checks and live-test commands. This document does not itself authorize a build or full smoke.  
 **Scope checked:** `test/full-integration`, November 16, 2026 (Arizona).  
 **Target:** Minecraft 1.21.1 · NeoForge 21.1.265 · Java 21.  
 **Execution status of THIS document:** instructions only; no tests pass merely because this checklist exists.  
@@ -15,9 +15,15 @@ This is the actionable successor to the earlier [19-step client worksheet](../NE
 2. Treat the exact checkout, **not this dated snapshot**, as the authority. The 2026-11-16 retirement integration removes TeamLapen Vampirism, Werewolves and Vampire's Delight. The next QA compiles *two* first-party JARs: `tmm_progression` and a **repaired JAWR-only** `tmm_transformations`. The old `tmm_monk` faction JAR is excluded.
 3. The integrated standalone Monk JSON currently includes 30 skills, rank-20 cumulative XP **14,300**, 16 optional milestone entries and Bedrock Rest. The integrated Hunter JSON includes the potion Trial of Venom, specialties, mutations, and silver_hunter. Both are unaccepted in-world. **Re-check these numbers on each commit.**
 4. `tmm_progression` command registration currently uses `StringArgumentType.word()` for namespaced IDs and does **not** register `/tmmprogress admin xp` in the combined Hunter command file. Mark associated in-game commands **BLOCKED** until the source/parser/command contract is repaired and actually tested. Do not silently simplify or invent command syntax.
-5. Compare `manifest/integration-sources.json` including `deferred_pending_runtime` with every intended feature branch. As of this checklist, B16 BetterEnd, B17/B18 YUNG/locators, B19 Gateways, B20 trader stock, Thermalily/ProjectE energy, and MXP growth are **deferred** from the targeted retirement QA. Do not test them as shipped unless a later build manifest proves inclusion.
+5. **Before the next comprehensive live build, reconcile the [mandatory ready-feature register](LIVE-TEST-INCLUSION-REGISTER.md).** Search prior development-chat handoffs and PRs for every reported-ready feature, including unmerged branches. The earlier retirement-only deferrals (B16 BetterEnd, B17/B18 YUNG/locators, B19 Gateways, B20 trader, Thermalily/ProjectE, MXP growth and others) are **historical, not an approved next-test omission**. Attempt runtime inclusion for every ready feature, record an exact blocker if an attempt fails, and request an owner decision if a narrower test is necessary. Do not claim a feature shipped unless it is present in the final assembled artifact.
 6. **Default allowed activity** is quick static validation, isolated Java unit/compile checks, code review, or inspection of copies of supplied disposable save files. Do **not** execute `scripts/smoke_server.sh` with the full pack, start `runServer`, dispatch the full integration workflow with `full_smoke=true`, cause a full smoke via push, create a Prism build, or alter survival worlds without the owner's explicit instruction for that run. User has not authorized a build by requesting this checklist.
 7. Capture each result in [CURRENT-TEST-STATUS.md](CURRENT-TEST-STATUS.md) and include source SHA, commands, scope, and evidence. Use `NOT BUILT` for absent features; `BLOCKED` for present but untestable or broken prerequisites; `NOT RUN` for untouched cases. Source PASS ≠ server PASS ≠ client PASS.
+
+## Mandatory intake for features reported ready by other chats
+
+See **[LIVE-TEST-INCLUSION-REGISTER.md](LIVE-TEST-INCLUSION-REGISTER.md)**. This new owner rule supersedes the former practice of treating old `deferred_pending_runtime` items as acceptable omissions. A "ready for live test" report in **any** project chat obligates the next comprehensive integration to **attempt** including that work, whether or not the previous QA chat registered or merged it. Merge conflicts, missing compatible pins, unresolved APIs and runtime crashes are legitimate **BLOCKED** outcomes only with documented evidence, not blanket deferrals. Owner-specific deferrals are the only voluntary exclusions. The build/handoff agent must provide the inclusion matrix **before** requesting the next full-smoke authorization. A complete source inclusion matrix still does **not** prove runtime success.
+
+The 13 previously deferred runtime branches are listed for re-review in the register. Their older `NOT BUILT` labels describe the **previous retirement-focused build**, not permission to exclude them again. When a build includes these features, change the cases below to live-test tasks against the actual shipped SHA.
 
 ## R — Twelve readiness gates (run before any prospective build)
 
@@ -30,7 +36,7 @@ This is the actionable successor to the earlier [19-step client worksheet](../NE
 | R05 | Cross-mod bridge repair | Preserve JAWR-only Archlich/Dracolich death anchors, mob retaliation neutrality, Dragon Survival/Goety/Forbidden Magic compatibility; confirm old TeamLapen blood/HUD/cure hooks absent | Source staged; unaccepted |
 | R06 | Silver canonicalization | Eidolon is sole craftable silver equipment provider; optional Hunter `silver_hunter` adds appropriate extra damage; no unconditional Werewolves multiplier or dead tags | Source staged |
 | R07 | Tyz/MXP ownership | One Tyz skills backend; Pufferfish Skills removed only in actual assembled test build; Pufferfish Attributes retained if needed; MXP source-only not falsely marked runtime | Conditional |
-| R08 | Mod / branch completeness | All target branches included or specifically marked deferred; no silent omission or outdated source baseline; validate `manifest/integration-sources.json` | **13 newer runtime streams deferred** |
+| R08 | **Ready-feature inclusion gate** | Inventory every prior chat/PR "ready for live test" report; compare with all branches, source manifest and [intake register](LIVE-TEST-INCLUSION-REGISTER.md); attempt each ready runtime import/pin/build; show per-feature INCLUDED / BLOCKED with evidence / explicit OWNER-DEFERRED | **Old 13-item deferral requires re-review; not a waiver** |
 | R09 | Quest and shop registry | Existing alcohol chapter is preserved; retire two TeamLapen quest chapters; detect invalid items and the prior oven/reactor placeholders; do not let Ars pilot clobber the new quest content | Needs validator |
 | R10 | Banned routes | Seven Deadly Sins Ring absent from normal loot/Curios and, when B20 actually ships, from all trader offers including legacy trades | Static + conditional runtime |
 | R11 | Production/data safety | Exact mod pins, hash index, no obsolete world migrations, immutable SHA, no altered stable snapshots or committed worlds/JARs | Precondition |
@@ -67,7 +73,7 @@ python3 tests/test_prism_qa_packaging.py
 | --- | --- | --- |
 | A01 | `scripts/validate.py`; inspect `index.toml`, `pack.toml`, `manifest/mods.json`, `mods/*.pw.toml` | Every indexed path exists, hashes/side/loader and manifest IDs agree; excluded mods absent |
 | A02 | `scripts/verify_retirement.py`; grep retired IDs in KubeJS/quests/configs/mod pins; reconcile intentional historical docs | No active TeamLapen dependency, quests or new-world content; JAWR survives |
-| A03 | Compare all branch heads and `manifest/integration-sources.json`, especially `deferred_pending_runtime` | Every target classified and no latest core/Monk/Hunter files silently overwritten |
+| A03 | Compare all branch heads, ready-for-live-test chat/PR handoffs, `manifest/integration-sources.json`, [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md) and final assembled runtime destination paths | Every ready feature has a documented inclusion attempt; no stale/deferred-only classification, missing pins or overwritten Monk/Hunter/other source |
 | A04 | `(cd compat/progression && gradle --no-daemon build)`; parse final Monk/Hunter JSON | Parser, rank math, 30 classic Monk skill mapping, Hunter XP/abilities and exclusivity assertions pass |
 | A05 | Inspect `compat/progression/src/main/java/.../command/ProgressionCommands.java` and run command parser unit tests if available | Full namespaced path/skill/event IDs parse; `admin xp` exists; non-OP cannot mutate other profiles; otherwise FAIL/BLOCKED |
 | A06 | `(cd compat/transformations && gradle --no-daemon build)` and source grep | Compiles without TeamLapen, retains JAWR-only bridges/Archlich and relevant mob neutrality; no old blood owner |
@@ -77,9 +83,9 @@ python3 tests/test_prism_qa_packaging.py
 | A10 | `scripts/validate_quests.py`, quest sources/locale/advancement scan and same-build registry probe *only when authorized and available* | No undefined placeholders, ghost items, TeamLapen quests, stale reactors, duplicate rewards, or clobbered Alcohol questline |
 | A11 | Verify ProjectE Philosopher's Stone trophy recipes and MK3+ Chaos Shard gates; `node scripts/verify_projecte_boss_recipes.cjs` | All original recipe orientations/gates, no diamond bypass; all-item EMC audit remains source-only until same-build registry export |
 | A12 | Validate materials tags, Neo Vitae dusts, Occultism/Iesnium, no global Mahou dropped-item tick proxy, `scripts/verify_materials.py` | No double processing/free mana or invalid item paths; source checks only |
-| A13 | Check trader B20 draft `scripts/validate_b20_trader_stock.py` **on the feature branch without integrating** | Six guarantees + four distinct premium rotations, valid prices, blocked Seven Sins Ring; mark runtime `NOT BUILT` while deferred |
-| A14 | Check B19 draft `scripts/validate_b19_gateways.py` **on its isolated feature branch** | Seventeen real Gateways/catalysts; three friendly helper reward spawns, no guessed monster IDs; runtime `NOT BUILT` while deferred |
-| A15 | B16/B17/B18 branch manifests; associated validators `scripts/validate_cc_iesnium_pilot.py`, `scripts/validate_b17_ars_locators.py`, `scripts/validate_b18_yungs_ars.py` **only where those files exist** | BetterEnd/Thallasium recipe, YUNG structures, Ars locator tags; verify actual pins before runtime claims |
+| A13 | Inspect B20 draft `scripts/validate_b20_trader_stock.py` on its branch; **attempt to integrate the reported-ready trader source for the next full live candidate** | Six guarantees + four distinct premium rotations, valid prices, banned Ring excluded; current old artifact may be NOT BUILT but next-build inclusion must be reconciled |
+| A14 | Inspect B19 draft `scripts/validate_b19_gateways.py` and **attempt to integrate the reported-ready Gateway definitions/recipes into the next live candidate** | Seventeen real Gateways/catalysts; three friendly helper reward spawns, no guessed monster IDs; do not silently carry forward the old deferral |
+| A15 | Review B16/B17/B18 branch manifests and validators where they exist; **attempt to resolve/pin approved mods and merge ready source for the next comprehensive live candidate** | BetterEnd/Thallasium, YUNG structures, Ars locators with verified packwiz pins and valid runtime IDs; blockers require specific evidence |
 | A16 | Quest Shop 18 vanilla ore offers, economy loops, Ring/Relics blacklist, FTB starter once-only rewards | Static content and conflicts; player/UI confirmation remains category B/C |
 | A17 | **Only with a user-provided disposable-world before+after copy:** inspect `level.dat`, `playerdata/*.dat`, `advancements/`, `stats/`, `data/` and matching config/logs **read-only** | Compare per UUID native Monk/Hunter XP, skills, mutation progress and modes, survival/relog/death. No world attachment supplied = BLOCKED |
 | A18 | **Only after owner-authorized full smoke:** compare full log, registry dump, two JAR hashes, startup ready line, crash/mixin warnings and performance against previous immutable SHA | Actual server result + link, not just a green compilation. No authorization = NOT RUN |
@@ -190,7 +196,7 @@ Verify `growth_factor=1.02` if new source shipped, one Tyz wallet, fractional pr
 /give @s minecraft:emerald 64
 ```
 
-Only run after B20 imported. Each trader: inherited stock, **six guaranteed** magic categories (real affixed Apotheosis; 3 glyph tiers; Uncommon+ Iron's ink; Relic/Artifact) and **four distinct rotating** premium categories, correct two-slot emerald prices. No Seven Deadly Sins Ring. Test save/reload and older trader duplicate protection. Current retirement QA: NOT BUILT.
+Treat B20 as a required inclusion **attempt** in the next comprehensive live build; run these commands only if the resulting artifact actually includes it. Each trader: inherited stock, **six guaranteed** magic categories (real affixed Apotheosis; 3 glyph tiers; Uncommon+ Iron's ink; Relic/Artifact) and **four distinct rotating** premium categories, correct two-slot emerald prices. No Seven Deadly Sins Ring. Test save/reload and older trader duplicate protection. Earlier retirement-only QA: NOT BUILT; **not permission to defer the next ready-feature inclusion attempt**.
 
 ### B08 — FTB Essentials travel boundary
 
@@ -210,7 +216,7 @@ Run as non-OP player **only if installed**; verify one-home limit, cooldown, per
 /tmm_structure_registry
 ```
 
-Operator-only exporter if B17/B18 script actually integrated; inspect log IDs, do not guess IDs. Current targeted retirement QA: NOT BUILT.
+Operator-only exporter if B17/B18 script actually integrated; inspect log IDs, do not guess IDs. Earlier retirement-only QA: NOT BUILT; **next comprehensive inclusion attempt required if ready**.
 
 ### B10 — Worldgen/BetterEnd fixture conditional
 
@@ -228,9 +234,9 @@ Keep physical setup minimal; one shared disposable laboratory world, command-sup
 | ID | Actual setup | Smallest meaningful test | When |
 | --- | --- | --- | --- |
 | C01 | Prism graphical client | Launch/rejoin, Mods list, JEI, quest groups/localization, skill command/UI and Curios; watch logs and visuals | Mandatory after authorized build |
-| C02 | One mana rig | Thermalily lava burn, native full-buffer and 75 mana/tick/zero cooldown only if PR #147 included; test ProjectE converters separately | Deferred now |
+| C02 | One mana rig | Attempt inclusion of ready Thermalily PR #147 before building; if included, test lava burn, buffer and 75 mana/tick/zero cooldown; test ProjectE converters separately | Previously deferred; inclusion re-review required |
 | C03 | One Brewing Stand | Hunter Bio-Mutagen 9-input craft, stand conversion, component transfer and no extra potion XP | Targeted when progression JAR actually loaded |
-| C04 | One Gateway arena | If B19 included, sample Ars hostile, Ars friendly utility summon, and Iron's hostile; registry-test remaining 14 automatically | Deferred now |
+| C04 | One Gateway arena | Attempt inclusion of ready B19; if included, sample Ars hostile, Ars friendly utility summon, Iron's hostile; registry-test remaining 14 automatically | Previously deferred; inclusion re-review required |
 | C05 | One dragon/lich visual state | JAWR+Goety/Forbidden death-anchor precedence, mob retaliation; exact Dracolich client skeletal asset only if separate model PR included | High-risk conditional |
 | C06 | Fresh generated terrain | Tectonic, Neo Vitae mines and 2–3 real new structures; BetterEnd/YUNG only if pinned | Targeted |
 | C07 | Two real players on authorized server | Independent Monk/Hunter ledgers, team coins/quests, inventory/Curios sync, reconnect and death | Pre-candidate |
