@@ -385,7 +385,9 @@ def main() -> None:
             f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([subtitle], ensure_ascii=False)}')
     for group in SPEC["groups"]:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
-    changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations) + "\n}\n"
+    # Custom task titles must be emitted into the FTB localization table.
+    task_translations = ['\ttask.544D4D1200000001.title: "Any Log or Stem"']
+    changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations + task_translations) + "\n}\n"
 
     for path, content in changes.items():
         path.parent.mkdir(parents=True, exist_ok=True)
