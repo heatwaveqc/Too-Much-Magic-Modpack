@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.tradersvengence.runtime.WantedPlayerTargetGoal;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.WantedRangedAttackGoal;
 import io.github.heatwaveqc.tmm.tradersvengence.state.TraderBlacklist;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,6 +25,8 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 public final class VendettaEvents {
     private static final ResourceLocation PRIEST =
         ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "priest");
+    private static final String LAST_PRIEST_TARGET =
+        "traders_vengence:last_priest_target";
 
     private VendettaEvents() {}
 
@@ -60,19 +63,32 @@ public final class VendettaEvents {
     }
 
     /**
-     * Iron's Priest extends NeutralWizard. Its anger alone is not combat aggression:
-     * wait until its AI actually has a player attack target. Checking after the tick
-     * avoids blacklisting players for a canceled or superseded target selection.
-     * Idempotent UUID storage makes this safe while the priest remains hostile.
+     * Iron's Priest extends NeutralWizard. Only NEW actual player combat targets
+     * cause a crime. Rechecking the same already-hostile target on every tick
+     * would immediately undo a Hero of the Village pardon.
+     *
+     * The last observed target is stored on each priest, so reloading a chunk
+     * also does not retroactively turn a continuing vendetta into a new crime.
      */
     public static void onPriestAggro(EntityTickEvent.Post event) {
         if (!(event.getEntity() instanceof Mob mob)
             || !(mob.level() instanceof ServerLevel level)
-            || !BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).equals(PRIEST)
-            || !(mob.getTarget() instanceof ServerPlayer offender)) {
+            || !BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).equals(PRIEST)) {
             return;
         }
-        accuse(level, offender, "targeted by Iron's Priest");
+
+        CompoundTag data = mob.getPersistentData();
+        java.util.UUID previous = data.hasUUID(LAST_PRIEST_TARGET)
+            ? data.getUUID(LAST_PRIEST_TARGET) : null;
+        ServerPlayer player = mob.getTarget() instanceof ServerPlayer target ? target : null;
+        java.util.UUID current = player == null ? null : player.getUUID();
+
+        if (current == null) {
+            if (previous != null) data.remove(LAST_PRIEST_TARGET);
+        } else if (VengeanceRules.isNewPriestTarget(previous, current)) {
+            data.putUUID(LAST_PRIEST_TARGET, current);
+            accuse(level, player, "newly targeted by Iron's Priest");
+        }
     }
 
     public static void onJoin(EntityJoinLevelEvent event) {

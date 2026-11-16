@@ -26,6 +26,15 @@ not edit the packwiz index or the running QA build.
   vanilla spitting mechanic. Villagers get generic `RangedAttackGoal` and launch
   Iron's `magic_missile` entity at an offender (50-tick cooldown, 16-block range,
   6 damage). No mana/crafting or new gun system.
+- **Automatic pardon:** a fresh application or renewal of Minecraft's
+  `Hero of the Village` status effect clears that player's saved blacklist
+  entry permanently; an existing Hero buff is not a blanket immunity to
+  committing new crimes. The player receives a forgiveness message when an
+  actual pardon occurs. The status effect can also be awarded by commands/mods;
+  the trigger is gaining the effect, not specifically the vanilla raid event.
+  Repeated Priest targeting is tracked per-priest, so the same ongoing target
+  does not instantly restore the blacklist after a pardon. New Priest target
+  acquisition can still count as a fresh offense.
 - Operator commands: `/tradersvengence status <UUID>`,
   `/tradersvengence pardon <UUID>`, `/tradersvengence accuse <UUID>`.
 
@@ -68,6 +77,13 @@ Test in a disposable save after an owner-authorized test build:
   selects the player as its attack target; confirm the permanent village vendetta.
   Verify approaching or trading with a neutral Priest does NOT create an offense;
   also verify transient below-threshold anger does not count.
+- With an active vendetta, win a village raid to obtain Hero of the Village;
+  confirm the offender is pardoned immediately, receives the forgiveness
+  message, remains pardoned after the effect expires, and normal villagers stop
+  attacking. Test a newly committed offense while an old Hero effect is active.
+- Confirm a still-targeting Iron's Priest does not re-accuse the player every tick
+  immediately after Hero of the Village, including across a chunk reload. A
+  genuinely new Priest attack target should count as a new offense.
 - Exercise operator pardon and make sure combat stops even after reloading chunks.
 - Confirm villager trading and schedules return to normal for non-offenders.
 

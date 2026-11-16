@@ -2,8 +2,18 @@ package io.github.heatwaveqc.tmm.tradersvengence.runtime;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import java.util.UUID;
 
 class VengeanceRulesTest {
+    @Test void continuingPriestAggroDoesNotUndoAnEarnedPardon() {
+        UUID offender = UUID.randomUUID();
+        UUID other = UUID.randomUUID();
+        assertTrue(VengeanceRules.isNewPriestTarget(null, offender));
+        assertFalse(VengeanceRules.isNewPriestTarget(offender, offender));
+        assertTrue(VengeanceRules.isNewPriestTarget(offender, other));
+        assertFalse(VengeanceRules.isNewPriestTarget(offender, null));
+    }
+
     @Test void onlyActualHealthLossCausesAssaultBlacklisting() {
         assertTrue(VengeanceRules.isActualHealthDamage(0.5F));
         assertTrue(VengeanceRules.isActualHealthDamage(20.0F));
