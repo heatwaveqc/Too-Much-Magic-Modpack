@@ -67,7 +67,7 @@ class GildedDefinitionTest {
         }
     }
 
-    @Test void moltenSovereigntyUnlocksOnlyAtRankEighteen() throws Exception {
+    @Test void undyingEmberGrantsFireAndLavaImmunityAtRankEighteen() throws Exception {
         try(var stream = getClass().getClassLoader().getResourceAsStream(
                 "data/tmm_progression/tmm_progression/paths/gilded.json")) {
             assertNotNull(stream);
@@ -76,14 +76,31 @@ class GildedDefinitionTest {
             boolean found = false;
             for (var entry : root.getAsJsonArray("skills")) {
                 var s=entry.getAsJsonObject();
-                if (!"tmm_progression:gilded_molten_sovereignty".equals(s.get("id").getAsString())) continue;
+                if (!"tmm_progression:gilded_undying_ember".equals(s.get("id").getAsString())) continue;
                 assertEquals(18,s.get("required_rank").getAsInt());
                 assertEquals(18,s.getAsJsonArray("auto_ranks").get(0).getAsInt());
-                assertEquals("tmm_progression:lava_immunity",s.getAsJsonArray("effects")
+                assertEquals("tmm_progression:fire_immunity",s.getAsJsonArray("effects")
                     .get(0).getAsJsonObject().get("type").getAsString());
                 found = true;
             }
             assertTrue(found,"High-level lava immunity is required");
+        }
+    }
+    @Test void lavaFishingUsesItsOwnEventAndGrantsXpAtNativeRankOne() throws Exception {
+        try (var stream = getClass().getClassLoader().getResourceAsStream(
+                "data/tmm_progression/tmm_progression/paths/gilded.json")) {
+            assertNotNull(stream);
+            var root = JsonParser.parseReader(new java.io.InputStreamReader(
+                stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            boolean found = false;
+            for (var entry : root.getAsJsonArray("activities")) {
+                var a = entry.getAsJsonObject();
+                if (!"tmm_progression:gilded_lava_fish_caught".equals(a.get("target").getAsString())) continue;
+                assertEquals("external",a.get("event").getAsString());
+                assertEquals(5,a.get("xp").getAsInt());
+                found=true;
+            }
+            assertTrue(found,"Lava fishing needs its distinct native XP source");
         }
     }
 }

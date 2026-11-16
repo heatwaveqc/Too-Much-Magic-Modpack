@@ -21,6 +21,7 @@
       "id": "mynethersdelight:strider_with_grilled_fungus",
       "required": false
     },
-    "#tmm_progression:gilded_gold_foods"
+    "#tmm_progression:gilded_gold_foods",
+    "#tmm_progression:gilded_lava_catch_foods"
   ]
 }

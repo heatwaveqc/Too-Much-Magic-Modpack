@@ -1,0 +1,93 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lavafishing:flame_squat_lobster",
+      "required": false
+    },
+    {
+      "id": "lavafishing:obsidian_sword_fish",
+      "required": false
+    },
+    {
+      "id": "lavafishing:steam_flying_fish",
+      "required": false
+    },
+    {
+      "id": "lavafishing:agni_fish",
+      "required": false
+    },
+    {
+      "id": "lavafishing:arowana_fish",
+      "required": false
+    },
+    {
+      "id": "lavafishing:quartz_fish",
+      "required": false
+    },
+    {
+      "id": "lavafishing:scaly_foot_snail",
+      "required": false
+    },
+    {
+      "id": "lavafishing:yeti_crab",
+      "required": false
+    },
+    {
+      "id": "lavafishing:lava_lamprey",
+      "required": false
+    },
+    {
+      "id": "lavafishing:fish_paste",
+      "required": false
+    },
+    {
+      "id": "lavafishing:spicy_fish_fillet",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:searing_cod",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:glowdine",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:wither_bonefish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:lava_pufferfish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:bonefish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:obsidianfish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:magmacubefish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:soulsucker",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:eyeball_fish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:fortress_grouper",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:blazefish",
+      "required": false
+    }
+  ]
+}

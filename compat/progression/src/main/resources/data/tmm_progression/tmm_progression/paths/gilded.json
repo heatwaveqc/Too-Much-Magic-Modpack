@@ -32,6 +32,13 @@
       "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
       "xp": 10,
       "cooldown_ticks": 0
+    },
+    {
+      "event": "external",
+      "target": "tmm_progression:gilded_lava_fish_caught",
+      "xp": 5,
+      "cooldown_ticks": 0,
+      "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
     }
   ],
   "milestones": [
@@ -257,7 +264,7 @@
       ]
     },
     {
-      "id": "tmm_progression:gilded_molten_sovereignty",
+      "id": "tmm_progression:gilded_undying_ember",
       "max_rank": 1,
       "required_rank": 18,
       "base_cost": 0,
@@ -267,13 +274,14 @@
       ],
       "effects": [
         {
-          "type": "tmm_progression:lava_immunity",
-          "target": "minecraft:lava",
+          "type": "tmm_progression:fire_immunity",
+          "target": "#minecraft:is_fire",
           "params": {
-            "lava_contact_damage": "immune",
-            "fire_tick_while_in_lava": "immune",
-            "other_fire": "normal",
-            "fire_damage_after_leaving_lava": "normal",
+            "inspiration": "zombified_piglin",
+            "fire_damage_tag": "#minecraft:is_fire",
+            "fire_and_lava_damage": "immune",
+            "status_burning": "removed",
+            "other_damage": "unchanged",
             "applies_to": "player_only"
           }
         }

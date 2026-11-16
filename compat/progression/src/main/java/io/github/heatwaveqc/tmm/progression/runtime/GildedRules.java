@@ -3,7 +3,7 @@ package io.github.heatwaveqc.tmm.progression.runtime;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.core.GildedFortuneMath;
 import io.github.heatwaveqc.tmm.progression.core.GildedLootingMath;
-import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.tags.DamageTypeTags;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -121,19 +121,18 @@ public final class GildedRules {
         EffectHandlers.register("tmm_progression:virtual_looting", new EffectHandlers.Handler() {});
         // Applied by GildedDurabilityMixin at the owner-scoped durability wear call.
         EffectHandlers.register("tmm_progression:virtual_unbreaking", new EffectHandlers.Handler() {});
-        // Native Gilded rank 18: safe to remain in lava; unrelated ambient fire still hurts.
-        EffectHandlers.register("tmm_progression:lava_immunity", new EffectHandlers.Handler() {
+        // Native Gilded rank 18: fire immunity, as with zombified Piglins.
+        EffectHandlers.register("tmm_progression:fire_immunity", new EffectHandlers.Handler() {
             @Override public void incoming(ServerPlayer player, LivingIncomingDamageEvent event,
                                            Definition.Effect effect, int rank) {
                 if (rank < 1 || event.getEntity() != player) return;
-                if (event.getSource().is(DamageTypes.LAVA)
-                    || (player.isInLava() && (event.getSource().is(DamageTypes.ON_FIRE)
-                        || event.getSource().is(DamageTypes.IN_FIRE)))) {
+                // Covers lava, burning, campfires and any modded damage correctly tagged
+                // as fire. Preserve non-fire hazards such as suffocation and magic.
+                if (event.getSource().is(DamageTypeTags.IS_FIRE))
                     event.setCanceled(true);
-                }
             }
             @Override public void tick(ServerPlayer player, Definition.Effect effect, int rank) {
-                if (rank > 0 && player.isInLava() && player.getRemainingFireTicks() > 0)
+                if (rank > 0 && player.getRemainingFireTicks() > 0)
                     player.setRemainingFireTicks(0);
             }
         });
@@ -190,7 +189,8 @@ public final class GildedRules {
         }
     }
     public static boolean isAllowedFood(ServerPlayer player, ItemStack stack) {
-        return stack.is(NETHER_FOOD) || isGoldenFood(player,stack);
+        return stack.is(NETHER_FOOD) || GildedFishingRules.isLavaCaughtFood(stack)
+            || isGoldenFood(player,stack);
     }
     public static boolean isGoldenFood(ServerPlayer player, ItemStack stack) {
         if (stack.is(GOLD_FOOD) || stack.is(Items.GOLDEN_APPLE)
