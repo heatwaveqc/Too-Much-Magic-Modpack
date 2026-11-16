@@ -5,6 +5,7 @@ import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge;
+import io.github.heatwaveqc.tmm.progression.runtime.NewbieMode;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterBrewing;
 import io.github.heatwaveqc.tmm.progression.runtime.StandPotionEligibility;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterItems;
@@ -31,6 +32,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         ProgressionEvents.register();
+        NewbieMode.register();
         TyzMonkBridge.register();
     }
 }
