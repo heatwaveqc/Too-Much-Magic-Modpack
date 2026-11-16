@@ -170,7 +170,16 @@
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Standalone Monk/Hunter tmm_progression core is now merged into integration baseline. This stream reimports the exact baseline-local source and keeps its JAWR-gated Hunter silver training; no deleted feature branch required. Client/world QA pending."
+      "note": "Shared Monk/Hunter JAR upgraded from stacked advanced Hunter (Trial of Venom, specialty XP, permanent mutations) and Monk Bedrock Rest/classic physical trials. Retains native Silver Hunter and JAWR lycanthrope selector. Two first-party JARs are built and server-smoked for QA."
+    },
+    {
+      "name": "jawr-native-transformation-bridge",
+      "branch": "test/full-integration",
+      "paths": [
+        "compat/transformations/"
+      ],
+      "mode": "compile-and-load",
+      "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins."
     }
   ],
   "covered_by_baseline": {
@@ -190,7 +199,11 @@
     "feature/cc-tweaked-eldritch-iesnium-spirit-fire-2026-11-15": "B14 CC: Tweaked 1.121.0 exact pin, native Eldritch Logic Core miner result, four computer recipe overrides, Spirit Fire Iesnium, static validator and documentation were merged directly into test/full-integration. No extra branch import needed. Source-only until full server/client QA.",
     "feature/alcohol-is-magic-quests": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA",
     "feature/b14-cobblegen-stone-inventory": "Baseline already contains these earlier world/quest feature edits; not reimported for retirement QA",
-    "feature/retire-teamlapen-next-qa-2026-11-15": "Merged as TeamLapen retirement PR #165; GitHub deleted temporary head; source now lives on test/full-integration."
+    "feature/retire-teamlapen-next-qa-2026-11-15": "Merged as TeamLapen retirement PR #165; GitHub deleted temporary head; source now lives on test/full-integration.",
+    "feature/hunter-mutagenic-brew-persistent-mutations-2026-11-15": "Advanced stacked Hunter source transplanted to integrated shared progression JAR.",
+    "feature/monk-bedrock-rest-2026-11-15": "Monk Bedrock Rest and classic XP physical-trial sources transplanted to integrated shared JAR.",
+    "feature/mob-alliance-neutrality": "Independent mob alliances and native lich/dragon code transplanted; retired vampire files removed.",
+    "feature/integrate-monk-hunter-jawr-transformations-2026-11-15": "Feature branch stages compiled dual-JAR test integration; merged source is authoritative."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
@@ -214,13 +227,10 @@
     "feature/monk-early-mastery-two-trees": "Ancestor superseded by fix/monk-tree-data-registry-2026-11-15, whose full compat/monk runtime replaces this older QA source. Do not import twice.",
     "feature/quest-reward-humor-first-pass": "Fully retained by descendant feature/ars-quest-pilot, which now owns quest runtime/manifests/localization and the 49-quest Ars pilot; import only the successor source.",
     "feature/diamond-graphite-furnace-compat": "Owner removed Bigger Reactors original/Rework on 2026-11-15. Do not import this KubeJS graphite recipe, its tests, or reference removed mod IDs. Closed superseded PR #53.",
-    "feature/mob-alliance-neutrality": "Archived TeamLapen transformation bridge, excluded from new test",
     "fix/monk-tree-data-registry-2026-11-15": "Old Vampirism faction-based Monk, replaced by standalone",
     "feature/werewolf-food-tag-compat": "Old Werewolves tag workaround retired",
     "feature/monk-standalone-json-parity-pass-2026-11-15": "Supplemental draft, not imported over core",
     "feature/monk-classic-trials-functional-xp-2026-11-15": "Supplemental draft, not imported over core",
-    "feature/monk-bedrock-rest-2026-11-15": "Supplemental draft, not imported over core",
-    "feature/hunter-mutagenic-brew-persistent-mutations-2026-11-15": "Hunter supplement pending merge into core",
     "feature/hunter-starter-skills-xp-audit-2026-11-15": "Hunter supplement pending merge into core",
     "feature/hunter-specialty-health-potion-xp-witcher-2026-11-15": "Hunter supplement pending merge into core",
     "feature/hunter-venom-enrollment-2026-11-15": "Hunter supplement pending merge into core",
@@ -257,7 +267,7 @@
     "NEXT QUEST QA: Ars Nouveau pilot from feature/ars-quest-pilot (PR #74), 49 quests covering core progression, tricks and every installed add-on. Include tmm:ars_pilot/chimera advancement and pilot manifest/compiler/validator paths with the 228-entry book. Local native registry smoke passed; test actual Chimera credit, old/new spellbook advancements, Unification cutting, Ocultas equipment-vs-operation wording, ANS action quests, UI layout and one reward per teammate. See docs/ARS-QUEST-PILOT.md on source branch. Outside-Ars preexisting invalid oven/cyanite_reprocessor references recorded for follow-up.",
     "Alex's Caves Continued 1.1.2 and CodxLib 1.5.1 are PLANNED, NOT INSTALLED. Draft PR #56 contains valid stage pin metadata but must have all BiggerReactors uranium worldgen and recipe bridges stripped before future integration; don't overwrite B13 packwiz/index/manifest with staged snapshots.",
     "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts.",
-    "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction and transformation bridge excluded. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
+    "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction removed; repaired JAWR-native transformation bridge restored. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
     "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
     "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss."
   ],
