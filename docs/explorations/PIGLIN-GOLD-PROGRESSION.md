@@ -79,7 +79,7 @@ Unknown effect types fail the current strict path JSON parser. **Do not activate
 ### Intended powers, not automatically exploits
 
 - Diamond-performance gold with gold's faster mining and Netherite's very rapid free repair can outperform ordinary diamond equipment in sustained use. **This is deliberate specialization**, not a bug to nerf away without owner input.
-- Gilded players freely mining gold/opening Bastion loot containers without angering ordinary Piglins is an **approved affinity perk**. Brutes and direct retaliation provide remaining danger.
+- Gilded players freely mining gold/opening Bastion loot containers without angering ordinary Piglins is an **approved affinity perk**. Direct retaliation and other Nether threats remain; **Piglin Brutes are not independently hostile to unprovoking Gilded players**.
 - Mending's usefulness decreases substantially for Gilded gold/Netherite; this is expected. Don't add an arbitrary repair consumption cost without owner approval.
 
 ### Actual duplication, bypass and implementation risks
