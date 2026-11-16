@@ -6,10 +6,10 @@
 | Category / parent or addons | magic; independent soul and spirit-arcana system; addon: [Gaze](gaze-malum.md) |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM test/full-integration |
 | Pinned version / artifact / hash | mods/malum.pw.toml; malum-1.21.1-1.8.2.jar; Modrinth project jgzwYsAN, version BIbVs1fo; SHA512 dd9ccc1dea3b090f69f807be3e7a8b99ec6d3d7d6b047e2893cb49ca505860bbf640cf767082c1a32ea403b35e2a9f9d1755327890bbfb2f8778058a9597a99e [pin] |
-| Source snapshot | SammySemicolon/Malum-Mod, branch 1.21.1, commit 03b743a37f3eeb0cc7f4364f0730e1f135f78408. gradle.properties declares Malum 1.8.2, MC 1.21.1, NeoForge 21.1.213, Lodestone 1.8.2.523 and Curios 9.3.1+1.21.1. Version-aligned; binary equivalence not tested [source: gradle.properties] |
+| Source snapshot | Previously recorded commit `03b743a37f3eeb0cc7f4364f0730e1f135f78408` currently returns GitHub contents API 404. The reachable public 1.21.1 snapshot `458518e3e1f73c3d9bc1c85522743eeb81b4f0c9` declares Malum 1.9.0, not the pack's 1.8.2; it is not used as evidence for the pinned release. Exact 1.8.2 source provenance is unresolved. |
 | Guide/documentation version gap | Modrinth release metadata matches 1.8.2 / MC 1.21.1 / NeoForge / client and server. Official listing delegates changelog to CurseForge. Third-party walkthrough explicitly covers 1.8.2; source data not extracted from pinned JAR. |
 | Profile status | researching |
-| Evidence reached | pack pin verified; immutable version-aligned source snapshot inspected selectively; release page and version-scoped secondary guide reviewed; no artifact-byte comparison or in-pack test |
+| Evidence reached | pack pin and release metadata verified; version-scoped secondary 1.8.2 guide reviewed; previously recorded source ref is not retrievable and accessible branch source is 1.9.0; no artifact-byte comparison or in-pack test |
 | Reviewed | 2026-11-16 |
 | Quest ownership | Proposed Magic chapter: Malum. No quest files changed. |
 
@@ -36,17 +36,17 @@
 
 | Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
 | --- | --- | --- | --- | --- | --- |
-| Guidebook / Encyclopedia Arcana | third-party 1.8.2 guide; source CodexLangDatagen.java confirms entries including Chronicles of the Void and The Weeping Well | partial | Encyclopedia Arcana; exact entry names/pages not mapped from pinned artifact | not run | confirm recipe/drop/keybind and complete entry index |
+| Guidebook / Encyclopedia Arcana | version-scoped 1.8.2 guide; prior source ref unavailable | partial | Encyclopedia Arcana; exact entry names/pages not mapped from pinned artifact | not run | confirm recipe/drop/keybind and complete entry index against exact jar/client |
 | Soulstone, Runewood, ores, wood and sap | version-scoped guide; source worldgen not extracted | partial | Encyclopedia Arcana and JEI | not run | extract worldgen and all material recipes |
 | Soul exposure, spirits and mob-drop mapping | version-scoped guide; source implementation not inspected | partial | guide entries and spirit tooltips need mapping | not run | enumerate spirit families, per-mob drops, conditions, config and spawn exceptions |
-| Spirit Altar / Spirit Infusion | aligned source contains altar recipe datagen; guide describes input/spirit/pedestal operation | partial | Spirit Infusion category / encyclopedia recipe entry; exact named page unknown | not run | inspect recipes and altar implementation, costs and valid ranges |
+| Spirit Altar / Spirit Infusion | 1.8.2 guide describes input/spirit/pedestal operation; recorded source ref unavailable | partial | Spirit Infusion category / encyclopedia recipe entry; exact named page unknown | not run | inspect 1.8.2 recipes and altar implementation, costs and valid ranges |
 | Runeworking and rune materials | secondary version comparison: 24 recipes on 1.21.1 | partial | JEI Runeworking; guide path unverified | not run | exact inputs, station and guide sections needed |
 | Spirit Crucible / Spirit Focusing | source has Spirit Focusing recipe builder and Crucible internals; secondary guide describes impetus, spirit input and output | partial | JEI Spirit Focusing / Encyclopedia Arcana | not run | inspect recipes, augment slots, wear formula, speed and automation interface |
-| Spirit Repair / Repair Pylon | aligned source includes repair recipe datagen; recipes use required material and spirits | partial | JEI Spirit Repair; page unknown | not run | map pylon placement/storage, repair amount and all recipes |
+| Spirit Repair / Repair Pylon | 1.8.2 guide and prior source notes; source ref unavailable | partial | JEI Spirit Repair; page unknown | not run | confirm pinned recipe set, pylon placement/storage, repair amount and costs |
 | Totemancy / Rites / Soulwood / Blight | secondary 1.8.2 guide, not yet corroborated against implementation | partial | encyclopedia rite pages; exact sequence map absent | not run | source-map every rite, pole order, radius, duration, block/entity effects and spread/cleanup |
 | Soul Binding / Geas / Curios | 1.21.1 secondary page inventories 36 Soul Binding recipes, not exhaustively inspected | partial | JEI Soul Binding and guide entries unknown | not run | inspect branches, costs, Curio requirements, permanence/removal and effects |
 | Void / Weeping Well / Umbral | generated guide includes The Weeping Well entry; external guide identifies structure and transformation claims | partial | Encyclopedia Arcana → The Weeping Well / Void; exact unlock order unknown | not run | verify generation, transmutation, rejection costs and Umbral source |
-| Worldgen and combat additions | release has worldgen/magic/adventure tags; source snapshot tree not inventoried exhaustively | partial | unknown | not run | inventory mobs, equipment, structures, hostile effects and loot |
+| Worldgen and combat additions | 1.8.2 release/guide descriptions; 1.9 source snapshot is not treated as pin evidence | partial | unknown | not run | inventory 1.8.2 mobs, equipment, structures, hostile effects and loot |
 | KubeJS/config/API and pack integration | source build metadata lists KubeJS integration versions; not proof of all hooks | unresearched | n/a | not run | inspect recipe serializers/config defaults and live pack overrides |
 
 ## Guidebook onboarding
@@ -81,7 +81,7 @@
 | System | Input kind + exact ID/tag/event | Input qty/formula; consumed/remainder | Output kind, qty and location | Trigger/cadence; range/capacity | Automation/interface and evidence |
 | --- | --- | --- | --- | --- | --- |
 | Spirit drops | living entity + soul-exposure event | target must be exposed before death per guide; exact trigger and item qty per mob unknown | Malum spirit item, reportedly flies to player inventory | death event; exposure window reported as 10 seconds | spawner loot behavior and magnetization not confirmed; source implementation needed |
-| Spirit Infusion | item stack on altar, spirit stacks, extra item stacks on pedestals | recipe-defined counts; failed-attempt costs unknown | recipe result item at altar | altar tick cycle; external guide reports about 15 seconds, not source-verified | source datagen and JEI registration; hopper/pedestal behavior untested |
+| Spirit Infusion | item stack on altar, spirit stacks, extra item stacks on pedestals | recipe-defined counts; failed-attempt costs unknown | recipe result item at altar | altar cycle/range/timing remain unverified for pin | prior source ref unavailable; recipe datagen and altar operation need matched 1.8.2 source or JAR review |
 | Totem rites | placed block state + ordered carved totem poles | guide says one matching spirit per pole during carving; sustained resource cost unknown | effect, block operation or world state | activation/ticking; range/duration unknown | not established; inspect exact implementation |
 | Spirit Crucible | spirit item plus valid focusing recipe and installed Impetus | spirit cost per recipe; Impetus durability cost unquantified | focusing recipe output | machine tick; operation timing unknown | item insertion/automation untested; source class mentions spirit inventory, recipe and queued cracks |
 | Repair Pylon | equipment + matching material + spirit stacks | source builder includes a 0.5f repair field and material/spirit costs; meaning of 0.5f needs code | durability restored | operation trigger/cadence unknown | no pack test; do not interpret 0.5f as an amount/percent without implementation |
@@ -160,11 +160,15 @@ The Soulwood/Blight route is a potentially irreversible world-editing branch; ke
 
 **Reward policy:** Positive XP and useful fixed item are preferred. Do not reward a rare material that bypasses the operation or another progression gate. Mark item-acquisition tasks as proxies where they do not verify an operation. No quest has been edited.
 
+## Known upstream report requiring a TMM check
+
+The upstream project has an **open report** for Malum 1.8.2 / Minecraft 1.21.1: [issue #477](https://github.com/SammySemicolon/Malum-Mod/issues/477) describes a ServerHangWatchdog deadlock associated with `WeepingWellData.checkForWeepingWell()` being called through a living-entity tick path and scanning for Weeping Wells via chunk access. The reporter says the hang occurred with no Well placed and worsened with many loaded entities. The report is open with no comments at review time. This is a user-reported failure, not a reproduction or source-confirmed defect in TMM; assess it before high-entity-count server use and record exact TMM build, entity count, dimension, thread dump and whether any Well exists if reproduced.
+
 ## Open questions and next actions
 
 1. Compare actual pinned JAR bytes against the lock hash and inspect metadata, recipes, loot tables, worldgen, configs, advancements, guidebook pages and item IDs.
 2. Reconcile source-generated recipes and guide text against release 1.8.2. Version-aligned source plus third-party guide does not prove source/JAR equality.
-3. Read full source for soul exposure/drop logic, Spirit Altar operation order and failure costs, Crucible wear/output, Repair Pylon, totem behavior, Soul Binding and Weeping Well item/entity interaction.
+3. Recover a valid immutable 1.8.2 source snapshot or inspect the hash-matched JAR, then map soul exposure/drop logic, Spirit Altar operation order and failure costs, Crucible wear/output, Repair Pylon, totem behavior, Soul Binding and Weeping Well item/entity interaction.
 4. Complete recipe and guide-entry inventory, including alternative materials, spirit families, pacts/geas, repair/focus and late Void branches.
 5. Confirm hard/optional dependencies against packwiz; inspect config defaults, live overrides, addons and cross-mod recipes.
 6. Resolve FTB detectors with source/task support; item possession cannot prove an altar, pylon, totem or well operation.
@@ -179,13 +183,14 @@ No tests were run, as requested for this research-only pass.
 - **Positive:** trigger harmless totem rite and measure affected entity/block, range and shutdown. **Boundary:** test just-outside range and unknown pole order.
 - **Positive:** perform a Well transmutation and first Umbral interaction. **Boundary:** throw unsupported item and non-player entity; record loss, rejection, damage and cooldown.
 - Inspect client guidebook pages, JEI categories and actual FTB detector availability before authoring quests.
+- For upstream issue #477, stress a disposable TMM server with increasing living-entity counts in unloaded/never-generated Well areas; capture watchdog thread dump and confirm whether the 1.8.2 pin reproduces the reported chunk-loading hang.
 
 ## Evidence ledger
 
 - Packwiz pin in mods/malum.pw.toml on test/full-integration: exact artifact name, Modrinth version ID and SHA512 [pin].
 - [Official Modrinth release page](https://modrinth.com/mod/malum/version/BIbVs1fo): Malum 1.8.2 Release, Minecraft 1.21.1, NeoForge, client/server, version ID BIbVs1fo.
 - [Official CurseForge file page](https://www.curseforge.com/minecraft/mc-mods/malum/files/7307339): matching filename, NeoForge, 1.21.1, Release, file ID 7307339, uploaded 2025-12-08, release changelog.
-- [Upstream source snapshot](https://github.com/SammySemicolon/Malum-Mod/tree/03b743a37f3eeb0cc7f4364f0730e1f135f78408), immutable commit 03b743a37f3eeb0cc7f4364f0730e1f135f78408; inspected gradle.properties, src/main/java/com/sammy/malum/datagen/recipe/infusion/ArtificeSpiritInfusionRecipes.java, src/main/java/com/sammy/malum/datagen/recipe/MalumSpiritRepairRecipes.java, src/main/java/com/sammy/malum/datagen/lang/CodexLangDatagen.java, src/main/java/com/sammy/malum/registry/common/item/MalumItems.java. Source metadata aligns to 1.8.2; no binary comparison.
+- [Source evidence status] The profile's previously recorded 1.8.2 commit `03b743a37f3eeb0cc7f4364f0730e1f135f78408` returned GitHub API 404 on 2026-11-16. The reachable [1.21.1 source snapshot](https://github.com/SammySemicolon/Malum-Mod/tree/458518e3e1f73c3d9bc1c85522743eeb81b4f0c9) declares 1.9.0 and is not treated as evidence for the pinned 1.8.2 artifact.
 - [Version-scoped third-party walkthrough](https://www.minecraft-guides.com/mod/malum/): updated 2026-10-06; explicit 1.8.2 gameplay guide. Useful for a draft walkthrough but not primary implementation evidence.
 - [Version comparison and recipe-system inventory](https://mc-wiki.net/malum/malum-spirits-and-runes-guide/): reports recipe subsystem counts for Malum 1.8.2 (1.21.1); secondary evidence only.
 - Pack behavior, client testing, pinned-JAR recipes, and dependency resolution: not verified.
