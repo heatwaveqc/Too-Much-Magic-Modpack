@@ -1,13 +1,12 @@
 name: B16 - Native Stone Galore Recipes and Marble Worldgen
 on:
-  push:
-    branches: ['feature/b16-natural-stone-galore-unification']
-    paths:
-      - '.github/workflows/b16-stone-galore.yml'
-      - 'scripts/generate_stone_galore.py'
-      - 'manifest/stone_generation_policy.json'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke/build only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
@@ -17,6 +16,7 @@ concurrency:
 
 jobs:
   material-recipes-and-server-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 80
     steps:
