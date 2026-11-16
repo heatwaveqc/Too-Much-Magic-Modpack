@@ -227,9 +227,10 @@ const TMM_PremiumCatalog = [
    make: trader => tmmRandomBotaniaCurio(trader)},
   {id: 'botania_black_lotus', price: 32, uses: 2,
    make: trader => tmmNormalStack('botania:black_lotus')},
-  {id: 'rootsclassic_engraved_blade', price: 96, uses: 1,
+  {id: 'rootsclassic_runic_focus', price: 72, uses: 1,
+   // Runic Focus is a precursor to Engraved Blade; sword ritual still required.
    // Terra Moss is NOT an item in installed Roots Classic 1.5.10.
-   make: trader => tmmNormalStack('rootsclassic:engraved_blade')},
+   make: trader => tmmNormalStack('rootsclassic:runic_focus')},
   {id: 'malum_brilliance_chunk', price: 48, uses: 1,
    // Does not substitute Weeping Well discovery or rare Umbral Spirit.
    make: trader => tmmNormalStack('malum:chunk_of_brilliance')},

@@ -36,7 +36,7 @@ def main():
                   "tmmRotatingMagicStockVersion", "setMana(tablet, ManaTablet.MAX_MANA)",
                   "getParts().toArray()", "getModifiers().toArray()",
                   "occultism:iesnium_ingot", "astralsorcery:constellation_paper",
-                  "rootsclassic:engraved_blade", "forbidden_arcanus:growing_edelwood",
+                  "rootsclassic:runic_focus", "forbidden_arcanus:growing_edelwood",
                   "offers.add(chosen[i].offer)", "data.putInt("]:
         assert token in script, "Missing implementation contract: " + token
     assert "INK_COMMON.get()" not in script

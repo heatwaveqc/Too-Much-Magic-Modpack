@@ -121,13 +121,13 @@
       "notes": "Genuine Botania Revived item; moderate burst mana"
     },
     {
-      "id": "rootsclassic_engraved_blade",
+      "id": "rootsclassic_runic_focus",
       "mod": "Roots Classic",
-      "item": "rootsclassic:engraved_blade",
-      "price_emeralds": 96,
+      "item": "rootsclassic:runic_focus",
+      "price_emeralds": 72,
       "uses": 1,
-      "decision": "approved_substitution",
-      "notes": "Engraved Blade is complete late Roots ritual sword, not a precursor. Terra Moss is from another Roots mod and absent in Roots Classic 1.5.10."
+      "decision": "approved_matching_user_intent",
+      "notes": "Runic Focus is a ritual-crafted ingredient in the Engraved Blade top-end sword; buyer still has to perform the sword ritual. Terra Moss is not in Roots Classic 1.5.10."
     },
     {
       "id": "malum_brilliance_chunk",
