@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression;
 
 import io.github.heatwaveqc.tmm.progression.command.ProgressionCommands;
+import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
@@ -18,6 +19,7 @@ public final class ProgressionMod {
 
     public ProgressionMod(IEventBus modBus) {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
+        modBus.addListener(AbilityNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         ProgressionEvents.register();

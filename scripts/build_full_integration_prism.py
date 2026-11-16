@@ -11,7 +11,7 @@ import zipfile
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OUTPUT = "Too-Much-Magic-Full-Integration-Prism.zip"
 
-def main(bootstrap: str, output_dir: str, commit: str, monk_jar: str, bridge_jar: str) -> None:
+def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str) -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise RuntimeError("Packwiz source must be an immutable commit")
     root = pathlib.Path(__file__).resolve().parents[1]
@@ -35,8 +35,8 @@ def main(bootstrap: str, output_dir: str, commit: str, monk_jar: str, bridge_jar
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
-    addons = [pathlib.Path(monk_jar), pathlib.Path(bridge_jar)]
-    expected = ("tmm_monk-", "tmm_transformations-")
+    addons = [pathlib.Path(progression_jar)]
+    expected = ("tmm_progression-",)
     for jar, prefix in zip(addons, expected):
         if not jar.is_file() or not jar.name.startswith(prefix) or jar.suffix != ".jar":
             raise RuntimeError("Missing expected first-party jar " + str(jar))
@@ -56,92 +56,50 @@ def main(bootstrap: str, output_dir: str, commit: str, monk_jar: str, bridge_jar
         "storage": "LOCALAPPDATA/TooMuchMagic/TestPreferences/options-1.21.1.txt",
     }
     guide = f"""TOO MUCH MAGIC — FULL INTEGRATION / EXPERIMENTAL
-This is NOT STABLE and has NOT PASSED YOUR IN-WORLD ACCEPTANCE TESTS.
-DO NOT OPEN EXISTING SAVES. Create a new disposable Prism instance and world.
-Minecraft 1.21.1; NeoForge 21.1.265; Java 21; 8 GiB suggested.
+This is NOT STABLE and has NOT PASSED IN-WORLD ACCEPTANCE TESTS.
+DO NOT OPEN EXISTING SAVES. Create a disposable Prism instance/world.
+Minecraft 1.21.1, NeoForge 21.1.265, Java 21.
 
-Sources: {commit}
+Source commit: {commit}
 Pinned packwiz: {pack}
-Code/source manifest and exact branch SHAs: BUILD-MANIFEST.json in this ZIP.
+Exact source SHAs and first-party JAR hash: BUILD-MANIFEST.json
 
-WINDOWS PERSONAL QA SETTINGS (NOT PART OF PUBLIC MODPACK):
-- First import: GUI scale 3, master volume 55%, music 20%, weather
-  55%, ambient 65%. We do not guess your personal keybindings.
-- Adjust your settings once, then exit Minecraft normally.
-  The post-exit hook saves controls, GUI/chat sizing and sound locally;
-  future test imports restore them before launch automatically.
-- To inherit an already-configured OLD Prism instance, in this NEW
-  instance's minecraft folder run IMPORT-OLD-TMM-PREFERENCES.cmd,
-  select the old instance's minecraft/options.txt, then launch.
-- Your preferences never leave your computer. Worlds, server lists,
-  mod configurations, resource packs and graphics remain separate.
-Only the TWO first-party custom JARs are bundled. All other mods are fetched
-by packwiz from their original hosts using checked hashes.
+NEXT TEST BUILD — TeamLapen retirement
+- Removed: Vampirism, Werewolves, Vampire's Delight, and the old
+  tmm_monk and tmm_transformations JARs.
+- JAWR is sole vampire/lycanthrope physiology provider. Existing
+  Dragon Survival, Goety and JAWR Forbidden Magic remain.
+- Included: tmm_progression standalone Monk/Hunter class paths with
+  custom XP, test commands, passive effects and several active powers.
+  This is a functional pilot, NOT a full classic Monk/Hunter release.
+- Silver: Eidolon tools and armor with normal native behavior.
+  NO free extra silver-versus-werewolf bonus; Hunter skill is future.
+- No TeamLapen villages, faction worldgen, food tags or quest chapters.
 
-Suggested QA — disposable worlds ONLY:
-- Mods list must contain Dragon Survival v2.0.74, GeckoLib, Comforts,
-  client-only Colorful Hearts 10.5.9, and Tyz's Skills 6.4.2.
-  Pufferfish Skills must be ABSENT.
-- Dragon Survival: create Cave, Forest and Sea dragons. Sea accepts raw
-  fish, Aquaculture sushi and kelp; rejects cooked fish and grain dishes.
-  Forest accepts raw Pam's produce, fruit preserves and sugar; rejects
-  corn, rice and baked foods. Cave accepts native foods and charred
-  meat/seafood using Dragon Survival's NATIVE charring, not a coal
-  shortcut recipe. Compare JEI, hunger/saturation
-  and KubeJS/recipe logs; test each food type and negative cases.
-- Vampire ascension v2 test flags are PRE-ENABLED in QA-only
-  defaultconfigs/tmm_transformations-server.toml for every NEW world:
-  chassis=true, Lilith dual acquisition=true, unknown providers=true.
-  Operator-only forced cure stays OFF; use native cures. Existing worlds
-  keep their own serverconfig and do not receive this automatically.
-  Regular infection creates VAMPIRISM ONLY; Lilith Blood upgrades
-  human or normal vampire to JAWR+Vampirism with JAWR
-  canonical hunger/blood and a derived Vampirism display. Test normal
-  and ascended feeds, paid abilities, healing, all cures, relog, second
-  player, Fang infection OFF, and open-sky daytime inside/outside
-  Vampire Forest. Verify ordinary/ascended blood HUDs are not doubled.
-  Do not run mutation experiments on valuable existing worlds.
-- Monk First Sunset still joins, root Step Assist still works. Test
-  native mastery points/ranks 2-4 from training blocks, hostile mobs
-  and new foods; Open Palm, Unarmored Poise, Fleet Footwork, equipment
-  suppression, save/quit and death. Tyz Monk prototypes remain INACTIVE
-  until form purchase gates are installed.
-- Tyz: open abilities/combat/misc/nature/Core Magic categories. Check
-  four 99-rank skills Reservoir/Wellspring/Thrift/Potency, independent
-  mod attributes and refund persistence. Mining/eating/kills/crafting
-  must grant ZERO native Tyz XP. Use operator-only /skills xp PLAYER
-  add 1000 in a disposable world for the rank test; universal MXP
-  award dispatch is still source-only.
-- Colorful Hearts: 20, 50 and 100+ hearts, half hearts, absorption,
-  AppleSkin compatibility and both vampire UI variants at GUI scale 3.
-- Comforts: portable bag night sleep must not set respawn; daytime
-  hammock must advance to night. Test relog and dimension behavior.
-- FTB Quests: five groups, 45 chapters, 180 quest entries, starter
-  Spyglass option, 61 newly humorous/useful rewards and exactly one
-  intentional Cooking Pot bowl. Test Claim All, item detectability,
-  coin claims, team ownership and duplicate-claim prevention.
-- Quest Shop: 18 vanilla ore offers in sixth custom shop category;
-  confirm currency debits and no positive trading/processing loops.
-- Existing QoL: TrashSlot, TreeChop, fast leaves, Eternal Steak,
-  More Overlays, FTB Essentials /sethome /rtp, Akashic Tome and QA
-  preference persistence. Verify client keybinds and volume.
-- Performance regression: no KubeJS Catalyst Exchange script may
-  subscribe to EntityTickEvent.Pre on all dropped items. Temporary
-  Neo Vitae dust -> Mahou exchange conversion is SUSPENDED pending a
-  circle-local native compatibility hook. Ordinary Mahou powdered
-  catalysts must still exchange with native mana costs/outputs.
-  Create and drop many unrelated items without extra script errors.
-  Check Neo Vitae canonical dust, silver, ProjectE recipe gates and
-  Polymorph conflicts. Log any KubeJS errors/exploits.
-- Vampire's Delight must AUTOMATICALLY download into the new Prism
-  instance from the included pinned metafile; if manually prompted,
-  treat as QA FAILURE and attach the installer log and pack index.
-- Test two players, reload, relog, death, dimensions and a separate
-  dedicated server. Preserve before/after screenshots and exact logs.
-- Save logs/latest.log, Prism console, screenshots and feature results.
+OPERATOR QA:
+/tmmprogress list
+/tmmprogress admin join tmm_progression:monk
+/tmmprogress admin xp tmm_progression:monk 28000
+/tmmprogress status tmm_progression:monk
+/tmmprogress enroll tmm_progression:hunter
+/tmmprogress buy tmm_progression:hunter tmm_progression:undead_slayer
 
-Stable/candidate promotion is a SEPARATE manual operation. No automatic
-switch of a known-good build or world migration occurs.
+Test a brand-new disposable world, including JAWR forms and cures,
+Monk First Sunset, Hunter enrollment, nonvanilla XP, saved ranks,
+armor suppression, reserved fist slot, nine silver recipes, food
+reload, Galore, death and multiplayer. Supplemental Bedrock Rest and
+Hunter mutations may still be on separate draft branches.
+The old transformation bridge's experimental Archlich/Dracolich and
+mob-neutrality fixes are NOT included; test provider interactions.
+
+Other mods are hash-downloaded by packwiz; only one first-party
+tmm_progression JAR is bundled. Do not infer client success from a
+dedicated-server boot.
+
+WINDOWS QA-ONLY PREFERENCES: first-instance defaults for display and
+sound plus optional local options/keybind carryover remain enabled.
+Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
+They are not intended for public/stable releases.
 """
     cfg = f"""[General]
 InstanceType=OneSix
@@ -229,6 +187,6 @@ MaxMemAlloc=8192
         "third_party_jars_bundled": 0, "dev_only_preferences": True}, indent=2))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 6:
-        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT MONK_JAR TRANSFORM_JAR")
+    if len(sys.argv) != 5:
+        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT PROGRESSION_JAR")
     main(*sys.argv[1:])

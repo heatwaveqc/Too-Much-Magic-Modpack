@@ -18,6 +18,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -46,7 +53,7 @@ public final class EffectRuntime {
                 if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
                     Definition.Effect effect = skill.effects().get(n);
-                    if (eligible(player,effect)) {
+                    if (eligible(player,effect,track)) {
                         String id = path.id().replace(':','/') + "/" +
                             skill.id().replace(':','/') + "/" + n;
                         out.add(new Active(id,effect,rank));
@@ -56,7 +63,11 @@ public final class EffectRuntime {
         }
         return out;
     }
-    private static boolean eligible(ServerPlayer p, Definition.Effect effect) {
+    private static boolean eligible(ServerPlayer p, Definition.Effect effect, Track track) {
+        String milestone = effect.params().get("requires_milestone");
+        if (milestone != null && !track.completed(milestone)) return false;
+        if ("true".equals(effect.params().get("requires_sprinting")) && !p.isSprinting()) return false;
+        if ("true".equals(effect.params().get("requires_not_sneaking")) && p.isCrouching()) return false;
         if (effect.emptyHand() && !p.getMainHandItem().isEmpty()) return false;
         if (effect.unarmored()) {
             for (ItemStack worn : p.getArmorSlots()) if (!worn.isEmpty()) return false;
@@ -130,6 +141,25 @@ public final class EffectRuntime {
             }
             if (bonus > 0) event.setAmount((float) Math.min(1_000_000,event.getAmount() + bonus));
         }
+        // Damage from a fired bow/crossbow uses the weapon captured by the arrow,
+        // not whatever the player happens to hold when it lands.
+        if (event.getSource().getEntity() instanceof ServerPlayer owner) {
+            boolean melee = event.getSource().getDirectEntity() == owner;
+            boolean arrow = event.getSource().getDirectEntity() instanceof AbstractArrow;
+            ItemStack weapon = melee ? owner.getMainHandItem() :
+                (arrow ? ((AbstractArrow) event.getSource().getDirectEntity()).getWeaponItem() : ItemStack.EMPTY);
+            for (Active a : active(owner)) {
+                Definition.Effect fx = a.effect();
+                if (!fx.type().equals("damage_bonus")) continue;
+                String delivery = fx.params().getOrDefault("delivery","melee");
+                if (!(melee && (delivery.equals("melee") || delivery.equals("any")) ||
+                      arrow && (delivery.equals("arrow") || delivery.equals("any")))) continue;
+                if (Selectors.entity(fx.selector(),event.getEntity()) && Selectors.item(fx.weapon(),weapon)) {
+                    double add = fx.amountPerRank() * a.rank();
+                    if (add > 0) event.setAmount((float) Math.min(1000000,event.getAmount() + add));
+                }
+            }
+        }
         if (event.getEntity() instanceof ServerPlayer defender) {
             double multiplier = 1;
             for (Active a : active(defender)) {
@@ -142,7 +172,7 @@ public final class EffectRuntime {
         }
     }
     private static boolean sourceMatches(String selector, DamageSource source) {
-        if (selector.isEmpty()) return true;
+        if (selector.isEmpty() || selector.equals("*")) return true;
         String key = selector.startsWith("#") ? selector.substring(1) : selector;
         ResourceLocation id = ResourceLocation.parse(key);
         return selector.startsWith("#") ?
@@ -182,4 +212,64 @@ public final class EffectRuntime {
         if (state.is(BlockTags.NEEDS_STONE_TOOL)) return 1;
         return 0;
     }
+    /** Reusable bare-hand animal interaction: successful affection initiates vanilla love. */
+    public static boolean animalFriendship(ServerPlayer player, PlayerInteractEvent.EntityInteract event) {
+        if (event.getHand() != InteractionHand.MAIN_HAND || !player.getMainHandItem().isEmpty()
+                || !(event.getTarget() instanceof Animal animal)) return false;
+        // The original ability has two distinct uses: calm a revenge-targeting
+        // passive animal, OR put an eligible adult into the normal breeding state.
+        boolean calmed = animal.getTarget() == player;
+        boolean breeds = animal.canFallInLove();
+        if (!calmed && !breeds) return false;
+        for (Active active : active(player)) {
+            Definition.Effect fx = active.effect();
+            if (!fx.type().equals("animal_friendship") || !Selectors.entity(fx.selector(),animal)) continue;
+            if (calmed) animal.setTarget(null);
+            if (breeds) animal.setInLove(player);
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+            ProgressionApi.record(player,Selectors.entityAction("animal_petted",animal));
+            return true;
+        }
+        return false;
+    }
+
+    /** Rank-scaled wear/repair; damage respects normal Unbreaking and break callbacks. */
+    public static void tick(ServerPlayer player) {
+        for (Active active : active(player)) {
+            Definition.Effect fx = active.effect();
+            if (!fx.type().equals("gear_durability")) continue;
+            int interval = Integer.parseInt(fx.params().getOrDefault("interval_ticks","20"));
+            if (player.tickCount % interval != 0) continue;
+            int amount = (int) Math.min(64,Math.floor(fx.amountPerRank() * active.rank()));
+            if (amount <= 0) continue;
+            String slot = fx.params().getOrDefault("slot","mainhand");
+            boolean repair = fx.params().getOrDefault("action","repair").equals("repair");
+            for (EquipmentSlot equipment : equipmentSlots(slot)) {
+                ItemStack stack = player.getItemBySlot(equipment);
+                if (!stack.isDamageableItem() || !Selectors.item(fx.selector(),stack)) continue;
+                if (repair) {
+                    if (stack.isDamaged()) stack.setDamageValue(Math.max(0,stack.getDamageValue() - amount));
+                } else {
+                    stack.hurtAndBreak(amount,player,equipment);
+                }
+            }
+        }
+    }
+
+    private static List<EquipmentSlot> equipmentSlots(String slot) {
+        return switch (slot) {
+            case "mainhand" -> List.of(EquipmentSlot.MAINHAND);
+            case "offhand" -> List.of(EquipmentSlot.OFFHAND);
+            case "head" -> List.of(EquipmentSlot.HEAD);
+            case "chest" -> List.of(EquipmentSlot.CHEST);
+            case "legs" -> List.of(EquipmentSlot.LEGS);
+            case "feet" -> List.of(EquipmentSlot.FEET);
+            case "armor" -> List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET);
+            case "all" -> List.of(EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND,
+                EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET);
+            default -> List.of();
+        };
+    }
+
 }

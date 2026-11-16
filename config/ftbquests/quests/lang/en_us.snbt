@@ -86,10 +86,6 @@
 	chapter.544D204000600000.chapter_subtitle: ["Explore Artifacts; more quests are being authored."]
 	chapter.544D204000700000.title: "Enigmatic Legacy+"
 	chapter.544D204000700000.chapter_subtitle: ["Explore Enigmatic Legacy+; more quests are being authored."]
-	chapter.544D204000800000.title: "Vampirism"
-	chapter.544D204000800000.chapter_subtitle: ["Explore Vampirism; more quests are being authored."]
-	chapter.544D204000900000.title: "Werewolves"
-	chapter.544D204000900000.chapter_subtitle: ["Explore Werewolves; more quests are being authored."]
 	chapter.544D205000100000.title: "Draconic Evolution"
 	chapter.544D205000100000.chapter_subtitle: ["Explore Draconic Evolution; more quests are being authored."]
 	chapter.544D205000200000.title: "ProjectE"
@@ -444,10 +440,6 @@
 	quest.544D304000600001.quest_desc: ["An introduction to Artifacts in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000700001.title: "Chapter Overview"
 	quest.544D304000700001.quest_desc: ["An introduction to Enigmatic Legacy+ in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000800001.title: "Chapter Overview"
-	quest.544D304000800001.quest_desc: ["An introduction to Vampirism in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D304000900001.title: "Chapter Overview"
-	quest.544D304000900001.quest_desc: ["An introduction to Werewolves in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D305000100001.title: "Chapter Overview"
 	quest.544D305000100001.quest_desc: ["An introduction to Draconic Evolution in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D305000200001.title: "Chapter Overview"

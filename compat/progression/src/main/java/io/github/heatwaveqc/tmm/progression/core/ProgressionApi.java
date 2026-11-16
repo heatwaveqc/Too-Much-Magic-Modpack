@@ -3,6 +3,11 @@ package io.github.heatwaveqc.tmm.progression.core;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import io.github.heatwaveqc.tmm.progression.state.Ledger;
+import io.github.heatwaveqc.tmm.progression.state.Discoveries;
+import io.github.heatwaveqc.tmm.progression.state.Modes;
+import io.github.heatwaveqc.tmm.progression.runtime.Selectors;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tmm.progression.state.Track;
 import net.minecraft.server.level.ServerPlayer;
@@ -38,6 +43,24 @@ public final class ProgressionApi {
         return true;
     }
 
+    /**
+     * Operator-only test grant, called by the command dispatcher after checking
+     * permission level 2. Bypasses activity rates, not enrollment or the
+     * normal rank and automatic-skill calculations. Does not award vanilla XP.
+     */
+    public static boolean grantAdminXp(ServerPlayer player, String pathId, long amount) {
+        if (amount <= 0) return false;
+        Definition.Path path = PathRegistry.get(pathId);
+        if (path == null) return false;
+        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
+        Track before = ledger.get(pathId);
+        if (!before.joined()) return false;
+        Track after = ProgressionMath.grantXp(path,before,amount);
+        if (after.xp() == before.xp()) return false; // saturated
+        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
+        return true;
+    }
+
     /** Fail-closed if the path is missing, gated, full, or short on skill points. */
     public static boolean buy(ServerPlayer player, String pathId, String skillId) {
         Definition.Path path = PathRegistry.get(pathId);
@@ -62,6 +85,32 @@ public final class ProgressionApi {
     /** For verified external milestones and compatible mods; cannot mint arbitrary XP. */
     public static void recordExternal(ServerPlayer player, String namespacedEventId) {
         record(player,Signal.external(namespacedEventId));
+    }
+
+    /** Server-only independent mode storage, for Fortune/Silk and Monk Armor Lock toggles. */
+    public static String mode(ServerPlayer player, String key, String fallback) {
+        return player.getData(ProgressionAttachments.PLAYER_MODES.get()).get(key,fallback);
+    }
+    public static boolean setMode(ServerPlayer player, String key, String value) {
+        if (!key.matches("[a-z0-9_.-]+:[a-z0-9_./-]+") || key.length() > 128
+                || value == null || value.length() > 80 || !value.matches("[a-z0-9_./-]+")) return false;
+        Modes before = player.getData(ProgressionAttachments.PLAYER_MODES.get());
+        Modes after = before.with(key,value);
+        if (before != after) player.setData(ProgressionAttachments.PLAYER_MODES.get(),after);
+        return true;
+    }
+
+    /** First-consumption reward is global per player, not per NBT variant, saved across death/relog. */
+    public static void recordConsumedFood(ServerPlayer player, ItemStack food) {
+        if (player.isCreative() || player.isSpectator() || food.isEmpty()) return;
+        record(player,Selectors.itemAction("food_consumed",food));
+        String id = BuiltInRegistries.ITEM.getKey(food.getItem()).toString();
+        Discoveries before = player.getData(ProgressionAttachments.FOOD_HISTORY.get());
+        Discoveries after = before.discover(id);
+        if (before != after) {
+            player.setData(ProgressionAttachments.FOOD_HISTORY.get(),after);
+            record(player,Selectors.itemAction("food_discovered",food));
+        }
     }
 
     /** Standardized activity events: one authoritative signal, all joined paths. */

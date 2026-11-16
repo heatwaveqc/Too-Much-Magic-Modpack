@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgressionMathTest {
     private static Definition.Path sample() {
         Definition.Skill baseline = new Definition.Skill("test:baseline",2,1,0,0,List.of(),
-            List.of(),List.of(1,3),List.of());
+            List.of(),List.of(),"",List.of(1,3),List.of());
         Definition.Skill purchased = new Definition.Skill("test:optional",2,2,2,3,List.of(),
-            List.of(),List.of(),List.of());
+            List.of(),List.of(),"",List.of(),List.of());
         return new Definition.Path("test:path","",List.of(0L,20L,55L,100L),
             2,List.of(),List.of(),List.of(baseline,purchased));
     }
@@ -58,4 +58,45 @@ class ProgressionMathTest {
             ProgressionMath.recordCriterion(initial.withCounter("x",Integer.MAX_VALUE),"x",1)
                 .criterionCount("x"));
     }
+    @Test void branchingChoicesAndOrPrerequisitesAreEnforced() {
+        var root = new Definition.Skill("test:root",1,1,1,0,List.of(),List.of(),List.of(),"",List.of(),List.of());
+        var swift = new Definition.Skill("test:swift",1,1,1,0,List.of("test:root"),
+            List.of(),List.of(),"test:stance",List.of(),List.of());
+        var strong = new Definition.Skill("test:strong",1,1,1,0,List.of("test:root"),
+            List.of(),List.of(),"test:stance",List.of(),List.of());
+        var advanced = new Definition.Skill("test:advanced",1,1,1,0,List.of(),
+            List.of("test:swift","test:strong"),List.of(),"",List.of(),List.of());
+        var path = new Definition.Path("test:branch","",List.of(0L,10L,20L,30L),
+            3,List.of(),List.of(),List.of(root,swift,strong,advanced));
+        Track joined = ProgressionMath.join(path,Track.empty());
+        assertSame(joined,ProgressionMath.buy(path,joined,"test:swift"));
+        Track withRoot = ProgressionMath.buy(path,joined,"test:root");
+        Track withSwift = ProgressionMath.buy(path,withRoot,"test:swift");
+        assertSame(withSwift,ProgressionMath.buy(path,withSwift,"test:strong"));
+        Track withAdvanced = ProgressionMath.buy(path,withSwift,"test:advanced");
+        assertEquals(1,withAdvanced.skillRank("test:advanced"));
+        assertEquals(0,withAdvanced.skillRank("test:strong"));
+        Track reset = ProgressionMath.refundAll(path,withAdvanced);
+        assertEquals(0,reset.skillRank("test:swift"));
+        assertEquals(0,reset.skillRank("test:advanced"));
+        assertEquals(joined.points(),reset.points());
+    }
+
+    @Test void testXpGrantUsesOrdinaryRankPointsAndFreeSkillGates() {
+        Definition.Path path = sample();
+        Track notEnrolled = Track.empty();
+        assertSame(notEnrolled,ProgressionMath.grantXp(path,notEnrolled,100));
+        Track joined = ProgressionMath.join(path,notEnrolled);
+        Track almostMax = ProgressionMath.grantXp(path,joined,99);
+        assertEquals(99,almostMax.xp());
+        assertEquals(3,almostMax.rank());
+        assertEquals(6,almostMax.points());
+        assertEquals(2,almostMax.skillRank("test:baseline"));
+        Track cap = ProgressionMath.grantXp(path,almostMax,1);
+        assertEquals(100,cap.xp());
+        assertEquals(path.maxRank(),cap.rank());
+        assertEquals(8,cap.points());
+        assertEquals(2,cap.skillRank("test:baseline"));
+    }
+
 }

@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     {
-      "id": "#c:foods/cooked_fish",
+      "id": "evilcraft:werewolf",
       "required": false
     }
   ]

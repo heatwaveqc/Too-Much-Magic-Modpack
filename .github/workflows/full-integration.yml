@@ -54,13 +54,13 @@ jobs:
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
-          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/build_full_integration_prism.py
+          python3 -m py_compile scripts/assemble_integration.py scripts/activate_tyzs.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/audit_jawr_food_jar.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
       - name: Confirm changed resource recipes and materials statically
         run: |
           python3 scripts/verify_materials.py
           python3 scripts/verify_silver_equipment.py
           python3 scripts/verify_dragon_diets.py
-          python3 scripts/verify_werewolf_food_tags.py
+          python3 scripts/verify_retirement.py
       - name: Verify every ProjectE recipe override and explicit EMC exception audit contract
         run: |
           node scripts/verify_projecte_boss_recipes.cjs
@@ -68,41 +68,34 @@ jobs:
           python3 scripts/validate_progression_gates.py
       - name: Re-validate live-staged Tyz 99-rank Core Magic source (exclusive skill backend)
         run: python3 compat/magic/stage_preview.py --check
-      - name: Compile and unit test latest vampire bridge
-        working-directory: compat/transformations
-        run: gradle --no-daemon build
-      - name: Compile and unit test latest Monk faction addon
-        working-directory: compat/monk
+      - name: Compile and unit test standalone Monk/Hunter progression
+        working-directory: compat/progression
         run: gradle --no-daemon build
       - name: Verify HexCast MXP exploratory contract (source only; not in pack)
         working-directory: integration/hexcast-media-pilot
         run: bash check-contract.sh
-      - name: Full dedicated-server smoke WITH BOTH first-party compiled modules
+      - name: Full dedicated-server smoke WITH standalone progression
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
-          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/monk/build/libs/tmm_monk-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar
+          SMOKE_EXTRA_MOD_JARS: ${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar
         run: bash scripts/smoke_server.sh
-      - name: Fail on unresolved Werewolves food tags in the full server log
-        run: |
-          if grep -Eq "Couldn't load tag werewolves:werewolf_food" "${{ runner.temp }}/tmm-full-integration-smoke/server.log" "${{ runner.temp }}/tmm-full-integration-smoke/logs/latest.log"; then
-            echo "Werewolves diet tag failed to load; inspect Relics or datapack override priority" >&2
-            exit 1
-          fi
-          echo "PASS: werewolves:werewolf_food has no missing-reference error on server startup"
+      - name: Validate retired runtime mods, recipes and tag absence
+        run: python3 scripts/verify_retirement.py
       - name: Collect read-only JAWR and Forbidden Magic bytecode food inventory
         run: |
           python3 scripts/audit_jawr_food_jar.py \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery-0.5.39+mc1.21.1.jar" \
             "${{ runner.temp }}/tmm-full-integration-smoke/mods/witchery_forbidden_magic-0.5.37+mc1.21.1.jar" \
             --limit 48 --output "${{ runner.temp }}/tmm-jawr-food-audit"
-      - name: Refuse to publish if extra first-party modules were not actually installed
+      - name: Fail if standalone module is absent or retired modules leak
         run: |
-          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
-          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
-          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
-          echo "Both custom module JARs included in passing server test"
+          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_progression-0.1.0-dev.jar"
+          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 1
+          test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
+          test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
+          echo "Standalone tmm_progression tested; old custom modules absent"
       - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
         run: |
           # All staged source imports, exact mod manifests and the source lock belong
@@ -133,8 +126,7 @@ jobs:
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "${{ runner.temp }}" "$(git rev-parse HEAD)" \
-            "compat/monk/build/libs/tmm_monk-0.1.0-dev.jar" \
-            "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+            "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar"
       - name: Upload the one comprehensive unstable test build
         uses: actions/upload-artifact@v4
         with:

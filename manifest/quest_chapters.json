@@ -21,7 +21,7 @@
     {
       "name": "Exploration & Combat",
       "id": "544D104000000000",
-      "count": 9
+      "count": 7
     },
     {
       "name": "Endgame",
@@ -647,34 +647,6 @@
       ],
       "overview_quest_id": "544D304000700001",
       "overview_task_id": "544D404000700001"
-    },
-    {
-      "category": "Exploration & Combat",
-      "group_id": "544D104000000000",
-      "chapter_id": "544D204000800000",
-      "name": "Vampirism",
-      "filename": "vampirism.snbt",
-      "order_index": 7,
-      "icon": "minecraft:fermented_spider_eye",
-      "mod_ids": [
-        "vampirism"
-      ],
-      "overview_quest_id": "544D304000800001",
-      "overview_task_id": "544D404000800001"
-    },
-    {
-      "category": "Exploration & Combat",
-      "group_id": "544D104000000000",
-      "chapter_id": "544D204000900000",
-      "name": "Werewolves",
-      "filename": "werewolves.snbt",
-      "order_index": 8,
-      "icon": "minecraft:bone",
-      "mod_ids": [
-        "werewolves"
-      ],
-      "overview_quest_id": "544D304000900001",
-      "overview_task_id": "544D404000900001"
     },
     {
       "category": "Endgame",
