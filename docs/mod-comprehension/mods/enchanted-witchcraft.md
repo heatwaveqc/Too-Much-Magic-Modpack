@@ -6,7 +6,7 @@
 | Category / parent or addons | magic; standalone profile |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` |
 | Pinned version / artifact / hash | `enchanted-neoforge-1.21.1-4.2.7.jar`; CurseForge file 8055168; SHA-1 `2380cb5a49c7eb86afa6f790a920d1872d5cb85e` [pin] |
-| Source snapshot | upstream `Favouriteless/Enchanted`, branch `1.21.1`, commit [`55f37c7e15a2848be2cf25ff20232a1893795e75`](https://github.com/Favouriteless/Enchanted/tree/55f37c7e15a2848be2cf25ff20232a1893795e75); source declares 4.2.7, but pinned JAR binary equivalence is not established |
+| Source snapshot | upstream `Favouriteless/Enchanted`, branch `1.21.1`, commit [`55f37c7e15a2848be2cf25ff20232a1893795e75`](https://github.com/Favouriteless/Enchanted/tree/55f37c7e15a2848be2cf25ff20232a1893795e75); source is version-aligned to the pinned release, but exact source-to-JAR equivalence is not established |
 | Guide/documentation version gap | Source-generated Modopedia content at the version-aligned source snapshot; exact JAR contents still need comparison |
 | Profile status | researching |
 | Evidence reached | pin metadata plus upstream code, recipes, loot/worldgen resources and generated in-game handbook; no exact JAR inspection or client test |
@@ -43,7 +43,7 @@
 | Distillery and spinning | handbook, recipes and block entities [source] | partial | *Material Processing → Distillation*; *Poppetry → Spinning* | not run | Inspect per-recipe costs, automation and outputs |
 | Poppets, taglocks and curses | handbook categories, recipe set, curse code [source] | partial | *Poppetry*; *Circle Magic → Curses* | not run | Full bind/trigger/consumption matrix and death/ownership edge cases |
 | Circle magic and rites | handbook has rite pages and rite data [source] | partial | *Circle Magic → Fundamental Theory* and rite-specific pages | not run | Transcribe each rite's geometry, exact foci, cost and failure behavior |
-| Familiars, broom, waystones | handbook entries and rite data [source] | partial | *Circle Magic → Binding / Creature / Transposition*; item entries | not run | Verify full familiar catalog and entity state/persistence |
+| Familiars, broom, waystones | handbook entries and rite data [source] | partial | *Circle Magic → Binding / Creature / Transposition*; item entries | not run | Verify familiar benefits/catalog and investigate a missing handbook cross-link |
 | Config/API and pack behavior | upstream server config/source; TMM roster/pin [source]/[pin] | partial | config files and JEI | not run | Compare generated config and pack overrides; no runtime edits |
 
 ## Guidebook onboarding
