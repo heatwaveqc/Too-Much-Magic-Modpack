@@ -26,6 +26,9 @@ import net.minecraft.world.InteractionResult;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.CrossbowItem;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -161,6 +164,20 @@ public final class EffectRuntime {
             }
         }
         if (event.getEntity() instanceof ServerPlayer defender) {
+            // Avoid an incoming hit from a configured quarry group before armor reduction.
+            // Source owner attribution handles arrows; environmental damage has no quarry.
+            if (!event.isCanceled() && event.getSource().getEntity() instanceof LivingEntity attacker) {
+                double evasionChance = 0;
+                for (Active a : active(defender)) {
+                    Definition.Effect fx = a.effect();
+                    if ("evasion".equals(fx.type()) && Selectors.entity(fx.selector(),attacker))
+                        evasionChance = Math.min(0.75, evasionChance + fx.amountPerRank() * a.rank());
+                }
+                if (evasionChance > 0 && defender.getRandom().nextDouble() < evasionChance) {
+                    event.setCanceled(true);
+                    return;
+                }
+            }
             double multiplier = 1;
             for (Active a : active(defender)) {
                 Definition.Effect fx = a.effect();
@@ -171,6 +188,28 @@ public final class EffectRuntime {
             if (multiplier != 1) event.setAmount((float) Math.max(0,event.getAmount() * multiplier));
         }
     }
+    /**
+     * Increase progress through a vanilla bow draw or crossbow charge by configurable
+     * fractional extra ticks. This is authoritative on the server: no item swapping,
+     * arbitrary potion use, or client-originated charge claims can trigger it.
+     * Example: 0.2 per rank => +20% per rank, +100% at rank five.
+     */
+    public static void useTick(ServerPlayer player, LivingEntityUseItemEvent.Tick event) {
+        ItemStack used = event.getItem();
+        if (!(used.getItem() instanceof BowItem) && !(used.getItem() instanceof CrossbowItem)) return;
+        double bonusTicks = 0;
+        for (Active a : active(player)) {
+            Definition.Effect fx = a.effect();
+            if ("fast_hands".equals(fx.type()) && Selectors.item(fx.weapon(),used))
+                bonusTicks += fx.amountPerRank() * a.rank();
+        }
+        bonusTicks = Math.min(2.0,Math.max(0,bonusTicks)); // 3x total speed hard safety limit
+        int extra = (int)Math.floor(bonusTicks);
+        double fractional = bonusTicks - extra;
+        if (player.tickCount % 20 < Math.round(fractional * 20)) extra++;
+        if (extra > 0) event.setDuration(Math.max(1,event.getDuration() - extra));
+    }
+
     private static boolean sourceMatches(String selector, DamageSource source) {
         if (selector.isEmpty() || selector.equals("*")) return true;
         String key = selector.startsWith("#") ? selector.substring(1) : selector;

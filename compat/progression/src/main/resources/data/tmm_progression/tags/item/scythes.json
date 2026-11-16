@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:tools/scythes",
+      "required": false
+    },
+    {
+      "id": "#c:tools/scythe",
+      "required": false
+    },
+    {
+      "id": "#c:scythes",
+      "required": false
+    },
+    {
+      "id": "#forge:tools/scythes",
+      "required": false
+    }
+  ]
+}

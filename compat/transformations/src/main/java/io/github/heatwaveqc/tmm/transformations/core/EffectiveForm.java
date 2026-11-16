@@ -1,18 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations.core;
 
-/**
- * Classification of a fully observed upstream state, not permission to apply it.
- */
+/** Read-only classification, not an authorization to change an upstream state. */
 public enum EffectiveForm {
-    HUMAN,
-    HUNTER,
-    VAMPIRE,
-    WEREWOLF,
-    LICH,
-    ARCHLICH,
-    DRAGON,
-    DRACOLICH,
-    ABOMINATION,
-    CONFLICT,
-    UNVERIFIED
+    HUMAN, VAMPIRE, WEREWOLF, LICH, ARCHLICH, DRAGON, DRACOLICH,
+    ABOMINATION, CONFLICT, UNVERIFIED
 }

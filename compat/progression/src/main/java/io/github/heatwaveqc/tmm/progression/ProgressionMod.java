@@ -4,6 +4,9 @@ import io.github.heatwaveqc.tmm.progression.command.ProgressionCommands;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
+import io.github.heatwaveqc.tmm.progression.runtime.HunterBrewing;
+import io.github.heatwaveqc.tmm.progression.runtime.StandPotionEligibility;
+import io.github.heatwaveqc.tmm.progression.runtime.HunterItems;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -19,8 +22,12 @@ public final class ProgressionMod {
 
     public ProgressionMod(IEventBus modBus) {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
+        HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
+        NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
+        NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
+        NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         ProgressionEvents.register();
     }

@@ -46,7 +46,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -54,8 +54,11 @@ public final class PathJson {
     public static Definition.Path read(String pathId, JsonObject source) {
         id(pathId);
         if (number(source,"schema",0) != 1) throw new IllegalArgumentException("schema must be 1");
-        if (!Set.of("admin","manual","sunset").contains(str(source,"enrollment","admin")))
+        if (!Set.of("admin","manual","sunset","potion").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
+        PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
+        HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
+        HunterMutationPolicy.parse(source); // blacklist, hunger and target must be safe
         List<Long> thresholds = new ArrayList<>();
         for (JsonElement el : entries(source,"rank_xp")) {
             long n = el.getAsLong();
@@ -143,6 +146,12 @@ public final class PathJson {
                     throw new IllegalArgumentException("Attribute handler requires attribute");
                 if (type.equals("damage_multiplier") && (amount < 0 || amount > 1))
                     throw new IllegalArgumentException("Damage reduction must be in [0,1]");
+                if (type.equals("evasion") && (!target.startsWith("#") || amount < 0 || amount > 0.75))
+                    throw new IllegalArgumentException("Evasion requires a quarry entity tag and a chance in [0,0.75]");
+                if (type.equals("hunter_specialty") && (!target.startsWith("#") || !weapon.isEmpty()))
+                    throw new IllegalArgumentException("Hunter specialty requires a creature category tag");
+                if (type.equals("fast_hands") && (weapon.isEmpty() || amount < 0 || amount > 2))
+                    throw new IllegalArgumentException("Fast Hands requires a weapon ID/tag and bounded speed bonus");
                 Map<String,String> params = new HashMap<>();
                 if (f.has("params")) {
                     f.getAsJsonObject("params").entrySet().forEach(entry -> {

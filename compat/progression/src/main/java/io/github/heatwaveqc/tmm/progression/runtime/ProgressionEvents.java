@@ -16,6 +16,7 @@ import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.entity.player.AdvancementEvent;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -29,7 +30,12 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::continueSleeping);
+        NeoForge.EVENT_BUS.addListener(BedrockRest::wake);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::equipmentChange);
@@ -57,17 +63,35 @@ public final class ProgressionEvents {
     private static void kill(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
-            ProgressionApi.record(player,Selectors.kill(event.getEntity()));
+            boolean eligibleHunterKill = HunterExperience.kill(player,event.getEntity());
+            ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
+                path -> !HunterExperience.HUNTER.equals(path.id()) || eligibleHunterKill);
+            if (event.getSource().getDirectEntity() == player
+                    && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.unarmedKill(event.getEntity()));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }
     }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        // Detect completed vanilla potion drinking independently of whether it counts as food.
+        Enrollment.potionFinished(player,event.getItem());
+        HunterExperience.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         ProgressionApi.recordConsumedFood(player,event.getItem());
         EffectHandlers.foodConsumed(player,event.getItem());
+    }
+    /** Server-authoritative bow draw and crossbow charging adjustments. */
+    private static void useTick(LivingEntityUseItemEvent.Tick event) {
+        if (event.getEntity() instanceof ServerPlayer player && !event.isCanceled()) {
+            EffectRuntime.useTick(player,event);
+            EffectHandlers.useTick(player,event);
+        }
+    }
+    private static void pickup(ItemEntityPickupEvent.Pre event) {
+        if (event.getPlayer() instanceof ServerPlayer p) ClassAbilities.pickup(p,event);
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
@@ -79,6 +103,8 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             HarvestAbilities.blockDrops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
@@ -89,13 +115,8 @@ public final class ProgressionEvents {
               EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) {
-            // Always re-evaluate the Monk's unarmored buffs on equipment changes.
-            // This works with Armor Lock OFF too: wearing armor suppresses powers.
-            ClassAbilities.enforceArmorLock(player,false);
-            EffectRuntime.reconcile(player);
+        if (event.getEntity() instanceof ServerPlayer player)
             EffectHandlers.equipmentChange(player,event);
-        }
     }
     private static void targetChange(LivingChangeTargetEvent event) {
         if (event.getNewAboutToBeSetTarget() instanceof ServerPlayer player)
@@ -108,9 +129,11 @@ public final class ProgressionEvents {
               EffectHandlers.jump(player,event); }
     }
     private static void advancement(AdvancementEvent.AdvancementEarnEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player)
-            ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal("advancement",
-                event.getAdvancement().id().toString(),java.util.Set.of()));
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        String path = event.getAdvancement().id().getPath();
+        if (path.startsWith("recipes/") || path.contains("/recipes/")) return;
+        ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal(
+                "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
     }
     private static void fall(LivingFallEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
@@ -119,9 +142,11 @@ public final class ProgressionEvents {
         }
     }
     private static void incoming(LivingIncomingDamageEvent event) {
+        if (event.isCanceled()) return;
         ClassAbilities.incoming(event);
+        if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
-        EffectHandlers.incoming(event);
+        if (!event.isCanceled()) EffectHandlers.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
@@ -137,6 +162,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
             Enrollment.tick(player);
+            if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
@@ -145,19 +171,24 @@ public final class ProgressionEvents {
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
             EffectRuntime.reconcile(player);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) Enrollment.clear(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Enrollment.clear(player);
+            BedrockRest.forget(player);
+        }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            BedrockRest.forget(player);
             ClassAbilities.forget(player);
             AbilityNetwork.forget(player);
         }

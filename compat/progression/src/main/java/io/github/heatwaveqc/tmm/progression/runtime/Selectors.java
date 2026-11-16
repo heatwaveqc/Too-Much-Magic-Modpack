@@ -27,27 +27,24 @@ public final class Selectors {
     }
     public static boolean entity(String selector, LivingEntity target) {
         if (selector.isEmpty() || selector.equals("*")) return true;
-        // Special JAWR player predicate: NEVER tag all minecraft:players as wolves.
+        // JAWR lycanthropy belongs to the player attachment, never all players.
         if (selector.equals("#tmm_progression:lycanthropes")
-                && target instanceof net.minecraft.world.entity.player.Player) {
+                && target instanceof net.minecraft.world.entity.player.Player)
             return jawrLycanthrope(target);
-        }
         return selector.startsWith("#") ?
             target.getType().is(TagKey.create(Registries.ENTITY_TYPE,location(selector))) :
             BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).equals(location(selector));
     }
-    /** JAWR-only lycanthrope physiology, reflective so no hard JAWR compile dependency. */
     private static boolean jawrLycanthrope(LivingEntity target) {
         if (!net.neoforged.fml.ModList.get().isLoaded("witchery")) return false;
         try {
             Class<?> attachment = Class.forName(
                 "dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment");
             Object data = attachment.getMethod("getData",
-                net.minecraft.world.entity.player.Player.class).invoke(null, target);
+                net.minecraft.world.entity.player.Player.class).invoke(null,target);
             return data != null && Boolean.TRUE.equals(
                 data.getClass().getMethod("isWerewolf").invoke(data));
         } catch (ReflectiveOperationException | LinkageError ex) {
-            // Fail closed: never grant bonuses to every player on an API mismatch.
             return false;
         }
     }
@@ -62,6 +59,16 @@ public final class Selectors {
             .collect(Collectors.toSet());
         return new Signal("block_break",
             BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString(), tags);
+    }
+    /** Credited post-break physical practice, excluding tools and pre-break attempts. */
+    public static Signal barehandBlockBreak(BlockState state) {
+        Signal original = blockBreak(state);
+        return new Signal("barehand_block_break",original.target(),original.tags());
+    }
+    /** Credited direct empty-hand melee kill. */
+    public static Signal unarmedKill(LivingEntity target) {
+        Signal original = kill(target);
+        return new Signal("unarmed_kill",original.target(),original.tags());
     }
     public static Signal itemAction(String event, ItemStack stack) {
         Set<String> tags = stack.getTags().map(tag -> tag.location().toString())

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:ender_dragon",
+    {
+      "id": "draconicevolution:draconic_guardian",
+      "required": false
+    }
+  ]
+}

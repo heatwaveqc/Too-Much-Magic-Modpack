@@ -1,51 +1,35 @@
 package io.github.heatwaveqc.tmm.transformations.core;
 
 import static io.github.heatwaveqc.tmm.transformations.core.EffectiveForm.*;
+import static io.github.heatwaveqc.tmm.transformations.core.ProviderState.*;
 
-/**
- * Pure, fail-closed preflight for complete before/after provider snapshots.
- * Does not alter player data or certify an upstream interception hook.
- */
+/** Pure preflight. This does not grant, remove, or cure native transformations. */
 public final class TransitionPolicy {
     private TransitionPolicy() { }
 
     public static TransitionDecision assess(StateSnapshot before, StateSnapshot after, TransitionKind kind) {
-        if (before == null || after == null || kind == null) {
+        if (before == null || after == null || kind == null)
             return TransitionDecision.deny(UNVERIFIED, UNVERIFIED, "Missing transition inputs");
-        }
-        EffectiveForm from = FormResolver.resolve(before);
-        EffectiveForm to = FormResolver.resolve(after);
-        if (from == UNVERIFIED || to == UNVERIFIED) {
-            return TransitionDecision.deny(from, to, "Incomplete provider observations; deny unknown state");
-        }
-        if (from == CONFLICT) {
-            return TransitionDecision.deny(from, to, "Existing conflict requires backed-up administrative review");
-        }
-        if (to == CONFLICT) {
-            return TransitionDecision.deny(from, to, "Proposed state violates the approved combination matrix");
-        }
-
-        boolean added = false;
-        boolean removed = false;
+        EffectiveForm from = FormResolver.resolve(before), to = FormResolver.resolve(after);
+        if (from == UNVERIFIED || to == UNVERIFIED)
+            return TransitionDecision.deny(from, to, "Incomplete provider observations");
+        if (from == CONFLICT || to == CONFLICT)
+            return TransitionDecision.deny(from, to, "Unapproved native form combination");
+        boolean added = false, removed = false;
         for (ProviderState provider : ProviderState.values()) {
-            boolean oldPresent = before.present(provider);
-            boolean newPresent = after.present(provider);
-            added |= !oldPresent && newPresent;
-            removed |= oldPresent && !newPresent;
+            added |= !before.present(provider) && after.present(provider);
+            removed |= before.present(provider) && !after.present(provider);
         }
         if (!added && !removed) {
             return kind == TransitionKind.NORMAL
-                    ? TransitionDecision.allow(from, to, "No provider-state change (ordinary progression)")
-                    : TransitionDecision.deny(from, to, "Special transition cannot be a no-op");
+                ? TransitionDecision.allow(from, to, "No native form change")
+                : TransitionDecision.deny(from, to, "Special transition cannot be a no-op");
         }
-
         return switch (kind) {
             case NORMAL -> {
-                if (removed) {
-                    yield TransitionDecision.deny(from, to, "Ordinary acquisition cannot remove existing states");
-                }
-                boolean edge = switch (from) {
-                    case HUMAN -> to == HUNTER || to == VAMPIRE || to == WEREWOLF || to == LICH || to == DRAGON;
+                if (removed) yield TransitionDecision.deny(from, to, "Ordinary acquisition cannot remove native forms");
+                boolean permitted = switch (from) {
+                    case HUMAN -> to == VAMPIRE || to == WEREWOLF || to == LICH || to == DRAGON;
                     case VAMPIRE -> to == VAMPIRE;
                     case WEREWOLF -> to == WEREWOLF;
                     case LICH -> to == LICH || to == ARCHLICH || to == DRACOLICH;
@@ -53,38 +37,22 @@ public final class TransitionPolicy {
                     case ARCHLICH -> to == ARCHLICH;
                     case DRACOLICH -> to == DRACOLICH;
                     case ABOMINATION -> to == ABOMINATION;
-                    case HUNTER -> to == HUNTER;
                     default -> false;
                 };
-                yield edge
-                        ? TransitionDecision.allow(from, to, "Permitted state progression; provider hooks still require verification")
-                        : TransitionDecision.deny(from, to, "No approved ordinary progression edge");
+                yield permitted
+                    ? TransitionDecision.allow(from, to, "Permitted preflight; upstream callbacks still require QA")
+                    : TransitionDecision.deny(from, to, "No approved ordinary progression edge");
             }
             case CONTROLLED_CURE -> {
-                if (added) {
-                    yield TransitionDecision.deny(from, to, "A cure cannot add another state");
-                }
-                yield TransitionDecision.allow(from, to,
-                        "Valid post-cure classification; provider cleanup and reversibility require verification");
-            }
-            case VOLUNTARY_HUNTER_REPLACEMENT -> {
-                if (from != HUNTER || !before.present(ProviderState.VAMPIRISM_HUNTER)
-                        || after.present(ProviderState.VAMPIRISM_HUNTER)
-                        || (to != VAMPIRE && to != WEREWOLF && to != LICH && to != DRAGON)) {
-                    yield TransitionDecision.deny(from, to, "Hunter replacement must atomically leave hunter for one base supernatural state");
-                }
-                yield TransitionDecision.allow(from, to,
-                        "Voluntary hunter replacement; clear the faction before applying the new state");
+                if (added) yield TransitionDecision.deny(from, to, "Cure cannot add a native form");
+                yield TransitionDecision.allow(from, to, "Classifier permits reduction; native cure not performed");
             }
             case ABOMINATION_RITUAL -> {
                 if (from != ARCHLICH || to != ABOMINATION || removed
-                        || !after.present(ProviderState.GOETY_LICH)
-                        || !after.present(ProviderState.FORBIDDEN_MAGIC_LICH)) {
-                    yield TransitionDecision.deny(from, to,
-                            "Abomination ritual requires Archlich and both existing lichdoms retained");
-                }
-                yield TransitionDecision.allow(from, to,
-                        "Abomination requires atomic vampire+werewolf acquisition, never invalid intermediate states");
+                        || !after.present(GOETY_LICH) || !after.present(FORBIDDEN_MAGIC_LICH)
+                        || !after.present(JAWR_VAMPIRE) || !after.present(JAWR_LYCANTHROPE))
+                    yield TransitionDecision.deny(from, to, "Abomination requires both retained lichdoms and both JAWR forms");
+                yield TransitionDecision.allow(from, to, "Preflight only; no ritual/interception shipped");
             }
         };
     }

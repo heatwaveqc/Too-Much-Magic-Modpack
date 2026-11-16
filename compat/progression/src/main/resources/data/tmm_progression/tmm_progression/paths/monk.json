@@ -12,35 +12,53 @@
     600,
     850,
     1200,
-    1700,
-    2400,
-    3400,
+    1650,
+    2200,
+    2900,
+    3750,
     4800,
-    6600,
-    9000,
-    12000,
-    16000,
-    21000,
-    28000
+    6100,
+    7700,
+    9600,
+    11800,
+    14300
   ],
   "points_per_rank": 1,
   "activities": [
     {
-      "event": "block_break",
+      "event": "barehand_block_break",
       "target": "#minecraft:logs",
+      "xp": 2,
+      "cooldown_ticks": 0
+    },
+    {
+      "event": "barehand_block_break",
+      "target": "#minecraft:mineable/pickaxe",
       "xp": 1,
-      "cooldown_ticks": 5
+      "cooldown_ticks": 0
     },
     {
       "event": "kill",
-      "target": "#tmm_progression:undead",
+      "target": "#tmm_progression:monk_training_hostiles",
+      "xp": 8,
+      "cooldown_ticks": 0
+    },
+    {
+      "event": "unarmed_kill",
+      "target": "#tmm_progression:monk_training_hostiles",
       "xp": 4,
       "cooldown_ticks": 0
     },
     {
       "event": "food_discovered",
       "target": "*",
-      "xp": 8,
+      "xp": 10,
+      "cooldown_ticks": 0
+    },
+    {
+      "event": "advancement",
+      "target": "*",
+      "xp": 25,
       "cooldown_ticks": 0
     },
     {
@@ -64,15 +82,123 @@
       "points": 1
     },
     {
+      "id": "tmm_progression:trial_ten_logs",
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "#minecraft:logs",
+          "count": 10
+        }
+      ],
+      "xp": 35,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_five_stone",
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "minecraft:stone",
+          "count": 5
+        }
+      ],
+      "xp": 50,
+      "points": 0
+    },
+    {
       "id": "tmm_progression:steady_hands",
       "criteria": [
         {
-          "event": "block_break",
+          "event": "barehand_block_break",
           "target": "#minecraft:logs",
           "count": 100
         }
       ],
-      "xp": 50,
+      "xp": 110,
+      "points": 2
+    },
+    {
+      "id": "tmm_progression:trial_ten_unarmed_undead",
+      "criteria": [
+        {
+          "event": "unarmed_kill",
+          "target": "#tmm_progression:undead",
+          "count": 10
+        }
+      ],
+      "xp": 120,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_animal_friendship",
+      "criteria": [
+        {
+          "event": "animal_petted",
+          "target": "*",
+          "count": 20
+        }
+      ],
+      "xp": 80,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_four_iron_blocks",
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "minecraft:iron_block",
+          "count": 4
+        }
+      ],
+      "xp": 100,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_obsidian_hand",
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "minecraft:obsidian",
+          "count": 1
+        }
+      ],
+      "xp": 175,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_creeper_kiss",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:creeper_kissed",
+          "count": 1
+        }
+      ],
+      "xp": 175,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_wither_victory",
+      "criteria": [
+        {
+          "event": "kill",
+          "target": "minecraft:wither",
+          "count": 1
+        }
+      ],
+      "xp": 550,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:blind_ordeal_victory",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:blind_hostile_kill",
+          "count": 5
+        }
+      ],
+      "xp": 270,
       "points": 2
     },
     {
@@ -84,20 +210,56 @@
           "count": 1
         }
       ],
-      "xp": 200,
+      "xp": 500,
       "points": 2
     },
     {
-      "id": "tmm_progression:blind_ordeal_victory",
+      "id": "tmm_progression:training_twenty_hostiles",
       "criteria": [
         {
-          "event": "external",
-          "target": "tmm_progression:blind_hostile_kill",
-          "count": 1
+          "event": "kill",
+          "target": "#tmm_progression:monk_training_hostiles",
+          "count": 20
         }
       ],
       "xp": 100,
-      "points": 2
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:training_ten_advancements",
+      "criteria": [
+        {
+          "event": "advancement",
+          "target": "*",
+          "count": 10
+        }
+      ],
+      "xp": 140,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:training_thirty_advancements",
+      "criteria": [
+        {
+          "event": "advancement",
+          "target": "*",
+          "count": 30
+        }
+      ],
+      "xp": 260,
+      "points": 0
+    },
+    {
+      "id": "tmm_progression:trial_bedrock_sleep",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tmm_progression:bedrock_rest_completed",
+          "count": 1
+        }
+      ],
+      "xp": 230,
+      "points": 0
     }
   ],
   "skills": [
@@ -202,8 +364,8 @@
       "effects": [
         {
           "type": "break_speed",
-          "target": "#minecraft:mineable/pickaxe",
-          "per_rank": 0.8,
+          "target": "*",
+          "per_rank": 2.4,
           "empty_hand": true,
           "unarmored": true
         }
@@ -218,12 +380,26 @@
       "auto_ranks": [
         4,
         9,
-        14
+        13
       ],
       "effects": [
         {
           "type": "harvest_tier",
           "target": "#minecraft:mineable/pickaxe",
+          "tier": 3,
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "harvest_tier",
+          "target": "#minecraft:mineable/axe",
+          "tier": 3,
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "harvest_tier",
+          "target": "#minecraft:mineable/shovel",
           "tier": 3,
           "empty_hand": true,
           "unarmored": true
@@ -243,8 +419,7 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "#minecraft:is_fire",
-          "per_rank": 0.5,
-          "unarmored": true
+          "per_rank": 0.5
         }
       ]
     },
@@ -261,8 +436,7 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "#minecraft:is_explosion",
-          "per_rank": 0.5,
-          "unarmored": true
+          "per_rank": 0.5
         }
       ]
     },
@@ -279,8 +453,7 @@
         {
           "type": "damage_multiplier",
           "damage_tag": "minecraft:fall",
-          "per_rank": 0.8,
-          "unarmored": true
+          "per_rank": 0.8
         }
       ]
     },
@@ -316,8 +489,7 @@
         {
           "type": "animal_friendship",
           "target": "*",
-          "empty_hand": true,
-          "unarmored": true
+          "empty_hand": true
         }
       ]
     },
@@ -363,8 +535,7 @@
       "effects": [
         {
           "type": "catch_arrows",
-          "empty_hand": true,
-          "unarmored": true
+          "empty_hand": true
         }
       ]
     },
@@ -383,8 +554,7 @@
           "params": {
             "range": "16",
             "cooldown_ticks": "40"
-          },
-          "unarmored": true
+          }
         }
       ]
     },
@@ -400,8 +570,7 @@
       ],
       "effects": [
         {
-          "type": "water_breathing",
-          "unarmored": true
+          "type": "water_breathing"
         }
       ]
     },
@@ -416,8 +585,7 @@
       ],
       "effects": [
         {
-          "type": "purification",
-          "unarmored": true
+          "type": "purification"
         }
       ]
     },
@@ -433,8 +601,7 @@
       "effects": [
         {
           "type": "creeper_peace",
-          "empty_hand": true,
-          "unarmored": true
+          "empty_hand": true
         }
       ]
     },
@@ -450,8 +617,7 @@
       "effects": [
         {
           "type": "treasure_hand",
-          "empty_hand": true,
-          "unarmored": true
+          "empty_hand": true
         }
       ]
     },
@@ -467,8 +633,7 @@
       "effects": [
         {
           "type": "glass_touch",
-          "empty_hand": true,
-          "unarmored": true
+          "empty_hand": true
         }
       ]
     },
@@ -483,8 +648,7 @@
       ],
       "effects": [
         {
-          "type": "hunger_discipline",
-          "unarmored": true
+          "type": "hunger_discipline"
         }
       ]
     },
@@ -502,8 +666,7 @@
           "type": "monk_leap",
           "params": {
             "factor": "1.2"
-          },
-          "unarmored": true
+          }
         }
       ]
     },
@@ -522,8 +685,7 @@
           "target": "#tmm_progression:undead",
           "params": {
             "range": "20"
-          },
-          "unarmored": true
+          }
         }
       ]
     },
@@ -590,8 +752,7 @@
       ],
       "effects": [
         {
-          "type": "water_walk",
-          "unarmored": true
+          "type": "water_walk"
         }
       ]
     },
@@ -609,8 +770,7 @@
           "type": "momentum_glide",
           "params": {
             "requires_milestone": "tmm_progression:dragon_defeated"
-          },
-          "unarmored": true
+          }
         }
       ]
     },
@@ -625,8 +785,7 @@
       ],
       "effects": [
         {
-          "type": "blindness_ordeal",
-          "unarmored": true
+          "type": "blindness_ordeal"
         }
       ]
     },
@@ -641,7 +800,23 @@
       ],
       "effects": [
         {
-          "type": "lava_protection",
+          "type": "lava_protection"
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:bedrock_rest",
+      "max_rank": 1,
+      "required_rank": 17,
+      "base_cost": 0,
+      "step_cost": 0,
+      "auto_ranks": [
+        17
+      ],
+      "effects": [
+        {
+          "type": "bedrock_rest",
+          "empty_hand": true,
           "unarmored": true
         }
       ]

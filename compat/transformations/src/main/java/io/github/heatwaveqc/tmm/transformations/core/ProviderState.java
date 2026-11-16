@@ -1,13 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations.core;
 
-/**
- * Logical upstream player conditions, not guessed registry IDs or mod presence.
- * These names do NOT imply that a functioning reader has been installed.
- */
+/** Only currently installed native form providers; standalone Hunter/Monk are disciplines, not species. */
 public enum ProviderState {
-    VAMPIRISM_VAMPIRE,
-    VAMPIRISM_HUNTER,
-    WEREWOLVES_WEREWOLF,
     JAWR_VAMPIRE,
     JAWR_LYCANTHROPE,
     FORBIDDEN_MAGIC_LICH,

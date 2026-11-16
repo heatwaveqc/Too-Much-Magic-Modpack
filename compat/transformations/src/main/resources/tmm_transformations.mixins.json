@@ -4,11 +4,11 @@
   "package": "io.github.heatwaveqc.tmm.transformations.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "JAWRVampireLevelingMixin",
-    "JAWRBloodPoolMixin",
-    "JAWRVampireEventsMixin",
-    "VampirismBloodStatsMixin",
-    "VampirismSunProtectionMixin"
+    "GoetyDracolichAcquisitionMixin",
+    "ForbiddenMagicDracolichAcquisitionMixin",
+    "DragonSurvivalDeathRepeatMixin"
   ],
-  "injectors": {"defaultRequire": 1}
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
