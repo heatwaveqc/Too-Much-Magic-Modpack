@@ -533,6 +533,32 @@
       "packwiz_slug": "controlling"
     },
     {
+      "id": "default-options",
+      "name": "Default Options",
+      "category": "qol",
+      "desired": true,
+      "version": "defaultoptions-neoforge-1.21.1-21.1.8",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/WEg59z5b/version/1zt17WsC",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "default-options",
+      "note": "Balm-backed client defaults. All nonvanilla keys require a fully loaded inventory export before the Default Options keybindings.txt can be safely generated; never overwrite personally chosen controls."
+    },
+    {
+      "id": "keysets",
+      "name": "KeySets",
+      "category": "qol",
+      "desired": true,
+      "version": "keyset-neoforge-1.3.0+mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://github.com/Meneleet-official/keyset/releases/tag/v1.3.0",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "keysets",
+      "note": "Client-only ONE-BUILD targeted trial; explicit KEEP if pass / REMOVE if conflict, persistence failure, crash or GUI regression. No second automatic trial."
+    },
+    {
       "id": "cooking-for-blockheads",
       "name": "Cooking for Blockheads",
       "category": "food",

@@ -31,6 +31,23 @@
     },
     {
       "chapter": "Getting Started",
+      "title": "Choose Your Magic Controls",
+      "description": "Too Much Magic keeps Minecraft's normal movement, combat, and inventory controls. For a fresh player, mod-added keybindings are intended to start unbound so dozens of mods cannot silently fight over shortcuts. Open Options > Controls > Key Binds to assign only the magic and utility actions you want. Controlling helps find bindings and conflicts. Your changes are personal; this quest does not reset anything. KeySets is included for one test build and may be removed if its controls or saved profiles prove unreliable.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "overview": true,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
       "title": "Punch a Tree",
       "description": "Pick up any log or stem to complete this quest, then claim a 27-slot Trinkets Pouch and 10 XP. No hidden advancement or automatic item delivery is used. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
       "criterion": {

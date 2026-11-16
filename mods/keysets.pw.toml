@@ -1,0 +1,8 @@
+name = "KeySets"
+filename = "keyset-neoforge-1.3.0+mc1.21.1.jar"
+side = "client"
+
+[download]
+url = "https://github.com/Meneleet-official/keyset/releases/download/v1.3.0/keyset-neoforge-1.3.0%2Bmc1.21.1.jar"
+hash-format = "sha256"
+hash = "25fbfbc5f03265eb31215adda90430146cbfb2ed8f00d7098fac10a13d94bceb"

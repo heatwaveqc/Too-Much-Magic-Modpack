@@ -27,6 +27,20 @@
 			y: 0.0d
 		}
 		{
+			id: "544D301000110001"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D601000110001", type: "xp", xp: 5 }
+				{ id: "544D701000110001", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544D401000110001", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
 			id: "544D4D1100000001"
 			icon: { id: "ars_elemental:curio_bag" }
 			rewards: [

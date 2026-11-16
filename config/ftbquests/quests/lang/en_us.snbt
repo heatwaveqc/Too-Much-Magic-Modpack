@@ -542,5 +542,7 @@
 	quest.544D305000200001.quest_desc: ["An introduction to ProjectE in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D305000300001.title: "Chapter Overview"
 	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D301000110001.title: "Choose Your Magic Controls"
+	quest.544D301000110001.quest_desc: ["Too Much Magic keeps Minecraft's normal movement, combat, and inventory controls. For a fresh player, mod-added keybindings are intended to start unbound so dozens of mods cannot silently fight over shortcuts. Open Options > Controls > Key Binds to assign only the magic and utility actions you want. Controlling helps find bindings and conflicts. Your changes are personal; this quest does not reset anything. KeySets is included for one test build and may be removed if its controls or saved profiles prove unreliable."]
 	task.544D4D1200000001.title: "Any Log or Stem"
 }

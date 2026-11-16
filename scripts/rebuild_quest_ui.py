@@ -40,6 +40,7 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
 
     intro = {
         "Welcome to Too Much Magic": (0, 0),
+        "Choose Your Magic Controls": (4, 0),
         "Punch a Tree": (0, 3),
         "Make a Crafting Table": (0, 6),
         "Make a Wooden Pickaxe": (0, 9),
@@ -374,8 +375,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 225 or intro_count != 186:
-        raise ValueError(f"Expected 225 objects / 186 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 226 or intro_count != 187:
+        raise ValueError(f"Expected 226 objects / 187 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:
