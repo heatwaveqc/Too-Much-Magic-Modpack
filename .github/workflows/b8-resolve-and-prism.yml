@@ -3,16 +3,19 @@ name: B8 selected QoL compass market resolve and client package
 # Resolve all 13 expected mods, diagnose any extra transitively-added dependency.
 # Oracle Index updated to verified stable 1.4.1, official MC1.21.1 file 9506889.
 on:
-  push:
-    branches: [build/b8-qol-compass-farming-market]
-    paths: ['.github/workflows/b8-resolve-and-prism.yml']
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Explicit owner authorization for manual build or server smoke'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: write
 
 jobs:
   b8-qol-integration:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
