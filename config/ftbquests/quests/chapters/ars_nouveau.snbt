@@ -3,7 +3,7 @@
 	default_quest_shape: "rsquare"
 	filename: "ars_nouveau"
 	group: "544D103000000000"
-	icon: { id: "minecraft:enchanted_book" }
+	icon: { id: "ars_nouveau:novice_spell_book" }
 	id: "544D203000100000"
 	images: [ ]
 	order_index: 0
@@ -12,18 +12,706 @@
 	quests: [
 		{
 			id: "544D303000100001"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "ars_nouveau:novice_spell_book" }
 			optional: true
 			rewards: [
-				{ id: "544D903000100001", type: "xp", xp: 2 }
-				{ id: "544DA03000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D903000100001", type: "xp", xp: 5, team_reward: false }
 			]
-			size: 1.5d
 			tasks: [
 				{ id: "544D403000100001", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 0.0d
+		}
+		{
+			id: "544DB13000010000"
+			icon: { id: "ars_nouveau:novice_spell_book" }
+			dependencies: ["544D303000100001"]
+			rewards: [
+				{ id: "544DB33000010000", type: "xp", xp: 20, team_reward: false }
+				{ id: "544DB43000010000", type: "item", item: { id: "ars_nouveau:source_berry_roll", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000010000", type: "advancement", advancement: "ars_nouveau:novice_spell_book", criterion: "" }
+			]
+			x: 0.0d
+			y: 4.0d
+		}
+		{
+			id: "544DB13000020000"
+			icon: { id: "ars_nouveau:imbuement_chamber" }
+			dependencies: ["544DB13000010000"]
+			rewards: [
+				{ id: "544DB33000020000", type: "xp", xp: 25, team_reward: false }
+				{ id: "544DB43000020000", type: "item", item: { id: "ars_nouveau:source_gem", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000020000", type: "item", item: { id: "ars_nouveau:imbuement_chamber", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 8.0d
+		}
+		{
+			id: "544DB13000030000"
+			icon: { id: "ars_nouveau:scribes_table" }
+			dependencies: ["544DB13000010000"]
+			rewards: [
+				{ id: "544DB33000030000", type: "xp", xp: 25, team_reward: false }
+				{ id: "544DB43000030000", type: "item", item: { id: "minecraft:lapis_lazuli", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000030000", type: "item", item: { id: "ars_nouveau:scribes_table", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -8.0d
+			y: 8.0d
+		}
+		{
+			id: "544DB13000040000"
+			icon: { id: "ars_nouveau:source_jar" }
+			dependencies: ["544DB13000020000"]
+			rewards: [
+				{ id: "544DB33000040000", type: "xp", xp: 20, team_reward: false }
+				{ id: "544DB43000040000", type: "item", item: { id: "minecraft:blue_stained_glass", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000040000", type: "item", item: { id: "ars_nouveau:source_jar", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 8.0d
+		}
+		{
+			id: "544DB13000050000"
+			icon: { id: "ars_nouveau:agronomic_sourcelink" }
+			dependencies: ["544DB13000040000"]
+			rewards: [
+				{ id: "544DB33000050000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB43000050000", type: "item", item: { id: "minecraft:bone_meal", count: 1 }, count: 12, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000050000", type: "item", item: { id: "ars_nouveau:agronomic_sourcelink", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 12.0d
+		}
+		{
+			id: "544DB13000060000"
+			icon: { id: "ars_nouveau:relay" }
+			dependencies: ["544DB13000040000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000060000", type: "xp", xp: 30, team_reward: false }
+				{ id: "544DB43000060000", type: "item", item: { id: "minecraft:lever", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000060000", type: "item", item: { id: "ars_nouveau:relay", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 12.0d
+		}
+		{
+			id: "544DB13000070000"
+			icon: { id: "ars_nouveau:enchanting_apparatus" }
+			dependencies: ["544DB13000020000"]
+			rewards: [
+				{ id: "544DB33000070000", type: "xp", xp: 50, team_reward: false }
+				{ id: "544DB43000070000", type: "item", item: { id: "ars_nouveau:arcane_pedestal", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000070000", type: "item", item: { id: "ars_nouveau:enchanting_apparatus", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 16.0d
+		}
+		{
+			id: "544DB13000080000"
+			icon: { id: "ars_nouveau:magebloom_crop" }
+			dependencies: ["544DB13000070000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000080000", type: "xp", xp: 30, team_reward: false }
+				{ id: "544DB43000080000", type: "item", item: { id: "minecraft:string", count: 1 }, count: 12, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000080000", type: "item", item: { id: "ars_nouveau:magebloom_crop", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -8.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB13000090000"
+			icon: { id: "ars_nouveau:apprentice_spell_book" }
+			dependencies: ["544DB13000070000"]
+			rewards: [
+				{ id: "544DB33000090000", type: "xp", xp: 75, team_reward: false }
+				{ id: "544DB43000090000", type: "item", item: { id: "ars_nouveau:air_essence", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000090000", type: "advancement", advancement: "ars_nouveau:apprentice_spell_book", criterion: "" }
+			]
+			x: 0.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB130000A0000"
+			icon: { id: "ars_nouveau:ritual_brazier" }
+			dependencies: ["544DB13000070000"]
+			rewards: [
+				{ id: "544DB330000A0000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB430000A0000", type: "item", item: { id: "minecraft:soul_lantern", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000A0000", type: "item", item: { id: "ars_nouveau:ritual_brazier", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB130000B0000"
+			icon: { id: "ars_nouveau:ritual_wilden_summon" }
+			dependencies: ["544DB130000A0000"]
+			rewards: [
+				{ id: "544DB330000B0000", type: "xp", xp: 60, team_reward: false }
+				{ id: "544DB430000B0000", type: "item", item: { id: "minecraft:cooked_beef", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000B0000", type: "item", item: { id: "ars_nouveau:ritual_wilden_summon", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 24.0d
+		}
+		{
+			id: "544DB130000C0000"
+			icon: { id: "ars_nouveau:wilden_tribute" }
+			dependencies: ["544DB130000B0000"]
+			rewards: [
+				{ id: "544DB330000C0000", type: "xp", xp: 200, team_reward: false }
+				{ id: "544DB430000C0000", type: "item", item: { id: "ars_nouveau:music_disc_firel_the_wild_hunt", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000C0000", type: "advancement", advancement: "tmm:ars_pilot/chimera", criterion: "" }
+			]
+			x: 0.0d
+			y: 28.0d
+		}
+		{
+			id: "544DB130000D0000"
+			icon: { id: "ars_nouveau:archmage_spell_book" }
+			dependencies: ["544DB130000C0000"]
+			rewards: [
+				{ id: "544DB330000D0000", type: "xp", xp: 250, team_reward: false }
+				{ id: "544DB430000D0000", type: "item", item: { id: "ars_nouveau:thread_spellpower", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000D0000", type: "advancement", advancement: "ars_nouveau:archmage_spell_book", criterion: "" }
+			]
+			x: 0.0d
+			y: 32.0d
+		}
+		{
+			id: "544DB130000E0000"
+			icon: { id: "ars_nouveau:arcanist_robes" }
+			dependencies: ["544DB13000080000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330000E0000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB430000E0000", type: "item", item: { id: "minecraft:purple_dye", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000E0000", type: "item", item: { id: "ars_nouveau:arcanist_robes", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB130000F0000"
+			icon: { id: "ars_nouveau:alteration_table" }
+			dependencies: ["544DB130000E0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330000F0000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB430000F0000", type: "item", item: { id: "ars_nouveau:blank_thread", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230000F0000", type: "item", item: { id: "ars_nouveau:alteration_table", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 24.0d
+		}
+		{
+			id: "544DB13000100000"
+			icon: { id: "ars_nouveau:starbuncle_charm" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000100000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB43000100000", type: "item", item: { id: "ars_nouveau:starbuncle_shades", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000100000", type: "advancement", advancement: "ars_nouveau:starby_charm", criterion: "" }
+			]
+			x: -8.0d
+			y: 24.0d
+		}
+		{
+			id: "544DB13000110000"
+			icon: { id: "ars_nouveau:whirlisprig_charm" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000110000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB43000110000", type: "item", item: { id: "minecraft:flowering_azalea", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000110000", type: "advancement", advancement: "ars_nouveau:whirlisprig_charm", criterion: "" }
+			]
+			x: -24.0d
+			y: 28.0d
+		}
+		{
+			id: "544DB13000120000"
+			icon: { id: "ars_nouveau:drygmy_charm" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000120000", type: "xp", xp: 50, team_reward: false }
+				{ id: "544DB43000120000", type: "item", item: { id: "minecraft:mossy_cobblestone", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000120000", type: "advancement", advancement: "ars_nouveau:drygmy_charm", criterion: "" }
+			]
+			x: -16.0d
+			y: 28.0d
+		}
+		{
+			id: "544DB13000130000"
+			icon: { id: "ars_nouveau:wixie_charm" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000130000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB43000130000", type: "item", item: { id: "minecraft:nether_wart", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000130000", type: "advancement", advancement: "ars_nouveau:wixie_charm", criterion: "" }
+			]
+			x: -8.0d
+			y: 28.0d
+		}
+		{
+			id: "544DB13000140000"
+			icon: { id: "ars_nouveau:ritual_binding" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000140000", type: "xp", xp: 75, team_reward: false }
+				{ id: "544DB43000140000", type: "item", item: { id: "ars_nouveau:source_berry_pie", count: 1 }, count: 3, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000140000", type: "advancement", advancement: "ars_nouveau:familiar", criterion: "" }
+			]
+			x: -8.0d
+			y: 36.0d
+		}
+		{
+			id: "544DB13000150000"
+			icon: { id: "ars_nouveau:basic_spell_turret" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000150000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB43000150000", type: "item", item: { id: "minecraft:daylight_detector", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000150000", type: "advancement", advancement: "ars_nouveau:basic_spell_turret", criterion: "" }
+			]
+			x: 16.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB13000160000"
+			icon: { id: "ars_nouveau:storage_lectern" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000160000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB43000160000", type: "item", item: { id: "ars_nouveau:archwood_sign", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000160000", type: "item", item: { id: "ars_nouveau:storage_lectern", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 24.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB13000170000"
+			icon: { id: "ars_nouveau:repository" }
+			dependencies: ["544DB13000160000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000170000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB43000170000", type: "item", item: { id: "minecraft:name_tag", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000170000", type: "item", item: { id: "ars_nouveau:repository", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 24.0d
+			y: 24.0d
+		}
+		{
+			id: "544DB13000180000"
+			icon: { id: "ars_nouveau:warp_scroll" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000180000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB43000180000", type: "item", item: { id: "minecraft:glow_item_frame", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000180000", type: "advancement", advancement: "ars_nouveau:warp_scroll", criterion: "" }
+			]
+			x: 16.0d
+			y: 28.0d
+		}
+		{
+			id: "544DB13000190000"
+			icon: { id: "ars_nouveau:ritual_flight" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000190000", type: "xp", xp: 70, team_reward: false }
+				{ id: "544DB43000190000", type: "item", item: { id: "minecraft:hay_block", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000190000", type: "item", item: { id: "ars_nouveau:ritual_flight", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 32.0d
+		}
+		{
+			id: "544DB130001A0000"
+			icon: { id: "ars_nouveau:enchanters_mirror" }
+			optional: true
+			rewards: [
+				{ id: "544DB330001A0000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB430001A0000", type: "item", item: { id: "minecraft:feather", count: 1 }, count: 12, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001A0000", type: "item", item: { id: "ars_nouveau:enchanters_mirror", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 24.0d
+			y: 32.0d
+		}
+		{
+			id: "544DB130001B0000"
+			icon: { id: "ars_nouveau:potion_flask" }
+			optional: true
+			rewards: [
+				{ id: "544DB330001B0000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB430001B0000", type: "item", item: { id: "minecraft:glistering_melon_slice", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001B0000", type: "advancement", advancement: "ars_nouveau:potion_flask", criterion: "" }
+			]
+			x: 24.0d
+			y: 36.0d
+		}
+		{
+			id: "544DB130001C0000"
+			icon: { id: "ars_nouveau:amethyst_golem_charm" }
+			optional: true
+			rewards: [
+				{ id: "544DB330001C0000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB430001C0000", type: "item", item: { id: "minecraft:calcite", count: 1 }, count: 16, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001C0000", type: "advancement", advancement: "ars_nouveau:amethyst_golem_charm", criterion: "" }
+			]
+			x: -24.0d
+			y: 36.0d
+		}
+		{
+			id: "544DB130001D0000"
+			icon: { id: "ars_additions:advanced_dominion_wand" }
+			optional: true
+			rewards: [
+				{ id: "544DB330001D0000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB430001D0000", type: "item", item: { id: "minecraft:glow_ink_sac", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001D0000", type: "item", item: { id: "ars_additions:advanced_dominion_wand", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 44.0d
+		}
+		{
+			id: "544DB130001E0000"
+			icon: { id: "ars_additions:warp_index" }
+			dependencies: ["544DB130001D0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330001E0000", type: "xp", xp: 60, team_reward: false }
+				{ id: "544DB430001E0000", type: "item", item: { id: "ars_nouveau:archwood_hanging_sign", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001E0000", type: "item", item: { id: "ars_additions:warp_index", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 48.0d
+		}
+		{
+			id: "544DB130001F0000"
+			icon: { id: "ars_additions:ender_source_jar" }
+			dependencies: ["544DB130001E0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330001F0000", type: "xp", xp: 75, team_reward: false }
+				{ id: "544DB430001F0000", type: "item", item: { id: "minecraft:ender_eye", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230001F0000", type: "item", item: { id: "ars_additions:ender_source_jar", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 52.0d
+		}
+		{
+			id: "544DB13000200000"
+			icon: { id: "ars_controle:remote" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000200000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB43000200000", type: "item", item: { id: "minecraft:redstone_torch", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000200000", type: "item", item: { id: "ars_controle:remote", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 44.0d
+		}
+		{
+			id: "544DB13000210000"
+			icon: { id: "ars_controle:temporal_stability_sensor" }
+			dependencies: ["544DB13000200000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000210000", type: "xp", xp: 50, team_reward: false }
+				{ id: "544DB43000210000", type: "item", item: { id: "minecraft:repeater", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000210000", type: "item", item: { id: "ars_controle:temporal_stability_sensor", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 48.0d
+		}
+		{
+			id: "544DB13000220000"
+			icon: { id: "ars_controle:portable_brazier_relay" }
+			dependencies: ["544DB13000200000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000220000", type: "xp", xp: 65, team_reward: false }
+				{ id: "544DB43000220000", type: "item", item: { id: "minecraft:firework_rocket", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000220000", type: "item", item: { id: "ars_controle:portable_brazier_relay", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 52.0d
+		}
+		{
+			id: "544DB13000230000"
+			icon: { id: "ars_elemental:lesser_fire_focus" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000230000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB43000230000", type: "item", item: { id: "minecraft:magma_cream", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000230000", type: "item", item: { id: "ars_elemental:lesser_fire_focus", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 44.0d
+		}
+		{
+			id: "544DB13000240000"
+			icon: { id: "ars_elemental:everfull_urn" }
+			dependencies: ["544DB13000230000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000240000", type: "xp", xp: 55, team_reward: false }
+				{ id: "544DB43000240000", type: "item", item: { id: "minecraft:cauldron", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000240000", type: "item", item: { id: "ars_elemental:everfull_urn", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 48.0d
+		}
+		{
+			id: "544DB13000250000"
+			icon: { id: "ars_elemental:fire_hat" }
+			dependencies: ["544DB13000230000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000250000", type: "xp", xp: 60, team_reward: false }
+				{ id: "544DB43000250000", type: "item", item: { id: "minecraft:orange_dye", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000250000", type: "item", item: { id: "ars_elemental:fire_hat", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 52.0d
+		}
+		{
+			id: "544DB13000260000"
+			icon: { id: "ars_elemancy:cinder_essence" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000260000", type: "xp", xp: 60, team_reward: false }
+				{ id: "544DB43000260000", type: "item", item: { id: "ars_nouveau:manipulation_essence", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000260000", type: "item", item: { id: "ars_elemancy:cinder_essence", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 60.0d
+		}
+		{
+			id: "544DB13000270000"
+			icon: { id: "ars_elemancy:cinder_hat" }
+			dependencies: ["544DB13000260000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000270000", type: "xp", xp: 100, team_reward: false }
+				{ id: "544DB43000270000", type: "item", item: { id: "minecraft:fire_charge", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000270000", type: "item", item: { id: "ars_elemancy:cinder_hat", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: -16.0d
+			y: 64.0d
+		}
+		{
+			id: "544DB13000280000"
+			icon: { id: "occultism:spirit_attuned_gem" }
+			optional: true
+			rewards: [
+				{ id: "544DB33000280000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB43000280000", type: "item", item: { id: "minecraft:purple_candle", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000280000", type: "item", item: { id: "occultism:spirit_attuned_gem", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 60.0d
+		}
+		{
+			id: "544DB13000290000"
+			icon: { id: "ars_nouveau:mob_jar" }
+			dependencies: ["544DB13000280000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000290000", type: "xp", xp: 55, team_reward: false }
+				{ id: "544DB43000290000", type: "item", item: { id: "minecraft:hopper", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000290000", type: "item", item: { id: "ars_nouveau:mob_jar", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 64.0d
+		}
+		{
+			id: "544DB130002A0000"
+			icon: { id: "ars_ocultas:altar" }
+			dependencies: ["544DB13000290000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330002A0000", type: "xp", xp: 80, team_reward: false }
+				{ id: "544DB430002A0000", type: "item", item: { id: "minecraft:crying_obsidian", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002A0000", type: "item", item: { id: "ars_ocultas:altar", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 0.0d
+			y: 68.0d
+		}
+		{
+			id: "544DB130002B0000"
+			icon: { id: "ars_n_spells:spell_loom" }
+			optional: true
+			rewards: [
+				{ id: "544DB330002B0000", type: "xp", xp: 45, team_reward: false }
+				{ id: "544DB430002B0000", type: "item", item: { id: "ars_n_spells:blank_scroll", count: 1 }, count: 3, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002B0000", type: "advancement", advancement: "ars_n_spells:craft_spell_loom", criterion: "" }
+			]
+			x: 16.0d
+			y: 60.0d
+		}
+		{
+			id: "544DB130002C0000"
+			icon: { id: "ars_n_spells:blank_scroll" }
+			dependencies: ["544DB130002B0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330002C0000", type: "xp", xp: 60, team_reward: false }
+				{ id: "544DB430002C0000", type: "item", item: { id: "irons_spellbooks:arcane_essence", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002C0000", type: "advancement", advancement: "ars_n_spells:transcribe_spell", criterion: "" }
+			]
+			x: 16.0d
+			y: 64.0d
+		}
+		{
+			id: "544DB130002D0000"
+			icon: { id: "ars_nouveau:spell_parchment" }
+			dependencies: ["544DB130002C0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330002D0000", type: "xp", xp: 75, team_reward: false }
+				{ id: "544DB430002D0000", type: "item", item: { id: "ars_nouveau:source_berry_roll", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002D0000", type: "advancement", advancement: "ars_n_spells:bind_spell", criterion: "" }
+			]
+			x: 16.0d
+			y: 68.0d
+		}
+		{
+			id: "544DB130002E0000"
+			icon: { id: "ars_nouveau:archmage_spell_book" }
+			dependencies: ["544DB130002D0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB330002E0000", type: "xp", xp: 125, team_reward: false }
+				{ id: "544DB430002E0000", type: "item", item: { id: "minecraft:enchanted_golden_apple", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002E0000", type: "advancement", advancement: "ars_n_spells:first_cross_cast", criterion: "" }
+			]
+			x: 16.0d
+			y: 72.0d
+		}
+		{
+			id: "544DB130002F0000"
+			icon: { id: "farmersdelight:pumpkin_slice" }
+			optional: true
+			rewards: [
+				{ id: "544DB330002F0000", type: "xp", xp: 35, team_reward: false }
+				{ id: "544DB430002F0000", type: "item", item: { id: "farmersdelight:pumpkin_soup", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB230002F0000", type: "item", item: { id: "farmersdelight:pumpkin_slice", count: 1 }, count: 4L, consume_items: false }
+			]
+			x: -16.0d
+			y: 72.0d
+		}
+		{
+			id: "544DB13000300000"
+			icon: { id: "farmersdelight:cabbage_leaf" }
+			dependencies: ["544DB130002F0000"]
+			optional: true
+			rewards: [
+				{ id: "544DB33000300000", type: "xp", xp: 40, team_reward: false }
+				{ id: "544DB43000300000", type: "item", item: { id: "farmersdelight:cabbage_rolls", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544DB23000300000", type: "item", item: { id: "farmersdelight:cabbage_leaf", count: 1 }, count: 8L, consume_items: false }
+			]
+			x: -16.0d
+			y: 76.0d
 		}
 	]
 }
