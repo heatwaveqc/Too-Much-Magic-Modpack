@@ -1,16 +1,18 @@
 name: B4 reactor fork and experimental magic validation
 on:
-  push:
-    branches: [build/b4-reactors-experimental]
-    paths:
-      - '.github/workflows/b4-staged.yml'
   workflow_dispatch:
-
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full NeoForge smoke/build only'
+        required: true
+        type: boolean
+        default: false
 permissions:
   contents: write
 
 jobs:
   stage-pin-smoke-commit:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
