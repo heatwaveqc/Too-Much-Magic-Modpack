@@ -41,22 +41,22 @@
 | Soul exposure, spirits and mob-drop mapping | version-scoped guide; source implementation not inspected | partial | guide entries and spirit tooltips need mapping | not run | enumerate spirit families, per-mob drops, conditions, config and spawn exceptions |
 | Spirit Altar / Spirit Infusion | 1.8.2 guide describes input/spirit/pedestal operation; recorded source ref unavailable | partial | Spirit Infusion category / encyclopedia recipe entry; exact named page unknown | not run | inspect 1.8.2 recipes and altar implementation, costs and valid ranges |
 | Runeworking and rune materials | secondary version comparison: 24 recipes on 1.21.1 | partial | JEI Runeworking; guide path unverified | not run | exact inputs, station and guide sections needed |
-| Spirit Crucible / Spirit Focusing | source has Spirit Focusing recipe builder and Crucible internals; secondary guide describes impetus, spirit input and output | partial | JEI Spirit Focusing / Encyclopedia Arcana | not run | inspect recipes, augment slots, wear formula, speed and automation interface |
+| Spirit Crucible / Spirit Focusing | 1.8.2 secondary guide describes impetus, spirit input and output; source ref unavailable | partial | JEI Spirit Focusing / Encyclopedia Arcana | not run | inspect recipes, augment slots, wear formula, speed and automation interface from pin |
 | Spirit Repair / Repair Pylon | 1.8.2 guide and prior source notes; source ref unavailable | partial | JEI Spirit Repair; page unknown | not run | confirm pinned recipe set, pylon placement/storage, repair amount and costs |
 | Totemancy / Rites / Soulwood / Blight | secondary 1.8.2 guide, not yet corroborated against implementation | partial | encyclopedia rite pages; exact sequence map absent | not run | source-map every rite, pole order, radius, duration, block/entity effects and spread/cleanup |
 | Soul Binding / Geas / Curios | 1.21.1 secondary page inventories 36 Soul Binding recipes, not exhaustively inspected | partial | JEI Soul Binding and guide entries unknown | not run | inspect branches, costs, Curio requirements, permanence/removal and effects |
 | Void / Weeping Well / Umbral | generated guide includes The Weeping Well entry; external guide identifies structure and transformation claims | partial | Encyclopedia Arcana → The Weeping Well / Void; exact unlock order unknown | not run | verify generation, transmutation, rejection costs and Umbral source |
 | Worldgen and combat additions | 1.8.2 release/guide descriptions; 1.9 source snapshot is not treated as pin evidence | partial | unknown | not run | inventory 1.8.2 mobs, equipment, structures, hostile effects and loot |
-| KubeJS/config/API and pack integration | source build metadata lists KubeJS integration versions; not proof of all hooks | unresearched | n/a | not run | inspect recipe serializers/config defaults and live pack overrides |
+| KubeJS/config/API and pack integration | matching source unavailable; 1.9 source metadata does not establish 1.8.2 hooks | unresearched | n/a | not run | inspect recipe serializers/config defaults and live pack overrides |
 
 ## Guidebook onboarding
 
 - **Guide name and access:** Encyclopedia Arcana according to the version-scoped external guide. It reports a recipe from a Book plus one Processed Soulstone and says the first undead kill can drop one. Recipe and drop are not confirmed against the pinned JAR; do not encode the drop route or task predicate as final.
 - **Earliest attainable stage:** after mining and smelting Soulstone, or potentially the first undead kill (unverified).
 - **First instructional quest:** “Read the Encyclopedia Arcana.” Teach the confirmed acquisition route, have the player open the book, and direct them to its opening/material entries before introducing the scythe. Task should detect book acquisition only as a proxy for reading.
-- **Reference map:** source-generated language includes sections/entries for Chronicles of the Void and The Weeping Well; a complete category/page map is still needed. Use JEI categories Spirit Infusion, Runeworking, Soul Binding, Spirit Focusing, and Spirit Repair only after verifying those labels in the exact client.
+- **Reference map:** The previously recorded source-generated language inventory was tied to a commit that now returns 404; treat the named Chronicles of the Void and The Weeping Well entries as provisional until recovered from a matched JAR/source. The 1.8.2 guide and exact client should establish the page map. Use JEI categories Spirit Infusion, Runeworking, Soul Binding, Spirit Focusing, and Spirit Repair only after verifying them in the exact client.
 - **Where the guide is insufficient:** exact acquisition, first-spirit collection teaching, altar/pedestal placement, totem construction, worldgen routes and operation failure signals have not been compared against the pinned book text.
-- **Other in-game help:** source registers recipe categories; exact categories, recipe counts and display semantics need exact release confirmation.
+- **Other in-game help:** Prior profile notes named recipe categories based on the unavailable source ref; exact category names, registrations and display semantics require exact release confirmation.
 
 ## Systems and full mechanics inventory
 
@@ -70,11 +70,11 @@
 | Runeworking | use Runic Workbench | rune-work recipe inputs and spirits (exact contracts unresearched) | runes | version comparison lists 24 recipes for 1.21.1; exact setup/recipe mechanics unresearched |
 | Soul Binding | guide/JEI branch; station and recipe not yet confirmed | offerings and spirit inputs, exact recipe costs unresearched | Geas/pact or other binding output, exact mappings unresearched | 1.21.1 secondary data counts 36 recipes; permanence, cancellation and slot restrictions unknown |
 | Spirit Crucible / focusing | build Spirit Crucible; supply an Alchemical Impetus and spirit recipe input | recipe-specific spirit; Impetus wear; possibly augment materials | recipe-defined focused materials or nodes | guide describes four augment slots and Spirit Catalyzers; output quantities and wear per recipe need exact data/code |
-| Spirit Repair / Pylon | craft/place Repair Pylon and submit valid equipment | target equipment, recipe spirits, and matching material | durability repair | aligned source recipe data confirms material/Spirit requirements for several tool tiers; pylon reach, slot, repair amount and enchantment behavior need source inspection |
+| Spirit Repair / Pylon | 1.8.2 guide describes a repair branch; source ref unavailable | equipment + reported recipe spirits/materials | durability repair | exact recipe, operation and repair amount unverified | recover matched source or inspect pinned JAR; no pack test |
 | Totemancy | craft Runewood Totem Base, carve spirit poles into log sides, stack in ordered sequence, activate base | base + Runewood logs + one spirit per carved pole; recipe-specific requirements | ongoing rite effects on player, mobs or blocks | guide warns five-Arcane Undirected Rite corrupts the totem and blights ground; radius, duration, reversibility and safety boundaries unverified |
 | Soulwood / Blight | trigger Undirected Rite; grow Runewood on blighted ground near Unchained Rite per guide | Totem base, poles, blight and sapling | Soulwood Totem/tree/logs and altered rite set | spreading soil is a world mutation; containment and removal require source/client validation |
 | Weeping Well / Void | find generated structure; throw recipe input into well | item entity/world interaction; eligibility and item cost unverified | transmuted item; first-player-contact Umbral Spirit alleged by guide | structure frequency/location, item timing, multi-item handling, failed-attempt loss, mob/pet behavior and repeatability unverified |
-| Combat gear / Curios / rites | altar/infusion/soul-binding/loot | spirit-made materials and recipe inputs | Soulstained Steel weapons/armor, Soulhunter clothing, Curios, effects | gear stats/effects not benchmarked; source recipes and requirements need a complete sweep |
+| Combat gear / Curios / rites | 1.8.2 guide / secondary recipe descriptions; exact data not confirmed | spirit-made materials and reported recipe inputs | Soulstained Steel weapons/armor, Soulhunter clothing, Curios, effects | gear stats/effects not benchmarked; source recipes and requirements need matched release evidence |
 
 ## Material / capability input-output contracts
 
@@ -84,7 +84,7 @@
 | Spirit Infusion | item stack on altar, spirit stacks, extra item stacks on pedestals | recipe-defined counts; failed-attempt costs unknown | recipe result item at altar | altar cycle/range/timing remain unverified for pin | prior source ref unavailable; recipe datagen and altar operation need matched 1.8.2 source or JAR review |
 | Totem rites | placed block state + ordered carved totem poles | guide says one matching spirit per pole during carving; sustained resource cost unknown | effect, block operation or world state | activation/ticking; range/duration unknown | not established; inspect exact implementation |
 | Spirit Crucible | spirit item plus valid focusing recipe and installed Impetus | spirit cost per recipe; Impetus durability cost unquantified | focusing recipe output | machine tick; operation timing unknown | item insertion/automation untested; source class mentions spirit inventory, recipe and queued cracks |
-| Repair Pylon | equipment + matching material + spirit stacks | source builder includes a 0.5f repair field and material/spirit costs; meaning of 0.5f needs code | durability restored | operation trigger/cadence unknown | no pack test; do not interpret 0.5f as an amount/percent without implementation |
+| Repair Pylon | equipment + guide-reported matching material + spirit stacks | recipe quantities and consumption unverified | durability restored | operation trigger/cadence unknown | source builder field cannot be verified while the recorded source SHA is unavailable; do not interpret an earlier 0.5f note as an amount or percent |
 | Weeping Well | dropped item entity | exact count, eligibility and consumption timing unknown | transformed item, reportedly emerges from well | throw/item-in-well contact | entity event/world interaction; automation and failure cost unknown |
 | FE, fluids, Source, XP, blood | not established as a core Malum economy | not established | not established | not established | do not infer a conversion from spirit imagery |
 
@@ -98,7 +98,7 @@
 
 ## Complete player progression / walkthrough blueprint
 
-This is a source-informed draft, not yet a quest-authoring handoff. Rows marked partial are blockers to a source-complete profile.
+This is a secondary-guide-informed draft, not yet a quest-authoring handoff; the 1.8.2 source snapshot recorded in earlier notes is currently unavailable.
 
 | Path and step | Gate or choice? | Exact prerequisite / materials / world condition | Player actions: obtain, build, activate, use | Unlock / visible success / next step | In-game guide section or JEI reference | Proposed quest/how-to, detection and reward | Evidence / coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -136,9 +136,9 @@ The Soulwood/Blight route is a potentially irreversible world-editing branch; ke
 ## Configuration, APIs and current pack behavior
 
 - Pack pin exists at mods/malum.pw.toml; no Malum-specific config override or KubeJS integration file was inspected in this pass.
-- Version-aligned source build metadata names Lodestone 1.8.2.523, Curios 9.3.1+1.21.1, Wayward Attributes 1.1.30, JEI 19.25.0.322, and optional integration dependencies for Iron's Spells, KubeJS and Create. This is not a complete runtime dependency declaration; reconcile hard dependencies against packwiz and the generated mod list before claiming integration.
+- Earlier notes attributed Lodestone/Curios/Wayward Attributes/JEI versions and optional Iron's Spells, KubeJS and Create hooks to the now-unavailable source ref. The reachable 1.9.0 source is not evidence for 1.8.2; use the packwiz metadata and exact artifact before asserting dependency or integration behavior.
 - The profile does not establish that Create is installed or imply permission to add it.
-- Malum recipe categories and language data are generated in source. Exact KubeJS recipe serializers, data-pack extension points, config defaults, spirit-drop JSON, and effects of installed addons remain unresearched.
+- Exact 1.8.2 recipe categories, language data, KubeJS serializers, data-pack extension points, config defaults, spirit-drop JSON and installed-addon effects remain unresearched.
 - Do not characterize a proposed TMM recipe or quest as existing behavior.
 
 ## Progression-to-quest coverage matrix
@@ -167,7 +167,7 @@ The upstream project has an **open report** for Malum 1.8.2 / Minecraft 1.21.1: 
 ## Open questions and next actions
 
 1. Compare actual pinned JAR bytes against the lock hash and inspect metadata, recipes, loot tables, worldgen, configs, advancements, guidebook pages and item IDs.
-2. Reconcile source-generated recipes and guide text against release 1.8.2. Version-aligned source plus third-party guide does not prove source/JAR equality.
+2. Recover a valid immutable 1.8.2 source ref or inspect the hash-matched JAR; compare guide text, recipe data and registrations against it.
 3. Recover a valid immutable 1.8.2 source snapshot or inspect the hash-matched JAR, then map soul exposure/drop logic, Spirit Altar operation order and failure costs, Crucible wear/output, Repair Pylon, totem behavior, Soul Binding and Weeping Well item/entity interaction.
 4. Complete recipe and guide-entry inventory, including alternative materials, spirit families, pacts/geas, repair/focus and late Void branches.
 5. Confirm hard/optional dependencies against packwiz; inspect config defaults, live overrides, addons and cross-mod recipes.
