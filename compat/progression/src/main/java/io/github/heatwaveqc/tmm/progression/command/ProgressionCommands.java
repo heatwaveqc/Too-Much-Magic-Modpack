@@ -1,6 +1,8 @@
 package io.github.heatwaveqc.tmm.progression.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
+import net.minecraft.commands.arguments.ResourceLocationArgument;
 import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tmm.progression.runtime.ClassAbilities;
@@ -26,20 +28,20 @@ public final class ProgressionCommands {
                     return 1;
                 }))
             .then(Commands.literal("enroll")
-                .then(Commands.argument("path",StringArgumentType.word())
+                .then(Commands.argument("path",ResourceLocationArgument.id())
                     .executes(ctx -> {
                         ServerPlayer player = ctx.getSource().getPlayerOrException();
-                        String id = StringArgumentType.getString(ctx,"path");
+                        String id = ResourceLocationArgument.getId(ctx,"path").toString();
                         boolean ok = Enrollment.enrollManual(player,id);
                         ctx.getSource().sendSuccess(() -> Component.literal(
                             ok ? "Joined " + id : "Enrollment unavailable or requirements unmet"),false);
                         return ok ? 1 : 0;
                     })))
             .then(Commands.literal("status")
-                .then(Commands.argument("path",StringArgumentType.word())
+                .then(Commands.argument("path",ResourceLocationArgument.id())
                     .executes(ctx -> {
                         ServerPlayer player = ctx.getSource().getPlayerOrException();
-                        String path = StringArgumentType.getString(ctx,"path");
+                        String path = ResourceLocationArgument.getId(ctx,"path").toString();
                         Track t = ProgressionApi.track(player,path);
                         ctx.getSource().sendSuccess(() -> Component.literal(
                             path + ": joined=" + t.joined() + ", XP=" + t.xp() +
@@ -48,13 +50,13 @@ public final class ProgressionCommands {
                         return 1;
                     })))
             .then(Commands.literal("buy")
-                .then(Commands.argument("path",StringArgumentType.word())
-                    .then(Commands.argument("skill",StringArgumentType.word())
+                .then(Commands.argument("path",ResourceLocationArgument.id())
+                    .then(Commands.argument("skill",ResourceLocationArgument.id())
                         .executes(ctx -> {
                             ServerPlayer player = ctx.getSource().getPlayerOrException();
                             boolean success = ProgressionApi.buy(player,
-                                StringArgumentType.getString(ctx,"path"),
-                                StringArgumentType.getString(ctx,"skill"));
+                                ResourceLocationArgument.getId(ctx,"path").toString(),
+                                ResourceLocationArgument.getId(ctx,"skill").toString());
                             ctx.getSource().sendSuccess(() -> Component.literal(
                                 success ? "Skill rank purchased" : "Skill purchase blocked"),false);
                             return success ? 1 : 0;
@@ -87,10 +89,10 @@ public final class ProgressionCommands {
                         return ok ? 1 : 0;
                     })))
             .then(Commands.literal("respec")
-                .then(Commands.argument("path",StringArgumentType.word())
+                .then(Commands.argument("path",ResourceLocationArgument.id())
                     .executes(ctx -> {
                         ServerPlayer player = ctx.getSource().getPlayerOrException();
-                        boolean success = ProgressionApi.respec(player,StringArgumentType.getString(ctx,"path"));
+                        boolean success = ProgressionApi.respec(player,ResourceLocationArgument.getId(ctx,"path").toString());
                         ctx.getSource().sendSuccess(() -> Component.literal(
                             success ? "Purchased skills refunded; free milestones retained" :
                                       "Respec unavailable"),false);
@@ -143,19 +145,32 @@ public final class ProgressionCommands {
                     })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
                 .then(Commands.literal("join")
-                    .then(Commands.argument("path",StringArgumentType.word())
+                    .then(Commands.argument("path",ResourceLocationArgument.id())
                         .executes(ctx -> {
                             boolean ok = ProgressionApi.join(ctx.getSource().getPlayerOrException(),
-                                StringArgumentType.getString(ctx,"path"));
+                                ResourceLocationArgument.getId(ctx,"path").toString());
                             ctx.getSource().sendSuccess(() -> Component.literal(
                                 ok ? "Joined progression path" : "Path missing or exclusive"),false);
                             return ok ? 1 : 0;
                         })))
+                .then(Commands.literal("xp")
+                    .then(Commands.argument("path",ResourceLocationArgument.id())
+                        .then(Commands.argument("amount",LongArgumentType.longArg(1L,1_000_000L))
+                            .executes(ctx -> {
+                                ServerPlayer player = ctx.getSource().getPlayerOrException();
+                                String path = ResourceLocationArgument.getId(ctx,"path").toString();
+                                long amount = LongArgumentType.getLong(ctx,"amount");
+                                boolean ok = ProgressionApi.awardServerXp(player,path,amount);
+                                ctx.getSource().sendSuccess(() -> Component.literal(ok ?
+                                    "Granted " + amount + " progression XP to " + path :
+                                    "XP grant blocked: join that path first, or invalid context"),false);
+                                return ok ? 1 : 0;
+                            }))))
                 .then(Commands.literal("event")
-                    .then(Commands.argument("event_id",StringArgumentType.word())
+                    .then(Commands.argument("event_id",ResourceLocationArgument.id())
                         .executes(ctx -> {
                             ProgressionApi.recordExternal(ctx.getSource().getPlayerOrException(),
-                                StringArgumentType.getString(ctx,"event_id"));
+                                ResourceLocationArgument.getId(ctx,"event_id").toString());
                             ctx.getSource().sendSuccess(() -> Component.literal("Event recorded"),false);
                             return 1;
                         })))));
