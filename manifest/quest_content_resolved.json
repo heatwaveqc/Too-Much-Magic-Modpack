@@ -23,6 +23,24 @@
     },
     {
       "chapter": "Getting Started",
+      "title": "Choose Your Magic Controls",
+      "quest_id": "544D301000110001",
+      "task_id": "544D401000110001",
+      "xp_reward_id": "544D601000110001",
+      "item_reward_id": "544D701000110001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Getting Started",
       "title": "Punch a Tree",
       "quest_id": "544D4D1100000001",
       "task_id": "544D4D1200000001",

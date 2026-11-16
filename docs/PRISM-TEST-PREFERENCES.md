@@ -43,3 +43,7 @@ Public packwiz will continue distributing approved mod configs only. Public user
 ## Verification
 
 `tests/test_tmm_qa_preferences.ps1` checks import, automatic apply, post-exit save, mod keybind retention, preserving current resource/graphics settings, excluding former server names, and rejecting other Minecraft versions. GitHub's **Personal QA Prism Preferences (Windows)** workflow runs those tests. The comprehensive build separately verifies the bundled ZIP assets and the pinned packwiz source; neither automated check proves that Prism's GUI performed pre/post hooks on the tester's machine yet.
+
+## Default Options and temporary KeySets trial (2026-11-16)
+
+A one-time **fresh-player** test of Default Options' all-modded-unbound defaults must use a newly empty temporary local QA profile via `TMM_QA_PROFILE_DIR`. Our existing QA importer deliberately preserves previously chosen `key_*` mappings and therefore masks the untouched-player baseline. NEVER delete the normal user's profile or reset established bindings. The authoritative trial plan, export-based generator, and single-run KeySets KEEP/REMOVE gate are in [the targeted client QA guide](qa/DEFAULT-OPTIONS-KEYSETS-ONE-BUILD-2026-11-16.md).

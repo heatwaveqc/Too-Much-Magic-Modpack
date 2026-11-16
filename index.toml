@@ -110,7 +110,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "7d4202eb2eb7207c6bfe0ea7c939cbd85c7d48433d510a3e1e2429e706b5b99b"
+hash = "521c6a88f2e7ee697733dce09b3d67602e15bef603030a945461fce7a1b252a8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -194,7 +194,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "dd3438fdf76adbe86370f0403f3056b39e9da5d5cf2640e5797702f4b902b171"
+hash = "b214dd241915a1e4dd474c542f4af8397ed0931eccb03092588698b4bb48e4b3"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -1246,3 +1246,13 @@ metafile = true
 [[files]]
 file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
+
+[[files]]
+file = "mods/default-options.pw.toml"
+hash = "a6967d761dde867ccc1af53dc9f4e530eb9917a9cb21d0fc15708e8cd2c0f2ba"
+metafile = true
+
+[[files]]
+file = "mods/keysets.pw.toml"
+hash = "47c24d04888f7e7242cfc9b281e359a0251f6674c7b6026d3a35eb5df959fda7"
+metafile = true
