@@ -176,3 +176,8 @@ Installed/source snapshot `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`; [full evid
 - **Future assembly readiness:** `feature/traders-vengence` was unclassified at remote-head audit. Classify intentionally; do not silently import it or trigger a full smoke. Thirteen documented runtime deferrals remain deferred.
 
 Both first-party modules compile and 66 unit tests pass, but this does not override these runtime/command blockers. Report-only handoff; no fixes, smoke or gameplay promotion performed.
+
+
+### Player-confirmed follow-up — 2026-11-16
+
+See [exact-build player report](qa/PLAYER-FOLLOWUP-2026-11-16.md). **Keep these TreeChop failures separate:** (1) chopping progress bar disappears after the first break, unlike previous builds; (2) no Monk XP on completed felling. This is not merely delayed XP during partial chopping. Quest screenshot confirms ampersand-formatting errors in navigation and an Unnamed chapter; static quest checks missed renderer behavior. Bag/quest, trinket rewards, empty Tome and deferred Ars integration remain open. Bio-Mutagen does not appear in JEI; commanded catalyst proves brewing/progress works without temporary Speed, while crafting stays broken. Brew graphics request: preserve base potion color and add green mutagen markings. Graphical progression UI is NOT BUILT; ability keys do not imply a UI key. Exact observations and untested boundaries are in the report.
