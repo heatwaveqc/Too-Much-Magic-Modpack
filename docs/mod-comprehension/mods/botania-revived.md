@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `botania-revived` / `botania` |
-| Category / parent or addons | Nature/mana magic; unofficial NeoForge port; TMM also pins Extra Botany Revived |
+| Category / parent or addons | Nature/mana magic; unofficial NeoForge port; TMM also pins [Extra Botany Revived](extra-botany-revived.md) |
 | MC / loader / pack target | 1.21.1 / NeoForge / B8 full-integration snapshot |
 | Pinned version / artifact / hash | `Botania-Revived-1.21.1-2.0.2-NeoForge.jar`; CurseForge project 1725641, file 9577651; SHA-1 `b333e5ac4fd55b0e8822238ced0b25b193db9628` matches `mods/botania-revived.pw.toml` (`[jar: SHA1]`) |
 | Source snapshot | Official port tag `curseforge-neoforge-1.21.1-2.0.2`, commit [`5f803227d484598da1f1093a91d5d7cf5cf9600d`](https://github.com/Velron-Devs/Botania-Revived/tree/5f803227d484598da1f1093a91d5d7cf5cf9600d); exact source version and direct artifact data inspected |

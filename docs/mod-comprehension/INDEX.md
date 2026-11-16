@@ -147,7 +147,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | researching | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | blocked | [profile](mods/ars-ocultas.md) |
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
-| `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | queued | — |
+| `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | queued | — |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
 | `psi-tweaks` | Psi: Tweaks and Additions | magic_addon | enabled flag | full | researching | [profile](mods/psi-tweaks.md) |
