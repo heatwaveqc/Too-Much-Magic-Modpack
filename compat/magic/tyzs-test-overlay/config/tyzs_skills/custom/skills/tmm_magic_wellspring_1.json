@@ -1,0 +1,74 @@
+{
+  "active": true,
+  "id": "tmm_magic_wellspring_1",
+  "maximumLevel": 5,
+  "prices": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "type": "CUSTOM",
+  "category": "tmm_magic_core",
+  "icon": "minecraft:textures/item/enchanted_book.png",
+  "displayName": "Wellspring I",
+  "description": "Increases personal magical regeneration (Ars, Iron's, Psi, Aureal).",
+  "modifiers": [
+    {
+      "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.495,
+        0.99,
+        1.485,
+        1.98,
+        2.475
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "irons_spellbooks:mana_regen",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.198,
+        0.396,
+        0.594,
+        0.792,
+        0.99
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "psi:regen",
+      "operation": "ADD_VALUE",
+      "values": [
+        4.95,
+        9.9,
+        14.85,
+        19.8,
+        24.75
+      ],
+      "unit": ""
+    },
+    {
+      "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+      "operation": "ADD_VALUE",
+      "values": [
+        0.495,
+        0.99,
+        1.485,
+        1.98,
+        2.475
+      ],
+      "unit": ""
+    }
+  ],
+  "customValues": {},
+  "config": {
+    "visible": true,
+    "purchasable": true,
+    "refundable": true,
+    "skillPrerequisites": []
+  }
+}

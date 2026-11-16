@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-15",
+  "platform": "Linux x86_64",
+  "java": "OpenJDK 21.0.13",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.265",
+  "baseline": "feature/quest-reward-humor-first-pass @ 88a0e73",
+  "pinned_mod_count": 148,
+  "server_jar_count": 135,
+  "clean_disposable_world": true,
+  "ready": true,
+  "clean_exit_code": 0,
+  "elapsed_seconds": 48,
+  "ftb_loaded_chapters": 45,
+  "ftb_loaded_quests": 228,
+  "ars_quest_count": 49,
+  "registry_probe_items": 93,
+  "registry_probe_advancements": 17,
+  "registry_probe_pass": true,
+  "server_log_sha256": "6e77fe40c7e78a1de8e881d43b7d96f621ce4030b5d49e1b39a4fec4427c1fd8",
+  "limitations": [
+    "No graphical client or multiplayer action/claim test.",
+    "Smoke precedes final editorial widening of coordinates and removal of optional prerequisite lines; IDs, text, tasks, rewards and registry references unchanged. Branch CI repeats the final generated files.",
+    "Preexisting recipes/advancements emitted errors in other mods. Two existing non-Ars item references were invalid; see docs/COMPATIBILITY.md.",
+    "Test uses the quest-source branch 148-pin pack, not the newer rolling all-stream transformation/Monk build."
+  ]
+}
