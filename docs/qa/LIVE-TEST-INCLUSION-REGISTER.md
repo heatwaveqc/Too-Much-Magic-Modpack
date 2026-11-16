@@ -4,6 +4,16 @@
 
 **This document is an intake and inclusion-decision ledger, NOT a pass report.** See [CURRENT-TEST-STATUS.md](CURRENT-TEST-STATUS.md) for what was actually tested and [NEXT-TEST-CODEX-CHECKLIST.md](NEXT-TEST-CODEX-CHECKLIST.md) for the live-test procedure. The authoritative runtime source lock is [manifest/integration-sources.json](../../manifest/integration-sources.json). **A prior `deferred_pending_runtime` entry is not an inclusion decision for a later comprehensive test.**
 
+## Current reconciled source state — 2026-11-16
+
+**Latest owner handoff:** [next-test integration reconciliation matrix](NEXT-TEST-INTEGRATION-RECONCILIATION-2026-11-16.md). The historical tables below are preserved for traceability; where they say **REVIEW REQUIRED** or **ATTEMPT REQUIRED**, consult this newer matrix for source-merge and blocker status. A source merge does **not** mean the feature is in a tested Prism artifact.
+
+- **Merged current native code:** Monk Fortune/Hunter Looting (#247), K-key Monk/Hunter GUI and TreeChop (#248), Dracolich Cave/Center skeletal rendering (#249), Thermalily cooldown/output mixins (#251), repaired namespaced progression commands and operator XP setup (#253). All received corresponding source/module CI checks; no combined gameplay acceptance has run.
+- **Frozen donor streams for the next authorized assembly:** B19 Gateways (17), B20 trader stock, Caerbannog, reviewed ore-shop additions, ProjectE Energy Converters 0.1.4, and three missing Bundle Curios slot files plus translation key. This work is **SELECTED FOR ASSEMBLY**, not automatically included in the current pack.
+- **Blocked:** B16 BetterEnd, B17/YUNG, Newbie Mode/Smart Keep Inventory, JAWR blood interop, JAWR Tyz form skills, MXP runtime, Trader's Vengence, and Gilded lava-fishing class/mod dependencies. See matrix for actionable reasons; no automatic owner-deferred designation.
+- **Removed historical deferral classifications:** Dracolich renderer is current baseline source; Bundle Curios slot is source-locked, with current first-log quest reward preserved. The older first-log ancestor and duplicate reward function must not be replayed.
+- **No automatic builds:** Repository/Module CI and Integration Preflight only. Run Integration Assembly and full server/client QA solely on a fresh, explicit owner request under `AGENTS.md`.
+
 ## Required agent procedure before the next build
 
 1. **Inventory** every report of "ready for live test" since the last owner-facing live test: ongoing and prior chat handoffs available to the agent, open PRs/descriptions, completed feature branch docs, latest `manifest/integration-sources.json` and the current QA ledger. A readiness handoff from another chat is actionable even if the branch is unmerged or not registered.

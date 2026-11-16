@@ -315,6 +315,21 @@
       ],
       "mode": "runtime-qa-staging",
       "note": "Owner-approved cooldown-free 75 mana/tick Thermalily mixins are reconciled into native JAWR-only tmm_transformations baseline. Import only exact ProjectE Energy Converters 0.1.4 pin at manual Integration Assembly; economics, lava, progression gate and client/server runtime remain NOT TESTED."
+    },
+    {
+      "name": "bundle-curios-slot",
+      "branch": "fix/first-log-bundle-curio-quest-2026-11-15",
+      "source_commit": "305bef61b9581e6a5872f1ec56573aec9dc12941",
+      "paths": [
+        "kubejs/data/curios/tags/item/bundle.json",
+        "kubejs/data/tmm/curios/entities/player.json",
+        "kubejs/data/tmm/curios/slots/bundle.json"
+      ],
+      "merge_json_paths": [
+        "kubejs/assets/tmm/lang/en_us.json"
+      ],
+      "mode": "runtime-qa-staging",
+      "note": "Only the original Bundle Curios slot and item validation for Ars Elemental Curio/Caster Bags. Quest-claimed first-log bag + XP already lives in current baseline; deliberately do NOT import old first_log advancement, reward function, shared quests or historical mod metadata. Manual assembly and client slot/claim validation required."
     }
   ],
   "covered_by_baseline": {
@@ -341,7 +356,9 @@
     "feature/mob-alliance-neutrality": "Independent mob alliances and native lich/dragon code transplanted; retired vampire files removed.",
     "feature/integrate-monk-hunter-jawr-transformations-2026-11-15": "Feature branch stages compiled dual-JAR test integration; merged source is authoritative.",
     "fix/ars-quest-claim-starter-2026-11-16": "Superseded exploratory work branch with first-log claim+Ars import; reconciled into the later QA baseline without overwriting quick fixes.",
-    "fix/ars-quests-current-baseline-2026-11-16": "Full 49 Ars quest line, 225-node book and no advancement-granted bag reconciled into test/full-integration by PR (when merged)."
+    "fix/ars-quests-current-baseline-2026-11-16": "Full 49 Ars quest line, 225-node book and no advancement-granted bag reconciled into test/full-integration by PR (when merged).",
+    "feature/dracolich-skeletal-model": "Reconciled current JAWR-only Cave/Center Dracolich renderer assets, cosmetic sync, mixins and tests in #249 (848e4f1d); client/gameplay acceptance NOT RUN. Never restore old TeamLapen transforms.",
+    "fix/integrate-starter-bundle-quest-2026-11-15": "Current FTB Punch a Tree claims Curio Bag+XP, no torches, no hidden first-log achievement; frozen separate Bundle Curios slot files are staged by bundle-curios-slot stream for manual assembly and in-world validation."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
@@ -408,17 +425,16 @@
     "B14 runtime acceptance: verify CC: Tweaked NeoForge 1.21.1 1.121.0 beta load on both sides, Draconic native reactor/Flux Gate peripherals and safe shutdown, custom Eldritch Logic Core output only from Ancient Eldritch Miner, all direct computer/turtle gate paths, and Silk-Touched End Draconium Ore -> Iesnium Ore native Spirit Fire conversion with correct stack counts.",
     "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction removed; repaired JAWR-native transformation bridge restored. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
     "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
-    "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss."
+    "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss.",
+    "NEXT QA: import source-locked Bundle Curios slots (3 files + locale key), NOT the old advancement or first_log.mcfunction; test one claim per player and no auto gift.",
+    "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengence #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral."
   ],
   "deferred_pending_runtime": {
     "feature/b16-betterend-thallasium-iesnium": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/b17-loot-performance-yungs-ars-locate": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/canonical-blood-config-first-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/dracolich-skeletal-model": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/mxp-configurable-growth-20261115": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "fix/first-log-bundle-curio-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "fix/integrate-starter-bundle-quest-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/traders-vengence": "Draft source-only PR #219; compile/unit tests passed, but trader spawn interception, AI and Iron's missiles are not gameplay-tested or imported. Classified to prevent the assembler's unknown-branch refusal, NOT as a voluntary omission of a ready feature. Reconcile readiness under AGENTS.md and the live-test inclusion register before the next comprehensive owner-authorized QA assembly; full smoke still requires separate owner approval."
   }
 }
