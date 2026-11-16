@@ -29,7 +29,9 @@ public final class GildedFishingRules {
 
     public static void register() {
         NeoForge.EVENT_BUS.addListener(GildedFishingRules::bobberTick);
-        // Let most other fishing modifiers run before awarding one native class XP.
+        // Deny before the Angler's Hat's normal-priority listener can create rewards.
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, GildedFishingRules::gateCatch);
+        // Credit after loot/event modifiers. Aqua's bonus catch fires a second event.
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, GildedFishingRules::caught);
     }
 
@@ -55,16 +57,22 @@ public final class GildedFishingRules {
         }
     }
 
-    private static void caught(ItemFishedEvent event) {
+    private static void gateCatch(ItemFishedEvent event) {
         FishingHook hook = event.getHookEntity();
         if (hook.level().isClientSide || !inLava(hook)) return;
         if (!(event.getEntity() instanceof ServerPlayer player)
             || hook.getPlayerOwner() != player || !allowed(player)) {
             event.setCanceled(true);
             hook.discard();
-            return;
         }
-        if (event.isCanceled() || event.getDrops().stream().allMatch(ItemStack::isEmpty)) return;
+    }
+
+    private static void caught(ItemFishedEvent event) {
+        FishingHook hook = event.getHookEntity();
+        if (hook.level().isClientSide || !inLava(hook) || event.isCanceled()) return;
+        if (!(event.getEntity() instanceof ServerPlayer player)
+            || hook.getPlayerOwner() != player || !allowed(player)) return;
+        if (event.getDrops().stream().allMatch(ItemStack::isEmpty)) return;
 
         // Food caught from lava is legal even when its vanilla item type is available
         // elsewhere (e.g. cooked cod/chicken). Avoid globally whitelisting those types.
