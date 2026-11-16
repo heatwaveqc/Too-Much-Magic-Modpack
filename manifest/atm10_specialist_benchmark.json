@@ -11,7 +11,7 @@
     "monk_tyz_full_tree_sp_to_standard_specialist_ratio_target": 10,
     "monk_tyz_full_tree_sp_ratio_min": 9,
     "monk_tyz_full_tree_sp_ratio_max": 11,
-    "monk_ordinary_mxp_base_cost_ratio_rule": "UNDER REVIEW: 1.2^P current, user considering 1.1^P or 1.0^P. At growth=1.0 Monk with 10x SP costs 10x ordinary base XP; >10x only if growth>1.0, ignoring fixed bonuses. Do not treat 'much greater than 10x' as unconditional.",
+    "monk_ordinary_mxp_base_cost_ratio_rule": "Selected default 1.02^P (configurable 1.00–1.20; code PR #161). For comparable fresh ordinary-only advancement, ~10x SP costs >10x XP at 1.02. 1.0 remains configurable but yields exactly 10x; actual XP depends on fixed milestone awards and shared SP budget.",
     "monk_native_progression_points_are_tyz_sp": false
   },
   "baseline_assumptions": {
@@ -84,7 +84,8 @@
     "irons_orbs": "https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/registries/UpgradeOrbTypeRegistry.java",
     "irons_anvil": "https://github.com/iron431/irons-spells-n-spellbooks/blob/bc3671984544f10264bcab6828d4ef6f2afddee2/src/main/java/io/redspace/ironsspellbooks/gui/arcane_anvil/ArcaneAnvilMenu.java",
     "apotheosis_gems": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/gems",
-    "apotheosis_affixes": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes"
+    "apotheosis_affixes": "https://github.com/Shadows-of-Fire/Apotheosis/tree/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/generated/resources/data/apotheosis/affixes",
+    "mxp_configurable_growth_pr": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/161"
   },
   "metrics": [
     {
@@ -1000,13 +1001,13 @@
     "certify ATM10 maxima before specialist skills and Monk JSON",
     "enforce Monk 80-90% final numeric attribute parity for EVERY Monk-modified trait; no cross-trait averaging",
     "compare Monk tree full-purchase Tyz SP to canonical non-Monk full tree at about 10x (9-11x provisional tolerance)",
-    "simulate configurable g^P MXP economics for g=1.0, 1.01, 1.02, 1.05, 1.1, 1.2; map expected XP cost and feasible hours based on real tree SP and income; >10x XP is conditional on g>1",
+    "Test selected g=1.02 default and available g=1.0,1.01,1.05,1.1,1.2; compare actual specialist/Monk point totals and nominal XP cost, preserving server saved P; validate code PR #161 in world",
     "differentiate Monk standalone core technique points/free classic powers from Tyz wallet",
     "audit remaining ATM10 Ars addon code, deduplicate glyph IDs and confirm version-pinned 4.6.2 NEG and 0.7.10.4 Elemental registries",
     "runtime verify attainable G rather than treating code registration count as learned glyph maximum",
     "confirm exactly one effective Magic Capacity/Spell Power thread at level VI each, in distinct level-six slots, and check 1.6x mana +12 power in pinned game"
   ],
-  "revision": "v0.5",
+  "revision": "v0.6",
   "updated": "2026-11-15",
   "constrained_optimized_loadouts": [
     {
@@ -1264,10 +1265,10 @@
     "attribute_contract": "For every trait whose numeric final value Monk actively modifies, full investment yields 80-90% of the comparable optimized fully equipped TMM specialist's final numerical attribute. Report actual nonlinear performance as a secondary check.",
     "comparison_requires": "Matched metric, specialist loadout, attribute IDs and cap/stack rules. Monk unarmored legal equipment. Non-numeric abilities tracked separately. Explicit zero/signed/reduction semantics.",
     "tyz_cost_contract": "Total spendable Tyz SP for ALL purchasable Monk tree ranks ~= 10x the canonical completed non-Monk specialist tree (9-11x provisional band). Baseline/native discipline points are NOT Tyz SP.",
-    "xp_contract": "XP growth rate under review: 1.2 prototype vs proposed 1.1 or 1.0; can be calibrated (possibly 1.01-1.05). 1.0 yields linear ordinary XP and 10x points -> 10x XP, so earlier >10x XP expectation is contingent on growth>1.0. Native Monk and Tyz wallets remain separate.",
+    "xp_contract": "Owner selected 1.02 default; configurable 1.00–1.20 NeoForge server config in PR #161. Core prototype branch still hardcodes 1.2 until PR merged. 1.01 is alternate. With g>1 Monk ~10x points yields >10x ordinary XP in matched fresh-start model; fixed boss/ritual rewards affect real play.",
     "nominal_ordinary_xp_formula": "XP_base_for_N_lifetime_levels=1000*(pow(1.2,N)-1)/(1.2-1) from P=0, no fixed award; 10*N ratio is far greater than 10 for nontrivial N.",
     "status": "locked_design_not_implemented",
-    "xp_growth_decision": "open; no live config/code change"
+    "xp_growth_decision": "owner_selected_1_02_default_server_config_PR_161_pending_integration"
   },
   "ars_glyph_registry_census": {
     "description": "Six ATM10-installed glyph-bearing mod registration sources; theoretical source-registration cohort, not a full ATM10 or learned glyph maximum",
@@ -1412,7 +1413,7 @@
     }
   ],
   "monk_mxp_growth_scenario_comparison": {
-    "status": "USER_CONSIDERING_NOT_SELECTED",
+    "status": "owner_selected_1_02_default_implementation_in_draft_PR_161",
     "source_prototype": "feature/mxp-ars-irons-botania-neo-hooks compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/core/MxpMath.java (currently hardcoded 1.2)",
     "ordinary_xp_model": "one SP per 1000 effective XP; routine awards effective=base/(growth^P), P lifetime MXP levels. From lifetime P=0: nominal_base_xp_to_N_points=1000*((growth^N)-1)/(growth-1); growth=1 gives 1000*N.",
     "target_sp_cost_ratio_for_monk": 10,
@@ -1671,6 +1672,16 @@
         ]
       }
     ],
-    "decision_needed": "Choose growth factor only after target tree costs, repeatable MXP income/hour, fixed first-boss bonuses and total intended playtime are known. Change prototype Java to configurable growth once choice approved; do not change server XP yet."
+    "decision_needed": "Default decision made: 1.02. Verify PR #161 CI and NeoForge server config on real runtime before merge; adjust if actual tree costs and gameplay pacing call for 1.01 or 1.0. Do not claim 1.1 remains user preferred; it is a high-growth regression comparison.",
+    "selected_default": 1.02,
+    "original_typo_correction": "User initially wrote 1.1 but meant 1.01; chose 1.02 as solid default. 1.01 stays configurable.",
+    "config_type": "NeoForge SERVER",
+    "config_file": "world/serverconfig/tmm_mxp-server.toml",
+    "config_path": "progression.growth_factor",
+    "range": [
+      1,
+      1.2
+    ],
+    "implementation_pr": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/161"
   }
 }
