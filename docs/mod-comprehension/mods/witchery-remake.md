@@ -10,7 +10,7 @@
 | Guide/documentation version | Guidebook JSON and en_us localization extracted from the exact pinned 0.5.39 JAR. |
 | Profile status | researching |
 | Evidence reached | Exact JAR identity verified; native guidebook, recipe/ritual/loot/advancement/structure data and dependency metadata inspected. Full dedicated-server roster has previously co-loaded JAWR; no new client or world test in this pass. |
-| Reviewed | 2026-11-15 |
+| Reviewed | 2026-11-16 |
 | Quest ownership | Existing FTB chapter is one optional manual checkmark with 2 XP and paper; inspected but not edited. |
 
 ## Executive gameplay map
@@ -154,7 +154,7 @@ This covers major mandatory onboarding and high-level branches; it does not make
 
 | Stage / branch | Player-facing action and reference | Observable success separate from item ownership | Coverage / open research |
 | --- | --- | --- | --- |
-| 0. Find first plants | Break wild grass for seeds; grow Belladonna for the Guidebook and Mandrake for the first Mutandis batch. Read General → The First Steps. | Exact seed and crop yields observed | Route/action is documented, but drop probabilities/biome distribution and client harvest remain unaudited |
+| 0. Find first plants | Break wild grass for seeds; grow Belladonna for the Guidebook and Mandrake for the first Mutandis batch. Read General → The First Steps. | Seed/crop yield not measured | Route/action is documented, but drop probabilities/biome distribution and client harvest remain unaudited |
 | 1. Make Guidebook | Craft `witchery:guidebook` using book + Belladonna + Ink Sac + Feather + coal-tag item in the shown pattern. | Book opens; General category readable | Exact pattern source-confirmed; client UI not tested |
 | 2. First Mutandis batch | Make a Jar and use the Witch's Oven/JEI route to obtain Exhale of the Horned One; fill/heat the cauldron, then add Mandrake Root → Exhale → Egg. The 0.5.39 recipe declares 500 Altar Power and outputs 4 Mutandis, but the crafting code path does not enforce or spend that power. | Four Mutandis produced; no Altar required for this declared-cost recipe in the reported release behavior | Ingredients, order and output are exact-JAR/report backed; full Jar/Oven chain, timing and TMM reproduction remain open |
 | 3. Rowan bootstrap and first Altar | Use Mutandis on eligible plants until Rowan Sapling is obtained; grow and harvest Rowan Wood; craft the 3×1×2 Altar and Cauldron. Surround the Altar with valid nature inputs and confirm its stored power. The power-cost bypass is what avoids a first-Altar deadlock in pinned 0.5.39. | Rowan tree yields wood; Altar stores power from valid nature sources | Mutation table/attempt odds and nature range/formula need exact audit; Altar operation untested |
@@ -215,7 +215,8 @@ This is the currently supported starting route for the pinned release. It resolv
 ## Unknowns and next research
 
 - [ ] Audit all ten cauldron crafting recipes and all altar-consuming infusions/rituals; track power costs separately from code enforcement.
-- [ ] Resolve ordinary Witchery starting materials, especially Rowan wood/Mutandis, and all alternative renewable sources before any cost is enforced.
+- [x] Resolve the pinned-release Rowan/Mutandis bootstrap at source/report level: the exact Mutandis cauldron order/output and non-enforced 500 Altar Power requirement are documented; no in-pack reproduction claimed.
+- [ ] Audit the exact Jar → Oven route for Exhale, eligible Mutandis targets/probability/consumption, possible natural Rowan sources and other first-wood alternatives.
 - [ ] Map every recipe dependency from Oven → Distillery → Altar/Cauldron → Chalk/Ritual and major outputs with exact item IDs; current profile gives categories and key routes, not the entire recipe graph.
 - [ ] Extract exact Vampire and Werewolf rank predicates from a matching source/bytecode inspection or game client; test resource caps, nourishment, cures, dual-state behavior, form-specific attributes and rejoin synchronization.
 - [ ] Review every ritual JSON/Guidebook pairing for requirements, consumption, output and side effects; capture day/night, weather, coven and timeout gates.
