@@ -164,7 +164,7 @@
       "mod": "Witchery/JAWR",
       "option": "witchery:drop_of_luck",
       "why": "Long-cauldron-chain utility reagent; inspect pinned 0.5.0.39 item ID and whether buying would grant advancement",
-      "status": "suggest_not_active"
+      "status": "recommended_not_active"
     },
     {
       "mod": "Witchery/JAWR",
@@ -174,9 +174,9 @@
     },
     {
       "mod": "Hexerei",
-      "option": "hexerei:ender_satchel",
-      "why": "Useful magic portable storage bypassing lengthy wet-dip/broom materials but not a spell/ritual gate; confirm actual 0.5.0.3 item ID and Curios",
-      "status": "suggest_not_active"
+      "option": "hexerei:replacer_satchel",
+      "why": "Broom satchel upgrade with 18 inventory slots, automatically replaces broken broom brushes from supplies; saved midgame potion-cauldron crafting and useful maintenance without making an Occultism storage duplicate.",
+      "status": "recommended_not_active"
     },
     {
       "mod": "Hexerei",
