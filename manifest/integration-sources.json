@@ -99,7 +99,8 @@
       "paths": [
         "compat/magic/",
         "scripts/activate_tyzs.py",
-        "scripts/verify_tyz_migration.py"
+        "scripts/verify_tyz_migration.py",
+        "scripts/stage_monk_tyz.py"
       ],
       "mode": "runtime-experimental",
       "note": "NEXT BUILD: use pinned Tyz 6.4.2 plus four tested five-rank Core Skills and 18 newly staged Monk specialization nodes (17 designed abilities plus Empty-Hand Paragon), all using ONE shared Tyz XP/SP wallet. Custom Monk skills are IMMUTABLE rank/value storage and require the native tmm_progression TyzMonkBridge Java handlers for effects and native eligibility. Do not silently replace this combined overlay with older four-Core-only version. Native Tyz activity XP remains disabled. No other eight form trees are deployed by this work."
