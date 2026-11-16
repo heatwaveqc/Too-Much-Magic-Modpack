@@ -205,6 +205,9 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     ]
     for title, xy in zip(reactor, [(0, 14), (3, 14), (6, 14), (9, 14), (9, 18), (6, 18)], strict=True):
         put(tech, title, *xy)
+    # The Ars pilot owns its full layout and keeps the current Alcohol chapter intact.
+    for row in json.loads((ROOT / "manifest/ars_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
+        put("Ars Nouveau", row["title"], *row["position"])
     return result
 
 
@@ -313,9 +316,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
     index_path.write_text(index, encoding="utf-8")
     pack_path = ROOT / "pack.toml"
     pack = pack_path.read_text(encoding="utf-8")
-    pack = re.sub(r'^version = ".*"$',
-                  'version = "0.9.1-alcohol-is-magic-quests-qa"',
-                  pack, count=1, flags=re.M)
+    # Preserve the caller's pack version; rebuilding quest translations must not downgrade it.
     new_hash = hashlib.sha256(index.encode("utf-8")).hexdigest()
     pack, n = re.subn(
         r'(\[index\]\nfile = "index.toml"\nhash-format = "sha256"\nhash = ")[0-9a-f]+(")',
@@ -373,8 +374,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 179 or intro_count != 137:
-        raise ValueError(f"Expected 179 objects / 137 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 225 or intro_count != 186:
+        raise ValueError(f"Expected 225 objects / 186 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:
@@ -402,7 +403,7 @@ def main() -> None:
     }
     (ROOT / "manifest/quest_layouts.json").write_text(
         json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"PASS: generated one FTB Quests en_us.snbt for 46 chapters; {len(seen)} named quests, {intro_count} authored")
+    print(f"PASS: generated one FTB Quests en_us.snbt for {len(SPEC['chapters'])} chapters; {len(seen)} named quests, {intro_count} authored")
     print("PASS: quest, task and reward IDs preserved; inline title/description/undefined removed")
     print("PASS: new chapter layouts, five labeled groups, packwiz hash chain updated")
 
