@@ -1,15 +1,33 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "minecraft:moss_block",
-    "minecraft:moss_block",
-    "minecraft:moss_block",
-    "minecraft:moss_block",
-    "minecraft:rotten_flesh",
-    "minecraft:rotten_flesh",
-    "minecraft:rotten_flesh",
-    "minecraft:rotten_flesh",
-    "minecraft:spider_eye"
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
   ],
   "result": {
     "id": "tmm_progression:bio_mutagen",

@@ -1,0 +1,4 @@
+# NeoForge new-world defaults for pinned Enigmatic Legacy+ 1.1.2.
+# Welcome quest now contains both of the original starter gifts.
+[sevenCurses]
+giveStarterGear = false

@@ -17,7 +17,12 @@ class BioMutagenRecipeTest {
             assertEquals(9,ingredients.size());
             java.util.Map<String,Integer> amounts = new java.util.HashMap<>();
             for (var part : ingredients) {
-                String itemId = part.getAsString();
+                // A raw string is rejected by the Minecraft 1.21.1 RecipeManager codec.
+                assertTrue(part.isJsonObject(), "Ingredient must be a JSON object");
+                var ingredient = part.getAsJsonObject();
+                assertEquals(java.util.Set.of("item"), ingredient.keySet(),
+                    "Exactly one registered item key is required");
+                String itemId = ingredient.get("item").getAsString();
                 amounts.merge(itemId,1,Integer::sum);
             }
             assertEquals(java.util.Map.of(
