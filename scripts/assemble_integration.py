@@ -142,10 +142,22 @@ def main() -> None:
                        "mode": stream["mode"], "file_count": len(selected), "files": selected,
                        "note": stream["note"]})
     # The NEXT integrated QA build must actually replace Pufferfish Skills.
-    # Exact Tyz 6.4.2 release ID + provider SHA are verified here; never
-    # silently publish a source-only Tyz preview as a playable skill tree.
-    from activate_tyzs import activate
-    activate(ROOT, manifest)
+    # Tyz may ALREADY be installed in the test pack. Do not destructively
+    # re-run the one-time Pufferfish migration or overwrite its shared wallet.
+    from verify_tyz_migration import verify as verify_tyz_migration
+    if (ROOT / "mods/tyzs-skills.pw.toml").exists():
+        if (ROOT / "mods/puffish-skills.pw.toml").exists():
+            raise RuntimeError("Pufferfish Skills was reintroduced alongside Tyz")
+        rows = {m["id"]: m for m in manifest["mods"]}
+        if not rows["tyzs-skills"]["enabled_in_pack"] or rows["puffish-skills"]["enabled_in_pack"]:
+            raise RuntimeError("Tyz packwiz and manifest disagree")
+        from stage_monk_tyz import stage as stage_monk_tyz
+        stage_monk_tyz(ROOT)
+        verify_tyz_migration(ROOT)
+    else:
+        from activate_tyzs import activate
+        activate(ROOT, manifest)
+        verify_tyz_migration(ROOT)
     # The next full QA build must pin the exact Dragon Survival release alongside
     # the already-approved Comforts and Colorful Hearts; fail on missing hashes.
     # Dragon diets only work if the actual dragon JAR is installed.
