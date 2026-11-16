@@ -171,10 +171,7 @@
         "scripts/audit_jawr_food_jar.py"
       ],
       "mode": "runtime-experimental",
-      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight.",
-      "manifest_mod_ids": [
-        "vampires-delight"
-      ]
+      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight."
     },
     {
       "name": "standalone-monk-hunter-progression",
