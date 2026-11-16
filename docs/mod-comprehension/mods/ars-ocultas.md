@@ -4,12 +4,12 @@
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-ocultas` / `ars_ocultas` |
 | Category / parent or addons | magic addon; bridges [Ars Nouveau](ars-nouveau.md) and [Occultism](occultism.md) |
-| MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM snapshot `f84ffd51cad6e6eb8f05ed9456123ccf394812e6` |
+| MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM snapshot `7ec35309b67ac393effdfc5afbacc1c525aa1ecd` |
 | Pinned version / artifact / hash | `mods/ars-ocultas.pw.toml`; `ars_ocultas-1.21.1-2.6.2.jar`; SHA-512 `4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5` |
 | Source snapshot | `dphaldes/Ars-Ocultas`, commit [`14aa0f4a05f8e85aca03b9bbe084e2bff36b007b`](https://github.com/dphaldes/Ars-Ocultas/tree/14aa0f4a05f8e85aca03b9bbe084e2bff36b007b), declares 2.6.2 / MC 1.21.1; pinned JAR hash verified, source/JAR bytecode equivalence not established |
 | Guide/documentation version gap | matching English guide entries are built into Ars Nouveau's Worn Notebook via source event; live rendering not tested |
-| Profile status | researching |
-| Evidence reached | exact JAR SHA-512 verified; pinned data and version-aligned source inspected; Occultism release source `990303ea95ba057791b7d407d6cac5151f66d799` inspected for the bowl side of the bridge; no in-pack test |
+| Profile status | blocked |
+| Evidence reached | exact JAR SHA-512 verified; pinned metadata, data and version-aligned source inspected; required Minecraft dependency excludes the pack's 1.21.1 target under NeoForge's Maven-range rules; no in-pack test |
 | Reviewed | 2026-11-15 |
 | Quest ownership | optional branch in Ars pilot draft; current integration branch still has the Ars chapter stub; see reconciliation below |
 
@@ -18,6 +18,8 @@
 **What the addon does:** Ars Ocultas adds Occultism spirits to Ars Nouveau's Mob Jar behaviors. Foliot, Djinni, Afrit and Marid spirits can be stored in a jar, keep their normal Occultism job, receive job-compatible items, and expose an item-handler capability. A spirit can accept nearby filtered item drops, player right-click inputs or automation; Janitor spirits can push carried items into an adjacent inventory. The addon adds a Sacrificial Altar that interfaces with an Occultism Golden Sacrificial Bowl using Ars Source, plus recipes for a Spirit Attuned Gem, bidirectional silver/gold conversion, an Occultism tier-4 storage stabilizer, and the altar itself. It adds documentation pages to the Worn Notebook rather than a separate book.
 
 **Why it matters in TMM:** the spirit jar bridge combines Occultism labor with Ars containers and logistics, and the gem/transmutation recipes offer alternate material routes. The Sacrificial Altar is a major ritual-gating surface: source code indicates it signals Occultism that a sacrifice or item-use condition was fulfilled without consuming the jarred entity or matching altar item. Treat it as a potential gate bypass until a live test and a design decision establish acceptable behavior.
+
+**Current pack blocker:** the exact pinned addon declares Minecraft dependency range `[1.21,1.21.1)`. Under NeoForge's documented Maven Version Range rules, the upper bound is exclusive, so the pinned Minecraft 1.21.1 version is outside the required range. NeoForge checks required dependencies before loading; therefore this artifact is incompatible with the current TMM target as published. This is a metadata/source compatibility finding, not a reproduced client error. Resolving it requires a corrected upstream artifact or an explicitly approved packaging/runtime change; this knowledge-only pass does neither. [jar: SHA512] [docs: NeoForge 1.21.1 Mod Files]
 
 **Quick start:** read Ars Nouveau's Worn Notebook → Ars Ocultas. Bind an Occultism worker spirit using the parent progression, place it in an Ars Mob Jar, and supply only items accepted by that spirit's Occultism pickup filter. A compatible spirit jar uses a 7×7×7 block-space AABB around the jar for automatic item pickup; the job's own processing remains Occultism behavior. The Spirit Attuned Gem is an Enchanting Apparatus recipe. The Sacrificial Altar is a second apparatus recipe; if testing it, use a disposable world and a low-risk Occultism ritual. [pin] [jar: SHA512] [source: 14aa0f4]
 
@@ -99,7 +101,7 @@ Ars Ocultas has no mandatory standalone tier ladder. It is an optional addon bra
 | Sacrificial altar | Ars apparatus recipe; addon `AltarBlockEntity`; Occultism Golden Bowl public flags and recipe predicates | 27 one-item slots, block capability; converts Source into persisted bowl condition flags, with the non-consuming behaviors above | no TMM override; record as a potential progression/exploit blocker |
 | Soul Gem capture/place | NeoForge `PlayerInteractEvent.RightClickBlock`; addon config `containment_jar.soul_gem.pickup/place`, both default true | transfers Mob Jar entity NBT into/out of Soul Gem; restriction order needs test | no TMM config override found; inspect default generated config before release |
 | Recipes and documentation | `data/ars_ocultas/recipe/*.json`, `data/ars_ocultas/recipes/*.json`, Ars documentation registration | apparatus, imbuement and Occultism ritual serializers | five addon recipe JSONs in exact JAR: altar, Spirit Attuned Gem, gold transmute, silver transmute, tier-4 stabilizer |
-| Dependencies | addon metadata requires Minecraft `[1.21,1.21.1)`, Ars Nouveau `[5.3,6)`, Occultism `[1.220.4,)`; source Gradle pins older compatible API versions | Ars `[5.3,6)` and Occultism `[1.220.4,)` include the TMM pins, but the declared Minecraft range `[1.21,1.21.1)` has an exclusive upper bound at 1.21.1 and therefore appears to exclude the target version; loader acceptance must be verified | exact lock identities in `mods/*.pw.toml`; client/server behavior untested |
+| Dependencies | addon metadata requires Minecraft `[1.21,1.21.1)`, Ars Nouveau `[5.3,6)`, Occultism `[1.220.4,)`; source Gradle pins older compatible API versions | Ars `[5.3,6)` and Occultism `[1.220.4,)` include the TMM pins. The required Minecraft range excludes 1.21.1, which blocks loading under documented NeoForge rules. | exact lock identities in `mods/*.pw.toml`; incompatibility is statically established; no client launch performed |
 
 ## Existing chapter / pilot reconciliation
 
@@ -143,7 +145,7 @@ The current integration branch's Ars chapter contains the early generic orientat
 
 ## Unknowns and next research
 
-- [ ] Verify the NeoForge Minecraft dependency range `[1.21,1.21.1)` against the 1.21.1 loader; its exclusive upper bound appears to exclude the target game version.
+- [x] Verify the NeoForge Minecraft dependency range `[1.21,1.21.1)` against official version-range rules; its exclusive upper bound excludes 1.21.1, and the dependency is required. The pinned artifact remains blocked unless its metadata/package is corrected.
 - [ ] Run the altar boundary tests before authoring a quest or treating the bridge as normal ritual behavior; source strongly predicts reusable sacrifice/item catalysts.
 - [ ] Verify the Soul Gem invalid-type ordering and whether failed placement loses NBT in the pinned runtime.
 - [ ] Test spirit GUI, filter interaction, jar capture/placement, job persistence, all four tiers, output side behavior and 7×7×7 bounds.
@@ -152,4 +154,5 @@ The current integration branch's Ars chapter contains the early generic orientat
 
 ## Revision notes
 
-- 2026-11-15 — Replaced README-only summary with exact hash-verified 2.6.2 source/resource audit. Mapped jar event/capability behavior, all four registered spirit tiers, Source costs and both metal transmutations. Found source-derived Sacrificial Altar behavior that signals Occultism ritual flags without consuming the matching jarred entity/item; traced the parent flags and listed negative/positive tests. Added Soul Gem failure-order risk, identified the Minecraft metadata range that appears to exclude 1.21.1, and reconciled the unmerged quest pilot. No quest or runtime files changed.
+- 2026-11-16 — Reconciled the profile snapshot and confirmed the required Minecraft metadata range excludes TMM's 1.21.1 target under NeoForge's documented Maven range rules. Marked Ars Ocultas `blocked`; no runtime launch was performed and no mod/pack files were changed. The existing bridge and quest research remains useful if an upstream artifact fixes its dependency metadata.
+- 2026-11-15 — Replaced README-only summary with exact hash-verified 2.6.2 source/resource audit. Mapped jar event/capability behavior, all four registered spirit tiers, Source costs and both metal transmutations. Found source-derived Sacrificial Altar behavior that signals Occultism ritual flags without consuming the matching jarred entity/item; traced the parent flags and listed negative/positive tests. Added Soul Gem failure-order risk and reconciled the unmerged quest pilot. No quest or runtime files changed.
