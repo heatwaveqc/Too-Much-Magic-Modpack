@@ -9,7 +9,7 @@
 | Source snapshot | No public source snapshot found; ARR. Exact pinned binary inspected directly for starter recipes, native book, catalyst registrar/circle handling and draw packet; no source-build equivalence claimed. |
 | Guide/documentation version gap | Official wiki documents the 1.21 feature set but its current pages are labeled 26.1.2; no 1.21.1/v1.36.31-specific page revision was identified. |
 | Profile status | researching |
-| Evidence reached | Mixed: official wiki plus exact pinned JAR recipes/classes/native book/circle/advancement inventory; remaining mana/item/spell mechanics and runtime configs/client acceptance unverified. |
+| Evidence reached | Mixed: official wiki plus exact pinned JAR recipes/classes/native book/circle/advancement inventory; remaining regeneration/item/spell mechanics and runtime configs/client acceptance unverified. |
 | Reviewed | 2026-11-16 |
 | Quest ownership | [Mahou Tsukai chapter](../../../config/ftbquests/quests/chapters/mahou_tsukai.snbt) (one optional manual checkmark only) |
 
@@ -32,13 +32,13 @@
 | Subsystem / progression branch | Mechanics evidence | Progression completeness | In-game guide/JEI reference | Client validation | Blocker / next action |
 | --- | --- | --- | --- | --- | --- |
 | First circle, catalysts, and scroll creation | [Official Getting Started](https://mahoutsukai.stepsword.com/guides/getting-started/) and [Spell Creation](https://mahoutsukai.stepsword.com/guides/casting-and-scrolls/) | partial | Mahou Tsukai Knowledge Compendium; spell pages | not run | Verify recipe layout and controls in the pinned client. |
-| Mana, leylines, Fae, gems, and circuits | [Official Mana guide](https://mahoutsukai.stepsword.com/guides/mana-and-leylines/) and FAQ | partial | Compendium / Mana and Leylines wiki page | not run | Audit pinned configs, Fae behavior, circuit search, storage and dimension defaults. |
+| Mana, leylines, Fae, gems, and circuits | [Official Mana guide](https://mahoutsukai.stepsword.com/guides/mana-and-leylines/) and FAQ | partial | Compendium / Mana and Leylines wiki page | not run | [Pinned payment/circuit audit](mahou-tsukai-mana-circuits.md) closes payment order, access, strict horizontal search and redstone inversion; regeneration/Fae/gem lifecycle/effective configs remain open. |
 | Spell families | [Official spell index](https://mahoutsukai.stepsword.com/spells/) and individual pages | partial | Compendium lists three-powder recipes; no exhaustive spell-specific book coverage established | not run | Audit all spell pages, actual recipe set, costs, targeting, persistent effects, and risky edge cases. |
 | Weapons, artifacts, and special items | Official Items & Blocks catalog and advancement index | partial | Compendium and item pages | not run | Trace acquisition chains for every major item/weapon using the pinned artifact. |
 | Existing quest chapter | `config/ftbquests/quests/chapters/mahou_tsukai.snbt` | incomplete | no lesson/guide references in chapter | not run | Chapter has one optional checkmark; do not treat it as coverage. Quest edits are outside this pass. |
 | Neo Vitae catalyst exchange adapter | TMM integration source inventory only; adapter marked unsafe and disabled | blocked for current adapter | no in-game guide | not run | Do not restore the global dropped-item tick script. A narrow scanner patch requires exact pin/source and separate implementation work. |
 
-See [pinned starter instructions and53-circle crosswalk](mahou-tsukai-pinned-onboarding.md) for actual book recipe, tool burden/remainders, circle placement and unordered catalyst behavior; this supplements the older wiki claims below.
+See [pinned starter instructions and53-circle crosswalk](mahou-tsukai-pinned-onboarding.md) for actual book recipe, tool burden/remainders, circle placement and unordered catalyst behavior; this supplements the older wiki claims below. See also [pinned mana and circuit rules](mahou-tsukai-mana-circuits.md) for payment branches, personal-spend growth, ownership/sharing, horizontal range and redstone inversion.
 
 ## Guidebook onboarding — required before the player's first complex step
 
