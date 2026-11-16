@@ -8,8 +8,9 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="Too Much Magic contributors"
 description='''
-Infrastructure for the Too Much Magic cross-mod transformation compatibility layer.
-Experimental vampire chassis; all mutation/acquisition/cure controls default OFF.\nNot safe for existing survival worlds until gameplay integration acceptance gates pass.
+Read-only JAWR-native vampire/lycanthrope and lich/dragon state diagnostics,
+guarded Archlich/Dracolich death arbitration, and retaliation-aware mob alliances.
+No TeamLapen Vampirism or Werewolves code; test only on disposable worlds.
 '''
 
 [[dependencies.${mod_id}]]

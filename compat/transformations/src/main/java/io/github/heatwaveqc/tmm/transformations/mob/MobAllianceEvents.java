@@ -1,7 +1,10 @@
 package io.github.heatwaveqc.tmm.transformations.mob;
 
 import io.github.heatwaveqc.tmm.transformations.TransformationsMod;
-import io.github.heatwaveqc.tmm.transformations.vampire.VampireDiagnostics;
+import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
+import io.github.heatwaveqc.tmm.transformations.adapters.GoetyLichProbe;
+import io.github.heatwaveqc.tmm.transformations.adapters.ForbiddenMagicLichProbe;
+import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import java.lang.reflect.Method;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -62,21 +65,15 @@ public final class MobAllianceEvents {
         return entity.getType().is(FAE) && !entity.getType().is(BOSS_EXEMPT);
     }
 
-    private static boolean lich(ServerPlayer player) {
-        if (!ModList.get().isLoaded("goety")) return false;
-        try {
-            Class<?> type = Class.forName("za.co.infernos.goety.utils.LichdomHelper");
-            Method reader = type.getMethod("isLich", net.minecraft.world.entity.player.Player.class);
-            return Boolean.TRUE.equals(reader.invoke(null, player));
-        } catch (ReflectiveOperationException | LinkageError ignored) {
-            return false; // optional provider; never grant neutrality on an unknown status
-        }
-    }
+    private static final JAWRVampireProbe VAMPIRE = new JAWRVampireProbe();
+    private static final GoetyLichProbe GOETY_LICH = new GoetyLichProbe();
+    private static final ForbiddenMagicLichProbe FORBIDDEN_LICH = new ForbiddenMagicLichProbe();
 
+    /** Grant no neutrality if native attachment state is absent or unreadable. */
     private static boolean vampireOrLich(ServerPlayer player) {
-        return VampireDiagnostics.vampirism(player).map(v -> v.level() > 0).orElse(false)
-                || VampireDiagnostics.jawr(player).map(v -> v.level() > 0).orElse(false)
-                || lich(player);
+        return VAMPIRE.observe(player) == Observation.PRESENT
+                || GOETY_LICH.observe(player) == Observation.PRESENT
+                || FORBIDDEN_LICH.observe(player) == Observation.PRESENT;
     }
 
     private static boolean provoked(Mob mob, LivingEntity target) {

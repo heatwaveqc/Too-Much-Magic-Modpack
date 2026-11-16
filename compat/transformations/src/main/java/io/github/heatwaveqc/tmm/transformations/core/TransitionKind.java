@@ -1,9 +1,6 @@
 package io.github.heatwaveqc.tmm.transformations.core;
 
-/** A transition's intent. Classification does not perform the transformation. */
+/** Preflight intents only; no upstream species mutation is done by this bridge. */
 public enum TransitionKind {
-    NORMAL,
-    CONTROLLED_CURE,
-    VOLUNTARY_HUNTER_REPLACEMENT,
-    ABOMINATION_RITUAL
+    NORMAL, CONTROLLED_CURE, ABOMINATION_RITUAL
 }
