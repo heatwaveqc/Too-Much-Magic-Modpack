@@ -95,7 +95,7 @@
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
 	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this welcome entry to claim an Unwitnessed Amulet and a Ring of the Seven Curses. Equipping the cursed ring is optional and has significant drawbacks."]
 	quest.544D4D1100000001.title: "Punch a Tree"
-	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem, then claim this quest for a 27-slot Trinkets Pouch and experience. A hidden, persistent advancement tracks the first log without granting items. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
+	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to complete this quest, then claim a 27-slot Trinkets Pouch and 10 XP. No hidden advancement or automatic item delivery is used. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
 	quest.544D501000300000.title: "Make a Crafting Table"
 	quest.544D501000300000.quest_desc: ["Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."]
 	quest.544D501000400000.title: "Make a Wooden Pickaxe"
@@ -542,4 +542,5 @@
 	quest.544D305000200001.quest_desc: ["An introduction to ProjectE in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D305000300001.title: "Chapter Overview"
 	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	task.544D4D1200000001.title: "Any Log or Stem"
 }

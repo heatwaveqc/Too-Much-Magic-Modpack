@@ -883,6 +883,19 @@
       "packwiz_slug": "ftb-chunks-forge"
     },
     {
+      "id": "ftb-filter-system",
+      "name": "FTB Filter System",
+      "category": "dependency",
+      "desired": true,
+      "version": "ftb-filter-system-neoforge-21.1.4",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-filter-system/files/7429011",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Native Minecraft logs tag FTB Quests item task, via installed FTB XMod Compat/Library. Live multiplayer acceptance pending.",
+      "packwiz_slug": "ftb-filter-system"
+    },
+    {
       "id": "ftb-library",
       "name": "FTB Library (NeoForge)",
       "category": "dependency",
