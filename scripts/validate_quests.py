@@ -262,6 +262,13 @@ def main() -> None:
                 ensure("consume_items: true" in block, f"Unconsumed sale input in {q['title']}")
             if q.get("repeatable"):
                 ensure("can_repeat: true" in block, f"Missing repeatability in {q['title']}")
+        if q["criterion"]["type"] == "item_tag":
+            ensure(qid == "544D4D1100000001" and q["criterion"] == {"type": "item_tag", "id": "minecraft:logs", "filter": "ftbfiltersystem"},
+                   f"Unexpected tag-filter quest: {q['title']}")
+            native_filter = 'item: { components: { "ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)" }, count: 1, id: "ftbfiltersystem:smart_filter" }'
+            ensure(native_filter in block and 'type: "item"' in block and "consume_items: true" not in block,
+                   "Punch a Tree must detect a non-consuming native item-tag filter")
+            ensure("advancement:" not in block, "Legacy first-log advancement task survived")
         if q["criterion"]["type"] == "advancement":
             ensure(advancement_tasks.get(q["criterion"]["id"]) == qid, f"Wrong advancement for {q['title']}")
         if q["criterion"]["type"] == "checkmark":
@@ -275,6 +282,8 @@ def main() -> None:
     expected_advancement_tasks = {q["criterion"]["id"]: q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "advancement"}
     ensure(advancement_tasks == expected_advancement_tasks, "Unexpected advancement objective overlap")
     ensure(len(item_tasks) == 100, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure([q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "item_tag"] == ["544D4D1100000001"],
+           "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
     planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
                "Skills & Advancement": 7, "A Sufficiently Advanced Magic": 13}
@@ -317,10 +326,15 @@ def main() -> None:
     ensure(pouch.count('id: "ars_elemental:curio_bag"') == 2 and 'id: "544D701000200003"' in pouch,
            "Punch a Tree must grant the original once-claimable Curio Bag reward")
     ensure('id: "minecraft:torch"' not in pouch, "Punch a Tree must not award torches")
-    a = json.loads((ROOT / "kubejs/data/tmm/advancement/first_log.json").read_text(encoding="utf-8"))
-    ensure("rewards" not in a, "First-log advancement must only detect the quest objective, never dispatch a payout")
-    ensure(a["criteria"]["first_log"]["conditions"]["items"][0]["items"] == "#minecraft:logs",
-           "First-log advancement must accept any Minecraft log or stem")
+    ensure(not (ROOT / "kubejs/data/tmm/advancement/first_log.json").exists(),
+           "Obsolete first-log advancement must be absent")
+    ensure("tmm:first_log" not in "\n".join(all_blocks.values()),
+           "No FTB quest may reference the removed hidden advancement")
+    pin = (ROOT / "mods/ftb-filter-system.pw.toml").read_text(encoding="utf-8")
+    ensure('filename = "ftb-filter-system-neoforge-21.1.4.jar"' in pin
+           and 'hash = "a48e54edeacc59aaba29a1b627799c052112ee0b"' in pin
+           and "file-id = 7429011" in pin and "project-id = 943925" in pin,
+           "Missing FTB Filter System 1.21.1 NeoForge pin")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
     for path in QUESTS.rglob("*.snbt"):
