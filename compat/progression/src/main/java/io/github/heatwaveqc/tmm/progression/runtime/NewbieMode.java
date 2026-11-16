@@ -128,7 +128,7 @@ public final class NewbieMode {
         if (raw.isEmpty()) return;
         String root = raw.split("\\s+", 2)[0].toLowerCase(Locale.ROOT);
         // The namespaced Brigadier alias must not bypass the regular-mode policy.
-        if (root.contains(":")) root = root.substring(root.lastIndexOf(\":\") + 1);
+        if (root.contains(":")) root = root.substring(root.lastIndexOf(":") + 1);
         if (!NEWBIE_ONLY_COMMANDS.contains(root)) return;
         event.setCanceled(true);
         player.sendSystemMessage(Component.literal(
