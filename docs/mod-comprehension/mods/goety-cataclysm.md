@@ -32,13 +32,15 @@
 | Subsystem | Evidence | Progression completeness | Guide/JEI reference | Client validation | Next action |
 | --- | --- | --- | --- | --- | --- |
 | Black Book extension | exact JAR bundled entries/categories | broad index; actual in-game display not checked | Black Book → Cataclysm; Crafts, Focuses, Summons, Mutations, World/Bestiary | not run | open book and confirm ordering/visibility |
-| Focus spells | 28 focus recipe JSONs; exact recipe inputs and ritual fields parsed | recipe families identified; costs are mapped in data but parent altar debit/failure semantics apply | Cataclysm → Focuses; matching focus entry | not run | test casts, costs, staff interactions, limits and damage/effects |
+| Focus spells | 28 registered spell classes, base cost/time/cooldown, enchantments and producer effects mapped in [focus appendix](goety-cataclysm-focuses.md) | acquisition routes and operation inventory mapped; delegated damage/friendly-fire and runtime remain partial | Cataclysm → Focuses; matching focus entry | not run | test casts, costs, staff interactions, limits and damage/effects |
 | Servants and construction | 13 thrall recipe JSONs plus guide entries for golems/large servants; latest official 1.21.1 release notes say servant persistence and robe/crown healing were fixed | summon recipe declarations and construction routes mapped; applied fix behavior, cap, command, AI and persistence are not client-tested | Cataclysm → Summons; matching recipe/JEI | not run | verify the pinned file's reported fixes, owner/cap behavior, chunk persistence, healing, death and recovery |
 | Entity conversions | 10 `goety:ritual` recipe JSONs | input entity tags, activation item, pedestals and recipe costs mapped. The current Goety 3.2.2 parent engine consumes the activation item at start, charges Soul Energy once per 20 ticks, and stages pedestal consumption; its base interrupt returns the activation item but not already-paid souls/ingredients. Applying that transaction contract to these addon recipes is an inference until the pinned addon ritual classes are inspected. | Cataclysm → Mutations | not run | test wrong entity/tag, interruption, owner preservation and exact recipe debit; inspect for addon overrides when a 1.21.1 source/artifact becomes available |
 | Crafting materials and Fabricator | 61 addon recipe JSONs total; guide covers Abyss/Primordial Essence, mechanized iron and Fabricator | all 61 recipes crosswalked; Fabricator operation and parent training interface inspected; effective automation remains untested | Cataclysm → Crafts / Artifice; JEI | not run | client-test fuel queue, blocked spawning, cap and hopper input |
 | Loot / world / boss links | 12 advancements, 9 loot JSONs, spawn modifier and tags | drops/loot injections not fully reconciled with Cataclysm pin | Cataclysm → World/Bestiary; Cataclysm guide | not run | audit boss drop values and world spawn predicates |
 
 See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, nine addon-used ritual families, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
+
+See the [28-focus operation crosswalk](goety-cataclysm-focuses.md) for exact registered spell classes, raw defaults, staff/crouch variants, temporary summon lifetimes/caps and payment boundaries.
 
 ## Guidebook onboarding and usage
 
@@ -203,7 +205,7 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 ## Unknowns and next research
 
 - [x] Match all 47 explicit Cataclysm recipe item/block IDs to pinned registration literals. Remaining: effective tags and each required item/boss acquisition path.
-- [ ] Map all 28 focus recipes to exact effect, damage, cooldown, Soul cost, staff modifiers and unsafe/griefing boundaries from the locked JAR.
+- [x] Map all 28 registered focus producers, raw Soul cost/cast/cooldown, accepted enchantments, major staff/crouch variants and staged callbacks. Still open: delegated damage/HP scaling, grief/friendly-fire filtering and runtime boundaries; see focus appendix.
 - [ ] Audit 13 summon recipes, 11 entity conversions, target tags, owner transfer, summon caps, death drops and event ordering; separate recipe display proxies from spawned entities.
 - [x] Map Fabricator operation and inherited sided queue interface from the exact addon/parent bytecode; client and hopper behavior remain untested.
 - [ ] Parent Goety 3.2.2 common transaction/failure costs are now mapped. Verify addon-specific `ritual_type` overrides, research gates, servant spawn/owner handling and every conversion/summon debit from the pinned 1.21.1 code or client.
@@ -215,6 +217,8 @@ The addon recipes use the Goety ritual framework. This pass inspected the exact 
 
 ## Revision notes
 
+- 2026-11-16 — Added all 28 registered focus classes/default triples/enchantment lists and producer effects. Traced temporary-summon lifespan, current-level cap/batch behavior, recall/grounding and Summon Down; recorded Ashen Breath execution-based charge and the OctoHost cap comment/default discrepancy. Extended stage-payment report to guarded AbyssMark and post-emission portal boundary. Remains researching.
+
 - 2026-11-16 — Added the pinned altar/research appendix: Forge placement and count rules; nine addon-used environment/structure gates; Necroturgy Grave Soil depletion; scroll consumption and capability checks; Bygone/Buried/Warred/Terminus sources and prerequisites; Ender Keeper blueprint container-loss boundary. All are artifact evidence, not gameplay tests.
 
 - 2026-11-16 — Resumed from locally hash-matched addon and Goety 3.2.2 artifacts. Added all 61 recipe routes and 11 conversion crosswalks; corrected ritual time/rate economics, activation consumption and interruption losses. Mapped Fabricator fuel queue, ownership, 101-tick attempt, cap, sensor ordering, blocked-spawn debit, native input and redstone output. Reconciled exact scaffold IDs and added boundary tests. Remains researching; no gameplay/quest/runtime changes.
@@ -223,4 +227,4 @@ The addon recipes use the Goety ritual framework. This pass inspected the exact 
 - 2026-11-16 — Reconciled the profile's pack snapshot after Goety PR #154 and made the remaining bytecode blocker explicit: the transient exact JAR link is dangling and the only inspected public source is for 1.20.1. The existing exact-artifact resource inventory remains valid; no new class-level claims were inferred. No quest/runtime files changed.
 - 2026-11-15 — Added exact hash-matched Goety Cataclysm 1.21.1 artifact profile. Indexed its 51 English Black Book entries, 61 recipes, focus/servant/conversion branches, guide-described construct servants, dependencies, and version-label discrepancy. Recorded source mismatch and the then-open client/behavior gaps; no quest or runtime files changed.
 
-See [staged-cast payment analysis](../interactions/goety--goety-cataclysm--staged-cast-payment.md): three addon focuses emit effects before ordinary completion payment; release handlers retain different cooldown boundaries. Source-supported, untested; no fix implemented.
+See [staged-cast payment analysis](../interactions/goety--goety-cataclysm--staged-cast-payment.md): four addon paths emit stage effects before ordinary completion payment; release handlers retain different cooldown boundaries. Source-supported, untested; no fix implemented.

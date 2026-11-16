@@ -211,7 +211,7 @@ Reports below track individual evidence scopes. Create one Markdown file per *sp
 | --- | --- | --- | --- |
 | [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
 | [EvilCraft Rejuvenated Flesh](interactions/evilcraft--dragon-survival--rejuvenated-flesh.md) | EvilCraft + Dragon Survival | source-supported | Dragon species allowlist and custom Blood-food handler are both source-confirmed; the paired item-use behavior is untested |
-| [Staged-cast payment](interactions/goety--goety-cataclysm--staged-cast-payment.md) | Goety + Goety Cataclysm | source-supported | Battlefield, Storm Serpent and Thunder Rage emit stage effects before parent completion payment; cancellation cooldowns differ. Economics require tests. |
+| [Staged-cast payment](interactions/goety--goety-cataclysm--staged-cast-payment.md) | Goety + Goety Cataclysm | source-supported | Four staged paths (including guarded Abyssal Beam) emit before parent completion payment; cancellation behavior differs. Economics require tests. |
 
 ## Quest/compatibility design handoffs
 
@@ -299,3 +299,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — Corrected [base Goety](mods/goety.md) ritual economics from the exact JAR: Arca 30 nominal Soul Energy, Forbidden Piece 50 and Potion of Transformation 60,000; the raw JSON values are rates per charged advance, with duration measured in advances once per 20 game ticks. Cursed Infuser cook times unchanged.
 
 - 2026-11-16 — [Goety altar/research walkthrough](mods/goety-ritual-gates.md) now closes Forge setup and the nine ritual families used by Goety Cataclysm, plus personal Bygone/Buried/Warred/Terminus gates. Necroturgy may deplete Grave Soil on completion; Ender Keeper blueprint delivery has a filled/missing-handler boundary. Researching; no gameplay tests.
+
+- 2026-11-16 — [Goety Cataclysm focus crosswalk](mods/goety-cataclysm-focuses.md) maps all 28 registrations, raw cost/cast/cooldown, accepted enchantments and producer effects. Distinguishes temporary focus summons from ritual companions, local cap checks/batch overshoot, recall/grounding, Summon Down and Ashen Breath charge cadence. Damage delegation and client acceptance remain open.
