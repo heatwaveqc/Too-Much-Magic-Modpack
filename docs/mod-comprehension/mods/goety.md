@@ -39,7 +39,7 @@
 | Witch's Brew | [source: 7fdffc0] | partial; separate guide has eight English entries; recipe ecosystem vast | Witch's Brew Patchouli book; JEI | not run | map entry/augments, capacity, energy, outputs and item/fluid interfaces |
 | Lichdom / Arca | [source: 7fdffc0] | Arca recipe, item advancement, Forbidden Scroll entry unlock and transformation ritual mapped; fragment sourcing and death boundaries open | Black Book secret Lich entry and Arca craft entry | not run | locate Forbidden Fragment sources and test Soul Energy loss/resurrection boundaries |
 
-See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, nine addon-used ritual families, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
+See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, all15 registered ritual-family predicates, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
 
 ## Guidebook onboarding — required before the player's first complex step
 
@@ -309,6 +309,8 @@ Ritual route: `charged Totem/Soul Transfer → Cursed Cage → Dark Altar direct
 - [ ] Update the generic FTB chapter in a later quest pass; no quest or runtime files changed here.
 
 ## Revision notes
+
+- 2026-11-16 — Extended altar appendix to all15 registered type predicates and completed shared conversion selection/owner/equipment/add/discard ordering. Documented Divination candle counting/extinguishing, fractional enchant-power truncation, Apostle Soul Fire depletion, and result-owner reassignment/failed-add losses as untested boundaries. Profiles remain researching.
 
 - 2026-11-16 — Added the pinned altar/research appendix: Forge placement and count rules; nine addon-used environment/structure gates; Necroturgy Grave Soil depletion; scroll consumption and capability checks; Bygone/Buried/Warred/Terminus sources and prerequisites; Ender Keeper blueprint container-loss boundary. All are artifact evidence, not gameplay tests.
 

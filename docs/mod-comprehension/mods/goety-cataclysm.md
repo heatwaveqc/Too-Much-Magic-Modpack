@@ -38,7 +38,7 @@
 | Crafting materials and Fabricator | 61 addon recipe JSONs total; guide covers Abyss/Primordial Essence, mechanized iron and Fabricator | all 61 recipes crosswalked; Fabricator operation and parent training interface inspected; effective automation remains untested | Cataclysm → Crafts / Artifice; JEI | not run | client-test fuel queue, blocked spawning, cap and hopper input |
 | Loot / world / boss links | 12 advancements, 9 loot JSONs, spawn modifier and tags | drops/loot injections not fully reconciled with Cataclysm pin | Cataclysm → World/Bestiary; Cataclysm guide | not run | audit boss drop values and world spawn predicates |
 
-See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, nine addon-used ritual families, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
+See the [altar setup and research-gate walkthrough](goety-ritual-gates.md) for the Forge build, all15 registered ritual-family predicates, Bygone/Buried/Warred/Terminus acquisition, personal research checks and positive/boundary tests.
 
 See the [28-focus operation crosswalk](goety-cataclysm-focuses.md) for exact registered spell classes, raw defaults, staff/crouch variants, temporary summon lifetimes/caps and payment boundaries.
 
@@ -218,6 +218,8 @@ The current Goety chapter is a generic checkmark stub. No addon-specific task te
 The addon recipes use the Goety ritual framework. This pass inspected the exact parent artifact rather than relying only on version-aligned source: shared charge cadence, craft/conversion activation consumption and ordinary interruption losses are detailed in E-BC above. The addon has 28 focus recipes, including shaped table crafts; do not label all 28 altar rituals. Audit any custom callbacks and test successful/interrupted/one-charge-short recipes before claiming effective pack behavior. See [Goety profile](goety.md).
 
 ## Revision notes
+
+- 2026-11-16 — Extended altar appendix to all15 registered type predicates and completed shared conversion selection/owner/equipment/add/discard ordering. Documented Divination candle counting/extinguishing, fractional enchant-power truncation, Apostle Soul Fire depletion, and result-owner reassignment/failed-add losses as untested boundaries. Profiles remain researching.
 
 - 2026-11-16 — Added servant care/recovery appendix: family-specific heal inputs/amounts and post-shrink last-item boundary; serialized spirit/core death returns and target replacement; Prowler 27-block recovery; juvenile Remnant recovery; exact skull/head patterns and destructive pre-spawn clearing. Recorded inherited care, triggers, delivery and client gaps. Remains researching.
 
