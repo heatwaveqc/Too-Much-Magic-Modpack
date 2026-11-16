@@ -41,7 +41,7 @@
 | Casting instruments and spell storage | Not established for exact 1.21.1 pin; older changelog mentions CADs/bullets/drives, but is not used as proof of pinned mechanics | unresearched | Exact guide entries and JEI categories unknown | not run | Inspect pinned item/recipe data and source at tag |
 | Progression materials and crafting | Not established | unresearched | JEI expected to expose recipes but actual categories not checked | not run | Confirm first materials, acquisition sources, recipe types, tiers and renewable paths |
 | Tool/armor and advanced use | Official historical changelog contains tool/armor and advanced bullet concepts for older versions only; not treated as current proof | unresearched | Exact current guide sections unknown | not run | Audit 1.21.1 registry and guide; verify every substantive branch |
-| Psi: Tweaks and Additions | Pack roster confirms addon enabled; addon mechanics not part of base Psi evidence | partial | See [separate addon profile](psi-tweaks.md), to be created | not run | Inspect exact addon pin and supported content; crosswalk to Psi |
+| Psi: Tweaks and Additions | Pack roster confirms addon enabled; addon mechanics not part of base Psi evidence | partial | See separate addon profile to be created | not run | Inspect exact addon pin and supported content; crosswalk to Psi |
 
 ## Guidebook onboarding — required before the player's first complex step
 
@@ -138,7 +138,7 @@ Three grounded early setups cannot yet be named without guessing at pinned recip
 
 | Other mod | Candidate link and why | Native / pack-built / would require bridge | Status / source |
 | --- | --- | --- | --- |
-| Psi: Tweaks and Additions | Enabled addon may supply additional spell pieces or changes; exact content is unreviewed | Native addon relationship; individual features unknown | Candidate. Maintain separate [addon profile](psi-tweaks.md). |
+| Psi: Tweaks and Additions | Enabled addon may supply additional spell pieces or changes; exact content is unreviewed | Native addon relationship; individual features unknown | Candidate. Maintain separate addon profile. |
 | Ars Nouveau, Iron's Spells and other spell systems | Could offer distinct or complementary spell capabilities; no shared resource, registry or bridge is established | Unknown; likely needs deliberate bridge for direct interchange | Hypothesis only; inspect both sides before proposing an interaction |
 | FTB Quests | Spell/tutorial milestones might expose advancement or operation detectors | Unknown; item possession is not proof of successful casting | Needs advancement/event/API inspection |
 
