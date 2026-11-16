@@ -66,6 +66,19 @@ public final class HunterExperience {
         return false;
     }
 
+    /**
+     * Selected specialty grants effective Looting I against that creature type.
+     * Same admissibility as Hunter XP: no players, friendly tames, automated
+     * proxy targets or excluded mob classes. Actual killing player is checked
+     * separately by NativeLootBonuses against the loot DamageSource.
+     */
+    public static int favoredLootingBonus(ServerPlayer player, LivingEntity victim) {
+        if (!ProgressionApi.track(player,HUNTER).joined()
+                || !eligibleKill(player,victim)) return 0;
+        return LootBonusMath.favoredLooting(true, true,
+                chosenSpecialtyMatches(player,victim));
+    }
+
     /** Data-defined, not hardcoded into the command registration. */
     public static java.util.List<String> availableSpecialties() {
         Definition.Path path = PathRegistry.get(HUNTER);
