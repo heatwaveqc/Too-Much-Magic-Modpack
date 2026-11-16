@@ -30,3 +30,10 @@
 `PINNED`: Default Options 21.1.8 and KeySets 1.3.0, source metadata.
 `BLOCKED`: exhaustive modded key inventory and generated first-run `keybindings.txt`.
 `NOT RUN`: actual first-run client behavior, persistence, KeySets one-run pass/fail decision, removal if failed.
+
+
+## Local inventory supplied — 2026-11-16
+
+The [local binding inventory](keybindings/README.md) supplies [315 modded-unbound records](keybindings/modded-unbound-2aacf348.txt) observed in installed build `2aacf34893bc06f8048a7fabae644b3b91a1d1d4`. The 349 saved bindings were separated using 34 exact-1.21.1 vanilla identifiers, independently derived from vanilla Options constructors; personal assigned values were discarded. Every candidate mod record uses `key.keyboard.unknown` and an empty modifier field.
+
+This provides the requested concrete list but is **not a final all-roster certification**: current client options are not a registered-key export; vanilla reference is source-derived, not a standalone vanilla export; Default Options/KeySets and other next-build additions may add keys. Reconcile stale/missing IDs against the final client/vanilla exports before generating and indexing the runtime file. First-run behavior and KeySets trial remain NOT RUN, and the gate above remains in force. No live options/profile was modified.
