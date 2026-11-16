@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression.mixin;
 
 import io.github.heatwaveqc.tmm.progression.runtime.GildedRules;
+import io.github.heatwaveqc.tmm.progression.core.GildedWearMath;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,11 +30,8 @@ public abstract class GildedDurabilityMixin {
         if (extra == 0) return damage;
         int physical = stack.getEnchantmentLevel(level.registryAccess()
             .registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(Enchantments.UNBREAKING));
-        double before = stack.getItem() instanceof ArmorItem
-            ? 0.6 + 0.4 / (physical + 1.0) : 1.0 / (physical + 1.0);
-        double after = stack.getItem() instanceof ArmorItem
-            ? 0.6 + 0.4 / (physical + extra + 1.0) : 1.0 / (physical + extra + 1.0);
-        double probability = Math.min(1.0,after / before);
+        double probability = GildedWearMath.keepProbability(
+            physical,extra,stack.getItem() instanceof ArmorItem);
         int remaining = 0;
         for (int i=0; i<damage; i++) if (level.random.nextDouble() < probability) remaining++;
         return remaining;

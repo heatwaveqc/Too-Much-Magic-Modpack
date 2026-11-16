@@ -228,7 +228,10 @@ public final class GildedRules {
     }
     public static int extraLooting(ServerPlayer player, LootContext context) {
         if (!joined(player) || !player.getMainHandItem().is(GOLD_WEAPONS)
-            || context.getParamOrNull(LootContextParams.ATTACKING_ENTITY) != player) return 0;
+            || context.getParamOrNull(LootContextParams.ATTACKING_ENTITY) != player
+            || context.getParamOrNull(LootContextParams.DAMAGE_SOURCE) == null
+            || context.getParamOrNull(LootContextParams.DAMAGE_SOURCE).getDirectEntity() != player)
+            return 0;
         return rank(player,"gilded_looting");
     }
     public static int extraUnbreaking(ServerPlayer player, ItemStack tool) {
