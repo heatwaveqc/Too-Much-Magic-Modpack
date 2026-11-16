@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/defaultoptions/keybindings.txt"
+hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
+
+[[files]]
 file = "config/ftbchunks-client.snbt"
 hash = "7ee2b7ea2aafebfe3720e3865cbdc59532726856e4f93ecee8d00710dedfd205"
 

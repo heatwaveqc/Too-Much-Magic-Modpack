@@ -69,6 +69,9 @@ def main() -> None:
     catalog_active = {m.get("packwiz_slug", m["id"]) for m in mods if m["enabled_in_pack"]}
     check(len(catalog_active) == sum(m["enabled_in_pack"] for m in mods), "Duplicate packwiz slugs")
     check(active == catalog_active, f"Active mismatch: packwiz={sorted(active)} manifest={sorted(catalog_active)}")
+    if "default-options" in active:
+        from validate_defaultoptions_keybindings import validate as validate_default_keybindings
+        validate_default_keybindings()
     print(f"PASS: packwiz metadata + hashes; {len(indexed)} files, {len(active)} active mods; {len(mods)} desired entries")
     print("NOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed")
 
