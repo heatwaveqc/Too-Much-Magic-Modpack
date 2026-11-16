@@ -106,7 +106,8 @@ public final class ProgressionEvents {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             // Both TreeChop and ordinary loot callbacks can observe the
             // same physical log in a single server tick. Never double-credit.
-            if (RecentBlockCredits.first(player.getUUID(),
+            if (!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
+                    || RecentBlockCredits.first(player.getUUID(),
                     event.getLevel().dimension().location().toString(),
                     event.getPos().asLong(),event.getLevel().getGameTime())) {
                 ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
