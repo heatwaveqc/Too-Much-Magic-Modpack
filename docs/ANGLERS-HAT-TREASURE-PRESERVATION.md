@@ -47,3 +47,17 @@ This file belongs to the KubeJS-managed data resources at `kubejs/data/reliquifi
 - Upstream source: https://github.com/Octo-Studios/reliquified-artifacts/blob/1.21.1/src/main/java/it/hurts/shatterbyte/reliquified_artifacts/items/hat/AnglersHatItem.java
 - Default tag: https://github.com/Octo-Studios/reliquified-artifacts/blob/1.21.1/src/main/resources/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json
 - ATM10 8.2 changelog: https://github.com/AllTheMods/ATM-10/blob/main/changelogs/CHANGELOG-ATM10-8.1-8.2.md
+
+## Specific progression-item check (2026-11-16)
+
+**Chaos Shard (`draconicevolution:chaos_shard`): not eligible from currently reviewed default tags.** The 1.21 Draconic Evolution generated item tags include ingots, dusts, nuggets, ores and storage blocks, but do **not** place Chaos Shard in `#c:raw_materials`. The hat's valuables tag likewise does not mention it. This isn't proof of every other loaded datapack: validate the resolved runtime tag before categorically excluding it from a future build.
+
+**Replication's Raw Replica (`replication:raw_replica`): explicitly eligible.** Our enabled Replication 1.21.1-1.2.7 source contains `data/c/tags/item/raw_materials.json` with `replication:raw_replica`, and `raw_materials/replica.json` with the same item. Thus the Angler's Hat can replace a fish with *Raw Replica* after its Treasure upgrade, bypassing the need to mine the ore. The distinct **Deepslate Replica Ore** block/item `replication:deepslate_replica_ore` is in `#c:ores/replica`, not `#c:raw_materials`, and is not directly part of the hat's valuables tag.
+
+**Boss-drop principle:** The hat has no universal "boss drops" or "all modded items" selection. It draws only from its resolved valuables tag; a boss-exclusive item can appear only if deliberately or accidentally tagged there (or added by an override). Current policy is to **retain the full raw-material expansion**, including Raw Replica, per owner request; this is a balance exposure to test, not an automatic exclusion. 
+
+Source links:
+- [Replication 1.21 raw-materials tag](https://github.com/Buuz135/Replication/blob/1.21/src/generated/resources/data/c/tags/item/raw_materials.json)
+- [Replication 1.21 Replica ore tag](https://github.com/Buuz135/Replication/blob/1.21/src/generated/resources/data/c/tags/item/ores/replica.json)
+- [Draconic Evolution 1.21 generated item tags](https://github.com/Draconic-Inc/Draconic-Evolution/tree/1.21/src/main/generated/data/c/tags/item)
+- [Angler's Hat default valuables tag](https://github.com/Octo-Studios/reliquified-artifacts/blob/1.21.1/src/main/resources/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json)
