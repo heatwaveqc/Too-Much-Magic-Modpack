@@ -9,8 +9,8 @@
 
 ## Active slice and exact next steps
 
-1. Re-audit Goety Cataclysm Fabricator through the hash-pinned addon and Goety 3.2.2 bytecode. Locally confirmed `FabricatorBlockEntity` extends `TrainingBlockEntity`; produces Watcher servants from Mechanized Iron Blocks; inherits queue, controls, timer and spawn-failure debit behavior. Record evidence beside claims and add positive/boundary disposable-world tests.
-2. Expand addon recipe/servant coverage, verify Cataclysm inputs from its matching JAR, and reconcile the current Goety chapter/authoring manifest. Keep any unresolved focus/research/owner paths explicit.
+1. Completed this slice: Goety Cataclysm Fabricator and parent training/altar bytecode audit, 61-recipe appendix, 11 conversion routes, all 47 Cataclysm recipe item/block IDs matched registration literals, exact scaffold IDs, and targeted boundary tests. Key corrections: charged ritual advances are 20 game ticks apart; nominal cost is rate × duration; obstructed Fabricator attempts spend a queue entry. Profile remains researching because focus effects, research/structure gates, servant care and full acquisition paths are incomplete.
+2. Next: map all focus cast effects/costs, parent research unlock/Forge setup, servant care/death recovery and boss-drop acquisition. Recipe inventory and exact current scaffold reconciliation are done; do not repeat them. The appendix is factual data coverage, not proof of complete progression.
 3. Update index and this note, commit each coherent finding, then push and open a reviewable research PR to `test/full-integration`. Never merge into the shared integration branch yourself.
 4. Next priorities: base Goety remaining research/ritual paths; Ars/Occultism exact artifact gaps; Mahou Tsukai exact artifact mechanics. Read existing profiles before duplicating work.
 
