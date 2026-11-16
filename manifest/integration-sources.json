@@ -184,6 +184,7 @@
     }
   ],
   "covered_by_baseline": {
+    "fix/dragon-seasoned-fish-raw-fish-2026-11-16": "KubeJS Seasoned Fish raw-salmon -> #c:foods/raw_fish targeted replacement and scripts/verify_dragon_seasoned_fish.cjs quick guard are merged into test/full-integration. No Sea Dragon Treat or dragon diet changes. Source-ready for next assembled runtime; user-reported salmon-only failure requires a fresh live crafting retest.",
     "feature/qol-trash-tree-reliquified": "Already in B12 baseline",
     "fix/more-overlays-auto-client-install": "Already in B12 baseline",
     "fix/quest-localization-layout-onboarding": "Already in combined quest QA baseline; single en_us localization correction has priority",
