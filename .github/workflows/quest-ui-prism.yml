@@ -1,17 +1,18 @@
 name: Quest book UI fix Prism test package
 on:
-  push:
-    branches: ['fix/quest-localization-layout-onboarding']
-    paths:
-      - '.github/workflows/progression-prism.yml'
-      - 'scripts/build_quest_ui_prism.py'
   workflow_dispatch:
-
+    inputs:
+      authorized_build:
+        description: 'Explicitly approved manual Prism/package build'
+        required: true
+        type: boolean
+        default: false
 permissions:
   contents: read
 
 jobs:
   prism-test:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.authorized_build == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
