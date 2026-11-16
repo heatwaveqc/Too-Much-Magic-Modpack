@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "created": "2026-11-15",
-  "status": "source_derived_scenario_maxima_magic_defense_populated_not_runtime_certified",
+  "status": "source_derived_scenario_maxima_monk_cost_contract_and_ars_registry_census_not_runtime_certified",
   "purpose": "ATM10 max legal specialist gear -> TMM non-Monk specialist trees -> Monk 80-90% of each modified final attribute; Monk Tyz full tree costs ~10x standard specialist SP and far >10x ordinary MXP",
   "owner_targets": {
     "tmm_atm10_performance_tolerance_fraction": 0.05,
@@ -66,7 +66,10 @@
     "defense_armor_mythic_no_shield": 182.16,
     "defense_armor_mythic_shield": 381.524,
     "defense_toughness_mythic_no_shield": 81,
-    "defense_toughness_mythic_shield": 145.8
+    "defense_toughness_mythic_shield": 145.8,
+    "ars_six_source_registration_count": 188,
+    "ars_188_registration_cohort_mana": 5720,
+    "ars_188_registration_cohort_regen": 177.04000000000002
   },
   "source_repos": {
     "atm10": "https://github.com/AllTheMods/ATM-10/tree/d3fef516ed2c3610f49981f5f924d7205d8536ef",
@@ -317,7 +320,14 @@
         "amulets",
         "equipment modifier ID stacking"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "ars.six_source_glyph_census_example",
+          "value": 5720,
+          "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation"
+        }
+      ]
     },
     {
       "id": "ars.mana_regen_per_sec",
@@ -332,7 +342,14 @@
         "regen perks",
         "equipment modifier ID stacking"
       ],
-      "notes": ""
+      "notes": "",
+      "scoped_calculated_optima": [
+        {
+          "scenario_id": "ars.six_source_glyph_census_example",
+          "value": 177.04000000000002,
+          "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation"
+        }
+      ]
     },
     {
       "id": "ars.spell_damage_bonus",
@@ -967,9 +984,12 @@
     "enforce Monk 80-90% final numeric attribute parity for EVERY Monk-modified trait; no cross-trait averaging",
     "compare Monk tree full-purchase Tyz SP to canonical non-Monk full tree at about 10x (9-11x provisional tolerance)",
     "simulate 1.2^P lifetime MXP economics and full Monk reachability; ordinary XP ratio must be far above 10x",
-    "differentiate Monk standalone core technique points/free classic powers from Tyz wallet"
+    "differentiate Monk standalone core technique points/free classic powers from Tyz wallet",
+    "audit remaining ATM10 Ars addon code, deduplicate glyph IDs and confirm version-pinned 4.6.2 NEG and 0.7.10.4 Elemental registries",
+    "measure whether repeated Ars Magic Capacity/Spell Power threads with static modifier IDs apply, replace or collide across slots and armor items",
+    "runtime verify attainable G rather than treating code registration count as learned glyph maximum"
   ],
-  "revision": "v0.3",
+  "revision": "v0.4",
   "updated": "2026-11-15",
   "constrained_optimized_loadouts": [
     {
@@ -1175,6 +1195,29 @@
       ],
       "confidence": "conditional_source_max_for_listed_components_pending_runtime",
       "notes": "The shield is the offhand, and this is not the armor/max-health simultaneously optimized setup."
+    },
+    {
+      "id": "ars.six_source_glyph_census_example",
+      "focus": "ars.max_mana",
+      "scope": "Six checked glyph-bearing ATM10 mods contain 188 distinct code registration calls after NEG mod-presence exclusions; assume every registered glyph is learnable and learned, 4 Unobtainium armor with two Mana enchants VII, tier-six book, before threads and Curios",
+      "metrics": {
+        "ars.glyph_registration_count": 188,
+        "ars.max_mana": 5720,
+        "ars.mana_regen_per_sec": 177.04000000000002
+      },
+      "combinations": [
+        "85 base Ars glyphs",
+        "40 Ars Elemental glyphs",
+        "3 Ars Additions glyphs",
+        "40 enabled Not Enough Glyphs glyphs",
+        "9 Ars Controle glyphs",
+        "11 Ars Technica glyphs",
+        "4 Unobtainium Arcanist armor pieces",
+        "Unobtainium Ars tier-6 book",
+        "4x Mana Boost VII, 4x Mana Regen VII"
+      ],
+      "confidence": "source_registration_cohort_candidate_pending_version_runtime_and_eligible_unlock_validation",
+      "notes": "Not full ATM10 total. Some audited source branches differ from exact ATM10 jar versions; other addons and threads/accessories not included."
     }
   ],
   "monk_attribute_cost_contract": {
@@ -1185,5 +1228,135 @@
     "xp_contract": "Tyz level-pool prototype gives one point per 1000 effective MXP and routine events scale as base / 1.2^P, P lifetime earned MXP levels. Simulate fresh/experienced players, first-time fixed bonuses, affordability and float overflow before live deployment.",
     "nominal_ordinary_xp_formula": "XP_base_for_N_lifetime_levels=1000*(pow(1.2,N)-1)/(1.2-1) from P=0, no fixed award; 10*N ratio is far greater than 10 for nontrivial N.",
     "status": "locked_design_not_implemented"
-  }
+  },
+  "ars_glyph_registry_census": {
+    "description": "Six ATM10-installed glyph-bearing mod registration sources; theoretical source-registration cohort, not a full ATM10 or learned glyph maximum",
+    "count_from_audited_sources": 188,
+    "source_mods": [
+      {
+        "mod_id": "ars_nouveau",
+        "source_repo": "baileyholl/Ars-Nouveau",
+        "source_branch": "main",
+        "configured_mod_version": "5.13.5",
+        "registration_count": 85,
+        "method": "85 production registerSpell calls in APIRegistry.setup before registerRitual",
+        "source_path": "src/main/java/com/hollingsworth/arsnouveau/setup/registry/APIRegistry.java",
+        "source_version_caveat": "branch HEAD, not runtime JAR"
+      },
+      {
+        "mod_id": "ars_elemental",
+        "source_repo": "Alexthw46/Ars-Elemental",
+        "source_branch": "1.21",
+        "configured_mod_version": "0.7.10.4",
+        "registration_count": 40,
+        "method": "40 unconditional register calls in ArsNouveauRegistry.registerGlyphs",
+        "source_path": "src/main/java/alexthw/ars_elemental/ArsNouveauRegistry.java",
+        "source_version_caveat": "source branch currently declares mod_version 0.7.11.0, above ATM10 pin; confirm pinned 0.7.10.4 JAR"
+      },
+      {
+        "mod_id": "ars_additions",
+        "source_repo": "Jarva/Ars-Additions",
+        "source_branch": "1.21.0",
+        "configured_mod_version": "21.3.0",
+        "registration_count": 3,
+        "method": "3 glyph calls Retaliate/Mark/Recall",
+        "source_path": "src/main/java/com/github/jarva/arsadditions/setup/registry/ArsNouveauRegistry.java",
+        "source_version_caveat": "source branch not pinned artifact verified"
+      },
+      {
+        "mod_id": "not_enough_glyphs",
+        "source_repo": "Alexthw46/NotEnoughGlyphs",
+        "source_branch": "1.21",
+        "configured_mod_version": "4.6.2",
+        "registration_count": 40,
+        "method": "45 register calls minus 4 conditional Elemental duplicate glyphs and 1 conditional Ars Controle Random filter; TooManyGlyphs/Ars Omega/Ars Trinkets are absent from ATM10 roster",
+        "source_path": "src/main/java/alexthw/not_enough_glyphs/init/ArsNouveauRegistry.java",
+        "source_version_caveat": "source branch currently declares mod_version 4.6.4, above ATM10 pin; confirm pinned 4.6.2 JAR"
+      },
+      {
+        "mod_id": "ars_controle",
+        "source_repo": "Vonr/Ars-Controle",
+        "source_branch": "1.21",
+        "configured_mod_version": "1.6.16",
+        "registration_count": 9,
+        "method": "9 register(Effect/Filter) calls in ACRegistry.Glyphs.registerAll",
+        "source_path": "src/main/java/dev/qther/ars_controle/registry/ACRegistry.java",
+        "source_version_caveat": "source gradle.properties matches 1.6.16"
+      },
+      {
+        "mod_id": "ars_technica",
+        "source_repo": "zeroregard/Ars-Technica",
+        "source_branch": "1.21.X",
+        "configured_mod_version": "2.7.6",
+        "registration_count": 11,
+        "method": "11 register calls in GlyphRegistry.registerGlyphs",
+        "source_path": "src/main/java/com/zeroregard/ars_technica/registry/GlyphRegistry.java",
+        "source_version_caveat": "source gradle.properties matches 2.7.6"
+      }
+    ],
+    "remaining_installed_ars_addons_not_yet_audited": [
+      "ars_creo",
+      "ars_elemancy",
+      "ars_ocultas",
+      "ars_unification",
+      "arseng"
+    ],
+    "unknown_loadout_and_config_gates": [
+      "effective pinned JAR glyph registry dedup",
+      "starter/craftable/learned glyph logic",
+      "runtime disabled glyph configs",
+      "other mods adding registered Ars glyphs",
+      "glyph count synced to ManaCap via book use"
+    ],
+    "example_with_every_six_source_glyph_learned_before_threads": {
+      "glyph_count": 188,
+      "unobtainium_tier": 6,
+      "enchants": "4x Mana Boost VII and 4x Mana Regen VII",
+      "max_mana": 5720,
+      "mana_regen_per_sec": 177.04000000000002
+    },
+    "status": "version_mixed_source_candidate_not_certified_runtime"
+  },
+  "ars_thread_modifier_collision_audit": {
+    "status": "high_priority_runtime_test",
+    "tier_six_armor_slots_each": [
+      4,
+      5,
+      6
+    ],
+    "tier_six_armor_slot_value_sum_four_pieces": 60,
+    "magic_capacity_thread_modifier_id": "ars_nouveau:thread_magic_capacity",
+    "magic_capacity_thread_operation": "add_multiplied_total",
+    "magic_capacity_thread_per_slot_level": 0.1,
+    "spell_damage_thread_modifier_id": "ars_nouveau:thread_spellpower",
+    "spell_damage_thread_operation": "add_value",
+    "spell_damage_thread_per_slot_level": 2,
+    "issue": "The upstream MagicCapacityPerk and SpellDamagePerk use the same AttributeModifier ResourceLocation per perk regardless of piece or slot. Attribute modifier IDs must be unique for a given entity attribute. Do not sum all 12 thread slot modifiers until observed runtime semantics / dedup and slot-specific ID handling are verified.",
+    "compared_enchantment_behavior": "Minecraft enchantment attribute effects postfix the modifier id with the armor slot name, so identical Mana Boost/Mana Regen enchantments on different armor slots are designed to coexist.",
+    "source_modules": [
+      "Jarva/All-The-Arcanist-Gear:ArsNouveauRegistry.java",
+      "baileyholl/Ars-Nouveau:common/perk/MagicCapacityPerk.java",
+      "baileyholl/Ars-Nouveau:common/perk/SpellDamagePerk.java",
+      "Jarva/All-The-Arcanist-Gear:common/items/armor/AddonArmorItem.java"
+    ],
+    "do_not_certify_numeric_thread_maximum": true
+  },
+  "monk_mxp_ordinary_xp_examples": [
+    {
+      "specialist_sp": 5,
+      "monk_sp": 50,
+      "specialist_nominal_ordinary_xp": 7441.599999999997,
+      "monk_nominal_ordinary_xp": 45497190.75001066,
+      "ratio": 6113.898993497458,
+      "conditions": "Fresh P=0 lifetime, no fixed award/other tree XP, each point corresponds one MXP level; illustrative only; cost may be infeasible at high P."
+    },
+    {
+      "specialist_sp": 10,
+      "monk_sp": 100,
+      "specialist_nominal_ordinary_xp": 25958.682111999988,
+      "monk_nominal_ordinary_xp": 414089867610.0712,
+      "ratio": 15951883.297598101,
+      "conditions": "Fresh P=0 lifetime, no fixed award/other tree XP, each point corresponds one MXP level; illustrative only; cost may be infeasible at high P."
+    }
+  ]
 }
