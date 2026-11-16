@@ -84,3 +84,9 @@ See [test instructions](ARS-QUEST-RECONCILIATION-2026-11-16.md). Neither row is 
 | Date / origin | Ready feature and source | Code / pins / conflicts | Inclusion status | Evidence (SHA, destination or blocker) | Assigned QA case |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-16 · [PR #224](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/224) | Dragon/Jade/FTB UI collision mitigation · `fix/dragon-survival-jade-ui-collisions-2026-11-16` | `config/ftblibrary-client.snbt`, `config/ftbchunks-client.snbt`, `index.toml`, `pack.toml`; defaults sidebar bottom left and minimap top left. Jade Keypad-1 collision requires a *player-selected* binding remap, not a shipped personal `options.txt`. No Dragon Survival Java patch. | **ATTEMPT REQUIRED** in next comprehensive client candidate | Exact hash-pinned config staged on PR; verify config survives assembly/source override and renders appropriately, including user preference persistence. No client PASS or full smoke claimed. | C10 |
+
+### FTB Filter System first-log readiness (2026-11-16)
+
+| Feature | Source | Inclusion state | Next-test acceptance |
+| --- | --- | --- | --- |
+| Native FTB Filter System `minecraft:logs` first-log task | `fix/ftb-filter-first-log-2026-11-16` → `test/full-integration` on merge; `mods/ftb-filter-system.pw.toml` CurseForge `7429011` | **READY FOR NEXT OWNER-AUTHORIZED LIVE BUILD.** Quest, task and reward IDs retained; native Smart Filter component replaces `tmm:first_log`, whose JSON is deleted. No live smoke was authorized in this chat. | Fresh oak/spruce/cherry log and crimson/warped stem inventory triggers, dedicated server autocomplete without owning a Smart Filter item, readable “Any Log or Stem” task label, one claimed Curio Bag + 10 XP per player with no automatic gifts, old-world persistence and no duplicate reward. |
