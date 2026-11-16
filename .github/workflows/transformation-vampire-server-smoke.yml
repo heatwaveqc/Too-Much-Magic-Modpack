@@ -1,18 +1,17 @@
 name: Vampire bridge full-modpack dedicated-server smoke
 on:
-  push:
-    paths:
-      - 'compat/transformations/**'
-      - '.github/workflows/transformation-vampire-server-smoke.yml'
-      - 'scripts/smoke_server.sh'
-      - 'scripts/build_vampire_prism.py'
-      - 'scripts/audit_abomination_native_actions.py'
-      - 'scripts/build_b8_prism.py'
   workflow_dispatch:
+    inputs:
+      full_smoke:
+        description: 'Owner-authorized full server smoke and Prism packaging only'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: read
 jobs:
   modded-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_smoke == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
