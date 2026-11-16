@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "baseline": "test/quest-vampire-localization-2026-11-14",
+  "baseline": "test/full-integration",
   "channel": "integration",
   "streams": [
     {

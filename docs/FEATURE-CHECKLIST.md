@@ -3,7 +3,7 @@
 > Generated from [the machine-readable registry](../manifest/feature-checklist.json) by 
 > `python3 scripts/feature_checklist.py render`. Do not edit this Markdown by hand.
 
-**112 acceptance items** across **9 tracks**. **6** have bounded owner-reported player PASS evidence; **15** have partial player checks; **22** are server-smoked only. This is not a stable release.
+**112 acceptance items** across **9 tracks**. **5** have bounded owner-reported player PASS evidence; **13** have partial player checks; **21** are server-smoked only. This is not a stable release.
 
 ## Reading this checklist
 
@@ -19,12 +19,12 @@
 
 | State | Items |
 | --- | ---: |
-| Player-tested PASS | 6 |
-| Player test partial | 15 |
-| Server-booted; mechanics unverified | 22 |
+| Player-tested PASS | 5 |
+| Player test partial | 13 |
+| Server-booted; mechanics unverified | 21 |
 | Source ready; gameplay unverified | 20 |
-| In progress | 12 |
-| Planned | 36 |
+| In progress | 11 |
+| Planned | 41 |
 | Blocked | 1 |
 | Deferred | 0 |
 
@@ -117,18 +117,18 @@
 
 ### Transformations and Monk (14)
 
-- [ ] **Conventional vampirism versus Lilith ascension** (`form.vampire_acquire`) — *In progress*. Infection gives ordinary vampire; Lilith blood upgrades one way to dual JAWR/Vampirism behavior; no fang infection path. [source](../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md)
-- [ ] **Unified blood spending, drinking and damage** (`form.blood`) — *Player test partial*. Native JAWR debits common blood pool; feeding by both providers restores; damage drains correctly; no underflow. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
+- [ ] **JAWR-only vampire acquisition** (`form.vampire_acquire`) — *Planned*. JAWR native infection, progression and cure work without TeamLapen. [source](../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md)
+- [ ] **JAWR-native blood accounting** (`form.blood`) — *Planned*. JAWR alone owns blood feeding, healing and debit; no mirrored pool. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **JAWR natural hunger / periodic blood rules** (`form.hunger`) — *In progress*. Native JAWR hunger still acts; regular vs ascended differences intentional and no duplicate upkeep drains. [source](../docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md)
-- [ ] **Any vampire cure clears all providers** (`form.cure`) — *Planned*. Every cure clears Vampirism and JAWR vampire attributes/skills/diet/sun penalties without stale state. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
-- [ ] **Vampire Forest shade and true sunlight rules** (`form.sunlight`) — *Planned*. JAWR respects Vampirism Vampire Forest sunlight behavior, including boundaries, roofs and dimensions. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
+- [ ] **JAWR vampire cure** (`form.cure`) — *Planned*. JAWR cure clears native vampire state and skills, not an extra faction. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
+- [ ] **JAWR sunlight and protection** (`form.sunlight`) — *Planned*. JAWR sunlight works without the discontinued Vampire Forest. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
 - [ ] **Mahou Drain Life boundary restores vampire hunger** (`form.drainlife`) — *Planned*. Drain Life effects credit appropriate vampire satiation without double-healing exploits. [source](../manifest/integration-sources.json)
-- [ ] **Werewolves addon faction and skill progression** (`form.werewolf`) — *Server-booted; mechanics unverified*. Transform, skill unlock, hunger, full moon, reversals and world restart verified. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
+- [ ] **JAWR lycanthropy** (`form.werewolf`) — *Planned*. JAWR lycanthrope, moon behavior, food, cure and relog work without Werewolves addon. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
 - [ ] **Dragon Survival and food compatibility** (`form.dragon`) — *Planned*. Approved pin/loader, dietary toggle, AppleSkin, equipment, rendering, flight and cure paths tested. [source](../docs/FOOD-AND-SPECIES-DESIGN.md)
 - [ ] **JAWR/Goety lich state and phylactery** (`form.lich`) — *Planned*. Lich upgrades, death/revival, diet, gear and storage functional without lost player state. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
 - [ ] **Exclusive primary physiology and safe transitions** (`form.exclusive`) — *Planned*. Reject incompatible cross-mod transformations; reversible conversions clean all flags; explicit exceptions only. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
-- [x] **First Sunset rite and faction initialization** (`monk.sunset`) — *Player-tested PASS*. 10s westward Overworld sunset unarmored gaze joins Monk and provides Step Assist; repeat no duplicates. [source](../docs/USER-TEST-LEDGER-2026-11-14.md) [evidence](../docs/USER-TEST-LEDGER-2026-11-14.md)
-- [ ] **Monk native skill-tree initial branch** (`monk.tree`) — *Player test partial*. Open actual Vampirism faction UI; Step Assist root and early mastery nodes purchase and persist. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
+- [ ] **Standalone Monk First Sunset** (`monk.sunset`) — *Planned*. Sunset joins native Monk progression path. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
+- [ ] **Standalone Monk native tree** (`monk.tree`) — *Planned*. tmm_progression skills and XP persist; no Vampirism faction UI. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk Step Assist +0.5 height** (`monk.step`) — *Player test partial*. Moves over allowed half-block heights only; armor and weapons may suppress where designed. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk training progression and graphical progress indicator** (`monk.training`) — *Source ready; gameplay unverified*. Actual cultivation earns native points; full UI progress ring replaces temporary actionbar counter. [source](../manifest/integration-sources.json)
 
