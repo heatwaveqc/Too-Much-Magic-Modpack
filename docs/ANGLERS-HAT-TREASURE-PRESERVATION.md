@@ -76,3 +76,7 @@ Source links:
 Sources:
 - https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/raw_materials/iesnium.json
 - https://github.com/klikli-dev/occultism/blob/version/1.21.1/src/generated/resources/data/c/tags/item/raw_materials.json
+
+## Dragon Survival Elder Dragon Dust — explicit treasure inclusion
+
+Owner-approved 2026-11-16: add `dragonsurvival:elder_dragon_dust` directly to `kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json` as an optional registry entry (`required:false`). This is the dust used alongside a blaze rod in Dragon Survival's Hot Dragon Rod recipe. It is **not** a member of `#c:raw_materials`, so explicit inclusion is necessary. Retain the parent raw-materials tag (Raw Replica, Raw Iesnium and other modded materials) and the five vanilla treasures. Actual catch chance depends on Angler's Hat Treasure unlocking at Catch rank 5, the stat's chance, and size of the loaded item pool. Validate via live fishing with the upgraded hat; no global raw-material tag is modified.
