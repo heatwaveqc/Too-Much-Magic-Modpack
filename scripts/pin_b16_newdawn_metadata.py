@@ -182,7 +182,7 @@ def update_index(replacements: dict[str, str], removals: set[str]) -> None:
                   if (m := re.search(r'^file = "([^"]+)"$', b, flags=re.MULTILINE))
                   and m.group(1).startswith(file.split("/")[0] + "/") and m.group(1) > file), len(kept))
         kept.insert(at, block)
-    result = header + "".join(kept)
+    result = (header + "".join(kept)).rstrip() + "\n"
     old_hash = hashlib.sha256(original.encode("utf-8")).hexdigest()
     pack = pack_path.read_text(encoding="utf-8")
     if pack.count(old_hash) != 1:
