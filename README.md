@@ -35,3 +35,7 @@ Use the [Continuous Full Integration Launcher](https://github.com/heatwaveqc/Too
 [Build channels and acceptance policy](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/BUILD-CHANNELS-AND-TESTING.md): `Integration` (changing/unsafe), `Candidate` (frozen/under test), `Stable` (manually approved and immutable). **No survival-balanced Stable release is certified yet.** Existing B6/B8 and specialized test snapshots remain available for rollback; neither test automation nor a server-smoke PASS automatically promotes a release.
 
 The pending Tyz/MXP first-wave must be checked independently from its implemented runtime state. Pufferfish Skills is still scheduled for removal only after successful migration and its dependency audit. Do not assume a design-stage skill file is active in the Prism build.
+
+## Historical design research archive
+
+Historical MXP and Monk specifications from superseded PRs #48 and #71 are preserved as source-accurate, **non-runtime** records in [`docs/archive/`](docs/archive/README.md). Consult the archive for research and original design decisions; consult `test/full-integration` and `dev/progression` for current implementation and architecture. Nothing archived is implicitly installed or approved for gameplay.
