@@ -313,3 +313,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Mahou mana/circuit contract](mods/mahou-tsukai-mana-circuits.md): exact payment branches, personal-only growth credit, donation, owner/shared access, strict horizontal range without Y filter, redstone inversion and native defaults. Regeneration cadence, gem lifecycle, spell callers and effective pack overrides remain open.
 
 - 2026-11-16 — Extended [Mahou mana research](mods/mahou-tsukai-mana-circuits.md) with100-game-tick regeneration cadence/formula, ley geometry, Fae spawn/loot supply, consumed Attuner, gem charging from circuits and Magitech interface scope. Formula-derived examples and unrun boundary tests remain separate from gameplay acceptance.
+
+- 2026-11-16 — [Pinned Caliburn/Morgan progression](mods/mahou-tsukai-caliburn-morgan.md): lake growth/funding, strict size guard, enchanted sword conversion, innate-cap offerings and pre-payment loss boundary, owned-pet conversion, villager growth, native guide/quest stages and unrun acceptance tests. Combat delegates/effective configs remain partial.
