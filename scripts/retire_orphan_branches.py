@@ -160,7 +160,7 @@ def main() -> int:
             file.write("## Audited orphan-branch cleanup\n\n" + summary + "\n\n")
             file.write("| Branch | Result | Detail |\n|---|---|---|\n")
             for name, state, detail in results:
-                file.write(f"| \`{name}\` | {state} | {detail} |\n")
+                file.write(f"| `{name}` | {state} | {detail} |\n")
     return 1 if counts["ERROR"] else 0
 
 
