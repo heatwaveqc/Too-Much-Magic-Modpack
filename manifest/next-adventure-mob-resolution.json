@@ -1,0 +1,661 @@
+{
+  "schema": 1,
+  "provider_resolution_run": 44013743607,
+  "roots": [
+    {
+      "id": "aether",
+      "name": "The Aether",
+      "category": "adventure",
+      "side": "both",
+      "project": "YhmgMVyu",
+      "version_id": "K5X5qMwG",
+      "version": "1.21.1-1.5.10-neoforge",
+      "filename": "aether-1.21.1-1.5.10-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/YhmgMVyu/versions/K5X5qMwG/aether-1.21.1-1.5.10-neoforge.jar",
+      "sha512": "4b004daed6d09362646e204f068dee28e80523e705e862778036c492775672071ca9cc95f9574a842f34d2e058b46138c6154c6a2f251dcdad7a8803907dad46",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "ccKDOlHs",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": "Avp7HDTx",
+          "project_id": "jtmvUHXj",
+          "file_name": null,
+          "dependency_type": "embedded"
+        },
+        {
+          "version_id": "30nL1EiU",
+          "project_id": "sq1f0DCq",
+          "file_name": null,
+          "dependency_type": "embedded"
+        }
+      ],
+      "project_categories": [
+        "adventure",
+        "equipment",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/aether/version/K5X5qMwG"
+    },
+    {
+      "id": "deep-aether",
+      "name": "Deep Aether",
+      "category": "adventure",
+      "side": "both",
+      "project": "gcHIih5B",
+      "version_id": "MSW5emg8",
+      "version": "1.21.1-1.1.5.1",
+      "filename": "deep_aether-1.21.1-1.1.5.1.jar",
+      "url": "https://cdn.modrinth.com/data/gcHIih5B/versions/MSW5emg8/deep_aether-1.21.1-1.1.5.1.jar",
+      "sha512": "f848fee0a8a73d0696bf721753af1b752b067791900a19a949ce9faa0adcf1f03b29f44e5ea945404c4505891b14dadab89009253cd31cc85c241c07fe9c5684",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "YhmgMVyu",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "1eaq94ok",
+          "file_name": null,
+          "dependency_type": "embedded"
+        },
+        {
+          "version_id": null,
+          "project_id": "kkmrDlKT",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "adventure",
+        "mobs",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8"
+    },
+    {
+      "id": "the-bumblezone",
+      "name": "The Bumblezone",
+      "category": "adventure",
+      "side": "both",
+      "project": "38tpSycf",
+      "version_id": "LwGXnQCW",
+      "version": "7.17.3+1.21.1-neoforge",
+      "filename": "the_bumblezone-7.17.3+1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/38tpSycf/versions/LwGXnQCW/the_bumblezone-7.17.3%2B1.21.1-neoforge.jar",
+      "sha512": "005b0a477e46ae6dde0e8a707949b6a6012ee2415c323871f7c547753331891e90dde95468cd25de7b40581965d5326c731fe8456d96f87e4ec6e5253144b33f",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "Q2OqKxDG",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "G1hIVOrD",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/the-bumblezone/version/LwGXnQCW"
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "name": "Dive Into the Abyss",
+      "category": "adventure",
+      "side": "both",
+      "project": "x2qQNlIy",
+      "version_id": "w30oDCUY",
+      "version": "1.1.4",
+      "filename": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/x2qQNlIy/versions/w30oDCUY/wardentools-1.1.4_neoforge_1.21.1.jar",
+      "sha512": "d6436a30cb9339c63fa2c548685e61243d38b4814e4495f7cdc02294428b6be16acd066718b847d5fad8c99246baa7abc9fa4b283e09c13f7fae6443d758728a",
+      "dependencies": [],
+      "project_categories": [
+        "adventure",
+        "game-mechanics",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/dive-into-the-abyss/version/w30oDCUY"
+    },
+    {
+      "id": "eternal-starlight",
+      "name": "Eternal Starlight",
+      "category": "adventure",
+      "side": "both",
+      "project": "XvcfUGfB",
+      "version_id": "IyTc0Vvj",
+      "version": "0.9.1+1.21.1+neoforge",
+      "filename": "eternalstarlight-0.9.1+1.21.1+neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/XvcfUGfB/versions/IyTc0Vvj/eternalstarlight-0.9.1%2B1.21.1%2Bneoforge.jar",
+      "sha512": "2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71",
+      "dependencies": [],
+      "project_categories": [
+        "adventure",
+        "equipment",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/eternal-starlight/version/IyTc0Vvj"
+    },
+    {
+      "id": "the-aurorian-unofficial-port",
+      "name": "The Aurorian Unofficial Port",
+      "category": "adventure",
+      "side": "both",
+      "project": "AsNDEFIl",
+      "version_id": "8yOGgcWP",
+      "version": "1.21.1-1.0.6",
+      "filename": "theaurorian-1.21.1-1.0.6.jar",
+      "url": "https://cdn.modrinth.com/data/AsNDEFIl/versions/8yOGgcWP/theaurorian-1.21.1-1.0.6.jar",
+      "sha512": "3e545fd767812fde4f79be60200a20129f35007d48e7b7b6bf7717adf70da3baf2de2611962260605474507af9b9262b9b630f803a347afb00a5727a9302e63c",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "vvuO3ImH",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "adventure"
+      ],
+      "source": "https://modrinth.com/mod/the-aurorian-unofficial-port/version/8yOGgcWP"
+    },
+    {
+      "id": "liroth-revamped",
+      "name": "Liroth: Revamped",
+      "category": "adventure",
+      "side": "both",
+      "project": "NM6mnXVj",
+      "version_id": "WInggx5l",
+      "version": "2.0",
+      "filename": "Liroth_R_2.0_1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/NM6mnXVj/versions/WInggx5l/Liroth_R_2.0_1.21.1.jar",
+      "sha512": "ac2fe825c5e5a3a839a6053d3d6da915afd8d4ff0811332b953f9b968851923405e334e26d6f1d81c163f2aab7f5d5b248671c209ccda35b41375572bd01c3c1",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "u6dRKJwZ",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "nU0bVIaL",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": "lxzmD9V4",
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "YBz7DOs8",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "adventure",
+        "mobs",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l"
+    },
+    {
+      "id": "creeper-overhaul",
+      "name": "Creeper Overhaul",
+      "category": "adventure",
+      "side": "both",
+      "project": "MI1LWe93",
+      "version_id": "HNrAYCLH",
+      "version": "4.0.6",
+      "filename": "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
+      "url": "https://cdn.modrinth.com/data/MI1LWe93/versions/HNrAYCLH/CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
+      "sha512": "880ca9d8d23b527d3583cbe7fa399b2a26421b6ccba1deacd666cf9b61f4af4378157f404ab3789a7ae9c3c8693e2b7f6c8c532e703e5bb0e1881b9cc2879a6e",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "M1953qlQ",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "G1hIVOrD",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "adventure",
+        "mobs"
+      ],
+      "source": "https://modrinth.com/mod/creeper-overhaul/version/HNrAYCLH"
+    },
+    {
+      "id": "enderman-overhaul",
+      "name": "Enderman Overhaul",
+      "category": "adventure",
+      "side": "both",
+      "project": "Lq6ojcWv",
+      "version_id": "TH9YXp9r",
+      "version": "2.0.3",
+      "filename": "endermanoverhaul-neoforge-1.21.1-2.0.3.jar",
+      "url": "https://cdn.modrinth.com/data/Lq6ojcWv/versions/TH9YXp9r/endermanoverhaul-neoforge-1.21.1-2.0.3.jar",
+      "sha512": "d2032b35ed5dcf028a35a1d3da16a48b71d182fab1203bbf0f9f9123b99bb725730c60cdd8a9f48431c91f7ac9e04fa958aed842ee94114ade3a9418392ee6ab",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "M1953qlQ",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "G1hIVOrD",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "mobs"
+      ],
+      "source": "https://modrinth.com/mod/enderman-overhaul/version/TH9YXp9r"
+    },
+    {
+      "id": "golem-overhaul",
+      "name": "Golem Overhaul",
+      "category": "adventure",
+      "side": "both",
+      "project": "qEYs2G9A",
+      "version_id": "V1OtffxB",
+      "version": "1.1.1",
+      "filename": "golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "url": "https://cdn.modrinth.com/data/qEYs2G9A/versions/V1OtffxB/golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "sha512": "a2e3171f708a033a89e2f6417311e42e0773dc95ac27ef1819816cefa7f0e15ff73f8a3ffd168beb9a4a3eeae2d09859badd278bc6bf3bec224d49d3b8dcccaa",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "G1hIVOrD",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "lhGA9TYQ",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "u6dRKJwZ",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "nfn13YXA",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "M1953qlQ",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "mobs",
+        "transportation",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/golem-overhaul/version/V1OtffxB"
+    },
+    {
+      "id": "winter-overhaul",
+      "name": "Winter Overhaul",
+      "category": "adventure",
+      "side": "both",
+      "project": "5M97aUS6",
+      "version_id": "jMBjksDu",
+      "version": "4.0.2+1.21.1-neoforge",
+      "filename": "WinterOverhaul-NeoForge-4.0.2+1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/5M97aUS6/versions/jMBjksDu/WinterOverhaul-NeoForge-4.0.2%2B1.21.1.jar",
+      "sha512": "4c4f11754cc83e0be885db1f7fd02cf1de4674d3d544131c96438a75b6a6fc26dd29bb8fb19fe1df90e1d72ad8e8228126829228ac02ea92dc8e56d9ea0c9afe",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "lhGA9TYQ",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "mobs"
+      ],
+      "source": "https://modrinth.com/mod/winter-overhaul/version/jMBjksDu"
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "category": "adventure",
+      "side": "both",
+      "project": "gJKLGvbS",
+      "version_id": "jlhsMccP",
+      "version": "1.3.4",
+      "filename": "ghosts-neoforge-1.21.1-1.3.4.jar",
+      "url": "https://cdn.modrinth.com/data/gJKLGvbS/versions/jlhsMccP/ghosts-neoforge-1.21.1-1.3.4.jar",
+      "sha512": "4a6c28f3b5f27455886baf7825f0afeaaef1ec4fc086994714f8aa734983e3f01584373ae62f72aceacdef23c47f1d79bc014f75360ae204405627aaaa3ebbba",
+      "dependencies": [],
+      "project_categories": [
+        "magic",
+        "mobs"
+      ],
+      "source": "https://modrinth.com/mod/ghost/version/jlhsMccP"
+    },
+    {
+      "id": "ribbits",
+      "name": "Ribbits",
+      "category": "adventure",
+      "side": "both",
+      "project": "8YcE8y4T",
+      "version_id": "XrUKaWrw",
+      "version": "4.1.6",
+      "filename": "Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "url": "https://cdn.modrinth.com/data/8YcE8y4T/versions/XrUKaWrw/Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "sha512": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "8BmcQJ2H",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "Ua7DFN59",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "decoration",
+        "mobs",
+        "worldgen"
+      ],
+      "source": "https://modrinth.com/mod/ribbits/version/XrUKaWrw"
+    },
+    {
+      "id": "critters-and-companions",
+      "name": "Critters and Companions",
+      "category": "adventure",
+      "side": "both",
+      "project": "Yd4wb5wZ",
+      "version_id": "MMFSVRkt",
+      "version": "1.21.1-2.4.0",
+      "filename": "crittersandcompanions-neoforge-1.21.1-2.4.0.jar",
+      "url": "https://cdn.modrinth.com/data/Yd4wb5wZ/versions/MMFSVRkt/crittersandcompanions-neoforge-1.21.1-2.4.0.jar",
+      "sha512": "96c886d1239da5cbcaf71fb943edc9e707dff8e10683b54adabc5f28ecf4f9e54c8df33b6b4bbbb36463c6b38a05505255ed1a36f32f52bf4e5859261a41146f",
+      "dependencies": [],
+      "project_categories": [
+        "mobs"
+      ],
+      "source": "https://modrinth.com/mod/critters-and-companions/version/MMFSVRkt"
+    },
+    {
+      "id": "more-darkness",
+      "name": "More Darkness",
+      "category": "qol",
+      "side": "client",
+      "project": "ghnOnAJe",
+      "version_id": "6jywYHaX",
+      "version": "2.0.1+1.21.1+neoforge",
+      "filename": "more_darkness-neoforge-1.21.1-2.0.1+1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/ghnOnAJe/versions/6jywYHaX/more_darkness-neoforge-1.21.1-2.0.1%2B1.21.1.jar",
+      "sha512": "e08c8e75c249e2c74cc2f223bbd8c89b66270533d1835fc525e5223813009c6ccd406f5b81c0893fa315fdbf60ab2e379ff8fb0f22ffed84f5963776158773d1",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "1eAoo2KR",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "project_categories": [
+        "adventure",
+        "cursed",
+        "decoration"
+      ],
+      "source": "https://modrinth.com/mod/more-darkness/version/6jywYHaX"
+    },
+    {
+      "id": "twilight-forest",
+      "name": "The Twilight Forest",
+      "category": "adventure",
+      "side": "both",
+      "project_id": 227639,
+      "file_id": 7797302,
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "version": "4.8.3345",
+      "url": "https://mediafilez.forgecdn.net/files/7797/302/twilightforest-1.21.1-4.8.3345-universal.jar",
+      "sha512": "371dd7079b174091363327df70ed64c84e8e36fcab49b4c33bbcbe39650f6bccc12d3e14818cdfbbaa519a999f64a0a92c03ec981f55a315b044dc7cb5c27ef4",
+      "mod_metadata_dependencies": {
+        "twilightforest": [
+          {
+            "modId": "neoforge",
+            "type": "required",
+            "versionRange": "[21.1.209,)",
+            "ordering": "NONE",
+            "side": "BOTH"
+          },
+          {
+            "modId": "minecraft",
+            "type": "required",
+            "versionRange": "[1.21.1]",
+            "ordering": "NONE",
+            "side": "BOTH"
+          }
+        ]
+      },
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest/files/7797302"
+    },
+    {
+      "id": "voidscape",
+      "name": "Voidscape",
+      "category": "adventure",
+      "side": "both",
+      "project_id": 251730,
+      "file_id": 8175491,
+      "filename": "Voidscape-1.21.1-1.9.588.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8175/491/Voidscape-1.21.1-1.9.588.jar",
+      "version": "1.9.588",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape/files/8175491",
+      "note": "Correct official Arinu project; reject unrelated Modrinth same-name 1.0 build; SHA512 computed from pinned official provider CDN."
+    }
+  ],
+  "required_dependencies": [
+    {
+      "id": "resourceful-lib",
+      "name": "Resourceful Lib",
+      "category": "library",
+      "side": "both",
+      "project": "G1hIVOrD",
+      "version_id": "x99nCLTm",
+      "version": "3.0.12",
+      "filename": "resourcefullib-neoforge-1.21-3.0.12.jar",
+      "url": "https://cdn.modrinth.com/data/G1hIVOrD/versions/x99nCLTm/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "sha512": "a9d20e345faa9bcb297bd95ac9524205834804d1bb13518397dd4f7f62b352b08c3339ee7f7870d3669078ceeb33d5c31ea527aecce4b31d62ec1ff7d8b562c8",
+      "dependencies": [],
+      "project_categories": [
+        "library"
+      ],
+      "source": "https://modrinth.com/mod/resourceful-lib/version/x99nCLTm"
+    },
+    {
+      "id": "resourceful-config",
+      "name": "Resourceful Config",
+      "category": "library",
+      "side": "both",
+      "project": "M1953qlQ",
+      "version_id": "lSbyRD6v",
+      "version": "3.0.11",
+      "filename": "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "sha512": "8e4ccc37732b3f5190e7e98df34dbc1339fe614494fcabf1aeaeab9ad8e5993522964b51be31882000c08c48a6d0096b5458364415bb81f2b2b775a7daf2eb87",
+      "dependencies": [],
+      "project_categories": [
+        "library"
+      ],
+      "source": "https://modrinth.com/mod/resourceful-config/version/lSbyRD6v"
+    },
+    {
+      "id": "yacl",
+      "name": "YetAnotherConfigLib (YACL)",
+      "category": "library",
+      "side": "both",
+      "project": "1eAoo2KR",
+      "version_id": "7TVdVtxF",
+      "version": "3.8.2+1.21.1-neoforge",
+      "filename": "yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/1eAoo2KR/versions/7TVdVtxF/yet_another_config_lib_v3-3.8.2%2B1.21.1-neoforge.jar",
+      "sha512": "583de19b927ce8050c2b7d5e60b75accc69e325e5aac85c27994c82a9dec2e4e078343fa1d4c3a10d4bd7e0e524e0b3b246a18cf03db01e363a1e6f865adcf48",
+      "dependencies": [],
+      "project_categories": [
+        "library",
+        "management",
+        "utility"
+      ],
+      "source": "https://modrinth.com/mod/yacl/version/7TVdVtxF"
+    }
+  ],
+  "provider_blockers": [
+    {
+      "parent": "aether",
+      "required": {
+        "version_id": null,
+        "project_id": "ccKDOlHs",
+        "file_name": null,
+        "dependency_type": "required"
+      },
+      "error": "ccKDOlHs: no approved stable release for 1.21.1 NeoForge"
+    },
+    {
+      "parent": "deep-aether",
+      "required": {
+        "version_id": null,
+        "project_id": "kkmrDlKT",
+        "file_name": null,
+        "dependency_type": "required"
+      },
+      "error": "kkmrDlKT: no approved stable release for 1.21.1 NeoForge"
+    },
+    {
+      "parent": "liroth-revamped",
+      "required": {
+        "version_id": null,
+        "project_id": "YBz7DOs8",
+        "file_name": null,
+        "dependency_type": "required"
+      },
+      "error": "YBz7DOs8: no approved stable release for 1.21.1 NeoForge"
+    },
+    {
+      "parent": "liroth-revamped",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": "lxzmD9V4"
+    },
+    {
+      "parent": "creeper-overhaul",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "enderman-overhaul",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "golem-overhaul",
+      "dependency": "architectury-api",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "golem-overhaul",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "winter-overhaul",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "winter-overhaul",
+      "dependency": "architectury-api",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    },
+    {
+      "parent": "ribbits",
+      "dependency": "geckolib",
+      "reason": "existing cross-provider pin; reconcile, do not duplicate",
+      "requested": null
+    }
+  ],
+  "audit_only_dependencies": [
+    {
+      "id": "owo-lib",
+      "version_id": "wbdHEItB",
+      "reason": "Aether required, beta only; do not enable without specific owner approval"
+    },
+    {
+      "id": "terrablender",
+      "version_id": "6e8GCrLb",
+      "reason": "Deep Aether required, beta only; do not enable without specific owner approval"
+    }
+  ]
+}
