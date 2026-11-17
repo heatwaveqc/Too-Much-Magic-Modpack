@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-16",
+  "baseline": "test/full-integration",
+  "policy": "Retire only these exactly pinned refs, after rechecking open PRs, protected names, and live source streams.",
+  "branches": [
+    {
+      "name": "build/b1-kubejs-infrastructure",
+      "sha": "e0a007e918b10c06b220c9adfd96e26a197c7016"
+    },
+    {
+      "name": "build/b2-meta-qol",
+      "sha": "a6eee90f73d0baf68f1d99c9587129b95b5146d7"
+    },
+    {
+      "name": "build/b4-reactors-experimental",
+      "sha": "7f97de342235f2b6d02c3700cbc6fa911f0bd782"
+    },
+    {
+      "name": "build/b5-expanded-approved-roster",
+      "sha": "2c1ac6b2811fa2ce5d7c60eb98273753fc7940ce"
+    },
+    {
+      "name": "build/b6-food-pufferfish-skills-client-handoff",
+      "sha": "f61bde083d6e1c7897d12c2e8fd132d7c9d01efd"
+    },
+    {
+      "name": "build/b7-inventory-refoxed-qol-audit",
+      "sha": "775ca92d5c54ec6f6a0fb7c3c0956b5035af1021"
+    },
+    {
+      "name": "build/b8-qol-compass-farming-market",
+      "sha": "5f37a81dce3bb797fbf9884e726f03373ff01813"
+    },
+    {
+      "name": "build/initial-neoforge-packwiz",
+      "sha": "37ee8414c2f0d9cdcb66898b8bf757341a475480"
+    },
+    {
+      "name": "change/remove-bigger-reactors-sufficiently-advanced-magic-2026-11-15",
+      "sha": "0f9545d2dcd0f8d7e14ae18bc4cced12e4ee6a69"
+    },
+    {
+      "name": "design/canonical-evilcraft-blood-2026-11-15",
+      "sha": "769c0a7b9d1f098e623a4555b7ba6ed06336456b"
+    },
+    {
+      "name": "design/five-category-quest-chapter-inventory",
+      "sha": "8c1bf0a1320940b13c5c9344fe08fc4b774a0ef1"
+    },
+    {
+      "name": "design/monk-no-pufferfish-skill-placement",
+      "sha": "483a0983e249445366c5ac7542b4511f7e3ee804"
+    },
+    {
+      "name": "design/pufferfish-skills-attributes-ars-core",
+      "sha": "7b8e96f9c9ef59ef1cf27f338147633ad8edddf5"
+    },
+    {
+      "name": "design/tectonic-worldgen",
+      "sha": "68ff825a0e96b1e328ac287e911355d87eaa116e"
+    },
+    {
+      "name": "docs/automated-qa-2026-11-16",
+      "sha": "0e0b06bd21338c2f0c290fa2abe25b2c747eb40e"
+    },
+    {
+      "name": "docs/client-playtest-findings-2026-11-15",
+      "sha": "aced7fa2b2b8b153a4dc7a470b193ddf738b07da"
+    },
+    {
+      "name": "docs/getting-started-campaign-redesign",
+      "sha": "173d8efcdb05c8fff1d1de1d0c8a594c286257c0"
+    },
+    {
+      "name": "docs/hunter-affinity-enchantments-design-2026-11-15",
+      "sha": "9d33973aa12fa2b9ac2e2b88c0389a80390a657e"
+    },
+    {
+      "name": "docs/progression-config-owned-workflow-2026-11-16",
+      "sha": "087b4c4bbf869c6682ee2a329a988d323724a670"
+    },
+    {
+      "name": "feature/akashic-tome-starter-storage",
+      "sha": "19aeec5f884500fbd951995a7ac0cc36c285cd42"
+    },
+    {
+      "name": "feature/alcohol-is-magic-quests",
+      "sha": "cde6d94e0dfc28745a6aab1bf38b8857efcb8a06"
+    },
+    {
+      "name": "feature/b14-cobblegen-stone-inventory",
+      "sha": "5df6ed38aa89394f89222f1ec496450cd491631d"
+    },
+    {
+      "name": "feature/diamond-graphite-furnace-compat",
+      "sha": "7bdae01b6912a276485ef3bf12e35aeb44f40456"
+    },
+    {
+      "name": "feature/dracolich-skeletal-model",
+      "sha": "5b695f428911332b501e75f5600bb2275947c425"
+    },
+    {
+      "name": "feature/ftb-quests-45-chapter-scaffold",
+      "sha": "7d938be42a32899bb84b9672576588c6928f481a"
+    },
+    {
+      "name": "feature/ftb-quests-intro-food-tips",
+      "sha": "4f31123852fa3361101f1412450d5be0e453e88e"
+    },
+    {
+      "name": "feature/lilith-ascended-vampire",
+      "sha": "85ffffe83213741e8c0a5afebe7a864f9013ce21"
+    },
+    {
+      "name": "feature/mob-alliance-neutrality",
+      "sha": "c474252450493f2cbf67f5f3e0d933e37c5236be"
+    },
+    {
+      "name": "feature/monk-faction-framework",
+      "sha": "816a2a12dd302ff3f28fb4165f65d5dceb3d63a0"
+    },
+    {
+      "name": "feature/monk-first-sunset-step-assist",
+      "sha": "47ab8a2c1b2c14693bdaf18012eca7690768b2ac"
+    },
+    {
+      "name": "feature/progression-quests-full-tech",
+      "sha": "a1d702d6589d0ef2eff0c4b955d4d723d3041846"
+    },
+    {
+      "name": "feature/questshop-cooking-currency-economy",
+      "sha": "d7bdfadb30d9cae228e260b5edfc8fc391e597b5"
+    },
+    {
+      "name": "feature/tyzs-core-magic-first-wave",
+      "sha": "11e2713b3c5159c94b729037e8f81d25ac297d86"
+    },
+    {
+      "name": "feature/tyzs-primary-tree-runtime-migration",
+      "sha": "5c2f15e184e0348895aadf936b36646104a9d5a1"
+    },
+    {
+      "name": "feature/werewolf-food-tag-compat",
+      "sha": "0195cedbf693e2a94102b37c31f8c0554e5805af"
+    },
+    {
+      "name": "fix/ars-quest-claim-starter-2026-11-16",
+      "sha": "99441b658a4e58ea1596c71517175fdb97abb7eb"
+    },
+    {
+      "name": "fix/integrate-starter-bundle-quest-2026-11-15",
+      "sha": "d1f9e07089c99a53980dd6da1b818e42ee5c4a58"
+    },
+    {
+      "name": "fix/monk-sunset-diagnostics",
+      "sha": "e7f9278c15d20bcb39b7fc59852269417c71c54a"
+    },
+    {
+      "name": "fix/quest-registry-gate-and-qa-priorities-2026-11-15",
+      "sha": "492a187a29fc2476697effde7a2fa26461b48fef"
+    },
+    {
+      "name": "research/atm10-specialist-benchmark-20261115",
+      "sha": "f108a2db50c779642c0d79139e68f24ba4de97b5"
+    },
+    {
+      "name": "research/early-magic-utility-inventory",
+      "sha": "7c2d6fe29ad2309acde0b9a1385e42f79615c7fa"
+    },
+    {
+      "name": "research/hunter-creature-inventory-2026-11-15",
+      "sha": "babcf062fa8b9060edbaed6bbccbfc1b716155f0"
+    },
+    {
+      "name": "research/mod-comprehension-extra-botany-revived",
+      "sha": "3114f8a81a2b1d9f9c23a81636ae97be54cc2a62"
+    },
+    {
+      "name": "research/mod-comprehension-neovitae",
+      "sha": "1a1bdc1f4b9ced57c433024c5c6fbe0a01928900"
+    },
+    {
+      "name": "test/quest-standards-starter-choice-2026-11-14",
+      "sha": "a5f210f61e934cad01c22798ed8fed9a30066cca"
+    },
+    {
+      "name": "test/quest-vampire-localization-2026-11-14",
+      "sha": "e4990fc9baae62dc45dde5b995aefdb14b19ad08"
+    }
+  ]
+}
