@@ -225,6 +225,10 @@ file = "config/tyzs_skills/custom/data/level-pool.json"
 hash = "a25fd4a294ae0411eebe82305c53cfe039dcbdec3463b2ef9bc6192bc87815e0"
 
 [[files]]
+file = "config/tyzs_skills/custom/skills/keepsake.json"
+hash = "65a08feaae0a73e85c635c473c8a9c7aaafa4f0233740bec9ea5137d7b481141"
+
+[[files]]
 file = "config/tyzs_skills/custom/skills/tmm_magic_potency_1.json"
 hash = "7ec37e3d55ebbef03819ebea780ae7186501dd49ca08cb837595c069ad34571c"
 
