@@ -78,7 +78,8 @@ public final class NewbieMode {
             // Never silently downgrade pre-existing character saves to Newbie.
             // PLAY_TIME is zero before the first tick of a genuinely new character.
             boolean existingCharacter = player.getStats()
-                .getValue(Stats.CUSTOM.get(Stats.PLAY_TIME)) > 0;
+                .getValue(Stats.CUSTOM.get(Stats.PLAY_TIME)) > 0
+                || ProgressionApi.anyJoined(player);
             set(player, existingCharacter ? REGULAR : NEWBIE);
             if (!existingCharacter)
                 player.sendSystemMessage(Component.literal(
