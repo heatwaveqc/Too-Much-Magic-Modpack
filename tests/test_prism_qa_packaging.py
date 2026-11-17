@@ -96,6 +96,8 @@ def main() -> None:
                 assert expected.issubset(z.namelist()), "QA settings missing from Prism import"
                 opts = z.read("minecraft/options.txt").decode()
                 assert opts.replace("\r\n", "\n").startswith("version:3955\n")
+                assert opts.splitlines().count("onboardAccessibility:false") == 1
+                assert not any(l.startswith("narrator:") for l in opts.splitlines()), "Never force narrator off"
                 assert "guiScale:3" in opts
                 assert "soundCategory_master:0.55" in opts
                 assert not any(l.startswith("key_") for l in opts.splitlines())
