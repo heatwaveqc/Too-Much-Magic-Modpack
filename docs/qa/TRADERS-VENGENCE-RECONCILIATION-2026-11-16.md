@@ -1,0 +1,39 @@
+# Trader's Vengence — source reconciliation and next QA
+
+**Date:** 2026-11-16 · **Target:** Minecraft 1.21.1 NeoForge 21.1.265 · **Package:** `compat/traders-vengence` / `traders_vengence`.
+
+**Status:** Source/module reconciliation only, **NOT an installed Packwiz JAR, dedicated-server boot, client launch or gameplay PASS**. Approved historical [PR #219](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/219) is a standalone Trader's Vengence implementation, frozen SHA `a5c8f32bd50744e2b3e083273c50e75d93b27c82`. Replacement integration PR must retain the current canonical blood, JAWR+MXP, progression, dimensions, and YUNG/Ars baselines. The separate B20 Wandering Trader stock code is *not* replaced or auto-assembled by this source reconciliation.
+
+## Preserved behaviors
+
+- **Global vendetta:** persistent Overworld `SavedData` set of offender UUIDs shared across dimensions; operator `/tradersvengence status|accuse|pardon <UUID>` for recovery. Player-caused wandering trader/villager deaths (including credited player projectiles), vanilla `VILLAGER_HURT` / `VILLAGER_KILLED` reputation callbacks, actual post-damage hits against iron golems and **new** targeting of a player by Iron's Priest count as offenses.
+- **Pardon:** gaining/renewing native Hero of the Village removes the UUID from persistent vendetta, not just while effect is active. Continuing Priest target does not immediately re-accuse; a genuinely new target acquisition can re-accuse. Admin pardon works without a raid.
+- **Defenders:** iron golems chase offenders, llamas use their native spit behavior; villagers use a bounded 50-tick/16-block Iron's Magic Missile attack (target-specific) against either blacklisted survival players or the **specific non-allied mob that actually attacked that villager**, not every nearby hostile monster. No new projectile mod, broad monster sweep, or mandatory player-magic XP behavior.
+- **Spawn rules:** vanilla wandering-trader spawn candidates must have sky access, be within ±10 blocks of *dimension sea level*, stand on `#traders_vengence:valid_trader_ground`, and lie farther than 32 blocks from any existing two-sided sign that reads `No Soliciting` or `[No Soliciting]` on any line. Sign search only scans already loaded chunks (no force-load).
+- **Intentional manual spawns:** upgraded `WanderingTraderSpawnerMixin` intercepts only vanilla `spawn(ServerLevel)`'s native candidate position search. It retries up to **three native position searches** (the native helper already searches up to ten positions) and returns null when none qualifies. It does **not** cancel `EntityJoinLevelEvent` for newly created traders: operator `/summon`, spawn eggs, modded story/quest spawns, and traders loaded from disk are left untouched.
+- **Repeated joins:** combat goals are added only when the mob's native GoalSelector lacks our `WantedPlayerTargetGoal`; repeated join/unload of an existing entity must not stack 2×, 3× or more attack goals.
+
+## Compatibility and performance
+
+- Source targets **pinned Iron's Spells 'n Spellbooks 3.16.3** for `irons_spellbooks:priest` and the `irons_spellbooks:magic_missile` entity. Java uses reflection for `shoot(Vec3)` and `setDamage(float)`; **actual ABI, target attribution, projectile flight/damage and event handling are not proven by module compilation**. The first failure is logged and no projectile is launched until repaired; do not simulate damage or award fake rewards.
+- Priest target monitoring uses `EntityTickEvent.Post` once per loaded Priest and a per-entity persistent UUID to avoid endless re-accusation. No world-global every-entity scans and no on-item tick listeners. However, verify Priest counts and cost under populated villages/raids and event ordering on relogs.
+- The 32-block sign search iterates nearby **loaded** chunk block entities only on rare, scheduled vanilla trader spawn candidate checks; it is not an every-tick sign scan. Bound the extra candidate searches at three groups, rather than continuously retrying until a trader appears.
+- All source code stays inside the independent `compat/traders-vengence` runtime module, not a path-specific class/Progression implementation. No changes to the current reusable Progression, MXP, transformations, or standard Wandering Trader B20 stock files.
+- No item/texture for a new custom No Soliciting sign is introduced; ordinary Minecraft signs suffice. Numerical ranges, damage and cooldown are code constants pending balancing, not server config options yet.
+
+## Source-only verification
+
+Run `gradle -p compat/traders-vengence clean test build --no-daemon` under Java 21, plus root `python3 scripts/validate.py` and read-only `python3 scripts/validate_integration_sources.py`. Check the `traders_vengence.mixins.json` syntax, bundled block tag JSON, natural-spawn Mixin target and absence of all-new-entity spawn cancellations. A module build **does not** guarantee an @Redirect matched the exact NeoForge/Mojang bytecode. No full NeoForge server smoke or Prism QA build is authorized by this document.
+
+## Next owner-authorized disposable-world acceptance
+
+1. Build/install the first-party `traders_vengence` JAR in the **same** candidate as the pinned Iron's 3.16.3 mod, the current first-party transformations/progression code and any B20 trader stock. Confirm mixin applies to `WanderingTraderSpawner.spawn` without InjectionError on a dedicated server and client.
+2. Force native scheduled spawn checks at flat and hilly locations (and Y near sea level ±10) with and without sky and natural ground. Test 32 blocks vs 33 blocks from ordinary front/back `No Soliciting` signs, and compare spawn-attempt duration. Ensure the spawner tries fresh legal candidates rather than dropping all traders near a single disallowed patch.
+3. While standing inside a prohibited sign radius or underground, **/summon a trader and use its spawn egg**; both should still succeed. Unload/reload a previously spawned trader; it must survive without forcing a new spawn-rule decision. Confirm trader llamas are unaffected except by the vendetta behavior.
+4. Kill a wandering trader, hurt and kill a villager, and hurt a golem using melee/projectiles; include shields, fully absorbed hits and an isolated villager with no gossip witnesses. Confirm only true attributed offenders are blacklisted, persist across death, save/restart and dimensions, and do not implicate non-offenders.
+5. Test Iron's Priest aggression threshold, target swapping, continued targeting through a pardon and across chunk reload. Winning a raid to get Hero of the Village must remove the vendetta permanently; commit a new offense to reacquire it.
+6. Confirm villagers fire **actual** Iron's Magic Missile projectiles with appropriate damage/cooldown/range only at the offender or the individual mob that directly attacked them. Villagers must otherwise work, sleep, trade and flee normally, never globally hunt every hostile mob. Test Iron Golems, ordinary/Trader Llamas, creative/spectator players and cross-mod friendly creatures separately.
+7. Repeat entity joins/dimension travel to prove combat goals do not multiply. Check server TPS at ordinary and unusually large villages, including a large number of Iron's Priests and several placed signs.
+8. Validate B20 trader stock remains intact, no prohibited Seven Deadly Sins Ring is added, and B19 required-mob Gateways still use their own spawn definitions. Record test evidence against the exact assembled SHA/JAR checksums.
+
+**Open risks:** only source/module build proven; version-pinned Iron's `MagicMissile` reflection ABI, villager Brain versus goal selector arbitration, natural-spawner Mixin injection, potion award timing, cross-mod AI priorities, and full gameplay acceptance remain outstanding. Do not represent any of these as passed without in-world evidence. Keep a separate acceptance issue open after closing superseded #219.
