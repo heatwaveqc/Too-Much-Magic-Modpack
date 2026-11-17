@@ -3,6 +3,9 @@ on:
   workflow_run:
     workflows: ["Continuous Full Integration Launcher"]
     types: [completed]
+  # Recovery for missed launcher completion events. Publication only; no builds.
+  schedule:
+    - cron: '17,47 * * * *'
   push:
     branches: [main]
     paths: ['manifest/unstable-publication-seed.json']
@@ -14,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && (github.event_name == 'push' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_branch == 'main')) }}
+    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && (github.event_name == 'push' || github.event_name == 'schedule' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_branch == 'main')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -29,5 +32,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           SOURCE_RUN: ${{ github.event.workflow_run.id }}
+          RECONCILE_LATEST: ${{ github.event_name == 'schedule' && '1' || '' }}
         run: |
           python3 scripts/publish_unstable_prism.py

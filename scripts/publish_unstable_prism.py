@@ -16,7 +16,9 @@ import zipfile
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = "Too-Much-Magic-Full-Integration-Prism-UNSTABLE"
-FIXED = "Tyr-Unstable.zip"
+FIXED = "Too-Much-Magic-Unstable.zip"
+LEGACY_FIXED = "Tyr-Unstable.zip"
+TITLE = "Too Much Magic — latest unstable QA (test worlds only)"
 RELEASE = "unstable"
 SHA = r"[0-9a-f]{40}"
 LABEL = r"QA run ([0-9]+) attempt ([0-9]+) snapshot (" + SHA + r")"
@@ -115,7 +117,7 @@ def release_or_none():
 
 def current_asset(rel):
     if rel is None: return None
-    matches = [a for a in rel["assets"] if a["name"] == FIXED]
+    matches = [a for a in rel["assets"] if a["name"] in (FIXED, LEGACY_FIXED)]
     require(len(matches) <= 1, "Ambiguous rolling asset")
     return matches[0] if matches else None
 
@@ -149,9 +151,9 @@ def publish(run_id, attempt, snap, artifact, path, digest, meta):
              "This does not publish a stable release or certify gameplay. Scope omissions are recorded in the source QA ledger.\n")
     if rel is None:
         gh("release","create",RELEASE,"--repo",REPO,"--target",snap,"--prerelease","--latest=false",
-           "--title","Tyr — latest unstable QA (test worlds only)","--notes",notes)
+           "--title",TITLE,"--notes",notes)
         rel = release_or_none()
-    staged_name = f"Tyr-Unstable-{run_id}-{attempt}.zip"
+    staged_name = f"Too-Much-Magic-Unstable-{run_id}-{attempt}.zip"
     require(not any(a["name"] == staged_name for a in rel["assets"]), "Stage already exists; inspect publication before retry")
     staged_file = path.with_name(staged_name)
     path.rename(staged_file)
@@ -164,7 +166,7 @@ def publish(run_id, attempt, snap, artifact, path, digest, meta):
     if existing:
         old_run, old_attempt, old_snap = label_identity(existing)
         require((old_run,old_attempt) < identity,"Newer asset appeared")
-        archive_name = f"Tyr-Unstable-{old_run}-{old_attempt}.zip"
+        archive_name = f"Too-Much-Magic-Unstable-{old_run}-{old_attempt}.zip"
         require(not any(a["name"] == archive_name for a in rel["assets"]), "Prior archive already exists; do not overwrite")
         archived = patch_asset(existing, archive_name, existing["label"])
     try:
@@ -175,20 +177,33 @@ def publish(run_id, attempt, snap, artifact, path, digest, meta):
         # verified fixed asset; otherwise restore the prior working asset name.
         cur = current_asset(release_or_none())
         if archived and cur is None:
-            patch_asset(archived,FIXED,archived["label"])
+            patch_asset(archived,existing["name"],archived["label"])
         raise
-    gh("release","edit",RELEASE,"--repo",REPO,"--prerelease","--latest=false","--notes",notes)
+    gh("release","edit",RELEASE,"--repo",REPO,"--prerelease","--latest=false","--title",TITLE,"--notes",notes)
     print("PUBLISHED https://github.com/"+REPO+"/releases/download/unstable/"+FIXED)
     print("SHA-256 "+digest)
+
+def latest_prism_run():
+    # Only canonical successful authorized launcher runs are eligible; read_run
+    # independently checks success, exact smoke/package steps, tag and artifact.
+    runs = api("actions/workflows/full-integration-launcher.yml/runs?branch=main&event=workflow_dispatch&status=success&per_page=100")["workflow_runs"]
+    candidates = [r for r in runs if r.get("display_title","").startswith("QA Prism ")
+                  and r["event"] == "workflow_dispatch" and r["head_branch"] == "main"
+                  and r["status"] == "completed" and r["conclusion"] == "success"]
+    require(bool(candidates), "No successful Prism launcher in reconciliation window")
+    return str(max(candidates, key=lambda r: (r["id"], r["run_attempt"]))["id"])
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--check",action="store_true")
     args = parser.parse_args()
     seed = json.loads((ROOT/"manifest/unstable-publication-seed.json").read_text())
-    run_id = os.environ.get("SOURCE_RUN") or str(seed["run_id"])
+    source_run = os.environ.get("SOURCE_RUN")
+    reconcile = os.environ.get("RECONCILE_LATEST") == "1"
+    require(not (source_run and reconcile), "Ambiguous publication source")
+    run_id = source_run or (latest_prism_run() if reconcile else str(seed["run_id"]))
     run, attempt, snap, artifact = read_run(run_id)
-    if not os.environ.get("SOURCE_RUN"):
+    if not source_run and not reconcile:
         require((attempt,snap,artifact["id"],artifact["digest"]) ==
                 (seed["attempt"],seed["snapshot"],seed["artifact_id"],seed["digest"]), "Seed identity changed")
     if not args.check:
