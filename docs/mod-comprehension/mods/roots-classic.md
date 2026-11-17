@@ -8,9 +8,9 @@
 | Pinned version / artifact / hash | `RootsClassic-1.21.1-1.5.10.jar`; SHA-1 `7d02ec46e4d276ebf556cdd529a75108b4724efd` (`mods/roots-classic.pw.toml`) |
 | Source snapshot | Version-setting commit [`db9aa883b7a54a1558dbc710546be1f42544be72`](https://github.com/Lothrazar/RootsClassic/tree/db9aa883b7a54a1558dbc710546be1f42544be72), branch `1.21.1`, Gradle declares 1.21.1-1.5.10; source/JAR build equivalence not tested |
 | Guide/documentation version gap | Exact pinned Runic Tablet research definitions and English text inspected. The project branch is version-aligned; no separate external guide required. |
-| Profile status | researching |
+| Profile status | source-complete |
 | Evidence reached | Exact JAR SHA-1 verified and inspected; immutable source version-setting commit, config, recipe files and tracker quest inspected; no client test |
-| Reviewed | 2026-11-15 |
+| Reviewed | 2026-11-16 |
 | Quest ownership | `config/ftbquests/quests/chapters/roots_classic.snbt` is an optional checkmark placeholder with 2 XP and paper; no actual walkthrough. Not edited. |
 
 ## Executive gameplay map
@@ -35,8 +35,8 @@
 | Natural resources and tools | exact loot/recipe/config + research pages | strong | Natural Arts → Bark Harvesting, Rare Materials, Growth Powder, Mutating Powder, Berries, Stew, Poultice | not run | Verify drops and modifiers against world state |
 | Spell Powder, modifiers, Imbuer and Terra | exact source handler, recipe JSON, guide pages | broad; every component inventoried | Spellcraft → Mortar, Imbuer, Modifiers, Terra, individual flower entries | not run | Verify cast/failed-cost order and settings |
 | Ritual Altar/Brazier/stone tiers | exact recipe parser, structure and ritual JSON | strong source map for tiers; one ritual per type | Rituals → Basic Ritual Mechanics, named ritual entries | not run | Test valid/invalid layouts, extra incense and activation |
-| Staves/Crystal Staff | source handler, rituals, research | partial, four-spell and mobility usage mapped | Spellcraft → Imbuer; Rituals → Crystal Staff | not run | Validate spell cycle, natural-block check and charge behavior |
-| Ritual effects and item outputs | 46 ritual JSONs + source effect classes | all broad effect families inventoried | Rituals tab and JEI custom Ritual category | not run | Audit per-effect entity, world target, safety and costs |
+| Staves/Crystal Staff | source handler, rituals, research | source-complete native operation; guide discrepancy documented | Spellcraft → Imbuer; Rituals → Crystal Staff | not run | Pinned cycle/cost mapped, natural-ground guide claim disproven; client acceptance unrun |
+| Ritual effects and item outputs | 46 ritual JSONs + source effect classes | all broad effect families inventoried | Rituals tab and JEI custom Ritual category | not run | All12 effect families audited; test observed targets/protections |
 | FTB chapter | exact tracked SNBT | placeholder only | — | not run | Later quest pass replaces checkmark with how-to chapter |
 
 ## Guidebook onboarding
@@ -44,7 +44,7 @@
 - **Guide and access:** `rootsclassic:runic_tablet`, a custom three-tab guide UI opened by using it in the main hand. Shaped recipe: Old Root above one `c:stones` block, three wheat seeds below/at sides as pattern `" R ", "SBS", " S "`. There is no Patchouli dependency or external book acquisition path.
 - **Earliest attainable stage:** early Overworld; the rare input is Old Root, default drop chance 1/40 from tall grass. No boss, dimension or chapter prerequisite.
 - **First instructional quest:** “Find the Runic Tablet.” Teach tall-grass collection, exact shaped ingredients, right-click/open in main hand, and guide navigation through Natural Arts, Spellcraft and Rituals. FTB can detect possession only; task text must say how to open and consult it.
-- **Reference map:** Natural Arts: Bark Harvesting; Rare Materials (Old Roots, Verdant Sprigs, Infernal Bulbs, Dragon's Eyes); Growth Powder; Mutating Powder; Berries; Rooty Stew; Healing Poultice. Spellcraft: Mortar/Pestle/Usage; Imbuer/Staff Mechanics; Modifiers; Terra; 19 standard floral ingredients and three mutated flower spells. Rituals: Basic Ritual Mechanics; Living Tools; Growth; Standing Stones; Animal Summoning; Crystal Staff; weather; Flare; Enhanced Standing Stones; Monster Summoning; Sylvan/Wildwood Armor; Powered Stones; Mass Breeding; Life Drain; Sacrifice; Runic Focus; Engraved Blade; Time Shift. Pinned JAR research definitions and localization key names were checked against source.
+- **Reference map:** Natural Arts: Bark Harvesting; Rare Materials (Old Roots, Verdant Sprigs, Infernal Bulbs, Dragon's Eyes); Growth Powder; Mutating Powder; Berries; Rooty Stew; Healing Poultice. Spellcraft: Mortar/Pestle/Usage; Imbuer/Staff Mechanics; Modifiers; Terra;19 ordinary components and three mutated flower spells. Rituals: Basic Ritual Mechanics; Living Tools; Growth; Standing Stones; Animal Summoning; Crystal Staff; weather; Flare; Enhanced Standing Stones; Monster Summoning; Sylvan/Wildwood Armor; Powered Stones; Mass Breeding; Life Drain; Sacrifice; Runic Focus; Engraved Blade; Time Shift. Pinned JAR research definitions and localization key names were checked against source.
 - **Guide limits:** Item recipe pages explain names/effects and show JEI-like recipes, but physical construction/activation still needs operational instructions. Ritual entry pages do not replace the common requirements: exact altar inventory, exact lit incense set, correct level layout, and empty-hand sneak activation. Spell pages can mention powerful consequences without describing all boundary targets.
 - **Other in-game help:** JEI plugin registers custom Mortar and Ritual recipe categories; shaped recipes appear normally. No patchouli book or worldgen guide structures were found in the exact JAR.
 
@@ -215,8 +215,8 @@ No demonstrated crash or declared dependency conflict was found. Pinned JAR meta
 
 - [ ] Pinned class comparison completed for RootsConfig, event cadence and StaffItem; effective TMM world config and runtime behavior still need testing.
 - [ ] Launch client to test Runic Tablet rendering, Mortar/Imbuer menus, spell targeting and whether insufficient mana consumes staff durability.
-- [ ] Map each of the 46 ritual effects to exact target, range, result count, damage, duration, drops, entity AI and success/failure cue. Common recipe parser is source-backed, not all effect implementations.
-- [ ] Verify Powered Stone and Living/Wildwood item exact range, repair, protection and activation behavior; confirm all quest references agree with 1.5.10 pages.
+- [ ] All46 native recipes and12 effect implementations mapped in pinned ritual appendix; run the target/claims/cancellation tests before gameplay acceptance.
+- [ ] Powered Stone ranges/repair/activation handlers mapped; test real effects and protection. Engraved book recipe reference is broken; quest text must use actual JEI recipe as documented.
 - [ ] Test Roots hostile summons against JAWR/Dragon Survival/faction policy and consider output/drop gate interactions before questing.
 - [ ] Resolve Earth Spike behavior with datapack-tagged modded blocks and FTB chunks claims in a disposable world.
 - [ ] Reconcile the empty FTB chapter during the later quest pass; no quest/runtime edit is part of this profile.
@@ -227,6 +227,19 @@ No demonstrated crash or declared dependency conflict was found. Pinned JAR meta
 
 ## Local artifact and document recovery — 2026-11-16
 
-The tracked profile contained a malformed binary prefix, a nibble-shifted recoverable first section and a damaged transition before its readable Imbuer build row. Original file SHA256 `e02b29372317a4ab10492feabf0eaedbfad6f3c62d0b07d0dea84098ad52e309`. Recovered valid UTF-8 prose and replaced the damaged table transition with newly checked StaffItem/build references; no claim of byte-for-byte restoration of lost text. All research Markdown now decodes as UTF-8. Exact local JAR SHA1 matches its pin. Its actual inventory is46 ritual recipes,22 component recipes,10 shaped,5 shapeless and1 smelting recipe, correcting older49/23 claims. See [pinned ritual audit](roots-classic-pinned-rituals.md) for all46 recipe rows and12 implementation families. Main profile remains researching pending component/item-effect closure; no client acceptance.
+The tracked profile contained a malformed binary prefix, a nibble-shifted recoverable first section and a damaged transition before its readable Imbuer build row. Original file SHA256 `e02b29372317a4ab10492feabf0eaedbfad6f3c62d0b07d0dea84098ad52e309`. Recovered valid UTF-8 prose and replaced the damaged table transition with newly checked StaffItem/build references; no claim of byte-for-byte restoration of lost text. All research Markdown now decodes as UTF-8. Exact local JAR SHA1 matches its pin. Its actual inventory is46 ritual recipes,22 component recipes,10 shaped,5 shapeless and1 smelting recipe, correcting older49/23 claims. See [pinned ritual audit](roots-classic-pinned-rituals.md) for all46 recipe rows and12 implementation families. Native system/progression source closure is completed in the spell/item appendix; no client acceptance.
 
-See [all22 pinned spells, stones and advanced branches](roots-classic-pinned-spells-items.md) for exact classes, recipe inputs, cast costs, targeting, auras, mutations and guide discrepancies. Runic Focus downstream use and Engraved Forceful hook remain the narrow source-coverage gaps; all client/claims/faction tests remain unrun.
+See [all22 pinned spells, stones and advanced branches](roots-classic-pinned-spells-items.md) for exact classes, recipe inputs, cast costs, targeting, auras, mutations and guide discrepancies. Whole-artifact scans found no native consumer for Focus operation or Forceful effect; their advertised/recipe-only limits are documented. All client/claims/faction tests remain unrun.
+
+## Source-complete disposition — 2026-11-16
+
+The profile and two pinned appendices now cover every major native progression/system branch with a guide/JEI teaching route, actual costs/outputs and explicit nonfunctional/bug boundaries. Source-complete means research scope; it does not mean all guide claims work, quests are authored, effective configs were tested or the pack is safe/balanced. Crystal Staff ground/health text, raw-time Radiant Daisy gate, mutation matching, Focus/Forceful omissions, Engraved missing recipe page, sacrifice indexing and altar reload are documented findings, not hidden remaining mechanics. The checkbox list above is runtime/quest acceptance work unless explicitly labeled otherwise.
+
+| Optional branch | Action/reference | Honest detector / reward direction |
+| --- | --- | --- |
+| Crystal Staff | Craft named ritual; level1 re-imbue with powder incenses; cycle and cast one selected effect. | Item proxy plus manual action if no detector; XP+ordinary powder ingredients. |
+| Living/Sylvan/Wildwood | Follow named recipe and choose self-repair tools, potency armor or full-set health regeneration. | Item/equipment proxy, not repair/bonus proof; XP+survival consumables. |
+| Powered Stones | Named ritual, place in controlled area and observe specific aura/motion/growth. | Placement alone not effect proof; manual fallback; XP+building supplies. |
+| Mutated flowers | Follow complete nominal offering/environment procedures in appendix, including rare powder/Nether Star gate. | Actual flower possession proxy; warn about failed-use losses/time bug; XP+mundane exploration supplies. |
+| Engraved Blade | Use actual JEI `ritual/crafting/engraved_crafting` because book recipe reference is broken; level2 and up to4 modifier barks. | Actual blade/modifiers if task supports component check, otherwise explicit proxy; XP+repair-independent consumables. |
+| Foci / Forceful | Explain recipe/tooltip-only native limitations; do not invent a functional capstone. | Optional collection only, not claimed use; no gated rewards. |

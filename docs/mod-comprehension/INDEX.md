@@ -135,7 +135,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `pastel` | Pastel | magic | enabled flag | full | researching | [profile](mods/pastel.md) |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | researching | [profile](mods/primal-magick.md) |
 | `psi` | Psi | magic | enabled flag | full | researching | [profile](mods/psi.md) |
-| `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
+| `roots-classic` | Roots Classic | magic | enabled flag | full | source-complete | [profile](mods/roots-classic.md) |
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | source-complete | [profile](mods/scriptor-magicae.md) |
 | `theurgy` | Theurgy | magic | enabled flag | full | researching | [profile](mods/theurgy.md) |
 | `totemic` | Totemic | magic | enabled flag | full | researching | [profile](mods/totemic.md) |
@@ -327,3 +327,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — Recovered malformed Roots Classic Markdown; [pinned ritual audit](mods/roots-classic-pinned-rituals.md) corrects inventory46 rituals/22 components, maps all12 effect families and exact layouts, confirms Terra/staff defaults and identifies in-progress recipe reload and sacrifice-target indexing boundaries. Main remains researching.
 
 - 2026-11-16 — [Roots22 spells/items](mods/roots-classic-pinned-spells-items.md) maps every component, eight powered stones, Crystal Staff/Sylvan/Wildwood, all three mutations and direct-handler discrepancies. Narrow Focus/Forceful hooks remain to close; client tests separate.
+
+- 2026-11-16 — Roots Classic native source coverage completed after all22 spells/46 rituals/8stones/3mutations and major gear closure. Whole-JAR scans found no Focus/Forceful operation consumer; Engraved book recipe points at missing ID, so appendix provides actual JEI route. Known implementation gaps are findings; client/claims/quest acceptance remains unrun.
