@@ -1,0 +1,33 @@
+name: Publish verified rolling unstable Prism package
+on:
+  workflow_run:
+    workflows: ["Continuous Full Integration Launcher"]
+    types: [completed]
+  push:
+    branches: [main]
+    paths: ['manifest/unstable-publication-seed.json']
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: rolling-unstable-prism-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && (github.event_name == 'push' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_branch == 'main')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact server-tested artifact and publish QA-only prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN: ${{ github.event.workflow_run.id }}
+        run: |
+          python3 scripts/publish_unstable_prism.py

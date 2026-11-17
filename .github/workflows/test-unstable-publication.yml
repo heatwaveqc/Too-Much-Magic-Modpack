@@ -1,0 +1,26 @@
+name: Validate unstable publication (read-only, no build)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-unstable-prism.yml'
+      - '.github/workflows/test-unstable-publication.yml'
+      - 'scripts/publish_unstable_prism.py'
+      - 'manifest/unstable-publication-seed.json'
+permissions:
+  actions: read
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify real source artifact, digest, manifest, and immutable snapshot without publishing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/publish_unstable_prism.py --check
