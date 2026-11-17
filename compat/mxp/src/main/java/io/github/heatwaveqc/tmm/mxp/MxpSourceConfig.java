@@ -28,6 +28,11 @@ public final class MxpSourceConfig {
             .defineInRange("botania_portable_initial_mana", ResourceBaselines.BOTANIA_PORTABLE_MANA, 0.0, 1.0e12);
         NEO_EV_NETWORK_POOL = b.comment("Tier-0 Novicius/Weak Blood Orb Anima capacity = 5000 EV in Neo Vitae 1.1.53 blood_orb_stats data map. Fixed MXP reference; 0 disables the adapter.")
             .defineInRange("neovitae_ev_network_initial", ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV, 0.0, 1.0e12);
+        JAWR_INITIAL_BLOOD_POOL = b.comment(
+                "JAWR 0.5.39 Vampire native blood pool normalization target = 900.",
+                "Owner-approved proposed first-access baseline; set 0 to disable a future native adapter.",
+                "IMPORTANT: No automatic JAWR hook has been enabled until a verified post-commit debit event exists.")
+            .defineInRange("jawr_initial_blood", ResourceBaselines.JAWR_INITIAL_BLOOD, 0.0, 1.0e12);
         b.pop();
         SPEC = b.build();
     }
