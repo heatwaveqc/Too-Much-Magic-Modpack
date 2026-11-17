@@ -21,7 +21,7 @@ def main() -> None:
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from first_party_runtime import selected, verify_packaging_inputs
+    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
         bootstrap = folder / "bootstrap.jar"
@@ -34,6 +34,21 @@ def main() -> None:
                 z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
             addons.append(jar)
         verify_packaging_inputs(addons)
+        # Regression against the loader's actual native version, not its short
+        # marketing version. Test the old failure, an exact pin and a future ABI.
+        trader = folder / "trader-dependency-test.jar"
+        for version, valid in (("[3.16.3,)", False), ("[1.21.1-3.16.3]", True), ("[1.21.1-3.16.4]", False)):
+            with zipfile.ZipFile(trader, "w") as z:
+                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "traders_vengence"\n'
+                           '[[dependencies.traders_vengence]]\nmodId = "irons_spellbooks"\n'
+                           'type = "required"\nordering = "AFTER"\nside = "BOTH"\n'
+                           f'versionRange = "{version}"\n')
+            try:
+                verify_trader_irons_pin(trader)
+            except ValueError:
+                assert not valid, "Correct pinned native range rejected"
+            else:
+                assert valid, "Incorrect Iron's dependency accepted"
         for invalid in (addons[:-1], addons + [addons[0]]):
             try:
                 verify_packaging_inputs(invalid)
