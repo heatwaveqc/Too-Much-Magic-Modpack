@@ -42,6 +42,8 @@ See [pinned starter instructions and53-circle crosswalk](mahou-tsukai-pinned-onb
 
 See [pinned Caliburn/Morgan progression](mahou-tsukai-caliburn-morgan.md) for exact lake costs, offering loss boundaries, weapon conversion/growth and native guide references.
 
+See [pinned exchange and life-drain economy](mahou-tsukai-exchange-life-drain.md) for actual consumed inputs, random outputs, durability taxation, sustain priority, immunity and unrun balance boundaries.
+
 ## Guidebook onboarding — required before the player's first complex step
 
 - **Guide name and access:** Mahou Tsukai Knowledge Compendium, registry `mahoutsukai:guidebook`; the official wiki shows a 3×3 recipe using red dye, paper, and leather. Right-click to open, navigate with arrows/home, and consult the three powder ingredients for spell entries. It can also be placed on a Lectern. Exact pinned grid is now recorded in [the artifact-backed onboarding](mahou-tsukai-pinned-onboarding.md): five Red Dye, three Paper and one Leather. Native client GUI class and53 named recipe-page matches are inspected; rendering remains untested. [Compendium page](https://mahoutsukai.stepsword.com/items/guidebook/)
