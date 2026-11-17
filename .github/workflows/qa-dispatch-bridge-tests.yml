@@ -1,0 +1,24 @@
+name: QA dispatch guard tests (no dispatch)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/qa-dispatch-bridge.yml'
+      - '.github/workflows/qa-dispatch-bridge-tests.yml'
+      - '.github/workflows/full-integration-launcher.yml'
+      - 'scripts/qa_dispatch_bridge.py'
+      - 'tests/test_qa_dispatch_bridge.py'
+permissions:
+  contents: read
+jobs:
+  guard-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run fake API authorization, stale-head, CI, concurrent and replay rejection tests
+        run: python3 tests/test_qa_dispatch_bridge.py

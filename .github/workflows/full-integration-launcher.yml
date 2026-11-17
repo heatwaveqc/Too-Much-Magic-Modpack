@@ -1,12 +1,28 @@
 name: Continuous Full Integration Launcher
+run-name: QA ${{ inputs.full_smoke && (inputs.package_prism && 'Prism' || 'Smoke') || 'Quick' }} ${{ inputs.expected_integration_sha }} ${{ inputs.qa_request_id }}
 on:
   workflow_dispatch:
     inputs:
       full_smoke:
-        description: 'Owner-authorized full NeoForge smoke and Prism QA build; unchecked runs quick checks only'
+        description: 'Fresh owner-authorized full NeoForge smoke; unchecked runs quick checks only'
         required: true
         type: boolean
         default: false
+      package_prism:
+        description: 'Include Prism QA package only after successful authorized smoke'
+        required: false
+        type: boolean
+        default: true
+      expected_integration_sha:
+        description: 'Exact approved integration SHA (mandatory for bridge requests)'
+        required: false
+        type: string
+        default: ''
+      qa_request_id:
+        description: 'Bridge nonce (blank for direct manual invocation)'
+        required: false
+        type: string
+        default: ''
 permissions:
   contents: write
 jobs:
@@ -16,3 +32,6 @@ jobs:
     uses: heatwaveqc/Too-Much-Magic-Modpack/.github/workflows/full-integration.yml@test/full-integration
     with:
       full_smoke: ${{ inputs.full_smoke == true }}
+      package_prism: ${{ inputs.package_prism == true }}
+      expected_integration_sha: ${{ inputs.expected_integration_sha }}
+      qa_request_id: ${{ inputs.qa_request_id }}
