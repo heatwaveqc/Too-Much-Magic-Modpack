@@ -38,4 +38,4 @@ The pending Tyz/MXP first-wave must be checked independently from its implemente
 
 ## Historical design research archive
 
-Historical MXP and Monk specifications from superseded PRs #48 and #71 are preserved as source-accurate, **non-runtime** records in [`docs/archive/`](docs/archive/README.md). Consult the archive for research and original design decisions; consult `test/full-integration` and `dev/progression` for current implementation and architecture. Nothing archived is implicitly installed or approved for gameplay.
+Historical MXP, Tyz nine-tree, and Monk design specifications from superseded PRs **#27, #48, #71, #83 and #100** are preserved as source-accurate, **non-runtime** records in [`docs/archive/`](docs/archive/README.md). Consult the archive for research and original design decisions; consult `test/full-integration` and `dev/progression` for current implementation and architecture. Nothing archived is implicitly installed or approved for gameplay.
