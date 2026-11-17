@@ -294,3 +294,8 @@ Added pinned-casting.md: exactNoviceBookorNotebook+4Irontools,Apprentice/Archmag
 ### 2026-11-17 21:39UTC armor/threads/Reactive continuation
 
 Added pinned-armor-threads.md: 12family/piece slotlayouts all3internaltiers sorteddescending,0→1(twoBlazeRods2500Source)→2(twoPearls+Chorus5000),19functionalthreads+EmptyPerk(20registered),all19recipepedestals,table3parts/standvsworktop/addnext/removefirst/returnarmor,perktagmapreplacement(existingstatecanbelost). Slotvalue/booktier/armortierseparate, familieschoices. All19sourceabilities includingcountForPerkMAXnotSUM,200tick20manarepairbase1,globalSleeptimeUndyingrefresh,perinstanceLifeDrain,Chillingliteralamp1/2,GlideCaelus/EffectGlidecheck. TwoLootingmixins max(spellLuck,enchant)+intDRYGMY foronlythosefunctions. Reactiveevents25%×rank/afterhurtallarmor/attackblockairmainhand,normalplayerManadebit,notfreeclick. No runtime. Parent12companions,stillresearching; nextothercastinggear/devices/Amethystworker,then7addons/pilot/fullstage.
+
+
+### 2026-11-17 Amethyst Golem worker
+
+Added pinned-amethyst-golem.md: AwakeningconsumesBudding/Dispelcharmmove,ownhomewandgolemfirst→inventorylast,scancubeXZ5Y-3..10every3600,AmethystBlock→BuddingoneNativeconversion/noSource/sharddebit,120timer/clamp40/6000cooldown,grow4randomticksnot3/cooldown300,harvest130remaining12080/40/0faces/cooldown1200,pickuphomeinflate10timedremote80/shardtag/depositremainderkept. Cachedscanandgoalsnotguaranteedparallelrates; actualclaims/ownershipguardnotestablished. Parent13companions;nextothercastergear+advanceddevices then7addons/pilot/fullstage.
