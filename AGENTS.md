@@ -53,3 +53,7 @@ After installation, use [command console #291](https://github.com/heatwaveqc/Too
 - Preserve the 2026-11-15 overnight test already in progress; **do not cancel or restart it**. This rule governs subsequent invocations.
 
 When in doubt, complete the quick checks and report that the full smoke remains **NOT RUN — OWNER APPROVAL REQUIRED**. This instruction supersedes any older text in historical workflows or documentation suggesting an automatic full boot after each change.
+
+## Rolling unstable QA download (owner decision, 2026-11-17)
+
+The [permanent unstable QA asset contract](docs/UNSTABLE-QA-DOWNLOAD.md) permits automatic **publication only** of an already successful, owner-authorized canonical Prism launcher artifact to the `unstable` prerelease. It does not authorize any additional builds or smoke retries. Preserve frozen provenance and the last valid download on build failure; old assets retained. Personal QA preference hooks are intended for this unstable testing channel, with no actual saved options/keybinds or worlds; remove them from any stable release. Never use the unstable channel to promote stable or claim client/gameplay acceptance.
