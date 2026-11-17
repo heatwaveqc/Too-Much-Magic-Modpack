@@ -127,7 +127,9 @@ jobs:
       - name: Compile and unit test all explicitly selected first-party modules
         run: python3 scripts/first_party_runtime.py build
       - name: Resolve exact built first-party JAR paths
-        run: echo "SMOKE_EXTRA_MOD_JARS=$(python3 scripts/first_party_runtime.py paths)" >> "$GITHUB_ENV"
+        run: |
+          paths="$(python3 scripts/first_party_runtime.py paths)"
+          echo "SMOKE_EXTRA_MOD_JARS=$paths" >> "$GITHUB_ENV"
       - name: Offline regression for manifest-driven Prism packaging
         run: python3 tests/test_prism_qa_packaging.py
       - name: Verify HexCast MXP donor contract (authorized assembly only)
