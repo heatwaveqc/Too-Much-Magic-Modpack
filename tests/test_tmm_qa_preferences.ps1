@@ -16,6 +16,8 @@ try {
       "key_example_mod.blast:key.keyboard.f",
       "guiScale:4",
       "chatScale:0.7",
+      "narrator:2",
+      "onboardAccessibility:true",
       "soundCategory_master:0.31",
       "soundCategory_music:0.19",
       'resourcePacks:["secret resourcepack"]',
@@ -35,6 +37,7 @@ try {
     @(
       "version:3955",
       "guiScale:3",
+      "onboardAccessibility:false",
       "soundCategory_master:0.55",
       "key_key.inventory:key.keyboard.e",
       'resourcePacks:["keep-new-pack"]',
@@ -44,6 +47,8 @@ try {
     $result = Get-Content -LiteralPath $new -Raw
     if ($result -notmatch "key_key.inventory:key.keyboard.r") { throw "Old key binding not restored" }
     if ($result -notmatch "key_example_mod.blast:key.keyboard.f") { throw "Custom mod key binding not appended" }
+    if ($result -notmatch "narrator:2") { throw "Existing narrator preference was lost" }
+    if ($result -notmatch "onboardAccessibility:false" -or $result -match "onboardAccessibility:true") { throw "Old onboarding flag overrode QA default" }
     if ($result -notmatch "guiScale:4") { throw "Old UI scale not restored" }
     if ($result -notmatch "soundCategory_master:0.31") { throw "Old volume not restored" }
     if ($result -notmatch 'resourcePacks:\["keep-new-pack"\]') { throw "New resource pack was modified" }

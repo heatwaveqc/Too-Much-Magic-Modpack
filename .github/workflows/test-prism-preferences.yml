@@ -1,5 +1,15 @@
 name: Personal QA Prism Preferences (Windows)
 on:
+  pull_request:
+    branches: ['test/full-integration']
+    paths:
+      - 'scripts/tmm_qa_preferences.ps1'
+      - 'scripts/prism_qa_options.txt'
+      - 'scripts/IMPORT-OLD-TMM-PREFERENCES.cmd'
+      - 'scripts/build_full_integration_prism.py'
+      - 'tests/test_tmm_qa_preferences.ps1'
+      - 'tests/test_prism_qa_packaging.py'
+      - '.github/workflows/test-prism-preferences.yml'
   push:
     branches: ['test/full-integration']
     paths:
@@ -26,6 +36,7 @@ jobs:
           if (-not ($opt -contains "version:3955")) { throw "Wrong Minecraft options version" }
           if (-not ($opt -match "^guiScale:")) { throw "Missing GUI defaults" }
           if (-not ($opt -match "^soundCategory_master:")) { throw "Missing sound defaults" }
+          if (-not ($opt -contains "onboardAccessibility:false") -or ($opt -match "^narrator:")) { throw "Skip onboarding without forcing narrator" }
           if ($opt -match "^key_") { throw "Do not hard-code somebody's keybindings" }
           $builder = Get-Content "scripts/build_full_integration_prism.py" -Raw
           foreach ($required in @("minecraft/options.txt", "PreLoadCommand=powershell.exe", "PostExitCommand=powershell.exe", "dev_only_preferences")) {

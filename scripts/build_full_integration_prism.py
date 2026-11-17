@@ -34,6 +34,8 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
     seed = qa_assets["minecraft/options.txt"].read_text(encoding="utf-8")
     if not seed.startswith("version:3955\n") or "guiScale:" not in seed or "soundCategory_master:" not in seed:
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
+    if seed.splitlines().count("onboardAccessibility:false") != 1 or any(line.startswith("narrator:") for line in seed.splitlines()):
+        raise RuntimeError("Skip QA accessibility onboarding without forcing narrator preferences")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
     addons = [pathlib.Path(p) for p in runtime_jars]
