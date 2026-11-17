@@ -117,3 +117,8 @@ Main rewritten against exact 0.12.18 JAR; all mandatory cedar→Buffalo→Rattle
 ### Occultism worker method audit
 
 Added occultism-pinned-worker-jobs.md from exact JAR; job/AI classes all extracted and CFR decompiled in scratch. Covers registered roster, smelter4recipe priority/no fuel/output remainder loss, cleaner pickup, transport sided discrepancy, manager saved orders/proxy search, crop-class harvest/free replant, lumberjack connected traversal/noarea bound/replant cost and time/weather lifecycle. ChangeWeatherJob constructs visual-only bolt but NEVER adds it to world: not Emrys route. Remaining parent gaps enumerated in appendix; not source-complete. Next inspect SpiritEntity/instruction tools, farmer/lumberjack task composition, weather config/defaults, dispatcher/menu transaction and complex familiar fusion, reconcile full guide walkthrough.
+
+
+### Occultism calling-book controls
+
+Appended exact owner/link/capture/mode/block controls and manager endpoint setup to worker appendix. `BookOfCallingItem.useOn` double addFreshEntity and unchecked payload clearing confirmed by javap; do not claim duplicate spawn or lossless relocation. Capture on already bound target occurs even when sneaking. Native worker noncalling interaction can tame untamed spirit; owner sneak opens job menu. Book death notification static map/delayed1200, not persistent ledger. Remaining tasks remain in worker appendix and parent.
