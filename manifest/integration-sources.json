@@ -444,6 +444,19 @@
       "merged_from": "feature/canonical-blood-config-first-2026-11-15",
       "merged_pr": 282,
       "note": "Exactly 18 KubeJS source assets from original #126, indexed in current Packwiz with hashes. Includes 17 recipe/fluid-tag assets and 1 Iron blood vial drinkable startup script. Strict component-aware JAWR right-click/finish handler merged into existing first-party compat/transformations stream; no duplicate owner. Real current Transformations JAR rebuild, native recipe codecs, cauldron capabilities, client effects and crossmod compatibility require owner-authorized gameplay acceptance. EvilCraft canonical blood at supported bottle/bucket recipes only, NOT universal Neo Vitae drain/pipes/JEI renaming."
+    },
+    {
+      "name": "traders-vengence-module",
+      "branch": "test/full-integration",
+      "paths": [
+        "compat/traders-vengence/"
+      ],
+      "source_commit": "a5c8f32bd50744e2b3e083273c50e75d93b27c82",
+      "merged_from": "feature/traders-vengence",
+      "merged_pr": 283,
+      "mode": "source-module-ci-not-installed",
+      "integrated_into_baseline": true,
+      "note": "Standalone NeoForge 1.21.1 Trader's Vengence offender blacklist, village reprisals, Iron's 3.16.3 Magic Missile, Hero pardon and natural trader spawn/sign rules. Reconciled onto latest baseline; natural WanderingTraderSpawner Mixin filters only scheduled spawn candidates, retries bounded native searches (no EntityJoin veto), manual summons unaffected; guard goal duplicate registration. Source and quick Module CI only. NO first-party traders_vengence JAR assembled/pinned, no dedicated server boot/client spawn/combat test. B20 magic stock and B19 Gateways remain separate source streams, untouched. Next owner-authorized all-ready QA must attempt actual JAR inclusion; do not label gameplay PASS."
     }
   ],
   "covered_by_baseline": {
@@ -480,7 +493,8 @@
     "feature/b17-loot-performance-yungs-ars-locate": "Replaced with clean post-B16 source merger, exactly 15 pinned YUNG/loot/QoL files and six Ars native tags, two rituals and generator/registry support. Preserves Gilded B16/B17 and BetterEnd B16 separately; End Island held pending client-worldgen compatibility. No old automatic smoke workflow, stale pack/index or fabricated registry IDs.",
     "feature/mxp-configurable-growth-20261115": "Reviewed #161 full source now in test/full-integration/compat/mxp from #279/#281. Module CI only; NOT an installed tmm_mxp JAR. Preserves 1.02 growth and paid resource hooks, adds inert JAWR blood award API; next owner-authorized runtime QA issue #280.",
     "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "PR #94 source catalog and pilots migrated into shared compat/progression on dev via #279 and integration via #281; 37 Tyz form skills INACTIVE by default. No separate compat/forms runtime, no JAWR native blood payment hook. Runtime acceptance issue #280.",
-    "feature/canonical-blood-config-first-2026-11-15": "Original PR #126 replaced by PR #282: preserve all 18 specific canonical-blood KubeJS source assets and strict JAWR component-gated bottle bridge in current JAWR-only compat/transformations. Do NOT bring back old TeamLapen source/whole branch snapshots. Source/static/module CI only; actual full Minecraft client/server/blood handling remains untested. QA docs/qa/CANONICAL-BLOOD-JAWR-RECONCILIATION-2026-11-16.md. Frozen original SHA f55641f2227334a394475183f9d13844547d425e."
+    "feature/canonical-blood-config-first-2026-11-15": "Original PR #126 replaced by PR #282: preserve all 18 specific canonical-blood KubeJS source assets and strict JAWR component-gated bottle bridge in current JAWR-only compat/transformations. Do NOT bring back old TeamLapen source/whole branch snapshots. Source/static/module CI only; actual full Minecraft client/server/blood handling remains untested. QA docs/qa/CANONICAL-BLOOD-JAWR-RECONCILIATION-2026-11-16.md. Frozen original SHA f55641f2227334a394475183f9d13844547d425e.",
+    "feature/traders-vengence": "Source-only successor to historical #219 via #283. Exact original source files imported to current test/full-integration, natural-spawn-only Mixin replaces universal trader spawn veto, bounded retry, goal dedup. No JAR currently installed and no in-world proof; docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md and runtime acceptance issue after merge. Original source SHA a5c8f32bd50744e2b3e083273c50e75d93b27c82. Preserve B20 trade enhancements and B19 mob Gateways."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
@@ -550,7 +564,8 @@
     "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
     "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss.",
     "NEXT QA: import source-locked Bundle Curios slots (3 files + locale key), NOT the old advancement or first_log.mcfunction; test one claim per player and no auto gift.",
-    "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengence #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral."
+    "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengence #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral.",
+    "TRADER'S VENGENCE #219→#283: source-integrated standalone compat/traders-vengence but NOT an installed first-party JAR. Next comprehensive QA must attempt to build/install the exact NeoForge 21.1.265 Java 21 module alongside Iron's 3.16.3, prove natural-only trader spawn Mixin attaches (with No Soliciting, ±10 sea level and natural ground), separate /summon/spawn egg exemptions, persistent blacklists and Hero pardons, villager/golem/llama AI and real Iron's Magic Missiles, B20 trade-stock compatibility. Record precise blockers and full client/server acceptance; no full smoke without owner approval. Docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md."
   ],
   "deferred_pending_runtime": {
     "feature/b16-betterend-thallasium-iesnium": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
@@ -558,7 +573,6 @@
     "feature/canonical-blood-config-first-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
     "feature/mxp-configurable-growth-20261115": "Historical retirement-only deferral, NOT owner approval to omit from the next comprehensive live test. Reassess chat/PR readiness reports and ATTEMPT to include if reported ready; record exact inclusion result or blocker in docs/qa/LIVE-TEST-INCLUSION-REGISTER.md. Not completed or superseded.",
-    "feature/traders-vengence": "Draft source-only PR #219; compile/unit tests passed, but trader spawn interception, AI and Iron's missiles are not gameplay-tested or imported. Classified to prevent the assembler's unknown-branch refusal, NOT as a voluntary omission of a ready feature. Reconcile readiness under AGENTS.md and the live-test inclusion register before the next comprehensive owner-authorized QA assembly; full smoke still requires separate owner approval.",
     "feature/newbie-mode-smartkeep-2026-11-16": "Draft PR #241; source-only pending current-base reconciliation, review of packwiz/manifest changes and Smart Keep Inventory pinning, plus gameplay validation of virtual Elytra, species-entry guards, client/server sync and grave interactions. Its branch modifies runtime/pack metadata and must not be imported wholesale. Not marked ready for the next comprehensive test; reassess any later readiness declaration under AGENTS.md and the live-test inclusion register."
   }
 }
