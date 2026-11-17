@@ -64,3 +64,10 @@ Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.m
 ## Ars continuation receipt, 2026-11-17
 
 Ars Nouveau5.13.5 remains researching. Nine pinned companions now reconcile native guide/85glyph recipes, all24ritual effects,5Source producers/5relays, five main worker systems and six core-registered familiar roles. See parent current coverage table for exact links and remaining casting/processing/equipment/advanced-device, seven-addon and pilot/stage gaps. Zero Patchouli resources in the artifact table means zero counted Patchouli resources, **not absence of native Java documentation**. Count remains5source-complete/37researching; no profile promoted in this slice.
+
+
+### 20:37UTC continuation update
+
+Ars now has **eleven** direct-binary companions: added casting/book-tier/mana/validation and crafting/enchanting. The latter inventories all192 resources across13Imbuement,82ordinaryApparatus,96enchantmentranks(30families),1Reactive. Exact source data uses sequential rank+1 gates and separates reusable chamber catalysts from consumed apparatus inputs. Parent remains researching for equipment/advanced devices, seven-addon and full pilot/stage reconciliation. No source-completion count change.
+
+Original Prism instance was removed during concurrent launcher work; research recovered the identical Ars artifact transiently from pinned CurseForgefile9521184, verified SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3 (19874860bytes), stored outsideGit in scratch/artifacts. All297 previously retained classes matched recoveredbytes. No user action/blocker; other artifacts can be rediscovered/recovered from exactpins.

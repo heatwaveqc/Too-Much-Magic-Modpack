@@ -1,3 +1,14 @@
+# Latest continuation checkpoint — 2026-11-17 after ad981968
+
+- Full research **unfinished**,5/42source-complete and37researching; no hard blocker. Hourly continue-magic-mod-research active. Same research-magic worktree/branch/PR265; preserve unrelated QA/integration work.
+- **Ars eleven companions** now include native casting/book-tier/mana/validation and Imbuement/Apparatus/enchanting (192resources:13+82+96+1). Native helper/familiar/ritual/Source/glyph companions completed in earlier slices. Next: equipment/Reactive activation, armor/threads/Alteration Table, advanced devices and Amethyst Golem worker; then sevenaddons and full pilot/stage consolidation. Keep parent researching until these major gaps close.
+- **Use scratch/artifacts/ars_nouveau-1.21.1-5.13.5.jar**: originalPrism(2) removed during concurrentlauncherwork. Recovered exactCFfile9521184;19874860bytes, SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. No upload request needed. Fresh decompilation directory **ars-fresh-20261117** under LocalAppData Temp tmm-magic-research-20261116; use CFR --clobbertrue and javap for consequential missing/gate methods.297prior extractedclasses compared against recoveredJAR,0mismatch.
+- New findings: Imbuement naturally accumulates10Source/20tickattempt when jars unavailable; nearby range2pull debitsmin(200,cost) but credits200, relevant lowcostarrow boundary. Catalysts reusable, outputreplacescenter; Apparatus3cube/coreaxis/210counter/upfrontSource/consumedpedestals; Enchantment rank must equalcurrent+1, notdirecthighlevel. GUI tenstoredspells vs tenbaseglyphlinks; normaltier/knownUI separatefromservercastingvalidator; enoughmanaPre vs actualPost debit after formSUCCESS. Do not promise item/tool state rollback from generic mana check.
+- Validation ad981968: fullresearchUTF8/changedlinks/docs-onlyscope/diffwhitespace PASS; all192craftrowsasserted againstexactJAR; metadataPASS159active/294indexed/181desired forresearchcheckout. Lastread-onlycanonicalLFIntegrationPreflight eede4e69PASS0baseline replacements; subsequentcommitsdocs-only, noassembly/server/client/gameplay run.
+- Substantivecommits d291544e andad981968 plus thisreceipt willbe pushed immediately; use git log/status foractualhead. Priorlatestintegration938c401ac304245663137085e7a2234244d57bf3 had no researchdoc/magicpin drift. Do not replay sharedruntime or integration manifests.
+
+---
+
 # Current continuation checkpoint — 2026-11-17 after cad165d3
 
 Full request remains unfinished:5/42profiles source-complete,37researching. No hard blocker. Hourly automation `continue-magic-mod-research` active; latest heartbeat19:38UTC arrived during ongoing work. Existing branch/PR265, no new branch or thread. Continue substantive research rather than repeat inventories or ask for JAR access.
