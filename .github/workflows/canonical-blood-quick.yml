@@ -1,0 +1,48 @@
+name: Canonical blood recipes and JAWR bottle safety (source-only)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/**'
+      - 'kubejs/startup_scripts/drinkable_blood_vial.js'
+      - 'compat/transformations/**'
+      - 'scripts/verify_canonical_blood.py'
+      - '.github/workflows/canonical-blood-quick.yml'
+  push:
+    branches:
+      - 'integration/canonical-blood-jawr-only-20261116'
+    paths:
+      - 'kubejs/data/**'
+      - 'kubejs/startup_scripts/drinkable_blood_vial.js'
+      - 'compat/transformations/**'
+      - 'scripts/verify_canonical_blood.py'
+      - '.github/workflows/canonical-blood-quick.yml'
+permissions:
+  contents: read
+jobs:
+  static-blood:
+    name: Blood recipes, markers, pack files (no game boot)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify canonical fluid, exact recipe quantities and strict JAWR protection
+        run: |
+          python3 scripts/verify_canonical_blood.py
+          python3 scripts/validate.py
+      - name: Reject restored legacy faction API and wildcard JAWR item tags
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          src=Path('compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/vampire/JAWRBottleInterop.java').read_text()
+          assert 'VampireNativeAccess.jawrVampireData' not in src
+          assert 'Observation.PRESENT' in src and 'JAWRVampireProbe' in src
+          assert 'BloodBottlePolicy.isOrdinary' in src
+          assert 'MxpService.' not in src, 'Blood refill/medicine may never directly award MXP'
+          data=Path('kubejs/data/tmm/tags/item/ordinary_blood_bottles.json')
+          assert 'witchery:bottle_of_blood' not in data.read_text()
+          print('PASS: strict JAWR data component gate, no TeamLapen runtime or bottle-to-XP path')
+          PY
