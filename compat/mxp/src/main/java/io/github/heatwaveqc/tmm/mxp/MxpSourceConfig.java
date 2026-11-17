@@ -15,6 +15,7 @@ public final class MxpSourceConfig {
     public static final ModConfigSpec.DoubleValue IRON_FIRST_POOL;
     public static final ModConfigSpec.DoubleValue BOTANIA_PORTABLE_POOL;
     public static final ModConfigSpec.DoubleValue NEO_EV_NETWORK_POOL;
+    public static final ModConfigSpec.DoubleValue JAWR_INITIAL_BLOOD_POOL;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
