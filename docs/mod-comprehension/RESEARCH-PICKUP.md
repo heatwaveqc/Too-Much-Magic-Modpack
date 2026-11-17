@@ -264,3 +264,12 @@ Added pinned-familiars.md: SIXregisteredholders notseven (Jabberwogunusedstub),B
 ### 2026-11-17 Ars Drygmy binary crosscheck
 
 Added pinned-drygmy.md afterexactJARCFR: WildenHorn/Spike/Wingtag(notHornonly),1..2shards>60,8pedestalcharm,MossyCobblestoneHenge,20channels100+100cooldown,habitatbonusbeforeblacklist,firstbatchneedsManafalse then1000recharge80ticks/range7,lootrollpoolselectionwithreplacement/fullstackovershoot,25%XP>3threshold,ignoredinsertremainders. Effectiveprotected/bosstags stillunverified, nofarmapproval. Nativehelpers/familiarscluster nowdocumented; nextpersonalcastingtiers/processing/equipment/devices and7addons/pilot beforeparentclosure.
+
+
+### 2026-11-17 20:37 hourly continuation: processing and enchanting
+
+Added ars-nouveau-pinned-crafting.md: exact13Imbuement/82Apparatus/96enchantranks/1Reactive=192resources; firstSourceGem500passive10per20ticks/nojar, optionaljarpullmin200adds200/smallcostboundary, reusableImbuementcatalystsvsconsumedApparatuspedestals,1vs3fullcube,Coreaxis,210counter/recheck/interruption/upfrontSource,nativesequentialenchantrankgateandcompatibility,Reactivewrittenparchmentpreserved. ParentnowTENcompanions; casting/tier/mana, equipment/Reactiveactivation, advanceddevices/Amethystworker, sevenaddons/pilot/stage remain. No promotion;5complete37researching.
+
+Artifactrotation: originalPrismUNSTABLE(2) disappeared midrun; onlyToo-Much-Magic-Unstable nowunderinstances, exactArsnotfoundanywhereunderuserprofile. NOTblocker: downloadedpinCFfile9521184 from edge.forgecdn.net/files/9521/184/ars_nouveau-1.21.1-5.13.5.jar into scratch/artifacts,19874860bytes, SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3matched. All297retainedArsclassesbyte-comparedagainstthisJAR,0mismatch. Do not askusertouploadit. Othermods can recoverbyexactCFfilemetadata+hashasneeded.
+
+FreshCFRscratch: ars-fresh-20261117 under tmm-magic-research-20261116,249topclasses freshlydecompiledwith--clobbertrue (297includesinners). Usefreshdirectoryor--clobbertrue; olderCFRfilecachemayomitmethods untilrefreshed/resolved. Confirmcriticalgateswithjavap: EnchantmentRecipe DOESenforce targetRank-currentRank==1 andassembleactualenchantedresult; notdirecthighrank/EMPTYoutput. No incorrectnewenchantmentclaimcommitted. Existinghelper/source changesfromrefreshwereimports/casts/annotations; matchedclassbytesprovenanceintact.
