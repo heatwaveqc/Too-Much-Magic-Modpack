@@ -1,0 +1,31 @@
+name: Owner-authorized QA dispatch bridge
+run-name: Validate QA command comment ${{ github.event.comment.id }}
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+concurrency:
+  group: owner-qa-command-bridge
+  cancel-in-progress: false
+jobs:
+  authorize-and-dispatch:
+    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.event.issue.number == 291 && !github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' && github.event.comment.user.id == 22598785 && github.event.sender.id == 22598785 && startsWith(github.event.comment.body, '/tmm ') && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and dispatch exactly one approved request (check is read-only)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/qa_dispatch_bridge.py
