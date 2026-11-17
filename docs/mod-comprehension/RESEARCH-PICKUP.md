@@ -1,3 +1,13 @@
+# Latest continuation checkpoint — 2026-11-17 after dbae3223
+
+- Full request remains unfinished: **5/42 source-complete, 37 researching**; no hard blocker. Hourly `continue-magic-mod-research` remains active. Continue this worktree/branch and PR265; preserve concurrent integration/QA work. No subagents authorized.
+- Ars now has **fifteen** exact-binary companions. New turret coverage includes all four variants, five native recipes, spell programming, rising-edge versus timer control, linked-source fallback boundaries, variant Source costs and prepaid failure behavior. New Warp Scroll/portal coverage includes recording/reset, consumable versus stable use/drop paths, permanent and temporary frame geometry, 9000Source creation ordering, dimension destination and one-way/return-route boundaries. BuildPortalEvent constructor independently reread: outer5×5, inner3×3 is confirmed.
+- Next Ars gaps: remaining casting gear/foci/parchment/tomes/Codex/potions/curios; advanced Scryer/Planarium/Crystalizer/Alakarkinos and remaining registered devices; seven addons; complete stage/pilot reconciliation. Parent stays researching. Do not repeat covered inventories or treat optional systems as dispensable.
+- Exact scratch JAR and fresh CFR tree remain under LocalAppData Temp/tmm-magic-research-20261116; SHA1 rechecked cdc946c63e1eb676f0e29e4640335c0ce68d7de3. Use ars-fresh-20261117 and CFR --clobber true. Original Prism instance removal is resolved by exact pinned artifact recovery, not a blocker.
+- Validation: full research Markdown UTF-8, changed local links and docs-only scope PASS; four scroll recipe resource identities and artifact hash PASS; git diff whitespace check PASS. Latest fetched integration 2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae. Prior full metadata/preflight receipts remain applicable to unchanged runtime; no assembly, server/client or gameplay tests run. Commit c3b88cbd and dbae3223 plus this receipt are pushed after commit; inspect Git for actual head.
+
+---
+
 # Latest continuation checkpoint — 2026-11-17 after f83d5924
 
 - Research unfinished:5/42source-complete,37researching; no hardblocker. Hourly continue-magic-mod-research remainsactive. Same research-magic worktree,branch research/mod-comprehension-local-jars-20261116,PR265. Keep regular commits/push; no subagents authorized.
