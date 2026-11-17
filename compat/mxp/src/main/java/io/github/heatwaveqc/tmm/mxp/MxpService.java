@@ -65,6 +65,28 @@ public final class MxpService {
                 nominalCost, referencePool, actualDebit));
     }
 
+    /**
+     * Future JAWR-native blood debit adapter entry point. A real 0.5.39
+     * successful supernatural action MUST have committed an authoritative
+     * negative blood delta before this method is called. Feeding, refilling,
+     * blood bottle transfers, previews, cancellations and failed attempts do
+     * not count. Caller must reuse the same transaction ID as any parallel
+     * spell payment hook: only ONE MXP receipt per logical action.
+     *
+     * This public API does not itself observe JAWR or grant XP; no automated
+     * blood source is installed until an actual post-commit native hook has
+     * passed dedicated-server compatibility tests.
+     */
+    public static AwardStatus jawrCommittedBloodDebit(ServerPlayer player,
+            String transactionId, double originalBloodCost, double actualBloodDebit) {
+        double pool = MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get();
+        if (!Double.isFinite(originalBloodCost) || originalBloodCost <= 0
+                || !Double.isFinite(actualBloodDebit) || actualBloodDebit <= 0
+                || pool <= 0) return ignored(player, "No verified JAWR blood payment");
+        return resource(player, "witchery:player_blood", transactionId,
+                originalBloodCost, pool, actualBloodDebit);
+    }
+
     public static AwardStatus ritual(ServerPlayer player, String ritualId, String transactionId,
                                      double firstMXP, double repeatMXP) {
         return award(player, record -> record.ritual(ritualId, transactionId,
