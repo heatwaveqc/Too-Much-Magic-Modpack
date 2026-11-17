@@ -1,6 +1,8 @@
 package io.github.heatwaveqc.tmm.transformations.vampire;
 
 import io.github.heatwaveqc.tmm.transformations.TransformationsMod;
+import io.github.heatwaveqc.tmm.transformations.adapters.JAWRVampireProbe;
+import io.github.heatwaveqc.tmm.transformations.core.Observation;
 import java.lang.reflect.Method;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,6 +24,7 @@ import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -50,6 +53,7 @@ public final class JAWRBottleInterop {
     private static DataComponentType<?> chickenMarker;
     private static DataComponentType<?> vampireMarker;
     private static Method nativeBloodGain;
+    private static final JAWRVampireProbe VAMPIRE_PROBE = new JAWRVampireProbe();
     private static boolean ready;
 
     private JAWRBottleInterop() { }
@@ -75,6 +79,7 @@ public final class JAWRBottleInterop {
         // Do NOT resolve deferred JAWR components in the mod constructor:
         // registries are not populated until after mod construction.
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onServerStarting);
+        NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onServerStopped);
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onRightClickBlock);
         NeoForge.EVENT_BUS.addListener(JAWRBottleInterop::onDrinkFinish);
     }
@@ -93,6 +98,15 @@ public final class JAWRBottleInterop {
         }
     }
 
+    private static void onServerStopped(ServerStoppedEvent event) {
+        // Fresh integrated-server/world loads must resolve against the next
+        // registry state, rather than retaining static marker Method objects.
+        ready = false;
+        chickenMarker = null;
+        vampireMarker = null;
+        nativeBloodGain = null;
+    }
+
     /** A native JAWR blood bottle is ordinary ONLY when neither protected marker exists. */
     public static boolean isOrdinaryJAWRBottle(ItemStack stack) {
         return ready && JAWR_BOTTLE.equals(BuiltInRegistries.ITEM.getKey(stack.getItem()))
@@ -100,14 +114,9 @@ public final class JAWRBottleInterop {
     }
 
     private static boolean isJAWRVampire(ServerPlayer player) {
-        if (!ready) return false;
-        try {
-            Object data = VampireNativeAccess.jawrVampireData(player);
-            return data != null && Boolean.TRUE.equals(data.getClass().getMethod("isVampire").invoke(data));
-        } catch (ReflectiveOperationException | RuntimeException failure) {
-            TransformationsMod.LOGGER.error("Unable to verify JAWR vampire state for blood drinking", failure);
-            return false;
-        }
+        // Reuse the current JAWR-only read-only probe, not the removed legacy
+        // VampireNativeAccess (which also referenced retired TeamLapen APIs).
+        return ready && VAMPIRE_PROBE.observe(player) == Observation.PRESENT;
     }
 
     private static boolean creditNativeBlood(ServerPlayer player) {
@@ -136,7 +145,7 @@ public final class JAWRBottleInterop {
 
     /** Only ordinary JAWR bottles can supply 250 mB to these native mod cauldrons. */
     private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (!ready || !(event.getEntity() instanceof ServerPlayer player)) return;
+        if (!ready || event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player)) return;
         if (!isOrdinaryJAWRBottle(player.getItemInHand(event.getHand()))) return;
         ResourceLocation block = BuiltInRegistries.BLOCK.getKey(
                 player.level().getBlockState(event.getPos()).getBlock());
