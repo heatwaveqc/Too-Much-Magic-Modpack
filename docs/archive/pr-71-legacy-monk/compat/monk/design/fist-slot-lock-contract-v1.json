@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "monk_reserved_fist_hotbar_slot",
+  "state": "DESIGN_ONLY_NOT_RUNTIME_ENABLED",
+  "created": "2026-11-15",
+  "owner": "tmm_monk",
+  "unlock": "automatic_on_valid_monk_faction_join_no_skill_point_purchase",
+  "default_slot": {
+    "inventory_type": "vanilla_player_inventory",
+    "zero_based_hotbar_index": 0,
+    "user_visible_hotbar_position": 1,
+    "vanilla_inventory_index": 0,
+    "hotbar_total_slots": 9,
+    "remaining_regular_hotbar_slots": 8,
+    "display_name": "Fist",
+    "not_item": true,
+    "key_binding": "key.hotbar.1",
+    "visual_context": "First hotbar position (far left), normally selected by pressing numeral 1."
+  },
+  "config": {
+    "override_eligible": "No player-driven relocation in initial implementation; fist slot is ALWAYS hotbar position 1 (zero-based 0). Alternative slots would require an explicit future design change.",
+    "valid_index_min": 0,
+    "valid_index_max": 0,
+    "change_policy": "Fixed to key 1 / inventory index 0 for all Monks. No GUI option or config can silently move this invariant.",
+    "initial_default": 0
+  },
+  "active_when": "Player belongs to the Monk faction, independently of temporary equipment discipline suppression; after leaving faction slot returns to normal; remains locked regardless of optional no-armor lock toggle, because the two inventory guards are independent.",
+  "occupied_slot_policy": {
+    "before_first_sunset": "At initiation, if designated hotbar slot already contains an item, first attempt atomic, lossless transfer into other player inventory slots (including legal stack merges). If all contents cannot fit, DO NOT complete transformation or destroy the item; explain that the selected slot must be cleared. Avoid dropping valuables or deleting anything.",
+    "incoming_placement": "Hard reject item insertion before mutation from ground pickup, direct inventory.add, quick-move, shift-click, click-drag, hotbar 1-9 key swaps, double-click, swap/offhand, creative placement, /give, and modded menus/automation. Never deny pickup when another permitted inventory slot can accept the item.",
+    "overflow_defense": "For mods that bypass normal insertion hooks, server-side recovery must relocate any illegally placed stack atomically to legitimate space; if unavailable, retain it in bounded persistent recovery storage with visible reclaim mechanism and no duplication. Never silently delete or auto-drop it.",
+    "full_inventory": "When all other 35 inventory slots are full and reserved hotbar position is empty, an ordinary pickup remains in the world; it must not use the reserved position.",
+    "logout_death": "Do not lose or duplicate any held item or persistent recovery stack through logout, death, keepInventory, dimension transfer, player clone, or server restart.",
+    "leaving_faction": "Return the reserved slot to ordinary behavior, without inventing a fist item or changing remaining inventory stacks."
+  },
+  "selected_behavior": {
+    "is_mainhand_itemstack_empty": true,
+    "allows": "normal empty-hand punching/mining/block interaction; magic can still be cast from legal spells/staffs/books held in other hotbar positions; inventory cursor cannot put items into reserved slot; player should be able to press key 1 before using fists",
+    "does_not_do": "spawn fake inventory item, grant creative flight, change offhand, delete items, allow conventional weapons during Monk discipline, grant a secondary item hand",
+    "visual": "Render non-item translucent fist icon and Fist label on the FIRST (far-left) slot, activated by key 1; must not alter inventory ItemStack.",
+    "interface": "Client displays immutable fist reservation at hotbar key 1, synced from server; inventory transactions remain server-authoritative."
+  },
+  "hooks_to_verify": [
+    {
+      "scope": "vanilla pickup routing",
+      "mechanics": "Player Inventory.add,getFreeSlot and remaining-stack search; prevent reserved index being chosen even if other inventory space available",
+      "required": true
+    },
+    {
+      "scope": "vanilla container clicks",
+      "mechanics": "InventoryMenu, offhand swap, shift-click, drag, number-key swap and creative inventory; validate by matching Player inventory index not visual menu slot index",
+      "required": true
+    },
+    {
+      "scope": "modded inventory menus",
+      "mechanics": "Capability/slot adapters, container sync and direct setItem, detect slots pointing to Player inventory index 0, prevent unauthorized transfer",
+      "required": true
+    },
+    {
+      "scope": "server recovery",
+      "mechanics": "Tick-time consistency check with atomic relocation only; no silent drops or item destruction",
+      "required": true
+    },
+    {
+      "scope": "network/client HUD",
+      "mechanics": "Server validates state; sync protected index; render ghost fist overlay on vanilla hotbar and clearly label on inventory screen",
+      "required": true
+    }
+  ],
+  "prelaunch_tests": [
+    "Before joining, slot 1 contains a full enchanted gear stack: transfer without altering components/count; join only if destination exists",
+    "Before joining with a completely full 36-slot inventory: refuse initiation with clear instruction instead of deleting/dropping stack",
+    "Picking up an item with slot 1 selected via numeral 1 and other space available: item routed to allowed slot; fist remains empty",
+    "All other 35 inventory slots full: pickup remains in world and cannot fill reserved position",
+    "Shift-click and mouse drag into slot 1, number-key swapping with inventory and chest, creative insertion, /give and item commands",
+    "Items from ars_nouveau spellbooks/irons_spellbooks staffs remain equipable in other eight positions and magic damage is not suppressed merely because of fist reservation",
+    "On death/relog/clone/keepInventory, all items retain NBT/components/count, no dupe/drop on entry/exit",
+    "Multiplayer: both Monks reserve their own first hotbar slot (key 1/index 0) without cross-player item movement or effects",
+    "Non-Monk/vampire/hunter/werewolf has all nine normal slots and no false fist HUD",
+    "Temporary discipline disqualification by wearing armor does NOT re-enable the reserved slot or allow item injection",
+    "Server or modded menu directly calls setItem(0) bypassing hooks: no loss/no dupes and recovery data survives restart"
+  ],
+  "release_gate": "Do not mark active until every material insertion/move path can enforce the empty slot in a disposable NeoForge 1.21.1 client/server and no-loss/no-dupe tests pass. Plain PlayerTick relocation alone is NOT a complete slot lockout.",
+  "integration_branch": "fix/monk-tree-data-registry-2026-11-15",
+  "separate_armor_lockout": "Armor-equipment prevention is a separately toggleable free faction passive; see design/armor-lockout-trait-v1.json. Turning armor lock OFF never disables the reserved fist slot or bypasses Monk discipline penalties for wearing armor."
+}

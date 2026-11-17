@@ -1,0 +1,197 @@
+{
+  "node": "tmm_monk:monk/level_root",
+  "children": [
+    {
+      "node": "tmm_monk:monk/defense_1",
+      "children": [
+        {
+          "node": "tmm_monk:monk/breath_meditation_1",
+          "children": [
+            {
+              "node": "tmm_monk:monk/animal_friendship",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/creeper_kiss"
+                }
+              ]
+            },
+            {
+              "node": "tmm_monk:monk/hunger_discipline_license"
+            },
+            {
+              "node": "tmm_monk:monk/breath_meditation_2",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/purifying_meditation",
+                  "children": [
+                    {
+                      "node": "tmm_monk:monk/stillness_paragon"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/fire_resilience_license",
+          "children": [
+            {
+              "node": "tmm_monk:monk/lava_survival"
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/explosion_resilience_license"
+        }
+      ]
+    },
+    {
+      "node": "tmm_monk:monk/harvest_1",
+      "children": [
+        {
+          "node": "tmm_monk:monk/iron_fist",
+          "children": [
+            {
+              "node": "tmm_monk:monk/glass_touch"
+            },
+            {
+              "node": "tmm_monk:monk/diamond_fist",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/stoneforming"
+                },
+                {
+                  "node": "tmm_monk:monk/netherite_fist",
+                  "children": [
+                    {
+                      "node": "tmm_monk:monk/exotic_fist"
+                    },
+                    {
+                      "node": "tmm_monk:monk/supermassive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node": "tmm_monk:monk/sandforming"
+            },
+            {
+              "node": "tmm_monk:monk/harvest_touch"
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/gentle_shearing",
+          "children": [
+            {
+              "node": "tmm_monk:monk/gardening",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/leafforming"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node": "tmm_monk:monk/martial_1",
+      "children": [
+        {
+          "node": "tmm_monk:monk/mobility_1",
+          "children": [
+            {
+              "node": "tmm_monk:monk/mobility_2",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/steadfast",
+                  "children": [
+                    {
+                      "node": "tmm_monk:monk/surefooted",
+                      "children": [
+                        {
+                          "node": "tmm_monk:monk/unhurried"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node": "tmm_monk:monk/water_walking",
+                  "children": [
+                    {
+                      "node": "tmm_monk:monk/blink",
+                      "children": [
+                        {
+                          "node": "tmm_monk:monk/momentum_gliding"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/guarding_palm",
+          "children": [
+            {
+              "node": "tmm_monk:monk/catch_arrows"
+            },
+            {
+              "node": "tmm_monk:monk/galvanizing",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/retreating"
+                }
+              ]
+            },
+            {
+              "node": "tmm_monk:monk/withering_stare",
+              "children": [
+                {
+                  "node": "tmm_monk:monk/omniscient",
+                  "children": [
+                    {
+                      "node": "tmm_monk:monk/empty_hand_paragon"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/looting_palm_license"
+        }
+      ]
+    },
+    {
+      "node": "tmm_monk:monk/monastic_learning_license",
+      "children": [
+        {
+          "node": "tmm_monk:monk/focused_advancement_license"
+        },
+        {
+          "node": "tmm_monk:monk/magical_casting",
+          "children": [
+            {
+              "node": "tmm_monk:monk/acidic_casting"
+            },
+            {
+              "node": "tmm_monk:monk/deathbound_casting"
+            }
+          ]
+        },
+        {
+          "node": "tmm_monk:monk/telepathic"
+        }
+      ]
+    }
+  ],
+  "skill_tree": "tmm_monk:monk/level"
+}

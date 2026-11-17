@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "kind": "monk_optional_no_armor_lock",
+  "state": "DESIGN_ONLY_NOT_RUNTIME_ENABLED",
+  "created": "2026-11-15",
+  "owner": "tmm_monk",
+  "feature_id": "tmm_monk:armor_lock",
+  "name": "No-Armor Lock",
+  "ui_name": "Armor Lock",
+  "type": "free_faction_passive_toggle",
+  "native_skill_point_cost": 0,
+  "tyz_skill_point_cost": 0,
+  "unlock": "automatic_at_First_Sunset",
+  "default_enabled_for_new_monks": true,
+  "setting_scope": "per_player_persistent_server_authoritative",
+  "purpose": "Prevent graveyard/gravestone recovery, automatic gear equipment and inventory actions from unexpectedly equipping armor and shutting down Monk skills. Intentionally equipping armor remains possible by switching OFF, but actual armor still suspends Monk discipline. When locked while wearing non-removable armor, slowly wear down breakable bound equipment until it breaks, even if Life Mending makes this deadly.",
+  "states": {
+    "enabled": {
+      "ui": "Armor Lock: ON",
+      "semantics": "New insertion/equipment into any vanilla head/chest/legs/feet slot is rejected before mutation; existing equipped armor is not instantly deleted, forcibly removed or ignored. Legitimately removable armor may be transferred atomically to storage when possible. Any already worn, cannot-unequip damageable piece takes steady durability wear until broken. Full inventory may temporarily leave removable armor worn. Curios and storage remain unaffected.",
+      "effective_buffs": "ON protects against new equips but does not immediately reinstate Monk bonuses: as long as even one armor slot contains gear, existing Monk discipline suspends powers. Each worn piece is evaluated independently."
+    },
+    "disabled": {
+      "ui": "Armor Lock: OFF",
+      "semantics": "Monk can equip items normally into the four equipment/armor slots, including armor/elytra, and automatic gravestone restoration may place items there.",
+      "effective_buffs": "No permission bypass: actual equipped conventional armor still suspends Monk powers through MonkEligibility.equipmentAllowsDiscipline; powers reactivate after gear removal if otherwise eligible. Disabling Armor Lock stops its added durability wear instantly, but does not remove Curse of Binding or heal/unequip the armor."
+    }
+  },
+  "toggle_behavior": {
+    "explicit_control": "Single configurable keybinding, clearly named Armor Lock, plus optional settings-screen toggle; client sends request to authoritative server.",
+    "persistence": "Saved with Monk player state, restored on login, server/client synced after toggle, death, respawn, dimension transfer and faction transitions.",
+    "when_turning_on_with_empty_armor": "Always accept ON immediately; stop new armor equips server-side and confirm via actionbar/icon.",
+    "when_turning_on_with_armor": "ALWAYS accept ON for a Monk, regardless of Curse of Binding, other cannot-unequip rules, full inventory, Unbreakable equipment or Life Mending. For each already worn piece, atomically relocate it only if normal removal is permitted and sufficient legal storage is available. If not removable, leave it worn and apply periodic standard durability wear when damageable. If normally removable but storage is full, leave it worn until safely removable; do not delete, drop, clone or force transfer. All worn pieces continue to disable Monk skills until actually removed/broken.",
+    "when_turning_off": "Unblock all four armor slots immediately. Keep currently equipped items unchanged and warn if putting on armor will suppress Monk skills. Fist hotbar slot remains independently protected.",
+    "on_faction_exit": "Release armor lock and revert ordinary equipment handling; retain no phantom armor items. Rejoining policy may restore default ON or saved state after explicit design decision.",
+    "warning": "No skill point spend. Toggling ON with bound armor DOES NOT guarantee safety, immediate removal or retained Monk skills: a damageable bound piece wears down and can break; Life Mending and other repair effects continue naturally and may drain or kill the character. The Monk can toggle OFF at any time but equipped Curse of Binding still cannot be removed normally. Do not auto-disarm the toggle to avoid death.",
+    "quick_toggle_safety": "Use a deliberately distinct configurable Armor Lock keybind or settings toggle and provide actionbar feedback. Allow immediate toggling ON/OFF even with bound armor; no required confirmation or capacity gate. Warn that active bound armor will deteriorate while ON and Life Mending can be lethal.",
+    "feedback_when_enabled_with_bound_armor": "Armor Lock ON — bound armor deteriorating; Life Mending may drain health. This is informational feedback, not a required confirmation or toggle veto.",
+    "feedback_when_disabled": "Armor Lock OFF — added wear stopped; armor remains equipped and Monk techniques stay suspended until removal."
+  },
+  "slot_policy": {
+    "armor_equipment_slots": [
+      "head",
+      "chest",
+      "legs",
+      "feet"
+    ],
+    "all_items_protected": "Every nonempty stack in a vanilla armor equipment slot must be blocked while ON, not only armor-tagged items. This matches current MonkEligibility equipment gate, which suspends power for any nonempty armor slot.",
+    "excluded_slots": [
+      "curios_inventory",
+      "main_inventory",
+      "offhand",
+      "hotbar_except_fist_slot"
+    ],
+    "elytra": "A chest-slot Elytra is equipment and blocked while ON; a permitted flight Curio in Curios slots is not a vanilla armor slot and remains allowed.",
+    "source_restore": "Gravestone/graveyard mods must restore armor stacks into legal inventory space (or retain in grave/claimable source) rather than equip into forbidden slots. If no legal room, do not destroy/drop/mint armor items or abort entire recovery without telling the player. This pre-equip restriction is separate from ongoing damage of previously worn, nonremovable armor.",
+    "never_erase": "Never delete/drop/clone existing armor. Distinguish removed/broken pieces from incompatible equipment placements. If a mod bypasses pre-equip hooks, preserve its actual ItemStack and recover atomically when possible; otherwise leave worn and apply the correct per-slot armor policy. Bound armor breaks by ordinary ItemStack damage/break hooks only, not direct setDamageValue, inventory replacement or forced item deletion."
+  },
+  "integration_points": [
+    {
+      "name": "ordinary vanilla GUI equipment slots",
+      "requirement": "MayPlace and quick-move/shift-click/number-key/drag/swap restrictions; match armor equipment slots rather than container visual indices."
+    },
+    {
+      "name": "right-click wearable / dispensers / auto-equip",
+      "requirement": "Intercept actual server equip request or action prior to moving stack, not merely the client action."
+    },
+    {
+      "name": "NeoForge equipment capabilities",
+      "requirement": "Audit PlayerInventoryWrapper/LivingEntityEquipmentWrapper, canEquip and each mod-supported transfer path; an unmodified item canEquip result alone does not prevent third-party direct setItem."
+    },
+    {
+      "name": "gravestone restoration",
+      "requirement": "Audit pinned gravestone mods' restore algorithm and intercept or redirect armor slot insertion before item movement; test full inventory fallback."
+    },
+    {
+      "name": "change events / tick guards",
+      "requirement": "LivingEquipmentChangeEvent is post-change and cannot be assumed a cancellable veto. Use as violation signal/reconciliation only and avoid a transient gear-disable exploit."
+    },
+    {
+      "name": "Monk discipline effects",
+      "requirement": "Do not modify MonkEligibility based on toggle alone. Equipment state still rules whether martial/harvest/step skill modifiers apply."
+    },
+    {
+      "name": "periodic binding wear",
+      "requirement": "On server tick only, check Monk+Armor Lock ON and each real vanilla armor EquipmentSlot, actual cannot-unequip, damageable stack, positive configured rate. Apply ordinary hurtAndBreak; do not reset/suppress Life Mending or bypass Unbreaking. Verify break and inventory/menu sync."
+    }
+  ],
+  "prelaunch_tests": [
+    "Join Monk after First Sunset: default Armor Lock ON, four armor slots empty, all existing six live Monk skills behave as before",
+    "Press Armor Lock toggle OFF; manually equip helmet, chestplate, leggings and boots; armor equips and Monk powers suspend",
+    "Remove armor: powers reactivate even while toggle remains OFF (based on actual gear); no duplicate permanent modifiers",
+    "Toggle ON while gear is equipped with sufficient free legal inventory space: each item moves intact to cargo slots, no loss",
+    "Toggle ON with full inventory: ON succeeds, normal removable armor remains worn until it can be moved; item preserved and Monk skills stay suppressed.",
+    "Toggle ON with damageable Curse of Binding gear: ON succeeds despite inability to unequip; bound gear remains worn and loses normal durability at one wear attempt per 20 server ticks until broken; powers resume only after all armor is gone.",
+    "Armor Lock ON: inventory shift-click, direct click, number-key swap, drag and pickup autoequip cannot place stack into any of four armor slots",
+    "Armor Lock ON: gravestone recovery with all armor pieces and free main inventory stores gear as cargo, no temporary equip that disables power",
+    "Armor Lock ON: full cargo inventory during gravestone recovery leaves items safely in grave/recovery rather than dumping or erasing",
+    "Armor Lock OFF: gravestone restoration follows ordinary rules and can equip armor, with clearly reported Monk skill suspension",
+    "Four vanilla armor slots remain blocked but Curios, including permitted Draconic flight gear, remain legal",
+    "Armor Lock ON: chest-slot Elytra is prohibited; an equivalent Curio slot item is not rejected merely because it has armor-like appearance",
+    "Lock state remains correct after relog, death, keepInventory, dimension change, faction switch and server restart",
+    "Non-Monk, vampires, hunters and werewolves unaffected even if they share armor slot/Curios implementations",
+    "Two multiplayer Monks can independently toggle with no cross-player interference",
+    "Other mods calling direct setItem or bypassing canEquip cannot silently erase/duplicate stacks or create transient unprotected equipment",
+    "Hotbar fist position remains protected at key 1 regardless of Armor Lock ON/OFF; toggles do not share item slots",
+    "Toggle ON with multiple bound armor pieces: every eligible piece independently suffers periodic durability wear; gear carried in cargo/Curios never takes lock wear.",
+    "Toggle OFF mid-wear: damage stops immediately even though cursed gear remains worn and Monk skills stay suspended.",
+    "Bound armor with Life Mending: enchantment continues to repair using wearer health; a long-lived wear/repair loop may kill player. No automatic OFF or custom player damage inflicted by Armor Lock.",
+    "Already equipped non-damageable/Unbreakable cursed item: toggle ON succeeds; item remains, no fake break, powers disabled until ordinary removal/death/command.",
+    "One removable armor piece with storage full and another Curse of Binding piece: ON accepted, ordinary piece stays intact pending space, cursed piece wears; no forced deletion or dupes.",
+    "Low tick rate, relog, death/keepInventory and dimensions: server cadence does not double fire or apply wear to deleted/offline items; broken gear remains broken and no fake re-equip.",
+    "Ordinary vanilla Unbreaking/repair and item-break hooks function; no direct damage component override or bypass of Life Mending.",
+    "Armor Lock ON with Bound + Life Mending: display a non-blocking warning once when toggled, don't auto OFF, and verify no custom health damage outside Life Mending."
+  ],
+  "release_gate": "Design and pure policy only; do not enable the default-ON runtime guard or binding wear without an actual server-side configurable toggle, mod-aware equip interception, source-correct break pathway, per-slot server tick cadence, no-loss transfer, persistence and in-game Life Mending QA. The intended lethal repair loop is approved, but needs runtime verification.",
+  "independent_from": "tmm_monk:reserved_fist_slot",
+  "related_contract": "design/fist-slot-lock-contract-v1.json",
+  "bound_armor_wear": {
+    "policy": "While Monk Armor Lock is ON, each equipped piece that cannot be normally unequipped AND is damageable takes periodic durability wear until broken or until lock OFF. Never force-remove Curse of Binding. Wear all four qualifying pieces independently, not round-robin; no wear from mere cargo armor or Curios.",
+    "default_interval_server_ticks": 20,
+    "default_damage_per_interval": 1,
+    "configurability": "Server config may tune positive interval and damage. Defaults 1 durability-wear attempt per second per affected piece at 20 TPS. Do not repeatedly damage the same piece on every client frame or tick; only server game ticks.",
+    "equipment_slot_scope": [
+      "head",
+      "chest",
+      "legs",
+      "feet"
+    ],
+    "detection": "Use the actual vanilla enchantment prevent_armor_change semantics (Curse of Binding) and verified modded cannot-unequip restrictions. Do not infer solely from string name or only enchantment ID; never bypass a mod's unequip protection. Check effective player ability/creative-mode exceptions according to normal equipment policy.",
+    "damage_method": "Use ItemStack.hurtAndBreak or equivalent pinned Minecraft 1.21.1 server-authoritative equipment damage/break pathway, preserving normal item break, Unbreaking, damage components, break animations/events and enchanted repair effects. Do not use direct setDamageValue or forcibly set slot empty to bypass vanilla rules.",
+    "lifecycle": "Apply while locked and the same non-removable item remains equipped; stop immediately if OFF, no longer Monk, item removed, or item breaks. Do not reset item damage on logins/death/rejoin or duplicate wear across client+server.",
+    "when_not_damageable": "Non-damageable/Unbreakable bound items cannot be removed by durability wear. Armor Lock still turns ON but items stay equipped and Monk powers stay suppressed until ordinary legitimate removal/death/operator intervention; no artificial destruction.",
+    "when_removable_but_full": "Do not wear down normally removable gear solely because there is nowhere to put it; keep it worn until space exists or user removes it without loss. Monk power suppression still applies.",
+    "life_mending": "Repair effects remain fully operative. Apotheosis Life Mending is documented to spend wearer health repairing equipment; if repair outpaces Armor Lock's durability wear, trapped cursed armor can keep drawing health and the Monk may die. This is an intended player-choice trap, not a bug; do not disable Life Mending, prevent damage or auto-toggle OFF.",
+    "integrity": "Do not add health damage directly. Distinguish Armor Lock mechanical durability wear from Life Mending's independent health cost; do not strip Enchantment components or exploit inventory duplication.",
+    "reference_enchantment_semantics": "minecraft:prevent_armor_change in Minecraft 1.21.1; Curse of Binding is the vanilla source.",
+    "test_expectations": "Damage on server only at configured cadence; respect actual item durability, enchantments, break events and damageability. Verify pinned Apotheosis Life Mending behavior on disposable world; source text alone does not prove this pack's exact pinned implementation.",
+    "precedence": "At each periodic server check, evaluate the current equipment, real eligibility to remove and ItemStack damageability; do not cache a curse diagnosis across gear changes. Preserve normal enchant repair/damage behavior, then synchronize current slot stack/break state."
+  }
+}
