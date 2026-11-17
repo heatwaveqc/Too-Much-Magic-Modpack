@@ -8,6 +8,13 @@ on:
       - main
     paths:
       - .github/workflows/retire-orphan-branches-2026-11-16.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/retire-orphan-branches-2026-11-16.yml
+      - scripts/retire_orphan_branches.py
+      - scripts/retired-branches-2026-11-16.json
   workflow_dispatch:
     inputs:
       execute:
