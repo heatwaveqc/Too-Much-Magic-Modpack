@@ -370,6 +370,45 @@
       "merged_pr": 276,
       "original_source_commit": "34df74d2e61e351f6b3f2d07f2e86aed1b602bd7",
       "note": "Four 1.21.1 NeoForge New Dawn mod versions SHA-512 pinned and indexed with exactly one Occultism Thallasium→Iesnium Spirit Fire route. No End worldgen, server, client, harvest or gameplay PASS. Retains existing unrelated Gilded B16 batch and holds YUNG Better End Island."
+    },
+    {
+      "name": "b17-b18-yung-ars-pinned",
+      "branch": "test/full-integration",
+      "paths": [
+        "mods/lootjs.pw.toml",
+        "mods/clumps.pw.toml",
+        "mods/yungs-better-strongholds.pw.toml",
+        "mods/yungs-better-nether-fortresses.pw.toml",
+        "mods/yungs-api.pw.toml",
+        "mods/extreme-sound-muffler.pw.toml",
+        "mods/get-it-together-drops.pw.toml",
+        "mods/yungs-better-mineshafts.pw.toml",
+        "mods/yungs-better-dungeons.pw.toml",
+        "mods/yungs-better-desert-temples.pw.toml",
+        "mods/yungs-better-jungle-temples.pw.toml",
+        "mods/yungs-better-ocean-monuments.pw.toml",
+        "mods/yungs-better-witch-huts.pw.toml",
+        "mods/yungs-bridges.pw.toml",
+        "mods/yungs-extras.pw.toml",
+        "kubejs/data/ars_additions/tags/worldgen/structure/desert_temple.json",
+        "kubejs/data/ars_additions/tags/worldgen/structure/jungle_temple.json",
+        "kubejs/data/ars_additions/tags/worldgen/structure/monument.json",
+        "kubejs/data/ars_additions/tags/worldgen/structure/nether_fortress.json",
+        "kubejs/data/ars_additions/tags/worldgen/structure/stronghold.json",
+        "kubejs/data/ars_additions/tags/worldgen/structure/witch_hut.json",
+        "kubejs/data/tmm/recipe/locate_structure/mineshaft.json",
+        "kubejs/data/tmm/recipe/locate_structure/shipwreck.json",
+        "kubejs/server_scripts/tmm_structure_registry_export.js",
+        "manifest/ars_structure_locator_policy.json",
+        "scripts/generate_ars_all_structures.py",
+        "scripts/validate_b17_ars_locators.py",
+        "scripts/validate_b18_yungs_ars.py"
+      ],
+      "mode": "pinned-source-not-worldgen-tested",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/b17-loot-performance-yungs-ars-locate",
+      "original_source_commit": "0efb800e3976f23c125c58cbce36ccf473adc779",
+      "note": "15 new 1.21.1 NeoForge SHA-512 mod pins plus 6 native Ars structure tags, 2 rituals, registry exporter, generator/policy/validators baseline-owned; preserves existing B16 BetterEnd and B16/B17 Gilded batches. Existing AttributeFix remains pinned. YUNG Better End Island planned only, not enabled or indexed. Actual loaded registry, native rituals, End/Nether/Overworld worldgen and multiplayer QA NOT RUN."
     }
   ],
   "covered_by_baseline": {
@@ -402,7 +441,8 @@
     "feature/progression-skill-gui-treechop-2026-11-16": "PR #223 was closed unmerged, but its Progression GUI, TreeChop XP bridge, progress overlay, network, and deduplication test were independently verified byte-identical in test/full-integration. Preserve the source branch for provenance. Client GUI, multiplayer sync, and live TreeChop gameplay acceptance remain outstanding in docs/qa/MONK-GUI-TREECHOP-2026-11-16.md; this classification does not claim gameplay PASS.",
     "fix/quest-registry-gate-and-qa-priorities-2026-11-15": "PR #82 was closed unmerged; its live quest-item registry gate (scripts/quest_registry_gate.py) is present byte-identically in test/full-integration. The old workflow and QA-doc snapshots were not replayed; current QA definitions and workflow files remain authoritative.",
     "stage/next-qa-jer-alex-uranium": "PR #56 retired: only Alex's Caves Continued 1.1.2 + CodxLib 1.5.1 + JER 1.6.0.57 metadata carried forward with index/pack updates; obsolete BR/Rework uranium conversion and automatic smoke omitted. See docs/qa/ALEX-JER-REACTOR-FREE-2026-11-16.md. Source branch still exists for historical QA provenance.",
-    "feature/b16-betterend-thallasium-iesnium": "B16 replacement PR #276 pins BetterEnd and all three New Dawn dependencies and replaces old Spirit Fire End Draconium ore recipe with Thallasium. No stale full source manif/packwiz or workflow imported. Runtime acceptance remains pending."
+    "feature/b16-betterend-thallasium-iesnium": "B16 replacement PR #276 pins BetterEnd and all three New Dawn dependencies and replaces old Spirit Fire End Draconium ore recipe with Thallasium. No stale full source manif/packwiz or workflow imported. Runtime acceptance remains pending.",
+    "feature/b17-loot-performance-yungs-ars-locate": "Replaced with clean post-B16 source merger, exactly 15 pinned YUNG/loot/QoL files and six Ars native tags, two rituals and generator/registry support. Preserves Gilded B16/B17 and BetterEnd B16 separately; End Island held pending client-worldgen compatibility. No old automatic smoke workflow, stale pack/index or fabricated registry IDs."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",

@@ -249,6 +249,30 @@ file = "defaultconfigs/enigmaticlegacyplus-server.toml"
 hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 
 [[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/desert_temple.json"
+hash = "98711b03da7e61f0c2c2049e739c20f075192d7702cc54427821e9d8e706879b"
+
+[[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/jungle_temple.json"
+hash = "e460d1b9ce0914871d3a2d41640ff50d16ebb32ecda4767a4987f7d42b1beeb8"
+
+[[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/monument.json"
+hash = "b5beed6078c182adbcd52ce31bc9b91fc1d5b40da75da97947424ae445dc5150"
+
+[[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/nether_fortress.json"
+hash = "d09ee7bec4a56f31c5149ebf31aa0e7ad1d90bd147be19500164f9dd7d342dd9"
+
+[[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/stronghold.json"
+hash = "ccce605f25e5dbf742bfbebeb01ef5c306ef3d0d91c1f3434513a8293c6bcc97"
+
+[[files]]
+file = "kubejs/data/ars_additions/tags/worldgen/structure/witch_hut.json"
+hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
+
+[[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
 
@@ -407,6 +431,14 @@ file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.j
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/locate_structure/mineshaft.json"
+hash = "4d9c0ab9b5c644d6cedc2df82455d1c3b8658555746d8ea6f2a8e59f65e8ce88"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/locate_structure/shipwreck.json"
+hash = "cb6fba0028b09a127fd68999fbf01e486f75cc7cc8e5ff7ce3d019954ff9c705"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
@@ -453,6 +485,10 @@ hash = "7a2a9d09c982902b4950de4feec816795cb38660e3613201de53bb243e1200db"
 [[files]]
 file = "kubejs/server_scripts/tmm_magic_core_thrift.js"
 hash = "23e76ac071eef579b612dfcaa8f412b21afe5a6318db1c6e8bda06e0a02f40f4"
+
+[[files]]
+file = "kubejs/server_scripts/tmm_structure_registry_export.js"
+hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
@@ -627,6 +663,11 @@ hash = "22286fa216349c0767808903a0a38662857d2adee54950a18cbf26c167a06029"
 metafile = true
 
 [[files]]
+file = "mods/clumps.pw.toml"
+hash = "2acaff560bbda5741538528a2967355ec86a8f7564adba0b2316989c66892374"
+metafile = true
+
+[[files]]
 file = "mods/cobblegen-galore.pw.toml"
 hash = "8ee8facb80c02593751f4cb8eddd681868be2b725791ebf1c35060be4fa7efaa"
 metafile = true
@@ -762,6 +803,11 @@ hash = "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f"
 metafile = true
 
 [[files]]
+file = "mods/extreme-sound-muffler.pw.toml"
+hash = "8babbd9434008158cabb000d44ad5c54df1a60f2dfab019687fb5a3d37ebd13a"
+metafile = true
+
+[[files]]
 file = "mods/farmers-delight.pw.toml"
 hash = "d9ed9ac8e0db9db29078dafa22bc2d86ac702f10863ae7cb1d5245111c5ea17b"
 metafile = true
@@ -839,6 +885,11 @@ metafile = true
 [[files]]
 file = "mods/geckolib.pw.toml"
 hash = "4cf7eb494f48576e28895ee5f362878f95c6bad65372666106140fdae82d0c4c"
+metafile = true
+
+[[files]]
+file = "mods/get-it-together-drops.pw.toml"
+hash = "1f805479ca7f01f27c1bf662d7d9ccb9e3935e7007e05b469b1072ca09e9e421"
 metafile = true
 
 [[files]]
@@ -979,6 +1030,11 @@ metafile = true
 [[files]]
 file = "mods/lodestonelib.pw.toml"
 hash = "f5d0701055478e980b50849f199f266e6ab1940277a17ad2e5060df0d978be83"
+metafile = true
+
+[[files]]
+file = "mods/lootjs.pw.toml"
+hash = "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3"
 metafile = true
 
 [[files]]
@@ -1369,4 +1425,58 @@ metafile = true
 [[files]]
 file = "mods/wunderlib-new-dawn.pw.toml"
 hash = "2327c95d7332226e1d8c0372909367ee84c1ecedea9eacd84ddb8328a28d1350"
+metafile = true
+[[files]]
+file = "mods/yungs-api.pw.toml"
+hash = "dde31f05114c72cb2f58e522417487730b872e456f77fdd02c032c9235791f6c"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-desert-temples.pw.toml"
+hash = "c2cb28859e7bcc0eb4ce59c5792f90fa5f8ab8865f5867ba26a5a345ec60b498"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-dungeons.pw.toml"
+hash = "9127aa866fb8ce86f3333729994b24a88041989d484e3336cf12b3b65262393b"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-jungle-temples.pw.toml"
+hash = "af40d7877a18df930df0895e9b98c6eb32c37440437ca36397d077fdbd6df278"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-mineshafts.pw.toml"
+hash = "e839608ebc974e9e7819adc7bf29132ea86fc41b46af540fe0fa39b2007b2439"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-nether-fortresses.pw.toml"
+hash = "50c1731148d91a4ef05cfc47f759ca8fb3dad254e15ce4ecc5732d6fbfa68637"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-ocean-monuments.pw.toml"
+hash = "3b77b8c1bae2bb27e45eafd5c88fdec6dab7d79201c2b2f020fb3eb2af3cee6b"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-strongholds.pw.toml"
+hash = "03084966c05070b5c4b17cd89234f3c0d813940a2d76b405a6699deac10a0ab8"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-witch-huts.pw.toml"
+hash = "9854b699d5a067c46ac99b1dedeeb529bff3fc18dd079e29b438c4cbf9725f68"
+metafile = true
+
+[[files]]
+file = "mods/yungs-bridges.pw.toml"
+hash = "dc006d4f5e14091dbfb16a8eee15e379d2bdab93f99b4ed6d95f254924e4477f"
+metafile = true
+
+[[files]]
+file = "mods/yungs-extras.pw.toml"
+hash = "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d"
 metafile = true
