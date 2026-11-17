@@ -1,0 +1,49 @@
+name: Audited orphan branch retirement
+
+# This workflow runs once when this file is first merged to main.
+# Later manual invocations default to a dry run, and exact SHAs remain frozen.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/retire-orphan-branches-2026-11-16.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/retire-orphan-branches-2026-11-16.yml
+      - scripts/retire_orphan_branches.py
+      - scripts/retired-branches-2026-11-16.json
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: 'Actually delete matching, unreferenced branches (otherwise dry-run)'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audited-orphan-branch-retirement
+  cancel-in-progress: false
+
+jobs:
+  retire:
+    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Delete only SHA-pinned branches with no open PR or active source lock
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EXECUTE: ${{ github.event_name == 'push' || inputs.execute == true }}
+        run: |
+          python3 scripts/retire_orphan_branches.py \
+            --manifest scripts/retired-branches-2026-11-16.json
