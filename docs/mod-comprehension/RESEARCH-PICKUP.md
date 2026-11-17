@@ -230,3 +230,13 @@ Added pinned-whirlisprig.md: treeevent<=10→1shardafter>60, exact8pedestalcharm
 ### 2026-11-17 Ars Bookwyrm/storage
 
 Added pinned-bookwyrm-storage.md: lecternapparatusrecipe,AwakeningBookcharm,8inventorypositionsperworker/default30links,transactionbeforevisualtask,10evictingqueue,autopull20tick/onecandidate/poweredgate,secondarychain/cycle/load,perplayercrafting/refill/remainders,sidecheckvsnullcache. ClosedWhirlispriginserthelper: returnsuninsertedremaindernodrop,tileignores→outputlossrisk. NextStarbuncle/fullfamiliars,personalcasting/processing/equipment/addons/pilot. Still5sourcecomplete/37researching;allresearchdocs only.
+
+
+### 2026-11-17 Ars Starbuncle transport slice
+
+Added pinned-starbuncle.md: droppedgoldnugget1→1..2shardsafter>60, charmspawn,worker→dest/source→worker,capability/filters/priority,keptdepositremainders,pickupbox8cached60,Shadesloosepickup-only,Sourceberriesage>1/1..3drops/reset1,strictsideFROMmapdestcapacitybugboundary. Potionhat/bed/road/passenger/ItemScrollDataUI/familiars explicitlypending (allworkerclassesCFRscratch). Latestfullchecks eede4e69 PASSUTF8/local-links/docs-onlyscope/metadata/read-onlycanonicalLFpreflight0replacements; no runtime. PR265refreshed eede4e69; no merge. Hourlyautomationexistsactive;no hardblocker.
+
+
+### 2026-11-17 Starbuncle remaining worker controls
+
+Extendedsamecompanion withWixieHatfreshbehavior,potion100eligibility/300trip/partialdeliveryclearsidentityrisk,roadBlockItemselection,dye,passengercharminteraction,bedpriority,preclear-listtwo-stepaccessoryreset,ItemScrollDataitemidentitytoggle. Correctedbefriending: BOTHdroppedpickup ANDdirectmainhandnuggetinteraction supported (inspectedmobInteract). No runtimeclaim. Nextfullfamiliarsandremainingpersonalcasting/processing/equipment/addon/pilot.

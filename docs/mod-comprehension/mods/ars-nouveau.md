@@ -379,3 +379,6 @@ Pinned grove follow-up: [Whirlisprig befriending/charm, habitat scoring, progres
 
 
 Pinned Bookwyrm/storage follow-up: [Awakening charm, worker-dependent default8inventory positions, default30link range, storage/crafting/import/secondary menus and visual-only transfer queue](ars-nouveau-pinned-bookwyrm-storage.md). Item mutations precede worker flight; full/missing output and side-only handlers need real count tests.
+
+
+Pinned Starbuncle follow-up: [ordinary item routes, filters, Sourceberry harvest, kept delivery remainders and strict-side boundary](ars-nouveau-pinned-starbuncle.md). Dropped nugget acquisition and wand direction now exact-JAR traced; potion-hat/bed/road/passenger/filter controls are also audited in that companion; familiar branch remains separate.
