@@ -4,6 +4,12 @@
 
 **This document is an intake and inclusion-decision ledger, NOT a pass report.** See [CURRENT-TEST-STATUS.md](CURRENT-TEST-STATUS.md) for what was actually tested and [NEXT-TEST-CODEX-CHECKLIST.md](NEXT-TEST-CODEX-CHECKLIST.md) for the live-test procedure. The authoritative runtime source lock is [manifest/integration-sources.json](../../manifest/integration-sources.json). **A prior `deferred_pending_runtime` entry is not an inclusion decision for a later comprehensive test.**
 
+## Canonical blood bridge — current integration preparation (PR #282)
+
+**SOURCE-INTEGRATED / RUNTIME ACCEPTANCE STILL BLOCKED:** Reviewed replacement [PR #282](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/282) brings #126's 17 ordinary-blood KubeJS JSON assets, Iron's drinkable-vial startup file and strict JAWR component-safe bottle adapter into the current `test/full-integration` source. Frozen donor: `f55641f2227334a394475183f9d13844547d425e`. Retains the JAWR-only, Archlich and Dracolich code instead of overwriting transformations. This is **selected for attempt at the next owner-authorized comprehensive QA**, not a PASS.
+
+**Required inclusion:** the indexed 18 Packwiz KubeJS files PLUS a rebuilt current `tmm_transformations` JAR containing `JAWRBottleInterop`; exact client/server inclusion proof and gameplay cauldron/drinking tests. Source/static/Module CI alone is not an actual installed runtime. JAWR protected chicken/vampire components must remain untouched; the MXP actual blood-expenditure hook is separately blocked in [issue #280](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/280) and no bottle/refill should ever grant XP. Acceptance: [blood QA matrix](CANONICAL-BLOOD-JAWR-RECONCILIATION-2026-11-16.md). Do not remove this task from the all-ready-feature inclusion matrix until installed and explicitly tested or owner-deferred.
+
 ## Current reconciled source state — 2026-11-16
 
 **Latest owner handoff:** [next-test integration reconciliation matrix](NEXT-TEST-INTEGRATION-RECONCILIATION-2026-11-16.md). The historical tables below are preserved for traceability; where they say **REVIEW REQUIRED** or **ATTEMPT REQUIRED**, consult this newer matrix for source-merge and blocker status. A source merge does **not** mean the feature is in a tested Prism artifact.
