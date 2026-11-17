@@ -1,5 +1,8 @@
 # Standalone player-enhancement progression core — early implementation
 
+> **2026-11-16 engine reconciliation:** The separately reviewed JAWR-only Vampire/Werewolf 37-skill catalog and limited conditional form pilots from [#279](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/279) are now maintained under this **one executable Progression engine**, not the legacy `compat/forms` module. Tyz and JAWR remain optional upstream integrations; **all form skills are inactive** by default. The separate `compat/mxp` award ledger provides server-authoritative MXP into the same existing Tyz XP/SP wallet (default growth 1.02), but no first-party MXP JAR is included in the pack yet. The JAWR blood-payment API is **inert until a verified native post-commit debit adapter is written**. See [joint contract](../../docs/progression/JAWR-MXP-JOINT-CONTRACT-2026-11-16.md) and [acceptance issue #280](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/280).
+
+
 **Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
 
 ## Goal and ownership
