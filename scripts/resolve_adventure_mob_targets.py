@@ -123,11 +123,11 @@ def main():
             with zipfile.ZipFile(io.BytesIO(jar)) as z:
                 metadata=tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
                 ids=[m["modId"] for m in metadata["mods"]]
-                if "twilightforest" not in ids:raise ValueError("Wrong official file metadata")
+                if {"twilight-forest":"twilightforest","voidscape":"voidscape"}[row["id"]] not in ids:raise ValueError("Wrong official file metadata")
             q=json.dumps
             pin=f'name = {q(row["name"])}\nfilename = {q(file)}\nside = {q(row["side"])}\n\n[download]\nurl = {q(url)}\nhash-format = "sha512"\nhash = {q(sha)}\n\n[update]\n[update.curseforge]\nproject-id = {row["project_id"]}\nfile-id = {n}\n'
             (args.output/(row["id"]+".pw.toml")).write_text(pin)
-            report["roots"].append({**row,"url":url,"sha512":sha,"mod_metadata_dependencies":metadata.get("dependencies",{}),"source":f"https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest/files/{n}"})
+            report["roots"].append({**row,"url":url,"sha512":sha,"mod_metadata_dependencies":metadata.get("dependencies",{}),"source":"https://www.curseforge.com/minecraft/mc-mods/"+{"twilight-forest":"the-twilight-forest","voidscape":"voidscape"}[row["id"]]+f"/files/{n}"})
         except Exception as e:report["blockers"].append({"root":row["id"],"error":str(e)})
     (args.output/"resolution.json").write_text(json.dumps(report,indent=2)+"\n")
     for key in report:
