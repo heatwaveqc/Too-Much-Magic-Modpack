@@ -4,6 +4,9 @@
 
 ## Start here
 
+- **[Active unstable QA checklist — run 44108614695](UNSTABLE-QA-2026-11-17.md):** Codex A offline/source, owner B exact in-game commands, owner C play/setup. Frozen installed SHA `322cf3f9`; update its [results ledger](UNSTABLE-QA-RESULTS-2026-11-17.md). This supersedes yesterday's worksheet for this build, not the historical evidence.
+- **[Required QA execution type standard](QA-EXECUTION-TYPES.md):** A/B/C for every future build; separate from canonical testing levels.
+
 - **[Canonical QA/test levels](TEST-LEVELS-AND-TERMINOLOGY.md):** Repository CI, Module CI, Integration Preflight, manual Integration Assembly, Server Boot Smoke, Prism QA Package, Client Launch Smoke and Gameplay Acceptance. Record exactly which level ran.
 - **[Codex next-test checklist](NEXT-TEST-CODEX-CHECKLIST.md):** ordered, executable quick checks, branch/readiness gates, in-game command recipes, and minimal setup tests. Codex should read it before testing or proposing a new QA build.
 - **[Current test status](CURRENT-TEST-STATUS.md):** living, date- and SHA-scoped handoff. Record each attempted case, result, exact evidence, and unresolved blockers. It is not a substitute for historical test records.
