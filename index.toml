@@ -1658,3 +1658,7 @@ metafile = true
 [[files]]
 file = "config/almostunified/unification/materials.json"
 hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
+
+[[files]]
+file = "kubejs/data/tmm/curios/slots/bundle.json"
+hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"

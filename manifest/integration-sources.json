@@ -336,14 +336,13 @@
       "source_commit": "305bef61b9581e6a5872f1ec56573aec9dc12941",
       "paths": [
         "kubejs/data/curios/tags/item/bundle.json",
-        "kubejs/data/tmm/curios/entities/player.json",
-        "kubejs/data/tmm/curios/slots/bundle.json"
+        "kubejs/data/tmm/curios/entities/player.json"
       ],
       "merge_json_paths": [
         "kubejs/assets/tmm/lang/en_us.json"
       ],
       "mode": "runtime-qa-staging",
-      "note": "Only the original Bundle Curios slot and item validation for Ars Elemental Curio/Caster Bags. Quest-claimed first-log bag + XP already lives in current baseline; deliberately do NOT import old first_log advancement, reward function, shared quests or historical mod metadata. Manual assembly and client slot/claim validation required."
+      "note": "Only the original Bundle Curios slot and item validation for Ars Elemental Curio/Caster Bags. Quest-claimed first-log bag + XP already lives in current baseline; deliberately do NOT import old first_log advancement, reward function, shared quests or historical mod metadata. Manual assembly and client slot/claim validation required. Baseline owns the slot definition (derived from frozen donor 305bef61b9581e6a5872f1ec56573aec9dc12941, only the nonexistent explicit icon removed); Curios uses its generic icon fallback. Do not re-import stale slot icon."
     },
     {
       "name": "alex-caves-jer-pins",
