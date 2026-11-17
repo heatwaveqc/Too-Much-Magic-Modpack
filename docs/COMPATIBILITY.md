@@ -163,3 +163,15 @@ The exact version-aligned Goety 3.2.2 source (`7fdffc0b4f07aaa79d333ac1791444506
 ## Goety Cataclysm parent ritual contract (2026-11-16)
 
 The Goety Cataclysm 1.21.1 addon recipe inventory declares `goety:ritual` for its focus, summon, and conversion recipes. Current Goety 3.2.2 source shows that the base altar engine progressively consumes pedestal inputs and charges Soul Energy once per 20 ticks; base interruption returns the activation item but not already-paid souls or consumed ingredients. This provides an inherited-engine risk for addon recipes, not proof that every addon ritual uses the unmodified implementation. The addon has no accessible version-aligned source in the inspected public repository, so class overrides, Fabricator behavior, exact spawn/ownership behavior and client acceptance remain unresolved.
+
+
+## November 17 frozen-build A findings
+
+Exact installed/source `322cf3f9f0deb303fc6e6c29b340273ed3f481f6`; [full evidence](qa/AUTOMATED-A-REPORT-2026-11-17.md).
+
+- **Strict preflight blocked:** `silver-ore-materials` would replace `config/almostunified/unification/materials.json` without approved override; routine preflight only warns. Reconcile before future assembly, do not weaken the gate.
+- **Client controls diagnostic failure:** 2,563 `65539: Invalid key -1` occurrences during Render/Pre render after fresh registry-driven mod-key unbinding. Log verifies 34 vanilla mappings preserved, 210 mod defaults updated/newly unbound. Root cause/consumer unknown; audit unbound-key handling and mod interactions before attributing to KeySets or declaring C16 passed.
+- **Two authored stonecutting recipes fail:** Primal Magick raw marble ↔ Astral raw marble (`tmm:stonecutting/common_marble/...`) use string ingredients rejected by pinned 1.21.1 codec. Material source checks passed but recipe loading did not.
+- Optional upstream recipe/loot/tag/model errors remain, including third-party Werewolves food tag leftovers despite no retired TeamLapen JAR. See report for bounded scope.
+
+Earlier namespaced-parser/admin XP and Bio-Mutagen source defects are repaired in this build; all four modules compile and 118 unit tests pass. Dracolich visual/Mahou/Thermalily/MXP source now ships, unlike prior narrowed build; actual behavior still needs B/C acceptance. No new smoke/gameplay or stable promotion claimed.
