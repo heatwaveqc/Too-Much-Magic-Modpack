@@ -323,3 +323,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Mahou artifact acquisition](mods/mahou-tsukai-artifact-acquisition.md): Clarent Dragon-owned cloud, Emrys strengthened offhand Stick/lightning event, Replica exact compound shield/counter/effect/armor checks and supporting Damage Exchange/Death Collection/Immunity Exchange. Cancellation ordering and gameplay remain unverified.
 
 - 2026-11-16 — [Mahou William/Kodoku economy](mods/mahou-tsukai-william-kodoku.md): dictionary-dependent fiction creation, fame0/copy/reader gates, carried vs deployed owner checks, negative-style drain, worm recipe/death accumulation and consumed fire payout to active circuits without owner check. Full text scoring/theater/misfortune and gameplay remain open.
+
+- 2026-11-16 — Recovered malformed Roots Classic Markdown; [pinned ritual audit](mods/roots-classic-pinned-rituals.md) corrects inventory46 rituals/22 components, maps all12 effect families and exact layouts, confirms Terra/staff defaults and identifies in-progress recipe reload and sacrifice-target indexing boundaries. Main remains researching.
