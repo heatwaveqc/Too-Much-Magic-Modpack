@@ -191,10 +191,11 @@
         "scripts/audit_jawr_food_jar.py"
       ],
       "mode": "read-only-qa-audit",
-      "note": "The read-only JAWR/Forbidden Magic bytecode inspection helper from PR #49 is copied verbatim to scripts/audit_jawr_food_jar.py on integration baseline, with source SHA retained. Current retirement-safe pin/roster scripts own Dragon Survival, Comforts and Colorful Hearts; do NOT reinstate Vampire's Delight from the old PR. Neither actual mod pins nor live client/gameplay validation are certified by this helper.",
+      "note": "The read-only JAWR/Forbidden Magic bytecode inspection helper from PR #49 is copied verbatim to scripts/audit_jawr_food_jar.py on integration baseline, with source SHA retained. Current retirement-safe pin/roster scripts own Dragon Survival, Comforts and Colorful Hearts; do NOT reinstate Vampire's Delight from the old PR. Neither actual mod pins nor live client/gameplay validation are certified by this helper. Source-only audit helper copied by PR #273, with actual merge commit discoverable from that PR. The source branch is no longer required for this script, but independent mod-pinning/live QA obligations remain.",
       "source_commit": "0c54fe465b072becd15769ab6ef3fac245a08cb5",
       "merged_from": "feature/next-qa-dragon-comforts-hearts-pins",
-      "integrated_into_baseline": true
+      "integrated_into_baseline": true,
+      "merged_pr": 273
     },
     {
       "name": "standalone-monk-hunter-progression",
