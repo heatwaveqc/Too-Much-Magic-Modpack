@@ -41,6 +41,24 @@
     },
     {
       "chapter": "Getting Started",
+      "title": "I'm Ready for Regular Mode",
+      "quest_id": "544D309000100001",
+      "task_id": "544D409000100001",
+      "xp_reward_id": "544D609000100001",
+      "item_reward_id": "544D709000100001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "command": "tmmnewbie admin graduate {p}"
+      },
+      "depends": null,
+      "optional": true,
+      "team_reward": false
+    },
+    {
+      "chapter": "Getting Started",
       "title": "Punch a Tree",
       "quest_id": "544D4D1100000001",
       "task_id": "544D4D1200000001",

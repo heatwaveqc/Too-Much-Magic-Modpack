@@ -48,6 +48,22 @@
     },
     {
       "chapter": "Getting Started",
+      "title": "I'm Ready for Regular Mode",
+      "description": "New players begin in Newbie Mode, with protected inventory/experience and convenience travel, but without MXP or faction enrollment. When YOU are ready for full survival progression, check this box and claim your personal graduation reward. This permanently enables Regular Mode for your character: normal death and Corail graves, no home/rtp/back, MXP and class enrollment. Graduation is one-way without an administrator. In a team, each player must claim their own reward; never force graduation on teammates.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5,
+        "command": "tmmnewbie admin graduate {p}"
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Getting Started",
       "title": "Punch a Tree",
       "description": "Pick up any log or stem to complete this quest, then claim a 27-slot Trinkets Pouch and 10 XP. No hidden advancement or automatic item delivery is used. Do not place portable bags inside other bags; cross-mod enforcement is still in development.",
       "criterion": {
