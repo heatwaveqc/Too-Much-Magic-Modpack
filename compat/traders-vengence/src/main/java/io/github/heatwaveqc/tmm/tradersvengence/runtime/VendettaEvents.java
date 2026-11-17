@@ -104,16 +104,6 @@ public final class VendettaEvents {
             return;
         }
 
-        if (event.getEntity() instanceof WanderingTrader trader && !event.loadedFromDisk()) {
-            // EntityJoinLevelEvent doesn't expose a spawn reason; v0 restricts all NEW traders.
-            // Saved traders are never removed. Future: use a spawner-specific hook for
-            // command/summon bypass and pre-spawn retries.
-            if (!TraderSpawnRules.allowed(level, trader.blockPosition())) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
         if (!(event.getEntity() instanceof Mob mob)) {
             return;
         }
@@ -122,6 +112,13 @@ public final class VendettaEvents {
         }
 
         MobGoalsAccessor access = (MobGoalsAccessor) mob;
+        // The same entity instance can re-enter on chunk changes/portals.
+        // Inspect the entity's own GoalSelector instead of keeping global
+        // strong/weak sets or adding duplicate attack goals on every join.
+        if (access.tradersVengence$targetSelector().getAvailableGoals().stream()
+                .anyMatch(goal -> goal.getGoal() instanceof WantedPlayerTargetGoal)) {
+            return;
+        }
         access.tradersVengence$targetSelector().addGoal(1, new WantedPlayerTargetGoal(mob, level));
 
         if (mob instanceof Villager villager) {
