@@ -152,3 +152,8 @@ Added occultism-pinned-crafting-guide.md: all244 remaining ordinary/special reci
 ### Occultism chalk/binding/essence teaching contract
 
 Craftingguideappendix now records exact4tierdynamicbinding action (Dictionary+unboundBook, grid≥2×2), all15coloredchalk additives/SpiritFire, Void/Rainbow rites and unboundAfrit/Marid input/event vs actualentityoutput. Corrected main oldsixcategories/fruitbook/click-list-binding and ritual-duration ticks errors; processor tickcounts unchanged. Remaining sourceclosure needs actualunboundentityloot, Dictionaryremainder/itemregistration, full allstageguidewalkthrough and residualhelpers. Current parent heading explicitly reconciliationinprogress.
+
+
+### Occultism early acquisition/essence closure
+
+GuideBookItem returns copy as crafting remainder, binding Dictionary reusable/componentsretained. Foods exact Datura70%ThirdEye300+Hunger, DreamEssence1200+sideeffects, purifiedOtherworldEssence1200+Luck. UnboundAfrit/Marid exactloot uniformmin.7/.9 max1 are NOT dropchance: target NumberProvider.getInt rounds→1 both endpoints, SetItemCount uses getInt =>base1. Verified supporting target sources in qa-source existing generatedjar; not engine guessed floor. Need finalwalkthrough consolidation and remaining residualhelpers before parent sourcecomplete.
