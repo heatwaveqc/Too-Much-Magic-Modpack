@@ -53,9 +53,9 @@ The full research phase is **not complete** while required profiles remain resea
 
 ## Remaining work, in priority order
 
-1. Occultism: recipe inventories now closed, finish familiar effects/upgrades/recovery, Otherworld tools/chalk, pinned storage and supporting dispatcher evidence; validate guide gaps and update full-stage teaching matrix.
+1. Occultism: all931 runtime recipes,230 guide entries,20 build patterns and major worker/familiar/storage/Otherworld/device methods now have pinned appendices. Consolidate the parent full-stage walkthrough, remove obsolete partial statements and perform a residual-system audit before source-complete. Do not repeat closed inventories.
 2. Core parents Ars Nouveau + seven addons, Neo Vitae, JAWR/Forbidden Magic: compare exact book/recipe/ritual/core classes against existing version-aligned source; complete branch costs and outputs. Preserve family-specific profiles and actual two-sided integration evidence.
 3. Botania/Extra Botany, Iron's, Astral, Mahou, EvilCraft, Primal, Pastel, Malum/Gaze, Hexerei/HexCast, Enchanted, Eidolon, Feywild, Embers, Theurgy, Psi/Tweaks, Reliquary and gated EMC/apex systems: close each profile's explicit source gaps without conflating client tests with research completion.
 4. Review cross-mod source-supported reports, especially transformation/food, Ars bridges, resource-processing and late boss gates; write positive/boundary test handoffs. Do not implement adapters/quests/configs in this phase.
 
-Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Roots and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.
+Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Roots, Totemic and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.
