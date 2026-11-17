@@ -43,6 +43,25 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def verify_trader_irons_pin(jar, root=ROOT):
+    """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
+
+    The native loader reports 1.21.1-3.16.3, NOT the marketing version 3.16.3.
+    An intentional Iron's upgrade must review the native ABI and update the exact range.
+    """
+    pin = tomllib.loads((root / "mods/irons-spells-n-spellbooks.pw.toml").read_text())
+    match = re.fullmatch(r"irons_spellbooks-(1[.]21[.]1-[0-9]+[.][0-9]+[.][0-9]+)[.]jar", pin["filename"])
+    if not match:
+        raise ValueError("Unreviewed Iron's pinned filename: " + pin["filename"])
+    expected = "[" + match.group(1) + "]"
+    with zipfile.ZipFile(jar) as z:
+        metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
+    rows = [d for d in metadata.get("dependencies", {}).get("traders_vengence", [])
+            if d.get("modId") == "irons_spellbooks"]
+    if len(rows) != 1 or rows[0].get("versionRange") != expected or rows[0].get("type") != "required" or rows[0].get("ordering") != "AFTER" or rows[0].get("side") != "BOTH":
+        raise ValueError("Trader's Vengence Iron's dependency must be required, BOTH, AFTER, exact native pinned range " + expected)
+    print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
+
 def verify_packaging_inputs(addons, root=ROOT):
     expected = {jar.name: mod for _, mod, jar in selected(root)}
     if len(addons) != len(expected) or {p.name for p in addons} != set(expected):
@@ -60,6 +79,8 @@ def main():
         for directory, mod, jar in rows:
             subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
+            if mod == "traders_vengence":
+                verify_trader_irons_pin(jar)
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
         verify_packaging_inputs(paths)
