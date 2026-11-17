@@ -7,11 +7,12 @@ import pathlib
 import re
 import sys
 import zipfile
+from first_party_runtime import verify_packaging_inputs
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OUTPUT = "Too-Much-Magic-Full-Integration-Prism.zip"
 
-def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str, transformations_jar: str) -> None:
+def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise RuntimeError("Packwiz source must be an immutable commit")
     root = pathlib.Path(__file__).resolve().parents[1]
@@ -35,14 +36,8 @@ def main(bootstrap: str, output_dir: str, commit: str, progression_jar: str, tra
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
-    addons = [pathlib.Path(progression_jar), pathlib.Path(transformations_jar)]
-    expected = ("tmm_progression-", "tmm_transformations-")
-    for jar, prefix in zip(addons, expected):
-        if not jar.is_file() or not jar.name.startswith(prefix) or jar.suffix != ".jar":
-            raise RuntimeError("Missing expected first-party jar " + str(jar))
-        with zipfile.ZipFile(jar) as z:
-            if not any(n.startswith("META-INF/") for n in z.namelist()):
-                raise RuntimeError("Invalid built module " + jar.name)
+    addons = [pathlib.Path(p) for p in runtime_jars]
+    verify_packaging_inputs(addons, root)
     pack = f"https://raw.githubusercontent.com/{REPO}/{commit}/pack.toml"
     addons_sha = {jar.name: hashlib.sha256(jar.read_bytes()).hexdigest() for jar in addons}
     meta["integration_commit"] = commit
@@ -94,7 +89,7 @@ OPERATOR/PLAYER QA:
 /tmmtransform archlich
 /tmmtransform dracolich
 
-Run QA on disposable world(s): confirm both JARs load; test Monk
+Run QA on disposable world(s): confirm all selected first-party JARs load; test Monk
 First Sunset, bare-hand XP, Bedrock Rest, safety of armor lock and
 inventory slot; Hunter potion enrollment, mutation brewing/cost,
 specialty XP and Silver Hunter, persistence across reload/death;
@@ -103,7 +98,7 @@ Archlich death priority is experimental and modifies event ordering.
 Client, multiplayer, third-party binary behavior, native death/cure
 and mutation persistence are NOT proven by server smoke alone.
 
-Other mods download by packwiz; both first-party JARs bundled.
+Other mods download by packwiz; selected first-party JARs bundled.
 WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
 plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
@@ -194,6 +189,6 @@ MaxMemAlloc=8192
         "third_party_jars_bundled": 0, "dev_only_preferences": True}, indent=2))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 6:
-        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT PROGRESSION_JAR TRANSFORMATIONS_JAR")
+    if len(sys.argv) < 5:
+        sys.exit("Usage: build_full_integration_prism.py BOOTSTRAP OUTPUT_DIR COMMIT FIRST_PARTY_JAR [FIRST_PARTY_JAR ...]")
     main(*sys.argv[1:])

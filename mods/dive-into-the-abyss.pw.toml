@@ -1,0 +1,13 @@
+name = "Dive Into the Abyss"
+filename = "wardentools-1.1.4_neoforge_1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/x2qQNlIy/versions/w30oDCUY/wardentools-1.1.4_neoforge_1.21.1.jar"
+hash-format = "sha512"
+hash = "d6436a30cb9339c63fa2c548685e61243d38b4814e4495f7cdc02294428b6be16acd066718b847d5fad8c99246baa7abc9fa4b283e09c13f7fae6443d758728a"
+
+[update]
+[update.modrinth]
+mod-id = "x2qQNlIy"
+version = "w30oDCUY"

@@ -1,0 +1,13 @@
+name = "The Aurorian Unofficial Port"
+filename = "theaurorian-1.21.1-1.0.6.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/AsNDEFIl/versions/8yOGgcWP/theaurorian-1.21.1-1.0.6.jar"
+hash-format = "sha512"
+hash = "3e545fd767812fde4f79be60200a20129f35007d48e7b7b6bf7717adf70da3baf2de2611962260605474507af9b9262b9b630f803a347afb00a5727a9302e63c"
+
+[update]
+[update.modrinth]
+mod-id = "AsNDEFIl"
+version = "8yOGgcWP"

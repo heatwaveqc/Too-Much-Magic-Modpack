@@ -20,16 +20,27 @@ def main() -> None:
     index = (ROOT / "index.toml").read_text(encoding="utf-8")
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
+    sys.path.insert(0, str(ROOT / 'scripts'))
+    from first_party_runtime import selected, verify_packaging_inputs
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for base in ("tmm_progression-", "tmm_transformations-"):
-            jar = folder / (base + "0.1.0-dev.jar")
+        for _, mod, expected_path in selected():
+            jar = folder / expected_path.name
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
+                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
             addons.append(jar)
+        verify_packaging_inputs(addons)
+        for invalid in (addons[:-1], addons + [addons[0]]):
+            try:
+                verify_packaging_inputs(invalid)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError('Missing or duplicate runtime JAR accepted')
         target = ROOT / "manifest/integration-lock.json"
         existing = target.read_bytes() if target.exists() else None
         try:
@@ -40,7 +51,7 @@ def main() -> None:
             commit = "a" * 40
             subprocess.run([
                 sys.executable, str(BUILDER), str(bootstrap), str(folder),
-                commit, str(addons[0]), str(addons[1]),
+                commit, *(str(jar) for jar in addons),
             ], check=True)
             # The builder intentionally stages a DIRECTORY at this .zip-named
             # upload path. GitHub Actions wraps its contents in one ZIP. Previous
@@ -81,10 +92,10 @@ def main() -> None:
                 meta = json.loads(z.read("BUILD-MANIFEST.json"))
                 assert meta["personal_settings"]["public_release"] is False
                 assert meta["dev_only_preferences"] if "dev_only_preferences" in meta else True
-                assert sum(x.endswith(".jar") for x in z.namelist()) == 3
+                assert sum(x.endswith(".jar") for x in z.namelist()) == len(addons) + 1
                 assert not any(p.startswith("minecraft/saves/") for p in z.namelist())
                 assert not any(p.startswith("minecraft/config/") for p in z.namelist())
-            print("PASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, two first-party JARs and no personal data or configs")
+            print("PASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, all selected first-party JARs and no personal data or configs")
         finally:
             if existing is None:
                 target.unlink(missing_ok=True)

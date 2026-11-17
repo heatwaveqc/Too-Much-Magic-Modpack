@@ -15,7 +15,9 @@ on:
       - 'scripts/verify_next_test_roster.py'
       - 'scripts/validate_quests.py'
       - 'compat/progression/**'
-      - 'compat/transformations/**'
+      - 'compat/**'
+      - 'manifest/first-party-runtime.json'
+      - 'scripts/first_party_runtime.py'
       - 'tests/test_prism_qa_packaging.py'
       - 'kubejs/server_scripts/silver_equipment_unification.js'
       - 'kubejs/startup_scripts/silver_equipment_stats.js'
@@ -122,13 +124,13 @@ jobs:
           python3 scripts/verify_emc_coverage_audit.py
       - name: Re-validate live-staged Tyz 99-rank Core Magic source (exclusive skill backend)
         run: python3 compat/magic/stage_preview.py --check
-      - name: Compile and unit test standalone Monk/Hunter progression
-        working-directory: compat/progression
-        run: gradle --no-daemon build
-      - name: Compile and unit test JAWR-only transformation bridge
-        working-directory: compat/transformations
-        run: gradle --no-daemon build
-      - name: Offline regression for two-JAR Prism packaging
+      - name: Compile and unit test all explicitly selected first-party modules
+        run: python3 scripts/first_party_runtime.py build
+      - name: Resolve exact built first-party JAR paths
+        run: |
+          paths="$(python3 scripts/first_party_runtime.py paths)"
+          echo "SMOKE_EXTRA_MOD_JARS=$paths" >> "$GITHUB_ENV"
+      - name: Offline regression for manifest-driven Prism packaging
         run: python3 tests/test_prism_qa_packaging.py
       - name: Verify HexCast MXP donor contract (authorized assembly only)
         if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') && (inputs.full_smoke == true || inputs.assemble_only == true) }}
@@ -138,14 +140,13 @@ jobs:
         if: ${{ inputs.full_smoke != true }}
         run: |
           echo '## Quick checks only — no server smoke or Prism QA ZIP' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Static checks and two-module Gradle compile/unit tests ran. A server-tested build requires explicit owner authorization and a manual full_smoke=true invocation.' >> "$GITHUB_STEP_SUMMARY"
-      - name: Full dedicated-server smoke WITH Monk, Hunter and JAWR transformation bridge
+          echo 'Static checks and selected-module Gradle compile/unit tests ran. A server-tested build requires explicit owner authorization and a manual full_smoke=true invocation.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Full dedicated-server smoke with selected first-party runtime modules
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         env:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
-          SMOKE_EXTRA_MOD_JARS: '${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
         run: bash scripts/smoke_server.sh
       - name: Validate retired runtime mods, recipes and tag absence
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
@@ -160,11 +161,7 @@ jobs:
       - name: Fail if standalone module is absent or retired modules leak
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
-          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_progression-0.1.0-dev.jar"
-          test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
-          test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
-          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
-          echo "Standalone tmm_progression and JAWR-only tmm_transformations both server-tested; old tmm_monk absent"
+          python3 scripts/first_party_runtime.py verify-smoke --mods-dir "${{ runner.temp }}/tmm-full-integration-smoke/mods"
       - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
@@ -195,11 +192,10 @@ jobs:
       - name: Produce commit-locked all-workstreams Prism client ZIP
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
+          IFS=: read -r -a jars <<< "$SMOKE_EXTRA_MOD_JARS"
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
-            "${{ runner.temp }}" "$(git rev-parse HEAD)" \
-            "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar" \
-            "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
+            "${{ runner.temp }}" "$(git rev-parse HEAD)" "${jars[@]}"
       - name: Upload the one comprehensive unstable test build
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         uses: actions/upload-artifact@v4
