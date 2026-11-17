@@ -103,15 +103,18 @@
     },
     {
       "name": "mxp-ledger-math-pilot",
-      "branch": "feature/mxp-configurable-growth-20261115",
+      "branch": "test/full-integration",
       "paths": [
         "compat/mxp/"
       ],
-      "mode": "source-and-test-only",
-      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet. Frozen donor updated from older #45 hooks to its direct descendant #161: same Ars/Iron/Botania/Neo hooks plus configurable server-authoritative MXP growth factor 1.02 default. SOURCE/TEST-ONLY: no tmm_mxp JAR installed, no runtime/client claim, and no owner-authorized full build.",
+      "mode": "source-integrated-module-ci-not-installed",
+      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet. Frozen donor updated from older #45 hooks to its direct descendant #161: same Ars/Iron/Botania/Neo hooks plus configurable server-authoritative MXP growth factor 1.02 default. SOURCE/TEST-ONLY: no tmm_mxp JAR installed, no runtime/client claim, and no owner-authorized full build. Full 32-file source copied from reviewed PR #279 on dev/progression, then source-synced to integration by #281. Adds JAWR 900-blood post-commit API and cross-payment dedup regression tests, but NO native JAWR hook. NO tmm_mxp built/pinned runtime JAR. Source-only module CI is NOT a Minecraft server/client PASS.",
       "source_commit": "f0ab1cde706883a09929e2b82eba57482377ee17",
       "supersedes_source_branch": "feature/mxp-ars-irons-botania-neo-hooks",
-      "supersedes_source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa"
+      "supersedes_source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa",
+      "merged_from": "feature/mxp-configurable-growth-20261115",
+      "integrated_into_baseline": true,
+      "merged_pr": 281
     },
     {
       "name": "tyzs-primary-runtime-migration",
@@ -204,11 +207,12 @@
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate.",
+      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate. Reviewed #279/#281 migrates 37 INACTIVE JAWR Vampire/Werewolf SkillPrefabs, original form gates and bounded Werewolf pilots into this single engine. Optional JAWR 0.5.39/Tyz 6.4.2 upstream classes. All advanced form gates fail closed; no standalone tmm_form_skills module. Full runtime QA in issue #280.",
       "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "integrated_into_baseline": true,
       "merged_pr": 229,
-      "merged_commit": "f468ccf8589d0a4cbb2990c86e782f8b794f70df"
+      "merged_commit": "f468ccf8589d0a4cbb2990c86e782f8b794f70df",
+      "latest_reconcile_pr": 281
     },
     {
       "name": "jawr-native-transformation-bridge",
@@ -442,7 +446,9 @@
     "fix/quest-registry-gate-and-qa-priorities-2026-11-15": "PR #82 was closed unmerged; its live quest-item registry gate (scripts/quest_registry_gate.py) is present byte-identically in test/full-integration. The old workflow and QA-doc snapshots were not replayed; current QA definitions and workflow files remain authoritative.",
     "stage/next-qa-jer-alex-uranium": "PR #56 retired: only Alex's Caves Continued 1.1.2 + CodxLib 1.5.1 + JER 1.6.0.57 metadata carried forward with index/pack updates; obsolete BR/Rework uranium conversion and automatic smoke omitted. See docs/qa/ALEX-JER-REACTOR-FREE-2026-11-16.md. Source branch still exists for historical QA provenance.",
     "feature/b16-betterend-thallasium-iesnium": "B16 replacement PR #276 pins BetterEnd and all three New Dawn dependencies and replaces old Spirit Fire End Draconium ore recipe with Thallasium. No stale full source manif/packwiz or workflow imported. Runtime acceptance remains pending.",
-    "feature/b17-loot-performance-yungs-ars-locate": "Replaced with clean post-B16 source merger, exactly 15 pinned YUNG/loot/QoL files and six Ars native tags, two rituals and generator/registry support. Preserves Gilded B16/B17 and BetterEnd B16 separately; End Island held pending client-worldgen compatibility. No old automatic smoke workflow, stale pack/index or fabricated registry IDs."
+    "feature/b17-loot-performance-yungs-ars-locate": "Replaced with clean post-B16 source merger, exactly 15 pinned YUNG/loot/QoL files and six Ars native tags, two rituals and generator/registry support. Preserves Gilded B16/B17 and BetterEnd B16 separately; End Island held pending client-worldgen compatibility. No old automatic smoke workflow, stale pack/index or fabricated registry IDs.",
+    "feature/mxp-configurable-growth-20261115": "Reviewed #161 full source now in test/full-integration/compat/mxp from #279/#281. Module CI only; NOT an installed tmm_mxp JAR. Preserves 1.02 growth and paid resource hooks, adds inert JAWR blood award API; next owner-authorized runtime QA issue #280.",
+    "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "PR #94 source catalog and pilots migrated into shared compat/progression on dev via #279 and integration via #281; 37 Tyz form skills INACTIVE by default. No separate compat/forms runtime, no JAWR native blood payment hook. Runtime acceptance issue #280."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
