@@ -315,3 +315,8 @@ Added pinned-amethyst-golem.md: AwakeningconsumesBudding/Dispelcharmmove,ownhome
 ### 2026-11-17 22:42UTC turret continuation
 
 Added pinned-turrets.md:4variants/5recipes,Touch+Projectilemaps only,programselectedcastermainhandnoitemdebit,4tickrisingedgeBasicvsTimerpowerpause/20default/±20or200/lock/zero,Enchantedfloorhalf,TimerexcludeTouchProjectileRedstoneSensitivecosts,SourceBEFOREeffects/noimpliedrefund,linkedSourcepreferred+noemptyfallback/maxExtract/sameworldperaxis10,rotatingwandaimvsSourcebindingdirections. javapshootSpellverifiedbecauseCFRunstructuredGOTO. Parent14companions,stillresearching: othercastergear/ParchmentCodexTomes/foci/potions andremote/advanceddevices plus7addons/pilot/fullstage.
+
+
+### 2026-11-17 Warp Scroll / portal continuation
+
+Added pinned-warp-portals.md: exactrecipes/recordreset/directconsumablevsstableuseOn,dropped9000Source/scrollcreationPLACEMENTbeforedebit,vertical1..21/negativeY0boundary+safe2×3ring14Sourcestone,horizontal<21,71decorativetag,Stabletemporary5×5outer3×3inner/frame1200nodirectSourceitemdebit,dropStableDOESconsume. PortalTileactualcrossdimensiontransitionvsordinaryscrollsameworld,missingworld/targetPortalnonnullnomove,playerqueuevsdirectentity/passengers. No protecteddimensionbypassclaim. Parent15companions; nextothercasterequipment+remoteScryer/Planarium/remainingdevices,7addons/pilot/stage.
