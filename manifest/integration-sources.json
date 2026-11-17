@@ -5,7 +5,7 @@
   "streams": [
     {
       "name": "ars-complete-quest-pilot",
-      "branch": "feature/ars-quest-pilot",
+      "branch": "test/full-integration",
       "paths": [
         "manifest/ars_quest_pilot.json",
         "manifest/ars_quest_pilot_validation.json",
@@ -15,8 +15,12 @@
         "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
       ],
       "mode": "source-verified-baseline-runtime",
-      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches) with native FTB Filter System tag task (file ID 7429011), and removed hidden advancement. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS.",
-      "source_commit": "6af5ed27b53c33a153e0a7c4c2d2266f70e5b9f2"
+      "note": "Full Ars 49-node runtime is already reconciled into latest test/full-integration baseline, 44 chapters/225 nodes, preserving 19 Alcohol quests, Welcome starter items, and Punch a Tree Curio Bag+XP (no torches) with native FTB Filter System tag task (file ID 7429011), and removed hidden advancement. Import only old pilot source, tools and Chimera advancement. Never import outdated pilot shared quest files. Historical pilot server smoke not current gameplay PASS. All six selected donor files are Git-blob-identical at the current baseline HEAD; #225 merged the canonical 49-quest runtime. Original #74 donor SHA retained only as history; in-world/client quest acceptance still pending.",
+      "source_commit": "6af5ed27b53c33a153e0a7c4c2d2266f70e5b9f2",
+      "merged_from": "feature/ars-quest-pilot",
+      "integrated_into_baseline": true,
+      "merged_pr": 225,
+      "merged_commit": "edd555accf09765d802686cc6aceef5b8a2b24ea"
     },
     {
       "name": "evilcraft-quest-draft",
@@ -99,13 +103,15 @@
     },
     {
       "name": "mxp-ledger-math-pilot",
-      "branch": "feature/mxp-ars-irons-botania-neo-hooks",
+      "branch": "feature/mxp-configurable-growth-20261115",
       "paths": [
         "compat/mxp/"
       ],
       "mode": "source-and-test-only",
-      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet.",
-      "source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa"
+      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet. Frozen donor updated from older #45 hooks to its direct descendant #161: same Ars/Iron/Botania/Neo hooks plus configurable server-authoritative MXP growth factor 1.02 default. SOURCE/TEST-ONLY: no tmm_mxp JAR installed, no runtime/client claim, and no owner-authorized full build.",
+      "source_commit": "f0ab1cde706883a09929e2b82eba57482377ee17",
+      "supersedes_source_branch": "feature/mxp-ars-irons-botania-neo-hooks",
+      "supersedes_source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa"
     },
     {
       "name": "tyzs-primary-runtime-migration",
@@ -180,13 +186,16 @@
     },
     {
       "name": "next-qa-dragon-comforts-hearts-pins",
-      "branch": "feature/next-qa-dragon-comforts-hearts-pins",
+      "branch": "test/full-integration",
       "paths": [
         "scripts/audit_jawr_food_jar.py"
       ],
-      "mode": "runtime-experimental",
-      "note": "Keep JAWR bytecode audit as read-only source; separate retirement-safe pins install Dragon Survival, Comforts and Colorful Hearts, never Vampire's Delight.",
-      "source_commit": "0c54fe465b072becd15769ab6ef3fac245a08cb5"
+      "mode": "read-only-qa-audit",
+      "note": "The read-only JAWR/Forbidden Magic bytecode inspection helper from PR #49 is copied verbatim to scripts/audit_jawr_food_jar.py on integration baseline, with source SHA retained. Current retirement-safe pin/roster scripts own Dragon Survival, Comforts and Colorful Hearts; do NOT reinstate Vampire's Delight from the old PR. Neither actual mod pins nor live client/gameplay validation are certified by this helper. Source-only audit helper copied by PR #273, with actual merge commit discoverable from that PR. The source branch is no longer required for this script, but independent mod-pinning/live QA obligations remain.",
+      "source_commit": "0c54fe465b072becd15769ab6ef3fac245a08cb5",
+      "merged_from": "feature/next-qa-dragon-comforts-hearts-pins",
+      "integrated_into_baseline": true,
+      "merged_pr": 273
     },
     {
       "name": "standalone-monk-hunter-progression",
