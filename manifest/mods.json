@@ -27,7 +27,7 @@
       "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified. Frozen JAR audit 44014327626: Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified. Frozen JAR audit 44014327626: Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
     },
     {
       "id": "akashic-tome",
@@ -655,7 +655,7 @@
       "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
     },
     {
       "id": "deeper-darker",
@@ -1385,7 +1385,7 @@
       "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
     },
     {
       "id": "lithostitched",

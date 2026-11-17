@@ -686,5 +686,15 @@
       "deep-aether": "Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation.",
       "liroth-revamped": "Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed."
     }
+  },
+  "owner_deferred": {
+    "date": "2026-11-16",
+    "targets": [
+      "aether",
+      "deep-aether",
+      "liroth-revamped"
+    ],
+    "beta_library_dependencies_approved_in_principle": true,
+    "note": "Future deployment; do not enable in this smoke."
   }
 }

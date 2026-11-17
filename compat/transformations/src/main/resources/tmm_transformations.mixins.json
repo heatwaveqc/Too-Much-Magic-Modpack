@@ -11,7 +11,8 @@
     "BotaniaThermalilyNoCooldownMixin",
     "NewbieVampireAcquisitionMixin",
     "NewbieWerewolfAcquisitionMixin",
-    "NewbieDragonAcquisitionMixin"
+    "NewbieDragonAcquisitionMixin",
+    "MahouCatalystExchangeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
