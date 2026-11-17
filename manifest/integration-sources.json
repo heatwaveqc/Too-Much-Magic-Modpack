@@ -139,17 +139,15 @@
       "paths": [
         "config/ftbessentials.snbt",
         "defaultconfigs/ftbessentials-server.snbt",
-        "scripts/resolve_ftb_essentials_qol.py"
-      ],
-      "optional_paths": [
+        "scripts/resolve_ftb_essentials_qol.py",
         "mods/ftb-essentials.pw.toml"
       ],
-      "manifest_mod_ids_if_available": [
+      "mode": "runtime-qa-staging",
+      "note": "Owner explicitly requires travel commands in next candidate. Exact donor CF 410811/8442866 pinned; import is mandatory on authorized assembly. Validate personal mode restrictions and FTB permissions in-world.",
+      "source_commit": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85",
+      "manifest_mod_ids": [
         "ftb-essentials"
-      ],
-      "mode": "runtime-when-pinned",
-      "note": "Register current source immediately and bring the approved FTB Essentials 2101.1.10 pack pin into integration automatically after upstream B13 resolves; non-op home/RTP still require in-world QA",
-      "source_commit": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85"
+      ]
     },
     {
       "name": "starter-inventory-akashic-improvable",
