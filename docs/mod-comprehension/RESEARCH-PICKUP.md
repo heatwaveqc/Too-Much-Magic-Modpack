@@ -215,3 +215,13 @@ All24 tablet effect implementations now mapped in ars-nouveau-pinned-rituals.md,
 ### 2026-11-17 Ars Source producers and transport
 
 Added ars-nouveau-pinned-source.md covering all5producers/5Sourcerelays,14acquisitionrecipes,nativeDocumentationrefs,firstsetup,eventqueuefirstmatch,SourceUtiljarboxvsproviderstrictdistance,multicontainerrollback. Findings: Alchemical typedaccept alwaysfalse from SourcelinkcanReceivefalse(javapconfirmed), consumeswhenempty; Mycelialbatchoverflow; VolcanicgetSourceValuemutatesprogressincludingdouble/failedchecks; Warp differentoverloads/pathloss, no dimensionalendpoint. Parent links/openquestions reconciled. Nexthelperautomation/personalcasting/processing/equipment/addons/pilot. Still5/42sourcecomplete,37researching; no hardblocker/runtime.
+
+
+### 2026-11-17 Ars Wixie operation
+
+Added ars-nouveau-pinned-wixie.md: exacthalfhealthWitchDispelJSON/shard/charm,Cauldronconversion120,boundinventoriesmandatory,pedestalsamples3cube,clickrecipe_setmessageisqueryonly,50Sourceprepaid,shaped/shapelessandbrewingseparate,itemidentitylimits,looseoutput/remainders,300potionunits/implicitWater/outputstall,power/reloadboundaries. Corrected parentWhirlisprigSourceproducerclaim: tile consumesSource forplantdrops. NextcompleteWhirlisprig/Bookwyrm/Starbuncle,familiars,personalcasting,processing/equipment,addons/pilot. Helper/APIclasses allCFRscratch (no codecommitted). Parentstillresearching.
+
+
+### 2026-11-17 Ars Whirlisprig worker
+
+Added pinned-whirlisprig.md: treeevent<=10→1shardafter>60, exact8pedestalcharmrecipe,flowerconversion120,grove21×21/Y-1..30,defaultstate50cap,mood/30inspectionprogress,250progress/250Source60tickbatch,floor(diversity/2)+3attempts,denyseed/dirt/filter,rereoll/doubledraw,poweredpendingbatchandreloademptytables. Outputinsertadjacent helperstilltargetedpending; noSourceproducerclaim. NextBookwyrm/Starbuncle/fullfamiliar andpersonalcasting/processing/equipment/addon/pilot.
