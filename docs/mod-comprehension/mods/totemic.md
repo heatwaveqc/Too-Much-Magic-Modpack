@@ -1,5 +1,8 @@
 # Totemic — mechanics and gameplay profile
 
+Pinned local-JAR follow-up: [all 14 ceremonies, six instrument types, 31 recipes and guide locks](totemic-pinned-ceremonies-recipes.md). This exact 0.12.18 audit supersedes historical missing-JAR and source-branch limitations below; remaining progression reconciliation is still researching.
+
+
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | totemic / totemic |
