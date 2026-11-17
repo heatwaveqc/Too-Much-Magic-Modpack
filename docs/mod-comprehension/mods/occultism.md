@@ -327,3 +327,6 @@ See [all529 pinned processing/miner records](occultism-pinned-processing.md) for
 
 
 Pinned worker follow-up: [job, transport, smelting, farming, lumberjack and time/weather contracts](occultism-pinned-worker-jobs.md). This closes major method-level gaps while retaining the remaining UI/dispatcher/familiar reconciliation work.
+
+
+[Pinned Battlefield and capture devices](occultism-pinned-devices-capture.md) separates ordinary/Fragile/Trinity capture, virtual loot costs/failure/output loss, and literal Nether Star/Dragon Egg override paths from the earlier miner-only audit. Wormholes/satchel controls remain source follow-through.

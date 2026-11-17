@@ -157,3 +157,8 @@ Craftingguideappendix now records exact4tierdynamicbinding action (Dictionary+un
 ### Occultism early acquisition/essence closure
 
 GuideBookItem returns copy as crafting remainder, binding Dictionary reusable/componentsretained. Foods exact Datura70%ThirdEye300+Hunger, DreamEssence1200+sideeffects, purifiedOtherworldEssence1200+Luck. UnboundAfrit/Marid exactloot uniformmin.7/.9 max1 are NOT dropchance: target NumberProvider.getInt rounds→1 both endpoints, SetItemCount uses getInt =>base1. Verified supporting target sources in qa-source existing generatedjar; not engine guessed floor. Need finalwalkthrough consolidation and remaining residualhelpers before parent sourcecomplete.
+
+
+### Occultism Battlefield/capture audit
+
+New occultism-pinned-devices-capture.md records soul/fragile/trinity/lamp capture and unchecked releasepayloadclear, Battlefield componentinputs/virtualhealthweapon/fuel/work/failure/roll math, outputremainderloss and two explicitbossloottables (WitherNetherStar; Dragon3Breath:1Egg). Important prior194minerabsence was SCOPED, not global. Ordinary/Fragile denyboss; Trinity separatetag absentnativeJSON, needeffectivetag beforeavailabilityclaim. Recipes/gates recorded; noapprovedfarm/firstbossbypass/runtimeclaim. OptionalWormhole/satchelcontrols remain (classes extracted/decompiled in scratch).
