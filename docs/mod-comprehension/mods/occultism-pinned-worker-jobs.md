@@ -78,3 +78,26 @@ Ordinary noncalling-item interaction with an untamed SpiritEntity calls tame(pla
 Book capture stores full entity serialization and removes original. Placement with stored payload loads a fresh entity at clicked block or its adjacent face if the original position collides, removes saved Pos, updates book from entity and clears payload. **Pinned `useOn` calls addFreshEntity on that same entity twice and ignores both boolean results**, verified against javap bytecode. This is not evidence of two successful entities or a duplication recipe; UUID/add rejection semantics and world events determine outcome. It does establish that the book clears payload without checking successful delivery, so do not promise lossless relocation if spawn is rejected. Prepare a disposable test and verify returned worker before relying on relocation.
 
 Tamed spirit death records UUID/time in a static in-memory map. Every 1200 game ticks a bound book can consume an older entry, mark itself dead and clear its UUID. This is delayed notification, not a persistent global soul ledger or guaranteed cross-restart death detector. Exact GUI packet authority/work-size bounds need their own network audit before security claims.
+
+
+## Farmer/lumberjack brain composition, collection and native defaults
+
+Farmer core priority uses MoveToWalkTarget, HarvestCrop, PickupItem and DepositItems in FirstApplicableBehaviour; idle tries crop target before deposit before wanted item. Lumberjack core prioritizes MoveToWalkTarget, ReplantSapling, DepositItems, PickupItem then FellTree; idle tries replant, deposit, wanted item then tree. Their onChangeWorkArea clears no-target/unreachable/non-target memories. These task lists are not a guarantee of fixed throughput under path obstruction.
+
+Farmer accepted pickup ingredients are `c:seeds` and `c:crops`; lumberjack accepts log/leaf/sapling item tags, Occultism fruits and Stick. NearestJobItemSensor runs default 20-tick scan, selects an eligible item with line of sight in work-center cube ±half-size. WorkAreaSize enum values are Small16/Medium32/Large64; these are widths for this sensor, while the generic PickupItemsGoal above uses those same values as horizontal radii. Do not label every worker “16-block radius” based solely on enum name.
+
+Their brain `PickupItemBehaviour` requires deposit-position and deposit-facing memories, plus wanted-item memory. It first accepts wanted item within per-axis distances (3.5,16,3.5) if some inventory capacity exists. After that, it scans alive ItemEntities within wanted item's box inflated3 and attempts insertion of each. **This incidental sweep does not recheck job eligibility, line of sight or work-area membership**. Actual leftovers are written back to each entity; condition on simulated remainder <=64 is not a predicate restricting to crop/log loot. Keep unrelated dropped items away. This differs from cleaner/processor PickupItemsGoal and should not be conflated with it.
+
+Brain DepositItemsBehaviour starts within squared distance2.5² with any filled inventory slot, accesses the memorized face, and transfers first filled slot through simulate then actual insertion retaining leftover. Its10-tick behavior runtime is not a promise to empty all slots at once. Deposit walk target requires an empty horizontal neighbor not cached unreachable; no route may stall collection/deposit. This explains why assigning deposit is part of a functioning farmer/lumberjack setup, even though their harvest methods themselves can act without consuming storage inputs.
+
+Pinned native `OccultismServerConfig.SpiritJobSettings` defaults below (effective world overrides untested):
+
+| Family / tiers Foliot,Djinni,Afrit,Marid | Time multipliers | Output multipliers | Operations per batch |
+| --- | --- | --- | --- |
+| Crusher | 2,1,0.5,0.3 | 1,1.5,2,3 | 1 each |
+| Crystallizer | 1,0.5,0.3,0.1 | 1,1.5,2,3 | 1 each |
+| Smelter | 1,0.5,0.1,0.01 | native assembled count; no separate output multiplier | 1 each |
+
+Crusher/crystallizer recipe eligibility tiers default1/2/3/4. Each family's result repickup delay is60ticks. Trader Sapling defaults20ticks/1operation; Otherstone and Otherrock10ticks/4operations; Gambler200ticks/16operations; trader delay60ticks. As documented in processing appendix, fractional output scaling truncates and ignore-multiplier recipes override it; do not round up or treat output multiplier as an extra batch size.
+
+Weather leaf methods: ClearWeather sets `(clearTime=0,rainTime=0,raining=false,thundering=false)`; Rain `(0,6000,true,false)`; Thunder `(0,6000,true,true)`, each gated by corresponding ritual enable config. Clear's zero is not a promised6000-tick forced-clear duration. Disabled leaf sends owner a message, then parent still disposes spirit. Default cast update counts: day100, night100, clear100, rain200, thunder300. Parent completion compares incremented count for equality, so config-allowed zero is a boundary worth testing rather than assumed instantaneous success. Construction of visual-only lightning remains unspawned.

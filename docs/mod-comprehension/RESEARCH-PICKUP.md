@@ -122,3 +122,8 @@ Added occultism-pinned-worker-jobs.md from exact JAR; job/AI classes all extract
 ### Occultism calling-book controls
 
 Appended exact owner/link/capture/mode/block controls and manager endpoint setup to worker appendix. `BookOfCallingItem.useOn` double addFreshEntity and unchecked payload clearing confirmed by javap; do not claim duplicate spawn or lossless relocation. Capture on already bound target occurs even when sneaking. Native worker noncalling interaction can tame untamed spirit; owner sneak opens job menu. Book death notification static map/delayed1200, not persistent ledger. Remaining tasks remain in worker appendix and parent.
+
+
+### Occultism worker closure follow-through
+
+Added farmer/lumberjack brain tasks, tagged first selection vs UNFILTERED incidental3-block item sweep, required deposit memories, geometry enum16/32/64, exact processing/time/weather defaults and leaf weather calls. Job method scope now broadly closed; remaining source queue focus dispatcher/storage transaction and familiar fusion/guide full progression, not redoing worker outputs. Native Clear sets zero durations; weather parent equality means zero cast-count config boundary.
