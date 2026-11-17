@@ -167,3 +167,8 @@ New occultism-pinned-devices-capture.md records soul/fragile/trinity/lamp captur
 ### Occultism optional device controls
 
 Devicesappendix extended StableWormhole sneaklinkloadedproxy; EntityWormhole1compassslotdestinationpriority/Lodestone/HOME/RTP/Recovery/spiritUUID and fishingpull; native117slotsatchelvs36ritualsatchels; EnderSatchel online-linked/fallbackcurrent; T1/T2patternmaterialplacement and T2collect. Placement helper ignores underlyinguseOnresult, possiblepartial/noop not guaranteedatomicbuild. No newmod/runtime/approvalpolicy changed. Main finalstagewalkthrough/residualhelpers still open.
+
+
+### Occultism build references and first worker
+
+Craftingguideappendix now inventories all20multiblock footprints/layers/actualmatcherBOMs vsdisplayonlyfloor, foundationtagalternatives, tierbookdyegrids and concretefirstFoliotCrusher operation. All19nondebugbuildreferences linkedtoDictionarypentacles except storage_stabilizer_demo usesStorage. This closes patternmaterialgate gaps; avoidclaimallcolorsmandatory or bookcraft=essence. Remaining parentconsolidation still needed; no newruntimechange.
