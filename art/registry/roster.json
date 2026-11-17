@@ -1,0 +1,1912 @@
+{
+  "schema_version": 1,
+  "integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "note": "Decision snapshot only; exact archive identity and texture inventory not verified. Selected disabled entries still require future resolution. Reconcile newer integration before inventory.",
+  "vanilla": {
+    "version": "1.21.1",
+    "status": "pending"
+  },
+  "mods": [
+    {
+      "id": "aether",
+      "name": "The Aether",
+      "version": "1.21.1-1.5.10-neoforge",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "akashic-tome",
+      "name": "Akashic Tome",
+      "version": "AkashicTome-1.8-30",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/250577",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "alexs-caves-continued",
+      "name": "Alex's Caves Continued",
+      "version": "1.1.2+neoforge-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/alexs-caves-continued/version/wSeCJMlI",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "apotheosis",
+      "name": "Apotheosis",
+      "version": "Apotheosis-1.21.1-8.9.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/rqFWfVlz",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "apothic-attributes",
+      "name": "Apothic Attributes",
+      "version": "ApothicAttributes-1.21.1-2.11.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/DGaH8Rh0",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "apothic-enchanting",
+      "name": "Apothic-Enchanting",
+      "version": "ApothicEnchanting-1.21.1-1.6.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/pL8MtgqY",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "apothic-spawners",
+      "name": "Apothic-Spawners",
+      "version": "ApothicSpawners-1.21.1-1.4.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/DfxVkOAO",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "appleskin",
+      "name": "AppleSkin",
+      "version": "appleskin-neoforge-mc1.21-3.0.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/EsAfCjCV",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "aquaculture",
+      "name": "Aquaculture 2",
+      "version": "Aquaculture-1.21.1-2.7.22",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/60028",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "architectury-api",
+      "name": "Architectury API",
+      "version": "architectury-13.0.11-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/419699",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-additions",
+      "name": "Ars Additions",
+      "version": "ars_additions-1.21.1-21.3.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/GYK6Gk8R",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-controle",
+      "name": "Ars Controle",
+      "version": "ars_controle-1.21.1-1.6.16",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/gL8ijqNQ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-elemancy",
+      "name": "Ars Elemancy",
+      "version": "ars_elemancy-1.21.1-1.18.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1153666",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-elemental",
+      "name": "Ars Elemental",
+      "version": "ars_elemental-1.21.1-0.7.10.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ars-elemental",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-n-spells",
+      "name": "Ars 'n Spells",
+      "version": "ars_n_spells-3.3.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/NlMT8pQt",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "version": "ars_nouveau-1.21.1-5.13.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/TKB6INcv",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-ocultas",
+      "name": "Ars Ocultas",
+      "version": "ars_ocultas-1.21.1-2.6.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/Tsw8vbks",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ars-unification",
+      "name": "Ars Unification",
+      "version": "ars_unification-1.2.23",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/fRdwEsp6",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "artifacts",
+      "name": "Artifacts",
+      "version": "artifacts-neoforge-13.2.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/P0Mu4wcQ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "astral-sorcery",
+      "name": "Astral Sorcery",
+      "version": "AstralSorcery-2.0.3.59",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "attributefix",
+      "name": "AttributeFix",
+      "version": "attributefix-neoforge-1.21.1-21.1.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/attributefix/files/7115922",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "balm",
+      "name": "Balm",
+      "version": "balm-neoforge-1.21.1-21.0.67",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/531761",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "better-advanced-tooltips",
+      "name": "Better Advanced Tooltips",
+      "version": "better-advanced-tooltips-2101.1.0-build.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/iHLDc0eo",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "better-advancements",
+      "name": "Better Advancements",
+      "version": "BetterAdvancements-NeoForge-1.21.1-0.4.3.21",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/272515",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "bookshelf",
+      "name": "Bookshelf",
+      "version": "bookshelf-neoforge-1.21.1-21.1.81",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/228525",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "botania-revived",
+      "name": "Botania Revived",
+      "version": "Botania-Revived-1.21.1-2.0.2-NeoForge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/botania-revived",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "brandons-core",
+      "name": "Brandon's Core",
+      "version": "BrandonsCore-1.21.1-3.2.1.309",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/brandons-core",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "brewin-and-chewin",
+      "name": "Brewin' And Chewin'",
+      "version": "4.5.0+1.21.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/brewin-and-chewin/version/MbcR48Ou",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "caelus",
+      "name": "Caelus API",
+      "version": "caelus-neoforge-7.0.1+1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/308989",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cataclysm",
+      "name": "L_Ender's Cataclysm",
+      "version": "L_Ender's Cataclysm 1.21.1-3.33",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/46KJle7n",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cc-tweaked",
+      "name": "CC: Tweaked",
+      "version": "cc-tweaked-1.21.1-forge-1.121.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/cc-tweaked/version/KNdTEfUA",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cloth-config",
+      "name": "Cloth Config API (Fabric/Forge/NeoForge)",
+      "version": "cloth-config-15.0.140-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cobblegen-galore",
+      "name": "Cobblegen Galore",
+      "version": "cobblegengalore-1.21.1-0.2.9.jar",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/cobblegen-galore/files/8523192",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cobweb",
+      "name": "Cobweb",
+      "version": "cobweb-neoforge-1.21-1.4.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/968456",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cocktails-delight",
+      "name": "Cocktails Delight",
+      "version": "Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/cocktails-delight/files/9482953",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "codechicken-lib-1-8",
+      "name": "CodeChicken Lib 1.8.+",
+      "version": "CodeChickenLib-1.21.1-4.6.1.529",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "codxlib",
+      "name": "CodxLib",
+      "version": "1.5.1+neoforge-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/6oyMM4yX/version/FW5ZWCXm",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "comforts",
+      "name": "Comforts",
+      "version": "comforts-neoforge-9.0.5+1.21.1",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "common-network",
+      "name": "Common Network",
+      "version": "common-networking-neoforge-1.0.21-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "controlling",
+      "name": "Controlling",
+      "version": "Controlling-neoforge-1.21.1-19.0.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/xv94TkTM",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cooking-for-blockheads",
+      "name": "Cooking for Blockheads",
+      "version": "21.1.24+neoforge-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/cooking-for-blockheads/version/MQCIy6VF",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "corail-tombstone",
+      "name": "Corail Tombstone",
+      "version": "tombstone-neoforge-1.21.1-9.5.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/YT5K34AB",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "crafting-tweaks",
+      "name": "Crafting Tweaks",
+      "version": "craftingtweaks-neoforge-1.21.1-21.1.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/233071",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "crystalix",
+      "name": "Crystalix",
+      "version": "crystalix-3.0.3.jar",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/crystalix/files/9251153",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber Library",
+      "version": "Cucumber-1.21.1-8.0.16",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/Rw1NrDzF",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "curios-api",
+      "name": "Curios API",
+      "version": "curios-neoforge-9.5.1+1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/vvuO3ImH",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "cyclops-core",
+      "name": "Cyclops Core",
+      "version": "cyclopscore-1.21.1-neoforge-1.30.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/Z9DM0LJ4",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "databank",
+      "name": "Databank",
+      "version": "databank-1.3.2.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "deep-aether",
+      "name": "Deep Aether",
+      "version": "1.21.1-1.1.5.1",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "deeper-darker",
+      "name": "Deeper and Darker",
+      "version": "deeperdarker-neoforge-1.21.1-1.4.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/fnAffV0n",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "default-options",
+      "name": "Default Options",
+      "version": "defaultoptions-neoforge-1.21.1-21.1.8",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/WEg59z5b/version/1zt17WsC",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "name": "Dive Into the Abyss",
+      "version": "1.1.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/dive-into-the-abyss/version/w30oDCUY",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "draconic-evolution",
+      "name": "Draconic Evolution",
+      "version": "Draconic-Evolution-1.21.1-3.1.4.633",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "eidolon-repraised",
+      "name": "Eidolon: Repraised",
+      "version": "eidolon_repraised-1.21.1-0.5.0.8",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/870250",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "embeddium",
+      "name": "Embeddium",
+      "version": "embeddium-1.0.15+mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/sk9rgfiA",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "embers-re-ignited",
+      "name": "Embers Re-Ignited",
+      "version": "embers-reignited-1.21.1-1.5.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/8znVCTxA",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "enchanted-witchcraft",
+      "name": "Enchanted: Witchcraft",
+      "version": "enchanted-neoforge-1.21.1-4.2.7",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/560363",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "enchantment-descriptions",
+      "name": "Enchantment Descriptions",
+      "version": "enchdesc-neoforge-1.21.1-21.1.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/250419",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "enigmatic-legacy-plus",
+      "name": "Enigmatic Legacy+",
+      "version": "enigmaticlegacyplus-1.21.1-1.1.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/oIjj1Fan",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "entity-culling",
+      "name": "Entity Culling",
+      "version": "entityculling-neoforge-1.12.1-mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/NNAgCjsB",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "eternal-starlight",
+      "name": "Eternal Starlight",
+      "version": "0.9.1+1.21.1+neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/eternal-starlight/version/IyTc0Vvj",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "evilcraft",
+      "name": "EvilCraft",
+      "version": "evilcraft-1.21.1-neoforge-1.2.100",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/3ANq2btA",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "exclusions-lib",
+      "name": "Exclusions Lib",
+      "version": "ExclusionsLib-1.1.0-NEO",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "extra-botany-revived",
+      "name": "Extra Botany Revived",
+      "version": "ExtraBotany-1.21.1-1.0.4-NeoForge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1764698",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "farmers-delight",
+      "name": "Farmer's Delight",
+      "version": "FarmersDelight-1.21.1-1.3.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/398521",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "farming-for-blockheads",
+      "name": "Farming for Blockheads",
+      "version": "farmingforblockheads-neoforge-1.21.1-21.1.14",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/261924",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ferritecore",
+      "name": "FerriteCore",
+      "version": "ferritecore-7.0.3-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/uXXizFIs",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "feywild",
+      "name": "Feywild",
+      "version": "feywild-1.21.1-5.6.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/484377",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "version": "forbidden_arcanus-2.6.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/MdlnLS7Q",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "forbidden-magic",
+      "name": "JAWR: Forbidden Magic",
+      "version": "witchery_forbidden_magic-0.5.37+mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/pitZv4pV",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-chunks",
+      "name": "FTB Chunks (NeoForge)",
+      "version": "ftb-chunks-neoforge-2101.1.24",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-chunks-forge",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-filter-system",
+      "name": "FTB Filter System",
+      "version": "ftb-filter-system-neoforge-21.1.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-filter-system/files/7429011",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-library",
+      "name": "FTB Library (NeoForge)",
+      "version": "ftb-library-neoforge-2101.1.39",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-quests",
+      "name": "FTB Quests (NeoForge)",
+      "version": "ftb-quests-neoforge-2101.1.38",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-teams",
+      "name": "FTB Teams (NeoForge)",
+      "version": "ftb-teams-neoforge-2101.1.12",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ftb-xmod-compat",
+      "name": "FTB XMod Compat",
+      "version": "ftb-xmod-compat-neoforge-21.1.14",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-xmod-compat",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "fusion-connected-textures",
+      "name": "Fusion (Connected Textures)",
+      "version": "1.3.16-neoforge-mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/fusion-connected-textures/version/AYDaLPK8",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "gateways-to-eternity",
+      "name": "Gateways to Eternity",
+      "version": "GatewaysToEternity-1.21.1-5.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/8OIeAukW",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "gaze-malum",
+      "name": "Gaze (Malum addon)",
+      "version": "gaze-1.1.7.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/NlvaJ5WE",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "geckolib",
+      "name": "Geckolib",
+      "version": "geckolib-neoforge-1.21.1-4.9.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/8BmcQJ2H",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "goety",
+      "name": "Goety — The Dark Arts",
+      "version": "goety-3.2.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/4ZVIxU8x",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "goety-cataclysm",
+      "name": "Goety Cataclysm",
+      "version": "goety_cataclysm-1.21.1-1.8.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/YwmuwbXi",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "hammerlib",
+      "name": "HammerLib",
+      "version": "HammerLib-1.21-21.0.17",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/247401",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "harvest-with-ease",
+      "name": "Harvest with Ease",
+      "version": "harvest-with-ease-neoforge-1.21-9.4.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/602171",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "hexcast-neoforged",
+      "name": "HexCast NEOFORGED",
+      "version": "hexcast-neoforged-1.21.1-0.11.1-19+neoforge.1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/lZGsiJ1L",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "hexerei",
+      "name": "Hexerei",
+      "version": "hexerei-0.5.0.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/IQSOHVhI",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "version": "ImmediatelyFast-NeoForge-1.6.15+1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/5ZwdcRci",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "improvable-skills",
+      "name": "Improvable Skills 3",
+      "version": "ImprovableSkills-1.21-21.0.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/252902",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "inventory-tweaks-refoxed",
+      "name": "Inventory Tweaks — ReFoxed",
+      "version": "invtweaks-1.21.1-1.3.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks-refoxed/files/all",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "irons-lib",
+      "name": "Iron's Lib",
+      "version": "irons_lib-1.21.1-2.3.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/9nfaJPtX",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "irons-spells",
+      "name": "Iron's Spells 'n Spellbooks",
+      "version": "irons_spellbooks-1.21.1-3.16.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/s4OWxYQQ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "version": "Jade-1.21.1-NeoForge-15.10.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/nvQzSEkH",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "jei",
+      "name": "Just Enough Items",
+      "version": "jei-1.21.1-neoforge-19.64.0.455",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/u6dRKJwZ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "just-enough-resources-jer",
+      "name": "Just Enough Resources (JER)",
+      "version": "1.6.0.57",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/just-enough-resources-jer/version/A2G7NFcD",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "just-zoom",
+      "name": "Just Zoom",
+      "version": "justzoom_neoforge_3.1.0_MC_1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/iAiqcykM",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "keybind-bundles",
+      "name": "KeyBind Bundles",
+      "version": "keybindbundles-1.5.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1172594",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "keysets",
+      "name": "KeySets",
+      "version": "keyset-neoforge-1.3.0+mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://github.com/Meneleet-official/keyset/releases/tag/v1.3.0",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "konkrete",
+      "name": "Konkrete",
+      "version": "konkrete_neoforge_1.9.9_MC_1.21",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/J81TRJWm",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "kotlin-for-forge",
+      "name": "Kotlin for Forge",
+      "version": "kotlinforforge-5.12.0-all",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/ordsPcFz",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "kubejs",
+      "name": "KubeJS",
+      "version": "kubejs-neoforge-2101.7.2-build.381",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/umyGl7zF",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lava-fishing",
+      "name": "Lava Fishing",
+      "version": "lavafishing-1.21.1-1.2.13-all.jar",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lavafishing/files/7781402",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "leaves-be-gone",
+      "name": "Leaves Be Gone",
+      "version": "v21.1.1-1.21.1-NeoForge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/leaves-be-gone/version/kAbmpvF3",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lets-do-beachparty",
+      "name": "[Let's Do] Beachparty",
+      "version": "letsdo-beachparty-neoforge-2.1.5.jar",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/lets-do-beachparty/version/HN4rzKRl",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lets-do-furniture",
+      "name": "[Let's Do] Furniture",
+      "version": "letsdo-furniture-neoforge-1.1.10.jar",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/lets-do-furniture/version/FxbGZtS6",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lionfish-api",
+      "name": "Lionfish-API",
+      "version": "lionfishapi-3.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/FoVacERa",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "liroth-revamped",
+      "name": "Liroth: Revamped",
+      "version": "2.0",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lithostitched",
+      "name": "Lithostitched",
+      "version": "lithostitched-1.8.1-neoforge-21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/XaDC71GB",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lodestone",
+      "name": "Lodestone",
+      "version": "lodestone-1.21.1-1.8.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/bN3xUWdo",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lootr",
+      "name": "Lootr",
+      "version": "lootr-neoforge-1.21.1-1.11.38.127",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/EltpO5cN",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "magical-satchel",
+      "name": "Magical satchel / Surprisingly Substantial Satchel",
+      "version": null,
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "version": "mahoutsukai-1.21.1-v1.36.31",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/7jOxn6qJ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "malum",
+      "name": "Malum",
+      "version": "malum-1.21.1-1.8.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/jgzwYsAN",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "mezzconfig",
+      "name": "MezzConfig",
+      "version": "mezz_config-1.21.1-neoforge-0.7.1-standalone",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/7tEfOcA7",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "modernfix",
+      "name": "ModernFix",
+      "version": "modernfix-neoforge-5.27.27+mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/nmDcB62a",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "modonomicon",
+      "name": "Modonomicon",
+      "version": "modonomicon-1.21.1-neoforge-1.123.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/692GClaE",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "modopedia",
+      "name": "Modopedia",
+      "version": "modopedia-neoforge-1.21.1-1.1.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "more-overlays-updated",
+      "name": "More Overlays Updated",
+      "version": "moreoverlays-1.24.2-mc1.21.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/391382",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "version": "MouseTweaks-neoforge-mc1.21-2.26.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/aC3cM3Vq",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "my-nethers-delight",
+      "name": "My Nether's Delight",
+      "version": "MyNethersDelight-1.21.1-1.10.4.1.jar",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight/files/8854319",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "natures-compass",
+      "name": "Nature's Compass",
+      "version": "NaturesCompass-1.21.1-3.4.0-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/252848",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "neovitae",
+      "name": "Neo Vitae",
+      "version": "neovitae-1.21.1-1.1.53",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/rvaW4C93",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "nether-depths-upgrade",
+      "name": "Nether Depths Upgrade",
+      "version": "netherdepthsupgrade-3.3-1.21.1-NeoForge.jar",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/nether-depths-upgrade/files/8940364",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "observerlib",
+      "name": "ObserverLib",
+      "version": "observerlib-1.10.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/observerlib",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "occultism",
+      "name": "Occultism",
+      "version": "occultism-1.21.1-neoforge-1.227.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/sbJh4AZw",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "octolib",
+      "name": "ShatterLib | OctoLib",
+      "version": "0.6.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/shatterbyte-lib",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "oracle-index",
+      "name": "Oracle Index",
+      "version": "oracle_index-neoforge-1.4.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1206582",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "pams-harvestcraft-2-crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
+      "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/361385",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "pams-harvestcraft-2-food-core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
+      "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/372534",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "pams-harvestcraft-2-food-extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/402231",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "pams-harvestcraft-2-trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
+      "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/365460",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "pastel",
+      "name": "Pastel",
+      "version": "Pastel-1.1.5.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/1264556",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "patchouli",
+      "name": "Patchouli",
+      "version": "Patchouli-1.21.1-93-NEOFORGE",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/nU0bVIaL",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "paucal",
+      "name": "PAUCAL",
+      "version": "paucal-0.7.0+neoforge-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/597824",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "placebo",
+      "name": "Placebo",
+      "version": "Placebo-1.21.1-9.9.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/tCkE8p2N",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "playeranimator",
+      "name": "playerAnimator",
+      "version": "player-animation-lib-forge-2.0.4+1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/gedNE4y2",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "polymorph",
+      "name": "Polymorph",
+      "version": "polymorph-neoforge-1.2.0+1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/tagwiZkJ",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "prickle",
+      "name": "Prickle",
+      "version": "prickle-neoforge-1.21.1-21.1.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/prickle",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "primal-magick",
+      "name": "Primal Magick",
+      "version": "primalmagick-neoforge-1.21.1-6.0.7",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/545271",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "project-expansion",
+      "name": "Project Expansion",
+      "version": "projectexpansion-1.21.1-1.0.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/a7yNQPzW",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "projecte",
+      "name": "ProjectE",
+      "version": "ProjectE-1.21.1-PE1.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/projecte",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "psi",
+      "name": "Psi",
+      "version": "Psi-neoforge-1.21.1-110",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/241665",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "psi-tweaks",
+      "name": "Psi: Tweaks and Additions",
+      "version": "psitweaks-1.21.1-0.10.10-hotfix",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/pwmvTzDk",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "puffish-attributes",
+      "name": "Pufferfish's Attributes",
+      "version": "puffish_attributes-0.8.3-1.21-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/991341",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "puzzles-lib",
+      "name": "Puzzles Lib",
+      "version": "21.1.60",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/puzzles-lib/version/lh44g7RC",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "quest-giver",
+      "name": "Quest Giver",
+      "version": "quest_giver-1.21.1-1.5.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "quest-shop",
+      "name": "Quest Shop",
+      "version": "questshop-1.4.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "rechiseled",
+      "name": "Rechiseled",
+      "version": "rechiseled-1.2.5-neoforge-mc1.21",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/rechiseled/version/S5FnErRw",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "relics",
+      "name": "Relics",
+      "version": "0.12.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/relics-mod/version/0.12.5",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "name": "Reliquary Reincarnations",
+      "version": "reliquary-1.21.1-2.0.85.1599",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/fQO83PId",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "reliquified-artifacts",
+      "name": "Reliquified Artifacts",
+      "version": "1.0.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/reliquified-artifacts",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "replication",
+      "name": "Replication",
+      "version": "Replication-1.21.1-1.2.7",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/replication",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "rhino",
+      "name": "Rhino",
+      "version": "rhino-2101.2.7-build.85",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/sk9knFPE",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "roguelike-dungeons",
+      "name": "Roguelike-style dungeon provider",
+      "version": null,
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "roots-classic",
+      "name": "Roots Classic",
+      "version": "RootsClassic-1.21.1-1.5.10",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/roots-classic",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "version": "scriptor-neoforge-2.0.14-1.21.1-sgd",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/817436",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "searchables",
+      "name": "Searchables",
+      "version": "Searchables-neoforge-1.21.1-1.0.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/fuuu3xnx",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "simple-backups",
+      "name": "Simple Backups",
+      "version": "SimpleBackups-1.21-4.0.30",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/583228",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "smartbrainlib",
+      "name": "SmartBrainLib",
+      "version": "SmartBrainLib-neoforge-1.21.1-1.16.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/PuyPazRT",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "spark",
+      "name": "spark",
+      "version": "spark-1.10.124-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/361579",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "starlight-structures",
+      "name": "Starlight / Stalwart Dungeons candidate",
+      "version": null,
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "stateobserver",
+      "name": "StateObserver",
+      "version": "stateobserver-neoforge-1.21.1-1.6.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "summoning-rituals",
+      "name": "Summoning Rituals",
+      "version": "summoningrituals-neoforge-1.21.1-3.14.2",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/671040",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "supermartijn642-config-lib",
+      "name": "SuperMartijn642's Config Lib",
+      "version": "1.1.8-neoforge-mc1.21",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/supermartijn642s-config-lib/version/qKL9jM75",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "supermartijn642-core-lib",
+      "name": "SuperMartijn642's Core Lib",
+      "version": "1.1.20-neoforge-mc1.21",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/supermartijn642s-core-lib/version/MQOzQxLt",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "tectonic",
+      "name": "Tectonic",
+      "version": "tectonic-3.0.28-neoforge-21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/lWDHr9jE",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "the-aurorian-unofficial-port",
+      "name": "The Aurorian (unofficial port)",
+      "version": "1.21.1-1.0.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/the-aurorian-unofficial-port/version/8yOGgcWP",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "the-bumblezone",
+      "name": "The Bumblezone",
+      "version": "7.17.3+1.21.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/the-bumblezone/version/LwGXnQCW",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "theurgy",
+      "name": "Theurgy",
+      "version": "theurgy-1.21.1-neoforge-1.79.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/uOVMgoil",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "titanium",
+      "name": "Titanium",
+      "version": "titanium-1.21-4.0.52",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/titanium",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "totemic",
+      "name": "Totemic",
+      "version": "Totemic-neoforge-1.21.1-0.12.18",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/GLffYJtD",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "trashslot",
+      "name": "TrashSlot",
+      "version": "21.1.11+neoforge-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/trashslot/version/HY8Ybozd",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "treechop",
+      "name": "HT's TreeChop",
+      "version": "0.19.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/treechop/version/iLXWmfax",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "twilight-forest",
+      "name": "The Twilight Forest",
+      "version": "4.8.3345",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest/files/7797302",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "version": "Tyz's skills 6.4.2 - 1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/tyzs-skills/version/6.4.2",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "unfocused",
+      "name": "Unfocused",
+      "version": "unfocused-neoforge-0.3.12-1.21.1-sgd",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "valhelsia-core",
+      "name": "Valhelsia Core",
+      "version": "valhelsia_core-neoforge-1.21.1-1.1.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": null,
+      "inventory_status": "pending"
+    },
+    {
+      "id": "voidscape",
+      "name": "Voidscape",
+      "version": "1.9.588",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape/files/8175491",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "witchery-remake",
+      "name": "Just Another Witchery Remake",
+      "version": "witchery-0.5.39+mc1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/LCO8KZvC",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "betterend-new-dawn",
+      "name": "BetterEnd: New Dawn",
+      "version": "21.0.39",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://mediafilez.forgecdn.net/files/9306/604/BetterEnd-21.0.39.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "bclib-new-dawn",
+      "name": "BCLib: New Dawn",
+      "version": "21.0.26",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/7bdKEtKC/versions/QkXw8Fsl/bclib-21.0.26.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "wunderlib-new-dawn",
+      "name": "WunderLib: New Dawn",
+      "version": "21.0.10",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/HZmhgdJk/versions/5db3GZzg/wunderlib-21.0.10.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "worldweaver-new-dawn",
+      "name": "WorldWeaver: New Dawn",
+      "version": "21.0.25",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/R8uGDQpB/versions/TrReu8cF/worldweaver-21.0.25.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "lootjs",
+      "name": "LootJS",
+      "version": "1.21.1-3.7.0+neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/fJFETWDN/versions/5AZDyUSn/lootjs-neoforge-1.21.1-3.7.0.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "clumps",
+      "name": "Clumps",
+      "version": "19.0.0.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/Wnxd13zP/versions/jo7lDoK4/Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-strongholds",
+      "name": "YUNG's Better Strongholds",
+      "version": "1.21.1-NeoForge-5.1.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-nether-fortresses",
+      "name": "YUNG's Better Nether Fortresses",
+      "version": "1.21.1-NeoForge-3.1.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-api",
+      "name": "YUNG's API",
+      "version": "1.21.1-NeoForge-5.1.9",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/Ua7DFN59/versions/2prKITKh/YungsApi-1.21.1-NeoForge-5.1.9.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "extreme-sound-muffler",
+      "name": "Extreme Sound Muffler",
+      "version": "3.57-1.21.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/5IIKsxiL/versions/nUCCmquN/ExtremeSoundMuffler-3.57_NeoForge-1.21.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "get-it-together-drops",
+      "name": "Get It Together, Drops!",
+      "version": "v1.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/T0OUgf8P/versions/K4TUzlwa/getittogetherdrops-neoforge-1.21.5-1.4.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-mineshafts",
+      "name": "YUNG's Better Mineshafts",
+      "version": "1.21.1-NeoForge-5.1.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/HjmxVlSr/versions/Go3nbneL/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-dungeons",
+      "name": "YUNG's Better Dungeons",
+      "version": "1.21.1-NeoForge-5.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/o1C1Dkj5/versions/ZWDbFefV/YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-desert-temples",
+      "name": "YUNG's Better Desert Temples",
+      "version": "1.21.1-NeoForge-4.1.5",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-jungle-temples",
+      "name": "YUNG's Better Jungle Temples",
+      "version": "1.21.1-NeoForge-3.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/z9Ve58Ih/versions/rimnNoke/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-ocean-monuments",
+      "name": "YUNG's Better Ocean Monuments",
+      "version": "1.21.1-NeoForge-4.1.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/3dT9sgt4/versions/NWit9vEK/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.1.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-witch-huts",
+      "name": "YUNG's Better Witch Huts",
+      "version": "1.21.1-NeoForge-4.1.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/t5FRdP87/versions/AvedwcIe/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-bridges",
+      "name": "YUNG's Bridges",
+      "version": "1.21.1-NeoForge-5.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/Ht4BfYp6/versions/yA2nuSdw/YungsBridges-1.21.1-NeoForge-5.1.0.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-extras",
+      "name": "YUNG's Extras",
+      "version": "1.21.1-NeoForge-5.1.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://cdn.modrinth.com/data/ZYgyPyfq/versions/uE6pFqck/YungsExtras-1.21.1-NeoForge-5.1.0.jar",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yungs-better-end-island",
+      "name": "YUNG's Better End Island",
+      "version": "1.21.1-NeoForge-3.1.2",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/yungs-better-end-island/version/I52NZ1qK",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "smart-keep-inventory",
+      "name": "Smart Keep Inventory",
+      "version": "1.21.1-1.0.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/smart-keep-inventory/version/1.21.1-1.0.1-neoforge",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "prefab",
+      "name": "Prefab",
+      "version": "1.0.9 NeoForge 1.21.1",
+      "enabled_in_pack": false,
+      "desired": true,
+      "source": "https://modrinth.com/mod/prefab/version/1.0.9",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "creeper-overhaul",
+      "name": "Creeper Overhaul",
+      "version": "4.0.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/creeper-overhaul/version/HNrAYCLH",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "enderman-overhaul",
+      "name": "Enderman Overhaul",
+      "version": "2.0.3",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/enderman-overhaul/version/TH9YXp9r",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "golem-overhaul",
+      "name": "Golem Overhaul",
+      "version": "1.1.1",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/golem-overhaul/version/V1OtffxB",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "winter-overhaul",
+      "name": "Winter Overhaul",
+      "version": "4.0.2+1.21.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/winter-overhaul/version/jMBjksDu",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "version": "1.3.4",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/ghost/version/jlhsMccP",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "ribbits",
+      "name": "Ribbits",
+      "version": "4.1.6",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/ribbits/version/XrUKaWrw",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "critters-and-companions",
+      "name": "Critters and Companions",
+      "version": "1.21.1-2.4.0",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/critters-and-companions/version/MMFSVRkt",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "more-darkness",
+      "name": "More Darkness",
+      "version": "2.0.1+1.21.1+neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/more-darkness/version/6jywYHaX",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "resourceful-lib",
+      "name": "Resourceful Lib",
+      "version": "3.0.12",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/resourceful-lib/version/x99nCLTm",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "resourceful-config",
+      "name": "Resourceful Config",
+      "version": "3.0.11",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/resourceful-config/version/lSbyRD6v",
+      "inventory_status": "pending"
+    },
+    {
+      "id": "yacl",
+      "name": "YetAnotherConfigLib (YACL)",
+      "version": "3.8.2+1.21.1-neoforge",
+      "enabled_in_pack": true,
+      "desired": true,
+      "source": "https://modrinth.com/mod/yacl/version/7TVdVtxF",
+      "inventory_status": "pending"
+    }
+  ]
+}
