@@ -50,4 +50,25 @@ final class MxpSourcePolicyTest {
         assertEquals(100.0, MxpMath.normalizedBase(500, ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV), 1e-10);
     }
 
+    @Test void jawrBloodUsesSameGlobalLedgerAndDeduplicatesParallelSpellPayment() {
+        // JAWR paid abilities have one logical action, even if another spell
+        // adapter also observes the same transaction. Only a confirmed native
+        // debit may call MxpService.jawrCommittedBloodDebit in production.
+        assertEquals(900.0, ResourceBaselines.JAWR_INITIAL_BLOOD);
+        var account = new MxpAccount();
+        var paid = account.resource("witchery:player_blood",
+                "jawr:paid-ability-one", 90, ResourceBaselines.JAWR_INITIAL_BLOOD, 30);
+        assertFalse(paid.duplicate());
+        assertEquals(100.0, paid.effectiveXP(), 1e-10);
+        var duplicate = account.resource("ars_nouveau:spell",
+                "jawr:paid-ability-one", 90, ResourceBaselines.ARS_STARTING_MANA, 90);
+        assertTrue(duplicate.duplicate(), "Cross-paid magic must never produce double MXP");
+        assertEquals(0.0, duplicate.effectiveXP());
+        var noDebit = account.resource("witchery:player_blood",
+                "jawr:preview-not-payment", 90, ResourceBaselines.JAWR_INITIAL_BLOOD, 0);
+        assertEquals(0.0, noDebit.effectiveXP());
+        assertFalse(account.recentTransactions().contains("jawr:preview-not-payment"));
+        assertEquals(100.0, account.counter().progress(), 1e-10);
+    }
+
 }
