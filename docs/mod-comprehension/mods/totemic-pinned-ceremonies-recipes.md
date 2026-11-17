@@ -1,6 +1,6 @@
 # Totemic pinned ceremony, instrument and recipe audit
 
-Exact artifact: `Totemic-neoforge-1.21.1-0.12.18.jar`, SHA-512 `4b3c4a6c926b8bf203b5593c558264b096f870ecfe74e6b6dbeef850825c9814a3b9a2d9f03c3a91680042dd684574f0259280210b9173750c921ff733e94896`. Read directly from local JAR; Java methods inspected using CFR 0.152. No assets or decompiled source are committed. This supersedes the parent profile's historical missing-JAR/0.12.19-only limitation. [Parent profile](totemic.md) remains researching until its complete walkthrough and remaining entities/support systems are reconciled. No gameplay acceptance is claimed.
+Exact artifact: `Totemic-neoforge-1.21.1-0.12.18.jar`, SHA-512 `4b3c4a6c926b8bf203b5593c558264b096f870ecfe74e6b6dbeef850825c9814a3b9a2d9f03c3a91680042dd684574f0259280210b9173750c921ff733e94896`. Read directly from local JAR; Java methods inspected using CFR 0.152. No assets or decompiled source are committed. This supersedes the parent profile's historical missing-JAR/0.12.19-only limitation. [Parent profile](totemic.md) now supplies the complete walkthrough, entities and support branches; native research is source-complete. No gameplay acceptance is claimed.
 
 ## Selection and performance contract
 
@@ -94,6 +94,6 @@ Page locks are broader than instrument possession: `totempedia/wind_chime_unlock
 
 Native `totemic:performed_ceremony` fires on startup success for players in range 8, before the effect executes. Use this as ceremony-start evidence, not egg hatching, conversion, spawn delivery, curing or boss defeat evidence. Quest design should pair it with output possession or an actual entity/state detector where needed; none is implemented here.
 
-## Open follow-through
+## Completion disposition
 
-Reconcile the parent's historical partial sections; finish one end-to-end beginner-to-Baykok walkthrough including carving/passive effects, charged Medicine Bag, Buffalo and Eagle renewable materials, Baykok equipment/drop behavior, Tipi/Torch, KubeJS surface and TMM overrides. The exact JAR is available, so no source-access blocker remains. Gameplay tests remain unrun and separate from source-completion.
+The parent now reconciles exact carving/passive/Medicine Bag contracts, every material gate through Baykok, support blocks, renewable entities, KubeJS and quest evidence. Source research is complete for native content; client/gameplay acceptance and effective world configuration remain untested. No runtime changes were made.

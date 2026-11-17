@@ -107,3 +107,8 @@ No full smoke, assembly, client launch, gameplay or new quest/config/runtime imp
 ### Totemic pinned finite inventory checkpoint
 
 Exact 0.12.18 JAR decompiled to scratch `decompiled/pokefenn/totemic` (112 nonclient top-level classes). Added `mods/totemic-pinned-ceremonies-recipes.md`: all 14 ceremonies, six music types/caps/playing actions, startup/effect/reset/reload contract, all 31 recipe resources, Totempedia access and advancement OR locks. Main linked; stays researching. Next: native passive/carving/Medicine Bag and full Buffalo→Eagle→Baykok walkthrough, entities/support/KubeJS, reconcile obsolete source blockers. Staff survival cancel comes from TotemBaseBlock.attack, not just creative PlayerInteract hook. `performed_ceremony` fires BEFORE effect, not output evidence. No runtime changes/tests.
+
+
+### Totemic native research closure
+
+Main rewritten against exact 0.12.18 JAR; all mandatory cedar→Buffalo→Rattle→Eagle→Whistle→Baykok gates, 12 carvings, charged single-carving bag, all optional ceremonies, support blocks/renewable entities and KubeJS surface documented. INDEX/receipt now source-complete (four profiles; 38 remain researching). Important: bundled base/pole loot tables EMPTY, pick-block component item is not survival retrieval; corrected claim before commit. Medicine Bag is no GUI/slots, charges 400/20 to4800 near matching passive pole, drains80/80 open; Ocelot not portable. No runtime tests. Next continue remaining profiles in completion receipt; Occultism jobs/familiar complexity still open.
