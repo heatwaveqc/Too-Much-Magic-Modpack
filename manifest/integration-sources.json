@@ -221,8 +221,9 @@
         "compat/transformations/"
       ],
       "mode": "compile-and-load",
-      "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins.",
-      "integrated_into_baseline": true
+      "note": "Independent JAWR-native vampire/lycanthrope, Forbidden Magic/Goety lich and Dragon Survival diagnostics, mob alliances, guarded Archlich/Dracolich death arbitration. No TeamLapen code or dual-blood mixins. PR #282 imports strict JAWR ordinary blood bottle handling from frozen historical #126 into this current JAWR-only source, using the existing native JAWRVampireProbe (no retired VampireNativeAccess), no global tick scan or separate module. Three protected bottle variants, bounded 250 mB cauldron and +500 normal-drink JAWR refill; full cauldron/client game tests NOT RUN. No MXP awards on consumption/refill; native post-debit MXP adapter still open #280.",
+      "integrated_into_baseline": true,
+      "latest_reconcile_pr": 282
     },
     {
       "name": "b19-required-mob-gateways",
@@ -413,6 +414,36 @@
       "merged_from": "feature/b17-loot-performance-yungs-ars-locate",
       "original_source_commit": "0efb800e3976f23c125c58cbce36ccf473adc779",
       "note": "15 new 1.21.1 NeoForge SHA-512 mod pins plus 6 native Ars structure tags, 2 rituals, registry exporter, generator/policy/validators baseline-owned; preserves existing B16 BetterEnd and B16/B17 Gilded batches. Existing AttributeFix remains pinned. YUNG Better End Island planned only, not enabled or indexed. Actual loaded registry, native rituals, End/Nether/Overworld worldgen and multiplayer QA NOT RUN."
+    },
+    {
+      "name": "canonical-ordinary-blood-kubejs",
+      "branch": "test/full-integration",
+      "paths": [
+        "kubejs/data/c/tags/fluid/blood.json",
+        "kubejs/data/hexerei/recipe/mahogany_broom_from_mixing_cauldron.json",
+        "kubejs/data/hexerei/recipe/willow_broom_from_mixing_cauldron.json",
+        "kubejs/data/hexerei/recipe/witch_hazel_broom_from_mixing_cauldron.json",
+        "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/empty_blood_vial.json",
+        "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/fill_blood_vial.json",
+        "kubejs/data/irons_spellbooks/recipe/netherite_spell_book.json",
+        "kubejs/data/irons_spellbooks/tags/item/blood_focus.json",
+        "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json",
+        "kubejs/data/neovitae/tags/fluid/essentia_vitae.json",
+        "kubejs/data/tmm/recipe/hexerei/evilcraft_blood_to_hex_bottle.json",
+        "kubejs/data/tmm/recipe/hexerei/evilcraft_bucket_to_hex_blood.json",
+        "kubejs/data/tmm/recipe/hexerei/hex_blood_to_evilcraft_bucket.json",
+        "kubejs/data/tmm/recipe/hexerei/iron_vial_to_hex_blood.json",
+        "kubejs/data/tmm/recipe/irons_spellbooks/hex_bottle_to_evilcraft.json",
+        "kubejs/data/tmm/recipe/irons_spellbooks/native_blood_to_vial.json",
+        "kubejs/data/tmm/tags/item/ordinary_blood_bottles.json",
+        "kubejs/startup_scripts/drinkable_blood_vial.js"
+      ],
+      "mode": "source-pinned-recipe-and-bottle-metadata-not-gameplay-tested",
+      "integrated_into_baseline": true,
+      "source_commit": "f55641f2227334a394475183f9d13844547d425e",
+      "merged_from": "feature/canonical-blood-config-first-2026-11-15",
+      "merged_pr": 282,
+      "note": "Exactly 18 KubeJS source assets from original #126, indexed in current Packwiz with hashes. Includes 17 recipe/fluid-tag assets and 1 Iron blood vial drinkable startup script. Strict component-aware JAWR right-click/finish handler merged into existing first-party compat/transformations stream; no duplicate owner. Real current Transformations JAR rebuild, native recipe codecs, cauldron capabilities, client effects and crossmod compatibility require owner-authorized gameplay acceptance. EvilCraft canonical blood at supported bottle/bucket recipes only, NOT universal Neo Vitae drain/pipes/JEI renaming."
     }
   ],
   "covered_by_baseline": {
@@ -448,7 +479,8 @@
     "feature/b16-betterend-thallasium-iesnium": "B16 replacement PR #276 pins BetterEnd and all three New Dawn dependencies and replaces old Spirit Fire End Draconium ore recipe with Thallasium. No stale full source manif/packwiz or workflow imported. Runtime acceptance remains pending.",
     "feature/b17-loot-performance-yungs-ars-locate": "Replaced with clean post-B16 source merger, exactly 15 pinned YUNG/loot/QoL files and six Ars native tags, two rituals and generator/registry support. Preserves Gilded B16/B17 and BetterEnd B16 separately; End Island held pending client-worldgen compatibility. No old automatic smoke workflow, stale pack/index or fabricated registry IDs.",
     "feature/mxp-configurable-growth-20261115": "Reviewed #161 full source now in test/full-integration/compat/mxp from #279/#281. Module CI only; NOT an installed tmm_mxp JAR. Preserves 1.02 growth and paid resource hooks, adds inert JAWR blood award API; next owner-authorized runtime QA issue #280.",
-    "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "PR #94 source catalog and pilots migrated into shared compat/progression on dev via #279 and integration via #281; 37 Tyz form skills INACTIVE by default. No separate compat/forms runtime, no JAWR native blood payment hook. Runtime acceptance issue #280."
+    "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15": "PR #94 source catalog and pilots migrated into shared compat/progression on dev via #279 and integration via #281; 37 Tyz form skills INACTIVE by default. No separate compat/forms runtime, no JAWR native blood payment hook. Runtime acceptance issue #280.",
+    "feature/canonical-blood-config-first-2026-11-15": "Original PR #126 replaced by PR #282: preserve all 18 specific canonical-blood KubeJS source assets and strict JAWR component-gated bottle bridge in current JAWR-only compat/transformations. Do NOT bring back old TeamLapen source/whole branch snapshots. Source/static/module CI only; actual full Minecraft client/server/blood handling remains untested. QA docs/qa/CANONICAL-BLOOD-JAWR-RECONCILIATION-2026-11-16.md. Frozen original SHA f55641f2227334a394475183f9d13844547d425e."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",

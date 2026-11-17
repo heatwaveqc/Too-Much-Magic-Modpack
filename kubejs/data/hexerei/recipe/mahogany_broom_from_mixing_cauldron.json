@@ -1,0 +1,40 @@
+{
+  "type": "hexerei:mixingcauldron",
+  "fluid": {
+    "id": "minecraft:water",
+    "amount": 1000
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "hexerei:mahogany_log"
+    },
+    {
+      "tag": "tmm:ordinary_blood_bottles"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "hexerei:mandrake_root"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "tag": "tmm:ordinary_blood_bottles"
+    },
+    {
+      "item": "hexerei:mahogany_log"
+    }
+  ],
+  "output": {
+    "id": "hexerei:mahogany_broom"
+  },
+  "fluidOutput": {
+    "id": "hexerei:blood_fluid",
+    "amount": 1000
+  }
+}

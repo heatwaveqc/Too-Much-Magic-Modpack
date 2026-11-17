@@ -277,6 +277,10 @@ file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
 
 [[files]]
+file = "kubejs/data/c/tags/fluid/blood.json"
+hash = "fd9928696fe7b6cfd1f5a8139a7747f81f9fb5d7bdf468b464f8c716efcc31e9"
+
+[[files]]
 file = "kubejs/data/computercraft/recipe/computer_advanced.json"
 hash = "1b42ba9f0e2caea304b9b077f0ab624d4908ebad4f7a254a50843b031fc5ee0e"
 
@@ -295,6 +299,41 @@ hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
 [[files]]
 file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/mahogany_broom_from_mixing_cauldron.json"
+hash = "0e194a073a96622eb41a254834cbed7c64329043b0dcf4c42156fbfb7eab24ee"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/willow_broom_from_mixing_cauldron.json"
+hash = "c5046e7278e8ab6b99797e92d84d788dab5eaa791e7e1e4d6d7191bad9956d5a"
+
+[[files]]
+file = "kubejs/data/hexerei/recipe/witch_hazel_broom_from_mixing_cauldron.json"
+hash = "864eac00a15c27e3765ca203d60c9da923693613a5d22b801aa4bec983a2656a"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/empty_blood_vial.json"
+hash = "0dacfb317113343b3b3f7f5b1b4e7d0d8810e70bbc81eb7a5be912d4c3041ad3"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/fill_blood_vial.json"
+hash = "e2ae63a726cace14c7ec574455d835ef5a476a52b9814ef0e0d39ddc005902c2"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/recipe/netherite_spell_book.json"
+hash = "d1d6454595bb1d59411bac05a572c06e84cf0932408812d2604690cfc3edd082"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/tags/item/blood_focus.json"
+hash = "553f16c2f12fb6758053ed0684e72f0313ee9f607fea3555922105288b7f03f5"
+[[files]]
+file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
+hash = "6774b31442511ec57c9790eae91c89e95f2974f53ea933fdc9bdfbc25e6fbc77"
+
+[[files]]
+file = "kubejs/data/neovitae/tags/fluid/essentia_vitae.json"
+hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
 
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
@@ -431,6 +470,31 @@ file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.j
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/hexerei/evilcraft_blood_to_hex_bottle.json"
+hash = "97e16033a1e748d8a13cb4f0580bf8da78cb495ea92def1a2b53c817a4809296"
+
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/evilcraft_bucket_to_hex_blood.json"
+hash = "f473fecd727575d652e2b8b69b01eef8d1ccddb1cb71da76dddba41d1568bedd"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/hex_blood_to_evilcraft_bucket.json"
+hash = "5ff09f89b7d5ad33a23b7bbc683be8ddd38d5174f0e56e04a73926c6bc5bb993"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/hexerei/iron_vial_to_hex_blood.json"
+hash = "7e4503d42f76355ddb3628bf2595155407910d8a536890327ab08952f977e39c"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/irons_spellbooks/hex_bottle_to_evilcraft.json"
+hash = "075777d83861a7a81855a0dbbfb287b577c2aeec7beb7d8b203faf7a8785aa22"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/irons_spellbooks/native_blood_to_vial.json"
+hash = "fd28afd0c1394c8505c797581a7f715ddecc46088c52cb17d8ea98224b814e32"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/locate_structure/mineshaft.json"
 hash = "4d9c0ab9b5c644d6cedc2df82455d1c3b8658555746d8ea6f2a8e59f65e8ce88"
 
@@ -453,6 +517,10 @@ hash = "dd8712498dc8b5b23f4b77649369e73d6ab555c7f7783f01499a10b83ac4a0a8"
 [[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__astralsorcery__marble_raw.json"
 hash = "f9fde86e835b2b6e88ca201d0f26dc6a9d278092d1d430f91092e579fad73bce"
+
+[[files]]
+file = "kubejs/data/tmm/tags/item/ordinary_blood_bottles.json"
+hash = "a008a3d2481547b0fa52282a41225b53be3dfefb1874324ba88636d7d22be43f"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
@@ -493,6 +561,10 @@ hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
+
+[[files]]
+file = "kubejs/startup_scripts/drinkable_blood_vial.js"
+hash = "c6917b25e8d9f259f072cb180b1c63ed03f4d24e55a9c707806124da4e48eb84"
 
 [[files]]
 file = "kubejs/startup_scripts/eldritch_logic_core.js"

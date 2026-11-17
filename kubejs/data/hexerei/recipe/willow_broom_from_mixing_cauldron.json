@@ -1,0 +1,40 @@
+{
+  "type": "hexerei:mixingcauldron",
+  "fluid": {
+    "id": "minecraft:water",
+    "amount": 1000
+  },
+  "ingredients": [
+    {
+      "tag": "tmm:ordinary_blood_bottles"
+    },
+    {
+      "item": "hexerei:willow_log"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "hexerei:mandrake_root"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "hexerei:willow_log"
+    }
+  ],
+  "output": {
+    "id": "hexerei:willow_broom"
+  },
+  "fluidOutput": {
+    "id": "hexerei:blood_fluid",
+    "amount": 1000
+  }
+}

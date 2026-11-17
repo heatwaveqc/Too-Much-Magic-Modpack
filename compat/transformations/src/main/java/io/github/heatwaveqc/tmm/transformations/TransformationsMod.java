@@ -8,6 +8,7 @@ import io.github.heatwaveqc.tmm.transformations.network.DracolichVisualNetworkin
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionConfig;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.mob.MobAllianceEvents;
+import io.github.heatwaveqc.tmm.transformations.vampire.JAWRBottleInterop;
 import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -38,6 +39,8 @@ public final class TransformationsMod {
         ArchlichResurrectionEvents.register();
         DracolichDragonFirstEvents.register();
         DracolichAppearanceEvents.register();
+        // JAWR-only ordinary physical blood bridge; never match special JAWR bottles by item ID alone.
+        JAWRBottleInterop.register();
         LOGGER.info("JAWR-only bridge: five native probes, Archlich/Dracolich arbitration and conditional Cave/Center skeletal visuals registered; no TeamLapen physiology");
     }
 }

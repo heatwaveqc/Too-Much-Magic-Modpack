@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "irons_spellbooks:blood",
+    "hexerei:blood_fluid",
+    "hexerei:blood_flowing",
+    "neovitae:essentia_vitae_source",
+    "neovitae:essentia_vitae_flowing"
+  ]
+}
