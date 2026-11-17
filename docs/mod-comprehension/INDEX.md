@@ -337,3 +337,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Occultism processing/miner crosswalk](mods/occultism-pinned-processing.md): all529 typed records/conditions/baseoutputs, exact worker/mineshaft/random-weight/capacity behavior, scoped sensitive-result scan. Full loaded tags and remaining helper/familiar/storage branches open.
 
 - 2026-11-16 — [Occultism familiar/tool lifecycle](mods/occultism-pinned-familiars-tools.md): owner/range/Curios capture-release,17 roles, upgrades/recovery/trades, Spirit Fire stack conversion and Chalk/Otherworld-tool contracts. [Whole-profile receipt](COMPLETION-STATUS.md) now verifies all42 local artifact hashes;39 profiles remain researching.
+
+- 2026-11-16 — [Occultism storage/harvest](mods/occultism-pinned-storage-harvest.md) verifies capacities, actual stabilizer search, remote selection/loading, Otherworld collection, soul/head and familiar resource hooks. Added two-sided [Roots→Mahou Emrys lightning](interactions/mahou-tsukai--roots-classic--emrys-lightning.md) event candidate with unrun positive/boundary tests.

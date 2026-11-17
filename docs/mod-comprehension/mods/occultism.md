@@ -314,3 +314,5 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 See [all529 pinned processing/miner records](occultism-pinned-processing.md) for240crushing/194miner/54crystallize/27spirit-fire/14trade, typed tags/conditions/baseoutputs and exact worker/mineshaft insertion/loss behavior. Those recipe inventories are closed; loaded tags and full remaining helper/familiar branches are not gameplay accepted.
 
 [Pinned familiar/tool lifecycle](occultism-pinned-familiars-tools.md) maps ownership/range/Curios transport, seventeen choice roles, Blacksmith cost/timing, death recovery and key trades, plus Spirit Fire stack conversion and chalk/tool contracts. Complex AI/fusion/rare branches and Otherworld/storage closure remain explicit.
+
+[Pinned storage/access/harvest hooks](occultism-pinned-storage-harvest.md) now verifies native capacities, six-direction stabilizer search, remote selection/load behavior, Otherworld block collection, souls/heads and Dragon Greed/Blacksmith resource semantics. Full familiar AI and remaining transactional/visibility branches remain open.
