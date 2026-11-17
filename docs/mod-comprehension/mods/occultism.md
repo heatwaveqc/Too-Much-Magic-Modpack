@@ -7,7 +7,7 @@
 | MC / loader / pack target | 1.21.1 / NeoForge / test/full-integration at f6f1c5894ffd1ebcdcd4fd5d0989375fcc4d8f78 |
 | Pinned version / artifact / hash | occultism-1.21.1-neoforge-1.227.0.jar; SHA-512 063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0 (mods/occultism.pw.toml) |
 | Source snapshot | release/v1.21.1-1.227.0, commit [990303ea95ba057791b7d407d6cac5151f66d799](https://github.com/klikli-dev/occultism/tree/990303ea95ba057791b7d407d6cac5151f66d799); version-aligned, binary equivalence not tested |
-| Guide/documentation version gap | Source-generated Dictionary of Spirits at matching release; exact pinned JAR archive not available for comparison |
+| Guide/documentation version gap | Source-generated Dictionary of Spirits at matching release; exact pinned archive now hash-matched and inspected for all158 ritual resources/types/lifecycle; full guide rendering untested |
 | Profile status | researching |
 | Evidence reached | Pack pin and full matching upstream source archive/guide datagen inspected; pack quest file and integration docs inspected; no client test |
 | Reviewed | 2026-11-15 |
@@ -296,7 +296,7 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 - [ ] Client-test the source-confirmed Foliot Draconium route against the exact pinned Occultism/DE artifacts; resolve common uranium/raw-block tag membership before describing those routes as available. Confirm the commented-out Eldritch Draconium output remains absent; audit all 194 recipe files and other mod/datapack recipes for Replica Ore and protected boss outputs.
 - [ ] Client-check the Storage Stabilizer diagram and the shift-click vs any-use Remote link discrepancy; audit pack-effective storage capacity config and test integrated automation.
 - [ ] Close familiar, resurrection, battlefield/extractor, Otherworld tool and advanced chalk branches.
-- [ ] Obtain exact pinned JAR and test guide, tasks, Ars Unification bridge, and bag-tag consumer behavior in client.
+- [ ] Pinned JAR access resolved; test guide/tasks/Ars bridge/bag tags in client.
 - [ ] Reconcile the chapter against this matrix when quest authoring is authorized; this pass did not edit it.
 
 ## Revision notes
@@ -306,3 +306,7 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 - 2026-11-16 — Mapped Occultism's storage progression from its 1.227.0 release source: Dimensional Matrix, Controller Base, assembled controller, default capacities, five stabilizer upgrades, six-direction placement logic and Djinni remote. Recorded the stabilizer line-of-sight wording and remote shift-use wording discrepancies, plus unloaded-chunk access and safe capacity-reduction behavior. No quest/runtime edits; exact JAR parity and client validation remain open.
 
 - 2026-11-16 — Occultism crusher follow-up traced the 1.227.0 CrushingRecipe/CrusherJob/config path and generated raw-iron recipe. Separated tier eligibility, operation count, time multiplier and output multiplier; documented default 2/3/4/6 dust and 400/200/100/60 tick source thresholds, the anti-loop opt-out, invalid-input return, CrusherJobEvent timing and full-extractor remainder loss. All recipe-by-recipe, effective-config, tag-resolution and client checks remain open. No quest/runtime edits.
+
+## Exact artifact closure — 2026-11-16
+
+[Pinned ritual crosswalk](occultism-pinned-rituals.md) inventories all158 recipes/11 factory channels, gradual consumption/refund, saved recipe identity, native timing and actual entity/item output. Exact SHA512 matches pin. Remaining job/familiar/processing/storage/Otherworld gaps remain; main still researching.
