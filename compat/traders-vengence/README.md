@@ -1,10 +1,9 @@
 # Trader's Vengence (experimental)
 
-Isolated NeoForge 1.21.1 / Java 21 module, branched from `test/full-integration`.
+Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from draft #219 onto the current `test/full-integration` baseline through PR #283.
 **Source prototype: Java compile, JAR assembly, and unit tests passed** in
 [quick CI run 43885237106](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43885237106).
-**Not tested in a live pack or game world.** This branch does
-not edit the packwiz index or the running QA build.
+**Not tested in a live pack or game world.** Source synchronization does **not** build or install the `traders_vengence` first-party JAR in Packwiz. An authorized disposable build is still required.
 
 ## Implemented in source
 - World-global permanent offender UUID list saved via Overworld SavedData.
@@ -21,9 +20,11 @@ not edit the packwiz index or the running QA build.
   Iron golem damage remains a separate hook because vanilla only has
   `GOLEM_KILLED`, not `GOLEM_HURT`. Merely angering a priest below its
   aggression threshold does not count.
-- New wandering traders blocked unless their spawn feet have sky access, are within
-  10 blocks of dimension sea level, and stand on `#traders_vengence:valid_trader_ground`.
-  Existing traders loaded from disk are preserved.
+- The **vanilla WanderingTraderSpawner only** selects positions with sky access,
+  ±10 blocks of dimension sea level, and `#traders_vengence:valid_trader_ground`.
+  A bounded three batches of native position searches allow fresh candidates when
+  terrain/sign checks reject a legal vanilla position. Existing saved traders,
+  command `/summon`, spawn eggs and custom mod-spawned traders are not vetoed.
 - A vanilla sign with `No Soliciting` or `[No Soliciting]` on ANY line, front or
   back, blocks new traders within 32 blocks. Signs are read only in loaded chunks;
   ordinary sign blocks suffice (custom sign item/art deferred).
@@ -47,11 +48,13 @@ not edit the packwiz index or the running QA build.
   `/tradersvengence pardon <UUID>`, `/tradersvengence accuse <UUID>`.
 
 ## Known limitations / testing blockers
-1. `EntityJoinLevelEvent` has no spawn reason. For now the filter applies to ANY
-   newly added trader, including `/summon` and spawn eggs. A future pre-spawn
-   spawner hook should exempt commands and allow retrying failed candidate positions.
-2. The original WanderingTraderSpawner may still consume a spawn attempt when a trader
-   is vetoed. Ensure bad candidates don't unfairly exhaust attempts.
+1. **Source-only upgrade:** the new `WanderingTraderSpawnerMixin` redirects the native
+   `spawn(ServerLevel)` candidate search, rather than vetoing all EntityJoin events.
+   Verify the exact Minecraft 1.21.1 bytecode redirect target on a real NeoForge
+   server: Java compilation alone does NOT guarantee Mixin injection success.
+2. Vanilla can still consume its scheduled attempt if all bounded candidate searches
+   fail because the sky/ground/sign filter finds no legal ground. This is expected
+   when all nearby positions are forbidden; check rates in a disposable world.
 3. Villager brain-driven panic/job logic may contend with the added ranged goal. Verify
    that the goal executes in an actual world and add targeted brain arbitration if needed.
    The reputation Mixin must be checked on the pinned 1.21.1 runtime (native
@@ -62,8 +65,10 @@ not edit the packwiz index or the running QA build.
 5. Priest target observation is source-implemented but still requires an in-world
    check with the pinned Iron's 3.16.3 jar. Confirm hostile target acquisition is
    observed, and that other players are not wrongly flagged.
-6. Goal installation on entity joins is unverified for repeated join/unload cycles.
-   Also test villagers, player-created golems, trader llamas, ordinary llamas,
+6. Goal installation now uses the native entity GoalSelector to prevent duplicate
+   goal registration after a rejoin on the same object; verify repeated join/unload
+   and dimension transitions in a disposable save. Also test villagers, player-created
+   golems, trader llamas, ordinary llamas,
    creative/spectator immunity and cross-mod hostility overrides.
 7. Default sign radius, attacks, and damage are currently constants. Configuration,
    unique sign item, in-game repentance and localization are deferred.
@@ -108,5 +113,7 @@ Test in a disposable save after an owner-authorized test build:
 - Exercise operator pardon and make sure combat stops even after reloading chunks.
 - Confirm villager trading and schedules return to normal for non-offenders.
 
-Do not merge or publish this as a gameplay-tested binary until runtime AI,
-spawn restrictions, and Iron's projectile integration are verified in a disposable world.
+Reconciliation merges only reviewed source, metadata provenance and module
+test contracts. Do not label the feature gameplay-tested or release a binary
+until real 1.21.1 spawner-Mixin, AI, Iron's projectile and persistence tests pass.
+See `docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md`.
