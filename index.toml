@@ -342,6 +342,10 @@ hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 
 [[files]]
+file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
+hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
+
+[[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"
 hash = "25a22f67bdbeb7a9b60e9238379337264be47948a97f1ffb2a61d0e755b4d605"
 
@@ -517,6 +521,10 @@ hash = "dd8712498dc8b5b23f4b77649369e73d6ab555c7f7783f01499a10b83ac4a0a8"
 [[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__astralsorcery__marble_raw.json"
 hash = "f9fde86e835b2b6e88ca201d0f26dc6a9d278092d1d430f91092e579fad73bce"
+
+[[files]]
+file = "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json"
+hash = "b7c2f00cf433affc2c1caf3868b6999645a0582e85034a68d60476c1092cf186"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/ordinary_blood_bottles.json"
@@ -1332,6 +1340,11 @@ metafile = true
 [[files]]
 file = "mods/simple-backups.pw.toml"
 hash = "0d76b6f0f8b2cbe44931c7094c416aab1d1534c47cbee499f01c546e5e09b42b"
+metafile = true
+
+[[files]]
+file = "mods/smart-keep-inventory.pw.toml"
+hash = "41027efd8599ce97dcbafc4f917784518889ea30d4a03571b5286caa84e53779"
 metafile = true
 
 [[files]]

@@ -2575,9 +2575,10 @@
       "version": "1.21.1-1.0.1-neoforge",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/smart-keep-inventory/version/1.21.1-1.0.1-neoforge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER-SELECTED DEVELOPMENT TARGET (2026-11-16) for per-player Newbie vanilla-like keepInventory and XP via tag condition. Modrinth project qeGAjqzW version JqVOLkFB; CurseForge project 1424832 file 7530253; source predicates staged on feature/newbie-mode-smartkeep-2026-11-16. NOT hash pinned or in packwiz yet; does NOT imply Corail Tombstone 9.5.6 compatibility confirmed. Disable built-in bosses predicate for ordinary Regular deaths, test duplication and Corail Curios."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "OWNER-SELECTED DEVELOPMENT TARGET (2026-11-16) for per-player Newbie vanilla-like keepInventory and XP via tag condition. Modrinth project qeGAjqzW version JqVOLkFB; CurseForge project 1424832 file 7530253; source predicates staged on feature/newbie-mode-smartkeep-2026-11-16. NOT hash pinned or in packwiz yet; does NOT imply Corail Tombstone 9.5.6 compatibility confirmed. Disable built-in bosses predicate for ordinary Regular deaths, test duplication and Corail Curios. Source/Packwiz metadata pinned to official SHA512 1.0.1 NeoForge; Corail grave, Curios and XP gameplay NOT TESTED.",
+      "packwiz_slug": "smart-keep-inventory"
     },
     {
       "id": "prefab",
