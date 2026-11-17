@@ -28,7 +28,7 @@ def main():
     roster = json.loads(read("manifest/mods.json"))
     entries = {m["id"]:m for m in roster["mods"] if m["id"] in newmods}
     assert set(entries) == newmods
-    assert all(m["desired"] and not m["enabled_in_pack"] for m in entries.values())
+    assert all(m["desired"] and (not m["enabled_in_pack"] if mid == "yungs-better-end-island" else m["enabled_in_pack"]) for mid, m in entries.items())
     assert any(b["id"] == "B18" and set(b["members"]) == newmods for b in roster["batches"])
     pol = json.loads(read("manifest/ars_structure_locator_policy.json"))
     assert "minecraft:stronghold" in pol["disabled_structures"]

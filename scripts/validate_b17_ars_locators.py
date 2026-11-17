@@ -26,7 +26,7 @@ def main():
     required = {"attributefix","clumps","extreme-sound-muffler","get-it-together-drops","lootjs","yungs-api","yungs-better-nether-fortresses","yungs-better-strongholds"}
     found = {item["id"]: item for item in m["mods"] if item["id"] in required}
     fail(set(found) == required, "B17 approved roster incomplete")
-    fail(all(item["desired"] and not item["enabled_in_pack"] for item in found.values()), "Unpinned B17 mod incorrectly marked installed")
+    fail(all(item["desired"] and item["enabled_in_pack"] for item in found.values()), "B17 pinned mod missing from Packwiz")
     fail(any(x["id"] == "explorers-compass" for x in m["excluded"]), "Missing Compass exclusion decision")
     for path, (rid, augment, tag) in EXPECTED.items():
         recipe = json.loads(read(path))
