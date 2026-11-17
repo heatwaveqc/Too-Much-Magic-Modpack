@@ -1,5 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations.mixin;
 
+import io.github.heatwaveqc.tmm.transformations.core.NativeSpeciesJoinGuard;
+import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichAcquisitionGuard;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -18,8 +20,9 @@ public abstract class GoetyDracolichAcquisitionMixin {
     private static void tmm$preventSecondLich(Player player, boolean lich,
                                               CallbackInfo ci) {
         if (lich && player instanceof ServerPlayer server
-                && !DracolichAcquisitionGuard.permit(server,
-                DracolichAcquisitionGuard.goety(player, lich), "Goety")) {
+                && (!NativeSpeciesJoinGuard.permit(server, ProviderState.GOETY_LICH, "Lich")
+                || !DracolichAcquisitionGuard.permit(server,
+                DracolichAcquisitionGuard.goety(player, lich), "Goety"))) {
             ci.cancel();
         }
     }

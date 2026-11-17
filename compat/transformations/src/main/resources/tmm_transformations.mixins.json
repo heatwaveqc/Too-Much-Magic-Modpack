@@ -8,7 +8,10 @@
     "ForbiddenMagicDracolichAcquisitionMixin",
     "DragonSurvivalDeathRepeatMixin",
     "BotaniaThermalilyFiftyEndoflamesMixin",
-    "BotaniaThermalilyNoCooldownMixin"
+    "BotaniaThermalilyNoCooldownMixin",
+    "NewbieVampireAcquisitionMixin",
+    "NewbieWerewolfAcquisitionMixin",
+    "NewbieDragonAcquisitionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

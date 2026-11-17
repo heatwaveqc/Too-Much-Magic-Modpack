@@ -126,6 +126,8 @@ public final class MxpService {
                 || !player.getServer().isSameThread()) {
             throw new IllegalStateException("MXP awards must execute on the logical server thread");
         }
+        if (!MxpProgressionEligibility.canEarn(player))
+            return ignored(player, "Newbie Mode cannot earn MXP");
         MxpSavedData data = MxpSavedData.get(player.getServer());
         MxpAccount staged = data.snapshot(player.getUUID());
         // Server config controls subsequent ordinary awards without changing

@@ -1,0 +1,13 @@
+name = "Smart Keep Inventory"
+filename = "smart_keep_inventory-1.21.1-1.0.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/qeGAjqzW/versions/JqVOLkFB/smart_keep_inventory-1.21.1-1.0.1-neoforge.jar"
+hash-format = "sha512"
+hash = "c9db787e4f4a18bcc659b24e80c63232ac7919dc426fe27952de6f06a31fc67a282c5c50108de18a269411bfc6c8378c220683d0cb2859d83199504c250ac208"
+
+[update]
+[update.modrinth]
+mod-id = "qeGAjqzW"
+version = "JqVOLkFB"

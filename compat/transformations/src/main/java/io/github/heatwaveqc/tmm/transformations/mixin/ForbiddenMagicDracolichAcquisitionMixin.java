@@ -1,5 +1,7 @@
 package io.github.heatwaveqc.tmm.transformations.mixin;
 
+import io.github.heatwaveqc.tmm.transformations.core.NativeSpeciesJoinGuard;
+import io.github.heatwaveqc.tmm.transformations.core.ProviderState;
 import io.github.heatwaveqc.tmm.transformations.dracolich.DracolichAcquisitionGuard;
 import net.minecraft.server.level.ServerPlayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,9 +19,10 @@ public abstract class ForbiddenMagicDracolichAcquisitionMixin {
             at = @At("HEAD"), cancellable = true, remap = false)
     private void tmm$preventSecondLich(ServerPlayer player, int level,
                                        CallbackInfo ci) {
-        if (level > 0 && !DracolichAcquisitionGuard.permit(player,
+        if (level > 0 && (!NativeSpeciesJoinGuard.permit(player, ProviderState.FORBIDDEN_MAGIC_LICH, "Lich")
+                || !DracolichAcquisitionGuard.permit(player,
                 DracolichAcquisitionGuard.forbidden(player, level),
-                "Forbidden Magic")) {
+                "Forbidden Magic"))) {
             ci.cancel();
         }
     }

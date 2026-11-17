@@ -9,6 +9,8 @@ import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
 import io.github.heatwaveqc.tmm.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge;
+import io.github.heatwaveqc.tmm.progression.runtime.NewbieMode;
+import io.github.heatwaveqc.tmm.progression.runtime.VirtualElytra;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterBrewing;
 import io.github.heatwaveqc.tmm.progression.runtime.StandPotionEligibility;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterItems;
@@ -27,6 +29,7 @@ public final class ProgressionMod {
 
     public ProgressionMod(IEventBus modBus) {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
+        VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
@@ -36,6 +39,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         ProgressionEvents.register();
+        NewbieMode.register();
         TyzMonkBridge.register();
         // JAWR/Tyz are optional; only install experimental form prefabs/listeners
         // when both upstream mods are present. All 37 catalog skills are inactive

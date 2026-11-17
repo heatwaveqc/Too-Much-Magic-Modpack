@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.progression.state.Ledger;
 import io.github.heatwaveqc.tmm.progression.state.Discoveries;
 import io.github.heatwaveqc.tmm.progression.state.Modes;
 import io.github.heatwaveqc.tmm.progression.runtime.Selectors;
+import io.github.heatwaveqc.tmm.progression.runtime.NewbieMode;
 import io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
@@ -38,11 +39,21 @@ public final class ProgressionApi {
         return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
     }
 
+    /** Any joined path, including future Gilded or data-defined paths. */
+    public static boolean anyJoined(ServerPlayer player) {
+        return hasJoinedPaths(player.getData(ProgressionAttachments.LEDGER.get()));
+    }
+
+    public static boolean hasJoinedPaths(Ledger ledger) {
+        return ledger.paths().values().stream().anyMatch(Track::joined);
+    }
+
     public static boolean join(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
+        if (NewbieMode.isNewbie(player)) return false;
         for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
             if (!veto.test(player,pathId)) return false;
         if (!path.exclusiveGroup().isBlank()) {
