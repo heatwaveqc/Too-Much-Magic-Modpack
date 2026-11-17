@@ -64,17 +64,17 @@ def main() -> None:
         if name.startswith("pocket_"):
             require(data["key"].get("A") == {"item": "minecraft:golden_apple"}, "Lost pocket apple " + name)
 
-    fire = recipe("kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json")
+    fire = recipe("kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json")
     require(fire == {
         "type": "occultism:spirit_fire",
-        "ingredient": {"item": "draconicevolution:end_draconium_ore"},
+        "ingredient": {"item": "betterend:thallasium_ore"},
         "result": {"count": 1, "id": "occultism:iesnium_ore"}
     }, "Spirit Fire recipe drift or unsupported ore ID")
 
     index = read("index.toml")
     files = [pin_path, "kubejs/startup_scripts/eldritch_logic_core.js",
              "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json",
-             "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"]
+             "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"]
     files += ["kubejs/data/computercraft/recipe/" + k + ".json" for k in TARGETS]
     for file in files:
         wanted = hashlib.sha256(read(file).encode("utf-8")).hexdigest()

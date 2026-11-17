@@ -411,8 +411,8 @@ file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
 [[files]]
-file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_end_draconium.json"
-hash = "6cad6bbe7306706ea3bfa70dd04bf896c4a100a6a838585bc625aa3677644b2b"
+file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"
+hash = "04ed7eb15534723135713a763e7ef8d2bf6f3f5cf56184f933326132cf859f2f"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__primalmagick__marble_raw.json"
@@ -572,6 +572,11 @@ hash = "fc8954e0d3fa66b917d2c84ee04d07b073a9eb6f719d09e1ff85527c1d61a10e"
 metafile = true
 
 [[files]]
+file = "mods/bclib-new-dawn.pw.toml"
+hash = "561ad31048950924972bdf9f0c156ca9bc11ebbb5928c76e00e58f5b1afb12c3"
+metafile = true
+
+[[files]]
 file = "mods/better-advanced-tooltips.pw.toml"
 hash = "03084ff4f74cedc1b8ac6c85a98842f75956fb4fa811d285d8ca7caa8d54da5d"
 metafile = true
@@ -579,6 +584,11 @@ metafile = true
 [[files]]
 file = "mods/better-advancements.pw.toml"
 hash = "5f30c1c0363dd44c10db196a8d8a7f164ff06e06b0b80234a519d9e49b2a7f84"
+metafile = true
+
+[[files]]
+file = "mods/betterend-new-dawn.pw.toml"
+hash = "c25a5ce6962539cb7d30bcad8aa15eb0c5ddedef1d6afbc3d0648c30975abc6d"
 metafile = true
 
 [[files]]
@@ -1351,3 +1361,12 @@ hash = "18226a3e6d8f1fd684b9c0835d0278d05d67520e3ee0b4e275504569c8adcb7d"
 [[files]]
 file = "config/tyzs_skills/custom/skills/tmm_monk_worldly_cultivation.json"
 hash = "0088b2a83498f837491a1a76b45950df721966f78ed44d1edacf57334070cd02"
+[[files]]
+file = "mods/worldweaver-new-dawn.pw.toml"
+hash = "74d696169d84d7893843d322cb8062415e2903603da43128ea665205ff27482f"
+metafile = true
+
+[[files]]
+file = "mods/wunderlib-new-dawn.pw.toml"
+hash = "2327c95d7332226e1d8c0372909367ee84c1ecedea9eacd84ddb8328a28d1350"
+metafile = true
