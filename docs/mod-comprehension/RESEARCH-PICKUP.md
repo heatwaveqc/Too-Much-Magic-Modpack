@@ -132,3 +132,8 @@ Added farmer/lumberjack brain tasks, tagged first selection vs UNFILTERED incide
 ### Occultism rare familiar branch audit
 
 Familiars appendix now records Chimera born-with-Goat/detach not an invented fusion, growth/meat/size riding/attacks, Goat→Shub, support spawn and actual enemy helper. Helper compares distanceToSqr<10, only last hurtBy/hurt targets, no dedup. Headless6-part disabled rebuild consumes2Wheat+Hay+2rods+CarvedPumpkin and grants advancement but does NOT clear disabled or heal in this JAR; wholeclassreferenceschecked. Sharddeathserializationresetsdisabled separately. All familiar inner siblings extracted/decompiled to eliminate unavailable anonymous goal. Next remaining storage dispatcher/menu transactions and complete guide-stage reconciliation; parent stays researching.
+
+
+### Occultism storage/menu transaction follow-through
+
+Storage appendix now has insertion blacklist/remainder semantics, extraction first component variant vs availability sum, nonreserved machine order queue, BlockPos-only menu lock,8blocklocal vs remotevalidity, persisted grids and shift-craft/remainder/component boundaries. All nested storage classes extracted/decompiled. Remaining for sourcecompletion: ordinary recipe/guide-stage reconciliation, visibility/loot path, residual familiar helpers; do not redo finite inventories/worker methods. Runtime packet/concurrency/crafting acceptance separate.
