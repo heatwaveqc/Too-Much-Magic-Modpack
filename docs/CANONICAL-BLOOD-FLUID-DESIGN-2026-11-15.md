@@ -1,6 +1,6 @@
 # Canonical Physical Blood — EvilCraft Fluid Unification Target (2026-11-15)
 
-> **Owner-approved design target, not implemented.** This document records the target discussed on 2026-11-15. The active pack still contains the original fluid IDs, recipe outputs, containers, and block behaviors until implemented and tested. This is not a blanket authorization to rewrite source mods or delete old-world data.
+> **Owner-approved design target; partially source-implemented 2026-11-16.** [PR #282](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/282) selectively integrates 17 KubeJS datapack JSONs, the Iron's vial startup script, and strict JAWR bottle component handling into the current source baseline. Player-facing EvilCraft fluid/recipe boundaries are present in source, **but full universal external-fluid normalization remains unimplemented**, notably the Neo Vitae native drain/pipes and strict-ID consumers. No native in-world conversions or client/server acceptances have been demonstrated. Do not rewrite old saves or suppress unique items. See [exact implementation QA](qa/CANONICAL-BLOOD-JAWR-RECONCILIATION-2026-11-16.md).
 
 ## Decision
 
