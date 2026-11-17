@@ -5,6 +5,11 @@ on:
     paths:
       - 'scripts/pin_b16_newdawn_metadata.py'
       - '.github/workflows/pin-b16-newdawn-metadata-20261116.yml'
+  pull_request:
+    branches: ['test/full-integration']
+    paths:
+      - 'scripts/pin_b16_newdawn_metadata.py'
+      - '.github/workflows/pin-b16-newdawn-metadata-20261116.yml'
 permissions:
   contents: write
 concurrency:
@@ -19,6 +24,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: integration/pr131-betterend-newdawn-pins-20261116
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
