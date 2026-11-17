@@ -156,6 +156,14 @@ public final class JAWRBottleInterop {
         else return;
         IFluidHandler handler = player.level().getCapability(
                 Capabilities.FluidHandler.BLOCK, event.getPos(), null);
+        // Hexerei's pinned MixingCauldronTile directly implements IFluidHandler.
+        // Some 1.21.1 ports do not publish that tile through BLOCK capability;
+        // use the exact already-confirmed native handler, not reflection into
+        // another mod's tank fields and not a forged fluid alias.
+        if (handler == null && block.equals(HEX_CAULDRON)
+                && player.level().getBlockEntity(event.getPos()) instanceof IFluidHandler nativeTank) {
+            handler = nativeTank;
+        }
         Fluid fluid = BuiltInRegistries.FLUID.getOptional(fluidId).orElse(null);
         if (handler == null || fluid == null) return;
         FluidStack transfer = new FluidStack(fluid, BOTTLE_MB);
