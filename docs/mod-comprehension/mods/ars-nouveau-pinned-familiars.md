@@ -39,7 +39,7 @@ FamiliarEvents routes food/effect events to active matching familiar classes; fi
 | Whirlisprig | Successful nearby tree growth → shard → apparatus charm → flower worker | [Grove steps](ars-nouveau-pinned-whirlisprig.md); unlock and spell-cost/food checks separate from grove output |
 | Wixie | Half-health Witch Dispel → shard → apparatus charm → empty cauldron worker | [Crafting steps](ars-nouveau-pinned-wixie.md); ingredient interaction/effect-duration test distinct from cauldron brewing |
 | Bookwyrm | Awakening with Book and Quill → charm → Storage Lectern worker | [Storage steps](ars-nouveau-pinned-bookwyrm-storage.md); familiar pickup/XP are separate from lectern visual transfers |
-| Drygmy | Native horn befriending/charm/Henge route in parent source survey | Pinned acquisition/worker recheck still pending; do not call full helper cluster complete solely from familiar effect code |
+| Drygmy | Native Wilden-part befriending/charm/Henge route in pinned worker companion | [Pinned worker steps](ars-nouveau-pinned-drygmy.md); familiar buffs do not prove Henge loot eligibility |
 | Amethyst Golem | Awakening near Budding Amethyst creates golem; consume own construct in Binding | [Ritual steps](ars-nouveau-pinned-rituals.md); verify actual summon/type and effect, not just script |
 
 Use item/advancement criteria only as acquisition proxies unless a confirmed operation detector exists. Proposed rewards: XP plus safe ordinary companion setup materials; no auto-unlock scripts for unvisited branches or protected-drop rewards. In-game guide and named ritual/JEI references should be in each how-to.

@@ -245,3 +245,8 @@ Extendedsamecompanion withWixieHatfreshbehavior,potion100eligibility/300trip/par
 ### 2026-11-17 Ars familiar surface
 
 Added pinned-familiars.md: SIXregisteredholders notseven (Jabberwogunusedstub),Bindingpredicate/scriptmainhand/playerunlock/summon/toggle/ownertermination/reserve. ExactSpeedII/goldscry,Earthdiscount/foodformula,Looting/damagecallback,Wixie20%duration/debuff/ingredient,Bookwyrm5boxitemreturn/ownerUUIDskip/XPdirectnotmending,Amethyst50%knockback/defence/typeconstructorboundary. TwoSpellModifierEventsubscribersbothdispatchonModifier; nofinaldamageoverclaim. NativeDrygmyworkerexactJARrecheckstillpending,parentothercore/addon/pilotstillresearching.
+
+
+### 2026-11-17 Ars Drygmy binary crosscheck
+
+Added pinned-drygmy.md afterexactJARCFR: WildenHorn/Spike/Wingtag(notHornonly),1..2shards>60,8pedestalcharm,MossyCobblestoneHenge,20channels100+100cooldown,habitatbonusbeforeblacklist,firstbatchneedsManafalse then1000recharge80ticks/range7,lootrollpoolselectionwithreplacement/fullstackovershoot,25%XP>3threshold,ignoredinsertremainders. Effectiveprotected/bosstags stillunverified, nofarmapproval. Nativehelpers/familiarscluster nowdocumented; nextpersonalcastingtiers/processing/equipment/devices and7addons/pilot beforeparentclosure.

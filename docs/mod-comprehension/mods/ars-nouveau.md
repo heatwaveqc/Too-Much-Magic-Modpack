@@ -385,3 +385,6 @@ Pinned Starbuncle follow-up: [ordinary item routes, filters, Sourceberry harvest
 
 
 Pinned familiar follow-up: [six registered native holders, Binding→script→player unlock→summon/toggle, mana reserve and exact role effects](ars-nouveau-pinned-familiars.md). Jabberwog classes are not registered by core initialization; do not count as a seventh survival role. Duplicate modifier dispatch, Bookwyrm owner-tag skip/XP route and Amethyst constructor type are explicit acceptance boundaries.
+
+
+Pinned Drygmy follow-up: [Horn/Spike/Wing befriending, exact charm/Henge, channels, habitat bonus before blacklist, repeated loot selection, first/subsequent Source order and ignored delivery remainders](ars-nouveau-pinned-drygmy.md). This closes targeted native worker binary comparison; effective protected/boss eligibility remains unverified.
