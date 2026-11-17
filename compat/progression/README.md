@@ -1,5 +1,8 @@
 # Standalone player-enhancement progression core — early implementation
 
+> **JAWR-only Vampire/Werewolf form pilot (2026-11-16, PR #279):** The old standalone `compat/forms` executable module was NOT imported. Its 16 Vampire + 21 Werewolf Tyz source definitions and four provisional Werewolf gameplay handlers now belong to **this shared engine**, with [config-only catalog, preview generator, and tests](design/jawr-forms/catalog.json). Tyz prefabs remain **inactive by default** and are registered only when both Tyz and JAWR are present; JAWR state is checked again at purchase and effect time. Native milestone/cure/ability gaps remain fail-closed. MXP is the *separate global award ledger* (`compat/mxp`) feeding Tyz's one existing XP/SP wallet; it is not another form skill-point system. [Joint integration contract](../../docs/progression/JAWR-MXP-JOINT-CONTRACT-2026-11-16.md).
+
+
 > **Legacy PR reconciliation (2026-11-16):** The old eight-PR Monk/Hunter development stack (#127, #136, #141, #143, #148, #138, #142, #144) is mapped to this single Progression engine in [the consolidation ledger](../../docs/progression/LEGACY-PR-STACK-CONSOLIDATION-2026-11-16.md). The [historical audits](../../docs/archive/progression-pr-stack/README.md) are records, not active runtime or acceptance evidence. New path branches are config-only; all executable changes belong here.
 
 **Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.

@@ -1,6 +1,9 @@
 package io.github.heatwaveqc.tmm.progression;
 
 import io.github.heatwaveqc.tmm.progression.command.ProgressionCommands;
+import io.github.heatwaveqc.tmm.progression.runtime.forms.FormSkillRegistration;
+import io.github.heatwaveqc.tmm.progression.runtime.forms.FormSkillRuntime;
+import net.neoforged.fml.ModList;
 import io.github.heatwaveqc.tmm.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tmm.progression.data.PathRegistry;
@@ -34,5 +37,13 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         ProgressionEvents.register();
         TyzMonkBridge.register();
+        // JAWR/Tyz are optional; only install experimental form prefabs/listeners
+        // when both upstream mods are present. All 37 catalog skills are inactive
+        // by default and effect-time eligibility still checks live JAWR state.
+        if (ModList.get().isLoaded("tyzs_skills") && ModList.get().isLoaded("witchery")) {
+            modBus.addListener(FormSkillRegistration::onSetup);
+            NeoForge.EVENT_BUS.register(FormSkillRegistration.class);
+            NeoForge.EVENT_BUS.register(FormSkillRuntime.class);
+        }
     }
 }

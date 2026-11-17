@@ -1,0 +1,61 @@
+name: Progression JAWR forms plus MXP contract (source/module only)
+on:
+  pull_request:
+    paths:
+      - 'compat/progression/**'
+      - 'compat/mxp/**'
+      - '.github/workflows/progression-jawr-mxp-unified.yml'
+  push:
+    branches:
+      - 'feature/progression-jawr-form-mxp-unified-20261116'
+    paths:
+      - 'compat/progression/**'
+      - 'compat/mxp/**'
+      - '.github/workflows/progression-jawr-mxp-unified.yml'
+permissions:
+  contents: read
+jobs:
+  catalog:
+    name: JAWR catalog and inert previews
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all 37 forms inactive and immutable catalog coherent
+        run: |
+          python compat/progression/design/jawr-forms/build_preview.py --check
+          python -m unittest discover -s compat/progression/design/jawr-forms -p 'test_*.py' -v
+          cmp compat/progression/design/jawr-forms/catalog.json compat/progression/src/main/resources/tmm-form-skills.json
+          if grep -E '"active"[[:space:]]*:[[:space:]]*true' compat/progression/design/jawr-forms/catalog.json; then exit 1; fi
+          test ! -e mods/tmm-form-skills.pw.toml
+          test ! -e mods/tmm-mxp.pw.toml
+  mxp:
+    name: MXP source compile and arithmetic tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile MXP and run its unit tests
+        run: gradle -p compat/mxp classes test --no-daemon --console=plain
+  shared-engine:
+    name: Shared Progression compile and tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile Progression + JAWR skill registrations and run unit tests
+        run: gradle -p compat/progression classes test --no-daemon --console=plain
