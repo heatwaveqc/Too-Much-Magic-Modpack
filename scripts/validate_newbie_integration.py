@@ -47,7 +47,7 @@ def main():
     layouts = data("manifest/quest_layouts.json")
     assert layouts["quest_count"] == 227
     assert len(layouts["positions"]) == 227
-    assert sum(v["quest_id"] == "544D309000100001" for v in layouts["positions"].values()) == 1
+    assert sum(v["quest_id"] == "544D309000100001" for v in layouts["positions"]) == 1
     intro = read("config/ftbquests/quests/chapters/intro.snbt")
     assert intro.count('id: "544D309000100001"') == 1
     assert 'command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in intro
