@@ -1,0 +1,65 @@
+name: Newbie integration source and module tests (NO GAME BOOT)
+on:
+  push:
+    branches:
+      - 'integration/newbie-mode-smartkeep-20261116'
+    paths:
+      - 'compat/progression/**'
+      - 'compat/mxp/**'
+      - 'compat/transformations/**'
+      - 'config/ftbquests/quests/**'
+      - 'config/tyzs_skills/custom/skills/keepsake.json'
+      - 'kubejs/data/**/smart_keep_inventory/**'
+      - 'mods/smart-keep-inventory.pw.toml'
+      - 'manifest/**'
+      - 'scripts/validate_newbie_integration.py'
+      - '.github/workflows/newbie-integration-quick.yml'
+  pull_request:
+    branches: ['test/full-integration']
+    paths:
+      - 'compat/progression/**'
+      - 'compat/mxp/**'
+      - 'compat/transformations/**'
+      - 'config/ftbquests/quests/**'
+      - 'mods/smart-keep-inventory.pw.toml'
+      - 'manifest/**'
+      - 'scripts/validate_newbie_integration.py'
+      - '.github/workflows/newbie-integration-quick.yml'
+permissions:
+  contents: read
+jobs:
+  static:
+    name: Newbie packwiz, FTB, species and XP source validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate exact new feature integration
+        run: |
+          python3 scripts/validate_newbie_integration.py
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 compat/magic/stage_preview.py --check
+          python3 scripts/validate_integration_sources.py
+  engine:
+    name: Compile shared Progression, MXP and transformations (no server)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ['progression', 'mxp', 'transformations']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile and unit-test first-party source only
+        run: gradle -p compat/${{ matrix.module }} classes test --no-daemon --console=plain
