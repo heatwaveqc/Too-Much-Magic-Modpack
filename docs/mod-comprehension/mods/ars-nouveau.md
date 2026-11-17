@@ -364,3 +364,6 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 - 2026-11-15 — Enumerated the 24 Notebook ritual pages and source-confirmed Source storage/transfer capacities, cadence and search range. Tablet-by-tablet augmentation details and measured rates remain unverified.
 
 - 2026-11-16 — Ars Nouveau Drygmy follow-up mapped exact 5.13.5 taming, Charm recipe and Henge conversion; natural/Mob Jar habitat scans; worker cadence, Source draw and yield formulas; fake-player loot/XP conversion; default blacklist timing; and ignored adjacent-inventory remainders. Boss/rare eligibility, effective pack blacklist, pinned-JAR equivalence and client boundaries remain open. No quest/runtime edits; see the profile.
+
+
+Pinned ritual follow-up: [24tablet acquisition records, brazier lifecycle/payment/pause and Wilden/Containment/Restoration/Flight contracts](ars-nouveau-pinned-rituals.md). Remaining20deep ritual effects plus other systems/addons remain researching.
