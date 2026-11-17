@@ -1,0 +1,13 @@
+name = "YUNG's Better Dungeons"
+filename = "YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/o1C1Dkj5/versions/ZWDbFefV/YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar"
+hash-format = "sha512"
+hash = "a079839b661bd7b838bce2cbc619b90d802631dcbc8bfe16d5acd4d96b62f7a6dba3b122ef6d414eda0cd51b81c081a813e4bd7825c26581861014c6789a64d1"
+
+[update]
+[update.modrinth]
+mod-id = "o1C1Dkj5"
+version = "ZWDbFefV"
