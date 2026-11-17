@@ -1,0 +1,39 @@
+name: B16 one-shot BetterEnd metadata pins (no modpack build)
+on:
+  push:
+    branches: ['integration/pr131-betterend-newdawn-pins-20261116']
+    paths:
+      - 'scripts/pin_b16_newdawn_metadata.py'
+      - '.github/workflows/pin-b16-newdawn-metadata-20261116.yml'
+permissions:
+  contents: write
+concurrency:
+  group: b16-metadata-pins
+  cancel-in-progress: false
+jobs:
+  resolve-exact-files:
+    if: github.repository == 'heatwaveqc/Too-Much-Magic-Modpack'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Resolve four exact upstream hashes and update Packwiz metadata
+        run: python scripts/pin_b16_newdawn_metadata.py
+      - name: Static Eldritch/Thallasium recipe and pack index verification
+        run: python scripts/validate_cc_iesnium_pilot.py
+      - name: Commit source-only metadata to this isolated integration PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- mods/ index.toml pack.toml manifest/mods.json \
+            kubejs/data/tmm/recipe/spirit_fire/ scripts/validate_cc_iesnium_pilot.py
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "B16: pin exact BetterEnd libraries and gate Spirit Fire on Thallasium"
+            git push origin HEAD:integration/pr131-betterend-newdawn-pins-20261116
+          fi
