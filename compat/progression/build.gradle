@@ -6,6 +6,10 @@ version = project.mod_version
 group = project.mod_group_id
 base { archivesName = project.mod_id }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+repositories {
+    // Optional Tyz public compile API for source-registered IMMUTABLE form prefabs.
+    maven { url 'https://jitpack.io' }
+}
 neoForge {
     version = project.neo_version
     runs {
@@ -15,6 +19,8 @@ neoForge {
     mods { "${mod_id}" { sourceSet(sourceSets.main) } }
 }
 dependencies {
+    // Runtime optional: handlers are gated on installed Tyz 6.4.2 + JAWR.
+    compileOnly 'com.github.Tyzbrand:TyzsSkills:6.4.2'
     testImplementation 'com.google.code.gson:gson:2.11.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
