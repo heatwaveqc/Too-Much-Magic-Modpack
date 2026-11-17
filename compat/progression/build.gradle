@@ -39,8 +39,4 @@ def generateModMetadata = tasks.register('generateModMetadata', ProcessResources
     into 'build/generated/sources/modMetadata'
 }
 sourceSets.main.resources.srcDir generateModMetadata
-tasks.named('processResources') {
-    // Shared-engine owned data catalog; standalone compat/forms runtime is retired.
-    from('design/jawr-forms/catalog.json') { rename { 'tmm-form-skills.json' } }
-}
 neoForge.ideSyncTask generateModMetadata
