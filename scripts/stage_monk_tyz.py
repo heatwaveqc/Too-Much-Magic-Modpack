@@ -58,6 +58,11 @@ def stage(root: Path) -> None:
             raise ValueError(f"Invalid Tyz Monk skill: {skill_id}")
         content[skill_id] = json.dumps(item, indent=2) + "\n"
 
+    safekept = json.loads((source_skills / "keepsake.json").read_text())
+    if safekept.get("id") != "keepsake" or safekept.get("active") is not False:
+        raise ValueError("Unsafe Tyz Safekept override missing or unexpectedly enabled")
+    content["keepsake"] = json.dumps(safekept, indent=2) + "\n"
+
     current_path = root / "config/tyzs_skills/custom/data/categories.json"
     if not current_path.exists():
         raise ValueError("Existing Tyz category registry missing; do not replace its four defaults")
@@ -79,8 +84,8 @@ def stage(root: Path) -> None:
         if not dest.exists() or dest.read_text() != data:
             dest.write_text(data, encoding="utf-8")
             changed += 1
-    print(f"PASS: Staged Monk Tyz 6.4.2 category and {len(content)} skills; {changed} written.")
-    print("Single Tyz wallet and four Core preview skills were left unchanged.")
+    print(f"PASS: Staged Monk Tyz 6.4.2 category, 18 Monk skills and disabled Safekept; {changed} files written.")
+    print("Single Tyz wallet and four Core preview skills preserved; Safekept disabled.")
     print("Run packwiz refresh and compile the SAME branch's tmm_progression JAR.")
 
 
