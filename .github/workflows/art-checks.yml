@@ -1,0 +1,23 @@
+name: Art structural checks
+on:
+  push:
+    branches: ['dev/art', 'feature/art-**']
+    paths: ['art/**', '.github/workflows/art-checks.yml']
+  pull_request:
+    branches: ['dev/art']
+    paths: ['art/**', '.github/workflows/art-checks.yml']
+permissions:
+  contents: read
+jobs:
+  art-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic unit tests
+        run: python -m unittest discover -s art/tools -p 'test_*.py' -v
+      - name: Validate registry and production file structure
+        run: python art/tools/validate.py --inventory art/registry/inventory.json --pack art/too-much-magic-hd
+# No Minecraft downloads, server/client boot, assembly, packaging, publishing or dispatch.
