@@ -1,0 +1,14 @@
+{
+  "type": "hexerei:cauldron_emptying",
+  "input": {
+    "item": "minecraft:bucket"
+  },
+  "fluid": {
+    "id": "hexerei:blood_fluid",
+    "amount": 1000
+  },
+  "output": {
+    "id": "evilcraft:bucket_blood",
+    "count": 1
+  }
+}
