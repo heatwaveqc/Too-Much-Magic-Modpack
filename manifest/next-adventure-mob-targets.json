@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "target": {
+    "minecraft": "1.21.1",
+    "loader": "neoforge"
+  },
+  "modrinth": [
+    {
+      "id": "aether",
+      "slug": "aether",
+      "name": "The Aether",
+      "category": "adventure",
+      "version": "1.21.1-1.5.10-neoforge",
+      "side": "both"
+    },
+    {
+      "id": "deep-aether",
+      "slug": "deep-aether",
+      "name": "Deep Aether",
+      "category": "adventure",
+      "version": "MSW5emg8",
+      "side": "both"
+    },
+    {
+      "id": "the-bumblezone",
+      "slug": "the-bumblezone",
+      "name": "The Bumblezone",
+      "category": "adventure",
+      "version": "7.17.3+1.21.1-neoforge",
+      "side": "both"
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "slug": "dive-into-the-abyss",
+      "name": "Dive Into the Abyss",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "eternal-starlight",
+      "slug": "eternal-starlight",
+      "name": "Eternal Starlight",
+      "category": "adventure",
+      "version": "IyTc0Vvj",
+      "side": "both"
+    },
+    {
+      "id": "the-aurorian-unofficial-port",
+      "slug": "the-aurorian-unofficial-port",
+      "name": "The Aurorian Unofficial Port",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "voidscape",
+      "slug": "voidscape",
+      "name": "Voidscape",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "liroth-revamped",
+      "slug": "liroth-revamped",
+      "name": "Liroth: Revamped",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "creeper-overhaul",
+      "slug": "creeper-overhaul",
+      "name": "Creeper Overhaul",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "enderman-overhaul",
+      "slug": "enderman-overhaul",
+      "name": "Enderman Overhaul",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "golem-overhaul",
+      "slug": "golem-overhaul",
+      "name": "Golem Overhaul",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "winter-overhaul",
+      "slug": "winter-overhaul",
+      "name": "Winter Overhaul",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "ghost",
+      "slug": "ghost",
+      "name": "Ghost",
+      "category": "adventure",
+      "version": "jlhsMccP",
+      "side": "both"
+    },
+    {
+      "id": "ribbits",
+      "slug": "ribbits",
+      "name": "Ribbits",
+      "category": "adventure",
+      "version": null,
+      "side": "both"
+    },
+    {
+      "id": "critters-and-companions",
+      "slug": "critters-and-companions",
+      "name": "Critters and Companions",
+      "category": "adventure",
+      "version": "MMFSVRkt",
+      "side": "both"
+    },
+    {
+      "id": "more-darkness",
+      "slug": "more-darkness",
+      "name": "More Darkness",
+      "category": "qol",
+      "version": "2.0.1+1.21.1+neoforge",
+      "side": "client"
+    }
+  ],
+  "curseforge": [
+    {
+      "id": "twilight-forest",
+      "name": "The Twilight Forest",
+      "category": "adventure",
+      "side": "both",
+      "project_id": 227639,
+      "file_id": 7797302,
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "version": "4.8.3345"
+    }
+  ],
+  "notes": "Root targets explicitly approved. Resolve metadata for required dependency graph, only stage exact reviewed pins; never update an existing installed version automatically. No Torchmaster; Cave Creeper native drops unchanged. Dynamic More Darkness deferred."
+}

@@ -2591,6 +2591,102 @@
       "enabled_in_pack": false,
       "dependencies_verified": false,
       "note": "Owner-selected prefab-housing candidate 2026-11-16 (replaces Capsule design); requires Cloth Config API >=15.0.140 NeoForge. No default house selected, not hash-pinned or included in runtime."
+    },
+    {
+      "id": "creeper-overhaul",
+      "name": "Creeper Overhaul",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/creeper-overhaul",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending. Preserve native Cave Creeper loot."
+    },
+    {
+      "id": "enderman-overhaul",
+      "name": "Enderman Overhaul",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/enderman-overhaul",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "golem-overhaul",
+      "name": "Golem Overhaul",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/golem-overhaul",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "winter-overhaul",
+      "name": "Winter Overhaul",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/winter-overhaul",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/ghost",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "ribbits",
+      "name": "Ribbits",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/ribbits",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "critters-and-companions",
+      "name": "Critters and Companions",
+      "category": "adventure",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/critters-and-companions",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+    },
+    {
+      "id": "more-darkness",
+      "name": "More Darkness",
+      "category": "qol",
+      "desired": true,
+      "version": null,
+      "release_status": "unverified",
+      "source": "https://modrinth.com/mod/more-darkness",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending. Client-only mod itself now; dynamic Newbie/Astral staging owner-deferred."
     }
   ],
   "excluded": [
