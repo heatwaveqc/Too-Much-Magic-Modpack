@@ -565,7 +565,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000001",
+      "quest_id": "21C1000000000001",
       "chapter": "Alcohol is Magic",
       "position": [
         0,
@@ -574,7 +574,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000002",
+      "quest_id": "21C1000000000002",
       "chapter": "Alcohol is Magic",
       "position": [
         3,
@@ -583,7 +583,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000003",
+      "quest_id": "21C1000000000003",
       "chapter": "Alcohol is Magic",
       "position": [
         6,
@@ -592,7 +592,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000004",
+      "quest_id": "21C1000000000004",
       "chapter": "Alcohol is Magic",
       "position": [
         9,
@@ -601,7 +601,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000005",
+      "quest_id": "21C1000000000005",
       "chapter": "Alcohol is Magic",
       "position": [
         12,
@@ -610,7 +610,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000006",
+      "quest_id": "21C1000000000006",
       "chapter": "Alcohol is Magic",
       "position": [
         15,
@@ -619,7 +619,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000007",
+      "quest_id": "21C1000000000007",
       "chapter": "Alcohol is Magic",
       "position": [
         15,
@@ -628,7 +628,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000008",
+      "quest_id": "21C1000000000008",
       "chapter": "Alcohol is Magic",
       "position": [
         15,
@@ -637,7 +637,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000009",
+      "quest_id": "21C1000000000009",
       "chapter": "Alcohol is Magic",
       "position": [
         18,
@@ -646,7 +646,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000A",
+      "quest_id": "21C100000000000A",
       "chapter": "Alcohol is Magic",
       "position": [
         3,
@@ -655,7 +655,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000B",
+      "quest_id": "21C100000000000B",
       "chapter": "Alcohol is Magic",
       "position": [
         6,
@@ -664,7 +664,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000C",
+      "quest_id": "21C100000000000C",
       "chapter": "Alcohol is Magic",
       "position": [
         9,
@@ -673,7 +673,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000D",
+      "quest_id": "21C100000000000D",
       "chapter": "Alcohol is Magic",
       "position": [
         12,
@@ -682,7 +682,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000E",
+      "quest_id": "21C100000000000E",
       "chapter": "Alcohol is Magic",
       "position": [
         3,
@@ -691,7 +691,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C100000000000F",
+      "quest_id": "21C100000000000F",
       "chapter": "Alcohol is Magic",
       "position": [
         6,
@@ -700,7 +700,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000010",
+      "quest_id": "21C1000000000010",
       "chapter": "Alcohol is Magic",
       "position": [
         9,
@@ -709,7 +709,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000011",
+      "quest_id": "21C1000000000011",
       "chapter": "Alcohol is Magic",
       "position": [
         12,
@@ -718,7 +718,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000012",
+      "quest_id": "21C1000000000012",
       "chapter": "Alcohol is Magic",
       "position": [
         15,
@@ -727,7 +727,7 @@
       "authored": true
     },
     {
-      "quest_id": "A1C1000000000013",
+      "quest_id": "21C1000000000013",
       "chapter": "Alcohol is Magic",
       "position": [
         18,
@@ -1622,7 +1622,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        4
+        2
       ],
       "authored": true
     },
@@ -1631,7 +1631,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        8
+        4
       ],
       "authored": true
     },
@@ -1639,8 +1639,8 @@
       "quest_id": "544DB13000030000",
       "chapter": "Ars Nouveau",
       "position": [
-        -8,
-        8
+        -4,
+        4
       ],
       "authored": true
     },
@@ -1648,8 +1648,8 @@
       "quest_id": "544DB13000040000",
       "chapter": "Ars Nouveau",
       "position": [
-        8,
-        8
+        4,
+        4
       ],
       "authored": true
     },
@@ -1657,8 +1657,8 @@
       "quest_id": "544DB13000050000",
       "chapter": "Ars Nouveau",
       "position": [
-        8,
-        12
+        4,
+        6
       ],
       "authored": true
     },
@@ -1666,8 +1666,8 @@
       "quest_id": "544DB13000060000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        12
+        8,
+        6
       ],
       "authored": true
     },
@@ -1676,7 +1676,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        16
+        8
       ],
       "authored": true
     },
@@ -1684,8 +1684,8 @@
       "quest_id": "544DB13000080000",
       "chapter": "Ars Nouveau",
       "position": [
-        -8,
-        20
+        -4,
+        10
       ],
       "authored": true
     },
@@ -1694,7 +1694,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        20
+        10
       ],
       "authored": true
     },
@@ -1702,8 +1702,8 @@
       "quest_id": "544DB130000A0000",
       "chapter": "Ars Nouveau",
       "position": [
-        8,
-        20
+        4,
+        10
       ],
       "authored": true
     },
@@ -1711,8 +1711,8 @@
       "quest_id": "544DB130000B0000",
       "chapter": "Ars Nouveau",
       "position": [
-        8,
-        24
+        4,
+        12
       ],
       "authored": true
     },
@@ -1721,7 +1721,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        28
+        14
       ],
       "authored": true
     },
@@ -1730,7 +1730,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        32
+        16
       ],
       "authored": true
     },
@@ -1738,8 +1738,8 @@
       "quest_id": "544DB130000E0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        20
+        -8,
+        10
       ],
       "authored": true
     },
@@ -1747,8 +1747,8 @@
       "quest_id": "544DB130000F0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        24
+        -8,
+        12
       ],
       "authored": true
     },
@@ -1756,8 +1756,8 @@
       "quest_id": "544DB13000100000",
       "chapter": "Ars Nouveau",
       "position": [
-        -8,
-        24
+        -4,
+        12
       ],
       "authored": true
     },
@@ -1765,8 +1765,8 @@
       "quest_id": "544DB13000110000",
       "chapter": "Ars Nouveau",
       "position": [
-        -24,
-        28
+        -12,
+        14
       ],
       "authored": true
     },
@@ -1774,8 +1774,8 @@
       "quest_id": "544DB13000120000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        28
+        -8,
+        14
       ],
       "authored": true
     },
@@ -1783,8 +1783,8 @@
       "quest_id": "544DB13000130000",
       "chapter": "Ars Nouveau",
       "position": [
-        -8,
-        28
+        -4,
+        14
       ],
       "authored": true
     },
@@ -1792,8 +1792,8 @@
       "quest_id": "544DB13000140000",
       "chapter": "Ars Nouveau",
       "position": [
-        -8,
-        36
+        -4,
+        18
       ],
       "authored": true
     },
@@ -1801,8 +1801,8 @@
       "quest_id": "544DB13000150000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        20
+        8,
+        10
       ],
       "authored": true
     },
@@ -1810,8 +1810,8 @@
       "quest_id": "544DB13000160000",
       "chapter": "Ars Nouveau",
       "position": [
-        24,
-        20
+        12,
+        10
       ],
       "authored": true
     },
@@ -1819,8 +1819,8 @@
       "quest_id": "544DB13000170000",
       "chapter": "Ars Nouveau",
       "position": [
-        24,
-        24
+        12,
+        12
       ],
       "authored": true
     },
@@ -1828,8 +1828,8 @@
       "quest_id": "544DB13000180000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        28
+        8,
+        14
       ],
       "authored": true
     },
@@ -1837,8 +1837,8 @@
       "quest_id": "544DB13000190000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        32
+        8,
+        16
       ],
       "authored": true
     },
@@ -1846,8 +1846,8 @@
       "quest_id": "544DB130001A0000",
       "chapter": "Ars Nouveau",
       "position": [
-        24,
-        32
+        12,
+        16
       ],
       "authored": true
     },
@@ -1855,8 +1855,8 @@
       "quest_id": "544DB130001B0000",
       "chapter": "Ars Nouveau",
       "position": [
-        24,
-        36
+        12,
+        18
       ],
       "authored": true
     },
@@ -1864,8 +1864,8 @@
       "quest_id": "544DB130001C0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -24,
-        36
+        -12,
+        18
       ],
       "authored": true
     },
@@ -1873,8 +1873,8 @@
       "quest_id": "544DB130001D0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        44
+        -8,
+        22
       ],
       "authored": true
     },
@@ -1882,8 +1882,8 @@
       "quest_id": "544DB130001E0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        48
+        -8,
+        24
       ],
       "authored": true
     },
@@ -1891,8 +1891,8 @@
       "quest_id": "544DB130001F0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        52
+        -8,
+        26
       ],
       "authored": true
     },
@@ -1901,7 +1901,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        44
+        22
       ],
       "authored": true
     },
@@ -1910,7 +1910,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        48
+        24
       ],
       "authored": true
     },
@@ -1919,7 +1919,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        52
+        26
       ],
       "authored": true
     },
@@ -1927,8 +1927,8 @@
       "quest_id": "544DB13000230000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        44
+        8,
+        22
       ],
       "authored": true
     },
@@ -1936,8 +1936,8 @@
       "quest_id": "544DB13000240000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        48
+        8,
+        24
       ],
       "authored": true
     },
@@ -1945,8 +1945,8 @@
       "quest_id": "544DB13000250000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        52
+        8,
+        26
       ],
       "authored": true
     },
@@ -1954,8 +1954,8 @@
       "quest_id": "544DB13000260000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        60
+        -8,
+        30
       ],
       "authored": true
     },
@@ -1963,8 +1963,8 @@
       "quest_id": "544DB13000270000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        64
+        -8,
+        32
       ],
       "authored": true
     },
@@ -1973,7 +1973,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        60
+        30
       ],
       "authored": true
     },
@@ -1982,7 +1982,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        64
+        32
       ],
       "authored": true
     },
@@ -1991,7 +1991,7 @@
       "chapter": "Ars Nouveau",
       "position": [
         0,
-        68
+        34
       ],
       "authored": true
     },
@@ -1999,8 +1999,8 @@
       "quest_id": "544DB130002B0000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        60
+        8,
+        30
       ],
       "authored": true
     },
@@ -2008,8 +2008,8 @@
       "quest_id": "544DB130002C0000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        64
+        8,
+        32
       ],
       "authored": true
     },
@@ -2017,8 +2017,8 @@
       "quest_id": "544DB130002D0000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        68
+        8,
+        34
       ],
       "authored": true
     },
@@ -2026,8 +2026,8 @@
       "quest_id": "544DB130002E0000",
       "chapter": "Ars Nouveau",
       "position": [
-        16,
-        72
+        8,
+        36
       ],
       "authored": true
     },
@@ -2035,8 +2035,8 @@
       "quest_id": "544DB130002F0000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        72
+        -8,
+        36
       ],
       "authored": true
     },
@@ -2044,8 +2044,8 @@
       "quest_id": "544DB13000300000",
       "chapter": "Ars Nouveau",
       "position": [
-        -16,
-        76
+        -8,
+        38
       ],
       "authored": true
     }

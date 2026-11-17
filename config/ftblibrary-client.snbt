@@ -1,5 +1,5 @@
 {
   sidebar: {
-    position: "bottom_left"
+    position: "top_left"
   }
 }

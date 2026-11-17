@@ -350,8 +350,18 @@ def main() -> None:
            "Missing FTB Filter System 1.21.1 NeoForge pin")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
     ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
+    # FTB 2101.1.38 BaseQuestFile.readID(StringTag) uses signed Long.parseLong(hex, 16).
+    # Out-of-range IDs are silently replaced at runtime, breaking translations and links.
     for path in QUESTS.rglob("*.snbt"):
-        scan_snbt(path.read_text(encoding="utf-8"), str(path))
+        raw = path.read_text(encoding="utf-8")
+        scan_snbt(raw, str(path))
+        for ident in re.findall(r'(?<![0-9A-Za-z_])[0-9A-F]{16}(?![0-9A-Za-z_])', raw):
+            ensure(1 < int(ident, 16) <= (1 << 63) - 1,
+                   f"FTB signed-long ID out of range or reserved: {ident} in {path}")
+    chapter_titles = re.findall(r'(?m)^\s*chapter\.([0-9A-F]{16})\.title:', lang_text)
+    ensure(len(chapter_titles) == len(set(chapter_titles)) == len(chapters)
+           and set(chapter_titles) == {c["chapter_id"] for c in chapters},
+           "Chapter translation IDs must match all runtime chapters exactly")
     print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
     print("PASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")

@@ -102,7 +102,7 @@
     {
       "category": "Introduction",
       "group_id": "544D101000000000",
-      "chapter_id": "A1C0000000000000",
+      "chapter_id": "21C0000000000000",
       "name": "Alcohol is Magic",
       "filename": "alcohol_is_magic.snbt",
       "order_index": 3,
@@ -112,8 +112,8 @@
         "cocktails-delight",
         "lets-do-beachparty"
       ],
-      "overview_quest_id": "A1C1000000000001",
-      "overview_task_id": "A1C2000000000001"
+      "overview_quest_id": "21C1000000000001",
+      "overview_task_id": "21C2000000000001"
     },
     {
       "category": "Progression",
