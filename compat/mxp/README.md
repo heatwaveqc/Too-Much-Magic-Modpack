@@ -1,5 +1,8 @@
 # TMM MXP — initial NeoForge ledger and award dispatcher
 
+> **Joint JAWR/Tyz integration (2026-11-16, PR #279):** This code is now developed together with the shared `compat/progression` engine, not as an alternative forms XP wallet. The 1.02 server growth policy and all #161 source hooks are preserved. A new `MxpService.jawrCommittedBloodDebit(player, tx, originalBloodCost, actualBloodDebit)` API normalizes confirmed post-commit JAWR blood expenditure against an owner-target first-access **900 blood** reference (`jawr_initial_blood` in common config, 0 disables). **No native JAWR payment hook is wired yet**: the API deliberately grants nothing unless an audited third-party integration calls it after a real debit. Feeding/refilling, previews and aborted payments earn zero. Reuse the same transaction ID across other resource adapters to prevent a double award. This is compiled source only—no modpack JAR is installed or in-world verified. [Joint integration contract](../../docs/progression/JAWR-MXP-JOINT-CONTRACT-2026-11-16.md).
+
+
 **Stage:** feature/mxp-ars-irons-botania-neo-hooks, 2026-11-14 (extends MXP dispatcher). Actual Java source, build and progression tests exist; **not yet packwiz-pinned, game-launched or verified with the Tyz 6.4.2 runtime JAR**. Designed not to delay the next full test build. Based on the Core Magic feature branch; reconcile with [MXP specification PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27) and [Core Magic implementation PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33).
 
 ## Implemented
