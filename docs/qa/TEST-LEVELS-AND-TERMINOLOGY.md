@@ -44,3 +44,7 @@ A `full_smoke=false` push/PR workflow must never mutate the integration checkout
 5. Prohibit `[skip ci]` on commits affecting integration sources, build scripts, packwiz metadata, QA gating or shared runtime. Only source/metadata/compilation preflight is automatic. No automatic server, full assembly, or Prism packaging.
 
 Related: [live-test inclusion register](LIVE-TEST-INCLUSION-REGISTER.md), [current QA ledger](CURRENT-TEST-STATUS.md), [build channels](../BUILD-CHANNELS-AND-TESTING.md), [agent contract](../../AGENTS.md).
+
+## Execution-type axis (2026-11-17)
+
+Use [QA execution types A/B/C](QA-EXECUTION-TYPES.md) for test assignment: A Codex/offline, B command-driven in game, C play/setup in game. These are orthogonal to the eight levels above; a source-only A check cannot grant a gameplay PASS.

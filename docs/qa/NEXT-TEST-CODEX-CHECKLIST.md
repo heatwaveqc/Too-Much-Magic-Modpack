@@ -1,5 +1,7 @@
 # Next test — Codex-executable three-tier checklist
 
+> **Historical worksheet (2026-11-16).** For current unstable build use [new A/B/C checklist](UNSTABLE-QA-2026-11-17.md) and [results](UNSTABLE-QA-RESULTS-2026-11-17.md). Old command blockers and two-JAR assumptions below belong to prior build only.
+
 **Scope:** next comprehensive test intake, readiness checks and live-test commands. This document does not itself authorize a build or full smoke.  
 **Scope checked:** `test/full-integration`, November 16, 2026 (Arizona).  
 **Target:** Minecraft 1.21.1 · NeoForge 21.1.265 · Java 21.  

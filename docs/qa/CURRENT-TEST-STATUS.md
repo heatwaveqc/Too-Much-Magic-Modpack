@@ -1,5 +1,7 @@
 # Current test status — active QA handoff
 
+> **Current build handoff (2026-11-17):** use [run 44108614695 checklist](UNSTABLE-QA-2026-11-17.md) and [per-build results](UNSTABLE-QA-RESULTS-2026-11-17.md), frozen SHA `322cf3f9`. The older rows below are retained as historical, not current results.
+
 **Created:** 2026-11-16 (America/Phoenix)  
 **Branch:** `test/full-integration`  
 **Source inspection:** repository files inspected in the November 16 readiness/recovery session; checklist initially committed at `45daad21634d6d59860b199da7cf7df9dc8c0557`. **This is not a tested build SHA.**  
