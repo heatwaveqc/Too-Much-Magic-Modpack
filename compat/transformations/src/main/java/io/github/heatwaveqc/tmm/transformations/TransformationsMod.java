@@ -8,6 +8,7 @@ import io.github.heatwaveqc.tmm.transformations.network.DracolichVisualNetworkin
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionConfig;
 import io.github.heatwaveqc.tmm.transformations.lich.ArchlichResurrectionEvents;
 import io.github.heatwaveqc.tmm.transformations.mob.MobAllianceEvents;
+import io.github.heatwaveqc.tmm.transformations.core.NativeSpeciesJoinGuard;
 import io.github.heatwaveqc.tmm.transformations.vampire.JAWRBottleInterop;
 import io.github.heatwaveqc.tmm.transformations.storage.TransformationAttachments;
 import net.neoforged.bus.api.IEventBus;
@@ -34,6 +35,7 @@ public final class TransformationsMod {
         ProbeRegistry.register(new DragonSurvivalProbe());
         ProbeRegistry.register(new GoetyLichProbe());
         ProbeRegistry.register(new ForbiddenMagicLichProbe());
+        NativeSpeciesJoinGuard.registerProgressionJoinVeto();
         NeoForge.EVENT_BUS.addListener(TransformationCommands::register);
         MobAllianceEvents.register();
         ArchlichResurrectionEvents.register();
