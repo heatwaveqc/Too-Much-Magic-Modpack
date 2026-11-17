@@ -1,0 +1,12 @@
+# Scratch and downloaded inputs must remain outside version control
+scratch/
+cache/
+downloads/
+drafts/
+__pycache__/
+*.jar
+*.zip
+*.psd
+*.xcf
+*.blend
+*.tmp
