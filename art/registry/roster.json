@@ -3,10 +3,12 @@
   "integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
   "minecraft": "1.21.1",
   "loader": "neoforge",
-  "note": "Decision snapshot only; exact archive identity and texture inventory not verified. Selected disabled entries still require future resolution. Reconcile newer integration before inventory.",
+  "note": "All 199 indexed mod archives and vanilla provider-hash verified and recursively scanned. 12 desired future entries are unpinned. Scan is not runtime renderer closure or owner-approved coverage.",
   "vanilla": {
     "version": "1.21.1",
-    "status": "pending"
+    "status": "archive-scanned-runtime-review-pending",
+    "archive_id": "minecraft",
+    "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
   },
   "mods": [
     {
@@ -16,7 +18,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "akashic-tome",
@@ -25,7 +28,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/250577",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "akashic-tome",
+      "archive_sha256": "c60f58fba975fe22681d69bd06dc93818e53a67830d9118167979852206f6ca8",
+      "top_level_png_count": 2
     },
     {
       "id": "alexs-caves-continued",
@@ -34,7 +40,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/alexs-caves-continued/version/wSeCJMlI",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "alexs-caves-continued",
+      "archive_sha256": "768b720c357ad191869a0d9fa69de0ab3c83363be61344c3e4924a16bfc2388c",
+      "top_level_png_count": 1267
     },
     {
       "id": "apotheosis",
@@ -43,7 +52,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/rqFWfVlz",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "apotheosis",
+      "archive_sha256": "23a8b4a21d0d8744f097c77c8a96fcba14c4b95f3b1bb542412f40dab272872e",
+      "top_level_png_count": 151
     },
     {
       "id": "apothic-attributes",
@@ -52,7 +64,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/DGaH8Rh0",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "apothic-attributes",
+      "archive_sha256": "17c42bb6dd5c0d820fe090e1bb5959578cd5ab7b70caf98a2a59b319fcc7e1ba",
+      "top_level_png_count": 12
     },
     {
       "id": "apothic-enchanting",
@@ -61,7 +76,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/pL8MtgqY",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "apothic-enchanting",
+      "archive_sha256": "aff9837f45c1c981d47a9e60b780c37a151ef881937faf5f72092895104c8bbb",
+      "top_level_png_count": 228
     },
     {
       "id": "apothic-spawners",
@@ -70,7 +88,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/DfxVkOAO",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "apothic-spawners",
+      "archive_sha256": "f0cbc52ad606997789c36fac94ae651ab7e2e21c841e26a952c64041cad9cdbe",
+      "top_level_png_count": 2
     },
     {
       "id": "appleskin",
@@ -79,7 +100,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/EsAfCjCV",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "appleskin",
+      "archive_sha256": "38b48dd6231341c9f964ce6e42c57ec866c6cc8f72bec938390a59bafb3922df",
+      "top_level_png_count": 3
     },
     {
       "id": "aquaculture",
@@ -88,7 +112,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/60028",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "aquaculture",
+      "archive_sha256": "d77cc93b1285e16c2e8dae27565e96c86fbcaec811904b9cdc23a9fc379585ad",
+      "top_level_png_count": 195
     },
     {
       "id": "architectury-api",
@@ -97,7 +124,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/419699",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "architectury-api",
+      "archive_sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb",
+      "top_level_png_count": 1
     },
     {
       "id": "ars-additions",
@@ -106,7 +136,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/GYK6Gk8R",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-additions",
+      "archive_sha256": "e634a3f0c39cd38007608cce1974a7c9bbad7d8202bfb6c75f17c2901f362c9b",
+      "top_level_png_count": 115
     },
     {
       "id": "ars-controle",
@@ -115,7 +148,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/gL8ijqNQ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-controle",
+      "archive_sha256": "595990b532b7e8cf23a5897c39edcdd9add52f208be9517ff7304e3b35361441",
+      "top_level_png_count": 20
     },
     {
       "id": "ars-elemancy",
@@ -124,7 +160,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/1153666",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-elemancy",
+      "archive_sha256": "502366f85dfde7bf13ceef571cc3c2ba9c7960d35fa54d5e2cdf6e8f407fc9cf",
+      "top_level_png_count": 143
     },
     {
       "id": "ars-elemental",
@@ -133,7 +172,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ars-elemental",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-elemental",
+      "archive_sha256": "9ba4393c98228bb1647e3786c71c30c7eb97574b9e65baba14f34c92f7b86eb9",
+      "top_level_png_count": 325
     },
     {
       "id": "ars-n-spells",
@@ -142,7 +184,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/NlMT8pQt",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-n-spells",
+      "archive_sha256": "652b0a355818a8b61e1b481972ea080773d67d6865c5bccf2c69cac79d057ceb",
+      "top_level_png_count": 1420
     },
     {
       "id": "ars-nouveau",
@@ -151,7 +196,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/TKB6INcv",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-nouveau",
+      "archive_sha256": "f2cf7ea99cf4cb3db1aa4e02c9ef3cdc8aff6ee65eb992f7b560e99741c0b904",
+      "top_level_png_count": 891
     },
     {
       "id": "ars-ocultas",
@@ -160,7 +208,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/Tsw8vbks",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-ocultas",
+      "archive_sha256": "7c5bba278d785334601f7a348136c19802d90edfaced707d3a80f54f121d6a30",
+      "top_level_png_count": 7
     },
     {
       "id": "ars-unification",
@@ -169,7 +220,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/fRdwEsp6",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ars-unification",
+      "archive_sha256": "8e1237cc5d56c7097a23306156964ebf6d828ffa4b279d196ee463e668a2fb11",
+      "top_level_png_count": 1
     },
     {
       "id": "artifacts",
@@ -178,7 +232,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/P0Mu4wcQ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "artifacts",
+      "archive_sha256": "e36a929420a0a616abdb28f5bbbdb866a426aa3bb78d1b39bc1183927c101ce6",
+      "top_level_png_count": 116
     },
     {
       "id": "astral-sorcery",
@@ -187,7 +244,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/astral-sorcery",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "astral-sorcery",
+      "archive_sha256": "a25d11d104e450c643369f54d4d4c50a9c5cd1cda315385803804bd255b182f9",
+      "top_level_png_count": 326
     },
     {
       "id": "attributefix",
@@ -196,7 +256,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/attributefix/files/7115922",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "attributefix",
+      "archive_sha256": "b2b20f3d44e824071284c14de3f4d3323d420e1c450040b339a5c37d2c382ad4",
+      "top_level_png_count": 1
     },
     {
       "id": "balm",
@@ -205,7 +268,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/531761",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "balm",
+      "archive_sha256": "eaae887582a67a02f55a970ec2d7353f1886a99924ed6144aa4d898266606c34",
+      "top_level_png_count": 1
     },
     {
       "id": "better-advanced-tooltips",
@@ -214,7 +280,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/iHLDc0eo",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "better-advanced-tooltips",
+      "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+      "top_level_png_count": 33
     },
     {
       "id": "better-advancements",
@@ -223,7 +292,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/272515",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "better-advancements",
+      "archive_sha256": "60b548bef04a2f0e1da686ee9035c2e3d4ed0459a17d7a4836fc26af6de6b60e",
+      "top_level_png_count": 5
     },
     {
       "id": "bookshelf",
@@ -232,7 +304,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/228525",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "bookshelf",
+      "archive_sha256": "19e88d40da2b6a114c2b808f7fb469d96e66a5379df0a8a43fcb7834498b3e76",
+      "top_level_png_count": 1
     },
     {
       "id": "botania-revived",
@@ -241,7 +316,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/botania-revived",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "botania-revived",
+      "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+      "top_level_png_count": 1295
     },
     {
       "id": "brandons-core",
@@ -250,7 +328,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/brandons-core",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "brandons-core",
+      "archive_sha256": "076b44de51c606e6cdd89694ac0a879fc028d4f0103880ef44f47dbcc69f1d23",
+      "top_level_png_count": 126
     },
     {
       "id": "brewin-and-chewin",
@@ -259,7 +340,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/brewin-and-chewin/version/MbcR48Ou",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "brewin-and-chewin",
+      "archive_sha256": "9f6581823c2449dde4ac1e9b4f5a7cc226c42e058e656741ab392f714f443971",
+      "top_level_png_count": 244
     },
     {
       "id": "caelus",
@@ -268,7 +352,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/308989",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "caelus",
+      "archive_sha256": "432a645557f29de159d9edde2fd109f8e3b32ff30895b4fede04ee5f1a1a682f",
+      "top_level_png_count": 1
     },
     {
       "id": "cataclysm",
@@ -277,7 +364,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/46KJle7n",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "l_enders-cataclysm",
+      "archive_sha256": "371956d0c2e3b56729ee93b955e936875d210e372fe734cdb74326d89ef79875",
+      "top_level_png_count": 789
     },
     {
       "id": "cc-tweaked",
@@ -286,7 +376,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/cc-tweaked/version/KNdTEfUA",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cc-tweaked",
+      "archive_sha256": "bf8dd119701560ea60085cf8c1076d32ffc99a1be5f8b99f6f3b174a88a208f8",
+      "top_level_png_count": 209
     },
     {
       "id": "cloth-config",
@@ -295,7 +388,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cloth-config",
+      "archive_sha256": "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4",
+      "top_level_png_count": 4
     },
     {
       "id": "cobblegen-galore",
@@ -304,7 +400,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/cobblegen-galore/files/8523192",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cobblegen-galore",
+      "archive_sha256": "06f2969117c1b79c3114f3cc695f736e78ccab54dc5f8ce81cd585283da42ba2",
+      "top_level_png_count": 23
     },
     {
       "id": "cobweb",
@@ -313,7 +412,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/968456",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cobweb",
+      "archive_sha256": "40c151dcee6a08decdd980a7c7ffed6ada292e77c3d2cd7aea2d01e5fa8d3b1c",
+      "top_level_png_count": 2
     },
     {
       "id": "cocktails-delight",
@@ -322,7 +424,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/cocktails-delight/files/9482953",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cocktails-delight",
+      "archive_sha256": "8694aa56fc1cd41e768e3653d5aca26bccbe7078ad8bd369b595942f989e2061",
+      "top_level_png_count": 187
     },
     {
       "id": "codechicken-lib-1-8",
@@ -331,7 +436,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "codechicken-lib-1-8",
+      "archive_sha256": "8c453d5c49092860e9d7a692eb858ea54c15d0f9598daae524f9590f8edf276f",
+      "top_level_png_count": 21
     },
     {
       "id": "codxlib",
@@ -340,7 +448,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/6oyMM4yX/version/FW5ZWCXm",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "codxlib",
+      "archive_sha256": "36431429a0bb58ffba4eec3aac87f28b158b2ca4dae11f1520c7ea9e4d680985",
+      "top_level_png_count": 1
     },
     {
       "id": "comforts",
@@ -349,7 +460,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "common-network",
@@ -358,7 +470,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "common-network",
+      "archive_sha256": "df39b3747e7571a6b4782fb8c618bb1fc5544662aba515ae4f67b56361448ec8",
+      "top_level_png_count": 0
     },
     {
       "id": "controlling",
@@ -367,7 +482,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/xv94TkTM",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "controlling",
+      "archive_sha256": "cc525fb6b030d9e4d33176983f278919e17b33935e2ca568929bdfa98f2b44a0",
+      "top_level_png_count": 1
     },
     {
       "id": "cooking-for-blockheads",
@@ -376,7 +494,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/cooking-for-blockheads/version/MQCIy6VF",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cooking-for-blockheads",
+      "archive_sha256": "3dd7af93b2156b14cf279fa6da2f7a1f88a63a81d7cfe001ac63945b06e62ccd",
+      "top_level_png_count": 203
     },
     {
       "id": "corail-tombstone",
@@ -385,7 +506,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/YT5K34AB",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "corail-tombstone",
+      "archive_sha256": "520e2a3cb5fb8001da20a23aaf39a7fd8fd937af962c2b43c55460099e30b23b",
+      "top_level_png_count": 113
     },
     {
       "id": "crafting-tweaks",
@@ -394,7 +518,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/233071",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "crafting-tweaks",
+      "archive_sha256": "0964fefc4a07120a53232b2d934fac4baf15fdaa99b69add30a18a642bc1cf98",
+      "top_level_png_count": 2
     },
     {
       "id": "crystalix",
@@ -403,7 +530,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/crystalix/files/9251153",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "crystalix",
+      "archive_sha256": "da1043170b74347017bf338322990c2010d3db65721f0f38119e5e412242819b",
+      "top_level_png_count": 26
     },
     {
       "id": "cucumber",
@@ -412,7 +542,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/Rw1NrDzF",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cucumber",
+      "archive_sha256": "371f9551c676b76a39d5580be28f5cfeff364e131ad138fbf7108aeb2712f43f",
+      "top_level_png_count": 2
     },
     {
       "id": "curios-api",
@@ -421,7 +554,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/vvuO3ImH",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "curios",
+      "archive_sha256": "a45df2125c26219974aba7507ffc9afe7b83acc941a386af3faacb1cc0056fde",
+      "top_level_png_count": 24
     },
     {
       "id": "cyclops-core",
@@ -430,7 +566,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/Z9DM0LJ4",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "cyclops-core",
+      "archive_sha256": "a11dbce574bbc4db4d56c1b22af1826d09db1d2432030c3590e2c77754837b1d",
+      "top_level_png_count": 7
     },
     {
       "id": "databank",
@@ -439,7 +578,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "databank",
+      "archive_sha256": "f283bd2ef1172bc23e13f514b280988b72e3b8fc37ccfa81fb93feebc4c6f456",
+      "top_level_png_count": 3
     },
     {
       "id": "deep-aether",
@@ -448,7 +590,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "deeper-darker",
@@ -457,7 +600,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/fnAffV0n",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "deeperdarker",
+      "archive_sha256": "eee3f51222b0bcc714def002ff089ac9e131d3cae4575b542fd0a7dd101fe0af",
+      "top_level_png_count": 275
     },
     {
       "id": "default-options",
@@ -466,7 +612,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/WEg59z5b/version/1zt17WsC",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "default-options",
+      "archive_sha256": "d12790dc1f0857778d282c00ad5be56882ac6fce44769c1f012be09b5604874a",
+      "top_level_png_count": 1
     },
     {
       "id": "dive-into-the-abyss",
@@ -475,7 +624,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/dive-into-the-abyss/version/w30oDCUY",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "dive-into-the-abyss",
+      "archive_sha256": "ffe5eb5da73b480e22361834b14109e8f380a91eeff56a33d6334ee0090b16a1",
+      "top_level_png_count": 389
     },
     {
       "id": "draconic-evolution",
@@ -484,7 +636,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "draconic-evolution",
+      "archive_sha256": "e89f3a23a5478e35099905d7c08f9f6a2ff70289e964904e91f06a7ceeed39b5",
+      "top_level_png_count": 391
     },
     {
       "id": "eidolon-repraised",
@@ -493,7 +648,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/870250",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "eidolon-repraised",
+      "archive_sha256": "3ebe2e82bdee7a73b4f48b3125b1c469c329624a9d9f8e60e23476458419c245",
+      "top_level_png_count": 423
     },
     {
       "id": "embeddium",
@@ -502,7 +660,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/sk9rgfiA",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "embeddium",
+      "archive_sha256": "3aac4c4c6e82d78d8dda4c611d68c672d1061b42bb6954331e3c2e7f14c451e1",
+      "top_level_png_count": 2
     },
     {
       "id": "embers-re-ignited",
@@ -511,7 +672,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/8znVCTxA",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "embers-re-ignited",
+      "archive_sha256": "65b07f81563a6bc3c6435d3296bc4b0ab96d6a739b3a3dceb384e2d281e82685",
+      "top_level_png_count": 618
     },
     {
       "id": "enchanted-witchcraft",
@@ -520,7 +684,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/560363",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "enchanted-witchcraft",
+      "archive_sha256": "205a3e1edb7e53e9bbf3b8ab965ac5eb3840bc43760e1b003200e4735ebf1bb0",
+      "top_level_png_count": 288
     },
     {
       "id": "enchantment-descriptions",
@@ -529,7 +696,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/250419",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "enchantment-descriptions",
+      "archive_sha256": "868d3eab3305d96dd3ecf510d18a7aa7444e2aea168695cf4aff23a96bec975f",
+      "top_level_png_count": 1
     },
     {
       "id": "enigmatic-legacy-plus",
@@ -538,7 +708,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/oIjj1Fan",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "enigmaticlegacy-plus",
+      "archive_sha256": "52acb550a9df9f9b681e9286d04b4f1c80d519f63af94a092a51c88697e0592e",
+      "top_level_png_count": 366
     },
     {
       "id": "entity-culling",
@@ -547,7 +720,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/NNAgCjsB",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "entityculling",
+      "archive_sha256": "8867487645142a01b5a6de3f7b984af8d0c516daa9a7aa83c4f6916adccd4eca",
+      "top_level_png_count": 1
     },
     {
       "id": "eternal-starlight",
@@ -556,7 +732,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/eternal-starlight/version/IyTc0Vvj",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "eternal-starlight",
+      "archive_sha256": "e77369ad1a779036b243ef0f7b24776640a3ff84968e6f3be1931bc953e92b09",
+      "top_level_png_count": 1454
     },
     {
       "id": "evilcraft",
@@ -565,7 +744,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/3ANq2btA",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "evilcraft",
+      "archive_sha256": "48843165e7b4d4ecb2bd3b854c272305d60469a5409e8f35f47f5f15e2a6db20",
+      "top_level_png_count": 231
     },
     {
       "id": "exclusions-lib",
@@ -574,7 +756,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "exclusions-lib",
+      "archive_sha256": "e926fce2ed8e78b2f5fc29cc707299f8688b4a39b2043a30a2607fda046abfa2",
+      "top_level_png_count": 1
     },
     {
       "id": "extra-botany-revived",
@@ -583,7 +768,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/1764698",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "extra-botany-revived",
+      "archive_sha256": "d0554b57149b46beaefe38f11d20ded9b93dbbc954d4deb2939fd2f58cb19dad",
+      "top_level_png_count": 422
     },
     {
       "id": "farmers-delight",
@@ -592,7 +780,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/398521",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "farmers-delight",
+      "archive_sha256": "139ad7696462c89c03eea463f805abffa552526c5dadaadae221dd9624cb197c",
+      "top_level_png_count": 429
     },
     {
       "id": "farming-for-blockheads",
@@ -601,7 +792,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/261924",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "farming-for-blockheads",
+      "archive_sha256": "473e1e2fe970df030119f4d1e0214bcf0fd9b1673912c63bf6c5b5a75e65d2de",
+      "top_level_png_count": 19
     },
     {
       "id": "ferritecore",
@@ -610,7 +804,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/uXXizFIs",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ferrite-core",
+      "archive_sha256": "d87ea28262715ebff45b8a82d493e6b468e7a4521bc021df5d88302196d030a8",
+      "top_level_png_count": 1
     },
     {
       "id": "feywild",
@@ -619,7 +816,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/484377",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "feywild",
+      "archive_sha256": "6e115fe731ecfd18bd6d676e052998d3a6c2e12e5c31cf101b4c77b93359c7b8",
+      "top_level_png_count": 377
     },
     {
       "id": "forbidden-arcanus",
@@ -628,7 +828,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/MdlnLS7Q",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "forbidden-arcanus",
+      "archive_sha256": "8d5ef1557fcdd0ba9fe98c38458751bcbecb118c30924daa6fbdea0a54bf5785",
+      "top_level_png_count": 574
     },
     {
       "id": "forbidden-magic",
@@ -637,7 +840,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/pitZv4pV",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "jawr-forbidden-magic",
+      "archive_sha256": "e1f8a919946bc7997106fce1163dcfb5e436ae0f4482bbe7f4b0a81d35028fc0",
+      "top_level_png_count": 29
     },
     {
       "id": "ftb-chunks",
@@ -646,7 +852,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-chunks-forge",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-chunks-forge",
+      "archive_sha256": "4fd569936a0dc966e114d92d98277baec6c9b8337b215a30648b63f9cb860a1f",
+      "top_level_png_count": 26
     },
     {
       "id": "ftb-filter-system",
@@ -655,7 +864,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-filter-system/files/7429011",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-filter-system",
+      "archive_sha256": "b8700e8bfd9c78b09bc7819cb28a6318b20d2bf68969bc6894a0bfa39581a99b",
+      "top_level_png_count": 5
     },
     {
       "id": "ftb-library",
@@ -664,7 +876,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-library-forge",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-library-forge",
+      "archive_sha256": "ca64bd1b5f335406900f74eeafacea5a3580a3933d61de6b6600a64eb12a9a95",
+      "top_level_png_count": 243
     },
     {
       "id": "ftb-quests",
@@ -673,7 +888,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-quests-forge",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-quests-forge",
+      "archive_sha256": "3752657a82c69b0a80c034700df86f1a3d7c5f3e3aad814b5af748b9082a834b",
+      "top_level_png_count": 86
     },
     {
       "id": "ftb-teams",
@@ -682,7 +900,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-teams-forge",
+      "archive_sha256": "b3f33436070b7ae4a706280561f1d2f1d1eb1a089cb13ec9851e99646165aed2",
+      "top_level_png_count": 7
     },
     {
       "id": "ftb-xmod-compat",
@@ -691,7 +912,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-xmod-compat",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ftb-xmod-compat",
+      "archive_sha256": "143c79710af4e17dbff7bb933f2e17c667091353e188e5d53fdaab4220a5ff64",
+      "top_level_png_count": 0
     },
     {
       "id": "fusion-connected-textures",
@@ -700,7 +924,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/fusion-connected-textures/version/AYDaLPK8",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "fusion-connected-textures",
+      "archive_sha256": "29920a6838f4f942947d208349480d7f5737f9fac6411c6eac5f3e824a438048",
+      "top_level_png_count": 3
     },
     {
       "id": "gateways-to-eternity",
@@ -709,7 +936,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/8OIeAukW",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "gateways-to-eternity",
+      "archive_sha256": "7e7df9c4e436ed0ac2a7728102724d5272dc2eef34c7df786074c8d27d888cd9",
+      "top_level_png_count": 5
     },
     {
       "id": "gaze-malum",
@@ -718,7 +948,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/NlvaJ5WE",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "gaze-a-malum-addon",
+      "archive_sha256": "ef9d7ea7a56f1ba5547f4c7b90bf36c87807b9bb5a18c43b1f6c370d5b7e6c06",
+      "top_level_png_count": 112
     },
     {
       "id": "geckolib",
@@ -727,16 +960,22 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/8BmcQJ2H",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "geckolib",
+      "archive_sha256": "20a1995e4074f387ff549e2c57ea79dd7d41ee83c6afb9dd6a6e840e592d1c47",
+      "top_level_png_count": 1
     },
     {
       "id": "goety",
-      "name": "Goety — The Dark Arts",
+      "name": "Goety \u2014 The Dark Arts",
       "version": "goety-3.2.2",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/4ZVIxU8x",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "goety",
+      "archive_sha256": "507ad7c4462fe4d888a6458ad6dfbf1f320eadd626d714c96061c109493d888f",
+      "top_level_png_count": 2978
     },
     {
       "id": "goety-cataclysm",
@@ -745,7 +984,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/YwmuwbXi",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "goety-cataclysm",
+      "archive_sha256": "0c9a122cdd94eef65fe5d6b610b20b4a811659032707fa314756494fb9772738",
+      "top_level_png_count": 57
     },
     {
       "id": "hammerlib",
@@ -754,7 +996,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/247401",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "hammer-lib",
+      "archive_sha256": "0a91f1f98e15aa6e41a44fe59a1d422b733ccd6d74f9fa491901167015bbacda",
+      "top_level_png_count": 17
     },
     {
       "id": "harvest-with-ease",
@@ -763,7 +1008,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/602171",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "harvest-with-ease",
+      "archive_sha256": "e42eed218468bfd244898b9776959155820d228f494c9638982a8aace229ebe8",
+      "top_level_png_count": 2
     },
     {
       "id": "hexcast-neoforged",
@@ -772,7 +1020,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/lZGsiJ1L",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "hexcast-neoforged",
+      "archive_sha256": "54739b9fb0b4bf1e00d4e3c1c9fbc28d3f28f13d98f9ee049c9f9d4dec5a8ec0",
+      "top_level_png_count": 473
     },
     {
       "id": "hexerei",
@@ -781,7 +1032,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/IQSOHVhI",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "hexerei",
+      "archive_sha256": "743e80cb0526fa5fffdb660c5c3230df47d664fb268e48ca888771c4cf594240",
+      "top_level_png_count": 1016
     },
     {
       "id": "immediatelyfast",
@@ -790,7 +1044,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/5ZwdcRci",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "immediatelyfast",
+      "archive_sha256": "7d7b1d7b9f71d5303e42b2fa45f222a5ab06e0ef5982abb6da5dd9cc449b3702",
+      "top_level_png_count": 2
     },
     {
       "id": "improvable-skills",
@@ -799,16 +1056,22 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/252902",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "improvable-skills",
+      "archive_sha256": "e14a7de2eafe933c1ca1618262fe55aa89eebd466062a7e0d43d58c97429b2f2",
+      "top_level_png_count": 108
     },
     {
       "id": "inventory-tweaks-refoxed",
-      "name": "Inventory Tweaks — ReFoxed",
+      "name": "Inventory Tweaks \u2014 ReFoxed",
       "version": "invtweaks-1.21.1-1.3.2",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks-refoxed/files/all",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "inventory-tweaks-refoxed",
+      "archive_sha256": "ceb5b20a43ca1c5bd707f60bb5d5fa61099c7a7ba50b19f6bddfe93f1ca0073c",
+      "top_level_png_count": 2
     },
     {
       "id": "irons-lib",
@@ -817,7 +1080,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/9nfaJPtX",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "irons-lib",
+      "archive_sha256": "578d9ebfad529c0587efab2690bb469811f3a0a3593064c74263fdf909449f39",
+      "top_level_png_count": 50
     },
     {
       "id": "irons-spells",
@@ -826,7 +1092,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/s4OWxYQQ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "irons-spells-n-spellbooks",
+      "archive_sha256": "55a290db9b966e0c5d2f5c051d50775f3db6375cdb52730c4da528bcf5d5daa0",
+      "top_level_png_count": 912
     },
     {
       "id": "jade",
@@ -835,7 +1104,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/nvQzSEkH",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "jade",
+      "archive_sha256": "276f1f65a20d04f536989c4f311949d770b52c440c23c2b904a08860f3c93810",
+      "top_level_png_count": 4
     },
     {
       "id": "jei",
@@ -844,7 +1116,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/u6dRKJwZ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "jei",
+      "archive_sha256": "f7a9de3d7ee07eed8d293a1a1a0f6afaac556eb43c103523457bd07ebb551e7b",
+      "top_level_png_count": 52
     },
     {
       "id": "just-enough-resources-jer",
@@ -853,7 +1128,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/just-enough-resources-jer/version/A2G7NFcD",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "just-enough-resources-jer",
+      "archive_sha256": "2c35206d3dbe2d1b81bd80fcdb6b55e6a9230f67b00e5206ffbd9ed295877d4e",
+      "top_level_png_count": 7
     },
     {
       "id": "just-zoom",
@@ -862,7 +1140,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/iAiqcykM",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "just-zoom",
+      "archive_sha256": "636885577b2ec47b10abeb62d0f35d5b2267c88ed5c43ed7ea9b3955858cb314",
+      "top_level_png_count": 1
     },
     {
       "id": "keybind-bundles",
@@ -871,7 +1152,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/1172594",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "keybind-bundles",
+      "archive_sha256": "26a2e9f7208174d091c46f018d32cfc4b118c30adfa29b200c35ec64afb9db2b",
+      "top_level_png_count": 0
     },
     {
       "id": "keysets",
@@ -880,7 +1164,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://github.com/Meneleet-official/keyset/releases/tag/v1.3.0",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "keysets",
+      "archive_sha256": "25fbfbc5f03265eb31215adda90430146cbfb2ed8f00d7098fac10a13d94bceb",
+      "top_level_png_count": 2
     },
     {
       "id": "konkrete",
@@ -889,7 +1176,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/J81TRJWm",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "konkrete",
+      "archive_sha256": "791c5538751dd3015ef3a2ce92d98719e1a28a48ebbd817b78506771256654cd",
+      "top_level_png_count": 6
     },
     {
       "id": "kotlin-for-forge",
@@ -898,7 +1188,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/ordsPcFz",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "kotlin-for-forge",
+      "archive_sha256": "095aed94f21b4e55895b21ea957750ae3ab829fbcfc6d3c66a3489f5f1128d46",
+      "top_level_png_count": 0
     },
     {
       "id": "kubejs",
@@ -907,7 +1200,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/umyGl7zF",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "kubejs",
+      "archive_sha256": "07d8cb7ac1f7ef81f17ae00bfd84c92c18ac0398e83e64a27d91717969316bc0",
+      "top_level_png_count": 22
     },
     {
       "id": "lava-fishing",
@@ -916,7 +1212,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/lavafishing/files/7781402",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "leaves-be-gone",
@@ -925,7 +1222,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/leaves-be-gone/version/kAbmpvF3",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "leaves-be-gone",
+      "archive_sha256": "ea85ad07672f7c2199c28fe58a80c354ef2f2c60bfb0315e3730c344068526e0",
+      "top_level_png_count": 2
     },
     {
       "id": "lets-do-beachparty",
@@ -934,7 +1234,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/lets-do-beachparty/version/HN4rzKRl",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lets-do-beachparty",
+      "archive_sha256": "e8deaf37b0092f5be93fa57d8a4ce1d35c119c2267ea4a8c508198652541fb33",
+      "top_level_png_count": 187
     },
     {
       "id": "lets-do-furniture",
@@ -943,7 +1246,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/lets-do-furniture/version/FxbGZtS6",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lets-do-furniture",
+      "archive_sha256": "c1677c358626307bc7578d71febc3500e37437ac15a304abe794886f1d0151f7",
+      "top_level_png_count": 1382
     },
     {
       "id": "lionfish-api",
@@ -952,7 +1258,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/FoVacERa",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lionfish-api",
+      "archive_sha256": "aeebf0692650afbbc78259c0d4e3d5b7edf037707e8ae5d56045066d83a19cf6",
+      "top_level_png_count": 0
     },
     {
       "id": "liroth-revamped",
@@ -961,7 +1270,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "lithostitched",
@@ -970,7 +1280,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/XaDC71GB",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lithostitched",
+      "archive_sha256": "e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca",
+      "top_level_png_count": 1
     },
     {
       "id": "lodestone",
@@ -979,7 +1292,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/bN3xUWdo",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lodestonelib",
+      "archive_sha256": "cc961af6a77391628378c1c838e521415fa895062b13def493d27234ca527f3e",
+      "top_level_png_count": 10
     },
     {
       "id": "lootr",
@@ -988,7 +1304,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/EltpO5cN",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lootr",
+      "archive_sha256": "5c74de4709d1c13b25880fdd241a89d5d9f331346d20edc76f80ccd4d99dc66c",
+      "top_level_png_count": 56
     },
     {
       "id": "magical-satchel",
@@ -997,7 +1316,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "mahou-tsukai",
@@ -1006,7 +1326,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/7jOxn6qJ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "mahou-tsukai",
+      "archive_sha256": "4022fb3cee32b28df02994cc4c5b40069651583516f6abd04775789616739aad",
+      "top_level_png_count": 180
     },
     {
       "id": "malum",
@@ -1015,7 +1338,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/jgzwYsAN",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "malum",
+      "archive_sha256": "38f4fa53e8da9e3d67aa5f54f98fd7c83cb342f0463ce5c63a6864229c88efa8",
+      "top_level_png_count": 1145
     },
     {
       "id": "mezzconfig",
@@ -1024,7 +1350,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/7tEfOcA7",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "mezzconfig",
+      "archive_sha256": "c42510938584eda0aae134003e367d745fd32ceac1836221cecac4cbc7bfa3a1",
+      "top_level_png_count": 0
     },
     {
       "id": "modernfix",
@@ -1033,7 +1362,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/nmDcB62a",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "modernfix",
+      "archive_sha256": "7010aae2e837122fe8dabd5932358e2ba334fcbc62ca6530cb1cb00402d2c63b",
+      "top_level_png_count": 1
     },
     {
       "id": "modonomicon",
@@ -1042,7 +1374,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/692GClaE",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "modonomicon",
+      "archive_sha256": "23f02535d579602d3da3e15397c9edc55b9dcafb6b755c1665f31d70fa6bec1f",
+      "top_level_png_count": 32
     },
     {
       "id": "modopedia",
@@ -1051,7 +1386,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "modopedia",
+      "archive_sha256": "ad3acb63a59fc5d805bb62caebba4dd1076dcd9708ab086c0184eb82ecad0581",
+      "top_level_png_count": 51
     },
     {
       "id": "more-overlays-updated",
@@ -1060,7 +1398,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/391382",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "more-overlays-updated",
+      "archive_sha256": "1ab0d1a49e31bbe5cf0cdfe5ba29fd923eca5ac60cdb51164780aa3db317c4b1",
+      "top_level_png_count": 2
     },
     {
       "id": "mouse-tweaks",
@@ -1069,7 +1410,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/aC3cM3Vq",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "mouse-tweaks",
+      "archive_sha256": "68e6f4201c5de97b77929a7215c9552495696ca6a3bf3ae4eacc34e135f6cc8b",
+      "top_level_png_count": 1
     },
     {
       "id": "my-nethers-delight",
@@ -1078,7 +1422,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight/files/8854319",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "natures-compass",
@@ -1087,7 +1432,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/252848",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "natures-compass",
+      "archive_sha256": "0e249ac11b2f916c5570d9679e188da652fa5664ba9cdb7be5dc9ff69497539c",
+      "top_level_png_count": 32
     },
     {
       "id": "neovitae",
@@ -1096,7 +1444,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/rvaW4C93",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "neovitae",
+      "archive_sha256": "a3ad9be2f28abd1eeafe6cdc5a3961d04439f54ddcd2c57d25f0793e951c0dd9",
+      "top_level_png_count": 936
     },
     {
       "id": "nether-depths-upgrade",
@@ -1105,7 +1456,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/nether-depths-upgrade/files/8940364",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "observerlib",
@@ -1114,7 +1466,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/observerlib",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "observerlib",
+      "archive_sha256": "d2a2ae28d0f04845e1c803f200f89e47f4f5b4f1af917fe7750d0190820aefbf",
+      "top_level_png_count": 1
     },
     {
       "id": "occultism",
@@ -1123,7 +1478,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/sbJh4AZw",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "occultism",
+      "archive_sha256": "f5de9cfc06198dddde0357f5c1c82d32608fd095c2b318b1c5e6e9e5106a94f1",
+      "top_level_png_count": 447
     },
     {
       "id": "octolib",
@@ -1132,7 +1490,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/shatterbyte-lib",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "octolib",
+      "archive_sha256": "92ba07d9d9e55a65421f3c3f203c72fe5149cb024d5277267e81d812e11a7f38",
+      "top_level_png_count": 0
     },
     {
       "id": "oracle-index",
@@ -1141,43 +1502,58 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/1206582",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "oracle-index",
+      "archive_sha256": "d7e8c6fc7b16fd5f7df7058ebe80713d0eb622ba493fd83dad8952dec14f60bb",
+      "top_level_png_count": 13
     },
     {
       "id": "pams-harvestcraft-2-crops",
-      "name": "Pam's HarvestCraft 2 — Crops",
+      "name": "Pam's HarvestCraft 2 \u2014 Crops",
       "version": "pamhc2crops-NEOFORGE-1.21.1-1.0.9",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/361385",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "pams-harvestcraft-2-crops",
+      "archive_sha256": "ebdb8aaf2bda8d4a46fb655af57b546f285a1ff15411bba691c18420064b84b5",
+      "top_level_png_count": 514
     },
     {
       "id": "pams-harvestcraft-2-food-core",
-      "name": "Pam's HarvestCraft 2 — Food Core",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Core",
       "version": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/372534",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "pams-harvestcraft-2-food-core",
+      "archive_sha256": "acd5dd380eafc3f317b67231a2355c204cab254dfdf4ab1f25c084fdd3d317b9",
+      "top_level_png_count": 409
     },
     {
       "id": "pams-harvestcraft-2-food-extended",
-      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "name": "Pam's HarvestCraft 2 \u2014 Food Extended",
       "version": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/402231",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "pams-harvestcraft-2-food-extended",
+      "archive_sha256": "d61dda7d00ab69bfaef45854df01ab6cfd64243d7f9a5ae870c89dd954247a8c",
+      "top_level_png_count": 899
     },
     {
       "id": "pams-harvestcraft-2-trees",
-      "name": "Pam's HarvestCraft 2 — Trees",
+      "name": "Pam's HarvestCraft 2 \u2014 Trees",
       "version": "pamhc2trees-NEOFORGE-1.21.1-1.0.9",
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/365460",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "pams-harvestcraft-2-trees",
+      "archive_sha256": "64c34129468b0d75738cf0faf667a52067d2db1e72ee8564c0a8f850bbf154c7",
+      "top_level_png_count": 257
     },
     {
       "id": "pastel",
@@ -1186,7 +1562,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/1264556",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "pastel",
+      "archive_sha256": "33122d9a6bdeeb025d1a2a1210d035104da23c213750d13b3d10af55716a443a",
+      "top_level_png_count": 2283
     },
     {
       "id": "patchouli",
@@ -1195,7 +1574,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/nU0bVIaL",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "patchouli",
+      "archive_sha256": "959af52ed6640c316c3a8469203420be4aeea11ad6603890ba83bf48f5d9f993",
+      "top_level_png_count": 19
     },
     {
       "id": "paucal",
@@ -1204,7 +1586,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/597824",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "paucal",
+      "archive_sha256": "0989af16436cecdaceeb031d48f29db00da556bf4178edac4538153cb82be385",
+      "top_level_png_count": 1
     },
     {
       "id": "placebo",
@@ -1213,7 +1598,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/tCkE8p2N",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "placebo",
+      "archive_sha256": "d8952c019d6e54befe37155bc9876985ec57bf73dd33872115c7a65ac6bceba0",
+      "top_level_png_count": 17
     },
     {
       "id": "playeranimator",
@@ -1222,7 +1610,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/gedNE4y2",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "playeranimator",
+      "archive_sha256": "dbe5de45f5cd60c0e5e47af14e6d564534a98456e973cf670cb881f6938eee92",
+      "top_level_png_count": 0
     },
     {
       "id": "polymorph",
@@ -1231,7 +1622,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/tagwiZkJ",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "polymorph",
+      "archive_sha256": "4a09b7a3c8ea4f5b79acadb405a18140fe20d882e6930403c46cc7ad49c5ec06",
+      "top_level_png_count": 7
     },
     {
       "id": "prickle",
@@ -1240,7 +1634,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/prickle",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "prickle",
+      "archive_sha256": "ccf46c442ed3c7fe41ad056f0940560829ec4dd88360985dfacd78f4614eb167",
+      "top_level_png_count": 1
     },
     {
       "id": "primal-magick",
@@ -1249,7 +1646,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/545271",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "primal-magick",
+      "archive_sha256": "f78cab2206b5c05c1d9615cf42bd2d728971156343658c2354bd496b7544f98f",
+      "top_level_png_count": 1188
     },
     {
       "id": "project-expansion",
@@ -1258,7 +1658,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/a7yNQPzW",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "project-expansion",
+      "archive_sha256": "96ef339eed405a4b1257420a6ff19279534de911f966b51fb6f1231fb0ff32f5",
+      "top_level_png_count": 179
     },
     {
       "id": "projecte",
@@ -1267,7 +1670,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/projecte",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "projecte",
+      "archive_sha256": "fec9389d8b70fcf87331a0bcc41b78ada79c1e6326ef02a7bb6db9a1d5a4c48b",
+      "top_level_png_count": 174
     },
     {
       "id": "psi",
@@ -1276,7 +1682,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/241665",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "psi",
+      "archive_sha256": "25b2e19bb9433bf5e462dfd9906dcd7b07b6dcb208e243ca936a007dc6e14033",
+      "top_level_png_count": 321
     },
     {
       "id": "psi-tweaks",
@@ -1285,7 +1694,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/pwmvTzDk",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "psitweaks",
+      "archive_sha256": "77286172e4a415cc73a2b1152a098ecd4d2daf4f1e0341966fc2b974afa739af",
+      "top_level_png_count": 494
     },
     {
       "id": "puffish-attributes",
@@ -1294,7 +1706,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/991341",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "puffish-attributes",
+      "archive_sha256": "b21c165e033360e112eb2c3426437e1ba4ebf70f971535b72b1b1891d04c87f0",
+      "top_level_png_count": 0
     },
     {
       "id": "puzzles-lib",
@@ -1303,7 +1718,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/puzzles-lib/version/lh44g7RC",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "puzzles-lib",
+      "archive_sha256": "179bcaafb812618834ba82e7f29b15eaee8894f74fb96152a51cfc22ad4f45c4",
+      "top_level_png_count": 1
     },
     {
       "id": "quest-giver",
@@ -1312,7 +1730,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "quest-giver",
+      "archive_sha256": "a17a86d0449176578d0a99cdc59b2c05dd87b669b86e1116de969b08861aceec",
+      "top_level_png_count": 6
     },
     {
       "id": "quest-shop",
@@ -1321,7 +1742,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "quest-shop",
+      "archive_sha256": "e9c43eba6a3d34fe42323ea40e9675ba64ed35634363d1f7e6ee6a49d7a9dd7f",
+      "top_level_png_count": 1
     },
     {
       "id": "rechiseled",
@@ -1330,7 +1754,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/rechiseled/version/S5FnErRw",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "rechiseled",
+      "archive_sha256": "7bf14cf8a4bfdc4b6c990126a75da29fd2bb7559d1c05b71e29c8fd5ae044435",
+      "top_level_png_count": 683
     },
     {
       "id": "relics",
@@ -1339,7 +1766,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/relics-mod/version/0.12.5",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "relics",
+      "archive_sha256": "5a691438de36a23ef6e2f613f617de7996263ca0e6e951f10a09f492119f8427",
+      "top_level_png_count": 408
     },
     {
       "id": "reliquary-reincarnations",
@@ -1348,7 +1778,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/fQO83PId",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "reliquary-reincarnations",
+      "archive_sha256": "84fa046762259023129f78c5c202f6fed1cbb0eeb61fbdfccca83d0fab93ce3e",
+      "top_level_png_count": 164
     },
     {
       "id": "reliquified-artifacts",
@@ -1357,7 +1790,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/reliquified-artifacts",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "reliquified-artifacts",
+      "archive_sha256": "b074e7bbb010b1030f4def909548ccca1b43bec82584e2cc03e29e6baa6040d6",
+      "top_level_png_count": 55
     },
     {
       "id": "replication",
@@ -1366,7 +1802,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/replication",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "replication",
+      "archive_sha256": "aae49074d525099447f59cd3677c2cd3e2144a4bd0591181f33ce676c52bd14e",
+      "top_level_png_count": 38
     },
     {
       "id": "rhino",
@@ -1375,7 +1814,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/sk9knFPE",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "rhino",
+      "archive_sha256": "e0e9b0e78edd380440266c0f4ea8d489dac851ef075a4566a66a6dae2f7bbb66",
+      "top_level_png_count": 1
     },
     {
       "id": "roguelike-dungeons",
@@ -1384,7 +1826,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "roots-classic",
@@ -1393,7 +1836,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/roots-classic",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "roots-classic",
+      "archive_sha256": "29d8a909126a93947197ab4b7b8c0bfa779b0f0eeeb0068423254ffb9631c7dc",
+      "top_level_png_count": 89
     },
     {
       "id": "scriptor-magicae",
@@ -1402,7 +1848,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/817436",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "scriptor-magicae",
+      "archive_sha256": "d71e9fa69c012c126390a3cd89287185a4ae9eb03c6916bc16cb8d05e0f1b31d",
+      "top_level_png_count": 114
     },
     {
       "id": "searchables",
@@ -1411,7 +1860,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/fuuu3xnx",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "searchables",
+      "archive_sha256": "ca193f0c69033d8f709f9e073a7c1ef4ea46714e5c2f94eb23ace12781c6aa68",
+      "top_level_png_count": 1
     },
     {
       "id": "simple-backups",
@@ -1420,7 +1872,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/583228",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "simple-backups",
+      "archive_sha256": "0c322781b3c559f7d2c62ac87eb9d7ce459f3f3b5ab771a8794d009b42c729ec",
+      "top_level_png_count": 0
     },
     {
       "id": "smartbrainlib",
@@ -1429,7 +1884,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/PuyPazRT",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "smartbrainlib",
+      "archive_sha256": "68036561cc5511766d54cc0deabc3fc3a5e68f9e3db2478f2574ec82b494374b",
+      "top_level_png_count": 1
     },
     {
       "id": "spark",
@@ -1438,7 +1896,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/361579",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "spark",
+      "archive_sha256": "647e8a81afbe414dba1df4ba15fd06c5d32d4cb544e68828405e8e074c2e16db",
+      "top_level_png_count": 0
     },
     {
       "id": "starlight-structures",
@@ -1447,7 +1908,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "stateobserver",
@@ -1456,7 +1918,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "stateobserver",
+      "archive_sha256": "b0a508b18b4b385617953b48ee52f9f786c77032a53a54f80c626458670a3bf7",
+      "top_level_png_count": 0
     },
     {
       "id": "summoning-rituals",
@@ -1465,7 +1930,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/671040",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "summoningrituals",
+      "archive_sha256": "74a64137938c719cdfc8338510a824ad2f0ac2834e6c1498b7608e78e0f4a210",
+      "top_level_png_count": 3
     },
     {
       "id": "supermartijn642-config-lib",
@@ -1474,7 +1942,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/supermartijn642s-config-lib/version/qKL9jM75",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "supermartijn642s-config-lib",
+      "archive_sha256": "d2ba7b839a2268e4e223457e813d11aa2476c3bf708a7bba691d8fc851778a4b",
+      "top_level_png_count": 1
     },
     {
       "id": "supermartijn642-core-lib",
@@ -1483,7 +1954,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/supermartijn642s-core-lib/version/MQOzQxLt",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "supermartijn642s-core-lib",
+      "archive_sha256": "ad599fcd409f087e3e95a8263ff830b80ece841fc9854a9deb6c9b7738a292fc",
+      "top_level_png_count": 6
     },
     {
       "id": "tectonic",
@@ -1492,7 +1966,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/lWDHr9jE",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "tectonic",
+      "archive_sha256": "cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1",
+      "top_level_png_count": 2
     },
     {
       "id": "the-aurorian-unofficial-port",
@@ -1501,7 +1978,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/the-aurorian-unofficial-port/version/8yOGgcWP",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "the-aurorian-unofficial-port",
+      "archive_sha256": "00a3d87f271bd9c5a89684d3245e09dc88b4d768b160e245eb1830a9036e9f41",
+      "top_level_png_count": 310
     },
     {
       "id": "the-bumblezone",
@@ -1510,7 +1990,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/the-bumblezone/version/LwGXnQCW",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "the-bumblezone",
+      "archive_sha256": "859d87b44d3d17c63f38317ac34d124e30b6de8c3043fa61ee987ff8b1f236d6",
+      "top_level_png_count": 884
     },
     {
       "id": "theurgy",
@@ -1519,7 +2002,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/uOVMgoil",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "theurgy",
+      "archive_sha256": "95e06ebc14e2cdab7fa4eaae02ac8352f1f249a49c38c15c3f20a763334a8b5a",
+      "top_level_png_count": 205
     },
     {
       "id": "titanium",
@@ -1528,7 +2014,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/titanium",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "titanium",
+      "archive_sha256": "404beac4211b11172cabb2bb0ff5cad28c10d1d6f4ebff79aeb2888a981c3a41",
+      "top_level_png_count": 67
     },
     {
       "id": "totemic",
@@ -1537,7 +2026,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/GLffYJtD",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "fenns_totemic",
+      "archive_sha256": "f200a607f22eb70101af052043b60a0580f756549a153b0ac9e41c0216051c5f",
+      "top_level_png_count": 55
     },
     {
       "id": "trashslot",
@@ -1546,7 +2038,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/trashslot/version/HY8Ybozd",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "trashslot",
+      "archive_sha256": "61fdb5de0fc3d36db0e5dd82c2e03341e449bbc47ce13eeab834b05596b7bb5b",
+      "top_level_png_count": 3
     },
     {
       "id": "treechop",
@@ -1555,7 +2050,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/treechop/version/iLXWmfax",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "treechop",
+      "archive_sha256": "2a5ec9cca187b4a031e9dd7e5eec8d0872f7d2bc355d88bda633021fa7eb71b0",
+      "top_level_png_count": 2
     },
     {
       "id": "twilight-forest",
@@ -1564,7 +2062,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest/files/7797302",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "twilight-forest",
+      "archive_sha256": "493da16d10210f9f53a3c33b3d8fcb4ae9b14016ee420d753c894562bd9aba35",
+      "top_level_png_count": 1153
     },
     {
       "id": "tyzs-skills",
@@ -1573,7 +2074,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/tyzs-skills/version/6.4.2",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "tyzs-skills",
+      "archive_sha256": "5fd0bd61d9a1140c7c9e4c9937e759ba3f74ab513d48246c90c04e7544a0e83b",
+      "top_level_png_count": 59
     },
     {
       "id": "unfocused",
@@ -1582,7 +2086,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "unfocused",
+      "archive_sha256": "e1209b2c52cc00f5e6e8786cedfa75f063a18e93a761372f032eb4856bc30363",
+      "top_level_png_count": 7
     },
     {
       "id": "valhelsia-core",
@@ -1591,7 +2098,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": null,
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "valhelsia-core",
+      "archive_sha256": "e7f3a862e58d1003b557b1d619605524e1e88fc5c47d0b7ce3549a3cead06d7c",
+      "top_level_png_count": 0
     },
     {
       "id": "voidscape",
@@ -1600,7 +2110,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape/files/8175491",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "voidscape",
+      "archive_sha256": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
+      "top_level_png_count": 287
     },
     {
       "id": "witchery-remake",
@@ -1609,7 +2122,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/LCO8KZvC",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "just-another-witchery-remake",
+      "archive_sha256": "81557ceb1b878d2aa8df5fcbcc468b82479d1e38d38097873a6ffb225324e256",
+      "top_level_png_count": 721
     },
     {
       "id": "betterend-new-dawn",
@@ -1618,7 +2134,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://mediafilez.forgecdn.net/files/9306/604/BetterEnd-21.0.39.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "betterend-new-dawn",
+      "archive_sha256": "92ff67030ef18d63f97d67ad07ce1f2d3d7c98adc66bcc901ba4521edffd06bf",
+      "top_level_png_count": 1958
     },
     {
       "id": "bclib-new-dawn",
@@ -1627,7 +2146,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/7bdKEtKC/versions/QkXw8Fsl/bclib-21.0.26.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "bclib-new-dawn",
+      "archive_sha256": "73ba7957d61588189eb35415f2ce9b063e7d4a102c6a4757582ba8fad310f2e0",
+      "top_level_png_count": 14
     },
     {
       "id": "wunderlib-new-dawn",
@@ -1636,7 +2158,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/HZmhgdJk/versions/5db3GZzg/wunderlib-21.0.10.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "wunderlib-new-dawn",
+      "archive_sha256": "b49c7a040f87ade1e3f73bd7335e8d68ff7a328919c192a6d2c022bae6786a2f",
+      "top_level_png_count": 1
     },
     {
       "id": "worldweaver-new-dawn",
@@ -1645,7 +2170,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/R8uGDQpB/versions/TrReu8cF/worldweaver-21.0.25.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "worldweaver-new-dawn",
+      "archive_sha256": "6750a60983b22711cf14587d1e7a25c6327c9bec24952b4cbf5a26f40336ee1b",
+      "top_level_png_count": 11
     },
     {
       "id": "lootjs",
@@ -1654,7 +2182,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/fJFETWDN/versions/5AZDyUSn/lootjs-neoforge-1.21.1-3.7.0.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "lootjs",
+      "archive_sha256": "d168fd80f45e5f23dced8a54fdee87347a4c7fc6ccd9c76d30ae4d067ba9c60a",
+      "top_level_png_count": 0
     },
     {
       "id": "clumps",
@@ -1663,7 +2194,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/Wnxd13zP/versions/jo7lDoK4/Clumps-neoforge-1.21.1-19.0.0.1.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "clumps",
+      "archive_sha256": "b524ccdace2ef8fd19f5b2074f7de1103ac5065c52553f064c00e098346c293e",
+      "top_level_png_count": 1
     },
     {
       "id": "yungs-better-strongholds",
@@ -1672,7 +2206,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-strongholds",
+      "archive_sha256": "a9cab2fc01538368862365691f7d215309801aed0b390351681b6b60a1db7b58",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-nether-fortresses",
@@ -1681,7 +2218,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-nether-fortresses",
+      "archive_sha256": "5450a64a7036237f449496837e08f3e5b3aa1d7974a10df43944172def75d8ff",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-api",
@@ -1690,7 +2230,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/Ua7DFN59/versions/2prKITKh/YungsApi-1.21.1-NeoForge-5.1.9.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-api",
+      "archive_sha256": "375e0b2f988ab4f5bde182166c0f0b102377adc8f823660c24ade08b0b3cde56",
+      "top_level_png_count": 4
     },
     {
       "id": "extreme-sound-muffler",
@@ -1699,7 +2242,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/5IIKsxiL/versions/nUCCmquN/ExtremeSoundMuffler-3.57_NeoForge-1.21.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "extreme-sound-muffler",
+      "archive_sha256": "25c8af2a13061d6cd77cbaebe15e0c4f880151c2876eadbf4768db8fbaa89613",
+      "top_level_png_count": 3
     },
     {
       "id": "get-it-together-drops",
@@ -1708,7 +2254,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/T0OUgf8P/versions/K4TUzlwa/getittogetherdrops-neoforge-1.21.5-1.4.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "get-it-together-drops",
+      "archive_sha256": "a09466d03e3dde0c0f5c179146a8247b33a720a88979eb813c5f2aa2ad1c7a78",
+      "top_level_png_count": 0
     },
     {
       "id": "yungs-better-mineshafts",
@@ -1717,7 +2266,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/HjmxVlSr/versions/Go3nbneL/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-mineshafts",
+      "archive_sha256": "5625930dfb3240820d6e4ecf55fff0c39f70ce782fad117a4d418251184c7be0",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-dungeons",
@@ -1726,7 +2278,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/o1C1Dkj5/versions/ZWDbFefV/YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-dungeons",
+      "archive_sha256": "37abb1f1d6f7014e02b83751fc210579611efdde91a7be54166da9576e4690b5",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-desert-temples",
@@ -1735,7 +2290,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-desert-temples",
+      "archive_sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-jungle-temples",
@@ -1744,7 +2302,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/z9Ve58Ih/versions/rimnNoke/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-jungle-temples",
+      "archive_sha256": "9cb2054c84eaded33a0bc2f3426d341cc9a594cc61341227dbad67254812d031",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-ocean-monuments",
@@ -1753,7 +2314,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/3dT9sgt4/versions/NWit9vEK/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.1.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-ocean-monuments",
+      "archive_sha256": "a713d1bcf4314562a417586b02f5fa4dd54254836552769ac99cb74e03e1bb9b",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-better-witch-huts",
@@ -1762,7 +2326,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/t5FRdP87/versions/AvedwcIe/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-better-witch-huts",
+      "archive_sha256": "888b1e6d1ada21982a75abfb4afb040c9bc2cc68777ec5fcd1199b978e3d4f8d",
+      "top_level_png_count": 4
     },
     {
       "id": "yungs-bridges",
@@ -1771,7 +2338,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/Ht4BfYp6/versions/yA2nuSdw/YungsBridges-1.21.1-NeoForge-5.1.0.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-bridges",
+      "archive_sha256": "dd10b00be5d2e5bac680ed37fb0b1393e285e5403211999653f449e010af683b",
+      "top_level_png_count": 3
     },
     {
       "id": "yungs-extras",
@@ -1780,7 +2350,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://cdn.modrinth.com/data/ZYgyPyfq/versions/uE6pFqck/YungsExtras-1.21.1-NeoForge-5.1.0.jar",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yungs-extras",
+      "archive_sha256": "9380c8b482a8f65daed86ed33512ab068199a9de393c24a2530e2d7f7ac3e985",
+      "top_level_png_count": 3
     },
     {
       "id": "yungs-better-end-island",
@@ -1789,7 +2362,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/yungs-better-end-island/version/I52NZ1qK",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "smart-keep-inventory",
@@ -1798,7 +2372,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/smart-keep-inventory/version/1.21.1-1.0.1-neoforge",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "smart-keep-inventory",
+      "archive_sha256": "1a5602b7dd2efa019ce77ce3f4b73d9378a4d7d365f206b85b3d863346be0140",
+      "top_level_png_count": 1
     },
     {
       "id": "prefab",
@@ -1807,7 +2384,8 @@
       "enabled_in_pack": false,
       "desired": true,
       "source": "https://modrinth.com/mod/prefab/version/1.0.9",
-      "inventory_status": "pending"
+      "inventory_status": "planned-unpinned-no-exact-archive",
+      "archive_id": null
     },
     {
       "id": "creeper-overhaul",
@@ -1816,7 +2394,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/creeper-overhaul/version/HNrAYCLH",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "creeper-overhaul",
+      "archive_sha256": "ed83bea2826667fca80a6a8067f89fe7b97eb8b3213bbcb7f0f4e6a6898c0bc9",
+      "top_level_png_count": 51
     },
     {
       "id": "enderman-overhaul",
@@ -1825,7 +2406,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/enderman-overhaul/version/TH9YXp9r",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "enderman-overhaul",
+      "archive_sha256": "fe6c04dcfdbb8815058ebf1102d64cb4c86060a0a1b7350121e4a976d4a92248",
+      "top_level_png_count": 87
     },
     {
       "id": "golem-overhaul",
@@ -1834,7 +2418,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/golem-overhaul/version/V1OtffxB",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "golem-overhaul",
+      "archive_sha256": "d46939101db2bb82a602ad20b9c8e7228da5fbcf24185169ed16e5da19b3cdc9",
+      "top_level_png_count": 46
     },
     {
       "id": "winter-overhaul",
@@ -1843,7 +2430,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/winter-overhaul/version/jMBjksDu",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "winter-overhaul",
+      "archive_sha256": "43b7d0c8d1a126cf06eb431a8ac3859d6997b3a6989391466263f8b4ede1eb25",
+      "top_level_png_count": 64
     },
     {
       "id": "ghost",
@@ -1852,7 +2442,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/ghost/version/jlhsMccP",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ghost",
+      "archive_sha256": "fc0641e10187b3cfadb93e969d1d61ea5c5c93401af22bd1682ab20f62bd08d0",
+      "top_level_png_count": 58
     },
     {
       "id": "ribbits",
@@ -1861,7 +2454,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/ribbits/version/XrUKaWrw",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "ribbits",
+      "archive_sha256": "794223f5a91b8b80a962754b5180ec3e2472db6941e9b6c1cdd49324df628389",
+      "top_level_png_count": 39
     },
     {
       "id": "critters-and-companions",
@@ -1870,7 +2466,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/critters-and-companions/version/MMFSVRkt",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "critters-and-companions",
+      "archive_sha256": "55f526f7dc162918fb871557c3260582d55c6adf2b9b44892b918bed7f4fb431",
+      "top_level_png_count": 149
     },
     {
       "id": "more-darkness",
@@ -1879,7 +2478,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/more-darkness/version/6jywYHaX",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "more-darkness",
+      "archive_sha256": "b5f2dfd5a684b888a68763dc770a053853486571b4674cbfcb1a368e1017b3ab",
+      "top_level_png_count": 0
     },
     {
       "id": "resourceful-lib",
@@ -1888,7 +2490,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/resourceful-lib/version/x99nCLTm",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "resourceful-lib",
+      "archive_sha256": "5e36f2c69de008dc5795f730c84ab767688f15c810944b585485349a0c911261",
+      "top_level_png_count": 0
     },
     {
       "id": "resourceful-config",
@@ -1897,7 +2502,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/resourceful-config/version/lSbyRD6v",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "resourceful-config",
+      "archive_sha256": "25b4f3502d25c535004acd4a9420272fff01d2f1e2df352239fec93fdab005d4",
+      "top_level_png_count": 26
     },
     {
       "id": "yacl",
@@ -1906,7 +2514,10 @@
       "enabled_in_pack": true,
       "desired": true,
       "source": "https://modrinth.com/mod/yacl/version/7TVdVtxF",
-      "inventory_status": "pending"
+      "inventory_status": "archive-scanned-runtime-review-pending",
+      "archive_id": "yacl",
+      "archive_sha256": "b5c30321b46cfaa521645a04aff89d2804d8167a25bb23ad4b1ae8da73093a2f",
+      "top_level_png_count": 4
     }
   ]
 }

@@ -6,9 +6,12 @@ import tempfile
 import unittest
 import zipfile
 import zlib
+import io
 from pathlib import Path
 
-from inventory import inventory, dimensions
+from inventory import inventory, dimensions, audit_archives
+from catalog_registry import write_catalog, load_registry, verify_catalog
+from acquire_sources import acquire
 from validate import validate, png_structure
 
 KEY = "assets/example/textures/item/gem.png"
@@ -73,6 +76,44 @@ class ArtToolsTests(unittest.TestCase):
         self.assertEqual(errors,[])
         self.assertEqual(counts["production_png"],0)
         self.assertTrue(warnings)
+
+    def test_nested_overlay_and_metadata(self):
+        nested=io.BytesIO()
+        with zipfile.ZipFile(nested,'w') as z:
+            z.writestr(KEY,png(32,32,(2,3,4,255)))
+            z.writestr(KEY+'.mcmeta',json.dumps({'animation':{'frametime':3}}))
+        with zipfile.ZipFile(self.src,'a') as z:
+            z.writestr('META-INF/jarjar/dependency.jar',nested.getvalue())
+            z.writestr('overlay/'+KEY,png(16,16,(4,5,6,255)))
+            z.writestr('assets/example/books/illustration.png',png(10,20,(4,5,6,255)))
+        result=audit_archives([f'source={self.src}'],{'source'})
+        self.assertEqual(len(result['sources']),2)
+        self.assertTrue(all(s['provider_hash_verified'] for s in result['sources']))
+        self.assertEqual(len(result['assets'][0]['sources']),2)
+        self.assertEqual(len(result['overlays']),1)
+        self.assertEqual(len(result['special_resources']),1)
+        self.assertTrue(any('animation' in c.get('contract',{}) for c in result['contracts']))
+
+    def test_catalog_round_trip_and_tamper(self):
+        scan=audit_archives([f'source={self.src}'])
+        scan.update(integration_sha='a'*40,first_party_projection={})
+        registry=self.root/'registry'
+        index=write_catalog(scan,registry)
+        path=registry/'inventory.json'
+        verify_catalog(path)
+        loaded=load_registry(path)
+        self.assertEqual(loaded['assets'][0]['sources'],scan['assets'][0]['sources'])
+        self.assertEqual(loaded['assets'][0]['status'],'pending')
+        shard=registry/index['catalog']['assets'][0]['path']
+        shard.write_bytes(shard.read_bytes()+b'tampered')
+        with self.assertRaisesRegex(ValueError,'hash mismatch'):verify_catalog(path)
+
+    def test_unreviewed_download_origin_is_blocked(self):
+        pin={'id':'fixture','filename':'fixture.jar','provider_hash_algorithm':'sha256',
+             'provider_hash':'0'*64,'urls':['https://unreviewed.invalid/artifact.jar']}
+        result=acquire(pin,self.root)
+        self.assertEqual(result['status'],'blocked')
+        self.assertIn('Unreviewed source host',result['errors'][0])
 
 if __name__ == "__main__":
     unittest.main()

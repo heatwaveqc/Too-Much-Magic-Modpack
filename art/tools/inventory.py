@@ -6,6 +6,7 @@ import json
 import re
 import struct
 import zipfile
+import io
 from pathlib import Path
 
 ASSET = re.compile(r"^assets/[a-z0-9_.-]+/textures/[a-z0-9_./-]+\.png$")
@@ -80,6 +81,98 @@ def inventory(specs):
     return {"schema_version": 1, "complete": False, "sources": sources,
             "assets": [records[k] for k in sorted(records)],
             "unresolved": sorted(set(issues + ["Verify provider locks, roster closure, overlays, generated assets and renderer contracts."]))}
+
+
+def audit_archives(specs, verified_ids=()):
+    """Recursive archive closure plus overlays and renderer evidence, without extraction.
+
+    Runtime-generated resources still require a client audit. Nested archives retain
+    their own hashes and parent identity; overlay keys never masquerade as base keys.
+    """
+    result={'schema_version':2,'complete':False,'sources':[],'assets':[],
+            'overlays':[],'special_resources':[],'contracts':[],'unresolved':[]}
+    records={}
+    def scan(data, source_id, parent=None, depth=0):
+        digest=sha(data)
+        with zipfile.ZipFile(io.BytesIO(data)) as z:
+            names=z.namelist()
+            source={'id':source_id,'filename':source_id.split('!')[-1],
+                    'sha256':digest,'provider_hash_verified':source_id.split('!')[0] in verified_ids,
+                    'parent':parent,'scan':'recursive PNG + special resources + JSON contracts',
+                    'png_count':0,'nested_archives':[]}
+            result['sources'].append(source)
+            if len(names)!=len(set(names)):
+                result['unresolved'].append(source_id+': duplicate ZIP members')
+            for name in sorted(set(names)):
+                if name.endswith('/'):
+                    continue
+                if '..' in name.split('/') or name.startswith('/'):
+                    result['unresolved'].append(source_id+': unsafe member '+name)
+                    continue
+                if name.endswith('.jar'):
+                    source['nested_archives'].append(name)
+                    if depth>=8 or z.getinfo(name).file_size>256*1024*1024:
+                        result['unresolved'].append(source_id+': nested archive limit '+name)
+                    else:
+                        scan(z.read(name),source_id+'!'+name,source_id,depth+1)
+                    continue
+                if name.endswith('.png'):
+                    raw=z.read(name)
+                    try: dims=dimensions(raw)
+                    except ValueError as exc:
+                        result['unresolved'].append(source_id+': '+name+': '+str(exc)); continue
+                    source['png_count']+=1
+                    evidence={'source_id':source_id,'archive_sha256':digest,
+                              'asset_sha256':sha(raw),'dimensions':dims,
+                              'metadata_sha256':sha(z.read(name+'.mcmeta')) if name+'.mcmeta' in names else None}
+                    if ASSET.fullmatch(name):
+                        category=name.split('/')[3]
+                        row=records.setdefault(name,{'key':name,'sources':[],'category':category,
+                            'target_dimensions':None,'status':'pending','style_version':None,
+                            'batch':None,'output_sha256':None,'provenance':None,'review':None,
+                            'game_test':None,'exception':None})
+                        row['sources'].append(evidence)
+                    elif '/assets/' in name and '/textures/' in name:
+                        result['overlays'].append({'path':name,**evidence,'status':'pending-overlay-contract'})
+                    else:
+                        result['special_resources'].append({'path':name,**evidence,'status':'pending-applicability'})
+                elif name.endswith(('.json','.mcmeta')) and (name.startswith('assets/') or '/assets/' in name or name=='pack.mcmeta'):
+                    # Models, atlases, animation and GUI nine-slice metadata are technical
+                    # contracts, not copied artwork. Record only necessary JSON evidence.
+                    if not any(t in name for t in ['/models/','/atlases/','.png.mcmeta','pack.mcmeta','/particles/','/font/']):
+                        continue
+                    raw=z.read(name)
+                    try: obj=json.loads(raw)
+                    except (ValueError,UnicodeDecodeError):
+                        result['unresolved'].append(source_id+': invalid JSON '+name); continue
+                    contract={'source_id':source_id,'path':name,'sha256':sha(raw)}
+                    if name.endswith('.mcmeta') or '/atlases/' in name:
+                        contract['contract']=obj
+                    elif '/models/' in name and isinstance(obj,dict):
+                        contract['parent']=obj.get('parent')
+                        contract['textures']=obj.get('textures',{})
+                        contract['has_explicit_uv']=any('uv' in face for el in obj.get('elements',[]) for face in el.get('faces',{}).values())
+                        contract['element_count']=len(obj.get('elements',[]))
+                    elif '/particles/' in name:
+                        contract['textures']=obj.get('textures',[]) if isinstance(obj,dict) else []
+                    result['contracts'].append(contract)
+                elif '/textures/' in name and not name.endswith('.mcmeta'):
+                    result['special_resources'].append({'source_id':source_id,'path':name,
+                        'sha256':sha(z.read(name)),'status':'non-PNG-applicability-review'})
+    for spec in sorted(specs):
+        source_id,sep,filename=spec.partition('=')
+        if not sep or not source_id or any(s['id']==source_id for s in result['sources']):
+            raise ValueError('each --source must have unique id=path')
+        try: scan(Path(filename).read_bytes(),source_id)
+        except (OSError,ValueError,zipfile.BadZipFile) as exc:
+            result['unresolved'].append(source_id+': '+str(exc))
+    for key,row in sorted(records.items()):
+        if len(row['sources'])>1:
+            result['unresolved'].append(key+': source precedence unresolved')
+        result['assets'].append(row)
+    result['unresolved']+=['Runtime-generated resources and hardcoded renderers require separate client/source audit.',
+        'Overlay activation, special-resource applicability and duplicate precedence require review.']
+    return result
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)

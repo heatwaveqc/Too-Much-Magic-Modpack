@@ -7,6 +7,7 @@ import struct
 import zlib
 from pathlib import Path
 from inventory import ASSET, dimensions
+from catalog_registry import load_registry, verify_catalog
 
 APPROVED = {"approved", "validated", "game-tested"}
 EXCEPTIONS = {"unchanged-approved", "excluded-approved"}
@@ -85,7 +86,8 @@ def main():
     p.add_argument("--inventory", required=True, type=Path)
     p.add_argument("--pack", required=True, type=Path)
     args = p.parse_args()
-    errors, warnings, counts = validate(json.loads(args.inventory.read_text(encoding="utf-8")), args.pack)
+    verify_catalog(args.inventory)
+    errors, warnings, counts = validate(load_registry(args.inventory), args.pack)
     for e in errors: print("ERROR:", e)
     for w in warnings: print("WARN:", w)
     print(json.dumps(counts, sort_keys=True))
