@@ -19,7 +19,8 @@ The older source-survey sections below are historical context where they differ 
 | Loot worker | [Drygmy exact acquisition/Henge/channel/loot/XP and Source timing](ars-nouveau-pinned-drygmy.md); effective protected/boss eligibility separate. |
 | Familiars | [Six registered roles, Binding/script/player unlock/summon and ability methods](ars-nouveau-pinned-familiars.md); Jabberwog classes not core-registered. |
 | Processing/enchanting | [Imbuement passive/accelerated operation, Apparatus geometry/consumption/failure order,96 sequential enchantment ranks and all192 audited recipe resources](ars-nouveau-pinned-crafting.md). |
-| Remaining native core | Personal casting/tier/mana/validation transaction, equipment/Reactive activation, Amethyst Golem worker/advanced devices and full stage consolidation still need targeted binary reconciliation. |
+| Casting/tier route | [Novice/Apprentice/Archmage recipes, ten stored slots vs ten composition links, validation layers, mana/reserve formulas and debit order](ars-nouveau-pinned-casting.md). |
+| Remaining native core | Equipment/Reactive activation, Amethyst Golem worker/advanced devices and full stage consolidation still need targeted binary reconciliation. |
 | Addons/pilot/interactions | Seven independent profiles; source/version gaps and quest pilot authoring/runtime crosswalk still open. No addon/client acceptance or full-parent completion inferred from core companions. |
 
 
@@ -32,7 +33,7 @@ The older source-survey sections below are historical context where they differ 
 | Guide/documentation version gap | Native Java documentation registration and exact recipes are now directly inspected in pinned5.13.5 JAR; older source/5.11 guide citations are historical and superseded where companions differ. Upstream tree-to-binary build identity is not asserted. |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
 | Profile status | **researching** — exact native guide/glyph/ritual/Source/primary-worker/familiar companions complete; casting/processing/equipment/devices, seven-addon and full pilot/stage consolidation remain open; gameplay acceptance separate |
-| Evidence reached | Exact pack pin/hash and ten direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
+| Evidence reached | Exact pack pin/hash and eleven direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). The authored 49-quest pilot is on separate PR #74; not integrated or client-accepted. |
 
@@ -42,7 +43,7 @@ The older source-survey sections below are historical context where they differ 
 
 **Why it matters in TMM:** Its distinctive contribution is player-authored spell composition plus Source-powered magical processing and creature automation. That complements Iron's authored spellbook/school progression, Occultism's spirit labor and storage, and Neo Vitae's altar economy. These are possible comparison points, not evidence of a working integration. Ars has **seven** separately pinned addon records; addon-specific mechanics are not established by this base profile. The [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) covers all seven addons on a separate feature branch; it inspected exact pinned JARs, but is not evidence that those quests have been integrated or client-accepted.
 
-**Quick start:** In JEI, craft the Worn Notebook from a book plus any item in `c:gems/lapis`, then use its *Getting Started* entries as the route map. The Novice Spell Book recipe takes a book and one each of an iron shovel, pickaxe, axe, and sword. Select it on the hotbar and press **C** to open spellcrafting. Use JEI to craft a Source Jar and a Sourcelink; an Agronomic link is the natural-growth option and bone meal alone does not trigger crop-growth Source. These recipes are from version-aligned generated data; the actual pack's JEI and recipe overrides still need client confirmation.
+**Quick start:** In JEI, craft the Worn Notebook from a book plus any item in `c:gems/lapis`, then use its *Getting Started* entries as the route map. The Novice Spell Book recipe takes a book and one each of an iron shovel, pickaxe, axe, and sword. Select it on the hotbar and use the configured **Open Spell Book** control to open spellcrafting; assign it in Minecraft Options if unbound. Use JEI to craft a Source Jar and a Sourcelink; an Agronomic link is the natural-growth option and bone meal alone does not trigger crop-growth Source. These recipes are from version-aligned generated data; the actual pack's JEI and recipe overrides still need client confirmation.
 
 ## Player-value snapshot and coverage (research audit)
 
@@ -208,7 +209,7 @@ The Worn Notebook's recipe is the entry point for instructions, not a mandatory 
 
 - **Normal completion:** obtain the Archmage Spell Book and demonstrate a Tier 3 cast. The book itself is a recipe gate, not proof the player learned or cast all Tier 3 glyphs.
 - **Optional completion:** Chimera kill/Tribute, all familiar and automation branches, armor and threads, rituals, portals/storage/turrets, and the seven addons.
-- **Remaining progression blockers:** exact glyph recipe/XP audit, complete guide and recipe coverage for every ritual and creature, seven separate addon profiles, JAR-to-source equivalence, and client confirmation.
+- **Remaining research gaps:** equipment/advanced devices, seven separate addon profiles, complete pilot and full-stage reconciliation. Exact guide/glyph/ritual/Source/primary-worker/familiar/casting/processing companions now close those former binary questions. Client acceptance remains separate and unrun.
 - **Coverage check:** main tier recipe path, guide entry, structure how-tos and optional addon coverage are now mapped to proposed quest lessons. It is **not walkthrough-ready yet** because those source gaps and addon references remain, and the guide acquisition lesson is absent from PR #74.
 
 ## Internal combinations and overlooked mechanics
