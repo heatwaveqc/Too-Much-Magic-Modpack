@@ -117,7 +117,7 @@ def main():
             for dst in sorted(marble):
                 if src==dst:
                     continue
-                obj={"type":"minecraft:stonecutting","ingredient":src,
+                obj={"type":"minecraft:stonecutting","ingredient":{"item":src},
                      "result":{"id":dst,"count":1}}
                 name=src.replace(":","__")+"__to__"+dst.replace(":","__")
                 (CUTTING/(name+".json")).write_text(dump(obj),encoding="utf-8")

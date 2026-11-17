@@ -6,11 +6,11 @@ hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
 
 [[files]]
 file = "config/ftbchunks-client.snbt"
-hash = "7ee2b7ea2aafebfe3720e3865cbdc59532726856e4f93ecee8d00710dedfd205"
+hash = "01eb45c223662ddc950197f9fa6b5ece175dbf43ba61b7d40e5bc9ef51c56595"
 
 [[files]]
 file = "config/ftblibrary-client.snbt"
-hash = "06432c29ac8a505481f5fb7dcb9738925e7cb674435e7487e245d03f57998eee"
+hash = "8d6143e76391f71f984e0e2e8b229eb553b8443a91c4c1354d2dd2017bfb0435"
 
 [[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
@@ -34,7 +34,7 @@ hash = "c9bbff2c864c6fdb80334c157523f8ae377408c9aab665064f385ebf9b9e007f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/ars_nouveau.snbt"
-hash = "cb044ded8a6c98377f4f293bbb7dddf8dcc4237ab4261dc4b3bb99e23542a741"
+hash = "7fc0c0c2a4235d5b5addb22389bd5412ae8493a1b6ef1a1345e8a8daeaebeb2c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/artifacts.snbt"
@@ -520,11 +520,11 @@ hash = "04ed7eb15534723135713a763e7ef8d2bf6f3f5cf56184f933326132cf859f2f"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/astralsorcery__marble_raw__to__primalmagick__marble_raw.json"
-hash = "dd8712498dc8b5b23f4b77649369e73d6ab555c7f7783f01499a10b83ac4a0a8"
+hash = "9aabbadce9995afa5446f7fc9b60962af07fb48a66ca16e9e8e640dcf6157576"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/stonecutting/common_marble/primalmagick__marble_raw__to__astralsorcery__marble_raw.json"
-hash = "f9fde86e835b2b6e88ca201d0f26dc6a9d278092d1d430f91092e579fad73bce"
+hash = "18de220d843dab29327809f1b79680174669f291655091315df1d59d74773467"
 
 [[files]]
 file = "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json"
@@ -1654,3 +1654,7 @@ metafile = true
 file = "mods/yacl.pw.toml"
 hash = "1f47c89af2b4c6ab92735d68e58412d0b369f7035818e58d02f5982f7fc1186a"
 metafile = true
+
+[[files]]
+file = "config/almostunified/unification/materials.json"
+hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"

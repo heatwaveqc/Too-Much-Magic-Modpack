@@ -1,6 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "primalmagick:marble_raw",
+  "ingredient": {
+    "item": "primalmagick:marble_raw"
+  },
   "result": {
     "id": "astralsorcery:marble_raw",
     "count": 1

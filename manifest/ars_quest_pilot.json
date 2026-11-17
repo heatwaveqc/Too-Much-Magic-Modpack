@@ -48,7 +48,7 @@
       "depends": "orientation",
       "position": [
         0,
-        4
+        2
       ],
       "optional": false,
       "icon": "ars_nouveau:novice_spell_book",
@@ -86,7 +86,7 @@
       "depends": "novice",
       "position": [
         0,
-        8
+        4
       ],
       "optional": false,
       "icon": "ars_nouveau:imbuement_chamber",
@@ -121,8 +121,8 @@
       },
       "depends": "novice",
       "position": [
-        -8,
-        8
+        -4,
+        4
       ],
       "optional": false,
       "icon": "ars_nouveau:scribes_table",
@@ -157,8 +157,8 @@
       },
       "depends": "chamber",
       "position": [
-        8,
-        8
+        4,
+        4
       ],
       "optional": false,
       "icon": "ars_nouveau:source_jar",
@@ -193,8 +193,8 @@
       },
       "depends": "jar",
       "position": [
-        8,
-        12
+        4,
+        6
       ],
       "optional": false,
       "icon": "ars_nouveau:agronomic_sourcelink",
@@ -229,8 +229,8 @@
       },
       "depends": "jar",
       "position": [
-        16,
-        12
+        8,
+        6
       ],
       "optional": true,
       "icon": "ars_nouveau:relay",
@@ -272,7 +272,7 @@
       "depends": "chamber",
       "position": [
         0,
-        16
+        8
       ],
       "optional": false,
       "icon": "ars_nouveau:enchanting_apparatus",
@@ -307,8 +307,8 @@
       },
       "depends": "apparatus",
       "position": [
-        -8,
-        20
+        -4,
+        10
       ],
       "optional": true,
       "icon": "ars_nouveau:magebloom_crop",
@@ -343,7 +343,7 @@
       "depends": "apparatus",
       "position": [
         0,
-        20
+        10
       ],
       "optional": false,
       "icon": "ars_nouveau:apprentice_spell_book",
@@ -379,8 +379,8 @@
       },
       "depends": "apparatus",
       "position": [
-        8,
-        20
+        4,
+        10
       ],
       "optional": false,
       "icon": "ars_nouveau:ritual_brazier",
@@ -415,8 +415,8 @@
       },
       "depends": "brazier",
       "position": [
-        8,
-        24
+        4,
+        12
       ],
       "optional": false,
       "icon": "ars_nouveau:ritual_wilden_summon",
@@ -451,7 +451,7 @@
       "depends": "summon",
       "position": [
         0,
-        28
+        14
       ],
       "optional": false,
       "icon": "ars_nouveau:wilden_tribute",
@@ -483,7 +483,7 @@
       "depends": "chimera",
       "position": [
         0,
-        32
+        16
       ],
       "optional": false,
       "icon": "ars_nouveau:archmage_spell_book",
@@ -519,8 +519,8 @@
       },
       "depends": "magebloom",
       "position": [
-        -16,
-        20
+        -8,
+        10
       ],
       "optional": true,
       "icon": "ars_nouveau:arcanist_robes",
@@ -556,8 +556,8 @@
       },
       "depends": "robes",
       "position": [
-        -16,
-        24
+        -8,
+        12
       ],
       "optional": true,
       "icon": "ars_nouveau:alteration_table",
@@ -591,8 +591,8 @@
       },
       "depends": null,
       "position": [
-        -8,
-        24
+        -4,
+        12
       ],
       "optional": true,
       "icon": "ars_nouveau:starbuncle_charm",
@@ -624,8 +624,8 @@
       },
       "depends": null,
       "position": [
-        -24,
-        28
+        -12,
+        14
       ],
       "optional": true,
       "icon": "ars_nouveau:whirlisprig_charm",
@@ -661,8 +661,8 @@
       },
       "depends": null,
       "position": [
-        -16,
-        28
+        -8,
+        14
       ],
       "optional": true,
       "icon": "ars_nouveau:drygmy_charm",
@@ -698,8 +698,8 @@
       },
       "depends": null,
       "position": [
-        -8,
-        28
+        -4,
+        14
       ],
       "optional": true,
       "icon": "ars_nouveau:wixie_charm",
@@ -735,8 +735,8 @@
       },
       "depends": null,
       "position": [
-        -8,
-        36
+        -4,
+        18
       ],
       "optional": true,
       "icon": "ars_nouveau:ritual_binding",
@@ -768,8 +768,8 @@
       },
       "depends": null,
       "position": [
-        16,
-        20
+        8,
+        10
       ],
       "optional": true,
       "icon": "ars_nouveau:basic_spell_turret",
@@ -806,8 +806,8 @@
       },
       "depends": null,
       "position": [
-        24,
-        20
+        12,
+        10
       ],
       "optional": true,
       "icon": "ars_nouveau:storage_lectern",
@@ -842,8 +842,8 @@
       },
       "depends": "lectern",
       "position": [
-        24,
-        24
+        12,
+        12
       ],
       "optional": true,
       "icon": "ars_nouveau:repository",
@@ -878,8 +878,8 @@
       },
       "depends": null,
       "position": [
-        16,
-        28
+        8,
+        14
       ],
       "optional": true,
       "icon": "ars_nouveau:warp_scroll",
@@ -919,8 +919,8 @@
       },
       "depends": null,
       "position": [
-        16,
-        32
+        8,
+        16
       ],
       "optional": true,
       "icon": "ars_nouveau:ritual_flight",
@@ -955,8 +955,8 @@
       },
       "depends": null,
       "position": [
-        24,
-        32
+        12,
+        16
       ],
       "optional": true,
       "icon": "ars_nouveau:enchanters_mirror",
@@ -990,8 +990,8 @@
       },
       "depends": null,
       "position": [
-        24,
-        36
+        12,
+        18
       ],
       "optional": true,
       "icon": "ars_nouveau:potion_flask",
@@ -1031,8 +1031,8 @@
       },
       "depends": null,
       "position": [
-        -24,
-        36
+        -12,
+        18
       ],
       "optional": true,
       "icon": "ars_nouveau:amethyst_golem_charm",
@@ -1068,8 +1068,8 @@
       },
       "depends": null,
       "position": [
-        -16,
-        44
+        -8,
+        22
       ],
       "optional": true,
       "icon": "ars_additions:advanced_dominion_wand",
@@ -1105,8 +1105,8 @@
       },
       "depends": "add_wand",
       "position": [
-        -16,
-        48
+        -8,
+        24
       ],
       "optional": true,
       "icon": "ars_additions:warp_index",
@@ -1142,8 +1142,8 @@
       },
       "depends": "add_index",
       "position": [
-        -16,
-        52
+        -8,
+        26
       ],
       "optional": true,
       "icon": "ars_additions:ender_source_jar",
@@ -1179,7 +1179,7 @@
       "depends": null,
       "position": [
         0,
-        44
+        22
       ],
       "optional": true,
       "icon": "ars_controle:remote",
@@ -1215,7 +1215,7 @@
       "depends": "control_remote",
       "position": [
         0,
-        48
+        24
       ],
       "optional": true,
       "icon": "ars_controle:temporal_stability_sensor",
@@ -1251,7 +1251,7 @@
       "depends": "control_remote",
       "position": [
         0,
-        52
+        26
       ],
       "optional": true,
       "icon": "ars_controle:portable_brazier_relay",
@@ -1286,8 +1286,8 @@
       },
       "depends": null,
       "position": [
-        16,
-        44
+        8,
+        22
       ],
       "optional": true,
       "icon": "ars_elemental:lesser_fire_focus",
@@ -1322,8 +1322,8 @@
       },
       "depends": "element_focus",
       "position": [
-        16,
-        48
+        8,
+        24
       ],
       "optional": true,
       "icon": "ars_elemental:everfull_urn",
@@ -1358,8 +1358,8 @@
       },
       "depends": "element_focus",
       "position": [
-        16,
-        52
+        8,
+        26
       ],
       "optional": true,
       "icon": "ars_elemental:fire_hat",
@@ -1394,8 +1394,8 @@
       },
       "depends": null,
       "position": [
-        -16,
-        60
+        -8,
+        30
       ],
       "optional": true,
       "icon": "ars_elemancy:cinder_essence",
@@ -1430,8 +1430,8 @@
       },
       "depends": "elemancy_essence",
       "position": [
-        -16,
-        64
+        -8,
+        32
       ],
       "optional": true,
       "icon": "ars_elemancy:cinder_hat",
@@ -1468,7 +1468,7 @@
       "depends": null,
       "position": [
         0,
-        60
+        30
       ],
       "optional": true,
       "icon": "occultism:spirit_attuned_gem",
@@ -1504,7 +1504,7 @@
       "depends": "ocultas_gem",
       "position": [
         0,
-        64
+        32
       ],
       "optional": true,
       "icon": "ars_nouveau:mob_jar",
@@ -1537,7 +1537,7 @@
       "depends": "ocultas_jar",
       "position": [
         0,
-        68
+        34
       ],
       "optional": true,
       "icon": "ars_ocultas:altar",
@@ -1571,8 +1571,8 @@
       },
       "depends": null,
       "position": [
-        16,
-        60
+        8,
+        30
       ],
       "optional": true,
       "icon": "ars_n_spells:spell_loom",
@@ -1604,8 +1604,8 @@
       },
       "depends": "ans_loom",
       "position": [
-        16,
-        64
+        8,
+        32
       ],
       "optional": true,
       "icon": "ars_n_spells:blank_scroll",
@@ -1637,8 +1637,8 @@
       },
       "depends": "ans_transcribe",
       "position": [
-        16,
-        68
+        8,
+        34
       ],
       "optional": true,
       "icon": "ars_nouveau:spell_parchment",
@@ -1670,8 +1670,8 @@
       },
       "depends": "ans_bind",
       "position": [
-        16,
-        72
+        8,
+        36
       ],
       "optional": true,
       "icon": "ars_nouveau:archmage_spell_book",
@@ -1704,8 +1704,8 @@
       },
       "depends": null,
       "position": [
-        -16,
-        72
+        -8,
+        36
       ],
       "optional": true,
       "icon": "farmersdelight:pumpkin_slice",
@@ -1740,8 +1740,8 @@
       },
       "depends": "unify_pumpkin",
       "position": [
-        -16,
-        76
+        -8,
+        38
       ],
       "optional": true,
       "icon": "farmersdelight:cabbage_leaf",

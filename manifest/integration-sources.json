@@ -54,7 +54,8 @@
       "name": "silver-ore-materials",
       "branch": "feature/neo-vitae-canonical-dusts",
       "paths": [
-        "config/almostunified/",
+        "config/almostunified/startup.json",
+        "config/almostunified/placeholders.json",
         "config/neovitae/materials.json",
         "kubejs/server_scripts/material_unification.js",
         "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
@@ -66,7 +67,7 @@
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch.",
+      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch. The baseline owns config/almostunified/unification/materials.json, copied from frozen tested snapshot 322cf3f9f0deb303fc6e6c29b340273ed3f481f6. It differs from this donor only by removal of the retired werewolves priority; never restore the donor version of that file.",
       "source_commit": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c"
     },
     {

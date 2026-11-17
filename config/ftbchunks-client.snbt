@@ -1,5 +1,5 @@
 {
   minimap: {
-    position: "top_left"
+    position: "top_right"
   }
 }
