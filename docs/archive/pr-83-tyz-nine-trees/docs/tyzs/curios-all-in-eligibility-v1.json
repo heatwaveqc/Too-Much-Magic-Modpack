@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "id": "tmm:curios_all_in_equipment_eligibility_v1",
+  "date": "2026-11-15",
+  "status": "PINNED_MANIFEST_SCREEN_SOURCE_TAG_RISK_EXPLICIT_NO_LOADED_REGISTRY",
+  "policy": {
+    "shared_between_monk_and_specialists": true,
+    "conventional_armor_banned_for_monk": true,
+    "curios_allowed_for_monk": true,
+    "all_in_optimize": "Use every actually available legal Curios slot for each form, respect unique/equip restrictions and source magnitude, and optimize each metric separately.",
+    "illegal_assumption": "Do NOT assume every Curio fits every slot, carries Apotheosis affixes/gems, or gains armor enchantments. Do not assume category count equals slot count.",
+    "banned_ring_id": "relics:ring_of_the_seven_deadly_sins",
+    "banned_ring_status": "normal_loot_blocked_by_PR130_and_normal_Curios_ring_equip_tag_removed_by_KubeJS_PR132_on_test_full_integration; already-equipped and creative/command copies remain; omit from balance builds",
+    "strict_guardian": "Separate strict no worn items INCLUDING Curios challenge, not ordinary Monk progression"
+  },
+  "relics_source": {
+    "source": "https://github.com/Octo-Studios/relics/tree/1.21.1/src/main/resources/data/curios/tags/item",
+    "source_ref_version": "0.12.11, NOT CURRENT PIN 0.12.5",
+    "source_tags": {
+      "back": [
+        "relics:midnight_mantle",
+        "relics:leafy_mantle",
+        "relics:glitchy_mantle",
+        "relics:ghostly_mantle"
+      ],
+      "belt": [
+        "relics:kinetic_belt",
+        "relics:hunting_belt"
+      ],
+      "charm": [
+        "relics:experience_disperser"
+      ],
+      "feet": [
+        "relics:roller_skate",
+        "relics:springy_boot",
+        "relics:cut_glass_boot"
+      ],
+      "hands": [],
+      "head": [
+        "relics:piglin_mask",
+        "relics:chef_hat"
+      ],
+      "necklace": [
+        "relics:reflective_necklace",
+        "relics:jellyfish_necklace"
+      ],
+      "ring": [
+        "relics:ring_of_the_seven_deadly_sins"
+      ]
+    },
+    "candidate_wearable_entries": 15,
+    "exclude_banned_ring": true,
+    "ordinary_allowed_source_candidates": 14,
+    "slot_categories": 8,
+    "pinned_jar_data_verification": "REQUIRED"
+  },
+  "provider_audit_sources": [
+    {
+      "id": "curios-api",
+      "role": "slot API",
+      "pin": "9.5.1+1.21.1",
+      "status": "pinned_no_loaded_slot_export",
+      "notes": "Actual slot count comes from current data tags and equipped items, NOT number of distinct slot categories."
+    },
+    {
+      "id": "relics",
+      "role": "Relics with typed Curios tags",
+      "pin": "0.12.5",
+      "status": "source_1.21.1_branch_version_0.12.11_not_exact_pin",
+      "notes": "The 15 wearables are from later source branch. Ring excluded in pack loot config after PR #130 but remains registered; exact 0.12.5 slot data must be extracted from pinned JAR."
+    },
+    {
+      "id": "reliquified-artifacts",
+      "role": "Relics/Artifacts bridge",
+      "pin": "manifest",
+      "status": "item_list_pending"
+    },
+    {
+      "id": "artifacts",
+      "role": "Curio-trinket effects",
+      "pin": "13.2.5",
+      "status": "item_list_pending"
+    },
+    {
+      "id": "enigmatic-legacy-plus",
+      "role": "conditional Curio equipment",
+      "pin": "manifest",
+      "status": "item_list_pending"
+    },
+    {
+      "id": "draconic-evolution",
+      "role": "body-slot modular chestpiece candidate",
+      "pin": "3.1.4.633",
+      "status": "slot_and_module_pending_1_21_1"
+    },
+    {
+      "id": "botania-revived",
+      "role": "mana baubles and rings",
+      "pin": "2.0.2",
+      "status": "item_eligibility_pending"
+    },
+    {
+      "id": "extra-botany-revived",
+      "role": "Botania accessories",
+      "pin": "manifest",
+      "status": "item_eligibility_pending"
+    },
+    {
+      "id": "malum",
+      "role": "spirit curios/charms",
+      "pin": "1.8.2",
+      "status": "source_version_drift_pending"
+    },
+    {
+      "id": "irons-spells",
+      "role": "spellbooks/curios",
+      "pin": "3.16.3",
+      "status": "attribute_effect_and_slot_pending"
+    },
+    {
+      "id": "ars-nouveau",
+      "role": "magic curios and baubles",
+      "pin": "5.13.5",
+      "status": "source_attribute_and_curios_slot_pending"
+    },
+    {
+      "id": "neovitae",
+      "role": "personal blood trinkets",
+      "pin": "1.1.53",
+      "status": "eligibility_pending"
+    },
+    {
+      "id": "goety",
+      "role": "soul magic wearables",
+      "pin": "3.2.2",
+      "status": "eligibility_pending"
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "role": "charm-like tools",
+      "pin": "2.0.85.1599",
+      "status": "confirm Curios tags versus held use"
+    }
+  ],
+  "attribute_interactions": {
+    "Luck": "Sum legal Curios player Luck modifiers before adding residual Monk Inner Fortune; cannot assume ring provides Luck and Ring excluded.",
+    "mana": "Iron/Ars/other source-specific capacities only; exclude Curios that use held-equipment attributes unsupported in Curios slots.",
+    "modded_equipment": "Some Curios may have custom object state, levels/rarities and use events. Need the actual caps of those systems, not just raw vanilla attribute tags."
+  },
+  "unresolved": [
+    "Load 0.12.5 exact Relics JAR Curios data and config on a test client/server to verify YAML ring exclusion and source tags, no auto-regeneration replacing overridden file",
+    "Get loaded Curios slots and actual slot counts from character and all mods/quests; verify no duplicates",
+    "Get registered player item attribute modifiers and actual Curios equip events for each eligible item",
+    "Confirm exact Draconic body Curio in 1.21.1, its modules and whether allowed by Monk armor toggle",
+    "Source-examine Relics 0.12.5 leveling/stat caps and other charm/relic maxima including quality/constellations",
+    "Check whether Creative/old-world Ring copies need an explicit server enforcement ban; Relics does not expose master item-disable boolean"
+  ]
+}
