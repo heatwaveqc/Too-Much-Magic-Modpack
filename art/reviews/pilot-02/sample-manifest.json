@@ -1,0 +1,530 @@
+{
+  "style_version": "0.2-pilot02",
+  "samples": [
+    {
+      "key": "assets/minecraft/textures/item/diamond.png",
+      "review_file": "assets/minecraft/textures/item/diamond.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "57dce49727b49db406523ce4c4e797214455052f55e5c93d3ca6d830f51e677a",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "a59e3349c10aba74808538b06efde6c6e3fb5a628f1e2dc8b40ea932768e998d",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_4c737ab696388191b12d6b8bcbcf8293&account_id=personal",
+      "library_file_id": "libfile_4c737ab696388191b12d6b8bcbcf8293",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/item/emerald.png",
+      "review_file": "assets/minecraft/textures/item/emerald.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e4a96b746425c0687f7b11f360b50f62dc192626e1fa2ed1f59232786bd8f47b",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "e4a96b746425c0687f7b11f360b50f62dc192626e1fa2ed1f59232786bd8f47b",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_7ae1bd2c1cf88191b400e75925d7721b&account_id=personal",
+      "library_file_id": "libfile_7ae1bd2c1cf88191b400e75925d7721b",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/item/iron_ingot.png",
+      "review_file": "assets/minecraft/textures/item/iron_ingot.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "86b5bbaab62636174b0ee960aba1973859211209adf3ce492693f4150282e1d8",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "40fde148d111c95166f7c97462d3021f8e7f3dbb6c7ad5925a950e5d17d34949",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_0108769972888191b0609b50b17ae0c5&account_id=personal",
+      "library_file_id": "libfile_0108769972888191b0609b50b17ae0c5",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/item/gold_ingot.png",
+      "review_file": "assets/minecraft/textures/item/gold_ingot.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "ecdcd1b845fdc04f8a937c21c3a75b907f61ef8304150802dc1adba54f4c2a35",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "d328bccb58ad821854c6b86ef08ef610d4edefbcb256fe77997f4da11b279a19",
+      "master_key": "assets/minecraft/textures/item/iron_ingot.png",
+      "master_sha256": "86b5bbaab62636174b0ee960aba1973859211209adf3ce492693f4150282e1d8",
+      "exact_alpha_inheritance": "pass",
+      "geometry_and_detail": "pixelwise controlled monotonic luminance recolor; no resampling",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_7a37a681dbe08191932e11dcd8dae7aa&account_id=personal",
+      "library_file_id": "libfile_7a37a681dbe08191932e11dcd8dae7aa",
+      "version": 0
+    },
+    {
+      "key": "assets/botania/textures/item/mana_diamond.png",
+      "review_file": "assets/botania/textures/item/mana_diamond.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6237aa088534c44ff5df884b4baf70cbafd8c925660f6a75ea2df1f6447ce19f",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "dde40ffda41975efe6dcc8b448445a6b13f549418d2944d7593d636d2d603a8a",
+      "master_key": "assets/minecraft/textures/item/diamond.png",
+      "master_sha256": "57dce49727b49db406523ce4c4e797214455052f55e5c93d3ca6d830f51e677a",
+      "exact_alpha_inheritance": "pass",
+      "geometry_and_detail": "pixelwise controlled monotonic luminance recolor; no resampling",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_26066cb291e481919605c4b3edac8be5&account_id=personal",
+      "library_file_id": "libfile_26066cb291e481919605c4b3edac8be5",
+      "version": 0
+    },
+    {
+      "key": "assets/botania/textures/item/rune_mana.png",
+      "review_file": "assets/botania/textures/item/rune_mana.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b3e864df6575eb64e2417c138d397c3013800952f7187496d6d5c02ff72ae29a",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "b3e864df6575eb64e2417c138d397c3013800952f7187496d6d5c02ff72ae29a",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_5bdcd6c9200c8191839cd207c2b03c07&account_id=personal",
+      "library_file_id": "libfile_5bdcd6c9200c8191839cd207c2b03c07",
+      "version": 0
+    },
+    {
+      "key": "assets/botania/textures/block/pure_daisy.png",
+      "review_file": "assets/botania/textures/block/pure_daisy.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a8024f033fae6331ea17fa3087f41133bb0988e9f3b5713906e97721b05e9cca",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "a8024f033fae6331ea17fa3087f41133bb0988e9f3b5713906e97721b05e9cca",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_17faac198790819185ea08d7a632f037&account_id=personal",
+      "library_file_id": "libfile_17faac198790819185ea08d7a632f037",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/block/stone.png",
+      "review_file": "assets/minecraft/textures/block/stone.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e437ea8400f1017a78db5db9ffdc13c7dadd15b148dcfd815f6607a790d1825a",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "44e6f41b8a22dbb65b382511a963664e943673c7ae248ffbb007123413c0025f",
+      "tiling_proof": "stone-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original periodic material painting",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_3d79a05f3644819197909ce40cf63138&account_id=personal",
+      "library_file_id": "libfile_3d79a05f3644819197909ce40cf63138",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_de482bf6a21481918a15f47e3800fb11&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_de482bf6a21481918a15f47e3800fb11"
+    },
+    {
+      "key": "assets/minecraft/textures/block/cobblestone.png",
+      "review_file": "assets/minecraft/textures/block/cobblestone.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "453878a4bfbffd549aff1df043b0feba6e462f63e3f9ed453b2491776b00fc22",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "95be1d3bad48f4a003c39801e27fb4ebcc0e6c523317bc2386f9535ca12c309e",
+      "tiling_proof": "cobblestone-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original generation plus periodic Poisson projection",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_4183ae58815c8191b706170be0eab480&account_id=personal",
+      "library_file_id": "libfile_4183ae58815c8191b706170be0eab480",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_73b491e0c7748191bc9f6845428686fe&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_73b491e0c7748191bc9f6845428686fe"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_planks.png",
+      "review_file": "assets/minecraft/textures/block/oak_planks.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "75cefc414c94ab4ad682c3497d292fe4252d11d67f008b0ee12668b6f0deb902",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "d5db7e4dab8e1203b5fe6f8c95a998c7495045d689c3e14168a656967ee917c6",
+      "tiling_proof": "oak_planks-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original generation plus periodic Poisson projection",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_bd06ab431ff881919bd9517200a8309c&account_id=personal",
+      "library_file_id": "libfile_bd06ab431ff881919bd9517200a8309c",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_7b9f6503741c8191b603e0d118fe7221&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_7b9f6503741c8191b603e0d118fe7221"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log.png",
+      "review_file": "assets/minecraft/textures/block/oak_log.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c7d1a29294dd9426ac2da4c258136cf5fbac4fdfb07e9c237d750f4c0e332b7c",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "a01d446ac4906895d6c49a73716a2f1c24f03952d2fdf110723e998147961b7f",
+      "tiling_proof": "oak_log-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original generation plus periodic Poisson projection",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_369960ff1bdc819180e32c0f93b1ee3a&account_id=personal",
+      "library_file_id": "libfile_369960ff1bdc819180e32c0f93b1ee3a",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_c32c019b1ba08191a006cdd968daa438&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_c32c019b1ba08191a006cdd968daa438"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log_top.png",
+      "review_file": "assets/minecraft/textures/block/oak_log_top.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e1dfd072c54c4835b54868b639297f51b679c024013e197fca446e4c87b18def",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "e8522662e68ca63a5b6ea94b16a61d952744067882b677c3e8a6da7ac054fa0a",
+      "tiling_proof": "oak_log_top-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original periodic material painting",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_44a6bcf8ab5c8191a6ca71e0e8f85891&account_id=personal",
+      "library_file_id": "libfile_44a6bcf8ab5c8191a6ca71e0e8f85891",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_cf12d693246c819192620bf2af2f4108&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_cf12d693246c819192620bf2af2f4108"
+    },
+    {
+      "key": "assets/botania/textures/block/livingrock.png",
+      "review_file": "assets/botania/textures/block/livingrock.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a77107d9d22fc0e337054b59a15898ccd54571926359803333300355cfb99e4c",
+      "revision": "revised",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "7ff2daab70bc7a2bf10fda0b76e7b5d9a6c42872cb9cc4a641b15da32a2672e6",
+      "tiling_proof": "livingrock-5x5.png",
+      "tiling_gate": "5x5 and offline model source review completed; owner/client approval pending",
+      "method": "original periodic material painting",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_24b7170955308191a11aefa4ecb157ad&account_id=personal",
+      "library_file_id": "libfile_24b7170955308191a11aefa4ecb157ad",
+      "version": 0,
+      "tiling_proof_link": "https://chatgpt.com/library?file_id=libfile_c64a1353dc388191999c1af6cafe0e4c&account_id=personal",
+      "tiling_proof_library_file_id": "libfile_c64a1353dc388191999c1af6cafe0e4c"
+    },
+    {
+      "key": "assets/botania/textures/block/runic_altar_side.png",
+      "review_file": "assets/botania/textures/block/runic_altar_side.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "158b2aa87786186d5f8c3882c66009eb52e731fda851c017d4c262214f064482",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "158b2aa87786186d5f8c3882c66009eb52e731fda851c017d4c262214f064482",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_591c9d25ec5c81918dc4f57ede188e8d&account_id=personal",
+      "library_file_id": "libfile_591c9d25ec5c81918dc4f57ede188e8d",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/models/armor/iron_layer_1.png",
+      "review_file": "assets/minecraft/textures/models/armor/iron_layer_1.png",
+      "dimensions": [
+        256,
+        128
+      ],
+      "sha256": "d4920c4baec9534a3ce0f25ceebd2be0fec26f1d8b9b8ba59540599333e06058",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "d4920c4baec9534a3ce0f25ceebd2be0fec26f1d8b9b8ba59540599333e06058",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_df3c32f9bfc88191b883f1a51417a53a&account_id=personal",
+      "library_file_id": "libfile_df3c32f9bfc88191b883f1a51417a53a",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/gui/sprites/widget/button.png",
+      "review_file": "assets/minecraft/textures/gui/sprites/widget/button.png",
+      "dimensions": [
+        800,
+        80
+      ],
+      "sha256": "85cba9f5f4284d59f0923dfa6cebb18ad5235b049b4ced8b2340de5f8471a10a",
+      "revision": "carried-forward-unapproved",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": "85cba9f5f4284d59f0923dfa6cebb18ad5235b049b4ced8b2340de5f8471a10a",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_2d8464dff558819186f145a456e2af8c&account_id=personal",
+      "library_file_id": "libfile_2d8464dff558819186f145a456e2af8c",
+      "version": 0
+    },
+    {
+      "key": "assets/minecraft/textures/item/iron_chestplate.png",
+      "review_file": "assets/minecraft/textures/item/iron_chestplate.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "ff7266d58c104c1b3ee49bcf8287e22dc6a16dbd8d53b32ec36d9f26503adc05",
+      "revision": "new-related-deliverable",
+      "owner_approval": "pending",
+      "game_test": "not run",
+      "previous_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+      "previous_sha256": null,
+      "paired_uv_key": "assets/minecraft/textures/models/armor/iron_layer_1.png",
+      "review_link": "https://chatgpt.com/library?file_id=libfile_07ce96a77964819199dcd13d1435a05f&account_id=personal",
+      "library_file_id": "libfile_07ce96a77964819199dcd13d1435a05f",
+      "version": 0
+    }
+  ],
+  "category_approval": "none",
+  "client_test": "not run",
+  "notes": [
+    "Six carried-forward candidates remain unapproved.",
+    "Iron chestplate icon is an additional linked wearable deliverable.",
+    "No resource pack ZIP or gameplay changes."
+  ],
+  "review_artifacts": [
+    {
+      "name": "Texture-categories.csv",
+      "file_id": "libfile_9edef89c4e988191837e186665980568",
+      "url": "https://chatgpt.com/library?file_id=libfile_9edef89c4e988191837e186665980568&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "gem-family.png",
+      "file_id": "libfile_fa7eef0732908191b1f1fc72754fab28",
+      "url": "https://chatgpt.com/library?file_id=libfile_fa7eef0732908191b1f1fc72754fab28&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "ingot-family.png",
+      "file_id": "libfile_b90fdbe3cc848191ab0c4e2d72182d4f",
+      "url": "https://chatgpt.com/library?file_id=libfile_b90fdbe3cc848191ab0c4e2d72182d4f&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "block-families.png",
+      "file_id": "libfile_e0f34e65843c8191a07daf156b730ad5",
+      "url": "https://chatgpt.com/library?file_id=libfile_e0f34e65843c8191a07daf156b730ad5&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "model-face-previews.png",
+      "file_id": "libfile_71eff20338d881918a6f49c816a8a054",
+      "url": "https://chatgpt.com/library?file_id=libfile_71eff20338d881918a6f49c816a8a054&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "wearable-pair.png",
+      "file_id": "libfile_ce9b166bfaf08191a70ca8df0261e4e5",
+      "url": "https://chatgpt.com/library?file_id=libfile_ce9b166bfaf08191a70ca8df0261e4e5&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "diamond.png",
+      "file_id": "libfile_4c737ab696388191b12d6b8bcbcf8293",
+      "url": "https://chatgpt.com/library?file_id=libfile_4c737ab696388191b12d6b8bcbcf8293&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "emerald.png",
+      "file_id": "libfile_7ae1bd2c1cf88191b400e75925d7721b",
+      "url": "https://chatgpt.com/library?file_id=libfile_7ae1bd2c1cf88191b400e75925d7721b&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "iron_ingot.png",
+      "file_id": "libfile_0108769972888191b0609b50b17ae0c5",
+      "url": "https://chatgpt.com/library?file_id=libfile_0108769972888191b0609b50b17ae0c5&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "gold_ingot.png",
+      "file_id": "libfile_7a37a681dbe08191932e11dcd8dae7aa",
+      "url": "https://chatgpt.com/library?file_id=libfile_7a37a681dbe08191932e11dcd8dae7aa&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "mana_diamond.png",
+      "file_id": "libfile_26066cb291e481919605c4b3edac8be5",
+      "url": "https://chatgpt.com/library?file_id=libfile_26066cb291e481919605c4b3edac8be5&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "rune_mana.png",
+      "file_id": "libfile_5bdcd6c9200c8191839cd207c2b03c07",
+      "url": "https://chatgpt.com/library?file_id=libfile_5bdcd6c9200c8191839cd207c2b03c07&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "pure_daisy.png",
+      "file_id": "libfile_17faac198790819185ea08d7a632f037",
+      "url": "https://chatgpt.com/library?file_id=libfile_17faac198790819185ea08d7a632f037&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "stone.png",
+      "file_id": "libfile_3d79a05f3644819197909ce40cf63138",
+      "url": "https://chatgpt.com/library?file_id=libfile_3d79a05f3644819197909ce40cf63138&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "cobblestone.png",
+      "file_id": "libfile_4183ae58815c8191b706170be0eab480",
+      "url": "https://chatgpt.com/library?file_id=libfile_4183ae58815c8191b706170be0eab480&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_planks.png",
+      "file_id": "libfile_bd06ab431ff881919bd9517200a8309c",
+      "url": "https://chatgpt.com/library?file_id=libfile_bd06ab431ff881919bd9517200a8309c&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_log.png",
+      "file_id": "libfile_369960ff1bdc819180e32c0f93b1ee3a",
+      "url": "https://chatgpt.com/library?file_id=libfile_369960ff1bdc819180e32c0f93b1ee3a&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_log_top.png",
+      "file_id": "libfile_44a6bcf8ab5c8191a6ca71e0e8f85891",
+      "url": "https://chatgpt.com/library?file_id=libfile_44a6bcf8ab5c8191a6ca71e0e8f85891&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "livingrock.png",
+      "file_id": "libfile_24b7170955308191a11aefa4ecb157ad",
+      "url": "https://chatgpt.com/library?file_id=libfile_24b7170955308191a11aefa4ecb157ad&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "runic_altar_side.png",
+      "file_id": "libfile_591c9d25ec5c81918dc4f57ede188e8d",
+      "url": "https://chatgpt.com/library?file_id=libfile_591c9d25ec5c81918dc4f57ede188e8d&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "iron_layer_1.png",
+      "file_id": "libfile_df3c32f9bfc88191b883f1a51417a53a",
+      "url": "https://chatgpt.com/library?file_id=libfile_df3c32f9bfc88191b883f1a51417a53a&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "button.png",
+      "file_id": "libfile_2d8464dff558819186f145a456e2af8c",
+      "url": "https://chatgpt.com/library?file_id=libfile_2d8464dff558819186f145a456e2af8c&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "iron_chestplate.png",
+      "file_id": "libfile_07ce96a77964819199dcd13d1435a05f",
+      "url": "https://chatgpt.com/library?file_id=libfile_07ce96a77964819199dcd13d1435a05f&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "cobblestone-5x5.png",
+      "file_id": "libfile_73b491e0c7748191bc9f6845428686fe",
+      "url": "https://chatgpt.com/library?file_id=libfile_73b491e0c7748191bc9f6845428686fe&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "livingrock-5x5.png",
+      "file_id": "libfile_c64a1353dc388191999c1af6cafe0e4c",
+      "url": "https://chatgpt.com/library?file_id=libfile_c64a1353dc388191999c1af6cafe0e4c&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_log-5x5.png",
+      "file_id": "libfile_c32c019b1ba08191a006cdd968daa438",
+      "url": "https://chatgpt.com/library?file_id=libfile_c32c019b1ba08191a006cdd968daa438&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_log_top-5x5.png",
+      "file_id": "libfile_cf12d693246c819192620bf2af2f4108",
+      "url": "https://chatgpt.com/library?file_id=libfile_cf12d693246c819192620bf2af2f4108&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "oak_planks-5x5.png",
+      "file_id": "libfile_7b9f6503741c8191b603e0d118fe7221",
+      "url": "https://chatgpt.com/library?file_id=libfile_7b9f6503741c8191b603e0d118fe7221&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "stone-5x5.png",
+      "file_id": "libfile_de482bf6a21481918a15f47e3800fb11",
+      "url": "https://chatgpt.com/library?file_id=libfile_de482bf6a21481918a15f47e3800fb11&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "button.png.mcmeta",
+      "file_id": "libfile_b204893b536081918ae1058a511c06ab",
+      "url": "https://chatgpt.com/library?file_id=libfile_b204893b536081918ae1058a511c06ab&account_id=personal",
+      "local_identity_applied": true
+    },
+    {
+      "name": "review-index.json",
+      "file_id": "libfile_486ad66f64b48191bc99795042d815ea",
+      "url": "https://chatgpt.com/library?file_id=libfile_486ad66f64b48191bc99795042d815ea&account_id=personal",
+      "local_identity_applied": true
+    }
+  ],
+  "previous_pilot_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+  "standards_commit": "4ebb5c962edf13d26c430fac87d855b386821243"
+}

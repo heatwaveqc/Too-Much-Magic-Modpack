@@ -1,0 +1,225 @@
+{
+  "level": "STATIC ART CHECKS",
+  "date": "2026-11-16",
+  "pilot_pngs": [
+    {
+      "key": "assets/minecraft/textures/item/diamond.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a59e3349c10aba74808538b06efde6c6e3fb5a628f1e2dc8b40ea932768e998d",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/emerald.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e4a96b746425c0687f7b11f360b50f62dc192626e1fa2ed1f59232786bd8f47b",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/iron_ingot.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "40fde148d111c95166f7c97462d3021f8e7f3dbb6c7ad5925a950e5d17d34949",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/gold_ingot.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d328bccb58ad821854c6b86ef08ef610d4edefbcb256fe77997f4da11b279a19",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/botania/textures/item/mana_diamond.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "dde40ffda41975efe6dcc8b448445a6b13f549418d2944d7593d636d2d603a8a",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/botania/textures/item/rune_mana.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b3e864df6575eb64e2417c138d397c3013800952f7187496d6d5c02ff72ae29a",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/botania/textures/block/pure_daisy.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a8024f033fae6331ea17fa3087f41133bb0988e9f3b5713906e97721b05e9cca",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/stone.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "44e6f41b8a22dbb65b382511a963664e943673c7ae248ffbb007123413c0025f",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/minecraft/textures/block/cobblestone.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "95be1d3bad48f4a003c39801e27fb4ebcc0e6c523317bc2386f9535ca12c309e",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_planks.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d5db7e4dab8e1203b5fe6f8c95a998c7495045d689c3e14168a656967ee917c6",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a01d446ac4906895d6c49a73716a2f1c24f03952d2fdf110723e998147961b7f",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log_top.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e8522662e68ca63a5b6ea94b16a61d952744067882b677c3e8a6da7ac054fa0a",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/botania/textures/block/livingrock.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "7ff2daab70bc7a2bf10fda0b76e7b5d9a6c42872cb9cc4a641b15da32a2672e6",
+      "decode": "pass",
+      "mode": "RGB",
+      "edge_equality": "pass; visual repetition inspected separately"
+    },
+    {
+      "key": "assets/botania/textures/block/runic_altar_side.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "158b2aa87786186d5f8c3882c66009eb52e731fda851c017d4c262214f064482",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/models/armor/iron_layer_1.png",
+      "dimensions": [
+        256,
+        128
+      ],
+      "sha256": "d4920c4baec9534a3ce0f25ceebd2be0fec26f1d8b9b8ba59540599333e06058",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/gui/sprites/widget/button.png",
+      "dimensions": [
+        800,
+        80
+      ],
+      "sha256": "85cba9f5f4284d59f0923dfa6cebb18ad5235b049b4ced8b2340de5f8471a10a",
+      "decode": "pass",
+      "mode": "RGBA",
+      "alpha_values": [
+        255
+      ]
+    }
+  ],
+  "tool_unit_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "catalog_integrity": "all evidence shard hashes and row totals checked",
+  "owner_approved": 0,
+  "game_tested": 0,
+  "game_lighting": "not run",
+  "gameplay_paths_modified": false,
+  "binary_transport": {
+    "method": "GitHub create_blob base64",
+    "diamond_local_and_remote_git_object": "92dd24030d23a2f8c43f36453137cd962ad5e349"
+  },
+  "cli_push": "dry-run failed: no GitHub CLI credentials; connector transport succeeds"
+}

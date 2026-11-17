@@ -1,4 +1,6 @@
 # Art workstream contract
+
+**Required:** Read [CATEGORY-STANDARDS.md](CATEGORY-STANDARDS.md) (v0.2 owner direction, supersedes conflicting earlier instructions), including current pilot verdict, mandatory 5×5 tiling, shared ingot templates, and the corrected round brilliant side-profile diamond. Approve each category pilot independently before bulk production.
 Read the repository root AGENTS.md, README.md, STYLE-GUIDE.md, ASSET-STANDARDS.md, PRODUCTION-PIPELINE.md and registry/README.md before writing. This document specializes, not overrides, repository governance.
  
 - **Ownership:** dev/art is the durable art integration branch. One designated art integration writer. Agents branch from current dev/art using feature/art-<family>-<batch>, edit only art/ paths assigned in the batch manifest, open reviewed PRs to dev/art, and retain exact source SHA. Check existing work and claims first. No edits to gameplay code, packwiz, config, quests, or test/full-integration. Do not copy gameplay branches into art. Refresh roster inputs by frozen integration SHA, not by replaying whole trees. Main is the policy base. Never delete dev/art or unresolved/claimed branches.
