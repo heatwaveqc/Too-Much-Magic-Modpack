@@ -23,3 +23,9 @@ Source-side checks in connector: original index hash and every changed existing 
 - Custom TreeChop overlay removal is owned by the shared Progression module PR #312; keep the native tooltip and XP logic. Promote only its two reviewed changes, not the older full Progression tree.
 
 - Progression PR #312 merged to dev/progression at `ff4d6a651727b0f16af8eb57f818ca5789653609` after three green workflow runs. The two exact client paths had identical pre-change blobs on both branches; this candidate promotes only that deletion and unsubscribe from the merged engine commit. No XP/runtime bridge edits. Client acceptance pending.
+
+## Follow-up — client installation and WorldWeaver welcome
+
+- Promote the exact ProjectE Energy Converters 0.1.4 pin (CF 1727449/9072881, unchanged SHA-1) and manifest row from the frozen donor into baseline. Use the official CDN binary URL, remove metadata-only download mode; retain provider IDs. Targeted quick CI downloads just this JAR and verifies the unchanged digest and ZIP integrity before merge. No third-party JAR is bundled. Full Prism install on a new tester machine remains required.
+- Ship indexed `config/wover/client.json` with `internal.did_present_welcome_screen=true` and `general.force_betterx_world_type=false`, based on New Dawn ClientConfig and WunderLib AbstractConfig nested path serialization. Leave all other defaults intact. Exact 21.0.25 pin unchanged; source inspected on master, exact client render/worldgen acceptance still pending. Verify fresh client starts without welcome UI and overworld/End generation stays as intended.
+- New build approval covers these two repairs on the existing previous QA roster; do not claim outstanding deferred/blocked features were implemented or stable/client accepted.
