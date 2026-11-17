@@ -472,6 +472,11 @@ hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
 metafile = true
 
 [[files]]
+file = "mods/alexs-caves-continued.pw.toml"
+hash = "49d4c3483faf58ba3cc7131ccf438edcc6c944fe92e97b2e18b5e4d19a27d7ba"
+metafile = true
+
+[[files]]
 file = "mods/apotheosis.pw.toml"
 hash = "e154d7fb16dc7eb6ace7b88b3896955bb66f58c2daafe93c7ae3327ee418a509"
 metafile = true
@@ -629,6 +634,11 @@ metafile = true
 [[files]]
 file = "mods/codechicken-lib-1-8.pw.toml"
 hash = "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a"
+metafile = true
+
+[[files]]
+file = "mods/codxlib.pw.toml"
+hash = "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2"
 metafile = true
 
 [[files]]
@@ -894,6 +904,11 @@ metafile = true
 [[files]]
 file = "mods/just-another-witchery-remake.pw.toml"
 hash = "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566"
+metafile = true
+
+[[files]]
+file = "mods/just-enough-resources-jer.pw.toml"
+hash = "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b"
 metafile = true
 
 [[files]]

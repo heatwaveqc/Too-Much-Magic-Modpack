@@ -50,9 +50,10 @@
       "version": "1.1.2+neoforge-1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/alexs-caves-continued/version/wSeCJMlI",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved PLANNED inclusion 2026-11-15; not yet in active packwiz. Exact NeoForge 1.21.1 release staged in PR #56; separate CodxLib dependency. Do not import obsolete uranium-to-BiggerReactors bridge. Client/worldgen and cave-book tests pending."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Pinned SHA-512 1.1.2 on both sides; CodxLib pinned and Citadel bundled. Toxic Caves native uranium only; no retired Bigger Reactors ores/conversion. Live new-world generation, Tectonic interactions and item IDs NOT TESTED.",
+      "packwiz_slug": "alexs-caves-continued"
     },
     {
       "id": "apotheosis",
@@ -492,9 +493,10 @@
       "version": "1.5.1+neoforge-1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/6oyMM4yX/version/FW5ZWCXm",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Planned necessary Alex's Caves Continued dependency, staged on PR #56; not integrated or client-tested. Citadel is bundled with the cave port."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Pinned SHA-512 1.5.1 on both sides as required dependency of Alex's Caves Continued; live loading NOT TESTED.",
+      "packwiz_slug": "codxlib"
     },
     {
       "id": "comforts",
@@ -1219,6 +1221,19 @@
       "dependencies_verified": false,
       "packwiz_slug": "jei",
       "note": "Pinned stable upstream release instead of the B2 preexisting beta, to honor no-beta gameplay policy."
+    },
+    {
+      "id": "just-enough-resources-jer",
+      "name": "Just Enough Resources (JER)",
+      "category": "qol",
+      "desired": true,
+      "version": "1.6.0.57",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/just-enough-resources-jer/version/A2G7NFcD",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "just-enough-resources-jer",
+      "note": "Verified Modrinth SHA-512 and indexed client-only; existing JEI dependency present. Ore graph correctness and client runtime NOT TESTED."
     },
     {
       "id": "just-zoom",
