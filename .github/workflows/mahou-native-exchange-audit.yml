@@ -1,0 +1,31 @@
+name: Mahou native exchange scanner audit (no game)
+on:
+  push:
+    branches: [feature/mahou-native-exchange-20261116]
+    paths:
+      - '.github/workflows/mahou-native-exchange-audit.yml'
+      - 'compat/transformations/**'
+  pull_request:
+    paths:
+      - '.github/workflows/mahou-native-exchange-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Inspect hash-verified native scanner and transaction
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 -o "$RUNNER_TEMP/mahou.jar" 'https://cdn.modrinth.com/data/7jOxn6qJ/versions/GrYWbBFj/mahoutsukai-1.21.1-v1.36.31.jar'
+          printf '%s  %s\n' '0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a' "$RUNNER_TEMP/mahou.jar" | sha512sum -c -
+          for cls in stepsword.mahoutsukai.tile.AboveChecker stepsword.mahoutsukai.tile.exchange.CatalystExchangeMahoujinTileEntity stepsword.mahoutsukai.tile.MahoujinTickingTileEntity; do
+            echo "=== $cls ==="
+            javap -p -c -s -classpath "$RUNNER_TEMP/mahou.jar" "$cls"
+          done
