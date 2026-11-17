@@ -240,3 +240,8 @@ Added pinned-starbuncle.md: droppedgoldnugget1→1..2shardsafter>60, charmspawn,
 ### 2026-11-17 Starbuncle remaining worker controls
 
 Extendedsamecompanion withWixieHatfreshbehavior,potion100eligibility/300trip/partialdeliveryclearsidentityrisk,roadBlockItemselection,dye,passengercharminteraction,bedpriority,preclear-listtwo-stepaccessoryreset,ItemScrollDataitemidentitytoggle. Correctedbefriending: BOTHdroppedpickup ANDdirectmainhandnuggetinteraction supported (inspectedmobInteract). No runtimeclaim. Nextfullfamiliarsandremainingpersonalcasting/processing/equipment/addon/pilot.
+
+
+### 2026-11-17 Ars familiar surface
+
+Added pinned-familiars.md: SIXregisteredholders notseven (Jabberwogunusedstub),Bindingpredicate/scriptmainhand/playerunlock/summon/toggle/ownertermination/reserve. ExactSpeedII/goldscry,Earthdiscount/foodformula,Looting/damagecallback,Wixie20%duration/debuff/ingredient,Bookwyrm5boxitemreturn/ownerUUIDskip/XPdirectnotmending,Amethyst50%knockback/defence/typeconstructorboundary. TwoSpellModifierEventsubscribersbothdispatchonModifier; nofinaldamageoverclaim. NativeDrygmyworkerexactJARrecheckstillpending,parentothercore/addon/pilotstillresearching.

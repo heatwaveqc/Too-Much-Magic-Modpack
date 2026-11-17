@@ -1,0 +1,47 @@
+# Ars Nouveau pinned familiar unlocks and six registered roles
+
+Exact `ars_nouveau-1.21.1-5.13.5.jar`, SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; CFR0.152/ZIP classes. Evidence: `APIRegistry`, `FamiliarRegistry`, six registered holders, `FamiliarScript`, `ANPlayerDataCap`, `FamiliarData`, `FamiliarEntity`, six effect subclasses, `FamiliarEvents`, summon/toggle packets and `GuiFamiliarScreen`. [Parent](ars-nouveau.md), [Binding ritual](ars-nouveau-pinned-rituals.md). No client summon/buff/combat/ownership acceptance. Worker charms/stations are separate from familiar scripts/player unlocks.
+
+## Bind, learn, summon and dismiss
+
+Read native Notebook **Familiars → named familiar**, **Ritual Index → Binding**, and relevant creature/worker acquisition page. Place eligible live creature near Binding ritual, within box inflate5; at progress3 on20tick boundaries matches holder predicate, removes original and drops bound familiar script. Predicate classes are below; no tamed/owner requirement is established by those six simple instanceof checks or Binding body. Do not sacrifice another player's worker as an approved teaching route; use your own acquired creature and verify script output independently of advancement.
+
+Use script in **main hand** on server. FamiliarScript checks player's capability, refuses already-owned holder without consuming, otherwise unlocks player familiar and syncs, consuming one in survival. Familiar knowledge resides in player data, not stored in the spellbook item. Merely crafting/holding a worker charm does not unlock its familiar. Script output IDs are generated from registered holder map; native holder IDs have `ars_nouveau:familiar_` prefix plus role suffix below.
+
+Open spellbook's familiar screen (GuiSpellBook → GuiFamiliarScreen; native **Familiars** controls), choose learned familiar. Familiar screen's button sends summon request; Dispel button dismisses. Configured **Familiar Toggle** key sends PacketToggleFamiliar: first dismiss active familiars if any, otherwise summons last remembered familiar; do not prescribe an assumed default key in TMM's unbound-key policy. Bind controls in Minecraft Options when needed.
+
+Summon constructs familiar at owner position, sets owner UUID, posts cancelable FamiliarSummonEvent, adds entity if not canceled and records last summoned. Existing same-owner familiar marks terminated when another spawns. Entity/particle/last-selection updates are separate from addFreshEntity return (unchecked); watch actual active familiar. FamiliarEntity checks owner exists in same ServerLevel every20ticks and removes itself if missing; it is not a permanent cross-dimension worker. Owner-cast Dispel removes familiar without another script refund; learned unlock remains a different player-data field.
+
+Base familiar has `manaReserveModifier=0.15`; FamiliarEvents max-mana calculation adds this reserve for matching owner. Reserve is a calculation modifier, not a jar Source cost or a one-time15mana payment. Effective final maximum and addon changes require spell-capacity audit/acceptance. The inspected summon/toggle bodies have no explicit item/Source/XP debit.
+
+## Registered native roles
+
+APIRegistry registers **six** holders. `JabberwogFamiliarHolder`/`FamiliarJabberwog` classes also exist, but core register calls do not include them; entity class returns null type/texture. Do not invent a seventh normal survival familiar or teach its unused+3damage method as active content.
+
+| Holder suffix / binding predicate | Exact ability and important limit |
+| --- | --- |
+| starbuncle / Starbuncle | Every60ticks owner and familiar get Speed duration600, amplifier1 (Speed II). Owner interacting with a gold-nugget-tag item spends1survival and grants3600tick CompoundScryer of NeoForge gold-ore tag plus vanilla gold_ores. Not item transport/berry harvesting; those belong to worker. |
+| drygmy / EntityDrygmy | Every60ticks grants owner Ars Looting effect duration600, amplifier0. onModifier adds damage modifier2 when alive, owner=caster, part belongs to Elemental Earth. Does not generate worker-Henge loot or itself establish protected/boss drop eligibility. Duplicate dispatcher boundary below matters for final modifier. |
+| whirlisprig / Whirlisprig | Owner spell cost event sums floor(0.5×part.getCastingCost()) for Elemental Earth parts and subtracts from currentCost. Not50% off every spell or whole final adjusted cost. Food-finish owner event computes satAmount=nutrition×FoodProperties.saturation×2, adds40% of that directly to FoodData.saturationLevel; this is exact code formula, not a verified diet/faction compatibility promise or personal hunger bypass. |
+| wixie / EntityWixie | Beneficial effect applied to owner **or any effect whose applier is owner** has duration increased by floor(duration/5). Interacting with a brewing ingredient that matches an API Water/Awkward-input recipe applies that output potion contents to interacting player, spends1ingredient in survival, no bottle in this method. Main-hand dye branch separate. Random combat debuff every150cooldown: Slowness/Weakness/Levitation/Poison140ticks, amplifier0..1; Poison selection on inverted-heal target becomes Regeneration. Actual targeting/application immunity separate. |
+| bookwyrm / EntityBookwyrm | Every20ticks scans box inflate5 around owner's onPos. Item insertion to player main inventory preserves returned remainder on ItemEntity; rejects pickup-delay, PreventRemoteMovement, dead entities and denied Pre pickup event. **Skips an ItemEntity whose ownerUUID equals familiar ownerUUID**, so don't promise it reclaims the owner's freshly thrown items. XP orbs: posts PlayerXp PickupXp, grants orb.value directly and discards orb if not canceled. Does not call vanilla orb touch/mending path here; XP and mending behavior must be tested separately. |
+| amethyst_golem / AmethystGolem | Owner incoming knockback strength×0.5; after non-bypasses-armor damage by a living attacker within strict3, knocks attacker back0.5. Main-hand Amethyst-gem-tag interaction grants interacting player Ars Defence3600ticks, consumes1survival. Not general damage immunity. Holder constructs FamiliarAmethystGolem with Bookwyrm entity-type argument while subclass getType returns familiar Amethyst type; exact spawn/serialization boundary requires client acceptance. |
+
+**Modifier dispatch duplication:** FamiliarEvents has two distinct @SubscribeEvent methods for SpellModifierEvent, both looping ISpellCastListener and calling onModifier. Drygmy's per-callback+2 is therefore not safely described as final+2damage; two native dispatches can add twice. Spell part damage formula, cancellation/other modifiers and effective bus registration still matter. Record both callbacks and measure actual final combat, rather than silently flattening to an assumed bonus.
+
+FamiliarEvents routes food/effect events to active matching familiar classes; filters removed/terminated/no-owner entries out. Some subclass interaction methods (for example Amethyst/Wixie ingredient interaction) do not explicitly require interacting player=owner; owner and another-player cases should both be tested. This source observation does not authorize griefing, ownership bypass or alternate economy gates.
+
+## Acquisition and quest map
+
+| Family | How to obtain eligible own creature before Binding | Honest teaching/detection |
+| --- | --- | --- |
+| Starbuncle | Gold-nugget interaction/pickup → shards → apparatus charm → spawn worker | [Worker steps](ars-nouveau-pinned-starbuncle.md); script acquisition, use/unlock, then actual Speed/scry observation |
+| Whirlisprig | Successful nearby tree growth → shard → apparatus charm → flower worker | [Grove steps](ars-nouveau-pinned-whirlisprig.md); unlock and spell-cost/food checks separate from grove output |
+| Wixie | Half-health Witch Dispel → shard → apparatus charm → empty cauldron worker | [Crafting steps](ars-nouveau-pinned-wixie.md); ingredient interaction/effect-duration test distinct from cauldron brewing |
+| Bookwyrm | Awakening with Book and Quill → charm → Storage Lectern worker | [Storage steps](ars-nouveau-pinned-bookwyrm-storage.md); familiar pickup/XP are separate from lectern visual transfers |
+| Drygmy | Native horn befriending/charm/Henge route in parent source survey | Pinned acquisition/worker recheck still pending; do not call full helper cluster complete solely from familiar effect code |
+| Amethyst Golem | Awakening near Budding Amethyst creates golem; consume own construct in Binding | [Ritual steps](ars-nouveau-pinned-rituals.md); verify actual summon/type and effect, not just script |
+
+Use item/advancement criteria only as acquisition proxies unless a confirmed operation detector exists. Proposed rewards: XP plus safe ordinary companion setup materials; no auto-unlock scripts for unvisited branches or protected-drop rewards. In-game guide and named ritual/JEI references should be in each how-to.
+
+Acceptance: bind an eligible own creature vs ineligible mob; duplicate script/use/offhand; learned vs unlearned UI list; summon/replace/toggle/logout/dimension; reserve and no-Source distinction; each buff/ability, event cancellation, owner vs second player, Bookwyrm pickup delay/PreventRemoteMovement/owner-tag/full inventory/XP vs mending, Drygmy final damage, Wixie undead/random debuff and potion-duration stacking, Amethyst serialization. Source covers registered role surface; full parent progression/equipment/processing/addons and effective pack behavior remain researching.

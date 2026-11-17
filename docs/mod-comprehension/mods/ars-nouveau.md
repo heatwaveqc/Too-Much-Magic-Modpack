@@ -382,3 +382,6 @@ Pinned Bookwyrm/storage follow-up: [Awakening charm, worker-dependent default8in
 
 
 Pinned Starbuncle follow-up: [ordinary item routes, filters, Sourceberry harvest, kept delivery remainders and strict-side boundary](ars-nouveau-pinned-starbuncle.md). Dropped nugget acquisition and wand direction now exact-JAR traced; potion-hat/bed/road/passenger/filter controls are also audited in that companion; familiar branch remains separate.
+
+
+Pinned familiar follow-up: [six registered native holders, Binding→script→player unlock→summon/toggle, mana reserve and exact role effects](ars-nouveau-pinned-familiars.md). Jabberwog classes are not registered by core initialization; do not count as a seventh survival role. Duplicate modifier dispatch, Bookwyrm owner-tag skip/XP route and Amethyst constructor type are explicit acceptance boundaries.
