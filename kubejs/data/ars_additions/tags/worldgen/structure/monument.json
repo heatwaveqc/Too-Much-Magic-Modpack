@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "#betteroceanmonuments:better_ocean_monuments",
+      "required": false
+    }
+  ]
+}
