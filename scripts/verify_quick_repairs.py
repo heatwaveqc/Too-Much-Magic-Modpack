@@ -44,7 +44,28 @@ def main():
         assert s in dragon, s
     enig = read("defaultconfigs/enigmaticlegacyplus-server.toml")
     assert "[sevenCurses]" in enig and "giveStarterGear = false" in enig
-    assert "feature/traders-vengence" in json.loads(read("manifest/integration-sources.json"))["deferred_pending_runtime"]
+    sources = json.loads(read("manifest/integration-sources.json"))
+    # Historical retirement-only QA deferred the draft; once source is merged,
+    # require exact original provenance PLUS a positive pending-JAR gate instead.
+    # Never silently treat source-only installation as a playable mod.
+    trader_source = next(
+        (s for s in sources["streams"] if s["name"] == "traders-vengence-module"),
+        None,
+    )
+    if trader_source is None:
+        assert "feature/traders-vengence" in sources["deferred_pending_runtime"]
+    else:
+        assert trader_source["branch"] == "test/full-integration"
+        assert trader_source["integrated_into_baseline"] is True
+        assert trader_source["source_commit"] == "a5c8f32bd50744e2b3e083273c50e75d93b27c82"
+        assert trader_source["paths"] == ["compat/traders-vengence/"]
+        assert trader_source["mode"] == "source-module-ci-not-installed"
+        assert "feature/traders-vengence" in sources["covered_by_baseline"]
+        assert any("TRADER'S VENGENCE" in s and "NOT an installed" in s
+                   for s in sources["pending_runtime_work"])
+        # Do not confuse a compiled source directory with a Packwiz-installed JAR.
+        assert not (ROOT / "mods/traders-vengence.pw.toml").exists()
+
     index, pack = read("index.toml"), read("pack.toml")
     assert f'hash = "{hashlib.sha256(index.encode()).hexdigest()}"' in pack
     files = ("config/ftbquests/quests/chapters/intro.snbt",
