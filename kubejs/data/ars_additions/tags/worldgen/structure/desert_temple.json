@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "#betterdeserttemples:better_desert_temples",
+      "required": false
+    }
+  ]
+}
