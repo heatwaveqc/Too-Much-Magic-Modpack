@@ -37,6 +37,7 @@ jobs:
           if (-not ($opt -match "^guiScale:")) { throw "Missing GUI defaults" }
           if (-not ($opt -match "^soundCategory_master:")) { throw "Missing sound defaults" }
           if (-not ($opt -contains "onboardAccessibility:false") -or ($opt -match "^narrator:")) { throw "Skip onboarding without forcing narrator" }
+          if (@($opt -match "^tutorialStep:").Count -ne 1 -or -not ($opt -contains "tutorialStep:none")) { throw "Disable vanilla tutorial toasts in QA seed" }
           if ($opt -match "^key_") { throw "Do not hard-code somebody's keybindings" }
           $builder = Get-Content "scripts/build_full_integration_prism.py" -Raw
           foreach ($required in @("minecraft/options.txt", "PreLoadCommand=powershell.exe", "PostExitCommand=powershell.exe", "dev_only_preferences")) {
