@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "MobGoalsAccessor",
+    "WanderingTraderSpawnerMixin",
     "VillagerRangedAttackMixin",
     "VillagerReputationMixin"
   ],
