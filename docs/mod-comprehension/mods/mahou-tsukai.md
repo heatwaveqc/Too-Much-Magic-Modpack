@@ -46,6 +46,8 @@ See [pinned exchange and life-drain economy](mahou-tsukai-exchange-life-drain.md
 
 See [pinned Contract, Geas and boundary scrolls](mahou-tsukai-contract-geas.md) for actual multiplayer recognition, vows, regeneration credit and deployment semantics.
 
+See [pinned Clarent/Emrys/Replica acquisition](mahou-tsukai-artifact-acquisition.md) for strengthened-item event gates, compound defensive prerequisites and cancellation boundaries.
+
 ## Guidebook onboarding — required before the player's first complex step
 
 - **Guide name and access:** Mahou Tsukai Knowledge Compendium, registry `mahoutsukai:guidebook`; the official wiki shows a 3×3 recipe using red dye, paper, and leather. Right-click to open, navigate with arrows/home, and consult the three powder ingredients for spell entries. It can also be placed on a Lectern. Exact pinned grid is now recorded in [the artifact-backed onboarding](mahou-tsukai-pinned-onboarding.md): five Red Dye, three Paper and one Leather. Native client GUI class and53 named recipe-page matches are inspected; rendering remains untested. [Compendium page](https://mahoutsukai.stepsword.com/items/guidebook/)

@@ -319,3 +319,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Mahou exchange/life-drain economy](mods/mahou-tsukai-exchange-life-drain.md): seven-powder random exchange and shrinking batch loop, durability tax/iteration limits and NORTH-side inventory, Drain Life payment/immunity/reward order and reward-after-failed-damage boundary. Native cap and unrun balance tests recorded.
 
 - 2026-11-16 — [Mahou Contract/Geas/scroll rules](mods/mahou-tsukai-contract-geas.md): two-player sequential payment/persistent recognition, contract-break attribution, Geas named/species/item identity and species-only regen bonus, paid vow removal/list, fire reset, stationary boundary-scroll placement/loss boundary. Multiplayer acceptance unrun.
+
+- 2026-11-16 — [Mahou artifact acquisition](mods/mahou-tsukai-artifact-acquisition.md): Clarent Dragon-owned cloud, Emrys strengthened offhand Stick/lightning event, Replica exact compound shield/counter/effect/armor checks and supporting Damage Exchange/Death Collection/Immunity Exchange. Cancellation ordering and gameplay remain unverified.
