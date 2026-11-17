@@ -1,0 +1,22 @@
+{
+  "curios.identifier.bundle": "Bundle",
+  "tmm.caerbannog": "Gateway of Caerbannog",
+  "tmm.chaos_bunny": "Gateway of the Chaos Bunny of Caerbannog",
+  "tmm.mob_ars_drygmy": "Wild Drygmy Encounter",
+  "tmm.mob_ars_starbuncle": "Wild Starbuncle Encounter",
+  "tmm.mob_ars_whirlisprig": "Wild Whirlisprig Encounter",
+  "tmm.mob_ars_wilden_guardian": "Wilden Guardian Encounter",
+  "tmm.mob_ars_wilden_hunter": "Wilden Hunter Encounter",
+  "tmm.mob_ars_wilden_stalker": "Wilden Stalker Encounter",
+  "tmm.mob_irons_apothecarist": "Apothecarist Encounter",
+  "tmm.mob_irons_archevoker": "Archevoker Encounter",
+  "tmm.mob_irons_catacombs_zombie": "Catacombs Zombie Encounter",
+  "tmm.mob_irons_citadel_keeper": "Ancient Knight (Citadel Keeper) Encounter",
+  "tmm.mob_irons_cryomancer": "Cryomancer Encounter",
+  "tmm.mob_irons_cultist": "Cultist Encounter",
+  "tmm.mob_irons_cursed_armor_stand": "Cursed Armor Stand Encounter",
+  "tmm.mob_irons_ice_spider": "Ice Spider Encounter",
+  "tmm.mob_irons_magehunter_vindicator": "Magehunter Vindicator Encounter",
+  "tmm.mob_irons_necromancer": "Necromancer Encounter",
+  "tmm.mob_irons_pyromancer": "Pyromancer Encounter"
+}
