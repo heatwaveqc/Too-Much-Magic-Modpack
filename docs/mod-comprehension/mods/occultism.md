@@ -310,3 +310,5 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 ## Exact artifact closure — 2026-11-16
 
 [Pinned ritual crosswalk](occultism-pinned-rituals.md) inventories all158 recipes/11 factory channels, gradual consumption/refund, saved recipe identity, native timing and actual entity/item output. Exact SHA512 matches pin. Remaining job/familiar/processing/storage/Otherworld gaps remain; main still researching.
+
+See [all529 pinned processing/miner records](occultism-pinned-processing.md) for240crushing/194miner/54crystallize/27spirit-fire/14trade, typed tags/conditions/baseoutputs and exact worker/mineshaft insertion/loss behavior. Those recipe inventories are closed; loaded tags and full remaining helper/familiar branches are not gameplay accepted.
