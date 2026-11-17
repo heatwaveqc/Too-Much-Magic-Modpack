@@ -29,3 +29,8 @@ jobs:
             echo "=== $cls ==="
             javap -p -c -s -classpath "$RUNNER_TEMP/mahou.jar" "$cls"
           done
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile and unit test the native compatibility source (no game)
+        run: gradle -p compat/transformations --no-daemon clean build
