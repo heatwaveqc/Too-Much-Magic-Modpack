@@ -11,7 +11,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.lwjgl.glfw.GLFW;
 
@@ -55,9 +54,6 @@ public final class ClientKeys {
             send(TREASURE,"treasure");
             send(GLIDE,"glide");
             send(ORDEAL,"ordeal");
-        }
-        @SubscribeEvent public static void render(RenderGuiEvent.Post event) {
-            TreeChopHud.render(event);
         }
         private static void send(KeyMapping key,String action) {
             while (key.consumeClick()) PacketDistributor.sendToServer(new AbilityNetwork.Action(action));
