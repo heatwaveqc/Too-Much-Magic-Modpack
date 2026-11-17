@@ -162,3 +162,8 @@ GuideBookItem returns copy as crafting remainder, binding Dictionary reusable/co
 ### Occultism Battlefield/capture audit
 
 New occultism-pinned-devices-capture.md records soul/fragile/trinity/lamp capture and unchecked releasepayloadclear, Battlefield componentinputs/virtualhealthweapon/fuel/work/failure/roll math, outputremainderloss and two explicitbossloottables (WitherNetherStar; Dragon3Breath:1Egg). Important prior194minerabsence was SCOPED, not global. Ordinary/Fragile denyboss; Trinity separatetag absentnativeJSON, needeffectivetag beforeavailabilityclaim. Recipes/gates recorded; noapprovedfarm/firstbossbypass/runtimeclaim. OptionalWormhole/satchelcontrols remain (classes extracted/decompiled in scratch).
+
+
+### Occultism optional device controls
+
+Devicesappendix extended StableWormhole sneaklinkloadedproxy; EntityWormhole1compassslotdestinationpriority/Lodestone/HOME/RTP/Recovery/spiritUUID and fishingpull; native117slotsatchelvs36ritualsatchels; EnderSatchel online-linked/fallbackcurrent; T1/T2patternmaterialplacement and T2collect. Placement helper ignores underlyinguseOnresult, possiblepartial/noop not guaranteedatomicbuild. No newmod/runtime/approvalpolicy changed. Main finalstagewalkthrough/residualhelpers still open.
