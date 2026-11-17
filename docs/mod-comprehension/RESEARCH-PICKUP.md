@@ -225,3 +225,8 @@ Added ars-nouveau-pinned-wixie.md: exacthalfhealthWitchDispelJSON/shard/charm,Ca
 ### 2026-11-17 Ars Whirlisprig worker
 
 Added pinned-whirlisprig.md: treeevent<=10→1shardafter>60, exact8pedestalcharmrecipe,flowerconversion120,grove21×21/Y-1..30,defaultstate50cap,mood/30inspectionprogress,250progress/250Source60tickbatch,floor(diversity/2)+3attempts,denyseed/dirt/filter,rereoll/doubledraw,poweredpendingbatchandreloademptytables. Outputinsertadjacent helperstilltargetedpending; noSourceproducerclaim. NextBookwyrm/Starbuncle/fullfamiliar andpersonalcasting/processing/equipment/addon/pilot.
+
+
+### 2026-11-17 Ars Bookwyrm/storage
+
+Added pinned-bookwyrm-storage.md: lecternapparatusrecipe,AwakeningBookcharm,8inventorypositionsperworker/default30links,transactionbeforevisualtask,10evictingqueue,autopull20tick/onecandidate/poweredgate,secondarychain/cycle/load,perplayercrafting/refill/remainders,sidecheckvsnullcache. ClosedWhirlispriginserthelper: returnsuninsertedremaindernodrop,tileignores→outputlossrisk. NextStarbuncle/fullfamiliars,personalcasting/processing/equipment/addons/pilot. Still5sourcecomplete/37researching;allresearchdocs only.

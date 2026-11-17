@@ -375,4 +375,7 @@ Pinned Source follow-up: [five producer formulas, capacity/search contracts, all
 Pinned Wixie follow-up: [shard/charm acquisition, required bound inventories and pedestal samples,50Source prepaid crafts, actual item/potion output and interruption boundaries](ars-nouveau-pinned-wixie.md). The old click-to-select/adjacent-chest shorthand is superseded by this exact method trace. WhirlisprigTile also confirms plant-drop output **consumes** Source; it is not a sixth Source producer. Full Whirlisprig/Bookwyrm/other helper audit remains open.
 
 
-Pinned grove follow-up: [Whirlisprig befriending/charm, habitat scoring, progress, paid plant-drop batches, filters and power/reload limits](ars-nouveau-pinned-whirlisprig.md). Native default250Source is consumed per generation batch; adjacent-insertion helper behavior remains a targeted boundary.
+Pinned grove follow-up: [Whirlisprig befriending/charm, habitat scoring, progress, paid plant-drop batches, filters and power/reload limits](ars-nouveau-pinned-whirlisprig.md). Native default250Source is consumed per generation batch; adjacent insertion returns remainder which this tile ignores, risking output loss.
+
+
+Pinned Bookwyrm/storage follow-up: [Awakening charm, worker-dependent default8inventory positions, default30link range, storage/crafting/import/secondary menus and visual-only transfer queue](ars-nouveau-pinned-bookwyrm-storage.md). Item mutations precede worker flight; full/missing output and side-only handlers need real count tests.
