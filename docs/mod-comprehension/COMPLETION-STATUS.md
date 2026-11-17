@@ -24,7 +24,7 @@ The full research phase is **not complete** while required profiles remain resea
 | `mahou-tsukai` | [profile](mods/mahou-tsukai.md) | `mahoutsukai-1.21.1-v1.36.31.jar` | sha512 `0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a` | 33 | 0 | researching |
 | `malum` | [profile](mods/malum.md) | `malum-1.21.1-1.8.2.jar` | sha512 `dd9ccc1dea3b090f69f807be3e7a8b99ec6d3d7d6b047e2893cb49ca505860bbf640cf767082c1a32ea403b35e2a9f9d1755327890bbfb2f8778058a9597a99e` | 959 | 0 | researching |
 | `neovitae` | [profile](mods/neovitae.md) | `neovitae-1.21.1-1.1.53.jar` | sha512 `f29b391e391476c232acbe9ba69c42c8539b5eefdd8ca324ab5e04c47dd0e708d7bd9f727cd358099c1c1066b80c759dc86d659549dee54affa17ba588ac5b0b` | 771 | 237 | researching |
-| `occultism` | [profile](mods/occultism.md) | `occultism-1.21.1-neoforge-1.227.0.jar` | sha512 `063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0` | 931 | 240 | researching |
+| `occultism` | [profile](mods/occultism.md) | `occultism-1.21.1-neoforge-1.227.0.jar` | sha512 `063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0` | 931 | 240 | source-complete |
 | `pastel` | [profile](mods/pastel.md) | `Pastel-1.1.5.5.jar` | sha1 `53a582520b78aebd56c9be1fd041472047dca3d3` | 2369 | 418 | researching |
 | `primal-magick` | [profile](mods/primal-magick.md) | `primalmagick-neoforge-1.21.1-6.0.7.jar` | sha1 `165a849fe2b95355067ede9cda014dec08129731` | 970 | 0 | researching |
 | `psi` | [profile](mods/psi.md) | `Psi-neoforge-1.21.1-110.jar` | sha512 `2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a` | 99 | 58 | researching |
@@ -53,9 +53,9 @@ The full research phase is **not complete** while required profiles remain resea
 
 ## Remaining work, in priority order
 
-1. Occultism: all931 runtime recipes,230 guide entries,20 build patterns and major worker/familiar/storage/Otherworld/device methods now have pinned appendices. Consolidate the parent full-stage walkthrough, remove obsolete partial statements and perform a residual-system audit before source-complete. Do not repeat closed inventories.
+1. Ars Nouveau + installed addons: complete exact guide/progression/resource gates; preserve each addon profile and two-sided integration evidence. Occultism now source-complete native research, with acceptance separately unrun.
 2. Core parents Ars Nouveau + seven addons, Neo Vitae, JAWR/Forbidden Magic: compare exact book/recipe/ritual/core classes against existing version-aligned source; complete branch costs and outputs. Preserve family-specific profiles and actual two-sided integration evidence.
 3. Botania/Extra Botany, Iron's, Astral, Mahou, EvilCraft, Primal, Pastel, Malum/Gaze, Hexerei/HexCast, Enchanted, Eidolon, Feywild, Embers, Theurgy, Psi/Tweaks, Reliquary and gated EMC/apex systems: close each profile's explicit source gaps without conflating client tests with research completion.
 4. Review cross-mod source-supported reports, especially transformation/food, Ars bridges, resource-processing and late boss gates; write positive/boundary test handoffs. Do not implement adapters/quests/configs in this phase.
 
-Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Roots, Totemic and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.
+Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Occultism, Roots, Totemic and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.

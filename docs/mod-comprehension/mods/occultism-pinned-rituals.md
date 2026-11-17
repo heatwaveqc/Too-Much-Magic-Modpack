@@ -1,6 +1,6 @@
 # Occultism — all pinned ritual inputs and output channels
 
-Companion to [profile](occultism.md). Exact `occultism-1.21.1-neoforge-1.227.0.jar`, SHA512 `063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0`, matched to [pin](../../../mods/occultism.pw.toml), inspected2026-11-16. **Researching; no client/world tests.** Archive has158 ritual recipes/11 used factory IDs,240 crushing,194 miner,54 crystallize,27 spirit-fire and14 spirit-trade recipes. Counts are bundled resources, not proof conditional recipes load.
+Companion to [profile](occultism.md). Exact `occultism-1.21.1-neoforge-1.227.0.jar`, SHA512 `063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0`, matched to [pin](../../../mods/occultism.pw.toml), inspected2026-11-16. **Source-complete native companion; no client/world tests.** Archive has158 ritual recipes/11 used factory IDs,240 crushing,194 miner,54 crystallize,27 spirit-fire and14 spirit-trade recipes. Counts are bundled resources, not proof conditional recipes load.
 
 ## Shared operation and timing
 

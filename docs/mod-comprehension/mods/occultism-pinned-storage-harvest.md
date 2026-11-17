@@ -20,7 +20,7 @@ Server use resolves linked server dimension and tests hasChunkAt; unloaded targe
 
 Menu creation uses `CuriosUtil.getStorageRemote`: main selected slot first, then equipped Curios remote, then first remote inventory slot; fallback expression accepts only slot>0. Offhand/current-hand use can therefore select another remote than expected. Teach the linked remote in main hand for initial test and compare multiple remote links before recommending offhand/Curios use. This is a selector finding, not a tested theft/loss claim.
 
-Native storage manipulation, machine-manager jobs and the Neo Vitae/Ars bridges must be traced from both sides before describing automation/permissions as compatible. Main profile's source-based setup remains useful; this appendix closes these exact pinned item/controller methods, not every GUI transaction.
+Native storage manipulation, machine-manager jobs and the Neo Vitae/Ars bridges must be traced from both sides before describing automation/permissions as compatible. Main profile's source-based setup remains useful; this appendix closes these exact pinned item/controller methods, with additional GUI transaction analysis below.
 
 ## Harvesting, loot and familiar interactions
 
@@ -57,7 +57,7 @@ Shift-clicking ordinary menu slots tries controller insertion and keeps returned
 
 Important constraints for future acceptance: per-iteration inventory simulation does not reserve space for all accumulated output (actual give occurs after loop); component-varying recipes are checked by item identity in loop but final output applies first result components while summing intermediate counts; special remaining-item branches warrant exact tests. These are source-sensitive branches, **not confirmed duplication or compatibility bugs**. Do not promise lossless generic crafting for every modded custom recipe without testing remainders, damageable ingredients, full inventory and component-specific outputs. `hasIngredient` used for client missing-ingredient display reserves counts across grid/cache; UI availability is not server transaction proof.
 
-Remaining source closure is full ordinary recipe/guide-to-stage reconciliation, Otherworld visibility/loot branch details and residual familiar helpers. Menu packet validation, concurrent use, actual crafting/remainder behavior and cross-mod handlers remain unrun gameplay/engineering tests, not grounds to mark source analysis as runtime PASS.
+Ordinary recipe/guide-to-stage, visibility/loot and major residual familiar helpers are now consolidated in the parent and companions. Menu packet validation, concurrent use, actual crafting/remainder behavior and cross-mod handlers remain unrun gameplay/engineering tests, not grounds to mark source analysis as runtime PASS.
 
 
 ## Otherworld visibility, harvest tier and divination

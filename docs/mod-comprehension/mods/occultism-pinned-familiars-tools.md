@@ -54,7 +54,7 @@ SpiritFireBlock entityInside only handles matching ItemEntity recipes: discards 
 
 Chalk use places matching glyph on top/survivable or replaceable position; same chalk type reuse does not damage chalk. Otherwise survival damages chalk1 unless unbreakableChalks config. Brush+shift removes existing glyph. Method returns success even when placement branch does nothing; feedback alone is not pentacle validation. Every advanced ritual still needs exact chalk type/layout from native guide.
 
-OtherworldPickaxeItem and InfusedPickaxeItem both report IOtherworldTool harvest tierTWO. Neither name establishes a different harvest gate on its own. Actual Otherworld reveal/loot/ore handling belongs to shared hooks and effective tags; standard tool mining tier and supernatural harvest tier are separate. Full advanced chalk recipes and Otherworld loot handlers remain main-profile closure work.
+OtherworldPickaxeItem and InfusedPickaxeItem both report IOtherworldTool harvest tierTWO. Neither name establishes a different harvest gate on its own. Actual Otherworld reveal/loot/ore handling belongs to shared hooks and effective tags; standard tool mining tier and supernatural harvest tier are separate. Advanced chalk recipes and Otherworld loot handlers are now covered by crafting/guide and storage/harvest companions.
 
 ## Quest and boundary plan (not run)
 
@@ -62,7 +62,7 @@ Teach named familiar ritual→owner assigned→deploy within useful range or cap
 
 Tests: owned/null-owner/other-owner capture; empty/occupied/transferred ring; wearer owner mismatch, enable toggle, distance7.9/8/10, sitting and lingering effects; blocked release and reconnect;18/17 iron, last-stack ingot/block, eligible target/no target cooldown; Fairy sitting/death source/cooldown; Guardian lives/Curios absent/last life; Dragon/Headless kill attribution; Devil/Fairy exact strict trade cooldown; Spirit Fire stack count/nonmatch; Chalk placement/no-op/durability and correct pentacle. No real pet/player was harmed or client launched.
 
-Evidence: pinned `common/entity/familiar/*` selected classes, `handlers/FamiliarEventHandler`, `util/FamiliarUtil`, `FamiliarRingItem` and nested Curio, `OccultismServerConfig$FamiliarSettings`, Chalk/Otherworld/Infused tools, SpiritFireBlock/SpiritFireRecipe. Additional AI/combat, Otherworld loot/storage and familiar-specific rare branches remain explicit, so main remains researching.
+Evidence: pinned `common/entity/familiar/*` selected classes, `handlers/FamiliarEventHandler`, `util/FamiliarUtil`, `FamiliarRingItem` and nested Curio, `OccultismServerConfig$FamiliarSettings`, Chalk/Otherworld/Infused tools, SpiritFireBlock/SpiritFireRecipe. The following rare/utility branches and storage/Otherworld companion close those former source gaps; native profile is source-complete as of2026-11-17, with acceptance unrun.
 
 
 ## Exact Chimera, Goat/Shub and Headless follow-through
@@ -85,7 +85,7 @@ Crucial `FamiliarUtil.getOwnerEnemies`: only owner's last attacker and last atta
 
 While disabled, interaction rebuilds six bit flags: Wheat-tag item1 per left/right leg (two total), Hay Block1 body, wooden rods1 per left/right arm (two total, body required), Carved Pumpkin1 head (body required). This branch has no owner check of its own and shrinks successful inputs. All six flags (byte63) trigger HEADLESS_REBUILT advancement. **Pinned body does not clear headless-dead, restore health or reset rebuild flags on completion.** Whole-JAR reference scan finds isFullyRebuilt/setHeadlessDead only in this class; its false assignment occurs in loot/shard serialization, not rebuild completion. Therefore present the interaction and advancement as source-known, but do not promise that spending materials restores working combat in this version. Runtime observation may distinguish additional engine/event behavior; none is asserted here.
 
-On true loot/death path, Headless resets health/effects/fall, disabled=false and rebuilt0 for Soul Shard serialization, then restores original health and delivers shard to owner/drop via native code. Resurrection remains a different recipe route, not proof that the six-item rebuild repaired the living disabled entity. The parent profile stays researching for storage dispatcher/guide reconciliation and remaining familiar-specific details; the finite rare branches above now replace the old fusion/rebuild speculation.
+On true loot/death path, Headless resets health/effects/fall, disabled=false and rebuilt0 for Soul Shard serialization, then restores original health and delivers shard to owner/drop via native code. Resurrection remains a different recipe route, not proof that the six-item rebuild repaired the living disabled entity. The finite rare branches above replace the old fusion/rebuild speculation; parent native progression and utility helpers are now consolidated.
 
 
 ## Residual utility familiars and their actual upgrade actions

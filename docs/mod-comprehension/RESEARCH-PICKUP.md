@@ -190,3 +190,8 @@ Craftingguideappendix now inventories all20multiblock footprints/layers/actualma
 ### 2026-11-17 hourly continuation: remaining utility familiars
 
 Hourly continuation automation continue-magic-mod-research is ACTIVE. No concurrent local changes. Closed Beaver snack/tree15set-and-abort, Cthulhu lapis1→1or1–4/strict60trade/light, Greedy finder-vs-magnet/filter/owner/advancement limits, Beholder Warden recognition/ray9damage/support-eat and helper range. Updated old family table placeholders. Next consolidate Occultism parent full progression and residual-system coverage from exact appendices; no artifact blocker or runtime change.
+
+
+### 2026-11-17 Occultism native completion
+
+Consolidated main into complete actionable tier/optional walkthrough and explicit guide/build/companion map; removed stale partial checklists. Added occultism-pinned-traders-partners.md after residual audit found Java-defined Wondering catalogue (115offers, vision-dependent randomizedpool) and DemonicPartner interactions not in recipeJSON. Added critical CursedHoney→Orange via PossessedBee kill, ResearchDust/Lime, GrayPaste/foundationdark, Witherite/Black, Cruelty/Brown routes; direct loot vs ritualdisplay separated. All major native subsystems now source-backed and no acknowledged mandatory teaching gap remains. INDEX/receipt now5source-complete/37researching. Runtime/client/effectiveconfiguration acceptance unrun. Continue core Ars+addons/NeoVitae/JAWR queue, not repeated Occultism inventories. Hourly automation remainsactive; no hardblocker.

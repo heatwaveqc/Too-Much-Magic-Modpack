@@ -133,7 +133,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | researching | [profile](mods/mahou-tsukai.md) |
 | `malum` | Malum | magic | enabled flag | full | researching | [profile](mods/malum.md) |
 | `neovitae` | Neo Vitae | magic | enabled flag | full | researching | [profile](mods/neovitae.md) |
-| `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
+| `occultism` | Occultism | magic | enabled flag | full | source-complete | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | researching | [profile](mods/pastel.md) |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | researching | [profile](mods/primal-magick.md) |
 | `psi` | Psi | magic | enabled flag | full | researching | [profile](mods/psi.md) |
@@ -339,3 +339,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Occultism familiar/tool lifecycle](mods/occultism-pinned-familiars-tools.md): owner/range/Curios capture-release,17 roles, upgrades/recovery/trades, Spirit Fire stack conversion and Chalk/Otherworld-tool contracts. [Whole-profile receipt](COMPLETION-STATUS.md) now verifies all42 local artifact hashes;39 profiles remain researching.
 
 - 2026-11-16 — [Occultism storage/harvest](mods/occultism-pinned-storage-harvest.md) verifies capacities, actual stabilizer search, remote selection/loading, Otherworld collection, soul/head and familiar resource hooks. Added two-sided [Roots→Mahou Emrys lightning](interactions/mahou-tsukai--roots-classic--emrys-lightning.md) event candidate with unrun positive/boundary tests.
+
+- 2026-11-17 — Occultism native profile completed against hash-rechecked1.227.0 JAR: full tier/optional walkthrough;931runtime recipes,230guide entries,20build references; worker/familiar/storage/device/trader/partner methods,115merchant offers and possession-loot material gates. Five/42profiles source-complete;37researching. Runtime/effective-pack acceptance separate and unrun.
