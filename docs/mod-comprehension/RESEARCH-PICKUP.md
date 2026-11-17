@@ -147,3 +147,8 @@ Storage appendix now traces IOtherworldBlock tier max, goggles clientreveal vs s
 ### Occultism full resource and guide crosswalk
 
 Added occultism-pinned-crafting-guide.md: all244 remaining ordinary/special recipe resources and230 guide entry parent/recipe-ID refs; ninecategories (not oldsix), exact Dictionary seedtag+book, earlybinding/chalk grids. Total931 data recipeJSONs=158+529+244. Excluded assets/emi/recipe/defaults viewerlist. Corrected all42receipt counts to data/ prefix; total17407, changed[('ars_nouveau-1.21.1-5.13.5.jar', '710', 709), ('enchanted-neoforge-1.21.1-4.2.7.jar', '118', 113), ('mahoutsukai-1.21.1-v1.36.31.jar', '34', 33), ('occultism-1.21.1-neoforge-1.227.0.jar', '932', 931), ('ProjectE-1.21.1-PE1.1.0.jar', '157', 156)]. Parent unknowns reconciled. Remaining full parentstagewalkthrough +dynamichelpers, no sourceaccessblocker.
+
+
+### Occultism chalk/binding/essence teaching contract
+
+Craftingguideappendix now records exact4tierdynamicbinding action (Dictionary+unboundBook, grid≥2×2), all15coloredchalk additives/SpiritFire, Void/Rainbow rites and unboundAfrit/Marid input/event vs actualentityoutput. Corrected main oldsixcategories/fruitbook/click-list-binding and ritual-duration ticks errors; processor tickcounts unchanged. Remaining sourceclosure needs actualunboundentityloot, Dictionaryremainder/itemregistration, full allstageguidewalkthrough and residualhelpers. Current parent heading explicitly reconciliationinprogress.

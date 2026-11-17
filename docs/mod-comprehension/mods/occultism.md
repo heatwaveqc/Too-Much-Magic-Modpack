@@ -15,11 +15,11 @@
 
 ## Executive gameplay map
 
-**What the player actually does:** Occultism is ritual and spirit work. The player finds Demon's Dream seeds by breaking grass, makes the Dictionary of Spirits, then follows it to harvest or create Otherworld materials and draw chalk pentacles. A Golden Sacrificial Bowl activates a ritual using a bound Book of Binding; other bowls hold item ingredients, and some rituals ask for a nearby sacrifice or item-use event. Rituals bind, possess, summon, craft, or trade with spirits. Bound spirits become workers such as crushers, smelters, miners, farmers, transporters, cleaners, and machine operators. The progression also unlocks familiars, remote item storage, Otherworld exploration, and the Dimensional Mineshaft. Four spirit tiers—Foliot, Djinni, Afrit, Marid—lead to unbound and eldritch branches and higher-tier materials. The matching source book has six categories and separate entry maps; the ritual chapters are much broader than the single pack quest. [source: release commit; datagen/OccultismBookProvider.java, GettingStartedCategory.java, PentaclesCategory.java, SummoningRitualCategory.java]
+**What the player actually does:** Occultism is ritual and spirit work. The player finds Demon's Dream seeds by breaking grass, makes the Dictionary of Spirits, then follows it to harvest or create Otherworld materials and draw chalk pentacles. A Golden Sacrificial Bowl activates a ritual using a bound Book of Binding; other bowls hold item ingredients, and some rituals ask for a nearby sacrifice or item-use event. Rituals bind, possess, summon, craft, or trade with spirits. Bound spirits become workers such as crushers, smelters, miners, farmers, transporters, cleaners, and machine operators. The progression also unlocks familiars, remote item storage, Otherworld exploration, and the Dimensional Mineshaft. Four spirit tiers—Foliot, Djinni, Afrit, Marid—lead to unbound and eldritch branches and higher-tier materials. The pinned book has nine categories and230 entry records; the ritual chapters are much broader than the single pack quest. [source: release commit; datagen/OccultismBookProvider.java, GettingStartedCategory.java, PentaclesCategory.java, SummoningRitualCategory.java]
 
 **Why it matters in TMM:** Its strengths are item-only remote storage, tiered ore processing, automated pocket-dimension mining, and spirit labor. docs/DESIGN.md explicitly places Occultism storage in the intended core and allows magical satchels. docs/PROGRESSION.md specifically proposes the Eldritch Ancient Miner as a controlled source for Replication's Deepslate Replica Ore and considers uranium/draconic dust extraction. These make miner outputs and recipe gates progression-critical; the docs also say those gates are not implemented.
 
-**Quick start:** Break grass until Demon's Dream seeds drop; grow the plant and combine a seed or fruit with a book to craft the Dictionary. Read Getting Started → Lifting the Veil. Make Spirit Fire by throwing Datura onto the ground and igniting it with flint and steel. Use Spirit Fire to convert materials and purify impure chalk. Prepare White Chalk, candles, sacrificial bowls and a Golden Sacrificial Bowl; open Pentacles → Foliot → Summon Foliot for the exact diagram and recipe. Craft a Foliot Book of Binding and use the Dictionary to bind a listed spirit name. Put the ritual ingredients in bowls within the documented radius and activate the Golden Bowl with the bound book. Chalk pattern, particles and bowl state provide operational feedback. [source: matching GettingStartedCategory.java and PentaclesCategory.java]
+**Quick start:** Break grass until Demon's Dream seeds drop; grow the plant and combine an item in #c:seeds/datura with #c:books to craft the Dictionary. Read Getting Started → Lifting the Veil. Make Spirit Fire by throwing Datura onto the ground and igniting it with flint and steel. Use Spirit Fire to convert materials and purify impure chalk. Prepare White Chalk, candles, sacrificial bowls and a Golden Sacrificial Bowl; open Pentacles → Foliot → Summon Foliot for the exact diagram and recipe. Craft a Foliot Book of Binding and craft the tier book together with the Dictionary in a2×2-or-larger crafting grid to produce its named bound book. Put the ritual ingredients in bowls within the documented radius and activate the Golden Bowl with the bound book. Chalk pattern, particles and bowl state provide operational feedback. [source: matching GettingStartedCategory.java and PentaclesCategory.java]
 
 ### Player-value snapshot
 
@@ -113,7 +113,7 @@ The crusher has three separate controls that should not be conflated: recipe eli
 | Foliot | 1 | 2.0 | 1.0 | 1 | 2 iron dust / 400 ticks |
 | Djinni | 2 | 1.0 | 1.5 | 1 | 3 iron dust / 200 ticks |
 | Afrit | 3 | 0.5 | 2.0 | 1 | 4 iron dust / 100 ticks |
-| Marid | 4 | 0.3 | 3.0 | 1 | 6 iron dust / 60 ticks |
+| Marid | 4 | 0.3 | 3.0 | 1 | 6 iron dust / counter60 |
 
 These are code defaults, not measured throughput; at 20 TPS they correspond nominally to 20, 10, 5 and 3 seconds for a single item. The exact generated raw-iron recipe accepts `c:raw_materials/iron`, returns two items from `c:dusts/iron`, and has no explicit time or multiplier override, so it uses the serializer/config defaults. Whether the pack's unified tag resolves to a particular dust item is not proven here.
 
@@ -129,12 +129,12 @@ The matching 1.227.0 Dictionary and source establish this route. This is source-
 
 | Step | Required inputs and operation | Result / next gate | Source evidence |
 | --- | --- | --- | --- |
-| Craft a Dimensional Matrix | Bind a Djinni; run the Djinni craft pentacle for 150 ticks with 3 quartz blocks and 1 item in `c:ender_pearls`; activate with the bound Djinni Book of Binding | 1 `occultism:dimensional_matrix` | `ritual/craft_dimensional_matrix`, recipe datagen and Dictionary page |
-| Craft a Controller Base | Bind a Foliot; run the Foliot craft pentacle for 60 ticks with 1 Otherstone Pedestal, 2 `c:ingots/copper`, and 1 `c:ingots/gold`; activate with a bound Foliot Book | 1 `occultism:storage_controller_base` | `ritual/craft_storage_controller_base` |
+| Craft a Dimensional Matrix | Bind a Djinni; run the Djinni craft pentacle with duration counter150 with 3 quartz blocks and 1 item in `c:ender_pearls`; activate with the bound Djinni Book of Binding | 1 `occultism:dimensional_matrix` | `ritual/craft_dimensional_matrix`, recipe datagen and Dictionary page |
+| Craft a Controller Base | Bind a Foliot; run the Foliot craft pentacle with duration counter60 with 1 Otherstone Pedestal, 2 `c:ingots/copper`, and 1 `c:ingots/gold`; activate with a bound Foliot Book | 1 `occultism:storage_controller_base` | `ritual/craft_storage_controller_base` |
 | Assemble the Storage Controller | Place the Dimensional Matrix above the Controller Base in the 1×2 shaped recipe | 1 `occultism:storage_controller`; the base is the operative storage block | `crafting/storage_controller`; Dictionary warns the matrix item alone is not the working storage block |
 | Use and protect it | Place the controller and right-click with an empty hand to open its interface | Item store with integrated 3×3 crafting interface; breaking the controller preserves contents in the dropped block item | Dictionary Usage/Safety pages and controller/container source |
 | Add capacity | Craft stabilizers from a pedestal, then upgrade by tier; place them along the six cardinal rays from one block above the controller, within 5 blocks, facing back toward it | Each ray contributes at most its nearest correctly facing stabilizer; one stabilizer is enough to increase capacity. Tier 0 contributes no capacity. | Dictionary Extending Storage and `StorageControllerBlockEntity.findValidStabilizers` |
-| Craft a Remote | Use a bound Djinni and Djinni craft pentacle for 150 ticks with an inert remote, 2 `c:ender_pearls`, and 1 `c:gems/quartz` | 1 `occultism:storage_remote`; use the remote on a controller to record its dimension and position, then use the linked remote to open storage | `ritual/craft_storage_remote`, `StorageRemoteEntry`, `StorageRemoteItem` |
+| Craft a Remote | Use a bound Djinni and Djinni craft pentacle with duration counter150 with an inert remote, 2 `c:ender_pearls`, and 1 `c:gems/quartz` | 1 `occultism:storage_remote`; use the remote on a controller to record its dimension and position, then use the linked remote to open storage | `ritual/craft_storage_remote`, `StorageRemoteEntry`, `StorageRemoteItem` |
 
 The Dictionary says to link a Remote by **shift-clicking** the controller. In the 1.227.0 `StorageRemoteItem.useOn` implementation, any item-use-on-controller event records the link; no shift-key check appears. Record this as a guide/source discrepancy until client validation. The saved address includes dimension and block position, but opening the remote checks that the destination chunk is already loaded. If it is not loaded, the remote reports that and does not open storage; no chunk-loading behavior was found. Source selection checks the held remote first, then Curios, then player inventory. The source also permits only one player at a time in a given controller UI.
 
@@ -142,20 +142,20 @@ The Dictionary says to link a Remote by **shift-clicking** the controller. In th
 
 Server-config values below are source defaults and may be overridden in the assembled pack. Each valid Tier 1–5 stabilizer adds the listed amount to that controller; Tier 0 is only a base for Tier 1 and adds nothing. The controller begins at 128 distinct item types and 256,000 total items. Distinct data-component/NBT variants consume separate type slots. These are aggregate item units, not per-slot stack caps.
 
-| Stabilizer | Ritual inputs after previous tier | Bound tier / pentacle / duration | Default added item types | Default added total items |
+| Stabilizer | Ritual inputs after previous tier | Bound tier / pentacle / duration counter | Default added item types | Default added total items |
 | ---: | --- | --- | ---: | ---: |
 | 0 | Otherstone Pedestal, crafting recipe | — | 0 | 0 |
-| 1 | Tier 0 + copper storage block + Blaze Dust + Spirit Attuned Gem | Foliot / craft / 60 ticks | 64 | 512,000 |
-| 2 | Tier 1 + silver storage block + Ghast Tear + 2 Spirit Attuned Gems | Djinni / craft / 150 ticks | 128 | 1,024,000 |
-| 3 | Tier 2 + gold storage block + Totem of Undying + Spirit Attuned Crystal + Afrit Essence | Afrit / craft / 300 ticks | 256 | 2,048,000 |
-| 4 | Tier 3 + Iesnium storage block + Beacon + 2 Spirit Attuned Crystals + Marid Essence | Marid / craft / 510 ticks | 512 | 4,096,000 |
-| 5 | Tier 4 as activation item + Sculk Shrieker + Netherite storage block + Crying Obsidian + Iesnium storage block + 2 Spirit Attuned Crystals + Enchanted Golden Apple + Dragonyst Dust; Endermen sacrifice | Eldritch contact / 780 ticks | 1,024 | 8,192,000 |
+| 1 | Tier 0 + copper storage block + Blaze Dust + Spirit Attuned Gem | Foliot / craft / counter60 | 64 | 512,000 |
+| 2 | Tier 1 + silver storage block + Ghast Tear + 2 Spirit Attuned Gems | Djinni / craft / counter150 | 128 | 1,024,000 |
+| 3 | Tier 2 + gold storage block + Totem of Undying + Spirit Attuned Crystal + Afrit Essence | Afrit / craft / counter300 | 256 | 2,048,000 |
+| 4 | Tier 3 + Iesnium storage block + Beacon + 2 Spirit Attuned Crystals + Marid Essence | Marid / craft / counter510 | 512 | 4,096,000 |
+| 5 | Tier 4 as activation item + Sculk Shrieker + Netherite storage block + Crying Obsidian + Iesnium storage block + 2 Spirit Attuned Crystals + Enchanted Golden Apple + Dragonyst Dust; Endermen sacrifice | Eldritch contact / counter780 | 1,024 | 8,192,000 |
 
 The regular controller recomputes valid stabilizers when one is placed or removed and adds their per-tier contributions. Source traces from one block above the controller in six directions for up to five positions. It selects the first stabilizer block in each ray and counts it only when its facing is opposite the ray. The trace tests target positions and does not stop at intervening blocks; this differs from the Dictionary wording that says stabilizers need “line of sight.” The same guide paragraph calls the participating block a “storage controller” and then says it is one block above the “Storage Actuator.” Source code's actual subject is the stabilizer. Verify the arrangement in a client before using that prose as a walkthrough instruction.
 
 The Dictionary describes the controller as behaving like a very large shulker box for compatible inventory integrations, and warns that devices which count stored contents may mishandle unusually large item counts. Removing the controller preserves its contents in the dropped item. Removing stabilizers below current usage does not delete contents, but blocks new insertions until enough capacity is restored. No fluid, FE, mana, XP or blood storage capability was found in this subsystem.
 
-## Complete player progression / walkthrough blueprint
+## Player progression / walkthrough blueprint — reconciliation in progress
 
 This is a source-backed outline, not quest data. For every nontrivial ritual, the quest should name the Dictionary entry, use its pentacle preview and JEI ritual recipe, state activation, and teach a visible success cue. Summon, possess and craft are branches; jobs and advanced systems are optional capability paths.
 

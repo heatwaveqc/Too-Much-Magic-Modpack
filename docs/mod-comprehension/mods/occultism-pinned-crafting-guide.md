@@ -497,3 +497,38 @@ Parents and visibility are UI/book structure, not automatically hard runtime gat
 Early binding book is not simply a blank vanilla book plus dye. Foliot shaped recipe is `cwf/wbw/ w ` with c=Purified Ink, w=blue dye tag, f=Awakened Feather, b=Taboo Book. The book-from-empty alternative is separately listed. White Impure Chalk uses three chalk-base dust and three Otherworld Wood Dust, arranged as two vertical columns (two mirror records); Spirit Fire purifies it. Guide `getting_started/ritual_prep_chalk` explicitly chains Burnt Otherstone smelting → Otherworld Ashes Spirit Fire → impure chalk crafting → White Chalk Spirit Fire, followed by usage prose. These native IDs and grids should be carried into the final beginner progression, not replaced by “craft appropriate materials.”
 
 Nine bundled categories: getting_started, pentacles, spirits, rituals, summoning_rituals, possession_rituals, crafting_rituals, familiar_rituals, storage. The parent remains researching until its old stage tables are rewritten to this exact graph and ordinary material recipes plus residual dynamic helper semantics are integrated. Native resource coverage is now exhaustive; loaded-pack/client acceptance is still unrun.
+
+
+## Binding action and chalk preparation teaching contracts
+
+Exact dynamic `crafting/recipe/BoundBookOfBindingRecipe` requires one Dictionary and one unbound book from books-of-binding tag in distinct nonempty slots, no other items, and crafting dimensions at least2×2. Its output maps only four native tier book IDs to corresponding bound IDs. Default names are generated; named Dictionary/name-wrapper cases can transfer custom spirit name. This is a crafting operation, not “click a listed spirit name in the Dictionary.” Bookshelf binding is a separate native helper and should not be silently substituted for the beginner grid operation. Recipe data alone cannot explain these dynamic semantics; no promise about Dictionary remainder is added until item registration/remaining-item path is checked.
+
+Player preparation sequence: produce Otherstone via Spirit Fire or permitted natural harvest; craft Sacrificial Bowl from five Otherstone as `o o/ooo`, then surround one bowl with eight gold ingots for Golden Sacrificial Bowl. Make enough ordinary bowls for all additional ingredients in the selected ritual. Spirit Fire is the conversion surface; arrange powders/ingredients safely and confirm output before throwing a valuable stack, since its conversion discards source item entity and sets resulting count to input count.
+
+White Impure Chalk is three chalk-base dust plus three Otherworld Wood Dust in two vertical columns. Higher impure colors are **shapeless** White Impure Chalk plus the additives below, followed by the named Spirit Fire purification. None of these color recipes is an arbitrary dye substitution. Keep other colored chalks as branch choices until a chosen pentacle needs them.
+
+| Purified color | Additives to White Impure Chalk (one each unless shown) | Native acquisition reference |
+| --- | --- | --- |
+| gold | Glowstone Dust +2Gold Dust | crafting/chalk_yellow_impure → spirit_fire/chalk_gold (yellow impure becomes gold) |
+| purple | End Stone Dust +2Obsidian Dust | crafting/chalk_purple_impure → spirit_fire/chalk_purple |
+| light_gray | Silver Dust +Iron Dust +Calcite Dust | crafting/chalk_light_gray_impure → spirit_fire/chalk_light_gray |
+| lime | Research Dust +Emerald Dust +Slime Ball | crafting/chalk_lime_impure → spirit_fire/chalk_lime |
+| red | Afrit Essence +Torchflower +Redstone Dust | crafting/chalk_red_impure → spirit_fire/chalk_red |
+| black |3Witherite Dust | crafting/chalk_black_impure → spirit_fire/chalk_black |
+| blue | Marid Essence +Lapis Dust +Tube Coral | crafting/chalk_blue_impure → spirit_fire/chalk_blue |
+| cyan | Iesnium Dust +Echo Dust +Glow Ink Sac | crafting/chalk_cyan_impure → spirit_fire/chalk_cyan |
+| brown | Cruelty Essence +Cocoa Beans +Brown Mushroom | crafting/chalk_brown_impure → spirit_fire/chalk_brown |
+| magenta | Dragonyst Dust +Amethyst Dust +Chorus Fruit | crafting/chalk_magenta_impure → spirit_fire/chalk_magenta |
+| light_blue | Ice Dust +Packed Ice Dust +Blue Ice Dust | crafting/chalk_light_blue_impure → spirit_fire/chalk_light_blue |
+| orange | Cursed Honey +Glow Berries +Blaze Dust | crafting/chalk_orange_impure → spirit_fire/chalk_orange |
+| pink |3Demonic Meat | crafting/chalk_pink_impure → spirit_fire/chalk_pink |
+| green | Nature Paste | crafting/chalk_green_impure → spirit_fire/chalk_green |
+| gray | Gray Paste | crafting/chalk_gray_impure → spirit_fire/chalk_gray |
+
+The full payload table preserves exact item/tag identities. Void and Rainbow use contact_eldritch_spirit pentacle and Brush activation, duration counter780: Void consumes White/Light Gray/Gray/Black chalk and a human-tag sacrifice; Rainbow consumes twelve colored chalks (Red/Brown/Orange/Gold/Lime/Green/Cyan/Blue/Light Blue/Pink/Magenta/Purple) and sheep-tag sacrifice. These are late optional recipes, not survival-free universal chalk claims. Actual brush durability/function and pentacle placement are covered by chalk/tool and ritual contracts.
+
+## Unbound essence is a combat result, not an immediate ritual item output
+
+`summon_unbound_afrit` activates with bound Afrit Book; pentacle summon_unbound_afrit, counter150, netherrack tag +Iesnium Ingot tag +Flint and Steel +Gunpowder tag, cow-tag sacrifice. Factory summon creates `occultism:afrit_wild`; displayed Afrit Essence is not directly delivered. Prepare combat containment, defeat/loot appropriate entity before teaching the red-chalk ingredient as obtained.
+
+`summon_unbound_marid` activates with bound Marid Book; pentacle summon_unbound_marid, counter210, Conduit +Prismarine Gem tag +Prismarine Shard +Ghast Tear, Trident item-use event. It summons `occultism:marid_unbound`, not a guaranteed immediate essence stack. Event gate is a use hook, distinct from spending an additional Trident ingredient. Full entity death/loot and event-boundary behavior still needs its explicit final-stage contract before parent source-completion.
