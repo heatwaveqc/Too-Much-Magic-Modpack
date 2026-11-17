@@ -1,5 +1,7 @@
 # Standalone player-enhancement progression core — early implementation
 
+> **Legacy PR reconciliation (2026-11-16):** The old eight-PR Monk/Hunter development stack (#127, #136, #141, #143, #148, #138, #142, #144) is mapped to this single Progression engine in [the consolidation ledger](../../docs/progression/LEGACY-PR-STACK-CONSOLIDATION-2026-11-16.md). The [historical audits](../../docs/archive/progression-pr-stack/README.md) are records, not active runtime or acceptance evidence. New path branches are config-only; all executable changes belong here.
+
 **Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
 
 ## Goal and ownership
