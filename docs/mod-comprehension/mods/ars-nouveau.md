@@ -1,5 +1,8 @@
 # Ars Nouveau — mechanics and gameplay profile
 
+Current pinned follow-up: [native guide UI, five configurable starter defaults, Scribe's Table/learning contract and all85glyph recipes](ars-nouveau-pinned-guide-glyphs.md). Exact local JAR hash rechecked2026-11-17; older missing-artifact and82recipe statements below are historical source-survey limits, superseded by this binary evidence. Parent remains researching.
+
+
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
@@ -342,9 +345,9 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 
 ## Unknowns and next research
 
-- [ ] Independently compare the exact SHA-1-pinned JAR data/code against the version-aligned upstream source for recipes, guide pages, tags, registries and config. PR #74 reports the eight hashes were verified, but this profile has not reproduced source-to-binary equivalence.
+- [x] Exact local hash rechecked; pinned companion closes guide/glyph recipe and learning methods. Remaining subsystems still need targeted binary review rather than assumed source equivalence. PR #74 reports the eight hashes were verified, but this profile has not reproduced source-to-binary equivalence.
 - [ ] Audit all 5.13.5 custom recipe JSON types and recipe costs; confirm which are exposed to KubeJS and JEI in the pinned KubeJS stack.
-- [ ] Map the default starter glyph set and book-tier unlock behavior against the assembled pack; audit representative spell mana costs, cast validity, and the guide/JEI references for a practical first spell in each tier. Core recipe data has 82 glyph recipes at 27/55/160 XP, but individual recipes/validity remain choice-driven and the exact pinned artifact is not available here.
+- [ ] Map the default starter glyph set and book-tier unlock behavior against the assembled pack; audit representative spell mana costs, cast validity, and the guide/JEI references for a practical first spell in each tier. Core recipe data has 82 glyph recipes at 27/55/160 XP, but individual recipes/validity remain choice-driven and exact artifact access is now resolved by the pinned companion.
 - [ ] Confirm installed crop/mob/food tag membership, measure useful Sourcelink throughput, and audit third-party providers/consumers of Ars Source in the pack. Core Jar/link capacities, transfer cadence/range and the 24 ritual page inventory are source-mapped. Exact per-tablet augment costs/conditions and Source rates still need cross-check against all ritual implementations; keep code formulas separate from measured rates.
 - [ ] Confirm the effective Drygmy blacklist and eligible-entity list against TMM tags/recipes and test protected/boss loot policy; inspect Wixie inventory rules and storage/Bookwyrm cap in 5.13.5. Drygmy acquisition, Charm ingredients, habitat radius/source/progress/output formulas and overflow risk are source-mapped, but not pack-verified.
 - [ ] Inspect the pinned Ars/Additions and Ars/Elemental JARs against their newly identified addon-version source commits; review the remaining Controle/Elemancy/Ocultas feature and JEI inventories; validate Occultism Crush in Ars Unification and current Ars 'n Spells server config.
