@@ -1,0 +1,24 @@
+name: Frozen adventure mob native JAR metadata audit (no game)
+on:
+  push:
+    branches: [integration/approved-adventure-mobs-darkness-pins-20261116]
+    paths:
+      - 'manifest/next-adventure-mob-resolution.json'
+      - 'scripts/audit_adventure_mob_jars.py'
+  pull_request:
+    paths:
+      - 'manifest/next-adventure-mob-resolution.json'
+      - 'scripts/audit_adventure_mob_jars.py'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect exact official runtime JARs and dependency ranges (metadata only)
+        run: python3 scripts/audit_adventure_mob_jars.py

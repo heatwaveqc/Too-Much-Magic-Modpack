@@ -1569,3 +1569,88 @@ metafile = true
 file = "mods/yungs-extras.pw.toml"
 hash = "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d"
 metafile = true
+
+[[files]]
+file = "mods/the-bumblezone.pw.toml"
+hash = "6542133c0bc532709b91a71c50356e98b5fea7ca178a7514e3589c4540fa61e2"
+metafile = true
+
+[[files]]
+file = "mods/dive-into-the-abyss.pw.toml"
+hash = "285503fbd050f19c1351879215cbef9d077cfbf5eec3d5db3096586e2247aa68"
+metafile = true
+
+[[files]]
+file = "mods/eternal-starlight.pw.toml"
+hash = "6e1beac08fed14accc3edb3b5cd75220c3476d2ff27ce3b415c035623da41cda"
+metafile = true
+
+[[files]]
+file = "mods/the-aurorian-unofficial-port.pw.toml"
+hash = "02c23152c4e87fcd4d1cde48237a1897697c708bc13aed7327d8860aa8a2ff33"
+metafile = true
+
+[[files]]
+file = "mods/creeper-overhaul.pw.toml"
+hash = "cd4c4ec6ef26d2b61e0cb0bdd398e8d528b88ebf739fc0898bc8cb2f7a88debb"
+metafile = true
+
+[[files]]
+file = "mods/enderman-overhaul.pw.toml"
+hash = "1045ba1bb46eb77e2fea9be04268c2c73c161b94f3bceddbd4c3dbff1c0bf555"
+metafile = true
+
+[[files]]
+file = "mods/golem-overhaul.pw.toml"
+hash = "1dd77e06dcd06a82bd5e635e0a10ff6fbcefd607fbda7cca542316c4f4c4ab74"
+metafile = true
+
+[[files]]
+file = "mods/winter-overhaul.pw.toml"
+hash = "cef75a3276f7464779f2a293d508d1a5aa6c5504718d24977725a060397c5794"
+metafile = true
+
+[[files]]
+file = "mods/ghost.pw.toml"
+hash = "895a8abebb82f5cd662e71f765b0d1ae8e3bf5e9c7a1bff3270f4fa329cab0cd"
+metafile = true
+
+[[files]]
+file = "mods/ribbits.pw.toml"
+hash = "6a598c073aabc968d8ee736141d238c517e13662f3de0feb81796cb9c0d6f4f0"
+metafile = true
+
+[[files]]
+file = "mods/critters-and-companions.pw.toml"
+hash = "3f4a84b4344b129792d44a66fd0809d3f58a903707848b6905b493759814034d"
+metafile = true
+
+[[files]]
+file = "mods/more-darkness.pw.toml"
+hash = "fb7931b3a4acb5f6cff55e1e84bff75074db84e71baec2130ba1dc941cf98ffd"
+metafile = true
+
+[[files]]
+file = "mods/twilight-forest.pw.toml"
+hash = "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f"
+metafile = true
+
+[[files]]
+file = "mods/voidscape.pw.toml"
+hash = "b5de0d9da27c96dd83f2843372d3022801163636d3399851616072da2e80e319"
+metafile = true
+
+[[files]]
+file = "mods/resourceful-lib.pw.toml"
+hash = "c0b066684294c33972d562e0cb08ea17b2d31bcf86cd1d6c63b8e968f0eac7a2"
+metafile = true
+
+[[files]]
+file = "mods/resourceful-config.pw.toml"
+hash = "27721caca5a03b743bf25888e1d984142948069dace31453f103f94f7f24d2ce"
+metafile = true
+
+[[files]]
+file = "mods/yacl.pw.toml"
+hash = "1f47c89af2b4c6ab92735d68e58412d0b369f7035818e58d02f5982f7fc1186a"
+metafile = true
