@@ -185,3 +185,8 @@ Craftingguideappendix now inventories all20multiblock footprints/layers/actualma
 - Important corrections: ritual durationJSON is counter/seconds tier1 default, not ticks; Dictionary seedtagrecipe and reusablecraftingremainder; binds withgridnotnameclick; goldchalk comesyellowimpure; unboundritual displaysessence but summonsenemy (nativeessencelootbase1 via engine ROUND semantics). Nativebook ninecats,notoldsource six.
 - Highgatefinding: Battlefield explicit WitherNetherStar and Dragon3Breath:1Egg loottables. Earlier194miner no-literal-boss-output statement was scopedonlyminer. Ordinary/FragileSoulGemdeny #c:bosses; Trinityseparate denycheck,no native tagJSON; effectivepackcontributions/runtime acceptance unverified. Do not call approvedfarm/bypass. Report remains in device appendix.
 - Preserve qa-source dirtycheckout and concurrentintegrationwork. Workdir research-magic,branch research/mod-comprehension-local-jars-20261116,basecb8e2dcab59cc625500b3ca0329df1511823610b. No subagents currently authorized. Scratch/classes/decompiled outsideGit at LocalAppData Temp tmm-magic-research-20261116. Regular commits continue.
+
+
+### 2026-11-17 hourly continuation: remaining utility familiars
+
+Hourly continuation automation continue-magic-mod-research is ACTIVE. No concurrent local changes. Closed Beaver snack/tree15set-and-abort, Cthulhu lapis1→1or1–4/strict60trade/light, Greedy finder-vs-magnet/filter/owner/advancement limits, Beholder Warden recognition/ray9damage/support-eat and helper range. Updated old family table placeholders. Next consolidate Occultism parent full progression and residual-system coverage from exact appendices; no artifact blocker or runtime change.
