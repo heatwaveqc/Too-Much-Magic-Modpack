@@ -59,3 +59,8 @@ The full research phase is **not complete** while required profiles remain resea
 4. Review cross-mod source-supported reports, especially transformation/food, Ars bridges, resource-processing and late boss gates; write positive/boundary test handoffs. Do not implement adapters/quests/configs in this phase.
 
 Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Occultism, Roots, Totemic and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.
+
+
+## Ars continuation receipt, 2026-11-17
+
+Ars Nouveau5.13.5 remains researching. Nine pinned companions now reconcile native guide/85glyph recipes, all24ritual effects,5Source producers/5relays, five main worker systems and six core-registered familiar roles. See parent current coverage table for exact links and remaining casting/processing/equipment/advanced-device, seven-addon and pilot/stage gaps. Zero Patchouli resources in the artifact table means zero counted Patchouli resources, **not absence of native Java documentation**. Count remains5source-complete/37researching; no profile promoted in this slice.

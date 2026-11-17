@@ -1,3 +1,17 @@
+# Current continuation checkpoint — 2026-11-17 after cad165d3
+
+Full request remains unfinished:5/42profiles source-complete,37researching. No hard blocker. Hourly automation `continue-magic-mod-research` active; latest heartbeat19:38UTC arrived during ongoing work. Existing branch/PR265, no new branch or thread. Continue substantive research rather than repeat inventories or ask for JAR access.
+
+This run added exact Ars5.13.5 companions for all24ritual effects,5Source producers/5relays, Wixie, Whirlisprig, Bookwyrm/storage, Starbuncle item/potion/control, six registered familiars and Drygmy. With guide/85glyph companion there are nine linked appendices. Parent current coverage table separates covered systems from remaining casting/tier/mana/validation, Imbuement/Apparatus/enchant/equipment/advanced-device/Amethyst-worker, seven-addon and pilot/full-stage gaps. Finish those before any source-complete promotion.
+
+Regular commits pushed through eede4e69; later83803d27/af4a1987/cad165d3 plus this checkpoint need push (writer will push immediately after commit). Latest full clean canonical-LF preflight at eede4e69 PASS0baseline replacements; metadata159active/294indexed/181desired describes research checkout. Subsequent docs UTF8/local-links/scope/whitespace PASS (exclude existing `<manifest-id>` filename-template example). No runtime/config/quest/pin writes, assembly, server/client or gameplay tests. PR body last refreshed eede4e69; refresh latest helper coverage after push.
+
+Fetched integration now938c401ac304245663137085e7a2234244d57bf3; diff of research baseline vs this integration has no docs/mod-comprehension changes and no magic-profile pin changes. New nonmagic/world/QA pins and manifest selection changes belong to concurrent integration work, preserve them. Do not replace/replay shared trees. Research worktree remains basedcb8e2dcab59cc625500b3ca0329df1511823610b.
+
+Exact Ars JAR remains local Prism UNSTABLE(2), SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. Scratch/CFR classes outside Git under LocalAppData Temp tmm-magic-research-20261116. All helper/familiar/Source/API/recipe/ritual classes decompiled; personalcasting/processing should extract additional targeted classes. Serious corrections: ScriptUI native notPatchouli;85not82glyphrecipes; Whirlisprig consumesSource; Alchemicalemptybuffer fromcanReceivefalse; twoSpellModifierEvent dispatchers; Bookwyrm skipownUUIDitem/XPdirect; Starbuncle directhandnugget ALSO supported, potionpartialdeliveryclearsidentity; DrygmyHorn/Spike/Wing and bonusbeforeblacklist/lootwithreplacement. Actual protected/boss eligibility remains pack audit, nofarmapproval.
+
+---
+
 # Research pickup — local JAR continuation
 
 ## Current workstream

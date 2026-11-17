@@ -3,22 +3,41 @@
 Current pinned follow-up: [native guide UI, five configurable starter defaults, Scribe's Table/learning contract and all85glyph recipes](ars-nouveau-pinned-guide-glyphs.md). Exact local JAR hash rechecked2026-11-17; older missing-artifact and82recipe statements below are historical source-survey limits, superseded by this binary evidence. Parent remains researching.
 
 
+## Current exact-JAR coverage override (2026-11-17)
+
+The older source-survey sections below are historical context where they differ from these binary companions. Parent status stays **researching**. Source coverage does not require unrun gameplay acceptance to be relabeled as a source-access blocker.
+
+| Subsystem | Exact pinned companion / current state |
+| --- | --- |
+| Guide and glyph acquisition | [Native documentation UI, five configurable starter defaults, all85 glyph recipes and player learning](ars-nouveau-pinned-guide-glyphs.md); guide is not dependent on Patchouli JSON. |
+| Rituals | [All24 tablets/effects, augments, source order, event boundaries and placement](ars-nouveau-pinned-rituals.md); earlier remaining20-effects note superseded. |
+| Source | [All five producers, five relays, capacity/search/transaction formulas and acquisition](ars-nouveau-pinned-source.md); formulas separate from measured rate. |
+| Crafting worker | [Wixie cauldron item/potion workflow, mandatory binding and real sample selection](ars-nouveau-pinned-wixie.md). |
+| Grove worker | [Whirlisprig habitat/progress, paid plant-drop generation and ignored overflow](ars-nouveau-pinned-whirlisprig.md); consumes Source, does not produce it. |
+| Storage worker | [Bookwyrm/Storage Lectern, default8positions per worker/default30link, crafting and visual-only queue](ars-nouveau-pinned-bookwyrm-storage.md). |
+| Transport worker | [Starbuncle item/berry/potion modes, filters, bed/road/passenger controls and partial-load boundaries](ars-nouveau-pinned-starbuncle.md). |
+| Loot worker | [Drygmy exact acquisition/Henge/channel/loot/XP and Source timing](ars-nouveau-pinned-drygmy.md); effective protected/boss eligibility separate. |
+| Familiars | [Six registered roles, Binding/script/player unlock/summon and ability methods](ars-nouveau-pinned-familiars.md); Jabberwog classes not core-registered. |
+| Remaining native core | Personal casting/tier/mana/validation transaction, Imbuement/Apparatus/enchanting/equipment, Amethyst Golem worker/advanced devices and full stage consolidation still need targeted binary reconciliation. |
+| Addons/pilot/interactions | Seven independent profiles; source/version gaps and quest pilot authoring/runtime crosswalk still open. No addon/client acceptance or full-parent completion inferred from core companions. |
+
+
 | Field | Value |
 | --- | --- |
 | Manifest ID / actual mod ID | `ars-nouveau` / `ars_nouveau` |
 | Category / parent or addons | Primary system with seven separately pinned addons; focused profiles are linked in the subsystem matrix below and tracked in the [coverage index](../INDEX.md). |
 | MC / loader / pack target | 1.21.1 / NeoForge / TMM `test/full-integration` at base `385c69889fccf281f94957ba4063488e1646a2e0` |
 | Source snapshot | `baileyholl/Ars-Nouveau` commit `4d323fba9200c3293a4f4848cf1e0fe70beb7098`; declares 1.21.1 / 5.13.5 |
-| Guide/documentation version gap | Notebook JSON is from the version-aligned source commit. The separate gameplay guide targets 5.11 and is not used to assert current recipes. The pinned JAR hash was verified for the 49-quest pilot, but source-tree-to-binary equivalence is not independently established here. |
+| Guide/documentation version gap | Native Java documentation registration and exact recipes are now directly inspected in pinned5.13.5 JAR; older source/5.11 guide citations are historical and superseded where companions differ. Upstream tree-to-binary build identity is not asserted. |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
-| Profile status | **researching** — core tier and glyph-learning route are now source-mapped; full creature/ritual/recipe inventory, exact artifact/source comparison for version-drifted addons, in-pack config confirmation and client walkthrough remain open |
-| Evidence reached | Exact pack pin/hash; immutable version-aligned upstream source/Notebook JSON; PR #74 reports all eight pinned Ars JARs hash-verified and a server registry probe; no client/world gameplay test |
+| Profile status | **researching** — exact native guide/glyph/ritual/Source/primary-worker/familiar companions complete; casting/processing/equipment/devices, seven-addon and full pilot/stage consolidation remain open; gameplay acceptance separate |
+| Evidence reached | Exact pack pin/hash and nine direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). The authored 49-quest pilot is on separate PR #74; not integrated or client-accepted. |
 
 ## Executive gameplay map
 
-**What the player actually does:** Ars has two related but distinct economies. The player builds custom spells by combining a cast form, effects and augments into a spell stored in a spellbook or compatible casting item; casting spends the player's mana. Separately, Sourcelinks create **Source** from supported events or inputs and Source Jars store it for nearby devices and rituals. Source powers item processing (Imbuement Chamber, Enchanting Apparatus, Scribes Table), ritual effects and magical automation. The mod's summoned and befriended creatures extend that automation: Starbuncles move filtered items, Whirlisprigs consume Source to generate plant-associated drops from a diverse grove, Wixies automate supported potion/item recipes, and Drygmys turn nearby living entities into repeatable item and experience-gem output. Exploration supplies Wilden parts, magical plants, creatures, and other progression materials. This is both a flexible combat/utility spell system and a small creature-run base-automation system, not only a spellbook.
+**What the player actually does:** Ars has two related but distinct economies. The player builds custom spells by combining a cast form, effects and augments into a spell stored in a spellbook or compatible casting item; casting spends the player's mana. Separately, Sourcelinks create **Source** from supported events or inputs and Source Jars store it for nearby devices and rituals. Source powers supported processing, ritual effects and magical automation; Scribe glyph selection consumes XP points and ingredients through the separately audited learning workflow. The mod's summoned and befriended creatures extend that automation: Starbuncles move filtered items, Whirlisprigs consume Source to generate plant-associated drops from a diverse grove, Wixies automate supported potion/item recipes, and Drygmys turn nearby living entities into repeatable item and experience-gem output. Exploration supplies Wilden parts, magical plants, creatures, and other progression materials. This is both a flexible combat/utility spell system and a small creature-run base-automation system, not only a spellbook.
 
 **Why it matters in TMM:** Its distinctive contribution is player-authored spell composition plus Source-powered magical processing and creature automation. That complements Iron's authored spellbook/school progression, Occultism's spirit labor and storage, and Neo Vitae's altar economy. These are possible comparison points, not evidence of a working integration. Ars has **seven** separately pinned addon records; addon-specific mechanics are not established by this base profile. The [49-quest pilot PR #74](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74) covers all seven addons on a separate feature branch; it inspected exact pinned JARs, but is not evidence that those quests have been integrated or client-accepted.
 
@@ -349,7 +368,7 @@ No implicit test credit from parsing, compilation or dedicated-server startup.
 - [ ] Audit all 5.13.5 custom recipe JSON types and recipe costs; confirm which are exposed to KubeJS and JEI in the pinned KubeJS stack.
 - [ ] Map the default starter glyph set and book-tier unlock behavior against the assembled pack; audit representative spell mana costs, cast validity, and the guide/JEI references for a practical first spell in each tier. Core recipe data has 82 glyph recipes at 27/55/160 XP, but individual recipes/validity remain choice-driven and exact artifact access is now resolved by the pinned companion.
 - [ ] Confirm installed crop/mob/food tag membership, measure useful Sourcelink throughput, and audit third-party providers/consumers of Ars Source in the pack. Core Jar/link capacities, transfer cadence/range and the 24 ritual page inventory are source-mapped. All24 ritual implementations and the five producer/five Source-relay contracts now have exact-JAR companions; retain effective tag/provider audit and measured-rate boundaries.
-- [ ] Confirm the effective Drygmy blacklist and eligible-entity list against TMM tags/recipes and test protected/boss loot policy; inspect Wixie inventory rules and storage/Bookwyrm cap in 5.13.5. Drygmy acquisition, Charm ingredients, habitat radius/source/progress/output formulas and overflow risk are source-mapped, but not pack-verified.
+- [ ] Confirm the effective Drygmy blacklist and eligible-entity list against TMM tags/recipes and test protected/boss loot policy; effective handler/tag acceptance remains open. Wixie rules, default8inventory positions per Bookwyrm and Drygmy acquisition/loot/formulas/overflow now have exact-JAR companions, but are not pack-verified.
 - [ ] Inspect the pinned Ars/Additions and Ars/Elemental JARs against their newly identified addon-version source commits; review the remaining Controle/Elemancy/Ocultas feature and JEI inventories; validate Occultism Crush in Ars Unification and current Ars 'n Spells server config.
 - [ ] Verify notebook and every critical build page in the assembled client; add a Worn Notebook onboarding quest to the pilot and review all setup prose against actual GUI behavior.
 - [ ] Confirm FTB task types that can detect a valid spell cast or functioning Source link without relying on a crafted item alone.
