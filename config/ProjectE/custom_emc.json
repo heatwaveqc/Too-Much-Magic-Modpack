@@ -1,0 +1,9 @@
+{
+  "comment": "Parchment fragment equals seven paper at standard 32 EMC per paper; verify final mapped parity in integrated pack.",
+  "entries": [
+    {
+      "item": "improvableskills:parchment_fragment",
+      "emc": 224
+    }
+  ]
+}
