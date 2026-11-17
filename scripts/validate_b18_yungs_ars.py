@@ -50,6 +50,8 @@ def main():
     exporter = read(files[0])
     assert "ServerEvents.basicCommand" in exporter and "minecraft:worldgen/structure" in exporter
     for path in files:
+        if path.startswith("manifest/"):
+            continue  # manifests are source-only and excluded by .packwizignore
         digest = hashlib.sha256(read(path).encode()).hexdigest()
         assert f'file = "{path}"\nhash = "{digest}"' in index, path
     result = subprocess.run([sys.executable,
