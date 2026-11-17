@@ -303,12 +303,9 @@ Remaining source work is the **full recipe-to-guide-to-player-stage reconciliati
 
 ## Unknowns and next research
 
-- [ ] Finish recipe-by-recipe review of the 240 crushing and 158 ritual JSONs, mapping their guide entries, inputs, outputs, events, IDs, tier gates and tag conditions. Crusher serializer/worker/default multiplier behavior is now source-mapped; full recipe coverage is still open.
-- [ ] Client-test the source-confirmed Foliot Draconium route against the exact pinned Occultism/DE artifacts; resolve common uranium/raw-block tag membership before describing those routes as available. Confirm the commented-out Eldritch Draconium output remains absent; audit all 194 recipe files and other mod/datapack recipes for Replica Ore and protected boss outputs.
-- [ ] Client-check the Storage Stabilizer diagram and the shift-click vs any-use Remote link discrepancy; audit pack-effective storage capacity config and test integrated automation.
-- [ ] Close familiar, resurrection, battlefield/extractor, Otherworld tool and advanced chalk branches.
-- [ ] Pinned JAR access resolved; test guide/tasks/Ars bridge/bag tags in client.
-- [ ] Reconcile the chapter against this matrix when quest authoring is authorized; this pass did not edit it.
+Current remaining work is the guide-to-walkthrough reconciliation and residual helper semantics listed immediately above. All ritual/processing resources and the remaining244 crafting/building/special records now have exact-JAR inventories. See [all931 recipes and230guide-entry crosswalk](occultism-pinned-crafting-guide.md). Historical revision notes preserve what was unknown at that time; they are not the current source-access state.
+
+Loaded-tag/config resolution, actual conditional Draconium/uranium availability, protection behavior, guide rendering, cross-mod Ars behavior and gameplay acceptance remain unrun. Quest authoring is a later separate phase and no chapter was edited.
 
 ## Revision notes
 
