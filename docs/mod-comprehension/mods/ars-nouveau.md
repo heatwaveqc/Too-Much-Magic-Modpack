@@ -20,7 +20,8 @@ The older source-survey sections below are historical context where they differ 
 | Familiars | [Six registered roles, Binding/script/player unlock/summon and ability methods](ars-nouveau-pinned-familiars.md); Jabberwog classes not core-registered. |
 | Processing/enchanting | [Imbuement passive/accelerated operation, Apparatus geometry/consumption/failure order,96 sequential enchantment ranks and all192 audited recipe resources](ars-nouveau-pinned-crafting.md). |
 | Casting/tier route | [Novice/Apprentice/Archmage recipes, ten stored slots vs ten composition links, validation layers, mana/reserve formulas and debit order](ars-nouveau-pinned-casting.md). |
-| Remaining native core | Equipment/Reactive activation, Amethyst Golem worker/advanced devices and full stage consolidation still need targeted binary reconciliation. |
+| Armor/threads/Reactive | [Twelve armor layouts, two upgrade gates, nineteen thread recipes/effects, table controls/state boundaries and Reactive activation](ars-nouveau-pinned-armor-threads.md). |
+| Remaining native core | Other casting equipment/advanced devices, Amethyst Golem worker and full stage consolidation still need targeted binary reconciliation. |
 | Addons/pilot/interactions | Seven independent profiles; source/version gaps and quest pilot authoring/runtime crosswalk still open. No addon/client acceptance or full-parent completion inferred from core companions. |
 
 
@@ -33,7 +34,7 @@ The older source-survey sections below are historical context where they differ 
 | Guide/documentation version gap | Native Java documentation registration and exact recipes are now directly inspected in pinned5.13.5 JAR; older source/5.11 guide citations are historical and superseded where companions differ. Upstream tree-to-binary build identity is not asserted. |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
 | Profile status | **researching** — exact native guide/glyph/ritual/Source/primary-worker/familiar companions complete; equipment/advanced devices, seven-addon and full pilot/stage consolidation remain open; gameplay acceptance separate |
-| Evidence reached | Exact pack pin/hash and eleven direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
+| Evidence reached | Exact pack pin/hash and twelve direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). The authored 49-quest pilot is on separate PR #74; not integrated or client-accepted. |
 

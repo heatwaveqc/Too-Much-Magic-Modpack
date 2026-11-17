@@ -289,3 +289,8 @@ FreshCFRscratch: ars-fresh-20261117 under tmm-magic-research-20261116,249topclas
 ### 2026-11-17 Ars personal casting and book tiers
 
 Added pinned-casting.md: exactNoviceBookorNotebook+4Irontools,Apprentice/Archmagegates+componentcopy,10savedslotsvs10basecompositionlinks(notold4/7/10),configuredOpenBookkey,UIknown/tier/pastevalidationvsservercastingvalidators,PrecostvsPostdebit,formSUCCESS-beforemana,blockentity/Scribebypass,rememberedhighestbooktier,max100+15known+50tierbeforeattributes/reserve,regen5+.33known+tier/defaultinterval5/TPSsampling. Exactfamiliarmanareserve15%formula nowclosed. Parent11companions,remainingequipment/advanceddevices/Amethystworker/addons/pilot/fullstage. No runtime;sameSHA1scratchartifact.
+
+
+### 2026-11-17 21:39UTC armor/threads/Reactive continuation
+
+Added pinned-armor-threads.md: 12family/piece slotlayouts all3internaltiers sorteddescending,0→1(twoBlazeRods2500Source)→2(twoPearls+Chorus5000),19functionalthreads+EmptyPerk(20registered),all19recipepedestals,table3parts/standvsworktop/addnext/removefirst/returnarmor,perktagmapreplacement(existingstatecanbelost). Slotvalue/booktier/armortierseparate, familieschoices. All19sourceabilities includingcountForPerkMAXnotSUM,200tick20manarepairbase1,globalSleeptimeUndyingrefresh,perinstanceLifeDrain,Chillingliteralamp1/2,GlideCaelus/EffectGlidecheck. TwoLootingmixins max(spellLuck,enchant)+intDRYGMY foronlythosefunctions. Reactiveevents25%×rank/afterhurtallarmor/attackblockairmainhand,normalplayerManadebit,notfreeclick. No runtime. Parent12companions,stillresearching; nextothercastinggear/devices/Amethystworker,then7addons/pilot/fullstage.
