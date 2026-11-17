@@ -657,5 +657,34 @@
       "version_id": "6e8GCrLb",
       "reason": "Deep Aether required, beta only; do not enable without specific owner approval"
     }
-  ]
+  ],
+  "native_audit_run": 44014327626,
+  "native_audit_summary": {
+    "enabled_roots": [
+      "the-bumblezone",
+      "dive-into-the-abyss",
+      "eternal-starlight",
+      "the-aurorian-unofficial-port",
+      "creeper-overhaul",
+      "enderman-overhaul",
+      "golem-overhaul",
+      "winter-overhaul",
+      "ghost",
+      "ribbits",
+      "critters-and-companions",
+      "more-darkness",
+      "twilight-forest",
+      "voidscape"
+    ],
+    "enabled_dependencies": [
+      "resourceful-lib",
+      "resourceful-config",
+      "yacl"
+    ],
+    "blocked": {
+      "aether": "Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required.",
+      "deep-aether": "Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation.",
+      "liroth-revamped": "Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed."
+    }
+  }
 }

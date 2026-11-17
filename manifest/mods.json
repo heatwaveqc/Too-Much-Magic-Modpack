@@ -22,12 +22,12 @@
       "name": "The Aether",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "1.21.1-1.5.10-neoforge",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/aether",
+      "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified. Frozen JAR audit 44014327626: Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required."
     },
     {
       "id": "akashic-tome",
@@ -650,12 +650,12 @@
       "name": "Deep Aether",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "1.21.1-1.1.5.1",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/deep-aether",
+      "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation."
     },
     {
       "id": "deeper-darker",
@@ -687,12 +687,12 @@
       "name": "Dive Into the Abyss",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "1.1.4",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/dive-into-the-abyss",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved six-temple dark-fantasy dimension for next authorized unstable QA; verify exact release pin, dependency closure, bosses/progression and dimension travel."
+      "source": "https://modrinth.com/mod/dive-into-the-abyss/version/w30oDCUY",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "draconic-evolution",
@@ -801,12 +801,12 @@
       "name": "Eternal Starlight",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "0.9.1+1.21.1+neoforge",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/eternal-starlight",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved magical dimension for next authorized unstable QA. Official release remains pre-1.0; test complete available progression and ensure compatibility before acceptance."
+      "source": "https://modrinth.com/mod/eternal-starlight/version/IyTc0Vvj",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "evilcraft",
@@ -1380,12 +1380,12 @@
       "name": "Liroth: Revamped",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "2.0",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/liroth-revamped-neoforge",
+      "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed."
     },
     {
       "id": "lithostitched",
@@ -2150,24 +2150,24 @@
       "name": "The Aurorian (unofficial port)",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "1.21.1-1.0.6",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/the-aurorian-unofficial-port",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved experimental fantasy dimension for next authorized unstable QA. An unofficial port, so confirm exact 1.21.1 NeoForge artifact, license/provider, dependencies, bosses and runtime maturity."
+      "source": "https://modrinth.com/mod/the-aurorian-unofficial-port/version/8yOGgcWP",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "the-bumblezone",
       "name": "The Bumblezone",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "7.17.3+1.21.1-neoforge",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/the-bumblezone-forge",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved fantasy bee dimension for next owner-authorized comprehensive unstable QA. Resolve exact 1.21.1 NeoForge pin and dependencies; test bee interactions, portal travel, and worldgen."
+      "source": "https://modrinth.com/mod/the-bumblezone/version/LwGXnQCW",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "theurgy",
@@ -2238,12 +2238,12 @@
       "name": "The Twilight Forest",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "4.8.3345",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved for next unstable QA despite unfinished Final Castle. DESIGN TARGET: custom Killer Rabbit of Caerbannog as finale with meaningful completion trophy/quest. Separate existing Caerbannog Gateways prototype is not proof final boss wired. Do not silently install unrelated Castle Keeper addon."
+      "source": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest/files/7797302",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "tyzs-skills",
@@ -2289,12 +2289,12 @@
       "name": "Voidscape",
       "category": "adventure",
       "desired": true,
-      "version": null,
+      "version": "1.9.588",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved hostile Void fantasy dimension for next authorized unstable QA; confirm exact release pin/dependencies, travel, void effects, compatibility with other dimensions."
+      "source": "https://www.curseforge.com/minecraft/mc-mods/voidscape/files/8175491",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "witchery-remake",
@@ -2597,96 +2597,132 @@
       "name": "Creeper Overhaul",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/creeper-overhaul",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending. Preserve native Cave Creeper loot."
+      "version": "4.0.6",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/creeper-overhaul/version/HNrAYCLH",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. Native cave creeper ore drops preserved."
     },
     {
       "id": "enderman-overhaul",
       "name": "Enderman Overhaul",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/enderman-overhaul",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "2.0.3",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/enderman-overhaul/version/TH9YXp9r",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "golem-overhaul",
       "name": "Golem Overhaul",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/golem-overhaul",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "1.1.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/golem-overhaul/version/V1OtffxB",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "winter-overhaul",
       "name": "Winter Overhaul",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/winter-overhaul",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "4.0.2+1.21.1-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/winter-overhaul/version/jMBjksDu",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "ghost",
       "name": "Ghost",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/ghost",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "1.3.4",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/ghost/version/jlhsMccP",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "ribbits",
       "name": "Ribbits",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/ribbits",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "4.1.6",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/ribbits/version/XrUKaWrw",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "critters-and-companions",
       "name": "Critters and Companions",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/critters-and-companions",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending."
+      "version": "1.21.1-2.4.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/critters-and-companions/version/MMFSVRkt",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
       "id": "more-darkness",
       "name": "More Darkness",
       "category": "qol",
       "desired": true,
-      "version": null,
-      "release_status": "unverified",
-      "source": "https://modrinth.com/mod/more-darkness",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved next comprehensive unstable test. Exact official NeoForge 1.21.1 provider pin and required dependency review pending. Client-only mod itself now; dynamic Newbie/Astral staging owner-deferred."
+      "version": "2.0.1+1.21.1+neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/more-darkness/version/6jywYHaX",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; client; not game-smoked. Static darkness only; dynamic progression deferred."
+    },
+    {
+      "id": "resourceful-lib",
+      "name": "Resourceful Lib",
+      "category": "library",
+      "desired": true,
+      "version": "3.0.12",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/resourceful-lib/version/x99nCLTm",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
+    },
+    {
+      "id": "resourceful-config",
+      "name": "Resourceful Config",
+      "category": "library",
+      "desired": true,
+      "version": "3.0.11",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/resourceful-config/version/lSbyRD6v",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
+    },
+    {
+      "id": "yacl",
+      "name": "YetAnotherConfigLib (YACL)",
+      "category": "library",
+      "desired": true,
+      "version": "3.8.2+1.21.1-neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/yacl/version/7TVdVtxF",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; client; not game-smoked. "
     }
   ],
   "excluded": [
