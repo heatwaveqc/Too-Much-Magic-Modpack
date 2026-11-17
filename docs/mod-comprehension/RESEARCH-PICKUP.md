@@ -205,3 +205,8 @@ Prism artifacts moved to instance(2), not(1); rediscovered by filename and reche
 ### 2026-11-17 Ars ritual chassis and first four effects
 
 Added ars-nouveau-pinned-rituals.md: all24tablet recipepayloads/IDs/declaredrequestcost, shared tablet→augment→emptyhandstart, powerpause, runningreplacementallowed/noimpliedrefund, contextflags and Sourcepaymentafterwork whereapplicable. Deep Wilden threeexactparts/Chimera clearing, Containment whitelistpriority/multijar500batch, Restoration10health/curewithoutweakness200batch, Flight60range1200/200request. Remaining20effects explicitlypending (classes alreadyCFR scratch). No sourcecomplete/runtimeclaim. New Prism(2) exactArsverified; no artifactblocker.
+
+
+### 2026-11-17 Ars full native ritual effects
+
+All24 tablet effect implementations now mapped in ars-nouveau-pinned-rituals.md, plus10Scry recipes/1Bat summon, seven feature helpers, event queue and relay16. Critical boundaries: Disintegration discard-before-XP/batch300, Sanctuary event hooks lack needsSource check; powered range effect hooks not universally stopped; essence-onlyScry can finish with no target; Warp body sameworldteleport; emeraldtagaccept vs vanillaEmeraldoverride; island50after5placements; finite landscaping noSource helper debit. All source, no runtime. Ars parentstillresearching; nextSource/personalcasting/helperautomation +addons/pilot. No hardblocker; hourlycontinuation remainsactive.
