@@ -288,7 +288,18 @@ The chapter file was inspected directly. No additional Occultism tasks were foun
 | Storage automation | Insert/extract through vanilla chest-compatible integration and test a consumer that counts item contents | Verify accepted capability/path and large-count behavior; no fluid/FE channel assumed | not run |
 | Ars Unification | Test Crusher Spirit recipe under exact pins, including output and unavailable target | Expected native recipe loads and operates | no client |
 
-**Status:** researching. Guide graph, broad tier gates and high-risk issues are source-mapped. Recipe-by-recipe progression, miner outputs, storage structures, advanced/familiar mechanics, exact jar comparison and client tests remain open.
+**Status:** researching. Exact local artifact access is resolved. The pinned appendices now close all158 ritual records, all529 processing records, native storage/access/dispatch/menu mechanics, worker-job methods/defaults, Otherworld visibility-versus-harvest rules and major rare familiar branches. These supersede earlier unchecked inventory/access claims in historical notes below.
+
+Remaining source work is the **full recipe-to-guide-to-player-stage reconciliation** (including ordinary crafting/chalk/material branches and guide references), residual familiar-specific helpers and a final parent-profile rewrite that replaces old partial tables with concrete instructions. Effective tag/config resolution and client/gameplay acceptance remain separate, unrun checks; they are not evidence that source access is blocked.
+
+- [x] All158 ritual recipes and11 factory channels inventoried.
+- [x] All529 crushing/mining/crystallization/Spirit Fire/trade recipe resources inventoried, including conditions and tier/output boundaries.
+- [x] Worker acquisition/control, physical item paths, harvest/collection and configured default processing parameters traced.
+- [x] Native storage capacities, stabilizer search, remote access, dispatch and crafting-menu transactions traced.
+- [x] Core familiar lifecycle/upgrades plus Chimera/Goat/Shub/Headless rare branches audited with limitations explicit.
+- [ ] Reconcile complete ordinary crafting/chalk/material acquisition into every mandatory tier and guide page, with exact building/activation steps.
+- [ ] Review residual familiar helpers and consolidate parent progression/quest teaching matrix; avoid repeating closed finite inventories.
+- [ ] Run gameplay acceptance later only under applicable authorization; no runtime PASS from this research.
 
 ## Unknowns and next research
 

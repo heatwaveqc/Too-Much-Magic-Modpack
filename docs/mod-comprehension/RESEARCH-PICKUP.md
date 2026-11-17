@@ -137,3 +137,8 @@ Familiars appendix now records Chimera born-with-Goat/detach not an invented fus
 ### Occultism storage/menu transaction follow-through
 
 Storage appendix now has insertion blacklist/remainder semantics, extraction first component variant vs availability sum, nonreserved machine order queue, BlockPos-only menu lock,8blocklocal vs remotevalidity, persisted grids and shift-craft/remainder/component boundaries. All nested storage classes extracted/decompiled. Remaining for sourcecompletion: ordinary recipe/guide-stage reconciliation, visibility/loot path, residual familiar helpers; do not redo finite inventories/worker methods. Runtime packet/concurrency/crafting acceptance separate.
+
+
+### Occultism visibility/harvest and current checklist
+
+Storage appendix now traces IOtherworldBlock tier max, goggles clientreveal vs serverloot (goggles not in harvesttier), natural Iesnium/Otherstone/logloot and rod analogue/config/staff lookup +horizontal bands. Parent current checklist reconciled closed inventories/worker/storage/rarebranches; historical notes retained. Parent remains researching: full ordinaryrecipe/chalk/materialguide-to-stagewalkthrough and residualfamiliarhelpers. Do not call runtime acceptance/sourceaccess a blocker.
