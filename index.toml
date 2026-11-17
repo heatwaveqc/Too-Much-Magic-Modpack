@@ -26,7 +26,7 @@ hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
-hash = "cc5229ca496bfe85b2d1e12826fdbb8d91f2781a36c8e5687c44edae0daec70c"
+hash = "7a7018767557afacd2bef8f98437f75571643863299749d0be948fd61a25c621"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/apotheosis.snbt"
@@ -198,7 +198,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "273fdc913b40d6474c854fdb9915441d767c4f6544066172118e65df30d53d29"
+hash = "bdb409bc4b59fd5146a811711b51993dde9a16df260ef0fb8b2438cbaa3a6440"
 
 [[files]]
 file = "config/questshop-common.toml"
@@ -1662,3 +1662,7 @@ hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
 [[files]]
 file = "kubejs/data/tmm/curios/slots/bundle.json"
 hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
+
+[[files]]
+file = "config/tyzs_skills-client.toml"
+hash = "5b9dd53760e7c76d079031590c5312157cc883ce750eec22ade679976106c64c"

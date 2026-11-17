@@ -22,7 +22,7 @@ VALIDATE = ROOT / "scripts/validate_quests.py"
 CHAPTER = ROOT / "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
 ARCH = ROOT / "docs/QUEST-ARCHITECTURE.md"
 TITLE = "Alcohol is Magic"
-CHAPTER_ID = "A1C0000000000000"
+CHAPTER_ID = "21C0000000000000"
 GROUP_ID = "544D101000000000"
 
 # Criterion types are honest: an item task verifies possession, not successful
@@ -271,13 +271,13 @@ def add_chapter() -> None:
         "name": TITLE, "filename": "alcohol_is_magic.snbt", "order_index": 3,
         "icon": "brewinandchewin:keg",
         "mod_ids": ["brewin-and-chewin", "cocktails-delight", "lets-do-beachparty"],
-        "overview_quest_id": ident("A1C1", 1), "overview_task_id": ident("A1C2", 1),
+        "overview_quest_id": ident("21C1", 1), "overview_task_id": ident("21C2", 1),
     }
     spot = next(i for i,c in enumerate(spec["chapters"]) if c["category"]=="Progression")
     spec["chapters"].insert(spot, new_chapter)
     rows=[]
     for n, (title, desc, criterion_item, depends, optional, x, y, reward_item, qty, xp, icon) in enumerate(QUESTS, 1):
-        qid, tid, xpid, itemid = (ident(prefix, n) for prefix in ("A1C1", "A1C2", "A1C3", "A1C4"))
+        qid, tid, xpid, itemid = (ident(prefix, n) for prefix in ("21C1", "21C2", "21C3", "21C4"))
         assert {qid, tid, xpid, itemid}.isdisjoint(existing_ids)
         existing_ids.update((qid, tid, xpid, itemid))
         cr = {"type": "item", "id": criterion_item, "count": 1} if criterion_item else {"type": "checkmark"}
