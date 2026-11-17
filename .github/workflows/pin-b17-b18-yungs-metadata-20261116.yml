@@ -1,0 +1,42 @@
+name: B17/B18 one-shot YUNG metadata pins (no modpack build)
+on:
+  push:
+    branches: ['integration/pr135-yungs-loot-ars-pins-20261116']
+    paths:
+      - 'scripts/pin_b17_b18_yungs_metadata.py'
+      - '.github/workflows/pin-b17-b18-yungs-metadata-20261116.yml'
+permissions:
+  contents: write
+concurrency:
+  group: b17-b18-metadata-pins
+  cancel-in-progress: false
+jobs:
+  resolve-exact-files:
+    if: github.repository == 'heatwaveqc/Too-Much-Magic-Modpack'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Resolve approved SHA-512 upstream versions, index packwiz and retain End Island hold
+        run: python scripts/pin_b17_b18_yungs_metadata.py
+      - name: Static Ars Additions locator/tag/registry generator validation
+        run: |
+          python scripts/validate_b17_ars_locators.py
+          python scripts/validate_b18_yungs_ars.py
+          python scripts/generate_ars_all_structures.py --self-test
+      - name: Commit metadata and source-index updates to isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- mods/ index.toml pack.toml manifest/mods.json \
+            scripts/validate_b17_ars_locators.py scripts/validate_b18_yungs_ars.py
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "B17/B18: pin approved exact YUNG/loot sources and Ars locator data"
+            git push origin HEAD:integration/pr135-yungs-loot-ars-pins-20261116
+          fi
