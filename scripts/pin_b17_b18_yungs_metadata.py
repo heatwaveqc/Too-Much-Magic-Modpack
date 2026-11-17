@@ -174,7 +174,7 @@ def update_index(files: dict[str, str]) -> None:
                    if (m := re.search(r'^file = "([^"]+)"$', b, flags=re.MULTILINE))
                    and m.group(1).startswith(path.split("/")[0] + "/") and m.group(1) > path), len(blocks))
         blocks.insert(at, new)
-    result = header + "".join(blocks)
+    result = (header + "".join(blocks)).rstrip() + "\n"
     oldhash = hashlib.sha256(original.encode()).hexdigest()
     ptext = pack.read_text(encoding="utf-8")
     if ptext.count(oldhash) != 1:
