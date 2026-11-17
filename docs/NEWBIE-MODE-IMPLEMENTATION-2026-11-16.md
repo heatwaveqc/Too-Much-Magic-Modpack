@@ -1,6 +1,6 @@
 # Newbie Mode + Smart Keep Inventory — implementation handoff (2026-11-16)
 
-**Status:** Source staged on `feature/newbie-mode-smartkeep-2026-11-16`; no owner-authorized full smoke/client test; NOT accepted runtime. Reviewable draft PR, not a stable/merged pack change.
+**2026-11-16 reconciliation update:** Reviewed Progression engine [#285](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/285) merged into `dev/progression`; successor integration [#286](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/286) selects only approved #241 source, pins the official 1.21.1 NeoForge Smart Keep 1.0.1 JAR with SHA512, adds a personal 227th quest and real Tyz Safekept disable file without overwriting current code. **Still no full modded server/client/gameplay test; no built first-party JAR.** Read [current authoritative QA](qa/NEWBIE-MODE-SMARTKEEP-RECONCILIATION-2026-11-16.md). The sections below document the **historical draft state** before reconciliation, including now-resolved external pin prerequisites.
 
 ## Owner decisions
 
