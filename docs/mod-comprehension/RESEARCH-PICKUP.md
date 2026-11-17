@@ -310,3 +310,8 @@ Added pinned-armor-threads.md: 12family/piece slotlayouts all3internaltiers sort
 ### 2026-11-17 Amethyst Golem worker
 
 Added pinned-amethyst-golem.md: AwakeningconsumesBudding/Dispelcharmmove,ownhomewandgolemfirst→inventorylast,scancubeXZ5Y-3..10every3600,AmethystBlock→BuddingoneNativeconversion/noSource/sharddebit,120timer/clamp40/6000cooldown,grow4randomticksnot3/cooldown300,harvest130remaining12080/40/0faces/cooldown1200,pickuphomeinflate10timedremote80/shardtag/depositremainderkept. Cachedscanandgoalsnotguaranteedparallelrates; actualclaims/ownershipguardnotestablished. Parent13companions;nextothercastergear+advanceddevices then7addons/pilot/fullstage.
+
+
+### 2026-11-17 22:42UTC turret continuation
+
+Added pinned-turrets.md:4variants/5recipes,Touch+Projectilemaps only,programselectedcastermainhandnoitemdebit,4tickrisingedgeBasicvsTimerpowerpause/20default/±20or200/lock/zero,Enchantedfloorhalf,TimerexcludeTouchProjectileRedstoneSensitivecosts,SourceBEFOREeffects/noimpliedrefund,linkedSourcepreferred+noemptyfallback/maxExtract/sameworldperaxis10,rotatingwandaimvsSourcebindingdirections. javapshootSpellverifiedbecauseCFRunstructuredGOTO. Parent14companions,stillresearching: othercastergear/ParchmentCodexTomes/foci/potions andremote/advanceddevices plus7addons/pilot/fullstage.
