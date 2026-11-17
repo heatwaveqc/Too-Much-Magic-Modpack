@@ -353,6 +353,23 @@
       "merged_from": "stage/next-qa-jer-alex-uranium",
       "original_source_commit": "ac250b44ae4a66b7d5eff9568e82ca61d51423c7",
       "note": "Reconciled only three SHA-512 provider-verified mod metadata files into baseline packwiz; did NOT import retired Bigger Reactors ore modifier, uranium conversion, old manifest/index/workflows, stage script or stage-only validator. Both/server Alex + Codx, JER client only. Next owner-authorized client/server/worldgen acceptance remains open."
+    },
+    {
+      "name": "betterend-newdawn-iesnium-pinned",
+      "branch": "test/full-integration",
+      "paths": [
+        "mods/betterend-new-dawn.pw.toml",
+        "mods/bclib-new-dawn.pw.toml",
+        "mods/wunderlib-new-dawn.pw.toml",
+        "mods/worldweaver-new-dawn.pw.toml",
+        "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"
+      ],
+      "mode": "pinned-source-not-worldgen-tested",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/b16-betterend-thallasium-iesnium",
+      "merged_pr": 276,
+      "original_source_commit": "34df74d2e61e351f6b3f2d07f2e86aed1b602bd7",
+      "note": "Four 1.21.1 NeoForge New Dawn mod versions SHA-512 pinned and indexed with exactly one Occultism Thallasium→Iesnium Spirit Fire route. No End worldgen, server, client, harvest or gameplay PASS. Retains existing unrelated Gilded B16 batch and holds YUNG Better End Island."
     }
   ],
   "covered_by_baseline": {
@@ -384,7 +401,8 @@
     "fix/integrate-starter-bundle-quest-2026-11-15": "Current FTB Punch a Tree claims Curio Bag+XP, no torches, no hidden first-log achievement; frozen separate Bundle Curios slot files are staged by bundle-curios-slot stream for manual assembly and in-world validation.",
     "feature/progression-skill-gui-treechop-2026-11-16": "PR #223 was closed unmerged, but its Progression GUI, TreeChop XP bridge, progress overlay, network, and deduplication test were independently verified byte-identical in test/full-integration. Preserve the source branch for provenance. Client GUI, multiplayer sync, and live TreeChop gameplay acceptance remain outstanding in docs/qa/MONK-GUI-TREECHOP-2026-11-16.md; this classification does not claim gameplay PASS.",
     "fix/quest-registry-gate-and-qa-priorities-2026-11-15": "PR #82 was closed unmerged; its live quest-item registry gate (scripts/quest_registry_gate.py) is present byte-identically in test/full-integration. The old workflow and QA-doc snapshots were not replayed; current QA definitions and workflow files remain authoritative.",
-    "stage/next-qa-jer-alex-uranium": "PR #56 retired: only Alex's Caves Continued 1.1.2 + CodxLib 1.5.1 + JER 1.6.0.57 metadata carried forward with index/pack updates; obsolete BR/Rework uranium conversion and automatic smoke omitted. See docs/qa/ALEX-JER-REACTOR-FREE-2026-11-16.md. Source branch still exists for historical QA provenance."
+    "stage/next-qa-jer-alex-uranium": "PR #56 retired: only Alex's Caves Continued 1.1.2 + CodxLib 1.5.1 + JER 1.6.0.57 metadata carried forward with index/pack updates; obsolete BR/Rework uranium conversion and automatic smoke omitted. See docs/qa/ALEX-JER-REACTOR-FREE-2026-11-16.md. Source branch still exists for historical QA provenance.",
+    "feature/b16-betterend-thallasium-iesnium": "B16 replacement PR #276 pins BetterEnd and all three New Dawn dependencies and replaces old Spirit Fire End Draconium ore recipe with Thallasium. No stale full source manif/packwiz or workflow imported. Runtime acceptance remains pending."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",

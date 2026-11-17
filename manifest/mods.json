@@ -2307,6 +2307,58 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "just-another-witchery-remake"
+    },
+    {
+      "id": "betterend-new-dawn",
+      "name": "BetterEnd: New Dawn",
+      "category": "worldgen",
+      "desired": true,
+      "version": "21.0.39",
+      "release_status": "verified_release",
+      "source": "https://mediafilez.forgecdn.net/files/9306/604/BetterEnd-21.0.39.jar",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "betterend-new-dawn",
+      "note": "Hash-pinned 1.21.1 NeoForge source file for B16 with all three New Dawn libraries. Source/index only; End worldgen, Thallasium ore and client/server runtime NOT TESTED."
+    },
+    {
+      "id": "bclib-new-dawn",
+      "name": "BCLib: New Dawn",
+      "category": "dependency",
+      "desired": true,
+      "version": "21.0.26",
+      "release_status": "verified_release",
+      "source": "https://cdn.modrinth.com/data/7bdKEtKC/versions/QkXw8Fsl/bclib-21.0.26.jar",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "bclib-new-dawn",
+      "note": "Hash-pinned 1.21.1 NeoForge source file for B16 with all three New Dawn libraries. Source/index only; End worldgen, Thallasium ore and client/server runtime NOT TESTED."
+    },
+    {
+      "id": "wunderlib-new-dawn",
+      "name": "WunderLib: New Dawn",
+      "category": "dependency",
+      "desired": true,
+      "version": "21.0.10",
+      "release_status": "verified_release",
+      "source": "https://cdn.modrinth.com/data/HZmhgdJk/versions/5db3GZzg/wunderlib-21.0.10.jar",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "wunderlib-new-dawn",
+      "note": "Hash-pinned 1.21.1 NeoForge source file for B16 with all three New Dawn libraries. Source/index only; End worldgen, Thallasium ore and client/server runtime NOT TESTED."
+    },
+    {
+      "id": "worldweaver-new-dawn",
+      "name": "WorldWeaver: New Dawn",
+      "category": "dependency",
+      "desired": true,
+      "version": "21.0.25",
+      "release_status": "verified_release",
+      "source": "https://cdn.modrinth.com/data/R8uGDQpB/versions/TrReu8cF/worldweaver-21.0.25.jar",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "worldweaver-new-dawn",
+      "note": "Hash-pinned 1.21.1 NeoForge source file for B16 with all three New Dawn libraries. Source/index only; End worldgen, Thallasium ore and client/server runtime NOT TESTED."
     }
   ],
   "excluded": [
@@ -2749,6 +2801,18 @@
       ],
       "status": "owner_desired_conflict_audit_pin_pending",
       "note": "Include full Lava Fishing + Nether Depths Upgrade in one first approved Gilded-enabled QA ONLY AFTER official SHA pins and double-rod/loot/Angler's Hat/Improvable Skills compatibility gates pass. The separate Aquaculture 2 Lava Fishing Addon is NOT selected due six duplicate AQ2 hooks. No automatic full server smoke or client launch."
+    },
+    {
+      "id": "B16-BETTEREND",
+      "name": "BetterEnd New Dawn 1.21.1 with BCLib/WunderLib/WorldWeaver; Thallasium Spirit Fire",
+      "members": [
+        "betterend-new-dawn",
+        "bclib-new-dawn",
+        "wunderlib-new-dawn",
+        "worldweaver-new-dawn"
+      ],
+      "status": "metadata_pinned_awaiting_worldgen_and_gameplay_QA",
+      "note": "All four exact files SHA-512 pinned and Packwiz indexed. Does NOT replace the independent B16 Gilded food batch, or establish fresh-End, server/client or Thallasium harvest gameplay acceptance."
     }
   ]
 }
