@@ -112,3 +112,8 @@ Exact 0.12.18 JAR decompiled to scratch `decompiled/pokefenn/totemic` (112 noncl
 ### Totemic native research closure
 
 Main rewritten against exact 0.12.18 JAR; all mandatory cedar→Buffalo→Rattle→Eagle→Whistle→Baykok gates, 12 carvings, charged single-carving bag, all optional ceremonies, support blocks/renewable entities and KubeJS surface documented. INDEX/receipt now source-complete (four profiles; 38 remain researching). Important: bundled base/pole loot tables EMPTY, pick-block component item is not survival retrieval; corrected claim before commit. Medicine Bag is no GUI/slots, charges 400/20 to4800 near matching passive pole, drains80/80 open; Ocelot not portable. No runtime tests. Next continue remaining profiles in completion receipt; Occultism jobs/familiar complexity still open.
+
+
+### Occultism worker method audit
+
+Added occultism-pinned-worker-jobs.md from exact JAR; job/AI classes all extracted and CFR decompiled in scratch. Covers registered roster, smelter4recipe priority/no fuel/output remainder loss, cleaner pickup, transport sided discrepancy, manager saved orders/proxy search, crop-class harvest/free replant, lumberjack connected traversal/noarea bound/replant cost and time/weather lifecycle. ChangeWeatherJob constructs visual-only bolt but NEVER adds it to world: not Emrys route. Remaining parent gaps enumerated in appendix; not source-complete. Next inspect SpiritEntity/instruction tools, farmer/lumberjack task composition, weather config/defaults, dispatcher/menu transaction and complex familiar fusion, reconcile full guide walkthrough.

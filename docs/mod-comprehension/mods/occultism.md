@@ -316,3 +316,6 @@ See [all529 pinned processing/miner records](occultism-pinned-processing.md) for
 [Pinned familiar/tool lifecycle](occultism-pinned-familiars-tools.md) maps ownership/range/Curios transport, seventeen choice roles, Blacksmith cost/timing, death recovery and key trades, plus Spirit Fire stack conversion and chalk/tool contracts. Complex AI/fusion/rare branches and Otherworld/storage closure remain explicit.
 
 [Pinned storage/access/harvest hooks](occultism-pinned-storage-harvest.md) now verifies native capacities, six-direction stabilizer search, remote selection/load behavior, Otherworld block collection, souls/heads and Dragon Greed/Blacksmith resource semantics. Full familiar AI and remaining transactional/visibility branches remain open.
+
+
+Pinned worker follow-up: [job, transport, smelting, farming, lumberjack and time/weather contracts](occultism-pinned-worker-jobs.md). This closes major method-level gaps while retaining the remaining UI/dispatcher/familiar reconciliation work.
