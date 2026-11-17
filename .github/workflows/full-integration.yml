@@ -42,6 +42,21 @@ on:
         type: boolean
         required: false
         default: false
+      expected_integration_sha:
+        description: 'Optional exact 40-hex approved integration head; required for bridge dispatch'
+        type: string
+        required: false
+        default: ''
+      package_prism:
+        description: 'After authorized successful smoke, publish Prism QA package (false = smoke only)'
+        type: boolean
+        required: false
+        default: true
+      qa_request_id:
+        description: 'One-shot bridge request nonce; blank for direct manual owner invocation'
+        type: string
+        required: false
+        default: ''
   workflow_call:
     inputs:
       assemble_only:
@@ -54,6 +69,22 @@ on:
         type: boolean
         required: false
         default: false
+
+      expected_integration_sha:
+        description: 'Optional exact 40-hex approved integration head; required for bridge dispatch'
+        type: string
+        required: false
+        default: ''
+      package_prism:
+        description: 'After authorized successful smoke, publish Prism QA package (false = smoke only)'
+        type: boolean
+        required: false
+        default: true
+      qa_request_id:
+        description: 'One-shot bridge request nonce; blank for direct manual owner invocation'
+        type: string
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -74,6 +105,23 @@ jobs:
           ref: test/full-integration
           fetch-depth: 0
           persist-credentials: true
+      - name: Verify authorized integration SHA and one-shot request
+        if: ${{ inputs.full_smoke == true || inputs.assemble_only == true }}
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_integration_sha }}
+          REQUEST_ID: ${{ inputs.qa_request_id }}
+          FULL_SMOKE: ${{ inputs.full_smoke }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$EXPECTED_SHA" ]]; then
+            [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+            [[ "$(git rev-parse HEAD)" == "$EXPECTED_SHA" ]] || { echo "Approved integration head advanced; new approval needed"; exit 1; }
+          fi
+          if [[ -n "$REQUEST_ID" ]]; then
+            [[ "$FULL_SMOKE" == true && "$REQUEST_ID" =~ ^[0-9a-f]{32}$ && -n "$EXPECTED_SHA" ]]
+            [[ "$GITHUB_RUN_ATTEMPT" == 1 ]] || { echo "Bridge requests cannot be rerun; obtain fresh owner approval"; exit 1; }
+            [[ "$(git ls-remote --refs origin "refs/tags/qa-request/$REQUEST_ID" | cut -f1)" == "$EXPECTED_SHA" ]] || { echo "Missing or mismatched authorization receipt"; exit 1; }
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -182,22 +230,25 @@ jobs:
           git push origin "refs/tags/$TAG"
           echo "Snapshot immutable commit: $(git rev-parse HEAD)"
           echo "Snapshot tag: $TAG"
+      - name: Report smoke-only success without Prism publication
+        if: ${{ inputs.full_smoke == true && inputs.package_prism == false && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
+        run: echo '## Server Boot Smoke passed; Prism QA Package explicitly omitted' >> "$GITHUB_STEP_SUMMARY"
       - name: Obtain official packwiz bootstrap
-        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
+        if: ${{ inputs.full_smoke == true && inputs.package_prism == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           curl -fL --retry 3 --retry-delay 2 \
             -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
           test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
       - name: Produce commit-locked all-workstreams Prism client ZIP
-        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
+        if: ${{ inputs.full_smoke == true && inputs.package_prism == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
           IFS=: read -r -a jars <<< "$SMOKE_EXTRA_MOD_JARS"
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "${{ runner.temp }}" "$(git rev-parse HEAD)" "${jars[@]}"
       - name: Upload the one comprehensive unstable test build
-        if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
+        if: ${{ inputs.full_smoke == true && inputs.package_prism == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         uses: actions/upload-artifact@v4
         with:
           name: Too-Much-Magic-Full-Integration-Prism-UNSTABLE
