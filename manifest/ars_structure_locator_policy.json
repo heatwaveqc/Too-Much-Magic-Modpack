@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "target": "Minecraft 1.21.1 NeoForge; Ars Additions 21.3.0",
+  "mode": "all_registered_non_vanilla_structures",
+  "source_of_truth": "live structure registry export from exact integrated disposable world",
+  "excluded_namespaces": [],
+  "disabled_structures": [
+    "minecraft:stronghold",
+    "minecraft:fortress",
+    "minecraft:mineshaft",
+    "minecraft:mineshaft_mesa",
+    "minecraft:desert_pyramid",
+    "minecraft:jungle_pyramid",
+    "minecraft:monument",
+    "minecraft:swamp_hut"
+  ],
+  "address_marker_items": [
+    "minecraft:compass",
+    "ars_nouveau:source_gem"
+  ],
+  "address_palette_items": [
+    "minecraft:white_dye",
+    "minecraft:orange_dye",
+    "minecraft:magenta_dye",
+    "minecraft:light_blue_dye",
+    "minecraft:yellow_dye",
+    "minecraft:lime_dye",
+    "minecraft:pink_dye",
+    "minecraft:gray_dye",
+    "minecraft:light_gray_dye",
+    "minecraft:cyan_dye",
+    "minecraft:purple_dye",
+    "minecraft:blue_dye",
+    "minecraft:brown_dye",
+    "minecraft:green_dye",
+    "minecraft:red_dye",
+    "minecraft:black_dye"
+  ],
+  "address_count": 4,
+  "recipe_subdirectory": "kubejs/data/tmm/recipe/locate_structure/generated",
+  "notes": [
+    "Do not generate recipes for non-registry landmarks/biomes or structures absent from the real runtime registry.",
+    "Disabled vanilla structures remain in the Minecraft registry even when YUNG mods prevent their worldgen; resolve via tag overrides and disabled_structures.",
+    "For modded structures disabled through config, list their exact IDs in disabled_structures; registry presence alone cannot prove a structure is enabled in worldgen.",
+    "Avoid removing 15 native Ars Additions recipes whose tags will remain useful after remapping: override the target tags without vanilla IDs.",
+    "Each generated modded target gets one stable unique 6-item address; this is recipe-based coverage, not an arbitrary text-input UI."
+  ]
+}
