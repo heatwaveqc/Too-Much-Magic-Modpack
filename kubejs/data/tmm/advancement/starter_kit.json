@@ -1,0 +1,11 @@
+{
+  "criteria": {
+    "first_tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "function": "tmm:rewards/starter_kit"
+  },
+  "sends_telemetry_event": false
+}

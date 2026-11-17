@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "gateway_mod": "GatewaysToEternity-1.21.1-5.1.0",
+  "implementation_status": "source_staged_runtime_pending",
+  "group": "B19",
+  "description": "Seventeen first-pass Gateways: fourteen repeatable combat mobs plus three nonlethal live wild Ars creature rewards. Broader magic-mod dependency audit outstanding.",
+  "recipe": {
+    "pattern": [
+      " C ",
+      "SMS",
+      " E "
+    ],
+    "iron": "minecraft:iron_ingot",
+    "ender_pearl": "minecraft:ender_pearl",
+    "magic_token": {
+      "ars": "ars_nouveau:source_gem",
+      "irons": "irons_spellbooks:arcane_essence"
+    },
+    "note": "C is each target's unique vanilla catalyst. One craft produces one bound Gate Pearl. No alternative catalyst overlap within this pilot."
+  },
+  "policy": {
+    "primary_aim": "repeatable access to progression-relevant nonboss mobs, not replacement for unique dungeon/boss gating",
+    "wave_count": 3,
+    "no_extra_mob_loot": true,
+    "completion_vanilla_xp_only": true,
+    "spawned_mob_normal_drops": "must verify in game",
+    "mob_farm_automation": "allowed; no player-only-damage constraint",
+    "no_environmental_failure_explosions": true,
+    "native_boss_and_friendly_npc_exclusions": [
+      "ars_nouveau:wilden_boss",
+      "irons_spellbooks:dead_king",
+      "irons_spellbooks:fire_boss",
+      "irons_spellbooks:priest",
+      "minecraft:wandering_trader"
+    ],
+    "future_audit": "Check pinned JAR entity registries, required mob-only drops, mob spawning route and recipe usage across every magic mod; expand catalog only after validation.",
+    "friendly_mob_policy": "For rare naturally spawning utility creatures, award the living creature upon completion of combat waves; never require killing a friendly creature."
+  },
+  "targets": [
+    {
+      "entity": "ars_nouveau:wilden_hunter",
+      "display_name": "Wilden Hunter",
+      "family": "ars",
+      "catalyst": "minecraft:bone",
+      "tier": "common",
+      "reason": "Its Wilden Horn feeds the native Chimera-summoning progression.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:wilden_stalker",
+      "display_name": "Wilden Stalker",
+      "family": "ars",
+      "catalyst": "minecraft:spider_eye",
+      "tier": "common",
+      "reason": "Its Wilden Wing feeds the native Chimera-summoning progression.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:wilden_guardian",
+      "display_name": "Wilden Guardian",
+      "family": "ars",
+      "catalyst": "minecraft:shield",
+      "tier": "common",
+      "reason": "Its Wilden Spike feeds the native Chimera-summoning progression.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:necromancer",
+      "display_name": "Necromancer",
+      "family": "irons",
+      "catalyst": "minecraft:soul_sand",
+      "tier": "common",
+      "reason": "Randomly spawns in the Overworld; source-confirmed biome-modifier entity.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:pyromancer",
+      "display_name": "Pyromancer",
+      "family": "irons",
+      "catalyst": "minecraft:blaze_powder",
+      "tier": "common",
+      "reason": "Provides controlled repeatable wizard encounter and drops.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:cryomancer",
+      "display_name": "Cryomancer",
+      "family": "irons",
+      "catalyst": "minecraft:packed_ice",
+      "tier": "common",
+      "reason": "Provides controlled repeatable wizard encounter and drops.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:archevoker",
+      "display_name": "Archevoker",
+      "family": "irons",
+      "catalyst": "minecraft:emerald",
+      "tier": "common",
+      "reason": "Provides repeatable rare illager-mage encounter.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:magehunter_vindicator",
+      "display_name": "Magehunter Vindicator",
+      "family": "irons",
+      "catalyst": "minecraft:crossbow",
+      "tier": "common",
+      "reason": "Provides repeatable specialized anti-mage encounter.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:citadel_keeper",
+      "display_name": "Ancient Knight (Citadel Keeper)",
+      "family": "irons",
+      "catalyst": "minecraft:netherite_scrap",
+      "tier": "elite",
+      "reason": "High-tier Citadel combatant; repeatable without summoning the Citadel boss.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:apothecarist",
+      "display_name": "Apothecarist",
+      "family": "irons",
+      "catalyst": "minecraft:brewing_stand",
+      "tier": "common",
+      "reason": "Provides controlled spell-alchemist mob encounter and drops.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:cultist",
+      "display_name": "Cultist",
+      "family": "irons",
+      "catalyst": "minecraft:redstone_block",
+      "tier": "common",
+      "reason": "Provides controlled repeatable cultist mob encounter and drops.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:cursed_armor_stand",
+      "display_name": "Cursed Armor Stand",
+      "family": "irons",
+      "catalyst": "minecraft:iron_chestplate",
+      "tier": "common",
+      "reason": "Provides controlled armored encounter; verify loot value in game.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:ice_spider",
+      "display_name": "Ice Spider",
+      "family": "irons",
+      "catalyst": "minecraft:snow_block",
+      "tier": "common",
+      "reason": "Provides controlled ice-spider encounter; verify native frost spell mechanics.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "irons_spellbooks:catacombs_zombie",
+      "display_name": "Catacombs Zombie",
+      "family": "irons",
+      "catalyst": "minecraft:bone_block",
+      "tier": "common",
+      "reason": "Provides repeatable Catacombs hostile without granting Dead King boss rewards.",
+      "origin": "source-registered",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:starbuncle",
+      "display_name": "Wild Starbuncle",
+      "family": "ars",
+      "catalyst": "minecraft:gold_nugget",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "minecraft:zombie",
+      "reason": "Wild item-transport familiar; reward a live wild creature to befriend.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:whirlisprig",
+      "display_name": "Wild Whirlisprig",
+      "family": "ars",
+      "catalyst": "minecraft:oak_sapling",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "minecraft:skeleton",
+      "reason": "Wild botanical familiar; reward a live wild creature to grow a tree near.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
+      "verified_in_running_pack": false
+    },
+    {
+      "entity": "ars_nouveau:drygmy",
+      "display_name": "Wild Drygmy",
+      "family": "ars",
+      "catalyst": "minecraft:hay_block",
+      "tier": "common",
+      "kind": "friendly_reward",
+      "encounter_entity": "ars_nouveau:wilden_hunter",
+      "reason": "Rare wild mob-loot familiar; reward a live wild creature, to befriend with Wilden Horn.",
+      "origin": "source-confirmed Ars 1.21.x natural biome modifier",
+      "verified_in_running_pack": false
+    }
+  ]
+}

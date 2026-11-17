@@ -1,0 +1,9 @@
+{
+  "size": 1,
+  "operation": "SET",
+  "order": 50,
+  "icon": "curios:slot/empty_curios_slot",
+  "validators": [
+    "curios:tag"
+  ]
+}

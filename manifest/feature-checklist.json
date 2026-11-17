@@ -624,16 +624,16 @@
       "area": "Transformations and Monk",
       "title": "JAWR-only vampire acquisition",
       "state": "planned",
-      "acceptance": "JAWR native infection, progression and cure work without TeamLapen",
+      "acceptance": "JAWR native infection, progress and cure; no TeamLapen enrollment",
       "source": "docs/VAMPIRE-CHASSIS-V1-TEST-PLAN.md",
       "evidence": ""
     },
     {
       "id": "form.blood",
       "area": "Transformations and Monk",
-      "title": "JAWR-native blood accounting",
+      "title": "JAWR-native blood and feeding",
       "state": "planned",
-      "acceptance": "JAWR alone owns blood feeding, healing and debit; no mirrored pool",
+      "acceptance": "No dual blood pool or duplicated cost; JAWR owns all feeding and expenditure",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },
@@ -651,16 +651,16 @@
       "area": "Transformations and Monk",
       "title": "JAWR vampire cure",
       "state": "planned",
-      "acceptance": "JAWR cure clears native vampire state and skills, not an extra faction",
+      "acceptance": "JAWR cure clears physiology, abilities and stale statuses",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
     {
       "id": "form.sunlight",
       "area": "Transformations and Monk",
-      "title": "JAWR sunlight and protection",
+      "title": "JAWR sunlight and equipment protection",
       "state": "planned",
-      "acceptance": "JAWR sunlight works without the discontinued Vampire Forest",
+      "acceptance": "JAWR native sun behavior works without Vampire Forest special handling",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
@@ -676,9 +676,9 @@
     {
       "id": "form.werewolf",
       "area": "Transformations and Monk",
-      "title": "JAWR lycanthropy",
+      "title": "JAWR lycanthropy and forms",
       "state": "planned",
-      "acceptance": "JAWR lycanthrope, moon behavior, food, cure and relog work without Werewolves addon",
+      "acceptance": "JAWR lycanthrope form, diet, moon, cure and relog work",
       "source": "docs/TRANSFORMATION-COMPATIBILITY.md",
       "evidence": ""
     },
@@ -714,7 +714,7 @@
       "area": "Transformations and Monk",
       "title": "Standalone Monk First Sunset",
       "state": "planned",
-      "acceptance": "Sunset joins native Monk progression path",
+      "acceptance": "First Sunset enrolls native Monk path, with no TeamLapen faction",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },
@@ -723,7 +723,7 @@
       "area": "Transformations and Monk",
       "title": "Standalone Monk native tree",
       "state": "planned",
-      "acceptance": "tmm_progression skills and XP persist; no Vampirism faction UI",
+      "acceptance": "tmm_progression skills, native XP and purchases work without Vampirism UI",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },
