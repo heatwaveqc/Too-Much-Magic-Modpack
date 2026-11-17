@@ -321,3 +321,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — [Mahou Contract/Geas/scroll rules](mods/mahou-tsukai-contract-geas.md): two-player sequential payment/persistent recognition, contract-break attribution, Geas named/species/item identity and species-only regen bonus, paid vow removal/list, fire reset, stationary boundary-scroll placement/loss boundary. Multiplayer acceptance unrun.
 
 - 2026-11-16 — [Mahou artifact acquisition](mods/mahou-tsukai-artifact-acquisition.md): Clarent Dragon-owned cloud, Emrys strengthened offhand Stick/lightning event, Replica exact compound shield/counter/effect/armor checks and supporting Damage Exchange/Death Collection/Immunity Exchange. Cancellation ordering and gameplay remain unverified.
+
+- 2026-11-16 — [Mahou William/Kodoku economy](mods/mahou-tsukai-william-kodoku.md): dictionary-dependent fiction creation, fame0/copy/reader gates, carried vs deployed owner checks, negative-style drain, worm recipe/death accumulation and consumed fire payout to active circuits without owner check. Full text scoring/theater/misfortune and gameplay remain open.
