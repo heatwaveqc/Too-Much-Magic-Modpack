@@ -1,3 +1,14 @@
+# Latest continuation checkpoint — 2026-11-17 after f83d5924
+
+- Research unfinished:5/42source-complete,37researching; no hardblocker. Hourly continue-magic-mod-research remainsactive. Same research-magic worktree,branch research/mod-comprehension-local-jars-20261116,PR265. Keep regular commits/push; no subagents authorized.
+- Ars **thirteen** binary companions now include armor/threads/Reactive and Amethyst Golem worker. Armor:12layouts×3internaltiers,19functionalthreads+Blank,2upgrades2500/5000Source,sequential0→1→2,highest-slot-firsttable,remove-first vs armor-return,existingperktaglossboundary,MAXperkcount vs instanceevents,globalSleepUndyingrefresh,Reactive25%×rankeventchance. Golem:Awakeningbudtrade/homeinventory/convert6000/grow300/harvest1200/pickup/deposit,scan3600,up-to4randomtickbuds,fulloutputremainderkept,timerremoteactionsexplicit. FreshCFR classes outsideGit.
+- **Next remaining Ars core**: other casting gear (Enchanter tools/weapons, foci, spell parchment/tomes/Codex, potions/curios) and advanced devices (portals, turrets, Scryers/Crystalizer/Planarium/Alakarkinos as actually registered), then sevenaddon profiles and exact pilot/full-stage reconciliation. Parent must remain researching until no major mandatory/optional gap. Do not re-inventory alreadycoveredglyph/ritual/Source/helper/armor systems.
+- Verified external scratch artifact persists: LocalAppData Temp/tmm-magic-research-20261116/artifacts/ars_nouveau-1.21.1-5.13.5.jar, SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. OriginalPrism(2) removed by concurrentlauncherwork; exactfile recoveredfromCF9521184. Use **ars-fresh-20261117** decompiled tree and CFR --clobbertrue; confirm consequential sourcegate withjavap. No artifact access blocker.
+- f83d5924 docs integrity PASS: fullresearchUTF8,changedlocal-links/docs-onlyscope,whitespace,all19native threadrecipe rows. Prior ad981968 metadata PASS159active/294indexed/181desired forresearchcheckout; prior eede4e69 canonicalLF read-onlypreflightPASS0baseline replacements. No assembly/server/client/gameplay tests. Latestintegration **2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae** fetched thisrun,Arspinunchanged; preserve concurrentsharedruntime/manifestupdates.
+- Substantive838feec5+f83d5924 andthischeckpoint willbepushedimmediately; inspectgitlog/statusforactualhead. PRrefreshshouldinclude13companions/armor/golem. Fullrequestcontinueshourly,notfinished.
+
+---
+
 # Latest continuation checkpoint — 2026-11-17 after ad981968
 
 - Full research **unfinished**,5/42source-complete and37researching; no hard blocker. Hourly continue-magic-mod-research active. Same research-magic worktree/branch/PR265; preserve unrelated QA/integration work.

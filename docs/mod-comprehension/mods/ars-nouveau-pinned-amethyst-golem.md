@@ -4,7 +4,7 @@ Exact `ars_nouveau-1.21.1-5.13.5.jar`, SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce6
 
 ## Acquire and assign a geode workshop
 
-Use native Notebook **Crafting → Amethyst Golem**, related **Awakening / Dominion Wand / Dowsing Rod** entries and Ritual Index → Awakening. First find Budding Amethyst in a geode; run Awakening within its target bounds (brazier search bounds3,1,3) without Book and Quill augment. Ritual replaces a Budding Amethyst block with air and creates golem there. This trades the original budding block for worker; it is not a shapeless charm recipe or proof the geode has endless remaining buds.
+Use native Notebook **Crafting → Amethyst Golem Charm**, including summoning/farming/storage pages, related **Awakening / Dominion Wand / Dowsing Rod** entries and Ritual Index → Awakening. First find Budding Amethyst in a geode; run Awakening within its target bounds (brazier search bounds3,1,3) without Book and Quill augment. Ritual replaces a Budding Amethyst block with air and creates golem there. This trades the original budding block for worker; it is not a shapeless charm recipe or proof the geode has endless remaining buds.
 
 Use Dominion Wand **golem first → intended home/storage block last**. First callback sets any nonnull BlockPos as home; choose ordinary inventory with a null-side ItemHandler so pickup and deposit goals can run. Callback does not validate inventory or a numeric range, so successful home_set message is not proof of functional storage. Set home near your Amethyst/Budding Amethyst cluster field with accessible ground and enough free faces for growth. Without home the main work suppliers refuse.
 
