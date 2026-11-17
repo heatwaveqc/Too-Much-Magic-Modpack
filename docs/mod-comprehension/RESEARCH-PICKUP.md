@@ -127,3 +127,8 @@ Appended exact owner/link/capture/mode/block controls and manager endpoint setup
 ### Occultism worker closure follow-through
 
 Added farmer/lumberjack brain tasks, tagged first selection vs UNFILTERED incidental3-block item sweep, required deposit memories, geometry enum16/32/64, exact processing/time/weather defaults and leaf weather calls. Job method scope now broadly closed; remaining source queue focus dispatcher/storage transaction and familiar fusion/guide full progression, not redoing worker outputs. Native Clear sets zero durations; weather parent equality means zero cast-count config boundary.
+
+
+### Occultism rare familiar branch audit
+
+Familiars appendix now records Chimera born-with-Goat/detach not an invented fusion, growth/meat/size riding/attacks, Goat→Shub, support spawn and actual enemy helper. Helper compares distanceToSqr<10, only last hurtBy/hurt targets, no dedup. Headless6-part disabled rebuild consumes2Wheat+Hay+2rods+CarvedPumpkin and grants advancement but does NOT clear disabled or heal in this JAR; wholeclassreferenceschecked. Sharddeathserializationresetsdisabled separately. All familiar inner siblings extracted/decompiled to eliminate unavailable anonymous goal. Next remaining storage dispatcher/menu transactions and complete guide-stage reconciliation; parent stays researching.
