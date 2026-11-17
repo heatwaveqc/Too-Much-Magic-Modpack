@@ -1,0 +1,78 @@
+# TMM MXP — initial NeoForge ledger and award dispatcher
+
+**Stage:** feature/mxp-ars-irons-botania-neo-hooks, 2026-11-14 (extends MXP dispatcher). Actual Java source, build and progression tests exist; **not yet packwiz-pinned, game-launched or verified with the Tyz 6.4.2 runtime JAR**. Designed not to delay the next full test build. Based on the Core Magic feature branch; reconcile with [MXP specification PR #27](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27) and [Core Magic implementation PR #33](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/33).
+
+## Implemented
+
+- Standalone **tmm_mxp** NeoForge 1.21.1 / Java 21 module under compat/mxp. Tyz's Skills 6.4.2 is declared a required runtime dependency; its source-verified public API is called reflectively so the third-party JAR need not be redistributed.
+- Pure Java progression math: base = **1000 × nominalCost / first-access resource pool B**; ordinary effective XP = base / (growth_factor^P), with the **server-configured growth_factor defaulting to 1.02** and the divisor **recomputed mid-award** at each 1000-effective-XP point boundary. The supported range is 1.00–1.20, where 1.00 is linear. No vanilla XP spent.
+- First successful ritual and **every registered first boss victory awards exactly 1,000 effective MXP** without the divisor; repeat rituals/bosses are divided. An explicit boss rule may mark repeat victories as fixed (Chaos Guardian **proposed** 100 MXP repeat, not activated). First-time magical crafts are **still divided**.
+- Overworld SavedData by player UUID persists lifetime MXP-earned levels P, effective progress, undelivered fractional XP, discovered ritual/boss/craft IDs, and the latest 1024 transaction IDs. Respec/death/dimension changes cannot reset the earned lifetime divisor.
+- Tyz public API bridge measures **actual** Tyz level/XP change after the award. It stores sub-0.01 fractional awards until deliverable, and retains undelivered portions of partially accepted awards.
+- Public server integration API via MxpService.resource, ritual, craft, boss and inspect. Resource awards require both nominal pre-efficiency cost and **positive actual debit after successful player action**.
+- Generic LivingDeathEvent handler awards only the **server player with the final blow** for explicitly registered boss IDs. **Boss rule registry empty by default**; no invented Chaos Guardian IDs or unapproved rewards are live.
+- Operator diagnostic commands: /tmmmxp status, /tmmmxp test ordinary <base>, /tmmmxp test fixed <amount>. Only diagnostics require operator permission 2.
+- Source-backed **Psi 110** KubeJS pilot lives in pilot/kubejs/server_scripts; preSpellCast captures compiled nominal cost, spellCast verifies actual Psi/CAD drain, then calls MxpService.resource with **first-access player Psi pool 5000**. It is not shipped into packwiz.
+
+## Configurable progression rate (2026-11-15)
+
+**Implemented on branch `feature/mxp-configurable-growth-20261115`, pending PR integration and in-game testing.** The `tmm_mxp` mod now registers a **NeoForge SERVER config**, separate from the source-baseline COMMON config:
+
+- Server-world config: `<world>/serverconfig/tmm_mxp-server.toml`.
+- Section/key: `[progression] growth_factor = 1.02`.
+- Default: **1.02**. Allowed: **1.00–1.20**. A growth factor of **1.00** is linear with no level-based divisor; **1.01** is the owner's original alternative; **1.02** is the chosen default.
+- Ordinary resource/craft/repeat rewards use `effective = normalizedBase / growth_factor^P`, where P is lifetime **MXP levels earned**, not spent Tyz points; the factor is reevaluated after each level crossed within an award. First-time fixed ritual/boss grants and explicitly fixed boss repeats remain undivided.
+- The server reads its configured factor for each award and reports it via `/tmmmxp status`. Changing the factor affects **future ordinary awards**, including those on existing saves, but does **not** reset or rescale stored lifetime P, current progress, first-time completion records, transaction deduplication or undelivered Tyz fractions.
+- This is a **server-authoritative balance setting**. Treat any change in an existing world as a progression-economy change for all players, and restart/reload server configuration normally rather than editing the file during a running award.
+- One shared Tyz/MXP point economy is preserved. The standalone Monk core's native technique points are a **different** progression system.
+- The actual Monk full-purchase Tyz SP cost remains aimed at **~10x** the canonical specialist; g=1.02 implies more than tenfold ordinary nominal XP from matched fresh starts, but the exact ratio depends on real tree costs and first-time fixed rewards.
+
+Test scope: `MxpMathTest` verifies the default, linear 1.00, 1.01, 1.02, 1.10, legacy 1.20, invalid values, crossing a level boundary, changing the rate without resetting P, and fixed award behavior. Dedicated-server/client test with real Tyz JAR, config loading, reload and a preexisting MXP save is still required; source tests do not count as a world test.
+
+## Source integration contract
+
+Call MxpService.resource(player, sourceId, transactionId, nominalCost, firstAccessPool, actualDebit) **after** an accepted and committed magical action. Transaction IDs must uniquely identify the world operation, and should be common across two adapters observing the **same cast**. No XP for previews, simulation, transfers, idle mana generators, cost-free casts or machine maintenance. Shared Ars/Iron mana is **one logical transaction** and should not be counted twice. Positive regen and efficiency effects still improve sustainable nominal MXP earned.
+
+Call MxpService.ritual(player, id, completionTxId, firstFixed, repeatDivided) on confirmed ceremony completion, not on every ritual tick. Call MxpService.craft similarly, but **both** first and later craft awards are divided. Boss rules use MxpService.registerBossRule(canonicalEntityId, repeat, fixedRepeat), then the native final-death hook handles configured entities. Example rules in pilot/kubejs/server_scripts/tmm_mxp_boss_rules_example.js are disabled, with purely illustrative amounts.
+
+The core does NOT store mod resource baselines for all 42 entries yet; the per-source adapter currently supplies a verified reference B. See [per-mod registry](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/design/universal-mxp-progression-registry/docs/MAGIC-MXP-SOURCE-REGISTRY.md).
+
+## Deliberately deferred automatic sources
+
+- **Neo Vitae AnimaEvent.PostSyphon:** now hooked. Only real EV-network PostSyphon debits earn MXP for an online owner; other resources do not. Anima capacity is determined by the bound orb: the Tier 0 Novicius/Weak Blood Orb has **5,000 EV Anima capacity**, now our approved fixed starting baseline; the source hook is enabled by default. Because AnimaTicket does not label its source, every actual network expense (including automated upkeep) is eligible while the owner is online; revisit this rule before survival release.
+- **Ars Nouveau/Iron's:** optional native mixins capture original spell costs and observe native committed debits; Ars 'n Spells paid reservations are observed at its commit path, with cross-cast transaction IDs to prevent double credit. **Pinned ANS 3.3.5 ABI and payer behavior still need a runtime smoke test**; no MXP is awarded by a prepayment event alone.
+- **Botania Revived:** native handler hook counts actual mana drained exclusively from eligible tablets and mana rings in player inventory/offhand or Curios, including equipment repairs. Excludes world pools, mana mirrors, transfers, simulations and outside Ars funding. Mixed payments are prorated, and Botania financing another spell is suppressed to prevent double credit.
+- **Totemic:** ceremonyStartupSuccess can be canceled and does not itself identify meaningful music participants. Determine the successful completion + UUID attribution before granting fixed first-time XP.
+- **Boss exceptions:** multipart dragon and Chaos Guardian completion need source-verified final defeat. MVP only attributes the final blow to a direct player; party contribution, pet damage and owner attribution are future work.
+
+## Compile and world-test protocol
+
+Run in compat/mxp: gradle --no-daemon clean build. GitHub CI compiles the pure Java core and runs JUnit + NeoForge addon compilation.
+
+In a disposable NeoForge 1.21.1 world with **Tyz 6.4.2 and the Core Magic level-pool settings**:
+1. Run /tmmmxp status, /tmmmxp test ordinary 1000, /tmmmxp status and /tmmmxp test fixed 1000. Verify exact Tyz levels/SP and persisted MXP P.
+2. Run further ordinary awards to verify default `growth_factor = 1.02`, divisor growth, fractional precision and per-level repricing. Try `1.0` (linear) and `1.2` (legacy-compatible) in separate disposable worlds. Check the value reported by `/tmmmxp status` and the world serverconfig. Ensure ordinary vanilla kills/mining/crafting do not award Tyz XP.
+3. Save, relog, die and change dimensions; verify lifetime P, progress and discovery history remain intact. Check world/data/tmm_mxp_players_v1.dat.
+4. Optionally stage **only** the Psi pilot with this compiled mod, then cast a paid CAD spell with/without Thrift and verify positive actual debit. Test failure, no-debit casts and different CAD configurations.
+5. Once values/IDs are approved, activate an explicit Wither boss rule in a test world; verify initial fixed and repeat divided awards, and deduplication.
+6. Compile and client/dedicated server smoke **separately**; unit tests are not game evidence.
+
+## Production blockers
+
+- The exact pinned Tyz 6.4.2 runtime API, KubeJS Java access policy, the assembled mod set and clean server/client boot still need testing. No compiled mod JAR is checked into Git.
+- **No strict Tyz XP-source firewall** yet beyond the chosen Tyz activity config. Later hook SkillXPChangeEvent to block other mod XP grants while permitting legitimate leveling deductions and admin recovery.
+- A Tyz XP update and the Overworld SavedData write are not an atomic two-mod database transaction; power-loss between them could require reconciliation. A partial accepted update is measured and the uncredited balance retained.
+- Dedup cache is bounded at 1024 transaction IDs; permanent first-completion sets persist without expiration. Requires event-specific unique IDs and same-source attribution.
+- Boss rule registry is empty by default; 41+ other magic-source bridges, cooperative ritual/boss participant attribution, and exact Chaos Guardian death tracking are not implemented.
+- The command/test hooks are for trusted server operators, not arbitrary client packets. Do not enable artificial grants as normal gameplay rewards.
+
+**Implementation milestone, not approved as next-build integrated or survival-ready.**
+
+
+## Ars / Iron's / Botania / Neo source hooks (2026-11-14)
+
+**Implemented, not game-tested:** branch `feature/mxp-ars-irons-botania-neo-hooks` adds compiled NeoForge mixins for all four resources. See [source hookup and runtime acceptance matrix](SOURCE-HOOKS-2026-11-14.md). Nothing is installed in the current packwiz client snapshot, and neither a dedicated server nor Prism client has loaded these new native mixins.
+
+**Default baselines** in the generated `tmm_mxp-common.toml`: Ars 100 (5.13.5 baseMax), Iron's 100 (3.16.3 MAX_MANA default), Botania 500,000 (ordinary tablet and mana ring, 2.0.2), Neo Vitae **5,000 EV** (Tier 0 Novicius blood orb's Anima capacity, approved). A source baseline is fixed, not updated as player max mana grows. All registered first-boss rewards are now fixed at 1,000 effective MXP regardless of the configured repeat reward. A special repeated Chaos Guardian payout remains prospective only, awaiting exact entity verification.
+
+**Hook inventory:** MxpArsResolverMixin, MxpAnsArsCommitMixin, MxpIronsEventMixin, MxpIronsCastMixin, MxpBotaniaManaMixin, MxpNeoNetworkMixin. Ars 'n Spells cross-paying spells need a dedicated in-game dedup test. Botania snapshots verify the physical eligible stacks and *actual debit*, not the broader handler's total granted amount.
