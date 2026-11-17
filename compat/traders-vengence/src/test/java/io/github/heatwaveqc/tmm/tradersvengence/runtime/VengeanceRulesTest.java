@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 
 class VengeanceRulesTest {
+    @Test void naturalTraderSearchHasBoundedRetryBudget() {
+        // Each native findSpawnPositionNear already tries up to ten positions;
+        // cap additional calls to avoid looping around heavily signed villages.
+        assertEquals(3, VengeanceRules.TRADER_POSITION_GROUPS);
+        assertTrue(VengeanceRules.TRADER_POSITION_GROUPS > 0);
+        assertTrue(VengeanceRules.TRADER_POSITION_GROUPS <= 3);
+    }
+
     @Test void continuingPriestAggroDoesNotUndoAnEarnedPardon() {
         UUID offender = UUID.randomUUID();
         UUID other = UUID.randomUUID();
