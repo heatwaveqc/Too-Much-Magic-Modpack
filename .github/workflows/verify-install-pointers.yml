@@ -1,0 +1,45 @@
+name: Verify exact client install repairs
+on:
+  pull_request:
+    paths:
+      - 'mods/projecte-energy-converters.pw.toml'
+      - 'config/wover/client.json'
+      - '.github/workflows/verify-install-pointers.yml'
+  push:
+    branches: [test/full-integration]
+    paths:
+      - 'mods/projecte-energy-converters.pw.toml'
+      - 'config/wover/client.json'
+      - '.github/workflows/verify-install-pointers.yml'
+permissions:
+  contents: read
+jobs:
+  pointer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify one official JAR download and nested client config (no game boot)
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, tomllib, urllib.request, zipfile, io
+          p = tomllib.loads(pathlib.Path("mods/projecte-energy-converters.pw.toml").read_text())
+          d = p["download"]
+          assert p["filename"] == "projecte-energy-0.1.4.jar" and p["side"] == "both"
+          assert p["update"]["curseforge"] == {"project-id": 1727449, "file-id": 9072881}
+          assert d["url"] == "https://edge.forgecdn.net/files/9072/881/projecte-energy-0.1.4.jar" and d["hash-format"] == "sha1" and "mode" not in d
+          assert d["hash"] == "22e6a476508b9d9d9fa35cbfdecf5677ec5c623c"
+          req = urllib.request.Request(d["url"], headers={"User-Agent": "Too-Much-Magic-Pin-Verification/1.0"})
+          with urllib.request.urlopen(req, timeout=60) as response:
+              raw = response.read(16000000)
+          assert hashlib.sha1(raw).hexdigest() == d["hash"], "Official JAR bytes differ"
+          with zipfile.ZipFile(io.BytesIO(raw)) as jar:
+              assert jar.testzip() is None
+          cfg = json.loads(pathlib.Path("config/wover/client.json").read_text())
+          assert cfg["internal"]["did_present_welcome_screen"] is True
+          assert cfg["general"]["force_betterx_world_type"] is False
+          print("PASS: same official converter JAR SHA-1 and nested WorldWeaver config; no game boot")
+          PY

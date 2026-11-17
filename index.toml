@@ -1666,3 +1666,12 @@ hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
 [[files]]
 file = "config/tyzs_skills-client.toml"
 hash = "5b9dd53760e7c76d079031590c5312157cc883ce750eec22ade679976106c64c"
+
+[[files]]
+file = "config/wover/client.json"
+hash = "2d38184b7ac950ffe845869f8ab925b41d5825bc45f959cae0f91ea3049da68e"
+
+[[files]]
+file = "mods/projecte-energy-converters.pw.toml"
+hash = "c1ab06d900afc5ca4b5ed67357b755cc1b51307d09f26f0e1b66acbd20700032"
+metafile = true

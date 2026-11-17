@@ -319,7 +319,7 @@
     },
     {
       "name": "thermalily-projecte-energy-converters",
-      "branch": "feature/thermalily-no-waste-projecte-energy-2026-11-15",
+      "branch": "test/full-integration",
       "source_commit": "7db735c73d03e2770ce4fda7fa5281abdc1fea56",
       "paths": [
         "mods/projecte-energy-converters.pw.toml"
@@ -328,7 +328,9 @@
         "projecte-energy-converters"
       ],
       "mode": "runtime-qa-staging",
-      "note": "Owner-approved cooldown-free 75 mana/tick Thermalily mixins are reconciled into native JAWR-only tmm_transformations baseline. Import only exact ProjectE Energy Converters 0.1.4 pin at manual Integration Assembly; economics, lava, progression gate and client/server runtime remain NOT TESTED."
+      "note": "Owner-approved cooldown-free 75 mana/tick Thermalily mixins already reconciled into native JAWR-only tmm_transformations baseline. Exact ProjectE Energy Converters 0.1.4 pin and manifest row promoted into baseline from frozen donor 7db735c73d03e2770ce4fda7fa5281abdc1fea56; use official CDN URL with unchanged SHA-1 and update file ID. Never restore obsolete metadata-only pin. Converter mechanics and progression gate still require gameplay acceptance.",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/thermalily-no-waste-projecte-energy-2026-11-15"
     },
     {
       "name": "bundle-curios-slot",
