@@ -1,0 +1,1168 @@
+{
+  "schemaVersion": 1,
+  "id": "tmm:jawr_vampire_werewolf_tyz_retention_2026_11_15",
+  "status": "source_ready_not_active",
+  "authority": "JAWR 0.5.39 for vampire and lycanthrope; Tyz 6.4.2 only stores XP/SP/ranks",
+  "runtimeSafety": "Every node inactive until its backend/JAWR gates compiled and tested; no Pufferfish/TeamLapen dependency",
+  "dedupe": "one_wallet_global_MXP_1000_effective_per_level",
+  "skillCount": 37,
+  "notes": [
+    "Values and SP prices are initial balance targets, not approved release values.",
+    "No new worldgen raids pets minions lord faction systems.",
+    "Immutable Tyz skills require addon SkillPrefab registration; stand-alone JSON overrides will not create them.",
+    "Form gating both PurchasePre and effect time; standard Tyz CUSTOM vanilla modifiers are NOT form conditional.",
+    "Refusing a cure is not permitted: suspend rank effects, preserve invested points."
+  ],
+  "skills": [
+    {
+      "id": "tmm_vampire_efficient_feeding",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "entry",
+      "displayName": "Efficient Feeding",
+      "description": "Increases blood actually obtained from legitimate JAWR feeding transactions.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_bite_blood_gain",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_thrift",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "advanced",
+      "displayName": "Blood Thrift",
+      "description": "Reduces actual JAWR blood expenditures; never grants free casts or a second discount.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_blood_debit",
+      "skillPrerequisites": [
+        "tmm_vampire_efficient_feeding"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_deep_reservoir",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "advanced",
+      "displayName": "Deep Reservoir",
+      "description": "Increases JAWR's authoritative blood maximum while preserving fill fraction.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_blood_capacity",
+      "skillPrerequisites": [
+        "tmm_vampire_efficient_feeding"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_crimson_renewal",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "mastery",
+      "displayName": "Crimson Renewal",
+      "description": "Actively exchange verified blood payment for bounded hearts restored.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6
+      ],
+      "unit": "health points",
+      "effect": "jawr_blood_heal",
+      "skillPrerequisites": [
+        "tmm_vampire_blood_thrift"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_nocturnal_vision",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "entry",
+      "displayName": "Nocturnal Vision",
+      "description": "Improves night visibility beyond verified JAWR base vision without x-ray.",
+      "maximumLevel": 3,
+      "prices": [
+        1,
+        1,
+        1
+      ],
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "unit": "stages",
+      "effect": "jawr_night_vision",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_shadow_stalker",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "advanced",
+      "displayName": "Shadow Stalker",
+      "description": "Reduce enemy detection only while in valid darkness and vampire state.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_darkness_stealth",
+      "skillPrerequisites": [
+        "tmm_vampire_nocturnal_vision"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_sight",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "advanced",
+      "displayName": "Blood Sight",
+      "description": "Bounded short-range target awareness on cooldown; never global wallhack.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        6,
+        8,
+        10
+      ],
+      "unit": "blocks",
+      "effect": "jawr_predatory_sense",
+      "skillPrerequisites": [
+        "tmm_vampire_nocturnal_vision"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_bat_mastery",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "mastery",
+      "displayName": "Bat Mastery",
+      "description": "Improve controls/endurance only after JAWR native bat form is earned.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "percent",
+      "effect": "jawr_bat_mastery",
+      "skillPrerequisites": [
+        "tmm_vampire_shadow_stalker"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_fang_training",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "entry",
+      "displayName": "Fang Training",
+      "description": "Boost only confirmed JAWR vampire bite damage, not all weapons and spells.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_qualified_bite_damage",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_duelist",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "advanced",
+      "displayName": "Blood Duelist",
+      "description": "Bounded melee bonus when authoritative blood is below a real threshold.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_low_blood_melee",
+      "skillPrerequisites": [
+        "tmm_vampire_fang_training"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_night_rush",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "advanced",
+      "displayName": "Night Rush",
+      "description": "Small extra melee/movement burst at night, not free permanent speed.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9
+      ],
+      "unit": "percent",
+      "effect": "jawr_nocturnal_mobility",
+      "skillPrerequisites": [
+        "tmm_vampire_fang_training"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_regent",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "capstone",
+      "displayName": "Blood Regent",
+      "description": "Late predatory stance: blood-paid offensive boost with cooldown; no minions.",
+      "maximumLevel": 1,
+      "prices": [
+        5
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_blood_funded_stance",
+      "skillPrerequisites": [
+        "tmm_vampire_blood_duelist"
+      ],
+      "externalGate": "jawr_native_end_milestone_and_late_boss",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "additionalServerPrerequisites": [
+        "tmm_vampire_bat_mastery",
+        "tmm_vampire_elder_presence"
+      ],
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_pale_resilience",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "entry",
+      "displayName": "Pale Resilience",
+      "description": "Reduce classified environmental/physical damage; never negate holy/silver vulnerabilities.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_incoming_damage_mitigation",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_sunshroud",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "advanced",
+      "displayName": "Sunshroud",
+      "description": "Short blood-funded sunlight resistance that preserves JAWR burning and gear value.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        10,
+        15,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_sun_partial_mitigation",
+      "skillPrerequisites": [
+        "tmm_vampire_pale_resilience"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_elder_presence",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "mastery",
+      "displayName": "Elder Presence",
+      "description": "Bounded defensive disorientation pulse; no minion summons, raids or domination.",
+      "maximumLevel": 1,
+      "prices": [
+        4
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_defensive_control",
+      "skillPrerequisites": [
+        "tmm_vampire_sunshroud"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_damage_limiter",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "advanced",
+      "displayName": "Damage Limiter",
+      "description": "Short blood-paid emergency mitigation with long cooldown, not invulnerability.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        10,
+        15,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_emergency_damage_cap",
+      "skillPrerequisites": [
+        "tmm_vampire_pale_resilience"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_feral_vigor",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "entry",
+      "displayName": "Feral Vigor",
+      "description": "Add 5–25 hearts of conditional max health while transformed; never permanently leak after cure.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "unit": "health points",
+      "effect": "jawr_bonus_max_health",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_regenerative_flesh",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "advanced",
+      "displayName": "Regenerative Flesh",
+      "description": "Regenerate actual HP per second in JAWR wolf form; bounded by hunger and damage cooldown.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        1
+      ],
+      "unit": "health points per second",
+      "effect": "jawr_health_regen",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_vigor"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_bloodlust_recovery",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "advanced",
+      "displayName": "Bloodlust Recovery",
+      "description": "Heal on personally credited hostile kills, with 3-second cooldown and no summon/pet kill duplication.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "unit": "health points",
+      "effect": "jawr_kill_heal",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_vigor"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "pilot_behavior_needs_jawr_state",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_unbreakable_beast",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "mastery",
+      "displayName": "Unbreakable Beast",
+      "description": "Further max health with bounded in-combat recovery; preserves silver vulnerability.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "health points",
+      "effect": "jawr_bonus_max_health",
+      "skillPrerequisites": [
+        "tmm_werewolf_regenerative_flesh"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_rending_claws",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "entry",
+      "displayName": "Rending Claws",
+      "description": "Boost melee attacks confirmed to be native JAWR claws; do not boost magic.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_wolf_claw_damage",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_bleeding_bite",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "advanced",
+      "displayName": "Bleeding Bite",
+      "description": "Bite applies bounded bleed over five seconds, subject to boss/PvP rules.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6
+      ],
+      "unit": "damage",
+      "effect": "jawr_bite_bleed",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": [
+        "tmm_werewolf_stunning_bite"
+      ]
+    },
+    {
+      "id": "tmm_werewolf_stunning_bite",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "advanced",
+      "displayName": "Stunning Bite",
+      "description": "Bite briefly immobilizes non-boss targets, incompatible with Bleeding Bite.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "unit": "seconds",
+      "effect": "jawr_bite_stun",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": [
+        "tmm_werewolf_bleeding_bite"
+      ]
+    },
+    {
+      "id": "tmm_werewolf_primal_fury",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "mastery",
+      "displayName": "Primal Fury",
+      "description": "Short feral melee burst with hunger/fatigue cost and meaningful cooldown.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "percent",
+      "effect": "jawr_fatigue_burst",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_predators_stride",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "entry",
+      "displayName": "Predator's Stride",
+      "description": "Improve speed only in valid JAWR wolf form.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_wolf_movement",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_pouncing_leap",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Pouncing Leap",
+      "description": "Cooldown jump with safe landing/collision and no protected-block bypass.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        1.2,
+        1.4,
+        1.6
+      ],
+      "unit": "leap multiplier",
+      "effect": "jawr_wolf_leap",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_arrow_awareness",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Arrow Awareness",
+      "description": "Bounded chance to evade eligible projectiles while moving; shared dodge cap.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_projectile_avoidance",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_evasive_sprint",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Evasive Sprint",
+      "description": "Chance to evade qualified attacks while sprinting, shares avoidance budget.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_sprint_avoidance",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_surefooted_predator",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "mastery",
+      "displayName": "Surefooted Predator",
+      "description": "Reduce fall and verified hazard damage; no total immunity or special dimension grief.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        15,
+        30,
+        45
+      ],
+      "unit": "percent",
+      "effect": "jawr_environment_resistance",
+      "skillPrerequisites": [
+        "tmm_werewolf_pouncing_leap"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_wild_attunement",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "entry",
+      "displayName": "Wild Attunement",
+      "description": "Buff personally cast, source-verified nature magic (Roots/Botania), not world machines.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_nature_spell_potency",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_rootsong",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "advanced",
+      "displayName": "Rootsong",
+      "description": "Boost personal nature-related healing and spell effects; not world processing.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_nature_healing_potency",
+      "skillPrerequisites": [
+        "tmm_werewolf_wild_attunement"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_grove_howl",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "mastery",
+      "displayName": "Grove Howl",
+      "description": "Temporary player-only nature synergy howl; summons no wolves, pets or minions.",
+      "maximumLevel": 1,
+      "prices": [
+        4
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_friendly_buff_howl",
+      "skillPrerequisites": [
+        "tmm_werewolf_rootsong"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_feral_excavation",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "entry",
+      "displayName": "Feral Excavation",
+      "description": "Bonus bareclaw block breaking speed, server permission checks; no tier bypass.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "unit": "percent",
+      "effect": "jawr_claw_mining_speed",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "pilot_hook_needs_harvest_compat",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_enhanced_claws",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "advanced",
+      "displayName": "Enhanced Claws",
+      "description": "Finite bareclaw harvest tier; preserve loot tool predicates, claims and ore gates.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "unit": "tier",
+      "effect": "jawr_claw_harvest_tier",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_excavation"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_tempered_silver",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "advanced",
+      "displayName": "Tempered Against Silver",
+      "description": "Reduce but never eliminate verified JAWR silver vulnerability.",
+      "maximumLevel": 4,
+      "prices": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "values": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "unit": "percent",
+      "effect": "jawr_silver_resistance",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_excavation"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_predatory_senses",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "mastery",
+      "displayName": "Predatory Senses",
+      "description": "Bounded prey awareness scan on cooldown, excludes vanished players.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        6,
+        9,
+        12
+      ],
+      "unit": "blocks",
+      "effect": "jawr_senses",
+      "skillPrerequisites": [
+        "tmm_werewolf_tempered_silver"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_moon_apex",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "capstone",
+      "displayName": "Moon Apex",
+      "description": "Late-game feral vitality stance with cooldown; boosts survivability, no immortality.",
+      "maximumLevel": 1,
+      "prices": [
+        5
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_health_capstone",
+      "skillPrerequisites": [
+        "tmm_werewolf_unbreakable_beast"
+      ],
+      "externalGate": "jawr_native_end_milestone_and_late_boss",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "additionalServerPrerequisites": [
+        "tmm_werewolf_primal_fury",
+        "tmm_werewolf_grove_howl"
+      ],
+      "incompatibleSkills": []
+    }
+  ]
+}
