@@ -7,7 +7,9 @@ import java.util.*;
 /** XP definitions are independent resources. Trees bind a default and optional per-skill currencies. */
 public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel> paths,Map<SkillKey,Binding> skills) {
     public record SkillKey(String path,String skill) {}
-    public record Binding(XpChannel currency,XpChannel levelSystem) {}
+    public record Binding(XpChannel currency,XpChannel levelSystem,boolean permanent,XpChannel awardCurrency,int awardPoints) {
+        public Binding(XpChannel currency,XpChannel levelSystem){this(currency,levelSystem,false,null,0);}
+    }
     public static ChannelConfig empty(){return new ChannelConfig(Map.of(),Map.of(),Map.of());}
     public ChannelConfig {channels=Map.copyOf(channels);paths=Map.copyOf(paths);skills=Map.copyOf(skills);}
     public static Map<String,XpChannel> definitions(Map<String,JsonObject> raw,double growth){
@@ -53,9 +55,22 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
                 var currency=resolve(systems,q.has("xp_channel")?q.get("xp_channel").getAsString():def.id());
                 var level=resolve(systems,q.has("level_system")?q.get("level_system").getAsString():currency.id());
                 var skill=tree.skill(id);
-                if(skill.requiredRank()>level.maxRank()||skill.autoRanks().stream().anyMatch(n->n>level.maxRank()))
+                if(skill.requiredRank()>level.maxRank()||skill.autoRanks().stream().anyMatch(n->n>level.maxRank())||skill.rankRequirements().stream().anyMatch(n->n>level.maxRank()))
                     throw new IllegalArgumentException("Level gate exceeds curve "+id);
-                skills.put(new SkillKey(tree.id(),id),new Binding(currency,level));
+                boolean permanent=q.has("refundable")&&!q.get("refundable").getAsBoolean();
+                if(permanent&&(!skill.autoRanks().isEmpty()||!skill.requiresSkills().isEmpty()||!skill.requiresAnySkills().isEmpty()))
+                    throw new IllegalArgumentException("Permanent purchase must not depend on refundable skill ranks "+id);
+                XpChannel award=null;int points=0;
+                if(q.has("rank_point_award")){
+                    var receipt=q.getAsJsonObject("rank_point_award");
+                    if(!receipt.keySet().equals(Set.of("system","points")))throw new IllegalArgumentException("Invalid rank point award fields");
+                    award=resolve(systems,receipt.get("system").getAsString());points=receipt.get("points").getAsBigDecimal().intValueExact();
+                    if(!permanent||!currency.magic()||award.magic()||points<1||points>100)
+                        throw new IllegalArgumentException("Rank award requires irreversible positive-cost MXP purchase into native wallet");
+                    for(int rank=0;rank<skill.maxRank();rank++)if(skill.price(rank)<=0)
+                        throw new IllegalArgumentException("Rank point award cannot be free");
+                }
+                skills.put(new SkillKey(tree.id(),id),new Binding(currency,level,permanent,award,points));
             }
         }
         return new ChannelConfig(systems,paths,skills);

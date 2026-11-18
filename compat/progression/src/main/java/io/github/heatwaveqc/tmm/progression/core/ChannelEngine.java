@@ -58,19 +58,25 @@ public final class ChannelEngine {
         if(!view.joined()||w==null||gate==null)return ledger;
         var before=new Track(true,view.xp(),gate.rank(),w.points(),view.skills(),view.milestones(),view.counters());
         var after=ProgressionMath.buy(tree,before,skillId);if(after==before)return ledger;
-        return ownership(ledger,tree,after).withWallet(binding.currency().id(),w.points(after.points()))
-              .receipt(tree.id(),skillId,binding.currency().id(),w.points()-after.points());
+        Wallet reward=binding.awardCurrency()==null?null:ledger.wallet(binding.awardCurrency().id());
+        if(binding.awardPoints()>0&&(reward==null||reward.points()>Integer.MAX_VALUE-binding.awardPoints()))return ledger;
+        var next=ownership(ledger,tree,after).withWallet(binding.currency().id(),w.points(after.points()))
+              .receipt(tree.id(),skillId,binding.currency().id(),w.points()-after.points(),binding.permanent());
+        if(binding.awardPoints()>0)next=next.withWallet(binding.awardCurrency().id(),reward.points(reward.points()+binding.awardPoints()));
+        return next;
     }
     public static Ledger refund(Ledger ledger,Definition.Path tree){
         if(!ledger.get(tree.id()).joined())return ledger;
         var prefix=tree.id()+"|";var next=ledger;
+        var permanentRanks=new java.util.HashMap<String,Integer>();
         for(var row:ledger.payments().entrySet())if(row.getKey().startsWith(prefix))for(String receipt:row.getValue()){
+            if(receipt.startsWith("!")){permanentRanks.merge(row.getKey().substring(prefix.length()),1,Integer::sum);continue;}
             int sep=receipt.lastIndexOf('|');String id=receipt.substring(0,sep);int amount=Integer.parseInt(receipt.substring(sep+1));
             Wallet w=next.wallet(id);if(w==null||amount<0)throw new IllegalStateException("Invalid purchase receipt");
             next=next.withWallet(id,w.points((int)Math.min(Integer.MAX_VALUE,(long)w.points()+amount)));
         }
         var raw=ledger.get(tree.id());
-        return next.with(tree.id(),new Track(true,0,0,0,Map.of(),raw.milestones(),raw.counters())).clearReceipts(tree.id());
+        return next.with(tree.id(),new Track(true,0,0,0,permanentRanks,raw.milestones(),raw.counters())).clearReceipts(tree.id());
     }
     public static Ledger magic(Ledger ledger,XpChannel channel,String tx,String firstKey,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {

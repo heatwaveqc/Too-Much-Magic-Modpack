@@ -19,14 +19,19 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets, Map<
         var copy=new HashMap<>(wallets); copy.put(id,wallet);
         return new Ledger(paths,copy,payments);
     }
-    public Ledger receipt(String path,String skill,String currency,int paid) {
+    public Ledger receipt(String path,String skill,String currency,int paid){return receipt(path,skill,currency,paid,false);}
+    public Ledger receipt(String path,String skill,String currency,int paid,boolean permanent) {
         var copy=new HashMap<>(payments);String key=path+"|"+skill;
         var list=new java.util.ArrayList<>(copy.getOrDefault(key,java.util.List.of()));
-        list.add(currency+"|"+paid);copy.put(key,list);
+        list.add((permanent?"!":"")+currency+"|"+paid);copy.put(key,list);
         return new Ledger(paths,wallets,copy);
     }
     public Ledger clearReceipts(String path) {
-        var copy=new HashMap<>(payments);copy.keySet().removeIf(k->k.startsWith(path+"|"));
+        var copy=new HashMap<>(payments);
+        for(var key:new java.util.ArrayList<>(copy.keySet()))if(key.startsWith(path+"|")){
+            var retained=copy.get(key).stream().filter(value->value.startsWith("!")).toList();
+            if(retained.isEmpty())copy.remove(key);else copy.put(key,retained);
+        }
         return new Ledger(paths,wallets,copy);
     }
 }

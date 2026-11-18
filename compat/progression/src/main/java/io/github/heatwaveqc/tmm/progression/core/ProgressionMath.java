@@ -28,8 +28,9 @@ public final class ProgressionMath {
 
     public static Track buy(Definition.Path spec, Track old, String skillId) {
         Definition.Skill skill = spec.skill(skillId);
-        if (!old.joined() || skill == null || old.rank() < skill.requiredRank()) return old;
+        if (!old.joined() || skill == null) return old;
         int owned = old.skillRank(skillId);
+        if(old.rank()<skill.nextRequiredRank(owned))return old;
         if (!skill.autoRanks().isEmpty()) return old; // baseline grants are not purchased
         if (owned >= skill.maxRank() || old.points() < skill.price(owned)) return old;
         if (owned == 0 && !skill.choiceGroup().isEmpty()) {

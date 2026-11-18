@@ -158,11 +158,12 @@ public final class ProgressionMenuNetwork {
             item.addProperty("title",present.title());item.addProperty("description",present.description());item.addProperty("lane",present.lane());
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
-            item.addProperty("required_rank", skill.requiredRank());
+            item.addProperty("required_rank", skill.nextRequiredRank(owned));
             item.addProperty("eligible",PathRegistry.skillEligible(player,pathId,skill.id()));
             item.addProperty("auto", !skill.autoRanks().isEmpty());
             var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tmm.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));
             item.addProperty("currency",binding.currency().id());
+            item.addProperty("permanent",binding.permanent());
             item.addProperty("point_name",binding.currency().pointName());
             item.addProperty("level_system",binding.levelSystem().name());
             item.addProperty("price", skill.price(owned));

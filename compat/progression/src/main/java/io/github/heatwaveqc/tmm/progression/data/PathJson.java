@@ -130,6 +130,15 @@ public final class PathJson {
             }
             if(j.has("rank_costs")&&(prices.size()!=max||j.has("base_cost")||j.has("step_cost")))
                 throw new IllegalArgumentException("rank_costs must cover every rank and replace linear cost");
+            List<Integer> rankRequirements=new ArrayList<>();
+            for(var need:entries(j,"rank_level_requirements")){
+                int n=need.getAsBigDecimal().intValueExact();
+                if(n<1||n>thresholds.size()||!rankRequirements.isEmpty()&&n<rankRequirements.getLast())
+                    throw new IllegalArgumentException("Invalid rank level gate");
+                rankRequirements.add(n);
+            }
+            if(j.has("rank_level_requirements")&&(rankRequirements.size()!=max||j.has("required_rank")))
+                throw new IllegalArgumentException("rank_level_requirements must cover all ranks and replace required_rank");
             List<Definition.Effect> effects = new ArrayList<>();
             for (JsonElement effect : entries(j,"effects")) {
                 JsonObject f = effect.getAsJsonObject();
@@ -228,7 +237,7 @@ public final class PathJson {
                     || !choiceGroup.isEmpty())))
                 throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites or choices");
             skills.add(new Definition.Skill(sid,max,required,base,step,strings(j,"requires_skills"),
-                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects,prices));
+                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects,prices,rankRequirements));
         }
         for (Definition.Skill skill : skills) {
             for (String needed : skill.requiresSkills()) {
