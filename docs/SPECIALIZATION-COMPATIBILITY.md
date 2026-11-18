@@ -24,9 +24,25 @@ This is the canonical **design decision register**, not a runtime config or a va
 
 For Piglich/Revenant, preserve existing path progress, equipment or hunting/mutation abilities; the additional lich form(s) use the shared Tyz SP wallet, no extra hybrid-exclusive tree implied. Lich physiology precedence is proposed, with food/cure/resurrection conflicts to validate before release. Both lich sources may be acquired in either order **after** Gilded/Hunter enrollment. A Dracolich cannot become Archlich; an Archlich cannot acquire a dragon. No other third specialization is automatically allowed. Denied combinations can subsequently be reconsidered only via an explicit owner decision.
 
+## Owner review decisions (2026-11-17)
+
+**New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon.
+
+**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these ten pairs, with both directions undecided; the categories below record the intended design follow-up.
+
+| Concept | Pair variants | Disposition |
+|---|---:|---|
+| Monk + Vampire | 1 | CONSIDER (owner requested) |
+| Gilded + Dragon | 3 | CONSIDER (discuss species, order, compatibility and balance before approval) |
+| Werewolf + Lich | 2 | CONSIDER |
+| Monk + Dragon (Ascendant Dragon) | 3 | ON HOLD — additive combat overlap |
+| Vampire + Werewolf (Abomination) | 1 | RESEARCH — existing narrow native dual-affliction guard, complete hybrid not approved |
+
+All prior implemented and planned combinations remain unchanged. The composite-state CSV requires no changes: unrelated third specializations are still denied. This is a design-only decision, not a runtime code change.
+
 ## Review counts
 
-10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 4 are approved one-way plans, 6 are denied in both directions, 28 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
+10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 4 are approved one-way plans, 24 are denied in both directions, 10 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
 
 ## Evidence and next steps
 
