@@ -15,7 +15,7 @@ class HunterXpPolicyTest {
             assertNotNull(stream);
             var raw = JsonParser.parseReader(new java.io.InputStreamReader(
                 stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
-            var path = PathJson.read("tmm_progression:hunter",raw);
+            var path = TestPaths.read("tmm_progression:hunter",raw);
             var policy = HunterXpPolicy.parse(raw);
             assertNotNull(policy);
             assertEquals(4,policy.healthDivisor());
@@ -53,7 +53,7 @@ class HunterXpPolicyTest {
             """;
         var good = JsonParser.parseString(base).getAsJsonObject();
         assertNotNull(HunterXpPolicy.parse(good));
-        assertEquals(2,PathJson.read("test:hunter",good).maxRank());
+        assertEquals(2,TestPaths.read("test:hunter",good).maxRank());
         for (String bad : new String[] {
             base.replace("\"health_divisor\":4","\"health_divisor\":0"),
             base.replace("\"specialty_multiplier\":2","\"specialty_multiplier\":-1"),
@@ -61,6 +61,6 @@ class HunterXpPolicyTest {
             base.replace("\"potion_repeat_cooldown_ticks\":12000",
                 "\"potion_repeat_cooldown_ticks\":0")
         }) assertThrows(IllegalArgumentException.class,
-            () -> PathJson.read("test:hunter",JsonParser.parseString(bad).getAsJsonObject()));
+            () -> TestPaths.read("test:hunter",JsonParser.parseString(bad).getAsJsonObject()));
     }
 }

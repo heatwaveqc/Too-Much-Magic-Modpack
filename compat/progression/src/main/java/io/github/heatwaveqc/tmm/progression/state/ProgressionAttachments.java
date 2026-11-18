@@ -22,5 +22,5 @@ public final class ProgressionAttachments {
             .serialize(HunterMutationState.codec()).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
-            .serialize(Ledger.CODEC).copyOnDeath().build());
+            .serialize(LedgerCodec.CODEC).copyOnDeath().build());
 }
