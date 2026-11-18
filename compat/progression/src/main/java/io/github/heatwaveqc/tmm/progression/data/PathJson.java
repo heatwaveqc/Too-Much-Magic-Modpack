@@ -175,8 +175,10 @@ public final class PathJson {
                 if (type.equals("damage_bonus") &&
                     !Set.of("melee","arrow","any").contains(params.getOrDefault("delivery","melee")))
                     throw new IllegalArgumentException("Damage delivery must be melee, arrow or any");
-                effects.add(new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
-                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params));
+                var parsedEffect=new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
+                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params);
+                MechanicalSpec.validate(parsedEffect);
+                effects.add(parsedEffect);
             }
             List<Integer> auto = new ArrayList<>();
             for (JsonElement r : entries(j,"auto_ranks")) {

@@ -47,6 +47,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
+        NeoForge.EVENT_BUS.addListener(MechanicalEffects::postDamage);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
@@ -75,6 +76,7 @@ public final class ProgressionEvents {
                 ProgressionApi.recordFiltered(player,Selectors.unarmedKill(event.getEntity()),path->HunterExperience.allowsMilestone(path.id(),credited));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
+            MechanicalEffects.kill(player,event);
         }
     }
     private static void mobDrops(LivingDropsEvent event) {
@@ -162,6 +164,7 @@ public final class ProgressionEvents {
         EffectRuntime.incoming(event);
         if (!event.isCanceled()) EffectHandlers.incoming(event);
         if (!event.isCanceled()) TyzMonkBridge.incoming(event);
+        if (!event.isCanceled()) MechanicalEffects.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
@@ -183,6 +186,7 @@ public final class ProgressionEvents {
             ClassAbilities.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
+            MechanicalEffects.tick(player);
         }
     }
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
@@ -190,6 +194,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            MechanicalEffects.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
@@ -211,6 +216,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            MechanicalEffects.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);

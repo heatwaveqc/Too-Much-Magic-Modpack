@@ -99,6 +99,9 @@ public final class EffectRuntime {
             if (instance == null) continue;
             ResourceLocation id = modifierId(active);
             double amount = effect.amountPerRank() * active.rank();
+            if(effect.params().containsKey("max_contribution")&&amount>0)
+                amount=io.github.heatwaveqc.tmm.progression.foundation.AttributeCap.suppressBonuses(amount,
+                    io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.number(effect.params(),"max_contribution",0,0,1000000));
             AttributeModifier.Operation op = operation(effect.operation());
             AttributeModifier old = instance.getModifier(id);
             if (old != null && (old.amount() != amount || old.operation() != op)) {
@@ -111,7 +114,7 @@ public final class EffectRuntime {
         }
         Map<ResourceLocation,String> previous = previousAttributes.getOrDefault(player.getUUID(),Map.of());
         previous.forEach((id,attrName) -> {
-            if (!desired.containsKey(id)) {
+            if (!java.util.Objects.equals(desired.get(id),attrName)) {
                 Holder<Attribute> holder = attribute(attrName);
                 AttributeInstance instance = holder == null ? null : player.getAttribute(holder);
                 if (instance != null) instance.removeModifier(id);
