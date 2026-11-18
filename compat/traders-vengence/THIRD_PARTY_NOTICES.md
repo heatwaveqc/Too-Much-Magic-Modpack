@@ -37,3 +37,5 @@ Release gate: provide corresponding source, license text and notices for incorpo
 Unmodified source references (outside Gradle source sets), adapted GolemMinigunModel and identical upstream drone minigun texture recorded in `donor-reference/pneumaticcraft/provenance.json`. Upstream GPLv3, GPL-3.0-or-later in relevant Java headers; original headers preserved. Model attribution: original Techne header and Team Pneumatic contributor credits. No sound imported: specific mapping of freesound licenses remains unverified. The model is not registered/rendered yet.
 
 MinigunSpin adapts the base spin-up/spin-down limits and angle update from the pinned PneumaticCraft Minigun.java; no PNC air, upgrades, player, projectile or ammo mechanisms copied into live runtime. Original source is retained in donor-reference.
+
+Base weapon balance and standard damage type semantics adapted from pinned PneumaticCraft CommonConfig.java, Minigun.java, AbstractGunAmmoItem.java, and generated data/pneumaticcraft/damage_type/minigun.json; local damage ID and NPC attribution differ. Standard damage does not bypass armor or the normal damage cooldown.

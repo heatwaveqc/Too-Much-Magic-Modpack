@@ -2,6 +2,11 @@ package io.github.heatwaveqc.tmm.tradersvengence.runtime;
 
 import io.github.heatwaveqc.tmm.tradersvengence.state.TraderBlacklist;
 import java.util.EnumSet;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,13 +16,12 @@ import net.minecraft.world.entity.player.Player;
 
 /**
  * NPC-only combat adapter. Reuses the existing/native target, never scans for targets.
- * The spin state is adapted from the donor; damage uses the game's native mob attack.
- * Conservative provisional game-balance constants, pending owner/playtest tuning.
+ * Uses unupgraded PneumaticCraft standard ammo base range and damage, and
+ * one firing attempt per tick after spin-up. Vanilla hurt resistance applies.
  */
 public final class GolemMinigunGoal extends Goal {
-    public static final float RANGE = 16F;
-    public static final float DAMAGE = 5F;
-    public static final int SHOT_INTERVAL = 10;
+    private static final ResourceKey<DamageType> MINIGUN_DAMAGE = ResourceKey.create(
+        Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath("traders_vengence", "minigun"));
     private final IronGolem golem;
     private final MinigunSpin spin = new MinigunSpin();
     private boolean running;
@@ -32,7 +36,7 @@ public final class GolemMinigunGoal extends Goal {
         if (!GolemMinigunEvents.armed(golem) || !(golem.level() instanceof ServerLevel world)
                 || target == null || !target.isAlive() || target.level() != world
                 || target == golem || golem.isAlliedTo(target) || !golem.canAttack(target)
-                || golem.distanceToSqr(target) > RANGE * RANGE
+                || golem.distanceToSqr(target) > MinigunBalance.RANGE * MinigunBalance.RANGE
                 || !golem.getSensing().hasLineOfSight(target)) return false;
         if (target instanceof Player) {
             return target instanceof ServerPlayer player && !player.isCreative()
@@ -56,8 +60,12 @@ public final class GolemMinigunGoal extends Goal {
         if (spin.ready() && cooldown == 0) {
             // No player-obtainable equipment, projectiles or ammunition.
             // Recheck targeting/line of sight every shot, including after a pardon.
-            target.hurt(golem.damageSources().mobAttack(golem), DAMAGE);
-            cooldown = SHOT_INTERVAL;
+            // Same standard (not armor-piercing) data-driven damage semantics as upstream.
+            // Do not reset invulnerability timers or bypass armor/damage cooldown tags.
+            var type = golem.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+                .getHolderOrThrow(MINIGUN_DAMAGE);
+            target.hurt(new DamageSource(type, golem, golem), MinigunBalance.DAMAGE);
+            cooldown = MinigunBalance.SHOT_INTERVAL;
         }
     }
     void updateSpin() {

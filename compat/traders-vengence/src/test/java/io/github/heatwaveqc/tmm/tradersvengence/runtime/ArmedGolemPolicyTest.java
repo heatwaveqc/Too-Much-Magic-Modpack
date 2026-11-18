@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArmedGolemPolicyTest {
+    @Test void standardUnupgradedPneumaticCraftWeaponDefaults() {
+        assertEquals(50F, MinigunBalance.RANGE);
+        assertEquals(6F, MinigunBalance.DAMAGE);
+        assertEquals(1, MinigunBalance.SHOT_INTERVAL);
+    }
     @Test void onlyRecordedVillagerSpawnIsArmed() {
         assertTrue(ArmedGolemPolicy.shouldArm(true, false));
         assertFalse(ArmedGolemPolicy.shouldArm(true, true));

@@ -1,3 +1,5 @@
 {
-  "message.traders_vengence.hero_pardon": "Your heroism has earned the villages' forgiveness. The vendetta is over."
+  "message.traders_vengence.hero_pardon": "Your heroism has earned the villages' forgiveness. The vendetta is over.",
+  "death.attack.traders_vengence.minigun": "%1$s was gunned down by %2$s",
+  "death.attack.traders_vengence.minigun.player": "%1$s was gunned down whilst fighting %2$s"
 }
