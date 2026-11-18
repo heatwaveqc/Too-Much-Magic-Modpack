@@ -40,3 +40,10 @@ def generateModMetadata = tasks.register('generateModMetadata', ProcessResources
 }
 sourceSets.main.resources.srcDir generateModMetadata
 neoForge.ideSyncTask generateModMetadata
+
+// Distribute the complete module license and applicable third-party notices.
+tasks.withType(Jar).configureEach {
+    from('LICENSE')
+    from('THIRD_PARTY_NOTICES.md')
+    from('third_party_licenses') { into 'third_party_licenses' }
+}
