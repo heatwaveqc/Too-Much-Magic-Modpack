@@ -112,7 +112,7 @@ public final class VendettaEvents {
         if (!(event.getEntity() instanceof Mob mob)) {
             return;
         }
-        if (!(mob instanceof AbstractVillager || mob instanceof IronGolem || mob instanceof Llama)) {
+        if (!(mob instanceof Villager || mob instanceof WanderingTrader || mob instanceof IronGolem || mob instanceof Llama)) {
             return;
         }
 

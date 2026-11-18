@@ -46,6 +46,37 @@ def validate_jar(jar, mod):
 def expected_license(directory):
     return "GPL-3.0-only" if directory.name == "traders-vengence" else "MIT"
 
+CALIBERARMS_MANIFEST = "META-INF/traders_vengence/caliberarms/provenance.json"
+CALIBERARMS_JAR_SHA256 = "88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90"
+
+def caliberarms_asset_paths(directory):
+    """The donor model, audio and separate MIT/CC0 notices must ship together."""
+    root = directory / "src/main/resources"
+    manifest = json.loads((root / CALIBERARMS_MANIFEST).read_text(encoding="utf-8"))
+    expected_paths = {
+        "META-INF/traders_vengence/caliberarms/LICENSE.txt",
+        "META-INF/traders_vengence/caliberarms/CREDITS.md",
+        "assets/traders_vengence/models/item/npc_pistol.json",
+        "assets/traders_vengence/textures/item/gun/m1911.png",
+        "assets/traders_vengence/sounds.json",
+        *(f"assets/traders_vengence/sounds/guns/m1911/fire_{i}.ogg" for i in (1, 2)),
+        *(f"assets/traders_vengence/sounds/reload/pistol/{action}_{i}.ogg"
+          for action, count in (("mag_in", 2), ("mag_out", 2), ("slide", 4))
+          for i in range(1, count + 1)),
+    }
+    if manifest.get("jar_sha256") != CALIBERARMS_JAR_SHA256 or set(manifest.get("files", {})) != expected_paths:
+        raise ValueError("Unreviewed Caliber Arms donor manifest")
+    for path, expected_hash in manifest["files"].items():
+        if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected_hash:
+            raise ValueError("Caliber Arms source asset hash mismatch: " + path)
+    return sorted(expected_paths | {CALIBERARMS_MANIFEST})
+
+def validate_caliberarms_assets(directory, z):
+    root = directory / "src/main/resources"
+    for name in caliberarms_asset_paths(directory):
+        if z.namelist().count(name) != 1 or z.read(name) != (root / name).read_bytes():
+            raise ValueError("Missing, duplicate or inconsistent Caliber Arms resource: " + name)
+
 def validate_jar_license(directory, jar):
     """Require the approved module-specific license and exact bundled notices."""
     expected_id = expected_license(directory)
@@ -72,6 +103,8 @@ def validate_jar_license(directory, jar):
         for required in markers:
             if required not in license_text:
                 raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
+        if directory.name == "traders-vengence":
+            validate_caliberarms_assets(directory, z)
 
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
