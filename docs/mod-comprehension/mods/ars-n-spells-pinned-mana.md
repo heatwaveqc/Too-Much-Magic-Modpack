@@ -1,0 +1,49 @@
+# Ars 'n Spells3.3.5 — pinned mana routing, quotes and ritual lifecycle
+
+Direct binary audit: addon `ars_n_spells-3.3.5.jar` fullSHA512 in [carrier companion](ars-n-spells-pinned-carriers.md); native Ars5.13.5 SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; native Iron's `irons_spellbooks-1.21.1-3.16.3.jar`,13890045bytes,SHA512 `fd782f98c6c59b193c4832f33775291d2a7e639e1e23dd47510bfb494d99d182bec1253566b9394f96c733a0d0108be34bd729614b82dc29e55e096fdeb96f5b`. Recomputed exact pin hash before recipient bytecode inspection. CFR0.152 external scratch `ans-fresh` and `irons-ans-fresh`; no code/JARs committed. [Addon profile](ars-n-spells.md) remains researching for caller-specific settlement, regeneration, combat/cooldown/progression and remaining source coverage.
+
+## Mode routing is a server configuration, not a survival upgrade
+
+`BridgeManager.buildRouting`, `ModeRoutingSnapshot` and `StandardQuotePolicy` provide the following distinctions. Missing Iron's forces effective disabled/Ars authority even if requested mode is different. Before SERVER config loads, initialization falls back disabled; refresh publishes a generation and reconciles mode changes on server thread. Default config mode is iss_primary with master enabletrue. These defaults do not prove effective world settings.
+
+| Mode | Native Ars spending | Native Iron's spending | Authoritative bridge used by Mana Well/Infusion |
+| --- | --- | --- | --- |
+| iss_primary | Iron's pool, converted | Native Iron's | Iron's |
+| ars_primary | Native Ars | Ars pool, converted | Ars |
+| hybrid | Iron's pool, converted | Native Iron's | Iron's; selectable HUD does not create two independently spendable pools |
+| separate | Native Ars | Native Iron's | Ars; cross-carrier quote can split into two legs |
+| disabled | Native Ars | Native Iron's when present | Ars; off means mana integration off, not every independent addon subsystem off |
+
+The distinction between mode authority and origin/paying pool matters: `getManaForMode/consumeManaForMode` route one requested origin through its native route, while `getBridge()` returns the authoritative adapter. They are not the same as a multi-leg quote. Mode/config selection is operator/server administration; future player quests should teach observing the active mode and cost, not command-dependent progression.
+
+## Exact quote arithmetic
+
+`StandardQuotePolicy.quote`: native-only carrier uses original cost; other carrier policies multiply it once by configured crossCastMultiplier (default1.25). `CostRules` stores conversion kind, directional rates (both default1), Ars/Iron shares, rounding and generation. Disabled or a separate-mode native cast bills only the origin. Shared modes bill authoritative pool, converting only when foreign. Separate cross-cast quote creates origin-share and opposite-share legs; flat policy uses configured directional conversion, equal-percent policy uses `targetNativeMax / originNativeMax` and requires finite positive ceilings. Neither formula implies summing the pools before eligibility.
+
+Share values normalize when their total differs from1; nonpositive total becomes .5/.5. Rates must be finite positive; multiplier/shares finite nonnegative. Costs/legs reject negative, nonfinite or above2147483647. Rounding is per leg: `HALF_UP=floor(x+.5)` or `FLOOR=floor(x)`. Small fractional split costs can round to zero; these are formulas, not authorization to exploit or retune defaults. The actual configured rounding policy and caller quote construction must be reconciled before presenting one example as universal live cost.
+
+`BridgeManager.canAffordQuote` checks each nonzero leg. Its older `consumeQuote` attempts debits sequentially and credits completed earlier legs if a later debit returnsfalse; that method alone does not prove exact restoration if a native credit is canceled/clamped or throws. Modern `NativePayment` uses the ledger path below. Do not substitute whichever helper sounds safer for the actual caller path.
+
+## Payment reservation and failure boundary
+
+`NativePayment.settle` first refuses a player with terminal/unreleased compensation. Before opening a ledger attempt it prepares every nonzero leg and reads current/max: nonfinite/negative→adapter unavailable; current>max→ceiling inconsistent; current<price→insufficient; debit not representably lower→precision limit. Adapter read exceptions refuse. Only then it opens, validates, quotes and reserves through ledger. If reservation fails it invokes ledger failure/refund and returns movement, remaining-refund and unknown-unit records; failed compensation is not a guaranteed refund. Successful immediate settle commits/completes. `hold` instead retains reservation until `effectStarted`; missing accepted reservation at effect entry throws. `abortBeforeEffect` fails/refunds an open reservation. Recovery unavailable or4096open attempts refuses holds.
+
+This proves an explicit transaction design and diagnostic/failure paths, **not universal effect atomicity**. Native Ars/Iron hooks, channel pulses, cancellation/exception entry points, recovery persistence and exact compensation must still be traced at callers. A cast accepted by native engine can miss a target; action advancement is not a refund guarantee.
+
+Native recipient check: `IronsBridge.transactionDebit` checks enough current mana then calls `MagicData.addMana(-amount)`; transactionCredit calls addMana(+amount). Exact Iron's3.16.3 `MagicData.addMana` calls setMana(current+delta); setMana posts cancellable `ChangeManaEvent`, accepts its mutable newMana unless canceled, then clamps to MAX_MANA when a server player exists. No lower clamp is visible in this method. Thus a debit call's return is not sufficient proof actual resource movement occurred, and max-cap changes can affect credits. Ledger movement verification matters. Native bridge access is wrapped in `NativeManaAccess` scopes so addon-native API calls can be distinguished from ordinary redirected reads/writes.
+
+## Mana Well lifetime is source-established
+
+`ManaWellRitual` directly extends native `AbstractRitual`, not the addon's60tick `AnsRitual`. Its server tick scans world players, uses `new AABB(currentRitualPos).inflate(range)` and adds regenRate via authoritative bridge for each intersecting bounding box. Defaults range8 (allowed1–64),2mana/tick (allowed.1–100):40persecond/player at20TPS **requested**, not measured accepted refill. Missing capability, cancellation, max clamp and actual TPS can reduce usable gain. It is a cuboid, not sphere, and every tick scans world players rather than a one-time participant list.
+
+Native5.13.5 `AbstractRitual.tryTick` only requires started/notdone, assigns ticking tile and calls subclass tick; it supplies **no universal duration**. Default Source cost0; `consumesSource` is cost>0. Well doesn't override those or request Source, increment progress or finish. Native `RitualBrazierTile.tick` likewise has no universal duration: if isOff it returns; done invokes onEnd/clears ritual; Source billing applies only when ritual consumes/needs Source; otherwise it calls tryTick at loaded relay or Brazier. Therefore the default Well can continue while its active tile ticks; the2000Source apparatus recipe is an upfront tablet craft cost, **not recurring fuel or a lifetime budget**.
+
+Pause/control: native Brazier neighbor update sets isOff from redstone signal (powered pauses tick); loading/relay state controls which tile supplies position. A loaded BrazierRelay can move effect center to relay while Source logic stays original Brazier; see [routing companion](ars-nouveau-pinned-routing-controls.md). `playerWillDestroy` calls ritual.onDestroy and only refunds tablet/consumed inputs if ritual is neither running nor done; don't promise active-Well tablet return. Tile `onDispel` handles decorative flames only, so Dispel isn't demonstrated as a general active-Well stop button. Remove the active Brazier to stop its ticking; no remote/global persistent effect was registered by Well tick. Unload/reload/state persistence remains acceptance work, not a hidden60tick expiration.
+
+ManaInfusion instead extends AnsRitual: tick increments until60, then native Brazier detects done and invokes onEnd. onEnd resolves recipient using initiator/fallback behavior from carrier audit, then requests configured500mana (allowed1–10000) via authoritative bridge. No per-tick refill and no bespoke recurring Source cost. The1500Source apparatus recipe is tablet acquisition. Neither ritual exposes a safe source-backed conversion of Source→unlimited uncapped mana independent of recipient maxima/settings; default Well's absence of ongoing fuel/timer is nevertheless a material economy finding to test before balance approval.
+
+## Teaching and acceptance
+
+Future optional utility lesson: craft named tablet via JEI/Apparatus, load it into native Ritual Brazier, activate empty-handed, stand inside known cuboid, compare current and max mana over measured ticks with active mode stated. Infusion is one completion event; Well is a continuing area refill and redstone pause experiment. Reward smallXP/common workshop supplies, not additional high-value tablets/Source or repeatable unlimited payouts. Neither utility is taught by the four current addon pilot advancements; no runtime edits made.
+
+Not run: all five modes with zero/exact/shortage/two-leg-shortage; canceled/modified ChangeManaEvent and clamped-refund behavior; native/channel pulse ledger lifecycle and crash recovery; at-max Well versus spending nearby,1versus multipleplayers, box edge/relay/redstone/unload/break cases; Infusion recipient offline/fallback; UI synchronization. Other modules (regen, damage, school progression, affinity, resonance and cooldown) still require direct source coverage before marking addon complete.

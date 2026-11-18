@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-18 Ars n Spells mode/quote and mana ritual lifecycle
+
+- New ars-n-spells-pinned-mana.md traces mode routing/quote arithmetic/ledgerpreflight/hold/abort boundaries, native Iron's MagicData event/clamp endpoint, and native ManaWell/Infusion/Brazier lifecycle. Exact Iron's3.16.3 artifact recovered/hashverified externally,13890045bytes, SHA512fd782f98c6c59b193c4832f33775291d2a7e639e1e23dd47510bfb494d99d182bec1253566b9394f96c733a0d0108be34bd729614b82dc29e55e096fdeb96f5b. SelectedMagicData/MagicManagerCFR at irons-ans-fresh; fulladdonans-fresh remains.
+- Well has NO universal parent timer, progressincrement or recurringSource cost; poweredBrazierpauses, loadedrelaychangescenter, activebreakdoesnotguaranteetabletrefund. InfusionAnsRitual60ticksone-shot. ModeauthorityISS/hybridIron's,ARS/separate/disabledArs; disabledstillnativeIron'scastpoolwhenpresent. Formula/movement-cancel/clampboundariesnotruntimeapproval.
+- **Next**: actualArsCastPayments/IronsCastPayments/mixinhook/ledgercallers/channelpulse/rollback, regen/equipment, damage/affinity/progression/resonance/cooldown remaining directbinarycoverage. Do not re-audit7recipes/4adv/costformula/Welltimer. Then remaining5Arsaddons, combinedparentreview/othermajors.6/42complete36researchingunchanged; no blocker; hourlyactive,docs-only,nosubagents/assembly/launch/runtimeedits/merge. Gitlogforactualhead; priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-18 Ars n Spells carriers and criterion semantics
 
 - Ars n Spells3.3.5 exact2325760byte/fullSHA512matched artifact recovered to external artifacts; wholeJARCFR at ans-fresh. New ars-n-spells-pinned-carriers.md covers7recipes/6legacyPatchouliresources, Loomtransaction/control/failure, genericTranscription, ritual/Table/commandbind and fouradvancementcreditcallpaths. Old missing-guide/pilot-onlybranch claims corrected; crosswalk43–46updated.6/42complete,36researchingunchanged; addon staysresearching.
