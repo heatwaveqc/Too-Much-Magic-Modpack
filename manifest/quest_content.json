@@ -1879,7 +1879,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Core Magic is available to everyone, with Improvable Skills 3 separate. You may remain unspecialized or choose ONE specialization from the same pool: Monk, Hunter, Gilded, Vampire, Werewolf, a Cave/Forest/Sea Dragon, or either Lich route. Human disciplines and supernatural forms are not independent slots. Only explicitly authorized combinations are exceptions: Archlich joins both lich routes; Dracolich joins a dragon and exactly one lich route. Vampire/Werewolf Abomination remains a research candidate, not a playable exception promised here. Other combinations are not allowed by default. Read freely; checkmarks never enroll you, and the native acquisition/Progression engine enforces eligibility.",
+      "description": "Core Magic is available to everyone, with Improvable Skills 3 separate. You may remain unspecialized or choose ONE specialization from the same pool: Monk, Hunter, Gilded, Vampire, Werewolf, a Cave/Forest/Sea Dragon, or either Lich route. Human disciplines and supernatural forms are not independent slots. Only explicitly authorized combinations are exceptions: Archlich joins both lich routes; Dracolich joins a dragon and exactly one lich route. Vampire/Werewolf Abomination remains a research candidate, not a playable exception promised here. Unlisted combinations are not allowed by default. Read freely; checkmarks never enroll you, and the native acquisition/Progression engine enforces eligibility. An additional owner-approved design exception is Piglich: a character must enroll as Gilded first, then obtain either or both lichdoms. A preexisting lich cannot join Gilded. This exception is planned, not currently implemented.",
       "reward": {
         "xp": 15,
         "item": "minecraft:golden_carrot",
@@ -3556,7 +3556,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers. Gilded-first lichdom (Piglich) is an approved future exception: enroll as Gilded before acquiring one or both native lich forms. Existing liches cannot enroll retroactively. Runtime implementation and testing are pending.",
       "reward": {
         "xp": 10,
         "item": "minecraft:gold_nugget",
@@ -3676,7 +3676,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here.",
+      "description": "This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here. A Gilded-first character may also acquire both lich forms as a Piglich. That additional exception is approved design only; the runtime enrollment policy must be extended and tested.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
