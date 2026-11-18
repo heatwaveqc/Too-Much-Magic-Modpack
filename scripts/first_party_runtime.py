@@ -43,12 +43,20 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def expected_license(directory):
+    return "GPL-3.0-only" if directory.name == "traders-vengence" else "MIT"
+
 def validate_jar_license(directory, jar):
-    """Verify the release license and notices, not just an SPDX metadata label."""
+    """Require the approved module-specific license and exact bundled notices."""
+    expected_id = expected_license(directory)
+    props = dict(line.split("=", 1) for line in (directory / "gradle.properties").read_text().splitlines()
+                 if "=" in line and not line.startswith("#"))
+    if props.get("mod_license") != expected_id:
+        raise ValueError("Unexpected module license: " + str(directory))
     with zipfile.ZipFile(jar) as z:
         metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
-        if metadata.get("license") != "MIT":
-            raise ValueError("First-party JAR must declare MIT: " + jar.name)
+        if metadata.get("license") != expected_id:
+            raise ValueError("First-party JAR must declare " + expected_id + ": " + jar.name)
         for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
             if z.namelist().count(name) != 1:
                 raise ValueError("Missing or duplicate " + name + " in " + jar.name)
@@ -56,11 +64,14 @@ def validate_jar_license(directory, jar):
             if not expected or z.read(name) != expected:
                 raise ValueError("Missing or inconsistent notice " + name + " in " + jar.name)
         license_text = z.read("LICENSE").decode()
-        for required in ("MIT License", "Copyright (c)", "Permission is hereby granted",
-                         "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"',
-                         "SOFTWARE."):
+        markers = (("MIT License", "Copyright (c)", "Permission is hereby granted",
+                    "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"', "SOFTWARE.")
+                   if expected_id == "MIT" else
+                   ("GNU GENERAL PUBLIC LICENSE", "Version 3", "TERMS AND CONDITIONS",
+                    "Corresponding Source", "END OF TERMS AND CONDITIONS"))
+        for required in markers:
             if required not in license_text:
-                raise ValueError("Incomplete MIT license in " + jar.name)
+                raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
 
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
