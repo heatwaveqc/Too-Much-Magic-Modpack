@@ -6,7 +6,6 @@
   "mixins": [
     "MobGoalsAccessor",
     "WanderingTraderSpawnerMixin",
-    "VillagerRangedAttackMixin",
     "VillagerReputationMixin",
     "VillagerGolemSpawnMixin"
   ],

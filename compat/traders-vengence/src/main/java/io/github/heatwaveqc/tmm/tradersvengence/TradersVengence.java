@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.tradersvengence;
 
 import io.github.heatwaveqc.tmm.tradersvengence.command.VendettaCommands;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.VendettaEvents;
+import io.github.heatwaveqc.tmm.tradersvengence.runtime.NpcPistolSounds;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.GolemMinigunEvents;
 import io.github.heatwaveqc.tmm.tradersvengence.network.GolemVisualPayload;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.HeroPardonEvents;
@@ -18,6 +19,7 @@ public final class TradersVengence {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public TradersVengence(IEventBus modBus) {
+        NpcPistolSounds.register(modBus);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onDeath);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onDefenderHurt);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onPriestAggro);

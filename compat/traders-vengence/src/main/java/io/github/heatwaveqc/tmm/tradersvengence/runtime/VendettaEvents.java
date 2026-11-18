@@ -15,7 +15,10 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -29,6 +32,8 @@ public final class VendettaEvents {
     private static final String LAST_PRIEST_TARGET =
         "traders_vengence:last_priest_target";
 
+    private static final ResourceLocation PISTOL_RANGE_MODIFIER =
+        ResourceLocation.fromNamespaceAndPath("traders_vengence", "pistol_follow_range");
     private VendettaEvents() {}
 
     public static void accuse(ServerLevel level, ServerPlayer offender, String reason) {
@@ -107,7 +112,7 @@ public final class VendettaEvents {
         if (!(event.getEntity() instanceof Mob mob)) {
             return;
         }
-        if (!(mob instanceof Villager || mob instanceof IronGolem || mob instanceof Llama)) {
+        if (!(mob instanceof AbstractVillager || mob instanceof IronGolem || mob instanceof Llama)) {
             return;
         }
 
@@ -123,15 +128,16 @@ public final class VendettaEvents {
         }
         access.tradersVengence$targetSelector().addGoal(1, new WantedPlayerTargetGoal(mob, level));
 
-        if (mob instanceof Villager villager) {
-            // Vanilla villagers have no combat target goals. Add a self-defense
-            // goal only; do not make them proactively hunt unprovoked monsters.
-            access.tradersVengence$targetSelector().addGoal(0,
-                new VillagerSelfDefenseGoal(villager));
-            access.tradersVengence$goalSelector().addGoal(2,
-                new WantedRangedAttackGoal((RangedAttackMob) villager,
-                    0.9, VengeanceRules.VILLAGER_COOLDOWN_TICKS,
-                    VengeanceRules.VILLAGER_RANGE));
+        if (mob instanceof AbstractVillager villager) {
+            // Existing blacklist and individual self-defense policy also applies to wandering traders.
+            var follow = villager.getAttribute(Attributes.FOLLOW_RANGE);
+            if (follow != null && !follow.hasModifier(PISTOL_RANGE_MODIFIER)
+                    && follow.getValue() < PistolCycle.RANGE) {
+                follow.addTransientModifier(new AttributeModifier(PISTOL_RANGE_MODIFIER,
+                    PistolCycle.RANGE - follow.getValue(), AttributeModifier.Operation.ADD_VALUE));
+            }
+            access.tradersVengence$targetSelector().addGoal(0, new VillagerSelfDefenseGoal(villager));
+            access.tradersVengence$goalSelector().addGoal(2, new NpcPistolGoal(villager));
         } else if (mob instanceof Llama && mob instanceof RangedAttackMob ranged) {
             access.tradersVengence$goalSelector().addGoal(2,
                 new WantedRangedAttackGoal(ranged, 1.0, 50, 12.0F));
