@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after d4acbb8a
+
+- Full request unfinished: **5/42source-complete,37researching**; no hard blocker. Hourly continuation active; existing worktree/branch/PR265, research Markdown only and no subagents. Preserve concurrent QA/integration.
+- Ars now **twenty-nine** companions. Added native Archwood/first-pod acquisition, exact natural versus sapling configs, foursupporttags, sourceberry biome/age/harvest/growth-event/food boundaries, Magebloom firstseedApparatus/actualage7/fiber conversions and fivefood effects. Natural trunks generate pods with isWorldGen=true; saplingconfigsfalse, so firstpod isn't promised from plantedtree. FoodBombegranate/Freezing aren't uniformly beneficial.
+- **Next**: one final functional-registry gap pass (DowsingRod,RunicChalk,ArchwoodGrate and any other materially useful core items not covered; don't expand cosmetic blocks into endless deep audits), then **consolidate native full progression/stage/guide map and reconcile source pilot**. Seven separately pinned addon exact-JAR profiles remain required; prioritize them with parent links. Do not re-inventory29coveredcore slices. Parent remains researching until all major native/addon/stage gaps close. MobJar24roles done.
+- Scratch exact Ars5.13.5 artifact unchanged SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. Fresh ars-fresh-20261117 now includes plantclasses MageBloomCrop/SourceBerryBush/ArchfruitPod,MagicTree/MagicTrunkPlacer/WorldgenProvider inner siblings; dataJSON and ItemsRegistry food/BlockRegistry pod support are primary evidence. Use CFR --clobbertrue. Native MageBloom AGE_0_4 constant unused, inherited CropBlock+loot age7 matters. Sourceberry uses sourceberry_bushitem, not invented separateberryID.
+- Validation PASS: UTF8/changedlinks/docs-onlyscope/whitespace,SHA1,all4natural/sapling podfeaturepairs andpodIDs,Magebloomage7andmisnamedblock-to-fiberrecipe. Latest fetched integration still2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; prior metadata/preflight receipts separate; no assembly/server/client/gameplay tests. Commitd4acbb8a andthischeckpoint pushed aftercommit, PR29companions; inspectgitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after 21e3bd67
 
 - Full research unfinished: **5/42source-complete,37researching**. No hard blocker. Hourly continuation active; same worktree/branch/PR265, no subagents, Markdown-only and preserve concurrent QA/integration.
