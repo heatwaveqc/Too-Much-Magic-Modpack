@@ -8,7 +8,8 @@ import java.util.Set;
 public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
-        "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision");
+        "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -37,9 +38,27 @@ public final class MechanicalSpec {
         var p=fx.params();double a=fx.amountPerRank();String type=fx.type();
         if(type.equals("attribute")&&p.containsKey("max_contribution"))number(p,"max_contribution",0,0,1000000);
         if(!known(type))return;
-        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health").contains(type))
+        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting").contains(type))
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
+            case "food_efficiency","vanilla_xp_bonus" -> bounded(a,0,2);
+            case "status_immunity" -> {
+                if(!p.getOrDefault("effect","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                    throw new IllegalArgumentException("Immunity requires an exact effect ID");
+                bool(p,"harmful_only",true);
+            }
+            case "crop_bonus","ordinary_drop_bonus" -> {
+                bounded(a,0,1);number(p,"chance",1,0,1);
+                if(fx.selector().isEmpty()||fx.selector().equals("*"))
+                    throw new IllegalArgumentException("Drop bonus requires scoped target");
+            }
+            case "virtual_fortune","virtual_looting" -> {
+                bounded(a,0,8);
+                if(fx.selector().isEmpty()||fx.selector().equals("*"))
+                    throw new IllegalArgumentException("Virtual enchantment requires a scoped target");
+                if(fx.weapon().isEmpty()&&!fx.emptyHand())
+                    throw new IllegalArgumentException("Virtual enchantment requires weapon or empty hand condition");
+            }
             case "magnet" -> {
                 bounded(a,0.1,32);integer(p,"interval_ticks",5,5,200);integer(p,"max_targets",16,1,32);
                 bool(p,"move_xp",false);

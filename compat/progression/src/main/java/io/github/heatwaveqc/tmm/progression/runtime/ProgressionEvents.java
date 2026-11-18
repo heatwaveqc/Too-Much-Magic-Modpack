@@ -34,6 +34,11 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::foodTick);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::foodStopped);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::vanillaXp);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::immunity);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
         NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
@@ -80,11 +85,12 @@ public final class ProgressionEvents {
         }
     }
     private static void mobDrops(LivingDropsEvent event) {
-        if (!event.isCanceled()) TyzMonkBridge.mobDrops(event);
+        if (!event.isCanceled()) { TyzMonkBridge.mobDrops(event); UtilityEffects.mobDrops(event); }
     }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         // Detect completed vanilla potion drinking independently of whether it counts as food.
+        UtilityEffects.foodFinished(player,event.getItem());
         Enrollment.potionFinished(player,event.getItem());
         HunterExperience.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
@@ -122,6 +128,7 @@ public final class ProgressionEvents {
             }
             HarvestAbilities.blockDrops(player,event);
             TyzMonkBridge.crops(event,player);
+            UtilityEffects.crops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
     }
@@ -196,6 +203,7 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);
+            UtilityEffects.forget(player);
             VisionRuntime.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
@@ -221,6 +229,7 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);
+            UtilityEffects.forget(player);
             VisionRuntime.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());

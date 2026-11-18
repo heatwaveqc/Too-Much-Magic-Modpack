@@ -46,4 +46,38 @@ public final class NativeLootBonuses {
         if (source == null || source.getEntity() != player) return 0;
         return HunterExperience.favoredLootingBonus(player, victim);
     }
+    /** Only the original loot formula is extended; no synthetic reroll. */
+    public static int configuredFortune(ServerPlayer player,LootContext context){
+        if(player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player)||
+            context.getParamOrNull(LootContextParams.THIS_ENTITY)!=player)return 0;
+        var tool=context.getParamOrNull(LootContextParams.TOOL);
+        var block=context.getParamOrNull(LootContextParams.BLOCK_STATE);
+        if(tool==null||block==null||context.getParamOrNull(LootContextParams.BLOCK_ENTITY)!=null)return 0;
+        // A fist cannot become a higher-tier harvester through Fortune alone.
+        if(tool.isEmpty()&&!HarvestAbilities.canHarvestBarehand(player,block))return 0;
+        double total=0;
+        for(var a:EffectRuntime.active(player)){
+            var fx=a.effect();
+            if(fx.type().equals("virtual_fortune")&&(!fx.emptyHand()||tool.isEmpty())&&
+                Selectors.block(fx.selector(),block)&&Selectors.item(fx.weapon(),tool))total+=fx.amountPerRank()*a.rank();
+        }
+        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total);
+    }
+    public static int configuredLooting(ServerPlayer player,LootContext context){
+        if(player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player)||
+            !(context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof LivingEntity victim))return 0;
+        var source=context.getParamOrNull(LootContextParams.DAMAGE_SOURCE);
+        if(source==null||source.getEntity()!=player||victim instanceof net.minecraft.world.entity.player.Player)return 0;
+        boolean direct=source.getDirectEntity()==player;
+        var tool=direct?player.getMainHandItem():source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.AbstractArrow arrow?arrow.getWeaponItem():null;
+        if(tool==null)return 0;
+        double total=0;
+        for(var a:EffectRuntime.active(player)){
+            var fx=a.effect();
+            if(fx.type().equals("virtual_looting")&&(!fx.emptyHand()||direct&&tool.isEmpty())&&
+                Selectors.entity(fx.selector(),victim)&&Selectors.item(fx.weapon(),tool)&&EffectRuntime.sourceMatches(fx.damageTag(),source))
+                total+=fx.amountPerRank()*a.rank();
+        }
+        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total);
+    }
 }

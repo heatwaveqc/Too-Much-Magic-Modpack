@@ -24,6 +24,6 @@ public abstract class MonkFortuneMixin {
     private int tmm$barehandFortune(int actual, @Local(argsOnly = true) LootContext context) {
         if (!(context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof ServerPlayer player))
             return actual;
-        return actual + NativeLootBonuses.monkFortune(player, context);
+        return actual + NativeLootBonuses.monkFortune(player, context) + NativeLootBonuses.configuredFortune(player,context);
     }
 }

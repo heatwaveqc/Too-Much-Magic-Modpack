@@ -46,7 +46,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
