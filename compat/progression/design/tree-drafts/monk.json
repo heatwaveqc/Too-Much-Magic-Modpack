@@ -1591,14 +1591,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_unarmed_precision",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_unarmed_precision"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_hunger_discipline",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_hunger_discipline"
                 }
               ]
             },
@@ -1608,14 +1608,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_unarmed_precision",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_unarmed_precision"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_balanced_landing",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_balanced_landing"
                 }
               ]
             },
@@ -1625,14 +1625,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_unarmed_precision",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_unarmed_precision"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fortunate_hands",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fortunate_hands"
                 }
               ]
             },
@@ -1642,14 +1642,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fire_blast_tempering",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fire_blast_tempering"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_flowing_counter",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_flowing_counter"
                 }
               ]
             },
@@ -1659,14 +1659,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fire_blast_tempering",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fire_blast_tempering"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_balanced_landing",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_balanced_landing"
                 }
               ]
             },
@@ -1676,14 +1676,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fire_blast_tempering",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fire_blast_tempering"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fortunate_hands",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fortunate_hands"
                 }
               ]
             },
@@ -1693,14 +1693,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_glide_control",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_glide_control"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_flowing_counter",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_flowing_counter"
                 }
               ]
             },
@@ -1710,14 +1710,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_glide_control",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_glide_control"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_hunger_discipline",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_hunger_discipline"
                 }
               ]
             },
@@ -1727,14 +1727,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_glide_control",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_glide_control"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_fortunate_hands",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_fortunate_hands"
                 }
               ]
             },
@@ -1744,14 +1744,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_looting_palm",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_looting_palm"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_flowing_counter",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_flowing_counter"
                 }
               ]
             },
@@ -1761,14 +1761,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_looting_palm",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_looting_palm"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_hunger_discipline",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_hunger_discipline"
                 }
               ]
             },
@@ -1778,14 +1778,14 @@
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_looting_palm",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_looting_palm"
                 },
                 {
                   "type": "skill_rank",
                   "path": "tmm_progression:monk",
-                  "skill": "tmm_progression:tmm_monk_balanced_landing",
-                  "minimum": 1
+                  "minimum": 1,
+                  "id": "tmm_progression:tmm_monk_balanced_landing"
                 }
               ]
             }
