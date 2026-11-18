@@ -274,3 +274,16 @@ Spawn eggs: do not blanket exclude. Census has 666 IDs matching spawn egg naming
 
 ## 2026-11-18 — owner locks flat spawn egg valuation
 Owner sets spawn eggs to exactly 532 EMC each, based on the ordinary egg (32) plus baseline EvilCraft blood expenditure (500 EMC). This supersedes the previous per-entity recipe/rarity valuation proposal for eggs only; typed Reliquary fragments and other materials still derive independently. Apply uniformly to all legitimately survival-obtainable eggs; preserve the owner's earlier creative-only/dummy/debug exclusions and existing boss/acquisition restrictions, not a new boss blanket ban or generation route. Stage 37 exact IDs with observed acquisition evidence in #348 (23 observed recipe output IDs, plus 14 matching Reliquary typed fragment conversions, no overlap), `kubejs/data/tmm/pe_custom_conversions/spawn_eggs.json`, commit 84f6d5e8a88be3c18cacac7718c4e56f9394a260, readback verified. Of 666 census name-matched egg candidates, remaining 629 need eligibility review across EvilCraft spirit capture/reanimation, Capturing, native loot/other dynamic or custom routes and exact installed restrictions; do not treat absent generic recipe as creative-only or blanket-anchor unknowns. Extend fixed anchors to every eligible actual ID at 532 without further owner pricing approval; exclude only verified creative-only under previous policy. Guard fixed values against alternative mapper costs; cheap productive farms remain intentional subject to existing exploit/progression audit. No change to native acquisitions, no new recipe, no build or merge. Exact eligibility and live map validation pending; Relics/Artifacts policy still deferred.
+
+## 2026-11-18 — owner approval: nine remaining exotic material roots
+Owner approves all nine proposed anchors, revisitable if playtesting warrants. Staged as actual native fixed-before ProjectE custom conversion data in `kubejs/data/tmm/pe_custom_conversions/exotic_material_roots.json`:
+- `psitweaks:antinite_ingot`: 288 EMC
+- `witchery:koboldite_dust`: 128 EMC
+- `theurgy:sal_ammoniac_crystal`: 9 EMC
+- `eternal_starlight:thioquartz_shard`: 64 EMC
+- `eternal_starlight:red_starlight_crystal_shard`: 256 EMC
+- `eternal_starlight:blue_starlight_crystal_shard`: 256 EMC
+- `enigmaticlegacyplus:sacred_crystal`: 4,096 EMC
+- `enigmaticlegacyplus:starlight_particle`: 1,024 EMC
+- `irons_spellbooks:pyrium_ingot`: 131,072 EMC
+All nine exact IDs verified in #348 installed items.csv blob b89ff1087a6d807afc475f84307ac45720af811b; all nine had zero default API EMC in that captured build. No duplicate exact fixed-before item roots in the existing tmm conversion files at parent. Antinite derivatives follow existing metal hierarchy only after native yields/family forms are checked; Koboldite higher forms derive from actual hobgoblin trades, not assumed 9:1; keep the remaining derivative pricing recipe/loot-based. Pyrium remains boss-associated, not an ordinary metal anchor; exact acquisition and effective progression audit still pending. No new recipes, eligibility changes, or blacklist changes. Chaos Shard pricing remains an unapproved proposal; validate native and custom long arithmetic before adoption. No build, merge or live-map certification; integration writer must reconcile path/hash/index ownership and run exact-pin validation.
