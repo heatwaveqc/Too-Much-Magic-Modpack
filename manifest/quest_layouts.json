@@ -1171,7 +1171,7 @@
       "quest_id": "544D507000700000",
       "chapter": "Skills & Factions",
       "position": [
-        0,
+        6,
         12
       ],
       "authored": true
@@ -2062,7 +2062,7 @@
       "quest_id": "544DB10000000002",
       "chapter": "Skills & Factions",
       "position": [
-        4,
+        8,
         16
       ],
       "authored": true
@@ -2072,7 +2072,7 @@
       "chapter": "Skills & Factions",
       "position": [
         8,
-        16
+        20
       ],
       "authored": true
     },
@@ -2080,8 +2080,8 @@
       "quest_id": "544DB10000000004",
       "chapter": "Skills & Factions",
       "position": [
-        0,
-        20
+        4,
+        16
       ],
       "authored": true
     },
@@ -2089,7 +2089,7 @@
       "quest_id": "544DB10000000005",
       "chapter": "Skills & Factions",
       "position": [
-        4,
+        0,
         20
       ],
       "authored": true
@@ -2098,8 +2098,8 @@
       "quest_id": "544DB10000000006",
       "chapter": "Skills & Factions",
       "position": [
-        8,
-        20
+        12,
+        16
       ],
       "authored": true
     },
@@ -2107,8 +2107,8 @@
       "quest_id": "544DB10000000007",
       "chapter": "Skills & Factions",
       "position": [
-        0,
-        24
+        4,
+        20
       ],
       "authored": true
     },
@@ -2116,8 +2116,8 @@
       "quest_id": "544DB10000000008",
       "chapter": "Skills & Factions",
       "position": [
-        4,
-        24
+        12,
+        20
       ],
       "authored": true
     },
@@ -2125,7 +2125,7 @@
       "quest_id": "544DB10000000009",
       "chapter": "Skills & Factions",
       "position": [
-        8,
+        4,
         24
       ],
       "authored": true
@@ -2134,8 +2134,8 @@
       "quest_id": "544DB1000000000A",
       "chapter": "Skills & Factions",
       "position": [
-        4,
-        28
+        8,
+        24
       ],
       "authored": true
     },

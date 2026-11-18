@@ -178,7 +178,7 @@ hash = "420a37e68dd5bf081730c9becfed87d18316c5e8614013494ab96be3c538ff8f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
-hash = "602af23c0e84e6d31baf0a861e0c5a193dd75ee68d5ebd8e99363860cfe08daa"
+hash = "a8e62cecde60a12153e8a5f6e03b61af7f0366c71da280a6198078accfb8c7ee"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
@@ -198,7 +198,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "78fc896a880520f6a86ecb62e7efba3b6c854638579239c48362d53b65a0d81e"
+hash = "cd18f98a454d5ed000891713d4348bac6f0bbe23ab757b7ab2fe98ff56e6da34"
 
 [[files]]
 file = "config/questshop-common.toml"

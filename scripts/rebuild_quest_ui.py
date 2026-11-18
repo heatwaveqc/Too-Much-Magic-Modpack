@@ -184,23 +184,23 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     skills = [
         "Read the Two Skill Systems", "Open the Skill Interface", "Understand Attributes",
         "Experiment with Improvable Skills", "Inspect Cooldown and Casting Perks",
-        "Plan for Practical Attribute Caps", "Choose How to Specialize",
+        "Plan for Practical Attribute Caps", "Choose One Specialization",
     ]
     put("Skills & Factions", "Chapter Overview", 0, 0)
     for i, title in enumerate(skills):
-        put("Skills & Factions", title, (i % 3) * 4, 4 + (i // 3) * 4)
+        put("Skills & Factions", title, *((6, 12) if title == "Choose One Specialization" else ((i % 3) * 4, 4 + (i // 3) * 4)))
 
     # Ownership and compact positions for the consolidated orientation guides.
     put("Skills & Factions", "The Monk Path", 0, 16)
-    put("Skills & Factions", "The Hunter Path", 4, 16)
-    put("Skills & Factions", "The Gilded Path", 8, 16)
-    put("Skills & Factions", "Becoming a Vampire", 0, 20)
-    put("Skills & Factions", "Becoming a Werewolf", 4, 20)
-    put("Skills & Factions", "Becoming a Dragon", 8, 20)
-    put("Skills & Factions", "Lichdom: Forbidden Magic", 0, 24)
-    put("Skills & Factions", "Lichdom: Goety", 4, 24)
-    put("Skills & Factions", "The Archlich", 8, 24)
-    put("Skills & Factions", "The Dracolich", 4, 28)
+    put("Skills & Factions", "The Hunter Path", 8, 16)
+    put("Skills & Factions", "The Gilded Path", 8, 20)
+    put("Skills & Factions", "Becoming a Vampire", 4, 16)
+    put("Skills & Factions", "Becoming a Werewolf", 0, 20)
+    put("Skills & Factions", "Becoming a Dragon", 12, 16)
+    put("Skills & Factions", "Lichdom: Forbidden Magic", 4, 20)
+    put("Skills & Factions", "Lichdom: Goety", 12, 20)
+    put("Skills & Factions", "The Archlich", 4, 24)
+    put("Skills & Factions", "The Dracolich", 8, 24)
     put("Artifacts", "Relics: Learn Your Relic", 4, 0)
     put("Artifacts", "Reliquified Artifacts", 8, 0)
     put("ProjectE", "ProjectE Energy Converters", 4, 0)
@@ -242,7 +242,7 @@ SUBTITLE = {
     "Basic Progression": "Shared resources and tools, plus separate player commodity-selling contracts.",
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
-    "Skills & Factions": "Tyz's Skills, Improvable Skills, character paths, dragons, vampires, werewolves and lichdom.",
+    "Skills & Factions": "Universal Core Magic and Improvable Skills; choose one specialization, with explicit combination exceptions.",
     "A Sufficiently Advanced Magic": "Draconic generation, energy storage, FE crystals, reactor safety and future approved technology.",
 }
 

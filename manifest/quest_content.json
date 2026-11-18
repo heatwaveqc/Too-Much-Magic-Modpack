@@ -476,7 +476,7 @@
     {
       "chapter": "Tips & Tricks",
       "title": "Understand Character Growth",
-      "description": "Tyz's Skills hosts the shared MXP-driven skill point system; Improvable Skills 3 uses ordinary experience separately. See Skills & Factions for path enrollment, transformations and skill controls.",
+      "description": "Core Magic (Tyz's Skills) and ordinary-experience Improvable Skills 3 are available to everyone in Regular Mode. Specializations use a single exclusive choice pool with only explicit exceptions; see Skills & Factions.",
       "criterion": {
         "type": "checkmark"
       },
@@ -1759,7 +1759,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Tyz's Skills hosts Too Much Magic's shared skill-point progression, including Core Magic and custom paths. Improvable Skills 3 is separate and uses ordinary experience. Pufferfish's Skills is retired; Pufferfish Attributes remains a supporting dependency. Graduate from Newbie Mode before earning MXP or joining a faction.",
+      "description": "Every character has access to Core Magic through Tyz's Skills in Regular Mode. Core is universal and does not occupy a specialization slot. Improvable Skills 3 uses ordinary experience separately and is also available to everyone. Graduate from Newbie Mode before earning MXP or joining a faction.",
       "reward": {
         "xp": 10,
         "item": "minecraft:experience_bottle",
@@ -1779,7 +1779,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Assign the Tyz's Skills key in Options > Controls > Key Binds and open the skill interface. Review Core Magic and available paths; nodes and enrollment depend on the current installed Progression data. This checkmark is orientation, not proof of a purchase.",
+      "description": "Assign the Tyz's Skills key in Options > Controls > Key Binds and open the skill interface. Core Magic is the universal tree; any additional specialization is contingent on enrollment or native form acquisition. Available trees and effects depend on current integrated data. This is orientation, not proof of a purchase.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
@@ -1839,7 +1839,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Core Magic uses Tyz's skill interface. Read the node requirements and effects before investing; spell efficiency, potency, reservoir and recovery are only effective where a real mod adapter exists. No quest grants or guarantees a skill bonus.",
+      "description": "Core Magic is a universal tree, not a specialization choice. Read the Tyz node requirements and effects before investing; potency, resource efficiency, reservoir and recovery only work where a real mod adapter exists. No quest grants a skill bonus.",
       "reward": {
         "xp": 15,
         "item": "minecraft:glowstone_dust",
@@ -1875,11 +1875,11 @@
     },
     {
       "chapter": "Skills & Factions",
-      "title": "Choose How to Specialize",
+      "title": "Choose One Specialization",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Core Magic, martial paths and supernatural forms use the shared character progression systems. Explore the path and faction guides below; selection is governed by the Progression engine and native mods, not by claiming this quest.",
+      "description": "Core Magic is available to everyone, with Improvable Skills 3 separate. You may remain unspecialized or choose ONE specialization from the same pool: Monk, Hunter, Gilded, Vampire, Werewolf, a Cave/Forest/Sea Dragon, or either Lich route. Human disciplines and supernatural forms are not independent slots. Only explicitly authorized combinations are exceptions: Archlich joins both lich routes; Dracolich joins a dragon and exactly one lich route. Vampire/Werewolf Abomination remains a research candidate, not a playable exception promised here. Other combinations are not allowed by default. Read freely; checkmarks never enroll you, and the native acquisition/Progression engine enforces eligibility.",
       "reward": {
         "xp": 15,
         "item": "minecraft:golden_carrot",
@@ -3516,7 +3516,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you.",
       "reward": {
         "xp": 10,
         "item": "minecraft:stick",
@@ -3536,7 +3536,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Hunters specialize against creature families and gain progression through qualifying kills. The intended initiation uses poison while regeneration is active; follow the current path requirements and then choose a specialization. Mutagenic Brews and permanent mutations are separate progression milestones; verify implemented recipes and effects in JEI. This guide does not enroll you.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Hunters specialize against creature families and gain progression through qualifying kills. The intended initiation uses poison while regeneration is active; follow the current path requirements and then choose a specialization. Mutagenic Brews and permanent mutations are separate progression milestones; verify implemented recipes and effects in JEI. This guide does not enroll you.",
       "reward": {
         "xp": 10,
         "item": "minecraft:arrow",
@@ -3556,7 +3556,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers.",
       "reward": {
         "xp": 10,
         "item": "minecraft:gold_nugget",
@@ -3576,7 +3576,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "JAWR owns vampirism in this pack; the separate Vampirism mod is retired. Consult JAWR's in-game guide for the native transformation and Lilith's blood route; inspect the Vampire skill category after successful transformation. Blood feeding and sunlight are native mechanics. This checkmark does not change your form.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR owns vampirism in this pack; the separate Vampirism mod is retired. Consult JAWR's in-game guide for the native transformation and Lilith's blood route; inspect the Vampire skill category after successful transformation. Blood feeding and sunlight are native mechanics. This checkmark does not change your form.",
       "reward": {
         "xp": 10,
         "item": "minecraft:redstone",
@@ -3596,7 +3596,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "JAWR also owns lycanthropy; the separate Werewolves mod is retired. Consult the JAWR in-game guide and its wolfsbane-related transformation route, then inspect the Werewolf skill category. Follow the current native cure rules before changing forms. This checkmark is not a transformation trigger.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR also owns lycanthropy; the separate Werewolves mod is retired. Consult the JAWR in-game guide and its wolfsbane-related transformation route, then inspect the Werewolf skill category. Follow the current native cure rules before changing forms. This checkmark is not a transformation trigger.",
       "reward": {
         "xp": 10,
         "item": "minecraft:bone",
@@ -3616,7 +3616,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Dragon Survival provides Cave, Forest and Sea dragon forms with different diets and abilities. Open its native species selection interface when installed and eligible; consult the current controls and diet tooltips before choosing. TMM's diet and form compatibility are subject to live testing. This quest is an informational guide, not a species setter.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Dragon Survival provides Cave, Forest and Sea dragon forms with different diets and abilities. Open its native species selection interface when installed and eligible; consult the current controls and diet tooltips before choosing. TMM's diet and form compatibility are subject to live testing. This quest is an informational guide, not a species setter.",
       "reward": {
         "xp": 10,
         "item": "minecraft:golden_carrot",
@@ -3636,7 +3636,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "JAWR: Forbidden Magic provides its own lich path and phylactery. Use the mod's guide for the native ritual, soul storage, resurrection anchor and cure; check the corresponding Tyz category after transformation where implemented. This guide does not grant lichdom or create a resurrection anchor.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR: Forbidden Magic provides its own lich path and phylactery. Use the mod's guide for the native ritual, soul storage, resurrection anchor and cure; check the corresponding Tyz category after transformation where implemented. This guide does not grant lichdom or create a resurrection anchor.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
@@ -3656,7 +3656,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Goety offers a distinct lich path. Follow the native guide's lich ritual and prepare the Arca for native soul storage and resurrection. The Goety chapter owns its general ritual and summoning progression; character form guidance lives here. No transformation is granted by this quest.",
+      "description": "This is one of the mutually exclusive specialization choices, not a second class or species slot. Goety offers a distinct lich path. Follow the native guide's lich ritual and prepare the Arca for native soul storage and resurrection. The Goety chapter owns its general ritual and summoning progression; character form guidance lives here. No transformation is granted by this quest.",
       "reward": {
         "xp": 10,
         "item": "minecraft:bone",
@@ -3676,7 +3676,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here.",
+      "description": "This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
@@ -3696,7 +3696,7 @@
       "criterion": {
         "type": "checkmark"
       },
-      "description": "The intended Dracolich combines one Dragon Survival form with exactly one lich source, not both. Dragon growth and the chosen native resurrection anchor should be retained. The integration is experimental; confirm current build support before attempting it. This guide cannot change species or create an anchor.",
+      "description": "This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Dracolich combines one Dragon Survival form with exactly one lich source, not both. Dragon growth and the chosen native resurrection anchor should be retained. The integration is experimental; confirm current build support before attempting it. This guide cannot change species or create an anchor.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
