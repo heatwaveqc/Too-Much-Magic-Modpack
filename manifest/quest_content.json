@@ -6,7 +6,7 @@
     "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
     "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
     "overview_placeholders": "until authored, minimal paper + XP checkmark rewards",
-    "progression_chapters": "46 authored progression quests: 19 nuclear tasks retired, Draconic FE generation/storage/transfer/reactor tasks retained.",
+    "progression_chapters": "56 authored progression quests; Skills & Factions replaces stale Pufferfish skill guidance and owns class and transformation orientation.",
     "onboarding": "Seven added Getting Started quests beyond iron, guiding first spell/ritual and exploration; no specific magical school required.",
     "new_tips": "Four optional practical Tips: Scriptor fuel-free automatic smelting, Occultism/Mahou ore processing, broom alternatives, and Vengeance Pickaxe.",
     "ars_pilot": "49 completed Ars quests from manifest/ars_quest_pilot.json; no auto-claim and 48 substantive item rewards; current Welcome and Punch a Tree retain all starter items."
@@ -476,7 +476,7 @@
     {
       "chapter": "Tips & Tricks",
       "title": "Understand Character Growth",
-      "description": "Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool.",
+      "description": "Tyz's Skills hosts the shared MXP-driven skill point system; Improvable Skills 3 uses ordinary experience separately. See Skills & Factions for path enrollment, transformations and skill controls.",
       "criterion": {
         "type": "checkmark"
       },
@@ -1754,12 +1754,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Read the Two Skill Systems",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses.",
+      "description": "Tyz's Skills hosts Too Much Magic's shared skill-point progression, including Core Magic and custom paths. Improvable Skills 3 is separate and uses ordinary experience. Pufferfish's Skills is retired; Pufferfish Attributes remains a supporting dependency. Graduate from Newbie Mode before earning MXP or joining a faction.",
       "reward": {
         "xp": 10,
         "item": "minecraft:experience_bottle",
@@ -1774,12 +1774,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Open the Skill Interface",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available.",
+      "description": "Assign the Tyz's Skills key in Options > Controls > Key Binds and open the skill interface. Review Core Magic and available paths; nodes and enrollment depend on the current installed Progression data. This checkmark is orientation, not proof of a purchase.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
@@ -1794,12 +1794,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Understand Attributes",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod.",
+      "description": "Inspect displayed skill effects and relevant attributes. Pufferfish Attributes is a supporting library, not the player skill tree. Damage, resource efficiency and cooldown hooks differ by magic system; do not assume every spell shares the same stats.",
       "reward": {
         "xp": 15,
         "item": "minecraft:redstone",
@@ -1814,12 +1814,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Experiment with Improvable Skills",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree.",
+      "description": "Use the Improvable Skills guidebook from your Akashic Tome, or locate the guide in JEI if needed. Its ordinary experience-powered perks are separate from Tyz's shared skill points and MXP.",
       "reward": {
         "xp": 15,
         "item": "minecraft:lapis_lazuli",
@@ -1834,12 +1834,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Inspect Cooldown and Casting Perks",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses.",
+      "description": "Core Magic uses Tyz's skill interface. Read the node requirements and effects before investing; spell efficiency, potency, reservoir and recovery are only effective where a real mod adapter exists. No quest grants or guarantees a skill bonus.",
       "reward": {
         "xp": 15,
         "item": "minecraft:glowstone_dust",
@@ -1854,12 +1854,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Plan for Practical Attribute Caps",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward.",
+      "description": "Read the configured skill ranks and test actual effects. Individual attributes have their own limits, and cross-mod interactions may differ. This is a reference check, not an attribute grant.",
       "reward": {
         "xp": 15,
         "item": "minecraft:experience_bottle",
@@ -1874,12 +1874,12 @@
       "first_log": false
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Choose How to Specialize",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path.",
+      "description": "Core Magic, martial paths and supernatural forms use the shared character progression systems. Explore the path and faction guides below; selection is governed by the Progression engine and native mods, not by claiming this quest.",
       "reward": {
         "xp": 15,
         "item": "minecraft:golden_carrot",
@@ -3509,6 +3509,266 @@
       },
       "depends": "Unification: A Knife Made of Magic",
       "optional": true
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "The Monk Path",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:stick",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "The Hunter Path",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Hunters specialize against creature families and gain progression through qualifying kills. The intended initiation uses poison while regeneration is active; follow the current path requirements and then choose a specialization. Mutagenic Brews and permanent mutations are separate progression milestones; verify implemented recipes and effects in JEI. This guide does not enroll you.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:arrow",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "The Gilded Path",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:gold_nugget",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "Becoming a Vampire",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "JAWR owns vampirism in this pack; the separate Vampirism mod is retired. Consult JAWR's in-game guide for the native transformation and Lilith's blood route; inspect the Vampire skill category after successful transformation. Blood feeding and sunlight are native mechanics. This checkmark does not change your form.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:redstone",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "Becoming a Werewolf",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "JAWR also owns lycanthropy; the separate Werewolves mod is retired. Consult the JAWR in-game guide and its wolfsbane-related transformation route, then inspect the Werewolf skill category. Follow the current native cure rules before changing forms. This checkmark is not a transformation trigger.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "Becoming a Dragon",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Dragon Survival provides Cave, Forest and Sea dragon forms with different diets and abilities. Open its native species selection interface when installed and eligible; consult the current controls and diet tooltips before choosing. TMM's diet and form compatibility are subject to live testing. This quest is an informational guide, not a species setter.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:golden_carrot",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "Lichdom: Forbidden Magic",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "JAWR: Forbidden Magic provides its own lich path and phylactery. Use the mod's guide for the native ritual, soul storage, resurrection anchor and cure; check the corresponding Tyz category after transformation where implemented. This guide does not grant lichdom or create a resurrection anchor.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "Lichdom: Goety",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Goety offers a distinct lich path. Follow the native guide's lich ritual and prepare the Arca for native soul storage and resurrection. The Goety chapter owns its general ritual and summoning progression; character form guidance lives here. No transformation is granted by this quest.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:bone",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "The Archlich",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Skills & Factions",
+      "title": "The Dracolich",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "The intended Dracolich combines one Dragon Survival form with exactly one lich source, not both. Dragon growth and the chosen native resurrection anchor should be retained. The integration is experimental; confirm current build support before attempting it. This guide cannot change species or create an anchor.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:paper",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Artifacts",
+      "title": "Relics: Learn Your Relic",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Discover Relics equipment, read its ability and condition tooltips and equip it in the appropriate Curios slot. Inspect its own progression interface before spending upgrades. Relics belongs in this chapter alongside Artifacts; this checkmark does not grant equipment or rank.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:experience_bottle",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Artifacts",
+      "title": "Reliquified Artifacts",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "Reliquified Artifacts integrates Artifacts equipment with Relics-style progression, including item-specific XP, ranks and durability where supported. Inspect the actual item tooltip and progression interface; do not assume all accessories use identical triggers. This is orientation, not an automatic rank or repair.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:gold_nugget",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "ProjectE",
+      "title": "ProjectE Energy Converters",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "description": "ProjectE Energy Converters bridges EMC with FE and supported energy systems. Find its conversion blocks through JEI when available; follow the actual ProjectE and Project Expansion recipe gates and check the configured conversion ratios before use. This guide grants no converter and does not bypass any gate.",
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:redstone",
+        "count": 2
+      },
+      "depends": null,
+      "optional": true,
+      "role": "guide",
+      "stage": "",
+      "layout": null,
+      "overview": false,
+      "first_log": false
     }
   ]
 }

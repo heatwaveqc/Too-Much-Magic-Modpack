@@ -25,5 +25,33 @@
 			x: 0.0d
 			y: 0.0d
 		}
+		{
+			id: "544DB1000000000B"
+			icon: { id: "minecraft:experience_bottle" }
+			optional: true
+			rewards: [
+				{ id: "544DB3000000000B", type: "xp", xp: 10 }
+				{ id: "544DB4000000000B", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544DB2000000000B", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			id: "544DB1000000000C"
+			icon: { id: "minecraft:experience_bottle" }
+			optional: true
+			rewards: [
+				{ id: "544DB3000000000C", type: "xp", xp: 10 }
+				{ id: "544DB4000000000C", type: "item", item: { id: "minecraft:gold_nugget", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544DB2000000000C", type: "checkmark" }
+			]
+			x: 8.0d
+			y: 0.0d
+		}
 	]
 }

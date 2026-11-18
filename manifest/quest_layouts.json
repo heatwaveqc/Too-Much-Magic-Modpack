@@ -3,7 +3,7 @@
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
   "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 227,
+  "quest_count": 240,
   "chapters": 44,
   "positions": [
     {
@@ -1106,7 +1106,7 @@
     },
     {
       "quest_id": "544D302000400001",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         0
@@ -1115,7 +1115,7 @@
     },
     {
       "quest_id": "544D507000100000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         4
@@ -1124,7 +1124,7 @@
     },
     {
       "quest_id": "544D507000200000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         4,
         4
@@ -1133,7 +1133,7 @@
     },
     {
       "quest_id": "544D507000300000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         8,
         4
@@ -1142,7 +1142,7 @@
     },
     {
       "quest_id": "544D507000400000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         8
@@ -1151,7 +1151,7 @@
     },
     {
       "quest_id": "544D507000500000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         4,
         8
@@ -1160,7 +1160,7 @@
     },
     {
       "quest_id": "544D507000600000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         8,
         8
@@ -1169,7 +1169,7 @@
     },
     {
       "quest_id": "544D507000700000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         12
@@ -2046,6 +2046,123 @@
       "position": [
         -8,
         38
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000001",
+      "chapter": "Skills & Factions",
+      "position": [
+        0,
+        16
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000002",
+      "chapter": "Skills & Factions",
+      "position": [
+        4,
+        16
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000003",
+      "chapter": "Skills & Factions",
+      "position": [
+        8,
+        16
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000004",
+      "chapter": "Skills & Factions",
+      "position": [
+        0,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000005",
+      "chapter": "Skills & Factions",
+      "position": [
+        4,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000006",
+      "chapter": "Skills & Factions",
+      "position": [
+        8,
+        20
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000007",
+      "chapter": "Skills & Factions",
+      "position": [
+        0,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000008",
+      "chapter": "Skills & Factions",
+      "position": [
+        4,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB10000000009",
+      "chapter": "Skills & Factions",
+      "position": [
+        8,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB1000000000A",
+      "chapter": "Skills & Factions",
+      "position": [
+        4,
+        28
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB1000000000B",
+      "chapter": "Artifacts",
+      "position": [
+        4,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB1000000000C",
+      "chapter": "Artifacts",
+      "position": [
+        8,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544DB1000000000D",
+      "chapter": "ProjectE",
+      "position": [
+        4,
+        0
       ],
       "authored": true
     }
