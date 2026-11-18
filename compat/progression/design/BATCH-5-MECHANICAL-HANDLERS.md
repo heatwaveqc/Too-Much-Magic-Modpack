@@ -54,3 +54,6 @@ Server computes granted vision from eligible active effects and persisted prefer
 
 ## Next
 Batch 5 is a substantial foundation, not complete stock-skill parity. Remaining mechanical primitives: food efficiency, vanilla XP multiplier, broader bounded/protected area effects, resource/crafting/loot hooks with ProjectE duplication audits; actual whole-attribute suppression only with explicit scoped policy; richer event targeting, status immunity, movement/flight variants and persistence/cooldown policy. Generic mechanic coverage should be mapped against Tyz/EverlastingAbilities/Apotheosis capabilities without importing restricted code. Batch 6 magic/form adapters can start once current source changes are reviewed. Do not activate speculative effects just to fill the tree. See IMPLEMENTATION-ROADMAP.md.
+
+## Superseding follow-up
+See [BATCH-5-6-FOLLOWUP.md](BATCH-5-6-FOLLOWUP.md): food, vanilla XP, scoped drops/virtual loot, crafting signal, immunity, delayed regen, hunger, jump/fall, persistent proc cooldown and area guard added. Prior contextual slice CI passed. Residual gaps explicitly tracked.

@@ -7,8 +7,8 @@ Updated 2026-11-18. Owner requested durable batch estimates before Batch 5. This
 | 2 | Absorb MXP hooks, growth/dedup, configuration and APIs; cutover later | Medium | Source port; CI passed; legacy guard remains |
 | 3 | Generalize existing Monk/Hunter hooks, enrollment, computed XP, mutation state | Large | Partial; 5569fce follow-up needs CI |
 | 4 | Epiphany-inspired graph UI, snapshots, purchase/respec, named balances | Medium | First implementation; CI passed; client QA pending |
-| 5 | Reusable mechanical effects from permissive donors and independent code: bounded magnet, caps, status/reaction/area primitives, additional conditions, common skill effects; activate donor vision hooks if feasible | Large (2–4 source slices) | Three source slices committed; mechanical and vision CI passed; contextual follow-up pending CI; remaining parity gaps |
-| 6 | Expand optional magic adapters (pool/cost/regen/potency/other cast properties), provider form conditions, dietary gates; Psi and JAWR debit verification | Large (2–4 slices) | Planned |
+| 5 | Reusable mechanical effects from permissive donors and independent code: bounded magnet, caps, status/reaction/area primitives, additional conditions, common skill effects; activate donor vision hooks if feasible | Large (2–4 source slices) | Common utility, combat, movement and vision handlers implemented; scoped duplication/flight/claim gaps tracked |
+| 6 | Expand optional magic adapters (pool/cost/regen/potency/other cast properties), provider form conditions, dietary gates; Psi and JAWR debit verification | Large (2–4 slices) | 36 native bindings, standard Psi, form and Dragon drink adapters implemented; JAWR/ANS/non-attribute blockers remain |
 | 7 | Oritech-style research/install/uninstall, toggles and Everlasting-style rank ownership, collectible/transferable abilities; generic owner lifecycle and cost transactions | Very large (3–5 slices) | Planned |
 | 8 | Apotheosis/Astral-style sockets, weighted affixes/rarity/facets and gear/perk ownership; auditable rolls and transactional changes | Very large (3–5 slices) | Planned |
 | 9 | Complete Core and individual transformation/path tree definitions; import approved content/configs, curve/stacking balance, one shared Lich tree; parallel config-only work where engine supports it | Very large, content-dependent | Planned |
@@ -23,3 +23,6 @@ Estimates are relative implementation effort, not elapsed time or an assertion t
 
 ## Batch 5 checkpoint
 See [BATCH-5-MECHANICAL-HANDLERS.md](BATCH-5-MECHANICAL-HANDLERS.md). Implementation revisions: 63606ac (mechanics, green), 502bb08 (vision, green), 9dbc916 (contextual eligibility/reactive status/area budgets, verify CI). Prior 1–4 follow-up b95b741 is green. No tree assignment, runtime cutover or approved build. Resume by checking PR #347 HEAD and CI, then either finish mechanical parity gaps or begin Batch 6 magic adapters with remaining gaps tracked.
+
+## Batches 5–6 recovery checkpoint
+See [BATCH-5-6-FOLLOWUP.md](BATCH-5-6-FOLLOWUP.md) for actual source scope, API/schema, evidence and six exact Codex binary-survey tasks. Revisions 03d67f9, 70bb17b, 851eac9, 076f12c passed source CI; b66bc23 follow-up verify latest CI. No new balanced content or promotion. Continue Batch 7 after owner direction while collecting remaining read-only binary and balance evidence. All pre-stable saves disposable. Do not remove old runtime until reviewed cutover.
