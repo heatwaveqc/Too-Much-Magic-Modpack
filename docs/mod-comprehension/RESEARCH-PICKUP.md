@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after 43d9bc64
+
+- Full request unfinished: **5/42source-complete,37researching**. No hard blocker; hourly continuation active. Existing worktree/branch/PR265; no subagents, research Markdown only and preserve concurrent QA/integration.
+- Ars now **twenty-six** direct-binary companions. Added Display Case/ItemDetector and SpellSensor (strict>threshold, inversion<=, empty-slot filter/stale missing inventory; cast-vs-resolve,40tick pulse/1tick cooldown, ordered glyph-list filter, actual Magebloom occlusion). Added five routing controls: Spell/VoidPrism, RedstoneRelay, BrazierRelay and ArcanePlatform; exact recipes, facing/link/bind ranges, Source/payment and failure boundaries. Redstone calculateNewPower compares each parent againstlocalPower, not runningmax; don't promise stablemaxnetwork. Brazier source remainsoriginal, loadedrelayfailurefallsbackoriginalritualsite.
+- **Next**: Mob/Void/Light jars and any still-uncovered functional registry items/devices; plants/pods/world material acquisition; seven addon exact-JAR profiles; consolidate complete native stage/guidebook walkthrough and exact pilot authoring/runtime crosswalk. Detector/routing slices are done; don't repeat inventories. Parent researching until major paths close.
+- Scratch exact Ars5.13.5 JAR and ars-fresh-20261117 remain outsideGit. New classes available: ItemDetector/SpellSensor blocks/tiles, ArsEvents, RedstoneRelay block/tile, SpellPrismBlock/VoidPrism/IPrismaticBlock, BrazierRelay block/tile, ArcanePlatform/ArcanePedestal; EntityProjectileSpell is under its actual nested entity/projectile package (locate with rg --files). CFR --clobber true and all inner siblings. Source payment and ritual tryTick relay behavior in RitualBrazierTile.
+- Validation PASS: researchUTF8/changedlinks/docs-onlyscope/whitespace, exactJAR SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3, seven detector/control recipe outputs, Sensor zero pedestal/source and native Magebloom occlusion tag. Latest fetched integration still2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; prior metadata/preflight receipts separate. No assembly/server/client/gameplay tests. Commitse8ef83a7/43d9bc64 plus thischeckpoint pushed aftercommit; PR26companions. Inspectgitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after f0271ba8
 
 - Full request unfinished: **5/42source-complete,37researching**; no hard blocker. Hourly continuation active. Same research worktree/branch/PR265. Research Markdown only, preserve concurrent QA/integration and no subagents.
