@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -74,9 +73,9 @@ public final class GolemMinigunGoal extends Goal {
     void updateSpin() {
         boolean trigger = running && allowed(golem.getTarget());
         if (trigger && spin.speed() == 0F) {
-            // Licensed vanilla fallback: original donor spin-up aliases third-party HUD audio.
-            golem.level().playSound(null, golem.blockPosition(), SoundEvents.PISTON_EXTEND,
-                SoundSource.NEUTRAL, 1F, 0.65F);
+            // CC0 replacement: natural 1.19 s spin-up cue; combat spin timing is unchanged.
+            golem.level().playSound(null, golem.blockPosition(), NpcPistolSounds.MINIGUN_SPINUP.get(),
+                SoundSource.NEUTRAL, 1F, 1F);
         }
         spin.tick(trigger);
         firing = trigger && spin.ready();

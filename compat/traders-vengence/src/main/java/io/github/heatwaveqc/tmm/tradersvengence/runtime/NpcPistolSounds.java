@@ -18,6 +18,7 @@ public final class NpcPistolSounds {
     public static final Supplier<SoundEvent> SLIDE = sound("reload.pistol.slide");
     public static final Supplier<SoundEvent> MINIGUN_LOOP = sound("minigun.loop");
     public static final Supplier<SoundEvent> MINIGUN_STOP = sound("minigun.stop");
+    public static final Supplier<SoundEvent> MINIGUN_SPINUP = sound("minigun.spinup");
     private NpcPistolSounds() {}
     private static Supplier<SoundEvent> sound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(

@@ -60,5 +60,11 @@
       "traders_vengence:minigun/minigun_stop"
     ],
     "subtitle": "subtitles.traders_vengence.minigun.stop"
+  },
+  "minigun.spinup": {
+    "sounds": [
+      "traders_vengence:minigun/minigun_spinup"
+    ],
+    "subtitle": "subtitles.traders_vengence.minigun.spinup"
   }
 }

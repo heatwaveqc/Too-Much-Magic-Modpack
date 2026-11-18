@@ -9,5 +9,6 @@
   "subtitles.traders_vengence.reload.pistol.mag_in": "Magazine inserted",
   "subtitles.traders_vengence.reload.pistol.slide": "Slide racked",
   "subtitles.traders_vengence.minigun.loop": "Minigun firing",
-  "subtitles.traders_vengence.minigun.stop": "Minigun winds down"
+  "subtitles.traders_vengence.minigun.stop": "Minigun winds down",
+  "subtitles.traders_vengence.minigun.spinup": "Minigun spins up"
 }

@@ -80,6 +80,7 @@ def validate_caliberarms_assets(directory, z):
 MINIGUN_AUDIO_BLOBS = {
     "assets/traders_vengence/sounds/minigun/minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
     "assets/traders_vengence/sounds/minigun/minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019",
+    "assets/traders_vengence/sounds/minigun/minigun_spinup.ogg": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed",
 }
 
 def validate_minigun_audio(directory, z):
@@ -87,7 +88,7 @@ def validate_minigun_audio(directory, z):
         data = (directory / "src/main/resources" / name).read_bytes()
         blob = hashlib.sha1(f"blob {len(data)}".encode() + bytes(1) + data).hexdigest()
         if blob != expected or z.namelist().count(name) != 1 or z.read(name) != data:
-            raise ValueError("Missing or modified PneumaticCraft recording: " + name)
+            raise ValueError("Missing or modified audited minigun recording: " + name)
     if any(name.endswith("/hud_init.ogg") for name in z.namelist()):
         raise ValueError("Uncleared third-party HUD audio must not be packaged")
 

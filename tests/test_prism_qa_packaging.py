@@ -30,6 +30,8 @@ def main() -> None:
                 continue
             if case == "missing_minigun_audio" and path.endswith("/minigun_stop.ogg"):
                 continue
+            if case == "missing_spinup_audio" and path.endswith("/minigun_spinup.ogg"):
+                continue
             data = (directory / "src/main/resources" / path).read_bytes()
             if case == "wrong_donor_audio" and path.endswith("/guns/m1911/fire_1.ogg"):
                 data += b"modified"
@@ -61,7 +63,7 @@ def main() -> None:
             cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
             if directory.name == "traders-vengence":
                 cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
-                          "wrong_minigun_audio", "uncleared_hud_audio")
+                          "wrong_minigun_audio", "missing_spinup_audio", "uncleared_hud_audio")
             for case in cases:
                 with zipfile.ZipFile(j, "w") as z:
                     declared = "All Rights Reserved" if case == "wrong_license" else expected_license(directory)
