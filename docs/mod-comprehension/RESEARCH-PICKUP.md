@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after da960a92
+
+- Full research unfinished: **5/42source-complete,37researching**. No hard blocker; hourly continuation active. Same worktree/branch/PR265. Research Markdown only; preserve QA/integration changes; no subagents.
+- Ars now **twenty-seven** companions. Added Void Jar item-ID-only allowlist destruction/personal mana5peritem, whole main-inventory scan versus guidehotbar, first-jar short-circuit and missing-capability/fullmana loss; JarOfLight air-only placement,7block relocation and position-only dimension/state cleanup limitations. MobJar isn't covered merely because utility jars are done.
+- **Next first: Mob Jar**. Fresh MobJar/Tile/Item/Data extracted/decompiled. Need full RitualMobCapture acquisition/release/permission route and **all registered per-entity JarBehaviorRegistry/APIRegistry behaviors**, not merely capture inventory. Jar consumers include Cat,Villager,Allay,ElderGuardian,Frog,Chicken,Decoy,Creeper,Piglin,Blaze,Armadillo,GlowSquid,Pufferfish,Sheep,Breeze,Dragon,Panda,SnowGolem,Ghast,Wither,Sniffer,Squid,Mooshroom plus JarEvents/capabilities; extract common/mob_jar and APIRegistry inner siblings before claiming coverage. MobJar interaction can insert full held stack as ItemEntity or spawn egg entity; these branches aren't ritualcapture eligibility proof. Then native plants/pods/world acquisition, remaining functional registry gaps, seven addons and fullstage/pilot crosswalk.
+- Same exact Ars5.13.5 artifact in external Temp/tmm-magic-research-20261116/artifacts; SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. Use ars-fresh-20261117 and CFR --clobber true with inner siblings. Avoid huge truncated outputs: read bounded method spans. Void handler EventHandler.itemPickupEvent atLOWEST; ItemScrollData.containsStack ignorescomponents. Utilitydocumentation honest about source-only behavior.
+- Validation PASS: fullresearchUTF8/changedlinks/docs-onlyscope/whitespace, exactJARSHA1 and2utility recipe outputs/zeroSource/keepNbtfalse. Latestintegration fetched remains2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; prior metadata/preflight receipts separate, noassembly/server/client/gameplay tests. Commitda960a92 andthischeckpoint pushed aftercommit; PR27companions. Usegitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after 43d9bc64
 
 - Full request unfinished: **5/42source-complete,37researching**. No hard blocker; hourly continuation active. Existing worktree/branch/PR265; no subagents, research Markdown only and preserve concurrent QA/integration.

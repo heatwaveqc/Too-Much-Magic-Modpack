@@ -88,3 +88,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-18 - Ars now has twenty-four companions, adding [nineteen status consumers and eighteen brewed variants](mods/ars-nouveau-pinned-potion-effects.md), including22Java brewing registrations and actual damage/heal/expiry/movement gates. Source count remains5/42complete,37researching; remaining devices/world/addon/stage work stays explicit.
 
 - 2026-11-18 - Ars now has twenty-six companions, adding [inventory/spell detectors](mods/ars-nouveau-pinned-detectors.md) and [prism/redstone/ritual controls](mods/ars-nouveau-pinned-routing-controls.md). Exact thresholds, pulse attribution, actual occlusion and routing/payment/failure behavior documented. Counts5source-complete/37researching unchanged; jars/world/addons/stage reconciliation remain.
+
+- 2026-11-18 - Ars now has twenty-seven companions with [Void and Light utility jars](mods/ars-nouveau-pinned-utility-jars.md). Item destruction/personal mana and portable light state boundaries source-backed; Mob Jar/all entity behaviors remain a distinct open branch. Counts5complete/37researching unchanged; no gameplay acceptance.
