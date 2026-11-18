@@ -2,6 +2,20 @@
 
 Owner decision: **Epiphany primary UI and architectural donor**, existing Progression/MXP authoritative, Tyz source imports blocked pending owner contact. No new required dependencies. This is an initial isolated source batch, not live gameplay or a complete merge of the six donor mods. Preserve all native features and the ten-tree plan. Directly adapted code has headers, immutable provenance and all original notices; source selection is not a claim of compiled/runtime parity.
 
+## Current scope (supersedes historical donor inventory)
+
+Owner decision 2026-11-18: only innate/automatic/form-granted powers and player-owned skill-tree unlocks/ranks. Installation/research is a flavor of skill acquisition, never an independent removable augment. Keep configured respec and activation toggles; no equipment-owned effects, gem/perk sockets, random item affixes, removable augments, transferable tokens, trading or PvP loss. Equipment may condition a player-owned skill; other installed mods' equipment systems are unaffected. Supersedes full donor ownership parity. Retain donor licenses and useful effect algorithms; unused AugmentState foundation remains inactive and is not an obligation to implement augmentation ownership.
+
+| Original donor work | Revised status |
+|---|---|
+| Oritech install/uninstall lifecycle | Only research/prerequisite and one-time unlock patterns in scope; independent augment state unused |
+| Everlasting transfer/token storage | CANCELED; retain magnet, passive/ranked and proc algorithms |
+| Apotheosis item affixes, rarity, sockets, facets | CANCELED; retain attribute caps and relevant player effects |
+| Astral perk sockets | CANCELED; retain graph/attunement as player progression reference |
+| Legacy save conversion | Not required before stable release |
+
+The ledger below records historical survey evidence, not authorization to develop excluded systems.
+
 ## Import and development ledger
 
 Status: ADAPTED = code staged under foundation (not connected to live paths); REUSE = existing first-party code; PORT = source identified, dependency/semantics adaptation needed; NEW = TMM-specific design/engineering. More donor features need exact per-file audits.
