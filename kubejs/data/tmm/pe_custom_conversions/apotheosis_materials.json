@@ -1,5 +1,5 @@
 {
-  "comment": "2026-11-18 owner correction: Gem Dust 64 EMC, half the common Cracked gem (128); retain native 1–2 dust salvage. Godforged Pearl = Mithril. Intermediate rarity anchors unchanged; verify final Mithril parity. Component-specific gem prices owned by #350, not a bare gem item anchor.",
+  "comment": "Owner-approved 2026-11-18 complete rarity progression, Gem Dust 64 (half common Cracked 128), Godforged Pearl Mithril parity. Retain native salvage; verify final Mithril parity. Component-specific gem pricing owned by #350.",
   "values": {
     "before": [
       {
