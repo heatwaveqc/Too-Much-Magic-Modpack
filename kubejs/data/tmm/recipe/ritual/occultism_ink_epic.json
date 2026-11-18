@@ -1,0 +1,31 @@
+{
+  "type": "occultism:ritual",
+  "activation_item": {
+    "item": "occultism:book_of_binding_bound_afrit"
+  },
+  "duration": 300,
+  "ingredients": [
+    {
+      "item": "irons_spellbooks:rare_ink"
+    },
+    {
+      "item": "irons_spellbooks:rare_ink"
+    },
+    {
+      "item": "irons_spellbooks:rare_ink"
+    },
+    {
+      "item": "irons_spellbooks:rare_ink"
+    }
+  ],
+  "pentacle_id": "occultism:craft_afrit",
+  "result": {
+    "count": 2,
+    "id": "irons_spellbooks:epic_ink"
+  },
+  "ritual_dummy": {
+    "count": 1,
+    "id": "irons_spellbooks:epic_ink"
+  },
+  "ritual_type": "occultism:craft"
+}
