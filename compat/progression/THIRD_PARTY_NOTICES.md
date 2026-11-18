@@ -24,6 +24,11 @@ HaooooZhang/Epiphany @ 1cbffb31ef4474fec73d66f1a888b4db27c4a71d
 - https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/logic/NotCondition.java
 - https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/reward/RewardSource.java
 - https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/client/ui/insight/InsightTreeView.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/DimensionCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/BiomeCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/AdvancementCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/EffectCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/AttributeCondition.java
 
 Full original notice: third_party_licenses/Epiphany.txt.
 
