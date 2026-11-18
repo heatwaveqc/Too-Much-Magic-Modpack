@@ -1,0 +1,57 @@
+{
+  "comment": "Apply owner-approved ordinary material defaults to curated #348 zero-EMC members only; no blanket global tag overrides. Preserve existing positive census values. Review overlap with full integrated anchors and crop/food/terrain recipes and trade loops in effective map; recipe-derived and exceptional members intentionally omitted.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/berries",
+        "emc_value": 16
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/fruit",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/vegetables",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/crop_seeds",
+        "emc_value": 16
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/raw_fish",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/raw_meat",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/mushrooms",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/terrain",
+        "emc_value": 1
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/gravel",
+        "emc_value": 4
+      },
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/music_discs",
+        "emc_value": 2048
+      }
+    ]
+  }
+}

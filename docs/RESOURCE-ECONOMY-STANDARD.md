@@ -287,3 +287,19 @@ Owner approves all nine proposed anchors, revisitable if playtesting warrants. S
 - `enigmaticlegacyplus:starlight_particle`: 1,024 EMC
 - `irons_spellbooks:pyrium_ingot`: 131,072 EMC
 All nine exact IDs verified in #348 installed items.csv blob b89ff1087a6d807afc475f84307ac45720af811b; all nine had zero default API EMC in that captured build. No duplicate exact fixed-before item roots in the existing tmm conversion files at parent. Antinite derivatives follow existing metal hierarchy only after native yields/family forms are checked; Koboldite higher forms derive from actual hobgoblin trades, not assumed 9:1; keep the remaining derivative pricing recipe/loot-based. Pyrium remains boss-associated, not an ordinary metal anchor; exact acquisition and effective progression audit still pending. No new recipes, eligibility changes, or blacklist changes. Chaos Shard pricing remains an unapproved proposal; validate native and custom long arithmetic before adoption. No build, merge or live-map certification; integration writer must reconcile path/hash/index ownership and run exact-pin validation.
+
+## 2026-11-18 — Chaos anchors and ordinary equivalence implementation
+Owner approves all four Chaos prices. Native fixed-before `chaos_shards.json`: `draconicevolution:small_chaos_frag` 4,194,880; `draconicevolution:medium_chaos_frag` 37,753,920; `draconicevolution:large_chaos_frag` 339,785,280; `draconicevolution:chaos_shard` 3,058,067,520. All four IDs verified in #348, previously zero. Three reversible 9:1 ratios checked arithmetically; native exact-pin mapper/load, long-safe APIs, custom adapters and ProjectE/Expansion balance, bulk quantity, serialization and accounting still untested. No new progression route or boss bypass authorized.
+
+Apply existing ordinary-material price policy via ten curated pack-owned item tags in `kubejs/data/tmm/tags/item/emc/ordinary`, referenced by native `ordinary_material_roots.json`. 253 previously zero IDs verified in installed survey blob b89ff1087a6d807afc475f84307ac45720af811b; disjoint memberships. No global override of mixed upstream tags. Berries take precedence over fruit; Pam produce and crop seeds plus selected Farmer's Delight crops, ordinary uncooked fish/meat (not cut portions or magical flesh), ordinary BetterEnd mushrooms, selected bulk terrain and Beachparty chest discs. Exclude all previously positive census values; crop incubation/seed recipes and bulk terrain conversions require effective-yield audit and integrated-anchor overlap check, not a final graph PASS.
+- tmm:emc/ordinary/berries: 13 IDs at 16 EMC
+- tmm:emc/ordinary/fruit: 35 IDs at 128 EMC
+- tmm:emc/ordinary/vegetables: 47 IDs at 64 EMC
+- tmm:emc/ordinary/crop_seeds: 92 IDs at 16 EMC
+- tmm:emc/ordinary/raw_fish: 32 IDs at 64 EMC
+- tmm:emc/ordinary/raw_meat: 7 IDs at 64 EMC
+- tmm:emc/ordinary/mushrooms: 2 IDs at 32 EMC
+- tmm:emc/ordinary/terrain: 18 IDs at 1 EMC
+- tmm:emc/ordinary/gravel: 1 IDs at 4 EMC
+- tmm:emc/ordinary/music_discs: 6 IDs at 2048 EMC
+Logs/saplings/leaves/small flowers already positive in the frozen census; preserve them. Broader tags mix rare materials, special seeds, decorated blocks, cooked food, and boss/player heads; those are not globally priced. Spawn egg survival eligibility, boss/drop classification, head dynamic acquisition, variable-component handling, custom recipe/resource mapping, other unpriced roots and derivative propagation remain pending. Antinite derivatives not yet derived pending exact yield and compression. New JSON files use the established data path; integration writer must reconcile hashes/index, and run exact-pin live map and exploit audits. No runtime build, merge or deploy.
