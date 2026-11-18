@@ -1,9 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:false"
-    }
-  ],
   "type": "occultism:ritual",
   "activation_item": {
     "item": "occultism:book_of_binding_bound_marid"
