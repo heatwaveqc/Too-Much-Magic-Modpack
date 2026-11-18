@@ -55,13 +55,15 @@ public final class NativeLootBonuses {
         if(tool==null||block==null||context.getParamOrNull(LootContextParams.BLOCK_ENTITY)!=null)return 0;
         // A fist cannot become a higher-tier harvester through Fortune alone.
         if(tool.isEmpty()&&!HarvestAbilities.canHarvestBarehand(player,block))return 0;
-        double total=0;
+        double total=0;int cap=8;
         for(var a:EffectRuntime.active(player)){
             var fx=a.effect();
             if(fx.type().equals("virtual_fortune")&&(!fx.emptyHand()||tool.isEmpty())&&
-                Selectors.block(fx.selector(),block)&&Selectors.item(fx.weapon(),tool))total+=fx.amountPerRank()*a.rank();
+                Selectors.block(fx.selector(),block)&&Selectors.item(fx.weapon(),tool)){
+                total+=fx.amountPerRank()*a.rank();cap=Math.max(cap,io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.integer(fx.params(),"max_total",8,1,32));
+            }
         }
-        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total);
+        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total,cap);
     }
     public static int configuredLooting(ServerPlayer player,LootContext context){
         if(player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player)||
@@ -71,13 +73,13 @@ public final class NativeLootBonuses {
         boolean direct=source.getDirectEntity()==player;
         var tool=direct?player.getMainHandItem():source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.AbstractArrow arrow?arrow.getWeaponItem():null;
         if(tool==null)return 0;
-        double total=0;
+        double total=0;int cap=8;
         for(var a:EffectRuntime.active(player)){
             var fx=a.effect();
             if(fx.type().equals("virtual_looting")&&(!fx.emptyHand()||direct&&tool.isEmpty())&&
                 Selectors.entity(fx.selector(),victim)&&Selectors.item(fx.weapon(),tool)&&EffectRuntime.sourceMatches(fx.damageTag(),source))
-                total+=fx.amountPerRank()*a.rank();
+                {total+=fx.amountPerRank()*a.rank();cap=Math.max(cap,io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.integer(fx.params(),"max_total",8,1,32));}
         }
-        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total);
+        return io.github.heatwaveqc.tmm.progression.foundation.UtilityMath.virtualLevel(total,cap);
     }
 }

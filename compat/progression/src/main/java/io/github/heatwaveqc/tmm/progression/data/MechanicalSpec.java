@@ -71,7 +71,7 @@ public final class MechanicalSpec {
                     throw new IllegalArgumentException("Drop bonus requires scoped target");
             }
             case "virtual_fortune","virtual_looting" -> {
-                bounded(a,0,8);
+                bounded(a,0,32);integer(p,"max_total",8,1,32);
                 if(fx.selector().isEmpty()||fx.selector().equals("*"))
                     throw new IllegalArgumentException("Virtual enchantment requires a scoped target");
                 if(fx.weapon().isEmpty()&&!fx.emptyHand())

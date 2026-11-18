@@ -37,6 +37,9 @@ public final class ProgressionScreen extends Screen {
         String name=id.substring(id.lastIndexOf(':')+1).replace('_',' ');
         return name.isEmpty()?"":Character.toUpperCase(name.charAt(0))+name.substring(1);
     }
+    private static String title(JsonObject row,String fallback){
+        return row!=null&&row.has("title")&&!row.get("title").getAsString().isEmpty()?row.get("title").getAsString():label(fallback);
+    }
     public static void receive(String json){
         if(!(Minecraft.getInstance().screen instanceof ProgressionScreen screen))return;
         try{
@@ -113,7 +116,7 @@ public final class ProgressionScreen extends Screen {
         renderBackground(g,mx,my,partial);
         g.fill(4,4,width-4,height-4,0xF21A1725);
         line(g,"PROGRESSION",12,12,width-24,0xFFE8DFC9);
-        line(g,label(pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
+        line(g,title(data,pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
         JsonObject chosen=nodes.get(selection);
         if(purchase!=null)purchase.active=chosen!=null&&chosen.get("buyable").getAsBoolean();
         if(respec!=null)respec.active=data!=null&&data.get("joined").getAsBoolean();
@@ -140,7 +143,7 @@ public final class ProgressionScreen extends Screen {
                 int x=ox+pos.x(),y=oy+pos.y();
                 int border=row.getKey().equals(selection)?0xFFF3D375:n.get("buyable").getAsBoolean()?0xFFB9A165:0xFF686477;
                 g.fill(x,y,x+NODE_W,y+NODE_H,border);g.fill(x+1,y+1,x+NODE_W-1,y+NODE_H-1,color(n));
-                line(g,label(row.getKey()),x+5,y+6,NODE_W-10,0xFFF2EDEA);
+                line(g,title(n,row.getKey()),x+5,y+6,NODE_W-10,0xFFF2EDEA);
                 String owned=n.get("owned").getAsInt()+"/"+n.get("maximum").getAsInt();
                 line(g,owned+(n.get("auto").getAsBoolean()?" · auto":" · "+n.get("price").getAsInt()+" pts"),x+5,y+20,NODE_W-10,0xFFD0CCDD);
                 line(g,n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt(),x+5,y+31,NODE_W-10,0xFFA9C1CC);
@@ -160,7 +163,7 @@ public final class ProgressionScreen extends Screen {
             }
             if(chosen!=null){
                 int y=viewportBottom()+4;
-                line(g,label(selection)+" | "+chosen.get("price").getAsInt()+" "+chosen.get("point_name").getAsString()+
+                line(g,title(chosen,selection)+" | "+chosen.get("price").getAsInt()+" "+chosen.get("point_name").getAsString()+
                     " | "+chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt(),12,y,width-24,0xFFF0D997);
                 line(g,String.join(", ",strings(chosen,"effects"))+" | "+(chosen.get("buyable").getAsBoolean()?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
             }
@@ -169,7 +172,18 @@ public final class ProgressionScreen extends Screen {
                     var pos=graph.layout().positions().get(row.getKey());int x=ox+pos.x(),y=oy+pos.y();
                     if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){
                         var n=row.getValue();List<Component> tooltip=new ArrayList<>();
-                        tooltip.add(Component.literal(label(row.getKey())));
+                        tooltip.add(Component.literal(title(n,row.getKey())));
+                        if(n.has("lane")&&!n.get("lane").getAsString().isBlank())tooltip.add(Component.literal(n.get("lane").getAsString()));
+                        if(n.has("description")&&!n.get("description").getAsString().isBlank()){
+                            for(String wordLine:n.get("description").getAsString().split("\\n")){
+                                String remaining=wordLine;
+                                while(!remaining.isEmpty()&&tooltip.size()<18){
+                                    String chunk=font.plainSubstrByWidth(remaining,220);
+                                    if(chunk.isEmpty())break;
+                                    tooltip.add(Component.literal(chunk));remaining=remaining.substring(chunk.length()).stripLeading();
+                                }
+                            }
+                        }
                         tooltip.add(Component.literal(n.get("price").getAsInt()+" "+n.get("point_name").getAsString()));
                         tooltip.add(Component.literal("Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
                         if(!strings(n,"requires").isEmpty())tooltip.add(Component.literal("All: "+String.join(", ",strings(n,"requires").stream().map(ProgressionScreen::label).toList())));

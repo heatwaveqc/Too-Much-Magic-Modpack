@@ -47,6 +47,15 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     }
     private record GateKey(String path,String skill,int index) {}
     private static volatile Map<GateKey,ActivationSpec> activations=Map.of();
+    private static volatile Map<GateKey,Condition<ServerPlayer>> purchaseGates=Map.of();
+    private static volatile Map<GateKey,PresentationSpec> presentations=Map.of();
+    public static boolean purchaseEligible(ServerPlayer p,String path,String skill){
+        var gate=purchaseGates.get(new GateKey(path,skill,-1));
+        return skillEligible(p,path,skill)&&gate!=null&&gate.test(p);
+    }
+    public static PresentationSpec presentation(String path,String skill){
+        return presentations.getOrDefault(new GateKey(path,skill,-1),PresentationSpec.empty());
+    }
     public static ActivationSpec activation(String path,String skill){return activations.get(new GateKey(path,skill,-1));}
     private static volatile Map<GateKey,Condition<ServerPlayer>> gates=Map.of();
     private static boolean test(ServerPlayer player,GateKey key) {
@@ -85,6 +94,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
+        Map<GateKey,Condition<ServerPlayer>> nextPurchase=new HashMap<>();
+        Map<GateKey,PresentationSpec> nextPresentation=new HashMap<>();
         Map<String,JsonObject> experience=new HashMap<>();
         String prefix="tmm_progression/experience_systems/";
         for(var resource:manager.listResources("tmm_progression/experience_systems",id->id.getPath().endsWith(".json")).entrySet()){
@@ -119,6 +130,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
                 if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
                 var raw=element.getAsJsonObject();
+                nextPresentation.put(new GateKey(path.id(),"",-1),PresentationSpec.parse(raw));
                 var rite=FoodRiteSpec.parse(raw);
                 if(rite!=null)rites.put(path.id(),new FoodRite(rite,Eligibility.parse(rite.when())));
                 var timer=TimedEnrollment.parse(raw);
@@ -128,6 +140,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 if(raw.has("skills")) for(var skillElement:raw.getAsJsonArray("skills")) {
                     var skill=skillElement.getAsJsonObject();
                     String skillId=skill.get("id").getAsString();
+                    nextPresentation.put(new GateKey(path.id(),skillId,-1),PresentationSpec.parse(skill));
+                    nextPurchase.put(new GateKey(path.id(),skillId,-1),Eligibility.parse(skill.get("purchase_when")));
                     var activation=ActivationSpec.read(skill);
                     if(activation!=null)nextActivations.put(new GateKey(path.id(),skillId,-1),activation);
                     localGates.put(new GateKey(path.id(),skillId,-1),Eligibility.parse(skill.get("eligibility")));
@@ -158,6 +172,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         foodRites=Map.copyOf(rites);
         gates=Map.copyOf(nextGates);
         activations=Map.copyOf(nextActivations);
+        purchaseGates=Map.copyOf(nextPurchase);
+        presentations=Map.copyOf(nextPresentation);
         potionTriggers = Map.copyOf(triggers);
         hunterXpPolicies = Map.copyOf(xpPolicies);
         mutationPolicies = Map.copyOf(mutations);

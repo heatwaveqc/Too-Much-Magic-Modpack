@@ -115,6 +115,7 @@ public final class ProgressionMenuNetwork {
         Track state = ProgressionApi.track(player, pathId);
         JsonObject json = new JsonObject();
         json.addProperty("path", pathId);
+        json.addProperty("title",PathRegistry.presentation(pathId,"").title());
         var channel=PathRegistry.channel(pathId);
         json.addProperty("xp_channel",channel==null?"":channel.id());
         json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
@@ -153,6 +154,8 @@ public final class ProgressionMenuNetwork {
             JsonObject item = new JsonObject();
             int owned = state.skillRank(skill.id());
             item.addProperty("id", skill.id());
+            var present=PathRegistry.presentation(pathId,skill.id());
+            item.addProperty("title",present.title());item.addProperty("description",present.description());item.addProperty("lane",present.lane());
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
             item.addProperty("required_rank", skill.requiredRank());
