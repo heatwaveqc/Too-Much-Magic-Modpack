@@ -13,3 +13,9 @@ Owner-approved: NPC-only high-caliber Caliber Arms pistol for all villagers and 
 - [ ] In separately authorized gameplay QA: verify targeting, forgiveness, natural vs built golem behavior, save/reload, client visuals/audio, no-player acquisition and normal trades.
 
 Dependency: stacked on PR #341, exact SHA 8cca84604664c316ac9b86b4c17735f39e8d2f63, to avoid dropping its notice/packaging work. Do not merge into active integration or promote an artifact without review. Initial GPL stage does not yet change combat. PneumaticCraft source candidate: https://github.com/TeamPneumatic/pnc-repressurized/tree/7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28; Caliber Arms: https://www.curseforge.com/minecraft/mc-mods/caliber-arms (MIT claim; exact JAR assets/source still to audit).
+
+### Phase 2 checkpoint
+- [x] PneumaticCraft reference source and adapted standalone model staged, exact original texture blob verified; see `donor-reference/pneumaticcraft/provenance.json`.
+- [ ] Caliber Arms blocker: previous JAR visible in Library, raw-byte materialization denied. Need accessible JAR/source; no unverified assets imported.
+- [ ] PneumaticCraft sounds: individual provenance/license mapping pending. No sound bytes imported.
+- [ ] Register/adapt model layer for iron golems, synchronize animation and integrate NPC-only combat. No behavior changed yet.

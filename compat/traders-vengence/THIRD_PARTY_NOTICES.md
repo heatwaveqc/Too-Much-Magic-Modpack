@@ -32,3 +32,6 @@ SOFTWARE.
 - Iron's Spells 'n Spellbooks remains separately distributed under its own terms; existing integration remains until replaced.
 
 Release gate: provide corresponding source, license text and notices for incorporated files, with build instructions and modified files identified. Do not distribute donor binaries or unrelated assets.
+
+## Staged PneumaticCraft minigun source and art
+Unmodified source references (outside Gradle source sets), adapted GolemMinigunModel and identical upstream drone minigun texture recorded in `donor-reference/pneumaticcraft/provenance.json`. Upstream GPLv3, GPL-3.0-or-later in relevant Java headers; original headers preserved. Model attribution: original Techne header and Team Pneumatic contributor credits. No sound imported: specific mapping of freesound licenses remains unverified. The model is not registered/rendered yet.

@@ -1,0 +1,41 @@
+{
+  "upstream": "https://github.com/TeamPneumatic/pnc-repressurized",
+  "commit": "7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28",
+  "license": "GPL-3.0-or-later (source headers); project GPLv3",
+  "references": [
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/model/ModelMinigun.java",
+      "blob": "67367e391cfc66a6e950e44342a5dd5f61dd541d",
+      "staged": "donor-reference/pneumaticcraft/ModelMinigun.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/common/minigun/Minigun.java",
+      "blob": "0fdd48db9a310bcd097a2ce6868ad73994c30650",
+      "staged": "donor-reference/pneumaticcraft/Minigun.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/render/entity/drone/DroneMinigunLayer.java",
+      "blob": "b4405f27c6acc74d3df8b1bef246febbd3d6e76a",
+      "staged": "donor-reference/pneumaticcraft/DroneMinigunLayer.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/sound/MovingSoundMinigun.java",
+      "blob": "43d561fb2b7b45fea6fb645e2fa482732c6df743",
+      "staged": "donor-reference/pneumaticcraft/MovingSoundMinigun.java.txt"
+    }
+  ],
+  "adapted": [
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/model/ModelMinigun.java",
+      "destination": "src/main/java/io/github/heatwaveqc/tmm/tradersvengence/client/GolemMinigunModel.java",
+      "changes": "Standalone model; caller-supplied angle and neutral magazine tint."
+    },
+    {
+      "upstream": "src/main/resources/assets/pneumaticcraft/textures/pnc_model/drone_minigun.png",
+      "blob": "8278f82e3211050172b5748d918fc3decb489536",
+      "destination": "src/main/resources/assets/traders_vengence/textures/entity/golem_minigun.png",
+      "changes": "Renamed path only; identical Git blob."
+    }
+  ],
+  "excluded": "Audio not imported until specific licensing is resolved; no donor JAR or API."
+}
