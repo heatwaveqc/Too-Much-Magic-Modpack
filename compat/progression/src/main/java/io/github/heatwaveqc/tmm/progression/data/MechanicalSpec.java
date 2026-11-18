@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -58,6 +58,17 @@ public final class MechanicalSpec {
                     throw new IllegalArgumentException("Virtual enchantment requires a scoped target");
                 if(fx.weapon().isEmpty()&&!fx.emptyHand())
                     throw new IllegalArgumentException("Virtual enchantment requires weapon or empty hand condition");
+            }
+            case "magic_cost_discount" -> {
+                bounded(a,0,0.95);
+                if(!Set.of("ars_nouveau:spell","irons_spellbooks:spell","psi:cad_cast").contains(fx.selector()))
+                    throw new IllegalArgumentException("Unknown committed cost adapter");
+            }
+            case "diet_permission" -> {
+                bounded(a,0,1);
+                if(fx.selector().isEmpty()||fx.selector().equals("*"))throw new IllegalArgumentException("Diet permission requires explicit item ID/tag");
+                if(!Set.of("recreational_drink","alcohol").contains(p.getOrDefault("category","")))
+                    throw new IllegalArgumentException("Invalid diet permission category");
             }
             case "magnet" -> {
                 bounded(a,0.1,32);integer(p,"interval_ticks",5,5,200);integer(p,"max_targets",16,1,32);

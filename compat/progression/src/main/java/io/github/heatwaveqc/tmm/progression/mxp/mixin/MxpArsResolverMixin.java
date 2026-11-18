@@ -22,4 +22,8 @@ public abstract class MxpArsResolverMixin {
         if (!io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()) return;
         MxpCastHooks.arsNativeSpendReturned();
     }
+    @Inject(method="getExpendedCost",at=@At("RETURN"),remap=false,require=0,cancellable=true)
+    private void tmm$discountExpendedCost(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<Integer> cir){
+        cir.setReturnValue(MxpCastHooks.arsCost(this,cir.getReturnValue()));
+    }
 }

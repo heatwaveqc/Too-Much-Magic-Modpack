@@ -45,7 +45,17 @@ public final class MxpCastHooks {
         String tx = parent != null && parent.player == sp
                 ? parent.tx : "cast:" + UUID.randomUUID();
         IRON.set(new Cast(sp, cost, before, MxpManaProbe.Origin.IRON,
-                tx, sp.level().getGameTime(), null));
+                tx, sp.level().getGameTime(), event));
+    }
+
+    public static int ironCost(Object event,int price){
+        var pending=IRON.get();
+        return pending!=null&&pending.context==event?MagicCostPolicy.quote(pending.player,"irons_spellbooks:spell",price):price;
+    }
+    public static int arsCost(Object resolver,int price){
+        var pending=ARS.get();
+        return pending!=null&&pending.context==MxpReflect.field(resolver,"spellContext")?
+            MagicCostPolicy.quote(pending.player,"ars_nouveau:spell",price):price;
     }
 
     /** Must run only when the native Iron's castSpell method completes. */

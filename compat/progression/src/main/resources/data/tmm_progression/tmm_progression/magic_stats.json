@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "stats": {
+    "tmm_progression:ars_capacity": {
+      "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:ars_regeneration": {
+      "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:ars_potency": {
+      "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_capacity": {
+      "attribute": "irons_spellbooks:max_mana",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_regeneration": {
+      "attribute": "irons_spellbooks:mana_regen",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_potency": {
+      "attribute": "irons_spellbooks:spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_cast_speed": {
+      "attribute": "irons_spellbooks:cast_time_reduction",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_cooldown_reduction": {
+      "attribute": "irons_spellbooks:cooldown_reduction",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_summon_damage": {
+      "attribute": "irons_spellbooks:summon_damage",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_warding": {
+      "attribute": "irons_spellbooks:spell_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_casting_movement": {
+      "attribute": "irons_spellbooks:casting_movespeed",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_fire_potency": {
+      "attribute": "irons_spellbooks:fire_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_fire_warding": {
+      "attribute": "irons_spellbooks:fire_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_ice_potency": {
+      "attribute": "irons_spellbooks:ice_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_ice_warding": {
+      "attribute": "irons_spellbooks:ice_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_lightning_potency": {
+      "attribute": "irons_spellbooks:lightning_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_lightning_warding": {
+      "attribute": "irons_spellbooks:lightning_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_holy_potency": {
+      "attribute": "irons_spellbooks:holy_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_holy_warding": {
+      "attribute": "irons_spellbooks:holy_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_ender_potency": {
+      "attribute": "irons_spellbooks:ender_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_ender_warding": {
+      "attribute": "irons_spellbooks:ender_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_blood_potency": {
+      "attribute": "irons_spellbooks:blood_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_blood_warding": {
+      "attribute": "irons_spellbooks:blood_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_evocation_potency": {
+      "attribute": "irons_spellbooks:evocation_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_evocation_warding": {
+      "attribute": "irons_spellbooks:evocation_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_nature_potency": {
+      "attribute": "irons_spellbooks:nature_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_nature_warding": {
+      "attribute": "irons_spellbooks:nature_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_eldritch_potency": {
+      "attribute": "irons_spellbooks:eldritch_spell_power",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:irons_eldritch_warding": {
+      "attribute": "irons_spellbooks:eldritch_magic_resist",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:psi_capacity": {
+      "attribute": "psi:total_psi",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:psi_regeneration": {
+      "attribute": "psi:regen",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:aureal_regeneration": {
+      "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:goety_cost_discount": {
+      "attribute": "goety:soul_discount",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:goety_potency": {
+      "attribute": "goety:spell_potency",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tmm_progression:neo_cost_discount": {
+      "attribute": "neovitae:sigil_cost_reduction",
+      "scale": 100,
+      "operation": "add_value"
+    },
+    "tmm_progression:eidolon_potency": {
+      "attribute": "eidolon_repraised:magic_power",
+      "scale": 1,
+      "operation": "add_value"
+    }
+  }
+}

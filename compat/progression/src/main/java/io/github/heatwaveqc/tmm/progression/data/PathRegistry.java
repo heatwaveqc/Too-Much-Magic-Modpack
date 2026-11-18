@@ -96,9 +96,15 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
             var policy=HunterXpPolicy.parse(raw);
             if(policy!=null)xpPolicies.put(id,policy);
         });
+        var magicResource=manager.getResource(ResourceLocation.parse("tmm_progression:tmm_progression/magic_stats.json"))
+            .orElseThrow(()->new IllegalArgumentException("Missing bundled magic stat catalog"));
+        Map<String,MagicCatalog.Binding> magicStats;
+        try(var reader=magicResource.openAsReader()){
+            magicStats=MagicCatalog.read(com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
+        }catch(java.io.IOException e){throw new IllegalArgumentException("Cannot load magic stat catalog",e);}
         data.forEach((key,element) -> {
             try {
-                Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(element.getAsJsonObject(),systems));
+                Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(MagicCatalog.expand(element.getAsJsonObject(),magicStats),systems));
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
                 if(element.getAsJsonObject().has("hunter_xp")||element.getAsJsonObject().has("computed_xp"))

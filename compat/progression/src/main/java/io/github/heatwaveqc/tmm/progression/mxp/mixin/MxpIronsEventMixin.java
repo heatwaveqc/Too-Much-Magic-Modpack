@@ -16,4 +16,8 @@ public abstract class MxpIronsEventMixin {
         if (!io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()) return;
         MxpCastHooks.ironQuoted(this);
     }
+    @Inject(method="getManaCost",at=@At("RETURN"),remap=false,require=0,cancellable=true)
+    private void tmm$discountNativeCost(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<Integer> cir){
+        cir.setReturnValue(MxpCastHooks.ironCost(this,cir.getReturnValue()));
+    }
 }
