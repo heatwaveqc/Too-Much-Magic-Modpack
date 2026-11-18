@@ -45,6 +45,12 @@ public final class Eligibility {
                     catch(RuntimeException | LinkageError e) { return Condition.Result.UNAVAILABLE; }
                 };
             }
+            case "path_joined" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                yield player -> PathRegistry.get(id)==null ? Condition.Result.UNAVAILABLE :
+                    (io.github.heatwaveqc.tmm.progression.core.ProgressionApi.track(player,id).joined()
+                        ? Condition.Result.PASS:Condition.Result.FAIL);
+            }
             case "dimension" -> PlayerConditions.dimension(ResourceLocation.parse(node.get("id").getAsString()));
             case "biome" -> {
                 String id=node.get("id").getAsString();

@@ -38,6 +38,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
+        io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
         NewbieMode.register();
         TyzMonkBridge.register();

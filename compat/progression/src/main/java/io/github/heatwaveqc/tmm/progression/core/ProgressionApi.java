@@ -271,5 +271,8 @@ public final class ProgressionApi {
         return true;
     }
 
-    public static void forgetTransient(UUID playerId) { cooldowns.remove(playerId); }
+    public static void forgetTransient(UUID playerId) {
+        cooldowns.remove(playerId);
+        io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.forget(playerId);
+    }
 }
