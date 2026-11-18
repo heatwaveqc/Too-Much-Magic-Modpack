@@ -2,30 +2,6 @@
   "xp_channel": "tmm_progression:hunter",
   "schema": 1,
   "exclusive_group": "tmm_progression:human_disciplines",
-  "rank_xp": [
-    0,
-    20,
-    55,
-    105,
-    180,
-    280,
-    420,
-    600,
-    850,
-    1200,
-    1700,
-    2400,
-    3400,
-    4800,
-    6600,
-    9000,
-    12000,
-    16000,
-    21000,
-    28000
-  ],
-  "points_per_rank": 1,
-  "activities": [],
   "milestones": [
     {
       "id": "tmm_progression:trial_of_venom",
@@ -540,7 +516,6 @@
       ]
     }
   ],
-  "max_level": 20,
   "enrollment": "potion",
   "enrollment_trigger": {
     "item": "minecraft:potion",

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "name": "Hunting XP",
+  "point_name": "Hunting Points",
+  "requires_path": "tmm_progression:hunter",
+  "rank_xp": [
+    0,
+    20,
+    55,
+    105,
+    180,
+    280,
+    420,
+    600,
+    850,
+    1200,
+    1700,
+    2400,
+    3400,
+    4800,
+    6600,
+    9000,
+    12000,
+    16000,
+    21000,
+    28000
+  ],
+  "points_per_rank": 1,
+  "sources": []
+}

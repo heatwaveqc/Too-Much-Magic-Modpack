@@ -1,14 +1,17 @@
 package io.github.heatwaveqc.tmm.progression.model;
-
 import io.github.heatwaveqc.tmm.progression.core.MxpMath;
-
-/** A named XP economy. The native curve is owned by one data-defined source tree. */
-public record XpChannel(String id, Definition.Path source, double growth) {
+import java.util.List;
+/** Independent XP definition. The curve is a skill-free parsed specification, not a tree. */
+public record XpChannel(String id, Definition.Path source, double growth,String earningPath,String name,String pointName) {
+    public static final String MXP="tmm_progression:mxp";
     public XpChannel {
-        if (id == null || !id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
-            throw new IllegalArgumentException("Invalid channel ID");
+        if(id==null || !id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Invalid XP ID");
+        if((source==null)!=MXP.equals(id))throw new IllegalArgumentException("Reserved MXP identity");
         MxpMath.validateGrowth(growth);
     }
-    public boolean magic() { return source == null; }
-    public boolean earnsFrom(String path) { return source != null && source.id().equals(path); }
+    public boolean magic(){return source==null;}
+    public int maxRank(){return magic()?Integer.MAX_VALUE:source.maxRank();}
+    public boolean earnsFrom(String path){return !magic()&&earningPath.equals(path);}
+    public List<Definition.Activity> sources(){return magic()?List.of():source.activities();}
+    public static XpChannel mxp(double growth){return new XpChannel(MXP,null,growth,"","MXP","Magic skill points");}
 }

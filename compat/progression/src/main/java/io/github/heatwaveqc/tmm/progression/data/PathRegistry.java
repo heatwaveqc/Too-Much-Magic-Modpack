@@ -30,6 +30,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile ChannelConfig channelConfig=ChannelConfig.empty();
     public static XpChannel channel(String path) { return channelConfig.paths().get(path); }
     public static XpChannel economy(String id) { return channelConfig.channels().get(id); }
+    public static ChannelConfig config(){return channelConfig;}
+    public static Map<String,XpChannel> economies(){return channelConfig.channels();}
 
     private record GateKey(String path,String skill,int index) {}
     private static volatile Map<GateKey,Condition<ServerPlayer>> gates=Map.of();
@@ -60,10 +62,18 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
+        Map<String,JsonObject> experience=new HashMap<>();
+        String prefix="tmm_progression/experience_systems/";
+        for(var resource:manager.listResources("tmm_progression/experience_systems",id->id.getPath().endsWith(".json")).entrySet()){
+            var key=resource.getKey();String id=key.getNamespace()+":"+key.getPath().substring(prefix.length(),key.getPath().length()-5);
+            try(var reader=resource.getValue().openAsReader()){
+                experience.put(id,com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
+            }catch(java.io.IOException bad){throw new IllegalArgumentException("Cannot read XP system "+id,bad);}
+        }
+        var systems=ChannelConfig.definitions(experience,1.02);
         data.forEach((key,element) -> {
-            if(key.toString().equals(ChannelConfig.TABLE)) return;
             try {
-                Definition.Path path = PathJson.read(key.toString(), element.getAsJsonObject());
+                Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(element.getAsJsonObject(),systems));
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
                 HunterXpPolicy xpPolicy = HunterXpPolicy.parse(element.getAsJsonObject());
@@ -93,9 +103,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 ProgressionMod.LOGGER.error("Rejected path {}: {}",key,exception.getMessage());
             }
         });
-        var table=data.get(ResourceLocation.parse(ChannelConfig.TABLE));
-        ChannelConfig config=ChannelConfig.read(table==null?null:table.getAsJsonObject(),next,rawPaths);
-        if(next.size()!=data.size()-1) throw new IllegalArgumentException("Rejected path; retaining previous channel configuration");
+        ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
+        if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
         channelConfig=config;
         gates=Map.copyOf(nextGates);
         potionTriggers = Map.copyOf(triggers);
