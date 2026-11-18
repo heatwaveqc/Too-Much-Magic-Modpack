@@ -55,7 +55,7 @@ public final class ProgressionMenuNetwork {
         public static final Type<Snapshot> TYPE = new Type<>(
                 ResourceLocation.fromNamespaceAndPath(ProgressionMod.MOD_ID, "menu_snapshot"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Snapshot> CODEC =
-                StreamCodec.composite(ByteBufCodecs.STRING_UTF8, Snapshot::json, Snapshot::new);
+                StreamCodec.composite(ByteBufCodecs.stringUtf8(262144), Snapshot::json, Snapshot::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
@@ -103,6 +103,11 @@ public final class ProgressionMenuNetwork {
     }
 
     private static void send(ServerPlayer player, String pathId) {
+        if(pathId.isEmpty()||!PathRegistry.all().containsKey(pathId)){
+            pathId=PathRegistry.all().keySet().stream().sorted()
+                .filter(id->ProgressionApi.track(player,id).joined()&&PathRegistry.eligible(player,id)).findFirst()
+                .orElseGet(()->PathRegistry.all().keySet().stream().sorted().findFirst().orElse(""));
+        }
         if (!validId(pathId)) return;
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return;
@@ -113,6 +118,7 @@ public final class ProgressionMenuNetwork {
         json.addProperty("xp_channel",channel==null?"":channel.id());
         json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
+        json.addProperty("eligible",PathRegistry.eligible(player,pathId));
         json.addProperty("rank", state.rank());
         json.addProperty("max_rank", channel.maxRank());
         json.addProperty("xp", state.xp());
@@ -149,6 +155,7 @@ public final class ProgressionMenuNetwork {
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
             item.addProperty("required_rank", skill.requiredRank());
+            item.addProperty("eligible",PathRegistry.skillEligible(player,pathId,skill.id()));
             item.addProperty("auto", !skill.autoRanks().isEmpty());
             var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tmm.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));
             item.addProperty("currency",binding.currency().id());
@@ -166,7 +173,9 @@ public final class ProgressionMenuNetwork {
             skills.add(item);
         }
         json.add("skills", skills);
-        PacketDistributor.sendToPlayer(player, new Snapshot(json.toString()));
+        String payload=json.toString();
+        if(payload.length()>262144){ProgressionMod.LOGGER.warn("Tree snapshot too large: {}",pathId);return;}
+        PacketDistributor.sendToPlayer(player, new Snapshot(payload));
     }
 
     public static void forget(ServerPlayer player) {

@@ -1,9 +1,8 @@
 package io.github.heatwaveqc.tmm.progression.client;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import io.github.heatwaveqc.tmm.progression.foundation.SkillGraph;
+import io.github.heatwaveqc.tmm.progression.foundation.TreeLayout;
 import io.github.heatwaveqc.tmm.progression.network.ProgressionMenuNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,238 +10,186 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.PacketDistributor;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-/**
- * Native visual browser for the server's Monk and Hunter skill graphs.
- * No guesswork from local rank/XP: purchases, costs, nodes and prerequisites
- * are projections of the actual server-loaded JSON and player ledger.
+/** Epiphany-inspired connected module/tree browser, backed solely by server snapshots.
+ * Uses the attributed Epiphany-derived TreeLayout. No upstream LDLib2 UI or assets required.
  */
 public final class ProgressionScreen extends Screen {
-    private static final String MONK = "tmm_progression:monk";
-    private static final String HUNTER = "tmm_progression:hunter";
-    private static final int CARD_H = 44;
-    private static final int CARD_GAP = 8;
-    private String pathId;
+    private static final int NODE_W=98,NODE_H=42,GAP_X=18,GAP_Y=22;
+    private String pathId,selection="";
     private JsonObject data;
-    private List<String> paths=List.of(MONK,HUNTER);
-    private int scroll;
+    private List<String> paths=List.of();
+    private final Map<String,JsonObject> nodes=new LinkedHashMap<>();
+    private SkillGraph.Graph graph;
+    private final Map<String,int[]> panByPath=new HashMap<>();
+    private int panX,panY,ticks;
+    private Button purchase,respec;
     private boolean confirmRespec;
-    private Button respecButton;
-
-    public ProgressionScreen(String pathId) {
-        super(Component.literal("Disciplines"));
-        this.pathId = pathId;
+    public ProgressionScreen(String pathId){super(Component.literal("Progression"));this.pathId=pathId;}
+    private void request(){PacketDistributor.sendToServer(new ProgressionMenuNetwork.Request(pathId));}
+    private static List<String> strings(JsonObject row,String key){
+        List<String> result=new ArrayList<>();
+        if(row.has(key))for(var entry:row.getAsJsonArray(key))result.add(entry.getAsString());
+        return result;
     }
-
-    private void request() {
-        PacketDistributor.sendToServer(new ProgressionMenuNetwork.Request(pathId));
+    private static String label(String id){
+        String name=id.substring(id.lastIndexOf(':')+1).replace('_',' ');
+        return name.isEmpty()?"":Character.toUpperCase(name.charAt(0))+name.substring(1);
     }
-
-    public static void receive(String json) {
-        try {
-            JsonObject parsed = JsonParser.parseString(json).getAsJsonObject();
-            Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.screen instanceof ProgressionScreen screen
-                    && screen.pathId.equals(parsed.get("path").getAsString())) {
-                screen.data=parsed;
-                if(parsed.has("paths")) {
-                    var ids=new ArrayList<String>();
-                    for(var id:parsed.getAsJsonArray("paths")) ids.add(id.getAsString());
-                    if(!ids.isEmpty()) screen.paths=List.copyOf(ids);
-                }
+    public static void receive(String json){
+        if(!(Minecraft.getInstance().screen instanceof ProgressionScreen screen))return;
+        try{
+            JsonObject parsed=JsonParser.parseString(json).getAsJsonObject();
+            String received=parsed.get("path").getAsString();
+            if(!screen.pathId.isEmpty()&&!screen.pathId.equals(received)&&strings(parsed,"paths").contains(screen.pathId))return;
+            screen.pathId=received;screen.paths=List.copyOf(strings(parsed,"paths"));
+            var next=new LinkedHashMap<String,JsonObject>();var specs=new ArrayList<SkillGraph.Skill>();
+            for(var entry:parsed.getAsJsonArray("skills")){
+                var row=entry.getAsJsonObject();String id=row.get("id").getAsString();
+                next.put(id,row);specs.add(new SkillGraph.Skill(id,row.get("required_rank").getAsInt(),strings(row,"requires"),strings(row,"requires_any")));
             }
-        } catch (RuntimeException ignored) {
-            // Malformed/outdated server snapshot must not crash the client UI.
-        }
+            var layout=SkillGraph.arrange(specs,4,NODE_W,NODE_H,GAP_X,GAP_Y);
+            screen.nodes.clear();screen.nodes.putAll(next);screen.graph=layout;screen.data=parsed;
+            if(!next.containsKey(screen.selection))screen.selection="";
+            screen.clampPan();
+        }catch(RuntimeException ignored){/* malformed or incomplete network update does not replace the last valid view */}
     }
-
-    @Override
-    protected void init() {
-        int left = Math.max(12, (width - 505) / 2);
-        addRenderableWidget(Button.builder(Component.literal("Previous tree"), b -> cycle(-1))
-                .bounds(left + 10, 36, 94, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Next tree"), b -> cycle(1))
-                .bounds(left + 109, 36, 94, 20).build());
-        respecButton = addRenderableWidget(Button.builder(Component.literal("Respec..."),
-                b -> {
-                    if (data == null || !data.get("joined").getAsBoolean()) return;
-                    if (!confirmRespec) {
-                        confirmRespec = true;
-                        respecButton.setMessage(Component.literal("Confirm respec"));
-                    } else {
-                        confirmRespec = false;
-                        respecButton.setMessage(Component.literal("Respec..."));
-                        PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(
-                                pathId, "respec", ""));
+    @Override protected void init(){
+        int x=10,y=28;
+        addRenderableWidget(Button.builder(Component.literal("<"),b->cycle(-1)).bounds(x,y,24,20).build());
+        addRenderableWidget(Button.builder(Component.literal(">"),b->cycle(1)).bounds(x+29,y,24,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(Math.max(10,width-66),height-25,56,20).build());
+        purchase=addRenderableWidget(Button.builder(Component.literal("Learn rank"),b->{
+            JsonObject n=nodes.get(selection);
+            if(n!=null&&n.get("buyable").getAsBoolean())PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"buy",selection));
+        }).bounds(10,height-25,90,20).build());
+        respec=addRenderableWidget(Button.builder(Component.literal("Respec"),b->{
+            if(data==null||!data.get("joined").getAsBoolean())return;
+            if(!confirmRespec){confirmRespec=true;respec.setMessage(Component.literal("Confirm reset"));}
+            else{confirmRespec=false;respec.setMessage(Component.literal("Respec"));
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"respec",""));}
+        }).bounds(105,height-25,94,20).build());
+        clampPan();request();
+    }
+    @Override public void tick(){if(++ticks%40==0)request();}
+    private void cycle(int delta){
+        if(paths.isEmpty())return;
+        String next=paths.get(Math.floorMod(paths.indexOf(pathId)+delta,paths.size()));
+        if(next.equals(pathId))return;
+        panByPath.put(pathId,new int[]{panX,panY});pathId=next;
+        var pos=panByPath.getOrDefault(next,new int[2]);panX=pos[0];panY=pos[1];
+        data=null;graph=null;nodes.clear();selection="";confirmRespec=false;
+        if(respec!=null)respec.setMessage(Component.literal("Respec"));request();
+    }
+    private int viewportLeft(){return 10;}
+    private int viewportRight(){return width>=510?width-178:width-10;}
+    private int viewportTop(){return 76;}
+    private int viewportBottom(){return height>=200?height-65:height-32;}
+    private boolean inside(double x,double y){return x>=viewportLeft()&&x<viewportRight()&&y>=viewportTop()&&y<viewportBottom();}
+    private void clampPan(){
+        if(graph==null)return;
+        int vw=Math.max(1,viewportRight()-viewportLeft()),vh=Math.max(1,viewportBottom()-viewportTop());
+        panX=Math.max(0,Math.min(panX,Math.max(0,graph.layout().width()+16-vw)));
+        panY=Math.max(0,Math.min(panY,Math.max(0,graph.layout().height()+12-vh)));
+    }
+    private int originX(){return viewportLeft()+Math.max(8,(viewportRight()-viewportLeft()-graph.layout().width())/2)-panX;}
+    private int originY(){return viewportTop()+6-panY;}
+    private void line(GuiGraphics g,String text,int x,int y,int available,int color){
+        if(available>0)g.drawString(font,font.plainSubstrByWidth(text,available),x,y,color,false);
+    }
+    private static int color(JsonObject n){
+        if(n.get("owned").getAsInt()>0)return 0xFF284C42;
+        if(n.get("buyable").getAsBoolean())return 0xFF72602C;
+        if(n.get("auto").getAsBoolean())return 0xFF283C5B;
+        return 0xFF302E3B;
+    }
+    @Override public void render(GuiGraphics g,int mx,int my,float partial){
+        renderBackground(g,mx,my,partial);
+        g.fill(4,4,width-4,height-4,0xF21A1725);
+        line(g,"PROGRESSION",12,12,width-24,0xFFE8DFC9);
+        line(g,label(pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
+        JsonObject chosen=nodes.get(selection);
+        if(purchase!=null)purchase.active=chosen!=null&&chosen.get("buyable").getAsBoolean();
+        if(respec!=null)respec.active=data!=null&&data.get("joined").getAsBoolean();
+        if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
+            line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
+                " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points",12,53,width-24,0xFFDBC895);
+            line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
+            g.fill(viewportLeft(),viewportTop(),viewportRight(),viewportBottom(),0xFF100F19);
+            clampPan();int ox=originX(),oy=originY();
+            g.enableScissor(viewportLeft(),viewportTop(),viewportRight(),viewportBottom());
+            for(var edge:graph.connections()){
+                var parent=graph.layout().positions().get(edge.parent());var child=graph.layout().positions().get(edge.child());
+                int ax=ox+parent.x()+NODE_W/2,ay=oy+parent.y()+NODE_H,bx=ox+child.x()+NODE_W/2,by=oy+child.y(),mid=(ay+by)/2;
+                int c=edge.alternative()?0xFFAF92D9:0xFF748896;
+                g.fill(ax,ay,ax+1,mid+1,c);g.fill(Math.min(ax,bx),mid,Math.max(ax,bx)+1,mid+1,c);g.fill(bx,mid,bx+1,by,c);
+            }
+            for(var row:nodes.entrySet()){
+                var n=row.getValue();var pos=graph.layout().positions().get(row.getKey());
+                int x=ox+pos.x(),y=oy+pos.y();
+                int border=row.getKey().equals(selection)?0xFFF3D375:n.get("buyable").getAsBoolean()?0xFFB9A165:0xFF686477;
+                g.fill(x,y,x+NODE_W,y+NODE_H,border);g.fill(x+1,y+1,x+NODE_W-1,y+NODE_H-1,color(n));
+                line(g,label(row.getKey()),x+5,y+6,NODE_W-10,0xFFF2EDEA);
+                String owned=n.get("owned").getAsInt()+"/"+n.get("maximum").getAsInt();
+                line(g,owned+(n.get("auto").getAsBoolean()?" · auto":" · "+n.get("price").getAsInt()+" pts"),x+5,y+20,NODE_W-10,0xFFD0CCDD);
+                line(g,n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt(),x+5,y+31,NODE_W-10,0xFFA9C1CC);
+            }
+            if(nodes.isEmpty())line(g,"No configured skills in this tree.",viewportLeft()+10,viewportTop()+10,viewportRight()-viewportLeft()-20,0xFFB8B3C6);
+            g.disableScissor();
+            if(width>=510){
+                int x=viewportRight()+8,w=width-x-10,y=viewportTop()+5;
+                line(g,"EXPERIENCE WALLETS",x,y,w,0xFFE5C87D);y+=13;
+                for(var entry:data.getAsJsonArray("wallets")){
+                    if(y+22>=viewportBottom()-18)break;
+                    var wallet=entry.getAsJsonObject();
+                    line(g,wallet.get("name").getAsString()+" · L"+wallet.get("level").getAsInt(),x,y,w,0xFFD7CAE9);
+                    line(g,wallet.get("points").getAsInt()+" points · "+wallet.get("xp").getAsLong()+" XP",x,y+10,w,0xFFBCB9C7);y+=23;
+                }
+                line(g,"Solid: all of · violet: any of",x,viewportBottom()-13,w,0xFFC0A7E1);
+            }
+            if(chosen!=null){
+                int y=viewportBottom()+4;
+                line(g,label(selection)+" | "+chosen.get("price").getAsInt()+" "+chosen.get("point_name").getAsString()+
+                    " | "+chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt(),12,y,width-24,0xFFF0D997);
+                line(g,String.join(", ",strings(chosen,"effects"))+" | "+(chosen.get("buyable").getAsBoolean()?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
+            }
+            if(inside(mx,my)){
+                for(var row:nodes.entrySet()){
+                    var pos=graph.layout().positions().get(row.getKey());int x=ox+pos.x(),y=oy+pos.y();
+                    if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){
+                        var n=row.getValue();List<Component> tooltip=new ArrayList<>();
+                        tooltip.add(Component.literal(label(row.getKey())));
+                        tooltip.add(Component.literal(n.get("price").getAsInt()+" "+n.get("point_name").getAsString()));
+                        tooltip.add(Component.literal("Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
+                        if(!strings(n,"requires").isEmpty())tooltip.add(Component.literal("All: "+String.join(", ",strings(n,"requires").stream().map(ProgressionScreen::label).toList())));
+                        if(!strings(n,"requires_any").isEmpty())tooltip.add(Component.literal("Any: "+String.join(", ",strings(n,"requires_any").stream().map(ProgressionScreen::label).toList())));
+                        if(!strings(n,"milestones").isEmpty())tooltip.add(Component.literal("Milestones: "+String.join(", ",strings(n,"milestones").stream().map(ProgressionScreen::label).toList())));
+                        if(!n.get("eligible").getAsBoolean())tooltip.add(Component.literal("Eligibility condition not met"));
+                        g.renderComponentTooltip(font,tooltip,mx,my);break;
                     }
-                }).bounds(left + 374, height - 31, 119, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"), b -> onClose())
-                .bounds(left + 264, height - 31, 105, 20).build());
-        request();
-    }
-
-    private void cycle(int delta) {
-        if(!paths.isEmpty()) switchPath(paths.get(Math.floorMod(paths.indexOf(pathId)+delta,paths.size())));
-    }
-    private void switchPath(String id) {
-        if (pathId.equals(id)) return;
-        pathId = id;
-        data = null;
-        scroll = 0;
-        confirmRespec = false;
-        if (respecButton != null)
-            respecButton.setMessage(Component.literal("Respec..."));
-        request();
-    }
-
-    private static String pretty(String id) {
-        String shortId = id.substring(id.lastIndexOf(':') + 1).replace('_', ' ');
-        String[] words = shortId.split(" ");
-        StringBuilder out = new StringBuilder();
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                if (!out.isEmpty()) out.append(' ');
-                out.append(word.substring(0, 1).toUpperCase(Locale.ROOT))
-                        .append(word.substring(1));
-            }
-        }
-        return out.toString();
-    }
-
-    private static int color(JsonObject skill) {
-        if (skill.get("owned").getAsInt() > 0) return 0xFF264D3D;
-        if (skill.get("auto").getAsBoolean()) return 0xFF25364C;
-        if (skill.get("buyable").getAsBoolean()) return 0xFF745B29;
-        return 0xFF313139;
-    }
-
-    private int cols() { return width >= 640 ? 4 : 3; }
-    private int left() { return Math.max(12, (width - 505) / 2); }
-    private int startY() { return 108; }
-    private int bottomY() { return height - 43; }
-    private int cardWidth() { return (485 - (cols() - 1) * CARD_GAP) / cols(); }
-    private int visibleHeight() { return Math.max(30, bottomY() - startY()); }
-
-    private JsonArray skills() {
-        return data == null ? new JsonArray() : data.getAsJsonArray("skills");
-    }
-
-    private int maxScroll() {
-        int rows = (skills().size() + cols() - 1) / cols();
-        int contentHeight = rows * (CARD_H + CARD_GAP);
-        return Math.max(0, (contentHeight - visibleHeight() + CARD_H + CARD_GAP - 1)
-                / (CARD_H + CARD_GAP));
-    }
-
-    private int cardX(int index) { return left() + 10 + index % cols() * (cardWidth() + CARD_GAP); }
-    private int cardY(int index) { return startY() + (index / cols() - scroll) * (CARD_H + CARD_GAP); }
-
-    @Override
-    public void render(GuiGraphics gui, int mouseX, int mouseY, float partialTick) {
-        renderBackground(gui, mouseX, mouseY, partialTick);
-        int left = left();
-        gui.fill(left, 10, left + 505, height - 8, 0xDF141821);
-        gui.drawString(font, "DISCIPLINE PROGRESSION", left + 13, 17, 0xFFEEEEEE, false);
-        gui.drawString(font, pretty(pathId).toUpperCase(Locale.ROOT),
-                left + 215, 42, 0xFFA6DCD0, false);
-
-        if (data == null) {
-            gui.drawString(font, "Requesting skill data from server...", left + 20,
-                    startY() + 15, 0xFFAAAAAA, false);
-            super.render(gui, mouseX, mouseY, partialTick);
-            return;
-        }
-        boolean joined = data.get("joined").getAsBoolean();
-        int rank = data.get("rank").getAsInt();
-        int maxRank = data.get("max_rank").getAsInt();
-        int points = data.get("points").getAsInt();
-        long xp = data.get("xp").getAsLong();
-        long nextXp = data.get("next_xp").getAsLong();
-        long rankStart = data.get("rank_start_xp").getAsLong();
-        gui.drawString(font, joined ? "Rank " + rank + "/" + maxRank : "Not enrolled",
-                left + 14, 69, joined ? 0xFFA6DCD0 : 0xFFFFB6A0, false);
-        gui.drawString(font, (data.has("xp_channel") ? pretty(data.get("xp_channel").getAsString()) : "Skill") + " points: " + points,
-                left + 150, 69, 0xFFF1D99B, false);
-        gui.drawString(font, xp + " / " + nextXp + " XP",
-                left + 314, 69, 0xFFD0D0D0, false);
-        gui.fill(left + 13, 84, left + 491, 91, 0xFF353941);
-        double fraction = rank >= maxRank && !data.has("magic_channel") ? 1.0
-                : nextXp <= rankStart ? 0.0
-                : Math.max(0, Math.min(1.0,
-                        (double) (xp - rankStart) / (nextXp - rankStart)));
-        gui.fill(left + 13, 84, left + 13 + (int) (478 * fraction), 91, 0xFF529E84);
-        gui.drawString(font, "Automatic gifts: blue | Learned: green | Purchasable: gold",
-                left + 13, 96, 0xFFAFBAC6, false);
-
-        JsonArray nodes = skills();
-        scroll = Math.max(0, Math.min(scroll, maxScroll()));
-        gui.enableScissor(left + 8, startY(), left + 496, bottomY());
-        String hover = null;
-        for (int i = 0; i < nodes.size(); i++) {
-            JsonObject node = nodes.get(i).getAsJsonObject();
-            int x = cardX(i), y = cardY(i), w = cardWidth();
-            if (y >= bottomY() || y + CARD_H < startY()) continue;
-            gui.fill(x, y, x + w, y + CARD_H, color(node));
-            gui.fill(x, y, x + w, y + 2, node.get("buyable").getAsBoolean()
-                    ? 0xFFE5C66A : 0xFF678A83);
-            String name = font.plainSubstrByWidth(pretty(node.get("id").getAsString()), w - 10);
-            gui.drawString(font, name, x + 5, y + 7, 0xFFF7F7F7, false);
-            int owned = node.get("owned").getAsInt();
-            int maximum = node.get("maximum").getAsInt();
-            String info = node.get("auto").getAsBoolean()
-                    ? "Auto  " + owned + "/" + maximum
-                    : owned + "/" + maximum + "  -  " + node.get("price").getAsInt() + " SP";
-            gui.drawString(font, info, x + 5, y + 26, 0xFFD7DDE3, false);
-            if (mouseX >= x && mouseX < x+w && mouseY >= y && mouseY < y+CARD_H) {
-                String effects = "";
-                for (JsonElement effect : node.getAsJsonArray("effects")) {
-                    if (!effects.isEmpty()) effects += ", ";
-                    effects += effect.getAsString().replace('_', ' ');
                 }
-                hover = pretty(node.get("id").getAsString()) + " | requires rank " +
-                        node.get("required_rank").getAsInt() + " | " + effects;
-                if (!node.get("choice_group").getAsString().isEmpty())
-                    hover += " | Exclusive: " + node.get("choice_group").getAsString();
             }
-        }
-        gui.disableScissor();
-        if (hover != null)
-            gui.renderTooltip(font, Component.literal(hover), mouseX, mouseY);
-        super.render(gui, mouseX, mouseY, partialTick);
+        }else line(g,"Requesting skill data from server...",12,65,width-24,0xFFBBB5CB);
+        super.render(g,mx,my,partial);
     }
-
-    @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (super.mouseClicked(mouseX, mouseY, button)) return true;
-        if (button != 0 || data == null || !data.get("joined").getAsBoolean()) return false;
-        if (mouseY < startY() || mouseY >= bottomY()) return false;
-        JsonArray nodes = skills();
-        for (int i = 0; i < nodes.size(); i++) {
-            int x = cardX(i), y = cardY(i);
-            if (mouseX < x || mouseX >= x + cardWidth() ||
-                    mouseY < y || mouseY >= y + CARD_H) continue;
-            JsonObject node = nodes.get(i).getAsJsonObject();
-            if (node.get("buyable").getAsBoolean()) {
-                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(
-                        pathId, "buy", node.get("id").getAsString()));
-            }
-            return true;
+    @Override public boolean mouseClicked(double mx,double my,int button){
+        if(super.mouseClicked(mx,my,button))return true;
+        if(button!=0||graph==null||!inside(mx,my))return false;
+        int ox=originX(),oy=originY();
+        for(var row:nodes.entrySet()){
+            var pos=graph.layout().positions().get(row.getKey());int x=ox+pos.x(),y=oy+pos.y();
+            if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){selection=row.getKey();break;}
         }
-        return false;
+        return true;
     }
-
-    @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        if (mouseY >= startY() && mouseY <= bottomY()) {
-            scroll = Math.max(0, Math.min(maxScroll(), scroll - (int) Math.signum(scrollY)));
-            return true;
-        }
-        return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
+    @Override public boolean mouseDragged(double mx,double my,int button,double dx,double dy){
+        if(button==0&&graph!=null&&inside(mx,my)){panX-=(int)dx;panY-=(int)dy;clampPan();return true;}
+        return super.mouseDragged(mx,my,button,dx,dy);
     }
-
-    @Override public boolean isPauseScreen() { return false; }
+    @Override public boolean mouseScrolled(double mx,double my,double sx,double sy){
+        if(graph!=null&&inside(mx,my)){panY-=(int)(sy*32);panX-=(int)(sx*32);clampPan();return true;}
+        return super.mouseScrolled(mx,my,sx,sy);
+    }
+    @Override public boolean isPauseScreen(){return false;}
 }

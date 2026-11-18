@@ -45,7 +45,7 @@ public final class ClientKeys {
             if (minecraft.player == null) return;
             if (minecraft.screen == null) {
                 while (SKILLS.consumeClick()) {
-                    minecraft.setScreen(new ProgressionScreen("tmm_progression:monk"));
+                    minecraft.setScreen(new ProgressionScreen(""));
                 }
             }
             if (minecraft.screen != null) return;
