@@ -5,16 +5,16 @@
     "Basic Progression",
     "Advanced Progression",
     "Endgame Roadmap",
-    "Skills & Advancement",
-    "A Sufficiently Advanced Magic"
+    "Skills & Factions",
+    "Advanced Magic Tech"
   ],
   "quest_count": 46,
   "counts": {
     "Basic Progression": 10,
     "Advanced Progression": 10,
     "Endgame Roadmap": 6,
-    "Skills & Advancement": 7,
-    "A Sufficiently Advanced Magic": 13
+    "Skills & Factions": 7,
+    "Advanced Magic Tech": 13
   },
   "notes": [
     "Existing Basic Progression sale quests remain intact except repair of previously undefined descriptions.",
@@ -524,12 +524,12 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Read the Two Skill Systems",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses.",
+      "description": "TMM character progression is moving to a unified Progression engine. Improvable Skills 3 remains separate. Do not assume planned skill bonuses are available in the current build.",
       "reward": {
         "xp": 10,
         "item": "minecraft:experience_bottle",
@@ -542,12 +542,12 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Open the Skill Interface",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available.",
+      "description": "Find the available character progression controls and skill interface in your current build. This is a manual learning checkmark, not a claim that the planned unified interface or trees are implemented.",
       "reward": {
         "xp": 10,
         "item": "minecraft:paper",
@@ -560,12 +560,12 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Understand Attributes",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod.",
+      "description": "Attributes can modify combat and magic statistics. Before specialization, examine what each stat actually changes; do not assume cooldown, damage and resource effects apply to every mod.",
       "reward": {
         "xp": 15,
         "item": "minecraft:redstone",
@@ -578,12 +578,12 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Experiment with Improvable Skills",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree.",
+      "description": "Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Its perks are distinct from TMM character progression.",
       "reward": {
         "xp": 15,
         "item": "minecraft:lapis_lazuli",
@@ -596,12 +596,12 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Inspect Cooldown and Casting Perks",
       "criterion": {
         "type": "checkmark"
       },
-      "description": "The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses.",
+      "description": "Planned character progression emphasizes cooldown, casting efficiency and appropriate crafting bonuses rather than new global mana bars. Individual spell systems differ; only supported effects should be treated as active.",
       "reward": {
         "xp": 15,
         "item": "minecraft:glowstone_dust",
@@ -614,7 +614,7 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Plan for Practical Attribute Caps",
       "criterion": {
         "type": "checkmark"
@@ -632,7 +632,7 @@
       "layout": null
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Choose How to Specialize",
       "criterion": {
         "type": "checkmark"
@@ -650,7 +650,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "criterion": {
         "type": "checkmark"
@@ -668,7 +668,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Craft a Draconic Generator",
       "criterion": {
         "type": "item",
@@ -688,7 +688,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Craft the Draconic Energy Core",
       "criterion": {
         "type": "item",
@@ -708,7 +708,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Prepare Energy Core Stabilizers",
       "criterion": {
         "type": "item",
@@ -728,7 +728,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Build Input and Output Pylons",
       "criterion": {
         "type": "item",
@@ -748,7 +748,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Activate the Draconic Power Bank",
       "criterion": {
         "type": "checkmark"
@@ -766,7 +766,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Route FE with a Crystal",
       "criterion": {
         "type": "item",
@@ -786,7 +786,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Regulate Power with a Flux Gate",
       "criterion": {
         "type": "item",
@@ -806,7 +806,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Acquire the Draconic Reactor Core",
       "criterion": {
         "type": "item",
@@ -826,7 +826,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Four Reactor Stabilizers",
       "criterion": {
         "type": "item",
@@ -846,7 +846,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Build the Reactor Energy Injector",
       "criterion": {
         "type": "item",
@@ -866,7 +866,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Plan Safe Reactor Containment",
       "criterion": {
         "type": "checkmark"
@@ -884,7 +884,7 @@
       "layout": null
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Operate a Draconic Reactor Safely",
       "criterion": {
         "type": "checkmark"

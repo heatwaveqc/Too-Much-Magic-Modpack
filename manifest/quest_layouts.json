@@ -1106,7 +1106,7 @@
     },
     {
       "quest_id": "544D302000400001",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         0
@@ -1115,7 +1115,7 @@
     },
     {
       "quest_id": "544D507000100000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         4
@@ -1124,7 +1124,7 @@
     },
     {
       "quest_id": "544D507000200000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         4,
         4
@@ -1133,7 +1133,7 @@
     },
     {
       "quest_id": "544D507000300000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         8,
         4
@@ -1142,7 +1142,7 @@
     },
     {
       "quest_id": "544D507000400000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         8
@@ -1151,7 +1151,7 @@
     },
     {
       "quest_id": "544D507000500000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         4,
         8
@@ -1160,7 +1160,7 @@
     },
     {
       "quest_id": "544D507000600000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         8,
         8
@@ -1169,7 +1169,7 @@
     },
     {
       "quest_id": "544D507000700000",
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "position": [
         0,
         12
@@ -1178,7 +1178,7 @@
     },
     {
       "quest_id": "544D302000500001",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         0,
         0
@@ -1187,7 +1187,7 @@
     },
     {
       "quest_id": "544D508000100000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         4,
         0
@@ -1196,7 +1196,7 @@
     },
     {
       "quest_id": "544D508001500000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         0,
         4
@@ -1205,7 +1205,7 @@
     },
     {
       "quest_id": "544D508001600000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         3,
         4
@@ -1214,7 +1214,7 @@
     },
     {
       "quest_id": "544D508001700000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         6,
         4
@@ -1223,7 +1223,7 @@
     },
     {
       "quest_id": "544D508001800000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         9,
         4
@@ -1232,7 +1232,7 @@
     },
     {
       "quest_id": "544D508001900000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         9,
         8
@@ -1241,7 +1241,7 @@
     },
     {
       "quest_id": "544D508001A00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         6,
         8
@@ -1250,7 +1250,7 @@
     },
     {
       "quest_id": "544D508001B00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         0,
         14
@@ -1259,7 +1259,7 @@
     },
     {
       "quest_id": "544D508001C00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         3,
         14
@@ -1268,7 +1268,7 @@
     },
     {
       "quest_id": "544D508001D00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         6,
         14
@@ -1277,7 +1277,7 @@
     },
     {
       "quest_id": "544D508001E00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         9,
         14
@@ -1286,7 +1286,7 @@
     },
     {
       "quest_id": "544D508001F00000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         9,
         18
@@ -1295,7 +1295,7 @@
     },
     {
       "quest_id": "544D508002000000",
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "position": [
         6,
         18
@@ -1385,7 +1385,7 @@
     },
     {
       "quest_id": "544D303000B00001",
-      "chapter": "Iron's Spells 'n Spellbooks",
+      "chapter": "Iron's Spells",
       "position": [
         0,
         0
@@ -1493,7 +1493,7 @@
     },
     {
       "quest_id": "544D303001700001",
-      "chapter": "Just Another Witchery Remake",
+      "chapter": "Witchery (JAWR)",
       "position": [
         0,
         0
@@ -1511,7 +1511,7 @@
     },
     {
       "quest_id": "544D303001900001",
-      "chapter": "Reliquary Reincarnations",
+      "chapter": "Reliquary",
       "position": [
         0,
         0

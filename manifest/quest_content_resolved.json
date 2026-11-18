@@ -1794,7 +1794,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Read the Two Skill Systems",
       "quest_id": "544D507000100000",
       "task_id": "544D807000100000",
@@ -1814,7 +1814,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Open the Skill Interface",
       "quest_id": "544D507000200000",
       "task_id": "544D807000200000",
@@ -1834,7 +1834,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Understand Attributes",
       "quest_id": "544D507000300000",
       "task_id": "544D807000300000",
@@ -1854,7 +1854,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Experiment with Improvable Skills",
       "quest_id": "544D507000400000",
       "task_id": "544D807000400000",
@@ -1874,7 +1874,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Inspect Cooldown and Casting Perks",
       "quest_id": "544D507000500000",
       "task_id": "544D807000500000",
@@ -1894,7 +1894,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Plan for Practical Attribute Caps",
       "quest_id": "544D507000600000",
       "task_id": "544D807000600000",
@@ -1914,7 +1914,7 @@
       "stage": ""
     },
     {
-      "chapter": "Skills & Advancement",
+      "chapter": "Skills & Factions",
       "title": "Choose How to Specialize",
       "quest_id": "544D507000700000",
       "task_id": "544D807000700000",
@@ -1934,7 +1934,7 @@
       "stage": ""
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Tech Overview: Energy Without a Tech Pack",
       "quest_id": "544D508000100000",
       "task_id": "544D808000100000",
@@ -1954,7 +1954,7 @@
       "stage": "tech-intro"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Craft a Draconic Generator",
       "quest_id": "544D508001500000",
       "task_id": "544D808001500000",
@@ -1976,7 +1976,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Craft the Draconic Energy Core",
       "quest_id": "544D508001600000",
       "task_id": "544D808001600000",
@@ -1998,7 +1998,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Prepare Energy Core Stabilizers",
       "quest_id": "544D508001700000",
       "task_id": "544D808001700000",
@@ -2020,7 +2020,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Build Input and Output Pylons",
       "quest_id": "544D508001800000",
       "task_id": "544D808001800000",
@@ -2042,7 +2042,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Activate the Draconic Power Bank",
       "quest_id": "544D508001900000",
       "task_id": "544D808001900000",
@@ -2062,7 +2062,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Route FE with a Crystal",
       "quest_id": "544D508001A00000",
       "task_id": "544D808001A00000",
@@ -2084,7 +2084,7 @@
       "stage": "draconic-energy"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Regulate Power with a Flux Gate",
       "quest_id": "544D508001B00000",
       "task_id": "544D808001B00000",
@@ -2106,7 +2106,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Acquire the Draconic Reactor Core",
       "quest_id": "544D508001C00000",
       "task_id": "544D808001C00000",
@@ -2128,7 +2128,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Four Reactor Stabilizers",
       "quest_id": "544D508001D00000",
       "task_id": "544D808001D00000",
@@ -2150,7 +2150,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Build the Reactor Energy Injector",
       "quest_id": "544D508001E00000",
       "task_id": "544D808001E00000",
@@ -2172,7 +2172,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Plan Safe Reactor Containment",
       "quest_id": "544D508001F00000",
       "task_id": "544D808001F00000",
@@ -2192,7 +2192,7 @@
       "stage": "draconic-reactor"
     },
     {
-      "chapter": "A Sufficiently Advanced Magic",
+      "chapter": "Advanced Magic Tech",
       "title": "Operate a Draconic Reactor Safely",
       "quest_id": "544D508002000000",
       "task_id": "544D808002000000",
