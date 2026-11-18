@@ -27,21 +27,23 @@ def main() -> None:
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for _, mod, expected_path in selected():
+        for directory, mod, expected_path in selected():
             jar = folder / expected_path.name
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
-                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
+                z.writestr("META-INF/neoforge.mods.toml", 'license = "MIT"\n[[mods]]\nmodId = "' + mod + '"\n')
+                z.writestr("LICENSE", (directory / "LICENSE").read_bytes())
+                z.writestr("THIRD_PARTY_NOTICES.md", (directory / "THIRD_PARTY_NOTICES.md").read_bytes())
             addons.append(jar)
         verify_packaging_inputs(addons)
         # Release license regression: accept exact bundled MIT files, reject
-        # incorrect metadata, omitted/duplicate files and mismatched notices.
+        # incorrect metadata, omitted files and mismatched notices.
         for directory, mod, expected_path in selected():
             j = folder / ("license-test-" + expected_path.name)
             for case in ("valid", "wrong_license", "missing_license", "wrong_notice"):
                 with zipfile.ZipFile(j, "w") as z:
                     declared = "All Rights Reserved" if case == "wrong_license" else "MIT"
-                    z.writestr("META-INF/neoforge.mods.toml", 'license = "' + declared + '"\\n[[mods]]\\nmodId = "' + mod + '"\\n')
+                    z.writestr("META-INF/neoforge.mods.toml", 'license = "' + declared + '"\n[[mods]]\nmodId = "' + mod + '"\n')
                     if case != "missing_license":
                         z.writestr("LICENSE", (directory / "LICENSE").read_bytes())
                     notice = b"incorrect" if case == "wrong_notice" else (directory / "THIRD_PARTY_NOTICES.md").read_bytes()
