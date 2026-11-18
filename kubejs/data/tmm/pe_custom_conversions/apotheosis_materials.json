@@ -1,0 +1,37 @@
+{
+  "comment": "2026-11-18 owner-directed Gem Dust/common Cracked parity and Godforged Pearl = Mithril. Absolute dust and intermediate rarity anchors proposed on existing gold/coal/metal economy; verify owner feedback and final Mithril parity. Component-specific gem prices owned by #350, not a bare gem item anchor.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:gem_dust",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:mysterious_scrap_metal",
+        "emc_value": 144
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:timeworn_fabric",
+        "emc_value": 2304
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:luminous_crystal_shard",
+        "emc_value": 36864
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:arcane_sands",
+        "emc_value": 1179648
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:godforged_pearl",
+        "emc_value": 37753920
+      }
+    ]
+  }
+}
