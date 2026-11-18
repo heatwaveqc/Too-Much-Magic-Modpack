@@ -37,7 +37,7 @@ def main():
 
     authored = data("manifest/quest_content.json")["quests"]
     resolved = data("manifest/quest_content_resolved.json")["quests"]
-    assert len(authored) == len(resolved) == 188
+    assert len(authored) == len(resolved), "Authored/resolved quest counts must agree"
     matches = [q for q in resolved if q.get("quest_id") == "544D309000100001"]
     assert len(matches) == 1
     newbie = matches[0]
@@ -45,8 +45,10 @@ def main():
     assert newbie["reward"] == {"xp": 5, "command": "tmmnewbie admin graduate {p}"}
     assert newbie["team_reward"] is False and newbie["criterion"]["type"] == "checkmark"
     layouts = data("manifest/quest_layouts.json")
-    assert layouts["quest_count"] == 227
-    assert len(layouts["positions"]) == 227
+    assert layouts["quest_count"] == len(layouts["positions"])
+    assert len({v["quest_id"] for v in layouts["positions"]}) == layouts["quest_count"]
+    assert {q["quest_id"] for q in resolved} <= {v["quest_id"] for v in layouts["positions"]}
+    # Exact book counts are owned by validate_quests.py; this check protects graduation.
     assert sum(v["quest_id"] == "544D309000100001" for v in layouts["positions"]) == 1
     intro = read("config/ftbquests/quests/chapters/intro.snbt")
     assert intro.count('id: "544D309000100001"') == 1
@@ -90,7 +92,7 @@ def main():
         digest = hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
         assert f'file = "{path}"\nhash = "{digest}"' in idx, path
     print("PASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, Safekept disabled;")
-    print("227 total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;")
+    print(f"{layouts['quest_count']} total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;")
     print("Newbie MXP and any-path species gates in source; every Packwiz index/root SHA256 matches")
     print("SOURCE ONLY — no NeoForge boot, client/Corail tests or installed first-party JAR evidence")
 
