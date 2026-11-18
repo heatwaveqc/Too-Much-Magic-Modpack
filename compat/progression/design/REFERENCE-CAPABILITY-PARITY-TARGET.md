@@ -3,6 +3,8 @@
 **Owner direction: 2026-11-16. Status: DEVELOPMENT TARGET / DESIGN ONLY.**
 This document describes what the shared `tmm_progression` engine should **eventually be capable of expressing**, not what it currently implements and not a scope assignment for the next QA build. **No new runtime feature, mod dependency, balance value, migration, or build requirement is authorized by this target.**
 
+**2026-11-18 architecture update:** The four reference targets below remain in scope. [Unified Progression engine target](UNIFIED-PROGRESSION-ENGINE-TARGET.md) adds Tyz's ranked skill capability and JDT-inspired enhanced night/lava vision, consolidates MXP and Tyz into the engine, and sets MIT licensing. Historical references to external wallets describe the current implementation only; native mastery, item/socket/augment ownership, and the single universal MXP/SP wallet remain logically distinct.
+
 ## Goal
 
 The **single Progression engine** should ultimately have enough reusable, data-driven primitives to reproduce **all gameplay-relevant progression and enhancement behaviors** found in:
@@ -18,7 +20,7 @@ Existing mods and their native mechanics remain authoritative where installed. T
 
 ## Architectural invariant
 
-**All executable behavior belongs to `compat/progression`.** Monk, Hunter, Gilded and other disciplines remain **configuration-only** path packages: JSON/datapacks, Tyz trees and config, tags/data assets, localization and documentation. A required new proc, attribute operation, equipment condition, flight method, socket rule, or acquisition adapter must be implemented **once as a general Progression-owned handler/API**, then referenced by IDs and parameters in path data. No discipline-owned Java, KubeJS/JS or bespoke runtime scripts.
+**All executable behavior belongs to `compat/progression`.** Monk, Hunter, Gilded and other disciplines remain **configuration-only** path packages: JSON/datapacks, skill trees and config, tags/data assets, localization and documentation. A required new proc, attribute operation, equipment condition, flight method, socket rule, or acquisition adapter must be implemented **once as a general Progression-owned handler/API**, then referenced by IDs and parameters in path data. No discipline-owned Java, KubeJS/JS or bespoke runtime scripts.
 
 The desired abstraction is a typed, versioned **capability definition** describing *who owns an effect*, *how it is obtained*, *when it is active*, *what it affects*, *how it scales/stacks*, and *how it is removed or migrated*. Native Progression path ranks, Tyz/MXP rewards, persistent augments, collectible abilities, and item-bound affixes are **distinct ledgers and ownership modes**, even if they invoke the same effect primitives. Do not silently equate XP currencies.
 
@@ -49,7 +51,7 @@ The desired abstraction is a typed, versioned **capability definition** describi
 - **Data-only disciplines.** A Monk, Hunter, Gilded or future config may only select registered primitive handlers and parameters. All new reusable gameplay code lives under the Progression engine and goes through a `feature/progression-*` PR targeting `dev/progression`.
 - **Server authority and safety.** Clients request operations; the server checks source, ownership, costs, eligibility, counts, cooldowns, inventory state and valid target. Never trust client-provided point totals or arbitrary effect IDs.
 - **No pervasive polling.** Prefer gameplay events, cached state, attribute modifiers and scheduled work for persistent effects. No per-tick scans of every dropped item, inventory slot or nearby entity. Auras must use bounded cadence/range/target budgets, not spawn uncontrolled entities or repeatedly reapply duplicates.
-- **Compatibility by design.** Modded attributes/effects/equipment slots are referenced by registry IDs and tags; optional bridges should load safely when third-party mods are absent. Keep Tyz/MXP and native path XP separate unless the owner explicitly maps them.
+- **Compatibility by design.** Modded attributes/effects/equipment slots are referenced by registry IDs and tags; optional bridges should load safely when third-party mods are absent. Keep the internal universal MXP/SP wallet and native path XP distinct unless the owner explicitly maps them.
 - **Save/migration discipline.** Unique stable IDs, deterministic read/write, rollback on failed transactions, idempotent grants, reconciliation of equipment changes, and regressions for death, PvP, world reload, /reload, multiplayer and path respec are eventual requirements.
 - **Balance is data.** Stat magnitudes, slot counts, acquisition costs, rarity weights, XP curve and exclusivity are intentionally unspecified. This target grants **no** default access to flight, high luck, infinite gems, boss drops or otherwise gated powers.
 
