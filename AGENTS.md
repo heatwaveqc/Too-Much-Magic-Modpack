@@ -2,6 +2,10 @@
 
 This file governs every automated contributor and pack change.
 
+
+## Pre-stable save compatibility (owner decision, 2026-11-18)
+No persistent user worlds exist as of this decision. Until the first **stable release**, disposable QA worlds and player data may be invalidated/reset by intentional schema, ID, registry or engine changes. Do not spend work on legacy save conversion, dual schemas, Tyz rank import, or backward-compatibility bridges solely to preserve pre-stable saves. Current saves still need correct persistence across normal logout, death and server restart on a single build. Never silently delete user saves; explicitly label reset requirements. At first stable release establish versioned schema, migration and compatibility obligations. This policy does not waive source provenance, integration, testing or safe runtime boundaries.
+
 ## Progression architecture and branch ownership (owner decisions, 2026-11-16 and 2026-11-18)
 
 **Locked target (2026-11-18):** consolidate MXP and selectively reused MIT-licensed Tyz functionality into `tmm_progression`; one universal MXP/SP economy, distinct native mastery, ten declarative trees including one shared Lich tree, no bespoke composite trees. Preserve existing reference capability parity and add enhanced night/lava vision. All first-party mods target MIT with upstream license/provenance preserved. See [unified engine target](compat/progression/design/UNIFIED-PROGRESSION-ENGINE-TARGET.md). Current source/modules remain until reviewed migration and QA; do not remove dependencies or trigger builds on the strength of this design alone.
