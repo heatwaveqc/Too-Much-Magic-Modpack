@@ -187,6 +187,7 @@ public final class ProgressionEvents {
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);
+            if(player.tickCount%10==0)VisionRuntime.reconcile(player,false);
         }
     }
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
@@ -195,18 +196,21 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);
+            VisionRuntime.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
             ProgressionMenuNetwork.forget(player);
             EffectRuntime.reconcile(player);
+            VisionRuntime.reconcile(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
             BedrockRest.forget(player);
+            VisionRuntime.reconcile(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -217,6 +221,7 @@ public final class ProgressionEvents {
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);
+            VisionRuntime.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);

@@ -25,6 +25,8 @@ public final class ClientKeys {
     public static final KeyMapping TREASURE = key("treasure",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping GLIDE = key("glide",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping ORDEAL = key("ordeal",GLFW.GLFW_KEY_UNKNOWN);
+    public static final KeyMapping NIGHT_VISION=key("enhanced_night_vision",GLFW.GLFW_KEY_UNKNOWN);
+    public static final KeyMapping LAVA_VISION=key("lava_vision",GLFW.GLFW_KEY_UNKNOWN);
     private static KeyMapping key(String name,int code) {
         return new KeyMapping("key.tmm_progression."+name,
             InputConstants.Type.KEYSYM,code,CATEGORY);
@@ -36,6 +38,8 @@ public final class ClientKeys {
         event.register(TREASURE);
         event.register(GLIDE);
         event.register(ORDEAL);
+        event.register(NIGHT_VISION);
+        event.register(LAVA_VISION);
     }
     @EventBusSubscriber(modid = ProgressionMod.MOD_ID,value = Dist.CLIENT)
     public static final class Game {
@@ -54,6 +58,8 @@ public final class ClientKeys {
             send(TREASURE,"treasure");
             send(GLIDE,"glide");
             send(ORDEAL,"ordeal");
+            send(NIGHT_VISION,"enhanced_night_vision");
+            send(LAVA_VISION,"lava_vision");
         }
         private static void send(KeyMapping key,String action) {
             while (key.consumeClick()) PacketDistributor.sendToServer(new AbilityNetwork.Action(action));
