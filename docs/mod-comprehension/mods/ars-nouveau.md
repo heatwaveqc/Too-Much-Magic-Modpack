@@ -35,6 +35,7 @@ The older source-survey sections below are historical context where they differ 
 | Inventory/spell detection | [Display Case strict thresholds/filters/stale state and Spell Sensor cast-vs-resolve pulse/occlusion](ars-nouveau-pinned-detectors.md). |
 | Routing/control | [Projectile prisms, wireless Redstone Relay, Brazier Relay location/inventory and Arcane Platform](ars-nouveau-pinned-routing-controls.md). |
 | Utility jars | [Void Jar pickup filter/mana/destruction and Jar of Light relocation/state boundaries](ars-nouveau-pinned-utility-jars.md); [Mob Jar capture/release and all24native special registrations](ars-nouveau-pinned-mob-jars.md). |
+| Plant/material acquisition | [Archwood/sapling/first-pod route, Sourceberry worldgen/harvest, Magebloom seed-to-fiber and actual food effects](ars-nouveau-pinned-plants.md). |
 | Remaining native core | Other casting equipment and remaining advanced devices and full stage consolidation still need targeted binary reconciliation. |
 | Addons/pilot/interactions | Seven independent profiles; source/version gaps and quest pilot authoring/runtime crosswalk still open. No addon/client acceptance or full-parent completion inferred from core companions. |
 
@@ -48,7 +49,7 @@ The older source-survey sections below are historical context where they differ 
 | Guide/documentation version gap | Native Java documentation registration and exact recipes are now directly inspected in pinned5.13.5 JAR; older source/5.11 guide citations are historical and superseded where companions differ. Upstream tree-to-binary build identity is not asserted. |
 | Pinned version / artifact / hash | `mods/ars-nouveau.pw.toml`; `ars_nouveau-1.21.1-5.13.5.jar`; CurseForge project 401955, file 9521184; SHA-1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` |
 | Profile status | **researching** — exact native guide/glyph/ritual/Source/primary-worker/familiar companions complete; equipment/advanced devices, seven-addon and full pilot/stage consolidation remain open; gameplay acceptance separate |
-| Evidence reached | Exact pack pin/hash and twenty-eight direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
+| Evidence reached | Exact pack pin/hash and twenty-nine direct-binary companions; immutable version-aligned source survey remains context. PR #74 registry probe is separate provenance; no client/world gameplay test by this research |
 | Reviewed | 2026-11-15 |
 | Quest ownership | Proposed Magic chapter “Ars Nouveau”; addons grouped under it. See [quest chapter inventory](../../QUEST-CHAPTER-INVENTORY.md). The authored 49-quest pilot is on separate PR #74; not integrated or client-accepted. |
 
