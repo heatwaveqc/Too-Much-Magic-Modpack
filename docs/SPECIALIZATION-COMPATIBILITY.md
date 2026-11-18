@@ -27,14 +27,13 @@ For Piglich/Revenant, preserve existing path progress, equipment or hunting/muta
 
 ## Owner review decisions (2026-11-17)
 
-**New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon.
+**New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon; Werewolf + either Lich (owner denial, 2026-11-18).
 
-**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these seven pairs, with both directions undecided; the categories below record the intended design follow-up.
+**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these five pairs, with both directions undecided; the categories below record the intended design follow-up.
 
 | Concept | Pair variants | Disposition |
 |---|---:|---|
 | Monk + Vampire | 1 | CONSIDER (owner requested) |
-| Werewolf + Lich | 2 | CONSIDER |
 | Monk + Dragon (Ascendant Dragon) | 3 | ON HOLD — additive combat overlap |
 | Vampire + Werewolf (Abomination) | 1 | RESEARCH — existing narrow native dual-affliction guard, complete hybrid not approved |
 
@@ -52,7 +51,7 @@ Prior implemented/planned combinations remain unchanged. The composite-state CSV
 
 ## Review counts
 
-10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 5 are approved plans (4 one-way, 1 bidirectional), 26 are denied in both directions, 7 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
+10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 5 are approved plans (4 one-way, 1 bidirectional), 28 are denied in both directions, 5 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
 
 ## Evidence and next steps
 
