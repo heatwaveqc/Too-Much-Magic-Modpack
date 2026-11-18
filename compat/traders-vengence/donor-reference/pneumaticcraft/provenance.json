@@ -37,5 +37,31 @@
       "changes": "Renamed path only; identical Git blob."
     }
   ],
-  "excluded": "Audio not imported until specific licensing is resolved; no donor JAR or API."
+  "excluded": "Audio not imported until specific licensing is resolved; no donor JAR or API.",
+  "audio": {
+    "upstream_commit": "7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28",
+    "imported": {
+      "minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
+      "minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019"
+    },
+    "license_basis": "Upstream README blanket GPLv3 grant. Both recordings present in 2017 initial port, loop converted to mono in 2020. No separate license found for these exact files. Retain both upstream Freesound credits as precaution; exact sample mapping unconfirmed.",
+    "upstream_third_party_credits": [
+      {
+        "creator": "ThompsonMan",
+        "url": "https://freesound.org/people/ThompsonMan/sounds/237245/",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/"
+      },
+      {
+        "creator": "Crinkem",
+        "url": "https://freesound.org/people/Crinkem/sounds/481787/",
+        "license": "CC0 1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+    ],
+    "excluded": {
+      "file": "hud_init.ogg",
+      "reason": "Embedded ARTIST=Affordable Audio 4 Everyone; DESCRIPTION=Hud/Menu/Interactions ToolBox. No independent redistribution license verified. Upstream minigun_spinup aliases this unrelated recording. Use vanilla substitute, not a copy."
+    }
+  }
 }

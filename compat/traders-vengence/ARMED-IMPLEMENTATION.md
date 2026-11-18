@@ -44,3 +44,8 @@ Pinned upstream CommonConfig.java defines base_range=50 and base_damage=6; Minig
 
 ### Phase 7 — packaging gate
 Actual Trader JAR verification now rejects missing/duplicated/mismatched audited Caliber Arms resources, including original MIT/CC0 notices, on build, paths, smoke and direct packaging. The source manifest requires the exact donor SHA and a 15-file allowlist; synthetic valid fixtures and missing-license/modified-OGG negatives exercise the gate. NPC installation is scoped to Villager/WanderingTrader subtypes, not arbitrary unrelated AbstractVillager merchants.
+
+### Phase 8 — minigun audio audit and import
+- [x] Exact upstream minigun.ogg and minigun_stop.ogg copied byte-for-byte (Git blob SHA verified); upstream project GPLv3 and both separately credited free sound sources preserved. Individual Freesound sample mapping remains unconfirmed. hud_init.ogg spin-up alias excluded due to embedded third-party commercial-library credit and no verified redistribution permission; use vanilla replacement. No donor dependency.
+- [x] Combined local sounds.json adds two events; Caliber Arms audit hashes adjusted only for combined registry and provenance. Original pistol definitions/recordings untouched.
+- [ ] Client looping/stop lifecycle and vanilla spin-up event integration; fresh CI and separately authorized gameplay QA. Previous full pistol head e8f3b83 passed both quick checks.

@@ -48,5 +48,17 @@
       }
     ],
     "subtitle": "subtitles.traders_vengence.reload.pistol.slide"
+  },
+  "minigun.loop": {
+    "sounds": [
+      "traders_vengence:minigun/minigun"
+    ],
+    "subtitle": "subtitles.traders_vengence.minigun.loop"
+  },
+  "minigun.stop": {
+    "sounds": [
+      "traders_vengence:minigun/minigun_stop"
+    ],
+    "subtitle": "subtitles.traders_vengence.minigun.stop"
   }
 }

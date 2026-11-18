@@ -12,9 +12,9 @@ class CaliberArmsAssetsTest {
     private static final Map<String, String> HASHES = Map.ofEntries(
         Map.entry("META-INF/traders_vengence/caliberarms/CREDITS.md", "be2df15106e6d7444842cb1a49c3eb5c5b52d06b15dfd793ea79a37448f4570b"),
         Map.entry("META-INF/traders_vengence/caliberarms/LICENSE.txt", "756135f71454163f1b3f61f715df971de1fea55a2d91ac1e4fac97a4ffca437a"),
-        Map.entry("META-INF/traders_vengence/caliberarms/provenance.json", "407dc72b0dd416ba19d9c4e4fb0a8b0b61035e7b87fb730b0cad2eb519922249"),
+        Map.entry("META-INF/traders_vengence/caliberarms/provenance.json", "29dd2cfa8ce3cbfdb95f02a64776f4d0958d68bc762442e83b0bbe27b2c7dc58"),
         Map.entry("assets/traders_vengence/models/item/npc_pistol.json", "2f6c85fd3332ccf07b77386fcd247e1b0abfa2bf3b76cf55286176a0b9adff33"),
-        Map.entry("assets/traders_vengence/sounds.json", "7aa784c778c8c60a17814750d0412c5bc90ee0ff7a792a8bc85ee91c034b1f62"),
+        Map.entry("assets/traders_vengence/sounds.json", "93e6955c178c629ff9bf7d82327aadfbc2c2b4ca7914771d5ac06432551fa969"),
         Map.entry("assets/traders_vengence/sounds/guns/m1911/fire_1.ogg", "fa7280863cbb7579ed9aa0bd7f231994b3b06c2c37b8a7597326238e0d949f8b"),
         Map.entry("assets/traders_vengence/sounds/guns/m1911/fire_2.ogg", "1fdb4e4a01777387cd7316505db265b530a1549597c297fd566a088e8316aedb"),
         Map.entry("assets/traders_vengence/sounds/reload/pistol/mag_in_1.ogg", "f4d98c43adc0ab505b33cc8694e83595a15a36d00524cd521e08a2b49dcd9dab"),
