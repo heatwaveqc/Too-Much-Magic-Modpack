@@ -1,3 +1,11 @@
+# Latest continuation checkpoint — 2026-11-18 Unification binary entry
+
+- Native Ars consolidation and all49-node crosswalk checkpoints are pushed through cf31d3a6. Full request remains5/42source-complete,37researching; no blocker. Hourly continuation remains active.
+- Began next planned addon: exact ars_unification-1.2.23.jar recovered via pinned Modrinth URL,120451bytes/fullSHA512match;58classes fully decompiled externally at Temp/tmm-magic-research-20261116/unification-fresh. Focused profile now records direct Cut chance-result copying/tool omission and Occultism tier1default/inclusivebounds/selectedspiritmultiplier/truncation/ignoreflag. Neither bridge is yet fully traced; researching unchanged.
+- Next: Processor/ArsUnification/GenericRecipeCache/wrappers/mixins and native Cut/Crush resolution, both pinned recipient-mod endpoints, all recipe applicability classes, effective config and pilot output checks. Then six other addons, combined Ars completion review and remaining major profiles. No runtime/config/quest edits, assembly, server/client/gameplay tests, subagents or merge. Existing detailed receipt follows.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after 096bf73c
 
 - Full request unfinished: **5/42source-complete,37researching**, no hard blocker. Hourly continuation active; same worktree/branch/PR265, no subagents, research Markdown only and preserve QA/integration.
