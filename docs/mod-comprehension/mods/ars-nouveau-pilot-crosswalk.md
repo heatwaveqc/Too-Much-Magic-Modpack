@@ -65,8 +65,8 @@ Exact IDs below come from resolved manifest and are checked against generated ch
 | 44 / ans_transcribe | 544DB130002C0000 | advancement: ars_n_spells:transcribe_spell; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 60XP; irons_spellbooks:arcane_essence x8 |
 | 45 / ans_bind | 544DB130002D0000 | advancement: ars_n_spells:bind_spell; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 75XP; ars_nouveau:source_berry_roll x4 |
 | 46 / ans_cast | 544DB130002E0000 | advancement: ars_n_spells:first_cross_cast; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 125XP; minecraft:enchanted_golden_apple x1 |
-| 47 / unify_pumpkin | 544DB130002F0000 | item: farmersdelight:pumpkin_slice x4; possession | [ars-unification](ars-unification.md); full addon route pending | 35XP; farmersdelight:pumpkin_soup x2 |
-| 48 / unify_cabbage | 544DB13000300000 | item: farmersdelight:cabbage_leaf x8; possession | [ars-unification](ars-unification.md); full addon route pending | 40XP; farmersdelight:cabbage_rolls x2 |
+| 47 / unify_pumpkin | 544DB130002F0000 | item: farmersdelight:pumpkin_slice x4; possession | [ars-unification](ars-unification.md); addon source route complete, operation acceptance pending | 35XP; farmersdelight:pumpkin_soup x2 |
+| 48 / unify_cabbage | 544DB13000300000 | item: farmersdelight:cabbage_leaf x8; possession | [ars-unification](ars-unification.md); addon source route complete, operation acceptance pending | 40XP; farmersdelight:cabbage_rolls x2 |
 
 ## Coverage gaps against the researched full route
 

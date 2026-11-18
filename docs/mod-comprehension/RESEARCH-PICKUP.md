@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-18 Unification source completion
+
+- Finished pinned Unification1.2.23 source walkthrough for both installed targets: exact glyph acquisition/tiers/mana, recipient serializer/config defaults, JEI category, physical-vs-magical chance distribution/tool omission, all import/cast/failure routes, pilot47/48 and optional scope. Source-complete; **6/42complete,36researching**. Native Ars parent stays researching for six addons, then combined final review. No client/gameplay PASS.
+- **Next Ars n Spells3.3.5**: exact JAR profile, seven recipes/six guide resources, Iron's endpoint/loom-transcribe-bind-crosscast and four advancement meanings. Then Controle/Ocultas and larger Elemental/Elemancy/Additions, combined parent review, remaining majors. Do not re-inventory thirty native companions or completed Unification.
+- Refetched integration2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; four relevant pins unchanged. Scratch ars-unify-fresh,occultism-unify-fresh,fd-unify-fresh add selected recipient/default/glyph CFR classes; unification-fresh all58classes; three target artifacts plusArs in external artifacts. No blocker; hourly active; docs-only, no subagents/assembly/launch/merge. Prior receipts follow; gitlog has actual pushed head.
+
+---
+
 # Latest checkpoint — 2026-11-18 Unification import/casting and both endpoints
 
 - Continued from2cbf859c: exact addon import ordering/filtering/wrapper IDs/server-config/regex/cache and Cut batching/output consumption plus native Crush execution now mapped. Corrected original-ID and common-config prose. Both target artifacts recovered/fullpin hashverified externally: Farmer'sDelight1.3.4 SHA1 27675ddfcb8cc37e6ea1ab6c15051c7949d94657 and Occultism1.227.0 packwizSHA512.106Cut/240Crush resource JSONs read; tier and ignore-multiplier counts in profile. No gameplay evidence.

@@ -148,7 +148,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | researching | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | researching | [profile](mods/ars-ocultas.md) |
-| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
+| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | researching | [profile](mods/gaze-malum.md) |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
@@ -369,3 +369,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-18 - Ars native parent walkthrough consolidated against all30companions and [all49pilot IDs/tasks/rewards](mods/ars-nouveau-pilot-crosswalk.md). Pilot is physically source-present; PR74closed/unmerged, localvsintegrationsemanticdata identical except48positions. Native boss/Tribute endpoint source closed. Seven addon fullroutes remain before parent completion; counts5complete/37researching unchanged. No quest/runtime changes or gameplay acceptance.
 
 - 2026-11-18 — Ars Unification exact-binary import ordering/Cut batch execution/native Crush route and both hash-pinned recipe endpoints audited (106Cut/240Crush resource JSONs). Profile remains researching for final glyph acquisition/cost and recipient-default audit; counts5source-complete/37researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars Unification source-complete for two installed targets after final glyph/tier/mana acquisition, recipient serializer/multiplier, JEI and pilot audit. Important physical-vs-magical Cut probability distribution/tool difference documented. **6/42source-complete,36researching**; six Ars addon routes still open, parent researching. Runtime acceptance unrun.
