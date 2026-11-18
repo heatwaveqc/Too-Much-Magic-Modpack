@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -38,10 +38,16 @@ public final class MechanicalSpec {
         var p=fx.params();double a=fx.amountPerRank();String type=fx.type();
         if(type.equals("attribute")&&p.containsKey("max_contribution"))number(p,"max_contribution",0,0,1000000);
         if(!known(type))return;
-        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting","backstab","hit_streak","held_harvest_tier").contains(type))
+        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting","backstab","hit_streak","held_harvest_tier","vein_mining").contains(type))
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
             case "food_efficiency" -> {bounded(a,0,2);bool(p,"gold_recipes",false);}
+            case "vein_mining" -> {
+                bounded(a,0,16);scoped(fx);if(fx.weapon().isEmpty()&&!fx.emptyHand()||fx.weapon().equals("*"))throw new IllegalArgumentException("Vein mining needs a scoped tool or empty hand");
+                integer(p,"radius",6,1,8);integer(p,"max_blocks",16,1,32);integer(p,"cooldown_ticks",20,5,200);bool(p,"sneak_only",true);
+            }
+            case "ore_sense" -> {bounded(a,0,12);scoped(fx);integer(p,"interval_ticks",60,40,200);integer(p,"max_targets",8,1,16);}
+            case "villager_attraction" -> {bounded(a,0,12);scoped(fx);number(p,"speed",1,0.1,1.5);integer(p,"max_targets",4,1,8);}
             case "vanilla_xp_bonus" -> bounded(a,0,2);
             case "piglin_kinship" -> {bounded(a,0,1);bool(p,"alarm_protection",true);}
             case "fire_immunity" -> bounded(a,0,1);

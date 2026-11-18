@@ -64,5 +64,12 @@ class MechanicalSpecTest {
         assertDoesNotThrow(()->parse("{\"type\":\"food_restriction\",\"target\":\"#test:foods\",\"params\":{\"gold_recipes\":true}}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"lava_fishing_practice\"}"));
     }
+    @Test void miningAndAttractionSchemas(){
+        assertDoesNotThrow(()->parse("{\"type\":\"vein_mining\",\"target\":\"#c:ores\",\"weapon\":\"minecraft:diamond_pickaxe\",\"per_rank\":1}"));
+        assertDoesNotThrow(()->parse("{\"type\":\"vein_mining\",\"target\":\"#c:ores\",\"empty_hand\":true,\"per_rank\":1}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"vein_mining\",\"target\":\"#c:ores\",\"per_rank\":1}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ore_sense\",\"target\":\"*\",\"per_rank\":5}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ore_sense\",\"target\":\"#c:ores\",\"per_rank\":5,\"params\":{\"interval_ticks\":1}}"));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }
