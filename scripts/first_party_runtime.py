@@ -82,11 +82,13 @@ def verify_trader_irons_pin(jar, root=ROOT):
     print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
 
 def verify_packaging_inputs(addons, root=ROOT):
-    expected = {jar.name: mod for _, mod, jar in selected(root)}
+    expected = {jar.name: (directory, mod) for directory, mod, jar in selected(root)}
     if len(addons) != len(expected) or {p.name for p in addons} != set(expected):
         raise ValueError("Missing, extra or duplicate first-party runtime JAR selection")
     for jar in addons:
-        validate_jar(jar, expected[jar.name])
+        directory, mod = expected[jar.name]
+        validate_jar(jar, mod)
+        validate_jar_license(directory, jar)
 
 def main():
     p = argparse.ArgumentParser()
@@ -104,8 +106,6 @@ def main():
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
         verify_packaging_inputs(paths)
-        for directory, _, jar in rows:
-            validate_jar_license(directory, jar)
         print(os.pathsep.join(str(p) for p in paths))
     else:
         if args.mods_dir is None:
