@@ -63,6 +63,9 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         return skillEligible(player,path,skill) && test(player,new GateKey(path,skill,index));
     }
 
+    public record FoodRite(FoodRiteSpec spec,Condition<ServerPlayer> conditions){}
+    private static volatile Map<String,FoodRite> foodRites=Map.of();
+    public static Map<String,FoodRite> foodRites(){return foodRites;}
     private static volatile Map<String,TimedEnrollment> timedEnrollments=Map.of();
     public static Map<String,TimedEnrollment> timedEnrollments(){return timedEnrollments;}
 
@@ -79,6 +82,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
+        Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
         Map<String,JsonObject> experience=new HashMap<>();
@@ -115,6 +119,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
                 if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
                 var raw=element.getAsJsonObject();
+                var rite=FoodRiteSpec.parse(raw);
+                if(rite!=null)rites.put(path.id(),new FoodRite(rite,Eligibility.parse(rite.when())));
                 var timer=TimedEnrollment.parse(raw);
                 if(timer!=null)timed.put(path.id(),timer);
                 Map<GateKey,Condition<ServerPlayer>> localGates=new HashMap<>();
@@ -149,6 +155,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
+        foodRites=Map.copyOf(rites);
         gates=Map.copyOf(nextGates);
         activations=Map.copyOf(nextActivations);
         potionTriggers = Map.copyOf(triggers);

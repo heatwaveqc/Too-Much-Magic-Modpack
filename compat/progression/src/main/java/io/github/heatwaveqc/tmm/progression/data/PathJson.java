@@ -54,8 +54,9 @@ public final class PathJson {
     public static Definition.Path read(String pathId, JsonObject source) {
         id(pathId);
         if (number(source,"schema",0) != 1) throw new IllegalArgumentException("schema must be 1");
-        if (!Set.of("admin","manual","sunset","potion","automatic").contains(str(source,"enrollment","admin")))
+        if (!Set.of("admin","manual","sunset","potion","automatic","food").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
+        FoodRiteSpec.parse(source);
         PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
         HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
         HunterMutationPolicy.parse(source); // blacklist, hunger and target must be safe
@@ -200,7 +201,7 @@ public final class PathJson {
                         "magnet","heal_on_kill","heal_on_hit","critical_hit","status_on_hit","status_on_hurt",
                         "damage_at_low_health","food_efficiency","vanilla_xp_bonus","crop_bonus","ordinary_drop_bonus",
                         "virtual_fortune","virtual_looting","magic_cost_discount","hunger_efficiency",
-                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision").contains(type))
+                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack").contains(type))
                         throw new IllegalArgumentException("rank_values not supported for "+type);
                     for(int rank=1;rank<=max;rank++){
                         var effective=parsedEffect.atRank(rank);

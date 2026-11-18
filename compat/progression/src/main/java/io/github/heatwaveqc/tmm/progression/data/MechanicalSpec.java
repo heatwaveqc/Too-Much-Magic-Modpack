@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -38,10 +38,21 @@ public final class MechanicalSpec {
         var p=fx.params();double a=fx.amountPerRank();String type=fx.type();
         if(type.equals("attribute")&&p.containsKey("max_contribution"))number(p,"max_contribution",0,0,1000000);
         if(!known(type))return;
-        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting").contains(type))
+        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting","backstab").contains(type))
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
             case "food_efficiency","vanilla_xp_bonus" -> bounded(a,0,2);
+            case "experience_gain_bonus" -> {
+                bounded(a,0,2);
+                if(!fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+")||fx.selector().equals("tmm_progression:mxp"))
+                    throw new IllegalArgumentException("Native XP bonus requires explicit non-MXP system");
+            }
+            case "glide_control_bonus" -> bounded(a,0,0.1);
+            case "backstab" -> {bounded(a,0,2);number(p,"min_rear_cosine",0.5,0,1);}
+            case "counter_attack" -> {
+                bounded(a,0,20);proc(p);integer(p,"cooldown_ticks",40,1,72000);
+                number(p,"max_damage",20,0.01,100);
+            }
             case "delayed_regeneration" -> {
                 bounded(a,0,20);integer(p,"interval_ticks",20,20,200);
                 integer(p,"after_damage_ticks",80,0,72000);

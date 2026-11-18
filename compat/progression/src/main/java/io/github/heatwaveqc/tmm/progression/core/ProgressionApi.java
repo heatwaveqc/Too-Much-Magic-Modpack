@@ -114,7 +114,7 @@ public final class ProgressionApi {
         if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId) || !PathRegistry.economyEligible(player,channel.id()) || NewbieMode.isNewbie(player)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if(!ledger.get(pathId).joined())return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,xp,0));
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,io.github.heatwaveqc.tmm.progression.runtime.ExperienceBonuses.apply(player,channel.id(),xp),0));
         return true;
     }
 
@@ -177,7 +177,7 @@ public final class ProgressionApi {
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
                 if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
                 recent.put(cooldownKey,now);
-                long xp=TyzMonkBridge.bonusMonkXp(player,required,source.xp());
+                long xp=io.github.heatwaveqc.tmm.progression.runtime.ExperienceBonuses.apply(player,system.id(),TyzMonkBridge.bonusMonkXp(player,required,source.xp()));
                 next=ChannelEngine.grant(next,system,xp,0);
             }
         }
@@ -283,7 +283,7 @@ public final class ProgressionApi {
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(prior,system,xp,0));return true;
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(prior,system,io.github.heatwaveqc.tmm.progression.runtime.ExperienceBonuses.apply(player,id,xp),0));return true;
     }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);

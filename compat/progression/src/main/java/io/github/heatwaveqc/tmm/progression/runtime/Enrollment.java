@@ -66,6 +66,18 @@ public final class Enrollment {
         }
     }
 
+    /** Invoke only on completed real food consumption, before subsequent food event rewards. */
+    public static void foodFinished(ServerPlayer player,ItemStack consumed){
+        if(player.isCreative()||player.isSpectator()||consumed.isEmpty()||consumed.getFoodProperties(player)==null)return;
+        for(var entry:PathRegistry.foodRites().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()){
+            String path=entry.getKey();var rite=entry.getValue();
+            if(ProgressionApi.track(player,path).joined()||!Selectors.item(rite.spec().target(),consumed)||!rite.conditions().test(player))continue;
+            if(!ProgressionApi.join(player,path))continue;
+            if(!rite.spec().completionEvent().isEmpty())ProgressionApi.recordExternal(player,rite.spec().completionEvent());
+            player.displayClientMessage(Component.literal("Rite complete: "+path+" unlocked"),false);
+            break;
+        }
+    }
     public static void tick(ServerPlayer player) {
         if (player.tickCount % 20 == 0 && !player.isCreative() && !player.isSpectator())
             for (String candidate:PathRegistry.all().keySet())

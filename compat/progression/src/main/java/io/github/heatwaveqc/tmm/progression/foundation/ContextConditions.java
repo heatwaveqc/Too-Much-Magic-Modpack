@@ -40,7 +40,7 @@ public final class ContextConditions {
         };
     }
     public static Condition<ServerPlayer> state(String name,boolean expected){
-        if(!Set.of("sneaking","sprinting","underwater","in_lava","on_ground","sky_visible","empty_hand","unarmored").contains(name))
+        if(!Set.of("sneaking","sprinting","underwater","in_lava","on_ground","sky_visible","empty_hand","empty_hands","curios_empty","unarmored").contains(name))
             throw new IllegalArgumentException("Unknown movement/environment state");
         return p->truth(expected==switch(name){
             case "sneaking"->p.isCrouching();
@@ -50,6 +50,8 @@ public final class ContextConditions {
             case "on_ground"->p.onGround();
             case "sky_visible"->p.level().canSeeSky(p.blockPosition().above());
             case "empty_hand"->p.getMainHandItem().isEmpty();
+            case "empty_hands"->p.getMainHandItem().isEmpty()&&p.getOffhandItem().isEmpty();
+            case "curios_empty"->io.github.heatwaveqc.tmm.progression.runtime.TyzMonkBridge.emptyCurios(p);
             default->{boolean empty=true;for(var stack:p.getArmorSlots())if(!stack.isEmpty())empty=false;yield empty;}
         });
     }

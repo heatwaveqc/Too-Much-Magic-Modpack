@@ -80,14 +80,21 @@ public final class MechanicalEffects {
         double multiplier=1;
         for(var a:EffectRuntime.active(p)){
             var fx=a.effect();
-            if(!fx.type().equals("critical_hit")&&!fx.type().equals("damage_at_low_health"))continue;
+            if(!fx.type().equals("critical_hit")&&!fx.type().equals("damage_at_low_health")&&!fx.type().equals("backstab"))continue;
             if(!match(p,event.getEntity(),event.getSource(),fx))continue;
             if(fx.type().equals("critical_hit")&&roll(p,a,amount(a,1)*num(a,"chance",1,0,1)))
                 multiplier*=num(a,"multiplier",2,1,5);
             else if(fx.type().equals("damage_at_low_health")&&p.getHealth()/Math.max(1,p.getMaxHealth())<=num(a,"threshold",0.3,0.01,1))
                 multiplier*=1+amount(a,5);
+            else if(fx.type().equals("backstab")&&event.getSource().getDirectEntity()==p&&rear(p,event.getEntity(),num(a,"min_rear_cosine",0.5,0,1)))
+                multiplier*=1+amount(a,2);
         }
         if(multiplier!=1)event.setAmount((float)Math.min(1000000,event.getAmount()*Math.min(10,multiplier)));
+    }
+    private static boolean rear(ServerPlayer p,LivingEntity target,double min){
+        var look=target.getLookAngle();
+        double dx=p.getX()-target.getX(),dz=p.getZ()-target.getZ(),len=Math.hypot(dx,dz),facing=Math.hypot(look.x,look.z);
+        return len>1e-6&&facing>1e-6&&(dx*look.x+dz*look.z)/(len*facing)<=-min;
     }
     public static void postDamage(LivingDamageEvent.Post event){
         if(event.getNewDamage()<=0)return;
@@ -112,12 +119,16 @@ public final class MechanicalEffects {
             owner.isAlliedTo(attacker)||attacker instanceof TamableAnimal tame&&tame.isTame())return;
         for(var a:EffectRuntime.active(owner)){
             var fx=a.effect();
-            if(!fx.type().equals("status_on_hurt")||!Selectors.entity(fx.selector(),attacker)||
+            if(!fx.type().equals("status_on_hurt")&&!fx.type().equals("counter_attack")||!Selectors.entity(fx.selector(),attacker)||
                !EffectRuntime.sourceMatches(fx.damageTag(),source))continue;
             String delivery=fx.params().getOrDefault("delivery","any");
             if(delivery.equals("melee")&&source.getDirectEntity()!=attacker||
                delivery.equals("projectile")&&!(source.getDirectEntity() instanceof Projectile))continue;
-            if(roll(owner,a,amount(a,1)*num(a,"chance",1,0,1)))
+            if(fx.type().equals("counter_attack")){
+                // Non-player hostile direct melee only; anonymous damage cannot re-enter player-credit hooks.
+                if(!(attacker instanceof Monster)||source.getDirectEntity()!=attacker||!attacker.isAlive()||!areaAllowed(owner,attacker))continue;
+                if(roll(owner,a,num(a,"chance",1,0,1)))attacker.hurt(owner.damageSources().magic(),(float)amount(a,num(a,"max_damage",20,.01,100)));
+            }else if(roll(owner,a,amount(a,1)*num(a,"chance",1,0,1)))
                 status(fx.params().getOrDefault("recipient","self").equals("self")?owner:attacker,a);
         }
     }

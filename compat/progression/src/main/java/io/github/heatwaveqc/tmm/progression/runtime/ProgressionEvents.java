@@ -96,6 +96,7 @@ public final class ProgressionEvents {
         HunterExperience.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
+        Enrollment.foodFinished(player,event.getItem());
         ProgressionApi.recordConsumedFood(player,event.getItem());
         EffectHandlers.foodConsumed(player,event.getItem());
     }
@@ -187,14 +188,13 @@ public final class ProgressionEvents {
     }
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
+            if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
             TyzMonkBridge.tick(player);
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
-            SkillActivation.reconcile(player);
             MechanicalEffects.tick(player);
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);

@@ -186,7 +186,8 @@ public final class EffectRuntime {
             double multiplier = 1;
             for (Active a : active(defender)) {
                 Definition.Effect fx = a.effect();
-                if (fx.type().equals("damage_multiplier") && sourceMatches(fx.damageTag(),event.getSource())) {
+                if (fx.type().equals("damage_multiplier") && sourceMatches(fx.damageTag(),event.getSource()) &&
+                    (fx.selector().isEmpty()||fx.selector().equals("*")||event.getSource().getEntity() instanceof LivingEntity attacker&&Selectors.entity(fx.selector(),attacker))) {
                     multiplier *= Math.max(0,1.0 - fx.amountPerRank() * a.rank());
                 }
             }

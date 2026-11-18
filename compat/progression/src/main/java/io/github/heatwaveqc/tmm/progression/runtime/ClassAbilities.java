@@ -269,7 +269,8 @@ public final class ClassAbilities {
 
         // Monk's existing Tyz control skill improves the small thrust, not eligibility.
         double monkControl = NewbieMode.isNewbie(p) ? 0.0 : TyzMonkBridge.glideSpeedBonus(p);
-        double forwardBoost = (0.016 + monkControl * 0.04) * levelFactor;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("glide_control_bonus"))monkControl+=a.effect().amountPerRank()*a.rank();
+        double forwardBoost = (0.016 + Math.min(0.1,Math.max(0,monkControl)) * 0.04) * levelFactor;
         Vec3 heading = new Vec3(look.x / horizontalLook, 0, look.z / horizontalLook);
         Vec3 horizontal = new Vec3(velocity.x,0,velocity.z);
         // We never snap/reduce natural Elytra or firework speed; only stop adding thrust.
