@@ -1,0 +1,73 @@
+{
+  "type": "neovitae:meteor",
+  "explosion": 14,
+  "input": {
+    "tag": "c:storage_blocks/iron"
+  },
+  "layers": [
+    {
+      "fill": "minecraft:iron_ore",
+      "radius": 8,
+      "shell": "minecraft:cobblestone",
+      "weighted": [
+        {
+          "entry": "minecraft:gold_ore",
+          "weight": 30
+        },
+        {
+          "entry": "minecraft:copper_ore",
+          "weight": 200
+        },
+        {
+          "entry": "minecraft:lapis_ore",
+          "weight": 60
+        },
+        {
+          "entry": "minecraft:redstone_ore",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "additionalWeight": 1200,
+      "fill": "minecraft:stone",
+      "minWeight": 12000,
+      "radius": 14,
+      "weighted": [
+        {
+          "entry": "minecraft:iron_ore",
+          "weight": 4800
+        },
+        {
+          "entry": "minecraft:gold_ore",
+          "weight": 360
+        },
+        {
+          "entry": "minecraft:copper_ore",
+          "weight": 2400
+        },
+        {
+          "entry": "minecraft:lapis_ore",
+          "weight": 720
+        },
+        {
+          "entry": "minecraft:redstone_ore",
+          "weight": 1200
+        },
+        {
+          "entry": "#neovitae:generative_ores",
+          "weight": 1200
+        },
+        {
+          "entry": "draconicevolution:deepslate_draconium_ore",
+          "weight": 1
+        },
+        {
+          "entry": "replication:deepslate_replica_ore",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "syphon": 1000000
+}
