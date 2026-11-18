@@ -56,7 +56,7 @@ public final class ProgressionApi {
     public static boolean join(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null) return false;
+        if (path == null || channel==null || !PathRegistry.eligible(player,pathId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
         if (NewbieMode.isNewbie(player)) return false;
@@ -73,11 +73,18 @@ public final class ProgressionApi {
         return true;
     }
 
+    public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
+        var path=PathRegistry.get(pathId);
+        if(path==null || !PathRegistry.skillEligible(player,pathId,skillId)) return false;
+        Track state=track(player,pathId);
+        return ProgressionMath.buy(path,state,skillId)!=state;
+    }
+
     /** Fail-closed if the path is missing, gated, full, or short on skill points. */
     public static boolean buy(ServerPlayer player, String pathId, String skillId) {
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null) return false;
+        if (path == null || channel==null || !canBuy(player,pathId,skillId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Track before = ChannelEngine.view(ledger,path,channel);
         Track after = ProgressionMath.buy(path,before,skillId);
@@ -104,7 +111,7 @@ public final class ProgressionApi {
         if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !channel.earnsFrom(pathId)) return false;
+        if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Track before = ChannelEngine.view(ledger,path,channel);
         if (!before.joined()) return false;
@@ -159,7 +166,7 @@ public final class ProgressionApi {
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
             var channel=PathRegistry.channel(path.id());
-            if(channel==null) continue;
+            if(channel==null || !PathRegistry.eligible(player,path.id())) continue;
             Track initial=ChannelEngine.view(next,path,channel);
             Track state=initial;
             if (!state.joined()) continue;

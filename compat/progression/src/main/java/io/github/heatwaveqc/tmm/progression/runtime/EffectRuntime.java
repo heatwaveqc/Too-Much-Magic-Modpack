@@ -50,13 +50,13 @@ public final class EffectRuntime {
         List<Active> out = new ArrayList<>();
         for (Definition.Path path : PathRegistry.all().values()) {
             Track track = ProgressionApi.track(player,path.id());
-            if (!track.joined()) continue;
+            if (!track.joined() || !PathRegistry.eligible(player,path.id())) continue;
             for (Definition.Skill skill : path.skills()) {
                 int rank = track.skillRank(skill.id());
                 if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
                     Definition.Effect effect = skill.effects().get(n);
-                    if (eligible(player,effect,track)) {
+                    if (PathRegistry.effectEligible(player,path.id(),skill.id(),n) && eligible(player,effect,track)) {
                         String id = path.id().replace(':','/') + "/" +
                             skill.id().replace(':','/') + "/" + n;
                         out.add(new Active(id,effect,rank));

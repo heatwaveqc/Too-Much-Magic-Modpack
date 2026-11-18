@@ -143,7 +143,7 @@ public final class ProgressionMenuNetwork {
             item.addProperty("auto", !skill.autoRanks().isEmpty());
             item.addProperty("price", skill.price(owned));
             item.addProperty("choice_group", skill.choiceGroup());
-            item.addProperty("buyable", ProgressionMath.buy(path, state, skill.id()) != state);
+            item.addProperty("buyable", ProgressionApi.canBuy(player,pathId,skill.id()));
             item.add("requires", strings(skill.requiresSkills()));
             item.add("requires_any", strings(skill.requiresAnySkills()));
             item.add("milestones", strings(skill.requiresMilestones()));
