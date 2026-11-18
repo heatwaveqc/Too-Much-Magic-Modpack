@@ -1,3 +1,15 @@
+# Latest continuation checkpoint - 2026-11-18 after 096bf73c
+
+- Full request unfinished: **5/42source-complete,37researching**, no hard blocker. Hourly continuation active; same worktree/branch/PR265, no subagents, research Markdown only and preserve QA/integration.
+- **Native parent consolidation done**: rewrote ars-nouveau.md around current30exactcompanions, full Guide->Novice/glyph/Source/workshop->Wilden/Tribute->Archmage/Tier3 route, optional branches, typed economies and remaining7addon scope. Removed contradictory82glyph/Patchouli/oldspelllimits/missing-artifact/oldpilotstatus prose. All30pinnedcompanion links verified. Parent stillresearching because sevenaddon fullroutes remain.
+- Added **ars-nouveau-pilot-crosswalk.md** mapping all49stablequestIDs/criteria/rewards/teaching stages, actual canonical/resolved/generated source and12nativeadvancementJSONs. IMPORTANT: Pilot is **already source-present** in checkout and fetched integration; PR74closedunmerged(head6af5ed27b53c33a153e0a7c4c2d2266f70e5b9f2), so old “onlyonPR/notintegrated” claim wrong. Localvsintegrationpilot differ **onlyposition48rows**, allothersemantics same. Preserve latest layout and don'tregeneratequests.49nodes=31item+17adv+1checkmark;2750XP,48itemrewards;11nativeadvancementsinventory_changed. Addon4customadv meanings stillneedexactbinaryaudit.
+- Added mandatory boss endpoint evidence in ritual companion: nativeHunter/Guardian/Stalker loot1Horn/Spike/Wing; WildenChimera Java death-loot spawnsTribute/extendedlifetime, quarterhealth phase gates/60tickswap/effectclear/nearbylaunch and defensive/immunity handling. No bossfarmorlethalphaseloopholeacceptance; finishfight+collectactualTributebeforeupgrade.
+- **Next priority: seven addon exact-JAR fullroutes**, independently profiled and parentlinked. Suggested efficient start ArsUnification (noJSONrecipes but activeFarmer'sDelightCut+OccultismCrush bridges), then 'nSpells/Controle/Ocultas, largerElemental/Elemancy/Additions. Both ends and acquisition/control/cost/failure/pilotcrosswalk needcoverage; native30companions shouldn't be reinventoried. Afterallseven close, finalparentcoverage/statusdecision; othermajorprofilesremain37researching.
+- SameexternalArs5.13.5JARSHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3; freshCFRtree nowWildenChimera+inners. Remainingartifactrecoveryfromexactpin/CDN if Prismmissing alreadyauthorized. No accessblocker. Metadata/preflight priorreceipts separate; noassembly/server/client/gameplaytests.
+- ValidationPASS python scripts/validate_ars_quest_pilot.py(49nodes/7addons/personalrewards/acyclic;editorialrepeatedpayoutreport),UTF8/changedlinks/docs-onlyscope/whitespace,all30companionlinks,49crosswalkIDs andsemanticcomparison. Latestintegration2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae. Commits8405f881/096bf73c pluscheckpoint pushedaftercommit, PRnativeconsolidation; inspectgitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after 8fe8bdba
 
 - Full research unfinished: **5/42source-complete,37researching**, no hard blocker. Hourly continuation active. Same worktree/branch/PR265; no subagents, Markdown only, preserve QA/integration.
