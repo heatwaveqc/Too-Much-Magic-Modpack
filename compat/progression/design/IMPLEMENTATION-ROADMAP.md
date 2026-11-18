@@ -7,7 +7,7 @@ Updated 2026-11-18. Owner requested durable batch estimates before Batch 5. This
 | 2 | Absorb MXP hooks, growth/dedup, configuration and APIs; cutover later | Medium | Source port; CI passed; legacy guard remains |
 | 3 | Generalize existing Monk/Hunter hooks, enrollment, computed XP, mutation state | Large | Partial; 5569fce follow-up needs CI |
 | 4 | Epiphany-inspired graph UI, snapshots, purchase/respec, named balances | Medium | First implementation; CI passed; client QA pending |
-| 5 | Reusable mechanical effects from permissive donors and independent code: bounded magnet, caps, status/reaction/area primitives, additional conditions, common skill effects; activate donor vision hooks if feasible | Large (2–4 source slices) | Starting |
+| 5 | Reusable mechanical effects from permissive donors and independent code: bounded magnet, caps, status/reaction/area primitives, additional conditions, common skill effects; activate donor vision hooks if feasible | Large (2–4 source slices) | Three source slices committed; mechanical and vision CI passed; contextual follow-up pending CI; remaining parity gaps |
 | 6 | Expand optional magic adapters (pool/cost/regen/potency/other cast properties), provider form conditions, dietary gates; Psi and JAWR debit verification | Large (2–4 slices) | Planned |
 | 7 | Oritech-style research/install/uninstall, toggles and Everlasting-style rank ownership, collectible/transferable abilities; generic owner lifecycle and cost transactions | Very large (3–5 slices) | Planned |
 | 8 | Apotheosis/Astral-style sockets, weighted affixes/rarity/facets and gear/perk ownership; auditable rolls and transactional changes | Very large (3–5 slices) | Planned |
@@ -20,3 +20,6 @@ Estimates are relative implementation effort, not elapsed time or an assertion t
 - Branch: feature/progression-channel-integration-2026-11-18; PR #347; parent revision b95b7413b57560970ab58400499e6aa6bae79696.
 - Verified prior head ccdd123877d0737ddbe105a1b3bd5269679a9c7c: three relevant workflows passed. Later mutation/eligibility changes require separate verification.
 - Next: inspect EffectHandlers, EffectRuntime, ProgressionEvents, donor inventory and foundation files. Implement and test in independently reviewable commits. Update this roadmap with actual results rather than treating source compilation as gameplay acceptance.
+
+## Batch 5 checkpoint
+See [BATCH-5-MECHANICAL-HANDLERS.md](BATCH-5-MECHANICAL-HANDLERS.md). Implementation revisions: 63606ac (mechanics, green), 502bb08 (vision, green), 9dbc916 (contextual eligibility/reactive status/area budgets, verify CI). Prior 1–4 follow-up b95b741 is green. No tree assignment, runtime cutover or approved build. Resume by checking PR #347 HEAD and CI, then either finish mechanical parity gaps or begin Batch 6 magic adapters with remaining gaps tracked.
