@@ -1,0 +1,122 @@
+{
+  "comment": "Owner-approved 2026-11-18. Replica base 8190, Thallasium and Iesnium base 576, Hellforged base 5760. Observed tags/IDs per runtime survey #348; Replica nugget tag supplied by #346. Preserve distinct Prismatic Demonite and intermediate fractions; only confirmed material forms.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/iesnium",
+        "emc_value": 576
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/iesnium",
+        "emc_value": 576
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:nuggets/iesnium",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:raw_materials/iesnium",
+        "emc_value": 3456
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ores/iesnium",
+        "emc_value": 10368
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/iesnium",
+        "emc_value": 5184
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/raw_iesnium",
+        "emc_value": 31104
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:thallasium_ingot",
+        "emc_value": 576
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:thallasium_nugget",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:thallasium_raw",
+        "emc_value": 3456
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:thallasium_ore",
+        "emc_value": 10368
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:thallasium_block",
+        "emc_value": 5184
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/hellforged",
+        "emc_value": 5760
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/hellforged",
+        "emc_value": 5760
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:raw_materials/hellforged",
+        "emc_value": 34560
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ores/hellforged",
+        "emc_value": 103680
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/hellforged",
+        "emc_value": 51840
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/raw_hellforged",
+        "emc_value": 311040
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/replica",
+        "emc_value": 8190
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:nuggets/replica",
+        "emc_value": 910
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:raw_materials/replica",
+        "emc_value": 49140
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ores/replica",
+        "emc_value": 147420
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/replica",
+        "emc_value": 73710
+      }
+    ]
+  }
+}
