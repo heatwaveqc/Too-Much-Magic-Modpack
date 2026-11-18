@@ -1,0 +1,4 @@
+# Partial Capturing parity baseline; regenerate from effective entity tag before integration.
+# Reliquary 2.0.85 uses explicit entity IDs, not #tag references.
+[items.mobCharm]
+entityBlockList = ["minecraft:elder_guardian","minecraft:ender_dragon","minecraft:warden","minecraft:wither"]
