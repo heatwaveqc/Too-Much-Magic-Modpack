@@ -1,4 +1,5 @@
 {
+  "xp_channel": "tmm_progression:hunter",
   "schema": 1,
   "exclusive_group": "tmm_progression:human_disciplines",
   "rank_xp": [

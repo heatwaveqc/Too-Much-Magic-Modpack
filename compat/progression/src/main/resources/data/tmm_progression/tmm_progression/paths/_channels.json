@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "channels": {
+    "tmm_progression:mxp": {
+      "type": "mxp",
+      "growth_factor": 1.02
+    },
+    "tmm_progression:monk": {
+      "type": "path_curve",
+      "source_path": "tmm_progression:monk"
+    },
+    "tmm_progression:hunter": {
+      "type": "path_curve",
+      "source_path": "tmm_progression:hunter"
+    }
+  }
+}

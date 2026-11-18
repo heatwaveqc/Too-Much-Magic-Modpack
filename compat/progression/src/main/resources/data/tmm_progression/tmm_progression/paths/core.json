@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "enrollment": "automatic",
+  "xp_channel": "tmm_progression:mxp",
+  "rank_xp": [
+    0
+  ],
+  "max_level": 1,
+  "points_per_rank": 0,
+  "activities": [],
+  "milestones": [],
+  "skills": []
+}
