@@ -37,7 +37,7 @@ Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from dr
 - Confirmed villager-summoned iron golems carry the PneumaticCraft minigun
   model/texture with 50-block range, 6 HP per tick attempted after spin-up.
   Normal vanilla hurt resistance applies. Player-built/unknown golems remain
-  melee defenders. Llamas retain their vanilla spit. Original PneumaticCraft positional firing loop and wind-down audio are bundled; spin-up uses a vanilla cue because the donor HUD clip's separate redistribution license is unverified.
+  melee defenders. Llamas retain their vanilla spit. Original PneumaticCraft positional firing loop and wind-down audio are bundled; spin-up uses a credited 1.19-second CC0 excerpt by SamsterBirdies (the donor HUD clip's redistribution license remains unverified).
 - **Automatic pardon:** a fresh application or renewal of Minecraft's
   `Hero of the Village` status effect clears that player's saved blacklist
   entry permanently; an existing Hero buff is not a blanket immunity to

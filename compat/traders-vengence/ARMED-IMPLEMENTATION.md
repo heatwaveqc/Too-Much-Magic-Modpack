@@ -56,3 +56,6 @@ Actual Trader JAR verification now rejects missing/duplicated/mismatched audited
 
 ### Phase 10 — minigun audio packaging gate
 The runtime validator requires the two exact audited OGG Git blob identities and exact packaged bytes; excludes the uncleared HUD recording. Synthetic packaging tests cover missing, modified, and uncleared audio. No live game boot or distribution assembly performed.
+
+### Phase 11 — owner-approved CC0 replacement
+- [x] User supplied audio from the credited Pixabay mirror of SamsterBirdies' CC0 original minigun.ogg; verified original license and source credits. Trimmed 0.055–1.245 s, mono Vorbis, preserved natural speed; verified Git blob hash on upload. Replaced vanilla piston cue with new registered spin-up event, subtitle, pinned packaging hash, missing-audio regression, combined sound manifest and test hashes. No change to game spin timing or original PneumaticCraft firing/wind-down. See THIRD_PARTY_NOTICES.md for provenance. Prior full audio head 8205cbf passed quick and bootstrap checks; new head requires fresh checks. Gameplay testing remains unauthorized.

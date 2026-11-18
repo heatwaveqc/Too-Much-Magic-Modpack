@@ -62,6 +62,21 @@
     "excluded": {
       "file": "hud_init.ogg",
       "reason": "Embedded ARTIST=Affordable Audio 4 Everyone; DESCRIPTION=Hud/Menu/Interactions ToolBox. No independent redistribution license verified. Upstream minigun_spinup aliases this unrelated recording. Use vanilla substitute, not a copy."
+    },
+    "spinup_replacement": {
+      "source": "https://freesound.org/people/SamsterBirdies/sounds/560508/",
+      "credit": "SamsterBirdies; scorepion; pgi",
+      "license": "CC0-1.0",
+      "mirror": "https://pixabay.com/sound-effects/film-special-effects-minigun-36769/",
+      "input_sha256": "fe1d17dd7ba7279b2274143095eccaaf9a3d5e51dff8882fd489caffdee015ac",
+      "trim_seconds": [
+        0.055,
+        1.245
+      ],
+      "duration_seconds": 1.19,
+      "format": "mono Ogg Vorbis 24000 Hz",
+      "output_sha256": "30f6ae6ca5fc8fb608f0382fcb17a525b9dc66950fb568ae54c3ace1118b5b19",
+      "git_blob": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed"
     }
   }
 }
