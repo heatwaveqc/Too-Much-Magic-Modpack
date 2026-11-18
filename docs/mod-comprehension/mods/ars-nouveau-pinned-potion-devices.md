@@ -1,6 +1,6 @@
 # Ars Nouveau pinned potion storage and delivery
 
-Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`. CFR0.152 evidence: PotionJar/Tile/Data, PotionFlask/MultiPotionContents, PotionFlaskRecipe, FlaskCannon (Splash/Lingering inner classes), PotionLauncherData, AlchemistsCrown, PotionDiffuserBlock/Tile, PotionProviderRegistry (anonymous default provider), PotionUtil, PacketConsumePotion/SetLauncher, ItemsRegistry inner Flask variants, ModPotions, Config/Documentation and recipes/locale. [Parent](ars-nouveau.md), [Wixie brewing](ars-nouveau-pinned-wixie.md), [Starbuncle potion transport](ars-nouveau-pinned-starbuncle.md), [Apparatus](ars-nouveau-pinned-crafting.md). Native potion effect implementation bodies remain a separate final audit; this companion establishes storage/delivery and acquisition, not all effect behavior. No runtime/UI/economy acceptance.
+Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`. CFR0.152 evidence: PotionJar/Tile/Data, PotionFlask/MultiPotionContents, PotionFlaskRecipe, FlaskCannon (Splash/Lingering inner classes), PotionLauncherData, AlchemistsCrown, PotionDiffuserBlock/Tile, PotionProviderRegistry (anonymous default provider), PotionUtil, PacketConsumePotion/SetLauncher, ItemsRegistry inner Flask variants, ModPotions, Config/Documentation and recipes/locale. [Parent](ars-nouveau.md), [Wixie brewing](ars-nouveau-pinned-wixie.md), [Starbuncle potion transport](ars-nouveau-pinned-starbuncle.md), [Apparatus](ars-nouveau-pinned-crafting.md). [Brewing/effect companion](ars-nouveau-pinned-potion-effects.md) traces all19registered statuses and18potion definitions; this file establishes storage/delivery. No runtime/UI/economy acceptance.
 
 ## Build references and exact acquisition
 
@@ -50,7 +50,7 @@ Client smoke and synchronized state are not server operation proof; tick doesn't
 
 ## Native brewing entry routes and remaining effect audit
 
-ModPotions registers Water+Abjuration Essence -> Awkward; Awkward+Magebloom -> Spell Damage; Awkward+Sourceberry Bush -> Mana Regeneration; Awkward+Mendosteen/Bombegranate/Frostaya/Bastion Pod -> Recovery/Blasting/Freezing/Shielding. Each six family has Glowstone strong and Redstone long variant. Also Water+Wilden Wing -> vanilla Leaping; Horn -> Strength; Spike -> Long Water Breathing. These are Java brewing registrations, not missing JSON recipes; use JEI/brewing/Wixie references. Pod farming and actual Recovery/Blasting/Freezing/Shielding effect consumers/config formulas remain to reconcile before calling full potion subsystem complete. No generic potion-name inference about damage/defense is made here.
+ModPotions registers Water+Abjuration Essence -> Awkward; Awkward+Magebloom -> Spell Damage; Awkward+Sourceberry Bush -> Mana Regeneration; Awkward+Mendosteen/Bombegranate/Frostaya/Bastion Pod -> Recovery/Blasting/Freezing/Shielding. Each six family has Glowstone strong and Redstone long variant. Also Water+Wilden Wing -> vanilla Leaping; Horn -> Strength; Spike -> Long Water Breathing. These are Java brewing registrations, not missing JSON recipes; use JEI/brewing/Wixie references. Pod farming remains a separate acquisition branch; actual effect consumers/config formulas are now traced in the brewing/effect companion. No generic potion-name inference about damage/defense is made here.
 
 ## Quest and acceptance handoff
 
