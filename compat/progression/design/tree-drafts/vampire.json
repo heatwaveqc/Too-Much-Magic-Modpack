@@ -1,0 +1,1185 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:vampire",
+  "title": "Vampire",
+  "legacy_eligibility": "JAWR verified vampire state",
+  "notes": [
+    "One canonical blood owner; no dual-pool double gains or duplicate feeding rewards.",
+    "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Bloodcraft",
+      "source": {
+        "id": "tmm_vampire_efficient_feeding",
+        "label": "Efficient Feeding",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_vampire_efficient_feeding",
+        "stage": "entry",
+        "label": "Efficient Feeding",
+        "effect": "Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions.",
+        "method": "canonical blood transaction adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "native blood gain receipt"
+      }
+    },
+    {
+      "lane": "Bloodcraft",
+      "source": {
+        "id": "tmm_vampire_deep_reservoir",
+        "label": "Deep Reservoir",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Increase one authoritative usable blood capacity, not two independent HUD pools.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_efficient_feeding"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_deep_reservoir",
+        "stage": "advanced",
+        "label": "Deep Reservoir",
+        "effect": "Increase one authoritative usable blood capacity, not two independent HUD pools.",
+        "method": "single-pool capacity adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_efficient_feeding"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "JAWR blood capacity"
+      }
+    },
+    {
+      "lane": "Bloodcraft",
+      "source": {
+        "id": "tmm_vampire_crimson_renewal",
+        "label": "Crimson Renewal",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Trade a real measured blood debit for bounded emergency healing.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_deep_reservoir"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_crimson_renewal",
+        "stage": "mastery",
+        "label": "Crimson Renewal",
+        "effect": "Trade a real measured blood debit for bounded emergency healing.",
+        "method": "blood/heal hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_deep_reservoir"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "actual blood debit and healing"
+      }
+    },
+    {
+      "lane": "Nightstalker",
+      "source": {
+        "id": "tmm_vampire_nocturnal_vision",
+        "label": "Nocturnal Vision",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 1,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Better low-light perception with native-sunlight penalties untouched.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_vampire_nocturnal_vision",
+        "stage": "entry",
+        "label": "Nocturnal Vision",
+        "effect": "Better low-light perception with native-sunlight penalties untouched.",
+        "method": "vision hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "enhanced_night_vision"
+      }
+    },
+    {
+      "lane": "Nightstalker",
+      "source": {
+        "id": "tmm_vampire_shadow_stalker",
+        "label": "Shadow Stalker",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Short stealth advantage in darkness; avoid invisibility in full daylight.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_nocturnal_vision"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_shadow_stalker",
+        "stage": "advanced",
+        "label": "Shadow Stalker",
+        "effect": "Short stealth advantage in darkness; avoid invisibility in full daylight.",
+        "method": "light/stealth hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_nocturnal_vision"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "player_state; detection range reduction"
+      }
+    },
+    {
+      "lane": "Nightstalker",
+      "source": {
+        "id": "tmm_vampire_bat_mastery",
+        "label": "Bat Mastery",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Improve native bat-form controls/efficiency after that native ability is acquired.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_shadow_stalker"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_bat_mastery",
+        "stage": "mastery",
+        "label": "Bat Mastery",
+        "effect": "Improve native bat-form controls/efficiency after that native ability is acquired.",
+        "method": "verified native-form hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_shadow_stalker"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "native bat movement"
+      }
+    },
+    {
+      "lane": "Predation",
+      "source": {
+        "id": "tmm_vampire_fang_training",
+        "label": "Fang Training",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Scale only verified vampire bite/melee attacks.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_vampire_fang_training",
+        "stage": "entry",
+        "label": "Fang Training",
+        "effect": "Scale only verified vampire bite/melee attacks.",
+        "method": "combat native-tag hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_bonus; native bite attribution"
+      }
+    },
+    {
+      "lane": "Predation",
+      "source": {
+        "id": "tmm_vampire_measured_feast",
+        "label": "Measured Feast",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Limited post-kill blood recovery from eligible kills, with transaction deduplication.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_fang_training"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_measured_feast",
+        "stage": "advanced",
+        "label": "Measured Feast",
+        "effect": "Limited post-kill blood recovery from eligible kills, with transaction deduplication.",
+        "method": "kill/blood hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_fang_training"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "native blood gain receipt"
+      }
+    },
+    {
+      "lane": "Predation",
+      "source": {
+        "id": "tmm_vampire_blood_duelist",
+        "label": "Blood Duelist",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Focused single-target bonuses under low blood; prevent intentional zero-cost loops.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_measured_feast"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_blood_duelist",
+        "stage": "mastery",
+        "label": "Blood Duelist",
+        "effect": "Focused single-target bonuses under low blood; prevent intentional zero-cost loops.",
+        "method": "combat-state hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_measured_feast"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_bonus; low blood predicate"
+      }
+    },
+    {
+      "lane": "Undead Constitution",
+      "source": {
+        "id": "tmm_vampire_pale_resilience",
+        "label": "Pale Resilience",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Bounded poison/disease-type mitigation where the source system allows it.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_vampire_pale_resilience",
+        "stage": "entry",
+        "label": "Pale Resilience",
+        "effect": "Bounded poison/disease-type mitigation where the source system allows it.",
+        "method": "damage/condition adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_multiplier, status_immunity; partial status resistance needs duration hook"
+      }
+    },
+    {
+      "lane": "Undead Constitution",
+      "source": {
+        "id": "tmm_vampire_sunshroud",
+        "label": "Sunshroud",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Short resource-funded sunlight resistance; never erase core daylight tradeoffs.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_pale_resilience"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_sunshroud",
+        "stage": "advanced",
+        "label": "Sunshroud",
+        "effect": "Short resource-funded sunlight resistance; never erase core daylight tradeoffs.",
+        "method": "sunlight event bridge",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_pale_resilience"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "native sunlight and blood debit"
+      }
+    },
+    {
+      "lane": "Undead Constitution",
+      "source": {
+        "id": "tmm_vampire_elder_presence",
+        "label": "Elder Presence",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Bounded defensive/control aura with cooldown, not full charm immunity.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_vampire_sunshroud"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_vampire_elder_presence",
+        "stage": "mastery",
+        "label": "Elder Presence",
+        "effect": "Bounded defensive/control aura with cooldown, not full charm immunity.",
+        "method": "area ability",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_vampire_sunshroud"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, status_pulse; blood cost"
+      }
+    },
+    {
+      "lane": "Retained Vampire Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_vampire_blood_thrift",
+        "label": "Blood Thrift",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "entry",
+        "effect": "Reduce only real JAWR blood expenditure/hunger cost on verified committed actions.",
+        "reference_basis": "capped_blood_cost_discount",
+        "notes": [
+          "Maximum actual discount 25%; never zero positive blood payment; Core Thrift cannot double discount."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "JAWR actual spend discount"
+      }
+    },
+    {
+      "lane": "Retained Vampire Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_vampire_predatory_finesse",
+        "label": "Predatory Finesse",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Blood-funded vampire-specific melee attack speed, not spell casting speed.",
+        "reference_basis": "verified_melee_attack_speed",
+        "notes": [
+          "JAWR state and real blood debit gate."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, attribute; blood debit"
+      }
+    },
+    {
+      "lane": "Retained Vampire Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_vampire_night_runner",
+        "label": "Night Runner",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Improved vampire walking/running mobility in darkness; no universal free speed.",
+        "reference_basis": "pre_skill_vampire_movement_speed",
+        "notes": [
+          "Retains daylight weakness."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Retained Vampire Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_vampire_crimson_surge",
+        "label": "Crimson Surge",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Blood-paid high-stage predatory burst, supplementing Blood Regent without minions.",
+        "reference_basis": "bounded_damage_and_mobility_burst",
+        "notes": [
+          "No TeamLapen faction lord or summon-pet mechanics."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, attribute; blood debit"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "bloodlust",
+        "label": "Bloodlust",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "legacy-rehome",
+        "effect": "Killing a hostile mob regenerates {health_percentage}% of its max health",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native handler heals based on slain enemy max HP; must not bypass canonical blood costs or undead recovery policy"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_vampire",
+        "native_max_levels": 4,
+        "native_sp_total": 43,
+        "behavior_class": "BloodlustEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "heal_on_kill"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Blood Regent",
+        "effect": "Blood-funded high-tier predatory stance requiring advanced native vampire progression.",
+        "status": "concept_only",
+        "id": "tmm_vampire_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_vampire_crimson_renewal",
+            "tmm_vampire_bat_mastery",
+            "tmm_vampire_blood_duelist",
+            "tmm_vampire_elder_presence"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_vampire_deep_reservoir",
+            "tmm_vampire_shadow_stalker",
+            "tmm_vampire_measured_feast",
+            "tmm_vampire_sunshroud"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": [
+    {
+      "id": "tmm_vampire_efficient_feeding",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "entry",
+      "displayName": "Efficient Feeding",
+      "description": "Increases blood actually obtained from legitimate JAWR feeding transactions.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_bite_blood_gain",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_thrift",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "advanced",
+      "displayName": "Blood Thrift",
+      "description": "Reduces actual JAWR blood expenditures; never grants free casts or a second discount.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_blood_debit",
+      "skillPrerequisites": [
+        "tmm_vampire_efficient_feeding"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_deep_reservoir",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "advanced",
+      "displayName": "Deep Reservoir",
+      "description": "Increases JAWR's authoritative blood maximum while preserving fill fraction.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_blood_capacity",
+      "skillPrerequisites": [
+        "tmm_vampire_efficient_feeding"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_crimson_renewal",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Bloodcraft",
+      "stage": "mastery",
+      "displayName": "Crimson Renewal",
+      "description": "Actively exchange verified blood payment for bounded hearts restored.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6
+      ],
+      "unit": "health points",
+      "effect": "jawr_blood_heal",
+      "skillPrerequisites": [
+        "tmm_vampire_blood_thrift"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_nocturnal_vision",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "entry",
+      "displayName": "Nocturnal Vision",
+      "description": "Improves night visibility beyond verified JAWR base vision without x-ray.",
+      "maximumLevel": 3,
+      "prices": [
+        1,
+        1,
+        1
+      ],
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "unit": "stages",
+      "effect": "jawr_night_vision",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_shadow_stalker",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "advanced",
+      "displayName": "Shadow Stalker",
+      "description": "Reduce enemy detection only while in valid darkness and vampire state.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_darkness_stealth",
+      "skillPrerequisites": [
+        "tmm_vampire_nocturnal_vision"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_sight",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "advanced",
+      "displayName": "Blood Sight",
+      "description": "Bounded short-range target awareness on cooldown; never global wallhack.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        6,
+        8,
+        10
+      ],
+      "unit": "blocks",
+      "effect": "jawr_predatory_sense",
+      "skillPrerequisites": [
+        "tmm_vampire_nocturnal_vision"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_bat_mastery",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Nightstalker",
+      "stage": "mastery",
+      "displayName": "Bat Mastery",
+      "description": "Improve controls/endurance only after JAWR native bat form is earned.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "percent",
+      "effect": "jawr_bat_mastery",
+      "skillPrerequisites": [
+        "tmm_vampire_shadow_stalker"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_fang_training",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "entry",
+      "displayName": "Fang Training",
+      "description": "Boost only confirmed JAWR vampire bite damage, not all weapons and spells.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_qualified_bite_damage",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_duelist",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "advanced",
+      "displayName": "Blood Duelist",
+      "description": "Bounded melee bonus when authoritative blood is below a real threshold.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_low_blood_melee",
+      "skillPrerequisites": [
+        "tmm_vampire_fang_training"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_night_rush",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "advanced",
+      "displayName": "Night Rush",
+      "description": "Small extra melee/movement burst at night, not free permanent speed.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9
+      ],
+      "unit": "percent",
+      "effect": "jawr_nocturnal_mobility",
+      "skillPrerequisites": [
+        "tmm_vampire_fang_training"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_blood_regent",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Predation",
+      "stage": "capstone",
+      "displayName": "Blood Regent",
+      "description": "Late predatory stance: blood-paid offensive boost with cooldown; no minions.",
+      "maximumLevel": 1,
+      "prices": [
+        5
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_blood_funded_stance",
+      "skillPrerequisites": [
+        "tmm_vampire_blood_duelist"
+      ],
+      "externalGate": "jawr_native_end_milestone_and_late_boss",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "additionalServerPrerequisites": [
+        "tmm_vampire_bat_mastery",
+        "tmm_vampire_elder_presence"
+      ],
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_pale_resilience",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "entry",
+      "displayName": "Pale Resilience",
+      "description": "Reduce classified environmental/physical damage; never negate holy/silver vulnerabilities.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_incoming_damage_mitigation",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_sunshroud",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "advanced",
+      "displayName": "Sunshroud",
+      "description": "Short blood-funded sunlight resistance that preserves JAWR burning and gear value.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        10,
+        15,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_sun_partial_mitigation",
+      "skillPrerequisites": [
+        "tmm_vampire_pale_resilience"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_elder_presence",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "mastery",
+      "displayName": "Elder Presence",
+      "description": "Bounded defensive disorientation pulse; no minion summons, raids or domination.",
+      "maximumLevel": 1,
+      "prices": [
+        4
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_defensive_control",
+      "skillPrerequisites": [
+        "tmm_vampire_sunshroud"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_vampire_damage_limiter",
+      "category": "tmm_vampire",
+      "form": "vampire",
+      "lane": "Undead Constitution",
+      "stage": "advanced",
+      "displayName": "Damage Limiter",
+      "description": "Short blood-paid emergency mitigation with long cooldown, not invulnerability.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        10,
+        15,
+        20
+      ],
+      "unit": "percent",
+      "effect": "jawr_emergency_damage_cap",
+      "skillPrerequisites": [
+        "tmm_vampire_pale_resilience"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    }
+  ]
+}

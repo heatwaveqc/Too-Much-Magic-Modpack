@@ -1,0 +1,886 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:hunter",
+  "title": "Hunter",
+  "legacy_eligibility": "standalone Hunter progression; cross-form exclusivity not assumed",
+  "notes": [
+    "Hunter purchases never require vampire, wolf, or lich powers.",
+    "Voluntary hunter-replacement ceremony suspends these effects and retains historical ranks for later valid return.",
+    "Stock Sunder Armor DAMAGES enemy armor; it is not the requested reduction in durability lost from the Hunter's own equipment.",
+    "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Quarry Lore & Tracking",
+      "source": {
+        "id": "tmm_hunter_monster_lore",
+        "label": "Monster Lore",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "entry",
+        "effect": "Recognize verified undead, demon and fae categories, including weaknesses without revealing unrelated bosses.",
+        "reference_basis": "bounded_range_duration_or_entity_classification",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_hunter_monster_lore",
+        "stage": "entry",
+        "label": "Monster Lore",
+        "effect": "Recognize verified undead, demon and fae categories, including weaknesses without revealing unrelated bosses.",
+        "method": "entity taxonomy / observation hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "target classification UI"
+      }
+    },
+    {
+      "lane": "Quarry Lore & Tracking",
+      "source": {
+        "id": "tmm_hunter_quarry_mark",
+        "label": "Quarry Mark",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Mark one legitimate undead, demon or fae quarry for specialized hunter tactics.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_monster_lore"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_quarry_mark",
+        "stage": "advanced",
+        "label": "Quarry Mark",
+        "effect": "Mark one legitimate undead, demon or fae quarry for specialized hunter tactics.",
+        "method": "targeted quarry marker",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_monster_lore"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "target lock"
+      }
+    },
+    {
+      "lane": "Quarry Lore & Tracking",
+      "source": {
+        "id": "tmm_hunter_hunter_tracking",
+        "label": "Hunter Tracking",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "mastery",
+        "effect": "Very high-level proximity effect: apply short, refreshed Glowing to eligible undead, demons and fae; explicit radius/cooldown and no unrelated mobs.",
+        "reference_basis": "tracking_radius_not_permanent_status_potency",
+        "notes": [
+          "High-tier proximity Glowing; 5 ranks refine maximum radius, default 8 + 2*rank blocks (10-18). Never Glowing for non-undead/demon/fae. Server interval bounded."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_quarry_mark"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_hunter_tracking",
+        "stage": "mastery",
+        "label": "Hunter Tracking",
+        "effect": "Very high-level proximity effect: apply short, refreshed Glowing to eligible undead, demons and fae; explicit radius/cooldown and no unrelated mobs.",
+        "method": "bounded server entity scan / effect",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_quarry_mark"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "status_pulse"
+      }
+    },
+    {
+      "lane": "Arms & Ammunition",
+      "source": {
+        "id": "tmm_hunter_weapon_tempering",
+        "label": "Weapon Tempering",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "entry",
+        "effect": "Reduce real durability loss from Hunter weapons without healing or duplicating equipment.",
+        "reference_basis": "40_percentage_point_durability_saved_reference",
+        "notes": [
+          "Weak 5% of 40pp reference = 2 percentage points of actual durability saved per rank; 25 ranks caps at 50% prevented loss. Never repairs armor or prevents Curse of Binding removal."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_hunter_weapon_tempering",
+        "stage": "entry",
+        "label": "Weapon Tempering",
+        "effect": "Reduce real durability loss from Hunter weapons without healing or duplicating equipment.",
+        "method": "durability-debit adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "gear_durability; prewear versus repair"
+      }
+    },
+    {
+      "lane": "Arms & Ammunition",
+      "source": {
+        "id": "tmm_hunter_measured_bolt",
+        "label": "Measured Bolt",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Chance to avoid consuming actual crossbow projectile ammo on successful fire; keep special ammo/fireworks excluded until source QA.",
+        "reference_basis": "20_percentage_point_ammo_conservation_reference",
+        "notes": [
+          "Middling 10% of 20pp reference = +2 percentage points ammo conservation per rank, max 20% at rank 10. No refunds or duplicate projectile stacks; fireworks excluded pending QA."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_weapon_tempering"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_measured_bolt",
+        "stage": "advanced",
+        "label": "Measured Bolt",
+        "effect": "Chance to avoid consuming actual crossbow projectile ammo on successful fire; keep special ammo/fireworks excluded until source QA.",
+        "method": "crossbow ammo transaction adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_weapon_tempering"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "successful crossbow ammo hook"
+      }
+    },
+    {
+      "lane": "Arms & Ammunition",
+      "source": {
+        "id": "tmm_hunter_supernatural_bane",
+        "label": "Supernatural Bane",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Very high-level significant damage bonus against verified undead, demons and fae; source-tag and boss caps.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [
+          "Qualifies only type-verified undead, demons, fae; classification union counts once; late progression gate mandatory. Dreadbane Defense requires independent mitigation cap."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_measured_bolt"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_supernatural_bane",
+        "stage": "mastery",
+        "label": "Supernatural Bane",
+        "effect": "Very high-level significant damage bonus against verified undead, demons and fae; source-tag and boss caps.",
+        "method": "damage event with quarry allowlist",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_measured_bolt"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_bonus"
+      }
+    },
+    {
+      "lane": "Armor & Survival",
+      "source": {
+        "id": "tmm_hunter_armored_longevity",
+        "label": "Armored Longevity",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "entry",
+        "effect": "Reduce real durability damage to equipped armor; preserve equipment break and exclude repair exploits.",
+        "reference_basis": "40_percentage_point_durability_saved_reference",
+        "notes": [
+          "Weak 5% of 40pp reference = 2 percentage points of actual durability saved per rank; 25 ranks caps at 50% prevented loss. Never repairs armor or prevents Curse of Binding removal."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_hunter_armored_longevity",
+        "stage": "entry",
+        "label": "Armored Longevity",
+        "effect": "Reduce real durability damage to equipped armor; preserve equipment break and exclude repair exploits.",
+        "method": "armor durability-debit adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "gear_durability; prewear versus repair"
+      }
+    },
+    {
+      "lane": "Armor & Survival",
+      "source": {
+        "id": "tmm_hunter_survivor_s_grit",
+        "label": "Survivor's Grit",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Strong nonmagical survival upgrade for a prepared Hunter without mimicking regeneration/immortality.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_armored_longevity"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_survivor_s_grit",
+        "stage": "advanced",
+        "label": "Survivor's Grit",
+        "effect": "Strong nonmagical survival upgrade for a prepared Hunter without mimicking regeneration/immortality.",
+        "method": "damage/health attribute hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_armored_longevity"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, damage_multiplier"
+      }
+    },
+    {
+      "lane": "Armor & Survival",
+      "source": {
+        "id": "tmm_hunter_dreadbane_defense",
+        "label": "Dreadbane Defense",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Very high-level improved survivability specifically against verified undead, demons and fae.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [
+          "Qualifies only type-verified undead, demons, fae; classification union counts once; late progression gate mandatory. Dreadbane Defense requires independent mitigation cap."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_survivor_s_grit"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_dreadbane_defense",
+        "stage": "mastery",
+        "label": "Dreadbane Defense",
+        "effect": "Very high-level improved survivability specifically against verified undead, demons and fae.",
+        "method": "typed incoming-damage classification",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_survivor_s_grit"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_multiplier, evasion"
+      }
+    },
+    {
+      "lane": "Monster-Slayer Tactics",
+      "source": {
+        "id": "tmm_hunter_fieldcraft",
+        "label": "Fieldcraft",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Prepare and maneuver under threat with weapon-based tactics, not generic magic damage.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_hunter_fieldcraft",
+        "stage": "entry",
+        "label": "Fieldcraft",
+        "effect": "Prepare and maneuver under threat with weapon-based tactics, not generic magic damage.",
+        "method": "movement/combat state",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute, damage_bonus; weapon scope"
+      }
+    },
+    {
+      "lane": "Monster-Slayer Tactics",
+      "source": {
+        "id": "tmm_hunter_consecrated_snare",
+        "label": "Consecrated Snare",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Place claim-safe anti-monster traps using appropriate hunter resources, without generating magical mana.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_fieldcraft"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_consecrated_snare",
+        "stage": "advanced",
+        "label": "Consecrated Snare",
+        "effect": "Place claim-safe anti-monster traps using appropriate hunter resources, without generating magical mana.",
+        "method": "placement/ownership adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_fieldcraft"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "claim-safe trap"
+      }
+    },
+    {
+      "lane": "Monster-Slayer Tactics",
+      "source": {
+        "id": "tmm_hunter_slayer_s_counter",
+        "label": "Slayer's Counter",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "High-level counterattack window against identified supernatural enemies; bosses require special approval.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_hunter_consecrated_snare"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_hunter_slayer_s_counter",
+        "stage": "mastery",
+        "label": "Slayer's Counter",
+        "effect": "High-level counterattack window against identified supernatural enemies; bosses require special approval.",
+        "method": "combat event cooldown",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_hunter_consecrated_snare"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "counterattack"
+      }
+    },
+    {
+      "lane": "Other Historic Combat Integration (not duplicates)",
+      "source": {
+        "id": "tmm_hunter_drakebane",
+        "label": "Drakebane",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Optional specialization against verified dragons and draconic mobs, with dedicated Hunter monster-category rules rather than a boss/dimension label.",
+        "reference_basis": "verified_dragon_quarry_damage",
+        "notes": [
+          "Do not count all End mobs, and do not grant generic damage vs every boss. May remain in standalone Hunter specializations."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_bonus"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "critical_hit",
+        "label": "Critical Strike",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to deal a critical hit (double damage)",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native behavior uses chance and doubled damage; test boss damage pipeline Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "CriticalHitEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "critical_hit"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "damage_deal",
+        "label": "Deflection",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to negate and reflect incoming melee damage",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Reflect/negate incoming melee damage; avoid shields/Monk Guard duplication and near-total immunity Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "DamageDealEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "reflect/deflect"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "resistance",
+        "label": "Resistance",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Reduces all incoming damage by {damage_resistance}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native up-to-45% all-damage reduction competes with endgame equipment; cap and tier gate Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 6,
+        "native_sp_total": 99,
+        "behavior_class": "ResistanceEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_multiplier"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "backstab",
+        "label": "Backstab",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "legacy-rehome",
+        "effect": "Increases damage dealt from behind by {damage_buff}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Unmodified source remains universally usable by valid Hunter if gated; Vampire might get own ability"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "BackstabEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "directional damage"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "adrenaline",
+        "label": "Adrenaline",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Grants Absorption and Speed III for {effect_duration}s when health falls below {health_threshold}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Source grants Absorption and Speed III at low HP; test event re-triggers Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 3,
+        "native_sp_total": 12,
+        "behavior_class": "AdrenalineEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "threshold crossing"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "resilience",
+        "label": "Resilience",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Reduces the duration of negative status effects by {effect_time_reduction}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native up-to-95% negative effect reduction; preserve meaningful curses Requires Hunter at actual effect use; source default values are not approved as cheap early-game boosts."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 9,
+        "native_sp_total": 72,
+        "behavior_class": "ResilienceEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "status duration reduction"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "jinxed",
+        "label": "Jinxed",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to scramble the target's hotbar on hit",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native implementation shuffles other players' hotbars only; not meaningful PvE and intrusive in multiplayer; proposal needs owner sign-off"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 3,
+        "native_sp_total": 25,
+        "behavior_class": "JinxedEffect",
+        "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "held PvP"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "true_strike",
+        "label": "True Strike",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to deal true damage on hit",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native true damage cancels original and reissues indirect magic damage; boss/protection implications"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 3,
+        "native_sp_total": 45,
+        "behavior_class": "TrueStrikeEffect",
+        "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "held boss bypass"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "sunder_armor",
+        "label": "Sunder Armor",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance for attacks to deal {damage_percentage}% extra durability damage to armor",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native equipment durability attacks; assess griefing and entity armor behavior"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_hunter",
+        "native_max_levels": 5,
+        "native_sp_total": 46,
+        "behavior_class": "SunderArmorEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "held armor damage"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Master Slayer",
+        "effect": "Hunter combat capstone: powerful damage and defense versus verified undead/demons/fae, Hunter Tracking synergy, weapon proficiency; no broad spell power. Preserve late quarry-specific anti-undead/demon/fae focus, not flat +100% vs all mobs.",
+        "status": "concept_only",
+        "id": "tmm_hunter_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_hunter_hunter_tracking",
+            "tmm_hunter_supernatural_bane",
+            "tmm_hunter_dreadbane_defense",
+            "tmm_hunter_slayer_s_counter"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_hunter_quarry_mark",
+            "tmm_hunter_measured_bolt",
+            "tmm_hunter_survivor_s_grit",
+            "tmm_hunter_consecrated_snare"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}

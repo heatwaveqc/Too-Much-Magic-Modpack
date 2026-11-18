@@ -1,0 +1,821 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:core",
+  "title": "Core Skills",
+  "legacy_eligibility": "universal",
+  "notes": [
+    "The base four are Average +20% OF APPROVED REFERENCE MAX PER RANK in the current flat preview, not a verified cross-mod percentage modifier.",
+    "Mixed survival/combat/utility stock effects remain design-only, with real behavior left on old tabs until parity and save tests.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": false,
+  "nodes": [
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_reservoir_1",
+        "label": "Reservoir I",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Personal maximum mana/resources. Initial four runtime preview nodes preserve their original absolute rank-5 ceilings until per-mod base normalization is source-verified.",
+        "reference_basis": "pre_skill_native_personal_mana_baseline",
+        "notes": [
+          "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, magic_stat"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_wellspring_1",
+        "label": "Wellspring I",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Personal magical regeneration; dragon forms may purchase this UNIVERSAL option, but have no dragon-exclusive magic regen nodes.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [
+          "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, magic_stat"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_thrift_1",
+        "label": "Thrift I",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Discount personal magic payments; original resource-specific hard ceiling and minimum positive payment apply.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [
+          "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, magic_cost_discount"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_potency_1",
+        "label": "Potency I",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Base personal spell effect strength; source-specific spells and damage tags. Existing four preview attributes stay exact until normalized.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [
+          "Existing first-wave 5-rank pilot is IMPLEMENTED AS FLAT fixed native values. Tier assignment is DESIGN CALIBRATION, not a claim that +20% literally matches those flat values in each mod."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, magic_stat"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_quickening",
+        "label": "Quickening",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "universal",
+        "effect": "Personal spell casting speed, not industrial throughput.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; other cast speed hooks"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_projection",
+        "label": "Projection",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Valid spell target range, not free global AoE.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "provider range hook"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_persistence",
+        "label": "Persistence",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "universal",
+        "effect": "Duration of supported temporary effects and personally owned summons.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "provider duration hook"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_conjuration",
+        "label": "Conjuration",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "universal",
+        "effect": "Bounded strength of personally owned summoned allies, not free summoned mob count.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; native summon attribution"
+      }
+    },
+    {
+      "lane": "Universal magic fundamentals",
+      "source": {
+        "id": "tmm_magic_warding",
+        "label": "Warding",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "universal",
+        "effect": "Source-verified magical damage resistance, hard mitigation cap.",
+        "reference_basis": "mod_scoped_relevant_pre_skill_reference",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_multiplier, magic_stat; sourced damage tags"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "health_boost",
+        "label": "Health Boost",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "legacy-rehome",
+        "effect": "Increases maximum health by {value} half hearts",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Rebalance against Monk/Dragon natural health and equipment",
+          "Core weak HP is intentionally much less effective per SP than Werewolf Feral Vigor."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 10,
+        "native_sp_total": 92,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "oxygen_boost",
+        "label": "Oxygen Boost",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "legacy-rehome",
+        "effect": "Increases underwater breathing time by {value}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Do not supersede Monk native Breath Meditation or permanent Sea Dragon water breathing"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 4,
+        "native_sp_total": 14,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "block_reach",
+        "label": "Block Reach",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Increases the range at which the player can place and destroy by {value} blocks",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Respect claims, protected target distance and range caps"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 4,
+        "native_sp_total": 30,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "attack_damage",
+        "label": "Attack Damage",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "legacy-rehome",
+        "effect": "Increases melee damage by {value}",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Avoid stacking unconditional free damage with Monk barehand and wolf claws"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 3,
+        "native_sp_total": 25,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "sneak_speed",
+        "label": "Sneaking Speed",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 1,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Increases movement speed while sneaking by {value}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native vanilla attribute; additive interaction with Hunter/Vampire"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 14,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "speed_boost",
+        "label": "speed_boost",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "legacy-rehome",
+        "effect": "NO ENGLISH STRING FOUND",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Cap stacked movement with dragon flight and wolf sprint"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "step_height",
+        "label": "Step Height",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Allows stepping up blocks up to {value} blocks high without jumping",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Must not trivialize intentionally gated Monk Fleet Footwork→Step Assist; consider replacing generic tier with costly late universal movement"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 3,
+        "native_sp_total": 7,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "swim_speed",
+        "label": "Swim Speed",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "legacy-rehome",
+        "effect": "Increases swim speed by {value}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Sea Dragon adds form-specific benefits; avoid double applying same swim attribute"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "excavation",
+        "label": "Excavation",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 1,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "legacy-rehome",
+        "effect": "Increases mining speed by {value}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Cave Dragon and Monk have special permission/harvest tiers; cannot bypass block harvest conditions"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "abilities",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 10,
+        "native_sp_total": 40,
+        "behavior_class": null
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute; verify registry and baseline"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "swift_learn",
+        "label": "Swift Learning",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "legacy-rehome",
+        "effect": "Increases Skill XP gain by {value}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Native +60% Tyz XP multiplier conflicts with MXP-only normalized 1.2^P economy; do not transplant raw"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 4,
+        "native_sp_total": 62,
+        "behavior_class": null,
+        "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "named XP gain modifier; target economy decision"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "nutrition",
+        "label": "Metabolism",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "legacy-rehome",
+        "effect": "Increases food value (nutrition & saturation) by {nutrition_bonus}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "For hunger-using forms only; vampires/liches need canonical food-resource exception"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "NutritionEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "food_efficiency"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "experience_boost",
+        "label": "Wisdom",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "legacy-rehome",
+        "effect": "Increases Vanilla XP gain by {bonus_percentage}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Should affect only vanilla XP; not MXP or first-boss fixed awards"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 46,
+        "behavior_class": "ExperienceBoostEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "vanilla_xp_bonus"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "stealth",
+        "label": "Stealth",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "legacy-rehome",
+        "effect": "Reduces the detection range of hostile mobs by {range_reduction}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Hunter/Vampire get conditional expansions; ensure client/AI consistency"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 46,
+        "behavior_class": "StealthEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "native hostile target detection reduction"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "magnet",
+        "label": "Magnet",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Attracts items within a {block_radius} block radius",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Claims, inventory and loot ownership; mod overlap"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 4,
+        "native_sp_total": 30,
+        "behavior_class": "MagnetEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "magnet"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "spare_parts",
+        "label": "Spare Parts",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Grants a {refund_chance}% chance for each ingredient to be recovered when crafting.\nUp to {max_materials} item(s) per craft",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Refunding items risks EMC loops and late-gated ingredient duplication; keep existing 4/9 identical guard"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 67,
+        "behavior_class": "SparePartsEffect",
+        "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "ProjectE loop audit"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "twist_of_fate",
+        "label": "Twist Of Fate",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "legacy-rehome",
+        "effect": "Increases the quantity of items found in structure loot chests by {loot_multiplier}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Source modifies structure chest quantities; avoid multiplying boss/forbidden/ProjectE gated loot"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 5,
+        "native_sp_total": 46,
+        "behavior_class": "TwistOfFateEffect",
+        "design_gate": "HELD_FOR_MECHANIC_OR_ECONOMY_AUDIT"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "transactional structure loot audit"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "keepsake",
+        "label": "Safekept",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Safeguards the first {saved_slots} slot(s) of your inventory upon death",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Corail Tombstone and native lich resurrection arbitration need a single real-death save/slot policy"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 8,
+        "native_sp_total": 121,
+        "behavior_class": "KeepsakeEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "held",
+        "handler_or_gap": "resolve retention and Newbie policy"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills (proposed rehomes)",
+      "source": {
+        "id": "haggler",
+        "label": "Haggler",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 25,
+        "stage": "legacy-rehome",
+        "effect": "Holding an Emerald attracts villagers within a {block_radius} block radius.\n\nThey will follow you with a {villager_speed}% speed bonus",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Source attracts villagers holding emerald; bounded radius/speed; no automatic discounts"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "misc",
+        "target_category": "tmm_magic_core",
+        "native_max_levels": 4,
+        "native_sp_total": 14,
+        "behavior_class": "HagglerEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "bounded villager navigation"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}

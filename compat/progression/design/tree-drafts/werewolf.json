@@ -1,0 +1,1384 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:werewolf",
+  "title": "Werewolf",
+  "legacy_eligibility": "JAWR verified lycanthrope state",
+  "notes": [
+    "Do not commit to Werewolves vs JAWR hunger, model or forced-moon authority before the physiology audit.",
+    "Natural form-change progression remains native, not purchased again in Tyz.",
+    "Werewolf regen means HEALTH regeneration, not passive magic regeneration.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Lupine Vitality",
+      "source": {
+        "id": "tmm_werewolf_feral_vigor",
+        "label": "Feral Vigor",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts.",
+        "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+        "notes": [
+          "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_werewolf_feral_vigor",
+        "stage": "entry",
+        "label": "Feral Vigor",
+        "effect": "Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts.",
+        "method": "max health form-gated attribute",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Lupine Vitality",
+      "source": {
+        "id": "tmm_werewolf_regenerative_flesh",
+        "label": "Regenerative Flesh",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [
+          "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_feral_vigor"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_regenerative_flesh",
+        "stage": "advanced",
+        "label": "Regenerative Flesh",
+        "effect": "Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen.",
+        "method": "health tick / form hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_feral_vigor"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "delayed_regeneration; feeding constraints"
+      }
+    },
+    {
+      "lane": "Lupine Vitality",
+      "source": {
+        "id": "tmm_werewolf_unbreakable_beast",
+        "label": "Unbreakable Beast",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities.",
+        "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+        "notes": [
+          "Health effects use base maximum HP or fixed HP/s benchmark; not mana regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_regenerative_flesh"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_unbreakable_beast",
+        "stage": "mastery",
+        "label": "Unbreakable Beast",
+        "effect": "High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities.",
+        "method": "health + damage form hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_regenerative_flesh"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute, delayed_regeneration; native weakness"
+      }
+    },
+    {
+      "lane": "Feral Might",
+      "source": {
+        "id": "tmm_werewolf_rending_claws",
+        "label": "Rending Claws",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Scale claw damage in valid wolf/beast form, respecting weapon modifiers.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_werewolf_rending_claws",
+        "stage": "entry",
+        "label": "Rending Claws",
+        "effect": "Scale claw damage in valid wolf/beast form, respecting weapon modifiers.",
+        "method": "native-form combat hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_bonus; native claw attribution"
+      }
+    },
+    {
+      "lane": "Feral Might",
+      "source": {
+        "id": "tmm_werewolf_savage_momentum",
+        "label": "Savage Momentum",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Short stacking melee bonus after actual hits, capped and reset out of combat.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_rending_claws"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_savage_momentum",
+        "stage": "advanced",
+        "label": "Savage Momentum",
+        "effect": "Short stacking melee bonus after actual hits, capped and reset out of combat.",
+        "method": "combat-state adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_rending_claws"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "consecutive hit stacks and expiry"
+      }
+    },
+    {
+      "lane": "Feral Might",
+      "source": {
+        "id": "tmm_werewolf_primal_fury",
+        "label": "Primal Fury",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Timed burst consuming native appropriate resource or applying fatigue.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_savage_momentum"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_primal_fury",
+        "stage": "mastery",
+        "label": "Primal Fury",
+        "effect": "Timed burst consuming native appropriate resource or applying fatigue.",
+        "method": "activated melee ability",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_savage_momentum"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, attribute; native fatigue"
+      }
+    },
+    {
+      "lane": "Moonrunner",
+      "source": {
+        "id": "tmm_werewolf_predator_s_stride",
+        "label": "Predator's Stride",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Bonus mobility in valid wolf form.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_werewolf_predator_s_stride",
+        "stage": "entry",
+        "label": "Predator's Stride",
+        "effect": "Bonus mobility in valid wolf form.",
+        "method": "movement/form hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Moonrunner",
+      "source": {
+        "id": "tmm_werewolf_pouncing_leap",
+        "label": "Pouncing Leap",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Targeted controlled leap with landing safety.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_predator_s_stride"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_pouncing_leap",
+        "stage": "advanced",
+        "label": "Pouncing Leap",
+        "effect": "Targeted controlled leap with landing safety.",
+        "method": "movement/combat hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_predator_s_stride"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "jump_bonus; directed leap"
+      }
+    },
+    {
+      "lane": "Moonrunner",
+      "source": {
+        "id": "tmm_werewolf_lunar_chase",
+        "label": "Lunar Chase",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Short chase burst under moon conditions with weaker daytime counterpart.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_pouncing_leap"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_lunar_chase",
+        "stage": "mastery",
+        "label": "Lunar Chase",
+        "effect": "Short chase burst under moon conditions with weaker daytime counterpart.",
+        "method": "time/state hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_pouncing_leap"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, attribute; moon gate"
+      }
+    },
+    {
+      "lane": "Wild Communion",
+      "source": {
+        "id": "tmm_werewolf_wild_attunement",
+        "label": "Wild Attunement",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_werewolf_wild_attunement",
+        "stage": "entry",
+        "label": "Wild Attunement",
+        "effect": "Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid.",
+        "method": "nature spell classification",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; nature providers"
+      }
+    },
+    {
+      "lane": "Wild Communion",
+      "source": {
+        "id": "tmm_werewolf_rootsong",
+        "label": "Rootsong",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Further increase player nature spell potency or healing, separate from ordinary combat regeneration.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_wild_attunement"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_rootsong",
+        "stage": "advanced",
+        "label": "Rootsong",
+        "effect": "Further increase player nature spell potency or healing, separate from ordinary combat regeneration.",
+        "method": "nature spell/heal adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_wild_attunement"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; nature providers"
+      }
+    },
+    {
+      "lane": "Wild Communion",
+      "source": {
+        "id": "tmm_werewolf_grove_howl",
+        "label": "Grove Howl",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_werewolf_rootsong"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_werewolf_grove_howl",
+        "stage": "mastery",
+        "label": "Grove Howl",
+        "effect": "High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects.",
+        "method": "nature spell / pet attribution",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_werewolf_rootsong"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "status_pulse, magic_stat; pack attribution"
+      }
+    },
+    {
+      "lane": "Retained Lycan Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_werewolf_bloodlust_recovery",
+        "label": "Bloodlust Recovery",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Health restoration from actual player-credited hostile kill, with real cooldown.",
+        "reference_basis": "capped_hp_per_hostile_kill",
+        "notes": [
+          "Do not also award duplicate kills or bypass hunger cost."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "heal_on_kill"
+      }
+    },
+    {
+      "lane": "Retained Lycan Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_werewolf_bite_techniques",
+        "label": "Bite Techniques",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Select either limited bleeding or brief stun enhancement on confirmed wolf bites.",
+        "reference_basis": "per_bite_status_chance",
+        "notes": [
+          "No instant kill, bosses gated."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "status_on_hit; native bite"
+      }
+    },
+    {
+      "lane": "Retained Lycan Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_werewolf_feral_excavation",
+        "label": "Feral Excavation",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Boost permitted claw mining/harvest throughput while in real JAWR wolf form.",
+        "reference_basis": "legal_wolf_claw_harvest_speed",
+        "notes": [
+          "Do not independently grant forbidden tool tiers."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "break_speed; claw source"
+      }
+    },
+    {
+      "lane": "Retained Lycan Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_werewolf_arrow_awareness",
+        "label": "Arrow Awareness",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Limited moving-projectile evasion with shared evasion budget.",
+        "reference_basis": "capped_evade_chance",
+        "notes": [
+          "No invulnerability; dodge ceiling shared with sprint evasion."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "evasion; projectile filter"
+      }
+    },
+    {
+      "lane": "Retained Lycan Skill Concepts (JAWR-owned)",
+      "source": {
+        "id": "tmm_werewolf_tempered_silver",
+        "label": "Tempered Against Silver",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 50,
+        "stage": "mastery",
+        "effect": "Partial damage mitigation against source-verified silver damage without erasing weakness.",
+        "reference_basis": "silver_specific_damage_mitigation",
+        "notes": [
+          "Cap silver resistance at 30%, including other wolf ranks."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_multiplier; verified silver tag"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "rage",
+        "label": "Rage",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "legacy-rehome",
+        "effect": "Increases damage by {damage_buff}% when health is below {health_threshold}%",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Maintain core native moon/shape consequences; source scales on low health"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_werewolf",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "RageEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_at_low_health"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Moon Apex",
+        "effect": "Late-game feral ascendancy emphasizing massive health, sustained HP regeneration, melee ferocity and nature magic; retain native silver/moon weaknesses.",
+        "status": "concept_only",
+        "id": "tmm_werewolf_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_werewolf_unbreakable_beast",
+            "tmm_werewolf_primal_fury",
+            "tmm_werewolf_lunar_chase",
+            "tmm_werewolf_grove_howl"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_werewolf_regenerative_flesh",
+            "tmm_werewolf_savage_momentum",
+            "tmm_werewolf_pouncing_leap",
+            "tmm_werewolf_rootsong"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": [
+    {
+      "id": "tmm_werewolf_feral_vigor",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "entry",
+      "displayName": "Feral Vigor",
+      "description": "Add 5–25 hearts of conditional max health while transformed; never permanently leak after cure.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "unit": "health points",
+      "effect": "jawr_bonus_max_health",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_regenerative_flesh",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "advanced",
+      "displayName": "Regenerative Flesh",
+      "description": "Regenerate actual HP per second in JAWR wolf form; bounded by hunger and damage cooldown.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        1
+      ],
+      "unit": "health points per second",
+      "effect": "jawr_health_regen",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_vigor"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_bloodlust_recovery",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "advanced",
+      "displayName": "Bloodlust Recovery",
+      "description": "Heal on personally credited hostile kills, with 3-second cooldown and no summon/pet kill duplication.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "unit": "health points",
+      "effect": "jawr_kill_heal",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_vigor"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "pilot_behavior_needs_jawr_state",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_unbreakable_beast",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "mastery",
+      "displayName": "Unbreakable Beast",
+      "description": "Further max health with bounded in-combat recovery; preserves silver vulnerability.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "health points",
+      "effect": "jawr_bonus_max_health",
+      "skillPrerequisites": [
+        "tmm_werewolf_regenerative_flesh"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_rending_claws",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "entry",
+      "displayName": "Rending Claws",
+      "description": "Boost melee attacks confirmed to be native JAWR claws; do not boost magic.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_wolf_claw_damage",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_bleeding_bite",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "advanced",
+      "displayName": "Bleeding Bite",
+      "description": "Bite applies bounded bleed over five seconds, subject to boss/PvP rules.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        2,
+        4,
+        6
+      ],
+      "unit": "damage",
+      "effect": "jawr_bite_bleed",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": [
+        "tmm_werewolf_stunning_bite"
+      ]
+    },
+    {
+      "id": "tmm_werewolf_stunning_bite",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "advanced",
+      "displayName": "Stunning Bite",
+      "description": "Bite briefly immobilizes non-boss targets, incompatible with Bleeding Bite.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "unit": "seconds",
+      "effect": "jawr_bite_stun",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": [
+        "tmm_werewolf_bleeding_bite"
+      ]
+    },
+    {
+      "id": "tmm_werewolf_primal_fury",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Feral Might",
+      "stage": "mastery",
+      "displayName": "Primal Fury",
+      "description": "Short feral melee burst with hunger/fatigue cost and meaningful cooldown.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "unit": "percent",
+      "effect": "jawr_fatigue_burst",
+      "skillPrerequisites": [
+        "tmm_werewolf_rending_claws"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_predators_stride",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "entry",
+      "displayName": "Predator's Stride",
+      "description": "Improve speed only in valid JAWR wolf form.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_wolf_movement",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_pouncing_leap",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Pouncing Leap",
+      "description": "Cooldown jump with safe landing/collision and no protected-block bypass.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        1.2,
+        1.4,
+        1.6
+      ],
+      "unit": "leap multiplier",
+      "effect": "jawr_wolf_leap",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_arrow_awareness",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Arrow Awareness",
+      "description": "Bounded chance to evade eligible projectiles while moving; shared dodge cap.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_projectile_avoidance",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_evasive_sprint",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "advanced",
+      "displayName": "Evasive Sprint",
+      "description": "Chance to evade qualified attacks while sprinting, shares avoidance budget.",
+      "maximumLevel": 5,
+      "prices": [
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "values": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_sprint_avoidance",
+      "skillPrerequisites": [
+        "tmm_werewolf_predators_stride"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_surefooted_predator",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Moonrunner",
+      "stage": "mastery",
+      "displayName": "Surefooted Predator",
+      "description": "Reduce fall and verified hazard damage; no total immunity or special dimension grief.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        15,
+        30,
+        45
+      ],
+      "unit": "percent",
+      "effect": "jawr_environment_resistance",
+      "skillPrerequisites": [
+        "tmm_werewolf_pouncing_leap"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_wild_attunement",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "entry",
+      "displayName": "Wild Attunement",
+      "description": "Buff personally cast, source-verified nature magic (Roots/Botania), not world machines.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "unit": "percent",
+      "effect": "jawr_nature_spell_potency",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_rootsong",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "advanced",
+      "displayName": "Rootsong",
+      "description": "Boost personal nature-related healing and spell effects; not world processing.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        5,
+        10,
+        15
+      ],
+      "unit": "percent",
+      "effect": "jawr_nature_healing_potency",
+      "skillPrerequisites": [
+        "tmm_werewolf_wild_attunement"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_grove_howl",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Wild Communion",
+      "stage": "mastery",
+      "displayName": "Grove Howl",
+      "description": "Temporary player-only nature synergy howl; summons no wolves, pets or minions.",
+      "maximumLevel": 1,
+      "prices": [
+        4
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_friendly_buff_howl",
+      "skillPrerequisites": [
+        "tmm_werewolf_rootsong"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_feral_excavation",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "entry",
+      "displayName": "Feral Excavation",
+      "description": "Bonus bareclaw block breaking speed, server permission checks; no tier bypass.",
+      "maximumLevel": 5,
+      "prices": [
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "values": [
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "unit": "percent",
+      "effect": "jawr_claw_mining_speed",
+      "skillPrerequisites": [],
+      "externalGate": "jawr_form_present",
+      "implementation": "pilot_hook_needs_harvest_compat",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_enhanced_claws",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "advanced",
+      "displayName": "Enhanced Claws",
+      "description": "Finite bareclaw harvest tier; preserve loot tool predicates, claims and ore gates.",
+      "maximumLevel": 3,
+      "prices": [
+        2,
+        3,
+        4
+      ],
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "unit": "tier",
+      "effect": "jawr_claw_harvest_tier",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_excavation"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_tempered_silver",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "advanced",
+      "displayName": "Tempered Against Silver",
+      "description": "Reduce but never eliminate verified JAWR silver vulnerability.",
+      "maximumLevel": 4,
+      "prices": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "values": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "unit": "percent",
+      "effect": "jawr_silver_resistance",
+      "skillPrerequisites": [
+        "tmm_werewolf_feral_excavation"
+      ],
+      "externalGate": "jawr_native_mid_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_predatory_senses",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Claws & Survival",
+      "stage": "mastery",
+      "displayName": "Predatory Senses",
+      "description": "Bounded prey awareness scan on cooldown, excludes vanished players.",
+      "maximumLevel": 3,
+      "prices": [
+        4,
+        4,
+        4
+      ],
+      "values": [
+        6,
+        9,
+        12
+      ],
+      "unit": "blocks",
+      "effect": "jawr_senses",
+      "skillPrerequisites": [
+        "tmm_werewolf_tempered_silver"
+      ],
+      "externalGate": "jawr_native_late_milestone_verified",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "incompatibleSkills": []
+    },
+    {
+      "id": "tmm_werewolf_moon_apex",
+      "category": "tmm_werewolf",
+      "form": "werewolf",
+      "lane": "Lupine Vitality",
+      "stage": "capstone",
+      "displayName": "Moon Apex",
+      "description": "Late-game feral vitality stance with cooldown; boosts survivability, no immortality.",
+      "maximumLevel": 1,
+      "prices": [
+        5
+      ],
+      "values": [
+        1
+      ],
+      "unit": "unlock",
+      "effect": "jawr_health_capstone",
+      "skillPrerequisites": [
+        "tmm_werewolf_unbreakable_beast"
+      ],
+      "externalGate": "jawr_native_end_milestone_and_late_boss",
+      "implementation": "requires_runtime_adapter",
+      "active": false,
+      "notes": "",
+      "additionalServerPrerequisites": [
+        "tmm_werewolf_primal_fury",
+        "tmm_werewolf_grove_howl"
+      ],
+      "incompatibleSkills": []
+    }
+  ]
+}
