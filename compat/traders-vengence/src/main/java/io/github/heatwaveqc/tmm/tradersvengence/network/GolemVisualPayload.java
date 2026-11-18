@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 /** Server-to-client visual snapshots only; never accept client combat requests. */
-public record GolemVisualPayload(UUID id, float angle, float speed) implements CustomPacketPayload {
+public record GolemVisualPayload(UUID id, float angle, float speed, boolean firing) implements CustomPacketPayload {
     public static final Type<GolemVisualPayload> TYPE = new Type<>(
         ResourceLocation.fromNamespaceAndPath("traders_vengence", "golem_minigun_visual"));
     public static final StreamCodec<RegistryFriendlyByteBuf, GolemVisualPayload> CODEC =
@@ -16,11 +16,12 @@ public record GolemVisualPayload(UUID id, float angle, float speed) implements C
             buffer.writeUUID(value.id());
             buffer.writeFloat(value.angle());
             buffer.writeFloat(value.speed());
-        }, buffer -> new GolemVisualPayload(buffer.readUUID(), buffer.readFloat(), buffer.readFloat()));
+            buffer.writeBoolean(value.firing());
+        }, buffer -> new GolemVisualPayload(buffer.readUUID(), buffer.readFloat(), buffer.readFloat(), buffer.readBoolean()));
     @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        event.registrar("1").playToClient(TYPE, CODEC, (payload, context) ->
+        event.registrar("2").playToClient(TYPE, CODEC, (payload, context) ->
             context.enqueueWork(() -> GolemVisualState.apply(payload)));
     }
 }

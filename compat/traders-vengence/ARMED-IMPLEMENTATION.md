@@ -49,3 +49,7 @@ Actual Trader JAR verification now rejects missing/duplicated/mismatched audited
 - [x] Exact upstream minigun.ogg and minigun_stop.ogg copied byte-for-byte (Git blob SHA verified); upstream project GPLv3 and both separately credited free sound sources preserved. Individual Freesound sample mapping remains unconfirmed. hud_init.ogg spin-up alias excluded due to embedded third-party commercial-library credit and no verified redistribution permission; use vanilla replacement. No donor dependency.
 - [x] Combined local sounds.json adds two events; Caliber Arms audit hashes adjusted only for combined registry and provenance. Original pistol definitions/recordings untouched.
 - [ ] Client looping/stop lifecycle and vanilla spin-up event integration; fresh CI and separately authorized gameplay QA. Previous full pistol head e8f3b83 passed both quick checks.
+
+### Phase 9 — minigun audio source integration
+- [x] Server spin-up on zero-to-active transition using built-in piston sound (lowered pitch), and authoritative firing flag in protocol v2. Immediate firing transitions plus ten-tick heartbeat; no client authority. Client one positional looping instance per tracked golem, stop recording once when firing ends; canceled on entity removal/world disconnect; stale snapshots fail closed. Donor default drone volume 1.0. No additional projectiles or damage changes.
+- [ ] Fresh compile, unit/packaging CI and separately authorized in-world audio/lifecycle checks. Original spin-up file intentionally omitted; see Phase 8 audit.

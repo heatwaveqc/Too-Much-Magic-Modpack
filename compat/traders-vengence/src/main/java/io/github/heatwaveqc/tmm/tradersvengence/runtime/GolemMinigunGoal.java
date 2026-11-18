@@ -8,6 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -25,6 +27,7 @@ public final class GolemMinigunGoal extends Goal {
     private final IronGolem golem;
     private final MinigunSpin spin = new MinigunSpin();
     private boolean running;
+    private boolean firing;
     private int cooldown;
 
     public GolemMinigunGoal(IronGolem golem) {
@@ -69,9 +72,17 @@ public final class GolemMinigunGoal extends Goal {
         }
     }
     void updateSpin() {
-        spin.tick(running && allowed(golem.getTarget()));
+        boolean trigger = running && allowed(golem.getTarget());
+        if (trigger && spin.speed() == 0F) {
+            // Licensed vanilla fallback: original donor spin-up aliases third-party HUD audio.
+            golem.level().playSound(null, golem.blockPosition(), SoundEvents.PISTON_EXTEND,
+                SoundSource.NEUTRAL, 1F, 0.65F);
+        }
+        spin.tick(trigger);
+        firing = trigger && spin.ready();
         if (cooldown > 0) cooldown--;
     }
+    boolean firing() { return firing; }
     float speed() { return spin.speed(); }
     float angle() { return spin.angle(); }
 }

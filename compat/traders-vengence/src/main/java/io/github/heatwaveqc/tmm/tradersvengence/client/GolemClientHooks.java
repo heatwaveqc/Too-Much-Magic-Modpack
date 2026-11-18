@@ -4,6 +4,8 @@ import io.github.heatwaveqc.tmm.tradersvengence.TradersVengence;
 import io.github.heatwaveqc.tmm.tradersvengence.network.GolemVisualState;
 import net.minecraft.client.renderer.entity.IronGolemRenderer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -25,9 +27,18 @@ public final class GolemClientHooks {
     public static final class Lifecycle {
         @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
             GolemVisualState.clear();
+            GolemMinigunAudio.clear();
+        }
+        @SubscribeEvent public static void tick(EntityTickEvent.Post event) {
+            if (event.getEntity() instanceof IronGolem golem && golem.level().isClientSide()) {
+                GolemMinigunAudio.tick(golem);
+            }
         }
         @SubscribeEvent public static void leave(EntityLeaveLevelEvent event) {
-            if (event.getLevel().isClientSide()) GolemVisualState.remove(event.getEntity().getUUID());
+            if (event.getLevel().isClientSide()) {
+                GolemVisualState.remove(event.getEntity().getUUID());
+                GolemMinigunAudio.remove(event.getEntity().getUUID());
+            }
         }
     }
 }

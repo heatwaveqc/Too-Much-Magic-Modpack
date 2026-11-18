@@ -8,7 +8,10 @@ import java.util.UUID;
 public final class GolemVisualState {
     private static final Map<UUID, Sample> SAMPLES = new HashMap<>();
     private GolemVisualState() {}
-    public record Sample(float angle, float speed, long received) {
+    public record Sample(float angle, float speed, boolean firing, long received) {
+        public boolean freshFiring() {
+            return firing && System.nanoTime() - received < 1_500_000_000L;
+        }
         public float predictedAngle() {
             // At most ten ticks of extrapolation between heartbeat packets.
             float ticks = Math.max(0F, Math.min(10F, (System.nanoTime() - received) / 50_000_000F));
@@ -19,7 +22,7 @@ public final class GolemVisualState {
         if (!Float.isFinite(payload.angle()) || !Float.isFinite(payload.speed())) return;
         long now = System.nanoTime();
         SAMPLES.entrySet().removeIf(e -> now - e.getValue().received() > 60_000_000_000L);
-        SAMPLES.put(payload.id(), new Sample(payload.angle(), Math.max(0F, Math.min(0.4F, payload.speed())), now));
+        SAMPLES.put(payload.id(), new Sample(payload.angle(), Math.max(0F, Math.min(0.4F, payload.speed())), payload.firing(), now));
     }
     public static Sample get(UUID id) { return SAMPLES.get(id); }
     public static void remove(UUID id) { SAMPLES.remove(id); }

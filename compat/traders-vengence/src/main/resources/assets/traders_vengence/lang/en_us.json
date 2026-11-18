@@ -7,5 +7,7 @@
   "subtitles.traders_vengence.gun.m1911.fire": "M1911A1 fires",
   "subtitles.traders_vengence.reload.pistol.mag_out": "Magazine removed",
   "subtitles.traders_vengence.reload.pistol.mag_in": "Magazine inserted",
-  "subtitles.traders_vengence.reload.pistol.slide": "Slide racked"
+  "subtitles.traders_vengence.reload.pistol.slide": "Slide racked",
+  "subtitles.traders_vengence.minigun.loop": "Minigun firing",
+  "subtitles.traders_vengence.minigun.stop": "Minigun winds down"
 }

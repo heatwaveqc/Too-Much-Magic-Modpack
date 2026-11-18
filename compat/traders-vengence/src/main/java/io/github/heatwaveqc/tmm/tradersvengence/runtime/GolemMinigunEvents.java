@@ -51,11 +51,12 @@ public final class GolemMinigunEvents {
                 || !(golem.level() instanceof ServerLevel) || !armed(golem)) return;
         for (var wrapped : ((MobGoalsAccessor) golem).tradersVengence$goalSelector().getAvailableGoals()) {
             if (wrapped.getGoal() instanceof GolemMinigunGoal goal) {
+                boolean wasFiring = goal.firing();
                 goal.updateSpin();
                 // Periodic authoritative snapshot also covers players who just began tracking.
-                if (golem.tickCount % 10 == 0) {
+                if (wasFiring != goal.firing() || golem.tickCount % 10 == 0) {
                     PacketDistributor.sendToPlayersTrackingEntity(golem,
-                        new GolemVisualPayload(golem.getUUID(), goal.angle(), goal.speed()));
+                        new GolemVisualPayload(golem.getUUID(), goal.angle(), goal.speed(), goal.firing()));
                 }
                 return;
             }
