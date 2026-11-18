@@ -114,11 +114,11 @@ public final class ProgressionMenuNetwork {
         json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
         json.addProperty("rank", state.rank());
-        json.addProperty("max_rank", path.maxRank());
+        json.addProperty("max_rank", channel.maxRank());
         json.addProperty("xp", state.xp());
         json.addProperty("points", state.points());
-        long threshold = state.rank() < path.rankXp().size()
-                ? path.rankXp().get(state.rank()) : path.rankXp().getLast();
+        var curve=channel.magic()?java.util.List.of(0L):channel.source().rankXp();
+        long threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
         if(channel!=null && channel.magic()) {
             var wallet=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get()).wallet(channel.id());
             long start=wallet==null?0:wallet.xp()-(long)wallet.magicProgress();
@@ -127,10 +127,19 @@ public final class ProgressionMenuNetwork {
         }
         json.addProperty("next_xp", threshold);
         long currentStart = state.rank() > 0
-                ? path.rankXp().get(Math.min(state.rank() - 1, path.rankXp().size() - 1))
+                ? curve.get(Math.min(state.rank()-1,curve.size()-1))
                 : 0;
         if(channel!=null && channel.magic()) currentStart=Math.max(0,threshold-1000);
         json.addProperty("rank_start_xp", currentStart);
+        var ledger=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get());
+        JsonArray wallets=new JsonArray();
+        for(var system:PathRegistry.economies().values().stream().sorted(java.util.Comparator.comparing(io.github.heatwaveqc.tmm.progression.model.XpChannel::id)).toList()){
+            var w=ledger.wallet(system.id());JsonObject row=new JsonObject();
+            row.addProperty("id",system.id());row.addProperty("name",system.name());row.addProperty("point_name",system.pointName());
+            row.addProperty("level",w==null?0:w.rank());row.addProperty("points",w==null?0:w.points());
+            row.addProperty("xp",w==null?0:w.xp());wallets.add(row);
+        }
+        json.add("wallets",wallets);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
@@ -141,6 +150,10 @@ public final class ProgressionMenuNetwork {
             item.addProperty("maximum", skill.maxRank());
             item.addProperty("required_rank", skill.requiredRank());
             item.addProperty("auto", !skill.autoRanks().isEmpty());
+            var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tmm.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));
+            item.addProperty("currency",binding.currency().id());
+            item.addProperty("point_name",binding.currency().pointName());
+            item.addProperty("level_system",binding.levelSystem().name());
             item.addProperty("price", skill.price(owned));
             item.addProperty("choice_group", skill.choiceGroup());
             item.addProperty("buyable", ProgressionApi.canBuy(player,pathId,skill.id()));

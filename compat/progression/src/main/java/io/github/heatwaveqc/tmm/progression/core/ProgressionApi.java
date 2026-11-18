@@ -41,7 +41,7 @@ public final class ProgressionApi {
         var path=PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
         return path==null || channel==null ? Track.empty() :
-            ChannelEngine.view(player.getData(ProgressionAttachments.LEDGER.get()),path,channel);
+            ChannelEngine.view(player.getData(ProgressionAttachments.LEDGER.get()),path,PathRegistry.config());
     }
 
     /** Any joined path, including future Gilded or data-defined paths. */
@@ -76,8 +76,8 @@ public final class ProgressionApi {
     public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
         var path=PathRegistry.get(pathId);
         if(path==null || !PathRegistry.skillEligible(player,pathId,skillId)) return false;
-        Track state=track(player,pathId);
-        return ProgressionMath.buy(path,state,skillId)!=state;
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        return ChannelEngine.buy(before,path,PathRegistry.config(),skillId)!=before;
     }
 
     /** Fail-closed if the path is missing, gated, full, or short on skill points. */
@@ -86,10 +86,9 @@ public final class ProgressionApi {
         var channel=PathRegistry.channel(pathId);
         if (path == null || channel==null || !canBuy(player,pathId,skillId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track before = ChannelEngine.view(ledger,path,channel);
-        Track after = ProgressionMath.buy(path,before,skillId);
-        if (after == before) return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.commit(ledger,path,channel,after));
+        Ledger next=ChannelEngine.buy(ledger,path,PathRegistry.config(),skillId);
+        if(next==ledger)return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
 
@@ -99,7 +98,7 @@ public final class ProgressionApi {
         if (path == null || channel==null || !track(player,pathId).joined()) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
-            ChannelEngine.commit(ledger,path,channel,ProgressionMath.refundAll(path,ChannelEngine.view(ledger,path,channel))));
+            ChannelEngine.refund(ledger,path));
         return true;
     }
 
@@ -113,11 +112,8 @@ public final class ProgressionApi {
         var channel=PathRegistry.channel(pathId);
         if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track before = ChannelEngine.view(ledger,path,channel);
-        if (!before.joined()) return false;
-        Track after = ProgressionMath.grantXp(path,before,xp);
-        if (before.equals(after)) return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.commit(ledger,path,channel,after));
+        if(!ledger.get(pathId).joined())return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,xp,0));
         return true;
     }
 
@@ -163,28 +159,33 @@ public final class ProgressionApi {
         if (player.isCreative() || player.isSpectator()) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
+        for(var system:PathRegistry.economies().values()){
+            if(system.magic())continue;
+            String required=system.earningPath();
+            if(!required.isEmpty()){
+                var gate=PathRegistry.get(required);
+                if(gate==null||!next.get(required).joined()||!PathRegistry.eligible(player,required)||!eligiblePath.test(gate))continue;
+            }
+            int index=0;
+            for(var source:system.sources()){
+                String cooldownKey=system.id()+"/"+index++;
+                if(!signal.matches(source.event(),source.selector()))continue;
+                long now=player.level().getGameTime();
+                var recent=cooldowns.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());
+                long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
+                if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
+                recent.put(cooldownKey,now);
+                long xp=TyzMonkBridge.bonusMonkXp(player,required,source.xp());
+                next=ChannelEngine.grant(next,system,xp,0);
+            }
+        }
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
             var channel=PathRegistry.channel(path.id());
             if(channel==null || !PathRegistry.eligible(player,path.id())) continue;
-            Track initial=ChannelEngine.view(next,path,channel);
+            Track initial=ChannelEngine.view(next,path,PathRegistry.config());
             Track state=initial;
             if (!state.joined()) continue;
-
-            int activityIndex = 0;
-            for (Definition.Activity activity : path.activities()) {
-                String cooldownKey = path.id() + "/" + activityIndex++;
-                if (!signal.matches(activity.event(), activity.selector())) continue;
-                long now = player.level().getGameTime();
-                Map<String,Long> recent = cooldowns.computeIfAbsent(player.getUUID(), ignored -> new HashMap<>());
-                long last = recent.getOrDefault(cooldownKey, Long.MIN_VALUE);
-                // Handles fresh worlds/time resets without overflow.
-                if (last != Long.MIN_VALUE && now >= last && now - last < activity.cooldownTicks())
-                    continue;
-                recent.put(cooldownKey,now);
-                state = ProgressionMath.grantXp(path,state,
-                    TyzMonkBridge.bonusMonkXp(player,path.id(),activity.xp()));
-            }
 
             for (Definition.Milestone milestone : path.milestones()) {
                 if (state.completed(milestone.id())) continue;
@@ -213,13 +214,14 @@ public final class ProgressionApi {
                         }
                     }
                     if (ready) {
-                        state = ProgressionMath.grantXp(path,state.complete(milestone.id()),milestone.xp())
-                            .grantPoints(milestone.points());
+                        state=state.complete(milestone.id());
+                        if(milestone.xp()>0||milestone.points()>0)
+                            next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         changed = true;
                     }
                 }
             } while(changed);
-            if (!state.equals(initial)) next = ChannelEngine.commit(next,path,channel,state);
+            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state);
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
     }
@@ -237,10 +239,10 @@ public final class ProgressionApi {
         var path=PathRegistry.get("tmm_progression:monk");
         var channel=PathRegistry.channel("tmm_progression:monk");
         if(path==null || channel==null) return false;
-        Track monk=ChannelEngine.view(ledger,path,channel);
+        Track monk=ChannelEngine.view(ledger,path,PathRegistry.config());
         if (!monk.joined() || monk.rank() < 17 || monk.completed(marker)) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),
-                ChannelEngine.commit(ledger,path,channel,monk.complete(marker).grantPoints(1)));
+                ChannelEngine.grant(ChannelEngine.ownership(ledger,path,monk.complete(marker)),channel,0,1));
         return true;
     }
 
@@ -271,6 +273,16 @@ public final class ProgressionApi {
         return true;
     }
 
+    /** Direct grant to a configured native system; independent of any tree. */
+    public static boolean awardExperience(ServerPlayer player,String id,long xp) {
+        if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
+            ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
+        var system=PathRegistry.economy(id);if(system==null||system.magic())return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        String gate=system.earningPath();
+        if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(prior,system,xp,0));return true;
+    }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
         io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.forget(playerId);
