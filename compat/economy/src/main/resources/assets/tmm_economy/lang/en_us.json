@@ -1,0 +1,8 @@
+{
+  "tmm_economy.mapper.apotheosis_gems": "TMM Apotheosis Gem Mapper",
+  "tmm_economy.mapper.apotheosis_gems.tooltip": "Maps registered gem identity and purity using live cutting recipes and rarity.",
+  "tmm_economy.processor.gem_guard": "TMM Gem Component Guard",
+  "tmm_economy.processor.gem_guard.tooltip": "Reject invalid or noncanonical gems.",
+  "tmm_economy.processor.spirit_jar_guard": "TMM Filled Spirit Jar Guard",
+  "tmm_economy.processor.spirit_jar_guard.tooltip": "Filled spirit jars have no EMC."
+}
