@@ -13,7 +13,8 @@
   },
   "notes": [
     "First-pass engineering triage only. Available = engine mechanism exists, not tested or balanced. Partial = provider/scope/semantics gap. Gap = missing mechanism. Held = owner/audit decision. All original provisional values retained, not active.",
-    "Old XP formula, wallet and hybrid assumptions superseded by current design. One Lich tree. Gilded draft added separately."
+    "Old XP formula, wallet and hybrid assumptions superseded by current design. One Lich tree. Gilded draft added separately.",
+    "All candidate JSON is outside runtime path registry. Candidates are not a complete loadable datapack; incomplete scope tags, graph prerequisites, native/provider gates, semantics, and old-runtime duplicate guard require review."
   ],
   "trees": [
     {
@@ -101,16 +102,17 @@
       "tree": "monk",
       "nodes": 18,
       "coverage": {
-        "available": 12,
+        "available": 14,
         "partial": 4,
-        "gap": 2,
+        "gap": 0,
         "held": 0
-      }
+      },
+      "candidate_nodes": 17
     },
     {
       "tree": "gilded",
       "nodes": 10,
-      "coverage": "isolated native implementation, two paid drafts"
+      "coverage": "food rite acquisition candidate; isolated native behaviors and paid loot drafts still require selective integration"
     }
   ]
 }

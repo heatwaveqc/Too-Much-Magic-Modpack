@@ -7,7 +7,8 @@
   "notes": [
     "The base four are Average +20% OF APPROVED REFERENCE MAX PER RANK in the current flat preview, not a verified cross-mod percentage modifier.",
     "Mixed survival/combat/utility stock effects remain design-only, with real behavior left on old tabs until parity and save tests.",
-    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+    "Exact four original attribute pilots translated separately; no normalization or new percent-based semantics approved."
   ],
   "proposed_paid_currency": "tmm_progression:mxp",
   "native_level_gates_pending": false,

@@ -548,6 +548,42 @@
   },
   "notes": [
     "Level 20 capstone undefined in source. Source draft's fire immunity is rank 18; lava fishing unlocks at initiation per LIVE-TEST-READINESS.md. Existing gold+Netherite tool rules, direct golden weapon melee, and general Gilded food rules require reconciliation with later Golden Dragon gold-only diet and claw/breath eligibility. No new values invented.",
-    "No source at runtime activated. Existing isolated Gilded Java is first-party and should be selectively generalized, not wholesale merged."
-  ]
+    "No source at runtime activated. Existing isolated Gilded Java is first-party and should be selectively generalized, not wholesale merged.",
+    "Food rite now has native generic acquisition backing; candidate only, requires actual rite tag and compatibility/provider gating. Virtual loot caps can opt into 10 with max_total:10; claw/breath ownership and original Gilded hooks still require port/QA."
+  ],
+  "food_rite_candidate": {
+    "enrollment": "food",
+    "food_rite": {
+      "target": "#tmm_progression:gilded_rite_foods",
+      "when": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "dimension",
+            "id": "minecraft:the_nether"
+          },
+          {
+            "type": "equipped",
+            "slot": "head",
+            "target": "minecraft:golden_helmet"
+          },
+          {
+            "type": "equipped",
+            "slot": "chest",
+            "target": "minecraft:golden_chestplate"
+          },
+          {
+            "type": "equipped",
+            "slot": "legs",
+            "target": "minecraft:golden_leggings"
+          },
+          {
+            "type": "equipped",
+            "slot": "feet",
+            "target": "minecraft:golden_boots"
+          }
+        ]
+      }
+    }
+  }
 }
