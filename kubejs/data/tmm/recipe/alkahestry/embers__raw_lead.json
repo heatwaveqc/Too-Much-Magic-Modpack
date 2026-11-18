@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "embers:raw_lead"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 108,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "embers:raw_lead"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 6
+}
