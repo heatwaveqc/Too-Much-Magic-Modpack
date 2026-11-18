@@ -1,31 +1,40 @@
 package io.github.heatwaveqc.tmm.tradersvengence.runtime;
 
-import com.google.gson.JsonParser;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.HexFormat;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CaliberArmsAssetsTest {
-    private static final String ROOT = "/META-INF/traders_vengence/caliberarms/";
+    // Pinned SHA-256 checks derived independently from the extracted donor assets.
+    // Pure JDK/JUnit: no game, Gson or NeoForge test runtime dependency.
+    private static final Map<String, String> HASHES = Map.ofEntries(
+        Map.entry("META-INF/traders_vengence/caliberarms/CREDITS.md", "be2df15106e6d7444842cb1a49c3eb5c5b52d06b15dfd793ea79a37448f4570b"),
+        Map.entry("META-INF/traders_vengence/caliberarms/LICENSE.txt", "756135f71454163f1b3f61f715df971de1fea55a2d91ac1e4fac97a4ffca437a"),
+        Map.entry("META-INF/traders_vengence/caliberarms/provenance.json", "407dc72b0dd416ba19d9c4e4fb0a8b0b61035e7b87fb730b0cad2eb519922249"),
+        Map.entry("assets/traders_vengence/models/item/npc_pistol.json", "2f6c85fd3332ccf07b77386fcd247e1b0abfa2bf3b76cf55286176a0b9adff33"),
+        Map.entry("assets/traders_vengence/sounds.json", "7aa784c778c8c60a17814750d0412c5bc90ee0ff7a792a8bc85ee91c034b1f62"),
+        Map.entry("assets/traders_vengence/sounds/guns/m1911/fire_1.ogg", "fa7280863cbb7579ed9aa0bd7f231994b3b06c2c37b8a7597326238e0d949f8b"),
+        Map.entry("assets/traders_vengence/sounds/guns/m1911/fire_2.ogg", "1fdb4e4a01777387cd7316505db265b530a1549597c297fd566a088e8316aedb"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/mag_in_1.ogg", "f4d98c43adc0ab505b33cc8694e83595a15a36d00524cd521e08a2b49dcd9dab"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/mag_in_2.ogg", "f20ad8f08c05d2870f1d2098d8ca8528e24c3ade6b2bf79324a8afb044fc57ef"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/mag_out_1.ogg", "e1d7b2f2b475b917a71d383a309284368a3942c73283301458f55ae6870fad04"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/mag_out_2.ogg", "c8dacb027062e7b2e7295de0840fae1d3d2847af407be0e534d0938810670dac"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/slide_1.ogg", "523b49c8a7ee3d285785428215c85d23dcc2dac2e0597cd0e0dfddc5c706f841"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/slide_2.ogg", "97b0c920d9254d32e4f08fe0f1771a2da76565c267f48f60e51535d10ec546ca"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/slide_3.ogg", "5cbbdd1e2a25541e60fa131bcd89898aacea3702fdfaf5818121067703cc8b6c"),
+        Map.entry("assets/traders_vengence/sounds/reload/pistol/slide_4.ogg", "856d1735035e03e24dcbda9d2e6017341d599e8b38de7164bacffea485007e1f"),
+        Map.entry("assets/traders_vengence/textures/item/gun/m1911.png", "cc590d82f08e6143ae38d59ba2d670e8955ad9c1789be751d9d3f7c870769bb1")
+    );
+
     @Test void allAuditedDonorFilesArePresentAndByteExact() throws Exception {
-        try (var input = getClass().getResourceAsStream(ROOT + "provenance.json")) {
-            assertNotNull(input);
-            var manifest = JsonParser.parseReader(new InputStreamReader(input, StandardCharsets.UTF_8)).getAsJsonObject();
-            assertEquals("88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90",
-                manifest.get("jar_sha256").getAsString());
-            var files = manifest.getAsJsonObject("files");
-            assertEquals(15, files.size());
-            assertTrue(files.has("META-INF/traders_vengence/caliberarms/LICENSE.txt"));
-            assertTrue(files.has("META-INF/traders_vengence/caliberarms/CREDITS.md"));
-            for (var entry : files.entrySet()) {
-                try (var resource = getClass().getResourceAsStream("/" + entry.getKey())) {
-                    assertNotNull(resource, entry.getKey());
-                    assertEquals(entry.getValue().getAsString(), HexFormat.of().formatHex(
-                        MessageDigest.getInstance("SHA-256").digest(resource.readAllBytes())), entry.getKey());
-                }
+        assertEquals(16, HASHES.size());
+        for (var entry : HASHES.entrySet()) {
+            try (var resource = getClass().getResourceAsStream("/" + entry.getKey())) {
+                assertNotNull(resource, entry.getKey());
+                assertEquals(entry.getValue(), HexFormat.of().formatHex(
+                    MessageDigest.getInstance("SHA-256").digest(resource.readAllBytes())), entry.getKey());
             }
         }
     }
