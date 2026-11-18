@@ -38,5 +38,14 @@ class MechanicalSpecTest {
         assertEquals(1200,MechanicalSpec.fasterTimer(6000,99));
         assertEquals(1,MechanicalSpec.fasterTimer(1,4));
     }
+    @Test void combatStateRules(){
+        assertTrue(MechanicalSpec.crossesBelow(.4,.29,.3));
+        assertFalse(MechanicalSpec.crossesBelow(.29,.2,.3));
+        assertEquals(1,MechanicalSpec.nextStreak(4,5,false));
+        assertEquals(5,MechanicalSpec.nextStreak(5,5,true));
+        for(String type:new String[]{"hit_streak","melee_reflection","quarry_mark"})
+            assertDoesNotThrow(()->parse("{\"type\":\""+type+"\",\"target\":\"test:quarry\",\"per_rank\":0.2}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"hit_streak\",\"target\":\"test:quarry\",\"per_rank\":0.2,\"params\":{\"max_stacks\":21}}"));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }

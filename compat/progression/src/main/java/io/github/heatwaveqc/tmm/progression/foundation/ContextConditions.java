@@ -32,6 +32,32 @@ public final class ContextConditions {
         var window=new ConditionSpec.TimeWindow(start,end);
         return p->truth(window.contains(p.level().getDayTime()));
     }
+    public static Condition<ServerPlayer> moon(int phase){
+        if(phase<0||phase>7)throw new IllegalArgumentException("Invalid moon phase");
+        return p->p.level().dimensionType().natural()?truth(p.level().getMoonPhase()==phase):UNAVAILABLE;
+    }
+    /** Per-predicate short cache; unloaded chunks never scanned or forced. */
+    public static Condition<ServerPlayer> nearbyBlock(String target,int radius,int minimum){
+        if(!target.matches("#?[a-z0-9_.-]+:[a-z0-9_./-]+")||radius<1||radius>4||minimum<1||minimum>128)
+            throw new IllegalArgumentException("Unsafe nearby-block condition");
+        boolean tag=target.startsWith("#");
+        var id=ResourceLocation.parse(tag?target.substring(1):target);
+        record Sample(net.minecraft.world.level.Level level,net.minecraft.core.BlockPos pos,long tick,Condition.Result result){}
+        var cache=new java.util.WeakHashMap<ServerPlayer,Sample>();
+        return p->{
+            if(tag?BuiltInRegistries.BLOCK.getTag(TagKey.create(Registries.BLOCK,id)).isEmpty():!BuiltInRegistries.BLOCK.containsKey(id))return UNAVAILABLE;
+            var level=p.serverLevel();var center=p.blockPosition();long now=level.getGameTime();
+            var old=cache.get(p);
+            if(old!=null&&old.level()==level&&old.pos().equals(center)&&now>=old.tick()&&now-old.tick()<20)return old.result();
+            int count=0;boolean incomplete=false;
+            for(var pos:net.minecraft.core.BlockPos.betweenClosed(center.offset(-radius,-radius,-radius),center.offset(radius,radius,radius))){
+                if(center.distSqr(pos)>radius*radius||level.isOutsideBuildHeight(pos))continue;
+                if(!level.hasChunkAt(pos)){incomplete=true;continue;}
+                if(Selectors.block(target,level.getBlockState(pos))&&++count>=minimum){cache.put(p,new Sample(level,center,now,PASS));return PASS;}
+            }
+            var result=incomplete?UNAVAILABLE:FAIL;cache.put(p,new Sample(level,center,now,result));return result;
+        };
+    }
     public static Condition<ServerPlayer> weather(String value){
         if(!Set.of("clear","rain","thunder").contains(value))throw new IllegalArgumentException("Unknown weather");
         return p->{

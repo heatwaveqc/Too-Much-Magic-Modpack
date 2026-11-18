@@ -29,13 +29,15 @@ import java.util.function.BiPredicate;
 public final class MechanicalEffects {
     private MechanicalEffects(){}
     private static final Map<UUID,Map<String,Long>> COOLDOWNS=new HashMap<>();
+    private record Streak(UUID target,String dimension,long until,int count){}
+    private static final Map<UUID,Map<String,Streak>> STREAKS=new HashMap<>();
     private static final String LAST_DAMAGE="tmm_progression:last_regeneration_damage";
     private static final List<BiPredicate<ServerPlayer,LivingEntity>> AREA_GUARDS=new java.util.concurrent.CopyOnWriteArrayList<>();
     public static void registerAreaGuard(BiPredicate<ServerPlayer,LivingEntity> guard){AREA_GUARDS.add(Objects.requireNonNull(guard));}
     private static final List<BiPredicate<ServerPlayer,ItemEntity>> MAGNET_GUARDS=new java.util.concurrent.CopyOnWriteArrayList<>();
     /** Claim/provider bridges can veto attraction; vanilla reservation is always honored. */
     public static void registerMagnetGuard(BiPredicate<ServerPlayer,ItemEntity> guard){MAGNET_GUARDS.add(Objects.requireNonNull(guard));}
-    public static void forget(ServerPlayer player){COOLDOWNS.remove(player.getUUID());}
+    public static void forget(ServerPlayer player){COOLDOWNS.remove(player.getUUID());STREAKS.remove(player.getUUID());}
     private static boolean usable(ServerPlayer p){return p.isAlive()&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p);}
     private static double amount(EffectRuntime.Active a,double cap){return MechanicalSpec.scaled(a.effect().amountPerRank(),a.rank(),cap);}
     private static double num(EffectRuntime.Active a,String key,double d,double min,double max){return MechanicalSpec.number(a.effect().params(),key,d,min,max);}
@@ -93,11 +95,13 @@ public final class MechanicalEffects {
         return fx.weapon().isEmpty()||weapon!=null&&Selectors.item(fx.weapon(),weapon);
     }
     public static void incoming(LivingIncomingDamageEvent event){
-        if(event.isCanceled()||event.getAmount()<=0||!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
+        if(event.isCanceled()||event.getAmount()<=0)return;
+        if(event.getEntity() instanceof ServerPlayer defender&&usable(defender)&&reflect(defender,event))return;
+        if(!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
         double multiplier=1;
         for(var a:EffectRuntime.active(p)){
             var fx=a.effect();
-            if(!fx.type().equals("critical_hit")&&!fx.type().equals("damage_at_low_health")&&!fx.type().equals("backstab"))continue;
+            if(!fx.type().equals("critical_hit")&&!fx.type().equals("damage_at_low_health")&&!fx.type().equals("backstab")&&!fx.type().equals("hit_streak"))continue;
             if(!match(p,event.getEntity(),event.getSource(),fx))continue;
             if(fx.type().equals("critical_hit")&&roll(p,a,amount(a,1)*num(a,"chance",1,0,1)))
                 multiplier*=num(a,"multiplier",2,1,5);
@@ -105,8 +109,39 @@ public final class MechanicalEffects {
                 multiplier*=1+amount(a,5);
             else if(fx.type().equals("backstab")&&event.getSource().getDirectEntity()==p&&rear(p,event.getEntity(),num(a,"min_rear_cosine",0.5,0,1)))
                 multiplier*=1+amount(a,2);
+            else if(fx.type().equals("hit_streak"))multiplier*=1+Math.min(5,amount(a,2)*streak(p,a,event.getEntity()));
         }
         if(multiplier!=1)event.setAmount((float)Math.min(1000000,event.getAmount()*Math.min(10,multiplier)));
+    }
+    private static boolean reflect(ServerPlayer p,LivingIncomingDamageEvent event){
+        var src=event.getSource();
+        if(!(src.getEntity() instanceof Monster mob)||src.getDirectEntity()!=mob||!mob.isAlive()||p.isAlliedTo(mob)||!areaAllowed(p,mob)
+            ||src.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY))return false;
+        for(var a:EffectRuntime.active(p)){
+            var fx=a.effect();
+            if(!fx.type().equals("melee_reflection")||!Selectors.entity(fx.selector(),mob)||!EffectRuntime.sourceMatches(fx.damageTag(),src))continue;
+            if(!roll(p,a,amount(a,0.75)*num(a,"chance",1,0,1)))continue;
+            float reflected=(float)Math.min(num(a,"max_damage",20,0.01,100),event.getAmount()*num(a,"reflect_fraction",1,0,1));
+            event.setCanceled(true);
+            if(reflected>0)mob.hurt(p.damageSources().magic(),reflected);
+            return true;
+        }
+        return false;
+    }
+    private static int streak(ServerPlayer p,EffectRuntime.Active a,LivingEntity target){
+        var map=STREAKS.get(p.getUUID());var s=map==null?null:map.get(a.id());
+        long now=p.server.overworld().getGameTime();
+        return s!=null&&s.until()>=now&&s.dimension().equals(p.level().dimension().location().toString())
+            &&(!MechanicalSpec.bool(a.effect().params(),"same_target",true)||s.target().equals(target.getUUID()))?s.count():0;
+    }
+    private static void creditStreak(ServerPlayer p,EffectRuntime.Active a,LivingEntity target){
+        var map=STREAKS.computeIfAbsent(p.getUUID(),k->new HashMap<>());
+        long now=p.server.overworld().getGameTime();
+        map.entrySet().removeIf(x->x.getValue().until()<now);
+        if(map.size()>=64&&!map.containsKey(a.id()))return;
+        int previous=streak(p,a,target);
+        int count=MechanicalSpec.nextStreak(previous,integer(a,"max_stacks",5,1,20),previous>0);
+        map.put(a.id(),new Streak(target.getUUID(),p.level().dimension().location().toString(),now+integer(a,"expiry_ticks",100,1,1200),count));
     }
     private static boolean rear(ServerPlayer p,LivingEntity target,double min){
         var look=target.getLookAngle();
@@ -118,12 +153,18 @@ public final class MechanicalEffects {
         if(event.getEntity() instanceof ServerPlayer defender&&usable(defender)){
             if(EffectRuntime.active(defender).stream().anyMatch(a->a.effect().type().equals("delayed_regeneration")))
                 ProgressionApi.setMode(defender,LAST_DAMAGE,Long.toString(defender.server.overworld().getGameTime()));
+            for(var a:EffectRuntime.active(defender)){
+                if(!a.effect().type().equals("health_threshold_status")||!EffectRuntime.sourceMatches(a.effect().damageTag(),event.getSource()))continue;
+                double max=Math.max(1,defender.getMaxHealth()),after=defender.getHealth()/max,before=Math.min(1,after+event.getNewDamage()/max);
+                if(MechanicalSpec.crossesBelow(before,after,num(a,"threshold",0.3,0.01,0.99))&&roll(defender,a,amount(a,1)*num(a,"chance",1,0,1)))status(defender,a);
+            }
             react(defender,event);
         }
         if(!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
         for(var a:EffectRuntime.active(p)){
-            var fx=a.effect();if(!fx.type().equals("status_on_hit")&&!fx.type().equals("heal_on_hit"))continue;
+            var fx=a.effect();if(!fx.type().equals("status_on_hit")&&!fx.type().equals("heal_on_hit")&&!fx.type().equals("hit_streak"))continue;
             if(!match(p,event.getEntity(),event.getSource(),fx))continue;
+            if(fx.type().equals("hit_streak")){creditStreak(p,a,event.getEntity());continue;}
             if(fx.type().equals("status_on_hit")){
                 if(event.getEntity().isAlive()&&roll(p,a,amount(a,1)*num(a,"chance",1,0,1)))status(event.getEntity(),a);
             }else if(roll(p,a,num(a,"chance",1,0,1)))heal(p,event.getEntity(),a,event.getNewDamage());
@@ -188,7 +229,7 @@ public final class MechanicalEffects {
         int budget=32,operations=4;
         var due=EffectRuntime.active(p).stream().filter(a->{
             String type=a.effect().type();
-            if(!type.equals("magnet")&&!type.equals("status_pulse"))return false;
+            if(!Set.of("magnet","status_pulse","quarry_mark").contains(type))return false;
             int interval=integer(a,"interval_ticks",type.equals("magnet")?5:20,type.equals("magnet")?5:10,200);
             return p.tickCount%(((interval+4)/5)*5)==0;
         }).sorted(Comparator.comparing(EffectRuntime.Active::id)).toList();
@@ -199,7 +240,7 @@ public final class MechanicalEffects {
             String type=a.effect().type();
             int targets=Math.min(budget,integer(a,"max_targets",type.equals("magnet")?16:8,1,32));
             operations--; // even empty queries consume an operation slot
-            budget-=type.equals("magnet")?magnet(p,a,targets):pulse(p,a,targets);
+            budget-=type.equals("magnet")?magnet(p,a,targets):type.equals("quarry_mark")?mark(p,a,targets):pulse(p,a,targets);
         }
     }
     private static boolean magnetAllowed(ServerPlayer p,ItemEntity item){
@@ -216,10 +257,26 @@ public final class MechanicalEffects {
         var found=new ArrayList<LivingEntity>();
         p.serverLevel().getEntities(EntityTypeTest.forClass(LivingEntity.class),p.getBoundingBox().inflate(r),
             t->t!=p&&t.isAlive()&&t.distanceToSqr(p)<=r*r&&Selectors.entity(a.effect().selector(),t)&&areaAllowed(p,t)
-                &&(scope.equals("hostile")?t instanceof Monster&&!(t instanceof TamableAnimal animal&&animal.isTame())&&!p.isAlliedTo(t):
+                &&(scope.equals("quarry")?quarry(p,t):scope.equals("hostile")?t instanceof Monster&&!(t instanceof TamableAnimal animal&&animal.isTame())&&!p.isAlliedTo(t):
                     (!(t instanceof Player)||MechanicalSpec.bool(a.effect().params(),"allow_allied_players",false))
                     &&(p.isAlliedTo(t)||t instanceof TamableAnimal owned&&owned.isOwnedBy(p))),found,limit);
         found.forEach(t->status(t,a));return found.size();
+    }
+    private static boolean quarry(ServerPlayer p,LivingEntity t){
+        return t!=p&&t.isAlive()&&!(t instanceof Player)&&!p.isAlliedTo(t)&&!(t instanceof TamableAnimal animal&&animal.isTame());
+    }
+    private static int mark(ServerPlayer p,EffectRuntime.Active a,int limit){
+        double r=amount(a,32);if(r<=0)return 0;
+        var found=new ArrayList<LivingEntity>();
+        p.serverLevel().getEntities(EntityTypeTest.forClass(LivingEntity.class),p.getBoundingBox().inflate(r),
+            t->quarry(p,t)&&Selectors.entity(a.effect().selector(),t)&&areaAllowed(p,t)&&t.distanceToSqr(p)<=r*r,found,limit);
+        LivingEntity best=null;double nearest=r*r;
+        for(var t:found){
+            var d=t.getEyePosition().subtract(p.getEyePosition());double ds=d.lengthSqr();
+            if(ds>0.01&&ds<nearest&&p.getLookAngle().dot(d.normalize())>=num(a,"min_look_cosine",0.985,0.5,1)&&p.hasLineOfSight(t)){best=t;nearest=ds;}
+        }
+        if(best!=null)best.addEffect(new MobEffectInstance(net.minecraft.world.effect.MobEffects.GLOWING,integer(a,"duration_ticks",80,1,1200),0,true,false,true));
+        return found.size();
     }
     private static int magnet(ServerPlayer p,EffectRuntime.Active a,int limit){
         if(p.isCrouching())return 0;

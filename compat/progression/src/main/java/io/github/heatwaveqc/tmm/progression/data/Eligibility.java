@@ -64,6 +64,8 @@ public final class Eligibility {
             case "health_fraction","food_level" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.meter(type,
                 Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsDouble());
             case "time_window" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.time(node.get("start").getAsInt(),node.get("end").getAsInt());
+            case "moon_phase" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.moon(node.get("phase").getAsInt());
+            case "nearby_block" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.nearbyBlock(node.get("target").getAsString(),node.get("radius").getAsInt(),node.has("minimum")?node.get("minimum").getAsInt():1);
             case "weather" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.weather(node.get("value").getAsString());
             case "player_state" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.state(node.get("state").getAsString(),
                 !node.has("value")||node.get("value").getAsBoolean());

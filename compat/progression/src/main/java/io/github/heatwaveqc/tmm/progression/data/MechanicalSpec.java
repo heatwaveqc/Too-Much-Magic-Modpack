@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -38,7 +38,7 @@ public final class MechanicalSpec {
         var p=fx.params();double a=fx.amountPerRank();String type=fx.type();
         if(type.equals("attribute")&&p.containsKey("max_contribution"))number(p,"max_contribution",0,0,1000000);
         if(!known(type))return;
-        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting","backstab").contains(type))
+        if(!fx.weapon().isEmpty()&&!Set.of("status_on_hit","heal_on_hit","heal_on_kill","critical_hit","damage_at_low_health","ordinary_drop_bonus","crop_bonus","virtual_fortune","virtual_looting","backstab","hit_streak").contains(type))
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
             case "food_efficiency","vanilla_xp_bonus" -> bounded(a,0,2);
@@ -50,6 +50,10 @@ public final class MechanicalSpec {
             case "breeding_cooldown","baby_growth" -> {bounded(a,0,4); scoped(fx);}
             case "bonemeal_growth" -> {bounded(a,0,1); scoped(fx); integer(p,"extra_stages",1,1,3);}
             case "projectile_deflection" -> {bounded(a,0,1);proc(p);number(p,"min_front_cosine",0.5,0,1);}
+            case "hit_streak" -> {bounded(a,0,2);scoped(fx);integer(p,"max_stacks",5,1,20);integer(p,"expiry_ticks",100,1,1200);bool(p,"same_target",true);delivery(p);}
+            case "health_threshold_status" -> {status(p);bounded(a,0,1);number(p,"threshold",0.3,0.01,0.99);proc(p);}
+            case "melee_reflection" -> {bounded(a,0,1);scoped(fx);proc(p);number(p,"reflect_fraction",1,0,1);number(p,"max_damage",20,0.01,100);}
+            case "quarry_mark" -> {bounded(a,0,32);scoped(fx);integer(p,"interval_ticks",20,10,200);integer(p,"duration_ticks",80,1,1200);number(p,"min_look_cosine",0.985,0.5,1);}
             case "glide_control_bonus" -> bounded(a,0,0.1);
             case "backstab" -> {bounded(a,0,2);number(p,"min_rear_cosine",0.5,0,1);}
             case "counter_attack" -> {
@@ -99,7 +103,8 @@ public final class MechanicalSpec {
                 status(p);bounded(a,0,32);integer(p,"interval_ticks",20,10,200);
                 integer(p,"max_targets",8,1,32);
                 bool(p,"allow_allied_players",false);
-                if(!Set.of("self","hostile","allied").contains(p.getOrDefault("scope","self")))
+                if(p.getOrDefault("scope","self").equals("quarry")){scoped(fx);if(!p.get("effect").equals("minecraft:glowing"))throw new IllegalArgumentException("Quarry pulse is highlighting only");}
+                if(!Set.of("self","hostile","allied","quarry").contains(p.getOrDefault("scope","self")))
                     throw new IllegalArgumentException("Invalid pulse scope");
                 // Leased self/ally effects expire naturally. No arbitrary PvP or instant effect farming.
             }
@@ -140,6 +145,8 @@ public final class MechanicalSpec {
         if(!Set.of("melee","projectile","any").contains(p.getOrDefault("delivery","any")))
             throw new IllegalArgumentException("Invalid delivery");
     }
+    public static boolean crossesBelow(double before,double after,double threshold){return before>threshold&&after<=threshold;}
+    public static int nextStreak(int prior,int cap,boolean sameSequence){return Math.min(cap,sameSequence?Math.max(0,prior)+1:1);}
     public static double scaled(double amount,int rank,double cap){
         return Math.min(cap,Math.max(0,amount*Math.max(0,rank)));
     }
