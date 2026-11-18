@@ -2182,6 +2182,20 @@
       "packwiz_slug": "theurgy"
     },
     {
+      "id": "theurgy-kubejs",
+      "name": "Theurgy KubeJS",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "1.21.1-neoforge-1.6.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/theurgy-kubejs/files/8838118",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "theurgy-kubejs",
+      "candidate_file_id": 8838118,
+      "note": "Owner-approved 2026-11-17 (#324): next deployment intake. Official Theurgy/KubeJS integration for custom alchemical sulfurs and recipes; verify exact dependency ranges against Theurgy 1.79.0 and KubeJS 2101.7.2-build.381, provider hash and Packwiz pin before enabling. Target all regular material mob drops, not gear/armor or secondary magical harvest products such as Malum spirit items; audit item identities, rarity and existing recipes before generating. No full build authorized."
+    },
+    {
       "id": "titanium",
       "name": "Titanium",
       "category": "dependency",
