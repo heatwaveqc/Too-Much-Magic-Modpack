@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -47,6 +47,9 @@ public final class MechanicalSpec {
                 if(!fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+")||fx.selector().equals("tmm_progression:mxp"))
                     throw new IllegalArgumentException("Native XP bonus requires explicit non-MXP system");
             }
+            case "breeding_cooldown","baby_growth" -> {bounded(a,0,4); scoped(fx);}
+            case "bonemeal_growth" -> {bounded(a,0,1); scoped(fx); integer(p,"extra_stages",1,1,3);}
+            case "projectile_deflection" -> {bounded(a,0,1);proc(p);number(p,"min_front_cosine",0.5,0,1);}
             case "glide_control_bonus" -> bounded(a,0,0.1);
             case "backstab" -> {bounded(a,0,2);number(p,"min_rear_cosine",0.5,0,1);}
             case "counter_attack" -> {
@@ -119,6 +122,14 @@ public final class MechanicalSpec {
             case "lava_vision" -> {bounded(a,0.1,128);bool(p,"default_enabled",true);}
             default -> throw new IllegalArgumentException("Unhandled mechanical effect");
         }
+    }
+    private static void scoped(Definition.Effect fx){
+        if(fx.selector().isEmpty()||fx.selector().equals("*"))throw new IllegalArgumentException("Effect requires explicit target");
+    }
+    /** A positive speed multiplier reduces a fixed timer, never below one tick. */
+    public static int fasterTimer(int ticks,double rate){
+        if(ticks<=0)return 0;
+        return Math.max(1,(int)Math.ceil(ticks/(1+Math.min(4,Math.max(0,rate)))));
     }
     private static void proc(Map<String,String> p){
         number(p,"chance",1,0,1);integer(p,"cooldown_ticks",0,0,72000);

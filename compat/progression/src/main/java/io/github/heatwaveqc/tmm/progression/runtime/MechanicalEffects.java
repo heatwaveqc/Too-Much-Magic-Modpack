@@ -66,6 +66,23 @@ public final class MechanicalEffects {
         catch(RuntimeException|LinkageError denied){return false;}
         return true;
     }
+    /** Neutralize a hostile vanilla arrow; no ammo, ownership transfer, or retaliatory damage. */
+    public static void deflect(ServerPlayer p,net.neoforged.neoforge.event.entity.ProjectileImpactEvent event){
+        if(event.isCanceled()||!usable(p)||!(event.getProjectile() instanceof AbstractArrow arrow)
+            ||arrow instanceof net.minecraft.world.entity.projectile.ThrownTrident
+            ||!(arrow.getOwner() instanceof Monster hostile)||p.isAlliedTo(hostile)||!areaAllowed(p,hostile))return;
+        var velocity=arrow.getDeltaMovement();
+        if(velocity.lengthSqr()<0.001)return;
+        for(var a:EffectRuntime.active(p)){
+            var fx=a.effect();
+            if(!fx.type().equals("projectile_deflection")||!Selectors.entity(fx.selector(),hostile)
+                ||p.getLookAngle().dot(velocity.normalize().scale(-1))<num(a,"min_front_cosine",0.5,0,1))continue;
+            if(!roll(p,a,amount(a,1)*num(a,"chance",1,0,1)))continue;
+            event.setCanceled(true);
+            arrow.discard();
+            return;
+        }
+    }
     private static boolean match(ServerPlayer p,LivingEntity target,DamageSource source,Definition.Effect fx){
         if(target==p||target instanceof Player||p.isAlliedTo(target)||
             (target instanceof TamableAnimal tame&&tame.isTame())||!Selectors.entity(fx.selector(),target)||!EffectRuntime.sourceMatches(fx.damageTag(),source))return false;

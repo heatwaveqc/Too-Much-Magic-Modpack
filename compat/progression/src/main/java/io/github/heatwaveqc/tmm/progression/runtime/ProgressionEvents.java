@@ -47,6 +47,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, GrowthEffects::breed);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, GrowthEffects::bonemeal);
+        NeoForge.EVENT_BUS.addListener(GrowthEffects::finish);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::equipmentChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::targetChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
@@ -137,7 +140,8 @@ public final class ProgressionEvents {
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
             { ClassAbilities.arrowImpact(defender,event);
-              EffectHandlers.projectileImpact(defender,event); }
+              if (!event.isCanceled()) MechanicalEffects.deflect(defender,event);
+              if (!event.isCanceled()) EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)

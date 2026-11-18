@@ -29,5 +29,14 @@ class MechanicalSpecTest {
             "{\"type\":\"critical_hit\",\"per_rank\":0.2,\"params\":{\"chance\":\"NaN\"}}",
             "{\"type\":\"heal_on_kill\",\"per_rank\":0.1,\"params\":{\"basis\":\"damage\"}}"})assertThrows(IllegalArgumentException.class,()->parse(fx));
     }
+    @Test void growthAndDefenseSchema(){
+        for(String type:new String[]{"breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection"})
+            assertDoesNotThrow(()->parse("{\"type\":\""+type+"\",\"target\":\"test:target\",\"per_rank\":0.2}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"baby_growth\",\"per_rank\":1}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"bonemeal_growth\",\"target\":\"test:crop\",\"per_rank\":0.2,\"params\":{\"extra_stages\":4}}"));
+        assertEquals(3000,MechanicalSpec.fasterTimer(6000,1));
+        assertEquals(1200,MechanicalSpec.fasterTimer(6000,99));
+        assertEquals(1,MechanicalSpec.fasterTimer(1,4));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }
