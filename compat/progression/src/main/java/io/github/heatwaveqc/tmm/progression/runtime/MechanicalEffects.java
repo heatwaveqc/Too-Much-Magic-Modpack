@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.data.MechanicalSpec;
+import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.foundation.MagnetMotion;
 import io.github.heatwaveqc.tmm.progression.model.Definition;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,6 +29,9 @@ import java.util.function.BiPredicate;
 public final class MechanicalEffects {
     private MechanicalEffects(){}
     private static final Map<UUID,Map<String,Long>> COOLDOWNS=new HashMap<>();
+    private static final String LAST_DAMAGE="tmm_progression:last_regeneration_damage";
+    private static final List<BiPredicate<ServerPlayer,LivingEntity>> AREA_GUARDS=new java.util.concurrent.CopyOnWriteArrayList<>();
+    public static void registerAreaGuard(BiPredicate<ServerPlayer,LivingEntity> guard){AREA_GUARDS.add(Objects.requireNonNull(guard));}
     private static final List<BiPredicate<ServerPlayer,ItemEntity>> MAGNET_GUARDS=new java.util.concurrent.CopyOnWriteArrayList<>();
     /** Claim/provider bridges can veto attraction; vanilla reservation is always honored. */
     public static void registerMagnetGuard(BiPredicate<ServerPlayer,ItemEntity> guard){MAGNET_GUARDS.add(Objects.requireNonNull(guard));}
@@ -41,11 +45,25 @@ public final class MechanicalEffects {
         long now=p.server.overworld().getGameTime();
         var map=COOLDOWNS.computeIfAbsent(p.getUUID(),ignored->new HashMap<>());
         if(map.size()>256)map.entrySet().removeIf(entry->entry.getValue()<=now);
-        Long until=map.get(a.id());
-        if(until!=null&&now<until)return false;
-        if(p.getRandom().nextDouble()>=Math.min(1,chance))return false;
         int delay=integer(a,"cooldown_ticks",0,0,72000);
-        if(delay>0)map.put(a.id(),now+delay);
+        boolean persistent=MechanicalSpec.bool(a.effect().params(),"persistent_cooldown",false);
+        String key="tmm_progression:proc/"+UUID.nameUUIDFromBytes(a.id().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        long until=persistent?readTime(p,key,0):map.getOrDefault(a.id(),0L);
+        if(now<until&&until-now<=delay)return false;
+        if(p.getRandom().nextDouble()>=Math.min(1,chance))return false;
+        if(delay>0){
+            if(persistent)ProgressionApi.setMode(p,key,Long.toString(now+delay));
+            else map.put(a.id(),now+delay);
+        }
+        return true;
+    }
+    private static long readTime(ServerPlayer p,String key,long fallback){
+        try{return Long.parseLong(ProgressionApi.mode(p,key,Long.toString(fallback)));}
+        catch(NumberFormatException bad){return fallback;}
+    }
+    private static boolean areaAllowed(ServerPlayer owner,LivingEntity target){
+        for(var guard:AREA_GUARDS)try{if(!guard.test(owner,target))return false;}
+        catch(RuntimeException|LinkageError denied){return false;}
         return true;
     }
     private static boolean match(ServerPlayer p,LivingEntity target,DamageSource source,Definition.Effect fx){
@@ -73,7 +91,11 @@ public final class MechanicalEffects {
     }
     public static void postDamage(LivingDamageEvent.Post event){
         if(event.getNewDamage()<=0)return;
-        if(event.getEntity() instanceof ServerPlayer defender&&usable(defender))react(defender,event);
+        if(event.getEntity() instanceof ServerPlayer defender&&usable(defender)){
+            if(EffectRuntime.active(defender).stream().anyMatch(a->a.effect().type().equals("delayed_regeneration")))
+                ProgressionApi.setMode(defender,LAST_DAMAGE,Long.toString(defender.server.overworld().getGameTime()));
+            react(defender,event);
+        }
         if(!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
         for(var a:EffectRuntime.active(p)){
             var fx=a.effect();if(!fx.type().equals("status_on_hit")&&!fx.type().equals("heal_on_hit"))continue;
@@ -125,6 +147,16 @@ public final class MechanicalEffects {
     }
     public static void tick(ServerPlayer p){
         if(!usable(p)||p.tickCount%5!=0)return;
+        double healing=0;
+        long now=p.server.overworld().getGameTime(),hurt=readTime(p,LAST_DAMAGE,-1);
+        for(var a:EffectRuntime.active(p)){
+            if(!a.effect().type().equals("delayed_regeneration"))continue;
+            int interval=integer(a,"interval_ticks",20,20,200);
+            if(p.tickCount%(((interval+4)/5)*5)==0&&
+                (hurt<0||hurt>now||now-hurt>=integer(a,"after_damage_ticks",80,0,72000)))
+                healing+=amount(a,20);
+        }
+        if(healing>0&&p.getHealth()<p.getMaxHealth())p.heal((float)Math.min(20,healing));
         int budget=32,operations=4;
         var due=EffectRuntime.active(p).stream().filter(a->{
             String type=a.effect().type();
@@ -155,8 +187,10 @@ public final class MechanicalEffects {
         double r=amount(a,32);if(r<=0)return 0;
         var found=new ArrayList<LivingEntity>();
         p.serverLevel().getEntities(EntityTypeTest.forClass(LivingEntity.class),p.getBoundingBox().inflate(r),
-            t->t!=p&&t.isAlive()&&!(t instanceof Player)&&t.distanceToSqr(p)<=r*r&&Selectors.entity(a.effect().selector(),t)
-                &&(scope.equals("hostile")?t instanceof Monster&&!p.isAlliedTo(t):p.isAlliedTo(t)||t instanceof TamableAnimal animal&&animal.isOwnedBy(p)),found,limit);
+            t->t!=p&&t.isAlive()&&t.distanceToSqr(p)<=r*r&&Selectors.entity(a.effect().selector(),t)&&areaAllowed(p,t)
+                &&(scope.equals("hostile")?t instanceof Monster&&!(t instanceof TamableAnimal animal&&animal.isTame())&&!p.isAlliedTo(t):
+                    (!(t instanceof Player)||MechanicalSpec.bool(a.effect().params(),"allow_allied_players",false))
+                    &&(p.isAlliedTo(t)||t instanceof TamableAnimal owned&&owned.isOwnedBy(p))),found,limit);
         found.forEach(t->status(t,a));return found.size();
     }
     private static int magnet(ServerPlayer p,EffectRuntime.Active a,int limit){

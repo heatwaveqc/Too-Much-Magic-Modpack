@@ -178,10 +178,14 @@ public final class ClassAbilities {
     private static void exhaustion(ServerPlayer p) {
         float now = p.getFoodData().getExhaustionLevel();
         Float old = LAST_EXHAUSTION.put(p.getUUID(),now);
-        if (old == null || !unlocked(p,"hunger_discipline")) return;
-        if (now > old) {
-            float reduced = old + (now - old) * 0.5f
-                    * TyzMonkBridge.hungerMultiplier(p);
+        if(old==null||p.isCreative()||p.isSpectator())return;
+        boolean nativeHunger=unlocked(p,"hunger_discipline");
+        double rate=0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("hunger_efficiency"))
+            rate+=a.effect().amountPerRank()*a.rank();
+        double scale=(nativeHunger?0.5*TyzMonkBridge.hungerMultiplier(p):1)*Math.max(.05,1-rate);
+        if (now > old && scale<1) {
+            float reduced = old + (now - old) * (float)scale;
             p.getFoodData().setExhaustion(reduced);
             LAST_EXHAUSTION.put(p.getUUID(),reduced);
         }
@@ -221,8 +225,11 @@ public final class ClassAbilities {
 
     public static void jump(ServerPlayer p, LivingEvent.LivingJumpEvent event) {
         var active = effect(p,"monk_leap");
-        if (active == null) return;
-        double factor = Math.max(1.0,Math.min(1.5,number(active,"factor",1.2)));
+        double factor=active==null?1:Math.max(1.0,Math.min(1.5,number(active,"factor",1.2)));
+        double bonus=0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("jump_bonus"))bonus+=a.effect().amountPerRank()*a.rank();
+        factor=Math.min(3,factor*(1+Math.max(0,bonus)));
+        if(factor==1||p.isCreative()||p.isSpectator())return;
         Vec3 speed = p.getDeltaMovement();
         p.setDeltaMovement(speed.x,speed.y*factor,speed.z);
         p.hurtMarked = true;
@@ -320,8 +327,9 @@ public final class ClassAbilities {
     }
 
     public static void fall(ServerPlayer p,LivingFallEvent event) {
-        if (unlocked(p,"monk_leap"))
-            event.setDistance(Math.max(0.0f,event.getDistance()-3.0f));
+        double reduction=unlocked(p,"monk_leap")?3:0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("fall_reduction"))reduction+=a.effect().amountPerRank()*a.rank();
+        if(reduction>0&&!p.isCreative()&&!p.isSpectator())event.setDistance((float)Math.max(0,event.getDistance()-Math.min(128,reduction)));
     }
 
     /** Server-authoritative aimed movement; does not load chunks or teleport through solid blocks. */

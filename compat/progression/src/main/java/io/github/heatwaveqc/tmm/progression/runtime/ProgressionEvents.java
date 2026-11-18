@@ -71,6 +71,7 @@ public final class ProgressionEvents {
         }
     }
     private static void kill(LivingDeathEvent event) {
+        if(event.isCanceled())return;
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
             var credited=HunterExperience.kill(player,event.getEntity());

@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -42,6 +42,13 @@ public final class MechanicalSpec {
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
             case "food_efficiency","vanilla_xp_bonus" -> bounded(a,0,2);
+            case "delayed_regeneration" -> {
+                bounded(a,0,20);integer(p,"interval_ticks",20,20,200);
+                integer(p,"after_damage_ticks",80,0,72000);
+            }
+            case "hunger_efficiency" -> bounded(a,0,0.95);
+            case "jump_bonus" -> bounded(a,0,2);
+            case "fall_reduction" -> bounded(a,0,64);
             case "status_immunity" -> {
                 if(!p.getOrDefault("effect","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
                     throw new IllegalArgumentException("Immunity requires an exact effect ID");
@@ -77,6 +84,7 @@ public final class MechanicalSpec {
             case "status_pulse" -> {
                 status(p);bounded(a,0,32);integer(p,"interval_ticks",20,10,200);
                 integer(p,"max_targets",8,1,32);
+                bool(p,"allow_allied_players",false);
                 if(!Set.of("self","hostile","allied").contains(p.getOrDefault("scope","self")))
                     throw new IllegalArgumentException("Invalid pulse scope");
                 // Leased self/ally effects expire naturally. No arbitrary PvP or instant effect farming.
@@ -103,6 +111,7 @@ public final class MechanicalSpec {
     }
     private static void proc(Map<String,String> p){
         number(p,"chance",1,0,1);integer(p,"cooldown_ticks",0,0,72000);
+        bool(p,"persistent_cooldown",false);
         delivery(p);
     }
     private static void delivery(Map<String,String> p){

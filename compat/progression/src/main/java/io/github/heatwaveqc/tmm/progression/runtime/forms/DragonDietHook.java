@@ -12,13 +12,17 @@ import net.neoforged.fml.ModList;
  */
 public final class DragonDietHook {
  private DragonDietHook(){}
+ private static final ThreadLocal<Boolean> REENTRANT=ThreadLocal.withInitial(()->false);
  public static FoodProperties restore(ItemStack stack,LivingEntity entity,FoodProperties nativeResult){
     if(entity==null||stack.isEmpty()||!ModList.get().getModContainerById("dragonsurvival")
         .filter(mod->mod.getModInfo().getVersion().toString().startsWith("2.0.74")).isPresent())return nativeResult;
     FoodProperties base=stack.get(DataComponents.FOOD);
-    if(base==null)return nativeResult;
+    if(base==null||REENTRANT.get())return nativeResult;
+    REENTRANT.set(true);
+    try{
     boolean allow=entity instanceof ServerPlayer player?DietPermissions.dragonDrink(player,stack):
         entity.level().isClientSide&&io.github.heatwaveqc.tmm.progression.client.ClientDiet.allows(entity,stack);
     return allow?base:nativeResult;
+    }finally{REENTRANT.remove();}
  }
 }
