@@ -25,7 +25,14 @@ public final class MiningUtilities {
     private static final Map<UUID,Receipt> PENDING=new HashMap<>();
     private static final Map<UUID,Long> NEXT=new HashMap<>();
     private static final Set<UUID> RUNNING=new HashSet<>();
-    private static boolean usable(ServerPlayer p){return p.isAlive()&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p);}
+    private static final ThreadLocal<NativeBreak> NATIVE=new ThreadLocal<>();
+    private static final class NativeBreak {
+        final ServerPlayer player;final BlockPos pos;final ItemStack hand;
+        Receipt receipt;boolean bulk;
+        NativeBreak(ServerPlayer p,BlockPos pos){player=p;this.pos=pos.immutable();hand=p.getMainHandItem();}
+    }
+    private static boolean usable(ServerPlayer p){return p.isAlive()&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p)
+        &&p.getServer()!=null&&p.getServer().getPlayerList().getPlayer(p.getUUID())==p;}
     private static boolean allowed(ServerPlayer p,ServerLevel level,BlockPos pos,boolean reveal){
         if(!level.hasChunkAt(pos)||level.isOutsideBuildHeight(pos)||!level.getWorldBorder().isWithinBounds(pos)||!level.mayInteract(p,pos))return false;
         for(var guard:GUARDS)try{if(!guard.permits(p,pos,reveal))return false;}catch(RuntimeException|LinkageError bad){return false;}
@@ -37,17 +44,45 @@ public final class MiningUtilities {
             &&(fx.emptyHand()?hand.isEmpty():!hand.isEmpty()&&Selectors.item(fx.weapon(),hand))
             &&(!MechanicalSpec.bool(fx.params(),"sneak_only",true)||p.isCrouching());
     }
+    /** Own only the outer native player break, never a nested modded bulk break or a simulated drop. */
+    public static boolean nativeBreak(ServerPlayer p,BlockPos pos,java.util.function.BooleanSupplier original){
+        if(RUNNING.contains(p.getUUID())||!usable(p))return original.getAsBoolean();
+        NativeBreak prior=NATIVE.get();
+        if(prior!=null){
+            if(prior.player==p)prior.bulk=true;
+            return original.getAsBoolean();
+        }
+        var level=p.serverLevel();
+        if(!level.hasChunkAt(pos)||!level.getBlockState(pos).is(Tags.Blocks.ORES)
+            ||EffectRuntime.active(p).stream().noneMatch(a->eligible(a,p,level.getBlockState(pos),p.getMainHandItem())&&a.effect().amountPerRank()>0))
+            return original.getAsBoolean();
+        var root=new NativeBreak(p,pos);NATIVE.set(root);
+        try{
+            boolean result=original.getAsBoolean();
+            if(result&&!root.bulk&&root.receipt!=null&&!root.receipt.event().isCanceled()
+                &&p.serverLevel()==level&&level.hasChunkAt(pos)&&level.getBlockState(pos).getBlock()!=root.receipt.state().getBlock())
+                PENDING.putIfAbsent(p.getUUID(),root.receipt);
+            return result;
+        }finally{NATIVE.remove();}
+    }
     public static void observe(BlockDropsEvent event){
-        if(event.isCanceled()||!(event.getBreaker() instanceof ServerPlayer p)||!usable(p)||RUNNING.contains(p.getUUID())
-            ||PENDING.containsKey(p.getUUID())||event.getBlockEntity()!=null||!event.getState().is(Tags.Blocks.ORES))return;
+        if(event.isCanceled()||!(event.getBreaker() instanceof ServerPlayer p)||!usable(p)||RUNNING.contains(p.getUUID()))return;
+        var root=NATIVE.get();
+        if(root==null||root.player!=p){
+            // An additional ore drop outside the native stack before execution also invalidates a queued origin.
+            if(event.getState().is(Tags.Blocks.ORES))PENDING.remove(p.getUUID());
+            return;
+        }
+        if(!root.pos.equals(event.getPos())||root.receipt!=null){root.bulk=true;return;}
+        if(root.bulk||PENDING.containsKey(p.getUUID())||event.getBlockEntity()!=null||!event.getState().is(Tags.Blocks.ORES))return;
         var level=event.getLevel();long now=level.getGameTime();
         if(p.serverLevel()!=level||now<NEXT.getOrDefault(p.getUUID(),0L))return;
-        var hand=p.getMainHandItem();
-        if(hand.isEmpty()!=event.getTool().isEmpty()||!hand.isEmpty()&&hand.getItem()!=event.getTool().getItem())return;
+        var hand=root.hand;
+        if(p.getMainHandItem()!=hand||hand.isEmpty()!=event.getTool().isEmpty()||!hand.isEmpty()&&hand.getItem()!=event.getTool().getItem())return;
         if(p.distanceToSqr(event.getPos().getX()+.5,event.getPos().getY()+.5,event.getPos().getZ()+.5)>64)return;
         if(!allowed(p,level,event.getPos(),false))return;
         for(var a:EffectRuntime.active(p))if(eligible(a,p,event.getState(),hand)&&a.effect().amountPerRank()>0){
-            PENDING.put(p.getUUID(),new Receipt(level,event.getPos().immutable(),event.getState(),hand,a.id(),now,event));return;
+            root.receipt=new Receipt(level,event.getPos().immutable(),event.getState(),hand,a.id(),now,event);return;
         }
     }
     public static void forget(ServerPlayer p){PENDING.remove(p.getUUID());NEXT.remove(p.getUUID());RUNNING.remove(p.getUUID());}
@@ -102,10 +137,10 @@ public final class MiningUtilities {
         var nearest=new PriorityQueue<Seen>(Comparator.comparingDouble(Seen::distance).reversed());
         for(var cursor:BlockPos.betweenClosed(center.offset(-radius,-radius,-radius),center.offset(radius,radius,radius))){
             double d=center.distSqr(cursor);
-            if(d>radius*radius||!allowed(p,level,cursor,true))continue;
+            if(d>radius*radius||level.isOutsideBuildHeight(cursor)||!level.hasChunkAt(cursor))continue;
             if(nearest.size()==cap&&nearest.peek().distance()<=d)continue;
             var state=level.getBlockState(cursor);
-            if(!state.is(Tags.Blocks.ORES)||!Selectors.block(fx.selector(),state))continue;
+            if(!state.is(Tags.Blocks.ORES)||!Selectors.block(fx.selector(),state)||!allowed(p,level,cursor,true))continue;
             if(nearest.size()==cap)nearest.remove();
             nearest.add(new Seen(cursor.immutable(),d));
         }

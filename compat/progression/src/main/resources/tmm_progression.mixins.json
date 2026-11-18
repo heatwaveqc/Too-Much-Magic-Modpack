@@ -14,7 +14,8 @@
     "OwnedEffectDurationMixin",
     "OwnedPiglinMixin",
     "OwnedPiglinBruteMixin",
-    "OwnedAmmoMixin"
+    "OwnedAmmoMixin",
+    "OwnedNativeMiningMixin"
   ],
   "injectors": {
     "defaultRequire": 1
