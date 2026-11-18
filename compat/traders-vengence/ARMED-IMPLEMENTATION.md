@@ -53,3 +53,6 @@ Actual Trader JAR verification now rejects missing/duplicated/mismatched audited
 ### Phase 9 — minigun audio source integration
 - [x] Server spin-up on zero-to-active transition using built-in piston sound (lowered pitch), and authoritative firing flag in protocol v2. Immediate firing transitions plus ten-tick heartbeat; no client authority. Client one positional looping instance per tracked golem, stop recording once when firing ends; canceled on entity removal/world disconnect; stale snapshots fail closed. Donor default drone volume 1.0. No additional projectiles or damage changes.
 - [ ] Fresh compile, unit/packaging CI and separately authorized in-world audio/lifecycle checks. Original spin-up file intentionally omitted; see Phase 8 audit.
+
+### Phase 10 — minigun audio packaging gate
+The runtime validator requires the two exact audited OGG Git blob identities and exact packaged bytes; excludes the uncleared HUD recording. Synthetic packaging tests cover missing, modified, and uncleared audio. No live game boot or distribution assembly performed.

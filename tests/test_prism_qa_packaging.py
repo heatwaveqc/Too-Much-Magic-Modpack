@@ -21,17 +21,23 @@ def main() -> None:
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths
+    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths, MINIGUN_AUDIO_BLOBS
     def add_donor_fixture(z, directory, case="valid"):
         if directory.name != "traders-vengence":
             return
-        for path in caliberarms_asset_paths(directory):
+        for path in [*caliberarms_asset_paths(directory), *MINIGUN_AUDIO_BLOBS]:
             if case == "missing_donor_license" and path.endswith("/caliberarms/LICENSE.txt"):
+                continue
+            if case == "missing_minigun_audio" and path.endswith("/minigun_stop.ogg"):
                 continue
             data = (directory / "src/main/resources" / path).read_bytes()
             if case == "wrong_donor_audio" and path.endswith("/guns/m1911/fire_1.ogg"):
                 data += b"modified"
+            if case == "wrong_minigun_audio" and path.endswith("/minigun/minigun.ogg"):
+                data += b"modified"
             z.writestr(path, data)
+        if case == "uncleared_hud_audio":
+            z.writestr("assets/traders_vengence/sounds/hud_init.ogg", b"not allowed")
 
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
@@ -54,7 +60,8 @@ def main() -> None:
             j = folder / ("license-test-" + expected_path.name)
             cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
             if directory.name == "traders-vengence":
-                cases += ("missing_donor_license", "wrong_donor_audio")
+                cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
+                          "wrong_minigun_audio", "uncleared_hud_audio")
             for case in cases:
                 with zipfile.ZipFile(j, "w") as z:
                     declared = "All Rights Reserved" if case == "wrong_license" else expected_license(directory)
