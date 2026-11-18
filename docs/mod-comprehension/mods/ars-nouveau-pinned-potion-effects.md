@@ -36,7 +36,7 @@ Shared entityHurt handler then subtracts WARDING for magic-tagged damage and pro
 
 | Effect ID | Source-backed behavior and application scope |
 | --- | --- |
-| shocked | Tick scans worn armor plus main/offhand for **existence of FE item capability**, counts up to6; if count>0 attempts lightningBolt damage `20*count*(amp+1)`. Does not extract FE or require positive stored energy in this body. Damage immunity frames/events mean attempted tick damage is not measured DPS. EntityHurt handler also adds `3+3*amp` when its relevant Shocked condition applies; inspect source conditions rather than assume every hit. |
+| shocked | Tick scans worn armor plus main/offhand for **existence of FE item capability**, counts up to6; if count>0 attempts lightningBolt damage `20*count*(amp+1)`. Does not extract FE or require positive stored energy in this body. Damage immunity frames/events mean attempted tick damage is not measured DPS. EntityHurt handler also adds `3+3*amp` for exact LIGHTNING_BOLT damage while victim has Shocked; not every hit. |
 | summoning_sickness | Effect class supplies empty cure-set method. AbstractEffect.canSummon requires real player and absence of effect unless creative; summon glyphs apply it through normal helpers. It is a spell-summoning gate, not a claim all worker charms or other mods' summons are blocked. |
 | hex | MANA_REGEN_BONUS multiplier -0.5; halves LivingHealEvent amount. Shared hurt handler additionally adds `0.5+0.33*amp` when victim also poisoned, withered, burning, shocked or frozen>=threshold. It doesn't directly create those qualifying states. |
 | looting | DRYGMY attribute ADD_VALUE1; scoped enchant-loot mixin consumers audited in armor companion. Not automatically every loot table or actual Drygmy work bonus. |

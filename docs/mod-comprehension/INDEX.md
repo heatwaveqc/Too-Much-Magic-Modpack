@@ -353,3 +353,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-18 - Ars now has twenty-one companions, adding [five Enchanter tools](mods/ars-nouveau-pinned-enchanter-tools.md) and [spell archery](mods/ars-nouveau-pinned-archery.md). Exact recipes, effects-only inscription, personal mana/repair, ammo and load/fire failure boundaries are source-backed. Counts remain5source-complete/37researching; no runtime acceptance.
 
 - 2026-11-18 - Ars now has twenty-three companions: [equipped curios/foci](mods/ars-nouveau-pinned-curios-foci.md) and [potion storage/delivery](mods/ars-nouveau-pinned-potion-devices.md) added. Native effect bodies and remaining devices/world/addon/stage crosswalks remain open. Counts5/42source-complete,37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-four companions, adding [nineteen status consumers and eighteen brewed variants](mods/ars-nouveau-pinned-potion-effects.md), including22Java brewing registrations and actual damage/heal/expiry/movement gates. Source count remains5/42complete,37researching; remaining devices/world/addon/stage work stays explicit.

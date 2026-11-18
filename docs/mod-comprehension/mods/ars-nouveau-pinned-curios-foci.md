@@ -43,6 +43,8 @@ Summoning Focus requires a Wilden Tribute in its recipe, so it is a boss-linked 
 
 On SpellCastEvent by equipped player with cast method in sympatheticMethods (native list contains **Self only**), selects ISummon living entities in player-block AABB inflated30, filters ownerAlt equal to that player, clones context with summon as LivingCaster and uses EntitySpellResolver.onCast. No separate owner mana debit in this handler; original cast and event ordering still matter. It doesn't test event.isCanceled before cloning in its body, so “original canceled” isn't a proven universal no-side-effects guarantee. Addons can extend method list. Native prose mentions Self/Orbit examples, but Orbit alone is not an additional cast-method registration here.
 
+AbstractEffect.summonLivingEntity also checks equipped Summoning Focus after adding a living summon: creates child context, changes wrapped caster to that summon and resolves remaining effects on it through EntitySpellResolver. This is a separate continuation channel from sympathetic Self casts; owning an item alone does not prove every summon exposes this helper.
+
 On distinct SummonEvent.Death (extends Event, not SummonEvent), if ownerAlt wears Focus and damage source has entity different from owner, calls source entity.hurt for5 with a thorns source built from that **source entity itself**. This isn't measured actual final damage or ordinary owner-attributed retaliation; armor/events may alter it. No distance/wasExpiration predicate in this body beyond nonnull source and owner check. Effective PvP/claims/other summon compatibility needs both-sided evidence.
 
 ## Shaper's Focus and changed target propagation

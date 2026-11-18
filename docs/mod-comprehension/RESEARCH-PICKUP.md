@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after f0271ba8
+
+- Full request unfinished: **5/42source-complete,37researching**; no hard blocker. Hourly continuation active. Same research worktree/branch/PR265. Research Markdown only, preserve concurrent QA/integration and no subagents.
+- Ars now **twenty-four** binary companions. Added all19registered status consumers and18brewed variants,22Java brew mixes, actual Recovery heal-event bonus/Shielding exact damage-source floor, Blast last-tick explosion, Freezing threshold, Shocked FE-capability damage, Hex/Gravity/Bounce/Soaked/magic-find/event/attribute boundaries. Potion device companion now links effects instead of obsolete open-body gap. Added Summoning Focus continuation from AbstractEffect.summonLivingEntity, distinct from sympathetic Self cloning.
+- **Next**: remaining actual registered devices (prisms/detectors/redstone control/ArcanePlatform) and Mob/Void/Light jars where uncovered; native plant/pod/world acquisition; seven separately pinned addons; consolidate full stage and guide map plus exact pilot authoring/runtime crosswalk. Potion registration/effect audit complete at source level; don't repeat ModPotions inventory. Parent remains researching until mandatory and major optional gaps close.
+- Same external scratch/artifacts Ars5.13.5 JAR SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3; fresh ars-fresh-20261117 now includes allcommon/potions classes, ArsEvents, EntityMixin, StartupConfig and LibPotions. CFR --clobber true and inner siblings. EventHandler/entityHurt and entityHeal are effect consumers; native PublicEffect registration doesn't imply no functionality. Soaked actual wet/fire mixin matters; Shocked extra3+3amp is exactLIGHTNING_BOLT. No source finding grants exploit/bypass permission.
+- Validation PASS: researchUTF8,changedlinks/docs-onlyscope/whitespace,exactartifactSHA1,19effect/18potion/22brewing registrations; prior metadata/preflight receipts retained, no assembly/server/client/gameplay tests. Latest fetched integration remains2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae. Commitf0271ba8 andthischeckpoint pushed aftercommit, PR24companions; usegitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after 5a6460af
 
 - Full research unfinished: **5/42 source-complete,37researching**. No hard blocker; hourly continue-magic-mod-research active. Existing research branch/worktree/PR265. No subagents. Preserve concurrent QA/integration changes; research Markdown only.
