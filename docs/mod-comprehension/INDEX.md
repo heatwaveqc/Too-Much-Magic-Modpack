@@ -359,3 +359,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-18 - Ars now has twenty-six companions, adding [inventory/spell detectors](mods/ars-nouveau-pinned-detectors.md) and [prism/redstone/ritual controls](mods/ars-nouveau-pinned-routing-controls.md). Exact thresholds, pulse attribution, actual occlusion and routing/payment/failure behavior documented. Counts5source-complete/37researching unchanged; jars/world/addons/stage reconciliation remain.
 
 - 2026-11-18 - Ars now has twenty-seven companions with [Void and Light utility jars](mods/ars-nouveau-pinned-utility-jars.md). Item destruction/personal mana and portable light state boundaries source-backed; Mob Jar/all entity behaviors remain a distinct open branch. Counts5complete/37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-eight companions with [Containment Jar and all24native special entity roles](mods/ars-nouveau-pinned-mob-jars.md): capture/release/state, direct insertion, item production, trade, redstone and boss-role boundaries. Counts5source-complete/37researching unchanged; world acquisition/addons/fullstage work remains.

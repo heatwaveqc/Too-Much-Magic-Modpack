@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after 21e3bd67
+
+- Full research unfinished: **5/42source-complete,37researching**. No hard blocker. Hourly continuation active; same worktree/branch/PR265, no subagents, Markdown-only and preserve concurrent QA/integration.
+- Ars now **twenty-eight** companions. Containment/Mob Jar audit traces acquisition,60tick/3range capture, whitelist precedence and pre-save leash/raid/POI side effects,500Source postbatch debt, serialization/release/Dragon blacklist, direct egg/whole-item insertion, shared behavior/outputs/power semantics and **all24native special entity registrations**. Native optional behavior rows include rare/boss roles as findings, not approved capture/balance/claims. Parent stays researching.
+- **Next**: native plants/pods/world material acquisition; remaining functional registry items/gaps (do not confuse optional cosmetic blocks with unresearched major systems); seven exact-JAR addon profiles; consolidate full native stage/guide walkthrough and exact pilot authoring/runtime crosswalk. MobJar role inventory is done; don't spend another run rediscovering it. Capability forwarding and effective runtime tags/transport/state tests remain acceptance boundaries, not reasons to re-audit recipes.
+- Scratch same Temp/tmm-magic-research-20261116 exact Ars5.13.5 JAR SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3; fresh ars-fresh-20261117 now includes all23common/mob_jar classes, JarBehaviorRegistry/APIRegistry with anonymous ItemEntity handler, JarEvents and JarBehavior base. Existing RitualMobCapture and MobJar/Tile/Item/Data fresh. Use CFR --clobbertrue, all inner siblings; bounded methods avoid output truncation.
+- Validation PASS: researchUTF8/changedlinks/docs-onlyscope/whitespace,exactSHA1,24nativeJarBehaviorRegistry registrations,2acquisitionoutputs andnativeDragonreleaseblacklist. Latest fetched integration remains2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae. Prior metadata/preflight receipts separate; no assembly/server/client/gameplay tests. Commit21e3bd67 plus checkpoint pushed aftercommit, PR28companions; inspectgitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after da960a92
 
 - Full research unfinished: **5/42source-complete,37researching**. No hard blocker; hourly continuation active. Same worktree/branch/PR265. Research Markdown only; preserve QA/integration changes; no subagents.

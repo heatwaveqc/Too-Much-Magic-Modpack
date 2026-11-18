@@ -1,6 +1,6 @@
 # Ars Nouveau pinned Void Jar and Jar of Light
 
-Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; CFR0.152. Evidence: VoidJar/VoidJarData, JarOfLight/LightJarData, ItemScrollData, EventHandler ItemEntityPickupEvent.Pre, ManaCap, Documentation/recipes/en_us. [Parent](ars-nouveau.md), [mana](ars-nouveau-pinned-casting.md), [Apparatus](ars-nouveau-pinned-crafting.md). Mob Jar capture and its many per-entity behaviors are a separate remaining audit. No client/lighting/pickup/claim/economy acceptance.
+Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; CFR0.152. Evidence: VoidJar/VoidJarData, JarOfLight/LightJarData, ItemScrollData, EventHandler ItemEntityPickupEvent.Pre, ManaCap, Documentation/recipes/en_us. [Parent](ars-nouveau.md), [mana](ars-nouveau-pinned-casting.md), [Apparatus](ars-nouveau-pinned-crafting.md). [Mob Jar capture and24native special behaviors](ars-nouveau-pinned-mob-jars.md) are a separate audited system. No client/lighting/pickup/claim/economy acceptance.
 
 ## Two optional utility unlocks
 
