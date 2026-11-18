@@ -17,6 +17,8 @@ public final class MxpSourceConfig {
     public static final ModConfigSpec.DoubleValue NEO_EV_NETWORK_POOL;
     public static final ModConfigSpec.DoubleValue JAWR_INITIAL_BLOOD_POOL;
     public static final ModConfigSpec.DoubleValue PSI_INITIAL_POOL;
+    public static final ModConfigSpec.DoubleValue HEX_MEDIA_POOL;
+    public static final ModConfigSpec.DoubleValue EVILCRAFT_BLOOD_POOL;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
@@ -36,6 +38,15 @@ public final class MxpSourceConfig {
             .defineInRange("jawr_initial_blood", ResourceBaselines.JAWR_INITIAL_BLOOD, 0.0, 1.0e12);
         PSI_INITIAL_POOL=b.comment("Psi 110 first access personal pool. 0 disables standard CAD MXP.")
             .defineInRange("psi_initial_pool",ResourceBaselines.PSI_STARTING_POOL,0.0,1.0e12);
+        HEX_MEDIA_POOL=b.comment(
+                "EMC-derived fixed Hex Casting Media baseline: 50000 Media per 32 EMC, 1 EMC per base MXP.",
+                "1562500 native Media = 1000 base MXP; no live ProjectE lookup. 0 disables future verified adapter.",
+                "This reference does not enable a spell payment hook.")
+            .defineInRange("hexcasting_emc_media_reference",ResourceBaselines.HEX_EMC_MEDIA_REFERENCE,0.0,1.0e12);
+        EVILCRAFT_BLOOD_POOL=b.comment(
+                "Basic Blood Extractor reference: 5000 mB = 1000 base MXP. Actual eligible carried blood only.",
+                "0 disables future verified adapter; reference alone does not enable a hook.")
+            .defineInRange("evilcraft_portable_blood_reference",ResourceBaselines.EVILCRAFT_PORTABLE_BLOOD,0.0,1.0e12);
         b.pop();
         SPEC = b.build();
     }

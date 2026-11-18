@@ -15,5 +15,13 @@ public final class ResourceBaselines {
     public static final double JAWR_INITIAL_BLOOD = 900.0;
 
     public static final double PSI_STARTING_POOL=5000.0;
+    // Owner-approved EMC-derived reference (2026-11-18):
+    // 5 mB ordinary EvilCraft blood = 1 EMC = 1 base MXP;
+    // 50,000 native Hex Media = 32 EMC (ordinary amethyst shard).
+    // 1,000 MXP * 50,000 Media / 32 EMC = 1,562,500 Media.
+    // Fixed policy reference; never derived from live ProjectE prices.
+    public static final double HEX_EMC_MEDIA_REFERENCE = 1_562_500.0;
+    // Previously approved basic Blood Extractor reference (5,000 mB).
+    public static final double EVILCRAFT_PORTABLE_BLOOD = 5_000.0;
     private ResourceBaselines() {}
 }
