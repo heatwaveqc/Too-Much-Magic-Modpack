@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "neovitae:raw_demonite"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 3456,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "neovitae:raw_demonite"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 2
+}
