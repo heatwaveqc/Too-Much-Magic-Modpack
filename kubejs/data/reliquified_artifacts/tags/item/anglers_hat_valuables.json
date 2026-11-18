@@ -13,6 +13,8 @@
     {
       "id": "dragonsurvival:elder_dragon_dust",
       "required": false
-    }
+    },
+    "draconicevolution:draconium_dust",
+    "tmm:eldritch_logic_core"
   ]
 }
