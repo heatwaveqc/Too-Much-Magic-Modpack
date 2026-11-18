@@ -1,0 +1,60 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "type": "occultism:ritual",
+  "activation_item": {
+    "item": "occultism:book_of_binding_bound_marid"
+  },
+  "duration": 600,
+  "ingredients": [
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/primordial_powers"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/masters_of_magic"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/ancient_horrors"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/titans_of_destruction"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/fallen_sovereigns"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/conquerors_of_other_worlds"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/arcane_metallurgy"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/celestial_artifacts"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/forbidden_witchcraft"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/blood_and_spirit"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/magical_artifice"
+    },
+    {
+      "tag": "tmm:ritual_of_equivalent_exchange/sufficiently_advanced_magic"
+    }
+  ],
+  "pentacle_id": "occultism:craft_marid",
+  "result": {
+    "count": 1,
+    "id": "projecte:philosophers_stone"
+  },
+  "ritual_dummy": {
+    "count": 1,
+    "id": "projecte:philosophers_stone"
+  },
+  "ritual_type": "occultism:craft"
+}

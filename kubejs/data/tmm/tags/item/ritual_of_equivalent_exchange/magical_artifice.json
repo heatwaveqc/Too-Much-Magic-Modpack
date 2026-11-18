@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "eidolon_repraised:soulbone_amulet",
+    "embers:eldritch_insignia",
+    "psi:ebony_psimetal",
+    "psi:ivory_psimetal"
+  ]
+}
