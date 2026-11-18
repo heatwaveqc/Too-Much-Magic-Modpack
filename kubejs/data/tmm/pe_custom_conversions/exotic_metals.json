@@ -1,5 +1,5 @@
 {
-  "comment": "Owner-approved 2026-11-18. Replica base 8190, Thallasium and Iesnium base 576, Hellforged base 5760. Observed tags/IDs per runtime survey #348; Replica nugget tag supplied by #346. Preserve distinct Prismatic Demonite and intermediate fractions; only confirmed material forms. Iron's Mithril ingot parity with unawakened Draconium; native 4 scrap per ingot, raw 6x scrap and ore 3x raw. No Embers Dwarven Mithril anchors. Owner-approved Stellarite Piece, Etherium Ingot and Dragon Heart anchors; Etherium compression rounding and ore processing require integration audit before promotion.",
+  "comment": "Owner-approved 2026-11-18. Replica base 8190, Thallasium and Iesnium base 576, Hellforged base 5760. Observed tags/IDs per runtime survey #348; Replica nugget tag supplied by #346. Preserve distinct Prismatic Demonite and intermediate fractions; only confirmed material forms. Iron's Mithril ingot parity with unawakened Draconium; native 4 scrap per ingot, raw 6x scrap and ore 3x raw. No Embers Dwarven Mithril anchors. Owner-approved Stellarite Piece, Etherium Ingot and Dragon Heart anchors; Etherium ingot rounded to 4,194,882 by owner approval for exact 466,098/nugget; native nugget and other derivatives follow recipe mapping. Ore processing requires integration audit.",
   "values": {
     "before": [
       {
@@ -150,7 +150,7 @@
       {
         "type": "projecte:item",
         "id": "enigmaticlegacyplus:etherium_ingot",
-        "emc_value": 4194880
+        "emc_value": 4194882
       },
       {
         "type": "projecte:item",
