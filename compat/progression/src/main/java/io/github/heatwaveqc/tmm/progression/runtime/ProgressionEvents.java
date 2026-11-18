@@ -33,6 +33,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, MechanicalEffects::landing);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::foodTick);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::foodStopped);

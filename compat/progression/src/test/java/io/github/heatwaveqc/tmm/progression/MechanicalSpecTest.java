@@ -47,5 +47,15 @@ class MechanicalSpecTest {
             assertDoesNotThrow(()->parse("{\"type\":\""+type+"\",\"target\":\"test:quarry\",\"per_rank\":0.2}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"hit_streak\",\"target\":\"test:quarry\",\"per_rank\":0.2,\"params\":{\"max_stacks\":21}}"));
     }
+    @Test void wearAndDurationMath(){
+        assertEquals(.5,MechanicalSpec.unbreakingPrefilter(0,1,false),1e-8);
+        assertEquals(.8,MechanicalSpec.unbreakingPrefilter(0,1,true),1e-8);
+        assertEquals(.5,MechanicalSpec.unbreakingPrefilter(3,4,false),1e-8);
+        assertEquals(50,MechanicalSpec.reducedDuration(100,.5));
+        assertEquals(1,MechanicalSpec.reducedDuration(1,.95));
+        assertEquals(-1,MechanicalSpec.reducedDuration(-1,.5));
+        assertDoesNotThrow(()->parse("{\"type\":\"virtual_unbreaking\",\"target\":\"test:gear\",\"per_rank\":1}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"virtual_unbreaking\",\"per_rank\":1}"));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }

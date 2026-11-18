@@ -229,7 +229,7 @@ public final class MechanicalEffects {
         int budget=32,operations=4;
         var due=EffectRuntime.active(p).stream().filter(a->{
             String type=a.effect().type();
-            if(!Set.of("magnet","status_pulse","quarry_mark").contains(type))return false;
+            if(!Set.of("magnet","status_pulse","quarry_mark","area_pull").contains(type))return false;
             int interval=integer(a,"interval_ticks",type.equals("magnet")?5:20,type.equals("magnet")?5:10,200);
             return p.tickCount%(((interval+4)/5)*5)==0;
         }).sorted(Comparator.comparing(EffectRuntime.Active::id)).toList();
@@ -240,7 +240,12 @@ public final class MechanicalEffects {
             String type=a.effect().type();
             int targets=Math.min(budget,integer(a,"max_targets",type.equals("magnet")?16:8,1,32));
             operations--; // even empty queries consume an operation slot
-            budget-=type.equals("magnet")?magnet(p,a,targets):type.equals("quarry_mark")?mark(p,a,targets):pulse(p,a,targets);
+            budget-=switch(type){
+                case "magnet"->magnet(p,a,targets);
+                case "quarry_mark"->mark(p,a,targets);
+                case "area_pull"->motion(p,a,targets,true);
+                default->pulse(p,a,targets);
+            };
         }
     }
     private static boolean magnetAllowed(ServerPlayer p,ItemEntity item){
@@ -276,6 +281,33 @@ public final class MechanicalEffects {
             if(ds>0.01&&ds<nearest&&p.getLookAngle().dot(d.normalize())>=num(a,"min_look_cosine",0.985,0.5,1)&&p.hasLineOfSight(t)){best=t;nearest=ds;}
         }
         if(best!=null)best.addEffect(new MobEffectInstance(net.minecraft.world.effect.MobEffects.GLOWING,integer(a,"duration_ticks",80,1,1200),0,true,false,true));
+        return found.size();
+    }
+    /** Late fall callback: momentum only, not terrain changes, additional damage or XP. */
+    public static void landing(net.neoforged.neoforge.event.entity.living.LivingFallEvent event){
+        if(event.isCanceled()||!(event.getEntity() instanceof ServerPlayer p)||!usable(p)||p.isFallFlying())return;
+        int remaining=16;
+        for(var a:EffectRuntime.active(p)){
+            if(remaining<=0)break;
+            if(!a.effect().type().equals("landing_shockwave")||event.getDistance()<num(a,"min_fall_distance",3,1,64))continue;
+            remaining-=motion(p,a,Math.min(remaining,integer(a,"max_targets",8,1,16)),false);
+        }
+    }
+    private static int motion(ServerPlayer p,EffectRuntime.Active a,int limit,boolean pull){
+        double r=num(a,"radius",4,0.5,16),force=amount(a,2);
+        if(force<=0||limit<=0)return 0;
+        var found=new ArrayList<LivingEntity>();
+        p.serverLevel().getEntities(EntityTypeTest.forClass(LivingEntity.class),p.getBoundingBox().inflate(r),
+            t->quarry(p,t)&&t instanceof Monster&&!(t instanceof net.minecraft.world.entity.boss.wither.WitherBoss)
+                &&!(t instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon)&&t.distanceToSqr(p)<=r*r
+                &&Selectors.entity(a.effect().selector(),t)&&areaAllowed(p,t)&&p.hasLineOfSight(t),found,limit);
+        if(found.isEmpty()||!roll(p,a,num(a,"chance",1,0,1)))return found.size();
+        for(var t:found){
+            double dx=p.getX()-t.getX(),dz=p.getZ()-t.getZ(),distance=Math.hypot(dx,dz);
+            if(distance<0.3)continue;
+            double sign=pull?-1:1;
+            t.knockback(Math.min(force,pull?Math.max(0,distance-1):force),sign*dx,sign*dz);
+        }
         return found.size();
     }
     private static int magnet(ServerPlayer p,EffectRuntime.Active a,int limit){

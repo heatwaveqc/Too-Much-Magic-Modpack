@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -54,6 +54,10 @@ public final class MechanicalSpec {
             case "health_threshold_status" -> {status(p);bounded(a,0,1);number(p,"threshold",0.3,0.01,0.99);proc(p);}
             case "melee_reflection" -> {bounded(a,0,1);scoped(fx);proc(p);number(p,"reflect_fraction",1,0,1);number(p,"max_damage",20,0.01,100);}
             case "quarry_mark" -> {bounded(a,0,32);scoped(fx);integer(p,"interval_ticks",20,10,200);integer(p,"duration_ticks",80,1,1200);number(p,"min_look_cosine",0.985,0.5,1);}
+            case "area_pull","landing_shockwave" -> {bounded(a,0,2);scoped(fx);number(p,"radius",4,0.5,16);integer(p,"max_targets",8,1,16);integer(p,"interval_ticks",20,10,200);number(p,"min_fall_distance",3,1,64);proc(p);}
+            case "detection_range" -> {bounded(a,0,0.95);scoped(fx);number(p,"reference_range",16,1,64);}
+            case "status_duration_reduction" -> {bounded(a,0,0.95);scoped(fx);if(!fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Exact status ID required");}
+            case "virtual_unbreaking" -> {bounded(a,0,32);scoped(fx);if(!Set.of("mainhand","offhand","armor","equipped").contains(p.getOrDefault("slot","equipped")))throw new IllegalArgumentException("Invalid wear slot");integer(p,"max_total",32,1,64);}
             case "glide_control_bonus" -> bounded(a,0,0.1);
             case "backstab" -> {bounded(a,0,2);number(p,"min_rear_cosine",0.5,0,1);}
             case "counter_attack" -> {
@@ -147,6 +151,16 @@ public final class MechanicalSpec {
     }
     public static boolean crossesBelow(double before,double after,double threshold){return before>threshold&&after<=threshold;}
     public static int nextStreak(int prior,int cap,boolean sameSequence){return Math.min(cap,sameSequence?Math.max(0,prior)+1:1);}
+    public static int reducedDuration(int ticks,double fraction){
+        if(ticks<=0)return ticks;
+        return Math.max(1,(int)Math.ceil(ticks*(1-Math.min(0.95,Math.max(0,fraction)))));
+    }
+    public static double unbreakingPrefilter(int actual,int virtual,boolean armor){
+        if(actual<0||virtual<=0)return 1;
+        double before=armor?0.6+0.4/(actual+1.0):1.0/(actual+1.0);
+        double after=armor?0.6+0.4/(actual+virtual+1.0):1.0/(actual+virtual+1.0);
+        return Math.min(1,after/before);
+    }
     public static double scaled(double amount,int rank,double cap){
         return Math.min(cap,Math.max(0,amount*Math.max(0,rank)));
     }

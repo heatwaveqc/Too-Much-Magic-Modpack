@@ -8,7 +8,10 @@
     "MonkFortuneMixin",
     "HunterLootingMixin",
     "HunterRareLootMixin",
-    "VirtualElytraItemExtensionMixin"
+    "VirtualElytraItemExtensionMixin",
+    "OwnedWearMixin",
+    "MobEffectDurationAccess",
+    "OwnedEffectDurationMixin"
   ],
   "injectors": {
     "defaultRequire": 1

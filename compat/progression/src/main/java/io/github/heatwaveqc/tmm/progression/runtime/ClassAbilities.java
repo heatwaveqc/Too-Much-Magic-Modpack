@@ -410,6 +410,10 @@ public final class ClassAbilities {
                 player.serverLevel().getGameTime()+600));
         }
     }
+    public static boolean isRecentRetaliation(Mob mob,ServerPlayer p){
+        var last=RETALIATION.get(mob.getUUID());
+        return last!=null&&last.attacker().equals(p.getUUID())&&p.serverLevel().getGameTime()<=last.until();
+    }
     public static void targetChange(ServerPlayer p, LivingChangeTargetEvent event) {
         if (!(event.getEntity() instanceof Mob mob)) return;
         if (mob instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon
@@ -422,6 +426,17 @@ public final class ClassAbilities {
         var last = RETALIATION.get(mob.getUUID());
         if (last != null && last.attacker().equals(p.getUUID())
                 && p.serverLevel().getGameTime() <= last.until()) return;
+        double detection=1,reference=0;
+        for(var active:EffectRuntime.active(p)){
+            var fx=active.effect();
+            if(fx.type().equals("detection_range")&&mob instanceof net.minecraft.world.entity.monster.Monster&&Selectors.entity(fx.selector(),mob)){
+                detection*=1-io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.scaled(fx.amountPerRank(),active.rank(),0.95);
+                reference=Math.max(reference,io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.number(fx.params(),"reference_range",16,1,64));
+            }
+        }
+        if(reference>0&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p)&&mob.getTarget()!=p&&mob.distanceToSqr(p)>Math.pow(Math.max(2,reference*Math.max(.05,detection)),2)){
+            event.setNewAboutToBeSetTarget(null);return;
+        }
         for (var a : EffectRuntime.active(p))
             if (a.effect().type().equals("faction_neutrality")
                     && Selectors.entity(a.effect().selector(),mob)) {
