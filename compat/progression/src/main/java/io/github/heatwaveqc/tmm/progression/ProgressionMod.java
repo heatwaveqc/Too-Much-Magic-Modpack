@@ -27,7 +27,8 @@ public final class ProgressionMod {
     public static final String MOD_ID = "tmm_progression";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public ProgressionMod(IEventBus modBus) {
+    public ProgressionMod(IEventBus modBus, net.neoforged.fml.ModContainer container) {
+        new io.github.heatwaveqc.tmm.progression.mxp.MxpMod(modBus,container);
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
