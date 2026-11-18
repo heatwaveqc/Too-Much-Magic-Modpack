@@ -1,0 +1,192 @@
+{
+  "comment": "Owner-approved flat 532 EMC per legitimately survival-obtainable spawn egg; overrides cost-derived egg prices. Initial exact-ID seeds are installed #348 observed recipe outputs and Reliquary typed fragment recipe outputs. Expand after Capturing/EvilCraft and other eligibility audit; creative-only/dummy/debug remain excluded. Do not add acquisition paths, relax boss restrictions or infer eligibility from item names alone.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "minecraft:allay_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:bee_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:blaze_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:cat_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:cave_spider_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:chicken_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:cow_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:creeper_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:dolphin_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:donkey_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:enderman_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:fox_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:ghast_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:guardian_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:horse_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:llama_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:magma_cube_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:mooshroom_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:mule_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:ocelot_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:panda_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:parrot_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:pig_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:polar_bear_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:rabbit_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:sheep_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:skeleton_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:slime_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:spider_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:squid_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:turtle_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:witch_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:wither_skeleton_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:wolf_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:zombie_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "minecraft:zombified_piglin_spawn_egg",
+        "emc_value": 532
+      },
+      {
+        "type": "projecte:item",
+        "id": "the_bumblezone:sentry_watcher_spawn_egg",
+        "emc_value": 532
+      }
+    ]
+  }
+}
