@@ -67,6 +67,11 @@ public final class Enrollment {
     }
 
     public static void tick(ServerPlayer player) {
+        if (player.tickCount % 20 == 0 && !player.isCreative() && !player.isSpectator())
+            for (String candidate:PathRegistry.all().keySet())
+                if ("automatic".equals(PathRegistry.enrollment(candidate))
+                    && !ProgressionApi.track(player,candidate).joined())
+                    ProgressionApi.join(player,candidate);
         String path = "tmm_progression:monk";
         if (!"sunset".equals(PathRegistry.enrollment(path))
                 || ProgressionApi.track(player,path).joined()) {

@@ -28,6 +28,7 @@ public final class ProgressionScreen extends Screen {
     private static final int CARD_GAP = 8;
     private String pathId;
     private JsonObject data;
+    private List<String> paths=List.of(MONK,HUNTER);
     private int scroll;
     private boolean confirmRespec;
     private Button respecButton;
@@ -46,8 +47,14 @@ public final class ProgressionScreen extends Screen {
             JsonObject parsed = JsonParser.parseString(json).getAsJsonObject();
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.screen instanceof ProgressionScreen screen
-                    && screen.pathId.equals(parsed.get("path").getAsString()))
-                screen.data = parsed;
+                    && screen.pathId.equals(parsed.get("path").getAsString())) {
+                screen.data=parsed;
+                if(parsed.has("paths")) {
+                    var ids=new ArrayList<String>();
+                    for(var id:parsed.getAsJsonArray("paths")) ids.add(id.getAsString());
+                    if(!ids.isEmpty()) screen.paths=List.copyOf(ids);
+                }
+            }
         } catch (RuntimeException ignored) {
             // Malformed/outdated server snapshot must not crash the client UI.
         }
@@ -56,9 +63,9 @@ public final class ProgressionScreen extends Screen {
     @Override
     protected void init() {
         int left = Math.max(12, (width - 505) / 2);
-        addRenderableWidget(Button.builder(Component.literal("Monk"), b -> switchPath(MONK))
+        addRenderableWidget(Button.builder(Component.literal("Previous tree"), b -> cycle(-1))
                 .bounds(left + 10, 36, 94, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Hunter"), b -> switchPath(HUNTER))
+        addRenderableWidget(Button.builder(Component.literal("Next tree"), b -> cycle(1))
                 .bounds(left + 109, 36, 94, 20).build());
         respecButton = addRenderableWidget(Button.builder(Component.literal("Respec..."),
                 b -> {
@@ -78,6 +85,9 @@ public final class ProgressionScreen extends Screen {
         request();
     }
 
+    private void cycle(int delta) {
+        if(!paths.isEmpty()) switchPath(paths.get(Math.floorMod(paths.indexOf(pathId)+delta,paths.size())));
+    }
     private void switchPath(String id) {
         if (pathId.equals(id)) return;
         pathId = id;
@@ -137,7 +147,7 @@ public final class ProgressionScreen extends Screen {
         int left = left();
         gui.fill(left, 10, left + 505, height - 8, 0xDF141821);
         gui.drawString(font, "DISCIPLINE PROGRESSION", left + 13, 17, 0xFFEEEEEE, false);
-        gui.drawString(font, pathId.equals(MONK) ? "MONK CULTIVATION" : "HUNTER TRAINING",
+        gui.drawString(font, pretty(pathId).toUpperCase(Locale.ROOT),
                 left + 215, 42, 0xFFA6DCD0, false);
 
         if (data == null) {
@@ -155,12 +165,12 @@ public final class ProgressionScreen extends Screen {
         long rankStart = data.get("rank_start_xp").getAsLong();
         gui.drawString(font, joined ? "Rank " + rank + "/" + maxRank : "Not enrolled",
                 left + 14, 69, joined ? 0xFFA6DCD0 : 0xFFFFB6A0, false);
-        gui.drawString(font, "Native skill points: " + points,
+        gui.drawString(font, (data.has("xp_channel") ? pretty(data.get("xp_channel").getAsString()) : "Skill") + " points: " + points,
                 left + 150, 69, 0xFFF1D99B, false);
-        gui.drawString(font, xp + " / " + nextXp + " cultivation XP",
+        gui.drawString(font, xp + " / " + nextXp + " XP",
                 left + 314, 69, 0xFFD0D0D0, false);
         gui.fill(left + 13, 84, left + 491, 91, 0xFF353941);
-        double fraction = rank >= maxRank ? 1.0
+        double fraction = rank >= maxRank && !data.has("magic_channel") ? 1.0
                 : nextXp <= rankStart ? 0.0
                 : Math.max(0, Math.min(1.0,
                         (double) (xp - rankStart) / (nextXp - rankStart)));

@@ -49,7 +49,7 @@ public final class EffectRuntime {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         List<Active> out = new ArrayList<>();
         for (Definition.Path path : PathRegistry.all().values()) {
-            Track track = ledger.get(path.id());
+            Track track = ProgressionApi.track(player,path.id());
             if (!track.joined()) continue;
             for (Definition.Skill skill : path.skills()) {
                 int rank = track.skillRank(skill.id());

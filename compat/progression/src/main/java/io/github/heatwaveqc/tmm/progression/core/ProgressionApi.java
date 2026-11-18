@@ -12,6 +12,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tmm.progression.state.Track;
+import io.github.heatwaveqc.tmm.progression.model.XpChannel;
+import net.neoforged.fml.ModList;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +38,10 @@ public final class ProgressionApi {
     }
 
     public static Track track(ServerPlayer player, String pathId) {
-        return player.getData(ProgressionAttachments.LEDGER.get()).get(pathId);
+        var path=PathRegistry.get(pathId);
+        var channel=PathRegistry.channel(pathId);
+        return path==null || channel==null ? Track.empty() :
+            ChannelEngine.view(player.getData(ProgressionAttachments.LEDGER.get()),path,channel);
     }
 
     /** Any joined path, including future Gilded or data-defined paths. */
@@ -50,7 +55,8 @@ public final class ProgressionApi {
 
     public static boolean join(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
-        if (path == null) return false;
+        var channel=PathRegistry.channel(pathId);
+        if (path == null || channel==null) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
         if (NewbieMode.isNewbie(player)) return false;
@@ -63,28 +69,30 @@ public final class ProgressionApi {
             }
         }
         player.setData(ProgressionAttachments.LEDGER.get(),
-            ledger.with(pathId,ProgressionMath.join(path,ledger.get(pathId))));
+            ChannelEngine.join(ledger,path,channel));
         return true;
     }
 
     /** Fail-closed if the path is missing, gated, full, or short on skill points. */
     public static boolean buy(ServerPlayer player, String pathId, String skillId) {
         Definition.Path path = PathRegistry.get(pathId);
-        if (path == null) return false;
+        var channel=PathRegistry.channel(pathId);
+        if (path == null || channel==null) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track before = ledger.get(pathId);
+        Track before = ChannelEngine.view(ledger,path,channel);
         Track after = ProgressionMath.buy(path,before,skillId);
         if (after == before) return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.commit(ledger,path,channel,after));
         return true;
     }
 
     public static boolean respec(ServerPlayer player, String pathId) {
         Definition.Path path = PathRegistry.get(pathId);
-        if (path == null || !track(player,pathId).joined()) return false;
+        var channel=PathRegistry.channel(pathId);
+        if (path == null || channel==null || !track(player,pathId).joined()) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
-            ledger.with(pathId,ProgressionMath.refundAll(path,ledger.get(pathId))));
+            ChannelEngine.commit(ledger,path,channel,ProgressionMath.refundAll(path,ChannelEngine.view(ledger,path,channel))));
         return true;
     }
 
@@ -95,13 +103,14 @@ public final class ProgressionApi {
     public static boolean awardServerXp(ServerPlayer player, String pathId, long xp) {
         if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
         Definition.Path path = PathRegistry.get(pathId);
-        if (path == null) return false;
+        var channel=PathRegistry.channel(pathId);
+        if (path == null || channel==null || !channel.earnsFrom(pathId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track before = ledger.get(pathId);
+        Track before = ChannelEngine.view(ledger,path,channel);
         if (!before.joined()) return false;
         Track after = ProgressionMath.grantXp(path,before,xp);
         if (before.equals(after)) return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ledger.with(pathId,after));
+        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.commit(ledger,path,channel,after));
         return true;
     }
 
@@ -149,7 +158,10 @@ public final class ProgressionApi {
         Ledger next = ledger;
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
-            Track state = next.get(path.id());
+            var channel=PathRegistry.channel(path.id());
+            if(channel==null) continue;
+            Track initial=ChannelEngine.view(next,path,channel);
+            Track state=initial;
             if (!state.joined()) continue;
 
             int activityIndex = 0;
@@ -200,7 +212,7 @@ public final class ProgressionApi {
                     }
                 }
             } while(changed);
-            if (!state.equals(next.get(path.id()))) next = next.with(path.id(),state);
+            if (!state.equals(initial)) next = ChannelEngine.commit(next,path,channel,state);
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
     }
@@ -215,10 +227,40 @@ public final class ProgressionApi {
         if (marker == null || !marker.matches("tmm_progression:tyz_focused_advancement_[1-5]"))
             return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Track monk = ledger.get("tmm_progression:monk");
+        var path=PathRegistry.get("tmm_progression:monk");
+        var channel=PathRegistry.channel("tmm_progression:monk");
+        if(path==null || channel==null) return false;
+        Track monk=ChannelEngine.view(ledger,path,channel);
         if (!monk.joined() || monk.rank() < 17 || monk.completed(marker)) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),
-                ledger.with("tmm_progression:monk",monk.complete(marker).grantPoints(1)));
+                ChannelEngine.commit(ledger,path,channel,monk.complete(marker).grantPoints(1)));
+        return true;
+    }
+
+    /** Trusted logical-server, committed-debit API. Standalone MXP still owns legacy cast hooks. */
+    public static boolean awardMagicResource(ServerPlayer player,String channelId,String tx,
+            double nominalCost,double referencePool,double actualDebit) {
+        if(!Double.isFinite(actualDebit) || actualDebit<=0) return false;
+        return awardMagic(player,channelId,tx,null,1,
+                MxpMath.normalizedBase(nominalCost,referencePool),false,false);
+    }
+    /** Trusted success-only completion API; caller supplies verified transaction identity. */
+    public static boolean awardMagicCompletion(ServerPlayer player,String channelId,String tx,
+            String completionId,double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
+        return awardMagic(player,channelId,tx,java.util.Objects.requireNonNull(completionId),
+                firstBase,repeatBase,firstFixed,repeatFixed);
+    }
+    private static boolean awardMagic(ServerPlayer player,String channelId,String tx,String first,
+            double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
+        if(player==null || player.getServer()==null || !player.getServer().isSameThread()
+            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)
+            || ModList.get().isLoaded("tmm_mxp")) return false;
+        XpChannel channel=PathRegistry.economy(channelId);
+        if(channel==null || !channel.magic()) return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=ChannelEngine.magic(prior,channel,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
+        if(next==prior) return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
 

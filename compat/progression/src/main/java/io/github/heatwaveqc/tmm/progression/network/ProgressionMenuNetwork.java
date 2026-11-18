@@ -109,6 +109,9 @@ public final class ProgressionMenuNetwork {
         Track state = ProgressionApi.track(player, pathId);
         JsonObject json = new JsonObject();
         json.addProperty("path", pathId);
+        var channel=PathRegistry.channel(pathId);
+        json.addProperty("xp_channel",channel==null?"":channel.id());
+        json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
         json.addProperty("rank", state.rank());
         json.addProperty("max_rank", path.maxRank());
@@ -116,10 +119,17 @@ public final class ProgressionMenuNetwork {
         json.addProperty("points", state.points());
         long threshold = state.rank() < path.rankXp().size()
                 ? path.rankXp().get(state.rank()) : path.rankXp().getLast();
+        if(channel!=null && channel.magic()) {
+            var wallet=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get()).wallet(channel.id());
+            long start=wallet==null?0:wallet.xp()-(long)wallet.magicProgress();
+            threshold=start>Long.MAX_VALUE-1000?Long.MAX_VALUE:start+1000;
+            json.addProperty("magic_channel",true);
+        }
         json.addProperty("next_xp", threshold);
         long currentStart = state.rank() > 0
                 ? path.rankXp().get(Math.min(state.rank() - 1, path.rankXp().size() - 1))
                 : 0;
+        if(channel!=null && channel.magic()) currentStart=Math.max(0,threshold-1000);
         json.addProperty("rank_start_xp", currentStart);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
