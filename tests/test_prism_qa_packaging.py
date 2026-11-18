@@ -21,7 +21,7 @@ def main() -> None:
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin
+    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
         bootstrap = folder / "bootstrap.jar"
@@ -34,6 +34,24 @@ def main() -> None:
                 z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
             addons.append(jar)
         verify_packaging_inputs(addons)
+        # Release license regression: accept exact bundled MIT files, reject
+        # incorrect metadata, omitted/duplicate files and mismatched notices.
+        for directory, mod, expected_path in selected():
+            j = folder / ("license-test-" + expected_path.name)
+            for case in ("valid", "wrong_license", "missing_license", "wrong_notice"):
+                with zipfile.ZipFile(j, "w") as z:
+                    declared = "All Rights Reserved" if case == "wrong_license" else "MIT"
+                    z.writestr("META-INF/neoforge.mods.toml", 'license = "' + declared + '"\\n[[mods]]\\nmodId = "' + mod + '"\\n')
+                    if case != "missing_license":
+                        z.writestr("LICENSE", (directory / "LICENSE").read_bytes())
+                    notice = b"incorrect" if case == "wrong_notice" else (directory / "THIRD_PARTY_NOTICES.md").read_bytes()
+                    z.writestr("THIRD_PARTY_NOTICES.md", notice)
+                try:
+                    validate_jar_license(directory, j)
+                except ValueError:
+                    assert case != "valid", "Valid MIT license rejected"
+                else:
+                    assert case == "valid", "Invalid license accepted: " + case
         # Regression against the loader's actual native version, not its short
         # marketing version. Test the old failure, an exact pin and a future ABI.
         trader = folder / "trader-dependency-test.jar"

@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'manifest/first-party-runtime.json'
+      - 'compat/*/LICENSE'
+      - 'compat/*/THIRD_PARTY_NOTICES.md'
+      - 'compat/*/gradle.properties'
+      - 'compat/*/build.gradle'
+      - 'compat/*/src/main/templates/META-INF/neoforge.mods.toml'
       - 'scripts/first_party_runtime.py'
       - 'scripts/build_full_integration_prism.py'
       - 'tests/test_prism_qa_packaging.py'

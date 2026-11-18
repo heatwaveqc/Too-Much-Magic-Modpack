@@ -43,6 +43,25 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def validate_jar_license(directory, jar):
+    """Verify the release license and notices, not just an SPDX metadata label."""
+    with zipfile.ZipFile(jar) as z:
+        metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
+        if metadata.get("license") != "MIT":
+            raise ValueError("First-party JAR must declare MIT: " + jar.name)
+        for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+            if z.namelist().count(name) != 1:
+                raise ValueError("Missing or duplicate " + name + " in " + jar.name)
+            expected = (directory / name).read_bytes()
+            if not expected or z.read(name) != expected:
+                raise ValueError("Missing or inconsistent notice " + name + " in " + jar.name)
+        license_text = z.read("LICENSE").decode()
+        for required in ("MIT License", "Copyright (c)", "Permission is hereby granted",
+                         "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"',
+                         "SOFTWARE."):
+            if required not in license_text:
+                raise ValueError("Incomplete MIT license in " + jar.name)
+
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
 
@@ -79,11 +98,14 @@ def main():
         for directory, mod, jar in rows:
             subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
+            validate_jar_license(directory, jar)
             if mod == "traders_vengence":
                 verify_trader_irons_pin(jar)
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
         verify_packaging_inputs(paths)
+        for directory, _, jar in rows:
+            validate_jar_license(directory, jar)
         print(os.pathsep.join(str(p) for p in paths))
     else:
         if args.mods_dir is None:
@@ -92,9 +114,10 @@ def main():
         actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengence-") or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
-        for _, mod, jar in rows:
+        for directory, mod, jar in rows:
             dest = args.mods_dir / jar.name
             validate_jar(dest, mod)
+            validate_jar_license(directory, dest)
             if hashlib.sha256(jar.read_bytes()).digest() != hashlib.sha256(dest.read_bytes()).digest():
                 raise ValueError("Smoke JAR bytes differ: " + jar.name)
         print("Verified exact selected runtime JARs: " + ", ".join(sorted(expected)))
