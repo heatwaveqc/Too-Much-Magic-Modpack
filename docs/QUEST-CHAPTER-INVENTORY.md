@@ -10,6 +10,8 @@
 
 **Golden Dragon (owner-approved design, 2026-11-17):** Gilded + Cave Dragon in either order, strict golden apple/carrot diet including enchanted variants if present, overlapping skill/passive bonuses stack, Gilded virtual Fortune/Looting extend to qualifying claw harvests and claw/breath kills. Exact continued gold/Netherite equipment eligibility is a recommendation pending final confirmation. No lichdom or other extra specialization. See [compatibility contract](SPECIALIZATION-COMPATIBILITY.md#golden-dragon--approved-design-2026-11-17). Runtime work pending.
 
+**Blood Immortal (owner-approved design, 2026-11-18):** Monk first, then actual successful JAWR Lilith ritual (no alternate acquisition); additive passives, Monk unarmored requirements and vampire diet/blood/sunlight restrictions retained, shared Tyz pool, no further specializations. Runtime support pending; see [compatibility contract](SPECIALIZATION-COMPATIBILITY.md#blood-immortal--approved-design-2026-11-18).
+
 > **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *A Sufficiently Advanced Magic* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
 
 **Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.

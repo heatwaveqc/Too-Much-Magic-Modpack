@@ -20,6 +20,7 @@ This is the canonical **design decision register**, not a runtime config or a va
 | Piglich | Gilded **first**, then either native Lich, optionally the other Lich afterward | PLANNED (owner approved) |
 | Revenant | Hunter **first**, then either native Lich, optionally the other Lich afterward | PLANNED (owner locked Revenant; interpret as the immediately preceding proposed same acquisition rule as Piglich) |
 | Golden Dragon | Gilded + Cave Dragon, either order; no additional specialization | PLANNED (owner approved) |
+| Blood Immortal | Monk first, then successful native JAWR Lilith ritual; reverse order denied | PLANNED (owner approved, 2026-11-18) |
 | Abomination | JAWR Vampire + Werewolf | REVIEW (research and native guard exception only; complete identity still unapproved/unimplemented) |
 | Ascendant Dragon | Monk + any dragon | REVIEW (on hold over overlapping direct combat power) |
 
@@ -29,11 +30,10 @@ For Piglich/Revenant, preserve existing path progress, equipment or hunting/muta
 
 **New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon; Werewolf + either Lich (owner denial, 2026-11-18).
 
-**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these five pairs, with both directions undecided; the categories below record the intended design follow-up.
+**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these four pairs, with both directions undecided; the categories below record the intended design follow-up.
 
 | Concept | Pair variants | Disposition |
 |---|---:|---|
-| Monk + Vampire | 1 | CONSIDER (owner requested) |
 | Monk + Dragon (Ascendant Dragon) | 3 | ON HOLD — additive combat overlap |
 | Vampire + Werewolf (Abomination) | 1 | RESEARCH — existing narrow native dual-affliction guard, complete hybrid not approved |
 
@@ -49,14 +49,20 @@ Prior implemented/planned combinations remain unchanged. The composite-state CSV
 - Existing Golden Dragon may not acquire either lichdom or any additional specialization; Piglich, Revenant, Dracolich and Archlich cannot gain Gilded/Dragon to construct a Golden Dragon indirectly. The pair is non-transitive.
 - **Implementation handoff:** central Progression engine and existing transformations bridge must support narrowly scoped two-way class/native-form eligibility; exact Dragon Survival 1.21.1 claws, breath damage/kill ownership, tool/armor compatibility and diet hooks need review. Test both entry orders, denial of Forest/Sea/lich and Newbie enrollment, one loot roll/bonus per qualifying event, stack math, cure/relog, and renewable food access. No gameplay code or runtime validation in this design PR.
 
+## Blood Immortal — approved design (2026-11-18)
+
+- Monk initiation must precede vampirism. Acquire the vampire identity **only through actual successful native JAWR Lilith ritual**, not generic infection, arbitrary positive-level setter or alternate acquisition route. Vampire-first Monk enrollment is denied. Normal already-owned vampire advancement is distinct from new acquisition.
+- Preserve both paths and additive legitimate passive bonuses, ordinary Monk unarmored ability requirements, and JAWR vampire diet/blood and sunlight restrictions. One shared Tyz skill-point wallet; no separate hybrid tree. All additional specializations denied, including werewolf and both lichdoms.
+- Implementation pending: identify the precise Lilith ritual completion and native acquisition call chain in the pinned JAWR source/binary. The allow rule must be contextual and server-authoritative, not a general Monk-to-vampire setter exemption; verify successful ritual, failure, bypass routes, reverse enrollment, Newbie guard, stacking, diet, cure/relog and additional-species veto. No gameplay code changed by this register.
+
 ## Review counts
 
-10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 5 are approved plans (4 one-way, 1 bidirectional), 28 are denied in both directions, 5 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
+10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 6 are approved plans (5 one-way, 1 bidirectional), 28 are denied in both directions, 4 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
 
 ## Evidence and next steps
 
 - Integrated source baseline `2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae`: [NativeSpeciesJoinGuard](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/NativeSpeciesJoinGuard.java), [TransitionPolicy](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/TransitionPolicy.java), [FormResolver](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/FormResolver.java), [integration manifest](../manifest/integration-sources.json).
-- The current generic class/species veto denies all new forms for enrolled human disciplines and vice versa. Piglich/Revenant and Golden Dragon require narrow, order-aware or bidirectional exceptions through the shared Progression/transformations architecture. Do not globally relax the veto.
+- The current generic class/species veto denies all new forms for enrolled human disciplines and vice versa. Piglich/Revenant, Blood Immortal and Golden Dragon require narrow, order-aware or bidirectional exceptions through the shared Progression/transformations architecture. Do not globally relax the veto.
 - [JAWR-only Abomination research](JAWR-ONLY-ABOMINATION-FEASIBILITY-2026-11-15.md): dual-affliction guard already allows both forms, but classifier still assumes obsolete four-form Abomination; the later two-form target needs reconciliation. No older four-form ritual is authorized.
 - [Dracolich pilot](../compat/transformations/docs/DRACOLICH-PILOT.md) and [Cave/Center rendering pilot](../compat/transformations/docs/DRACOLICH-CAVE-CENTER-PILOT.md): verify both directions for each species and each lich, actual power/appearance/food/death/cure behavior and rejection of the second lich.
 - This register supersedes historical matrix/design surveys on combinations only. It does not change gameplay source, quest rewards, mod pins or build authorization. Quick/static and subsequent owner-authorized in-game tests must distinguish eligibility from actual transformation success.
