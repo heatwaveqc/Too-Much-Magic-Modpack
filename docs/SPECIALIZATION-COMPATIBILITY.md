@@ -9,7 +9,7 @@ This is the canonical **design decision register**, not a runtime config or a va
 - **DENY** — locked prohibition/invalid duplicate in this design; not a claim all denial paths are live-tested. Same-path acquisition means a second copy, not normal upgrades. Human discipline pairs are denied under the one-specialization default, and simultaneous dragon species are denied. Reverse-order Hunter/Gilded enrollment by liches is denied. Composite states are closed to additional specializations except the explicitly approved second lichdom; no automatic transitive allow.
 - **PLANNED** — approved design exception, not yet enforced by integrated runtime code. Do not permit until implemented and verified.
 - **IMPLEMENTED** — experimental acquisition/compatibility code exists in the integration source. Does **not** claim compiled JAR present in a particular QA build, client acceptance, or completion of physiology/rendering/cure features. Archlich and Dracolich currently qualify at this source-level scope.
-- **REVIEW** — no affirmative exception approved here. Default runtime DENY still applies; this is a design-review queue, not permission. The JAWR dual-affliction guard is an existing narrow exception in source; full Abomination remains research-only and needs explicit rite/identity and policy reconciliation.
+- **REVIEW** — no affirmative exception approved here. Default runtime DENY still applies; this is a design-review queue, not permission. The JAWR dual-affliction guard is an existing narrow exception in source; the approved Abomination still needs a complete acquisition/identity and policy implementation.
 
 ## Explicit exceptions
 
@@ -21,21 +21,15 @@ This is the canonical **design decision register**, not a runtime config or a va
 | Revenant | Hunter **first**, then either native Lich, optionally the other Lich afterward | PLANNED (owner locked Revenant; interpret as the immediately preceding proposed same acquisition rule as Piglich) |
 | Golden Dragon | Gilded + Cave Dragon, either order; no additional specialization | PLANNED (owner approved) |
 | Blood Immortal | Monk first, then successful native JAWR Lilith ritual; reverse order denied | PLANNED (owner approved, 2026-11-18) |
-| Abomination | JAWR Vampire + Werewolf | REVIEW (research and native guard exception only; complete identity still unapproved/unimplemented) |
-| Ascendant Dragon | Monk + any dragon | REVIEW (on hold over overlapping direct combat power) |
+| Abomination | JAWR Vampire + Werewolf, either order | PLANNED (owner approved 2026-11-18; complete hybrid pending) |
 
 For Piglich/Revenant, preserve existing path progress, equipment or hunting/mutation abilities; the additional lich form(s) use the shared Tyz SP wallet, no extra hybrid-exclusive tree implied. Lich physiology precedence is proposed, with food/cure/resurrection conflicts to validate before release. Both lich sources may be acquired in either order **after** Gilded/Hunter enrollment. A Dracolich cannot become Archlich; an Archlich cannot acquire a dragon. No other third specialization is automatically allowed. Denied combinations can subsequently be reconsidered only via an explicit owner decision.
 
 ## Owner review decisions (2026-11-17)
 
-**New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon; Werewolf + either Lich (owner denial, 2026-11-18).
+**New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon; Werewolf + either Lich; Monk + any Dragon (owner denials, 2026-11-18).
 
-**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these four pairs, with both directions undecided; the categories below record the intended design follow-up.
-
-| Concept | Pair variants | Disposition |
-|---|---:|---|
-| Monk + Dragon (Ascendant Dragon) | 3 | ON HOLD — additive combat overlap |
-| Vampire + Werewolf (Abomination) | 1 | RESEARCH — existing narrow native dual-affliction guard, complete hybrid not approved |
+**Review queue:** Empty. All base specialization pairs have an explicit design status. Ascendant Dragon is rejected; Abomination is approved as a planned two-form hybrid.
 
 Prior implemented/planned combinations remain unchanged. The composite-state CSV closes Golden Dragon to every additional specialization, explicitly including both lichdoms. This is design-only, not a runtime code change.
 
@@ -55,9 +49,15 @@ Prior implemented/planned combinations remain unchanged. The composite-state CSV
 - Preserve both paths and additive legitimate passive bonuses, ordinary Monk unarmored ability requirements, and JAWR vampire diet/blood and sunlight restrictions. One shared Tyz skill-point wallet; no separate hybrid tree. All additional specializations denied, including werewolf and both lichdoms.
 - Implementation pending: identify the precise Lilith ritual completion and native acquisition call chain in the pinned JAWR source/binary. The allow rule must be contextual and server-authoritative, not a general Monk-to-vampire setter exemption; verify successful ritual, failure, bypass routes, reverse enrollment, Newbie guard, stacking, diet, cure/relog and additional-species veto. No gameplay code changed by this register.
 
+## Abomination — approved design (2026-11-18)
+
+- JAWR-native Vampire plus JAWR-native Werewolf, either acquisition order. No lichdom, human discipline, dragon or further persistent specialization. Preserve distinct native progression and the shared Tyz skill-point wallet.
+- A narrow native dual-affliction guard exists in source; full identity, acquisition context, cure/physiology/active-form conflict rules and classifier reconciliation remain pending. The old four-form Abomination definition is obsolete; no lich requirement. Exact joining procedure and interaction details are to be resolved during implementation rather than invented here.
+- No runtime code is modified by this design lock.
+
 ## Review counts
 
-10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 6 are approved plans (5 one-way, 1 bidirectional), 28 are denied in both directions, 4 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
+10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 7 are approved plans (5 one-way, 2 bidirectional), 31 are denied in both directions, and 0 await design review. The two CSVs use plain status values so they can be filtered or imported.
 
 ## Evidence and next steps
 

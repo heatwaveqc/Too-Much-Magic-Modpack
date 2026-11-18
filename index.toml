@@ -198,7 +198,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "ecae99e9b14a69eed2391db65f1fb838912d6c39d8e8cec2b0fb263851658043"
+hash = "09e3e9f1bc22b67a27f291d9e10a7d51d25e3fd608c0a74cdafc514b7d20665a"
 
 [[files]]
 file = "config/questshop-common.toml"
