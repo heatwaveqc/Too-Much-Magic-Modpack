@@ -3,7 +3,7 @@
   "input": {
     "item": "minecraft:paper"
   },
-  "mana": 100000,
+  "mana": 3840,
   "output": {
     "count": 1,
     "id": "improvableskills:parchment_fragment"
