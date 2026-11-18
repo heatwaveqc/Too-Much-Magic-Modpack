@@ -1,0 +1,12 @@
+{
+  "comment": "Owner-approved ordinary heads at native zombie-head parity. Curated resolved Pastel head membership, excludes boss and uncertain special heads; do not override useful vanilla skulls.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/mob_heads",
+        "emc_value": 256
+      }
+    ]
+  }
+}
