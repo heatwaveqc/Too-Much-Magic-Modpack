@@ -1,6 +1,6 @@
 # Quest chapter inventory — historical B8 snapshot with 2026-11-15 overrides
 
-> **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *A Sufficiently Advanced Magic* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
+> **Current owner decisions:** Bigger Reactors original/Rework are removed (19 former quest milestones retired). *Advanced Magic Tech* retains the Draconic energy chain. Alex's Caves Continued and CodxLib are approved **planned** additions, not current pack pins. Figures below describe historical B8/B11 states where indicated; do not use them as today's runtime count.
 
 **Source:** `manifest/mods.json` on this design branch, derived from `build/b8-qol-compass-farming-market` commit `8444cd3e4fd042db5c105d8aae42b7739d17875c`. Two previously on-hold mods have now been excluded (2026-11-14). Inventory is a **design plan**, not FTB Quests content or gameplay integration proof.
 
@@ -29,8 +29,8 @@
 | **Basic Progression** | Shared storyline; no exclusive mod | General survival, earliest magic entry paths, storage, materials and choice of specialties. |
 | **Advanced Progression** | `summoning-rituals` | Cross-mod infrastructure, rare materials, automations, summoning altar as custom-pack recipe framework; it has no built-in ritual recipes. **Review:** No separate Summoning Rituals chapter unless meaningful authored recipes exist. |
 | **Endgame Roadmap** | Shared storyline; no exclusive mod | Overview of boss/late-resource requirements and links into the dedicated Endgame category; do not duplicate Endgame quests or rewards. |
-| **Skills & Advancement** | `improvable-skills`, `puffish-skills`, `puffish-attributes` | Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics. **Review:** Pufferfish tree itself is not authored yet. |
-| **A Sufficiently Advanced Magic** | `draconic-evolution` (crosslink `botania-revived`) | Keep Draconic Generator, Energy Core storage/FE crystals and optional high-risk Draconic Reactor; removed BiggerReactors Rework and its uranium pathway. |
+| **Skills & Factions** | `improvable-skills`, `puffish-skills`, `puffish-attributes` | Pufferfish custom tree, Improvable Skills, attribute overview, common progression mechanics. **Review:** Pufferfish tree itself is not authored yet. |
+| **Advanced Magic Tech** | `draconic-evolution` (crosslink `botania-revived`) | Keep Draconic Generator, Energy Core storage/FE crystals and optional high-risk Draconic Reactor; removed BiggerReactors Rework and its uranium pathway. |
 
 ### Magic — 25 chapters
 
@@ -46,7 +46,7 @@
 | **Goety** | `goety`, `goety-cataclysm` | Necromancy, soul energy, mobs, summons and Cataclysm-specific addon content. |
 | **Hex Casting** | `hexcast-neoforged` | Patterns, spell programming, media and artifacts. |
 | **Hexerei** | `hexerei` | Witchcraft, cauldron, broom, rituals and unique resources. |
-| **Iron's Spells 'n Spellbooks** | `irons-spells` | Scrolls, spellbooks, equipment, progression and school mechanics. |
+| **Iron's Spells** | `irons-spells` | Scrolls, spellbooks, equipment, progression and school mechanics. |
 | **Mahou Tsukai** | `mahou-tsukai` | Mana, magic circles, spells and signature equipment. |
 | **Malum** | `malum`, `gaze-malum` | Spirit/arcane progression, rites, enchantments and Gaze addon. |
 | **Neo Vitae** | `neovitae` | Blood-magic altar progression and systems; original Blood Magic excluded. |
@@ -58,9 +58,9 @@
 | **Scriptor Magicae** | `scriptor-magicae` | Discover world-randomized spell grammar, draft custom spells, scriptionary. |
 | **Theurgy** | `theurgy` | Reagent alchemy, divination, replication/transmutation and ritual infrastructure. **Review:** Review against locked endgame Replication mod; they are different systems. |
 | **Totemic** | `totemic` | Totem ceremonies, music-driven rituals, nature powers. |
-| **Just Another Witchery Remake** | `witchery-remake`, `forbidden-magic` | Witchery base progression plus JAWR Forbidden Magic; link transformation quests to Vampirism/Werewolves. |
+| **Witchery (JAWR)** | `witchery-remake`, `forbidden-magic` | Witchery base progression plus JAWR Forbidden Magic; link transformation quests to Vampirism/Werewolves. |
 | **Embers Re-Ignited** | `embers-re-ignited` | Ember fuel, machines, alchemy and magical industry. |
-| **Reliquary Reincarnations** | `reliquary-reincarnations` | Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter. |
+| **Reliquary** | `reliquary-reincarnations` | Magical crafting, staves, potions and utilities; sufficiently substantial to merit a full chapter. |
 
 ### Exploration & Combat — 9 chapters
 
@@ -101,7 +101,7 @@ Special cases:
 - **Summoning Rituals** is accounted for in Advanced Progression, and its project explicitly adds **no recipes by default**. Promote it to a full Magic chapter only once TMM-specific ritual recipes/loops are defined.
 - **Corail Tombstone** has meaningful player-facing death/recovery behavior, but Tips & Tricks is a more useful home than an independent combat chapter.
 - **Farming for Blockheads** belongs to Food & Fishing; audit Market seed availability for magic progression bypass.
-- **Pufferfish Skills/Attributes** and **Improvable Skills 3** are a shared Skills & Advancement chapter, not one book chapter per framework/dependency. The actual custom skill tree remains a separate implementation task.
+- **Pufferfish Skills/Attributes** and **Improvable Skills 3** are a shared Skills & Factions chapter, not one book chapter per framework/dependency. The actual custom skill tree remains a separate implementation task.
 - **Original Botania** (inactive) is not a duplicate chapter next to Botania Revived (active).
 
 ## Inactive or unpinned roster entries (8): no chapters yet
@@ -123,13 +123,13 @@ Special cases:
 
 ## Items requiring an editorial decision
 
-1. **Reliquary Reincarnations**: included as a full Magic chapter, because it has enough unique equipment, brewing and crafting systems to justify one, despite not being a classic spell tree.
+1. **Reliquary**: included as a full Magic chapter, because it has enough unique equipment, brewing and crafting systems to justify one, despite not being a classic spell tree.
 2. **Embers Re-Ignited**: included as Magic, not a separate sixth `Technology` category; it is clearly magical industry.
 3. **Feywild**: assigned to Exploration & Combat due to world, NPC and encounter focus, though it has magic crossover.
 4. **Enigmatic Legacy+**: assigned to Exploration & Combat because discoveries/equipment make a stronger quest spine than another spell-tree chapter.
 5. **Apotheosis**: assigned to Exploration & Combat rather than Magic; close-coupled Apothic Attributes, Enchanting and Spawners stay in its chapter.
 6. **Vampirism and Werewolves**: **two** chapters, crosslinked to JAWR/Goety transformations and future unified rules. Do not build quests that assume unreviewed transformation conflicts.
-7. **Draconic Evolution** sits in Endgame rather than Magic; **A Sufficiently Advanced Magic** covers Draconic energy infrastructure; Bigger Reactors Rework has been removed. This preserves the pack's deliberate limited tech scope.
+7. **Draconic Evolution** sits in Endgame rather than Magic; **Advanced Magic Tech** covers Draconic energy infrastructure; Bigger Reactors Rework has been removed. This preserves the pack's deliberate limited tech scope.
 8. **Gateways to Eternity** remains a full combat chapter despite potential drop-farming exploits; quest design must not trivialize boss-loot gating.
 
 ## Production notes

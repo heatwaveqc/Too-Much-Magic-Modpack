@@ -5,93 +5,93 @@
 	chapter_group.544D104000000000.title: "Exploration & Combat"
 	chapter_group.544D105000000000.title: "Endgame"
 	chapter.544D4D1000000001.title: "Getting Started"
-	chapter.544D4D1000000001.chapter_subtitle: ["First tools and shelter, then a practical magic path of your choosing."]
+	chapter.544D4D1000000001.chapter_subtitle: ["Tools, shelter, first magic"]
 	chapter.544D201000200000.title: "Tips & Tricks"
-	chapter.544D201000200000.chapter_subtitle: ["Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage."]
+	chapter.544D201000200000.chapter_subtitle: ["Practical shortcuts"]
 	chapter.544D201000300000.title: "Food & Fishing"
-	chapter.544D201000300000.chapter_subtitle: ["Farming, fishing, food preparation and modular kitchens."]
+	chapter.544D201000300000.chapter_subtitle: ["Farming, fishing, cooking"]
 	chapter.21C0000000000000.title: "Alcohol is Magic"
-	chapter.21C0000000000000.chapter_subtitle: ["Fermentation, cocktails, tropical bars and beverage effects."]
+	chapter.21C0000000000000.chapter_subtitle: ["Brewing and cocktails"]
 	chapter.544D202000100000.title: "Basic Progression"
-	chapter.544D202000100000.chapter_subtitle: ["Shared resources and tools, plus separate player commodity-selling contracts."]
+	chapter.544D202000100000.chapter_subtitle: ["Resources and tools"]
 	chapter.544D202000200000.title: "Advanced Progression"
-	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage, ritual space and exploration supplies."]
+	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage"]
 	chapter.544D202000300000.title: "Endgame Roadmap"
-	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
-	chapter.544D202000400000.title: "Skills & Advancement"
-	chapter.544D202000400000.chapter_subtitle: ["Pufferfish skills, attributes and Improvable Skills progression."]
-	chapter.544D202000500000.title: "A Sufficiently Advanced Magic"
-	chapter.544D202000500000.chapter_subtitle: ["Draconic generation, energy storage, FE crystals, reactor safety and future approved technology."]
+	chapter.544D202000300000.chapter_subtitle: ["Late-game milestones"]
+	chapter.544D202000400000.title: "Skills & Factions"
+	chapter.544D202000400000.chapter_subtitle: ["Character progression"]
+	chapter.544D202000500000.title: "Advanced Magic Tech"
+	chapter.544D202000500000.chapter_subtitle: ["Energy and reactor safety"]
 	chapter.544D203000100000.title: "Ars Nouveau"
-	chapter.544D203000100000.chapter_subtitle: ["Explore Ars Nouveau; more quests are being authored."]
+	chapter.544D203000100000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000200000.title: "Astral Sorcery"
-	chapter.544D203000200000.chapter_subtitle: ["Explore Astral Sorcery; more quests are being authored."]
+	chapter.544D203000200000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000300000.title: "Botania Revived"
-	chapter.544D203000300000.chapter_subtitle: ["Explore Botania Revived; more quests are being authored."]
+	chapter.544D203000300000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000400000.title: "Eidolon: Repraised"
-	chapter.544D203000400000.chapter_subtitle: ["Explore Eidolon: Repraised; more quests are being authored."]
+	chapter.544D203000400000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000500000.title: "Enchanted: Witchcraft"
-	chapter.544D203000500000.chapter_subtitle: ["Explore Enchanted: Witchcraft; more quests are being authored."]
+	chapter.544D203000500000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000600000.title: "EvilCraft"
-	chapter.544D203000600000.chapter_subtitle: ["Explore EvilCraft; more quests are being authored."]
+	chapter.544D203000600000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000700000.title: "Forbidden & Arcanus"
-	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden & Arcanus; more quests are being authored."]
+	chapter.544D203000700000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000800000.title: "Goety"
-	chapter.544D203000800000.chapter_subtitle: ["Explore Goety; more quests are being authored."]
+	chapter.544D203000800000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000900000.title: "Hex Casting"
-	chapter.544D203000900000.chapter_subtitle: ["Explore Hex Casting; more quests are being authored."]
+	chapter.544D203000900000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000A00000.title: "Hexerei"
-	chapter.544D203000A00000.chapter_subtitle: ["Explore Hexerei; more quests are being authored."]
-	chapter.544D203000B00000.title: "Iron's Spells 'n Spellbooks"
-	chapter.544D203000B00000.chapter_subtitle: ["Explore Iron's Spells 'n Spellbooks; more quests are being authored."]
+	chapter.544D203000A00000.chapter_subtitle: ["Mod Guide"]
+	chapter.544D203000B00000.title: "Iron's Spells"
+	chapter.544D203000B00000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000C00000.title: "Mahou Tsukai"
-	chapter.544D203000C00000.chapter_subtitle: ["Explore Mahou Tsukai; more quests are being authored."]
+	chapter.544D203000C00000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000D00000.title: "Malum"
-	chapter.544D203000D00000.chapter_subtitle: ["Explore Malum; more quests are being authored."]
+	chapter.544D203000D00000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000E00000.title: "Neo Vitae"
-	chapter.544D203000E00000.chapter_subtitle: ["Explore Neo Vitae; more quests are being authored."]
+	chapter.544D203000E00000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203000F00000.title: "Occultism"
-	chapter.544D203000F00000.chapter_subtitle: ["Explore Occultism; more quests are being authored."]
+	chapter.544D203000F00000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001000000.title: "Pastel"
-	chapter.544D203001000000.chapter_subtitle: ["Explore Pastel; more quests are being authored."]
+	chapter.544D203001000000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001100000.title: "Primal Magick"
-	chapter.544D203001100000.chapter_subtitle: ["Explore Primal Magick; more quests are being authored."]
+	chapter.544D203001100000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001200000.title: "Psi"
-	chapter.544D203001200000.chapter_subtitle: ["Explore Psi; more quests are being authored."]
+	chapter.544D203001200000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001300000.title: "Roots Classic"
-	chapter.544D203001300000.chapter_subtitle: ["Explore Roots Classic; more quests are being authored."]
+	chapter.544D203001300000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001400000.title: "Scriptor Magicae"
-	chapter.544D203001400000.chapter_subtitle: ["Explore Scriptor Magicae; more quests are being authored."]
+	chapter.544D203001400000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001500000.title: "Theurgy"
-	chapter.544D203001500000.chapter_subtitle: ["Explore Theurgy; more quests are being authored."]
+	chapter.544D203001500000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001600000.title: "Totemic"
-	chapter.544D203001600000.chapter_subtitle: ["Explore Totemic; more quests are being authored."]
-	chapter.544D203001700000.title: "Just Another Witchery Remake"
-	chapter.544D203001700000.chapter_subtitle: ["Explore Just Another Witchery Remake; more quests are being authored."]
+	chapter.544D203001600000.chapter_subtitle: ["Mod Guide"]
+	chapter.544D203001700000.title: "Witchery (JAWR)"
+	chapter.544D203001700000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D203001800000.title: "Embers Re-Ignited"
-	chapter.544D203001800000.chapter_subtitle: ["Explore Embers Re-Ignited; more quests are being authored."]
-	chapter.544D203001900000.title: "Reliquary Reincarnations"
-	chapter.544D203001900000.chapter_subtitle: ["Explore Reliquary Reincarnations; more quests are being authored."]
+	chapter.544D203001800000.chapter_subtitle: ["Mod Guide"]
+	chapter.544D203001900000.title: "Reliquary"
+	chapter.544D203001900000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000100000.title: "L_Ender's Cataclysm"
-	chapter.544D204000100000.chapter_subtitle: ["Explore L_Ender's Cataclysm; more quests are being authored."]
+	chapter.544D204000100000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000200000.title: "Deeper and Darker"
-	chapter.544D204000200000.chapter_subtitle: ["Explore Deeper and Darker; more quests are being authored."]
+	chapter.544D204000200000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000300000.title: "Gateways to Eternity"
-	chapter.544D204000300000.chapter_subtitle: ["Explore Gateways to Eternity; more quests are being authored."]
+	chapter.544D204000300000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000400000.title: "Feywild"
-	chapter.544D204000400000.chapter_subtitle: ["Explore Feywild; more quests are being authored."]
+	chapter.544D204000400000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000500000.title: "Apotheosis"
-	chapter.544D204000500000.chapter_subtitle: ["Explore Apotheosis; more quests are being authored."]
+	chapter.544D204000500000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000600000.title: "Artifacts"
-	chapter.544D204000600000.chapter_subtitle: ["Explore Artifacts; more quests are being authored."]
+	chapter.544D204000600000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D204000700000.title: "Enigmatic Legacy+"
-	chapter.544D204000700000.chapter_subtitle: ["Explore Enigmatic Legacy+; more quests are being authored."]
+	chapter.544D204000700000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D205000100000.title: "Draconic Evolution"
-	chapter.544D205000100000.chapter_subtitle: ["Explore Draconic Evolution; more quests are being authored."]
+	chapter.544D205000100000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D205000200000.title: "ProjectE"
-	chapter.544D205000200000.chapter_subtitle: ["Explore ProjectE; more quests are being authored."]
+	chapter.544D205000200000.chapter_subtitle: ["Mod Guide"]
 	chapter.544D205000300000.title: "Replication"
-	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
+	chapter.544D205000300000.chapter_subtitle: ["Mod Guide"]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
 	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this welcome entry to claim an Unwitnessed Amulet and a Ring of the Seven Curses. Equipping the cursed ring is optional and has significant drawbacks."]
 	quest.544D4D1100000001.title: "Punch a Tree"
@@ -155,7 +155,7 @@
 	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
 	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
 	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."]
+	quest.544D502000E00000.quest_desc: ["TMM character progression and Improvable Skills are separate systems; their point pools are not shared."]
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
@@ -333,23 +333,23 @@
 	quest.544D506000600000.title: "Roadmap: What Unlocks Afterwards"
 	quest.544D506000600000.quest_desc: ["After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded."]
 	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills & Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.quest_desc: ["An introduction to Skills & Factions in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D507000100000.title: "Read the Two Skill Systems"
-	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
+	quest.544D507000100000.quest_desc: ["TMM character progression is moving to a unified Progression engine. Improvable Skills 3 remains separate. Do not assume planned skill bonuses are available in the current build."]
 	quest.544D507000200000.title: "Open the Skill Interface"
-	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
+	quest.544D507000200000.quest_desc: ["Find the available character progression controls and skill interface in your current build. This is a manual learning checkmark, not a claim that the planned unified interface or trees are implemented."]
 	quest.544D507000300000.title: "Understand Attributes"
-	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
+	quest.544D507000300000.quest_desc: ["Attributes can modify combat and magic statistics. Before specialization, examine what each stat actually changes; do not assume cooldown, damage and resource effects apply to every mod."]
 	quest.544D507000400000.title: "Experiment with Improvable Skills"
-	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
+	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Its perks are distinct from TMM character progression."]
 	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
-	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
+	quest.544D507000500000.quest_desc: ["Planned character progression emphasizes cooldown, casting efficiency and appropriate crafting bonuses rather than new global mana bars. Individual spell systems differ; only supported effects should be treated as active."]
 	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
 	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
 	quest.544D507000700000.title: "Choose How to Specialize"
 	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
 	quest.544D302000500001.title: "Chapter Overview"
-	quest.544D302000500001.quest_desc: ["An introduction to A Sufficiently Advanced Magic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000500001.quest_desc: ["An introduction to Advanced Magic Tech in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
 	quest.544D508000100000.quest_desc: ["Too Much Magic relies on magical FE sources, not a nuclear tech stack. Draconic Evolution provides an early fuel generator, crystals, storage in its Energy Core, and the high-risk endgame Reactor. Botania Revived's Mana Fluxfield converts mana into FE. Psi and Hex Casting are further candidates pending exact-version verification. No Bigger Reactors, Create, AE2 or general industrial logistics mod is selected."]
 	quest.544D508001500000.title: "Craft a Draconic Generator"
@@ -493,7 +493,7 @@
 	quest.544D303000A00001.title: "Chapter Overview"
 	quest.544D303000A00001.quest_desc: ["An introduction to Hexerei in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000B00001.title: "Chapter Overview"
-	quest.544D303000B00001.quest_desc: ["An introduction to Iron's Spells 'n Spellbooks in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000B00001.quest_desc: ["An introduction to Iron's Spells in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000C00001.title: "Chapter Overview"
 	quest.544D303000C00001.quest_desc: ["An introduction to Mahou Tsukai in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000D00001.title: "Chapter Overview"
@@ -517,11 +517,11 @@
 	quest.544D303001600001.title: "Chapter Overview"
 	quest.544D303001600001.quest_desc: ["An introduction to Totemic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001700001.title: "Chapter Overview"
-	quest.544D303001700001.quest_desc: ["An introduction to Just Another Witchery Remake in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001700001.quest_desc: ["An introduction to Witchery (JAWR) in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001800001.title: "Chapter Overview"
 	quest.544D303001800001.quest_desc: ["An introduction to Embers Re-Ignited in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001900001.title: "Chapter Overview"
-	quest.544D303001900001.quest_desc: ["An introduction to Reliquary Reincarnations in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001900001.quest_desc: ["An introduction to Reliquary in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000100001.title: "Chapter Overview"
 	quest.544D304000100001.quest_desc: ["An introduction to L_Ender's Cataclysm in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D304000200001.title: "Chapter Overview"

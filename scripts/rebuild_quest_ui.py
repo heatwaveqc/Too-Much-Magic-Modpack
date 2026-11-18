@@ -186,11 +186,11 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
         "Experiment with Improvable Skills", "Inspect Cooldown and Casting Perks",
         "Plan for Practical Attribute Caps", "Choose How to Specialize",
     ]
-    put("Skills & Advancement", "Chapter Overview", 0, 0)
+    put("Skills & Factions", "Chapter Overview", 0, 0)
     for i, title in enumerate(skills):
-        put("Skills & Advancement", title, (i % 3) * 4, 4 + (i // 3) * 4)
+        put("Skills & Factions", title, (i % 3) * 4, 4 + (i // 3) * 4)
 
-    tech = "A Sufficiently Advanced Magic"
+    tech = "Advanced Magic Tech"
     put(tech, "Chapter Overview", 0, 0)
     put(tech, "Tech Overview: Energy Without a Tech Pack", 4, 0)
     energy = [
@@ -214,15 +214,15 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
 
 
 SUBTITLE = {
-    "Getting Started": "First tools and shelter, then a practical magic path of your choosing.",
-    "Tips & Tricks": "Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage.",
-    "Food & Fishing": "Farming, fishing, food preparation and modular kitchens.",
-    "Alcohol is Magic": "Fermentation, cocktails, tropical bars and beverage effects.",
-    "Basic Progression": "Shared resources and tools, plus separate player commodity-selling contracts.",
-    "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
-    "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
-    "Skills & Advancement": "Pufferfish skills, attributes and Improvable Skills progression.",
-    "A Sufficiently Advanced Magic": "Draconic generation, energy storage, FE crystals, reactor safety and future approved technology.",
+    "Getting Started": "Tools, shelter, first magic",
+    "Tips & Tricks": "Practical shortcuts",
+    "Food & Fishing": "Farming, fishing, cooking",
+    "Alcohol is Magic": "Brewing and cocktails",
+    "Basic Progression": "Resources and tools",
+    "Advanced Progression": "Enchanting, brewing, storage",
+    "Endgame Roadmap": "Late-game milestones",
+    "Skills & Factions": "Character progression",
+    "Advanced Magic Tech": "Energy and reactor safety",
 }
 
 
@@ -382,7 +382,7 @@ def main() -> None:
     group_translations = []
     for chapter in SPEC["chapters"]:
         chapter_translations.append(f'\tchapter.{chapter["chapter_id"]}.title: {q(chapter["name"])}')
-        subtitle = SUBTITLE.get(chapter["name"], f"Explore {chapter['name']}; more quests are being authored.")
+        subtitle = SUBTITLE.get(chapter["name"], "Mod Guide")
         chapter_translations.append(
             f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([subtitle], ensure_ascii=False)}')
     for group in SPEC["groups"]:
