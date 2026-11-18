@@ -2246,6 +2246,21 @@
       "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; both; not game-smoked. "
     },
     {
+      "id": "twilight-forest-final-boss-remake",
+      "name": "Twilight Forest Final Boss (remake)",
+      "category": "adventure",
+      "desired": true,
+      "version": "2.1.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/twilight-forest-final-boss-remake/files/8768438",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1267766,
+      "candidate_file_id": 8768438,
+      "packwiz_slug": "twilight-forest-final-boss-remake",
+      "note": "Owner-approved #294 and reconfirmed 2026-11-17 #236; next deployment intake, Minecraft 1.21.1 NeoForge + Twilight Forest 4.8.3345. Verify exact provider JAR hash, dependency closure and packwiz pin before enabling; both-side runtime expected, not verified. Inspect exact installed JAR item registry, loot tables and boss death/reward code for renewable actual Castle Keeper drop; use verified drop ID in Philosopher's Stone Primordial Powers closed alternative list (#236), not an assumed trophy name or registry ID. Native Final Castle boss supersedes custom Killer Rabbit replacement; keep optional Chaos Bunny separate. No smoke or package authorized."
+    },
+    {
       "id": "tyzs-skills",
       "name": "Tyz's Skills",
       "category": "skills",
