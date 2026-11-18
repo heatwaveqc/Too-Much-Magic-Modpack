@@ -36,7 +36,7 @@ public final class UtilityEffects {
     public static void foodTick(LivingEntityUseItemEvent.Tick event){
         if(event.isCanceled()||!(event.getEntity() instanceof ServerPlayer p)||!usable(p)||event.getItem().getFoodProperties(p)==null)return;
         if(event.getDuration()>2)return;
-        if(sum(p,"food_efficiency",a->Selectors.item(a.effect().selector(),event.getItem()))<=0)return;
+        if(sum(p,"food_efficiency",a->GildedMechanics.foodBonusMatches(p,a.effect(),event.getItem()))<=0)return;
         var data=p.getFoodData();
         FOOD.put(p.getUUID(),new FoodBefore(event.getItem().copy(),data.getFoodLevel(),data.getSaturationLevel(),p.tickCount));
     }
@@ -47,7 +47,7 @@ public final class UtilityEffects {
         var data=p.getFoodData();
         int actual=Math.max(0,data.getFoodLevel()-old.food());
         float saturation=Math.max(0,data.getSaturationLevel()-old.saturation());
-        double rate=sum(p,"food_efficiency",a->Selectors.item(a.effect().selector(),consumed));
+        double rate=sum(p,"food_efficiency",a->GildedMechanics.foodBonusMatches(p,a.effect(),consumed));
         if(rate<=0)return;
         int extra=UtilityMath.bonus(actual,rate,p.getRandom().nextDouble(),20);
         data.setFoodLevel(Math.min(20,data.getFoodLevel()+extra));

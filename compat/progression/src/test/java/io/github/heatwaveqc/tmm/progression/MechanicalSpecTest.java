@@ -57,5 +57,12 @@ class MechanicalSpecTest {
         assertDoesNotThrow(()->parse("{\"type\":\"virtual_unbreaking\",\"target\":\"test:gear\",\"per_rank\":1}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"virtual_unbreaking\",\"per_rank\":1}"));
     }
+    @Test void gildedMechanicsSchema(){
+        assertDoesNotThrow(()->parse("{\"type\":\"piglin_kinship\"}"));
+        assertDoesNotThrow(()->parse("{\"type\":\"held_harvest_tier\",\"target\":\"#minecraft:mineable/pickaxe\",\"weapon\":\"minecraft:golden_pickaxe\",\"tier\":3}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"held_harvest_tier\",\"target\":\"#minecraft:mineable/pickaxe\",\"tier\":3}"));
+        assertDoesNotThrow(()->parse("{\"type\":\"food_restriction\",\"target\":\"#test:foods\",\"params\":{\"gold_recipes\":true}}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"lava_fishing_practice\"}"));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }

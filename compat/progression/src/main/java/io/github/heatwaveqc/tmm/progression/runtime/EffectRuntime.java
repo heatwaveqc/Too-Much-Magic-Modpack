@@ -240,6 +240,7 @@ public final class EffectRuntime {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         BlockState state = event.getTargetBlock();
         int required = requiredTier(state);
+        if(GildedMechanics.heldHarvest(player,state,required)){event.setCanHarvest(true);return;}
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
             if (fx.type().equals("harvest_tier") && Selectors.block(fx.selector(),state)

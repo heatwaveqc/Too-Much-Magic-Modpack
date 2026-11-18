@@ -29,6 +29,7 @@ public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
         TreeChopXpBridge.register();
+        GildedMechanics.register();
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
@@ -133,6 +134,7 @@ public final class ProgressionEvents {
                     ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             }
             HarvestAbilities.blockDrops(player,event);
+            GildedMechanics.ore(player,event);
             TyzMonkBridge.crops(event,player);
             UtilityEffects.crops(player,event);
             EffectHandlers.blockDrops(player,event);
@@ -174,6 +176,7 @@ public final class ProgressionEvents {
     private static void incoming(LivingIncomingDamageEvent event) {
         if (event.isCanceled()) return;
         ClassAbilities.incoming(event);
+        if(!event.isCanceled())GildedMechanics.fireDamage(event);
         if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
         if (!event.isCanceled()) EffectHandlers.incoming(event);
@@ -198,6 +201,7 @@ public final class ProgressionEvents {
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
+            GildedMechanics.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);

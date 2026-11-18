@@ -179,6 +179,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         mutationPolicies = Map.copyOf(mutations);
         enrollmentModes = Map.copyOf(modes);
         active = Map.copyOf(next);
+        io.github.heatwaveqc.tmm.progression.runtime.GildedMechanics.clearFoodCache();
         ProgressionMod.LOGGER.info("Loaded {} progression path definitions",active.size());
     }
 }

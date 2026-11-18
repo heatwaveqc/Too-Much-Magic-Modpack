@@ -11,7 +11,9 @@
     "VirtualElytraItemExtensionMixin",
     "OwnedWearMixin",
     "MobEffectDurationAccess",
-    "OwnedEffectDurationMixin"
+    "OwnedEffectDurationMixin",
+    "OwnedPiglinMixin",
+    "OwnedPiglinBruteMixin"
   ],
   "injectors": {
     "defaultRequire": 1
