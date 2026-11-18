@@ -4,7 +4,7 @@ Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`. Evidence: Encha
 
 ## Acquisition and inscription
 
-Optional equipment after Apparatus. Notebook **Spell Casting** entries for the individual Enchanter items, plus **Crafting -> Scribe's Table -> Scribing**; JEI exact item recipes. All five acquisition recipes are Apparatus, SourceCost0, one output. Tag names/quantities below are native inputs; effective pack tag members require JEI.
+Optional equipment after Apparatus. Notebook **Spell Casting** entries for Sword/Shield/Mirror, **Items** entries for Gauntlet/Fishing Rod, plus **Crafting -> Scribe's Table -> Scribing**; JEI exact item recipes. All five acquisition recipes are Apparatus, SourceCost0, one output. Tag names/quantities below are native inputs; effective pack tag members require JEI.
 
 | Recipe / item | Center reagent | Consumed pedestal inputs | keepNbtOfReagent |
 | --- | --- | --- | --- |
