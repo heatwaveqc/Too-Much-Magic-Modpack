@@ -32,10 +32,21 @@ public final class MagicCatalog {
                 String id=fx.get("target").getAsString();var binding=bindings.get(id);
                 if(binding==null)throw new IllegalArgumentException("Unknown magic stat "+id);
                 if(fx.has("attribute")||fx.has("operation"))throw new IllegalArgumentException("Magic stat binding owns native attribute and operation");
-                double value=fx.get("per_rank").getAsDouble()*binding.scale();
-                if(!Double.isFinite(value)||Math.abs(value)>10000)throw new IllegalArgumentException("Magic stat contribution outside native parser bounds");
+                if(fx.has("rank_values")){
+                    var values=new com.google.gson.JsonArray();
+                    for(var entry:fx.getAsJsonArray("rank_values")){
+                        double value=entry.getAsDouble()*binding.scale();
+                        if(!Double.isFinite(value)||Math.abs(value)>1000000)throw new IllegalArgumentException("Magic rank value out of bounds");
+                        values.add(value);
+                    }
+                    fx.add("rank_values",values);
+                }else{
+                    double value=fx.get("per_rank").getAsDouble()*binding.scale();
+                    if(!Double.isFinite(value)||Math.abs(value)>10000)throw new IllegalArgumentException("Magic stat contribution outside native parser bounds");
+                    fx.addProperty("per_rank",value);
+                }
                 fx.addProperty("type","attribute");fx.remove("target");fx.addProperty("attribute",binding.attribute());
-                fx.addProperty("operation",binding.operation());fx.addProperty("per_rank",value);
+                fx.addProperty("operation",binding.operation());
             }
         }
         return copy;

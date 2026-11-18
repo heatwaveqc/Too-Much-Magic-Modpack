@@ -55,7 +55,7 @@ public final class EffectRuntime {
                 int rank = track.skillRank(skill.id());
                 if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
-                    Definition.Effect effect = skill.effects().get(n);
+                    Definition.Effect effect = skill.effects().get(n).atRank(rank);
                     if (PathRegistry.effectEligible(player,path.id(),skill.id(),n) && eligible(player,effect,track)) {
                         String id = path.id().replace(':','/') + "/" +
                             skill.id().replace(':','/') + "/" + n;

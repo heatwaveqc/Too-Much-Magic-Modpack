@@ -75,7 +75,7 @@ public final class ProgressionApi {
 
     public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
         var path=PathRegistry.get(pathId);
-        if(path==null || !PathRegistry.skillEligible(player,pathId,skillId)) return false;
+        if(path==null || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player) || !PathRegistry.skillEligible(player,pathId,skillId)) return false;
         Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
         return ChannelEngine.buy(before,path,PathRegistry.config(),skillId)!=before;
     }
