@@ -103,3 +103,6 @@ The source-present pilot includes four Ars n Spells nodes43–46; see [all49node
 
 
 [Direct pinned mana/lifecycle audit](ars-n-spells-pinned-mana.md) adds exact mode/quote/payment boundaries, hash-verified Iron's recipient and resolves Mana Well lifetime: no universal parent timer/recurring Source cost, redstone pause, relay-centered ticking and active-break refund boundary. Infusion remains finite60tick one-shot. Remaining caller settlement/regen/combat/progression/cooldown work keeps this researching.
+
+
+[Actual cast payment/caller audit](ars-n-spells-pinned-payments.md) now traces Ars event reservation/expendMana replacement/cleanup, native Iron's castSpell boundary, pre-effect refunds versus committed effects, continuous-pulse exhaustion/scroll handling and alternative-payment refusal versus legacy-open. Regeneration/equipment, combat/school systems, cooldown and optional adapter scope remain before source completion.

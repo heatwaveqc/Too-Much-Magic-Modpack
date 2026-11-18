@@ -1,3 +1,10 @@
+# Latest checkpoint — 2026-11-18 Ars n Spells actual payment/cast callers
+
+- Added ars-n-spells-pinned-payments.md: ArsCostCalc->postEventreserve->expendManacommit/nativecancel->finish/PostTickcleanup; native Iron's AbstractSpell.castSpell confirmed exact binary then mixinwrite/effect/session/refund/channel paths. Payment refunds pre-effect only, skippednativewritewaivesowed, lastpaidpulsecompletesratherthanrollback. AlternativePayment LEGACY_OPEN canpermitpartial/unpaid; adapter scope stillneedsmapping. SelectednativeAbstractSpell/CastSource+innersnowinexternalirons-ans-fresh;addonallclassesans-fresh.
+- **Next finish direct coverage**: regen/equipment/manaHUD, damage/school progression/affinity/resonance, cooldown presets/migration and optional alternative-adapter enabled-roster reconciliation. Paymentcallers/7recipes/4adv/Welllifetime nowcovered; don'tre-audit. Then addonfullwalkthroughmatrix/statusreview;remaining5Arsaddons; combinedparentreview/othermajors.6/42complete36researchingunchanged. No blocker,hourlyactive,docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Gitlogforactualpushedhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-18 Ars n Spells mode/quote and mana ritual lifecycle
 
 - New ars-n-spells-pinned-mana.md traces mode routing/quote arithmetic/ledgerpreflight/hold/abort boundaries, native Iron's MagicData event/clamp endpoint, and native ManaWell/Infusion/Brazier lifecycle. Exact Iron's3.16.3 artifact recovered/hashverified externally,13890045bytes, SHA512fd782f98c6c59b193c4832f33775291d2a7e639e1e23dd47510bfb494d99d182bec1253566b9394f96c733a0d0108be34bd729614b82dc29e55e096fdeb96f5b. SelectedMagicData/MagicManagerCFR at irons-ans-fresh; fulladdonans-fresh remains.
