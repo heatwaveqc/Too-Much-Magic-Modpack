@@ -21,7 +21,15 @@ import java.util.Map;
 /** Server-only mutation progress, permanent effect refresh and food exhaustion. */
 public final class HunterMutations {
     private HunterMutations() {}
-    private static final String HUNTER = HunterExperience.HUNTER;
+    /** A brew has no owner selector yet: refuse ambiguous eligible configurations. */
+    public static List<String> eligiblePaths(ServerPlayer player){
+        return PathRegistry.mutationPolicies().keySet().stream()
+            .filter(id->ProgressionApi.track(player,id).joined()&&PathRegistry.eligible(player,id))
+            .sorted().toList();
+    }
+    private static HunterMutationState state(ServerPlayer player,String path){
+        return player.getData(ProgressionAttachments.MUTATIONS.get()).paths().getOrDefault(path,HunterMutationState.empty());
+    }
 
     private static String effectId(MobEffectInstance effect) {
         ResourceLocation location = BuiltInRegistries.MOB_EFFECT.getKey(effect.getEffect().value());
@@ -35,10 +43,10 @@ public final class HunterMutations {
     }
 
     public static boolean hasEligibleEffect(PotionContents contents) {
-        HunterMutationPolicy policy = PathRegistry.hunterMutationPolicy(HUNTER);
-        if (policy == null || contents == null) return false;
-        for (MobEffectInstance effect : contents.getAllEffects())
-            if (validEffect(policy,effect)) return true;
+        if(contents==null)return false;
+        for(var policy:PathRegistry.mutationPolicies().values())
+            for(MobEffectInstance effect:contents.getAllEffects())
+                if(validEffect(policy,effect))return true;
         return false;
     }
 
@@ -48,15 +56,15 @@ public final class HunterMutations {
      * A multi-effect potion contributes each effect's actual original duration.
      */
     public static boolean drink(ServerPlayer player, ItemStack brewed) {
-        HunterMutationPolicy policy = PathRegistry.hunterMutationPolicy(HUNTER);
-        if (policy == null || player.isCreative() || player.isSpectator()
-            || !ProgressionApi.track(player,HUNTER).joined()
-            || !brewed.is(HunterItems.MUTAGENIC_BREW.get())) return false;
+        var owners=eligiblePaths(player);
+        if(owners.size()!=1||player.isCreative()||player.isSpectator()||!brewed.is(HunterItems.MUTAGENIC_BREW.get()))return false;
+        String owner=owners.getFirst();
+        HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
         PotionContents contents = brewed.get(DataComponents.POTION_CONTENTS);
         // Defense in depth: a mutated/command-granted brew cannot bypass the
         // brewing-stand source gate simply by carrying POTION_CONTENTS.
         if (!StandPotionEligibility.eligible(contents) || !hasEligibleEffect(contents)) return false;
-        HunterMutationState old = player.getData(ProgressionAttachments.HUNTER_MUTATIONS.get());
+        HunterMutationState old = state(player,owner);
         HunterMutationState next = old;
         List<String> changed = new ArrayList<>();
         for (MobEffectInstance effect : contents.getAllEffects()) {
@@ -75,7 +83,7 @@ public final class HunterMutations {
                     "Permanent mutation unlocked: " + id + " level " + (amplifier + 1)),false);
         }
         if (next == old) return false; // already capped: do not eat potion for nothing.
-        player.setData(ProgressionAttachments.HUNTER_MUTATIONS.get(),next);
+        player.setData(ProgressionAttachments.MUTATIONS.get(),player.getData(ProgressionAttachments.MUTATIONS.get()).with(owner,next));
         long target = policy.targetDurationTicks();
         for (String id : changed.stream().distinct().limit(3).toList()) {
             String msg = id;
@@ -91,11 +99,12 @@ public final class HunterMutations {
     }
 
     public static void tick(ServerPlayer player) {
-        if (player.isCreative() || player.isSpectator()
-            || !ProgressionApi.track(player,HUNTER).joined()) return;
-        HunterMutationPolicy policy = PathRegistry.hunterMutationPolicy(HUNTER);
-        if (policy == null) return;
-        HunterMutationState state = player.getData(ProgressionAttachments.HUNTER_MUTATIONS.get());
+        if(player.isCreative()||player.isSpectator())return;
+        for(String owner:eligiblePaths(player))tickPath(player,owner);
+    }
+    private static void tickPath(ServerPlayer player,String owner){
+        HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
+        HunterMutationState state=state(player,owner);
         if (state.unlocked().isEmpty()) return;
 
         // Count DISTINCT ACTIVE eligible effects, not levels or existing Potion buffs.
@@ -129,9 +138,11 @@ public final class HunterMutations {
     }
 
     public static String summary(ServerPlayer player) {
-        HunterMutationState state = player.getData(ProgressionAttachments.HUNTER_MUTATIONS.get());
-        HunterMutationPolicy policy = PathRegistry.hunterMutationPolicy(HUNTER);
-        if (policy == null) return "Hunter mutations unavailable (policy not loaded)";
+        var owners=eligiblePaths(player);
+        if(owners.size()!=1)return owners.isEmpty()?"No eligible mutation policy":"Multiple eligible mutation policies; select an owner in data";
+        String owner=owners.getFirst();
+        HunterMutationState state=state(player,owner);
+        HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
         String unlocked = state.unlocked().entrySet().stream()
             .sorted(Comparator.comparing(Map.Entry::getKey))
             .limit(12)

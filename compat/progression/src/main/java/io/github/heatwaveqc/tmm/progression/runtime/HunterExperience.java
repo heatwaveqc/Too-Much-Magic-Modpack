@@ -53,7 +53,7 @@ public final class HunterExperience {
     }
     private static boolean permitted(ServerPlayer player,String system){
         var spec=PathRegistry.economy(system);
-        return spec!=null&&(spec.earningPath().isEmpty()||(ProgressionApi.track(player,spec.earningPath()).joined()
+        return spec!=null&&PathRegistry.economyEligible(player,system)&&(spec.earningPath().isEmpty()||(ProgressionApi.track(player,spec.earningPath()).joined()
             &&PathRegistry.eligible(player,spec.earningPath())));
     }
     private static boolean chosenSpecialtyMatches(ServerPlayer player,LivingEntity target,HunterXpPolicy policy) {

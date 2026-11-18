@@ -110,7 +110,7 @@ public final class ProgressionApi {
         if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId)) return false;
+        if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId) || !PathRegistry.economyEligible(player,channel.id()) || NewbieMode.isNewbie(player)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if(!ledger.get(pathId).joined())return false;
         player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,xp,0));
@@ -156,11 +156,11 @@ public final class ProgressionApi {
     /** Trusted server-side event provenance filter: reject rewards for a specific path. */
     public static void recordFiltered(ServerPlayer player, Signal signal,
                                       java.util.function.Predicate<Definition.Path> eligiblePath) {
-        if (player.isCreative() || player.isSpectator()) return;
+        if (player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         for(var system:PathRegistry.economies().values()){
-            if(system.magic())continue;
+            if(system.magic()||!PathRegistry.economyEligible(player,system.id()))continue;
             String required=system.earningPath();
             if(!required.isEmpty()){
                 var gate=PathRegistry.get(required);
@@ -168,8 +168,9 @@ public final class ProgressionApi {
             }
             int index=0;
             for(var source:system.sources()){
-                String cooldownKey=system.id()+"/"+index++;
-                if(!signal.matches(source.event(),source.selector()))continue;
+                int sourceIndex=index++;
+                String cooldownKey=system.id()+"/"+sourceIndex;
+                if(!signal.matches(source.event(),source.selector())||!PathRegistry.sourceEligible(player,system.id(),sourceIndex))continue;
                 long now=player.level().getGameTime();
                 var recent=cooldowns.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
@@ -277,7 +278,7 @@ public final class ProgressionApi {
     public static boolean awardExperience(ServerPlayer player,String id,long xp) {
         if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
             ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
-        var system=PathRegistry.economy(id);if(system==null||system.magic())return false;
+        var system=PathRegistry.economy(id);if(system==null||system.magic()||!PathRegistry.economyEligible(player,id))return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;

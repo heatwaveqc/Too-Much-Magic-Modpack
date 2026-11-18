@@ -25,6 +25,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public static HunterXpPolicy hunterXp(String path) { var c=channel(path);return c==null?null:hunterXpPolicies.get(c.id()); }
     private static volatile Map<String,HunterMutationPolicy> mutationPolicies = Map.of();
     public static HunterMutationPolicy hunterMutationPolicy(String path) { return mutationPolicies.get(path); }
+    public static Map<String,HunterMutationPolicy> mutationPolicies(){return mutationPolicies;}
     public static Map<String,PotionEnrollmentTrigger> potionTriggers() { return potionTriggers; }
     public static String enrollment(String path) { return enrollmentModes.getOrDefault(path,"admin"); }
 
@@ -34,6 +35,16 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public static ChannelConfig config(){return channelConfig;}
     public static Map<String,XpChannel> economies(){return channelConfig.channels();}
 
+    private record SourceKey(String system,int index) {}
+    private static volatile Map<String,Condition<ServerPlayer>> economyGates=Map.of();
+    private static volatile Map<SourceKey,Condition<ServerPlayer>> sourceGates=Map.of();
+    public static boolean economyEligible(ServerPlayer player,String id){
+        if(XpChannel.MXP.equals(id))return economy(id)!=null;
+        var condition=economyGates.get(id);return condition!=null&&condition.test(player);
+    }
+    public static boolean sourceEligible(ServerPlayer player,String id,int index){
+        var condition=sourceGates.get(new SourceKey(id,index));return condition!=null&&condition.test(player);
+    }
     private record GateKey(String path,String skill,int index) {}
     private static volatile Map<GateKey,Condition<ServerPlayer>> gates=Map.of();
     private static boolean test(ServerPlayer player,GateKey key) {
@@ -76,7 +87,12 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
             }catch(java.io.IOException bad){throw new IllegalArgumentException("Cannot read XP system "+id,bad);}
         }
         var systems=ChannelConfig.definitions(experience,1.02);
+        Map<String,Condition<ServerPlayer>> newEconomyGates=new HashMap<>();
+        Map<SourceKey,Condition<ServerPlayer>> newSourceGates=new HashMap<>();
         experience.forEach((id,raw)->{
+            newEconomyGates.put(id,Eligibility.parse(raw.get("eligibility")));
+            var sources=raw.has("sources")?raw.getAsJsonArray("sources"):(raw.has("activities")?raw.getAsJsonArray("activities"):new com.google.gson.JsonArray());
+            int i=0;for(var source:sources)newSourceGates.put(new SourceKey(id,i++),Eligibility.parse(source.getAsJsonObject().get("when")));
             var policy=HunterXpPolicy.parse(raw);
             if(policy!=null)xpPolicies.put(id,policy);
         });
@@ -119,6 +135,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        economyGates=Map.copyOf(newEconomyGates);
+        sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
         gates=Map.copyOf(nextGates);
         potionTriggers = Map.copyOf(triggers);

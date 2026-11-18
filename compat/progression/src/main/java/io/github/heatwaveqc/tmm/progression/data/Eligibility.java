@@ -51,6 +51,16 @@ public final class Eligibility {
                     (io.github.heatwaveqc.tmm.progression.core.ProgressionApi.track(player,id).joined()
                         ? Condition.Result.PASS:Condition.Result.FAIL);
             }
+            case "experience_level" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                int minimum=node.get("minimum").getAsInt();
+                if(minimum<0)throw new IllegalArgumentException("Negative experience level");
+                yield player -> {
+                    if(PathRegistry.economy(id)==null)return Condition.Result.UNAVAILABLE;
+                    var wallet=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get()).wallets().get(id);
+                    return (wallet==null?0:wallet.rank())>=minimum?Condition.Result.PASS:Condition.Result.FAIL;
+                };
+            }
             case "dimension" -> PlayerConditions.dimension(ResourceLocation.parse(node.get("id").getAsString()));
             case "biome" -> {
                 String id=node.get("id").getAsString();
