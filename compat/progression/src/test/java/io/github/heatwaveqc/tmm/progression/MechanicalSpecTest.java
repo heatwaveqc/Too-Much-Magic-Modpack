@@ -71,5 +71,10 @@ class MechanicalSpecTest {
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ore_sense\",\"target\":\"*\",\"per_rank\":5}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ore_sense\",\"target\":\"#c:ores\",\"per_rank\":5,\"params\":{\"interval_ticks\":1}}"));
     }
+    @Test void conservationSchema(){
+        assertDoesNotThrow(()->parse("{\"type\":\"ammo_conservation\",\"target\":\"minecraft:arrow\",\"weapon\":\"minecraft:crossbow\",\"per_rank\":0.02}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ammo_conservation\",\"target\":\"minecraft:firework_rocket\",\"weapon\":\"minecraft:crossbow\",\"per_rank\":0.02}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"ammo_conservation\",\"target\":\"minecraft:arrow\",\"weapon\":\"minecraft:bow\",\"per_rank\":0.02}"));
+    }
     @Test void respectsCaps(){assertEquals(15,MechanicalSpec.heal(.05,3,100,20),1e-8);assertEquals(20,MechanicalSpec.heal(.05,10,100,20),1e-8);assertEquals(0,MechanicalSpec.heal(0,1,100,20),1e-8);}
 }

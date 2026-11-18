@@ -13,7 +13,8 @@
     "MobEffectDurationAccess",
     "OwnedEffectDurationMixin",
     "OwnedPiglinMixin",
-    "OwnedPiglinBruteMixin"
+    "OwnedPiglinBruteMixin",
+    "OwnedAmmoMixin"
   ],
   "injectors": {
     "defaultRequire": 1
