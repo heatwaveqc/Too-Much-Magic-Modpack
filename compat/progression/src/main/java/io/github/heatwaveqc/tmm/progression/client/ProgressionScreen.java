@@ -24,7 +24,7 @@ public final class ProgressionScreen extends Screen {
     private SkillGraph.Graph graph;
     private final Map<String,int[]> panByPath=new HashMap<>();
     private int panX,panY,ticks;
-    private Button purchase,respec;
+    private Button purchase,respec,activate;
     private boolean confirmRespec;
     public ProgressionScreen(String pathId){super(Component.literal("Progression"));this.pathId=pathId;}
     private void request(){PacketDistributor.sendToServer(new ProgressionMenuNetwork.Request(pathId));}
@@ -70,6 +70,11 @@ public final class ProgressionScreen extends Screen {
             else{confirmRespec=false;respec.setMessage(Component.literal("Respec"));
                 PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"respec",""));}
         }).bounds(105,height-25,94,20).build());
+        activate=addRenderableWidget(Button.builder(Component.literal("Activate"),b->{
+            var node=nodes.get(selection);
+            if(node!=null&&node.has("activation_ready")&&node.get("activation_ready").getAsBoolean())
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"activate",selection));
+        }).bounds(204,height-25,80,20).build());
         clampPan();request();
     }
     @Override public void tick(){if(++ticks%40==0)request();}
@@ -112,6 +117,11 @@ public final class ProgressionScreen extends Screen {
         JsonObject chosen=nodes.get(selection);
         if(purchase!=null)purchase.active=chosen!=null&&chosen.get("buyable").getAsBoolean();
         if(respec!=null)respec.active=data!=null&&data.get("joined").getAsBoolean();
+        if(activate!=null){
+            activate.visible=chosen!=null&&chosen.has("activation_mode")&&width>=355;
+            activate.active=activate.visible&&chosen.get("activation_ready").getAsBoolean();
+            if(activate.visible)activate.setMessage(Component.literal(chosen.get("activation_active").getAsBoolean()?"Active / off":"Activate"));
+        }
         if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
             line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
                 " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points",12,53,width-24,0xFFDBC895);

@@ -99,6 +99,7 @@ public final class ProgressionApi {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
             ChannelEngine.refund(ledger,path));
+        io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
 

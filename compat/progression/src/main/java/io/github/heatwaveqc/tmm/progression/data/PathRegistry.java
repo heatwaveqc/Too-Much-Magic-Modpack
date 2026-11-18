@@ -46,6 +46,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         var condition=sourceGates.get(new SourceKey(id,index));return condition!=null&&condition.test(player);
     }
     private record GateKey(String path,String skill,int index) {}
+    private static volatile Map<GateKey,ActivationSpec> activations=Map.of();
+    public static ActivationSpec activation(String path,String skill){return activations.get(new GateKey(path,skill,-1));}
     private static volatile Map<GateKey,Condition<ServerPlayer>> gates=Map.of();
     private static boolean test(ServerPlayer player,GateKey key) {
         var condition=gates.get(key);
@@ -78,6 +80,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,JsonObject> rawPaths=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
+        Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
         Map<String,JsonObject> experience=new HashMap<>();
         String prefix="tmm_progression/experience_systems/";
         for(var resource:manager.listResources("tmm_progression/experience_systems",id->id.getPath().endsWith(".json")).entrySet()){
@@ -119,6 +122,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 if(raw.has("skills")) for(var skillElement:raw.getAsJsonArray("skills")) {
                     var skill=skillElement.getAsJsonObject();
                     String skillId=skill.get("id").getAsString();
+                    var activation=ActivationSpec.read(skill);
+                    if(activation!=null)nextActivations.put(new GateKey(path.id(),skillId,-1),activation);
                     localGates.put(new GateKey(path.id(),skillId,-1),Eligibility.parse(skill.get("eligibility")));
                     if(skill.has("effects")) {
                         int index=0;
@@ -145,6 +150,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
         gates=Map.copyOf(nextGates);
+        activations=Map.copyOf(nextActivations);
         potionTriggers = Map.copyOf(triggers);
         hunterXpPolicies = Map.copyOf(xpPolicies);
         mutationPolicies = Map.copyOf(mutations);

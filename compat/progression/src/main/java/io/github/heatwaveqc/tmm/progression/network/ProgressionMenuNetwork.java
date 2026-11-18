@@ -80,6 +80,7 @@ public final class ProgressionMenuNetwork {
                             case "buy" -> validId(payload.skill()) &&
                                     ProgressionApi.buy(player, payload.path(), payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
+                            case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
                         };
                         // A rejected mutation also receives a fresh projection
@@ -162,6 +163,13 @@ public final class ProgressionMenuNetwork {
             item.addProperty("point_name",binding.currency().pointName());
             item.addProperty("level_system",binding.levelSystem().name());
             item.addProperty("price", skill.price(owned));
+            var activation=PathRegistry.activation(pathId,skill.id());
+            if(activation!=null){
+                item.addProperty("activation_mode",activation.mode());
+                item.addProperty("activation_active",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.active(player,pathId,skill.id()));
+                item.addProperty("activation_ready",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.canRequest(player,pathId,skill.id()));
+                item.addProperty("activation_remaining",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.remaining(player,pathId,skill.id()));
+            }
             item.addProperty("choice_group", skill.choiceGroup());
             item.addProperty("buyable", ProgressionApi.canBuy(player,pathId,skill.id()));
             item.add("requires", strings(skill.requiresSkills()));

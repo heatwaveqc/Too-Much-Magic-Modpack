@@ -194,6 +194,7 @@ public final class ProgressionEvents {
             ClassAbilities.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
+            SkillActivation.reconcile(player);
             MechanicalEffects.tick(player);
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
@@ -215,6 +216,7 @@ public final class ProgressionEvents {
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
             ProgressionMenuNetwork.forget(player);
+            SkillActivation.stopAll(player);
             EffectRuntime.reconcile(player);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,true);
