@@ -10,8 +10,8 @@
 | Source snapshot | [NeoForge 1.21.1 source commit `f25c379d5e0521821ab6e80a9f485ae41d4506a0`](https://github.com/otectus/ars-n-spells/commit/f25c379d5e0521821ab6e80a9f485ae41d4506a0), dated 2026-10-03. Version/dependency metadata align with the pin; a reproducible JAR-to-source build comparison was not performed. |
 | Status | **researching** — the bridge's source-defined routes are mapped; pack runtime/config and client walkthrough remain unverified. |
 | Reviewed | 2026-11-16 |
-| Guide access | No Patchouli/Modonomicon book or page tree is shipped. Use the mod's README for mechanics, JEI for craft recipes, and the named Ars ritual descriptions/tooltips for ritual inputs; TMM quests should give the operational steps below. |
-| Quest placement | Ars Nouveau chapter groups this addon with the other Ars addons. Current integration chapter is an orientation scaffold; the separate Ars quest pilot branch has the detailed addon lessons but is not merged into this integration branch. |
+| Guide access | Six Patchouli resources are shipped (category+five entries), but native Java Notebook visibility is unconfirmed. Use JEI and the explicit local walkthrough; see the pinned companion below. |
+| Quest placement | Ars Nouveau chapter groups this addon with the other Ars addons. The49-node pilot is already source-present; nodes43–46 use the four native advancements. Source presence is separate from client acceptance. |
 
 ## What the addon changes
 
@@ -49,19 +49,19 @@ This is a compact optional branch after the player has a working Ars spell and h
 | Step | How-to and visible success | Recipe/help surface | Coverage state |
 | --- | --- | --- | --- |
 | 1. Prepare one safe Ars spell | Create a low-cost, non-channelled Ars spell using the Ars Nouveau system; make sure it does not require a caster context or use a blacklisted glyph. | Ars spell UI and JEI spell component recipes; Ars Nouveau profile | Parent walkthrough, not this addon |
-| 2. Make a carrier | Craft Spell Loom; make a blank scroll if a blank Iron's scroll is not available; insert the Ars source and target; set a name if desired; inscribe and collect output. | JEI `ars_n_spells:spell_loom`, `blank_scroll`; Spell Loom UI | Detailed addon lesson exists on `feature/ars-quest-pilot`, not in current integration quest data |
-| 3. Bind to Iron's book | Craft Spellbook Binding tablet in the Apparatus; drop one carrier and one Iron's book by its Brazier; clear all other dropped items; activate empty-handed. Confirm new entry in the wheel. | JEI `ars_n_spells:spellbook_binding`; Brazier ritual description | Same pilot branch; Inscription Table alternative requires client-confirmed how-to |
+| 2. Make a carrier | Craft Spell Loom; make a blank scroll if a blank Iron's scroll is not available; insert the Ars source and target; set a name if desired; inscribe and collect output. | JEI `ars_n_spells:spell_loom`, `blank_scroll`; Spell Loom UI | Pilot43/44 source-present; pinned companion distinguishes possession from actual Loom transaction |
+| 3. Bind to Iron's book | Craft Spellbook Binding tablet in the Apparatus; drop one carrier and one Iron's book by its Brazier; clear all other dropped items; activate empty-handed. Confirm new entry in the wheel. | JEI `ars_n_spells:spellbook_binding`; Brazier ritual description | Pilot45 source-present; Table alternative server path mapped, client operation untested |
 | 4. Cast and inspect payment | Select the Ars entry in Iron's wheel and cast at a safe target. Check effect and mana balance separately. Repeat in the chosen mode with a spell that costs more than the first. | Iron's spell wheel; config `mana_unification_mode`; command `/ans mode` for operators | The three addon advancement criteria exist for transcription, binding and first cross-cast; they use `minecraft:impossible` and only prove source explicitly grants them after events. Actual player-facing quest detector/client behavior is unverified. |
-| 5. Optional alternate carrier route | Craft Spell Transcription tablet, then place exactly one source and blank target by the Brazier. Right-click the resulting carrier to cast; use Spell Uninscription to clear it. | JEI apparatus recipes; ritual descriptions/tooltips | Source-mapped; no current integration quest lesson |
+| 5. Optional alternate carrier route | Craft Spell Transcription tablet, then place exactly one source and blank target by the Brazier. Right-click the resulting carrier to cast; use Spell Uninscription to clear it. | JEI apparatus recipes; ritual descriptions/tooltips | Source-mapped optional route; not taught by pilot44 Loom criterion |
 | 6. Optional mana utilities | Craft Mana Infusion or Mana Well tablet and compare mana before/after in a disposable world with active config noted. For the Well, track each nearby player's mana over time and confirm termination/removal behavior. | JEI apparatus recipe; ritual descriptions/tooltips | Source-mapped, not in TMM tests; no duration assumption |
 
 The native advancement parent chain is `craft_spell_loom` → `transcribe_spell` → `bind_spell` → `first_cross_cast`. `craft_spell_loom` triggers from inventory possession. The latter three declare `minecraft:impossible`; source calls grant them after corresponding successful actions. That trigger declaration alone does not make a quest detector or prove the cross-cast worked in the client.
 
 ## In-game teaching and current quest coverage
 
-No in-game guidebook or tutorial chapter is packaged. Recipe discovery is via JEI, spell creation belongs to Ars Nouveau, and the ritual items have localized descriptions with operation hints. For self-contained teaching, quest text must name the exact tablet and distinguish the two inscription routes, include dropped-item radius and empty-hand activation, and explain the blank carrier choice.
+Six legacy Patchouli resources are packaged; their display in the native Java Notebook is unconfirmed. Recipe discovery is via JEI, spell creation belongs to Ars Nouveau, and ritual items have localized hints. For self-contained teaching, quest text must name the exact tablet and distinguish the two inscription routes, include dropped-item radius and empty-hand activation, and explain the blank carrier choice.
 
-The current integration `config/ftbquests/quests/chapters/ars_nouveau.snbt` is an orientation scaffold; no Ars 'n Spells quests are present there. A separate feature branch contains a broader Ars addon pilot and three distinct Ars 'n Spells advancement-linked lessons, but it remains separate from this branch. No quest/runtime files were changed for this profile.
+The source-present pilot includes four Ars n Spells nodes43–46; see [all49nodes](ars-nouveau-pilot-crosswalk.md) and [pinned carrier/credit audit](ars-n-spells-pinned-carriers.md). Their criterion meanings and alternate routes differ; no client/team-claim acceptance is asserted.
 
 ## Pack fit, config and unverified behavior
 
@@ -81,7 +81,7 @@ The current integration `config/ftbquests/quests/chapters/ars_nouveau.snbt` is a
 | `SpellLoomBlockEntity`, `LoomInscription`, `InscriptionPlanner`, ritual classes | Server-side source/target validation, consumed/reusable stack behavior, range/ambiguity rules, mana grant routing | Behavior under TMM's complete mod list and multiplayer latency |
 | `ManaWellRitual.java` SHA `65602de`; `AnsConfig.java` SHA `8779f76` | The tick handler grants configured mana each server tick to every player intersecting its inflated AABB; defaults are range 8 and 2.0 mana/tick, configurable to 64 and 100.0 respectively. | Does not establish parent Ars ritual lifetime, effective TMM config, or in-world mana/cooldown behavior |
 | `advancement/*.json` plus `AdvancementUtil` call sites | Advancement ancestry, declared trigger types and corresponding source grants | A useful task detector in the live client or quest credit in TMM |
-| TMM manifest, `mods/*.pw.toml`, `index.toml`, current chapter data | Selection and pinned pack facts; no Ars 'n Spells quests in the current integrated chapter | Successful client launch or addon mechanics in a world |
+| TMM manifest, `mods/*.pw.toml`, `index.toml`, current chapter data | Selection and pinned pack facts; four pilot nodes source-present | Successful client launch or addon mechanics in a world |
 
 ### Not tested in TMM
 
@@ -95,3 +95,8 @@ The current integration `config/ftbquests/quests/chapters/ars_nouveau.snbt` is a
 
 - 2026-11-16 — Reconciled the profile snapshot and clarified Mana Well's source-level throughput and runtime shape: default 2 mana/tick per intersecting player (40/sec at 20 TPS), cuboid AABB, per-tick player scan, no cost in the addon tick handler, and unresolved parent ritual lifetime. Kept all duration/economy claims unverified pending pack behavior. No quest/runtime files changed.
 - 2026-11-15 — Replaced the stale Forge 1.20.1 source link with the NeoForge 1.21.1 3.3.5 source snapshot; rechecked the pinned JAR hash; separated the generic cross-cast ritual from the Loom → Iron's wheel workflow; added exact recipe costs, reusable/consumed input rules, other utility rituals, config limits, and current quest coverage. Kept `researching` because TMM runtime/client acceptance and effective config are still unknown.
+
+
+## Direct-binary continuation — 2026-11-18
+
+[Carrier/guide/advancement companion](ars-n-spells-pinned-carriers.md) now supplies direct pinned-JAR evidence, all seven recipes, guide-resource correction and exact success/credit paths for four pilot criteria. It supersedes earlier missing-guide/pilot-not-present claims. Broader mana/damage/progression/cooldown/native Iron's endpoint and Mana Well lifecycle audit remains; status researching,6/42overallcomplete. Runtime checks alone are not required for source completion, but remaining source-path gaps are.

@@ -61,10 +61,10 @@ Exact IDs below come from resolved manifest and are checked against generated ch
 | 40 / ocultas_gem | 544DB13000280000 | item: occultism:spirit_attuned_gem x1; possession | [ars-ocultas](ars-ocultas.md); full addon route pending | 40XP; minecraft:purple_candle x4 |
 | 41 / ocultas_jar | 544DB13000290000 | item: ars_nouveau:mob_jar x1; possession | [ars-ocultas](ars-ocultas.md); full addon route pending | 55XP; minecraft:hopper x2 |
 | 42 / ocultas_altar | 544DB130002A0000 | item: ars_ocultas:altar x1; possession | [ars-ocultas](ars-ocultas.md); full addon route pending | 80XP; minecraft:crying_obsidian x4 |
-| 43 / ans_loom | 544DB130002B0000 | advancement: ars_n_spells:craft_spell_loom; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 45XP; ars_n_spells:blank_scroll x3 |
-| 44 / ans_transcribe | 544DB130002C0000 | advancement: ars_n_spells:transcribe_spell; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 60XP; irons_spellbooks:arcane_essence x8 |
-| 45 / ans_bind | 544DB130002D0000 | advancement: ars_n_spells:bind_spell; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 75XP; ars_nouveau:source_berry_roll x4 |
-| 46 / ans_cast | 544DB130002E0000 | advancement: ars_n_spells:first_cross_cast; addon trigger audit pending | [ars-n-spells](ars-n-spells.md); full addon route pending | 125XP; minecraft:enchanted_golden_apple x1 |
+| 43 / ans_loom | 544DB130002B0000 | advancement: ars_n_spells:craft_spell_loom; inventory possession | [pinned carrier audit](ars-n-spells-pinned-carriers.md); broader bridge audit pending | 45XP; ars_n_spells:blank_scroll x3 |
+| 44 / ans_transcribe | 544DB130002C0000 | advancement: ars_n_spells:transcribe_spell; successful Loom transaction; not generic ritual | [pinned carrier audit](ars-n-spells-pinned-carriers.md); broader bridge audit pending | 60XP; irons_spellbooks:arcane_essence x8 |
+| 45 / ans_bind | 544DB130002D0000 | advancement: ars_n_spells:bind_spell; successful shared bind; ritual/Table/command | [pinned carrier audit](ars-n-spells-pinned-carriers.md); broader bridge audit pending | 75XP; ars_nouveau:source_berry_roll x4 |
+| 46 / ans_cast | 544DB130002E0000 | advancement: ars_n_spells:first_cross_cast; server accepted cast; not effect/damage proof | [pinned carrier audit](ars-n-spells-pinned-carriers.md); broader bridge audit pending | 125XP; minecraft:enchanted_golden_apple x1 |
 | 47 / unify_pumpkin | 544DB130002F0000 | item: farmersdelight:pumpkin_slice x4; possession | [ars-unification](ars-unification.md); addon source route complete, operation acceptance pending | 35XP; farmersdelight:pumpkin_soup x2 |
 | 48 / unify_cabbage | 544DB13000300000 | item: farmersdelight:cabbage_leaf x8; possession | [ars-unification](ars-unification.md); addon source route complete, operation acceptance pending | 40XP; farmersdelight:cabbage_rolls x2 |
 

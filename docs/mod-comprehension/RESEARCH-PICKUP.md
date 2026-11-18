@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-18 Ars n Spells carriers and criterion semantics
+
+- Ars n Spells3.3.5 exact2325760byte/fullSHA512matched artifact recovered to external artifacts; wholeJARCFR at ans-fresh. New ars-n-spells-pinned-carriers.md covers7recipes/6legacyPatchouliresources, Loomtransaction/control/failure, genericTranscription, ritual/Table/commandbind and fouradvancementcreditcallpaths. Old missing-guide/pilot-onlybranch claims corrected; crosswalk43–46updated.6/42complete,36researchingunchanged; addon staysresearching.
+- Critical: transcribe_spell awarded only successful networkLoomapply, NOT genericTranscriptionritual. bind_spell canbeRitual/Table/command, recipientonlineinitiatorviaUUIDevenfarawayelse nearestinflated16box; firstcrosscastmeansacceptedservercastnotdamage/effect. ManaWell extendsAbstractRitualdirectly, NOT60tickAnsRitual. SixlegacyPatchoulinotproofvisibleinArs5.13.5nativeNotebook.
+- **Next finish Ars n Spells source audit**: unified mana modes/payment/shortage/rollback/regen/damage/affinity/progression/resonance/cooldown/scrollability with exact Iron's3.16.3 endpoint; parent ManaWell lifecycle/Source/termination. Inspect source classes as needed, don'tre-inventory7recipes/4adv. Then Controle/Ocultas/Elemental/Elemancy/Additions, combinedArsreview, othermajors. No blocker, hourlyactive, docs-only; noassembly/launch/quests/config/subagents/merge. Prior receiptsfollow; gitlogforactualhead.
+
+---
+
 # Latest checkpoint — 2026-11-18 Unification source completion
 
 - Finished pinned Unification1.2.23 source walkthrough for both installed targets: exact glyph acquisition/tiers/mana, recipient serializer/config defaults, JEI category, physical-vs-magical chance distribution/tool omission, all import/cast/failure routes, pilot47/48 and optional scope. Source-complete; **6/42complete,36researching**. Native Ars parent stays researching for six addons, then combined final review. No client/gameplay PASS.
