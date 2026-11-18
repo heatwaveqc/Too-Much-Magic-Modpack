@@ -94,3 +94,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-18 - Ars now has twenty-eight companions with [Containment Jar and all24native special entity roles](mods/ars-nouveau-pinned-mob-jars.md): capture/release/state, direct insertion, item production, trade, redstone and boss-role boundaries. Counts5source-complete/37researching unchanged; world acquisition/addons/fullstage work remains.
 
 - 2026-11-18 - Ars now has twenty-nine companions, adding [native plant/material acquisition](mods/ars-nouveau-pinned-plants.md): Archwood first pods versus saplings, Sourceberry location/growth/harvest and Magebloom seed-to-fiber/food consequences. Counts5source-complete/37researching unchanged; final core/stage/addon work remains.
+
+- 2026-11-18 - Ars now has thirty companions with [field tools/physical runes/four grates](mods/ars-nouveau-pinned-field-tools.md). Next is full native walkthrough/pilot consolidation and seven addon exact-binary routes, rather than repeated core inventory. Counts5complete/37researching unchanged; no gameplay acceptance.

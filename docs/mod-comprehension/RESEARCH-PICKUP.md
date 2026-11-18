@@ -1,3 +1,13 @@
+# Latest continuation checkpoint - 2026-11-18 after 8fe8bdba
+
+- Full research unfinished: **5/42source-complete,37researching**, no hard blocker. Hourly continuation active. Same worktree/branch/PR265; no subagents, Markdown only, preserve QA/integration.
+- Ars now **thirty** binary companions. Final field-tools slice adds Dowsing Rod4wear vs nonwear layout highlight, tagged budding/helper locate; physical Chalk rune placement/Touch Parchment programming/defaultfirstcharge/40tick rawSource recharge/60retry/redstonedisable and failure debt; four grate recipes/vertical liquid transport/interaction forwarding/collision with failure-order boundaries.
+- **Next priority: consolidate parent native full progression/guide/stage map**, replacing obsolete historical survey assertions with30exactcompanions, and reconcile exact authored pilot manifest/runtime/tasks/rewards, not only PRsummary. Native mandatory/core optional coverage is now deep; don't keep expanding cosmetic blocks. Seven separately pinned addon profiles still need exactbinary fullroutes; cover each then parent crosslinks. Main Ars must remain researching until fullnative/addon/stage gaps close; don't promote merely from30appendices. Any final meaningful native gap discovered during consolidation gets targeted lookup.
+- Same exact Ars5.13.5 scratch artifact SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3, ars-fresh-20261117. New DowsingRod,RunicChalk,RuneBlock/RuneTile/RuneCaster and ItemGrate classes. ItemGrate actualclassname, not ArchwoodGrate; fluidmovementalwaysvertical irrespectivefacing. RuneTile defaults chargedtrue/permanent; setting spell doesn't prechargeSource, regularcast invalidation occurs afterresolvercallwithoutsuccesscheck. Only physicalruneprogramTouchleadingParchment, not effects-only toolspell. CFR --clobbertrue/allinner siblings.
+- Validation PASS: UTF8/changedlinks/docs-onlyscope/whitespace,SHA1,six acquisitionoutputs anddowsing targettag. Latest fetched integration still2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; prior metadata/preflight receipts separate; noassembly/server/client/gameplaytests. Commit8fe8bdba pluscheckpoint pushedaftercommit, PR30companions; inspectgitlog/statusforactualhead.
+
+---
+
 # Latest continuation checkpoint - 2026-11-18 after d4acbb8a
 
 - Full request unfinished: **5/42source-complete,37researching**; no hard blocker. Hourly continuation active; existing worktree/branch/PR265, research Markdown only and no subagents. Preserve concurrent QA/integration.
