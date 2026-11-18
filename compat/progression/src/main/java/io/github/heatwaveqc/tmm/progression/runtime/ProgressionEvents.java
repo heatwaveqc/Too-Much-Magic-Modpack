@@ -194,7 +194,10 @@ public final class ProgressionEvents {
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);
-            if(player.tickCount%10==0)VisionRuntime.reconcile(player,false);
+            if(player.tickCount%10==0){
+                VisionRuntime.reconcile(player,false);
+                io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,false);
+            }
         }
     }
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
@@ -205,6 +208,7 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             VisionRuntime.forget(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
@@ -212,6 +216,7 @@ public final class ProgressionEvents {
             ProgressionMenuNetwork.forget(player);
             EffectRuntime.reconcile(player);
             VisionRuntime.reconcile(player,true);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
@@ -219,6 +224,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             VisionRuntime.reconcile(player,true);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -231,6 +237,7 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             VisionRuntime.forget(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);

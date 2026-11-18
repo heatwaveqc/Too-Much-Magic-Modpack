@@ -35,6 +35,17 @@ public final class ProviderFlags {
         Eligibility.registerFlag("tmm_progression:"+name,
                 player -> observations(player).getOrDefault(nativeId,Result.UNAVAILABLE));
     }
+    public static Result nativeDragon(ServerPlayer player){
+        if(!ModList.get().getModContainerById("dragonsurvival")
+            .filter(mod->mod.getModInfo().getVersion().toString().startsWith("2.0.74")).isPresent()||
+            player.getServer()==null||!player.getServer().isSameThread())return Result.UNAVAILABLE;
+        try{
+            Class<?> provider=Class.forName("by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider");
+            Object handler=provider.getMethod("getData",net.minecraft.world.entity.player.Player.class).invoke(null,player);
+            Object value=handler.getClass().getMethod("isDragon").invoke(handler);
+            return value instanceof Boolean b?(b?Result.PASS:Result.FAIL):Result.UNAVAILABLE;
+        }catch(ReflectiveOperationException|LinkageError|RuntimeException unavailable){return Result.UNAVAILABLE;}
+    }
     /** Exact 2.0.74 native read-only species ID; absent provider is not a human observation. */
     public static Result dragonSpecies(ServerPlayer player,String expected){
         if(!ModList.get().getModContainerById("dragonsurvival")

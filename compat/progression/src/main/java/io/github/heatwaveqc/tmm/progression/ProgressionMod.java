@@ -33,6 +33,7 @@ public final class ProgressionMod {
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tmm.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tmm.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
