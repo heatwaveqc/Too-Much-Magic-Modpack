@@ -1,5 +1,7 @@
 # Unified XP channel integration — first source pass (2026-11-18)
 
+> **SUPERSEDED DESIGN (owner-approved 2026-11-18):** This document describes the first-pass implementation, not the current target. The three-channel cap, source-tree-owned curves and single-currency-per-tree restriction must be removed before further mechanic ports. See PR #340's named experience systems contract. Retain the named-wallet ledger, existing arithmetic and provider conditions; move earning and curves into independent namespaced XP definition JSON, preserve built-in MXP with its committed resource hooks, and support per-skill currency overrides with named level requirements. No backward migration needed before stable release. Next implementation is the XP registry refactor within this workstream; no new balanced skills, runtime pin changes or full smoke authorized by this documentation edit.
+
 Owner direction: before the first stable release no legacy save migration, including Tyz ranks/points, is required. Use fresh disposable QA worlds with intentionally changed schemas; never automatically delete saves. Current-build persistence across death, login, restart and dimensions remains required. See the policy on PR #340. One engine owns all executable progression functionality; path definitions must remain data-only.
 
 ## Implemented
