@@ -1,0 +1,27 @@
+{
+  "comment": "Owner-approved unawakened Draconium ingot/dust parity with expected Netherite block (9*(4*scrap+4*gold)). Verify actual mapped Netherite block and adjust if graph differs. Direct-drop ore at nominal 3 dust, not raw-metal 18x. Ore yield normalization provisional; awakened family not included.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/draconium",
+        "emc_value": 37753920
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/draconium",
+        "emc_value": 37753920
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:nuggets/draconium",
+        "emc_value": 4194880
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/draconium",
+        "emc_value": 339785280
+      }
+    ]
+  }
+}
