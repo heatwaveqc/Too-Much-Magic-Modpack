@@ -67,12 +67,12 @@ public final class ProgressionEvents {
     private static void kill(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
-            boolean eligibleHunterKill = HunterExperience.kill(player,event.getEntity());
+            var credited=HunterExperience.kill(player,event.getEntity());
             ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
-                path -> !HunterExperience.HUNTER.equals(path.id()) || eligibleHunterKill);
+                path -> HunterExperience.allowsMilestone(path.id(),credited));
             if (event.getSource().getDirectEntity() == player
                     && player.getMainHandItem().isEmpty())
-                ProgressionApi.record(player,Selectors.unarmedKill(event.getEntity()));
+                ProgressionApi.recordFiltered(player,Selectors.unarmedKill(event.getEntity()),path->HunterExperience.allowsMilestone(path.id(),credited));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
         }

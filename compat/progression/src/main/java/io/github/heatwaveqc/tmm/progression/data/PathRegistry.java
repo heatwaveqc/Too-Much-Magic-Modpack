@@ -21,7 +21,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,String> enrollmentModes = Map.of();
     private static volatile Map<String,PotionEnrollmentTrigger> potionTriggers = Map.of();
     private static volatile Map<String,HunterXpPolicy> hunterXpPolicies = Map.of();
-    public static HunterXpPolicy hunterXp(String path) { return hunterXpPolicies.get(path); }
+    public static Map<String,HunterXpPolicy> computedXp(){return hunterXpPolicies;}
+    public static HunterXpPolicy hunterXp(String path) { var c=channel(path);return c==null?null:hunterXpPolicies.get(c.id()); }
     private static volatile Map<String,HunterMutationPolicy> mutationPolicies = Map.of();
     public static HunterMutationPolicy hunterMutationPolicy(String path) { return mutationPolicies.get(path); }
     public static Map<String,PotionEnrollmentTrigger> potionTriggers() { return potionTriggers; }
@@ -75,13 +76,17 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
             }catch(java.io.IOException bad){throw new IllegalArgumentException("Cannot read XP system "+id,bad);}
         }
         var systems=ChannelConfig.definitions(experience,1.02);
+        experience.forEach((id,raw)->{
+            var policy=HunterXpPolicy.parse(raw);
+            if(policy!=null)xpPolicies.put(id,policy);
+        });
         data.forEach((key,element) -> {
             try {
                 Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(element.getAsJsonObject(),systems));
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
-                HunterXpPolicy xpPolicy = HunterXpPolicy.parse(element.getAsJsonObject());
-                if (xpPolicy != null) xpPolicies.put(path.id(),xpPolicy);
+                if(element.getAsJsonObject().has("hunter_xp")||element.getAsJsonObject().has("computed_xp"))
+                    throw new IllegalArgumentException("Computed XP belongs in experience_systems");
                 HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
                 if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
                 var raw=element.getAsJsonObject();
@@ -111,6 +116,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
+        for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
+            throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
         timedEnrollments=Map.copyOf(timed);
         gates=Map.copyOf(nextGates);

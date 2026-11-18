@@ -16,7 +16,7 @@ class HunterXpPolicyTest {
             var raw = JsonParser.parseReader(new java.io.InputStreamReader(
                 stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
             var path = TestPaths.read("tmm_progression:hunter",raw);
-            var policy = HunterXpPolicy.parse(raw);
+            var policy = HunterXpPolicy.parse(TestPaths.project(raw));
             assertNotNull(policy);
             assertEquals(4,policy.healthDivisor());
             assertEquals(2,policy.specialtyMultiplier());

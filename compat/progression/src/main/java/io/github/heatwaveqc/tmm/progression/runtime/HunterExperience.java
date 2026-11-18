@@ -28,11 +28,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public final class HunterExperience {
     private HunterExperience() {}
     public static final String HUNTER = "tmm_progression:hunter";
-    private static final TagKey<net.minecraft.world.entity.EntityType<?>> EXTRA_PREY =
-        TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse("tmm_progression:hunt_eligible"));
-    private static final TagKey<net.minecraft.world.entity.EntityType<?>> NO_PREY =
-        TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse("tmm_progression:hunt_excluded"));
-    private static final Map<UUID,Long> awardedKills = new HashMap<>();
+    private static final Map<String,Long> awardedKills=new HashMap<>();
     private static final List<BiPredicate<ServerPlayer,LivingEntity>> KILL_GUARDS = new CopyOnWriteArrayList<>();
 
     /** Trusted pack adapters may reject summoned, player-owned or automation-created victims. */
@@ -40,28 +36,38 @@ public final class HunterExperience {
         KILL_GUARDS.add(java.util.Objects.requireNonNull(guard));
     }
 
-    public static boolean eligibleKill(ServerPlayer hunter, LivingEntity target) {
+    private static boolean eligibleKill(ServerPlayer hunter,LivingEntity target,HunterXpPolicy policy) {
         if (hunter.isCreative() || hunter.isSpectator() || target instanceof Player || target == hunter)
             return false;
         if (target instanceof TamableAnimal animal && animal.isTame()) return false;
-        if (target.getType().is(NO_PREY)) return false;
-        if (target.getType().getCategory() != MobCategory.MONSTER && !target.getType().is(EXTRA_PREY))
-            return false;
+        if(!policy.excludeTag().isEmpty()&&target.getType().is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(policy.excludeTag()))))return false;
+        boolean included=!policy.includeTag().isEmpty()&&target.getType().is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(policy.includeTag())));
+        if(target.getType().getCategory()!=MobCategory.MONSTER&&!included)return false;
         for (BiPredicate<ServerPlayer,LivingEntity> rule : KILL_GUARDS)
             if (!rule.test(hunter,target)) return false;
         return true;
     }
 
-    private static boolean chosenSpecialtyMatches(ServerPlayer player, LivingEntity target) {
-        Definition.Path path = PathRegistry.get(HUNTER);
-        if (path == null) return false;
-        var state = ProgressionApi.track(player,HUNTER);
+    public static boolean eligibleKill(ServerPlayer player,LivingEntity target){
+        return PathRegistry.computedXp().values().stream().anyMatch(policy->eligibleKill(player,target,policy));
+    }
+    private static boolean permitted(ServerPlayer player,String system){
+        var spec=PathRegistry.economy(system);
+        return spec!=null&&(spec.earningPath().isEmpty()||(ProgressionApi.track(player,spec.earningPath()).joined()
+            &&PathRegistry.eligible(player,spec.earningPath())));
+    }
+    private static boolean chosenSpecialtyMatches(ServerPlayer player,LivingEntity target,HunterXpPolicy policy) {
+        Definition.Path path=PathRegistry.get(policy.specialtyPath());
+        if(path==null||!PathRegistry.eligible(player,path.id()))return false;
+        var state=ProgressionApi.track(player,path.id());
         for (Definition.Skill skill : path.skills()) {
             if (state.skillRank(skill.id()) <= 0
-                || !"tmm_progression:hunter_favored_enemy".equals(skill.choiceGroup())) continue;
-            for (Definition.Effect effect : skill.effects())
-                if ("hunter_specialty".equals(effect.type()) && Selectors.entity(effect.selector(),target))
+                || !policy.specialtyGroup().equals(skill.choiceGroup())) continue;
+            for(int i=0;i<skill.effects().size();i++){
+                Definition.Effect effect=skill.effects().get(i);
+                if (PathRegistry.effectEligible(player,path.id(),skill.id(),i) && "hunter_specialty".equals(effect.type()) && Selectors.entity(effect.selector(),target))
                     return true; // double at most once, even for a creature with multiple lineage tags
+            }
         }
         return false;
     }
@@ -73,10 +79,12 @@ public final class HunterExperience {
      * separately by NativeLootBonuses against the loot DamageSource.
      */
     public static int favoredLootingBonus(ServerPlayer player, LivingEntity victim) {
-        if (!ProgressionApi.track(player,HUNTER).joined()
-                || !eligibleKill(player,victim)) return 0;
-        return LootBonusMath.favoredLooting(true, true,
-                chosenSpecialtyMatches(player,victim));
+        int bonus=0;
+        for(var entry:PathRegistry.computedXp().entrySet()){
+            if(permitted(player,entry.getKey())&&eligibleKill(player,victim,entry.getValue())
+                &&chosenSpecialtyMatches(player,victim,entry.getValue()))bonus=Math.max(bonus,LootBonusMath.favoredLooting(true,true,true));
+        }
+        return bonus;
     }
 
     /** Data-defined, not hardcoded into the command registration. */
@@ -101,21 +109,27 @@ public final class HunterExperience {
             .findFirst().orElse("none");
     }
 
-    /** Returns true only when a qualified creature can count toward Hunter milestones. */
-    public static boolean kill(ServerPlayer player, LivingEntity target) {
-        HunterXpPolicy policy = PathRegistry.hunterXp(HUNTER);
-        if (policy == null || !ProgressionApi.track(player,HUNTER).joined()
-            || !eligibleKill(player,target)) return false;
-        long now = player.server.overworld().getGameTime();
-        if (awardedKills.size() > 8192)
-            awardedKills.entrySet().removeIf(entry -> entry.getValue() > now || now - entry.getValue() > 24000);
-        UUID victim = target.getUUID();
-        if (awardedKills.containsKey(victim)) return false;
-        long xp = HunterXpMath.killXp(target.getMaxHealth(),policy.healthDivisor(),
-            policy.specialtyMultiplier(),policy.minKillXp(),chosenSpecialtyMatches(player,target));
-        if (xp <= 0 || !ProgressionApi.awardServerXp(player,HUNTER,xp)) return false;
-        awardedKills.put(victim,now);
-        return true;
+    /** Returns qualifying configured enrollment paths, for milestone provenance filtering. */
+    public static java.util.Set<String> kill(ServerPlayer player,LivingEntity target){
+        var credited=new java.util.HashSet<String>();
+        long now=player.server.overworld().getGameTime();
+        if(awardedKills.size()>8192)awardedKills.entrySet().removeIf(entry->entry.getValue()>now||now-entry.getValue()>24000);
+        for(var entry:PathRegistry.computedXp().entrySet()){
+            String system=entry.getKey();var policy=entry.getValue();
+            if(!permitted(player,system)||!eligibleKill(player,target,policy))continue;
+            String victim=system+"|"+target.getUUID();
+            if(awardedKills.containsKey(victim))continue;
+            long xp=HunterXpMath.killXp(target.getMaxHealth(),policy.healthDivisor(),policy.specialtyMultiplier(),
+               policy.minKillXp(),chosenSpecialtyMatches(player,target,policy));
+            if(xp<=0||!ProgressionApi.awardExperience(player,system,xp))continue;
+            awardedKills.put(victim,now);
+            String path=PathRegistry.economy(system).earningPath();if(!path.isEmpty())credited.add(path);
+        }
+        return java.util.Set.copyOf(credited);
+    }
+    public static boolean allowsMilestone(String path,java.util.Set<String> credited){
+        boolean restricted=PathRegistry.computedXp().keySet().stream().anyMatch(id->path.equals(PathRegistry.economy(id).earningPath()));
+        return !restricted||credited.contains(path);
     }
 
     /**
@@ -124,9 +138,11 @@ public final class HunterExperience {
      * Saved claim times are overworld game ticks, not volatile session-only timers.
      */
     public static void potionFinished(ServerPlayer player, ItemStack consumed) {
-        HunterXpPolicy policy = PathRegistry.hunterXp(HUNTER);
-        if (policy == null || !ProgressionApi.track(player,HUNTER).joined()
-            || player.isCreative() || player.isSpectator() || consumed.isEmpty()) return;
+        if(player.isCreative()||player.isSpectator()||consumed.isEmpty())return;
+        for(var entry:PathRegistry.computedXp().entrySet())
+            if(permitted(player,entry.getKey()))potionFinished(player,consumed,entry.getKey(),entry.getValue());
+    }
+    private static void potionFinished(ServerPlayer player,ItemStack consumed,String system,HunterXpPolicy policy){
         if (!"minecraft:potion".equals(BuiltInRegistries.ITEM.getKey(consumed.getItem()).toString())) return;
         PotionContents contents = consumed.get(DataComponents.POTION_CONTENTS);
         if (contents == null || !contents.customEffects().isEmpty()) return;
@@ -143,7 +159,7 @@ public final class HunterExperience {
             longestDuration = Math.max(longestDuration,effect.getDuration());
         }
         if (!hasEffect) return;
-        String claim = "tmm_progression:potion_claim/" + potionId.replace(':','/');
+        String claim = "tmm_progression:potion_claim/" + system.replace(':','/')+"/"+potionId.replace(':','/');
         // Refuse namespaced recipes whose claim cannot be persisted: no uncapped repeat XP.
         if (claim.length() > 128 || !claim.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")) return;
         String stored = ProgressionApi.mode(player,claim,"");
@@ -158,7 +174,7 @@ public final class HunterExperience {
         }
         long xp = HunterXpMath.potionXp(policy.potionBaseXp(),difficulty,highestAmplifier,
             longestDuration,policy.potionDiscoveryMultiplier(),discovery);
-        if (ProgressionApi.awardServerXp(player,HUNTER,xp))
+        if (ProgressionApi.awardExperience(player,system,xp))
             ProgressionApi.setMode(player,claim,Long.toString(now));
     }
 
