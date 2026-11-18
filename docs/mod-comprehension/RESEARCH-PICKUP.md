@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-18 Unification import/casting and both endpoints
+
+- Continued from2cbf859c: exact addon import ordering/filtering/wrapper IDs/server-config/regex/cache and Cut batching/output consumption plus native Crush execution now mapped. Corrected original-ID and common-config prose. Both target artifacts recovered/fullpin hashverified externally: Farmer'sDelight1.3.4 SHA1 27675ddfcb8cc37e6ea1ab6c15051c7949d94657 and Occultism1.227.0 packwizSHA512.106Cut/240Crush resource JSONs read; tier and ignore-multiplier counts in profile. No gameplay evidence.
+- **Next finish Unification**: exact Ars Cut/Crush/Sensitive glyph acquisition ingredients/base mana (guide-glyph companion+exactJAR), recipient recipe serializer tier defaults and selected spirit multiplier defaults, JEI category behavior and pilot crosswalk/coverage review. Scratch unification-fresh complete58classCFR; target recipes in farmers-delight-unification-recipes.json/occultism-unification-recipes.json; three artifacts in external artifacts directory. Then six other addons and combined Ars completion review, then other majors. Don't re-inventory native30companions.
+- Counts5/42complete,37researching unchanged. No blocker, hourly active, docs-only, no subagents/runtime/assembly/launch/merge. Prior PR265/native49-node receipts follow; use gitlog for actual pushed head.
+
+---
+
 # Latest continuation checkpoint — 2026-11-18 Unification binary entry
 
 - Native Ars consolidation and all49-node crosswalk checkpoints are pushed through cf31d3a6. Full request remains5/42source-complete,37researching; no blocker. Hourly continuation remains active.
