@@ -73,7 +73,7 @@ public final class ClassAbilities {
             String next = ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on") ? "off" : "on";
             return ProgressionApi.setMode(p,GLIDE_MODE,next);
         }
-        if ("ordeal".equals(what) && ProgressionApi.track(p,"tmm_progression:monk").rank() >= 17
+        if ("ordeal".equals(what) && unlocked(p,"blindness_ordeal")
                 && !ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("done")) {
             String next = ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active") ? "off" : "active";
             if (next.equals("off")) p.removeEffect(MobEffects.BLINDNESS);
@@ -280,10 +280,20 @@ public final class ClassAbilities {
         p.hurtMarked = true;
     }
 
+    private static boolean ordealComplete(ServerPlayer p,EffectRuntime.Active active) {
+        var params=active.effect().params();
+        String path=params.getOrDefault("completion_path","");
+        String milestone=params.getOrDefault("completion_milestone","");
+        return !path.isEmpty()&&!milestone.isEmpty()&&ProgressionApi.track(p,path).completed(milestone);
+    }
     private static void ordeal(ServerPlayer p) {
         if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")) return;
-        if (ProgressionApi.track(p,"tmm_progression:monk")
-                .completed("tmm_progression:blind_ordeal_victory")) {
+        var active=effect(p,"blindness_ordeal");
+        if(active==null){
+            ProgressionApi.setMode(p,ORDEAL_MODE,"off");
+            return; // Do not remove external blindness; the temporary ordeal refresh expires.
+        }
+        if (ordealComplete(p,active)) {
             ProgressionApi.setMode(p,ORDEAL_MODE,"done");
             p.removeEffect(MobEffects.BLINDNESS);
             return;
@@ -298,9 +308,12 @@ public final class ClassAbilities {
                 || !(event.getEntity() instanceof Monster)
                 || event.getSource().getDirectEntity() != p
                 || !p.getMainHandItem().isEmpty()) return;
-        ProgressionApi.recordExternal(p,"tmm_progression:blind_hostile_kill");
-        if (ProgressionApi.track(p,"tmm_progression:monk")
-                .completed("tmm_progression:blind_ordeal_victory")) {
+        var active=effect(p,"blindness_ordeal");
+        if(active==null)return;
+        String eventId=active.effect().params().getOrDefault("kill_event","");
+        if(eventId.isEmpty())return;
+        ProgressionApi.recordExternal(p,eventId);
+        if (ordealComplete(p,active)) {
             ProgressionApi.setMode(p,ORDEAL_MODE,"done");
             p.removeEffect(MobEffects.BLINDNESS);
         }

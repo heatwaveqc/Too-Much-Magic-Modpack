@@ -49,6 +49,9 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         return skillEligible(player,path,skill) && test(player,new GateKey(path,skill,index));
     }
 
+    private static volatile Map<String,TimedEnrollment> timedEnrollments=Map.of();
+    public static Map<String,TimedEnrollment> timedEnrollments(){return timedEnrollments;}
+
     public PathRegistry() { super(new Gson(), "tmm_progression/paths"); }
     public static Definition.Path get(String id) { return active.get(id); }
     public static Map<String,Definition.Path> all() { return active; }
@@ -61,6 +64,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterXpPolicy> xpPolicies = new HashMap<>();
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
+        Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<String,JsonObject> experience=new HashMap<>();
         String prefix="tmm_progression/experience_systems/";
@@ -81,6 +85,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
                 if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
                 var raw=element.getAsJsonObject();
+                var timer=TimedEnrollment.parse(raw);
+                if(timer!=null)timed.put(path.id(),timer);
                 Map<GateKey,Condition<ServerPlayer>> localGates=new HashMap<>();
                 localGates.put(new GateKey(path.id(),"",-1),Eligibility.parse(raw.get("eligibility")));
                 if(raw.has("skills")) for(var skillElement:raw.getAsJsonArray("skills")) {
@@ -106,6 +112,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
         channelConfig=config;
+        timedEnrollments=Map.copyOf(timed);
         gates=Map.copyOf(nextGates);
         potionTriggers = Map.copyOf(triggers);
         hunterXpPolicies = Map.copyOf(xpPolicies);

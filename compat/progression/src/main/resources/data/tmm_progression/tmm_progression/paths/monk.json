@@ -719,7 +719,12 @@
       ],
       "effects": [
         {
-          "type": "blindness_ordeal"
+          "type": "blindness_ordeal",
+          "params": {
+            "completion_path": "tmm_progression:monk",
+            "completion_milestone": "tmm_progression:blind_ordeal_victory",
+            "kill_event": "tmm_progression:blind_hostile_kill"
+          }
         }
       ]
     },
@@ -756,5 +761,19 @@
       ]
     }
   ],
-  "enrollment": "sunset"
+  "enrollment": "sunset",
+  "timed_enrollment": {
+    "dimension": "minecraft:overworld",
+    "start_time": 12000,
+    "end_time": 13000,
+    "ticks": 200,
+    "clear_sky": true,
+    "dry": true,
+    "empty_hand": true,
+    "unarmored": true,
+    "max_look_x": -0.7,
+    "max_abs_look_y": 0.45,
+    "completion_event": "tmm_progression:monk_first_sunset",
+    "label": "First Sunset"
+  }
 }
