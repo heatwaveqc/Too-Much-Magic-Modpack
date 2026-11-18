@@ -1,3 +1,14 @@
+# Latest continuation checkpoint - 2026-11-18 after b4db4fd9
+
+- Research remains unfinished: **5/42 source-complete, 37 researching**. No hard blocker. Hourly continuation active (00:39UTC heartbeat arrived during work). Same branch/worktree/PR265; no subagents. Preserve QA/integration changes and keep regular commits/pushes.
+- Ars now has **twenty-one** direct-binary companions. New Enchanter equipment covers five exact apparatus recipes, effects-only inscription, Sword/Shield/Mirror/Gauntlet/FishingRod triggers, repair/cost/failure order, ordered tool rules and hook luck/lure handoff limitation. New archery covers Bow/Crossbow recipes, three augment arrows, personal payment at launch/loading, no-ammo/ordinary-ammo difference, crossbow charge clearing/current-spell firing, physical damage/impact and actual pierce field boundary. These are source findings, not client-tested bugs or approved bypasses.
+- Previous run already covered Alakarkinos, cameras/Eye, Planarium, Parchment/50Tomes/Codex; do not re-inventory. Next: curios/foci; potions/Flask/FlaskCannon/diffuser/jar; remaining actual registered prisms/detectors/control/ArcanePlatform and Mob/Void/Light jars where uncovered; plants/world acquisition; seven addons; full progression and exact pilot crosswalk. Parent remains researching until major optional/mandatory gaps close.
+- Exact JAR remains scratch/artifacts/ars_nouveau-1.21.1-5.13.5.jar under LocalAppData Temp/tmm-magic-research-20261116, SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3. Fresh classes in ars-fresh-20261117; CFR --clobber true. Bow/Crossbow/EntitySpellArrow and five tool/EnchantedHook classes now available. Javap confirmed crossbow pre-ammo expenditure and unconditional isSpell=true tag; do not infer atomic payment/loading or frozen load-time spell.
+- Validation PASS: full research Markdown UTF-8, changed local links, docs-only scope/whitespace, artifact SHA1, seven tool/weapon recipe outputs/zero Source/keepNbt flags, three augment-arrow100Source recipes. Latest fetched integration remains2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae (Ars pin/research docs unchanged). Prior full metadata/preflight receipts remain separate; no assembly/server/client/gameplay tests.
+- Commits e8123ad2 and b4db4fd9 plus this checkpoint pushed after commit; inspect gitlog/status for actual head. PR body refreshed to21companions. Continue full request hourly; no completion promotion this slice.
+
+---
+
 # Latest continuation checkpoint - 2026-11-17 after c857a17a
 
 - Full request remains unfinished: **5/42 source-complete, 37 researching**. No hard blocker; hourly continue-magic-mod-research remains active. Existing research worktree/branch/PR265, no subagents; preserve unrelated QA and concurrent integration work.
