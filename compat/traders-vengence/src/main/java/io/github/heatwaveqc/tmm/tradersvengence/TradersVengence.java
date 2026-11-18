@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tmm.tradersvengence;
 
 import io.github.heatwaveqc.tmm.tradersvengence.command.VendettaCommands;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.VendettaEvents;
+import io.github.heatwaveqc.tmm.tradersvengence.runtime.GolemMinigunEvents;
+import io.github.heatwaveqc.tmm.tradersvengence.network.GolemVisualPayload;
 import io.github.heatwaveqc.tmm.tradersvengence.runtime.HeroPardonEvents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -21,6 +23,8 @@ public final class TradersVengence {
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onPriestAggro);
         NeoForge.EVENT_BUS.addListener(HeroPardonEvents::onHeroAwarded);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onJoin);
+        NeoForge.EVENT_BUS.addListener(GolemMinigunEvents::onTick);
+        modBus.addListener(GolemVisualPayload::register);
         NeoForge.EVENT_BUS.addListener(VendettaCommands::register);
     }
 }

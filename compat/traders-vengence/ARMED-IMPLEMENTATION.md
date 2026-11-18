@@ -19,3 +19,10 @@ Dependency: stacked on PR #341, exact SHA 8cca84604664c316ac9b86b4c17735f39e8d2f
 - [ ] Caliber Arms blocker: previous JAR visible in Library, raw-byte materialization denied. Need accessible JAR/source; no unverified assets imported.
 - [ ] PneumaticCraft sounds: individual provenance/license mapping pending. No sound bytes imported.
 - [ ] Register/adapt model layer for iron golems, synchronize animation and integrate NPC-only combat. No behavior changed yet.
+
+### Phase 3 checkpoint — uncompiled source integration
+- [x] Narrow vanilla Villager.spawnGolemIfNeeded redirect stamps only successfully returned MOB_SUMMONED iron golems. Stamp persists; no command/spawn egg/player-crafted/legacy-unknown golem promotion. Existing natural golems without recorded provenance remain unarmed by design. Village structure-generated guardians also not included unless the villager-spawn hook created them.
+- [x] NPC-only minigun goal reuses existing target and native LOS, pardons and vanilla melee fallback; donor spin constants/logic adapted. Provisional 16-block range, 5 game damage, ten-tick damage interval. No ammunition, player equipment, damage-type override or collateral bullet entities. Tune/verify in game; audio pending.
+- [x] Server-to-client angle/speed heartbeats and client-only shoulder render layer wired; model pose/aim unverified. No server-side client classes loaded by packet handler.
+- [ ] Run module compile + quick checks; actual Mixin injection, spawn provenance, combat, renderer and multiplayer sync unverified. No boot or integration assembly.
+- [ ] Pistol source/assets still inaccessible. Keep Magic Missile for villagers until an audited replacement is ready; wandering trader pistol target/visual/combat hookup remains pending.

@@ -111,6 +111,8 @@ public final class VendettaEvents {
             return;
         }
 
+        // Persisted vanilla-villager provenance is independent from vendetta targeting.
+        if (mob instanceof IronGolem golem) GolemMinigunEvents.attach(golem);
         MobGoalsAccessor access = (MobGoalsAccessor) mob;
         // The same entity instance can re-enter on chunk changes/portals.
         // Inspect the entity's own GoalSelector instead of keeping global
@@ -134,6 +136,6 @@ public final class VendettaEvents {
             access.tradersVengence$goalSelector().addGoal(2,
                 new WantedRangedAttackGoal(ranged, 1.0, 50, 12.0F));
         }
-        // Iron golems already have melee combat goals; only target selection changes.
+        // Existing melee goals remain; confirmed villager-spawned golems also receive the minigun goal.
     }
 }
