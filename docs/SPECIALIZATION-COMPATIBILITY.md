@@ -19,6 +19,7 @@ This is the canonical **design decision register**, not a runtime config or a va
 | Dracolich | Any one Cave/Forest/Sea Dragon and exactly one of the two Lich routes, either order | IMPLEMENTED (experimental source; all six pair variants covered by generic acquisition policy, appearance may be partial) |
 | Piglich | Gilded **first**, then either native Lich, optionally the other Lich afterward | PLANNED (owner approved) |
 | Revenant | Hunter **first**, then either native Lich, optionally the other Lich afterward | PLANNED (owner locked Revenant; interpret as the immediately preceding proposed same acquisition rule as Piglich) |
+| Golden Dragon | Gilded + Cave Dragon, either order; no additional specialization | PLANNED (owner approved) |
 | Abomination | JAWR Vampire + Werewolf | REVIEW (research and native guard exception only; complete identity still unapproved/unimplemented) |
 | Ascendant Dragon | Monk + any dragon | REVIEW (on hold over overlapping direct combat power) |
 
@@ -28,26 +29,35 @@ For Piglich/Revenant, preserve existing path progress, equipment or hunting/muta
 
 **New locked denials, both acquisition orders:** Vampire + either Lich; Hunter + Werewolf; Hunter + Vampire; Monk + Werewolf; Monk + either Lich; Hunter + any Dragon; Gilded + Vampire; Gilded + Werewolf; Vampire + any Dragon; Werewolf + any Dragon.
 
-**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these ten pairs, with both directions undecided; the categories below record the intended design follow-up.
+**Remaining review queue:** No acquisition is approved by being listed here. The underlying CSV retains the `REVIEW` status for these seven pairs, with both directions undecided; the categories below record the intended design follow-up.
 
 | Concept | Pair variants | Disposition |
 |---|---:|---|
 | Monk + Vampire | 1 | CONSIDER (owner requested) |
-| Gilded + Dragon | 3 | CONSIDER (discuss species, order, compatibility and balance before approval) |
 | Werewolf + Lich | 2 | CONSIDER |
 | Monk + Dragon (Ascendant Dragon) | 3 | ON HOLD — additive combat overlap |
 | Vampire + Werewolf (Abomination) | 1 | RESEARCH — existing narrow native dual-affliction guard, complete hybrid not approved |
 
-All prior implemented and planned combinations remain unchanged. The composite-state CSV requires no changes: unrelated third specializations are still denied. This is a design-only decision, not a runtime code change.
+Prior implemented/planned combinations remain unchanged. The composite-state CSV closes Golden Dragon to every additional specialization, explicitly including both lichdoms. This is design-only, not a runtime code change.
+
+## Golden Dragon — approved design (2026-11-17)
+
+- **Identity:** Gilded + Cave Dragon only. Forest/Sea Dragon combinations are denied (previously proposed Cave-only restriction retained). Either acquisition order is allowed. Preserve native rites and path progress; determine how a dragon satisfies the established Gilded full-gold-armor Nether food rite if anatomy prevents equipping all four pieces. Do not loosen the rite for other players.
+- **Diet:** gold apples and gold carrots only, including enchanted versions if actually present. Unlike ordinary Gilded or Cave Dragon, no general Nether, raw-meat, lava-fish or recipe-derived gold food exception. The four-item conceptual list is golden apple, enchanted golden apple, golden carrot and modded enchanted golden carrot if registered. No speculative registry ID. Existing universal magic-food exceptions are not assumed for this stricter hybrid; verify owner's intended exceptions before adding any. Preserve ordinary Gilded's 2x golden-food nutrition unless incompatible; test one consumption and no duplicated potion effects.
+- **Skills:** overlapping legitimate passive and skill bonuses stack (owner explicitly reversed non-stacking suggestion). Retain one shared Tyz SP wallet. No additional hybrid tree implied.
+- **Claws and breath:** extend Gilded virtual Fortune to qualifying claw harvesting and Looting to qualifying claw/breath kills attributed to the player. If a breath ability actually harvests blocks, Fortune may apply to that harvest once. Never invent harvest drops for damage-only breath. Same-action dual eligibility does not grant the *same* Gilded bonus twice. Keep existing progression ranks, real enchantment addition and Silk Touch priority.
+- **Equipment eligibility pending final choice:** recommendation is to allow the previously qualifying gold tools/weapons as well as claws/breath, and preserve normal Gilded Netherite mining eligibility unless owner specifically restricts it. Do not introduce Netherite weapon Looting; the original Gilded Looting contract is gold swords/axes only. This recommendation is not an extra owner-locked decision.
+- Existing Golden Dragon may not acquire either lichdom or any additional specialization; Piglich, Revenant, Dracolich and Archlich cannot gain Gilded/Dragon to construct a Golden Dragon indirectly. The pair is non-transitive.
+- **Implementation handoff:** central Progression engine and existing transformations bridge must support narrowly scoped two-way class/native-form eligibility; exact Dragon Survival 1.21.1 claws, breath damage/kill ownership, tool/armor compatibility and diet hooks need review. Test both entry orders, denial of Forest/Sea/lich and Newbie enrollment, one loot roll/bonus per qualifying event, stack math, cure/relog, and renewable food access. No gameplay code or runtime validation in this design PR.
 
 ## Review counts
 
-10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 4 are approved one-way plans, 24 are denied in both directions, 10 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
+10 base alternatives = 45 unordered distinct pairs, 90 directional distinct transitions, plus 10 invalid duplicate diagonal cells. 7 pairs have experimental integrated source, 5 are approved plans (4 one-way, 1 bidirectional), 26 are denied in both directions, 7 await design review (blocked by default). The two CSVs use plain status values so they can be filtered or imported.
 
 ## Evidence and next steps
 
 - Integrated source baseline `2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae`: [NativeSpeciesJoinGuard](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/NativeSpeciesJoinGuard.java), [TransitionPolicy](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/TransitionPolicy.java), [FormResolver](../compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/FormResolver.java), [integration manifest](../manifest/integration-sources.json).
-- The current generic class/species veto denies all new forms for enrolled human disciplines and vice versa. Piglich/Revenant require a narrow, order-aware exception through the shared Progression/transformations architecture. Do not globally relax the veto.
+- The current generic class/species veto denies all new forms for enrolled human disciplines and vice versa. Piglich/Revenant and Golden Dragon require narrow, order-aware or bidirectional exceptions through the shared Progression/transformations architecture. Do not globally relax the veto.
 - [JAWR-only Abomination research](JAWR-ONLY-ABOMINATION-FEASIBILITY-2026-11-15.md): dual-affliction guard already allows both forms, but classifier still assumes obsolete four-form Abomination; the later two-form target needs reconciliation. No older four-form ritual is authorized.
 - [Dracolich pilot](../compat/transformations/docs/DRACOLICH-PILOT.md) and [Cave/Center rendering pilot](../compat/transformations/docs/DRACOLICH-CAVE-CENTER-PILOT.md): verify both directions for each species and each lich, actual power/appearance/food/death/cure behavior and rejection of the second lich.
 - This register supersedes historical matrix/design surveys on combinations only. It does not change gameplay source, quest rewards, mod pins or build authorization. Quick/static and subsequent owner-authorized in-game tests must distinguish eligibility from actual transformation success.
