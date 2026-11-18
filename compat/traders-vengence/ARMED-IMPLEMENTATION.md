@@ -6,8 +6,8 @@ Owner-approved: NPC-only high-caliber Caliber Arms pistol for all villagers and 
 - [x] Record goals and approved GPLv3 module license; preserve other modules' MIT licensing and packaging validation.
 - [ ] Pin and review donor source/assets/licenses individually; preserve original notices, source provenance, modifications, and corresponding source.
 - [ ] Stage only relevant audited assets/code, not entire donor mods.
-- [ ] Replace villager Magic Missile with NPC pistol; extend equivalent behavior to wandering traders.
-- [ ] Distinguish village/natural and player-built golems; preserve normal melee for player-built golems.
+- [x] Replace villager Magic Missile with NPC pistol; extend equivalent behavior to wandering traders (source; QA pending).
+- [x] Distinguish confirmed villager-summoned and player-built golems; preserve normal melee for player-built golems (source; QA pending).
 - [ ] Integrate NPC-only minigun state, animation, rendering and audio.
 - [ ] Review dependency declarations, module compile, tests, packaging checks.
 - [ ] In separately authorized gameplay QA: verify targeting, forgiveness, natural vs built golem behavior, save/reload, client visuals/audio, no-player acquisition and normal trades.
@@ -35,3 +35,9 @@ Pinned upstream CommonConfig.java defines base_range=50 and base_damage=6; Minig
 - [x] Selected M1911A1 (.45 ACP), original model (namespace only changed), original texture, 2 near firing sounds and 8 pistol reload sounds (identical donor bytes), local sounds.json entries. Sixteen extracted files verified by matching local Git blob SHA-1 to GitHub-created blobs. No Forge classes, donor JAR, player recipes, other firearms, or item registration imported.
 - [x] Javap inspection of exact artifact GunType M1911: damage 7, maximum 420 RPM, 7-round magazine + chamber, empty reload 42 ticks, effective range 35 blocks (110 max travel); bytecode V.bulletDamage and resources confirm standard projectile-tagged bullet damage, scaling never. No public source repo located; implement small independent NeoForge NPC adapter, not falsely claim a source-code port.
 - [ ] Wire pistol combat for villagers and wandering traders; render NPC-only cosmetic layer; test. Previous minigun parity head 7b298a9 passed quick and bootstrap CI. No game launch authorized.
+
+### Phase 6 — pistol source integration
+- [x] Added independent NeoForge NPC-only pistol cycle, sound registration and stand-alone client render layer for ordinary villagers and wandering traders (including baby pose approximation). Removed former Magic Missile bridge/mixin. Original Iron's dependency remains for existing Priest vendetta hook and packaging pin.
+- [x] Existing target policy, pardon, line-of-sight, native armor/hurt cooldown preserved; no player-obtainable item or ammo, no Forge dependency, no collateral bullets, no headshot or damage falloff simulation. Base 7 HP, 35-block effective range, fractional 420-RPM attempt cadence, initial 7+1 capacity, empty 42-tick reload to seven rounds. Virtual unlimited reserve, current magazine is per-goal in-memory state (may reset on chunk reload). Reload sound event offsets approximated; only near/dry direct gunfire and reload audio, no distant simulation. Cosmetic model attachment/recoil is provisional; normal trading/Brain arbitration needs gameplay acceptance.
+- [x] Added offline unit fixtures for cycle and all 15 audited asset/license hashes, plus packaged provenance.
+- [ ] Recheck quick CI at final head. No game boot, packaging for distribution, or merge. Minigun audio licensing remains pending.
