@@ -73,6 +73,10 @@ public final class Eligibility {
                 node.has("minimum")?node.get("minimum").getAsInt():1);
             case "milestone" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.milestone(
                 ResourceLocation.parse(node.get("path").getAsString()).toString(),ResourceLocation.parse(node.get("id").getAsString()).toString());
+            case "dragon_species" -> {
+                String species=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                yield player -> io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.dragonSpecies(player,species);
+            }
             case "dimension" -> PlayerConditions.dimension(ResourceLocation.parse(node.get("id").getAsString()));
             case "biome" -> {
                 String id=node.get("id").getAsString();

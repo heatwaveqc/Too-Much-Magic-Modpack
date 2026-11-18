@@ -16,6 +16,7 @@ public final class MxpSourceConfig {
     public static final ModConfigSpec.DoubleValue BOTANIA_PORTABLE_POOL;
     public static final ModConfigSpec.DoubleValue NEO_EV_NETWORK_POOL;
     public static final ModConfigSpec.DoubleValue JAWR_INITIAL_BLOOD_POOL;
+    public static final ModConfigSpec.DoubleValue PSI_INITIAL_POOL;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
@@ -33,6 +34,8 @@ public final class MxpSourceConfig {
                 "Owner-approved proposed first-access baseline; set 0 to disable a future native adapter.",
                 "IMPORTANT: No automatic JAWR hook has been enabled until a verified post-commit debit event exists.")
             .defineInRange("jawr_initial_blood", ResourceBaselines.JAWR_INITIAL_BLOOD, 0.0, 1.0e12);
+        PSI_INITIAL_POOL=b.comment("Psi 110 first access personal pool. 0 disables standard CAD MXP.")
+            .defineInRange("psi_initial_pool",ResourceBaselines.PSI_STARTING_POOL,0.0,1.0e12);
         b.pop();
         SPEC = b.build();
     }

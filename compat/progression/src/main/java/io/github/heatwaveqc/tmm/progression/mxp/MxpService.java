@@ -65,6 +65,10 @@ public final class MxpService {
     }
     public static AwardStatus jawrCommittedBloodDebit(ServerPlayer player,String tx,double original,double actual){
         if(!MxpMod.active())return ignored(player,"Legacy MXP installed");
+        if(!player.server.isSameThread()||player.isCreative()||player.isSpectator()||
+            !(io.github.heatwaveqc.tmm.progression.runtime.forms.JawrFormState.present(player,"vampire")||
+              io.github.heatwaveqc.tmm.progression.runtime.forms.JawrFormState.present(player,"werewolf")))
+            return ignored(player,"No verified eligible native JAWR form");
         return resource(player,"witchery:player_blood",tx,original,MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get(),actual);
     }
     public static AwardStatus fixedDiagnostic(ServerPlayer player,String tx,double amount){

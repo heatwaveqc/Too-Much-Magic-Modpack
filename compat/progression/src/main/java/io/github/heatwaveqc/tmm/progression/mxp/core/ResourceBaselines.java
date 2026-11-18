@@ -14,5 +14,6 @@ public final class ResourceBaselines {
     // actual 0.5.39 player reservoir on a disposable server before enabling a hook.
     public static final double JAWR_INITIAL_BLOOD = 900.0;
 
+    public static final double PSI_STARTING_POOL=5000.0;
     private ResourceBaselines() {}
 }

@@ -27,10 +27,29 @@ public final class ProviderFlags {
         register("jawr_lich","FORBIDDEN_MAGIC_LICH");
         register("goety_lich","GOETY_LICH");
         register("dragon","DRAGON_SURVIVAL_DRAGON");
+        for(String name:java.util.List.of("cave","forest","sea"))
+            Eligibility.registerFlag("tmm_progression:"+name+"_dragon",
+                player->dragonSpecies(player,"dragonsurvival:"+name+"_dragon"));
     }
     private static void register(String name,String nativeId) {
         Eligibility.registerFlag("tmm_progression:"+name,
                 player -> observations(player).getOrDefault(nativeId,Result.UNAVAILABLE));
+    }
+    /** Exact 2.0.74 native read-only species ID; absent provider is not a human observation. */
+    public static Result dragonSpecies(ServerPlayer player,String expected){
+        if(!ModList.get().getModContainerById("dragonsurvival")
+            .filter(mod->mod.getModInfo().getVersion().toString().startsWith("2.0.74")).isPresent()||
+            player.getServer()==null||!player.getServer().isSameThread())return Result.UNAVAILABLE;
+        try{
+            Class<?> provider=Class.forName("by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider");
+            Object handler=provider.getMethod("getData",net.minecraft.world.entity.player.Player.class).invoke(null,player);
+            Object isDragon=handler.getClass().getMethod("isDragon").invoke(handler);
+            if(!(isDragon instanceof Boolean dragon))return Result.UNAVAILABLE;
+            if(!dragon)return Result.FAIL;
+            Object id=handler.getClass().getMethod("speciesId").invoke(handler);
+            if(!(id instanceof net.minecraft.resources.ResourceLocation location))return Result.UNAVAILABLE;
+            return location.toString().equals(expected)?Result.PASS:Result.FAIL;
+        }catch(ReflectiveOperationException|LinkageError|RuntimeException unavailable){return Result.UNAVAILABLE;}
     }
     private static Map<String,Result> observations(ServerPlayer player) {
         if(!ModList.get().isLoaded(MOD) || player.getServer()==null || !player.getServer().isSameThread())
