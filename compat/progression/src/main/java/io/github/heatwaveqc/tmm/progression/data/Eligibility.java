@@ -61,6 +61,18 @@ public final class Eligibility {
                     return (wallet==null?0:wallet.rank())>=minimum?Condition.Result.PASS:Condition.Result.FAIL;
                 };
             }
+            case "health_fraction","food_level" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.meter(type,
+                Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsDouble());
+            case "time_window" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.time(node.get("start").getAsInt(),node.get("end").getAsInt());
+            case "weather" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.weather(node.get("value").getAsString());
+            case "player_state" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.state(node.get("state").getAsString(),
+                !node.has("value")||node.get("value").getAsBoolean());
+            case "equipped" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.equipped(node.get("slot").getAsString(),node.get("target").getAsString());
+            case "skill_rank" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.skill(
+                ResourceLocation.parse(node.get("path").getAsString()).toString(),ResourceLocation.parse(node.get("id").getAsString()).toString(),
+                node.has("minimum")?node.get("minimum").getAsInt():1);
+            case "milestone" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.milestone(
+                ResourceLocation.parse(node.get("path").getAsString()).toString(),ResourceLocation.parse(node.get("id").getAsString()).toString());
             case "dimension" -> PlayerConditions.dimension(ResourceLocation.parse(node.get("id").getAsString()));
             case "biome" -> {
                 String id=node.get("id").getAsString();

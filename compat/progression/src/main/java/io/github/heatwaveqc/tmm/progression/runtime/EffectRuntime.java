@@ -213,7 +213,7 @@ public final class EffectRuntime {
         if (extra > 0) event.setDuration(Math.max(1,event.getDuration() - extra));
     }
 
-    private static boolean sourceMatches(String selector, DamageSource source) {
+    static boolean sourceMatches(String selector, DamageSource source) {
         if (selector.isEmpty() || selector.equals("*")) return true;
         String key = selector.startsWith("#") ? selector.substring(1) : selector;
         ResourceLocation id = ResourceLocation.parse(key);

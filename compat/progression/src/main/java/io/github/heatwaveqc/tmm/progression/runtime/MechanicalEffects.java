@@ -40,6 +40,7 @@ public final class MechanicalEffects {
         if(chance<=0)return false;
         long now=p.server.overworld().getGameTime();
         var map=COOLDOWNS.computeIfAbsent(p.getUUID(),ignored->new HashMap<>());
+        if(map.size()>256)map.entrySet().removeIf(entry->entry.getValue()<=now);
         Long until=map.get(a.id());
         if(until!=null&&now<until)return false;
         if(p.getRandom().nextDouble()>=Math.min(1,chance))return false;
@@ -49,7 +50,7 @@ public final class MechanicalEffects {
     }
     private static boolean match(ServerPlayer p,LivingEntity target,DamageSource source,Definition.Effect fx){
         if(target==p||target instanceof Player||p.isAlliedTo(target)||
-            (target instanceof TamableAnimal tame&&tame.isTame())||!Selectors.entity(fx.selector(),target))return false;
+            (target instanceof TamableAnimal tame&&tame.isTame())||!Selectors.entity(fx.selector(),target)||!EffectRuntime.sourceMatches(fx.damageTag(),source))return false;
         boolean melee=source.getDirectEntity()==p,projectile=source.getDirectEntity() instanceof Projectile;
         String delivery=fx.params().getOrDefault("delivery","any");
         if(delivery.equals("melee")&&!melee||delivery.equals("projectile")&&!projectile)return false;
@@ -71,13 +72,31 @@ public final class MechanicalEffects {
         if(multiplier!=1)event.setAmount((float)Math.min(1000000,event.getAmount()*Math.min(10,multiplier)));
     }
     public static void postDamage(LivingDamageEvent.Post event){
-        if(event.getNewDamage()<=0||!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
+        if(event.getNewDamage()<=0)return;
+        if(event.getEntity() instanceof ServerPlayer defender&&usable(defender))react(defender,event);
+        if(!(event.getSource().getEntity() instanceof ServerPlayer p)||!usable(p))return;
         for(var a:EffectRuntime.active(p)){
             var fx=a.effect();if(!fx.type().equals("status_on_hit")&&!fx.type().equals("heal_on_hit"))continue;
             if(!match(p,event.getEntity(),event.getSource(),fx))continue;
             if(fx.type().equals("status_on_hit")){
                 if(event.getEntity().isAlive()&&roll(p,a,amount(a,1)*num(a,"chance",1,0,1)))status(event.getEntity(),a);
             }else if(roll(p,a,num(a,"chance",1,0,1)))heal(p,event.getEntity(),a,event.getNewDamage());
+        }
+    }
+    private static void react(ServerPlayer owner,LivingDamageEvent.Post event){
+        var source=event.getSource();
+        // Reactive powers use the actual damage source owner, not a client target.
+        if(!(source.getEntity() instanceof LivingEntity attacker)||attacker==owner||attacker instanceof Player||
+            owner.isAlliedTo(attacker)||attacker instanceof TamableAnimal tame&&tame.isTame())return;
+        for(var a:EffectRuntime.active(owner)){
+            var fx=a.effect();
+            if(!fx.type().equals("status_on_hurt")||!Selectors.entity(fx.selector(),attacker)||
+               !EffectRuntime.sourceMatches(fx.damageTag(),source))continue;
+            String delivery=fx.params().getOrDefault("delivery","any");
+            if(delivery.equals("melee")&&source.getDirectEntity()!=attacker||
+               delivery.equals("projectile")&&!(source.getDirectEntity() instanceof Projectile))continue;
+            if(roll(owner,a,amount(a,1)*num(a,"chance",1,0,1)))
+                status(fx.params().getOrDefault("recipient","self").equals("self")?owner:attacker,a);
         }
     }
     public static void kill(ServerPlayer p,LivingDeathEvent event){
@@ -90,7 +109,8 @@ public final class MechanicalEffects {
     private static void heal(ServerPlayer owner,LivingEntity target,EffectRuntime.Active a,float damage){
         String basis=a.effect().params().getOrDefault("basis",a.effect().type().equals("heal_on_kill")?"target_health":"damage");
         double reference=switch(basis){case "flat"->1;case "damage"->damage;default->target.getMaxHealth();};
-        double n=MechanicalSpec.heal(a.effect().amountPerRank(),a.rank(),reference,num(a,"max_heal",20,0.01,100));
+        double cap=num(a,"max_heal",20,0.01,100);
+        double n=basis.equals("flat")?amount(a,cap):MechanicalSpec.heal(a.effect().amountPerRank(),a.rank(),reference,cap);
         if(n>0)owner.heal((float)n);
     }
     private static void status(LivingEntity target,EffectRuntime.Active a){
@@ -105,19 +125,29 @@ public final class MechanicalEffects {
     }
     public static void tick(ServerPlayer p){
         if(!usable(p)||p.tickCount%5!=0)return;
-        int budget=32;
-        for(var a:EffectRuntime.active(p)){
+        int budget=32,operations=4;
+        var due=EffectRuntime.active(p).stream().filter(a->{
             String type=a.effect().type();
-            if(!type.equals("magnet")&&!type.equals("status_pulse"))continue;
+            if(!type.equals("magnet")&&!type.equals("status_pulse"))return false;
             int interval=integer(a,"interval_ticks",type.equals("magnet")?5:20,type.equals("magnet")?5:10,200);
-            // World tick permits exact intervals, while the outer five-tick cadence bounds work.
-            // Nonmultiples of five are rounded up by the schema/runtime cadence.
-            int cadence=((interval+4)/5)*5;
-            if(p.tickCount%cadence!=0)continue;
+            return p.tickCount%(((interval+4)/5)*5)==0;
+        }).sorted(Comparator.comparing(EffectRuntime.Active::id)).toList();
+        if(due.isEmpty())return;
+        int start=Math.floorMod(p.tickCount/5,due.size());
+        for(int n=0;n<due.size()&&operations>0&&budget>0;n++){
+            var a=due.get((start+n)%due.size());
+            String type=a.effect().type();
             int targets=Math.min(budget,integer(a,"max_targets",type.equals("magnet")?16:8,1,32));
-            if(targets==0)break;
+            operations--; // even empty queries consume an operation slot
             budget-=type.equals("magnet")?magnet(p,a,targets):pulse(p,a,targets);
         }
+    }
+    private static boolean magnetAllowed(ServerPlayer p,ItemEntity item){
+        for(var guard:MAGNET_GUARDS){
+            try{if(!guard.test(p,item))return false;}
+            catch(RuntimeException|LinkageError bad){return false;}
+        }
+        return true;
     }
     private static int pulse(ServerPlayer p,EffectRuntime.Active a,int limit){
         String scope=a.effect().params().getOrDefault("scope","self");
@@ -136,7 +166,7 @@ public final class MechanicalEffects {
         p.serverLevel().getEntities(EntityTypeTest.forClass(ItemEntity.class),box,
             item->item.isAlive()&&!item.hasPickUpDelay()&&item.distanceToSqr(p)<=r*r
               &&(item.getTarget()==null||item.getTarget().equals(p.getUUID()))
-              &&Selectors.item(a.effect().selector(),item.getItem())&&MAGNET_GUARDS.stream().allMatch(g->g.test(p,item)),items,limit);
+              &&Selectors.item(a.effect().selector(),item.getItem())&&magnetAllowed(p,item),items,limit);
         for(var item:items)attract(p,item);
         int left=limit-items.size();
         if(left>0&&MechanicalSpec.bool(a.effect().params(),"move_xp",false)){
