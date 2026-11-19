@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "config/ProjectE/custom_emc.json"
-hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
-
-[[files]]
 file = "config/almostunified/placeholders.json"
 hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
@@ -22,7 +18,43 @@ hash = "e556d8de1e028ec2ad58b254ef82cbf181769a1f236700ff1fb8624fb705618e"
 
 [[files]]
 file = "config/bountiful/bountiful.json"
-hash = "3d10b2b993c47d70c161625ac2ccd65de0f21134a1ed41ac43ed78c6327619a3"
+hash = "950de71b545d10986fad0b67a40771eb55d137d3be237ac8b833797b6ffd5de8"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_culinary.json"
+hash = "a49a33b4bfe05aca673d2c2c368538cc9564b4a5b0f5fceea09fa6d280eb7a72"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_fishing.json"
+hash = "8faee371bbd3b2d6d3898dcf8276c97b53dc1d6e9531b8f41c81c0787ff23ba5"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_hunting.json"
+hash = "61120375da7a60bae4a7b1d3730d16da28a6e99087a48d7e1a13054ab5b9a6d5"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_culinary_objs.json"
+hash = "c9aab36626793e4093ef8ef147763ade915b4b2577e0a2e6d0225eebf89939e7"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_culinary_rews.json"
+hash = "e7091269f1aa6e1c901ea8cf9a07370f26e24b7794976c2f5d4043f7f305a4b6"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_fishing_objs.json"
+hash = "e295ac0ca51ad92cfb02b180ad898c9207377dfa547925ca0e157ba3fa8e899a"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_fishing_rews.json"
+hash = "61effc84ed16bf2869e0c17ec2b7a0c5b1cfa0cd0e554d4777b3694df54c96cd"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_hunting_objs.json"
+hash = "5b7b75b985cc79baf0b2d7a61db2c5b9d0424ac2e8ccdcaf38a63ec052510085"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_hunting_rews.json"
+hash = "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
@@ -237,6 +269,10 @@ file = "config/neovitae/materials.json"
 hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
 
 [[files]]
+file = "config/ProjectE/custom_emc.json"
+hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
@@ -365,10 +401,6 @@ file = "config/wover/client.json"
 hash = "2d38184b7ac950ffe845869f8ab925b41d5825bc45f959cae0f91ea3049da68e"
 
 [[files]]
-file = "defaultconfigs/ProjectE/mapping.toml"
-hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
-
-[[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
 hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
@@ -379,6 +411,14 @@ hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
+file = "defaultconfigs/ProjectE/mapping.toml"
+hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
+
+[[files]]
+file = "kubejs/assets/bountiful/lang/en_us.json"
+hash = "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec"
 
 [[files]]
 file = "kubejs/assets/brandonscore/lang/en_us.json"
@@ -589,12 +629,12 @@ file = "kubejs/data/projecte/recipe/conversions/iron_ingot_to_ender_pearl.json"
 hash = "02745b47f45b9cf76cdbb099a5babe1752d0b79277dc682d8f63f909d71856a1"
 
 [[files]]
-file = "kubejs/data/projecte/recipe/philosophers_stone.json"
-hash = "4f60c1f8abad42b6fd0807c40d4ea660218be4c950b5b3378668f4ee40b9b1c5"
-
-[[files]]
 file = "kubejs/data/projecte/recipe/philosophers_stone_alt.json"
 hash = "184c220a41441e3735e986c99bfb25d69c2f42ecca1efdb9f2b434f4f505e2af"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/philosophers_stone.json"
+hash = "4f60c1f8abad42b6fd0807c40d4ea660218be4c950b5b3378668f4ee40b9b1c5"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/blue.json"
@@ -637,12 +677,12 @@ file = "kubejs/data/projectexpansion/recipe/power_flower/purple.json"
 hash = "fe600a95060448e9845026efe462e7682c089a86f6f0545d9af3650a6bfa2397"
 
 [[files]]
-file = "kubejs/data/projectexpansion/recipe/power_flower/red.json"
-hash = "b58c5b90bc8edc5189c0f6e42ce55d3a9d21934d62b15e20f574b4d872b5cb04"
-
-[[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/red_upgrade.json"
 hash = "e13b0269714cb98ddf9b21fe9ac96c84a7cc42efa69a0df8b5348060d394261e"
+
+[[files]]
+file = "kubejs/data/projectexpansion/recipe/power_flower/red.json"
+hash = "b58c5b90bc8edc5189c0f6e42ce55d3a9d21934d62b15e20f574b4d872b5cb04"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/violet.json"
@@ -657,20 +697,20 @@ file = "kubejs/data/projectexpansion/recipe/power_flower/yellow.json"
 hash = "1ae7df3642edd4d2444e173d04256dd9e61d0cf815587a5449df1895a9084feb"
 
 [[files]]
-file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone.json"
-hash = "5c3c6fa2dc726a99a8de49c4fb537bd742747e2bb246b801d2bfb61f1e961c5e"
-
-[[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone_dust.json"
 hash = "e3bfcd11101f7c8545d0139ffe67f76b15f04530a0146bbf4cea9fa812ace3e9"
 
 [[files]]
-file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone.json"
-hash = "c66f1a3e763021b06ff30c7f31918c31c27a5de006aa1b3f1a45a46d41d2cdba"
+file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone.json"
+hash = "5c3c6fa2dc726a99a8de49c4fb537bd742747e2bb246b801d2bfb61f1e961c5e"
 
 [[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone_block.json"
 hash = "63d0d77ba4a73c666fd2730c2b9d7244129c912fc85a604bb1e5cf66d48995d0"
+
+[[files]]
+file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone.json"
+hash = "c66f1a3e763021b06ff30c7f31918c31c27a5de006aa1b3f1a45a46d41d2cdba"
 
 [[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/crafting/charcoal.json"
@@ -1155,6 +1195,18 @@ hash = "5d99cb0c17145020f16e37716d9bd85d2de84f04647e37b7bb97d343d836be5e"
 [[files]]
 file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.json"
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_culinary.json"
+hash = "2a7e418ff5e80e8beea215a25354d5a662186dc5924570c26d2c52084cf038ec"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_fishing.json"
+hash = "9494db6cf6de033e21976b045a112efc89938cc4cefcc024a98e6bbf13dbabd7"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_hunting.json"
+hash = "194411e62337e7d55a41666d226bac7b9d087448a59bdce16260c55124cec5dd"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/caerbannog.json"
