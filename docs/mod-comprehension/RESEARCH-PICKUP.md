@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ars n Spells combat/schools/cooldown
+
+- Added ars-n-spells-pinned-combat.md: actual damageformulas/gates, firsteffectschool/all-effectselection, eventcountprogression/affinity/deathcopy/decay, fullnessresonanceformula/expiry and distinct optionalcategory/nativeproxycooldown defaults/migration. Growth events canprecedefinalpayment; decayvisitsallpositivelevelsnotlastusedtimestamp. Addonnowhas5companions(carriers,mana,payments,regen,combat), alldirectbinary; no needmorepassesoncoveredtopics.
+- **Next finish Ars n Spells**: optional alternative-payment adapters/registration/compat targets vs current enabledroster, missing schoolmapping/config support details ifmaterial, then consolidate parent (remove stale surveyingclaims) into full guide→Loom→bind→cast +optionalutility/regen/school/cooldown coverage matrix and decide sourcecompletehonestly. Existing prior checks/recipes/pilot/nativeendpoints documented; runtimeunrunisn'tsourceblocker. Then Controle/Ocultas/Elemental/Elemancy/Additions, combinedArsreview/othermajors.
+-6/42complete36researchingunchanged; no blocker/hourlyactive; docs-only/nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Sameexternalans-fresh/irons-ans-fresh/hashpinnedartifacts. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ars n Spells regeneration/equipment/HUD
 
 - Added ars-n-spells-pinned-regen.md: mode-specificgear/Curios/enchantment/potion contributions+identity exclusions, nativewrite scopes, maxceilings/HUD, tag-onlySourceJarproximity/cache/5manapersecondrequesteddefault. Exact Iron's MagicManager native regen cadence10ticks and nativeServerConfigsmultiplier1.0: addon A/(M*.01) nominalrate composes to2*A/sec at20TPS unlessotherhooks/settings; documentedcode-derived discrepancyfortest, NOT measuredpackbugfix. NoSourcefill/debitinproximitycondition.

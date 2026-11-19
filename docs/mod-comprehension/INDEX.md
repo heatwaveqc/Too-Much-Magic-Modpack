@@ -379,3 +379,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-18 — Ars n Spells actual cast caller/payment companion added: Ars reserve/commit/cleanup, pinned Iron's native write/effect boundary, pre-effect-only refunds, last paid channel/scroll completion and legacy-open alternative-payment limitations. Remaining regen/combat/cooldown/adapter scope explicit;6/42complete36researchingunchanged. No runtime tests.
 
 - 2026-11-19 — Ars n Spells regen/equipment/HUD and tag-only Source proximity audited against native Iron's10tick cadence/defaultmultiplier. Documented nominal rate/timing discrepancy for acceptance; no measured rate or balance approval. Counts6complete36researching unchanged; combat/school/cooldown/adapter source coverage remains.
+
+- 2026-11-19 — Ars n Spells combat/school/resonance/cooldown source companion added, including event-credit limits, allschool decay behavior, multiplier versus additive directions and proxy/category cooldown distinction. Final optional-adapter/combined profile review remains;6/42complete36researching unchanged. No runtime tests.

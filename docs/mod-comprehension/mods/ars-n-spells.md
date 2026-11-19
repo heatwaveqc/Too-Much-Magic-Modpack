@@ -109,3 +109,6 @@ The source-present pilot includes four Ars n Spells nodes43–46; see [all49node
 
 
 [Regeneration/equipment/HUD companion](ars-n-spells-pinned-regen.md) now traces native-write suppression, gear/Curios/enchantment contribution identities, potion modes, Source Jar proximity and actual Iron's10tick regeneration cadence. Nominal per-second conversion versus native twice-per-second formula is a code-derived timing discrepancy to measure, not observed pack throughput. No Source fill/debit is checked by proximity handler. Remaining combat/school/cooldown/adapter work explicit.
+
+
+[Combat/school/cooldown direct-binary audit](ars-n-spells-pinned-combat.md) now covers event-based growth, affinity/decay, actual damage-direction formulas, resonance and distinct category/native-proxy cooldown paths/defaults/migration. Cast-event counts do not certify paid effect; decay handler visits every positive stored school when enabled. Final optional adapter/installed scope and combined walkthrough review remain.
