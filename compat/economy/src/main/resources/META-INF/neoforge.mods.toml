@@ -145,5 +145,12 @@ versionRange="[0.1.4]"
 ordering="AFTER"
 side="BOTH"
 
+[[dependencies.tmm_economy]]
+modId="jade"
+type="optional"
+versionRange="[15.10.6]"
+ordering="AFTER"
+side="CLIENT"
+
 [[mixins]]
 config="tmm_economy.mixins.json"

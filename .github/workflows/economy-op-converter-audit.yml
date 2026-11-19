@@ -4,19 +4,21 @@ on:
     paths:
       - 'compat/economy/tools/audit-op-converter.py'
       - 'compat/economy/tools/audit-specialized-mappers.py'
+      - 'compat/economy/tools/audit-op-displays.py'
       - '.github/workflows/economy-op-converter-audit.yml'
   push:
     branches: ['feature/economy-apotheosis-gem-emc']
     paths:
       - 'compat/economy/tools/audit-op-converter.py'
       - 'compat/economy/tools/audit-specialized-mappers.py'
+      - 'compat/economy/tools/audit-op-displays.py'
       - '.github/workflows/economy-op-converter-audit.yml'
 permissions:
   contents: read
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -36,3 +38,5 @@ jobs:
         run: |
           set -euo pipefail
           python3 compat/economy/tools/audit-specialized-mappers.py "$RUNNER_TEMP/economy-audit"
+      - name: Inspect exact display unit literals and APIs
+        run: python3 compat/economy/tools/audit-op-displays.py "$RUNNER_TEMP/op-display-audit"
