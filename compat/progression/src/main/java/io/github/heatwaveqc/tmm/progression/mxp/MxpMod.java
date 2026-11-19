@@ -57,7 +57,9 @@ public final class MxpMod {
         ResourceLocation type = BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType());
         if (type == null) return;
         String bossId = type.toString();
-        if (!io.github.heatwaveqc.tmm.progression.foundation.BossDeathPolicy.permitsGenericDeath(bossId)) return;
+        if (event.getEntity().getType().is(net.minecraft.tags.TagKey.create(
+            net.minecraft.core.registries.Registries.ENTITY_TYPE,
+            ResourceLocation.parse("tmm_progression:boss_generic_death_excluded")))) return;
         if (MxpService.bossRule(bossId) == null) return;
         String transaction = "boss:" + event.getEntity().getUUID();
         try {
