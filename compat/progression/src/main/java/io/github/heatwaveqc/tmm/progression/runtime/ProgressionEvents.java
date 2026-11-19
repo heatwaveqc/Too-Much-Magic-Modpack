@@ -78,9 +78,12 @@ public final class ProgressionEvents {
     }
     private static void kill(LivingDeathEvent event) {
         if(event.isCanceled())return;
+        // One Hunter settlement for native player or exact scoped magical damage only.
+        // This does not expand the native branch's other kill/weapon/loot/class effects.
+        ServerPlayer hunter=OwnedMagicDamage.hunterOwner(event.getEntity(),event.getSource());
+        var credited=hunter==null?java.util.Set.<String>of():HunterExperience.kill(hunter,event.getEntity());
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
-            var credited=HunterExperience.kill(player,event.getEntity());
             ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
                 path -> HunterExperience.allowsMilestone(path.id(),credited));
             if (event.getSource().getDirectEntity() == player
@@ -89,10 +92,6 @@ public final class ProgressionEvents {
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
             MechanicalEffects.kill(player,event);
-        } else {
-            // Scope-based credit is Hunter-only: no weapon, loot, general kill or other class procs.
-            ServerPlayer owner=OwnedMagicDamage.hunterOwner(event.getEntity(),event.getSource());
-            if(owner!=null)HunterExperience.kill(owner,event.getEntity());
         }
     }
     private static void mobDrops(LivingDropsEvent event) {

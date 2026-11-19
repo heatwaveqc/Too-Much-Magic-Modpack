@@ -1,6 +1,8 @@
 package io.github.heatwaveqc.tmm.progression.runtime;
 
 import io.github.heatwaveqc.tmm.progression.foundation.NativeAttackScope;
+import io.github.heatwaveqc.tmm.progression.foundation.HunterAttackerPolicy;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -15,12 +17,16 @@ public final class OwnedMagicDamage {
     private static final NativeAttackScope SCOPE=new NativeAttackScope();
     private OwnedMagicDamage(){}
 
-    private static boolean live(ServerPlayer player,LivingEntity victim){
-        return player!=null&&!(player instanceof FakePlayer)&&player!=victim&&player.isAlive()
+    private static boolean online(ServerPlayer player,LivingEntity victim){
+        return player!=null&&!(player instanceof FakePlayer)&&player!=victim
             &&!player.isCreative()&&!player.isSpectator()
             &&victim.level() instanceof ServerLevel level
             &&level.getServer().isSameThread()
             &&level.getServer().getPlayerList().getPlayer(player.getUUID())==player;
+    }
+
+    private static boolean live(ServerPlayer player,LivingEntity victim){
+        return online(player,victim)&&player.isAlive();
     }
 
     /** Call only from a verified native producer using its own persisted owner UUID. */
@@ -36,10 +42,17 @@ public final class OwnedMagicDamage {
         return owner(MAHOU_BOUNDARY,victim,source);
     }
 
-    /** Only explicitly supported sources qualify for indirect Hunter rewards. */
+    /** Native player identity first; ownerless damage requires an exact approved scope.
+     * Never traverse a mob's owner, tame, summon, projectile or last-attacker chain.
+     */
     public static ServerPlayer hunterOwner(LivingEntity victim,DamageSource source){
-        ServerPlayer boundary=boundaryOwner(victim,source);
-        return boundary!=null?boundary:owner(NEO_WELL,victim,source);
+        Entity resolved=HunterAttackerPolicy.resolve(source.getEntity(),source.getDirectEntity(),
+            entity->entity instanceof ServerPlayer player&&online(player,victim),
+            ()->{
+                ServerPlayer boundary=boundaryOwner(victim,source);
+                return boundary!=null?boundary:owner(NEO_WELL,victim,source);
+            });
+        return resolved instanceof ServerPlayer player?player:null;
     }
 
     private static ServerPlayer owner(String kind,LivingEntity victim,DamageSource source){
