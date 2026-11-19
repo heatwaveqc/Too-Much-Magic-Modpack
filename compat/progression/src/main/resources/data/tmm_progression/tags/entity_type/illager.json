@@ -1,11 +1,272 @@
 {
   "replace": false,
   "values": [
-    "minecraft:pillager",
-    "minecraft:vindicator",
+    {
+      "id": "ars_elemental:summon_vhex",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:ally_vex",
+      "required": false
+    },
+    {
+      "id": "goety:apostle",
+      "required": false
+    },
+    {
+      "id": "goety:armored_ravager",
+      "required": false
+    },
+    {
+      "id": "goety:bound_cryologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_evoker",
+      "required": false
+    },
+    {
+      "id": "goety:bound_geomancer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_iceologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_storm_caster",
+      "required": false
+    },
+    {
+      "id": "goety:bound_wind_caller",
+      "required": false
+    },
+    {
+      "id": "goety:conquillager",
+      "required": false
+    },
+    {
+      "id": "goety:crone",
+      "required": false
+    },
+    {
+      "id": "goety:crusher",
+      "required": false
+    },
+    {
+      "id": "goety:crusher_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cryologer",
+      "required": false
+    },
+    {
+      "id": "goety:cryologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:enchanter_servant",
+      "required": false
+    },
+    {
+      "id": "goety:envioker",
+      "required": false
+    },
+    {
+      "id": "goety:evoker_servant",
+      "required": false
+    },
+    {
+      "id": "goety:geomancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:heresiarch",
+      "required": false
+    },
+    {
+      "id": "goety:heretic",
+      "required": false
+    },
+    {
+      "id": "goety:heretic_servant",
+      "required": false
+    },
+    {
+      "id": "goety:iceologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:imperial_guard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:inquillager",
+      "required": false
+    },
+    {
+      "id": "goety:irk",
+      "required": false
+    },
+    {
+      "id": "goety:irk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:maverick",
+      "required": false
+    },
+    {
+      "id": "goety:maverick_servant",
+      "required": false
+    },
+    {
+      "id": "goety:minister",
+      "required": false
+    },
+    {
+      "id": "goety:mountaineer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:neollager",
+      "required": false
+    },
+    {
+      "id": "goety:piker",
+      "required": false
+    },
+    {
+      "id": "goety:piker_servant",
+      "required": false
+    },
+    {
+      "id": "goety:pillager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:preacher",
+      "required": false
+    },
+    {
+      "id": "goety:ravaged",
+      "required": false
+    },
+    {
+      "id": "goety:ravager",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ripper",
+      "required": false
+    },
+    {
+      "id": "goety:ripper_servant",
+      "required": false
+    },
+    {
+      "id": "goety:royal_guard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:signaler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:sorcerer",
+      "required": false
+    },
+    {
+      "id": "goety:storm_caster",
+      "required": false
+    },
+    {
+      "id": "goety:storm_caster_servant",
+      "required": false
+    },
+    {
+      "id": "goety:tormentor",
+      "required": false
+    },
+    {
+      "id": "goety:trampler",
+      "required": false
+    },
+    {
+      "id": "goety:trampler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vex_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vindicator_chef_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vindicator_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vizier",
+      "required": false
+    },
+    {
+      "id": "goety:vizier_clone",
+      "required": false
+    },
+    {
+      "id": "goety:warlock",
+      "required": false
+    },
+    {
+      "id": "goety:warlock_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wind_caller_servant",
+      "required": false
+    },
+    {
+      "id": "goety:witch_servant",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:magehunter_vindicator",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_vex",
+      "required": false
+    },
     "minecraft:evoker",
-    "minecraft:ravager",
     "minecraft:illusioner",
-    "minecraft:vex"
+    "minecraft:pillager",
+    "minecraft:ravager",
+    "minecraft:vex",
+    "minecraft:vindicator",
+    "minecraft:witch",
+    {
+      "id": "occultism:possessed_evoker",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_witch",
+      "required": false
+    }
   ]
 }

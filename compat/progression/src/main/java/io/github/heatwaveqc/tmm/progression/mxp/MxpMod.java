@@ -57,6 +57,7 @@ public final class MxpMod {
         ResourceLocation type = BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType());
         if (type == null) return;
         String bossId = type.toString();
+        if (!io.github.heatwaveqc.tmm.progression.foundation.BossDeathPolicy.permitsGenericDeath(bossId)) return;
         if (MxpService.bossRule(bossId) == null) return;
         String transaction = "boss:" + event.getEntity().getUUID();
         try {

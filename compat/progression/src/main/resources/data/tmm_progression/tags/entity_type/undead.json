@@ -1,15 +1,709 @@
 {
   "replace": false,
   "values": [
-    "minecraft:zombie",
-    "minecraft:husk",
-    "minecraft:drowned",
-    "minecraft:skeleton",
-    "minecraft:stray",
+    {
+      "id": "alexscaves:brainiac",
+      "required": false
+    },
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_skelehorse",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_vhex",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_wskeleton",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_skeleton",
+      "required": false
+    },
+    {
+      "id": "botania:pink_wither",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:aptrgangr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:draugr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:drowned_host",
+      "required": false
+    },
+    {
+      "id": "cataclysm:elite_draugr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignited_berserker",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:kobolediator",
+      "required": false
+    },
+    {
+      "id": "cataclysm:koboleton",
+      "required": false
+    },
+    {
+      "id": "cataclysm:maledictus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:modern_remnant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:royal_draugr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wadjet",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:guardian_wither",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:giant_skeleton",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:necromancer",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:wraith",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:zombie_brute",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:spirit",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lonestar_skeleton",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tangled",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tangled_skull",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:thirst_walker",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:zombified_ratlin",
+      "required": false
+    },
+    {
+      "id": "evilcraft:controlled_zombie",
+      "required": false
+    },
+    {
+      "id": "evilcraft:vengeance_spirit",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:corrupt_lost_soul",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:enchanted_lost_soul",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:lost_soul",
+      "required": false
+    },
+    {
+      "id": "ghosts:ghost",
+      "required": false
+    },
+    {
+      "id": "ghosts:small_ghost",
+      "required": false
+    },
+    {
+      "id": "goety:apostle",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_variant_servant",
+      "required": false
+    },
+    {
+      "id": "goety:bone_lord",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:border_wraith",
+      "required": false
+    },
+    {
+      "id": "goety:border_wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:bound_cryologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_evoker",
+      "required": false
+    },
+    {
+      "id": "goety:bound_geomancer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_iceologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_storm_caster",
+      "required": false
+    },
+    {
+      "id": "goety:bound_wind_caller",
+      "required": false
+    },
+    {
+      "id": "goety:cairn_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:cairn_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_servant",
+      "required": false
+    },
+    {
+      "id": "goety:frayed",
+      "required": false
+    },
+    {
+      "id": "goety:frayed_servant",
+      "required": false
+    },
+    {
+      "id": "goety:frozen_zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ghast_servant",
+      "required": false
+    },
+    {
+      "id": "goety:grave_golem",
+      "required": false
+    },
+    {
+      "id": "goety:haunt",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor_servant",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_skull",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_skeleton_pillager",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_zombie_vindicator",
+      "required": false
+    },
+    {
+      "id": "goety:husk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:jungle_zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:malghast",
+      "required": false
+    },
+    {
+      "id": "goety:mini_ghast",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:muck_wraith",
+      "required": false
+    },
+    {
+      "id": "goety:muck_wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:phantom_servant",
+      "required": false
+    },
+    {
+      "id": "goety:rattled",
+      "required": false
+    },
+    {
+      "id": "goety:rattled_servant",
+      "required": false
+    },
+    {
+      "id": "goety:reaper",
+      "required": false
+    },
+    {
+      "id": "goety:reaper_servant",
+      "required": false
+    },
+    {
+      "id": "goety:rogueguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeletal_warg",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_pillager",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_wolf",
+      "required": false
+    },
+    {
+      "id": "goety:skull_lord",
+      "required": false
+    },
+    {
+      "id": "goety:stray_servant",
+      "required": false
+    },
+    {
+      "id": "goety:sunken_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vanguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wight",
+      "required": false
+    },
+    {
+      "id": "goety:wither_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:wither_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wither_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wraith",
+      "required": false
+    },
+    {
+      "id": "goety:wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_ravager",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_vindicator",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_brute_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:aptrgangr",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:drowned_host_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:elite_draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignited_berserker",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignited_revenant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:kobolediator",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:koboleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:royal_draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:wadjet",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:zombie_amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:catacombs_zombie",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_boss",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:necromancer",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:spectral_steed",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_skeleton",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_zombie",
+      "required": false
+    },
     "minecraft:bogged",
-    "minecraft:wither_skeleton",
+    "minecraft:drowned",
+    "minecraft:ghast",
+    "minecraft:giant",
+    "minecraft:husk",
     "minecraft:phantom",
+    "minecraft:skeleton",
+    "minecraft:skeleton_horse",
+    "minecraft:stray",
+    "minecraft:wither",
+    "minecraft:wither_skeleton",
+    "minecraft:zoglin",
+    "minecraft:zombie",
+    "minecraft:zombie_horse",
+    "minecraft:zombie_villager",
     "minecraft:zombified_piglin",
-    "minecraft:wither"
+    {
+      "id": "neovitae:necromancy_summon",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_husk",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_skeleton",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_stray",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_ghast",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_phantom",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_skeleton",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_zombie_piglin",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_bogged",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_horde_drowned",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_horde_husk",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_hunt_skeleton",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_hunt_wither_skeleton",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_husk",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_skeleton",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_stray",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_zombie",
+      "required": false
+    },
+    {
+      "id": "rootsclassic:phantom_skeleton",
+      "required": false
+    },
+    {
+      "id": "theaurorian:disturbed_hollow",
+      "required": false
+    },
+    {
+      "id": "theaurorian:dungeon_keeper",
+      "required": false
+    },
+    {
+      "id": "theaurorian:hollow",
+      "required": false
+    },
+    {
+      "id": "theaurorian:spirit",
+      "required": false
+    },
+    {
+      "id": "theaurorian:undead_knight",
+      "required": false
+    },
+    {
+      "id": "tombstone:grave_guardian",
+      "required": false
+    },
+    {
+      "id": "tombstone:spectral_wolf",
+      "required": false
+    },
+    {
+      "id": "totemic:baykok",
+      "required": false
+    },
+    {
+      "id": "twilightforest:carminite_ghastguard",
+      "required": false
+    },
+    {
+      "id": "twilightforest:carminite_ghastling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:knight_phantom",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich_minion",
+      "required": false
+    },
+    {
+      "id": "twilightforest:loyal_zombie",
+      "required": false
+    },
+    {
+      "id": "twilightforest:rising_zombie",
+      "required": false
+    },
+    {
+      "id": "twilightforest:skeleton_druid",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ur_ghast",
+      "required": false
+    },
+    {
+      "id": "twilightforest:wraith",
+      "required": false
+    },
+    {
+      "id": "wardentools:shadow",
+      "required": false
+    },
+    {
+      "id": "witchery:banshee",
+      "required": false
+    },
+    {
+      "id": "witchery:death",
+      "required": false
+    },
+    {
+      "id": "witchery:elle",
+      "required": false
+    },
+    {
+      "id": "witchery:poltergeist",
+      "required": false
+    },
+    {
+      "id": "witchery:spectral_pig",
+      "required": false
+    },
+    {
+      "id": "witchery:spectre",
+      "required": false
+    },
+    {
+      "id": "witchery:vampire",
+      "required": false
+    }
   ]
 }

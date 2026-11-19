@@ -1,9 +1,290 @@
 {
   "replace": false,
   "values": [
-    "minecraft:spider",
+    {
+      "id": "alexscaves:gammaroach",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gloomoth",
+      "required": false
+    },
+    {
+      "id": "alexscaves:trilocaris",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_bee",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:alakarkinos",
+      "required": false
+    },
+    {
+      "id": "betterend:dragonfly",
+      "required": false
+    },
+    {
+      "id": "betterend:silk_moth",
+      "required": false
+    },
+    {
+      "id": "cataclysm:amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:endermaptera",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:dragonfly",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:jumping_spider",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:ladybug",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:leaf_insect",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:roly_poly",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:stag_beetle",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:stick_bug",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:weevil",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sculk_centipede",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:scarab",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:crystallized_moth",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:gleech",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:nightfall_spider",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shimmer_lacewing",
+      "required": false
+    },
+    {
+      "id": "evilcraft:netherfish",
+      "required": false
+    },
+    {
+      "id": "evilcraft:poisonous_libelle",
+      "required": false
+    },
+    {
+      "id": "feywild:bee_knight",
+      "required": false
+    },
+    {
+      "id": "feywild:bee_mount",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:brood_mother",
+      "required": false
+    },
+    {
+      "id": "goety:brood_mother_servant",
+      "required": false
+    },
+    {
+      "id": "goety:carrion_fly",
+      "required": false
+    },
+    {
+      "id": "goety:carrion_maggot",
+      "required": false
+    },
+    {
+      "id": "goety:cave_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:icy_spider",
+      "required": false
+    },
+    {
+      "id": "goety:icy_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:insect_swarm",
+      "required": false
+    },
+    {
+      "id": "goety:spider_egg",
+      "required": false
+    },
+    {
+      "id": "goety:spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wartling",
+      "required": false
+    },
+    {
+      "id": "goety:web_spider",
+      "required": false
+    },
+    {
+      "id": "goety:web_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:zombie_amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_spider",
+      "required": false
+    },
+    "minecraft:bee",
     "minecraft:cave_spider",
+    "minecraft:endermite",
     "minecraft:silverfish",
-    "minecraft:endermite"
+    "minecraft:spider",
+    {
+      "id": "neovitae:daemonium_pestis",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_bee",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_endermite",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_cave_spider",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_horde_silverfish",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_silverfish",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_spider",
+      "required": false
+    },
+    {
+      "id": "pastel:eraser",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:bee_queen",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:beehemoth",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:variant_bee",
+      "required": false
+    },
+    {
+      "id": "theaurorian:dungeon_spider",
+      "required": false
+    },
+    {
+      "id": "theaurorian:spiderling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:carminite_broodling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:fire_beetle",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hedge_spider",
+      "required": false
+    },
+    {
+      "id": "twilightforest:helmet_crab",
+      "required": false
+    },
+    {
+      "id": "twilightforest:king_spider",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mosquito_swarm",
+      "required": false
+    },
+    {
+      "id": "twilightforest:pinch_beetle",
+      "required": false
+    },
+    {
+      "id": "twilightforest:slime_beetle",
+      "required": false
+    },
+    {
+      "id": "twilightforest:swarm_spider",
+      "required": false
+    },
+    {
+      "id": "twilightforest:towerwood_borer",
+      "required": false
+    },
+    {
+      "id": "witchery:parasitic_louse",
+      "required": false
+    }
   ]
 }

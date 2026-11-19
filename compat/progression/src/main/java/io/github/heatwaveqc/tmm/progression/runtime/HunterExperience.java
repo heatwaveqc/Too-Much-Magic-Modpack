@@ -54,6 +54,7 @@ public final class HunterExperience {
         }
         if (!HunterPreyPolicy.eligible(included, excluded, invalidHunterOrVictim, tame, playerOrUnknownOwner))
             return false;
+        if (HunterNativePreyOwnership.excluded(target)) return false;
         for (BiPredicate<ServerPlayer,LivingEntity> rule : KILL_GUARDS)
             if (!rule.test(hunter,target)) return false;
         return true;

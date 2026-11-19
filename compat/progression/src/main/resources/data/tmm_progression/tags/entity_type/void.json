@@ -1,15 +1,180 @@
 {
   "replace": false,
   "values": [
-    "minecraft:enderman",
-    "minecraft:endermite",
-    "minecraft:ender_dragon",
+    {
+      "id": "betterend:shadow_walker",
+      "required": false
+    },
+    {
+      "id": "cataclysm:endermaptera",
+      "required": false
+    },
     {
       "id": "draconicevolution:draconic_guardian",
       "required": false
     },
     {
-      "id": "#goety:enderlings",
+      "id": "endermanoverhaul:axolotl_pet_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:badlands_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:cave_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:coral_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:crimson_forest_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:dark_oak_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:desert_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:end_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:end_islands_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:flower_fields_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:hammerhead_pet_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:ice_spikes_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:mushroom_fields_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:nether_wastes_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:pet_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:savanna_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:snowy_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:soulsand_valley_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:spirit",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:swamp_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:warped_forest_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:windswept_hills_enderman",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:thirst_walker",
+      "required": false
+    },
+    {
+      "id": "extrabotany:void_herrscher",
+      "required": false
+    },
+    {
+      "id": "goety:blastling",
+      "required": false
+    },
+    {
+      "id": "goety:blastling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ender_keeper",
+      "required": false
+    },
+    {
+      "id": "goety:endersent",
+      "required": false
+    },
+    {
+      "id": "goety:snareling",
+      "required": false
+    },
+    {
+      "id": "goety:snareling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:watchling",
+      "required": false
+    },
+    {
+      "id": "goety:watchling_servant",
+      "required": false
+    },
+    "minecraft:ender_dragon",
+    "minecraft:enderman",
+    "minecraft:endermite",
+    "minecraft:shulker",
+    {
+      "id": "occultism:possessed_enderman",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_endermite",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_shulker",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_weak_shulker",
+      "required": false
+    },
+    {
+      "id": "voidscape:corrupted_pawn",
+      "required": false
+    },
+    {
+      "id": "voidscape:null_servant",
+      "required": false
+    },
+    {
+      "id": "voidscape:voidling",
+      "required": false
+    },
+    {
+      "id": "voidscape:voids_wrath",
       "required": false
     }
   ]

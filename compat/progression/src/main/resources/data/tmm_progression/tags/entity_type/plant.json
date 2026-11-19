@@ -1,6 +1,214 @@
 {
   "replace": false,
   "values": [
-    "minecraft:creeper"
+    {
+      "id": "alexscaves:nucleeper",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:blazing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:cascading_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_whirlisprig",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:flourishing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:vexing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:whirlisprig",
+      "required": false
+    },
+    {
+      "id": "botania:manaseal_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:badlands_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:bamboo_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:beach_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:birch_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:cave_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:dark_oak_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:desert_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:dripstone_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:hills_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:jungle_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:mushroom_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:ocean_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:savannah_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:snowy_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:spruce_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:swamp_creeper",
+      "required": false
+    },
+    {
+      "id": "enchanted:mandrake",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:creteor",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:ent",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_monstrosity",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:solar_creeper",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tangled",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tiny_creteor",
+      "required": false
+    },
+    {
+      "id": "feywild:autumn_tree_ent",
+      "required": false
+    },
+    {
+      "id": "feywild:mandragora",
+      "required": false
+    },
+    {
+      "id": "feywild:shroomling",
+      "required": false
+    },
+    {
+      "id": "feywild:spring_tree_ent",
+      "required": false
+    },
+    {
+      "id": "feywild:summer_tree_ent",
+      "required": false
+    },
+    {
+      "id": "feywild:winter_tree_ent",
+      "required": false
+    },
+    {
+      "id": "ghosts:kodama",
+      "required": false
+    },
+    {
+      "id": "ghosts:small_ghost",
+      "required": false
+    },
+    {
+      "id": "goety:leapleaf",
+      "required": false
+    },
+    {
+      "id": "goety:poison_anemone",
+      "required": false
+    },
+    {
+      "id": "goety:poison_quill_vine",
+      "required": false
+    },
+    {
+      "id": "goety:quick_growing_kelp",
+      "required": false
+    },
+    {
+      "id": "goety:quick_growing_vine",
+      "required": false
+    },
+    {
+      "id": "goety:wavewhisperer",
+      "required": false
+    },
+    {
+      "id": "goety:whisperer",
+      "required": false
+    },
+    "minecraft:creeper",
+    {
+      "id": "occultism:wild_horde_creeper",
+      "required": false
+    },
+    {
+      "id": "primalmagick:treefolk",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:rootmin",
+      "required": false
+    },
+    {
+      "id": "witchery:ent",
+      "required": false
+    },
+    {
+      "id": "witchery:mandrake",
+      "required": false
+    }
   ]
 }

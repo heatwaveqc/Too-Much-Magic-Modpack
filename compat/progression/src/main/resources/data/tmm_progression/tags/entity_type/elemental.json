@@ -1,6 +1,107 @@
 {
   "replace": false,
   "values": [
-    "minecraft:blaze"
+    {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_familiar",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:flare",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignis",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:ichor_sprite",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:freeze",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:permafrost",
+      "required": false
+    },
+    {
+      "id": "goety:blaze_servant",
+      "required": false
+    },
+    {
+      "id": "goety:breeze_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_servant",
+      "required": false
+    },
+    {
+      "id": "goety:inferno",
+      "required": false
+    },
+    {
+      "id": "goety:sprite",
+      "required": false
+    },
+    {
+      "id": "goety:wildfire",
+      "required": false
+    },
+    "minecraft:blaze",
+    "minecraft:breeze",
+    {
+      "id": "occultism:possessed_blaze",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_breeze",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_strong_breeze",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_weak_breeze",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:cosmic_crystal_entity",
+      "required": false
+    },
+    {
+      "id": "theaurorian:crystalline_sprite",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ice_crystal",
+      "required": false
+    },
+    {
+      "id": "twilightforest:snow_guardian",
+      "required": false
+    },
+    {
+      "id": "twilightforest:snow_queen",
+      "required": false
+    },
+    {
+      "id": "twilightforest:stable_ice_core",
+      "required": false
+    },
+    {
+      "id": "twilightforest:unstable_ice_core",
+      "required": false
+    }
   ]
 }
