@@ -5,6 +5,7 @@ import argparse
 import collections
 import gzip
 import json
+import re
 from pathlib import Path
 
 MAGIC_BASE=("enchanted_star_candy","magnificent_star_candy","enchanted_golden_carrot")
@@ -31,12 +32,28 @@ def assess(registry, records, diet, gilded, charred, equivalence):
     stale=[]
     missing_native=[]
     optional_foreign=[]
+    pattern_selectors=[]
     for s,m in species.items():
         for key in m:
             if key.startswith("#") or key in ids:continue
+            # Existing Forest selectors include regex patterns rather than IDs.
+            # Inspect concrete matches; do not assert runtime regex semantics.
+            if any(mark in key for mark in (".*","[","]","(?","\\","$","^")):
+                try:
+                    regex=re.compile(key)
+                    matched=sorted(x for x in ids if regex.fullmatch(x))
+                    nonfood=sorted(x for x in matched if x in index and ("nonfood_equipment_candidate" in index[x][2] or "planting_material_candidate" in index[x][2]))
+                    pattern_selectors.append({"species":s,"selector":key,"matched_registered_ids":len(matched),"nonfood_candidate_examples":nonfood[:12]})
+                except re.error:
+                    pattern_selectors.append({"species":s,"selector":key,"invalid_python_regex":True})
+                continue
             if key.startswith("spectrum:") and "pastel" in ns:stale.append({"species":s,"selector":key,"possible_new_id":"pastel:"+key.split(":",1)[1],"candidate_in_registry":"pastel:"+key.split(":",1)[1] in ids})
             elif key.split(":")[0] in ns:missing_native.append([s,key])
             else:optional_foreign.append([s,key])
+    if pattern_selectors:
+        add("dragon_regex_selector_runtime_review","medium","dragon_diets",
+            {"count":len(pattern_selectors),"selectors":pattern_selectors},
+            "Verify Dragon Survival pinned selector matcher semantics. Inspect matched items before changing regex; do not treat pattern text as a missing registry ID.")
     if stale:
         add("dragon_stale_spectrum_selectors","high","dragon_diets",
             {"count":len(stale),"selectors":stale},
@@ -111,7 +128,7 @@ def assess(registry, records, diet, gilded, charred, equivalence):
         "Test human, JAWR vampire/werewolf, both liches, dragon forms and hybrids with separate food and effect checks. No broad food-tag permission.")
     summary={"registry_count":len(ids),"review_items":len(records),"issues":len(issue),
         "by_priority":dict(collections.Counter(x["priority"] for x in issue)),
-        "dragon_stale_ids":len(stale),"dragon_installed_namespace_missing_selectors":len(missing_native),"dragon_optional_foreign_selectors":len(optional_foreign),
+        "dragon_stale_ids":len(stale),"dragon_installed_namespace_missing_selectors":len(missing_native),"dragon_optional_foreign_selectors":len(optional_foreign),"dragon_regex_selectors":len(pattern_selectors),
         "alcohol_candidates":len(alcohol),"alcohol_uncertain":len(uncertain),
         "source_only":True,"runtime_changes":0}
     return {"schema_version":1,"status":"read_only_first_pass", "summary":summary,"issues":issue}

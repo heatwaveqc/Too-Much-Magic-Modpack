@@ -21,6 +21,13 @@ class ConsumerAuditTests(unittest.TestCase):
         bad=next(x for x in r["issues"] if x["code"]=="dragon_stale_spectrum_selectors")
         self.assertEqual(bad["evidence"]["count"],1)
         self.assertTrue(bad["evidence"]["selectors"][0]["candidate_in_registry"])
+    def test_regex_is_not_absent_item_id(self):
+        args=list(sample())
+        args[2]["values"]["dragonsurvival:forest_dragon"]["neoforge:value"].append({"items":"pastel:.*candy"})
+        r=assess(*args)
+        self.assertEqual(r["summary"]["dragon_installed_namespace_missing_selectors"],0)
+        self.assertEqual(r["summary"]["dragon_regex_selectors"],1)
+        self.assertIn("dragon_regex_selector_runtime_review",{i["code"] for i in r["issues"]})
     def test_optional_foreign_does_not_force_explicit_allow(self):
         args=list(sample())
         args[2]["values"]["dragonsurvival:forest_dragon"]["neoforge:value"].append({"items":"uninstalledmod:food"})
