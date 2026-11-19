@@ -1,0 +1,26 @@
+name: Bountiful distribution static tests (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'config/ProjectE/custom_emc.json'
+      - 'config/bountiful/bountiful.json'
+      - 'kubejs/data/tmm/questshop/shop_entries/supplies.json'
+      - 'manifest/quest_shop_catalog.json'
+      - 'manifest/emc-coverage-policy.json'
+      - 'pack.toml'
+      - 'index.toml'
+      - 'tests/test_bountiful_distribution.py'
+      - '.github/workflows/bountiful-distribution-ci.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check zero EMC, board suppression, shop and indexed hashes
+        run: python -m unittest discover -s tests -p 'test_bountiful_distribution.py' -v
