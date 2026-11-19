@@ -45,6 +45,8 @@ def main():
                 if p.endswith(".class") and not p.startswith("META-INF/"):
                     match=sorted(set(s for s in strings(z.read(p)) if relevant(s)))
                     if match: print("LITERALS",name,p,json.dumps(match),flush=True);targets.append(p)
+                    if name=="replication" and b"com/hrznstudio/titanium" in z.read(p) and (b"EnergyStorage" in z.read(p) or b"EnergyBar" in z.read(p)):
+                        print("REPLICATION_ENERGY_UI",p,flush=True)
             if name=="jade":
                 targets.append("snownee/jade/api/view/EnergyView.class")
                 targets.append("snownee/jade/util/CommonProxy.class")
@@ -57,10 +59,12 @@ def main():
                     if name=="jade" and "CommonProxy" in cl:
                         m=re.search(r"(?ms)^  public static .* wrapEnergyStorage\(.*?(?=\n  (?:public|private|protected) |\Z)",result)
                         result=m.group(0) if m else ""
+                    elif name=="titanium" and "EnergyBarScreenAddon" in cl:
+                        print("INDY_BOOTSTRAPS", subprocess.run(["javap","-classpath",str(jar),"-p","-v",cl],check=True,capture_output=True,text=True).stdout.split("BootstrapMethods:")[-1][:5000],flush=True)
                     elif name in ("replication","titanium"):
                         chunks=re.split(r"(?=\n  (?:public|private|protected|static|final) )",result)
                         result="\n".join(c for c in chunks if any(relevant(line.split("// String ",1)[1]) for line in c.splitlines() if "// String " in line))
-                    print("BYTECODE",name,cl,result[:12000],flush=True)
+                    print("BYTECODE",name,cl,result[:30000],flush=True)
             if name=="jade":
                 assert "snownee/jade/api/view/EnergyView.class" in z.namelist()
         jar.unlink()
