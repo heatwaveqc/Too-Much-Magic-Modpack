@@ -17,5 +17,7 @@
   "tmm_economy.mapper.draconic_fusion": "TMM Draconic Fusion Mapper",
   "tmm_economy.mapper.draconic_fusion.tooltip": "Map nominal FE and consumed fusion inputs.",
   "tmm_economy.mapper.neovitae_alchemy": "TMM Neo Vitae Alchemy Mapper",
-  "tmm_economy.mapper.neovitae_alchemy.tooltip": "Map ordinary Tabula Vitae recipes and EV."
+  "tmm_economy.mapper.neovitae_alchemy.tooltip": "Map ordinary Tabula Vitae recipes and EV.",
+  "tmm_economy.mapper.neovitae_industry": "TMM Neo Vitae Industry Mapper",
+  "tmm_economy.mapper.neovitae_industry.tooltip": "Map ordinary altar, forge, Athanor and crafting arrays."
 }

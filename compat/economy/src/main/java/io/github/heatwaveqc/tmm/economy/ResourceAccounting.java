@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.economy;
 
 import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /** Shared exact valuation; fractional resource costs are represented by
  * scaling the entire recipe, never by rounding each individual resource. */
@@ -14,6 +15,19 @@ public final class ResourceAccounting {
         final int numerator, denominator;
         Rate(int numerator, int denominator) {
             this.numerator = numerator; this.denominator = denominator;
+        }
+        /** Decimal costs are present in native Spiritus recipe objects. Decode
+         * their canonical decimal representation, not the binary float fraction. */
+        public Cost ofDecimal(double units) {
+            if (!Double.isFinite(units) || units < 0)
+                throw new IllegalArgumentException("Invalid resource debit");
+            BigDecimal decimal = BigDecimal.valueOf(units).stripTrailingZeros();
+            int scale = decimal.scale();
+            BigInteger n = decimal.unscaledValue().multiply(BigInteger.valueOf(numerator));
+            BigInteger d = BigInteger.valueOf(denominator);
+            if (scale > 0) d = d.multiply(BigInteger.TEN.pow(scale));
+            else if (scale < 0) n = n.multiply(BigInteger.TEN.pow(-scale));
+            return new Cost(n, d);
         }
         public Cost of(long units) {
             if (units < 0) throw new IllegalArgumentException("Negative resource debit");

@@ -16,4 +16,16 @@ class ResourceAccountingTest {
         assertThrows(ArithmeticException.class, () -> ResourceAccounting.Rate.SOUL.of(Long.MAX_VALUE).emcUnits());
         assertThrows(ArithmeticException.class, () -> ResourceAccounting.Rate.MANA.of(1).scaleCount(Integer.MAX_VALUE));
     }
+    @Test void decimalSpiritusCosts() {
+        var c = ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(0.125)
+                .plus(ResourceAccounting.Rate.ASPECTED_SPIRITUS.ofDecimal(1.2));
+        assertEquals(101,c.emcUnits()); assertEquals(40,c.batches());
+        assertEquals(80,c.scaleCount(2)); assertEquals(-40,c.scaleCount(-1));
+        assertEquals(1,ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(0.25).emcUnits());
+        assertEquals(4,ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(0.25).batches());
+        assertThrows(IllegalArgumentException.class, () -> ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(Double.NaN));
+        assertThrows(IllegalArgumentException.class, () -> ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(Double.POSITIVE_INFINITY));
+        assertThrows(IllegalArgumentException.class, () -> ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(-0.1));
+        assertThrows(ArithmeticException.class, () -> ResourceAccounting.Rate.RAW_SPIRITUS.ofDecimal(0.000000000001).batches());
+    }
 }
