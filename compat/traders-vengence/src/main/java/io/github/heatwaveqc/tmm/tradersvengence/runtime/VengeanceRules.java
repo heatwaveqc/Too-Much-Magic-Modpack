@@ -8,9 +8,6 @@ public final class VengeanceRules {
     public static final int SIGN_RADIUS = 32;
     // Each vanilla search checks up to ten columns; cap total work to 30.
     public static final int TRADER_POSITION_GROUPS = 3;
-    public static final int VILLAGER_RANGE = 16;
-    public static final int VILLAGER_COOLDOWN_TICKS = 50;
-    public static final float MISSILE_DAMAGE = 6.0F;
 
     private VengeanceRules() {}
 

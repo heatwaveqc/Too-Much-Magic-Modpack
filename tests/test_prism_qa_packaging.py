@@ -21,19 +21,64 @@ def main() -> None:
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin
+    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths, MINIGUN_AUDIO_BLOBS
+    def add_donor_fixture(z, directory, case="valid"):
+        if directory.name != "traders-vengence":
+            return
+        for path in [*caliberarms_asset_paths(directory), *MINIGUN_AUDIO_BLOBS]:
+            if case == "missing_donor_license" and path.endswith("/caliberarms/LICENSE.txt"):
+                continue
+            if case == "missing_minigun_audio" and path.endswith("/minigun_stop.ogg"):
+                continue
+            if case == "missing_spinup_audio" and path.endswith("/minigun_spinup.ogg"):
+                continue
+            data = (directory / "src/main/resources" / path).read_bytes()
+            if case == "wrong_donor_audio" and path.endswith("/guns/m1911/fire_1.ogg"):
+                data += b"modified"
+            if case == "wrong_minigun_audio" and path.endswith("/minigun/minigun.ogg"):
+                data += b"modified"
+            z.writestr(path, data)
+        if case == "uncleared_hud_audio":
+            z.writestr("assets/traders_vengence/sounds/hud_init.ogg", b"not allowed")
+
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for _, mod, expected_path in selected():
+        for directory, mod, expected_path in selected():
             jar = folder / expected_path.name
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
-                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
+                z.writestr("META-INF/neoforge.mods.toml", 'license = "' + expected_license(directory) + '"\n[[mods]]\nmodId = "' + mod + '"\n')
+                z.writestr("LICENSE", (directory / "LICENSE").read_bytes())
+                z.writestr("THIRD_PARTY_NOTICES.md", (directory / "THIRD_PARTY_NOTICES.md").read_bytes())
+                add_donor_fixture(z, directory)
             addons.append(jar)
         verify_packaging_inputs(addons)
+        # Release license regression: accept exact bundled module license files, reject
+        # incorrect metadata, omitted files and mismatched notices.
+        for directory, mod, expected_path in selected():
+            j = folder / ("license-test-" + expected_path.name)
+            cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
+            if directory.name == "traders-vengence":
+                cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
+                          "wrong_minigun_audio", "missing_spinup_audio", "uncleared_hud_audio")
+            for case in cases:
+                with zipfile.ZipFile(j, "w") as z:
+                    declared = "All Rights Reserved" if case == "wrong_license" else expected_license(directory)
+                    z.writestr("META-INF/neoforge.mods.toml", 'license = "' + declared + '"\n[[mods]]\nmodId = "' + mod + '"\n')
+                    if case != "missing_license":
+                        z.writestr("LICENSE", (directory / "LICENSE").read_bytes())
+                    notice = b"incorrect" if case == "wrong_notice" else (directory / "THIRD_PARTY_NOTICES.md").read_bytes()
+                    z.writestr("THIRD_PARTY_NOTICES.md", notice)
+                    add_donor_fixture(z, directory, case)
+                try:
+                    validate_jar_license(directory, j)
+                except ValueError:
+                    assert case != "valid", "Valid module license rejected"
+                else:
+                    assert case == "valid", "Invalid license accepted: " + case
         # Regression against the loader's actual native version, not its short
         # marketing version. Test the old failure, an exact pin and a future ABI.
         trader = folder / "trader-dependency-test.jar"
