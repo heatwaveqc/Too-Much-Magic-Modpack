@@ -29,7 +29,8 @@
     "PrimalManaDebitMixin",
     "EvilCraftBloodConsumeMixin",
     "EvilCraftFleshPaymentMixin",
-    "EvilCraftMacePaymentMixin"
+    "EvilCraftMacePaymentMixin",
+    "PastelInkPaymentMixin"
   ],
   "injectors": {
     "defaultRequire": 0
