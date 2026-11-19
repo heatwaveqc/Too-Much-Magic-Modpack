@@ -38,8 +38,8 @@ public final class MxpSourceConfig {
             .defineInRange("neovitae_ev_network_initial", ResourceBaselines.NEO_TIER_ZERO_ANIMA_EV, 0.0, 1.0e12);
         JAWR_INITIAL_BLOOD_POOL = b.comment(
                 "JAWR 0.5.39 Vampire native blood pool normalization target = 900.",
-                "Owner-approved proposed first-access baseline; set 0 to disable a future native adapter.",
-                "IMPORTANT: No automatic JAWR hook has been enabled until a verified post-commit debit event exists.")
+                "Owner-approved first-access baseline; set 0 to disable the native adapter.",
+                "Counts actual native vampire blood decrease (passive hunger and abilities), not feeding or mirrored food.")
             .defineInRange("jawr_initial_blood", ResourceBaselines.JAWR_INITIAL_BLOOD, 0.0, 1.0e12);
         PSI_INITIAL_POOL=b.comment("Psi 110 first access personal pool. 0 disables standard CAD MXP.")
             .defineInRange("psi_initial_pool",ResourceBaselines.PSI_STARTING_POOL,0.0,1.0e12);
