@@ -63,3 +63,7 @@ For current engineering rules use [repository AGENTS.md](../../AGENTS.md). For t
 - We intentionally did **not** copy legacy Java, test executable code, old resource-pack skill registries, or CI workflows. Two historical validator scripts from the design PRs are retained only as inert archived source under `docs/archive/`, not installed in live `scripts/`.
 - Archiving a proposal does not mean approving a value, activating an ability, importing a source stream, or confirming Minecraft gameplay.
 - Future documentation may summarize or link these records, but this archive should remain a stable snapshot to avoid depending on historical working branches.
+
+## November 19 historical branch consolidation
+
+[Historical branch preservation](historical-branches-2026-11-19/README.md): 35 exact historical files, including quest standards, design status, expanded magic decisions, hybrid research, Gilded designs and Hunter census evidence; two scripts are archived as inert source. This does not activate any work. Exact original commit provenance and retirement conditions are in the linked index.
