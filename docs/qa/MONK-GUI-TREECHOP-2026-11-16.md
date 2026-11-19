@@ -1,6 +1,6 @@
 # Monk/Hunter skill GUI and TreeChop — next client test cases
 
-**Date:** 2026-11-16. **Implementation branch:** `feature/progression-skill-gui-treechop-2026-11-16`, [PR #223](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/223).  
+**Date:** 2026-11-16. **Historical source:** closed [PR #223](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/223), immutable [commit `612717ec3ecc3b507b3cc983a963ac8568cdde8a`](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/tree/612717ec3ecc3b507b3cc983a963ac8568cdde8a), previously `feature/progression-skill-gui-treechop-2026-11-16`. **Integrated successor:** [PR #248](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/248), merge `a9be57f26f51d3718e48e7b3d8c128a109f34072`, current shared Progression source. Original tip must remain reachable via closed PR and verified archive tag if retired. All cases below remain pending until corresponding current-candidate evidence exists.  
 **Base:** current integrated `tmm_progression`, **not** the older Vampirism module or stale four-level pilot.  
 **Source of symptoms:** [player follow-up](PLAYER-FOLLOWUP-2026-11-16.md).  
 **Status:** compiled and unit-tested source; **client and full-pack TreeChop behavior NOT ACCEPTED**. Do not rerun stable First Sunset initiation unless the exact implementation changed. No full smoke without separate owner approval.
