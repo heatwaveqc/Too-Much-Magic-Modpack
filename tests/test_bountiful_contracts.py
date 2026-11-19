@@ -133,4 +133,13 @@ class TestBountifulCompiler(unittest.TestCase):
         r["approved_entries"]["astral_sorcery"]["rewards"][0]["rarity"]="COMMON"
         with self.assertRaisesRegex(ValueError,"premium"):m.compile_candidate(C,A,r)
 
+    def test_iron_all_ink_tiers_in_balance_draft(self):
+        family=next(f for f in C["schools"] if f["id"]=="irons_spells")
+        payouts={row["item"]:row for row in family["balance_reward_draft"]}
+        for tier in ("common","uncommon","rare","epic","legendary"):
+            item="irons_spellbooks:"+tier+"_ink"
+            self.assertIn(item,family["reward_item_candidates"])
+            self.assertEqual(payouts[item]["rarity"],tier.upper())
+        self.assertIn("irons_spellbooks:arcane_essence",payouts)
+
 if __name__=="__main__":unittest.main()

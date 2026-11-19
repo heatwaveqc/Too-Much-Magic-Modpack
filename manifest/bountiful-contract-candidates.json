@@ -1323,7 +1323,7 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "basic spell ink",
+        "all five spell ink tiers",
         "arcane essence"
       ],
       "kill_candidates": [
@@ -1333,6 +1333,7 @@
       ],
       "reward_item_candidates": [
         "irons_spellbooks:arcane_essence",
+        "irons_spellbooks:common_ink",
         "irons_spellbooks:uncommon_ink",
         "irons_spellbooks:rare_ink",
         "irons_spellbooks:epic_ink",
@@ -1343,6 +1344,12 @@
           "item": "irons_spellbooks:arcane_essence",
           "min": 4,
           "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "irons_spellbooks:common_ink",
+          "min": 2,
+          "max": 4,
           "rarity": "COMMON"
         },
         {
@@ -1426,7 +1433,8 @@
           "min": 1,
           "max": 64
         }
-      ]
+      ],
+      "reward_notes": "Owner explicitly requires every native ink tier to be available as a potential payout. Arcane Essence remains an additional candidate. Quantities provisional."
     },
     {
       "id": "mahou_tsukai",

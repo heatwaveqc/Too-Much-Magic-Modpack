@@ -60,3 +60,7 @@ Compiler optional profile native_v1 generates native variable quantity ranges fr
 Candidate catalogue now includes per-decree balance_reward_draft and balance_objective_draft. Exact-ID candidates have proposed output quantities and rarity; missing reward IDs remain visibly empty rather than invented. All IDs and amounts must be reviewed; no separate new form/recipe/loot engineering in this balance pass. Source of proposed iron ink IDs: B20 trader integration. Occultism roster preserved exactly; Afrit and Marid are premium single-item rewards, with native material and kill objectives proposed. Black lotus and blank constellation paper epic. No Theurgy.
 
 First test run on a6be11f found a syntax typo in the emitted config dictionary; corrected. Premium pair capacity uses the lowest reputation eligible for each reward rather than requiring rare rewards to be affordable at reputations where they cannot appear. New test run pending.
+
+### Iron's ink completeness — owner direction
+
+All five ink tiers are required potential rewards, including Common Ink. Upstream 1.21 ItemRegistry.java confirms common_ink, uncommon_ink, rare_ink, epic_ink and legendary_ink. Draft quantities respectively 2–4, 1–3, 1–2, 1 and 1, with matching native bounty rarity. Retain Arcane Essence (4–12) as an alternative. Final exact registry/effective EMC and obtainable objective coverage remain to verify.
