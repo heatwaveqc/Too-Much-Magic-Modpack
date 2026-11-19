@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.util.FakePlayer;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-/** Server-only reward attribution, NOT a replacement for the native DamageSource. */
+/** Server-only reward attribution across loaded dimensions, NOT a replacement for the native DamageSource. */
 public final class OwnedMagicDamage {
     public static final String MAHOU_BOUNDARY="mahou_drain_life";
     private static final NativeAttackScope SCOPE=new NativeAttackScope();
@@ -20,8 +20,7 @@ public final class OwnedMagicDamage {
             &&!player.isCreative()&&!player.isSpectator()
             &&victim.level() instanceof ServerLevel level
             &&level.getServer().isSameThread()
-            &&level.getServer().getPlayerList().getPlayer(player.getUUID())==player
-            &&player.level()==level;
+            &&level.getServer().getPlayerList().getPlayer(player.getUUID())==player;
     }
 
     /** Call only from a verified native producer using its own persisted owner UUID. */
