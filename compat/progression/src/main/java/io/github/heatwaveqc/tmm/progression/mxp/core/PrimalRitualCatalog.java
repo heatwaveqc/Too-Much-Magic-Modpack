@@ -7,7 +7,8 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Pinned 6.0.7 ritual IDs only. Source variants share native expertise families. */
 public final class PrimalRitualCatalog {
     private PrimalRitualCatalog(){}
-    public record Entry(RitualRewards.Rule rule,String output,int count,int instability,int props,int ingredients){
+    public record Entry(String family,Band band,String output,int count,int instability,int props,int ingredients){
+        public RitualRewards.Rule rule(){return new RitualRewards.Rule(family,band);}
         public boolean matches(String item,int amount,int risk,int propCount,int offeringCount){
             return output.equals(item)&&amount==count&&risk==instability&&propCount==props&&offeringCount==ingredients;
         }
@@ -95,7 +96,7 @@ public final class PrimalRitualCatalog {
     }
     private static void add(Map<String,Entry> out,String id,String family,Band band,String result,int count,int instability,int props,int ingredients){
         String key="primalmagick:"+id;
-        if(out.putIfAbsent(key,new Entry(new RitualRewards.Rule("primalmagick:"+family,band),"primalmagick:"+result,count,instability,props,ingredients))!=null)
+        if(out.putIfAbsent(key,new Entry("primalmagick:"+family,band,"primalmagick:"+result,count,instability,props,ingredients))!=null)
             throw new IllegalStateException("Duplicate Primal ritual "+key);
     }
     public static Entry lookup(String id){return id==null?null:ENTRIES.get(id);}
