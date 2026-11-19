@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/astralsorcery-client.toml"
+hash = "5467f5309c0c7ee783f58e51496a2db6323b65db6ec72a29771a59c8a781e2b8"
+
+[[files]]
 file = "config/defaultoptions/keybindings.txt"
 hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
 
