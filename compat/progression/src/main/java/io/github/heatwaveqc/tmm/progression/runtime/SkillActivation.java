@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 /** Server-authorized timed/toggle gate over effects of ordinary owned skill nodes. */
 public final class SkillActivation {
     private SkillActivation(){}
+    private static final ThreadLocal<Boolean> REQUESTING=ThreadLocal.withInitial(()->false);
     private static String key(String path,String skill){
         return "tmm_progression:activation/"+UUID.nameUUIDFromBytes((path+"|"+skill).getBytes(StandardCharsets.UTF_8));
     }
@@ -27,15 +28,27 @@ public final class SkillActivation {
     public static boolean canRequest(ServerPlayer p,String path,String skill){
         var spec=PathRegistry.activation(path,skill);
         if(spec==null||!owned(p,path,skill))return false;
-        var before=get(p,path,skill);return !before.request(spec,now(p)).equals(before);
+        var before=get(p,path,skill);var next=before.request(spec,now(p));
+        return !next.equals(before)&&(spec.jawrBloodCost()==0||before.active(now(p))||
+            io.github.heatwaveqc.tmm.progression.runtime.forms.NativeBloodCost.affordable(p,spec.jawrBloodCost()));
     }
     public static long remaining(ServerPlayer p,String path,String skill){
         var state=get(p,path,skill);return Math.max(0,state.ready()-now(p));
     }
     public static boolean request(ServerPlayer p,String path,String skill){
-        if(p.getServer()==null||!p.getServer().isSameThread()||!canRequest(p,path,skill))return false;
-        var before=get(p,path,skill);var next=before.request(PathRegistry.activation(path,skill),now(p));
-        return ProgressionApi.setMode(p,key(path,skill),next.encode());
+        if(p.getServer()==null||!p.getServer().isSameThread()||REQUESTING.get()||!canRequest(p,path,skill))return false;
+        REQUESTING.set(true);
+        try{
+            var spec=PathRegistry.activation(path,skill);
+            var before=get(p,path,skill);long at=now(p);var next=before.request(spec,at);
+            if(next.equals(before))return false;
+            // Paid timed activation only. No spell credit here: the existing native
+            // BloodPoolHandler receipt is the sole source of eligible MXP.
+            if(spec.jawrBloodCost()>0&&!before.active(at)&&
+                !io.github.heatwaveqc.tmm.progression.runtime.forms.NativeBloodCost.pay(p,spec.jawrBloodCost()))return false;
+            if(!owned(p,path,skill))return false;
+            return ProgressionApi.setMode(p,key(path,skill),next.encode());
+        }finally{REQUESTING.remove();}
     }
     public static void stopPath(ServerPlayer p,String path){
         var tree=PathRegistry.get(path);if(tree==null)return;

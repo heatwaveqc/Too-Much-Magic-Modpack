@@ -3,19 +3,22 @@ import com.google.gson.JsonObject;
 import java.util.Set;
 
 /** Optional activation for an owned skill, not a separate detachable power. */
-public record ActivationSpec(String mode,int durationTicks,int cooldownTicks) {
+public record ActivationSpec(String mode,int durationTicks,int cooldownTicks,int jawrBloodCost) {
+    public ActivationSpec(String mode,int durationTicks,int cooldownTicks){this(mode,durationTicks,cooldownTicks,0);}
     public ActivationSpec {
         if(!Set.of("toggle","timed").contains(mode)||durationTicks<0||durationTicks>72000||cooldownTicks<0||cooldownTicks>72000
-            ||mode.equals("timed")&&durationTicks<1||mode.equals("toggle")&&durationTicks!=0)
+            ||mode.equals("timed")&&durationTicks<1||mode.equals("toggle")&&durationTicks!=0
+            ||jawrBloodCost<0||jawrBloodCost>1_000_000||jawrBloodCost>0&&!mode.equals("timed"))
             throw new IllegalArgumentException("Invalid activation spec");
     }
     public static ActivationSpec read(JsonObject skill){
         if(!skill.has("activation"))return null;
         var j=skill.getAsJsonObject("activation");
-        for(var key:j.keySet())if(!Set.of("mode","duration_ticks","cooldown_ticks").contains(key))
+        for(var key:j.keySet())if(!Set.of("mode","duration_ticks","cooldown_ticks","jawr_blood_cost").contains(key))
             throw new IllegalArgumentException("Unsupported activation field "+key);
         return new ActivationSpec(j.get("mode").getAsString(),j.has("duration_ticks")?j.get("duration_ticks").getAsInt():0,
-            j.has("cooldown_ticks")?j.get("cooldown_ticks").getAsInt():0);
+            j.has("cooldown_ticks")?j.get("cooldown_ticks").getAsInt():0,
+            j.has("jawr_blood_cost")?j.get("jawr_blood_cost").getAsBigDecimal().intValueExact():0);
     }
     public record State(long until,long ready){
         public State {if(until<0||ready<0)throw new IllegalArgumentException("Invalid activation state");}
