@@ -15,7 +15,7 @@
   "tmm_economy.mapper.ars_source": "TMM Ars Source Mapper",
   "tmm_economy.mapper.ars_source.tooltip": "Map imbuement and apparatus Source costs.",
   "tmm_economy.mapper.draconic_fusion": "TMM Draconic Fusion Mapper",
-  "tmm_economy.mapper.draconic_fusion.tooltip": "Map nominal FE and consumed fusion inputs.",
+  "tmm_economy.mapper.draconic_fusion.tooltip": "Map nominal OP and consumed fusion inputs.",
   "tmm_economy.mapper.neovitae_alchemy": "TMM Neo Vitae Alchemy Mapper",
   "tmm_economy.mapper.neovitae_alchemy.tooltip": "Map ordinary Tabula Vitae recipes and EV.",
   "tmm_economy.mapper.neovitae_industry": "TMM Neo Vitae Industry Mapper",
