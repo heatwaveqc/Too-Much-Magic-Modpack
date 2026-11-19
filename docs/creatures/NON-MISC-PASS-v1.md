@@ -9,3 +9,15 @@ Source: immutable v0 reconciliation 7a9b2b19c7f6c91f1e1c88a36001ad2825e10b03. Th
 - No player-summon reward changes, blood capacities, spirit/essence tables, AI or consumer tags generated. Modded MISC remains separate. V1 is not an approval to activate gameplay.
 
 A: exact IDs checked against v0, duplicate rule IDs rejected, full vanilla coverage asserted, CSV round trip and committed readback (950 data rows). Earlier validation caught an invalid Goety name and an omitted small fireball before any write; both corrected. B/C: no tests run, no build or deployment authorized. Next: resolve identity queue, confirm named proposals against exact source and reconcile current resolved tags before consumer policy proposals.
+
+## Owner rulings — 2026-11-18 (supersede earlier open decisions)
+
+| Entity | Hunter family | Non-Hunter category |
+| --- | --- | --- |
+| Witch | Illager | — |
+| Shulker | Void | — |
+| Villager | — | Villager |
+| Wandering Trader | — | Villager |
+| Iron Golem | Construct | Villager |
+
+Illager includes witches on raid-faction grounds; this does not assert native biological Illager status. Shulker is not a vanilla arthropod (https://minecraft.wiki/w/Arthropod and historical captured tags). Villager is a distinct non-Hunter category in the separate CSV column non_hunter_categories. Iron Golem retains its existing hunt exclusion. The five changed rows have owner-approved memberships only, no reward/ownership/mechanics changes. Other village-associated mobs remain unchanged pending review. All 82 vanilla mobs now have at least one proposed or approved category; 80 have Hunter-family membership, two are Villager-only. Other proposals remain review-only.
