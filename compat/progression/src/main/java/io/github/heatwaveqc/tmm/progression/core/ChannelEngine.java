@@ -86,6 +86,8 @@ public final class ChannelEngine {
         if(wallet==null) wallet=Wallet.initial(channel);
         if(wallet.recentTransactions().contains(tx)) return ledger;
         boolean first=firstKey!=null && !wallet.firstCompletions().contains(firstKey);
+        // A first-only milestone has no repeat payment and must not reach positive-only arithmetic.
+        if(firstKey!=null && !first && repeatBase==0) return ledger;
         var award=MxpMath.apply(new MxpMath.Counter(wallet.magicLevels(),wallet.magicProgress()),
                 first?firstBase:repeatBase,first?firstFixed:repeatFixed,channel.growth());
         if(award.effectiveXP()<=0) return ledger;
