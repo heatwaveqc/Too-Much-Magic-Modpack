@@ -33,6 +33,17 @@ public final class BossRewardPolicy {
             default -> null;
         };
     }
+    public static String foremanKey(boolean foreman) {
+        return foreman?"neovitae:foreman":null;
+    }
+    public static String nullServantKey(int augment) {
+        return switch(augment) {
+            case 1 -> "voidscape:null_servant/titanite";
+            case 2 -> "voidscape:null_servant/ichor";
+            case 3 -> "voidscape:null_servant/astral";
+            default -> null;
+        };
+    }
     public static Set<UUID> recent(Map<UUID,Long> hits,long now,int window,UUID finalBlow) {
         var result=new LinkedHashSet<UUID>();
         hits.forEach((id,tick)->{if(tick<=now&&now-tick<=window)result.add(id);});

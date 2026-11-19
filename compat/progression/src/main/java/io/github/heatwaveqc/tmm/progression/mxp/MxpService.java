@@ -69,6 +69,10 @@ public final class MxpService {
         double repeat=configured==null?MxpProgressionConfig.BOSS_REPEAT.get():configured.repeat();
         return award(player,tx,"boss:"+id,FIRST_BOSS_MXP,repeat,true,configured!=null&&configured.repeatFixed());
     }
+    /** Native fight-manager completion only; first fixed 1000, subsequent fixed 100. */
+    public static AwardStatus chaosVictory(ServerPlayer player,String tx){
+        return award(player,tx,"boss:draconicevolution:draconic_guardian",FIRST_BOSS_MXP,100,true,true);
+    }
     /** Native dragon advancement only; persistent first key, explicitly zero repeat. */
     public static AwardStatus dragonAdvancement(ServerPlayer player,String advancementId){
         String key=io.github.heatwaveqc.tmm.progression.foundation.BossRewardPolicy.dragonAdvancementKey(advancementId);

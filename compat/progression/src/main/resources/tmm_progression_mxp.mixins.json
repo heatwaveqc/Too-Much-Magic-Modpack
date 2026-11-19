@@ -110,7 +110,10 @@
     "GoetyRitualAltarMixin",
     "GoetyRitualItemMixin",
     "GoetyRitualSummonMixin",
-    "GoetyRitualConvertMixin"
+    "GoetyRitualConvertMixin",
+    "KnightPhantomVictoryMixin",
+    "ChaosGuardianVictoryMixin",
+    "WhiteArenaVictoryMixin"
   ],
   "injectors": {
     "defaultRequire": 0

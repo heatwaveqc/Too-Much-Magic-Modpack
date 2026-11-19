@@ -69,6 +69,9 @@ public final class HunterExperience {
             &&PathRegistry.eligible(player,spec.earningPath())));
     }
     private static boolean chosenSpecialtyMatches(ServerPlayer player,LivingEntity target,HunterXpPolicy policy) {
+        return chosenSpecialtyMatches(player,selector->Selectors.entity(selector,target),policy);
+    }
+    private static boolean chosenSpecialtyMatches(ServerPlayer player,java.util.function.Predicate<String> matches,HunterXpPolicy policy) {
         Definition.Path path=PathRegistry.get(policy.specialtyPath());
         if(path==null||!PathRegistry.eligible(player,path.id()))return false;
         var state=ProgressionApi.track(player,path.id());
@@ -77,7 +80,7 @@ public final class HunterExperience {
                 || !policy.specialtyGroup().equals(skill.choiceGroup())) continue;
             for(int i=0;i<skill.effects().size();i++){
                 Definition.Effect effect=skill.effects().get(i);
-                if (PathRegistry.effectEligible(player,path.id(),skill.id(),i) && "hunter_specialty".equals(effect.type()) && Selectors.entity(effect.selector(),target))
+                if (PathRegistry.effectEligible(player,path.id(),skill.id(),i) && "hunter_specialty".equals(effect.type()) && matches.test(effect.selector()))
                     return true; // double at most once, even for a creature with multiple lineage tags
             }
         }
@@ -138,6 +141,27 @@ public final class HunterExperience {
             String path=PathRegistry.economy(system).earningPath();if(!path.isEmpty())credited.add(path);
         }
         return java.util.Set.copyOf(credited);
+    }
+    /** Trusted native White arena victory receipt; exactly one aggregate reward per eligible winner. */
+    public static void cosmicCrystalArenaVictory(ServerPlayer player,double aggregateMaxHealth,String tx){
+        if(!Double.isFinite(aggregateMaxHealth)||aggregateMaxHealth<=0||tx==null||!tx.startsWith("boss:cosmic_crystal:")
+            ||player instanceof net.neoforged.neoforge.common.util.FakePlayer||player.isCreative()||player.isSpectator()
+            ||!player.server.isSameThread()||player.server.getPlayerList().getPlayer(player.getUUID())!=player)return;
+        ResourceLocation id=ResourceLocation.parse("the_bumblezone:cosmic_crystal_entity");
+        var type=BuiltInRegistries.ENTITY_TYPE.get(id);
+        if(!id.equals(BuiltInRegistries.ENTITY_TYPE.getKey(type)))return;
+        long now=player.server.overworld().getGameTime();
+        if(awardedKills.size()>8192)awardedKills.entrySet().removeIf(entry->entry.getValue()>now||now-entry.getValue()>24000);
+        for(var entry:PathRegistry.computedXp().entrySet()){
+            String system=entry.getKey();var policy=entry.getValue();
+            if(!HUNTER.equals(policy.specialtyPath())||!permitted(player,system))continue;
+            String claim=system+"|"+tx+"|"+player.getUUID();
+            if(awardedKills.containsKey(claim))continue;
+            boolean specialty=chosenSpecialtyMatches(player,selector->selector.isEmpty()||selector.equals("*")||
+                (selector.startsWith("#")?type.is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(selector.substring(1)))):id.toString().equals(selector)),policy);
+            long xp=HunterXpMath.killXp(aggregateMaxHealth,policy.healthDivisor(),policy.specialtyMultiplier(),policy.minKillXp(),specialty);
+            if(xp>0&&ProgressionApi.awardExperience(player,system,xp))awardedKills.put(claim,now);
+        }
     }
     public static boolean allowsMilestone(String path,java.util.Set<String> credited){
         boolean restricted=PathRegistry.computedXp().keySet().stream().anyMatch(id->path.equals(PathRegistry.economy(id).earningPath()));
