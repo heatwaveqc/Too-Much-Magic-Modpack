@@ -13,7 +13,8 @@
     "consumption": "Separate native food properties, custom use, placed feast, drink, ingredient-only, species-only; unknown until inspected.",
     "diet_overrides": "Source observation or policy review, not an active allowance. Provider/state rules distinct.",
     "charred": "Second-stage intentionally charred food preparation; not ordinary cooked food, not charged coal or soup, not a blanket allowance. Runtime tag tmm:food/charred lists only four native outputs.",
-    "recipe_evidence": "Recipe evidence is advisory and item-ID scoped. No automatic transitive ingredient-trait inheritance, recipe origin tracking, item components or runtime variants. Mixed or ambiguous recipes retain a generic item classification; review only where a specific consumer decision is affected. Existing expressly designed Gilded recipe-gold policy remains separate, not a default taxonomy rule."
+    "recipe_evidence": "Recipe evidence is advisory and item-ID scoped. No automatic transitive ingredient-trait inheritance, recipe origin tracking, item components or runtime variants. Mixed or ambiguous recipes retain a generic item classification; review only where a specific consumer decision is affected. Owner simplifies Gilded to an explicit tag maintained from recipe evidence, not runtime recursive qualification. Progression owner must consume the tag when reconciling the existing design.",
+    "gilded_food": "Explicit item-ID tag #tmm:food/gilded: actual food with direct gold nugget/ingot/block ingredient in a crafting recipe, plus owner-approved golden apple/carrot variants. No general recursive inheritance, optional gold alternatives are review candidates only; same output always same tag membership. Require food confirmation before promoting other recipe outputs. No Progression activation."
   },
   "ingredient_equivalences": {
     "status": "narrow first-pass additive tag source; runtime unverified",
@@ -1190,11 +1191,13 @@
     },
     "minecraft:enchanted_golden_apple": {
       "traits": [
-        "fruit"
+        "fruit",
+        "gilded_food"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Owner approved Gilded Food tag 2026-11-19"
       ],
       "review": "source_candidate",
       "consumption": "unknown",
@@ -1215,11 +1218,13 @@
     },
     "minecraft:golden_apple": {
       "traits": [
-        "fruit"
+        "fruit",
+        "gilded_food"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Owner approved Gilded Food tag 2026-11-19"
       ],
       "review": "source_candidate",
       "consumption": "unknown",
@@ -1229,11 +1234,13 @@
     },
     "minecraft:golden_carrot": {
       "traits": [
+        "gilded_food",
         "vegetable"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Owner approved Gilded Food tag 2026-11-19"
       ],
       "review": "source_candidate",
       "consumption": "unknown",
@@ -3154,6 +3161,20 @@
         "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pastel:enchanted_golden_carrot": {
+      "traits": [
+        "gilded_food",
+        "magical_nourishment",
+        "vegetable"
+      ],
+      "evidence": [
+        "Pastel 1.21.1 PastelItems.java ENCHANTED_GOLDEN_CARROT registration; exact installed ID pending frozen census check",
+        "Owner approved Gilded Food tag 2026-11-19"
+      ],
+      "review": "source_confirmed_runtime_review",
       "consumption": "unknown",
       "diet_overrides": {}
     },

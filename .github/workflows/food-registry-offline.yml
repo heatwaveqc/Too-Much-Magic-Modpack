@@ -5,6 +5,7 @@ on:
     paths:
       - 'docs/food/**'
       - 'scripts/build_food_review.py'
+      - 'scripts/audit_gilded_foods.py'
       - 'tests/test_food_review.py'
       - 'kubejs/data/tmm/tags/item/food/**'
       - 'kubejs/data/cookingforblockheads/tags/item/**'
@@ -39,6 +40,7 @@ jobs:
           git show "$source_commit:docs/qa/surveys-2026-11-18/runtime-capture.json.gz" > "$RUNNER_TEMP/food-census/capture.gz"
           python scripts/build_food_review.py --items "$RUNNER_TEMP/food-census/items.csv" --capture "$RUNNER_TEMP/food-census/capture.gz" --output "$RUNNER_TEMP/food-review"
           cat "$RUNNER_TEMP/food-review/summary.json"
+          python scripts/audit_gilded_foods.py --capture "$RUNNER_TEMP/food-census/capture.gz" --review "$RUNNER_TEMP/food-review/food-review.jsonl" --output "$RUNNER_TEMP/food-review/gilded-audit.json"
       - uses: actions/upload-artifact@v4
         with:
           name: frozen-food-review
