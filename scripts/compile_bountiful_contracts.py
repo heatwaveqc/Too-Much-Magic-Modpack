@@ -28,7 +28,8 @@ def compile_candidate(catalog, audit, review):
     approved = review["approved_entries"]
     if not approved:
         raise ValueError("no approved entries")
-    families = {x["id"]:x for x in catalog["general"] + catalog["schools"]}
+    families = {x["id"]:x for x in catalog["general"] + catalog["schools"]
+                if not x.get("status", "").startswith("held_")}
     if set(approved) - set(families):
         raise ValueError("unknown or held decree")
     output = {}

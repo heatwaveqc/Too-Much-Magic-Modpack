@@ -118,13 +118,16 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "aquamarine",
-        "ordinary starlight crafting supplies"
+        "blank constellation paper (high-end)"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [
-        "astralsorcery:aquamarine"
-      ]
+        "astralsorcery:constellation_paper"
+      ],
+      "premium_reward_candidates": [
+        "astralsorcery:constellation_paper"
+      ],
+      "reward_notes": "Aquamarine is not a payout. Only blank default paper, not a chosen/known constellation; preserve native discovery eligibility. Other midgame payouts remain open."
     },
     {
       "id": "botania_revived",
@@ -138,11 +141,33 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "petals",
-        "ordinary fertilizer"
+        "crafted runes",
+        "Black Lotus (premium)"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [
+        "botania:rune_air",
+        "botania:rune_water",
+        "botania:rune_fire",
+        "botania:rune_earth",
+        "botania:rune_mana",
+        "botania:rune_spring",
+        "botania:rune_summer",
+        "botania:rune_autumn",
+        "botania:rune_winter",
+        "botania:rune_lust",
+        "botania:rune_gluttony",
+        "botania:rune_greed",
+        "botania:rune_sloth",
+        "botania:rune_wrath",
+        "botania:rune_envy",
+        "botania:rune_pride",
+        "botania:black_lotus"
+      ],
+      "premium_reward_candidates": [
+        "botania:black_lotus"
+      ],
+      "reward_notes": "No petals or fertilizer payouts. Seasonal/sin runes may need higher contract difficulty; no Gaia Spirits."
     },
     {
       "id": "eidolon_repraised",
@@ -207,13 +232,13 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "dark gems",
-        "ordinary blood-processing supplies"
+        "coagulated blood (likely EvilCraft Condensed Blood; exact intended product to confirm)"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [
-        "evilcraft:dark_gem"
-      ]
+        "evilcraft:condensed_blood"
+      ],
+      "reward_notes": "Dark gems are not rewards. Pinned-source localization identifies Condensed Blood and Hardened Blood as distinct items. Condensed Blood is chest loot; do not assume equivalence to canonical fluid or hardened blood."
     },
     {
       "id": "feywild",
@@ -298,12 +323,25 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "herbs",
-        "wax",
-        "basic potion ingredients"
+        "unprocessed base herbs",
+        "saplings"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [
+        "hexerei:belladonna_berries",
+        "hexerei:belladonna_flowers",
+        "hexerei:mandrake_flowers",
+        "hexerei:mandrake_root",
+        "hexerei:mugwort_flowers",
+        "hexerei:mugwort_leaves",
+        "hexerei:sage",
+        "hexerei:yellow_dock_flowers",
+        "hexerei:yellow_dock_leaves",
+        "hexerei:mahogany_sapling",
+        "hexerei:willow_sapling",
+        "hexerei:witch_hazel_sapling"
+      ],
+      "reward_notes": "No finished potion, wax, dried herb or broom rewards. Source snapshot predates exact pin; verify registered IDs."
     },
     {
       "id": "irons_spells",
@@ -388,12 +426,33 @@
         "minecraft:gold_ingot",
         "minecraft:bone_meal"
       ],
-      "status": "candidate_pending_registry_and_balance",
-      "reward_themes": [
-        "ordinary chalk and ritual materials"
-      ],
+      "status": "held_pending_occultism_progression_audit",
+      "reward_themes": [],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "audit_candidates": [
+        {
+          "id": "occultism:purified_ink",
+          "assessment": "routine spirit-fire prep; low value, not a compelling premium payout"
+        },
+        {
+          "id": "occultism:spirit_attuned_gem",
+          "assessment": "diamond spirit-fire conversion; potential ordinary preparation payout"
+        },
+        {
+          "id": "occultism:iesnium_ingot",
+          "assessment": "premium candidate; one ingot already owner-approved for wandering trader (B20), audit repeat supply and recipe gates before bounty use"
+        },
+        {
+          "id": "occultism:afrit_essence",
+          "assessment": "hold: unbound Afrit drop/tier unlock and storage upgrades"
+        },
+        {
+          "id": "occultism:chalk_gold",
+          "assessment": "hold: specific pentacle access; audit colored chalk progression"
+        }
+      ],
+      "reward_notes": "No default chalk pool. Audit spirit tiers, gates, storage and Ritual of Equivalent Exchange before enabling; no bound workers, miners, bound books or tier-boss drops as routine rewards."
     },
     {
       "id": "pastel",
@@ -486,25 +545,6 @@
       "reward_item_candidates": []
     },
     {
-      "id": "theurgy",
-      "mod": "theurgy",
-      "name": "Theurgy",
-      "items": [
-        "theurgy:sal_ammoniac_crystal",
-        "minecraft:glass",
-        "minecraft:clay_ball"
-      ],
-      "status": "candidate_pending_registry_and_balance",
-      "reward_themes": [
-        "sal ammoniac crystal",
-        "basic reagents"
-      ],
-      "kill_candidates": [],
-      "reward_item_candidates": [
-        "theurgy:sal_ammoniac_crystal"
-      ]
-    },
-    {
       "id": "totemic",
       "mod": "totemic",
       "name": "Totemic",
@@ -550,6 +590,10 @@
     {
       "id": "botania",
       "reason": "superseded by Botania Revived"
+    },
+    {
+      "id": "theurgy",
+      "reason": "Owner explicitly excluded from Bountiful decrees 2026-11-19; Theurgy mod itself remains installed."
     }
   ],
   "transformations": [

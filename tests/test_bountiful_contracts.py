@@ -34,6 +34,11 @@ class TestBountifulCompiler(unittest.TestCase):
         r=copy.deepcopy(R)
         r["approved_entries"]["vampire"]=r["approved_entries"].pop("farming")
         with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+    def test_held_occultism_and_removed_theurgy(self):
+        for key in ("occultism", "theurgy"):
+            r=copy.deepcopy(R)
+            r["approved_entries"][key]=r["approved_entries"].pop("farming")
+            with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
     def test_no_unapproved_settlement(self):
         r=copy.deepcopy(R)
         r["settlement"]="unknown"
