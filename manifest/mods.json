@@ -562,9 +562,10 @@
       "version": "comforts-neoforge-9.0.5+1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved 2026-11-14 for NEXT FULL INTEGRATION BUILD: portable sleeping bags (retain home respawn) and hammocks (advance day to night). Exact NeoForge 1.21.1 9.0.5 release exists; verify dependencies, resolve hash-pinned packwiz mod file, include on both client and server, smoke, and exercise daytime hammock/sleeping bag spawn behavior before marking enabled. Desired != installed."
+      "note": "Restore exact prior published pin; new QA inventory must verify actual downloaded bytes.",
+      "packwiz_slug": "comforts"
     },
     {
       "id": "common-network",
@@ -2857,6 +2858,63 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "kambrik"
+    },
+    {
+      "id": "colorful-hearts",
+      "name": "Colorful Hearts",
+      "category": "qol",
+      "desired": true,
+      "version": "10.5.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/colorful-hearts/version/us0gze50",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "colorful-hearts",
+      "note": "Exact pinned release for standalone Monk/Hunter test; client QA pending."
+    },
+    {
+      "id": "theurgy-kubejs",
+      "name": "Theurgy KubeJS",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "1.21.1-neoforge-1.6.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/theurgy-kubejs/files/8838118",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "theurgy-kubejs",
+      "candidate_file_id": 8838118,
+      "note": "Owner-approved 2026-11-17 (#324): next deployment intake. Official Theurgy/KubeJS integration for custom alchemical sulfurs and recipes; verify exact dependency ranges against Theurgy 1.79.0 and KubeJS 2101.7.2-build.381, provider hash and Packwiz pin before enabling. Target all regular material mob drops, not gear/armor or secondary magical harvest products such as Malum spirit items; audit item identities, rarity and existing recipes before generating. No full build authorized."
+    },
+    {
+      "id": "twilight-forest-final-boss-remake",
+      "name": "Twilight Forest Final Boss (remake)",
+      "category": "adventure",
+      "desired": true,
+      "version": "2.1.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/twilight-forest-final-boss-remake/files/8768438",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1267766,
+      "candidate_file_id": 8768438,
+      "packwiz_slug": "twilight-forest-final-boss-remake",
+      "note": "Owner-approved #294 and reconfirmed 2026-11-17 #236; next deployment intake, Minecraft 1.21.1 NeoForge + Twilight Forest 4.8.3345. Verify exact provider JAR hash, dependency closure and packwiz pin before enabling; both-side runtime expected, not verified. Inspect exact installed JAR item registry, loot tables and boss death/reward code for renewable actual Castle Keeper drop; use verified drop ID in Philosopher's Stone Primordial Powers closed alternative list (#236), not an assumed trophy name or registry ID. Native Final Castle boss supersedes custom Killer Rabbit replacement; keep optional Chaos Bunny separate. No smoke or package authorized."
+    },
+    {
+      "id": "occult-cooking",
+      "name": "Occult Cooking",
+      "category": "magic_addon",
+      "desired": true,
+      "version": "1.0.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/occult-cooking/files/8545035",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "occult-cooking",
+      "curseforge_project_id": 1631139,
+      "candidate_file_id": 8545035,
+      "note": "Owner-approved next QA target; exact artifact/dependency audit pending (#368)."
     }
   ],
   "excluded": [

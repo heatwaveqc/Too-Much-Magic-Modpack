@@ -1669,6 +1669,16 @@ hash = "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2"
 metafile = true
 
 [[files]]
+file = "mods/colorful-hearts.pw.toml"
+hash = "3f6e74711a0c2677548ec3a5ef36a3fbf79b5a9f2b406aab73b1ca678fc518f9"
+metafile = true
+
+[[files]]
+file = "mods/comforts.pw.toml"
+hash = "36f2f6e74b7dbeccb504572d47006582207544fa234a095093b97adfc7ecd5ac"
+metafile = true
+
+[[files]]
 file = "mods/common-network.pw.toml"
 hash = "e5052ab66811e9217d662d712781796c72f7105fbbc81e1de3469ccf6178d5a0"
 metafile = true
