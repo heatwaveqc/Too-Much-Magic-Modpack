@@ -51,3 +51,6 @@ Quest tasks must identify whether they detect an item, configured endpoint, tran
 
 
 [Portable Relay lifecycle](ars-controle-pinned-portable-relay.md) now covers binding/blacklist, item and map caches, moving context/inventory and actual Source/pause/toggle/range-query limits. Two device routes and final control/pilot review remain; researching.
+
+
+[Scroll Holder and Warping Prism binary audit](ars-controle-pinned-portals-prism.md) now traces frame/inventory/open-close/Source ordering, projectile cost/collision/dimension/tickets and installed CC peripherals. Source quote differs from entity target branch (returns before debit); partial existing portals affect opening charge and destination update. All major device bodies covered; remaining final control/walkthrough/pilot consolidation stays explicit.

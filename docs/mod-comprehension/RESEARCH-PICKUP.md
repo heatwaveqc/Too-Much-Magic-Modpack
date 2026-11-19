@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Controle Holder/Prism
+
+- Added ars-controle-pinned-portals-prism.md: last2device source routes, actual frame/inventory/openclose/Source and projectile/target/dimension/ticket/collision/cost, installed CC peripherals. Holderdefault1000Source; existingportal makesneedsSourcefalse and oldcellsnotretargeted; Prism defaultmin1024/perblock.03125/dim2000/load600ticks. EntitybranchreturnsBEFORESourcepayment; blockbranchmoves/ticketsbeforepayment/cancel. Formula sqrt(d²-m²), not distance-minus-threshold. Source findings not approved exploits/fixes.7complete35researching unchanged.
+- **Next finish Controle**: Remote clearUI/reset path (PacketClearRemote outbound callsite/native radial key), then consolidate full Notebook/acquisition/control/operation/upgrade(optionalnoextratier)/failure matrix and actual3pilot IDs/tasks/rewards; statusreview with knownbrokenboundariesexplicit. All97classes already controle-fresh,15recipes/all9glyphs/6devices and4companions now covered: glyphs-sensor,remote-linkage,portable-relay,portals-prism. Do NOT re-inventory. Then Ocultas/Elemental/Elemancy/Additions, combinedArsreview,othermajors.
+- No blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Sameexternalhashpinnedartifact,CCpinnedoptional noted. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Controle Portable Relay
 
 - Added ars-controle-pinned-portable-relay.md: late acquisition/nativeguide,3blockedclasses/5taggedtablets, association/getBrazier/itemcache/60tickmapping and movingworld/pos/inventory/rangequeries. Directitemtick bypasses native Source/pause gates; shared cachedRitual field, namechange newUUID, sameBrazier clear-before-toggle and noncancellable injection cancellation are acceptance boundaries. No runtime approval.7complete35researching unchanged.

@@ -120,3 +120,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Controle Remote/Linkage binary companion added: order-specific dispatch, loaded crossdimension lookup, capability/context/class/blockblacklist/cache and outputredstone contracts. PortableRelay/ScrollHolder/WarpingPrism and finalcontrolreview remain;7complete35researchingunchanged. No runtime tests.
 
 - 2026-11-19 — Controle Portable Relay lifecycle, blacklist, cache, moving context and actual Source/pause/toggle/range-query limitations documented. ScrollHolder/WarpingPrism and final review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle Holder/Prism binary companion covers portal frame/inventory/Source and projectile/ticket/cost/CC contracts. Source debit differences and cancellation/partial-frame limits explicit. Final Remote control and whole-addon walkthrough/pilot review remain;7complete35researching unchanged. No runtime tests.
