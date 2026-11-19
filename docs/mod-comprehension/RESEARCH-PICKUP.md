@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Controle Portable Relay
+
+- Added ars-controle-pinned-portable-relay.md: late acquisition/nativeguide,3blockedclasses/5taggedtablets, association/getBrazier/itemcache/60tickmapping and movingworld/pos/inventory/rangequeries. Directitemtick bypasses native Source/pause gates; shared cachedRitual field, namechange newUUID, sameBrazier clear-before-toggle and noncancellable injection cancellation are acceptance boundaries. No runtime approval.7complete35researching unchanged.
+- **Next Controle2devices**: ScrollHolderTile/Block portalframe/source/inventory/CC; WarpingSpellPrismTile projectile/crossdim/CC. Then Remote clearUI/reset and full walkthrough/pilot/status review. All97classes controle-fresh, exactartifact outsideGit; do not re-audit glyph/sensor/Remote/Linkage/Portable. Then Ocultas/Elemental/Elemancy/Additions,parentreview,othermajors.
+- No blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Gitlogactualpushedhead; priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Controle Remote/Linkage
 
 - Addedars-controle-pinned-remote-linkage.md coveringmainhand/sneaktarget/radialmode/lock/cornerdispatch and entity/blockorderdifference, clickedBreakEventvsremotepolicy, capabilityclass+blockblacklists, pass-throughcontextcache/crossdimensionlookup and redstoneoutput. Oldblanketcrossdimensionrejectioncorrected. NoSource/manadebitinthesemethods, notendpointfreeoperation. ClearingpacketknownbutexactUIgesturestillopen; don'tinventresetkey.7complete35researchingunchanged.

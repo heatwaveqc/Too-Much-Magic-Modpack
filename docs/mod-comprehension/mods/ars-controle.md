@@ -48,3 +48,6 @@ Quest tasks must identify whether they detect an item, configured endpoint, tran
 
 
 [Remote and Scryer's Linkage binary companion](ars-controle-pinned-remote-linkage.md) now traces mainhand/sneak/radial/lock/corner controls, perendpoint dispatch, event/credit limits, capability/context/cache/blacklist and redstone proxy contracts. Source supports crossdimension lookup; operation while unloaded and claims aren't promised. Three device branches and final UI/pilot review remain.
+
+
+[Portable Relay lifecycle](ars-controle-pinned-portable-relay.md) now covers binding/blacklist, item and map caches, moving context/inventory and actual Source/pause/toggle/range-query limits. Two device routes and final control/pilot review remain; researching.

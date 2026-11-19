@@ -387,3 +387,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ars Controle exact1.6.16 binary nativeguide/glyph/sensor companion added: all15recipes, adaptive grammar, height/RNG/delay boundaries and unclamped sensor comparator formula. Five other device operation routes remain;7/42complete35researching unchanged. No runtime tests.
 
 - 2026-11-19 — Controle Remote/Linkage binary companion added: order-specific dispatch, loaded crossdimension lookup, capability/context/class/blockblacklist/cache and outputredstone contracts. PortableRelay/ScrollHolder/WarpingPrism and finalcontrolreview remain;7complete35researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Controle Portable Relay lifecycle, blacklist, cache, moving context and actual Source/pause/toggle/range-query limitations documented. ScrollHolder/WarpingPrism and final review remain;7complete35researching unchanged. No runtime tests.
