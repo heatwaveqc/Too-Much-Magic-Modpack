@@ -47,7 +47,7 @@ def inspect(jar, key):
         for n in sorted(z.namelist()):
             if n.endswith(".json") and "/damage_type/" in n and "/tags/" not in n:
                 print("DAMAGE_ID", n, flush=True)
-            if key == "dragon" and n.endswith(".json") and "/dragon_ability/" in n and "breath" in n.lower():
+            if key == "dragon" and n.endswith(".json") and "/dragon_ability/" in n and any(x in n.lower() for x in ("breath", "bite", "claw", "fang", "strike")):
                 print("BREATH_DATA", n, z.read(n).decode("utf-8")[:7000].replace("\n", " "))
             if not n.endswith(".class") or n.startswith("META-INF/"):
                 continue
@@ -56,7 +56,7 @@ def inspect(jar, key):
             if key == "dragon":
                 chosen = stem in DS_FIXED or (b"swapStart" in raw and b"ClawInventoryData" in raw) or ("breath" in stem.lower() and b"DamageSource" in raw)
             else:
-                chosen = stem in JAWR_FIXED or ("ability" in n.lower() and any(t in n.lower() for t in ("vampire", "werewolf", "bite", "claw"))) or ("mixin" in n.lower() and b"werewolf" in raw.lower() and (b"hurt" in raw or b"attack" in raw or b"harvest" in raw))
+                chosen = stem in JAWR_FIXED or ("ability" in n.lower() and any(t in n.lower() for t in ("vampire", "werewolf", "bite", "claw"))) or ("mixin" in n.lower() and (b"werewolf" in raw.lower() or b"TransformationHandler" in raw) and any(t in raw.lower() for t in (b"hurt", b"attack", b"harvest", b"destroy", b"dig", b"mining", b"correcttool")))
             if chosen:
                 cls = n[:-6].replace("/", ".")
                 classes.append(cls)

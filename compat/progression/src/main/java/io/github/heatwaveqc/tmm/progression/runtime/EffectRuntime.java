@@ -142,7 +142,7 @@ public final class EffectRuntime {
             for (Active a : active(attacker)) {
                 Definition.Effect fx = a.effect();
                 if (fx.type().equals("melee_bonus")
-                    && io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(attacker,event.getSource(),fx)
+                    && io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(attacker,event.getEntity(),event.getSource(),fx)
                     && sourceMatches(fx.damageTag(),event.getSource())
                     && Selectors.entity(fx.selector(),event.getEntity())
                     && Selectors.item(fx.weapon(),attacker.getMainHandItem())) {
@@ -162,7 +162,7 @@ public final class EffectRuntime {
                 Definition.Effect fx = a.effect();
                 if (!fx.type().equals("damage_bonus")) continue;
                 String delivery = fx.params().getOrDefault("delivery","melee");
-                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(owner,event.getSource(),fx) ||
+                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(owner,event.getEntity(),event.getSource(),fx) ||
                     !sourceMatches(fx.damageTag(),event.getSource())) continue;
                 if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.special(fx)&&
                     !(melee && (delivery.equals("melee") || delivery.equals("any")) ||

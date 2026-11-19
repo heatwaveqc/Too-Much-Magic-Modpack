@@ -67,7 +67,7 @@ public final class NativeFormConditions {
             if(dragon!=PASS)return dragon;
             Object data=MxpReflect.staticCall("by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider","getData",p);
             Object value=MxpReflect.call(data,"getGrowth");
-            if(!(value instanceof Number n)||!Double.isFinite(n.doubleValue())||n.doubleValue()<0)return UNAVAILABLE;
+            if(!(value instanceof Double n)||!Double.isFinite(n)||n<0)return UNAVAILABLE;
             return comparison.test(n.doubleValue(),threshold)?PASS:FAIL;
         };
     }

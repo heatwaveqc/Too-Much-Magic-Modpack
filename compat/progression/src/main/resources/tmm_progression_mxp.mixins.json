@@ -35,6 +35,8 @@
     "MahouPracticePaymentMixin",
     "JawrVampireEffectsMixin",
     "JawrFeedingMixin",
+    "JawrWolfBiteMixin",
+    "JawrVampireBiteMixin",
     "JawrBatDurationMixin",
     "GoetyLichEnergyMixin",
     "GoetyArcaCapacityMixin",
