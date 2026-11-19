@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "batch": "2026-11-19-c",
+  "branches": [
+    {
+      "name": "design/universal-mxp-progression-registry",
+      "sha": "1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049",
+      "reason": "Baseline-owned through #369. Full 18-file standalone research harness imported, contract CI passed. Do not load pilot mod separately; retain whole original design/audit history and shared-engine parity obligations. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/b19-required-mob-gateways-trader",
+      "sha": "978c9ede228cc5da2678895c515fc6de28760101",
+      "reason": "Already baseline-owned selected B19 17 gates, 17 recipes, generator/validator/manifest through Economy #350 including five parchment rewards. Historical locale reconciled and exact generator verified by #369. Preserve original complete donor and no stale lockfile/workflow replay.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/145",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/350",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/978c9ede228cc5da2678895c515fc6de28760101",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/manifest/integration-sources.json"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/b20-wandering-trader-guaranteed-magic-stock",
+      "sha": "7bc547690a753cea70efc35b92c2c95ebe80207b",
+      "reason": "Baseline-owned through #369. Exact frozen B20 script, stock manifest and validator baseline-owned; existing prices and exclusions retained, real trader and armed #351 coexistence live QA pending. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/7bc547690a753cea70efc35b92c2c95ebe80207b",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/149",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/caerbannog-gateways-prototype",
+      "sha": "565ad02a6e397d03cf85fff0e23b2de966e4a57b",
+      "reason": "Baseline-owned through #369. Exact experimental two-gateway assets/scripts, shared additive locale and trophy retained; final boss parity, control, visuals and gameplay remain open, no finished boss claim. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/565ad02a6e397d03cf85fff0e23b2de966e4a57b",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/68",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/dragon-diets-food-compat",
+      "sha": "3423131228f0645273b8b895961a46177017948b",
+      "reason": "Baseline-owned through #369. Selected two donor runtime paths already byte-identical to integration; transfer manifest ownership only, preserve newer food #343 and kitchen #368 workstreams. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/3423131228f0645273b8b895961a46177017948b",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/46",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/mahou-catalyst-exchange-kubejs",
+      "sha": "f8a1acc1226ba213b0bccf20499627fb7dc444db",
+      "reason": "Baseline-owned through #369. Selected exact pinned bytecode audit retained; previous global ItemEntity/LevelTick adapter deliberately obsolete, native Transformations successor and acceptance retained. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/f8a1acc1226ba213b0bccf20499627fb7dc444db",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/41",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/neo-vitae-canonical-dusts",
+      "sha": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c",
+      "reason": "Baseline-owned through #369. Selected exact configs, material/Mahou blank-circle scripts, Almost Unified pin and validators baseline-owned; existing current cleanup and silver priorities preserved, no removed TeamLapen restore. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/f4fc7544e6e44284d576ccdc50533e20fd1aa86c",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/36",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/projecte-boss-trophy-stone-and-emc-audit",
+      "sha": "348d0b26e67fb6238a6fb6e94c9699d34cb83727",
+      "reason": "Economy #350 supersedes old Stone grid and trophy-tag policy with native twelve-offering Ritual of Equivalent Exchange; independent exact three-file EMC audit conserved and validated by #369. Preserve archived original whole head; no obsolete script revival, live ritual/coverage acceptance still pending.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/350",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/348d0b26e67fb6238a6fb6e94c9699d34cb83727",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/manifest/integration-sources.json"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/qol-ftb-essentials-sethome-rtp",
+      "sha": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85",
+      "reason": "Baseline-owned through #369. Exact approved FTB Essentials pin/config/defaultconfig and resolver baseline-owned; non-op/permission/gameplay QA retained. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/47516bc0afeb0c2ff9f16e7211a8e23d63f66c85",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/quest-content-evilcraft-first-pass",
+      "sha": "4d63166bae3176ca3322dc06aa6d6afc7129707d",
+      "reason": "Baseline-owned through #369. Nine draft quests preserved in manifest, historical review copied; source-only until compiler/client acceptance. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/4d63166bae3176ca3322dc06aa6d6afc7129707d",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/questshop-vanilla-ore-blocks",
+      "sha": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
+      "reason": "Baseline-owned through #369. Approved 18 vanilla ore offers and complete six-category catalog baseline-owned; no new values, live purchase QA retained. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/roots-kubejs-first-pickup-terra-poc",
+      "sha": "71253524c2ca73cc9873287e907fe43bdd7434bb",
+      "reason": "Baseline-owned through #369. All three exact legacy scripts archived inertly; shared Progression #347 retains staff imprint, Terra capacity/HUD parity review. Do not re-enable old stage-gated runtime hooks. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/71253524c2ca73cc9873287e907fe43bdd7434bb",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/8",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/starter-kit-akashic-improvable",
+      "sha": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7",
+      "reason": "Baseline-owned through #369. Exact once-only starter advancement and native book unlock retained, separate from FTB pouch claim; no duplicate historical first_log grant. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "fix/first-log-bundle-curio-quest-2026-11-15",
+      "sha": "305bef61b9581e6a5872f1ec56573aec9dc12941",
+      "reason": "Baseline-owned through #369. Exact item tag/entity assignment and locale imported, existing iconless slot and first-log FTB claim preserved. Never replay old quests or hidden advancement. Preserve exact original head before lease deletion.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/305bef61b9581e6a5872f1ec56573aec9dc12941",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/90",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/369",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/1afb7b418831f835e8e65683c2e16f5fbdba8af5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/frozen-donor-reference/intake.json",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/1afb7b418831f835e8e65683c2e16f5fbdba8af5/docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md"
+      ],
+      "archive_history": true
+    }
+  ]
+}
