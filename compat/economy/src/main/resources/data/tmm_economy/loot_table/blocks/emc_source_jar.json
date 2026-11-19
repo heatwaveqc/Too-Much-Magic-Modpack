@@ -12,7 +12,16 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tmm_economy:emc_source_jar"
+          "name": "tmm_economy:emc_source_jar",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "source": "block_entity",
+              "include": [
+                "ars_nouveau:block_fill_contents"
+              ]
+            }
+          ]
         }
       ],
       "conditions": [

@@ -39,5 +39,7 @@
   "tmm_economy.mapper.iron_scrolls": "TMM Iron Scroll Recipe Mapper",
   "tmm_economy.mapper.iron_scrolls.tooltip": "Derive scroll values for burning and template duplication, not knowledge production.",
   "block.tmm_economy.emc_catalyst": "EMC Catalyst",
-  "block.tmm_economy.emc_source_jar": "EMC Source Jar"
+  "block.tmm_economy.emc_source_jar": "EMC Source Jar",
+  "tmm_economy.processor.source_jar_guard": "TMM Filled Source Jar Guard",
+  "tmm_economy.processor.source_jar_guard.tooltip": "Keep portable Source contents from being duplicated or burned through EMC."
 }

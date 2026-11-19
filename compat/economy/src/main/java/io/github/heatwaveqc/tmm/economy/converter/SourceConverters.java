@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.economy.converter;
 
 import com.hollingsworth.arsnouveau.common.block.SourceJar;
 import com.hollingsworth.arsnouveau.common.block.tile.SourceJarTile;
+import com.hollingsworth.arsnouveau.common.items.data.BlockFillContents;
 import com.hollingsworth.arsnouveau.setup.registry.CapabilityRegistry;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
@@ -67,10 +68,10 @@ public final class SourceConverters {
         @Override public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
             super.setPlacedBy(level, pos, state, placer, stack);
             if (!level.isClientSide && level.getBlockEntity(pos) instanceof EmcJarTile tile) {
-                // A newly placed block always starts empty and belongs only to
-                // its actual placer, never to item/NBT-supplied ownership.
+                // Preserve the native jar's stored Source component, but the
+                // actual placer is always the new account owner.
                 tile.assignOwner(placer instanceof ServerPlayer player ? player.getUUID() : null);
-                tile.setSource(0);
+                tile.setSource(Math.clamp(BlockFillContents.get(stack), 0, tile.getMaxSource()));
             }
         }
         @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
