@@ -14,7 +14,7 @@ repositories { mavenCentral() }
 // Use the hash-verified installed mod directory supplied by the integration
 // writer, never download a moving version or redistribute upstream jars.
 def modsDir = providers.gradleProperty('tmmCompileModsDir')
-def exactJars = ['ProjectE-1.21.1-PE1.1.0.jar', 'Apotheosis-1.21.1-8.9.0.jar', 'Placebo-1.21.1-9.9.4.jar', 'Botania-Revived-1.21.1-2.0.2-NeoForge.jar']
+def exactJars = ['ProjectE-1.21.1-PE1.1.0.jar', 'Apotheosis-1.21.1-8.9.0.jar', 'Placebo-1.21.1-9.9.4.jar', 'Botania-Revived-1.21.1-2.0.2-NeoForge.jar', 'evilcraft-1.21.1-neoforge-1.2.100.jar']
 if (modsDir.isPresent()) {
     exactJars.each { name ->
         if (!file("${modsDir.get()}/${name}").isFile()) throw new GradleException("Missing pinned compile dependency: ${name}")

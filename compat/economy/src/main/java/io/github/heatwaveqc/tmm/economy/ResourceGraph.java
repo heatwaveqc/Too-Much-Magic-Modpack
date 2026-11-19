@@ -16,7 +16,7 @@ final class ResourceGraph {
     }
     void add(int outputCount, NormalizedSimpleStack output,
             Object2IntMap<NormalizedSimpleStack> consumed, ResourceAccounting.Cost cost) {
-        if (outputCount <= 0 || consumed.isEmpty()) throw new IllegalArgumentException("Invalid material recipe");
+        if (outputCount <= 0) throw new IllegalArgumentException("Invalid output count");
         var scaled = new Object2IntOpenHashMap<NormalizedSimpleStack>();
         for (var e : consumed.object2IntEntrySet()) {
             int amount = cost.scaleCount(e.getIntValue());

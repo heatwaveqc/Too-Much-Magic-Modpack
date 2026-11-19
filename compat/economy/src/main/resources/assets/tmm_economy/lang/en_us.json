@@ -8,5 +8,8 @@
   "tmm_economy.mapper.botania_mana": "TMM Botania Mana Mapper",
   "tmm_economy.mapper.approved_exclusions": "TMM Approved Exclusions",
   "tmm_economy.processor.vanilla_state": "TMM Vanilla State Guard",
-  "tmm_economy.processor.affixed_gear": "TMM Apotheosis Equipment Guard"
+  "tmm_economy.processor.affixed_gear": "TMM Apotheosis Equipment Guard",
+  "tmm_economy.mapper.evilcraft_blood": "TMM EvilCraft Blood Mapper",
+  "tmm_economy.mapper.capturing_eggs": "TMM Capturing Egg Mapper",
+  "tmm_economy.processor.capturing_items": "TMM Capturing Item Guard"
 }
