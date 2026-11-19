@@ -24,7 +24,12 @@
     "RootsTerraPaymentMixin",
     "EmberPersonalPaymentMixin",
     "EmberCuriosPaymentMixin",
-    "GoetySoulPaymentMixin"
+    "GoetySoulPaymentMixin",
+    "PrimalWandPaymentMixin",
+    "PrimalManaDebitMixin",
+    "EvilCraftBloodConsumeMixin",
+    "EvilCraftFleshPaymentMixin",
+    "EvilCraftMacePaymentMixin"
   ],
   "injectors": {
     "defaultRequire": 0

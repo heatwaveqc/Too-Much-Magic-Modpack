@@ -22,6 +22,7 @@ public final class MxpSourceConfig {
     public static final ModConfigSpec.DoubleValue ROOTS_TERRA_POOL;
     public static final ModConfigSpec.DoubleValue EMBERS_PORTABLE_POOL;
     public static final ModConfigSpec.DoubleValue GOETY_SOUL_POOL;
+    public static final ModConfigSpec.DoubleValue PRIMAL_CENTIMANA_POOL;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
@@ -56,6 +57,8 @@ public final class MxpSourceConfig {
             .defineInRange("embers_initial_jar",ResourceBaselines.EMBERS_FIRST_JAR,0.0,1.0e12);
         GOETY_SOUL_POOL=b.comment("Awaiting owner approval of fixed Soul Energy reference. 0 disables; proposed EMC-derived 500 Souls per 1000 base MXP.")
             .defineInRange("goety_soul_reference",0.0,0.0,1.0e12);
+        PRIMAL_CENTIMANA_POOL=b.comment("Awaiting approved fixed Primal reference. Native centimana units (100 per displayed mana). Proposed 50000 per 1000 MXP; 0 disables.")
+            .defineInRange("primal_centimana_reference",0.0,0.0,1.0e12);
         b.pop();
         SPEC = b.build();
     }
