@@ -513,7 +513,6 @@
         "mods/smart-keep-inventory.pw.toml",
         "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json",
         "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json",
-        "config/tyzs_skills/custom/skills/keepsake.json",
         "config/ftbquests/quests/chapters/intro.snbt",
         "config/ftbquests/quests/lang/en_us.snbt",
         "manifest/quest_content.json",
@@ -526,7 +525,7 @@
       "merged_from": "feature/newbie-mode-smartkeep-2026-11-16",
       "mode": "exact-mod-pinned-and-config-source-not-gameplay-tested",
       "integrated_into_baseline": true,
-      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending."
+      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending. Owner-approved unified cutover retires Tyz itself; disabled Safekept overlay no longer required. Native Smart Keep and graduation predicates remain unchanged."
     },
     {
       "name": "parchment-fragment-acquisition",
