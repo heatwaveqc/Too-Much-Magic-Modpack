@@ -4,6 +4,7 @@ import io.github.heatwaveqc.tmm.progression.mxp.MxpMod;
 import io.github.heatwaveqc.tmm.progression.mxp.MxpService;
 import io.github.heatwaveqc.tmm.progression.mxp.MxpSourceConfig;
 import io.github.heatwaveqc.tmm.progression.mxp.core.CommittedDebit;
+import io.github.heatwaveqc.tmm.progression.mxp.core.PaymentReceiptPolicy;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.ModList;
@@ -31,7 +32,7 @@ public final class PsiCastHooks {
         ACTIVE.remove();
         if(!supported()||quoted<=0)return quoted;
         Object raw=MxpReflect.call(event,"getPlayer");
-        if(!(raw instanceof ServerPlayer player)||player.isCreative()||player.isSpectator()||!player.server.isSameThread())return quoted;
+        if(!(raw instanceof ServerPlayer player)||!MxpPlayerPolicy.eligible(player))return quoted;
         Object ctx=MxpReflect.call(event,"getContext"),data=MxpReflect.call(event,"getPlayerData");
         Object rawCad=MxpReflect.call(event,"getCad");
         if(!(rawCad instanceof ItemStack stack)||ctx==null||data==null)return quoted;
@@ -63,7 +64,7 @@ public final class PsiCastHooks {
         if(MxpReflect.field(event,"context")!=p.context||MxpReflect.field(event,"player")!=p.player||
             MxpReflect.field(event,"playerData")!=p.data||MxpReflect.field(event,"cad")!=p.cad)return;
         ACTIVE.remove();
-        if(!supported()||p.tick!=p.player.server.overworld().getGameTime()||p.debit<=0)return;
+        if(!supported()||!MxpPlayerPolicy.eligible(p.player)||p.tick!=p.player.server.overworld().getGameTime()||!PaymentReceiptPolicy.fullyFunded(p.debit,p.price))return;
         double pool=MxpSourceConfig.PSI_INITIAL_POOL.get();
         if(pool>0)MxpService.resource(p.player,"psi:cad_cast",p.tx,p.nominal,pool,p.debit);
     }

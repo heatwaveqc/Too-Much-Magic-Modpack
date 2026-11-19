@@ -7,6 +7,7 @@
   "mixins": [
     "MxpArsResolverMixin",
     "MxpAnsArsCommitMixin",
+    "MxpAnsIronEffectMixin",
     "MxpIronsEventMixin",
     "MxpIronsCastMixin",
     "MxpNeoNetworkMixin",

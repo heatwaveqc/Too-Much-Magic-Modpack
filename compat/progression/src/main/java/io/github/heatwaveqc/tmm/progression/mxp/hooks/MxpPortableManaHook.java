@@ -14,6 +14,7 @@ import java.util.ArrayDeque;
 import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.UUID;
+import io.github.heatwaveqc.tmm.progression.mxp.core.PaymentReceiptPolicy;
 
 /**
  * Botania Revived 2.0.2. Observe only actual mana taken from whitelisted
@@ -27,18 +28,19 @@ public final class MxpPortableManaHook {
 
     private static final ThreadLocal<ArrayDeque<Snapshot>> ACTIVE =
             ThreadLocal.withInitial(ArrayDeque::new);
-    private static final ThreadLocal<ArrayDeque<Double>> TOOL_NOMINAL =
+    private record ToolQuote(ItemStack requester, Player player, double nominal) {}
+    private static final ThreadLocal<ArrayDeque<ToolQuote>> TOOL_NOMINAL =
             ThreadLocal.withInitial(ArrayDeque::new);
 
     private MxpPortableManaHook() {}
 
     /** Preserve the pre-armor/pre-enchantment cost of *ForTool wrappers. */
-    public static void beginTool(int nominal) {
-        TOOL_NOMINAL.get().push((double) Math.max(0, nominal));
+    public static void beginTool(ItemStack requester, Player player, int nominal) {
+        TOOL_NOMINAL.get().push(new ToolQuote(requester,player,Math.max(0,nominal)));
     }
 
     public static void endTool() {
-        ArrayDeque<Double> values = TOOL_NOMINAL.get();
+        ArrayDeque<ToolQuote> values = TOOL_NOMINAL.get();
         if (!values.isEmpty()) values.pop();
         if (values.isEmpty()) TOOL_NOMINAL.remove();
     }
@@ -47,13 +49,23 @@ public final class MxpPortableManaHook {
                                      int requested, boolean actuallyRemove) {
         // Keep the stack balanced even if this was a simulated/invalid call.
         Snapshot snapshot = null;
-        if (actuallyRemove && player instanceof ServerPlayer sp && !sp.isCreative()
+        ArrayDeque<Snapshot> scopes = ACTIVE.get();
+        // A nested request may debit the same stacks or change a snapshot.
+        // Reject the ambiguous outer operation and the nested operation.
+        if (!scopes.isEmpty()) {
+            int depth=scopes.size();
+            scopes.clear();
+            for(int i=0;i<=depth;i++) scopes.push(new Snapshot(null,ItemStack.EMPTY,0,0,Map.of()));
+            return;
+        }
+        if (actuallyRemove && player instanceof ServerPlayer sp && MxpPlayerPolicy.eligible(sp)
                 && requested > 0 && !requester.isEmpty()
                 && !isStorage(requester) && !isOtherSpellPayment()) {
             Map<ItemStack, Integer> before = snapshotStorage(sp, requester);
             if (!before.isEmpty()) {
-                ArrayDeque<Double> tool = TOOL_NOMINAL.get();
-                double nominal = tool.isEmpty() ? requested : tool.peek();
+                ArrayDeque<ToolQuote> tool = TOOL_NOMINAL.get();
+                ToolQuote q=tool.peek();
+                double nominal = q!=null && q.player==player && q.requester==requester ? q.nominal : requested;
                 snapshot = new Snapshot(sp, requester, requested, nominal, before);
             }
         }
@@ -67,9 +79,9 @@ public final class MxpPortableManaHook {
         if (stack.isEmpty()) return;
         Snapshot snapshot = stack.pop();
         if (stack.isEmpty()) ACTIVE.remove();
-        if (!successful || amountActuallyGranted <= 0 || snapshot.player == null) return;
+        if (!successful || !PaymentReceiptPolicy.bounded(amountActuallyGranted,snapshot.requested) || !MxpPlayerPolicy.eligible(snapshot.player)) return;
 
-        int portableDebit = 0;
+        long portableDebit = 0;
         for (var entry : snapshot.before.entrySet()) {
             ItemStack item = entry.getKey();
             // Identity not name: another same-name stack elsewhere cannot
@@ -83,7 +95,7 @@ public final class MxpPortableManaHook {
         // If Ars or another PlayerManaSources adapter supplied the remainder,
         // credit ONLY the proportional cost paid by tablets/rings.
         double eligibleNominal = PortableManaPolicy.eligibleNominal(
-                snapshot.nominalCost, portableDebit, amountActuallyGranted);
+                snapshot.nominalCost, portableDebit, amountActuallyGranted, snapshot.requested);
         double baseline = MxpSourceConfig.BOTANIA_PORTABLE_POOL.get();
         if (!Double.isFinite(baseline) || baseline <= 0 || eligibleNominal <= 0) return;
         try {
@@ -94,6 +106,8 @@ public final class MxpPortableManaHook {
             MxpMod.LOGGER.warn("Botania portable MXP observation rejected: {}", e.toString(), e);
         }
     }
+
+    public static void clear() { ACTIVE.remove(); TOOL_NOMINAL.remove(); }
 
     private static boolean isStorage(ItemStack stack) {
         return PortableManaPolicy.eligibleStorage(

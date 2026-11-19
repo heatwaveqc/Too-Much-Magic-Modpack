@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.Map;
+import io.github.heatwaveqc.tmm.progression.mxp.core.PaymentReceiptPolicy;
 import java.util.UUID;
 
 /**
@@ -33,7 +34,11 @@ public final class MxpCastHooks {
     /** Invoked by the Iron's SpellOnCastEvent constructor after its fields are set. */
     public static void ironQuoted(Object event) {
         Object player = MxpReflect.call(event, "getEntity");
-        if (!(player instanceof ServerPlayer sp) || sp.isCreative()) return;
+        if (!(player instanceof ServerPlayer sp) || !MxpPlayerPolicy.eligible(sp)) return;
+        // The exact ANS Iron lifecycle owns actual reservation + successful effect
+        // receipts, including full-cost scrolls and each paid channel pulse.
+        Object frame = MxpReflect.staticCall("com.otectus.arsnspells.casting.IronsCastLifecycle", "current");
+        if (MxpReflect.field(frame, "player") == sp) return;
         Object source = MxpReflect.call(event, "getCastSource");
         if (!Boolean.TRUE.equals(MxpReflect.call(source, "consumesMana"))) return;
         double cost = MxpReflect.number(MxpReflect.call(event, "getOriginalManaCost"));
@@ -62,7 +67,7 @@ public final class MxpCastHooks {
     public static void ironCastReturned() {
         Cast pending = IRON.get();
         IRON.remove();
-        if (pending == null || pending.player.level().getGameTime() < pending.tick) return;
+        if (pending == null || !MxpPlayerPolicy.eligible(pending.player) || pending.player.level().getGameTime() != pending.tick) return;
         double after = MxpManaProbe.balance(pending.player, pending.origin);
         double debit = pending.before - after;
         if (Double.isFinite(debit) && debit > 0) {
@@ -75,7 +80,8 @@ public final class MxpCastHooks {
         Object ctx = MxpReflect.field(resolver, "spellContext");
         if (ctx == null) return;
         Object caster = MxpReflect.call(ctx, "getUnwrappedCaster");
-        if (!(caster instanceof ServerPlayer sp) || sp.isCreative()) return;
+        if (!(caster instanceof ServerPlayer sp) || !MxpPlayerPolicy.eligible(sp)) return;
+        if (Boolean.TRUE.equals(MxpReflect.staticCall("com.otectus.arsnspells.casting.ArsCastPayments", "handles", ctx))) return;
         Object spell = MxpReflect.call(ctx, "getSpell");
         double nominal = MxpReflect.number(MxpReflect.call(spell, "getCost"));
         if (!Double.isFinite(nominal) || nominal <= 0) return;
@@ -91,7 +97,7 @@ public final class MxpCastHooks {
     public static void arsNativeSpendReturned() {
         Cast pending = ARS.get();
         ARS.remove();
-        if (pending == null) return;
+        if (pending == null || !MxpPlayerPolicy.eligible(pending.player) || pending.player.level().getGameTime() != pending.tick) return;
         double after = MxpManaProbe.balance(pending.player, pending.origin);
         double debit = pending.before - after;
         if (Double.isFinite(debit) && debit > 0) {
@@ -106,47 +112,84 @@ public final class MxpCastHooks {
      * Alternative LP/aura payments don't count as Ars mana.
      */
     public static void ansArsCommitted(Object player, Object context, boolean handled) {
-        if (!handled || !(player instanceof ServerPlayer sp) || sp.isCreative()) return;
+        if (!handled || !(player instanceof ServerPlayer sp) || !MxpPlayerPolicy.eligible(sp)) return;
         try {
-            Class<?> owner = Class.forName(
-                    "com.otectus.arsnspells.casting.ArsCastPayments");
+            Class<?> owner = Class.forName("com.otectus.arsnspells.casting.ArsCastPayments");
             Object map = MxpReflect.field(owner, "PLANS");
             if (!(map instanceof Map<?, ?> plans)) return;
             Object plan = plans.get(context);
-            if (plan == null || !Boolean.TRUE.equals(MxpReflect.field(plan, "committed"))
-                    || MxpReflect.field(plan, "alternative") != null
-                    || MxpReflect.field(plan, "attempt") == null) return;
-            Object quote = MxpReflect.field(plan, "quote");
-            Object legs = MxpReflect.call(quote, "legs");
-            if (!(legs instanceof Iterable<?> iterable)) return;
-            double debit = 0;
-            for (Object leg : iterable) {
-                Object unit = MxpReflect.call(leg, "unit");
-                String id = String.valueOf(unit);
-                if (id.equals("ARS_MANA") || id.equals("IRONS_MANA")) {
-                    debit += MxpReflect.number(MxpReflect.call(leg, "amount"));
-                }
-            }
-            if (!Double.isFinite(debit) || debit <= 0) return;
-            Object spell = MxpReflect.call(context, "getSpell");
-            double nominal = MxpReflect.number(MxpReflect.call(spell, "getCost"));
-            if (!Double.isFinite(nominal) || nominal <= 0) return;
-            Cast current = ARS.get();
-            Cast parent = IRON.get();
-            String tx = parent != null && parent.player == sp ? parent.tx
-                    : current != null && current.context == context
-                        ? current.tx : "cast:" + UUID.randomUUID();
-            Cast settled = new Cast(sp, nominal, Double.NaN,
-                    MxpManaProbe.Origin.ARS, tx, sp.level().getGameTime(), context);
-            deliver(settled, MxpSourceConfig.ARS_FIRST_POOL.get(), debit);
-            if (current != null && current.context == context) ARS.remove();
-        } catch (ClassNotFoundException | LinkageError failure) {
-            MxpMod.LOGGER.warn("ANS MXP settlement introspection unavailable: {}", failure.toString());
+            if (plan == null || !Boolean.TRUE.equals(MxpReflect.field(plan, "prepared"))
+                    || !Boolean.TRUE.equals(MxpReflect.field(plan, "committed"))
+                    || MxpReflect.field(plan, "alternative") != null) return;
+            Object attempt = MxpReflect.field(plan, "attempt");
+            if (!sp.getUUID().equals(MxpReflect.call(attempt, "playerId"))
+                    || !Boolean.TRUE.equals(MxpReflect.call(attempt, "paymentAccepted"))) return;
+            Object id = MxpReflect.call(attempt, "attemptId");
+            if (!(id instanceof UUID paymentId)) return;
+            double debit = manaLegs(MxpReflect.call(attempt, "paidLegs"));
+            double nominal = MxpReflect.number(MxpReflect.call(MxpReflect.call(context, "getSpell"), "getCost"));
+            if (!PaymentReceiptPolicy.positive(debit) || !PaymentReceiptPolicy.positive(nominal)) return;
+            deliver(new Cast(sp, nominal, Double.NaN, MxpManaProbe.Origin.ARS,
+                    PaymentReceiptPolicy.ansTransaction(paymentId), sp.level().getGameTime(), context),
+                    MxpSourceConfig.ARS_FIRST_POOL.get(), debit);
+        } catch (ClassNotFoundException | LinkageError | RuntimeException failure) {
+            MxpMod.LOGGER.warn("ANS Ars MXP settlement rejected: {}", failure.toString());
         }
     }
 
+    /** 3.3.5 lifecycle: successful effect return, never a quote, reserve or waived native write. */
+    public static void ansIronEffectFinished() {
+        try {
+            Object frame = MxpReflect.staticCall("com.otectus.arsnspells.casting.IronsCastLifecycle", "current");
+            Object rawPlayer = MxpReflect.field(frame, "player");
+            if (!(rawPlayer instanceof ServerPlayer sp) || !MxpPlayerPolicy.eligible(sp)
+                    || !Boolean.TRUE.equals(MxpReflect.field(frame, "started"))
+                    || !Boolean.TRUE.equals(MxpReflect.field(frame, "finished"))
+                    || Boolean.TRUE.equals(MxpReflect.field(frame, "aborted"))
+                    || !Boolean.TRUE.equals(MxpReflect.field(frame, "owns"))
+                    || MxpReflect.field(frame, "alternativeId") != null) return;
+            Object outcome = MxpReflect.field(frame, "outcome");
+            if (!Boolean.TRUE.equals(MxpReflect.call(outcome, "allowed")) ||
+                    MxpReflect.call(outcome, "alternative") != null) return;
+            Object payment = MxpReflect.call(outcome, "payment");
+            if (!Boolean.TRUE.equals(MxpReflect.call(payment, "paid"))) return;
+            Object id = MxpReflect.call(payment, "id");
+            if (!(id instanceof UUID paymentId)) return;
+            Object refunded = MxpReflect.call(payment, "refunded");
+            if (!(refunded instanceof java.util.Collection<?> refunds) || !refunds.isEmpty()) return;
+            double debit = manaLegs(MxpReflect.call(payment, "debited"));
+            Object origin = MxpReflect.call(MxpReflect.field(frame, "quote"), "origin");
+            if (!"IRONS_MANA".equals(String.valueOf(MxpReflect.call(origin, "unit")))) return;
+            double nominal = MxpReflect.number(MxpReflect.call(origin, "amount"));
+            if (!PaymentReceiptPolicy.positive(debit) || !PaymentReceiptPolicy.positive(nominal)) return;
+            deliver(new Cast(sp, nominal, Double.NaN, MxpManaProbe.Origin.IRON,
+                    PaymentReceiptPolicy.ansTransaction(paymentId), sp.level().getGameTime(), frame),
+                    MxpSourceConfig.IRON_FIRST_POOL.get(), debit);
+        } catch (LinkageError | RuntimeException failure) {
+            MxpMod.LOGGER.warn("ANS Iron MXP settlement rejected: {}", failure.toString());
+        }
+    }
+
+    // All positive legs must be mana; no alternative LP/aura or nonfinite mixed receipts.
+    private static double manaLegs(Object legs) {
+        if (!(legs instanceof Iterable<?> iterable)) return 0;
+        double debit = 0;
+        for (Object leg : iterable) {
+            String unit = String.valueOf(MxpReflect.call(leg, "unit"));
+            double amount = MxpReflect.number(MxpReflect.call(leg, "amount"));
+            if (!Double.isFinite(amount) || amount < 0) return 0;
+            if (amount == 0) continue;
+            if (!unit.equals("ARS_MANA") && !unit.equals("IRONS_MANA")) return 0;
+            debit += amount;
+        }
+        return Double.isFinite(debit) ? debit : 0;
+    }
+
+    /** Native callbacks are synchronous; discard incomplete observations at tick end. */
+    public static void clear() { IRON.remove(); ARS.remove(); }
+
     private static void deliver(Cast cast, double firstPool, double actuallySpent) {
-        if (!Double.isFinite(firstPool) || firstPool <= 0) return;
+        if (!MxpPlayerPolicy.eligible(cast.player) || !Double.isFinite(firstPool) || firstPool <= 0) return;
         try {
             MxpService.resource(cast.player, cast.origin == MxpManaProbe.Origin.ARS
                     ? "ars_nouveau:spell" : "irons_spellbooks:spell",

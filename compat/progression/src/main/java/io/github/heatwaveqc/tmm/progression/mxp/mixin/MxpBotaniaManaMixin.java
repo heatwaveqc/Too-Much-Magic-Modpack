@@ -51,7 +51,7 @@ public abstract class MxpBotaniaManaMixin {
     private void tmm$beforeTool(ItemStack tool, Player player, int amount,
                                  boolean remove, CallbackInfoReturnable<Integer> cir) {
         if (!io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()) return;
-        MxpPortableManaHook.beginTool(amount);
+        MxpPortableManaHook.beginTool(tool, player, amount);
     }
 
     @Inject(method = "requestManaForTool", at = @At("RETURN"), remap = false, require = 0)
@@ -65,7 +65,7 @@ public abstract class MxpBotaniaManaMixin {
     private void tmm$beforeExactTool(ItemStack tool, Player player, int amount,
                                       boolean remove, CallbackInfoReturnable<Boolean> cir) {
         if (!io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()) return;
-        MxpPortableManaHook.beginTool(amount);
+        MxpPortableManaHook.beginTool(tool, player, amount);
     }
 
     @Inject(method = "requestManaExactForTool", at = @At("RETURN"), remap = false, require = 0)

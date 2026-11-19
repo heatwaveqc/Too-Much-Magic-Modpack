@@ -32,10 +32,20 @@ public final class MxpMod {
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
         NeoForge.EVENT_BUS.addListener(this::onBossDeath);
         NeoForge.EVENT_BUS.addListener(this::onServerStopping);
+        NeoForge.EVENT_BUS.addListener(this::onTickEnd);
         LOGGER.info("TMM MXP prototype initialized (boss registry empty by default)");
     }
 
+    private static void clearPaymentScopes() {
+        io.github.heatwaveqc.tmm.progression.mxp.hooks.MxpCastHooks.clear();
+        io.github.heatwaveqc.tmm.progression.mxp.hooks.MxpPortableManaHook.clear();
+        io.github.heatwaveqc.tmm.progression.mxp.hooks.PsiCastHooks.clear();
+    }
+
+    private void onTickEnd(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) { clearPaymentScopes(); }
+
     private void onServerStopping(ServerStoppingEvent event) {
+        clearPaymentScopes();
         MxpService.clearBossRules();
     }
 

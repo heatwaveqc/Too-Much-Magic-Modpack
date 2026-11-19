@@ -12,6 +12,16 @@ public final class PortableManaPolicy {
 
     private PortableManaPolicy() {}
 
+    /** Non-exact requests may return less than requested. Never credit the missing portion.
+     *  Requested is the native discounted cost; nominal is pre-tool-discount.
+     */
+    public static double eligibleNominal(double nominal,double portable,double granted,double requested) {
+        if (!PaymentReceiptPolicy.bounded(granted,requested) ||
+                !PaymentReceiptPolicy.bounded(portable,granted) ||
+                !PaymentReceiptPolicy.positive(nominal)) return 0;
+        return nominal * (portable / requested);
+    }
+
     public static boolean eligibleStorage(String registryId) {
         return ELIGIBLE.contains(registryId);
     }
