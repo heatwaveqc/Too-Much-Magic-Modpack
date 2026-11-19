@@ -24,35 +24,37 @@
     },
     {
       "name": "evilcraft-quest-draft",
-      "branch": "feature/quest-content-evilcraft-first-pass",
+      "branch": "test/full-integration",
       "paths": [
         "manifest/quest_drafts/evilcraft.json"
       ],
       "mode": "source-and-review-only",
-      "note": "Nine documented EvilCraft source-verified draft quests with first Dark Gem -> 2 Crushed Dark Gem reward. Does not touch runtime SNBT until declarative compiler and client registry QA.",
-      "source_commit": "4d63166bae3176ca3322dc06aa6d6afc7129707d"
+      "note": "Nine documented EvilCraft source-verified draft quests with first Dark Gem -> 2 Crushed Dark Gem reward. Does not touch runtime SNBT until declarative compiler and client registry QA. Consolidated 2026-11-19. Exact reviewed frozen source; future gameplay acceptance remains required where applicable.",
+      "source_commit": "4d63166bae3176ca3322dc06aa6d6afc7129707d",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/quest-content-evilcraft-first-pass",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "questshop-vanilla-ore-blocks",
-      "branch": "feature/questshop-vanilla-ore-blocks",
+      "branch": "test/full-integration",
       "paths": [
         "manifest/quest_shop_catalog.json",
         "kubejs/data/tmm/questshop/shop_categories/ores.json",
         "kubejs/data/tmm/questshop/shop_entries/ores.json"
       ],
       "mode": "runtime-experimental",
-      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world.",
+      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world. Consolidated 2026-11-19. Exact reviewed frozen source; future gameplay acceptance remains required where applicable.",
       "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
-      "approved_overrides": {
-        "manifest/quest_shop_catalog.json": "Reviewed exact donor: adds owner-approved 18 vanilla ore blocks to otherwise identical five baseline categories, and extends descriptive policy only."
-      },
-      "expected_baseline_blobs": {
-        "manifest/quest_shop_catalog.json": "7872d8284f7c581ff1748ac7abf5ab748fc99c26"
-      }
+      "integrated_into_baseline": true,
+      "merged_from": "feature/questshop-vanilla-ore-blocks",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "silver-ore-materials",
-      "branch": "feature/neo-vitae-canonical-dusts",
+      "branch": "test/full-integration",
       "paths": [
         "config/almostunified/startup.json",
         "config/almostunified/placeholders.json",
@@ -67,40 +69,56 @@
         "almostunified"
       ],
       "mode": "runtime-experimental",
-      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch. The baseline owns config/almostunified/unification/materials.json, copied from frozen tested snapshot 322cf3f9f0deb303fc6e6c29b340273ed3f481f6. It differs from this donor only by removal of the retired werewolves priority; never restore the donor version of that file.",
-      "source_commit": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c"
+      "note": "Conventional mineral unification, generated Neo Vitae dust and processing; silver equipment replacement and werewolves-free validators are staged on the retirement branch. The baseline owns config/almostunified/unification/materials.json, copied from frozen tested snapshot 322cf3f9f0deb303fc6e6c29b340273ed3f481f6. It differs from this donor only by removal of the retired werewolves priority; never restore the donor version of that file. Consolidated 2026-11-19. Exact selected configs and scripts/pin; current baseline owns existing silver priorities, cleanup, equipment and audit, no removed TeamLapen restoration. Blank-circle Neo dust bridge distinct from native exchange.",
+      "source_commit": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/neo-vitae-canonical-dusts",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "mahou-catalyst-exchange-neo-dust",
-      "branch": "feature/mahou-catalyst-exchange-kubejs",
+      "branch": "test/full-integration",
       "paths": [
         "scripts/audit_mahou_catalyst_bytecode.py"
       ],
       "mode": "source-only",
-      "note": "DISABLED: old KubeJS Neo dust exchange adapter registered EntityTickEvent.Pre for every dropped item on every tick plus LevelTick scans. No longer imported into runtime. Native Mahou Catalyst Exchange stays functional for Mahou powdered items. Exact pinned circle bytecode probe added to design narrow Java/mixin circle-scanner injection preserving native mana/output; DO NOT reinstall old global tick script.",
-      "source_commit": "f8a1acc1226ba213b0bccf20499627fb7dc444db"
+      "note": "DISABLED: old KubeJS Neo dust exchange adapter registered EntityTickEvent.Pre for every dropped item on every tick plus LevelTick scans. No longer imported into runtime. Native Mahou Catalyst Exchange stays functional for Mahou powdered items. Exact pinned circle bytecode probe added to design narrow Java/mixin circle-scanner injection preserving native mana/output; DO NOT reinstall old global tick script. Consolidated 2026-11-19. Preserve exact pinned bytecode audit only. Native scanner fix is in shared Transformations; old global EntityTick/LevelTick proxy stays absent.",
+      "source_commit": "f8a1acc1226ba213b0bccf20499627fb7dc444db",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/mahou-catalyst-exchange-kubejs",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "roots-mxp-prototypes",
-      "branch": "feature/roots-kubejs-first-pickup-terra-poc",
+      "branch": "test/full-integration",
       "paths": [
-        "kubejs/client_scripts/roots_terra_client.js",
-        "kubejs/server_scripts/roots_staff_first_pickup.js",
-        "kubejs/server_scripts/roots_terra_server.js"
+        "integration/legacy-prototypes/roots/kubejs/client_scripts/roots_terra_client.js",
+        "integration/legacy-prototypes/roots/kubejs/server_scripts/roots_staff_first_pickup.js",
+        "integration/legacy-prototypes/roots/kubejs/server_scripts/roots_terra_server.js"
       ],
-      "mode": "runtime-experimental",
-      "note": "Prototype only, not the finished universal MXP implementation",
-      "source_commit": "71253524c2ca73cc9873287e907fe43bdd7434bb"
+      "mode": "archived-prototype-not-runtime",
+      "note": "Prototype only, not the finished universal MXP implementation Consolidated 2026-11-19. Archived verbatim outside runtime, in integration/legacy-prototypes/roots/. Original stage-gated pickup imprint, Terra maximum and HUD synchronization must receive capability-parity review in the unified Progression engine (#347); do not execute prototype scripts. Paid Terra and ritual proof are distinct from skill effect parity.",
+      "source_commit": "71253524c2ca73cc9873287e907fe43bdd7434bb",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/roots-kubejs-first-pickup-terra-poc",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "mxp-hexcast-contract",
-      "branch": "design/universal-mxp-progression-registry",
+      "branch": "test/full-integration",
       "paths": [
         "integration/hexcast-media-pilot/"
       ],
       "mode": "source-and-test-only",
-      "note": "Research pilot; not added as gameplay JAR",
-      "source_commit": "1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049"
+      "note": "Research pilot; not added as gameplay JAR Consolidated 2026-11-19. Exact standalone research harness retained in integration/hexcast-media-pilot, not installed or selected as a runtime JAR. Prior pilot server result historical only; current authoritative Progression skills must own discount behavior.",
+      "source_commit": "1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049",
+      "integrated_into_baseline": true,
+      "merged_from": "design/universal-mxp-progression-registry",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "mxp-ledger-math-pilot",
@@ -136,7 +154,7 @@
     },
     {
       "name": "ftb-essentials-home-rtp",
-      "branch": "feature/qol-ftb-essentials-sethome-rtp",
+      "branch": "test/full-integration",
       "paths": [
         "config/ftbessentials.snbt",
         "defaultconfigs/ftbessentials-server.snbt",
@@ -144,22 +162,30 @@
         "mods/ftb-essentials.pw.toml"
       ],
       "mode": "runtime-qa-staging",
-      "note": "Owner explicitly requires travel commands in next candidate. Exact donor CF 410811/8442866 pinned; import is mandatory on authorized assembly. Validate personal mode restrictions and FTB permissions in-world.",
+      "note": "Owner explicitly requires travel commands in next candidate. Exact donor CF 410811/8442866 pinned; import is mandatory on authorized assembly. Validate personal mode restrictions and FTB permissions in-world. Consolidated 2026-11-19. Pinned exact CF 410811/8442866 in baseline, both reviewed configs. Non-op permissions, mode restrictions, old saves and teleport safety live QA required.",
       "source_commit": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85",
       "manifest_mod_ids": [
         "ftb-essentials"
-      ]
+      ],
+      "integrated_into_baseline": true,
+      "merged_from": "feature/qol-ftb-essentials-sethome-rtp",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "starter-inventory-akashic-improvable",
-      "branch": "feature/starter-kit-akashic-improvable",
+      "branch": "test/full-integration",
       "paths": [
         "kubejs/data/tmm/advancement/starter_kit.json",
         "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
       ],
       "mode": "runtime-experimental",
-      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch.",
-      "source_commit": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7"
+      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch. Consolidated 2026-11-19. Exact reviewed frozen source; future gameplay acceptance remains required where applicable.",
+      "source_commit": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/starter-kit-akashic-improvable",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "projecte-boss-recipes-and-emc-audit",
@@ -178,14 +204,18 @@
     },
     {
       "name": "dragon-diets-food-compat",
-      "branch": "feature/dragon-diets-food-compat",
+      "branch": "test/full-integration",
       "paths": [
         "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
         "kubejs/server_scripts/dragon_diets.js"
       ],
       "mode": "runtime-experimental",
-      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required. Static verifier is owned by integration baseline because obsolete TeamLapen Werewolves food tags must not be checked.",
-      "source_commit": "3423131228f0645273b8b895961a46177017948b"
+      "note": "Latest Dragon Survival Sea/Forest/Cave food data map, dynamic raw Pam/FD produce tags and strict grain/cooked restrictions. Corrected source removed all coal-fallback shortcuts: Cave charred food must use native Dragon Survival processes. Full exact 2.0.74 runtime diet/JEI checks required. Static verifier is owned by integration baseline because obsolete TeamLapen Werewolves food tags must not be checked. Consolidated 2026-11-19. Both runtime files were already byte-identical to baseline, now transfer ownership without changing them. Preserve open food compatibility #343 and unified kitchen #368.",
+      "source_commit": "3423131228f0645273b8b895961a46177017948b",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/dragon-diets-food-compat",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "next-qa-dragon-comforts-hearts-pins",
@@ -279,7 +309,7 @@
     },
     {
       "name": "b20-wandering-trader-magic-stock",
-      "branch": "feature/b20-wandering-trader-guaranteed-magic-stock",
+      "branch": "test/full-integration",
       "source_commit": "7bc547690a753cea70efc35b92c2c95ebe80207b",
       "paths": [
         "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
@@ -287,11 +317,15 @@
         "scripts/validate_b20_trader_stock.py"
       ],
       "mode": "runtime-qa-staging",
-      "note": "Guaranteed trader rotating magical stock and Ring of Seven Deadly Sins blacklist. Source locked for assembly; live trading and no banned item remain untested."
+      "note": "Guaranteed trader rotating magical stock and Ring of Seven Deadly Sins blacklist. Source locked for assembly; live trading and no banned item remain untested. Consolidated 2026-11-19. Retains exact frozen six guaranteed offers and four-choice premium rotation, existing blacklist, provisional stock as frozen; reconcile live pinned item/API and armed Trader draft #351; no new balance choice.",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/b20-wandering-trader-guaranteed-magic-stock",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "caerbannog-gateways-prototype",
-      "branch": "feature/caerbannog-gateways-prototype",
+      "branch": "test/full-integration",
       "source_commit": "565ad02a6e397d03cf85fff0e23b2de966e4a57b",
       "paths": [
         "kubejs/assets/kubejs/models/item/chaos_bunny_trophy.json",
@@ -303,10 +337,14 @@
         "kubejs/startup_scripts/caerbannog_trophy.js"
       ],
       "mode": "runtime-prealpha-staging",
-      "note": "Two optional Caerbannog/Chaos Bunny gateways, cosmetic original trophy, recipes and entity hooks; locale keys merge into existing assets. No live mob or loot acceptance.",
+      "note": "Two optional Caerbannog/Chaos Bunny gateways, cosmetic original trophy, recipes and entity hooks; locale keys merge into existing assets. No live mob or loot acceptance. Consolidated 2026-11-19. Imported exact experimental encounters and trophy placeholder for next QA; not final Twilight Forest replacement or Chaos Guardian-equivalent proof. Missing true Apotheotic modifiers, tongue visuals and control-effect parity are documented.",
       "merge_json_paths": [
         "kubejs/assets/tmm/lang/en_us.json"
-      ]
+      ],
+      "integrated_into_baseline": true,
+      "merged_from": "feature/caerbannog-gateways-prototype",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "quest-live-registry-validator",
@@ -338,7 +376,7 @@
     },
     {
       "name": "bundle-curios-slot",
-      "branch": "fix/first-log-bundle-curio-quest-2026-11-15",
+      "branch": "test/full-integration",
       "source_commit": "305bef61b9581e6a5872f1ec56573aec9dc12941",
       "paths": [
         "kubejs/data/curios/tags/item/bundle.json",
@@ -348,7 +386,11 @@
         "kubejs/assets/tmm/lang/en_us.json"
       ],
       "mode": "runtime-qa-staging",
-      "note": "Only the original Bundle Curios slot and item validation for Ars Elemental Curio/Caster Bags. Quest-claimed first-log bag + XP already lives in current baseline; deliberately do NOT import old first_log advancement, reward function, shared quests or historical mod metadata. Manual assembly and client slot/claim validation required. Baseline owns the slot definition (derived from frozen donor 305bef61b9581e6a5872f1ec56573aec9dc12941, only the nonexistent explicit icon removed); Curios uses its generic icon fallback. Do not re-import stale slot icon."
+      "note": "Only the original Bundle Curios slot and item validation for Ars Elemental Curio/Caster Bags. Quest-claimed first-log bag + XP already lives in current baseline; deliberately do NOT import old first_log advancement, reward function, shared quests or historical mod metadata. Manual assembly and client slot/claim validation required. Baseline owns the slot definition (derived from frozen donor 305bef61b9581e6a5872f1ec56573aec9dc12941, only the nonexistent explicit icon removed); Curios uses its generic icon fallback. Do not re-import stale slot icon. Consolidated 2026-11-19. Exact item tag/player assignment and shared locale merged with baseline-owned iconless slot. Keep FTB first-log claim; never restore hidden advancement or reward function.",
+      "integrated_into_baseline": true,
+      "merged_from": "fix/first-log-bundle-curio-quest-2026-11-15",
+      "merged_commit": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+      "merged_pr": 369
     },
     {
       "name": "alex-caves-jer-pins",
@@ -752,7 +794,19 @@
     "feature/equestrian-roster-2026-11-17": "Ready-PR reconciliation, exact donor 25019866caabcf38faa967fe356ebfff336b8817 (#329), source merged through #361; gameplay testing remains separate.",
     "docs/prefab-next-test-20261118": "Ready-PR reconciliation, exact donor 5bbada77f273fa139c2c65ca6a346ec8f2ec07fd (#352), source merged through #361; gameplay testing remains separate.",
     "feature/astral-dimension-sky-config-2026-11-19": "Ready-PR reconciliation, exact donor 22e0870c22410d6d74abd0cb29b4c5b74527d90e (#361), source merged through #361; gameplay testing remains separate.",
-    "feature/first-party-mit-licensing-2026-11-18": "Exact #341 source 8cca84604664c316ac9b86b4c17735f39e8d2f63 reconciled through #361 with newly integrated Economy classpath and asset notices; pending GPL Trader draft #351 retains separate scope."
+    "feature/first-party-mit-licensing-2026-11-18": "Exact #341 source 8cca84604664c316ac9b86b4c17735f39e8d2f63 reconciled through #361 with newly integrated Economy classpath and asset notices; pending GPL Trader draft #351 retains separate scope.",
+    "feature/quest-content-evilcraft-first-pass": "Selected frozen source 4d63166bae3176ca3322dc06aa6d6afc7129707d reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. No stale whole-branch replay; no gameplay pass.",
+    "feature/questshop-vanilla-ore-blocks": "Selected frozen source dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9 reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. No stale whole-branch replay; no gameplay pass.",
+    "feature/neo-vitae-canonical-dusts": "Selected frozen source f4fc7544e6e44284d576ccdc50533e20fd1aa86c reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Exact selected configs and scripts/pin; current baseline owns existing silver priorities, cleanup, equipment and audit, no removed TeamLapen restoration. Blank-circle Neo dust bridge distinct from native exchange.",
+    "feature/mahou-catalyst-exchange-kubejs": "Selected frozen source f8a1acc1226ba213b0bccf20499627fb7dc444db reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Preserve exact pinned bytecode audit only. Native scanner fix is in shared Transformations; old global EntityTick/LevelTick proxy stays absent.",
+    "feature/roots-kubejs-first-pickup-terra-poc": "Selected frozen source 71253524c2ca73cc9873287e907fe43bdd7434bb reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Archived verbatim outside runtime, in integration/legacy-prototypes/roots/. Original stage-gated pickup imprint, Terra maximum and HUD synchronization must receive capability-parity review in the unified Progression engine (#347); do not execute prototype scripts. Paid Terra and ritual proof are distinct from skill effect parity.",
+    "design/universal-mxp-progression-registry": "Selected frozen source 1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049 reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Exact standalone research harness retained in integration/hexcast-media-pilot, not installed or selected as a runtime JAR. Prior pilot server result historical only; current authoritative Progression skills must own discount behavior.",
+    "feature/qol-ftb-essentials-sethome-rtp": "Selected frozen source 47516bc0afeb0c2ff9f16e7211a8e23d63f66c85 reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Pinned exact CF 410811/8442866 in baseline, both reviewed configs. Non-op permissions, mode restrictions, old saves and teleport safety live QA required.",
+    "feature/starter-kit-akashic-improvable": "Selected frozen source 7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7 reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. No stale whole-branch replay; no gameplay pass.",
+    "feature/dragon-diets-food-compat": "Selected frozen source 3423131228f0645273b8b895961a46177017948b reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Both runtime files were already byte-identical to baseline, now transfer ownership without changing them. Preserve open food compatibility #343 and unified kitchen #368.",
+    "feature/b20-wandering-trader-guaranteed-magic-stock": "Selected frozen source 7bc547690a753cea70efc35b92c2c95ebe80207b reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Retains exact frozen six guaranteed offers and four-choice premium rotation, existing blacklist, provisional stock as frozen; reconcile live pinned item/API and armed Trader draft #351; no new balance choice.",
+    "feature/caerbannog-gateways-prototype": "Selected frozen source 565ad02a6e397d03cf85fff0e23b2de966e4a57b reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Imported exact experimental encounters and trophy placeholder for next QA; not final Twilight Forest replacement or Chaos Guardian-equivalent proof. Missing true Apotheotic modifiers, tongue visuals and control-effect parity are documented.",
+    "fix/first-log-bundle-curio-quest-2026-11-15": "Selected frozen source 305bef61b9581e6a5872f1ec56573aec9dc12941 reconciled through #369 at b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8; baseline-owned. Exact item tag/player assignment and shared locale merged with baseline-owned iconless slot. Keep FTB first-log claim; never restore hidden advancement or reward function."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
@@ -820,15 +874,17 @@
     "TEST MIGRATION 2026-11-15: Vampirism, Werewolves, Vampire's Delight, old Monk faction removed; repaired JAWR-native transformation bridge restored. A final after-import purge removes stale recipes/quest IDs/config and ensures Eidolon silver equipment. New tmm_progression dev JAR to test; source-only abilities and separate Hunter/Monk drafts are not necessarily active.",
     "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
     "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss.",
-    "NEXT QA: import source-locked Bundle Curios slots (3 files + locale key), NOT the old advancement or first_log.mcfunction; test one claim per player and no auto gift.",
+    "NEXT QA: baseline now owns all three Bundle Curios slot files plus merged locale; test one FTB first-log claim per player and no automatic pouch.",
     "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengence #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral.",
     "TRADER'S VENGENCE #219→#283: source-integrated standalone compat/traders-vengence but NOT an installed first-party JAR. Next comprehensive QA must attempt to build/install the exact NeoForge 21.1.265 Java 21 module alongside Iron's 3.16.3, prove natural-only trader spawn Mixin attaches (with No Soliciting, ±10 sea level and natural ground), separate /summon/spawn egg exemptions, persistent blacklists and Hero pardons, villager/golem/llama AI and real Iron's Magic Missiles, B20 trade-stock compatibility. Record precise blockers and full client/server acceptance; no full smoke without owner approval. Docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md.",
-    "NEWBIE #241→#285/#286: shared Progression/MXP source, species setter vetoes, exact 1.21.1 NeoForge Smart Keep Inventory pin, 227-quest personal graduation, Smart Keep tag predicate and disabled Tyz Safekept are integrated into source/Packwiz. First-party tmm_progression/tmm_mxp/tmm_transformations JARs require rebuilding/replacing current runtime in next owner-authorized full candidate; FTB Essentials native /home,/sethome,/rtp,/back availability still depends on separate reviewed mod pin. Live 2-player Corail/Curios/XP inventory retention, team graduation isolation, Iron's/Ars virtual Elytra, native mod setter mixins, any-path (Gilded) guards, crossmod and multiplayer acceptance untested. Prefab is OWNER-APPROVED for next comprehensive QA, unpinned, configuration/reward pending; attempt required, report blockers if not included. Do not claim ready as an installed full modpack without these checks. See docs/qa/NEWBIE-MODE-SMARTKEEP-RECONCILIATION-2026-11-16.md.",
+    "NEWBIE #241→#285/#286: shared Progression/MXP source, species setter vetoes, exact 1.21.1 NeoForge Smart Keep Inventory pin, 227-quest personal graduation, Smart Keep tag predicate and disabled Tyz Safekept are integrated into source/Packwiz. First-party tmm_progression/tmm_mxp/tmm_transformations JARs require rebuilding/replacing current runtime in next owner-authorized full candidate; FTB Essentials source and exact pin now baseline-owned; verify native /home,/sethome,/rtp,/back availability and mode permissions. Live 2-player Corail/Curios/XP inventory retention, team graduation isolation, Iron's/Ars virtual Elytra, native mod setter mixins, any-path (Gilded) guards, crossmod and multiplayer acceptance untested. Prefab is OWNER-APPROVED for next comprehensive QA, unpinned, configuration/reward pending; attempt required, report blockers if not included. Do not claim ready as an installed full modpack without these checks. See docs/qa/NEWBIE-MODE-SMARTKEEP-RECONCILIATION-2026-11-16.md.",
     "OWNER-DEFERRED: actual JAWR Tyz skill effects (inactive catalog only), JAWR blood expenditure MXP hook, Newbie crafting restrictions, Newbie/Astral dynamic darkness. Static More Darkness included.",
     "ECONOMY #350: mandatory next QA inclusion attempt, exact module compile/registry, native resource mappers and exclusions, charged states, Relics/Artifacts freshness, scroll knowledge vs synthesis, Catalyst/Source Jar account conservation + native render, OP ratios/Eco Plus and Jade/Titanium/CC displays, Alkahestry seed/charging, parchment and Replica Nugget. Runtime parity and Reliquary full resolved blacklist pending; no gameplay PASS.",
     "ASTRAL #361: configured exact reviewed dimension skies and next-test acceptance; verify actual approved and denied mechanics, fixed time and native rendering, cross-dimensional Mahou attribution (#347).",
     "EQUESTRIAN #329: roster-only owner approval; exact pins/dependency/side checks and Unicorn Academy experimental compatibility attempt still required. No mod enabled by this merge.",
-    "QUESTS #327: guide ownership, localization and layout integrated; actual client quest display, claim and ProjectE converter descriptions still require next QA."
+    "QUESTS #327: guide ownership, localization and layout integrated; actual client quest display, claim and ProjectE converter descriptions still require next QA.",
+    "Frozen donor consolidation: all twelve source streams baseline-owned. Next authorized QA must attempt the exact 18 ore offers, canonical dust processing and blank-circle compatibility, FTB Essentials commands, starter kit, Curios, current dragon diets, B20 trades and experimental Caerbannog. Live checks in docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md.",
+    "Roots staff imprint, Terra maximum/HUD and HexCast media-efficiency prototypes are source evidence, not runtime implementations; shared Progression #347 retains parity review obligations; no separate pilot JAR or legacy KubeJS skill hooks."
   ],
   "deferred_pending_runtime": {}
 }

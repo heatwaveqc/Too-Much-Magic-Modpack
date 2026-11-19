@@ -1,0 +1,437 @@
+{
+  "schema": 1,
+  "date": "2026-11-19",
+  "baseline": "90b74d71c8601ef43b8668de9105ff3b206f8f32",
+  "source_checkpoint": "b068ec5ce4f096b5bd2faa6ca6329af95d7db9b8",
+  "streams": [
+    {
+      "stream": "evilcraft-quest-draft",
+      "original_branch": "feature/quest-content-evilcraft-first-pass",
+      "source_commit": "4d63166bae3176ca3322dc06aa6d6afc7129707d",
+      "disposition": "source/research only",
+      "files": [
+        {
+          "path": "manifest/quest_drafts/evilcraft.json",
+          "blob_sha": "7c8eadb36853b981f6448abc621f9150f3fc60b5"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "questshop-vanilla-ore-blocks",
+      "original_branch": "feature/questshop-vanilla-ore-blocks",
+      "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "manifest/quest_shop_catalog.json",
+          "blob_sha": "22221277c41a60ba95962c78fa749ca898b9ecb9"
+        },
+        {
+          "path": "kubejs/data/tmm/questshop/shop_categories/ores.json",
+          "blob_sha": "eb5e7d0b3beb04465539bbdb99da757db4a5b314"
+        },
+        {
+          "path": "kubejs/data/tmm/questshop/shop_entries/ores.json",
+          "blob_sha": "f15329b3d0404e0169e5ec6a17507c3724a3bb9a"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "silver-ore-materials",
+      "original_branch": "feature/neo-vitae-canonical-dusts",
+      "source_commit": "f4fc7544e6e44284d576ccdc50533e20fd1aa86c",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "config/almostunified/startup.json",
+          "blob_sha": "6c538cf799c518d37a7d91f3913b7bd869d9e5fd"
+        },
+        {
+          "path": "config/almostunified/placeholders.json",
+          "blob_sha": "348b8e8c29b23c8f0c3b512653e2fa2a0236f58a"
+        },
+        {
+          "path": "config/neovitae/materials.json",
+          "blob_sha": "cea7f88a239b481ba97eafaf855836e03b4cda0f"
+        },
+        {
+          "path": "kubejs/server_scripts/material_unification.js",
+          "blob_sha": "6a11a63ba9fbd91a64c06e8247fd90321204221b"
+        },
+        {
+          "path": "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
+          "blob_sha": "63e6584c6f5a59f11afa42fe3480f0b37f5f2f84"
+        },
+        {
+          "path": "mods/almostunified.pw.toml",
+          "blob_sha": "f5f5ed31fdd33e1f1de5d1e3c4047daa6eb0212e"
+        },
+        {
+          "path": "scripts/check_silver_conflicts.py",
+          "blob_sha": "e91f47171e51b76956b735fdf4dfa85ee45e2f7b"
+        },
+        {
+          "path": "scripts/check_final_processing_recipes.py",
+          "blob_sha": "c610d3608b51f5da910cd123744430f98eb43182"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "mahou-catalyst-exchange-neo-dust",
+      "original_branch": "feature/mahou-catalyst-exchange-kubejs",
+      "source_commit": "f8a1acc1226ba213b0bccf20499627fb7dc444db",
+      "disposition": "source/research only",
+      "files": [
+        {
+          "path": "scripts/audit_mahou_catalyst_bytecode.py",
+          "blob_sha": "55c656c204e2a5ba6624b0028fd3310708abf268"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "roots-mxp-prototypes",
+      "original_branch": "feature/roots-kubejs-first-pickup-terra-poc",
+      "source_commit": "71253524c2ca73cc9873287e907fe43bdd7434bb",
+      "disposition": "archive only",
+      "files": [
+        {
+          "path": "integration/legacy-prototypes/roots/kubejs/client_scripts/roots_terra_client.js",
+          "blob_sha": "e3ce459f3329b7b57e997a0a1044a69ad9e6a705"
+        },
+        {
+          "path": "integration/legacy-prototypes/roots/kubejs/server_scripts/roots_staff_first_pickup.js",
+          "blob_sha": "20c41bb2a84c983b606e5ea7ddb223157827e652"
+        },
+        {
+          "path": "integration/legacy-prototypes/roots/kubejs/server_scripts/roots_terra_server.js",
+          "blob_sha": "1ea3370c6bfe31bf521d6698066d9fee3a16e332"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "mxp-hexcast-contract",
+      "original_branch": "design/universal-mxp-progression-registry",
+      "source_commit": "1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049",
+      "disposition": "source/research only",
+      "files": [
+        {
+          "path": "integration/hexcast-media-pilot/.gitignore",
+          "blob_sha": "9edbbe49809c39849aadc5eb9ffe3119814459ee"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/README.md",
+          "blob_sha": "1615b7923a84882dfa494779d7451e16ad16def1"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/build.gradle",
+          "blob_sha": "dcccec9c183f1e00adb55d933e70d5dea6b71039"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/check-contract.sh",
+          "blob_sha": "f2a127b2a241b013f69ee7a988a2568d05fddd99"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/gradle.properties",
+          "blob_sha": "98a1fb687a256ab72a2e070f299dc5a945ff42b2"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/at/petrak/hexcasting/api/casting/eval/CastingEnvironment.java",
+          "blob_sha": "10a8735db01cf30384ae8f9e47a8c3be7e31b845"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/at/petrak/hexcasting/api/casting/eval/CastingEnvironmentComponent.java",
+          "blob_sha": "9523991705a5ceb5f09cb9e70d64a1b182a67539"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/at/petrak/hexcasting/api/casting/eval/env/CircleCastEnv.java",
+          "blob_sha": "4338f0a5faee668702e3eefdf6ee231d53a7eb4c"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/at/petrak/hexcasting/api/casting/eval/env/PlayerBasedCastEnv.java",
+          "blob_sha": "15d53498b90a5097a6ee4030e0508d4279f00307"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/dev/heatwaveqc/tmm/hexpilot/PilotHarnessTest.java",
+          "blob_sha": "538bf88e4131248f57ad259e6776ff20177fddb3"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/net/minecraft/server/level/ServerPlayer.java",
+          "blob_sha": "6be44c7244b1fdb2cef5e286f7607be75fc12cb4"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/net/neoforged/bus/api/IEventBus.java",
+          "blob_sha": "1966e971bc25a9479122326f2c8c90901a400ed1"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/net/neoforged/fml/common/Mod.java",
+          "blob_sha": "605f82316a404bb87b81f0db85d2ee6b1cfb6d48"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/harness/src/net/neoforged/fml/event/lifecycle/FMLCommonSetupEvent.java",
+          "blob_sha": "30f98ffa8e13d008e0c580b7e23284a494472764"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/settings.gradle",
+          "blob_sha": "b5cdd6ea8f7b58fc880aec32a065ff796865f2b1"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/src/main/java/dev/heatwaveqc/tmm/hexpilot/HexCastMediaPilot.java",
+          "blob_sha": "e96c3ed01a423d052be43131f16a61fddd2e5ca7"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/src/main/java/dev/heatwaveqc/tmm/hexpilot/MediaDiscountMath.java",
+          "blob_sha": "92c5e91d68b485916514beb901d31d987e0c8faf"
+        },
+        {
+          "path": "integration/hexcast-media-pilot/src/main/resources/META-INF/neoforge.mods.toml",
+          "blob_sha": "cf74311296e28ce0f027a3e41659840a1135d8f9"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "ftb-essentials-home-rtp",
+      "original_branch": "feature/qol-ftb-essentials-sethome-rtp",
+      "source_commit": "47516bc0afeb0c2ff9f16e7211a8e23d63f66c85",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "config/ftbessentials.snbt",
+          "blob_sha": "eefe8b40df331ab8af0e92919673e6d84c10519b"
+        },
+        {
+          "path": "defaultconfigs/ftbessentials-server.snbt",
+          "blob_sha": "eefe8b40df331ab8af0e92919673e6d84c10519b"
+        },
+        {
+          "path": "scripts/resolve_ftb_essentials_qol.py",
+          "blob_sha": "fcb74d609f77420aabfef17aa67b28d38f535ce3"
+        },
+        {
+          "path": "mods/ftb-essentials.pw.toml",
+          "blob_sha": "8c03bc85285ccd86b8117a322dd4d202778f072d"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "starter-inventory-akashic-improvable",
+      "original_branch": "feature/starter-kit-akashic-improvable",
+      "source_commit": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "kubejs/data/tmm/advancement/starter_kit.json",
+          "blob_sha": "900b68807bf0fc1cfc701b59d5db05a667be8a42"
+        },
+        {
+          "path": "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
+          "blob_sha": "77477ec0dccbeb06594118a4602ba7bdfd85e81a"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "dragon-diets-food-compat",
+      "original_branch": "feature/dragon-diets-food-compat",
+      "source_commit": "3423131228f0645273b8b895961a46177017948b",
+      "disposition": "already exact",
+      "files": [
+        {
+          "path": "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+          "blob_sha": "ecf04d497416233ee8f24ad6423e243aa8c0fd2a"
+        },
+        {
+          "path": "kubejs/server_scripts/dragon_diets.js",
+          "blob_sha": "355f1dc4fd5bd7e0cd811a8dca130d80a51372c4"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "b20-wandering-trader-magic-stock",
+      "original_branch": "feature/b20-wandering-trader-guaranteed-magic-stock",
+      "source_commit": "7bc547690a753cea70efc35b92c2c95ebe80207b",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
+          "blob_sha": "a1cd42289721cda845b6da4b1d3d0d3859b9be37"
+        },
+        {
+          "path": "manifest/wandering_trader_magic_stock.json",
+          "blob_sha": "4a1d21da10c9b8c19159cb5e743ce14f5e67206c"
+        },
+        {
+          "path": "scripts/validate_b20_trader_stock.py",
+          "blob_sha": "684b9d5a947247b05f5466797482a95a8c16b049"
+        }
+      ],
+      "merged_locale_paths": []
+    },
+    {
+      "stream": "caerbannog-gateways-prototype",
+      "original_branch": "feature/caerbannog-gateways-prototype",
+      "source_commit": "565ad02a6e397d03cf85fff0e23b2de966e4a57b",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "kubejs/assets/kubejs/models/item/chaos_bunny_trophy.json",
+          "blob_sha": "a2c6cb9468db79dceb7d195717a9d50756690e8e"
+        },
+        {
+          "path": "kubejs/data/tmm/gateways/caerbannog.json",
+          "blob_sha": "f548c49b75721eb9fa9daff5cfcc23be006952cc"
+        },
+        {
+          "path": "kubejs/data/tmm/gateways/chaos_bunny.json",
+          "blob_sha": "14c6c419d10225cda50c3e19869133757927a0ce"
+        },
+        {
+          "path": "kubejs/data/tmm/loot_table/entities/empty.json",
+          "blob_sha": "c4f7ac964021b45c6aa55fa6ba063627dc8dad1c"
+        },
+        {
+          "path": "kubejs/data/tmm/recipe/caerbannog.json",
+          "blob_sha": "f310227c974ea2280bec956be20f9ffdbd9c2aa2"
+        },
+        {
+          "path": "kubejs/server_scripts/caerbannog_boss.js",
+          "blob_sha": "83655c38f0b2471f33df9319ea4e3c389646b049"
+        },
+        {
+          "path": "kubejs/startup_scripts/caerbannog_trophy.js",
+          "blob_sha": "dc6ce8fc4c1dfc34f56b409fa34c371977052975"
+        }
+      ],
+      "merged_locale_paths": [
+        "kubejs/assets/tmm/lang/en_us.json"
+      ]
+    },
+    {
+      "stream": "bundle-curios-slot",
+      "original_branch": "fix/first-log-bundle-curio-quest-2026-11-15",
+      "source_commit": "305bef61b9581e6a5872f1ec56573aec9dc12941",
+      "disposition": "selected runtime source",
+      "files": [
+        {
+          "path": "kubejs/data/curios/tags/item/bundle.json",
+          "blob_sha": "c190d43451ff5b71b6eb9c515bccd9fa8314492c"
+        },
+        {
+          "path": "kubejs/data/tmm/curios/entities/player.json",
+          "blob_sha": "326dbe63c789b7e8b23ebd59eebaef7b5d20f5ff"
+        }
+      ],
+      "merged_locale_paths": [
+        "kubejs/assets/tmm/lang/en_us.json"
+      ]
+    }
+  ],
+  "archival_only": [
+    "feature/b19-required-mob-gateways-trader",
+    "feature/projecte-boss-trophy-stone-and-emc-audit"
+  ],
+  "runtime_new_files": [
+    {
+      "path": "kubejs/data/tmm/questshop/shop_categories/ores.json",
+      "sha256": "109a39d371617838d10893e52e30390feacf42ce2b599daacf0079d0117e74a6"
+    },
+    {
+      "path": "kubejs/data/tmm/questshop/shop_entries/ores.json",
+      "sha256": "793950980a69031b7977976db2eb0ea3ba545722c82fb199103666c13f8bee00"
+    },
+    {
+      "path": "config/almostunified/placeholders.json",
+      "sha256": "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
+    },
+    {
+      "path": "config/almostunified/startup.json",
+      "sha256": "2c732058a0f232ab661c21c6a460ed44149a2e8136a0d31c73eb0c855269baa0"
+    },
+    {
+      "path": "config/neovitae/materials.json",
+      "sha256": "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
+    },
+    {
+      "path": "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
+      "sha256": "2aa462bc5211abace54271ad0ec84de5155b17f8a2f817002fb31210133bc103"
+    },
+    {
+      "path": "kubejs/server_scripts/material_unification.js",
+      "sha256": "564f8d6891e1235c470e9e19084976466dd7d68c69f8d947b084df1258c4a53e"
+    },
+    {
+      "path": "mods/almostunified.pw.toml",
+      "sha256": "3805fe2877cffdae5e7bf74d85069a2535daa39a0f3ed766755be49294a07680"
+    },
+    {
+      "path": "config/ftbessentials.snbt",
+      "sha256": "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+    },
+    {
+      "path": "defaultconfigs/ftbessentials-server.snbt",
+      "sha256": "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+    },
+    {
+      "path": "mods/ftb-essentials.pw.toml",
+      "sha256": "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df"
+    },
+    {
+      "path": "kubejs/data/tmm/advancement/starter_kit.json",
+      "sha256": "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
+    },
+    {
+      "path": "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
+      "sha256": "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
+    },
+    {
+      "path": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
+      "sha256": "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
+    },
+    {
+      "path": "kubejs/assets/kubejs/models/item/chaos_bunny_trophy.json",
+      "sha256": "8889c03533db73051e646f4c61699c0967aa314f45ba5c9391523b340ee012f6"
+    },
+    {
+      "path": "kubejs/data/tmm/gateways/caerbannog.json",
+      "sha256": "9c0a92a3be4fbd0210eb5a679453cea66776a8c202915aec1390ce0516d46c98"
+    },
+    {
+      "path": "kubejs/data/tmm/gateways/chaos_bunny.json",
+      "sha256": "25b0d67667d70b45a0d3c914a983faba37c78982b0e39758f9af6d2d66a3f2bd"
+    },
+    {
+      "path": "kubejs/data/tmm/loot_table/entities/empty.json",
+      "sha256": "901e3d1a8d2fcf1d60dc648470b7e458ff9e74823c20130fa1d7ce0e32ccbd86"
+    },
+    {
+      "path": "kubejs/data/tmm/recipe/caerbannog.json",
+      "sha256": "f9daa87aeec0f8c863a8f3410140c7e64e0336b9f96e43a0f932f07f549fa58d"
+    },
+    {
+      "path": "kubejs/server_scripts/caerbannog_boss.js",
+      "sha256": "d17ac3cbf04690f81429fc6c153768a6851ba23d5b75d09439d338c0681cf6b3"
+    },
+    {
+      "path": "kubejs/startup_scripts/caerbannog_trophy.js",
+      "sha256": "c53f62170c6560203a4d18161bb1535d80f0816ab31140cf30a06fe362f768c1"
+    },
+    {
+      "path": "kubejs/data/curios/tags/item/bundle.json",
+      "sha256": "f9ffaafaad32dd4fafaa862ba15e1a6acb3a0db629d33fc538db97a24ae2a46a"
+    },
+    {
+      "path": "kubejs/data/tmm/curios/entities/player.json",
+      "sha256": "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
+    }
+  ],
+  "locale_sha256": "9494b6c7e9edcfa5c0438905e6fedb89e2bfeab1fb11b59ca0f4e3be3517864f",
+  "index_sha256": "69c6f3442be6db6b9977fe1cc557d2f710d1b631c902ad71a18c5d90858a90d6",
+  "qa_status": "source-only; retirement requires independent reviewed exact batch and explicit owner authorization"
+}
