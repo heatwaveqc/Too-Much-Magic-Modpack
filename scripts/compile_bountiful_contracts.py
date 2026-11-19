@@ -30,7 +30,6 @@ def native_balance_family(family, spec, review, profile):
     if (profile["normal_board_reputation_min"], profile["normal_board_reputation_max"]) != (-30, 30):
         raise ValueError("unverified board reputation range")
     low_factor = (1 + percent / 100) * 0.6
-    high_factor = (1 + percent / 100) * 1.4
     if low_factor < 1:
         raise ValueError("reputation permits positive material exchange")
     prices = review["effective_emc"]
@@ -109,13 +108,14 @@ def native_balance_family(family, spec, review, profile):
         raise ValueError("empty objective pool")
     used=set()
     for reward in rews.values():
+        high_factor=(1 + percent / 100)*(1-reward["repRequired"]/75)
         need=reward["amount"]["max"]*reward["unitWorth"]*high_factor
         allowed=[]
         forbidden=[]
         for key,obj in objs.items():
             # Native picks any valid filler within variance or nearest fallback,
             # then ceil and clamp. Eliminate all pairs that cannot cover the
-            # maximum obligation at worst rep; thus no emergency partial filler.
+            # maximum obligation at worst eligible rep; thus no emergency partial filler.
             if (obj["content"]==reward["content"] or
                 obj["amount"]["max"]*obj["unitWorth"]+1e-9<need):
                 forbidden.append({"type":obj["type"],"content":obj["content"]})
@@ -155,7 +155,7 @@ def compile_candidate(catalog, audit, review):
     # Built-in loader strips .json and interprets exclusion entries as regex.
     # Avoid its limited '*' character class; exclude all resource-backed pools
     # and decrees, including add-on paths. Our flat files load separately.
-    dump("config/bountiful/bountiful.json", {"general":{"dataPathsToExclude":["bounty_pools/.+","bounty_decrees/.+"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1},"reverseMatchingAlgorithm":False,"fillerDifficultyModifierPercent":profile["filler_difficulty_percent"] if use_native else 0}}})
+    dump("config/bountiful/bountiful.json", {"general":{"dataPathsToExclude":["bounty_pools/.+","bounty_decrees/.+"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1},"reverseMatchingAlgorithm":False,"fillerDifficultyModifierPercent":profile["filler_difficulty_percent"] if use_native else 0}})
     def entry(item, count, worth):
         if not ITEM.fullmatch(item) or item not in registered:
             raise ValueError("unregistered item: " + item)

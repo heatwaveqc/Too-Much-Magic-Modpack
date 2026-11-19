@@ -95,7 +95,7 @@ class TestBountifulCompiler(unittest.TestCase):
         r["registered_items"]+=["minecraft:golden_carrot","minecraft:carrot"]
         r["effective_emc"].update({"minecraft:golden_carrot":100,"minecraft:carrot":16})
         r["approved_reward_items"].append("minecraft:golden_carrot")
-        r["approved_entries"]={"farming":{"rewards":[{"item":"minecraft:bread","min":1,"max":2,"rarity":"COMMON"},{"item":"minecraft:golden_carrot","min":1,"max":1,"rarity":"UNCOMMON"}],"objectives":[{"item":"minecraft:wheat","min":1,"max":100},{"item":"minecraft:carrot","min":1,"max":64}]}}
+        r["approved_entries"]={"farming":{"rewards":[{"item":"minecraft:bread","min":1,"max":2,"rarity":"COMMON"},{"item":"minecraft:golden_carrot","min":1,"max":1,"rarity":"UNCOMMON"}],"objectives":[{"item":"minecraft:wheat","min":1,"max":256},{"item":"minecraft:carrot","min":1,"max":64}]}}
         files=m.compile_candidate(C,A,r)
         cfg=json.loads(files["config/bountiful/bountiful.json"])["bounty"]
         self.assertEqual(cfg["fillerDifficultyModifierPercent"],75)
@@ -108,7 +108,7 @@ class TestBountifulCompiler(unittest.TestCase):
             for obj in objs.values():
                 if {"type":obj["type"],"content":obj["content"]} in rew.get("forbids",[]):continue
                 for count in range(rew["amount"]["min"],rew["amount"]["max"]+1):
-                    for rep in range(-30,31):
+                    for rep in range(rew["repRequired"],31):
                         import math
                         target=rew["unitWorth"]*count*1.75*(1-rep/75)
                         n=min(obj["amount"]["max"],max(obj["amount"]["min"],math.ceil(target/obj["unitWorth"])))
