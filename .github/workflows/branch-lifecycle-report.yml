@@ -1,0 +1,40 @@
+name: Branch lifecycle report
+
+on:
+  schedule:
+    - cron: '25 15 * * *'
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  inventory:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read-only branch inventory
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/branch_lifecycle.py inventory
+  collisions:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read-only overlap and donor report
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python3 scripts/branch_lifecycle.py collision --pr "$PR_NUMBER"
