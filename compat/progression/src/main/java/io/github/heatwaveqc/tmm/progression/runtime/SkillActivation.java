@@ -27,7 +27,7 @@ public final class SkillActivation {
     }
     public static boolean canRequest(ServerPlayer p,String path,String skill){
         var spec=PathRegistry.activation(path,skill);
-        if(spec==null||!owned(p,path,skill))return false;
+        if(spec==null||!owned(p,path,skill)||spec.jawrHealOnActivation()>0&&p.getHealth()>=p.getMaxHealth())return false;
         var before=get(p,path,skill);var next=before.request(spec,now(p));
         return !next.equals(before)&&(spec.jawrBloodCost()==0||before.active(now(p))||
             io.github.heatwaveqc.tmm.progression.runtime.forms.NativeBloodCost.affordable(p,spec.jawrBloodCost()));
@@ -47,7 +47,10 @@ public final class SkillActivation {
             if(spec.jawrBloodCost()>0&&!before.active(at)&&
                 !io.github.heatwaveqc.tmm.progression.runtime.forms.NativeBloodCost.pay(p,spec.jawrBloodCost()))return false;
             if(!owned(p,path,skill))return false;
-            return ProgressionApi.setMode(p,key(path,skill),next.encode());
+            if(!ProgressionApi.setMode(p,key(path,skill),next.encode()))return false;
+            if(spec.jawrHealOnActivation()>0&&!before.active(at)&&p.isAlive())
+                p.heal((float)Math.min(spec.jawrHealOnActivation(),Math.max(0,p.getMaxHealth()-p.getHealth())));
+            return true;
         }finally{REQUESTING.remove();}
     }
     public static void stopPath(ServerPlayer p,String path){

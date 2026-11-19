@@ -23,17 +23,22 @@ public final class NativeBloodCost {
         }catch(RuntimeException|LinkageError e){return null;}
     }
     public static boolean affordable(ServerPlayer p,int price){
-        Balance b=read(p);return price>0&&b!=null&&b.current>=price;
+        int charged=VampireEffects.price(p,price);
+        Balance b=read(p);return charged>0&&b!=null&&b.current>=charged;
     }
     public static boolean pay(ServerPlayer p,int price){
+        int charged=VampireEffects.price(p,price);
         Balance before=read(p);
-        if(price<=0||before==null||before.current<price)return false;
+        if(charged<=0||before==null||before.current<charged)return false;
         try{
             var nativeDebit=Class.forName(ROOT+"BloodPoolHandler")
                 .getMethod("decreaseBlood",LivingEntity.class,int.class);
-            nativeDebit.invoke(null,p,price);
+            VampireEffects.quoted(p,price,charged,value->{
+                try{nativeDebit.invoke(null,p,value);}
+                catch(ReflectiveOperationException failure){throw new IllegalStateException(failure);}
+            });
             Balance after=read(p);
-            return after!=null&&before.max==after.max&&before.current-after.current==price;
+            return after!=null&&before.max==after.max&&before.current-after.current==charged;
         }catch(ReflectiveOperationException|RuntimeException|LinkageError e){return false;}
     }
 }

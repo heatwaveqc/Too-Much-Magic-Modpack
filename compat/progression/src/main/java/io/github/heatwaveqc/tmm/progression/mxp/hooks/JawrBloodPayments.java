@@ -24,7 +24,8 @@ public final class JawrBloodPayments {
         Scope outer=ACTIVE.get();
         if(outer!=null){outer.valid=false;original.run();return;}
         if(!(entity instanceof ServerPlayer p)||amount<=0||!NativePaidSources.eligible(p)||
-            MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get()<=0||!JawrFormState.present(p,"vampire")){
+            MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get()<=0||!JawrFormState.present(p,"vampire")||
+            io.github.heatwaveqc.tmm.progression.runtime.forms.VampireEffects.externalExtraction()){
             original.run();return;
         }
         Blood before=read(p);
@@ -35,7 +36,11 @@ public final class JawrBloodPayments {
             Blood after=read(p);
             if(!s.valid||after==null||before.maximum!=after.maximum||!JawrFormState.present(p,"vampire"))return;
             double debit=ObservedPayment.delta(before.current,after.current);
-            if(debit>0)NativePaidSources.credit(p,"witchery:player_blood",debit,MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get(),debit);
+            if(debit>0){
+                // Only a fully paid discounted self-cost can claim undiscounted nominal practice.
+                double nominal=debit==amount?io.github.heatwaveqc.tmm.progression.runtime.forms.VampireEffects.nominal(p,amount):debit;
+                NativePaidSources.credit(p,"witchery:player_blood",nominal,MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get(),debit);
+            }
         }finally{ACTIVE.remove();}
     }
 }

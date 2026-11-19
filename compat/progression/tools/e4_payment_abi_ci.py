@@ -73,12 +73,12 @@ def vampire_census(jar):
                 detail = ("BloodPoolAttachment$Data" in owner or
                           ("BloodPoolHandler" in owner and ("increaseBlood" in method or "tickPlayerBloodRegen" in method)) or
                           "handleSunDamage" in method or "handleBloodHunger" in method or
-                          "handleBloodHealing" in method or "setLevel(" in method and "VampireLeveling" in owner)
+                          "handleBloodHealing" in method or ("setLevel(" in method or "updateMaxBlood(" in method) and "VampireLeveling" in owner or "transferBlood(" in method and "DrinkBloodAbility" in owner)
                 if detail:
                     print("VDECL", method)
             elif detail and line.strip().startswith("descriptor:"):
                 print("VDESC", line.strip())
-            elif detail and re.match(r"^\\s*\\d+:", line):
+            elif detail and line.lstrip().split(":", 1)[0].isdigit():
                 print("VBC", method, "|", line.strip())
             elif re.search(r"// (?:InterfaceMethod|Method) .*?(?:increaseBlood:|decreaseBlood:|BloodPoolAttachment.setData:|getIN_SUN:|setFlyingSpeed:|getFlyingSpeed:)", line):
                 print("VCALL", owner, "|", method, "|", line.strip())
