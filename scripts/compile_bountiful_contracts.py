@@ -94,6 +94,14 @@ def native_balance_family(family, spec, review, profile):
                 raise ValueError("unreviewed entity objective: "+ident)
             emc=positive(review["approved_kill_emc_budget"][ident],ident)
             cap=profile["objective_caps"]["kill"]
+        elif kind=="gateway":
+            ident=row["gateway"]
+            if (not ITEM.fullmatch(ident) or ident not in family.get("gateway_candidates",[])
+                    or ident not in review.get("registered_finite_gateways",[])
+                    or ident not in review.get("approved_gateway_ids",[])):
+                raise ValueError("unreviewed finite gateway objective: "+ident)
+            emc=positive(review["approved_gateway_effort_emc"][ident],ident)
+            cap=1
         else:
             raise ValueError("unsupported objective type")
         lo,hi=range_of(row,cap)
@@ -103,6 +111,12 @@ def native_balance_family(family, spec, review, profile):
         e=make_entry(kind,ident,lo,hi,emc/scale)
         if kind=="entity":
             e["timeMult"]=3.0
+        elif kind=="gateway":
+            e["type"]="criteria"
+            e["content"]="gateways:finish_gateway"
+            e["conditions"]={"gateway":ident}
+            e["name"]=row.get("name","Complete "+ident)
+            e["timeMult"]=4.0
         objs[key]=e
     if not objs:
         raise ValueError("empty objective pool")
@@ -123,9 +137,16 @@ def native_balance_family(family, spec, review, profile):
                 allowed.append(key)
         if not allowed:
             raise ValueError("no feasible objective for reward: "+reward["content"])
+        # Native forbids match only type/content, not the conditions object.
+        # All gateway criteria share a trigger. If even one is underpriced
+        # for this reward, exclude the entire trigger group conservatively.
+        excluded_pairs={(f["type"],f["content"]) for f in forbidden}
+        allowed=[key for key in allowed if (objs[key]["type"],objs[key]["content"]) not in excluded_pairs]
+        if not allowed:
+            raise ValueError("no feasible objective after grouped criterion exclusions: "+reward["content"])
         used.update(allowed)
-        if forbidden:
-            reward["forbids"]=forbidden
+        if excluded_pairs:
+            reward["forbids"]=[{"type":t,"content":v} for t,v in sorted(excluded_pairs)]
     return {k:v for k,v in objs.items() if k in used},rews
 
 def compile_candidate(catalog, audit, review):
@@ -155,7 +176,7 @@ def compile_candidate(catalog, audit, review):
     # Built-in loader strips .json and interprets exclusion entries as regex.
     # Avoid its limited '*' character class; exclude all resource-backed pools
     # and decrees, including add-on paths. Our flat files load separately.
-    dump("config/bountiful/bountiful.json", {"general":{"dataPathsToExclude":["bounty_pools/.+","bounty_decrees/.+"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1},"reverseMatchingAlgorithm":False,"fillerDifficultyModifierPercent":profile["filler_difficulty_percent"] if use_native else 0}})
+    dump("config/bountiful/bountiful.json", {"board":{"villageGenFrequency":catalog.get("board_distribution",{}).get("village_gen_frequency",0)},"general":{"dataPathsToExclude":["bounty_pools/.+","bounty_decrees/.+"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1},"reverseMatchingAlgorithm":False,"fillerDifficultyModifierPercent":profile["filler_difficulty_percent"] if use_native else 0}})
     def entry(item, count, worth):
         if not ITEM.fullmatch(item) or item not in registered:
             raise ValueError("unregistered item: " + item)

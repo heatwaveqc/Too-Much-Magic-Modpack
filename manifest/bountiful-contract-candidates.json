@@ -9,12 +9,12 @@
     "transformation": "Gate creation/acquisition of the specialized decree; normal Bountiful acceptance and redemption thereafter. Disable random spawn/reveal/wander buy; recipe with form-exclusive crafting access or minimal authoritative-state check if needed; public board and transferable document are not claim-time restrictions.",
     "kills": "Native Bountiful entity objective attribution only; eligible exact entity IDs, reviewed counts/pay per kill, no Hunter coupling",
     "prices": "final effective runtime EMC evidence required; no vanilla defaults or independently invented conversion",
-    "objectives": "Native exact-item deliveries and native entity kill objectives; no custom magic-event predicates required"
+    "objectives": "Native exact-item deliveries, entity kill objectives, and allowlisted criteria for completed finite Gateways; no custom magic-event predicates required"
   },
   "general": [
     {
       "id": "hunting",
-      "name": "Hunting",
+      "name": "Hunter's Decree",
       "items": [
         "minecraft:rotten_flesh",
         "minecraft:bone",
@@ -88,7 +88,36 @@
           "entity": "minecraft:spider",
           "min": 4,
           "max": 96
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_hunter",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Hunter Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cultist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cultist Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_pyromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Pyromancer Gateway",
+          "proposed_effort_emc": 2048
         }
+      ],
+      "gateway_candidates": [
+        "tmm:mob_ars_wilden_hunter",
+        "tmm:mob_irons_cultist",
+        "tmm:mob_irons_pyromancer"
       ]
     },
     {
@@ -451,7 +480,18 @@
           "item": "minecraft:amethyst_shard",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_hunter",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Hunter Gateway",
+          "proposed_effort_emc": 1024
         }
+      ],
+      "gateway_candidates": [
+        "tmm:mob_ars_wilden_hunter"
       ]
     },
     {
@@ -744,7 +784,8 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "routine alchemical and ritual supplies"
+        "Soul Shards",
+        "alchemical reagents"
       ],
       "kill_candidates": [
         "minecraft:skeleton",
@@ -753,7 +794,7 @@
       ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -852,15 +893,15 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "herbs",
-        "basic ritual ingredients"
+        "distilled ingredients",
+        "rare fumes"
       ],
       "kill_candidates": [
         "minecraft:witch"
       ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -990,13 +1031,13 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "flowers",
-        "ordinary fae crafting reagents"
+        "Fey Dust",
+        "Fey Gems"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1147,15 +1188,15 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "amethyst shards",
-        "ordinary media supplies"
+        "Charged Amethyst",
+        "Amethyst Dust"
       ],
       "kill_candidates": [
         "minecraft:enderman"
       ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1432,9 +1473,29 @@
           "item": "minecraft:gold_block",
           "min": 1,
           "max": 64
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cultist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cultist Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_pyromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Pyromancer Gateway",
+          "proposed_effort_emc": 2048
         }
       ],
-      "reward_notes": "Owner explicitly requires every native ink tier to be available as a potential payout. Arcane Essence remains an additional candidate. Quantities provisional."
+      "reward_notes": "Owner explicitly requires every native ink tier to be available as a potential payout. Arcane Essence remains an additional candidate. Quantities provisional.",
+      "gateway_candidates": [
+        "tmm:mob_irons_cultist",
+        "tmm:mob_irons_pyromancer"
+      ]
     },
     {
       "id": "mahou_tsukai",
@@ -1447,13 +1508,12 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "ordinary powdered catalysts",
-        "ritual consumables"
+        "powdered catalysts"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1844,12 +1904,14 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "ordinary psi crafting materials"
+        "Psidust",
+        "Psimetal",
+        "Psigem"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1882,13 +1944,13 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "herbs",
-        "ritual consumables"
+        "Runic Focus",
+        "ritual ingredients"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1921,13 +1983,12 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "ordinary ink and paper",
-        "writing reagents"
+        "Ancient Tomes of all four tiers"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1960,12 +2021,13 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "ordinary instrument and ritual supplies"
+        "Buffalo Hide",
+        "rare ritual ingredients"
       ],
       "kill_candidates": [],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1998,8 +2060,9 @@
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
-        "herbs",
-        "ordinary witchcraft ritual reagents"
+        "Mutandis",
+        "Mutandis Extremis",
+        "Drop of Luck"
       ],
       "kill_candidates": [
         "minecraft:witch",
@@ -2007,7 +2070,7 @@
       ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
-      "balance_status": "reward_ids_pending",
+      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -2066,70 +2129,120 @@
       "name": "Vampire",
       "provider": "JAWR",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "ordinary Hexerei blood bottle",
+        "ordinary Iron's blood vial; no special JAWR blood"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "werewolf",
       "name": "Werewolf",
       "provider": "JAWR",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "raw meat",
+        "Eternal Beef ingredients"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "lich_goety",
       "name": "Goety Lich",
       "provider": "Goety",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "Soul Energy",
+        "charged soul-storage items"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "lich_jawr",
       "name": "Forbidden Magic Lich",
       "provider": "JAWR/Forbidden Magic",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "Soul in a Bottle"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "archlich",
       "name": "Archlich",
       "provider": "both lich providers",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "both lich resource types"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "dragon_cave",
       "name": "Cave Dragon",
       "provider": "Dragon Survival",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "charred meat",
+        "charred seafood"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "dragon_forest",
       "name": "Forest Dragon",
       "provider": "Dragon Survival",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "fruit",
+        "preserves",
+        "allowed magical plant foods"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "dragon_sea",
       "name": "Sea Dragon",
       "provider": "Dragon Survival",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "sushi (no rice)",
+        "fish",
+        "seaweed"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "dracolich",
       "name": "Dracolich",
       "provider": "dragon + one lich",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "appropriate dragon foods",
+        "applicable lich resources"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "abomination",
       "name": "Abomination",
       "provider": "atomic composite",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "reward_themes": [
+        "ordinary blood",
+        "both lich resource types"
+      ],
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
     },
     {
       "id": "hunter",
@@ -2200,6 +2313,44 @@
       "minecraft:slime": 32,
       "minecraft:stray": 64
     },
-    "notes": "Tier floors are effort floors, not new ProjectE prices. Positive EMC value is still required. Reward-first, one reward and one filler preferred, native rarity weights and reputation. Lowest available reward tier never rep-gated, so boards cannot produce empty offers purely from reputation. Fixed quantity one-shot special reward output; premium-only decree uses difficult objectives rather than pretending rarity limits standalone board frequency."
+    "notes": "Tier floors are effort floors, not new ProjectE prices. Positive EMC value is still required. Reward-first, one reward and one filler preferred, native rarity weights and reputation. Lowest available reward tier never rep-gated, so boards cannot produce empty offers purely from reputation. Fixed quantity one-shot special reward output; premium-only decree uses difficult objectives rather than pretending rarity limits standalone board frequency.",
+    "gateway_budget_emc_proposal": {
+      "tmm:mob_ars_wilden_hunter": 1024,
+      "tmm:mob_irons_cultist": 1024,
+      "tmm:mob_irons_pyromancer": 2048
+    }
+  },
+  "board_distribution": {
+    "status": "owner_approved_distribution_pending_runtime",
+    "village_gen_frequency": 0,
+    "crafting": {
+      "retain_native": true,
+      "item": "bountiful:bountyboard"
+    },
+    "inn": {
+      "structure": "Adventurer's Inn",
+      "count": 1,
+      "starting_decree": "tmm_hunting",
+      "starting_decree_name": "Hunter's Decree",
+      "note": "Treat as general hunting decree available to all, not class-locked Hunter. Exact board block entity initialization and component serialization need live validation; coordinate housing owner."
+    },
+    "quest_shop": {
+      "item": "bountiful:bountyboard",
+      "count": 1,
+      "proposed_coins": 5,
+      "status": "proposed_price_pending_shop_owner_review"
+    }
+  },
+  "gateway_objective_policy": {
+    "status": "source_supported_configuration_pilot_pending_exact_binary_and_gameplay",
+    "trigger": "gateways:finish_gateway",
+    "required_amount": 1,
+    "credit": "native nearby players at success; carried matching bounty slips only; no open/wave/failure credit",
+    "excluded": [
+      "tmm:caerbannog",
+      "tmm:chaos_bunny"
+    ],
+    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
+    "source_revision": "9f36319a0b8d003e4b9a14c8c2e971ac8f863a2f"
   }
 }

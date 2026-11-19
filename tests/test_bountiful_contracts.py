@@ -142,4 +142,31 @@ class TestBountifulCompiler(unittest.TestCase):
             self.assertEqual(payouts[item]["rarity"],tier.upper())
         self.assertIn("irons_spellbooks:arcane_essence",payouts)
 
+    def test_board_worldgen_disabled(self):
+        files=m.compile_candidate(C,A,R)
+        cfg=json.loads(files["config/bountiful/bountiful.json"])
+        self.assertEqual(cfg["board"]["villageGenFrequency"],0)
+        self.assertEqual(C["board_distribution"]["inn"]["starting_decree"],"tmm_hunting")
+    def test_gateway_criteria_native_and_group_safe(self):
+        r=copy.deepcopy(R)
+        r["balance_profile"]="native_v1"
+        r["registered_items"]=["minecraft:bone","minecraft:arrow","minecraft:emerald"]
+        r["effective_emc"]={"minecraft:bone":32,"minecraft:arrow":4,"minecraft:emerald":512}
+        r["approved_reward_items"]=["minecraft:arrow","minecraft:emerald"]
+        gates=["tmm:mob_ars_wilden_hunter","tmm:mob_irons_pyromancer"]
+        r["registered_finite_gateways"]=gates
+        r["approved_gateway_ids"]=gates
+        r["approved_gateway_effort_emc"]={gates[0]:512,gates[1]:2048}
+        r["approved_entries"]={"hunting":{"rewards":[{"item":"minecraft:arrow","count":16,"rarity":"COMMON"},{"item":"minecraft:emerald","count":1,"rarity":"RARE"}],"objectives":[{"type":"gateway","gateway":g,"min":1,"max":1} for g in gates]+[{"item":"minecraft:bone","min":4,"max":128}]}}
+        files=m.compile_candidate(C,A,r)
+        obs=json.loads(files["config/bountiful/bounty_pools/tmm_hunting_objs.json"])["content"]
+        gate_entries=[e for e in obs.values() if e["type"]=="criteria"]
+        self.assertEqual({e["conditions"]["gateway"] for e in gate_entries},set(gates))
+        self.assertTrue(all(e["content"]=="gateways:finish_gateway" and e["amount"]=={"min":1,"max":1} for e in gate_entries))
+        rewards=json.loads(files["config/bountiful/bounty_pools/tmm_hunting_rews.json"])["content"]
+        self.assertIn({"type":"criteria","content":"gateways:finish_gateway"},rewards["item_minecraft_emerald"]["forbids"])
+        self.assertNotIn({"type":"criteria","content":"gateways:finish_gateway"},rewards["item_minecraft_arrow"].get("forbids",[]))
+        r["approved_gateway_ids"]=[]
+        with self.assertRaisesRegex(ValueError,"unreviewed finite gateway"):m.compile_candidate(C,A,r)
+
 if __name__=="__main__":unittest.main()
