@@ -106,7 +106,7 @@ Useful native combinations: Agronomic plus a real growing garden ->Jar->processi
 
 ## Addon scope and compatibility leads
 
-All seven are separately pinned profiles and part of completion scope. Unification, Ars n Spells and Controle are source-complete for pinned installed scopes; four addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
+All seven are separately pinned profiles and part of completion scope. Unification, Ars n Spells, Controle and Ocultas are source-complete for pinned installed scopes; three addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
 
 | Addon | Remaining full-route focus |
 | --- | --- |
@@ -114,7 +114,7 @@ All seven are separately pinned profiles and part of completion scope. Unificati
 | [Ars Controle](ars-controle.md) | **Source-complete** six devices/nine control glyphs, nativeguide/fullwalkthrough and actual pilot criteria; known native limitations and runtime acceptance remain. |
 | [Ars Elemental](ars-elemental.md) | Four schools/foci/armor, optional helpers/devices/biome routes beyond three fire-oriented pilot items. |
 | [Ars Elemancy](ars-elemancy.md) | Combined Essences, armor and Elemancer shard route with actual spell mechanics/gates. |
-| [Ars Ocultas](ars-ocultas.md) | Occultism bridge recipes/worker/jar/altar behavior, both endpoints/costs/ownership. |
+| [Ars Ocultas](ars-ocultas.md) | **Source-complete** Occultism workers/jars/gems/Altar/material routes and current nativeTier4 versus legacy file; known failure/metadata limits and runtime acceptance remain. |
 | [Ars 'n Spells](ars-n-spells.md) | **Source-complete** Loom/bind/cast, generic carriers, mana/payment/regen/utility and school/cooldown paths with exact Iron's endpoint; runtime acceptance remains. |
 | [Ars Unification](ars-unification.md) | **Source-complete** installed Farmer's Delight Cut and Occultism Crush routes, acquisition, batch/priority/failure rules and pilot gaps; runtime acceptance remains. |
 

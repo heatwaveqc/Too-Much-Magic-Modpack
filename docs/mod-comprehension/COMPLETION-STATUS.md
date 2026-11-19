@@ -38,7 +38,7 @@ The full research phase is **not complete** while required profiles remain resea
 | `ars-elemancy` | [profile](mods/ars-elemancy.md) | `ars_elemancy-1.21.1-1.18.3.jar` | sha1 `f7e01437c86fc74e2abb2ad93554dc20c30b214b` | 250 | 1 | researching |
 | `ars-elemental` | [profile](mods/ars-elemental.md) | `ars_elemental-1.21.1-0.7.10.4.jar` | sha1 `562f640916aa6f5c83b3b3ee2384ca828b870e01` | 183 | 2 | researching |
 | `ars-n-spells` | [profile](mods/ars-n-spells.md) | `ars_n_spells-3.3.5.jar` | sha512 `21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2` | 7 | 6 | source-complete |
-| `ars-ocultas` | [profile](mods/ars-ocultas.md) | `ars_ocultas-1.21.1-2.6.2.jar` | sha512 `4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5` | 4 | 0 | researching |
+| `ars-ocultas` | [profile](mods/ars-ocultas.md) | `ars_ocultas-1.21.1-2.6.2.jar` | sha512 `4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5` | 4 | 0 | source-complete |
 | `ars-unification` | [profile](mods/ars-unification.md) | `ars_unification-1.2.23.jar` | sha512 `e1da13185d03936adc9fc96162348081c7b788bdf77175758b26b805198d129ab9de761324b21afd6bdf76f1af2ad51b954dcea05389c0fa91e80d8c87a83498` | 0 | 0 | source-complete |
 | `extra-botany-revived` | [profile](mods/extra-botany-revived.md) | `ExtraBotany-1.21.1-1.0.4-NeoForge.jar` | sha1 `246e372964413d09c5f2fa0c93b95a4c224d1949` | 297 | 130 | researching |
 | `gaze-malum` | [profile](mods/gaze-malum.md) | `gaze-1.1.7.1.jar` | sha512 `7e9ecdcc996f376e280bf46f5c0cfd328fb6f1228b1dac469390031458e7a81ad56acff03d9bb6b57b8209586798ab443be1e91fa8fe56297a9e7c9451db03e2` | 24 | 0 | researching |
@@ -128,3 +128,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Ocultas exact2.6.2 guide/recipe/Altar companion:4currentrecipes+1legacypluralfile, reusable Imbuement catalysts, nativeJava guide and both-end nonconsuming ritual flag bridge. Spirit/SoulGem/finalroute audit remains;8complete34researchingunchanged. No runtime tests.
 
 - 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.

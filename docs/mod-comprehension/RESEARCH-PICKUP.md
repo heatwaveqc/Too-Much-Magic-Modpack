@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ocultas source completion
+
+- Ocultas2.6.2 SOURCE-COMPLETE with known limitations/metadata discrepancy explicit. Parent rewritten around2binarycompanions fullNotebook/4tierworker/3inputchannels/nativeoutputs/gem/Altar/transmutation and3pilot40–42 IDs/tasks/rewards. Current nativeOccultismTier4recipe confirmedduration510,Maridcraft,Beacon+2crystals+MaridEssence+Tier3+Iesniumblock, unlikelegacyaddonpluralfile. **9/42complete33researching**. Arsparentstillresearchingfor3addons/finalreview.
+- **Next Ars Elemental0.7.10.4** exactJAR full4schools/foci/armor/devices/helpers/biome/recipes/guide/pilot; thenElemancy1.18.3 andAdditions21.3.0; combinedArsreview; remainingmajors. Do not re-audit completedOcultas2/Controle4/nSpells5/Unification/native30companions.
+- Fetchedintegrationce771cae0dc9853076bd468677267f7f88c58ae4; Ocultas/Ars/Occultismpinsunchanged andall3artifacthashesrechecked. Externalocultas-fresh/ocultas-parent-fresh andartifacts retained. Sourcecomplete notloader/clientPASS; user-correctedmetadataissue staysnonblocking/no pinpatch. No blocker/hourlyactive,docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ocultas workers and Soul Gem
 
 - Added ars-ocultas-pinned-spirit-transfer.md: fourtierregistration, manual/getItemsToPickUp vs40tickdrop/canPickupItem vsrawcapability channels; firstmatchingfullblocksothercandidate, jobupdate/agepath, adjacentresultremainder and native4jobrecipientends. GUI/filterpacket lacksmenudistanceownerchecks; SoulGemdataremovedbeforevalidation, jarblacklistFAILmissingreturn, fragileclearsmainhandregardlessusedhand. Knownlimitations notfix/compatapproval. Exactparentselected12classes+inners freshocultas-parent-fresh, all46addonclassesocultas-fresh.

@@ -147,7 +147,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
-| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | researching | [profile](mods/ars-ocultas.md) |
+| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-ocultas.md) |
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | researching | [profile](mods/gaze-malum.md) |
@@ -397,3 +397,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ocultas exact2.6.2 guide/recipe/Altar companion:4currentrecipes+1legacypluralfile, reusable Imbuement catalysts, nativeJava guide and both-end nonconsuming ritual flag bridge. Spirit/SoulGem/finalroute audit remains;8complete34researchingunchanged. No runtime tests.
 
 - 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
