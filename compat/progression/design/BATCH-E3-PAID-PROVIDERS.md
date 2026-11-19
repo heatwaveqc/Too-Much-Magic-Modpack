@@ -15,3 +15,6 @@ Goety source-family Vivideru/Goety-3 main DarkWand a883c2a5b91243693e8b90b035e9d
 
 ## QA
 Pure observed-debit tests for invalid/infinite, overpayment/waste, partial/full and zero; regression source/module checks on commit. Verify all optional hooks hit pinned binaries, staff/packaged and overcast/no-op/creative, same holder not double counted, Roots both staffs and effect returns, Embers Curios/partial/sim free/tool/transfer, Goety totem/Arca/discount/cancel/no-effect/charging. No in-game tests yet. Goety disabled pending approved reference; E3 first source slice, not full gameplay-ready certification. E4 next after reviewing actual issues.
+
+## Owner approval 2026-11-18
+Goety fixed 500 Souls / 1000 base MXP and Primal fixed 50,000 centimana (500 displayed mana) / 1000 base MXP explicitly approved. Default config values changed from zero to these frozen references; actual native receipt guards and zero-disable options retained. Existing generated configs with explicit zero must be reconciled during authorized integration, not silently overwritten. Previous E4 head 85ac2d2 all four checks passed. No new skill grants or runtime acceptance claimed.

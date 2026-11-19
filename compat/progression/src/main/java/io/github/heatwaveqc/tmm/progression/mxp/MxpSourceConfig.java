@@ -57,10 +57,10 @@ public final class MxpSourceConfig {
             .defineInRange("roots_initial_terra",ResourceBaselines.ROOTS_STARTING_TERRA,0.0,1.0e12);
         EMBERS_PORTABLE_POOL=b.comment("Source-backed first Ember Jar capacity 2000, provisional fixed reference; 0 disables.")
             .defineInRange("embers_initial_jar",ResourceBaselines.EMBERS_FIRST_JAR,0.0,1.0e12);
-        GOETY_SOUL_POOL=b.comment("Awaiting owner approval of fixed Soul Energy reference. 0 disables; proposed EMC-derived 500 Souls per 1000 base MXP.")
-            .defineInRange("goety_soul_reference",0.0,0.0,1.0e12);
-        PRIMAL_CENTIMANA_POOL=b.comment("Awaiting approved fixed Primal reference. Native centimana units (100 per displayed mana). Proposed 50000 per 1000 MXP; 0 disables.")
-            .defineInRange("primal_centimana_reference",0.0,0.0,1.0e12);
+        GOETY_SOUL_POOL=b.comment("Owner-approved EMC-derived Soul Energy reference: 500 Souls per 1000 base MXP. 0 disables.")
+            .defineInRange("goety_soul_reference",ResourceBaselines.GOETY_EMC_SOUL_REFERENCE,0.0,1.0e12);
+        PRIMAL_CENTIMANA_POOL=b.comment("Owner-approved EMC-derived Primal reference: 500 displayed mana (50000 centimana) per 1000 base MXP. 0 disables.")
+            .defineInRange("primal_centimana_reference",ResourceBaselines.PRIMAL_EMC_CENTIMANA_REFERENCE,0.0,1.0e12);
         MAHOU_INITIAL_POOL=b.comment("Mahou Tsukai 1.36.31 native initial maximum 100: fixed practice reference; 0 disables.")
             .defineInRange("mahou_initial_pool",100.0,0.0,1.0e12);
         b.push("pastel_dye_emc");

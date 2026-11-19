@@ -23,4 +23,8 @@ class ResourceBaselineTest {
         assertEquals(50.0, MxpMath.normalizedBase(250.0, pool), 1e-9);
         assertEquals(1000.0, MxpMath.normalizedBase(pool, pool), 1e-9);
     }
+    @org.junit.jupiter.api.Test void approvedGoetyAndPrimalReferences(){
+        org.junit.jupiter.api.Assertions.assertEquals(500.0,ResourceBaselines.GOETY_EMC_SOUL_REFERENCE);
+        org.junit.jupiter.api.Assertions.assertEquals(50_000.0,ResourceBaselines.PRIMAL_EMC_CENTIMANA_REFERENCE);
+    }
 }

@@ -25,5 +25,8 @@ public final class ResourceBaselines {
     public static final double EVILCRAFT_PORTABLE_BLOOD = 5_000.0;
     public static final double ROOTS_STARTING_TERRA=40.0;
     public static final double EMBERS_FIRST_JAR=2000.0;
+    // Owner approved both EMC-derived references 2026-11-18.
+    public static final double GOETY_EMC_SOUL_REFERENCE=500.0;
+    public static final double PRIMAL_EMC_CENTIMANA_REFERENCE=50_000.0;
     private ResourceBaselines() {}
 }
