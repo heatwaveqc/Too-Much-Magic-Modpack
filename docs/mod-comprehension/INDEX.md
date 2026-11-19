@@ -399,3 +399,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
 
 - 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
+
+- 2026-11-19 — Ars Elemental exact 0.7.10.4 artifact hash matched; native Notebook registration and Urn acquisition/linking/fluid/payment/manual bucket paths audited. Botania fallback is a stub; cauldron needs external fluid capability. New [companion](mods/ars-elemental-pinned-guide-urn.md); addon remains researching, total 9/42 source-complete.

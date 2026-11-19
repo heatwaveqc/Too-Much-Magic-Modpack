@@ -112,7 +112,7 @@ All seven are separately pinned profiles and part of completion scope. Unificati
 | --- | --- |
 | [Ars Additions](ars-additions.md) | Advanced Wand, Warp Index/Ender Source, Wixie Apparatus, glyphs/rituals/structures/Codex and actual controls, not just3pilot items. |
 | [Ars Controle](ars-controle.md) | **Source-complete** six devices/nine control glyphs, nativeguide/fullwalkthrough and actual pilot criteria; known native limitations and runtime acceptance remain. |
-| [Ars Elemental](ars-elemental.md) | Four schools/foci/armor, optional helpers/devices/biome routes beyond three fire-oriented pilot items. |
+| [Ars Elemental](ars-elemental.md) | Exact binary guide/Urn companion now covers wand linking, fluid capability, payment and false Botania fallback. Four schools/foci/armor and other helper/device/biome routes remain researching beyond three fire-oriented pilot items. |
 | [Ars Elemancy](ars-elemancy.md) | Combined Essences, armor and Elemancer shard route with actual spell mechanics/gates. |
 | [Ars Ocultas](ars-ocultas.md) | **Source-complete** Occultism workers/jars/gems/Altar/material routes and current nativeTier4 versus legacy file; known failure/metadata limits and runtime acceptance remain. |
 | [Ars 'n Spells](ars-n-spells.md) | **Source-complete** Loom/bind/cast, generic carriers, mana/payment/regen/utility and school/cooldown paths with exact Iron's endpoint; runtime acceptance remains. |

@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Elemental native guide/Urn
+
+- Exact Elemental0.7.10.4 recovered: 2273778bytes, SHA1 562f640916aa6f5c83b3b3ee2384ca828b870e01, all353classes CFR0.152 externally elemental-fresh;183singularrecipes external elemental-recipes.json. Added ars-elemental-pinned-guide-urn.md native Java Notebook inventory and exact Urn recipe/link/side/cadence/payment/manualbucket. Urn default100Source pertarget/60ticks,1000mBoffer only if simulation>100; output before unchecked debit. BotaniaCompat methods both false; cauldron needs external capability, guide not proof. Manual BucketPickup returns WaterBucket without Source check. Parent DominionWand first Urn then target; strict stores FIRST face, nullable default.
+- **Next Elemental foci/armor**: common/items/foci ElementalFocus/GreaterElementalFocus/NecroticFocus; armor ElementalArmor/ArmorSet and all weight classes/perks; ConfigHandler; 48sauce armor recipes, MarkMastery and four school lesser/greater recipes. Then39glyphs/12tomes, SirenShrine/helpers, turrets/lenses/relays/bags/bangles, worldgen/VexingCaves; final actualpilot35–37 and fullroute review. Full353classes already external, no re-inventory/Urn re-audit. Then Elemancy/Additions/Ars parent review/remainingmajors.
+- 9/42complete33researching unchanged; no blocker. Docs-only, no subagents/assembly/server/client/runtime edits/merge. Hourly continuation active. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ocultas source completion
 
 - Ocultas2.6.2 SOURCE-COMPLETE with known limitations/metadata discrepancy explicit. Parent rewritten around2binarycompanions fullNotebook/4tierworker/3inputchannels/nativeoutputs/gem/Altar/transmutation and3pilot40–42 IDs/tasks/rewards. Current nativeOccultismTier4recipe confirmedduration510,Maridcraft,Beacon+2crystals+MaridEssence+Tier3+Iesniumblock, unlikelegacyaddonpluralfile. **9/42complete33researching**. Arsparentstillresearchingfor3addons/finalreview.

@@ -130,3 +130,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
 
 - 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
+
+2026-11-19 Elemental checkpoint: exact hash/353 binary classes/183 recipes recovered externally; [guide and Urn audit](mods/ars-elemental-pinned-guide-urn.md) completes this slice only. Other major addon systems remain researching. Counts unchanged: 9 complete, 33 researching. No runtime acceptance claimed.

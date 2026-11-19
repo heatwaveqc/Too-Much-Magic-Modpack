@@ -6,8 +6,10 @@
 | Parent | [Ars Nouveau](ars-nouveau.md) |
 | Pack pin | `ars_elemental-1.21.1-0.7.10.4.jar`; SHA-1 `562f640916aa6f5c83b3b3ee2384ca828b870e01` |
 | Source snapshot | Exact release-version source found at [commit 2c433b6](https://github.com/Alexthw46/Ars-Elemental/commit/2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2); Gradle declares 0.7.10.4 / MC 1.21.1 and Ars 5.13.2.1418, while TMM pins Ars 5.13.5. |
-| Status | **researching** — addon source now matches the 0.7.10.4 pin and exposes substantially more than the three pilot items; source-to-JAR equivalence, Ars dependency compatibility and gameplay remain open. |
-| Guide | Exact release source includes Ars Notebook content; its page inventory and presentation still need assembled-client confirmation. Cite the item's JEI recipe/use plus the matching Focus or armor page when present. |
+| Status | **researching** — addon source now matches the 0.7.10.4 pin and exposes substantially more than the three pilot items; exact JAR hash matched and all 353 classes decompiled; guide and Urn now audited in the companion below. Other subsystem walkthroughs, dependency compatibility and gameplay remain open. |
+| Guide | Exact binary registers native Notebook pages and edits parent pages; see the guide inventory below. Presentation still needs assembled-client confirmation. |
+
+Exact binary companion: [native guide and Urn](ars-elemental-pinned-guide-urn.md), including recipe, wand order, per-target cadence/payment, capability restrictions and manual bucket path. Remaining sections retain explicit unaudited/source-version limits.
 
 ## Player systems and progression
 
@@ -18,7 +20,7 @@ There is no single linear tier ladder. The player chooses elemental schools and 
 | Focus selection | Craft lesser elemental foci; the school’s glyphs gain amplification/discount while other elemental schools are weakened. Major focus can add condition-based benefits. | Teach one choice as a reversible specialization; identify tradeoff before equipping. Pilot teaches Lesser Focus of Fire only. |
 | Focus-enhanced spell effects | Fire Focus changes Ignite (Magic Burn/armor interaction), Water changes Freeze and Conjure Water, Air changes Launch/Cut, Earth changes Grow/Gravity. Necrotic focus is a separate Anima route. | Recipe page and focus-specific spell page required; effects are conditional on wearing the focus. Details derive from 0.7.11.0 source and require 0.7.10.4 check. |
 | Elemental armor | Four elemental sets: each piece amplifies and discounts school glyphs and reduces matching damage; full set converts some mitigated damage to mana and triggers a school benefit. Higher armor tiers and Mark of Mastery are part of the route. | Teach recipe tier, retained threads/enchants, full-set activation and the proper element. Pilot uses Fire Hat only, not complete armor progression. |
-| Urn of Endless Waters | Convert Ars Source into water and link a supported destination (e.g., cauldron or Botania Apothecary). | A Source sink with fluid output; verify supported targets and rate. Pilot has a recipe milestone, not an output test. |
+| Urn of Endless Waters | Link a block fluid capability within 30; offer 1,000 mB per target every 60 ticks for default 100 Source per successful attempt. Cauldron needs an external capability; Botania fallback is a false-returning stub. Manual BucketPickup has no Source check. | A Source sink with fluid output; verify supported targets and rate. Pilot has a recipe milestone, not an output test. |
 | Siren Shrine | Befriend wild Siren with sea pickle; summon charm; place shrine and build diverse water-animal/plant habitat; supply Source per fishing-loot cycle. | Renewable fishing loot. Requires setup and time; pilot omits it. |
 | Flashjack / Flarecannon / Weald Walker | Find/befriend/assign helpers; link Flashjack to compatible turrets, use Dominion Wand for patrol/targets. Some defeated sentries can be reactivated with blaze powder or magma cream. | Defensive helper branch; exact acquisition, targets and output need exact-pin comparison. |
 | Turrets, relays and prisms | Elemental turrets inherit some focus traits and discount matching spells; elemental Source Relays raise capacity/transfer; prism lenses can alter redirected spells and some consume Source. | Utility and defense. Teach placement/configuration, Source input and limits; not covered by the pilot's 3 quests. |
@@ -28,7 +30,7 @@ There is no single linear tier ladder. The player chooses elemental schools and 
 
 1. Choose and craft a lesser Focus; equip and compare an affected and unaffected spell/school.
 2. Build elemental armor via JEI recipe chain; teach its tier, school bonuses, full-set condition and thread/enchantment retention.
-3. Configure an Urn into a test cauldron, confirm Source decreases and water appears; test unsupported/no-Source boundaries.
+3. Configure an Urn into a verified water-accepting capability block; follow the exact linking/payment boundaries in the companion. Cauldron/Apothecary guide promises need separate capability proof.
 4. For any chosen helper/shrine/turret/prism branch, teach its acquisition, placement/configuration, resource cost, observable operation and maintenance.
 5. Keep worldgen/exploration content optional; locate exact biome/structure rules and Notebook entry before promising an item route.
 
@@ -38,5 +40,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 
 - Exact pin/hash and item/recipe evidence: `manifest/ars_quest_pilot.json`.
 - Version-ahead primary source for focus and subsystem descriptions: [AELangDatagen.java at commit f2a1dd1](https://github.com/Alexthw46/Ars-Elemental/blob/f2a1dd1faa2ad7e6ad00c2919120ea4fc241cdf0/src/main/java/alexthw/ars_elemental/datagen/AELangDatagen.java).
-- Unresolved: inspect the exact JAR against release commit 2c433b6; verify recipes, biome/loot conditions, attribute hooks and all addon guide entries in the assembled pack.
+- Exact JAR recovered and SHA1 matched: 2,273,778 bytes, 353 classes; 183 singular recipe resources. Guide registration and Urn audited from binary; inventory alone is not source completion. Remaining foci/armor/glyph/device/helper/worldgen routes and assembled-client presentation remain open.
 - Not run: Source-to-water output and rate; full-set armor trigger; Siren Shrine source/output cycle; turret focus synergy; prism costs and target boundary.
