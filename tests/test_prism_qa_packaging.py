@@ -97,6 +97,7 @@ def main() -> None:
                 opts = z.read("minecraft/options.txt").decode()
                 assert opts.replace("\r\n", "\n").startswith("version:3955\n")
                 assert opts.splitlines().count("onboardAccessibility:false") == 1
+                assert [l for l in opts.splitlines() if l.startswith("tutorialStep:")] == ["tutorialStep:none"]
                 assert not any(l.startswith("narrator:") for l in opts.splitlines()), "Never force narrator off"
                 assert "guiScale:3" in opts
                 assert "soundCategory_master:0.55" in opts

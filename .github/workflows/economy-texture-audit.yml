@@ -1,0 +1,32 @@
+name: Economy texture pin survey (read-only)
+on:
+  push:
+    branches: ['feature/economy-apotheosis-gem-emc']
+    paths: ['compat/economy/tools/audit-textures.py', '.github/workflows/economy-texture-audit.yml', 'compat/economy/tools/generate-emc-textures.py']
+permissions:
+  contents: read
+jobs:
+  survey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow
+      - run: python compat/economy/tools/audit-textures.py "$RUNNER_TEMP/texture-pins"
+      - name: Generate and validate only the new texture sheets
+        run: |
+          python compat/economy/tools/generate-emc-textures.py "$RUNNER_TEMP/texture-pins/Botania-Revived-1.21.1-2.0.2-NeoForge.jar" "$RUNNER_TEMP/emc-art"
+          python - <<'PY'
+          import base64, pathlib, os, io
+          from PIL import Image
+          for p in sorted((pathlib.Path(os.environ["RUNNER_TEMP"])/"emc-art").glob("*")):
+              print("ART_FILE_"+p.name+"="+base64.b64encode(p.read_bytes()).decode())
+              if p.suffix==".png":
+                  im=Image.open(p).convert("RGBA")
+                  frame=im.crop((0,0,16,16)).resize((128,128),Image.Resampling.NEAREST)
+                  buf=io.BytesIO();frame.save(buf,format="PNG")
+                  print("ART_PREVIEW_"+p.name+"="+base64.b64encode(buf.getvalue()).decode())
+          PY

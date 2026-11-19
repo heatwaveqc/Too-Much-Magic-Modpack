@@ -1,0 +1,27 @@
+{
+  "comment": "One soul = 32 EMC; XPetrified Orb supplies 91 vanilla XP at 5 EMC per raw point.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:soul",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:corrupt_soul",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:enchanted_soul",
+        "emc_value": 320
+      },
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:xpetrified_orb",
+        "emc_value": 455
+      }
+    ]
+  }
+}

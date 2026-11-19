@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "minecraft:nether_star",
+    "draconicevolution:dragon_heart",
+    "deeperdarker:heart_of_the_deep"
+  ]
+}

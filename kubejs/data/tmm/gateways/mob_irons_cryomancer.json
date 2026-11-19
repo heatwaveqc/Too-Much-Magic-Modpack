@@ -1,0 +1,62 @@
+{
+  "type": "gateways:normal",
+  "size": "small",
+  "color": "#9D63C9",
+  "rules": {
+    "spawn_range": 8,
+    "leash_range": 32,
+    "spacing": 48,
+    "remove_mobs_on_failure": true,
+    "requires_nearby_player": true
+  },
+  "waves": [
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:cryomancer",
+          "count": 1,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 100
+    },
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:cryomancer",
+          "count": 2,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 160
+    },
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:cryomancer",
+          "count": 3,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 160
+    }
+  ],
+  "rewards": [
+    {
+      "type": "gateways:experience",
+      "experience": 40,
+      "orb_size": 20
+    },
+    {
+      "type": "gateways:stack",
+      "stack": {
+        "id": "improvableskills:parchment_fragment",
+        "count": 1
+      }
+    }
+  ],
+  "failures": []
+}

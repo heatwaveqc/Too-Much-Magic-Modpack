@@ -1,0 +1,106 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "seal": "tmm_economy:block/emc_jar_seal",
+    "particle": "tmm_economy:block/emc_jar_seal"
+  },
+  "elements": [
+    {
+      "from": [
+        6.75,
+        14.05,
+        2.98
+      ],
+      "to": [
+        9.25,
+        15.95,
+        2.98
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#seal"
+        }
+      }
+    },
+    {
+      "from": [
+        6.75,
+        14.05,
+        13.02
+      ],
+      "to": [
+        9.25,
+        15.95,
+        13.02
+      ],
+      "shade": false,
+      "faces": {
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#seal"
+        }
+      }
+    },
+    {
+      "from": [
+        2.98,
+        14.05,
+        6.75
+      ],
+      "to": [
+        2.98,
+        15.95,
+        9.25
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#seal"
+        }
+      }
+    },
+    {
+      "from": [
+        13.02,
+        14.05,
+        6.75
+      ],
+      "to": [
+        13.02,
+        15.95,
+        9.25
+      ],
+      "shade": false,
+      "faces": {
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#seal"
+        }
+      }
+    }
+  ]
+}

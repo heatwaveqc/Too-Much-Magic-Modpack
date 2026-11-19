@@ -1,0 +1,34 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.heatwaveqc.tmm.economy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ScrollKnowledgeMixin",
+    "ScrollConsumeMixin",
+    "ScrollQuickMoveMixin",
+    "ScrollOutputMixin",
+    "ExpansionScrollImportMixin",
+    "ExpansionScrollTabletMixin",
+    "ExpansionScrollReturnMixin",
+    "ExpansionScrollCollectionMixin",
+    "RelicTemplateMixin",
+    "TomeTemplateMixin",
+    "TomeMaterializationMixin",
+    "TomeCondenserLockMixin",
+    "ExpansionTomeCondenserLockMixin",
+    "OpConverterConfigMixin",
+    "OpConverterLedgerMixin",
+    "OpConverterTierMixin",
+    "OpConverterStatusMixin",
+    "OpConverterTooltipMixin",
+    "StoredResourceGuardMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "JadeOpDisplayMixin",
+    "TitaniumOpDisplayMixin"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "comment": "Media parity: 50,000 per ordinary shard, 10,000 per dust, 100,000 per charged shard. Dust rounded down at native amethyst anchor 32 EMC to avoid a fractional packing arbitrage; recalculate this seed if the final shard anchor changes. Reversible dust block uses the rounded dust value.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "hexcasting:amethyst_dust",
+        "emc_value": 6
+      }
+    ],
+    "conversion": [
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 2,
+            "id": "minecraft:amethyst_shard"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "hexcasting:charged_amethyst"
+        }
+      },
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 4,
+            "id": "hexcasting:amethyst_dust"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "hexcasting:amethyst_dust_block"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "comment": "Batch 4 provisional relative costs: base input EMC plus one fake EMC unit per 20 consumed Mana. Keep native infusion recipes; retire these explicit transitions when the resource-aware mapper owns them. Verify final graph and alternative routes.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:fake",
+        "description": "tmm_batch4_mana_emc_unit",
+        "emc_value": 1
+      }
+    ],
+    "conversion": [
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "id": "minecraft:iron_ingot"
+          },
+          {
+            "type": "projecte:fake",
+            "description": "tmm_batch4_mana_emc_unit",
+            "amount": 150
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "botania:manasteel_ingot"
+        }
+      },
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "id": "minecraft:ender_pearl"
+          },
+          {
+            "type": "projecte:fake",
+            "description": "tmm_batch4_mana_emc_unit",
+            "amount": 300
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "botania:mana_pearl"
+        }
+      },
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "id": "minecraft:diamond"
+          },
+          {
+            "type": "projecte:fake",
+            "description": "tmm_batch4_mana_emc_unit",
+            "amount": 500
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "botania:mana_diamond"
+        }
+      }
+    ]
+  }
+}
