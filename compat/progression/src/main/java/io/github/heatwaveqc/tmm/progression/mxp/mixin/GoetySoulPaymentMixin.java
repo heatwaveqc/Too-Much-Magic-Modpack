@@ -20,6 +20,10 @@ public abstract class GoetySoulPaymentMixin {
     private void tmm$cast(ItemStack stack,Level level,LivingEntity caster,@Coerce Object spell,Operation<Void> original){
         NativePaidSources.Goety.cast(caster,()->original.call(stack,level,caster,spell));
     }
+    @WrapOperation(method=RESULTS,at=@At(value="INVOKE",target="Lcom/Vivideru/Goety/common/magic/SpellTypeDamage;cast(Lcom/Polarice3/Goety/api/magic/ISpell;Ljava/lang/Runnable;)V"),require=0,remap=false)
+    private void tmm$effect(@Coerce Object spell,Runnable effect,Operation<Void> original){
+        original.call(spell,(Runnable)()->NativePaidSources.Goety.effect(effect));
+    }
     @WrapOperation(method=RESULTS,at=@At(value="INVOKE",target="Lcom/Polarice3/Goety/utils/SEHelper;decreaseSouls(Lnet/minecraft/world/entity/player/Player;I)V"),require=0,remap=false)
     private void tmm$debit(Player player,int cost,Operation<Void> original){
         Object before=NativePaidSources.Goety.before(player);

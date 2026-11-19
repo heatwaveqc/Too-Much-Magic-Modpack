@@ -141,7 +141,7 @@ public final class NativePaidSources {
         private static final String ENERGY="com.Polarice3.Goety.api.items.magic.ITotem";
         private static final ThreadLocal<Scope> CURRENT=new ThreadLocal<>();
         private static final class Scope{
-            final ServerPlayer player;double nominal,paid;boolean valid=true;
+            final ServerPlayer player;double nominal,paid;int expected=-1;boolean valid=true,debitting,finished;Wallet paymentWallet;
             Scope(ServerPlayer p){player=p;}
         }
         private record Wallet(boolean arca,Object identity,double amount){}
@@ -154,20 +154,52 @@ public final class NativePaidSources {
             return new Wallet(false,stack,MxpReflect.number(MxpReflect.staticCall(ENERGY,"currentSouls",stack)));
         }
         public static void cast(net.minecraft.world.entity.LivingEntity caster,Runnable run){
-            if(!(caster instanceof ServerPlayer p)||!eligible(p)||MxpSourceConfig.GOETY_SOUL_POOL.get()<=0){run.run();return;}
+            if(!(caster instanceof ServerPlayer p)||!MxpPlayerPolicy.eligible(p)){run.run();return;}
             Scope outer=CURRENT.get();if(outer!=null){outer.valid=false;run.run();return;}
             Scope s=new Scope(p);CURRENT.set(s);
-            try{run.run();if(s.valid)credit(p,"goety:soul_energy",s.nominal,MxpSourceConfig.GOETY_SOUL_POOL.get(),s.paid);}
-            finally{CURRENT.remove();}
+            try{
+                run.run();
+                if(s.valid&&s.finished&&ObservedPayment.funded(s.paid,s.expected)){
+                    credit(p,"goety:soul_energy",s.nominal,MxpSourceConfig.GOETY_SOUL_POOL.get(),s.paid);
+                    rebate(s);
+                }
+            }finally{CURRENT.remove();}
         }
-        public static Object before(Player p){Scope s=CURRENT.get();return s==null||s.player!=p?null:wallet(p);}
+        public static Object before(Player p){
+            Scope s=CURRENT.get();if(s==null||s.player!=p)return null;
+            if(s.debitting||s.paymentWallet!=null){s.valid=false;return null;}
+            s.debitting=true;return wallet(p);
+        }
+        public static void price(Player p,int price){
+            Scope s=CURRENT.get();if(s==null||s.player!=p||!s.debitting)return;
+            if(s.expected!=-1||price<0)s.valid=false;
+            s.expected=price;
+        }
+        public static void effect(Runnable effect){
+            Scope s=CURRENT.get();effect.run();if(s!=null)s.finished=true;
+        }
+        private static void rebate(Scope s){
+            if(s.paymentWallet==null||s.paid<=1)return;
+            var p=s.player;var current=wallet(p);
+            if(current==null||current.arca!=s.paymentWallet.arca||current.identity!=s.paymentWallet.identity)return;
+            int amount=io.github.heatwaveqc.tmm.progression.foundation.LichSkillMath.rebate((int)s.paid,
+                io.github.heatwaveqc.tmm.progression.runtime.forms.LichEffects.rate(p,"lich_soul_treasury"));
+            if(amount<=0)return;
+            // Native capped refill, bypass the earned-gain event. Same wallet only.
+            if(current.arca){
+                MxpReflect.staticCall(SE,"increaseSESouls",p,amount);
+                MxpReflect.staticCall(SE,"sendSEUpdatePacket",p);
+            }else MxpReflect.staticCall(ENERGY,"increaseSouls",current.identity,amount);
+        }
         public static void removed(Player p,int cost,Object raw){
-            Scope s=CURRENT.get();if(s==null||s.player!=p||cost<=0||!(raw instanceof Wallet before))return;
+            Scope s=CURRENT.get();if(s==null||s.player!=p)return;
+            s.debitting=false;
+            if(cost<=0||!(raw instanceof Wallet before)){s.valid=false;return;}
             Wallet after=wallet(p);
             if(after==null||before.arca!=after.arca||before.identity!=after.identity||s.paid>0){s.valid=false;return;}
             double paid=ObservedPayment.delta(before.amount,after.amount);
             if(paid>cost+1e-6){s.valid=false;return;}
-            s.nominal=cost;s.paid=paid;
+            s.nominal=cost;s.paid=paid;s.paymentWallet=after;
         }
     }
 }
