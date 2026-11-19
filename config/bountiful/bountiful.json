@@ -1,5 +1,25 @@
 {
   "board": {
     "villageGenFrequency": 0
+  },
+  "bounty": {
+    "allowDecreeMixing": false,
+    "fillerCountPreference": {
+      "max": 1,
+      "min": 1
+    },
+    "fillerDifficultyModifierPercent": 75,
+    "initialCountPreference": {
+      "max": 1,
+      "min": 1
+    },
+    "reverseMatchingAlgorithm": false,
+    "shouldHaveTimersAndExpire": true
+  },
+  "general": {
+    "dataPathsToExclude": [
+      "bounty_pools/.+",
+      "bounty_decrees/.+"
+    ]
   }
 }

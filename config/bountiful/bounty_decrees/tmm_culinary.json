@@ -1,0 +1,13 @@
+{
+  "canReveal": true,
+  "canSpawn": true,
+  "canWanderBuy": false,
+  "linkedProfessions": [],
+  "objectives": [
+    "tmm_culinary_objs"
+  ],
+  "replace": true,
+  "rewards": [
+    "tmm_culinary_rews"
+  ]
+}
