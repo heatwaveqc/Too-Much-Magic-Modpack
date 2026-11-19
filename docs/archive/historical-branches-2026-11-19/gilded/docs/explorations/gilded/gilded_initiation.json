@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "design_only_pending_java_adapter",
+  "path": "tmm_progression:gilded",
+  "trigger": {
+    "event": "successful_food_consumption",
+    "food_item_tag": "#tmm_progression:gilded_rite_foods",
+    "consume_item_normally": true
+  },
+  "conditions": {
+    "dimension": "minecraft:the_nether",
+    "equipment_slots": {
+      "head": "minecraft:golden_helmet",
+      "chest": "minecraft:golden_chestplate",
+      "legs": "minecraft:golden_leggings",
+      "feet": "minecraft:golden_boots"
+    },
+    "must_be_real_server_player": true,
+    "exclude_creative_and_spectator": true,
+    "not_already_joined": true
+  },
+  "on_success": {
+    "join_path": "tmm_progression:gilded",
+    "award_rite_xp": 0,
+    "notify_player": true
+  },
+  "qa_note": "Server-only successful consumption; verify all armor slots and dimension at Finish, not merely start-use. Use ProgressionApi.join; reject manual command enrollment. This file requires a custom native adapter and is not recognized automatically by PathJson."
+}
