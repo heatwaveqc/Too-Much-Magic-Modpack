@@ -14,6 +14,7 @@ import io.github.heatwaveqc.tmm.progression.runtime.VirtualElytra;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterBrewing;
 import io.github.heatwaveqc.tmm.progression.runtime.StandPotionEligibility;
 import io.github.heatwaveqc.tmm.progression.runtime.HunterItems;
+import io.github.heatwaveqc.tmm.progression.runtime.BountifulDecreeSeals;
 import io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -43,6 +44,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
+        BountifulDecreeSeals.register();
         NewbieMode.register();
         TyzMonkBridge.register();
         // JAWR/Tyz are optional; only install experimental form prefabs/listeners
