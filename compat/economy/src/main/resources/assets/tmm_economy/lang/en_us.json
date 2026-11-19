@@ -37,5 +37,7 @@
   "tmm_economy.mapper.pastel_recipes": "TMM Pastel Recipe Mapper",
   "tmm_economy.mapper.pastel_recipes.tooltip": "Map plain material recipes and verified colored ink costs.",
   "tmm_economy.mapper.iron_scrolls": "TMM Iron Scroll Recipe Mapper",
-  "tmm_economy.mapper.iron_scrolls.tooltip": "Derive scroll values for burning and template duplication, not knowledge production."
+  "tmm_economy.mapper.iron_scrolls.tooltip": "Derive scroll values for burning and template duplication, not knowledge production.",
+  "block.tmm_economy.emc_catalyst": "EMC Catalyst",
+  "block.tmm_economy.emc_source_jar": "EMC Source Jar"
 }
