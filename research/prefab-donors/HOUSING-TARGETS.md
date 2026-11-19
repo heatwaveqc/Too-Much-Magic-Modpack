@@ -1,4 +1,4 @@
-# Tyr starter housing — approved targets and donor tracker
+# Too Much Magic starter housing — approved targets and donor tracker
 Updated 2026-11-18. Authority: issue #236; next comprehensive QA required for base Prefab (#287, PR #352). Research only; do not index raw donors or launch a build.
 
 ## Approved design
@@ -78,3 +78,7 @@ Seven floors fixed, 8-block pitch; Psi stations and practice area share floor 2 
 
 ## Owner fixed-multiblock accommodation rule (2026-11-18)
 Every school-themed home must reserve usable construction space for primary AND secondary mods' fixed multiblocks, full upgrades and independent simultaneous machines, including actual vertical/subfloor, interaction, sky/fluid/placement constraints. Space/guide marks only, no free gated machinery. Applies to original and imported houses before final acceptance. [Pastel and donor fit survey](design/multiblock-fit-survey.md): upstream source 23 Pastel definitions audited; five principal machine families, 13×7×13 largest pedestal, 16×14×13 geode illustration. No Alloy Forgery entry in current index. Exact Pastel pin/non-book station survey outstanding. Initial donor fit flags Neo Vitae transcendent 25×9×25 and Astral legacy 19×19×6 altar versus narrow donor footprints; reserve extensions. All five need exact mod+clear-space audit, not passed by external dimensions. No runtime changes or new designs finalized.
+
+
+## Chromatic Manor — approved aesthetic reference (2026-11-18)
+Owner selected **Grayside Manor**, by **SweetlyStarship Builds**, as the architectural aesthetic for the original Pastel × Hexcasting house. Reference image: https://i.pinimg.com/736x/32/4e/3f/324e3f4e168d57a54e8db31e53224746.jpg ; source pin: https://ie.pinterest.com/pin/18084835998275607/ ; creator: https://www.patreon.com/SweetlyStarship . Use the pale masonry, steep white-trimmed gables, warm brown roofs, amethyst-purple window accents, lush climbing greenery, layered facade and welcoming entrance as visual inspiration. Grow the original layout around the already recorded multiblock envelopes and subterranean geode. Reference only: do not copy the schematic or redistribute the reference image without permission, do not claim the original build is licensed for reuse. Exact source post and redistribution rights unconfirmed. Project naming correction: use Too Much Magic (TMM), not Tyr, in new work; historical artifact names/paths unchanged.
