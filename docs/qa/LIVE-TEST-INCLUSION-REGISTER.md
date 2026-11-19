@@ -4,6 +4,18 @@
 
 **This document is an intake and inclusion-decision ledger, NOT a pass report.** See [CURRENT-TEST-STATUS.md](CURRENT-TEST-STATUS.md) for what was actually tested and [NEXT-TEST-CODEX-CHECKLIST.md](NEXT-TEST-CODEX-CHECKLIST.md) for the live-test procedure. The authoritative runtime source lock is [manifest/integration-sources.json](../../manifest/integration-sources.json). **A prior `deferred_pending_runtime` entry is not an inclusion decision for a later comprehensive test.**
 
+## Owner-required next QA pins — Dragon Survival and Bountiful (2026-11-19)
+
+**REQUIRED inclusion attempt; pin-only reconciliation proposal.** The owner explicitly corrected the missing Dragon Survival pin (required to test the Dracolich skeletal model and skin) and requires Bountiful in the next comprehensive build. At inspected integration SHA `1afb7b418831f835e8e65683c2e16f5fbdba8af5`, neither mod nor Kambrik appears in active Packwiz/manifest. Restore Dragon Survival rather than selecting a new version; independently verify the exact provider artifact before assembly.
+
+| Pin | Exact release | Dependency / runtime acceptance |
+| --- | --- | --- |
+| Dragon Survival | CurseForge project 420799 file 9539454, v2.0.74, SHA1 e11429dda4688711e174625bb7420873a255a715 (existing scripts/pin_next_test_mods.py) | GeckoLib 4.9.3 already pinned. Recheck bytes and metadata. Verify transformation, Cave/Center Dracolich skeletal model and skin, real form gate, relog, both acquisition orders, diet and other dragon species as applicable. |
+| Bountiful | Modrinth BpwWFOVM/swTb6NU9, 8.0.0-beta.2 | Exact provider SHA512 and JAR metadata checked in [targeted audit 44613539906](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44613539906). Beta JAR metadata declares Minecraft bare 1.21 despite provider 1.21.1 support; verify actual runtime compatibility. |
+| Kambrik | Modrinth zfbCkvdZ/rCSmCZpX, 8.0.0-beta.2 | Required by Bountiful. Exact artifact verified in same audit; needs NeoForge >=21.1.194 and Kotlin for Forge >=5 (current 21.1.265 and 5.12.0). Percale 1.0.0-beta.1 is embedded, no separate pin. |
+
+Bountiful integration [#365](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/365) / [PR #366](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/366) remains in development (custom reward pools, default-data suppression, recipes and balance/runtime acceptance pending). Pin independently to avoid losing the required mod again; **do not treat the stock bounty configuration or unfinished Bountiful behavior as approved survival gameplay**. Before owner-authorized comprehensive build, reconcile #366's reviewed runtime files with this exact pin and record blockers rather than silently omitting either mod. License metadata for Bountiful differs between project LGPL-3.0-only and JAR GPL 3.0; original-host download pin only, no redistribution. No assembly, full boot, Prism packaging or client acceptance authorized by this source change.
+
 ## Historical branch deferral reconciliation — 2026-11-19
 
 The following five historical source PRs were replaced by reviewed, merged integration PRs. Their original branch tips are no longer required for source selection; the exact original closed PR head refs and current integration successors remain recorded in `manifest/integration-sources.json` and issue #356. The obsolete retirement-only entries are removed from `deferred_pending_runtime`, **not** from the next comprehensive QA scope.
