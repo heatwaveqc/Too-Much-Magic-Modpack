@@ -1,0 +1,30 @@
+name: Capture integration (source and exact ABI only)
+on:
+  push:
+    branches: ['feature/capture-integration-*']
+    paths: ['compat/economy/**', '.github/workflows/capture-integration-abi.yml']
+  pull_request:
+    paths: ['compat/economy/**', '.github/workflows/capture-integration-abi.yml']
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: '8a7b156137a996fb8ed6ba741fc9231b0992f44c'
+          path: registry-donor
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python compat/economy/tools/audit_capture_integration.py --registry registry-donor/docs/creatures/registry-v1.json

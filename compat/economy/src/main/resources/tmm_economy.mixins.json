@@ -22,7 +22,9 @@
     "OpConverterTierMixin",
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
-    "StoredResourceGuardMixin"
+    "StoredResourceGuardMixin",
+    "CapturingForemanMixin",
+    "ReliquaryCaptureMixin"
   ],
   "injectors": {
     "defaultRequire": 1
