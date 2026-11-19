@@ -14,6 +14,8 @@ import java.util.function.IntConsumer;
 public final class VampireEffects {
     private static final String ATTACHMENT="dev.sterner.witchery.feature.blood_pool.BloodPoolAttachment";
     private static final ThreadLocal<Quote> QUOTE=new ThreadLocal<>();
+    private static final ThreadLocal<Feeding> FEEDING=new ThreadLocal<>();
+    private record Feeding(ServerPlayer p,LivingEntity victim,Balance donor){}
     private VampireEffects(){}
     private record Quote(ServerPlayer player,int nominal,int price){}
     public record Balance(int current,int max){}
@@ -21,7 +23,7 @@ public final class VampireEffects {
         return MxpPlayerPolicy.eligible(p)&&p.isAlive()&&!NewbieMode.isNewbie(p)&&
             ModList.get().getModContainerById("witchery").filter(c->c.getModInfo().getVersion().toString().startsWith("0.5.39")).isPresent()&&JawrFormState.present(p,"vampire");
     }
-    public static Balance read(ServerPlayer p){
+    public static Balance read(LivingEntity p){
         Object d=MxpReflect.staticCall(ATTACHMENT,"getData",p);
         Object c=MxpReflect.call(d,"getBloodPool"),m=MxpReflect.call(d,"getMaxBlood");
         return c instanceof Integer current&&m instanceof Integer max&&max>0&&current>=0&&current<=max?new Balance(current,max):null;
@@ -60,19 +62,28 @@ public final class VampireEffects {
                    c.equals("dev.sterner.witchery.integration.neovitae.NeoVitaeCompat");
         }));
     }
+    public static int feeding(ServerPlayer p,LivingEntity victim,java.util.function.IntSupplier original){
+        if(FEEDING.get()!=null||!eligible(p)||victim==null||victim==p||victim instanceof net.minecraft.world.entity.player.Player)return original.getAsInt();
+        Balance donor=read(victim);if(donor==null||donor.current<=0)return original.getAsInt();
+        FEEDING.set(new Feeding(p,victim,donor));
+        try{return original.getAsInt();}finally{FEEDING.remove();}
+    }
     /** Legitimate bite feeding only: actual positive recipient gain, capped by capacity.
      * Never amplify a vampire donor, conversion, orb transfer, regeneration, or a failed bite. */
     public static void feed(ServerPlayer p,LivingEntity victim,int amount,IntConsumer original){
         if(!eligible(p)||victim==p||victim==null||victim instanceof net.minecraft.world.entity.player.Player||amount<=0){original.accept(amount);return;}
+        Feeding context=FEEDING.get();Balance donor=read(victim);
         Balance before=read(p);
-        if(before==null){original.accept(amount);return;}
+        if(context==null||context.p!=p||context.victim!=victim||donor==null||context.donor.max!=donor.max||before==null){original.accept(amount);return;}
+        int actualDonor=context.donor.current-donor.current;
+        if(actualDonor<=0){original.accept(amount);return;}
         double rate=rate(p,"jawr_feeding_bonus");
         original.accept(amount);
         Balance after=read(p);
         if(after==null||after.max!=before.max)return;
         int gained=after.current-before.current;
         if(gained<=0||gained>amount)return;
-        int bonus=BloodSkillMath.feedingBonus(gained,after.max-after.current,rate);
+        int bonus=BloodSkillMath.feedingBonus(Math.min(actualDonor,gained),after.max-after.current,rate);
         if(bonus>0)original.accept(bonus);
     }
     public static float sun(ServerPlayer p,float amount){

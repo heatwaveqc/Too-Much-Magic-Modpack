@@ -202,6 +202,7 @@ public final class ProgressionEvents {
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.JawrBloodCapacity.tick(player);
             GildedMechanics.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);

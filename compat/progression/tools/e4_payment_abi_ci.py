@@ -73,7 +73,7 @@ def vampire_census(jar):
                 detail = ("BloodPoolAttachment$Data" in owner or
                           ("BloodPoolHandler" in owner and ("increaseBlood" in method or "tickPlayerBloodRegen" in method)) or
                           "handleSunDamage" in method or "handleBloodHunger" in method or
-                          "handleBloodHealing" in method or ("setLevel(" in method or "updateMaxBlood(" in method) and "VampireLeveling" in owner or "transferBlood(" in method and "DrinkBloodAbility" in owner)
+                          "handleBloodHealing" in method or ("setLevel(" in method or "updateMaxBlood(" in method or "bloodForLevel(" in method) and "VampireLeveling" in owner or "transferBlood(" in method and "DrinkBloodAbility" in owner or "BatFormAbility" in owner or "TransformationHandler" in owner and "bat" in method.lower() or "BloodPoolAttachment" in owner and "setData(" in method)
                 if detail:
                     print("VDECL", method)
             elif detail and line.strip().startswith("descriptor:"):

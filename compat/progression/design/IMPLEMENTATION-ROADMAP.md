@@ -103,3 +103,5 @@ E5 first source slice: [BATCH-E5-TRANSFORMATIONS.md](BATCH-E5-TRANSFORMATIONS.md
 E5 next source slice: optional JAWR native blood-funded timed activation via existing duration/cooldown/real native debit, no new pool, native receipt handles MXP; no active skill data. ce5303f all four checks green. Exact pin/gameplay and remaining E5 native adapters tracked in BATCH-E5-TRANSFORMATIONS.md.
 
 E5a source slice: verified JAWR caller census, native hunger/healing Thrift, paid timed activation matching quote, legitimate non-player bite gain, sunlight-only mitigation preserving lethal branch, optional one-shot blood-funded heal; excluded known victim/extraction/transfer MXP. Capacity lifecycle and bat-flight behavior remain explicit follow-up, no skill grants. See BATCH-E5-TRANSFORMATIONS.md.
+
+E5a follow-through: Deep Reservoir single native attachment with noncompounding base, rollback on rank removal, no automatic refill after native reset, strict foreign cap handling; actual donor debit proof for bite gain. Source only, native lifecycle and flight acceptance outstanding.
