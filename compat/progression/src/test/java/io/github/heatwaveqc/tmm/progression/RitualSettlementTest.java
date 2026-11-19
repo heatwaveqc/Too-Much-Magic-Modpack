@@ -19,7 +19,7 @@ class RitualSettlementTest {
     }
     @Test void pinnedCatalogAliasesAndHeldRecipes(){
         assertEquals(113,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("occultism:")).count());
-        assertEquals(36,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("rootsclassic:")).count());
+        assertEquals(43,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("rootsclassic:")).count());
         assertEquals(RitualRewards.lookup("occultism:ritual/craft_stabilizer_tier1").family(),
             RitualRewards.lookup("occultism:ritual/craft_stabilizer_tier1_dark").family());
         assertEquals(RitualRewards.lookup("rootsclassic:ritual/crafting/living_pickaxe").family(),

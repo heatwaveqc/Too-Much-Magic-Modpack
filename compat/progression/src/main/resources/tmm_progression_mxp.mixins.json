@@ -51,7 +51,13 @@
     "ForgeRitualInstallMixin",
     "OccultRitualBowlMixin",
     "OccultRitualItemMixin",
-    "OccultRitualSummonMixin"
+    "OccultRitualSummonMixin",
+    "RootsRitualAltarMixin",
+    "RootsRitualSpawnMixin",
+    "RootsRitualGrowMixin",
+    "RootsRitualFlareMixin",
+    "RootsRitualDrainMixin",
+    "RootsRitualBreedMixin"
   ],
   "injectors": {
     "defaultRequire": 0

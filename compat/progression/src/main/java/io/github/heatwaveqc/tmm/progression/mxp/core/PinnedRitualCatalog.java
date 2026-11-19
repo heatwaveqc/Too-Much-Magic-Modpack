@@ -3,7 +3,7 @@ package io.github.heatwaveqc.tmm.progression.mxp.core;
 import java.util.Map;
 import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 
-/** Explicit pinned recipe records; Occultism and Roots remain dormant without native receipt adapters. */
+/** Explicit pinned recipe records; Native receipt adapters independently verify supported outcomes. */
 final class PinnedRitualCatalog {
     private PinnedRitualCatalog(){}
     static void addTo(Map<String,RitualRewards.Rule> out){
@@ -120,6 +120,13 @@ final class PinnedRitualCatalog {
         add(out,"occultism:ritual/summon_unbound_afrit","occultism:ritual/summon_unbound_afrit",Band.OCCULT_AFRIT);
         add(out,"occultism:ritual/summon_unbound_marid","occultism:ritual/summon_unbound_marid",Band.OCCULT_MARID);
         add(out,"occultism:ritual/summon_wondering_trader","occultism:ritual/summon_wondering_trader",Band.OCCULT_DJINNI);
+        add(out,"rootsclassic:ritual/banish_rain","rootsclassic:ritual/banish_rain",Band.ROOTS_1);
+        add(out,"rootsclassic:ritual/cause_rain","rootsclassic:ritual/cause_rain",Band.ROOTS_1);
+        add(out,"rootsclassic:ritual/flare","rootsclassic:ritual/flare",Band.ROOTS_1);
+        add(out,"rootsclassic:ritual/grow","rootsclassic:ritual/grow",Band.ROOTS_0);
+        add(out,"rootsclassic:ritual/life_drain","rootsclassic:ritual/life_drain",Band.ROOTS_0);
+        add(out,"rootsclassic:ritual/mass_breeding","rootsclassic:ritual/mass_breeding",Band.ROOTS_2);
+        add(out,"rootsclassic:ritual/time_shift","rootsclassic:ritual/time_shift",Band.ROOTS_1);
         add(out,"rootsclassic:ritual/crafting/accelerator_standing_stone","rootsclassic:ritual/crafting/accelerator_standing_stone",Band.ROOTS_2);
         add(out,"rootsclassic:ritual/crafting/charged_runic_focus","rootsclassic:ritual/crafting/charged_runic_focus",Band.ROOTS_0);
         add(out,"rootsclassic:ritual/crafting/crystal_staff","rootsclassic:ritual/crafting/crystal_staff",Band.ROOTS_2);
