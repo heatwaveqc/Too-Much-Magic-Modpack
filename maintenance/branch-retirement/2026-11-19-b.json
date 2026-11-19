@@ -1,0 +1,280 @@
+{
+  "schema": 1,
+  "batch": "2026-11-19-b",
+  "branches": [
+    {
+      "name": "feature/b16-betterend-thallasium-iesnium",
+      "sha": "34df74d2e61e351f6b3f2d07f2e86aed1b602bd7",
+      "reason": "Baseline-owned replacement #276; #358 removes obsolete branch deferral while retaining QA. Original closed refs/pull/131/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/131",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/276",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/358"
+      ]
+    },
+    {
+      "name": "feature/b17-loot-performance-yungs-ars-locate",
+      "sha": "0efb800e3976f23c125c58cbce36ccf473adc779",
+      "reason": "Baseline-owned replacement #278; #358 retains acceptance scope. Original closed refs/pull/135/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/135",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/278",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/358"
+      ]
+    },
+    {
+      "name": "feature/canonical-blood-config-first-2026-11-15",
+      "sha": "f55641f2227334a394475183f9d13844547d425e",
+      "reason": "Baseline-owned #282 source, #358 preserves current blood tests. Original closed refs/pull/126/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/126",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/282",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/358"
+      ]
+    },
+    {
+      "name": "feature/jawr-vampire-werewolf-tyzs-retention-2026-11-15",
+      "sha": "a113c722678e9ba01f3d3841601373e3b739ff9f",
+      "reason": "Baseline-owned #279/#281, #358 retains current shared engine obligations. Original closed refs/pull/94/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/94",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/279",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/281",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/358"
+      ]
+    },
+    {
+      "name": "feature/mxp-configurable-growth-20261115",
+      "sha": "f0ab1cde706883a09929e2b82eba57482377ee17",
+      "reason": "Baseline-owned #279/#281, #358 preserves pending actual expenditure and wallet QA. Original closed refs/pull/161/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/161",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/279",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/281",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/358"
+      ]
+    },
+    {
+      "name": "audit/polymorph-conflicts-2026-11-14",
+      "sha": "993d8b4cc7c12dbf4e711079949a69fa5727e2d7",
+      "reason": "Zero commits ahead of frozen Neo Vitae donor f4fc7544e6e44284d576ccdc50533e20fd1aa86c. Keep donor until migration. Original closed refs/pull/28/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/28"
+      ]
+    },
+    {
+      "name": "feature/materials-unification-mahou-doubling",
+      "sha": "b6d6d90a6f3fc780a2ffa7a03be60f804eb787b5",
+      "reason": "Zero commits ahead of frozen Neo Vitae donor f4fc7544e6e44284d576ccdc50533e20fd1aa86c. Original closed refs/pull/23/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/23"
+      ]
+    },
+    {
+      "name": "feature/silver-equipment-unification",
+      "sha": "cca63de86b67659a3dbf4f6768eedcb902d145b3",
+      "reason": "Zero commits ahead of frozen Neo Vitae donor f4fc7544e6e44284d576ccdc50533e20fd1aa86c. Original closed refs/pull/32/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/32"
+      ]
+    },
+    {
+      "name": "feature/material-processing-recipe-cleanup",
+      "sha": "b8627224ba9296060a012df87c5364265187b202",
+      "reason": "Zero commits ahead of frozen Neo Vitae donor f4fc7544e6e44284d576ccdc50533e20fd1aa86c; archive exact tip because no original PR found.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/b8627224ba9296060a012df87c5364265187b202"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "feature/monk-early-mastery-two-trees",
+      "sha": "1d47d6452940e92e27846a250600cf3e63b88a65",
+      "reason": "Zero ahead of preserved original #71 head 67d974bc8f52588c94bb4f8349e3a019a5880392; old Monk engine retired. Original closed refs/pull/38/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/38",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71"
+      ]
+    },
+    {
+      "name": "feature/mxp-ledger-dispatcher",
+      "sha": "6a36586f818c4b15703104aaae2d1ab7deeab6ac",
+      "reason": "Zero ahead of preserved original #45 head 9a8ef2fc66454e03a6244be97b04be821c1588aa; one current shared engine. Original closed refs/pull/40/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/40",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/45",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/281"
+      ]
+    },
+    {
+      "name": "design/b6-pufferfish-unification-reconciliation",
+      "sha": "3ddde5f96cec735c09d1c0c69ec12c5a43ff69df",
+      "reason": "Zero ahead of selected frozen universal MXP donor 1d6aa7bcef9301447dd6a4bd6f0f4cc7f413c049; obsolete Pufferfish design. Original closed refs/pull/12/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/12",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/27"
+      ]
+    },
+    {
+      "name": "feature/qol-trash-tree-reliquified",
+      "sha": "62b3f13a9470d2f7490647c1fb94717642590a7f",
+      "reason": "Baseline-owned B12; only old workflow unique in comparison. Original closed refs/pull/30/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/30"
+      ]
+    },
+    {
+      "name": "fix/more-overlays-auto-client-install",
+      "sha": "5a523530da97ee0e67f147e523d996332bf9a750",
+      "reason": "Baseline-owned B12; only historical workflow unique. Original closed refs/pull/29/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/29"
+      ]
+    },
+    {
+      "name": "fix/quest-localization-layout-onboarding",
+      "sha": "cdbc94fb3095431b5098350a8d25b07c0ac8963f",
+      "reason": "Baseline-owned combined quests; only two old workflow files unique in comparison. Original closed refs/pull/26/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/26"
+      ]
+    },
+    {
+      "name": "feature/progression-skill-gui-treechop-2026-11-16",
+      "sha": "612717ec3ecc3b507b3cc983a963ac8568cdde8a",
+      "reason": "Baseline-owned source per integration manifest, original closed PR and archive tag preserve provenance; reconcile literal old retain-branch wording before final batch approval. Original closed refs/pull/223/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/223"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "integration/pr135-yungs-loot-ars-pins-20261116",
+      "sha": "1f024a93303b49a50327e66a9f82499157cf4b8e",
+      "reason": "Explicitly replaced by #278; original draft retained for audit, exact closed PR ref verified. Original closed refs/pull/277/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/277",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/278"
+      ]
+    },
+    {
+      "name": "build/b3-stable-magic-tectonic",
+      "sha": "fadb961a108d99997e49bb6f5bcc8a8d906848c6",
+      "reason": "Only four old workflows unique in comparison; preserve exact historical build checkpoint, not a stable release marker. Original closed refs/pull/5/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/5",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "design/expanded-magic-mod-decisions",
+      "sha": "d916d38700ce932b021ffb056fa44c5d49ee0ba9",
+      "reason": "12 byte-identical historical docs archived by #362; original PR ref retains old full manifest and source. Never restore stale roster. Original closed refs/pull/6/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/6",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362"
+      ]
+    },
+    {
+      "name": "feature/transformation-bridge-scaffold",
+      "sha": "678b306d5a6240ffa5e4b738158c23f79228c223",
+      "reason": "Retired dual-chassis and experimental hybrids; original PR ref plus four archived design/audit docs. Do not replay superseded runtime. Original closed refs/pull/18/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/18",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/282"
+      ]
+    },
+    {
+      "name": "fix/jawr-blood-debit-guard",
+      "sha": "f821064e092afd4f1e8aaf9b56122aba73367110",
+      "reason": "Retired symmetric dual-Vampirism chassis; original PR ref retained. Current native JAWR payment work remains separately tracked. Original closed refs/pull/42/head independently verified at this SHA.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/42",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/347"
+      ]
+    },
+    {
+      "name": "feature/quest-reward-humor-first-pass",
+      "sha": "12ccee3f6a55a4b3813952193265b1fa82d70650",
+      "reason": "Only unique old workflow versus preserved #74 head; exact tag retains original work.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/12ccee3f6a55a4b3813952193265b1fa82d70650",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "design/quest-standards-starter-choice-2026-11-14",
+      "sha": "b75a675f9f4fcf47f60e01f65ffebc99ca1a68db",
+      "reason": "Compared to selected frozen FTB Essentials donor: five old documents (exact archives in #362) and one old smoke workflow. Exact original tag retains history.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/b75a675f9f4fcf47f60e01f65ffebc99ca1a68db",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "docs/design-goals-status-2026-11-15",
+      "sha": "c55b265132a7e82cdb313f6459d2ffb05d3a43d2",
+      "reason": "One exact historical report archived #362; other unique path is historical workflow. Exact tag retains history.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/c55b265132a7e82cdb313f6459d2ffb05d3a43d2",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "design/piglin-gold-progression-exploratory-2026-11-15",
+      "sha": "2fd6df6de1e21cdd8f07750a63e76261124a0fc4",
+      "reason": "Historical actual source and tests not fully identical to current #347; current inactive port explicitly cites this original SHA. Seven docs archived, whole exact history tag required; #347 notified, confirm no direct branch-ref dependency before final approval.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/2fd6df6de1e21cdd8f07750a63e76261124a0fc4",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/347"
+      ],
+      "archive_history": true
+    },
+    {
+      "name": "research/hunter-pinned-jar-audit-ci",
+      "sha": "ad0e4ec5566133d8d7ba9562490fa92464774fbe",
+      "reason": "Six exact historic evidence files and tools archived, current taxonomy frozen input source is #347/#348; full original history tag required. #353 notified, confirm no direct branch-ref dependency before final approval.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/commit/ad0e4ec5566133d8d7ba9562490fa92464774fbe",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/362",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/353",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/348"
+      ],
+      "archive_history": true
+    }
+  ]
+}
