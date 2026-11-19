@@ -6,7 +6,7 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Exact native registry identities, never cross-provider aliases. */
 public final class E6bRitualCatalog {
     private E6bRitualCatalog(){}
-    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM }
+    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM, MINE, EVENT_SPAWN, EVENT_MUTATION, TELEPORT }
     public record JawrOutput(String output, Kind kind, Band band) {}
     private static final Map<String,JawrOutput> JAWR=Map.ofEntries(
         Map.entry("witchery:ritual/apply_ointment",new JawrOutput("witchery:broom",Kind.ITEM,Band.CIRCLE_BASIC)),
@@ -42,7 +42,19 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/manifestation",new JawrOutput("witchery:manifestation",Kind.MANIFESTATION,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/remove_curse",new JawrOutput("dev.sterner.witchery.content.ritual_event.RemoveCurseRitualEvent",Kind.REMOVE_CURSE,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/bind_hobgoblin_statue",new JawrOutput("witchery:statue_of_hobgoblin_patron",Kind.OWNER_ITEM,Band.CIRCLE_MAJOR)),
-        Map.entry("witchery:ritual/raining_toad",new JawrOutput("minecraft:frog",Kind.ENTITY,Band.CIRCLE_MAJOR))
+        Map.entry("witchery:ritual/raining_toad",new JawrOutput("minecraft:frog",Kind.ENTITY,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_amber",new JawrOutput("amber",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_cinnabar",new JawrOutput("cinnabar",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_copper",new JawrOutput("copper",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_gold",new JawrOutput("gold",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_iron",new JawrOutput("iron",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/blocks_below_zinc",new JawrOutput("zinc",Kind.MINE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/bestial_call",new JawrOutput("dev.sterner.witchery.content.ritual_event.BestialCallRitualEvent",Kind.EVENT_SPAWN,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/rot",new JawrOutput("dev.sterner.witchery.content.ritual_event.RotRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/bind_familiar",new JawrOutput("dev.sterner.witchery.content.ritual_event.BindFamiliarRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/resurrect_familiar",new JawrOutput("dev.sterner.witchery.content.ritual_event.ResurrectFamiliarRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/teleport_owner_to_waystone",new JawrOutput("tp {owner} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/teleport_taglock_to_waystone",new JawrOutput("tp {taglockPlayerOrEntity} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_MAJOR))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);

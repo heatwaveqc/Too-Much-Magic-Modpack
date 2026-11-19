@@ -82,7 +82,12 @@
     "JawrRainingToadRitualMixin",
     "EnchantedCurseReceiptMixin",
     "EnchantedApplyCurseMixin",
-    "EnchantedRemoveCurseMixin"
+    "EnchantedRemoveCurseMixin",
+    "JawrMineRitualMixin",
+    "JawrBestialCallMixin",
+    "JawrRotRitualMixin",
+    "JawrFamiliarBindRitualMixin",
+    "JawrFamiliarResurrectionMixin"
   ],
   "injectors": {
     "defaultRequire": 0

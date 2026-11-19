@@ -15,7 +15,9 @@ public abstract class JawrRitualCommandMixin{
     @WrapOperation(method="execute(Ljava/lang/String;Ldev/sterner/witchery/content/block/ritual/ritual_event/RitualContext;)V",at=@At(value="INVOKE",target="Lnet/minecraft/commands/Commands;performCommand(Lcom/mojang/brigadier/ParseResults;Ljava/lang/String;)V"),require=0,remap=false)
     private void tmm$command(Commands commands,ParseResults<CommandSourceStack> parsed,String text,Operation<Void> original){
         var level=parsed.getContext().getSource().getLevel();
-        if(!JawrRitualOutput.wantsLightningCommand(level,text)){original.call(commands,parsed,text);return;}
+        boolean lightning=JawrRitualOutput.wantsLightningCommand(level,text);
+        var teleport=JawrRitualOutput.teleportBefore(level,text);
+        if(!lightning&&teleport==null){original.call(commands,parsed,text);return;}
         boolean[] success={false},failure={false},open={true};
         ParseResults<CommandSourceStack> mapped;
         try{
@@ -23,6 +25,9 @@ public abstract class JawrRitualCommandMixin{
             mapped=Commands.mapSource(parsed,source->source.withCallback(witness,CommandResultCallback::chain));
         }catch(RuntimeException unavailable){original.call(commands,parsed,text);return;}
         try{original.call(commands,mapped,text);}finally{open[0]=false;}
-        if(success[0]&&!failure[0])JawrRitualOutput.lightningCompleted(level,text);
+        if(success[0]&&!failure[0]){
+            if(lightning)JawrRitualOutput.lightningCompleted(level,text);
+            JawrRitualOutput.teleportAfter(teleport,true);
+        }
     }
 }

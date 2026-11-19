@@ -98,11 +98,67 @@ public final class JawrRitualOutput {
         if(changed&&s!=null&&s.event()==event&&s.proof().kind()==E6bRitualCatalog.Kind.REMOVE_CURSE&&s.proof().output().equals(event.getClass().getName()))
             s.altar().tmm$markJawrOutput();
     }
+    public static boolean eventMatches(Object event,ServerLevel level){
+        Scope s=ACTIVE.get();
+        return s!=null&&s.event()==event&&s.level()==level&&(s.proof().kind()==E6bRitualCatalog.Kind.EVENT_MUTATION||s.proof().kind()==E6bRitualCatalog.Kind.EVENT_SPAWN)
+            &&s.proof().output().equals(event.getClass().getName());
+    }
+    public static void changed(Object event,ServerLevel level,boolean changed){
+        if(changed&&eventMatches(event,level))ACTIVE.get().altar().tmm$markJawrOutput();
+    }
+    public static boolean oreMatches(Object event,ServerLevel level,net.minecraft.world.level.block.state.BlockState before){
+        Scope s=ACTIVE.get();
+        if(s==null||s.event()!=event||s.level()!=level||s.proof().kind()!=E6bRitualCatalog.Kind.MINE
+            ||!event.getClass().getName().equals("dev.sterner.witchery.content.ritual_event.MineBlocksBelowRitualEvent"))return false;
+        String block=BuiltInRegistries.BLOCK.getKey(before.getBlock()).toString();
+        return switch(s.proof().output()){
+            case "iron" -> java.util.Set.of("minecraft:iron_ore","minecraft:deepslate_iron_ore").contains(block);
+            case "gold" -> java.util.Set.of("minecraft:gold_ore","minecraft:deepslate_gold_ore").contains(block);
+            case "copper" -> java.util.Set.of("minecraft:copper_ore","minecraft:deepslate_copper_ore").contains(block);
+            case "zinc" -> java.util.Set.of("create:zinc_ore","create:deepslate_zinc_ore").contains(block);
+            case "amber" -> block.equals("thaumaturge:ore_amber");
+            case "cinnabar" -> block.equals("thaumaturge:ore_cinnabar");
+            default -> false;
+        };
+    }
+    public static void mined(Object event,ServerLevel level,net.minecraft.world.level.block.state.BlockState before,boolean changed){
+        if(changed&&oreMatches(event,level,before))ACTIVE.get().altar().tmm$markJawrOutput();
+    }
+    public static boolean familiarOwner(Object event,ServerLevel level,java.util.UUID owner){
+        return eventMatches(event,level)&&owner!=null&&owner.equals(ACTIVE.get().altar().tmm$jawrActor());
+    }
+    public static record TeleportWitness(Entity entity,ServerLevel beforeLevel,net.minecraft.world.phys.Vec3 before,net.minecraft.core.GlobalPos dest){}
+    public static TeleportWitness teleportBefore(ServerLevel level,String resolved){
+        Scope s=ACTIVE.get();
+        if(s==null||s.level()!=level||s.proof().kind()!=E6bRitualCatalog.Kind.TELEPORT||resolved==null||!resolved.startsWith("tp ")
+            ||!isCommand(s,E6bRitualCatalog.Kind.TELEPORT,s.proof().output()))return null;
+        Object target=MxpReflect.call(s.altar(),"getTargetPos");
+        if(!(target instanceof net.minecraft.core.GlobalPos dest))return null;
+        Entity entity=null;
+        if(s.proof().output().equals("tp {owner} {waystonePos}"))entity=level.getServer().getPlayerList().getPlayer(s.altar().tmm$jawrActor());
+        else if(MxpReflect.call(s.altar(),"getTargetPlayer") instanceof java.util.UUID uuid)entity=level.getServer().getPlayerList().getPlayer(uuid);
+        else if(MxpReflect.call(s.altar(),"getTargetEntity") instanceof Integer id)entity=level.getEntity(id);
+        return entity!=null&&!entity.isRemoved()&&entity.level() instanceof ServerLevel prior?new TeleportWitness(entity,prior,entity.position(),dest):null;
+    }
+    public static void teleportAfter(TeleportWitness witness,boolean success){
+        Scope s=ACTIVE.get();
+        if(!success||witness==null||s==null||s.proof().kind()!=E6bRitualCatalog.Kind.TELEPORT)return;
+        Entity e=witness.entity();
+        if(!e.isRemoved()&&e.level().dimension().equals(witness.dest().dimension())&&
+            (e.level()!=witness.beforeLevel()||e.position().distanceToSqr(witness.before())>1.0e-6)
+            &&e.position().distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(witness.dest().pos()))<=4.0)
+            s.altar().tmm$markJawrOutput();
+    }
     public static void spawned(Object event,ServerLevel level,Entity entity,boolean accepted){
         Scope s=ACTIVE.get();
         if(!accepted||s==null||s.event()!=event||s.level()!=level||entity==null)return;
         var proof=s.proof();
-        if(proof.kind()==E6bRitualCatalog.Kind.OWNER_ITEM&&entity instanceof ItemEntity item){
+        if(proof.kind()==E6bRitualCatalog.Kind.EVENT_SPAWN&&entity instanceof net.minecraft.world.entity.animal.Animal&&eventMatches(event,level)){
+            s.altar().tmm$markJawrOutput();
+        }else if(proof.kind()==E6bRitualCatalog.Kind.EVENT_MUTATION&&eventMatches(event,level)&&event.getClass().getName().endsWith(".RotRitualEvent")
+            &&(entity instanceof ItemEntity||entity instanceof LivingEntity&&!(entity instanceof Player))){
+            s.altar().tmm$markJawrOutput();
+        }else if(proof.kind()==E6bRitualCatalog.Kind.OWNER_ITEM&&entity instanceof ItemEntity item){
             ItemStack stack=item.getItem();
             if(stack.isEmpty()||!proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString())
                 ||!"dev.sterner.witchery.content.ritual_event.SummonItemWithOwnerRitualEvent".equals(event.getClass().getName())
