@@ -1,4 +1,6 @@
-# Canonical creature taxonomy — reconciliation v0 (review only)
+# Canonical creature taxonomy — shared integration registry
+
+**Current working registry:** [registry-v1.json](registry-v1.json), see [REGISTRY.md](REGISTRY.md) for schema, evidence and projection contract. The reconciliation v0 material below is historical input, not a competing editable registry.
 
 Issue #324. Data and research only. No gameplay changes, generated runtime tags, mod pins, economy settings, or build dispatch. Successor working inventory of the existing Hunter research, not a replacement for historical sources or the Progression engine.
 

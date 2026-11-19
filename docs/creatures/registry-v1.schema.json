@@ -1,0 +1,478 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Too Much Magic creature integration registry v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "registry_revision",
+    "scope",
+    "activation",
+    "census",
+    "sources",
+    "defaults",
+    "entities"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "registry_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scope": {
+      "const": "development_integration_reference"
+    },
+    "activation": {
+      "const": "not_runtime_active"
+    },
+    "census": {
+      "type": "object",
+      "required": [
+        "entity_count",
+        "source_pr",
+        "source_commit",
+        "installed_integration_commit",
+        "source_path"
+      ],
+      "properties": {
+        "entity_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_pr": {
+          "type": "integer"
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "installed_integration_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "source_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "path",
+          "commit",
+          "blob_sha",
+          "rows"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "blob_sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "required": [
+        "resources",
+        "native_verification",
+        "capture"
+      ],
+      "properties": {
+        "resources": {
+          "type": "object",
+          "required": [
+            "living",
+            "blood",
+            "malum",
+            "primal_magick"
+          ],
+          "properties": {
+            "living": {
+              "type": "string",
+              "enum": [
+                "unverified",
+                "living",
+                "nonliving",
+                "conditional",
+                "hold"
+              ]
+            },
+            "blood": {
+              "type": "string",
+              "enum": [
+                "unreviewed",
+                "allow",
+                "deny",
+                "conditional",
+                "hold",
+                "inherit_native"
+              ]
+            },
+            "malum": {
+              "type": "string",
+              "enum": [
+                "unreviewed",
+                "allow",
+                "deny",
+                "conditional",
+                "hold",
+                "inherit_native"
+              ]
+            },
+            "primal_magick": {
+              "type": "string",
+              "enum": [
+                "unreviewed",
+                "allow",
+                "deny",
+                "conditional",
+                "hold",
+                "inherit_native"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "native_verification": {
+          "const": "pending"
+        },
+        "capture": {
+          "type": "object",
+          "required": [
+            "native_policy",
+            "egg_evidence"
+          ],
+          "properties": {
+            "native_policy": {
+              "const": "unresolved"
+            },
+            "egg_evidence": {
+              "const": "not_audited"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "entities": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "name",
+          "category",
+          "taxonomy",
+          "hunter",
+          "capture",
+          "boss"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "type": "object",
+            "required": [
+              "status",
+              "families",
+              "other_categories"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "family_review",
+                  "historical_candidate",
+                  "no_family_proposed",
+                  "non_mob",
+                  "owner_approved_exclusion",
+                  "owner_approved_membership",
+                  "owner_endorsed_provisional",
+                  "proposed",
+                  "proposed_exclusion",
+                  "source_supported_proposal",
+                  "unreviewed"
+                ]
+              },
+              "families": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Aberration",
+                    "Aquatic",
+                    "Arthropod",
+                    "Beast",
+                    "Construct",
+                    "Demon",
+                    "Dragon",
+                    "Elemental",
+                    "Fae",
+                    "Illager",
+                    "Ooze",
+                    "Piglin",
+                    "Plant",
+                    "Sculk",
+                    "Undead",
+                    "Void"
+                  ]
+                }
+              },
+              "other_categories": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Humanoid"
+                  ]
+                }
+              },
+              "identity": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "hunter": {
+            "type": "object",
+            "required": [
+              "prey"
+            ],
+            "properties": {
+              "prey": {
+                "type": "string",
+                "enum": [
+                  "allow",
+                  "deny",
+                  "hold"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "capture": {
+            "type": "object",
+            "required": [
+              "disposition"
+            ],
+            "properties": {
+              "disposition": {
+                "type": "string",
+                "enum": [
+                  "approved_misc_default_deny",
+                  "approved_vanilla_exception",
+                  "blacklist_target",
+                  "native_policy_pending",
+                  "review_hold"
+                ]
+              },
+              "egg_evidence": {
+                "type": "string",
+                "enum": [
+                  "not_audited",
+                  "known_vanilla_creative_egg",
+                  "documented_custom_placement_egg_not_true_spawn_egg"
+                ]
+              },
+              "native_policy": {
+                "type": "string",
+                "enum": [
+                  "unresolved",
+                  "allowed",
+                  "denied",
+                  "conditional"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "boss": {
+            "type": "object",
+            "required": [
+              "classification",
+              "credit"
+            ],
+            "properties": {
+              "classification": {
+                "type": "string",
+                "enum": [
+                  "boss_availability_hold",
+                  "boss_candidate",
+                  "boss_derivative_no_credit",
+                  "boss_status_hold",
+                  "conditional_boss_variant",
+                  "elite_not_automatic_boss",
+                  "group_boss_candidate",
+                  "miniboss_candidate",
+                  "no_boss_evidence",
+                  "not_independent_boss_candidate",
+                  "passive_boss_conversion",
+                  "special_noncombat_npc",
+                  "special_threat_not_boss",
+                  "summoned_or_converted_servant",
+                  "technical_nonboss",
+                  "technical_or_creature_hold",
+                  "unimplemented_boss_placeholder"
+                ]
+              },
+              "credit": {
+                "type": "string",
+                "enum": [
+                  "first_valid_augmented_encounter_only",
+                  "first_valid_encounter_candidate",
+                  "first_valid_foreman_encounter_only",
+                  "first_valid_group_encounter",
+                  "hold",
+                  "miniboss_reward_review",
+                  "no_automatic_boss_credit",
+                  "no_boss_credit",
+                  "no_duplicate_boss_credit"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "misc": {
+            "type": "string",
+            "enum": [
+              "creature_investigation_hold",
+              "owner_approved_creature_disposition",
+              "owner_approved_technical_exclusion",
+              "prior_creature_disposition",
+              "prior_non_creature",
+              "provisional_non_creature",
+              "technical_boundary_review"
+            ]
+          },
+          "resources": {
+            "type": "object",
+            "required": [],
+            "properties": {
+              "living": {
+                "type": "string",
+                "enum": [
+                  "unverified",
+                  "living",
+                  "nonliving",
+                  "conditional",
+                  "hold"
+                ]
+              },
+              "blood": {
+                "type": "string",
+                "enum": [
+                  "unreviewed",
+                  "allow",
+                  "deny",
+                  "conditional",
+                  "hold",
+                  "inherit_native"
+                ]
+              },
+              "malum": {
+                "type": "string",
+                "enum": [
+                  "unreviewed",
+                  "allow",
+                  "deny",
+                  "conditional",
+                  "hold",
+                  "inherit_native"
+                ]
+              },
+              "primal_magick": {
+                "type": "string",
+                "enum": [
+                  "unreviewed",
+                  "allow",
+                  "deny",
+                  "conditional",
+                  "hold",
+                  "inherit_native"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "native_verification": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "verified",
+              "conditional",
+              "failed"
+            ]
+          },
+          "instance_rules": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "required": [
+                "consumer",
+                "rule",
+                "verification"
+              ],
+              "properties": {
+                "consumer": {
+                  "type": "string",
+                  "enum": [
+                    "capture",
+                    "boss",
+                    "hunter",
+                    "blood",
+                    "malum",
+                    "primal_magick"
+                  ]
+                },
+                "rule": {
+                  "type": "string"
+                },
+                "verification": {
+                  "type": "string",
+                  "enum": [
+                    "native_discriminator_required",
+                    "native_completion_required",
+                    "native_behavior_pending",
+                    "verified"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
