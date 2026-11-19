@@ -24,3 +24,7 @@ Job [135892920025](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/
 ## Combined source CI regression repair
 
 Previous candidate 734beb9: six checks passed, three failed (Newbie required Prefab disabled; Economy Gradle omitted the MIT property expected by license verification; Windows converted the exact Caliber Arms donor license text). Replace stale Prefab expectation with exact owner target pin verification; declare Economy's existing MIT license in Gradle; preserve LF bytes for audited Caliber Arms notice/provenance files. Do not relax artifact or license validation. New CI required.
+
+## Owner scope decision — 2026-11-19
+
+Owner explicitly approves excluding Deep Aether and Liroth: Revamped from the next QA target. Remove their entries from the active required roster and discontinue their candidate audits for this QA. Remove Nuit, introduced solely for Liroth, from Packwiz and the required roster; retain its audited artifact evidence and catalog row. Retain The Aether, owo-lib and the existing BetterEnd New Dawn libraries. Result: 220/220 intended third-party pins; no missing or extra target IDs. The prior combined candidate ffe5c4c passed all nine CI workflows; armed Trader source and its reconciled shared packaging/tests passed together with Economy. Fresh CI required for this scope change; not assembly/build authorization. Other unresolved first-party integration work remains.

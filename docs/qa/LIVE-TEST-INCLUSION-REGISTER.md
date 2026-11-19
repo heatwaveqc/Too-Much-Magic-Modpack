@@ -221,3 +221,7 @@ Integration handoff (2026-11-19): the separate `research/prefab-donors-20261118`
 ## Frozen donor source consolidation — 2026-11-19
 
 All twelve remaining frozen streams are baseline-owned after this source intake. See [exact provenance and next QA acceptance](FROZEN-DONOR-CONSOLIDATION-2026-11-19.md). Runtime source selected for the next authorized comprehensive candidate; no claim of installed or gameplay-tested state. Roots and HexCast legacy prototypes are evidence only, not additional runtime load. B19 and ProjectE old branches already superseded. Historical refs remain until a separate exact-SHA retirement batch is approved and executed.
+
+## Owner scope decision — 2026-11-19
+
+Owner explicitly approves excluding Deep Aether and Liroth: Revamped from the next QA target. Remove their entries from the active required roster and discontinue their candidate audits for this QA. Remove Nuit, introduced solely for Liroth, from Packwiz and the required roster; retain its audited artifact evidence and catalog row. Retain The Aether, owo-lib and the existing BetterEnd New Dawn libraries. Result: 220/220 intended third-party pins; no missing or extra target IDs. The prior combined candidate ffe5c4c passed all nine CI workflows; armed Trader source and its reconciled shared packaging/tests passed together with Economy. Fresh CI required for this scope change; not assembly/build authorization. Other unresolved first-party integration work remains.

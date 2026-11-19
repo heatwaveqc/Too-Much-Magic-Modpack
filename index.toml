@@ -2164,11 +2164,6 @@ hash = "48c2ab25456fb7ace4367153a3de95a990cba360bdf1fb78264850c4392512d1"
 metafile = true
 
 [[files]]
-file = "mods/nuit.pw.toml"
-hash = "d9a2987328b54072fe174658ab5266eedccba8722f425c7756e4226b9746e51a"
-metafile = true
-
-[[files]]
 file = "mods/observerlib.pw.toml"
 hash = "ff407a1e06ce5a70fd10e60a9c822a69d2722d8d1b5751918ff65145a976036e"
 metafile = true

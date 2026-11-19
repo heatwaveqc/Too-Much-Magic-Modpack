@@ -713,7 +713,7 @@
       "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Second exact byte audit: releases 1.1.5.1 and 1.1.5 both declare Minecraft [1.21,1.21.1), excluding target 1.21.1. Keep required, blocked, not silently omitted."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Second exact byte audit: releases 1.1.5.1 and 1.1.5 both declare Minecraft [1.21,1.21.1), excluding target 1.21.1. Keep required, blocked, not silently omitted. 2026-11-19 OWNER DECISION: exclude from this QA target; retain catalog intent and audit evidence for possible future reconsideration. This supersedes prior current-target requirement."
     },
     {
       "id": "deeper-darker",
@@ -1443,7 +1443,7 @@
       "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Nuit now pinned client only. Native BetterEnd New Dawn library identity and provider GeckoLib pin still under audit; leave required but unpinned."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Nuit now pinned client only. Native BetterEnd New Dawn library identity and provider GeckoLib pin still under audit; leave required but unpinned. 2026-11-19 OWNER DECISION: exclude from this QA target; retain catalog intent and audit evidence for possible future reconsideration. This supersedes prior current-target requirement."
     },
     {
       "id": "lithostitched",
@@ -2939,10 +2939,10 @@
       "version": "mc1.21.1-1.0.0-beta.6+neoforge",
       "release_status": "experimental_release",
       "source": "https://modrinth.com/mod/YBz7DOs8/version/blbu29BJ",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": false,
       "packwiz_slug": "nuit",
-      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested."
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested. 2026-11-19: removed from this QA candidate as its sole newly introduced dependent Liroth is owner-deferred. Verified pin evidence retained for future intake."
     }
   ],
   "excluded": [

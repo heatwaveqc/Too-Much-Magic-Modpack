@@ -58,7 +58,6 @@
     "curios-api",
     "cyclops-core",
     "databank",
-    "deep-aether",
     "deeper-darker",
     "default-options",
     "dive-into-the-abyss",
@@ -123,7 +122,6 @@
     "lets-do-beachparty",
     "lets-do-furniture",
     "lionfish-api",
-    "liroth-revamped",
     "lithostitched",
     "lodestone",
     "lootjs",
@@ -141,7 +139,6 @@
     "natures-compass",
     "neovitae",
     "nether-depths-upgrade",
-    "nuit",
     "observerlib",
     "occult-cooking",
     "occultism",
@@ -310,16 +307,6 @@
       "version_id": "K5X5qMwG"
     },
     {
-      "id": "deep-aether",
-      "provider": "modrinth",
-      "version_id": "MSW5emg8"
-    },
-    {
-      "id": "liroth-revamped",
-      "provider": "modrinth",
-      "version_id": "WInggx5l"
-    },
-    {
       "id": "prefab",
       "provider": "modrinth",
       "project_slug": "prefab",
@@ -329,41 +316,12 @@
       "id": "owo-lib",
       "provider": "modrinth",
       "version_id": "wbdHEItB"
-    },
-    {
-      "id": "nuit",
-      "provider": "modrinth",
-      "version_id": "blbu29BJ"
-    },
-    {
-      "id": "deep-aether-alternate-1.1.5",
-      "provider": "modrinth",
-      "version_id": "cdz8tus3"
-    },
-    {
-      "id": "bclib-new-dawn",
-      "provider": "modrinth",
-      "version_id": "QkXw8Fsl"
-    },
-    {
-      "id": "worldweaver-new-dawn",
-      "provider": "modrinth",
-      "version_id": "TrReu8cF"
-    },
-    {
-      "id": "wunderlib-new-dawn",
-      "provider": "modrinth",
-      "version_id": "5db3GZzg"
-    },
-    {
-      "id": "liroth-provider-geckolib",
-      "provider": "modrinth",
-      "version_id": "lxzmD9V4"
     }
   ],
   "notes": [
     "No unverified artifact is enabled merely because it is a target. Exact dependency, side and loader checks must precede pinning.",
     "Tyz and standalone MXP retained until a coherent Unified Progression replacement explicitly revises this target and all runtime validators.",
-    "Other unresolved desired/catalog-only mods outside this scope are not automatically activated. No required-mod omission may silently disappear from target."
+    "Other unresolved desired/catalog-only mods outside this scope are not automatically activated. No required-mod omission may silently disappear from target.",
+    "2026-11-19 owner approved excluding Deep Aether and Liroth: Revamped from this QA target; remove Nuit (newly added solely for Liroth) while keeping existing BetterEnd New Dawn libraries, Aether and owo-lib. Prior exact audit evidence retained. This is a current-QA deferral, not deletion of historical catalog entries."
   ]
 }
