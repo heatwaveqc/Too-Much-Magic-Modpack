@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:cave_dragon",
+  "title": "Cave Dragon",
+  "legacy_eligibility": "Dragon Survival verified species and real growth gates",
+  "notes": [
+    "No cross-species dragon purchases or free dragon growth.",
+    "Mining benefits must not bypass protected ores, world claims or late-game materials.",
+    "No Cave Dragon mana regeneration talents; high-cost dragon armor, damage and legal harvest enhancements accompany outsized mana/spell power.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+    "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_cave_draconic_reservoir",
+        "label": "Draconic Reservoir",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 2500,
+        "stage": "species-shared",
+        "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+        "reference_basis": "personal_base_max_mana_or_equivalent",
+        "notes": [
+          "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; personal pool APIs"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_cave_draconic_potency",
+        "label": "Draconic Potency",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 1000,
+        "stage": "species-shared",
+        "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+        "reference_basis": "personal_baseline_spell_effect",
+        "notes": [
+          "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; actual school units"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_cave_draconic_scales",
+        "label": "Draconic Scales",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+        "reference_basis": "form_base_natural_armor_effectiveness",
+        "notes": [
+          "2 SP/rank and no immortal or near-100% reduction."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute; native armor reference"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_cave_draconic_claws",
+        "label": "Draconic Claws",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Real dragon form physical strike boost; not global magic damage.",
+        "reference_basis": "unmodified_verified_dragon_melee",
+        "notes": [
+          "2 SP/rank, separately bounded from Dragon spell potency."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "melee_bonus; native claw attribution"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_cave_draconic_talons",
+        "label": "Draconic Talons",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 2,
+        "max_sp": 100,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+        "reference_basis": "legal_block_break_speed",
+        "notes": [
+          "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "break_speed; legal native claw harvesting"
+      }
+    },
+    {
+      "lane": "Claw & Fang",
+      "source": {
+        "id": "tmm_dragon_cave_stone_claws",
+        "label": "Stone Claws",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Scale unarmed/claw damage only in dragon body; no weapon-wide bonus.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_stone_claws",
+        "stage": "entry",
+        "label": "Stone Claws",
+        "effect": "Scale unarmed/claw damage only in dragon body; no weapon-wide bonus.",
+        "method": "attribute/attack hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "melee_bonus; source attribution"
+      }
+    },
+    {
+      "lane": "Claw & Fang",
+      "source": {
+        "id": "tmm_dragon_cave_crushing_bite",
+        "label": "Crushing Bite",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Bounded armor/knockback pressure on confirmed bite hits.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_stone_claws"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_crushing_bite",
+        "stage": "advanced",
+        "label": "Crushing Bite",
+        "effect": "Bounded armor/knockback pressure on confirmed bite hits.",
+        "method": "dragon attack-event adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_stone_claws"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_bonus, status_on_hit; bite and launch hooks"
+      }
+    },
+    {
+      "lane": "Claw & Fang",
+      "source": {
+        "id": "tmm_dragon_cave_seismic_pounce",
+        "label": "Seismic Pounce",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Cooldown-limited landing shockwave against entities; terrain damage off by default.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_crushing_bite"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_seismic_pounce",
+        "stage": "mastery",
+        "label": "Seismic Pounce",
+        "effect": "Cooldown-limited landing shockwave against entities; terrain damage off by default.",
+        "method": "movement/combat hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_crushing_bite"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "bounded landing shockwave"
+      }
+    },
+    {
+      "lane": "Stone Scales",
+      "source": {
+        "id": "tmm_dragon_cave_stonehide",
+        "label": "Stonehide",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Incremental natural armor; respect equipment stacking caps.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_stonehide",
+        "stage": "entry",
+        "label": "Stonehide",
+        "effect": "Incremental natural armor; respect equipment stacking caps.",
+        "method": "attribute/form gate",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Stone Scales",
+      "source": {
+        "id": "tmm_dragon_cave_earthbound_poise",
+        "label": "Earthbound Poise",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Reduce knockback and fall damage while grounded.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_stonehide"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_earthbound_poise",
+        "stage": "advanced",
+        "label": "Earthbound Poise",
+        "effect": "Reduce knockback and fall damage while grounded.",
+        "method": "damage/motion adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_stonehide"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, fall_reduction"
+      }
+    },
+    {
+      "lane": "Stone Scales",
+      "source": {
+        "id": "tmm_dragon_cave_mountain_bastion",
+        "label": "Mountain Bastion",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_earthbound_poise"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_mountain_bastion",
+        "stage": "mastery",
+        "label": "Mountain Bastion",
+        "effect": "Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity.",
+        "method": "custom activated ability",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_earthbound_poise"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "activation, damage_multiplier"
+      }
+    },
+    {
+      "lane": "Excavation",
+      "source": {
+        "id": "tmm_dragon_cave_tunneler",
+        "label": "Tunneler",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 2,
+        "max_sp": 100,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Improve legal claw-mining speed; preserve vanilla/tool harvest checks.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_tunneler",
+        "stage": "entry",
+        "label": "Tunneler",
+        "effect": "Improve legal claw-mining speed; preserve vanilla/tool harvest checks.",
+        "method": "block-break adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "break_speed; claw context"
+      }
+    },
+    {
+      "lane": "Excavation",
+      "source": {
+        "id": "tmm_dragon_cave_vein_sense",
+        "label": "Vein Sense",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 50,
+        "stage": "advanced",
+        "effect": "Short-range, timed ore awareness without unrestricted x-ray or chunk scans.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_tunneler"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_vein_sense",
+        "stage": "advanced",
+        "label": "Vein Sense",
+        "effect": "Short-range, timed ore awareness without unrestricted x-ray or chunk scans.",
+        "method": "server bounded scan",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_tunneler"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "bounded ore detection"
+      }
+    },
+    {
+      "lane": "Excavation",
+      "source": {
+        "id": "tmm_dragon_cave_deep_excavation",
+        "label": "Deep Excavation",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "mastery",
+        "effect": "Controlled multi-block excavation; count actual blocks, honor claims and server limits.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_vein_sense"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_deep_excavation",
+        "stage": "mastery",
+        "label": "Deep Excavation",
+        "effect": "Controlled multi-block excavation; count actual blocks, honor claims and server limits.",
+        "method": "protected block-break pipeline",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_vein_sense"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "claim-safe multi-block mining"
+      }
+    },
+    {
+      "lane": "Infernal Attunement",
+      "source": {
+        "id": "tmm_dragon_cave_infernal_resonance",
+        "label": "Infernal Resonance",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_infernal_resonance",
+        "stage": "entry",
+        "label": "Infernal Resonance",
+        "effect": "Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals.",
+        "method": "tagged personal spell adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; demon taxonomy"
+      }
+    },
+    {
+      "lane": "Infernal Attunement",
+      "source": {
+        "id": "tmm_dragon_cave_hellbound_command",
+        "label": "Hellbound Command",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_infernal_resonance"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_hellbound_command",
+        "stage": "advanced",
+        "label": "Hellbound Command",
+        "effect": "Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions.",
+        "method": "owner attribution / demon tags",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_infernal_resonance"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; owned summoned ally attribution"
+      }
+    },
+    {
+      "lane": "Infernal Attunement",
+      "source": {
+        "id": "tmm_dragon_cave_infernal_dominion",
+        "label": "Infernal Dominion",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_cave_hellbound_command"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_cave_infernal_dominion",
+        "stage": "mastery",
+        "label": "Infernal Dominion",
+        "effect": "Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated.",
+        "method": "demon spell-source adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_cave_hellbound_command"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; infernal taxonomy"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Heart of the Mountain",
+        "effect": "After late native dragon progression, briefly combine armor and excavation benefits; no Chaos Guardian-tier gear replacement.",
+        "status": "concept_only",
+        "id": "tmm_dragon_cave_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_cave_seismic_pounce",
+            "tmm_dragon_cave_mountain_bastion",
+            "tmm_dragon_cave_deep_excavation",
+            "tmm_dragon_cave_infernal_dominion"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_cave_crushing_bite",
+            "tmm_dragon_cave_earthbound_poise",
+            "tmm_dragon_cave_vein_sense",
+            "tmm_dragon_cave_hellbound_command"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}

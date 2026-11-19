@@ -26,6 +26,6 @@ public abstract class HunterLootingMixin {
         int nativeLevel = original.call(enchantment, attacker);
         if (!enchantment.is(Enchantments.LOOTING) || !(attacker instanceof ServerPlayer player))
             return nativeLevel;
-        return nativeLevel + NativeLootBonuses.hunterLooting(player, context);
+        return nativeLevel + NativeLootBonuses.hunterLooting(player, context) + NativeLootBonuses.configuredLooting(player,context);
     }
 }

@@ -30,7 +30,7 @@ final class MonkPathParityCoverageTest {
             assertNotNull(input, "Loadable Monk datapack missing: " + resource);
             JsonObject source = JsonParser.parseReader(
                     new InputStreamReader(input, StandardCharsets.UTF_8)).getAsJsonObject();
-            return PathJson.read("tmm_progression:monk", source);
+            return TestPaths.read("tmm_progression:monk", source);
         }
     }
 

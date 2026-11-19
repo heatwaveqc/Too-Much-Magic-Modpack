@@ -14,21 +14,22 @@ public record HunterXpPolicy(double healthDivisor, double specialtyMultiplier,
                              long minKillXp, double potionBaseXp,
                              double potionDiscoveryMultiplier,
                              long potionRepeatCooldownTicks,
-                             Map<String,Integer> potionBrewingDifficulty) {
+                             Map<String,Integer> potionBrewingDifficulty, String includeTag, String excludeTag,
+                             String specialtyPath,String specialtyGroup) {
     public HunterXpPolicy {
         potionBrewingDifficulty = Map.copyOf(potionBrewingDifficulty);
     }
 
     public static HunterXpPolicy parse(JsonObject path) {
-        if (!path.has("hunter_xp")) return null;
-        if (!path.get("hunter_xp").isJsonObject())
-            throw new IllegalArgumentException("hunter_xp must be an object");
-        JsonObject json = path.getAsJsonObject("hunter_xp");
+        String keyName=path.has("computed_xp")?"computed_xp":"hunter_xp";
+        if(!path.has(keyName))return null;
+        if(!path.get(keyName).isJsonObject())throw new IllegalArgumentException("computed_xp must be an object");
+        JsonObject json=path.getAsJsonObject(keyName);
         Set<String> allowed = Set.of("health_divisor","specialty_multiplier","min_kill_xp",
             "potion_base_xp","potion_discovery_multiplier","potion_repeat_cooldown_ticks",
             "potion_brewing_difficulty");
         for (String key : json.keySet())
-            if (!allowed.contains(key)) throw new IllegalArgumentException("Unknown hunter_xp key: " + key);
+            if (!allowed.contains(key)&&!Set.of("include_tag","exclude_tag","specialty_path","specialty_group").contains(key)) throw new IllegalArgumentException("Unknown computed_xp key: " + key);
         for (String required : allowed)
             if (!json.has(required)) throw new IllegalArgumentException("Missing hunter_xp key: " + required);
         double divisor = json.get("health_divisor").getAsDouble();
@@ -57,9 +58,16 @@ public record HunterXpPolicy(double healthDivisor, double specialtyMultiplier,
                 throw new IllegalArgumentException("Potion brewing difficulty out of range: " + id);
             difficulty.put(id,value);
         }
-        return new HunterXpPolicy(divisor,multiplier,min,base,discovery,cooldown,difficulty);
+        return new HunterXpPolicy(divisor,multiplier,min,base,discovery,cooldown,difficulty,
+            optionalId(json,"include_tag"),optionalId(json,"exclude_tag"),
+            optionalId(json,"specialty_path"),optionalId(json,"specialty_group"));
     }
 
+    private static String optionalId(JsonObject json,String key){
+        String value=json.has(key)?json.get(key).getAsString():"";
+        if(!value.isEmpty()&&!value.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Invalid "+key);
+        return value;
+    }
     public int difficulty(String potionId) {
         return potionBrewingDifficulty.getOrDefault(potionId,0);
     }

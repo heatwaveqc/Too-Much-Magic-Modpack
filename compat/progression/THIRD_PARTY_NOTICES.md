@@ -11,3 +11,56 @@ The accompanying MIT LICENSE covers original first-party module code and documen
 When source is actually copied or adapted, append the exact copyright/permission notice(s), immutable commit and original file paths, and retain required attribution in the source and distributable. References here alone do not inventory all historical code provenance or satisfy notice obligations for future imports.
 
 **Maintenance:** Preserve all applicable upstream notices verbatim, plus provenance for code/assets actually incorporated. This file is an initial record, not a certification of historical provenance. Review existing sources before public distribution and update this file whenever new third-party code is incorporated.
+
+## Imported foundation code (2026-11-18)
+
+The following adapted source files are shipped under their original permissive terms; complete original licenses are in third_party_licenses/ and included in JARs. No upstream assets, standalone donor mod JARs or external UI libraries are redistributed. No Tyz source imported. Original source paths and immutable revisions:
+
+### Epiphany — MIT
+HaooooZhang/Epiphany @ 1cbffb31ef4474fec73d66f1a888b4db27c4a71d
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/Comparison.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/logic/AndCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/logic/OrCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/logic/NotCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/reward/RewardSource.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/client/ui/insight/InsightTreeView.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/DimensionCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/BiomeCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/AdvancementCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/EffectCondition.java
+- https://github.com/HaooooZhang/Epiphany/blob/1cbffb31ef4474fec73d66f1a888b4db27c4a71d/src/main/java/ink/myumoon/epiphany/content/condition/builtin/AttributeCondition.java
+
+Full original notice: third_party_licenses/Epiphany.txt.
+
+### Oritech — CC0-1.0
+Rearth/Oritech @ 225b182d0f8d2f9eb56a61220569dc32c4461f8e
+- https://github.com/Rearth/Oritech/blob/225b182d0f8d2f9eb56a61220569dc32c4461f8e/common/src/main/java/rearth/oritech/block/entity/augmenter/api/Augment.java
+
+Full original notice: third_party_licenses/Oritech.txt.
+
+### EverlastingAbilities — MIT
+CyclopsMC/EverlastingAbilities @ 53bc1f1cd9ca835e586bd0fb88d9a88afb85544e
+- https://github.com/CyclopsMC/EverlastingAbilities/blob/53bc1f1cd9ca835e586bd0fb88d9a88afb85544e/loader-common/src/main/java/org/cyclops/everlastingabilities/ability/AbilityTypeSpecialMagnetize.java
+
+Full original notice: third_party_licenses/EverlastingAbilities.txt.
+
+### Apotheosis — MIT
+Shadows-of-Fire/Apotheosis @ 84e27e7031c7e2ab2f2e8328daf491c88203fcbc
+- https://github.com/Shadows-of-Fire/Apotheosis/blob/84e27e7031c7e2ab2f2e8328daf491c88203fcbc/src/main/java/dev/shadowsoffire/apotheosis/attachments/AttributeToggles.java
+
+Full original notice: third_party_licenses/Apotheosis.txt.
+
+### JustDireThings — MIT
+Direwolf20-MC/JustDireThings @ 506416a9c7675cacc246a47d2b0c9d6b27eff9a8
+- https://github.com/Direwolf20-MC/JustDireThings/blob/506416a9c7675cacc246a47d2b0c9d6b27eff9a8/src/main/java/com/direwolf20/justdirethings/mixin/LightTextureMixin.java
+
+Full original notice: third_party_licenses/JustDireThings.txt.
+
+### Create — MIT
+Creators-of-Create/Create @ 37ea4afcfe5bf85875d4b0749798a45330070a1f
+- https://github.com/Creators-of-Create/Create/blob/37ea4afcfe5bf85875d4b0749798a45330070a1f/src/main/java/com/simibubi/create/foundation/events/ClientEvents.java
+
+Full original notice: third_party_licenses/Create.txt.
+
+## Batch 5 activation (2026-11-18)
+`EnhancedNightVisionMixin.java` adapts the JustDireThings LightTextureMixin pinned above; `MechanicalEffects` uses the previously attributed EverlastingAbilities `MagnetMotion` and existing Create `LavaFogHook` is connected by `ClientVision`. Original full notices remain packaged. No additional upstream assets or Tyz source copied.

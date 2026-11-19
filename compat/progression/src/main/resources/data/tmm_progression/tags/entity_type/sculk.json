@@ -1,6 +1,34 @@
 {
   "replace": false,
   "values": [
-    "minecraft:warden"
+    {
+      "id": "deeperdarker:sculk_centipede",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sculk_leech",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sculk_snapper",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:shattered",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:shriek_worm",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:stalker",
+      "required": false
+    },
+    "minecraft:warden",
+    {
+      "id": "occultism:possessed_warden",
+      "required": false
+    }
   ]
 }
