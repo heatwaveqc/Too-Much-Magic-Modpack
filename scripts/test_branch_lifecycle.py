@@ -1,4 +1,5 @@
 """Offline safety and decision tests for branch lifecycle maintenance."""
+import datetime as dt
 import hashlib
 import json
 import os
@@ -106,6 +107,115 @@ class LifecycleTests(unittest.TestCase):
             self.assertEqual(git("rev-parse", ref, cwd=remote).stdout.strip(), second)
             git("push", "--force-with-lease=" + ref + ":" + second, "origin", ":" + ref, cwd=work)
             self.assertNotEqual(git("show-ref", "--verify", ref, cwd=remote, check=False).returncode, 0)
+
+
+class ConsoleTests(unittest.TestCase):
+    digest = "c" * 64
+    nonce = "d" * 32
+
+    def setUp(self):
+        self.env = {"GITHUB_REPOSITORY": lifecycle.REPO, "GITHUB_REF": "refs/heads/main",
+                    "GITHUB_EVENT_NAME": "issue_comment", "GITHUB_ACTOR_ID": lifecycle.OWNER_ID,
+                    "GITHUB_RUN_ATTEMPT": "1", "GITHUB_SHA": A, "GITHUB_EVENT_PATH": "event.json"}
+        self.issue = {"number": lifecycle.RETIRE_CONSOLE, "state": "open"}
+        stamp = dt.datetime.now(dt.timezone.utc).isoformat()
+        self.comment = {"id": 10, "user": {"id": int(lifecycle.OWNER_ID)},
+                        "author_association": "OWNER", "created_at": stamp, "updated_at": stamp,
+                        "issue_url": "https://api.github.com/repos/" + lifecycle.REPO + "/issues/" + str(lifecycle.RETIRE_CONSOLE),
+                        "body": f"/tmm retire {PATH} {self.digest} {self.nonce}"}
+        self.event = {"action": "created", "repository": {"full_name": lifecycle.REPO, "default_branch": "main"},
+                      "issue": self.issue, "sender": {"id": int(lifecycle.OWNER_ID)}, "comment": dict(self.comment)}
+        self.responses = {f"/issues/{lifecycle.RETIRE_CONSOLE}": self.issue,
+                          "/issues/comments/10": self.comment,
+                          "/git/ref/heads/main": {"object": {"sha": A}}}
+
+    def request(self):
+        with patch.dict(os.environ, self.env, clear=True), \
+             patch.object(Path, "read_bytes", return_value=json.dumps(self.event).encode()), \
+             patch.object(lifecycle, "api", side_effect=lambda path: self.responses[path]), \
+             patch.object(subprocess, "check_output", return_value=A):
+            return lifecycle.console_request()
+
+    def test_exact_commands(self):
+        self.assertEqual(self.request(), (PATH, self.digest, self.nonce, A))
+        self.assertEqual(lifecycle.parse_console(f"/tmm retire-check {PATH} {self.digest}"),
+                         (PATH, self.digest, None))
+        for bad in ("/tmm retire ../file.json " + self.digest + " " + self.nonce,
+                    self.comment["body"] + "\n", self.comment["body"] + " extra",
+                    self.comment["body"].replace(self.nonce, "short"),
+                    self.comment["body"].replace(self.digest, self.digest.upper()),
+                    self.comment["body"].replace("retire ", "retire-check "),
+                    "/tmm retire-check " + PATH + " " + self.digest + " ; rm"):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                lifecycle.parse_console(bad)
+
+    def test_reject_wrong_owner_issue_rerun_and_main(self):
+        for key, value in (("GITHUB_ACTOR_ID", "5"), ("GITHUB_RUN_ATTEMPT", "2"),
+                           ("GITHUB_REF", "refs/heads/feature/untrusted"),
+                           ("GITHUB_REPOSITORY", "other/repo"), ("GITHUB_SHA", B)):
+            original = self.env[key]
+            self.env[key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.request()
+            self.env[key] = original
+        self.event["issue"] = dict(self.issue, number=1)
+        with self.assertRaises(ValueError):
+            self.request()
+
+    def test_reject_edited_deleted_stale_or_changed_commands(self):
+        stamp = self.comment["updated_at"]
+        self.comment["updated_at"] = "2000-01-01T00:00:00Z"
+        with self.assertRaises(ValueError):
+            self.request()
+        self.comment["updated_at"] = stamp
+        self.comment["body"] += " "
+        with self.assertRaises(ValueError):
+            self.request()
+        self.comment["body"] = self.event["comment"]["body"]
+        for record in (self.comment, self.event["comment"]):
+            record["created_at"] = record["updated_at"] = "2000-01-01T00:00:00Z"
+        with self.assertRaises(ValueError):
+            self.request()
+        del self.responses["/issues/comments/10"]
+        with self.assertRaises(KeyError):
+            self.request()
+
+    def test_check_command_never_claims_nonce(self):
+        with patch.object(lifecycle, "console_request", return_value=(PATH, self.digest, None, A)), \
+             patch.object(lifecycle, "retire") as retire, patch.object(lifecycle, "claim_console_nonce") as claim:
+            lifecycle.console()
+            retire.assert_called_once_with(PATH, self.digest, False)
+            claim.assert_not_called()
+
+    def test_receipt_must_be_create_only_and_match(self):
+        ref = "refs/tags/retirement-request/" + self.nonce
+        with patch.object(lifecycle, "api", return_value={"ref": ref, "object": {"sha": A}}) as api, \
+             patch.object(lifecycle, "report"):
+            lifecycle.claim_console_nonce(self.nonce, A)
+            api.assert_called_once_with("/git/refs", method="POST", data={"ref": ref, "sha": A})
+        with patch.object(lifecycle, "api", side_effect=ValueError("already exists")):
+            with self.assertRaises(ValueError):
+                lifecycle.claim_console_nonce(self.nonce, A)
+
+    def test_no_delete_on_wrong_manifest_or_failed_claim(self):
+        raw = manifest(ENTRY)
+        digest = hashlib.sha256(raw).hexdigest()
+        with patch.dict(os.environ, self.env, clear=True), \
+             patch.object(Path, "read_bytes", return_value=raw), \
+             patch.object(subprocess, "check_output", return_value=raw), \
+             patch.object(subprocess, "run") as run, \
+             patch.object(lifecycle, "snapshot") as snapshot, \
+             patch.object(lifecycle, "console_request", return_value=(PATH, self.digest, self.nonce, A)), \
+             patch.object(lifecycle, "claim_console_nonce", side_effect=ValueError("duplicate nonce")) as claim:
+            with self.assertRaises(ValueError):
+                lifecycle.retire(PATH, digest, True)
+            claim.assert_not_called()
+            with patch.object(lifecycle, "console_request", return_value=(PATH, digest, self.nonce, A)):
+                with self.assertRaises(ValueError):
+                    lifecycle.retire(PATH, digest, True)
+                claim.assert_called_once_with(self.nonce, A)
+            snapshot.assert_not_called()
+            run.assert_not_called()
 
 
 if __name__ == "__main__":
