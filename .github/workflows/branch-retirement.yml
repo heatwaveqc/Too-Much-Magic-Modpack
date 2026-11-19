@@ -1,0 +1,88 @@
+name: Branch retirement
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'maintenance/branch-retirement/**'
+      - 'scripts/branch_lifecycle.py'
+      - 'scripts/test_branch_lifecycle.py'
+      - '.github/workflows/branch-retirement.yml'
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: 'Reviewed maintenance/branch-retirement/<batch>.json path'
+        required: true
+        type: string
+      digest:
+        description: 'SHA-256 from the independently reviewed dry run'
+        required: true
+        type: string
+      execute:
+        description: 'Owner authorizes exact reviewed batch deletion (default dry run)'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: branch-retirement
+  cancel-in-progress: false
+
+jobs:
+  review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Unit tests (no network or remote deletion)
+        run: python3 -m unittest discover -s scripts -p test_branch_lifecycle.py -v
+      - name: Dry run changed batch manifests
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only -z --diff-filter=AM "$BASE" "$HEAD" -- maintenance/branch-retirement/ > "$RUNNER_TEMP/retirement-paths"
+          while IFS= read -r -d '' path; do
+            digest="$(sha256sum -- "$path" | cut -d ' ' -f 1)"
+            python3 scripts/branch_lifecycle.py retire --manifest "$path" --digest "$digest"
+          done < "$RUNNER_TEMP/retirement-paths"
+  manual-dry-run:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && !inputs.execute
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read-only recheck
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BATCH_PATH: ${{ inputs.manifest }}
+          BATCH_DIGEST: ${{ inputs.digest }}
+        run: python3 scripts/branch_lifecycle.py retire --manifest "$BATCH_PATH" --digest "$BATCH_DIGEST"
+  execute:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.execute && github.actor_id == '22598785' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recheck and delete only approved refs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BATCH_PATH: ${{ inputs.manifest }}
+          BATCH_DIGEST: ${{ inputs.digest }}
+          RETIRE_AUTHORIZED: 'true'
+        run: python3 scripts/branch_lifecycle.py retire --manifest "$BATCH_PATH" --digest "$BATCH_DIGEST" --execute
