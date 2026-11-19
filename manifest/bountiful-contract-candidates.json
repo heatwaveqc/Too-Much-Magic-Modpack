@@ -426,33 +426,24 @@
         "minecraft:gold_ingot",
         "minecraft:bone_meal"
       ],
-      "status": "held_pending_occultism_progression_audit",
-      "reward_themes": [],
-      "kill_candidates": [],
-      "reward_item_candidates": [],
-      "audit_candidates": [
-        {
-          "id": "occultism:purified_ink",
-          "assessment": "routine spirit-fire prep; low value, not a compelling premium payout"
-        },
-        {
-          "id": "occultism:spirit_attuned_gem",
-          "assessment": "diamond spirit-fire conversion; potential ordinary preparation payout"
-        },
-        {
-          "id": "occultism:iesnium_ingot",
-          "assessment": "premium candidate; one ingot already owner-approved for wandering trader (B20), audit repeat supply and recipe gates before bounty use"
-        },
-        {
-          "id": "occultism:afrit_essence",
-          "assessment": "hold: unbound Afrit drop/tier unlock and storage upgrades"
-        },
-        {
-          "id": "occultism:chalk_gold",
-          "assessment": "hold: specific pentacle access; audit colored chalk progression"
-        }
+      "status": "owner_locked_reward_pool_pending_registry_and_balance",
+      "reward_themes": [
+        "skeleton skulls",
+        "wither skeleton skulls",
+        "spirit attuned gems",
+        "Afrit essence",
+        "Marid essence"
       ],
-      "reward_notes": "No default chalk pool. Audit spirit tiers, gates, storage and Ritual of Equivalent Exchange before enabling; no bound workers, miners, bound books or tier-boss drops as routine rewards."
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "minecraft:skeleton_skull",
+        "minecraft:wither_skeleton_skull",
+        "occultism:spirit_attuned_gem",
+        "occultism:afrit_essence",
+        "occultism:marid_essence"
+      ],
+      "reward_notes": "Owner-approved complete five-item payout roster. No chalk, Iesnium, or other rewards. Afrit/Marid essences are intentional alternatives to native acquisition; balance quantities and contract difficulty, not eligibility of the selected items. No bound books, workers, miners, or completed ritual products. Exact registered IDs/counts and final economy review remain runtime staging gates.",
+      "reward_allowlist_locked": true
     },
     {
       "id": "pastel",

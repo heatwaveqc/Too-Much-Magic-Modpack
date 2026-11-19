@@ -34,11 +34,24 @@ class TestBountifulCompiler(unittest.TestCase):
         r=copy.deepcopy(R)
         r["approved_entries"]["vampire"]=r["approved_entries"].pop("farming")
         with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
-    def test_held_occultism_and_removed_theurgy(self):
-        for key in ("occultism", "theurgy"):
-            r=copy.deepcopy(R)
-            r["approved_entries"][key]=r["approved_entries"].pop("farming")
-            with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+    def test_removed_theurgy(self):
+        r=copy.deepcopy(R)
+        r["approved_entries"]["theurgy"]=r["approved_entries"].pop("farming")
+        with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+    def test_locked_occultism_rewards(self):
+        expected={"minecraft:skeleton_skull","minecraft:wither_skeleton_skull","occultism:spirit_attuned_gem","occultism:afrit_essence","occultism:marid_essence"}
+        occ=next(f for f in C["schools"] if f["id"]=="occultism")
+        self.assertEqual(set(occ["reward_item_candidates"]),expected)
+        r=copy.deepcopy(R)
+        r["registered_items"]=sorted(expected | {"minecraft:gold_ingot","occultism:chalk_gold"})
+        r["effective_emc"]={item:1 for item in r["registered_items"]}
+        r["approved_reward_items"]=sorted(expected | {"occultism:chalk_gold"})
+        r["approved_entries"]={"occultism":{"rewards":[{"item":item,"count":1} for item in sorted(expected)],"objectives":[{"item":"minecraft:gold_ingot","count":4}]}}
+        files=m.compile_candidate(C,A,r)
+        pool=json.loads(files["config/bountiful/bounty_pools/tmm_occultism_rews.json"])
+        self.assertEqual({e["content"] for e in pool["content"].values()},expected)
+        r["approved_entries"]["occultism"]["rewards"].append({"item":"occultism:chalk_gold","count":1})
+        with self.assertRaisesRegex(ValueError,"owner-locked"):m.compile_candidate(C,A,r)
     def test_no_unapproved_settlement(self):
         r=copy.deepcopy(R)
         r["settlement"]="unknown"

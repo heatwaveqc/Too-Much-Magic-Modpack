@@ -61,6 +61,8 @@ def compile_candidate(catalog, audit, review):
             reward_n = positive(reward["count"], "reward count")
             if reward_id not in review["approved_reward_items"] or reward_id in reward_ids:
                 raise ValueError("reward not explicitly allowlisted or duplicate")
+            if family.get("reward_allowlist_locked") and reward_id not in family["reward_item_candidates"]:
+                raise ValueError("reward outside owner-locked decree roster: " + reward_id)
             reward_emc = positive(prices[reward_id], reward_id)
             if reward_n > 64:
                 raise ValueError("reward exceeds initial pilot stack cap")
