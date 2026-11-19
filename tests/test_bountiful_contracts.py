@@ -89,4 +89,48 @@ class TestBountifulCompiler(unittest.TestCase):
         r["approved_kill_entities"]=[]
         with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
 
+    def test_native_reputation_and_pair_exclusions(self):
+        r=copy.deepcopy(R)
+        r["balance_profile"]="native_v1"
+        r["registered_items"]+=["minecraft:golden_carrot","minecraft:carrot"]
+        r["effective_emc"].update({"minecraft:golden_carrot":100,"minecraft:carrot":16})
+        r["approved_reward_items"].append("minecraft:golden_carrot")
+        r["approved_entries"]={"farming":{"rewards":[{"item":"minecraft:bread","min":1,"max":2,"rarity":"COMMON"},{"item":"minecraft:golden_carrot","min":1,"max":1,"rarity":"UNCOMMON"}],"objectives":[{"item":"minecraft:wheat","min":1,"max":100},{"item":"minecraft:carrot","min":1,"max":64}]}}
+        files=m.compile_candidate(C,A,r)
+        cfg=json.loads(files["config/bountiful/bountiful.json"])["bounty"]
+        self.assertEqual(cfg["fillerDifficultyModifierPercent"],75)
+        rews=json.loads(files["config/bountiful/bounty_pools/tmm_farming_rews.json"])["content"]
+        objs=json.loads(files["config/bountiful/bounty_pools/tmm_farming_objs.json"])["content"]
+        self.assertEqual(rews["item_minecraft_bread"]["repRequired"],-30)
+        self.assertEqual(rews["item_minecraft_golden_carrot"]["repRequired"],0)
+        self.assertIn({"type":"item","content":"minecraft:wheat"},rews["item_minecraft_golden_carrot"]["forbids"])
+        for rew in rews.values():
+            for obj in objs.values():
+                if {"type":obj["type"],"content":obj["content"]} in rew.get("forbids",[]):continue
+                for count in range(rew["amount"]["min"],rew["amount"]["max"]+1):
+                    for rep in range(-30,31):
+                        import math
+                        target=rew["unitWorth"]*count*1.75*(1-rep/75)
+                        n=min(obj["amount"]["max"],max(obj["amount"]["min"],math.ceil(target/obj["unitWorth"])))
+                        self.assertGreaterEqual(n*r["effective_emc"][obj["content"]],count*r["effective_emc"][rew["content"]])
+                        self.assertGreaterEqual(n*obj["unitWorth"]+1e-8,target)
+    def test_native_rejects_no_feasible_objective(self):
+        r=copy.deepcopy(R)
+        r["balance_profile"]="native_v1"
+        r["approved_entries"]["farming"]["reward"]["rarity"]="EPIC"
+        with self.assertRaisesRegex(ValueError,"no feasible objective"):m.compile_candidate(C,A,r)
+    def test_native_premium_only_has_no_rep_deadlock(self):
+        r=copy.deepcopy(R)
+        r["balance_profile"]="native_v1"
+        r["registered_items"]=["astralsorcery:constellation_paper","minecraft:gold_ingot"]
+        r["effective_emc"]={"astralsorcery:constellation_paper":512,"minecraft:gold_ingot":144}
+        r["approved_reward_items"]=["astralsorcery:constellation_paper"]
+        r["approved_entries"]={"astral_sorcery":{"rewards":[{"item":"astralsorcery:constellation_paper","count":1,"rarity":"EPIC"}],"objectives":[{"item":"minecraft:gold_ingot","min":1,"max":128}]}}
+        files=m.compile_candidate(C,A,r)
+        rew=next(iter(json.loads(files["config/bountiful/bounty_pools/tmm_astral_sorcery_rews.json"])["content"].values()))
+        self.assertEqual(rew["repRequired"],-30)
+        self.assertEqual(rew["unitWorth"],256)
+        r["approved_entries"]["astral_sorcery"]["rewards"][0]["rarity"]="COMMON"
+        with self.assertRaisesRegex(ValueError,"premium"):m.compile_candidate(C,A,r)
+
 if __name__=="__main__":unittest.main()

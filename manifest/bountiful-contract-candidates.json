@@ -25,6 +25,70 @@
         "minecraft:zombie",
         "minecraft:skeleton",
         "minecraft:spider"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:arrow",
+          "min": 16,
+          "max": 32,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:leather",
+          "min": 4,
+          "max": 8,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:string",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:spider",
+          "min": 4,
+          "max": 96
+        }
       ]
     },
     {
@@ -37,7 +101,59 @@
         "minecraft:beetroot",
         "minecraft:pumpkin"
       ],
-      "kill_candidates": []
+      "kill_candidates": [],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:bone_meal",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:wheat",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:carrot",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:potato",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:beetroot",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:pumpkin",
+          "min": 8,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "fishing",
@@ -48,7 +164,53 @@
         "minecraft:tropical_fish",
         "minecraft:ink_sac"
       ],
-      "kill_candidates": []
+      "kill_candidates": [],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "minecraft:nautilus_shell",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:cod",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:salmon",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:tropical_fish",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ink_sac",
+          "min": 8,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "mining",
@@ -59,7 +221,53 @@
         "minecraft:raw_copper",
         "minecraft:raw_iron"
       ],
-      "kill_candidates": []
+      "kill_candidates": [],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 8,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:gold_ingot",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:cobblestone",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:coal",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_copper",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_iron",
+          "min": 8,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "crafting_forestry",
@@ -71,7 +279,59 @@
         "minecraft:charcoal",
         "minecraft:torch"
       ],
-      "kill_candidates": []
+      "kill_candidates": [],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 8,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:oak_log",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spruce_log",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:charcoal",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:torch",
+          "min": 8,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "culinary",
@@ -82,7 +342,53 @@
         "minecraft:baked_potato",
         "minecraft:cooked_cod"
       ],
-      "kill_candidates": []
+      "kill_candidates": [],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:emerald",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 2,
+          "max": 4,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bread",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_beef",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:baked_potato",
+          "min": 8,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_cod",
+          "min": 8,
+          "max": 256
+        }
+      ]
     }
   ],
   "schools": [
@@ -105,6 +411,47 @@
         "ars_nouveau:air_essence",
         "ars_nouveau:manipulation_essence",
         "ars_nouveau:source_gem"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "ars_nouveau:source_gem",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "ars_nouveau:air_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:manipulation_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -114,20 +461,85 @@
       "items": [
         "astralsorcery:aquamarine",
         "minecraft:glass",
-        "minecraft:amethyst_shard"
+        "minecraft:amethyst_shard",
+        "minecraft:gold_ingot",
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "blank constellation paper (high-end)"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:enderman",
+        "minecraft:phantom"
+      ],
       "reward_item_candidates": [
         "astralsorcery:constellation_paper"
       ],
       "premium_reward_candidates": [
         "astralsorcery:constellation_paper"
       ],
-      "reward_notes": "Aquamarine is not a payout. Only blank default paper, not a chosen/known constellation; preserve native discovery eligibility. Other midgame payouts remain open."
+      "reward_notes": "Aquamarine is not a payout. Only blank default paper, not a chosen/known constellation; preserve native discovery eligibility. Other midgame payouts remain open.",
+      "balance_reward_draft": [
+        {
+          "item": "astralsorcery:constellation_paper",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "astralsorcery:aquamarine",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:phantom",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        }
+      ]
     },
     {
       "id": "botania_revived",
@@ -137,7 +549,10 @@
         "minecraft:bone_meal",
         "minecraft:dandelion",
         "minecraft:poppy",
-        "minecraft:melon_seeds"
+        "minecraft:melon_seeds",
+        "minecraft:gold_ingot",
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -167,7 +582,156 @@
       "premium_reward_candidates": [
         "botania:black_lotus"
       ],
-      "reward_notes": "No petals or fertilizer payouts. Seasonal/sin runes may need higher contract difficulty; no Gaia Spirits."
+      "reward_notes": "No petals or fertilizer payouts. Seasonal/sin runes may need higher contract difficulty; no Gaia Spirits.",
+      "balance_reward_draft": [
+        {
+          "item": "botania:rune_air",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "botania:rune_water",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "botania:rune_fire",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "botania:rune_earth",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "botania:rune_mana",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "botania:rune_spring",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "botania:rune_summer",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "botania:rune_autumn",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "botania:rune_winter",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "botania:rune_lust",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_gluttony",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_greed",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_sloth",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_wrath",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_envy",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:rune_pride",
+          "min": 1,
+          "max": 2,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "botania:black_lotus",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:dandelion",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:poppy",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:melon_seeds",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        }
+      ]
     },
     {
       "id": "eidolon_repraised",
@@ -182,8 +746,52 @@
       "reward_themes": [
         "routine alchemical and ritual supplies"
       ],
-      "kill_candidates": [],
-      "reward_item_candidates": []
+      "kill_candidates": [
+        "minecraft:skeleton",
+        "minecraft:zombie",
+        "minecraft:witch"
+      ],
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:charcoal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        }
+      ]
     },
     {
       "id": "embers_re_ignited",
@@ -202,6 +810,35 @@
       "kill_candidates": [],
       "reward_item_candidates": [
         "embers:ember_shard"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "embers:ember_shard",
+          "min": 2,
+          "max": 6,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "embers:ember_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_copper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:coal",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -218,8 +855,38 @@
         "herbs",
         "basic ritual ingredients"
       ],
-      "kill_candidates": [],
-      "reward_item_candidates": []
+      "kill_candidates": [
+        "minecraft:witch"
+      ],
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:fern",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:sugar",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        }
+      ]
     },
     {
       "id": "evilcraft",
@@ -228,17 +895,89 @@
       "items": [
         "evilcraft:dark_gem",
         "minecraft:rotten_flesh",
-        "minecraft:bone"
+        "minecraft:bone",
+        "minecraft:gold_ingot",
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "coagulated blood (likely EvilCraft Condensed Blood; exact intended product to confirm)"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:zombie",
+        "minecraft:spider",
+        "minecraft:wither_skeleton"
+      ],
       "reward_item_candidates": [
         "evilcraft:condensed_blood"
       ],
-      "reward_notes": "Dark gems are not rewards. Pinned-source localization identifies Condensed Blood and Hardened Blood as distinct items. Condensed Blood is chest loot; do not assume equivalence to canonical fluid or hardened blood."
+      "reward_notes": "Dark gems are not rewards. Pinned-source localization identifies Condensed Blood and Hardened Blood as distinct items. Condensed Blood is chest loot; do not assume equivalence to canonical fluid or hardened blood.",
+      "balance_reward_draft": [
+        {
+          "item": "evilcraft:condensed_blood",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "evilcraft:dark_gem",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:spider",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        }
+      ]
     },
     {
       "id": "feywild",
@@ -255,7 +994,29 @@
         "ordinary fae crafting reagents"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:poppy",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blue_orchid",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:honeycomb",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "forbidden_arcanus",
@@ -274,6 +1035,35 @@
       "kill_candidates": [],
       "reward_item_candidates": [
         "forbidden_arcanus:arcane_crystal"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "forbidden_arcanus:arcane_crystal",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "forbidden_arcanus:arcane_crystal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -290,9 +1080,60 @@
         "ectoplasm",
         "basic dark arts reagents"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:skeleton",
+        "minecraft:wither_skeleton",
+        "minecraft:witch"
+      ],
       "reward_item_candidates": [
         "goety:ectoplasm"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "goety:ectoplasm",
+          "min": 4,
+          "max": 12,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "goety:ectoplasm",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        }
       ]
     },
     {
@@ -309,8 +1150,38 @@
         "amethyst shards",
         "ordinary media supplies"
       ],
-      "kill_candidates": [],
-      "reward_item_candidates": []
+      "kill_candidates": [
+        "minecraft:enderman"
+      ],
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 96
+        }
+      ]
     },
     {
       "id": "hexerei",
@@ -341,7 +1212,102 @@
         "hexerei:willow_sapling",
         "hexerei:witch_hazel_sapling"
       ],
-      "reward_notes": "No finished potion, wax, dried herb or broom rewards. Source snapshot predates exact pin; verify registered IDs."
+      "reward_notes": "No finished potion, wax, dried herb or broom rewards. Source snapshot predates exact pin; verify registered IDs.",
+      "balance_reward_draft": [
+        {
+          "item": "hexerei:belladonna_berries",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:belladonna_flowers",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:mandrake_flowers",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:mandrake_root",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:mugwort_flowers",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:mugwort_leaves",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:sage",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:yellow_dock_flowers",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:yellow_dock_leaves",
+          "min": 1,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexerei:mahogany_sapling",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "hexerei:willow_sapling",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "hexerei:witch_hazel_sapling",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:clay_ball",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:honeycomb",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lily_pad",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "irons_spells",
@@ -350,16 +1316,116 @@
       "items": [
         "minecraft:paper",
         "minecraft:ink_sac",
-        "minecraft:lapis_lazuli"
+        "minecraft:lapis_lazuli",
+        "minecraft:gold_ingot",
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "basic spell ink",
         "arcane essence"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:witch",
+        "minecraft:blaze",
+        "minecraft:enderman"
+      ],
       "reward_item_candidates": [
-        "irons_spellbooks:arcane_essence"
+        "irons_spellbooks:arcane_essence",
+        "irons_spellbooks:uncommon_ink",
+        "irons_spellbooks:rare_ink",
+        "irons_spellbooks:epic_ink",
+        "irons_spellbooks:legendary_ink"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "irons_spellbooks:arcane_essence",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "irons_spellbooks:uncommon_ink",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "irons_spellbooks:rare_ink",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "irons_spellbooks:epic_ink",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "irons_spellbooks:legendary_ink",
+          "min": 1,
+          "max": 1,
+          "rarity": "LEGENDARY"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:paper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ink_sac",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        }
       ]
     },
     {
@@ -377,7 +1443,29 @@
         "ritual consumables"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:paper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "malum",
@@ -393,9 +1481,60 @@
         "ordinary spirits only after gate review",
         "refined soulstone"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:zombie",
+        "minecraft:skeleton",
+        "minecraft:enderman"
+      ],
       "reward_item_candidates": [
         "malum:refined_soulstone"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "malum:refined_soulstone",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "malum:runewood_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "malum:refined_soulstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "malum:tainted_rock",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 96
+        }
       ]
     },
     {
@@ -415,6 +1554,35 @@
       "kill_candidates": [],
       "reward_item_candidates": [
         "neovitae:raw_crystal_shard"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "neovitae:raw_crystal_shard",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "neovitae:raw_crystal_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -424,7 +1592,9 @@
       "items": [
         "minecraft:coal",
         "minecraft:gold_ingot",
-        "minecraft:bone_meal"
+        "minecraft:bone_meal",
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "owner_locked_reward_pool_pending_registry_and_balance",
       "reward_themes": [
@@ -434,7 +1604,12 @@
         "Afrit essence",
         "Marid essence"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "minecraft:skeleton",
+        "minecraft:wither_skeleton",
+        "minecraft:witch",
+        "minecraft:enderman"
+      ],
       "reward_item_candidates": [
         "minecraft:skeleton_skull",
         "minecraft:wither_skeleton_skull",
@@ -443,7 +1618,96 @@
         "occultism:marid_essence"
       ],
       "reward_notes": "Owner-approved complete five-item payout roster. No chalk, Iesnium, or other rewards. Afrit/Marid essences are intentional alternatives to native acquisition; balance quantities and contract difficulty, not eligibility of the selected items. No bound books, workers, miners, or completed ritual products. Exact registered IDs/counts and final economy review remain runtime staging gates.",
-      "reward_allowlist_locked": true
+      "reward_allowlist_locked": true,
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:skeleton_skull",
+          "min": 1,
+          "max": 2,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "occultism:spirit_attuned_gem",
+          "min": 1,
+          "max": 1,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "minecraft:wither_skeleton_skull",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        },
+        {
+          "item": "occultism:afrit_essence",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        },
+        {
+          "item": "occultism:marid_essence",
+          "min": 1,
+          "max": 1,
+          "rarity": "LEGENDARY"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:coal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        }
+      ]
     },
     {
       "id": "pastel",
@@ -463,6 +1727,41 @@
       "reward_item_candidates": [
         "pastel:topaz_shard",
         "pastel:citrine_shard"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "pastel:topaz_shard",
+          "min": 2,
+          "max": 8,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "pastel:citrine_shard",
+          "min": 2,
+          "max": 8,
+          "rarity": "COMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "pastel:topaz_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "pastel:citrine_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -483,6 +1782,47 @@
         "primalmagick:essence_dust_earth",
         "primalmagick:essence_dust_sea",
         "primalmagick:essence_dust_sky"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "primalmagick:essence_dust_earth",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "primalmagick:essence_dust_sea",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "primalmagick:essence_dust_sky",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        }
+      ],
+      "balance_status": "draft_exact_id_payouts_pending_review",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "primalmagick:essence_dust_earth",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "primalmagick:essence_dust_sea",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "primalmagick:essence_dust_sky",
+          "min": 4,
+          "max": 256
+        }
       ]
     },
     {
@@ -499,7 +1839,29 @@
         "ordinary psi crafting materials"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "roots_classic",
@@ -516,7 +1878,29 @@
         "ritual consumables"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:oak_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:fern",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:wheat",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "scriptor_magicae",
@@ -533,7 +1917,29 @@
         "writing reagents"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:paper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ink_sac",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:feather",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "totemic",
@@ -549,7 +1955,29 @@
         "ordinary instrument and ritual supplies"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": []
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:oak_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:feather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:leather",
+          "min": 4,
+          "max": 256
+        }
+      ]
     },
     {
       "id": "witchery_remake",
@@ -565,8 +1993,45 @@
         "herbs",
         "ordinary witchcraft ritual reagents"
       ],
-      "kill_candidates": [],
-      "reward_item_candidates": []
+      "kill_candidates": [
+        "minecraft:witch",
+        "minecraft:wither_skeleton"
+      ],
+      "reward_item_candidates": [],
+      "balance_reward_draft": [],
+      "balance_status": "reward_ids_pending",
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:sugar",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 96
+        }
+      ]
     }
   ],
   "held_schools": [
@@ -679,5 +2144,54 @@
       "status": "held_pending_roster_and_decree_acquisition_recipe",
       "acquisition": "form-specific crafting; no random acquisition"
     }
-  ]
+  ],
+  "balance_draft": {
+    "status": "PROPOSED_FIRST_PASS_NOT_RUNTIME",
+    "profile": "native_v1",
+    "unit_scale": 16,
+    "filler_difficulty_percent": 75,
+    "normal_board_reputation_min": -30,
+    "normal_board_reputation_max": 30,
+    "tiers": {
+      "COMMON": {
+        "floor_emc": 64,
+        "rep": -30
+      },
+      "UNCOMMON": {
+        "floor_emc": 256,
+        "rep": 0
+      },
+      "RARE": {
+        "floor_emc": 1024,
+        "rep": 5
+      },
+      "EPIC": {
+        "floor_emc": 4096,
+        "rep": 15
+      },
+      "LEGENDARY": {
+        "floor_emc": 8192,
+        "rep": 25
+      }
+    },
+    "objective_caps": {
+      "delivery": 256,
+      "kill": 96
+    },
+    "kill_budget_emc_proposal": {
+      "minecraft:zombie": 32,
+      "minecraft:skeleton": 32,
+      "minecraft:spider": 32,
+      "minecraft:creeper": 64,
+      "minecraft:witch": 128,
+      "minecraft:blaze": 128,
+      "minecraft:wither_skeleton": 128,
+      "minecraft:enderman": 96,
+      "minecraft:phantom": 96,
+      "minecraft:drowned": 48,
+      "minecraft:slime": 32,
+      "minecraft:stray": 64
+    },
+    "notes": "Tier floors are effort floors, not new ProjectE prices. Positive EMC value is still required. Reward-first, one reward and one filler preferred, native rarity weights and reputation. Lowest available reward tier never rep-gated, so boards cannot produce empty offers purely from reputation. Fixed quantity one-shot special reward output; premium-only decree uses difficult objectives rather than pretending rarity limits standalone board frequency."
+  }
 }
