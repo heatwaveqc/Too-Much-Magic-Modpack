@@ -9,12 +9,12 @@ final class PastelInkState {
     static boolean held(ItemStack actual, ItemStack plain) {
         var a = actual.get(PastelDataComponentTypes.INK_STORAGE);
         var b = plain.get(PastelDataComponentTypes.INK_STORAGE);
-        var av = a == null ? java.util.Map.of() : a.storedEnergy();
-        var bv = b == null ? java.util.Map.of() : b.storedEnergy();
-        if (av.values().stream().anyMatch(v -> ((Long)v) < 0)
-                || bv.values().stream().anyMatch(v -> ((Long)v) < 0)) return true;
-        boolean any = av.values().stream().anyMatch(v -> ((Long)v) != 0)
-                || bv.values().stream().anyMatch(v -> ((Long)v) != 0);
+        java.util.Map<?,Long> av = a == null ? java.util.Map.of() : a.storedEnergy();
+        java.util.Map<?,Long> bv = b == null ? java.util.Map.of() : b.storedEnergy();
+        if (av.values().stream().anyMatch(v -> v < 0)
+                || bv.values().stream().anyMatch(v -> v < 0)) return true;
+        boolean any = av.values().stream().anyMatch(v -> v != 0)
+                || bv.values().stream().anyMatch(v -> v != 0);
         return any && !av.equals(bv);
     }
 }

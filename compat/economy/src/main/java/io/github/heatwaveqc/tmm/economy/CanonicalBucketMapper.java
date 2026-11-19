@@ -38,12 +38,12 @@ public final class CanonicalBucketMapper implements IEMCMapper<NormalizedSimpleS
         var seen = new HashSet<Item>();
         int mapped = 0;
         for (var fluid : BuiltInRegistries.FLUID) {
-            Item bucket = fluid.getBucket();
-            if (bucket == Items.AIR || bucket == Items.BUCKET
-                    || BuiltInRegistries.ITEM.getKey(bucket).getNamespace().equals("minecraft")
-                    || bucket.getClass() != BucketItem.class) continue;
-            if (!fluid.defaultFluidState().isSource() || seen.contains(bucket)) continue;
             try {
+                Item bucket = fluid.getBucket();
+                if (bucket == Items.AIR || bucket == Items.BUCKET
+                        || BuiltInRegistries.ITEM.getKey(bucket).getNamespace().equals("minecraft")
+                        || bucket.getClass() != BucketItem.class) continue;
+                if (!fluid.defaultFluidState().isSource() || seen.contains(bucket)) continue;
                 var full = new ItemStack(bucket);
                 if (!full.getComponentsPatch().isEmpty()) throw new IllegalArgumentException("component-sensitive bucket");
                 var cap = full.getCapability(Capabilities.FluidHandler.ITEM);
@@ -75,7 +75,7 @@ public final class CanonicalBucketMapper implements IEMCMapper<NormalizedSimpleS
                 seen.add(bucket);
                 mapped++;
             } catch (RuntimeException | LinkageError e) {
-                LOG.info("TMM canonical bucket held {}: {}", BuiltInRegistries.ITEM.getKey(bucket), e.getMessage());
+                LOG.info("TMM canonical bucket held fluid {}: {}", BuiltInRegistries.FLUID.getKey(fluid), e.getMessage());
             }
         }
         LOG.info("TMM canonical bucket mapper: {} verified nonvanilla containers", mapped);
