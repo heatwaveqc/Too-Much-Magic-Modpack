@@ -43,7 +43,7 @@ def main():
                 values={k:v for k,v in row.items() if k and isinstance(v,str) and ("emc" in k.lower() or k.lower() in ("name","display_name","description_id","item_name","translation_key"))}
                 if ident in selected: found[ident]=values
                 else: related[ident]=values
-    print("CENSUS_MATCH_COUNTS",json.dumps({"selected":len(selected),"historically_registered":len(found),"not_observed":len(selected-found.keys())},sort_keys=True))
+    print("CENSUS_MATCH_COUNTS",json.dumps({"selected":len(selected),"historically_registered":len(found),"not_observed":len(selected-found.keys()),"historically_zero_emc":sum(v.get("emc")=="0" for v in found.values())},sort_keys=True))
     print("CENSUS_MISSING",json.dumps(sorted(selected-found.keys())))
     for name in sorted(related): print("CENSUS_RELATED",json.dumps({"id":name,**related[name]},sort_keys=True))
     for name in sorted(found): print("CENSUS_SELECTED",json.dumps({"id":name,**found[name]},sort_keys=True))

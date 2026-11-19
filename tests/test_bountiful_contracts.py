@@ -186,4 +186,17 @@ class TestBountifulCompiler(unittest.TestCase):
         occ=next(f for f in C["schools"] if f["id"]=="occultism")
         self.assertEqual(set(r["item"] for r in occ["balance_reward_draft"]),set(occ["reward_item_candidates"]))
 
+    def test_all_school_reward_drafts_and_safe_lich_items(self):
+        self.assertEqual(len(C["schools"]),24)
+        self.assertTrue(all(f["balance_reward_draft"] for f in C["schools"]))
+        forms={f["id"]:f for f in C["transformations"]}
+        soul="witchery_forbidden_magic:soul_in_a_bottle"
+        for name in ("lich_jawr","archlich","abomination"):
+            self.assertIn(soul,{r["item"] for r in forms[name]["balance_reward_draft"]})
+        for f in forms.values():
+            self.assertNotIn("goety:soul_jar",{r["item"] for r in f.get("balance_reward_draft",[])})
+            self.assertNotIn("goety:totem_of_souls",{r["item"] for r in f.get("balance_reward_draft",[])})
+        self.assertFalse(forms["dracolich"].get("balance_reward_draft"))
+        self.assertEqual(len(C["gateway_objective_policy"]["excluded"]),6)
+
 if __name__=="__main__":unittest.main()

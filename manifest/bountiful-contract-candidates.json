@@ -2594,16 +2594,68 @@
         "minecraft:gold_ingot",
         "minecraft:ender_pearl",
         "minecraft:diamond",
-        "minecraft:emerald"
+        "minecraft:emerald",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "powdered catalysts"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "mahoutsukai:powdered_iron",
+        "mahoutsukai:powdered_quartz",
+        "mahoutsukai:powdered_gold",
+        "mahoutsukai:powdered_ender",
+        "mahoutsukai:powdered_eye",
+        "mahoutsukai:powdered_diamond",
+        "mahoutsukai:powdered_emerald"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "mahoutsukai:powdered_iron",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "mahoutsukai:powdered_quartz",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "mahoutsukai:powdered_gold",
+          "min": 2,
+          "max": 6,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "mahoutsukai:powdered_ender",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "mahoutsukai:powdered_eye",
+          "min": 1,
+          "max": 3,
+          "rarity": "RARE"
+        },
+        {
+          "item": "mahoutsukai:powdered_diamond",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "mahoutsukai:powdered_emerald",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        }
+      ],
+      "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -2652,8 +2704,15 @@
           "item": "minecraft:emerald",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
         }
-      ]
+      ],
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
     },
     {
       "id": "malum",
@@ -2680,7 +2739,14 @@
         "minecraft:witch"
       ],
       "reward_item_candidates": [
-        "malum:refined_soulstone"
+        "malum:refined_soulstone",
+        "malum:aerial_spirit",
+        "malum:aqueous_spirit",
+        "malum:earthen_spirit",
+        "malum:arcane_spirit",
+        "malum:sacred_spirit",
+        "malum:wicked_spirit",
+        "malum:infernal_spirit"
       ],
       "balance_reward_draft": [
         {
@@ -2688,6 +2754,48 @@
           "min": 2,
           "max": 6,
           "rarity": "COMMON"
+        },
+        {
+          "item": "malum:aerial_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "malum:aqueous_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "malum:earthen_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "malum:arcane_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "malum:sacred_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "RARE"
+        },
+        {
+          "item": "malum:wicked_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "RARE"
+        },
+        {
+          "item": "malum:infernal_spirit",
+          "min": 2,
+          "max": 4,
+          "rarity": "RARE"
         }
       ],
       "balance_status": "draft_exact_id_payouts_pending_review",
@@ -2758,7 +2866,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "reward_notes": "Ordinary spirit candidates now historically registered in 1.8.2; gate review pending. Umbral and Eldritch excluded pending special progression check."
     },
     {
       "id": "neovitae",
@@ -3193,7 +3302,8 @@
         "minecraft:lapis_lazuli",
         "minecraft:quartz",
         "minecraft:redstone_block",
-        "minecraft:diamond"
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -3270,6 +3380,12 @@
           "item": "minecraft:diamond",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
         }
       ],
       "reward_source_evidence": "VazkiiMods/Psi@0f21fab9ec0afe48c2bf4e45f2360547a7c322b3"
@@ -3285,7 +3401,9 @@
         "minecraft:bone_meal",
         "minecraft:oak_log",
         "minecraft:birch_sapling",
-        "minecraft:spider_eye"
+        "minecraft:spider_eye",
+        "minecraft:gold_block",
+        "minecraft:diamond"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -3295,9 +3413,67 @@
       "kill_candidates": [
         "rootsclassic:phantom_skeleton"
       ],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "rootsclassic:old_root",
+        "rootsclassic:oak_bark",
+        "rootsclassic:birch_bark",
+        "rootsclassic:spruce_bark",
+        "rootsclassic:jungle_bark",
+        "rootsclassic:acacia_bark",
+        "rootsclassic:dark_oak_bark",
+        "rootsclassic:runic_focus"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "rootsclassic:old_root",
+          "min": 4,
+          "max": 8,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:oak_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:birch_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:spruce_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:jungle_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:acacia_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:dark_oak_bark",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "rootsclassic:runic_focus",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -3346,8 +3522,21 @@
           "entity": "rootsclassic:phantom_skeleton",
           "min": 4,
           "max": 32
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
         }
-      ]
+      ],
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
     },
     {
       "id": "scriptor_magicae",
@@ -3360,16 +3549,47 @@
         "minecraft:leather",
         "minecraft:book",
         "minecraft:gold_ingot",
-        "minecraft:diamond"
+        "minecraft:diamond",
+        "minecraft:gold_block"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "Ancient Tomes of all four tiers"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "scriptor:tome_tier1",
+        "scriptor:tome_tier2",
+        "scriptor:tome_tier3",
+        "scriptor:tome_tier4"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "scriptor:tome_tier1",
+          "min": 1,
+          "max": 1,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "scriptor:tome_tier2",
+          "min": 1,
+          "max": 1,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "scriptor:tome_tier3",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        },
+        {
+          "item": "scriptor:tome_tier4",
+          "min": 1,
+          "max": 1,
+          "rarity": "EPIC"
+        }
+      ],
+      "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -3412,8 +3632,15 @@
           "item": "minecraft:diamond",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
         }
-      ]
+      ],
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
     },
     {
       "id": "totemic",
@@ -3435,7 +3662,8 @@
       ],
       "kill_candidates": [],
       "reward_item_candidates": [
-        "totemic:buffalo_hide"
+        "totemic:buffalo_hide",
+        "totemic:buffalo_tooth"
       ],
       "balance_reward_draft": [
         {
@@ -3443,6 +3671,12 @@
           "min": 1,
           "max": 3,
           "rarity": "UNCOMMON"
+        },
+        {
+          "item": "totemic:buffalo_tooth",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
         }
       ],
       "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
@@ -3504,7 +3738,9 @@
         "minecraft:oak_sapling",
         "minecraft:egg",
         "minecraft:ender_pearl",
-        "minecraft:ghast_tear"
+        "minecraft:ghast_tear",
+        "minecraft:gold_block",
+        "minecraft:diamond"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -3520,9 +3756,32 @@
         "witchery:nightmare",
         "witchery:demon"
       ],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "witchery:mutandis",
+        "witchery:mutandis_extremis",
+        "witchery:drop_of_luck"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "witchery:mutandis",
+          "min": 2,
+          "max": 4,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "witchery:mutandis_extremis",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "witchery:drop_of_luck",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -3607,8 +3866,21 @@
           "entity": "witchery:demon",
           "min": 4,
           "max": 32
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 1,
+          "max": 64
         }
-      ]
+      ],
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
     }
   ],
   "held_schools": [
@@ -3909,6 +4181,14 @@
           "min": 4,
           "max": 32
         }
+      ],
+      "held_reward_candidates": [
+        {
+          "item": "goety:totem_of_souls",
+          "kind": "charged_item_or_direct_native_soul_energy",
+          "status": "hold_component_and_arca_transfer_validation",
+          "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
+        }
       ]
     },
     {
@@ -3975,7 +4255,20 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "witchery_forbidden_magic:soul_in_a_bottle",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "witchery_forbidden_magic:soul_in_a_bottle"
+      ],
+      "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
     },
     {
       "id": "archlich",
@@ -4040,6 +4333,27 @@
           "entity": "goety:warlock",
           "min": 4,
           "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "witchery_forbidden_magic:soul_in_a_bottle",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "witchery_forbidden_magic:soul_in_a_bottle"
+      ],
+      "balance_status": "partial_default_item_rewards_charged_goety_resource_pending",
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "held_reward_candidates": [
+        {
+          "item": "goety:totem_of_souls",
+          "kind": "charged_item_or_direct_native_soul_energy",
+          "status": "hold_component_and_arca_transfer_validation",
+          "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
       ]
     },
@@ -4389,7 +4703,23 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "held_reward_candidates": [
+        {
+          "item": "goety:totem_of_souls",
+          "kind": "charged_item_or_direct_native_soul_energy",
+          "status": "hold_component_and_arca_transfer_validation",
+          "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
+        },
+        {
+          "item": "witchery_forbidden_magic:soul_in_a_bottle",
+          "status": "only_for_forbidden_magic_lich_subtype"
+        }
+      ],
+      "reward_inheritance_proposal": {
+        "status": "held_pending_form_specific_acquisition_and_component_review",
+        "policy": "Use the actual dragon species food pool and only the actual lich provider's resource. No universal mixed-food composite pool. If one common decree cannot express player-specific context without claim-time gates, define provider/species-specific acquisition variants or allow parent decrees rather than reward unusable food/souls."
+      }
     },
     {
       "id": "abomination",
@@ -4462,6 +4792,41 @@
           "entity": "minecraft:blaze",
           "min": 4,
           "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "hexerei:blood_bottle",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "irons_spellbooks:blood_vial",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "witchery_forbidden_magic:soul_in_a_bottle",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "hexerei:blood_bottle",
+        "irons_spellbooks:blood_vial",
+        "witchery_forbidden_magic:soul_in_a_bottle"
+      ],
+      "balance_status": "partial_default_item_rewards_charged_goety_resource_pending",
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "held_reward_candidates": [
+        {
+          "item": "goety:totem_of_souls",
+          "kind": "charged_item_or_direct_native_soul_energy",
+          "status": "hold_component_and_arca_transfer_validation",
+          "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
       ]
     },
@@ -4786,7 +5151,8 @@
         "minecraft:gold_ingot",
         "minecraft:gold_block",
         "minecraft:raw_gold",
-        "minecraft:diamond"
+        "minecraft:diamond",
+        "minecraft:diamond_block"
       ],
       "kill_candidates": [
         "minecraft:piglin_brute",
@@ -4835,6 +5201,12 @@
           "entity": "minecraft:ghast",
           "min": 4,
           "max": 32
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond_block",
+          "min": 1,
+          "max": 64
         }
       ],
       "balance_reward_draft": [
@@ -5023,23 +5395,28 @@
     "source_revision": "9f36319a0b8d003e4b9a14c8c2e971ac8f863a2f"
   },
   "registry_reconciliation": {
-    "status": "historical_census_and_upstream_source_pass_pending_final_capture",
+    "status": "all_school_reward_ids_drafted_historical_audit_pending_updated_set",
     "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
     "entity_census": "docs/hunter/runtime-entity-census.csv",
     "item_census": "docs/qa/surveys-2026-11-18/items.csv",
     "entity_category_note": "Registration and MONSTER category only; explicit nonboss nonservant candidate screening, current shared mob registry and gameplay spawn/participation checks remain. No automatic boss or owned summon selection.",
     "deferred_item_groups": [
-      "Mahou powdered catalyst exact ID",
-      "Roots ritual component exact ID",
-      "Scriptor four tome exact ID and any required components",
-      "JAWR Mutandis/Drop of Luck exact IDs",
-      "Forbidden Magic Soul in a Bottle exact ID",
-      "Goety charged soul storage component schema",
-      "Dracolich/Archlich/Abomination form inheritance and charged soul semantics",
+      "Goety charged soul storage component schema and Arca transfer behavior",
+      "Dracolich actual provider/species reward inheritance",
+      "Archlich/Abomination Goety recharge",
       "Eternal Beef ingredients",
       "Forest preserves and enchanted plant foods whitelist",
-      "Malum spirits exact pinned 1.8.2 census check"
+      "Malum ordinary spirit gate review",
+      "Gilded/Monk/Hunter reward design and final quantities",
+      "All positive effective EMC and component-aware priced reward review"
     ],
-    "candidate_ids_absent_from_historical_entity_census": []
+    "candidate_ids_absent_from_historical_entity_census": [],
+    "first_historical_audit": {
+      "run_id": 44629716563,
+      "distinct_ids_checked": 198,
+      "historically_registered": 198,
+      "missing": 0,
+      "meaning": "Historical default-stack registration only; not final effective next-build EMC."
+    }
   }
 }
