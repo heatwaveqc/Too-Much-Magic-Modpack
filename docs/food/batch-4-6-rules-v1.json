@@ -230,12 +230,409 @@
       "mutagen",
       "special_consumable",
       "component_sensitive"
+    ],
+    "brewinandchewin:beer": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:bloody_mary": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:dread_nog": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:egg_grog": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:mead": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:pale_jane": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:red_rum": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:rice_wine": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:saccharine_rum": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:salty_folly": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:steel_toe_stout": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:strongroot_ale": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:vodka": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:withering_dross": [
+      "beverage",
+      "fermented",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:kombucha": [
+      "beverage",
+      "fermented",
+      "alcohol_content_uncertain"
+    ],
+    "brewinandchewin:glittering_grenadine": [
+      "beverage",
+      "fermented",
+      "alcohol_content_uncertain"
+    ],
+    "cocktailsdelight:aqua_velva": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:bees_knees": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:blue_curacao": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:bock": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:boilermaker": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:china_blue": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:cream_ale": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:espresso_martini": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:gimlet": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:gin": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:gin_and_juice": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:gin_and_tonic": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:hard_cider": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:hard_lemonade": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:hot_toddy": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:ipa": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:johnny_silverhand": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:kraken_rum": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:margarita": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:medina": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:milk_stout": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:mojito": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:moonshine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:mulled_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:nut_brown_ale": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:peach_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:pilsner": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:pina_colada": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:plum_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:porter": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:red_ale": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:red_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:rum": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:salted_margarita": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:screwdriver": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:singapore_sling": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:stout": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:sweet_red_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:tequila": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:tequila_sunrise": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:vodka_tonic": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:whiskey": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:whiskey_sour": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:white_wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "cocktailsdelight:cranberry_juice": [
+      "beverage",
+      "nonalcoholic_mixer_candidate"
+    ],
+    "cocktailsdelight:grenadine": [
+      "beverage",
+      "nonalcoholic_mixer_candidate"
+    ],
+    "cocktailsdelight:lemon_lime": [
+      "beverage",
+      "nonalcoholic_mixer_candidate"
+    ],
+    "cocktailsdelight:tonic_water": [
+      "beverage",
+      "nonalcoholic_mixer_candidate"
+    ],
+    "cocktailsdelight:mermaid_lemonade": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "cocktailsdelight:mulled_cider": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:cocoa_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:coconut_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:honey_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:melon_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:pumpkin_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "beachparty:sweetberries_cocktail": [
+      "beverage",
+      "alcohol_content_uncertain"
+    ],
+    "pamhc2foodextended:rootbeerfloatitem": [
+      "beverage",
+      "nonalcoholic_candidate"
+    ],
+    "pamhc2foodextended:rootbeersodaitem": [
+      "beverage",
+      "nonalcoholic_candidate"
+    ],
+    "farmersdelight:rice_bale": [
+      "nonfood_equipment_candidate"
+    ],
+    "farmersdelight:straw_bale": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:pool_noodle": [
+      "nonfood_equipment_candidate"
+    ],
+    "brewinandchewin:coaster": [
+      "nonfood_equipment_candidate"
+    ],
+    "brewinandchewin:heating_cask": [
+      "nonfood_equipment_candidate"
+    ],
+    "brewinandchewin:ice_crate": [
+      "nonfood_equipment_candidate"
+    ],
+    "cocktailsdelight:hops_crate": [
+      "nonfood_equipment_candidate"
+    ],
+    "cocktailsdelight:juniper_berries_crate": [
+      "nonfood_equipment_candidate"
+    ],
+    "cocktailsdelight:red_grapes_crate": [
+      "nonfood_equipment_candidate"
+    ],
+    "cocktailsdelight:white_grapes_crate": [
+      "nonfood_equipment_candidate"
+    ],
+    "cocktailsdelight:soy_wax": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:beach_goal": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:beach_parasol": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:beach_sun_lounger": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:beach_towel": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_bar": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_bar_stool": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_boat": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_button": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_cabinet": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_chest_boat": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_floorboard": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_torch_item": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:palm_wood": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:radio": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:sand_bucket_empty": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:stripped_palm_wood": [
+      "nonfood_equipment_candidate"
+    ],
+    "beachparty:tall_palm_torch": [
+      "nonfood_equipment_candidate"
     ]
   },
   "notes": [
     "Exact ID hints are screened against frozen census. No automatic alias or effects mapping.",
     "Fermenting is production evidence, not alcohol proof; wine/distillate tags are producer evidence only.",
     "Name rules only propose a review label for culinary candidates; never grant a consumer permission.",
-    "Blood item identity is not ordinary blood eligibility; preserve JAWR component gate."
+    "Blood item identity is not ordinary blood eligibility; preserve JAWR component gate.",
+    "Exact drink hints from installed first-pass census, not effect verification: alcoholic candidates require native use/effect review; Beachparty and ambiguous beverages explicitly uncertain. Known nonfood false positives excluded from drink/meal labels."
   ]
 }

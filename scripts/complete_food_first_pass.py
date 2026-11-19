@@ -11,7 +11,7 @@ MEAL_TRAITS={"prepared_meal","prepared_plant","ordinary_grain_meal","soup","brea
 DRINK_TRAITS={"beverage","native_drink","tea","coffee","juice","alcohol_candidate","fermented"}
 SPECIAL_TRAITS={"magical_nourishment","magical_nourishment_candidate","magic_meat","reusable_food","resource_cost_candidate","blood","blood_candidate","medicinal","component_sensitive","native_special","charred","gilded_food","hazardous","special_effect_candidate","special_consumable","special_consumable_candidate","mutagen","potion"}
 CULINARY_NS={"pamhc2crops","pamhc2trees","pamhc2foodcore","pamhc2foodextended","farmersdelight","aquaculture","brewinandchewin","cocktailsdelight","beachparty"}
-PRODUCERS={"pamhc2foodcore","pamhc2foodextended","brewinandchewin","cocktailsdelight","beachparty"}
+PRODUCERS={"pamhc2foodcore","pamhc2foodextended"}
 TOOLS=re.compile(r"(?:^|_)(?:knife|sword|pickaxe|axe|shovel|hoe|helmet|chestplate|leggings|boots|rod|keg|tankard|mug|glass|cup|bottle|plate|bowl|basket|seed|seeds|sapling|sign|door|trapdoor|planks|slab|stairs|fence|chair|table|fridge|block)(?:_|$)")
 MEAL_WORDS=re.compile(r"(?:salad|sandwich|burger|pizza|stew|soup|pie|cake|cookie|muffin|pancake|waffle|taco|burrito|dumpling|noodle|casserole|omelet|omelette|donut|doughnut|pudding|sushi|sundae|icecream|ice_cream|chowder|lasagna| risotto|risotto|meatball|kebab|skewer|wrapitem|toastitem)")
 DRINK_WORDS=re.compile(r"(?:juice|smoothie|milkshake|lemonade|coffee|tea(?:item|$)|cocktail|soda|cider|wine|beer|mead|vodka|rum(?:item|$)|whiskey|whisky|brandy|liqueur|martini|margarita|mojito|colada|daiquiri|grog|stout|ale(?:item|$))")
@@ -43,9 +43,9 @@ def classify(row, earlier, rules):
     candidate=row["review_status"]!="no_food_evidence_not_classified" or has_known or is_food_tag or is_drink_tag or culinary_output
     lexical_scope=(ns in CULINARY_NS and not tool_tag and not path_tool and not seed_tag and "utensil" not in evidence)
     if not has_known and lexical_scope:
-        if DRINK_WORDS.search(path):
+        if DRINK_WORDS.search(path) and not path.endswith("_bale"):
             evidence["beverage_candidate"].add("culinary_namespace_name_hint")
-            if ALCOHOL_WORDS.search(path): evidence["alcohol_candidate"].add("culinary_namespace_name_hint")
+            if ALCOHOL_WORDS.search(path) and "rootbeer" not in path and not path.endswith("_bale"): evidence["alcohol_candidate"].add("culinary_namespace_name_hint")
             candidate=True
         elif MEAL_WORDS.search(path):
             evidence["prepared_meal_candidate"].add("culinary_namespace_name_hint")
@@ -68,7 +68,7 @@ def classify(row, earlier, rules):
         return {"id":item,"status":"no_food_evidence_not_classified","traits":[],"review_flags":[],"batches":[],"evidence":{},"consumption":"unknown","consumer_policy":"unresolved"}
     if tool_tag and (traits & (MEAL_TRAITS|DRINK_TRAITS|SPECIAL_TRAITS) or is_food_tag):
         flags.add("equipment_food_evidence_conflict")
-    if traits & {"alcohol_candidate"}:
+    if traits & {"alcohol_candidate","alcohol_content_uncertain"}:
         flags.add("alcohol_native_effect_review")
     if traits & SPECIAL_TRAITS:
         flags.add("special_consumer_review")

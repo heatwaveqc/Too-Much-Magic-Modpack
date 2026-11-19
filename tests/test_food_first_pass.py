@@ -48,6 +48,12 @@ class FirstPassTests(unittest.TestCase):
         self.assertIn("historical_candidate_only",r["review_flags"])
     def test_untagged_unknown_not_edible(self):
         self.assertEqual(classify(row("example:apple_sword"),None,RULES)["status"],"no_food_evidence_not_classified")
+    def test_false_positive_bale(self):
+        r=classify(row("farmersdelight:rice_bale"),None,RULES)
+        self.assertNotIn("alcohol_candidate",r["traits"])
+    def test_rootbeer_not_inferred_alcohol(self):
+        r=classify(row("pamhc2foodextended:rootbeerfloatitem"),None,RULES)
+        self.assertNotIn("alcohol_candidate",r["traits"])
     def test_prior_candidate_not_lost(self):
         r=classify(row("example:unknown",state="candidate_review"),None,RULES)
         self.assertEqual(r["status"],"generic_candidate")
