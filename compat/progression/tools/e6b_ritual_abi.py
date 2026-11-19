@@ -35,7 +35,7 @@ def inspect(jar, key):
                 try: data=json.loads(z.read(n))
                 except ValueError: continue
                 print("RECIPE",key,n,json.dumps(data,separators=(",",":")),flush=True)
-            if n.endswith(".class") and not n.startswith("META-INF/") and (MATCH.search(n) or (key == "witchery" and re.search(r"/commands?/|Command\.class$",n,re.I)) or (key == "totemic" and re.search(r"StateStartup|StateSelection|StartupContext|TotemicEventHooks|TotemState|TotemBaseBlockEntity|ModContent|ModRegistries|MusicEvent|MusicContext|MusicInstrument|MusicAcceptor",n,re.I))):
+            if n.endswith(".class") and not n.startswith("META-INF/") and (MATCH.search(n) or (key == "enchanted" and re.search(r"CurseSavedData|CurseHandler|CurseManager|CurseHelper",n,re.I)) or (key == "eidolon" and re.search(r"EidolonItems|ModItems|ItemRegistry",n,re.I)) or (key == "witchery" and re.search(r"CurseHandler|CurseManager|InfusionHandler|InfusionManager|ManifestationHandler|WitcheryCommands|CommandKt",n,re.I)) or (key == "witchery" and re.search(r"/commands?/|Command\.class$",n,re.I)) or (key == "totemic" and re.search(r"StateStartup|StateSelection|StartupContext|TotemicEventHooks|TotemState|TotemBaseBlockEntity|ModContent|ModRegistries|MusicEvent|MusicContext|MusicInstrument|MusicAcceptor",n,re.I))):
                 classes.append(n[:-6].replace("/","."))
     if not classes: raise RuntimeError("No ritual classes for "+key)
     print("CENSUS",key,len(classes),flush=True)
@@ -50,6 +50,25 @@ def inspect(jar, key):
     for line in output.read_text().splitlines():
         if line.startswith(("public class ","public final class ","public abstract class ","class ","Compiled from")) or line.strip().startswith("descriptor:") or (line.startswith("  ") and not line.startswith("    ") and line.rstrip().endswith(";")) or ( "//" in line and re.search(r"finish|complete|success|fail|start|owner|caster|player|addFreshEntity|setBlock|setItem|setDayTime|setWeatherParameters|hurt|consume|perform|execute|save|load|reset|active|ritualId|eventQueue|eventIndex|outputEvents|RecipeHolder|setState|cancel|music|trigger|registryName|detatch|burning|ritualDone|Ritual\.tick|RitualResult|isInitialising|isExecuting|RITE_TYPES_REGISTRY|withCallback|performCommand|setRegistryName|lambda\$tick\$3|war_dance|depths|fertility|zaphkiel|animal_growth|buffalo|rain|drought|flute_infusion|eagle|cleansing|sun_dance|danse_macabre|baykok",line,re.I)):
             print(line,flush=True)
+    # Focused residual-outcome witness census. Report method/field references only,
+    # not a second generic class dump or copies of proprietary methods.
+    focus = {
+        "eidolon": r"\.(AbsorptionRitual|AllureRitual|DeceitRitual|RepellingRitual|CrystalRitual|PurifyRitual|LocationRitual|RechargingRitual|BrazierTileEntity|Ritual|EidolonItems|ModItems|ItemRegistry)\s",
+        "enchanted": r"\.(ApplyCurseRite|RemoveCurseRite|BindTalismanRite|BroilingRite|BindFamiliarRite|SummonFamiliarRite|TransposeEntityRite|Rite|CurseSavedData|CurseHandler|CurseManager|CurseHelper|GoldChalkBlockEntity)\s",
+        "witchery": r"\.(RemoveCurseRitualEvent|SummonItemWithOwnerRitualEvent|RunCommandRitualEvent|RitualCommandExecutor|WitcheryCommands|AfflictionCommandBuilder|CurseHandler|CurseManager|InfusionHandler|InfusionManager|ManifestationHandler|BindFamiliarRitualEvent|ResurrectFamiliarRitualEvent|PairMirrorsRitualEvent|RainingToadRitualEvent)\s",
+    }.get(key)
+    if focus:
+        active = False
+        for line in output.read_text().splitlines():
+            if line.startswith(("public class ", "public final class ", "public abstract class ", "class ", "public interface ")):
+                active = re.search(focus, line) is not None
+                if active: print("FOCUS", line, flush=True)
+            elif active:
+                if (line.startswith("  ") and not line.startswith("    ") and line.rstrip().endswith(";")):
+                    print("FOCUS",line,flush=True)
+                elif "//" in line and re.search(r"\b(invoke\w*|getfield|putfield|getstatic|putstatic|ldc\w*)\b",line):
+                    # Exact called symbols and constant identities; omit branch/opcode bodies.
+                    print("FOCUS",line.split("//",1)[1].strip(),flush=True)
 if __name__ == "__main__":
     import sys
     key=sys.argv[1]
