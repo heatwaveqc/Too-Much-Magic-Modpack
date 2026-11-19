@@ -14,7 +14,9 @@
     "MxpBotaniaManaMixin",
     "PsiItemCadMixin",
     "PsiSpellCastEventMixin",
-    "PsiLoopcastMixin"
+    "PsiLoopcastMixin",
+    "AnsArsThriftMixin",
+    "AnsIronThriftMixin"
   ],
   "injectors": {
     "defaultRequire": 0

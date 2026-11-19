@@ -82,3 +82,5 @@ E2 source hardening and Psi loopcast: [BATCH-E2-PAYMENT-HARDENING.md](BATCH-E2-P
 Neo Vitae E2 follow-up: actual owner-network PostSyphon debit includes automated rituals/upkeep; no generic intent adapter necessary under this rule. Native upkeep can exceed original ticket, so use positive actual amount, not requested bound. Offline accrual unchanged; verify reversible transfer callers and exact runtime. See BATCH-E2-PAYMENT-HARDENING.md.
 
 E2 shared Thrift research: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-QUOTES.md) maps exact-version paths and reuse-first three-site quote helper with acceptance cases. No new runtime changes; actual shared Thrift not enabled.
+
+Shared ANS Thrift source implementation: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-QUOTES.md). Two optional mixins, three immutable quote sites, native final-leg rounding and latched reprice factor; no changes to payment/refund or nominal MXP. Exact pin/runtime acceptance required; no skill activation. E3 next.

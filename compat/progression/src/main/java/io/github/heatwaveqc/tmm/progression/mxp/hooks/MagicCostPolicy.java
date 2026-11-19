@@ -14,15 +14,19 @@ public final class MagicCostPolicy {
         return Math.max(1,(int)Math.ceil(original*(1-Math.min(.95,fraction))));
     }
     public static int quote(ServerPlayer player,String source,int price){
-        // Existing legacy Thrift and MXP remain authoritative until cutover.
-        if(price<=0||!MxpMod.active()||ModList.get().isLoaded("tyzs_skills")||player.isCreative()||player.isSpectator()||
-            NewbieMode.isNewbie(player))return price;
-        // ANS reserves funds earlier and may settle several legs. Native getter changes would risk duplicate discounts.
+        // Managed ANS quotes alone own shared pricing; never discount again at native debit.
         if(!source.equals("psi:cad_cast")&&ModList.get().isLoaded("ars_n_spells"))return price;
+        return discounted(price,rate(player,source));
+    }
+
+    /** Evaluates one originating school; no other school is added for shared mana. */
+    public static double rate(ServerPlayer player,String source){
+        if(!MxpMod.active()||ModList.get().isLoaded("tyzs_skills")||
+            !MxpPlayerPolicy.eligible(player)||NewbieMode.isNewbie(player))return 0;
         double rate=0;
         for(var active:EffectRuntime.active(player))
             if(active.effect().type().equals("magic_cost_discount")&&active.effect().selector().equals(source))
                 rate+=active.effect().amountPerRank()*active.rank();
-        return discounted(price,rate);
+        return Double.isFinite(rate)?Math.max(0,Math.min(.95,rate)):0;
     }
 }
