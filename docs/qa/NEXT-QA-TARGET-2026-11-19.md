@@ -10,3 +10,9 @@ The independent `manifest/next-qa-target.json` is the intended exact mod-ID scop
 - #368 kitchen: additive completed tags and registry evidence can be separately reviewed; skillet adapter and Occult Cooking dependency closure not yet ready.
 - Dimension prior holds: Deep Aether exact metadata has reported exclusive Minecraft upper bound; Aether and Liroth beta prerequisite chain needs verification. Reopened by owner for this next candidate, not unconditional loader compatibility.
 - Candidate audits should download only approved exact files, compute hashes and inspect native metadata. Never commit binary payloads.
+
+## Exact artifact audit and pin update
+
+[Run 44617434376](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376) downloaded and inspected all 14 candidates. Eleven compatible source pins now selected (CF hash SHA-1, Prefab MR SHA-512). Required known dependency versions: NeoForge 21.1.265; SWEM 1.6.14, GeckoLib 4.9.3, playerAnimator 2.0.4; KubeJS 2101.7.2-build.381, Theurgy 1.79.0; Twilight Forest 4.8.3345; CFB 21.1.24, Occultism 1.227.0, Balm 21.0.67; Aquaculture 2.7.22, KFF 5.12.0, FD 1.3.4; Cloth Config 15.0.140 (MR required izKINKFg same version as current CF pin). Unicorn Academy's actual native SWEM range [1.6.13,) permits selected release, but ABI and gameplay unverified. All 11 on both sides. No dependency verification or gameplay PASS claim. Existing confirmed pins remain.
+
+Remaining holds: Aether requires owo-lib exact beta; Liroth requires Nuit client >= beta.6 and currently installed BetterEnd library variants need native ID/API compatibility audit. Deep Aether 1.1.5.1 exact binary declares Minecraft [1.21,1.21.1), incompatible with target. Audit prior 1.1.5 separately; do not patch upstream JAR. Add required dependencies to target explicitly. New target 223, exact pins 218. No server boot or Prism package.

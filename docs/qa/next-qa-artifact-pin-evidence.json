@@ -1,0 +1,551 @@
+{
+  "run": 44617434376,
+  "source": "90d8e8e3927c2261470d346836b137fa3b97e22c",
+  "pinned": {
+    "swem": {
+      "filename": "swem-1.21.1-1.6.14.jar",
+      "sha1": "55ba0684e7bd852ba298a666595ac9c9f83977af",
+      "sha512": "7a9d5e90370ab027593ce72127c3607eaaed3ad85fe0eef82732f5d3b8cae6ed0dec599e3080e31854ad52a219cd12a4e35741c3683246f6d3cf2f3f5c3978a6",
+      "declared_mods": [
+        {
+          "authors": "AlaharranHonor, legenden",
+          "credits": "Quarris, Silverwolf, Dronade, Mothfet",
+          "description": "Minecraft Java 1.21.1 (NeoForge) mod called Star Worm Equestrian Mod.\nThe mod is bringing forward a whole new minecraft horse model, 18 horse coat textures, new animations, jumps, level progression, horse armor, tack, fencing, and stable decor ~ among other things.",
+          "displayName": "Star Worm Equestrian Mod",
+          "displayURL": "https://wiki.swequestrian.com/",
+          "logoFile": "icon.jpg",
+          "modId": "swem",
+          "version": "1.6.14"
+        }
+      ],
+      "dependencies": {
+        "swem": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[21.1.240,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[1.21.1]"
+          },
+          {
+            "modId": "rootsclassic",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "farmersdelight",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "swem-addendum": {
+      "filename": "swemaddendum-1.0.1--1.21.1.jar",
+      "sha1": "8e069d38628c3f2504c431e7962adc9b47e42d21",
+      "sha512": "eae97cc07b5c843c379f4959b81413e9ba4cae00efa9d08d38a6a7710f369b0b0f6c30a4feb3a575e096dab4569556695a91dd146d7d8fc966a16c5924853621",
+      "declared_mods": [
+        {
+          "authors": "EvangeliX",
+          "description": "Swem Addendum",
+          "displayName": "Swem Addendum",
+          "modId": "swemaddendum",
+          "version": "1.0.1--1.21.1"
+        }
+      ],
+      "dependencies": {
+        "swemaddendum": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.229,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1]"
+          },
+          {
+            "modId": "swem",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.6.10,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "scarlet-springs-equestrian-decor-ssed": {
+      "filename": "ssedeco-1.21.1-1.2.1.jar",
+      "sha1": "37be09fb807ed5be6d1039ec3b98d729d78a8a10",
+      "sha512": "c53d13de7bca92ab78a0af9c07475318a2858324ed1859c03774a0bca9fa2facc8b12e3eac5e2b71385c8535fc85ba954ea80a9e0342c6498e0d58a6ae8db330",
+      "declared_mods": [
+        {
+          "authors": "Jenny, Quarris",
+          "description": "Scarlet Springs Decor Mod",
+          "displayName": "SSEDeco",
+          "modId": "ssedeco",
+          "version": "1.2.1"
+        }
+      ],
+      "dependencies": {
+        "ssedeco": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[21.1.216,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[1.21.1]"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "unicorn-academy-bonded-magic-unofficial": {
+      "filename": "unicornacademy-1.0.0.jar",
+      "sha1": "b989b1dfec0d4c1360f52682adfa4f2196c38c50",
+      "sha512": "970a2cf08ea1f5476df9410157ca9b1f970227397098f18412a1017e1a5ddf1a5f178e0df5c7021f65ba073379364ae33f3a7e0dabe9a2338eff480586168acc",
+      "declared_mods": [
+        {
+          "authors": "Romain",
+          "description": "Unofficial fan-made add-on for SWEM: ride and bond with the unicorns of Unicorn Academy, unlock their magic, grow fairy wings, and fly a winged ferry to Unicorn Island to find wild unicorn herds.",
+          "displayName": "Unicorn Academy",
+          "logoFile": "unicornacademy_logo.png",
+          "modId": "unicornacademy",
+          "version": "1.0.0"
+        }
+      ],
+      "dependencies": {
+        "unicornacademy": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.240,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1]"
+          },
+          {
+            "modId": "swem",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.6.13,)"
+          },
+          {
+            "modId": "geckolib",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[4.9,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "theurgy-kubejs": {
+      "filename": "theurgy_kubejs-1.21.1-neoforge-1.6.0.jar",
+      "sha1": "c1aff07b124b56aa8f45e746e76d48697b7147ee",
+      "sha512": "06b4be377a590e0aa11f7c1627b8958766cfcd43c7c48bba6df072d5aebe55c559add62c945dbdae1c3413438ff6a66c1d730123f373214640fdb0ecd93ecd0a",
+      "declared_mods": [
+        {
+          "authors": "Kli Kli",
+          "credits": "See https://github.com/klikli-dev/theurgy-kubejs#licensing",
+          "description": "KubeJS Support for Theurgy",
+          "displayName": "Theurgy KubeJS",
+          "displayURL": "https://www.curseforge.com/minecraft/mc-mods/theurgy-kubejs",
+          "logoFile": "theurgy_kubejs.png",
+          "modId": "theurgy_kubejs",
+          "version": "1.6.0"
+        }
+      ],
+      "dependencies": {
+        "theurgy_kubejs": [
+          {
+            "modId": "neoforge",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.0.110-beta,)"
+          },
+          {
+            "modId": "theurgy",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.34.0,)"
+          },
+          {
+            "modId": "kubejs",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[2101.7.2-build.265,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "twilight-forest-final-boss-remake": {
+      "filename": "twilight_forest_final_boss-2.1.2+4.8.3345+1.21.1.jar",
+      "sha1": "1cdbe9f9932fc2f741d6fb8cc8796bba740f3f52",
+      "sha512": "9db0c28fc21a809f07cc7f4e8cd086e08f6284c0c752f586b39abe38c331e66054496efbb463ac658e62e13f34875fe1801309992ceb2d0290b97cce76a08c75",
+      "declared_mods": [
+        {
+          "authors": "D_Angry_Modder, LShiftLess",
+          "description": "An additional mod to add the final boss to Twilight Forest.",
+          "displayName": "Twilight Forest Final Boss",
+          "logoFile": "icon.png",
+          "modId": "twilight_forest_final_boss",
+          "version": "2.1.2"
+        }
+      ],
+      "dependencies": {
+        "twilight_forest_final_boss": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1,1.22)"
+          },
+          {
+            "modId": "geckolib",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[4,)"
+          },
+          {
+            "modId": "twilightforest",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[4.8,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "occult-cooking": {
+      "filename": "occultcooking-1.0.1.jar",
+      "sha1": "456458c179b1633bf4cf4aab7783bf7eedb1ffa2",
+      "sha512": "e8038de31cbcb8ba616ad12ee63a71c21d448bca7c8c731c2e29e369aee84e49b4edcd18e9404a27130ffb125d8aa298271cd6bb1def234b42d911c36de8ca83",
+      "declared_mods": [
+        {
+          "authors": "ItsSebastrn",
+          "description": "A mod to bridge Cooking For Blockheads with Occultism",
+          "displayName": "Occult Cooking",
+          "logoFile": "logo.png",
+          "modId": "occultcooking",
+          "version": "1.0.1"
+        }
+      ],
+      "dependencies": {
+        "occultcooking": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1]"
+          },
+          {
+            "modId": "occultism",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.205.0,)"
+          },
+          {
+            "modId": "cookingforblockheads",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.7,)"
+          },
+          {
+            "modId": "balm",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21,)"
+          },
+          {
+            "modId": "patchouli",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "jade",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "theoneprobe",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "jei",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "roughlyenoughitems",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          },
+          {
+            "modId": "emi",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "*"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "lava-fishing": {
+      "filename": "lavafishing-1.21.1-1.2.13-all.jar",
+      "sha1": "d3d7db677c6c4c669455de577bd258c791415df6",
+      "sha512": "c70de19536f4466e5d468de94e6648240b3e4f404f8dae1f94d3b3e62aa1f2c42f9c4286a0fda971587aff44e64071fdb0881ee1d20e755346fcd5a16618905c",
+      "declared_mods": [
+        {
+          "authors": "Sunset",
+          "credits": "teddyxlandlee, Wei, Karth, Kun, chen114514",
+          "description": "A mod which allows you to fish in the lava.",
+          "displayName": "Lava Fishing",
+          "displayURL": "https://github.com/TeamSunset/lavafishing",
+          "logoFile": "logo.png",
+          "modId": "lavafishing",
+          "version": "1.2.13"
+        }
+      ],
+      "dependencies": {
+        "lavafishing": [
+          {
+            "mandatory": true,
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[21.1.217,)"
+          },
+          {
+            "mandatory": true,
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[1.21.1,)"
+          },
+          {
+            "mandatory": true,
+            "modId": "aquaculture",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[2.7.18,2.8)"
+          },
+          {
+            "mandatory": true,
+            "modId": "kotlinforforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "versionRange": "[5.10.0,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "nether-depths-upgrade": {
+      "filename": "netherdepthsupgrade-3.3-1.21.1-NeoForge.jar",
+      "sha1": "0b6f05e55b516588364d0710a326904c267759a5",
+      "sha512": "1291fd5a9c57fc18455d5677b46706864ce0bf72d68c7d96953c71016335b56faff00acb21cc749b671615c262dfb80c9cab28b9a8377d53cc1cdbca9322948c",
+      "declared_mods": [
+        {
+          "authors": "Scouter456",
+          "description": "This is a mod that gives the lava depths in the nether a little upgrade, credits for the fortress grouper and textures go to Crydigo, credits for animations go to TheIndominator ",
+          "displayName": "Nether Depths Upgrade",
+          "logoFile": "soulsucker_logo.png",
+          "modId": "netherdepthsupgrade",
+          "version": "3.3"
+        }
+      ],
+      "dependencies": {
+        "netherdepthsupgrade": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.248,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21,1.21.2)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "my-nethers-delight": {
+      "filename": "MyNethersDelight-1.21.1-1.10.4.1.jar",
+      "sha1": "9c54439d65e77c7b4b711831138f81f3a849ff35",
+      "sha512": "36df146974d70fe5f7c92c4aeef613d1e0192efbb550faa88efaa8170212c07f9fc5938961d1b8da489355579910e95fea2cd5ae714b614ce17f1b8e352f0bbf",
+      "declared_mods": [
+        {
+          "authors": "SoyTutta",
+          "credits": "Mpustovoi, Unroman, ChuijkYahus, SlimeSB, RaymondBlaze, TCGhost, Sarinsa, Umpaz, UltrusBot",
+          "description": "A new Nether expansion for Farmer's Delight!!",
+          "displayName": "My Nether's Delight",
+          "displayURL": "https://github.com/SoyTutta/MyNethersDelight",
+          "logoBlur": false,
+          "logoFile": "logo.png",
+          "modId": "mynethersdelight",
+          "version": "1.10.4.1"
+        }
+      ],
+      "dependencies": {
+        "mynethersdelight": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.4,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1,1.22)"
+          },
+          {
+            "modId": "farmersdelight",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.3.2,)"
+          },
+          {
+            "modId": "minersdelight",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "[1.4,)"
+          },
+          {
+            "modId": "brewinandchewin",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional",
+            "versionRange": "[4.4.0,)"
+          },
+          {
+            "modId": "farmersrespite",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "type": "optional"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "prefab": {
+      "filename": "prefab-neoforge-1.0.9.jar",
+      "sha1": "47bd5c937aa3903dea8dcca8dfb590e6f1580528",
+      "sha512": "f395c56c2c5ebb2b2852570a49e4d0a2a356e0797c69c2cb24e510be9587e06edb5bc978e8e59541e02a5dd5cf5143c9820949133fa4908645233194224f66cf",
+      "declared_mods": [
+        {
+          "authors": "WuestMan, Kaojinn",
+          "description": "Provides ways of making pre-fabricated houses and other structures.\nThanks to Kaojinn for making the textures and the construction of the ideas.\nStructure Preview functionality adapted from Botania by Vazkii http://botaniamod.net/license.php.",
+          "displayName": "Prefab",
+          "modId": "prefab",
+          "version": "1.0.9"
+        }
+      ],
+      "dependencies": {
+        "prefab": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.200,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1]"
+          }
+        ]
+      },
+      "provider_dependencies": [
+        {
+          "dependency_type": "required",
+          "file_name": null,
+          "project_id": "9s6osm5g",
+          "version_id": "izKINKFg"
+        }
+      ]
+    }
+  },
+  "blocked": [
+    "aether",
+    "deep-aether",
+    "liroth-revamped"
+  ]
+}

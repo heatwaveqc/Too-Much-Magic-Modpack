@@ -141,11 +141,13 @@
     "natures-compass",
     "neovitae",
     "nether-depths-upgrade",
+    "nuit",
     "observerlib",
     "occult-cooking",
     "occultism",
     "octolib",
     "oracle-index",
+    "owo-lib",
     "pams-harvestcraft-2-crops",
     "pams-harvestcraft-2-food-core",
     "pams-harvestcraft-2-food-extended",
@@ -322,6 +324,22 @@
       "provider": "modrinth",
       "project_slug": "prefab",
       "version_number": "1.0.9"
+    },
+    {
+      "id": "owo-lib",
+      "provider": "modrinth",
+      "version_id": "wbdHEItB"
+    },
+    {
+      "id": "nuit",
+      "provider": "modrinth",
+      "project_slug": "nuit",
+      "version_number": "mc1.21.1-1.0.0-beta.6+neoforge"
+    },
+    {
+      "id": "deep-aether-alternate-1.1.5",
+      "provider": "modrinth",
+      "version_id": "cdz8tus3"
     }
   ],
   "notes": [
