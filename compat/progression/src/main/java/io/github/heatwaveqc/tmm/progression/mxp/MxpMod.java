@@ -2,10 +2,8 @@ package io.github.heatwaveqc.tmm.progression.mxp;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import io.github.heatwaveqc.tmm.progression.state.Wallet;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.commands.Commands;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -13,7 +11,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,10 +27,11 @@ public final class MxpMod {
         container.registerConfig(ModConfig.Type.COMMON, MxpSourceConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, MxpProgressionConfig.SPEC);
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
-        NeoForge.EVENT_BUS.addListener(this::onBossDeath);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,BossRewards::onDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,BossRewards::onDeath);
         NeoForge.EVENT_BUS.addListener(this::onServerStopping);
         NeoForge.EVENT_BUS.addListener(this::onTickEnd);
-        LOGGER.info("TMM MXP prototype initialized (boss registry empty by default)");
+        LOGGER.info("TMM MXP initialized (registry-projected boss/miniboss rewards)");
     }
 
     private static void clearPaymentScopes() {
@@ -42,37 +40,12 @@ public final class MxpMod {
         io.github.heatwaveqc.tmm.progression.mxp.hooks.PsiCastHooks.clear();
     }
 
-    private void onTickEnd(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) { clearPaymentScopes(); }
+    private void onTickEnd(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) { BossRewards.finishTick(); clearPaymentScopes(); }
 
     private void onServerStopping(ServerStoppingEvent event) {
         clearPaymentScopes();
+        BossRewards.clear();
         MxpService.clearBossRules();
-    }
-
-    private void onBossDeath(LivingDeathEvent event) {
-        // MVP: only the verified FINAL-BLOW server player. Pet owners and
-        // cooperative damage participation require a later attribution bridge.
-        if (!(event.getSource().getEntity() instanceof ServerPlayer killer)) return;
-        if (killer.level().isClientSide) return;
-        ResourceLocation type = BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType());
-        if (type == null) return;
-        String bossId = type.toString();
-        if (event.getEntity().getType().is(net.minecraft.tags.TagKey.create(
-            net.minecraft.core.registries.Registries.ENTITY_TYPE,
-            ResourceLocation.parse("tmm_progression:boss_generic_death_excluded")))) return;
-        if (MxpService.bossRule(bossId) == null) return;
-        String transaction = "boss:" + event.getEntity().getUUID();
-        try {
-            MxpService.AwardStatus receipt = MxpService.boss(killer, bossId, transaction);
-            if (receipt.accepted()) {
-                killer.sendSystemMessage(Component.literal(
-                    "MXP: " + String.format("%.2f", receipt.effectiveXP())
-                    + (receipt.first() ? " (first victory)" : " (repeat victory)")));
-            }
-        } catch (RuntimeException e) {
-            LOGGER.error("MXP boss award failed ({} / {}): {}",
-                    bossId, transaction, e.toString(), e);
-        }
     }
 
     private void registerCommands(RegisterCommandsEvent event) {

@@ -40,7 +40,7 @@ public final class MxpService {
         Wallet before=inspect(player);
         if(before.recentTransactions().contains(tx))return new AwardStatus(false,true,false,0,0,before.magicLevels(),before.magicProgress(),0,"Duplicate committed action");
         boolean accepted=completion==null?
-            ProgressionApi.awardMagicResource(player,XpChannel.MXP,tx,repeat,1000,1):
+            ProgressionApi.awardMagicOrdinary(player,XpChannel.MXP,tx,repeat):
             ProgressionApi.awardMagicCompletion(player,XpChannel.MXP,tx,completion,first,repeat,firstFixed,repeatFixed);
         Wallet after=inspect(player);
         double effective=(after.magicLevels()-before.magicLevels())*1000.0+after.magicProgress()-before.magicProgress();
@@ -62,6 +62,20 @@ public final class MxpService {
     public static AwardStatus boss(ServerPlayer player,String id,String tx){
         BossRule rule=bossRule(id);
         return rule==null?ignored(player,"Unregistered boss"):award(player,tx,"boss:"+id,FIRST_BOSS_MXP,rule.repeat(),true,rule.repeatFixed());
+    }
+    /** Registry-authorized standard encounter, retaining canonical persisted boss completion key. */
+    public static AwardStatus standardBossVictory(ServerPlayer player,String id,String tx){
+        BossRule configured=bossRule(id);
+        double repeat=configured==null?MxpProgressionConfig.BOSS_REPEAT.get():configured.repeat();
+        return award(player,tx,"boss:"+id,FIRST_BOSS_MXP,repeat,true,configured!=null&&configured.repeatFixed());
+    }
+    public static AwardStatus minibossVictory(ServerPlayer player,String id,String tx){
+        return award(player,tx,"miniboss:"+id,250,MxpProgressionConfig.MINIBOSS_REPEAT.get(),true,false);
+    }
+    /** No completion key: an empowered ordinary mob never consumes a first-boss discovery. */
+    public static AwardStatus eliteVictory(ServerPlayer player,String tx,double base){
+        if(!Double.isFinite(base)||base<=0)return ignored(player,"No verified elite reward");
+        return award(player,tx,null,base,base,false,false);
     }
     public static AwardStatus jawrCommittedBloodDebit(ServerPlayer player,String tx,double original,double actual){
         if(!MxpMod.active())return ignored(player,"Legacy MXP installed");

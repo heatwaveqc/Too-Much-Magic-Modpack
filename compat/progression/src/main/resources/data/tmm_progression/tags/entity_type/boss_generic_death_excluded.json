@@ -18,6 +18,10 @@
       "required": false
     },
     {
+      "id": "draconicevolution:draconic_guardian",
+      "required": false
+    },
+    {
       "id": "draconicevolution:guardian_wither",
       "required": false
     },
@@ -181,6 +185,7 @@
       "id": "goety_cataclysm:zombie_amethyst_crab",
       "required": false
     },
+    "minecraft:ender_dragon",
     {
       "id": "neovitae:daemonium_doloris",
       "required": false

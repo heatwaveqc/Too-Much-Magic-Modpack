@@ -19,14 +19,15 @@ class BossDeathPolicyTest {
                 String id = value.isJsonPrimitive() ? value.getAsString() : value.getAsJsonObject().get("id").getAsString();
                 assertTrue(ids.add(id));
             }
-            assertEquals(56, ids.size());
+            assertEquals(58, ids.size());
             for (String id : new String[] {"botania:pink_wither", "neovitae:daemonium_doloris",
                     "the_bumblezone:cosmic_crystal_entity", "twilightforest:knight_phantom",
                     "voidscape:null_servant", "goety:vizier_clone", "twilightforest:plateau_boss"}) {
                 assertTrue(ids.contains(id), id);
             }
             assertFalse(ids.contains("minecraft:wither"));
-            assertFalse(ids.contains("minecraft:ender_dragon"));
+            assertTrue(ids.contains("minecraft:ender_dragon"));
+            assertTrue(ids.contains("draconicevolution:draconic_guardian"));
         }
     }
 }

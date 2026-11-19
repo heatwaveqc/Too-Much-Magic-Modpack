@@ -255,6 +255,11 @@ public final class ProgressionApi {
         return awardMagic(player,channelId,tx,null,1,
                 MxpMath.normalizedBase(nominalCost,referencePool),false,false);
     }
+    /** Trusted verified ordinary award, already normalized; no discovery key or fictional resource debit. */
+    public static boolean awardMagicOrdinary(ServerPlayer player,String channelId,String tx,double base) {
+        if(!Double.isFinite(base)||base<=0)return false;
+        return awardMagic(player,channelId,tx,null,1,base,false,false);
+    }
     /** Trusted success-only completion API; caller supplies verified transaction identity. */
     public static boolean awardMagicCompletion(ServerPlayer player,String channelId,String tx,
             String completionId,double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
