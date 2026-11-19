@@ -11,5 +11,11 @@
   "tmm_economy.processor.affixed_gear": "TMM Apotheosis Equipment Guard",
   "tmm_economy.mapper.evilcraft_blood": "TMM EvilCraft Blood Mapper",
   "tmm_economy.mapper.capturing_eggs": "TMM Capturing Egg Mapper",
-  "tmm_economy.processor.capturing_items": "TMM Capturing Item Guard"
+  "tmm_economy.processor.capturing_items": "TMM Capturing Item Guard",
+  "tmm_economy.mapper.ars_source": "TMM Ars Source Mapper",
+  "tmm_economy.mapper.ars_source.tooltip": "Map imbuement and apparatus Source costs.",
+  "tmm_economy.mapper.draconic_fusion": "TMM Draconic Fusion Mapper",
+  "tmm_economy.mapper.draconic_fusion.tooltip": "Map nominal FE and consumed fusion inputs.",
+  "tmm_economy.mapper.neovitae_alchemy": "TMM Neo Vitae Alchemy Mapper",
+  "tmm_economy.mapper.neovitae_alchemy.tooltip": "Map ordinary Tabula Vitae recipes and EV."
 }
