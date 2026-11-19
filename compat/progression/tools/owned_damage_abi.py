@@ -19,6 +19,7 @@ def audit(provider, path):
         names = sorted(n for n in z.namelist() if n.endswith(".class"))
         if provider == "mahou":
             candidates = [n for n in names if "drainlife" in n.lower().replace("_","")]
+            candidates += ["stepsword/mahoutsukai/util/EffectUtil.class","stepsword/mahoutsukai/tile/MahoujinTileEntity.class"]
         else:
             candidates = [n for n in names if n.endswith("/RootPerkDiscidia.class")]
         if not candidates:
