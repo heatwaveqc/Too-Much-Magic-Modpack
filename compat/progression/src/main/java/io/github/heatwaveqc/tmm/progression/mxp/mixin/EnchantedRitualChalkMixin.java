@@ -27,7 +27,7 @@ import java.util.UUID;
 
 @Pseudo
 @Mixin(targets="net.favouriteless.enchanted.common.blocks.entity.GoldChalkBlockEntity",remap=false)
-public abstract class EnchantedRitualChalkMixin implements EnchantedRitualChalkAccess {
+public abstract class EnchantedRitualChalkMixin implements E6bSpawnScope.EnchantedChalk {
     @Unique private UUID tmm$actor,tmm$operation;
     @Unique private String tmm$recipe;
     @Unique private static final String TMM_ENCHANTED="tmm_progression_enchanted_rite";
@@ -56,7 +56,7 @@ public abstract class EnchantedRitualChalkMixin implements EnchantedRitualChalkA
     @WrapOperation(method="serverTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/favouriteless/enchanted/common/blocks/entity/GoldChalkBlockEntity;)V",at=@At(value="INVOKE",target="Lnet/favouriteless/enchanted/common/enchanted/circle_magic/rites/Rite;start()V"),require=0,remap=false)
     private static void tmm$start(@Coerce Object rite,Operation<Void> original){
         if(!(MxpReflect.call(rite,"getLevel") instanceof ServerLevel level)||!(MxpReflect.call(rite,"getPos") instanceof BlockPos pos)||
-            !(level.getBlockEntity(pos) instanceof EnchantedRitualChalkAccess chalk)){original.call(rite);return;}
+            !(level.getBlockEntity(pos) instanceof E6bSpawnScope.EnchantedChalk chalk)){original.call(rite);return;}
         RitualRewards.Receipt receipt=chalk.tmm$takeEnchanted(rite,level);
         var proof=receipt==null?null:E6bSpawnCatalog.enchanted(receipt.recipeId());
         if(proof==null){original.call(rite);return;}

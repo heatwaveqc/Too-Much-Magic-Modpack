@@ -20,8 +20,27 @@ public final class JawrRitualOutput {
         Scope outer=ACTIVE.get();
         if(outer!=null){ACTIVE.remove();try{action.run();}finally{ACTIVE.set(outer);}return;}
         if(altar==null||event==null||level==null||proof==null){action.run();return;}
-        ACTIVE.set(new Scope(altar,event,level,proof));
-        try{action.run();}finally{ACTIVE.remove();}
+        Scope scope=new Scope(altar,event,level,proof);
+        long time=level.getDayTime();boolean rain=level.getLevelData().isRaining(),thunder=level.getLevelData().isThundering();
+        ACTIVE.set(scope);
+        try{
+            action.run();
+            if(ACTIVE.get()==scope&&proof.output().equals(event.getClass().getName())&&Boolean.TRUE.equals(MxpReflect.call(event,"isFinished"))){
+                if(proof.kind()==E6bRitualCatalog.Kind.TIME&&level.getDayTime()!=time)altar.tmm$markJawrOutput();
+                if(proof.kind()==E6bRitualCatalog.Kind.WEATHER&&(rain||thunder)&&!level.getLevelData().isRaining()&&!level.getLevelData().isThundering())altar.tmm$markJawrOutput();
+            }
+        }finally{ACTIVE.remove();}
+    }
+    /** Only two exact pinned vanilla lightning commands; not general command credit. */
+    public static boolean wantsLightningCommand(ServerLevel level,String resolved){
+        Scope s=ACTIVE.get();
+        return s!=null&&s.level()==level&&s.proof().kind()==E6bRitualCatalog.Kind.COMMAND
+            &&s.event().getClass().getName().equals("dev.sterner.witchery.content.ritual_event.RunCommandRitualEvent")
+            &&s.proof().output().equals(MxpReflect.call(s.event(),"getCommand"))
+            &&resolved!=null&&resolved.startsWith("summon lightning_bolt ");
+    }
+    public static void lightningCompleted(ServerLevel level,String resolved){
+        if(wantsLightningCommand(level,resolved))ACTIVE.get().altar().tmm$markJawrOutput();
     }
     public static void spawned(Object event,ServerLevel level,Entity entity,boolean accepted){
         Scope s=ACTIVE.get();

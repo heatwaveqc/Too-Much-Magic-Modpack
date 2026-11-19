@@ -17,7 +17,23 @@ import java.util.Optional;
 /** Scope the exact native dispatch, never observe arbitrary nearby item/entity spawns. */
 public final class E6bSpawnScope {
     private E6bSpawnScope(){}
-    public interface Observer { void tmm$spawned(Object ritual,ServerLevel level,Entity entity); }
+    public interface EnchantedChalk { io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Receipt tmm$takeEnchanted(Object rite,ServerLevel level); }
+    public interface Observer {
+        void tmm$spawned(Object ritual,ServerLevel level,Entity entity);
+        default void tmm$timeChanged(Object ritual,ServerLevel level){}
+    }
+    public static void timeChanged(Object ritual,ServerLevel level,long before){
+        Observer observer=ACTIVE.get();
+        if(observer!=null&&level.getDayTime()!=before)observer.tmm$timeChanged(ritual,level);
+    }
+    public static boolean timeProof(E6bSpawnCatalog.Proof proof){
+        return proof!=null&&(proof.nativeClass().endsWith(".DaylightRitual")||proof.nativeClass().endsWith(".MoonlightRitual"));
+    }
+    private static boolean classMatches(E6bSpawnCatalog.Proof proof,Object ritual){
+        if(proof==null||ritual==null)return false;
+        String name=ritual.getClass().getName();
+        return proof.nativeClass().equals(name)||("eidolon_repraised:sanguine_amulet".equals(proof.output())&&name.equals("alexthw.eidolon_repraised.common.ritual.CraftingRitual$SanguineRitual"));
+    }
     private static final ThreadLocal<Observer> ACTIVE=new ThreadLocal<>();
     public static void run(Observer observer,Runnable nativeCall){
         Observer previous=ACTIVE.get();
@@ -30,7 +46,7 @@ public final class E6bSpawnScope {
         if(accepted&&observer!=null&&world instanceof ServerLevel level)observer.tmm$spawned(ritual,level,entity);
     }
     public static int units(E6bSpawnCatalog.Proof proof,Object ritual,Entity entity){
-        if(proof==null||ritual==null||entity==null||!proof.nativeClass().equals(ritual.getClass().getName()))return 0;
+        if(entity==null||!classMatches(proof,ritual)||timeProof(proof))return 0;
         if(proof.item()&&entity instanceof ItemEntity item){
             ItemStack stack=item.getItem();
             return !stack.isEmpty()&&proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString())?Math.min(proof.count(),stack.getCount()):0;
@@ -57,7 +73,8 @@ public final class E6bSpawnScope {
         return null;
     }
     public static boolean eidolonNativeMatches(E6bSpawnCatalog.Proof proof,Object ritual){
-        if(proof==null||ritual==null||!proof.nativeClass().equals(ritual.getClass().getName()))return false;
+        if(!classMatches(proof,ritual))return false;
+        if(timeProof(proof))return proof.output().equals(String.valueOf(MxpReflect.call(ritual,"getRegistryName")));
         if(proof.item()){
             Object result=MxpReflect.call(ritual,"getResult");
             return result instanceof ItemStack s&&!s.isEmpty()&&proof.output().equals(BuiltInRegistries.ITEM.getKey(s.getItem()).toString())&&s.getCount()==proof.count();

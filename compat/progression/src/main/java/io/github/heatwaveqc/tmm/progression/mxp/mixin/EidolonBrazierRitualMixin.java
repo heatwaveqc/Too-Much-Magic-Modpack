@@ -73,6 +73,13 @@ public abstract class EidolonBrazierRitualMixin implements E6bSpawnScope.Observe
         if(!E6bSpawnScope.eidolonNativeMatches(proof,ritual))return;
         tmm$accepted=Math.min(proof.count(),tmm$accepted+E6bSpawnScope.units(proof,ritual,entity));((BlockEntity)(Object)this).setChanged();
     }
+    @Override public void tmm$timeChanged(Object ritual,ServerLevel level){
+        if(tmm$operation==null||tmm$ritual()!=ritual||tmm$level()!=level||!tmm$burning())return;
+        var proof=E6bSpawnCatalog.eidolon(tmm$recipe);
+        if(E6bSpawnScope.timeProof(proof)&&E6bSpawnScope.eidolonNativeMatches(proof,ritual)){
+            tmm$accepted=1;((BlockEntity)(Object)this).setChanged();
+        }
+    }
     @WrapMethod(method="complete()V",require=0,remap=false)
     private void tmm$complete(Operation<Void> original){
         ServerLevel level=tmm$level();String id=tmm$recipe;UUID actor=tmm$actor,operation=tmm$operation;

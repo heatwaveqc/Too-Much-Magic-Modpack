@@ -6,7 +6,7 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Exact native registry identities, never cross-provider aliases. */
 public final class E6bRitualCatalog {
     private E6bRitualCatalog(){}
-    public enum Kind { ITEM, ENTITY }
+    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND }
     public record JawrOutput(String output, Kind kind, Band band) {}
     private static final Map<String,JawrOutput> JAWR=Map.ofEntries(
         Map.entry("witchery:ritual/apply_ointment",new JawrOutput("witchery:broom",Kind.ITEM,Band.CIRCLE_BASIC)),
@@ -21,7 +21,12 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/summon_witch",new JawrOutput("minecraft:witch",Kind.ENTITY,Band.CIRCLE_BASIC)),
         Map.entry("witchery:ritual/summon_demon",new JawrOutput("witchery:demon",Kind.ENTITY,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/summon_imp",new JawrOutput("witchery:imp",Kind.ENTITY,Band.CIRCLE_MAJOR)),
-        Map.entry("witchery:ritual/summon_wither",new JawrOutput("minecraft:wither",Kind.ENTITY,Band.CIRCLE_EXCEPTIONAL))
+        Map.entry("witchery:ritual/summon_wither",new JawrOutput("minecraft:wither",Kind.ENTITY,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/clear_weather",new JawrOutput("dev.sterner.witchery.content.ritual_event.ClearWeatherRitualEvent",Kind.WEATHER,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/set_day",new JawrOutput("dev.sterner.witchery.content.ritual_event.SetDayRitualEvent",Kind.TIME,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/set_midnight",new JawrOutput("dev.sterner.witchery.content.ritual_event.SetMidnightRitualEvent",Kind.TIME,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/summon_lightning",new JawrOutput("summon lightning_bolt {chalkPos}",Kind.COMMAND,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/summon_lightning_on_waystone",new JawrOutput("summon lightning_bolt {waystonePos}",Kind.COMMAND,Band.CIRCLE_BASIC))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);

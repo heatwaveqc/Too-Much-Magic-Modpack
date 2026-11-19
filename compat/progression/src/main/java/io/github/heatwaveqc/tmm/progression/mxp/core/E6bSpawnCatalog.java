@@ -28,7 +28,9 @@ public final class E6bSpawnCatalog {
         Map.entry("eidolon_repraised:rituals/summon_stray",new Proof("minecraft:stray","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_BASIC)),
         Map.entry("eidolon_repraised:rituals/summon_wither_skeleton",new Proof("minecraft:wither_skeleton","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_ADVANCED)),
         Map.entry("eidolon_repraised:rituals/summon_wraith",new Proof("eidolon_repraised:wraith","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_ADVANCED)),
-        Map.entry("eidolon_repraised:rituals/summon_zombie",new Proof("minecraft:zombie","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_BASIC))
+        Map.entry("eidolon_repraised:rituals/summon_zombie",new Proof("minecraft:zombie","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_BASIC)),
+        Map.entry("eidolon_repraised:rituals/daylight",new Proof("eidolon_repraised:daylight","alexthw.eidolon_repraised.common.ritual.DaylightRitual",false,1,Band.EIDOLON_ADVANCED)),
+        Map.entry("eidolon_repraised:rituals/moonlight",new Proof("eidolon_repraised:moonlight","alexthw.eidolon_repraised.common.ritual.MoonlightRitual",false,1,Band.EIDOLON_ADVANCED))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         ENCHANTED.forEach((id,p)->add(out,id,p));
