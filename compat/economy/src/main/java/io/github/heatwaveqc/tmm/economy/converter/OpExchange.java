@@ -20,6 +20,13 @@ public final class OpExchange {
         return plan(storedEmc, freeOp, emcBudget, OP_PER_EMC_OUT);
     }
 
+    /** Fast path used by the actual pinned long-backed ledger. */
+    public static long forwardEmc(long storedEmc, long freeOp, long budget) {
+        if (storedEmc < 0 || freeOp < 0 || budget < 0)
+            throw new IllegalArgumentException("negative exchange limit");
+        return Math.min(Math.min(storedEmc, budget), freeOp / OP_PER_EMC_OUT);
+    }
+
     /** Bound reverse transfer by source OP, destination EMC space and tier EMC budget. */
     public static Plan reverse(long storedOp, BigInteger freeEmc, BigInteger emcBudget) {
         return plan(freeEmc, storedOp, emcBudget, OP_PER_EMC_IN);

@@ -16,7 +16,12 @@
     "TomeTemplateMixin",
     "TomeMaterializationMixin",
     "TomeCondenserLockMixin",
-    "ExpansionTomeCondenserLockMixin"
+    "ExpansionTomeCondenserLockMixin",
+    "OpConverterConfigMixin",
+    "OpConverterLedgerMixin",
+    "OpConverterTierMixin",
+    "OpConverterStatusMixin",
+    "OpConverterTooltipMixin"
   ],
   "injectors": {
     "defaultRequire": 1
