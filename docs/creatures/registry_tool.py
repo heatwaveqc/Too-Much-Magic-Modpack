@@ -57,8 +57,20 @@ def family_tags(data):
         if f in entry["taxonomy"]["families"]
     ]} for f in families}
 
+def boss_tags(data):
+    """Type-only death is insufficient for these encounters and derivatives."""
+    non_independent = {"boss_derivative_no_credit", "passive_boss_conversion",
+                       "unimplemented_boss_placeholder", "technical_nonboss",
+                       "summoned_or_converted_servant", "special_noncombat_npc"}
+    return {"boss_generic_death_excluded.json": {"replace": False, "values": [
+        entity_id if entity_id.startswith("minecraft:") else {"id": entity_id, "required": False}
+        for entity_id, entry in sorted(data["entities"].items())
+        if entry["boss"]["classification"] in non_independent
+        or any(rule["consumer"] == "boss" for rule in entry.get("instance_rules", []))
+    ]}}
+
 def projections(data):
-    return {**hunter_tags(data), **family_tags(data)}
+    return {**hunter_tags(data), **family_tags(data), **boss_tags(data)}
 
 def compare(data, directory):
     """Read-only drift check against integration donor tags; no generated writes."""
