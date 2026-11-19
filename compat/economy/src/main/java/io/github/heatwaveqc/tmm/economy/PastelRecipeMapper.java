@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -304,11 +305,38 @@ public final class PastelRecipeMapper implements IEMCMapper<NormalizedSimpleStac
         return routes;
     }
 
+    /** Distinct outputs are not each charged the full batch. Infer only the
+     * one missing output where independently locked co-product prices and
+     * a strictly positive known input lower bound justify residual pricing. */
+    private static Map.Entry<Item,ExpectedQuantity> residualTarget(Map<Item,ExpectedQuantity> outputs,
+            Material input, Map<Item,Long> roots) {
+        if (outputs.size() == 1) return outputs.entrySet().iterator().next();
+        var unpriced = outputs.entrySet().stream().filter(e -> !roots.containsKey(e.getKey())).toList();
+        if (unpriced.size() != 1)
+            throw new IllegalArgumentException("distinct co-products need independent allocation: " + outputs);
+        ExpectedQuantity credit = ExpectedQuantity.ZERO;
+        for (var output : outputs.entrySet()) if (roots.containsKey(output.getKey()))
+            credit = credit.plus(output.getValue().times(roots.get(output.getKey())));
+        long minimum = Long.MAX_VALUE;
+        for (var option : input.ingredient().getItems()) {
+            Long price = roots.get(option.getItem());
+            if (price == null || !option.getCraftingRemainingItem().isEmpty())
+                throw new IllegalArgumentException("co-product residual lacks an independent input lower bound");
+            minimum = Math.min(minimum,price);
+        }
+        if (minimum == Long.MAX_VALUE || minimum <= 0
+                || credit.numerator().compareTo(BigInteger.valueOf(minimum)
+                    .multiply(BigInteger.valueOf(input.count())).multiply(credit.denominator())) >= 0)
+            throw new IllegalArgumentException("nonpositive or unresolved residual; keep productive route out of price graph");
+        return unpriced.getFirst();
+    }
+
     @Override public void addMappings(IMappingCollector<NormalizedSimpleStack, Long> mapper,
             ReloadableServerResources resources, RegistryAccess registries, ResourceManager manager) {
         var graph = new ResourceGraph(mapper);
         // No pigment-based competing anchor or physical ink item is created.
         var ink = inkAnchors(graph, resources);
+        var rootPrices = ApprovedRootPrices.read(manager);
         int mapped = 0, skipped = 0, routes = 0;
         for (var holder : resources.getRecipeManager().getRecipes()) {
             var recipe = holder.value();
@@ -363,11 +391,10 @@ public final class PastelRecipeMapper implements IEMCMapper<NormalizedSimpleStac
                         var count = ExpectedQuantity.probability(result.getB()).times(stack.getCount());
                         if (!count.isZero()) expected.merge(stack.getItem(), count, ExpectedQuantity::plus);
                     }
-                    if (expected.size() != 1)
-                        throw new IllegalArgumentException("distinct co-products need independent allocation: " + expected);
-                    var output = expected.entrySet().iterator().next();
-                    int expectationScale = ExpectedQuantity.scale(output.getValue());
+                    if (expected.isEmpty()) throw new IllegalArgumentException("no positive expected output");
                     var input = material(encode(r, registries).get("ingredient"), registries);
+                    var output = residualTarget(expected, input, rootPrices);
+                    int expectationScale = ExpectedQuantity.scale(expected.values().toArray(ExpectedQuantity[]::new));
                     if (input.count() > 1 && java.util.Arrays.stream(input.ingredient().getItems())
                             .anyMatch(s -> !s.getCraftingRemainingItem().isEmpty()))
                         throw new IllegalArgumentException("one remainder per multicount batch");
@@ -382,6 +409,9 @@ public final class PastelRecipeMapper implements IEMCMapper<NormalizedSimpleStac
                             ((long) time + 19) / 20);
                     if (total > 0) plan.choice(Map.of(orange, Math.toIntExact(total)));
                     plan.scale(expectationScale);
+                    for (var coProduct : expected.entrySet())
+                        if (coProduct.getKey() != output.getKey())
+                            plan.credit(NSSItem.createItem(coProduct.getKey()), coProduct.getValue().countAt(expectationScale));
                     routes += plan.contribute(graph, NSSItem.createItem(output.getKey()),
                             output.getValue().countAt(expectationScale), ResourceAccounting.Cost.ZERO);
                     mapped++;

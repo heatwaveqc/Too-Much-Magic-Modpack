@@ -21,7 +21,8 @@
     "OpConverterLedgerMixin",
     "OpConverterTierMixin",
     "OpConverterStatusMixin",
-    "OpConverterTooltipMixin"
+    "OpConverterTooltipMixin",
+    "StoredResourceGuardMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -61,6 +61,14 @@ final class RecipeGraphPlan {
         combine(choices);
     }
 
+    /** A co-product may be credited only by an audited caller with a positive independent root. */
+    void credit(NormalizedSimpleStack key, int count) {
+        if (count <= 0) throw new IllegalArgumentException("nonpositive co-product credit");
+        var delta = new Object2IntOpenHashMap<NormalizedSimpleStack>();
+        delta.put(key, -count);
+        combine(Set.of(delta));
+    }
+
     void scale(int batches) {
         if (batches <= 0) throw new IllegalArgumentException("nonpositive batch scale");
         Set<Object2IntOpenHashMap<NormalizedSimpleStack>> next = new LinkedHashSet<>();

@@ -35,7 +35,7 @@
   "tmm_economy.mapper.astral_recipes": "TMM Astral Sorcery Recipe Mapper",
   "tmm_economy.mapper.astral_recipes.tooltip": "Map ordinary altar and infusion recipes including liquid starlight.",
   "tmm_economy.mapper.pastel_recipes": "TMM Pastel Recipe Mapper",
-  "tmm_economy.mapper.pastel_recipes.tooltip": "Map plain material recipes and verified colored ink costs.",
+  "tmm_economy.mapper.pastel_recipes.tooltip": "Map ordinary material recipes, batches, nominal yield and collectible growth using verified Ink costs.",
   "tmm_economy.mapper.iron_scrolls": "TMM Iron Scroll Recipe Mapper",
   "tmm_economy.mapper.iron_scrolls.tooltip": "Derive scroll values for burning and template duplication, not knowledge production.",
   "block.tmm_economy.emc_catalyst": "EMC Catalyst",
@@ -43,5 +43,7 @@
   "tmm_economy.processor.source_jar_guard": "TMM Filled Source Jar Guard",
   "tmm_economy.processor.source_jar_guard.tooltip": "Keep portable Source contents from being duplicated or burned through EMC.",
   "tmm_economy.mapper.relic_templates": "TMM Relic and Artifact Templates",
-  "tmm_economy.mapper.relic_templates.tooltip": "Use a fixed price for fresh relic and artifact equipment, independent of stats."
+  "tmm_economy.mapper.relic_templates.tooltip": "Use a fixed price for fresh relic and artifact equipment, independent of stats.",
+  "tmm_economy.mapper.canonical_buckets": "TMM Canonical Bucket Mapper",
+  "tmm_economy.mapper.canonical_buckets.tooltip": "Map verified full buckets and returned empty buckets."
 }

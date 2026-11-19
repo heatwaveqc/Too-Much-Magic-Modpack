@@ -1,7 +1,6 @@
 package io.github.heatwaveqc.tmm.economy;
 
 import com.klikli_dev.theurgy.content.recipe.*;
-import com.klikli_dev.theurgy.content.recipe.result.ItemRecipeResult;
 import com.mojang.logging.LogUtils;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -92,8 +91,6 @@ public final class TheurgyMaterialMapper implements IEMCMapper<NormalizedSimpleS
                     fluid(plan, r.getSolvent());
                 } else if (recipe.getClass() == IncubationRecipe.class) {
                     var r = (IncubationRecipe) recipe;
-                    if (!(r.getResult() instanceof ItemRecipeResult))
-                        throw new IllegalArgumentException("tag-selected or dynamic output");
                     plan.consumed(r.getMercury(), 1, false);
                     plan.consumed(r.getSalt(), 1, false);
                     plan.consumed(r.getSulfur(), 1, false);
@@ -115,11 +112,17 @@ public final class TheurgyMaterialMapper implements IEMCMapper<NormalizedSimpleS
                     continue;
                 } else if (recipe.getClass() == ReformationRecipe.class) {
                     var r = (ReformationRecipe) recipe;
-                    // Target is retained. Native cross-category niter multiplication is
-                    // intentional production and must not become the least-cost valuation.
-                    // Report the actual debit for the later graph/census review.
-                    throw new IllegalArgumentException("productive/target-catalyzed reformation held; mercury flux debit "
-                            + r.getMercuryFlux() + ", output " + r.getResult().getCount());
+                    var output = r.getResult();
+                    // Native target pedestal is reusable. Copying that target is intentional
+                    // physical production, not a way to lower its anchor in the EMC graph.
+                    if (r.getTarget().test(output.copyWithCount(1)))
+                        throw new IllegalArgumentException("productive target replication excluded; mercury flux "
+                                + r.getMercuryFlux() + ", output " + output.getCount());
+                    distinctSized(r.getSources());
+                    for (var input : r.getSources()) plan.consumed(input.ingredient(), input.count(), false);
+                    plan.slot(r.getTarget(), 1, s -> true, false, false);
+                    if (r.getMercuryFlux() < 0) throw new IllegalArgumentException("negative mercury flux");
+                    if (r.getMercuryFlux() > 0) plan.choice(Map.of(MERCURY_FLUX, r.getMercuryFlux()));
                 } else throw new IllegalArgumentException("special recipe subtype");
                 routes += plan.contribute(graph, recipe.getResultItem(registries), ResourceAccounting.Cost.ZERO);
                 mapped++;
