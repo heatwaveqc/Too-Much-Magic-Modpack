@@ -170,6 +170,17 @@ public final class ProgressionEvents {
         if (path.startsWith("recipes/") || path.contains("/recipes/")) return;
         ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal(
                 "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
+        String id=event.getAdvancement().id().toString();
+        if(io.github.heatwaveqc.tmm.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null
+            &&io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()){
+            try {
+                var receipt=io.github.heatwaveqc.tmm.progression.mxp.MxpService.dragonAdvancement(player,id);
+                if(receipt.accepted())player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                    "MXP: "+String.format("%.2f",receipt.effectiveXP())+" (dragon milestone)"));
+            } catch(RuntimeException ex) {
+                io.github.heatwaveqc.tmm.progression.mxp.MxpMod.LOGGER.error("Dragon advancement MXP failed ({})",id,ex);
+            }
+        }
     }
     private static void fall(LivingFallEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {

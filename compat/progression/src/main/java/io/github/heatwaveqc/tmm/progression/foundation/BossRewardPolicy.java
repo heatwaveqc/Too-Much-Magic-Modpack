@@ -25,6 +25,14 @@ public final class BossRewardPolicy {
         };
         return elite?1:0;
     }
+    /** Only these exact completed vanilla advancements earn a dragon milestone. */
+    public static String dragonAdvancementKey(String id) {
+        return switch(id) {
+            case "minecraft:end/kill_dragon" -> "boss:minecraft:ender_dragon";
+            case "minecraft:end/respawn_dragon" -> "advancement:minecraft:end/respawn_dragon";
+            default -> null;
+        };
+    }
     public static Set<UUID> recent(Map<UUID,Long> hits,long now,int window,UUID finalBlow) {
         var result=new LinkedHashSet<UUID>();
         hits.forEach((id,tick)->{if(tick<=now&&now-tick<=window)result.add(id);});

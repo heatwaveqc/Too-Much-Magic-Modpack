@@ -69,6 +69,15 @@ public final class MxpService {
         double repeat=configured==null?MxpProgressionConfig.BOSS_REPEAT.get():configured.repeat();
         return award(player,tx,"boss:"+id,FIRST_BOSS_MXP,repeat,true,configured!=null&&configured.repeatFixed());
     }
+    /** Native dragon advancement only; persistent first key, explicitly zero repeat. */
+    public static AwardStatus dragonAdvancement(ServerPlayer player,String advancementId){
+        String key=io.github.heatwaveqc.tmm.progression.foundation.BossRewardPolicy.dragonAdvancementKey(advancementId);
+        if(key==null||!MxpMod.active()||player instanceof net.neoforged.neoforge.common.util.FakePlayer
+            ||player.getServer()==null||!player.getServer().isSameThread()
+            ||player.getServer().getPlayerList().getPlayer(player.getUUID())!=player)
+            return ignored(player,"No eligible native dragon advancement");
+        return award(player,"advancement:"+advancementId,key,FIRST_BOSS_MXP,0,true,false);
+    }
     public static AwardStatus minibossVictory(ServerPlayer player,String id,String tx){
         return award(player,tx,"miniboss:"+id,250,MxpProgressionConfig.MINIBOSS_REPEAT.get(),true,false);
     }
