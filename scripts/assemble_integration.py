@@ -170,21 +170,9 @@ def main() -> None:
     # Shared KubeJS lang maps are composed key-by-key, never imported as
     # a whole file from one historical feature branch.
     merge_json_locales(cfg)
-    # The Tyz first-wave is already pinned on this baseline. Preserve it on
-    # reruns rather than calling the one-time Pufferfish->Tyz installer again.
-    from verify_tyz_migration import verify as verify_tyz_migration
-    if (ROOT / "mods/tyzs-skills.pw.toml").exists():
-        if (ROOT / "mods/puffish-skills.pw.toml").exists():
-            raise RuntimeError("Pufferfish Skills was reintroduced alongside Tyz")
-        rows = {m["id"]: m for m in manifest["mods"]}
-        if not rows["tyzs-skills"]["enabled_in_pack"] or rows["puffish-skills"]["enabled_in_pack"]:
-            raise RuntimeError("Tyz packwiz and manifest disagree")
-        from stage_monk_tyz import stage as stage_monk_tyz
-        stage_monk_tyz(ROOT)
-        verify_tyz_migration(ROOT)
-    else:
-        from activate_tyzs import activate
-        activate(ROOT, manifest)
+    # Unified Progression is the only XP authority. Never resurrect the old backend.
+    from verify_unified_progression import verify_selection
+    verify_selection(ROOT, manifest)
     # The next full QA build must pin the exact Dragon Survival release alongside
     # the already-approved Comforts and Colorful Hearts; fail on missing hashes.
     # Dragon diets only work if the actual dragon JAR is installed.
@@ -198,11 +186,6 @@ def main() -> None:
         "manifest/quest_chapters.json", "manifest/feature-checklist.json",
         "manifest/stone_generation_policy.json", "manifest/material-ore-audit.json",
         "scripts/validate_quests.py")
-    git("add", "-A", "--", "config/tyzs_skills", "config/tyzs_skills-common.toml",
-        "kubejs/server_scripts/tmm_magic_core_thrift.js",
-        "mods/tyzs-skills.pw.toml",
-        "mods/dragon-survival.pw.toml", "mods/comforts.pw.toml",
-        "mods/colorful-hearts.pw.toml")
     (ROOT / "manifest/mods.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     refresh_packwiz_index()
     # Every packwiz reference must be in the GIT INDEX, not merely the CI
