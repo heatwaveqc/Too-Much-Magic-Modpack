@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scope": "original art production only; no removal of gameplay mods",
+  "exclusions": [
+    {
+      "manifest_id": "crystalix",
+      "display_name": "Crystalix",
+      "decision": "exclude from original texture production unless owner revises",
+      "reason": "Decorative glass variants; reduce high-volume repetitive edge cases.",
+      "runtime": "unchanged",
+      "inventory": "retain and count separately; resolve actual archive paths before classifying"
+    },
+    {
+      "manifest_id": "rechiseled",
+      "display_name": "Rechiseled",
+      "decision": "exclude from original texture production unless owner revises",
+      "reason": "Chipped-like high-volume decorative block variants.",
+      "runtime": "unchanged",
+      "inventory": "retain and count separately; resolve actual archive paths before classifying"
+    }
+  ],
+  "shared_assets": "Do not exclude shared vanilla/included-mod paths by namespace guess or archive association alone.",
+  "additional_exclusions": "Owner decision required."
+}
