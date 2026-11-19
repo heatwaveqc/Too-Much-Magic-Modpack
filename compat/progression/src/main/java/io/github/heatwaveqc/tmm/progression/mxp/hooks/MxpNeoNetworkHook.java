@@ -13,7 +13,8 @@ import io.github.heatwaveqc.tmm.progression.mxp.core.PaymentReceiptPolicy;
 /**
  * Neo Vitae 1.1.53: exclusively owner-linked Anima EV-network syphons.
  * No XP for added EV, health-payment substitutions, item charges, off-network
- * effects or network capacity changes. PostSyphon is emitted after the debit.
+ * effects or network capacity changes. Manual and automated network syphons
+ * both qualify for the online owner; PostSyphon is emitted after the debit.
  */
 public final class MxpNeoNetworkHook {
     private MxpNeoNetworkHook() {}
@@ -23,17 +24,18 @@ public final class MxpNeoNetworkHook {
         if (!Double.isFinite(base) || base <= 0) return;
         Object owner = MxpReflect.call(nativeEvent, "getOwnerId");
         if (!(owner instanceof UUID ownerId)) return;
-        double nominal = MxpReflect.number(MxpReflect.call(nativeEvent, "getAmount"));
         double debited = MxpReflect.number(MxpReflect.call(nativeEvent, "getActualAmount"));
-        if (!PaymentReceiptPolicy.bounded(debited,nominal)) return;
+        // Native upkeep multipliers can make actualAmount exceed the ticket's
+        // original amount. The positive committed debit is authoritative.
+        if (!PaymentReceiptPolicy.positive(debited)) return;
         MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
         if (server == null || !server.isSameThread()) return;
         ServerPlayer player = server.getPlayerList().getPlayer(ownerId);
         if (!MxpPlayerPolicy.eligible(player)) return;
         // This method is called ONLY from the actual native Anima.PostSyphon,
         // not an arbitrary mana/health/status resource or a mana-gain event.
-        // PostSyphon does not distinguish a discounted cost from a short drain;
-        // credit only actual network EV until an accepted nominal receipt is proven.
+        // Credit every actual positive native network syphon, independent of
+        // the caller. Do not infer spend from periodic net balance differences.
         try {
             MxpService.resource(player, "neovitae:ev_network",
                     "neovitae:network:" + UUID.randomUUID(),
