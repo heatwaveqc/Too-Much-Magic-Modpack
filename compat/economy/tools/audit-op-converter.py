@@ -22,7 +22,7 @@ def main():
             if not name.endswith(".class") or name.startswith("META-INF/"):
                 continue
             data = z.read(name)
-            if any(key in data for key in (b"emcPerEnergy", b"energyPerEmc", b"basicEmcPerTick")):
+            if name.startswith("dev/glorps/energy/") and (any(key in data for key in (b"emcPerEnergy", b"energyPerEmc", b"basicEmcPerTick", b"dev/glorps/energy/Config", b"reverseRatio")) or any(key in name.lower() for key in ("ledger", "converter", "throughput"))):
                 classes.append(name.removesuffix(".class").replace("/", "."))
         print("Ratio-related classes:", *classes, sep="\n", flush=True)
         for name in z.namelist():
