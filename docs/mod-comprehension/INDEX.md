@@ -146,7 +146,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
-| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | researching | [profile](mods/ars-n-spells.md) |
+| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | researching | [profile](mods/ars-ocultas.md) |
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
@@ -381,3 +381,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ars n Spells regen/equipment/HUD and tag-only Source proximity audited against native Iron's10tick cadence/defaultmultiplier. Documented nominal rate/timing discrepancy for acceptance; no measured rate or balance approval. Counts6complete36researching unchanged; combat/school/cooldown/adapter source coverage remains.
 
 - 2026-11-19 — Ars n Spells combat/school/resonance/cooldown source companion added, including event-credit limits, allschool decay behavior, multiplier versus additive directions and proxy/category cooldown distinction. Final optional-adapter/combined profile review remains;6/42complete36researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells source-complete for installed3.3.5 scope: consolidated5pinnedcompanions into full guide/Loom/bind/cast and optional utility/regen/schools/cooldown walkthrough.317non-gametest classMethodref audit found no activeAlternativePayment.reservecaller; Curios discount/tag and school mapping scope closed. **7/42source-complete,35researching**; five Ars addon routes and combined parent review remain. No runtime acceptance.

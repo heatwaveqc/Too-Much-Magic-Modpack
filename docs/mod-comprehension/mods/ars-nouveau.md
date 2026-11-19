@@ -106,7 +106,7 @@ Useful native combinations: Agronomic plus a real growing garden ->Jar->processi
 
 ## Addon scope and compatibility leads
 
-All seven are separately pinned profiles and part of completion scope. Unification is now source-complete for its two installed target adapters; six addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
+All seven are separately pinned profiles and part of completion scope. Unification and Ars n Spells are source-complete for pinned installed scopes; five addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
 
 | Addon | Remaining full-route focus |
 | --- | --- |
@@ -115,7 +115,7 @@ All seven are separately pinned profiles and part of completion scope. Unificati
 | [Ars Elemental](ars-elemental.md) | Four schools/foci/armor, optional helpers/devices/biome routes beyond three fire-oriented pilot items. |
 | [Ars Elemancy](ars-elemancy.md) | Combined Essences, armor and Elemancer shard route with actual spell mechanics/gates. |
 | [Ars Ocultas](ars-ocultas.md) | Occultism bridge recipes/worker/jar/altar behavior, both endpoints/costs/ownership. |
-| [Ars 'n Spells](ars-n-spells.md) | Loom->transcribe->bind->cross-cast and actual advancement event/cost/compat paths with Iron's. |
+| [Ars 'n Spells](ars-n-spells.md) | **Source-complete** Loom/bind/cast, generic carriers, mana/payment/regen/utility and school/cooldown paths with exact Iron's endpoint; runtime acceptance remains. |
 | [Ars Unification](ars-unification.md) | **Source-complete** installed Farmer's Delight Cut and Occultism Crush routes, acquisition, batch/priority/failure rules and pilot gaps; runtime acceptance remains. |
 
 Existing [Botania mana bridge candidate](../interactions/botania-revived--ars-nouveau--mana-bridge.md) remains candidate; matching word “mana” doesn't establish native conversion. No absent optional targets, forbidden Create/storage/logistics or boss/ProjectE gates are silently enabled by research.

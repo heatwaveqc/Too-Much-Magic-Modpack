@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ars n Spells source completion
+
+- Ars n Spells3.3.5 SOURCE-COMPLETE for pinnedinstalledscope; parentprofile rewrittenaround5binarycompanions(fullguide/Loom/bind/cast and optionalcarriers/mana/Well/regen/equipment/Curios/schools/cooldowns), exactscope/testlimits. 317non-gametestclassconstantpoolMethodrefaudit found noAlternativePayment.reservecaller; ScrollLPTrackeronlyselfstageoverload. LP/AURAframework isn'tproveninstalleddrain. ClosedCurios tagdiscount(.2/item,.5cap)and schoolmappingreloadscope. **7/42complete35researching**. Ars parentstillresearchingfor5addons+finalreview.
+- **Next Ars Controle1.6.16**, then Ocultas2.6.2, Elemental0.7.10.4, Elemancy1.18.3, Additions21.3.0: directpinnedbinaryfullroutes/acquisition/control/typedcost/failure/guide+pilot. Do notreauditcompletednSpells5companions/Unification/native30companions. After5addons, combinedArscompletionreview, thenremainingmajorprofiles.
+- Refetchedintegration2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; addon/Ars/Iron's/Curios/Elemental/Elemancypinsunchanged; exactnSpellsSHA512rechecked. Externalans-fresh/irons-ans-fresh/artifactsretained. No blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. SourcecompleteisnotclientPASS. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ars n Spells combat/schools/cooldown
 
 - Added ars-n-spells-pinned-combat.md: actual damageformulas/gates, firsteffectschool/all-effectselection, eventcountprogression/affinity/deathcopy/decay, fullnessresonanceformula/expiry and distinct optionalcategory/nativeproxycooldown defaults/migration. Growth events canprecedefinalpayment; decayvisitsallpositivelevelsnotlastusedtimestamp. Addonnowhas5companions(carriers,mana,payments,regen,combat), alldirectbinary; no needmorepassesoncoveredtopics.
