@@ -6,7 +6,7 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Exact native registry identities, never cross-provider aliases. */
 public final class E6bRitualCatalog {
     private E6bRitualCatalog(){}
-    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM, MINE, EVENT_SPAWN, EVENT_MUTATION, TELEPORT, BIOME, WOLF_CURSE }
+    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM, MINE, EVENT_SPAWN, EVENT_MUTATION, TELEPORT, BIOME, WOLF_CURSE, MIRROR_PAIR, SPECTRAL }
     public record JawrOutput(String output, Kind kind, Band band) {}
     private static final Map<String,JawrOutput> JAWR=Map.ofEntries(
         Map.entry("witchery:ritual/apply_ointment",new JawrOutput("witchery:broom",Kind.ITEM,Band.CIRCLE_BASIC)),
@@ -61,7 +61,9 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/change_biome_cheap",new JawrOutput("witchery changeBiome {chalkPos} {targetBiome} 16",Kind.BIOME,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/change_biome_waystone",new JawrOutput("witchery changeBiome {waystonePos} {targetBiome} 64",Kind.BIOME,Band.CIRCLE_EXCEPTIONAL)),
         Map.entry("witchery:ritual/change_biome_waystone_cheap",new JawrOutput("witchery changeBiome {waystonePos} {targetBiome} 16",Kind.BIOME,Band.CIRCLE_MAJOR)),
-        Map.entry("witchery:ritual/curse_of_the_wolf",new JawrOutput("witchery werewolf level try_curse {taglockPlayerOrEntity}",Kind.WOLF_CURSE,Band.CIRCLE_EXCEPTIONAL))
+        Map.entry("witchery:ritual/curse_of_the_wolf",new JawrOutput("witchery werewolf level try_curse {taglockPlayerOrEntity}",Kind.WOLF_CURSE,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/mirror_pair",new JawrOutput("dev.sterner.witchery.content.ritual_event.MirrorPairRitualEvent",Kind.MIRROR_PAIR,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/bind_spectral_creatures",new JawrOutput("dev.sterner.witchery.content.ritual_event.BindSpectralCreaturesRitualEvent",Kind.SPECTRAL,Band.CIRCLE_MAJOR))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);

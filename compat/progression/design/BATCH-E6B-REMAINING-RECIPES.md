@@ -1,29 +1,15 @@
-# E6b residual exact recipe inventory — 2026-11-19
-PR #347, source checkpoint 5b0fa61b76168f60ff0e95e6a031852222030030. Exact bundled recipe IDs from hash-verified [run 44584477924](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44584477924); focused outcome census [44590603836](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44590603836). Compare current Java catalog entries, not prior hand-counts. Conditional recipes counted as bundled records, not guaranteed available. Source mappings are not runtime acceptance.
+# E6b final exact recipe disposition — 2026-11-19
+PR #347. Source census and outcomes from the pinned [E6b inventory](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44584477924), [focused audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44598259656), and explicit Java catalogs. Conditional bundled recipes are counted whether installed conditions enable them. Counts are source coverage, not proven live gameplay.
 
 | Provider | Mapped | Routine exclusions | Remaining | Bundled |
 |---|---:|---:|---:|---:|
-| Enchanted | 16 | 0 | 31 | 47 |
-| JAWR circle | 34 | 0 | 23 | 57 |
+| Enchanted | 45 | 2 | 0 | 47 |
+| JAWR circle | 55 | 2 | 0 | 57 |
+| JAWR brazier | 8 | 0 | 0 | 8 |
 | Eidolon | 22 | 2 | 0 | 24 |
 | Totemic | 14 | 0 | 0 | 14 |
-| Total | 86 | 2 | 54 | 142 |
+| Total | 144 | 6 | 0 | 150 |
 
-Eidolon: both wand-recharging rites (recharging_chill, recharging_soulfire) excluded under existing routine maintenance policy; engineering classification, subject to owner's review. All other 22 mapped; three perpetual rites award on first verified effect of manual commissioning, not effect pulses. Totemic: 14/14 mapped, accepted actual performance independent of subsequent effect. JAWR brazier separate from 57 circle recipes; still unimplemented. Keep Enchanted and JAWR independent, preserve genuine native identities. The remaining copying and recharging candidates below are not new exclusions; require review. All reward bands unchanged.
+Excluded from independent MXP only (native mechanics unchanged): Enchanted duplicate_waystone and duplicate_waystone_charged; JAWR ritual/charge_attuned and ritual/rite_of_charging_infusion; Eidolon rituals/recharging_chill and rituals/recharging_soulfire. Routine copying/recharging interpretation within approved policy, subject to owner review. All four providers have independent families; native Totemic accepted performance earns XP regardless of later effect. Other providers require witnessed real output/effect or paid successful commissioning; no pulse or proximity awards.
 
-| Provider | Remaining outcome family | Native paths |
-|---|---|---|
-| Enchanted | Actual familiar bind/summon, prevent trivial loops (2) | `bind_familiar`, `summon_familiar` |
-| Enchanted | Verify actual bound/transformed output (2) | `broiling`, `broiling_charged` |
-| Enchanted | Actual block/entity world effect (4) | `blight`, `fertility`, `fertility_charged`, `forest` |
-| Enchanted | Routine copying candidate exclusion (2) | `duplicate_waystone`, `duplicate_waystone_charged` |
-| Enchanted | Paid commissioning or finite effect; no passive upkeep award (9) | `imprisonment`, `protection`, `protection_large`, `protection_large_waystone`, `protection_temporary`, `protection_temporary_blooded`, `protection_temporary_waystone`, `protection_waystone`, `sanctity` |
-| Enchanted | Delayed world/weather/lightning effect (8) | `sky_wrath`, `sky_wrath_blooded`, `sky_wrath_blooded_charged`, `sky_wrath_charged`, `sky_wrath_waystone`, `sky_wrath_waystone_charged`, `total_eclipse`, `total_eclipse_charged` |
-| Enchanted | Actual entity/block transposition (4) | `summon_entity`, `transpose_caster`, `transpose_caster_blooded`, `transpose_iron` |
-| JAWR | Exact primary command committed success/state (ignore ancillary hunter updates) (9) | `change_biome`, `change_biome_cheap`, `change_biome_waystone`, `change_biome_waystone_cheap`, `curse_of_the_wolf`, `mirror_pair`, `rot`, `teleport_owner_to_waystone`, `teleport_taglock_to_waystone` |
-| JAWR | Native event actual state mutation (4) | `bestial_call`, `bind_familiar`, `bind_spectral_creatures`, `resurrect_familiar` |
-| JAWR | Verify actual ore/block extraction, not returned stone (6) | `blocks_below_amber`, `blocks_below_cinnabar`, `blocks_below_copper`, `blocks_below_gold`, `blocks_below_iron`, `blocks_below_zinc` |
-| JAWR | Routine recharge candidate exclusion (1) | `charge_attuned` |
-| JAWR | Finite effect or commissioned operation, no upkeep ticks (3) | `pull_mobs`, `push_mobs`, `rite_of_charging_infusion` |
-
-Next: prioritize exact native familiar bind/resurrection and summon states, Enchanted delayed effect receipts using the existing persisted Rite state, JAWR custom command state and extraction outcomes, then other finite/commissioning effects. No generic award for void dispatch, start, unchecked spawn, proximity, or maintenance. Update tests and exact mappings rather than repeat broad surveys. Prior 8da46fe (Eidolon) and 3987f06 (JAWR) all ten workflows passed. Enchanted source head 5b0fa61 CI pending at inventory creation. No runtime Mixin weave, gameplay, pack build/merge/activation or live-test readiness claim.
+Implementation evidence: BATCH-E6B-RITUAL-IMPLEMENTATION.md; current catalogs E6bRitualCatalog, E6bSpawnCatalog, JawrBrazierCatalog plus shared RitualRewards. All ten source/static workflows passed on f206079; final code CI pending. Full installed weave and live acceptance outstanding. In particular test one-tick and neutral JAWR phases, floating outputs, nested spectral child, two mirror + contract insertions, cancellation, real original actor, persisted pending operation, cross-dimension transfer, brazier recipe switch/failure/upkeep, all four providers' native success/failed/no-effect cases. No full pack boot, build, merge, activation, or readiness claim.

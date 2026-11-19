@@ -103,7 +103,9 @@
     "JawrMovementRitualMixin",
     "JawrBiomeRitualMixin",
     "JawrWolfCurseRitualMixin",
-    "JawrBrazierRitualMixin"
+    "JawrBrazierRitualMixin",
+    "JawrParallelRitualMixin",
+    "JawrSpectralChainMixin"
   ],
   "injectors": {
     "defaultRequire": 0

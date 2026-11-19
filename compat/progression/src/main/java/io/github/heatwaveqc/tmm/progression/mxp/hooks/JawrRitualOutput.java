@@ -14,13 +14,18 @@ import java.util.List;
 public final class JawrRitualOutput {
     private JawrRitualOutput(){}
     public interface Observer { void tmm$markJawrOutput(); java.util.UUID tmm$jawrActor(); }
-    private record Scope(Observer altar,Object event,ServerLevel level,E6bRitualCatalog.JawrOutput proof){}
+    private static final class Outputs{
+        final java.util.IdentityHashMap<Entity,ItemStack> stacks=new java.util.IdentityHashMap<>();
+        final java.util.Set<java.util.UUID> accepted=new java.util.HashSet<>();
+        final java.util.Map<java.util.UUID,int[]> mirrors=new java.util.HashMap<>();
+    }
+    private record Scope(Observer altar,Object event,ServerLevel level,E6bRitualCatalog.JawrOutput proof,Outputs outputs){}
     private static final ThreadLocal<Scope> ACTIVE=new ThreadLocal<>();
     public static void tick(Observer altar,Object event,ServerLevel level,E6bRitualCatalog.JawrOutput proof,Runnable action){
         Scope outer=ACTIVE.get();
         if(outer!=null){ACTIVE.remove();try{action.run();}finally{ACTIVE.set(outer);}return;}
         if(altar==null||event==null||level==null||proof==null){action.run();return;}
-        Scope scope=new Scope(altar,event,level,proof);
+        Scope scope=new Scope(altar,event,level,proof,new Outputs());
         long time=level.getDayTime();boolean rain=level.getLevelData().isRaining(),thunder=level.getLevelData().isThundering();
         ACTIVE.set(scope);
         try{
@@ -169,17 +174,83 @@ public final class JawrRitualOutput {
         Integer after=before==null?null:wolfBefore(target);
         if(after!=null&&after>before&&after>0)ACTIVE.get().altar().tmm$markJawrOutput();
     }
+    /** Actual native floating item initialization. Never inspect unrelated dropped items. */
+    public static void initializedItem(Object event,Object holder,ItemStack offered){
+        Scope s=ACTIVE.get();
+        if(s==null||s.event()!=event||!(holder instanceof Entity e)||offered==null||offered.isEmpty()
+            ||!e.getClass().getName().equals("dev.sterner.witchery.content.entity.FloatingItemEntity"))return;
+        s.outputs().stacks.put(e,offered.copy());
+    }
+    private static ItemStack actualStack(Scope s,Entity entity){
+        ItemStack initialized=s.outputs().stacks.remove(entity);
+        if(initialized!=null){
+            Object nativeValue=MxpReflect.call(entity,"getItem");
+            if(nativeValue instanceof ItemStack actual&&(!ItemStack.isSameItemSameComponents(actual,initialized)||actual.getCount()!=initialized.getCount()))return ItemStack.EMPTY;
+            return initialized;
+        }
+        return entity instanceof ItemEntity item?item.getItem():ItemStack.EMPTY;
+    }
+    private static java.util.UUID pairId(ItemStack stack){
+        try{
+            Object companion=MxpReflect.field(Class.forName("dev.sterner.witchery.content.item.MirrorItem"),"Companion");
+            return MxpReflect.call(companion,"getPairId",stack) instanceof java.util.UUID id?id:null;
+        }catch(ClassNotFoundException|LinkageError ignored){return null;}
+    }
+    private static boolean contractOwner(ItemStack stack,java.util.UUID actor){
+        try{
+            Object registry=MxpReflect.field(Class.forName("dev.sterner.witchery.core.registry.WitcheryDataComponents"),"INSTANCE");
+            Object holder=MxpReflect.call(registry,"getPLAYER_UUID_ORDERED_LIST"),raw=MxpReflect.call(holder,"get");
+            if(!(raw instanceof net.minecraft.core.component.DataComponentType<?> component)||!(stack.get(component) instanceof List<?> entries))return false;
+            return entries.stream().anyMatch(pair->actor.equals(MxpReflect.call(pair,"getFirst")));
+        }catch(ClassNotFoundException|LinkageError ignored){return false;}
+    }
+    private static void mirrorAccepted(Scope scope,Entity entity,ItemStack stack){
+        if(!scope.proof().output().equals(scope.event().getClass().getName())||stack.isEmpty()||!scope.outputs().accepted.add(entity.getUUID()))return;
+        String id=BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        if(!id.equals("witchery:mirror")&&!id.equals("witchery:demonic_contract"))return;
+        var pair=pairId(stack);if(pair==null)return;
+        int[] counts=scope.outputs().mirrors.computeIfAbsent(pair,k->new int[2]);
+        if(id.equals("witchery:mirror"))counts[0]=Math.min(2,counts[0]+stack.getCount());
+        else if(contractOwner(stack,scope.altar().tmm$jawrActor()))counts[1]=1;
+        if(counts[0]>=2&&counts[1]==1)scope.altar().tmm$markJawrOutput();
+    }
+    /** Only the exact nested spectral binding child of the active native parallel event. */
+    public static void child(Object parent,Object event,Object context,Runnable original){
+        Scope s=ACTIVE.get();
+        if(s==null||s.event()!=parent||s.proof().kind()!=E6bRitualCatalog.Kind.SPECTRAL||
+            event==null||!s.proof().output().equals(event.getClass().getName())||
+            !(MxpReflect.call(parent,"getEvents") instanceof List<?> children)||children.stream().noneMatch(e->e==event)||
+            MxpReflect.call(context,"getEntity")!=s.altar()||MxpReflect.call(context,"getLevel")!=s.level()){
+            original.run();return;
+        }
+        ACTIVE.set(new Scope(s.altar(),event,s.level(),s.proof(),s.outputs()));
+        try{original.run();}finally{ACTIVE.set(s);}
+    }
+    public static void spectralChain(net.minecraft.world.level.Level world,Entity chain,boolean accepted){
+        Scope s=ACTIVE.get();
+        if(!accepted||s==null||s.level()!=world||s.proof().kind()!=E6bRitualCatalog.Kind.SPECTRAL||
+            !s.proof().output().equals(s.event().getClass().getName())||chain==null||
+            !chain.getClass().getName().equals("dev.sterner.witchery.content.entity.ChainEntity")||
+            s.level().getEntity(chain.getUUID())!=chain)return;
+        Object target=MxpReflect.call(chain,"getTargetEntity");
+        Object raw=MxpReflect.field(s.event(),"entityToEffigyMap");
+        if(!(target instanceof LivingEntity living)||living instanceof Player||!(raw instanceof java.util.Map<?,?> map)||
+            !(map.get(living.getUUID()) instanceof net.minecraft.core.BlockPos pos))return;
+        var effigy=s.level().getBlockEntity(pos);
+        if(effigy!=null&&effigy.getClass().getName().equals("dev.sterner.witchery.content.block.effigy.EffigyBlockEntity"))s.altar().tmm$markJawrOutput();
+    }
     public static void spawned(Object event,ServerLevel level,Entity entity,boolean accepted){
         Scope s=ACTIVE.get();
         if(!accepted||s==null||s.event()!=event||s.level()!=level||entity==null)return;
         var proof=s.proof();
+        ItemStack stack=actualStack(s,entity);
+        if(proof.kind()==E6bRitualCatalog.Kind.MIRROR_PAIR){mirrorAccepted(s,entity,stack);return;}
         if(proof.kind()==E6bRitualCatalog.Kind.EVENT_SPAWN&&entity instanceof net.minecraft.world.entity.animal.Animal&&eventMatches(event,level)){
             s.altar().tmm$markJawrOutput();
         }else if(proof.kind()==E6bRitualCatalog.Kind.EVENT_MUTATION&&eventMatches(event,level)&&event.getClass().getName().endsWith(".RotRitualEvent")
             &&(entity instanceof ItemEntity||entity instanceof LivingEntity&&!(entity instanceof Player))){
             s.altar().tmm$markJawrOutput();
-        }else if(proof.kind()==E6bRitualCatalog.Kind.OWNER_ITEM&&entity instanceof ItemEntity item){
-            ItemStack stack=item.getItem();
+        }else if(proof.kind()==E6bRitualCatalog.Kind.OWNER_ITEM&&!stack.isEmpty()){
             if(stack.isEmpty()||!proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString())
                 ||!"dev.sterner.witchery.content.ritual_event.SummonItemWithOwnerRitualEvent".equals(event.getClass().getName())
                 ||!"minecraft:profile".equals(String.valueOf(MxpReflect.call(event,"getOwnerComponentId"))))return;
@@ -191,8 +262,7 @@ public final class JawrRitualOutput {
             ItemStack base=stack.copy();base.remove(net.minecraft.core.component.DataComponents.PROFILE);
             if(MxpReflect.call(event,"getItems") instanceof List<?> offered)for(Object expected:offered)
                 if(expected instanceof ItemStack e&&base.getCount()>=e.getCount()&&ItemStack.isSameItemSameComponents(base,e)){s.altar().tmm$markJawrOutput();return;}
-        }else if(proof.kind()==E6bRitualCatalog.Kind.ITEM&&entity instanceof ItemEntity item){
-            ItemStack stack=item.getItem();
+        }else if(proof.kind()==E6bRitualCatalog.Kind.ITEM&&!stack.isEmpty()){
             if(stack.isEmpty()||!proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()))return;
             if(!(MxpReflect.call(event,"getItems") instanceof List<?> offered))return;
             for(Object expected:offered)if(expected instanceof ItemStack e&&stack.getCount()>=e.getCount()&&ItemStack.isSameItemSameComponents(stack,e)){
