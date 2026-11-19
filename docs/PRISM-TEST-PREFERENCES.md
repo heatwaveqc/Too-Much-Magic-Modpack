@@ -47,3 +47,7 @@ Public packwiz will continue distributing approved mod configs only. Public user
 ## Default Options and temporary KeySets trial (2026-11-16)
 
 A one-time **fresh-player** test of Default Options' all-modded-unbound defaults must use a newly empty temporary local QA profile via `TMM_QA_PROFILE_DIR`. Our existing QA importer deliberately preserves previously chosen `key_*` mappings and therefore masks the untouched-player baseline. NEVER delete the normal user's profile or reset established bindings. The authoritative trial plan, export-based generator, and single-run KeySets KEEP/REMOVE gate are in [the targeted client QA guide](qa/DEFAULT-OPTIONS-KEYSETS-ONE-BUILD-2026-11-16.md).
+
+## Next unstable QA acceptance (2026-11-19)
+
+Record two separate client observations: fresh import shows neither vanilla tutorial nor narrator welcome; importing prior personal preferences still preserves narrator choice and configured keys but does not restore the old tutorial step. Do not mark these gameplay/client checks passed from offline packaging tests. Public release exclusion above remains mandatory.
