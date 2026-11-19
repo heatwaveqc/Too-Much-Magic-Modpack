@@ -95,7 +95,7 @@ class TestBountifulCompiler(unittest.TestCase):
         r["registered_items"]+=["minecraft:golden_carrot","minecraft:carrot"]
         r["effective_emc"].update({"minecraft:golden_carrot":100,"minecraft:carrot":16})
         r["approved_reward_items"].append("minecraft:golden_carrot")
-        r["approved_entries"]={"farming":{"rewards":[{"item":"minecraft:bread","min":1,"max":2,"rarity":"COMMON"},{"item":"minecraft:golden_carrot","min":1,"max":1,"rarity":"UNCOMMON"}],"objectives":[{"item":"minecraft:wheat","min":1,"max":256},{"item":"minecraft:carrot","min":1,"max":64}]}}
+        r["approved_entries"]={"farming":{"rewards":[{"item":"minecraft:bread","min":1,"max":2,"rarity":"COMMON"},{"item":"minecraft:golden_carrot","min":1,"max":1,"rarity":"UNCOMMON"}],"objectives":[{"item":"minecraft:wheat","min":1,"max":180},{"item":"minecraft:carrot","min":1,"max":64}]}}
         files=m.compile_candidate(C,A,r)
         cfg=json.loads(files["config/bountiful/bountiful.json"])["bounty"]
         self.assertEqual(cfg["fillerDifficultyModifierPercent"],75)
