@@ -16,12 +16,16 @@ class RegistryTest(unittest.TestCase):
 
     def test_complete_projection(self):
         self.assertEqual(1763, len(self.data["entities"]))
-        self.assertEqual(19, len(self.tags))
+        self.assertEqual(21, len(self.tags))
         self.assertEqual(475, len(self.ids("hunt_eligible.json")))
         self.assertEqual(1219, len(self.ids("hunt_excluded.json")))
         self.assertTrue(self.ids("hunt_eligible.json").isdisjoint(self.ids("hunt_excluded.json")))
         self.assertEqual(69, len(set(self.data["entities"]) - self.ids("hunt_eligible.json") - self.ids("hunt_excluded.json")))
-        self.assertEqual(56, len(self.ids("boss_generic_death_excluded.json")))
+        self.assertEqual(58, len(self.ids("boss_generic_death_excluded.json")))
+        self.assertEqual(56, len(self.ids("bosses.json")))
+        self.assertEqual(20, len(self.ids("minibosses.json")))
+        self.assertIn("minecraft:ender_dragon", self.ids("bosses.json") & self.ids("boss_generic_death_excluded.json"))
+        self.assertIn("draconicevolution:draconic_guardian", self.ids("boss_generic_death_excluded.json"))
 
     def test_overlapping_membership_and_independent_policy(self):
         self.assertIn("minecraft:drowned", self.ids("undead.json") & self.ids("aquatic.json"))

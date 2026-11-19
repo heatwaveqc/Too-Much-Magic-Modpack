@@ -69,8 +69,17 @@ def boss_tags(data):
         or any(rule["consumer"] == "boss" for rule in entry.get("instance_rules", []))
     ]}}
 
+def boss_candidate_tags(data):
+    def tag(classification):
+        return {"replace": False, "values": [
+            entity_id if entity_id.startswith("minecraft:") else {"id": entity_id, "required": False}
+            for entity_id, entry in sorted(data["entities"].items())
+            if entry["boss"]["classification"] == classification
+        ]}
+    return {"bosses.json": tag("boss_candidate"), "minibosses.json": tag("miniboss_candidate")}
+
 def projections(data):
-    return {**hunter_tags(data), **family_tags(data), **boss_tags(data)}
+    return {**hunter_tags(data), **family_tags(data), **boss_tags(data), **boss_candidate_tags(data)}
 
 def compare(data, directory):
     """Read-only drift check against integration donor tags; no generated writes."""
