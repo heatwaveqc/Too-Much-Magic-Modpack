@@ -86,3 +86,5 @@ E2 shared Thrift research: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-Q
 Shared ANS Thrift source implementation: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-QUOTES.md). Two optional mixins, three immutable quote sites, native final-leg rounding and latched reprice factor; no changes to payment/refund or nominal MXP. Exact pin/runtime acceptance required; no skill activation. E3 next.
 
 E3 paid-source slice: [BATCH-E3-PAID-PROVIDERS.md](BATCH-E3-PAID-PROVIDERS.md). Native receipt adapters for Hex, Embers, Roots and Goety; Hex approved reference, Roots/Embers native first-access defaults, Goety reference disabled pending approval. Roots capacity/HUD and actual binary linkage/QA remain; no new skill activation.
+
+E4 first source pass: 3e3f69f adds Primal active wand multi-source paid receipts (disabled until reference approval), EvilCraft carried blood native actions with fixed 5000mB reference; all three quick checks green. See [BATCH-E4-PAID-PROVIDERS.md](BATCH-E4-PAID-PROVIDERS.md) and ../tools/e4_payment_abi.py for remaining exact Mahou/JAWR/Pastel static caller audit. E4 partial; no invented payment hooks or full gameplay claim.
