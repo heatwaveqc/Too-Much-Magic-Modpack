@@ -11,7 +11,8 @@
   "semantics": {
     "traits": "Nonexclusive review classifications; suffix candidate is evidence only. Never dietary or ingredient authorization.",
     "consumption": "Separate native food properties, custom use, placed feast, drink, ingredient-only, species-only; unknown until inspected.",
-    "diet_overrides": "Source observation or policy review, not an active allowance. Provider/state rules distinct."
+    "diet_overrides": "Source observation or policy review, not an active allowance. Provider/state rules distinct.",
+    "charred": "Second-stage intentionally charred food preparation; not ordinary cooked food, not charged coal or soup, not a blanket allowance. Runtime tag tmm:food/charred lists only four native outputs."
   },
   "ingredient_equivalences": {
     "status": "narrow first-pass additive tag source; runtime unverified",
@@ -473,58 +474,74 @@
     },
     "dragonsurvival:charred_meat": {
       "traits": [
-        "native_special"
+        "charred",
+        "native_special",
+        "terrestrial_meat"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941: native charred_meat smelting recipe; owner-approved 2026-11-19"
       ],
-      "review": "source_candidate",
+      "review": "owner_approved_charred_preparation_source_verified_runtime_pending",
       "consumption": "unknown",
       "diet_overrides": {
-        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "cave_native_charred_only_keep_existing_provider_rules"
       }
     },
     "dragonsurvival:charred_mushroom": {
       "traits": [
+        "charred",
+        "fungus",
         "native_special"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941: native charred_mushroom smelting recipe; owner-approved 2026-11-19"
       ],
-      "review": "source_candidate",
+      "review": "owner_approved_charred_preparation_source_verified_runtime_pending",
       "consumption": "unknown",
       "diet_overrides": {
-        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "cave_native_charred_only_keep_existing_provider_rules"
       }
     },
     "dragonsurvival:charred_seafood": {
       "traits": [
-        "native_special"
+        "charred",
+        "native_special",
+        "seafood"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941: native charred_seafood smelting recipe; owner-approved 2026-11-19"
       ],
-      "review": "source_candidate",
+      "review": "owner_approved_charred_preparation_source_verified_runtime_pending",
       "consumption": "unknown",
       "diet_overrides": {
-        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "cave_native_charred_only_keep_existing_provider_rules"
       }
     },
     "dragonsurvival:charred_vegetable": {
       "traits": [
-        "native_special"
+        "charred",
+        "native_special",
+        "vegetable"
       ],
       "evidence": [
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
-        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941: native charred_vegetable smelting recipe; owner-approved 2026-11-19"
       ],
-      "review": "source_candidate",
+      "review": "owner_approved_charred_preparation_source_verified_runtime_pending",
       "consumption": "unknown",
       "diet_overrides": {
-        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "cave_native_charred_only_keep_existing_provider_rules"
       }
     },
     "dragonsurvival:forest_dragon_treat": {
@@ -868,6 +885,17 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "forbidden_arcanus:edelwood_mushroom_stew_bucket": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 fungus input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "hexerei:blood_bottle": {
       "traits": [
         "blood_candidate"
@@ -905,6 +933,17 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "minecraft:baked_potato": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "minecraft:beef": {
       "traits": [
         "raw_meat"
@@ -924,6 +963,17 @@
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:beetroot_soup": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -1126,6 +1176,17 @@
         "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
       }
     },
+    "minecraft:dried_kelp_block": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "minecraft:enchanted_golden_apple": {
       "traits": [
         "fruit"
@@ -1229,6 +1290,17 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "minecraft:mushroom_stew": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 fungus input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "minecraft:mutton": {
       "traits": [
         "raw_meat"
@@ -1300,6 +1372,17 @@
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:pumpkin_pie": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "existing_grain_filter_target",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -1406,6 +1489,17 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "minecraft:suspicious_stew": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 fungus input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "minecraft:sweet_berries": {
       "traits": [
         "berry"
@@ -1486,6 +1580,105 @@
         "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedarrowrootitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedcassavaitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedjicamaitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedparsnipitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedrutabagaitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedsweetpotatoitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedtaroitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedturnipitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bakedwaterchestnutitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -1984,6 +2177,105 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "pamhc2crops:roastedgarlicitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedkohlrabiitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedleekitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedmushroomitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 fungus input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedonionitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedpeanutitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedradishitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedrhubarbitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:roastedscallionitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "pamhc2crops:rutabagaitem": {
       "traits": [
         "vegetable_candidate"
@@ -2149,6 +2441,17 @@
       "consumption": "unknown",
       "diet_overrides": {}
     },
+    "pamhc2foodcore:butteredbakedpotatoitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
     "pamhc2foodcore:butteritem": {
       "traits": [
         "dairy"
@@ -2157,6 +2460,17 @@
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:chickennuggetitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "existing_grain_filter_target",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -2245,6 +2559,17 @@
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:friedchickenitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -2366,6 +2691,105 @@
         "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:bakedvegetablemedlyitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofabbititem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofaconitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofeakitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofickenitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofishitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:cookedtofuttonitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:loadedbakedpotatoitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodextended:roastedsunflowerseedsitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -2531,6 +2955,17 @@
         "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
       ],
       "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:loadedbakedpotatoitem": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 vegetable input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "composition_or_container_review",
       "consumption": "unknown",
       "diet_overrides": {}
     },
@@ -2799,6 +3234,17 @@
         "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
         "policy": "explicit_magic_exception_candidate_preserve_native_cost"
       }
+    },
+    "twilightforest:meef_stroganoff": {
+      "traits": [
+        "char_input_candidate"
+      ],
+      "evidence": [
+        "Dragon Survival c1c6b7b99f6ed097a35fc98c9b99bd16993af941 fungus input tag; installed namespace only, ID not confirmed"
+      ],
+      "review": "candidate_native_input_verify_pin",
+      "consumption": "unknown",
+      "diet_overrides": {}
     },
     "twilightforest:raw_meef": {
       "traits": [
