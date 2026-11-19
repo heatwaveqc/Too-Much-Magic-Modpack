@@ -54,7 +54,9 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/bind_familiar",new JawrOutput("dev.sterner.witchery.content.ritual_event.BindFamiliarRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/resurrect_familiar",new JawrOutput("dev.sterner.witchery.content.ritual_event.ResurrectFamiliarRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_EXCEPTIONAL)),
         Map.entry("witchery:ritual/teleport_owner_to_waystone",new JawrOutput("tp {owner} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_BASIC)),
-        Map.entry("witchery:ritual/teleport_taglock_to_waystone",new JawrOutput("tp {taglockPlayerOrEntity} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_MAJOR))
+        Map.entry("witchery:ritual/teleport_taglock_to_waystone",new JawrOutput("tp {taglockPlayerOrEntity} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/push_mobs",new JawrOutput("dev.sterner.witchery.content.ritual_event.PushMobsRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/pull_mobs",new JawrOutput("dev.sterner.witchery.content.ritual_event.PullMobsRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_BASIC))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);
@@ -64,6 +66,9 @@ public final class E6bRitualCatalog {
     }
     private static void add(Map<String,RitualRewards.Rule> out,String id,Band band){
         if(out.putIfAbsent(id,new RitualRewards.Rule(id,band))!=null)throw new IllegalStateException("Duplicate ritual "+id);
+    }
+    public static boolean routineJawr(String id){
+        return "witchery:ritual/charge_attuned".equals(id)||"witchery:ritual/rite_of_charging_infusion".equals(id);
     }
     public static JawrOutput jawr(String id){return id==null?null:JAWR.get(id);}
     public static boolean totemic(String id){return id!=null&&id.startsWith("totemic:")&&RitualRewards.lookup(id)!=null;}

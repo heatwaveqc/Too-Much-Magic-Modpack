@@ -94,7 +94,13 @@
     "EnchantedEclipseEffectMixin",
     "EnchantedSkyWrathEffectMixin",
     "EnchantedFamiliarBindEffectMixin",
-    "EnchantedFamiliarSummonEffectMixin"
+    "EnchantedFamiliarSummonEffectMixin",
+    "EnchantedMovementEffectMixin",
+    "EnchantedTeleportEffectMixin",
+    "EnchantedForestEffectMixin",
+    "EnchantedBroilingEffectMixin",
+    "EnchantedProtectionEffectMixin",
+    "JawrMovementRitualMixin"
   ],
   "injectors": {
     "defaultRequire": 0

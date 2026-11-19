@@ -37,7 +37,22 @@ public final class E6bSpawnCatalog {
         Map.entry("enchanted:fertility_charged",new Proof("enchanted:fertility","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.FertilityRite",false,1,Band.CIRCLE_MAJOR)),
         Map.entry("enchanted:transpose_iron",new Proof("enchanted:transpose_blocks","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TransposeBlocksRite",false,1,Band.CIRCLE_MAJOR)),
         Map.entry("enchanted:bind_familiar",new Proof("enchanted:familiar_bind","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindFamiliarRite",false,1,Band.CIRCLE_EXCEPTIONAL)),
-        Map.entry("enchanted:summon_familiar",new Proof("enchanted:familiar_summon","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SummonFamiliarRite",false,1,Band.CIRCLE_BASIC))
+        Map.entry("enchanted:summon_familiar",new Proof("enchanted:familiar_summon","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SummonFamiliarRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:broiling",new Proof("enchanted:broiling","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BroilingRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:broiling_charged",new Proof("enchanted:broiling","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BroilingRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:forest",new Proof("enchanted:forest","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ForestRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:imprisonment",new Proof("enchanted:movement","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ImprisonmentRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:sanctity",new Proof("enchanted:movement","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SanctityRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:protection",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:protection_large",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:protection_large_waystone",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionWaystoneRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:protection_temporary",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:protection_temporary_blooded",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionEntityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:protection_temporary_waystone",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionWaystoneRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:protection_waystone",new Proof("enchanted:protection","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ProtectionWaystoneRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:summon_entity",new Proof("enchanted:teleport","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SummonEntityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:transpose_caster",new Proof("enchanted:teleport","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TransposeCasterWaystoneRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:transpose_caster_blooded",new Proof("enchanted:teleport","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TransposeCasterEntityRite",false,1,Band.CIRCLE_MAJOR))
     );
     private static final Map<String,Proof> EIDOLON=Map.ofEntries(
         Map.entry("eidolon_repraised:rituals/brazier_craft_sanguine_amulet",new Proof("eidolon_repraised:sanguine_amulet","alexthw.eidolon_repraised.common.ritual.CraftingRitual",true,1,Band.EIDOLON_MAJOR)),
@@ -69,6 +84,9 @@ public final class E6bSpawnCatalog {
     }
     private static void add(Map<String,RitualRewards.Rule> out,String id,Proof p){
         if(out.putIfAbsent(id,new RitualRewards.Rule(id,p.band()))!=null)throw new IllegalStateException("Duplicate ritual "+id);
+    }
+    public static boolean routineEnchanted(String id){
+        return "enchanted:duplicate_waystone".equals(id)||"enchanted:duplicate_waystone_charged".equals(id);
     }
     public static boolean enchantedEffect(Proof p){
         return p!=null&&(enchantedCurse(p)||(!p.item()&&p.nativeClass().startsWith("net.favouriteless.enchanted.common.enchanted.circle_magic.rites.")));

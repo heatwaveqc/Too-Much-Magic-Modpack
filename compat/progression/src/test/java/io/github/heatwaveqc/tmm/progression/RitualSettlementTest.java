@@ -50,7 +50,7 @@ class RitualSettlementTest {
     }
     @Test void e6bIndependentNativeRecipes(){
         assertEquals(14,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("totemic:")).count());
-        assertEquals(46,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("witchery:")).count());
+        assertEquals(48,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("witchery:")).count());
         assertEquals(1200,RitualRewards.lookup("totemic:war_dance").band().first());
         assertEquals(2200,RitualRewards.lookup("totemic:rain").band().first());
         assertEquals(3500,RitualRewards.lookup("totemic:baykok_summon").band().first());
@@ -63,7 +63,7 @@ class RitualSettlementTest {
         assertEquals(2000,RitualRewards.lookup("witchery:ritual/set_midnight").band().first());
     }
     @Test void enchantedAndEidolonUseDistinctNativeCatalogs(){
-        assertEquals(30,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
+        assertEquals(45,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
         assertEquals(22,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
         assertNotEquals(RitualRewards.lookup("enchanted:infuse_broom").family(),RitualRewards.lookup("witchery:ritual/apply_ointment").family());
         assertNotEquals(RitualRewards.lookup("enchanted:curse_misfortune").family(),RitualRewards.lookup("witchery:ritual/curse_of_misfortune").family());
