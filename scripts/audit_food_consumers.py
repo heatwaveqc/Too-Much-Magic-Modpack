@@ -130,7 +130,7 @@ def main():
     index=json.loads(a.overlay.read_text())
     records=[]
     for shard in index["shards"]:
-        pp=a.overlay.parent.parent.parent/shard["path"]
+        pp=a.overlay.parents[3]/shard["path"]
         chunk=[json.loads(x) for x in pp.read_text().splitlines() if x]
         if len(chunk)!=shard["count"]:raise ValueError("shard count mismatch "+str(pp))
         records.extend(chunk)
