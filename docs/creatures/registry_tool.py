@@ -57,6 +57,15 @@ def family_tags(data):
         if f in entry["taxonomy"]["families"]
     ]} for f in families}
 
+def capture_tag(data):
+    """Pack-added denials; native rules and instance checks are separate."""
+    return {"replace": False, "values": [
+        entity_id if entity_id.startswith("minecraft:") else {"id": entity_id, "required": False}
+        for entity_id, entry in sorted(data["entities"].items())
+        if entry["capture"]["disposition"] in {"blacklist_target", "approved_misc_default_deny"}
+    ]}
+
+
 def boss_tags(data):
     """Type-only death is insufficient for these encounters and derivatives."""
     non_independent = {"boss_derivative_no_credit", "passive_boss_conversion",
@@ -103,7 +112,7 @@ def show(data, entity_id):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["validate", "hunter-tags", "family-tags", "all-tags", "compare-tags", "show", "holds"])
+    parser.add_argument("command", choices=["validate", "hunter-tags", "family-tags", "capture-tag", "all-tags", "compare-tags", "show", "holds"])
     parser.add_argument("entity_id", nargs="?")
     parser.add_argument("--tag-dir", type=Path)
     args = parser.parse_args()
@@ -119,6 +128,8 @@ def main():
         result = hunter_tags(data)
     elif args.command == "family-tags":
         result = family_tags(data)
+    elif args.command == "capture-tag":
+        result = capture_tag(data)
     elif args.command == "all-tags":
         result = projections(data)
     elif args.command == "compare-tags":
