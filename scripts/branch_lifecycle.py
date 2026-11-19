@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -199,6 +200,7 @@ def validate_manifest(path, raw):
             ".." in name or "//" in name or name.endswith(("/", ".")) or
             any(part.startswith(".") or part.endswith(".lock") for part in name.split("/")) or
             not SHA.fullmatch(sha) or
+            type(row.get("archive_history", False)) is not bool or
             not isinstance(row.get("reason"), str) or not row["reason"].strip() or
             not isinstance(row.get("evidence"), list) or not row["evidence"] or
             any(not isinstance(link, str) or not link.startswith("https://github.com/" + REPO + "/") for link in row["evidence"])):
@@ -302,6 +304,29 @@ def console():
     retire(path, digest, nonce is not None)
 
 
+def preserve_history(entry):
+    """Preserve an exact reviewed tip as a lightweight tag; never update it."""
+    sha = entry["sha"]
+    ref = "refs/tags/archive/retired/" + sha
+    endpoint = "/git/ref/tags/archive/retired/" + sha
+    try:
+        existing = api(endpoint)
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404:
+            raise
+        # Atomic create-only API. Failed/uncertain create stops the batch.
+        existing = api("/git/refs", method="POST", data={"ref": ref, "sha": sha})
+    if (existing.get("ref") != ref or existing.get("object", {}).get("sha") != sha or
+            existing.get("object", {}).get("type") != "commit"):
+        raise ValueError("archive tag does not point to exact approved commit: " + ref)
+    # Verify the remote ref (not only the response of a create operation).
+    verified = api(endpoint)
+    if (verified.get("ref") != ref or verified.get("object", {}).get("sha") != sha or
+            verified.get("object", {}).get("type") != "commit"):
+        raise ValueError("archive tag verification failed: " + ref)
+    report(["Preserved original commit: " + ref + " @ " + sha])
+
+
 def retire(path, digest, execute):
     raw = Path(path).read_bytes() if BATCH.fullmatch(path) else b""
     actual_digest = hashlib.sha256(raw).hexdigest()
@@ -339,8 +364,16 @@ def retire(path, digest, execute):
         if reason:
             status = "SKIP"
         elif not execute:
-            status, reason = "READY", "dry run only"
+            status, reason = "READY", "dry run only" + ("; archive exact commit before deletion" if entry.get("archive_history") else "")
         else:
+            if entry.get("archive_history"):
+                preserve_history(entry)
+                # Tag and branch deletion are separate API/Git transactions.
+                # Re-evaluate live dependencies and the exact tip after preservation.
+                reason = hold_reason(entry, *snapshot())
+                if reason:
+                    lines.append(f"| {name} | SKIP | {reason}; original commit archived |")
+                    continue
             ref = "refs/heads/" + name
             result = subprocess.run(["git", "push", "--force-with-lease=" + ref + ":" + sha,
                                      "origin", ":" + ref], capture_output=True, text=True)
