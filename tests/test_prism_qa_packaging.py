@@ -118,6 +118,8 @@ def main() -> None:
                 assert "mmc-pack.json" in z.namelist()
                 expected = {
                     "minecraft/options.txt",
+                    "minecraft/tmm-qa-install-verify.ps1",
+                    "minecraft/tmm-qa-expected-mods.json",
                     "minecraft/tmm-qa-preferences.ps1",
                     "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd",
                 }
@@ -133,7 +135,10 @@ def main() -> None:
                 cfg = z.read("instance.cfg").decode()
                 assert "PreLoadCommand=powershell.exe " in cfg
                 assert "PostExitCommand=powershell.exe " in cfg
-                assert 'PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar' in cfg
+                assert 'PreLaunchCommand=powershell.exe ' in cfg and "tmm-qa-install-verify.ps1" in cfg
+                from verify_qa_inventory import inventory, for_side
+                expected_mods = json.loads(z.read("minecraft/tmm-qa-expected-mods.json"))
+                assert expected_mods == {"schema": 1, "source_commit": commit, "mods": for_side(inventory(ROOT), "client", addons)}
                 assert "raw.githubusercontent.com" in cfg and commit in cfg
                 meta = json.loads(z.read("BUILD-MANIFEST.json"))
                 assert meta["personal_settings"]["public_release"] is False
