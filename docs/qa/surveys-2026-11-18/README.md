@@ -58,3 +58,7 @@ From a compatible checkout, with the same installed instance and existing world 
 5. Remove the temporary probe after capture. Do not package it as a gameplay feature. No saves, player identifiers, raw logs, JARs, textures or upstream recipe payloads from the static scan are published.
 
 Python syntax checks were run. Successful live probe execution and dataset counts/errors are recorded in summary.json. No automatic full smoke or test package was dispatched.
+
+## Integration handoff (2026-11-19)
+
+Preserve the frozen survey datasets from the original capture commit `fa869c43a685241d4d9b48e7d2b89d019c321856` unmodified. Consumers #320/#326 (economy), #353 (taxonomy) and #347 (Progression) must cite the installed build identity and dataset, not interpret this merge as a new census. Merging this research does not activate the temporary probe or resolve its stated coverage limitations.
