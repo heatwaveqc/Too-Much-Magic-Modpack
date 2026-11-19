@@ -12,6 +12,7 @@ class TestBountifulDistribution(unittest.TestCase):
         contents=json.loads((ROOT/"config/ProjectE/custom_emc.json").read_text())
         self.assertEqual({x["id"]:x["emc"] for x in contents["entries"]},{"bountiful:decree":0,"bountiful:bounty":0})
         self.assertNotIn("bountiful:bountyboard",{x["id"] for x in contents["entries"]})
+        self.assertEqual(json.loads((ROOT/"config/bountiful/bountiful.json").read_text())["board"]["villageGenFrequency"],0)
         pol=json.loads((ROOT/"manifest/emc-coverage-policy.json").read_text())
         self.assertEqual(set(pol["non_transmutable_document_exceptions"]),{"bountiful:decree","bountiful:bounty"})
     def test_packwiz_hashes(self):
@@ -20,7 +21,7 @@ class TestBountifulDistribution(unittest.TestCase):
         expected=re.search(r'hash = "([0-9a-f]{64})"',pack).group(1)
         self.assertEqual(hashlib.sha256(ix).hexdigest(),expected)
         data=ix.decode()
-        for name in ("config/ProjectE/custom_emc.json","kubejs/data/tmm/questshop/shop_entries/supplies.json"):
+        for name in ("config/ProjectE/custom_emc.json","config/bountiful/bountiful.json","kubejs/data/tmm/questshop/shop_entries/supplies.json"):
             rows=[s for s in data.split("[[files]]") if f'file = "{name}"' in s]
             self.assertEqual(len(rows),1)
             h=re.search(r'hash = "([0-9a-f]{64})"',rows[0]).group(1)

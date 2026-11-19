@@ -21,6 +21,10 @@ file = "config/astralsorcery-client.toml"
 hash = "e556d8de1e028ec2ad58b254ef82cbf181769a1f236700ff1fb8624fb705618e"
 
 [[files]]
+file = "config/bountiful/bountiful.json"
+hash = "3d10b2b993c47d70c161625ac2ccd65de0f21134a1ed41ac43ed78c6327619a3"
+
+[[files]]
 file = "config/defaultoptions/keybindings.txt"
 hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
 
