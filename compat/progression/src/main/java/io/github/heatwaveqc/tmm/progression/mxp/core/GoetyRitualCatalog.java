@@ -21,6 +21,7 @@ public final class GoetyRitualCatalog {
         return Map.copyOf(out);
     }
     private static void base(Map<String,Entry> out){
+        add(out,"goety:summon_storm","goety:summon/goety/storm_util",Band.GOETY_BASIC,Kind.SUMMON,"goety:summon","goety:storm_util",1,"sky",1,10,2,"","","",0);
         add(out,"goety:abyss_crown","goety:craft/goety/abyss_crown",Band.GOETY_ADVANCED,Kind.ITEM,"goety:craft","goety:abyss_crown",1,"deep",1,10,8,"","","",0);
         add(out,"goety:abyss_robe","goety:craft/goety/abyss_robe",Band.GOETY_ADVANCED,Kind.ITEM,"goety:craft","goety:abyss_robe",1,"deep",5,10,5,"","","",0);
         add(out,"goety:abyss_staff","goety:craft/goety/abyss_staff",Band.GOETY_ADVANCED,Kind.ITEM,"goety:craft","goety:abyss_staff",1,"deep",1,10,8,"","","",0);
@@ -435,6 +436,6 @@ public final class GoetyRitualCatalog {
     }
     public static Entry lookup(String id){return id==null?null:ENTRIES.get(id);}
     public static Map<String,Entry> entries(){return ENTRIES;}
-    public static Map<String,String> excluded(){return Map.of("goety:summon_apostle","Boss preparation","goety:summon_apostle2","Boss preparation","goety:summon_storm","Deferred actual weather outcome");}
+    public static Map<String,String> excluded(){return Map.of("goety:summon_apostle","Boss preparation","goety:summon_apostle2","Boss preparation");}
     public static void addTo(Map<String,RitualRewards.Rule> out){ENTRIES.forEach((id,e)->{if(out.putIfAbsent(id,e.rule())!=null)throw new IllegalStateException("Duplicate ritual "+id);});}
 }

@@ -40,7 +40,7 @@ with tempfile.TemporaryDirectory() as d:
                             actual[recipe]=obj
                         else: old_count+=1
                         print("RECIPE",key,n,json.dumps(obj,separators=(",",":")),flush=True)
-                elif n.endswith(".class") and not n.startswith("META-INF/") and (re.search(r"/(?:DarkAltarBlock(?:Entity)?|RitualRecipe|Ritual|RitualRequirements|RitualType|RitualTypes|(?:\w+)Ritual)\.class$",n) or (key=="goety_cataclysm" and "ritual" in n.lower())):
+                elif n.endswith(".class") and not n.startswith("META-INF/") and (re.search(r"/(?:DarkAltarBlock(?:Entity)?|StormEntity|RitualRecipe|Ritual|RitualRequirements|RitualType|RitualTypes|(?:\w+)Ritual)\.class$",n) or (key=="goety_cataclysm" and "ritual" in n.lower())):
                     classes.append(n[:-6].replace("/","."))
             print("COUNTS",key,json.dumps(counts),flush=True)
             print("CLASSES",key,json.dumps(classes),flush=True)
@@ -54,6 +54,7 @@ with tempfile.TemporaryDirectory() as d:
                 "SummonRitual":("Method createSummonedEntity:","Method net/minecraft/world/level/Level.addFreshEntity:"),
                 "ConvertRitual":("Method com/Polarice3/Goety/utils/MobUtil.convertTo:",),
                 "EnchantItemRitual":("Method net/minecraft/world/item/enchantment/EnchantmentHelper.getEnchantmentsForCrafting:",),
+                "StormEntity":("Method net/minecraft/server/level/ServerLevel.setWeatherParameters:(IIZZ)V","Method discard:()V"),
                 "TeleportRitual":("Method net/minecraft/world/entity/player/Player.teleportTo:(DDD)V",),
             }.get(cls.rsplit(".",1)[-1],())
             for token in expected: assert token in out,(cls,token)
@@ -79,5 +80,5 @@ for row in re.findall(r'add\(out,"([^"]+)","[^"]+",Band\.GOETY_\w+,Kind\.(\w+),"
     native_out={"ITEM":lambda:obj["result"]["id"],"ENCHANT":lambda:obj["enchantment"],"LOCATE":lambda:obj["structure_to_locate"]["tag"],"TELEPORT":lambda:"goety:waystone","CONVERT":lambda:obj["entity_to_convert_into"],"SUMMON":lambda:obj["entity_to_summon"]}[native_kind]()
     assert kind==native_kind
     assert mapped[key]==(native_type,native_out,obj["result"].get("count",1) if kind=="ITEM" else 1,obj["craftType"],obj["soulCost"],obj["duration"],len(obj["ingredients"]),obj.get("research",""),obj.get("entity_to_sacrifice",{}).get("tag",""),obj.get("entity_to_convert",{}).get("tag",""),obj.get("xpLevelCost",0)),key
-assert len(mapped)==406 and set(actual)-set(mapped)=={"goety:summon_apostle","goety:summon_apostle2","goety:summon_storm"}
+assert len(mapped)==407 and set(actual)-set(mapped)=={"goety:summon_apostle","goety:summon_apostle2"}
 print("CATALOG_MATCH",len(mapped),"EXCLUDED_OR_HELD",len(actual)-len(mapped),"LEGACY_IGNORED",old_count,flush=True)

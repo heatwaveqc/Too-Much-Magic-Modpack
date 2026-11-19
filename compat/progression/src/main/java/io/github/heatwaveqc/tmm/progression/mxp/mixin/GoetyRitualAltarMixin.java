@@ -6,6 +6,8 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import io.github.heatwaveqc.tmm.progression.mxp.MxpMod;
 import io.github.heatwaveqc.tmm.progression.mxp.core.GoetyRitualProof;
 import io.github.heatwaveqc.tmm.progression.mxp.hooks.GoetyRitualContext;
+import io.github.heatwaveqc.tmm.progression.mxp.hooks.GoetyStormReceipt;
+import net.minecraft.world.entity.Entity;
 import io.github.heatwaveqc.tmm.progression.mxp.hooks.MxpPlayerPolicy;
 import io.github.heatwaveqc.tmm.progression.mxp.hooks.RitualSettlement;
 import net.minecraft.core.BlockPos;
@@ -34,6 +36,7 @@ public abstract class GoetyRitualAltarMixin {
     @Unique private static final String TMM_GOETY="tmm_progression_goety_ritual";
     @Unique private GoetyRitualProof tmm$op,tmm$pending;
     @Unique private boolean tmm$stopping;
+    @Unique private Entity tmm$delayed;
     @Unique private String tmm$id(){return GoetyRitualContext.currentId(this);}
     @Unique private UUID tmm$owner(){return GoetyRitualContext.owner(this);}
     @Unique private BlockEntity tmm$block(){return (BlockEntity)(Object)this;}
@@ -51,21 +54,23 @@ public abstract class GoetyRitualAltarMixin {
     }
     @WrapMethod(method="stopRitual(Z)V",require=0,remap=false)
     private void tmm$stop(boolean finished,Operation<Void> original){
-        if(tmm$stopping){tmm$op=null;tmm$pending=null;original.call(finished);return;}
-        tmm$stopping=true;tmm$pending=null;
+        if(tmm$stopping){tmm$op=null;tmm$pending=null;tmm$delayed=null;original.call(finished);return;}
+        tmm$stopping=true;tmm$pending=null;tmm$delayed=null;
         try{
             original.call(finished);
             var pending=tmm$pending;
             if(finished&&pending!=null&&tmm$id()==null&&tmm$owner()==null&&tmm$block().getLevel() instanceof ServerLevel world&&world.getBlockEntity(tmm$block().getBlockPos())==(Object)this){
                 ServerPlayer actor=world.getServer().getPlayerList().getPlayer(pending.actor());
-                RitualSettlement.settle(actor,pending.receipt(true,true));
+                if(tmm$delayed==null)RitualSettlement.settle(actor,pending.receipt(true,true));
+                else if(tmm$delayed instanceof GoetyStormReceipt sink&&world.getEntity(tmm$delayed.getUUID())==tmm$delayed&&MxpPlayerPolicy.eligible(actor))sink.tmm$armStorm(pending);
             }
-        }finally{tmm$stopping=false;tmm$pending=null;tmm$op=null;}
+        }finally{tmm$stopping=false;tmm$pending=null;tmm$op=null;tmm$delayed=null;}
     }
     @WrapOperation(method="stopRitual(Z)V",at=@At(value="INVOKE",target="Lcom/Polarice3/Goety/common/ritual/Ritual;finish(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lcom/Polarice3/Goety/common/blocks/entities/DarkAltarBlockEntity;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/item/ItemStack;)V"),require=0,allow=1,remap=false)
     private void tmm$nativeFinish(@Coerce Object ritual,Level level,BlockPos pos,@Coerce Object altar,Player actor,ItemStack item,Operation<Void> original){
         var op=tmm$op;tmm$op=null;
-        if(GoetyRitualContext.finish(ritual,altar,level,pos,actor,item,altar==(Object)this&&tmm$stopping?op:null,()->original.call(ritual,level,pos,altar,actor,item)))tmm$pending=op;
+        var result=GoetyRitualContext.finish(ritual,altar,level,pos,actor,item,altar==(Object)this&&tmm$stopping?op:null,()->original.call(ritual,level,pos,altar,actor,item));
+        if(result.successful()){tmm$pending=op;tmm$delayed=result.delayed();}
     }
     @Inject(method="clearRitual()V",at=@At("HEAD"),require=0,remap=false)
     private void tmm$clear(CallbackInfo ci){tmm$op=null;}
@@ -77,7 +82,7 @@ public abstract class GoetyRitualAltarMixin {
     }
     @Inject(method="loadAdditional(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V",at=@At("RETURN"),require=0,remap=false)
     private void tmm$load(CompoundTag tag,HolderLookup.Provider lookup,CallbackInfo ci){
-        tmm$op=null;tmm$pending=null;tmm$stopping=false;
+        tmm$op=null;tmm$pending=null;tmm$stopping=false;tmm$delayed=null;
         CompoundTag data=tag.getCompound(TMM_GOETY);
         if(!data.hasUUID("actor")||!data.hasUUID("operation"))return;
         var candidate=new GoetyRitualProof(data.getString("recipe"),data.getUUID("actor"),data.getUUID("operation"));

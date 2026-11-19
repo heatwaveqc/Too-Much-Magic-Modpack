@@ -96,9 +96,11 @@ public final class GoetyRitualContext {
     public static boolean eligible(Object altar,ServerLevel world){
         try{return entry(holder(altar,world),world)!=null;}catch(RuntimeException ignored){return false;}
     }
-    public static boolean finish(Object ritual,Object altar,Level level,BlockPos pos,Player player,ItemStack activation,GoetyRitualProof op,Runnable original){
+    public record Terminal(boolean successful,Entity delayed){}
+    private static final Terminal FAILED=new Terminal(false,null);
+    public static Terminal finish(Object ritual,Object altar,Level level,BlockPos pos,Player player,ItemStack activation,GoetyRitualProof op,Runnable original){
         Scope outer=ACTIVE.get();
-        if(outer!=null){outer.valid=false;ACTIVE.remove();try{original.run();}finally{ACTIVE.set(outer);}return false;}
+        if(outer!=null){outer.valid=false;ACTIVE.remove();try{original.run();}finally{ACTIVE.set(outer);}return FAILED;}
         Scope s=null;Holder<Enchantment> enchant=null;int beforeLevel=0;GlobalPos destination=null;double x=0,y=0,z=0;
         try{
             if(op!=null&&MxpMod.active()&&level instanceof ServerLevel w&&w.getBlockEntity(pos)==altar&&
@@ -122,13 +124,13 @@ public final class GoetyRitualContext {
                 }
             }
         }catch(RuntimeException ignored){s=null;}
-        if(s==null){original.run();return false;}
+        if(s==null){original.run();return FAILED;}
         ACTIVE.set(s);
         try{
             original.run();
-            if(!s.valid)return false;
+            if(!s.valid)return FAILED;
             ItemStack after=s.handler.getStackInSlot(0);
-            return switch(s.entry.kind()){
+            boolean success=switch(s.entry.kind()){
                 case ITEM,LOCATE->s.observed&&!after.isEmpty();
                 case SUMMON,CONVERT->s.observed&&after.isEmpty();
                 case ENCHANT->!after.isEmpty()&&enchant!=null&&EnchantmentHelper.getEnchantmentsForCrafting(after).getLevel(enchant)>beforeLevel;
@@ -136,6 +138,9 @@ public final class GoetyRitualContext {
                     s.actor.distanceToSqr(destination.pos().getX(),destination.pos().getY()+1.0,destination.pos().getZ())<0.0001&&
                     s.actor.distanceToSqr(x,y,z)>0.0001;
             };
+            if(!success)return FAILED;
+            if("goety:summon_storm".equals(op.recipeId()))return s.created instanceof GoetyStormReceipt?new Terminal(true,s.created):FAILED;
+            return new Terminal(true,null);
         }finally{ACTIVE.remove();}
     }
     /** Exact accepted slot insertion, including native inherited item components and map target. */
