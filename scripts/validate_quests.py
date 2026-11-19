@@ -96,7 +96,7 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 44, "Expected five groups and 44 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 188, "Expected 188 authored quests with Ars and Alcohol is Magic")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 201, "Expected 201 authored quests with Ars and Alcohol is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -114,10 +114,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 227,
-           f"Expected 227 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 240,
+           f"Expected 240 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 227 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 240 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -158,7 +158,7 @@ def main() -> None:
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 20, "Tips & Tricks": 20, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
-                    "Skills & Advancement": 8, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
+                    "Skills & Factions": 18, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
         for block in blocks:
@@ -240,13 +240,13 @@ def main() -> None:
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
             if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Alcohol is Magic", "Basic Progression",
-                                 "Advanced Progression", "Endgame Roadmap", "Skills & Advancement", "A Sufficiently Advanced Magic", "Ars Nouveau"}:
+                                 "Advanced Progression", "Endgame Roadmap", "Skills & Factions", "Artifacts", "ProjectE", "A Sufficiently Advanced Magic", "Ars Nouveau"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 227, f"Expected 227 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 240, f"Expected 240 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -299,8 +299,8 @@ def main() -> None:
            "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
     planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
-               "Skills & Advancement": 7, "A Sufficiently Advanced Magic": 13}
-    ensure(len(progression["quests"]) == 46 and progression["counts"] == planned,
+               "Skills & Factions": 17, "A Sufficiently Advanced Magic": 13}
+    ensure(len(progression["quests"]) == 56 and progression["counts"] == planned,
            "Full Progression source count or chapter distribution drift")
     ensure(all(x["criterion"]["type"] == "checkmark" for x in progression["quests"] if x["chapter"] == "Endgame Roadmap"),
            "Roadmap must not duplicate boss/material progression tasks")

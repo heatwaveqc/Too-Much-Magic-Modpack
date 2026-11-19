@@ -36,6 +36,8 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if seed.splitlines().count("onboardAccessibility:false") != 1 or any(line.startswith("narrator:") for line in seed.splitlines()):
         raise RuntimeError("Skip QA accessibility onboarding without forcing narrator preferences")
+    if seed.splitlines().count("tutorialStep:none") != 1 or sum(line.startswith("tutorialStep:") for line in seed.splitlines()) != 1:
+        raise RuntimeError("Skip vanilla tutorial toasts in fresh QA instances")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
     addons = [pathlib.Path(p) for p in runtime_jars]

@@ -5,6 +5,10 @@ file = "config/almostunified/unification/materials.json"
 hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
 
 [[files]]
+file = "config/astralsorcery-client.toml"
+hash = "e556d8de1e028ec2ad58b254ef82cbf181769a1f236700ff1fb8624fb705618e"
+
+[[files]]
 file = "config/defaultoptions/keybindings.txt"
 hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
 
@@ -42,7 +46,7 @@ hash = "7fc0c0c2a4235d5b5addb22389bd5412ae8493a1b6ef1a1345e8a8daeaebeb2c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/artifacts.snbt"
-hash = "f50762eb6a74e3af06b94c9779606480b572d496138a709b2503f833949ccd9d"
+hash = "d1995b5cee2d933a07b85e6dd45b4796b961cad8932d218d48fa87dd8ca708e6"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/astral_sorcery.snbt"
@@ -158,7 +162,7 @@ hash = "eba09d436dd8a10482eaa807a070a82ce7c8d3e11c396fb9d42ac3b74877147e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/projecte.snbt"
-hash = "b0c6c86a1e902f021c6cc5101d3697a00dedc2ba10bb5015b0cee53add74ab5e"
+hash = "c8c9cfcba65e82a4fba051d95785dcf160f2ae6c5b401398a054b31bf34c9485"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/psi.snbt"
@@ -182,7 +186,7 @@ hash = "420a37e68dd5bf081730c9becfed87d18316c5e8614013494ab96be3c538ff8f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/skills_advancement.snbt"
-hash = "6d7ccd495f1c4528b08a58a64c1c457dcfe7ccb7e9c7d79ed69d73da2afabb33"
+hash = "a8e62cecde60a12153e8a5f6e03b61af7f0366c71da280a6198078accfb8c7ee"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
@@ -202,7 +206,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "bdb409bc4b59fd5146a811711b51993dde9a16df260ef0fb8b2438cbaa3a6440"
+hash = "09e3e9f1bc22b67a27f291d9e10a7d51d25e3fd608c0a74cdafc514b7d20665a"
 
 [[files]]
 file = "config/improvableskills.cfg"

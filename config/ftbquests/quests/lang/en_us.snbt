@@ -18,8 +18,8 @@
 	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage, ritual space and exploration supplies."]
 	chapter.544D202000300000.title: "Endgame Roadmap"
 	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
-	chapter.544D202000400000.title: "Skills & Advancement"
-	chapter.544D202000400000.chapter_subtitle: ["Pufferfish skills, attributes and Improvable Skills progression."]
+	chapter.544D202000400000.title: "Skills & Factions"
+	chapter.544D202000400000.chapter_subtitle: ["Universal Core Magic and Improvable Skills; choose one specialization, with explicit combination exceptions."]
 	chapter.544D202000500000.title: "A Sufficiently Advanced Magic"
 	chapter.544D202000500000.chapter_subtitle: ["Draconic generation, energy storage, FE crystals, reactor safety and future approved technology."]
 	chapter.544D203000100000.title: "Ars Nouveau"
@@ -37,7 +37,7 @@
 	chapter.544D203000700000.title: "Forbidden & Arcanus"
 	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden & Arcanus; more quests are being authored."]
 	chapter.544D203000800000.title: "Goety"
-	chapter.544D203000800000.chapter_subtitle: ["Explore Goety; more quests are being authored."]
+	chapter.544D203000800000.chapter_subtitle: ["Dark arts, soul rituals and summoning; see Skills & Factions for lichdom."]
 	chapter.544D203000900000.title: "Hex Casting"
 	chapter.544D203000900000.chapter_subtitle: ["Explore Hex Casting; more quests are being authored."]
 	chapter.544D203000A00000.title: "Hexerei"
@@ -67,7 +67,7 @@
 	chapter.544D203001600000.title: "Totemic"
 	chapter.544D203001600000.chapter_subtitle: ["Explore Totemic; more quests are being authored."]
 	chapter.544D203001700000.title: "Just Another Witchery Remake"
-	chapter.544D203001700000.chapter_subtitle: ["Explore Just Another Witchery Remake; more quests are being authored."]
+	chapter.544D203001700000.chapter_subtitle: ["Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations."]
 	chapter.544D203001800000.title: "Embers Re-Ignited"
 	chapter.544D203001800000.chapter_subtitle: ["Explore Embers Re-Ignited; more quests are being authored."]
 	chapter.544D203001900000.title: "Reliquary Reincarnations"
@@ -83,13 +83,13 @@
 	chapter.544D204000500000.title: "Apotheosis"
 	chapter.544D204000500000.chapter_subtitle: ["Explore Apotheosis; more quests are being authored."]
 	chapter.544D204000600000.title: "Artifacts"
-	chapter.544D204000600000.chapter_subtitle: ["Explore Artifacts; more quests are being authored."]
+	chapter.544D204000600000.chapter_subtitle: ["Artifacts, Relics and Reliquified Artifacts: equipment, abilities and progression."]
 	chapter.544D204000700000.title: "Enigmatic Legacy+"
 	chapter.544D204000700000.chapter_subtitle: ["Explore Enigmatic Legacy+; more quests are being authored."]
 	chapter.544D205000100000.title: "Draconic Evolution"
 	chapter.544D205000100000.chapter_subtitle: ["Explore Draconic Evolution; more quests are being authored."]
 	chapter.544D205000200000.title: "ProjectE"
-	chapter.544D205000200000.chapter_subtitle: ["Explore ProjectE; more quests are being authored."]
+	chapter.544D205000200000.chapter_subtitle: ["EMC, Project Expansion and ProjectE Energy Converters."]
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
@@ -155,7 +155,7 @@
 	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
 	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
 	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."]
+	quest.544D502000E00000.quest_desc: ["Core Magic (Tyz's Skills) and ordinary-experience Improvable Skills 3 are available to everyone in Regular Mode. Specializations use a single exclusive choice pool with only explicit exceptions; see Skills & Factions."]
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
@@ -333,21 +333,21 @@
 	quest.544D506000600000.title: "Roadmap: What Unlocks Afterwards"
 	quest.544D506000600000.quest_desc: ["After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded."]
 	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills & Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.quest_desc: ["An introduction to Skills & Factions in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D507000100000.title: "Read the Two Skill Systems"
-	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
+	quest.544D507000100000.quest_desc: ["Every character has access to Core Magic through Tyz's Skills in Regular Mode. Core is universal and does not occupy a specialization slot. Improvable Skills 3 uses ordinary experience separately and is also available to everyone. Graduate from Newbie Mode before earning MXP or joining a faction."]
 	quest.544D507000200000.title: "Open the Skill Interface"
-	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
+	quest.544D507000200000.quest_desc: ["Assign the Tyz's Skills key in Options > Controls > Key Binds and open the skill interface. Core Magic is the universal tree; any additional specialization is contingent on enrollment or native form acquisition. Available trees and effects depend on current integrated data. This is orientation, not proof of a purchase."]
 	quest.544D507000300000.title: "Understand Attributes"
-	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
+	quest.544D507000300000.quest_desc: ["Inspect displayed skill effects and relevant attributes. Pufferfish Attributes is a supporting library, not the player skill tree. Damage, resource efficiency and cooldown hooks differ by magic system; do not assume every spell shares the same stats."]
 	quest.544D507000400000.title: "Experiment with Improvable Skills"
-	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
+	quest.544D507000400000.quest_desc: ["Use the Improvable Skills guidebook from your Akashic Tome, or locate the guide in JEI if needed. Its ordinary experience-powered perks are separate from Tyz's shared skill points and MXP."]
 	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
-	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
+	quest.544D507000500000.quest_desc: ["Core Magic is a universal tree, not a specialization choice. Read the Tyz node requirements and effects before investing; potency, resource efficiency, reservoir and recovery only work where a real mod adapter exists. No quest grants a skill bonus."]
 	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
-	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
-	quest.544D507000700000.title: "Choose How to Specialize"
-	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
+	quest.544D507000600000.quest_desc: ["Read the configured skill ranks and test actual effects. Individual attributes have their own limits, and cross-mod interactions may differ. This is a reference check, not an attribute grant."]
+	quest.544D507000700000.title: "Choose One Specialization"
+	quest.544D507000700000.quest_desc: ["Core Magic is available to everyone, with Improvable Skills 3 separate. You may remain unspecialized or choose ONE specialization from the same pool: Monk, Hunter, Gilded, Vampire, Werewolf, a Cave/Forest/Sea Dragon, or either Lich route. Human disciplines and supernatural forms are not independent slots. Only explicitly authorized combinations are exceptions: Archlich joins both lich routes; Dracolich joins a dragon and exactly one lich route. Vampire/Werewolf Abomination is an approved planned hybrid, not yet fully implemented. Monk plus any dragon is prohibited. Other planned exceptions are Revenant (Hunter first, then either or both lichdoms), Golden Dragon (Gilded and Cave Dragon, either order), and Blood Immortal (Monk first, then the actual Lilith ritual). Unlisted combinations are not allowed by default. Read freely; checkmarks never enroll you, and the native acquisition/Progression engine enforces eligibility. An additional owner-approved design exception is Piglich: a character must enroll as Gilded first, then obtain either or both lichdoms. A preexisting lich cannot join Gilded. This exception is planned, not currently implemented."]
 	quest.544D302000500001.title: "Chapter Overview"
 	quest.544D302000500001.quest_desc: ["An introduction to A Sufficiently Advanced Magic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
@@ -547,4 +547,30 @@
 	task.544D4D1200000001.title: "Any Log or Stem"
 	quest.544D309000100001.title: "I'm Ready for Regular Mode"
 	quest.544D309000100001.quest_desc: ["New players begin in Newbie Mode, with protected inventory/experience and convenience travel, but without MXP or faction enrollment. When YOU are ready for full survival progression, check this box and claim your personal graduation reward. This permanently enables Regular Mode for your character: normal death and Corail graves, no home/rtp/back, MXP and class enrollment. Graduation is one-way without an administrator. In a team, each player must claim their own reward; never force graduation on teammates."]
+	quest.544DB10000000001.title: "The Monk Path"
+	quest.544DB10000000001.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you."]
+	quest.544DB10000000002.title: "The Hunter Path"
+	quest.544DB10000000002.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Hunters specialize against creature families and gain progression through qualifying kills. The intended initiation uses poison while regeneration is active; follow the current path requirements and then choose a specialization. Mutagenic Brews and permanent mutations are separate progression milestones; verify implemented recipes and effects in JEI. This guide does not enroll you."]
+	quest.544DB10000000003.title: "The Gilded Path"
+	quest.544DB10000000003.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers. Gilded-first lichdom (Piglich) is an approved future exception: enroll as Gilded before acquiring one or both native lich forms. Existing liches cannot enroll retroactively. Runtime implementation and testing are pending."]
+	quest.544DB10000000004.title: "Becoming a Vampire"
+	quest.544DB10000000004.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR owns vampirism in this pack; the separate Vampirism mod is retired. Consult JAWR's in-game guide for the native transformation and Lilith's blood route; inspect the Vampire skill category after successful transformation. Blood feeding and sunlight are native mechanics. This checkmark does not change your form."]
+	quest.544DB10000000005.title: "Becoming a Werewolf"
+	quest.544DB10000000005.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR also owns lycanthropy; the separate Werewolves mod is retired. Consult the JAWR in-game guide and its wolfsbane-related transformation route, then inspect the Werewolf skill category. Follow the current native cure rules before changing forms. This checkmark is not a transformation trigger."]
+	quest.544DB10000000006.title: "Becoming a Dragon"
+	quest.544DB10000000006.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Dragon Survival provides Cave, Forest and Sea dragon forms with different diets and abilities. Open its native species selection interface when installed and eligible; consult the current controls and diet tooltips before choosing. TMM's diet and form compatibility are subject to live testing. This quest is an informational guide, not a species setter."]
+	quest.544DB10000000007.title: "Lichdom: Forbidden Magic"
+	quest.544DB10000000007.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR: Forbidden Magic provides its own lich path and phylactery. Use the mod's guide for the native ritual, soul storage, resurrection anchor and cure; check the corresponding Tyz category after transformation where implemented. This guide does not grant lichdom or create a resurrection anchor."]
+	quest.544DB10000000008.title: "Lichdom: Goety"
+	quest.544DB10000000008.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Goety offers a distinct lich path. Follow the native guide's lich ritual and prepare the Arca for native soul storage and resurrection. The Goety chapter owns its general ritual and summoning progression; character form guidance lives here. No transformation is granted by this quest."]
+	quest.544DB10000000009.title: "The Archlich"
+	quest.544DB10000000009.quest_desc: ["This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here. A Gilded-first character may also acquire both lich forms as a Piglich. That additional exception is approved design only; the runtime enrollment policy must be extended and tested."]
+	quest.544DB1000000000A.title: "The Dracolich"
+	quest.544DB1000000000A.quest_desc: ["This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Dracolich combines one Dragon Survival form with exactly one lich source, not both. Dragon growth and the chosen native resurrection anchor should be retained. The integration is experimental; confirm current build support before attempting it. This guide cannot change species or create an anchor."]
+	quest.544DB1000000000B.title: "Relics: Learn Your Relic"
+	quest.544DB1000000000B.quest_desc: ["Discover Relics equipment, read its ability and condition tooltips and equip it in the appropriate Curios slot. Inspect its own progression interface before spending upgrades. Relics belongs in this chapter alongside Artifacts; this checkmark does not grant equipment or rank."]
+	quest.544DB1000000000C.title: "Reliquified Artifacts"
+	quest.544DB1000000000C.quest_desc: ["Reliquified Artifacts integrates Artifacts equipment with Relics-style progression, including item-specific XP, ranks and durability where supported. Inspect the actual item tooltip and progression interface; do not assume all accessories use identical triggers. This is orientation, not an automatic rank or repair."]
+	quest.544DB1000000000D.title: "ProjectE Energy Converters"
+	quest.544DB1000000000D.quest_desc: ["ProjectE Energy Converters bridges EMC with FE and supported energy systems. Find its conversion blocks through JEI when available; follow the actual ProjectE and Project Expansion recipe gates and check the configured conversion ratios before use. This guide grants no converter and does not bypass any gate."]
 }
