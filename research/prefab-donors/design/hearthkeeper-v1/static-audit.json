@@ -1,0 +1,419 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    43,
+    16,
+    39
+  ],
+  "donor_offset": [
+    10,
+    3,
+    2
+  ],
+  "donor_nonair": 397,
+  "donor_exact_nonair_retained": 363,
+  "nonair": 3981,
+  "explicit_air": 5532,
+  "omitted": 17319,
+  "palette_states": 76,
+  "entities": 0,
+  "pond_surface": 104,
+  "pond_deep": 48,
+  "farmland": 80,
+  "growth_ritual_covered_cells": 81,
+  "rice": [
+    26,
+    3,
+    31
+  ],
+  "roots": {
+    "altar": [
+      13,
+      4,
+      28
+    ],
+    "mundane": [
+      [
+        10,
+        4,
+        25
+      ],
+      [
+        10,
+        4,
+        31
+      ],
+      [
+        16,
+        4,
+        25
+      ],
+      [
+        16,
+        4,
+        31
+      ],
+      [
+        16,
+        4,
+        28
+      ],
+      [
+        10,
+        4,
+        28
+      ],
+      [
+        13,
+        4,
+        31
+      ],
+      [
+        13,
+        4,
+        25
+      ]
+    ],
+    "attuned": [
+      [
+        18,
+        5,
+        28
+      ],
+      [
+        8,
+        5,
+        28
+      ],
+      [
+        13,
+        5,
+        33
+      ],
+      [
+        13,
+        5,
+        23
+      ]
+    ],
+    "braziers": [
+      [
+        11,
+        4,
+        26
+      ],
+      [
+        11,
+        4,
+        30
+      ],
+      [
+        15,
+        4,
+        26
+      ],
+      [
+        15,
+        4,
+        30
+      ]
+    ]
+  },
+  "kitchen_floor": 45,
+  "kitchen_graph_nodes": 53,
+  "kitchen_placements": {
+    "table": [
+      4,
+      4,
+      15
+    ],
+    "counter": [
+      5,
+      4,
+      15
+    ],
+    "oven": [
+      6,
+      4,
+      15
+    ],
+    "sink": [
+      7,
+      4,
+      15
+    ],
+    "fridge": [
+      8,
+      4,
+      15
+    ],
+    "rack": [
+      5,
+      5,
+      15
+    ],
+    "pantry": [
+      10,
+      4,
+      15
+    ]
+  },
+  "future_provider": [
+    12,
+    4,
+    15
+  ],
+  "manual_placement": {
+    "stove": [
+      10,
+      4,
+      11
+    ],
+    "pot": [
+      10,
+      5,
+      11
+    ],
+    "cutting_board": [
+      11,
+      5,
+      11
+    ],
+    "mortar": [
+      5,
+      5,
+      17
+    ],
+    "imbuer": [
+      7,
+      5,
+      17
+    ]
+  },
+  "walk_goals": {
+    "donor_door": [
+      18,
+      4,
+      8
+    ],
+    "original_living": [
+      16,
+      4,
+      8
+    ],
+    "original_bedside": [
+      17,
+      4,
+      11
+    ],
+    "extension_hall": [
+      10,
+      4,
+      9
+    ],
+    "bedside": [
+      5,
+      4,
+      6
+    ],
+    "kitchen_aisle": [
+      7,
+      4,
+      13
+    ],
+    "kitchen_exit": [
+      9,
+      4,
+      16
+    ],
+    "roots_court": [
+      13,
+      4,
+      28
+    ],
+    "workbench": [
+      6,
+      4,
+      18
+    ],
+    "pond_bank": [
+      26,
+      4,
+      8
+    ],
+    "pet_run_a": [
+      29,
+      4,
+      20
+    ],
+    "pet_run_b": [
+      36,
+      4,
+      20
+    ],
+    "garden_access": [
+      21,
+      4,
+      31
+    ],
+    "music_terrace": [
+      36,
+      4,
+      30
+    ]
+  },
+  "chest": [
+    3,
+    4,
+    15
+  ],
+  "items": [
+    [
+      "cookingforblockheads:cooking_table",
+      1
+    ],
+    [
+      "cookingforblockheads:counter",
+      2
+    ],
+    [
+      "cookingforblockheads:white_oven",
+      1
+    ],
+    [
+      "cookingforblockheads:white_fridge",
+      1
+    ],
+    [
+      "cookingforblockheads:sink",
+      1
+    ],
+    [
+      "cookingforblockheads:tool_rack",
+      1
+    ],
+    [
+      "farmersdelight:cutting_board",
+      1
+    ],
+    [
+      "farmersdelight:iron_knife",
+      1
+    ],
+    [
+      "farmersdelight:stove",
+      1
+    ],
+    [
+      "farmersdelight:cooking_pot",
+      1
+    ],
+    [
+      "rootsclassic:mortar",
+      1
+    ],
+    [
+      "rootsclassic:pestle",
+      1
+    ],
+    [
+      "rootsclassic:bark_knife",
+      1
+    ],
+    [
+      "rootsclassic:imbuer",
+      1
+    ],
+    [
+      "rootsclassic:brazier",
+      4
+    ],
+    [
+      "minecraft:fishing_rod",
+      1
+    ],
+    [
+      "minecraft:iron_hoe",
+      1
+    ],
+    [
+      "minecraft:water_bucket",
+      1
+    ],
+    [
+      "farmersdelight:rice",
+      1
+    ],
+    [
+      "minecraft:red_mushroom",
+      1
+    ],
+    [
+      "minecraft:brown_mushroom",
+      1
+    ],
+    [
+      "minecraft:lead",
+      1
+    ]
+  ],
+  "sha256_raw": "fe29f662fa665dc6133d16ef0f10bc84110dde554c9259cb23fae8250962d5bd",
+  "sha256_gzip": "0ea3d33701e9795e6eb348b2ff72e386a63ace97d6d30e72dc5fdaf5a54e85be",
+  "gzip_bytes": 29949,
+  "counts": {
+    "cookingforblockheads:black_kitchen_floor": 23,
+    "cookingforblockheads:white_kitchen_floor": 22,
+    "farmersdelight:budding_tomatoes": 4,
+    "farmersdelight:cabbages": 4,
+    "farmersdelight:onions": 4,
+    "minecraft:air": 5532,
+    "minecraft:allium": 1,
+    "minecraft:azalea": 5,
+    "minecraft:azalea_leaves": 39,
+    "minecraft:azure_bluet": 1,
+    "minecraft:barrel": 2,
+    "minecraft:beetroots": 6,
+    "minecraft:campfire": 1,
+    "minecraft:carrots": 6,
+    "minecraft:chest": 2,
+    "minecraft:chiseled_stone_bricks": 13,
+    "minecraft:clay": 104,
+    "minecraft:cornflower": 1,
+    "minecraft:crafting_table": 1,
+    "minecraft:dandelion": 2,
+    "minecraft:dirt": 1321,
+    "minecraft:dirt_path": 139,
+    "minecraft:farmland": 80,
+    "minecraft:flowering_azalea_leaves": 13,
+    "minecraft:grass_block": 705,
+    "minecraft:hanging_roots": 2,
+    "minecraft:lantern": 7,
+    "minecraft:lily_pad": 3,
+    "minecraft:lime_bed": 4,
+    "minecraft:lime_carpet": 9,
+    "minecraft:moss_block": 464,
+    "minecraft:moss_carpet": 13,
+    "minecraft:oak_fence": 42,
+    "minecraft:oak_fence_gate": 4,
+    "minecraft:oak_planks": 408,
+    "minecraft:oxeye_daisy": 2,
+    "minecraft:poppy": 3,
+    "minecraft:potatoes": 6,
+    "minecraft:redstone_lamp": 1,
+    "minecraft:redstone_wall_torch": 1,
+    "minecraft:short_grass": 22,
+    "minecraft:smoker": 1,
+    "minecraft:smooth_sandstone": 219,
+    "minecraft:smooth_sandstone_slab": 7,
+    "minecraft:smooth_sandstone_stairs": 16,
+    "minecraft:spruce_door": 12,
+    "minecraft:spruce_log": 16,
+    "minecraft:spruce_planks": 5,
+    "minecraft:spruce_stairs": 12,
+    "minecraft:stone_bricks": 30,
+    "minecraft:sugar_cane": 4,
+    "minecraft:tall_grass": 10,
+    "minecraft:water": 153,
+    "minecraft:wheat": 6
+  }
+}
