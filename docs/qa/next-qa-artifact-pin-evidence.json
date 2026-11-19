@@ -541,11 +541,153 @@
           "version_id": "izKINKFg"
         }
       ]
+    },
+    "aether": {
+      "filename": "aether-1.21.1-1.5.10-neoforge.jar",
+      "sha1": "7554b1dd391b8dd06a810918ec705d0493f693eb",
+      "sha512": "4b004daed6d09362646e204f068dee28e80523e705e862778036c492775672071ca9cc95f9574a842f34d2e058b46138c6154c6a2f251dcdad7a8803907dad46",
+      "declared_mods": [
+        {
+          "authors": "AlphaMode, baguchi, bconlon, Blodhgarm, Burning Cactus, Drullkus, Hugo Payn, Jaryt, Katie 'Oz' Payn, quek, Raptor, reetam, RENREN, sunsette",
+          "credits": "The Aether Team, former Aether Team Collaborators for their prior work on The Aether Mod, Modding Legacy for their work on Aether Legacy, GitHub contributors for their additional help, and the Wisp Forest Team for Accessories, the source code of which can be found at https://github.com/wisp-forest",
+          "description": "The Aether Team presents the original Aether mod! Up to date for modern Minecraft versions and fully compatible with multiplayer. The Aether is a dimension of floating islands high in the sky. Ascend through a Glowstone portal and begin a new survival adventure packed with new ores, mythical creatures and perilous Dungeons!",
+          "displayName": "The Aether",
+          "displayURL": "https://modrinth.com/mod/aether",
+          "enumExtensions": "META-INF/enumextensions.json",
+          "logoFile": "aether.png",
+          "modId": "aether",
+          "updateJSONURL": "https://github.com/The-Aether-Team/The-Aether/raw/1.21.1-develop/update.json",
+          "version": "1.5.10"
+        }
+      ],
+      "dependencies": {
+        "aether": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.72,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1,1.21.2)"
+          }
+        ]
+      },
+      "provider_dependencies": [
+        {
+          "dependency_type": "required",
+          "file_name": null,
+          "project_id": "ccKDOlHs",
+          "version_id": null
+        },
+        {
+          "dependency_type": "embedded",
+          "file_name": null,
+          "project_id": "jtmvUHXj",
+          "version_id": "Avp7HDTx"
+        },
+        {
+          "dependency_type": "embedded",
+          "file_name": null,
+          "project_id": "sq1f0DCq",
+          "version_id": "30nL1EiU"
+        }
+      ]
+    },
+    "owo-lib": {
+      "filename": "owo-lib-neoforge-0.12.15.6-beta.1+1.21.jar",
+      "sha1": "3a7f843ce3a4d24f8765a74bc5dde914b316b992",
+      "sha512": "fc843ef350c4af6748d9fd6ecd3c28f96262cf46d46a8329029f49ea4f9eb87238113a8a415e8bba2c4f346c718bf450194f6f5823dfbf1ae7312529a81c3e5c",
+      "declared_mods": [
+        {
+          "authors": "glisco, Blodhgarm, BasiqueEvangelist, Noaaan",
+          "credits": "",
+          "description": "yes its bad i know thanks\n",
+          "displayName": "oωo",
+          "logoFile": "assets/owo/icon.png",
+          "modId": "owo",
+          "provides": [
+            "owo-lib",
+            "owo_lib",
+            "owo-impl",
+            "owo_impl"
+          ],
+          "version": "0.12.15.6-beta.1+1.21"
+        }
+      ],
+      "dependencies": {
+        "owo": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "required": true,
+            "side": "BOTH",
+            "versionRange": "[21,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "required": true,
+            "side": "BOTH",
+            "versionRange": "[1.21,)"
+          }
+        ]
+      },
+      "provider_dependencies": []
+    },
+    "nuit": {
+      "filename": "nuit-neoforge-1.0.0-beta.6+mc1.21.1.jar",
+      "sha1": "1ad1e15ff6cdc480a114215d6c0af23a6cb3cdee",
+      "sha512": "69a4ab11e8c122323bf9051ec4f04b9e5884cc93ac8bea5cae71dddc4b8c2df880d1f9f3fc178af9fbf04663244beba21a7db37b6290748d99a3d4f192b27d37",
+      "declared_mods": [
+        {
+          "authors": "AMereBagatelle, FlashyReese",
+          "credits": "UsernameGeri, lowercasebtw",
+          "description": "Adds custom skybox support to Minecraft\n",
+          "displayName": "Nuit",
+          "logoFile": "assets/nuit/nuit_logo.png",
+          "modId": "nuit",
+          "version": "1.0.0-beta.6+mc1.21.1"
+        }
+      ],
+      "dependencies": {
+        "nuit": [
+          {
+            "modId": "neoforge",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[21.1.15,)"
+          },
+          {
+            "modId": "minecraft",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "type": "required",
+            "versionRange": "[1.21.1,1.21.2)"
+          }
+        ]
+      },
+      "provider_dependencies": []
     }
   },
   "blocked": [
-    "aether",
     "deep-aether",
     "liroth-revamped"
-  ]
+  ],
+  "second_audit": {
+    "job": 135892920025,
+    "source": "734beb98979e113b0673dcce9e360f552b710526",
+    "deep_aether_releases": [
+      "MSW5emg8",
+      "cdz8tus3"
+    ],
+    "declared_minecraft_range": "[1.21,1.21.1)",
+    "liroth_provider_geckolib": "lxzmD9V4"
+  }
 }

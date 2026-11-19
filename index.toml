@@ -1469,6 +1469,11 @@ file = "kubejs/startup_scripts/silver_equipment_stats.js"
 hash = "2fd11767cb03ffd7206c2700eec52ef6eba05cdbcb8ec4bc58228b298cc552a4"
 
 [[files]]
+file = "mods/aether.pw.toml"
+hash = "cc3f6e6e8f1838d16e47cce9241e32176279673efb1438ff4451ccffa9579b14"
+metafile = true
+
+[[files]]
 file = "mods/akashic-tome.pw.toml"
 hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
 metafile = true
@@ -2159,6 +2164,11 @@ hash = "48c2ab25456fb7ace4367153a3de95a990cba360bdf1fb78264850c4392512d1"
 metafile = true
 
 [[files]]
+file = "mods/nuit.pw.toml"
+hash = "d9a2987328b54072fe174658ab5266eedccba8722f425c7756e4226b9746e51a"
+metafile = true
+
+[[files]]
 file = "mods/observerlib.pw.toml"
 hash = "ff407a1e06ce5a70fd10e60a9c822a69d2722d8d1b5751918ff65145a976036e"
 metafile = true
@@ -2181,6 +2191,11 @@ metafile = true
 [[files]]
 file = "mods/oracle-index.pw.toml"
 hash = "2e77758dc91190a81b67b6f329832b625404adfaaee894900be90ff3a94f7523"
+metafile = true
+
+[[files]]
+file = "mods/owo-lib.pw.toml"
+hash = "6514f98b34602b789fc2dbcafe7a67468d1c94d74965a0142a79b7ab23628a9a"
 metafile = true
 
 [[files]]

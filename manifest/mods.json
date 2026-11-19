@@ -80,10 +80,11 @@
       "desired": true,
       "version": "1.21.1-1.5.10-neoforge",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
-      "enabled_in_pack": false,
+      "source": "https://modrinth.com/mod/YhmgMVyu/version/K5X5qMwG",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified. Frozen JAR audit 44014327626: Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. both side. Candidate only; actual loader/gameplay not tested.",
+      "packwiz_slug": "aether"
     },
     {
       "id": "akashic-tome",
@@ -712,7 +713,7 @@
       "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Second exact byte audit: releases 1.1.5.1 and 1.1.5 both declare Minecraft [1.21,1.21.1), excluding target 1.21.1. Keep required, blocked, not silently omitted."
     },
     {
       "id": "deeper-darker",
@@ -1442,7 +1443,7 @@
       "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Nuit now pinned client only. Native BetterEnd New Dawn library identity and provider GeckoLib pin still under audit; leave required but unpinned."
     },
     {
       "id": "lithostitched",
@@ -2924,24 +2925,24 @@
       "desired": true,
       "version": "0.12.15.6-beta.1+1.21",
       "release_status": "experimental_release",
-      "source": "https://modrinth.com/mod/owo-lib/version/wbdHEItB",
-      "enabled_in_pack": false,
+      "source": "https://modrinth.com/mod/ccKDOlHs/version/wbdHEItB",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "owo-lib",
-      "note": "Required Aether provider dependency; beta approved in principle; inspect actual native metadata and nested dependencies."
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. both side. Candidate only; actual loader/gameplay not tested."
     },
     {
       "id": "nuit",
       "name": "Nuit",
       "category": "dependency",
       "desired": true,
-      "version": "1.0.0-beta.6 NeoForge 1.21.1",
+      "version": "mc1.21.1-1.0.0-beta.6+neoforge",
       "release_status": "experimental_release",
-      "source": "https://modrinth.com/mod/nuit/changelog",
-      "enabled_in_pack": false,
+      "source": "https://modrinth.com/mod/YBz7DOs8/version/blbu29BJ",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "nuit",
-      "note": "Required client-only Liroth dependency; exact artifact resolution, Astral/sky rendering coexistence pending."
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested."
     }
   ],
   "excluded": [

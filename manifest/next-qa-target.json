@@ -333,13 +333,32 @@
     {
       "id": "nuit",
       "provider": "modrinth",
-      "project_slug": "nuit",
-      "version_number": "mc1.21.1-1.0.0-beta.6+neoforge"
+      "version_id": "blbu29BJ"
     },
     {
       "id": "deep-aether-alternate-1.1.5",
       "provider": "modrinth",
       "version_id": "cdz8tus3"
+    },
+    {
+      "id": "bclib-new-dawn",
+      "provider": "modrinth",
+      "version_id": "QkXw8Fsl"
+    },
+    {
+      "id": "worldweaver-new-dawn",
+      "provider": "modrinth",
+      "version_id": "TrReu8cF"
+    },
+    {
+      "id": "wunderlib-new-dawn",
+      "provider": "modrinth",
+      "version_id": "5db3GZzg"
+    },
+    {
+      "id": "liroth-provider-geckolib",
+      "provider": "modrinth",
+      "version_id": "lxzmD9V4"
     }
   ],
   "notes": [
