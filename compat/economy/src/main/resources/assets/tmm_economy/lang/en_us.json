@@ -33,5 +33,7 @@
   "tmm_economy.mapper.primal_recipes": "TMM Primal Magick Recipe Mapper",
   "tmm_economy.mapper.primal_recipes.tooltip": "Map ordinary arcane crafting and machines including elemental Mana.",
   "tmm_economy.mapper.astral_recipes": "TMM Astral Sorcery Recipe Mapper",
-  "tmm_economy.mapper.astral_recipes.tooltip": "Map ordinary altar and infusion recipes including liquid starlight."
+  "tmm_economy.mapper.astral_recipes.tooltip": "Map ordinary altar and infusion recipes including liquid starlight.",
+  "tmm_economy.mapper.pastel_recipes": "TMM Pastel Recipe Mapper",
+  "tmm_economy.mapper.pastel_recipes.tooltip": "Map plain material recipes and verified colored ink costs."
 }
