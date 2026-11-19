@@ -26,8 +26,7 @@ public final class MahouBoundaryDamage {
     private static boolean pinned(){
         return ModList.get().getModContainerById("mahoutsukai").filter(mod->{
             String version=mod.getModInfo().getVersion().toString();
-            return version.equals("1.36.31")||version.equals("v1.36.31")
-                ||version.equals("1.21.1-v1.36.31")||version.equals("1.21.1-1.36.31");
+            return version.equals("1.21.1-v1.36.31");
         }).isPresent();
     }
     public static void attack(Object boundary,LivingEntity victim,LivingEntity caster,boolean fallback,Runnable original){

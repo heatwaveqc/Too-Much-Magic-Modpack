@@ -24,7 +24,8 @@ public abstract class AstralDiscidiaOwnerMixin {
         if(nativeOwner instanceof ServerPlayer||source.getDirectEntity() instanceof ServerPlayer
             ||event.getSource()!=source)return nativeOwner;
         boolean pinned=ModList.get().getModContainerById("astralsorcery")
-            .filter(mod->mod.getModInfo().getVersion().toString().equals("2.0.3.59")).isPresent();
+            .filter(mod->mod.getModInfo().getVersion().toString().equals("2.0.3")).isPresent();
+        // Installed 2.0.3.59 JAR declares NeoForge version 2.0.3.
         if(!pinned)return nativeOwner;
         ServerPlayer owner=OwnedMagicDamage.boundaryOwner(event.getEntity(),source);
         return owner==null?nativeOwner:owner;
