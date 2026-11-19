@@ -2779,8 +2779,7 @@
       "enabled_in_pack": true,
       "dependencies_verified": true,
       "note": "Exact official runtime JAR SHA-512 and dependency metadata inspected in run 44014327626; client; not game-smoked. "
-    }
-,
+    },
     {
       "id": "projecte-energy-converters",
       "name": "ProjectE Energy Converters",
@@ -2793,6 +2792,32 @@
       "dependencies_verified": true,
       "packwiz_slug": "projecte-energy-converters",
       "note": "Owner-approved late-game EMC <-> FE/OP bridge. CurseForge project 1727449 file 9072881, NeoForge 1.21.1 release, both sides, MIT. Requires installed ProjectE 1.1.0 + Project Expansion 1.0.6; Brandon's Core optional already installed. Default 1000 EMC per FE AND 1000 FE per EMC; no arbitrary loop-friendly 1:1 rates. Restrict recipes/use through future ProjectE/Chaos Guardian progression; do not claim gate enforced until tested. Actual client and 30-machine functional tests pending. Baseline-owned direct official CDN URL for the same CurseForge file and SHA-1; metadata retained for provenance/update."
+    },
+    {
+      "id": "almostunified",
+      "name": "Almost Unified",
+      "category": "compatibility",
+      "desired": true,
+      "version": "AlmostUnified-NeoForge-1.21.1-1.4.2",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/almostunified/version/e8iYxxI3",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "almostunified",
+      "note": "Owner-requested conventional-material unification and Mahou ore-doubling candidate. Not release-integrated until gameplay, ore worldgen and special-gate tests."
+    },
+    {
+      "id": "ftb-essentials",
+      "name": "FTB Essentials (NeoForge)",
+      "category": "qol",
+      "desired": true,
+      "version": "2101.1.10",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-essentials/files/8442866",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "B13: official FTB Essentials 2101.1.10 NeoForge 1.21.1 CurseForge 410811/8442866. Explicit home and rtp enablement in config and defaultconfigs. One home per player, 10s home cooldown, 600s RTP cooldown, 500-25000 blocks from spawn. Gameplay permissions and teleport behavior need fresh world QA.",
+      "packwiz_slug": "ftb-essentials"
     }
   ],
   "excluded": [

@@ -1,6 +1,14 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/almostunified/placeholders.json"
+hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
+
+[[files]]
+file = "config/almostunified/startup.json"
+hash = "2c732058a0f232ab661c21c6a460ed44149a2e8136a0d31c73eb0c855269baa0"
+
+[[files]]
 file = "config/almostunified/unification/materials.json"
 hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
 
@@ -15,6 +23,10 @@ hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
 [[files]]
 file = "config/ftbchunks-client.snbt"
 hash = "01eb45c223662ddc950197f9fa6b5ece175dbf43ba61b7d40e5bc9ef51c56595"
+
+[[files]]
+file = "config/ftbessentials.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
 
 [[files]]
 file = "config/ftblibrary-client.snbt"
@@ -213,6 +225,10 @@ file = "config/improvableskills.cfg"
 hash = "65c28f667cdd221e4bc3ba3cdc169b45ac6bd4bf2ba8010e0545de4dab0ba31b"
 
 [[files]]
+file = "config/neovitae/materials.json"
+hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
+
+[[files]]
 file = "config/questshop-common.toml"
 hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
 
@@ -353,8 +369,16 @@ file = "defaultconfigs/enigmaticlegacyplus-server.toml"
 hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 
 [[files]]
+file = "defaultconfigs/ftbessentials-server.snbt"
+hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
 file = "kubejs/assets/brandonscore/lang/en_us.json"
 hash = "00a8aba46cf74b64728012390407ba3fe5f14e75d9e968f0cbd0668abe4d3af2"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/chaos_bunny_trophy.json"
+hash = "8889c03533db73051e646f4c61699c0967aa314f45ba5c9391523b340ee012f6"
 
 [[files]]
 file = "kubejs/assets/projecte_energy/lang/en_us.json"
@@ -362,7 +386,7 @@ hash = "2ee49d93fe81c76bc0743548b464618332d3b82b67d4fd7556bad1ea54250c0a"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "7438a74752be193fe203d5c504b193b0661a39feec391d1184c5027b7107c5fc"
+hash = "9494b6c7e9edcfa5c0438905e6fedb89e2bfeab1fb11b59ca0f4e3be3517864f"
 
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
@@ -491,6 +515,10 @@ hash = "c7136676231037f9cf7b8de785a552d424b5c4354387eae8a57e190d5ac6bf53"
 [[files]]
 file = "kubejs/data/computercraft/recipe/pocket_computer_normal.json"
 hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
+
+[[files]]
+file = "kubejs/data/curios/tags/item/bundle.json"
+hash = "f9ffaafaad32dd4fafaa862ba15e1a6acb3a0db629d33fc538db97a24ae2a46a"
 
 [[files]]
 file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
@@ -737,8 +765,28 @@ file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
 
 [[files]]
+file = "kubejs/data/tmm/advancement/starter_kit.json"
+hash = "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
+
+[[files]]
+file = "kubejs/data/tmm/curios/entities/player.json"
+hash = "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
+
+[[files]]
 file = "kubejs/data/tmm/curios/slots/bundle.json"
 hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
+hash = "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
+
+[[files]]
+file = "kubejs/data/tmm/gateways/caerbannog.json"
+hash = "9c0a92a3be4fbd0210eb5a679453cea66776a8c202915aec1390ce0516d46c98"
+
+[[files]]
+file = "kubejs/data/tmm/gateways/chaos_bunny.json"
+hash = "25b0d67667d70b45a0d3c914a983faba37c78982b0e39758f9af6d2d66a3f2bd"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/mob_ars_drygmy.json"
@@ -807,6 +855,10 @@ hash = "67f317e130f35706aed6727e58b8e5c0601e4cc66b1eccc0a30ba2ebe7601232"
 [[files]]
 file = "kubejs/data/tmm/gateways/mob_irons_pyromancer.json"
 hash = "d869e9e6f47b00fa45c8682615a70cbbcdf0feeb60f2810bfda662c7f0d27968"
+
+[[files]]
+file = "kubejs/data/tmm/loot_table/entities/empty.json"
+hash = "901e3d1a8d2fcf1d60dc648470b7e458ff9e74823c20130fa1d7ce0e32ccbd86"
 
 [[files]]
 file = "kubejs/data/tmm/pe_custom_conversions/apotheosis_materials.json"
@@ -897,6 +949,10 @@ file = "kubejs/data/tmm/questshop/shop_categories/food.json"
 hash = "52d2a83ab9214a3d1a56ad11de2dd88ae50b31da418f276d71ed20d9b5961985"
 
 [[files]]
+file = "kubejs/data/tmm/questshop/shop_categories/ores.json"
+hash = "109a39d371617838d10893e52e30390feacf42ce2b599daacf0079d0117e74a6"
+
+[[files]]
 file = "kubejs/data/tmm/questshop/shop_categories/reagents.json"
 hash = "d8976beca10a891f519ab5ec257f7da472011bcdaad1e9fbe25b31da24ff4d34"
 
@@ -915,6 +971,10 @@ hash = "efb6704902f43c813b68dd6ad33355f13c63f60112880e40b26c86b5d2b40aa7"
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/food.json"
 hash = "7ce9fc49e8869cba4b203f8ebf4234703432892043a0d9e5ae7c3130348e8af4"
+
+[[files]]
+file = "kubejs/data/tmm/questshop/shop_entries/ores.json"
+hash = "793950980a69031b7977976db2eb0ea3ba545722c82fb199103666c13f8bee00"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/reagents.json"
@@ -1087,6 +1147,10 @@ hash = "5d99cb0c17145020f16e37716d9bd85d2de84f04647e37b7bb97d343d836be5e"
 [[files]]
 file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.json"
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/caerbannog.json"
+hash = "f9daa87aeec0f8c863a8f3410140c7e64e0336b9f96e43a0f932f07f549fa58d"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/gateways/mob_ars_drygmy.json"
@@ -1337,6 +1401,10 @@ file = "kubejs/server_scripts/bootstrap.js"
 hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
 [[files]]
+file = "kubejs/server_scripts/caerbannog_boss.js"
+hash = "d17ac3cbf04690f81429fc6c153768a6851ba23d5b75d09439d338c0681cf6b3"
+
+[[files]]
 file = "kubejs/server_scripts/dragon_diets.js"
 hash = "c36d9fa0166092beff18c3526bfd7ec6e7ce0ff3873ff0843d9f51eff24c4efd"
 
@@ -1345,8 +1413,16 @@ file = "kubejs/server_scripts/dragon_seasoned_fish.js"
 hash = "a18b40bb1ee8b3f722f915424f725458766f5843400c367fa67b8581894f0fbc"
 
 [[files]]
+file = "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js"
+hash = "2aa462bc5211abace54271ad0ec84de5155b17f8a2f817002fb31210133bc103"
+
+[[files]]
 file = "kubejs/server_scripts/material_processing_cleanup.js"
 hash = "4e3af9879096859002f21b25f66f78ccb5816b1a44a7e71671273bab34f8427e"
+
+[[files]]
+file = "kubejs/server_scripts/material_unification.js"
+hash = "564f8d6891e1235c470e9e19084976466dd7d68c69f8d947b084df1258c4a53e"
 
 [[files]]
 file = "kubejs/server_scripts/parchment_fishing.js"
@@ -1365,8 +1441,16 @@ file = "kubejs/server_scripts/tmm_structure_registry_export.js"
 hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
 
 [[files]]
+file = "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js"
+hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
+
+[[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
 hash = "295b2fc743ff04511a934a51f4bcafdc29a603b6731c16fa11103cb522c3fa49"
+
+[[files]]
+file = "kubejs/startup_scripts/caerbannog_trophy.js"
+hash = "c53f62170c6560203a4d18161bb1535d80f0816ab31140cf30a06fe362f768c1"
 
 [[files]]
 file = "kubejs/startup_scripts/drinkable_blood_vial.js"
@@ -1392,6 +1476,11 @@ metafile = true
 [[files]]
 file = "mods/alexs-caves-continued.pw.toml"
 hash = "49d4c3483faf58ba3cc7131ccf438edcc6c944fe92e97b2e18b5e4d19a27d7ba"
+metafile = true
+
+[[files]]
+file = "mods/almostunified.pw.toml"
+hash = "3805fe2877cffdae5e7bf74d85069a2535daa39a0f3ed766755be49294a07680"
 metafile = true
 
 [[files]]
@@ -1752,6 +1841,11 @@ metafile = true
 [[files]]
 file = "mods/ftb-chunks-forge.pw.toml"
 hash = "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521"
+metafile = true
+
+[[files]]
+file = "mods/ftb-essentials.pw.toml"
+hash = "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df"
 metafile = true
 
 [[files]]
