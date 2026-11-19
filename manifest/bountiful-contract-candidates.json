@@ -1,0 +1,460 @@
+{
+  "schema_version": 1,
+  "issue": 365,
+  "baseline": "dfe2e1625f42976007a7b443e4d2a159c0e2e367",
+  "status": "DRAFT_CANDIDATES_NOT_RUNTIME",
+  "policy": {
+    "default_data": "exclude every bundled pool/decree; fail closed on stale local config",
+    "currency": "unresolved: Quest Shop team account command validation/claim semantics or approved alternative; no reward minted yet",
+    "transformation": "hold until authoritative active roster and player claim/accept eligibility is supported",
+    "kills": "hold until native attribution and canonical prey integration are reviewed",
+    "prices": "final effective runtime EMC evidence required; no vanilla defaults or independently invented conversion",
+    "objectives": "item deliveries only in first generated pilot; all registry IDs require runtime census, modded IDs are candidates even when source priced"
+  },
+  "general": [
+    {
+      "id": "hunting",
+      "name": "Hunting",
+      "items": [
+        "minecraft:rotten_flesh",
+        "minecraft:bone",
+        "minecraft:string",
+        "minecraft:spider_eye"
+      ],
+      "kill_candidates": [
+        "minecraft:zombie",
+        "minecraft:skeleton",
+        "minecraft:spider"
+      ]
+    },
+    {
+      "id": "farming",
+      "name": "Farming",
+      "items": [
+        "minecraft:wheat",
+        "minecraft:carrot",
+        "minecraft:potato",
+        "minecraft:beetroot",
+        "minecraft:pumpkin"
+      ],
+      "kill_candidates": []
+    },
+    {
+      "id": "fishing",
+      "name": "Fishing",
+      "items": [
+        "minecraft:cod",
+        "minecraft:salmon",
+        "minecraft:tropical_fish",
+        "minecraft:ink_sac"
+      ],
+      "kill_candidates": []
+    },
+    {
+      "id": "mining",
+      "name": "Mining",
+      "items": [
+        "minecraft:cobblestone",
+        "minecraft:coal",
+        "minecraft:raw_copper",
+        "minecraft:raw_iron"
+      ],
+      "kill_candidates": []
+    },
+    {
+      "id": "crafting_forestry",
+      "name": "Crafting & Forestry",
+      "items": [
+        "minecraft:oak_log",
+        "minecraft:spruce_log",
+        "minecraft:glass",
+        "minecraft:charcoal",
+        "minecraft:torch"
+      ],
+      "kill_candidates": []
+    },
+    {
+      "id": "culinary",
+      "name": "Culinary & Innkeeping",
+      "items": [
+        "minecraft:bread",
+        "minecraft:cooked_beef",
+        "minecraft:baked_potato",
+        "minecraft:cooked_cod"
+      ],
+      "kill_candidates": []
+    }
+  ],
+  "schools": [
+    {
+      "id": "ars_nouveau",
+      "mod": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "items": [
+        "minecraft:lapis_lazuli",
+        "minecraft:gold_ingot",
+        "minecraft:amethyst_shard"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "astral_sorcery",
+      "mod": "astral-sorcery",
+      "name": "Astral Sorcery",
+      "items": [
+        "astralsorcery:aquamarine",
+        "minecraft:glass",
+        "minecraft:amethyst_shard"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "botania_revived",
+      "mod": "botania-revived",
+      "name": "Botania",
+      "items": [
+        "minecraft:bone_meal",
+        "minecraft:dandelion",
+        "minecraft:poppy",
+        "minecraft:melon_seeds"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "eidolon_repraised",
+      "mod": "eidolon-repraised",
+      "name": "Eidolon",
+      "items": [
+        "minecraft:bone",
+        "minecraft:charcoal",
+        "minecraft:redstone"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "embers_re_ignited",
+      "mod": "embers-re-ignited",
+      "name": "Embers",
+      "items": [
+        "embers:ember_shard",
+        "minecraft:raw_copper",
+        "minecraft:coal"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "enchanted_witchcraft",
+      "mod": "enchanted-witchcraft",
+      "name": "Enchanted Witchcraft",
+      "items": [
+        "minecraft:bone_meal",
+        "minecraft:fern",
+        "minecraft:sugar"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "evilcraft",
+      "mod": "evilcraft",
+      "name": "EvilCraft",
+      "items": [
+        "evilcraft:dark_gem",
+        "minecraft:rotten_flesh",
+        "minecraft:bone"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "feywild",
+      "mod": "feywild",
+      "name": "Feywild",
+      "items": [
+        "minecraft:poppy",
+        "minecraft:blue_orchid",
+        "minecraft:honeycomb"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "forbidden_arcanus",
+      "mod": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "items": [
+        "forbidden_arcanus:arcane_crystal",
+        "minecraft:amethyst_shard",
+        "minecraft:gold_ingot"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "goety",
+      "mod": "goety",
+      "name": "Goety",
+      "items": [
+        "goety:ectoplasm",
+        "minecraft:bone",
+        "minecraft:rotten_flesh"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "hexcast_neoforged",
+      "mod": "hexcast-neoforged",
+      "name": "Hexcasting",
+      "items": [
+        "minecraft:amethyst_shard",
+        "minecraft:amethyst_block",
+        "minecraft:glass"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "hexerei",
+      "mod": "hexerei",
+      "name": "Hexerei",
+      "items": [
+        "minecraft:clay_ball",
+        "minecraft:honeycomb",
+        "minecraft:lily_pad"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "irons_spells",
+      "mod": "irons-spells",
+      "name": "Iron's Spells 'n Spellbooks",
+      "items": [
+        "minecraft:paper",
+        "minecraft:ink_sac",
+        "minecraft:lapis_lazuli"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "mahou_tsukai",
+      "mod": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "items": [
+        "minecraft:paper",
+        "minecraft:redstone",
+        "minecraft:quartz"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "malum",
+      "mod": "malum",
+      "name": "Malum",
+      "items": [
+        "malum:runewood_log",
+        "malum:refined_soulstone",
+        "malum:tainted_rock"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "neovitae",
+      "mod": "neovitae",
+      "name": "Neo Vitae",
+      "items": [
+        "neovitae:raw_crystal_shard",
+        "minecraft:glass",
+        "minecraft:bone"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "occultism",
+      "mod": "occultism",
+      "name": "Occultism",
+      "items": [
+        "minecraft:coal",
+        "minecraft:gold_ingot",
+        "minecraft:bone_meal"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "pastel",
+      "mod": "pastel",
+      "name": "Pastel",
+      "items": [
+        "pastel:topaz_shard",
+        "pastel:citrine_shard",
+        "minecraft:glass"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "primal_magick",
+      "mod": "primal-magick",
+      "name": "Primal Magick",
+      "items": [
+        "primalmagick:essence_dust_earth",
+        "primalmagick:essence_dust_sea",
+        "primalmagick:essence_dust_sky"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "psi",
+      "mod": "psi",
+      "name": "Psi",
+      "items": [
+        "minecraft:redstone",
+        "minecraft:gold_ingot",
+        "minecraft:iron_ingot"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "roots_classic",
+      "mod": "roots-classic",
+      "name": "Roots Classic",
+      "items": [
+        "minecraft:oak_sapling",
+        "minecraft:fern",
+        "minecraft:wheat"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "scriptor_magicae",
+      "mod": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "items": [
+        "minecraft:paper",
+        "minecraft:ink_sac",
+        "minecraft:feather"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "theurgy",
+      "mod": "theurgy",
+      "name": "Theurgy",
+      "items": [
+        "theurgy:sal_ammoniac_crystal",
+        "minecraft:glass",
+        "minecraft:clay_ball"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "totemic",
+      "mod": "totemic",
+      "name": "Totemic",
+      "items": [
+        "minecraft:oak_log",
+        "minecraft:feather",
+        "minecraft:leather"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    },
+    {
+      "id": "witchery_remake",
+      "mod": "witchery-remake",
+      "name": "Just Another Witchery Remake",
+      "items": [
+        "minecraft:bone",
+        "minecraft:spider_eye",
+        "minecraft:sugar"
+      ],
+      "status": "candidate_pending_registry_and_balance"
+    }
+  ],
+  "held_schools": [
+    {
+      "id": "projecte",
+      "reason": "boss-gated late economy; no bypass"
+    },
+    {
+      "id": "reliquary_reincarnations",
+      "reason": "utility classification; major-school decision pending"
+    },
+    {
+      "id": "botania",
+      "reason": "superseded by Botania Revived"
+    }
+  ],
+  "transformations": [
+    {
+      "id": "vampire",
+      "name": "Vampire",
+      "provider": "JAWR",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "werewolf",
+      "name": "Werewolf",
+      "provider": "JAWR",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "lich_goety",
+      "name": "Goety Lich",
+      "provider": "Goety",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "lich_jawr",
+      "name": "Forbidden Magic Lich",
+      "provider": "JAWR/Forbidden Magic",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "archlich",
+      "name": "Archlich",
+      "provider": "both lich providers",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "dragon_cave",
+      "name": "Cave Dragon",
+      "provider": "Dragon Survival",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "dragon_forest",
+      "name": "Forest Dragon",
+      "provider": "Dragon Survival",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "dragon_sea",
+      "name": "Sea Dragon",
+      "provider": "Dragon Survival",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "dracolich",
+      "name": "Dracolich",
+      "provider": "dragon + one lich",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "abomination",
+      "name": "Abomination",
+      "provider": "atomic composite",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "hunter",
+      "name": "Hunter",
+      "provider": "Progression path",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "provider": "Progression path",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    },
+    {
+      "id": "gilded",
+      "name": "Gilded",
+      "provider": "Progression path",
+      "status": "held_pending_canonical_roster_and_eligibility"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+name: Bountiful targeted artifact audit
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - scripts/audit_bountiful_artifacts.py
+      - scripts/compile_bountiful_contracts.py
+      - tests/test_bountiful_contracts.py
+      - manifest/bountiful-contract-candidates.json
+      - .github/workflows/bountiful-audit.yml
+permissions:
+  contents: read
+jobs:
+  source-and-artifact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_bountiful_contracts.py
+      - run: python scripts/audit_bountiful_artifacts.py > bountiful-audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bountiful-artifact-metadata
+          path: bountiful-audit.json
