@@ -1,0 +1,4655 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "alexscaves:beholder_eye",
+      "required": false
+    },
+    {
+      "id": "alexscaves:boat",
+      "required": false
+    },
+    {
+      "id": "alexscaves:burrowing_arrow",
+      "required": false
+    },
+    {
+      "id": "alexscaves:candy_cane_hook",
+      "required": false
+    },
+    {
+      "id": "alexscaves:chest_boat",
+      "required": false
+    },
+    {
+      "id": "alexscaves:cinder_brick",
+      "required": false
+    },
+    {
+      "id": "alexscaves:crushed_block",
+      "required": false
+    },
+    {
+      "id": "alexscaves:dark_arrow",
+      "required": false
+    },
+    {
+      "id": "alexscaves:depth_charge",
+      "required": false
+    },
+    {
+      "id": "alexscaves:desolate_dagger",
+      "required": false
+    },
+    {
+      "id": "alexscaves:dinosaur_spirit",
+      "required": false
+    },
+    {
+      "id": "alexscaves:extinction_spear",
+      "required": false
+    },
+    {
+      "id": "alexscaves:falling_frostmint",
+      "required": false
+    },
+    {
+      "id": "alexscaves:falling_guano",
+      "required": false
+    },
+    {
+      "id": "alexscaves:falling_tree_block",
+      "required": false
+    },
+    {
+      "id": "alexscaves:floater",
+      "required": false
+    },
+    {
+      "id": "alexscaves:frostmint_spear",
+      "required": false
+    },
+    {
+      "id": "alexscaves:guano",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gum_worm_segment",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gumball",
+      "required": false
+    },
+    {
+      "id": "alexscaves:ink_bomb",
+      "required": false
+    },
+    {
+      "id": "alexscaves:limestone_spear",
+      "required": false
+    },
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "required": false
+    },
+    {
+      "id": "alexscaves:magnetic_weapon",
+      "required": false
+    },
+    {
+      "id": "alexscaves:melted_caramel",
+      "required": false
+    },
+    {
+      "id": "alexscaves:mine_guardian_anchor",
+      "required": false
+    },
+    {
+      "id": "alexscaves:moving_metal_block",
+      "required": false
+    },
+    {
+      "id": "alexscaves:nuclear_bomb",
+      "required": false
+    },
+    {
+      "id": "alexscaves:nuclear_explosion",
+      "required": false
+    },
+    {
+      "id": "alexscaves:quarry_smasher",
+      "required": false
+    },
+    {
+      "id": "alexscaves:seeking_arrow",
+      "required": false
+    },
+    {
+      "id": "alexscaves:soda_bottle_rocket",
+      "required": false
+    },
+    {
+      "id": "alexscaves:spinning_peppermint",
+      "required": false
+    },
+    {
+      "id": "alexscaves:submarine",
+      "required": false
+    },
+    {
+      "id": "alexscaves:sugar_staff_hex",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tephra",
+      "required": false
+    },
+    {
+      "id": "alexscaves:thrown_ice_cream_scoop",
+      "required": false
+    },
+    {
+      "id": "alexscaves:thrown_waste_drum",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tremorzilla",
+      "required": false
+    },
+    {
+      "id": "alexscaves:watcher",
+      "required": false
+    },
+    {
+      "id": "alexscaves:water_bolt",
+      "required": false
+    },
+    {
+      "id": "alexscaves:wave",
+      "required": false
+    },
+    {
+      "id": "apotheosis:tiered_gateway",
+      "required": false
+    },
+    {
+      "id": "aquaculture:acacia_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:birch_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:bobber",
+      "required": false
+    },
+    {
+      "id": "aquaculture:dark_oak_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:jungle_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:oak_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:spectral_water_arrow",
+      "required": false
+    },
+    {
+      "id": "aquaculture:spruce_fish_mount",
+      "required": false
+    },
+    {
+      "id": "aquaculture:water_arrow",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:conjured_dripstone",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:conjured_ice_spike",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:dripstone_spike",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flash_lightning",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashjack_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:geyser",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:ice_spike",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:lava_geyser",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:lerp",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:linger_magnet",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:mist_cloud",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:phalanx_projectile",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:siren_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_bee",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_camel",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_direwolf",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_dolphin",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_skelehorse",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_slime",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_strider",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_vhex",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_wskeleton",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:water_jet",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:ally_vex",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:amethyst_golem",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:an_lightning",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:animated_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:animated_head",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:archwood_boat",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:arcing_spell_proj",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:blazing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:bookwyrm",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:bubble",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:cascading_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:cinder",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:dummy",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanted_falling_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanted_head_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanted_mage_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanters_hook",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_amethyst_golem",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_bookwyrm",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_drygmy",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_starbuncle",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_whirlisprig",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_wixie",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:fangs",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:flourishing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:flying_item",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:follow_proj",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:homing_spell_proj",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:ice_shard",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:lily",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:linger",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:nook",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:orbit",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:ritual",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:scryer_camera",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:spell_arrow",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:spell_proj",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:spike",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_horse",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_skeleton",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_wolf",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:vexing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wall",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_boss",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wixie",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:flare",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:fluid_altar_input",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:grappling_hook",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:illumination_spark",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:item_altar_input",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:item_artifact",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:item_crystal",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:item_highlighted",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:item_starmetal",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:nocturnal_spark",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:shooting_star",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:vivid_spark",
+      "required": false
+    },
+    {
+      "id": "bclib:chair",
+      "required": false
+    },
+    {
+      "id": "beachparty:beach_ball",
+      "required": false
+    },
+    {
+      "id": "beachparty:chair",
+      "required": false
+    },
+    {
+      "id": "beachparty:coconut",
+      "required": false
+    },
+    {
+      "id": "beachparty:palm_boat",
+      "required": false
+    },
+    {
+      "id": "beachparty:palm_chest_boat",
+      "required": false
+    },
+    {
+      "id": "botania:babylon_weapon",
+      "required": false
+    },
+    {
+      "id": "botania:corporea_spark",
+      "required": false
+    },
+    {
+      "id": "botania:doppleganger",
+      "required": false
+    },
+    {
+      "id": "botania:ender_air",
+      "required": false
+    },
+    {
+      "id": "botania:ender_air_bottle",
+      "required": false
+    },
+    {
+      "id": "botania:falling_star",
+      "required": false
+    },
+    {
+      "id": "botania:flame_ring",
+      "required": false
+    },
+    {
+      "id": "botania:magic_landmine",
+      "required": false
+    },
+    {
+      "id": "botania:magic_missile",
+      "required": false
+    },
+    {
+      "id": "botania:mana_burst",
+      "required": false
+    },
+    {
+      "id": "botania:mana_storm",
+      "required": false
+    },
+    {
+      "id": "botania:pink_wither",
+      "required": false
+    },
+    {
+      "id": "botania:pixie",
+      "required": false
+    },
+    {
+      "id": "botania:player_mover",
+      "required": false
+    },
+    {
+      "id": "botania:pool_minecart",
+      "required": false
+    },
+    {
+      "id": "botania:spark",
+      "required": false
+    },
+    {
+      "id": "botania:thorn_chakram",
+      "required": false
+    },
+    {
+      "id": "botania:thrown_item",
+      "required": false
+    },
+    {
+      "id": "botania:vine_ball",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_blast",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_blast_portal",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_mark",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_mine",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_orb",
+      "required": false
+    },
+    {
+      "id": "cataclysm:abyss_portal",
+      "required": false
+    },
+    {
+      "id": "cataclysm:accretion",
+      "required": false
+    },
+    {
+      "id": "cataclysm:amethyst_cluster_projectile",
+      "required": false
+    },
+    {
+      "id": "cataclysm:amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ancient_desert_stele",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:aptrgangr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ashen_breath",
+      "required": false
+    },
+    {
+      "id": "cataclysm:axe_blade",
+      "required": false
+    },
+    {
+      "id": "cataclysm:blazing_bone",
+      "required": false
+    },
+    {
+      "id": "cataclysm:bolt_strike",
+      "required": false
+    },
+    {
+      "id": "cataclysm:brontes",
+      "required": false
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:cm_falling_block",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coral_bardiche",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coral_spear",
+      "required": false
+    },
+    {
+      "id": "cataclysm:cursed_sandstorm",
+      "required": false
+    },
+    {
+      "id": "cataclysm:death_laser_beam",
+      "required": false
+    },
+    {
+      "id": "cataclysm:dimensional_rift",
+      "required": false
+    },
+    {
+      "id": "cataclysm:earthquake",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_guardian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_guardian_bullet",
+      "required": false
+    },
+    {
+      "id": "cataclysm:eye_of_dungeon",
+      "required": false
+    },
+    {
+      "id": "cataclysm:flame_jet",
+      "required": false
+    },
+    {
+      "id": "cataclysm:flame_strike",
+      "required": false
+    },
+    {
+      "id": "cataclysm:flare_bomb",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignis",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignis_abyss_fireball",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignis_fireball",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:kobolediator",
+      "required": false
+    },
+    {
+      "id": "cataclysm:laser_beam",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lava_bomb",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lightning_area_effect",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lightning_spear",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lightning_storm",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lionfish_spike",
+      "required": false
+    },
+    {
+      "id": "cataclysm:maledictus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:mini_abyss_blast",
+      "required": false
+    },
+    {
+      "id": "cataclysm:modern_remnant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:netherite_ministrosity",
+      "required": false
+    },
+    {
+      "id": "cataclysm:netherite_monstrosity",
+      "required": false
+    },
+    {
+      "id": "cataclysm:octo_ink",
+      "required": false
+    },
+    {
+      "id": "cataclysm:phantom_arrow",
+      "required": false
+    },
+    {
+      "id": "cataclysm:phantom_halberd",
+      "required": false
+    },
+    {
+      "id": "cataclysm:player_ceraunus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:poison_dart",
+      "required": false
+    },
+    {
+      "id": "cataclysm:portal_abyss_blast",
+      "required": false
+    },
+    {
+      "id": "cataclysm:sandstorm",
+      "required": false
+    },
+    {
+      "id": "cataclysm:sandstorm_projectile",
+      "required": false
+    },
+    {
+      "id": "cataclysm:screen_shake",
+      "required": false
+    },
+    {
+      "id": "cataclysm:scylla",
+      "required": false
+    },
+    {
+      "id": "cataclysm:scylla_ceraunus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:sky_color",
+      "required": false
+    },
+    {
+      "id": "cataclysm:spark",
+      "required": false
+    },
+    {
+      "id": "cataclysm:storm_serpent",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_baby_leviathan",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_harbinger",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_leviathan",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_leviathan_tongue",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_prowler",
+      "required": false
+    },
+    {
+      "id": "cataclysm:tidal_hook",
+      "required": false
+    },
+    {
+      "id": "cataclysm:tidal_tentacle",
+      "required": false
+    },
+    {
+      "id": "cataclysm:urchin_spike",
+      "required": false
+    },
+    {
+      "id": "cataclysm:void_howitzer",
+      "required": false
+    },
+    {
+      "id": "cataclysm:void_rune",
+      "required": false
+    },
+    {
+      "id": "cataclysm:void_scatter_arrow",
+      "required": false
+    },
+    {
+      "id": "cataclysm:void_shard",
+      "required": false
+    },
+    {
+      "id": "cataclysm:void_vortex",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wadjet",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wall_watcher",
+      "required": false
+    },
+    {
+      "id": "cataclysm:water_spear",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wave",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wither_homing_missile",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wither_howitzer",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wither_missile",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wither_smoke_effect",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:grappling_hook",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:mud_ball",
+      "required": false
+    },
+    {
+      "id": "databank:world_gui",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:anger_pot",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:boat",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:chest_boat",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:fear_pot",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sorrow_pot",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:draconic_arrow",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:draconic_guardian",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:guardian_crystal",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:guardian_projectile",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:guardian_wither",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:bolas",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:dummy_dragon",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:generic_arrow_entity",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:generic_ball_entity",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:bonechill_projectile",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:chant_caster",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:necromancer",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:necromancer_spell",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:soulfire_projectile",
+      "required": false
+    },
+    {
+      "id": "embers:ember_packet",
+      "required": false
+    },
+    {
+      "id": "embers:ember_projectile",
+      "required": false
+    },
+    {
+      "id": "embers:glimmer_projectile",
+      "required": false
+    },
+    {
+      "id": "enchanted:broomstick",
+      "required": false
+    },
+    {
+      "id": "enchanted:throwable_brew",
+      "required": false
+    },
+    {
+      "id": "enchanted:voodoo_item",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:ancient_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:bubble_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:corrupted_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:crimson_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:ender_bullet",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:icy_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:soul_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:spirit",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:summoner_pearl",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:warped_pearl",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:abyss_projectile",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:angel_beam",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:cobweb_ball",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:dragon_breath_arrow",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:engine_hook",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:explorer_marker",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:ichor_spear",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:ichor_sprite",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:permanent_item_entity",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:soul_flame_ball",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:starlight_meteor",
+      "required": false
+    },
+    {
+      "id": "enigmaticlegacyplus:ultimate_wither_skull",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aethersent_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aethersent_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aethersent_meteor",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aetherstrike_rocket",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:air_sac_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:amaramber_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:ashen_snowball",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:astral_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:ball_lightning",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:boarwarf",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:boat",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:bouncy_star",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:candlash",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:chain_of_souls",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:chest_boat",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:coldsnap",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:crystal_cluster",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:energized_flame",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:energy_boomerang",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:energy_spark",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:eye_of_seeking",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:falling_block",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:frozen_bomb",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:frozen_tube",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:gatekeeper_fireball",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:glacite_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:gleech_egg",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:golem_laser_beam",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:grimstone_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_monstrosity",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_monstrosity_breath",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_spore",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_thorn",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:malarite_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:malarite_spear",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:orbital_planet",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:painting",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:permafrost",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:permafrost_cloud",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:permafrost_spit",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:poisonous_cloud",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:pungency_fruit_spear",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shattered_blade",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shining_star",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shot_seeds",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:solar_creeper",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:solar_strike",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:sonar_bomb",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:soulit_spectator",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:starfire",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:starlight_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tangled_husk",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tangled_skull",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tear_bomb",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tear_bomb_minecart",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:tentacle_spike",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:the_gatekeeper",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:thioquartz_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:thioquartz_shard",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:voracious_arrow",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:wilted_petal",
+      "required": false
+    },
+    {
+      "id": "evilcraft:anti_vengeance_beam",
+      "required": false
+    },
+    {
+      "id": "evilcraft:attack_vengeance_beam",
+      "required": false
+    },
+    {
+      "id": "evilcraft:biome_extract",
+      "required": false
+    },
+    {
+      "id": "evilcraft:blood_pearl",
+      "required": false
+    },
+    {
+      "id": "evilcraft:broom",
+      "required": false
+    },
+    {
+      "id": "evilcraft:controlled_zombie",
+      "required": false
+    },
+    {
+      "id": "evilcraft:item_dark_stick",
+      "required": false
+    },
+    {
+      "id": "evilcraft:item_empowerable",
+      "required": false
+    },
+    {
+      "id": "evilcraft:item_undespawnable",
+      "required": false
+    },
+    {
+      "id": "evilcraft:lightning_bomb_primed",
+      "required": false
+    },
+    {
+      "id": "evilcraft:lightning_grenade",
+      "required": false
+    },
+    {
+      "id": "evilcraft:necromancers_head",
+      "required": false
+    },
+    {
+      "id": "evilcraft:redstone_grenade",
+      "required": false
+    },
+    {
+      "id": "evilcraft:weather_container",
+      "required": false
+    },
+    {
+      "id": "extrabotany:airship",
+      "required": false
+    },
+    {
+      "id": "extrabotany:aura_fire",
+      "required": false
+    },
+    {
+      "id": "extrabotany:bottled_star",
+      "required": false
+    },
+    {
+      "id": "extrabotany:butterfly_projectile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ego",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ego_landmine",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ego_minion",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flamescion_slash",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flamescion_sword",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flamescion_ult",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flamescion_void",
+      "required": false
+    },
+    {
+      "id": "extrabotany:flower_weapon",
+      "required": false
+    },
+    {
+      "id": "extrabotany:gaia_3rd",
+      "required": false
+    },
+    {
+      "id": "extrabotany:gaia_legacy",
+      "required": false
+    },
+    {
+      "id": "extrabotany:holy_water_grenade",
+      "required": false
+    },
+    {
+      "id": "extrabotany:influx_waver_projectile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:judah_oath",
+      "required": false
+    },
+    {
+      "id": "extrabotany:judah_spear",
+      "required": false
+    },
+    {
+      "id": "extrabotany:judah_sword",
+      "required": false
+    },
+    {
+      "id": "extrabotany:key_of_truth",
+      "required": false
+    },
+    {
+      "id": "extrabotany:magic_landmine",
+      "required": false
+    },
+    {
+      "id": "extrabotany:motor",
+      "required": false
+    },
+    {
+      "id": "extrabotany:pet_pixie",
+      "required": false
+    },
+    {
+      "id": "extrabotany:phantom_sword",
+      "required": false
+    },
+    {
+      "id": "extrabotany:photon_shotgun_projectile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:skull_landmine_blue",
+      "required": false
+    },
+    {
+      "id": "extrabotany:skull_landmine_green",
+      "required": false
+    },
+    {
+      "id": "extrabotany:skull_landmine_red",
+      "required": false
+    },
+    {
+      "id": "extrabotany:skull_missile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:strengthen_slash",
+      "required": false
+    },
+    {
+      "id": "extrabotany:subspace",
+      "required": false
+    },
+    {
+      "id": "extrabotany:subspace_lance",
+      "required": false
+    },
+    {
+      "id": "extrabotany:subspace_spear",
+      "required": false
+    },
+    {
+      "id": "extrabotany:sword_domain",
+      "required": false
+    },
+    {
+      "id": "extrabotany:thunder_slash",
+      "required": false
+    },
+    {
+      "id": "extrabotany:true_shadow_katana_projectile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:true_terrablade_projectile",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ufo",
+      "required": false
+    },
+    {
+      "id": "extrabotany:void_field",
+      "required": false
+    },
+    {
+      "id": "extrabotany:void_herrscher",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:rotten_tomato",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:merchant",
+      "required": false
+    },
+    {
+      "id": "feywild:ashen_lord",
+      "required": false
+    },
+    {
+      "id": "feywild:autumn_leaf_projectile",
+      "required": false
+    },
+    {
+      "id": "feywild:fey_wings",
+      "required": false
+    },
+    {
+      "id": "feywild:mab",
+      "required": false
+    },
+    {
+      "id": "feywild:oberon",
+      "required": false
+    },
+    {
+      "id": "feywild:titania",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:aureal_bottle",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:aureal_missile",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:boat",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:boom_arrow",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:chest_boat",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:crimson_lightning_bolt",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:draco_arcanus_arrow",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:energy_ball",
+      "required": false
+    },
+    {
+      "id": "foundation:chair",
+      "required": false
+    },
+    {
+      "id": "furniture:canvas",
+      "required": false
+    },
+    {
+      "id": "furniture:chair",
+      "required": false
+    },
+    {
+      "id": "furniture:pells",
+      "required": false
+    },
+    {
+      "id": "gateways:endless_gateway",
+      "required": false
+    },
+    {
+      "id": "gateways:normal_gateway",
+      "required": false
+    },
+    {
+      "id": "gaze:saber",
+      "required": false
+    },
+    {
+      "id": "gaze:seidhr_bolt",
+      "required": false
+    },
+    {
+      "id": "gaze:soulward_shield",
+      "required": false
+    },
+    {
+      "id": "gaze:splintered_world",
+      "required": false
+    },
+    {
+      "id": "gaze:sword_domain_projectile",
+      "required": false
+    },
+    {
+      "id": "gaze:veils_edge",
+      "required": false
+    },
+    {
+      "id": "ghosts:haunted_boat",
+      "required": false
+    },
+    {
+      "id": "ghosts:haunted_chest_boat",
+      "required": false
+    },
+    {
+      "id": "goety:acid_pool",
+      "required": false
+    },
+    {
+      "id": "goety:allied_effect_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:apostle",
+      "required": false
+    },
+    {
+      "id": "goety:arrow_rain_trap",
+      "required": false
+    },
+    {
+      "id": "goety:bear_servant",
+      "required": false
+    },
+    {
+      "id": "goety:beast_head",
+      "required": false
+    },
+    {
+      "id": "goety:berserk_fungus",
+      "required": false
+    },
+    {
+      "id": "goety:biomine",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_variant_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blast_fungus",
+      "required": false
+    },
+    {
+      "id": "goety:blastling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blaze_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blossom_ball",
+      "required": false
+    },
+    {
+      "id": "goety:blossom_thorn",
+      "required": false
+    },
+    {
+      "id": "goety:boat",
+      "required": false
+    },
+    {
+      "id": "goety:bone_lord",
+      "required": false
+    },
+    {
+      "id": "goety:bone_shard",
+      "required": false
+    },
+    {
+      "id": "goety:bone_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:border_wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:bouncy_bubble",
+      "required": false
+    },
+    {
+      "id": "goety:bound_cryologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_evoker",
+      "required": false
+    },
+    {
+      "id": "goety:bound_geomancer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_iceologer",
+      "required": false
+    },
+    {
+      "id": "goety:bound_storm_caster",
+      "required": false
+    },
+    {
+      "id": "goety:bound_wind_caller",
+      "required": false
+    },
+    {
+      "id": "goety:breeze_servant",
+      "required": false
+    },
+    {
+      "id": "goety:brew",
+      "required": false
+    },
+    {
+      "id": "goety:brew_effect_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:brew_effect_gas",
+      "required": false
+    },
+    {
+      "id": "goety:brood_mother",
+      "required": false
+    },
+    {
+      "id": "goety:brood_mother_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cairn_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:camera_shake",
+      "required": false
+    },
+    {
+      "id": "goety:cave_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:chest_boat",
+      "required": false
+    },
+    {
+      "id": "goety:corrupted_beam",
+      "required": false
+    },
+    {
+      "id": "goety:crone",
+      "required": false
+    },
+    {
+      "id": "goety:crusher_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cryologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cryptic_eye",
+      "required": false
+    },
+    {
+      "id": "goety:cushion",
+      "required": false
+    },
+    {
+      "id": "goety:cyclone",
+      "required": false
+    },
+    {
+      "id": "goety:damned",
+      "required": false
+    },
+    {
+      "id": "goety:death_arrow",
+      "required": false
+    },
+    {
+      "id": "goety:delayed_summon",
+      "required": false
+    },
+    {
+      "id": "goety:doppelganger",
+      "required": false
+    },
+    {
+      "id": "goety:dragon_breath_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:dragon_fireball",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_servant",
+      "required": false
+    },
+    {
+      "id": "goety:earth_fist",
+      "required": false
+    },
+    {
+      "id": "goety:effect_blast_trap",
+      "required": false
+    },
+    {
+      "id": "goety:elder_guardian_servant",
+      "required": false
+    },
+    {
+      "id": "goety:electro_orb",
+      "required": false
+    },
+    {
+      "id": "goety:enchanter_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ender_goo",
+      "required": false
+    },
+    {
+      "id": "goety:ender_keeper",
+      "required": false
+    },
+    {
+      "id": "goety:endersent",
+      "required": false
+    },
+    {
+      "id": "goety:entangle_vines",
+      "required": false
+    },
+    {
+      "id": "goety:evoker_servant",
+      "required": false
+    },
+    {
+      "id": "goety:falling_block",
+      "required": false
+    },
+    {
+      "id": "goety:fang",
+      "required": false
+    },
+    {
+      "id": "goety:fire_blast_trap",
+      "required": false
+    },
+    {
+      "id": "goety:fire_pillar",
+      "required": false
+    },
+    {
+      "id": "goety:fire_rain_trap",
+      "required": false
+    },
+    {
+      "id": "goety:fire_tornado",
+      "required": false
+    },
+    {
+      "id": "goety:fire_tornado_trap",
+      "required": false
+    },
+    {
+      "id": "goety:fireball",
+      "required": false
+    },
+    {
+      "id": "goety:flame_construct",
+      "required": false
+    },
+    {
+      "id": "goety:flying_item",
+      "required": false
+    },
+    {
+      "id": "goety:frayed_servant",
+      "required": false
+    },
+    {
+      "id": "goety:frozen_zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:geomancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ghast_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ghost_arrow",
+      "required": false
+    },
+    {
+      "id": "goety:glacial_wall",
+      "required": false
+    },
+    {
+      "id": "goety:glow_light",
+      "required": false
+    },
+    {
+      "id": "goety:grave_golem",
+      "required": false
+    },
+    {
+      "id": "goety:guardian_servant",
+      "required": false
+    },
+    {
+      "id": "goety:gulf_tentacle",
+      "required": false
+    },
+    {
+      "id": "goety:hail_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:harpoon",
+      "required": false
+    },
+    {
+      "id": "goety:haunt",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor_servant",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor_stand",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_broom",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_painting",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_skull_shot",
+      "required": false
+    },
+    {
+      "id": "goety:heavy_arrow",
+      "required": false
+    },
+    {
+      "id": "goety:hell_blast",
+      "required": false
+    },
+    {
+      "id": "goety:hell_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:hell_chant",
+      "required": false
+    },
+    {
+      "id": "goety:hell_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:hellfire",
+      "required": false
+    },
+    {
+      "id": "goety:heresiarch",
+      "required": false
+    },
+    {
+      "id": "goety:heretic_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hoglin_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_redstone_golem",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_redstone_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_core_summon",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_cyclone",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_punch",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_servant",
+      "required": false
+    },
+    {
+      "id": "goety:husk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ice_bouquet",
+      "required": false
+    },
+    {
+      "id": "goety:ice_chunk",
+      "required": false
+    },
+    {
+      "id": "goety:ice_golem",
+      "required": false
+    },
+    {
+      "id": "goety:ice_spear",
+      "required": false
+    },
+    {
+      "id": "goety:ice_spike",
+      "required": false
+    },
+    {
+      "id": "goety:ice_storm",
+      "required": false
+    },
+    {
+      "id": "goety:iceologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:icy_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ill_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:imperial_guard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:insect_swarm",
+      "required": false
+    },
+    {
+      "id": "goety:irk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:jungle_zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:lavaball",
+      "required": false
+    },
+    {
+      "id": "goety:leapleaf",
+      "required": false
+    },
+    {
+      "id": "goety:lightning_trap",
+      "required": false
+    },
+    {
+      "id": "goety:magic_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:magic_fire",
+      "required": false
+    },
+    {
+      "id": "goety:magic_ground",
+      "required": false
+    },
+    {
+      "id": "goety:magic_lightning_trap",
+      "required": false
+    },
+    {
+      "id": "goety:magma_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:magma_cube_servant",
+      "required": false
+    },
+    {
+      "id": "goety:master_fang",
+      "required": false
+    },
+    {
+      "id": "goety:maverick_servant",
+      "required": false
+    },
+    {
+      "id": "goety:minister",
+      "required": false
+    },
+    {
+      "id": "goety:monsoon_cloud",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:mountaineer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:muck_wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:necro_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:neollager",
+      "required": false
+    },
+    {
+      "id": "goety:nether_meteor",
+      "required": false
+    },
+    {
+      "id": "goety:obsidian_monolith",
+      "required": false
+    },
+    {
+      "id": "goety:phantom_servant",
+      "required": false
+    },
+    {
+      "id": "goety:piker_servant",
+      "required": false
+    },
+    {
+      "id": "goety:pillager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:poison_anemone",
+      "required": false
+    },
+    {
+      "id": "goety:poison_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:poison_quill",
+      "required": false
+    },
+    {
+      "id": "goety:poison_quill_vine",
+      "required": false
+    },
+    {
+      "id": "goety:polar_bear_servant",
+      "required": false
+    },
+    {
+      "id": "goety:prisoner",
+      "required": false
+    },
+    {
+      "id": "goety:pyroclast",
+      "required": false
+    },
+    {
+      "id": "goety:quick_growing_kelp",
+      "required": false
+    },
+    {
+      "id": "goety:quick_growing_vine",
+      "required": false
+    },
+    {
+      "id": "goety:raid_boss_summon",
+      "required": false
+    },
+    {
+      "id": "goety:rain_arrow",
+      "required": false
+    },
+    {
+      "id": "goety:rattled_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ravaged",
+      "required": false
+    },
+    {
+      "id": "goety:ravager",
+      "required": false
+    },
+    {
+      "id": "goety:razor_wind",
+      "required": false
+    },
+    {
+      "id": "goety:reaper_servant",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_cube",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_golem",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_ministrosity",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate_carry",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ripper_servant",
+      "required": false
+    },
+    {
+      "id": "goety:rogueguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:royal_guard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:scatter_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:scatter_mine",
+      "required": false
+    },
+    {
+      "id": "goety:scythe",
+      "required": false
+    },
+    {
+      "id": "goety:seat",
+      "required": false
+    },
+    {
+      "id": "goety:servant_wind_charge",
+      "required": false
+    },
+    {
+      "id": "goety:shield_debris",
+      "required": false
+    },
+    {
+      "id": "goety:signaler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_pillager",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skull_lord",
+      "required": false
+    },
+    {
+      "id": "goety:slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:smack_stone",
+      "required": false
+    },
+    {
+      "id": "goety:snap_fungus",
+      "required": false
+    },
+    {
+      "id": "goety:snareling_goop",
+      "required": false
+    },
+    {
+      "id": "goety:snareling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:snareling_shot",
+      "required": false
+    },
+    {
+      "id": "goety:soul_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:soul_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:soul_bullet",
+      "required": false
+    },
+    {
+      "id": "goety:soul_light",
+      "required": false
+    },
+    {
+      "id": "goety:spell_lightning_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:spider_egg",
+      "required": false
+    },
+    {
+      "id": "goety:spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:spider_web",
+      "required": false
+    },
+    {
+      "id": "goety:spike",
+      "required": false
+    },
+    {
+      "id": "goety:squall_golem",
+      "required": false
+    },
+    {
+      "id": "goety:steam_missile",
+      "required": false
+    },
+    {
+      "id": "goety:stone_ministrosity",
+      "required": false
+    },
+    {
+      "id": "goety:storm_caster_servant",
+      "required": false
+    },
+    {
+      "id": "goety:storm_util",
+      "required": false
+    },
+    {
+      "id": "goety:stray_servant",
+      "required": false
+    },
+    {
+      "id": "goety:summon_apostle",
+      "required": false
+    },
+    {
+      "id": "goety:summon_circle",
+      "required": false
+    },
+    {
+      "id": "goety:summon_circle_boss",
+      "required": false
+    },
+    {
+      "id": "goety:summon_fiery",
+      "required": false
+    },
+    {
+      "id": "goety:sunken_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:surging_orb",
+      "required": false
+    },
+    {
+      "id": "goety:survey_eye",
+      "required": false
+    },
+    {
+      "id": "goety:sword",
+      "required": false
+    },
+    {
+      "id": "goety:tidal_surge",
+      "required": false
+    },
+    {
+      "id": "goety:totemic_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:totemic_wall",
+      "required": false
+    },
+    {
+      "id": "goety:trampler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:trident_storm",
+      "required": false
+    },
+    {
+      "id": "goety:tropical_slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:updraft_blast",
+      "required": false
+    },
+    {
+      "id": "goety:vanguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vex_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vicious_pike",
+      "required": false
+    },
+    {
+      "id": "goety:vicious_tooth",
+      "required": false
+    },
+    {
+      "id": "goety:vindicator_chef_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vindicator_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vine_hook",
+      "required": false
+    },
+    {
+      "id": "goety:vizier",
+      "required": false
+    },
+    {
+      "id": "goety:vizier_clone",
+      "required": false
+    },
+    {
+      "id": "goety:void_eye",
+      "required": false
+    },
+    {
+      "id": "goety:void_lightning_trap",
+      "required": false
+    },
+    {
+      "id": "goety:void_rift",
+      "required": false
+    },
+    {
+      "id": "goety:void_shock",
+      "required": false
+    },
+    {
+      "id": "goety:void_shock_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:void_slash",
+      "required": false
+    },
+    {
+      "id": "goety:volcano",
+      "required": false
+    },
+    {
+      "id": "goety:warlock_servant",
+      "required": false
+    },
+    {
+      "id": "goety:watchling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wavewhisperer",
+      "required": false
+    },
+    {
+      "id": "goety:web_shot",
+      "required": false
+    },
+    {
+      "id": "goety:web_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:whisperer",
+      "required": false
+    },
+    {
+      "id": "goety:wight",
+      "required": false
+    },
+    {
+      "id": "goety:wildfire",
+      "required": false
+    },
+    {
+      "id": "goety:wind_caller_servant",
+      "required": false
+    },
+    {
+      "id": "goety:witch_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wither_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:wither_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety:wither_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wither_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wither_skull",
+      "required": false
+    },
+    {
+      "id": "goety:wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_ravager",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_vindicator",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_brute_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_blast",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_blast_portal",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_mark",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_mine",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_orb",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:abyss_portal",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:aptrgangr",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:cindaria_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coral_golem",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coralssus",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:death_laser_beam",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_angler_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_brute_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_priest_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_warlock_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:dimensional_rift",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_necromancer",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:drowned_host_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:elite_draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:flare_bomb",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:hippocamtus",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignis_abyss_fireball",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignis_fireball",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignited_berserker",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ignited_revenant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:kobolediator",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:koboleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:laser_beam",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:lava_bomb",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:leviathan",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:leviathan_tongue",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:lionfish",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:netherite_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:octo_ink",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:phantom_arrow",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:portal_abyss_blast",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:royal_draugr_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:sandstorm",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:storm_serpent",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:symbiocto_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:the_prowler",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:urchinkin_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:void_vortex",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:wadjet",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:watcher_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:wither_homing_missile",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:zombie_amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:candle_flame",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:candle_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:honey_blob",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:mud_ball",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:netherite_golem",
+      "required": false
+    },
+    {
+      "id": "hexcasting:wall_scroll",
+      "required": false
+    },
+    {
+      "id": "hexerei:boat",
+      "required": false
+    },
+    {
+      "id": "hexerei:book_canvas",
+      "required": false
+    },
+    {
+      "id": "hexerei:broom",
+      "required": false
+    },
+    {
+      "id": "hexerei:chest_boat",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:acid_orb",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:arcane_shackle",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:arrow_volley",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ball_lightning",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:black_hole",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:blizzard_aoe",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:blood_needle",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:blood_slash",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:chain_lightning",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:comet",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:cone_of_cold",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:creeper_head",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king_corpse",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king_soul",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:debug_wizard",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:devour_jaw",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dragon_breath",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dragon_breath_pool",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:earthquake_aoe",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:echoing_arrow",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:echoing_strike",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:echoing_sword",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:eldritch_blast",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:electrocute",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ender_chain",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fang_swirl",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fiery_dagger",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_arrow",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_boss",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_breath",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_eruption",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fire_field",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:fireball",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:firebolt",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:firefly_swarm",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:frost_field",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:frozen_humanoid",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:guiding_bolt",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:gust",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:healing_aoe",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_block_projectile",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_spike",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_tomb",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:icicle",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:lightning_lance",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:lightning_strike",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:magic_arrow",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:magic_missile",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:magma_ball",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ominous_fire_orb",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:poison_arrow",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:poison_breath",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:poison_cloud",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:poison_splash",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:portal",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ray_of_frost",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:root",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:scapegoat",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:sculk_tentacle",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:shield",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:small_fireball",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:small_magic_arrow",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:snowball",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:spear",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:spectral_hammer",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:spectral_steed",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:stomp_aoe",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_claymore",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_polar_bear",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_rapier",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_skeleton",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_sword",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_vex",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_zombie",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:sunbeam",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:target_area",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:thrown_item",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:thunderstep_orb",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:undead_rift",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:visual_falling_block",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:wall_of_fire",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:wisp",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:wither_skull",
+      "required": false
+    },
+    {
+      "id": "lootr:item_frame",
+      "required": false
+    },
+    {
+      "id": "lootr:lootr_minecart",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:aoe_explosion_mahoujin_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:authority_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:beam_mahoujin_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:beam_projectile_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:butterfly_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:explosion_mahoujin_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:fallen_down_beam_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:fallen_down_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:familiar_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:gandr_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:gate_chain_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:gate_weapon_projectile_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:gun_beam_projectile_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:gun_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:kodoku_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:lightning_bolt_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:lightning_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:mental_displacement_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:morgan_ball_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:replica_teleport_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:rho_aias_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:rhongomyniad_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:smite_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:spatial_disorientation_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:weapon_projectile_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:william_entity",
+      "required": false
+    },
+    {
+      "id": "malum:ascending_block",
+      "required": false
+    },
+    {
+      "id": "malum:bound_rite_locus",
+      "required": false
+    },
+    {
+      "id": "malum:draining_bolt",
+      "required": false
+    },
+    {
+      "id": "malum:entropic_flame_bolt",
+      "required": false
+    },
+    {
+      "id": "malum:etheric_nitrate",
+      "required": false
+    },
+    {
+      "id": "malum:hex_bolt",
+      "required": false
+    },
+    {
+      "id": "malum:hidden_blade_delayed_impact",
+      "required": false
+    },
+    {
+      "id": "malum:natural_spirit",
+      "required": false
+    },
+    {
+      "id": "malum:pneuma_void",
+      "required": false
+    },
+    {
+      "id": "malum:scythe_boomerang",
+      "required": false
+    },
+    {
+      "id": "malum:scythe_maelstrom",
+      "required": false
+    },
+    {
+      "id": "malum:seeking_rite_locus",
+      "required": false
+    },
+    {
+      "id": "malum:spellweavers_locus",
+      "required": false
+    },
+    {
+      "id": "malum:sundering_anchor",
+      "required": false
+    },
+    {
+      "id": "malum:thrown_gluttony",
+      "required": false
+    },
+    {
+      "id": "malum:vivid_nitrate",
+      "required": false
+    },
+    "minecraft:area_effect_cloud",
+    "minecraft:armor_stand",
+    "minecraft:arrow",
+    "minecraft:block_display",
+    "minecraft:boat",
+    "minecraft:breeze_wind_charge",
+    "minecraft:chest_boat",
+    "minecraft:chest_minecart",
+    "minecraft:command_block_minecart",
+    "minecraft:dragon_fireball",
+    "minecraft:egg",
+    "minecraft:end_crystal",
+    "minecraft:ender_dragon",
+    "minecraft:ender_pearl",
+    "minecraft:evoker_fangs",
+    "minecraft:experience_bottle",
+    "minecraft:experience_orb",
+    "minecraft:eye_of_ender",
+    "minecraft:falling_block",
+    "minecraft:fireball",
+    "minecraft:firework_rocket",
+    "minecraft:fishing_bobber",
+    "minecraft:furnace_minecart",
+    "minecraft:glow_item_frame",
+    "minecraft:hopper_minecart",
+    "minecraft:interaction",
+    "minecraft:item",
+    "minecraft:item_display",
+    "minecraft:item_frame",
+    "minecraft:leash_knot",
+    "minecraft:lightning_bolt",
+    "minecraft:llama_spit",
+    "minecraft:marker",
+    "minecraft:minecart",
+    "minecraft:ominous_item_spawner",
+    "minecraft:painting",
+    "minecraft:player",
+    "minecraft:potion",
+    "minecraft:shulker_bullet",
+    "minecraft:small_fireball",
+    "minecraft:snowball",
+    "minecraft:spawner_minecart",
+    "minecraft:spectral_arrow",
+    "minecraft:text_display",
+    "minecraft:tnt",
+    "minecraft:tnt_minecart",
+    "minecraft:trident",
+    "minecraft:wind_charge",
+    "minecraft:wither",
+    "minecraft:wither_skull",
+    {
+      "id": "neovitae:blood_light",
+      "required": false
+    },
+    {
+      "id": "neovitae:blood_shield",
+      "required": false
+    },
+    {
+      "id": "neovitae:meteor",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_husk",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_skeleton",
+      "required": false
+    },
+    {
+      "id": "neovitae:necromancy_summon_stray",
+      "required": false
+    },
+    {
+      "id": "neovitae:potion_flask",
+      "required": false
+    },
+    {
+      "id": "neovitae:shaped_charge",
+      "required": false
+    },
+    {
+      "id": "neovitae:throwing_dagger",
+      "required": false
+    },
+    {
+      "id": "neovitae:throwing_dagger_syringe",
+      "required": false
+    },
+    {
+      "id": "occultism:afrit",
+      "required": false
+    },
+    {
+      "id": "occultism:afrit_wild",
+      "required": false
+    },
+    {
+      "id": "occultism:bat_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:beaver_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:beholder_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:blacksmith_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:chimera_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:cthulhu_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:deer_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:demonic_husband",
+      "required": false
+    },
+    {
+      "id": "occultism:demonic_wife",
+      "required": false
+    },
+    {
+      "id": "occultism:devil_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:djinni",
+      "required": false
+    },
+    {
+      "id": "occultism:dragon_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:fairy_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:foliot",
+      "required": false
+    },
+    {
+      "id": "occultism:goat_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:greedy_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:guardian_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:headless_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:marid",
+      "required": false
+    },
+    {
+      "id": "occultism:marid_unbound",
+      "required": false
+    },
+    {
+      "id": "occultism:mercy_goat",
+      "required": false
+    },
+    {
+      "id": "occultism:mummy_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:otherworld_bird",
+      "required": false
+    },
+    {
+      "id": "occultism:shub_niggurath_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:shub_niggurath_spawn",
+      "required": false
+    },
+    {
+      "id": "occultism:thrown_sword",
+      "required": false
+    },
+    {
+      "id": "pastel:bedrock_fishing_bobber",
+      "required": false
+    },
+    {
+      "id": "pastel:bident",
+      "required": false
+    },
+    {
+      "id": "pastel:bident_mirror_image",
+      "required": false
+    },
+    {
+      "id": "pastel:block_flooder_projectile",
+      "required": false
+    },
+    {
+      "id": "pastel:draconic_twinsword",
+      "required": false
+    },
+    {
+      "id": "pastel:dragon_talon",
+      "required": false
+    },
+    {
+      "id": "pastel:fireproof_item",
+      "required": false
+    },
+    {
+      "id": "pastel:float_block",
+      "required": false
+    },
+    {
+      "id": "pastel:glass_arrow",
+      "required": false
+    },
+    {
+      "id": "pastel:glow_phantom_frame",
+      "required": false
+    },
+    {
+      "id": "pastel:ink_projectile",
+      "required": false
+    },
+    {
+      "id": "pastel:item_projectile",
+      "required": false
+    },
+    {
+      "id": "pastel:kindling",
+      "required": false
+    },
+    {
+      "id": "pastel:kindling_cough",
+      "required": false
+    },
+    {
+      "id": "pastel:lagoon_fishing_bobber",
+      "required": false
+    },
+    {
+      "id": "pastel:light_mine",
+      "required": false
+    },
+    {
+      "id": "pastel:light_shard",
+      "required": false
+    },
+    {
+      "id": "pastel:light_spear",
+      "required": false
+    },
+    {
+      "id": "pastel:living_marker",
+      "required": false
+    },
+    {
+      "id": "pastel:mining_projectile",
+      "required": false
+    },
+    {
+      "id": "pastel:molten_fishing_bobber",
+      "required": false
+    },
+    {
+      "id": "pastel:phantom_frame",
+      "required": false
+    },
+    {
+      "id": "pastel:preservation_turret",
+      "required": false
+    },
+    {
+      "id": "pastel:seat",
+      "required": false
+    },
+    {
+      "id": "pastel:shooting_star",
+      "required": false
+    },
+    {
+      "id": "primalmagick:alchemical_bomb",
+      "required": false
+    },
+    {
+      "id": "primalmagick:apple",
+      "required": false
+    },
+    {
+      "id": "primalmagick:flying_carpet",
+      "required": false
+    },
+    {
+      "id": "primalmagick:forbidden_trident",
+      "required": false
+    },
+    {
+      "id": "primalmagick:friendly_witch",
+      "required": false
+    },
+    {
+      "id": "primalmagick:guardian_pixie_basic",
+      "required": false
+    },
+    {
+      "id": "primalmagick:guardian_pixie_grand",
+      "required": false
+    },
+    {
+      "id": "primalmagick:guardian_pixie_majestic",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hallowsteel_golem",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hallowsteel_trident",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hexium_golem",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hexium_trident",
+      "required": false
+    },
+    {
+      "id": "primalmagick:ignyx",
+      "required": false
+    },
+    {
+      "id": "primalmagick:inner_demon",
+      "required": false
+    },
+    {
+      "id": "primalmagick:mana_arrow",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_house",
+      "required": false
+    },
+    {
+      "id": "primalmagick:primalite_golem",
+      "required": false
+    },
+    {
+      "id": "primalmagick:primalite_trident",
+      "required": false
+    },
+    {
+      "id": "primalmagick:sin_crash",
+      "required": false
+    },
+    {
+      "id": "primalmagick:sin_crystal",
+      "required": false
+    },
+    {
+      "id": "primalmagick:spell_mine",
+      "required": false
+    },
+    {
+      "id": "primalmagick:spell_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:fire_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:homing_arrow",
+      "required": false
+    },
+    {
+      "id": "projecte:lava_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:lens_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:mob_randomizer",
+      "required": false
+    },
+    {
+      "id": "projecte:nova_cataclysm_primed",
+      "required": false
+    },
+    {
+      "id": "projecte:nova_catalyst_primed",
+      "required": false
+    },
+    {
+      "id": "projecte:swrg_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:water_projectile",
+      "required": false
+    },
+    {
+      "id": "psi:spell_charge",
+      "required": false
+    },
+    {
+      "id": "psi:spell_circle",
+      "required": false
+    },
+    {
+      "id": "psi:spell_grenade",
+      "required": false
+    },
+    {
+      "id": "psi:spell_mine",
+      "required": false
+    },
+    {
+      "id": "psi:spell_projectile",
+      "required": false
+    },
+    {
+      "id": "psitweaks:aqua_cutter_projectile",
+      "required": false
+    },
+    {
+      "id": "psitweaks:blaze_ball",
+      "required": false
+    },
+    {
+      "id": "psitweaks:dry_ice_projectile",
+      "required": false
+    },
+    {
+      "id": "psitweaks:flare_circle",
+      "required": false
+    },
+    {
+      "id": "psitweaks:ice_circle",
+      "required": false
+    },
+    {
+      "id": "psitweaks:meteor_line_beam",
+      "required": false
+    },
+    {
+      "id": "psitweaks:molecular_divider",
+      "required": false
+    },
+    {
+      "id": "psitweaks:phonon_maser_beam",
+      "required": false
+    },
+    {
+      "id": "psitweaks:time_accelerator",
+      "required": false
+    },
+    {
+      "id": "psitweaks:tunneler_arrow",
+      "required": false
+    },
+    {
+      "id": "relics:constellation_star",
+      "required": false
+    },
+    {
+      "id": "relics:death_essence",
+      "required": false
+    },
+    {
+      "id": "relics:electric_spark",
+      "required": false
+    },
+    {
+      "id": "relics:falling_star",
+      "required": false
+    },
+    {
+      "id": "relics:glitchy_illusion",
+      "required": false
+    },
+    {
+      "id": "relics:golden_tooth",
+      "required": false
+    },
+    {
+      "id": "relics:kinetic_electricity",
+      "required": false
+    },
+    {
+      "id": "relics:leaves_block",
+      "required": false
+    },
+    {
+      "id": "relics:life_essence",
+      "required": false
+    },
+    {
+      "id": "relics:reflective_orb",
+      "required": false
+    },
+    {
+      "id": "relics:relic_experience_orb",
+      "required": false
+    },
+    {
+      "id": "relics:roller_spark",
+      "required": false
+    },
+    {
+      "id": "relics:self_sacrifice_projectile",
+      "required": false
+    },
+    {
+      "id": "relics:shadow_glaive",
+      "required": false
+    },
+    {
+      "id": "relics:shockwave_block",
+      "required": false
+    },
+    {
+      "id": "relics:spore",
+      "required": false
+    },
+    {
+      "id": "relics:thrown_relic_experience_bottle",
+      "required": false
+    },
+    {
+      "id": "reliquary:aphrodite_potion",
+      "required": false
+    },
+    {
+      "id": "reliquary:blaze_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:buster_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:concussive_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:ender_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:ender_staff_projectile",
+      "required": false
+    },
+    {
+      "id": "reliquary:exorcism_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:fertile_potion",
+      "required": false
+    },
+    {
+      "id": "reliquary:glowing_water",
+      "required": false
+    },
+    {
+      "id": "reliquary:holy_hand_grenade",
+      "required": false
+    },
+    {
+      "id": "reliquary:kraken_slime",
+      "required": false
+    },
+    {
+      "id": "reliquary:lyssa_hook",
+      "required": false
+    },
+    {
+      "id": "reliquary:neutral_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:sand_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:seeker_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:special_snowball",
+      "required": false
+    },
+    {
+      "id": "reliquary:storm_shot",
+      "required": false
+    },
+    {
+      "id": "reliquary:thrown_potion",
+      "required": false
+    },
+    {
+      "id": "reliquary:tipped_arrow",
+      "required": false
+    },
+    {
+      "id": "reliquified_artifacts:spark",
+      "required": false
+    },
+    {
+      "id": "reliquified_artifacts:whoopee_cloud",
+      "required": false
+    },
+    {
+      "id": "rootsclassic:entity_accelerator",
+      "required": false
+    },
+    {
+      "id": "rootsclassic:tile_accelerator",
+      "required": false
+    },
+    {
+      "id": "scriptor:projectile",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:bee_queen",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:bee_stinger",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:cosmic_crystal_entity",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:dirt_pellet",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:electric_ring_entity",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:honey_crystal_shard",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:pollen_puff",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:purple_spike_entity",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:sentry_watcher",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:thrown_stinger_spear",
+      "required": false
+    },
+    {
+      "id": "theaurorian:cerulean_arrow",
+      "required": false
+    },
+    {
+      "id": "theaurorian:crystal_arrow",
+      "required": false
+    },
+    {
+      "id": "theaurorian:crystalline_beam",
+      "required": false
+    },
+    {
+      "id": "theaurorian:dungeon_keeper",
+      "required": false
+    },
+    {
+      "id": "theaurorian:dungeon_spider",
+      "required": false
+    },
+    {
+      "id": "theaurorian:moon_queen",
+      "required": false
+    },
+    {
+      "id": "theaurorian:sticky_spiker",
+      "required": false
+    },
+    {
+      "id": "theaurorian:webbing",
+      "required": false
+    },
+    {
+      "id": "theurgy:follow_projectile",
+      "required": false
+    },
+    {
+      "id": "tombstone:cloud",
+      "required": false
+    },
+    {
+      "id": "tombstone:flying_carpet",
+      "required": false
+    },
+    {
+      "id": "tombstone:grave_guardian",
+      "required": false
+    },
+    {
+      "id": "tombstone:spectral_bite",
+      "required": false
+    },
+    {
+      "id": "tombstone:spectral_wolf",
+      "required": false
+    },
+    {
+      "id": "totemic:baykok",
+      "required": false
+    },
+    {
+      "id": "totemic:invisible_arrow",
+      "required": false
+    },
+    {
+      "id": "twilightforest:alpha_yeti",
+      "required": false
+    },
+    {
+      "id": "twilightforest:chain_block",
+      "required": false
+    },
+    {
+      "id": "twilightforest:charm_effect",
+      "required": false
+    },
+    {
+      "id": "twilightforest:cube_of_annihilation",
+      "required": false
+    },
+    {
+      "id": "twilightforest:falling_ice",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hydra",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hydra_mortar",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ice_arrow",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ice_crystal",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ice_snowball",
+      "required": false
+    },
+    {
+      "id": "twilightforest:knight_phantom",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich_bolt",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich_bomb",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lich_minion",
+      "required": false
+    },
+    {
+      "id": "twilightforest:loyal_zombie",
+      "required": false
+    },
+    {
+      "id": "twilightforest:magic_painting",
+      "required": false
+    },
+    {
+      "id": "twilightforest:minoshroom",
+      "required": false
+    },
+    {
+      "id": "twilightforest:moonworm_shot",
+      "required": false
+    },
+    {
+      "id": "twilightforest:naga",
+      "required": false
+    },
+    {
+      "id": "twilightforest:nature_bolt",
+      "required": false
+    },
+    {
+      "id": "twilightforest:plateau_boss",
+      "required": false
+    },
+    {
+      "id": "twilightforest:protection_box",
+      "required": false
+    },
+    {
+      "id": "twilightforest:quest_ram",
+      "required": false
+    },
+    {
+      "id": "twilightforest:roving_cube",
+      "required": false
+    },
+    {
+      "id": "twilightforest:seeker_arrow",
+      "required": false
+    },
+    {
+      "id": "twilightforest:slider",
+      "required": false
+    },
+    {
+      "id": "twilightforest:slime_blob",
+      "required": false
+    },
+    {
+      "id": "twilightforest:snow_queen",
+      "required": false
+    },
+    {
+      "id": "twilightforest:thrown_block",
+      "required": false
+    },
+    {
+      "id": "twilightforest:thrown_ice",
+      "required": false
+    },
+    {
+      "id": "twilightforest:thrown_wep",
+      "required": false
+    },
+    {
+      "id": "twilightforest:tome_bolt",
+      "required": false
+    },
+    {
+      "id": "twilightforest:ur_ghast",
+      "required": false
+    },
+    {
+      "id": "twilightforest:wand_bolt",
+      "required": false
+    },
+    {
+      "id": "voidscape:anti_bolt",
+      "required": false
+    },
+    {
+      "id": "voidscape:corrupted_pawn",
+      "required": false
+    },
+    {
+      "id": "voidscape:ichor_bolt",
+      "required": false
+    },
+    {
+      "id": "voidscape:null_servant",
+      "required": false
+    },
+    {
+      "id": "voidscape:null_servant_augment_block",
+      "required": false
+    },
+    {
+      "id": "voidscape:null_servant_ichor_bolt",
+      "required": false
+    },
+    {
+      "id": "voidscape:null_servant_phantom",
+      "required": false
+    },
+    {
+      "id": "voidscape:strange_pearl",
+      "required": false
+    },
+    {
+      "id": "wardentools:abyss_lightning",
+      "required": false
+    },
+    {
+      "id": "wardentools:contagion_incarnation",
+      "required": false
+    },
+    {
+      "id": "wardentools:contagion_incarnation_corpse",
+      "required": false
+    },
+    {
+      "id": "wardentools:crystal_laser",
+      "required": false
+    },
+    {
+      "id": "wardentools:mod_boat",
+      "required": false
+    },
+    {
+      "id": "wardentools:mod_chest_boat",
+      "required": false
+    },
+    {
+      "id": "wardentools:parasyte",
+      "required": false
+    },
+    {
+      "id": "wardentools:protector",
+      "required": false
+    },
+    {
+      "id": "wardentools:temper",
+      "required": false
+    },
+    {
+      "id": "witchery:area_effect_cloud",
+      "required": false
+    },
+    {
+      "id": "witchery:baba_yaga",
+      "required": false
+    },
+    {
+      "id": "witchery:banshee",
+      "required": false
+    },
+    {
+      "id": "witchery:broom",
+      "required": false
+    },
+    {
+      "id": "witchery:chain",
+      "required": false
+    },
+    {
+      "id": "witchery:custom_boat",
+      "required": false
+    },
+    {
+      "id": "witchery:custom_chest_boat",
+      "required": false
+    },
+    {
+      "id": "witchery:death",
+      "required": false
+    },
+    {
+      "id": "witchery:demon",
+      "required": false
+    },
+    {
+      "id": "witchery:elle",
+      "required": false
+    },
+    {
+      "id": "witchery:floating_item",
+      "required": false
+    },
+    {
+      "id": "witchery:gulg",
+      "required": false
+    },
+    {
+      "id": "witchery:horned_huntsman",
+      "required": false
+    },
+    {
+      "id": "witchery:huntsman_spear",
+      "required": false
+    },
+    {
+      "id": "witchery:imp",
+      "required": false
+    },
+    {
+      "id": "witchery:insanity",
+      "required": false
+    },
+    {
+      "id": "witchery:leonard",
+      "required": false
+    },
+    {
+      "id": "witchery:light_eater_projectile",
+      "required": false
+    },
+    {
+      "id": "witchery:lilith",
+      "required": false
+    },
+    {
+      "id": "witchery:lingering_brew",
+      "required": false
+    },
+    {
+      "id": "witchery:mirror_demon",
+      "required": false
+    },
+    {
+      "id": "witchery:mog",
+      "required": false
+    },
+    {
+      "id": "witchery:nightmare",
+      "required": false
+    },
+    {
+      "id": "witchery:poltergeist",
+      "required": false
+    },
+    {
+      "id": "witchery:scythe_thrown",
+      "required": false
+    },
+    {
+      "id": "witchery:sleeping_player",
+      "required": false
+    },
+    {
+      "id": "witchery:soul_shell_player",
+      "required": false
+    },
+    {
+      "id": "witchery:spectral_pig",
+      "required": false
+    },
+    {
+      "id": "witchery:spectre",
+      "required": false
+    },
+    {
+      "id": "witchery:sun_grenade",
+      "required": false
+    },
+    {
+      "id": "witchery:supernatural_arrow",
+      "required": false
+    },
+    {
+      "id": "witchery:suppression_arrow",
+      "required": false
+    },
+    {
+      "id": "witchery:thrown_brew",
+      "required": false
+    },
+    {
+      "id": "witchery:thrown_potion",
+      "required": false
+    },
+    {
+      "id": "witchery:voodoo_poppet",
+      "required": false
+    }
+  ]
+}

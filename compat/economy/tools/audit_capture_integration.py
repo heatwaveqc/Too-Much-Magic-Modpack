@@ -6,20 +6,23 @@ import subprocess
 import tempfile
 from pathlib import Path
 import zipfile
+import fetch_compile_classpath as locked
 from fetch_compile_classpath import ROOT, read_lock, fetch
 
-TAG = ROOT / "compat/economy/src/main/resources/data/apothic_spawners/tags/entity_type/blacklisted_from_spawners.json"
+TAG = ROOT / "compat/economy/src/main/resources/data/tmm/tags/entity_type/capture_blacklist.json"
 POLICY = {"blacklist_target", "approved_misc_default_deny"}
 
 def project(registry):
-    assert registry["schema_version"] == 1 and registry["registry_revision"] == 4
+    assert registry["schema_version"] == 1 and registry["registry_revision"] == 5
     entities = registry["entities"]
     assert len(entities) == registry["census"]["entity_count"] == 1763
     ids = sorted(i for i, e in entities.items() if e["capture"]["disposition"] in POLICY)
-    assert len(ids) == 1240
+    assert len(ids) == 1200
     assert "neovitae:daemonium_doloris" not in ids
     assert not set(ids) & {"minecraft:villager", "minecraft:iron_golem", "minecraft:snow_golem"}
-    assert {"minecraft:wither", "minecraft:ender_dragon"} <= set(ids)
+    assert {"minecraft:wither", "minecraft:ender_dragon", "occultism:marid_unbound", "occultism:afrit_wild", "occultism:foliot", "neovitae:necromancy_summon"} <= set(ids)
+    assert not any(i.startswith(("occultism:possessed_", "occultism:wild_")) for i in ids)
+    assert not set(ids) & {"minecraft:warden", "minecraft:elder_guardian", "minecraft:vex", "occultism:iesnium_golem", "artifacts:mimic", "goety:irk"}
     return {"replace": False, "values": [i if i.startswith("minecraft:") else {"id": i, "required": False} for i in ids]}
 
 def abi(jar, clazz, required):
@@ -36,13 +39,22 @@ def main():
     args = parser.parse_args()
     expected = project(json.loads(args.registry.read_text(encoding="utf-8")))
     assert json.loads(TAG.read_text(encoding="utf-8")) == expected
-    print("PASS 1240 approved additions, additive native tag, no held or exception types")
+    print("PASS 1200 approved additions, additive TMM tag, no held or exception types")
+    consumers = ["apothic_spawners:blacklisted_from_spawners","occultism:soul_gem_deny_list","occultism:fragile_soul_gem_deny_list","ars_nouveau:jar_blacklist","ars_nouveau:drygmy_blacklist","forbidden_arcanus:quantum_catcher_blacklisted","forbidden_arcanus:boss_catcher_blacklisted"]
+    for key in consumers:
+        ns, name = key.split(":")
+        path = TAG.parents[3] / ns / "tags/entity_type" / (name + ".json")
+        assert json.loads(path.read_text(encoding="utf-8")) == {"replace": False, "values": ["#tmm:capture_blacklist"]}
+    print("PASS 7 native consumer aliases; Neo Vitae uses effective native spawner blacklist")
     neo_tag = TAG.parents[3] / "neovitae/tags/entity_type/deny_imprisonment.json"
     assert json.loads(neo_tag.read_text(encoding="utf-8")) == {"replace": False, "values": [{"id": "#apothic_spawners:blacklisted_from_spawners", "required": False}]}
     print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
     if args.projection_only:
         return
     names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar", "neovitae-1.21.1-1.1.53.jar"}
+    # Audit exact native tag resources for all seven consumers before gameplay acceptance.
+    locked.SLUGS.extend(["occultism", "ars-ocultas"])
+    names |= {"ars_nouveau-1.21.1-5.13.5.jar", "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus-2.6.1.jar", "ars_ocultas-1.21.1-2.6.2.jar"}
     pins = {p["filename"]: p for p in read_lock() if p["filename"] in names}
     assert set(pins) == names
     with tempfile.TemporaryDirectory() as tmp:
@@ -62,6 +74,19 @@ def main():
             native_neo = json.loads(z.read("data/neovitae/tags/entity_type/deny_imprisonment.json"))
             assert {"minecraft:ender_dragon", "minecraft:wither", "minecraft:warden"} <= set(native_neo["values"])
         abi(neo, "com.breakinblocks.neovitae.common.event.ImprisonmentArrayHandler", ["static void onLivingDeath(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDeathEvent;)V", "DENY_IMPRISONMENT", "SpawnerBlockEntity.setEntityId"])
+        consumer_jars = {"apothic_spawners": apoth, "ars_nouveau": dest / "ars_nouveau-1.21.1-5.13.5.jar", "occultism": dest / "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus": dest / "forbidden_arcanus-2.6.1.jar"}
+        for key in consumers:
+            ns, name = key.split(":")
+            path = f"data/{ns}/tags/entity_type/{name}.json"
+            with zipfile.ZipFile(consumer_jars[ns]) as z:
+                native = json.loads(z.read(path))
+                print("Exact native consumer tag", key, json.dumps(native, sort_keys=True))
+        with zipfile.ZipFile(consumer_jars["ars_nouveau"]) as z:
+            print("Exact native jar whitelist", z.read("data/ars_nouveau/tags/entity_type/jar_whitelist.json").decode())
+        with zipfile.ZipFile(consumer_jars["occultism"]) as z:
+            print("Exact native gem tag files", sorted(n for n in z.namelist() if "/tags/entity_type/" in n and "gem" in n))
+        with zipfile.ZipFile(dest / "ars_ocultas-1.21.1-2.6.2.jar") as z:
+            print("Transfer implementation candidates", sorted(n for n in z.namelist() if n.endswith(".class") and any(w in n.lower() for w in ("gem", "jar", "capture", "containment", "conversion"))))
         print("PASS exact native ABI survey; inspect instance and state-transfer paths before runtime acceptance")
 
 if __name__ == "__main__":
