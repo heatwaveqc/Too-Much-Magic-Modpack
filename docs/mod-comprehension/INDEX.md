@@ -377,3 +377,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-18 — Ars n Spells mana/lifecycle companion traces5mode routes, quote/payment reservations and exact Iron's3.16.3 mana event/clamp endpoint. Native Mana Well has no universal timer or recurring Source charge; finite Infusion distinct. Remaining regen/combat/caller lifecycle work explicit;6complete/36researching unchanged. No runtime acceptance.
 
 - 2026-11-18 — Ars n Spells actual cast caller/payment companion added: Ars reserve/commit/cleanup, pinned Iron's native write/effect boundary, pre-effect-only refunds, last paid channel/scroll completion and legacy-open alternative-payment limitations. Remaining regen/combat/cooldown/adapter scope explicit;6/42complete36researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells regen/equipment/HUD and tag-only Source proximity audited against native Iron's10tick cadence/defaultmultiplier. Documented nominal rate/timing discrepancy for acceptance; no measured rate or balance approval. Counts6complete36researching unchanged; combat/school/cooldown/adapter source coverage remains.

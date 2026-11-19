@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ars n Spells regeneration/equipment/HUD
+
+- Added ars-n-spells-pinned-regen.md: mode-specificgear/Curios/enchantment/potion contributions+identity exclusions, nativewrite scopes, maxceilings/HUD, tag-onlySourceJarproximity/cache/5manapersecondrequesteddefault. Exact Iron's MagicManager native regen cadence10ticks and nativeServerConfigsmultiplier1.0: addon A/(M*.01) nominalrate composes to2*A/sec at20TPS unlessotherhooks/settings; documentedcode-derived discrepancyfortest, NOT measuredpackbugfix. NoSourcefill/debitinproximitycondition.
+- **Next final addon source systems**: ArsDamageBridge/IronsDamageBridge, progression+affinity+resonance handlers/data and cooldown/presetmigration; optionalalternative-adapter registeredtargets vsenabledroster. Then consolidateaddonfullprogression/coverage/statusreview. Do NOTre-audit7recipes/4adv/Welllifetime/payment/regen. AlladdonCFRans-fresh;nativeIron'sselectedServerConfigs+MagicManager/MagicData/AbstractSpell+CastSource atirons-ans-fresh, exactartifactsoutsideGit.
+-6/42complete36researchingunchanged; no blocker,hourlyactive,docs-only,nosubagents/assembly/launch/runtimeedits/merge. RemainingfiveArsaddonsafterthis, parentreview, othermajors. Gitlogactualhead/priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-18 Ars n Spells actual payment/cast callers
 
 - Added ars-n-spells-pinned-payments.md: ArsCostCalc->postEventreserve->expendManacommit/nativecancel->finish/PostTickcleanup; native Iron's AbstractSpell.castSpell confirmed exact binary then mixinwrite/effect/session/refund/channel paths. Payment refunds pre-effect only, skippednativewritewaivesowed, lastpaidpulsecompletesratherthanrollback. AlternativePayment LEGACY_OPEN canpermitpartial/unpaid; adapter scope stillneedsmapping. SelectednativeAbstractSpell/CastSource+innersnowinexternalirons-ans-fresh;addonallclassesans-fresh.

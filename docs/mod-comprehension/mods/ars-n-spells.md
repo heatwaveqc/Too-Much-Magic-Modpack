@@ -106,3 +106,6 @@ The source-present pilot includes four Ars n Spells nodes43–46; see [all49node
 
 
 [Actual cast payment/caller audit](ars-n-spells-pinned-payments.md) now traces Ars event reservation/expendMana replacement/cleanup, native Iron's castSpell boundary, pre-effect refunds versus committed effects, continuous-pulse exhaustion/scroll handling and alternative-payment refusal versus legacy-open. Regeneration/equipment, combat/school systems, cooldown and optional adapter scope remain before source completion.
+
+
+[Regeneration/equipment/HUD companion](ars-n-spells-pinned-regen.md) now traces native-write suppression, gear/Curios/enchantment contribution identities, potion modes, Source Jar proximity and actual Iron's10tick regeneration cadence. Nominal per-second conversion versus native twice-per-second formula is a code-derived timing discrepancy to measure, not observed pack throughput. No Source fill/debit is checked by proximity handler. Remaining combat/school/cooldown/adapter work explicit.
