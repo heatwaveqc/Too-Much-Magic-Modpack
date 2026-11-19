@@ -26,7 +26,16 @@ def inspect(jar,key):
             import tomllib
             meta = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode("utf-8"))
             mod = next(m for m in meta["mods"] if m["modId"] == "rootsclassic")
-            print("ROOTS_METADATA", mod["modId"], mod["version"], flush=True)
+            version = mod["version"]
+            if version == "${file.jarVersion}":
+                manifest = z.read("META-INF/MANIFEST.MF").decode("utf-8")
+                match = re.search(r"^Implementation-Version:[ \t]*(.+)$", manifest, re.M)
+                if not match:
+                    raise RuntimeError("No manifest Implementation-Version for Roots")
+                version = match.group(1).strip()
+            print("ROOTS_METADATA", mod["modId"], version, flush=True)
+            if version not in ("1.5.10","1.21.1-1.5.10"):
+                raise RuntimeError("Runtime version guard must be reconciled: " + version)
         for n in sorted(z.namelist()):
             if n.startswith("data/") and n.endswith(".json") and "ritual" in n.lower() and "/tags/" not in n:
                 try: data=json.loads(z.read(n))
