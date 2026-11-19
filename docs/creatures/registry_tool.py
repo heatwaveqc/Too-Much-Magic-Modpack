@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 ID = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 PREY = {"allow", "deny", "hold"}
 CAPTURE = {"blacklist_target", "approved_misc_default_deny", "approved_vanilla_exception",
-           "native_policy_pending", "review_hold"}
+           "native_policy_pending", "review_hold", "transport_only"}
 
 def no_duplicates(pairs):
     result = {}
@@ -66,6 +66,16 @@ def capture_tag(data):
     ]}
 
 
+def replication_tag(data):
+    """Shared denial plus exact transport-only entities."""
+    tag = capture_tag(data)
+    return {"replace": False, "values": ["#tmm:capture_blacklist"] + [
+        entity_id if entity_id.startswith("minecraft:") else {"id": entity_id, "required": False}
+        for entity_id, entry in sorted(data["entities"].items())
+        if entry["capture"]["disposition"] == "transport_only"
+    ]}
+
+
 def boss_tags(data):
     """Type-only death is insufficient for these encounters and derivatives."""
     non_independent = {"boss_derivative_no_credit", "passive_boss_conversion",
@@ -112,7 +122,7 @@ def show(data, entity_id):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["validate", "hunter-tags", "family-tags", "capture-tag", "all-tags", "compare-tags", "show", "holds"])
+    parser.add_argument("command", choices=["validate", "hunter-tags", "family-tags", "capture-tag", "replication-tag", "all-tags", "compare-tags", "show", "holds"])
     parser.add_argument("entity_id", nargs="?")
     parser.add_argument("--tag-dir", type=Path)
     args = parser.parse_args()
@@ -130,6 +140,8 @@ def main():
         result = family_tags(data)
     elif args.command == "capture-tag":
         result = capture_tag(data)
+    elif args.command == "replication-tag":
+        result = replication_tag(data)
     elif args.command == "all-tags":
         result = projections(data)
     elif args.command == "compare-tags":

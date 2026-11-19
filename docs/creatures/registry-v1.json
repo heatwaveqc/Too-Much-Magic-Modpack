@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "registry_revision": 5,
+  "registry_revision": 6,
   "scope": "development_integration_reference",
   "activation": "not_runtime_active",
   "census": {
@@ -28821,7 +28821,7 @@
         "prey": "deny"
       },
       "capture": {
-        "disposition": "blacklist_target"
+        "disposition": "transport_only"
       },
       "boss": {
         "classification": "no_boss_evidence",
@@ -29085,7 +29085,7 @@
         "prey": "deny"
       },
       "capture": {
-        "disposition": "blacklist_target"
+        "disposition": "transport_only"
       },
       "boss": {
         "classification": "no_boss_evidence",
@@ -29151,7 +29151,7 @@
         "prey": "deny"
       },
       "capture": {
-        "disposition": "blacklist_target"
+        "disposition": "transport_only"
       },
       "boss": {
         "classification": "no_boss_evidence",
@@ -29285,7 +29285,7 @@
         "prey": "deny"
       },
       "capture": {
-        "disposition": "blacklist_target"
+        "disposition": "transport_only"
       },
       "boss": {
         "classification": "no_boss_evidence",

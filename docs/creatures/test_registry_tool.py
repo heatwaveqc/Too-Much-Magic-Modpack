@@ -38,16 +38,25 @@ class RegistryTest(unittest.TestCase):
         self.assertEqual("unreviewed", registry.show(self.data, "minecraft:vex")["resources"]["blood"])
         self.assertEqual("native_policy_pending", registry.show(self.data, "minecraft:vex")["capture"]["disposition"])
 
-    def test_capture_revision_five(self):
+    def test_capture_revision_six(self):
         tag = registry.capture_tag(self.data)
         self.assertFalse(tag["replace"])
         ids = {v if isinstance(v, str) else v["id"] for v in tag["values"]}
-        self.assertEqual(1200, len(ids))
+        self.assertEqual(1196, len(ids))
         variants = {i for i in self.data["entities"] if i.startswith(("occultism:possessed_", "occultism:wild_"))}
         self.assertEqual(34, len(variants))
         self.assertFalse(ids & variants)
         self.assertFalse(ids & {"minecraft:elder_guardian","minecraft:warden","minecraft:vex","occultism:iesnium_golem","artifacts:mimic","goety:irk"})
-        self.assertTrue({"minecraft:wither", "minecraft:ender_dragon", "occultism:marid_unbound", "occultism:afrit_wild", "occultism:foliot", "neovitae:necromancy_summon"} <= ids)
+        self.assertTrue({"minecraft:wither", "minecraft:ender_dragon", "occultism:marid_unbound", "occultism:afrit_wild", "neovitae:necromancy_summon"} <= ids)
+
+    def test_bound_spirits_transport_only(self):
+        expected = {"occultism:afrit", "occultism:djinni", "occultism:foliot", "occultism:marid"}
+        tag = registry.capture_tag(self.data)
+        ids = {v if isinstance(v, str) else v["id"] for v in tag["values"]}
+        self.assertFalse(ids & expected)
+        self.assertEqual(expected, {i for i, e in self.data["entities"].items() if e["capture"]["disposition"] == "transport_only"})
+        self.assertEqual({"replace": False, "values": ["#tmm:capture_blacklist"] + [{"id": i, "required": False} for i in sorted(expected)]}, registry.replication_tag(self.data))
+        self.assertTrue({"occultism:afrit_wild", "occultism:marid_unbound", "occultism:bat_familiar"} <= ids)
 
     def test_strict_drift_check(self):
         with tempfile.TemporaryDirectory() as directory:

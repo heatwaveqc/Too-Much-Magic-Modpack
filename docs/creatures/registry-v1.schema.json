@@ -291,7 +291,8 @@
                   "approved_vanilla_exception",
                   "blacklist_target",
                   "native_policy_pending",
-                  "review_hold"
+                  "review_hold",
+                  "transport_only"
                 ]
               },
               "egg_evidence": {
