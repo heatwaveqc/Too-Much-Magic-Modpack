@@ -37,6 +37,9 @@ def main():
     expected = project(json.loads(args.registry.read_text(encoding="utf-8")))
     assert json.loads(TAG.read_text(encoding="utf-8")) == expected
     print("PASS 1240 approved additions, additive native tag, no held or exception types")
+    neo_tag = TAG.parents[3] / "neovitae/tags/entity_type/deny_imprisonment.json"
+    assert json.loads(neo_tag.read_text(encoding="utf-8")) == {"replace": False, "values": [{"id": "#apothic_spawners:blacklisted_from_spawners", "required": False}]}
+    print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
     if args.projection_only:
         return
     names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar", "neovitae-1.21.1-1.1.53.jar"}
@@ -55,6 +58,10 @@ def main():
         abi(apoth, "dev.shadowsoffire.apothic_spawners.ASEvents", ["handleCapturing(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V", "SpawnEggItem.byId"])
         abi(reliq, "reliquary.item.MobCharmRegistry", ["handleAddingFragmentDrops(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "getCharmDefinitionFor(net.minecraft.world.entity.Entity)", "(Lnet/minecraft/world/entity/Entity;)Ljava/util/Optional;"])
         abi(neo, "com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity", ["isForeman()", "()Z", "IsForeman"])
+        with zipfile.ZipFile(neo) as z:
+            native_neo = json.loads(z.read("data/neovitae/tags/entity_type/deny_imprisonment.json"))
+            assert {"minecraft:ender_dragon", "minecraft:wither", "minecraft:warden"} <= set(native_neo["values"])
+        abi(neo, "com.breakinblocks.neovitae.common.event.ImprisonmentArrayHandler", ["static void onLivingDeath(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDeathEvent;)V", "DENY_IMPRISONMENT", "SpawnerBlockEntity.setEntityId"])
         print("PASS exact native ABI survey; inspect instance and state-transfer paths before runtime acceptance")
 
 if __name__ == "__main__":

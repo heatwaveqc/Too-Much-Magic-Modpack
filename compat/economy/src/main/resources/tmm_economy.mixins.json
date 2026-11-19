@@ -24,7 +24,8 @@
     "OpConverterTooltipMixin",
     "StoredResourceGuardMixin",
     "CapturingForemanMixin",
-    "ReliquaryCaptureMixin"
+    "ReliquaryCaptureMixin",
+    "NeoImprisonmentMixin"
   ],
   "injectors": {
     "defaultRequire": 1
