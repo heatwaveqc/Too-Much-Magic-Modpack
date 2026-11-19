@@ -57,6 +57,15 @@ class RegistryTest(unittest.TestCase):
         self.assertIn("minecraft:ender_dragon", self.ids("boss_generic_death_excluded.json"))
         self.assertIn("minecraft:ender_dragon", self.ids("hunt_eligible.json"))
 
+    def test_special_native_receipts_do_not_promote_generic_deaths(self):
+        rules = {"neovitae:daemonium_doloris":"native_isForeman_only:boss_neovitae_foreman","voidscape:null_servant":"native_getAugment_1_2_3:distinct_titanite_ichor_astral","twilightforest:knight_phantom":"native_postmortem_IT_IS_OVER_group_transition","the_bumblezone:cosmic_crystal_entity":"native_white_arena_success_reward_recipients","draconicevolution:draconic_guardian":"native_tickDeath_fight_manager_receipt:first_1000_fixed:repeat_100_fixed"}
+        for entity_id, rule in rules.items():
+            entry = self.data["entities"][entity_id]
+            self.assertIn(entity_id, self.ids("boss_generic_death_excluded.json"))
+            self.assertIn(rule, {r["rule"] for r in entry["instance_rules"] if r["consumer"] == "boss"})
+        self.assertEqual("hold", self.data["entities"]["the_bumblezone:cosmic_crystal_entity"]["hunter"]["prey"])
+        self.assertNotIn("the_bumblezone:cosmic_crystal_entity", self.ids("hunt_eligible.json"))
+
     def test_duplicate_keys_rejected(self):
         with self.assertRaises(ValueError):
             json.loads('{"a":1,"a":2}', object_pairs_hook=registry.no_duplicates)

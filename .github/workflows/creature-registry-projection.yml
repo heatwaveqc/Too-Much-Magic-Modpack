@@ -33,7 +33,7 @@ jobs:
       - name: Fetch immutable Progression projection checkpoint (source only)
         uses: actions/checkout@v4
         with:
-          ref: 'a408c51bb4a647d844b2b620534997439dbfaa86'
+          ref: 'fe51bfd86e119144e4ae8e3aa208f536cb446e5c'
           path: projection-donor
           persist-credentials: false
       - name: Compare all generated tags against exact donor
