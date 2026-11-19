@@ -77,3 +77,10 @@ type="optional"
 versionRange="[1.1.53,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.tmm_economy]]
+modId="theurgy"
+type="optional"
+versionRange="[1.79.0,)"
+ordering="AFTER"
+side="BOTH"
