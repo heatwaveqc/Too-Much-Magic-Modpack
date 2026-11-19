@@ -109,3 +109,5 @@ E5a follow-through: Deep Reservoir single native attachment with noncompounding 
 E5a final native endurance: exact level-based base and setter verified, no expansion during native level-one progression check; bat timer-only duration option, no permanent flight grant. All six vampire mechanics have source support (Bat Mastery endurance only), non-bite feeding/flight-speed/actual installed mixin weave and client HUD testing remain. E5b next.
 
 E5a owner correction: Efficient Feeding includes legitimate player/nonplayer bites, native JAWR drinks/cane/crucible and existing successful Hexerei/Iron bottle bridge; excludes passive regen and storage/Anima transfers. Exact pinned native callers plus #282 bridge, no item or physiology duplication. See BATCH-E5-TRANSFORMATIONS.md.
+
+E5a feeding scope corrected by owner at 165045f; E5b native research/implementation plan [BATCH-E5B-LICH-MECHANICS.md](BATCH-E5B-LICH-MECHANICS.md), keep Goety spendable Soul Energy separate from JAWR phylactery rescue charges. No E5b runtime changes yet.
