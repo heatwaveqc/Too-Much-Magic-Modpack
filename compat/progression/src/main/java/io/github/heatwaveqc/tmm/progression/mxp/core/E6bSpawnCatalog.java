@@ -30,7 +30,14 @@ public final class E6bSpawnCatalog {
         Map.entry("eidolon_repraised:rituals/summon_wraith",new Proof("eidolon_repraised:wraith","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_ADVANCED)),
         Map.entry("eidolon_repraised:rituals/summon_zombie",new Proof("minecraft:zombie","alexthw.eidolon_repraised.common.ritual.SummonRitual",false,1,Band.EIDOLON_BASIC)),
         Map.entry("eidolon_repraised:rituals/daylight",new Proof("eidolon_repraised:daylight","alexthw.eidolon_repraised.common.ritual.DaylightRitual",false,1,Band.EIDOLON_ADVANCED)),
-        Map.entry("eidolon_repraised:rituals/moonlight",new Proof("eidolon_repraised:moonlight","alexthw.eidolon_repraised.common.ritual.MoonlightRitual",false,1,Band.EIDOLON_ADVANCED))
+        Map.entry("eidolon_repraised:rituals/moonlight",new Proof("eidolon_repraised:moonlight","alexthw.eidolon_repraised.common.ritual.MoonlightRitual",false,1,Band.EIDOLON_ADVANCED)),
+        Map.entry("eidolon_repraised:rituals/absorption",new Proof("eidolon_repraised:absorption","alexthw.eidolon_repraised.common.ritual.AbsorptionRitual",false,1,Band.EIDOLON_MAJOR)),
+        Map.entry("eidolon_repraised:rituals/allure",new Proof("eidolon_repraised:allure","alexthw.eidolon_repraised.common.ritual.AllureRitual",false,1,Band.EIDOLON_ADVANCED)),
+        Map.entry("eidolon_repraised:rituals/deceit",new Proof("eidolon_repraised:deceit","alexthw.eidolon_repraised.common.ritual.DeceitRitual",false,1,Band.EIDOLON_ADVANCED)),
+        Map.entry("eidolon_repraised:rituals/repelling",new Proof("eidolon_repraised:repelling","alexthw.eidolon_repraised.common.ritual.RepellingRitual",false,1,Band.EIDOLON_ADVANCED)),
+        Map.entry("eidolon_repraised:rituals/crystal",new Proof("eidolon_repraised:soul_shard","alexthw.eidolon_repraised.common.ritual.CrystalRitual",true,1,Band.EIDOLON_BASIC)),
+        Map.entry("eidolon_repraised:rituals/purify",new Proof("eidolon_repraised:purify","alexthw.eidolon_repraised.common.ritual.PurifyRitual",false,1,Band.EIDOLON_MAJOR)),
+        Map.entry("eidolon_repraised:rituals/ritual_locate_catacombs",new Proof("minecraft:filled_map","alexthw.eidolon_repraised.common.ritual.LocationRitual",true,1,Band.EIDOLON_ADVANCED))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         ENCHANTED.forEach((id,p)->add(out,id,p));
@@ -42,4 +49,10 @@ public final class E6bSpawnCatalog {
     public static Proof enchanted(String id){return id==null?null:ENCHANTED.get(id);}
     public static Proof eidolon(String id){return id==null?null:EIDOLON.get(id);}
     public static java.util.Set<String> eidolonIds(){return EIDOLON.keySet();}
+    public static boolean continuous(Proof p){
+        return p!=null&&java.util.Set.of("eidolon_repraised:allure","eidolon_repraised:repelling","eidolon_repraised:deceit").contains(p.output());
+    }
+    public static boolean routineEidolon(String id){
+        return "eidolon_repraised:rituals/recharging_chill".equals(id)||"eidolon_repraised:rituals/recharging_soulfire".equals(id);
+    }
 }

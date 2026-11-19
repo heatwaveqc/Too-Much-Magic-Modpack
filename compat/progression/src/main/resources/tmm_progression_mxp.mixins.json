@@ -68,7 +68,13 @@
     "EidolonBrazierRitualMixin",
     "EidolonRitualOutputMixin",
     "JawrRitualCommandMixin",
-    "EidolonTimeRitualMixin"
+    "EidolonTimeRitualMixin",
+    "EidolonContinuousRitualMixin",
+    "EidolonDeceitRitualMixin",
+    "EidolonAbsorptionRitualMixin",
+    "EidolonSpecialSpawnMixin",
+    "EidolonLocationPurifyMixin",
+    "EidolonVillagerPurifyMixin"
   ],
   "injectors": {
     "defaultRequire": 0

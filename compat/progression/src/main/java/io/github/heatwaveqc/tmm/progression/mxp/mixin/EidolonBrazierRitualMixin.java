@@ -73,6 +73,19 @@ public abstract class EidolonBrazierRitualMixin implements E6bSpawnScope.Observe
         if(!E6bSpawnScope.eidolonNativeMatches(proof,ritual))return;
         tmm$accepted=Math.min(proof.count(),tmm$accepted+E6bSpawnScope.units(proof,ritual,entity));((BlockEntity)(Object)this).setChanged();
     }
+    @Override public void tmm$effect(Object ritual,ServerLevel level){
+        if(tmm$operation==null||tmm$ritual()!=ritual||tmm$level()!=level||!tmm$burning()||!Boolean.TRUE.equals(MxpReflect.field(this,"ritualDone")))return;
+        var proof=E6bSpawnCatalog.eidolon(tmm$recipe);
+        if(!E6bSpawnScope.eidolonSpecial(proof)||!E6bSpawnScope.eidolonNativeMatches(proof,ritual))return;
+        tmm$accepted=1;((BlockEntity)(Object)this).setChanged();
+        // Allure, Repelling and Deceit are perpetual PASS effects. Commission once
+        // on their first verified state mutation, not every pulse or on extinguish.
+        if(E6bSpawnCatalog.continuous(proof)){
+            var receipt=new RitualRewards.Receipt(tmm$recipe,tmm$operation,tmm$actor,true,false);
+            tmm$clear();((BlockEntity)(Object)this).setChanged();
+            RitualSettlement.settle(level.getServer().getPlayerList().getPlayer(receipt.actor()),receipt);
+        }
+    }
     @Override public void tmm$timeChanged(Object ritual,ServerLevel level){
         if(tmm$operation==null||tmm$ritual()!=ritual||tmm$level()!=level||!tmm$burning())return;
         var proof=E6bSpawnCatalog.eidolon(tmm$recipe);

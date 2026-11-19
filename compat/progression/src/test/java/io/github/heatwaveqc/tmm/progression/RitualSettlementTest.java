@@ -62,11 +62,15 @@ class RitualSettlementTest {
     }
     @Test void enchantedAndEidolonUseDistinctNativeCatalogs(){
         assertEquals(6,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
-        assertEquals(15,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
+        assertEquals(22,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
         assertNotEquals(RitualRewards.lookup("enchanted:infuse_broom").family(),RitualRewards.lookup("witchery:ritual/apply_ointment").family());
         assertEquals(3,io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.eidolon("eidolon_repraised:rituals/summon_drowned").count());
         assertEquals(3500,RitualRewards.lookup("eidolon_repraised:rituals/brazier_craft_sanguine_amulet").band().first());
         assertNull(RitualRewards.lookup("eidolon_repraised:rituals/recharging_chill"));
+        assertNull(RitualRewards.lookup("eidolon_repraised:rituals/recharging_soulfire"));
+        for(String id:java.util.List.of("allure","repelling","deceit"))
+            assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.continuous(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.eidolon("eidolon_repraised:rituals/"+id)));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.continuous(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.eidolon("eidolon_repraised:rituals/purify")));
     }
     @Test void receiptsFailClosed(){
         UUID operation=UUID.randomUUID(), actor=UUID.randomUUID();
