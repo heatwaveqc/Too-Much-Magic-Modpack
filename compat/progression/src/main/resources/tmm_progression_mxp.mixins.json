@@ -115,7 +115,9 @@
     "ChaosGuardianVictoryMixin",
     "WhiteArenaVictoryMixin",
     "GoetyStormRitualMixin",
-    "AstralPlayerAttunementMixin"
+    "AstralPlayerAttunementMixin",
+    "MalumTotemRitualMixin",
+    "MalumGeasRitualMixin"
   ],
   "injectors": {
     "defaultRequire": 0

@@ -50,6 +50,7 @@ public final class RitualRewards {
         PrimalRitualCatalog.addTo(rules);
         GoetyRitualCatalog.addTo(rules);
         rules.put(AstralAttunementProof.ID,new Rule(AstralAttunementProof.ID,Band.ASTRAL_ATTUNEMENT));
+        MalumRitualCatalog.addTo(rules);
         return Map.copyOf(rules);
     }
     private static void forge(Map<String,Rule> out,Band band,String... paths){
