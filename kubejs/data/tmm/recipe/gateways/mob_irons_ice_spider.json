@@ -1,0 +1,27 @@
+{
+  "type": "gateways:gate_recipe",
+  "group": "tmm_progression_mobs",
+  "pattern": [
+    " C ",
+    "SMS",
+    " E "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:snow_block"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "irons_spellbooks:arcane_essence"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "gateways:gate_pearl"
+  },
+  "gateway": "tmm:mob_irons_ice_spider"
+}

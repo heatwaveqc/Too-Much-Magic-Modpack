@@ -1,0 +1,55 @@
+{
+  "type": "gateways:normal",
+  "size": "medium",
+  "color": "#9D63C9",
+  "rules": {
+    "spawn_range": 8,
+    "leash_range": 32,
+    "spacing": 48,
+    "remove_mobs_on_failure": true,
+    "requires_nearby_player": true
+  },
+  "waves": [
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:citadel_keeper",
+          "count": 1,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1400,
+      "setup_time": 100
+    },
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:citadel_keeper",
+          "count": 1,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1400,
+      "setup_time": 160
+    },
+    {
+      "entities": [
+        {
+          "entity": "irons_spellbooks:citadel_keeper",
+          "count": 1,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1400,
+      "setup_time": 160
+    }
+  ],
+  "rewards": [
+    {
+      "type": "gateways:experience",
+      "experience": 100,
+      "orb_size": 20
+    }
+  ],
+  "failures": []
+}
