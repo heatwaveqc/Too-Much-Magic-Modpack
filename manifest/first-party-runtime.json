@@ -16,6 +16,10 @@
     {
       "directory": "compat/traders-vengence",
       "mod_id": "traders_vengence"
+    },
+    {
+      "directory": "compat/economy",
+      "mod_id": "tmm_economy"
     }
   ]
 }

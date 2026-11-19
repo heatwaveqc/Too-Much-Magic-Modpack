@@ -19,6 +19,8 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -29,6 +31,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Strict source preflight and economy recipe checks (read-only)
+        run: |
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+          python3 scripts/validate_integration_sources.py --strict-overrides
+          python3 scripts/validate.py
+          python3 scripts/validate_progression_gates.py
+          python3 scripts/validate_b19_gateways.py
+          python3 scripts/verify_emc_coverage_audit.py
       - name: Fetch exact hash-locked compile classpath
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
       - name: Compile Economy and execute unit tests
