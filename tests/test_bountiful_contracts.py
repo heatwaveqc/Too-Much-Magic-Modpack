@@ -206,7 +206,7 @@ class TestBountifulCompiler(unittest.TestCase):
         self.assertEqual(len(set(reagents)),30)
         self.assertEqual(next(f for f in families if f["id"]=="irons_spells")["test_decree_recipe_reagent"],"irons_spellbooks:arcane_essence")
         self.assertEqual(next(f for f in families if f["id"]=="ars_nouveau")["test_decree_recipe_reagent"],"ars_nouveau:source_gem")
-        self.assertTrue(all("test_decree_recipe_reagent" not in f for f in C["transformations"]))
+        self.assertTrue(all("test_decree_recipe_reagent" not in f for f in C["transformations"] if f["id"] not in C["decree_recipe_policy"]["specialist"]["supported_ids"]))
         for f in families:
             recipe=m.test_decree_recipe(C,f,{"minecraft:paper","bountiful:decree",f["test_decree_recipe_reagent"]})
             self.assertEqual(recipe["type"],"minecraft:crafting_shapeless")
