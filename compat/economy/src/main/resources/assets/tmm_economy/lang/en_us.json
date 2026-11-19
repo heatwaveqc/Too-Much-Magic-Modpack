@@ -36,6 +36,6 @@
   "tmm_economy.mapper.astral_recipes.tooltip": "Map ordinary altar and infusion recipes including liquid starlight.",
   "tmm_economy.mapper.pastel_recipes": "TMM Pastel Recipe Mapper",
   "tmm_economy.mapper.pastel_recipes.tooltip": "Map plain material recipes and verified colored ink costs.",
-  "tmm_economy.mapper.iron_scrolls": "TMM Iron Scroll Recipe Mapper (Held)",
-  "tmm_economy.mapper.iron_scrolls.tooltip": "Staged component values; locked until burn-only enforcement is complete."
+  "tmm_economy.mapper.iron_scrolls": "TMM Iron Scroll Recipe Mapper",
+  "tmm_economy.mapper.iron_scrolls.tooltip": "Derive scroll values for burning and template duplication, not knowledge production."
 }

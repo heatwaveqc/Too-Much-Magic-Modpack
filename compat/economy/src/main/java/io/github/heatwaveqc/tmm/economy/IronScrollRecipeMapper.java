@@ -32,20 +32,16 @@ import org.slf4j.Logger;
 
 /**
  * Iron's 3.16.3 Scroll Forge and Arcane Anvil. These are native menu
- * operations, not a RecipeManager recipe type. DO NOT activate before
- * burn-only output enforcement and actual-burn knowledge routing are verified.
+ * operations, not a RecipeManager recipe type. Knowledge and template
+ * duplication deliberately have different policies.
  */
 @EMCMapper(requiredMods = {"irons_spellbooks"})
 public final class IronScrollRecipeMapper implements IEMCMapper<NormalizedSimpleStack, Long> {
     private static final Logger LOG = LogUtils.getLogger();
-    // Deliberately not a config option. Positive exact item mappings otherwise
-    // become copyable through full knowledge, condensers and Expansion.
-    private static final boolean BURN_ONLY_POLICY_ENFORCED = false;
     private static final int MAX_LEVELS = 1024;
     @Override public String getName() { return "TMM Iron Scroll Recipe Mapper"; }
     @Override public String getTranslationKey() { return "tmm_economy.mapper.iron_scrolls"; }
-    @Override public String getDescription() { return "Staged scroll valuation, disabled until burn-only transaction enforcement."; }
-    @Override public boolean isAvailable() { return BURN_ONLY_POLICY_ENFORCED; }
+    @Override public String getDescription() { return "Price canonical scrolls for burning and physical-template duplication."; }
 
     private record Route(NSSItem output, Object2IntOpenHashMap<NormalizedSimpleStack> consumed) {}
     static ItemStack canonical(AbstractSpell spell, int level) {
@@ -98,10 +94,6 @@ public final class IronScrollRecipeMapper implements IEMCMapper<NormalizedSimple
 
     @Override public void addMappings(IMappingCollector<NormalizedSimpleStack, Long> mapper,
             ReloadableServerResources resources, RegistryAccess registries, ResourceManager manager) {
-        if (!BURN_ONLY_POLICY_ENFORCED) {
-            LOG.warn("TMM Iron scroll mapping held: burn-only transaction gate is not verified");
-            return;
-        }
         // Invalid blank scrolls are not a purchasable or burnable material.
         var blank = NSSItem.createItem(ItemRegistry.SCROLL.get());
         mapper.setValueBefore(blank, 0L);

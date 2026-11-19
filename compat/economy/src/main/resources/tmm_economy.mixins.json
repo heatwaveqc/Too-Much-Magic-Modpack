@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.heatwaveqc.tmm.economy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ScrollKnowledgeMixin",
+    "ScrollConsumeMixin",
+    "ScrollQuickMoveMixin",
+    "ScrollOutputMixin",
+    "ExpansionScrollImportMixin",
+    "ExpansionScrollTabletMixin",
+    "ExpansionScrollReturnMixin",
+    "ExpansionScrollCollectionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
