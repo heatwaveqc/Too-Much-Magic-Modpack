@@ -759,6 +759,168 @@
           "unarmored": true
         }
       ]
+    },
+    {
+      "id": "tmm_progression:tmm_monk_empty_hand_force",
+      "title": "Empty-Hand Force",
+      "description": "Purchased unarmed attack damage beyond native Iron Palm; active only with empty hands and no armor.",
+      "lane": "Martial Body",
+      "max_rank": 25,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "requires_skills": [],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 0.35
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:tmm_monk_flowing_counter",
+      "title": "Flowing Counter",
+      "description": "Bounded defensive melee counter. Requires a rank of Empty-Hand Force and Monk mastery level 10; active only unarmed and unarmored.",
+      "lane": "Martial Body",
+      "max_rank": 10,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "requires_skills": [
+        "tmm_progression:tmm_monk_empty_hand_force"
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter_attack",
+          "per_rank": 0.4,
+          "params": {
+            "max_damage": 4,
+            "cooldown_ticks": 40,
+            "delivery": "melee",
+            "chance": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:tmm_monk_natural_poise",
+      "title": "Natural Poise",
+      "description": "Purchased natural armor beyond native armor grants. Disables while conventional armor is worn.",
+      "lane": "Conditioning",
+      "max_rank": 25,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "requires_skills": [],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 0.4
+        }
+      ]
     }
   ],
   "enrollment": "sunset",

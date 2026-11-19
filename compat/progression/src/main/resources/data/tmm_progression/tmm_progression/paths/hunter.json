@@ -167,7 +167,10 @@
           "target": "#tmm_progression:undead",
           "per_rank": 0.04
         }
-      ]
+      ],
+      "title": "Undead Evasion",
+      "description": "Existing Hunter defense: 4% per purchased rank against verified undead; test no protection against other families.",
+      "lane": "Defense & Evasion"
     },
     {
       "id": "tmm_progression:evasion_raiders",
@@ -313,7 +316,10 @@
           "type": "hunter_specialty",
           "target": "#tmm_progression:undead"
         }
-      ]
+      ],
+      "title": "Undead Specialty",
+      "description": "Existing mutually exclusive Hunter specialty: undead category grants the configured specialty XP multiplier.",
+      "lane": "Quarry Specialization"
     },
     {
       "id": "tmm_progression:specialty_illager",
