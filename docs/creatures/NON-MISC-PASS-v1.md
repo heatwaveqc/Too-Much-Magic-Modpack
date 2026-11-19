@@ -27,3 +27,25 @@ Illager includes witches on raid-faction grounds; this does not assert native bi
 Supersedes the Villager category in the previous ruling. Humanoid is a non-Hunter category, not a specialty tree. The Villager taxonomy category is retired; no replacement with Humanoid for Iron Golem, which remains Construct. Village faction/AI allegiance remains an independent relationship, and native village tags and mechanics are untouched. Villager and Wandering Trader move to Humanoid. Priest, Apothecarist, Cryomancer, Pyromancer and Cultist join Humanoid. Spectral Steed is Undead (owner correction), Summoned Vex is Illager, and Debug Wizard is excluded. Echo of Tyros has owner-endorsed provisional Undead membership; exact lore/lineage audit is still pending. The nine previously unresolved Iron's entities now have a category or explicit exclusion, with one provisional lore case. Prior Iron's membership proposals remain unchanged. Existing reward policies, summon/ownership safeguards and technical exclusions remain independent. Humanoid is not inferred for every biped or every existing creature in this pass; broader coverage is deferred to the next review. No deployed tags or mechanics changed.
 
 Validation: exactly 12 intended records revised, 950 unique data rows retained, no remaining Villager entries in the non-Hunter category column. The former decision is kept above for provenance only.
+
+## Dive Into the Abyss (wardentools) — source-supported review proposals
+
+Installed `wardentools-1.1.4_neoforge_1.21.1.jar` (survey #348; SHA-256 ffe5eb5da73b480e22361834b14109e8f380a91eeff56a33d6334ee0090b16a1). Not the unrelated Warden Tools mod. All nine non-MISC registrations are now proposed. Developer's [mob wiki](https://github.com/LuciferC-137/MC-Mod_ABYSS/wiki/Mobs) and upstream [NeoForge 1.21.1 source](https://github.com/LuciferC-137/MC-Mod_ABYSS/tree/neoforge_1.21.1), whose gradle.properties reports 1.1.4, are evidence. Source read used moving branch, observed recursive tree d2bfa6cfb7aa47d9121311934580e0e799413b79; not a byte-for-byte match to installed JAR. Per-row links and reasoning retained.
+
+| Creature | Proposed family | Rationale |
+| --- | --- | --- |
+| Deep Lurker | Beast | Passive forest animal |
+| Pale Wanderer | Beast | Passive forest animal |
+| Noctilure | Beast | Tameable flying bird |
+| Crystal Golem | Construct | Mechanical temple guardian |
+| Protector | Construct | AbstractGolem; heart-invoked radiant guardian |
+| Temper | Fae | Battle Allay |
+| Shadow | Undead | Corruption-death mimic; soul-spawner alternative |
+| Parasyte | Aberration | CorruptionMonster boss add; no proof of arthropod anatomy |
+| Contagion Incarnation | Aberration | Ritual-created corruption boss; wind lore 14–15 |
+
+Sculk, corruption and Void are related in lore but not assumed identical. Shadow has Warden-like vibration behavior; Protector can originate from purified Warden Heart; Incarnation lore mentions Void worship and creation from corruption. Optional secondary memberships require review; no dimension-only shortcut. Proposed summon/owned/pet/technical exclusions, repeated boss-add and corrosion-death-loop safeguards are **review notes only**, not reward or drop rules. No blanket assumption about blood capacities, harvesting or boss neutrality. Boss identity is separate from species.
+
+Five remaining MISC IDs reviewed as non-creature candidates without adding rows to the current non-MISC overlay: abyss_lightning and crystal_laser (effects), mod_boat and mod_chest_boat (vehicles), contagion_incarnation_corpse (post-defeat display/loot entity; upstream class extends LivingEntity, but should not receive a second kill or harvest credit; exact runtime behavior to verify). These remain in v0 and will be handled in MISC pass. All 14 namespace IDs accounted for conceptually, 9 classified in v1.
+
+Validation A: nine exact registry IDs, 950 unique overlay rows and CSV round trip; committed readback separately checked. Source and documentation audit only; owner review and runtime tests pending.
