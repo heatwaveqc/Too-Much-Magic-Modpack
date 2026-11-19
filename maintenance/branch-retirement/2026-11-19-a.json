@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "batch": "2026-11-19-a",
+  "branches": [
+    {
+      "name": "design/monk-standalone-classic-parity-2026-11-15",
+      "sha": "cb3510e7f9b0a32b0d68906ad1c21999b90a565d",
+      "reason": "Archive #272. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/100",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/272"
+      ]
+    },
+    {
+      "name": "design/tyzs-nine-trees-2026-11-15",
+      "sha": "bd1e8f28720fe9986a05f09cb3cc51c697d05090",
+      "reason": "Archive #272. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/83",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/272"
+      ]
+    },
+    {
+      "name": "design/mxp-all-magic-sources-implementation-checklist",
+      "sha": "ad9c519029e2aa3653f885ea788e84ed0df5a76d",
+      "reason": "main docs/archive/README.md, PR48 archive. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/48",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356"
+      ]
+    },
+    {
+      "name": "fix/monk-tree-data-registry-2026-11-15",
+      "sha": "67d974bc8f52588c94bb4f8349e3a019a5880392",
+      "reason": "main docs/archive/README.md, PR71 archive; legacy standalone not authoritative. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/71",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356"
+      ]
+    },
+    {
+      "name": "feature/progression-chassis-hunter-monk-capabilities-2026-11-15",
+      "sha": "efd1545c84fee15d4c24d8876795c48bffcbb713",
+      "reason": "Consolidation #270 / #229. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/127",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/229"
+      ]
+    },
+    {
+      "name": "feature/hunter-venom-enrollment-2026-11-15",
+      "sha": "8903a63fe26bbf9ecad4cb9f7552fcb43ebf949f",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/136",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/monk-standalone-json-parity-pass-2026-11-15",
+      "sha": "c598aa1181e16d466ca51c3bb6a3ba0eef5398d9",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/138",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/hunter-starter-skills-xp-audit-2026-11-15",
+      "sha": "f8037397fbeb28d0d72b927fe44677e1dcf3d2d8",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/141",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/monk-classic-trials-functional-xp-2026-11-15",
+      "sha": "57fd5722037f36f1082f31e4e790b178e362c4c9",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/142",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/hunter-specialty-health-potion-xp-witcher-2026-11-15",
+      "sha": "8e681cee45f385429082e0ba20b4a07977b7b2f6",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/143",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/monk-bedrock-rest-2026-11-15",
+      "sha": "4ec74fe9577db4a55c6831454dad8e380e159542",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/144",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/hunter-mutagenic-brew-persistent-mutations-2026-11-15",
+      "sha": "daef2fb705beda1c1a523ceddcf29c60b9d03788",
+      "reason": "Consolidation #270. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/148",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/270"
+      ]
+    },
+    {
+      "name": "feature/ars-quest-pilot",
+      "sha": "6af5ed27b53c33a153e0a7c4c2d2266f70e5b9f2",
+      "reason": "#225 and #273 (six selected files byte-identical; baseline-owned manifest). Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/74",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/225",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/273"
+      ]
+    },
+    {
+      "name": "feature/mxp-ars-irons-botania-neo-hooks",
+      "sha": "9a8ef2fc66454e03a6244be97b04be821c1588aa",
+      "reason": "#273 direct-descendant #161; #281. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/45",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/273",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/161",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/281"
+      ]
+    },
+    {
+      "name": "feature/next-qa-dragon-comforts-hearts-pins",
+      "sha": "0c54fe465b072becd15769ab6ef3fac245a08cb5",
+      "reason": "#273 exact audit script; later pins authoritative. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/49",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/273"
+      ]
+    },
+    {
+      "name": "feature/thermalily-no-waste-projecte-energy-2026-11-15",
+      "sha": "7db735c73d03e2770ce4fda7fa5281abdc1fea56",
+      "reason": "#251, #273, #314/#315; current manifest baseline-owned. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/147",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/251",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/273",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/314",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/315"
+      ]
+    },
+    {
+      "name": "feature/traders-vengence",
+      "sha": "a5c8f32bd50744e2b3e083273c50e75d93b27c82",
+      "reason": "#283 original module copied; #351 future work separate. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/219",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/283",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/351"
+      ]
+    },
+    {
+      "name": "feature/newbie-mode-smartkeep-2026-11-16",
+      "sha": "2051b0b5986f33cc542b74b4375a5eef7770cf91",
+      "reason": "#285/#286, baseline-owned. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/241",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/285",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/286"
+      ]
+    },
+    {
+      "name": "stage/next-qa-jer-alex-uranium",
+      "sha": "ac250b44ae4a66b7d5eff9568e82ca61d51423c7",
+      "reason": "Replacement #275; omit retired reactor code. Original closed PR head ref independently verified at same full SHA; no active PR head/base or source stream. Prior integration/archival evidence preserved; no claim of gameplay acceptance.",
+      "evidence": [
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/56",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/356",
+        "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/275"
+      ]
+    }
+  ]
+}
