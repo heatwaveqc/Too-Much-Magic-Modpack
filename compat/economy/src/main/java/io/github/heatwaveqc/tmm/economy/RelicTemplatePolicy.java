@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
  * Not a namespace-wide material, consumable, egg or removed-item rule. */
 public final class RelicTemplatePolicy {
     private RelicTemplatePolicy() {}
+    /** Owner-approved 2026-11-19, independent of native initial rolls. */
     public static final long VALUE = 1024L;
     public static final Set<String> IDS = Set.of(
         "relics:chef_hat",
@@ -79,6 +80,6 @@ public final class RelicTemplatePolicy {
         "artifacts:withered_bracelet"
     );
     public static boolean applies(ItemInfo info) {
-        return IDS.contains(BuiltInRegistries.ITEM.getKey(info.getItem().value()).toString());
+        return info != null && IDS.contains(BuiltInRegistries.ITEM.getKey(info.getItem().value()).toString());
     }
 }

@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.economy;
 
 import com.hollingsworth.arsnouveau.common.crafting.recipes.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.common.crafting.recipes.ImbuementRecipe;
+import com.hollingsworth.arsnouveau.common.crafting.recipes.GlyphRecipe;
 import com.mojang.logging.LogUtils;
 import moze_intel.projecte.api.mapper.EMCMapper;
 import moze_intel.projecte.api.mapper.IEMCMapper;
@@ -26,7 +27,7 @@ public final class ArsSourceMapper implements IEMCMapper<NormalizedSimpleStack, 
             ResourceLocation.fromNamespaceAndPath("ars_nouveau", "apparatus_not_consumed"));
     @Override public String getName() { return "TMM Ars Source Mapper"; }
     @Override public String getTranslationKey() { return "tmm_economy.mapper.ars_source"; }
-    @Override public String getDescription() { return "Map imbuement and enchanting apparatus recipes at their consumed Source cost."; }
+    @Override public String getDescription() { return "Map imbuement, enchanting apparatus and Scribe's Table recipes at consumed Source or XP cost."; }
 
     @Override public void addMappings(IMappingCollector<NormalizedSimpleStack, Long> mapper,
             ReloadableServerResources resources, RegistryAccess registries, ResourceManager manager) {
@@ -34,10 +35,19 @@ public final class ArsSourceMapper implements IEMCMapper<NormalizedSimpleStack, 
         int mapped = 0, skipped = 0, routes = 0;
         for (var holder : resources.getRecipeManager().getRecipes()) {
             var recipe = holder.value();
-            if (!(recipe instanceof ImbuementRecipe) && !(recipe instanceof EnchantingApparatusRecipe)) continue;
+            if (!(recipe instanceof ImbuementRecipe) && !(recipe instanceof EnchantingApparatusRecipe) && !(recipe instanceof GlyphRecipe)) continue;
             try {
                 var plan = new RecipeGraphPlan();
                 int source;
+                if (recipe.getClass() == GlyphRecipe.class) {
+                    var r = (GlyphRecipe) recipe;
+                    // ScribesTile consumes one of each listed ingredient (no crafting remainder)
+                    // and debits raw XP points at selection; completed crafts do not refund XP.
+                    for (var input : r.getInputs()) plan.consumed(input, 1, false);
+                    routes += plan.contribute(graph, r.getOutput(), ResourceAccounting.Rate.XP_POINT.of(r.getExp()));
+                    mapped++;
+                    continue;
+                }
                 if (recipe.getClass() == ImbuementRecipe.class) {
                     var r = (ImbuementRecipe) recipe;
                     plan.consumed(r.getInput(), 1, false); // input replaced entirely
