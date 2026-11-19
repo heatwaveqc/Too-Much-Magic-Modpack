@@ -68,27 +68,52 @@ public final class VampireEffects {
             FEEDING.remove();
             try{return original.getAsInt();}finally{FEEDING.set(prior);}
         }
-        if(!eligible(p)||victim==null||victim==p||victim instanceof net.minecraft.world.entity.player.Player)return original.getAsInt();
+        if(!eligible(p)||victim==null||victim==p)return original.getAsInt();
         Balance donor=read(victim);if(donor==null||donor.current<=0)return original.getAsInt();
         FEEDING.set(new Feeding(p,victim,donor));
         try{return original.getAsInt();}finally{FEEDING.remove();}
     }
-    /** Legitimate bite feeding only: actual positive recipient gain, capped by capacity.
-     * Never amplify a vampire donor, conversion, orb transfer, regeneration, or a failed bite. */
+    /** Legitimate bite feeding, including player donors: measured donor loss and recipient gain.
+     * Never amplify conversion, orb transfer, regeneration, or a failed bite. */
     public static void feed(ServerPlayer p,LivingEntity victim,int amount,IntConsumer original){
-        if(!eligible(p)||victim==p||victim==null||victim instanceof net.minecraft.world.entity.player.Player||amount<=0){original.accept(amount);return;}
+        if(!eligible(p)||victim==p||victim==null||amount<=0){original.accept(amount);return;}
         Feeding context=FEEDING.get();Balance donor=read(victim);
         Balance before=read(p);
         if(context==null||context.p!=p||context.victim!=victim||donor==null||context.donor.max!=donor.max||before==null){original.accept(amount);return;}
         int actualDonor=context.donor.current-donor.current;
         if(actualDonor<=0){original.accept(amount);return;}
-        double rate=rate(p,"jawr_feeding_bonus");
+        applyFeedingGain(p,before,amount,actualDonor,original);
+    }
+    private static final ThreadLocal<Boolean> DRINKING=new ThreadLocal<>();
+    private static boolean consumptiveCaller(){
+        return StackWalker.getInstance().walk(frames->{
+            var stack=frames.toList();
+            if(stack.stream().anyMatch(f->io.github.heatwaveqc.tmm.progression.foundation.FeedingSource.nativeDrink(f.getClassName(),f.getMethodName())))return true;
+            return stack.stream().anyMatch(f->io.github.heatwaveqc.tmm.progression.foundation.FeedingSource.interopCredit(f.getClassName(),f.getMethodName()))&&
+                stack.stream().anyMatch(f->io.github.heatwaveqc.tmm.progression.foundation.FeedingSource.interopFinish(f.getClassName(),f.getMethodName()));
+        });
+    }
+    /** Shared exact native increaseBlood seam, but only verified drink/meal callers.
+     * The three-bottle bridge already performs the ordinary-bottle safety/finish gate.
+     * No duplicate credit, no refilling via Neo Vitae, no passive hunts/regeneration. */
+    public static void drink(LivingEntity recipient,int amount,IntConsumer original){
+        if(!(recipient instanceof ServerPlayer p)||amount<=0||!eligible(p)||DRINKING.get()!=null||FEEDING.get()!=null||
+            !consumptiveCaller()){original.accept(amount);return;}
+        Balance before=read(p);
+        if(before==null){original.accept(amount);return;}
+        DRINKING.set(true);
+        try{applyFeedingGain(p,before,amount,amount,original);}
+        finally{DRINKING.remove();}
+    }
+    private static void applyFeedingGain(ServerPlayer p,Balance before,int amount,int sourceDebit,IntConsumer original){
+        double fraction=rate(p,"jawr_feeding_bonus");
         original.accept(amount);
+        if(fraction<=0||!eligible(p))return;
         Balance after=read(p);
         if(after==null||after.max!=before.max)return;
         int gained=after.current-before.current;
         if(gained<=0||gained>amount)return;
-        int bonus=BloodSkillMath.feedingBonus(Math.min(actualDonor,gained),after.max-after.current,rate);
+        int bonus=BloodSkillMath.feedingBonus(Math.min(sourceDebit,gained),after.max-after.current,fraction);
         if(bonus>0)original.accept(bonus);
     }
     public static double batDuration(net.minecraft.world.entity.player.Player p,double nativeTicks){

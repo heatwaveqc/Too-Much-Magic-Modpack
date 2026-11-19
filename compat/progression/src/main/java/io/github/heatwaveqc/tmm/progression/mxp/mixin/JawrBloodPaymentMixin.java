@@ -11,6 +11,10 @@ import org.spongepowered.asm.mixin.Pseudo;
 @Pseudo
 @Mixin(targets="dev.sterner.witchery.feature.blood_pool.BloodPoolHandler",remap=false)
 public abstract class JawrBloodPaymentMixin {
+    @WrapMethod(method="increaseBlood(Lnet/minecraft/world/entity/LivingEntity;I)V",require=0,remap=false)
+    private static void tmm$feeding(LivingEntity entity,int amount,Operation<Void> original){
+        io.github.heatwaveqc.tmm.progression.runtime.forms.VampireEffects.drink(entity,amount,value->original.call(entity,value));
+    }
     @WrapMethod(method="decreaseBlood(Lnet/minecraft/world/entity/LivingEntity;I)V",require=0,remap=false)
     private static void tmm$decrease(LivingEntity entity,int amount,Operation<Void> original){
         JawrBloodPayments.decrease(entity,amount,()->original.call(entity,amount));
