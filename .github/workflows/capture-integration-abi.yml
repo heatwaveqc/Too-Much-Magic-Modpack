@@ -17,7 +17,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@v4
         with:
-          ref: '059304744c9b26e6600c0d9b791694bbefa1a5e9'
+          ref: 'fe75e7f936fa3c9262770c8d26e12c412b06fd11'
           path: registry-donor
           persist-credentials: false
       - uses: actions/setup-java@v4

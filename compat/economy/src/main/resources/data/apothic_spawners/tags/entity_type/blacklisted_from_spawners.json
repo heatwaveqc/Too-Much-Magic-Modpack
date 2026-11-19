@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#tmm:capture_blacklist"
+    "#tmm:replication_blacklist"
   ]
 }

@@ -3640,10 +3640,6 @@
       "required": false
     },
     {
-      "id": "occultism:afrit",
-      "required": false
-    },
-    {
       "id": "occultism:afrit_wild",
       "required": false
     },
@@ -3688,19 +3684,11 @@
       "required": false
     },
     {
-      "id": "occultism:djinni",
-      "required": false
-    },
-    {
       "id": "occultism:dragon_familiar",
       "required": false
     },
     {
       "id": "occultism:fairy_familiar",
-      "required": false
-    },
-    {
-      "id": "occultism:foliot",
       "required": false
     },
     {
@@ -3717,10 +3705,6 @@
     },
     {
       "id": "occultism:headless_familiar",
-      "required": false
-    },
-    {
-      "id": "occultism:marid",
       "required": false
     },
     {

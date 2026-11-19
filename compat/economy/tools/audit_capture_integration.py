@@ -13,14 +13,14 @@ TAG = ROOT / "compat/economy/src/main/resources/data/tmm/tags/entity_type/captur
 POLICY = {"blacklist_target", "approved_misc_default_deny"}
 
 def project(registry):
-    assert registry["schema_version"] == 1 and registry["registry_revision"] == 5
+    assert registry["schema_version"] == 1 and registry["registry_revision"] == 6
     entities = registry["entities"]
     assert len(entities) == registry["census"]["entity_count"] == 1763
     ids = sorted(i for i, e in entities.items() if e["capture"]["disposition"] in POLICY)
-    assert len(ids) == 1200
+    assert len(ids) == 1196
     assert "neovitae:daemonium_doloris" not in ids
     assert not set(ids) & {"minecraft:villager", "minecraft:iron_golem", "minecraft:snow_golem"}
-    assert {"minecraft:wither", "minecraft:ender_dragon", "occultism:marid_unbound", "occultism:afrit_wild", "occultism:foliot", "neovitae:necromancy_summon"} <= set(ids)
+    assert {"minecraft:wither", "minecraft:ender_dragon", "occultism:marid_unbound", "occultism:afrit_wild", "neovitae:necromancy_summon"} <= set(ids)
     assert not any(i.startswith(("occultism:possessed_", "occultism:wild_")) for i in ids)
     assert not set(ids) & {"minecraft:warden", "minecraft:elder_guardian", "minecraft:vex", "occultism:iesnium_golem", "artifacts:mimic", "goety:irk"}
     return {"replace": False, "values": [i if i.startswith("minecraft:") else {"id": i, "required": False} for i in ids]}
@@ -37,14 +37,21 @@ def main():
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--projection-only", action="store_true")
     args = parser.parse_args()
-    expected = project(json.loads(args.registry.read_text(encoding="utf-8")))
+    registry = json.loads(args.registry.read_text(encoding="utf-8"))
+    expected = project(registry)
     assert json.loads(TAG.read_text(encoding="utf-8")) == expected
-    print("PASS 1200 approved additions, additive TMM tag, no held or exception types")
+    print("PASS 1196 common additions, additive TMM tag, no held or exception types")
+    spirits = sorted(i for i, e in registry["entities"].items() if e["capture"]["disposition"] == "transport_only")
+    assert set(spirits) == {"occultism:afrit", "occultism:djinni", "occultism:foliot", "occultism:marid"}
+    assert not set(spirits) & {v if isinstance(v, str) else v["id"] for v in expected["values"]}
+    assert json.loads((TAG.parent / "replication_blacklist.json").read_text(encoding="utf-8")) == {"replace": False, "values": ["#tmm:capture_blacklist"] + [{"id": i, "required": False} for i in spirits]}
+    print("PASS 4 bound worker transport exceptions, 1200 total replication denials")
     consumers = ["apothic_spawners:blacklisted_from_spawners","occultism:soul_gem_deny_list","occultism:fragile_soul_gem_deny_list","ars_nouveau:jar_blacklist","ars_nouveau:drygmy_blacklist","forbidden_arcanus:quantum_catcher_blacklisted","forbidden_arcanus:boss_catcher_blacklisted"]
     for key in consumers:
         ns, name = key.split(":")
         path = TAG.parents[3] / ns / "tags/entity_type" / (name + ".json")
-        assert json.loads(path.read_text(encoding="utf-8")) == {"replace": False, "values": ["#tmm:capture_blacklist"]}
+        expected_tag = "#tmm:replication_blacklist" if key in {"apothic_spawners:blacklisted_from_spawners", "ars_nouveau:drygmy_blacklist"} else "#tmm:capture_blacklist"
+        assert json.loads(path.read_text(encoding="utf-8")) == {"replace": False, "values": [expected_tag]}
     print("PASS 7 native consumer aliases; Neo Vitae uses effective native spawner blacklist")
     neo_tag = TAG.parents[3] / "neovitae/tags/entity_type/deny_imprisonment.json"
     assert json.loads(neo_tag.read_text(encoding="utf-8")) == {"replace": False, "values": [{"id": "#apothic_spawners:blacklisted_from_spawners", "required": False}]}
@@ -81,6 +88,11 @@ def main():
             with zipfile.ZipFile(consumer_jars[ns]) as z:
                 native = json.loads(z.read(path))
                 print("Exact native consumer tag", key, json.dumps(native, sort_keys=True))
+        with zipfile.ZipFile(consumer_jars["forbidden_arcanus"]) as z:
+            for catcher in ("quantum_catcher", "boss_catcher"):
+                path = "data/forbidden_arcanus/forbidden_arcanus/hephaestus_forge/ritual/" + catcher + ".json"
+                print("Exact native catcher recipe", catcher, json.dumps(json.loads(z.read(path)), sort_keys=True))
+        abi(consumer_jars["forbidden_arcanus"], "com.stal111.forbidden_arcanus.common.item.QuantumCatcherItem", ["isValidEntity(net.minecraft.world.entity.LivingEntity)", "calculateAurealCost(net.minecraft.world.entity.LivingEntity)", "blacklistedEntities"])
         with zipfile.ZipFile(consumer_jars["ars_nouveau"]) as z:
             print("Exact native jar whitelist", z.read("data/ars_nouveau/tags/entity_type/jar_whitelist.json").decode())
         with zipfile.ZipFile(consumer_jars["occultism"]) as z:
