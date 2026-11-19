@@ -35,6 +35,7 @@ public final class MechanicalSpec {
         integer(p,"amplifier",0,0,9);
     }
     public static void validate(Definition.Effect fx){
+        FormEffectSpec.validate(fx);
         var p=fx.params();double a=fx.amountPerRank();String type=fx.type();
         if(type.equals("attribute")&&p.containsKey("max_contribution"))number(p,"max_contribution",0,0,1000000);
         if(!known(type))return;

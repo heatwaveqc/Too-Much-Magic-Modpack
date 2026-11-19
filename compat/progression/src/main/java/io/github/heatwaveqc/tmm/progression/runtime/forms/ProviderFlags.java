@@ -27,6 +27,21 @@ public final class ProviderFlags {
         register("jawr_lich","FORBIDDEN_MAGIC_LICH");
         register("goety_lich","GOETY_LICH");
         register("dragon","DRAGON_SURVIVAL_DRAGON");
+        Eligibility.registerFlag("tmm_progression:lich",p->{
+            var obs=observations(p);
+            return io.github.heatwaveqc.tmm.progression.foundation.FormCombination.lich(
+                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+        });
+        Eligibility.registerFlag("tmm_progression:archlich",p->{
+            var obs=observations(p);
+            return io.github.heatwaveqc.tmm.progression.foundation.FormCombination.archlich(nativeDragon(p),
+                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+        });
+        Eligibility.registerFlag("tmm_progression:dracolich",p->{
+            var obs=observations(p);
+            return io.github.heatwaveqc.tmm.progression.foundation.FormCombination.dracolich(nativeDragon(p),
+                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+        });
         for(String name:java.util.List.of("cave","forest","sea"))
             Eligibility.registerFlag("tmm_progression:"+name+"_dragon",
                 player->dragonSpecies(player,"dragonsurvival:"+name+"_dragon"));

@@ -88,6 +88,7 @@ public final class MechanicalEffects {
     private static boolean match(ServerPlayer p,LivingEntity target,DamageSource source,Definition.Effect fx){
         if(target==p||target instanceof Player||p.isAlliedTo(target)||
             (target instanceof TamableAnimal tame&&tame.isTame())||!Selectors.entity(fx.selector(),target)||!EffectRuntime.sourceMatches(fx.damageTag(),source))return false;
+        if(!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(p,source,fx))return false;
         boolean melee=source.getDirectEntity()==p,projectile=source.getDirectEntity() instanceof Projectile;
         String delivery=fx.params().getOrDefault("delivery","any");
         if(delivery.equals("melee")&&!melee||delivery.equals("projectile")&&!projectile)return false;

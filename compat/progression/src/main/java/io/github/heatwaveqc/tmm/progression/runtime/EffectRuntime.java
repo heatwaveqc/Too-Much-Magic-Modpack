@@ -142,6 +142,8 @@ public final class EffectRuntime {
             for (Active a : active(attacker)) {
                 Definition.Effect fx = a.effect();
                 if (fx.type().equals("melee_bonus")
+                    && io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(attacker,event.getSource(),fx)
+                    && sourceMatches(fx.damageTag(),event.getSource())
                     && Selectors.entity(fx.selector(),event.getEntity())
                     && Selectors.item(fx.weapon(),attacker.getMainHandItem())) {
                     bonus += fx.amountPerRank() * a.rank();
@@ -160,7 +162,10 @@ public final class EffectRuntime {
                 Definition.Effect fx = a.effect();
                 if (!fx.type().equals("damage_bonus")) continue;
                 String delivery = fx.params().getOrDefault("delivery","melee");
-                if (!(melee && (delivery.equals("melee") || delivery.equals("any")) ||
+                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(owner,event.getSource(),fx) ||
+                    !sourceMatches(fx.damageTag(),event.getSource())) continue;
+                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.special(fx)&&
+                    !(melee && (delivery.equals("melee") || delivery.equals("any")) ||
                       arrow && (delivery.equals("arrow") || delivery.equals("any")))) continue;
                 if (Selectors.entity(fx.selector(),event.getEntity()) && Selectors.item(fx.weapon(),weapon)) {
                     double add = fx.amountPerRank() * a.rank();
@@ -230,7 +235,8 @@ public final class EffectRuntime {
         double scale = 1;
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
-            if (fx.type().equals("break_speed") && Selectors.block(fx.selector(),event.getState()))
+            if (fx.type().equals("break_speed") && Selectors.block(fx.selector(),event.getState()) &&
+                io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.mining(player,event.getState(),fx))
                 scale += fx.amountPerRank() * a.rank();
         }
         if (scale != 1) event.setNewSpeed((float) Math.min(100000,Math.max(0,event.getNewSpeed() * scale)));

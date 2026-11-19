@@ -75,6 +75,13 @@ public final class Eligibility {
                 node.has("minimum")?node.get("minimum").getAsInt():1);
             case "milestone" -> io.github.heatwaveqc.tmm.progression.foundation.ContextConditions.milestone(
                 ResourceLocation.parse(node.get("path").getAsString()).toString(),ResourceLocation.parse(node.get("id").getAsString()).toString());
+            case "jawr_shape" -> io.github.heatwaveqc.tmm.progression.runtime.forms.NativeFormConditions.shape(node.get("shape").getAsString());
+            case "native_form_level" -> io.github.heatwaveqc.tmm.progression.runtime.forms.NativeFormConditions.level(
+                node.get("provider").getAsString(),Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsInt());
+            case "vampire_blood_fraction" -> io.github.heatwaveqc.tmm.progression.runtime.forms.NativeFormConditions.blood(
+                Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsDouble());
+            case "dragon_growth" -> io.github.heatwaveqc.tmm.progression.runtime.forms.NativeFormConditions.growth(
+                Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsDouble());
             case "dragon_species" -> {
                 String species=ResourceLocation.parse(node.get("id").getAsString()).toString();
                 yield player -> io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.dragonSpecies(player,species);
