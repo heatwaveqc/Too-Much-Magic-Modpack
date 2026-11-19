@@ -4,6 +4,22 @@
 
 **This document is an intake and inclusion-decision ledger, NOT a pass report.** See [CURRENT-TEST-STATUS.md](CURRENT-TEST-STATUS.md) for what was actually tested and [NEXT-TEST-CODEX-CHECKLIST.md](NEXT-TEST-CODEX-CHECKLIST.md) for the live-test procedure. The authoritative runtime source lock is [manifest/integration-sources.json](../../manifest/integration-sources.json). **A prior `deferred_pending_runtime` entry is not an inclusion decision for a later comprehensive test.**
 
+## Historical branch deferral reconciliation — 2026-11-19
+
+The following five historical source PRs were replaced by reviewed, merged integration PRs. Their original branch tips are no longer required for source selection; the exact original closed PR head refs and current integration successors remain recorded in `manifest/integration-sources.json` and issue #356. The obsolete retirement-only entries are removed from `deferred_pending_runtime`, **not** from the next comprehensive QA scope.
+
+Read-only review at integration commit `0e825c4f0d8142975dc38a0f1138480fb273b92d` verified all 5 BetterEnd, 28 B17/B18 and 18 canonical blood selected source paths, shared form catalog/bridge and MXP sources. The [November 18 installed artifact census](surveys-2026-11-18/installed-artifacts.json) establishes historical installation in that instance of the BetterEnd four-jar group, B17/B18 15-jar group, shared Progression, Transformations, MXP and Tyz 6.4.2 JARs. That snapshot is **not** proof that a new candidate includes all changes, that exact behavior was tested, or that the currently evolving unified progression engine has shipped.
+
+| Original PR / integrated source | Next candidate obligation |
+|---|---|
+| #131 / #276 BetterEnd New Dawn | Verify exact compatible pins and current candidate inclusion; Thallasium ore/worldgen, Spirit Fire Iesnium recipe, dragon/portal interaction. YUNG Better End Island remains held separately. |
+| #135 / #278 YUNG and Ars locators | Verify all 15 selected pins, native structure tags and Locate Structure rituals against live registry; worldgen, multiplayer, and End Island hold. |
+| #126 / #282 Canonical ordinary blood | Verify all 18 selected resources and the current JAWR-aware Transformations implementation; actual recipe codecs, cauldron capabilities, component-protected variants, drinking and cross-mod multiplayer. No MXP from bottle/refill. |
+| #94 / #279, #281 JAWR/Tyz forms | Validate current authorized shared engine successor, native form gates, persistence, retention and effects. Historical 37-skill inactive catalog retained; no activation of old pilots or new standalone forms module. Coordinate #280 and #347; preserve owner-approved progression decisions. |
+| #161 / #279, #281 MXP growth and resource hooks | Verify current authorized engine/JAR selection and exact config, actual resource expenditure and multicasts, growth, one-wallet credit, persistence and dedup. Native JAWR expenditure remains separately tracked (#280/#347); never reintroduce legacy dual sources. |
+
+This section supersedes the older five branch-based blocker labels and installed-JAR assumptions below for source ownership, while retaining their remaining acceptance tasks. All five are **baseline-owned / inclusion and gameplay verification still required**; no automatic owner deferral. No historical branch deletion or new build is authorized by this metadata change.
+
 ## Canonical blood bridge — current integration preparation (PR #282)
 
 **SOURCE-INTEGRATED / RUNTIME ACCEPTANCE STILL BLOCKED:** Reviewed replacement [PR #282](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/282) brings #126's 17 ordinary-blood KubeJS JSON assets, Iron's drinkable-vial startup file and strict JAWR component-safe bottle adapter into the current `test/full-integration` source. Frozen donor: `f55641f2227334a394475183f9d13844547d425e`. Retains the JAWR-only, Archlich and Dracolich code instead of overwriting transformations. This is **selected for attempt at the next owner-authorized comprehensive QA**, not a PASS.

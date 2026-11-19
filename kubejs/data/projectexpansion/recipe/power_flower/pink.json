@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "projectexpansion:matter/pink",
+  "pattern": [
+    "CLC",
+    "RRR",
+    "RSR"
+  ],
+  "key": {
+    "L": {
+      "item": "projectexpansion:pink_emc_link"
+    },
+    "C": {
+      "item": "projectexpansion:pink_compressed_collector"
+    },
+    "R": {
+      "item": "projectexpansion:pink_relay"
+    },
+    "S": {
+      "item": "draconicevolution:chaos_shard"
+    }
+  },
+  "result": {
+    "id": "projectexpansion:pink_power_flower"
+  }
+}

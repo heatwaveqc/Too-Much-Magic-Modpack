@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "projectexpansion:matter/green",
+  "pattern": [
+    "CLC",
+    "RRR",
+    "RSR"
+  ],
+  "key": {
+    "L": {
+      "item": "projectexpansion:green_emc_link"
+    },
+    "C": {
+      "item": "projectexpansion:green_compressed_collector"
+    },
+    "R": {
+      "item": "projectexpansion:green_relay"
+    },
+    "S": {
+      "item": "draconicevolution:chaos_shard"
+    }
+  },
+  "result": {
+    "id": "projectexpansion:green_power_flower"
+  }
+}

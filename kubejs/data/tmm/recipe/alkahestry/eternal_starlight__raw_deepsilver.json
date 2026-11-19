@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "eternal_starlight:raw_deepsilver"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 108,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "eternal_starlight:raw_deepsilver"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 6
+}

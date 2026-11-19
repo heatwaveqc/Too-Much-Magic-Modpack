@@ -1,0 +1,52 @@
+{
+  "comment": "Owner-approved 2026-11-18 nine exotic material anchors; all exact IDs present and zero API EMC in #348 installed census. Use native fixed-before configuration. Family derivatives and competing routes require recipe/trade/loot audit; no new recipes or gates. Chaos valuation not approved.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "psitweaks:antinite_ingot",
+        "emc_value": 288
+      },
+      {
+        "type": "projecte:item",
+        "id": "witchery:koboldite_dust",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "theurgy:sal_ammoniac_crystal",
+        "emc_value": 9
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:thioquartz_shard",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:red_starlight_crystal_shard",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:blue_starlight_crystal_shard",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "enigmaticlegacyplus:sacred_crystal",
+        "emc_value": 4096
+      },
+      {
+        "type": "projecte:item",
+        "id": "enigmaticlegacyplus:starlight_particle",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "irons_spellbooks:pyrium_ingot",
+        "emc_value": 131072
+      }
+    ]
+  }
+}

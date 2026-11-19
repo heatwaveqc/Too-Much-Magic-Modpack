@@ -1,0 +1,32 @@
+{
+  "comment": "Physical 50-unit harvested shards only; not clusters, charged gems or personal pools.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "neovitae:raw_crystal_shard",
+        "emc_value": 50
+      },
+      {
+        "type": "projecte:item",
+        "id": "neovitae:spiritus_ruina_shard",
+        "emc_value": 100
+      },
+      {
+        "type": "projecte:item",
+        "id": "neovitae:spiritus_nihilum_shard",
+        "emc_value": 100
+      },
+      {
+        "type": "projecte:item",
+        "id": "neovitae:spiritus_invictus_shard",
+        "emc_value": 100
+      },
+      {
+        "type": "projecte:item",
+        "id": "neovitae:spiritus_vindicta_shard",
+        "emc_value": 100
+      }
+    ]
+  }
+}

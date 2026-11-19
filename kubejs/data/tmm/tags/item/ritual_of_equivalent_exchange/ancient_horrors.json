@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "cataclysm:abyssal_egg",
+    "cataclysm:remnant_skull",
+    "alexscaves:pure_darkness",
+    "alexscaves:tectonic_shard"
+  ]
+}
