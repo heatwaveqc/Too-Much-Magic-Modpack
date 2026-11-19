@@ -42,30 +42,6 @@ public final class BountifulDecreeSeals {
     private static final ResourceLocation DECREE_ID = ResourceLocation.parse("bountiful:decree");
     private static final ResourceLocation DEED_COMPONENT_ID = ResourceLocation.parse("bountiful:decree_data");
 
-    private static final Map<String, Set<String>> NATIVE_STATES = Map.of(
-        "vampire", Set.of("JAWR_VAMPIRE"),
-        "werewolf", Set.of("JAWR_LYCANTHROPE"),
-        "lich_goety", Set.of("GOETY_LICH"),
-        "lich_jawr", Set.of("FORBIDDEN_MAGIC_LICH"),
-        "archlich", Set.of("GOETY_LICH", "FORBIDDEN_MAGIC_LICH"),
-        "abomination", Set.of("JAWR_VAMPIRE", "JAWR_LYCANTHROPE",
-                              "GOETY_LICH", "FORBIDDEN_MAGIC_LICH")
-    );
-    private static final Map<String, String> CLASS_PATHS = Map.of(
-        "hunter", "tmm_progression:hunter",
-        "monk", "tmm_progression:monk"
-    );
-
-    public static Set<String> supportedIds() {
-        java.util.HashSet<String> out = new java.util.HashSet<>(NATIVE_STATES.keySet());
-        out.addAll(CLASS_PATHS.keySet());
-        return Set.copyOf(out);
-    }
-
-    public static boolean declared(String family) {
-        return NATIVE_STATES.containsKey(family) || CLASS_PATHS.containsKey(family);
-    }
-
     public static void register() {
         if (ModList.get().isLoaded("bountiful")) {
             NeoForge.EVENT_BUS.addListener(BountifulDecreeSeals::onUse);
@@ -81,7 +57,7 @@ public final class BountifulDecreeSeals {
         String document = custom.copyTag().getString(MARKER);
         if (!document.startsWith("tmm_")) return;
         String family = document.substring(4);
-        if (!declared(family) || !allowed(player, family)) return;
+        if (!BountifulDecreeSealPolicy.declared(family) || !allowed(player, family)) return;
         // Never override an already signed decree. Keep the application if
         // the upstream component ID or codec cannot be resolved.
         DataComponentType<?> component = BuiltInRegistries.DATA_COMPONENT_TYPE.getOptional(DEED_COMPONENT_ID).orElse(null);
@@ -105,11 +81,11 @@ public final class BountifulDecreeSeals {
     }
 
     private static boolean allowed(ServerPlayer player, String family) {
-        String path = CLASS_PATHS.get(family);
+        String path = BountifulDecreeSealPolicy.classPath(family);
         if (path != null) {
             return ProgressionApi.track(player, path).joined();
         }
-        Set<String> required = NATIVE_STATES.get(family);
+        Set<String> required = BountifulDecreeSealPolicy.nativeStates(family);
         return required != null && allNativeStatesPresent(player, required);
     }
 
