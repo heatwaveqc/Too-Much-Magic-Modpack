@@ -16,7 +16,15 @@
     "PsiSpellCastEventMixin",
     "PsiLoopcastMixin",
     "AnsArsThriftMixin",
-    "AnsIronThriftMixin"
+    "AnsIronThriftMixin",
+    "HexPaidMediaMixin",
+    "HexPaymentPriceMixin",
+    "HexInventoryPaymentMixin",
+    "HexPackagedPaymentMixin",
+    "RootsTerraPaymentMixin",
+    "EmberPersonalPaymentMixin",
+    "EmberCuriosPaymentMixin",
+    "GoetySoulPaymentMixin"
   ],
   "injectors": {
     "defaultRequire": 0

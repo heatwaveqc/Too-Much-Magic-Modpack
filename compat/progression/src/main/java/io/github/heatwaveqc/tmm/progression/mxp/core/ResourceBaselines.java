@@ -23,5 +23,7 @@ public final class ResourceBaselines {
     public static final double HEX_EMC_MEDIA_REFERENCE = 1_562_500.0;
     // Previously approved basic Blood Extractor reference (5,000 mB).
     public static final double EVILCRAFT_PORTABLE_BLOOD = 5_000.0;
+    public static final double ROOTS_STARTING_TERRA=40.0;
+    public static final double EMBERS_FIRST_JAR=2000.0;
     private ResourceBaselines() {}
 }

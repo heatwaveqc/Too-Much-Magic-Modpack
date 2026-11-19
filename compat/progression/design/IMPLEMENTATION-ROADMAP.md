@@ -84,3 +84,5 @@ Neo Vitae E2 follow-up: actual owner-network PostSyphon debit includes automated
 E2 shared Thrift research: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-QUOTES.md) maps exact-version paths and reuse-first three-site quote helper with acceptance cases. No new runtime changes; actual shared Thrift not enabled.
 
 Shared ANS Thrift source implementation: [BATCH-E2-ANS-THRIFT-QUOTES.md](BATCH-E2-ANS-THRIFT-QUOTES.md). Two optional mixins, three immutable quote sites, native final-leg rounding and latched reprice factor; no changes to payment/refund or nominal MXP. Exact pin/runtime acceptance required; no skill activation. E3 next.
+
+E3 paid-source slice: [BATCH-E3-PAID-PROVIDERS.md](BATCH-E3-PAID-PROVIDERS.md). Native receipt adapters for Hex, Embers, Roots and Goety; Hex approved reference, Roots/Embers native first-access defaults, Goety reference disabled pending approval. Roots capacity/HUD and actual binary linkage/QA remain; no new skill activation.
