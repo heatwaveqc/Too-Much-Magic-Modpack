@@ -79,7 +79,10 @@
     "JawrInfusionRitualMixin",
     "JawrManifestationRitualMixin",
     "JawrRemoveCurseRitualMixin",
-    "JawrRainingToadRitualMixin"
+    "JawrRainingToadRitualMixin",
+    "EnchantedCurseReceiptMixin",
+    "EnchantedApplyCurseMixin",
+    "EnchantedRemoveCurseMixin"
   ],
   "injectors": {
     "defaultRequire": 0

@@ -63,9 +63,11 @@ class RitualSettlementTest {
         assertEquals(2000,RitualRewards.lookup("witchery:ritual/set_midnight").band().first());
     }
     @Test void enchantedAndEidolonUseDistinctNativeCatalogs(){
-        assertEquals(6,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
+        assertEquals(16,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
         assertEquals(22,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
         assertNotEquals(RitualRewards.lookup("enchanted:infuse_broom").family(),RitualRewards.lookup("witchery:ritual/apply_ointment").family());
+        assertNotEquals(RitualRewards.lookup("enchanted:curse_misfortune").family(),RitualRewards.lookup("witchery:ritual/curse_of_misfortune").family());
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.enchantedCurse(io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.enchanted("enchanted:remove_clumsy")));
         assertEquals(3,io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.eidolon("eidolon_repraised:rituals/summon_drowned").count());
         assertEquals(3500,RitualRewards.lookup("eidolon_repraised:rituals/brazier_craft_sanguine_amulet").band().first());
         assertNull(RitualRewards.lookup("eidolon_repraised:rituals/recharging_chill"));

@@ -13,7 +13,17 @@ public final class E6bSpawnCatalog {
         Map.entry("enchanted:waystone",new Proof("enchanted:bound_waystone","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.LocationBoundCreateItemRite",true,1,Band.CIRCLE_BASIC)),
         Map.entry("enchanted:waystone_charged",new Proof("enchanted:bound_waystone","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.LocationBoundCreateItemRite",true,1,Band.CIRCLE_BASIC)),
         Map.entry("enchanted:waystone_blooded",new Proof("enchanted:blooded_waystone","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.EntityBoundCreateItemRite",true,1,Band.CIRCLE_BASIC)),
-        Map.entry("enchanted:waystone_blooded_charged",new Proof("enchanted:blooded_waystone","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.EntityBoundCreateItemRite",true,1,Band.CIRCLE_BASIC))
+        Map.entry("enchanted:waystone_blooded_charged",new Proof("enchanted:blooded_waystone","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.EntityBoundCreateItemRite",true,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:curse_clumsy",new Proof("enchanted:clumsy","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ApplyCurseRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:remove_clumsy",new Proof("enchanted:clumsy","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.RemoveCurseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:curse_misfortune",new Proof("enchanted:misfortune","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ApplyCurseRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:remove_misfortune",new Proof("enchanted:misfortune","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.RemoveCurseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:curse_overheating",new Proof("enchanted:overheating","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ApplyCurseRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:remove_overheating",new Proof("enchanted:overheating","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.RemoveCurseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:curse_sinking",new Proof("enchanted:sinking","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ApplyCurseRite",false,1,Band.CIRCLE_BASIC)),
+        Map.entry("enchanted:remove_sinking",new Proof("enchanted:sinking","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.RemoveCurseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:bind_talisman",new Proof("enchanted:circle_talisman","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindTalismanRite",true,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:bind_talisman_charged",new Proof("enchanted:circle_talisman","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindTalismanRite",true,1,Band.CIRCLE_MAJOR))
     );
     private static final Map<String,Proof> EIDOLON=Map.ofEntries(
         Map.entry("eidolon_repraised:rituals/brazier_craft_sanguine_amulet",new Proof("eidolon_repraised:sanguine_amulet","alexthw.eidolon_repraised.common.ritual.CraftingRitual",true,1,Band.EIDOLON_MAJOR)),
@@ -45,6 +55,9 @@ public final class E6bSpawnCatalog {
     }
     private static void add(Map<String,RitualRewards.Rule> out,String id,Proof p){
         if(out.putIfAbsent(id,new RitualRewards.Rule(id,p.band()))!=null)throw new IllegalStateException("Duplicate ritual "+id);
+    }
+    public static boolean enchantedCurse(Proof p){
+        return p!=null&&(p.nativeClass().endsWith(".ApplyCurseRite")||p.nativeClass().endsWith(".RemoveCurseRite"));
     }
     public static Proof enchanted(String id){return id==null?null:ENCHANTED.get(id);}
     public static Proof eidolon(String id){return id==null?null:EIDOLON.get(id);}

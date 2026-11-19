@@ -60,10 +60,18 @@ public final class E6bSpawnScope {
         if("eidolon_repraised:purify".equals(proof.output()))return entity instanceof LivingEntity&&! (entity instanceof Player)&&java.util.Set.of("minecraft:piglin","minecraft:hoglin").contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())?1:0;
         if(proof.item()&&entity instanceof ItemEntity item){
             ItemStack stack=item.getItem();
+            if("enchanted:circle_talisman".equals(proof.output())&&!boundTalisman(stack))return 0;
             if("minecraft:filled_map".equals(proof.output())&&(!stack.has(net.minecraft.core.component.DataComponents.MAP_ID)||!stack.has(net.minecraft.core.component.DataComponents.MAP_DECORATIONS)))return 0;
             return !stack.isEmpty()&&proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString())?Math.min(proof.count(),stack.getCount()):0;
         }
         return !proof.item()&&entity instanceof LivingEntity&&!(entity instanceof Player)&&proof.output().equals(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())?1:0;
+    }
+    private static boolean boundTalisman(ItemStack stack){
+        try{
+            Object supplier=MxpReflect.field(Class.forName("net.favouriteless.enchanted.common.items.component.EDataComponents"),"CIRCLE_MAGIC_SHAPE_MAP");
+            if(!(supplier instanceof java.util.function.Supplier<?> s)||!(s.get() instanceof net.minecraft.core.component.DataComponentType<?> component))return false;
+            return stack.get(component) instanceof java.util.Map<?,?> shapes&&!shapes.isEmpty();
+        }catch(ClassNotFoundException|LinkageError|RuntimeException ignored){return false;}
     }
     @SuppressWarnings("unchecked")
     public static String enchantedId(ServerLevel level,Object type){
