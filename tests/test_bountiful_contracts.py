@@ -223,4 +223,35 @@ class TestBountifulCompiler(unittest.TestCase):
         self.assertEqual(recipe["result"]["components"]["bountiful:decree_data"]["ids"],["tmm_farming"])
         self.assertFalse(any("tmm_hunting.json" in path for path in files))
 
+    def test_specialist_signed_applications_fail_closed(self):
+        forms={x["id"]:x for x in C["transformations"]}
+        self.assertEqual(set(C["decree_recipe_policy"]["specialist"]["supported_ids"]),
+            {"vampire","werewolf","lich_goety","lich_jawr","archlich","abomination","hunter","monk"})
+        for name in C["decree_recipe_policy"]["specialist"]["supported_ids"]:
+            form=forms[name]
+            recipe=m.specialist_decree_application(C,form,{"minecraft:paper","bountiful:decree",form["test_decree_recipe_reagent"]})
+            self.assertNotIn("bountiful:decree_data",recipe["result"]["components"])
+            self.assertEqual(recipe["result"]["components"]["minecraft:custom_data"]["tmm_bountiful_decree_application"],"tmm_"+name)
+        self.assertNotIn("test_decree_recipe_reagent",forms["dracolich"])
+        r=copy.deepcopy(R)
+        r["approved_form_decrees"]=["vampire"]
+        with self.assertRaisesRegex(ValueError,"engine required"):m.compile_candidate(C,A,r)
+        r["specialist_seal_engine"]="tmm_progression:signed_form_decree_v1"
+        with self.assertRaisesRegex(ValueError,"without an approved bounty pool"):m.compile_candidate(C,A,r)
+        r["registered_items"] += ["minecraft:paper","bountiful:decree","minecraft:bone","minecraft:glass_bottle","hexerei:blood_bottle"]
+        r["effective_emc"].update({"minecraft:bone":4,"minecraft:glass_bottle":8,"hexerei:blood_bottle":32})
+        r["approved_reward_items"].append("hexerei:blood_bottle")
+        r["approved_entries"]["vampire"]={
+            "reward":{"item":"hexerei:blood_bottle","count":1},
+            "objectives":[{"item":"minecraft:bone","count":8}]}
+        files=m.compile_candidate(C,A,r)
+        key="kubejs/data/tmm/recipe/bountiful/tmm_vampire_application.json"
+        self.assertIn(key,files)
+        application=json.loads(files[key])
+        self.assertEqual(application["result"]["components"]["minecraft:custom_data"],
+            {"tmm_bountiful_decree_application":"tmm_vampire"})
+        self.assertNotIn("bountiful:decree_data",application["result"]["components"])
+        r["approved_form_decrees"]=["dracolich"]
+        with self.assertRaisesRegex(ValueError,"unreviewed form family"):m.compile_candidate(C,A,r)
+
 if __name__=="__main__":unittest.main()

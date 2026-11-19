@@ -3175,7 +3175,7 @@
           "max": 32
         }
       ],
-      "test_decree_recipe_reagent": "occultism:demons_dream_fruit"
+      "test_decree_recipe_reagent": "occultism:demons_dream_essence"
     },
     {
       "id": "pastel",
@@ -4024,7 +4024,10 @@
         "irons_spellbooks:blood_vial"
       ],
       "balance_status": "draft_exact_item_payouts_pending_review",
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:glass_bottle",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "werewolf",
@@ -4139,7 +4142,10 @@
         "minecraft:rabbit"
       ],
       "balance_status": "draft_exact_item_payouts_pending_review",
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:bone",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "lich_goety",
@@ -4222,7 +4228,10 @@
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
       ],
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "goety:ectoplasm",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "lich_jawr",
@@ -4302,7 +4311,10 @@
       ],
       "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
       "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:soul_sand",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "archlich",
@@ -4390,7 +4402,10 @@
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
       ],
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:lapis_lazuli",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "dragon_cave",
@@ -4868,7 +4883,10 @@
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
       ],
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:spider_eye",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "hunter",
@@ -5091,7 +5109,10 @@
         "tmm:mob_irons_ice_spider",
         "tmm:mob_irons_catacombs_zombie"
       ],
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:arrow",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "monk",
@@ -5181,7 +5202,10 @@
       ],
       "balance_status": "draft_exact_item_payouts_pending_review",
       "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
-      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe",
+      "test_decree_recipe_reagent": "minecraft:stick",
+      "specialist_seal_profile": "tmm_progression:signed_form_decree_v1",
+      "specialist_recipe_status": "source_only_requires_progression_pr_382_and_reviewed_pool"
     },
     {
       "id": "gilded",
@@ -5470,6 +5494,24 @@
     "output_item": "bountiful:decree",
     "output_count": 1,
     "rank": 1,
-    "notes": "Ordinary general and school decrees only. Shapeless one paper + one iconic reagent. No quest advancement, finished book, rare boss token or gating ingredient required. Scriptor uses ordinary ink as thematic cheap exception. Only emit recipe when matching reviewed decree/pools are compiled. Native blank/general acquisition unchanged; transformation/class acquisition remains held for authoritative player state, not item-only recipes. Replace temporary recipe pattern later."
+    "notes": "Ordinary general and school decrees only. Shapeless one paper + one iconic reagent. No quest advancement, finished book, rare boss token or gating ingredient required. Scriptor uses ordinary ink as thematic cheap exception. Only emit recipe when matching reviewed decree/pools are compiled. Native blank/general acquisition unchanged; transformation/class acquisition remains held for authoritative player state, not item-only recipes. Replace temporary recipe pattern later.",
+    "specialist": {
+      "status": "development_hook_pr_382_pending_review_and_live_validation",
+      "supported_ids": [
+        "vampire",
+        "werewolf",
+        "lich_goety",
+        "lich_jawr",
+        "archlich",
+        "abomination",
+        "hunter",
+        "monk"
+      ],
+      "engine": "tmm_progression:signed_form_decree_v1",
+      "application_marker": "tmm_bountiful_decree_application",
+      "unsigned_output": "bountiful:decree",
+      "no_emc_required": true,
+      "notes": "Craft a component-marked unsigned Bountiful decree with paper and one iconic reagent. Server-side tmm_progression checks actual native form or joined class on right click and signs. No direct signed recipe or universal playerless crafting. Dragon species, Dracolich and Gilded held."
+    }
   }
 }

@@ -166,6 +166,28 @@ def test_decree_recipe(catalog, family, registered):
                    "components": {"bountiful:decree_data": {"ids": ["tmm_" + family["id"]], "rank": 1}}},
     }
 
+def specialist_decree_application(catalog, family, registered):
+    """Unsigned (non-EMC) Bountiful decree application for a form-locked seal."""
+    policy = catalog["decree_recipe_policy"]["specialist"]
+    if family["id"] not in policy["supported_ids"] or family.get("specialist_seal_profile") != policy["engine"]:
+        raise ValueError("unsupported or unverified specialist seal")
+    reagent=family["test_decree_recipe_reagent"]
+    if not ITEM.fullmatch(reagent) or reagent == "minecraft:paper":
+        raise ValueError("bad specialist test reagent")
+    if not {"minecraft:paper","bountiful:decree",reagent} <= registered:
+        raise ValueError("unregistered specialist application item")
+    return {
+        "type":"minecraft:crafting_shapeless",
+        "category":"misc",
+        "ingredients":[{"item":"minecraft:paper"},{"item":reagent}],
+        "result":{
+            "id":"bountiful:decree","count":1,
+            "components":{"minecraft:custom_data":{
+                "tmm_bountiful_decree_application":"tmm_"+family["id"]
+            }}
+        },
+    }
+
 def compile_candidate(catalog, audit, review):
     if review.get("baseline") != catalog["baseline"]:
         raise ValueError("review baseline differs from catalog")
@@ -180,6 +202,20 @@ def compile_candidate(catalog, audit, review):
         raise ValueError("no approved entries")
     families = {x["id"]:x for x in catalog["general"] + catalog["schools"]
                 if not x.get("status", "").startswith("held_")}
+    form_keys = set(review.get("approved_form_decrees", []))
+    seal_engine = review.get("specialist_seal_engine")
+    if form_keys:
+        if seal_engine != catalog["decree_recipe_policy"]["specialist"]["engine"]:
+            raise ValueError("approved specialist seal engine required")
+        permitted = set(catalog["decree_recipe_policy"]["specialist"]["supported_ids"])
+        if not form_keys <= permitted:
+            raise ValueError("unreviewed form family or native species path")
+        forms = {x["id"]:x for x in catalog["transformations"]}
+        families.update({k:forms[k] for k in form_keys if k in forms})
+    elif seal_engine is not None:
+        raise ValueError("specialist seal engine without approved family")
+    if form_keys - set(approved):
+        raise ValueError("specialist recipe without an approved bounty pool")
     if set(approved) - set(families):
         raise ValueError("unknown or held decree")
     output = {}
@@ -209,6 +245,12 @@ def compile_candidate(catalog, audit, review):
         if not ID.fullmatch(key):
             raise ValueError("bad decree id")
         family = families[key]
+        if key in form_keys:
+            # Do not let form-specific contracts silently acquire unrelated
+            # premium or boss materials via an unreviewed reward selection.
+            rewards = spec.get("rewards", [spec["reward"]] if "reward" in spec else [])
+            if not rewards or any(row["item"] not in family.get("reward_item_candidates",[]) for row in rewards):
+                raise ValueError("unreviewed specialist reward selection: "+key)
         if use_native:
             objs, rews = native_balance_family(family, spec, review, profile)
         else:
@@ -277,7 +319,9 @@ def compile_candidate(catalog, audit, review):
         dump("config/bountiful/bounty_pools/"+stem+"_rews.json", {"replace":True,"content":rews})
         dump("config/bountiful/bounty_decrees/"+stem+".json", {"replace":True,"objectives":[stem+"_objs"],"rewards":[stem+"_rews"],"canSpawn": key in {x["id"] for x in catalog["general"]},"canReveal": key in {x["id"] for x in catalog["general"]},"canWanderBuy":False,"linkedProfessions":[]})
         translations["bountiful.decree."+stem+".name"] = family["name"]
-        if recipe_profile:
+        if key in form_keys:
+            dump("kubejs/data/tmm/recipe/bountiful/"+stem+"_application.json", specialist_decree_application(catalog, family, registered))
+        elif recipe_profile:
             dump("kubejs/data/tmm/recipe/bountiful/"+stem+".json", test_decree_recipe(catalog, family, registered))
     dump("kubejs/assets/bountiful/lang/en_us.json", translations)
     return output
