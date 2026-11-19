@@ -132,3 +132,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
 
 2026-11-19 Elemental checkpoint: exact hash/353 binary classes/183 recipes recovered externally; [guide and Urn audit](mods/ars-elemental-pinned-guide-urn.md) completes this slice only. Other major addon systems remain researching. Counts unchanged: 9 complete, 33 researching. No runtime acceptance claimed.
+
+2026-11-19 Elemental foci checkpoint: [acquisition/modifier/passive/event companion](mods/ars-elemental-pinned-foci.md), including embedded Sauce 0.0.61.100 selection API. Still researching for armor, glyph effects, helpers, devices, worldgen and full progression review; global bundled Sauce selection unresolved. 9/42 unchanged.

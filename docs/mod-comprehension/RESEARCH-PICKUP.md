@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-19 Elemental foci
+
+- Added ars-elemental-pinned-foci.md: four lesser/greater acquisition, reusable catalysts, Mark five-per-Tribute/10000Source and current sauce:anima_essence; exact modifier/firstfocus whole-base-cost subtraction/held precedence, greater20tick passives and precise Y/Shocked conditions. Necrotic broad+1damage, Necromancy duration+2/selectedamp+2; worn-only resurrect/Homing replay versus lifesteal NO focus check. Summon/receiver internals not yet closed.
+- Embedded Sauce0.0.61.100 extracted from exactElemental;248060bytes SHA25658ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251, fullCFR elemental-sauce-fresh. ISchoolFocus/ModRegistry audited, no separate sauce pin; global NeoForge bundled dependency selection still needs reconciliation across installedaddons (do not claim bundled version necessarily selected).
+- **Next armor** ElementalArmor/ArmorSet weights/perks,48sauce recipes/upgrade serializer and retainedcomponents. Then focus glyph empowering (GlyphEvents already read; exactendpoint audits pending), Cut/headloot/steeds/SummonEvents/summon entity lifetime/payment;39glyphs/12tomes; helpers/Siren/devices/bangles/worldgen/VexingCaves; pilot35–37 fullroute review. Guide/Urn and base foci now covered, don't re-inventory. Then Elemancy/Additions/Ars final review/othermajors.
+- Fetched integration7d1be155bf1334995b65ebe88566bd4d7ae54635; Elemental/Ars pins unchanged versus ce771cae. 9complete33researching; no blocker/hourly active; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Elemental native guide/Urn
 
 - Exact Elemental0.7.10.4 recovered: 2273778bytes, SHA1 562f640916aa6f5c83b3b3ee2384ca828b870e01, all353classes CFR0.152 externally elemental-fresh;183singularrecipes external elemental-recipes.json. Added ars-elemental-pinned-guide-urn.md native Java Notebook inventory and exact Urn recipe/link/side/cadence/payment/manualbucket. Urn default100Source pertarget/60ticks,1000mBoffer only if simulation>100; output before unchecked debit. BotaniaCompat methods both false; cauldron needs external capability, guide not proof. Manual BucketPickup returns WaterBucket without Source check. Parent DominionWand first Urn then target; strict stores FIRST face, nullable default.

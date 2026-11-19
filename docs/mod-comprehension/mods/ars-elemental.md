@@ -6,10 +6,10 @@
 | Parent | [Ars Nouveau](ars-nouveau.md) |
 | Pack pin | `ars_elemental-1.21.1-0.7.10.4.jar`; SHA-1 `562f640916aa6f5c83b3b3ee2384ca828b870e01` |
 | Source snapshot | Exact release-version source found at [commit 2c433b6](https://github.com/Alexthw46/Ars-Elemental/commit/2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2); Gradle declares 0.7.10.4 / MC 1.21.1 and Ars 5.13.2.1418, while TMM pins Ars 5.13.5. |
-| Status | **researching** — addon source now matches the 0.7.10.4 pin and exposes substantially more than the three pilot items; exact JAR hash matched and all 353 classes decompiled; guide and Urn now audited in the companion below. Other subsystem walkthroughs, dependency compatibility and gameplay remain open. |
+| Status | **researching** — addon source now matches the 0.7.10.4 pin and exposes substantially more than the three pilot items; exact JAR hash matched and all 353 classes decompiled; guide, Urn and focus acquisition/modifier/payment selection now audited in companions below. Other subsystem walkthroughs, dependency compatibility and gameplay remain open. |
 | Guide | Exact binary registers native Notebook pages and edits parent pages; see the guide inventory below. Presentation still needs assembled-client confirmation. |
 
-Exact binary companion: [native guide and Urn](ars-elemental-pinned-guide-urn.md), including recipe, wand order, per-target cadence/payment, capability restrictions and manual bucket path. Remaining sections retain explicit unaudited/source-version limits.
+Exact binary companion: [native guide and Urn](ars-elemental-pinned-guide-urn.md), including recipe, wand order, per-target cadence/payment, capability restrictions and manual bucket path. [Focus acquisition, cost selection and greater passives](ars-elemental-pinned-foci.md) covers all four lesser/greater recipes, Mark of Mastery and Necrotic boundaries. Remaining sections retain explicit unaudited/source-version limits.
 
 ## Player systems and progression
 
@@ -17,7 +17,7 @@ There is no single linear tier ladder. The player chooses elemental schools and 
 
 | Branch | How it works | What it unlocks / teaching notes |
 | --- | --- | --- |
-| Focus selection | Craft lesser elemental foci; the school’s glyphs gain amplification/discount while other elemental schools are weakened. Major focus can add condition-based benefits. | Teach one choice as a reversible specialization; identify tradeoff before equipping. Pilot teaches Lesser Focus of Fire only. |
+| Focus selection | Craft lesser elemental foci; the school’s glyphs gain amplification/discount while other elemental schools are weakened. Greater foci remove the lesser malus, double the configured matching boost and add conditional worn passives; the first held/worn focus selects the mana discount (see companion). | Teach one choice as a reversible specialization; identify tradeoff before equipping. Pilot teaches Lesser Focus of Fire only. |
 | Focus-enhanced spell effects | Fire Focus changes Ignite (Magic Burn/armor interaction), Water changes Freeze and Conjure Water, Air changes Launch/Cut, Earth changes Grow/Gravity. Necrotic focus is a separate Anima route. | Recipe page and focus-specific spell page required; effects are conditional on wearing the focus. Details derive from 0.7.11.0 source and require 0.7.10.4 check. |
 | Elemental armor | Four elemental sets: each piece amplifies and discounts school glyphs and reduces matching damage; full set converts some mitigated damage to mana and triggers a school benefit. Higher armor tiers and Mark of Mastery are part of the route. | Teach recipe tier, retained threads/enchants, full-set activation and the proper element. Pilot uses Fire Hat only, not complete armor progression. |
 | Urn of Endless Waters | Link a block fluid capability within 30; offer 1,000 mB per target every 60 ticks for default 100 Source per successful attempt. Cauldron needs an external capability; Botania fallback is a false-returning stub. Manual BucketPickup has no Source check. | A Source sink with fluid output; verify supported targets and rate. Pilot has a recipe milestone, not an output test. |

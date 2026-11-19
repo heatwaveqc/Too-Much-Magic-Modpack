@@ -401,3 +401,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
 
 - 2026-11-19 — Ars Elemental exact 0.7.10.4 artifact hash matched; native Notebook registration and Urn acquisition/linking/fluid/payment/manual bucket paths audited. Botania fallback is a stub; cauldron needs external fluid capability. New [companion](mods/ars-elemental-pinned-guide-urn.md); addon remains researching, total 9/42 source-complete.
+
+- 2026-11-19 — Elemental [focus companion](mods/ars-elemental-pinned-foci.md): exact recipes/Mark/Anima, whole-spell first-focus cost subtraction, greater passive conditions and Necrotic worn-versus-held/event boundaries. Embedded Sauce recipient audited; global dependency selection and remaining addon systems still open. 9/42 unchanged.
