@@ -11,7 +11,7 @@
 | Profile status | researching |
 | Evidence reached | exact pinned JAR SHA-512 verified; metadata, data and version-aligned source inspected; official ATM10 inventory lists the identical 2.6.2 artifact for Minecraft 1.21.1, overturning the inferred load blocker; TMM client behavior remains untested |
 | Reviewed | 2026-11-15 |
-| Quest ownership | optional branch in Ars pilot draft; current integration branch still has the Ars chapter stub; see reconciliation below |
+| Quest ownership | source-present pilot nodes40–42; possession does not prove bridge operation; see current49nodecrosswalk |
 
 ## Executive gameplay map
 
@@ -42,7 +42,7 @@
 
 ## Guidebook onboarding
 
-- **Guide and access:** Ars Nouveau's Worn Notebook (Patchouli documentation); the addon registers the `ars_ocultas` main category through Ars Nouveau documentation events. It adds entries for Spirit Attuned Gem, Spirit Jars, and Transmutation. Source does not show the addon crafting a standalone guide item.
+- **Guide and access:** Ars Nouveau's native Java Worn Notebook documentation; the addon registers the `ars_ocultas` main category through Ars Nouveau documentation events. It adds entries for Spirit Attuned Gem, Spirit Jars, and Transmutation. Source does not show the addon crafting a standalone guide item.
 - **Earliest stage:** once the player has the Worn Notebook and can craft Ars's Enchanting Apparatus or Imbuement Chamber; the worker branch additionally needs a bound Occultism spirit and Ars Mob Jar.
 - **First teaching goal:** open the Ars Ocultas category, compare the Spirit Attuned Gem recipes in JEI, then make one worker jar and prove it processes one valid item. Teach the Altar as a risky optional bridge separately.
 - **Guide limits:** the Spirit Jars page gives the 7×7 pickup description and Janitor handoff, but it does not teach a particular worker's full Occultism ritual or give measured throughput. The altar page is not a complete safety guide: it does not state the 5,000 Source debits or the source-derived non-consumption behavior.
@@ -89,7 +89,7 @@ Ars Ocultas has no mandatory standalone tier ladder. It is an optional addon bra
 | --- | --- | --- | --- | --- |
 | Jarred Crusher | Occultism Crusher ritual → Mob Jar → feed eligible ore by nearby item, hand or item capability → collect its normal result or adjacent inventory insert | worker runs without decaying and can live in compact automation | no throughput measured; exact accepted ore filters are Occultism job rules; output may be dropped or forwarded according to job event | guide + addon source; not tested |
 | Jarred Janitor | bind Janitor → put in jar → feed eligible dropped items → place output inventory next to jar | self-cleans and exports items automatically | only adjacent inventory handlers; no target-side selection documented; item transfer runs every tick | README + source |
-| Silver/gold conversion | silver or gold ingot + matching third reagent + Manipulation Essence + Spirit Attuned Gem → Imbuement | convert surplus from one metal into the other | 2,000 Source plus consumed reagents; no net gain of precious metal | exact recipes |
+| Silver/gold conversion | silver or gold ingot + matching third reagent + Manipulation Essence + Spirit Attuned Gem → Imbuement | convert surplus from one metal into the other | 2,000 Source plus one consumed primary ingot; nearby Imbuement catalysts reusable; no net gain of precious metal | exact recipes |
 | Sacrificial Altar shortcut | matched entity in Mob Jar and/or matching item in altar → Altar below Golden Bowl → 5,000 Source and a satisfied bowl flag | can automate a ritual condition without a player killing the sacrifice or right-clicking item | source says target entity/item remain. May bypass sacrifice or consumable gates; do not treat as acceptable/balanced until tested | both parent/addon source; no in-world verification |
 
 ## API, config and pack integration surfaces
@@ -158,3 +158,8 @@ The current integration branch's Ars chapter contains the early generic orientat
 - 2026-11-15 — Replaced README-only summary with exact hash-verified 2.6.2 source/resource audit. Mapped jar event/capability behavior, all four registered spirit tiers, Source costs and both metal transmutations. Found source-derived Sacrificial Altar behavior that signals Occultism ritual flags without consuming the matching jarred entity/item; traced the parent flags and listed negative/positive tests. Added Soul Gem failure-order risk and reconciled the unmerged quest pilot. No quest or runtime files changed.
 
 - 2026-11-16 — Corrected the blocked status after the user pointed out ATM10's 1.21.1 use. The official ATM10 repository identifies the pack as 1.21.1 and lists Ars Ocultas 2.6.2 with the same Modrinth hash as TMM's pin. Reclassified the profile as `researching`; the declared version-range discrepancy remains an open verification item, but no longer blocks investigation. No TMM launch or gameplay test was performed.
+
+
+## Direct-binary continuation — 2026-11-19
+
+[Guide/recipe/Altar companion](ars-ocultas-pinned-altar-recipes.md) supersedes older guide/catalyst/legacy-recipe assumptions. Exact82,755byteJAR/fullSHA512matched,46classes externally decompiled; native Occultism1.227.0 bowl/recipe freshly hash-rechecked/decompiled. Four singular recipe resources are current data; Tier4stabilizer file is plural legacy recipes, not proven active current override. Gem/transmutation/nativeguide and exact nonconsuming Altar flag bridge traced on both ends. Spirit job/Soul Gem and finalwalkthrough/pilot audit remain; researching,8/42overallcomplete. No runtime tests.

@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ocultas guide/recipes/Altar
+
+- ExactOcultas2.6.2 recovered fullSHA512matched82755bytes/46classesCFR externalocultas-fresh. Addedars-ocultas-pinned-altar-recipes.md withnativeguide registration,4singular recipes+1legacypluralstabilizerfile, reusableImbuementcatalystcorrection andAltar/bowlbothendflags. NativeOccultism1.227.0 hashrechecked+freshselectedbowl/recipe+inners oc ultas-parent-fresh(actualdirectoryocultas-parent-fresh). Altar300tickcadence/directlyabovebowl,5000Sourceprecheck/uncheckeddebit,jar/itemnotconsumed; bothwaitscannotclearinsamepass. NoSource/metadata/runtimefixapproval.
+- **Next Ocultas** SpiritJarBehaviour(all4tiers/jobs),SpiritMenuWrapper/MessageSpiritSetFilter,EventHandlerSoulGemexchange andnativeOccultismjob/output/capabilityconsumerends. ThenfinalnativeTier4routevslegacyfile/pilot40–42/sourcecoverage/consolidation. Do not re-audit4recipes/Altar/guide. MetadataMinecraftrange discrepancy remainsknown/nonblockingperpriorusercorrection; no launch.8complete34researchingunchanged.
+- AllartifactsexternalTemp/tmm-magic-research-20261116/artifacts; sourceocultas-fresh,selectedparentocultas-parent-fresh. No blocker/hourlyactive,docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. AfterOcultasElemental/Elemancy/Additions,parentreview,othermajors. Gitlogactualhead/priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Controle source completion
 
 - Controle1.6.16 SOURCE-COMPLETE with known native limitations explicit. Parent rewritten around4binarycompanions/fullguide/acquisition/6devices/9glyphs/CC and actual3pilotIDs/tasks/rewards. Final reset gap closed: ArsControleClient.LeftClickEmpty sendsClearRemote, servermainhandchecks; nativeSelectionHUD configurabledefaultV86. **8/42complete34researching**. Arsparentstillresearchingfor4addons+finalreview.
