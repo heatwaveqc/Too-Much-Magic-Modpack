@@ -12,6 +12,11 @@ public final class NativeAttackScope {
         try{return action.get();}
         finally{if(previous==null)current.remove();else current.set(previous);}
     }
+    /** Resolve the top frame only. Never search an outer frame during nested damage. */
+    public Object owner(String kind,Object target,Object source){
+        Frame f=current.get();
+        return f!=null&&f.kind().equals(kind)&&f.target()==target&&f.source()==source?f.owner():null;
+    }
     public String kind(Object owner,Object target,Object source){
         Frame f=current.get();
         return f!=null&&f.owner()==owner&&f.target()==target&&f.source()==source?f.kind():null;

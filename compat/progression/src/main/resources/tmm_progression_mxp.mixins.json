@@ -33,6 +33,7 @@
     "PastelInkPaymentMixin",
     "JawrBloodPaymentMixin",
     "MahouPracticePaymentMixin",
+    "AstralDiscidiaOwnerMixin",
     "JawrVampireEffectsMixin",
     "JawrFeedingMixin",
     "JawrWolfBiteMixin",
