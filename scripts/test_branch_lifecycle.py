@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import urllib.error
 from unittest.mock import patch
 
 import branch_lifecycle as lifecycle
@@ -34,7 +35,8 @@ class LifecycleTests(unittest.TestCase):
         bad = [dict(ENTRY, name=x) for x in lifecycle.PERMANENT |
                {"feature/../unsafe", "feature//unsafe", "feature/test.lock", "-unsafe"}]
         bad += [dict(ENTRY, sha="short"), dict(ENTRY, evidence=[]),
-                dict(ENTRY, reason=" "), dict(ENTRY, sha=B.upper())]
+                dict(ENTRY, reason=" "), dict(ENTRY, sha=B.upper()),
+                dict(ENTRY, archive_history="yes")]
         for row in bad:
             with self.subTest(row=row), self.assertRaises(ValueError):
                 lifecycle.validate_manifest(PATH, manifest(row))
@@ -216,6 +218,72 @@ class ConsoleTests(unittest.TestCase):
                 claim.assert_called_once_with(self.nonce, A)
             snapshot.assert_not_called()
             run.assert_not_called()
+
+
+
+class ArchiveTests(unittest.TestCase):
+    def entry(self):
+        return dict(ENTRY, archive_history=True)
+
+    def test_preservation_tag_create_only(self):
+        ref = "refs/tags/archive/retired/" + A
+        endpoint = "/git/ref/tags/archive/retired/" + A
+        result = {"ref": ref, "object": {"sha": A, "type": "commit"}}
+        missing = urllib.error.HTTPError("https://example.invalid", 404, "not found", {}, None)
+        with patch.object(lifecycle, "api", side_effect=[missing, result, result]) as api, \
+             patch.object(lifecycle, "report"):
+            lifecycle.preserve_history(self.entry())
+            self.assertEqual(api.call_args_list[1].kwargs,
+                             {"method": "POST", "data": {"ref": ref, "sha": A}})
+        with patch.object(lifecycle, "api", side_effect=[result, result]) as api, \
+             patch.object(lifecycle, "report"):
+            lifecycle.preserve_history(self.entry())
+            self.assertEqual([x.args for x in api.call_args_list], [(endpoint,), (endpoint,)])
+        with patch.object(lifecycle, "api", return_value={"ref": ref, "object": {"sha": B, "type": "commit"}}) as api:
+            with self.assertRaises(ValueError):
+                lifecycle.preserve_history(self.entry())
+            api.assert_called_once_with(endpoint)
+
+    def test_preserve_before_any_delete_and_fail_closed(self):
+        row = self.entry()
+        raw = manifest(row)
+        digest = hashlib.sha256(raw).hexdigest()
+        env = {"GITHUB_REPOSITORY": lifecycle.REPO, "GITHUB_REF": "refs/heads/main",
+               "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_ACTOR_ID": lifecycle.OWNER_ID,
+               "GITHUB_RUN_ATTEMPT": "1", "RETIRE_AUTHORIZED": "true"}
+        state = ({row["name"]: {"commit": {"sha": A}}}, set(), set())
+        with patch.dict(os.environ, env, clear=True), \
+             patch.object(Path, "read_bytes", return_value=raw), \
+             patch.object(subprocess, "check_output", return_value=raw), \
+             patch.object(lifecycle, "snapshot", return_value=state), \
+             patch.object(lifecycle, "preserve_history", side_effect=ValueError("cannot verify tag")) as archive, \
+             patch.object(subprocess, "run") as run, patch.object(lifecycle, "report"):
+            lifecycle.retire(PATH, digest, False)
+            archive.assert_not_called()
+            with self.assertRaises(ValueError):
+                lifecycle.retire(PATH, digest, True)
+            archive.assert_called_once_with(row)
+            run.assert_not_called()
+
+    def test_new_dependency_after_preservation_holds_branch(self):
+        row = self.entry()
+        raw = manifest(row)
+        digest = hashlib.sha256(raw).hexdigest()
+        env = {"GITHUB_REPOSITORY": lifecycle.REPO, "GITHUB_REF": "refs/heads/main",
+               "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_ACTOR_ID": lifecycle.OWNER_ID,
+               "GITHUB_RUN_ATTEMPT": "1", "RETIRE_AUTHORIZED": "true"}
+        branches = {row["name"]: {"commit": {"sha": A}}}
+        safe, held = (branches, set(), set()), (branches, {row["name"]}, set())
+        with patch.dict(os.environ, env, clear=True), \
+             patch.object(Path, "read_bytes", return_value=raw), \
+             patch.object(subprocess, "check_output", return_value=raw), \
+             patch.object(lifecycle, "snapshot", side_effect=[safe, safe, held]), \
+             patch.object(lifecycle, "preserve_history") as archive, \
+             patch.object(subprocess, "run") as run, patch.object(lifecycle, "report") as report:
+            lifecycle.retire(PATH, digest, True)
+            archive.assert_called_once_with(row)
+            run.assert_not_called()
+            self.assertIn("SKIP", " ".join(report.call_args.args[0]))
 
 
 if __name__ == "__main__":
