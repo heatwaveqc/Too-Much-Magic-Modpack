@@ -1,0 +1,407 @@
+{
+  "size": "large",
+  "color": "#B80F48",
+  "waves": [
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 5,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos"
+            ],
+            "CustomName": "{\"text\":\"Caerbannog Killer Bunny\",\"color\":\"red\"}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 37
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.75
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:resistance",
+            "amplifier": 1,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 2400,
+      "setup_time": 200
+    },
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 10,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos"
+            ],
+            "CustomName": "{\"text\":\"Caerbannog Killer Bunny\",\"color\":\"red\"}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 37
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.75
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:resistance",
+            "amplifier": 1,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 3000,
+      "setup_time": 140
+    },
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 20,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos"
+            ],
+            "CustomName": "{\"text\":\"Caerbannog Killer Bunny\",\"color\":\"red\"}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 37
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.75
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:resistance",
+            "amplifier": 1,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 3600,
+      "setup_time": 140
+    },
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 40,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos"
+            ],
+            "CustomName": "{\"text\":\"Caerbannog Killer Bunny\",\"color\":\"red\"}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 37
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.75
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:resistance",
+            "amplifier": 1,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 4800,
+      "setup_time": 140
+    },
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 80,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos"
+            ],
+            "CustomName": "{\"text\":\"Caerbannog Killer Bunny\",\"color\":\"red\"}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 37
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 12
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.75
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:resistance",
+            "amplifier": 1,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 7200,
+      "setup_time": 140
+    },
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 1,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomNameVisible": 1,
+            "Tags": [
+              "tmm_caerbannog_chaos",
+              "tmm_caerbannog_boss"
+            ],
+            "PersistenceRequired": 1,
+            "CustomName": "{\"text\":\"The Chaos Bunny of Caerbannog\",\"color\":\"dark_red\",\"bold\":true}"
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "modifiers": [
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "value": 997
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.attack_damage",
+          "operation": "add_value",
+          "value": 92
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 30
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 20
+        },
+        {
+          "type": "gateways:attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.95
+        },
+        {
+          "type": "gateways:loot_table",
+          "loot_table": "tmm:entities/empty"
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 7200,
+      "setup_time": 320
+    }
+  ],
+  "rewards": [
+    {
+      "type": "gateways:stack",
+      "stack": {
+        "id": "kubejs:chaos_bunny_trophy",
+        "count": 1
+      }
+    }
+  ],
+  "failures": [],
+  "spawn_algorithm": "gateways:open_field",
+  "rules": {
+    "leash_range": 96,
+    "spawn_range": 32,
+    "requires_nearby_player": true,
+    "allow_discarding": false,
+    "remove_mobs_on_failure": true
+  }
+}

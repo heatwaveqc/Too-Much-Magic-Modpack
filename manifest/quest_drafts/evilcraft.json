@@ -1,0 +1,307 @@
+{
+  "schema_version": "0.1-draft-only",
+  "chapter": "EvilCraft",
+  "status": "source-verified draft, not in runtime",
+  "purpose": "First content pilot under funny/useful reward standard; no fixed quest IDs until new compiler reserves them; source refs checked against upstream master-1.21-lts but pinned jar/JEI runtime verification pending.",
+  "style": "No forced vanilla iron/lectern/other school prerequisite; choose genuine milestone detection; preserve early Crushed Dark Gem reward; no XP bottles, cookies, paper, bowls or compasses.",
+  "quests": [
+    {
+      "slug": "dark-gems",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire Your First Dark Gem",
+      "description": "Find Dark Ore underground and obtain a Dark Gem. It is the beginning of EvilCraft's blood-powered machines, rituals, and dangerous equipment. As a small head start, take two Crushed Dark Gems: that derivative normally introduces itself a little later, and is useful as a powerful fuel.",
+      "criterion": {
+        "type": "advancement",
+        "id": "evilcraft:first_age"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "evilcraft:dark_gem_crushed",
+        "count": 2
+      },
+      "dependencies": [],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/advancement/first_age.json",
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemDarkGemCrushedConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Verified Crushed Dark Gem is a useful derivative and fuel; reward deliberately previews next mechanic",
+      "task_claim": "EvilCraft first_age advancement; activated on obtaining dark_gem, not necessarily mined ore",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "darkened-apple",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Prepare a Darkened Apple",
+      "description": "Combine an apple with a Dark Gem for a Darkened Apple. This is one way EvilCraft introduces its stranger experiments: its use in the Origins of Darkness initiation should be learned from the manual or an accurate in-game guide. The extra glow berries are provisions, not a second ritual component.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:darkened_apple",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:glow_berries",
+        "count": 4
+      },
+      "dependencies": [
+        "dark-gems"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/recipe/crafting/darkened_apple.json"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Eerie glow-berries are edible, usable light and a playful dark-apple companion",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "origins-of-darkness",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Obtain the Origins of Darkness",
+      "description": "Get EvilCraft's Origins of Darkness manual and browse its actual current recipes rather than guessing how blood, spirits, and dark gems fit together. This checks that you have the guide, not whether every chapter was read. The ink is for making your own notes about things you probably shouldn't try twice.",
+      "criterion": {
+        "type": "advancement",
+        "id": "evilcraft:evil_source"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:ink_sac",
+        "count": 2
+      },
+      "dependencies": [
+        "darkened-apple"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/advancement/evil_source.json",
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemOriginsOfDarknessConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Thematic writing material, small and useful; not a second guidebook",
+      "task_claim": "EvilCraft evil_source advancement, triggered when Origins of Darkness manual is acquired",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "blood-extractor",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire a Blood Extractor",
+      "description": "Make or obtain a Blood Extractor to start handling EvilCraft's liquid blood. Its amount per mob and capacity depend on the pinned server configuration; don't assume it is full or that it makes blood without an eligible source. A spare bucket is a useful companion for any fluid-heavy base.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:blood_extractor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "dependencies": [
+        "dark-gems"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/recipe/crafting/blood_extractor.json",
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemBloodExtractorConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Bucket complements blood/fluid storage, without granting a later machine",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "blood-infuser",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire a Blood Infuser",
+      "description": "The Blood Infuser is where EvilCraft begins making stored blood do useful work. Craft its Blood Infusion Core and surround it with cobblestone as the pinned recipe describes; then consult JEI for the actual infusions available in this version. Take a little glow ink for labeling the apparatus.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:blood_infuser",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:glow_ink_sac",
+        "count": 2
+      },
+      "dependencies": [
+        "blood-extractor"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/recipe/crafting/blood_infuser.json"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Glow ink is an amusing, modest utility for identifying experiments; no next-tier resource granted",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "dark-tank",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Store Some Darkness",
+      "description": "Obtain a Dark Tank for convenient liquid storage. Its pinned recipe combines Dark Gems, iron ingots and glass, making it a natural companion to the extractor and infuser. You still need to collect or transfer actual blood; owning a tank does not mean it is filled.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:dark_tank",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "dependencies": [
+        "blood-extractor"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/recipe/crafting/dark_tank.json"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Cheap fluid-handling tool relevant to tank use",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "dark-power-gem",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire a Dark Power Gem",
+      "description": "Obtain a Dark Power Gem and inspect its recipes to see where EvilCraft's infused materials lead next. This quest checks possession of the powered gem, not the specific blood-infusion process that made it. Two additional Crushed Dark Gems help with later work, including their surprisingly substantial fuel value.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:dark_power_gem",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "evilcraft:dark_gem_crushed",
+        "count": 2
+      },
+      "dependencies": [
+        "blood-infuser"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemDarkPowerGemConfig.java",
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemDarkGemCrushedConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Thematic reusable derivative that helps the following processing path",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "burning-gem-stone",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire a Burning GemStone",
+      "description": "Burning GemStone is a signature EvilCraft material with limited durability. Obtain one and examine its uses before spending that durability on a random experiment. A Flint and Steel is the mundane alternative for the days when you want fire without a supernatural lecture.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:burning_gem_stone",
+        "count": 1
+      },
+      "reward": {
+        "xp": 55,
+        "item": "minecraft:flint_and_steel",
+        "count": 1
+      },
+      "dependencies": [
+        "dark-gems"
+      ],
+      "optional": false,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemBurningGemStoneConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "A usable everyday ignition tool and playful contrast to the magical gem",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    },
+    {
+      "slug": "vengeance-pickaxe",
+      "chapter": "EvilCraft",
+      "kind": "milestone",
+      "title": "Acquire the Vengeance Pickaxe",
+      "description": "Obtain EvilCraft's Vengeance Pickaxe and inspect its exact enchantments. The pinned crafting recipe gives Fortune V alongside Vengeance III: that's a meaningful mining boost with a real curse attached. The reward is a bucket of milk for your nerves; it does NOT promise to remove the Vengeance enchantment.",
+      "criterion": {
+        "type": "item",
+        "id": "evilcraft:vengeance_pickaxe",
+        "count": 1
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:milk_bucket",
+        "count": 1
+      },
+      "dependencies": [
+        "blood-infuser"
+      ],
+      "optional": true,
+      "evidence": {
+        "pinned_mod": "evilcraft-1.21.1-neoforge-1.2.100",
+        "upstream_branch": "master-1.21-lts",
+        "commit": "94eeb8e972eaa5ab3fb220c94ef9c745e081510d",
+        "source_urls": [
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/resources/data/evilcraft/recipe/crafting/vengeance_pickaxe.json",
+          "https://github.com/CyclopsMC/EvilCraft/blob/94eeb8e972eaa5ab3fb220c94ef9c745e081510d/src/main/java/org/cyclops/evilcraft/item/ItemVengeancePickaxeConfig.java"
+        ],
+        "status": "source-verified; pinned client registry and runtime claim not yet verified"
+      },
+      "reward_rationale": "Humorous, useful edible/curative vanilla drink, explicitly not a fake curse cure",
+      "task_claim": "item possession, not proof of crafting/use",
+      "status": "source-only draft, not shipped"
+    }
+  ]
+}
