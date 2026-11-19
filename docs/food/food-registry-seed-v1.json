@@ -12,7 +12,8 @@
     "traits": "Nonexclusive review classifications; suffix candidate is evidence only. Never dietary or ingredient authorization.",
     "consumption": "Separate native food properties, custom use, placed feast, drink, ingredient-only, species-only; unknown until inspected.",
     "diet_overrides": "Source observation or policy review, not an active allowance. Provider/state rules distinct.",
-    "charred": "Second-stage intentionally charred food preparation; not ordinary cooked food, not charged coal or soup, not a blanket allowance. Runtime tag tmm:food/charred lists only four native outputs."
+    "charred": "Second-stage intentionally charred food preparation; not ordinary cooked food, not charged coal or soup, not a blanket allowance. Runtime tag tmm:food/charred lists only four native outputs.",
+    "recipe_evidence": "Recipe evidence is advisory and item-ID scoped. No automatic transitive ingredient-trait inheritance, recipe origin tracking, item components or runtime variants. Mixed or ambiguous recipes retain a generic item classification; review only where a specific consumer decision is affected. Existing expressly designed Gilded recipe-gold policy remains separate, not a default taxonomy rule."
   },
   "ingredient_equivalences": {
     "status": "narrow first-pass additive tag source; runtime unverified",
