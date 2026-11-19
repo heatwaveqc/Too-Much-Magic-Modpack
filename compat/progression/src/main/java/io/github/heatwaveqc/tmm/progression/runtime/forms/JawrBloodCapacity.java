@@ -17,25 +17,24 @@ public final class JawrBloodCapacity {
         if(p.tickCount%20!=0||!p.isAlive()||p.getServer()==null||!p.getServer().isSameThread()||
            !ModList.get().getModContainerById("witchery").filter(c->c.getModInfo().getVersion().toString().startsWith("0.5.39")).isPresent())return;
         String marker=ProgressionApi.mode(p,KEY,"0/0");
-        boolean vampire=JawrFormState.present(p,"vampire");
-        if(!vampire){
-            // Native cure owns the blood reset; never write a human blood pool.
-            if(!marker.equals("0/0"))ProgressionApi.setMode(p,KEY,"0/0");
-            return;
-        }
-        double rate=VampireEffects.rate(p,"jawr_blood_capacity");
-        if(rate<=0&&marker.equals("0/0"))return;
         try{
+            Object v=MxpReflect.staticCall(VAMP+"VampirePlayerAttachment","getData",p);
+            if(!(MxpReflect.call(v,"getLevel") instanceof Integer level)||level<0)return;
+            if(level==0){
+                if(!marker.equals("0/0"))ProgressionApi.setMode(p,KEY,"0/0");
+                return;
+            }
+            if(!JawrFormState.present(p,"vampire"))return;
+            // Native setData checks level-one progression; don't enlarge that quest pool.
+            double rate=level>1?VampireEffects.rate(p,"jawr_blood_capacity"):0;
+            if(rate<=0&&marker.equals("0/0"))return;
             int oldBase=0,oldMax=0;
             String[] parts=marker.split("/",-1);
             if(parts.length==2){oldBase=Integer.parseInt(parts[0]);oldMax=Integer.parseInt(parts[1]);}
-            Object v=MxpReflect.staticCall(VAMP+"VampirePlayerAttachment","getData",p);
-            if(!(MxpReflect.call(v,"getLevel") instanceof Integer level)||level<=0)return;
             Class<?> leveling=Class.forName(VAMP+"VampireLeveling");
-            var method=leveling.getDeclaredMethod("bloodForLevel",int.class);
-            if(!method.trySetAccessible())return;
-            Object owner=java.lang.reflect.Modifier.isStatic(method.getModifiers())?null:MxpReflect.field(leveling,"INSTANCE");
-            if(owner==null&&!java.lang.reflect.Modifier.isStatic(method.getModifiers()))return;
+            var method=leveling.getMethod("bloodForLevel",int.class);
+            Object owner=leveling.getField("INSTANCE").get(null);
+            if(owner==null)return;
             if(!(method.invoke(owner,level) instanceof Integer nativeMaximum)||nativeMaximum<=0)return;
             Class<?> attachment=Class.forName(BLOOD);
             Object data=MxpReflect.staticCall(BLOOD,"getData",p);

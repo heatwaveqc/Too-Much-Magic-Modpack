@@ -105,3 +105,5 @@ E5 next source slice: optional JAWR native blood-funded timed activation via exi
 E5a source slice: verified JAWR caller census, native hunger/healing Thrift, paid timed activation matching quote, legitimate non-player bite gain, sunlight-only mitigation preserving lethal branch, optional one-shot blood-funded heal; excluded known victim/extraction/transfer MXP. Capacity lifecycle and bat-flight behavior remain explicit follow-up, no skill grants. See BATCH-E5-TRANSFORMATIONS.md.
 
 E5a follow-through: Deep Reservoir single native attachment with noncompounding base, rollback on rank removal, no automatic refill after native reset, strict foreign cap handling; actual donor debit proof for bite gain. Source only, native lifecycle and flight acceptance outstanding.
+
+E5a final native endurance: exact level-based base and setter verified, no expansion during native level-one progression check; bat timer-only duration option, no permanent flight grant. All six vampire mechanics have source support (Bat Mastery endurance only), non-bite feeding/flight-speed/actual installed mixin weave and client HUD testing remain. E5b next.

@@ -14,7 +14,7 @@ public final class NativeBloodCost {
     private static Balance read(ServerPlayer p){
         try{
             if(!MxpPlayerPolicy.eligible(p)||!ModList.get().getModContainerById("witchery")
-                    .filter(c->c.getModInfo().getVersion().toString().equals("0.5.39")).isPresent()
+                    .filter(c->c.getModInfo().getVersion().toString().startsWith("0.5.39")).isPresent()
                 ||!JawrFormState.present(p,"vampire"))return null;
             Object d=MxpReflect.staticCall(ROOT+"BloodPoolAttachment","getData",p);
             Object c=MxpReflect.call(d,"getBloodPool"),m=MxpReflect.call(d,"getMaxBlood");

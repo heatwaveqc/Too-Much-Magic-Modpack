@@ -63,7 +63,12 @@ public final class VampireEffects {
         }));
     }
     public static int feeding(ServerPlayer p,LivingEntity victim,java.util.function.IntSupplier original){
-        if(FEEDING.get()!=null||!eligible(p)||victim==null||victim==p||victim instanceof net.minecraft.world.entity.player.Player)return original.getAsInt();
+        Feeding prior=FEEDING.get();
+        if(prior!=null){
+            FEEDING.remove();
+            try{return original.getAsInt();}finally{FEEDING.set(prior);}
+        }
+        if(!eligible(p)||victim==null||victim==p||victim instanceof net.minecraft.world.entity.player.Player)return original.getAsInt();
         Balance donor=read(victim);if(donor==null||donor.current<=0)return original.getAsInt();
         FEEDING.set(new Feeding(p,victim,donor));
         try{return original.getAsInt();}finally{FEEDING.remove();}
