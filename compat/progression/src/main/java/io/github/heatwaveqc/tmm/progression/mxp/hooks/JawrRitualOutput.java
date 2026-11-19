@@ -149,6 +149,26 @@ public final class JawrRitualOutput {
             &&e.position().distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(witness.dest().pos()))<=4.0)
             s.altar().tmm$markJawrOutput();
     }
+    public static net.minecraft.resources.ResourceKey<?> biomeExpected(ServerLevel level){
+        Scope s=ACTIVE.get();
+        if(s==null||s.level()!=level||!isCommand(s,E6bRitualCatalog.Kind.BIOME,s.proof().output()))return null;
+        return MxpReflect.call(s.altar(),"getTargetBiome") instanceof net.minecraft.resources.ResourceKey<?> key?key:null;
+    }
+    public static void biomeChanged(ServerLevel level,net.minecraft.resources.ResourceKey<?> target,boolean changed){
+        if(changed&&target!=null&&target.equals(biomeExpected(level)))ACTIVE.get().altar().tmm$markJawrOutput();
+    }
+    public static Integer wolfBefore(net.minecraft.server.level.ServerPlayer target){
+        Scope s=ACTIVE.get();
+        if(s==null||target==null||!isCommand(s,E6bRitualCatalog.Kind.WOLF_CURSE,s.proof().output())||
+            !target.getUUID().equals(MxpReflect.call(s.altar(),"getTargetPlayer"))||
+            target.getServer()!=s.level().getServer())return null;
+        Object data=MxpReflect.staticCall("dev.sterner.witchery.feature.affliction.werewolf.WerewolfPlayerAttachment","getData",target);
+        return MxpReflect.call(data,"getLevel") instanceof Integer n?n:null;
+    }
+    public static void wolfAfter(net.minecraft.server.level.ServerPlayer target,Integer before){
+        Integer after=before==null?null:wolfBefore(target);
+        if(after!=null&&after>before&&after>0)ACTIVE.get().altar().tmm$markJawrOutput();
+    }
     public static void spawned(Object event,ServerLevel level,Entity entity,boolean accepted){
         Scope s=ACTIVE.get();
         if(!accepted||s==null||s.event()!=event||s.level()!=level||entity==null)return;

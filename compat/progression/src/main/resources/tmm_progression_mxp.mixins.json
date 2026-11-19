@@ -100,7 +100,9 @@
     "EnchantedForestEffectMixin",
     "EnchantedBroilingEffectMixin",
     "EnchantedProtectionEffectMixin",
-    "JawrMovementRitualMixin"
+    "JawrMovementRitualMixin",
+    "JawrBiomeRitualMixin",
+    "JawrWolfCurseRitualMixin"
   ],
   "injectors": {
     "defaultRequire": 0

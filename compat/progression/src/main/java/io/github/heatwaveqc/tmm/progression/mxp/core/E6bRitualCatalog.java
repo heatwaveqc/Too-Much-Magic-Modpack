@@ -6,7 +6,7 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Exact native registry identities, never cross-provider aliases. */
 public final class E6bRitualCatalog {
     private E6bRitualCatalog(){}
-    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM, MINE, EVENT_SPAWN, EVENT_MUTATION, TELEPORT }
+    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM, MINE, EVENT_SPAWN, EVENT_MUTATION, TELEPORT, BIOME, WOLF_CURSE }
     public record JawrOutput(String output, Kind kind, Band band) {}
     private static final Map<String,JawrOutput> JAWR=Map.ofEntries(
         Map.entry("witchery:ritual/apply_ointment",new JawrOutput("witchery:broom",Kind.ITEM,Band.CIRCLE_BASIC)),
@@ -56,7 +56,12 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/teleport_owner_to_waystone",new JawrOutput("tp {owner} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_BASIC)),
         Map.entry("witchery:ritual/teleport_taglock_to_waystone",new JawrOutput("tp {taglockPlayerOrEntity} {waystonePos}",Kind.TELEPORT,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/push_mobs",new JawrOutput("dev.sterner.witchery.content.ritual_event.PushMobsRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_BASIC)),
-        Map.entry("witchery:ritual/pull_mobs",new JawrOutput("dev.sterner.witchery.content.ritual_event.PullMobsRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_BASIC))
+        Map.entry("witchery:ritual/pull_mobs",new JawrOutput("dev.sterner.witchery.content.ritual_event.PullMobsRitualEvent",Kind.EVENT_MUTATION,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/change_biome",new JawrOutput("witchery changeBiome {chalkPos} {targetBiome} 64",Kind.BIOME,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/change_biome_cheap",new JawrOutput("witchery changeBiome {chalkPos} {targetBiome} 16",Kind.BIOME,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/change_biome_waystone",new JawrOutput("witchery changeBiome {waystonePos} {targetBiome} 64",Kind.BIOME,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("witchery:ritual/change_biome_waystone_cheap",new JawrOutput("witchery changeBiome {waystonePos} {targetBiome} 16",Kind.BIOME,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/curse_of_the_wolf",new JawrOutput("witchery werewolf level try_curse {taglockPlayerOrEntity}",Kind.WOLF_CURSE,Band.CIRCLE_EXCEPTIONAL))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);
@@ -66,6 +71,12 @@ public final class E6bRitualCatalog {
     }
     private static void add(Map<String,RitualRewards.Rule> out,String id,Band band){
         if(out.putIfAbsent(id,new RitualRewards.Rule(id,band))!=null)throw new IllegalStateException("Duplicate ritual "+id);
+    }
+    public static boolean neutralRite(String id){
+        return "witchery:ritual/push_mobs".equals(id)||"witchery:ritual/pull_mobs".equals(id)||"witchery:ritual/rot".equals(id)||"witchery:ritual/raining_toad".equals(id);
+    }
+    public static boolean neutralOnly(String id){
+        return "witchery:ritual/push_mobs".equals(id)||"witchery:ritual/pull_mobs".equals(id);
     }
     public static boolean routineJawr(String id){
         return "witchery:ritual/charge_attuned".equals(id)||"witchery:ritual/rite_of_charging_infusion".equals(id);

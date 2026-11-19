@@ -50,12 +50,14 @@ class RitualSettlementTest {
     }
     @Test void e6bIndependentNativeRecipes(){
         assertEquals(14,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("totemic:")).count());
-        assertEquals(48,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("witchery:")).count());
+        assertEquals(53,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("witchery:")).count());
         assertEquals(1200,RitualRewards.lookup("totemic:war_dance").band().first());
         assertEquals(2200,RitualRewards.lookup("totemic:rain").band().first());
         assertEquals(3500,RitualRewards.lookup("totemic:baykok_summon").band().first());
         assertEquals("witchery:ritual/summon_demon",RitualRewards.lookup("witchery:ritual/summon_demon").family());
         assertNull(RitualRewards.lookup("witchery:ritual/unknown"));
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog.neutralOnly("witchery:ritual/push_mobs"));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog.neutralOnly("witchery:ritual/rot"));
         assertEquals("witchery:undead",io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog.jawr("witchery:ritual/curse_of_the_undead").output());
         assertEquals(io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog.Kind.INFUSION,io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog.jawr("witchery:ritual/infuse_light").kind());
         assertEquals(2000,RitualRewards.lookup("witchery:ritual/blocks_below_iron").band().first());

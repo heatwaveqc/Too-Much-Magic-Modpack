@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tmm.progression.mxp.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import org.spongepowered.asm.mixin.injection.Coerce;
 import io.github.heatwaveqc.tmm.progression.mxp.MxpMod;
 import io.github.heatwaveqc.tmm.progression.mxp.core.E6bRitualCatalog;
 import io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards;
@@ -55,14 +57,18 @@ public abstract class JawrRitualChalkMixin implements JawrRitualOutput.Observer 
         if(!tmm$matches(id)||E6bRitualCatalog.jawr(id)==null)return;
         tmm$recipe=id;tmm$actor=p.getUUID();tmm$operation=UUID.randomUUID();((BlockEntity)(Object)this).setChanged();
     }
-    @WrapMethod(method="tickCurrentEvent(Lnet/minecraft/world/level/Level;)V",require=0,remap=false)
-    private void tmm$tick(Level world,Operation<Void> original){
+    @WrapOperation(method="tickCurrentEvent(Lnet/minecraft/world/level/Level;)V",at=@At(value="INVOKE",target="Ldev/sterner/witchery/content/block/ritual/ritual_event/RitualEvent;tick(Ldev/sterner/witchery/content/block/ritual/ritual_event/RitualContext;)V"),require=0,remap=false)
+    private void tmm$tick(@Coerce Object event,@Coerce Object context,Operation<Void> original){
         ServerLevel level=tmm$level();
-        Object event=null;
-        if(tmm$operation!=null&&tmm$active()&&level==world&&tmm$matches(tmm$recipe)&&Boolean.TRUE.equals(MxpReflect.field(this,"inOutputPhase"))
+        boolean neutral=Boolean.TRUE.equals(MxpReflect.call(event,"isNeutral"));
+        boolean phase=Boolean.TRUE.equals(MxpReflect.field(this,"inOutputPhase"))||neutral&&E6bRitualCatalog.neutralRite(tmm$recipe);
+        boolean observed=tmm$operation!=null&&tmm$active()&&level!=null&&tmm$matches(tmm$recipe)&&phase
+            &&Boolean.FALSE.equals(MxpReflect.call(event,"isRequirement"))
+            &&MxpReflect.call(context,"getEntity")==this&&MxpReflect.call(context,"getLevel")==level
+            &&MxpReflect.call(context,"getRecipe")==MxpReflect.call(this,"getRitualRecipe")
             &&MxpReflect.field(this,"eventQueue") instanceof List<?> queue&&MxpReflect.field(this,"eventIndex") instanceof Integer index
-            &&index>=0&&index<queue.size())event=queue.get(index);
-        JawrRitualOutput.tick(this,event,level,E6bRitualCatalog.jawr(tmm$recipe),()->original.call(world));
+            &&index>=0&&index<queue.size()&&queue.get(index)==event;
+        JawrRitualOutput.tick(this,observed?event:null,level,E6bRitualCatalog.jawr(tmm$recipe),()->original.call(event,context));
     }
     @Override public UUID tmm$jawrActor(){return tmm$actor;}
     @Override public void tmm$markJawrOutput(){
@@ -72,7 +78,7 @@ public abstract class JawrRitualChalkMixin implements JawrRitualOutput.Observer 
     private void tmm$finish(Operation<Void> original){
         ServerLevel level=tmm$level();String id=tmm$recipe;UUID actor=tmm$actor,operation=tmm$operation;
         boolean valid=level!=null&&operation!=null&&actor!=null&&tmm$active()&&tmm$matches(id)&&tmm$actual
-            &&Boolean.TRUE.equals(MxpReflect.field(this,"inOutputPhase"))&&MxpReflect.field(this,"outputEventsCompleted") instanceof Integer count&&count>0
+            &&(E6bRitualCatalog.neutralOnly(id)||Boolean.TRUE.equals(MxpReflect.field(this,"inOutputPhase"))&&MxpReflect.field(this,"outputEventsCompleted") instanceof Integer count&&count>0)
             &&MxpReflect.field(this,"eventIndex") instanceof Integer index&&MxpReflect.field(this,"eventQueue") instanceof List<?> queue&&index>=queue.size();
         tmm$clear();original.call();
         if(valid&&!tmm$active()&&tmm$level()==level)
