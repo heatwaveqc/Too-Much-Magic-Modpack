@@ -7,7 +7,7 @@ PINS={
 "bee":("https://cdn.modrinth.com/data/38tpSycf/versions/LwGXnQCW/the_bumblezone-7.17.3%2B1.21.1-neoforge.jar","859d87b44d3d17c63f38317ac34d124e30b6de8c3043fa61ee987ff8b1f236d6"),
 "chaos":("https://mediafilez.forgecdn.net/files/8797/42/Draconic-Evolution-1.21.1-3.1.4.633.jar","e89f3a23a5478e35099905d7c08f9f6a2ff70289e964904e91f06a7ceeed39b5")
 }
-GUARDS={"neo":("neovitae","1.1.53"),"void":("voidscape","1.9.588"),"knight":("twilightforest","4.8.3345"),"bee":("the_bumblezone","7.17.3"),"chaos":("draconicevolution","3.1.4.633")}
+GUARDS={"neo":("neovitae","1.1.53"),"void":("voidscape","1.21.1-1.9.588"),"knight":("twilightforest","4.8.3345"),"bee":("the_bumblezone","7.17.3+1.21.1-neoforge"),"chaos":("draconicevolution","3.1.4.633")}
 CLASSES={
 "neo":{"com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity":["isForeman()","()Z","IsForeman"]},
 "void":{"tamaized.voidscape.entity.NullServantEntity":["getAugment()","()Ljava/lang/Integer;","augment"]},

@@ -31,7 +31,7 @@ public final class SpecialBossNative {
     public static String variantKey(LivingEntity victim,String id){
         if("neovitae:daemonium_doloris".equals(id)&&pinned("neovitae","1.1.53")&&exact(victim,NEO))
             return BossRewardPolicy.foremanKey(Boolean.TRUE.equals(MxpReflect.call(victim,"isForeman")));
-        if("voidscape:null_servant".equals(id)&&pinned("voidscape","1.9.588")&&exact(victim,NULL)
+        if("voidscape:null_servant".equals(id)&&pinned("voidscape","1.21.1-1.9.588")&&exact(victim,NULL)
             &&MxpReflect.call(victim,"getAugment") instanceof Integer augment)
             return BossRewardPolicy.nullServantKey(augment);
         return null;
@@ -62,7 +62,7 @@ public final class SpecialBossNative {
     }
     public static void whiteVictory(ServerLevel level,Object controller,boolean won,Runnable nativeEnd){
         // Refuse reentrant or inactive events, preserve every native invocation.
-        if(!won||WHITE.get()!=null||!MxpMod.active()||!pinned("the_bumblezone","7.17.3")
+        if(!won||WHITE.get()!=null||!MxpMod.active()||!pinned("the_bumblezone","7.17.3+1.21.1-neoforge")
             ||!level.getServer().isSameThread()||!(MxpReflect.call(controller,"getEventTimer") instanceof Number timer)
             ||timer.longValue()<=0){nativeEnd.run();return;}
         var arena=new Arena(level,"boss:cosmic_crystal:"+UUID.randomUUID(),whiteHealth(),new LinkedHashMap<>());
