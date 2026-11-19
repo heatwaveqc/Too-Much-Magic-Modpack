@@ -105,7 +105,8 @@
     "JawrWolfCurseRitualMixin",
     "JawrBrazierRitualMixin",
     "JawrParallelRitualMixin",
-    "JawrSpectralChainMixin"
+    "JawrSpectralChainMixin",
+    "PrimalRitualAltarMixin"
   ],
   "injectors": {
     "defaultRequire": 0

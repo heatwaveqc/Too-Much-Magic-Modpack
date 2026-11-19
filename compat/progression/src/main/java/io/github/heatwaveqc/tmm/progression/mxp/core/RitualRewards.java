@@ -47,6 +47,7 @@ public final class RitualRewards {
         E6bRitualCatalog.addTo(rules);
         E6bSpawnCatalog.addTo(rules);
         JawrBrazierCatalog.addTo(rules);
+        PrimalRitualCatalog.addTo(rules);
         return Map.copyOf(rules);
     }
     private static void forge(Map<String,Rule> out,Band band,String... paths){
