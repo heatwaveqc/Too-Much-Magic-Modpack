@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "source_commit": "c9ea4191f602384d1531f9e6110c427e8c39bb77",
+    "census_commit": "1ae3aa4569294b8904e6bf156a73b779758832f3",
+    "installed_build": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+    "workflow_run": 44630751678,
+    "workflow_job": 135936413532
+  },
+  "status": "historical_resolved_tag_and_crafting_slot_evidence_no_recipe_changes",
+  "groups": [
+    {
+      "absent": [],
+      "crafting_slots_full": 50,
+      "crafting_slots_partial": 65,
+      "declared_not_in_native_tag": [
+        "pamhc2crops:tomatoitem"
+      ],
+      "id": "tomato",
+      "native_tag_members": [
+        "farmersdelight:tomato"
+      ],
+      "present": [
+        "farmersdelight:tomato",
+        "pamhc2crops:tomatoitem"
+      ],
+      "status": "existing_additive_bridge",
+      "tag": "c:foods/tomato",
+      "truncated_slots_touching_group": 1
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 82,
+      "crafting_slots_partial": 70,
+      "declared_not_in_native_tag": [
+        "pamhc2crops:onionitem"
+      ],
+      "id": "onion",
+      "native_tag_members": [
+        "farmersdelight:onion"
+      ],
+      "present": [
+        "farmersdelight:onion",
+        "pamhc2crops:onionitem"
+      ],
+      "status": "existing_additive_bridge",
+      "tag": "c:foods/onion",
+      "truncated_slots_touching_group": 1
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 12,
+      "crafting_slots_partial": 84,
+      "declared_not_in_native_tag": [
+        "pamhc2crops:cabbageitem"
+      ],
+      "id": "cabbage",
+      "native_tag_members": [
+        "farmersdelight:cabbage",
+        "farmersdelight:cabbage_leaf"
+      ],
+      "present": [
+        "farmersdelight:cabbage",
+        "farmersdelight:cabbage_leaf",
+        "pamhc2crops:cabbageitem"
+      ],
+      "status": "existing_additive_bridge_native_leaf_retained_review_quantity",
+      "tag": "c:foods/cabbage",
+      "truncated_slots_touching_group": 1
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 37,
+      "crafting_slots_partial": 25,
+      "declared_not_in_native_tag": [],
+      "id": "rice",
+      "native_tag_members": [
+        "farmersdelight:rice",
+        "pamhc2crops:riceitem"
+      ],
+      "present": [
+        "farmersdelight:rice",
+        "pamhc2crops:riceitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity",
+      "tag": "c:crops/rice",
+      "truncated_slots_touching_group": 1
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 0,
+      "crafting_slots_partial": 127,
+      "declared_not_in_native_tag": [
+        "pamhc2foodcore:doughitem"
+      ],
+      "id": "wheat_dough",
+      "native_tag_members": [
+        "farmersdelight:wheat_dough"
+      ],
+      "present": [
+        "farmersdelight:wheat_dough",
+        "pamhc2foodcore:doughitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity",
+      "tag": "c:foods/dough/wheat",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 0,
+      "crafting_slots_partial": 28,
+      "declared_not_in_native_tag": [
+        "pamhc2foodcore:pastaitem"
+      ],
+      "id": "raw_pasta",
+      "native_tag_members": [
+        "farmersdelight:raw_pasta"
+      ],
+      "present": [
+        "farmersdelight:raw_pasta",
+        "pamhc2foodcore:pastaitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity",
+      "tag": "c:foods/pasta",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 49,
+      "crafting_slots_partial": 0,
+      "declared_not_in_native_tag": [
+        "pamhc2foodcore:saltitem"
+      ],
+      "id": "salt",
+      "native_tag_members": [],
+      "present": [
+        "pamhc2foodcore:saltitem"
+      ],
+      "status": "candidate_no_new_equivalence_without_review",
+      "tag": "c:foods/salt",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 40,
+      "crafting_slots_partial": 0,
+      "declared_not_in_native_tag": [
+        "pamhc2foodcore:flouritem"
+      ],
+      "id": "flour",
+      "native_tag_members": [],
+      "present": [
+        "pamhc2foodcore:flouritem"
+      ],
+      "status": "candidate_no_new_equivalence_without_review",
+      "tag": "c:foods/flour",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 15,
+      "crafting_slots_partial": 51,
+      "declared_not_in_native_tag": [],
+      "id": "milk",
+      "native_tag_members": [
+        "farmersdelight:milk_bottle",
+        "minecraft:milk_bucket",
+        "pamhc2foodcore:freshmilkitem",
+        "pamhc2foodextended:soymilkitem"
+      ],
+      "present": [
+        "farmersdelight:milk_bottle",
+        "minecraft:milk_bucket",
+        "pamhc2foodcore:freshmilkitem"
+      ],
+      "status": "hold_container_and_volume_non_equivalent",
+      "tag": "c:foods/milk",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 0,
+      "crafting_slots_partial": 8,
+      "declared_not_in_native_tag": [
+        "aquaculture:fish_fillet_raw"
+      ],
+      "id": "raw_fillet",
+      "native_tag_members": [
+        "aquaculture:arapaima",
+        "aquaculture:atlantic_cod",
+        "aquaculture:atlantic_halibut",
+        "aquaculture:atlantic_herring",
+        "aquaculture:bayad",
+        "aquaculture:blackfish",
+        "aquaculture:bluegill",
+        "aquaculture:boulti",
+        "aquaculture:brown_shrooma",
+        "aquaculture:brown_trout",
+        "aquaculture:capitaine",
+        "aquaculture:carp",
+        "aquaculture:catfish",
+        "aquaculture:gar",
+        "aquaculture:muskellunge",
+        "aquaculture:pacific_halibut",
+        "aquaculture:perch",
+        "aquaculture:pink_salmon",
+        "aquaculture:piranha",
+        "aquaculture:pollock",
+        "aquaculture:rainbow_trout",
+        "aquaculture:red_grouper",
+        "aquaculture:red_shrooma",
+        "aquaculture:smallmouth_bass",
+        "aquaculture:synodontis",
+        "aquaculture:tambaqui",
+        "aquaculture:tuna",
+        "deeperdarker:angler_fish",
+        "eternal_starlight:luminaris",
+        "eternal_starlight:luminofish",
+        "farmersdelight:cod_slice",
+        "farmersdelight:salmon_slice",
+        "minecraft:cod",
+        "minecraft:pufferfish",
+        "minecraft:salmon",
+        "minecraft:tropical_fish",
+        "pastel:crawfish",
+        "pastel:koi"
+      ],
+      "present": [
+        "aquaculture:fish_fillet_raw",
+        "farmersdelight:cod_slice",
+        "farmersdelight:salmon_slice"
+      ],
+      "status": "hold_whole_fish_vs_cut_yield_and_species",
+      "tag": "c:foods/raw_fish",
+      "truncated_slots_touching_group": 0
+    },
+    {
+      "absent": [],
+      "crafting_slots_full": 0,
+      "crafting_slots_partial": 3,
+      "declared_not_in_native_tag": [],
+      "id": "cooked_fillet",
+      "native_tag_members": [
+        "aquaculture:fish_fillet_cooked",
+        "deeperdarker:cooked_angler_fish",
+        "eternal_starlight:cooked_luminaris",
+        "eternal_starlight:cooked_luminofish",
+        "farmersdelight:cooked_cod_slice",
+        "farmersdelight:cooked_salmon_slice",
+        "minecraft:cooked_cod",
+        "minecraft:cooked_salmon"
+      ],
+      "present": [
+        "aquaculture:fish_fillet_cooked",
+        "farmersdelight:cooked_cod_slice",
+        "farmersdelight:cooked_salmon_slice"
+      ],
+      "status": "hold_whole_fish_vs_cut_yield_and_species",
+      "tag": "c:foods/cooked_fish",
+      "truncated_slots_touching_group": 0
+    }
+  ]
+}
