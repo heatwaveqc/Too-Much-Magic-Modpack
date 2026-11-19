@@ -86,6 +86,10 @@ public final class VampireEffects {
         int bonus=BloodSkillMath.feedingBonus(Math.min(actualDonor,gained),after.max-after.current,rate);
         if(bonus>0)original.accept(bonus);
     }
+    public static double batDuration(net.minecraft.world.entity.player.Player p,double nativeTicks){
+        if(!(p instanceof ServerPlayer server)||NativeFormConditions.jawrShape(server,"BAT")!=io.github.heatwaveqc.tmm.progression.foundation.Condition.Result.PASS)return nativeTicks;
+        return BloodSkillMath.batDuration(nativeTicks,rate(server,"jawr_bat_duration"));
+    }
     public static float sun(ServerPlayer p,float amount){
         return BloodSkillMath.sunDamage(amount,rate(p,"jawr_sun_resistance"));
     }

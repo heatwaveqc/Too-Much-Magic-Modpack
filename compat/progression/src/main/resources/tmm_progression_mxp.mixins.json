@@ -34,7 +34,8 @@
     "JawrBloodPaymentMixin",
     "MahouPracticePaymentMixin",
     "JawrVampireEffectsMixin",
-    "JawrFeedingMixin"
+    "JawrFeedingMixin",
+    "JawrBatDurationMixin"
   ],
   "injectors": {
     "defaultRequire": 0

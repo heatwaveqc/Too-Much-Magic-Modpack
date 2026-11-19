@@ -17,6 +17,12 @@ class BloodSkillMathTest{
     assertEquals(1.5f,BloodSkillMath.sunDamage(2,.25));assertEquals(Float.MAX_VALUE,BloodSkillMath.sunDamage(Float.MAX_VALUE,.75));
     assertEquals(.5f,BloodSkillMath.sunDamage(2,1));
  }
+ @Test void nativeBatEnduranceDoesNotCreateFlight(){
+    assertEquals(1300.0,BloodSkillMath.batDuration(1000,.3),1e-9);
+    assertEquals(0.0,BloodSkillMath.batDuration(0,1));
+    assertEquals(1000.0,BloodSkillMath.batDuration(1000,Double.NaN));
+    assertEquals(5000.0,BloodSkillMath.batDuration(1000,10));
+ }
  @Test void healingRequiresPaidTimedActivation(){
     assertThrows(IllegalArgumentException.class,()->new ActivationSpec("timed",20,20,0,4));
     assertThrows(IllegalArgumentException.class,()->new ActivationSpec("toggle",0,20,20,4));
