@@ -1469,6 +1469,11 @@ file = "kubejs/startup_scripts/silver_equipment_stats.js"
 hash = "2fd11767cb03ffd7206c2700eec52ef6eba05cdbcb8ec4bc58228b298cc552a4"
 
 [[files]]
+file = "mods/aether.pw.toml"
+hash = "cc3f6e6e8f1838d16e47cce9241e32176279673efb1438ff4451ccffa9579b14"
+metafile = true
+
+[[files]]
 file = "mods/akashic-tome.pw.toml"
 hash = "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f"
 metafile = true
@@ -1666,6 +1671,16 @@ metafile = true
 [[files]]
 file = "mods/codxlib.pw.toml"
 hash = "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2"
+metafile = true
+
+[[files]]
+file = "mods/colorful-hearts.pw.toml"
+hash = "3f6e74711a0c2677548ec3a5ef36a3fbf79b5a9f2b406aab73b1ca678fc518f9"
+metafile = true
+
+[[files]]
+file = "mods/comforts.pw.toml"
+hash = "36f2f6e74b7dbeccb504572d47006582207544fa234a095093b97adfc7ecd5ac"
 metafile = true
 
 [[files]]
@@ -2039,6 +2054,11 @@ hash = "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5"
 metafile = true
 
 [[files]]
+file = "mods/lava-fishing.pw.toml"
+hash = "7a9e09d127173f97b30bbca41741e32a35a20aa5ae443e25d3565501463a8cf8"
+metafile = true
+
+[[files]]
 file = "mods/leaves-be-gone.pw.toml"
 hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
 metafile = true
@@ -2124,6 +2144,11 @@ hash = "6bc414cc0f2d4c078fe83f384d786343f701f371d657c5279b5b0df1595804bd"
 metafile = true
 
 [[files]]
+file = "mods/my-nethers-delight.pw.toml"
+hash = "622f66a4a2c21655005b1b56af83361e7daae270d375d0d5bf38c8a1f78d40cf"
+metafile = true
+
+[[files]]
 file = "mods/natures-compass.pw.toml"
 hash = "2e9a8daaa0e0cc9cdfb67422e0f928f2db6a1f2984b8636eb2b5091c5fb23e29"
 metafile = true
@@ -2134,8 +2159,18 @@ hash = "6a4769ed8d8428836a28846d31db03592a6a84025342bab5d9203b9d5f59d3af"
 metafile = true
 
 [[files]]
+file = "mods/nether-depths-upgrade.pw.toml"
+hash = "48c2ab25456fb7ace4367153a3de95a990cba360bdf1fb78264850c4392512d1"
+metafile = true
+
+[[files]]
 file = "mods/observerlib.pw.toml"
 hash = "ff407a1e06ce5a70fd10e60a9c822a69d2722d8d1b5751918ff65145a976036e"
+metafile = true
+
+[[files]]
+file = "mods/occult-cooking.pw.toml"
+hash = "336012b59c5f539d9c916b86be2259a20394e7abca79c65527e8a3d61d591ca5"
 metafile = true
 
 [[files]]
@@ -2151,6 +2186,11 @@ metafile = true
 [[files]]
 file = "mods/oracle-index.pw.toml"
 hash = "2e77758dc91190a81b67b6f329832b625404adfaaee894900be90ff3a94f7523"
+metafile = true
+
+[[files]]
+file = "mods/owo-lib.pw.toml"
+hash = "6514f98b34602b789fc2dbcafe7a67468d1c94d74965a0142a79b7ab23628a9a"
 metafile = true
 
 [[files]]
@@ -2201,6 +2241,11 @@ metafile = true
 [[files]]
 file = "mods/polymorph.pw.toml"
 hash = "d935e4ce118d15c88b10809df85e801f0e9577855f870f3c28e5a0bd5e7fecf6"
+metafile = true
+
+[[files]]
+file = "mods/prefab.pw.toml"
+hash = "d258c79d7a3c084c10cdc1f35358561b2020dbc98288984d6d7997fca6fb4926"
 metafile = true
 
 [[files]]
@@ -2309,6 +2354,11 @@ hash = "74823eb3d7c7d27a842fb935e6627a466c209ebb0e640833a4e1382d1f593601"
 metafile = true
 
 [[files]]
+file = "mods/scarlet-springs-equestrian-decor-ssed.pw.toml"
+hash = "f2e308df8a680dfa6309f1d52554fe5a107833978ee86445e235f0eee9861f1e"
+metafile = true
+
+[[files]]
 file = "mods/scriptor-magicae.pw.toml"
 hash = "1bf49dde596fb80f964f1982cbd98127c9ab0da2d5afffb58760f2fa96e9a619"
 metafile = true
@@ -2359,6 +2409,16 @@ hash = "0b8161b7e8c71379084080673b304a090e187b1ad45ddc2bb90ebae11f401f6f"
 metafile = true
 
 [[files]]
+file = "mods/swem-addendum.pw.toml"
+hash = "af2a846bed7b4d6d41dd8c81dc302900d07391992ae14487b14100fa059c04ee"
+metafile = true
+
+[[files]]
+file = "mods/swem.pw.toml"
+hash = "8bce490425f51594f58e9cd35ad00b0aece7f64d024b269a7c9a2c86411758fd"
+metafile = true
+
+[[files]]
 file = "mods/tectonic.pw.toml"
 hash = "dd46fad79cf33a00123be0a74c73581da72cd98503ef23822a624a08f4b10ff2"
 metafile = true
@@ -2371,6 +2431,11 @@ metafile = true
 [[files]]
 file = "mods/the-bumblezone.pw.toml"
 hash = "6542133c0bc532709b91a71c50356e98b5fea7ca178a7514e3589c4540fa61e2"
+metafile = true
+
+[[files]]
+file = "mods/theurgy-kubejs.pw.toml"
+hash = "f909ef0be750564936dc5e9f5990db8c69daee0f7b220c869592531ccdad8e44"
 metafile = true
 
 [[files]]
@@ -2394,6 +2459,11 @@ hash = "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd"
 metafile = true
 
 [[files]]
+file = "mods/twilight-forest-final-boss-remake.pw.toml"
+hash = "26f7198c490914731ef41e6bb599975172fb13025a84185b1bf90ecd2cce3f5d"
+metafile = true
+
+[[files]]
 file = "mods/twilight-forest.pw.toml"
 hash = "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f"
 metafile = true
@@ -2406,6 +2476,11 @@ metafile = true
 [[files]]
 file = "mods/unfocused.pw.toml"
 hash = "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e"
+metafile = true
+
+[[files]]
+file = "mods/unicorn-academy-bonded-magic-unofficial.pw.toml"
+hash = "fb2f1b2b786a02fbfc15a72e02f5caed2da6d137201232cbbe9c3268e1afb0c0"
 metafile = true
 
 [[files]]

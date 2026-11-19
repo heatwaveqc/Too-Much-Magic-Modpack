@@ -25,11 +25,11 @@
       "version": "1.21.1-1.6.14",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/swem/files/9156395",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "swem",
       "candidate_file_id": 9156395,
-      "note": "Owner-approved 2026-11-17 equestrian intake. Client & server; upstream release 1.21.1 NeoForge. Check exact JAR dependency ranges and existing GeckoLib 4.9.3 / playerAnimator 2.0.4 pins, horse entity tags, server performance, and provider download/hash before Packwiz enablement. Do not install optional addons without approval. Unicorn Academy names 1.6.13, so test 1.6.14 API compatibility."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved 2026-11-17 equestrian intake. Client & server; upstream release 1.21.1 NeoForge. Check exact JAR dependency ranges and existing GeckoLib 4.9.3 / playerAnimator 2.0.4 pins, horse entity tags, server performance, and provider download/hash before Packwiz enablement. Do not install optional addons without approval. Unicorn Academy names 1.6.13, so test 1.6.14 API compatibility."
     },
     {
       "id": "swem-addendum",
@@ -39,11 +39,11 @@
       "version": "1.21.1-1.0.1",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/swem-addendum/files/8932512",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "swem-addendum",
       "candidate_file_id": 8932512,
-      "note": "Owner-approved 2026-11-17 equestrian intake. Upstream NeoForge 1.21.1 release; verify SWEM version/API dependency, client/server side, breed/coat persistence and winged horse behavior before enablement. Provider download/hash pending."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved 2026-11-17 equestrian intake. Upstream NeoForge 1.21.1 release; verify SWEM version/API dependency, client/server side, breed/coat persistence and winged horse behavior before enablement. Provider download/hash pending."
     },
     {
       "id": "scarlet-springs-equestrian-decor-ssed",
@@ -53,11 +53,11 @@
       "version": "1.21.1-1.2.1",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/scarlet-springs-equestrian-decor-ssed/files/8100765",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "scarlet-springs-equestrian-decor-ssed",
       "candidate_file_id": 8100765,
-      "note": "Owner-approved 2026-11-17 equestrian intake. Upstream NeoForge 1.21.1 release. CurseForge labels environment Server but custom blocks/decor need client assets; verify JAR metadata and side handling, registry/recipes, provider download/hash before enablement."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved 2026-11-17 equestrian intake. Upstream NeoForge 1.21.1 release. CurseForge labels environment Server but custom blocks/decor need client assets; verify JAR metadata and side handling, registry/recipes, provider download/hash before enablement."
     },
     {
       "id": "unicorn-academy-bonded-magic-unofficial",
@@ -67,11 +67,11 @@
       "version": "1.21.1-1.0.0",
       "release_status": "experimental_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/unicorn-academy-bonded-magic-unofficial/files/9150781",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "unicorn-academy-bonded-magic-unofficial",
       "candidate_file_id": 9150781,
-      "note": "OWNER-APPROVED EXPERIMENTAL CANDIDATE — NEEDS TESTING; desired inclusion, not stable-ready. Client & server beta. Upstream names NeoForge >=21.1.240, SWEM 1.6.13, GeckoLib 4.9.3, playerAnimator 2.0.4; current SWEM release candidate 1.6.14 is NOT confirmed compatible. Verify exact dependencies, provider download/hash, mixins and side before pinning. Require separate clean boot/client + disposable-world multiplayer acceptance (unicorn bonding, powers/targeting, keybinds, fairy wings/flight and progression, ferry/dimension generation/return, persistence/reload, interactions with SWEM Addendum/player transformations). If it fails, isolate only the beta and preserve approved stable equestrian mods; no stable promotion without successful QA. No full build authorized."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. OWNER-APPROVED EXPERIMENTAL CANDIDATE — NEEDS TESTING; desired inclusion, not stable-ready. Client & server beta. Upstream names NeoForge >=21.1.240, SWEM 1.6.13, GeckoLib 4.9.3, playerAnimator 2.0.4; current SWEM release candidate 1.6.14 is NOT confirmed compatible. Verify exact dependencies, provider download/hash, mixins and side before pinning. Require separate clean boot/client + disposable-world multiplayer acceptance (unicorn bonding, powers/targeting, keybinds, fairy wings/flight and progression, ferry/dimension generation/return, persistence/reload, interactions with SWEM Addendum/player transformations). If it fails, isolate only the beta and preserve approved stable equestrian mods; no stable promotion without successful QA. No full build authorized."
     },
     {
       "id": "aether",
@@ -80,10 +80,11 @@
       "desired": true,
       "version": "1.21.1-1.5.10-neoforge",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/aether/version/K5X5qMwG",
-      "enabled_in_pack": false,
+      "source": "https://modrinth.com/mod/YhmgMVyu/version/K5X5qMwG",
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Mature fantasy skylands and dungeon progression. Include in next owner-authorized comprehensive unstable QA; exact NeoForge 1.21.1 pin/dependencies and actual portal/dungeon gameplay must be verified. Frozen JAR audit 44014327626: Official provider requires oωo-lib; only NeoForge 1.21.1 beta builds found; separate beta approval required. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. both side. Candidate only; actual loader/gameplay not tested.",
+      "packwiz_slug": "aether"
     },
     {
       "id": "akashic-tome",
@@ -562,9 +563,10 @@
       "version": "comforts-neoforge-9.0.5+1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/comforts/version/3kpPjcTc",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-approved 2026-11-14 for NEXT FULL INTEGRATION BUILD: portable sleeping bags (retain home respawn) and hammocks (advance day to night). Exact NeoForge 1.21.1 9.0.5 release exists; verify dependencies, resolve hash-pinned packwiz mod file, include on both client and server, smoke, and exercise daytime hammock/sleeping bag spawn behavior before marking enabled. Desired != installed."
+      "note": "Restore exact prior published pin; new QA inventory must verify actual downloaded bytes.",
+      "packwiz_slug": "comforts"
     },
     {
       "id": "common-network",
@@ -711,7 +713,7 @@
       "source": "https://modrinth.com/mod/deep-aether/version/MSW5emg8",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Aether expansion addon, not a standalone new dimension. Include alongside The Aether in next authorized QA; pin matching version and dependencies, assess biome/dungeon compatibility. Frozen JAR audit 44014327626: Aether dependency blocked; provider requires TerraBlender (beta only), and exact JAR declares Minecraft [1.21,1.21.1) despite provider 1.21.1 label. AeroBlender/TerraBlender nested; investigate range before activation. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Second exact byte audit: releases 1.1.5.1 and 1.1.5 both declare Minecraft [1.21,1.21.1), excluding target 1.21.1. Keep required, blocked, not silently omitted. 2026-11-19 OWNER DECISION: exclude from this QA target; retain catalog intent and audit evidence for possible future reconsideration. This supersedes prior current-target requirement."
     },
     {
       "id": "deeper-darker",
@@ -1373,12 +1375,12 @@
       "version": "lavafishing-1.21.1-1.2.13-all.jar",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/lavafishing/files/7781402",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "curseforge_project_id": 1035887,
       "candidate_file_id": 7781402,
       "packwiz_slug": "lava-fishing",
-      "note": "OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: full TeamSunset Lava Fishing 1.21.1 NeoForge, Aquaculture 2 + Kotlin for Forge both already in canonical pack. Source contains Aquaculture lava hooks and loot table injection. CANNOT co-install Girafi aq2lava addon without resolving duplicate Aquaculture hook registrations. Check official SHA pin, modded hook registry, loot, fishing Gilded class gate, two catch events, vanilla XP/Improvable Skills Luck of the Sea, Reliquified Artifacts Angler's Hat and full pack. Desired, NOT installed."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: full TeamSunset Lava Fishing 1.21.1 NeoForge, Aquaculture 2 + Kotlin for Forge both already in canonical pack. Source contains Aquaculture lava hooks and loot table injection. CANNOT co-install Girafi aq2lava addon without resolving duplicate Aquaculture hook registrations. Check official SHA pin, modded hook registry, loot, fishing Gilded class gate, two catch events, vanilla XP/Improvable Skills Luck of the Sea, Reliquified Artifacts Angler's Hat and full pack. Desired, NOT installed."
     },
     {
       "id": "leaves-be-gone",
@@ -1441,7 +1443,7 @@
       "source": "https://modrinth.com/mod/liroth-revamped/version/WInggx5l",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed."
+      "note": "OWNER APPROVED FOR NEXT COMPREHENSIVE UNSTABLE TEST 2026-11-16; planned only, NOT installed/pinned. Owner-approved multidimension fantasy exploration content for next authorized unstable QA; verify release pin, dependencies, generation, quest entry points and balance. Frozen JAR audit 44014327626: Actual JAR requires client-side Nuit >=1.0.0-beta.6, and BCLib, WorldWeaver (wover), WunderLib. Beta approval and remaining library chain needed. OWNER-DEFERRED for this deployment (2026-11-16); future test target. Owner accepts necessary beta library prerequisites in principle; exact runtime closure still to be reviewed. Nuit now pinned client only. Native BetterEnd New Dawn library identity and provider GeckoLib pin still under audit; leave required but unpinned. 2026-11-19 OWNER DECISION: exclude from this QA target; retain catalog intent and audit evidence for possible future reconsideration. This supersedes prior current-target requirement."
     },
     {
       "id": "lithostitched",
@@ -1597,12 +1599,12 @@
       "version": "MyNethersDelight-1.21.1-1.10.4.1.jar",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/my-nethers-delight/files/8854319",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "candidate_file_id": 8854319,
       "curseforge_project_id": 1003673,
       "packwiz_slug": "my-nethers-delight",
-      "note": "OWNER APPROVED FOR NEXT GILDED-ENABLED UNSTABLE QA (2026-11-16): 1.21.1 NeoForge release 1.10.4.1, official CurseForge file 8854319. Requires already-selected Farmer's Delight. NOT YET HASH-PINNED OR INSTALLED: before next authorized integration build, resolve official provider hashes, mod ID, dependency version, packwiz .pw.toml/index and server/client diet + Hoglin loot compatibility. Desired does not mean enabled. Do not run an automatic full smoke test from this metadata entry."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. OWNER APPROVED FOR NEXT GILDED-ENABLED UNSTABLE QA (2026-11-16): 1.21.1 NeoForge release 1.10.4.1, official CurseForge file 8854319. Requires already-selected Farmer's Delight. NOT YET HASH-PINNED OR INSTALLED: before next authorized integration build, resolve official provider hashes, mod ID, dependency version, packwiz .pw.toml/index and server/client diet + Hoglin loot compatibility. Desired does not mean enabled. Do not run an automatic full smoke test from this metadata entry."
     },
     {
       "id": "natures-compass",
@@ -1637,12 +1639,12 @@
       "version": "netherdepthsupgrade-3.3-1.21.1-NeoForge.jar",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/nether-depths-upgrade/files/8940364",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
       "curseforge_project_id": 670011,
       "candidate_file_id": 8940364,
       "packwiz_slug": "nether-depths-upgrade",
-      "note": "OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: separate Nether Depths Upgrade fishing rod/lava bobber, fish, lava fauna, vents, lava glass/worldgen. 1.21.1 NeoForge 3.3 (Sep 21 2026) replaces previously noted 3.2. GeckoLib already in canonical pack; exact JAR hash, worldgen and two lava fishing mod conflict must be checked. Own ItemFishedEvent used; Gilded XP must count once per bobber. Desired, NOT installed."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. OWNER TAGGED FOR NEXT GILDED QA 2026-11-16: separate Nether Depths Upgrade fishing rod/lava bobber, fish, lava fauna, vents, lava glass/worldgen. 1.21.1 NeoForge 3.3 (Sep 21 2026) replaces previously noted 3.2. GeckoLib already in canonical pack; exact JAR hash, worldgen and two lava fishing mod conflict must be checked. Own ItemFishedEvent used; Gilded XP must count once per bobber. Desired, NOT installed."
     },
     {
       "id": "observerlib",
@@ -2644,9 +2646,10 @@
       "version": "1.0.9 NeoForge 1.21.1",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/prefab/version/1.0.9",
-      "enabled_in_pack": false,
+      "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "Owner-selected prefab-housing candidate 2026-11-16 (replaces Capsule design); requires Cloth Config API >=15.0.140 NeoForge. No default house selected, not hash-pinned or included in runtime."
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-selected prefab-housing candidate 2026-11-16 (replaces Capsule design); requires Cloth Config API >=15.0.140 NeoForge. No default house selected, not hash-pinned or included in runtime.",
+      "packwiz_slug": "prefab"
     },
     {
       "id": "creeper-overhaul",
@@ -2857,6 +2860,89 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "kambrik"
+    },
+    {
+      "id": "colorful-hearts",
+      "name": "Colorful Hearts",
+      "category": "qol",
+      "desired": true,
+      "version": "10.5.9",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/colorful-hearts/version/us0gze50",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "colorful-hearts",
+      "note": "Exact pinned release for standalone Monk/Hunter test; client QA pending."
+    },
+    {
+      "id": "theurgy-kubejs",
+      "name": "Theurgy KubeJS",
+      "category": "infrastructure",
+      "desired": true,
+      "version": "1.21.1-neoforge-1.6.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/theurgy-kubejs/files/8838118",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "theurgy-kubejs",
+      "candidate_file_id": 8838118,
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved 2026-11-17 (#324): next deployment intake. Official Theurgy/KubeJS integration for custom alchemical sulfurs and recipes; verify exact dependency ranges against Theurgy 1.79.0 and KubeJS 2101.7.2-build.381, provider hash and Packwiz pin before enabling. Target all regular material mob drops, not gear/armor or secondary magical harvest products such as Malum spirit items; audit item identities, rarity and existing recipes before generating. No full build authorized."
+    },
+    {
+      "id": "twilight-forest-final-boss-remake",
+      "name": "Twilight Forest Final Boss (remake)",
+      "category": "adventure",
+      "desired": true,
+      "version": "2.1.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/twilight-forest-final-boss-remake/files/8768438",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1267766,
+      "candidate_file_id": 8768438,
+      "packwiz_slug": "twilight-forest-final-boss-remake",
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved #294 and reconfirmed 2026-11-17 #236; next deployment intake, Minecraft 1.21.1 NeoForge + Twilight Forest 4.8.3345. Verify exact provider JAR hash, dependency closure and packwiz pin before enabling; both-side runtime expected, not verified. Inspect exact installed JAR item registry, loot tables and boss death/reward code for renewable actual Castle Keeper drop; use verified drop ID in Philosopher's Stone Primordial Powers closed alternative list (#236), not an assumed trophy name or registry ID. Native Final Castle boss supersedes custom Killer Rabbit replacement; keep optional Chaos Bunny separate. No smoke or package authorized."
+    },
+    {
+      "id": "occult-cooking",
+      "name": "Occult Cooking",
+      "category": "magic_addon",
+      "desired": true,
+      "version": "1.0.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/occult-cooking/files/8545035",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "occult-cooking",
+      "curseforge_project_id": 1631139,
+      "candidate_file_id": 8545035,
+      "note": "Exact upstream bytes and loader metadata audited in https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44617434376; selected for unstable QA. Declared dependency ranges checked against current pinned roster; runtime compatibility and feature/gameplay acceptance pending. Owner-approved next QA target; exact artifact/dependency audit pending (#368)."
+    },
+    {
+      "id": "owo-lib",
+      "name": "oωo (owo-lib)",
+      "category": "dependency",
+      "desired": true,
+      "version": "0.12.15.6-beta.1+1.21",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/ccKDOlHs/version/wbdHEItB",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "owo-lib",
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. both side. Candidate only; actual loader/gameplay not tested."
+    },
+    {
+      "id": "nuit",
+      "name": "Nuit",
+      "category": "dependency",
+      "desired": true,
+      "version": "mc1.21.1-1.0.0-beta.6+neoforge",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/YBz7DOs8/version/blbu29BJ",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "nuit",
+      "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested. 2026-11-19: removed from this QA candidate as its sole newly introduced dependent Liroth is owner-deferred. Verified pin evidence retained for future intake."
     }
   ],
   "excluded": [

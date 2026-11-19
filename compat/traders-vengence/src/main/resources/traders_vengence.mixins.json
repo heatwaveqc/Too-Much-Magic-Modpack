@@ -6,8 +6,8 @@
   "mixins": [
     "MobGoalsAccessor",
     "WanderingTraderSpawnerMixin",
-    "VillagerRangedAttackMixin",
-    "VillagerReputationMixin"
+    "VillagerReputationMixin",
+    "VillagerGolemSpawnMixin"
   ],
   "injectors": {
     "defaultRequire": 1

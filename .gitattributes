@@ -8,3 +8,5 @@
 *.py text eol=lf
 *.sh text eol=lf
 *.yml text eol=lf
+# Exact audited third-party provenance text; preserve committed LF bytes on Windows.
+compat/traders-vengence/src/main/resources/META-INF/traders_vengence/caliberarms/** text eol=lf

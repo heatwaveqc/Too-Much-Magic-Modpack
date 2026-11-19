@@ -1,0 +1,13 @@
+name = "Scarlet Springs Equestrian Decor (SSED)"
+filename = "ssedeco-1.21.1-1.2.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "37be09fb807ed5be6d1039ec3b98d729d78a8a10"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8100765
+project-id = 1183801

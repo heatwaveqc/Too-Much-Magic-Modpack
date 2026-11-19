@@ -4,7 +4,7 @@ import io.github.heatwaveqc.tmm.tradersvengence.state.TraderBlacklist;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
@@ -32,7 +32,7 @@ public final class WantedRangedAttackGoal extends RangedAttackGoal {
             && TraderBlacklist.get(world).contains(player.getUUID())) {
             return true;
         }
-        return defender instanceof Villager
+        return defender instanceof AbstractVillager
             && target instanceof Mob attacker
             && attacker.isAlive()
             && attacker != defender
