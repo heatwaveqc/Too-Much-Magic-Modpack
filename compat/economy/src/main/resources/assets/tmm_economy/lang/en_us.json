@@ -31,5 +31,7 @@
   "tmm_economy.mapper.goety_recipes": "TMM Goety Recipe Mapper",
   "tmm_economy.mapper.goety_recipes.tooltip": "Map ordinary item rituals and machines including Soul Energy.",
   "tmm_economy.mapper.primal_recipes": "TMM Primal Magick Recipe Mapper",
-  "tmm_economy.mapper.primal_recipes.tooltip": "Map ordinary arcane crafting and machines including elemental Mana."
+  "tmm_economy.mapper.primal_recipes.tooltip": "Map ordinary arcane crafting and machines including elemental Mana.",
+  "tmm_economy.mapper.astral_recipes": "TMM Astral Sorcery Recipe Mapper",
+  "tmm_economy.mapper.astral_recipes.tooltip": "Map ordinary altar and infusion recipes including liquid starlight."
 }
