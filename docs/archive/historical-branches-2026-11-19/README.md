@@ -1,0 +1,26 @@
+# Historical branch preservation — 2026-11-19
+
+**Archive only, not live source, approved balance, installed mods or acceptance.** This folder holds 35 byte-identical blobs from six historical branch tips. Old internal links, tool instructions, allocation values, and source claims remain historical. Do not execute archived scripts or import the old configs/workflows. Current ownership is `test/full-integration`, `dev/progression`, and the active approved PRs; see issue #356.
+
+| Archive | Original exact source | Preserved files |
+| --- | --- | ---: |
+| [Quest standards](quest-standards/docs/) | `b75a675f9f4fcf47f60e01f65ffebc99ca1a68db` | 5 |
+| [Design goals](design-goals/docs/) | `c55b265132a7e82cdb313f6459d2ffb05d3a43d2` | 1 |
+| [Expanded magic design](expanded-magic/docs/) | `d916d38700ce932b021ffb056fa44c5d49ee0ba9` (closed #6) | 12 |
+| [Legacy hybrids](legacy-hybrids/docs/) | `678b306d5a6240ffa5e4b738158c23f79228c223` (closed #18) | 4 |
+| [Gilded designs](gilded/docs/explorations/) | `2fd6df6de1e21cdd8f07750a63e76261124a0fc4` | 7 |
+| [Hunter census and inert research tools](hunter-source-audit/) | `ad0e4ec5566133d8d7ba9562490fa92464774fbe` | 6 |
+
+## Nine previously held refs — source investigation
+
+- **B3 stable build:** `fadb961a108d99997e49bb6f5bcc8a8d906848c6`, closed PR #5 exact original head still reachable. Compared with current integration: five ahead commits, only four historical workflow paths differ. No unique pack source indicated; current rules and newest QA remain authoritative. Preserve this historical build checkpoint with an explicit exact archive tag (not a stable release tag).
+- **Expanded magic decisions:** #6 exact closed PR ref remains; 12 historical documents copied. The old mod manifest includes superseded choices; never restore it.
+- **Transformation scaffold:** #18 exact closed PR ref remains. Comparing to #42 showed 23 distinct paths including experimental Abomination actions/policy, JAWR probe, hybrid docs, tests and audits. Existing JAWR-only bridge and current hybrids are authoritative; four unique historical documents copied, original code stays accessible via #18. Do not restore the old dual-Vampirism architecture or abandoned experiments.
+- **JAWR blood guard:** #42 exact closed PR head `f821064e092afd4f1e8aaf9b56122aba73367110` remains reachable; original dual-chassis JAWR/TeamLapen carry/debit/defense source was superseded by the later JAWR-only design. This does not eliminate the current native JAWR expenditure adapter obligation under #280/#347. Do not re-enable the legacy blood arbitration.
+- **Quest humor:** `12ccee3f6a55a4b3813952193265b1fa82d70650` versus closed #74 original head: only one unique historical workflow path, no unique quest source in that comparison. Preserve exact original history before removing ref; no replay of retired smoke workflow.
+- **Quest standards:** compared to the retained FTB Essentials frozen source branch: six unique paths (five archived documents and one old smoke workflow). Source travel configs remain locked via current integration donors; do not restore stale quest or mod manifests. Preserve full original tip via explicit archive tag.
+- **Design goals:** two distinct paths versus current integration (one historical status report, copied verbatim here, and old smoke workflow). Preserve original tip; not a new status report or go-live approval.
+- **Gilded:** historical source-build/compile evidence [run 43932141498](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43932141498); original branch includes real Java, mixins, tags, Tyz overlay, tests and lava-fishing provider research, not just design. In #347 at `8e47e22322a8228233d540099d651ade71ccee05`, the inactive `gilded-native-candidate.json` explicitly cites this exact historical SHA and `GildedMechanics.java` explicitly ports first-party source into the shared engine. Native ranks, rite, diet, gold mechanics, Piglin kinship, ore and lava-catch practice have a successor design; exact parity is not established. Unresolved provider call paths, hybrid conditions, tag IDs, gold/Netherite virtual enchants and actual lava-fishing permission must remain with #347. Preserve the **entire original commit**, not merely these seven documents. Do not overwrite new engine or restore Tyz overlay. The active author must be informed before the branch is retired.
+- **Hunter research:** historical four evidence documents/CSV files are changed in current #353 and original two audit scripts are absent there. #353 current README explicitly sources frozen #347 prior runtime census/crosswalk and #348 current installed registry; current taxonomy is not a replay of the old moving branch. Archive four exact historical evidence blobs and the two original scripts as inert source; preserve whole original commit. Do not overwrite the new classifications/crosswalk or activate archived workflows. Inform active #353 author and retain original source/evidence for future analysis.
+
+No original branch is deleted by this archive PR. Existing closed-PR refs are durable references; exact tips without one are to be archived at create-only `refs/tags/archive/retired/<full-sha>` by a separately approved retirement batch, verified before the branch is deleted. No source/manifest/index/pack/game changes; no assembly or smoke.
