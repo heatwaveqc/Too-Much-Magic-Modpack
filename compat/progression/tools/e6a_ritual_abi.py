@@ -28,7 +28,7 @@ def inspect(jar,key):
                 except ValueError: continue
                 if isinstance(data,dict):
                     print("RECIPE",key,n,json.dumps(data,separators=(",",":")),flush=True)
-            if n.endswith(".class") and not n.startswith("META-INF/") and CLASS.search(n[:-6].rsplit("/",1)[-1]):
+            if n.endswith(".class") and not n.startswith("META-INF/") and (CLASS.search(n[:-6].rsplit("/",1)[-1]) or (key == "roots" and (n.startswith("elucent/rootsclassic/ritual/") or n.endswith("/InventoryUtil.class") or n.endswith("/CustomInventory.class")))):
                 classes.append(n[:-6].replace("/","."))
     if not classes: raise RuntimeError("No ritual classes for "+key)
     for cls in classes:
@@ -37,7 +37,7 @@ def inspect(jar,key):
         method=""; relevant=False
         for line in out.splitlines():
             if line.startswith("  ") and not line.startswith("    ") and line.rstrip().endswith(";"):
-                method=line.strip(); relevant=bool(METHOD.search(method)); print("DECL",method)
+                method=line.strip(); relevant=key == "roots" or bool(METHOD.search(method)); print("DECL",method)
             elif line.strip().startswith("descriptor:"): print("DESC",line.strip())
             elif relevant and line.lstrip().split(":",1)[0].isdigit(): print("BC",method,"|",line.strip())
         print("END",cls,flush=True)
