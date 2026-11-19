@@ -38,10 +38,19 @@ with tempfile.TemporaryDirectory() as d:
                 elif n.startswith("data/") and n.endswith(".json") and re.search(r"totem|geas|soul.bind|rite",n,re.I):
                     if "/recipe/" in n or "/recipes/" in n:
                         print("RECIPE",key,n,json.dumps(json.loads(z.read(n)),separators=(",",":")),flush=True)
+        if key!="astral":
+            print("RITE_RESOURCES",key,json.dumps([n for n in z.namelist() if n.startswith("data/") and re.search(r"rite|geas",n,re.I) and "/advancement/" not in n and "/recipe/" not in n]),flush=True)
+            for n in sorted(z.namelist()):
+                if n.startswith("data/") and n.endswith(".json") and re.search(r"rite|geas",n,re.I) and "/advancement/" not in n and "/recipe/" not in n:
+                    print("RITE_DATA",n,z.read(n).decode(errors="replace").replace("\n"," "),flush=True)
+            for n in z.namelist():
+                if n.endswith(".class") and not n.startswith("META-INF/") and re.search(r"(RiteType|RiteEffectType|GeasEffectType|GeasSoulData|RiteAnchorBlockEntity|RiteUnweaverBlockEntity|Mixin)",n):
+                    cls=n[:-6].replace("/",".")
+                    if cls not in classes: classes.append(cls)
         print("CLASSES",key,json.dumps(classes),flush=True)
     for cls in classes:
         # Detailed bytecode only for authoritative lifecycle and registry, not every cosmetic/renderer class.
-        detailed=key=="astral" or bool(re.search(r"(TotemBase|TotemPole|SoulBrazier|SoulBindingRecipe|GeasEffectHandler|RiteRegistry|Rites|GeasEffectRegistry|GeasEffects)",cls))
+        detailed=key=="astral" or bool(re.search(r"(TotemBase|TotemPole|SoulBrazier|SoulBindingRecipe|GeasEffectHandler|RiteRegistry|RiteTypes|RiteType|RiteEffectTypes|GeasEffectTypes|GeasEffectTypeRegistry|GeasSoulData|RiteAnchorBlockEntity|RiteUnweaverBlockEntity|Mixin)",cls))
         argv=["javap","-classpath",str(jar),"-p","-s"]+(["-c"] if detailed else [])+[cls]
         out=subprocess.run(argv,capture_output=True,text=True,check=True,timeout=60).stdout
         if key=="astral":
@@ -57,7 +66,7 @@ with tempfile.TemporaryDirectory() as d:
         for line in out.splitlines():
             if line.startswith("  ") and not line.startswith("    ") and line.rstrip().endswith(";"):
                 print("DECL",line.strip(),flush=True)
-                active=bool(re.search(r"finish|start|activate|interact|tick|save|load|attune|bind|geas|rite|register|complete|set|add|remove",line,re.I))
+                active=bool(re.search(r"finish|start|activate|interact|tick|save|load|attune|bind|geas|rite|register|complete|set|add|remove|static \{\}|receiveSpark|canTrigger|getRegistryName|tryAdd",line,re.I))
             elif line.strip().startswith("descriptor:") or (active and line.lstrip().split(":",1)[0].isdigit()):
                 print(line,flush=True)
 if key=="astral": print("ASTRAL_PERSONAL_ABI_MATCH",flush=True)
