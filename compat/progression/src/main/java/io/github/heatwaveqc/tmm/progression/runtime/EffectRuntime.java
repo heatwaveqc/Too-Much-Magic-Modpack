@@ -49,14 +49,16 @@ public final class EffectRuntime {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         List<Active> out = new ArrayList<>();
         for (Definition.Path path : PathRegistry.all().values()) {
-            Track track = ledger.get(path.id());
-            if (!track.joined()) continue;
+            Track track = ProgressionApi.track(player,path.id());
+            if (!track.joined() || !PathRegistry.eligible(player,path.id())) continue;
             for (Definition.Skill skill : path.skills()) {
                 int rank = track.skillRank(skill.id());
                 if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
-                    Definition.Effect effect = skill.effects().get(n);
-                    if (eligible(player,effect,track)) {
+                    Definition.Effect effect = skill.effects().get(n).atRank(rank);
+                    if(PathRegistry.activation(path.id(),skill.id())!=null&&
+                        !"true".equals(effect.params().get("passive"))&&!SkillActivation.active(player,path.id(),skill.id()))continue;
+                    if (PathRegistry.effectEligible(player,path.id(),skill.id(),n) && eligible(player,effect,track)) {
                         String id = path.id().replace(':','/') + "/" +
                             skill.id().replace(':','/') + "/" + n;
                         out.add(new Active(id,effect,rank));
@@ -99,6 +101,9 @@ public final class EffectRuntime {
             if (instance == null) continue;
             ResourceLocation id = modifierId(active);
             double amount = effect.amountPerRank() * active.rank();
+            if(effect.params().containsKey("max_contribution")&&amount>0)
+                amount=io.github.heatwaveqc.tmm.progression.foundation.AttributeCap.suppressBonuses(amount,
+                    io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.number(effect.params(),"max_contribution",0,0,1000000));
             AttributeModifier.Operation op = operation(effect.operation());
             AttributeModifier old = instance.getModifier(id);
             if (old != null && (old.amount() != amount || old.operation() != op)) {
@@ -111,7 +116,7 @@ public final class EffectRuntime {
         }
         Map<ResourceLocation,String> previous = previousAttributes.getOrDefault(player.getUUID(),Map.of());
         previous.forEach((id,attrName) -> {
-            if (!desired.containsKey(id)) {
+            if (!java.util.Objects.equals(desired.get(id),attrName)) {
                 Holder<Attribute> holder = attribute(attrName);
                 AttributeInstance instance = holder == null ? null : player.getAttribute(holder);
                 if (instance != null) instance.removeModifier(id);
@@ -137,6 +142,8 @@ public final class EffectRuntime {
             for (Active a : active(attacker)) {
                 Definition.Effect fx = a.effect();
                 if (fx.type().equals("melee_bonus")
+                    && io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(attacker,event.getEntity(),event.getSource(),fx)
+                    && sourceMatches(fx.damageTag(),event.getSource())
                     && Selectors.entity(fx.selector(),event.getEntity())
                     && Selectors.item(fx.weapon(),attacker.getMainHandItem())) {
                     bonus += fx.amountPerRank() * a.rank();
@@ -155,7 +162,10 @@ public final class EffectRuntime {
                 Definition.Effect fx = a.effect();
                 if (!fx.type().equals("damage_bonus")) continue;
                 String delivery = fx.params().getOrDefault("delivery","melee");
-                if (!(melee && (delivery.equals("melee") || delivery.equals("any")) ||
+                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.attack(owner,event.getEntity(),event.getSource(),fx) ||
+                    !sourceMatches(fx.damageTag(),event.getSource())) continue;
+                if (!io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.special(fx)&&
+                    !(melee && (delivery.equals("melee") || delivery.equals("any")) ||
                       arrow && (delivery.equals("arrow") || delivery.equals("any")))) continue;
                 if (Selectors.entity(fx.selector(),event.getEntity()) && Selectors.item(fx.weapon(),weapon)) {
                     double add = fx.amountPerRank() * a.rank();
@@ -181,7 +191,8 @@ public final class EffectRuntime {
             double multiplier = 1;
             for (Active a : active(defender)) {
                 Definition.Effect fx = a.effect();
-                if (fx.type().equals("damage_multiplier") && sourceMatches(fx.damageTag(),event.getSource())) {
+                if (fx.type().equals("damage_multiplier") && sourceMatches(fx.damageTag(),event.getSource()) &&
+                    (fx.selector().isEmpty()||fx.selector().equals("*")||event.getSource().getEntity() instanceof LivingEntity attacker&&Selectors.entity(fx.selector(),attacker))) {
                     multiplier *= Math.max(0,1.0 - fx.amountPerRank() * a.rank());
                 }
             }
@@ -210,7 +221,7 @@ public final class EffectRuntime {
         if (extra > 0) event.setDuration(Math.max(1,event.getDuration() - extra));
     }
 
-    private static boolean sourceMatches(String selector, DamageSource source) {
+    static boolean sourceMatches(String selector, DamageSource source) {
         if (selector.isEmpty() || selector.equals("*")) return true;
         String key = selector.startsWith("#") ? selector.substring(1) : selector;
         ResourceLocation id = ResourceLocation.parse(key);
@@ -224,7 +235,8 @@ public final class EffectRuntime {
         double scale = 1;
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
-            if (fx.type().equals("break_speed") && Selectors.block(fx.selector(),event.getState()))
+            if (fx.type().equals("break_speed") && Selectors.block(fx.selector(),event.getState()) &&
+                io.github.heatwaveqc.tmm.progression.runtime.forms.FormCombatContext.mining(player,event.getState(),fx))
                 scale += fx.amountPerRank() * a.rank();
         }
         if (scale != 1) event.setNewSpeed((float) Math.min(100000,Math.max(0,event.getNewSpeed() * scale)));
@@ -234,6 +246,7 @@ public final class EffectRuntime {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         BlockState state = event.getTargetBlock();
         int required = requiredTier(state);
+        if(GildedMechanics.heldHarvest(player,state,required)){event.setCanHarvest(true);return;}
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
             if (fx.type().equals("harvest_tier") && Selectors.block(fx.selector(),state)

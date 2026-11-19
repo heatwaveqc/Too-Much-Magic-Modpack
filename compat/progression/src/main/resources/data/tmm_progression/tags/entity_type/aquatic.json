@@ -1,8 +1,430 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "alexscaves:deep_one",
+      "required": false
+    },
+    {
+      "id": "alexscaves:deep_one_knight",
+      "required": false
+    },
+    {
+      "id": "alexscaves:deep_one_mage",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gossamer_worm",
+      "required": false
+    },
+    {
+      "id": "alexscaves:hullbreaker",
+      "required": false
+    },
+    {
+      "id": "alexscaves:lanternfish",
+      "required": false
+    },
+    {
+      "id": "alexscaves:mine_guardian",
+      "required": false
+    },
+    {
+      "id": "alexscaves:radgill",
+      "required": false
+    },
+    {
+      "id": "alexscaves:sea_pig",
+      "required": false
+    },
+    {
+      "id": "alexscaves:sweetish_fish",
+      "required": false
+    },
+    {
+      "id": "alexscaves:trilocaris",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tripodfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:arapaima",
+      "required": false
+    },
+    {
+      "id": "aquaculture:arrau_turtle",
+      "required": false
+    },
+    {
+      "id": "aquaculture:atlantic_cod",
+      "required": false
+    },
+    {
+      "id": "aquaculture:atlantic_halibut",
+      "required": false
+    },
+    {
+      "id": "aquaculture:atlantic_herring",
+      "required": false
+    },
+    {
+      "id": "aquaculture:bayad",
+      "required": false
+    },
+    {
+      "id": "aquaculture:blackfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:bluegill",
+      "required": false
+    },
+    {
+      "id": "aquaculture:boulti",
+      "required": false
+    },
+    {
+      "id": "aquaculture:box_turtle",
+      "required": false
+    },
+    {
+      "id": "aquaculture:brown_shrooma",
+      "required": false
+    },
+    {
+      "id": "aquaculture:brown_trout",
+      "required": false
+    },
+    {
+      "id": "aquaculture:capitaine",
+      "required": false
+    },
+    {
+      "id": "aquaculture:carp",
+      "required": false
+    },
+    {
+      "id": "aquaculture:catfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:gar",
+      "required": false
+    },
+    {
+      "id": "aquaculture:jellyfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:minnow",
+      "required": false
+    },
+    {
+      "id": "aquaculture:muskellunge",
+      "required": false
+    },
+    {
+      "id": "aquaculture:pacific_halibut",
+      "required": false
+    },
+    {
+      "id": "aquaculture:perch",
+      "required": false
+    },
+    {
+      "id": "aquaculture:pink_salmon",
+      "required": false
+    },
+    {
+      "id": "aquaculture:piranha",
+      "required": false
+    },
+    {
+      "id": "aquaculture:pollock",
+      "required": false
+    },
+    {
+      "id": "aquaculture:rainbow_trout",
+      "required": false
+    },
+    {
+      "id": "aquaculture:red_grouper",
+      "required": false
+    },
+    {
+      "id": "aquaculture:red_shrooma",
+      "required": false
+    },
+    {
+      "id": "aquaculture:smallmouth_bass",
+      "required": false
+    },
+    {
+      "id": "aquaculture:starshell_turtle",
+      "required": false
+    },
+    {
+      "id": "aquaculture:synodontis",
+      "required": false
+    },
+    {
+      "id": "aquaculture:tambaqui",
+      "required": false
+    },
+    {
+      "id": "aquaculture:tuna",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:siren_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:siren_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_dolphin",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:alakarkinos",
+      "required": false
+    },
+    {
+      "id": "betterend:cubozoa",
+      "required": false
+    },
+    {
+      "id": "betterend:end_fish",
+      "required": false
+    },
+    {
+      "id": "cataclysm:cindaria",
+      "required": false
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coral_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coralssus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:deepling",
+      "required": false
+    },
+    {
+      "id": "cataclysm:deepling_angler",
+      "required": false
+    },
+    {
+      "id": "cataclysm:deepling_brute",
+      "required": false
+    },
+    {
+      "id": "cataclysm:deepling_priest",
+      "required": false
+    },
+    {
+      "id": "cataclysm:deepling_warlock",
+      "required": false
+    },
+    {
+      "id": "cataclysm:drowned_host",
+      "required": false
+    },
+    {
+      "id": "cataclysm:hippocamtus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:lionfish",
+      "required": false
+    },
+    {
+      "id": "cataclysm:scylla",
+      "required": false
+    },
+    {
+      "id": "cataclysm:symbiocto",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_baby_leviathan",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_leviathan",
+      "required": false
+    },
+    {
+      "id": "cataclysm:urchinkin",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:dumbo_octopus",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:koi_fish",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:otter",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:sea_bunny",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:angler_fish",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:luminaris",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:luminofish",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:rookfish",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:twilight_gaze",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_servant",
+      "required": false
+    },
+    {
+      "id": "goety:elder_guardian_servant",
+      "required": false
+    },
+    {
+      "id": "goety:gnasher",
+      "required": false
+    },
+    {
+      "id": "goety:guardian_servant",
+      "required": false
+    },
+    {
+      "id": "goety:quick_growing_kelp",
+      "required": false
+    },
+    {
+      "id": "goety:snapper",
+      "required": false
+    },
+    {
+      "id": "goety:sunken_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wavewhisperer",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:cindaria_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coral_golem",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coralssus",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_angler_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_brute_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_priest_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:deepling_warlock_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:drowned_host_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:hippocamtus",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:leviathan",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:lionfish",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:symbiocto_servant",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:urchinkin_servant",
+      "required": false
+    },
+    "minecraft:axolotl",
+    "minecraft:cod",
+    "minecraft:dolphin",
     "minecraft:drowned",
+    "minecraft:elder_guardian",
+    "minecraft:glow_squid",
     "minecraft:guardian",
-    "minecraft:elder_guardian"
+    "minecraft:pufferfish",
+    "minecraft:salmon",
+    "minecraft:squid",
+    "minecraft:tadpole",
+    "minecraft:tropical_fish",
+    "minecraft:turtle",
+    {
+      "id": "occultism:possessed_elder_guardian",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_guardian",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_horde_drowned",
+      "required": false
+    }
   ]
 }

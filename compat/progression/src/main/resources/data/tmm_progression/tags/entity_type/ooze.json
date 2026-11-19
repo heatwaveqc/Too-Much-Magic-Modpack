@@ -1,7 +1,67 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "alexscaves:caramel_cube",
+      "required": false
+    },
+    {
+      "id": "alexscaves:ferrouslime",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_slime",
+      "required": false
+    },
+    {
+      "id": "betterend:end_slime",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sludge",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:magma_cube_servant",
+      "required": false
+    },
+    {
+      "id": "goety:slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:tropical_slime_servant",
+      "required": false
+    },
+    "minecraft:magma_cube",
     "minecraft:slime",
-    "minecraft:magma_cube"
+    {
+      "id": "neovitae:slime_vitae",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_slime",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:honey_slime",
+      "required": false
+    },
+    {
+      "id": "theaurorian:dungeon_slime",
+      "required": false
+    },
+    {
+      "id": "twilightforest:maze_slime",
+      "required": false
+    }
   ]
 }

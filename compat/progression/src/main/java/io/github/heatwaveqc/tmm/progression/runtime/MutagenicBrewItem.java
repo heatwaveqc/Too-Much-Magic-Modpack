@@ -39,7 +39,8 @@ public final class MutagenicBrewItem extends PotionItem {
 
     @Override public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (entity instanceof ServerPlayer player) {
-            if (!ProgressionApi.track(player,HunterExperience.HUNTER).joined()) {
+            if(io.github.heatwaveqc.tmm.progression.data.PathRegistry.mutationPolicies().isEmpty())return stack;
+            if (HunterMutations.eligiblePaths(player).isEmpty()) {
                 // Deliberate dangerous consequence: Wither II for five minutes,
                 // even if the source potion held a positive or forbidden effect.
                 // The ordinary potion's effects are NEVER applied.

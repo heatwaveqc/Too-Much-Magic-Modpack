@@ -17,10 +17,10 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<Discoveries>> FOOD_HISTORY =
         ATTACHMENTS.register("food_history", () -> AttachmentType.builder(Discoveries::empty)
             .serialize(Discoveries.CODEC).copyOnDeath().build());
-    public static final Supplier<AttachmentType<HunterMutationState>> HUNTER_MUTATIONS =
-        ATTACHMENTS.register("hunter_mutations", () -> AttachmentType.builder(HunterMutationState::empty)
-            .serialize(HunterMutationState.codec()).copyOnDeath().build());
+    public static final Supplier<AttachmentType<MutationLedger>> MUTATIONS =
+        ATTACHMENTS.register("mutations", () -> AttachmentType.builder(MutationLedger::empty)
+            .serialize(MutationLedger.codec()).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
-            .serialize(Ledger.CODEC).copyOnDeath().build());
+            .serialize(LedgerCodec.CODEC).copyOnDeath().build());
 }

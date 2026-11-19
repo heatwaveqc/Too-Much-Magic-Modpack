@@ -29,11 +29,19 @@ public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
         TreeChopXpBridge.register();
+        GildedMechanics.register();
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, MechanicalEffects::landing);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::consumedFood);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::foodTick);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::foodStopped);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::vanillaXp);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::immunity);
+        NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
         NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
@@ -42,11 +50,15 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::pickup);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::blockDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::projectileImpact);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, GrowthEffects::breed);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, GrowthEffects::bonemeal);
+        NeoForge.EVENT_BUS.addListener(GrowthEffects::finish);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::equipmentChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::targetChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
+        NeoForge.EVENT_BUS.addListener(MechanicalEffects::postDamage);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
@@ -65,28 +77,35 @@ public final class ProgressionEvents {
         }
     }
     private static void kill(LivingDeathEvent event) {
+        if(event.isCanceled())return;
+        // One Hunter settlement for native player or exact scoped magical damage only.
+        // This does not expand the native branch's other kill/weapon/loot/class effects.
+        ServerPlayer hunter=OwnedMagicDamage.hunterOwner(event.getEntity(),event.getSource());
+        var credited=hunter==null?java.util.Set.<String>of():HunterExperience.kill(hunter,event.getEntity());
         if (event.getSource().getEntity() instanceof ServerPlayer player
             && event.getEntity() != player) {
-            boolean eligibleHunterKill = HunterExperience.kill(player,event.getEntity());
             ProgressionApi.recordFiltered(player,Selectors.kill(event.getEntity()),
-                path -> !HunterExperience.HUNTER.equals(path.id()) || eligibleHunterKill);
+                path -> HunterExperience.allowsMilestone(path.id(),credited));
             if (event.getSource().getDirectEntity() == player
                     && player.getMainHandItem().isEmpty())
-                ProgressionApi.record(player,Selectors.unarmedKill(event.getEntity()));
+                ProgressionApi.recordFiltered(player,Selectors.unarmedKill(event.getEntity()),path->HunterExperience.allowsMilestone(path.id(),credited));
             ClassAbilities.creditedKill(player,event);
             EffectHandlers.kill(player,event);
+            MechanicalEffects.kill(player,event);
         }
     }
     private static void mobDrops(LivingDropsEvent event) {
-        if (!event.isCanceled()) TyzMonkBridge.mobDrops(event);
+        if (!event.isCanceled()) { TyzMonkBridge.mobDrops(event); UtilityEffects.mobDrops(event); }
     }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         // Detect completed vanilla potion drinking independently of whether it counts as food.
+        UtilityEffects.foodFinished(player,event.getItem());
         Enrollment.potionFinished(player,event.getItem());
         HunterExperience.potionFinished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
+        Enrollment.foodFinished(player,event.getItem());
         ProgressionApi.recordConsumedFood(player,event.getItem());
         EffectHandlers.foodConsumed(player,event.getItem());
     }
@@ -119,14 +138,17 @@ public final class ProgressionEvents {
                     ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             }
             HarvestAbilities.blockDrops(player,event);
+            GildedMechanics.ore(player,event);
             TyzMonkBridge.crops(event,player);
+            UtilityEffects.crops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
             { ClassAbilities.arrowImpact(defender,event);
-              EffectHandlers.projectileImpact(defender,event); }
+              if (!event.isCanceled()) MechanicalEffects.deflect(defender,event);
+              if (!event.isCanceled()) EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof ServerPlayer player)
@@ -148,6 +170,17 @@ public final class ProgressionEvents {
         if (path.startsWith("recipes/") || path.contains("/recipes/")) return;
         ProgressionApi.record(player,new io.github.heatwaveqc.tmm.progression.core.Signal(
                 "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
+        String id=event.getAdvancement().id().toString();
+        if(io.github.heatwaveqc.tmm.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null
+            &&io.github.heatwaveqc.tmm.progression.mxp.MxpMod.active()){
+            try {
+                var receipt=io.github.heatwaveqc.tmm.progression.mxp.MxpService.dragonAdvancement(player,id);
+                if(receipt.accepted())player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                    "MXP: "+String.format("%.2f",receipt.effectiveXP())+" (dragon milestone)"));
+            } catch(RuntimeException ex) {
+                io.github.heatwaveqc.tmm.progression.mxp.MxpMod.LOGGER.error("Dragon advancement MXP failed ({})",id,ex);
+            }
+        }
     }
     private static void fall(LivingFallEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
@@ -158,10 +191,13 @@ public final class ProgressionEvents {
     private static void incoming(LivingIncomingDamageEvent event) {
         if (event.isCanceled()) return;
         ClassAbilities.incoming(event);
+        if(!event.isCanceled())GildedMechanics.fireDamage(event);
         if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
         if (!event.isCanceled()) EffectHandlers.incoming(event);
         if (!event.isCanceled()) TyzMonkBridge.incoming(event);
+        if (!event.isCanceled()) MechanicalEffects.incoming(event);
+        if (!event.isCanceled()) io.github.heatwaveqc.tmm.progression.runtime.forms.LichServantEffects.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
@@ -176,13 +212,23 @@ public final class ProgressionEvents {
     }
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            if (player.tickCount % 10 == 0) EffectRuntime.reconcile(player);
+            if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
             TyzMonkBridge.tick(player);
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.JawrBloodCapacity.tick(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.LichSoulCapacity.tick(player);
+            GildedMechanics.tick(player);
             EffectRuntime.tick(player);
             EffectHandlers.tick(player);
+            MechanicalEffects.tick(player);
+            MiningUtilities.tick(player);
+            VillagerAttraction.tick(player);
+            if(player.tickCount%10==0){
+                VisionRuntime.reconcile(player,false);
+                io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,false);
+            }
         }
     }
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
@@ -190,18 +236,29 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            MechanicalEffects.forget(player);
+            UtilityEffects.forget(player);
+            MiningUtilities.forget(player);
+            VisionRuntime.forget(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
             ProgressionMenuNetwork.forget(player);
+            SkillActivation.stopAll(player);
             EffectRuntime.reconcile(player);
+            VisionRuntime.reconcile(player,true);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            MiningUtilities.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
+            VisionRuntime.reconcile(player,true);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.sync(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -211,6 +268,11 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            MechanicalEffects.forget(player);
+            UtilityEffects.forget(player);
+            MiningUtilities.forget(player);
+            VisionRuntime.forget(player);
+            io.github.heatwaveqc.tmm.progression.runtime.forms.DietPermissions.forget(player);
             TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);

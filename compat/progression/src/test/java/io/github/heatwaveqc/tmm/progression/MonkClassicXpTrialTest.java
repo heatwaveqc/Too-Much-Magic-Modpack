@@ -29,13 +29,13 @@ final class MonkClassicXpTrialTest {
         try (InputStream input = MonkClassicXpTrialTest.class.getClassLoader()
                 .getResourceAsStream(resource)) {
             assertNotNull(input,"Standalone Monk datapack missing");
-            return JsonParser.parseReader(
-                    new InputStreamReader(input,StandardCharsets.UTF_8)).getAsJsonObject();
+            return TestPaths.project(JsonParser.parseReader(
+                    new InputStreamReader(input,StandardCharsets.UTF_8)).getAsJsonObject());
         }
     }
 
     private static Definition.Path path() throws Exception {
-        return PathJson.read("tmm_progression:monk",json());
+        return TestPaths.read("tmm_progression:monk",json());
     }
 
     private static JsonObject original() throws Exception {
@@ -115,7 +115,7 @@ final class MonkClassicXpTrialTest {
         assertEquals(4,activity(path(),"unarmed_kill","#tmm_progression:monk_training_hostiles").xp());
         String invalid = json().toString().replace("\"unarmed_kill\"","\"not_a_trusted_event\"");
         assertThrows(IllegalArgumentException.class, ()->
-                PathJson.read("tmm_progression:monk",JsonParser.parseString(invalid).getAsJsonObject()));
+                TestPaths.read("tmm_progression:monk",JsonParser.parseString(invalid).getAsJsonObject()));
     }
 
     @Test void trainingCurveAndClassicMilestonesUseNativePathXpNotTyz() throws Exception {

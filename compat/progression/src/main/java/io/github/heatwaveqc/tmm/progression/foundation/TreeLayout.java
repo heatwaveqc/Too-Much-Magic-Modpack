@@ -21,8 +21,11 @@ public final class TreeLayout {
     public record Layout(int width, int height, Map<String, Point> positions, List<Line> lines) {}
 
     public static Layout arrange(List<Node> nodes, List<Edge> edges, int nodeSize, int gap) {
+        return arrange(nodes,edges,nodeSize,nodeSize,gap,gap);
+    }
+    public static Layout arrange(List<Node> nodes,List<Edge> edges,int nodeWidth,int nodeHeight,int gapX,int gapY) {
         Objects.requireNonNull(nodes); Objects.requireNonNull(edges);
-        if (nodeSize < 1 || nodeSize > 512 || gap < 1 || gap > 512 ||
+        if (nodeWidth<1||nodeWidth>512||nodeHeight<1||nodeHeight>512||gapX<1||gapX>512||gapY<1||gapY>512||
             nodes.size() > 4096 || edges.size() > 16384)
             throw new IllegalArgumentException("Invalid dimensions or graph size");
         if (nodes.isEmpty()) {
@@ -41,15 +44,15 @@ public final class TreeLayout {
         int maxDepth = byDepth.keySet().stream().mapToInt(Integer::intValue).max().orElse(0);
         int depthSpan = maxDepth - minDepth;
         int maxPerDepth = byDepth.values().stream().mapToInt(List::size).max().orElse(0);
-        int colPitch = nodeSize + gap;
-        int rowPitch = colPitch;
-        int contentWidth = (maxPerDepth - 1) * colPitch + nodeSize;
+        int colPitch=nodeWidth+gapX;
+        int rowPitch=nodeHeight+gapY;
+        int contentWidth = (maxPerDepth - 1) * colPitch + nodeWidth;
         int contentHeight = (depthSpan + 1) * rowPitch;
         Map<String, Point> positions = new LinkedHashMap<>();
         for (var depthEntry : byDepth.entrySet()) {
             int y = (depthEntry.getKey() - minDepth) * rowPitch;
             var entries = depthEntry.getValue();
-            int layerWidth = (entries.size() - 1) * colPitch + nodeSize;
+            int layerWidth = (entries.size() - 1) * colPitch + nodeWidth;
             int layerStartX = (contentWidth - layerWidth) / 2;
             for (int col = 0; col < entries.size(); col++)
                 positions.put(entries.get(col).id(), new Point(layerStartX + col * colPitch, y));
@@ -61,9 +64,9 @@ public final class TreeLayout {
             if (p == null || c == null || p >= c || !seen.add(edge))
                 throw new IllegalArgumentException("Invalid or duplicate forward edge");
             Point parentPos = positions.get(edge.parent()), childPos = positions.get(edge.child());
-            int pCX = parentPos.x() + nodeSize / 2;
-            int pBY = parentPos.y() + nodeSize;
-            int cCX = childPos.x() + nodeSize / 2;
+            int pCX = parentPos.x() + nodeWidth / 2;
+            int pBY = parentPos.y() + nodeHeight;
+            int cCX = childPos.x() + nodeWidth / 2;
             int cTY = childPos.y();
             int midY = pBY + (cTY - pBY) / 2;
             addLine(lines, pCX, pBY, 1, midY - pBY);

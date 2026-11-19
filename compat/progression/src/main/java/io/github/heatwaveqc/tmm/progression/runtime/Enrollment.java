@@ -17,7 +17,7 @@ import java.util.UUID;
 /** Configurable manual enrollment or server-verified Monk sunset contemplation. */
 public final class Enrollment {
     private Enrollment() {}
-    private static final Map<UUID,Integer> sunsetTicks = new HashMap<>();
+    private static final Map<UUID,Map<String,Integer>> sunsetTicks = new HashMap<>();
 
     public static boolean enrollManual(ServerPlayer player, String path) {
         if (!"manual".equals(PathRegistry.enrollment(path))
@@ -66,38 +66,54 @@ public final class Enrollment {
         }
     }
 
+    /** Invoke only on completed real food consumption, before subsequent food event rewards. */
+    public static void foodFinished(ServerPlayer player,ItemStack consumed){
+        if(player.isCreative()||player.isSpectator()||consumed.isEmpty()||consumed.getFoodProperties(player)==null)return;
+        for(var entry:PathRegistry.foodRites().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()){
+            String path=entry.getKey();var rite=entry.getValue();
+            if(ProgressionApi.track(player,path).joined()||!Selectors.item(rite.spec().target(),consumed)||!rite.conditions().test(player))continue;
+            if(!ProgressionApi.join(player,path))continue;
+            if(!rite.spec().completionEvent().isEmpty())ProgressionApi.recordExternal(player,rite.spec().completionEvent());
+            player.displayClientMessage(Component.literal("Rite complete: "+path+" unlocked"),false);
+            break;
+        }
+    }
     public static void tick(ServerPlayer player) {
-        String path = "tmm_progression:monk";
-        if (!"sunset".equals(PathRegistry.enrollment(path))
-                || ProgressionApi.track(player,path).joined()) {
-            sunsetTicks.remove(player.getUUID());
-            return;
-        }
-        long time = player.level().getDayTime() % 24000L;
-        var pos = player.blockPosition();
-        boolean valid = !player.isCreative() && !player.isSpectator()
-            && player.level().dimension() == Level.OVERWORLD
-            && time >= 12000 && time <= 13000
-            && !player.level().isRainingAt(pos)
-            && player.level().canSeeSky(pos.above())
-            && player.getLookAngle().x < -0.70
-            && Math.abs(player.getLookAngle().y) < 0.45
-            && player.getMainHandItem().isEmpty();
-        if (valid) {
-            for (var stack : player.getArmorSlots()) if (!stack.isEmpty()) valid = false;
-        }
-        int ticks = valid ? sunsetTicks.getOrDefault(player.getUUID(),0)+1 : 0;
-        if (ticks == 0) sunsetTicks.remove(player.getUUID());
-        else sunsetTicks.put(player.getUUID(),ticks);
-        if (ticks > 0 && ticks % 20 == 0)
-            player.displayClientMessage(Component.literal("First Sunset: " + ticks + "/200"),true);
-        if (ticks >= 200) {
-            sunsetTicks.remove(player.getUUID());
-            if (ProgressionApi.join(player,path)) {
-                ProgressionApi.recordExternal(player,"tmm_progression:monk_first_sunset");
-                player.displayClientMessage(Component.literal("First Sunset complete: Monk cultivation unlocked"),false);
+        if (player.tickCount % 20 == 0 && !player.isCreative() && !player.isSpectator())
+            for (String candidate:PathRegistry.all().keySet())
+                if ("automatic".equals(PathRegistry.enrollment(candidate))
+                    && !ProgressionApi.track(player,candidate).joined())
+                    ProgressionApi.join(player,candidate);
+        var timers=sunsetTicks.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());
+        timers.keySet().retainAll(PathRegistry.timedEnrollments().keySet());
+        for(var entry:PathRegistry.timedEnrollments().entrySet()){
+            String path=entry.getKey();var ritual=entry.getValue();
+            if(ProgressionApi.track(player,path).joined()||!PathRegistry.eligible(player,path)){
+                timers.remove(path);continue;
+            }
+            long time=Math.floorMod(player.level().getDayTime(),24000L);
+            var pos=player.blockPosition();
+            boolean valid=!player.isCreative()&&!player.isSpectator()
+                &&player.level().dimension().location().toString().equals(ritual.dimension())
+                &&ritual.acceptsTime(time)
+                &&(!ritual.dry()||!player.level().isRainingAt(pos))
+                &&(!ritual.clearSky()||player.level().canSeeSky(pos.above()))
+                &&player.getLookAngle().x<ritual.maxLookX()
+                &&Math.abs(player.getLookAngle().y)<ritual.maxAbsLookY()
+                &&(!ritual.emptyHand()||player.getMainHandItem().isEmpty());
+            if(valid&&ritual.unarmored())for(var stack:player.getArmorSlots())if(!stack.isEmpty())valid=false;
+            int ticks=valid?timers.getOrDefault(path,0)+1:0;
+            if(ticks==0)timers.remove(path);else timers.put(path,ticks);
+            if(ticks>0&&ticks%20==0)player.displayClientMessage(Component.literal(ritual.label()+": "+ticks+"/"+ritual.ticks()),true);
+            if(ticks>=ritual.ticks()){
+                timers.remove(path);
+                if(ProgressionApi.join(player,path)){
+                    ProgressionApi.recordExternal(player,ritual.completionEvent());
+                    player.displayClientMessage(Component.literal(ritual.label()+" complete: "+path+" unlocked"),false);
+                }
             }
         }
+        if(timers.isEmpty())sunsetTicks.remove(player.getUUID());
     }
 
     public static void clear(ServerPlayer player) { sunsetTicks.remove(player.getUUID()); }

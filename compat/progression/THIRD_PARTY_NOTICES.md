@@ -61,3 +61,6 @@ Creators-of-Create/Create @ 37ea4afcfe5bf85875d4b0749798a45330070a1f
 - https://github.com/Creators-of-Create/Create/blob/37ea4afcfe5bf85875d4b0749798a45330070a1f/src/main/java/com/simibubi/create/foundation/events/ClientEvents.java
 
 Full original notice: third_party_licenses/Create.txt.
+
+## Batch 5 activation (2026-11-18)
+`EnhancedNightVisionMixin.java` adapts the JustDireThings LightTextureMixin pinned above; `MechanicalEffects` uses the previously attributed EverlastingAbilities `MagnetMotion` and existing Create `LavaFogHook` is connected by `ClientVision`. Original full notices remain packaged. No additional upstream assets or Tyz source copied.
