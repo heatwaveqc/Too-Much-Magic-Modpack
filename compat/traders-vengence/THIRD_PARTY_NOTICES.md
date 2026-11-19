@@ -1,8 +1,50 @@
-# Third-party notices — traders-vengence
+# Third-party notices — Trader's Vengence
 
-The accompanying MIT LICENSE covers original first-party module code and documentation only to the extent the Too Much Magic contributors hold the rights. Independently licensed dependencies, Minecraft, third-party content, and upstream assets retain their own terms. Do not treat this as a license for the entire modpack.
+The combined module is licensed under GPL-3.0-only. First-party rights are granted only to the extent the Too Much Magic contributors hold them. Other modules and independently distributed dependencies retain their own licenses. Earlier MIT grants are not withdrawn.
 
-### Existing integrations
-This module interoperates with Iron's Spells 'n Spellbooks, which remains independently licensed and separately distributed. This licensing change imports no third-party source or assets.
+## Original first-party MIT notice (preserved)
+MIT License
 
-**Maintenance:** Preserve all applicable upstream notices verbatim, plus provenance for code/assets actually incorporated. This file is an initial record, not a certification of historical provenance. Review existing sources before public distribution and update this file whenever new third-party code is incorporated.
+Copyright (c) 2026 Too Much Magic contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+## Planned donors (not yet imported)
+- PneumaticCraft: Repressurized, MineMaarten, desht, Team Pneumatic and contributors; GPLv3 mod, separate LGPLv3 API, independently licensed sounds. Exact candidate: https://github.com/TeamPneumatic/pnc-repressurized/tree/7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28. Before import record per-file upstream paths, notices and modifications; inspect sound provenance separately.
+- Caliber Arms Team, https://www.curseforge.com/minecraft/mc-mods/caliber-arms. Project page identifies models, textures and code as MIT. Verify exact artifact and preserve full MIT notice before import. Do not infer sound licensing.
+- Iron's Spells 'n Spellbooks remains separately distributed under its own terms; existing integration remains until replaced.
+
+Release gate: provide corresponding source, license text and notices for incorporated files, with build instructions and modified files identified. Do not distribute donor binaries or unrelated assets.
+
+## Staged PneumaticCraft minigun source and art
+Unmodified source references (outside Gradle source sets), adapted GolemMinigunModel and identical upstream drone minigun texture recorded in `donor-reference/pneumaticcraft/provenance.json`. Upstream GPLv3, GPL-3.0-or-later in relevant Java headers; original headers preserved. Model attribution: original Techne header and Team Pneumatic contributor credits. No sound imported: specific mapping of freesound licenses remains unverified. The model is not registered/rendered yet.
+
+MinigunSpin adapts the base spin-up/spin-down limits and angle update from the pinned PneumaticCraft Minigun.java; no PNC air, upgrades, player, projectile or ammo mechanisms copied into live runtime. Original source is retained in donor-reference.
+
+Base weapon balance and standard damage type semantics adapted from pinned PneumaticCraft CommonConfig.java, Minigun.java, AbstractGunAmmoItem.java, and generated data/pneumaticcraft/damage_type/minigun.json; local damage ID and NPC attribution differ. Standard damage does not bypass armor or the normal damage cooldown.
+
+## Verified Caliber Arms M1911A1 import
+Original code/art by Copyright (c) 2026 Caliber Arms Team, MIT. Exact supplied Forge 1.21.1 / 1.0.0 JAR SHA-256 88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90. Original MIT notice and full donor audio credits are bundled in META-INF/traders_vengence/caliberarms/LICENSE.txt and CREDITS.md; exact per-file SHA-256 provenance manifest alongside. Model texture references and sounds registry were adapted to the local namespace; PNG and ten OGG files are original bytes. Gunshots are credited to The Free Firearm Sound Library (CC0); pistol handling sounds credited in the original CREDITS.md (CC0). No compiled donor classes or complete donor JAR redistributed. Values and damage semantics inspected from exact class bytecode, with independent NPC adapter. No external Caliber Arms dependency.
+
+## PneumaticCraft minigun audio (2026-11-18)
+Two unchanged original Ogg Vorbis files from Team Pneumatic / MineMaarten / desht / contributors, upstream 7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28, paths src/main/resources/assets/pneumaticcraft/sounds/minigun.ogg and minigun_stop.ogg. Upstream README's general GPLv3 license applies absent a separately identified exception; both files trace to the 2017 port, and the loop was converted to mono upstream in 2020. Original Git blob hashes retained in donor-reference/pneumaticcraft/provenance.json. Out of caution, preserve both independently licensed free sound credits stated upstream (not a confirmed file-to-source mapping): ThompsonMan, https://freesound.org/people/ThompsonMan/sounds/237245/ (CC BY 3.0, https://creativecommons.org/licenses/by/3.0/); Crinkem, https://freesound.org/people/Crinkem/sounds/481787/ (CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/). Upstream minigun_spinup uses hud_init.ogg which has embedded Affordable Audio 4 Everyone / Hud/Menu/Interactions ToolBox credit; not imported because separate redistribution terms were not verified. Vanilla substitute only. The combined sounds.json integrates both donors and is intentionally updated, with Caliber Arms manifest and test hashes refreshed; its four original pistol event definitions are unchanged.
+
+## CC0 minigun spin-up replacement (2026-11-18)
+SamsterBirdies, "minigun.ogg" (2021-02-25), https://freesound.org/people/SamsterBirdies/sounds/560508/ , CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/). The creator credits CC0 recordings by scorepion (https://freesound.org/people/scorepion/sounds/424917/) and pgi (https://freesound.org/people/pgi/sounds/98331/). Owner supplied the MP3 of the credited Pixabay redistribution https://pixabay.com/sound-effects/film-special-effects-minigun-36769/ (public original CC0 source governs the underlying recording). Input SHA-256 fe1d17dd7ba7279b2274143095eccaaf9a3d5e51dff8882fd489caffdee015ac. Local derivative: extract 0.055–1.245 seconds before sustained gunfire; stereo averaged to mono, 25 ms fades at boundaries, encoded 24 kHz Ogg Vorbis, no stretching/pitch adjustment. Result 1.19 seconds, SHA-256 30f6ae6ca5fc8fb608f0382fcb17a525b9dc66950fb568ae54c3ace1118b5b19; Git blob aebb1dd5ffc561193f57e4ccfa0b07933659b3ed. The CC0 clip replaces the temporary vanilla piston cue; original PneumaticCraft HUD recording is still excluded. The 2-second gameplay spin-up, firing and wind-down audio are unchanged.

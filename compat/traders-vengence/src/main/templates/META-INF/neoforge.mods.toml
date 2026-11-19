@@ -8,7 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="Too Much Magic contributors"
 description='''Wandering trader spawn restrictions and a permanent, per-player trader-killer vendetta.
-Villagers retaliate with Iron's Magic Missile, while golems and llamas join the hunt.
+Villagers and wandering traders carry NPC-only pistols; confirmed villager-summoned golems carry miniguns. Llamas retain their vanilla spit.
 '''
 
 [[dependencies.${mod_id}]]

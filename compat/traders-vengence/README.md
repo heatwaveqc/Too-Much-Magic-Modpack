@@ -28,13 +28,16 @@ Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from dr
 - A vanilla sign with `No Soliciting` or `[No Soliciting]` on ANY line, front or
   back, blocks new traders within 32 blocks. Signs are read only in loaded chunks;
   ordinary sign blocks suffice (custom sign item/art deferred).
-- Golems and llamas independently target blacklisted players; llamas inherit their
-  vanilla spitting mechanic. Villagers get generic `RangedAttackGoal` and launch
-  Iron's `magic_missile` entity at an offender (50-tick cooldown, 16-block range,
-  6 damage). Villagers also reuse vanilla `HurtByTargetGoal` and fire
-  Magic Missiles at the **specific mob that attacked them**, then cease
-  retaliation when the target is no longer valid. They never proactively
-  aggro unrelated nearby monsters. No mana/crafting or new gun system.
+- Villagers and wandering traders carry an NPC-only Caliber Arms M1911A1 pistol
+  (7 damage, 35-block effective range, 420 RPM maximum, virtual magazine and reload).
+  They target blacklisted players or the specific mob that injured them; never
+  proactively hunt unrelated monsters. Normal hurt cooldown/armor applies.
+  Caliber Arms model, texture and CC0 pistol/reload audio are bundled with full
+  original notices. No player weapon item, ammo item, recipe, loot or donor mod.
+- Confirmed villager-summoned iron golems carry the PneumaticCraft minigun
+  model/texture with 50-block range, 6 HP per tick attempted after spin-up.
+  Normal vanilla hurt resistance applies. Player-built/unknown golems remain
+  melee defenders. Llamas retain their vanilla spit. Original PneumaticCraft positional firing loop and wind-down audio are bundled; spin-up uses a credited 1.19-second CC0 excerpt by SamsterBirdies (the donor HUD clip's redistribution license remains unverified).
 - **Automatic pardon:** a fresh application or renewal of Minecraft's
   `Hero of the Village` status effect clears that player's saved blacklist
   entry permanently; an existing Hero buff is not a blanket immunity to
@@ -59,9 +62,11 @@ Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from dr
    that the goal executes in an actual world and add targeted brain arbitration if needed.
    The reputation Mixin must be checked on the pinned 1.21.1 runtime (native
    callback signature and ordering, including direct and projectile hits).
-4. Iron's projectiles are instantiated via its registered entity type, with reflective
-   `shoot(Vec3)` and `setDamage(float)` calls. These must be validated against the
-   **pinned Iron's 3.16.3 runtime**; compile alone won't test them. Failures log once.
+4. Pistols use a local standard projectile-tagged damage type, native line-of-sight,
+   existing target policy, and an independent NPC-only cooldown/magazine adapter.
+   Confirm pose, attack, reload audio and no player acquisition in a real client.
+   Caliber Arms' player-input, special ballistics, headshots, and distant sound
+   simulation are deliberately not ported.
 5. Priest target observation is source-implemented but still requires an in-world
    check with the pinned Iron's 3.16.3 jar. Confirm hostile target acquisition is
    observed, and that other players are not wrongly flagged.
@@ -92,8 +97,7 @@ Test in a disposable save after an owner-authorized test build:
   and ordinary gossip and price changes are still vanilla. Confirm no double-penalties to gossip, while golem
   assault is caught even without a villager present.
 - Spawn a pillager or zombie alongside a villager; confirm the villager only
-  retaliates after being attacked (not on seeing the mob), casts Iron's Magic
-  Missile at the actual attacker, and doesn't attack nearby unrelated mobs.
+  retaliates after being attacked (not on seeing the mob), fires its pistol at the actual attacker, and doesn't attack nearby unrelated mobs.
   Confirm multiple villagers do NOT automatically join another villager's
   combat, unless they themselves are attacked. Test attacks from another
   neutral mob too, and verify the permanent player blacklist is unaffected.
@@ -115,5 +119,5 @@ Test in a disposable save after an owner-authorized test build:
 
 Reconciliation merges only reviewed source, metadata provenance and module
 test contracts. Do not label the feature gameplay-tested or release a binary
-until real 1.21.1 spawner-Mixin, AI, Iron's projectile and persistence tests pass.
+until real 1.21.1 spawner-Mixin, AI, NPC projectile-damage, visual/audio and persistence tests pass.
 See `docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md`.
