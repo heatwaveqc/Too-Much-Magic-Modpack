@@ -13,9 +13,9 @@ Prefab 1.0.9 NeoForge 1.21.1 approved for next test; custom addon + LDLib2 still
 | Elven Garden | Botania | Feywild | Original cottage + greenhouse; oversized CC BY reference rejected https://www.schemcraft.com/schematics/ultimate-cottagecore-greenhouse-survival-base |
 | Sanguine Temple | Neo Vitae | EvilCraft, Mahou Tsukai | CedricD0812 Japanese House CC BY 4.0 https://www.planetminecraft.com/project/japanese-house-6691798/ ; alternate temple https://www.planetminecraft.com/project/japanese-temple-6691443/ ; schematic acquired and audited |
 | Celestial Observatory | Astral Sorcery | Enigmatic Legacy+ | Thun's Observatory MIT advertised https://modrinth.com/datapack/thuns-structures/version/1.1.0 ; extracted and audited |
-| Summoner's Lodge | Occultism | Psi, Hexcasting | Original seven-floor ritual tower with outdoor garden; [formal specification](design/summoners-lodge.md) |
+| Summoner's Lodge | Occultism | Psi | Original seven-floor ritual tower with outdoor garden; [formal specification](design/summoners-lodge.md) |
 | Arcane Sanctum | Primal Magick | Totemic | Thun's Badlands Temple not in uploaded release; Stonehenge alternate proposed |
-| Chromatic Manor | Pastel | — | Original pigment workshop |
+| Chromatic Manor | Pastel | Hexcasting | Original pigment workshop with amethyst growing/processing and casting workspace |
 | Dark Citadel | Goety | Eidolon, Corail Tombstone | Thun's Castle not in uploaded release; Graveyard alternate proposed |
 | Spirit Shrine | Malum | — | Original; Edo Japan donor rejected due dependencies https://modrinth.com/datapack/ancient-structures-edo-japan-dp/version/0.4 |
 | Dwarven Foundry | Embers | Theurgy | Faerithia Forge Halls https://modrinth.com/project/faerithia ; conditional |
@@ -54,3 +54,7 @@ Source inspected: upstream custom addon ExtensionPackManager.java on 1.21.1-main
 
 ## Occultism tower — formal build specification (2026-11-18)
 Owner approved the vertical ritual tower concept with 25x25 tower, 8-block pitch, 6–7 floors; seven-floor design baseline with living, storage/prep, shared minor circles, three separate 19x19 primary guide rooms and Psi/Hexcasting lab. White markers are actual Otherstone, black markers actual Otherrock, bowl center chiseled polished blackstone (optional gilded accent), remaining ritual floor Nether Bricks. Small outdoor garden and plentiful flowers required. Explicit large-building/material exception; ordinary furnishing rules remain. Exact pinned Occultism 1.227.0 pentacle patterns/family count, marker visibility, fire substrate and economic/placement checks pending. No pre-drawn chalk, active rituals, advanced equipment or pre-lit fires. Formal spec: `research/prefab-donors/design/summoners-lodge.md`. Not a completed structure or runtime change.
+
+
+## Owner revision: Occult Tower and Pastel × Hexcasting — 2026-11-18
+Primary 19x19 guides moved down to floors 3–5, two late-game minor guides to floor 6; living and storage remain 1–2, Psi-only laboratory floor 7. Owner confirms Spirit Fire works on Nether Bricks; retain as specified, verify in ordinary QA. Garden must include planted Demon's Dream crops producing Fruit, plus flowers. Move Hexcasting from Occultism to Pastel (Chromatic Manor). Verified prior EMC compat decision in `docs/RESOURCE-ECONOMY-STANDARD.md` at `5572b98b11261788c90ce87dbcef4fa252d656a7`: native Pastel Fusion Shrine converts 8 amethyst shards + storm stone in water to 8 Hex charged amethyst, also native edified leaf and potion workshop routes; separate Pastel powder from Hex dust. Reserve amethyst growing/processing area and casting workspace for Chromatic Manor; exact scope and amount TBD. Psi early stations targeted: `psi:cad_assembler` (iron/piston) and `psi:programmer` (iron/first Psidust from redstone). Verify actual pinned Psi 110 recipes and pack gate; no advanced CAD, preloaded spells or assumed personal item grant. Formal spec revised; no schematic/runtime/pin changes.

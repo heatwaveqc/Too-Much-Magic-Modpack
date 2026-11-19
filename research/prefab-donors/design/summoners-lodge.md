@@ -1,22 +1,22 @@
 # Summoner's Lodge — Occult Tower
-**Status: owner-approved design direction, formal build specification; not constructed or runtime-tested.** 2026-11-18. Tyr, MC 1.21.1 NeoForge. Primary Occultism; secondary Psi and Hexcasting.
+**Status: owner-approved design direction, formal build specification; not constructed or runtime-tested.** 2026-11-18. Tyr, MC 1.21.1 NeoForge. Primary Occultism; secondary Psi. Hexcasting moved to Pastel/Chromatic Manor (native amethyst compatibility).
 
 ## Scale and architecture
 - 25 × 25 exterior tower footprint; seven full floors, 8-block floor-to-floor pitch (56 blocks before roof/foundation). Roof silhouette and ordinary masonry design flexible; 6-floor variant only if the support lab can fit without compromising ritual areas. Deliberate exception to ordinary starter block-count/height limits, not an automatic exception for advanced gear.
 - Three large 19 × 19 pentacle guide fields centered on their own floors. With zero-based tower local x/z 0..24, provisional field x/z 3..21, center (12,12). One-block exterior shell and two-block peripheral aisles remain on each side. Floor surfaces relative y=0,8,16,24,32,40,48; upper floor/roof at y=56. Continuous perimeter circulation via compact corner stairs or ladder; no support pillar, stairwell, light fitting or furniture intrudes on a ritual field.
 - Two smaller pentacle guides share one floor if their authoritative layouts and walking clearance fit; never truncate a guide. Verify all five guide types, upgrade-family coverage, exact sizes, relative offsets, facing and site clearance from pinned Occultism 1.227.0 native data/Dictionary of Spirits before generating. If there is a fourth independent major family or both minors cannot fit, report and revise layout before construction.
-- Proposed garden footprint roughly 33 × 33 total (tower plus 4-block perimeter, or wider on garden side if needed); tower remains 25 × 25. Exterior entry path, small food garden, abundant mixed flowers, low edging and lighting. Reserve a safe early Occultism growing plot for Demon's Dream and Otherworld plants; no rare seeds/saplings or auto-generated Otherworld grove unless acquisition audit permits. Garden/terrain details provisional, user-approved garden and flowers mandatory.
+- Proposed garden footprint roughly 33 × 33 total (tower plus 4-block perimeter, or wider on garden side if needed); tower remains 25 × 25. Exterior entry path, small food garden, abundant mixed flowers, low edging and lighting. Include planted Demon's Dream crops that yield Demon's Dream Fruit (owner requirement); irrigated farmland, accessible harvest path, ordinary starting seeds/crops only. Reserve additional Otherworld plant space; no rare seeds/saplings or auto-generated Otherworld grove unless acquisition audit permits. Garden/terrain details provisional, user-approved garden and flowers mandatory.
 
 ## Floor schedule
 | Floor | Surface Y | Program |
 | --- | ---: | --- |
 | 1 | 0 | Entry, living room, bedroom, kitchen, vanilla crafting/furnace, initial Occultism workspace and book nook; direct garden access |
 | 2 | 8 | Ordinary empty storage, ingredient preparation, early spirit-fire work area; reserved expansion space for spirit logistics, not installed advanced storage |
-| 3 | 16 | Two minor pentacle guide fields, clear access, no pre-drawn chalk |
-| 4 | 24 | Primary pentacle guide A |
-| 5 | 32 | Primary pentacle guide B |
-| 6 | 40 | Primary pentacle guide C |
-| 7 | 48 | Psi and Hexcasting research laboratory, ordinary furniture, verified first stations only; roof optional decorative cap |
+| 3 | 16 | Primary pentacle guide A |
+| 4 | 24 | Primary pentacle guide B |
+| 5 | 32 | Primary pentacle guide C |
+| 6 | 40 | Two late-game minor pentacle guide fields, clear access, no pre-drawn chalk |
+| 7 | 48 | Psi research laboratory, ordinary furniture, CAD Assembler and Spell Programmer as introductory station targets; roof optional decorative cap |
 
 ## Ritual marker material language (owner selected)
 | Purpose | Block |
@@ -27,15 +27,18 @@
 | Remaining contrasting floor surface | Nether Bricks (minecraft:nether_bricks), owner preference for placing occult/Spirit Fire |
 | Exterior structure | Inexpensive ordinary stone or deepslate masonry, dark accents; nonflammable around rituals |
 
-These are floor markers, not actual completed pentacles. Keep marker guide blocks flush, preserve Air above; players place chalk, objects and bowls themselves and earn advanced ritual materials normally. Use the union of compatible upgrade-family positions only when unambiguous; document overlapping/variant positions with a guide/map, do not mark impossible combinations as mandatory. Verify visual appearance of native Otherstone/Otherrock without Third Eye and their chalk placement support. Test Spirit Fire placement and persistence on Nether Bricks in actual pinned build; if incompatible use approved-theme dedicated safe inset fire substrate, rather than silently claiming Nether Bricks support it. No pre-lit fires in prefab; test safe separation from wood and flowers, fire spread and adjacent floors.
+These are floor markers, not actual completed pentacles. Keep marker guide blocks flush, preserve Air above; players place chalk, objects and bowls themselves and earn advanced ritual materials normally. Use the union of compatible upgrade-family positions only when unambiguous; document overlapping/variant positions with a guide/map, do not mark impossible combinations as mandatory. Verify visual appearance of native Otherstone/Otherrock without Third Eye and their chalk placement support. Owner confirms Spirit Fire works on Nether Bricks in survival; retain Nether Bricks as the specified substrate. Actual pinned-build placement/persistence remains normal QA, not an unresolved design question. No pre-lit fires in prefab; test safe separation from wood and flowers, fire spread and adjacent floors.
 
 ## Furnishing and balance
-- Basic bed, ordinary chests/barrels empty, crafting table, furnace, lighting and garden. Include early Occultism/Psi/Hexcasting workstations only after exact recipe/registry/first-access survey and owner-approved introductory-station rule. Candidate empty ordinary sacrificial bowl/Golden Sacrificial Bowl subject to that audit (marker does not imply a free actual bowl). No advanced chalk, filled bound books, active rituals, summons, storage network, miners, high-tier CADs, spell media with payloads, or loot.
+- Basic bed, ordinary chests/barrels empty, crafting table, furnace, lighting and garden. Include early Occultism/Psi workstations only after exact recipe/registry/first-access survey and owner-approved introductory-station rule. Candidate empty ordinary sacrificial bowl/Golden Sacrificial Bowl subject to that audit (marker does not imply a free actual bowl). No advanced chalk, filled bound books, active rituals, summons, storage network, miners, high-tier CADs, spell media with payloads, or loot.
 - Actual native Otherstone and Otherrock markers and Nether Brick fields explicitly selected as starter architectural materials even where normal material route would be later/other-dimensional; count and review their recoverable value, crafting/EMC and Newbie progression bypasses before release. No new material gate change implied. Prefer cheap shell, empty rooms and no valuables; show block bill and material value against other houses. One choice per player; blueprint duplication/rebinding/claim protection must be tested.
-- Pinned baseline mods/occultism.pw.toml: occultism-1.21.1-neoforge-1.227.0.jar, Modrinth SFDVXWYt. Source reference for registry/data audit: https://github.com/klikli-dev/occultism/tree/version/1.21.1 (moving branch not proof of exact binary). Exact patterns and nether-brick fire behavior NOT verified against pinned binary. No guessed pattern generation.
+- Pinned baseline mods/occultism.pw.toml: occultism-1.21.1-neoforge-1.227.0.jar, Modrinth SFDVXWYt. Source reference for registry/data audit: https://github.com/klikli-dev/occultism/tree/version/1.21.1 (moving branch not proof of exact binary). Exact patterns and nether-brick fire behavior not independently verified against pinned binary; owner confirms the latter from play experience. No guessed pattern generation.
 
 ## Acceptance gates
 1. Verify all five native layout definitions and actual counts/positions, exact block IDs, placement surfaces and progression semantics; report any mismatch with owner geometry.
 2. Generate structure from verified patterns, validate all bounds, palette, empty payloads, garden and perimeter access; compute block counts/EMC and confirm that height is within actual Prefab Custom Addon import/placement limits.
 3. Disposable QA: load, preview, rotate and place; verify complete floors/garden, safe stairs and fire, chalk placement and each ritual family (including upgrade variants), no premature progression, per-player choice and multiplayer/claim behavior.
 4. Do not claim finished schematic or gameplay PASS from this specification. No mod pins, quests, runtime files or builds changed here.
+
+## Revision — progression order, crops and Psi (2026-11-18)
+Primary circles now occupy floors 3–5, the two late-game minors share floor 6, and floor 7 remains the Psi lab. Include planted Demon's Dream Fruit-producing crop. Native Psi 1.21.1 starter station references: `psi:cad_assembler` (iron/piston) and `psi:programmer` (iron/Psidust); Psidust is the first basic iron-CAD conversion of redstone. Both fit the approved introductory station rule, subject to pinned 110 recipe and Newbie compatibility audit. Lab: both stations, ordinary workbench and storage, open clear practice area, sturdy walls, no preloaded spells or advanced CADs. Do not grant a CAD or spell bullets by default. Candidate lab arrangement can move to lower support floor only with owner review. Hexcasting removed from tower; reserve a dedicated casting workspace in Pastel Chromatic Manor and plan shared amethyst growing/processing space. Source: economy standard at 5572b98b11261788c90ce87dbcef4fa252d656a7, native Pastel × Hexcasting fusion and powder recipes; do not unify the two powders. No runtime content generated.
