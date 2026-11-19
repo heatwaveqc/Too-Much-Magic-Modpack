@@ -5,11 +5,11 @@
   "status": "DRAFT_CANDIDATES_NOT_RUNTIME",
   "policy": {
     "default_data": "exclude every bundled pool/decree; fail closed on stale local config",
-    "currency": "unresolved: Quest Shop team account command validation/claim semantics or approved alternative; no reward minted yet",
-    "transformation": "hold until authoritative active roster and player claim/accept eligibility is supported",
-    "kills": "hold until native attribution and canonical prey integration are reviewed",
+    "currency": "Thematic consumable/material payouts primary; optional currency when appropriate; no independent exchange rate and no command rewards until safe shared-account semantics verified",
+    "transformation": "Gate creation/acquisition of the specialized decree; normal Bountiful acceptance and redemption thereafter. Disable random spawn/reveal/wander buy; recipe with form-exclusive crafting access or minimal authoritative-state check if needed; public board and transferable document are not claim-time restrictions.",
+    "kills": "Native Bountiful entity objective attribution only; eligible exact entity IDs, reviewed counts/pay per kill, no Hunter coupling",
     "prices": "final effective runtime EMC evidence required; no vanilla defaults or independently invented conversion",
-    "objectives": "item deliveries only in first generated pilot; all registry IDs require runtime census, modded IDs are candidates even when source priced"
+    "objectives": "Native exact-item deliveries and native entity kill objectives; no custom magic-event predicates required"
   },
   "general": [
     {
@@ -95,7 +95,17 @@
         "minecraft:gold_ingot",
         "minecraft:amethyst_shard"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "elemental and utility essences",
+        "source gems"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "ars_nouveau:air_essence",
+        "ars_nouveau:manipulation_essence",
+        "ars_nouveau:source_gem"
+      ]
     },
     {
       "id": "astral_sorcery",
@@ -106,7 +116,15 @@
         "minecraft:glass",
         "minecraft:amethyst_shard"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "aquamarine",
+        "ordinary starlight crafting supplies"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "astralsorcery:aquamarine"
+      ]
     },
     {
       "id": "botania_revived",
@@ -118,7 +136,13 @@
         "minecraft:poppy",
         "minecraft:melon_seeds"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "petals",
+        "ordinary fertilizer"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "eidolon_repraised",
@@ -129,7 +153,12 @@
         "minecraft:charcoal",
         "minecraft:redstone"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "routine alchemical and ritual supplies"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "embers_re_ignited",
@@ -140,7 +169,15 @@
         "minecraft:raw_copper",
         "minecraft:coal"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ember shards",
+        "ordinary metal components"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "embers:ember_shard"
+      ]
     },
     {
       "id": "enchanted_witchcraft",
@@ -151,7 +188,13 @@
         "minecraft:fern",
         "minecraft:sugar"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "herbs",
+        "basic ritual ingredients"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "evilcraft",
@@ -162,7 +205,15 @@
         "minecraft:rotten_flesh",
         "minecraft:bone"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "dark gems",
+        "ordinary blood-processing supplies"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "evilcraft:dark_gem"
+      ]
     },
     {
       "id": "feywild",
@@ -173,7 +224,13 @@
         "minecraft:blue_orchid",
         "minecraft:honeycomb"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "flowers",
+        "ordinary fae crafting reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "forbidden_arcanus",
@@ -184,7 +241,15 @@
         "minecraft:amethyst_shard",
         "minecraft:gold_ingot"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "arcane crystals",
+        "ordinary enchanting materials"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "forbidden_arcanus:arcane_crystal"
+      ]
     },
     {
       "id": "goety",
@@ -195,7 +260,15 @@
         "minecraft:bone",
         "minecraft:rotten_flesh"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ectoplasm",
+        "basic dark arts reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "goety:ectoplasm"
+      ]
     },
     {
       "id": "hexcast_neoforged",
@@ -206,7 +279,13 @@
         "minecraft:amethyst_block",
         "minecraft:glass"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "amethyst shards",
+        "ordinary media supplies"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "hexerei",
@@ -217,7 +296,14 @@
         "minecraft:honeycomb",
         "minecraft:lily_pad"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "herbs",
+        "wax",
+        "basic potion ingredients"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "irons_spells",
@@ -228,7 +314,15 @@
         "minecraft:ink_sac",
         "minecraft:lapis_lazuli"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "basic spell ink",
+        "arcane essence"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "irons_spellbooks:arcane_essence"
+      ]
     },
     {
       "id": "mahou_tsukai",
@@ -239,7 +333,13 @@
         "minecraft:redstone",
         "minecraft:quartz"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary powdered catalysts",
+        "ritual consumables"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "malum",
@@ -250,7 +350,15 @@
         "malum:refined_soulstone",
         "malum:tainted_rock"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary spirits only after gate review",
+        "refined soulstone"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "malum:refined_soulstone"
+      ]
     },
     {
       "id": "neovitae",
@@ -261,7 +369,15 @@
         "minecraft:glass",
         "minecraft:bone"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary raw crystal shards",
+        "alchemical reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "neovitae:raw_crystal_shard"
+      ]
     },
     {
       "id": "occultism",
@@ -272,7 +388,12 @@
         "minecraft:gold_ingot",
         "minecraft:bone_meal"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary chalk and ritual materials"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "pastel",
@@ -283,7 +404,16 @@
         "pastel:citrine_shard",
         "minecraft:glass"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "early mineral shards",
+        "basic pigments"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "pastel:topaz_shard",
+        "pastel:citrine_shard"
+      ]
     },
     {
       "id": "primal_magick",
@@ -294,7 +424,16 @@
         "primalmagick:essence_dust_sea",
         "primalmagick:essence_dust_sky"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "early essence dusts"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "primalmagick:essence_dust_earth",
+        "primalmagick:essence_dust_sea",
+        "primalmagick:essence_dust_sky"
+      ]
     },
     {
       "id": "psi",
@@ -305,7 +444,12 @@
         "minecraft:gold_ingot",
         "minecraft:iron_ingot"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary psi crafting materials"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "roots_classic",
@@ -316,7 +460,13 @@
         "minecraft:fern",
         "minecraft:wheat"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "herbs",
+        "ritual consumables"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "scriptor_magicae",
@@ -327,7 +477,13 @@
         "minecraft:ink_sac",
         "minecraft:feather"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary ink and paper",
+        "writing reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "theurgy",
@@ -338,7 +494,15 @@
         "minecraft:glass",
         "minecraft:clay_ball"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "sal ammoniac crystal",
+        "basic reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": [
+        "theurgy:sal_ammoniac_crystal"
+      ]
     },
     {
       "id": "totemic",
@@ -349,7 +513,12 @@
         "minecraft:feather",
         "minecraft:leather"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "ordinary instrument and ritual supplies"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     },
     {
       "id": "witchery_remake",
@@ -360,7 +529,13 @@
         "minecraft:spider_eye",
         "minecraft:sugar"
       ],
-      "status": "candidate_pending_registry_and_balance"
+      "status": "candidate_pending_registry_and_balance",
+      "reward_themes": [
+        "herbs",
+        "ordinary witchcraft ritual reagents"
+      ],
+      "kill_candidates": [],
+      "reward_item_candidates": []
     }
   ],
   "held_schools": [
@@ -382,79 +557,92 @@
       "id": "vampire",
       "name": "Vampire",
       "provider": "JAWR",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "werewolf",
       "name": "Werewolf",
       "provider": "JAWR",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "lich_goety",
       "name": "Goety Lich",
       "provider": "Goety",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "lich_jawr",
       "name": "Forbidden Magic Lich",
       "provider": "JAWR/Forbidden Magic",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "archlich",
       "name": "Archlich",
       "provider": "both lich providers",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "dragon_cave",
       "name": "Cave Dragon",
       "provider": "Dragon Survival",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "dragon_forest",
       "name": "Forest Dragon",
       "provider": "Dragon Survival",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "dragon_sea",
       "name": "Sea Dragon",
       "provider": "Dragon Survival",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "dracolich",
       "name": "Dracolich",
       "provider": "dragon + one lich",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "abomination",
       "name": "Abomination",
       "provider": "atomic composite",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "hunter",
       "name": "Hunter",
       "provider": "Progression path",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "monk",
       "name": "Monk",
       "provider": "Progression path",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     },
     {
       "id": "gilded",
       "name": "Gilded",
       "provider": "Progression path",
-      "status": "held_pending_canonical_roster_and_eligibility"
+      "status": "held_pending_roster_and_decree_acquisition_recipe",
+      "acquisition": "form-specific crafting; no random acquisition"
     }
   ]
 }

@@ -21,7 +21,7 @@ def compile_candidate(catalog, audit, review):
         raise ValueError("review baseline differs from catalog")
     if review.get("audit_hash") != audit["bountiful"]["hashes"]["sha512"]:
         raise ValueError("review is not bound to audited artifact")
-    if review.get("settlement") != "approved_item_barter":
+    if review.get("settlement") not in {"approved_item_barter", "approved_thematic_materials"}:
         raise ValueError("currency/settlement decision absent; do not generate runtime pools")
     registered = set(review["registered_items"])
     prices = review["effective_emc"]
@@ -47,38 +47,67 @@ def compile_candidate(catalog, audit, review):
         if not ID.fullmatch(key):
             raise ValueError("bad decree id")
         family = families[key]
-        # One reward, one exact delivery. Each permitted input must cover the
-        # actual EMC of the selected reward; even generator clamping cannot
-        # create a positive material exchange. No implicit coin conversion.
-        reward = spec["reward"]
-        reward_id = reward["item"]
-        reward_n = positive(reward["count"], "reward count")
-        if reward_id not in review["approved_reward_items"]:
-            raise ValueError("reward not explicitly allowlisted")
-        reward_emc = positive(prices[reward_id], reward_id)
-        if reward_n > 64:
-            raise ValueError("reward exceeds initial pilot stack cap")
-        reward_total = reward_n * reward_emc
+        # Native generation chooses one objective and one reward. Validate
+        # every possible cross-pair; no custom kill tracker or Hunter hook.
+        rewards = spec.get("rewards", [spec["reward"]] if "reward" in spec else [])
+        if not rewards:
+            raise ValueError("empty reward pool")
+        rews = {}
+        reward_ids = set()
+        reward_total = 0
+        for reward in rewards:
+            reward_id = reward["item"]
+            reward_n = positive(reward["count"], "reward count")
+            if reward_id not in review["approved_reward_items"] or reward_id in reward_ids:
+                raise ValueError("reward not explicitly allowlisted or duplicate")
+            reward_emc = positive(prices[reward_id], reward_id)
+            if reward_n > 64:
+                raise ValueError("reward exceeds initial pilot stack cap")
+            reward_total = max(reward_total, reward_n * reward_emc)
+            reward_ids.add(reward_id)
+            reward_key = reward_id.replace(":", "_").replace("/", "_").replace(".", "_").replace("-", "_")
+            if reward_key in rews:
+                raise ValueError("duplicate reward ID")
+            rews[reward_key] = entry(reward_id, reward_n, reward_emc)
         objs = {}
         for row in spec["objectives"]:
-            item = row["item"]
             n = positive(row["count"], "objective count")
-            if item not in family["items"] or item == reward_id:
-                raise ValueError("objective outside candidate family or self-trade")
-            if n > 256:
-                raise ValueError("delivery exceeds pilot cap")
-            emc = positive(prices[item], item)
-            if n * emc < reward_total:
-                raise ValueError("positive EMC exchange: " + item)
-            name = item.replace(":", "_").replace("/", "_").replace(".", "_").replace("-", "_")
+            kind = row.get("type", "item")
+            if kind == "entity":
+                entity = row["entity"]
+                if (not ITEM.fullmatch(entity) or entity == "minecraft:player"
+                        or entity not in family.get("kill_candidates", [])
+                        or entity not in review.get("registered_entities", [])
+                        or entity not in review.get("approved_kill_entities", [])):
+                    raise ValueError("unreviewed entity objective: " + entity)
+                if n > 256:
+                    raise ValueError("kill count exceeds pilot cap")
+                worth = positive(review["approved_kill_emc_budget"][entity], entity)
+                if n * worth < reward_total:
+                    raise ValueError("kill payout exceeds reviewed budget: " + entity)
+                name = "kill_" + entity.replace(":", "_").replace("/", "_").replace(".", "_").replace("-", "_")
+                obj = {"type":"entity","content":entity,"amount":{"min":n,"max":n},"unitWorth":worth}
+            elif kind == "item":
+                item = row["item"]
+                if item not in family["items"] or item in reward_ids:
+                    raise ValueError("objective outside candidate family or self-trade")
+                if n > 256:
+                    raise ValueError("delivery exceeds pilot cap")
+                emc = positive(prices[item], item)
+                if n * emc < reward_total:
+                    raise ValueError("positive EMC exchange: " + item)
+                name = item.replace(":", "_").replace("/", "_").replace(".", "_").replace("-", "_")
+                obj = entry(item,n,emc)
+            else:
+                raise ValueError("unsupported objective type")
             if name in objs:
                 raise ValueError("duplicate objective ID")
-            objs[name] = entry(item,n,emc)
+            objs[name] = obj
         if not objs:
             raise ValueError("empty objective pool")
         stem = "tmm_" + key
         dump("config/bountiful/bounty_pools/"+stem+"_objs.json", {"replace":True,"content":objs})
-        dump("config/bountiful/bounty_pools/"+stem+"_rews.json", {"replace":True,"content":{"settlement":entry(reward_id,reward_n,reward_emc)}})
+        dump("config/bountiful/bounty_pools/"+stem+"_rews.json", {"replace":True,"content":rews})
         dump("config/bountiful/bounty_decrees/"+stem+".json", {"replace":True,"objectives":[stem+"_objs"],"rewards":[stem+"_rews"],"canSpawn": key in {x["id"] for x in catalog["general"]},"canReveal": key in {x["id"] for x in catalog["general"]},"canWanderBuy":False,"linkedProfessions":[]})
         translations["bountiful.decree."+stem+".name"] = family["name"]
     dump("kubejs/assets/bountiful/lang/en_us.json", translations)

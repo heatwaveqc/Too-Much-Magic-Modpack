@@ -47,4 +47,28 @@ class TestBountifulCompiler(unittest.TestCase):
         r["audit_hash"]="wrong"
         with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
 
+    def test_multiple_material_rewards(self):
+        r=copy.deepcopy(R)
+        r["settlement"]="approved_thematic_materials"
+        r["registered_items"].append("minecraft:carrot")
+        r["effective_emc"]["minecraft:carrot"]=4
+        r["approved_reward_items"].append("minecraft:carrot")
+        r["approved_entries"]["farming"]["rewards"]=[{"item":"minecraft:bread","count":1},{"item":"minecraft:carrot","count":2}]
+        files=m.compile_candidate(C,A,r)
+        p=json.loads(files["config/bountiful/bounty_pools/tmm_farming_rews.json"])
+        self.assertEqual(len(p["content"]),2)
+        r["approved_entries"]["farming"]["rewards"][1]["count"]=3
+        with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+    def test_native_kill_objective(self):
+        r=copy.deepcopy(R)
+        r["registered_entities"]=["minecraft:zombie"]
+        r["approved_kill_entities"]=["minecraft:zombie"]
+        r["approved_kill_emc_budget"]={"minecraft:zombie":3}
+        r["approved_entries"]={"hunting":{"reward":{"item":"minecraft:bread","count":1},"objectives":[{"type":"entity","entity":"minecraft:zombie","count":2}]}}
+        files=m.compile_candidate(C,A,r)
+        p=json.loads(files["config/bountiful/bounty_pools/tmm_hunting_objs.json"])
+        self.assertEqual(next(iter(p["content"].values()))["type"],"entity")
+        r["approved_kill_entities"]=[]
+        with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+
 if __name__=="__main__":unittest.main()
