@@ -22,6 +22,11 @@ def download(urls, alg, expected):
 def inspect(jar,key):
     classes=[]
     with zipfile.ZipFile(jar) as z:
+        if key == "roots":
+            import tomllib
+            meta = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode("utf-8"))
+            mod = next(m for m in meta["mods"] if m["modId"] == "rootsclassic")
+            print("ROOTS_METADATA", mod["modId"], mod["version"], flush=True)
         for n in sorted(z.namelist()):
             if n.startswith("data/") and n.endswith(".json") and "ritual" in n.lower() and "/tags/" not in n:
                 try: data=json.loads(z.read(n))
