@@ -8,6 +8,8 @@ on:
       - 'scripts/branch_lifecycle.py'
       - 'scripts/test_branch_lifecycle.py'
       - '.github/workflows/branch-retirement.yml'
+  issue_comment:
+    types: [created]
   workflow_dispatch:
     inputs:
       manifest:
@@ -86,3 +88,38 @@ jobs:
           BATCH_DIGEST: ${{ inputs.digest }}
           RETIRE_AUTHORIZED: 'true'
         run: python3 scripts/branch_lifecycle.py retire --manifest "$BATCH_PATH" --digest "$BATCH_DIGEST" --execute
+
+  console-check:
+    if: ${{ github.event_name == 'issue_comment' && github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.ref == 'refs/heads/main' && github.event.issue.number == 359 && !github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' && github.event.comment.user.id == 22598785 && github.event.sender.id == 22598785 && startsWith(github.event.comment.body, '/tmm retire-check ') && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Validate owner command and dry-run committed manifest
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/branch_lifecycle.py console
+
+  console-execute:
+    if: ${{ github.event_name == 'issue_comment' && github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.ref == 'refs/heads/main' && github.event.issue.number == 359 && !github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' && github.event.comment.user.id == 22598785 && github.event.sender.id == 22598785 && startsWith(github.event.comment.body, '/tmm retire ') && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Validate live owner comment, claim nonce, and recheck exact refs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/branch_lifecycle.py console
