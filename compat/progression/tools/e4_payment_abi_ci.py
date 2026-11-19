@@ -47,6 +47,43 @@ def inspect(jar, key):
                 print("CALL", method, "|", line.strip())
         print("END", name, flush=True)
 
+def vampire_census(jar):
+    # Exact native caller evidence without dumping unrelated code or uploading any JAR.
+    names = []
+    with zipfile.ZipFile(jar) as z:
+        for entry in sorted(z.namelist()):
+            if entry.startswith("dev/sterner/witchery/") and entry.endswith(".class"):
+                raw = z.read(entry)
+                if (b"BloodPoolAttachment" in raw or b"BloodPoolHandler" in raw or
+                    b"getIN_SUN" in raw or b"setFlyingSpeed" in raw or
+                    b"TransformationHandler" in raw and b"bat" in raw.lower()):
+                    names.append(entry[:-6].replace("/", "."))
+    print("VAMPIRE_CANDIDATES", len(names), flush=True)
+    for i in range(0, len(names), 24):
+        out = subprocess.run(["javap", "-classpath", str(jar), "-p", "-s", "-c", *names[i:i+24]],
+                             capture_output=True, text=True, check=True, timeout=60).stdout
+        owner = method = ""
+        detail = False
+        for line in out.splitlines():
+            if line and not line[0].isspace() and (" class " in line or " interface " in line or " enum " in line):
+                owner = line.strip()
+                print("VCLASS", owner)
+            if line.startswith("  ") and not line.startswith("    ") and line.rstrip().endswith(";"):
+                method = line.strip()
+                detail = ("BloodPoolAttachment$Data" in owner or
+                          ("BloodPoolHandler" in owner and ("increaseBlood" in method or "tickPlayerBloodRegen" in method)) or
+                          "handleSunDamage" in method or "handleBloodHunger" in method or
+                          "handleBloodHealing" in method or "setLevel(" in method and "VampireLeveling" in owner)
+                if detail:
+                    print("VDECL", method)
+            elif detail and line.strip().startswith("descriptor:"):
+                print("VDESC", line.strip())
+            elif detail and re.match(r"^\\s*\\d+:", line):
+                print("VBC", method, "|", line.strip())
+            elif re.search(r"// (?:InterfaceMethod|Method) .*?(?:increaseBlood:|decreaseBlood:|BloodPoolAttachment.setData:|getIN_SUN:|setFlyingSpeed:|getFlyingSpeed:)", line):
+                print("VCALL", owner, "|", method, "|", line.strip())
+    print("VAMPIRE_CENSUS_END", flush=True)
+
 with tempfile.TemporaryDirectory() as tmp:
     for provider, (url, expected) in PINS.items():
         request = urllib.request.Request(url, headers={"User-Agent": "TMM-payment-static-audit/1.0"})
@@ -59,3 +96,6 @@ with tempfile.TemporaryDirectory() as tmp:
         path.write_bytes(data)
         print("VERIFIED", provider, digest, flush=True)
         inspect(path, provider)
+        if provider == 'jawr':
+            vampire_census(path)
+
