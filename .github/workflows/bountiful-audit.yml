@@ -21,6 +21,15 @@ jobs:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_bountiful_contracts.py
       - run: python scripts/audit_bountiful_artifacts.py > bountiful-audit.json
+      - name: Record verified pin metadata (no binary output)
+        run: |
+          python - <<'PY'
+          import json
+          report = json.load(open("bountiful-audit.json"))
+          for name, data in report.items():
+              fields = ("slug", "version_id", "project_id", "version", "channel", "file", "url", "hashes", "license", "client_side", "server_side", "provider_dependencies", "jar_metadata", "embedded_metadata")
+              print(json.dumps({k: data[k] for k in fields}, sort_keys=True))
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: bountiful-artifact-metadata
