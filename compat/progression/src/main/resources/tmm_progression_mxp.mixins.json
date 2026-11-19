@@ -13,7 +13,8 @@
     "MxpNeoNetworkMixin",
     "MxpBotaniaManaMixin",
     "PsiItemCadMixin",
-    "PsiSpellCastEventMixin"
+    "PsiSpellCastEventMixin",
+    "PsiLoopcastMixin"
   ],
   "injectors": {
     "defaultRequire": 0

@@ -23,6 +23,8 @@ public final class MxpCastHooks {
 
     private static final ThreadLocal<Cast> IRON = new ThreadLocal<>();
     private static final ThreadLocal<Cast> ARS = new ThreadLocal<>();
+    private record ManagedQuote(Object frame,ServerPlayer player,double originalCost,long tick){}
+    private static final ThreadLocal<ManagedQuote> MANAGED_IRON = new ThreadLocal<>();
 
     private MxpCastHooks() {}
 
@@ -38,7 +40,12 @@ public final class MxpCastHooks {
         // The exact ANS Iron lifecycle owns actual reservation + successful effect
         // receipts, including full-cost scrolls and each paid channel pulse.
         Object frame = MxpReflect.staticCall("com.otectus.arsnspells.casting.IronsCastLifecycle", "current");
-        if (MxpReflect.field(frame, "player") == sp) return;
+        if (MxpReflect.field(frame, "player") == sp) {
+            double original=MxpReflect.number(MxpReflect.call(event,"getOriginalManaCost"));
+            if(PaymentReceiptPolicy.positive(original)) MANAGED_IRON.set(new ManagedQuote(frame,sp,original,sp.level().getGameTime()));
+            else MANAGED_IRON.remove();
+            return;
+        }
         Object source = MxpReflect.call(event, "getCastSource");
         if (!Boolean.TRUE.equals(MxpReflect.call(source, "consumesMana"))) return;
         double cost = MxpReflect.number(MxpReflect.call(event, "getOriginalManaCost"));
@@ -161,6 +168,9 @@ public final class MxpCastHooks {
             Object origin = MxpReflect.call(MxpReflect.field(frame, "quote"), "origin");
             if (!"IRONS_MANA".equals(String.valueOf(MxpReflect.call(origin, "unit")))) return;
             double nominal = MxpReflect.number(MxpReflect.call(origin, "amount"));
+            ManagedQuote original=MANAGED_IRON.get();
+            if(original!=null&&original.frame==frame&&original.player==sp&&original.tick==sp.level().getGameTime())
+                nominal=original.originalCost;
             if (!PaymentReceiptPolicy.positive(debit) || !PaymentReceiptPolicy.positive(nominal)) return;
             deliver(new Cast(sp, nominal, Double.NaN, MxpManaProbe.Origin.IRON,
                     PaymentReceiptPolicy.ansTransaction(paymentId), sp.level().getGameTime(), frame),
@@ -186,7 +196,7 @@ public final class MxpCastHooks {
     }
 
     /** Native callbacks are synchronous; discard incomplete observations at tick end. */
-    public static void clear() { IRON.remove(); ARS.remove(); }
+    public static void clear() { IRON.remove(); ARS.remove(); MANAGED_IRON.remove(); }
 
     private static void deliver(Cast cast, double firstPool, double actuallySpent) {
         if (!MxpPlayerPolicy.eligible(cast.player) || !Double.isFinite(firstPool) || firstPool <= 0) return;
