@@ -45,7 +45,10 @@
     "GoetyLichSummonLimitMixin",
     "GoetyLichRitualLimitMixin",
     "ForgeRitualManagerMixin",
-    "ForgeRitualInstallMixin"
+    "ForgeRitualInstallMixin",
+    "OccultRitualBowlMixin",
+    "OccultRitualItemMixin",
+    "OccultRitualSummonMixin"
   ],
   "injectors": {
     "defaultRequire": 0

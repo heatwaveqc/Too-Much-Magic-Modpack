@@ -38,6 +38,16 @@ class RitualSettlementTest {
         assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.actualUpgrade(upgrade,4,5));
         assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.actualUpgrade(upgrade,5,5));
     }
+    @Test void occultProofUsesExactBookAndActualOutcomeFamily(){
+        var item="occultism:ritual/craft_miner_marid_master";
+        var summon="occultism:ritual/summon_foliot_crusher";
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.matchesBook(item,"occultism:book_of_binding_bound_marid"));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.matchesBook(item,"occultism:book_of_binding_bound_foliot"));
+        assertEquals(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.Kind.ITEM,io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.kind(item));
+        assertEquals(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.Kind.SUMMON,io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.kind(summon));
+        for(String held:java.util.List.of("occultism:ritual/craft_upgrade_ritual_satchel","occultism:ritual/familiar_parrot","occultism:ritual/repair_chalks"))
+            assertEquals(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.Kind.HELD,io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.kind(held));
+    }
     @Test void receiptsFailClosed(){
         UUID operation=UUID.randomUUID(), actor=UUID.randomUUID();
         String id="forbidden_arcanus:eternal_stella";
