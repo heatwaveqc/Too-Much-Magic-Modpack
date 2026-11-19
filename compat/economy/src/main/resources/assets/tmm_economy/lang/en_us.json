@@ -41,5 +41,7 @@
   "block.tmm_economy.emc_catalyst": "EMC Catalyst",
   "block.tmm_economy.emc_source_jar": "EMC Source Jar",
   "tmm_economy.processor.source_jar_guard": "TMM Filled Source Jar Guard",
-  "tmm_economy.processor.source_jar_guard.tooltip": "Keep portable Source contents from being duplicated or burned through EMC."
+  "tmm_economy.processor.source_jar_guard.tooltip": "Keep portable Source contents from being duplicated or burned through EMC.",
+  "tmm_economy.mapper.relic_templates": "TMM Relic and Artifact Templates",
+  "tmm_economy.mapper.relic_templates.tooltip": "Use a fixed price for fresh relic and artifact equipment, independent of stats."
 }

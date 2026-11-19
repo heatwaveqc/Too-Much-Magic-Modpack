@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 
 /** Astral Sorcery 2.0.3 release-era API, literal recipes only.
  * Sky starlight is a condition; liquid is a consumed material.
- * Lumen and focus breakage do not yet have approved resource rates. */
+ * Lumen is deliberately unvalued by owner decision; focus breakage is still unsupported. */
 @EMCMapper(requiredMods = {"astralsorcery"})
 public final class AstralRecipeMapper implements IEMCMapper<NormalizedSimpleStack, Long> {
     private static final Logger LOG = LogUtils.getLogger();
@@ -72,8 +72,8 @@ public final class AstralRecipeMapper implements IEMCMapper<NormalizedSimpleStac
                 if (recipe.getClass() == AltarRecipe.class) {
                     var r = (AltarRecipe) recipe;
                     if (!r.getOutputModifiers().isEmpty() || r.getOutputs().size() != 1
-                            || !r.getRequiredLumen().isEmpty() || r.getBaseFocusShatterChance() > 0)
-                        throw new IllegalArgumentException("dynamic/multiple output, priced lumen not defined, or focus wear");
+                            || r.getBaseFocusShatterChance() > 0)
+                        throw new IllegalArgumentException("dynamic/multiple output or focus wear");
                     for (var input : r.getGrid().getInputs()) grid(plan, input);
                     for (var input : r.getGrid().getRelayInputs()) grid(plan, input);
                     for (var input : r.getRequiredAdditionalInputs())

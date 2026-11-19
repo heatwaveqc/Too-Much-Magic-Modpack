@@ -11,7 +11,8 @@
     "ExpansionScrollImportMixin",
     "ExpansionScrollTabletMixin",
     "ExpansionScrollReturnMixin",
-    "ExpansionScrollCollectionMixin"
+    "ExpansionScrollCollectionMixin",
+    "RelicTemplateMixin"
   ],
   "injectors": {
     "defaultRequire": 1
