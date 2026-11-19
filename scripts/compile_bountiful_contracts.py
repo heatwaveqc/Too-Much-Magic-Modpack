@@ -149,6 +149,23 @@ def native_balance_family(family, spec, review, profile):
             reward["forbids"]=[{"type":t,"content":v} for t,v in sorted(excluded_pairs)]
     return {k:v for k,v in objs.items() if k in used},rews
 
+def test_decree_recipe(catalog, family, registered):
+    """Temporary ordinary decree recipe. No standalone/held-form outputs."""
+    policy = catalog["decree_recipe_policy"]
+    reagent = family["test_decree_recipe_reagent"]
+    paper = "minecraft:paper"
+    if not ITEM.fullmatch(reagent) or reagent == paper:
+        raise ValueError("invalid iconic decree reagent")
+    if not {paper, reagent, policy["output_item"]} <= registered:
+        raise ValueError("unregistered test decree recipe ingredient/output: " + reagent)
+    return {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [{"item": paper}, {"item": reagent}],
+        "result": {"id": policy["output_item"], "count": 1,
+                   "components": {"bountiful:decree_data": {"ids": ["tmm_" + family["id"]], "rank": 1}}},
+    }
+
 def compile_candidate(catalog, audit, review):
     if review.get("baseline") != catalog["baseline"]:
         raise ValueError("review baseline differs from catalog")
@@ -171,6 +188,13 @@ def compile_candidate(catalog, audit, review):
     if review.get("balance_profile") not in (None, "native_v1"):
         raise ValueError("unknown balance profile")
     profile = catalog["balance_draft"] if use_native else None
+    recipe_profile = review.get("decree_recipe_profile")
+    if recipe_profile not in (None, "test_paper_reagent_v1"):
+        raise ValueError("unknown decree crafting profile")
+    if recipe_profile:
+        reagents = [families[k]["test_decree_recipe_reagent"] for k in approved]
+        if len(set(reagents)) != len(reagents):
+            raise ValueError("ambiguous shapeless decree recipes")
     def dump(path, obj):
         output[path] = json.dumps(obj, indent=2, sort_keys=True) + "\n"
     # Built-in loader strips .json and interprets exclusion entries as regex.
@@ -253,6 +277,8 @@ def compile_candidate(catalog, audit, review):
         dump("config/bountiful/bounty_pools/"+stem+"_rews.json", {"replace":True,"content":rews})
         dump("config/bountiful/bounty_decrees/"+stem+".json", {"replace":True,"objectives":[stem+"_objs"],"rewards":[stem+"_rews"],"canSpawn": key in {x["id"] for x in catalog["general"]},"canReveal": key in {x["id"] for x in catalog["general"]},"canWanderBuy":False,"linkedProfessions":[]})
         translations["bountiful.decree."+stem+".name"] = family["name"]
+        if recipe_profile:
+            dump("kubejs/data/tmm/recipe/bountiful/"+stem+".json", test_decree_recipe(catalog, family, registered))
     dump("kubejs/assets/bountiful/lang/en_us.json", translations)
     return output
 

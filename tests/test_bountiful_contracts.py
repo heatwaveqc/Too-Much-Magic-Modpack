@@ -199,4 +199,28 @@ class TestBountifulCompiler(unittest.TestCase):
         self.assertFalse(forms["dracolich"].get("balance_reward_draft"))
         self.assertEqual(len(C["gateway_objective_policy"]["excluded"]),6)
 
+    def test_easy_recipe_catalog_and_bound_output(self):
+        families=C["general"]+C["schools"]
+        self.assertEqual(len(families),30)
+        reagents=[f["test_decree_recipe_reagent"] for f in families]
+        self.assertEqual(len(set(reagents)),30)
+        self.assertEqual(next(f for f in families if f["id"]=="irons_spells")["test_decree_recipe_reagent"],"irons_spellbooks:arcane_essence")
+        self.assertEqual(next(f for f in families if f["id"]=="ars_nouveau")["test_decree_recipe_reagent"],"ars_nouveau:source_gem")
+        self.assertTrue(all("test_decree_recipe_reagent" not in f for f in C["transformations"]))
+        for f in families:
+            recipe=m.test_decree_recipe(C,f,{"minecraft:paper","bountiful:decree",f["test_decree_recipe_reagent"]})
+            self.assertEqual(recipe["type"],"minecraft:crafting_shapeless")
+            self.assertEqual(recipe["ingredients"],[{"item":"minecraft:paper"},{"item":f["test_decree_recipe_reagent"]}])
+            self.assertEqual(recipe["result"]["components"]["bountiful:decree_data"],{"ids":["tmm_"+f["id"]],"rank":1})
+        r=copy.deepcopy(R)
+        r["decree_recipe_profile"]="test_paper_reagent_v1"
+        with self.assertRaisesRegex(ValueError,"unregistered test decree"):m.compile_candidate(C,A,r)
+        r["registered_items"]+=["minecraft:paper","bountiful:decree"]
+        files=m.compile_candidate(C,A,r)
+        self.assertEqual(len(files),6)
+        recipe=json.loads(files["kubejs/data/tmm/recipe/bountiful/tmm_farming.json"])
+        self.assertEqual(recipe["result"]["id"],"bountiful:decree")
+        self.assertEqual(recipe["result"]["components"]["bountiful:decree_data"]["ids"],["tmm_farming"])
+        self.assertFalse(any("tmm_hunting.json" in path for path in files))
+
 if __name__=="__main__":unittest.main()

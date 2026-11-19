@@ -292,7 +292,8 @@
         "tmm:mob_irons_cursed_armor_stand",
         "tmm:mob_irons_ice_spider",
         "tmm:mob_irons_catacombs_zombie"
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:bone"
     },
     {
       "id": "farming",
@@ -391,7 +392,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:wheat"
     },
     {
       "id": "fishing",
@@ -469,7 +471,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:cod"
     },
     {
       "id": "mining",
@@ -561,7 +564,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:raw_iron"
     },
     {
       "id": "crafting_forestry",
@@ -681,7 +685,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:oak_log"
     },
     {
       "id": "culinary",
@@ -773,7 +778,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "minecraft:bread"
     }
   ],
   "schools": [
@@ -973,7 +979,8 @@
         "tmm:mob_ars_wilden_stalker",
         "tmm:mob_ars_wilden_guardian"
       ],
-      "reward_source_evidence": "baileyholl/Ars-Nouveau@4d323fba9200c3293a4f4848cf1e0fe70beb7098"
+      "reward_source_evidence": "baileyholl/Ars-Nouveau@4d323fba9200c3293a4f4848cf1e0fe70beb7098",
+      "test_decree_recipe_reagent": "ars_nouveau:source_gem"
     },
     {
       "id": "astral_sorcery",
@@ -1081,7 +1088,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "astralsorcery:aquamarine"
     },
     {
       "id": "botania_revived",
@@ -1302,7 +1310,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "botania:white_petal"
     },
     {
       "id": "eidolon_repraised",
@@ -1443,7 +1452,8 @@
           "max": 32
         }
       ],
-      "reward_source_evidence": "Alexthw46/Eidolon-Repraised@85484f2804bcff82abb3397d8f384422d7e21898"
+      "reward_source_evidence": "Alexthw46/Eidolon-Repraised@85484f2804bcff82abb3397d8f384422d7e21898",
+      "test_decree_recipe_reagent": "eidolon_repraised:soul_shard"
     },
     {
       "id": "embers_re_ignited",
@@ -1513,7 +1523,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "embers:ember_shard"
     },
     {
       "id": "enchanted_witchcraft",
@@ -1647,7 +1658,8 @@
           "max": 32
         }
       ],
-      "reward_source_evidence": "Favouriteless/Enchanted@55f37c7e15a2848be2cf25ff20232a1893795e75"
+      "reward_source_evidence": "Favouriteless/Enchanted@55f37c7e15a2848be2cf25ff20232a1893795e75",
+      "test_decree_recipe_reagent": "enchanted:exhale_of_the_horned_one"
     },
     {
       "id": "evilcraft",
@@ -1766,7 +1778,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "evilcraft:dark_gem"
     },
     {
       "id": "feywild",
@@ -1850,7 +1863,8 @@
           "max": 256
         }
       ],
-      "reward_source_evidence": "SaphieNyako/Feywild@2a339f98a5a2ea0d5620801538095a7b013b6de2"
+      "reward_source_evidence": "SaphieNyako/Feywild@2a339f98a5a2ea0d5620801538095a7b013b6de2",
+      "test_decree_recipe_reagent": "feywild:fey_dust"
     },
     {
       "id": "forbidden_arcanus",
@@ -1912,7 +1926,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "forbidden_arcanus:arcane_crystal"
     },
     {
       "id": "goety",
@@ -2031,7 +2046,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "goety:ectoplasm"
     },
     {
       "id": "hexcast_neoforged",
@@ -2116,7 +2132,8 @@
           "max": 32
         }
       ],
-      "reward_source_evidence": "a1exrom/hex_cast_NEOFORGED@1404cf635260f8c7555836d35f535d88949320f3"
+      "reward_source_evidence": "a1exrom/hex_cast_NEOFORGED@1404cf635260f8c7555836d35f535d88949320f3",
+      "test_decree_recipe_reagent": "hexcasting:amethyst_dust"
     },
     {
       "id": "hexerei",
@@ -2270,7 +2287,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "hexerei:mandrake_root"
     },
     {
       "id": "irons_spells",
@@ -2580,7 +2598,8 @@
         "tmm:mob_irons_cursed_armor_stand",
         "tmm:mob_irons_ice_spider",
         "tmm:mob_irons_catacombs_zombie"
-      ]
+      ],
+      "test_decree_recipe_reagent": "irons_spellbooks:arcane_essence"
     },
     {
       "id": "mahou_tsukai",
@@ -2712,7 +2731,8 @@
           "max": 64
         }
       ],
-      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "test_decree_recipe_reagent": "mahoutsukai:powdered_iron"
     },
     {
       "id": "malum",
@@ -2867,7 +2887,8 @@
           "max": 32
         }
       ],
-      "reward_notes": "Ordinary spirit candidates now historically registered in 1.8.2; gate review pending. Umbral and Eldritch excluded pending special progression check."
+      "reward_notes": "Ordinary spirit candidates now historically registered in 1.8.2; gate review pending. Umbral and Eldritch excluded pending special progression check.",
+      "test_decree_recipe_reagent": "malum:refined_soulstone"
     },
     {
       "id": "neovitae",
@@ -2958,7 +2979,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "neovitae:raw_crystal_shard"
     },
     {
       "id": "occultism",
@@ -3152,7 +3174,8 @@
           "min": 4,
           "max": 32
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "occultism:demons_dream_fruit"
     },
     {
       "id": "pastel",
@@ -3214,7 +3237,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "pastel:topaz_shard"
     },
     {
       "id": "primal_magick",
@@ -3289,7 +3313,8 @@
           "min": 4,
           "max": 256
         }
-      ]
+      ],
+      "test_decree_recipe_reagent": "primalmagick:essence_dust_earth"
     },
     {
       "id": "psi",
@@ -3388,7 +3413,8 @@
           "max": 64
         }
       ],
-      "reward_source_evidence": "VazkiiMods/Psi@0f21fab9ec0afe48c2bf4e45f2360547a7c322b3"
+      "reward_source_evidence": "VazkiiMods/Psi@0f21fab9ec0afe48c2bf4e45f2360547a7c322b3",
+      "test_decree_recipe_reagent": "psi:psidust"
     },
     {
       "id": "roots_classic",
@@ -3536,7 +3562,8 @@
           "max": 64
         }
       ],
-      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "test_decree_recipe_reagent": "rootsclassic:old_root"
     },
     {
       "id": "scriptor_magicae",
@@ -3640,7 +3667,8 @@
           "max": 64
         }
       ],
-      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "test_decree_recipe_reagent": "minecraft:ink_sac"
     },
     {
       "id": "totemic",
@@ -3724,7 +3752,8 @@
           "max": 256
         }
       ],
-      "reward_source_evidence": "TeamTotemic/Totemic@1a253b29815842aa4359d6118b8cd84cce3048a1"
+      "reward_source_evidence": "TeamTotemic/Totemic@1a253b29815842aa4359d6118b8cd84cce3048a1",
+      "test_decree_recipe_reagent": "totemic:cedar_log"
     },
     {
       "id": "witchery_remake",
@@ -3880,7 +3909,8 @@
           "max": 64
         }
       ],
-      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "test_decree_recipe_reagent": "witchery:mutandis"
     }
   ],
   "held_schools": [
@@ -3993,7 +4023,8 @@
         "hexerei:blood_bottle",
         "irons_spellbooks:blood_vial"
       ],
-      "balance_status": "draft_exact_item_payouts_pending_review"
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "werewolf",
@@ -4107,7 +4138,8 @@
         "minecraft:chicken",
         "minecraft:rabbit"
       ],
-      "balance_status": "draft_exact_item_payouts_pending_review"
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "lich_goety",
@@ -4189,7 +4221,8 @@
           "status": "hold_component_and_arca_transfer_validation",
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
-      ]
+      ],
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "lich_jawr",
@@ -4268,7 +4301,8 @@
         "witchery_forbidden_magic:soul_in_a_bottle"
       ],
       "balance_status": "historical_registered_ids_pending_effective_emc_and_runtime",
-      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563"
+      "reward_source_evidence": "2026-11-18 installed default-stack census; CI 44629716563",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "archlich",
@@ -4355,7 +4389,8 @@
           "status": "hold_component_and_arca_transfer_validation",
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
-      ]
+      ],
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "dragon_cave",
@@ -4441,7 +4476,8 @@
         "dragonsurvival:charred_meat",
         "dragonsurvival:charred_seafood"
       ],
-      "balance_status": "draft_exact_item_payouts_pending_review"
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "dragon_forest",
@@ -4549,7 +4585,8 @@
         "minecraft:glow_berries",
         "minecraft:golden_carrot"
       ],
-      "balance_status": "draft_exact_item_payouts_pending_review"
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "dragon_sea",
@@ -4643,7 +4680,8 @@
         "minecraft:dried_kelp",
         "aquaculture:sushi"
       ],
-      "balance_status": "draft_exact_item_payouts_pending_review"
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "dracolich",
@@ -4719,7 +4757,8 @@
       "reward_inheritance_proposal": {
         "status": "held_pending_form_specific_acquisition_and_component_review",
         "policy": "Use the actual dragon species food pool and only the actual lich provider's resource. No universal mixed-food composite pool. If one common decree cannot express player-specific context without claim-time gates, define provider/species-specific acquisition variants or allow parent decrees rather than reward unusable food/souls."
-      }
+      },
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "abomination",
@@ -4828,7 +4867,8 @@
           "status": "hold_component_and_arca_transfer_validation",
           "notes": "Goety 3.2.2 TotemOfSouls.getFilledTotem and ITotem store charge in minecraft:custom_data; not a generic soul bottle. Arca lich uses a player capability, portable charge may not be a usable refill. No Soul Jar (revives/summons a necromancer servant). Need verify component charge, capacity, fixed quantity and whether portable charge transfers to Arca; otherwise a dedicated native safe reward hook."
         }
-      ]
+      ],
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "hunter",
@@ -5050,7 +5090,8 @@
         "tmm:mob_irons_cursed_armor_stand",
         "tmm:mob_irons_ice_spider",
         "tmm:mob_irons_catacombs_zombie"
-      ]
+      ],
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "monk",
@@ -5139,7 +5180,8 @@
         "minecraft:experience_bottle"
       ],
       "balance_status": "draft_exact_item_payouts_pending_review",
-      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     },
     {
       "id": "gilded",
@@ -5235,7 +5277,8 @@
         "minecraft:enchanted_golden_apple"
       ],
       "balance_status": "draft_exact_item_payouts_pending_review",
-      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "test_decree_recipe_status": "held_for_authoritative_form_or_class_acquisition_no_public_item_only_recipe"
     }
   ],
   "balance_draft": {
@@ -5418,5 +5461,15 @@
       "missing": 0,
       "meaning": "Historical default-stack registration only; not final effective next-build EMC."
     }
+  },
+  "decree_recipe_policy": {
+    "status": "owner_approved_easy_test_recipe_pattern_pending_exact_codec_and_runtime",
+    "profile": "test_paper_reagent_v1",
+    "paper_count": 1,
+    "reagent_count": 1,
+    "output_item": "bountiful:decree",
+    "output_count": 1,
+    "rank": 1,
+    "notes": "Ordinary general and school decrees only. Shapeless one paper + one iconic reagent. No quest advancement, finished book, rare boss token or gating ingredient required. Scriptor uses ordinary ink as thematic cheap exception. Only emit recipe when matching reviewed decree/pools are compiled. Native blank/general acquisition unchanged; transformation/class acquisition remains held for authoritative player state, not item-only recipes. Replace temporary recipe pattern later."
   }
 }

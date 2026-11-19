@@ -24,6 +24,7 @@ def main():
     families = catalog["general"]+catalog["schools"]+catalog["transformations"]
     selected = {row["item"] for family in families for row in family.get("balance_reward_draft", [])}
     selected.update(row["item"] for family in families for row in family.get("balance_objective_draft", []) if row["type"]=="item")
+    selected.update(f["test_decree_recipe_reagent"] for f in families if "test_decree_recipe_reagent" in f)
     found = {}
     related = {}
     path = ROOT/"docs/qa/surveys-2026-11-18/items.csv"
