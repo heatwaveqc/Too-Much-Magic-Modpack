@@ -12,7 +12,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.OwnableEntity;
+import io.github.heatwaveqc.tmm.progression.foundation.HunterPreyPolicy;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,18 +32,28 @@ public final class HunterExperience {
     private static final Map<String,Long> awardedKills=new HashMap<>();
     private static final List<BiPredicate<ServerPlayer,LivingEntity>> KILL_GUARDS = new CopyOnWriteArrayList<>();
 
-    /** Trusted pack adapters may reject summoned, player-owned or automation-created victims. */
+    /** Trusted pack adapters may reject player-owned, allied or non-independent proxy victims. Spawn origin alone is not a rejection. */
     public static void registerKillGuard(BiPredicate<ServerPlayer,LivingEntity> guard) {
         KILL_GUARDS.add(java.util.Objects.requireNonNull(guard));
     }
 
     private static boolean eligibleKill(ServerPlayer hunter,LivingEntity target,HunterXpPolicy policy) {
-        if (hunter.isCreative() || hunter.isSpectator() || target instanceof Player || target == hunter)
+        boolean invalidHunterOrVictim = hunter.isCreative() || hunter.isSpectator()
+            || target instanceof Player || target == hunter;
+        boolean excluded = !policy.excludeTag().isEmpty()
+            && target.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse(policy.excludeTag())));
+        boolean included = !policy.includeTag().isEmpty()
+            && target.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse(policy.includeTag())));
+        boolean tame = target instanceof TamableAnimal animal && animal.isTame();
+        // A known owner UUID with no resolvable owner is not evidence of enemy allegiance.
+        // This denies offline/unloaded player-owned targets without inferring from spawn origin.
+        boolean playerOrUnknownOwner = false;
+        if (target instanceof OwnableEntity owned && owned.getOwnerUUID() != null) {
+            LivingEntity owner = owned.getOwner();
+            playerOrUnknownOwner = owner == null || owner instanceof Player;
+        }
+        if (!HunterPreyPolicy.eligible(included, excluded, invalidHunterOrVictim, tame, playerOrUnknownOwner))
             return false;
-        if (target instanceof TamableAnimal animal && animal.isTame()) return false;
-        if(!policy.excludeTag().isEmpty()&&target.getType().is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(policy.excludeTag()))))return false;
-        boolean included=!policy.includeTag().isEmpty()&&target.getType().is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(policy.includeTag())));
-        if(target.getType().getCategory()!=MobCategory.MONSTER&&!included)return false;
         for (BiPredicate<ServerPlayer,LivingEntity> rule : KILL_GUARDS)
             if (!rule.test(hunter,target)) return false;
         return true;
