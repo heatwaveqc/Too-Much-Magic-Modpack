@@ -4,4 +4,4 @@
 patreonEffects = true
 animateAdditionalInputs = true
 skyRenderDimensions = ["minecraft:overworld"]
-constellationOverlaySkyDimensions = ["eternal_starlight:starlight", "theaurorian:aurorian", "twilightforest:twilight_forest", "minecraft:the_end"]
+constellationOverlaySkyDimensions = ["eternal_starlight:starlight", "theaurorian:the_aurorian", "twilightforest:twilight_forest", "minecraft:the_end"]

@@ -21,3 +21,15 @@ Source: pinned AstralSorcery-2.0.3.59.jar (SHA1 66f36655eae7cb404c9c16da6f33db31
 | AS-D07 | Capture XP/health before-after, live mixin warnings, ownership, dimension and config snapshots; repeat after restart. | Explicit PASS/FAIL/BLOCKED/NOT RUN by dimension/test; document exact blocker for fixed-time, custom render, server mechanics or config. |
 
 No actual runtime test or acceptance performed by this PR.
+
+## Static pin evidence
+
+Exact JAR audit [run 44583124153](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44583124153) hash-verified all three external dimension archives and identified an incorrect initial Aurorian ID (`theaurorian:aurorian`); corrected to `theaurorian:the_aurorian`.
+
+| Registry ID | fixed_time | natural | skylight | ceiling | effects |
+|---|---:|---|---|---|---|
+| eternal_starlight:starlight | 12900 | true | true | false | eternal_starlight:special_effect |
+| theaurorian:the_aurorian | 18000 | false | true | false | theaurorian:the_aurorian |
+| twilightforest:twilight_forest | 13000 | true | true | false | twilightforest:renderer |
+
+All three have fixed celestial visual time and distinct custom effects. Confirm actual native AS time calculation/live constellation rotation and compatibility; Aurorian non-natural may also affect behavior. Do not change any dimension type to force compatibility. End is separately tested with BetterEnd installed. The initial audit failed the proposed Aurorian ID assertion as intended; re-audit corrected configuration before integration.

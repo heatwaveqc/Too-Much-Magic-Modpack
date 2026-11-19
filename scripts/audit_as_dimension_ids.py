@@ -25,7 +25,7 @@ for pin in ("eternal-starlight","the-aurorian-unofficial-port","twilight-forest"
             found=expected.intersection(dims)
             expected-=found
             for name in z.namelist():
-                if "/dimension_type/" in name and name.endswith(".json"):
+                if len(name.split("/"))>=4 and name.split("/")[0]=="data" and name.split("/")[2]=="dimension_type" and name.endswith(".json"):
                     fields=json.loads(z.read(name))
                     print("DIMENSION_TYPE",name,{k:fields.get(k) for k in ("fixed_time","natural","has_skylight","has_ceiling","effects")},flush=True)
 assert not expected,"Missing configured dimension IDs: "+str(expected)
