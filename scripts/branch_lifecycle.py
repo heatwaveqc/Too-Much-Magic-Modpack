@@ -15,6 +15,9 @@ import urllib.request
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OWNER_ID = "22598785"
+RETIRE_CONSOLE = 359
+DIGEST = re.compile(r"[0-9a-f]{64}")
+NONCE = re.compile(r"[0-9a-f]{32}")
 PERMANENT = {"main", "test/full-integration", "dev/progression", "dev/art"}
 SHA = re.compile(r"[0-9a-f]{40}")
 BATCH = re.compile(r"maintenance/branch-retirement/[A-Za-z0-9][A-Za-z0-9_-]*\.json")
@@ -22,13 +25,14 @@ NAME = re.compile(r"(audit|build|design|dev|docs|feature|fix|integration|policy|
 NOW = dt.datetime.now(dt.timezone.utc)
 
 
-def api(path):
+def api(path, *, method="GET", data=None):
     req = urllib.request.Request(
         "https://api.github.com/repos/" + REPO + path,
+        method=method, data=json.dumps(data).encode("utf-8") if data is not None else None,
         headers={"Accept": "application/vnd.github+json",
                  "Authorization": "Bearer " + os.environ["GITHUB_TOKEN"],
                  "X-GitHub-Api-Version": "2022-11-28",
-                 "User-Agent": "TMM-branch-lifecycle"})
+                 "User-Agent": "TMM-branch-lifecycle", "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=40) as response:
         return json.load(response)
 
@@ -225,6 +229,79 @@ def snapshot():
             {r["branch"] for r in source_manifest()})
 
 
+def parse_console(body):
+    # Exactly one standalone command, no shell parsing or multiline input.
+    if not isinstance(body, str):
+        raise ValueError("missing console command")
+    args = body.split(" ")
+    if (len(args) not in (4, 5) or args[0] != "/tmm" or
+            args[1] not in ("retire-check", "retire") or
+            len(args) != (5 if args[1] == "retire" else 4) or
+            not BATCH.fullmatch(args[2]) or not DIGEST.fullmatch(args[3]) or
+            (len(args) == 5 and not NONCE.fullmatch(args[4]))):
+        raise ValueError("invalid retirement console command")
+    return args[2], args[3], args[4] if len(args) == 5 else None
+
+
+def console_request():
+    expected = {"GITHUB_REPOSITORY": REPO, "GITHUB_REF": "refs/heads/main",
+                "GITHUB_EVENT_NAME": "issue_comment", "GITHUB_ACTOR_ID": OWNER_ID,
+                "GITHUB_RUN_ATTEMPT": "1"}
+    if any(os.environ.get(k) != v for k, v in expected.items()):
+        raise ValueError("retirement console requires fresh owner issue comment on main")
+    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes())
+    issue, comment = event["issue"], event["comment"]
+    if (event.get("action") != "created" or
+            event["repository"]["full_name"] != REPO or
+            event["repository"]["default_branch"] != "main" or
+            issue["number"] != RETIRE_CONSOLE or issue.get("pull_request") or
+            issue["state"] != "open" or str(event["sender"]["id"]) != OWNER_ID or
+            str(comment["user"]["id"]) != OWNER_ID or
+            comment["author_association"] != "OWNER" or
+            type(comment.get("id")) is not int or comment["id"] <= 0):
+        raise ValueError("wrong issue, author or event")
+    path, digest, nonce = parse_console(comment["body"])
+    # Re-fetch by numeric ID; reject edited/deleted/old commands and closed consoles.
+    live_issue = api(f"/issues/{RETIRE_CONSOLE}")
+    live = api(f"/issues/comments/{comment['id']}")
+    if (live_issue["state"] != "open" or live_issue.get("pull_request") or
+            live_issue["number"] != RETIRE_CONSOLE or live["id"] != comment["id"] or
+            str(live["user"]["id"]) != OWNER_ID or live["author_association"] != "OWNER" or
+            live["issue_url"] != "https://api.github.com/repos/" + REPO + f"/issues/{RETIRE_CONSOLE}" or
+            live["body"] != comment["body"] or
+            comment["created_at"] != comment["updated_at"] or
+            live["created_at"] != live["updated_at"] or
+            live["created_at"] != comment["created_at"]):
+        raise ValueError("comment or console changed since event")
+    age = (dt.datetime.now(dt.timezone.utc) -
+           dt.datetime.fromisoformat(live["created_at"].replace("Z", "+00:00"))).total_seconds()
+    if not 0 <= age <= 1800:
+        raise ValueError("comment is not fresh (30 minute limit)")
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    if (not SHA.fullmatch(head) or head != os.environ.get("GITHUB_SHA") or
+            api("/git/ref/heads/main")["object"]["sha"] != head):
+        raise ValueError("main advanced or untrusted checkout; request fresh authorization")
+    return path, digest, nonce, head
+
+
+def claim_console_nonce(nonce, head):
+    # Create-only REST operation is atomic even across concurrent runs. HTTP failure,
+    # including an existing receipt, stops execution; never retry uncertain writes.
+    if not NONCE.fullmatch(nonce) or not SHA.fullmatch(head):
+        raise ValueError("invalid receipt identity")
+    ref = "refs/tags/retirement-request/" + nonce
+    receipt = api("/git/refs", method="POST", data={"ref": ref, "sha": head})
+    if receipt.get("ref") != ref or receipt.get("object", {}).get("sha") != head:
+        raise ValueError("unexpected receipt result; do not replay")
+    report(["Retirement authorization receipt: " + ref + " @ " + head,
+            "Receipt is not a deletion result. Never remove or reuse the nonce."])
+
+
+def console():
+    path, digest, nonce, _ = console_request()
+    retire(path, digest, nonce is not None)
+
+
 def retire(path, digest, execute):
     raw = Path(path).read_bytes() if BATCH.fullmatch(path) else b""
     actual_digest = hashlib.sha256(raw).hexdigest()
@@ -232,15 +309,23 @@ def retire(path, digest, execute):
         raise ValueError("manifest SHA-256 mismatch")
     entries = validate_manifest(path, raw)
     if execute:
-        expected = {"GITHUB_REPOSITORY": REPO, "GITHUB_REF": "refs/heads/main",
-                    "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_ACTOR_ID": OWNER_ID,
-                    "GITHUB_RUN_ATTEMPT": "1", "RETIRE_AUTHORIZED": "true"}
-        if any(os.environ.get(k) != v for k, v in expected.items()):
-            raise ValueError("retirement requires a fresh owner-authorized main dispatch")
-        # Ensure the exact reviewed bytes are tracked at the dispatched commit.
+        if os.environ.get("GITHUB_EVENT_NAME") == "issue_comment":
+            approved_path, approved_digest, nonce, head = console_request()
+            if nonce is None or (approved_path, approved_digest) != (path, digest):
+                raise ValueError("owner console authorization does not match exact batch")
+        else:
+            expected = {"GITHUB_REPOSITORY": REPO, "GITHUB_REF": "refs/heads/main",
+                        "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_ACTOR_ID": OWNER_ID,
+                        "GITHUB_RUN_ATTEMPT": "1", "RETIRE_AUTHORIZED": "true"}
+            if any(os.environ.get(k) != v for k, v in expected.items()):
+                raise ValueError("retirement requires a fresh owner-authorized main dispatch")
+            nonce = None
+        # Ensure the exact reviewed bytes are tracked at the authorized main commit.
         committed = subprocess.check_output(["git", "show", "HEAD:" + path])
         if committed != raw:
             raise ValueError("manifest differs from checked-out main commit")
+        if nonce is not None:
+            claim_console_nonce(nonce, head)
     state = snapshot()
     lines = [f"## Retirement batch {Path(path).stem} — {'EXECUTE' if execute else 'DRY RUN'}",
              f"SHA-256: {actual_digest}", "", "| Branch | Result | Detail |", "|---|---|---|"]
@@ -275,6 +360,7 @@ def main():
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="command", required=True)
     sub.add_parser("inventory")
+    sub.add_parser("console")
     c = sub.add_parser("collision")
     c.add_argument("--pr", type=int, required=True)
     r = sub.add_parser("retire")
@@ -284,6 +370,8 @@ def main():
     args = p.parse_args()
     if args.command == "inventory":
         inventory()
+    elif args.command == "console":
+        console()
     elif args.command == "collision":
         collision(args.pr)
     else:
