@@ -19,12 +19,24 @@
         "minecraft:rotten_flesh",
         "minecraft:bone",
         "minecraft:string",
-        "minecraft:spider_eye"
+        "minecraft:spider_eye",
+        "minecraft:feather",
+        "minecraft:gunpowder",
+        "minecraft:phantom_membrane"
       ],
       "kill_candidates": [
         "minecraft:zombie",
         "minecraft:skeleton",
-        "minecraft:spider"
+        "minecraft:spider",
+        "minecraft:husk",
+        "minecraft:drowned",
+        "minecraft:creeper",
+        "minecraft:stray",
+        "minecraft:cave_spider",
+        "minecraft:enderman",
+        "minecraft:witch",
+        "minecraft:blaze",
+        "minecraft:wither_skeleton"
       ],
       "balance_reward_draft": [
         {
@@ -50,44 +62,116 @@
         {
           "type": "item",
           "item": "minecraft:rotten_flesh",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:bone",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:string",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:spider_eye",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:feather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gunpowder",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:phantom_membrane",
+          "min": 4,
           "max": 256
         },
         {
           "type": "entity",
           "entity": "minecraft:zombie",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:spider",
           "min": 4,
-          "max": 96
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:husk",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:drowned",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:creeper",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:stray",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:cave_spider",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
         },
         {
           "type": "gateway",
@@ -95,6 +179,70 @@
           "min": 1,
           "max": 1,
           "name": "Complete the Wilden Hunter Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_stalker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Stalker Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_guardian",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Guardian Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_necromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Necromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_pyromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Pyromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cryomancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cryomancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_archevoker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Archevoker Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_magehunter_vindicator",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Magehunter Vindicator Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_apothecarist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Apothecarist Gateway",
           "proposed_effort_emc": 1024
         },
         {
@@ -107,17 +255,43 @@
         },
         {
           "type": "gateway",
-          "gateway": "tmm:mob_irons_pyromancer",
+          "gateway": "tmm:mob_irons_cursed_armor_stand",
           "min": 1,
           "max": 1,
-          "name": "Complete the Pyromancer Gateway",
-          "proposed_effort_emc": 2048
+          "name": "Complete the Cursed Armor Stand Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_ice_spider",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Ice Spider Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_catacombs_zombie",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Catacombs Zombie Gateway",
+          "proposed_effort_emc": 1024
         }
       ],
       "gateway_candidates": [
         "tmm:mob_ars_wilden_hunter",
+        "tmm:mob_ars_wilden_stalker",
+        "tmm:mob_ars_wilden_guardian",
+        "tmm:mob_irons_necromancer",
+        "tmm:mob_irons_pyromancer",
+        "tmm:mob_irons_cryomancer",
+        "tmm:mob_irons_archevoker",
+        "tmm:mob_irons_magehunter_vindicator",
+        "tmm:mob_irons_apothecarist",
         "tmm:mob_irons_cultist",
-        "tmm:mob_irons_pyromancer"
+        "tmm:mob_irons_cursed_armor_stand",
+        "tmm:mob_irons_ice_spider",
+        "tmm:mob_irons_catacombs_zombie"
       ]
     },
     {
@@ -128,7 +302,12 @@
         "minecraft:carrot",
         "minecraft:potato",
         "minecraft:beetroot",
-        "minecraft:pumpkin"
+        "minecraft:pumpkin",
+        "minecraft:melon_slice",
+        "minecraft:sugar_cane",
+        "minecraft:cocoa_beans",
+        "minecraft:sweet_berries",
+        "minecraft:apple"
       ],
       "kill_candidates": [],
       "balance_reward_draft": [
@@ -155,31 +334,61 @@
         {
           "type": "item",
           "item": "minecraft:wheat",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:carrot",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:potato",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:beetroot",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:pumpkin",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:melon_slice",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:sugar_cane",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cocoa_beans",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:sweet_berries",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:apple",
+          "min": 4,
           "max": 256
         }
       ]
@@ -191,7 +400,10 @@
         "minecraft:cod",
         "minecraft:salmon",
         "minecraft:tropical_fish",
-        "minecraft:ink_sac"
+        "minecraft:ink_sac",
+        "minecraft:pufferfish",
+        "minecraft:kelp",
+        "minecraft:seagrass"
       ],
       "kill_candidates": [],
       "balance_reward_draft": [
@@ -218,25 +430,43 @@
         {
           "type": "item",
           "item": "minecraft:cod",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:salmon",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:tropical_fish",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:ink_sac",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:pufferfish",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:kelp",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:seagrass",
+          "min": 4,
           "max": 256
         }
       ]
@@ -248,7 +478,12 @@
         "minecraft:cobblestone",
         "minecraft:coal",
         "minecraft:raw_copper",
-        "minecraft:raw_iron"
+        "minecraft:raw_iron",
+        "minecraft:raw_gold",
+        "minecraft:quartz",
+        "minecraft:amethyst_shard",
+        "minecraft:redstone",
+        "minecraft:lapis_lazuli"
       ],
       "kill_candidates": [],
       "balance_reward_draft": [
@@ -275,25 +510,55 @@
         {
           "type": "item",
           "item": "minecraft:cobblestone",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:coal",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:raw_copper",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:raw_iron",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_gold",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
           "max": 256
         }
       ]
@@ -306,7 +571,15 @@
         "minecraft:spruce_log",
         "minecraft:glass",
         "minecraft:charcoal",
-        "minecraft:torch"
+        "minecraft:torch",
+        "minecraft:birch_log",
+        "minecraft:jungle_log",
+        "minecraft:acacia_log",
+        "minecraft:dark_oak_log",
+        "minecraft:mangrove_log",
+        "minecraft:cherry_log",
+        "minecraft:paper",
+        "minecraft:brick"
       ],
       "kill_candidates": [],
       "balance_reward_draft": [
@@ -333,31 +606,79 @@
         {
           "type": "item",
           "item": "minecraft:oak_log",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:spruce_log",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:glass",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:charcoal",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:torch",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:birch_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:jungle_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:acacia_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:dark_oak_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:mangrove_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cherry_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:paper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:brick",
+          "min": 4,
           "max": 256
         }
       ]
@@ -369,7 +690,12 @@
         "minecraft:bread",
         "minecraft:cooked_beef",
         "minecraft:baked_potato",
-        "minecraft:cooked_cod"
+        "minecraft:cooked_cod",
+        "minecraft:cooked_chicken",
+        "minecraft:cooked_porkchop",
+        "minecraft:cooked_mutton",
+        "minecraft:mushroom_stew",
+        "minecraft:pumpkin_pie"
       ],
       "kill_candidates": [],
       "balance_reward_draft": [
@@ -396,25 +722,55 @@
         {
           "type": "item",
           "item": "minecraft:bread",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:cooked_beef",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:baked_potato",
-          "min": 8,
+          "min": 4,
           "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:cooked_cod",
-          "min": 8,
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_chicken",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_porkchop",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_mutton",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:mushroom_stew",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:pumpkin_pie",
+          "min": 4,
           "max": 256
         }
       ]
@@ -428,18 +784,34 @@
       "items": [
         "minecraft:lapis_lazuli",
         "minecraft:gold_ingot",
-        "minecraft:amethyst_shard"
+        "minecraft:amethyst_shard",
+        "minecraft:blaze_rod",
+        "minecraft:ender_pearl",
+        "minecraft:obsidian"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "elemental and utility essences",
         "source gems"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "ars_nouveau:wilden_hunter",
+        "ars_nouveau:wilden_stalker",
+        "ars_nouveau:wilden_guardian",
+        "ars_elemental:air_mage",
+        "ars_elemental:earth_mage",
+        "ars_elemental:fire_mage",
+        "ars_elemental:water_mage"
+      ],
       "reward_item_candidates": [
         "ars_nouveau:air_essence",
         "ars_nouveau:manipulation_essence",
-        "ars_nouveau:source_gem"
+        "ars_nouveau:source_gem",
+        "ars_nouveau:abjuration_essence",
+        "ars_nouveau:conjuration_essence",
+        "ars_nouveau:earth_essence",
+        "ars_nouveau:fire_essence",
+        "ars_nouveau:water_essence"
       ],
       "balance_reward_draft": [
         {
@@ -456,6 +828,36 @@
         },
         {
           "item": "ars_nouveau:manipulation_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:abjuration_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:conjuration_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:earth_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:fire_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "ars_nouveau:water_essence",
           "min": 1,
           "max": 3,
           "rarity": "UNCOMMON"
@@ -482,17 +884,96 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:blaze_rod",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "ars_nouveau:wilden_hunter",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_nouveau:wilden_stalker",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_nouveau:wilden_guardian",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_elemental:air_mage",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_elemental:earth_mage",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_elemental:fire_mage",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_elemental:water_mage",
+          "min": 4,
+          "max": 32
+        },
+        {
           "type": "gateway",
           "gateway": "tmm:mob_ars_wilden_hunter",
           "min": 1,
           "max": 1,
           "name": "Complete the Wilden Hunter Gateway",
           "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_stalker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Stalker Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_guardian",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Guardian Gateway",
+          "proposed_effort_emc": 1024
         }
       ],
       "gateway_candidates": [
-        "tmm:mob_ars_wilden_hunter"
-      ]
+        "tmm:mob_ars_wilden_hunter",
+        "tmm:mob_ars_wilden_stalker",
+        "tmm:mob_ars_wilden_guardian"
+      ],
+      "reward_source_evidence": "baileyholl/Ars-Nouveau@4d323fba9200c3293a4f4848cf1e0fe70beb7098"
     },
     {
       "id": "astral_sorcery",
@@ -504,7 +985,10 @@
         "minecraft:amethyst_shard",
         "minecraft:gold_ingot",
         "minecraft:diamond",
-        "minecraft:gold_block"
+        "minecraft:gold_block",
+        "minecraft:quartz",
+        "minecraft:obsidian",
+        "minecraft:lapis_lazuli"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -550,34 +1034,52 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:enderman",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:phantom",
           "min": 4,
-          "max": 96
-        },
-        {
-          "type": "item",
-          "item": "minecraft:gold_ingot",
-          "min": 1,
-          "max": 64
-        },
-        {
-          "type": "item",
-          "item": "minecraft:diamond",
-          "min": 1,
-          "max": 64
-        },
-        {
-          "type": "item",
-          "item": "minecraft:gold_block",
-          "min": 1,
-          "max": 64
+          "max": 32
         }
       ]
     },
@@ -592,14 +1094,19 @@
         "minecraft:melon_seeds",
         "minecraft:gold_ingot",
         "minecraft:diamond",
-        "minecraft:gold_block"
+        "minecraft:gold_block",
+        "minecraft:glowstone_dust",
+        "minecraft:blaze_powder",
+        "minecraft:ender_pearl"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "crafted runes",
         "Black Lotus (premium)"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "botania:manaseal_creeper"
+      ],
       "reward_item_candidates": [
         "botania:rune_air",
         "botania:rune_water",
@@ -756,20 +1263,44 @@
         {
           "type": "item",
           "item": "minecraft:gold_ingot",
-          "min": 1,
-          "max": 64
+          "min": 4,
+          "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:diamond",
-          "min": 1,
-          "max": 64
+          "min": 4,
+          "max": 256
         },
         {
           "type": "item",
           "item": "minecraft:gold_block",
-          "min": 1,
-          "max": 64
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glowstone_dust",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blaze_powder",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "botania:manaseal_creeper",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -780,7 +1311,11 @@
       "items": [
         "minecraft:bone",
         "minecraft:charcoal",
-        "minecraft:redstone"
+        "minecraft:redstone",
+        "minecraft:rotten_flesh",
+        "minecraft:spider_eye",
+        "minecraft:gold_ingot",
+        "minecraft:blaze_powder"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -790,11 +1325,44 @@
       "kill_candidates": [
         "minecraft:skeleton",
         "minecraft:zombie",
-        "minecraft:witch"
+        "minecraft:witch",
+        "eidolon_repraised:giant_skeleton",
+        "eidolon_repraised:wraith",
+        "eidolon_repraised:zombie_brute"
       ],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "eidolon_repraised:soul_shard",
+        "eidolon_repraised:tallow",
+        "eidolon_repraised:crimson_essence",
+        "eidolon_repraised:death_essence"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "eidolon_repraised:soul_shard",
+          "min": 2,
+          "max": 6,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "eidolon_repraised:tallow",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "eidolon_repraised:crimson_essence",
+          "min": 1,
+          "max": 3,
+          "rarity": "RARE"
+        },
+        {
+          "item": "eidolon_repraised:death_essence",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -815,40 +1383,87 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blaze_powder",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:zombie",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "eidolon_repraised:giant_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "eidolon_repraised:wraith",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "eidolon_repraised:zombie_brute",
+          "min": 4,
+          "max": 32
         }
-      ]
+      ],
+      "reward_source_evidence": "Alexthw46/Eidolon-Repraised@85484f2804bcff82abb3397d8f384422d7e21898"
     },
     {
       "id": "embers_re_ignited",
       "mod": "embers-re-ignited",
       "name": "Embers",
       "items": [
-        "embers:ember_shard",
         "minecraft:raw_copper",
-        "minecraft:coal"
+        "minecraft:coal",
+        "minecraft:iron_ingot",
+        "minecraft:raw_gold",
+        "minecraft:redstone"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "ember shards",
         "ordinary metal components"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "embers:ancient_golem"
+      ],
       "reward_item_candidates": [
         "embers:ember_shard"
       ],
@@ -864,12 +1479,6 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "embers:ember_shard",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
           "item": "minecraft:raw_copper",
           "min": 4,
           "max": 256
@@ -879,6 +1488,30 @@
           "item": "minecraft:coal",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_gold",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "embers:ancient_golem",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -889,7 +1522,12 @@
       "items": [
         "minecraft:bone_meal",
         "minecraft:fern",
-        "minecraft:sugar"
+        "minecraft:sugar",
+        "minecraft:oak_sapling",
+        "minecraft:birch_sapling",
+        "minecraft:jungle_sapling",
+        "minecraft:glass_bottle",
+        "minecraft:spider_eye"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -899,9 +1537,60 @@
       "kill_candidates": [
         "minecraft:witch"
       ],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "enchanted:breath_of_the_goddess",
+        "enchanted:exhale_of_the_horned_one",
+        "enchanted:foul_fume",
+        "enchanted:hint_of_rebirth",
+        "enchanted:reek_of_misfortune",
+        "enchanted:spirit_of_otherwhere",
+        "enchanted:whiff_of_magic"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "enchanted:breath_of_the_goddess",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "enchanted:exhale_of_the_horned_one",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "enchanted:foul_fume",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "enchanted:hint_of_rebirth",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "enchanted:reek_of_misfortune",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "enchanted:spirit_of_otherwhere",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        },
+        {
+          "item": "enchanted:whiff_of_magic",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -922,12 +1611,43 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:oak_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:birch_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:jungle_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
         }
-      ]
+      ],
+      "reward_source_evidence": "Favouriteless/Enchanted@55f37c7e15a2848be2cf25ff20232a1893795e75"
     },
     {
       "id": "evilcraft",
@@ -939,7 +1659,9 @@
         "minecraft:bone",
         "minecraft:gold_ingot",
         "minecraft:diamond",
-        "minecraft:gold_block"
+        "minecraft:gold_block",
+        "minecraft:glass_bottle",
+        "minecraft:ghast_tear"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -948,7 +1670,9 @@
       "kill_candidates": [
         "minecraft:zombie",
         "minecraft:spider",
-        "minecraft:wither_skeleton"
+        "minecraft:wither_skeleton",
+        "evilcraft:netherfish",
+        "evilcraft:poisonous_libelle"
       ],
       "reward_item_candidates": [
         "evilcraft:condensed_blood"
@@ -983,40 +1707,64 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ghast_tear",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:zombie",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:spider",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:wither_skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:gold_ingot",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "evilcraft:netherfish",
+          "min": 4,
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:diamond",
-          "min": 1,
-          "max": 64
-        },
-        {
-          "type": "item",
-          "item": "minecraft:gold_block",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "evilcraft:poisonous_libelle",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1027,7 +1775,11 @@
       "items": [
         "minecraft:poppy",
         "minecraft:blue_orchid",
-        "minecraft:honeycomb"
+        "minecraft:honeycomb",
+        "minecraft:sunflower",
+        "minecraft:lilac",
+        "minecraft:cookie",
+        "minecraft:amethyst_shard"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1035,9 +1787,25 @@
         "Fey Gems"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "feywild:fey_dust",
+        "feywild:fey_gem"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "feywild:fey_dust",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "feywild:fey_gem",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1056,17 +1824,44 @@
           "item": "minecraft:honeycomb",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:sunflower",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lilac",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cookie",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
         }
-      ]
+      ],
+      "reward_source_evidence": "SaphieNyako/Feywild@2a339f98a5a2ea0d5620801538095a7b013b6de2"
     },
     {
       "id": "forbidden_arcanus",
       "mod": "forbidden-arcanus",
       "name": "Forbidden & Arcanus",
       "items": [
-        "forbidden_arcanus:arcane_crystal",
         "minecraft:amethyst_shard",
-        "minecraft:gold_ingot"
+        "minecraft:gold_ingot",
+        "minecraft:obsidian",
+        "minecraft:diamond",
+        "minecraft:quartz"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1089,12 +1884,6 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "forbidden_arcanus:arcane_crystal",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
           "item": "minecraft:amethyst_shard",
           "min": 4,
           "max": 256
@@ -1102,6 +1891,24 @@
         {
           "type": "item",
           "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
           "min": 4,
           "max": 256
         }
@@ -1112,9 +1919,11 @@
       "mod": "goety",
       "name": "Goety",
       "items": [
-        "goety:ectoplasm",
         "minecraft:bone",
-        "minecraft:rotten_flesh"
+        "minecraft:rotten_flesh",
+        "minecraft:lapis_lazuli",
+        "minecraft:blaze_rod",
+        "minecraft:ender_pearl"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1124,7 +1933,12 @@
       "kill_candidates": [
         "minecraft:skeleton",
         "minecraft:wither_skeleton",
-        "minecraft:witch"
+        "minecraft:witch",
+        "goety:cryologer",
+        "goety:storm_caster",
+        "goety:warlock",
+        "goety:heretic",
+        "goety:bone_spider"
       ],
       "reward_item_candidates": [
         "goety:ectoplasm"
@@ -1141,12 +1955,6 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "goety:ectoplasm",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
           "item": "minecraft:bone",
           "min": 4,
           "max": 256
@@ -1158,22 +1966,70 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blaze_rod",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:wither_skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:cryologer",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:storm_caster",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:warlock",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:heretic",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:bone_spider",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1184,7 +2040,10 @@
       "items": [
         "minecraft:amethyst_shard",
         "minecraft:amethyst_block",
-        "minecraft:glass"
+        "minecraft:glass",
+        "minecraft:quartz",
+        "minecraft:copper_ingot",
+        "minecraft:paper"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1194,9 +2053,25 @@
       "kill_candidates": [
         "minecraft:enderman"
       ],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "hexcasting:amethyst_dust",
+        "hexcasting:charged_amethyst"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "hexcasting:amethyst_dust",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "hexcasting:charged_amethyst",
+          "min": 1,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1217,12 +2092,31 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:copper_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:paper",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:enderman",
           "min": 4,
-          "max": 96
+          "max": 32
         }
-      ]
+      ],
+      "reward_source_evidence": "a1exrom/hex_cast_NEOFORGED@1404cf635260f8c7555836d35f535d88949320f3"
     },
     {
       "id": "hexerei",
@@ -1231,7 +2125,11 @@
       "items": [
         "minecraft:clay_ball",
         "minecraft:honeycomb",
-        "minecraft:lily_pad"
+        "minecraft:lily_pad",
+        "minecraft:glass_bottle",
+        "minecraft:fern",
+        "minecraft:vine",
+        "minecraft:spider_eye"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1347,6 +2245,30 @@
           "item": "minecraft:lily_pad",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:fern",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:vine",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
         }
       ]
     },
@@ -1360,7 +2282,10 @@
         "minecraft:lapis_lazuli",
         "minecraft:gold_ingot",
         "minecraft:diamond",
-        "minecraft:gold_block"
+        "minecraft:gold_block",
+        "minecraft:blaze_rod",
+        "minecraft:ender_pearl",
+        "minecraft:gunpowder"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1370,7 +2295,17 @@
       "kill_candidates": [
         "minecraft:witch",
         "minecraft:blaze",
-        "minecraft:enderman"
+        "minecraft:enderman",
+        "irons_spellbooks:apothecarist",
+        "irons_spellbooks:archevoker",
+        "irons_spellbooks:catacombs_zombie",
+        "irons_spellbooks:cryomancer",
+        "irons_spellbooks:cultist",
+        "irons_spellbooks:cursed_armor_stand",
+        "irons_spellbooks:ice_spider",
+        "irons_spellbooks:magehunter_vindicator",
+        "irons_spellbooks:necromancer",
+        "irons_spellbooks:pyromancer"
       ],
       "reward_item_candidates": [
         "irons_spellbooks:arcane_essence",
@@ -1439,40 +2374,166 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blaze_rod",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gunpowder",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:blaze",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:enderman",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:gold_ingot",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "irons_spellbooks:apothecarist",
+          "min": 4,
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:diamond",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "irons_spellbooks:archevoker",
+          "min": 4,
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:gold_block",
+          "type": "entity",
+          "entity": "irons_spellbooks:catacombs_zombie",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:cryomancer",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:cultist",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:cursed_armor_stand",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:ice_spider",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:magehunter_vindicator",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:necromancer",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "irons_spellbooks:pyromancer",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_necromancer",
           "min": 1,
-          "max": 64
+          "max": 1,
+          "name": "Complete the Necromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_pyromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Pyromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cryomancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cryomancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_archevoker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Archevoker Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_magehunter_vindicator",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Magehunter Vindicator Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_apothecarist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Apothecarist Gateway",
+          "proposed_effort_emc": 1024
         },
         {
           "type": "gateway",
@@ -1484,17 +2545,41 @@
         },
         {
           "type": "gateway",
-          "gateway": "tmm:mob_irons_pyromancer",
+          "gateway": "tmm:mob_irons_cursed_armor_stand",
           "min": 1,
           "max": 1,
-          "name": "Complete the Pyromancer Gateway",
-          "proposed_effort_emc": 2048
+          "name": "Complete the Cursed Armor Stand Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_ice_spider",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Ice Spider Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_catacombs_zombie",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Catacombs Zombie Gateway",
+          "proposed_effort_emc": 1024
         }
       ],
       "reward_notes": "Owner explicitly requires every native ink tier to be available as a potential payout. Arcane Essence remains an additional candidate. Quantities provisional.",
       "gateway_candidates": [
+        "tmm:mob_irons_necromancer",
+        "tmm:mob_irons_pyromancer",
+        "tmm:mob_irons_cryomancer",
+        "tmm:mob_irons_archevoker",
+        "tmm:mob_irons_magehunter_vindicator",
+        "tmm:mob_irons_apothecarist",
         "tmm:mob_irons_cultist",
-        "tmm:mob_irons_pyromancer"
+        "tmm:mob_irons_cursed_armor_stand",
+        "tmm:mob_irons_ice_spider",
+        "tmm:mob_irons_catacombs_zombie"
       ]
     },
     {
@@ -1504,7 +2589,12 @@
       "items": [
         "minecraft:paper",
         "minecraft:redstone",
-        "minecraft:quartz"
+        "minecraft:quartz",
+        "minecraft:iron_ingot",
+        "minecraft:gold_ingot",
+        "minecraft:ender_pearl",
+        "minecraft:diamond",
+        "minecraft:emerald"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1532,6 +2622,36 @@
           "item": "minecraft:quartz",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:emerald",
+          "min": 4,
+          "max": 256
         }
       ]
     },
@@ -1541,8 +2661,10 @@
       "name": "Malum",
       "items": [
         "malum:runewood_log",
-        "malum:refined_soulstone",
-        "malum:tainted_rock"
+        "malum:tainted_rock",
+        "minecraft:charcoal",
+        "minecraft:iron_ingot",
+        "minecraft:obsidian"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1552,7 +2674,10 @@
       "kill_candidates": [
         "minecraft:zombie",
         "minecraft:skeleton",
-        "minecraft:enderman"
+        "minecraft:enderman",
+        "minecraft:wither_skeleton",
+        "minecraft:blaze",
+        "minecraft:witch"
       ],
       "reward_item_candidates": [
         "malum:refined_soulstone"
@@ -1575,13 +2700,25 @@
         },
         {
           "type": "item",
-          "item": "malum:refined_soulstone",
+          "item": "malum:tainted_rock",
           "min": 4,
           "max": 256
         },
         {
           "type": "item",
-          "item": "malum:tainted_rock",
+          "item": "minecraft:charcoal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:iron_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
           "min": 4,
           "max": 256
         },
@@ -1589,19 +2726,37 @@
           "type": "entity",
           "entity": "minecraft:zombie",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:enderman",
           "min": 4,
-          "max": 96
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1610,16 +2765,23 @@
       "mod": "neovitae",
       "name": "Neo Vitae",
       "items": [
-        "neovitae:raw_crystal_shard",
         "minecraft:glass",
-        "minecraft:bone"
+        "minecraft:bone",
+        "minecraft:redstone",
+        "minecraft:amethyst_shard",
+        "minecraft:gold_ingot"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "ordinary raw crystal shards",
         "alchemical reagents"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "neovitae:daemonium_corrodis",
+        "neovitae:daemonium_doloris",
+        "neovitae:daemonium_ignis",
+        "neovitae:slime_vitae"
+      ],
       "reward_item_candidates": [
         "neovitae:raw_crystal_shard"
       ],
@@ -1635,12 +2797,6 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "neovitae:raw_crystal_shard",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
           "item": "minecraft:glass",
           "min": 4,
           "max": 256
@@ -1650,6 +2806,48 @@
           "item": "minecraft:bone",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "neovitae:daemonium_corrodis",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "neovitae:daemonium_doloris",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "neovitae:daemonium_ignis",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "neovitae:slime_vitae",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1662,7 +2860,10 @@
         "minecraft:gold_ingot",
         "minecraft:bone_meal",
         "minecraft:diamond",
-        "minecraft:gold_block"
+        "minecraft:gold_block",
+        "minecraft:ender_pearl",
+        "minecraft:blaze_powder",
+        "minecraft:ghast_tear"
       ],
       "status": "owner_locked_reward_pool_pending_registry_and_balance",
       "reward_themes": [
@@ -1676,7 +2877,14 @@
         "minecraft:skeleton",
         "minecraft:wither_skeleton",
         "minecraft:witch",
-        "minecraft:enderman"
+        "minecraft:enderman",
+        "occultism:wild_husk",
+        "occultism:wild_spider",
+        "occultism:wild_skeleton",
+        "occultism:wild_zombie",
+        "occultism:wild_slime",
+        "occultism:wild_horde_creeper",
+        "occultism:wild_hunt_wither_skeleton"
       ],
       "reward_item_candidates": [
         "minecraft:skeleton_skull",
@@ -1740,40 +2948,100 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:blaze_powder",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ghast_tear",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:wither_skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:enderman",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:diamond",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "occultism:wild_husk",
+          "min": 4,
+          "max": 32
         },
         {
-          "type": "item",
-          "item": "minecraft:gold_block",
-          "min": 1,
-          "max": 64
+          "type": "entity",
+          "entity": "occultism:wild_spider",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "occultism:wild_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "occultism:wild_zombie",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "occultism:wild_slime",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "occultism:wild_horde_creeper",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "occultism:wild_hunt_wither_skeleton",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1782,9 +3050,10 @@
       "mod": "pastel",
       "name": "Pastel",
       "items": [
-        "pastel:topaz_shard",
-        "pastel:citrine_shard",
-        "minecraft:glass"
+        "minecraft:glass",
+        "minecraft:amethyst_shard",
+        "minecraft:glowstone_dust",
+        "minecraft:quartz"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1814,19 +3083,25 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "pastel:topaz_shard",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
-          "item": "pastel:citrine_shard",
-          "min": 4,
-          "max": 256
-        },
-        {
-          "type": "item",
           "item": "minecraft:glass",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glowstone_dust",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
           "min": 4,
           "max": 256
         }
@@ -1837,9 +3112,11 @@
       "mod": "primal-magick",
       "name": "Primal Magick",
       "items": [
-        "primalmagick:essence_dust_earth",
-        "primalmagick:essence_dust_sea",
-        "primalmagick:essence_dust_sky"
+        "minecraft:clay_ball",
+        "minecraft:kelp",
+        "minecraft:feather",
+        "minecraft:glowstone_dust",
+        "minecraft:quartz"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1875,19 +3152,31 @@
       "balance_objective_draft": [
         {
           "type": "item",
-          "item": "primalmagick:essence_dust_earth",
+          "item": "minecraft:clay_ball",
           "min": 4,
           "max": 256
         },
         {
           "type": "item",
-          "item": "primalmagick:essence_dust_sea",
+          "item": "minecraft:kelp",
           "min": 4,
           "max": 256
         },
         {
           "type": "item",
-          "item": "primalmagick:essence_dust_sky",
+          "item": "minecraft:feather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glowstone_dust",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
           "min": 4,
           "max": 256
         }
@@ -1900,7 +3189,11 @@
       "items": [
         "minecraft:redstone",
         "minecraft:gold_ingot",
-        "minecraft:iron_ingot"
+        "minecraft:iron_ingot",
+        "minecraft:lapis_lazuli",
+        "minecraft:quartz",
+        "minecraft:redstone_block",
+        "minecraft:diamond"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -1909,9 +3202,32 @@
         "Psigem"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "psi:psidust",
+        "psi:psimetal",
+        "psi:psigem"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "psi:psidust",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "psi:psimetal",
+          "min": 1,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "psi:psigem",
+          "min": 1,
+          "max": 2,
+          "rarity": "RARE"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -1930,8 +3246,33 @@
           "item": "minecraft:iron_ingot",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:redstone_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
         }
-      ]
+      ],
+      "reward_source_evidence": "VazkiiMods/Psi@0f21fab9ec0afe48c2bf4e45f2360547a7c322b3"
     },
     {
       "id": "roots_classic",
@@ -1940,14 +3281,20 @@
       "items": [
         "minecraft:oak_sapling",
         "minecraft:fern",
-        "minecraft:wheat"
+        "minecraft:wheat",
+        "minecraft:bone_meal",
+        "minecraft:oak_log",
+        "minecraft:birch_sapling",
+        "minecraft:spider_eye"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
         "Runic Focus",
         "ritual ingredients"
       ],
-      "kill_candidates": [],
+      "kill_candidates": [
+        "rootsclassic:phantom_skeleton"
+      ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
       "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
@@ -1969,6 +3316,36 @@
           "item": "minecraft:wheat",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:oak_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:birch_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "rootsclassic:phantom_skeleton",
+          "min": 4,
+          "max": 32
         }
       ]
     },
@@ -1979,7 +3356,11 @@
       "items": [
         "minecraft:paper",
         "minecraft:ink_sac",
-        "minecraft:feather"
+        "minecraft:feather",
+        "minecraft:leather",
+        "minecraft:book",
+        "minecraft:gold_ingot",
+        "minecraft:diamond"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -2007,6 +3388,30 @@
           "item": "minecraft:feather",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:leather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:book",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
         }
       ]
     },
@@ -2017,7 +3422,11 @@
       "items": [
         "minecraft:oak_log",
         "minecraft:feather",
-        "minecraft:leather"
+        "minecraft:leather",
+        "minecraft:stick",
+        "minecraft:string",
+        "minecraft:bone",
+        "minecraft:red_dye"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -2025,9 +3434,18 @@
         "rare ritual ingredients"
       ],
       "kill_candidates": [],
-      "reward_item_candidates": [],
-      "balance_reward_draft": [],
-      "balance_status": "owner_approved_themes_pending_exact_ids_and_quantities",
+      "reward_item_candidates": [
+        "totemic:buffalo_hide"
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "totemic:buffalo_hide",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "balance_status": "source_confirmed_item_models_pending_runtime_registry_and_balance",
       "balance_objective_draft": [
         {
           "type": "item",
@@ -2046,8 +3464,33 @@
           "item": "minecraft:leather",
           "min": 4,
           "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:stick",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:string",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:red_dye",
+          "min": 4,
+          "max": 256
         }
-      ]
+      ],
+      "reward_source_evidence": "TeamTotemic/Totemic@1a253b29815842aa4359d6118b8cd84cce3048a1"
     },
     {
       "id": "witchery_remake",
@@ -2056,7 +3499,12 @@
       "items": [
         "minecraft:bone",
         "minecraft:spider_eye",
-        "minecraft:sugar"
+        "minecraft:sugar",
+        "minecraft:glass_bottle",
+        "minecraft:oak_sapling",
+        "minecraft:egg",
+        "minecraft:ender_pearl",
+        "minecraft:ghast_tear"
       ],
       "status": "candidate_pending_registry_and_balance",
       "reward_themes": [
@@ -2066,7 +3514,11 @@
       ],
       "kill_candidates": [
         "minecraft:witch",
-        "minecraft:wither_skeleton"
+        "minecraft:wither_skeleton",
+        "witchery:banshee",
+        "witchery:poltergeist",
+        "witchery:nightmare",
+        "witchery:demon"
       ],
       "reward_item_candidates": [],
       "balance_reward_draft": [],
@@ -2091,16 +3543,70 @@
           "max": 256
         },
         {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:oak_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:egg",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ender_pearl",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ghast_tear",
+          "min": 4,
+          "max": 256
+        },
+        {
           "type": "entity",
           "entity": "minecraft:witch",
           "min": 4,
-          "max": 96
+          "max": 32
         },
         {
           "type": "entity",
           "entity": "minecraft:wither_skeleton",
           "min": 4,
-          "max": 96
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "witchery:banshee",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "witchery:poltergeist",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "witchery:nightmare",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "witchery:demon",
+          "min": 4,
+          "max": 32
         }
       ]
     }
@@ -2134,7 +3640,88 @@
         "ordinary Hexerei blood bottle",
         "ordinary Iron's blood vial; no special JAWR blood"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "items": [
+        "minecraft:glass_bottle",
+        "minecraft:rotten_flesh",
+        "minecraft:spider_eye",
+        "minecraft:bone"
+      ],
+      "kill_candidates": [
+        "minecraft:pillager",
+        "minecraft:vindicator",
+        "minecraft:witch",
+        "minecraft:evoker"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:pillager",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:vindicator",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:evoker",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "hexerei:blood_bottle",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "irons_spellbooks:blood_vial",
+          "min": 2,
+          "max": 6,
+          "rarity": "COMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "hexerei:blood_bottle",
+        "irons_spellbooks:blood_vial"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review"
     },
     {
       "id": "werewolf",
@@ -2146,7 +3733,109 @@
         "raw meat",
         "Eternal Beef ingredients"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "items": [
+        "minecraft:leather",
+        "minecraft:bone",
+        "minecraft:feather",
+        "minecraft:rabbit_hide"
+      ],
+      "kill_candidates": [
+        "minecraft:zombie",
+        "minecraft:skeleton",
+        "minecraft:spider",
+        "minecraft:hoglin"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:leather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:feather",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rabbit_hide",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:spider",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:hoglin",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:beef",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:porkchop",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:mutton",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:chicken",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:rabbit",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:beef",
+        "minecraft:porkchop",
+        "minecraft:mutton",
+        "minecraft:chicken",
+        "minecraft:rabbit"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review"
     },
     {
       "id": "lich_goety",
@@ -2158,7 +3847,69 @@
         "Soul Energy",
         "charged soul-storage items"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime",
+      "items": [
+        "minecraft:bone",
+        "minecraft:rotten_flesh",
+        "minecraft:soul_sand",
+        "minecraft:lapis_lazuli"
+      ],
+      "kill_candidates": [
+        "minecraft:skeleton",
+        "minecraft:wither_skeleton",
+        "minecraft:witch",
+        "goety:heretic"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:soul_sand",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:heretic",
+          "min": 4,
+          "max": 32
+        }
+      ]
     },
     {
       "id": "lich_jawr",
@@ -2169,7 +3920,62 @@
       "reward_themes": [
         "Soul in a Bottle"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime",
+      "items": [
+        "minecraft:glass_bottle",
+        "minecraft:bone",
+        "minecraft:soul_sand"
+      ],
+      "kill_candidates": [
+        "minecraft:pillager",
+        "minecraft:vindicator",
+        "minecraft:evoker",
+        "minecraft:witch"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:soul_sand",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:pillager",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:vindicator",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:evoker",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        }
+      ]
     },
     {
       "id": "archlich",
@@ -2180,7 +3986,62 @@
       "reward_themes": [
         "both lich resource types"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime",
+      "items": [
+        "minecraft:bone",
+        "minecraft:soul_sand",
+        "minecraft:glass_bottle"
+      ],
+      "kill_candidates": [
+        "minecraft:pillager",
+        "minecraft:wither_skeleton",
+        "minecraft:witch",
+        "goety:warlock"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:soul_sand",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:pillager",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "goety:warlock",
+          "min": 4,
+          "max": 32
+        }
+      ]
     },
     {
       "id": "dragon_cave",
@@ -2192,7 +4053,81 @@
         "charred meat",
         "charred seafood"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "items": [
+        "minecraft:raw_iron",
+        "minecraft:raw_copper",
+        "minecraft:coal",
+        "minecraft:quartz"
+      ],
+      "kill_candidates": [
+        "minecraft:blaze",
+        "minecraft:magma_cube",
+        "minecraft:hoglin"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:raw_iron",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_copper",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:coal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:quartz",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:magma_cube",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:hoglin",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "dragonsurvival:charred_meat",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "dragonsurvival:charred_seafood",
+          "min": 4,
+          "max": 12,
+          "rarity": "COMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "dragonsurvival:charred_meat",
+        "dragonsurvival:charred_seafood"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review"
     },
     {
       "id": "dragon_forest",
@@ -2205,7 +4140,102 @@
         "preserves",
         "allowed magical plant foods"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "items": [
+        "minecraft:oak_log",
+        "minecraft:birch_log",
+        "minecraft:oak_sapling",
+        "minecraft:bone_meal",
+        "minecraft:honeycomb"
+      ],
+      "kill_candidates": [
+        "minecraft:spider",
+        "minecraft:witch",
+        "minecraft:creeper"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:oak_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:birch_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:oak_sapling",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone_meal",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:honeycomb",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:spider",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:creeper",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:apple",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:sweet_berries",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:glow_berries",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 1,
+          "max": 3,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:apple",
+        "minecraft:sweet_berries",
+        "minecraft:glow_berries",
+        "minecraft:golden_carrot"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review"
     },
     {
       "id": "dragon_sea",
@@ -2218,7 +4248,88 @@
         "fish",
         "seaweed"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "items": [
+        "minecraft:prismarine_shard",
+        "minecraft:prismarine_crystals",
+        "minecraft:ink_sac",
+        "minecraft:seagrass"
+      ],
+      "kill_candidates": [
+        "minecraft:drowned",
+        "minecraft:guardian"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:prismarine_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:prismarine_crystals",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ink_sac",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:seagrass",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:drowned",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:guardian",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:cod",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:salmon",
+          "min": 8,
+          "max": 16,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:dried_kelp",
+          "min": 8,
+          "max": 24,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "aquaculture:sushi",
+          "min": 4,
+          "max": 8,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:cod",
+        "minecraft:salmon",
+        "minecraft:dried_kelp",
+        "aquaculture:sushi"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review"
     },
     {
       "id": "dracolich",
@@ -2230,7 +4341,55 @@
         "appropriate dragon foods",
         "applicable lich resources"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime",
+      "items": [
+        "minecraft:bone",
+        "minecraft:soul_sand",
+        "minecraft:obsidian"
+      ],
+      "kill_candidates": [
+        "minecraft:wither_skeleton",
+        "minecraft:phantom",
+        "minecraft:witch"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:soul_sand",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:phantom",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        }
+      ]
     },
     {
       "id": "abomination",
@@ -2242,28 +4401,469 @@
         "ordinary blood",
         "both lich resource types"
       ],
-      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime"
+      "reward_design_status": "owner_approved_first_pass_themes_pending_registry_and_runtime",
+      "items": [
+        "minecraft:glass_bottle",
+        "minecraft:bone",
+        "minecraft:ghast_tear",
+        "minecraft:obsidian"
+      ],
+      "kill_candidates": [
+        "minecraft:witch",
+        "minecraft:vindicator",
+        "minecraft:wither_skeleton",
+        "minecraft:blaze"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:glass_bottle",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:ghast_tear",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:vindicator",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        }
+      ]
     },
     {
       "id": "hunter",
       "name": "Hunter",
       "provider": "Progression path",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "items": [
+        "minecraft:bone",
+        "minecraft:spider_eye",
+        "minecraft:gunpowder",
+        "minecraft:phantom_membrane"
+      ],
+      "kill_candidates": [
+        "minecraft:creeper",
+        "minecraft:witch",
+        "minecraft:blaze",
+        "minecraft:wither_skeleton",
+        "ars_nouveau:wilden_guardian"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:spider_eye",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gunpowder",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:phantom_membrane",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:creeper",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:witch",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:wither_skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "ars_nouveau:wilden_guardian",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_hunter",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Hunter Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_stalker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Stalker Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_guardian",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Wilden Guardian Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_necromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Necromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_pyromancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Pyromancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cryomancer",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cryomancer Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_archevoker",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Archevoker Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_magehunter_vindicator",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Magehunter Vindicator Gateway",
+          "proposed_effort_emc": 2048
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_apothecarist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Apothecarist Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cultist",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cultist Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cursed_armor_stand",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Cursed Armor Stand Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_ice_spider",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Ice Spider Gateway",
+          "proposed_effort_emc": 1024
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_catacombs_zombie",
+          "min": 1,
+          "max": 1,
+          "name": "Complete the Catacombs Zombie Gateway",
+          "proposed_effort_emc": 1024
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:arrow",
+          "min": 16,
+          "max": 32,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:leather",
+          "min": 4,
+          "max": 8,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:arrow",
+        "minecraft:leather",
+        "minecraft:golden_carrot"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate",
+      "gateway_candidates": [
+        "tmm:mob_ars_wilden_hunter",
+        "tmm:mob_ars_wilden_stalker",
+        "tmm:mob_ars_wilden_guardian",
+        "tmm:mob_irons_necromancer",
+        "tmm:mob_irons_pyromancer",
+        "tmm:mob_irons_cryomancer",
+        "tmm:mob_irons_archevoker",
+        "tmm:mob_irons_magehunter_vindicator",
+        "tmm:mob_irons_apothecarist",
+        "tmm:mob_irons_cultist",
+        "tmm:mob_irons_cursed_armor_stand",
+        "tmm:mob_irons_ice_spider",
+        "tmm:mob_irons_catacombs_zombie"
+      ]
     },
     {
       "id": "monk",
       "name": "Monk",
       "provider": "Progression path",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "items": [
+        "minecraft:stone",
+        "minecraft:oak_log",
+        "minecraft:amethyst_shard",
+        "minecraft:obsidian"
+      ],
+      "kill_candidates": [
+        "minecraft:zombie",
+        "minecraft:skeleton",
+        "minecraft:blaze",
+        "minecraft:enderman"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:stone",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:oak_log",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:amethyst_shard",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:obsidian",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:skeleton",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:enderman",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 2,
+          "max": 4,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "minecraft:experience_bottle",
+          "min": 2,
+          "max": 6,
+          "rarity": "RARE"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:golden_carrot",
+        "minecraft:experience_bottle"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate"
     },
     {
       "id": "gilded",
       "name": "Gilded",
       "provider": "Progression path",
       "status": "held_pending_roster_and_decree_acquisition_recipe",
-      "acquisition": "form-specific crafting; no random acquisition"
+      "acquisition": "form-specific crafting; no random acquisition",
+      "items": [
+        "minecraft:gold_ingot",
+        "minecraft:gold_block",
+        "minecraft:raw_gold",
+        "minecraft:diamond"
+      ],
+      "kill_candidates": [
+        "minecraft:piglin_brute",
+        "minecraft:blaze",
+        "minecraft:ghast"
+      ],
+      "balance_objective_draft": [
+        {
+          "type": "item",
+          "item": "minecraft:gold_ingot",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:gold_block",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:raw_gold",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "item",
+          "item": "minecraft:diamond",
+          "min": 4,
+          "max": 256
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:piglin_brute",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:blaze",
+          "min": 4,
+          "max": 32
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:ghast",
+          "min": 4,
+          "max": 32
+        }
+      ],
+      "balance_reward_draft": [
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 2,
+          "max": 4,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "minecraft:golden_apple",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        },
+        {
+          "item": "minecraft:enchanted_golden_apple",
+          "min": 1,
+          "max": 1,
+          "rarity": "LEGENDARY"
+        }
+      ],
+      "reward_item_candidates": [
+        "minecraft:golden_carrot",
+        "minecraft:golden_apple",
+        "minecraft:enchanted_golden_apple"
+      ],
+      "balance_status": "draft_exact_item_payouts_pending_review",
+      "reward_design_status": "first_pass_quantities_pending_registry_and_form_gate"
     }
   ],
   "balance_draft": {
@@ -2311,13 +4911,78 @@
       "minecraft:phantom": 96,
       "minecraft:drowned": 48,
       "minecraft:slime": 32,
-      "minecraft:stray": 64
+      "minecraft:stray": 64,
+      "minecraft:husk": 64,
+      "minecraft:cave_spider": 64,
+      "ars_nouveau:wilden_hunter": 128,
+      "ars_nouveau:wilden_stalker": 128,
+      "ars_nouveau:wilden_guardian": 192,
+      "ars_elemental:air_mage": 128,
+      "ars_elemental:earth_mage": 128,
+      "ars_elemental:fire_mage": 128,
+      "ars_elemental:water_mage": 128,
+      "botania:manaseal_creeper": 128,
+      "eidolon_repraised:giant_skeleton": 192,
+      "eidolon_repraised:wraith": 128,
+      "eidolon_repraised:zombie_brute": 128,
+      "embers:ancient_golem": 128,
+      "evilcraft:netherfish": 128,
+      "evilcraft:poisonous_libelle": 128,
+      "goety:cryologer": 128,
+      "goety:storm_caster": 128,
+      "goety:warlock": 192,
+      "goety:heretic": 128,
+      "goety:bone_spider": 128,
+      "irons_spellbooks:apothecarist": 128,
+      "irons_spellbooks:archevoker": 192,
+      "irons_spellbooks:catacombs_zombie": 128,
+      "irons_spellbooks:cryomancer": 192,
+      "irons_spellbooks:cultist": 128,
+      "irons_spellbooks:cursed_armor_stand": 128,
+      "irons_spellbooks:ice_spider": 128,
+      "irons_spellbooks:magehunter_vindicator": 192,
+      "irons_spellbooks:necromancer": 192,
+      "irons_spellbooks:pyromancer": 192,
+      "neovitae:daemonium_corrodis": 192,
+      "neovitae:daemonium_doloris": 192,
+      "neovitae:daemonium_ignis": 192,
+      "neovitae:slime_vitae": 128,
+      "occultism:wild_husk": 128,
+      "occultism:wild_spider": 128,
+      "occultism:wild_skeleton": 128,
+      "occultism:wild_zombie": 128,
+      "occultism:wild_slime": 128,
+      "occultism:wild_horde_creeper": 128,
+      "occultism:wild_hunt_wither_skeleton": 128,
+      "rootsclassic:phantom_skeleton": 128,
+      "witchery:banshee": 128,
+      "witchery:poltergeist": 128,
+      "witchery:nightmare": 128,
+      "witchery:demon": 128,
+      "minecraft:pillager": 64,
+      "minecraft:vindicator": 64,
+      "minecraft:evoker": 64,
+      "minecraft:hoglin": 64,
+      "minecraft:magma_cube": 64,
+      "minecraft:guardian": 192,
+      "minecraft:piglin_brute": 64,
+      "minecraft:ghast": 64
     },
     "notes": "Tier floors are effort floors, not new ProjectE prices. Positive EMC value is still required. Reward-first, one reward and one filler preferred, native rarity weights and reputation. Lowest available reward tier never rep-gated, so boards cannot produce empty offers purely from reputation. Fixed quantity one-shot special reward output; premium-only decree uses difficult objectives rather than pretending rarity limits standalone board frequency.",
     "gateway_budget_emc_proposal": {
       "tmm:mob_ars_wilden_hunter": 1024,
       "tmm:mob_irons_cultist": 1024,
-      "tmm:mob_irons_pyromancer": 2048
+      "tmm:mob_irons_pyromancer": 2048,
+      "tmm:mob_ars_wilden_stalker": 1024,
+      "tmm:mob_ars_wilden_guardian": 1024,
+      "tmm:mob_irons_necromancer": 2048,
+      "tmm:mob_irons_cryomancer": 2048,
+      "tmm:mob_irons_archevoker": 2048,
+      "tmm:mob_irons_magehunter_vindicator": 2048,
+      "tmm:mob_irons_apothecarist": 1024,
+      "tmm:mob_irons_cursed_armor_stand": 1024,
+      "tmm:mob_irons_ice_spider": 1024,
+      "tmm:mob_irons_catacombs_zombie": 1024
     }
   },
   "board_distribution": {
@@ -2348,9 +5013,33 @@
     "credit": "native nearby players at success; carried matching bounty slips only; no open/wave/failure credit",
     "excluded": [
       "tmm:caerbannog",
-      "tmm:chaos_bunny"
+      "tmm:chaos_bunny",
+      "tmm:mob_ars_starbuncle",
+      "tmm:mob_ars_whirlisprig",
+      "tmm:mob_ars_drygmy",
+      "tmm:mob_irons_citadel_keeper"
     ],
     "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
     "source_revision": "9f36319a0b8d003e4b9a14c8c2e971ac8f863a2f"
+  },
+  "registry_reconciliation": {
+    "status": "historical_census_and_upstream_source_pass_pending_final_capture",
+    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
+    "entity_census": "docs/hunter/runtime-entity-census.csv",
+    "item_census": "docs/qa/surveys-2026-11-18/items.csv",
+    "entity_category_note": "Registration and MONSTER category only; explicit nonboss nonservant candidate screening, current shared mob registry and gameplay spawn/participation checks remain. No automatic boss or owned summon selection.",
+    "deferred_item_groups": [
+      "Mahou powdered catalyst exact ID",
+      "Roots ritual component exact ID",
+      "Scriptor four tome exact ID and any required components",
+      "JAWR Mutandis/Drop of Luck exact IDs",
+      "Forbidden Magic Soul in a Bottle exact ID",
+      "Goety charged soul storage component schema",
+      "Dracolich/Archlich/Abomination form inheritance and charged soul semantics",
+      "Eternal Beef ingredients",
+      "Forest preserves and enchanted plant foods whitelist",
+      "Malum spirits exact pinned 1.8.2 census check"
+    ],
+    "candidate_ids_absent_from_historical_entity_census": []
   }
 }

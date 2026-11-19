@@ -169,4 +169,21 @@ class TestBountifulCompiler(unittest.TestCase):
         r["approved_gateway_ids"]=[]
         with self.assertRaisesRegex(ValueError,"unreviewed finite gateway"):m.compile_candidate(C,A,r)
 
+    def test_candidate_objectives_and_locked_gateway_scope(self):
+        excluded=set(C["gateway_objective_policy"]["excluded"])
+        for family in C["general"]+C["schools"]+C["transformations"]:
+            rewards={r["item"] for r in family.get("balance_reward_draft",[])}
+            for row in family.get("balance_objective_draft",[]):
+                if row["type"]=="item":
+                    self.assertNotIn(row["item"],rewards)
+                    self.assertIn(row["item"],family["items"])
+                elif row["type"]=="entity":
+                    self.assertIn(row["entity"],family["kill_candidates"])
+                    self.assertIn(row["entity"],C["balance_draft"]["kill_budget_emc_proposal"])
+                elif row["type"]=="gateway":
+                    self.assertNotIn(row["gateway"],excluded)
+                    self.assertEqual((row["min"],row["max"]),(1,1))
+        occ=next(f for f in C["schools"] if f["id"]=="occultism")
+        self.assertEqual(set(r["item"] for r in occ["balance_reward_draft"]),set(occ["reward_item_candidates"]))
+
 if __name__=="__main__":unittest.main()

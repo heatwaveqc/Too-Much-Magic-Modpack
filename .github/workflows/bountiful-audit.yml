@@ -4,6 +4,7 @@ on:
     branches: [test/full-integration]
     paths:
       - scripts/audit_bountiful_artifacts.py
+      - scripts/audit_bountiful_catalog.py
       - scripts/compile_bountiful_contracts.py
       - tests/test_bountiful_contracts.py
       - manifest/bountiful-contract-candidates.json
@@ -20,6 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_bountiful_contracts.py
+      - run: python scripts/audit_bountiful_catalog.py
       - run: python scripts/audit_bountiful_artifacts.py > bountiful-audit.json
       - name: Record verified pin metadata (no binary output)
         run: |
