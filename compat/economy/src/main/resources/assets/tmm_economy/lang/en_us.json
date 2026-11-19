@@ -27,5 +27,9 @@
   "tmm_economy.mapper.forbidden_forge": "TMM Hephaestus Forge Mapper",
   "tmm_economy.mapper.forbidden_forge.tooltip": "Map ordinary item rituals and essence costs.",
   "tmm_economy.mapper.embers_machines": "TMM Embers Machine Mapper",
-  "tmm_economy.mapper.embers_machines.tooltip": "Map melting, mixing, stamping and ordinary alchemy including Ember."
+  "tmm_economy.mapper.embers_machines.tooltip": "Map melting, mixing, stamping and ordinary alchemy including Ember.",
+  "tmm_economy.mapper.goety_recipes": "TMM Goety Recipe Mapper",
+  "tmm_economy.mapper.goety_recipes.tooltip": "Map ordinary item rituals and machines including Soul Energy.",
+  "tmm_economy.mapper.primal_recipes": "TMM Primal Magick Recipe Mapper",
+  "tmm_economy.mapper.primal_recipes.tooltip": "Map ordinary arcane crafting and machines including elemental Mana."
 }
