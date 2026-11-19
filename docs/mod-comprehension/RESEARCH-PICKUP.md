@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ocultas workers and Soul Gem
+
+- Added ars-ocultas-pinned-spirit-transfer.md: fourtierregistration, manual/getItemsToPickUp vs40tickdrop/canPickupItem vsrawcapability channels; firstmatchingfullblocksothercandidate, jobupdate/agepath, adjacentresultremainder and native4jobrecipientends. GUI/filterpacket lacksmenudistanceownerchecks; SoulGemdataremovedbeforevalidation, jarblacklistFAILmissingreturn, fragileclearsmainhandregardlessusedhand. Knownlimitations notfix/compatapproval. Exactparentselected12classes+inners freshocultas-parent-fresh, all46addonclassesocultas-fresh.
+- **Next finish Ocultas**: final fullroute/guide/recipe/optionalworker+Altar/transmutation/transfer coverage matrix and actual3pilot40–42IDs/tasks/rewards; resolve apparent nativeTier4stabilizer route versus addonlegacypluralfile by linking currentOccultism profile/pinnedrecipe, don'tpromiselegacyloads. MetadataMinecraftrange discrepancy remainsknown/nonblockingperusercorrection, no launch. Allmajorbodyaudits nowtwo companions; don'tre-inventory recipes/Altar/worker/gem.
+-8complete34researching unchanged; no blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. AfterOcultasElemental/Elemancy/Additions,parentreview,remainingmajors. Gitlogactualhead/priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ocultas guide/recipes/Altar
 
 - ExactOcultas2.6.2 recovered fullSHA512matched82755bytes/46classesCFR externalocultas-fresh. Addedars-ocultas-pinned-altar-recipes.md withnativeguide registration,4singular recipes+1legacypluralstabilizerfile, reusableImbuementcatalystcorrection andAltar/bowlbothendflags. NativeOccultism1.227.0 hashrechecked+freshselectedbowl/recipe+inners oc ultas-parent-fresh(actualdirectoryocultas-parent-fresh). Altar300tickcadence/directlyabovebowl,5000Sourceprecheck/uncheckeddebit,jar/itemnotconsumed; bothwaitscannotclearinsamepass. NoSource/metadata/runtimefixapproval.

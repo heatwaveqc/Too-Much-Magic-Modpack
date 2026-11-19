@@ -395,3 +395,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Controle source-complete for pinned1.6.16 installedscope: consolidated4binarycompanions into guide/acquisition/fulloptionalcontrolroutes and3pilotcrosswalk; left-clickair Remote reset/nativeSelectionHUD path closed. Known native limitations retained, not gameplay approval. **8/42source-complete,34researching**; four Ars addon routes/finalparentreview remain.
 
 - 2026-11-19 — Ocultas exact2.6.2 guide/recipe/Altar companion:4currentrecipes+1legacypluralfile, reusable Imbuement catalysts, nativeJava guide and both-end nonconsuming ritual flag bridge. Spirit/SoulGem/finalroute audit remains;8complete34researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.

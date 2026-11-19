@@ -163,3 +163,6 @@ The current integration branch's Ars chapter contains the early generic orientat
 ## Direct-binary continuation — 2026-11-19
 
 [Guide/recipe/Altar companion](ars-ocultas-pinned-altar-recipes.md) supersedes older guide/catalyst/legacy-recipe assumptions. Exact82,755byteJAR/fullSHA512matched,46classes externally decompiled; native Occultism1.227.0 bowl/recipe freshly hash-rechecked/decompiled. Four singular recipe resources are current data; Tier4stabilizer file is plural legacy recipes, not proven active current override. Gem/transmutation/nativeguide and exact nonconsuming Altar flag bridge traced on both ends. Spirit job/Soul Gem and finalwalkthrough/pilot audit remain; researching,8/42overallcomplete. No runtime tests.
+
+
+[Spirit worker/output/Soul Gem binary companion](ars-ocultas-pinned-spirit-transfer.md) now covers all four registered tiers, distinct manual/drop/capability input predicates,40tick pickup/everytickjob, native age bypass and both-end event remainder handoff, GUI/filter state and exact gem destructive validation/fragile-hand ordering. Final route/pilot/legacy-resource consolidation remains. No runtime acceptance.
