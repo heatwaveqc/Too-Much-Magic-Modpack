@@ -127,3 +127,20 @@ E6a follow-through: exact census all hashes passed; source F&A native start toke
 E6a Occultism follow-through: exact manual bowl insertion scope, persisted operation UUID, true native item placement/entity insertion markers gated by actual recipe and book tier; 111 mapped straightforward outcome candidates, 2 mapped special outcomes held, 45 additional records held/excluded pending assessment. Roots native source remains pending. Source checks pending.
 
 E6a Roots follow-through: exact 1.5.10 expanded audit, manual native 0→200 ownership token, terminal original effect + altar clear, 43/46 explicit mappings with accepted item/summon or observable actual world/mob effects. Three held/excluded (aesthetic, imbuer, unsafe sacrifice); native Terra untouched. Native recipe restore absent on reload; no fabricated completion. Source CI pending; live validation outstanding. See BATCH-E6A-RITUAL-IMPLEMENTATION.md.
+
+## Batch E6 closeout — 2026-11-19
+
+**Source implementation complete for approved ritual reward scope; not installed/gameplay accepted.** The shared first/repeat ledger, actor and operation receipts, cancellation/failure guards, and paid-resource overlap boundaries are in place. Consolidated PR #347 is merged into the Progression development line; final Malum/Gaze slice is PR #375, runtime checkpoint `ce7b138648b6da43fd67996574b6444e54ebe9f4` (all seven applicable PR workflows green, including exact pinned artifact matrix, standalone core and shared-engine module compile/tests). See the detailed provider records; this closeout supersedes their interim “pending implementation” wording, not their unresolved live acceptance or held outcome cases.
+
+| Slice | Native provider coverage | Source status / evidence |
+| --- | --- | --- |
+| E6a | Forbidden & Arcanus, Occultism, Roots Classic | [Implementation](BATCH-E6A-RITUAL-IMPLEMENTATION.md): 22 forge recipes; 111 supported Occultism outcomes (113 mapped of 158, including two held specific outcomes); 43/46 Roots mapped. Held/excluded items remain non-awarding. |
+| E6b | Totemic, Eidolon, Enchanted, JAWR circles and brazier | [Implementation](BATCH-E6B-RITUAL-IMPLEMENTATION.md): all 150 classified, 144 mapped, six intentionally excluded. |
+| E6c | Primal Magick | [Implementation](BATCH-E6C-PRIMAL-RITUAL-IMPLEMENTATION.md): 76 native recipes mapped, 25 shared families. |
+| E6c | Goety + Cataclysm | [Implementation](BATCH-E6C-GOETY-RITUAL-IMPLEMENTATION.md): 407 eligible of 409 active native IDs; two Apostle summons excluded in favor of boss defeat; 336 obsolete plural-recipe records ignored. |
+| E6c | Astral Sorcery | [Implementation](BATCH-E6C-ASTRAL-RITUAL-IMPLEMENTATION.md): first personal constellation attunement, 3000/0, one family. |
+| E6c | Malum + Gaze | [Implementation](BATCH-E6C-MALUM-RITUAL-IMPLEMENTATION.md): 26 native totem families (500/0), 38 recipe-backed Geas families (1500/0; 36 Malum and two Gaze). Creed of the Blight Eater not a Soulbinding recipe; 26 Gaze effect types are not independent native rite identities. |
+
+Carry forward deliberate no-award/held candidates, including the two special Occultism outcomes, other unmapped Occultism families, Roots sacrifice (safety/outcome), and Pastel exceptional Fusion Shrine (unproven ceremony). Routine crafting/maintenance and paid-only Neo Vitae remain excluded. Do not expand scope or add new rates simply to close this batch.
+
+Next action: integrate the rebuilt shared Progression engine and exact mods in the next owner-authorized comprehensive candidate; verify actual mixin application, successful and failed terminal seams, player ownership, first/repeat and cross-provider/no-double-pay rules, reload/relog, and multiplayer. See [mandatory inclusion register](../../../docs/qa/LIVE-TEST-INCLUSION-REGISTER.md). No full smoke, integration assembly, or package authorized by this closeout.
