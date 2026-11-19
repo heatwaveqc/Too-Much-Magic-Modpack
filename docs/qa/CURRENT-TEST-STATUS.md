@@ -8,6 +8,10 @@
 **Last actual test run from this checklist:** **NONE**. No server smoke, new Prism build, or in-game test was run while setting up these documents.  
 **Next instruction to Codex:** read [the executable checklist](NEXT-TEST-CODEX-CHECKLIST.md), run only its quick/source tests when authorized to work, and append evidence here. Read `AGENTS.md` before any action.
 
+## Next build correction — 2026-11-19
+
+Dragon Survival and Bountiful are owner-required. The current integration lock lacks both; a pin-only PR restores exact Dragon Survival 2.0.74 and stages Bountiful/Kambrik 8.0.0-beta.2. See [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md). Existing Dracolich model/skin test must not be marked runnable until Dragon Survival and current Transformations JAR are actually present. Bountiful custom data (#365/#366), dependency runtime compatibility and all gameplay tests pending. No server/client test or package run.
+
 ## New inclusion requirement (owner correction, 2026-11-16)
 
 For the **next comprehensive live test**, every feature that any development chat/PR reported **"Ready for a live test"** must be **attempted for integration**. Historical `deferred_pending_runtime` is **not sufficient** to exclude a ready feature. The working inventory is [LIVE-TEST-INCLUSION-REGISTER.md](LIVE-TEST-INCLUSION-REGISTER.md), which explicitly reopens all 13 previously deferred runtime branches for re-review and tracks exact INCLUDED/BLOCKED/OWNER-DEFERRED outcomes.
