@@ -91,7 +91,7 @@ public final class ProgressionEvents {
             MechanicalEffects.kill(player,event);
         } else {
             // Scope-based credit is Hunter-only: no weapon, loot, general kill or other class procs.
-            ServerPlayer owner=OwnedMagicDamage.boundaryOwner(event.getEntity(),event.getSource());
+            ServerPlayer owner=OwnedMagicDamage.hunterOwner(event.getEntity(),event.getSource());
             if(owner!=null)HunterExperience.kill(owner,event.getEntity());
         }
     }

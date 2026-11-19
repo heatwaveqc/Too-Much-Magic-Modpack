@@ -17,6 +17,24 @@ class OwnedMagicDamageScopeTest {
         });
         assertNull(scope.owner("boundary",victim,source));
     }
+    @Test void independentProvidersNeverBorrowOwnership(){
+        var scope=new NativeAttackScope();
+        Object caster=new Object(),priest=new Object(),victim=new Object(),source=new Object();
+        scope.around("mahou_drain_life",caster,victim,source,()->{
+            assertSame(caster,scope.owner("mahou_drain_life",victim,source));
+            scope.around("neo_well_of_suffering",priest,victim,source,()->{
+                assertSame(priest,scope.owner("neo_well_of_suffering",victim,source));
+                assertNull(scope.owner("mahou_drain_life",victim,source));
+                assertNull(scope.owner("torment_nexus",victim,source));
+                return true;
+            });
+            assertSame(caster,scope.owner("mahou_drain_life",victim,source));
+            assertNull(scope.owner("neo_well_of_suffering",victim,source));
+            return true;
+        });
+        assertNull(scope.owner("mahou_drain_life",victim,source));
+        assertNull(scope.owner("neo_well_of_suffering",victim,source));
+    }
     @Test void nestingAndExceptionRestoreOwner(){
         var scope=new NativeAttackScope();
         Object first=new Object(),second=new Object(),victim=new Object(),source=new Object();

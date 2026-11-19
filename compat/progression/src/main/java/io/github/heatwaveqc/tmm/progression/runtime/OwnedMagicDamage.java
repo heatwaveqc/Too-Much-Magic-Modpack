@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 /** Server-only reward attribution across loaded dimensions, NOT a replacement for the native DamageSource. */
 public final class OwnedMagicDamage {
-    public static final String MAHOU_BOUNDARY="mahou_drain_life";
+    public static final String MAHOU_BOUNDARY="mahou_drain_life", NEO_WELL="neo_well_of_suffering";
     private static final NativeAttackScope SCOPE=new NativeAttackScope();
     private OwnedMagicDamage(){}
 
@@ -31,10 +31,20 @@ public final class OwnedMagicDamage {
         return SCOPE.around(kind,live(player,victim)?player:null,victim,source,original);
     }
 
-    /** Initial approved provider only. Native player credit always takes precedence. */
+    /** AS compatibility was approved only for the Boundary. */
     public static ServerPlayer boundaryOwner(LivingEntity victim,DamageSource source){
+        return owner(MAHOU_BOUNDARY,victim,source);
+    }
+
+    /** Only explicitly supported sources qualify for indirect Hunter rewards. */
+    public static ServerPlayer hunterOwner(LivingEntity victim,DamageSource source){
+        ServerPlayer boundary=boundaryOwner(victim,source);
+        return boundary!=null?boundary:owner(NEO_WELL,victim,source);
+    }
+
+    private static ServerPlayer owner(String kind,LivingEntity victim,DamageSource source){
         if(source.getDirectEntity() instanceof ServerPlayer||source.getEntity() instanceof ServerPlayer)return null;
-        Object candidate=SCOPE.owner(MAHOU_BOUNDARY,victim,source);
+        Object candidate=SCOPE.owner(kind,victim,source);
         return candidate instanceof ServerPlayer player&&live(player,victim)?player:null;
     }
 }
