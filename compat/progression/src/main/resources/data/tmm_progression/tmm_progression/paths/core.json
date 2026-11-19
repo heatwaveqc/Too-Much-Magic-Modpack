@@ -3,5 +3,236 @@
   "enrollment": "automatic",
   "xp_channel": "tmm_progression:mxp",
   "milestones": [],
-  "skills": []
+  "skills": [
+    {
+      "id": "tmm_progression:tmm_magic_reservoir_1",
+      "title": "Reservoir I",
+      "description": "Personal mana capacity across supported magic systems.",
+      "lane": "Universal Magic",
+      "max_rank": 5,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:max_mana",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "psi:total_psi",
+          "operation": "add_value",
+          "rank_values": [
+            990,
+            1980,
+            2970,
+            3960,
+            4950
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:tmm_magic_wellspring_1",
+      "title": "Wellspring I",
+      "description": "Personal mana and magical resource regeneration across supported systems.",
+      "lane": "Universal Magic",
+      "max_rank": 5,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:mana_regen",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "psi:regen",
+          "operation": "add_value",
+          "rank_values": [
+            4.95,
+            9.9,
+            14.85,
+            19.8,
+            24.75
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+          "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:tmm_magic_thrift_1",
+      "title": "Thrift I",
+      "description": "Native Goety and Neo Vitae cost reductions. Committed payment and upper-limit behavior still require gameplay verification.",
+      "lane": "Universal Magic",
+      "max_rank": 5,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "goety:soul_discount",
+          "operation": "add_value",
+          "rank_values": [
+            0.0594,
+            0.1188,
+            0.1782,
+            0.2376,
+            0.297
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "neovitae:sigil_cost_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            5.94,
+            11.88,
+            17.82,
+            23.76,
+            29.7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tmm_progression:tmm_magic_potency_1",
+      "title": "Potency I",
+      "description": "Personal spell power through supported native magic attributes.",
+      "lane": "Universal Magic",
+      "max_rank": 5,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tmm_progression:mxp",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "operation": "add_value",
+          "rank_values": [
+            0.99,
+            1.98,
+            2.97,
+            3.96,
+            4.95
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:spell_power",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "goety:spell_potency",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "eidolon_repraised:magic_power",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "Core Magic",
+  "description": "Universal magical advancement. Uses the shared MXP wallet."
 }
