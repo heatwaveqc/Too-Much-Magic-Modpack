@@ -93,6 +93,16 @@
       "packName": "elven_treehouse_trial",
       "constructionId": "elven_treehouse_trial",
       "grant": false
+    },
+    {
+      "id": "adventurers_inn",
+      "theme": "Bountiful / Guildhall / Brewing",
+      "source": "Original design, Bountiful office overlay",
+      "filename": "adventurers_inn.nbt",
+      "sha256": "1971852c41b470a82ec4c8d570c82312d7e901355473f4b6dce0e24218f25c40",
+      "packName": "adventurers_inn",
+      "constructionId": "adventurers_inn",
+      "grant": false
     }
   ],
   "pending": [
@@ -124,5 +134,5 @@
     "elven_garden",
     "spirit_shrine"
   ],
-  "note": "Elven treehouse is an alternate for the existing Botania slot, not an additional starter grant. Architecture previews only: no station/loot rewards, no production release or claimed compatibility."
+  "note": "Elven treehouse is an alternate for the existing Botania slot, not an additional starter grant. Architecture previews only: no station/loot rewards, no production release or claimed compatibility. The original Adventurer's Inn now has one owner-approved office Bountiful board plus Hunter's/general, Culinary and Fishing rank-one decrees (overlay CI 44635382606, hash in template row). Still QA preview only; no house grant activation or live gameplay."
 }
