@@ -1,0 +1,468 @@
+{
+  "schema_version": 1,
+  "status": "review_only_no_runtime_diet_change",
+  "provenance": {
+    "audited_branch": "feature/unified-kitchen",
+    "source_commit": "d7f4724e4494a80b9fc43d01b9ef6cf3fb7a017a",
+    "frozen_census": "1ae3aa4569294b8904e6bf156a73b779758832f3",
+    "workflow_run": 44634610019,
+    "workflow_job": 135949779306
+  },
+  "summary": {
+    "alcohol_candidates": 58,
+    "alcohol_uncertain": 10,
+    "by_priority": {
+      "high": 2,
+      "info": 1,
+      "medium": 18
+    },
+    "dragon_installed_namespace_missing_selectors": 2,
+    "dragon_optional_foreign_selectors": 219,
+    "dragon_regex_selectors": 7,
+    "dragon_stale_ids": 9,
+    "issues": 21,
+    "registry_count": 23681,
+    "review_items": 2151,
+    "runtime_changes": 0,
+    "source_only": true
+  },
+  "issues": [
+    {
+      "code": "dragon_regex_selector_runtime_review",
+      "consumer": "dragon_diets",
+      "evidence": {
+        "count": 7,
+        "selectors": [
+          {
+            "matched_registered_ids": 45,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodextended:.*(jelly|jam|preserve)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 5,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodcore:.*(jelly|jam|preserve)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 3,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodextended:.*(fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 2,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodcore:.*(fruitsalad|vegetablesalad|veggiesalad|gardensalad|applesauce|guacamole|salsa)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 91,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodextended:.*(juice|smoothie)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 12,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2foodcore:.*(juice|smoothie)item",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "matched_registered_ids": 47,
+            "nonfood_candidate_examples": [],
+            "selector": "pamhc2trees:(?!roasted|cooked)[a-z_]+item",
+            "species": "dragonsurvival:forest_dragon"
+          }
+        ]
+      },
+      "next_action": "Verify Dragon Survival pinned selector matcher semantics. Inspect matched items before changing regex; do not treat pattern text as a missing registry ID.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "dragon_stale_spectrum_selectors",
+      "consumer": "dragon_diets",
+      "evidence": {
+        "count": 9,
+        "selectors": [
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_star_candy",
+            "selector": "spectrum:enchanted_star_candy",
+            "species": "dragonsurvival:cave_dragon"
+          },
+          {
+            "candidate_in_registry": false,
+            "possible_new_id": "pastel:magnificent_star_candy",
+            "selector": "spectrum:magnificent_star_candy",
+            "species": "dragonsurvival:cave_dragon"
+          },
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_golden_carrot",
+            "selector": "spectrum:enchanted_golden_carrot",
+            "species": "dragonsurvival:cave_dragon"
+          },
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_star_candy",
+            "selector": "spectrum:enchanted_star_candy",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "candidate_in_registry": false,
+            "possible_new_id": "pastel:magnificent_star_candy",
+            "selector": "spectrum:magnificent_star_candy",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_golden_carrot",
+            "selector": "spectrum:enchanted_golden_carrot",
+            "species": "dragonsurvival:forest_dragon"
+          },
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_star_candy",
+            "selector": "spectrum:enchanted_star_candy",
+            "species": "dragonsurvival:sea_dragon"
+          },
+          {
+            "candidate_in_registry": false,
+            "possible_new_id": "pastel:magnificent_star_candy",
+            "selector": "spectrum:magnificent_star_candy",
+            "species": "dragonsurvival:sea_dragon"
+          },
+          {
+            "candidate_in_registry": true,
+            "possible_new_id": "pastel:enchanted_golden_carrot",
+            "selector": "spectrum:enchanted_golden_carrot",
+            "species": "dragonsurvival:sea_dragon"
+          }
+        ]
+      },
+      "next_action": "Reconcile exact Pastel item IDs with Dragon Survival map and pinned version; do not invent missing Magnificent candy or delete native exceptions. Run species consumption QA.",
+      "priority": "high",
+      "runtime_changed": false
+    },
+    {
+      "code": "dragon_missing_ids_installed_namespaces",
+      "consumer": "dragon_diets",
+      "evidence": {
+        "count": 2,
+        "examples": [
+          [
+            "dragonsurvival:forest_dragon",
+            "aquaculture:frog"
+          ],
+          [
+            "dragonsurvival:forest_dragon",
+            "aquaculture:frog_legs_raw"
+          ]
+        ]
+      },
+      "next_action": "Review authored selector IDs for enabled providers; historical name/registry differences are not grounds for bulk deletion.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "dragon_foreign_optional_selectors",
+      "consumer": "dragon_diets",
+      "evidence": {
+        "count": 219,
+        "examples": [
+          [
+            "dragonsurvival:cave_dragon",
+            "netherdepthsupgrade:blazefish"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "netherdepthsupgrade:blazefish_slice"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "netherdepthsupgrade:magmacubefish"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "netherdepthsupgrade:fortress_grouper"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "desolation:cinder_fruit"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "desolation:powered_cinder_fruit"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "desolation:activatedcharcoal"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "desolation:infused_powder"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "desolation:primed_ash"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "undergarden:ditchbulb"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "xreliquary:molten_core"
+          ],
+          [
+            "dragonsurvival:cave_dragon",
+            "mekanism:dust_coal"
+          ]
+        ]
+      },
+      "next_action": "Retain optional legacy coverage unless schema or data-map loading errors demonstrate harm; skip absent providers when evaluating runtime permission.",
+      "priority": "info",
+      "runtime_changed": false
+    },
+    {
+      "code": "jawr_blood_component_variants",
+      "consumer": "jawr_vampire",
+      "evidence": {
+        "item_id": "witchery:bottle_of_blood",
+        "same_item_multiple_marker_variants": true
+      },
+      "next_action": "Retain source-authoritative JAWR CHICKEN_BLOOD/VAMPIRE_BLOOD marker presence checks. Do not use generic food tags to authorize special blood or alter blood pool.",
+      "priority": "high",
+      "runtime_changed": false
+    },
+    {
+      "code": "magical_resource_use_unverified",
+      "consumer": "magical_nourishment",
+      "evidence": {
+        "item": "evilcraft:flesh_rejuvenated",
+        "species": [
+          "dragonsurvival:cave_dragon",
+          "dragonsurvival:forest_dragon",
+          "dragonsurvival:sea_dragon"
+        ]
+      },
+      "next_action": "Static map passes; live test one-time native mana/blood cost and no second nutrition/effect application.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "magical_resource_use_unverified",
+      "consumer": "magical_nourishment",
+      "evidence": {
+        "item": "botania:infinite_fruit",
+        "species": [
+          "dragonsurvival:cave_dragon",
+          "dragonsurvival:forest_dragon",
+          "dragonsurvival:sea_dragon"
+        ]
+      },
+      "next_action": "Static map passes; live test one-time native mana/blood cost and no second nutrition/effect application.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "everlasting_beef_versus_eternal_steak",
+      "consumer": "dragon_werewolf",
+      "evidence": {
+        "cave_beef": true,
+        "eternal_steak_in_any_species": false
+      },
+      "next_action": "Keep Everlasting Beef Cave-only exception separate from cooked Eternal Steak; preserve native reuse.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_tomato_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "tomato",
+        "missing_common_tag": [
+          "pamhc2crops:tomatoitem"
+        ],
+        "partial_slots": 65
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_onion_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "onion",
+        "missing_common_tag": [
+          "pamhc2crops:onionitem"
+        ],
+        "partial_slots": 70
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_cabbage_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "cabbage",
+        "missing_common_tag": [
+          "pamhc2crops:cabbageitem"
+        ],
+        "partial_slots": 84
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_rice_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "rice",
+        "missing_common_tag": [],
+        "partial_slots": 25
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_wheat_dough_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "wheat_dough",
+        "missing_common_tag": [
+          "pamhc2foodcore:doughitem"
+        ],
+        "partial_slots": 127
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_raw_pasta_gap",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "raw_pasta",
+        "missing_common_tag": [
+          "pamhc2foodcore:pastaitem"
+        ],
+        "partial_slots": 28
+      },
+      "next_action": "Tag support helps tag-aware recipes only. Review direct-ID recipes and processing quantities; do not globally rewrite outputs.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_milk_hold",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "milk",
+        "missing_common_tag": [],
+        "partial_slots": 51
+      },
+      "next_action": "Do not substitute different containers/quantities or whole fish and fillets. Test recipe remainder, serving amounts and yield.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "equivalence_raw_fillet_hold",
+      "consumer": "cooking",
+      "evidence": {
+        "group": "raw_fillet",
+        "missing_common_tag": [
+          "aquaculture:fish_fillet_raw"
+        ],
+        "partial_slots": 8
+      },
+      "next_action": "Do not substitute different containers/quantities or whole fish and fillets. Test recipe remainder, serving amounts and yield.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "alcohol_identity_and_effects",
+      "consumer": "alcohol",
+      "evidence": {
+        "candidates": 58,
+        "uncertain": 10,
+        "uncertain_ids": [
+          "beachparty:cocoa_cocktail",
+          "beachparty:coconut_cocktail",
+          "beachparty:honey_cocktail",
+          "beachparty:melon_cocktail",
+          "beachparty:pumpkin_cocktail",
+          "beachparty:sweetberries_cocktail",
+          "brewinandchewin:glittering_grenadine",
+          "brewinandchewin:kombucha",
+          "cocktailsdelight:mermaid_lemonade",
+          "cocktailsdelight:mulled_cider"
+        ]
+      },
+      "next_action": "Inspect native use/effects and component-aware beverages before granting alcohol permission; fermentation alone is not alcohol. Keep keg/cutting actions manual.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "mutagen_special_use",
+      "consumer": "progression_hunter",
+      "evidence": {
+        "id": "tmm_progression:mutagenic_brew",
+        "traits": [
+          "component_sensitive",
+          "mutagen",
+          "special_consumable"
+        ]
+      },
+      "next_action": "Only Progression owns transformation/mutation rewards; preserve native item-use, component, cooldown and side effects.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "mutagen_special_use",
+      "consumer": "progression_hunter",
+      "evidence": {
+        "id": "tmm_progression:bio_mutagen",
+        "traits": [
+          "mutagen",
+          "special_consumable_candidate"
+        ]
+      },
+      "next_action": "Only Progression owns transformation/mutation rewards; preserve native item-use, component, cooldown and side effects.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "magical_food_missing",
+      "consumer": "magical_nourishment",
+      "evidence": {
+        "missing_id": "pastel:magnificent_star_candy",
+        "related_present": [
+          "pastel:enchanted_star_candy",
+          "pastel:star_candy"
+        ]
+      },
+      "next_action": "Review actual provider item list for intended Magnificent effect; do not alias ordinary/enchanted candy automatically.",
+      "priority": "medium",
+      "runtime_changed": false
+    },
+    {
+      "code": "forms_precedence_live_qa",
+      "consumer": "jawr_werewolf_vampire_lich_dracolich",
+      "evidence": {
+        "diet_attribution": false,
+        "source_only": true
+      },
+      "next_action": "Test human, JAWR vampire/werewolf, both liches, dragon forms and hybrids with separate food and effect checks. No broad food-tag permission.",
+      "priority": "medium",
+      "runtime_changed": false
+    }
+  ]
+}
