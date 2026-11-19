@@ -87,7 +87,14 @@
     "JawrBestialCallMixin",
     "JawrRotRitualMixin",
     "JawrFamiliarBindRitualMixin",
-    "JawrFamiliarResurrectionMixin"
+    "JawrFamiliarResurrectionMixin",
+    "EnchantedBlightEffectMixin",
+    "EnchantedTransposeBlockEffectMixin",
+    "EnchantedFertilityEffectMixin",
+    "EnchantedEclipseEffectMixin",
+    "EnchantedSkyWrathEffectMixin",
+    "EnchantedFamiliarBindEffectMixin",
+    "EnchantedFamiliarSummonEffectMixin"
   ],
   "injectors": {
     "defaultRequire": 0

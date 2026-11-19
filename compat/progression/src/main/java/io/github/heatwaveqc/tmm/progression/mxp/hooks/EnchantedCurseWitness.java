@@ -13,6 +13,28 @@ public final class EnchantedCurseWitness{
         void tmm$markCurseMutation();
     }
     public record State(int count,long strength){}
+    public static boolean effectEligible(Object rite,ServerLevel level,String output){
+        if(!(rite instanceof Rite state)||level==null||!level.getServer().isSameThread())return false;
+        var receipt=state.tmm$curseReceipt();
+        if(receipt==null)return false;
+        var proof=E6bSpawnCatalog.enchanted(receipt.recipeId());
+        if(!E6bSpawnCatalog.enchantedEffect(proof)||!proof.nativeClass().equals(rite.getClass().getName())||!proof.output().equals(output))return false;
+        Object origin=MxpReflect.call(rite,"getLevel"),target=MxpReflect.field(rite,"targetLevel");
+        return (origin==level||target==level)&&receipt.actor().equals(MxpReflect.field(MxpReflect.field(rite,"params"),"caster"));
+    }
+    public static void effect(Object rite,ServerLevel level,String output,boolean actual){
+        if(actual&&effectEligible(rite,level,output))((Rite)rite).tmm$markCurseMutation();
+    }
+    public static java.util.UUID actor(Object rite){
+        return rite instanceof Rite s&&s.tmm$curseReceipt()!=null?s.tmm$curseReceipt().actor():null;
+    }
+    public static boolean familiar(Object rite,ServerLevel level,net.minecraft.world.entity.Entity entity){
+        java.util.UUID actor=actor(rite);
+        if(actor==null||!(entity instanceof net.minecraft.world.entity.TamableAnimal animal)||!actor.equals(animal.getOwnerUUID()))return false;
+        Object data=MxpReflect.staticCall("net.favouriteless.enchanted.common.enchanted.familiars.FamiliarSavedData","get",level);
+        Object entry=MxpReflect.call(data,"getEntry",actor);
+        return entity.getUUID().equals(MxpReflect.call(entry,"getUUID"));
+    }
     public static boolean eligible(Object rite,Object type,UUID target,ServerLevel level,boolean removing){
         if(!(rite instanceof Rite state)||state.tmm$curseReceipt()==null||target==null||level==null
             ||MxpReflect.call(rite,"getLevel")!=level||!level.getServer().isSameThread())return false;

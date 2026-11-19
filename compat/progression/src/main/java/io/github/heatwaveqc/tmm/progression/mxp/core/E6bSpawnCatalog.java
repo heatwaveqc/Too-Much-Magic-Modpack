@@ -23,7 +23,21 @@ public final class E6bSpawnCatalog {
         Map.entry("enchanted:curse_sinking",new Proof("enchanted:sinking","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.ApplyCurseRite",false,1,Band.CIRCLE_BASIC)),
         Map.entry("enchanted:remove_sinking",new Proof("enchanted:sinking","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.RemoveCurseRite",false,1,Band.CIRCLE_MAJOR)),
         Map.entry("enchanted:bind_talisman",new Proof("enchanted:circle_talisman","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindTalismanRite",true,1,Band.CIRCLE_MAJOR)),
-        Map.entry("enchanted:bind_talisman_charged",new Proof("enchanted:circle_talisman","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindTalismanRite",true,1,Band.CIRCLE_MAJOR))
+        Map.entry("enchanted:bind_talisman_charged",new Proof("enchanted:circle_talisman","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindTalismanRite",true,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath_charged",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath_blooded",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathEntityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath_blooded_charged",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathEntityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath_waystone",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathWaystoneRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:sky_wrath_waystone_charged",new Proof("minecraft:lightning_bolt","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SkyWrathWaystoneRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:total_eclipse",new Proof("enchanted:time","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TotalEclipseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:total_eclipse_charged",new Proof("enchanted:time","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TotalEclipseRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:blight",new Proof("enchanted:blight","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BlightRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:fertility",new Proof("enchanted:fertility","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.FertilityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:fertility_charged",new Proof("enchanted:fertility","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.FertilityRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:transpose_iron",new Proof("enchanted:transpose_blocks","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.TransposeBlocksRite",false,1,Band.CIRCLE_MAJOR)),
+        Map.entry("enchanted:bind_familiar",new Proof("enchanted:familiar_bind","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.BindFamiliarRite",false,1,Band.CIRCLE_EXCEPTIONAL)),
+        Map.entry("enchanted:summon_familiar",new Proof("enchanted:familiar_summon","net.favouriteless.enchanted.common.enchanted.circle_magic.rites.SummonFamiliarRite",false,1,Band.CIRCLE_BASIC))
     );
     private static final Map<String,Proof> EIDOLON=Map.ofEntries(
         Map.entry("eidolon_repraised:rituals/brazier_craft_sanguine_amulet",new Proof("eidolon_repraised:sanguine_amulet","alexthw.eidolon_repraised.common.ritual.CraftingRitual",true,1,Band.EIDOLON_MAJOR)),
@@ -55,6 +69,9 @@ public final class E6bSpawnCatalog {
     }
     private static void add(Map<String,RitualRewards.Rule> out,String id,Proof p){
         if(out.putIfAbsent(id,new RitualRewards.Rule(id,p.band()))!=null)throw new IllegalStateException("Duplicate ritual "+id);
+    }
+    public static boolean enchantedEffect(Proof p){
+        return p!=null&&(enchantedCurse(p)||(!p.item()&&p.nativeClass().startsWith("net.favouriteless.enchanted.common.enchanted.circle_magic.rites.")));
     }
     public static boolean enchantedCurse(Proof p){
         return p!=null&&(p.nativeClass().endsWith(".ApplyCurseRite")||p.nativeClass().endsWith(".RemoveCurseRite"));

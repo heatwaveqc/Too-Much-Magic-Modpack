@@ -63,7 +63,7 @@ class RitualSettlementTest {
         assertEquals(2000,RitualRewards.lookup("witchery:ritual/set_midnight").band().first());
     }
     @Test void enchantedAndEidolonUseDistinctNativeCatalogs(){
-        assertEquals(16,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
+        assertEquals(30,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
         assertEquals(22,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
         assertNotEquals(RitualRewards.lookup("enchanted:infuse_broom").family(),RitualRewards.lookup("witchery:ritual/apply_ointment").family());
         assertNotEquals(RitualRewards.lookup("enchanted:curse_misfortune").family(),RitualRewards.lookup("witchery:ritual/curse_of_misfortune").family());

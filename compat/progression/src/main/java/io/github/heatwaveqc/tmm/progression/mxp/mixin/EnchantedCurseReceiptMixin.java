@@ -28,7 +28,7 @@ public abstract class EnchantedCurseReceiptMixin implements EnchantedCurseWitnes
     }
     @Unique private ServerLevel tmm$level(){return MxpReflect.call(this,"getLevel") instanceof ServerLevel l?l:null;}
     @Unique private boolean tmm$matches(RitualRewards.Receipt r){
-        if(r==null||!tmm$supported()||!E6bSpawnCatalog.enchantedCurse(E6bSpawnCatalog.enchanted(r.recipeId()))||r.actor()==null||r.operation()==null)return false;
+        if(r==null||!tmm$supported()||!E6bSpawnCatalog.enchantedEffect(E6bSpawnCatalog.enchanted(r.recipeId()))||r.actor()==null||r.operation()==null)return false;
         ServerLevel level=tmm$level();
         return level!=null&&r.actor().equals(MxpReflect.field(MxpReflect.field(this,"params"),"caster"))
             &&r.recipeId().equals(E6bSpawnScope.enchantedId(level,MxpReflect.call(this,"getType")));

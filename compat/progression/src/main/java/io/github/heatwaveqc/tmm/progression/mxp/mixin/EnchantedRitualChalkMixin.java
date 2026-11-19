@@ -60,7 +60,7 @@ public abstract class EnchantedRitualChalkMixin implements E6bSpawnScope.Enchant
         RitualRewards.Receipt receipt=chalk.tmm$takeEnchanted(rite,level);
         var proof=receipt==null?null:E6bSpawnCatalog.enchanted(receipt.recipeId());
         if(proof==null){original.call(rite);return;}
-        if(E6bSpawnCatalog.enchantedCurse(proof)){
+        if(E6bSpawnCatalog.enchantedEffect(proof)){
             if(rite instanceof EnchantedCurseWitness.Rite state)state.tmm$bindCurseReceipt(receipt);
             original.call(rite);return;
         }
