@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Controle Remote/Linkage
+
+- Addedars-controle-pinned-remote-linkage.md coveringmainhand/sneaktarget/radialmode/lock/cornerdispatch and entity/blockorderdifference, clickedBreakEventvsremotepolicy, capabilityclass+blockblacklists, pass-throughcontextcache/crossdimensionlookup and redstoneoutput. Oldblanketcrossdimensionrejectioncorrected. NoSource/manadebitinthesemethods, notendpointfreeoperation. ClearingpacketknownbutexactUIgesturestillopen; don'tinventresetkey.7complete35researchingunchanged.
+- **NextControle3devices**: PortableBrazierRelayItem + AbstractRitual/RitualBrazierTile/EventQueue mixins/blacklist/Source/proxytile; ScrollHolderTileportalframe/source/control; WarpingSpellPrismTileprojectile/crossdim/CCconfiguration. Then RemoteclearUI/nativekeysource and fullwalkthrough/pilot/statusreview. All97classescontrole-fresh, exactartifactartifacts. Completedglyph/sensor and Remote/Linkage shouldn'tbereinventoried.
+- No blocker/hourlyactive,docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. ThenOcultas/Elemental/Elemancy/Additions,parentcombinedreview,othermajors. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ars Controle guide/glyph/sensor
 
 - ExactControle1.6.16 recoveredfullSHA512match,313828bytes,97classeswholeJARCFRexternalcontrole-fresh; all15recipesread. Newars-controle-pinned-glyphs-sensor.md sourcecoversnativeNotebookregistration,8filters+PreciseDelayacquisition/grammar/Y/RNG/timing andSensorformula/scheduling. Correctedno-addonpageclaim. Sensorgetterround(ms*15/50)withoutclamp; adaptivebinarysecondRandomaugmentsfromfirstindex/skipboundarydocumented.7complete35researchingunchanged.

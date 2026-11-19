@@ -15,7 +15,7 @@ Ars Controle adds spell-routing/control, remote configuration, fluid/item/energy
 
 | Feature | Inputs / operation | Result and limits | Pilot coverage |
 | --- | --- | --- | --- |
-| Remote | Crouch-use the Remote on a compatible Ars endpoint; radial menus select which endpoint is locked and single/multiple target selection. Use again on compatible targets; left-click air clears the target. | Remote Dominion-Wand-compatible configuration. README warns invalid and cross-dimension targets are rejected. | Pilot item quest; does not prove configuration. |
+| Remote | Crouch-use the Remote on a compatible Ars endpoint; radial menus select which endpoint is locked and single/multiple target selection. Use again on compatible targets; left-click air clears the target. | Remote Dominion-Wand-compatible configuration. Pinned binary resolves GlobalPos across server levels; invalid dimensions fail, while endpoint compatibility/loading determines useful operation. | Pilot item quest; does not prove configuration. |
 | Scryer's Linkage | Use Dominion Wand first on the target block, then on Linkage. | Remote connection for supported items, liquids, energy, redstone and other capabilities. Exact capability matrix varies by endpoint. | Not in pilot; must be checked against current pack machines. |
 | Temporal Stability Sensor | Place sensor and read with comparator; connect output to a reversible shutoff. | Higher redstone output means the world is closer to lagging; use it to stop optional farms. It signals load; it does not itself reduce lag. | Pilot item quest; does not prove comparator or cutoff works. |
 | Portable Brazier Relay | Craft and link to an operating Brazier. Keep original ritual brazier loaded and supplied with Source. | Carries supported ritual effects with the player; some rituals are blacklisted. | Pilot item quest; must test one allowed and one blacklisted ritual. |
@@ -45,3 +45,6 @@ Quest tasks must identify whether they detect an item, configured endpoint, tran
 ## Direct-binary continuation — 2026-11-19
 
 [Native guide/glyph/sensor companion](ars-controle-pinned-glyphs-sensor.md) now covers exact artifact/all15recipes, eightfilter+PreciseDelay acquisition and actual grammar/chance/Y/timing, plus comparator getter/scheduling. Native Java guide registration corrects earlier no-addon-page caveat. Five other device operation routes remain to audit; source-vs-runtime distinction keeps status researching. All97classes externally decompiled, fullSHA512matched.
+
+
+[Remote and Scryer's Linkage binary companion](ars-controle-pinned-remote-linkage.md) now traces mainhand/sneak/radial/lock/corner controls, perendpoint dispatch, event/credit limits, capability/context/cache/blacklist and redstone proxy contracts. Source supports crossdimension lookup; operation while unloaded and claims aren't promised. Three device branches and final UI/pilot review remain.
