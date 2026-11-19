@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     {
+      "id": "alexscaves:beholder_eye",
+      "required": false
+    },
+    {
       "id": "alexscaves:boat",
       "required": false
     },
@@ -38,6 +42,10 @@
       "required": false
     },
     {
+      "id": "alexscaves:dinosaur_spirit",
+      "required": false
+    },
+    {
       "id": "alexscaves:extinction_spear",
       "required": false
     },
@@ -54,6 +62,10 @@
       "required": false
     },
     {
+      "id": "alexscaves:floater",
+      "required": false
+    },
+    {
       "id": "alexscaves:frostmint_spear",
       "required": false
     },
@@ -62,11 +74,19 @@
       "required": false
     },
     {
+      "id": "alexscaves:gum_worm_segment",
+      "required": false
+    },
+    {
       "id": "alexscaves:gumball",
       "required": false
     },
     {
       "id": "alexscaves:ink_bomb",
+      "required": false
+    },
+    {
+      "id": "alexscaves:lanternfish",
       "required": false
     },
     {
@@ -82,6 +102,10 @@
       "required": false
     },
     {
+      "id": "alexscaves:mine_guardian_anchor",
+      "required": false
+    },
+    {
       "id": "alexscaves:moving_metal_block",
       "required": false
     },
@@ -91,6 +115,18 @@
     },
     {
       "id": "alexscaves:nuclear_explosion",
+      "required": false
+    },
+    {
+      "id": "alexscaves:quarry_smasher",
+      "required": false
+    },
+    {
+      "id": "alexscaves:radgill",
+      "required": false
+    },
+    {
+      "id": "alexscaves:raycat",
       "required": false
     },
     {
@@ -114,6 +150,10 @@
       "required": false
     },
     {
+      "id": "alexscaves:sweetish_fish",
+      "required": false
+    },
+    {
       "id": "alexscaves:tephra",
       "required": false
     },
@@ -123,6 +163,14 @@
     },
     {
       "id": "alexscaves:thrown_waste_drum",
+      "required": false
+    },
+    {
+      "id": "alexscaves:trilocaris",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tripodfish",
       "required": false
     },
     {
@@ -310,11 +358,27 @@
       "required": false
     },
     {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_familiar",
+      "required": false
+    },
+    {
       "id": "ars_elemental:flash_lightning",
       "required": false
     },
     {
       "id": "ars_elemental:flashing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashjack_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashjack_familiar",
       "required": false
     },
     {
@@ -343,6 +407,10 @@
     },
     {
       "id": "ars_elemental:phalanx_projectile",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:siren_familiar",
       "required": false
     },
     {
@@ -398,6 +466,14 @@
       "required": false
     },
     {
+      "id": "ars_nouveau:animated_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:animated_head",
+      "required": false
+    },
+    {
       "id": "ars_nouveau:archwood_boat",
       "required": false
     },
@@ -422,11 +498,27 @@
       "required": false
     },
     {
+      "id": "ars_nouveau:cinder",
+      "required": false
+    },
+    {
       "id": "ars_nouveau:drygmy",
       "required": false
     },
     {
+      "id": "ars_nouveau:dummy",
+      "required": false
+    },
+    {
       "id": "ars_nouveau:enchanted_falling_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanted_head_block",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:enchanted_mage_block",
       "required": false
     },
     {
@@ -506,6 +598,10 @@
       "required": false
     },
     {
+      "id": "ars_nouveau:scryer_camera",
+      "required": false
+    },
+    {
       "id": "ars_nouveau:spell_arrow",
       "required": false
     },
@@ -550,6 +646,10 @@
       "required": false
     },
     {
+      "id": "astralsorcery:illumination_spark",
+      "required": false
+    },
+    {
       "id": "astralsorcery:item_altar_input",
       "required": false
     },
@@ -570,7 +670,15 @@
       "required": false
     },
     {
+      "id": "astralsorcery:nocturnal_spark",
+      "required": false
+    },
+    {
       "id": "astralsorcery:shooting_star",
+      "required": false
+    },
+    {
+      "id": "astralsorcery:vivid_spark",
       "required": false
     },
     {
@@ -598,7 +706,23 @@
       "required": false
     },
     {
+      "id": "betterend:dragonfly",
+      "required": false
+    },
+    {
+      "id": "betterend:end_fish",
+      "required": false
+    },
+    {
+      "id": "betterend:silk_moth",
+      "required": false
+    },
+    {
       "id": "botania:babylon_weapon",
+      "required": false
+    },
+    {
+      "id": "botania:corporea_spark",
       "required": false
     },
     {
@@ -642,7 +766,15 @@
       "required": false
     },
     {
+      "id": "botania:player_mover",
+      "required": false
+    },
+    {
       "id": "botania:pool_minecart",
+      "required": false
+    },
+    {
+      "id": "botania:spark",
       "required": false
     },
     {
@@ -682,7 +814,15 @@
       "required": false
     },
     {
+      "id": "cataclysm:accretion",
+      "required": false
+    },
+    {
       "id": "cataclysm:amethyst_cluster_projectile",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ancient_desert_stele",
       "required": false
     },
     {
@@ -735,6 +875,10 @@
     },
     {
       "id": "cataclysm:ender_guardian_bullet",
+      "required": false
+    },
+    {
+      "id": "cataclysm:eye_of_dungeon",
       "required": false
     },
     {
@@ -806,6 +950,10 @@
       "required": false
     },
     {
+      "id": "cataclysm:player_ceraunus",
+      "required": false
+    },
+    {
       "id": "cataclysm:poison_dart",
       "required": false
     },
@@ -826,7 +974,15 @@
       "required": false
     },
     {
+      "id": "cataclysm:scylla_ceraunus",
+      "required": false
+    },
+    {
       "id": "cataclysm:sky_color",
+      "required": false
+    },
+    {
+      "id": "cataclysm:spark",
       "required": false
     },
     {
@@ -834,7 +990,15 @@
       "required": false
     },
     {
+      "id": "cataclysm:the_leviathan_tongue",
+      "required": false
+    },
+    {
       "id": "cataclysm:tidal_hook",
+      "required": false
+    },
+    {
+      "id": "cataclysm:tidal_tentacle",
       "required": false
     },
     {
@@ -886,11 +1050,55 @@
       "required": false
     },
     {
+      "id": "crittersandcompanions:dragonfly",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:dumbo_octopus",
+      "required": false
+    },
+    {
       "id": "crittersandcompanions:grappling_hook",
       "required": false
     },
     {
+      "id": "crittersandcompanions:koi_fish",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:ladybug",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:leaf_insect",
+      "required": false
+    },
+    {
       "id": "crittersandcompanions:mud_ball",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:roly_poly",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:sea_bunny",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:shima_enaga",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:snail",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:stick_bug",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:weevil",
       "required": false
     },
     {
@@ -934,6 +1142,10 @@
       "required": false
     },
     {
+      "id": "dragonsurvival:dummy_dragon",
+      "required": false
+    },
+    {
       "id": "dragonsurvival:generic_arrow_entity",
       "required": false
     },
@@ -946,7 +1158,19 @@
       "required": false
     },
     {
+      "id": "eidolon_repraised:chant_caster",
+      "required": false
+    },
+    {
       "id": "eidolon_repraised:necromancer_spell",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:raven",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:slimy_slug",
       "required": false
     },
     {
@@ -967,6 +1191,10 @@
     },
     {
       "id": "enchanted:broomstick",
+      "required": false
+    },
+    {
+      "id": "enchanted:familiar_cat",
       "required": false
     },
     {
@@ -1062,6 +1290,10 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:aethersent_golem",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:aethersent_meteor",
       "required": false
     },
@@ -1082,6 +1314,10 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:astral_golem",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:ball_lightning",
       "required": false
     },
@@ -1098,6 +1334,10 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:candlash",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:chain_of_souls",
       "required": false
     },
@@ -1110,11 +1350,27 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:crystal_cluster",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:crystallized_moth",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:energized_flame",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:energy_boomerang",
       "required": false
     },
     {
       "id": "eternal_starlight:energy_spark",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:eye_of_seeking",
       "required": false
     },
     {
@@ -1126,6 +1382,10 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:frozen_tube",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:gatekeeper_fireball",
       "required": false
     },
@@ -1134,11 +1394,27 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:gleech_egg",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:golem_laser_beam",
       "required": false
     },
     {
+      "id": "eternal_starlight:grimstone_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:luminofish",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:lunar_monstrosity_breath",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:lunar_spore",
       "required": false
     },
     {
@@ -1151,6 +1427,10 @@
     },
     {
       "id": "eternal_starlight:malarite_spear",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:orbital_planet",
       "required": false
     },
     {
@@ -1174,7 +1454,19 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:ratlin",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shadow_snail",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:shattered_blade",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shimmer_lacewing",
       "required": false
     },
     {
@@ -1282,6 +1574,10 @@
       "required": false
     },
     {
+      "id": "evilcraft:necromancers_head",
+      "required": false
+    },
+    {
       "id": "evilcraft:redstone_grenade",
       "required": false
     },
@@ -1350,7 +1646,15 @@
       "required": false
     },
     {
+      "id": "extrabotany:key_of_truth",
+      "required": false
+    },
+    {
       "id": "extrabotany:magic_landmine",
+      "required": false
+    },
+    {
+      "id": "extrabotany:motor",
       "required": false
     },
     {
@@ -1383,6 +1687,10 @@
     },
     {
       "id": "extrabotany:strengthen_slash",
+      "required": false
+    },
+    {
+      "id": "extrabotany:subspace",
       "required": false
     },
     {
@@ -1422,7 +1730,19 @@
       "required": false
     },
     {
+      "id": "farmingforblockheads:merchant",
+      "required": false
+    },
+    {
       "id": "feywild:autumn_leaf_projectile",
+      "required": false
+    },
+    {
+      "id": "feywild:fey_wings",
+      "required": false
+    },
+    {
+      "id": "feywild:moo_shroom_cow",
       "required": false
     },
     {
@@ -1474,6 +1794,10 @@
       "required": false
     },
     {
+      "id": "furniture:pells",
+      "required": false
+    },
+    {
       "id": "gateways:endless_gateway",
       "required": false
     },
@@ -1514,6 +1838,14 @@
       "required": false
     },
     {
+      "id": "ghosts:kodama",
+      "required": false
+    },
+    {
+      "id": "ghosts:small_ghost",
+      "required": false
+    },
+    {
       "id": "goety:acid_pool",
       "required": false
     },
@@ -1526,7 +1858,39 @@
       "required": false
     },
     {
+      "id": "goety:bear_servant",
+      "required": false
+    },
+    {
+      "id": "goety:beast_head",
+      "required": false
+    },
+    {
+      "id": "goety:berserk_fungus",
+      "required": false
+    },
+    {
       "id": "goety:biomine",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blackguard_variant_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blast_fungus",
+      "required": false
+    },
+    {
+      "id": "goety:blastling_servant",
+      "required": false
+    },
+    {
+      "id": "goety:blaze_servant",
       "required": false
     },
     {
@@ -1546,7 +1910,19 @@
       "required": false
     },
     {
+      "id": "goety:bone_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:border_wraith_servant",
+      "required": false
+    },
+    {
       "id": "goety:bouncy_bubble",
+      "required": false
+    },
+    {
+      "id": "goety:breeze_servant",
       "required": false
     },
     {
@@ -1562,7 +1938,19 @@
       "required": false
     },
     {
+      "id": "goety:brood_mother_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cairn_necromancer_servant",
+      "required": false
+    },
+    {
       "id": "goety:camera_shake",
+      "required": false
+    },
+    {
+      "id": "goety:cave_spider_servant",
       "required": false
     },
     {
@@ -1571,6 +1959,22 @@
     },
     {
       "id": "goety:corrupted_beam",
+      "required": false
+    },
+    {
+      "id": "goety:crusher_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cryologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:crypt_slime_servant",
+      "required": false
+    },
+    {
+      "id": "goety:cryptic_eye",
       "required": false
     },
     {
@@ -1586,6 +1990,10 @@
       "required": false
     },
     {
+      "id": "goety:delayed_summon",
+      "required": false
+    },
+    {
       "id": "goety:doppelganger",
       "required": false
     },
@@ -1598,7 +2006,23 @@
       "required": false
     },
     {
+      "id": "goety:drowned_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:drowned_servant",
+      "required": false
+    },
+    {
+      "id": "goety:earth_fist",
+      "required": false
+    },
+    {
       "id": "goety:effect_blast_trap",
+      "required": false
+    },
+    {
+      "id": "goety:elder_guardian_servant",
       "required": false
     },
     {
@@ -1606,7 +2030,19 @@
       "required": false
     },
     {
+      "id": "goety:enchanter_servant",
+      "required": false
+    },
+    {
       "id": "goety:ender_goo",
+      "required": false
+    },
+    {
+      "id": "goety:entangle_vines",
+      "required": false
+    },
+    {
+      "id": "goety:evoker_servant",
       "required": false
     },
     {
@@ -1646,11 +2082,43 @@
       "required": false
     },
     {
+      "id": "goety:frayed_servant",
+      "required": false
+    },
+    {
+      "id": "goety:frozen_zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:geomancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ghast_servant",
+      "required": false
+    },
+    {
       "id": "goety:ghost_arrow",
       "required": false
     },
     {
       "id": "goety:glacial_wall",
+      "required": false
+    },
+    {
+      "id": "goety:glow_light",
+      "required": false
+    },
+    {
+      "id": "goety:grave_golem",
+      "required": false
+    },
+    {
+      "id": "goety:guardian_servant",
+      "required": false
+    },
+    {
+      "id": "goety:gulf_tentacle",
       "required": false
     },
     {
@@ -1662,11 +2130,23 @@
       "required": false
     },
     {
+      "id": "goety:haunt",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor_servant",
+      "required": false
+    },
+    {
       "id": "goety:haunted_armor_stand",
       "required": false
     },
     {
       "id": "goety:haunted_broom",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_painting",
       "required": false
     },
     {
@@ -1698,11 +2178,35 @@
       "required": false
     },
     {
+      "id": "goety:heretic_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hoglin_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_core_summon",
+      "required": false
+    },
+    {
       "id": "goety:hurricane_cyclone",
       "required": false
     },
     {
       "id": "goety:hurricane_punch",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane_servant",
+      "required": false
+    },
+    {
+      "id": "goety:husk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ice_bouquet",
       "required": false
     },
     {
@@ -1722,7 +2226,27 @@
       "required": false
     },
     {
+      "id": "goety:iceologer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:icy_spider_servant",
+      "required": false
+    },
+    {
       "id": "goety:ill_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:imperial_guard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:irk_servant",
+      "required": false
+    },
+    {
+      "id": "goety:jungle_zombie_servant",
       "required": false
     },
     {
@@ -1754,11 +2278,43 @@
       "required": false
     },
     {
+      "id": "goety:magma_cube_servant",
+      "required": false
+    },
+    {
+      "id": "goety:master_fang",
+      "required": false
+    },
+    {
+      "id": "goety:maverick_servant",
+      "required": false
+    },
+    {
       "id": "goety:monsoon_cloud",
       "required": false
     },
     {
+      "id": "goety:mossy_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:mossy_skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:mountaineer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:muck_wraith_servant",
+      "required": false
+    },
+    {
       "id": "goety:necro_bolt",
+      "required": false
+    },
+    {
+      "id": "goety:necromancer_servant",
       "required": false
     },
     {
@@ -1767,6 +2323,18 @@
     },
     {
       "id": "goety:obsidian_monolith",
+      "required": false
+    },
+    {
+      "id": "goety:phantom_servant",
+      "required": false
+    },
+    {
+      "id": "goety:piker_servant",
+      "required": false
+    },
+    {
+      "id": "goety:pillager_servant",
       "required": false
     },
     {
@@ -1782,6 +2350,10 @@
       "required": false
     },
     {
+      "id": "goety:polar_bear_servant",
+      "required": false
+    },
+    {
       "id": "goety:prisoner",
       "required": false
     },
@@ -1790,11 +2362,23 @@
       "required": false
     },
     {
+      "id": "goety:raid_boss_summon",
+      "required": false
+    },
+    {
       "id": "goety:rain_arrow",
       "required": false
     },
     {
+      "id": "goety:rattled_servant",
+      "required": false
+    },
+    {
       "id": "goety:razor_wind",
+      "required": false
+    },
+    {
+      "id": "goety:reaper_servant",
       "required": false
     },
     {
@@ -1803,6 +2387,26 @@
     },
     {
       "id": "goety:redstone_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate_carry",
+      "required": false
+    },
+    {
+      "id": "goety:reprobate_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ripper_servant",
+      "required": false
+    },
+    {
+      "id": "goety:rogueguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:royal_guard_servant",
       "required": false
     },
     {
@@ -1830,11 +2434,35 @@
       "required": false
     },
     {
+      "id": "goety:signaler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_servant",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:slime_servant",
+      "required": false
+    },
+    {
       "id": "goety:smack_stone",
       "required": false
     },
     {
+      "id": "goety:snap_fungus",
+      "required": false
+    },
+    {
       "id": "goety:snareling_goop",
+      "required": false
+    },
+    {
+      "id": "goety:snareling_servant",
       "required": false
     },
     {
@@ -1854,11 +2482,19 @@
       "required": false
     },
     {
+      "id": "goety:soul_light",
+      "required": false
+    },
+    {
       "id": "goety:spell_lightning_bolt",
       "required": false
     },
     {
       "id": "goety:spider_egg",
+      "required": false
+    },
+    {
+      "id": "goety:spider_servant",
       "required": false
     },
     {
@@ -1874,11 +2510,43 @@
       "required": false
     },
     {
+      "id": "goety:storm_caster_servant",
+      "required": false
+    },
+    {
       "id": "goety:storm_util",
       "required": false
     },
     {
+      "id": "goety:stray_servant",
+      "required": false
+    },
+    {
+      "id": "goety:summon_apostle",
+      "required": false
+    },
+    {
+      "id": "goety:summon_circle",
+      "required": false
+    },
+    {
+      "id": "goety:summon_circle_boss",
+      "required": false
+    },
+    {
+      "id": "goety:summon_fiery",
+      "required": false
+    },
+    {
+      "id": "goety:sunken_skeleton_servant",
+      "required": false
+    },
+    {
       "id": "goety:surging_orb",
+      "required": false
+    },
+    {
+      "id": "goety:survey_eye",
       "required": false
     },
     {
@@ -1898,11 +2566,27 @@
       "required": false
     },
     {
+      "id": "goety:trampler_servant",
+      "required": false
+    },
+    {
       "id": "goety:trident_storm",
       "required": false
     },
     {
+      "id": "goety:tropical_slime_servant",
+      "required": false
+    },
+    {
       "id": "goety:updraft_blast",
+      "required": false
+    },
+    {
+      "id": "goety:vanguard_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vex_servant",
       "required": false
     },
     {
@@ -1914,11 +2598,23 @@
       "required": false
     },
     {
+      "id": "goety:vindicator_chef_servant",
+      "required": false
+    },
+    {
+      "id": "goety:vindicator_servant",
+      "required": false
+    },
+    {
       "id": "goety:vine_hook",
       "required": false
     },
     {
       "id": "goety:vizier_clone",
+      "required": false
+    },
+    {
+      "id": "goety:void_eye",
       "required": false
     },
     {
@@ -1946,7 +2642,27 @@
       "required": false
     },
     {
+      "id": "goety:warlock_servant",
+      "required": false
+    },
+    {
+      "id": "goety:watchling_servant",
+      "required": false
+    },
+    {
       "id": "goety:web_shot",
+      "required": false
+    },
+    {
+      "id": "goety:web_spider_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wind_caller_servant",
+      "required": false
+    },
+    {
+      "id": "goety:witch_servant",
       "required": false
     },
     {
@@ -1954,7 +2670,39 @@
       "required": false
     },
     {
+      "id": "goety:wither_necromancer_servant",
+      "required": false
+    },
+    {
+      "id": "goety:wither_skeleton_servant",
+      "required": false
+    },
+    {
       "id": "goety:wither_skull",
+      "required": false
+    },
+    {
+      "id": "goety:wraith_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_ravager",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_villager_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_brute_servant",
+      "required": false
+    },
+    {
+      "id": "goety:zpiglin_servant",
       "required": false
     },
     {
@@ -2102,6 +2850,10 @@
       "required": false
     },
     {
+      "id": "goety_cataclysm:leviathan_tongue",
+      "required": false
+    },
+    {
       "id": "goety_cataclysm:lionfish",
       "required": false
     },
@@ -2127,6 +2879,10 @@
     },
     {
       "id": "goety_cataclysm:sandstorm",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:storm_serpent",
       "required": false
     },
     {
@@ -2166,11 +2922,19 @@
       "required": false
     },
     {
+      "id": "golemoverhaul:candle_golem",
+      "required": false
+    },
+    {
       "id": "golemoverhaul:honey_blob",
       "required": false
     },
     {
       "id": "golemoverhaul:mud_ball",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:netherite_golem",
       "required": false
     },
     {
@@ -2191,6 +2955,14 @@
     },
     {
       "id": "hexerei:chest_boat",
+      "required": false
+    },
+    {
+      "id": "hexerei:crow",
+      "required": false
+    },
+    {
+      "id": "hexerei:owl",
       "required": false
     },
     {
@@ -2238,7 +3010,23 @@
       "required": false
     },
     {
+      "id": "irons_spellbooks:creeper_head",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king_corpse",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king_soul",
+      "required": false
+    },
+    {
       "id": "irons_spellbooks:debug_wizard",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:devour_jaw",
       "required": false
     },
     {
@@ -2310,7 +3098,15 @@
       "required": false
     },
     {
+      "id": "irons_spellbooks:firefly_swarm",
+      "required": false
+    },
+    {
       "id": "irons_spellbooks:frost_field",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:frozen_humanoid",
       "required": false
     },
     {
@@ -2331,6 +3127,10 @@
     },
     {
       "id": "irons_spellbooks:ice_spike",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_tomb",
       "required": false
     },
     {
@@ -2390,7 +3190,15 @@
       "required": false
     },
     {
+      "id": "irons_spellbooks:root",
+      "required": false
+    },
+    {
       "id": "irons_spellbooks:scapegoat",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:sculk_tentacle",
       "required": false
     },
     {
@@ -2470,6 +3278,10 @@
       "required": false
     },
     {
+      "id": "irons_spellbooks:undead_rift",
+      "required": false
+    },
+    {
       "id": "irons_spellbooks:visual_falling_block",
       "required": false
     },
@@ -2498,6 +3310,10 @@
       "required": false
     },
     {
+      "id": "mahoutsukai:authority_entity",
+      "required": false
+    },
+    {
       "id": "mahoutsukai:beam_mahoujin_entity",
       "required": false
     },
@@ -2506,11 +3322,19 @@
       "required": false
     },
     {
+      "id": "mahoutsukai:butterfly_entity",
+      "required": false
+    },
+    {
       "id": "mahoutsukai:explosion_mahoujin_entity",
       "required": false
     },
     {
       "id": "mahoutsukai:fallen_down_beam_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:fallen_down_entity",
       "required": false
     },
     {
@@ -2550,6 +3374,10 @@
       "required": false
     },
     {
+      "id": "mahoutsukai:mental_displacement_entity",
+      "required": false
+    },
+    {
       "id": "mahoutsukai:morgan_ball_entity",
       "required": false
     },
@@ -2558,11 +3386,19 @@
       "required": false
     },
     {
+      "id": "mahoutsukai:rho_aias_entity",
+      "required": false
+    },
+    {
       "id": "mahoutsukai:rhongomyniad_entity",
       "required": false
     },
     {
       "id": "mahoutsukai:smite_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:spatial_disorientation_entity",
       "required": false
     },
     {
@@ -2575,6 +3411,10 @@
     },
     {
       "id": "malum:ascending_block",
+      "required": false
+    },
+    {
+      "id": "malum:bound_rite_locus",
       "required": false
     },
     {
@@ -2598,11 +3438,31 @@
       "required": false
     },
     {
+      "id": "malum:natural_spirit",
+      "required": false
+    },
+    {
+      "id": "malum:pneuma_void",
+      "required": false
+    },
+    {
       "id": "malum:scythe_boomerang",
       "required": false
     },
     {
       "id": "malum:scythe_maelstrom",
+      "required": false
+    },
+    {
+      "id": "malum:seeking_rite_locus",
+      "required": false
+    },
+    {
+      "id": "malum:spellweavers_locus",
+      "required": false
+    },
+    {
+      "id": "malum:sundering_anchor",
       "required": false
     },
     {
@@ -2739,6 +3599,10 @@
       "required": false
     },
     {
+      "id": "occultism:afrit",
+      "required": false
+    },
+    {
       "id": "occultism:bat_familiar",
       "required": false
     },
@@ -2767,7 +3631,19 @@
       "required": false
     },
     {
+      "id": "occultism:demonic_husband",
+      "required": false
+    },
+    {
+      "id": "occultism:demonic_wife",
+      "required": false
+    },
+    {
       "id": "occultism:devil_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:djinni",
       "required": false
     },
     {
@@ -2776,6 +3652,10 @@
     },
     {
       "id": "occultism:fairy_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:foliot",
       "required": false
     },
     {
@@ -2795,7 +3675,15 @@
       "required": false
     },
     {
+      "id": "occultism:marid",
+      "required": false
+    },
+    {
       "id": "occultism:mummy_familiar",
+      "required": false
+    },
+    {
+      "id": "occultism:otherworld_bird",
       "required": false
     },
     {
@@ -2820,6 +3708,10 @@
     },
     {
       "id": "pastel:bident",
+      "required": false
+    },
+    {
+      "id": "pastel:bident_mirror_image",
       "required": false
     },
     {
@@ -2883,6 +3775,10 @@
       "required": false
     },
     {
+      "id": "pastel:living_marker",
+      "required": false
+    },
+    {
       "id": "pastel:mining_projectile",
       "required": false
     },
@@ -2916,6 +3812,10 @@
     },
     {
       "id": "primalmagick:forbidden_trident",
+      "required": false
+    },
+    {
+      "id": "primalmagick:friendly_witch",
       "required": false
     },
     {
@@ -3075,6 +3975,14 @@
       "required": false
     },
     {
+      "id": "primalmagick:sin_crash",
+      "required": false
+    },
+    {
+      "id": "primalmagick:sin_crystal",
+      "required": false
+    },
+    {
       "id": "primalmagick:spell_mine",
       "required": false
     },
@@ -3096,6 +4004,10 @@
     },
     {
       "id": "projecte:lens_projectile",
+      "required": false
+    },
+    {
+      "id": "projecte:mob_randomizer",
       "required": false
     },
     {
@@ -3183,11 +4095,19 @@
       "required": false
     },
     {
+      "id": "relics:death_essence",
+      "required": false
+    },
+    {
       "id": "relics:electric_spark",
       "required": false
     },
     {
       "id": "relics:falling_star",
+      "required": false
+    },
+    {
+      "id": "relics:glitchy_illusion",
       "required": false
     },
     {
@@ -3200,6 +4120,10 @@
     },
     {
       "id": "relics:leaves_block",
+      "required": false
+    },
+    {
+      "id": "relics:life_essence",
       "required": false
     },
     {
@@ -3224,6 +4148,10 @@
     },
     {
       "id": "relics:shockwave_block",
+      "required": false
+    },
+    {
+      "id": "relics:spore",
       "required": false
     },
     {
@@ -3268,6 +4196,10 @@
     },
     {
       "id": "reliquary:holy_hand_grenade",
+      "required": false
+    },
+    {
+      "id": "reliquary:kraken_slime",
       "required": false
     },
     {
@@ -3343,6 +4275,10 @@
       "required": false
     },
     {
+      "id": "the_bumblezone:electric_ring_entity",
+      "required": false
+    },
+    {
       "id": "the_bumblezone:honey_crystal_shard",
       "required": false
     },
@@ -3351,11 +4287,27 @@
       "required": false
     },
     {
+      "id": "the_bumblezone:purple_spike_entity",
+      "required": false
+    },
+    {
       "id": "the_bumblezone:sentry_watcher",
       "required": false
     },
     {
       "id": "the_bumblezone:thrown_stinger_spear",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_pig",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_rabbit",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_sheep",
       "required": false
     },
     {
@@ -3391,7 +4343,15 @@
       "required": false
     },
     {
+      "id": "tombstone:grave_guardian",
+      "required": false
+    },
+    {
       "id": "tombstone:spectral_bite",
+      "required": false
+    },
+    {
+      "id": "tombstone:spectral_wolf",
       "required": false
     },
     {
@@ -3412,6 +4372,10 @@
     },
     {
       "id": "twilightforest:charm_effect",
+      "required": false
+    },
+    {
+      "id": "twilightforest:cube_of_annihilation",
       "required": false
     },
     {
@@ -3483,6 +4447,10 @@
       "required": false
     },
     {
+      "id": "twilightforest:slider",
+      "required": false
+    },
+    {
       "id": "twilightforest:slime_blob",
       "required": false
     },
@@ -3523,6 +4491,10 @@
       "required": false
     },
     {
+      "id": "voidscape:null_servant_augment_block",
+      "required": false
+    },
+    {
       "id": "voidscape:null_servant_ichor_bolt",
       "required": false
     },
@@ -3535,7 +4507,15 @@
       "required": false
     },
     {
+      "id": "wardentools:contagion_incarnation_corpse",
+      "required": false
+    },
+    {
       "id": "wardentools:crystal_laser",
+      "required": false
+    },
+    {
+      "id": "wardentools:deeplurker",
       "required": false
     },
     {
@@ -3547,11 +4527,19 @@
       "required": false
     },
     {
+      "id": "wardentools:pale_wanderer",
+      "required": false
+    },
+    {
       "id": "wardentools:protector",
       "required": false
     },
     {
       "id": "wardentools:temper",
+      "required": false
+    },
+    {
+      "id": "winteroverhaul:robin",
       "required": false
     },
     {
@@ -3583,6 +4571,10 @@
       "required": false
     },
     {
+      "id": "witchery:hobgoblin",
+      "required": false
+    },
+    {
       "id": "witchery:huntsman_spear",
       "required": false
     },
@@ -3599,7 +4591,23 @@
       "required": false
     },
     {
+      "id": "witchery:owl",
+      "required": false
+    },
+    {
       "id": "witchery:scythe_thrown",
+      "required": false
+    },
+    {
+      "id": "witchery:sleeping_player",
+      "required": false
+    },
+    {
+      "id": "witchery:soul_shell_player",
+      "required": false
+    },
+    {
+      "id": "witchery:spectral_pig",
       "required": false
     },
     {
@@ -3620,6 +4628,10 @@
     },
     {
       "id": "witchery:thrown_potion",
+      "required": false
+    },
+    {
+      "id": "witchery:voodoo_poppet",
       "required": false
     }
   ]

@@ -510,7 +510,15 @@
       "required": false
     },
     {
+      "id": "endermanoverhaul:flower_fields_enderman",
+      "required": false
+    },
+    {
       "id": "endermanoverhaul:ice_spikes_enderman",
+      "required": false
+    },
+    {
+      "id": "endermanoverhaul:mushroom_fields_enderman",
       "required": false
     },
     {
@@ -570,6 +578,10 @@
       "required": false
     },
     {
+      "id": "eternal_starlight:luminaris",
+      "required": false
+    },
+    {
       "id": "eternal_starlight:lunar_monstrosity",
       "required": false
     },
@@ -611,6 +623,10 @@
     },
     {
       "id": "eternal_starlight:tiny_creteor",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:twilight_gaze",
       "required": false
     },
     {
@@ -1121,6 +1137,7 @@
     "minecraft:guardian",
     "minecraft:hoglin",
     "minecraft:husk",
+    "minecraft:illusioner",
     "minecraft:llama",
     "minecraft:magma_cube",
     "minecraft:panda",
@@ -1639,6 +1656,14 @@
     },
     {
       "id": "wardentools:contagion_incarnation",
+      "required": false
+    },
+    {
+      "id": "wardentools:crystal_golem",
+      "required": false
+    },
+    {
+      "id": "wardentools:noctilure",
       "required": false
     },
     {
