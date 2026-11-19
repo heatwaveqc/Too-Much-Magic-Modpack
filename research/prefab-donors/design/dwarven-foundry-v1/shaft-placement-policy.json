@@ -1,8 +1,8 @@
 {
-  "status": "REQUIRED_PLACEMENT_EXTENSION_NOT_IMPLEMENTED",
+  "status": "STOCK_DEPTH_ACCEPTED_INTEGRATION_PENDING",
   "onlyHouse": "dwarven_foundry",
   "otherHouses": false,
-  "stockShaft": false,
+  "stockShaft": true,
   "localSurfaceY": 3,
   "hatch": [
     24,
@@ -32,11 +32,10 @@
     "customAddon": "9ed295e1d3f9ca5f5b55eb18863a4c468c47d5f6"
   },
   "requirements": [
-    "Server-side one-shot claim; only Dwarven Foundry. Preserve bedrock, claims, player builds, block entities, portals and all denied/unbreakable blocks; preflight whole volume and fail safely, no partial unsafe shaft.",
-    "Rotation: transform hatch, ladder backing and world footprint with same placement transform as structure; start below lowest template ladder. Derive vertical extent from actual world getMinBuildHeight and local bedrock; not fixed depth; Overworld only unless explicit equivalent approved.",
-    "Find actual suitable natural bedrock near shaft bottom. Stop ladder access at safe walkable landing above intact bedrock. Reserve at least 11x11 usable chamber with safe roof/walls and lateral access to natural 3x3 bore site; candidate must have required natural bedrock contacts underneath blade footprint, no artificial bedrock, no assumed flat layer. If no safe candidate nearby, fail preflight / prompt relocation, no shaft drops.",
-    "Seal fluid/cave exposures and shaft with ordinary safe blocks, continuous ladder backing, lighting and closed top hatch; prevent fall and lava/water. Avoid replacing natural bedrock or fabricating ores; do not deposit excavation drops or generate chest loot. No new bore or machinery.",
-    "No stock optional mineshaft chest, and stock mineshaft disabled for all custom houses. Other starter houses (including stock generic) must not expose/enable shaft option; actual config/patch scope pending QA.",
-    "Validate terrain envelope inside mountain/cave, only exposed front opening, world height limits, protection/permission and performance; actual tested placement and rollback required before release."
-  ]
+    "Owner accepted stock Prefab starting mineshaft depth (minBuildHeight+21, standard Overworld Y -43); player excavates the remaining distance and establishes natural bedrock Bore site. No custom bedrock-reaching extension or bottom Bore chamber required.",
+    "Use existing stock shaft implementation if compatible with custom housing placement, or an equivalent stock-depth integration; do not assume standalone custom NBT automatically invokes StructureHouse. Only Dwarven Foundry, no shaft for other starter houses.",
+    "Explicitly use the marked hatch at local (24,3,32), not the first decorative/service trapdoor. Apply placement rotation to hatch and ladder backing; avoid competing stock auto-selection. Verify actual depth and connection to top ladder.",
+    "Server-side one-shot claim, claim/protection checks, safe fluid containment, preserved bedrock and player structures. Disable optional mineshaft chest; no free excavation-loot reward. Validate actual stock behavior and permissions before release."
+  ],
+  "bedrockReachRequired": false
 }

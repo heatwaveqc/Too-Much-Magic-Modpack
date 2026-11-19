@@ -44,10 +44,12 @@
     ],
     "templateMinY": 0,
     "ladderFacing": "south",
-    "dynamicRequired": true,
+    "dynamicRequired": false,
     "enabledFor": "dwarven_foundry",
     "defaultForOtherHouses": false,
-    "stockPrefabMinimum": "minBuildHeight+21"
+    "stockPrefabMinimum": "minBuildHeight+21",
+    "stockDepthAccepted": true,
+    "bedrockReachRequired": false
   },
   "zones": [
     {
@@ -160,8 +162,8 @@
   ],
   "facadeChecks": 1666,
   "limitations": [
-    "Only fixed shell and shaft-head built; dynamic shaft and natural bedrock chamber are placement-hook requirements, not implemented runtime.",
-    "Stock Prefab shaft terminates minBuildHeight+21, and optional chest collects excavated resources; do not enable stock behavior blindly.",
+    "Only fixed shell and shaft-head built; owner accepts stock-depth shaft, custom bedrock extension and Bore chamber no longer required; actual Foundry-only shaft integration pending.",
+    "Stock Prefab shaft terminates minBuildHeight+21 (owner accepted); disable optional excavation chest, target explicit hatch and verify compatibility with custom placement.",
     "Wall/roof enclosure geometry checked, terrain/anchor/rotation/claims/fluid containment and actual movement pending in-game.",
     "Exact Embers source dimensions verified for MechEdge machines; full machine chaining and Theurgy exact pin geometry pending, no devices supplied.",
     "Caminite decorative cost, all deepslate/copper recoverable mass and material parity pending; no Archaic Bricks, Ember product or research bypass.",
