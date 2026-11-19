@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "status": "review_only_no_runtime_permissions",
+  "tag_traits": {
+    "c:foods/bread": [
+      "prepared_meal",
+      "bread"
+    ],
+    "c:foods/pie": [
+      "prepared_meal",
+      "pastry"
+    ],
+    "c:foods/cookie": [
+      "prepared_meal",
+      "dessert"
+    ],
+    "c:foods/candy": [
+      "prepared_meal",
+      "dessert"
+    ],
+    "c:foods/soup": [
+      "prepared_meal",
+      "soup"
+    ],
+    "c:foods/stew": [
+      "prepared_meal",
+      "soup"
+    ],
+    "c:foods/salad": [
+      "prepared_meal",
+      "salad"
+    ],
+    "c:foods/sandwich": [
+      "prepared_meal",
+      "sandwich"
+    ],
+    "c:foods/pizza": [
+      "prepared_meal"
+    ],
+    "c:foods/edible_when_placed": [
+      "placed_food"
+    ],
+    "c:foods/food_poisoning": [
+      "hazardous"
+    ],
+    "c:drinks": [
+      "beverage"
+    ],
+    "c:drinks/tea": [
+      "beverage",
+      "tea"
+    ],
+    "c:drinks/coffee": [
+      "beverage",
+      "coffee"
+    ],
+    "c:drinks/juice": [
+      "beverage",
+      "juice"
+    ],
+    "c:drinks/alcoholic": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "c:drinks/alcohol": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "c:drinks/beer": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "c:drinks/wine": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "c:drinks/spirits": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "c:drinks/milk": [
+      "beverage",
+      "milk"
+    ],
+    "brewinandchewin:fermented_drinks": [
+      "beverage",
+      "fermented"
+    ],
+    "brewinandchewin:distillates": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "brewinandchewin:wines": [
+      "beverage",
+      "alcohol_candidate"
+    ],
+    "tmm:food/charred": [
+      "charred"
+    ],
+    "tmm:food/gilded": [
+      "gilded_food"
+    ]
+  },
+  "exact_hints": {
+    "minecraft:bread": [
+      "prepared_meal",
+      "bread"
+    ],
+    "minecraft:cake": [
+      "prepared_meal",
+      "placed_food",
+      "dessert"
+    ],
+    "minecraft:cookie": [
+      "prepared_meal",
+      "dessert"
+    ],
+    "minecraft:pumpkin_pie": [
+      "prepared_meal",
+      "pastry"
+    ],
+    "minecraft:mushroom_stew": [
+      "prepared_meal",
+      "soup"
+    ],
+    "minecraft:rabbit_stew": [
+      "prepared_meal",
+      "soup"
+    ],
+    "minecraft:beetroot_soup": [
+      "prepared_meal",
+      "soup"
+    ],
+    "minecraft:suspicious_stew": [
+      "prepared_meal",
+      "soup",
+      "special_effect_candidate"
+    ],
+    "minecraft:honey_bottle": [
+      "beverage"
+    ],
+    "minecraft:potion": [
+      "potion",
+      "special_consumable"
+    ],
+    "minecraft:experience_bottle": [
+      "nonfood_throwable"
+    ],
+    "minecraft:golden_apple": [
+      "gilded_food"
+    ],
+    "minecraft:enchanted_golden_apple": [
+      "gilded_food",
+      "special_effect_candidate"
+    ],
+    "minecraft:golden_carrot": [
+      "gilded_food"
+    ],
+    "pastel:enchanted_golden_carrot": [
+      "magical_nourishment",
+      "gilded_food",
+      "special_effect_candidate"
+    ],
+    "pastel:enchanted_star_candy": [
+      "magical_nourishment_candidate",
+      "special_effect_candidate"
+    ],
+    "pastel:star_candy": [
+      "special_effect_candidate"
+    ],
+    "pastel:magnificent_star_candy": [
+      "magical_nourishment_candidate",
+      "special_effect_candidate"
+    ],
+    "aquaculture:sushi": [
+      "prepared_meal",
+      "grain_free_seafood_candidate"
+    ],
+    "dragonsurvival:seasoned_fish": [
+      "prepared_meal",
+      "grain_free_seafood_candidate"
+    ],
+    "witchery:bottle_of_blood": [
+      "blood",
+      "component_sensitive",
+      "special_consumable"
+    ],
+    "irons_spellbooks:blood_vial": [
+      "blood",
+      "medicinal",
+      "special_consumable"
+    ],
+    "hexerei:blood_bottle": [
+      "blood",
+      "medicinal",
+      "special_consumable"
+    ],
+    "evilcraft:flesh_rejuvenated": [
+      "magical_nourishment",
+      "reusable_food",
+      "resource_cost_candidate"
+    ],
+    "botania:infinite_fruit": [
+      "magical_nourishment",
+      "reusable_food",
+      "resource_cost_candidate"
+    ],
+    "botania:mana_cookie": [
+      "magical_nourishment"
+    ],
+    "artifacts:everlasting_beef": [
+      "magic_meat",
+      "reusable_food"
+    ],
+    "artifacts:eternal_steak": [
+      "reusable_food",
+      "magic_meat"
+    ],
+    "dragonsurvival:charged_soup": [
+      "native_special"
+    ],
+    "dragonsurvival:charged_coal": [
+      "native_special"
+    ],
+    "tmm_progression:bio_mutagen": [
+      "mutagen",
+      "special_consumable_candidate"
+    ],
+    "tmm_progression:mutagenic_brew": [
+      "mutagen",
+      "special_consumable",
+      "component_sensitive"
+    ]
+  },
+  "notes": [
+    "Exact ID hints are screened against frozen census. No automatic alias or effects mapping.",
+    "Fermenting is production evidence, not alcohol proof; wine/distillate tags are producer evidence only.",
+    "Name rules only propose a review label for culinary candidates; never grant a consumer permission.",
+    "Blood item identity is not ordinary blood eligibility; preserve JAWR component gate."
+  ]
+}

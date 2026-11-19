@@ -38,3 +38,7 @@ Reproducible rules in batch-1-3-rules-v1.json and scripts/classify_food_batches.
 
 
 Results: [First three batches](BATCH-1-3-SURVEY.md) completed offline; durable review overlay and equivalent-ingredient audit are checked in. 256 provisional / 90 targeted, no runtime effect. See exact frozen evidence and remaining holds there.
+
+
+## Complete first-pass screen (batches 4–6)
+`batch-4-6-rules-v1.json` and `scripts/complete_food_first_pass.py` join the earlier agricultural/animal/intermediate overlay to the frozen census, then classify prepared meals, beverage/alcohol and supernatural or otherwise special items. Native tags and exact IDs take precedence; broad culinary outputs and namespace-scoped name hints are review-only, not food proof. All earlier review flags are retained; every registered ID is screened. Generic labels do not require manual review unless a consumer decision requires a more specific classification. Alcohol candidate evidence is explicitly separated from fermentation (kegs can make nonalcoholic solids). Preserve JAWR's component-sensitive blood variants, resource costs, special use and the Gilded/charred exact tags; no runtime permission or tag generation. Full native FOOD components and custom-use survey remain pending. This pass does not modify recipes, diet mechanics, quests, Packwiz or player state. CI produces full JSONL and compact review output.

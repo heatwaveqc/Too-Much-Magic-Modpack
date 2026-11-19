@@ -7,6 +7,8 @@ on:
       - 'scripts/build_food_review.py'
       - 'scripts/audit_gilded_foods.py'
       - 'scripts/classify_food_batches.py'
+      - 'scripts/complete_food_first_pass.py'
+      - 'tests/test_food_first_pass.py'
       - 'tests/test_food_batches.py'
       - 'tests/test_food_review.py'
       - 'kubejs/data/tmm/tags/item/food/**'
@@ -44,6 +46,7 @@ jobs:
           cat "$RUNNER_TEMP/food-review/summary.json"
           python scripts/audit_gilded_foods.py --capture "$RUNNER_TEMP/food-census/capture.gz" --review "$RUNNER_TEMP/food-review/food-review.jsonl" --output "$RUNNER_TEMP/food-review/gilded-audit.json"
           python scripts/classify_food_batches.py --capture "$RUNNER_TEMP/food-census/capture.gz" --review "$RUNNER_TEMP/food-review/food-review.jsonl" --output "$RUNNER_TEMP/food-review"
+          python scripts/complete_food_first_pass.py --review "$RUNNER_TEMP/food-review/food-review.jsonl" --earlier "$RUNNER_TEMP/food-review/batch-1-3-review.jsonl" --output "$RUNNER_TEMP/food-review"
       - uses: actions/upload-artifact@v4
         with:
           name: frozen-food-review
