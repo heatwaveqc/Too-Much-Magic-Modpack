@@ -84,3 +84,16 @@ type="optional"
 versionRange="[1.79.0,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.tmm_economy]]
+modId="forbidden_arcanus"
+type="optional"
+versionRange="[2.6.1,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.tmm_economy]]
+modId="embers"
+type="optional"
+versionRange="[1.21.1-1.5.9,)"
+ordering="AFTER"
+side="BOTH"

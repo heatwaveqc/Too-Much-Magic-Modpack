@@ -23,5 +23,9 @@
   "tmm_economy.mapper.malum_material": "TMM Malum Material Mapper",
   "tmm_economy.mapper.malum_material.tooltip": "Map ordinary spirit infusion and runeworking material consumption.",
   "tmm_economy.mapper.theurgy_material": "TMM Theurgy Material Mapper",
-  "tmm_economy.mapper.theurgy_material.tooltip": "Map ordinary calcination and distillation material consumption."
+  "tmm_economy.mapper.theurgy_material.tooltip": "Map ordinary calcination and distillation material consumption.",
+  "tmm_economy.mapper.forbidden_forge": "TMM Hephaestus Forge Mapper",
+  "tmm_economy.mapper.forbidden_forge.tooltip": "Map ordinary item rituals and essence costs.",
+  "tmm_economy.mapper.embers_machines": "TMM Embers Machine Mapper",
+  "tmm_economy.mapper.embers_machines.tooltip": "Map melting, mixing and stamping including Ember."
 }
