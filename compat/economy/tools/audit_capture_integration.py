@@ -46,13 +46,13 @@ def main():
     assert not set(spirits) & {v if isinstance(v, str) else v["id"] for v in expected["values"]}
     assert json.loads((TAG.parent / "replication_blacklist.json").read_text(encoding="utf-8")) == {"replace": False, "values": ["#tmm:capture_blacklist"] + [{"id": i, "required": False} for i in spirits]}
     print("PASS 4 bound worker transport exceptions, 1200 total replication denials")
-    consumers = ["apothic_spawners:blacklisted_from_spawners","occultism:soul_gem_deny_list","occultism:fragile_soul_gem_deny_list","ars_nouveau:jar_blacklist","ars_nouveau:drygmy_blacklist","forbidden_arcanus:quantum_catcher_blacklisted","forbidden_arcanus:boss_catcher_blacklisted"]
+    consumers = ["apothic_spawners:blacklisted_from_spawners","occultism:soul_gem_deny_list","occultism:fragile_soul_gem_deny_list","ars_nouveau:jar_blacklist","ars_nouveau:drygmy_blacklist","forbidden_arcanus:quantum_catcher_blacklisted"]
     for key in consumers:
         ns, name = key.split(":")
         path = TAG.parents[3] / ns / "tags/entity_type" / (name + ".json")
         expected_tag = "#tmm:replication_blacklist" if key in {"apothic_spawners:blacklisted_from_spawners", "ars_nouveau:drygmy_blacklist"} else "#tmm:capture_blacklist"
         assert json.loads(path.read_text(encoding="utf-8")) == {"replace": False, "values": [expected_tag]}
-    print("PASS 7 native consumer aliases; Neo Vitae uses effective native spawner blacklist")
+    print("PASS 6 native consumer aliases; Boss Catcher retains its native player-only restriction")
     neo_tag = TAG.parents[3] / "neovitae/tags/entity_type/deny_imprisonment.json"
     assert json.loads(neo_tag.read_text(encoding="utf-8")) == {"replace": False, "values": [{"id": "#apothic_spawners:blacklisted_from_spawners", "required": False}]}
     print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
@@ -89,6 +89,11 @@ def main():
                 native = json.loads(z.read(path))
                 print("Exact native consumer tag", key, json.dumps(native, sort_keys=True))
         with zipfile.ZipFile(consumer_jars["forbidden_arcanus"]) as z:
+            boss_tag = json.loads(z.read("data/forbidden_arcanus/tags/entity_type/boss_catcher_blacklisted.json"))
+            quantum_tag = json.loads(z.read("data/forbidden_arcanus/tags/entity_type/quantum_catcher_blacklisted.json"))
+            assert boss_tag.get("values") == ["minecraft:player"], "Boss Catcher native semantics changed"
+            assert "#forbidden_arcanus:boss_catcher_blacklisted" in quantum_tag.get("values", [])
+            assert "#c:bosses" in quantum_tag.get("values", [])
             for catcher in ("quantum_catcher", "boss_catcher"):
                 path = "data/forbidden_arcanus/forbidden_arcanus/hephaestus_forge/ritual/" + catcher + ".json"
                 print("Exact native catcher recipe", catcher, json.dumps(json.loads(z.read(path)), sort_keys=True))
