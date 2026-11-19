@@ -12,7 +12,11 @@
     "ExpansionScrollTabletMixin",
     "ExpansionScrollReturnMixin",
     "ExpansionScrollCollectionMixin",
-    "RelicTemplateMixin"
+    "RelicTemplateMixin",
+    "TomeTemplateMixin",
+    "TomeMaterializationMixin",
+    "TomeCondenserLockMixin",
+    "ExpansionTomeCondenserLockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
