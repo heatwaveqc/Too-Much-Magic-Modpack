@@ -183,6 +183,7 @@ public final class ProgressionEvents {
         if (!event.isCanceled()) EffectHandlers.incoming(event);
         if (!event.isCanceled()) TyzMonkBridge.incoming(event);
         if (!event.isCanceled()) MechanicalEffects.incoming(event);
+        if (!event.isCanceled()) io.github.heatwaveqc.tmm.progression.runtime.forms.LichServantEffects.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);

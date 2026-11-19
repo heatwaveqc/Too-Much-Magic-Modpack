@@ -5,11 +5,11 @@ public final class LichSkillMath {
     private LichSkillMath(){}
     private static double cap(double rate,double max){return !Double.isFinite(rate)?0:Math.max(0,Math.min(max,rate));}
     public static int capacity(int base,double rate){
-        if(base<=0)return base;
+        if(base<=0||base>=Integer.MAX_VALUE/2||cap(rate,1)==0)return base;
         return (int)Math.min(Integer.MAX_VALUE/2L,Math.min((long)Integer.MAX_VALUE,(long)Math.floor(base*(1+cap(rate,1)))));
     }
     public static int gain(int nativeGain,double rate){
-        if(nativeGain<=0)return nativeGain;
+        if(nativeGain<=0||nativeGain>=Integer.MAX_VALUE/2||cap(rate,1)==0)return nativeGain;
         return (int)Math.min(Integer.MAX_VALUE/2L,Math.floor(nativeGain*(1+cap(rate,1))));
     }
     public static int rebate(int paid,double rate){

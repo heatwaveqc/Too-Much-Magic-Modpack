@@ -37,7 +37,9 @@
     "JawrFeedingMixin",
     "JawrBatDurationMixin",
     "GoetyLichEnergyMixin",
-    "GoetyArcaCapacityMixin"
+    "GoetyArcaCapacityMixin",
+    "GoetyLichRescueMixin",
+    "ForbiddenLichRescueMixin"
   ],
   "injectors": {
     "defaultRequire": 0

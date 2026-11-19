@@ -5,8 +5,8 @@ PINS = {
  ("utils/SEHelper","utils/LichdomHelper","capabilities/soulenergy/SEImp","capabilities/soulenergy/ISoulEnergy","events/SoulEnergyEvents","events/spell/GoetyEventFactory","items/magic/DarkWand","api/entities/IOwned","entities/neutral/Owned","client/gui/overlay/SoulEnergyGui","config/MainConfig"),
  ("increaseSE(","increaseSESouls(","increaseSouls(","decreaseSoulsNoDiscount(","rawHandleKill(","MagicResults(","onLivingDeathEvent(","teleportToArca(","setSoulsAmount(","getTrueOwner(","getOwnerId(","onSoulEnergyGain(","onSoulEnergyLoss(","getCapability(","getSoulEnergy(")),
  "forbidden": ("https://cdn.modrinth.com/data/pitZv4pV/versions/YgPMe2M7/witchery_forbidden_magic-0.5.37%2Bmc1.21.1.jar","e1f8a919946bc7997106fce1163dcfb5e436ae0f4482bbe7f4b0a81d35028fc0",
- ("LichdomEvents","LichdomSoulPoolHandler","LichPlayerAttachment","LichPlayerAttachment$Data"),
- ("onDeath(","getCurrentSouls(","drainNewestSoul(","isLich(","getLevel(")),
+ ("LichdomEvents","LichdomSoulPoolHandler","LichPlayerAttachment","LichPlayerAttachment$Data","SummonUndeadAbility"),
+ ("onDeath(","getCurrentSouls(","drainNewestSoul(","isLich(","getLevel(","invoke(","cast(","execute(","summon(","onUse(","use(","perform(","apply(","activate(")),
 }
 with tempfile.TemporaryDirectory() as tmp:
  for name,(url,expected,ends,methods) in PINS.items():
