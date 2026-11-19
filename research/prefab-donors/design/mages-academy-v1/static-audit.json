@@ -122,16 +122,11 @@
           "Slot": 11,
           "id": "minecraft:poisonous_potato",
           "count": 3
-        },
-        {
-          "Slot": 12,
-          "id": "minecraft:echo_shard",
-          "count": 3
         }
       ]
     }
   },
-  "schoolCount": 9,
+  "schoolCount": 8,
   "scroll": {
     "spell": "irons_spellbooks:spectral_hammer",
     "level": 1,
@@ -235,7 +230,7 @@
   "limitations": [
     "Faerithia donor binary not audited/available; original academy, no donor geometry or rights claim.",
     "Exact pinned-source items/codec verified; client scroll and inventory load/claim/duplication, inscription halves, modded states, default tile initialization and import untested.",
-    "Eldritch echo shards included under literal nine-school instruction, no research unlocked; Ars 'n Spells/addon schools not included.",
+    "Eldritch focus excluded by owner; no research unlocked or addon school focus included.",
     "Native simple Nether Brick Pillar and Wisewood Bookshelf used; no bulk Wisewood Planks with unverified survival recipe. EMC/material parity pending.",
     "Scriptor writing desk and advanced Iron/Apothic devices reserved not placed; full secondary functional pattern/automation needs live QA.",
     "One-time mutually exclusive starter claim must be enforced before deployment; no runtime or grants wired."
@@ -243,8 +238,8 @@
   "nbtRoundtrip": {
     "voxelCount": 18446,
     "chestCount": 1,
-    "stacks": 13,
-    "items": 35
+    "stacks": 12,
+    "items": 32
   },
-  "nbtBytes": 666930
+  "nbtBytes": 666882
 }

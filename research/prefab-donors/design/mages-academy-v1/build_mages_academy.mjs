@@ -75,11 +75,11 @@ function build(){
  // Front approach and small patio.
  f(12,0,26,20,0,33,stone);f(12,1,26,20,1,33,stone);f(13,2,26,19,5,33,A);
  for(let x of [12,20]){put(x,2,30,pillar);put(x,3,30,lamp);}
- // Manifest exact component-bearing chest contents; all nine base schools explicitly owner-granted.
+ // Manifest exact component-bearing chest contents; eight ordinary schools only; Eldritch explicitly excluded.
  const items=[{Slot:0,id:i("graybeard_staff"),count:1},{Slot:1,id:i("copper_spell_book"),count:1},
  {Slot:2,id:i("scroll"),count:1,components:{"irons_spellbooks:spell_container":{maxSpells:1,spellWheel:false,mustEquip:false,data:[{id:i("spectral_hammer"),index:0,level:1,locked:true}]}}},
  {Slot:3,id:i("common_ink"),count:5},
- ...[m("blaze_rod"),i("frozen_bone"),i("lightning_bottle"),i("divine_pearl"),m("ender_pearl"),i("blood_vial"),m("emerald"),m("poisonous_potato"),m("echo_shard")].map((id,j)=>({Slot:j+4,id,count:3}))];
+ ...[m("blaze_rod"),i("frozen_bone"),i("lightning_bottle"),i("divine_pearl"),m("ender_pearl"),i("blood_vial"),m("emerald"),m("poisonous_potato")].map((id,j)=>({Slot:j+4,id,count:3}))];
  const payload={pos:chest,nbt:{id:"minecraft:chest",Items:items}};
  const zones=[{name:"Apothic Enchanting adjustable library",bounds:[15,10,10,27,15,20]},{name:"Practice court",bounds:[34,2,6,44,32,16]},{name:"Iron cauldron future position",bounds:[5,2,17,5,3,17]},{name:"Iron arcane anvil future position",bounds:[9,2,17,9,3,17]},{name:"Scriptor writing table reservation",bounds:[24,2,16,26,4,18]}];
  for(let q of zones){let [x,y,z,X,Y,Z]=q.bounds,n=0;for(let a=x;a<=X;a++)for(let b=y;b<=Y;b++)for(let c=z;c<=Z;c++){if(get(a,b,c)!==A)throw Error(q.name+" obstruction "+[a,b,c,get(a,b,c)]);n++}q.air=n;}
@@ -87,10 +87,10 @@ function build(){
  for(let [x,y,z] of cane){if(get(x,y-1,z)!==m("sand")||get(x,y-1,23)!==m("water")+"[level=0]"||get(x,y+1,z)!==A)throw Error("cane "+[x,y,z]);}
  if(get(...chest)!=="minecraft:chest[facing=north,type=single,waterlogged=false]"||get(chest[0],3,chest[2])!==A)throw Error("chest clearance");
  let counts={};for(let s of G.values())counts[s]=(counts[s]??0)+1;
- if(counts[i("scroll_forge")+"[facing=south]"]!==1||counts["minecraft:chest[facing=north,type=single,waterlogged=false]"]!==1||items.some(x=>x.id==="minecraft:paper")||new Set(items.map(x=>x.Slot)).size!==items.length)throw Error("kit");
+ if(counts[i("scroll_forge")+"[facing=south]"]!==1||counts["minecraft:chest[facing=north,type=single,waterlogged=false]"]!==1||items.some(x=>["minecraft:paper","minecraft:echo_shard"].includes(x.id))||new Set(items.map(x=>x.Slot)).size!==items.length)throw Error("kit");
  const palette=[...new Set(G.values())],idx=new Map(palette.map((s,j)=>[s,j])),runs=[];
  for(let [k,s] of [...G.entries()].sort((a,b)=>a[0]-b[0])){let p=idx.get(s),last=runs.at(-1);if(last&&last[0]+last[1]===k&&last[2]===p)last[1]++;else runs.push([k,1,p]);}
- return {grid:{size:[W,H,D],palette,runs,blockEntities:[payload]},audit:{status:"STATIC_QA_PREVIEW_ONLY",size:[W,H,D],surfaceY:Y,nonair:G.size-counts[A],explicitAir:counts[A],paletteStates:palette.length,counts,starterChest:payload,schoolCount:9,scroll:{spell:i("spectral_hammer"),level:1,rarity:"UNCOMMON"},cane,stairs:steps.length,zones,limitations:["Faerithia donor binary not audited/available; original academy, no donor geometry or rights claim.","Exact pinned-source items/codec verified; client scroll and inventory load/claim/duplication, inscription halves, modded states, default tile initialization and import untested.","Eldritch echo shards included under literal nine-school instruction, no research unlocked; Ars 'n Spells/addon schools not included.","Native simple Nether Brick Pillar and Wisewood Bookshelf used; no bulk Wisewood Planks with unverified survival recipe. EMC/material parity pending.","Scriptor writing desk and advanced Iron/Apothic devices reserved not placed; full secondary functional pattern/automation needs live QA.","One-time mutually exclusive starter claim must be enforced before deployment; no runtime or grants wired."]}};
+ return {grid:{size:[W,H,D],palette,runs,blockEntities:[payload]},audit:{status:"STATIC_QA_PREVIEW_ONLY",size:[W,H,D],surfaceY:Y,nonair:G.size-counts[A],explicitAir:counts[A],paletteStates:palette.length,counts,starterChest:payload,schoolCount:8,scroll:{spell:i("spectral_hammer"),level:1,rarity:"UNCOMMON"},cane,stairs:steps.length,zones,limitations:["Faerithia donor binary not audited/available; original academy, no donor geometry or rights claim.","Exact pinned-source items/codec verified; client scroll and inventory load/claim/duplication, inscription halves, modded states, default tile initialization and import untested.","Eldritch focus excluded by owner; no research unlocked or addon school focus included.","Native simple Nether Brick Pillar and Wisewood Bookshelf used; no bulk Wisewood Planks with unverified survival recipe. EMC/material parity pending.","Scriptor writing desk and advanced Iron/Apothic devices reserved not placed; full secondary functional pattern/automation needs live QA.","One-time mutually exclusive starter claim must be enforced before deployment; no runtime or grants wired."]}};
 }
 function encode(grid){
  const out=[],u16=n=>out.push(n>>>8&255,n&255),i32=n=>out.push(n>>>24&255,n>>>16&255,n>>>8&255,n&255),str=s=>{if(!/^[\x00-\x7f]*$/.test(s))throw Error("nonASCII");u16(s.length);for(let c of s)out.push(c.charCodeAt(0));},head=(t,n)=>{out.push(t);str(n)};
@@ -109,7 +109,7 @@ function verify(raw,grid){
  if(byte()!==10||str()!=="")throw Error("root");const r=val(10);if(n!==raw.length||r.DataVersion!==3955||r.size.join()!==grid.size.join()||r.entities.length)throw Error("header");const P=r.palette.map(s=>s.Name+(s.Properties?"["+Object.entries(s.Properties).map(([k,v])=>k+"="+v).join(",")+"]":""));if(P.join("|")!==grid.palette.join("|"))throw Error("palette");
  let j=0,[W,H,D]=grid.size,be=[];for(let [start,l,p] of grid.runs)for(let k=start;k<start+l;k++){let b=r.blocks[j++];if(b.state!==p||b.pos[0]+W*(b.pos[2]+D*b.pos[1])!==k)throw Error("voxel mismatch");if(b.nbt)be.push({pos:b.pos,nbt:b.nbt});}if(j!==r.blocks.length||be.length!==1)throw Error("block count");
  const exp=JSON.stringify(grid.blockEntities,(_,v)=>typeof v==="boolean"?Number(v):v);if(JSON.stringify(be)!==exp)throw Error("chest payload mismatch");
- let items=be[0].nbt.Items,s=items.find(x=>x.Slot===2);if(items.length!==13||s.components["irons_spellbooks:spell_container"].data[0].level!==1||items.some(x=>x.id==="minecraft:paper"))throw Error("kit verify");
+ let items=be[0].nbt.Items,s=items.find(x=>x.Slot===2);if(items.length!==12||s.components["irons_spellbooks:spell_container"].data[0].level!==1||items.some(x=>["minecraft:paper","minecraft:echo_shard"].includes(x.id)))throw Error("kit verify");
  return {voxelCount:j,chestCount:be.length,stacks:items.length,items:items.reduce((a,b)=>a+b.count,0)};
 }
 const here=path.dirname(fileURLToPath(import.meta.url));
