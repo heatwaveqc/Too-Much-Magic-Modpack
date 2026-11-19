@@ -1,0 +1,27 @@
+{
+  "comment": "Owner-approved 2026-11-18 fuel parity: 2 Ember per EMC, 2 EMC per Goety Soul Energy. Native crystal <-> six shards is exact. Cluster is priced by fuel equivalence rather than alchemy production cost; no new conversion recipe. Grit has zero native activation and remains normal recipe-derived material. Soul sand/soil retain native 49 EMC.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "embers:ember_shard",
+        "emc_value": 200
+      },
+      {
+        "type": "projecte:item",
+        "id": "embers:ember_crystal",
+        "emc_value": 1200
+      },
+      {
+        "type": "projecte:item",
+        "id": "embers:ember_crystal_cluster",
+        "emc_value": 2200
+      },
+      {
+        "type": "projecte:item",
+        "id": "goety:ectoplasm",
+        "emc_value": 10
+      }
+    ]
+  }
+}

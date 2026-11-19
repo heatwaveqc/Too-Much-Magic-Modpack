@@ -9,6 +9,8 @@ from pathlib import Path
 import re
 import subprocess
 import tomllib
+import tempfile
+import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,7 +79,13 @@ def main():
     rows = selected()
     if args.action == "build":
         for directory, mod, jar in rows:
-            subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
+            if mod == "tmm_economy":
+                with tempfile.TemporaryDirectory(prefix="tmm-economy-classpath-") as temp:
+                    mods = Path(temp) / "verified-mods"
+                    subprocess.run([sys.executable, str(directory / "tools/fetch_compile_classpath.py"), str(mods)], cwd=ROOT, check=True)
+                    subprocess.run(["gradle", "--no-daemon", f"-PtmmCompileModsDir={mods}", "clean", "build"], cwd=directory, check=True)
+            else:
+                subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
             if mod == "traders_vengence":
                 verify_trader_irons_pin(jar)

@@ -1,0 +1,56 @@
+name: Economy Module CI (exact pins, no game boot)
+
+on:
+  pull_request:
+    paths:
+      - 'compat/economy/**'
+      - 'mods/*.pw.toml'
+      - 'index.toml'
+      - 'pack.toml'
+      - '.github/workflows/economy-module-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict source preflight and economy recipe checks (read-only)
+        run: |
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+          python3 scripts/validate_integration_sources.py --strict-overrides
+          python3 scripts/validate.py
+          python3 scripts/validate_progression_gates.py
+          python3 scripts/validate_b19_gateways.py
+          python3 scripts/verify_emc_coverage_audit.py
+      - name: Fetch exact hash-locked compile classpath
+        run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Compile Economy and execute unit tests
+        working-directory: compat/economy
+        run: gradle --no-daemon "-PtmmCompileModsDir=$RUNNER_TEMP/economy-compile-mods" clean build
+      - name: Verify first-party module ID
+        run: |
+          python3 - <<'PY'
+          import pathlib, tomllib, zipfile
+          jar = pathlib.Path("compat/economy/build/libs/tmm_economy-0.1.0-dev.jar")
+          with zipfile.ZipFile(jar) as z:
+              m = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode("utf-8"))
+              assert [row["modId"] for row in m["mods"]] == ["tmm_economy"]
+          print("PASS economy module identity; no game boot")
+          PY

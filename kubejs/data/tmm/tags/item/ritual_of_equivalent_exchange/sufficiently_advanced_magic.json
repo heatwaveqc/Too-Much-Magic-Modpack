@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "draconicevolution:awakened_core",
+    "replication:replicator_enclosure",
+    "tmm:eldritch_logic_core"
+  ]
+}

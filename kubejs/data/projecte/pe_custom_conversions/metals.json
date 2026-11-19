@@ -1,0 +1,385 @@
+{
+  "comment": "TMM owner-approved ordinary metal EMC hierarchy. Preserve unrelated native metal and gemstone defaults/conversions.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "emc_value": 32,
+        "tag": "c:gems/amethyst"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2048,
+        "tag": "c:gems/ruby"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2048,
+        "tag": "c:gems/sapphire"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2048,
+        "tag": "c:gems/peridot"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 9,
+        "tag": "c:ingots/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 9,
+        "tag": "c:dusts/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1,
+        "tag": "c:nuggets/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 54,
+        "tag": "c:raw_materials/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 162,
+        "tag": "c:ores/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 81,
+        "tag": "c:storage_blocks/copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 486,
+        "tag": "c:storage_blocks/raw_copper"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 18,
+        "tag": "c:ingots/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 18,
+        "tag": "c:dusts/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2,
+        "tag": "c:nuggets/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 108,
+        "tag": "c:raw_materials/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 324,
+        "tag": "c:ores/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 162,
+        "tag": "c:storage_blocks/iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 972,
+        "tag": "c:storage_blocks/raw_iron"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 18,
+        "tag": "c:ingots/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 18,
+        "tag": "c:dusts/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2,
+        "tag": "c:nuggets/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 108,
+        "tag": "c:raw_materials/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 324,
+        "tag": "c:ores/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 162,
+        "tag": "c:storage_blocks/tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 972,
+        "tag": "c:storage_blocks/raw_tin"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 36,
+        "tag": "c:ingots/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 36,
+        "tag": "c:dusts/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 4,
+        "tag": "c:nuggets/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 216,
+        "tag": "c:raw_materials/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 648,
+        "tag": "c:ores/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 324,
+        "tag": "c:storage_blocks/silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1944,
+        "tag": "c:storage_blocks/raw_silver"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 36,
+        "tag": "c:ingots/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 36,
+        "tag": "c:dusts/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 4,
+        "tag": "c:nuggets/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 216,
+        "tag": "c:raw_materials/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 648,
+        "tag": "c:ores/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 324,
+        "tag": "c:storage_blocks/lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1944,
+        "tag": "c:storage_blocks/raw_lead"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 72,
+        "tag": "c:ingots/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 72,
+        "tag": "c:dusts/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 8,
+        "tag": "c:nuggets/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 432,
+        "tag": "c:raw_materials/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1296,
+        "tag": "c:ores/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 648,
+        "tag": "c:storage_blocks/nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 3888,
+        "tag": "c:storage_blocks/raw_nickel"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 144,
+        "tag": "c:ingots/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 144,
+        "tag": "c:dusts/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 16,
+        "tag": "c:nuggets/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 864,
+        "tag": "c:raw_materials/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2592,
+        "tag": "c:ores/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1296,
+        "tag": "c:storage_blocks/gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 7776,
+        "tag": "c:storage_blocks/raw_gold"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 288,
+        "tag": "c:ingots/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 288,
+        "tag": "c:dusts/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 32,
+        "tag": "c:nuggets/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 1728,
+        "tag": "c:raw_materials/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 5184,
+        "tag": "c:ores/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 2592,
+        "tag": "c:storage_blocks/uranium"
+      },
+      {
+        "type": "projecte:item",
+        "emc_value": 15552,
+        "tag": "c:storage_blocks/raw_uranium"
+      }
+    ],
+    "conversion": [
+      {
+        "count": 4,
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 3,
+            "tag": "c:ingots/copper"
+          },
+          {
+            "type": "projecte:item",
+            "tag": "c:ingots/tin"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "tag": "c:ingots/bronze"
+        },
+        "propagateTags": true
+      },
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 2,
+            "tag": "c:ingots/iron"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "tag": "c:ingots/osmium"
+        },
+        "propagateTags": true
+      },
+      {
+        "count": 2,
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "tag": "c:ingots/iron"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "tag": "c:ingots/aluminum"
+        },
+        "propagateTags": true
+      },
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 16,
+            "tag": "c:ingots/iron"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "tag": "c:ingots/platinum"
+        },
+        "propagateTags": true
+      },
+      {
+        "count": 4,
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "tag": "c:ingots/uranium"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "tag": "c:ingots/cyanite"
+        },
+        "propagateTags": true
+      }
+    ]
+  },
+  "replace": true
+}

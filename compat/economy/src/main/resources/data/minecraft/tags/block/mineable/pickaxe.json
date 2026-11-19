@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tmm_economy:emc_catalyst",
+      "required": false
+    },
+    {
+      "id": "tmm_economy:emc_source_jar",
+      "required": false
+    }
+  ]
+}

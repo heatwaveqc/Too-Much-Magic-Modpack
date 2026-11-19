@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "pamhc2crops:blackberryitem",
+    "pamhc2crops:blueberryitem",
+    "pamhc2crops:candleberryitem",
+    "pamhc2crops:cloudberryitem",
+    "pamhc2crops:cranberryitem",
+    "pamhc2crops:elderberryitem",
+    "pamhc2crops:huckleberryitem",
+    "pamhc2crops:juniperberryitem",
+    "pamhc2crops:mulberryitem",
+    "pamhc2crops:raspberryitem",
+    "pamhc2crops:strawberryitem",
+    "pamhc2crops:wolfberryitem",
+    "pamhc2trees:gooseberryitem"
+  ]
+}

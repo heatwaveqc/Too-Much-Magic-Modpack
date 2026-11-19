@@ -1,0 +1,11 @@
+{
+  "type": "botania:mana_infusion",
+  "input": {
+    "item": "minecraft:paper"
+  },
+  "mana": 3840,
+  "output": {
+    "count": 1,
+    "id": "improvableskills:parchment_fragment"
+  }
+}

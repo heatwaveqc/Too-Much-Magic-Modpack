@@ -1,0 +1,20 @@
+{
+  "comment": "Anchor parchment to seven paper using relative EMC mapping; confirm effective map and regenerate infusion price at 120 mana per paper EMC.",
+  "values": {
+    "conversion": [
+      {
+        "ingredients": [
+          {
+            "type": "projecte:item",
+            "amount": 7,
+            "id": "minecraft:paper"
+          }
+        ],
+        "output": {
+          "type": "projecte:item",
+          "id": "improvableskills:parchment_fragment"
+        }
+      }
+    ]
+  }
+}

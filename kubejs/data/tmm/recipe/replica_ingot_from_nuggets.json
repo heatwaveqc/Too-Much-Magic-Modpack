@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "tag": "c:nuggets/replica"
+    }
+  },
+  "result": {
+    "id": "replication:replica_ingot",
+    "count": 1
+  }
+}

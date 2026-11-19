@@ -1,0 +1,32 @@
+{
+  "comment": "Owner-approved Draconium ingot/dust = expected Netherite block; ore = 3 dust based on source-verified 2–4 base dust drops for all four native ores. Verify exact effective loot/tag and mapped parity. Awakened family derived from effective fusion inputs and FE, not independent anchors.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/draconium",
+        "emc_value": 37753920
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/draconium",
+        "emc_value": 37753920
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:nuggets/draconium",
+        "emc_value": 4194880
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/draconium",
+        "emc_value": 339785280
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ores/draconium",
+        "emc_value": 113261760
+      }
+    ]
+  }
+}
