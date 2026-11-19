@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ProjectE/custom_emc.json"
+hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+
+[[files]]
 file = "config/almostunified/placeholders.json"
 hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
@@ -982,7 +986,7 @@ hash = "89960c1e990de96dfe4851d03628d89e9794c637429e26e846a96aa5461d30a9"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
-hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
+hash = "aca07da8c8456de7c38b9f411db3779bbd582849a5ac819babddfff247874596"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/alkahestry/betterend__thallasium_raw.json"

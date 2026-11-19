@@ -1,0 +1,13 @@
+{
+  "comment": "Owner-approved non-transmutable documents: Bountiful's signed decrees and bounty slips. Keep the craftable bountyboard ordinarily priced. Merge existing personal custom-EMC entries rather than overwriting on migration.",
+  "entries": [
+    {
+      "id": "bountiful:decree",
+      "emc": 0
+    },
+    {
+      "id": "bountiful:bounty",
+      "emc": 0
+    }
+  ]
+}
