@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Ars Controle guide/glyph/sensor
+
+- ExactControle1.6.16 recoveredfullSHA512match,313828bytes,97classeswholeJARCFRexternalcontrole-fresh; all15recipesread. Newars-controle-pinned-glyphs-sensor.md sourcecoversnativeNotebookregistration,8filters+PreciseDelayacquisition/grammar/Y/RNG/timing andSensorformula/scheduling. Correctedno-addonpageclaim. Sensorgetterround(ms*15/50)withoutclamp; adaptivebinarysecondRandomaugmentsfromfirstindex/skipboundarydocumented.7complete35researchingunchanged.
+- **NextControlefive remainingdeviceoperations**: RemoteItem+remote packets/lockselection, ScryersLinkageTilecapability/query/ownership, PortableBrazierRelayItem+tick/mixin/blacklist, ScrollHolderTileportal/source/control, WarpingSpellPrismTile/projectile/crossdim/CCconfig. Allclassesalreadycontrole-fresh; no needre-inventory15recipes/9glyphs/sensor. Then fullwalkthrough/pilot/statusreview. NextOcultas/Elemental/Elemancy/Additions,parentreview,remainingmajors.
+- No blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Ars n Spells source completion
 
 - Ars n Spells3.3.5 SOURCE-COMPLETE for pinnedinstalledscope; parentprofile rewrittenaround5binarycompanions(fullguide/Loom/bind/cast and optionalcarriers/mana/Well/regen/equipment/Curios/schools/cooldowns), exactscope/testlimits. 317non-gametestclassconstantpoolMethodrefaudit found noAlternativePayment.reservecaller; ScrollLPTrackeronlyselfstageoverload. LP/AURAframework isn'tproveninstalleddrain. ClosedCurios tagdiscount(.2/item,.5cap)and schoolmappingreloadscope. **7/42complete35researching**. Ars parentstillresearchingfor5addons+finalreview.

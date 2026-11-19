@@ -114,3 +114,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Ars n Spells combat/school/resonance/cooldown source companion added, including event-credit limits, allschool decay behavior, multiplier versus additive directions and proxy/category cooldown distinction. Final optional-adapter/combined profile review remains;6/42complete36researching unchanged. No runtime tests.
 
 - 2026-11-19 — Ars n Spells source-complete for installed3.3.5 scope: consolidated5pinnedcompanions into full guide/Loom/bind/cast and optional utility/regen/schools/cooldown walkthrough.317non-gametest classMethodref audit found no activeAlternativePayment.reservecaller; Curios discount/tag and school mapping scope closed. **7/42source-complete,35researching**; five Ars addon routes and combined parent review remain. No runtime acceptance.
+
+- 2026-11-19 — Ars Controle exact1.6.16 binary nativeguide/glyph/sensor companion added: all15recipes, adaptive grammar, height/RNG/delay boundaries and unclamped sensor comparator formula. Five other device operation routes remain;7/42complete35researching unchanged. No runtime tests.
