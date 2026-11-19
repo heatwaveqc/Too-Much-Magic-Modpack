@@ -15,6 +15,7 @@ CLASSES={
 "bee":{"com.telepathicgrunt.the_bumblezone.blocks.EssenceBlockWhite":["awardPlayerWinStat(","crystalKilled(","EndEvent","cosmicCrystalHealth"],"com.telepathicgrunt.the_bumblezone.blocks.blockentities.EssenceBlockEntity":["EndEvent(","awardPlayerWinStat","getEventTimer","getPlayerInArena"],"com.telepathicgrunt.the_bumblezone.entities.living.CosmicCrystalEntity":["actuallyHurt(","crystalKilled","getEssenceController"]},
 "chaos":{"com.brandon3055.draconicevolution.entity.guardian.DraconicGuardianEntity":["attackDragonFrom(","tickDeath()","processDragonDeath","deathTicks"],"com.brandon3055.draconicevolution.entity.guardian.GuardianFightManager":["processDragonDeath(","setDefeated","guardianKilled"]}
 }
+mismatches=[]
 with tempfile.TemporaryDirectory() as temp:
     for key,(url,expected) in PINS.items():
         req=urllib.request.Request(url,headers={"User-Agent":"TMM-static-boss-audit/1.0"})
@@ -33,7 +34,7 @@ with tempfile.TemporaryDirectory() as temp:
                 manifest=z.read("META-INF/MANIFEST.MF").decode()
                 version=next(line.partition(": ")[2].strip() for line in manifest.splitlines() if line.startswith("Implementation-Version: "))
             print("RUNTIME_GUARD",key,metadata_mod["modId"],version,flush=True)
-            if version!=GUARDS[key][1]: raise RuntimeError(f"{key} runtime guard expects {GUARDS[key][1]}, pinned jar declares {version}")
+            if version!=GUARDS[key][1]: mismatches.append(f"{key} runtime guard expects {GUARDS[key][1]}, pinned jar declares {version}")
 
         for cls,need in CLASSES[key].items():
             out=subprocess.run(["javap","-classpath",str(jar),"-p","-s","-c",cls],capture_output=True,text=True,check=True,timeout=60).stdout
@@ -47,3 +48,5 @@ with tempfile.TemporaryDirectory() as temp:
                     if active: print("DECL",line.strip(),flush=True)
                 elif active and (line.strip().startswith("descriptor:") or "//" in line):
                     print(line,flush=True)
+
+if mismatches: raise RuntimeError("; ".join(mismatches))
