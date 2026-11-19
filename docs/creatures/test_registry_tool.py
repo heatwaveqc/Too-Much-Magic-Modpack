@@ -48,6 +48,15 @@ class RegistryTest(unittest.TestCase):
             (directory / "fae.json").unlink()
             self.assertEqual({"beast.json: differs", "fae.json: missing"}, set(registry.compare(self.data, directory)))
 
+    def test_dragon_two_one_time_advancements_and_no_generic_payout(self):
+        entry = self.data["entities"]["minecraft:ender_dragon"]
+        self.assertEqual({
+            "advancement_once:minecraft:end/kill_dragon:fixed_1000_mxp:zero_repeat",
+            "advancement_once:minecraft:end/respawn_dragon:fixed_1000_mxp:zero_repeat",
+        }, {r["rule"] for r in entry["instance_rules"] if r["consumer"] == "boss"})
+        self.assertIn("minecraft:ender_dragon", self.ids("boss_generic_death_excluded.json"))
+        self.assertIn("minecraft:ender_dragon", self.ids("hunt_eligible.json"))
+
     def test_duplicate_keys_rejected(self):
         with self.assertRaises(ValueError):
             json.loads('{"a":1,"a":2}', object_pairs_hook=registry.no_duplicates)
