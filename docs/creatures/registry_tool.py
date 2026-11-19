@@ -48,6 +48,31 @@ def hunter_tags(data):
         ]}
     return {"hunt_eligible.json": tag("allow"), "hunt_excluded.json": tag("deny")}
 
+def family_tags(data):
+    """Type identity, not prey authorization; preserve all working memberships."""
+    families = sorted({f for e in data["entities"].values() for f in e["taxonomy"]["families"]})
+    return {f.lower() + ".json": {"replace": False, "values": [
+        entity_id if entity_id.startswith("minecraft:") else {"id": entity_id, "required": False}
+        for entity_id, entry in sorted(data["entities"].items())
+        if f in entry["taxonomy"]["families"]
+    ]} for f in families}
+
+def projections(data):
+    return {**hunter_tags(data), **family_tags(data)}
+
+def compare(data, directory):
+    """Read-only drift check against integration donor tags; no generated writes."""
+    mismatches = []
+    for name, expected in projections(data).items():
+        file = directory / name
+        if not file.is_file():
+            mismatches.append(name + ": missing")
+            continue
+        actual = json.loads(file.read_text(encoding="utf-8"), object_pairs_hook=no_duplicates)
+        if actual != expected:
+            mismatches.append(name + ": differs")
+    return mismatches
+
 def show(data, entity_id):
     entry = data["entities"][entity_id]
     return {**entry,
@@ -57,8 +82,9 @@ def show(data, entity_id):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["validate", "hunter-tags", "show", "holds"])
+    parser.add_argument("command", choices=["validate", "hunter-tags", "family-tags", "all-tags", "compare-tags", "show", "holds"])
     parser.add_argument("entity_id", nargs="?")
+    parser.add_argument("--tag-dir", type=Path)
     args = parser.parse_args()
     data = read()
     entities = data["entities"]
@@ -70,6 +96,16 @@ def main():
                   "capture": dict(Counter(e["capture"]["disposition"] for e in entities.values()))}
     elif args.command == "hunter-tags":
         result = hunter_tags(data)
+    elif args.command == "family-tags":
+        result = family_tags(data)
+    elif args.command == "all-tags":
+        result = projections(data)
+    elif args.command == "compare-tags":
+        if args.tag_dir is None:
+            parser.error("compare-tags requires --tag-dir")
+        mismatches = compare(data, args.tag_dir)
+        print(json.dumps({"match": not mismatches, "mismatches": mismatches}, indent=2))
+        return 1 if mismatches else 0
     elif args.command == "show":
         if args.entity_id not in entities:
             parser.error("show requires a known exact entity ID")
@@ -80,4 +116,4 @@ def main():
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
