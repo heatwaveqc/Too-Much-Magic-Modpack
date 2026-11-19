@@ -34,6 +34,8 @@
     "JawrBloodPaymentMixin",
     "MahouPracticePaymentMixin",
     "AstralDiscidiaOwnerMixin",
+    "MahouBoundaryDamageMixin",
+    "MahouTerminalDamageMixin",
     "JawrVampireEffectsMixin",
     "JawrFeedingMixin",
     "JawrWolfBiteMixin",

@@ -17,6 +17,15 @@ PINS = {
 def audit(provider, path):
     with zipfile.ZipFile(path) as z:
         names = sorted(n for n in z.namelist() if n.endswith(".class"))
+        for meta in ("META-INF/neoforge.mods.toml","META-INF/mods.toml"):
+            if meta in z.namelist():
+                for line in z.read(meta).decode("utf-8").splitlines():
+                    if line.strip().startswith(("modId","version")):
+                        print("METADATA",provider,line.strip(),flush=True)
+        if "META-INF/MANIFEST.MF" in z.namelist():
+            for line in z.read("META-INF/MANIFEST.MF").decode("utf-8",errors="replace").splitlines():
+                if line.lower().startswith(("implementation-version:","specification-version:")):
+                    print("METADATA",provider,line,flush=True)
         if provider == "mahou":
             candidates = [n for n in names if "drainlife" in n.lower().replace("_","")]
             candidates += ["stepsword/mahoutsukai/util/EffectUtil.class","stepsword/mahoutsukai/tile/MahoujinTileEntity.class"]
