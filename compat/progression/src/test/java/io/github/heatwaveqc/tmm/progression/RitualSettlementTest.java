@@ -48,6 +48,16 @@ class RitualSettlementTest {
         for(String held:java.util.List.of("occultism:ritual/craft_upgrade_ritual_satchel","occultism:ritual/familiar_parrot","occultism:ritual/repair_chalks"))
             assertEquals(io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.Kind.HELD,io.github.heatwaveqc.tmm.progression.mxp.core.OccultRitualProof.kind(held));
     }
+    @Test void e6bIndependentNativeRecipes(){
+        assertEquals(14,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("totemic:")).count());
+        assertEquals(13,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("witchery:")).count());
+        assertEquals(1200,RitualRewards.lookup("totemic:war_dance").band().first());
+        assertEquals(2200,RitualRewards.lookup("totemic:rain").band().first());
+        assertEquals(3500,RitualRewards.lookup("totemic:baykok_summon").band().first());
+        assertEquals("witchery:ritual/summon_demon",RitualRewards.lookup("witchery:ritual/summon_demon").family());
+        assertNull(RitualRewards.lookup("witchery:ritual/unknown"));
+        assertNull(RitualRewards.lookup("witchery:ritual/blocks_below_iron"));
+    }
     @Test void receiptsFailClosed(){
         UUID operation=UUID.randomUUID(), actor=UUID.randomUUID();
         String id="forbidden_arcanus:eternal_stella";

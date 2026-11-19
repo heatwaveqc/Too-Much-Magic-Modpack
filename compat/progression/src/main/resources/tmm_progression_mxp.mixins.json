@@ -58,7 +58,11 @@
     "RootsRitualGrowMixin",
     "RootsRitualFlareMixin",
     "RootsRitualDrainMixin",
-    "RootsRitualBreedMixin"
+    "RootsRitualBreedMixin",
+    "TotemicPerformanceMixin",
+    "JawrRitualChalkMixin",
+    "JawrRitualItemMixin",
+    "JawrRitualEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 0

@@ -44,6 +44,7 @@ public final class RitualRewards {
         forge(rules,Band.FORGE_3,"eternal_stella","quantum_injector","sea_prism","whirlwind_prism","upgrade_tier_4");
         forge(rules,Band.FORGE_4,"boss_catcher","soul_binding_crystal","tyr_boots","tyr_chestplate","tyr_helmet","tyr_leggings","upgrade_tier_5");
         PinnedRitualCatalog.addTo(rules);
+        E6bRitualCatalog.addTo(rules);
         return Map.copyOf(rules);
     }
     private static void forge(Map<String,Rule> out,Band band,String... paths){
