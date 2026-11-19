@@ -1,0 +1,3077 @@
+{
+  "schema_version": 1,
+  "integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
+  "acquisition_complete": true,
+  "archives": [
+    {
+      "id": "akashic-tome",
+      "filename": "AkashicTome-1.8-30.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7773/841/AkashicTome-1.8-30.jar",
+        "https://edge.forgecdn.net/files/7773/841/AkashicTome-1.8-30.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "6493e575f295e18fac1f7c5399c05c53caa1f7ce",
+      "metadata_path": "mods/akashic-tome.pw.toml",
+      "metadata_sha256": "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f",
+      "status": "verified",
+      "sha256": "c60f58fba975fe22681d69bd06dc93818e53a67830d9118167979852206f6ca8",
+      "bytes": 50256
+    },
+    {
+      "id": "alexs-caves-continued",
+      "filename": "alexscaves-1.1.2-neoforge+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/cO2CvXug/versions/wSeCJMlI/alexscaves-1.1.2-neoforge%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "5682a99122d65df204d76e56795b5d11940fb4a387fe3b605f69086ce9bd7f94887d5b1f7bc3d7aeb709f644360edfc9f29c4cb7d7d016731f92e8bf931e21bc",
+      "metadata_path": "mods/alexs-caves-continued.pw.toml",
+      "metadata_sha256": "49d4c3483faf58ba3cc7131ccf438edcc6c944fe92e97b2e18b5e4d19a27d7ba",
+      "status": "verified",
+      "sha256": "768b720c357ad191869a0d9fa69de0ab3c83363be61344c3e4924a16bfc2388c",
+      "bytes": 75288961
+    },
+    {
+      "id": "apotheosis",
+      "filename": "Apotheosis-1.21.1-8.9.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/rqFWfVlz/versions/veL1ccTb/Apotheosis-1.21.1-8.9.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "b3022bc31f4e9f99d298c36486e09cad308d4aa87e2aa65a341809aeca41f0067e744086768884959036a46685d4c0babc4274600884ad8962fe9d080d8ef3ee",
+      "metadata_path": "mods/apotheosis.pw.toml",
+      "metadata_sha256": "e154d7fb16dc7eb6ace7b88b3896955bb66f58c2daafe93c7ae3327ee418a509",
+      "status": "verified",
+      "sha256": "23a8b4a21d0d8744f097c77c8a96fcba14c4b95f3b1bb542412f40dab272872e",
+      "bytes": 7184314
+    },
+    {
+      "id": "apothic-attributes",
+      "filename": "ApothicAttributes-1.21.1-2.11.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/DGaH8Rh0/versions/64fZbLnj/ApothicAttributes-1.21.1-2.11.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "568580e68016161151fc0254fb0da949b42cf285fa2bf7c3aec1cd320405c430483e9eb990aaddef537bfac4aa4beb21db82fbff9249131e05b15063b6839611",
+      "metadata_path": "mods/apothic-attributes.pw.toml",
+      "metadata_sha256": "8f5f05a72596ecc0dd11be483785c8a521e987dc2fe6d2fef212c2a382a0c779",
+      "status": "verified",
+      "sha256": "17c42bb6dd5c0d820fe090e1bb5959578cd5ab7b70caf98a2a59b319fcc7e1ba",
+      "bytes": 319609
+    },
+    {
+      "id": "apothic-enchanting",
+      "filename": "ApothicEnchanting-1.21.1-1.6.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/pL8MtgqY/versions/JAQJkLJ1/ApothicEnchanting-1.21.1-1.6.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "b560ed61810030472c42fa39e6199b1db07c19baba8f78d98b44ab3e1d00a1bebff5f69942bd076fea9754f63940df920cfb19906073b77bcc459bb8d88575de",
+      "metadata_path": "mods/apothic-enchanting.pw.toml",
+      "metadata_sha256": "0d3ca07f510b7674932be8e109f394ab23aa4cd1aee04020ea0d509a0d1dd619",
+      "status": "verified",
+      "sha256": "aff9837f45c1c981d47a9e60b780c37a151ef881937faf5f72092895104c8bbb",
+      "bytes": 5422885
+    },
+    {
+      "id": "apothic-spawners",
+      "filename": "ApothicSpawners-1.21.1-1.4.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/DfxVkOAO/versions/pWfxcfO2/ApothicSpawners-1.21.1-1.4.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2fdd49cdb3e6610846c3a746ab0730d6d49412eaf8c21e3d0b9d588d80c8cd1a1d0b7e19ade7fc86fd699ac02e270e5fa01fb5cf106d24a7740692ecc1ad8820",
+      "metadata_path": "mods/apothic-spawners.pw.toml",
+      "metadata_sha256": "e3cf8a1207e85580723e384bf59688be26b80373b49c1d64972528cdc0dcac6d",
+      "status": "verified",
+      "sha256": "f0cbc52ad606997789c36fac94ae651ab7e2e21c841e26a952c64041cad9cdbe",
+      "bytes": 129784
+    },
+    {
+      "id": "appleskin",
+      "filename": "appleskin-neoforge-mc1.21-3.0.9.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/EsAfCjCV/versions/uAKA6Laj/appleskin-neoforge-mc1.21-3.0.9.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f4ea46273e407334b63e262e2555c9a8204f7b5e60f23f272fbaa83ad9e88800e0ee186aca840710df2dbe0a18b37758695fef2ae1a902c10b3706e3de772937",
+      "metadata_path": "mods/appleskin.pw.toml",
+      "metadata_sha256": "716d930feff599bf9ce732e05979fbae8025dc8a3c13ccf4f1cb207a70883bc6",
+      "status": "verified",
+      "sha256": "38b48dd6231341c9f964ce6e42c57ec866c6cc8f72bec938390a59bafb3922df",
+      "bytes": 75804
+    },
+    {
+      "id": "aquaculture",
+      "filename": "Aquaculture-1.21.1-2.7.22.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9426/623/Aquaculture-1.21.1-2.7.22.jar",
+        "https://edge.forgecdn.net/files/9426/623/Aquaculture-1.21.1-2.7.22.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "972b0ab7f0f07f4dbcb00af80c1addf5325d0683",
+      "metadata_path": "mods/aquaculture.pw.toml",
+      "metadata_sha256": "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff",
+      "status": "verified",
+      "sha256": "d77cc93b1285e16c2e8dae27565e96c86fbcaec811904b9cdc23a9fc379585ad",
+      "bytes": 608905
+    },
+    {
+      "id": "architectury-api",
+      "filename": "architectury-13.0.11-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8492/726/architectury-13.0.11-neoforge.jar",
+        "https://edge.forgecdn.net/files/8492/726/architectury-13.0.11-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "008656a0702801174b8ec245ed7aad1921d6e9f1",
+      "metadata_path": "mods/architectury-api.pw.toml",
+      "metadata_sha256": "657a01a86bbf8617e4726c77df08f708e43a3db12db74b837eebd8eb1d93faae",
+      "status": "verified",
+      "sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb",
+      "bytes": 584734
+    },
+    {
+      "id": "ars-additions",
+      "filename": "ars_additions-1.21.1-21.3.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/GYK6Gk8R/versions/aQ0r5GD2/ars_additions-1.21.1-21.3.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "3f06e6e838c6a5bb14cb1f475f393c0ceeb7b78a7faf9f73df008adae69f68410382cde4511d2b73c0e99dd38732ba1e5d192aac941bb26f2ab771f8bbdbcc43",
+      "metadata_path": "mods/ars-additions.pw.toml",
+      "metadata_sha256": "08f46822b355882721807489cbf64a7e8ac03efc1476136e60acbc8dd7dc2880",
+      "status": "verified",
+      "sha256": "e634a3f0c39cd38007608cce1974a7c9bbad7d8202bfb6c75f17c2901f362c9b",
+      "bytes": 1458261
+    },
+    {
+      "id": "ars-controle",
+      "filename": "ars_controle-1.21.1-1.6.16.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/gL8ijqNQ/versions/r7YxZN9m/ars_controle-1.21.1-1.6.16.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "458c5a878a1418ffce46d1dd109f4ae23bcbe10bd7153edcaff8d1ab49ab3032f37977488eee7cecdb550cd99672f560e9d851818d6775d5d7e222632285d1a6",
+      "metadata_path": "mods/ars-controle.pw.toml",
+      "metadata_sha256": "1dc7877ebc378ee58a9286a4da56e10060f34113d3a5f40e56cbed779b31ac49",
+      "status": "verified",
+      "sha256": "595990b532b7e8cf23a5897c39edcdd9add52f208be9517ff7304e3b35361441",
+      "bytes": 313828
+    },
+    {
+      "id": "ars-elemancy",
+      "filename": "ars_elemancy-1.21.1-1.18.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8349/780/ars_elemancy-1.21.1-1.18.3.jar",
+        "https://edge.forgecdn.net/files/8349/780/ars_elemancy-1.21.1-1.18.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "f7e01437c86fc74e2abb2ad93554dc20c30b214b",
+      "metadata_path": "mods/ars-elemancy.pw.toml",
+      "metadata_sha256": "12caf58c8583c17a41aebe2a836d0b48b4996334137e97b76c62e6b5b62791b5",
+      "status": "verified",
+      "sha256": "502366f85dfde7bf13ceef571cc3c2ba9c7960d35fa54d5e2cdf6e8f407fc9cf",
+      "bytes": 792016
+    },
+    {
+      "id": "ars-elemental",
+      "filename": "ars_elemental-1.21.1-0.7.10.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9057/244/ars_elemental-1.21.1-0.7.10.4.jar",
+        "https://edge.forgecdn.net/files/9057/244/ars_elemental-1.21.1-0.7.10.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "562f640916aa6f5c83b3b3ee2384ca828b870e01",
+      "metadata_path": "mods/ars-elemental.pw.toml",
+      "metadata_sha256": "8e9f867e9c0ff53e08e779ae54fd1bbead92f1d7323b75369e64ade719d5d7c1",
+      "status": "verified",
+      "sha256": "9ba4393c98228bb1647e3786c71c30c7eb97574b9e65baba14f34c92f7b86eb9",
+      "bytes": 2273778
+    },
+    {
+      "id": "ars-n-spells",
+      "filename": "ars_n_spells-3.3.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/NlMT8pQt/versions/5OeZngO7/ars_n_spells-3.3.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2",
+      "metadata_path": "mods/ars-n-spells.pw.toml",
+      "metadata_sha256": "bdc153a6636772ab81ff78a63e7c41a9de4f821a63e02b2ed3317e5dbe377f83",
+      "status": "verified",
+      "sha256": "652b0a355818a8b61e1b481972ea080773d67d6865c5bccf2c69cac79d057ceb",
+      "bytes": 2325760
+    },
+    {
+      "id": "ars-nouveau",
+      "filename": "ars_nouveau-1.21.1-5.13.5.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9521/184/ars_nouveau-1.21.1-5.13.5.jar",
+        "https://edge.forgecdn.net/files/9521/184/ars_nouveau-1.21.1-5.13.5.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "cdc946c63e1eb676f0e29e4640335c0ce68d7de3",
+      "metadata_path": "mods/ars-nouveau.pw.toml",
+      "metadata_sha256": "13dc68f3429beff58fd9d02b2d48318087fc7e1281163587f07df40fd1e6a44a",
+      "status": "verified",
+      "sha256": "f2cf7ea99cf4cb3db1aa4e02c9ef3cdc8aff6ee65eb992f7b560e99741c0b904",
+      "bytes": 19874860
+    },
+    {
+      "id": "ars-ocultas",
+      "filename": "ars_ocultas-1.21.1-2.6.2.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Tsw8vbks/versions/qLGJRyji/ars_ocultas-1.21.1-2.6.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5",
+      "metadata_path": "mods/ars-ocultas.pw.toml",
+      "metadata_sha256": "e63cfbcd739a2d839cfbdb845a354038481c2939af265732f4af14b2c315f4f9",
+      "status": "verified",
+      "sha256": "7c5bba278d785334601f7a348136c19802d90edfaced707d3a80f54f121d6a30",
+      "bytes": 82755
+    },
+    {
+      "id": "ars-unification",
+      "filename": "ars_unification-1.2.23.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/fRdwEsp6/versions/E5Vq5S86/ars_unification-1.2.23.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "e1da13185d03936adc9fc96162348081c7b788bdf77175758b26b805198d129ab9de761324b21afd6bdf76f1af2ad51b954dcea05389c0fa91e80d8c87a83498",
+      "metadata_path": "mods/ars-unification.pw.toml",
+      "metadata_sha256": "c0cdd482e2a57617f89c296eeb0a6dfe260534439041929609fd2d62cf6e95fb",
+      "status": "verified",
+      "sha256": "8e1237cc5d56c7097a23306156964ebf6d828ffa4b279d196ee463e668a2fb11",
+      "bytes": 120451
+    },
+    {
+      "id": "artifacts",
+      "filename": "artifacts-neoforge-13.2.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/P0Mu4wcQ/versions/lMfuK0o7/artifacts-neoforge-13.2.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "9079bc8a22c237881b22b38027bbab2a8a2e685a1f49c1e1e0e5796f3e0a5509a130d73753c7b2980f12e4f00845f8e8c967ee969f1eadcd52139c2780afe09d",
+      "metadata_path": "mods/artifacts.pw.toml",
+      "metadata_sha256": "416b7f130791397fb2ceb9e89ce3fd0e870f207c8e40b759c069cb58b7544314",
+      "status": "verified",
+      "sha256": "e36a929420a0a616abdb28f5bbbdb866a426aa3bb78d1b39bc1183927c101ce6",
+      "bytes": 1086922
+    },
+    {
+      "id": "astral-sorcery",
+      "filename": "AstralSorcery-2.0.3.59.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9281/073/AstralSorcery-2.0.3.59.jar",
+        "https://edge.forgecdn.net/files/9281/073/AstralSorcery-2.0.3.59.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "66f36655eae7cb404c9c16da6f33db31dff6ed9a",
+      "metadata_path": "mods/astral-sorcery.pw.toml",
+      "metadata_sha256": "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c",
+      "status": "verified",
+      "sha256": "a25d11d104e450c643369f54d4d4c50a9c5cd1cda315385803804bd255b182f9",
+      "bytes": 18168322
+    },
+    {
+      "id": "attributefix",
+      "filename": "attributefix-neoforge-1.21.1-21.1.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7115/922/attributefix-neoforge-1.21.1-21.1.3.jar",
+        "https://edge.forgecdn.net/files/7115/922/attributefix-neoforge-1.21.1-21.1.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "7aae849f6d2a6cb1368227407ea5deb552e100ba",
+      "metadata_path": "mods/attributefix.pw.toml",
+      "metadata_sha256": "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1",
+      "status": "verified",
+      "sha256": "b2b20f3d44e824071284c14de3f4d3323d420e1c450040b339a5c37d2c382ad4",
+      "bytes": 19809
+    },
+    {
+      "id": "balm",
+      "filename": "balm-neoforge-1.21.1-21.0.67.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/MBAkmtvl/versions/gMedgtzL/balm-neoforge-1.21.1-21.0.67.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "ad4f4df829b1195446486df818c2c1f0bf6738cb1b30cfdbf9eae4855ce62a66b00f2dc5e0a87409f25ce4eba9bd5c94e1b10d1940af451d5ef7dd7f4b3d8ebd",
+      "metadata_path": "mods/balm.pw.toml",
+      "metadata_sha256": "fc8954e0d3fa66b917d2c84ee04d07b073a9eb6f719d09e1ff85527c1d61a10e",
+      "status": "verified",
+      "sha256": "eaae887582a67a02f55a970ec2d7353f1886a99924ed6144aa4d898266606c34",
+      "bytes": 786010
+    },
+    {
+      "id": "bclib-new-dawn",
+      "filename": "bclib-21.0.26.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/7bdKEtKC/versions/QkXw8Fsl/bclib-21.0.26.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "0724010228a724c77b021676310e96e6d428a5df1f66890ee11b74ea1c2592bdaf9be250bcdbd0eb8bf4a1d4d0c5bddde06fca5ab5d6d700be19d0c86fe67bf2",
+      "metadata_path": "mods/bclib-new-dawn.pw.toml",
+      "metadata_sha256": "561ad31048950924972bdf9f0c156ca9bc11ebbb5928c76e00e58f5b1afb12c3",
+      "status": "verified",
+      "sha256": "73ba7957d61588189eb35415f2ce9b063e7d4a102c6a4757582ba8fad310f2e0",
+      "bytes": 2159176
+    },
+    {
+      "id": "better-advanced-tooltips",
+      "filename": "better-advanced-tooltips-2101.1.0-build.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/iHLDc0eo/versions/uPFbnD32/better-advanced-tooltips-2101.1.0-build.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "05b5cdad948d1735eab7a67a16aaf32814678c392014ec2ada61b8341c0ed1c1ac181cab1de9da3f2c4632592f4a1a5db254bd0543e6778897c8ccd260894142",
+      "metadata_path": "mods/better-advanced-tooltips.pw.toml",
+      "metadata_sha256": "03084ff4f74cedc1b8ac6c85a98842f75956fb4fa811d285d8ca7caa8d54da5d",
+      "status": "verified",
+      "sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+      "bytes": 37653
+    },
+    {
+      "id": "better-advancements",
+      "filename": "BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar",
+      "side": "client",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5850/587/BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar",
+        "https://edge.forgecdn.net/files/5850/587/BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "870521cfaa1a4cb6c830e2409e8b9e4cf179aff2",
+      "metadata_path": "mods/better-advancements.pw.toml",
+      "metadata_sha256": "5f30c1c0363dd44c10db196a8d8a7f164ff06e06b0b80234a519d9e49b2a7f84",
+      "status": "verified",
+      "sha256": "60b548bef04a2f0e1da686ee9035c2e3d4ed0459a17d7a4836fc26af6de6b60e",
+      "bytes": 98641
+    },
+    {
+      "id": "betterend-new-dawn",
+      "filename": "BetterEnd-21.0.39.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9306/604/BetterEnd-21.0.39.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "41cbcc3e104269ac9330747018a4e6a130647d4df598d59307f33520764f22146dfafdfcd3971cefb344d610e71f832f345c01370658374a553568af53a32257",
+      "metadata_path": "mods/betterend-new-dawn.pw.toml",
+      "metadata_sha256": "c25a5ce6962539cb7d30bcad8aa15eb0c5ddedef1d6afbc3d0648c30975abc6d",
+      "status": "verified",
+      "sha256": "92ff67030ef18d63f97d67ad07ce1f2d3d7c98adc66bcc901ba4521edffd06bf",
+      "bytes": 97734709
+    },
+    {
+      "id": "bookshelf",
+      "filename": "bookshelf-neoforge-1.21.1-21.1.81.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7606/240/bookshelf-neoforge-1.21.1-21.1.81.jar",
+        "https://edge.forgecdn.net/files/7606/240/bookshelf-neoforge-1.21.1-21.1.81.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "efc4cda6da4dd879f24d057ed0a6413764c9ba40",
+      "metadata_path": "mods/bookshelf.pw.toml",
+      "metadata_sha256": "cf914684c4151076b726116a66f7bc81a6116655551bcce70a9e64e34e5aa308",
+      "status": "verified",
+      "sha256": "19e88d40da2b6a114c2b808f7fb469d96e66a5379df0a8a43fcb7834498b3e76",
+      "bytes": 328813
+    },
+    {
+      "id": "botania-revived",
+      "filename": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9577/651/Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+        "https://edge.forgecdn.net/files/9577/651/Botania-Revived-1.21.1-2.0.2-NeoForge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "b333e5ac4fd55b0e8822238ced0b25b193db9628",
+      "metadata_path": "mods/botania-revived.pw.toml",
+      "metadata_sha256": "1afaf5985c453bb3aa86d411c543be420a26f41f3f0005746d6399046f5ebf33",
+      "status": "verified",
+      "sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+      "bytes": 15023013
+    },
+    {
+      "id": "brandons-core",
+      "filename": "BrandonsCore-1.21.1-3.2.1.309.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7130/990/BrandonsCore-1.21.1-3.2.1.309.jar",
+        "https://edge.forgecdn.net/files/7130/990/BrandonsCore-1.21.1-3.2.1.309.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "ef00bdaaca4e469cc3925d573434d2f84b9d8a14",
+      "metadata_path": "mods/brandons-core.pw.toml",
+      "metadata_sha256": "7904c140247e0d8a87231cf4d36718fc018e0f851dbec2517b673acdc25547df",
+      "status": "verified",
+      "sha256": "076b44de51c606e6cdd89694ac0a879fc028d4f0103880ef44f47dbcc69f1d23",
+      "bytes": 1385131
+    },
+    {
+      "id": "brewin-and-chewin",
+      "filename": "BrewinAndChewin-neoforge-4.5.0+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/hIu9KJTT/versions/MbcR48Ou/BrewinAndChewin-neoforge-4.5.0%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2d4d264564d12784f5425177fb1b88b5ec0d1672c0957d6a78eb1e12ffa5e0e31a7f85f8beb9c02df0489043f5d2ae5889fc3f589e8e5f8ee7971a458ba0f34d",
+      "metadata_path": "mods/brewin-and-chewin.pw.toml",
+      "metadata_sha256": "22d9510588b081cf9905f6549d24bc11012aa8d9c7d38a8619ab9db5ccb7b9a8",
+      "status": "verified",
+      "sha256": "9f6581823c2449dde4ac1e9b4f5a7cc226c42e058e656741ab392f714f443971",
+      "bytes": 1575450
+    },
+    {
+      "id": "caelus",
+      "filename": "caelus-neoforge-7.0.1+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5694/215/caelus-neoforge-7.0.1%2B1.21.1.jar",
+        "https://edge.forgecdn.net/files/5694/215/caelus-neoforge-7.0.1%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "e4c2e1af4e3082d68f7df75f7c8ce30116d71515",
+      "metadata_path": "mods/caelus.pw.toml",
+      "metadata_sha256": "86cf2ae835b8f3d981af2e88a4d19fdc3dc4f5aa3904c6ba30e25d77d3e9fcbb",
+      "status": "verified",
+      "sha256": "432a645557f29de159d9edde2fd109f8e3b32ff30895b4fede04ee5f1a1a682f",
+      "bytes": 50235
+    },
+    {
+      "id": "cc-tweaked",
+      "filename": "cc-tweaked-1.21.1-forge-1.121.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/gu7yAYhd/versions/KNdTEfUA/cc-tweaked-1.21.1-forge-1.121.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "946c83390aadfe0d8077198fcf22804cee206637",
+      "metadata_path": "mods/cc-tweaked.pw.toml",
+      "metadata_sha256": "100b5d463f36754b5e53b631056efdc06dc5b2799a5b4eb629873da58bbcde11",
+      "status": "verified",
+      "sha256": "bf8dd119701560ea60085cf8c1076d32ffc99a1be5f8b99f6f3b174a88a208f8",
+      "bytes": 3209662
+    },
+    {
+      "id": "cloth-config",
+      "filename": "cloth-config-15.0.140-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5729/127/cloth-config-15.0.140-neoforge.jar",
+        "https://edge.forgecdn.net/files/5729/127/cloth-config-15.0.140-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "c3e5733ba4503b102589a026000fd5ce0212f6f2",
+      "metadata_path": "mods/cloth-config.pw.toml",
+      "metadata_sha256": "22286fa216349c0767808903a0a38662857d2adee54950a18cbf26c167a06029",
+      "status": "verified",
+      "sha256": "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4",
+      "bytes": 1163890
+    },
+    {
+      "id": "clumps",
+      "filename": "Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Wnxd13zP/versions/jo7lDoK4/Clumps-neoforge-1.21.1-19.0.0.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "314d8d8e640d73041f27e0f3f2cad7aad8b4c77dbd7fb31700ef7760362261f77085eed5289555c725d99c3f47a114e7290cd608f39c9f0f12ef74958463bdcc",
+      "metadata_path": "mods/clumps.pw.toml",
+      "metadata_sha256": "2acaff560bbda5741538528a2967355ec86a8f7564adba0b2316989c66892374",
+      "status": "verified",
+      "sha256": "b524ccdace2ef8fd19f5b2074f7de1103ac5065c52553f064c00e098346c293e",
+      "bytes": 18382
+    },
+    {
+      "id": "cobblegen-galore",
+      "filename": "cobblegengalore-1.21.1-0.2.9.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8523/192/cobblegengalore-1.21.1-0.2.9.jar",
+        "https://edge.forgecdn.net/files/8523/192/cobblegengalore-1.21.1-0.2.9.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "d08c1d93e7918eebed6e405d0680d11d33c80bf6",
+      "metadata_path": "mods/cobblegen-galore.pw.toml",
+      "metadata_sha256": "8ee8facb80c02593751f4cb8eddd681868be2b725791ebf1c35060be4fa7efaa",
+      "status": "verified",
+      "sha256": "06f2969117c1b79c3114f3cc695f736e78ccab54dc5f8ce81cd585283da42ba2",
+      "bytes": 88880
+    },
+    {
+      "id": "cobweb",
+      "filename": "cobweb-neoforge-1.21-1.4.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7186/943/cobweb-neoforge-1.21-1.4.0.jar",
+        "https://edge.forgecdn.net/files/7186/943/cobweb-neoforge-1.21-1.4.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "5ae5dbf4184a62b9ff5bd31f6f8ba62943dd197d",
+      "metadata_path": "mods/cobweb.pw.toml",
+      "metadata_sha256": "40802547d9f1f916dfeefea8e0c52499edfc6940daca5b7f60e5c365a4ead296",
+      "status": "verified",
+      "sha256": "40c151dcee6a08decdd980a7c7ffed6ada292e77c3d2cd7aea2d01e5fa8d3b1c",
+      "bytes": 410948
+    },
+    {
+      "id": "cocktails-delight",
+      "filename": "Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9482/953/Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
+        "https://edge.forgecdn.net/files/9482/953/Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "82dac0277825f7224cd3f74fbad266766aac9249",
+      "metadata_path": "mods/cocktails-delight.pw.toml",
+      "metadata_sha256": "e18ad62cc2ea0a113d100652f5e4adc08ca67ca35422981b87c0478dc62ca511",
+      "status": "verified",
+      "sha256": "8694aa56fc1cd41e768e3653d5aca26bccbe7078ad8bd369b595942f989e2061",
+      "bytes": 612185
+    },
+    {
+      "id": "codechicken-lib-1-8",
+      "filename": "CodeChickenLib-1.21.1-4.6.1.529.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8491/811/CodeChickenLib-1.21.1-4.6.1.529.jar",
+        "https://edge.forgecdn.net/files/8491/811/CodeChickenLib-1.21.1-4.6.1.529.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "354d850ca72568b88d67e3c903efced7e62dc90f",
+      "metadata_path": "mods/codechicken-lib-1-8.pw.toml",
+      "metadata_sha256": "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a",
+      "status": "verified",
+      "sha256": "8c453d5c49092860e9d7a692eb858ea54c15d0f9598daae524f9590f8edf276f",
+      "bytes": 1538382
+    },
+    {
+      "id": "codxlib",
+      "filename": "codxlib-1.5.1-neoforge+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/6oyMM4yX/versions/FW5ZWCXm/codxlib-1.5.1-neoforge%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d3b71224c1514c9b055c3a73e07cc7c4c240b02a99f1e05f8a9d67b1007a56f3b87b2e4a2b3df55760202896b8f550602af8b7bd4cf691a8c73672d28826fc70",
+      "metadata_path": "mods/codxlib.pw.toml",
+      "metadata_sha256": "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2",
+      "status": "verified",
+      "sha256": "36431429a0bb58ffba4eec3aac87f28b158b2ca4dae11f1520c7ea9e4d680985",
+      "bytes": 191680
+    },
+    {
+      "id": "common-network",
+      "filename": "common-networking-neoforge-1.0.21-1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7087/488/common-networking-neoforge-1.0.21-1.21.1.jar",
+        "https://edge.forgecdn.net/files/7087/488/common-networking-neoforge-1.0.21-1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "276fbf912ace90281f5faec987c735019884dbe4",
+      "metadata_path": "mods/common-network.pw.toml",
+      "metadata_sha256": "e5052ab66811e9217d662d712781796c72f7105fbbc81e1de3469ccf6178d5a0",
+      "status": "verified",
+      "sha256": "df39b3747e7571a6b4782fb8c618bb1fc5544662aba515ae4f67b56361448ec8",
+      "bytes": 26016
+    },
+    {
+      "id": "controlling",
+      "filename": "Controlling-neoforge-1.21.1-19.0.5.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/xv94TkTM/versions/FaNppCJJ/Controlling-neoforge-1.21.1-19.0.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "bd01b2a38a869ea38e5f2a8fcd601e67ea9b132b9883c6ae752bc35dff6e94f6d47b965e31c1ee5c2f6a1221653549680da779fcb5319d199aec261d221d179e",
+      "metadata_path": "mods/controlling.pw.toml",
+      "metadata_sha256": "65c8086d2ec3d39acc7bd36c7a0306ccc43b602b38fa07d13291bc478ef7dfff",
+      "status": "verified",
+      "sha256": "cc525fb6b030d9e4d33176983f278919e17b33935e2ca568929bdfa98f2b44a0",
+      "bytes": 77555
+    },
+    {
+      "id": "cooking-for-blockheads",
+      "filename": "cookingforblockheads-neoforge-1.21.1-21.1.24.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/vJnhuDde/versions/MQCIy6VF/cookingforblockheads-neoforge-1.21.1-21.1.24.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "bec8bb71b9540fd33bd4e5d1e5f151abc03c4fb97f1477f690d222c9710eabed876e5b2380a37bfdbc24649e1f66d8c963f13e6e738a336e9a0fdc88012d8447",
+      "metadata_path": "mods/cooking-for-blockheads.pw.toml",
+      "metadata_sha256": "43e394e100190d49d216c0b646868ac134d3ae82f2361c3bd807ff1b1449c3e0",
+      "status": "verified",
+      "sha256": "3dd7af93b2156b14cf279fa6da2f7a1f88a63a81d7cfe001ac63945b06e62ccd",
+      "bytes": 1266042
+    },
+    {
+      "id": "corail-tombstone",
+      "filename": "tombstone-neoforge-1.21.1-9.5.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/YT5K34AB/versions/e68NhQJm/tombstone-neoforge-1.21.1-9.5.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "c987d0321bf9c38107c33882c23761963c2a76bd6b24baf24b83ae846efd56d8f29ecb9bec8a80092f1624910ed10d2b7e3d07cf2dde3984524fb65d894a539c",
+      "metadata_path": "mods/corail-tombstone.pw.toml",
+      "metadata_sha256": "7b4e74ebfc923568149d8a27a90217788713f184af1333d2f93708dfbab83dfd",
+      "status": "verified",
+      "sha256": "520e2a3cb5fb8001da20a23aaf39a7fd8fd937af962c2b43c55460099e30b23b",
+      "bytes": 2520705
+    },
+    {
+      "id": "crafting-tweaks",
+      "filename": "craftingtweaks-neoforge-1.21.1-21.1.11.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8697/050/craftingtweaks-neoforge-1.21.1-21.1.11.jar",
+        "https://edge.forgecdn.net/files/8697/050/craftingtweaks-neoforge-1.21.1-21.1.11.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "b6252039445978a742f439fc398f2a198b86bd4e",
+      "metadata_path": "mods/crafting-tweaks.pw.toml",
+      "metadata_sha256": "9942062b933fc042f551ff9539c81ca37ef8e97eec7d35f7800805a9d285b956",
+      "status": "verified",
+      "sha256": "0964fefc4a07120a53232b2d934fac4baf15fdaa99b69add30a18a642bc1cf98",
+      "bytes": 256086
+    },
+    {
+      "id": "creeper-overhaul",
+      "filename": "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/MI1LWe93/versions/HNrAYCLH/CreeperOverhaul-neoforge-1.21.1-4.0.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "880ca9d8d23b527d3583cbe7fa399b2a26421b6ccba1deacd666cf9b61f4af4378157f404ab3789a7ae9c3c8693e2b7f6c8c532e703e5bb0e1881b9cc2879a6e",
+      "metadata_path": "mods/creeper-overhaul.pw.toml",
+      "metadata_sha256": "cd4c4ec6ef26d2b61e0cb0bdd398e8d528b88ebf739fc0898bc8cb2f7a88debb",
+      "status": "verified",
+      "sha256": "ed83bea2826667fca80a6a8067f89fe7b97eb8b3213bbcb7f0f4e6a6898c0bc9",
+      "bytes": 1185088
+    },
+    {
+      "id": "critters-and-companions",
+      "filename": "crittersandcompanions-neoforge-1.21.1-2.4.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Yd4wb5wZ/versions/MMFSVRkt/crittersandcompanions-neoforge-1.21.1-2.4.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "96c886d1239da5cbcaf71fb943edc9e707dff8e10683b54adabc5f28ecf4f9e54c8df33b6b4bbbb36463c6b38a05505255ed1a36f32f52bf4e5859261a41146f",
+      "metadata_path": "mods/critters-and-companions.pw.toml",
+      "metadata_sha256": "3f4a84b4344b129792d44a66fd0809d3f58a903707848b6905b493759814034d",
+      "status": "verified",
+      "sha256": "55f526f7dc162918fb871557c3260582d55c6adf2b9b44892b918bed7f4fb431",
+      "bytes": 1797907
+    },
+    {
+      "id": "crystalix",
+      "filename": "crystalix-3.0.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9251/153/crystalix-3.0.3.jar",
+        "https://edge.forgecdn.net/files/9251/153/crystalix-3.0.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "07f07243f846573dfb4deb6b0ce2481809303caf",
+      "metadata_path": "mods/crystalix.pw.toml",
+      "metadata_sha256": "4f26c7dac908030d9f2849db8d8ebb32d1710030347b828d22cf4ccd4fa69fba",
+      "status": "verified",
+      "sha256": "da1043170b74347017bf338322990c2010d3db65721f0f38119e5e412242819b",
+      "bytes": 791790
+    },
+    {
+      "id": "cucumber",
+      "filename": "Cucumber-1.21.1-8.0.16.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Rw1NrDzF/versions/8421rqFF/Cucumber-1.21.1-8.0.16.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fbc63f23f827061b2a45f33a3867e105268b5a51d9ca92ba3bacd2e2a0af847eb4c367e726a62a455b841e503f8ce73ea9e180285670ddf3ec18a8ba4e72da7d",
+      "metadata_path": "mods/cucumber.pw.toml",
+      "metadata_sha256": "b2059d79bf6e41281a26b5b75a8f0cb20804079fe49a22042a26aa5ce28ba7f5",
+      "status": "verified",
+      "sha256": "371f9551c676b76a39d5580be28f5cfeff364e131ad138fbf7108aeb2712f43f",
+      "bytes": 275588
+    },
+    {
+      "id": "curios",
+      "filename": "curios-neoforge-9.5.1+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/vvuO3ImH/versions/yohfFbgD/curios-neoforge-9.5.1%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "5981a267686b744e7e3c227f78cbcd5267c14ac6979a28e814695f4589273998563147207fef4a5cdb7cdbdc39797cd95d9e4abadb55869f18e02a38d0654ae5",
+      "metadata_path": "mods/curios.pw.toml",
+      "metadata_sha256": "36debf7653e95a855b4fedacc19027cf2e01960fc0b6d55ef2ffbffbcb455690",
+      "status": "verified",
+      "sha256": "a45df2125c26219974aba7507ffc9afe7b83acc941a386af3faacb1cc0056fde",
+      "bytes": 410690
+    },
+    {
+      "id": "cyclops-core",
+      "filename": "cyclopscore-1.21.1-neoforge-1.30.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Z9DM0LJ4/versions/axSK9vET/cyclopscore-1.21.1-neoforge-1.30.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8ea7ac02f7b0d74461a2e509cd3b06e307f0679fdf4f90445f3094d7d6cc7f349103967d03708288a4d56f4442b8b1ce1f2d6425a326e3a1ba4061114b3917f0",
+      "metadata_path": "mods/cyclops-core.pw.toml",
+      "metadata_sha256": "88a342c59afdff0638c444ca7b05e2daac045a58a74774eef5a8293c5f16bea8",
+      "status": "verified",
+      "sha256": "a11dbce574bbc4db4d56c1b22af1826d09db1d2432030c3590e2c77754837b1d",
+      "bytes": 1163235
+    },
+    {
+      "id": "databank",
+      "filename": "databank-1.3.2.1.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9402/867/databank-1.3.2.1.jar",
+        "https://edge.forgecdn.net/files/9402/867/databank-1.3.2.1.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "d0d9890a2dbf5dcd43d2c79d1228630af0dd7695",
+      "metadata_path": "mods/databank.pw.toml",
+      "metadata_sha256": "df84f9d64a961ce5b2bfa546319f35bfa047715a106b175d95241514329775d2",
+      "status": "verified",
+      "sha256": "f283bd2ef1172bc23e13f514b280988b72e3b8fc37ccfa81fb93feebc4c6f456",
+      "bytes": 538203
+    },
+    {
+      "id": "deeperdarker",
+      "filename": "deeperdarker-neoforge-1.21.1-1.4.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/fnAffV0n/versions/TuD0Zvi3/deeperdarker-neoforge-1.21.1-1.4.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "38d8d87878f39a063feb029db17702bedadf7554233ae56db6018c21225b6dff4d4cc31f4b0995254fd488e2a687f3b15bf9647c59dd42b9032791d34316ed0c",
+      "metadata_path": "mods/deeperdarker.pw.toml",
+      "metadata_sha256": "a9ecc4476d26e707189e9f988c19f22961c33dfd5e5b4db1dfd6f87c6a81c545",
+      "status": "verified",
+      "sha256": "eee3f51222b0bcc714def002ff089ac9e131d3cae4575b542fd0a7dd101fe0af",
+      "bytes": 3906057
+    },
+    {
+      "id": "default-options",
+      "filename": "defaultoptions-neoforge-1.21.1-21.1.8.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/WEg59z5b/versions/1zt17WsC/defaultoptions-neoforge-1.21.1-21.1.8.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "29f66777068d92b1e149630d569441e5176ac40ec5cb4ee6c63c565aa7d475587a5097f59c433d69a39fd238b64902e2ba742b30c26419de901c86a3300b848e",
+      "metadata_path": "mods/default-options.pw.toml",
+      "metadata_sha256": "a6967d761dde867ccc1af53dc9f4e530eb9917a9cb21d0fc15708e8cd2c0f2ba",
+      "status": "verified",
+      "sha256": "d12790dc1f0857778d282c00ad5be56882ac6fce44769c1f012be09b5604874a",
+      "bytes": 105507
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "filename": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/x2qQNlIy/versions/w30oDCUY/wardentools-1.1.4_neoforge_1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d6436a30cb9339c63fa2c548685e61243d38b4814e4495f7cdc02294428b6be16acd066718b847d5fad8c99246baa7abc9fa4b283e09c13f7fae6443d758728a",
+      "metadata_path": "mods/dive-into-the-abyss.pw.toml",
+      "metadata_sha256": "285503fbd050f19c1351879215cbef9d077cfbf5eec3d5db3096586e2247aa68",
+      "status": "verified",
+      "sha256": "ffe5eb5da73b480e22361834b14109e8f380a91eeff56a33d6334ee0090b16a1",
+      "bytes": 27978583
+    },
+    {
+      "id": "draconic-evolution",
+      "filename": "Draconic-Evolution-1.21.1-3.1.4.633.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8797/042/Draconic-Evolution-1.21.1-3.1.4.633.jar",
+        "https://edge.forgecdn.net/files/8797/042/Draconic-Evolution-1.21.1-3.1.4.633.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "42ccf634a2a167db9cda533507909dd0524f2798",
+      "metadata_path": "mods/draconic-evolution.pw.toml",
+      "metadata_sha256": "5b4d79435b6c6307cdcb141561b46a536fcf317a5661dbcafe33dfcde3cfe80f",
+      "status": "verified",
+      "sha256": "e89f3a23a5478e35099905d7c08f9f6a2ff70289e964904e91f06a7ceeed39b5",
+      "bytes": 6046229
+    },
+    {
+      "id": "eidolon-repraised",
+      "filename": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9332/315/eidolon_repraised-1.21.1-0.5.0.8.jar",
+        "https://edge.forgecdn.net/files/9332/315/eidolon_repraised-1.21.1-0.5.0.8.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "12a816c11a064a7050e74c5c15cf07fb8269b6d4",
+      "metadata_path": "mods/eidolon-repraised.pw.toml",
+      "metadata_sha256": "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5",
+      "status": "verified",
+      "sha256": "3ebe2e82bdee7a73b4f48b3125b1c469c329624a9d9f8e60e23476458419c245",
+      "bytes": 4056114
+    },
+    {
+      "id": "embeddium",
+      "filename": "embeddium-1.0.15+mc1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/sk9rgfiA/versions/J7b96IEd/embeddium-1.0.15%2Bmc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d073cf52dcf2aeec3ac9f746d4571c7b4b1ad746fa11d4bcc5a21a264ae3119ac6d341d08cc9a70042cf0ddffc3b3ef3329ed30217035d4551c9d6788b6dc1e6",
+      "metadata_path": "mods/embeddium.pw.toml",
+      "metadata_sha256": "778c42263b2ba7c9e73553bdcd70f48a3e485ba52b6a83474160d48be696b71f",
+      "status": "verified",
+      "sha256": "3aac4c4c6e82d78d8dda4c611d68c672d1061b42bb6954331e3c2e7f14c451e1",
+      "bytes": 1048745
+    },
+    {
+      "id": "embers-re-ignited",
+      "filename": "embers-reignited-1.21.1-1.5.9.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/8znVCTxA/versions/2r51o0lC/embers-reignited-1.21.1-1.5.9.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "7e0f7b72f6c3516f28f3fc4b7539088c1ae320d557a0c80fb01dd80d5479ce504f4ff2a8bedf2a8f90bae9d8445baabe0fd887aef4afd61efa2d239fffcbf361",
+      "metadata_path": "mods/embers-re-ignited.pw.toml",
+      "metadata_sha256": "ca8d4b29f55c79a5b5534e7542e908fb77e0d66c9c68a10a6bfd91a8c08b149d",
+      "status": "verified",
+      "sha256": "65b07f81563a6bc3c6435d3296bc4b0ab96d6a739b3a3dceb384e2d281e82685",
+      "bytes": 15894849
+    },
+    {
+      "id": "enchanted-witchcraft",
+      "filename": "enchanted-neoforge-1.21.1-4.2.7.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8055/168/enchanted-neoforge-1.21.1-4.2.7.jar",
+        "https://edge.forgecdn.net/files/8055/168/enchanted-neoforge-1.21.1-4.2.7.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "2380cb5a49c7eb86afa6f790a920d1872d5cb85e",
+      "metadata_path": "mods/enchanted-witchcraft.pw.toml",
+      "metadata_sha256": "4a082b19098f0cfac6bf8b65fa154e1e06ecb5cd7b6636942e2d373d72f00253",
+      "status": "verified",
+      "sha256": "205a3e1edb7e53e9bbf3b8ab965ac5eb3840bc43760e1b003200e4735ebf1bb0",
+      "bytes": 3120843
+    },
+    {
+      "id": "enchantment-descriptions",
+      "filename": "enchdesc-neoforge-1.21.1-21.1.11.jar",
+      "side": "client",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8693/034/enchdesc-neoforge-1.21.1-21.1.11.jar",
+        "https://edge.forgecdn.net/files/8693/034/enchdesc-neoforge-1.21.1-21.1.11.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "4d453df785ac21e0e7389cba949f4fa460c3e267",
+      "metadata_path": "mods/enchantment-descriptions.pw.toml",
+      "metadata_sha256": "2e137ea0702d21a9be7943d997bedf98f2c47751a621341081020a2bb53db4ae",
+      "status": "verified",
+      "sha256": "868d3eab3305d96dd3ecf510d18a7aa7444e2aea168695cf4aff23a96bec975f",
+      "bytes": 82648
+    },
+    {
+      "id": "enderman-overhaul",
+      "filename": "endermanoverhaul-neoforge-1.21.1-2.0.3.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Lq6ojcWv/versions/TH9YXp9r/endermanoverhaul-neoforge-1.21.1-2.0.3.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d2032b35ed5dcf028a35a1d3da16a48b71d182fab1203bbf0f9f9123b99bb725730c60cdd8a9f48431c91f7ac9e04fa958aed842ee94114ade3a9418392ee6ab",
+      "metadata_path": "mods/enderman-overhaul.pw.toml",
+      "metadata_sha256": "1045ba1bb46eb77e2fea9be04268c2c73c161b94f3bceddbd4c3dbff1c0bf555",
+      "status": "verified",
+      "sha256": "fe6c04dcfdbb8815058ebf1102d64cb4c86060a0a1b7350121e4a976d4a92248",
+      "bytes": 1330403
+    },
+    {
+      "id": "enigmaticlegacy-plus",
+      "filename": "enigmaticlegacyplus-1.21.1-1.1.2.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/oIjj1Fan/versions/ELK5gx91/enigmaticlegacyplus-1.21.1-1.1.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "9f334bc1c22756d0d1d5e785223217409dcacf05a8ff3998f6d18281f45487df5f5a405d41204908e49591464f690d085724a7d8b00318ad2811448a2057b0f1",
+      "metadata_path": "mods/enigmaticlegacy-plus.pw.toml",
+      "metadata_sha256": "8514d86365986f1eac584f4a5a3c38d24e7963685b814210b1a7b03ebc045f4b",
+      "status": "verified",
+      "sha256": "52acb550a9df9f9b681e9286d04b4f1c80d519f63af94a092a51c88697e0592e",
+      "bytes": 7254195
+    },
+    {
+      "id": "entityculling",
+      "filename": "entityculling-neoforge-1.12.1-mc1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/NNAgCjsB/versions/DDaDZQ47/entityculling-neoforge-1.12.1-mc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "c1818837b0e43f67fa4cd2cfffc2d57c17e579b405b215dd627e3ea68d0c000b56a79614cd41f20451ea7a687e9e9de66afe871f0b9bcec680699445ea0d9fa3",
+      "metadata_path": "mods/entityculling.pw.toml",
+      "metadata_sha256": "d518db51c2502b5b04d6ca4add6a2b3e862a0af15e7a65f0ab83180778adb604",
+      "status": "verified",
+      "sha256": "8867487645142a01b5a6de3f7b984af8d0c516daa9a7aa83c4f6916adccd4eca",
+      "bytes": 1523607
+    },
+    {
+      "id": "eternal-starlight",
+      "filename": "eternalstarlight-0.9.1+1.21.1+neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/XvcfUGfB/versions/IyTc0Vvj/eternalstarlight-0.9.1%2B1.21.1%2Bneoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71",
+      "metadata_path": "mods/eternal-starlight.pw.toml",
+      "metadata_sha256": "6e1beac08fed14accc3edb3b5cd75220c3476d2ff27ce3b415c035623da41cda",
+      "status": "verified",
+      "sha256": "e77369ad1a779036b243ef0f7b24776640a3ff84968e6f3be1931bc953e92b09",
+      "bytes": 59325382
+    },
+    {
+      "id": "evilcraft",
+      "filename": "evilcraft-1.21.1-neoforge-1.2.100.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/3ANq2btA/versions/mOGfae8K/evilcraft-1.21.1-neoforge-1.2.100.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "14bdd2ae8e0b8c25883c8046c9ee2d3d7f8993e479c2d974d31940acf9d07aa13e4e42f6be993be56b1b7b53a169383e84f82c5fbe4a642f946880617226cb56",
+      "metadata_path": "mods/evilcraft.pw.toml",
+      "metadata_sha256": "b6b98117b5932b6dc144a13bffe6bcbcaec86fa35dd43eb6b4cbf04a9b3be677",
+      "status": "verified",
+      "sha256": "48843165e7b4d4ecb2bd3b854c272305d60469a5409e8f35f47f5f15e2a6db20",
+      "bytes": 2854369
+    },
+    {
+      "id": "exclusions-lib",
+      "filename": "ExclusionsLib-1.1.0-NEO.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7502/579/ExclusionsLib-1.1.0-NEO.jar",
+        "https://edge.forgecdn.net/files/7502/579/ExclusionsLib-1.1.0-NEO.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "50d33588e3b346d9f8898993d115c05ea45037ec",
+      "metadata_path": "mods/exclusions-lib.pw.toml",
+      "metadata_sha256": "b9363f3ba7f2ac384cca83c42054485d1b6473d114064cf3aec7933924932bc2",
+      "status": "verified",
+      "sha256": "e926fce2ed8e78b2f5fc29cc707299f8688b4a39b2043a30a2607fda046abfa2",
+      "bytes": 94867
+    },
+    {
+      "id": "extra-botany-revived",
+      "filename": "ExtraBotany-1.21.1-1.0.4-NeoForge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9599/226/ExtraBotany-1.21.1-1.0.4-NeoForge.jar",
+        "https://edge.forgecdn.net/files/9599/226/ExtraBotany-1.21.1-1.0.4-NeoForge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "246e372964413d09c5f2fa0c93b95a4c224d1949",
+      "metadata_path": "mods/extra-botany-revived.pw.toml",
+      "metadata_sha256": "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f",
+      "status": "verified",
+      "sha256": "d0554b57149b46beaefe38f11d20ded9b93dbbc954d4deb2939fd2f58cb19dad",
+      "bytes": 6996224
+    },
+    {
+      "id": "extreme-sound-muffler",
+      "filename": "ExtremeSoundMuffler-3.57_NeoForge-1.21.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/5IIKsxiL/versions/nUCCmquN/ExtremeSoundMuffler-3.57_NeoForge-1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "b4fea77c1218b248b20a1a75a5e626f963e48bafc56f3c2f5e833ab2592f8ee745844f9e67a75c786f27b632601e9b543583d65c8dd43696401fd2164fc438d3",
+      "metadata_path": "mods/extreme-sound-muffler.pw.toml",
+      "metadata_sha256": "8babbd9434008158cabb000d44ad5c54df1a60f2dfab019687fb5a3d37ebd13a",
+      "status": "verified",
+      "sha256": "25c8af2a13061d6cd77cbaebe15e0c4f880151c2876eadbf4768db8fbaa89613",
+      "bytes": 270493
+    },
+    {
+      "id": "farmers-delight",
+      "filename": "FarmersDelight-1.21.1-1.3.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8765/184/FarmersDelight-1.21.1-1.3.4.jar",
+        "https://edge.forgecdn.net/files/8765/184/FarmersDelight-1.21.1-1.3.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "27675ddfcb8cc37e6ea1ab6c15051c7949d94657",
+      "metadata_path": "mods/farmers-delight.pw.toml",
+      "metadata_sha256": "d9ed9ac8e0db9db29078dafa22bc2d86ac702f10863ae7cb1d5245111c5ea17b",
+      "status": "verified",
+      "sha256": "139ad7696462c89c03eea463f805abffa552526c5dadaadae221dd9624cb197c",
+      "bytes": 3160490
+    },
+    {
+      "id": "farming-for-blockheads",
+      "filename": "farmingforblockheads-neoforge-1.21.1-21.1.14.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8969/759/farmingforblockheads-neoforge-1.21.1-21.1.14.jar",
+        "https://edge.forgecdn.net/files/8969/759/farmingforblockheads-neoforge-1.21.1-21.1.14.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "82f5f635cc73610d34a493ec067e28cd4659cbbb",
+      "metadata_path": "mods/farming-for-blockheads.pw.toml",
+      "metadata_sha256": "d47898356c10a7decf6d4c9aeee4f753df6a716be4c90a3609f15573c8e56345",
+      "status": "verified",
+      "sha256": "473e1e2fe970df030119f4d1e0214bcf0fd9b1673912c63bf6c5b5a75e65d2de",
+      "bytes": 895570
+    },
+    {
+      "id": "fenns_totemic",
+      "filename": "Totemic-neoforge-1.21.1-0.12.18.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/GLffYJtD/versions/6Vny8MoL/Totemic-neoforge-1.21.1-0.12.18.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4b3c4a6c926b8bf203b5593c558264b096f870ecfe74e6b6dbeef850825c9814a3b9a2d9f03c3a91680042dd684574f0259280210b9173750c921ff733e94896",
+      "metadata_path": "mods/fenns_totemic.pw.toml",
+      "metadata_sha256": "97691b1ad518bd03fa1c85a6b0af69049939483641eaf1bf5a7755627dac7de6",
+      "status": "verified",
+      "sha256": "f200a607f22eb70101af052043b60a0580f756549a153b0ac9e41c0216051c5f",
+      "bytes": 1204753
+    },
+    {
+      "id": "ferrite-core",
+      "filename": "ferritecore-7.0.3-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/uXXizFIs/versions/x7kQWVju/ferritecore-7.0.3-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "19af89a2075bb10a63884fa853ebf84b02c79dc3242430ecdad056fd764fdcde367a7303276b329df01b0736e2ef264c5d80c7dc92c6aebd244f556a230bb417",
+      "metadata_path": "mods/ferrite-core.pw.toml",
+      "metadata_sha256": "73360e397134d238ee8fd21d33fd7f9275e9441f74f8f1b6ed92278877c0b9f1",
+      "status": "verified",
+      "sha256": "d87ea28262715ebff45b8a82d493e6b468e7a4521bc021df5d88302196d030a8",
+      "bytes": 121559
+    },
+    {
+      "id": "feywild",
+      "filename": "feywild-1.21.1-5.6.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9321/431/feywild-1.21.1-5.6.4.jar",
+        "https://edge.forgecdn.net/files/9321/431/feywild-1.21.1-5.6.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0",
+      "metadata_path": "mods/feywild.pw.toml",
+      "metadata_sha256": "40fbad98093648e6d1c606cbe19897ff4cfc9eba104bf9f5cb14ade22c4b6d18",
+      "status": "verified",
+      "sha256": "6e115fe731ecfd18bd6d676e052998d3a6c2e12e5c31cf101b4c77b93359c7b8",
+      "bytes": 23561247
+    },
+    {
+      "id": "forbidden-arcanus",
+      "filename": "forbidden_arcanus-2.6.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/MdlnLS7Q/versions/fNjxgZPH/forbidden_arcanus-2.6.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "012a1d5c779a0173a5c76ea79f429486753f040dfe59739bc45fd0817182d705a80110032f024757f0ac51a9bd10c546a11a730899aa9adbf7251a5040472724",
+      "metadata_path": "mods/forbidden-arcanus.pw.toml",
+      "metadata_sha256": "1781b20756b9c2b0bd930e18bbe7cd8c66d822018d95d74b5ffbbfac19aa94ff",
+      "status": "verified",
+      "sha256": "8d5ef1557fcdd0ba9fe98c38458751bcbecb118c30924daa6fbdea0a54bf5785",
+      "bytes": 3402083
+    },
+    {
+      "id": "ftb-chunks-forge",
+      "filename": "ftb-chunks-neoforge-2101.1.24.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9594/476/ftb-chunks-neoforge-2101.1.24.jar",
+        "https://edge.forgecdn.net/files/9594/476/ftb-chunks-neoforge-2101.1.24.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "f0d48143cc80918cf632a4c14c3ca3e974ed0457",
+      "metadata_path": "mods/ftb-chunks-forge.pw.toml",
+      "metadata_sha256": "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521",
+      "status": "verified",
+      "sha256": "4fd569936a0dc966e114d92d98277baec6c9b8337b215a30648b63f9cb860a1f",
+      "bytes": 671431
+    },
+    {
+      "id": "ftb-filter-system",
+      "filename": "ftb-filter-system-neoforge-21.1.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7429/011/ftb-filter-system-neoforge-21.1.4.jar",
+        "https://edge.forgecdn.net/files/7429/011/ftb-filter-system-neoforge-21.1.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "a48e54edeacc59aaba29a1b627799c052112ee0b",
+      "metadata_path": "mods/ftb-filter-system.pw.toml",
+      "metadata_sha256": "9cb8d355c77067b00a96d96db398f60db62a6ee238dabff45ade33dd8d9f9e3b",
+      "status": "verified",
+      "sha256": "b8700e8bfd9c78b09bc7819cb28a6318b20d2bf68969bc6894a0bfa39581a99b",
+      "bytes": 211671
+    },
+    {
+      "id": "ftb-library-forge",
+      "filename": "ftb-library-neoforge-2101.1.39.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9350/706/ftb-library-neoforge-2101.1.39.jar",
+        "https://edge.forgecdn.net/files/9350/706/ftb-library-neoforge-2101.1.39.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "ff852d99ade215fb892369687d0634ecf0bca6ae",
+      "metadata_path": "mods/ftb-library-forge.pw.toml",
+      "metadata_sha256": "df64ca595f6f0f79e3a4a844fd0a887b44f5e007f5deb9ac011b5cf67b3a2127",
+      "status": "verified",
+      "sha256": "ca64bd1b5f335406900f74eeafacea5a3580a3933d61de6b6600a64eb12a9a95",
+      "bytes": 1477833
+    },
+    {
+      "id": "ftb-quests-forge",
+      "filename": "ftb-quests-neoforge-2101.1.38.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9405/148/ftb-quests-neoforge-2101.1.38.jar",
+        "https://edge.forgecdn.net/files/9405/148/ftb-quests-neoforge-2101.1.38.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "389fb269d338ed4c7f14f945a07759b6d444af40",
+      "metadata_path": "mods/ftb-quests-forge.pw.toml",
+      "metadata_sha256": "ce69874826195a0aed63a54128c8656b80e564cd32db59c1f9cfe3367150fd5e",
+      "status": "verified",
+      "sha256": "3752657a82c69b0a80c034700df86f1a3d7c5f3e3aad814b5af748b9082a834b",
+      "bytes": 1635517
+    },
+    {
+      "id": "ftb-teams-forge",
+      "filename": "ftb-teams-neoforge-2101.1.12.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9434/081/ftb-teams-neoforge-2101.1.12.jar",
+        "https://edge.forgecdn.net/files/9434/081/ftb-teams-neoforge-2101.1.12.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "9c831fbbbccf2178827c3ccf278b2f2a0ce57306",
+      "metadata_path": "mods/ftb-teams-forge.pw.toml",
+      "metadata_sha256": "d1665d3000a0857df2d4ea5d3b3a6c5e2b0a60b0c83f8c0f30f05b5305b1878f",
+      "status": "verified",
+      "sha256": "b3f33436070b7ae4a706280561f1d2f1d1eb1a089cb13ec9851e99646165aed2",
+      "bytes": 308430
+    },
+    {
+      "id": "ftb-xmod-compat",
+      "filename": "ftb-xmod-compat-neoforge-21.1.14.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9344/504/ftb-xmod-compat-neoforge-21.1.14.jar",
+        "https://edge.forgecdn.net/files/9344/504/ftb-xmod-compat-neoforge-21.1.14.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "8dc3db7b8aa93eabac54237c5d53bfea15f92ba5",
+      "metadata_path": "mods/ftb-xmod-compat.pw.toml",
+      "metadata_sha256": "2cfad52dbc5bd12df95bf3b3f8de574bb7d185a90caaf32829a9b19bc98aebe8",
+      "status": "verified",
+      "sha256": "143c79710af4e17dbff7bb933f2e17c667091353e188e5d53fdaab4220a5ff64",
+      "bytes": 149952
+    },
+    {
+      "id": "fusion-connected-textures",
+      "filename": "fusion-1.3.16-neoforge-mc1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/p19vrgc2/versions/AYDaLPK8/fusion-1.3.16-neoforge-mc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "0b65c3a78db5785c76a222639a56da0cd09fc8445e02cdfb84e4bb7c88dc2c5622ccb468291a12df30440205a881db2023d9857fdb7252e7d21238876fcc8608",
+      "metadata_path": "mods/fusion-connected-textures.pw.toml",
+      "metadata_sha256": "108739f2fdaa6a885a3217ae692b2521ab10b8e71fa1222c67274ea0562649a5",
+      "status": "verified",
+      "sha256": "29920a6838f4f942947d208349480d7f5737f9fac6411c6eac5f3e824a438048",
+      "bytes": 947335
+    },
+    {
+      "id": "gateways-to-eternity",
+      "filename": "GatewaysToEternity-1.21.1-5.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/8OIeAukW/versions/FNtkt80G/GatewaysToEternity-1.21.1-5.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "83448ff2215b9a5d645bf9b0e0a0babfdfb04e60a2d9ca07783c962575b5770d095fdbfdd8ab6cb861871b98ecbc29204af3be14cb830623b442ad9894d462fb",
+      "metadata_path": "mods/gateways-to-eternity.pw.toml",
+      "metadata_sha256": "677912b683eeda568c6e81d235c2411461c1d212608b5440a79d5abbd2c5fc1d",
+      "status": "verified",
+      "sha256": "7e7df9c4e436ed0ac2a7728102724d5272dc2eef34c7df786074c8d27d888cd9",
+      "bytes": 649614
+    },
+    {
+      "id": "gaze-a-malum-addon",
+      "filename": "gaze-1.1.7.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/NlvaJ5WE/versions/od4ltbRo/gaze-1.1.7.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "7e9ecdcc996f376e280bf46f5c0cfd328fb6f1228b1dac469390031458e7a81ad56acff03d9bb6b57b8209586798ab443be1e91fa8fe56297a9e7c9451db03e2",
+      "metadata_path": "mods/gaze-a-malum-addon.pw.toml",
+      "metadata_sha256": "c367923085af785c1e969e992536e3e10a053003d1bd1cdb055ffe1f2ce9c362",
+      "status": "verified",
+      "sha256": "ef9d7ea7a56f1ba5547f4c7b90bf36c87807b9bb5a18c43b1f6c370d5b7e6c06",
+      "bytes": 10708229
+    },
+    {
+      "id": "geckolib",
+      "filename": "geckolib-neoforge-1.21.1-4.9.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8893/490/geckolib-neoforge-1.21.1-4.9.3.jar",
+        "https://edge.forgecdn.net/files/8893/490/geckolib-neoforge-1.21.1-4.9.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "5cfe835472a5c5457ae9ac192d9d7b317454d5ac",
+      "metadata_path": "mods/geckolib.pw.toml",
+      "metadata_sha256": "4cf7eb494f48576e28895ee5f362878f95c6bad65372666106140fdae82d0c4c",
+      "status": "verified",
+      "sha256": "20a1995e4074f387ff549e2c57ea79dd7d41ee83c6afb9dd6a6e840e592d1c47",
+      "bytes": 634531
+    },
+    {
+      "id": "get-it-together-drops",
+      "filename": "getittogetherdrops-neoforge-1.21.5-1.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/T0OUgf8P/versions/K4TUzlwa/getittogetherdrops-neoforge-1.21.5-1.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fc0f01061d2785d205d5e1e0d49b40408d3fa597b65b7b74036beefc47f4d3577f4a8ec7ad6c26cae3a70e36f1205afb1e9a0afa77cfece49f69344ed69fc9fa",
+      "metadata_path": "mods/get-it-together-drops.pw.toml",
+      "metadata_sha256": "1f805479ca7f01f27c1bf662d7d9ccb9e3935e7007e05b469b1072ca09e9e421",
+      "status": "verified",
+      "sha256": "a09466d03e3dde0c0f5c179146a8247b33a720a88979eb813c5f2aa2ad1c7a78",
+      "bytes": 8825
+    },
+    {
+      "id": "ghost",
+      "filename": "ghosts-neoforge-1.21.1-1.3.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/gJKLGvbS/versions/jlhsMccP/ghosts-neoforge-1.21.1-1.3.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4a6c28f3b5f27455886baf7825f0afeaaef1ec4fc086994714f8aa734983e3f01584373ae62f72aceacdef23c47f1d79bc014f75360ae204405627aaaa3ebbba",
+      "metadata_path": "mods/ghost.pw.toml",
+      "metadata_sha256": "895a8abebb82f5cd662e71f765b0d1ae8e3bf5e9c7a1bff3270f4fa329cab0cd",
+      "status": "verified",
+      "sha256": "fc0641e10187b3cfadb93e969d1d61ea5c5c93401af22bd1682ab20f62bd08d0",
+      "bytes": 708088
+    },
+    {
+      "id": "goety",
+      "filename": "goety-3.2.2.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/4ZVIxU8x/versions/xLTYSsZD/goety-3.2.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d68103012faad1b74cf96017aa22711d80033d04035e98e5452f4f70d6fbc30c6523b4d3f561fedba798e116055caf598432b472b13e8a11dca07d00468b8b46",
+      "metadata_path": "mods/goety.pw.toml",
+      "metadata_sha256": "269e6225a8f6ef2bff759a8870e3db2300a72a782600b84e875e79cfbe819591",
+      "status": "verified",
+      "sha256": "507ad7c4462fe4d888a6458ad6dfbf1f320eadd626d714c96061c109493d888f",
+      "bytes": 95799757
+    },
+    {
+      "id": "goety-cataclysm",
+      "filename": "goety_cataclysm-1.21.1-1.8.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/YwmuwbXi/versions/gv1JY0TU/goety_cataclysm-1.21.1-1.8.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "45e390fb44ea7aa6b5f81b95b57ca224489a527a66167de1bdcf9a53c71cb5a54f6d29b69fa30b3f342e853c30bee677cf2c3701d141edf76b0be8515b6b6b60",
+      "metadata_path": "mods/goety-cataclysm.pw.toml",
+      "metadata_sha256": "4499bf187e4403821a6070199853ce4a1fd5ea0b9c5627e0bf7e84ac617039c1",
+      "status": "verified",
+      "sha256": "0c9a122cdd94eef65fe5d6b610b20b4a811659032707fa314756494fb9772738",
+      "bytes": 1826641
+    },
+    {
+      "id": "golem-overhaul",
+      "filename": "golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/qEYs2G9A/versions/V1OtffxB/golemoverhaul-neoforge-1.21.1-1.1.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "a2e3171f708a033a89e2f6417311e42e0773dc95ac27ef1819816cefa7f0e15ff73f8a3ffd168beb9a4a3eeae2d09859badd278bc6bf3bec224d49d3b8dcccaa",
+      "metadata_path": "mods/golem-overhaul.pw.toml",
+      "metadata_sha256": "1dd77e06dcd06a82bd5e635e0a10ff6fbcefd607fbda7cca542316c4f4c4ab74",
+      "status": "verified",
+      "sha256": "d46939101db2bb82a602ad20b9c8e7228da5fbcf24185169ed16e5da19b3cdc9",
+      "bytes": 1036924
+    },
+    {
+      "id": "hammer-lib",
+      "filename": "HammerLib-1.21-21.0.17.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8968/713/HammerLib-1.21-21.0.17.jar",
+        "https://edge.forgecdn.net/files/8968/713/HammerLib-1.21-21.0.17.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "0c6314c727d5f3911fbe289eba5101957e5b8860",
+      "metadata_path": "mods/hammer-lib.pw.toml",
+      "metadata_sha256": "1e43aa344f623cf2fa46e0ec8b5afeb28e629310faf754b20f8ad58e54746d8e",
+      "status": "verified",
+      "sha256": "0a91f1f98e15aa6e41a44fe59a1d422b733ccd6d74f9fa491901167015bbacda",
+      "bytes": 2427649
+    },
+    {
+      "id": "harvest-with-ease",
+      "filename": "harvest-with-ease-neoforge-1.21-9.4.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5968/872/harvest-with-ease-neoforge-1.21-9.4.0.jar",
+        "https://edge.forgecdn.net/files/5968/872/harvest-with-ease-neoforge-1.21-9.4.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "26d0f6f428f04110351f0274fda4ffe3620df38d",
+      "metadata_path": "mods/harvest-with-ease.pw.toml",
+      "metadata_sha256": "6dce3c6a38846be3777d4daef77e848d7f054628a7b058d74f77c2dd3bf34152",
+      "status": "verified",
+      "sha256": "e42eed218468bfd244898b9776959155820d228f494c9638982a8aace229ebe8",
+      "bytes": 483625
+    },
+    {
+      "id": "hexcast-neoforged",
+      "filename": "hexcast-neoforged-1.21.1-0.11.1-19+neoforge.1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/lZGsiJ1L/versions/3qkLQwpf/hexcast-neoforged-1.21.1-0.11.1-19%2Bneoforge.1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "1b57619c9298d4ee7f77db44d0d860bcc7e0f48939a9a57657b6ae7ed386fcc14e4412d5358145cd58e3a85bf0f30c46ccde954a86cea53c6293534e81d2a889",
+      "metadata_path": "mods/hexcast-neoforged.pw.toml",
+      "metadata_sha256": "4e4a30448deb52c54122c16c29467023e5861de25d6daa1dd1ec999c9fc73bcc",
+      "status": "verified",
+      "sha256": "54739b9fb0b4bf1e00d4e3c1c9fbc28d3f28f13d98f9ee049c9f9d4dec5a8ec0",
+      "bytes": 3467212
+    },
+    {
+      "id": "hexerei",
+      "filename": "hexerei-0.5.0.3.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/IQSOHVhI/versions/9KSwA9O9/hexerei-0.5.0.3.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6ad9f14ad23e84e693c8a02fa210871f7f9f7abb34acb342d9c72aacaa822dc4d06d203d78803ab40dd5eb334344961586a3f223ae877c362f1788b7be1dad6a",
+      "metadata_path": "mods/hexerei.pw.toml",
+      "metadata_sha256": "bd496127dfae8939188c1eb6d6e77930a2f89514308169abed5d27a7b3199ac2",
+      "status": "verified",
+      "sha256": "743e80cb0526fa5fffdb660c5c3230df47d664fb268e48ca888771c4cf594240",
+      "bytes": 10428010
+    },
+    {
+      "id": "immediatelyfast",
+      "filename": "ImmediatelyFast-NeoForge-1.6.15+1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/5ZwdcRci/versions/EJzmEPZV/ImmediatelyFast-NeoForge-1.6.15%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "c115cad7b060373fc597aae08c685e2d56f173b88b792a4a2c229e222f8da293b99865e9553cf716483d3c3d6a18f31c51c5dd55be22d4625ed2c962d7b94fd0",
+      "metadata_path": "mods/immediatelyfast.pw.toml",
+      "metadata_sha256": "4601b9be31b6e131dca8a148c974d015444bcac7c82fcb66fbd8751a67933a5d",
+      "status": "verified",
+      "sha256": "7d7b1d7b9f71d5303e42b2fa45f222a5ab06e0ef5982abb6da5dd9cc449b3702",
+      "bytes": 368896
+    },
+    {
+      "id": "improvable-skills",
+      "filename": "ImprovableSkills-1.21-21.0.2.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5685/129/ImprovableSkills-1.21-21.0.2.jar",
+        "https://edge.forgecdn.net/files/5685/129/ImprovableSkills-1.21-21.0.2.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "b082c298dafdf74dbe96cdfb5422d262b3499643",
+      "metadata_path": "mods/improvable-skills.pw.toml",
+      "metadata_sha256": "9bdb65981e4b9a93c82021d509ae02a3dcd18402ba9f579571fa44974b27d118",
+      "status": "verified",
+      "sha256": "e14a7de2eafe933c1ca1618262fe55aa89eebd466062a7e0d43d58c97429b2f2",
+      "bytes": 1209579
+    },
+    {
+      "id": "inventory-tweaks-refoxed",
+      "filename": "invtweaks-1.21.1-1.3.2.jar",
+      "side": "client",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6407/807/invtweaks-1.21.1-1.3.2.jar",
+        "https://edge.forgecdn.net/files/6407/807/invtweaks-1.21.1-1.3.2.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "76969e26520ab060d51515757db25282bed71b10",
+      "metadata_path": "mods/inventory-tweaks-refoxed.pw.toml",
+      "metadata_sha256": "445b323ba9a34faa2ad10207f41aac9da7eeac8e13cd66c771ba026e8bccaaf1",
+      "status": "verified",
+      "sha256": "ceb5b20a43ca1c5bd707f60bb5d5fa61099c7a7ba50b19f6bddfe93f1ca0073c",
+      "bytes": 77127
+    },
+    {
+      "id": "irons-lib",
+      "filename": "irons_lib-1.21.1-2.3.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/9nfaJPtX/versions/dgH7P81J/irons_lib-1.21.1-2.3.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "74c609a583af1547c36ad39a7f89074a221f106fad5a246810d4921f91d0fc2df5660ef75f47f33e5f546cc51147d78ecbcff883da4a53f24002311697d0a99b",
+      "metadata_path": "mods/irons-lib.pw.toml",
+      "metadata_sha256": "8941da7290825037921249274369a39440567f667df2eead412cf54423168f7e",
+      "status": "verified",
+      "sha256": "578d9ebfad529c0587efab2690bb469811f3a0a3593064c74263fdf909449f39",
+      "bytes": 481888
+    },
+    {
+      "id": "irons-spells-n-spellbooks",
+      "filename": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/s4OWxYQQ/versions/slKLosTb/irons_spellbooks-1.21.1-3.16.3.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fd782f98c6c59b193c4832f33775291d2a7e639e1e23dd47510bfb494d99d182bec1253566b9394f96c733a0d0108be34bd729614b82dc29e55e096fdeb96f5b",
+      "metadata_path": "mods/irons-spells-n-spellbooks.pw.toml",
+      "metadata_sha256": "4623bbc102dd3b7648a96569a1ab49b868774d46355b305ac40c4c79ad1c74e2",
+      "status": "verified",
+      "sha256": "55a290db9b966e0c5d2f5c051d50775f3db6375cdb52730c4da528bcf5d5daa0",
+      "bytes": 13890045
+    },
+    {
+      "id": "jade",
+      "filename": "Jade-1.21.1-NeoForge-15.10.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/nvQzSEkH/versions/eYz2YBGT/Jade-1.21.1-NeoForge-15.10.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "dad9755dce8d85d914fc4df2baa0211f13e5839a71c1925fdd01f69081a95e30a2934e6273f8b01f0169adebe7a9dae57a8d904de0c4cb36dc17369bb474f0f2",
+      "metadata_path": "mods/jade.pw.toml",
+      "metadata_sha256": "4de3e4a1a49e332c1ad313283e0403c4273b628d634c17a9ff0c9da3d6b67f9a",
+      "status": "verified",
+      "sha256": "276f1f65a20d04f536989c4f311949d770b52c440c23c2b904a08860f3c93810",
+      "bytes": 726853
+    },
+    {
+      "id": "jawr-forbidden-magic",
+      "filename": "witchery_forbidden_magic-0.5.37+mc1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/pitZv4pV/versions/YgPMe2M7/witchery_forbidden_magic-0.5.37%2Bmc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f6604accc4bb7c65131a3f74a80aa3c0d1ae4daa6399f1bbb04a001ac98a8c47e88c55040fcfecd3e8832aaf4a89e1d1eda772f16407ab51c814ea3aa80ceead",
+      "metadata_path": "mods/jawr-forbidden-magic.pw.toml",
+      "metadata_sha256": "2b3863afe380785b94944c1793be81a17a4dc977212e2bd99c96368120bd0fc7",
+      "status": "verified",
+      "sha256": "e1f8a919946bc7997106fce1163dcfb5e436ae0f4482bbe7f4b0a81d35028fc0",
+      "bytes": 902254
+    },
+    {
+      "id": "jei",
+      "filename": "jei-1.21.1-neoforge-19.64.0.455.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/u6dRKJwZ/versions/iv3KiVkE/jei-1.21.1-neoforge-19.64.0.455.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fdd02e57ce4dcf20b69860a5ace1b97d9a771486241179cf9edfe71e30c69bb4003b046d0cce8d8c4913b9689f1d8b04cf0542b0b04a6cf0b3b0465f3bb11702",
+      "metadata_path": "mods/jei.pw.toml",
+      "metadata_sha256": "58333a1b7c35bd5940e63b498cf44da16b1f2464c73d72203d1fed84ccfd352a",
+      "status": "verified",
+      "sha256": "f7a9de3d7ee07eed8d293a1a1a0f6afaac556eb43c103523457bd07ebb551e7b",
+      "bytes": 2375741
+    },
+    {
+      "id": "just-another-witchery-remake",
+      "filename": "witchery-0.5.39+mc1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/LCO8KZvC/versions/TWcJbsjg/witchery-0.5.39%2Bmc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "a3d50e65bb494b4d9b709163a295ddcecf53c498314df473d6de55633a4a5ebe810b9a0b5672f97f41786c03af01ef3ac91f0262216e074887e75d6afc35141d",
+      "metadata_path": "mods/just-another-witchery-remake.pw.toml",
+      "metadata_sha256": "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566",
+      "status": "verified",
+      "sha256": "81557ceb1b878d2aa8df5fcbcc468b82479d1e38d38097873a6ffb225324e256",
+      "bytes": 9356333
+    },
+    {
+      "id": "just-enough-resources-jer",
+      "filename": "JustEnoughResources-NeoForge-1.21.1-1.6.0.57.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/uEfK2CXF/versions/A2G7NFcD/JustEnoughResources-NeoForge-1.21.1-1.6.0.57.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2625d3ba42c0ab7ee52443c35cfc4cf256dc089e4fa8bfde5cdbb3f72621abf081d3718d9fda68d375921f618b719fddaa25a01ebf3229e19543d491094f8e5e",
+      "metadata_path": "mods/just-enough-resources-jer.pw.toml",
+      "metadata_sha256": "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b",
+      "status": "verified",
+      "sha256": "2c35206d3dbe2d1b81bd80fcdb6b55e6a9230f67b00e5206ffbd9ed295877d4e",
+      "bytes": 292338
+    },
+    {
+      "id": "just-zoom",
+      "filename": "justzoom_neoforge_3.1.0_MC_1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/iAiqcykM/versions/Ha3713r0/justzoom_neoforge_3.1.0_MC_1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4e673b1dadfb4c84cf0ad113b4199d8c9ef8677fbc4fc27e403cc2b0ab481e261d8d4b46383ce845c7063bfdc0aba3f87008b36cb9c5ec2edd272984b0ea6b17",
+      "metadata_path": "mods/just-zoom.pw.toml",
+      "metadata_sha256": "4c64dc39ebe1d44d39b5876848695d3f8d4670be71019509bf74905309ac2791",
+      "status": "verified",
+      "sha256": "636885577b2ec47b10abeb62d0f35d5b2267c88ed5c43ed7ea9b3955858cb314",
+      "bytes": 168109
+    },
+    {
+      "id": "keybind-bundles",
+      "filename": "keybindbundles-1.5.0.jar",
+      "side": "client",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9425/844/keybindbundles-1.5.0.jar",
+        "https://edge.forgecdn.net/files/9425/844/keybindbundles-1.5.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "afa2e96a75ade331588528ddf63983951f788e87",
+      "metadata_path": "mods/keybind-bundles.pw.toml",
+      "metadata_sha256": "eaeb7a2dd935df6966439540a9682c8db4eb9a310573a37e1ee44dd2a105865f",
+      "status": "verified",
+      "sha256": "26a2e9f7208174d091c46f018d32cfc4b118c30adfa29b200c35ec64afb9db2b",
+      "bytes": 96494
+    },
+    {
+      "id": "keysets",
+      "filename": "keyset-neoforge-1.3.0+mc1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://github.com/Meneleet-official/keyset/releases/download/v1.3.0/keyset-neoforge-1.3.0%2Bmc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha256",
+      "provider_hash": "25fbfbc5f03265eb31215adda90430146cbfb2ed8f00d7098fac10a13d94bceb",
+      "metadata_path": "mods/keysets.pw.toml",
+      "metadata_sha256": "47c24d04888f7e7242cfc9b281e359a0251f6674c7b6026d3a35eb5df959fda7",
+      "status": "verified",
+      "sha256": "25fbfbc5f03265eb31215adda90430146cbfb2ed8f00d7098fac10a13d94bceb",
+      "bytes": 1315388
+    },
+    {
+      "id": "konkrete",
+      "filename": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/J81TRJWm/versions/stJDU839/konkrete_neoforge_1.9.9_MC_1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "378bd12e3c32329abbae5cd514e1d1cc2a3cc3a45979fedb1d4e4c0a6732bdcf4b7d1bf7f7a112074bf288957edf86152c9c090a27d1d5de84a9a7825d3d6511",
+      "metadata_path": "mods/konkrete.pw.toml",
+      "metadata_sha256": "054a1887da4f14b791910660a2a7a2035ac1382461b881a65fe07b224c03735f",
+      "status": "verified",
+      "sha256": "791c5538751dd3015ef3a2ce92d98719e1a28a48ebbd817b78506771256654cd",
+      "bytes": 618842
+    },
+    {
+      "id": "kotlin-for-forge",
+      "filename": "kotlinforforge-5.12.0-all.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8335/665/kotlinforforge-5.12.0-all.jar",
+        "https://edge.forgecdn.net/files/8335/665/kotlinforforge-5.12.0-all.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "a2032c921e93a0ccb0db5d742167e3139c2de01b",
+      "metadata_path": "mods/kotlin-for-forge.pw.toml",
+      "metadata_sha256": "1506a3d749a45bc760b3ad57ef1fbb959f0c166b6d1d4955114fd66db7a4855d",
+      "status": "verified",
+      "sha256": "095aed94f21b4e55895b21ea957750ae3ab829fbcfc6d3c66a3489f5f1128d46",
+      "bytes": 7279276
+    },
+    {
+      "id": "kubejs",
+      "filename": "kubejs-neoforge-2101.7.2-build.381.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/umyGl7zF/versions/GDXCpKlp/kubejs-neoforge-2101.7.2-build.381.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f8286f9f371d0c1fb2b37e56b1dbb359dcfc5a9064a7384cbf6722450f5b5a77f05f55688d7a338b500a6f49590d51e3d3541664dfc0296e50fe573a34e5a529",
+      "metadata_path": "mods/kubejs.pw.toml",
+      "metadata_sha256": "be9f3f981dd69822b4a3e5ab6fd677ec69a4e01dcf66c62e239b6ef65f31f0fd",
+      "status": "verified",
+      "sha256": "07d8cb7ac1f7ef81f17ae00bfd84c92c18ac0398e83e64a27d91717969316bc0",
+      "bytes": 2295092
+    },
+    {
+      "id": "l_enders-cataclysm",
+      "filename": "L_Ender's Cataclysm 1.21.1-3.33.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/46KJle7n/versions/PsPYpoCC/L_Ender%27s%20Cataclysm%201.21.1-3.33.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "289f6e8364a6e432f34803a47cff8381899a1df0fdc675170323b43fd1c09579b1320d8b4e0de5df65c609b738d450c13c89e240d6d79f607888da26b7724947",
+      "metadata_path": "mods/l_enders-cataclysm.pw.toml",
+      "metadata_sha256": "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5",
+      "status": "verified",
+      "sha256": "371956d0c2e3b56729ee93b955e936875d210e372fe734cdb74326d89ef79875",
+      "bytes": 73375667
+    },
+    {
+      "id": "leaves-be-gone",
+      "filename": "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/AVq17PqV/versions/kAbmpvF3/LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4a9103e5c4e8da84a596c9ef70fa4a6a6ef740798d34bda8a707e5ec3ea12e0bcdc57937090b9eb30e2d5221f4033f530d86a250c8e684654728e23f0483d96d",
+      "metadata_path": "mods/leaves-be-gone.pw.toml",
+      "metadata_sha256": "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814",
+      "status": "verified",
+      "sha256": "ea85ad07672f7c2199c28fe58a80c354ef2f2c60bfb0315e3730c344068526e0",
+      "bytes": 55937
+    },
+    {
+      "id": "lets-do-beachparty",
+      "filename": "letsdo-beachparty-neoforge-2.1.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/GyKzAh3l/versions/HN4rzKRl/letsdo-beachparty-neoforge-2.1.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "b992f87e638c3642816046b44bec1a3f41df01c61204bcedf3fee5ee7b229f64c0d327fcb3fbb758c7ded5b9d50da6b1a310ea23dcfbba8177022e8f9468ef36",
+      "metadata_path": "mods/lets-do-beachparty.pw.toml",
+      "metadata_sha256": "fd2a321d4abc440ff159e477dc75ebc9d32a9efa246e61ceeb6142391c55bfcf",
+      "status": "verified",
+      "sha256": "e8deaf37b0092f5be93fa57d8a4ce1d35c119c2267ea4a8c508198652541fb33",
+      "bytes": 7766490
+    },
+    {
+      "id": "lets-do-furniture",
+      "filename": "letsdo-furniture-neoforge-1.1.10.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/3JQDJrYW/versions/FxbGZtS6/letsdo-furniture-neoforge-1.1.10.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8dee0bb12bdccef1dbabff2c3106abfaedd7ae4f469e89a24f99327c3ac366c1f104ea3a8971be5f3929bd97246b00634abb156c6d41d54c00aaca6ac34a1a32",
+      "metadata_path": "mods/lets-do-furniture.pw.toml",
+      "metadata_sha256": "2b28e81ed8fe72b4e53fe36b05f0615097cac431f1cc840950288da3c2b28886",
+      "status": "verified",
+      "sha256": "c1677c358626307bc7578d71febc3500e37437ac15a304abe794886f1d0151f7",
+      "bytes": 4658652
+    },
+    {
+      "id": "lionfish-api",
+      "filename": "lionfishapi-3.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/FoVacERa/versions/fTRMVgyZ/lionfishapi-3.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fdd90f19d0424c3a837111291d6ac1547d62cbcedd43b74d3a8946912f9c5212a5ea239a6969eccf678289bcb77cbb9a937db01fdaf60e57826f9a99893d19cb",
+      "metadata_path": "mods/lionfish-api.pw.toml",
+      "metadata_sha256": "64acab1580ca6edd8b1dd185e914aeee7aa551a88a7cd7f0f9370a82aaadfef6",
+      "status": "verified",
+      "sha256": "aeebf0692650afbbc78259c0d4e3d5b7edf037707e8ae5d56045066d83a19cf6",
+      "bytes": 91596
+    },
+    {
+      "id": "lithostitched",
+      "filename": "lithostitched-1.8.1-neoforge-21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/XaDC71GB/versions/cZu4cHY3/lithostitched-1.8.1-neoforge-21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6c02b8b269269d5aa84cb03bf824a1b5d52838e806c2fec8727eb4049925592dac9bb65c996858751fbb722f22ac59c4be09860e1f01e8f7b97c95be3faf7a57",
+      "metadata_path": "mods/lithostitched.pw.toml",
+      "metadata_sha256": "c0611d8448bc043f372a008a435e14aa238ba8fca52fd1d79634424576ea9e12",
+      "status": "verified",
+      "sha256": "e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca",
+      "bytes": 1023751
+    },
+    {
+      "id": "lodestonelib",
+      "filename": "lodestone-1.21.1-1.8.2.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/bN3xUWdo/versions/CohX6yP1/lodestone-1.21.1-1.8.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6917080339b982d96cb4a7c98205ade5d89730191bc9113f4f8cd36bb1a760a91ad2421c8869c7063f8dea22a200d7d1896e0bb5e0e64119bb7590e32a998a23",
+      "metadata_path": "mods/lodestonelib.pw.toml",
+      "metadata_sha256": "f5d0701055478e980b50849f199f266e6ab1940277a17ad2e5060df0d978be83",
+      "status": "verified",
+      "sha256": "cc961af6a77391628378c1c838e521415fa895062b13def493d27234ca527f3e",
+      "bytes": 818829
+    },
+    {
+      "id": "lootjs",
+      "filename": "lootjs-neoforge-1.21.1-3.7.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/fJFETWDN/versions/5AZDyUSn/lootjs-neoforge-1.21.1-3.7.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fab507e70197e74ffba43bd400066f55ef58c2f91cb213efedf4acd2a2ad7876d9de905f02788a0b6831304c2177fdc9996c435bcf855eabdb4daca7581270bc",
+      "metadata_path": "mods/lootjs.pw.toml",
+      "metadata_sha256": "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3",
+      "status": "verified",
+      "sha256": "d168fd80f45e5f23dced8a54fdee87347a4c7fc6ccd9c76d30ae4d067ba9c60a",
+      "bytes": 247689
+    },
+    {
+      "id": "lootr",
+      "filename": "lootr-neoforge-1.21.1-1.11.38.127.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/EltpO5cN/versions/SPOrIzX8/lootr-neoforge-1.21.1-1.11.38.127.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "7496051c1ba98f8801b8eb81773d1baec16166c3d2c5682476bd6f9433f794095099cea609fd5610525edb7c450b1bacd0011a31763e91c77c9a0034c8245ca3",
+      "metadata_path": "mods/lootr.pw.toml",
+      "metadata_sha256": "0d3683a8c533e1fb67bf0b1668089a322fc5f594f9610d441657378ab4f64383",
+      "status": "verified",
+      "sha256": "5c74de4709d1c13b25880fdd241a89d5d9f331346d20edc76f80ccd4d99dc66c",
+      "bytes": 1075929
+    },
+    {
+      "id": "mahou-tsukai",
+      "filename": "mahoutsukai-1.21.1-v1.36.31.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/7jOxn6qJ/versions/GrYWbBFj/mahoutsukai-1.21.1-v1.36.31.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a",
+      "metadata_path": "mods/mahou-tsukai.pw.toml",
+      "metadata_sha256": "35241e0a2e68fb7a253bda3a1d0eaf8e2597bf4aa4e385a53bc901f00fbe985a",
+      "status": "verified",
+      "sha256": "4022fb3cee32b28df02994cc4c5b40069651583516f6abd04775789616739aad",
+      "bytes": 5131117
+    },
+    {
+      "id": "malum",
+      "filename": "malum-1.21.1-1.8.2.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/jgzwYsAN/versions/BIbVs1fo/malum-1.21.1-1.8.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "dd9ccc1dea3b090f69f807be3e7a8b99ec6d3d7d6b047e2893cb49ca505860bbf640cf767082c1a32ea403b35e2a9f9d1755327890bbfb2f8778058a9597a99e",
+      "metadata_path": "mods/malum.pw.toml",
+      "metadata_sha256": "0213b6ecb4784b9f57bf3d66444c61ce357b365c8bef2d10363d0c7f20b86e58",
+      "status": "verified",
+      "sha256": "38f4fa53e8da9e3d67aa5f54f98fd7c83cb342f0463ce5c63a6864229c88efa8",
+      "bytes": 33585331
+    },
+    {
+      "id": "mezzconfig",
+      "filename": "mezz_config-1.21.1-neoforge-0.7.1-standalone.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/7tEfOcA7/versions/V6oWFnxW/mezz_config-1.21.1-neoforge-0.7.1-standalone.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "e3576344d96b4734d35c7ceb969020ef728a666b771fb6da0465d08d940daff3c48352f6f3ca989edbe7fff57737d2fea4621f6422e858f95efe9fa70b46dfb2",
+      "metadata_path": "mods/mezzconfig.pw.toml",
+      "metadata_sha256": "f1fecbcbee6806a14efb3bd38ccf10166b48004967fbe72b6c31224e5e9fc5ea",
+      "status": "verified",
+      "sha256": "c42510938584eda0aae134003e367d745fd32ceac1836221cecac4cbc7bfa3a1",
+      "bytes": 347249
+    },
+    {
+      "id": "minecraft",
+      "filename": "minecraft-1.21.1-client.jar",
+      "side": "client",
+      "urls": [
+        "https://piston-data.mojang.com/v1/objects/30c73b1c5da787909b2f73340419fdf13b9def88/client.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "30c73b1c5da787909b2f73340419fdf13b9def88",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/9aa86ea608c3ec777dcdc09e6c5a06c85b53599e/1.21.1.json",
+      "version_metadata_sha1": "9aa86ea608c3ec777dcdc09e6c5a06c85b53599e",
+      "status": "verified",
+      "sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+      "bytes": 26836906
+    },
+    {
+      "id": "modernfix",
+      "filename": "modernfix-neoforge-5.27.27+mc1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/nmDcB62a/versions/ZDZENbHH/modernfix-neoforge-5.27.27%2Bmc1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "af14a35e51f1c5d94139c6225ae641e8b0ded5a8c68eb4806cf28025d6c043455ac289902cd6b854a867320ab845ad619b186d02b8341822faf03f4476dec555",
+      "metadata_path": "mods/modernfix.pw.toml",
+      "metadata_sha256": "ef65836e005bd42a0f40df30a94eba1ad7ee5ed3194b11eafbeadc64edb44252",
+      "status": "verified",
+      "sha256": "7010aae2e837122fe8dabd5932358e2ba334fcbc62ca6530cb1cb00402d2c63b",
+      "bytes": 614138
+    },
+    {
+      "id": "modonomicon",
+      "filename": "modonomicon-1.21.1-neoforge-1.123.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9384/356/modonomicon-1.21.1-neoforge-1.123.0.jar",
+        "https://edge.forgecdn.net/files/9384/356/modonomicon-1.21.1-neoforge-1.123.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "3971a5ade2595bfcb8a93f4baa2e6e834691e3cf",
+      "metadata_path": "mods/modonomicon.pw.toml",
+      "metadata_sha256": "1f4795c499834ae0728af24e31a645ff281555255eaf0945571502e35493ef32",
+      "status": "verified",
+      "sha256": "23f02535d579602d3da3e15397c9edc55b9dcafb6b755c1665f31d70fa6bec1f",
+      "bytes": 2430324
+    },
+    {
+      "id": "modopedia",
+      "filename": "modopedia-neoforge-1.21.1-1.1.11.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8043/293/modopedia-neoforge-1.21.1-1.1.11.jar",
+        "https://edge.forgecdn.net/files/8043/293/modopedia-neoforge-1.21.1-1.1.11.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "086e80d3d763c491576012ff230b45ba6f477e83",
+      "metadata_path": "mods/modopedia.pw.toml",
+      "metadata_sha256": "547f54d0587d4f4201073b2bc498831a6e22b67630699e01d9e1f0afbe36b7d8",
+      "status": "verified",
+      "sha256": "ad3acb63a59fc5d805bb62caebba4dd1076dcd9708ab086c0184eb82ecad0581",
+      "bytes": 848703
+    },
+    {
+      "id": "more-darkness",
+      "filename": "more_darkness-neoforge-1.21.1-2.0.1+1.21.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/ghnOnAJe/versions/6jywYHaX/more_darkness-neoforge-1.21.1-2.0.1%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "e08c8e75c249e2c74cc2f223bbd8c89b66270533d1835fc525e5223813009c6ccd406f5b81c0893fa315fdbf60ab2e379ff8fb0f22ffed84f5963776158773d1",
+      "metadata_path": "mods/more-darkness.pw.toml",
+      "metadata_sha256": "fb7931b3a4acb5f6cff55e1e84bff75074db84e71baec2130ba1dc941cf98ffd",
+      "status": "verified",
+      "sha256": "b5f2dfd5a684b888a68763dc770a053853486571b4674cbfcb1a368e1017b3ab",
+      "bytes": 48789
+    },
+    {
+      "id": "more-overlays-updated",
+      "filename": "moreoverlays-1.24.2-mc1.21.1-neoforge.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/Thy5Pqut/versions/Kq8xaqKi/moreoverlays-1.24.2-mc1.21.1-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6e590a05107b2c49579fa619de93029b3c858079c4baedd52ebbe0f8b18edf82c70c2ea841040610178b764848690e8806d11a532bfa12c28d9a9452b8254cea",
+      "metadata_path": "mods/more-overlays-updated.pw.toml",
+      "metadata_sha256": "a9b5d9fb791c757bcc59b20d0cf3b1fc42f026feb7514c7ce59ee43726f3366d",
+      "status": "verified",
+      "sha256": "1ab0d1a49e31bbe5cf0cdfe5ba29fd923eca5ac60cdb51164780aa3db317c4b1",
+      "bytes": 112984
+    },
+    {
+      "id": "mouse-tweaks",
+      "filename": "MouseTweaks-neoforge-mc1.21-2.26.1.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/aC3cM3Vq/versions/9I21YYxf/MouseTweaks-neoforge-mc1.21-2.26.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f95c0cc881211ee0442434976775e07aae40b4a2ba4e3a85455bc57ca9d3c991e239cd98374a8abd442dc9c378dcd9001e2caa1bf69991d424b5652dd7f3483b",
+      "metadata_path": "mods/mouse-tweaks.pw.toml",
+      "metadata_sha256": "6bc414cc0f2d4c078fe83f384d786343f701f371d657c5279b5b0df1595804bd",
+      "status": "verified",
+      "sha256": "68e6f4201c5de97b77929a7215c9552495696ca6a3bf3ae4eacc34e135f6cc8b",
+      "bytes": 73938
+    },
+    {
+      "id": "natures-compass",
+      "filename": "NaturesCompass-1.21.1-3.4.0-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7892/954/NaturesCompass-1.21.1-3.4.0-neoforge.jar",
+        "https://edge.forgecdn.net/files/7892/954/NaturesCompass-1.21.1-3.4.0-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "e19721873bebc4dbc1674bb101af39d0ea406b95",
+      "metadata_path": "mods/natures-compass.pw.toml",
+      "metadata_sha256": "2e9a8daaa0e0cc9cdfb67422e0f928f2db6a1f2984b8636eb2b5091c5fb23e29",
+      "status": "verified",
+      "sha256": "0e249ac11b2f916c5570d9679e188da652fa5664ba9cdb7be5dc9ff69497539c",
+      "bytes": 224657
+    },
+    {
+      "id": "neovitae",
+      "filename": "neovitae-1.21.1-1.1.53.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/rvaW4C93/versions/FR26bWPa/neovitae-1.21.1-1.1.53.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f29b391e391476c232acbe9ba69c42c8539b5eefdd8ca324ab5e04c47dd0e708d7bd9f727cd358099c1c1066b80c759dc86d659549dee54affa17ba588ac5b0b",
+      "metadata_path": "mods/neovitae.pw.toml",
+      "metadata_sha256": "6a4769ed8d8428836a28846d31db03592a6a84025342bab5d9203b9d5f59d3af",
+      "status": "verified",
+      "sha256": "a3ad9be2f28abd1eeafe6cdc5a3961d04439f54ddcd2c57d25f0793e951c0dd9",
+      "bytes": 12357984
+    },
+    {
+      "id": "observerlib",
+      "filename": "observerlib-1.10.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8726/128/observerlib-1.10.3.jar",
+        "https://edge.forgecdn.net/files/8726/128/observerlib-1.10.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "f8b357513c22b62f0cdbe0259305620541a45fa2",
+      "metadata_path": "mods/observerlib.pw.toml",
+      "metadata_sha256": "ff407a1e06ce5a70fd10e60a9c822a69d2722d8d1b5751918ff65145a976036e",
+      "status": "verified",
+      "sha256": "d2a2ae28d0f04845e1c803f200f89e47f4f5b4f1af917fe7750d0190820aefbf",
+      "bytes": 114651
+    },
+    {
+      "id": "occultism",
+      "filename": "occultism-1.21.1-neoforge-1.227.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/sbJh4AZw/versions/SFDVXWYt/occultism-1.21.1-neoforge-1.227.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0",
+      "metadata_path": "mods/occultism.pw.toml",
+      "metadata_sha256": "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215",
+      "status": "verified",
+      "sha256": "f5de9cfc06198dddde0357f5c1c82d32608fd095c2b318b1c5e6e9e5106a94f1",
+      "bytes": 6961729
+    },
+    {
+      "id": "octolib",
+      "filename": "OctoLib-NEOFORGE-0.6.2+1.21.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/RH2KUdKJ/versions/yVCCi6TK/OctoLib-NEOFORGE-0.6.2%2B1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "c33faa056c9d5403f06b7aa883290c86c33dcea3502f99720df98eccbd819cd3050fb2ffecf048f2dbee1b69a14e9dc6c23245f35ba3a78e46b056859666a60a",
+      "metadata_path": "mods/octolib.pw.toml",
+      "metadata_sha256": "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de",
+      "status": "verified",
+      "sha256": "92ba07d9d9e55a65421f3c3f203c72fe5149cb024d5277267e81d812e11a7f38",
+      "bytes": 544378
+    },
+    {
+      "id": "oracle-index",
+      "filename": "oracle_index-neoforge-1.4.1.jar",
+      "side": "client",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9506/889/oracle_index-neoforge-1.4.1.jar",
+        "https://edge.forgecdn.net/files/9506/889/oracle_index-neoforge-1.4.1.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "2fabcb36b40c8b4ab363c4c26f5306a4d129abb5",
+      "metadata_path": "mods/oracle-index.pw.toml",
+      "metadata_sha256": "2e77758dc91190a81b67b6f329832b625404adfaaee894900be90ff3a94f7523",
+      "status": "verified",
+      "sha256": "d7e8c6fc7b16fd5f7df7058ebe80713d0eb622ba493fd83dad8952dec14f60bb",
+      "bytes": 29675780
+    },
+    {
+      "id": "pams-harvestcraft-2-crops",
+      "filename": "pamhc2crops-NEOFORGE-1.21.1-1.0.9.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8064/883/pamhc2crops-NEOFORGE-1.21.1-1.0.9.jar",
+        "https://edge.forgecdn.net/files/8064/883/pamhc2crops-NEOFORGE-1.21.1-1.0.9.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "2a735b24c61a0007fe98de6cc2dc5d5fff4915a2",
+      "metadata_path": "mods/pams-harvestcraft-2-crops.pw.toml",
+      "metadata_sha256": "6f9626c4489bfad0bdf6e1f0718f54c6652ba54ca51a18b14face54893a5f182",
+      "status": "verified",
+      "sha256": "ebdb8aaf2bda8d4a46fb655af57b546f285a1ff15411bba691c18420064b84b5",
+      "bytes": 1536646
+    },
+    {
+      "id": "pams-harvestcraft-2-food-core",
+      "filename": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6919/485/pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar",
+        "https://edge.forgecdn.net/files/6919/485/pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "dc2b5671914879d4731034668028f4d8cbcd775c",
+      "metadata_path": "mods/pams-harvestcraft-2-food-core.pw.toml",
+      "metadata_sha256": "eb045b8823c41b658530d231ce14c53f43deb2981c17f03eb48d12cebb18f296",
+      "status": "verified",
+      "sha256": "acd5dd380eafc3f317b67231a2355c204cab254dfdf4ab1f25c084fdd3d317b9",
+      "bytes": 1699044
+    },
+    {
+      "id": "pams-harvestcraft-2-food-extended",
+      "filename": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6221/521/pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+        "https://edge.forgecdn.net/files/6221/521/pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "0cf7f668fdedef93446f33215484913991185102",
+      "metadata_path": "mods/pams-harvestcraft-2-food-extended.pw.toml",
+      "metadata_sha256": "5fe860bdef3f16ae211dbe360061f8225b68e3b5a3b699ffeb5d8926536bd91b",
+      "status": "verified",
+      "sha256": "d61dda7d00ab69bfaef45854df01ab6cfd64243d7f9a5ae870c89dd954247a8c",
+      "bytes": 1983616
+    },
+    {
+      "id": "pams-harvestcraft-2-trees",
+      "filename": "pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7847/533/pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar",
+        "https://edge.forgecdn.net/files/7847/533/pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "85d54e1d4d32f669d3f183945dc813360263ca91",
+      "metadata_path": "mods/pams-harvestcraft-2-trees.pw.toml",
+      "metadata_sha256": "d48697a0d75267fe97428fa6b8442ec419846d7396e2dc9b4dd2c90e13f17daa",
+      "status": "verified",
+      "sha256": "64c34129468b0d75738cf0faf667a52067d2db1e72ee8564c0a8f850bbf154c7",
+      "bytes": 1399642
+    },
+    {
+      "id": "pastel",
+      "filename": "Pastel-1.1.5.5.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7591/337/Pastel-1.1.5.5.jar",
+        "https://edge.forgecdn.net/files/7591/337/Pastel-1.1.5.5.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "53a582520b78aebd56c9be1fd041472047dca3d3",
+      "metadata_path": "mods/pastel.pw.toml",
+      "metadata_sha256": "aef91b49956d6a5ddb71b2b0b8b60fffb045de7af8ebd9ec8946b2d579ed8f4c",
+      "status": "verified",
+      "sha256": "33122d9a6bdeeb025d1a2a1210d035104da23c213750d13b3d10af55716a443a",
+      "bytes": 95561784
+    },
+    {
+      "id": "patchouli",
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/nU0bVIaL/versions/BIogJv2D/Patchouli-1.21.1-93-NEOFORGE.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f",
+      "metadata_path": "mods/patchouli.pw.toml",
+      "metadata_sha256": "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d",
+      "status": "verified",
+      "sha256": "959af52ed6640c316c3a8469203420be4aeea11ad6603890ba83bf48f5d9f993",
+      "bytes": 646777
+    },
+    {
+      "id": "paucal",
+      "filename": "paucal-0.7.0+neoforge-1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/5685/024/paucal-0.7.0%2Bneoforge-1.21.1.jar",
+        "https://edge.forgecdn.net/files/5685/024/paucal-0.7.0%2Bneoforge-1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "1cd24d54fda9916d8c1671a72dfde1789184d89a",
+      "metadata_path": "mods/paucal.pw.toml",
+      "metadata_sha256": "0ed2f660db1882809d337791ee06cc9ba49a36fb32d6e919cb9a8eb51e72d7ab",
+      "status": "verified",
+      "sha256": "0989af16436cecdaceeb031d48f29db00da556bf4178edac4538153cb82be385",
+      "bytes": 257735
+    },
+    {
+      "id": "placebo",
+      "filename": "Placebo-1.21.1-9.9.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/tCkE8p2N/versions/B5zbSVlT/Placebo-1.21.1-9.9.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4f3a9c5974132f3638c262c56b0c2886df2bc58027c961aa11d06d0ae2e608b63f24f949b2f8c240989e2a1bfe303fd237c5f2d49269453ad6c2ff1f85f2c648",
+      "metadata_path": "mods/placebo.pw.toml",
+      "metadata_sha256": "d94791108548d174758d587440c656f1a56884083fa3151bf90b515126482435",
+      "status": "verified",
+      "sha256": "d8952c019d6e54befe37155bc9876985ec57bf73dd33872115c7a65ac6bceba0",
+      "bytes": 326063
+    },
+    {
+      "id": "playeranimator",
+      "filename": "player-animation-lib-forge-2.0.4+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/gedNE4y2/versions/HJZB6bmA/player-animation-lib-forge-2.0.4%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "fc00450fb6c95ec1779021bdc726122dacb5915c6baddaacc981cd221b01b8db35f2a0dfde5d6fa6766d877266dc82f58854f571ea53cc5c4d468b80e1548a5f",
+      "metadata_path": "mods/playeranimator.pw.toml",
+      "metadata_sha256": "93284ca7f2f23f0bb76d42b797cabf2aea1914ee9825bec82bf6ffe4c60dda0d",
+      "status": "verified",
+      "sha256": "dbe5de45f5cd60c0e5e47af14e6d564534a98456e973cf670cb881f6938eee92",
+      "bytes": 203149
+    },
+    {
+      "id": "polymorph",
+      "filename": "polymorph-neoforge-1.2.0+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/tagwiZkJ/versions/9yWvrF5o/polymorph-neoforge-1.2.0%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "dce77fffebae80532fec39d35c9c8b5817ba756bb03569022cc0854a8a6cf1868690f91451b587bd60d813e8403b5de91adbc324796bc423ef28deecfb13c775",
+      "metadata_path": "mods/polymorph.pw.toml",
+      "metadata_sha256": "d935e4ce118d15c88b10809df85e801f0e9577855f870f3c28e5a0bd5e7fecf6",
+      "status": "verified",
+      "sha256": "4a09b7a3c8ea4f5b79acadb405a18140fe20d882e6930403c46cc7ad49c5ec06",
+      "bytes": 172671
+    },
+    {
+      "id": "prickle",
+      "filename": "prickle-neoforge-1.21.1-21.1.11.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6961/457/prickle-neoforge-1.21.1-21.1.11.jar",
+        "https://edge.forgecdn.net/files/6961/457/prickle-neoforge-1.21.1-21.1.11.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "5174059ecf97340a0de5ef211b938de26c4eaa36",
+      "metadata_path": "mods/prickle.pw.toml",
+      "metadata_sha256": "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4",
+      "status": "verified",
+      "sha256": "ccf46c442ed3c7fe41ad056f0940560829ec4dd88360985dfacd78f4614eb167",
+      "bytes": 84812
+    },
+    {
+      "id": "primal-magick",
+      "filename": "primalmagick-neoforge-1.21.1-6.0.7.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6677/090/primalmagick-neoforge-1.21.1-6.0.7.jar",
+        "https://edge.forgecdn.net/files/6677/090/primalmagick-neoforge-1.21.1-6.0.7.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "165a849fe2b95355067ede9cda014dec08129731",
+      "metadata_path": "mods/primal-magick.pw.toml",
+      "metadata_sha256": "69f24286f25e7fe5041e17ae45b01c59e79b1e551da6c8db8e5adf95bb1713cf",
+      "status": "verified",
+      "sha256": "f78cab2206b5c05c1d9615cf42bd2d728971156343658c2354bd496b7544f98f",
+      "bytes": 9408493
+    },
+    {
+      "id": "project-expansion",
+      "filename": "projectexpansion-1.21.1-1.0.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/a7yNQPzW/versions/F5C1OobM/projectexpansion-1.21.1-1.0.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "97e832da2ca03309f4ef875b42a9250bba3798453f271f82b441e7c0bf739e103ee9f4274839b5e4d9a154a44167cc0f8169bd97ed37b3d16e7e09d34cfe3c85",
+      "metadata_path": "mods/project-expansion.pw.toml",
+      "metadata_sha256": "ef0c68778d0e0ed3855fe43d6bf33450739a6129655d30db19abb58a18ae2991",
+      "status": "verified",
+      "sha256": "96ef339eed405a4b1257420a6ff19279534de911f966b51fb6f1231fb0ff32f5",
+      "bytes": 1325986
+    },
+    {
+      "id": "projecte",
+      "filename": "ProjectE-1.21.1-PE1.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6611/984/ProjectE-1.21.1-PE1.1.0.jar",
+        "https://edge.forgecdn.net/files/6611/984/ProjectE-1.21.1-PE1.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "24fb5997727453a15e956522761a3f586e646c2a",
+      "metadata_path": "mods/projecte.pw.toml",
+      "metadata_sha256": "bdca798ffe4124bf43ea13f1fa5f0593a7539762240edb56c47b1976b413ebc4",
+      "status": "verified",
+      "sha256": "fec9389d8b70fcf87331a0bcc41b78ada79c1e6326ef02a7bb6db9a1d5a4c48b",
+      "bytes": 2426228
+    },
+    {
+      "id": "psi",
+      "filename": "Psi-neoforge-1.21.1-110.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/pOeA0exL/versions/j9TFdTKC/Psi-neoforge-1.21.1-110.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a",
+      "metadata_path": "mods/psi.pw.toml",
+      "metadata_sha256": "40c7f3e1346a776603fc6fc510709fc445a6084fc30c6817f64dd1a24651e7d8",
+      "status": "verified",
+      "sha256": "25b2e19bb9433bf5e462dfd9906dcd7b07b6dcb208e243ca936a007dc6e14033",
+      "bytes": 2553645
+    },
+    {
+      "id": "psitweaks",
+      "filename": "psitweaks-1.21.1-0.10.10-hotfix.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/pwmvTzDk/versions/sazDcHZZ/psitweaks-1.21.1-0.10.10-hotfix.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "22800c1ec3a29c6b246dc0e56e0621b28f7a5ac17f13bdbdb88dfac9ff1b17b32860145fa3139fd063e0139f7847ff43ec8d1522b558cb8ae371cb0b8b7bf33e",
+      "metadata_path": "mods/psitweaks.pw.toml",
+      "metadata_sha256": "4fadd0b789a63993b2a8f44ccc5e1d91345e653851719042ea997f62b530a5d5",
+      "status": "verified",
+      "sha256": "77286172e4a415cc73a2b1152a098ecd4d2daf4f1e0341966fc2b974afa739af",
+      "bytes": 2970493
+    },
+    {
+      "id": "puffish-attributes",
+      "filename": "puffish_attributes-0.8.3-1.21-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8610/466/puffish_attributes-0.8.3-1.21-neoforge.jar",
+        "https://edge.forgecdn.net/files/8610/466/puffish_attributes-0.8.3-1.21-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "9e6a87f790fc9281ea2685f8d4f6435d0d7c6d1f",
+      "metadata_path": "mods/puffish-attributes.pw.toml",
+      "metadata_sha256": "22d273512f73d6ea8b27dddb628dce14639a35894bb4c27368f7c7a47bb3c2df",
+      "status": "verified",
+      "sha256": "b21c165e033360e112eb2c3426437e1ba4ebf70f971535b72b1b1891d04c87f0",
+      "bytes": 235542
+    },
+    {
+      "id": "puzzles-lib",
+      "filename": "PuzzlesLib-v21.1.60-mc1.21.1-NeoForge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/QAGBst4M/versions/lh44g7RC/PuzzlesLib-v21.1.60-mc1.21.1-NeoForge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "630bea2bfeed34074d82bc75a4e3f94bb8235d5ae4b13d59c3ee8832bd493eb34584e81d183c5447bd1754e1845d8397eb910d16678243f64e7df8389ce147ac",
+      "metadata_path": "mods/puzzles-lib.pw.toml",
+      "metadata_sha256": "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a",
+      "status": "verified",
+      "sha256": "179bcaafb812618834ba82e7f29b15eaee8894f74fb96152a51cfc22ad4f45c4",
+      "bytes": 1442182
+    },
+    {
+      "id": "quest-giver",
+      "filename": "quest_giver-1.21.1-1.5.3.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8745/084/quest_giver-1.21.1-1.5.3.jar",
+        "https://edge.forgecdn.net/files/8745/084/quest_giver-1.21.1-1.5.3.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "7cb0dd64c43e383607ec08da892496f65ab03a26",
+      "metadata_path": "mods/quest-giver.pw.toml",
+      "metadata_sha256": "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea",
+      "status": "verified",
+      "sha256": "a17a86d0449176578d0a99cdc59b2c05dd87b669b86e1116de969b08861aceec",
+      "bytes": 168425
+    },
+    {
+      "id": "quest-shop",
+      "filename": "questshop-1.4.0.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9046/797/questshop-1.4.0.jar",
+        "https://edge.forgecdn.net/files/9046/797/questshop-1.4.0.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "c15594c98bc6ee70d7a7e0a9a4aa2c93a5e585b8",
+      "metadata_path": "mods/quest-shop.pw.toml",
+      "metadata_sha256": "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9",
+      "status": "verified",
+      "sha256": "e9c43eba6a3d34fe42323ea40e9675ba64ed35634363d1f7e6ee6a49d7a9dd7f",
+      "bytes": 143154
+    },
+    {
+      "id": "rechiseled",
+      "filename": "rechiseled-1.2.5-neoforge-mc1.21.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/B0g2vT6l/versions/S5FnErRw/rechiseled-1.2.5-neoforge-mc1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d849bc3e775577978bbf96dccee11b0904fa928c556a12e05adf759edab9479bd757f490380475e974eaa137c566ffe8bfb62d5df19f966dfd99b67a2fe0ee9b",
+      "metadata_path": "mods/rechiseled.pw.toml",
+      "metadata_sha256": "55fcb8b7508262d7e384f81dc86c0cf0c28ec98194d2dd842208b96291931c0c",
+      "status": "verified",
+      "sha256": "7bf14cf8a4bfdc4b6c990126a75da29fd2bb7559d1c05b71e29c8fd5ae044435",
+      "bytes": 11498611
+    },
+    {
+      "id": "relics",
+      "filename": "relics-1.21.1-0.12.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/OCJRPujW/versions/GIUnjk0v/relics-1.21.1-0.12.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "b3920fba0ad3c17fd95d5999ee7c2fd05f04f8ceebc23388a1e5e1a2cdf8a28d37f013dd12b7dbf5361efd407881ed6df605e8529378055e7dfaa248210b127b",
+      "metadata_path": "mods/relics.pw.toml",
+      "metadata_sha256": "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1",
+      "status": "verified",
+      "sha256": "5a691438de36a23ef6e2f613f617de7996263ca0e6e951f10a09f492119f8427",
+      "bytes": 4476316
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "filename": "reliquary-1.21.1-2.0.85.1599.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/fQO83PId/versions/NjITe5sZ/reliquary-1.21.1-2.0.85.1599.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "75e4034ffff03d85ac4647fef6802e8921034de55baa650c32b7826f6eba4406b65fedcf4a8875d1ae8a3b850395a49fd0ad40587d60ffa1a1c62bb3e48c2e37",
+      "metadata_path": "mods/reliquary-reincarnations.pw.toml",
+      "metadata_sha256": "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5",
+      "status": "verified",
+      "sha256": "84fa046762259023129f78c5c202f6fed1cbb0eeb61fbdfccca83d0fab93ce3e",
+      "bytes": 2240166
+    },
+    {
+      "id": "reliquified-artifacts",
+      "filename": "reliquified_artifacts-1.21.1-1.0.9.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/GnU07giL/versions/rAl46NpA/reliquified_artifacts-1.21.1-1.0.9.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8797ce1a64d483f74fccc380fbaa64821d04505e930b199c1300bbb6c1acfaa40ee2268b926802f3592915320ff500dd509a00308bfd7b69dd0f8c9e8f3172fb",
+      "metadata_path": "mods/reliquified-artifacts.pw.toml",
+      "metadata_sha256": "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5",
+      "status": "verified",
+      "sha256": "b074e7bbb010b1030f4def909548ccca1b43bec82584e2cc03e29e6baa6040d6",
+      "bytes": 699259
+    },
+    {
+      "id": "replication",
+      "filename": "Replication-1.21.1-1.2.7.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7662/870/Replication-1.21.1-1.2.7.jar",
+        "https://edge.forgecdn.net/files/7662/870/Replication-1.21.1-1.2.7.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "bb433ec94394e960ba26fc2e7fd5537fcb7fbe50",
+      "metadata_path": "mods/replication.pw.toml",
+      "metadata_sha256": "93bca87a0adcabe6dab9fb8302d65a3a54742df555d8855f4fe12cba6758526f",
+      "status": "verified",
+      "sha256": "aae49074d525099447f59cd3677c2cd3e2144a4bd0591181f33ce676c52bd14e",
+      "bytes": 841370
+    },
+    {
+      "id": "resourceful-config",
+      "filename": "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8e4ccc37732b3f5190e7e98df34dbc1339fe614494fcabf1aeaeab9ad8e5993522964b51be31882000c08c48a6d0096b5458364415bb81f2b2b775a7daf2eb87",
+      "metadata_path": "mods/resourceful-config.pw.toml",
+      "metadata_sha256": "27721caca5a03b743bf25888e1d984142948069dace31453f103f94f7f24d2ce",
+      "status": "verified",
+      "sha256": "25b4f3502d25c535004acd4a9420272fff01d2f1e2df352239fec93fdab005d4",
+      "bytes": 341009
+    },
+    {
+      "id": "resourceful-lib",
+      "filename": "resourcefullib-neoforge-1.21-3.0.12.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/G1hIVOrD/versions/x99nCLTm/resourcefullib-neoforge-1.21-3.0.12.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "a9d20e345faa9bcb297bd95ac9524205834804d1bb13518397dd4f7f62b352b08c3339ee7f7870d3669078ceeb33d5c31ea527aecce4b31d62ec1ff7d8b562c8",
+      "metadata_path": "mods/resourceful-lib.pw.toml",
+      "metadata_sha256": "c0b066684294c33972d562e0cb08ea17b2d31bcf86cd1d6c63b8e968f0eac7a2",
+      "status": "verified",
+      "sha256": "5e36f2c69de008dc5795f730c84ab767688f15c810944b585485349a0c911261",
+      "bytes": 484332
+    },
+    {
+      "id": "rhino",
+      "filename": "rhino-2101.2.7-build.85.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/sk9knFPE/versions/cQ4POTah/rhino-2101.2.7-build.85.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "0a6c7f4410281aeb03b815ec03487a8e80a4d3dae013d81282e447bf9c08144ef57318af614ea6d40b7d9a8c25031c557890ec792a5895a82467c1643116f693",
+      "metadata_path": "mods/rhino.pw.toml",
+      "metadata_sha256": "e55ca32b338a0e0540f4fec5170675d860566255ae0f45692a00cb4ebf2eb535",
+      "status": "verified",
+      "sha256": "e0e9b0e78edd380440266c0f4ea8d489dac851ef075a4566a66a6dae2f7bbb66",
+      "bytes": 882075
+    },
+    {
+      "id": "ribbits",
+      "filename": "Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/8YcE8y4T/versions/XrUKaWrw/Ribbits-1.21.1-NeoForge-4.1.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
+      "metadata_path": "mods/ribbits.pw.toml",
+      "metadata_sha256": "6a598c073aabc968d8ee736141d238c517e13662f3de0feb81796cb9c0d6f4f0",
+      "status": "verified",
+      "sha256": "794223f5a91b8b80a962754b5180ec3e2472db6941e9b6c1cdd49324df628389",
+      "bytes": 2215572
+    },
+    {
+      "id": "roots-classic",
+      "filename": "RootsClassic-1.21.1-1.5.10.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8860/609/RootsClassic-1.21.1-1.5.10.jar",
+        "https://edge.forgecdn.net/files/8860/609/RootsClassic-1.21.1-1.5.10.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "7d02ec46e4d276ebf556cdd529a75108b4724efd",
+      "metadata_path": "mods/roots-classic.pw.toml",
+      "metadata_sha256": "74823eb3d7c7d27a842fb935e6627a466c209ebb0e640833a4e1382d1f593601",
+      "status": "verified",
+      "sha256": "29d8a909126a93947197ab4b7b8c0bfa779b0f0eeeb0068423254ffb9631c7dc",
+      "bytes": 649579
+    },
+    {
+      "id": "scriptor-magicae",
+      "filename": "scriptor-neoforge-2.0.14-1.21.1-sgd.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8899/737/scriptor-neoforge-2.0.14-1.21.1-sgd.jar",
+        "https://edge.forgecdn.net/files/8899/737/scriptor-neoforge-2.0.14-1.21.1-sgd.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "32fece570d3f1086cc59229b1b861fd277da41e8",
+      "metadata_path": "mods/scriptor-magicae.pw.toml",
+      "metadata_sha256": "1bf49dde596fb80f964f1982cbd98127c9ab0da2d5afffb58760f2fa96e9a619",
+      "status": "verified",
+      "sha256": "d71e9fa69c012c126390a3cd89287185a4ae9eb03c6916bc16cb8d05e0f1b31d",
+      "bytes": 1678819
+    },
+    {
+      "id": "searchables",
+      "filename": "Searchables-neoforge-1.21.1-1.0.2.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/fuuu3xnx/versions/iEE85X0w/Searchables-neoforge-1.21.1-1.0.2.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "d0824bac1900142ac9a53e68f7ec3b4c0d33d9366bbd3f1d0d93eed860e5eb6b5e6f5a215a69bfffa70bcb48573ff49b5a12bbaa96096ceac6636000d506027a",
+      "metadata_path": "mods/searchables.pw.toml",
+      "metadata_sha256": "ce9ddada6ffd55a512149cc474c6a453281a997a5fdf1b7b4a2cc73f875e704a",
+      "status": "verified",
+      "sha256": "ca193f0c69033d8f709f9e073a7c1ef4ea46714e5c2f94eb23ace12781c6aa68",
+      "bytes": 77326
+    },
+    {
+      "id": "simple-backups",
+      "filename": "SimpleBackups-1.21-4.0.30.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7965/880/SimpleBackups-1.21-4.0.30.jar",
+        "https://edge.forgecdn.net/files/7965/880/SimpleBackups-1.21-4.0.30.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "fd9c1374463d2802b119fb5865e43f280573cb4c",
+      "metadata_path": "mods/simple-backups.pw.toml",
+      "metadata_sha256": "0d76b6f0f8b2cbe44931c7094c416aab1d1534c47cbee499f01c546e5e09b42b",
+      "status": "verified",
+      "sha256": "0c322781b3c559f7d2c62ac87eb9d7ce459f3f3b5ab771a8794d009b42c729ec",
+      "bytes": 70269
+    },
+    {
+      "id": "smart-keep-inventory",
+      "filename": "smart_keep_inventory-1.21.1-1.0.1-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/qeGAjqzW/versions/JqVOLkFB/smart_keep_inventory-1.21.1-1.0.1-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "c9db787e4f4a18bcc659b24e80c63232ac7919dc426fe27952de6f06a31fc67a282c5c50108de18a269411bfc6c8378c220683d0cb2859d83199504c250ac208",
+      "metadata_path": "mods/smart-keep-inventory.pw.toml",
+      "metadata_sha256": "41027efd8599ce97dcbafc4f917784518889ea30d4a03571b5286caa84e53779",
+      "status": "verified",
+      "sha256": "1a5602b7dd2efa019ce77ce3f4b73d9378a4d7d365f206b85b3d863346be0140",
+      "bytes": 68519
+    },
+    {
+      "id": "smartbrainlib",
+      "filename": "SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/PuyPazRT/versions/O5EpeqI3/SmartBrainLib-neoforge-1.21.1-1.16.11.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "bfc76f6fd8c388d01b80601ad1b826f6b3f5ec5ea915e5725af129561e6bc4a10890975e6f6d2a0348d842c13042dcf1a9d0a1574fba76bce60119bee76e2dc2",
+      "metadata_path": "mods/smartbrainlib.pw.toml",
+      "metadata_sha256": "6e7ce9c2aee5bb72d2698eb89035c9b2458d20daa0782e1a03cfba7a6647621e",
+      "status": "verified",
+      "sha256": "68036561cc5511766d54cc0deabc3fc3a5e68f9e3db2478f2574ec82b494374b",
+      "bytes": 391053
+    },
+    {
+      "id": "spark",
+      "filename": "spark-1.10.124-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/6225/208/spark-1.10.124-neoforge.jar",
+        "https://edge.forgecdn.net/files/6225/208/spark-1.10.124-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "9430cc2ab64ff89d698be593769fb9f9ee4efae6",
+      "metadata_path": "mods/spark.pw.toml",
+      "metadata_sha256": "6d9eaf43c14c66465e87bf03cc5cb5ecef57b3f2e8063c52f6332d33689d30be",
+      "status": "verified",
+      "sha256": "647e8a81afbe414dba1df4ba15fd06c5d32d4cb544e68828405e8e074c2e16db",
+      "bytes": 3642581
+    },
+    {
+      "id": "stateobserver",
+      "filename": "stateobserver-neoforge-1.21.1-1.6.4.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7357/057/stateobserver-neoforge-1.21.1-1.6.4.jar",
+        "https://edge.forgecdn.net/files/7357/057/stateobserver-neoforge-1.21.1-1.6.4.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "97223bb9d8099e513b7bc8212b23cfdcce1b4059",
+      "metadata_path": "mods/stateobserver.pw.toml",
+      "metadata_sha256": "322a7defbd55448f14fcf447fd4514156aa6c083fb095a3347aebdf04e10069b",
+      "status": "verified",
+      "sha256": "b0a508b18b4b385617953b48ee52f9f786c77032a53a54f80c626458670a3bf7",
+      "bytes": 14419
+    },
+    {
+      "id": "summoningrituals",
+      "filename": "summoningrituals-neoforge-1.21.1-3.14.2.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8539/417/summoningrituals-neoforge-1.21.1-3.14.2.jar",
+        "https://edge.forgecdn.net/files/8539/417/summoningrituals-neoforge-1.21.1-3.14.2.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "f67fa7b8a90b231491932b848f76c68cfc935c23",
+      "metadata_path": "mods/summoningrituals.pw.toml",
+      "metadata_sha256": "59b49692f23195e2d53945afef3d8c29ecfd942305c5c3daa1d52275e939d7d6",
+      "status": "verified",
+      "sha256": "74a64137938c719cdfc8338510a824ad2f0ac2834e6c1498b7608e78e0f4a210",
+      "bytes": 354860
+    },
+    {
+      "id": "supermartijn642s-config-lib",
+      "filename": "supermartijn642configlib-1.1.8-neoforge-mc1.21.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/LN9BxssP/versions/qKL9jM75/supermartijn642configlib-1.1.8-neoforge-mc1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "768d8ca178c5e653986f5131b7aeb7fa57ce7d32c16ed399ced01b273565a2b640130c55c7092747efeff40dbb0348876b18b415f59b0d16dd2c7f32f1798ce2",
+      "metadata_path": "mods/supermartijn642s-config-lib.pw.toml",
+      "metadata_sha256": "62bd7012826fdcccf17a089055be67f87fb7335c88e73efc52bc9e51a1bf3188",
+      "status": "verified",
+      "sha256": "d2ba7b839a2268e4e223457e813d11aa2476c3bf708a7bba691d8fc851778a4b",
+      "bytes": 207514
+    },
+    {
+      "id": "supermartijn642s-core-lib",
+      "filename": "supermartijn642corelib-1.1.20-neoforge-mc1.21.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/rOUBggPv/versions/MQOzQxLt/supermartijn642corelib-1.1.20-neoforge-mc1.21.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "a204d917f6780813dbecf46cb509eaa4236588dc26760a5e9204c98bb00c1cd01b1a4a859379234125501a30712a565e05f98e29f950e6eff0551a4a41af59d8",
+      "metadata_path": "mods/supermartijn642s-core-lib.pw.toml",
+      "metadata_sha256": "0b8161b7e8c71379084080673b304a090e187b1ad45ddc2bb90ebae11f401f6f",
+      "status": "verified",
+      "sha256": "ad599fcd409f087e3e95a8263ff830b80ece841fc9854a9deb6c9b7738a292fc",
+      "bytes": 558373
+    },
+    {
+      "id": "tectonic",
+      "filename": "tectonic-3.0.28-neoforge-21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/lWDHr9jE/versions/n4iyW7aB/tectonic-3.0.28-neoforge-21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "e07b9cb54f078b7bf74c925c5cebd6643f0b4c210b8f94474e68659b69468ece7d61432f70eafe7abaa1dfa798e4638aad297987c121dc127588c2623b7f7a81",
+      "metadata_path": "mods/tectonic.pw.toml",
+      "metadata_sha256": "dd46fad79cf33a00123be0a74c73581da72cd98503ef23822a624a08f4b10ff2",
+      "status": "verified",
+      "sha256": "cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1",
+      "bytes": 451757
+    },
+    {
+      "id": "the-aurorian-unofficial-port",
+      "filename": "theaurorian-1.21.1-1.0.6.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/AsNDEFIl/versions/8yOGgcWP/theaurorian-1.21.1-1.0.6.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "3e545fd767812fde4f79be60200a20129f35007d48e7b7b6bf7717adf70da3baf2de2611962260605474507af9b9262b9b630f803a347afb00a5727a9302e63c",
+      "metadata_path": "mods/the-aurorian-unofficial-port.pw.toml",
+      "metadata_sha256": "02c23152c4e87fcd4d1cde48237a1897697c708bc13aed7327d8860aa8a2ff33",
+      "status": "verified",
+      "sha256": "00a3d87f271bd9c5a89684d3245e09dc88b4d768b160e245eb1830a9036e9f41",
+      "bytes": 18751922
+    },
+    {
+      "id": "the-bumblezone",
+      "filename": "the_bumblezone-7.17.3+1.21.1-neoforge.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/38tpSycf/versions/LwGXnQCW/the_bumblezone-7.17.3%2B1.21.1-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "005b0a477e46ae6dde0e8a707949b6a6012ee2415c323871f7c547753331891e90dde95468cd25de7b40581965d5326c731fe8456d96f87e4ec6e5253144b33f",
+      "metadata_path": "mods/the-bumblezone.pw.toml",
+      "metadata_sha256": "6542133c0bc532709b91a71c50356e98b5fea7ca178a7514e3589c4540fa61e2",
+      "status": "verified",
+      "sha256": "859d87b44d3d17c63f38317ac34d124e30b6de8c3043fa61ee987ff8b1f236d6",
+      "bytes": 83641779
+    },
+    {
+      "id": "theurgy",
+      "filename": "theurgy-1.21.1-neoforge-1.79.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/uOVMgoil/versions/EBO0aQOY/theurgy-1.21.1-neoforge-1.79.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2e92aa0a3462d400feed398d4a675f9492dab3613ad698f24fcbcce34b565a079a7362fb637c4e268dbb71be5d11fc6630758f149ecccc8d6603f2e9d96f0569",
+      "metadata_path": "mods/theurgy.pw.toml",
+      "metadata_sha256": "793effcf3667ae09d344798a180d819eb25c37bdfbc39be83027fd72ff51a5b0",
+      "status": "verified",
+      "sha256": "95e06ebc14e2cdab7fa4eaae02ac8352f1f249a49c38c15c3f20a763334a8b5a",
+      "bytes": 5323910
+    },
+    {
+      "id": "titanium",
+      "filename": "titanium-1.21-4.0.52.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9439/122/titanium-1.21-4.0.52.jar",
+        "https://edge.forgecdn.net/files/9439/122/titanium-1.21-4.0.52.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "b46f625333c9c570eed9962a355f37687d39e731",
+      "metadata_path": "mods/titanium.pw.toml",
+      "metadata_sha256": "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99",
+      "status": "verified",
+      "sha256": "404beac4211b11172cabb2bb0ff5cad28c10d1d6f4ebff79aeb2888a981c3a41",
+      "bytes": 608119
+    },
+    {
+      "id": "trashslot",
+      "filename": "trashslot-neoforge-1.21.1-21.1.11.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/vRYk0bv7/versions/HY8Ybozd/trashslot-neoforge-1.21.1-21.1.11.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4d3b7e5a103829d4cc5adafa18e05071f59ed1eb16ef198890b615e000aaa2d8447f9651a60c981886cbeb137c96abace32e235527f9d818b06ff7ae473d9cd2",
+      "metadata_path": "mods/trashslot.pw.toml",
+      "metadata_sha256": "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2",
+      "status": "verified",
+      "sha256": "61fdb5de0fc3d36db0e5dd82c2e03341e449bbc47ce13eeab834b05596b7bb5b",
+      "bytes": 77535
+    },
+    {
+      "id": "treechop",
+      "filename": "TreeChop-1.21.1-neoforge-0.19.3.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/gHoB7SHO/versions/iLXWmfax/TreeChop-1.21.1-neoforge-0.19.3.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "f7e2dba5b40d544383048e9cb846977b01eca7f653d6513cf9d2b26abd10ab5d73eefe3956a0759cb342c7ac8af41e61fc338873ca47a8e4899e4407cb44b17d",
+      "metadata_path": "mods/treechop.pw.toml",
+      "metadata_sha256": "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd",
+      "status": "verified",
+      "sha256": "2a5ec9cca187b4a031e9dd7e5eec8d0872f7d2bc355d88bda633021fa7eb71b0",
+      "bytes": 517750
+    },
+    {
+      "id": "twilight-forest",
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/7797/302/twilightforest-1.21.1-4.8.3345-universal.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "371dd7079b174091363327df70ed64c84e8e36fcab49b4c33bbcbe39650f6bccc12d3e14818cdfbbaa519a999f64a0a92c03ec981f55a315b044dc7cb5c27ef4",
+      "metadata_path": "mods/twilight-forest.pw.toml",
+      "metadata_sha256": "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f",
+      "status": "verified",
+      "sha256": "493da16d10210f9f53a3c33b3d8fcb4ae9b14016ee420d753c894562bd9aba35",
+      "bytes": 27154121
+    },
+    {
+      "id": "tyzs-skills",
+      "filename": "Tyz's skills 6.4.2 - 1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/4rKNK5O2/versions/OUmvFAPs/Tyz%27s%20skills%206.4.2%20-%201.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "070abb0665dee3a442b57a9957eed206adf4b510e66ce648ba3e68098fa1cd4e570af01950df0be3163eaf0469d84b79e1afc8d3c44924399f074584084b55f3",
+      "metadata_path": "mods/tyzs-skills.pw.toml",
+      "metadata_sha256": "71d2e7aa272dfcfa20e8ea6cbe316d25e17624af84e8201708b0f435b5ff1767",
+      "status": "verified",
+      "sha256": "5fd0bd61d9a1140c7c9e4c9937e759ba3f74ab513d48246c90c04e7544a0e83b",
+      "bytes": 798900
+    },
+    {
+      "id": "unfocused",
+      "filename": "unfocused-neoforge-0.3.12-1.21.1-sgd.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/9603/593/unfocused-neoforge-0.3.12-1.21.1-sgd.jar",
+        "https://edge.forgecdn.net/files/9603/593/unfocused-neoforge-0.3.12-1.21.1-sgd.jar"
+      ],
+      "provider_hash_algorithm": "sha1",
+      "provider_hash": "7ce7d9537eea7f2b7765544be0d7fc352016ae9a",
+      "metadata_path": "mods/unfocused.pw.toml",
+      "metadata_sha256": "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e",
+      "status": "verified",
+      "sha256": "e1209b2c52cc00f5e6e8786cedfa75f063a18e93a761372f032eb4856bc30363",
+      "bytes": 459915
+    },
+    {
+      "id": "valhelsia-core",
+      "filename": "valhelsia_core-neoforge-1.21.1-1.1.4.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/HsdNFinx/versions/cttRekq9/valhelsia_core-neoforge-1.21.1-1.1.4.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "787de5659b46ddb188e2960582cb236255e8e4c2dc6d3bfdd033ab1c00bbf61351a38a4f8a9d47035e03f662c982a952c676e6474e6ad9d3dc5815a3c0df2d95",
+      "metadata_path": "mods/valhelsia-core.pw.toml",
+      "metadata_sha256": "f05197caaa06d6cf3807ae2d81928c4f5eff1336597b863207c6320ab7f2e4b0",
+      "status": "verified",
+      "sha256": "e7f3a862e58d1003b557b1d619605524e1e88fc5c47d0b7ce3549a3cead06d7c",
+      "bytes": 181220
+    },
+    {
+      "id": "voidscape",
+      "filename": "Voidscape-1.21.1-1.9.588.jar",
+      "side": "both",
+      "urls": [
+        "https://mediafilez.forgecdn.net/files/8175/491/Voidscape-1.21.1-1.9.588.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "704b7358c3b961a54b7ca3ac566d976faf026464188aaab979658a208d0c4210a47dd78816dad1558702e0cd9cf4821a71c96896bd673ba0d87e49d252db6759",
+      "metadata_path": "mods/voidscape.pw.toml",
+      "metadata_sha256": "b5de0d9da27c96dd83f2843372d3022801163636d3399851616072da2e80e319",
+      "status": "verified",
+      "sha256": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
+      "bytes": 2219583
+    },
+    {
+      "id": "winter-overhaul",
+      "filename": "WinterOverhaul-NeoForge-4.0.2+1.21.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/5M97aUS6/versions/jMBjksDu/WinterOverhaul-NeoForge-4.0.2%2B1.21.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4c4f11754cc83e0be885db1f7fd02cf1de4674d3d544131c96438a75b6a6fc26dd29bb8fb19fe1df90e1d72ad8e8228126829228ac02ea92dc8e56d9ea0c9afe",
+      "metadata_path": "mods/winter-overhaul.pw.toml",
+      "metadata_sha256": "cef75a3276f7464779f2a293d508d1a5aa6c5504718d24977725a060397c5794",
+      "status": "verified",
+      "sha256": "43b7d0c8d1a126cf06eb431a8ac3859d6997b3a6989391466263f8b4ede1eb25",
+      "bytes": 158839
+    },
+    {
+      "id": "worldweaver-new-dawn",
+      "filename": "worldweaver-21.0.25.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/R8uGDQpB/versions/TrReu8cF/worldweaver-21.0.25.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "23926e6f737f9d73797ea7e5dfac2e6611a6cecdb768f236465c05e5750108100b6dbeb911e5f55b987f81a30f786e30a5910904dec6751e5c56bc8bf78eb2a7",
+      "metadata_path": "mods/worldweaver-new-dawn.pw.toml",
+      "metadata_sha256": "74d696169d84d7893843d322cb8062415e2903603da43128ea665205ff27482f",
+      "status": "verified",
+      "sha256": "6750a60983b22711cf14587d1e7a25c6327c9bec24952b4cbf5a26f40336ee1b",
+      "bytes": 2215098
+    },
+    {
+      "id": "wunderlib-new-dawn",
+      "filename": "wunderlib-21.0.10.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/HZmhgdJk/versions/5db3GZzg/wunderlib-21.0.10.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8785b16968ed82ead0fc3f6f42ca3dd7fa94b94a79eeb97a61e57b258bf8c0e6775002a561cf28a1840216bd06f3b86a31da420d4ccc2d37c14abe22058bdf96",
+      "metadata_path": "mods/wunderlib-new-dawn.pw.toml",
+      "metadata_sha256": "2327c95d7332226e1d8c0372909367ee84c1ecedea9eacd84ddb8328a28d1350",
+      "status": "verified",
+      "sha256": "b49c7a040f87ade1e3f73bd7335e8d68ff7a328919c192a6d2c022bae6786a2f",
+      "bytes": 378820
+    },
+    {
+      "id": "yacl",
+      "filename": "yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar",
+      "side": "client",
+      "urls": [
+        "https://cdn.modrinth.com/data/1eAoo2KR/versions/7TVdVtxF/yet_another_config_lib_v3-3.8.2%2B1.21.1-neoforge.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "583de19b927ce8050c2b7d5e60b75accc69e325e5aac85c27994c82a9dec2e4e078343fa1d4c3a10d4bd7e0e524e0b3b246a18cf03db01e363a1e6f865adcf48",
+      "metadata_path": "mods/yacl.pw.toml",
+      "metadata_sha256": "1f47c89af2b4c6ab92735d68e58412d0b369f7035818e58d02f5982f7fc1186a",
+      "status": "verified",
+      "sha256": "b5c30321b46cfaa521645a04aff89d2804d8167a25bb23ad4b1ae8da73093a2f",
+      "bytes": 1118651
+    },
+    {
+      "id": "yungs-api",
+      "filename": "YungsApi-1.21.1-NeoForge-5.1.9.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Ua7DFN59/versions/2prKITKh/YungsApi-1.21.1-NeoForge-5.1.9.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "7e3cf0b429e8a1c51dca094c2d8eabf12245bb42cbcd8b6e3e54959f931bef93201b81a08d200b417059aaa438e8eb445c3978a09568597bfb588199b7775967",
+      "metadata_path": "mods/yungs-api.pw.toml",
+      "metadata_sha256": "dde31f05114c72cb2f58e522417487730b872e456f77fdd02c032c9235791f6c",
+      "status": "verified",
+      "sha256": "375e0b2f988ab4f5bde182166c0f0b102377adc8f823660c24ade08b0b3cde56",
+      "bytes": 413763
+    },
+    {
+      "id": "yungs-better-desert-temples",
+      "filename": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6454c955f75f66104810e967a59ae032ddf1ccc5a854346af6bfba6e44cd456e755cd8feb1e0968be4e9132ea6c5d1cb2126fe5e85d3eb18c8d3ea3c81ffdf9a",
+      "metadata_path": "mods/yungs-better-desert-temples.pw.toml",
+      "metadata_sha256": "c2cb28859e7bcc0eb4ce59c5792f90fa5f8ab8865f5867ba26a5a345ec60b498",
+      "status": "verified",
+      "sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "bytes": 905839
+    },
+    {
+      "id": "yungs-better-dungeons",
+      "filename": "YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/o1C1Dkj5/versions/ZWDbFefV/YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "a079839b661bd7b838bce2cbc619b90d802631dcbc8bfe16d5acd4d96b62f7a6dba3b122ef6d414eda0cd51b81c081a813e4bd7825c26581861014c6789a64d1",
+      "metadata_path": "mods/yungs-better-dungeons.pw.toml",
+      "metadata_sha256": "9127aa866fb8ce86f3333729994b24a88041989d484e3336cf12b3b65262393b",
+      "status": "verified",
+      "sha256": "37abb1f1d6f7014e02b83751fc210579611efdde91a7be54166da9576e4690b5",
+      "bytes": 783745
+    },
+    {
+      "id": "yungs-better-jungle-temples",
+      "filename": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/z9Ve58Ih/versions/rimnNoke/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "2cefd15659d916d200861d75e070acb28082f1edc11b48d3fa4baaf39c7ba63a7aac61b1e78921105663210cde49202f23c32aa348168de5c5ddfbdbf468c56e",
+      "metadata_path": "mods/yungs-better-jungle-temples.pw.toml",
+      "metadata_sha256": "af40d7877a18df930df0895e9b98c6eb32c37440437ca36397d077fdbd6df278",
+      "status": "verified",
+      "sha256": "9cb2054c84eaded33a0bc2f3426d341cc9a594cc61341227dbad67254812d031",
+      "bytes": 797090
+    },
+    {
+      "id": "yungs-better-mineshafts",
+      "filename": "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/HjmxVlSr/versions/Go3nbneL/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "8b01b386f53feeaa55f0c62697578b82e00501e45e428b2a68df6bda34efb6a4b3b4e3582abf13fe767ebcb61aef9368186f53c03999958bef38f31c41a7f8b2",
+      "metadata_path": "mods/yungs-better-mineshafts.pw.toml",
+      "metadata_sha256": "e839608ebc974e9e7819adc7bf29132ea86fc41b46af540fe0fa39b2007b2439",
+      "status": "verified",
+      "sha256": "5625930dfb3240820d6e4ecf55fff0c39f70ce782fad117a4d418251184c7be0",
+      "bytes": 493967
+    },
+    {
+      "id": "yungs-better-nether-fortresses",
+      "filename": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "18b461298d3df1215fa3b4d2c0cb2ef1c7ed76701d8a0bb140277b21923e31abd939f0fd9b400c5bd676d739f1cda31c43b4dc753f9187251542223f3424d336",
+      "metadata_path": "mods/yungs-better-nether-fortresses.pw.toml",
+      "metadata_sha256": "50c1731148d91a4ef05cfc47f759ca8fb3dad254e15ce4ecc5732d6fbfa68637",
+      "status": "verified",
+      "sha256": "5450a64a7036237f449496837e08f3e5b3aa1d7974a10df43944172def75d8ff",
+      "bytes": 609639
+    },
+    {
+      "id": "yungs-better-ocean-monuments",
+      "filename": "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/3dT9sgt4/versions/NWit9vEK/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "4c3d7d1c2fdd9ed15a43eb228c59f51aaf9facb2286a57f2918e333bbbaebe54d8aa6ef262317006bfa969e777dddcebed3bf13172d4ad6284c4352914b33f05",
+      "metadata_path": "mods/yungs-better-ocean-monuments.pw.toml",
+      "metadata_sha256": "3b77b8c1bae2bb27e45eafd5c88fdec6dab7d79201c2b2f020fb3eb2af3cee6b",
+      "status": "verified",
+      "sha256": "a713d1bcf4314562a417586b02f5fa4dd54254836552769ac99cb74e03e1bb9b",
+      "bytes": 1026632
+    },
+    {
+      "id": "yungs-better-strongholds",
+      "filename": "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "385d67e07f2c67af5ea387d92d92949d8f671e8f99204457b6396dbe987ac3b14c2bff765df5fcbaa68016604f82a1fc6ec5a69c012ca22ad088d1a7c9bc135d",
+      "metadata_path": "mods/yungs-better-strongholds.pw.toml",
+      "metadata_sha256": "03084966c05070b5c4b17cd89234f3c0d813940a2d76b405a6699deac10a0ab8",
+      "status": "verified",
+      "sha256": "a9cab2fc01538368862365691f7d215309801aed0b390351681b6b60a1db7b58",
+      "bytes": 461244
+    },
+    {
+      "id": "yungs-better-witch-huts",
+      "filename": "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/t5FRdP87/versions/AvedwcIe/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "9baa8a1f36a2a36efc3df58ab9347fd9f326b551ad78e3f600ed9d68862c619752ac0770804807efb15a46fcb4d9f6e2baf6a11f622d3ebb6c865662f6c7bcfd",
+      "metadata_path": "mods/yungs-better-witch-huts.pw.toml",
+      "metadata_sha256": "9854b699d5a067c46ac99b1dedeeb529bff3fc18dd079e29b438c4cbf9725f68",
+      "status": "verified",
+      "sha256": "888b1e6d1ada21982a75abfb4afb040c9bc2cc68777ec5fcd1199b978e3d4f8d",
+      "bytes": 174789
+    },
+    {
+      "id": "yungs-bridges",
+      "filename": "YungsBridges-1.21.1-NeoForge-5.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/Ht4BfYp6/versions/yA2nuSdw/YungsBridges-1.21.1-NeoForge-5.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "6221f9764275fc9c8332a3cbb76ff98dab28604fc6e12a1df28cc3d527ac9e5d3ca802ddb14e1eaa4a6c4a495774374c64cc15b33ef90664735a6a3c03f0dc4c",
+      "metadata_path": "mods/yungs-bridges.pw.toml",
+      "metadata_sha256": "dc006d4f5e14091dbfb16a8eee15e379d2bdab93f99b4ed6d95f254924e4477f",
+      "status": "verified",
+      "sha256": "dd10b00be5d2e5bac680ed37fb0b1393e285e5403211999653f449e010af683b",
+      "bytes": 136819
+    },
+    {
+      "id": "yungs-extras",
+      "filename": "YungsExtras-1.21.1-NeoForge-5.1.0.jar",
+      "side": "both",
+      "urls": [
+        "https://cdn.modrinth.com/data/ZYgyPyfq/versions/uE6pFqck/YungsExtras-1.21.1-NeoForge-5.1.0.jar"
+      ],
+      "provider_hash_algorithm": "sha512",
+      "provider_hash": "1b00387f33c0b9468647acec7a8921b83b312374c381a01c4bfcecca99e6998c188ec7460a4e34f9d10709c4c99ef94b24d9848c21c1d7b1fc58de91ddba541d",
+      "metadata_path": "mods/yungs-extras.pw.toml",
+      "metadata_sha256": "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d",
+      "status": "verified",
+      "sha256": "9380c8b482a8f65daed86ed33512ab068199a9de393c24a2530e2d7f7ac3e985",
+      "bytes": 198181
+    }
+  ]
+}

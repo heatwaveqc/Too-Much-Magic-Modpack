@@ -8,7 +8,11 @@
       "decision": "exclude from original texture production unless owner revises",
       "reason": "Decorative glass variants; reduce high-volume repetitive edge cases.",
       "runtime": "unchanged",
-      "inventory": "retain and count separately; resolve actual archive paths before classifying"
+      "inventory": "retain and count separately; resolve actual archive paths before classifying",
+      "archive_id": "crystalix",
+      "archive_sha256": "da1043170b74347017bf338322990c2010d3db65721f0f38119e5e412242819b",
+      "exclusive_texture_paths": 25,
+      "reconciled": true
     },
     {
       "manifest_id": "rechiseled",
@@ -16,7 +20,11 @@
       "decision": "exclude from original texture production unless owner revises",
       "reason": "Chipped-like high-volume decorative block variants.",
       "runtime": "unchanged",
-      "inventory": "retain and count separately; resolve actual archive paths before classifying"
+      "inventory": "retain and count separately; resolve actual archive paths before classifying",
+      "archive_id": "rechiseled",
+      "archive_sha256": "7bf14cf8a4bfdc4b6c990126a75da29fd2bb7559d1c05b71e29c8fd5ae044435",
+      "exclusive_texture_paths": 682,
+      "reconciled": true
     }
   ],
   "shared_assets": "Do not exclude shared vanilla/included-mod paths by namespace guess or archive association alone.",

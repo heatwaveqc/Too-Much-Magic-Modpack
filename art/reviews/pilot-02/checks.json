@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-17",
+  "level": "STATIC ART / SOURCE REVIEW ONLY",
+  "unit_tests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "classified_records": 42542,
+  "direct_category_proposals": 34137,
+  "pattern_category_proposals": 1810,
+  "unresolved_category": 6595,
+  "exclusions": {
+    "crystalix": 25,
+    "rechiseled": 682,
+    "shared_global_exclusions": 0
+  },
+  "native_review_png_decode_and_dimensions": "17 pass",
+  "exact_alpha_inheritance": {
+    "iron_gold": "pass",
+    "diamond_mana_diamond": "pass"
+  },
+  "procedural_material_periodicity": {
+    "stone": {
+      "max_analytic_wrap_error": 2.842170943040401e-14
+    },
+    "livingrock": {
+      "max_analytic_wrap_error": 2.842170943040401e-14
+    },
+    "oak_log_top": {
+      "max_analytic_wrap_error": 5.684341886080802e-14
+    }
+  },
+  "generated_material_seams": "periodic Poisson correction; 5x5 source proofs inspected; owner/client approval pending",
+  "reproduced_csv_byte_identity": "pass",
+  "saved_review_files": 31,
+  "active_pack_pngs": 0,
+  "category_approvals": 0,
+  "client_or_game_test": "not run",
+  "gameplay_changes": false
+}

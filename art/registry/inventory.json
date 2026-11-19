@@ -1,9 +1,4223 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "complete": false,
-  "sources": [],
-  "assets": [],
+  "sources": [
+    {
+      "id": "akashic-tome",
+      "filename": "AkashicTome-1.8-30.jar",
+      "sha256": "c60f58fba975fe22681d69bd06dc93818e53a67830d9118167979852206f6ca8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "alexs-caves-continued",
+      "filename": "alexscaves-1.1.2-neoforge+1.21.1.jar",
+      "sha256": "768b720c357ad191869a0d9fa69de0ab3c83363be61344c3e4924a16bfc2388c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1267,
+      "nested_archives": []
+    },
+    {
+      "id": "apotheosis",
+      "filename": "Apotheosis-1.21.1-8.9.0.jar",
+      "sha256": "23a8b4a21d0d8744f097c77c8a96fcba14c4b95f3b1bb542412f40dab272872e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 151,
+      "nested_archives": []
+    },
+    {
+      "id": "apothic-attributes",
+      "filename": "ApothicAttributes-1.21.1-2.11.0.jar",
+      "sha256": "17c42bb6dd5c0d820fe090e1bb5959578cd5ab7b70caf98a2a59b319fcc7e1ba",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 12,
+      "nested_archives": []
+    },
+    {
+      "id": "apothic-enchanting",
+      "filename": "ApothicEnchanting-1.21.1-1.6.4.jar",
+      "sha256": "aff9837f45c1c981d47a9e60b780c37a151ef881937faf5f72092895104c8bbb",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 228,
+      "nested_archives": []
+    },
+    {
+      "id": "apothic-spawners",
+      "filename": "ApothicSpawners-1.21.1-1.4.0.jar",
+      "sha256": "f0cbc52ad606997789c36fac94ae651ab7e2e21c841e26a952c64041cad9cdbe",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "appleskin",
+      "filename": "appleskin-neoforge-mc1.21-3.0.9.jar",
+      "sha256": "38b48dd6231341c9f964ce6e42c57ec866c6cc8f72bec938390a59bafb3922df",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "aquaculture",
+      "filename": "Aquaculture-1.21.1-2.7.22.jar",
+      "sha256": "d77cc93b1285e16c2e8dae27565e96c86fbcaec811904b9cdc23a9fc379585ad",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 195,
+      "nested_archives": []
+    },
+    {
+      "id": "architectury-api",
+      "filename": "architectury-13.0.11-neoforge.jar",
+      "sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-additions",
+      "filename": "ars_additions-1.21.1-21.3.0.jar",
+      "sha256": "e634a3f0c39cd38007608cce1974a7c9bbad7d8202bfb6c75f17c2901f362c9b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 115,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-controle",
+      "filename": "ars_controle-1.21.1-1.6.16.jar",
+      "sha256": "595990b532b7e8cf23a5897c39edcdd9add52f208be9517ff7304e3b35361441",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 20,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-elemancy",
+      "filename": "ars_elemancy-1.21.1-1.18.3.jar",
+      "sha256": "502366f85dfde7bf13ceef571cc3c2ba9c7960d35fa54d5e2cdf6e8f407fc9cf",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 143,
+      "nested_archives": [
+        "META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar"
+      ]
+    },
+    {
+      "id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+      "filename": "META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+      "sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+      "provider_hash_verified": true,
+      "parent": "ars-elemancy",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 17,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-elemental",
+      "filename": "ars_elemental-1.21.1-0.7.10.4.jar",
+      "sha256": "9ba4393c98228bb1647e3786c71c30c7eb97574b9e65baba14f34c92f7b86eb9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 325,
+      "nested_archives": [
+        "META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar"
+      ]
+    },
+    {
+      "id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+      "filename": "META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+      "sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+      "provider_hash_verified": true,
+      "parent": "ars-elemental",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 21,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-n-spells",
+      "filename": "ars_n_spells-3.3.5.jar",
+      "sha256": "652b0a355818a8b61e1b481972ea080773d67d6865c5bccf2c69cac79d057ceb",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1420,
+      "nested_archives": [
+        "META-INF/jarjar/mixinextras-neoforge-0.5.3.jar"
+      ]
+    },
+    {
+      "id": "ars-n-spells!META-INF/jarjar/mixinextras-neoforge-0.5.3.jar",
+      "filename": "META-INF/jarjar/mixinextras-neoforge-0.5.3.jar",
+      "sha256": "9822e773bd9f42d36ed53ea3d67486207291747a7bfacc29beeb92040721bc9b",
+      "provider_hash_verified": true,
+      "parent": "ars-n-spells",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-nouveau",
+      "filename": "ars_nouveau-1.21.1-5.13.5.jar",
+      "sha256": "f2cf7ea99cf4cb3db1aa4e02c9ef3cdc8aff6ee65eb992f7b560e99741c0b904",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 891,
+      "nested_archives": [
+        "META-INF/jarjar/infiniverse-568341-5486311.jar",
+        "META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+        "META-INF/jarjar/nuggets-neoforge-1.21.1-1.1.0.48.jar"
+      ],
+      "duplicate_members": [
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        },
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        },
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        },
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        },
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        },
+        {
+          "path": "META-INF/LICENSE.txt",
+          "zip_header_offset": 11505477,
+          "sha256": "a2521407b3209df7dcebfc12cd6d732b24bfa2fe44982ef613e269666482521d"
+        },
+        {
+          "path": "META-INF/NOTICE.txt",
+          "zip_header_offset": 11512817,
+          "sha256": "a5b67acba0dd6a28db1c36f4d9cf8052979b59c36dba0a9119cf03c8e5365fb0"
+        }
+      ]
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/infiniverse-568341-5486311.jar",
+      "filename": "META-INF/jarjar/infiniverse-568341-5486311.jar",
+      "sha256": "ca0f8b3952120ec566d91d4aca79c9c9175309329c69b925507e9d627684bd5b",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+      "filename": "META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+      "sha256": "5424cdba38336ba1357805008a9cccbf697fae8bcdc3f8bfa2d7359a577af265",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jars/yumi-commons-collections-1.0.0-beta.4.jar",
+        "META-INF/jars/yumi-commons-core-1.0.0-beta.4.jar",
+        "META-INF/jars/yumi-commons-event-1.0.0-beta.4.jar"
+      ]
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar!META-INF/jars/yumi-commons-collections-1.0.0-beta.4.jar",
+      "filename": "META-INF/jars/yumi-commons-collections-1.0.0-beta.4.jar",
+      "sha256": "465bb920fdf1ca9caeacad01994aec624deea133a7d5b5efe0ae5984406b320b",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar!META-INF/jars/yumi-commons-core-1.0.0-beta.4.jar",
+      "filename": "META-INF/jars/yumi-commons-core-1.0.0-beta.4.jar",
+      "sha256": "a104ee2c71b550bd7098ed2f97414af26a3a657c5be6e0a0e421d7d134168f06",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar!META-INF/jars/yumi-commons-event-1.0.0-beta.4.jar",
+      "filename": "META-INF/jars/yumi-commons-event-1.0.0-beta.4.jar",
+      "sha256": "ee3aab1ee1f7e3b05f44b2ef4deacfbe9dd59e48e4eec9dbeada1e8fd84eab7f",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau!META-INF/jarjar/lambdynamiclights-api-4.5.1+1.21.1-mojmap.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-nouveau!META-INF/jarjar/nuggets-neoforge-1.21.1-1.1.0.48.jar",
+      "filename": "META-INF/jarjar/nuggets-neoforge-1.21.1-1.1.0.48.jar",
+      "sha256": "204bbc9e9edfe6d96ab51bb39b062388e444e621f8b2692ec78d0634d0831865",
+      "provider_hash_verified": true,
+      "parent": "ars-nouveau",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-ocultas",
+      "filename": "ars_ocultas-1.21.1-2.6.2.jar",
+      "sha256": "7c5bba278d785334601f7a348136c19802d90edfaced707d3a80f54f121d6a30",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "ars-unification",
+      "filename": "ars_unification-1.2.23.jar",
+      "sha256": "8e1237cc5d56c7097a23306156964ebf6d828ffa4b279d196ee463e668a2fb11",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "artifacts",
+      "filename": "artifacts-neoforge-13.2.5.jar",
+      "sha256": "e36a929420a0a616abdb28f5bbbdb866a426aa3bb78d1b39bc1183927c101ce6",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 116,
+      "nested_archives": [
+        "META-INF/jars/expandability-neoforge-12.0.0.jar"
+      ]
+    },
+    {
+      "id": "artifacts!META-INF/jars/expandability-neoforge-12.0.0.jar",
+      "filename": "META-INF/jars/expandability-neoforge-12.0.0.jar",
+      "sha256": "b68dc58b7a56f769fba7c20d4e6c810e53e140dd99c6149234f3123bea2dab9a",
+      "provider_hash_verified": true,
+      "parent": "artifacts",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "astral-sorcery",
+      "filename": "AstralSorcery-2.0.3.59.jar",
+      "sha256": "a25d11d104e450c643369f54d4d4c50a9c5cd1cda315385803804bd255b182f9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 326,
+      "nested_archives": []
+    },
+    {
+      "id": "attributefix",
+      "filename": "attributefix-neoforge-1.21.1-21.1.3.jar",
+      "sha256": "b2b20f3d44e824071284c14de3f4d3323d420e1c450040b339a5c37d2c382ad4",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "balm",
+      "filename": "balm-neoforge-1.21.1-21.0.67.jar",
+      "sha256": "eaae887582a67a02f55a970ec2d7353f1886a99924ed6144aa4d898266606c34",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jarjar/kuma-api-neoforge-21.0.8+1.21.jar"
+      ]
+    },
+    {
+      "id": "balm!META-INF/jarjar/kuma-api-neoforge-21.0.8+1.21.jar",
+      "filename": "META-INF/jarjar/kuma-api-neoforge-21.0.8+1.21.jar",
+      "sha256": "cf04355de63f96a84a10309d1c985200eb54b7bc614c7c3b556b39209e829f40",
+      "provider_hash_verified": true,
+      "parent": "balm",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "bclib-new-dawn",
+      "filename": "bclib-21.0.26.jar",
+      "sha256": "73ba7957d61588189eb35415f2ce9b063e7d4a102c6a4757582ba8fad310f2e0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 14,
+      "nested_archives": [
+        "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar"
+      ]
+    },
+    {
+      "id": "bclib-new-dawn!META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
+      "filename": "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
+      "sha256": "9c617719248f8b89847348fc7ea5e705739c147ae5e172551264d225bc9f2507",
+      "provider_hash_verified": true,
+      "parent": "bclib-new-dawn",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "better-advanced-tooltips",
+      "filename": "better-advanced-tooltips-2101.1.0-build.5.jar",
+      "sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 33,
+      "nested_archives": []
+    },
+    {
+      "id": "better-advancements",
+      "filename": "BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar",
+      "sha256": "60b548bef04a2f0e1da686ee9035c2e3d4ed0459a17d7a4836fc26af6de6b60e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 5,
+      "nested_archives": []
+    },
+    {
+      "id": "betterend-new-dawn",
+      "filename": "BetterEnd-21.0.39.jar",
+      "sha256": "92ff67030ef18d63f97d67ad07ce1f2d3d7c98adc66bcc901ba4521edffd06bf",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1958,
+      "nested_archives": []
+    },
+    {
+      "id": "bookshelf",
+      "filename": "bookshelf-neoforge-1.21.1-21.1.81.jar",
+      "sha256": "19e88d40da2b6a114c2b808f7fb469d96e66a5379df0a8a43fcb7834498b3e76",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "botania-revived",
+      "filename": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+      "sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1295,
+      "nested_archives": [
+        "META-INF/jarjar/Fractal-1.7.0+1.21.1-neoforge.jar",
+        "META-INF/jarjar/botania-spectrum-coremod-2.0.2.jar"
+      ]
+    },
+    {
+      "id": "botania-revived!META-INF/jarjar/Fractal-1.7.0+1.21.1-neoforge.jar",
+      "filename": "META-INF/jarjar/Fractal-1.7.0+1.21.1-neoforge.jar",
+      "sha256": "9cef6ca2794152d5ac2e142821f3ea14d647b90c03c393541370f828eb2cd463",
+      "provider_hash_verified": true,
+      "parent": "botania-revived",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 19,
+      "nested_archives": []
+    },
+    {
+      "id": "botania-revived!META-INF/jarjar/botania-spectrum-coremod-2.0.2.jar",
+      "filename": "META-INF/jarjar/botania-spectrum-coremod-2.0.2.jar",
+      "sha256": "0d06478638b50c21e7e2de66c91fa17ed5b300d5e438f2e17526e3c38a692f9c",
+      "provider_hash_verified": true,
+      "parent": "botania-revived",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "brandons-core",
+      "filename": "BrandonsCore-1.21.1-3.2.1.309.jar",
+      "sha256": "076b44de51c606e6cdd89694ac0a879fc028d4f0103880ef44f47dbcc69f1d23",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 126,
+      "nested_archives": []
+    },
+    {
+      "id": "brewin-and-chewin",
+      "filename": "BrewinAndChewin-neoforge-4.5.0+1.21.1.jar",
+      "sha256": "9f6581823c2449dde4ac1e9b4f5a7cc226c42e058e656741ab392f714f443971",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 244,
+      "nested_archives": [
+        "META-INF/jarjar/greenhouseconfig-2.2.3+1.21.1-neoforge.jar",
+        "META-INF/jarjar/greenhouseconfig_toml-1.1.0.jar"
+      ]
+    },
+    {
+      "id": "brewin-and-chewin!META-INF/jarjar/greenhouseconfig-2.2.3+1.21.1-neoforge.jar",
+      "filename": "META-INF/jarjar/greenhouseconfig-2.2.3+1.21.1-neoforge.jar",
+      "sha256": "0703de48d65716217c05fc72004d9dd176dee237b53fb55a784ed069c2d33486",
+      "provider_hash_verified": true,
+      "parent": "brewin-and-chewin",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "brewin-and-chewin!META-INF/jarjar/greenhouseconfig_toml-1.1.0.jar",
+      "filename": "META-INF/jarjar/greenhouseconfig_toml-1.1.0.jar",
+      "sha256": "f1089a6ae1132c0bf9abf1d2a89232c0e00e3a17fcd5a3ce59002f54d251f561",
+      "provider_hash_verified": true,
+      "parent": "brewin-and-chewin",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jarjar/greenhouseconfig_night_config-1.1.0.jar"
+      ]
+    },
+    {
+      "id": "brewin-and-chewin!META-INF/jarjar/greenhouseconfig_toml-1.1.0.jar!META-INF/jarjar/greenhouseconfig_night_config-1.1.0.jar",
+      "filename": "META-INF/jarjar/greenhouseconfig_night_config-1.1.0.jar",
+      "sha256": "cd0dd7f8b04f42d16aac23f0c21171dc4b9d6c0712ca0cf513dec4b9b390a85c",
+      "provider_hash_verified": true,
+      "parent": "brewin-and-chewin!META-INF/jarjar/greenhouseconfig_toml-1.1.0.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "caelus",
+      "filename": "caelus-neoforge-7.0.1+1.21.1.jar",
+      "sha256": "432a645557f29de159d9edde2fd109f8e3b32ff30895b4fede04ee5f1a1a682f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "cc-tweaked",
+      "filename": "cc-tweaked-1.21.1-forge-1.121.0.jar",
+      "sha256": "bf8dd119701560ea60085cf8c1076d32ffc99a1be5f8b99f6f3b174a88a208f8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 209,
+      "nested_archives": [
+        "META-INF/jarjar/cobalt-0.9.9.jar",
+        "META-INF/jarjar/jzlib-1.1.3.jar"
+      ]
+    },
+    {
+      "id": "cc-tweaked!META-INF/jarjar/cobalt-0.9.9.jar",
+      "filename": "META-INF/jarjar/cobalt-0.9.9.jar",
+      "sha256": "aca9fe1a2cab3ea7e296a72a1a6f667e29ddfdbab7af7cee35420bc2cc6e6929",
+      "provider_hash_verified": true,
+      "parent": "cc-tweaked",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "cc-tweaked!META-INF/jarjar/jzlib-1.1.3.jar",
+      "filename": "META-INF/jarjar/jzlib-1.1.3.jar",
+      "sha256": "89b1360f407381bf61fde411019d8cbd009ebb10cff715f3669017a031027560",
+      "provider_hash_verified": true,
+      "parent": "cc-tweaked",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "cloth-config",
+      "filename": "cloth-config-15.0.140-neoforge.jar",
+      "sha256": "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "clumps",
+      "filename": "Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "sha256": "b524ccdace2ef8fd19f5b2074f7de1103ac5065c52553f064c00e098346c293e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "cobblegen-galore",
+      "filename": "cobblegengalore-1.21.1-0.2.9.jar",
+      "sha256": "06f2969117c1b79c3114f3cc695f736e78ccab54dc5f8ce81cd585283da42ba2",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 23,
+      "nested_archives": []
+    },
+    {
+      "id": "cobweb",
+      "filename": "cobweb-neoforge-1.21-1.4.0.jar",
+      "sha256": "40c151dcee6a08decdd980a7c7ffed6ada292e77c3d2cd7aea2d01e5fa8d3b1c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "cocktails-delight",
+      "filename": "Cocktails-Delight-1.21.1-NeoForge-1.1.12.jar",
+      "sha256": "8694aa56fc1cd41e768e3653d5aca26bccbe7078ad8bd369b595942f989e2061",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 187,
+      "nested_archives": []
+    },
+    {
+      "id": "codechicken-lib-1-8",
+      "filename": "CodeChickenLib-1.21.1-4.6.1.529.jar",
+      "sha256": "8c453d5c49092860e9d7a692eb858ea54c15d0f9598daae524f9590f8edf276f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 21,
+      "nested_archives": [
+        "META-INF/jarjar/Quack-0.4.10.115.jar"
+      ]
+    },
+    {
+      "id": "codechicken-lib-1-8!META-INF/jarjar/Quack-0.4.10.115.jar",
+      "filename": "META-INF/jarjar/Quack-0.4.10.115.jar",
+      "sha256": "daed774cff5cc80483016538d40019bf799f49160b49d2129430e318fdf3052e",
+      "provider_hash_verified": true,
+      "parent": "codechicken-lib-1-8",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "codxlib",
+      "filename": "codxlib-1.5.1-neoforge+1.21.1.jar",
+      "sha256": "36431429a0bb58ffba4eec3aac87f28b158b2ca4dae11f1520c7ea9e4d680985",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "common-network",
+      "filename": "common-networking-neoforge-1.0.21-1.21.1.jar",
+      "sha256": "df39b3747e7571a6b4782fb8c618bb1fc5544662aba515ae4f67b56361448ec8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "controlling",
+      "filename": "Controlling-neoforge-1.21.1-19.0.5.jar",
+      "sha256": "cc525fb6b030d9e4d33176983f278919e17b33935e2ca568929bdfa98f2b44a0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "cooking-for-blockheads",
+      "filename": "cookingforblockheads-neoforge-1.21.1-21.1.24.jar",
+      "sha256": "3dd7af93b2156b14cf279fa6da2f7a1f88a63a81d7cfe001ac63945b06e62ccd",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 203,
+      "nested_archives": []
+    },
+    {
+      "id": "corail-tombstone",
+      "filename": "tombstone-neoforge-1.21.1-9.5.6.jar",
+      "sha256": "520e2a3cb5fb8001da20a23aaf39a7fd8fd937af962c2b43c55460099e30b23b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 113,
+      "nested_archives": []
+    },
+    {
+      "id": "crafting-tweaks",
+      "filename": "craftingtweaks-neoforge-1.21.1-21.1.11.jar",
+      "sha256": "0964fefc4a07120a53232b2d934fac4baf15fdaa99b69add30a18a642bc1cf98",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "creeper-overhaul",
+      "filename": "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
+      "sha256": "ed83bea2826667fca80a6a8067f89fe7b97eb8b3213bbcb7f0f4e6a6898c0bc9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 51,
+      "nested_archives": [
+        "META-INF/jars/resourceful-cosmetics-4j-1.0.3.jar"
+      ]
+    },
+    {
+      "id": "creeper-overhaul!META-INF/jars/resourceful-cosmetics-4j-1.0.3.jar",
+      "filename": "META-INF/jars/resourceful-cosmetics-4j-1.0.3.jar",
+      "sha256": "ed67d9ccb8be7deb4771e08dd95be234bf63363b320531c4ed4d7531f8429b9e",
+      "provider_hash_verified": true,
+      "parent": "creeper-overhaul",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "critters-and-companions",
+      "filename": "crittersandcompanions-neoforge-1.21.1-2.4.0.jar",
+      "sha256": "55f526f7dc162918fb871557c3260582d55c6adf2b9b44892b918bed7f4fb431",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 149,
+      "nested_archives": []
+    },
+    {
+      "id": "crystalix",
+      "filename": "crystalix-3.0.3.jar",
+      "sha256": "da1043170b74347017bf338322990c2010d3db65721f0f38119e5e412242819b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 26,
+      "nested_archives": []
+    },
+    {
+      "id": "cucumber",
+      "filename": "Cucumber-1.21.1-8.0.16.jar",
+      "sha256": "371f9551c676b76a39d5580be28f5cfeff364e131ad138fbf7108aeb2712f43f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "curios",
+      "filename": "curios-neoforge-9.5.1+1.21.1.jar",
+      "sha256": "a45df2125c26219974aba7507ffc9afe7b83acc941a386af3faacb1cc0056fde",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 24,
+      "nested_archives": []
+    },
+    {
+      "id": "cyclops-core",
+      "filename": "cyclopscore-1.21.1-neoforge-1.30.1.jar",
+      "sha256": "a11dbce574bbc4db4d56c1b22af1826d09db1d2432030c3590e2c77754837b1d",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "databank",
+      "filename": "databank-1.3.2.1.jar",
+      "sha256": "f283bd2ef1172bc23e13f514b280988b72e3b8fc37ccfa81fb93feebc4c6f456",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "deeperdarker",
+      "filename": "deeperdarker-neoforge-1.21.1-1.4.1.jar",
+      "sha256": "eee3f51222b0bcc714def002ff089ac9e131d3cae4575b542fd0a7dd101fe0af",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 275,
+      "nested_archives": []
+    },
+    {
+      "id": "default-options",
+      "filename": "defaultoptions-neoforge-1.21.1-21.1.8.jar",
+      "sha256": "d12790dc1f0857778d282c00ad5be56882ac6fce44769c1f012be09b5604874a",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "dive-into-the-abyss",
+      "filename": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "sha256": "ffe5eb5da73b480e22361834b14109e8f380a91eeff56a33d6334ee0090b16a1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 389,
+      "nested_archives": []
+    },
+    {
+      "id": "draconic-evolution",
+      "filename": "Draconic-Evolution-1.21.1-3.1.4.633.jar",
+      "sha256": "e89f3a23a5478e35099905d7c08f9f6a2ff70289e964904e91f06a7ceeed39b5",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 391,
+      "nested_archives": []
+    },
+    {
+      "id": "eidolon-repraised",
+      "filename": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "sha256": "3ebe2e82bdee7a73b4f48b3125b1c469c329624a9d9f8e60e23476458419c245",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 423,
+      "nested_archives": []
+    },
+    {
+      "id": "embeddium",
+      "filename": "embeddium-1.0.15+mc1.21.1.jar",
+      "sha256": "3aac4c4c6e82d78d8dda4c611d68c672d1061b42bb6954331e3c2e7f14c451e1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "embers-re-ignited",
+      "filename": "embers-reignited-1.21.1-1.5.9.jar",
+      "sha256": "65b07f81563a6bc3c6435d3296bc4b0ab96d6a739b3a3dceb384e2d281e82685",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 618,
+      "nested_archives": []
+    },
+    {
+      "id": "enchanted-witchcraft",
+      "filename": "enchanted-neoforge-1.21.1-4.2.7.jar",
+      "sha256": "205a3e1edb7e53e9bbf3b8ab965ac5eb3840bc43760e1b003200e4735ebf1bb0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 288,
+      "nested_archives": []
+    },
+    {
+      "id": "enchantment-descriptions",
+      "filename": "enchdesc-neoforge-1.21.1-21.1.11.jar",
+      "sha256": "868d3eab3305d96dd3ecf510d18a7aa7444e2aea168695cf4aff23a96bec975f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "enderman-overhaul",
+      "filename": "endermanoverhaul-neoforge-1.21.1-2.0.3.jar",
+      "sha256": "fe6c04dcfdbb8815058ebf1102d64cb4c86060a0a1b7350121e4a976d4a92248",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 87,
+      "nested_archives": []
+    },
+    {
+      "id": "enigmaticlegacy-plus",
+      "filename": "enigmaticlegacyplus-1.21.1-1.1.2.jar",
+      "sha256": "52acb550a9df9f9b681e9286d04b4f1c80d519f63af94a092a51c88697e0592e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 366,
+      "nested_archives": []
+    },
+    {
+      "id": "entityculling",
+      "filename": "entityculling-neoforge-1.12.1-mc1.21.1.jar",
+      "sha256": "8867487645142a01b5a6de3f7b984af8d0c516daa9a7aa83c4f6916adccd4eca",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jars/TRansition-1.0.28-1.21.1-neoforge-SNAPSHOT.jar",
+        "META-INF/jars/TRender-1.0.17-1.21.1-neoforge-SNAPSHOT.jar"
+      ]
+    },
+    {
+      "id": "entityculling!META-INF/jars/TRansition-1.0.28-1.21.1-neoforge-SNAPSHOT.jar",
+      "filename": "META-INF/jars/TRansition-1.0.28-1.21.1-neoforge-SNAPSHOT.jar",
+      "sha256": "be0a0ffbf3c6cec6d8be0505bf135db38025e8bb743bca85c345ec69f05b919b",
+      "provider_hash_verified": true,
+      "parent": "entityculling",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "entityculling!META-INF/jars/TRender-1.0.17-1.21.1-neoforge-SNAPSHOT.jar",
+      "filename": "META-INF/jars/TRender-1.0.17-1.21.1-neoforge-SNAPSHOT.jar",
+      "sha256": "1e26189c1d9af00dfb297396e5d9153902543c521f5f0ec5ae6fa374e03a8827",
+      "provider_hash_verified": true,
+      "parent": "entityculling",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 49,
+      "nested_archives": []
+    },
+    {
+      "id": "eternal-starlight",
+      "filename": "eternalstarlight-0.9.1+1.21.1+neoforge.jar",
+      "sha256": "e77369ad1a779036b243ef0f7b24776640a3ff84968e6f3be1931bc953e92b09",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1454,
+      "nested_archives": []
+    },
+    {
+      "id": "evilcraft",
+      "filename": "evilcraft-1.21.1-neoforge-1.2.100.jar",
+      "sha256": "48843165e7b4d4ecb2bd3b854c272305d60469a5409e8f35f47f5f15e2a6db20",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 231,
+      "nested_archives": []
+    },
+    {
+      "id": "exclusions-lib",
+      "filename": "ExclusionsLib-1.1.0-NEO.jar",
+      "sha256": "e926fce2ed8e78b2f5fc29cc707299f8688b4a39b2043a30a2607fda046abfa2",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "extra-botany-revived",
+      "filename": "ExtraBotany-1.21.1-1.0.4-NeoForge.jar",
+      "sha256": "d0554b57149b46beaefe38f11d20ded9b93dbbc954d4deb2939fd2f58cb19dad",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 422,
+      "nested_archives": []
+    },
+    {
+      "id": "extreme-sound-muffler",
+      "filename": "ExtremeSoundMuffler-3.57_NeoForge-1.21.jar",
+      "sha256": "25c8af2a13061d6cd77cbaebe15e0c4f880151c2876eadbf4768db8fbaa89613",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "farmers-delight",
+      "filename": "FarmersDelight-1.21.1-1.3.4.jar",
+      "sha256": "139ad7696462c89c03eea463f805abffa552526c5dadaadae221dd9624cb197c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 429,
+      "nested_archives": []
+    },
+    {
+      "id": "farming-for-blockheads",
+      "filename": "farmingforblockheads-neoforge-1.21.1-21.1.14.jar",
+      "sha256": "473e1e2fe970df030119f4d1e0214bcf0fd9b1673912c63bf6c5b5a75e65d2de",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 19,
+      "nested_archives": []
+    },
+    {
+      "id": "fenns_totemic",
+      "filename": "Totemic-neoforge-1.21.1-0.12.18.jar",
+      "sha256": "f200a607f22eb70101af052043b60a0580f756549a153b0ac9e41c0216051c5f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 55,
+      "nested_archives": []
+    },
+    {
+      "id": "ferrite-core",
+      "filename": "ferritecore-7.0.3-neoforge.jar",
+      "sha256": "d87ea28262715ebff45b8a82d493e6b468e7a4521bc021df5d88302196d030a8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "feywild",
+      "filename": "feywild-1.21.1-5.6.4.jar",
+      "sha256": "6e115fe731ecfd18bd6d676e052998d3a6c2e12e5c31cf101b4c77b93359c7b8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 377,
+      "nested_archives": []
+    },
+    {
+      "id": "first-party-source-resources",
+      "filename": "first-party-source-resources",
+      "sha256": "20abd26df674b08225123b76b377fb033d2a5a6bc4228619451eec3ca7ca58fa",
+      "provider_hash_verified": false,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "forbidden-arcanus",
+      "filename": "forbidden_arcanus-2.6.1.jar",
+      "sha256": "8d5ef1557fcdd0ba9fe98c38458751bcbecb118c30924daa6fbdea0a54bf5785",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 574,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-chunks-forge",
+      "filename": "ftb-chunks-neoforge-2101.1.24.jar",
+      "sha256": "4fd569936a0dc966e114d92d98277baec6c9b8337b215a30648b63f9cb860a1f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 26,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-filter-system",
+      "filename": "ftb-filter-system-neoforge-21.1.4.jar",
+      "sha256": "b8700e8bfd9c78b09bc7819cb28a6318b20d2bf68969bc6894a0bfa39581a99b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 5,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-library-forge",
+      "filename": "ftb-library-neoforge-2101.1.39.jar",
+      "sha256": "ca64bd1b5f335406900f74eeafacea5a3580a3933d61de6b6600a64eb12a9a95",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 243,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-quests-forge",
+      "filename": "ftb-quests-neoforge-2101.1.38.jar",
+      "sha256": "3752657a82c69b0a80c034700df86f1a3d7c5f3e3aad814b5af748b9082a834b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 86,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-teams-forge",
+      "filename": "ftb-teams-neoforge-2101.1.12.jar",
+      "sha256": "b3f33436070b7ae4a706280561f1d2f1d1eb1a089cb13ec9851e99646165aed2",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "ftb-xmod-compat",
+      "filename": "ftb-xmod-compat-neoforge-21.1.14.jar",
+      "sha256": "143c79710af4e17dbff7bb933f2e17c667091353e188e5d53fdaab4220a5ff64",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "fusion-connected-textures",
+      "filename": "fusion-1.3.16-neoforge-mc1.21.1.jar",
+      "sha256": "29920a6838f4f942947d208349480d7f5737f9fac6411c6eac5f3e824a438048",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "gateways-to-eternity",
+      "filename": "GatewaysToEternity-1.21.1-5.1.0.jar",
+      "sha256": "7e7df9c4e436ed0ac2a7728102724d5272dc2eef34c7df786074c8d27d888cd9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 5,
+      "nested_archives": []
+    },
+    {
+      "id": "gaze-a-malum-addon",
+      "filename": "gaze-1.1.7.1.jar",
+      "sha256": "ef9d7ea7a56f1ba5547f4c7b90bf36c87807b9bb5a18c43b1f6c370d5b7e6c06",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 112,
+      "nested_archives": []
+    },
+    {
+      "id": "geckolib",
+      "filename": "geckolib-neoforge-1.21.1-4.9.3.jar",
+      "sha256": "20a1995e4074f387ff549e2c57ea79dd7d41ee83c6afb9dd6a6e840e592d1c47",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "get-it-together-drops",
+      "filename": "getittogetherdrops-neoforge-1.21.5-1.4.jar",
+      "sha256": "a09466d03e3dde0c0f5c179146a8247b33a720a88979eb813c5f2aa2ad1c7a78",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "ghost",
+      "filename": "ghosts-neoforge-1.21.1-1.3.4.jar",
+      "sha256": "fc0641e10187b3cfadb93e969d1d61ea5c5c93401af22bd1682ab20f62bd08d0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 58,
+      "nested_archives": []
+    },
+    {
+      "id": "goety-cataclysm",
+      "filename": "goety_cataclysm-1.21.1-1.8.4.jar",
+      "sha256": "0c9a122cdd94eef65fe5d6b610b20b4a811659032707fa314756494fb9772738",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 57,
+      "nested_archives": []
+    },
+    {
+      "id": "goety",
+      "filename": "goety-3.2.2.jar",
+      "sha256": "507ad7c4462fe4d888a6458ad6dfbf1f320eadd626d714c96061c109493d888f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2978,
+      "nested_archives": []
+    },
+    {
+      "id": "golem-overhaul",
+      "filename": "golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "sha256": "d46939101db2bb82a602ad20b9c8e7228da5fbcf24185169ed16e5da19b3cdc9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 46,
+      "nested_archives": []
+    },
+    {
+      "id": "hammer-lib",
+      "filename": "HammerLib-1.21-21.0.17.jar",
+      "sha256": "0a91f1f98e15aa6e41a44fe59a1d422b733ccd6d74f9fa491901167015bbacda",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 17,
+      "nested_archives": []
+    },
+    {
+      "id": "harvest-with-ease",
+      "filename": "harvest-with-ease-neoforge-1.21-9.4.0.jar",
+      "sha256": "e42eed218468bfd244898b9776959155820d228f494c9638982a8aace229ebe8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "hexcast-neoforged",
+      "filename": "hexcast-neoforged-1.21.1-0.11.1-19+neoforge.1.21.1.jar",
+      "sha256": "54739b9fb0b4bf1e00d4e3c1c9fbc28d3f28f13d98f9ee049c9f9d4dec5a8ec0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 473,
+      "nested_archives": []
+    },
+    {
+      "id": "hexerei",
+      "filename": "hexerei-0.5.0.3.jar",
+      "sha256": "743e80cb0526fa5fffdb660c5c3230df47d664fb268e48ca888771c4cf594240",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1016,
+      "nested_archives": []
+    },
+    {
+      "id": "immediatelyfast",
+      "filename": "ImmediatelyFast-NeoForge-1.6.15+1.21.1.jar",
+      "sha256": "7d7b1d7b9f71d5303e42b2fa45f222a5ab06e0ef5982abb6da5dd9cc449b3702",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": [
+        "META-INF/jars/Reflect-1.6.2.jar"
+      ]
+    },
+    {
+      "id": "immediatelyfast!META-INF/jars/Reflect-1.6.2.jar",
+      "filename": "META-INF/jars/Reflect-1.6.2.jar",
+      "sha256": "2ba24d511ec40ac0ad18134d42e585d210a2bc86beb45239e6f8e9691e6cdd54",
+      "provider_hash_verified": true,
+      "parent": "immediatelyfast",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "improvable-skills",
+      "filename": "ImprovableSkills-1.21-21.0.2.jar",
+      "sha256": "e14a7de2eafe933c1ca1618262fe55aa89eebd466062a7e0d43d58c97429b2f2",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 108,
+      "nested_archives": []
+    },
+    {
+      "id": "inventory-tweaks-refoxed",
+      "filename": "invtweaks-1.21.1-1.3.2.jar",
+      "sha256": "ceb5b20a43ca1c5bd707f60bb5d5fa61099c7a7ba50b19f6bddfe93f1ca0073c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "irons-lib",
+      "filename": "irons_lib-1.21.1-2.3.0.jar",
+      "sha256": "578d9ebfad529c0587efab2690bb469811f3a0a3593064c74263fdf909449f39",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 50,
+      "nested_archives": []
+    },
+    {
+      "id": "irons-spells-n-spellbooks",
+      "filename": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "sha256": "55a290db9b966e0c5d2f5c051d50775f3db6375cdb52730c4da528bcf5d5daa0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 912,
+      "nested_archives": []
+    },
+    {
+      "id": "jade",
+      "filename": "Jade-1.21.1-NeoForge-15.10.6.jar",
+      "sha256": "276f1f65a20d04f536989c4f311949d770b52c440c23c2b904a08860f3c93810",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "jawr-forbidden-magic",
+      "filename": "witchery_forbidden_magic-0.5.37+mc1.21.1.jar",
+      "sha256": "e1f8a919946bc7997106fce1163dcfb5e436ae0f4482bbe7f4b0a81d35028fc0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 29,
+      "nested_archives": []
+    },
+    {
+      "id": "jei",
+      "filename": "jei-1.21.1-neoforge-19.64.0.455.jar",
+      "sha256": "f7a9de3d7ee07eed8d293a1a1a0f6afaac556eb43c103523457bd07ebb551e7b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 52,
+      "nested_archives": [
+        "META-INF/jarjar/mezz_config-1.21.1-neoforge-0.6.6.jar"
+      ]
+    },
+    {
+      "id": "jei!META-INF/jarjar/mezz_config-1.21.1-neoforge-0.6.6.jar",
+      "filename": "META-INF/jarjar/mezz_config-1.21.1-neoforge-0.6.6.jar",
+      "sha256": "89761c5f0b6e7023969f080860306b1f3cf44f9ea8cae8b815986351a09354c7",
+      "provider_hash_verified": true,
+      "parent": "jei",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "just-another-witchery-remake",
+      "filename": "witchery-0.5.39+mc1.21.1.jar",
+      "sha256": "81557ceb1b878d2aa8df5fcbcc468b82479d1e38d38097873a6ffb225324e256",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 721,
+      "nested_archives": [
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.4.2.jar"
+      ]
+    },
+    {
+      "id": "just-another-witchery-remake!META-INF/jarjar/sable-companion-common-1.21.1-1.4.2.jar",
+      "filename": "META-INF/jarjar/sable-companion-common-1.21.1-1.4.2.jar",
+      "sha256": "967ed063568c59f9bf7f611983e41f947d6cde9782da802d0e9e20a081c86548",
+      "provider_hash_verified": true,
+      "parent": "just-another-witchery-remake",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "just-enough-resources-jer",
+      "filename": "JustEnoughResources-NeoForge-1.21.1-1.6.0.57.jar",
+      "sha256": "2c35206d3dbe2d1b81bd80fcdb6b55e6a9230f67b00e5206ffbd9ed295877d4e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "just-zoom",
+      "filename": "justzoom_neoforge_3.1.0_MC_1.21.1.jar",
+      "sha256": "636885577b2ec47b10abeb62d0f35d5b2267c88ed5c43ed7ea9b3955858cb314",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "keybind-bundles",
+      "filename": "keybindbundles-1.5.0.jar",
+      "sha256": "26a2e9f7208174d091c46f018d32cfc4b118c30adfa29b200c35ec64afb9db2b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "keysets",
+      "filename": "keyset-neoforge-1.3.0+mc1.21.1.jar",
+      "sha256": "25fbfbc5f03265eb31215adda90430146cbfb2ed8f00d7098fac10a13d94bceb",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "konkrete",
+      "filename": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "sha256": "791c5538751dd3015ef3a2ce92d98719e1a28a48ebbd817b78506771256654cd",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 6,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge",
+      "filename": "kotlinforforge-5.12.0-all.jar",
+      "sha256": "095aed94f21b4e55895b21ea957750ae3ab829fbcfc6d3c66a3489f5f1128d46",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jarjar/kotlin-reflect-2.4.0.jar",
+        "META-INF/jarjar/kotlin-stdlib-2.4.0.jar",
+        "META-INF/jarjar/kotlin-stdlib-jdk7-2.4.0.jar",
+        "META-INF/jarjar/kotlin-stdlib-jdk8-2.4.0.jar",
+        "META-INF/jarjar/kotlinx-coroutines-core-jvm-1.11.0.jar",
+        "META-INF/jarjar/kotlinx-coroutines-jdk8-1.11.0.jar",
+        "META-INF/jarjar/kotlinx-serialization-core-jvm-1.11.0.jar",
+        "META-INF/jarjar/kotlinx-serialization-json-jvm-1.11.0.jar",
+        "META-INF/jarjar/thedarkcolour.kfflang-5.12.0.jar",
+        "META-INF/jarjar/thedarkcolour.kfflib-5.12.0.jar",
+        "META-INF/jarjar/thedarkcolour.kffmod-5.12.0.jar"
+      ]
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlin-reflect-2.4.0.jar",
+      "filename": "META-INF/jarjar/kotlin-reflect-2.4.0.jar",
+      "sha256": "f0d8e8908624eb4478bb131e9f887366680d2e239741195e548fa5c906963b90",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlin-stdlib-2.4.0.jar",
+      "filename": "META-INF/jarjar/kotlin-stdlib-2.4.0.jar",
+      "sha256": "ccb14ff83fabcb11458b798dbc9824748ccdffeec79c9aba789e6ed1cda86b1c",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlin-stdlib-jdk7-2.4.0.jar",
+      "filename": "META-INF/jarjar/kotlin-stdlib-jdk7-2.4.0.jar",
+      "sha256": "5072265564b6b0296f9c7b21fee65edee760c5697436f5ae7427033fa58fc034",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlin-stdlib-jdk8-2.4.0.jar",
+      "filename": "META-INF/jarjar/kotlin-stdlib-jdk8-2.4.0.jar",
+      "sha256": "d96b4e297136b8a4b2b88c1adcdc64d92e90d52a417e4315cdcf964adede8aa2",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlinx-coroutines-core-jvm-1.11.0.jar",
+      "filename": "META-INF/jarjar/kotlinx-coroutines-core-jvm-1.11.0.jar",
+      "sha256": "d1d75aa01dffbb4d1c520e67e4c4e7f5f6174718e7cb4632412503f2f0e604fa",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlinx-coroutines-jdk8-1.11.0.jar",
+      "filename": "META-INF/jarjar/kotlinx-coroutines-jdk8-1.11.0.jar",
+      "sha256": "1238f179da55360725ec49b887225317f31ae89bd29b652cbe139ff59f5d45cb",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlinx-serialization-core-jvm-1.11.0.jar",
+      "filename": "META-INF/jarjar/kotlinx-serialization-core-jvm-1.11.0.jar",
+      "sha256": "f4a801c647d4351327cd9e1ac4113e2be9ea37a64ab0abae269c25a52e28f35d",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/kotlinx-serialization-json-jvm-1.11.0.jar",
+      "filename": "META-INF/jarjar/kotlinx-serialization-json-jvm-1.11.0.jar",
+      "sha256": "563a25b4eb5c9128ae9c2479f3d1a5c44dcd176112b91cf03682e906eba5c935",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/thedarkcolour.kfflang-5.12.0.jar",
+      "filename": "META-INF/jarjar/thedarkcolour.kfflang-5.12.0.jar",
+      "sha256": "09bf10cdf09b62286482817a06c075dfca2292f8019a1bb2f999b4d3bbdf3f13",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/thedarkcolour.kfflib-5.12.0.jar",
+      "filename": "META-INF/jarjar/thedarkcolour.kfflib-5.12.0.jar",
+      "sha256": "164ff96d4b9fc1c0b61eff77c39a51a01dedfd6aa427ffd6e11da43c4cd5816d",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kotlin-for-forge!META-INF/jarjar/thedarkcolour.kffmod-5.12.0.jar",
+      "filename": "META-INF/jarjar/thedarkcolour.kffmod-5.12.0.jar",
+      "sha256": "fffaadd2379bd43c2fc3263481b0a2abf1942d1efa053fa8946da78843de1c29",
+      "provider_hash_verified": true,
+      "parent": "kotlin-for-forge",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "kubejs",
+      "filename": "kubejs-neoforge-2101.7.2-build.381.jar",
+      "sha256": "07d8cb7ac1f7ef81f17ae00bfd84c92c18ac0398e83e64a27d91717969316bc0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 22,
+      "nested_archives": [
+        "META-INF/jarjar/animated-gif-lib-for-java-animated-gif-lib-1.7.jar",
+        "META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "META-INF/jarjar/tiny-java-server-1.0.0-build.33.jar"
+      ]
+    },
+    {
+      "id": "kubejs!META-INF/jarjar/animated-gif-lib-for-java-animated-gif-lib-1.7.jar",
+      "filename": "META-INF/jarjar/animated-gif-lib-for-java-animated-gif-lib-1.7.jar",
+      "sha256": "9bae7c1154cec27d65f0ab91e307255789a2c76b73fd3425c211b52c1de3a343",
+      "provider_hash_verified": true,
+      "parent": "kubejs",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+      "filename": "META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+      "sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+      "provider_hash_verified": true,
+      "parent": "kubejs",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 25,
+      "nested_archives": []
+    },
+    {
+      "id": "kubejs!META-INF/jarjar/tiny-java-server-1.0.0-build.33.jar",
+      "filename": "META-INF/jarjar/tiny-java-server-1.0.0-build.33.jar",
+      "sha256": "e5eb5d6dd6444cf99ecbbda7db0345e13d619b1e7ca87db7561ddf605d68b6bc",
+      "provider_hash_verified": true,
+      "parent": "kubejs",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "l_enders-cataclysm",
+      "filename": "L_Ender's Cataclysm 1.21.1-3.33.jar",
+      "sha256": "371956d0c2e3b56729ee93b955e936875d210e372fe734cdb74326d89ef79875",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 789,
+      "nested_archives": []
+    },
+    {
+      "id": "leaves-be-gone",
+      "filename": "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
+      "sha256": "ea85ad07672f7c2199c28fe58a80c354ef2f2c60bfb0315e3730c344068526e0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "lets-do-beachparty",
+      "filename": "letsdo-beachparty-neoforge-2.1.5.jar",
+      "sha256": "e8deaf37b0092f5be93fa57d8a4ce1d35c119c2267ea4a8c508198652541fb33",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 187,
+      "nested_archives": []
+    },
+    {
+      "id": "lets-do-furniture",
+      "filename": "letsdo-furniture-neoforge-1.1.10.jar",
+      "sha256": "c1677c358626307bc7578d71febc3500e37437ac15a304abe794886f1d0151f7",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1382,
+      "nested_archives": [
+        "META-INF/jars/foundation-neoforge-1.0.7.jar"
+      ]
+    },
+    {
+      "id": "lets-do-furniture!META-INF/jars/foundation-neoforge-1.0.7.jar",
+      "filename": "META-INF/jars/foundation-neoforge-1.0.7.jar",
+      "sha256": "3d99204c2a8e162d5b0e85cee56738ddf2b1a8cc6c0cd7bef7a43c46a73d9e9a",
+      "provider_hash_verified": true,
+      "parent": "lets-do-furniture",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 57,
+      "nested_archives": []
+    },
+    {
+      "id": "lionfish-api",
+      "filename": "lionfishapi-3.1.jar",
+      "sha256": "aeebf0692650afbbc78259c0d4e3d5b7edf037707e8ae5d56045066d83a19cf6",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "lithostitched",
+      "filename": "lithostitched-1.8.1-neoforge-21.1.jar",
+      "sha256": "e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar"
+      ]
+    },
+    {
+      "id": "lithostitched!META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar",
+      "filename": "META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar",
+      "sha256": "d8ca42902cc4fe7c6c39917bdc2a9ec86c32c5bee3e3c3a551513f601968498b",
+      "provider_hash_verified": true,
+      "parent": "lithostitched",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": [
+        "META-INF/jarjar/json5-java-3.0.0.jar"
+      ]
+    },
+    {
+      "id": "lithostitched!META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar!META-INF/jarjar/json5-java-3.0.0.jar",
+      "filename": "META-INF/jarjar/json5-java-3.0.0.jar",
+      "sha256": "2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533",
+      "provider_hash_verified": true,
+      "parent": "lithostitched!META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "lodestonelib",
+      "filename": "lodestone-1.21.1-1.8.2.jar",
+      "sha256": "cc961af6a77391628378c1c838e521415fa895062b13def493d27234ca527f3e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 10,
+      "nested_archives": []
+    },
+    {
+      "id": "lootjs",
+      "filename": "lootjs-neoforge-1.21.1-3.7.0.jar",
+      "sha256": "d168fd80f45e5f23dced8a54fdee87347a4c7fc6ccd9c76d30ae4d067ba9c60a",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "lootr",
+      "filename": "lootr-neoforge-1.21.1-1.11.38.127.jar",
+      "sha256": "5c74de4709d1c13b25880fdd241a89d5d9f331346d20edc76f80ccd4d99dc66c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 56,
+      "nested_archives": []
+    },
+    {
+      "id": "mahou-tsukai",
+      "filename": "mahoutsukai-1.21.1-v1.36.31.jar",
+      "sha256": "4022fb3cee32b28df02994cc4c5b40069651583516f6abd04775789616739aad",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 180,
+      "nested_archives": []
+    },
+    {
+      "id": "malum",
+      "filename": "malum-1.21.1-1.8.2.jar",
+      "sha256": "38f4fa53e8da9e3d67aa5f54f98fd7c83cb342f0463ce5c63a6864229c88efa8",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1145,
+      "nested_archives": []
+    },
+    {
+      "id": "mezzconfig",
+      "filename": "mezz_config-1.21.1-neoforge-0.7.1-standalone.jar",
+      "sha256": "c42510938584eda0aae134003e367d745fd32ceac1836221cecac4cbc7bfa3a1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jarjar/mezz_config-1.21.1-neoforge-0.7.1.jar"
+      ]
+    },
+    {
+      "id": "mezzconfig!META-INF/jarjar/mezz_config-1.21.1-neoforge-0.7.1.jar",
+      "filename": "META-INF/jarjar/mezz_config-1.21.1-neoforge-0.7.1.jar",
+      "sha256": "718801c7c931789e809eb21a404f42a1c5fbbd28cb9181152071b1e79f92f61d",
+      "provider_hash_verified": true,
+      "parent": "mezzconfig",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "minecraft",
+      "filename": "minecraft-1.21.1-client.jar",
+      "sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3071,
+      "nested_archives": []
+    },
+    {
+      "id": "modernfix",
+      "filename": "modernfix-neoforge-5.27.27+mc1.21.1.jar",
+      "sha256": "7010aae2e837122fe8dabd5932358e2ba334fcbc62ca6530cb1cb00402d2c63b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "modonomicon",
+      "filename": "modonomicon-1.21.1-neoforge-1.123.0.jar",
+      "sha256": "23f02535d579602d3da3e15397c9edc55b9dcafb6b755c1665f31d70fa6bec1f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 32,
+      "nested_archives": [
+        "META-INF/jarjar/commonmark-0.31.0.jar",
+        "META-INF/jarjar/commonmark-ext-gfm-strikethrough-0.31.0.jar",
+        "META-INF/jarjar/commonmark-ext-ins-0.31.0.jar"
+      ]
+    },
+    {
+      "id": "modonomicon!META-INF/jarjar/commonmark-0.31.0.jar",
+      "filename": "META-INF/jarjar/commonmark-0.31.0.jar",
+      "sha256": "11d5996813f4d6525a134b906844d87112c6acb6fdd306ad5755ef5df9b26281",
+      "provider_hash_verified": true,
+      "parent": "modonomicon",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "modonomicon!META-INF/jarjar/commonmark-ext-gfm-strikethrough-0.31.0.jar",
+      "filename": "META-INF/jarjar/commonmark-ext-gfm-strikethrough-0.31.0.jar",
+      "sha256": "6236e6605072708d0a172a9c57802529ab71958e71c72a5e0f90a4fbf62aa9aa",
+      "provider_hash_verified": true,
+      "parent": "modonomicon",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "modonomicon!META-INF/jarjar/commonmark-ext-ins-0.31.0.jar",
+      "filename": "META-INF/jarjar/commonmark-ext-ins-0.31.0.jar",
+      "sha256": "cd0c6fb3cef0ed504f86957c6790c9eea9255d2106fef65eb01ac1ba9dd30ed6",
+      "provider_hash_verified": true,
+      "parent": "modonomicon",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "modopedia",
+      "filename": "modopedia-neoforge-1.21.1-1.1.11.jar",
+      "sha256": "ad3acb63a59fc5d805bb62caebba4dd1076dcd9708ab086c0184eb82ecad0581",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 51,
+      "nested_archives": []
+    },
+    {
+      "id": "more-darkness",
+      "filename": "more_darkness-neoforge-1.21.1-2.0.1+1.21.1.jar",
+      "sha256": "b5f2dfd5a684b888a68763dc770a053853486571b4674cbfcb1a368e1017b3ab",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "more-overlays-updated",
+      "filename": "moreoverlays-1.24.2-mc1.21.1-neoforge.jar",
+      "sha256": "1ab0d1a49e31bbe5cf0cdfe5ba29fd923eca5ac60cdb51164780aa3db317c4b1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "mouse-tweaks",
+      "filename": "MouseTweaks-neoforge-mc1.21-2.26.1.jar",
+      "sha256": "68e6f4201c5de97b77929a7215c9552495696ca6a3bf3ae4eacc34e135f6cc8b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "natures-compass",
+      "filename": "NaturesCompass-1.21.1-3.4.0-neoforge.jar",
+      "sha256": "0e249ac11b2f916c5570d9679e188da652fa5664ba9cdb7be5dc9ff69497539c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 32,
+      "nested_archives": []
+    },
+    {
+      "id": "neovitae",
+      "filename": "neovitae-1.21.1-1.1.53.jar",
+      "sha256": "a3ad9be2f28abd1eeafe6cdc5a3961d04439f54ddcd2c57d25f0793e951c0dd9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 936,
+      "nested_archives": []
+    },
+    {
+      "id": "observerlib",
+      "filename": "observerlib-1.10.3.jar",
+      "sha256": "d2a2ae28d0f04845e1c803f200f89e47f4f5b4f1af917fe7750d0190820aefbf",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "occultism",
+      "filename": "occultism-1.21.1-neoforge-1.227.0.jar",
+      "sha256": "f5de9cfc06198dddde0357f5c1c82d32608fd095c2b318b1c5e6e9e5106a94f1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 447,
+      "nested_archives": []
+    },
+    {
+      "id": "octolib",
+      "filename": "OctoLib-NEOFORGE-0.6.2+1.21.jar",
+      "sha256": "92ba07d9d9e55a65421f3c3f203c72fe5149cb024d5277267e81d812e11a7f38",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jars/snakeyaml-2.2.jar"
+      ]
+    },
+    {
+      "id": "octolib!META-INF/jars/snakeyaml-2.2.jar",
+      "filename": "META-INF/jars/snakeyaml-2.2.jar",
+      "sha256": "1024cb02c989cc1cbdaa6da27f8aa0b9bfeef2b6dc06a5572fd70b5eab2a934a",
+      "provider_hash_verified": true,
+      "parent": "octolib",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index",
+      "filename": "oracle_index-neoforge-1.4.1.jar",
+      "sha256": "d7e8c6fc7b16fd5f7df7058ebe80713d0eb622ba493fd83dad8952dec14f60bb",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 13,
+      "nested_archives": [
+        "META-INF/jars/api-0.31.1.jar",
+        "META-INF/jars/commonmark-0.27.1.jar",
+        "META-INF/jars/commonmark-ext-gfm-tables-0.27.1.jar",
+        "META-INF/jars/commonmark-ext-yaml-front-matter-0.27.1.jar",
+        "META-INF/jars/exp4j-0.4.8.jar",
+        "META-INF/jars/jsoup-1.17.2.jar",
+        "META-INF/jars/langchain4j-1.0.0.jar",
+        "META-INF/jars/langchain4j-core-1.0.0.jar",
+        "META-INF/jars/langchain4j-embeddings-1.0.0-beta5.jar",
+        "META-INF/jars/langchain4j-embeddings-all-minilm-l6-v2-q-1.0.0-beta5.jar",
+        "META-INF/jars/onnxruntime-1.20.0.jar",
+        "META-INF/jars/opennlp-tools-2.5.4.jar",
+        "META-INF/jars/tokenizers-0.31.1.jar"
+      ]
+    },
+    {
+      "id": "oracle-index!META-INF/jars/api-0.31.1.jar",
+      "filename": "META-INF/jars/api-0.31.1.jar",
+      "sha256": "d7cb4b55807e8b1c4d67c966f8610ff253d956a32575ee095aaef878e3ec6b9f",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/commonmark-0.27.1.jar",
+      "filename": "META-INF/jars/commonmark-0.27.1.jar",
+      "sha256": "539ff862affa289c7d779d8395b0cdcfc52b6b5cdd4c0ec46d1c8134ab601017",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/commonmark-ext-gfm-tables-0.27.1.jar",
+      "filename": "META-INF/jars/commonmark-ext-gfm-tables-0.27.1.jar",
+      "sha256": "3c5436a13c6809cbcc9d5ee735870000e0c1b23634bab04e0bf482bf35762349",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/commonmark-ext-yaml-front-matter-0.27.1.jar",
+      "filename": "META-INF/jars/commonmark-ext-yaml-front-matter-0.27.1.jar",
+      "sha256": "cd355ff81fcfd4cce932c92729de4b16a3e15b71700a86e960f77b0cf4e10b4d",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/exp4j-0.4.8.jar",
+      "filename": "META-INF/jars/exp4j-0.4.8.jar",
+      "sha256": "844ae395ee6b385ac1f814f55a894f0115dac1c89e1275eb441cef65b85d6e0d",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/jsoup-1.17.2.jar",
+      "filename": "META-INF/jars/jsoup-1.17.2.jar",
+      "sha256": "3692b0814791b97fc031f93cffa6ce6684e241bb7d01195ad9ceeb4360d2ae84",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/langchain4j-1.0.0.jar",
+      "filename": "META-INF/jars/langchain4j-1.0.0.jar",
+      "sha256": "0378ae003669ef5285a39754431c6999507b1da97458d1de266366001118bb28",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/langchain4j-core-1.0.0.jar",
+      "filename": "META-INF/jars/langchain4j-core-1.0.0.jar",
+      "sha256": "f529b0ad03a9bf5583fa5926b4ca2e5bbea4384b0185938b9668a5ad6ed8d2e3",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/langchain4j-embeddings-1.0.0-beta5.jar",
+      "filename": "META-INF/jars/langchain4j-embeddings-1.0.0-beta5.jar",
+      "sha256": "d4aa158aa41b11295eeb03e9a98fe215ea69334d9910355afc11ab094f9bc78c",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/langchain4j-embeddings-all-minilm-l6-v2-q-1.0.0-beta5.jar",
+      "filename": "META-INF/jars/langchain4j-embeddings-all-minilm-l6-v2-q-1.0.0-beta5.jar",
+      "sha256": "ff13d508b928e8911dd566a0af456001bc5ae5c3c6ebc5b1abd1733eb7ecd13a",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/onnxruntime-1.20.0.jar",
+      "filename": "META-INF/jars/onnxruntime-1.20.0.jar",
+      "sha256": "2b0c05126d71eeab4bcb82c9fd46c53570260f3431564cfc3469679de25fa112",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/opennlp-tools-2.5.4.jar",
+      "filename": "META-INF/jars/opennlp-tools-2.5.4.jar",
+      "sha256": "60619a6be259d28404e0f7b5de2c9c1034f27a65da793fc1d078b66d92162bc6",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "oracle-index!META-INF/jars/tokenizers-0.31.1.jar",
+      "filename": "META-INF/jars/tokenizers-0.31.1.jar",
+      "sha256": "0f658f520ac160de9d5aa88b5deb4c39756df912876982998f89e9c1f4d518eb",
+      "provider_hash_verified": true,
+      "parent": "oracle-index",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "pams-harvestcraft-2-crops",
+      "filename": "pamhc2crops-NEOFORGE-1.21.1-1.0.9.jar",
+      "sha256": "ebdb8aaf2bda8d4a46fb655af57b546f285a1ff15411bba691c18420064b84b5",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 514,
+      "nested_archives": []
+    },
+    {
+      "id": "pams-harvestcraft-2-food-core",
+      "filename": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar",
+      "sha256": "acd5dd380eafc3f317b67231a2355c204cab254dfdf4ab1f25c084fdd3d317b9",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 409,
+      "nested_archives": []
+    },
+    {
+      "id": "pams-harvestcraft-2-food-extended",
+      "filename": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "sha256": "d61dda7d00ab69bfaef45854df01ab6cfd64243d7f9a5ae870c89dd954247a8c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 899,
+      "nested_archives": []
+    },
+    {
+      "id": "pams-harvestcraft-2-trees",
+      "filename": "pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar",
+      "sha256": "64c34129468b0d75738cf0faf667a52067d2db1e72ee8564c0a8f850bbf154c7",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 257,
+      "nested_archives": []
+    },
+    {
+      "id": "pastel",
+      "filename": "Pastel-1.1.5.5.jar",
+      "sha256": "33122d9a6bdeeb025d1a2a1210d035104da23c213750d13b3d10af55716a443a",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2283,
+      "nested_archives": [
+        "META-INF/jars/additionalentityattributes-2.0.0+1.21.1-neoforge.jar",
+        "META-INF/jars/apfloat-1.10.1.jar",
+        "META-INF/jars/jgrapht-core-1.5.2.jar",
+        "META-INF/jars/jheaps-0.14.jar"
+      ]
+    },
+    {
+      "id": "pastel!META-INF/jars/additionalentityattributes-2.0.0+1.21.1-neoforge.jar",
+      "filename": "META-INF/jars/additionalentityattributes-2.0.0+1.21.1-neoforge.jar",
+      "sha256": "437bbfe32b7dccd8f3ea96e09674492537a8842f539b760bf70272a2a1d0211f",
+      "provider_hash_verified": true,
+      "parent": "pastel",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "pastel!META-INF/jars/apfloat-1.10.1.jar",
+      "filename": "META-INF/jars/apfloat-1.10.1.jar",
+      "sha256": "a1480f560f37355f6c0458c523bda46658da4cd3e23cc64e309fedcd7b0782ba",
+      "provider_hash_verified": true,
+      "parent": "pastel",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "pastel!META-INF/jars/jgrapht-core-1.5.2.jar",
+      "filename": "META-INF/jars/jgrapht-core-1.5.2.jar",
+      "sha256": "dfa596e9f0d0838f1b5e81dd0cd60e3a76c2c290ac25a0a029ffde58cf5e4c14",
+      "provider_hash_verified": true,
+      "parent": "pastel",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "pastel!META-INF/jars/jheaps-0.14.jar",
+      "filename": "META-INF/jars/jheaps-0.14.jar",
+      "sha256": "49a9898da3758659388f1333c53ccadb6fbd142a7d18aa7b1a33577090684279",
+      "provider_hash_verified": true,
+      "parent": "pastel",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "patchouli",
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "sha256": "959af52ed6640c316c3a8469203420be4aeea11ad6603890ba83bf48f5d9f993",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 19,
+      "nested_archives": []
+    },
+    {
+      "id": "paucal",
+      "filename": "paucal-0.7.0+neoforge-1.21.1.jar",
+      "sha256": "0989af16436cecdaceeb031d48f29db00da556bf4178edac4538153cb82be385",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": [
+        "META-INF/jars/jankson-1.2.2.jar"
+      ]
+    },
+    {
+      "id": "paucal!META-INF/jars/jankson-1.2.2.jar",
+      "filename": "META-INF/jars/jankson-1.2.2.jar",
+      "sha256": "b7be568a1c2f76ecb1cf00f9045a46320c54a9ec92350951ad62e416553e5005",
+      "provider_hash_verified": true,
+      "parent": "paucal",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "placebo",
+      "filename": "Placebo-1.21.1-9.9.4.jar",
+      "sha256": "d8952c019d6e54befe37155bc9876985ec57bf73dd33872115c7a65ac6bceba0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 17,
+      "nested_archives": []
+    },
+    {
+      "id": "playeranimator",
+      "filename": "player-animation-lib-forge-2.0.4+1.21.1.jar",
+      "sha256": "dbe5de45f5cd60c0e5e47af14e6d564534a98456e973cf670cb881f6938eee92",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "polymorph",
+      "filename": "polymorph-neoforge-1.2.0+1.21.1.jar",
+      "sha256": "4a09b7a3c8ea4f5b79acadb405a18140fe20d882e6930403c46cc7ad49c5ec06",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "prickle",
+      "filename": "prickle-neoforge-1.21.1-21.1.11.jar",
+      "sha256": "ccf46c442ed3c7fe41ad056f0940560829ec4dd88360985dfacd78f4614eb167",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "primal-magick",
+      "filename": "primalmagick-neoforge-1.21.1-6.0.7.jar",
+      "sha256": "f78cab2206b5c05c1d9615cf42bd2d728971156343658c2354bd496b7544f98f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1188,
+      "nested_archives": []
+    },
+    {
+      "id": "project-expansion",
+      "filename": "projectexpansion-1.21.1-1.0.6.jar",
+      "sha256": "96ef339eed405a4b1257420a6ff19279534de911f966b51fb6f1231fb0ff32f5",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 179,
+      "nested_archives": []
+    },
+    {
+      "id": "projecte",
+      "filename": "ProjectE-1.21.1-PE1.1.0.jar",
+      "sha256": "fec9389d8b70fcf87331a0bcc41b78ada79c1e6326ef02a7bb6db9a1d5a4c48b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 174,
+      "nested_archives": []
+    },
+    {
+      "id": "psi",
+      "filename": "Psi-neoforge-1.21.1-110.jar",
+      "sha256": "25b2e19bb9433bf5e462dfd9906dcd7b07b6dcb208e243ca936a007dc6e14033",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 321,
+      "nested_archives": [
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar"
+      ]
+    },
+    {
+      "id": "psi!META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
+      "filename": "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
+      "sha256": "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed",
+      "provider_hash_verified": true,
+      "parent": "psi",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "psitweaks",
+      "filename": "psitweaks-1.21.1-0.10.10-hotfix.jar",
+      "sha256": "77286172e4a415cc73a2b1152a098ecd4d2daf4f1e0341966fc2b974afa739af",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 494,
+      "nested_archives": [
+        "META-INF/jarjar/com.moratan251.psitweaks_qol-1.21.1-1.0.1.jar"
+      ]
+    },
+    {
+      "id": "psitweaks!META-INF/jarjar/com.moratan251.psitweaks_qol-1.21.1-1.0.1.jar",
+      "filename": "META-INF/jarjar/com.moratan251.psitweaks_qol-1.21.1-1.0.1.jar",
+      "sha256": "15bcad0dce3b033cb30ded7b300d8de84ffb854a1d19511e91a6e826f2f15d36",
+      "provider_hash_verified": true,
+      "parent": "psitweaks",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "puffish-attributes",
+      "filename": "puffish_attributes-0.8.3-1.21-neoforge.jar",
+      "sha256": "b21c165e033360e112eb2c3426437e1ba4ebf70f971535b72b1b1891d04c87f0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jars/mixinextras-neoforge-0.4.1.jar"
+      ]
+    },
+    {
+      "id": "puffish-attributes!META-INF/jars/mixinextras-neoforge-0.4.1.jar",
+      "filename": "META-INF/jars/mixinextras-neoforge-0.4.1.jar",
+      "sha256": "6a149d831f1ccf7be22fda7c2d829e6091a0db2fa75499c76762a9bbd67739c8",
+      "provider_hash_verified": true,
+      "parent": "puffish-attributes",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "puzzles-lib",
+      "filename": "PuzzlesLib-v21.1.60-mc1.21.1-NeoForge.jar",
+      "sha256": "179bcaafb812618834ba82e7f29b15eaee8894f74fb96152a51cfc22ad4f45c4",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "quest-giver",
+      "filename": "quest_giver-1.21.1-1.5.3.jar",
+      "sha256": "a17a86d0449176578d0a99cdc59b2c05dd87b669b86e1116de969b08861aceec",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 6,
+      "nested_archives": []
+    },
+    {
+      "id": "quest-shop",
+      "filename": "questshop-1.4.0.jar",
+      "sha256": "e9c43eba6a3d34fe42323ea40e9675ba64ed35634363d1f7e6ee6a49d7a9dd7f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "rechiseled",
+      "filename": "rechiseled-1.2.5-neoforge-mc1.21.jar",
+      "sha256": "7bf14cf8a4bfdc4b6c990126a75da29fd2bb7559d1c05b71e29c8fd5ae044435",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 683,
+      "nested_archives": []
+    },
+    {
+      "id": "relics",
+      "filename": "relics-1.21.1-0.12.5.jar",
+      "sha256": "5a691438de36a23ef6e2f613f617de7996263ca0e6e951f10a09f492119f8427",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 408,
+      "nested_archives": []
+    },
+    {
+      "id": "reliquary-reincarnations",
+      "filename": "reliquary-1.21.1-2.0.85.1599.jar",
+      "sha256": "84fa046762259023129f78c5c202f6fed1cbb0eeb61fbdfccca83d0fab93ce3e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 164,
+      "nested_archives": []
+    },
+    {
+      "id": "reliquified-artifacts",
+      "filename": "reliquified_artifacts-1.21.1-1.0.9.jar",
+      "sha256": "b074e7bbb010b1030f4def909548ccca1b43bec82584e2cc03e29e6baa6040d6",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 55,
+      "nested_archives": []
+    },
+    {
+      "id": "replication",
+      "filename": "Replication-1.21.1-1.2.7.jar",
+      "sha256": "aae49074d525099447f59cd3677c2cd3e2144a4bd0591181f33ce676c52bd14e",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 38,
+      "nested_archives": []
+    },
+    {
+      "id": "resourceful-config",
+      "filename": "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "sha256": "25b4f3502d25c535004acd4a9420272fff01d2f1e2df352239fec93fdab005d4",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 26,
+      "nested_archives": []
+    },
+    {
+      "id": "resourceful-lib",
+      "filename": "resourcefullib-neoforge-1.21-3.0.12.jar",
+      "sha256": "5e36f2c69de008dc5795f730c84ab767688f15c810944b585485349a0c911261",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jars/bytecodecs-1.1.2.jar",
+        "META-INF/jars/yabn-1.0.3.jar"
+      ]
+    },
+    {
+      "id": "resourceful-lib!META-INF/jars/bytecodecs-1.1.2.jar",
+      "filename": "META-INF/jars/bytecodecs-1.1.2.jar",
+      "sha256": "3f418220feab93d791c9fdd63a6c6d999f7b2164edad359dee35f08a9ad175cc",
+      "provider_hash_verified": true,
+      "parent": "resourceful-lib",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "resourceful-lib!META-INF/jars/yabn-1.0.3.jar",
+      "filename": "META-INF/jars/yabn-1.0.3.jar",
+      "sha256": "bdc5a03a9b577c48bc6d7c06118b2418afd2c537081511c24b3259c561c8355a",
+      "provider_hash_verified": true,
+      "parent": "resourceful-lib",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "rhino",
+      "filename": "rhino-2101.2.7-build.85.jar",
+      "sha256": "e0e9b0e78edd380440266c0f4ea8d489dac851ef075a4566a66a6dae2f7bbb66",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "ribbits",
+      "filename": "Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "sha256": "794223f5a91b8b80a962754b5180ec3e2472db6941e9b6c1cdd49324df628389",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 39,
+      "nested_archives": []
+    },
+    {
+      "id": "roots-classic",
+      "filename": "RootsClassic-1.21.1-1.5.10.jar",
+      "sha256": "29d8a909126a93947197ab4b7b8c0bfa779b0f0eeeb0068423254ffb9631c7dc",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 89,
+      "nested_archives": []
+    },
+    {
+      "id": "scriptor-magicae",
+      "filename": "scriptor-neoforge-2.0.14-1.21.1-sgd.jar",
+      "sha256": "d71e9fa69c012c126390a3cd89287185a4ae9eb03c6916bc16cb8d05e0f1b31d",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 114,
+      "nested_archives": []
+    },
+    {
+      "id": "searchables",
+      "filename": "Searchables-neoforge-1.21.1-1.0.2.jar",
+      "sha256": "ca193f0c69033d8f709f9e073a7c1ef4ea46714e5c2f94eb23ace12781c6aa68",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "simple-backups",
+      "filename": "SimpleBackups-1.21-4.0.30.jar",
+      "sha256": "0c322781b3c559f7d2c62ac87eb9d7ce459f3f3b5ab771a8794d009b42c729ec",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "smart-keep-inventory",
+      "filename": "smart_keep_inventory-1.21.1-1.0.1-neoforge.jar",
+      "sha256": "1a5602b7dd2efa019ce77ce3f4b73d9378a4d7d365f206b85b3d863346be0140",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "smartbrainlib",
+      "filename": "SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+      "sha256": "68036561cc5511766d54cc0deabc3fc3a5e68f9e3db2478f2574ec82b494374b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "spark",
+      "filename": "spark-1.10.124-neoforge.jar",
+      "sha256": "647e8a81afbe414dba1df4ba15fd06c5d32d4cb544e68828405e8e074c2e16db",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "stateobserver",
+      "filename": "stateobserver-neoforge-1.21.1-1.6.4.jar",
+      "sha256": "b0a508b18b4b385617953b48ee52f9f786c77032a53a54f80c626458670a3bf7",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "summoningrituals",
+      "filename": "summoningrituals-neoforge-1.21.1-3.14.2.jar",
+      "sha256": "74a64137938c719cdfc8338510a824ad2f0ac2834e6c1498b7608e78e0f4a210",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "supermartijn642s-config-lib",
+      "filename": "supermartijn642configlib-1.1.8-neoforge-mc1.21.jar",
+      "sha256": "d2ba7b839a2268e4e223457e813d11aa2476c3bf708a7bba691d8fc851778a4b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "supermartijn642s-core-lib",
+      "filename": "supermartijn642corelib-1.1.20-neoforge-mc1.21.jar",
+      "sha256": "ad599fcd409f087e3e95a8263ff830b80ece841fc9854a9deb6c9b7738a292fc",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 6,
+      "nested_archives": []
+    },
+    {
+      "id": "tectonic",
+      "filename": "tectonic-3.0.28-neoforge-21.1.jar",
+      "sha256": "cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": [
+        "META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar"
+      ]
+    },
+    {
+      "id": "tectonic!META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar",
+      "filename": "META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar",
+      "sha256": "04c80501091e16952e9a83c152b4ea5ebe6a26c3a3268f7e8706a8caa32959a0",
+      "provider_hash_verified": true,
+      "parent": "tectonic",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": [
+        "META-INF/jarjar/json5-java-3.0.0.jar"
+      ]
+    },
+    {
+      "id": "tectonic!META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar!META-INF/jarjar/json5-java-3.0.0.jar",
+      "filename": "META-INF/jarjar/json5-java-3.0.0.jar",
+      "sha256": "2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533",
+      "provider_hash_verified": true,
+      "parent": "tectonic!META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "the-aurorian-unofficial-port",
+      "filename": "theaurorian-1.21.1-1.0.6.jar",
+      "sha256": "00a3d87f271bd9c5a89684d3245e09dc88b4d768b160e245eb1830a9036e9f41",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 310,
+      "nested_archives": []
+    },
+    {
+      "id": "the-bumblezone",
+      "filename": "the_bumblezone-7.17.3+1.21.1-neoforge.jar",
+      "sha256": "859d87b44d3d17c63f38317ac34d124e30b6de8c3043fa61ee987ff8b1f236d6",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 884,
+      "nested_archives": [
+        "META-INF/jarjar/athena-neoforge-1.21.1-4.0.6.jar",
+        "META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar"
+      ]
+    },
+    {
+      "id": "the-bumblezone!META-INF/jarjar/athena-neoforge-1.21.1-4.0.6.jar",
+      "filename": "META-INF/jarjar/athena-neoforge-1.21.1-4.0.6.jar",
+      "sha256": "43699885bbce3343916d4c5c4940cf0e3f9f6f02fdeb46e8655e121b42282ec5",
+      "provider_hash_verified": true,
+      "parent": "the-bumblezone",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "the-bumblezone!META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "filename": "META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "sha256": "5e36f2c69de008dc5795f730c84ab767688f15c810944b585485349a0c911261",
+      "provider_hash_verified": true,
+      "parent": "the-bumblezone",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": [
+        "META-INF/jars/bytecodecs-1.1.2.jar",
+        "META-INF/jars/yabn-1.0.3.jar"
+      ]
+    },
+    {
+      "id": "the-bumblezone!META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar!META-INF/jars/bytecodecs-1.1.2.jar",
+      "filename": "META-INF/jars/bytecodecs-1.1.2.jar",
+      "sha256": "3f418220feab93d791c9fdd63a6c6d999f7b2164edad359dee35f08a9ad175cc",
+      "provider_hash_verified": true,
+      "parent": "the-bumblezone!META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "the-bumblezone!META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar!META-INF/jars/yabn-1.0.3.jar",
+      "filename": "META-INF/jars/yabn-1.0.3.jar",
+      "sha256": "bdc5a03a9b577c48bc6d7c06118b2418afd2c537081511c24b3259c561c8355a",
+      "provider_hash_verified": true,
+      "parent": "the-bumblezone!META-INF/jarjar/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "theurgy",
+      "filename": "theurgy-1.21.1-neoforge-1.79.0.jar",
+      "sha256": "95e06ebc14e2cdab7fa4eaae02ac8352f1f249a49c38c15c3f20a763334a8b5a",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 205,
+      "nested_archives": []
+    },
+    {
+      "id": "titanium",
+      "filename": "titanium-1.21-4.0.52.jar",
+      "sha256": "404beac4211b11172cabb2bb0ff5cad28c10d1d6f4ebff79aeb2888a981c3a41",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 67,
+      "nested_archives": []
+    },
+    {
+      "id": "trashslot",
+      "filename": "trashslot-neoforge-1.21.1-21.1.11.jar",
+      "sha256": "61fdb5de0fc3d36db0e5dd82c2e03341e449bbc47ce13eeab834b05596b7bb5b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "treechop",
+      "filename": "TreeChop-1.21.1-neoforge-0.19.3.jar",
+      "sha256": "2a5ec9cca187b4a031e9dd7e5eec8d0872f7d2bc355d88bda633021fa7eb71b0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 2,
+      "nested_archives": []
+    },
+    {
+      "id": "twilight-forest",
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "sha256": "493da16d10210f9f53a3c33b3d8fcb4ae9b14016ee420d753c894562bd9aba35",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1153,
+      "nested_archives": [
+        "META-INF/jarjar/s.tf-asm-4.8.3345.jar"
+      ]
+    },
+    {
+      "id": "twilight-forest!META-INF/jarjar/s.tf-asm-4.8.3345.jar",
+      "filename": "META-INF/jarjar/s.tf-asm-4.8.3345.jar",
+      "sha256": "1324a81e5cf085d62385f85e4b06e6217bf977977f92c58034af315c5d975690",
+      "provider_hash_verified": true,
+      "parent": "twilight-forest",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "tyzs-skills",
+      "filename": "Tyz's skills 6.4.2 - 1.21.1.jar",
+      "sha256": "5fd0bd61d9a1140c7c9e4c9937e759ba3f74ab513d48246c90c04e7544a0e83b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 59,
+      "nested_archives": []
+    },
+    {
+      "id": "unfocused",
+      "filename": "unfocused-neoforge-0.3.12-1.21.1-sgd.jar",
+      "sha256": "e1209b2c52cc00f5e6e8786cedfa75f063a18e93a761372f032eb4856bc30363",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 7,
+      "nested_archives": []
+    },
+    {
+      "id": "valhelsia-core",
+      "filename": "valhelsia_core-neoforge-1.21.1-1.1.4.jar",
+      "sha256": "e7f3a862e58d1003b557b1d619605524e1e88fc5c47d0b7ce3549a3cead06d7c",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "voidscape",
+      "filename": "Voidscape-1.21.1-1.9.588.jar",
+      "sha256": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 287,
+      "nested_archives": [
+        "META-INF/jarjar/Voidscape.asm-1.21.1-1.9.588.jar"
+      ]
+    },
+    {
+      "id": "voidscape!META-INF/jarjar/Voidscape.asm-1.21.1-1.9.588.jar",
+      "filename": "META-INF/jarjar/Voidscape.asm-1.21.1-1.9.588.jar",
+      "sha256": "d679fb2c79bc68e6120d357fe1dfc7962d524ab911a8b9afbe04e16054848731",
+      "provider_hash_verified": true,
+      "parent": "voidscape",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "winter-overhaul",
+      "filename": "WinterOverhaul-NeoForge-4.0.2+1.21.1.jar",
+      "sha256": "43b7d0c8d1a126cf06eb431a8ac3859d6997b3a6989391466263f8b4ede1eb25",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 64,
+      "nested_archives": []
+    },
+    {
+      "id": "worldweaver-new-dawn",
+      "filename": "worldweaver-21.0.25.jar",
+      "sha256": "6750a60983b22711cf14587d1e7a25c6327c9bec24952b4cbf5a26f40336ee1b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 11,
+      "nested_archives": []
+    },
+    {
+      "id": "wunderlib-new-dawn",
+      "filename": "wunderlib-21.0.10.jar",
+      "sha256": "b49c7a040f87ade1e3f73bd7335e8d68ff7a328919c192a6d2c022bae6786a2f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 1,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl",
+      "filename": "yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar",
+      "sha256": "b5c30321b46cfaa521645a04aff89d2804d8167a25bb23ad4b1ae8da73093a2f",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": [
+        "META-INF/jarjar/common-image-3.12.0.jar",
+        "META-INF/jarjar/common-io-3.12.0.jar",
+        "META-INF/jarjar/common-lang-3.12.0.jar",
+        "META-INF/jarjar/gson-0.2.1.jar",
+        "META-INF/jarjar/imageio-core-3.12.0.jar",
+        "META-INF/jarjar/imageio-metadata-3.12.0.jar",
+        "META-INF/jarjar/imageio-webp-3.12.0.jar",
+        "META-INF/jarjar/json-0.2.1.jar"
+      ]
+    },
+    {
+      "id": "yacl!META-INF/jarjar/common-image-3.12.0.jar",
+      "filename": "META-INF/jarjar/common-image-3.12.0.jar",
+      "sha256": "62a3821c724fadfda346c1e2d83b0c506a0c4074be269a52bf4e3192c7dd92bc",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/common-io-3.12.0.jar",
+      "filename": "META-INF/jarjar/common-io-3.12.0.jar",
+      "sha256": "bfacfeb02acac47dbfd1fab0002eaeca65547d04249498b654320c9e0fdf6647",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/common-lang-3.12.0.jar",
+      "filename": "META-INF/jarjar/common-lang-3.12.0.jar",
+      "sha256": "5c65e504b5b64d80683e0fa70a1dd154dd83d4de7da37f21e950f5a9c03bc66d",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/gson-0.2.1.jar",
+      "filename": "META-INF/jarjar/gson-0.2.1.jar",
+      "sha256": "4ef02cf5a6e54cf32ced063002a7a243b6086e2886905274faf2f0a80babf2c9",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/imageio-core-3.12.0.jar",
+      "filename": "META-INF/jarjar/imageio-core-3.12.0.jar",
+      "sha256": "34c6f91bf3b217ed0115bce8283238fbd0264562aa682b4226a3960d0ede9815",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/imageio-metadata-3.12.0.jar",
+      "filename": "META-INF/jarjar/imageio-metadata-3.12.0.jar",
+      "sha256": "797d026b67d07e6d5eb00a1ab53a55acaab6f80a71c5ee325572093eb90c0caa",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/imageio-webp-3.12.0.jar",
+      "filename": "META-INF/jarjar/imageio-webp-3.12.0.jar",
+      "sha256": "43dc447ccfe34c5c5c6f5d31190270e1f9bf65f60375d697ae2a8ff433468526",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yacl!META-INF/jarjar/json-0.2.1.jar",
+      "filename": "META-INF/jarjar/json-0.2.1.jar",
+      "sha256": "5a9c7d005c7c4b07474b8e07e25f33116a923f7db19c92673f1ac47461f8a57d",
+      "provider_hash_verified": true,
+      "parent": "yacl",
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 0,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-api",
+      "filename": "YungsApi-1.21.1-NeoForge-5.1.9.jar",
+      "sha256": "375e0b2f988ab4f5bde182166c0f0b102377adc8f823660c24ade08b0b3cde56",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-desert-temples",
+      "filename": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+      "sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-dungeons",
+      "filename": "YungsBetterDungeons-1.21.1-NeoForge-5.1.0.jar",
+      "sha256": "37abb1f1d6f7014e02b83751fc210579611efdde91a7be54166da9576e4690b5",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-jungle-temples",
+      "filename": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "sha256": "9cb2054c84eaded33a0bc2f3426d341cc9a594cc61341227dbad67254812d031",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-mineshafts",
+      "filename": "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+      "sha256": "5625930dfb3240820d6e4ecf55fff0c39f70ce782fad117a4d418251184c7be0",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-nether-fortresses",
+      "filename": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "sha256": "5450a64a7036237f449496837e08f3e5b3aa1d7974a10df43944172def75d8ff",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-ocean-monuments",
+      "filename": "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.1.jar",
+      "sha256": "a713d1bcf4314562a417586b02f5fa4dd54254836552769ac99cb74e03e1bb9b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-strongholds",
+      "filename": "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+      "sha256": "a9cab2fc01538368862365691f7d215309801aed0b390351681b6b60a1db7b58",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-better-witch-huts",
+      "filename": "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+      "sha256": "888b1e6d1ada21982a75abfb4afb040c9bc2cc68777ec5fcd1199b978e3d4f8d",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 4,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-bridges",
+      "filename": "YungsBridges-1.21.1-NeoForge-5.1.0.jar",
+      "sha256": "dd10b00be5d2e5bac680ed37fb0b1393e285e5403211999653f449e010af683b",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    },
+    {
+      "id": "yungs-extras",
+      "filename": "YungsExtras-1.21.1-NeoForge-5.1.0.jar",
+      "sha256": "9380c8b482a8f65daed86ed33512ab068199a9de393c24a2530e2d7f7ac3e985",
+      "provider_hash_verified": true,
+      "parent": null,
+      "scan": "recursive PNG + special resources + JSON contracts",
+      "png_count": 3,
+      "nested_archives": []
+    }
+  ],
   "unresolved": [
-    "No verified local archives inventoried yet; global coverage unknown."
-  ]
+    "ars-nouveau: duplicate ZIP members",
+    "assets/apollib/textures/gui/sprites/background.png: source precedence unresolved",
+    "assets/apotheosis/textures/items/gems/lightning.png: source precedence unresolved",
+    "assets/ars_nouveau/textures/block/runes/rune_necromancy.png: source precedence unresolved",
+    "assets/ars_nouveau/textures/gui/documentation/doc_icon_anima.png: source precedence unresolved",
+    "assets/ars_nouveau/textures/gui/documentation/doc_spellcrafting_icon_contingency.png: source precedence unresolved",
+    "assets/ars_nouveau/textures/gui/documentation/doc_spellcrafting_icon_subform.png: source precedence unresolved",
+    "assets/ars_nouveau/textures/gui/schools/necromancy_tooltip.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/camera.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/copy.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/error.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/fire.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/id.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/info.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/minus.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/no.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/patched_component.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/plus.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/prototype_component.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/small_space.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/banner_pattern.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/block.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/enchantment.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/entity_type.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/fluid.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/instrument.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/item.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tag/painting_variant.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/tilde.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/warn.png: source precedence unresolved",
+    "assets/betteradvancedtooltips/textures/font/icons/yes.png: source precedence unresolved",
+    "assets/minecraft/textures/entity/shulker/shulker.png: source precedence unresolved",
+    "assets/projecte/textures/curios/empty_klein_star.png: source precedence unresolved",
+    "assets/psi/textures/block/empty.png: source precedence unresolved",
+    "assets/psi/textures/item/cad_color.png: source precedence unresolved",
+    "assets/sauce/textures/block/source_flow.png: source precedence unresolved",
+    "assets/sauce/textures/block/source_still.png: source precedence unresolved",
+    "assets/sauce/textures/entity/banner/anima.png: source precedence unresolved",
+    "assets/sauce/textures/item/_glyph_template_augment.png: source precedence unresolved",
+    "assets/sauce/textures/item/_glyph_template_component.png: source precedence unresolved",
+    "assets/sauce/textures/item/_glyph_template_form.png: source precedence unresolved",
+    "assets/sauce/textures/item/anima_essence.png: source precedence unresolved",
+    "assets/sauce/textures/mob_effect/contingency.png: source precedence unresolved",
+    "assets/sauce/textures/mob_effect/mana_cost_down.png: source precedence unresolved",
+    "assets/sauce/textures/mob_effect/rage.png: source precedence unresolved",
+    "assets/sauce/textures/mob_effect/spell_crit_up.png: source precedence unresolved",
+    "assets/sauce/textures/sounds/example_sound.png: source precedence unresolved",
+    "Runtime-generated resources and hardcoded renderers require separate client/source audit.",
+    "Overlay activation, special-resource applicability and duplicate precedence require review.",
+    "12 desired but unpinned future roster entries have no approved exact archive in this runtime lock.",
+    "Built first-party JARs and loader-injected/generated client resources require runtime closure; source resources inspected only."
+  ],
+  "integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
+  "first_party_projection": {
+    "integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
+    "kind": "source-resource projection, NOT built runtime JAR",
+    "source_paths": [
+      "compat/progression/src/main/resources/assets/tmm_progression/lang/en_us.json",
+      "compat/progression/src/main/resources/assets/tmm_progression/models/item/bio_mutagen.json",
+      "compat/progression/src/main/resources/assets/tmm_progression/models/item/mutagenic_brew.json",
+      "compat/progression/src/main/resources/assets/tmm_progression/textures/item/bio_mutagen.png",
+      "compat/traders-vengence/src/main/resources/assets/traders_vengence/lang/en_us.json",
+      "compat/transformations/src/main/resources/assets/tmm_transformations/dracolich/cave_center.mesh.json",
+      "compat/transformations/src/main/resources/assets/tmm_transformations/dracolich/cave_center.rig.json",
+      "compat/transformations/src/main/resources/assets/tmm_transformations/geo/dracolich_cave_center.geo.json",
+      "compat/transformations/src/main/resources/assets/tmm_transformations/textures/entity/dracolich/cave_center.png",
+      "compat/transformations/src/main/resources/assets/tmm_transformations/textures/entity/dracolich/cave_center_glow.png"
+    ]
+  },
+  "archive_path_scan_complete": true,
+  "counts": {
+    "assets": 42542,
+    "overlays": 184,
+    "special_resources": 790,
+    "contracts": 66107
+  },
+  "catalog": {
+    "assets": [
+      {
+        "path": "catalog/assets-0000.json.gz",
+        "rows": 4096,
+        "sha256": "b2a4496e02bb52c6e1c0bf8122306269b9243447a29e9f34da67f13f691635d6"
+      },
+      {
+        "path": "catalog/assets-0001.json.gz",
+        "rows": 4096,
+        "sha256": "d5cd4c0a82e9f44e2c15d588f156ecc06a713bce1f90d7b483f866e2088a01fa"
+      },
+      {
+        "path": "catalog/assets-0002.json.gz",
+        "rows": 4096,
+        "sha256": "63a89c8d944e30d38459381901a4df12ce1439826f056ffd7580f8de6eed3d41"
+      },
+      {
+        "path": "catalog/assets-0003.json.gz",
+        "rows": 2048,
+        "sha256": "78296bfdfc832df5945228baa590b6b28d7a8596861df3455f6449cfaab57f59"
+      },
+      {
+        "path": "catalog/assets-0004.json.gz",
+        "rows": 2048,
+        "sha256": "3b263c16be73b5e9c0f067797186f286f84e04ca4603f2ea62c4b287764b33cc"
+      },
+      {
+        "path": "catalog/assets-0005.json.gz",
+        "rows": 4096,
+        "sha256": "af579bbf7dd59c1acad3e014cd9e2f5c8f670f7f267d78c7158bd413a070761a"
+      },
+      {
+        "path": "catalog/assets-0006.json.gz",
+        "rows": 4096,
+        "sha256": "07c8d935549e9e93ad0695ed0079c8091a9af5c814042eb706aa8a1a511df6ca"
+      },
+      {
+        "path": "catalog/assets-0007.json.gz",
+        "rows": 4096,
+        "sha256": "914c65d074345c89b8da165ed237f48e014281e7270a0c12649f1ad15fd61558"
+      },
+      {
+        "path": "catalog/assets-0008.json.gz",
+        "rows": 4096,
+        "sha256": "9e6c03f8b02da40c402c16504429db9891dc23b85c33bde302ac8299b3378bfc"
+      },
+      {
+        "path": "catalog/assets-0009.json.gz",
+        "rows": 4096,
+        "sha256": "af1667a28b04104888401a0a2523c94187bc44da9183cdc41bb1f58cbdcdcde2"
+      },
+      {
+        "path": "catalog/assets-0010.json.gz",
+        "rows": 2048,
+        "sha256": "b42ab854042321484bc1905efa02eecd76390f3dbf68400e303df7f4c45ce845"
+      },
+      {
+        "path": "catalog/assets-0011.json.gz",
+        "rows": 2048,
+        "sha256": "b0b5c2c036c028dbe7a78b11a595a4df9be191a3f0b7a5938952dbddc8d2d9cb"
+      },
+      {
+        "path": "catalog/assets-0012.json.gz",
+        "rows": 1582,
+        "sha256": "27777ae2cc62c03377ac6c1fb5a31c74de91f900bcbb6272bedb41fd93aacfaf"
+      }
+    ],
+    "overlays": [
+      {
+        "path": "catalog/overlays-0000.json.gz",
+        "rows": 184,
+        "sha256": "ed999d47d6cf5fbcc9365f86db0296e24ba2f2257724cdb4104c355744ba996b"
+      }
+    ],
+    "special_resources": [
+      {
+        "path": "catalog/special_resources-0000.json.gz",
+        "rows": 790,
+        "sha256": "67ba7f374e2ed594f984419890b3696c551c9b9c11be520539d4fefae009a62f"
+      }
+    ],
+    "contracts": [
+      {
+        "path": "catalog/contracts-0000.json.gz",
+        "rows": 2048,
+        "sha256": "89f4d021af0f8b49d71dbc3843b7b1f2ba3d833b705a2f778304aa285473bfdd"
+      },
+      {
+        "path": "catalog/contracts-0001.json.gz",
+        "rows": 2048,
+        "sha256": "8d35ada84996a76db67c428142a7d92609c8d05f45fe10edbc3e84f422b8d472"
+      },
+      {
+        "path": "catalog/contracts-0002.json.gz",
+        "rows": 2048,
+        "sha256": "b42476bd71ca5cd78b81f3497924084e8a8180026bdb60f7f73e26fd7534e467"
+      },
+      {
+        "path": "catalog/contracts-0003.json.gz",
+        "rows": 2048,
+        "sha256": "792f6285d4e7078696b0aac0a9408051aa13a608a14c679a55d20e039ccf5a1a"
+      },
+      {
+        "path": "catalog/contracts-0004.json.gz",
+        "rows": 2048,
+        "sha256": "d051c1426034f1c64d8e9d9a469d744cb4e57b5dd4868fa982ba110e742aa70f"
+      },
+      {
+        "path": "catalog/contracts-0005.json.gz",
+        "rows": 2048,
+        "sha256": "9307bcbaf2ad9637b3ab27f3173a5c5a281774daaea80c85c86c766df42d5115"
+      },
+      {
+        "path": "catalog/contracts-0006.json.gz",
+        "rows": 2048,
+        "sha256": "d6b46520ce5ebe84fd5d5fdba7e509efe6a87bb97613a4818ae63797eedb6212"
+      },
+      {
+        "path": "catalog/contracts-0007.json.gz",
+        "rows": 2048,
+        "sha256": "98c25d32f5f269ef4d9a7962f75fe2f9d377ddfc8a8d45200b72322925d88bb0"
+      },
+      {
+        "path": "catalog/contracts-0008.json.gz",
+        "rows": 2048,
+        "sha256": "cdc9ae84ca6c49bd3a90d615ee9dc14af654aaf077c8ad887b9466653c1df047"
+      },
+      {
+        "path": "catalog/contracts-0009.json.gz",
+        "rows": 2048,
+        "sha256": "06e953b115f4f19b5553c254ebc2de834816089ee422351de79e1cef87bde704"
+      },
+      {
+        "path": "catalog/contracts-0010.json.gz",
+        "rows": 2048,
+        "sha256": "ce349be5336f16c3fe4faabb083d69a0a01031de394d93c7930a9a632d4672f8"
+      },
+      {
+        "path": "catalog/contracts-0011.json.gz",
+        "rows": 2048,
+        "sha256": "9434f9e6803eb03936e5e05fd93e5faef8905e4e9bf8228b93e97ebaa305105e"
+      },
+      {
+        "path": "catalog/contracts-0012.json.gz",
+        "rows": 2048,
+        "sha256": "d1897284a6648a9318a414b73e54dac06befe06d260d4280d929b153c277e9f6"
+      },
+      {
+        "path": "catalog/contracts-0013.json.gz",
+        "rows": 2048,
+        "sha256": "a37f2ba2b5bff40d0abf0355cde4e110cca72fd1b79cbea3a3da4461886e781f"
+      },
+      {
+        "path": "catalog/contracts-0014.json.gz",
+        "rows": 2048,
+        "sha256": "4b342d5c6f7a892a8c560ffd794da0483adfce9aacb4dbad15b54eb91d61e837"
+      },
+      {
+        "path": "catalog/contracts-0015.json.gz",
+        "rows": 2048,
+        "sha256": "b7ac38c701714900d35fb84a677466799a7262721286661e6efd5a2d8d6204a1"
+      },
+      {
+        "path": "catalog/contracts-0016.json.gz",
+        "rows": 2048,
+        "sha256": "9a53017e67b410e7a55a0b27d9c876aff3d9082f63227e47f0dc159b94a1d4f2"
+      },
+      {
+        "path": "catalog/contracts-0017.json.gz",
+        "rows": 2048,
+        "sha256": "31121063f18d576828b7186a1653e5d23ad6d3bc219f3bacc243c34caae42b61"
+      },
+      {
+        "path": "catalog/contracts-0018.json.gz",
+        "rows": 2048,
+        "sha256": "d7a7080191d88a01ebdb118b2f37e16ecf3ed5de57cb5f59187ec3db2957bc6e"
+      },
+      {
+        "path": "catalog/contracts-0019.json.gz",
+        "rows": 2048,
+        "sha256": "09f63fbf58c3f6243c25008ecac6f3f5974949048c53fc7cead620c078c2e976"
+      },
+      {
+        "path": "catalog/contracts-0020.json.gz",
+        "rows": 4096,
+        "sha256": "29dad54988e8e7bddc21224eee9aa6c67efa48cb98b1e9149ee8ee39de90ec8d"
+      },
+      {
+        "path": "catalog/contracts-0021.json.gz",
+        "rows": 2048,
+        "sha256": "309f20cfe6a77d8f80f7d330ee02d04cf452d10ac3aa04234ffbbd8480f59c2a"
+      },
+      {
+        "path": "catalog/contracts-0022.json.gz",
+        "rows": 2048,
+        "sha256": "abc99686fc324867247fa0c3b4dde468317dff6adc4e794e9f3b0598c1b94add"
+      },
+      {
+        "path": "catalog/contracts-0023.json.gz",
+        "rows": 2048,
+        "sha256": "26937244d35f81bc28c9575bdaf303afbd0f69f1ab6cdb71672ffc0a78d2be6d"
+      },
+      {
+        "path": "catalog/contracts-0024.json.gz",
+        "rows": 2048,
+        "sha256": "f2c869c7c73df4d5725b4fe53cc0a4bf13caafbeeb78ba4afd9ff99014a5dda3"
+      },
+      {
+        "path": "catalog/contracts-0025.json.gz",
+        "rows": 2048,
+        "sha256": "cad1c4736e2706aa9192d30a189bf2fffebf3769bcd948206791e018208f638d"
+      },
+      {
+        "path": "catalog/contracts-0026.json.gz",
+        "rows": 2048,
+        "sha256": "e84d534153d46101aee0b14aed84b420c4e9874b42e2ffc9738c2378bb6bbd92"
+      },
+      {
+        "path": "catalog/contracts-0027.json.gz",
+        "rows": 4096,
+        "sha256": "a94c05aa82b550471ad332fd694c8b2b6d78b47f89300bdd6ac0d2b65420b04c"
+      },
+      {
+        "path": "catalog/contracts-0028.json.gz",
+        "rows": 4096,
+        "sha256": "07b2e9d2d07bd3d956acf58ba9bdee17a44154759c440f37220b38933f4b1e45"
+      },
+      {
+        "path": "catalog/contracts-0029.json.gz",
+        "rows": 571,
+        "sha256": "216ef192b2df225a676772698af0b8d4f23dfe4f749a187570be28f7958edda9"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "key": "assets/minecraft/textures/item/diamond.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "b27b081fde6a794dfb52d37f4ab2a86931ce127323f786a27cea41d2dbe913a2",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run",
+        "previous_owner_verdict": "wrong cut; superseded by round brilliant profile"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "a59e3349c10aba74808538b06efde6c6e3fb5a628f1e2dc8b40ea932768e998d",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/emerald.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "7aa1f12ee48666b2c3ae56fd9884ee95bf315795bfd1fd6e4ac3d3811ae3aacb",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "e4a96b746425c0687f7b11f360b50f62dc192626e1fa2ed1f59232786bd8f47b",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/iron_ingot.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "4625aa2c32c74bd6796c7ba8e7ee6300db8d2f24fb38c9d9324a63b262a44391",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "40fde148d111c95166f7c97462d3021f8e7f3dbb6c7ad5925a950e5d17d34949",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/gold_ingot.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "b4e38d8476c35fafd18dba27ab2ec0304cedc7296ca170fd723afae5a08b2a2d",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run",
+        "previous_owner_verdict": "rejected"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "d328bccb58ad821854c6b86ef08ef610d4edefbcb256fe77997f4da11b279a19",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/botania/textures/item/mana_diamond.png",
+      "sources": [
+        {
+          "source_id": "botania-revived",
+          "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+          "asset_sha256": "6a2be3e5922da0968a444697ebc9b1e47a039869b2329cf4d823cc76b4e7faee",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "dde40ffda41975efe6dcc8b448445a6b13f549418d2944d7593d636d2d603a8a",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/botania/textures/item/rune_mana.png",
+      "sources": [
+        {
+          "source_id": "botania-revived",
+          "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+          "asset_sha256": "eb6c293623eb098ff72d500a1251476052dac39f45581491f0cb2babe9339bd6",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "item",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "b3e864df6575eb64e2417c138d397c3013800952f7187496d6d5c02ff72ae29a",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/botania/textures/block/pure_daisy.png",
+      "sources": [
+        {
+          "source_id": "botania-revived",
+          "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+          "asset_sha256": "55fa6b5561cabed2581ad553d316a3e4c732a73baf5defec3afd248df6640a9c",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "a8024f033fae6331ea17fa3087f41133bb0988e9f3b5713906e97721b05e9cca",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/stone.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "33ac70ba8cb701087642a12c5fd29c1ba3006dc4730e9b014ed3a19ce7cdda7b",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "44e6f41b8a22dbb65b382511a963664e943673c7ae248ffbb007123413c0025f",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/cobblestone.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "bcda95fdf5afa91747657aa198fc0b69ebf44141de30a718075f74045e9a5def",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "95be1d3bad48f4a003c39801e27fb4ebcc0e6c523317bc2386f9535ca12c309e",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_planks.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "3a33db67a3ba30537d0890a5cb37c8087ca336be89cbb1393a71c23224e361a8",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "d5db7e4dab8e1203b5fe6f8c95a998c7495045d689c3e14168a656967ee917c6",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "060c93128fb65aa350a84e4b6576e616c47d40211bbe537cfe923a81d072e30c",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "a01d446ac4906895d6c49a73716a2f1c24f03952d2fdf110723e998147961b7f",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/block/oak_log_top.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "62f38b25ae28b6c4842ee5a83f790394b1ec4d6c6f20dd52044394855346a2a7",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "built-in image generation plus original texture processing",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "e8522662e68ca63a5b6ea94b16a61d952744067882b677c3e8a6da7ac054fa0a",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/botania/textures/block/livingrock.png",
+      "sources": [
+        {
+          "source_id": "botania-revived",
+          "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+          "asset_sha256": "f9f62b37042dd612109f879f9114a83cec1318ed804d078cd8b40e6ddc41bd8a",
+          "dimensions": [
+            16,
+            96
+          ],
+          "metadata_sha256": "99628199eca710a54a0937a6d73fda066f98d38c360122b51b92f97581cf50d5"
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "original deterministic raster painting",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "revised",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "7ff2daab70bc7a2bf10fda0b76e7b5d9a6c42872cb9cc4a641b15da32a2672e6",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/botania/textures/block/runic_altar_side.png",
+      "sources": [
+        {
+          "source_id": "botania-revived",
+          "archive_sha256": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+          "asset_sha256": "2d55d630dc6b3667bd348d238fe156c47cb66ecb2d6d51a6b13300b01456bac0",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "block",
+      "target_dimensions": [
+        64,
+        64
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "original deterministic raster painting",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "158b2aa87786186d5f8c3882c66009eb52e731fda851c017d4c262214f064482",
+          "target_dimensions": [
+            64,
+            64
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/models/armor/iron_layer_1.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "4ab8a988d646e8a22a78fe71d0bc293579c65a663e3c1755cac698acbbdc2a66",
+          "dimensions": [
+            64,
+            32
+          ],
+          "metadata_sha256": null
+        }
+      ],
+      "category": "models",
+      "target_dimensions": [
+        256,
+        128
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "original deterministic raster painting",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "d4920c4baec9534a3ce0f25ceebd2be0fec26f1d8b9b8ba59540599333e06058",
+          "target_dimensions": [
+            256,
+            128
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/gui/sprites/widget/button.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "asset_sha256": "0a2e159360200a39e0c7e9c0db0e6aa034ba4e1f8d99698c004084b5ba6e94cb",
+          "dimensions": [
+            200,
+            20
+          ],
+          "metadata_sha256": "c8f6fe62c01c357a814223d4ab6a368e5122c195fa2671e585fa24988557a505"
+        }
+      ],
+      "category": "gui",
+      "target_dimensions": [
+        800,
+        80
+      ],
+      "status": "blocked",
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "output_sha256": null,
+      "provenance": {
+        "method": "original deterministic raster painting",
+        "prompts": "art/reviews/pilot-01/prompts.json",
+        "processing": "art/tools/prepare_pilot.py",
+        "rights": "Original project artwork; upstream pixels not inputs"
+      },
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "carried-forward-unapproved",
+        "client_preview": "not run"
+      },
+      "game_test": "not run",
+      "exception": null,
+      "candidate_history": [
+        {
+          "style_version": "0.1-pilot-01",
+          "sha256": "85cba9f5f4284d59f0923dfa6cebb18ad5235b049b4ced8b2340de5f8471a10a",
+          "target_dimensions": [
+            800,
+            80
+          ],
+          "source_commit": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+          "state": "superseded draft; owner feedback in CATEGORY-STANDARDS.md"
+        }
+      ]
+    },
+    {
+      "key": "assets/minecraft/textures/item/iron_chestplate.png",
+      "sources": [
+        {
+          "source_id": "minecraft",
+          "asset_sha256": "028d1a738128c5622471a9d1b94f00b49a696e7c4fac3dfccd07272e50021f71",
+          "dimensions": [
+            16,
+            16
+          ],
+          "metadata_sha256": null,
+          "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
+        }
+      ],
+      "category": "item",
+      "status": "blocked",
+      "target_dimensions": null,
+      "output_sha256": null,
+      "style_version": "0.2-pilot02",
+      "batch": "pilot-02",
+      "candidate_history": [],
+      "review": {
+        "state": "review-only candidate; category approval pending",
+        "candidate_manifest": "art/reviews/pilot-02/sample-manifest.json",
+        "revision": "new-related-deliverable",
+        "client_preview": "not run"
+      },
+      "game_test": "not run"
+    }
+  ],
+  "note": "Catalog shards are immutable source facts. assets holds reviewed/draft decisions merged by key. Whole-runtime completeness remains false.",
+  "classification_index": "classification-index.json"
 }
