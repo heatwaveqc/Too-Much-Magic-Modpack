@@ -6,7 +6,7 @@ import static io.github.heatwaveqc.tmm.progression.mxp.core.RitualRewards.Band;
 /** Exact native registry identities, never cross-provider aliases. */
 public final class E6bRitualCatalog {
     private E6bRitualCatalog(){}
-    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND }
+    public enum Kind { ITEM, ENTITY, WEATHER, TIME, COMMAND, CURSE, INFUSION, MANIFESTATION, REMOVE_CURSE, OWNER_ITEM }
     public record JawrOutput(String output, Kind kind, Band band) {}
     private static final Map<String,JawrOutput> JAWR=Map.ofEntries(
         Map.entry("witchery:ritual/apply_ointment",new JawrOutput("witchery:broom",Kind.ITEM,Band.CIRCLE_BASIC)),
@@ -26,7 +26,23 @@ public final class E6bRitualCatalog {
         Map.entry("witchery:ritual/set_day",new JawrOutput("dev.sterner.witchery.content.ritual_event.SetDayRitualEvent",Kind.TIME,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/set_midnight",new JawrOutput("dev.sterner.witchery.content.ritual_event.SetMidnightRitualEvent",Kind.TIME,Band.CIRCLE_MAJOR)),
         Map.entry("witchery:ritual/summon_lightning",new JawrOutput("summon lightning_bolt {chalkPos}",Kind.COMMAND,Band.CIRCLE_BASIC)),
-        Map.entry("witchery:ritual/summon_lightning_on_waystone",new JawrOutput("summon lightning_bolt {waystonePos}",Kind.COMMAND,Band.CIRCLE_BASIC))
+        Map.entry("witchery:ritual/summon_lightning_on_waystone",new JawrOutput("summon lightning_bolt {waystonePos}",Kind.COMMAND,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/befuddlement",new JawrOutput("witchery:befuddlement",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/curse_of_insanity",new JawrOutput("witchery:insanity",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/curse_of_misfortune",new JawrOutput("witchery:misfortune",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/curse_of_overheating",new JawrOutput("witchery:overheating",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/curse_of_sinking",new JawrOutput("witchery:sinking",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/curse_of_the_undead",new JawrOutput("witchery:undead",Kind.CURSE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/fragility",new JawrOutput("witchery:fragility",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/hunger",new JawrOutput("witchery:hunger",Kind.CURSE,Band.CIRCLE_BASIC)),
+        Map.entry("witchery:ritual/infuse_infernal",new JawrOutput("witchery:infernal",Kind.INFUSION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/infuse_light",new JawrOutput("witchery:light",Kind.INFUSION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/infuse_otherwhere",new JawrOutput("witchery:otherwhere",Kind.INFUSION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/infuse_overworld",new JawrOutput("witchery:overworld",Kind.INFUSION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/manifestation",new JawrOutput("witchery:manifestation",Kind.MANIFESTATION,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/remove_curse",new JawrOutput("dev.sterner.witchery.content.ritual_event.RemoveCurseRitualEvent",Kind.REMOVE_CURSE,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/bind_hobgoblin_statue",new JawrOutput("witchery:statue_of_hobgoblin_patron",Kind.OWNER_ITEM,Band.CIRCLE_MAJOR)),
+        Map.entry("witchery:ritual/raining_toad",new JawrOutput("minecraft:frog",Kind.ENTITY,Band.CIRCLE_MAJOR))
     );
     static void addTo(Map<String,RitualRewards.Rule> out){
         for(String path:java.util.List.of("war_dance","depths","fertility","zaphkiel_waltz","animal_growth","buffalo_dance")) add(out,"totemic:"+path,Band.TOTEMIC_INTRO);

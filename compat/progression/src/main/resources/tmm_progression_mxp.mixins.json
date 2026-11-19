@@ -74,7 +74,12 @@
     "EidolonAbsorptionRitualMixin",
     "EidolonSpecialSpawnMixin",
     "EidolonLocationPurifyMixin",
-    "EidolonVillagerPurifyMixin"
+    "EidolonVillagerPurifyMixin",
+    "JawrNativeCurseRitualMixin",
+    "JawrInfusionRitualMixin",
+    "JawrManifestationRitualMixin",
+    "JawrRemoveCurseRitualMixin",
+    "JawrRainingToadRitualMixin"
   ],
   "injectors": {
     "defaultRequire": 0

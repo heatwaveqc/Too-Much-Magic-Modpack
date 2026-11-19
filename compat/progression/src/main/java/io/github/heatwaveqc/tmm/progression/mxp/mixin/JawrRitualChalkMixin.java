@@ -64,6 +64,7 @@ public abstract class JawrRitualChalkMixin implements JawrRitualOutput.Observer 
             &&index>=0&&index<queue.size())event=queue.get(index);
         JawrRitualOutput.tick(this,event,level,E6bRitualCatalog.jawr(tmm$recipe),()->original.call(world));
     }
+    @Override public UUID tmm$jawrActor(){return tmm$actor;}
     @Override public void tmm$markJawrOutput(){
         if(tmm$operation!=null&&tmm$active()&&tmm$matches(tmm$recipe)){tmm$actual=true;((BlockEntity)(Object)this).setChanged();}
     }
