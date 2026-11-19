@@ -1,0 +1,170 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    49,
+    16,
+    37
+  ],
+  "surfaceY": 3,
+  "nonair": 14765,
+  "explicitAir": 14243,
+  "paletteStates": 23,
+  "counts": {
+    "minecraft:deepslate[axis=y]": 9431,
+    "minecraft:polished_deepslate": 287,
+    "minecraft:ladder[facing=south,waterlogged=false]": 13,
+    "minecraft:cobbled_deepslate": 2344,
+    "minecraft:air": 14243,
+    "embers:caminite_tiles": 338,
+    "minecraft:deepslate_tiles": 921,
+    "minecraft:dark_oak_trapdoor[facing=south,half=bottom,open=false,powered=false,waterlogged=false]": 6,
+    "minecraft:deepslate_bricks": 373,
+    "embers:caminite_bricks": 806,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 15,
+    "minecraft:red_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:red_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:barrel[facing=north,open=false]": 4,
+    "embers:caminite_large_bricks": 198,
+    "minecraft:crafting_table": 1,
+    "minecraft:furnace[facing=south,lit=false]": 1,
+    "minecraft:blast_furnace[facing=south,lit=false]": 1,
+    "minecraft:deepslate_brick_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]": 4,
+    "minecraft:lantern[hanging=true,waterlogged=false]": 4,
+    "minecraft:chain[axis=y,waterlogged=false]": 8,
+    "minecraft:deepslate_brick_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]": 4,
+    "minecraft:cut_copper": 2
+  },
+  "rawDeepslate": 9431,
+  "nativeCaminite": 1342,
+  "shaft": {
+    "hatch": [
+      24,
+      3,
+      32
+    ],
+    "templateMinY": 0,
+    "ladderFacing": "south",
+    "dynamicRequired": true,
+    "enabledFor": "dwarven_foundry",
+    "defaultForOtherHouses": false,
+    "stockPrefabMinimum": "minBuildHeight+21"
+  },
+  "zones": [
+    {
+      "name": "Metalworking and Ember conversion",
+      "bounds": [
+        4,
+        4,
+        15,
+        16,
+        11,
+        23
+      ],
+      "air": 936,
+      "pass": true
+    },
+    {
+      "name": "Exchange Tablet + pedestals and beam",
+      "bounds": [
+        32,
+        4,
+        15,
+        44,
+        11,
+        23
+      ],
+      "air": 936,
+      "pass": true
+    },
+    {
+      "name": "Inferno Forge / Hearth Coil",
+      "bounds": [
+        4,
+        4,
+        27,
+        16,
+        11,
+        33
+      ],
+      "air": 728,
+      "pass": true
+    },
+    {
+      "name": "Steam / Reservoir / generation expansion",
+      "bounds": [
+        32,
+        4,
+        27,
+        44,
+        11,
+        33
+      ],
+      "air": 728,
+      "pass": true
+    },
+    {
+      "name": "Theurgy alchemy suite",
+      "bounds": [
+        32,
+        4,
+        3,
+        44,
+        11,
+        11
+      ],
+      "air": 936,
+      "pass": true
+    }
+  ],
+  "ducts": [
+    [
+      5,
+      1,
+      17,
+      15,
+      2,
+      22
+    ],
+    [
+      33,
+      1,
+      17,
+      43,
+      2,
+      22
+    ],
+    [
+      5,
+      1,
+      28,
+      15,
+      2,
+      32
+    ],
+    [
+      33,
+      1,
+      28,
+      43,
+      2,
+      32
+    ],
+    [
+      33,
+      1,
+      5,
+      43,
+      2,
+      10
+    ]
+  ],
+  "facadeChecks": 1666,
+  "limitations": [
+    "Only fixed shell and shaft-head built; dynamic shaft and natural bedrock chamber are placement-hook requirements, not implemented runtime.",
+    "Stock Prefab shaft terminates minBuildHeight+21, and optional chest collects excavated resources; do not enable stock behavior blindly.",
+    "Wall/roof enclosure geometry checked, terrain/anchor/rotation/claims/fluid containment and actual movement pending in-game.",
+    "Exact Embers source dimensions verified for MechEdge machines; full machine chaining and Theurgy exact pin geometry pending, no devices supplied.",
+    "Caminite decorative cost, all deepslate/copper recoverable mass and material parity pending; no Archaic Bricks, Ember product or research bypass.",
+    "Native palette, trapdoor ladder/support behavior, shaft and bottom floor safety, lighting, runtime import and gzip export untested."
+  ]
+}
