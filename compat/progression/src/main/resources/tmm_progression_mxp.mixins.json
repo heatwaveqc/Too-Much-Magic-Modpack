@@ -114,7 +114,8 @@
     "KnightPhantomVictoryMixin",
     "ChaosGuardianVictoryMixin",
     "WhiteArenaVictoryMixin",
-    "GoetyStormRitualMixin"
+    "GoetyStormRitualMixin",
+    "AstralPlayerAttunementMixin"
   ],
   "injectors": {
     "defaultRequire": 0

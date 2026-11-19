@@ -49,6 +49,7 @@ public final class RitualRewards {
         JawrBrazierCatalog.addTo(rules);
         PrimalRitualCatalog.addTo(rules);
         GoetyRitualCatalog.addTo(rules);
+        rules.put(AstralAttunementProof.ID,new Rule(AstralAttunementProof.ID,Band.ASTRAL_ATTUNEMENT));
         return Map.copyOf(rules);
     }
     private static void forge(Map<String,Rule> out,Band band,String... paths){
