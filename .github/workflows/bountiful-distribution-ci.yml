@@ -10,6 +10,10 @@ on:
       - 'pack.toml'
       - 'index.toml'
       - 'tests/test_bountiful_distribution.py'
+      - 'manifest/bountiful-live-pilot-integration.json'
+      - 'config/bountiful/**'
+      - 'kubejs/data/tmm/recipe/bountiful/**'
+      - 'kubejs/assets/bountiful/lang/en_us.json'
       - '.github/workflows/bountiful-distribution-ci.yml'
 permissions:
   contents: read
