@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-19 Controle source completion
+
+- Controle1.6.16 SOURCE-COMPLETE with known native limitations explicit. Parent rewritten around4binarycompanions/fullguide/acquisition/6devices/9glyphs/CC and actual3pilotIDs/tasks/rewards. Final reset gap closed: ArsControleClient.LeftClickEmpty sendsClearRemote, servermainhandchecks; nativeSelectionHUD configurabledefaultV86. **8/42complete34researching**. Arsparentstillresearchingfor4addons+finalreview.
+- **Next Ars Ocultas2.6.2** exactJAR bridgefullroutes/bothOccultismendpoints/4recipes, thenElemental0.7.10.4,Elemancy1.18.3,Additions21.3.0; combinedArsreview;remainingmajors. Do not re-audit completedControle4companions/nSpells5/Unification/nativeArs30.
+- Fetchedintegrationadvancedto9310199d33587be7970d1bca6c15f864523e28fc; Controle/Ars/CCpinsunchanged, no research/pilotmanifest/Arschapter/manifestmods diffvsprior2f662b9e. Preserveconcurrentchanges/no merge. Controlefullhashrechecked. SelectednativeIRadialProvider/ModKeyBindings externalcontrole-parent-fresh; all97addonclassescontrole-fresh.
+- No blocker/hourlyactive; docs-only,nosubagents/assembly/server/client/gameplay/runtimeedits/merge. Gitlogactualhead;priorreceiptsfollow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Controle Holder/Prism
 
 - Added ars-controle-pinned-portals-prism.md: last2device source routes, actual frame/inventory/openclose/Source and projectile/target/dimension/ticket/collision/cost, installed CC peripherals. Holderdefault1000Source; existingportal makesneedsSourcefalse and oldcellsnotretargeted; Prism defaultmin1024/perblock.03125/dim2000/load600ticks. EntitybranchreturnsBEFORESourcepayment; blockbranchmoves/ticketsbeforepayment/cancel. Formula sqrt(d²-m²), not distance-minus-threshold. Source findings not approved exploits/fixes.7complete35researching unchanged.

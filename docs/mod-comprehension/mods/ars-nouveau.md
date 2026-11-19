@@ -106,12 +106,12 @@ Useful native combinations: Agronomic plus a real growing garden ->Jar->processi
 
 ## Addon scope and compatibility leads
 
-All seven are separately pinned profiles and part of completion scope. Unification and Ars n Spells are source-complete for pinned installed scopes; five addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
+All seven are separately pinned profiles and part of completion scope. Unification, Ars n Spells and Controle are source-complete for pinned installed scopes; four addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
 
 | Addon | Remaining full-route focus |
 | --- | --- |
 | [Ars Additions](ars-additions.md) | Advanced Wand, Warp Index/Ender Source, Wixie Apparatus, glyphs/rituals/structures/Codex and actual controls, not just3pilot items. |
-| [Ars Controle](ars-controle.md) | Remote/Sensor/Portable Brazier plus Linkage/Scroll Holder/Prism/control glyphs and event routing. |
+| [Ars Controle](ars-controle.md) | **Source-complete** six devices/nine control glyphs, nativeguide/fullwalkthrough and actual pilot criteria; known native limitations and runtime acceptance remain. |
 | [Ars Elemental](ars-elemental.md) | Four schools/foci/armor, optional helpers/devices/biome routes beyond three fire-oriented pilot items. |
 | [Ars Elemancy](ars-elemancy.md) | Combined Essences, armor and Elemancer shard route with actual spell mechanics/gates. |
 | [Ars Ocultas](ars-ocultas.md) | Occultism bridge recipes/worker/jar/altar behavior, both endpoints/costs/ownership. |

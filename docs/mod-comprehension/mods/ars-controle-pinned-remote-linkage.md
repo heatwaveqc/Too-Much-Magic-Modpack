@@ -47,3 +47,8 @@ Empty-hand interaction reports target GlobalPos/highlights; it posts BreakEvent 
 Pilot Remote acquisition doesn't prove successfullink/transport; Linkage has no current pilot lesson. Teach Notebook pages, exactapparatuscost, single target selection, modeorder and actual endpoint state before optional area mode. Reward smallXP plus common linking/redstone supplies; don't gift bossgated PortableRelay materials. Proposed linkage task should detect actual supported operation if available or label item/manualproxy truthfully, not name possession “remote item transfer.” No quest/runtime edits here.
 
 Notrun: blockvsentitylockmode callbacks, clickedBreakEventcancel versus remotetargetpolicy, crossdimensionloaded/unloaded/invaliddimension, two-cornerreset/volume, clearUIpath; chest/fluids/energy/nativesidedhandlerread+write+simulate/fullremainder; blacklistblock/capabilityclass and direct/indirectrecursion; retarget/reload/tileidentity/contextcache; redstone/comparatorvalues/negativeendpoint/liveness. Generic proxy source is mapped; actual endpoint compatibility and player controls remain client/world acceptance work.
+
+
+## Final control closure — 2026-11-19
+
+Direct ArsControleClient.onClickEmpty sends PacketClearRemote on left-click empty air; server verifies mainhand Remote then clears target/firstcorner preserving modes. Native IRadialProvider uses configured Ars Selection HUD(defaultV,key86). This supersedes earlier unidentified clear-gesture caveat; rendering/input acceptance remains unrun. Final addon source route is consolidated in parent.

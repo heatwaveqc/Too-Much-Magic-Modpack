@@ -50,9 +50,9 @@ Exact IDs below come from resolved manifest and are checked against generated ch
 | 29 / add_wand | 544DB130001D0000 | item: ars_additions:advanced_dominion_wand x1; possession | [ars-additions](ars-additions.md); full addon route pending | 45XP; minecraft:glow_ink_sac x4 |
 | 30 / add_index | 544DB130001E0000 | item: ars_additions:warp_index x1; possession | [ars-additions](ars-additions.md); full addon route pending | 60XP; ars_nouveau:archwood_hanging_sign x2 |
 | 31 / add_ender | 544DB130001F0000 | item: ars_additions:ender_source_jar x1; possession | [ars-additions](ars-additions.md); full addon route pending | 75XP; minecraft:ender_eye x2 |
-| 32 / control_remote | 544DB13000200000 | item: ars_controle:remote x1; possession | [ars-controle](ars-controle.md); full addon route pending | 40XP; minecraft:redstone_torch x4 |
-| 33 / control_sensor | 544DB13000210000 | item: ars_controle:temporal_stability_sensor x1; possession | [ars-controle](ars-controle.md); full addon route pending | 50XP; minecraft:repeater x4 |
-| 34 / control_brazier | 544DB13000220000 | item: ars_controle:portable_brazier_relay x1; possession | [ars-controle](ars-controle.md); full addon route pending | 65XP; minecraft:firework_rocket x8 |
+| 32 / control_remote | 544DB13000200000 | item: ars_controle:remote x1; possession | [ars-controle](ars-controle.md); addon source route complete, operation acceptance pending | 40XP; minecraft:redstone_torch x4 |
+| 33 / control_sensor | 544DB13000210000 | item: ars_controle:temporal_stability_sensor x1; possession | [ars-controle](ars-controle.md); addon source route complete, operation acceptance pending | 50XP; minecraft:repeater x4 |
+| 34 / control_brazier | 544DB13000220000 | item: ars_controle:portable_brazier_relay x1; possession | [ars-controle](ars-controle.md); addon source route complete, operation acceptance pending | 65XP; minecraft:firework_rocket x8 |
 | 35 / element_focus | 544DB13000230000 | item: ars_elemental:lesser_fire_focus x1; possession | [ars-elemental](ars-elemental.md); full addon route pending | 45XP; minecraft:magma_cream x4 |
 | 36 / element_urn | 544DB13000240000 | item: ars_elemental:everfull_urn x1; possession | [ars-elemental](ars-elemental.md); full addon route pending | 55XP; minecraft:cauldron x1 |
 | 37 / element_hat | 544DB13000250000 | item: ars_elemental:fire_hat x1; possession | [ars-elemental](ars-elemental.md); full addon route pending | 60XP; minecraft:orange_dye x4 |

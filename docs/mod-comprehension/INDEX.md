@@ -143,7 +143,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `totemic` | Totemic | magic | enabled flag | full | source-complete | [profile](mods/totemic.md) |
 | `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | researching | [profile](mods/witchery-remake.md) |
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
-| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
+| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
@@ -391,3 +391,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Controle Portable Relay lifecycle, blacklist, cache, moving context and actual Source/pause/toggle/range-query limitations documented. ScrollHolder/WarpingPrism and final review remain;7complete35researching unchanged. No runtime tests.
 
 - 2026-11-19 — Controle Holder/Prism binary companion covers portal frame/inventory/Source and projectile/ticket/cost/CC contracts. Source debit differences and cancellation/partial-frame limits explicit. Final Remote control and whole-addon walkthrough/pilot review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle source-complete for pinned1.6.16 installedscope: consolidated4binarycompanions into guide/acquisition/fulloptionalcontrolroutes and3pilotcrosswalk; left-clickair Remote reset/nativeSelectionHUD path closed. Known native limitations retained, not gameplay approval. **8/42source-complete,34researching**; four Ars addon routes/finalparentreview remain.
