@@ -20,3 +20,7 @@ Remaining holds: Aether requires owo-lib exact beta; Liroth requires Nuit client
 ## Second exact audit
 
 Job [135892920025](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44618334095/job/135892920025) established Aether, owo-lib and Nuit exact binaries. Pinned Aether 1.5.10 and owo-lib 0.12.15.6-beta.1 on both sides, Nuit beta.6 on client only. Now 221/223 third-party target pins. Deep Aether 1.1.5 and 1.1.5.1 both exclude Minecraft 1.21.1 by native range; held. Liroth still requires confirming BCLib/WorldWeaver/WunderLib native IDs and GeckoLib provider version; exact existing library versions requested in next read-only audit. No gameplay or full build. Unified Progression merged to dev/progression via #344; separate pack runtime migration pending. Trader source reconciled on candidate.
+
+## Combined source CI regression repair
+
+Previous candidate 734beb9: six checks passed, three failed (Newbie required Prefab disabled; Economy Gradle omitted the MIT property expected by license verification; Windows converted the exact Caliber Arms donor license text). Replace stale Prefab expectation with exact owner target pin verification; declare Economy's existing MIT license in Gradle; preserve LF bytes for audited Caliber Arms notice/provenance files. Do not relax artifact or license validation. New CI required.

@@ -26,7 +26,19 @@ def main():
     roster = data("manifest/mods.json")["mods"]
     assert len([m for m in roster if m["id"] == "smart-keep-inventory"]) == 1
     assert next(m for m in roster if m["id"] == "smart-keep-inventory")["enabled_in_pack"] is True
-    assert next(m for m in roster if m["id"] == "prefab")["enabled_in_pack"] is False
+    prefab = next(m for m in roster if m["id"] == "prefab")
+    target = ROOT / "manifest/next-qa-target.json"
+    if target.exists() and "prefab" in data("manifest/next-qa-target.json")["required_mod_ids"]:
+        assert prefab["enabled_in_pack"] is True, "Owner-approved QA requires Prefab"
+        prefab_pin = tomllib.loads(read("mods/prefab.pw.toml"))
+        assert prefab_pin["side"] == "both"
+        assert prefab_pin["update"]["modrinth"] == {"mod-id": "pTJ1ZloG", "version": "1SASoUIC"}
+        assert prefab_pin["download"]["hash"] == "f395c56c2c5ebb2b2852570a49e4d0a2a356e0797c69c2cb24e510be9587e06edb5bc978e8e59541e02a5dd5cf5143c9820949133fa4908645233194224f66cf"
+        idx = read("index.toml")
+        digest = hashlib.sha256((ROOT/"mods/prefab.pw.toml").read_bytes()).hexdigest()
+        assert f'file = "mods/prefab.pw.toml"\nhash = "{digest}"' in idx
+    elif prefab["enabled_in_pack"]:
+        assert (ROOT/"mods/prefab.pw.toml").is_file(), "Enabled Prefab requires actual pin"
 
     player_condition = data("kubejs/data/tmm/smart_keep_inventory/condition/newbie.json")
     assert player_condition == {"player": {"nbt": '{Tags:["tmm_newbie"]}'}, "keepExperience": True}
