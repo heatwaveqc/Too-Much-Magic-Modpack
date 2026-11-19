@@ -27,5 +27,5 @@
   "tmm_economy.mapper.forbidden_forge": "TMM Hephaestus Forge Mapper",
   "tmm_economy.mapper.forbidden_forge.tooltip": "Map ordinary item rituals and essence costs.",
   "tmm_economy.mapper.embers_machines": "TMM Embers Machine Mapper",
-  "tmm_economy.mapper.embers_machines.tooltip": "Map melting, mixing and stamping including Ember."
+  "tmm_economy.mapper.embers_machines.tooltip": "Map melting, mixing, stamping and ordinary alchemy including Ember."
 }

@@ -2,6 +2,10 @@ package io.github.heatwaveqc.tmm.economy;
 
 import com.mojang.logging.LogUtils;
 import com.rekindled.embers.ConfigManager;
+import com.rekindled.embers.blockentity.AlchemyTabletBlockEntity;
+import com.rekindled.embers.recipe.IAlchemyRecipe;
+import com.rekindled.embers.recipe.AlchemyRecipe;
+import com.rekindled.embers.recipe.AlchemyRecipeForBabies;
 import com.rekindled.embers.blockentity.MixerCentrifugeBottomBlockEntity;
 import com.rekindled.embers.blockentity.StamperBlockEntity;
 import com.rekindled.embers.recipe.FluidIngredient;
@@ -31,7 +35,7 @@ public final class EmbersMachineMapper implements IEMCMapper<NormalizedSimpleSta
     private static final Logger LOG = LogUtils.getLogger();
     @Override public String getName() { return "TMM Embers Machine Mapper"; }
     @Override public String getTranslationKey() { return "tmm_economy.mapper.embers_machines"; }
-    @Override public String getDescription() { return "Map ordinary melting, mixing and stamping including Ember and fluids."; }
+    @Override public String getDescription() { return "Map ordinary melting, mixing, stamping and alchemy including Ember and fluids."; }
 
     private static NSSFluid fluidKey(FluidStack stack) {
         if (stack.isEmpty() || stack.getAmount() <= 0 || !stack.getComponentsPatch().isEmpty())
@@ -59,7 +63,7 @@ public final class EmbersMachineMapper implements IEMCMapper<NormalizedSimpleSta
         for (var holder : resources.getRecipeManager().getRecipes()) {
             var recipe = holder.value();
             if (!(recipe instanceof IMeltingRecipe) && !(recipe instanceof IMixingRecipe)
-                    && !(recipe instanceof IStampingRecipe)) continue;
+                    && !(recipe instanceof IStampingRecipe) && !(recipe instanceof IAlchemyRecipe)) continue;
             try {
                 var plan = new RecipeGraphPlan();
                 if (recipe.getClass() == MeltingRecipe.class) {
@@ -89,7 +93,25 @@ public final class EmbersMachineMapper implements IEMCMapper<NormalizedSimpleSta
                     var out = r.getResultItem();
                     var cost = ResourceAccounting.Rate.EMBER.ofDecimal(StamperBlockEntity.EMBER_COST);
                     routes += plan.contribute(graph, out, cost);
-                } else throw new IllegalArgumentException("special machine recipe");
+                } else if (recipe.getClass() == AlchemyRecipe.class || recipe.getClass() == AlchemyRecipeForBabies.class) {
+                    var r = (IAlchemyRecipe) recipe;
+                    if (r.getInputs().isEmpty() || r.getAspects().isEmpty())
+                        throw new IllegalArgumentException("unresolved ordinary alchemy code");
+                    if (recipe.getClass() == AlchemyRecipeForBabies.class
+                            && ConfigManager.randomizeAlchemyAspectus()
+                            && r.getAspects().size() > r.getInputs().size())
+                        throw new IllegalArgumentException("impossible randomized aspect code");
+                    plan.consumed(r.getCenterInput(), 1, false);
+                    for (var input : r.getInputs()) plan.consumed(input, 1, false);
+                    // The top pedestal items are consumed; the bottom Aspectus
+                    // are not. Their world-seeded ordering never changes the debit.
+                    for (var aspect : r.getAspects()) plan.slot(aspect, 1, s -> true, false, false);
+                    // A direct successful ignition clears the Beam Cannon charge.
+                    // Use the minimum native accepted threshold; excess charge and
+                    // failed attempts are not required nominal recipe costs.
+                    var cost = ResourceAccounting.Rate.EMBER.of(AlchemyTabletBlockEntity.SPARK_THRESHOLD);
+                    routes += plan.contribute(graph, r.getResultItem(), cost);
+                } else throw new IllegalArgumentException("special machine or alchemy recipe");
                 mapped++;
             } catch (IllegalArgumentException | ArithmeticException e) {
                 skipped++; LOG.info("TMM Embers mapper skipped {}: {}", holder.id(), e.getMessage());
