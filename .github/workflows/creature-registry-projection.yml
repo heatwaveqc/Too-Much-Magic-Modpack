@@ -1,5 +1,11 @@
 name: Creature registry projection (source only)
 on:
+  push:
+    branches:
+      - 'feature/creature-taxonomy-*'
+    paths:
+      - 'docs/creatures/**'
+      - '.github/workflows/creature-registry-projection.yml'
   pull_request:
     paths:
       - 'docs/creatures/**'
