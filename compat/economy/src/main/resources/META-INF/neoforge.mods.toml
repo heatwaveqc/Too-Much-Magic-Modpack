@@ -152,5 +152,12 @@ versionRange="[15.10.6]"
 ordering="AFTER"
 side="CLIENT"
 
+[[dependencies.tmm_economy]]
+modId="titanium"
+type="optional"
+versionRange="[4.0.52]"
+ordering="AFTER"
+side="CLIENT"
+
 [[mixins]]
 config="tmm_economy.mixins.json"
