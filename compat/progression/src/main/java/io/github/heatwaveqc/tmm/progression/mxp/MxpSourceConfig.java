@@ -23,6 +23,7 @@ public final class MxpSourceConfig {
     public static final ModConfigSpec.DoubleValue EMBERS_PORTABLE_POOL;
     public static final ModConfigSpec.DoubleValue GOETY_SOUL_POOL;
     public static final ModConfigSpec.DoubleValue PRIMAL_CENTIMANA_POOL;
+    public static final ModConfigSpec.DoubleValue MAHOU_INITIAL_POOL;
     public static final java.util.Map<String,ModConfigSpec.DoubleValue> PASTEL_DYE_EMC;
 
     static {
@@ -60,6 +61,8 @@ public final class MxpSourceConfig {
             .defineInRange("goety_soul_reference",0.0,0.0,1.0e12);
         PRIMAL_CENTIMANA_POOL=b.comment("Awaiting approved fixed Primal reference. Native centimana units (100 per displayed mana). Proposed 50000 per 1000 MXP; 0 disables.")
             .defineInRange("primal_centimana_reference",0.0,0.0,1.0e12);
+        MAHOU_INITIAL_POOL=b.comment("Mahou Tsukai 1.36.31 native initial maximum 100: fixed practice reference; 0 disables.")
+            .defineInRange("mahou_initial_pool",100.0,0.0,1.0e12);
         b.push("pastel_dye_emc");
         var dyeAnchors=new java.util.LinkedHashMap<String,ModConfigSpec.DoubleValue>();
         io.github.heatwaveqc.tmm.progression.mxp.core.PastelInkValuation.DYE_EMC.entrySet().stream()

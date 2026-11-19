@@ -31,7 +31,8 @@
     "EvilCraftFleshPaymentMixin",
     "EvilCraftMacePaymentMixin",
     "PastelInkPaymentMixin",
-    "JawrBloodPaymentMixin"
+    "JawrBloodPaymentMixin",
+    "MahouPracticePaymentMixin"
   ],
   "injectors": {
     "defaultRequire": 0
