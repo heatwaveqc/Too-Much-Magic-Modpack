@@ -35,4 +35,8 @@ tasks.named('processResources') {
     filesMatching('META-INF/neoforge.mods.toml') { expand(mod_version: mod_version) }
 }
 
-tasks.named('jar', Jar) { from('LICENSE', 'ASSET-CREDITS.md', 'BOTANIA-ASSET-LICENSE.md') { into 'META-INF' } }
+tasks.named('jar', Jar) {
+    from(project.files('LICENSE', 'ASSET-CREDITS.md', 'BOTANIA-ASSET-LICENSE.md')) {
+        into 'META-INF'
+    }
+}
