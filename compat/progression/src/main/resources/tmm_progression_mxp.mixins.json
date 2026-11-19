@@ -39,7 +39,9 @@
     "GoetyLichEnergyMixin",
     "GoetyArcaCapacityMixin",
     "GoetyLichRescueMixin",
-    "ForbiddenLichRescueMixin"
+    "ForbiddenLichRescueMixin",
+    "GoetyLichSummonLimitMixin",
+    "GoetyLichRitualLimitMixin"
   ],
   "injectors": {
     "defaultRequire": 0
