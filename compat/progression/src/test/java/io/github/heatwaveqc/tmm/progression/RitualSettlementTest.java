@@ -58,6 +58,14 @@ class RitualSettlementTest {
         assertNull(RitualRewards.lookup("witchery:ritual/unknown"));
         assertNull(RitualRewards.lookup("witchery:ritual/blocks_below_iron"));
     }
+    @Test void enchantedAndEidolonUseDistinctNativeCatalogs(){
+        assertEquals(6,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("enchanted:")).count());
+        assertEquals(13,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("eidolon_repraised:")).count());
+        assertNotEquals(RitualRewards.lookup("enchanted:infuse_broom").family(),RitualRewards.lookup("witchery:ritual/apply_ointment").family());
+        assertEquals(3,io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog.eidolon("eidolon_repraised:rituals/summon_drowned").count());
+        assertEquals(3500,RitualRewards.lookup("eidolon_repraised:rituals/brazier_craft_sanguine_amulet").band().first());
+        assertNull(RitualRewards.lookup("eidolon_repraised:rituals/recharging_chill"));
+    }
     @Test void receiptsFailClosed(){
         UUID operation=UUID.randomUUID(), actor=UUID.randomUUID();
         String id="forbidden_arcanus:eternal_stella";

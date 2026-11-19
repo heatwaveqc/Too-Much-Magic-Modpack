@@ -1,0 +1,68 @@
+package io.github.heatwaveqc.tmm.progression.mxp.hooks;
+
+import io.github.heatwaveqc.tmm.progression.mxp.core.E6bSpawnCatalog;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import java.util.Optional;
+
+/** Scope the exact native dispatch, never observe arbitrary nearby item/entity spawns. */
+public final class E6bSpawnScope {
+    private E6bSpawnScope(){}
+    public interface Observer { void tmm$spawned(Object ritual,ServerLevel level,Entity entity); }
+    private static final ThreadLocal<Observer> ACTIVE=new ThreadLocal<>();
+    public static void run(Observer observer,Runnable nativeCall){
+        Observer previous=ACTIVE.get();
+        if(previous!=null){ACTIVE.remove();try{nativeCall.run();}finally{ACTIVE.set(previous);}return;}
+        if(observer==null){nativeCall.run();return;}
+        ACTIVE.set(observer);try{nativeCall.run();}finally{ACTIVE.remove();}
+    }
+    public static void spawned(Object ritual,net.minecraft.world.level.Level world,Entity entity,boolean accepted){
+        Observer observer=ACTIVE.get();
+        if(accepted&&observer!=null&&world instanceof ServerLevel level)observer.tmm$spawned(ritual,level,entity);
+    }
+    public static int units(E6bSpawnCatalog.Proof proof,Object ritual,Entity entity){
+        if(proof==null||ritual==null||entity==null||!proof.nativeClass().equals(ritual.getClass().getName()))return 0;
+        if(proof.item()&&entity instanceof ItemEntity item){
+            ItemStack stack=item.getItem();
+            return !stack.isEmpty()&&proof.output().equals(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString())?Math.min(proof.count(),stack.getCount()):0;
+        }
+        return !proof.item()&&entity instanceof LivingEntity&&!(entity instanceof Player)&&proof.output().equals(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())?1:0;
+    }
+    @SuppressWarnings("unchecked")
+    public static String enchantedId(ServerLevel level,Object type){
+        if(level==null||type==null)return null;
+        try {
+            Object key=MxpReflect.field(Class.forName("net.favouriteless.enchanted.common.init.EData"),"RITE_TYPES_REGISTRY");
+            if(!(key instanceof ResourceKey<?> resource))return null;
+            Registry<Object> registry=level.registryAccess().registryOrThrow((ResourceKey<? extends Registry<Object>>)(ResourceKey<?>)resource);
+            ResourceLocation id=registry.getKey(type);
+            return id==null?null:id.toString();
+        }catch(ClassNotFoundException|RuntimeException|LinkageError ignored){return null;}
+    }
+    public static String eidolonId(ServerLevel level,Object recipe){
+        if(level==null||recipe==null)return null;
+        for(String id:E6bSpawnCatalog.eidolonIds()){
+            Object result=MxpReflect.call(level.getRecipeManager(),"byKey",ResourceLocation.parse(id));
+            if(result instanceof Optional<?> opt&&opt.orElse(null) instanceof RecipeHolder<?> h&&h.value()==recipe)return id;
+        }
+        return null;
+    }
+    public static boolean eidolonNativeMatches(E6bSpawnCatalog.Proof proof,Object ritual){
+        if(proof==null||ritual==null||!proof.nativeClass().equals(ritual.getClass().getName()))return false;
+        if(proof.item()){
+            Object result=MxpReflect.call(ritual,"getResult");
+            return result instanceof ItemStack s&&!s.isEmpty()&&proof.output().equals(BuiltInRegistries.ITEM.getKey(s.getItem()).toString())&&s.getCount()==proof.count();
+        }
+        Object type=MxpReflect.call(ritual,"getEntityType"),count=MxpReflect.call(ritual,"getCount");
+        return type instanceof net.minecraft.world.entity.EntityType<?> t&&proof.output().equals(BuiltInRegistries.ENTITY_TYPE.getKey(t).toString())&&count instanceof Integer n&&n==proof.count();
+    }
+}

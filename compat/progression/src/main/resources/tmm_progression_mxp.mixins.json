@@ -62,7 +62,11 @@
     "TotemicPerformanceMixin",
     "JawrRitualChalkMixin",
     "JawrRitualItemMixin",
-    "JawrRitualEntityMixin"
+    "JawrRitualEntityMixin",
+    "EnchantedRitualChalkMixin",
+    "EnchantedRitualOutputMixin",
+    "EidolonBrazierRitualMixin",
+    "EidolonRitualOutputMixin"
   ],
   "injectors": {
     "defaultRequire": 0
